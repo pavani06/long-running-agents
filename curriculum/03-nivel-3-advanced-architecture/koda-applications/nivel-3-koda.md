@@ -142,6 +142,33 @@ Se o KODA já está mais forte, o que ainda precisa existir na arquitetura?
 
 ---
 
+## 🔍 Diagnóstico Inicial: O que Nível 1 e Nível 2 Não Cobrem
+
+Antes de mergulhar nos 5 padrões, vamos classificar as falhas que Fernando encontrou naquela manhã. Cada falha mapeia para um tipo de problema que Nível 3 resolve:
+
+| Incidente | Cliente | Sintoma | Tipo de falha | Padrão Nível 3 |
+|---|---|---|---|---|
+| Carrinho perdido após restart | Pedro | KODA esqueceu tudo e perguntou "Como posso ajudar?" | Perda de estado em memória | State persistence |
+| Dois pedidos com SKUs diferentes | Marina | Discovery correto, Order leu estado antigo | Conflito entre agentes | File-based coordination + Multi-agent |
+| Cafeína sugerida após 4h de conversa | Rafael | Restrição diluída em ruído de conversa longa | Degradação de contexto | Server-side compaction |
+| Componentes acumulando latência | Time KODA | Guards rodando sem valor mensurável | Peso morto arquitetural | Harness evolution |
+
+Cada incidente é real. Cada um deles aconteceu apesar de Nível 1 (fundação) e Nível 2 (visibilidade) estarem implementados. A causa raiz de cada um é diferente. A solução de cada um exige um padrão específico de Nível 3.
+
+**Pedro** não perdeu o carrinho porque o prompt estava ruim. Perdeu porque o estado existia apenas em RAM. A solução não é melhorar o texto da resposta — é persistir `cart.json` e `payment_state.json` em SQLite ANTES de gerar o link de pagamento.
+
+**Marina** não recebeu dois pedidos porque o modelo alucinou. Recebeu porque dois agentes leram o mesmo evento e agiram em paralelo sem coordenação. A solução não é treinar o modelo melhor — é implementar `order.lock.json` com TTL e status visível para todos os agentes.
+
+**Rafael** não perdeu a restrição de cafeína porque o Evaluator falhou. Perdeu porque a compactação classificou "evito cafeína" como preferência média e a sumarizou para "cliente tem algumas preferências". A solução não é pedir para o modelo "prestar mais atenção" — é classificar fatos por criticidade ANTES de sumarizar.
+
+**O time KODA** não acumulou complexidade por incompetência. Acumulou porque cada novo incidente gerava um novo guard, e ninguém removia os antigos. A solução não é "ter menos componentes" — é medir custo e valor de cada um e remover com evidência.
+
+Este diagnóstico é o que separa Nível 3 dos níveis anteriores. Nível 1 pergunta "o sistema quebrou?". Nível 2 pergunta "consigo ver por que quebrou?". Nível 3 pergunta "qual camada arquitetural específica falhou, e qual padrão a conserta?".
+
+Com este diagnóstico em mente, vamos aplicar cada padrão ao KODA.
+
+---
+
 ## 🎯 Objetivos Deste Módulo
 
 Ao final deste módulo, você será capaz de:
@@ -489,6 +516,62 @@ def handle_whatsapp_turn(event):
 - **Guardrail específico:** não esconder trade-offs importantes.
 - **Resultado esperado:** o cliente vê um único KODA, mas a decisão veio de uma equipe interna coordenada.
 
+### KODA Walkthrough: Marina fecha compra com agentes coordenados
+
+Vamos rastrear o fluxo completo de uma compra real no KODA Nível 3, do WhatsApp até a confirmação:
+
+**00:00 — Marina envia mensagem:**
+```
+"Quero fechar o whey isolado chocolate sem lactose. Entrega em Pinheiros."
+```
+
+**00:01 — Ingress Layer:**
+- Recebe webhook do WhatsApp.
+- Cria `conversation_event.json` com idempotency key: `evt_marina_20260526_001`.
+- Encaminha para o Planner.
+
+**00:02 — Planner Agent:**
+- Lê `customer_profile.json` de Marina: intolerância à lactose, orçamento R$ 220, preferência chocolate.
+- Decide etapa: `order_confirmation` (não discovery inicial).
+- Escreve `plan.json`: `{"stage": "order_confirmation", "customer_id": "wa_5511998765432", "intent": "comprar whey isolado chocolate"}`.
+
+**00:03 — Discovery Agent:**
+- Confirma intenção: comprar whey isolado, chocolate, sem lactose, Pinheiros.
+- Atualiza `discovery.json` com intenção confirmada.
+
+**00:04 — Catalog Agent:**
+- Consulta SKU `WHEY-ISO-CHOC-001` no inventário.
+- Verifica: em estoque (32 unidades em SP), preço R$ 199,90.
+- Escreve `catalog_results.json`: `{"sku": "WHEY-ISO-CHOC-001", "price": 199.90, "stock_sp": 32, "lactose_free": true, "flavor": "chocolate"}`.
+
+**00:05 — Order Agent:**
+- Adquire `order.lock.json` com TTL de 30s.
+- Lê `discovery.json`, `catalog_results.json` e `customer_profile.json`.
+- Monta `order_draft.json`: 1x WHEY-ISO-CHOC-001, R$ 199,90, frete grátis, entrega Pinheiros.
+- Libera `order.lock.json`.
+
+**00:06 — Evaluator:**
+- Lê `order_draft.json` e `customer_profile.json`.
+- Verifica: SKU sem lactose? ✅ Produto em estoque? ✅ Preço < R$ 220? ✅ Entrega em Pinheiros viável? ✅
+- Score: 9.2/10. Verdict: APPROVED.
+- Escreve `evaluator_verdict.json`.
+
+**00:07 — Generator:**
+- Recebe veredict aprovado.
+- Gera resposta para WhatsApp: "Marina, seu Whey Isolado Chocolate (R$ 199,90) está confirmado. Entrega amanhã em Pinheiros. Link de pagamento: [link]"
+
+**00:08 — KODA envia resposta.**
+- `manifest.json` é escrito listando todos os artefatos usados: `[plan.json, customer_profile.json, discovery.json, catalog_results.json, order_draft.json, evaluator_verdict.json]`.
+- Cliente vê: uma resposta curta e útil no WhatsApp.
+
+**Por que isso funciona:**
+- Se o servidor reiniciar entre 00:05 e 00:06, o estado está em `order_draft.json` e pode ser recuperado.
+- Se outro evento de Marina chegar simultaneamente, o `order.lock.json` impede processamento paralelo.
+- Se o suporte precisar explicar a resposta, o `manifest.json` mostra exatamente quais arquivos foram usados.
+- Se a conversa durar 4h, a compactação preserva a decisão de compra e remove o ruído.
+
+Este é o KODA Nível 3 em operação. Não é mágica — é arquitetura.
+
 ---
 
 ## 💾 Parte 2: Persistência de Estado no KODA
@@ -792,6 +875,87 @@ def recover_conversation(conversation_id):
 - **Falha evitada:** não esconder trade-offs importantes.
 - **Resposta de recuperação:** KODA retoma com contexto específico, não com saudação genérica.
 
+### KODA Walkthrough: Pedro perde o carrinho — e recupera
+
+Este é o cenário que abriu o módulo. Vamos ver como a state persistence de Nível 3 transforma um desastre em uma pausa de 15 segundos.
+
+**Antes (sem Nível 3):**
+```
+21:03 Pedro: "Pode finalizar. Gera o link."
+21:03 KODA: gera link de pagamento (MAS NÃO SALVA NADA)
+21:04 Servidor: reinicia (deploy de rotina)
+21:04 Pedro: "Deu erro no pagamento. Tenta de novo?"
+21:04 KODA: "Oi! Como posso te ajudar?"
+       [Pedro perdeu 47 minutos. Carrinho, perfil, restrições — tudo sumiu.]
+```
+
+**Depois (com Nível 3):**
+
+**21:02 — KODA monta carrinho de Pedro:**
+- Whey Isolado Baunilha 900g — R$ 189,90
+- Creatina Monohidratada 300g — R$ 59,90
+- Pré-treino Sem Cafeína 150g — R$ 79,90
+- Multivitamínico 60 caps — R$ 49,90
+- Frete grátis ( acima de R$ 300)
+- Total: R$ 379,60
+
+**21:02:30 — Checkpoint ANTES do link:**
+```sql
+-- SQLite: salva carrinho completo
+INSERT INTO customer_cart (customer_id, cart_json, created_at)
+VALUES ('wa_5511998765432', '{"items": [...4 itens...], "total": 379.60}', '2026-05-26T21:02:30Z');
+
+-- JSON: snapshot do estado de pagamento
+-- payment_checkpoint.json:
+{
+  "customer_id": "wa_5511998765432",
+  "stage": "payment_pending",
+  "cart_total": 379.60,
+  "checkpoint_time": "2026-05-26T21:02:30Z"
+}
+```
+
+**21:03 — Gera link e salva estado de pagamento:**
+```sql
+INSERT INTO payment_state (transaction_id, customer_id, status, link, created_at)
+VALUES ('tx_pedro_20260526_001', 'wa_5511998765432', 'link_generated', 'https://pay.koda.com/tx_pedro_001', '2026-05-26T21:03:00Z');
+```
+
+**21:04 — Servidor reinicia.**
+
+**21:04:02 — Recovery Agent detecta restart:**
+1. Consulta SQLite: `SELECT * FROM payment_state WHERE customer_id = 'wa_5511998765432' ORDER BY created_at DESC LIMIT 1`.
+2. Encontra transação `tx_pedro_20260526_001` com status `link_generated`.
+3. Reidrata `customer_profile.json` (restrições de Pedro).
+4. Reidrata `customer_cart` (carrinho com 4 itens).
+
+**21:04:03 — Pedro pergunta:**
+```
+Pedro: "Deu erro no pagamento. Tenta de novo?"
+```
+
+**KODA (menos de 1s depois):**
+```
+"Pedro, seu carrinho ainda está salvo:
+- Whey Isolado Baunilha 900g (R$ 189,90)
+- Creatina Monohidratada 300g (R$ 59,90)
+- Pré-treino Sem Cafeína 150g (R$ 79,90)
+- Multivitamínico 60 caps (R$ 49,90)
+Total: R$ 379,60 com frete grátis.
+
+O link anterior pode ter expirado. Gerar um novo?"
+```
+
+**Resultado:** Pedro nem percebeu que o servidor reiniciou. O KODA lembrou de tudo. 47 minutos de conversa não foram perdidos.
+
+**O que tornou isso possível:**
+1. **Checkpoint ANTES de ação irreversível** — salvar estado antes de gerar link, não depois.
+2. **Recovery Agent** — um agente dedicado a detectar estado órfão após restart.
+3. **SQLite + JSON** — SQLite para queries (último estado do cliente) e JSON para snapshots auditáveis.
+4. **Idempotency** — transaction_id garante que o mesmo link não seja gerado duas vezes.
+
+A diferença entre perder o cliente e manter o cliente foram 3 queries e 15 segundos de recovery.
+
 ---
 
 ## 🗂️ Parte 3: Coordenação Baseada em Arquivos no KODA
@@ -1002,6 +1166,107 @@ WhatsApp event vira conversation_event.json
 - **Arquivo de status:** mostra se a etapa está `pending`, `running`, `completed`, `failed` ou `blocked`.
 - **Audit trail:** `manifest.json` lista inputs e outputs usados na mensagem ao cliente.
 - **Critério de sucesso:** qualquer pessoa do suporte consegue reconstruir a decisão sem perguntar ao modelo.
+
+### KODA Walkthrough: Rafael e a conversa de 4 horas que não perdeu a cafeína
+
+Rafael passou 4 horas no WhatsApp com o KODA. Ele detalhou sua rotina de treino, restrições alimentares, preferências de sabor, orçamento. No minuto 15, ele disse: "evito cafeína, atrapalha meu sono". Quatro horas depois, o KODA não deveria recomendar um pré-treino com 200mg de cafeína.
+
+**Sem Compaction (Nível 1 e 2):**
+- Histórico bruto: 120.000 tokens.
+- O fato "evito cafeína" está em 3 tokens no meio de 120.000.
+- O Generator recebe 120K tokens de contexto e precisa encontrar esses 3 tokens relevantes.
+- Resultado: frequentemente perde. Recomenda pré-treino com cafeína.
+
+**Com Compaction (Nível 3):**
+
+**Passo 1: Extrair fatos do histórico bruto (4 horas de conversa).**
+```json
+{
+  "extracted_facts": [
+    {
+      "type": "critical_restriction",
+      "fact": "evitar cafeína",
+      "reason": "atrapalha o sono",
+      "mentioned_at": "00:15:00",
+      "severity": "health",
+      "priority": "critical"
+    },
+    {
+      "type": "budget",
+      "fact": "orçamento máximo R$ 350",
+      "mentioned_at": "00:22:00",
+      "priority": "critical"
+    },
+    {
+      "type": "goal",
+      "fact": "hipertrofia, treino 5x/semana",
+      "mentioned_at": "00:05:00",
+      "priority": "high"
+    },
+    {
+      "type": "preference",
+      "fact": "prefere whey isolado a concentrado",
+      "mentioned_at": "01:30:00",
+      "priority": "medium"
+    },
+    {
+      "type": "social",
+      "fact": "conversa sobre o tempo em SP",
+      "mentioned_at": "02:10:00",
+      "priority": "low"
+    }
+  ],
+  "total_raw_tokens": 120000,
+  "extracted_critical_tokens": 1800,
+  "extracted_high_tokens": 3000,
+  "extracted_medium_tokens": 5000
+}
+```
+
+**Passo 2: Construir compacted_context.json.**
+```json
+{
+  "compacted_context": {
+    "critical_facts": [
+      "CLIENTE DEVE EVITAR CAFEÍNA — atrapalha o sono (mencionado 00:15)",
+      "Orçamento máximo: R$ 350",
+      "Intolerante à lactose"
+    ],
+    "high_priority": [
+      "Objetivo: hipertrofia, treino 5x/semana",
+      "Prefere produtos com boa avaliação (4.5+)"
+    ],
+    "medium_priority": [
+      "Prefere whey isolado a concentrado",
+      "Sabor preferido: chocolate, mas aceita baunilha"
+    ],
+    "conversation_summary": "Rafael é um atleta experiente buscando stack completo para hipertrofia. Discutiu 8 produtos, comparou preços, tem restrições claras de cafeína e lactose. Está pronto para decidir após 4h de consulta."
+  },
+  "compacted_token_count": 9800,
+  "raw_token_count": 120000,
+  "compression_ratio": "12.2:1",
+  "validated_against": "customer_profile.json",
+  "validation_passed": true
+}
+```
+
+**Passo 3: Validar compacted_context contra customer_profile.json.**
+O Compaction Validator compara cada critical_fact extraído com a fonte de verdade (`customer_profile.json`). Se houver divergência (ex: orçamento sumarizado como R$ 420 mas o perfil diz R$ 350), o resumo é rejeitado e refeito.
+
+**Passo 4: Generator recebe 9.800 tokens (em vez de 120.000).**
+Com apenas os fatos relevantes, o Generator:
+- Vê claramente "EVITAR CAFEÍNA" como critical_fact.
+- Não recomenda pré-treino com cafeína.
+- Tem 110.200 tokens livres para raciocinar com qualidade.
+- Resposta é precisa e rápida.
+
+**O que mudou:**
+- De 120K tokens de ruído para 9.8K tokens de sinal.
+- Fato crítico (cafeína) não está mais diluído — está em destaque como critical_fact.
+- Validação cruzada com `customer_profile.json` garante que o resumo não contradiz o estado persistido.
+- Economia de ~110K tokens por conversa longa = redução significativa de custo operacional.
+
+**Regra de ouro da compactação no KODA:** fatos que afetam SAÚDE (alergias, restrições médicas), DINHEIRO (orçamento, preço acordado) ou CONFIANÇA (promessas de prazo, garantias) são sempre critical. Nunca são sumarizados. São injetados literalmente no contexto de todo agente downstream.
 
 ---
 
@@ -1949,150 +2214,6 @@ Use esta tabela durante design reviews e incident reviews para verificar cobertu
 | Cliente pede renovação mensal automática | Subscription Agent em background | `subscription.json` com renewal_date e status | `subscription.lock.json` com TTL de 24h | Preserva preferências e data; remove histórico de renovações passadas | Mede custo do Subscription Agent vs churn evitado |
 | Cliente pede nota fiscal para empresa | Order Agent gera NF a partir do estado final | `invoice.json` com dados fiscais do pedido | `invoice.lock.json` por pedido | Preserva dados fiscais; remove rascunhos de cálculo | Mede se NF deveria ser feature do Order Agent ou agente separado |
 
-#### Cenário de revisão 5: cliente compara duas marcas por preço por dose
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 6: cliente tem alergia crítica a amendoim
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 7: cliente quer entrega amanhã em Pinheiros
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 8: cliente reclama de atraso no pedido
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 9: cliente compra para uma academia inteira
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 10: cliente pede renovação mensal automática
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 11: cliente muda de chocolate para baunilha
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 12: cliente quer evitar cafeína
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 13: cliente usa orçamento compartilhado com cupom
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 14: cliente quer cancelar item do carrinho
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 15: cliente pergunta por produto fora de estoque
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 16: cliente pede recomendação para iniciante
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 17: cliente avançado quer stack completo
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 18: cliente pede prova de que o produto é sem glúten
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 19: cliente retorna três dias depois
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
-#### Cenário de revisão 20: cliente pede nota fiscal para empresa
-
-- **Multi-agent:** defina qual agente tem autoridade para a próxima decisão.
-- **State persistence:** salve o fato crítico antes de responder ao cliente.
-- **File coordination:** publique status e manifest antes de qualquer ação externa.
-- **Compaction:** preserve o fato se ele afetar segurança, preço, prazo ou confiança.
-- **Harness evolution:** registre se algum guard rodou sem agregar valor mensurável.
-- **Resposta esperada:** curta no WhatsApp, completa nos artefatos internos.
-
 ---
 
 ### 🧩 Catálogo de Decisões Arquiteturais do KODA Nível 3
@@ -2111,83 +2232,6 @@ Decisões recorrentes que o time enfrenta ao aplicar os 5 padrões no KODA. Cada
 | Dois eventos WhatsApp chegam fora de ordem | Latência de rede ou retry do webhook | Ordenar por timestamp e idempotency key antes de processar | Ingress Layer | `event_queue.json` |
 | Suporte precisa explicar resposta ao cliente | Reclamação ou dúvida pós-venda | Abrir `manifest.json`, rastrear agentes e arquivos envolvidos | Support Agent | `manifest.json` |
 | Modelo novo melhora instruction following | Lançamento de API com capacidades melhores | Rodar replay com conversas antigas, medir diferença, propor ADR | Harness Evolution | `model_upgrade_adr.md` |
-
-### Decisão rápida 2: orçamento muda no meio da jornada
-
-- **Decisão KODA:** criar novo checkpoint e invalidar recomendações acima do novo limite.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 3: estoque muda entre recomendação e pagamento
-
-- **Decisão KODA:** Evaluator precisa revalidar SKU antes do link.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 4: cliente pede produto para terceiro
-
-- **Decisão KODA:** Discovery deve separar perfil do comprador e perfil de uso.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 5: pagamento falha depois de reserva
-
-- **Decisão KODA:** Order deve consultar payment_state antes de reemitir link.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 6: lock expira durante checkout
-
-- **Decisão KODA:** Recovery Agent precisa verificar estado antes de liberar recurso.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 7: compactação remove detalhe de sabor
-
-- **Decisão KODA:** validar se sabor era preferência média ou decisão ativa.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 8: harness bloqueia venda correta
-
-- **Decisão KODA:** registrar falso positivo e revisar custo do componente.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 9: dois eventos WhatsApp chegam fora de ordem
-
-- **Decisão KODA:** usar event_id e timestamp lógico antes de processar.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 10: cliente volta depois de três dias
-
-- **Decisão KODA:** carregar estado persistido e resumo compacto, não histórico bruto inteiro.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 11: suporte precisa explicar resposta
-
-- **Decisão KODA:** abrir manifest e mostrar artefatos, não pedir para o modelo lembrar.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
-
-### Decisão rápida 12: modelo novo melhora follow-up
-
-- **Decisão KODA:** rodar replay antes de remover guard antigo.
-- **Artefato esperado:** um JSON, checkpoint ou manifest que comprove a decisão.
-- **Agente responsável:** Planner escolhe etapa, Evaluator protege risco e agente especializado executa.
-- **Métrica:** registre se a decisão reduziu erro, custo, latência ou retrabalho de suporte.
 
 ### 🧪 Banco de Incidentes Simulados para Treino KODA
 
@@ -2280,58 +2324,6 @@ Use estes templates durante design reviews e incident reviews. Cada template cob
 4. Qual replay foi rodado? Qual resultado?
 5. Qual rollback por flag existe antes da remoção?
 
-### Review de estado
-
-1. Qual dado não pode sumir?
-2. Onde ele é salvo?
-3. Quando ele é atualizado?
-4. Como ele é recuperado depois de restart?
-5. Qual versão de schema está em uso?
-
-**Exemplo de resposta KODA:**
-
-- A resposta deve citar conversa, artefato, métrica e decisão.
-- Se não houver evidência, a decisão ainda não está pronta para produção.
-
-### Review de coordenação
-
-1. Qual recurso compartilhado existe?
-2. Qual lock protege esse recurso?
-3. Qual status prova progresso?
-4. Qual manifest explica a decisão?
-5. Qual cleanup existe para lock expirado?
-
-**Exemplo de resposta KODA:**
-
-- A resposta deve citar conversa, artefato, métrica e decisão.
-- Se não houver evidência, a decisão ainda não está pronta para produção.
-
-### Review de compactação
-
-1. Quais fatos são críticos?
-2. Quais fatos são altos, médios e baixos?
-3. Qual resumo foi validado?
-4. Quanto token foi economizado?
-5. Qual fato crítico foi checado por amostragem?
-
-**Exemplo de resposta KODA:**
-
-- A resposta deve citar conversa, artefato, métrica e decisão.
-- Se não houver evidência, a decisão ainda não está pronta para produção.
-
-### Review de evolução
-
-1. Qual componente está sendo questionado?
-2. Qual custo medido ele tem?
-3. Qual falha real ele previne?
-4. Qual replay foi rodado?
-5. Qual rollback por flag existe?
-
-**Exemplo de resposta KODA:**
-
-- A resposta deve citar conversa, artefato, métrica e decisão.
-- Se não houver evidência, a decisão ainda não está pronta para produção.
-
 ## ✨ O Que Você Aprendeu
 
 ### 1. KODA precisa virar uma equipe interna
@@ -2367,6 +2359,16 @@ Multi-agent sem estado perde progresso. Estado sem coordenação cria conflito. 
 - ✅ Se um harness não prova valor em produção, ele precisa ser reduzido, reescrito ou removido.
 - ✅ Se a decisão afeta saúde, dinheiro, prazo ou confiança, ela precisa de audit trail.
 - ✅ Se suporte não consegue explicar a resposta do KODA, a arquitetura ainda não está pronta.
+
+### A maturidade chega quando o time para de adivinhar
+
+Nível 1 respondeu "o sistema quebrou?".
+Nível 2 respondeu "consigo ver por que quebrou?".
+Nível 3 responde "qual camada falhou, qual arquivo prova, e qual padrão conserta?".
+
+Quando o time de Fernando começou este programa, cada incidente gerava horas de debugging e semanas de "vamos melhorar o prompt". Hoje, cada incidente começa com a abertura do `manifest.json`. Em 2 minutos, o time sabe qual agente decidiu o quê, com base em quais arquivos, validado por qual Evaluator.
+
+Isso não é tecnologia. É disciplina. E você agora a tem.
 
 ### A frase que fecha Nível 3
 
