@@ -1,0 +1,482 @@
+
+<style>
+  :root {
+    --n1: #1D9E75; --n1l: #E1F5EE; --n1d: #085041;
+    --n2: #378ADD; --n2l: #E6F1FB; --n2d: #0C447C;
+    --n3: #BA7517; --n3l: #FAEEDA; --n3d: #412402;
+    --n4: #A32D2D; --n4l: #FCEBEB; --n4d: #501313;
+    --kg: #7F77DD; --kgl: #EEEDFE; --kgd: #26215C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .portal { padding: 24px 0 8px; }
+  .header { text-align: center; margin-bottom: 24px; }
+  .badge { display: inline-block; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px; }
+  h1.main { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: var(--color-text-secondary); }
+  .tabs { display: flex; gap: 4px; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 20px; overflow-x: auto; }
+  .tab { padding: 8px 16px; font-size: 13px; cursor: pointer; border: none; background: none; color: var(--color-text-secondary); border-bottom: 2px solid transparent; white-space: nowrap; transition: all .15s; font-family: var(--font-sans, sans-serif); }
+  .tab:hover { color: var(--color-text-primary); }
+  .tab.active { color: var(--color-text-primary); border-bottom-color: var(--color-text-primary); font-weight: 500; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .level-card { border-radius: var(--border-radius-lg, 12px); padding: 16px; border: 0.5px solid; cursor: pointer; transition: transform .12s, box-shadow .12s; }
+  .level-card:hover { transform: translateY(-2px); }
+  .level-card.n1 { background: var(--n1l); border-color: var(--n1); }
+  .level-card.n2 { background: var(--n2l); border-color: var(--n2); }
+  .level-card.n3 { background: var(--n3l); border-color: var(--n3); }
+  .level-card.n4 { background: var(--n4l); border-color: var(--n4); }
+  .level-num { font-size: 11px; font-weight: 500; margin-bottom: 4px; }
+  .level-card.n1 .level-num { color: var(--n1d); }
+  .level-card.n2 .level-num { color: var(--n2d); }
+  .level-card.n3 .level-num { color: var(--n3d); }
+  .level-card.n4 .level-num { color: var(--n4d); }
+  .level-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .level-meta { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 10px; }
+  .progress-bar { height: 4px; border-radius: 2px; background: var(--color-border-tertiary); overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 2px; transition: width .3s; }
+  .n1 .progress-fill { background: var(--n1); }
+  .n2 .progress-fill { background: var(--n2); }
+  .n3 .progress-fill { background: var(--n3); }
+  .n4 .progress-fill { background: var(--n4); }
+  .progress-label { font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .section-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 12px; }
+  .module-list { display: flex; flex-direction: column; gap: 8px; }
+  .module-item { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); padding: 12px 16px; display: flex; align-items: flex-start; gap: 12px; cursor: pointer; transition: border-color .1s; }
+  .module-item:hover { border-color: var(--color-border-secondary); }
+  .module-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .dot-n1 { background: var(--n1); }
+  .dot-n2 { background: var(--n2); }
+  .dot-n3 { background: var(--n3); }
+  .dot-n4 { background: var(--n4); }
+  .module-content { flex: 1; }
+  .module-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+  .module-desc { font-size: 12px; color: var(--color-text-secondary); }
+  .module-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: auto; white-space: nowrap; flex-shrink: 0; }
+  .badge-n1 { background: var(--n1l); color: var(--n1d); }
+  .badge-n2 { background: var(--n2l); color: var(--n2d); }
+  .badge-n3 { background: var(--n3l); color: var(--n3d); }
+  .badge-n4 { background: var(--n4l); color: var(--n4d); }
+  .kg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .kg-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg, 12px); padding: 16px; }
+  .kg-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .kg-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--kgl); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .kg-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .kg-def { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 12px; }
+  .kg-section { margin-bottom: 8px; }
+  .kg-label { font-size: 11px; font-weight: 500; color: var(--kgd); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .kg-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .kg-tag { font-size: 11px; background: var(--kgl); color: var(--kgd); padding: 2px 8px; border-radius: 10px; }
+  .kg-priority { font-size: 12px; font-weight: 500; }
+  .priority-high { color: var(--n4d); }
+  .priority-med { color: var(--n3d); }
+  .case-grid { display: flex; flex-direction: column; gap: 12px; }
+  .case-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg, 12px); padding: 16px; cursor: pointer; }
+  .case-card:hover { border-color: var(--color-border-secondary); }
+  .case-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+  .case-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .case-level { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+  .case-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 10px; }
+  .metric-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .metric-pill { font-size: 11px; background: var(--color-background-secondary); border-radius: 10px; padding: 3px 10px; color: var(--color-text-secondary); }
+  .metric-pill.good { background: #E1F5EE; color: #085041; }
+  .checklist { display: flex; flex-direction: column; gap: 6px; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); cursor: pointer; }
+  .check-item:hover { border-color: var(--color-border-secondary); }
+  .check-box { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--color-border-secondary); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+  .check-box.checked { background: var(--n1); border-color: var(--n1); }
+  .check-box.checked::after { content: '✓'; font-size: 10px; color: white; }
+  .check-text { font-size: 13px; color: var(--color-text-primary); }
+  .check-level { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+  .tracker-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tracker-table th { text-align: left; font-weight: 500; color: var(--color-text-secondary); font-size: 12px; padding: 8px 12px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .tracker-table td { padding: 10px 12px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); }
+  .tracker-table tr:last-child td { border-bottom: none; }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .s-done { background: var(--n1); }
+  .s-in { background: var(--n3); }
+  .s-no { background: var(--color-border-secondary); }
+  .add-member-btn { margin-top: 12px; padding: 8px 16px; border: 0.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-md, 8px); background: none; font-size: 13px; color: var(--color-text-secondary); cursor: pointer; width: 100%; font-family: var(--font-sans, sans-serif); }
+  .add-member-btn:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
+  .roadmap { position: relative; padding-left: 28px; }
+  .roadmap::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 1px; background: var(--color-border-tertiary); }
+  .roadmap-item { position: relative; margin-bottom: 20px; }
+  .roadmap-dot { position: absolute; left: -24px; top: 3px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid; }
+  .rd-n1 { background: var(--n1l); border-color: var(--n1); }
+  .rd-n2 { background: var(--n2l); border-color: var(--n2); }
+  .rd-n3 { background: var(--n3l); border-color: var(--n3); }
+  .rd-n4 { background: var(--n4l); border-color: var(--n4); }
+  .roadmap-week { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 3px; }
+  .roadmap-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+  .roadmap-desc { font-size: 12px; color: var(--color-text-secondary); }
+</style>
+
+<div class="portal">
+  <div class="header">
+    <div class="badge">FutanBear Technical Team • Maio 2026</div>
+    <h1 class="main">KODA Training Center</h1>
+    <p class="subtitle">Construindo Agentes de Longa Duração • 4 Níveis • 8 Knowledge Graphs • 5 Casos de Estudo</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('overview')">Visão Geral</button>
+    <button class="tab" onclick="showTab('modules')">Módulos</button>
+    <button class="tab" onclick="showTab('kg')">Knowledge Graphs</button>
+    <button class="tab" onclick="showTab('cases')">Casos de Estudo</button>
+    <button class="tab" onclick="showTab('checklist')">Checklist</button>
+    <button class="tab" onclick="showTab('tracker')">Progresso</button>
+    <button class="tab" onclick="showTab('roadmap')">Roadmap</button>
+  </div>
+
+  <div id="tab-overview" class="panel active">
+    <div class="level-grid">
+      <div class="level-card n1" onclick="showTab('modules'); filterLevel('N1')">
+        <div class="level-num">NÍVEL 1 • 3-4h</div>
+        <div class="level-title">Conceitos Fundamentais</div>
+        <div class="level-meta">Por que agentes falham + fundamentos</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="p1"></div></div>
+        <div class="progress-label" id="pl1">0 de 4 módulos</div>
+      </div>
+      <div class="level-card n2" onclick="showTab('modules'); filterLevel('N2')">
+        <div class="level-num">NÍVEL 2 • 6-8h</div>
+        <div class="level-title">Padrões Práticos</div>
+        <div class="level-meta">Generator/Evaluator, Sprint Contracts, Rubrics</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="p2"></div></div>
+        <div class="progress-label" id="pl2">0 de 4 módulos</div>
+      </div>
+      <div class="level-card n3" onclick="showTab('modules'); filterLevel('N3')">
+        <div class="level-num">NÍVEL 3 • 8-10h</div>
+        <div class="level-title">Arquitetura Avançada</div>
+        <div class="level-meta">Multi-agente, State Persistence, Harness Evolution</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="p3"></div></div>
+        <div class="progress-label" id="pl3">0 de 5 módulos</div>
+      </div>
+      <div class="level-card n4" onclick="showTab('modules'); filterLevel('N4')">
+        <div class="level-num">NÍVEL 4 • 10h+</div>
+        <div class="level-title">KODA Produção</div>
+        <div class="level-meta">Arquitetura real KODA, rubrics, roadmap</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="p4"></div></div>
+        <div class="progress-label" id="pl4">0 de 5 módulos</div>
+      </div>
+    </div>
+    <p class="section-title">Estatísticas do Programa</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;">
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);">18</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">módulos</div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);">8</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">knowledge graphs</div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);">5</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">casos de estudo</div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);">27h</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">horas de conteúdo</div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;">
+        <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);">12</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">semanas de prog.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-modules" class="panel">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;" id="level-filters">
+      <button class="module-badge badge-n1" style="cursor:pointer;padding:4px 12px;border:none;" onclick="filterLevel('all')">Todos</button>
+      <button class="module-badge badge-n1" style="cursor:pointer;padding:4px 12px;border:none;" onclick="filterLevel('N1')">Nível 1</button>
+      <button class="module-badge badge-n2" style="cursor:pointer;padding:4px 12px;border:none;" onclick="filterLevel('N2')">Nível 2</button>
+      <button class="module-badge badge-n3" style="cursor:pointer;padding:4px 12px;border:none;" onclick="filterLevel('N3')">Nível 3</button>
+      <button class="module-badge badge-n4" style="cursor:pointer;padding:4px 12px;border:none;" onclick="filterLevel('N4')">Nível 4</button>
+    </div>
+    <div class="module-list" id="module-list"></div>
+  </div>
+
+  <div id="tab-kg" class="panel">
+    <div class="kg-grid" id="kg-grid"></div>
+  </div>
+
+  <div id="tab-cases" class="panel">
+    <div class="case-grid" id="case-grid"></div>
+  </div>
+
+  <div id="tab-checklist" class="panel">
+    <p class="section-title">Checklist de Conclusão de Nível</p>
+    <div class="checklist" id="checklist"></div>
+  </div>
+
+  <div id="tab-tracker" class="panel">
+    <p class="section-title" style="margin-bottom:8px;">Progresso da Equipe</p>
+    <table class="tracker-table" id="tracker-table">
+      <thead>
+        <tr>
+          <th>Membro</th>
+          <th>Nível 1</th>
+          <th>Nível 2</th>
+          <th>Nível 3</th>
+          <th>Nível 4</th>
+        </tr>
+      </thead>
+      <tbody id="tracker-body"></tbody>
+    </table>
+    <button class="add-member-btn" onclick="addMember()">+ Adicionar membro da equipe</button>
+  </div>
+
+  <div id="tab-roadmap" class="panel">
+    <p class="section-title">Roadmap de 12 Semanas</p>
+    <div class="roadmap" id="roadmap"></div>
+  </div>
+</div>
+
+<script>
+const modules = [
+  { id:'1.1', level:'N1', title:'Por que agentes perdem o fio', desc:'3 modos de falha: context rot, context anxiety, planning collapse', time:'60min' },
+  { id:'1.2', level:'N1', title:'Token budgeting e janela de contexto', desc:'Capacidade do Claude 4.6, estratégias de carregamento seletivo', time:'45min' },
+  { id:'1.3', level:'N1', title:'Padrões básicos de harness', desc:'4 componentes: state, tools, context, evaluation', time:'45min' },
+  { id:'1.4', level:'N1', title:'Introdução ao Generator/Evaluator', desc:'Por que sycophancy existe e como separar criação de avaliação', time:'30min' },
+  { id:'2.1', level:'N2', title:'Generator/Evaluator em profundidade', desc:'Implementação completa com retry logic e escalação humana', time:'90min' },
+  { id:'2.2', level:'N2', title:'Sprint Contracts e negociação', desc:'Acordo pré-sprint com ACs testáveis, negociação G/E', time:'90min' },
+  { id:'2.3', level:'N2', title:'Design de rubrics para qualidade', desc:'4-6 dimensões, exemplos concretos, threshold configurável', time:'90min' },
+  { id:'2.4', level:'N2', title:'Leitura e debug de agent traces', desc:'Anatomia de trace, classificação de falhas, root cause analysis', time:'90min' },
+  { id:'3.1', level:'N3', title:'Coordenação multi-agente', desc:'Modelo Planner/Generator/Evaluator, separação de responsabilidades', time:'90min' },
+  { id:'3.2', level:'N3', title:'State persistence e coordenação', desc:'File-based coordination, checkpoints, recovery context', time:'90min' },
+  { id:'3.3', level:'N3', title:'Server-side compaction', desc:'Quando usar compaction, estratégias de preservação de contexto', time:'60min' },
+  { id:'3.4', level:'N3', title:'Disclosure progressivo de contexto', desc:'Carregamento seletivo de skills, context por sprint', time:'60min' },
+  { id:'3.5', level:'N3', title:'Evolução do harness', desc:'Remover scaffolding quando o modelo melhora, decisão A/B', time:'90min' },
+  { id:'4.1', level:'N4', title:'Arquitetura atual do KODA', desc:'Referência de arquitetura 3-agent, state management, tools', time:'90min' },
+  { id:'4.2', level:'N4', title:'Customer journey flows', desc:'Discovery, order processing, fulfillment — sprints e contracts', time:'90min' },
+  { id:'4.3', level:'N4', title:'Feature design com padrões', desc:'Aplicar G/E methodology a novas features do KODA', time:'90min' },
+  { id:'4.4', level:'N4', title:'Rubrics de avaliação KODA', desc:'CES, precision comercial, rubrics de produção', time:'90min' },
+  { id:'4.5', level:'N4', title:'Melhorias e evolução do harness', desc:'Roadmap de simplificação, análise de traces reais', time:'90min' },
+];
+
+const kgs = [
+  { id:'KG1', icon:'🧠', name:'Context Management & Token Budgeting', def:'Gerenciar o que entra na janela de contexto para maximizar qualidade e minimizar degradação.', connects:['Context Rot','State Persistence','Sprint Contracts'], priority:'HIGH', koda:'Todas as conversas longas (>30min)' },
+  { id:'KG2', icon:'🗺️', name:'Planning vs. Execution Separation', def:'Separação formal entre agente que planeja (Planner) e agentes que executam (Generator).', connects:['Multi-Agent Coord.','Sprint Contracts','Generator/Evaluator'], priority:'HIGH', koda:'Customer journeys complexos (>3 sprints)' },
+  { id:'KG3', icon:'⚡', name:'Generator/Evaluator Pattern', def:'Dois agentes LLM separados: Generator cria com foco em criação; Evaluator avalia com perspectiva crítica.', connects:['Sprint Contracts','Evaluation Rubrics','Multi-Agent'], priority:'CRITICAL', koda:'Recomendação de produtos, processamento de pedidos' },
+  { id:'KG4', icon:'📋', name:'Sprint Contracts & Negotiation', def:'Acordos formais, negociados ANTES do sprint, definindo "pronto" com critérios testáveis.', connects:['Generator/Evaluator','Evaluation Rubrics','Planning'], priority:'HIGH', koda:'Todos os sprints do customer journey' },
+  { id:'KG5', icon:'💾', name:'State Persistence & File-Based Coord.', def:'Salvar e recuperar estado usando arquivos estruturados para múltiplos agentes coordenarem.', connects:['Multi-Agent Coord.','Context Management','Harness Evolution'], priority:'HIGH', koda:'Toda sessão KODA, especialmente retomada' },
+  { id:'KG6', icon:'🔄', name:'Harness Evolution', def:'Simplificar e remover componentes do harness conforme modelos melhores tornam-nos desnecessários.', connects:['Context Management','Multi-Agent','Generator/Evaluator'], priority:'MEDIUM', koda:'Revisão trimestral do harness KODA' },
+  { id:'KG7', icon:'🤝', name:'Multi-Agent Coordination', def:'Orquestração de múltiplos agentes LLM com responsabilidades separadas e comunicação estruturada.', connects:['Planning vs Execution','State Persistence','Sprint Contracts'], priority:'HIGH', koda:'Arquitetura completa Planner/Generator/Evaluator' },
+  { id:'KG8', icon:'📏', name:'Evaluation Rubrics & Subjective Quality', def:'Frameworks com dimensões mensuráveis para avaliar qualidade subjetiva de outputs de agentes.', connects:['Generator/Evaluator','Sprint Contracts','Harness Evolution'], priority:'HIGH', koda:'Avaliação de recomendações, respostas, fulfillment' },
+];
+
+const cases = [
+  { title:'Retro Game Maker — O Poder do Harness', level:'N2-3', levelClass:'badge-n2', desc:'Agente único falhou em 2h. Multi-agent harness com 10 sprints entregou app completo em 6h.', metrics:['Custo: $200 → $200','Qualidade: 0% → 100%','Sprint pattern'], sendMsg:'Me conta mais sobre o caso do Retro Game Maker e o que isso ensina para o KODA' },
+  { title:'KODA — Generator/Evaluator para Recomendações', level:'N2', levelClass:'badge-n2', desc:'Implementação do padrão G/E reduziu erros de estoque de 25% para 2% em 30 dias.', metrics:['Estoque: 75%→98%','Conversão: 38%→54%','NPS: +18pts'], sendMsg:'Como implementar o Generator/Evaluator para recomendações no KODA?' },
+  { title:'KODA — Same-Day Delivery Sprint Contract', level:'N3', levelClass:'badge-n3', desc:'Sprint Contract com 4 ACs eliminou 90% das falhas de entrega prometida.', metrics:['Falhas: 8%→0.3%','Reclamações: -90%','NPS: +15pts'], sendMsg:'Como criar um Sprint Contract para same-day delivery no KODA?' },
+  { title:'KODA — Harness Evolution 4.5→4.6', level:'N3-4', levelClass:'badge-n3', desc:'Migração para Claude 4.6 removeu context reset, compaction e reduziu 400 linhas de código.', metrics:['Latência: -0.5s','Custo: -20%','Código: -400 linhas'], sendMsg:'Como evoluir o harness do KODA com o Claude 4.6?' },
+  { title:'KODA — Club Pricing Evaluation', level:'N2-4', levelClass:'badge-n4', desc:'Sprint Contract para precificação clube reduziu erros de cobrança de 2.3% para 0.05%.', metrics:['Erros: 2.3%→0.05%','Disputas: -R$35k/mês','Contrato: 5 ACs'], sendMsg:'Como garantir precisão na precificação de clube do KODA com Sprint Contracts?' },
+];
+
+const checklistItems = [
+  { level:'N1', text:'Explico os 3 modos de falha em 1 frase cada' },
+  { level:'N1', text:'Sei calcular tokens usados numa conversa KODA típica' },
+  { level:'N1', text:'Identifico componentes de harness em código existente' },
+  { level:'N1', text:'Entendo por que agentes não se auto-avaliam bem' },
+  { level:'N2', text:'Implementei (ou desenhei) par G/E para 1 feature KODA' },
+  { level:'N2', text:'Escrevi Sprint Contract com critérios testáveis' },
+  { level:'N2', text:'Criei rubric com pelo menos 4 dimensões para KODA' },
+  { level:'N2', text:'Consegui ler trace e identificar ponto de divergência' },
+  { level:'N3', text:'Desenhei sistema 3-agent (Planner/Generator/Evaluator)' },
+  { level:'N3', text:'Entendo file-based state coordination' },
+  { level:'N3', text:'Identifiquei 2+ componentes de harness removíveis com Claude 4.6' },
+  { level:'N3', text:'Completei todos os exercícios práticos do Nível 3' },
+  { level:'N4', text:'Analisei trace real do KODA e propus melhoria' },
+  { level:'N4', text:'Desenhei harness para nova feature do KODA' },
+  { level:'N4', text:'Criei rubrics completas para pelo menos 2 features KODA' },
+  { level:'N4', text:'Posso participar de decisões arquiteturais do KODA' },
+];
+
+const roadmapData = [
+  { week:'Semana 1-2', level:'N1', rd:'rd-n1', title:'Fundação — Por que agentes falham', desc:'Toda equipe: módulos 1.1–1.4, exercícios, aplicação KODA' },
+  { week:'Semana 3-4', level:'N2', rd:'rd-n2', title:'Padrões práticos em ação', desc:'Toda equipe: G/E, Sprint Contracts, Rubrics. Implementar 1 padrão no KODA.' },
+  { week:'Semana 5-6', level:'N3', rd:'rd-n3', title:'Arquitetura avançada (equipe avançada)', desc:'Membros avançados: módulos 3.1–3.5. Restante: consolida N2, mentor.' },
+  { week:'Semana 7-8', level:'N4', rd:'rd-n4', title:'KODA-específico fase 1', desc:'Arquitetura atual KODA, journeys, rubrics de produção.' },
+  { week:'Semana 9-10', level:'N4', rd:'rd-n4', title:'Implementação de melhorias', desc:'Implementar melhorias baseadas em análise real do KODA.' },
+  { week:'Semana 11-12', level:'N4', rd:'rd-n4', title:'Consolidação e documentação', desc:'Mentoring, ADRs, knowledge sharing, apresentação de melhorias.' },
+];
+
+const trackerData = [
+  { name:'Membro 1', n1:'done', n2:'in', n3:'no', n4:'no' },
+  { name:'Membro 2', n1:'done', n2:'done', n3:'in', n4:'no' },
+  { name:'Membro 3', n1:'in', n2:'no', n3:'no', n4:'no' },
+];
+
+const completedModules = { N1:[], N2:[], N3:[], N4:[] };
+const checkedItems = new Set();
+
+function showTab(tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t => {
+    if(t.getAttribute('onclick').includes("'"+tab+"'")) t.classList.add('active');
+  });
+}
+
+function filterLevel(level) {
+  const items = document.querySelectorAll('.module-item');
+  items.forEach(item => {
+    if(level === 'all' || item.dataset.level === level) item.style.display = 'flex';
+    else item.style.display = 'none';
+  });
+}
+
+function toggleModule(id, level) {
+  const idx = completedModules[level].indexOf(id);
+  if(idx > -1) completedModules[level].splice(idx,1);
+  else completedModules[level].push(id);
+  updateProgress();
+  renderModules();
+}
+
+const levelTotals = {N1:4,N2:4,N3:5,N4:5};
+function updateProgress() {
+  ['N1','N2','N3','N4'].forEach((l,i) => {
+    const n = i+1;
+    const done = completedModules[l].length;
+    const total = levelTotals[l];
+    const pct = Math.round(done/total*100);
+    const el = document.getElementById('p'+n);
+    const pl = document.getElementById('pl'+n);
+    if(el) el.style.width = pct+'%';
+    if(pl) pl.textContent = done+' de '+total+' módulos';
+  });
+}
+
+function renderModules() {
+  const list = document.getElementById('module-list');
+  if(!list) return;
+  const colorMap = {N1:'n1',N2:'n2',N3:'n3',N4:'n4'};
+  list.innerHTML = modules.map(m => {
+    const done = completedModules[m.level].includes(m.id);
+    return `<div class="module-item" data-level="${m.level}" onclick="toggleModule('${m.id}','${m.level}')">
+      <div class="module-dot dot-${colorMap[m.level]}"></div>
+      <div class="module-content">
+        <div class="module-title" style="${done?'text-decoration:line-through;color:var(--color-text-secondary)':''}">
+          Módulo ${m.id}: ${m.title}
+        </div>
+        <div class="module-desc">${m.desc} • ${m.time}</div>
+      </div>
+      <span class="module-badge badge-${colorMap[m.level]}">${m.level}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderKGs() {
+  const grid = document.getElementById('kg-grid');
+  if(!grid) return;
+  grid.innerHTML = kgs.map(kg => `
+    <div class="kg-card">
+      <div class="kg-header">
+        <div class="kg-icon">${kg.icon}</div>
+        <div>
+          <div class="kg-name">${kg.name}</div>
+          <div style="font-size:11px;color:var(--kgd);font-weight:500;">${kg.id}</div>
+        </div>
+      </div>
+      <div class="kg-def">${kg.def}</div>
+      <div class="kg-section">
+        <div class="kg-label">Conecta com</div>
+        <div class="kg-tags">${kg.connects.map(c=>`<span class="kg-tag">${c}</span>`).join('')}</div>
+      </div>
+      <div class="kg-section">
+        <div class="kg-label">Aplicação KODA</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">${kg.koda}</div>
+      </div>
+      <div class="kg-section">
+        <div class="kg-label">Prioridade</div>
+        <div class="kg-priority ${kg.priority==='CRITICAL'||kg.priority==='HIGH'?'priority-high':'priority-med'}">${kg.priority}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCases() {
+  const grid = document.getElementById('case-grid');
+  if(!grid) return;
+  grid.innerHTML = cases.map(c => `
+    <div class="case-card" onclick="sendPrompt('${c.sendMsg}')">
+      <div class="case-header">
+        <div class="case-title">${c.title}</div>
+        <span class="case-level module-badge ${c.levelClass}">${c.level}</span>
+      </div>
+      <div class="case-desc">${c.desc}</div>
+      <div class="metric-row">
+        ${c.metrics.map(m=>`<span class="metric-pill good">${m}</span>`).join('')}
+        <span class="metric-pill">→ explorar ↗</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderChecklist() {
+  const cl = document.getElementById('checklist');
+  if(!cl) return;
+  const colorMap = {N1:'n1',N2:'n2',N3:'n3',N4:'n4'};
+  cl.innerHTML = checklistItems.map((item,i) => {
+    const checked = checkedItems.has(i);
+    return `<div class="check-item" onclick="toggleCheck(${i})">
+      <div class="check-box ${checked?'checked'}" id="cb-${i}"></div>
+      <div>
+        <div class="check-text" style="${checked?'text-decoration:line-through;color:var(--color-text-secondary)':''}">${item.text}</div>
+        <div class="check-level">${item.level}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCheck(i) {
+  if(checkedItems.has(i)) checkedItems.delete(i);
+  else checkedItems.add(i);
+  renderChecklist();
+}
+
+function renderTracker() {
+  const body = document.getElementById('tracker-body');
+  if(!body) return;
+  const statusMap = {done:'s-done',in:'s-in',no:'s-no'};
+  const labelMap = {done:'Completo',in:'Em progresso',no:'Não iniciado'};
+  body.innerHTML = trackerData.map(m => `
+    <tr>
+      <td>${m.name}</td>
+      ${['n1','n2','n3','n4'].map(n=>`
+        <td><span class="status-dot ${statusMap[m[n]]}"></span>${labelMap[m[n]]}</td>
+      `).join('')}
+    </tr>
+  `).join('');
+}
+
+function addMember() {
+  const name = prompt('Nome do membro:');
+  if(!name) return;
+  trackerData.push({name, n1:'no', n2:'no', n3:'no', n4:'no'});
+  renderTracker();
+}
+
+function renderRoadmap() {
+  const rm = document.getElementById('roadmap');
+  if(!rm) return;
+  rm.innerHTML = roadmapData.map(r => `
+    <div class="roadmap-item">
+      <div class="roadmap-dot ${r.rd}"></div>
+      <div class="roadmap-week">${r.week} • ${r.level}</div>
+      <div class="roadmap-title">${r.title}</div>
+      <div class="roadmap-desc">${r.desc}</div>
+    </div>
+  `).join('');
+}
+
+renderModules();
+renderKGs();
+renderCases();
+renderChecklist();
+renderTracker();
+renderRoadmap();
+updateProgress();
+</script>
