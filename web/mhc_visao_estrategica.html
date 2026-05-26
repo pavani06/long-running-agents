@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MHC — Visão Estratégica 2026</title>
+<style>
+  :root {
+    --blue: #0550ae;
+    --blue-light: #dbeafe;
+    --blue-mid: #3b82f6;
+    --green: #16a34a;
+    --green-light: #dcfce7;
+    --orange: #ea580c;
+    --orange-light: #ffedd5;
+    --purple: #7c3aed;
+    --purple-light: #ede9fe;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--gray-900);
+    background: #fff;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--gray-200);
+    z-index: 100;
+    padding: 0 32px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand { font-weight: 800; font-size: 14px; color: var(--blue); letter-spacing: -0.3px; }
+  .nav-links { display: flex; gap: 2px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--gray-600);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { background: var(--gray-100); color: var(--gray-900); }
+  .nav-links a.active { background: var(--blue); color: #fff; }
+  .nav-date { font-size: 11px; color: var(--gray-400); font-family: var(--mono); }
+
+  main { padding-top: 52px; }
+
+  /* HERO */
+  .hero {
+    background: #0a0f1e;
+    padding: 80px 64px 72px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #60a5fa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    max-width: 760px;
+  }
+  .hero h1 .accent { color: #60a5fa; }
+  .hero h1 .dim { color: rgba(255,255,255,0.45); }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 640px;
+  }
+  .hero-stat {
+    flex: 1;
+    min-width: 120px;
+    padding: 16px 20px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-num { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+  .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; font-family: var(--mono); }
+
+  /* SECTIONS */
+  section { padding: 80px 64px; }
+  section:nth-child(even) { background: var(--gray-50); }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-family: var(--mono);
+  }
+  .section-tag.orange { color: var(--orange); background: var(--orange-light); }
+  .section-tag.green { color: var(--green); background: var(--green-light); }
+  .section-tag.red { color: var(--red); background: var(--red-light); }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--gray-900);
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 15px;
+    color: var(--gray-600);
+    max-width: 580px;
+    margin-bottom: 52px;
+    line-height: 1.7;
+  }
+  h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
+
+  /* CONVERGENCE SECTION */
+  .conv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px 0;
+  }
+  .conv-header {
+    padding: 14px 24px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: var(--mono);
+  }
+  .conv-header.left { background: var(--gray-800); color: rgba(255,255,255,0.7); border-right: 1px solid rgba(255,255,255,0.1); }
+  .conv-header.right { background: #052e16; color: #4ade80; }
+  .conv-row {
+    display: contents;
+  }
+  .conv-cell {
+    padding: 20px 24px;
+    border-top: 1px solid var(--gray-200);
+    font-size: 13px;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+  .conv-cell.thesis { background: #fff; border-right: 1px solid var(--gray-200); }
+  .conv-cell.shipped { background: #f0fdf4; }
+  .conv-cell strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--gray-900); }
+  .conv-cell span { color: var(--gray-600); }
+  .conv-cell .code { font-family: var(--mono); font-size: 11px; background: var(--gray-100); padding: 2px 6px; border-radius: 4px; color: var(--blue); }
+  .conv-cell .shipped-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: #dcfce7;
+    color: var(--green);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+  }
+  .conv-cell .gap-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: #fff7ed;
+    color: var(--orange);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+  }
+  .conv-summary {
+    background: #0a0f1e;
+    border-radius: 12px;
+    padding: 28px 32px;
+    color: #fff;
+    margin: 8px 0 40px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .conv-summary span { color: #60a5fa; font-weight: 700; }
+
+  /* NUCLEUS DIAGRAM */
+  .nucleus-diagram {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 40px 0;
+  }
+  .nucleus-center {
+    background: #0a0f1e;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 32px;
+    text-align: center;
+    max-width: 440px;
+    margin: 0 auto 8px;
+  }
+  .nucleus-center h3 { color: #fff; font-size: 15px; margin-bottom: 4px; letter-spacing: -0.3px; }
+  .nucleus-center p { color: rgba(255,255,255,0.5); font-size: 11px; margin: 0; font-family: var(--mono); }
+  .nucleus-layers {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px auto 8px;
+    max-width: 500px;
+    flex-wrap: wrap;
+  }
+  .nucleus-layer-tag {
+    background: var(--gray-900);
+    color: #60a5fa;
+    border-radius: 5px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+  .nucleus-arrow { text-align: center; color: var(--gray-300); font-size: 20px; margin: 10px 0; }
+  .channels-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .channel-card {
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 150px;
+    background: #fff;
+    position: relative;
+  }
+  .channel-card.active { border-color: var(--green); background: #f0fdf4; }
+  .channel-card.next { border-color: var(--orange); background: #fff7ed; border-style: dashed; }
+  .channel-card.future { border-color: var(--gray-200); background: var(--gray-50); border-style: dashed; }
+  .channel-badge {
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-family: var(--mono);
+  }
+  .badge-active { background: var(--green); color: #fff; }
+  .badge-next { background: var(--orange); color: #fff; }
+  .badge-future { background: var(--gray-400); color: #fff; }
+  .channel-name { font-size: 14px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .channel-props { font-size: 11px; color: var(--gray-600); line-height: 1.7; font-family: var(--mono); }
+
+  .moat-box {
+    background: #0a0f1e;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .moat-box .icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .moat-box p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin: 0; }
+  .moat-box strong { color: #60a5fa; }
+
+  /* CARDS */
+  .cards { display: grid; gap: 16px; }
+  .cards-3 { grid-template-columns: repeat(3, 1fr); }
+  .cards-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .card h3 { font-size: 15px; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+  /* PROBLEM SOLUTION TABLE */
+  .ps-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px 0;
+  }
+  .ps-header {
+    padding: 12px 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: var(--gray-900);
+    color: rgba(255,255,255,0.6);
+    font-family: var(--mono);
+  }
+  .ps-cell { padding: 20px; border-top: 1px solid var(--gray-200); font-size: 13px; }
+  .ps-cell.problem { background: #fff; border-right: 1px solid var(--gray-200); }
+  .ps-cell.solution { background: #f0f9ff; border-right: 1px solid var(--gray-200); }
+  .ps-cell.impact { background: #f0fdf4; }
+  .ps-cell strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .ps-cell span { color: var(--gray-600); font-size: 12px; line-height: 1.6; }
+  .ps-cell .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-family: var(--mono);
+  }
+  .tag-red { background: #fee2e2; color: #dc2626; }
+  .tag-blue { background: #dbeafe; color: #1d4ed8; }
+  .tag-green { background: #dcfce7; color: #15803d; }
+
+  /* ROLES */
+  .roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; }
+  .role-card { border-radius: 10px; padding: 22px; border: 1px solid transparent; }
+  .role-taste { background: var(--purple-light); border-color: #c4b5fd; }
+  .role-resolver { background: var(--blue-light); border-color: #93c5fd; }
+  .role-eval { background: var(--green-light); border-color: #86efac; }
+  .role-title { font-size: 22px; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.5px; }
+  .role-taste .role-title { color: var(--purple); }
+  .role-resolver .role-title { color: var(--blue); }
+  .role-eval .role-title { color: var(--green); }
+  .role-subtitle { font-size: 11px; color: var(--gray-600); margin-bottom: 14px; font-family: var(--mono); }
+  .role-who { font-size: 11px; font-weight: 700; margin-bottom: 6px; color: var(--gray-700); text-transform: uppercase; letter-spacing: 1px; }
+  .role-people { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+  .person-tag { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: var(--mono); }
+  .role-taste .person-tag { background: #ede9fe; color: var(--purple); }
+  .role-resolver .person-tag { background: #dbeafe; color: var(--blue); }
+  .role-eval .person-tag { background: #dcfce7; color: var(--green); }
+  .role-desc { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+  .role-gap { margin-top: 12px; background: rgba(0,0,0,0.06); border-radius: 6px; padding: 8px 10px; font-size: 11px; color: var(--gray-600); }
+  .role-gap strong { color: var(--orange); }
+
+  /* CLOSED LOOP */
+  .loop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+  .loop-item {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .loop-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--orange); }
+  .loop-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+  .loop-item p { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  /* ROADMAP — SPRINT BASED */
+  .sprint-timeline { margin: 40px 0; display: flex; flex-direction: column; gap: 0; }
+  .sprint {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .sprint:first-child { border-radius: 12px 12px 0 0; }
+  .sprint:last-child { border-radius: 0 0 12px 12px; }
+  .sprint + .sprint { border-top: none; }
+  .sprint-meta {
+    padding: 24px;
+    border-right: 1px solid var(--gray-200);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+  .sprint.s-active .sprint-meta { background: #0a0f1e; }
+  .sprint.s-next .sprint-meta { background: var(--gray-50); }
+  .sprint.s-future .sprint-meta { background: var(--gray-50); }
+  .sprint.s-golive .sprint-meta { background: #052e16; }
+  .sprint-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--mono);
+    padding: 3px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 8px;
+  }
+  .badge-now { background: #60a5fa; color: #0a0f1e; }
+  .badge-up { background: #fed7aa; color: #9a3412; }
+  .badge-soon { background: var(--gray-200); color: var(--gray-600); }
+  .badge-live { background: #4ade80; color: #052e16; }
+  .sprint-dates {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .sprint.s-active .sprint-dates { color: #fff; }
+  .sprint.s-next .sprint-dates { color: var(--gray-900); }
+  .sprint.s-future .sprint-dates { color: var(--gray-900); }
+  .sprint.s-golive .sprint-dates { color: #4ade80; }
+  .sprint-duration {
+    font-size: 11px;
+    font-family: var(--mono);
+    margin-top: 2px;
+  }
+  .sprint.s-active .sprint-duration { color: rgba(255,255,255,0.4); }
+  .sprint.s-next .sprint-duration { color: var(--gray-400); }
+  .sprint.s-future .sprint-duration { color: var(--gray-400); }
+  .sprint.s-golive .sprint-duration { color: rgba(74,222,128,0.5); }
+  .sprint-body { padding: 24px; background: #fff; }
+  .sprint-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.3px; }
+  .sprint-tasks { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .sprint-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .sprint-task .owner {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--mono);
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .owner-leo { background: #dbeafe; color: #1d4ed8; }
+  .owner-vitor { background: #ede9fe; color: #6d28d9; }
+  .owner-djairo { background: #dcfce7; color: #15803d; }
+  .owner-all { background: var(--gray-100); color: var(--gray-700); }
+  .sprint-task .issue {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-400);
+    flex-shrink: 0;
+  }
+  .sprint-task .desc { color: var(--gray-700); }
+  .sprint-goal {
+    margin-top: 16px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .sprint.s-active .sprint-goal { background: #eff6ff; color: #1d4ed8; border-left: 3px solid #3b82f6; }
+  .sprint.s-next .sprint-goal { background: #fff7ed; color: #9a3412; border-left: 3px solid var(--orange); }
+  .sprint.s-future .sprint-goal { background: #f5f3ff; color: #5b21b6; border-left: 3px solid var(--purple); }
+  .sprint.s-golive .sprint-goal { background: #f0fdf4; color: #14532d; border-left: 3px solid var(--green); }
+
+  /* PLATFORM PROOF */
+  .platform-proof {
+    background: #0a0f1e;
+    border-radius: 12px;
+    padding: 36px;
+    margin: 48px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .proof-item { text-align: center; }
+  .proof-label-top { font-size: 11px; color: rgba(255,255,255,0.35); font-family: var(--mono); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .proof-num { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .proof-label { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  /* BIG Q */
+  .big-q {
+    background: #0a0f1e;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+  }
+  .big-q p { color: rgba(255,255,255,0.35); font-size: 11px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; font-family: var(--mono); }
+  .big-q h3 { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1.35; }
+  .big-q h3 span { color: #60a5fa; }
+
+  /* EVOLUTION */
+  .evolution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+  .evo-card { border-radius: 10px; padding: 24px; border: 1px solid var(--gray-200); }
+  .evo-card.now { background: #fff; }
+  .evo-card.future { background: var(--blue-light); border-color: #93c5fd; }
+  .evo-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-400); margin-bottom: 14px; font-family: var(--mono); }
+  .evo-card.future .evo-label { color: var(--blue); }
+  .evo-card ul { list-style: none; }
+  .evo-card ul li { font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); display: flex; align-items: flex-start; gap: 8px; }
+  .evo-card ul li:last-child { border: none; }
+  .evo-card.future ul li { color: #1e40af; border-color: #bfdbfe; }
+
+  .divider { height: 1px; background: var(--gray-200); margin: 48px 0; }
+
+  .callout {
+    border-left: 3px solid var(--blue);
+    background: #eff6ff;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 24px 0;
+    font-size: 13px;
+    color: #1e3a8a;
+    line-height: 1.7;
+  }
+
+  /* ARCHITECTURE */
+  .arch-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 40px 0 32px;
+  }
+  .arch-col {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+  }
+  .arch-col-header {
+    padding: 12px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: var(--mono);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .arch-col-header.now { background: #1e293b; color: rgba(255,255,255,0.6); }
+  .arch-col-header.next { background: #052e16; color: #4ade80; }
+  .arch-col-body { background: #0f172a; padding: 20px; }
+  .arch-col-body.next { background: #071a0f; }
+  .arch-flow {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 2;
+    color: #94a3b8;
+  }
+  .arch-flow .node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin: 2px 0;
+  }
+  .arch-flow .node.entry { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); color: #93c5fd; }
+  .arch-flow .node.core { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2); color: #c4b5fd; }
+  .arch-flow .node.tool { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.15); color: #6ee7b7; }
+  .arch-flow .node.state { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15); color: #fcd34d; }
+  .arch-flow .node.warn { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; }
+  .arch-flow .node.good { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2); color: #86efac; }
+  .arch-flow .node.new { background: rgba(251,146,60,0.08); border: 1px solid rgba(251,146,60,0.2); color: #fdba74; }
+  .arch-flow .arrow { color: #334155; font-size: 11px; padding-left: 14px; }
+  .arch-flow .file { font-size: 10px; color: #475569; margin-left: 4px; }
+  .arch-gap {
+    background: rgba(239,68,68,0.06);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #fca5a5;
+    font-family: var(--mono);
+  }
+  .arch-unlock {
+    background: rgba(74,222,128,0.06);
+    border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #86efac;
+    font-family: var(--mono);
+  }
+  .arch-scale {
+    background: #0a0f1e;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 0 0 40px;
+  }
+  .arch-scale-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    font-family: var(--mono);
+    margin-bottom: 20px;
+  }
+  .arch-scale-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+    align-items: center;
+  }
+  .arch-scale-label {
+    font-size: 10px;
+    font-family: var(--mono);
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    padding-right: 16px;
+  }
+  .arch-scale-cell {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-family: var(--mono);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin: 1px;
+    border-radius: 6px;
+    color: #94a3b8;
+  }
+  .arch-scale-cell.highlight { background: rgba(96,165,250,0.08); color: #93c5fd; border-color: rgba(96,165,250,0.2); }
+  .arch-scale-cell.active { background: rgba(74,222,128,0.08); color: #86efac; border-color: rgba(74,222,128,0.2); }
+  .arch-scale-cell.dim { background: rgba(255,255,255,0.02); color: #475569; }
+
+  /* PATTERN MAPPING */
+  .pattern-map {
+    margin: 48px 0 32px;
+  }
+  .pattern-map-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray-400);
+    font-family: var(--mono);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pattern-map-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-200);
+  }
+  .pattern-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pattern-layer {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .pattern-layer-header {
+    padding: 8px 18px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--mono);
+    background: var(--gray-900);
+    color: rgba(255,255,255,0.5);
+  }
+  .pattern-layer-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0;
+    background: #fff;
+  }
+  .pattern-node {
+    padding: 14px 18px;
+    border-right: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .pattern-node:last-child { border-right: none; }
+  .pattern-node-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pattern-node-sub {
+    font-size: 10px;
+    color: var(--gray-400);
+    font-family: var(--mono);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .pattern-node-code {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 3px 7px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .pattern-node-code.green { color: var(--green); background: var(--green-light); }
+  .pattern-node-code.orange { color: var(--orange); background: var(--orange-light); }
+  .pattern-node-code.purple { color: var(--purple); background: var(--purple-light); }
+  .pattern-node-code.gray { color: var(--gray-600); background: var(--gray-100); }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .dot-s { background: var(--green); }
+  .dot-g { background: var(--orange); }
+  .pattern-node-gap {
+    font-size: 11px;
+    color: var(--orange);
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  footer {
+    background: #0a0f1e;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 28px 32px;
+    font-size: 11px;
+    font-family: var(--mono);
+  }
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .hero { padding: 48px 24px; }
+    .hero h1 { font-size: 32px; }
+    .cards-3, .cards-2, .roles-grid, .loop-grid, .platform-proof,
+    .evolution-grid, .ps-table, .conv-grid, .arch-cols { grid-template-columns: 1fr; }
+    .arch-scale-row { grid-template-columns: 60px 1fr; }
+    .arch-scale-row > *:nth-child(3), .arch-scale-row > *:nth-child(4) { display: none; }
+    .sprint { grid-template-columns: 1fr; }
+    .sprint-meta { border-right: none; border-bottom: 1px solid var(--gray-200); }
+    nav { padding: 0 16px; }
+    .nav-date { display: none; }
+    .nucleus-diagram { padding: 20px; }
+    .hero-stats { flex-direction: column; }
+    .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">MHC · KODA</div>
+  <ul class="nav-links">
+    <li><a href="#convergencia" class="active">Convergência</a></li>
+    <li><a href="#visao">A Visão</a></li>
+    <li><a href="#arquitetura">Arquitetura</a></li>
+    <li><a href="#framework">O Framework</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <div class="nav-date">mai 2026</div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Making Health Cool · KODA · Visão Estratégica</div>
+  <h1>Koda, um núcleo operacional único servindo múltiplos canais de commerce conversacional via WhatsApp. <span class="dim">Voturuna, primeiro canal provando o conceito. HOP prova a escalabilidade.</span></h1>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">1</div>
+      <div class="hero-stat-label">núcleo operacional</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">∞</div>
+      <div class="hero-stat-label">canais possíveis</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">20/06</div>
+      <div class="hero-stat-label">HOP go-live</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">49</div>
+      <div class="hero-stat-label">PRs última semana</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 0: CONVERGÊNCIA -->
+<section id="convergencia">
+  <div class="section-tag red">00 — Convergência</div>
+  <h2>A tese: núcleo separável dos canais — e o que já está no código</h2>
+  <p class="section-sub">Empresas AI-native constroem um núcleo de orquestração separável dos canais, mantêm estado fora do LLM, decompõem trabalho em etapas confirmadas e fecham o loop entre execução e avaliação. A seguir: a tese de um lado, o que já está em issues e código do outro.</p>
+
+  <!-- MULTI-TENANT SCHEMA -->
+  <div style="background:#0a0f1e;border-radius:12px;padding:28px 32px;margin-bottom:32px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);font-family:var(--mono);">epic:multi-tenant — schema atual</div>
+      <div style="font-size:11px;font-family:var(--mono);color:#4ade80;">● scaffoldado</div>
+    </div>
+    <pre style="font-family:var(--mono);font-size:12px;line-height:1.8;color:#e2e8f0;overflow-x:auto;margin:0;"><span style="color:#64748b">// prisma/schema.prisma</span>
+
+<span style="color:#60a5fa">model</span> <span style="color:#4ade80">Company</span> {
+  id            String         <span style="color:#f59e0b">@id</span> <span style="color:#f59e0b">@default</span>(cuid())
+  name          String
+  companyPhones <span style="color:#4ade80">CompanyPhone</span>[]   <span style="color:#64748b">// números WhatsApp deste tenant</span>
+  orders        <span style="color:#4ade80">Order</span>[]
+  carts         <span style="color:#4ade80">Cart</span>[]
+  sessions      <span style="color:#4ade80">Session</span>[]
+}
+
+<span style="color:#60a5fa">model</span> <span style="color:#4ade80">CompanyPhone</span> {
+  id        String   <span style="color:#f59e0b">@id</span> <span style="color:#f59e0b">@default</span>(cuid())
+  phone     String   <span style="color:#f59e0b">@unique</span>             <span style="color:#64748b">// +5511... → roteamento de entrada</span>
+  companyId String
+  company   <span style="color:#4ade80">Company</span>  <span style="color:#f59e0b">@relation</span>(fields: [companyId], references: [id])
+}</pre>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.6);font-family:var(--mono);">
+        <span style="color:#60a5fa;">Sprint 2</span> &nbsp;·&nbsp; <code>tenant_id</code> propagado em Order, Cart, Product, Session
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.6);font-family:var(--mono);">
+        <span style="color:#f59e0b;">Sprint 3</span> &nbsp;·&nbsp; config por tenant: Stripe, Mandaê, catálogo, persona
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.6);font-family:var(--mono);">
+        <span style="color:#4ade80;">20/06</span> &nbsp;·&nbsp; dois tenants em produção simultânea: Voturuna + HOP
+      </div>
+    </div>
+  </div>
+
+  <div class="conv-grid">
+    <div class="conv-header left">A Tese</div>
+    <div class="conv-header right">Shipado na semana de 19/05</div>
+
+    <div class="conv-cell thesis">
+      <strong>Núcleo separável dos canais</strong>
+      <span>A mesma engine de orquestração serve múltiplos contextos de negócio. Cada "tenant" aplica filtro de catálogo, persona e regras — o núcleo não muda.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="shipped-label">SHIPPED</span>
+      <strong>Company + CompanyPhone no schema</strong>
+      <span>Modelos <span class="code">Company</span> e <span class="code">CompanyPhone</span> no Prisma já mapeiam número WhatsApp → tenant. Roteamento multi-tenant scaffoldado. Multi-tenant schema aprovado por Vitor.</span>
+    </div>
+
+    <div class="conv-cell thesis">
+      <strong>State persistence fora do contexto do LLM</strong>
+      <span>Janela de contexto é finita e cara. Estado da conversa (carrinho, intenção, histórico) deve viver no banco, não no prompt. O agente busca só o que precisa por turn.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="shipped-label">SHIPPED</span>
+      <strong>LangGraph + thread persistence no Postgres</strong>
+      <span>Estado da conversa persiste por <span class="code">thread_id</span>. Janela expandida de 250 → 1.000 mensagens (PR #474). Carrinho, intenção e contexto sobrevivem entre sessões.</span>
+    </div>
+
+    <div class="conv-cell thesis">
+      <strong>Busca híbrida semântica + keywords</strong>
+      <span>Agentes que só fazem busca vetorial perdem em precision. A combinação semântica + full-text search é o padrão de produção para recuperação de produtos.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="shipped-label">SHIPPED</span>
+      <strong>pgvector + FTS substituindo Pinecone</strong>
+      <span>Migração completa. Busca híbrida rodando em produção. Dependência externa eliminada, latência reduzida, controle total no mesmo banco Postgres. Vitor, PR #462.</span>
+    </div>
+
+    <div class="conv-cell thesis">
+      <strong>Feature decomposition — etapas confirmadas</strong>
+      <span>Agentes que tentam resolver tudo num turn falham. O fluxo deve ser decomposto em passos pequenos, com confirmação explícita do usuário antes de avançar.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="shipped-label">SHIPPED</span>
+      <strong>Busca → Carrinho → Confirm → Frete → Pgt</strong>
+      <span>Fluxo de compra decomposto por nós no LangGraph. Agente não avança sem confirmação. Bug de avanço implícito corrigido (#478). Nenhum pedido fecha sem intenção explícita.</span>
+    </div>
+
+    <div class="conv-cell thesis">
+      <strong>Closed-loop: agentes que monitoram a própria operação</strong>
+      <span>Empresa AI-native usa agentes não só no produto, mas na gestão. Ciclo de feedback automatizado entre o que aconteceu e o que o time precisa saber.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="shipped-label">SHIPPED</span>
+      <strong>4 rotinas CCR rodando em produção</strong>
+      <span>Briefing diário 7h30, Q&A loop 3x/dia, monitor de PRs a cada 2h, verificador de issues diário. Time chega preparado, perguntas são respondidas com evidência real.</span>
+    </div>
+
+    <div class="conv-cell thesis">
+      <strong>Generator / Evaluator — separar quem gera de quem julga</strong>
+      <span>O agente não avalia a própria resposta com confiabilidade. Precisa de uma camada de eval independente com critérios objetivos (rubrics) para medir qualidade.</span>
+    </div>
+    <div class="conv-cell shipped">
+      <span class="gap-label">PRÓXIMA CAMADA</span>
+      <strong>SonarQube ativo, testes E2E emergindo</strong>
+      <span>Pipeline de qualidade de código com SonarQube em construção. Testes unitários sendo escritos junto com novo código. Eval sistemático de respostas do agente: pós Loop 1.</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>O gap real está em um ponto:</strong> Eval sistemático. Hoje sabemos que o agente errou quando o usuário reclama. Isso muda com o sprint após o HOP go-live.
+  </div>
+</section>
+
+<!-- SECTION 1: A VISÃO -->
+<section id="visao" style="background:var(--gray-50);">
+  <div class="section-tag">01 — A Visão</div>
+  <h2>Núcleo único. Canais infinitos.</h2>
+  <p class="section-sub">A arquitetura multi-tenant não é uma feature — é a tese da empresa. Cada novo canal não reconstrói nada. Aplica um config de tenant e está no ar. O trabalho duro é feito uma vez.</p>
+
+  <div class="nucleus-diagram">
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-400);margin-bottom:12px;font-family:var(--mono);">Construído uma vez — serve todos os canais</div>
+      <div class="nucleus-center">
+        <h3>KODA Core — mhc-backend</h3>
+        <p>Orquestração · Busca · Carrinho · Checkout · Pagamento · Rastreio · Analytics</p>
+      </div>
+      <div class="nucleus-layers" style="margin-top:10px;">
+        <span class="nucleus-layer-tag">LangGraph</span>
+        <span class="nucleus-layer-tag">pgvector + FTS</span>
+        <span class="nucleus-layer-tag">Prisma + Postgres</span>
+        <span class="nucleus-layer-tag">Stripe</span>
+        <span class="nucleus-layer-tag">Mandaê</span>
+        <span class="nucleus-layer-tag">NuvemShop</span>
+        <span class="nucleus-layer-tag">Meta WhatsApp API</span>
+      </div>
+      <div class="nucleus-arrow">↓ &nbsp; cada tenant aplica: catálogo + persona + config &nbsp; ↓</div>
+      <div class="channels-row">
+        <div class="channel-card active">
+          <span class="channel-badge badge-active">Produção</span>
+          <div class="channel-name">Voturuna</div>
+          <div class="channel-props">
+            Canal fechado<br>
+            ~50 membros<br>
+            Suplementos MHC<br>
+            Cupom Votu100<br>
+            Persona: atleta
+          </div>
+        </div>
+        <div class="channel-card next">
+          <span class="channel-badge badge-next">20/06</span>
+          <div class="channel-name">HOP</div>
+          <div class="channel-props">
+            Canal aberto<br>
+            1 SKU: boné<br>
+            Sem onboarding<br>
+            Sem cupom fixo<br>
+            Persona: streetwear
+          </div>
+        </div>
+        <div class="channel-card future">
+          <span class="channel-badge badge-future">Ago/Set</span>
+          <div class="channel-name">Canal 3</div>
+          <div class="channel-props">
+            Novo número Meta<br>
+            Catálogo próprio<br>
+            Linguagem própria<br>
+            Regras de promo<br>
+            Persona própria
+          </div>
+        </div>
+        <div class="channel-card future">
+          <span class="channel-badge badge-future">2027+</span>
+          <div class="channel-name">Canal N</div>
+          <div class="channel-props">
+            Qualquer marca<br>
+            Qualquer catálogo<br>
+            Setup em dias<br>
+            Mesmo núcleo<br>
+            &nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="moat-box">
+      <div class="icon">⚔️</div>
+      <p><strong>Por que é difícil de copiar:</strong> state persistence, busca híbrida, fluxo de compra decomposto, integrações Stripe + Mandaê + NuvemShop, tudo dentro de uma conversa de WhatsApp sem perder contexto — levou meses para ficar confiável. Um novo canal não reconstrói nada disso. Aplica um <code style="font-family:var(--mono);font-size:11px;background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">tenant_config</code>, define a persona e sobe. O moat é o núcleo, não o canal.</p>
+    </div>
+  </div>
+
+  <div class="cards cards-3">
+    <div class="card">
+      <div class="card-icon" style="background:#dbeafe;">🏗️</div>
+      <h3>Núcleo operacional</h3>
+      <p>Orquestração LangGraph, busca pgvector + FTS, estado persistente, carrinho, checkout, pagamento, rastreio. Construído uma vez, servindo todos os canais sem retrabalho de infraestrutura.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#dcfce7;">🎛️</div>
+      <h3>Config por tenant</h3>
+      <p>Cada tenant define: quais produtos aparecem, qual número WhatsApp, quais promoções, qual persona. O roteamento <code style="font-family:var(--mono);font-size:11px;">CompanyPhone → Company → Config</code> já está no schema.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#ede9fe;">🗣️</div>
+      <h3>Persona proprietária por canal</h3>
+      <p>Cada canal tem tom, vocabulário e regras de conversa próprias. O agente fala diferente no HOP e na Voturuna. Mesmo modelo, system prompt diferente por tenant, output completamente distinto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1.5: ARQUITETURA -->
+<section id="arquitetura">
+  <div class="section-tag">02 — Arquitetura</div>
+  <h2>Como funciona hoje — e o que muda no próximo ciclo</h2>
+  <p class="section-sub">Código real. Caminhos reais. O que está hardcoded hoje e o que precisa ser parametrizado para o HOP funcionar em cima do mesmo backend.</p>
+
+  <div class="arch-cols">
+
+    <!-- HOJE -->
+    <div class="arch-col">
+      <div class="arch-col-header now">
+        <span>Hoje — um tenant, hardcoded</span>
+        <span style="color:#60a5fa;">Voturuna</span>
+      </div>
+      <div class="arch-col-body">
+        <div class="arch-flow">
+          <div class="node entry">📲 WhatsApp message recebida</div>
+          <div class="arrow">↓</div>
+          <div class="node core">POST /api/webhook-unified <span class="file">webhook-unified.ts</span></div>
+          <div class="arrow">↓</div>
+          <div class="node core">AgentRouter.routeMessage() <span class="file">AgentRouter.ts</span></div>
+          <div class="arrow">↓ sempre ecommerce-agent</div>
+          <div class="node core">OrchestratorAgent.processMessage(userId) <span class="file">OrchestratorAgent.ts</span></div>
+          <div class="arrow">↓ buildState(userId)</div>
+          <div class="node core">buildAgentsGraph() → ecommerceAgenteNode <span class="file">agentsGraph.ts</span></div>
+          <div class="arrow">↓ 18 tools disponíveis</div>
+          <div class="node tool">SearchProducts → pgvector (Pinecone em migração)</div>
+          <div class="node tool">AddToCart → EcommerceCart(userId)</div>
+          <div class="node tool">CreateOrder → Order(userId)</div>
+          <div class="arrow">↓</div>
+          <div class="node state">State: userId only, sem companyId</div>
+        </div>
+        <div class="arch-gap">⚠ ENABLED_AGENTS=ecommerce hardcoded no env<br>⚠ EcommerceCart sem companyId no schema<br>⚠ Order sem companyId — tudo no mesmo tenant<br>⚠ 1 WHATSAPP_VERIFY_TOKEN → 1 número Meta</div>
+      </div>
+    </div>
+
+    <!-- PRÓXIMO CICLO -->
+    <div class="arch-col">
+      <div class="arch-col-header next">
+        <span>Próximo ciclo — multi-tenant</span>
+        <span>Voturuna + HOP</span>
+      </div>
+      <div class="arch-col-body next">
+        <div class="arch-flow">
+          <div class="node entry">📲 WhatsApp message recebida (número HOP ou Voturuna)</div>
+          <div class="arrow">↓</div>
+          <div class="node core">POST /api/webhook-unified <span class="file">webhook-unified.ts</span></div>
+          <div class="arrow">↓ phone lookup</div>
+          <div class="node new">CompanyPhone.findUnique({ phone }) → Company <span class="file">Sprint 2</span></div>
+          <div class="arrow">↓ tenantId resolvido</div>
+          <div class="node core">AgentRouter.routeMessage(tenantId) <span class="file">AgentRouter.ts</span></div>
+          <div class="arrow">↓ agent por tenant</div>
+          <div class="node core">OrchestratorAgent.processMessage(userId, tenantId)</div>
+          <div class="arrow">↓ buildAgentsGraph(tenantConfig)</div>
+          <div class="node new">tenantConfig: catalog filter + persona + Stripe acct <span class="file">Sprint 2</span></div>
+          <div class="arrow">↓</div>
+          <div class="node tool">SearchProducts → filter by companyId</div>
+          <div class="node tool">AddToCart → EcommerceCart(userId, companyId)</div>
+          <div class="node tool">CreateOrder → Order(userId, companyId)</div>
+          <div class="arrow">↓</div>
+          <div class="node state">State: userId + companyId — isolamento total</div>
+        </div>
+        <div class="arch-unlock">✓ N números → N tenants, mesmo webhook endpoint<br>✓ Novo canal = CompanyPhone + Company + tenantConfig<br>✓ Zero cruzamento de dados entre tenants<br>✓ Sem novo deploy de código por canal</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PATTERN MAPPING -->
+  <div class="pattern-map">
+    <div class="pattern-map-title">Padrões multi-agente → onde estão no código</div>
+    <div class="pattern-layers">
+
+      <!-- CUSTOMER LAYER -->
+      <div class="pattern-layer">
+        <div class="pattern-layer-header">Customer Layer</div>
+        <div class="pattern-layer-body">
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>WhatsApp Interface</div>
+            <div class="pattern-node-sub">entrada de mensagens</div>
+            <span class="pattern-node-code">POST /api/webhook-unified</span><br>
+            <span class="pattern-node-code gray">webhook-unified.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Customer History DB</div>
+            <div class="pattern-node-sub">histórico + memória do usuário</div>
+            <span class="pattern-node-code">ConversationMemory</span><br>
+            <span class="pattern-node-code">EcommerceMessage</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORCHESTRATION LAYER -->
+      <div class="pattern-layer">
+        <div class="pattern-layer-header">Orchestration Layer</div>
+        <div class="pattern-layer-body">
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Orchestrator Agent</div>
+            <div class="pattern-node-sub">routes and coordinates</div>
+            <span class="pattern-node-code purple">OrchestratorAgent.ts</span><br>
+            <span class="pattern-node-code gray">AgentRouter.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Context Manager</div>
+            <div class="pattern-node-sub">token budgeting · janela de contexto</div>
+            <span class="pattern-node-code">ConversationStateBuilder.ts</span><br>
+            <span class="pattern-node-code gray">1.000 msgs · PR #474</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>State Persistence</div>
+            <div class="pattern-node-sub">conversation store</div>
+            <span class="pattern-node-code">LangGraph thread state</span><br>
+            <span class="pattern-node-code gray">thread_id → Postgres</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENT LAYER -->
+      <div class="pattern-layer">
+        <div class="pattern-layer-header">Agent Layer</div>
+        <div class="pattern-layer-body">
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Planner Agent</div>
+            <div class="pattern-node-sub">sprint contracts · breaks down task</div>
+            <span class="pattern-node-code">buildAgentsGraph()</span><br>
+            <span class="pattern-node-code gray">routerNode.ts · agentsGraph.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Sales Agent</div>
+            <div class="pattern-node-sub">product discovery</div>
+            <span class="pattern-node-code green">SearchProductsTool</span><br>
+            <span class="pattern-node-code green">ListProductsTool</span><br>
+            <span class="pattern-node-code green">GetProductDetailsTool</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Fulfillment Agent</div>
+            <div class="pattern-node-sub">order processing</div>
+            <span class="pattern-node-code green">AddToCartTool</span><br>
+            <span class="pattern-node-code green">CreateOrderTool</span><br>
+            <span class="pattern-node-code green">CalculateShippingTool</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-g"></span>Evaluator Agent</div>
+            <div class="pattern-node-sub">quality control</div>
+            <span class="pattern-node-code orange">SonarQube — qualidade de código</span><br>
+            <div class="pattern-node-gap">⚠ eval de respostas do agente: pós HOP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA LAYER -->
+      <div class="pattern-layer">
+        <div class="pattern-layer-header">Data Layer</div>
+        <div class="pattern-layer-body">
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Product Catalog</div>
+            <div class="pattern-node-sub">busca híbrida</div>
+            <span class="pattern-node-code">pgvector + FTS</span><br>
+            <span class="pattern-node-code gray">mhc-commerce · PR #462</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Inventory System</div>
+            <div class="pattern-node-sub">estoque real-time</div>
+            <span class="pattern-node-code">NuvemShop API</span><br>
+            <span class="pattern-node-code gray">ECommerceClient.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Club Pricing Engine</div>
+            <div class="pattern-node-sub">regras por canal</div>
+            <span class="pattern-node-code">cupom Votu100</span><br>
+            <span class="pattern-node-code gray">config por tenant — Sprint 2</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-g"></span>Delivery Scheduler</div>
+            <div class="pattern-node-sub">notificação proativa</div>
+            <span class="pattern-node-code orange">Mandaê webhook</span><br>
+            <div class="pattern-node-gap">⚠ status pull ok · push proativo: #506</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFRASTRUCTURE -->
+      <div class="pattern-layer">
+        <div class="pattern-layer-header">Infrastructure</div>
+        <div class="pattern-layer-body">
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Agent Harness</div>
+            <div class="pattern-node-sub">Claude Sonnet 4.6</div>
+            <span class="pattern-node-code">LangGraph StateGraph</span><br>
+            <span class="pattern-node-code gray">agentsGraph.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-s"></span>Trace Logging</div>
+            <div class="pattern-node-sub">observabilidade</div>
+            <span class="pattern-node-code">logger.ts · Atlas</span><br>
+            <span class="pattern-node-code gray">StageTimings · timing.ts</span>
+          </div>
+          <div class="pattern-node">
+            <div class="pattern-node-name"><span class="status-dot dot-g"></span>Rubric Engine</div>
+            <div class="pattern-node-sub">critérios de qualidade de resposta</div>
+            <span class="pattern-node-code orange">SonarQube — código</span><br>
+            <div class="pattern-node-gap">⚠ rubrics de resposta: próxima camada</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:20px;margin-top:16px;align-items:center;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-600);">
+        <span class="status-dot dot-s"></span> Shipado e rodando
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-600);">
+        <span class="status-dot dot-g"></span> Em construção / próxima camada
+      </div>
+    </div>
+  </div>
+
+  <!-- SCALE TABLE -->
+  <div class="arch-scale">
+    <div class="arch-scale-title">Como a mudança destrava escala multi-canal</div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label"></div>
+      <div class="arch-scale-cell highlight" style="text-align:center;font-weight:700;">Hoje</div>
+      <div class="arch-scale-cell highlight" style="text-align:center;font-weight:700;color:#fdba74;border-color:rgba(251,146,60,0.3);">Após Sprint 2</div>
+      <div class="arch-scale-cell highlight" style="text-align:center;font-weight:700;color:#86efac;border-color:rgba(74,222,128,0.3);">Canal N</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Canais</div>
+      <div class="arch-scale-cell dim">1 (Voturuna)</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">2 (+ HOP)</div>
+      <div class="arch-scale-cell active">N — sem limite técnico</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Novo canal</div>
+      <div class="arch-scale-cell dim">semanas de dev</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">dias (tenant config)</div>
+      <div class="arch-scale-cell active">horas (config only)</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Deploy</div>
+      <div class="arch-scale-cell dim">novo deploy por canal</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">mesmo backend</div>
+      <div class="arch-scale-cell active">zero deploy novo</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Isolamento</div>
+      <div class="arch-scale-cell dim">inexistente</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">companyId no schema</div>
+      <div class="arch-scale-cell active">total — dados, config, persona</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Persona</div>
+      <div class="arch-scale-cell dim">voturunaAgenteNode fixo</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">system prompt por tenant</div>
+      <div class="arch-scale-cell active">qualquer identidade</div>
+    </div>
+
+    <div class="arch-scale-row">
+      <div class="arch-scale-label">Busca</div>
+      <div class="arch-scale-cell dim">sem filtro de tenant</div>
+      <div class="arch-scale-cell" style="color:#fdba74;">filter by companyId</div>
+      <div class="arch-scale-cell active">catálogo 100% isolado</div>
+    </div>
+  </div>
+
+  <div class="cards cards-3">
+    <div class="card">
+      <div class="card-icon" style="background:#dbeafe;">🔀</div>
+      <h3>Roteamento por número</h3>
+      <p>O mesmo <code style="font-family:var(--mono);font-size:11px;">webhook-unified</code> já recebe mensagens de qualquer número Meta. O que falta é o lookup: <code style="font-family:var(--mono);font-size:11px;">CompanyPhone → Company → tenantConfig</code>. Uma query, zero novo código de infra.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#dcfce7;">🔒</div>
+      <h3>Isolamento por companyId</h3>
+      <p>Todos os modelos de commerce (<code style="font-family:var(--mono);font-size:11px;">EcommerceCart</code>, <code style="font-family:var(--mono);font-size:11px;">CartItem</code>, <code style="font-family:var(--mono);font-size:11px;">Order</code>) recebem <code style="font-family:var(--mono);font-size:11px;">companyId</code>. Dados de Voturuna e HOP nunca se cruzam. Mesma migration, zero risco.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#ede9fe;">⚙️</div>
+      <h3>Config por tenant</h3>
+      <p>Stripe account, catálogo permitido, persona (system prompt), cupons, Mandaê credentials — tudo em <code style="font-family:var(--mono);font-size:11px;">tenantConfig</code>. Canal novo = novo registro. Sem fork de código.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: O FRAMEWORK -->
+<section id="framework">
+  <div class="section-tag">03 — O Framework</div>
+  <h2>Por que nossa arquitetura funciona</h2>
+  <p class="section-sub">A literatura de referência sobre agentes em produção (Stanford CS153, Y Combinator) converge em três falhas recorrentes. Cada uma tem uma solução técnica concreta — e o KODA já implementou as duas primeiras.</p>
+
+  <div style="margin-bottom:8px;font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--mono);">Por que agentes falham — e como o KODA resolve</div>
+  <div class="ps-table">
+    <div class="ps-header">Falha do agente</div>
+    <div class="ps-header">Solução técnica</div>
+    <div class="ps-header">No KODA hoje</div>
+
+    <div class="ps-cell problem">
+      <span class="tag tag-red">Falha 1</span>
+      <strong>Não mantém estado entre turns</strong>
+      <span>Contexto do LLM esgota ou é descartado. O agente "esquece" o carrinho, a intenção, o que o usuário já disse. A conversa quebra em qualquer sessão longa.</span>
+    </div>
+    <div class="ps-cell solution">
+      <span class="tag tag-blue">Solução</span>
+      <strong>State persistence fora do LLM</strong>
+      <span>Conversa e estado armazenados no banco. LLM recebe só o contexto necessário por turn. Thread persiste indefinidamente sem degradação.</span>
+    </div>
+    <div class="ps-cell impact">
+      <span class="tag tag-green">KODA</span>
+      <strong>LangGraph + Postgres thread state</strong>
+      <span>Janela de 1.000 mensagens (PR #474). Carrinho e histórico sobrevivem entre sessões. <code style="font-family:var(--mono);font-size:11px;">thread_id</code> mapeia conversa → estado persistido.</span>
+    </div>
+
+    <div class="ps-cell problem">
+      <span class="tag tag-red">Falha 2</span>
+      <strong>Tenta resolver tudo num turn</strong>
+      <span>O agente não dimensiona o escopo. Inicia ações que não consegue completar, avança sem confirmação, fecha pedido quando o usuário queria só perguntar o preço.</span>
+    </div>
+    <div class="ps-cell solution">
+      <span class="tag tag-blue">Solução</span>
+      <strong>Feature decomposition + confirmação explícita</strong>
+      <span>Cada nó do grafo tem uma responsabilidade. O agente não avança para o próximo nó sem sinal claro do usuário. Nenhuma ação irreversível sem confirmação.</span>
+    </div>
+    <div class="ps-cell impact">
+      <span class="tag tag-green">KODA</span>
+      <strong>Busca → Carrinho → Confirm → Frete → Pgt</strong>
+      <span>Fluxo decomposto por nós no LangGraph. Avanço implícito corrigido (#478). Guard rails de intenção em construção para canais abertos como HOP.</span>
+    </div>
+
+    <div class="ps-cell problem">
+      <span class="tag tag-red">Falha 3</span>
+      <strong>Não avalia a própria resposta</strong>
+      <span>Sem eval, o agente aceita outputs ruins como bons. Recomenda produto errado, afirma estoque que não existe, inventa frete grátis. Só descobre quando o usuário reclama.</span>
+    </div>
+    <div class="ps-cell solution">
+      <span class="tag tag-blue">Solução</span>
+      <strong>Generator / Evaluator com rubrics</strong>
+      <span>Separar quem gera de quem julga. Evaluator verifica resposta contra critérios objetivos: produto existe, preço correto, tom adequado, intenção atendida.</span>
+    </div>
+    <div class="ps-cell impact">
+      <span class="tag tag-green">KODA</span>
+      <strong>SonarQube ativo — Eval sistemático: pós HOP</strong>
+      <span>Qualidade de código monitorada. Testes unitários emergindo. Eval de respostas do agente em produção é a próxima camada após o HOP go-live. Sem atalho aqui.</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;">Os três papéis da empresa AI-native</h3>
+  <p class="section-sub" style="margin-bottom:0;">Toda empresa que coloca agentes em produção precisa de três funções distintas. A confusão entre elas é onde a maioria trava.</p>
+
+  <div class="roles-grid">
+    <div class="role-card role-taste">
+      <div class="role-title">Taste</div>
+      <div class="role-subtitle">Decide o que é bom. Não automatizável.</div>
+      <div class="role-who">Quem faz</div>
+      <div class="role-people">
+        <span class="person-tag">JP</span>
+        <span class="person-tag">Rezek</span>
+      </div>
+      <div class="role-desc">Define o que o agente deve e não deve fazer. Tom, experiência, prioridades de produto. É julgamento humano que nenhum modelo substitui — e que decide se o produto é bom ou apenas funcional.</div>
+    </div>
+    <div class="role-card role-resolver">
+      <div class="role-title">Resolver</div>
+      <div class="role-subtitle">Executa. Código, integrações, arquitetura.</div>
+      <div class="role-who">Quem faz</div>
+      <div class="role-people">
+        <span class="person-tag">Vitor</span>
+        <span class="person-tag">Leo</span>
+        <span class="person-tag">Djairo</span>
+      </div>
+      <div class="role-desc">Constrói o harness, os nós do grafo e as integrações que fazem o agente funcionar em produção. O núcleo operacional é o produto do Resolver. Quanto mais maduro o núcleo, mais barato é ativar cada novo canal.</div>
+    </div>
+    <div class="role-card role-eval">
+      <div class="role-title">Eval</div>
+      <div class="role-subtitle">Julga se o output foi bom. Com critério.</div>
+      <div class="role-who">Estado atual</div>
+      <div class="role-people">
+        <span class="person-tag">Emergindo</span>
+      </div>
+      <div class="role-desc">Mede se o agente respondeu corretamente: produto certo, preço real, tom adequado, conversa sem perda de contexto. Sem Eval sistemático, o ciclo de melhoria é reativo — o bug aparece em produção, não antes.</div>
+      <div class="role-gap"><strong>Gap crítico:</strong> rubrics de qualidade e testes E2E do fluxo de compra. Próxima camada obrigatória após HOP go-live.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;">Closed-loop company — o que já está rodando</h3>
+  <p class="section-sub" style="margin-bottom:24px;">Empresa closed-loop usa agentes não só no produto, mas na gestão. O ciclo de feedback é automatizado. O time não gestiona — opera.</p>
+
+  <div style="margin-bottom:8px;font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--mono);">● Rodando agora</div>
+  <div class="loop-grid">
+    <div class="loop-item">
+      <div class="loop-dot dot-green"></div>
+      <div>
+        <h4>Briefing Diário — 7h30 BRT</h4>
+        <p>PRs sem review, bugs P1, commits das últimas 24h. Time chega na daily já preparado. Zero gestão manual de status.</p>
+      </div>
+    </div>
+    <div class="loop-item">
+      <div class="loop-dot dot-green"></div>
+      <div>
+        <h4>Q&A Loop — 8h · 20h BRT</h4>
+        <p>Responde perguntas do JP com âncora em PR/commit/branch real. Sem alucinação. Com evidência.</p>
+      </div>
+    </div>
+    <div class="loop-item">
+      <div class="loop-dot dot-green"></div>
+      <div>
+        <h4>Monitor de PRs — a cada 2h</h4>
+        <p>Alerta só se PR estrutural ficar sem review por mais de 4h. Silencioso por padrão, assertivo quando importa.</p>
+      </div>
+    </div>
+    <div class="loop-item">
+      <div class="loop-dot dot-green"></div>
+      <div>
+        <h4>Verificador de Issues — diário 9h</h4>
+        <p>Issues novas sem descrição, label ou assignee recebem comentário automático. Qualidade de sprint garantida sem revisão manual.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;margin-bottom:8px;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--mono);">⟳ Próxima camada</div>
+  <div class="loop-grid">
+    <div class="loop-item">
+      <div class="loop-dot dot-orange"></div>
+      <div>
+        <h4>Eval do agente em produção</h4>
+        <p>Medir qualidade de respostas por canal: recomendação correta, tom, taxa de conversão, pedidos finalizados sem reclamação.</p>
+      </div>
+    </div>
+    <div class="loop-item">
+      <div class="loop-dot dot-orange"></div>
+      <div>
+        <h4>Guard rails anti-fraude — HOP</h4>
+        <p>Canal aberto sem onboarding: detectar comportamento anômalo (volume, velocidade, padrão) e segurar pedido para revisão humana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: ROADMAP -->
+<section id="roadmap" style="background:var(--gray-50);">
+  <div class="section-tag orange">04 — Roadmap</div>
+  <h2>4 sprints até o HOP</h2>
+  <p class="section-sub">Cada sprint tem um output binário: está feito ou não está. Sem milestone vago. Datas reais, issues reais, responsáveis reais.</p>
+
+  <div class="sprint-timeline">
+
+    <!-- SPRINT 1 -->
+    <div class="sprint s-active">
+      <div class="sprint-meta">
+        <span class="sprint-badge badge-now">Agora</span>
+        <div class="sprint-dates">Agora<br>→ 26/05</div>
+        <div class="sprint-duration">5 dias</div>
+      </div>
+      <div class="sprint-body">
+        <div class="sprint-title">Loop 1 — fechar os P1s que bloqueiam multi-tenant</div>
+        <ul class="sprint-tasks">
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">#514</span>
+            <span class="desc">Histórico de pedidos — simplificar exibição (último status, nº limpo, link rastreio)</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">#503</span>
+            <span class="desc">Pedidos não finalizados após 12h — cleanup automático</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">#479</span>
+            <span class="desc">Cart persistence warning — alertar usuário sobre itens de sessão anterior (#540)</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">#512</span>
+            <span class="desc">Bug fix P1 Leo — Atlas staging environments</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-vitor">Vitor</span>
+            <span class="issue">#435</span>
+            <span class="desc">Secrets management — remover credenciais hardcoded, vault pattern</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-vitor">Vitor</span>
+            <span class="issue">#427</span>
+            <span class="desc">Pinecone staging — descomissionar, validar pgvector em staging</span>
+          </li>
+        </ul>
+        <div class="sprint-goal">Output: núcleo estável, sem P1s abertos, staging limpo. Porta de entrada para o scaffold multi-tenant.</div>
+      </div>
+    </div>
+
+    <!-- SPRINT 2 -->
+    <div class="sprint s-next">
+      <div class="sprint-meta">
+        <span class="sprint-badge badge-up">A seguir</span>
+        <div class="sprint-dates">26/05<br>→ 02/06</div>
+        <div class="sprint-duration">1 semana</div>
+      </div>
+      <div class="sprint-body">
+        <div class="sprint-title">Scaffold multi-tenant — a fundação do HOP</div>
+        <ul class="sprint-tasks">
+          <li class="sprint-task">
+            <span class="owner owner-vitor">Vitor</span>
+            <span class="issue">schema</span>
+            <span class="desc"><code style="font-family:var(--mono);font-size:11px;">tenant_id</code> propagado em todas as entidades críticas: Order, Cart, Product, Session</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-vitor">Vitor</span>
+            <span class="issue">config</span>
+            <span class="desc">Config por tenant: Stripe account, Mandaê credentials, produto catalog filter, promoções</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">routing</span>
+            <span class="desc">Roteamento WhatsApp → tenant correto via <code style="font-family:var(--mono);font-size:11px;">CompanyPhone</code> — validado em staging com dois números simultâneos</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-djairo">Djairo</span>
+            <span class="issue">#506</span>
+            <span class="desc">Notificação proativa Mandaê — webhook status → agente → usuário (após intro com Chico + Galo)</span>
+          </li>
+        </ul>
+        <div class="sprint-goal">Output: dois tenants (Voturuna + HOP) rodando em staging no mesmo backend, sem cruzamento de dados. Prova técnica da separação.</div>
+      </div>
+    </div>
+
+    <!-- SPRINT 3 -->
+    <div class="sprint s-future">
+      <div class="sprint-meta">
+        <span class="sprint-badge badge-soon">Sprint 3</span>
+        <div class="sprint-dates">02/06<br>→ 13/06</div>
+        <div class="sprint-duration">10 dias</div>
+      </div>
+      <div class="sprint-body">
+        <div class="sprint-title">HOP-specific flows — o que é único do segundo canal</div>
+        <ul class="sprint-tasks">
+          <li class="sprint-task">
+            <span class="owner owner-all">All</span>
+            <span class="issue">catalog</span>
+            <span class="desc">Catálogo HOP: 1 SKU (boné), sem cross-sell de suplementos, sem cupom Votu100</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-all">All</span>
+            <span class="issue">persona</span>
+            <span class="desc">Persona e system prompt HOP — linguagem streetwear, tom diferente, sem referência a Voturuna</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-leo">Leo</span>
+            <span class="issue">meta</span>
+            <span class="desc">Webhook Meta registrado para o número HOP — segundo número WhatsApp Business ativo</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-vitor">Vitor</span>
+            <span class="issue">guard</span>
+            <span class="desc">Guard rails básicos anti-fraude para canal aberto (volume, velocidade, padrão anômalo)</span>
+          </li>
+        </ul>
+        <div class="sprint-goal">Output: fluxo de compra completo do HOP funcionando em staging. Usuário entra pelo número HOP, compra boné, recebe confirmação. Voturuna intocada.</div>
+      </div>
+    </div>
+
+    <!-- SPRINT 4 -->
+    <div class="sprint s-golive">
+      <div class="sprint-meta">
+        <span class="sprint-badge badge-live">Go-live</span>
+        <div class="sprint-dates">13/06<br>→ 20/06</div>
+        <div class="sprint-duration">1 semana</div>
+      </div>
+      <div class="sprint-body">
+        <div class="sprint-title">QA integrado, staging HOP, go-live</div>
+        <ul class="sprint-tasks">
+          <li class="sprint-task">
+            <span class="owner owner-all">All</span>
+            <span class="issue">QA</span>
+            <span class="desc">Testes E2E completos: fluxo de compra HOP, isolamento de tenant, notificações Mandaê</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-all">All</span>
+            <span class="issue">staging</span>
+            <span class="desc">Staging HOP espelhando produção — load test, edge cases, rollback plan</span>
+          </li>
+          <li class="sprint-task">
+            <span class="owner owner-all">All</span>
+            <span class="issue">live</span>
+            <span class="desc">HOP go-live — segundo canal em produção, mesmo backend, arquitetura multi-tenant provada</span>
+          </li>
+        </ul>
+        <div class="sprint-goal">Output: HOP no ar em 20/06. A tese está provada: Voturuna levou meses, HOP levou semanas. Canal N levará dias.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PLATFORM PROOF -->
+  <div class="platform-proof">
+    <div class="proof-item">
+      <div class="proof-label-top">Canal 1</div>
+      <div class="proof-num" style="color:#60a5fa;">Voturuna</div>
+      <div class="proof-label">Meses para construir<br>o núcleo do zero</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-label-top">Canal 2</div>
+      <div class="proof-num" style="color:#4ade80;">HOP</div>
+      <div class="proof-label">Semanas para replicar<br>usando o núcleo pronto</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-label-top">Canal N</div>
+      <div class="proof-num" style="color:#a78bfa;">Qualquer um</div>
+      <div class="proof-label">Dias quando o pipeline<br>de onboarding estiver maduro</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;">Como o time evolui com a plataforma</h3>
+  <p style="color:var(--gray-600);font-size:14px;margin-bottom:24px;">À medida que o núcleo amadurece, o custo marginal de cada canal cai. O time para de construir infraestrutura e começa a ativar negócios.</p>
+
+  <div class="evolution-grid">
+    <div class="evo-card now">
+      <div class="evo-label">Hoje — construindo o núcleo</div>
+      <ul>
+        <li><span>🔧</span> 80% do esforço em infraestrutura, integrações e bugs</li>
+        <li><span>⚡</span> Cada canal novo exige semanas de trabalho de dev</li>
+        <li><span>📋</span> Sprint focada em Loop 1 e scaffold multi-tenant</li>
+        <li><span>🧪</span> Eval manual — sabemos que errou quando o usuário reclama</li>
+        <li><span>🔄</span> Closed-loop de gestão rodando, closed-loop de produto emergindo</li>
+      </ul>
+    </div>
+    <div class="evo-card future">
+      <div class="evo-label">Com núcleo maduro — ativando canais</div>
+      <ul>
+        <li><span>🚀</span> Novo canal = tenant config + persona doc + catálogo selecionado</li>
+        <li><span>📊</span> Dev focado em features que geram valor para todos os tenants</li>
+        <li><span>🤖</span> Eval automático mede qualidade por canal, por turno, em tempo real</li>
+        <li><span>🔁</span> Loop fechado: agente age → reporta → melhora → age melhor</li>
+        <li><span>📈</span> Escala sublinear — Canal 3 custa menos que Canal 2</li>
+      </ul>
+    </div>
+  </div>
+
+
+</section>
+
+</main>
+
+<footer>
+  <strong>Making Health Cool · KODA</strong> · Visão Estratégica · Maio 2026<br>
+  <span style="margin-top:6px;display:block;">Documento interno — F. Pavani + Time</span>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
