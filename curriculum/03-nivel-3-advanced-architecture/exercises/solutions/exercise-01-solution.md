@@ -289,14 +289,15 @@ def identify_goal(customer_message: str, profile: dict) -> str:
     """
     msg_lower = customer_message.lower()
 
-    if any(word in msg_lower for word in ["comprar", "quero", "recomend", "qual", "melhor"]):
-        return "recomendar_um_produto_principal_dentro_do_orcamento"
+    # Checks mais especificos primeiro para evitar captura prematura
+    if any(word in msg_lower for word in ["pedido", "carrinho", "finalizar", "checkout"]):
+        return "preparar_pedido"
 
     if any(word in msg_lower for word in ["comparar", "diferenca", "vs", "versus"]):
         return "comparar_produtos"
 
-    if any(word in msg_lower for word in ["pedido", "carrinho", "finalizar", "checkout"]):
-        return "preparar_pedido"
+    if any(word in msg_lower for word in ["comprar", "quero", "recomend", "qual", "melhor"]):
+        return "recomendar_um_produto_principal_dentro_do_orcamento"
 
     if any(word in msg_lower for word in ["estoque", "disponivel", "tem"]):
         return "verificar_disponibilidade"
@@ -685,12 +686,13 @@ def format_candidate_response(
     if preferred and primary.flavor.lower() == preferred.lower():
         flavor_note = f" e combina com sua preferencia de {preferred}"
 
+    lactose_label = "Sem lactose" if primary.lactose_free else ""
     response = (
         f"{primary.name} — "
         f"R$ {primary.price_brl:.2f}, "
         f"{primary.servings} doses "
-        f"(R$ {primary.cost_per_serving_brl:.2f}/dose). "
-        f"Sem lactose{flavor_note}."
+        f"(R$ {primary.cost_per_serving_brl:.2f}/dose)."
+        f"{(' ' + lactose_label) if lactose_label else ''}{flavor_note}."
     )
 
     if alternative:
@@ -1094,11 +1096,17 @@ def evaluator_agent(
     # Executar cada verificador
     results: list[RubricResult] = []
 
-    # Verificacoes de restricao (baseadas em dados, nao em rubrica declarada)
-    results.append(check_lactose_restriction(generation, constraints))
-    results.append(check_budget(generation, constraints))
+    # Verificacoes de restricao — se a rubrica menciona criterios especificos,
+    # as checagens correspondentes sao ativadas
+    rubric_text = " ".join(rubric).lower()
 
-    # Verificacoes de qualidade (baseadas na rubrica + heuristicas)
+    if "lactose" in rubric_text or "intolerancia_lactose" in str(constraints.get("dietary_restrictions", [])):
+        results.append(check_lactose_restriction(generation, constraints))
+
+    if "orcamento" in rubric_text or "budget" in rubric_text or "budget_brl" in constraints:
+        results.append(check_budget(generation, constraints))
+
+    # Verificacoes de qualidade obrigatorias (sempre ativas)
     results.append(check_no_false_stock_promise(generation))
     results.append(check_no_pressure(generation))
     results.append(check_response_coherence(generation, constraints))
@@ -1451,7 +1459,7 @@ def run_customer_turn(
 
 **Fallback seguro:** Quando todas as tentativas falham, o harness nunca envia a ultima resposta rejeitada. Em vez disso, envia uma mensagem segura que nao faz promessas. Pior caso: cliente espera um pouco mais. Melhor caso: evita recomendacao errada.
 
-**State persistido em cada passo:** Se o processo cair apos o Generator mas antes do Evaluator, o estado esta salvo em disco. Basta reexecutar o harness — ele detecta os arquivos existentes e continua de onde parou (em uma implementacao mais robusta, usaria os arquivos como cache).
+**State persistido em cada passo:** O harness salva cada artefato (plan, generation, evaluation) em disco sequencialmente. Isso cria um audit trail completo. Uma implementacao de producao adicionaria deteccao de arquivos existentes para retomar de onde parou apos um crash — aqui, o foco e a clareza do fluxo e do contrato entre agentes.
 
 ---
 
