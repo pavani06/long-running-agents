@@ -944,7 +944,7 @@ def test_cenario_2_rejeicao_e_correcao():
         customer_message="Quero comprar whey protein sabor chocolate.",
     )
 
-    response = run_customer_turn(state_dir, event, profile, catalog)
+    response = run_customer_turn(state_dir, event, profile, PRODUCT_CATALOG)
 
     print(f"\\n📤 Resposta final: {response}")
 
@@ -996,7 +996,7 @@ def test_cenario_3_fallback_apos_duas_revisoes():
         customer_message="Quero o melhor whey protein que tiver.",
     )
 
-    response = run_customer_turn(state_dir, event, profile, catalog, max_revisions=2)
+    response = run_customer_turn(state_dir, event, profile, PRODUCT_CATALOG, max_revisions=2)
 
     print(f"\\n📤 Resposta final: {response}")
 
@@ -1040,7 +1040,7 @@ def test_cenario_4_respeito_ao_orcamento():
         customer_message="Quero comprar creatina.",
     )
 
-    response = run_customer_turn(state_dir, event, profile, catalog)
+    response = run_customer_turn(state_dir, event, profile, PRODUCT_CATALOG)
 
     print(f"\\n📤 Resposta final: {response}")
 
@@ -1083,7 +1083,7 @@ def test_cenario_5_respeito_restricao_alimentar():
         customer_message="Quero comprar whey protein.",
     )
 
-    response = run_customer_turn(state_dir, event, profile, catalog)
+    response = run_customer_turn(state_dir, event, profile, PRODUCT_CATALOG)
 
     print(f"\\n📤 Resposta final: {response}")
 
@@ -1095,7 +1095,7 @@ def test_cenario_5_respeito_restricao_alimentar():
         for p in generation.get("products_considered", []):
             sku = p.get("sku")
             # Encontrar no catalogo
-            product = next((prod for prod in catalog if prod.sku == sku), None)
+            product = next((prod for prod in PRODUCT_CATALOG if prod.sku == sku), None)
             if product:
                 assert product.lactose_free, (
                     f"VIOLACAO: {sku} nao e lactose_free, "
