@@ -198,7 +198,7 @@ Cada uma delas é resolvida por uma dimensão diferente de state persistence.
 | **Crash de processo** | Servidor reinicia durante conversa | Conversa inteira perdida. Cliente vê KODA "esquecer" tudo. | Estado recarregado do disco. KODA retoma com "Voce estava finalizando a compra, certo?" |
 | **Timeout de LLM** | API do Claude retorna erro 529 após 60s | Turno atual perdido. Nenhum rastro do que estava sendo gerado. | Última geração salva como `generation_partial.json`. Sistema tenta novamente ou usa fallback. |
 | **Janela de contexto esgotada** | Conversa de 3h excede 200K tokens do Sonnet | Informações antigas somem. KODA esquece alergias do início. | Dados críticos externalizados em `customer_profile.json`. Context window recebe apenas resumo + estado relevante. |
-| **Retomada跨-sessão** | Cliente volta 3 dias depois para continuar compra | KODA não tem ideia de quem é o cliente nem do que foi discutido. | `session_state.json` recarrega perfil, carrinho abandonado e última etapa da jornada. |
+| **Retomada entre sessões** | Cliente volta 3 dias depois para continuar compra | KODA não tem ideia de quem é o cliente nem do que foi discutido. | `session_state.json` recarrega perfil, carrinho abandonado e última etapa da jornada. |
 
 ### O Custo de Não Persistir
 
@@ -243,7 +243,7 @@ Cada backend resolve um conjunto diferente de trade-offs.
 | Dimensão | SQLite | JSON Files | Redis |
 | --- | --- | --- | --- |
 | **Modelo de dados** | Relacional, schemas, queries SQL | Documentos, schemaless, hierarchical | Key-value, estruturas de dados (hash, list, set, stream) |
-| **Persistência** | Durável por padrão (WAL mode) | Durável se escrita atômica (write-then-rename) | Configurável (RDB snapshots + AOF log) |
+| **Persistência** | Durável por padrão via journaling; WAL mode é opcional e melhora concorrência | Durável se escrita atômica (write-then-rename) | Configurável (RDB snapshots + AOF log) |
 | **Latência de leitura** | < 1ms para lookup por índice | < 1ms para arquivo em cache do SO | < 1ms (sub-millisecond) |
 | **Latência de escrita** | ~1-5ms (com fsync) | ~1-5ms (depende do disco) | < 1ms |
 | **Concorrência** | Single-writer (readers ok com WAL) | Single-writer (file lock necessário) | Multi-writer nativo |
@@ -252,7 +252,7 @@ Cada backend resolve um conjunto diferente de trade-offs.
 | **Schema enforcement** | Forte (DDL, constraints, foreign keys) | Nenhum (confia no writer) | Nenhum (confia no writer) |
 | **Portabilidade** | Arquivo binário portável | Arquivo texto portável | Dependente de servidor Redis |
 | **Tamanho máximo prático** | ~10 GB por arquivo | ~100 MB por arquivo (carga completa em RAM) | Limitado pela RAM disponível |
-| **Backup** | Copia o arquivo .sqlite | Copia o diretório | RDB snapshot ou AOF replay |
+| **Backup** | `.backup` command ou API; cópia direta requer DB quiescente ou incluir `-wal` e `-shm` | Copia o diretório | RDB snapshot ou AOF replay |
 | **Audit trail** | Possível com triggers e tabela de log | Natural (arquivos são o log) | Possível com Redis Streams |
 | **Melhor para** | Estado estruturado, queries complexas, relações entre entidades, dados que crescem | Prototipagem, traces, estado simples, pipelines de arquivo entre agentes, auditoria humana | Cache, sessões de curta duração, filas, estado quente que precisa de latência mínima |
 
@@ -326,7 +326,7 @@ CREATE INDEX idx_checkpoints_session ON checkpoints(session_id, created_at);
 
 Vantagens do SQLite para KODA:
 
-1. Schema forte previne corrupção silenciosa de estado. Se o Generator tentar escrever `total_brl` como string, o SQLite rejeita.
+1. Schema forte previne corrupção silenciosa de estado. Com tabelas `STRICT` ou constraints `CHECK(typeof(total_brl) = 'real')`, o SQLite rejeita valores de tipo incorreto.
 
 2. Queries SQL permitem perguntas como "quantas sessões estão com carrinho em draft há mais de 30 minutos?" sem carregar todos os arquivos em memória.
 
@@ -582,7 +582,7 @@ Turno N:
 
 1. Recuperação trivial: carrega o snapshot e continua.
 2. Sem dependência de snapshots anteriores.
-3. Ideal para retomada跨-sessão (cliente volta dias depois).
+3. Ideal para retomada entre sessões (cliente volta dias depois).
 
 **Desvantagens:**
 
@@ -1013,7 +1013,7 @@ class SagaCheckout:
 | Crash durante deploy | Replay | Estado pode divergir. Replay garante convergência determinística. |
 | Falha em sistema externo (pagamento) | Compensação | Mundo real foi alterado. Rollback de código não desfaz pagamento. |
 | Corrupção de estado detectada | Rollback para checkpoint específico | Isola o dano. Volta ao último ponto confirmadamente bom. |
-| Cliente volta após 3 dias | Replay + Snapshot | Estado跨-sessão precisa ser reconstruído. Snapshot base + replay dos turns finais. |
+| Cliente volta após 3 dias | Replay + Snapshot | Estado entre sessões precisa ser reconstruído. Snapshot base + replay dos turns finais. |
 
 ---
 
