@@ -1,27 +1,27 @@
-# 🔗 Sistemas Multi-Agente para Arquiteturas Confiaveis
-## Como Planner, Generator e Evaluator Transformam Jornadas Longas em Fluxos Auditaveis
+# 🔗 Sistemas Multi-Agente para Arquiteturas Confiáveis
+## Como Planner, Generator e Evaluator Transformam Jornadas Longas em Fluxos Auditáveis
 
 **Tempo Estimado:** 120 minutos  
-**Nivel:** 3 - Arquitetura Avancada  
-**Pre-requisito:** Ter completado `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`  
+**Nível:** 3 - Arquitetura Avançada  
+**Pré-requisito:** Ter completado `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`  
 **Status:** 🟢 CRITICO - Base para decompor jornadas complexas do KODA  
-**Data de Criacao:** Maio 2026
+**Data de Criação:** Maio 2026
 
 ---
 
-## 📖 Prologo: A Noite em que Um Agente Sozinho Quase Perdeu a Venda
+## 📖 Prólogo: A Noite em que Um Agente Sozinho Quase Perdeu a Venda
 
-**Cenario Real: quinta-feira, 19h42.**
+**Cenário Real: quinta-feira, 19h42.**
 
 A academia do bairro tinha acabado de fechar.
 
-Marina saiu cansada, com a garrafa vazia na mochila e uma decisao nova na cabeca: ela queria voltar a treinar com consistencia.
+Marina saiu cansada, com a garrafa vazia na mochila e uma decisão nova na cabeça: ela queria voltar a treinar com consistência.
 
 Ela tinha comprado suplementos antes, mas sempre se sentia perdida.
 
-Whey concentrado, whey isolado, creatina, pre-treino, hipercalorico, tabela nutricional, promessa de ganho rapido.
+Whey concentrado, whey isolado, creatina, pré-treino, hipercalórico, tabela nutricional, promessa de ganho rápido.
 
-Tudo parecia feito para quem ja entendia do assunto.
+Tudo parecia feito para quem já entendia do assunto.
 
 Naquela noite, uma amiga indicou o WhatsApp do KODA.
 
@@ -35,7 +35,7 @@ Marina abriu a conversa.
 
 A primeira resposta foi boa.
 
-O agente unico entendeu o objetivo, perguntou contexto e buscou produtos.
+O agente único entendeu o objetivo, perguntou contexto e buscou produtos.
 
 Por alguns minutos, tudo parecia simples.
 
@@ -47,9 +47,9 @@ Por alguns minutos, tudo parecia simples.
 
 Marina ficou aliviada.
 
-Ela nao queria falar com um vendedor que empurrasse o produto mais caro.
+Ela não queria falar com um vendedor que empurrasse o produto mais caro.
 
-Queria alguem que acompanhasse a situacao dela.
+Queria alguém que acompanhasse a situação dela.
 
 **Minuto 10:** a conversa cresceu.
 
@@ -60,13 +60,13 @@ Queria alguem que acompanhasse a situacao dela.
 19:55 Marina: E se eu comprar creatina junto, fica melhor?
 ```
 
-O agente unico tentou responder tudo de uma vez.
+O agente único tentou responder tudo de uma vez.
 
-Ele misturou descoberta de necessidade, busca de catalogo, comparacao de preco, explicacao nutricional e preparacao de pedido.
+Ele misturou descoberta de necessidade, busca de catálogo, comparação de preço, explicação nutricional e preparação de pedido.
 
 A resposta ficou longa.
 
-Parecia completa, mas escondia confusao.
+Parecia completa, mas escondia confusão.
 
 ```
 19:56 KODA: Recomendo Whey Isolado Chocolate 900g, Creatina Monohidratada 300g e um pre-treino leve sem cafeina.
@@ -77,11 +77,11 @@ Parecia completa, mas escondia confusao.
 
 A primeira rachadura apareceu.
 
-O agente tinha registrado o orcamento.
+O agente tinha registrado o orçamento.
 
 Mesmo assim, montou um combo acima do limite.
 
-Ele estava tentando ser util, mas confundiu a meta principal.
+Ele estava tentando ser útil, mas confundiu a meta principal.
 
 **Minuto 18:** Marina continuou, porque queria resolver naquela noite.
 
@@ -96,13 +96,13 @@ Ele estava tentando ser util, mas confundiu a meta principal.
 
 A resposta parecia boa.
 
-Mas a ficha tecnica do produto dizia 24 doses.
+Mas a ficha técnica do produto dizia 24 doses.
 
-O agente unico nao percebeu.
+O agente único não percebeu.
 
-Ele gerou a recomendacao e validou a propria frase com excesso de confianca.
+Ele gerou a recomendação e validou a própria frase com excesso de confiança.
 
-**Minuto 26:** a conversa entrou no territorio que quebra agentes simples.
+**Minuto 26:** a conversa entrou no território que quebra agentes simples.
 
 ```
 20:09 Marina: Minha amiga falou de uma proteina vegetal de baunilha. Ela e melhor?
@@ -112,11 +112,11 @@ Ele gerou a recomendacao e validou a propria frase com excesso de confianca.
 20:11 Marina: Eu perguntei se e melhor, nao se tem desconto.
 ```
 
-Agora o problema nao era so preco.
+Agora o problema não era só preço.
 
-Era atencao.
+Era atenção.
 
-O agente estava pulando entre criterios: sabor, desconto, restricao alimentar, duracao, estoque e objetivo de treino.
+O agente estava pulando entre critérios: sabor, desconto, restrição alimentar, duração, estoque e objetivo de treino.
 
 Tudo dentro da mesma context window.
 
@@ -131,44 +131,44 @@ Tudo dentro do mesmo processo mental.
 20:17 KODA: Desculpe, voce tem razao. Vou corrigir.
 ```
 
-Esse tipo de erro fere a confianca.
+Esse tipo de erro fere a confiança.
 
-Nao e apenas uma resposta errada.
+Não é apenas uma resposta errada.
 
-E a sensacao de que o assistente nao estava realmente ouvindo.
+E a sensação de que o assistente não estava realmente ouvindo.
 
-**Minuto 38:** a equipe KODA, observando o trace, percebeu o padrao.
+**Minuto 38:** a equipe KODA, observando o trace, percebeu o padrão.
 
-O agente unico tinha responsabilidades demais:
+O agente único tinha responsabilidades demais:
 
 1. Entender a jornada emocional da cliente.
-2. Coletar restricoes alimentares.
-3. Consultar catalogo e estoque.
-4. Comparar preco por dose.
+2. Coletar restrições alimentares.
+3. Consultar catálogo e estoque.
+4. Comparar preço por dose.
 5. Explicar trade-offs de produto.
 6. Preparar carrinho.
-7. Validar se cada etapa respeitava o orcamento.
+7. Validar se cada etapa respeitava o orçamento.
 8. Manter tom humano no WhatsApp.
 
-Nenhuma dessas tarefas e impossivel.
+Nenhuma dessas tarefas é impossível.
 
-O problema e pedir que uma unica chamada, um unico agente, uma unica trilha de raciocinio faca tudo ao mesmo tempo.
+O problema é pedir que uma única chamada, um único agente, uma única trilha de raciocínio faça tudo ao mesmo tempo.
 
 A arquitetura estava criando o erro.
 
 **Minuto 44:** a equipe simulou outra abordagem.
 
-Em vez de um agente unico, a conversa passaria por tres papeis internos.
+Em vez de um agente único, a conversa passaria por três papéis internos.
 
-O Planner decomporia a jornada: descobrir necessidade, filtrar restricoes, comparar opcoes, montar pedido.
+O Planner decomporia a jornada: descobrir necessidade, filtrar restrições, comparar opções, montar pedido.
 
 O Generator executaria cada etapa planejada, criando respostas e artefatos estruturados.
 
-O Evaluator validaria se a resposta respeitava fatos, orcamento, restricoes e tom.
+O Evaluator validaria se a resposta respeitava fatos, orçamento, restrições e tom.
 
-Marina continuaria vendo um unico KODA no WhatsApp.
+Marina continuaria vendo um único KODA no WhatsApp.
 
-Por tras da interface, porem, haveria uma pequena equipe.
+Por trás da interface, porém, haveria uma pequena equipe.
 
 **Minuto 51:** a mesma conversa foi reprocessada.
 
@@ -179,11 +179,11 @@ Por tras da interface, porem, haveria uma pequena equipe.
 20:27 KODA: Marina, no seu caso eu escolheria o Whey Isolado Chocolate agora. Ele respeita sua intolerancia, fica dentro dos R$ 220 e combina com sua preferencia de sabor. A proteina vegetal e segura tambem, mas perde no sabor que voce pediu.
 ```
 
-A diferenca foi imediata.
+A diferença foi imediata.
 
-O KODA nao ficou mais frio.
+O KODA não ficou mais frio.
 
-Nao virou um fluxo robotico.
+Não virou um fluxo robótico.
 
 Ele ficou mais claro, porque cada responsabilidade tinha um dono.
 
@@ -199,47 +199,47 @@ Ele ficou mais claro, porque cada responsabilidade tinha um dono.
 
 O pedido aconteceu porque a arquitetura segurou a conversa.
 
-Nao foi magia de modelo.
+Não foi magia de modelo.
 
-Foi decomposicao, state persistence e avaliacao independente.
+Foi decomposição, state persistence e avaliação independente.
 
-Este modulo ensina exatamente isso.
+Este módulo ensina exatamente isso.
 
-Ao final, voce vai enxergar multi-agent systems nao como moda, mas como uma forma concreta de proteger jornadas longas contra confusao, esquecimento e auto-aprovacao.
+Ao final, você vai enxergar multi-agent systems não como moda, mas como uma forma concreta de proteger jornadas longas contra confusão, esquecimento e auto-aprovação.
 
 ---
 
-## 🔗 Conexao com Nivel 2
+## 🔗 Conexão com Nível 2
 
-No Nivel 2, voce aprendeu o padrao Generator/Evaluator em `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`.
+No Nível 2, você aprendeu o padrão Generator/Evaluator em `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`.
 
 A ideia central era simples: separar quem cria de quem avalia.
 
-O Generator produz uma solucao.
+O Generator produz uma solução.
 
-O Evaluator valida a solucao contra uma rubrica.
+O Evaluator valida a solução contra uma rubrica.
 
 Essa separacao reduz sycophancy, aumenta auditabilidade e cria um checkpoint antes da resposta chegar ao cliente.
 
 Multi-agent systems pegam essa mesma ideia e generalizam.
 
-Generator/Evaluator e o caso de 2 agentes do padrao N-agent.
+Generator/Evaluator e o caso de 2 agentes do padrão N-agent.
 
-| Nivel | Arquitetura | Pergunta Principal | Resultado |
+| Nível | Arquitetura | Pergunta Principal | Resultado |
 | --- | --- | --- | --- |
-| Nivel 2 | Generator + Evaluator | A resposta gerada esta correta? | Qualidade por verificacao independente |
-| Nivel 3 | Planner + Generator + Evaluator | Qual trabalho precisa ser feito, como executar e como validar? | Qualidade por decomposicao completa |
-| Nivel 3 expandido | N agentes especializados | Qual parte da jornada cada agente deve possuir? | Escala para customer journeys longos |
+| Nível 2 | Generator + Evaluator | A resposta gerada está correta? | Qualidade por verificação independente |
+| Nível 3 | Planner + Generator + Evaluator | Qual trabalho precisa ser feito, como executar e como validar? | Qualidade por decomposição completa |
+| Nível 3 expandido | N agentes especializados | Qual parte da jornada cada agente deve possuir? | Escala para customer journeys longos |
 
-A mudanca do Nivel 2 para o Nivel 3 nao contradiz o que voce aprendeu.
+A mudança do Nível 2 para o Nível 3 não contradiz o que você aprendeu.
 
-Ela preserva o Generator/Evaluator e adiciona uma responsabilidade antes da geracao: planejamento explicito.
+Ela preserva o Generator/Evaluator e adiciona uma responsabilidade antes da geração: planejamento explícito.
 
 Sem Planner, o Generator ainda precisa decidir o que fazer.
 
-Com Planner, o Generator recebe uma tarefa menor, mais clara e mais facil de executar.
+Com Planner, o Generator recebe uma tarefa menor, mais clara e mais fácil de executar.
 
-No Nivel 2, o fluxo era:
+No Nível 2, o fluxo era:
 
 ```
 Cliente e contexto
@@ -251,7 +251,7 @@ Evaluator
 Resposta aprovada
 ```
 
-No Nivel 3, o fluxo passa a ser:
+No Nível 3, o fluxo passa a ser:
 
 ```
 Cliente e contexto
@@ -265,69 +265,69 @@ Evaluator
 Resposta aprovada ou novo ciclo
 ```
 
-A diferenca parece pequena.
+A diferença parece pequena.
 
-Na pratica, ela muda tudo.
+Na prática, ela muda tudo.
 
 O Planner impede que o Generator tente resolver uma jornada inteira sem mapa.
 
-Ele transforma uma conversa baguncada em uma sequencia de etapas observaveis.
+Ele transforma uma conversa baguncada em uma sequência de etapas observaveis.
 
-O Evaluator continua sendo o gatekeeper aprendido no Nivel 2.
+O Evaluator continua sendo o gatekeeper aprendido no Nível 2.
 
-Agora ele tambem valida se o Generator cumpriu o plano, nao apenas se a resposta final parece boa.
+Agora ele também valida se o Generator cumpriu o plano, não apenas se a resposta final parece boa.
 
-Isso cria tres camadas de seguranca:
+Isso cria três camadas de segurança:
 
 1. O Planner reduz ambiguidade.
-2. O Generator reduz escopo por execucao focada.
-3. O Evaluator reduz erro por verificacao independente.
+2. O Generator reduz escopo por execução focada.
+3. O Evaluator reduz erro por verificação independente.
 
 Pense assim: Generator/Evaluator era uma dupla de escritor e editor.
 
-Planner, Generator e Evaluator viram editor-chefe, escritor e revisor tecnico.
+Planner, Generator e Evaluator viram editor-chefe, escritor e revisor técnico.
 
 O editor-chefe define a pauta.
 
 O escritor escreve.
 
-O revisor tecnico protege o leitor.
+O revisor técnico protege o leitor.
 
-Para o KODA, isso significa que uma pergunta como "qual suplemento eu compro?" deixa de ser uma resposta unica.
+Para o KODA, isso significa que uma pergunta como "qual suplemento eu compro?" deixa de ser uma resposta única.
 
 Ela vira uma pequena jornada:
 
 1. Identificar objetivo.
-2. Identificar restricoes.
-3. Consultar catalogo.
-4. Comparar opcoes.
-5. Explicar recomendacao.
+2. Identificar restrições.
+3. Consultar catálogo.
+4. Comparar opções.
+5. Explicar recomendação.
 6. Validar pedido.
 7. Preparar checkout.
 
-Cada etapa pode ter estado, output e criterios proprios.
+Cada etapa pode ter estado, output e critérios proprios.
 
-Essa e a ponte entre o Nivel 2 e o Nivel 3.
+Essa é a ponte entre o Nível 2 e o Nível 3.
 
 ---
 
 ## 🏗️ Arquitetura Multi-Agente: Planner, Generator, Evaluator
 
-Uma arquitetura multi-agente nao significa colocar varios modelos conversando sem controle.
+Uma arquitetura multi-agente não significa colocar vários modelos conversando sem controle.
 
-Essa e a versao caotica.
+Essa é a versão caótica.
 
-A versao profissional e um harness que define papeis, contratos, arquivos de estado e criterios de passagem.
+A versão profissional é um harness que define papéis, contratos, arquivos de estado e critérios de passagem.
 
-Neste modulo, vamos usar a arquitetura base de 3 agentes.
+Neste módulo, vamos usar a arquitetura base de 3 agentes.
 
-Ela e simples o suficiente para implementar.
+Ela é simples o suficiente para implementar.
 
-Tambem e forte o suficiente para sustentar jornadas reais do KODA.
+Também é forte o suficiente para sustentar jornadas reais do KODA.
 
 ### Papel 1: Planner
 
-O Planner e responsavel por decompor a tarefa, criar plano operacional e definir criterios de sucesso.
+O Planner é responsável por decompor a tarefa, criar plano operacional e definir critérios de sucesso.
 
 Responsabilidades do Planner:
 
@@ -335,27 +335,27 @@ Responsabilidades do Planner:
 2. Identificar o objetivo imediato do cliente.
 3. Separar a jornada em etapas pequenas.
 4. Definir quais dados faltam.
-5. Escolher a proxima acao segura.
-6. Registrar criterios de sucesso para o Generator.
-7. Registrar criterios de validacao para o Evaluator.
+5. Escolher a próxima ação segura.
+6. Registrar critérios de sucesso para o Generator.
+7. Registrar critérios de validação para o Evaluator.
 
 ### Papel 2: Generator
 
-O Generator e responsavel por executar cada etapa planejada sem aprovar o proprio trabalho.
+O Generator é responsável por executar cada etapa planejada sem aprovar o próprio trabalho.
 
 Responsabilidades do Generator:
 
 1. Ler o plano do Planner.
 2. Executar os passos designados.
-3. Consultar ferramentas permitidas, como catalogo, estoque ou calculadora de frete.
+3. Consultar ferramentas permitidas, como catálogo, estoque ou calculadora de frete.
 4. Produzir output estruturado.
 5. Registrar suposicoes explicitamente.
-6. Nao aprovar o proprio trabalho.
+6. Não aprovar o próprio trabalho.
 7. Salvar resultado para o Evaluator.
 
 ### Papel 3: Evaluator
 
-O Evaluator e responsavel por validar resultado, proteger cliente e decidir aprovacao ou revisao.
+O Evaluator é responsável por validar resultado, proteger cliente e decidir aprovação ou revisão.
 
 Responsabilidades do Evaluator:
 
@@ -363,7 +363,7 @@ Responsabilidades do Evaluator:
 2. Ler o output do Generator.
 3. Validar cada criterio da rubrica.
 4. Detectar contradicoes com o state persistido.
-5. Verificar se ha afirmacoes sem evidencia.
+5. Verificar se ha afirmacoes sem evidência.
 6. Aprovar, rejeitar ou pedir revisao.
 7. Registrar feedback especifico.
 
@@ -494,35 +494,35 @@ Responsabilidades do Evaluator:
 
 | Etapa | Input | Output | Dono | Persistencia |
 | --- | --- | --- | --- | --- |
-| Entrada | mensagem do WhatsApp, perfil, historico resumido | evento de conversa | harness | `conversation_event.json` |
+| Entrada | mensagem do WhatsApp, perfil, histórico resumido | evento de conversa | harness | `conversation_event.json` |
 | Planejamento | evento, state, catalog snapshot | plano com etapas e rubrica | Planner | `plan.json` |
-| Geracao | plano, ferramentas, dados de catalogo | resposta candidata e evidencias | Generator | `generation.json` |
-| Avaliacao | plano, geracao, state | decisao e feedback | Evaluator | `evaluation.json` |
+| Geracao | plano, ferramentas, dados de catálogo | resposta candidata e evidências | Generator | `generation.json` |
+| Avaliação | plano, geração, state | decisão e feedback | Evaluator | `evaluation.json` |
 | Entrega | resposta aprovada | mensagem final | harness | `delivery.json` |
 
-Um agente unico pode responder bem em conversas curtas.
+Um agente único pode responder bem em conversas curtas.
 
 Ele falha quando a jornada combina muitos objetivos ao mesmo tempo.
 
-O problema nao e falta de inteligencia.
+O problema não é falta de inteligência.
 
-O problema e acoplamento de responsabilidades.
+O problema é acoplamento de responsabilidades.
 
-Quando o mesmo agente planeja, executa e valida, tres riscos aparecem:
+Quando o mesmo agente planeja, executa e valida, três riscos aparecem:
 
-1. O plano fica implicito e dificil de debugar.
-2. A execucao muda o plano sem avisar.
-3. A avaliacao confirma a propria resposta por sycophancy.
+1. O plano fica implícito e difícil de debugar.
+2. A execução muda o plano sem avisar.
+3. A avaliação confirma a própria resposta por sycophancy.
 
-Tres agentes reduzem esses riscos por design.
+Três agentes reduzem esses riscos por design.
 
-O Planner cria um mapa antes da acao.
+O Planner cria um mapa antes da ação.
 
 O Generator segue o mapa e deixa rastros.
 
 O Evaluator compara resultado contra mapa e fatos.
 
-Essa estrutura tambem melhora token budget.
+Essa estrutura também melhora token budget.
 
 Cada agente recebe apenas o contexto necessario para sua etapa.
 
@@ -596,35 +596,35 @@ def run_customer_turn(message):
     return final_evaluation["customer_visible_response"]
 ```
 
-Esse pseudocodigo mostra o ponto central: agentes nao se comunicam por intuicao.
+Esse pseudocodigo mostra o ponto central: agentes não se comunicam por intuicao.
 
 Eles se comunicam por artefatos.
 
-Os arquivos criam memoria externa, audit trail e pontos de retomada.
+Os arquivos criam memória externa, audit trail e pontos de retomada.
 
 ---
 
 ## 📡 Canais de Comunicacao entre Agentes
 
-Agentes precisam trocar informacao.
+Agentes precisam trocar informação.
 
-A pergunta arquitetural e: por qual canal?
+A pergunta arquitetural é: por qual canal?
 
-Existem tres familias principais para KODA: file-based, message queues e API-based.
+Existem três familias principais para KODA: file-based, message queues e API-based.
 
-A recomendacao para este curriculo e comecar com file-based coordination.
+A recomendação para este currículo é começar com file-based coordination.
 
-Arquivos JSON em disco sao simples, auditaveis e bons para aprendizado.
+Arquivos JSON em disco são simples, auditáveis e bons para aprendizado.
 
-Eles tambem sao uma excelente base para evoluir depois para Redis, RabbitMQ, REST ou gRPC.
+Eles também são uma excelente base para evoluir depois para Redis, RabbitMQ, REST ou gRPC.
 
-| Canal | Latencia | Confiabilidade | Complexidade | Quando Usar |
+| Canal | Latência | Confiabilidade | Complexidade | Quando Usar |
 | --- | --- | --- | --- | --- |
-| File-based JSON | Baixa a media | Alta quando escrito de forma atomica | Baixa | Prototipos, curriculum, traces, workflows auditaveis, KODA em fase de desenho |
+| File-based JSON | Baixa a media | Alta quando escrito de forma atômica | Baixa | Prototipos, curriculum, traces, workflows auditáveis, KODA em fase de desenho |
 | Message queues Redis | Muito baixa | Media a alta com retries e ack | Media | Eventos frequentes, multiplos workers, processamento paralelo leve |
 | Message queues RabbitMQ | Baixa | Alta com filas duraveis | Alta | Workflows criticos, backpressure, entrega garantida, operacao mais madura |
-| API-based REST | Media | Alta se houver idempotencia | Media | Servicos separados, integracao simples entre times, chamadas sincrona |
-| API-based gRPC | Baixa | Alta com contratos fortes | Alta | Baixa latencia, alto volume, schemas rigidos, comunicacao interna |
+| API-based REST | Media | Alta se houver idempotencia | Media | Servicos separados, integracao simples entre times, chamadas síncrona |
+| API-based gRPC | Baixa | Alta com contratos fortes | Alta | Baixa latência, alto volume, schemas rigidos, comunicação interna |
 
 ### Canal 1: File-based Coordination
 
@@ -638,15 +638,15 @@ O Evaluator le os dois e escreve `evaluation.json`.
 
 Vantagens:
 
-1. Facil de entender.
-2. Facil de versionar em exemplos.
-3. Facil de debugar com trace reading.
+1. Fácil de entender.
+2. Fácil de versionar em exemplos.
+3. Fácil de debugar com trace reading.
 4. Funciona bem em tarefas longas.
 5. Cria state persistence naturalmente.
 
 Cuidados:
 
-1. Escrever de forma atomica para evitar arquivo parcial.
+1. Escrever de forma atômica para evitar arquivo parcial.
 2. Usar nomes previsiveis.
 3. Incluir `schema_version`.
 4. Registrar timestamps.
@@ -721,18 +721,18 @@ Exemplo de `delivery.json`:
 
 ### Canal 2: Message Queues
 
-Message queues entram quando voce precisa de paralelismo real ou alto volume.
+Message queues entram quando você precisa de paralelismo real ou alto volume.
 
 Redis pode ser suficiente quando a prioridade e velocidade e simplicidade operacional.
 
-RabbitMQ e melhor quando voce precisa de roteamento, durabilidade e controle fino de entrega.
+RabbitMQ e melhor quando você precisa de roteamento, durabilidade e controle fino de entrega.
 
 Em KODA, filas podem aparecer quando varios Generators trabalham em paralelo:
 
-1. Generator de recomendacao.
+1. Generator de recomendação.
 2. Generator de precificacao.
 3. Generator de frete.
-4. Generator de risco de restricao alimentar.
+4. Generator de risco de restrição alimentar.
 
 Cada worker consome um evento e publica resultado.
 
@@ -753,11 +753,11 @@ O Evaluator espera todos os resultados antes de aprovar a resposta final.
 
 API-based communication usa chamadas REST ou gRPC entre servicos.
 
-Ela combina bem quando cada agente e um servico separado com deploy proprio.
+Ela combina bem quando cada agente é um serviço separado com deploy próprio.
 
 REST e mais simples para times diferentes entenderem.
 
-gRPC e melhor para contratos fortes e baixa latencia.
+gRPC e melhor para contratos fortes e baixa latência.
 
 ```json
 {
@@ -778,38 +778,38 @@ gRPC e melhor para contratos fortes e baixa latencia.
 
 ### Como Escolher o Canal
 
-Use file-based quando o time ainda esta aprendendo o dominio.
+Use file-based quando o time ainda está aprendendo o domínio.
 
-Use queues quando o gargalo e throughput ou paralelismo.
+Use queues quando o gargalo é throughput ou paralelismo.
 
-Use APIs quando a fronteira entre agentes tambem e fronteira entre servicos.
+Use APIs quando a fronteira entre agentes também é fronteira entre serviços.
 
-Para KODA, uma evolucao saudavel costuma ser:
+Para KODA, uma evolução saudável costuma ser:
 
-1. Comecar com arquivos JSON para desenhar contratos.
-2. Validar trace reading e rubricas.
+1. Começar com arquivos JSON para desenhar contratos.
+2. Validar trace reading e rúbricas.
 3. Mover partes quentes para filas quando houver volume.
-4. Expor APIs quando houver times ou servicos independentes.
+4. Expor APIs quando houver times ou serviços independentes.
 
 ---
 
-## 🎯 Strategies de Coordenacao
+## 🎯 Estratégias de Coordenação
 
 Canais dizem por onde agentes se comunicam.
 
-Strategies de coordenacao dizem quando e em que ordem eles trabalham.
+Estratégias de coordenação dizem quando e em que ordem eles trabalham.
 
-As tres strategies principais sao sequencial, paralelo e event-driven.
+As três estratégias principais são sequencial, paralelo e event-driven.
 
-| Estrategia | Fluxo | Vantagens | Desvantagens | Caso de Uso KODA |
+| Estratégia | Fluxo | Vantagens | Desvantagens | Caso de Uso KODA |
 | --- | --- | --- | --- | --- |
-| Sequencial | Planner para Generator para Evaluator | Simples, auditavel, facil de debugar | Menor velocidade, cada etapa espera a anterior | Recomendacao com risco alimentar ou fechamento de pedido |
-| Paralelo | Planner cria subtarefas e varios Generators executam ao mesmo tempo | Reduz latencia, explora alternativas, escala comparacoes | Exige agregacao, risco de resultados inconsistentes | Comparar produtos, frete, estoque e promocoes em paralelo |
-| Event-driven | Agentes reagem a mudancas no state | Bom para jornadas longas, desacopla componentes, permite retomada | Mais dificil de observar, precisa governanca de eventos | Atualizacao de estoque, abandono de carrinho, pagamento aprovado |
+| Sequencial | Planner para Generator para Evaluator | Simples, auditável, fácil de debugar | Menor velocidade, cada etapa espera a anterior | Recomendação com risco alimentar ou fechamento de pedido |
+| Paralelo | Planner cria subtarefas e vários Generators executam ao mesmo tempo | Reduz latência, explora alternativas, escala comparações | Exige agregação, risco de resultados inconsistentes | Comparar produtos, frete, estoque e promoções em paralelo |
+| Event-driven | Agentes reagem a mudanças no state | Bom para jornadas longas, desacopla componentes, permite retomada | Mais difícil de observar, precisa governança de eventos | Atualização de estoque, abandono de carrinho, pagamento aprovado |
 
-### Estrategia 1: Sequencial
+### Estratégia 1: Sequencial
 
-Sequencial define uma forma especifica de coordenar agentes em KODA.
+Sequencial define uma forma específica de coordenar agentes em KODA.
 
 ```
 ┌──────────┐     plan.json      ┌────────────┐   generation.json   ┌────────────┐
@@ -826,12 +826,12 @@ Use quando:
 
 1. O erro custa caro.
 2. A jornada precisa de audit trail claro.
-3. A resposta depende de uma ordem logica.
-4. O time ainda esta estabilizando os contratos.
+3. A resposta depende de uma ordem lógica.
+4. O time ainda está estabilizando os contratos.
 
-### Estrategia 2: Paralelo
+### Estratégia 2: Paralelo
 
-Paralelo define uma forma especifica de coordenar agentes em KODA.
+Paralelo define uma forma específica de coordenar agentes em KODA.
 
 ```
                             ┌────────────────────┐
@@ -857,14 +857,14 @@ Paralelo define uma forma especifica de coordenar agentes em KODA.
 
 Use quando:
 
-1. As subtarefas sao independentes.
-2. Latencia importa.
-3. Voce precisa comparar alternativas.
+1. As subtarefas são independentes.
+2. Latência importa.
+3. Você precisa comparar alternativas.
 4. Existe um bom Evaluator para reconciliar resultados.
 
-### Estrategia 3: Event-driven
+### Estratégia 3: Event-driven
 
-Event-driven define uma forma especifica de coordenar agentes em KODA.
+Event-driven define uma forma específica de coordenar agentes em KODA.
 
 ```
 ┌────────────────────┐
@@ -890,40 +890,40 @@ Use quando:
 1. A jornada dura horas ou dias.
 2. Eventos externos mudam o estado, como pagamento aprovado.
 3. Nem tudo acontece dentro da conversa do WhatsApp.
-4. Voce precisa retomar workflows sem depender da context window.
+4. Você precisa retomar workflows sem depender da context window.
 
-Regras praticas de coordenacao:
+Regras praticas de coordenação:
 
 1. Comece sequencial para aprender os contratos.
 2. Paralelize apenas tarefas independentes.
 3. Use event-driven para jornadas que continuam fora do turno atual.
 4. Nunca deixe dois agentes escreverem o mesmo campo sem regra de ownership.
-5. Sempre registre quem escreveu cada decisao.
+5. Sempre registre quem escreveu cada decisão.
 6. Sempre permita replay do trace.
-7. Trate state como fonte de verdade, nao a memoria temporaria do modelo.
+7. Trate state como fonte de verdade, não a memória temporaria do modelo.
 
 ---
 
-## 🎓 Aplicacao KODA: Decomposicao do Customer Journey em Agentes
+## 🎓 Aplicação KODA: Decomposição do Customer Journey em Agentes
 
 Agora vamos aplicar tudo ao KODA.
 
-A pergunta nao e "quantos agentes podemos criar?".
+A pergunta não é "quantos agentes podemos criar?".
 
-A pergunta correta e "quais responsabilidades precisam de ownership separado?".
+A pergunta correta é "quais responsabilidades precisam de ownership separado?".
 
-Para uma jornada de compra completa, podemos decompor em cinco agentes de dominio.
+Para uma jornada de compra completa, podemos decompor em cinco agentes de domínio.
 
 Eles ainda podem usar internamente Planner, Generator e Evaluator.
 
-Mas, no nivel de customer journey, cada um possui uma parte clara da experiencia.
+Mas, no nível de customer journey, cada um possui uma parte clara da experiência.
 
-| Agente | Responsabilidade | Input | Output | Strategy de Coordenacao |
+| Agente | Responsabilidade | Input | Output | Estratégia de Coordenação |
 | --- | --- | --- | --- | --- |
-| Welcome Agent | Receber cliente, identificar intencao inicial, criar tom de conversa | primeira mensagem, perfil existente | saudacao e pergunta de descoberta | Sequencial |
-| Discovery Agent | Coletar objetivo, restricoes, orcamento e preferencias | respostas do cliente, historico | `customer_needs.json` | Sequencial |
-| Recommendation Agent | Gerar e comparar opcoes de produto | necessidades, catalogo, estoque | `recommendation_set.json` | Paralelo com avaliacao |
-| Order Agent | Montar carrinho, validar preco, cupom, endereco e pagamento | produto escolhido, perfil, endereco | `order_draft.json` | Sequencial |
+| Welcome Agent | Receber cliente, identificar intenção inicial, criar tom de conversa | primeira mensagem, perfil existente | saudação e pergunta de descoberta | Sequencial |
+| Discovery Agent | Coletar objetivo, restrições, orçamento e preferências | respostas do cliente, histórico | `customer_needs.json` | Sequencial |
+| Recommendation Agent | Gerar e comparar opções de produto | necessidades, catálogo, estoque | `recommendation_set.json` | Paralelo com avaliação |
+| Order Agent | Montar carrinho, validar preço, cupom, endereço e pagamento | produto escolhido, perfil, endereço | `order_draft.json` | Sequencial |
 | Fulfillment Agent | Confirmar entrega, status e pos-venda | pedido pago, estoque, transportadora | `fulfillment_plan.json` | Event-driven |
 
 ### Agente 1: Welcome Agent
@@ -933,13 +933,13 @@ Responsabilidade: abrir a conversa sem pressa e sem tentar vender cedo demais.
 Input:
 
 1. Mensagem inicial do WhatsApp.
-2. Nome do cliente quando disponivel.
+2. Nome do cliente quando disponível.
 3. Sinais de cliente recorrente.
 
 Output:
 
 1. Saudacao curta.
-2. Identificacao de intencao.
+2. Identificação de intenção.
 3. Handoff para Discovery Agent.
 
 Coordination strategy: sequencial.
@@ -951,8 +951,8 @@ Responsabilidade: transformar conversa aberta em dados estruturados.
 Input:
 
 1. Objetivo do cliente.
-2. Restricoes alimentares.
-3. Orcamento.
+2. Restrições alimentares.
+3. Orçamento.
 4. Preferencias de sabor.
 5. Frequencia de treino.
 
@@ -960,13 +960,13 @@ Output:
 
 1. `customer_needs.json`.
 2. Lista de dados faltantes.
-3. Nivel de confianca.
+3. Nível de confiança.
 
 Coordination strategy: sequencial.
 
 ### Agente 3: Recommendation Agent
 
-Responsabilidade: transformar necessidades em recomendacao explicavel.
+Responsabilidade: transformar necessidades em recomendação explicavel.
 
 Input:
 
@@ -980,7 +980,7 @@ Output:
 1. `recommendation_set.json`.
 2. Justificativa de produto principal.
 3. Alternativa segura.
-4. Alertas de restricao.
+4. Alertas de restrição.
 
 Coordination strategy: paralelo com Evaluator central.
 
@@ -993,8 +993,8 @@ Input:
 1. Produto escolhido.
 2. Endereco.
 3. Estoque regional.
-4. Preco atual.
-5. Cupom ou promocao.
+4. Preço atual.
+5. Cupom ou promoção.
 
 Output:
 
@@ -1018,7 +1018,7 @@ Input:
 Output:
 
 1. `fulfillment_plan.json`.
-2. Mensagem de confirmacao.
+2. Mensagem de confirmação.
 3. Eventos de acompanhamento.
 
 Coordination strategy: event-driven.
@@ -1202,13 +1202,13 @@ Snapshot `handoff_payment.json` durante a jornada:
 }
 ```
 
-O que esta arquitetura evita:
+O que está arquitetura evita:
 
-1. O Welcome Agent nao tenta recomendar cedo demais.
-2. O Discovery Agent nao inventa produto.
-3. O Recommendation Agent nao ignora restricao alimentar.
-4. O Order Agent nao promete entrega antes de validar estoque.
-5. O Fulfillment Agent nao depende da memoria do chat para saber o que foi comprado.
+1. O Welcome Agent não tenta recomendar cedo demais.
+2. O Discovery Agent não inventa produto.
+3. O Recommendation Agent não ignora restrição alimentar.
+4. O Order Agent não promete entrega antes de validar estoque.
+5. O Fulfillment Agent não depende da memória do chat para saber o que foi comprado.
 6. O Evaluator cria checkpoints entre decisoes sensiveis.
 7. O state store permite replay se o cliente reclamar.
 
@@ -1232,7 +1232,7 @@ O que esta arquitetura evita:
 09_fulfillment_plan.json
 ```
 
-Esse fluxo parece mais longo que um agente unico.
+Esse fluxo parece mais longo que um agente único.
 
 Mas ele reduz retrabalho.
 
@@ -1244,113 +1244,113 @@ E, principalmente, permite que a equipe entenda exatamente o que aconteceu.
 
 ---
 
-## ⚠️ Quando NAO Usar Multi-Agente
+## ⚠️ Quando NÃO Usar Multi-Agente
 
-Multi-agent systems nao sao resposta para tudo.
+Multi-agent systems não são resposta para tudo.
 
 A arquitetura adiciona overhead.
 
-Ela cria mais arquivos, mais contratos, mais pontos de falha e mais latencia.
+Ela cria mais arquivos, mais contratos, mais pontos de falha e mais latência.
 
-Use quando o beneficio supera esse custo.
+Use quando o benefício supera esse custo.
 
-Nao use multi-agente quando:
+Não use multi-agente quando:
 
 1. A tarefa cabe em uma resposta simples.
 2. O erro tem baixo custo.
-3. Nao ha criterios claros de avaliacao.
-4. O time ainda nao sabe manter state persistence basica.
-5. A latencia precisa ser minima e a resposta nao exige verificacao.
-6. O fluxo ainda muda todos os dias e contratos seriam desperdicio.
-7. O problema real e catalogo ruim, nao arquitetura.
+3. Não há critérios claros de avaliação.
+4. O time ainda não sabe manter state persistence básica.
+5. A latência precisa ser mínima e a resposta não exige verificação.
+6. O fluxo ainda muda todos os dias e contratos seriam desperdício.
+7. O problema real é catálogo ruim, não arquitetura.
 
-Exemplos em KODA onde um agente unico basta:
+Exemplos em KODA onde um agente único basta:
 
 1. "Qual o horario de atendimento?"
-2. "Meu pedido ja foi enviado?" quando o status vem direto do sistema.
-3. "Vocês entregam em Sao Paulo?"
+2. "Meu pedido já foi enviado?" quando o status vem direto do sistema.
+3. "Vocês entregam em São Paulo?"
 4. "Como falo com suporte humano?"
 
 Exemplos onde multi-agente faz sentido:
 
-1. Recomendacao com alergias, orcamento e preferencias.
-2. Pedido com multiplos produtos, cupom, estoque regional e frete.
+1. Recomendação com alergias, orçamento e preferências.
+2. Pedido com múltiplos produtos, cupom, estoque regional e frete.
 3. Jornada que continua depois do pagamento.
-4. Recuperacao de carrinho abandonado com historico sensivel.
-5. Comparacao de kits com custo por dose e restricoes alimentares.
+4. Recuperação de carrinho abandonado com histórico sensível.
+5. Comparação de kits com custo por dose e restrições alimentares.
 
-A regra pratica:
+A regra prática:
 
-Se voce nao consegue explicar o beneficio de cada agente, ele provavelmente nao deveria existir.
+Se você não consegue explicar o benefício de cada agente, ele provavelmente não deveria existir.
 
 Cada agente precisa ter ownership claro.
 
 Cada handoff precisa ter um contrato.
 
-Cada contrato precisa ser verificavel.
+Cada contrato precisa ser verificável.
 
 ### Sinais de Overengineering
 
 1. Agentes com nomes bonitos, mas responsabilidades sobrepostas.
-2. Muitos eventos para uma tarefa que caberia em uma funcao.
+2. Muitos eventos para uma tarefa que caberia em uma função.
 3. Evaluator que apenas repete "parece bom".
-4. Planner que cria planos genericos sem criterios concretos.
+4. Planner que cria planos genericos sem critérios concretos.
 5. State files enormes que ninguem le.
-6. Latencia piorando sem aumento mensuravel de qualidade.
+6. Latência piorando sem aumento mensuravel de qualidade.
 7. Debug mais dificil do que antes.
 
 Quando esses sinais aparecem, simplifique.
 
-Multi-agente bom parece inevitavel depois que voce entende o fluxo.
+Multi-agente bom parece inevitável depois que você entende o fluxo.
 
 Multi-agente ruim parece teatro.
 
 ### Perguntas de Design Antes de Criar Mais Um Agente
 
-1. Qual decisao esse agente possui que nenhum outro agente possui?
+1. Qual decisão esse agente possui que nenhum outro agente possui?
 2. Qual arquivo de entrada ele le?
 3. Qual arquivo de saida ele escreve?
 4. Qual criterio permite dizer que ele terminou?
 5. Qual falha ele previne?
-6. Qual latencia ele adiciona?
+6. Qual latência ele adiciona?
 7. Qual custo de token budget ele consome?
 8. Como o Evaluator verifica seu trabalho?
-9. Como o trace mostra sua decisao depois de uma reclamacao?
+9. Como o trace mostra sua decisão depois de uma reclamacao?
 10. O cliente perceberia piora se esse agente fosse removido?
 11. O time consegue explicar seu papel em uma frase?
 12. O agente reduz complexidade ou apenas muda complexidade de lugar?
 13. Existe state persistence suficiente para ele retomar a tarefa?
 14. Existe rubrica concreta para seu output?
-15. Ele precisa ser sincrono ou poderia reagir a evento?
+15. Ele precisa ser síncrono ou poderia reagir a evento?
 16. Ele precisa consultar ferramenta externa?
 17. Ele escreve dados sensiveis que exigem cuidado?
-18. Ele depende de informacao que pode ficar desatualizada?
-19. Ele tem fallback seguro se a avaliacao reprovar?
+18. Ele depende de informação que pode ficar desatualizada?
+19. Ele tem fallback seguro se a avaliação reprovar?
 20. Ele melhora qualidade de forma mensuravel?
 
 ---
 
 ## 🎯 Key Takeaways
 
-1. Generator/Evaluator do Nivel 2 e o caso de 2 agentes do padrao N-agent.
+1. Generator/Evaluator do Nível 2 e o caso de 2 agentes do padrão N-agent.
 
-2. A arquitetura Planner, Generator e Evaluator separa planejamento, execucao e validacao.
+2. A arquitetura Planner, Generator e Evaluator separa planejamento, execução e validação.
 
-3. O Planner reduz ambiguidade antes da geracao, criando etapas e criterios de sucesso.
+3. O Planner reduz ambiguidade antes da geração, criando etapas e critérios de sucesso.
 
 4. O Generator executa melhor quando recebe uma tarefa pequena e um contrato claro.
 
-5. O Evaluator continua sendo o gatekeeper contra sycophancy, contradicoes e erro factual.
+5. O Evaluator continua sendo o gatekeeper contra sycophancy, contradições e erro factual.
 
-6. File-based coordination com JSON e o caminho mais simples para aprender, auditar e evoluir.
+6. File-based coordination com JSON é o caminho mais simples para aprender, auditar e evoluir.
 
-7. Multi-agent systems devem ser usados quando a jornada exige ownership separado, nao porque parecem avancados.
+7. Multi-agent systems devem ser usados quando a jornada exige ownership separado, não porque parecem avançados.
 
 ---
 
-## 🚀 Checkpoint: O Que Voce Aprendeu
+## 🚀 Checkpoint: O Que Você Aprendeu
 
-- [ ] Consigo explicar por que Generator/Evaluator e o caso de 2 agentes do padrao N-agent.
+- [ ] Consigo explicar por que Generator/Evaluator e o caso de 2 agentes do padrão N-agent.
 
 - [ ] Consigo diferenciar Planner, Generator e Evaluator sem misturar responsabilidades.
 
@@ -1358,29 +1358,29 @@ Multi-agente ruim parece teatro.
 
 - [ ] Consigo escolher entre file-based, queue-based e API-based communication.
 
-- [ ] Consigo comparar strategies sequencial, paralelo e event-driven.
+- [ ] Consigo comparar estratégias sequencial, paralelo e event-driven.
 
 - [ ] Consigo decompor uma customer journey do KODA em agentes com input e output claros.
 
 - [ ] Consigo identificar quando multi-agente seria overkill.
 
-- [ ] Consigo escrever um `plan.json` com criterios de sucesso verificaveis.
+- [ ] Consigo escrever um `plan.json` com critérios de sucesso verificáveis.
 
-- [ ] Consigo escrever um `generation.json` com evidencias e suposicoes.
+- [ ] Consigo escrever um `generation.json` com evidências e suposições.
 
-- [ ] Consigo escrever um `evaluation.json` que aprova ou rejeita com feedback especifico.
+- [ ] Consigo escrever um `evaluation.json` que aprova ou rejeita com feedback específico.
 
 - [ ] Consigo explicar por que state persistence protege jornadas longas contra context rot.
 
-- [ ] Consigo revisar um trace e descobrir qual agente tomou qual decisao.
+- [ ] Consigo revisar um trace e descobrir qual agente tomou qual decisão.
 
 ---
 
-## 📚 Referencias & Proximas Leituras
+## 📚 Referências & Próximas Leituras
 
 - `curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md` para revisar a base Generator/Evaluator.
 
-- `curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md` para ver como KODA evolui de padroes praticos para arquitetura.
+- `curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md` para ver como KODA evolui de padrões práticos para arquitetura.
 
 - `curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md` para aprofundar como estado externo sustenta agentes longos.
 
@@ -1390,63 +1390,63 @@ Multi-agente ruim parece teatro.
 
 - `curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md` para aplicar esses conceitos em jornadas completas do KODA.
 
-- `curriculum/02-nivel-2-practical-patterns/03-rubric-design.md` para fortalecer os criterios usados pelo Evaluator.
+- `curriculum/02-nivel-2-practical-patterns/03-rubric-design.md` para fortalecer os critérios usados pelo Evaluator.
 
 - Papers e posts sobre multi-agent orchestration em LLM applications.
 
-- Documentacao de Redis Streams quando o fluxo exigir filas leves.
+- Documentação de Redis Streams quando o fluxo exigir filas leves.
 
-- Documentacao de RabbitMQ quando o fluxo exigir entrega duravel e backpressure.
+- Documentação de RabbitMQ quando o fluxo exigir entrega durável e backpressure.
 
-- Guias de REST e gRPC para contratos entre servicos internos.
+- Guias de REST e gRPC para contratos entre serviços internos.
 
 ---
 
-## 💭 Reflexao Final
+## 💭 Reflexão Final
 
-Um bom sistema multi-agente nao tenta parecer inteligente.
+Um bom sistema multi-agente não tenta parecer inteligente.
 
-Ele tenta ser confiavel.
+Ele tenta ser confiável.
 
-Essa diferenca muda a arquitetura.
+Essa diferença muda a arquitetura.
 
-Quando Marina pediu ajuda, ela nao queria saber quantos agentes existiam por tras do KODA.
+Quando Marina pediu ajuda, ela não queria saber quantos agentes existiam por trás do KODA.
 
 Ela queria ser ouvida.
 
-Queria que sua intolerancia fosse respeitada.
+Queria que sua intolerância fosse respeitada.
 
-Queria que o orcamento importasse.
+Queria que o orçamento importasse.
 
-Queria uma recomendacao clara, segura e humana.
+Queria uma recomendação clara, segura e humana.
 
-A melhor arquitetura e aquela que torna isso repetivel.
+A melhor arquitetura é aquela que torna isso repetível.
 
-Planner, Generator e Evaluator nao sao personagens decorativos.
+Planner, Generator e Evaluator não são personagens decorativos.
 
-Sao uma forma de dividir responsabilidade para proteger a experiencia do cliente.
+São uma forma de dividir responsabilidade para proteger a experiência do cliente.
 
-O Planner da direcao.
+O Planner dá direção.
 
 O Generator cria valor.
 
 O Evaluator protege qualidade.
 
-O state store guarda memoria.
+O state store guarda memória.
 
-O harness mantem todos honestos.
+O harness mantém todos honestos.
 
 Quando esses elementos trabalham juntos, KODA deixa de ser apenas um chatbot bom em respostas curtas.
 
 Ele se torna um sistema capaz de acompanhar uma pessoa por uma jornada inteira.
 
-Esse e o salto do Nivel 3.
+Esse é o salto do Nível 3.
 
-Nao e adicionar agentes por ambicao tecnica.
+Não é adicionar agentes por ambição técnica.
 
-E criar uma arquitetura onde cada decisao importante tem dono, evidencia e validacao.
+E criar uma arquitetura onde cada decisão importante tem dono, evidência e validação.
 
-Esse e o tipo de sistema que clientes sentem, mesmo sem ver.
+Esse é o tipo de sistema que clientes sentem, mesmo sem ver.
 
 ---
 
@@ -1455,9 +1455,9 @@ Esse e o tipo de sistema que clientes sentem, mesmo sem ver.
 | Campo | Valor |
 | --- | --- |
 | Arquivo | `curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md` |
-| Nivel | 3 - Arquitetura Avancada |
+| Nível | 3 - Arquitetura Avançada |
 | Tempo | 120 minutos |
 | Status | Completo |
-| Proximo | `curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md` |
+| Próximo | `curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md` |
 | Atualizado | Maio 2026 |
 
