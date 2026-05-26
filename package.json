@@ -1,0 +1,21 @@
+{
+  "name": "long-running-agents",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.18.0"
+  },
+  "scripts": {
+    "lint": "eslint src/ tests/ scripts/",
+    "lint:fix": "eslint src/ tests/ scripts/ --fix",
+    "test:unit": "node --experimental-test-module-mocks --test tests/unit/*.test.js",
+    "test:integration": "node --test tests/integration/*.test.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "globals": "^17.5.0"
+  }
+}

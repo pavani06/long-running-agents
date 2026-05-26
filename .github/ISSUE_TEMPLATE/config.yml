@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Dúvida operacional / runbook"
+    url: https://github.com/pavani06/HoP/blob/main/docs/guides/koda-operator-runbook-complete.md
+    about: "Para questões sobre como operar o KODA, consulte o runbook antes de abrir uma issue."

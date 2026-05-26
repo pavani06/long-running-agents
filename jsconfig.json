@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2023",
+    "checkJs": false,
+    "noEmit": true,
+    "strict": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.js", "scripts/**/*.js", "tests/**/*.js"],
+  "exclude": ["node_modules", "artifacts", ".runtime", ".opencode"]
+}

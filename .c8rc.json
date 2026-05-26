@@ -1,0 +1,23 @@
+{
+  "all": true,
+  "src": ["src/"],
+  "exclude": [
+    "node_modules/",
+    "tests/",
+    "scripts/",
+    "config/",
+    "docs/",
+    "agents/",
+    "supabase/",
+    ".planning/",
+    "coverage/"
+  ],
+  "reporter": ["text", "text-summary", "html", "lcov"],
+  "check-coverage": false,
+  "lines": 85,
+  "branches": 75,
+  "functions": 85,
+  "statements": 85,
+  "report-dir": "coverage",
+  "skip-full": false
+}

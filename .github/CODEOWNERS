@@ -1,0 +1,4 @@
+# Crossroad files — high import-fanout requiring code-owner review
+# Rationale: changes to these files have outsized blast radius.
+# Add critical paths below as the project grows.
+

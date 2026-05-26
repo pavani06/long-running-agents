@@ -1,0 +1,42 @@
+# HoP
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.local
+
+# Build
+dist/
+build/
+.next/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Runtime artifacts
+.runtime/
+artifacts/
+.sisyphus/
+
+# Supabase generated
+supabase/.combined-migration.sql
+.worktrees/
