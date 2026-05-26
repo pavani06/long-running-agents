@@ -458,13 +458,9 @@ class LockFileManager:
                 fd = os.open(self.lock_path, flags)
                 with os.fdopen(fd, "w", encoding="utf-8") as file:
                     json.dump(payload, file, indent=2)
-                    file.write("
-")
+                    file.write("\n")
                 return True
             except FileExistsError:
-                if self.is_stale():
-                    self.lock_path.unlink(missing_ok=True)
-                    continue
                 time.sleep(sleep_seconds)
         return False
 
@@ -495,14 +491,15 @@ A função `release_lock()` confere ownership antes de remover o arquivo.
 
 Isso evita que um agente apague o lock de outro por engano.
 
+A detecção de stale lock (`is_stale`) é usada pelo supervisor, não pelos agentes concorrentes. O supervisor lê o lock, confere o TTL e, se o dono original não responder mais, remove o lock de forma segura. Agentes que disputam o mesmo recurso devem fazer retry ou reportar `failed` — nunca desbloquear locks que não criaram.
+
 ```python
 def atomic_write_json(path, payload):
     final_path = Path(path)
     temp_path = final_path.with_suffix(final_path.suffix + ".tmp")
     with temp_path.open("w", encoding="utf-8") as file:
         json.dump(payload, file, indent=2, ensure_ascii=False)
-        file.write("
-")
+        file.write("\n")
         file.flush()
         os.fsync(file.fileno())
     os.replace(temp_path, final_path)
@@ -946,7 +943,8 @@ Observe como o fluxo evita chamada direta entre agentes.
 │  ┌──────────────────────────┐      ┌──────────────────────────┐              │
 │  │ evaluation.status.json   │◀────▶│ evaluation.lock.json     │              │
 │  └────────────┬─────────────┘      └──────────────────────────┘              │
-│               │ approved                                                     │
+│               │ completed (status)                                            │
+│               │ decision dentro de evaluation.json                             │
 │               ▼                                                              │
 │  ┌──────────────────────────┐                                                │
 │  │ evaluation.json          │                                                │
