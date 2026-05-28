@@ -245,7 +245,7 @@ Ela vira infraestrutura quando cada mudança deixa trace.
 |------------|--------------|----------------|---------------|---------------------|---------------|----------------|------------|
 | Intuição Humana | Baixa a média | Baixa | Baixo | Alto | Alto | Baixa | Decisões raras com contexto rico |
 | Checklist Simples | Média | Média | Baixo | Baixo | Médio | Média | Validações objetivas de presença ou formato |
-| Rubric Estruturado | Alta | Alta | Médio | Médio | Médio baixo | Alta | Qualidade com múltiplas dimensions |
+| Rubrica Estruturada | Alta | Alta | Médio | Médio | Médio baixo | Alta | Qualidade com múltiplas dimensions |
 | Avaliação Automatizada | Alta para regras claras | Muito alta | Alto | Muito baixo | Médio | Alta | Campos estruturados, regras fixas, smoke checks |
 | Rubric com Human Review | Muito alta | Média | Alto | Alto | Baixo | Muito alta | Casos críticos, saúde, dinheiro, compliance |
 | Ensemble de Evaluators | Alta | Média | Alto | Alto | Médio baixo | Alta | Outputs ambíguos com risco de falso positivo |
@@ -255,11 +255,11 @@ A escolha certa depende do risco.
 
 Para uma saudação simples, checklist basta.
 
-Para um pedido com pagamento, promoção e restrição alimentar, rubric estruturado é o mínimo aceitável.
+Para um pedido com pagamento, promoção e restrição alimentar, rubrica estruturada é o mínimo aceitável.
 
 Para decisões que podem causar dano ao cliente, adicione Human Review ou regras determinísticas antes da aprovação final.
 
-KODA deve preferir Rubric Estruturado como padrão porque combina clareza, custo aceitável e trace auditável.
+KODA deve preferir Rubrica Estruturada como padrão porque combina clareza, custo aceitável e trace auditável.
 
 ---
 
@@ -794,7 +794,7 @@ Agrupe critérios com diferença maior que 1 ponto em escala de 5. Esses critér
 Critério de saída: existe evidência escrita de que a etapa foi concluída.
 
 ### Passo 4: Medir inter-rater reliability
-Calcule porcentagem de concordância por dimension. Para KODA, busque pelo menos 85% em gate criteria antes de release.
+Calcule porcentagem de concordância simples por dimension. Para uso prático no KODA, busque pelo menos 85% em gate criteria antes de release. Em contextos de pesquisa ou auditoria externa, prefira medidas mais robustas como Cohen's Kappa ou Krippendorff's Alpha, que corrigem concordância por acaso.
 Critério de saída: existe evidência escrita de que a etapa foi concluída.
 
 ### Passo 5: Detectar bias
