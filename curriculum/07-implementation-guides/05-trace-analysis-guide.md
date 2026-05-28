@@ -67,7 +67,7 @@ Este é o guia que você abre **quando algo já quebrou** e você precisa descob
 
 ### Resumo Rápido (Referência)
 
-Uma trace completa de agente contém 6 seções principais. Para diagnóstico, você precisa saber **o que cada seção te conta** sobre o problema:
+Para fins de diagnóstico, focamos em 6 áreas da trace (o `04-trace-reading.md` apresenta o schema completo com 7 componentes). Você precisa saber **o que cada área te conta** sobre o problema:
 
 ```
 TRACE COMPLETA
@@ -117,7 +117,7 @@ Guarde esta tabela. É seu ponto de partida para **qualquer** investigação de 
 
 ## 🔍 Padrões de Falha: Taxonomia Completa
 
-Agentes long-running falham de maneiras previsíveis. Após analisar centenas de traces do KODA, identificamos **6 padrões de falha fundamentais** que cobrem 95% dos incidentes reais.
+Agentes long-running falham de maneiras previsíveis. Após analisar centenas de traces do KODA, identificamos **6 padrões de falha fundamentais** que cobrem 95% dos incidentes reais. (Veja também o [Exemplo 3: O Loop Infinito](#exemplo-3-o-loop-infinito-de-recomendações) para um caso clássico de loop — que se manifesta como Decision Contradiction repetida ou Coordination Failure entre iterações.)
 
 Cada padrão inclui:
 - 🔴 **Sintoma:** O que o cliente/usuário observa
@@ -860,7 +860,7 @@ Nova trace chegou
 
 ## 🏥 Exemplos de Traces Reais Comentados
 
-Esta seção apresenta **4 exemplos completos** de traces problemáticas com análise passo a passo. Para cada exemplo, você verá a trace, o diagnóstico e a correção aplicada.
+Esta seção apresenta **4 exemplos completos** de traces com análise passo a passo — incluindo uma trace saudável (Exemplo 1) para você aprender a reconhecer quando uma trace está CORRETA, além de três traces com problemas reais. Para cada exemplo, você verá a trace, o diagnóstico e a correção aplicada (quando houver).
 
 ---
 
