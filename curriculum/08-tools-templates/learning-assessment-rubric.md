@@ -477,17 +477,20 @@ Antes de aplicar os critérios a cada conceito, é fundamental entender o que ca
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘                   │
 │                                         │                                             │
 │                            ┌────────────▼────────────┐                                │
-│                            │    DECISION GATE         │                                │
-│                            │                          │                                │
-│                            │  Score ≥ 80% em todos    │                                │
-│                            │  os conceitos do nível?  │                                │
-│                            │                          │                                │
-│                            │  ┌────────────────────┐  │                                │
-│                            │  │ SIM → AVANÇA para   │  │                                │
-│                            │  │       próximo nível │  │                                │
-│                            │  │ NÃO → REFORÇA gaps  │  │                                │
-│                            │  │       identificados │  │                                │
-│                            │  └────────────────────┘  │                                │
+│                            │    DECISION GATE          │                                │
+│                            │  (conceitual — a decisão  │                                │
+│                            │   final é por conceito,   │                                │
+│                            │   ver Metodologia de      │                                │
+│                            │   Scoring na pg. seguinte)│                                │
+│                            │                           │                                │
+│                            │  ┌────────────────────┐   │                                │
+│                            │  │ Nível alvo atingido │   │                                │
+│                            │  │ em cada conceito?   │   │                                │
+│                            │  │ SIM → AVANÇA para   │   │                                │
+│                            │  │       próximo nível │   │                                │
+│                            │  │ NÃO → REFORÇA gaps  │   │                                │
+│                            │  │       identificados │   │                                │
+│                            │  └────────────────────┘   │                                │
 │                            └────────────┬────────────┘                                │
 │                                         │                                             │
 │                            ┌────────────▼────────────┐                                │
@@ -1517,7 +1520,7 @@ A progressão em C7 costuma começar com vocabulário e reconhecimento de sintom
 
 **Nível 2, Cenário 1:** Você entrega um exemplo funcional do time e pede para o learner adaptar o padrão para avaliação de recomendações que passam validação técnica, mas podem ser ruins para o cliente. Ele segue o template, altera os campos certos, roda a validação esperada e explica o fluxo com segurança. Se você remove o template, ele demora para decidir a estrutura inicial.
 
-**Nível 2, Cenário 2:** Você entrega um bug específico e pede para criar uma rubric com dimensions, weights, anchors e threshold para recomendação KODA. O learner encontra a falha, corrige sem mudar partes não relacionadas e registra a evidência do comportamento novo. A solução é correta, mas ainda espelha bastante o padrão existente.
+**Nível 2, Cenário 2:** Você pede para o learner criar uma rubric para avaliação de recomendações KODA do zero, fornecendo os critérios de negócio (adequação ao cliente, safety, custo-benefício). O learner define 4 dimensions com weights consistentes, escreve anchors para cada nível de score, estabelece um threshold de aprovação e consegue aplicar a rubric em 5 exemplos reais obtendo scores consistentes entre aplicações repetidas. A rubric funciona, mas segue de perto o formato ensinado no módulo.
 
 **Nível 2, Cenário 3:** Em review, o learner sabe apontar qual critério da rubric foi atendido pelo PR. Ele também sabe dizer o que ainda não demonstrou para Nível 3, principalmente autonomia em domínio novo e justificativa de trade-offs.
 
@@ -1573,8 +1576,9 @@ Use esta checklist para se posicionar em cada conceito. Para cada afirmação, m
 
 1. Para cada conceito, leia as afirmações do Nível 1 ao 4
 2. Marque `[x]` nas afirmações que são **consistentemente verdadeiras** sobre sua capacidade atual
-3. Seu nível em cada conceito é o nível mais alto onde você marcou **todas** as afirmações
-4. Afirmações parcialmente verdadeiras contam como não marcadas — o critério é consistência
+3. Esta checklist é uma **ferramenta de triagem inicial** — o nível sugerido é uma estimativa. A determinação definitiva requer validação com mentor usando os critérios detalhados na seção "Critérios por Conceito" e as perguntas-gatilho do "Guia para Mentores"
+4. Como triagem: considere seu nível provisório como o mais alto onde você marcou **todas** as afirmações. Se houver dúvida entre dois níveis, assuma o mais baixo até validar com evidências externas
+5. Afirmações parcialmente verdadeiras contam como não marcadas — o critério é consistência
 
 ### Context Management (C1)
 
@@ -2044,7 +2048,7 @@ Esta seção conecta a rubric com o contexto real da equipe KODA — como integr
 - Definir níveis-alvo por cargo (ver tabela abaixo)
 - Garantir que o tempo de mentoria está alocado
 - Usar dados agregados da rubric para identificar gaps na equipe (ex: "80% do time está abaixo de N2 em C7 — precisamos de workshop de Multi-Agent Coordination")
-- Não usar a rubric para绩效考核 puro — é ferramenta de desenvolvimento, não de punição
+- Não usar a rubric para avaliação de desempenho puro — é ferramenta de desenvolvimento, não de punição
 
 ---
 
