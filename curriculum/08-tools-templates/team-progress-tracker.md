@@ -45,6 +45,8 @@ Adapte o número de linhas e colunas conforme o tamanho da sua equipe. Os exempl
 | 4 | `[Nome]` | ⏳ | ⏳ | ⏳ | ⏳ | 0/16 | 0/8 | ⏳ |
 | 5 | `[Nome]` | ⏳ | ⏳ | ⏳ | ⏳ | 0/16 | 0/8 | ⏳ |
 
+> **Nota sobre a contagem de exercícios:** O denominador `/16` neste template considera 10 exercícios formais + 3 módulos de aplicação KODA (`nivel-X-koda.md`) + 3 case studies práticos do Nível 4. Ajuste o denominador conforme os itens práticos do seu currículo real.
+
 ### Exemplo Preenchido (Equipe Fictícia)
 
 | # | Membro | Nível 1<br>Fundamentals | Nível 2<br>Padrões | Nível 3<br>Arquitetura | Nível 4<br>KODA | Exercícios<br>Completos | Case Studies<br>Lidos | Status Geral |
@@ -82,7 +84,7 @@ Use esta seção para rastrear quais módulos e exercícios cada membro completo
 | 04-trace-reading.md | ⏳ | ✅ | ✅ | ⏳ | ✅ |
 | exercise-01.md | ⏳ | ✅ | ✅ | ⏳ | ✅ |
 | exercise-02.md | ⏳ | ✅ | ✅ | ⏳ | ✅ |
-| exercise-03.md | ⏳ | 🔄 | ✅ | ⏳ | ✅ |
+| exercise-03.md | ⏳ | ✅ | ✅ | ⏳ | ✅ |
 | nivel-2-koda.md | ⏳ | ✅ | ✅ | ⏳ | ✅ |
 
 ### Nível 3 — Arquitetura Avançada
@@ -95,8 +97,8 @@ Use esta seção para rastrear quais módulos e exercícios cada membro completo
 | 04-server-side-compaction.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
 | 05-harness-evolution.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
 | exercise-01.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
-| exercise-02.md | ⏳ | ⏳ | 🔄 | ⏳ | ✅ |
-| exercise-03.md | ⏳ | ⏳ | ⏳ | ⏳ | ✅ |
+| exercise-02.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
+| exercise-03.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
 | nivel-3-koda.md | ⏳ | ⏳ | ✅ | ⏳ | ✅ |
 
 ### Nível 4 — KODA-Específico
@@ -124,7 +126,7 @@ Use esta seção para rastrear quais módulos e exercícios cada membro completo
 |-------|--------------------|----------------------|------------------------|--------------------|
 | Nível 1 — Fundamentos | 4 | 1 | 0 | 80% |
 | Nível 2 — Padrões | 3 | 1 | 1 | 60% |
-| Nível 3 — Arquitetura | 1 | 1 | 3 | 20% |
+| Nível 3 — Arquitetura | 2 | 1 | 2 | 40% |
 | Nível 4 — KODA | 1 | 1 | 3 | 20% |
 
 ### Métricas de Velocidade
@@ -144,10 +146,10 @@ Progresso por Nível — Equipe Completa (5 membros)
 
 Nível 1  ████████████████████░░░░ 80% (4/5)
 Nível 2  ███████████████░░░░░░░░░ 60% (3/5)
-Nível 3  █████░░░░░░░░░░░░░░░░░░░ 20% (1/5)
+Nível 3  ██████████░░░░░░░░░░░░░░ 40% (2/5)
 Nível 4  █████░░░░░░░░░░░░░░░░░░░ 20% (1/5)
 
-Progresso Individual — Exercícios (x/16)
+Progresso Individual — Itens Práticos (x/16, veja definição acima)
 
 Ana     ██████████░░░░░░░░░░░░░░ 7/16  (44%)
 Bruno   ████████████████░░░░░░░░ 12/16 (75%)
