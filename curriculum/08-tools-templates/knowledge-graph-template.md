@@ -626,26 +626,26 @@ graph TD
 
 ```mermaid
 graph TD
-    A["Context Management\n& Token Budgeting"]
-    B["LLM Token Architecture"]
-    C["Context Window Limits"]
-    D["State Persistence"]
-    E["Sprint Planning"]
-    F["Multi-Agent Systems"]
-    G["Long-Running Agents"]
-    B -->|must understand| A
-    C -->|must understand| A
-    A -->|enables| D
-    A -->|informs| E
-    D -->|coordinates via| F
-    E -->|powers| G
-    style A fill:#90EE90,color:#1a5c1a
-    style B fill:#87CEEB,color:#1a3d5c
-    style C fill:#87CEEB,color:#1a3d5c
-    style D fill:#FFB347,color:#7a4a00
-    style E fill:#FFB347,color:#7a4a00
-    style F fill:#FF6B6B,color:#7a0000
-    style G fill:#FF6B6B,color:#7a0000
+    CTX["Context Management\n& Token Budgeting"]
+    LLM["LLM Token Architecture"]
+    LIMIT["Context Window Limits"]
+    STATE["State Persistence"]
+    SPRINT["Sprint Planning"]
+    MULTI["Multi-Agent Systems"]
+    LRA["Long-Running Agents"]
+    LLM -->|must understand| CTX
+    LIMIT -->|must understand| CTX
+    CTX -->|enables| STATE
+    CTX -->|informs| SPRINT
+    STATE -->|coordinates via| MULTI
+    SPRINT -->|powers| LRA
+    style CTX fill:#90EE90,color:#1a5c1a
+    style LLM fill:#87CEEB,color:#1a3d5c
+    style LIMIT fill:#87CEEB,color:#1a3d5c
+    style STATE fill:#FFB347,color:#7a4a00
+    style SPRINT fill:#FFB347,color:#7a4a00
+    style MULTI fill:#FF6B6B,color:#7a0000
+    style LRA fill:#FF6B6B,color:#7a0000
 ```
 
 **Narrativa:**
@@ -875,10 +875,10 @@ Esta seção **não varia entre conceitos**. Ela documenta o sistema visual que 
 
 | Formato | Sintaxe Mermaid | Uso | Exemplo |
 |---|---|---|---|
-| Retângulo com cantos arredondados | `A["texto"]` | Padrão para conceitos, módulos, componentes | `A["Context Management"]` |
+| Retângulo (bordas retas) | `A["texto"]` | Padrão para conceitos, módulos, componentes | `CTX["Context Management"]` |
+| Retângulo com cantos arredondados | `A("texto")` | Entidades externas, sistemas, APIs | `WHATSAPP("WhatsApp\nAPI")` |
 | Losango (decisão) | `A{"texto"}` | Pontos de decisão, bifurcações no fluxo | `CRIT{"Informação\ncrítica?"}` |
 | Círculo | `A(("texto"))` | Estados finais, endpoints, início/fim de fluxo | `END(("Cliente\nAtendido"))` |
-| Retângulo (sharp) | `A("texto")` | Entidades externas, sistemas, APIs | `A("WhatsApp\nAPI")` |
 | Subgraph | `subgraph NOME ["título"] ... end` | Agrupamento de nós relacionados | `subgraph DOMINIO ["Domínio de Pricing"]` |
 
 **Regras de nomenclatura de nós:**
@@ -1020,26 +1020,26 @@ Esta seção contém um exemplo completo e autocontido de um detailed graph pree
 
 ```mermaid
 graph TD
-    A["Context Management\n& Token Budgeting"]
-    B["LLM Token Architecture"]
-    C["Context Window Limits"]
-    D["State Persistence"]
-    E["Sprint Planning"]
-    F["Multi-Agent Systems"]
-    G["Long-Running Agents"]
-    B -->|must understand| A
-    C -->|must understand| A
-    A -->|enables| D
-    A -->|informs| E
-    D -->|coordinates via| F
-    E -->|powers| G
-    style A fill:#90EE90,color:#1a5c1a
-    style B fill:#87CEEB,color:#1a3d5c
-    style C fill:#87CEEB,color:#1a3d5c
-    style D fill:#FFB347,color:#7a4a00
-    style E fill:#FFB347,color:#7a4a00
-    style F fill:#FF6B6B,color:#7a0000
-    style G fill:#FF6B6B,color:#7a0000
+    CTX["Context Management\n& Token Budgeting"]
+    LLM["LLM Token Architecture"]
+    LIMIT["Context Window Limits"]
+    STATE["State Persistence"]
+    SPRINT["Sprint Planning"]
+    MULTI["Multi-Agent Systems"]
+    LRA["Long-Running Agents"]
+    LLM -->|must understand| CTX
+    LIMIT -->|must understand| CTX
+    CTX -->|enables| STATE
+    CTX -->|informs| SPRINT
+    STATE -->|coordinates via| MULTI
+    SPRINT -->|powers| LRA
+    style CTX fill:#90EE90,color:#1a5c1a
+    style LLM fill:#87CEEB,color:#1a3d5c
+    style LIMIT fill:#87CEEB,color:#1a3d5c
+    style STATE fill:#FFB347,color:#7a4a00
+    style SPRINT fill:#FFB347,color:#7a4a00
+    style MULTI fill:#FF6B6B,color:#7a0000
+    style LRA fill:#FF6B6B,color:#7a0000
 ```
 
 **Como ler:** Os pré-requisitos `LLM Token Architecture` e `Context Window Limits` alimentam o entendimento do conceito central. Este, por sua vez, habilita `State Persistence` e informa `Sprint Planning`. Sem Context Management, `Multi-Agent Systems` e `Long-Running Agents` colapsam — os nós vermelhos são o "blast radius" da falha.
@@ -1059,17 +1059,17 @@ flowchart TD
     INJECT["Context Injection\nmonta o prompt com:\nsystem + perfil + resumo +\njanela + catálogo + espaço"]
     MODEL["Modelo recebe\ncontexto completo e\ngera resposta"]
     
-    MSG --> PARSE
-    PARSE --> CLASS
-    CLASS --> CRIT
+    MSG -->|received by| PARSE
+    PARSE -->|feeds| CLASS
+    CLASS -->|routes to| CRIT
     CRIT -->|Sim| PERSIST
     CRIT -->|Útil| COMP
     CRIT -->|Ruído| WINDOW
-    COMP --> WINDOW
-    WINDOW --> INJECT
-    PERSIST --> RETRIEVE
-    RETRIEVE --> INJECT
-    INJECT --> MODEL
+    COMP -->|feeds| WINDOW
+    WINDOW -->|outputs to| INJECT
+    PERSIST -->|queried by| RETRIEVE
+    RETRIEVE -->|injects into| INJECT
+    INJECT -->|prompt sent to| MODEL
     MODEL -->|Novo turno| MSG
     
     style CRIT fill:#FFD700,color:#7a5c00
@@ -1658,7 +1658,7 @@ Use este template para estruturar seu review:
 
 **R:** Sim! O template foi desenhado para os 8 Core Concepts, mas funciona para qualquer conceito do currículo. Features do KODA (ex: "Checkout Flow"), padrões transversais (ex: "Error Recovery"), e até conceitos externos (ex: "Model Selection Strategy") podem ser documentados com este template. A única adaptação necessária: se o conceito não tem um módulo core correspondente, a tabela de mapeamento vai referenciar outros documentos (ex: ADRs, guides, case studies).
 
-### P: "Como faço para平衡 detalhe e simplicidade nos diagramas?"
+### P: "Como faço para equilibrar detalhe e simplicidade nos diagramas?"
 
 **R:** Use a **regra das 3 perguntas**: para cada nó que você pensa em adicionar, pergunte: (1) Se eu remover este nó, alguém vai tomar uma decisão errada? (2) Se eu remover este nó, o diagrama ainda conta a história completa? (3) Este nó adiciona clareza ou adiciona ruído? Se a resposta para (1) for "não" E a resposta para (3) for "ruído", remova. Se a resposta para (1) for "sim", mantenha — mesmo que o diagrama fique um pouco mais complexo. Clareza com 12 nós é melhor que simplicidade enganosa com 6 nós.
 
@@ -2494,29 +2494,30 @@ graph LR
 
 ## 📊 Métricas de Qualidade do Template
 
-Esta seção registra as métricas que usamos para avaliar se o template está funcionando. Atualize conforme novos dados chegarem.
+Esta seção define as métricas que o time usará para avaliar se o template está cumprindo seu propósito. Essas métricas devem ser coletadas a partir de Junho 2026, quando houver volume suficiente de detailed graphs criados.
 
-### Métricas de Adoção (Maio 2026)
+### Métricas de Adoção
 
-| Métrica | Valor Atual | Meta | Status |
-|---|---|---|---|
-| Detailed graphs publicados | 2 (Context Management, State Persistence) | 8 (todos os Core Concepts) | 🟡 25% |
-| Tempo médio de preenchimento | ~120 min (estimado) | < 90 min | 🟡 A validar |
-| Satisfação do revisor (NPS) | Não medido | > 50 | ⏳ Pendente |
-| Diagramas que passam no checklist na 1a tentativa | Não medido | > 80% | ⏳ Pendente |
-| Tempo de onboarding com detailed graph | ~10 min (anecdótico) | < 15 min | 🟢 Preliminar |
-| Bugs encontrados via detailed graph | 1 (lactose bug) | N/A (qualitativo) | 🟢 Evidência inicial |
+| Métrica | Meta |
+|---|---|
+| Detailed graphs publicados | 8 (todos os Core Concepts) |
+| Tempo médio de preenchimento | < 90 min |
+| Satisfação do revisor (NPS) | > 50 |
+| Diagramas que passam no checklist na 1a tentativa | > 80% |
+| Tempo de onboarding com detailed graph | < 15 min |
+| Bugs de produção diagnosticados via detailed graph | 3+ (qualitativo) |
 
-### Feedback do Time (Coletar até Junho 2026)
+### Perguntas para Retrospectiva
 
-**Perguntas para retrospectiva:**
+Coletar trimestralmente em retrospectiva do time:
+
 1. "O detailed graph te ajudou a tomar uma decisão de arquitetura? Qual?"
 2. "Quanto tempo você gastou preenchendo o template? Foi mais ou menos que o esperado?"
 3. "O que foi mais difícil no preenchimento?"
 4. "O que você mudaria no template?"
 5. "Você consulta detailed graphs existentes? Com que frequência?"
 
-### Critérios de Sucesso do Template (Meta: Dezembro 2026)
+### Critérios de Sucesso do Template
 
 - [ ] 8/8 Core Concepts com detailed graph publicado
 - [ ] Tempo médio de preenchimento < 90 minutos
