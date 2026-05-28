@@ -93,7 +93,7 @@ O harness do KODA em janeiro era o que o time chamava de "frankenharness" — um
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                 KODA HARNESS — JANEIRO 2026 (FRANKENHARNESS)                │
+│                 KODA HARNESS — JANEIRO 2026 (DIAGNÓSTICO INICIAL)           │
 └─────────────────────────────────────────────────────────────────────────────┘
 
                               ┌──────────────────────┐
@@ -102,39 +102,54 @@ O harness do KODA em janeiro era o que o time chamava de "frankenharness" — um
                                          │
                               ┌──────────▼───────────┐
                               │    KODA CORE          │
-                              │    (Monólito)         │
+                              │  (Single Agent +      │
+                              │   20+ tools Zod)      │
                               └──────────┬───────────┘
                                          │
           ┌──────────────────────────────┼──────────────────────────────┐
           │                              │                              │
 ┌─────────▼─────────┐        ┌──────────▼──────────┐       ┌───────────▼─────────┐
-│  VALIDATOR V1     │        │  CACHE MANAGER      │       │  PROMPT TEMPLATES   │
-│  (MVP1 legado)    │        │  (MVP2 legado)      │       │  (15 versões        │
+│  PROMPT ÚNICO     │        │  CACHE MANAGER      │       │  PROMPT TEMPLATES   │
+│  + TOOLS          │        │  (MVP2 legado)      │       │  (15 versões        │
 │                   │        │                     │       │   diferentes!)      │
-│  3 chamadas API   │        │  Worker 15min       │       │                     │
-│  sequenciais      │        │  promessas.json     │       │  Nunca limpas       │
-│  Latência: 5.8s   │        │  Ineficaz           │       │  Inconsistentes     │
+│  Planner,         │        │  Worker 15min       │       │                     │
+│  Generator,       │        │  promessas.json     │       │  Nunca limpas       │
+│  Evaluator         │        │  Ineficaz           │       │  Inconsistentes     │
+│  TUDO no mesmo    │        │                     │       │                     │
+│  agente           │        │                     │       │                     │
 └─────────┬─────────┘        └──────────┬──────────┘       └───────────┬─────────┘
           │                              │                              │
           └──────────────────────────────┼──────────────────────────────┘
                                          │
-                              ┌──────────▼───────────┐
-                              │   ESTADO (Memória)   │
-                              │                      │
-                              │  Tudo em RAM         │
-                              │  Perde em restart    │
-                              │  Sem persistência    │
-                              └──────────────────────┘
+                         ┌───────────────┼───────────────┐
+                         │               │               │
+               ┌─────────▼─────────┐ ┌───▼──────────┐ ┌─▼──────────────┐
+               │   PERSISTÊNCIA    │ │  COORDENAÇÃO │ │  TELEMETRIA    │
+               │   (EXISTENTE!)    │ │  (PARCIAL)   │ │  (BÁSICA)      │
+               │                   │ │              │ │                │
+               │ PostgreSQL+Redis  │ │ Redis locks  │ │ StageTimings   │
+               │ Prisma            │ │ em alguns    │ │ mas sem        │
+               │ User/Cart/Order/  │ │ fluxos       │ │ audit trail    │
+               │ Memories/Context   │ │              │ │ completo       │
+               │                   │ │ Race cond    │ │                │
+               │ + MemoryExtractor │ │ em carrinho  │ │ Custo invisível│
+               │ + Cache Redis     │ │ documentada  │ │                │
+               └───────────────────┘ └──────────────┘ └────────────────┘
 
 PROBLEMAS IDENTIFICADOS:
 ━━━━━━━━━━━━━━━━━━━━━
-1. Componentes legados de 3 MVPs ainda ativos (Validator V1, Cache Manager)
-2. 15 versões de prompt templates diferentes (cada dev usava o seu)
-3. Estado apenas em RAM — qualquer restart = perda total de contexto
-4. Sem separação Generator/Evaluator — KODA auto-avaliava com viés
-5. Zero trace reading — impossível debugar decisões do agente
-6. Custo crescente: 3 chamadas API por pedido + worker de 15min + rerouter
-7. Dívida técnica invisível: ninguém sabia quais componentes eram realmente necessários
+1. KODA opera como single agent + tools, não como equipe coordenada
+   (Planner, Generator, Evaluator colapsados no mesmo prompt)
+2. Avaliador ausente como agente independente — sem sycophancy protection
+3. Truncamento de histórico sem compactação crítica
+   (60 msg WhatsApp + 20 API, mas sem resumo curado)
+4. Coordenação frágil em carrinho (race condition documentada)
+5. Audit manifest ausente — traces com timings mas sem cadeia completa
+   de decisão (input → tools → output → decisão)
+6. Custo invisível — sem tracking de tokens por componente, ROI por camada
+7. 15 versões de prompt templates diferentes (cada dev usava o seu)
+8. Componentes legados de MVPs ainda ativos (Cache Manager do MVP2)
+9. Timings existem (StageTimings) mas sem replay completo da decisão
 ```
 
 ### A Decisão que Mudou Tudo
@@ -147,7 +162,7 @@ A proposta foi recebida com desconforto. O time de produto tinha 12 features no 
 
 > *"Se o KODA quebra 38% das promessas, adicionar features é como construir um segundo andar em cima de uma fundação rachada. Primeiro consertamos a fundação. Depois construímos."*
 
-O CEO aprovou. E assim nasceu o programa **KODA Continuous Improvement (KCI)** — 6 meses, 4 trimestres, 1 objetivo: transformar o KODA em uma plataforma que se auto-melhora.
+O CEO aprovou. E assim nasceu o programa **KODA Continuous Improvement (KCI)** — 6 meses, 2 trimestres (Q1 e Q2 de 2026), 1 objetivo: transformar o KODA em uma plataforma que se auto-melhora.
 
 ---
 
@@ -556,12 +571,12 @@ Recalibragem: automática a cada 2 semanas
 
 #### Impacto das Rubrics Adaptativas
 
-| Métrica | Rubric v1.0 (Jan) | Rubric v2.0 (Fev) | Rubric v3.0 (Abr) | Melhoria |
+| Métrica | Rubric v1.0 (Jan) | Rubric v2.0 (Fev) | Rubric v3.0 (Mai) | Melhoria |
 |---------|-------------------|-------------------|-------------------|----------|
 | **Precisão de Recomendações** | 75% | 82% | 91% | +16pp |
 | **Falsos Positivos** | 38% | 23% | 9% | -29pp |
 | **Recomendações Rejeitadas** | 8% | 14% | 22% | +14pp (bom: filtro mais rigoroso) |
-| **CSAT pós-recomendação** | 70% | 78% | 87% | +17pp |
+| **CSAT pós-recomendação** | 70% | 78% | 88% | +18pp |
 | **Devoluções por insatisfação** | 15% | 10% | 5% | -10pp |
 
 **Lição crítica:** Rejeitar mais recomendações (22% vs 8%) foi positivo. O KODA aprendeu a dizer "não sei" ou "prefiro não recomendar" em vez de recomendar com baixa confiança. Clientes preferem honestidade a confiança falsa.
@@ -729,7 +744,7 @@ PILAR 3: SIMPLIFICAÇÃO COMO VALOR
 ──────────────────────────────────
 • "O que podemos remover este mês?" é pergunta obrigatória em toda planning
 • Cada componente do harness tem um "dono" responsável por justificar sua existência
-• Componentes sem dono há 30 dias são automaticamente candidate a remoção
+• Componentes sem dono há 30 dias são automaticamente candidatos à remoção
 • Meta: reduzir número de componentes em 10% a cada trimestre
 
 PILAR 4: APRENDIZADO COMO OUTPUT
@@ -787,7 +802,7 @@ JANEIRO 2026 — "FRANKENHARNESS"              JUNHO 2026 — "HARNESS SIMPLIFIC
 │      KODA (Monólito)     │                │      KODA INTERFACE      │
 │                          │                │                          │
 │  Faz TUDO sozinho:       │                │  Só conversa com cliente │
-│  • Recomenda             │                │  Delegra tudo abaixo     │
+│  • Recomenda             │                │  Delega tudo abaixo      │
 │  • Avalia                │                └────────────┬─────────────┘
 │  • Coordena              │                             │
 │  • Gerencia estado       │              ┌──────────────┼──────────────┐
@@ -1192,9 +1207,9 @@ Calibragem automática teria detectado isso mais cedo.
 
 ### Exemplo Concreto: Aplicando o Framework KCI na Feature "Cupom de Desconto"
 
-Vamos ver como o framework KCI foi aplicado em uma feature real do KODA: o sistema de cupons de desconto.
+Vamos ver como o framework KCI foi aplicado em uma feature real do KODA, implementada após o programa KCI: o sistema de cupons de desconto.
 
-**Contexto:** Em março de 2026, o time de marketing pediu uma feature de cupons. O KODA deveria sugerir cupons relevantes durante a conversa ("Você sabia que tem 15% de desconto em whey protein hoje?").
+**Contexto:** Em julho de 2026, após o sucesso do programa KCI, o time de marketing pediu uma feature de cupons. O KODA deveria sugerir cupons relevantes durante a conversa ("Você sabia que tem 15% de desconto em whey protein hoje?").
 
 Em vez de simplesmente implementar, o time aplicou o framework KCI:
 
@@ -1927,7 +1942,7 @@ Resultado: Time removeu o Validator V1 e documentou o aprendizado em um
 | MetricsCollector | Coletar métricas | $50 | 0.2s | @maria |
 
 **Tarefa:**
-1. Identifique 4 componentes candidate a remoção
+1. Identifique 4 componentes candidatos à remoção
 2. Para cada um, explique: "Se eu remover, qual métrica piora?"
 3. Priorize: quais removeria primeiro?
 4. Estime a economia total se todas as remoções forem aprovadas
@@ -1993,7 +2008,7 @@ Estas dicas ajudam a verificar seu raciocínio. Não existe "resposta certa" ún
    - Semana 3: Criar dashboard e alertas
    - Semana 4: Validar dados (comparar com observação manual)
 
-4. **Componentes legados candidate a remoção:**
+4. **Componentes legados candidatos à remoção:**
    - Cache Manager (se não melhora métrica nenhuma)
    - Validator antigo (se substituído por Generator/Evaluator)
    - Qualquer componente sem dono documentado
@@ -2015,7 +2030,7 @@ Estas dicas ajudam a verificar seu raciocínio. Não existe "resposta certa" ún
 
 ### Dicas — Exercício 3 (Simplificação de Harness)
 
-1. **4 componentes candidate a remoção (em ordem de prioridade):**
+1. **4 componentes candidatos à remoção (em ordem de prioridade):**
 
    **#1: SentimentAnalyzer ($200/mês, 1.8s, sem dono)**
    - "Se eu remover, qual métrica piora?" → Provavelmente nenhuma. Análise de sentimento raramente afeta qualidade de recomendação. Custo alto, sem dono = remover primeiro.
