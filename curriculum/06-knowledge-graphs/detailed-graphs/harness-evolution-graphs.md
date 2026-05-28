@@ -131,7 +131,7 @@ graph TD
     subgraph BUILD["🏗️ FASE 1: BUILD"]
         B1["Identificar fraqueza<br/>do modelo atual"]
         B2["Criar proteções<br/>explícitas"]
-        B3["Definir limites<br/>rÍgidos"]
+        B3["Definir limites<br/>rígidos"]
         B4["Implementar<br/>fallbacks"]
         B5["Documentar<br/>assumptions"]
         B1 --> B2 --> B3 --> B4 --> B5
@@ -1785,7 +1785,7 @@ Este Knowledge Graph é o mapa conceitual expandido do Core Concept 06. A tabela
 | Dimensão | Core Concept | Este Knowledge Graph |
 |----------|-------------|---------------------|
 | **Formato** | Linear e narrativo | Relacional e visual |
-| **Diagramas** | 3 Mermaid + 1 ASCII | 3 Mermaid + 1 ASCII expandido + árvores de decisão |
+| **Diagramas** | 3 Mermaid + 1 ASCII | 4 Mermaid + 1 ASCII expandido + árvores de decisão |
 | **Foco** | "Por que" e "como" | "O que está conectado com o quê" e "quando" |
 | **Navegação** | Leitura sequencial | Referência por nó (cada seção é autônoma) |
 | **Uso principal** | Aprendizado inicial | Referência durante revisões trimestrais |
@@ -2473,7 +2473,7 @@ Essa pergunta — feita trimestralmente, respondida com métricas, executada com
 | **Pré-requisitos** | Core Concepts 01-05, Knowledge Graph 01-concept-ecosystem |
 | **Próximo no Ecossistema** | Multi-Agent Coordination Graphs |
 | **Aplicação KODA** | Trimestral, roadmap de evolução de 12 meses |
-| **Diagramas Incluídos** | 3 Mermaid + 1 ASCII expandido + Árvores de Decisão + Tabelas Comparativas |
+| **Diagramas Incluídos** | 4 Mermaid + 1 ASCII expandido + Árvores de Decisão + Tabelas Comparativas |
 | **Crítico para** | Manutenção de longo prazo de qualquer sistema de agentes em produção |
 | **Worktree** | `42-harness-evolution-graphs` |
 | **Criado em** | Maio 2026 |
