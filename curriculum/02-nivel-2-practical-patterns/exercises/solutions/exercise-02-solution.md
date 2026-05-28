@@ -42,7 +42,7 @@ Quando o Generator erra (e ele vai errar — cupom inválido, estoque zerado), o
 │  │   GENERATOR      │     │   EVALUATOR      │                   │
 │  │   OrderProcessor │────▶│ OrderValidator   │                   │
 │  │                  │     │                  │                   │
-│  │ • Valida estoque │     │ • 8 critérios    │                   │
+│  │ • Valida estoque │     │ • 9 critérios    │                   │
 │  │ • Atualiza preço │     │ • Score 0-10     │                   │
 │  │ • Aplica desconto│     │ • Feedback       │                   │
 │  │ • Calcula frete  │     │ • Severidade     │                   │
@@ -59,7 +59,86 @@ Quando o Generator erra (e ele vai errar — cupom inválido, estoque zerado), o
 
 ---
 
-## 💻 Solução Completa
+---
+
+## 📋 Parte 1: Especificação do Sprint Contract
+
+Antes de escrever uma linha de código, o contrato precisa ser definido. Este é o acordo explícito entre o **Generator** (OrderProcessor) e o **Evaluator** (OrderValidator) sobre o que significa "pedido pronto para confirmar".
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║          SPRINT CONTRACT: Order Checkout                    ║
+╠══════════════════════════════════════════════════════════════╣
+║ GERADOR: OrderProcessor (Generator)                         ║
+║ AVALIADOR: OrderValidator (Evaluator)                       ║
+║ DURAÇÃO: 5 minutos máximo                                   ║
+║ TENTATIVAS MÁXIMAS: 3 (escala para humano após falha)      ║
+╠══════════════════════════════════════════════════════════════╣
+║ 📥 INPUT SPECIFICATION                                      ║
+║ • customer_id: str — ID único do cliente (ex: wa_55119...)  ║
+║ • customer_name: str — Nome do cliente                      ║
+║ • customer_tier: "club_member" | "regular"                  ║
+║ • first_purchase: bool — True se for primeira compra        ║
+║ • promo_code: str | None — Código de cupom opcional         ║
+║ • cart: List[CartItem] — Itens com sku, name, qty,          ║
+║           unit_price (preço pode estar desatualizado)       ║
+║ • shipping_zip: str — CEP para cálculo de frete             ║
+╠══════════════════════════════════════════════════════════════╣
+║ ✅ SUCCESS CRITERIA (TODOS devem passar)                    ║
+║ • [SC1] all_items_in_stock:                                 ║
+║         Para todo item, stock_qty >= qty                    ║
+║ • [SC2] prices_match_catalog:                               ║
+║         Para todo item, unit_price == catalog.current_price ║
+║ • [SC3] promo_code_valid:                                   ║
+║         Cupom existe, está ativo, é elegível p/ o cliente   ║
+║ • [SC4] no_double_discount:                                 ║
+║         Cupom e clube NÃO podem ser cumulativos             ║
+║ • [SC5] best_discount_applied:                              ║
+║         discount_applied == max(cupom_amount, club_amount)  ║
+║ • [SC6] shipping_correct:                                   ║
+║         shipping == 0 se subtotal >= 100, senão == 15       ║
+║ • [SC7] total_not_negative: total >= 0                      ║
+║ • [SC8] total_matches_math:                                 ║
+║         total == subtotal - discount_amount + shipping      ║
+║ • [SC9] order_not_empty: len(items) > 0                     ║
+╠══════════════════════════════════════════════════════════════╣
+║ ⚠️  FAILURE HANDLING                                        ║
+║ • Se item sem estoque (stock_qty < qty) →                   ║
+║       Remover item do pedido; refazer processamento         ║
+║ • Se cupom for first_purchase_only E cliente recorrente →   ║
+║       Rejeitar cupom; aplicar desconto de clube se membro   ║
+║ • Se cupom e clube ambos disponíveis →                      ║
+║       Aplicar APENAS o maior desconto (NÃO somar)           ║
+║ • Se preço no carrinho != preço do catálogo →               ║
+║       Atualizar para preço atual; gerar warning             ║
+║ • Se total != subtotal - desconto + frete →                 ║
+║       Recalcular; rejeitar se inconsistente                 ║
+║ • Se 3 tentativas consecutivas falharem →                   ║
+║       Escalar para revisão humana (status: "escalated")     ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+### Por Que Este Contrato Funciona
+
+Este contrato resolve cada um dos problemas que o prólogo do exercício descreveu:
+
+1. **Cupom PRIMEIRA20 indevido** → `[SC3]`: O contrato força a validação de `first_purchase_only`. Se o cliente já comprou antes, o Evaluator rejeita e o Generator aplica o desconto alternativo (clube 10%).
+
+2. **Preço desatualizado do BCAA** → `[SC2]`: O contrato exige que o Generator consulte o catálogo em tempo real. O Evaluator compara cada `unit_price` com `catalog.current_price`. Se divergir, é rejeitado.
+
+3. **Double discount (cupom + clube)** → `[SC4]` + `[SC5]`: O contrato proíbe cumulatividade e exige que o maior desconto seja aplicado. O Evaluator calcula `max(cupom_amount, club_amount)` e compara com o que foi aplicado.
+
+4. **Creatina sem estoque** → `[SC1]`: O contrato exige `stock_qty >= qty` para cada item. O Evaluator verifica cada item contra o catálogo e rejeita se algum estiver zerado.
+
+O contrato também estabelece o **limite de 3 tentativas** (`TENTATIVAS MÁXIMAS: 3`) — evitando que o sistema entre em loop infinito tentando corrigir um pedido impossível.
+
+---
+
+## 💻 Solução Completa: Código (Partes 2, 3 e 4)
+
+> **Parte 2** — Generator (`generator_process_order`): processa o pedido  
+> **Parte 3** — Evaluator (`evaluator_validate_order`): valida contra o contrato  
+> **Parte 4** — Pipeline (`checkout_pipeline`): orquestra Generator → Evaluator com retry
 
 ```python
 """
@@ -181,10 +260,11 @@ PROMO_DB: Dict[str, PromoRecord] = {
 }
 
 # ============================================================
-# CONTRACT CRITERIA
+# PARTE 1 (REFERÊNCIA): CONTRACT CRITERIA
 # ============================================================
 # Estes são os critérios do Sprint Contract que o Evaluator usa.
 # Cada critério é testável e tem severidade associada.
+# NOTA: O contrato visual completo está na seção "Parte 1" acima.
 
 CHECKOUT_CONTRACT_CRITERIA: List[Dict[str, Any]] = [
     {
@@ -235,7 +315,7 @@ CHECKOUT_CONTRACT_CRITERIA: List[Dict[str, Any]] = [
 ]
 
 # ============================================================
-# GENERATOR: OrderProcessor
+# PARTE 2: GENERATOR — OrderProcessor
 # ============================================================
 
 def generator_process_order(
@@ -417,7 +497,7 @@ def generator_process_order(
 
 
 # ============================================================
-# EVALUATOR: OrderValidator
+# PARTE 3: EVALUATOR — OrderValidator
 # ============================================================
 
 def evaluator_validate_order(
@@ -691,7 +771,7 @@ def evaluator_validate_order(
 
 
 # ============================================================
-# ORCHESTRATOR: Pipeline Generator → Evaluator
+# PARTE 4: ORCHESTRATOR — Pipeline Generator → Evaluator
 # ============================================================
 
 MAX_RETRIES = 3
@@ -1038,7 +1118,7 @@ Isso evita loops infinitos e garante que pedidos complexos não fiquem presos no
 | Linhas de código (Pipeline) | ~60 |
 | Linhas de código (Testes + Demo) | ~120 |
 | **Total** | **~440 linhas** |
-| Critérios do contrato | 8 |
+| Critérios do contrato | 9 |
 | Cenários de teste | 4 |
 | Cobertura de edge cases | Estoque zerado, cupom inválido, double discount, preço desatualizado |
 
@@ -1055,6 +1135,25 @@ Isso evita loops infinitos e garante que pedidos complexos não fiquem presos no
 4. **O Pipeline é o maestro.** Ele não processa nem valida — apenas orquestra o ciclo Generator → Evaluator → Feedback → Retry.
 
 5. **3 tentativas é o sweet spot.** Menos que isso e você perde correções simples. Mais que isso e você gasta tokens desnecessariamente.
+
+---
+
+## ✅ Checklist de Conclusão
+
+Conferindo contra o checklist do [exercício](/curriculum/02-nivel-2-practical-patterns/exercises/exercise-02.md):
+
+- [x] Sprint Contract especificado com Input + Criteria + Failure Handling (Parte 1) — veja seção "📋 Parte 1" acima
+- [x] `generator_process_order()` implementado e funcional (Parte 2) — linha 320 do código
+- [x] `evaluator_validate_order()` implementado e funcional (Parte 3) — linha 503 do código
+- [x] `checkout_pipeline()` implementado com retry e feedback (Parte 4) — linha 800 do código
+- [x] Código total ≥ 200 linhas — 440 linhas (Python puro, sem contar comentários estruturais)
+- [x] Cenário 1 passa: Pedido válido aprovado — `subtotal=167.00, shipping=0, total=167.00`
+- [x] Cenário 2 passa: Cupom inválido rejeitado e corrigido — clube 10% aplicado, total=R$ 100.50
+- [x] Cenário 3 passa: Produto sem estoque rejeitado — status `rejected` ou `escalated`
+- [x] Cenário 4 passa: Double discount bloqueado — cupom 20% aplicado (maior que clube 10%)
+- [x] Pedido não fica vazio após remoção de itens — critério `order_not_empty` validado
+
+**Resultado: 10/10 itens concluídos.** ✅
 
 ---
 
