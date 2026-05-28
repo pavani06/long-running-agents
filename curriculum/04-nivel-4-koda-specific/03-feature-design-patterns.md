@@ -370,7 +370,7 @@ O importante não é a sintaxe exata; o importante é que cada campo tenha funç
 
 - Regra de input 01: Se um dado influencia segurança, preço, estoque ou confiança, ele entra no input contract.
 - Regra de input 02: Se uma restrição do cliente está persistida, ela tem prioridade sobre intenção momentânea.
-- Regra de input 03: Se o catálogo está antigo, a feature abstém em vez de inventar disponibilidade.
+- Regra de input 03: Se o catálogo está antigo, a feature se abstém em vez de inventar disponibilidade.
 - Regra de input 04: Se a intenção atual está ambígua, o Generator deve pedir esclarecimento ou gerar ABSTAINED.
 - Regra de input 05: Se o orçamento não foi informado, a feature pode recomendar faixa moderada, mas precisa marcar price_uncertainty.
 - Regra de input 06: Se a feature depende de histórico sensível, a mensagem final não deve expor esse histórico sem necessidade.
@@ -898,7 +898,7 @@ Os exemplos abaixo misturam theory, contract, Generator, Evaluator, trace e deci
 }
 ```
 
-### Exemplo 3: Reengagement Depois de Carrinho Abandonado
+### Exemplo 3: Reengagement / Follow-up Depois de Carrinho Abandonado
 **Contexto:** Cliente montou carrinho, sumiu por 18 horas e voltou perguntando se o produto ainda está disponível.
 **Feature:** `koda.cart_reengagement`
 **Generator:** Cria mensagem curta confirmando estoque e retomando a decisão anterior.
@@ -1043,7 +1043,7 @@ Esse caminho parece longo, mas evita o tipo de erro que destrói confiança em s
 ---
 
 ## 📊 Tabela Comparativa
-| Estrategia | Quando Usar | Vantagens | Desvantagens | Exemplo KODA |
+| Estratégia | Quando Usar | Vantagens | Desvantagens | Exemplo KODA |
 |------------|-------------|-----------|---------------|--------------|
 | Regra determinística simples | Campo e decisão são objetivos. | Baixa latência, baixo custo, fácil testar. | Pouca flexibilidade e fraca para linguagem natural. | Bloquear upsell se last_objection.type == price. |
 | Feature Contract isolado | Feature pequena precisa entrar com segurança. | Define input/output e evita surpresa no pipeline. | Não resolve qualidade sem Evaluator robusto. | Validar recomendação de produto antes de gerar texto. |
