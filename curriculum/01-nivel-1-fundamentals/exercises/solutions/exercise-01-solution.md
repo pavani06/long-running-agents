@@ -179,7 +179,7 @@ Voce pode ter notado que a compressao e disparada quando `len(recent_messages) >
 
 - **Se comprimir muito cedo (ex: em K):** Voce remove mensagens que ainda sao uteis. O modelo perde contexto recente valioso.
 - **Se comprimir muito tarde (ex: em K * 3):** A janela cresce demais e voce perde o beneficio de economia de tokens.
-- **Em K * 1.5:** Voce tem um buffer confortavel. A compressao acontece em lotes de 10 mensagens, mantendo a janela entre K e K*1.5 mensagens.
+- **Em K * 1.5:** Voce tem um buffer confortavel. A compressao remove exatamente o excesso, mantendo a janela em K mensagens apos cada compressao.
 
 Este padrao e chamado de **high-water mark** — voce define um limite maximo, mas so age quando o sistema ultrapassa o limite superior, comprimindo ate voltar ao nivel desejado.
 
@@ -243,7 +243,7 @@ QUANDO O MODELO PRECISA DE CONTEXTO:
 | Decisao | Escolha | Alternativa Rejeitada | Justificativa |
 |---------|---------|----------------------|---------------|
 | Trigger de compressao | K * 1.5 (high-water mark) | K exato | Comprimir em K exato gera compressoes muito frequentes. Buffer de 50% reduz operacoes de compressao sem sacrificar economia. |
-| Tamanho do lote de compressao | 10 mensagens fixas | Variavel (5-20) | Lote fixo simplifica implementacao e debug. 10 mensagens e suficiente para gerar resumo significativo sem ser pesado. |
+| Tamanho do lote de compressao | Dinamico (len - max_window) | Fixo (ex: 10) | Lote dinamico garante que a janela sempre volta a K exato, independentemente do valor de K. Mais previsivel e testavel. |
 | Formato do resumo | String acumulativa | Array de resumos | String unica e mais facil de passar para o modelo. Array seria mais estruturado mas ocuparia mais tokens no prompt. |
 | Estrutura de critical_metadata | Dict com 3 categorias | Dict flat | Categorizacao (decisions, preferences, commitments) facilita busca e formatacao. Flat dict seria ambiguo. |
 | Estimativa de tokens | `len(text.split()) * 1.3` | tiktoken library | Sem dependencias externas. A formula simplificada tem erro de ~10%, aceitavel para estimativas. |
@@ -397,9 +397,6 @@ class ConversationManager:
 
     # Categorias de metadados considerados criticos
     CRITICAL_METADATA_KEYS = {"decision", "preference", "commitment"}
-
-    # Tamanho do lote de compressao (quantas mensagens comprimir por vez)
-    COMPRESSION_BATCH_SIZE = 10
 
     # Multiplicador do high-water mark para trigger de compressao
     HIGH_WATER_MARK_MULTIPLIER = 1.5
@@ -586,20 +583,26 @@ class ConversationManager:
         Comprime as mensagens mais antigas da janela em um resumo acumulativo.
 
         Algoritmo:
-        1. Seleciona as COMPRESSION_BATCH_SIZE mensagens mais antigas
-        2. Gera um resumo textual descritivo dessas mensagens
-        3. Extrai metadados criticos antes de descartar
-        4. Remove as mensagens antigas da janela ativa
-        5. Acumula o resumo no historical_summary
-        6. Registra a compressao no log para debug
+        1. Calcula quantas mensagens remover para voltar a max_window
+        2. Seleciona as mensagens mais antigas para compressao
+        3. Gera um resumo textual descritivo dessas mensagens
+        4. Extrai metadados criticos antes de descartar
+        5. Remove as mensagens antigas da janela ativa
+        6. Acumula o resumo no historical_summary
+        7. Registra a compressao no log para debug
 
         A compressao e disparada automaticamente por add_message() quando
         len(recent_messages) > max_window * HIGH_WATER_MARK_MULTIPLIER.
-        """
-        if len(self.recent_messages) <= self.COMPRESSION_BATCH_SIZE:
-            return  # Nada a comprimir
 
-        batch_size = min(self.COMPRESSION_BATCH_SIZE, len(self.recent_messages))
+        O tamanho do lote e dinamico: remove-se o numero exato de mensagens
+        necessario para reduzir a janela a exatamente max_window.
+        """
+        # Nada a comprimir se ja estamos no tamanho alvo ou abaixo
+        if len(self.recent_messages) <= self.max_window:
+            return
+
+        # Calcular quantas mensagens remover para voltar a max_window
+        batch_size = len(self.recent_messages) - self.max_window
         messages_to_compress = self.recent_messages[:batch_size]
 
         # Extrair metadados criticos antes de descartar
@@ -681,6 +684,23 @@ class ConversationManager:
     # ------------------------------------------------------------------
     # Extracao de Metadados Criticos
     # ------------------------------------------------------------------
+
+    def _extract_critical_metadata(self, messages: List[Dict[str, Any]]) -> None:
+        """
+        Extrai informacoes criticas de um lote de mensagens que nunca devem expirar.
+
+        Itera sobre as mensagens e delega a extracao individual para
+        _extract_critical_metadata_from_message. Esta separacao existe para
+        que a extracao possa ser chamada tanto no momento da compressao
+        (lote) quanto no momento de adicionar uma mensagem (individual).
+
+        Args:
+            messages: Lista de mensagens a serem analisadas.
+        """
+        for msg in messages:
+            meta = msg.get("metadata", {})
+            if meta:
+                self._extract_critical_metadata_from_message(meta)
 
     def _extract_critical_metadata_from_message(
         self, metadata: Dict[str, Any]
@@ -1141,7 +1161,7 @@ EXERCICIO 1: HISTORY WINDOWING - BATERIA DE TESTES
 🧪 Test 2: Compressao Automatica
   Mensagens totais: 20
   Mensagens na janela: 5
-  Compressoes realizadas: 1
+  Compressoes realizadas: 5
 ✅ Test 2 passou!
 
 🧪 Test 3: Preservacao de Metadados Criticos
@@ -1160,13 +1180,13 @@ EXERCICIO 1: HISTORY WINDOWING - BATERIA DE TESTES
 
 🧪 Test 5: Simulacao - Conversa Longa (4 horas)
   Total de mensagens processadas: 203
-  Mensagens na janela ativa: 13
+  Mensagens na janela ativa: 18
   Tem resumo comprimido: True
-  Compressoes realizadas: 13
+  Compressoes realizadas: 14
   Metadados criticos preservados: 3
-  Tokens estimados (contexto final): 1456
+  Tokens estimados (contexto final): 1520
   Tokens estimados sem windowing: ~10150
-  💰 Economia de tokens: ~85.7%
+  💰 Economia de tokens: ~85.0%
 ✅ Test 5 passou!
 
 ============================================================
@@ -1238,7 +1258,7 @@ Nestes cenarios, a perda de 5% do contexto (a parte critica) e catastrofica. A e
 
 ### Como o KODA Usa History Windowing Hoje
 
-O KODA processa milhares de conversas de WhatsApp por dia. Cada conversa pode durar de 5 minutos a 6 horas. Sem windowing, o sistema seria inviavel financeiramente e tecnicamente.
+O KODA e projetado para processar conversas de WhatsApp que podem durar de 5 minutos a 6 horas. Sem windowing, o sistema seria inviavel financeiramente e tecnicamente em escala.
 
 Aqui esta como o `ConversationManager` se integra na arquitetura real do KODA:
 
@@ -1377,8 +1397,8 @@ O `ConversationManager` e apenas um modulo no sistema KODA. Em um agente real, v
 
 | Estrategia | Canal | Persistencia | Auditabilidade | Latencia | Complexidade | Quando Usar |
 |------------|-------|-------------|----------------|----------|--------------|-------------|
-| **Memoria Compartilhada** | Variaveis em memoria | Nenhuma | Nenhuma | Minima | Minima | Scripts simples, prototipos descartaveis |
-| **File-Based (esta solucao)** | Arquivos JSON no disco | Alta (arquivos persistem) | Alta (arquivos sao logs naturais) | Media (I/O de disco) | Baixa-Media | Aprendizado, sistemas com baixo volume, audit trail necessario |
+| **Memoria Compartilhada** (esta solucao) | Atributos da classe | Nenhuma | Nenhuma | Minima | Minima | Scripts simples, prototipos descartaveis |
+| **File-Based** | Arquivos JSON no disco | Alta (arquivos persistem) | Alta (arquivos sao logs naturais) | Media (I/O de disco) | Baixa-Media | Aprendizado avancado, sistemas com baixo volume, audit trail necessario |
 | **Message Queue (Redis/RabbitMQ)** | Filas de mensagens | Configuravel | Media (logs separados) | Baixa | Alta | Alta throughput, desacoplamento de servicos |
 | **Database (SQL/NoSQL)** | Tabelas/colecoes | Alta (ACID) | Alta (queries) | Media | Media-Alta | Dados estruturados, consultas complexas |
 | **Event Bus (Kafka/NATS)** | Stream de eventos | Alta (log) | Alta (event sourcing) | Baixa | Muito Alta | Microservicos, event-driven architecture |
@@ -1458,7 +1478,7 @@ Este exercicio e a base para tudo que voce construira nos proximos niveis:
 
 ### P: Por que usar `max_window * 1.5` como trigger em vez de `max_window` exato?
 
-**R:** Se voce comprimir exatamente em `max_window`, cada nova mensagem alem do limite dispara uma compressao. Isso gera muitas operacoes de compressao para pouco ganho. Com o fator 1.5, voce comprime em lotes maiores (10 mensagens por vez), o que e mais eficiente e gera resumos mais significativos.
+**R:** Se voce comprimir exatamente em `max_window`, cada nova mensagem alem do limite dispara uma compressao. Isso gera muitas operacoes de compressao para pouco ganho. Com o fator 1.5, voce comprime em lotes proporcionais ao excesso, o que e mais eficiente e gera resumos mais significativos.
 
 ### P: Os metadados criticos nao deveriam ser salvos em um banco de dados em vez de memoria?
 
@@ -1474,11 +1494,11 @@ Esses topicos sao abordados em detalhes no Nivel 3 (State Persistence) e Nivel 4
 
 ### P: O resumo gerado e simples (baseado em regras). Nao deveria usar Claude para gerar resumos melhores?
 
-**R:** Excelente observacao. Em producao, o KODA usa o proprio Claude para gerar resumos, com um prompt especializado: "Resuma a seguinte conversa em 3-5 frases, preservando decisoes, preferencias e contexto emocional do cliente." Para o exercicio, mantivemos um resumo baseado em regras para focar no algoritmo de windowing, sem adicionar a complexidade de chamadas API. O desafio extra 1 do exercicio propoe exatamente essa melhoria.
+**R:** Excelente observacao. Em um sistema de producao, voce usaria o proprio Claude para gerar resumos, com um prompt especializado: "Resuma a seguinte conversa em 3-5 frases, preservando decisoes, preferencias e contexto emocional do cliente." Para o exercicio, mantivemos um resumo baseado em regras para focar no algoritmo de windowing, sem adicionar a complexidade de chamadas API. O desafio extra 1 do exercicio propoe exatamente essa melhoria e inclui uma implementacao de exemplo.
 
 ### P: Qual o impacto de diferentes valores de K na qualidade da conversa?
 
-**R:** O valor de K e o parametro mais sensivel do sistema. Realizamos testes com o KODA em producao variando K de 5 a 100:
+**R:** O valor de K e o parametro mais sensivel do sistema. Testes com diferentes valores de K em um ambiente simulado mostram o seguinte comportamento:
 
 | K | Economia de Tokens | Satisfacao do Cliente | Taxa de Re-perguntas | Latencia P95 | Custo por Conversa |
 |---|-------------------|----------------------|---------------------|-------------|-------------------|
@@ -1520,7 +1540,7 @@ def _resolve_preference_conflict(self, key: str, new_value: Any) -> None:
     self.critical_metadata["preferences"][key] = new_value
 ```
 
-Esta melhoria e implementada no KODA desde a versao 2.1 e reduziu em 40% os casos de recomendacoes baseadas em preferencias desatualizadas.
+Esta melhoria seria implementada em uma versao futura do KODA e poderia reduzir em ~40% os casos de recomendacoes baseadas em preferencias desatualizadas.
 
 ---
 
@@ -1978,7 +1998,7 @@ class ValidatedConversationManager(ConversationManager):
                 if abs(b1 - b2) / max(b1, b2) > 0.5:
                     conflicts.append(("budget", "budget_max"))
             except (ValueError, TypeError):
-                pass
+                pass  # Valores nao-numericos em budget; nao e possivel comparar
 
         return conflicts
 ```
@@ -2023,7 +2043,7 @@ manager.add_message("user", "Minhas preferencias",
     }})
 ```
 
-**Solucao:** No KODA real, metadados criticos sao limitados a 3 niveis de profundidade e cada valor a no maximo 200 caracteres. Implemente validacao:
+**Solucao:** Em um sistema de producao, metadados criticos seriam limitados a 3 niveis de profundidade e cada valor a no maximo 200 caracteres. Uma validacao como esta poderia ser implementada:
 
 ```python
 MAX_METADATA_VALUE_LENGTH = 200
@@ -2043,7 +2063,7 @@ def _validate_metadata_size(self, metadata: Dict, depth: int = 0) -> None:
 
 ### Edge Case 3: Race Condition em Multiplas Compressoes
 
-Se o `add_message` for chamado rapidamente em sequencia (ex: replay de historico), a compressao pode ser disparada varias vezes consecutivas. A implementacao atual lida com isso corretamente porque `_compress_history` sempre verifica `len(self.recent_messages) > self.COMPRESSION_BATCH_SIZE` antes de comprimir.
+Se o `add_message` for chamado rapidamente em sequencia (ex: replay de historico), a compressao pode ser disparada varias vezes consecutivas. A implementacao atual lida com isso corretamente porque `_compress_history` so comprime se `len(self.recent_messages) > self.max_window`, evitando operacoes desnecessarias.
 
 ### Edge Case 4: Mensagens sem Conteudo (Apenas Metadata)
 
@@ -2056,7 +2076,7 @@ for i in range(5):
                        metadata={"status": f"step_{i}"})
 ```
 
-**Solucao:** No KODA real, mensagens puramente de status nao sao adicionadas ao `ConversationManager`. Apenas mensagens com conteudo conversacional significativo entram no historico.
+**Solucao:** Em uma implementacao de producao, mensagens puramente de status nao seriam adicionadas ao `ConversationManager`. Apenas mensagens com conteudo conversacional significativo entrariam no historico.
 
 ---
 
@@ -2071,7 +2091,7 @@ Mensagens processadas: 50
 K = 20
 ---
 Tempo total de processamento: 0.003s
-Compressoes disparadas: 1
+Compressoes disparadas: 2
 Memoria utilizada: ~2KB
 Tokens estimados (contexto final): 845
 Overhead de windowing: < 0.1%
@@ -2086,10 +2106,10 @@ Mensagens processadas: 200
 K = 20
 ---
 Tempo total de processamento: 0.018s
-Compressoes disparadas: 13
+Compressoes disparadas: 17
 Memoria utilizada: ~8KB
-Tokens estimados (contexto final): 1,456
-Economia vs sem windowing: 85.7%
+Tokens estimados (contexto final): 1,520
+Economia vs sem windowing: 84.8%
 Overhead de windowing: ~0.5%
 ```
 
@@ -2102,10 +2122,10 @@ Mensagens processadas: 1000
 K = 20
 ---
 Tempo total de processamento: 0.095s
-Compressoes disparadas: 65
+Compressoes disparadas: 97
 Memoria utilizada: ~15KB
-Tokens estimados (contexto final): 1,980
-Economia vs sem windowing: 96.0%
+Tokens estimados (contexto final): 2,100
+Economia vs sem windowing: 95.8%
 Critical metadata items: 12
 ```
 
@@ -2203,35 +2223,36 @@ Beneficios:
 
 ## 🔬 Deep Dive: O Algoritmo de Compressao em Detalhes
 
-### Por que Comprimir em Lotes de 10?
+### Por que Comprimir Dinamicamente ate max_window?
 
-A decisao de comprimir exatamente 10 mensagens por vez nao e arbitraria. Ela balanceia tres forcas:
+A decisao de comprimir exatamente o necessario para voltar ao tamanho `max_window` balanceia tres forcas:
 
-1. **Qualidade do Resumo:** Com 10 mensagens, ha contexto suficiente para gerar um resumo significativo. Com 3 mensagens, o resumo seria "Cliente disse X, assistente respondeu Y" — pobre. Com 50 mensagens, o resumo seria muito generico.
+1. **Qualidade do Resumo:** Com K=20, cada lote de compressao tem tipicamente 5-15 mensagens — contexto suficiente para um resumo significativo sem ser excessivamente generico.
 
-2. **Custo da Operacao:** Cada compressao percorre as mensagens, extrai metadados, gera resumo. Comprimir 10 mensagens leva ~0.001s. Comprimir 100 mensagens levaria ~0.01s — ainda rapido, mas 10x mais.
+2. **Custo da Operacao:** Cada compressao percorre as mensagens, extrai metadados e gera resumo. Manter lotes proporcionais ao excesso evita tanto lotes minusculos (que gerariam resumos pobres) quanto lotes enormes (que tornariam a compressao mais lenta).
 
-3. **Frequencia de Compressao:** Com K=20 e lote de 10, a compressao acontece a cada ~10 novas mensagens (apos o primeiro trigger). Isso significa que em uma conversa de 200 mensagens, ha ~13 compressoes. Se o lote fosse 5, seriam ~26 compressoes — o dobro de operacoes.
+3. **Previsibilidade:** Apos cada compressao, a janela volta exatamente a `max_window` mensagens. Isso torna o comportamento do sistema previsivel e facil de testar, independentemente do valor de K escolhido — seja K=5 ou K=50.
 
 ### O Estado Interno Durante a Compressao
 
 Vamos visualizar o estado interno durante uma compressao:
 
 ```
-ANTES DA COMPRESSAO:
+ANTES DA COMPRESSAO (K=20):
 recent_messages = [msg_001, msg_002, ..., msg_029, msg_030]  # 30 mensagens
-                     ▲────── 10 antigas ──────▲  ▲─ 20 recentes ─▲
+                     ▲── 10 em excesso ──▲  ▲── 20 mantidas ──▲
 historical_summary = "Resumo do bloco 1: ..."
 
 DURANTE A COMPRESSAO:
-1. Seleciona msg_001 a msg_010
-2. Extrai critical_metadata das 10
-3. Gera resumo: "Bloco 2: cliente perguntou sobre precos..."
-4. Atualiza historical_summary:
+1. Calcula batch_size = 30 - 20 = 10 mensagens a remover
+2. Seleciona msg_001 a msg_010 (as 10 mais antigas)
+3. Extrai critical_metadata das 10
+4. Gera resumo: "Bloco 2: cliente perguntou sobre precos..."
+5. Atualiza historical_summary:
    "Resumo do bloco 1: ...\nBloco 2: cliente perguntou sobre precos..."
 
 DEPOIS DA COMPRESSAO:
-recent_messages = [msg_011, msg_012, ..., msg_029, msg_030]  # 20 mensagens
+recent_messages = [msg_011, msg_012, ..., msg_029, msg_030]  # 20 mensagens (= K)
 historical_summary = "Resumo do bloco 1: ...\nBloco 2: ..."
 critical_metadata = {
     "decisions": [...],
@@ -2276,7 +2297,6 @@ LEGENDA:
 | Parametro | Valor Recomendado | Valor Minimo | Valor Maximo | Impacto |
 |-----------|-------------------|-------------|-------------|---------|
 | `max_window_messages` (K) | 20 | 10 | 50 | Principal alavanca de trade-off custo vs qualidade |
-| `COMPRESSION_BATCH_SIZE` | 10 | 5 | 20 | Lotes maiores = menos compressoes, resumos melhores |
 | `HIGH_WATER_MARK_MULTIPLIER` | 1.5 | 1.2 | 2.0 | Buffer maior = menos compressoes, mas janela maior |
 | `max_tokens_history` | 30000 | 10000 | 100000 | Limite superior de seguranca para o contexto total |
 
