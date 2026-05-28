@@ -86,7 +86,7 @@ Esta solucao entrega todos esses requisitos com codigo funcional, explicacoes de
 | Nivel | O Que Voce Aprendeu | Como se Aplica Aqui |
 |-------|---------------------|---------------------|
 | Nivel 1 | Context Amnesia, Token Budgeting, Harness Patterns | State persistence via arquivos JSON; limites de resposta |
-| Nivel 2 | Generator/Evaluator, Sprint Contracts, Rubric Design | Separacao Generator/Evaluator; feature contract; rubrica de 8 criterios |
+| Nivel 2 | Generator/Evaluator, Sprint Contracts, Rubric Design | Separacao Generator/Evaluator; feature contract; rubrica de 10 criterios |
 | Nivel 3 | Multi-Agent, State Persistence, File-Based Coordination | Persistencia de estado; comunicacao via JSON entre agentes |
 | **Nivel 4** | **Aplicacao real no KODA** | **Feature completa de recomendacao com metricas de producao** |
 
@@ -183,7 +183,7 @@ O sistema tem dois agentes especializados conectados por um orquestrador que ger
 │  │     GENERATOR        │ ──────────────────▶ │      EVALUATOR           │ │
 │  │                      │                     │                          │ │
 │  │  Filtra catalogo     │   ◀───────────────  │  Valida contra rubrica   │ │
-│  │  Ranqueia produtos   │    feedback (se     │  8 criterios binarios    │ │
+│  │  Ranqueia produtos   │    feedback (se     │  10 criterios binarios   │ │
 │  │  Gera resposta       │    rejeitado)       │  Aprova / Rejeita        │ │
 │  │  Registra suposicoes │                     │  Evidencias registradas  │ │
 │  └──────────────────────┘                     └────────────┬─────────────┘ │
@@ -366,7 +366,7 @@ Observe:
 
 ### Responsabilidades
 
-O Evaluator e o gatekeeper. Nada chega ao cliente sem sua aprovacao. Ele valida cada recomendacao contra uma rubrica de 8 criterios binarios.
+O Evaluator e o gatekeeper. Nada chega ao cliente sem sua aprovacao. Ele valida cada recomendacao contra uma rubrica de 10 criterios binarios.
 
 Responsabilidades especificas:
 1. Verificar cada criterio da rubrica de qualidade
@@ -374,7 +374,7 @@ Responsabilidades especificas:
 3. Aprovar (`status = "approved"`) ou rejeitar (`status = "rejected"`)
 4. Fornecer feedback acionavel para o Generator corrigir
 
-### A Rubrica de Qualidade (8 Criterios)
+### A Rubrica de Qualidade (10 Criterios)
 
 | # | Criterio | O Que Verifica | Peso | Exemplo de Evidencia |
 |---|----------|---------------|------|---------------------|
@@ -385,11 +385,13 @@ Responsabilidades especificas:
 | 5 | Prioriza sabor preferido | Produto com sabor preferido ranqueado em 1o | MEDIO | "produto com sabor chocolate ranqueado em primeiro" |
 | 6 | Tom humano, sem jargao | Sem termos tecnicos como "bioavailability" | MEDIO | "linguagem natural e acessivel, sem jargao tecnico" |
 | 7 | Nao pressiona compra | Sem frases como "aproveite agora", "so hoje" | MEDIO | "resposta informativa, sem urgencia artificial" |
-| 8 | Resposta nao vazia | `candidate_response` com conteudo | CRITICO | "resposta com 213 caracteres" |
+| 8 | Explica recomendacao com clareza | Resposta inclui justificativa (rating, nota, razao) | MEDIO | "resposta inclui indicadores de justificativa" |
+| 9 | Resposta nao vazia | `candidate_response` com conteudo | CRITICO | "resposta com 213 caracteres" |
+| 10 | Fallback seguro | Resposta apropriada quando nenhum produto atende | ALTO | "resposta de fallback apropriada quando sem produtos" |
 
 ### Design Decisions
 
-**Avaliacao binaria, nao numerica:** Cada criterio e `passed = true` ou `passed = false`. Nao ha "nota 7.5". Isso elimina ambiguidade: ou passou ou nao passou. Se a rubrica tem 8 criterios, todos devem passar. Se o time quiser flexibilizar (ex: "nota 6/8 e suficiente"), isso e uma decisao de negocio que fica no orquestrador, nao no Evaluator.
+**Avaliacao binaria, nao numerica:** Cada criterio e `passed = true` ou `passed = false`. Nao ha "nota 7.5". Isso elimina ambiguidade: ou passou ou nao passou. Se a rubrica tem 10 criterios, todos devem passar. Se o time quiser flexibilizar (ex: "nota 8/10 e suficiente"), isso e uma decisao de negocio que fica no orquestrador, nao no Evaluator.
 
 **Verificadores independentes:** Cada criterio tem sua propria funcao (`_check_lactose_restriction`, `_check_budget`, etc.). Isso torna o codigo testavel isoladamente e extensivel.
 
@@ -784,7 +786,7 @@ Voce acabou de implementar uma feature que:
 - Um agente sozinho fazia com 75% de precisao
 - Com Generator/Evaluator faz com 95%+ de precisao
 - Com contrato documentado que o time de produto pode ler
-- Com rubrica de 8 criterios que o Evaluator aplica consistentemente
+- Com rubrica de 10 criterios que o Evaluator aplica consistentemente
 - Com 8 testes que provam que cada garantia e respeitada
 - Com audit trail completo para cada decisao
 

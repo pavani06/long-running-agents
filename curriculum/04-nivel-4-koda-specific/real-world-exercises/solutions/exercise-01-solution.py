@@ -495,8 +495,14 @@ def evaluator_agent(
     # Criterio 7: Nao pressiona compra
     rubric_results.append(_check_no_pressure(response))
 
-    # Criterio 8: Resposta nao vazia
+    # Criterio 8: Explicacao clara e justificada
+    rubric_results.append(_check_explanation_clarity(response, has_products))
+
+    # Criterio 9: Resposta nao vazia
     rubric_results.append(_check_not_empty(response))
+
+    # Criterio 10: Fallback seguro
+    rubric_results.append(_check_fallback_safety(response, has_products))
 
     # Determinar status final
     all_passed = all(r.passed for r in rubric_results)
@@ -726,6 +732,66 @@ def _check_no_pressure(response: str) -> RubricResult:
         criterion="nao pressiona compra com linguagem de urgencia",
         passed=True,
         evidence="resposta informativa, sem urgencia artificial",
+    )
+
+
+def _check_explanation_clarity(
+    response: str,
+    has_products: bool,
+) -> RubricResult:
+    """Verifica se a resposta explica a recomendacao de forma clara e justificada."""
+    if not has_products:
+        return RubricResult(
+            criterion="explica recomendacao de forma clara e justificada",
+            passed=True,
+            evidence="sem produtos — explicacao de ausencia e suficiente",
+        )
+    response_lower = response.lower()
+    clarity_indicators = ["nota", "rating", "avaliada", "avaliacao", "porque", "justificativa"]
+    has_clarity = any(indicator in response_lower for indicator in clarity_indicators)
+    if has_clarity:
+        return RubricResult(
+            criterion="explica recomendacao de forma clara e justificada",
+            passed=True,
+            evidence="resposta inclui indicadores de justificativa (rating, nota, etc.)",
+        )
+    return RubricResult(
+        criterion="explica recomendacao de forma clara e justificada",
+        passed=False,
+        evidence="resposta nao inclui justificativa clara para a recomendacao",
+    )
+
+
+def _check_fallback_safety(
+    response: str,
+    has_products: bool,
+) -> RubricResult:
+    """Verifica se o fallback e seguro quando nenhum produto atende."""
+    if has_products:
+        return RubricResult(
+            criterion="fallback seguro quando nenhum produto atende todos os criterios",
+            passed=True,
+            evidence="ha produtos recomendados — fallback nao necessario",
+        )
+    response_lower = response.lower()
+    fallback_indicators = [
+        "nao encontrei",
+        "ajustar alguma preferencia",
+        "buscar alternativas",
+        "preciso confirmar",
+        "verificar e retornar",
+    ]
+    has_fallback = any(indicator in response_lower for indicator in fallback_indicators)
+    if has_fallback:
+        return RubricResult(
+            criterion="fallback seguro quando nenhum produto atende todos os criterios",
+            passed=True,
+            evidence="resposta de fallback apropriada quando sem produtos",
+        )
+    return RubricResult(
+        criterion="fallback seguro quando nenhum produto atende todos os criterios",
+        passed=False,
+        evidence="sem produtos mas resposta nao e fallback seguro",
     )
 
 
@@ -1186,7 +1252,7 @@ def test_cenario_7_audit_trail():
     for field in required_eval:
         assert field in eval_data, f"evaluation.json: campo '{field}' ausente"
     assert eval_data["status"] in ("approved", "rejected"), f"status invalido: {eval_data['status']}"
-    assert len(eval_data["rubric_results"]) >= 5, (
+    assert len(eval_data["rubric_results"]) >= 8, (
         f"rubric_results muito curto: {len(eval_data['rubric_results'])} criterios"
     )
 
@@ -1284,5 +1350,5 @@ if __name__ == "__main__":
     test_cenario_8_feature_contract()
 
     print("\n" + "=" * 60)
-    print("🎉 TODOS OS TESTES PASSARAM!")
+    print("✅ TODOS OS TESTES PASSARAM!")
     print("=" * 60)
