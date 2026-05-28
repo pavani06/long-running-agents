@@ -118,61 +118,61 @@ O Orchestrator é o harness que decide a ordem, controla retries, aplica fallbac
 ### Diagrama ASCII da arquitetura completa
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────────────┐
-│                         PIPELINE MULTI-AGENT KODA, EXERCÍCIO 02                      │
-└──────────────────────────────────────────────────────────────────────────────────────┘
++--------------------------------------------------------------------------------------+
+|                         PIPELINE MULTI-AGENT KODA, EXERCÍCIO 02                      |
++--------------------------------------------------------------------------------------+
 
-                                ┌─────────────────────────┐
-                                │ Cliente no WhatsApp     │
-                                │ Marina envia intenção   │
-                                └────────────┬────────────┘
-                                             │ customer_message.json
-                                             ▼
-┌──────────────────────────────────────────────────────────────────────────────────────┐
-│ ORCHESTRATOR                                                                         │
-│ Controla ordem, retries, fallback, métricas e passagem entre fases                    │
-└────────────┬─────────────────────────────────────────────────────────────────────────┘
-             │
-             ▼
-      ┌─────────────┐      plan.json
-      │ Planner     │──────────────────────────────────────────────────────────────┐
-      └──────┬──────┘                                                              │
-             │                                                                     │
-             ▼                                                                     │
-      ┌─────────────┐      discovery_state.json      customer_profile.json          │
-      │ Discovery   │─────────────────────────────────────────────────────────┐     │
-      └──────┬──────┘                                                         │     │
-             │                                                                │     │
-             ▼                                                                │     │
-      ┌─────────────┐      catalog_snapshot.json                               │     │
-      │ Catalog     │────────────────────────────────────────────────────┐     │     │
-      └──────┬──────┘                                                    │     │     │
-             │                                                           │     │     │
-             ▼                                                           │     │     │
-      ┌─────────────┐      recommendation_draft.json                      │     │     │
-      │ Generator   │──────────────────────────────────────────────┐      │     │     │
-      └──────┬──────┘                                              │      │     │     │
-             │                                                     │      │     │     │
-             ▼                                                     │      │     │     │
-      ┌─────────────┐      evaluation_verdict.json                 │      │     │     │
-      │ Evaluator   │──────────────────────────────────────────────┘      │     │     │
-      └──────┬──────┘                                                     │     │     │
-             │                                                            │     │     │
-             │ aprovado                                                   │     │     │
-             ▼                                                            │     │     │
-      ┌─────────────┐      order_state.json                               │     │     │
-      │ Order       │─────────────────────────────────────────────────────┘     │     │
-      └──────┬──────┘                                                           │     │
-             │                                                                  │     │
-             ▼                                                                  │     │
-      ┌─────────────┐      payment_state.json                                    │     │
-      │ Payment     │────────────────────────────────────────────────────────────┘     │
-      └──────┬──────┘                                                                 │
-             │                                                                         │
-             ▼                                                                         │
-      ┌─────────────┐      fulfillment_state.json                                       │
-      │ Fulfillment │───────────────────────────────────────────────────────────────────┘
-      └─────────────┘
+                                +-------------------------+
+                                | Cliente no WhatsApp     |
+                                | Marina envia intenção   |
+                                +------------+------------+
+                                             | customer_message.json
+                                             v
++--------------------------------------------------------------------------------------+
+| ORCHESTRATOR                                                                         |
+| Controla ordem, retries, fallback, métricas e passagem entre fases                    |
++------------+-------------------------------------------------------------------------+
+             |
+             v
+      +-------------+      plan.json
+      | Planner     |--------------------------------------------------------------+
+      +------+------+                                                              |
+             |                                                                     |
+             v                                                                     |
+      +-------------+      discovery_state.json      customer_profile.json          |
+      | Discovery   |---------------------------------------------------------+     |
+      +------+------+                                                         |     |
+             |                                                                |     |
+             v                                                                |     |
+      +-------------+      catalog_snapshot.json                               |     |
+      | Catalog     |----------------------------------------------------+     |     |
+      +------+------+                                                    |     |     |
+             |                                                           |     |     |
+             v                                                           |     |     |
+      +-------------+      recommendation_draft.json                      |     |     |
+      | Generator   |----------------------------------------------+      |     |     |
+      +------+------+                                              |      |     |     |
+             |                                                     |      |     |     |
+             v                                                     |      |     |     |
+      +-------------+      evaluation_verdict.json                 |      |     |     |
+      | Evaluator   |----------------------------------------------+      |     |     |
+      +------+------+                                                     |     |     |
+             |                                                            |     |     |
+             | aprovado                                                   |     |     |
+             v                                                            |     |     |
+      +-------------+      order_state.json                               |     |     |
+      | Order       |-----------------------------------------------------+     |     |
+      +------+------+                                                           |     |
+             |                                                                  |     |
+             v                                                                  |     |
+      +-------------+      payment_state.json                                    |     |
+      | Payment     |------------------------------------------------------------+     |
+      +------+------+                                                                 |
+             |                                                                         |
+             v                                                                         |
+      +-------------+      fulfillment_state.json                                       |
+      | Fulfillment |-------------------------------------------------------------------+
+      +-------------+
 
 Fluxo de rejeição:
 Generator -> Evaluator -> feedback -> Generator novamente, no máximo 3 tentativas.
@@ -193,6 +193,54 @@ Qualquer agente que falhar 3 vezes chama handler específico e registra estado s
 | Order Agent | Cria pedido a partir da recomendação aprovada | `recommendation_draft.json` | `order_state.json` | Troca de SKU no checkout |
 | Payment Agent | Confirma pagamento simulado | `order_state.json` | `payment_state.json` | Valor divergente |
 | Fulfillment Agent | Abre separação e rastreio | `payment_state.json` | `fulfillment_state.json` | Promessa sem operação |
+
+---
+
+## 🧬 Conexão com Níveis 1, 2 e 3
+
+Esta solução do Nível 4 não existe no vácuo. Cada decisão de código e arquitetura aplica conceitos que você estudou nos três níveis anteriores. A tabela abaixo mostra exatamente onde cada padrão aparece no pipeline.
+
+### Nível 1 → Esta solução
+
+| Conceito do Nível 1 | Onde aparece nesta solução | Como protege o pipeline |
+|---|---|---|
+| Context Amnesia (Problema 1) | `customer_profile.json` e `catalog_snapshot.json` persistem restrições, orçamento e inventário | Se o Generator perder contexto durante retry, relê os arquivos — a restrição "sem lactose" nunca depende de memória efêmera |
+| Token Budgeting | O Planner divide a jornada em etapas pequenas, cada agente recebe apenas o contexto que precisa | Um agente que tentasse processar awareness, recommendation E payment em uma única janela esgotaria tokens e misturaria responsabilidades |
+| Planning/Execution Collapse (Problema 2) | `plan.json` separa o planejamento (Planner) da execução (Discovery → Fulfillment) | O Generator não decide o escopo da tarefa — ele recebe um plano pronto e executa. O Orchestrator garante que nenhuma etapa pule |
+| Self-Evaluation Collapse (Problema 3) | Generator e Evaluator são agentes separados com incentivos opostos | O Generator cria com temperatura alta e confiança. O Evaluator verifica com rubrica rígida e temperatura baixa. Sycophancy é estruturalmente bloqueada |
+| Basic Harness Patterns | Cada agente tem validação de entrada e saída, fallback próprio e limite de retries | Se o Catalog retorna lista vazia, o fallback do Catalog é acionado — não o fallback genérico do Orchestrator |
+
+### Nível 2 → Esta solução
+
+| Padrão do Nível 2 | Implementação nesta solução | Ganho mensurável |
+|---|---|---|
+| Generator/Evaluator | `Recommendation Agent` (Generator) + `Quality Agent` (Evaluator) com loop de feedback via `evaluation_verdict.json` | O Evaluator rejeita recomendação com lactose ou acima do orçamento; o Generator recebe feedback específico e corrige na segunda tentativa |
+| Sprint Contracts | Cada state file é um contrato: `discovery_state.json` declara seu schema, `catalog_snapshot.json` declara quais campos são obrigatórios | Se o Catalog entrega SKU sem o campo `lactose_free`, o Generator rejeita a entrada em vez de assumir um valor padrão |
+| Rubric Design | `Evaluator.rubric` define 5 critérios com pesos: segurança (35%), orçamento (25%), estoque (20%), clareza (15%), coerência (5%) | Score final ponderado decide aprovação. Um produto seguro mas caro pode passar, mas um barato com lactose é bloqueado independentemente dos outros critérios |
+| Trace Reading | `audit_log.jsonl` registra cada transição de fase, score, retry e fallback | Se Marina reclamar, o trace mostra exatamente: "turno 12, Generator tentativa 2, Evaluator score 0.81, critério reprovado: lactose_present" |
+
+### Nível 3 → Esta solução
+
+| Conceito do Nível 3 | Implementação | Por que foi necessário aqui |
+|---|---|---|
+| Multi-Agent Systems | 8 agentes independentes (Planner, Discovery, Catalog, Generator, Evaluator, Order, Payment, Fulfillment) orquestrados por um harness central | Um agente único não teria capacidade de raciocinar sobre awareness e fulfillment na mesma janela sem degradação. A separação permite que cada um use temperatura e tokens otimizados para sua tarefa |
+| State Persistence | 8 arquivos JSON + 1 audit log JSONL persistem toda transição em disco | Se o processo cair entre Payment e Fulfillment, o Orchestrator relê `payment_state.json` e retoma do ponto exato, sem cobrar duas vezes e sem perder o pedido |
+| File-Based Coordination | Comunicação entre agentes via arquivos no diretório `state/{customer_id}/`, sem memória compartilhada, sem fila, sem REST | Auditabilidade total: abrir `evaluation_verdict.json` mostra exatamente qual critério falhou, quando, e com qual evidência. Em produção, esse mesmo contrato migra para uma API sem mudar o modelo mental |
+| Harness Evolution | O Orchestrator abstrai a ordem dos agentes; remover ou adicionar um agente não requer reescrever os demais | Se amanhã o time decidir inserir um `FraudCheckAgent` entre Payment e Fulfillment, basta adicionar o agente e um state file — os outros agentes continuam intactos |
+
+### O fio condutor
+
+O que conecta Nível 1, 2 e 3 a esta solução não é memorização de padrões — é um princípio arquitetural que se repete em toda a pilha:
+
+> **Nenhum agente decide sozinho sobre segurança do cliente.**
+
+No Nível 1, você aprendeu que agentes esquecem. Aqui, `customer_profile.json` existe para que lactose nunca seja esquecida.
+
+No Nível 2, você aprendeu que agentes não sabem se autoavaliar. Aqui, o Evaluator existe para que nenhum Generator aprove a própria recomendação.
+
+No Nível 3, você aprendeu que sistemas multi-agent precisam de coordenação explícita. Aqui, o Orchestrator e os state files existem para que a ordem das etapas seja contratual, não acidental.
+
+E no Nível 4, você está vendo esses três princípios operando juntos em uma jornada comercial real. Não é teoria. É o KODA em produção.
 
 ---
 
@@ -1629,86 +1677,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Planner processa o sinal 1 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Planner processa o sinal 2 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Planner processa o sinal 3 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Planner processa o sinal 4 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Planner processa o sinal 5 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Planner processa o sinal 6 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Planner processa o sinal 7 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Planner processa o sinal 8 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Planner processa o sinal 9 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Planner processa o sinal 10 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Planner processa o sinal 11 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Planner processa o sinal 12 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Planner processa o sinal 13 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Planner processa o sinal 14 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Planner processa o sinal 15 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Planner processa o sinal 16 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Planner processa o sinal 17 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Planner processa o sinal 18 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Planner processa o sinal 19 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Planner processa o sinal 20 da fase Awareness com foco em classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   O dado crítico é registrado em `plan.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Planner com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+Nesta etapa, o Planner interpreta a mensagem de Marina e conclui que a intenção é compra, não uma dúvida genérica. Ele organiza a jornada em um plano explícito, destacando a restrição sem lactose, o teto de R$ 150 e a preferência por chocolate. O resultado vai para `plan.json`, que funciona como checkpoint para as próximas fases e como contrato de avanço do Orchestrator. Se algo faltar aqui, todo o restante do fluxo nasce com contexto incompleto.
 
 ### Etapa 2: Discovery
 
@@ -1729,86 +1699,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Discovery Agent processa o sinal 1 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Discovery Agent processa o sinal 2 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Discovery Agent processa o sinal 3 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Discovery Agent processa o sinal 4 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Discovery Agent processa o sinal 5 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Discovery Agent processa o sinal 6 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Discovery Agent processa o sinal 7 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Discovery Agent processa o sinal 8 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Discovery Agent processa o sinal 9 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Discovery Agent processa o sinal 10 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Discovery Agent processa o sinal 11 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Discovery Agent processa o sinal 12 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Discovery Agent processa o sinal 13 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Discovery Agent processa o sinal 14 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Discovery Agent processa o sinal 15 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Discovery Agent processa o sinal 16 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Discovery Agent processa o sinal 17 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Discovery Agent processa o sinal 18 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Discovery Agent processa o sinal 19 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Discovery Agent processa o sinal 20 da fase Discovery com foco em extrair objetivo, restrição sem lactose, orçamento e sabor.
-   O dado crítico é registrado em `customer_profile.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Discovery Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+O Discovery Agent transforma a mensagem em um perfil estruturado e confirma os detalhes que realmente importam para a venda. Ele registra em `customer_profile.json` a restrição sem lactose, o orçamento de R$ 150 e a preferência por chocolate, além de qualquer evidência útil para explicar a decisão. Esse arquivo vira a fonte única para Catalog e Recommendation, evitando releituras divergentes do texto cru. A etapa reduz a chance de uma recomendação insegura por falta de contexto.
 
 ### Etapa 3: Catalog
 
@@ -1829,86 +1721,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Catalog Agent processa o sinal 1 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Catalog Agent processa o sinal 2 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Catalog Agent processa o sinal 3 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Catalog Agent processa o sinal 4 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Catalog Agent processa o sinal 5 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Catalog Agent processa o sinal 6 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Catalog Agent processa o sinal 7 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Catalog Agent processa o sinal 8 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Catalog Agent processa o sinal 9 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Catalog Agent processa o sinal 10 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Catalog Agent processa o sinal 11 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Catalog Agent processa o sinal 12 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Catalog Agent processa o sinal 13 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Catalog Agent processa o sinal 14 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Catalog Agent processa o sinal 15 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Catalog Agent processa o sinal 16 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Catalog Agent processa o sinal 17 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Catalog Agent processa o sinal 18 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Catalog Agent processa o sinal 19 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Catalog Agent processa o sinal 20 da fase Catalog com foco em filtrar SKU seguro em estoque e abaixo de R$ 150.
-   O dado crítico é registrado em `catalog_snapshot.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Catalog Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+O Catalog Agent cruza o perfil com o estoque e elimina qualquer SKU fora da regra, priorizando opções sem lactose, dentro do orçamento e realmente disponíveis. Ele escreve `catalog_snapshot.json` com o recorte elegível e com o motivo da exclusão do restante, para que a próxima etapa não precise refazer a triagem. Isso protege a jornada contra inventário imaginário e mantém a recomendação ancorada em opções reais. Para Marina, a função desta fase é reduzir a lista até sobrar apenas o que ainda faz sentido.
 
 ### Etapa 4: Recommendation
 
@@ -1929,86 +1743,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Recommendation Agent processa o sinal 1 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Recommendation Agent processa o sinal 2 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Recommendation Agent processa o sinal 3 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Recommendation Agent processa o sinal 4 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Recommendation Agent processa o sinal 5 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Recommendation Agent processa o sinal 6 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Recommendation Agent processa o sinal 7 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Recommendation Agent processa o sinal 8 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Recommendation Agent processa o sinal 9 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Recommendation Agent processa o sinal 10 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Recommendation Agent processa o sinal 11 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Recommendation Agent processa o sinal 12 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Recommendation Agent processa o sinal 13 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Recommendation Agent processa o sinal 14 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Recommendation Agent processa o sinal 15 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Recommendation Agent processa o sinal 16 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Recommendation Agent processa o sinal 17 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Recommendation Agent processa o sinal 18 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Recommendation Agent processa o sinal 19 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Recommendation Agent processa o sinal 20 da fase Recommendation com foco em gerar mensagem de recomendação com justificativa humana.
-   O dado crítico é registrado em `recommendation_draft.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Recommendation Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+Aqui o agente de Recommendation atua como Generator e monta um rascunho de recomendação em linguagem natural. Ele combina o perfil de Marina com o snapshot do catálogo para justificar por que aquele item atende à restrição sem lactose, ao orçamento e ao sabor desejado. O artefato `recommendation_draft.json` guarda a proposta antes de qualquer aprovação automática, permitindo revisão rastreável. Se o draft ficar vago ou exagerado, a etapa seguinte consegue apontar exatamente o que precisa melhorar.
 
 ### Etapa 5: Evaluation
 
@@ -2029,86 +1765,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Quality Agent processa o sinal 1 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Quality Agent processa o sinal 2 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Quality Agent processa o sinal 3 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Quality Agent processa o sinal 4 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Quality Agent processa o sinal 5 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Quality Agent processa o sinal 6 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Quality Agent processa o sinal 7 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Quality Agent processa o sinal 8 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Quality Agent processa o sinal 9 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Quality Agent processa o sinal 10 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Quality Agent processa o sinal 11 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Quality Agent processa o sinal 12 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Quality Agent processa o sinal 13 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Quality Agent processa o sinal 14 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Quality Agent processa o sinal 15 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Quality Agent processa o sinal 16 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Quality Agent processa o sinal 17 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Quality Agent processa o sinal 18 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Quality Agent processa o sinal 19 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Quality Agent processa o sinal 20 da fase Evaluation com foco em aprovar somente se segurança, preço, estoque e clareza passarem.
-   O dado crítico é registrado em `evaluation_verdict.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Quality Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+O Quality Agent lê o rascunho e verifica se a recomendação é segura, fiel ao catálogo e clara para Marina. Em vez de aprovar a melhor frase, ele compara critérios objetivos e escreve `evaluation_verdict.json` com o resultado da checagem e o feedback necessário para revisão. Quando rejeita, a mensagem volta com instruções específicas, não com uma reprovação genérica. Isso transforma a avaliação em proteção real antes de a recomendação virar pedido.
 
 ### Etapa 6: Cart
 
@@ -2129,86 +1787,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Order Agent processa o sinal 1 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Order Agent processa o sinal 2 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Order Agent processa o sinal 3 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Order Agent processa o sinal 4 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Order Agent processa o sinal 5 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Order Agent processa o sinal 6 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Order Agent processa o sinal 7 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Order Agent processa o sinal 8 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Order Agent processa o sinal 9 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Order Agent processa o sinal 10 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Order Agent processa o sinal 11 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Order Agent processa o sinal 12 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Order Agent processa o sinal 13 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Order Agent processa o sinal 14 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Order Agent processa o sinal 15 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Order Agent processa o sinal 16 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Order Agent processa o sinal 17 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Order Agent processa o sinal 18 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Order Agent processa o sinal 19 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Order Agent processa o sinal 20 da fase Cart com foco em criar pedido com o SKU aprovado.
-   O dado crítico é registrado em `order_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Order Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+Depois da aprovação, o Order Agent converte a recomendação validada em pedido e grava `order_state.json`. Ele fixa o SKU, o valor e os dados de checkout para que o restante da jornada opere sobre um estado consistente, não sobre texto solto. Essa etapa é onde a intenção vira compromisso operacional, então o contrato precisa estar fechado. Para Marina, isso evita troca de produto na reta final.
 
 ### Etapa 7: Payment
 
@@ -2229,86 +1809,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Payment Agent processa o sinal 1 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Payment Agent processa o sinal 2 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Payment Agent processa o sinal 3 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Payment Agent processa o sinal 4 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Payment Agent processa o sinal 5 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Payment Agent processa o sinal 6 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Payment Agent processa o sinal 7 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Payment Agent processa o sinal 8 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Payment Agent processa o sinal 9 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Payment Agent processa o sinal 10 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Payment Agent processa o sinal 11 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Payment Agent processa o sinal 12 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Payment Agent processa o sinal 13 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Payment Agent processa o sinal 14 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Payment Agent processa o sinal 15 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Payment Agent processa o sinal 16 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Payment Agent processa o sinal 17 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Payment Agent processa o sinal 18 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Payment Agent processa o sinal 19 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Payment Agent processa o sinal 20 da fase Payment com foco em confirmar Pix simulado no valor exato.
-   O dado crítico é registrado em `payment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Payment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+O Payment Agent confere o pagamento simulado e escreve `payment_state.json` apenas quando o valor confere com o pedido. Ele garante que a cobrança corresponda ao que foi aprovado e que não haja divergência entre o que Marina viu e o que o sistema registrou. Se o valor destoar, a etapa não avança e o Orchestrator recebe um sinal claro de falha. Isso impede que um checkout incorreto contamine o fulfillment.
 
 ### Etapa 8: Fulfillment
 
@@ -2329,86 +1831,8 @@ awareness -> discovery -> recommendation -> cart -> payment -> fulfillment -> cl
 | Preferência | chocolate | Aumenta aderência e confiança |
 
 **Trace narrativo da etapa:**
-1. Fulfillment Agent processa o sinal 1 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-2. Fulfillment Agent processa o sinal 2 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-3. Fulfillment Agent processa o sinal 3 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-4. Fulfillment Agent processa o sinal 4 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-5. Fulfillment Agent processa o sinal 5 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-6. Fulfillment Agent processa o sinal 6 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-7. Fulfillment Agent processa o sinal 7 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-8. Fulfillment Agent processa o sinal 8 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-9. Fulfillment Agent processa o sinal 9 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-10. Fulfillment Agent processa o sinal 10 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-11. Fulfillment Agent processa o sinal 11 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-12. Fulfillment Agent processa o sinal 12 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-13. Fulfillment Agent processa o sinal 13 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-14. Fulfillment Agent processa o sinal 14 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-15. Fulfillment Agent processa o sinal 15 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-16. Fulfillment Agent processa o sinal 16 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-17. Fulfillment Agent processa o sinal 17 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-18. Fulfillment Agent processa o sinal 18 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-19. Fulfillment Agent processa o sinal 19 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
-20. Fulfillment Agent processa o sinal 20 da fase Fulfillment com foco em abrir separação e avisar rastreio.
-   O dado crítico é registrado em `fulfillment_state.json` antes de qualquer próxima etapa ler o resultado.
-   Se a verificação falhar neste ponto, o Orchestrator repete Fulfillment Agent com feedback específico.
-   Para Marina, isso evita que a restrição sem lactose, o limite de R$ 150 ou o sabor chocolate se percam no fluxo.
+
+O Fulfillment Agent usa o pagamento confirmado para abrir separação, registrar rastreio e persistir `fulfillment_state.json`. Aqui a jornada deixa de ser promessa e passa a refletir uma operação já encaminhada no mundo real, com evidência suficiente para acompanhamento. O artefato final permite notificar Marina com número de rastreio e previsão, sem depender de memória efêmera. É o fechamento do ciclo: do sinal inicial ao status operacional auditável.
 
 ### Mensagem final enviada para Marina
 
@@ -2432,6 +1856,239 @@ Também salvei sua preferência por produtos sem lactose e sabor chocolate para 
 | `order_state.json` | Pedido confirmado com item, endereço e total | presente e válido |
 | `payment_state.json` | Pagamento Pix simulado com referência e confirmação | presente e válido |
 | `fulfillment_state.json` | Ticket, transportadora, rastreio e notificação | presente e válido |
+
+---
+
+### Exemplos de state files gerados (caso Marina)
+
+Abaixo está o conteúdo real que o pipeline gera para cada arquivo de estado na execução bem-sucedida da jornada de Marina. Use estes exemplos como referência de contrato ao estender o pipeline.
+
+**`customer_profile.json`** — gerado pelo Discovery Agent:
+```json
+{
+  "schema_version": "1.0",
+  "customer_id": "wa_5511998765432",
+  "name": "Marina",
+  "goal": "pre_treino",
+  "dietary_restrictions": ["intolerancia_lactose"],
+  "budget_brl": 150,
+  "preferred_flavor": "chocolate",
+  "training_context": "retomando_treinos",
+  "confidence_scores": {
+    "goal": 0.95,
+    "lactose_restriction": 0.98,
+    "budget": 0.90,
+    "flavor": 1.0
+  },
+  "created_at": "2026-05-28T18:42:00Z"
+}
+```
+
+**`catalog_snapshot.json`** — gerado pelo Catalog Agent:
+```json
+{
+  "schema_version": "1.0",
+  "requested_by": "customer_profile.json",
+  "eligible": [
+    {
+      "sku": "PRE-WHEY-CHOC-900",
+      "name": "KODA Pré-Treino Cacao Focus sem Lactose",
+      "price_brl": 139.90,
+      "lactose_free": true,
+      "flavor": "chocolate",
+      "stock_qty": 23,
+      "warehouse": "SP-CENTRO-01",
+      "servings": 30
+    }
+  ],
+  "excluded": [
+    {"sku": "PRE-CAFE-LACT-500", "reason": "lactose_present"},
+    {"sku": "PRE-TREINO-MOR-600", "reason": "flavor_mismatch"},
+    {"sku": "PRE-PREMIUM-CHOC-300", "reason": "budget_exceeded", "price_brl": 189.90},
+    {"sku": "PRE-CAFE-ZER-500", "reason": "out_of_stock"}
+  ],
+  "snapshot_at": "2026-05-28T18:42:01Z"
+}
+```
+
+**`recommendation_draft.json`** — gerado pelo Generator (tentativa 1):
+```json
+{
+  "generation_id": "gen_1",
+  "iteration": 1,
+  "candidate_response": "Marina, recomendo o KODA Pré-Treino Cacao Focus! Ele é sem lactose, custa R$ 139,90 e tem sabor chocolate como você prefere. Perfeito para retomar os treinos com energia.",
+  "products_considered": [
+    {"sku": "PRE-WHEY-CHOC-900", "name": "KODA Pré-Treino Cacao Focus sem Lactose", "price_brl": 139.90, "lactose_free": true, "flavor": "chocolate"}
+  ],
+  "assumptions": ["cliente retomando treinos — prefere dose moderada", "chocolate é preferência declarada e confirmada"],
+  "generated_at": "2026-05-28T18:42:02Z"
+}
+```
+
+**`evaluation_verdict.json`** — gerado pelo Evaluator (aprova na tentativa 2):
+```json
+{
+  "verdict_id": "eval_2",
+  "iteration": 2,
+  "verdict": "APPROVED",
+  "rubric_results": [
+    {"criterion": "lactose_free", "passed": true, "evidence": "SKU PRE-WHEY-CHOC-900 marcado lactose_free=true"},
+    {"criterion": "budget_respected", "passed": true, "evidence": "R$ 139.90 <= R$ 150.00"},
+    {"criterion": "flavor_match", "passed": true, "evidence": "flavor=chocolate confere com preferred_flavor"},
+    {"criterion": "clarity", "passed": true, "evidence": "resposta menciona restrição, preço e sabor em linguagem natural"},
+    {"criterion": "stock_confirmed", "passed": true, "evidence": "23 unidades em SP-CENTRO-01"}
+  ],
+  "overall_score": 0.94,
+  "checked_at": "2026-05-28T18:42:03Z"
+}
+```
+
+**`order_state.json`** — gerado pelo Order Agent:
+```json
+{
+  "order_id": "KDA-8F3A21",
+  "sku": "PRE-WHEY-CHOC-900",
+  "qty": 1,
+  "unit_price_brl": 139.90,
+  "total_brl": 139.90,
+  "customer_id": "wa_5511998765432",
+  "shipping_address": "São Paulo, SP",
+  "status": "confirmed",
+  "created_at": "2026-05-28T18:42:04Z"
+}
+```
+
+**`payment_state.json`** — gerado pelo Payment Agent:
+```json
+{
+  "payment_id": "PIX-KDA-8F3A21",
+  "order_id": "KDA-8F3A21",
+  "method": "pix",
+  "amount_brl": 139.90,
+  "status": "confirmed",
+  "reference": "pix_kda_8f3a21_20260528",
+  "confirmed_at": "2026-05-28T18:42:05Z"
+}
+```
+
+**`fulfillment_state.json`** — gerado pelo Fulfillment Agent:
+```json
+{
+  "ticket_id": "FUL-7729KDA",
+  "order_id": "KDA-8F3A21",
+  "warehouse": "SP-CENTRO-01",
+  "carrier": "KODA Entregas",
+  "tracking_code": "BR482913775KDA",
+  "estimated_delivery": "2026-05-30",
+  "notification_sent": true,
+  "created_at": "2026-05-28T18:42:06Z"
+}
+```
+
+---
+
+## 🔧 Debug e Troubleshooting do Pipeline
+
+Quando o pipeline falha, a primeira reação não deve ser "melhorar o prompt". Deve ser abrir o state file da etapa que falhou. Esta seção mostra o roteiro de diagnóstico para cada ponto de falha comum.
+
+### Diagnóstico por sintoma
+
+| Sintoma | State file para abrir primeiro | O que procurar | Ação provável |
+|---|---|---|---|
+| Planner cria plano errado (ex: trata compra como dúvida) | `plan.json` | Campo `current_goal` — está correto? A mensagem original está preservada em `customer_message.json`? | Revisar heurística de `identify_goal()` no Planner. Adicionar palavras-chave que o caso real usa |
+| Discovery não extrai restrição | `discovery_state.json` → campo `confidence` para lactose | O score de confiança está abaixo do threshold? O campo `evidence` mostra que a restrição foi encontrada na mensagem? | Ajustar `extract_constraints()` para reconhecer variações como "não posso lactose", "intolerante a leite" |
+| Catalog retorna lista vazia | `catalog_snapshot.json` → campos `eligible` e `excluded` | Todos os SKUs estão em `excluded`? Qual campo (lactose, preço, estoque) motivou a exclusão de cada um? | Ampliar catálogo simulado ou revisar regras de filtro. Verificar se `budget_brl` foi interpretado corretamente |
+| Generator produz recomendação genérica | `recommendation_draft.json` → campo `products_considered` | A lista está vazia? O campo `assumptions` revela que o agente ignorou restrições? | O Generator pode estar recebendo `catalog_snapshot` vazio. Verificar etapa anterior primeiro |
+| Evaluator rejeita sistematicamente (3 retries) | `evaluation_verdict.json` das 3 tentativas | O mesmo critério falha nas 3? O feedback está sendo interpretado pelo Generator? As tentativas seguintes mudam algo ou repetem o mesmo erro? | Se o mesmo critério falha sempre, a rubrica pode estar impossível de satisfazer. Se o feedback é ignorado, o Generator não está lendo `feedback.json` |
+| Order cria pedido com SKU errado | `order_state.json` | O `sku` no pedido confere com o `sku` aprovado em `evaluation_verdict.json`? | Bug no Order Agent: está lendo o draft em vez do verdict. Corrigir `input` do Order para apontar para `evaluation_verdict.json` |
+| Payment falha com valor divergente | `payment_state.json` vs `order_state.json` | O `total_brl` no pagamento é igual ao `total_brl` no pedido? | Erro de arredondamento ou desconto aplicado duas vezes. Adicionar validação de `abs(payment.total - order.total) < 0.01` |
+| Fulfillment não gera rastreio | `fulfillment_state.json` | O campo `tracking_code` está presente? O `payment_status` em `payment_state.json` é `confirmed`? | Verificar se o Fulfillment Agent está condicionado corretamente ao status do pagamento |
+
+### Fluxo de diagnóstico rápido
+
+```
+1. Identifique a etapa que falhou (via trace do Orchestrator ou log de erro)
+   │
+2. Abra o state file de ENTRADA da etapa
+   └─ O agente recebeu dados corretos?
+      ├─ SIM → o problema está na lógica interna do agente
+      └─ NÃO → o problema está na etapa ANTERIOR
+         └─ Volte ao passo 1 para a etapa anterior
+   │
+3. Abra o state file de SAÍDA da etapa
+   └─ O output tem os campos obrigatórios?
+      ├─ SIM mas valores errados → revisar a função de processamento
+      └─ NÃO (campos ausentes) → revisar a serialização do agente
+   │
+4. Compare entrada e saída com a mesma etapa em uma execução bem-sucedida
+   └─ O que mudou no input que causou o desvio?
+```
+
+### Checklist pré-produção
+
+Antes de considerar este pipeline pronto para produção, verifique:
+
+- [ ] Todos os arquivos de estado têm `schema_version` no campo raiz
+- [ ] O Orchestrator registra `error_logged` em `audit_log.jsonl` em todo fallback
+- [ ] Nenhum agente escreve em state file de outro agente (respeito a contrato)
+- [ ] O diretório `state/` é limpo entre execuções de teste (evita contaminação)
+- [ ] O `max_iterations=3` é respeitado em todos os loops de retry
+- [ ] Fallback de Payment nunca promete captura antes de confirmação
+- [ ] Fallback de Fulfillment nunca gera rastreio falso
+- [ ] Todos os `dataclass` têm validação de tipos nos campos críticos (`price_brl >= 0`, `lactose_free: bool`)
+- [ ] O caso Marina roda do início ao fim sem intervenção manual
+
+### Padrões de erro e suas correções
+
+Estes são os erros mais comuns que aparecem quando o time começa a executar o pipeline com dados reais, e como corrigi-los sem reescrever a arquitetura.
+
+**Erro 1: `FileNotFoundError` ao ler state file de etapa anterior**
+
+Sintoma: o Catalog Agent falha com "Arquivo necessário não encontrado: customer_profile.json".
+
+Causa provável: o Orchestrator está executando os agentes em paralelo em vez de sequencial, ou o Discovery Agent falhou silenciosamente sem lançar exceção.
+
+Correção: verifique a ordem no `run_pipeline()`. O Catalog só pode rodar DEPOIS do Discovery. Adicione um assert explícito: `assert Path("state/.../customer_profile.json").exists(), "Discovery Agent deve rodar antes do Catalog"`.
+
+**Erro 2: `KeyError: 'lactose_free'` no Evaluator**
+
+Sintoma: o Evaluator tenta acessar `p.get("lactose_free")` e o campo não existe no dicionário do produto.
+
+Causa provável: o Catalog Agent está populando `eligible` com produtos que não têm o campo `lactose_free`, ou o Generator está referenciando um SKU fora do snapshot.
+
+Correção: adicione validação de schema no Catalog Agent. Todo produto em `eligible` DEVE ter `lactose_free: bool`. Se um SKU do catálogo real não tem esse campo, o Catalog deve marcá-lo como `excluded` com razão `missing_lactose_info`.
+
+**Erro 3: Loop infinito Generator → Evaluator**
+
+Sintoma: o pipeline fica preso em retry, consumindo tokens sem produzir aprovação.
+
+Causa provável: o feedback do Evaluator é genérico ("melhore a recomendação") em vez de específico ("substitua SKU X por Y porque X contém lactose").
+
+Correção: revise a função `evaluator_agent()`. Todo `RubricResult` com `passed=False` deve incluir `evidence` e, idealmente, `fix_instruction`. O Generator deve ler `fix_instruction` e aplicá-la, não reinterpretar o problema.
+
+**Erro 4: `payment_state.json` com valor diferente de `order_state.json`**
+
+Sintoma: o Payment Agent registra R$ 139.90 mas o Order Agent registrou R$ 149.90.
+
+Causa provável: o Payment Agent está recalculando o total a partir dos itens em vez de ler `total_brl` diretamente de `order_state.json`. Arredondamento ou desconto aplicado duas vezes.
+
+Correção: faça o Payment Agent ler `total_brl` do `order_state.json` como valor canônico. Não recalcule. Adicione validação: `if abs(payment_amount - order_total) > 0.01: raise ValueError("Payment amount diverges from order total")`.
+
+**Erro 5: `fulfillment_state.json` sem `tracking_code`**
+
+Sintoma: o Fulfillment Agent roda mas o campo `tracking_code` está vazio.
+
+Causa provável: o status do pagamento em `payment_state.json` não é `"confirmed"` e o Fulfillment Agent não validou essa condição antes de prosseguir.
+
+Correção: adicione guarda explícita no Fulfillment Agent: `if payment_state.get("status") != "confirmed": return fallback_fulfillment("pagamento não confirmado")`.
+
+**Erro 6: `plan.json` com `current_goal` errado após mudança de intenção**
+
+Sintoma: o cliente começa perguntando sobre whey, mas muda para creatina. O plano continua apontando para whey.
+
+Causa provável: o Planner não tem um mecanismo de reavaliação. O `plan.json` é escrito uma vez e nunca revisado.
+
+Correção: adicione um `IntentChangeDetector` no Orchestrator. Antes de cada turno, compare a mensagem atual com o `current_goal` do plano. Se houver divergência (ex: cliente fala de creatina mas plano diz whey), chame o Planner novamente com `replan=True`.
 
 ---
 
@@ -2472,246 +2129,150 @@ As métricas abaixo mostram o que a equipe KODA deve acompanhar quando transform
 | Fulfillment | 29 ms | 0.97 | 0 | 0 | rastreio criado |
 
 ### Leitura operacional das métricas
-1. Quando a métrica 1 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-2. Quando a métrica 2 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-3. Quando a métrica 3 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-4. Quando a métrica 4 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-5. Quando a métrica 5 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-6. Quando a métrica 6 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-7. Quando a métrica 7 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-8. Quando a métrica 8 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-9. Quando a métrica 9 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-10. Quando a métrica 10 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-11. Quando a métrica 11 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-12. Quando a métrica 12 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-13. Quando a métrica 13 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-14. Quando a métrica 14 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-15. Quando a métrica 15 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-16. Quando a métrica 16 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-17. Quando a métrica 17 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-18. Quando a métrica 18 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-19. Quando a métrica 19 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-20. Quando a métrica 20 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-21. Quando a métrica 21 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-22. Quando a métrica 22 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-23. Quando a métrica 23 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-24. Quando a métrica 24 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-25. Quando a métrica 25 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-26. Quando a métrica 26 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-27. Quando a métrica 27 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-28. Quando a métrica 28 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-29. Quando a métrica 29 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-30. Quando a métrica 30 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-31. Quando a métrica 31 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-32. Quando a métrica 32 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-33. Quando a métrica 33 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-34. Quando a métrica 34 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-35. Quando a métrica 35 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-36. Quando a métrica 36 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-37. Quando a métrica 37 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-38. Quando a métrica 38 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-39. Quando a métrica 39 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-40. Quando a métrica 40 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-41. Quando a métrica 41 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-42. Quando a métrica 42 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-43. Quando a métrica 43 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-44. Quando a métrica 44 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-45. Quando a métrica 45 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-46. Quando a métrica 46 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-47. Quando a métrica 47 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-48. Quando a métrica 48 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-49. Quando a métrica 49 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-50. Quando a métrica 50 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-51. Quando a métrica 51 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-52. Quando a métrica 52 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-53. Quando a métrica 53 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-54. Quando a métrica 54 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-55. Quando a métrica 55 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-56. Quando a métrica 56 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-57. Quando a métrica 57 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-58. Quando a métrica 58 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-59. Quando a métrica 59 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-60. Quando a métrica 60 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-61. Quando a métrica 61 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-62. Quando a métrica 62 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-63. Quando a métrica 63 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-64. Quando a métrica 64 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-65. Quando a métrica 65 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-66. Quando a métrica 66 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-67. Quando a métrica 67 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-68. Quando a métrica 68 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-69. Quando a métrica 69 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-70. Quando a métrica 70 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-71. Quando a métrica 71 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-72. Quando a métrica 72 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-73. Quando a métrica 73 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-74. Quando a métrica 74 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-75. Quando a métrica 75 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-76. Quando a métrica 76 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-77. Quando a métrica 77 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-78. Quando a métrica 78 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-79. Quando a métrica 79 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-80. Quando a métrica 80 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-81. Quando a métrica 81 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-82. Quando a métrica 82 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-83. Quando a métrica 83 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-84. Quando a métrica 84 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-85. Quando a métrica 85 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-86. Quando a métrica 86 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-87. Quando a métrica 87 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-88. Quando a métrica 88 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-89. Quando a métrica 89 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-90. Quando a métrica 90 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-91. Quando a métrica 91 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-92. Quando a métrica 92 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-93. Quando a métrica 93 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-94. Quando a métrica 94 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-95. Quando a métrica 95 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-96. Quando a métrica 96 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-97. Quando a métrica 97 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-98. Quando a métrica 98 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-99. Quando a métrica 99 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-100. Quando a métrica 100 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-101. Quando a métrica 101 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-102. Quando a métrica 102 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-103. Quando a métrica 103 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-104. Quando a métrica 104 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-105. Quando a métrica 105 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-106. Quando a métrica 106 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-107. Quando a métrica 107 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-108. Quando a métrica 108 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-109. Quando a métrica 109 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-110. Quando a métrica 110 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-111. Quando a métrica 111 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-112. Quando a métrica 112 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
-113. Quando a métrica 113 da fase Awareness piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Awareness, segue para o score e termina no trace do Orchestrator.
-114. Quando a métrica 114 da fase Discovery piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Discovery, segue para o score e termina no trace do Orchestrator.
-115. Quando a métrica 115 da fase Catalog piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Catalog, segue para o score e termina no trace do Orchestrator.
-116. Quando a métrica 116 da fase Recommendation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Recommendation, segue para o score e termina no trace do Orchestrator.
-117. Quando a métrica 117 da fase Evaluation piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Evaluation, segue para o score e termina no trace do Orchestrator.
-118. Quando a métrica 118 da fase Cart piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Cart, segue para o score e termina no trace do Orchestrator.
-119. Quando a métrica 119 da fase Payment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Payment, segue para o score e termina no trace do Orchestrator.
-120. Quando a métrica 120 da fase Fulfillment piora, a equipe deve abrir o arquivo de estado correspondente antes de mexer no prompt.
-   A investigação começa pelo contrato da fase Fulfillment, segue para o score e termina no trace do Orchestrator.
+
+Em produção, essa tabela serve como painel de triagem, não como relatório para arquivar. Quando a latência do Planner ou do Discovery sobe, a primeira leitura deve ser o estado gerado e o prompt, porque o sintoma costuma ser escopo excessivo, parsing caro ou contexto desnecessário. Se o Catalog ou o Generator piora, vale comparar o JSON de entrada com o snapshot anterior para descobrir se o problema está no inventário, na expansão de contexto ou na estratégia de geração.
+
+Retry rate crescente pede atenção ao feedback do Evaluator. Se o draft volta várias vezes, a equipe deve abrir `evaluation_verdict.json` e verificar se os critérios estão objetivos o suficiente ou se a rubrica está punindo coisas diferentes em tentativas diferentes. Já um fallback disparando acima do esperado indica que o contrato da etapa está quebrando de forma repetida, então a análise precisa ir para a última fase que mudou estado antes do fallback.
+
+Na prática, a equipe responde sempre às mesmas três perguntas: o problema está na entrada, na regra ou no handoff? O KPI aponta onde olhar primeiro, o trace do Orchestrator confirma em que tentativa ocorreu a degradação e o arquivo de estado mostra qual campo ficou inconsistente. Esse fluxo reduz discussão abstrata e encurta o caminho entre alerta e correção.
+
+---
+
+## 🧩 Como Estender Este Pipeline
+
+O pipeline que você construiu é um template, não um produto fechado. Esta seção mostra três extensões reais que times KODA implementaram a partir desta mesma base.
+
+### Extensão 1: Adicionar um FraudCheckAgent
+
+**Problema:** antes de confirmar pagamento, você quer verificar se o cliente não tem histórico de chargeback ou comportamento suspeito.
+
+**O que muda no pipeline:** insira um agente entre Payment e Fulfillment:
+
+```
+Payment Agent → payment_state.json
+     │
+     ▼
+FraudCheckAgent → fraud_check_result.json
+     │
+     ├── approved ──► Fulfillment Agent
+     └── flagged  ──► fallback: escalar para revisão manual
+```
+
+**Novo state file — `fraud_check_result.json`:**
+```json
+{
+  "check_id": "FRD-8821",
+  "order_id": "KDA-8F3A21",
+  "customer_id": "wa_5511998765432",
+  "risk_score": 0.12,
+  "flags": [],
+  "decision": "approved",
+  "checked_at": "2026-05-28T18:42:06Z"
+}
+```
+
+**Novo agente (esqueleto):**
+```python
+@dataclass
+class FraudCheckResult:
+    check_id: str
+    order_id: str
+    customer_id: str
+    risk_score: float
+    flags: list[str]
+    decision: str  # "approved" ou "flagged"
+
+def fraud_check_agent(payment_state: dict, customer_history: dict) -> FraudCheckResult:
+    risk = 0.0
+    flags = []
+    if customer_history.get("chargeback_count", 0) > 0:
+        risk += 0.6
+        flags.append("prior_chargeback")
+    if payment_state.get("amount_brl", 0) > 500:
+        risk += 0.1
+        flags.append("high_value_order")
+    return FraudCheckResult(
+        check_id=f"FRD-{uuid.uuid4().hex[:4].upper()}",
+        order_id=payment_state["order_id"],
+        customer_id=payment_state.get("customer_id", ""),
+        risk_score=min(risk, 1.0),
+        flags=flags,
+        decision="flagged" if risk > 0.5 else "approved"
+    )
+```
+
+**O que NÃO muda:** Planner, Discovery, Catalog, Generator, Evaluator, Order e Payment continuam exatamente iguais. Isso é harness evolution em prática — adicionar capacidade sem reescrever o que já funciona.
+
+### Extensão 2: Substituir catálogo simulado por API real
+
+**Problema:** o catálogo atual é uma lista em memória. Em produção, os produtos vêm de uma API REST com autenticação.
+
+**O que muda:** apenas a função `fetch_catalog()` dentro do Catalog Agent. A interface com os outros agentes (entrada: `customer_profile.json`, saída: `catalog_snapshot.json`) permanece idêntica.
+
+```python
+# Antes (exercício):
+SAMPLE_CATALOG = [Product(...), Product(...)]
+
+def fetch_catalog() -> list[Product]:
+    return SAMPLE_CATALOG
+
+# Depois (produção):
+import requests
+
+def fetch_catalog(api_key: str, base_url: str) -> list[Product]:
+    resp = requests.get(
+        f"{base_url}/v1/products",
+        headers={"Authorization": f"Bearer {api_key}"},
+        params={"category": "suplementos", "in_stock": True},
+        timeout=5
+    )
+    resp.raise_for_status()
+    return [Product(**item) for item in resp.json()["products"]]
+```
+
+**Por que isso funciona:** o contrato do Catalog Agent diz "receba um perfil, devolva um snapshot". De onde os produtos vêm é detalhe de implementação. File-based coordination permite essa troca sem afetar nenhum outro agente.
+
+### Extensão 3: Adicionar notificação pós-fulfillment via WhatsApp
+
+**Problema:** depois que o Fulfillment Agent gera rastreio, você quer notificar a Marina automaticamente pelo WhatsApp.
+
+**O que muda:** adicione um `NotificationAgent` após o Fulfillment:
+
+```python
+def notification_agent(fulfillment_state: dict, customer_profile: dict) -> dict:
+    tracking = fulfillment_state["tracking_code"]
+    eta = fulfillment_state["estimated_delivery"]
+    product_name = "KODA Pré-Treino Cacao Focus"
+
+    message = (
+        f"{customer_profile['name']}, seu pedido foi separado! 🚀\n"
+        f"Rastreio: {tracking}\n"
+        f"Previsão de entrega: {eta}\n"
+        f"Obrigado por confiar na KODA!"
+    )
+
+    # Em produção: chamar WhatsApp Business API
+    # send_whatsapp_message(customer_profile["customer_id"], message)
+
+    return {
+        "notification_id": f"NOTIF-{uuid.uuid4().hex[:6].upper()}",
+        "channel": "whatsapp",
+        "recipient": customer_profile["customer_id"],
+        "message_preview": message[:80],
+        "status": "queued",
+        "sent_at": datetime.now(timezone.utc).isoformat()
+    }
+```
+
+### Princípio de extensão
+
+Toda extensão segue o mesmo padrão de três passos:
+
+1. **Defina o state file** — qual arquivo JSON o novo agente vai produzir? Quais campos são obrigatórios?
+2. **Conecte entrada e saída** — de qual state file o novo agente lê? Para qual agente seguinte ele entrega?
+3. **Adicione fallback** — o que acontece se o novo agente falhar 3 vezes? Quem é notificado?
+
+Se você seguir esses três passos, qualquer novo agente se integra ao pipeline sem reescrever os existentes. Esse é o valor de uma arquitetura com contratos explícitos: crescer não significa refatorar.
 
 ---
 
@@ -2767,2708 +2328,175 @@ As métricas abaixo mostram o que a equipe KODA deve acompanhar quando transform
 
 ---
 
-## Apêndice Operacional: Trace Expandido da Jornada Marina
+## ❓ Perguntas Frequentes
 
-Este apêndice mantém a solução autocontida e mostra como um trace longo deve parecer quando a equipe precisa auditar uma jornada real.
-Cada linha registra uma observação concreta sobre agente, arquivo, decisão e risco reduzido.
+### "Preciso mesmo de 8 agentes? Não é overengineering?"
 
-1. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 1: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 1: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-2. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 2: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 2: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-3. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 3: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 3: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-4. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 4: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 4: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-5. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 5: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 5: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-6. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 6: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 6: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-7. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 7: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 7: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-8. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 8: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 8: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-9. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 9: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 9: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-10. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 10: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 10: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-11. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 11: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 11: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-12. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 12: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 12: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-13. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 13: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 13: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-14. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 14: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 14: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-15. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 15: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 15: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-16. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 16: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 16: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-17. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 17: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 17: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-18. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 18: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 18: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-19. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 19: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 19: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-20. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 20: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 20: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-21. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 21: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 21: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-22. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 22: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 22: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-23. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 23: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 23: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-24. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 24: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 24: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-25. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 25: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 25: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-26. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 26: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 26: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-27. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 27: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 27: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-28. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 28: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 28: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-29. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 29: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 29: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-30. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 30: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 30: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-31. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 31: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 31: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-32. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 32: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 32: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-33. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 33: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 33: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-34. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 34: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 34: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-35. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 35: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 35: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-36. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 36: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 36: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-37. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 37: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 37: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-38. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 38: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 38: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-39. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 39: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 39: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-40. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 40: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 40: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-41. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 41: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 41: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-42. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 42: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 42: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-43. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 43: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 43: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-44. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 44: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 44: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-45. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 45: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 45: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-46. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 46: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 46: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-47. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 47: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 47: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-48. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 48: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 48: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-49. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 49: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 49: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-50. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 50: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 50: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-51. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 51: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 51: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-52. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 52: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 52: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-53. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 53: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 53: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-54. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 54: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 54: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-55. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 55: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 55: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-56. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 56: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 56: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-57. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 57: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 57: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-58. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 58: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 58: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-59. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 59: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 59: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-60. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 60: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 60: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-61. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 61: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 61: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-62. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 62: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 62: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-63. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 63: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 63: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-64. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 64: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 64: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-65. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 65: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 65: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-66. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 66: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 66: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-67. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 67: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 67: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-68. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 68: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 68: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-69. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 69: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 69: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-70. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 70: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 70: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-71. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 71: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 71: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-72. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 72: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 72: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-73. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 73: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 73: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-74. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 74: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 74: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-75. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 75: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 75: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-76. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 76: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 76: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-77. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 77: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 77: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-78. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 78: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 78: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-79. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 79: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 79: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-80. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 80: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 80: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-81. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 81: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 81: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-82. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 82: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 82: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-83. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 83: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 83: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-84. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 84: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 84: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-85. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 85: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 85: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-86. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 86: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 86: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-87. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 87: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 87: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-88. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 88: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 88: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-89. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 89: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 89: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-90. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 90: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 90: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-91. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 91: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 91: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-92. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 92: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 92: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-93. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 93: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 93: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-94. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 94: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 94: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-95. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 95: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 95: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-96. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 96: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 96: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-97. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 97: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 97: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-98. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 98: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 98: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-99. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 99: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 99: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-100. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 100: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 100: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-101. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 101: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 101: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-102. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 102: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 102: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-103. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 103: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 103: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-104. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 104: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 104: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-105. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 105: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 105: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-106. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 106: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 106: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-107. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 107: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 107: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-108. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 108: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 108: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-109. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 109: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 109: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-110. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 110: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 110: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-111. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 111: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 111: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-112. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 112: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 112: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-113. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 113: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 113: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-114. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 114: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 114: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-115. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 115: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 115: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-116. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 116: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 116: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-117. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 117: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 117: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-118. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 118: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 118: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-119. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 119: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 119: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-120. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 120: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 120: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-121. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 121: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 121: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-122. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 122: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 122: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-123. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 123: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 123: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-124. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 124: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 124: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-125. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 125: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 125: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-126. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 126: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 126: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-127. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 127: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 127: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-128. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 128: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 128: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-129. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 129: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 129: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-130. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 130: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 130: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-131. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 131: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 131: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-132. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 132: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 132: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-133. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 133: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 133: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-134. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 134: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 134: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-135. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 135: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 135: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-136. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 136: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 136: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-137. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 137: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 137: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-138. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 138: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 138: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-139. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 139: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 139: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-140. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 140: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 140: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-141. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 141: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 141: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-142. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 142: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 142: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-143. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 143: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 143: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-144. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 144: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 144: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-145. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 145: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 145: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-146. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 146: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 146: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-147. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 147: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 147: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-148. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 148: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 148: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-149. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 149: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 149: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-150. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 150: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 150: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-151. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 151: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 151: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-152. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 152: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 152: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-153. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 153: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 153: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-154. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 154: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 154: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-155. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 155: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 155: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-156. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 156: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 156: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-157. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 157: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 157: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-158. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 158: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 158: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-159. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 159: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 159: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-160. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 160: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 160: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-161. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 161: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 161: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-162. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 162: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 162: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-163. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 163: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 163: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-164. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 164: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 164: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-165. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 165: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 165: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-166. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 166: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 166: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-167. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 167: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 167: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-168. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 168: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 168: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-169. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 169: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 169: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-170. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 170: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 170: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-171. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 171: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 171: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-172. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 172: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 172: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-173. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 173: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 173: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-174. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 174: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 174: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-175. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 175: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 175: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-176. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 176: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 176: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-177. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 177: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 177: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-178. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 178: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 178: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-179. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 179: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 179: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-180. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 180: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 180: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-181. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 181: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 181: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-182. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 182: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 182: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-183. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 183: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 183: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-184. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 184: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 184: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-185. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 185: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 185: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-186. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 186: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 186: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-187. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 187: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 187: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-188. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 188: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 188: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-189. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 189: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 189: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-190. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 190: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 190: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-191. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 191: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 191: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-192. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 192: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 192: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-193. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 193: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 193: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-194. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 194: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 194: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-195. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 195: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 195: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-196. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 196: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 196: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-197. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 197: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 197: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-198. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 198: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 198: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-199. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 199: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 199: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-200. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 200: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 200: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-201. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 201: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 201: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-202. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 202: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 202: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-203. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 203: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 203: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-204. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 204: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 204: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-205. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 205: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 205: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-206. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 206: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 206: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-207. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 207: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 207: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-208. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 208: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 208: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-209. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 209: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 209: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-210. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 210: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 210: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-211. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 211: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 211: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-212. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 212: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 212: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-213. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 213: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 213: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-214. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 214: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 214: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-215. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 215: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 215: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-216. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 216: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 216: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-217. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 217: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 217: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-218. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 218: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 218: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-219. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 219: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 219: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-220. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 220: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 220: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-221. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 221: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 221: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-222. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 222: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 222: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-223. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 223: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 223: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-224. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 224: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 224: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-225. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 225: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 225: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-226. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 226: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 226: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-227. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 227: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 227: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-228. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 228: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 228: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-229. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 229: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 229: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-230. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 230: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 230: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-231. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 231: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 231: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-232. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 232: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 232: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-233. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 233: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 233: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-234. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 234: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 234: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-235. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 235: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 235: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-236. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 236: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 236: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-237. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 237: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 237: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-238. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 238: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 238: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-239. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 239: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 239: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-240. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 240: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 240: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-241. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 241: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 241: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-242. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 242: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 242: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-243. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 243: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 243: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-244. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 244: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 244: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-245. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 245: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 245: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-246. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 246: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 246: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-247. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 247: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 247: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-248. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 248: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 248: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-249. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 249: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 249: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-250. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 250: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 250: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-251. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 251: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 251: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-252. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 252: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 252: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-253. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 253: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 253: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-254. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 254: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 254: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-255. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 255: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 255: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-256. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 256: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 256: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-257. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 257: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 257: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-258. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 258: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 258: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-259. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 259: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 259: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-260. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 260: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 260: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-261. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 261: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 261: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-262. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 262: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 262: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-263. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 263: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 263: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-264. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 264: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 264: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-265. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 265: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 265: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-266. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 266: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 266: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-267. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 267: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 267: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-268. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 268: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 268: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-269. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 269: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 269: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-270. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 270: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 270: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-271. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 271: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 271: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-272. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 272: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 272: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-273. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 273: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 273: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-274. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 274: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 274: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-275. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 275: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 275: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-276. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 276: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 276: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-277. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 277: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 277: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-278. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 278: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 278: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-279. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 279: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 279: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-280. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 280: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 280: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-281. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 281: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 281: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-282. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 282: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 282: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-283. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 283: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 283: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-284. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 284: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 284: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-285. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 285: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 285: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-286. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 286: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 286: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-287. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 287: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 287: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-288. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 288: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 288: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-289. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 289: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 289: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-290. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 290: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 290: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-291. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 291: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 291: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-292. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 292: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 292: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-293. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 293: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 293: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-294. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 294: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 294: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-295. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 295: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 295: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-296. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 296: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 296: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-297. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 297: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 297: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-298. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 298: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 298: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-299. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 299: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 299: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-300. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 300: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 300: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-301. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 301: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 301: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-302. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 302: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 302: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-303. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 303: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 303: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-304. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 304: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 304: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-305. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 305: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 305: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-306. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 306: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 306: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-307. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 307: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 307: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-308. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 308: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 308: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-309. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 309: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 309: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-310. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 310: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 310: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-311. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 311: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 311: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-312. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 312: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 312: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-313. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 313: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 313: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-314. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 314: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 314: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-315. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 315: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 315: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-316. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 316: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 316: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-317. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 317: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 317: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-318. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 318: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 318: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-319. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 319: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 319: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-320. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 320: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 320: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-321. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 321: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 321: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-322. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 322: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 322: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-323. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 323: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 323: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-324. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 324: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 324: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-325. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 325: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 325: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-326. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 326: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 326: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-327. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 327: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 327: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-328. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 328: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 328: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-329. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 329: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 329: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-330. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 330: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 330: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-331. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 331: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 331: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-332. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 332: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 332: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-333. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 333: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 333: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-334. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 334: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 334: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-335. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 335: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 335: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-336. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 336: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 336: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-337. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 337: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 337: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-338. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 338: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 338: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-339. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 339: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 339: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-340. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 340: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 340: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-341. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 341: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 341: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-342. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 342: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 342: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-343. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 343: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 343: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-344. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 344: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 344: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-345. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 345: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 345: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-346. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 346: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 346: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-347. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 347: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 347: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-348. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 348: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 348: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-349. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 349: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 349: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-350. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 350: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 350: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-351. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 351: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 351: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-352. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 352: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 352: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-353. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 353: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 353: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-354. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 354: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 354: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-355. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 355: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 355: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-356. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 356: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 356: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-357. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 357: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 357: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-358. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 358: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 358: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-359. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 359: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 359: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-360. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 360: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 360: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-361. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 361: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 361: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-362. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 362: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 362: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-363. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 363: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 363: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-364. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 364: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 364: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-365. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 365: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 365: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-366. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 366: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 366: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-367. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 367: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 367: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-368. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 368: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 368: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-369. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 369: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 369: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-370. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 370: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 370: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-371. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 371: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 371: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-372. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 372: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 372: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-373. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 373: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 373: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-374. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 374: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 374: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-375. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 375: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 375: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-376. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 376: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 376: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-377. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 377: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 377: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-378. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 378: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 378: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-379. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 379: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 379: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-380. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 380: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 380: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-381. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 381: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 381: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-382. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 382: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 382: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-383. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 383: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 383: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-384. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 384: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 384: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-385. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 385: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 385: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-386. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 386: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 386: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-387. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 387: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 387: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-388. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 388: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 388: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-389. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 389: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 389: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-390. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 390: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 390: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-391. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 391: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 391: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-392. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 392: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 392: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-393. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 393: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 393: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-394. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 394: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 394: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-395. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 395: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 395: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-396. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 396: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 396: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-397. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 397: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 397: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-398. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 398: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 398: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-399. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 399: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 399: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-400. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 400: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 400: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-401. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 401: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 401: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-402. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 402: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 402: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-403. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 403: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 403: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-404. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 404: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 404: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-405. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 405: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 405: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-406. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 406: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 406: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-407. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 407: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 407: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-408. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 408: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 408: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-409. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 409: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 409: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-410. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 410: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 410: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-411. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 411: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 411: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-412. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 412: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 412: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-413. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 413: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 413: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-414. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 414: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 414: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-415. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 415: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 415: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-416. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 416: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 416: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-417. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 417: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 417: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-418. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 418: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 418: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-419. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 419: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 419: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-420. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 420: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 420: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-421. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 421: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 421: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-422. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 422: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 422: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-423. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 423: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 423: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-424. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 424: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 424: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-425. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 425: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 425: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-426. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 426: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 426: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-427. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 427: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 427: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-428. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 428: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 428: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-429. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 429: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 429: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-430. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 430: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 430: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-431. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 431: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 431: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-432. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 432: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 432: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-433. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 433: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 433: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-434. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 434: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 434: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-435. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 435: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 435: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-436. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 436: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 436: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-437. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 437: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 437: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-438. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 438: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 438: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-439. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 439: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 439: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-440. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 440: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 440: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-441. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 441: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 441: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-442. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 442: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 442: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-443. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 443: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 443: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-444. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 444: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 444: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-445. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 445: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 445: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-446. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 446: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 446: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-447. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 447: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 447: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-448. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 448: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 448: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-449. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 449: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 449: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-450. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 450: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 450: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-451. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 451: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 451: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-452. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 452: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 452: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-453. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 453: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 453: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-454. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 454: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 454: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-455. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 455: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 455: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-456. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 456: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 456: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-457. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 457: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 457: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-458. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 458: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 458: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-459. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 459: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 459: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-460. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 460: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 460: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-461. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 461: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 461: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-462. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 462: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 462: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-463. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 463: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 463: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-464. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 464: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 464: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-465. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 465: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 465: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-466. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 466: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 466: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-467. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 467: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 467: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-468. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 468: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 468: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-469. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 469: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 469: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-470. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 470: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 470: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-471. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 471: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 471: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-472. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 472: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 472: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-473. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 473: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 473: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-474. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 474: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 474: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-475. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 475: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 475: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-476. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 476: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 476: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-477. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 477: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 477: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-478. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 478: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 478: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-479. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 479: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 479: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-480. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 480: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 480: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-481. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 481: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 481: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-482. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 482: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 482: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-483. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 483: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 483: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-484. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 484: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 484: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-485. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 485: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 485: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-486. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 486: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 486: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-487. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 487: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 487: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-488. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 488: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 488: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-489. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 489: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 489: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-490. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 490: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 490: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-491. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 491: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 491: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-492. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 492: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 492: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-493. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 493: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 493: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-494. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 494: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 494: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-495. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 495: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 495: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-496. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 496: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 496: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-497. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 497: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 497: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-498. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 498: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 498: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-499. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 499: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 499: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-500. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 500: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 500: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-501. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 501: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 501: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-502. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 502: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 502: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-503. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 503: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 503: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-504. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 504: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 504: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-505. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 505: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 505: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-506. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 506: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 506: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-507. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 507: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 507: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-508. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 508: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 508: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-509. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 509: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 509: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-510. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 510: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 510: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-511. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 511: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 511: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-512. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 512: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 512: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-513. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 513: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 513: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-514. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 514: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 514: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-515. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 515: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 515: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-516. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 516: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 516: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-517. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 517: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 517: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-518. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 518: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 518: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-519. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 519: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 519: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-520. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 520: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 520: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-521. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 521: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 521: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-522. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 522: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 522: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-523. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 523: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 523: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-524. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 524: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 524: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-525. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 525: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 525: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-526. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 526: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 526: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-527. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 527: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 527: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-528. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 528: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 528: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-529. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 529: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 529: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-530. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 530: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 530: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-531. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 531: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 531: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-532. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 532: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 532: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-533. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 533: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 533: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-534. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 534: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 534: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-535. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 535: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 535: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-536. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 536: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 536: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-537. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 537: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 537: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-538. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 538: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 538: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-539. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 539: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 539: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-540. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 540: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 540: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-541. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 541: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 541: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-542. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 542: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 542: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-543. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 543: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 543: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-544. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 544: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 544: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-545. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 545: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 545: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-546. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 546: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 546: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-547. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 547: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 547: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-548. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 548: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 548: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-549. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 549: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 549: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-550. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 550: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 550: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-551. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 551: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 551: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-552. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 552: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 552: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-553. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 553: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 553: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-554. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 554: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 554: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-555. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 555: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 555: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-556. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 556: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 556: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-557. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 557: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 557: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-558. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 558: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 558: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-559. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 559: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 559: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-560. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 560: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 560: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-561. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 561: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 561: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-562. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 562: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 562: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-563. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 563: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 563: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-564. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 564: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 564: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-565. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 565: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 565: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-566. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 566: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 566: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-567. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 567: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 567: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-568. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 568: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 568: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-569. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 569: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 569: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-570. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 570: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 570: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-571. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 571: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 571: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-572. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 572: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 572: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-573. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 573: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 573: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-574. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 574: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 574: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-575. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 575: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 575: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-576. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 576: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 576: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-577. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 577: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 577: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-578. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 578: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 578: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-579. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 579: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 579: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-580. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 580: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 580: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-581. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 581: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 581: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-582. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 582: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 582: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-583. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 583: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 583: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-584. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 584: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 584: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-585. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 585: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 585: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-586. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 586: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 586: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-587. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 587: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 587: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-588. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 588: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 588: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-589. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 589: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 589: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-590. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 590: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 590: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-591. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 591: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 591: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-592. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 592: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 592: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-593. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 593: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 593: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-594. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 594: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 594: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-595. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 595: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 595: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-596. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 596: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 596: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-597. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 597: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 597: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-598. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 598: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 598: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-599. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 599: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 599: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-600. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 600: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 600: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-601. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 601: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 601: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-602. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 602: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 602: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-603. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 603: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 603: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-604. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 604: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 604: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-605. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 605: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 605: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-606. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 606: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 606: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-607. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 607: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 607: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-608. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 608: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 608: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-609. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 609: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 609: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-610. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 610: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 610: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-611. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 611: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 611: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-612. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 612: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 612: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-613. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 613: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 613: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-614. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 614: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 614: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-615. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 615: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 615: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-616. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 616: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 616: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-617. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 617: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 617: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-618. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 618: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 618: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-619. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 619: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 619: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-620. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 620: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 620: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-621. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 621: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 621: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-622. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 622: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 622: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-623. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 623: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 623: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-624. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 624: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 624: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-625. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 625: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 625: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-626. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 626: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 626: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-627. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 627: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 627: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-628. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 628: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 628: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-629. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 629: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 629: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-630. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 630: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 630: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-631. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 631: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 631: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-632. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 632: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 632: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-633. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 633: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 633: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-634. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 634: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 634: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-635. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 635: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 635: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-636. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 636: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 636: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-637. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 637: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 637: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-638. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 638: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 638: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-639. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 639: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 639: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-640. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 640: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 640: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-641. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 641: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 641: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-642. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 642: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 642: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-643. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 643: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 643: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-644. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 644: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 644: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-645. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 645: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 645: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-646. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 646: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 646: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-647. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 647: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 647: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-648. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 648: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 648: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-649. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 649: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 649: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-650. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 650: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 650: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-651. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 651: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 651: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-652. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 652: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 652: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-653. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 653: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 653: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-654. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 654: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 654: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-655. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 655: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 655: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-656. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 656: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 656: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-657. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 657: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 657: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-658. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 658: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 658: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-659. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 659: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 659: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-660. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 660: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 660: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-661. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 661: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 661: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-662. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 662: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 662: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-663. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 663: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 663: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-664. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 664: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 664: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-665. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 665: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 665: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-666. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 666: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 666: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-667. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 667: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 667: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-668. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 668: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 668: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-669. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 669: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 669: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-670. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 670: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 670: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-671. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 671: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 671: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-672. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 672: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 672: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-673. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 673: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 673: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-674. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 674: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 674: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-675. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 675: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 675: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-676. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 676: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 676: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-677. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 677: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 677: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-678. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 678: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 678: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-679. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 679: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 679: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-680. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 680: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 680: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-681. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 681: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 681: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-682. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 682: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 682: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-683. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 683: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 683: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-684. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 684: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 684: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-685. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 685: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 685: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-686. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 686: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 686: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-687. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 687: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 687: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-688. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 688: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 688: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-689. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 689: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 689: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-690. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 690: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 690: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-691. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 691: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 691: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-692. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 692: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 692: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-693. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 693: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 693: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-694. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 694: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 694: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-695. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 695: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 695: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-696. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 696: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 696: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-697. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 697: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 697: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-698. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 698: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 698: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-699. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 699: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 699: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-700. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 700: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 700: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-701. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 701: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 701: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-702. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 702: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 702: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-703. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 703: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 703: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-704. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 704: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 704: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-705. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 705: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 705: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-706. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 706: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 706: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-707. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 707: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 707: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-708. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 708: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 708: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-709. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 709: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 709: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-710. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 710: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 710: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-711. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 711: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 711: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-712. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 712: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 712: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-713. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 713: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 713: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-714. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 714: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 714: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-715. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 715: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 715: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-716. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 716: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 716: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-717. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 717: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 717: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-718. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 718: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 718: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-719. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 719: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 719: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-720. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 720: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 720: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-721. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 721: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 721: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-722. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 722: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 722: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-723. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 723: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 723: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-724. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 724: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 724: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-725. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 725: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 725: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-726. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 726: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 726: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-727. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 727: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 727: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-728. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 728: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 728: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-729. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 729: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 729: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-730. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 730: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 730: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-731. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 731: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 731: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-732. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 732: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 732: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-733. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 733: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 733: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-734. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 734: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 734: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-735. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 735: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 735: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-736. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 736: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 736: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-737. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 737: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 737: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-738. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 738: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 738: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-739. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 739: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 739: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-740. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 740: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 740: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-741. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 741: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 741: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-742. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 742: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 742: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-743. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 743: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 743: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-744. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 744: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 744: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-745. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 745: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 745: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-746. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 746: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 746: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-747. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 747: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 747: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-748. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 748: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 748: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-749. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 749: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 749: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-750. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 750: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 750: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-751. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 751: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 751: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-752. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 752: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 752: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-753. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 753: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 753: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-754. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 754: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 754: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-755. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 755: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 755: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-756. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 756: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 756: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-757. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 757: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 757: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-758. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 758: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 758: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-759. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 759: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 759: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-760. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 760: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 760: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-761. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 761: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 761: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-762. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 762: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 762: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-763. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 763: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 763: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-764. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 764: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 764: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-765. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 765: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 765: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-766. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 766: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 766: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-767. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 767: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 767: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-768. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 768: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 768: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-769. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 769: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 769: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-770. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 770: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 770: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-771. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 771: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 771: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-772. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 772: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 772: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-773. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 773: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 773: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-774. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 774: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 774: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-775. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 775: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 775: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-776. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 776: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 776: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-777. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 777: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 777: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-778. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 778: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 778: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-779. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 779: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 779: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-780. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 780: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 780: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-781. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 781: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 781: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-782. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 782: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 782: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-783. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 783: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 783: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-784. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 784: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 784: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-785. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 785: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 785: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-786. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 786: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 786: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-787. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 787: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 787: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-788. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 788: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 788: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-789. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 789: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 789: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-790. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 790: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 790: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-791. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 791: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 791: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-792. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 792: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 792: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-793. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 793: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 793: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-794. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 794: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 794: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-795. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 795: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 795: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-796. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 796: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 796: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-797. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 797: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 797: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-798. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 798: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 798: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-799. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 799: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 799: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-800. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 800: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 800: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-801. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 801: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 801: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-802. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 802: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 802: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-803. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 803: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 803: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-804. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 804: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 804: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-805. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 805: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 805: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-806. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 806: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 806: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-807. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 807: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 807: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-808. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 808: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 808: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-809. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 809: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 809: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-810. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 810: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 810: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-811. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 811: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 811: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-812. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 812: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 812: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-813. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 813: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 813: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-814. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 814: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 814: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-815. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 815: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 815: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-816. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 816: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 816: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-817. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 817: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 817: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-818. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 818: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 818: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-819. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 819: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 819: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-820. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 820: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 820: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-821. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 821: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 821: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-822. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 822: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 822: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-823. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 823: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 823: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-824. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 824: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 824: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-825. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 825: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 825: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-826. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 826: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 826: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-827. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 827: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 827: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-828. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 828: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 828: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-829. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 829: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 829: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-830. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 830: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 830: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-831. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 831: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 831: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-832. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 832: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 832: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-833. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 833: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 833: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-834. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 834: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 834: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-835. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 835: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 835: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-836. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 836: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 836: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-837. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 837: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 837: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-838. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 838: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 838: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-839. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 839: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 839: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-840. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 840: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 840: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-841. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 841: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 841: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-842. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 842: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 842: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-843. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 843: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 843: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-844. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 844: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 844: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-845. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 845: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 845: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-846. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 846: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 846: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-847. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 847: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 847: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-848. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 848: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 848: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-849. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 849: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 849: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-850. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 850: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 850: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-851. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 851: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 851: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-852. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 852: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 852: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-853. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 853: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 853: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-854. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 854: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 854: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-855. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 855: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 855: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-856. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 856: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 856: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-857. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 857: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 857: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-858. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 858: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 858: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-859. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 859: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 859: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-860. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 860: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 860: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-861. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 861: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 861: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-862. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 862: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 862: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-863. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 863: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 863: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-864. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 864: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 864: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-865. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 865: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 865: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-866. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 866: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 866: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-867. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 867: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 867: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-868. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 868: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 868: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-869. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 869: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 869: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-870. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 870: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 870: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-871. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 871: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 871: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-872. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 872: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 872: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-873. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 873: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 873: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-874. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 874: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 874: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-875. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 875: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 875: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-876. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 876: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 876: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-877. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 877: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 877: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-878. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 878: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 878: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-879. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 879: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 879: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-880. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 880: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 880: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-881. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 881: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 881: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-882. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 882: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 882: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-883. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 883: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 883: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-884. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 884: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 884: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-885. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 885: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 885: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-886. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 886: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 886: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-887. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 887: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 887: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-888. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 888: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 888: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-889. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 889: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 889: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-890. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 890: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 890: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-891. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 891: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 891: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-892. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 892: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 892: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
-893. Fase Evaluation: Quality Agent lê `recommendation_draft.json` e escreve `evaluation_verdict.json` para aprovar somente se segurança, preço, estoque e clareza passarem.
-   Evidência 893: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 893: o Orchestrator só avança quando o estado da fase Evaluation está persistido e verificável.
-894. Fase Cart: Order Agent lê `evaluation_verdict.json` e escreve `order_state.json` para criar pedido com o SKU aprovado.
-   Evidência 894: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 894: o Orchestrator só avança quando o estado da fase Cart está persistido e verificável.
-895. Fase Payment: Payment Agent lê `order_state.json` e escreve `payment_state.json` para confirmar Pix simulado no valor exato.
-   Evidência 895: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 895: o Orchestrator só avança quando o estado da fase Payment está persistido e verificável.
-896. Fase Fulfillment: Fulfillment Agent lê `payment_state.json` e escreve `fulfillment_state.json` para abrir separação e avisar rastreio.
-   Evidência 896: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 896: o Orchestrator só avança quando o estado da fase Fulfillment está persistido e verificável.
-897. Fase Awareness: Planner lê `customer_message.json` e escreve `plan.json` para classificar que Marina iniciou uma jornada de compra e não uma dúvida genérica.
-   Evidência 897: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 897: o Orchestrator só avança quando o estado da fase Awareness está persistido e verificável.
-898. Fase Discovery: Discovery Agent lê `customer_message.json` e escreve `customer_profile.json` para extrair objetivo, restrição sem lactose, orçamento e sabor.
-   Evidência 898: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 898: o Orchestrator só avança quando o estado da fase Discovery está persistido e verificável.
-899. Fase Catalog: Catalog Agent lê `customer_profile.json` e escreve `catalog_snapshot.json` para filtrar SKU seguro em estoque e abaixo de R$ 150.
-   Evidência 899: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 899: o Orchestrator só avança quando o estado da fase Catalog está persistido e verificável.
-900. Fase Recommendation: Recommendation Agent lê `catalog_snapshot.json` e escreve `recommendation_draft.json` para gerar mensagem de recomendação com justificativa humana.
-   Evidência 900: Marina continua protegida contra produto com lactose, preço acima de R$ 150 e troca de SKU.
-   Decisão 900: o Orchestrator só avança quando o estado da fase Recommendation está persistido e verificável.
+Depende da criticidade da operação. Para uma venda de R$ 30 sem restrições, talvez não. Para o KODA, onde um erro de lactose pode prejudicar a saúde do cliente e gerar dano reputacional, cada agente existe para eliminar uma classe específica de falha. O Planner evita escopo confuso. O Discovery evita perda de restrição. O Catalog evita SKU inválido. O Generator evita resposta genérica. O Evaluator evita autoaprovação. Order, Payment e Fulfillment evitam que promessas de chat virem operações reais sem verificação. Oito agentes não é overengineering quando cada um reduz um risco que já causou prejuízo real.
+
+### "Posso usar o mesmo modelo (Claude) para todos os agentes?"
+
+Sim, e é o que o exercício faz. Mas em produção, você pode otimizar: use um modelo mais rápido e barato (Haiku) para Catalog (só filtra lista) e Order (só monta pedido), e reserve Opus para Planner e Evaluator (raciocínio mais complexo). O contrato de state file não muda — só a implementação interna de cada agente.
+
+### "File-based coordination não fica lento em produção?"
+
+Para o volume do KODA (centenas de conversas simultâneas, não milhões), funciona bem. O gargalo real não é I/O de arquivo — é latência de LLM. Se a operação crescer para milhares de conversas, você migra os state files mais quentes (`catalog_snapshot.json`, `evaluation_verdict.json`) para Redis ou PostgreSQL sem mudar o contrato. O modelo mental permanece o mesmo: agente lê JSON, produz JSON, próximo agente valida.
+
+### "Como o pipeline lida com conversas simultâneas do mesmo cliente?"
+
+Cada conversa tem seu próprio diretório de estado (`state/{customer_id}_{session_id}/`). O `customer_profile.json` pode ser compartilhado (o perfil do cliente é o mesmo), mas `plan.json`, `recommendation_draft.json` e os demais são isolados por sessão. Isso evita que duas conversas paralelas da Marina se contaminem.
+
+### "O que acontece se o cliente mudar de ideia no meio da jornada?"
+
+O Orchestrator detecta que o `current_goal` em `plan.json` não corresponde mais à intenção atual e chama o Planner novamente — mas agora com contexto de "o cliente mudou de ideia". O estado anterior não é descartado (fica no diretório para auditoria), mas uma nova ramificação é criada com `plan_v2.json`. Em produção, você adicionaria um `IntentChangeAgent` para gerenciar essa transição explicitamente.
+
+### "Este pipeline funciona sem Claude? Posso usar GPT-4o ou Gemini?"
+
+Sim. O pipeline é agnóstico de modelo. Cada agente chama `call_llm(prompt)` — a função interna pode apontar para Claude, GPT-4o, Gemini ou qualquer endpoint compatível com OpenAI API. O contrato (state files JSON) não depende do provedor. A única adaptação necessária é ajustar os system prompts para o estilo de resposta de cada modelo.
+
+### "Qual a diferença entre este pipeline e um workflow do Temporal ou Airflow?"
+
+Ferramentas como Temporal e Airflow orquestram tarefas determinísticas (ex: "chame API X, espere, chame API Y"). Este pipeline orquestra agentes de LLM, que são não-determinísticos por natureza. O state file não é só um checkpoint de progresso — é um contrato semântico. O Evaluator não verifica só "a etapa terminou?", mas "o output da etapa é seguro e correto?". Essa camada semântica de validação é o que diferencia pipelines de agentes de workflows tradicionais.
+
+### "Posso paralelizar agentes que não dependem um do outro?"
+
+Sim, e isso reduz latência significativamente. No pipeline atual, Discovery, Catalog e Recommendation são sequenciais. Mas você poderia paralelizar: enquanto o Planner roda, o Discovery já começa a extrair perfil. Ou, após o Catalog, rodar 3 Generators em paralelo com estratégias diferentes e depois um Evaluator consolidar. O Orchestrator precisaria gerenciar o `gather` dos resultados, mas os contratos de state file não mudam — cada agente ainda lê seu input e escreve seu output.
+
+### "Como monitorar este pipeline em produção?"
+
+Você precisa de três camadas de observabilidade:
+
+1. **Métricas de negócio:** latência por etapa, retry rate, fallback rate, approval rate do Evaluator. Exporte via Prometheus ou similar a partir do Orchestrator.
+
+2. **Logs estruturados:** cada evento do `audit_log.jsonl` deve ser enviado para um sistema de logging centralizado (CloudWatch, Datadog, Grafana Loki) com campos indexáveis: `session_id`, `agent`, `event_type`, `verdict`, `score`.
+
+3. **Alertas:** defina thresholds. Se `fallback_rate > 5%` por 15 minutos, alerte o time de plantão. Se `evaluator_rejection_rate > 30%`, algo está errado com o catálogo ou com o prompt do Generator — investigue antes que clientes percebam.
+
+O pipeline já produz os dados. A camada de observabilidade é o que transforma esses dados em ação.
+
+### "O que mais muda quando este pipeline vai para produção de verdade?"
+
+Além da infraestrutura (APIs reais, autenticação, observabilidade), três coisas que este exercício deliberadamente simplifica e que você precisará resolver:
+
+1. **Tratamento de sessão:** o pipeline atual assume uma sessão por execução. Em produção, o Orchestrator precisa gerenciar múltiplas sessões simultâneas, cada uma com seu próprio diretório de estado e ciclo de vida.
+
+2. **Gestão de timeout de LLM:** chamadas de API podem levar 30 segundos ou mais. O Orchestrator precisa de timeout configurável por agente e estratégia de retry com backoff exponencial.
+
+3. **Versionamento de schema:** quando você adicionar um campo novo ao `customer_profile.json` (ex: `preferred_payment_method`), agentes antigos que não conhecem esse campo não podem quebrar. Adote `schema_version` desde o primeiro deploy e faça os agentes ignorarem campos desconhecidos.
+
+Nenhuma dessas três coisas exige reescrever a arquitetura. São camadas que se adicionam sobre a base que você já construiu.
+
+---
+
+## ⚠️ Anti-Padrões Que Este Pipeline Evita
+
+Reconhecer o que NÃO fazer é tão importante quanto saber o que fazer. Abaixo estão os anti-padrões que times de IA cometem — e que esta arquitetura foi desenhada para prevenir.
+
+### Anti-padrão 1: "Agente Único Faz-Tudo"
+
+**Sintoma:** um único prompt tenta cobrir awareness, recomendação, preço e checkout.
+
+**Por que falha:** a janela de contexto mistura responsabilidades diferentes. O modelo confunde "entender o cliente" com "cobrar o cliente". Erros em uma etapa contaminam as demais. A latência é alta porque cada resposta processa o pipeline inteiro.
+
+**Como esta solução evita:** 8 agentes com contratos de entrada e saída explícitos. Cada um recebe só o contexto que precisa.
+
+### Anti-padrão 2: "Autoavaliação Confiante"
+
+**Sintoma:** o mesmo agente que recomenda também aprova a própria recomendação.
+
+**Por que falha:** sycophancy. O modelo sempre encontra uma razão para concordar consigo mesmo. A taxa de erro silencioso fica entre 10-15%.
+
+**Como esta solução evita:** Generator e Evaluator são agentes separados com incentivos opostos. O Evaluator é medido por "quantos erros encontrou", não por "quantos aprovou".
+
+### Anti-padrão 3: "Memória Implícita como Fonte da Verdade"
+
+**Sintoma:** restrições do cliente (alergias, orçamento) existem apenas na janela de contexto do modelo.
+
+**Por que falha:** quando a conversa cresce ou o contexto é comprimido, informações críticas somem silenciosamente. O agente "esquece" que o cliente é alérgico.
+
+**Como esta solução evita:** `customer_profile.json` persiste restrições em disco. Todo agente que precisa delas relê o arquivo. Alergia não depende de memória.
+
+### Anti-padrão 4: "Fallback Genérico"
+
+**Sintoma:** qualquer erro em qualquer etapa ativa o mesmo fallback: "escalar para humano".
+
+**Por que falha:** você perde a capacidade de diagnosticar qual etapa quebrou. "Humano resolve" vira a resposta padrão e o pipeline nunca amadurece.
+
+**Como esta solução evita:** cada agente tem seu próprio fallback com mensagem específica. Se o Catalog falha, o fallback diz "não encontrei produtos com esses critérios". Se o Payment falha, o fallback diz "houve um problema com o pagamento". Diagnóstico preciso → correção rápida.
+
+### Anti-padrão 5: "Retry Cego"
+
+**Sintoma:** quando o Evaluator rejeita, o Generator tenta de novo sem receber feedback específico.
+
+**Por que falha:** o Generator repete o mesmo erro porque não sabe o que corrigir. Três tentativas idênticas consomem tokens sem melhorar o resultado.
+
+**Como esta solução evita:** o Evaluator escreve `feedback.json` com o critério exato que falhou (`lactose_present`, `budget_exceeded`). O Generator lê esse feedback e ajusta apenas o que precisa.
+
+---
+
+## 🗺️ Referência Rápida: Navegando Este Documento
+
+| Se você quer... | Vá para... | Linha aproximada |
+|---|---|---|
+| Entender por que este exercício existe | Prólogo | topo do documento |
+| Ver os requisitos completos do exercício | O Que o Exercício Pede | após o Prólogo |
+| Estudar a arquitetura do pipeline | Arquitetura da Solução + Conexão com Níveis 1-3 | após requisitos |
+| Copiar o código Python completo | Implementação Completa do Pipeline | seção 🐍 |
+| Ver como cada agente é avaliado | Avaliação de Qualidade por Etapa | após implementação |
+| Acompanhar uma execução real | Aplicação KODA — Caso Concreto | seção 🚀 |
+| Diagnosticar falhas no pipeline | Debug e Troubleshooting | antes das métricas |
+| Estender o pipeline com novos agentes | Como Estender Este Pipeline | antes do resumo |
+| Evitar erros comuns de design | Anti-Padrões Que Este Pipeline Evita | antes do fechamento |
+| Tirar dúvidas conceituais | Perguntas Frequentes | seção ❓ |
+
+### Navegação por state file
+
+| State file | Quem escreve | Quem lê | Onde é discutido |
+|---|---|---|---|
+| `customer_message.json` | Sistema (entrada) | Planner, Discovery | Prólogo, Requisitos |
+| `plan.json` | Planner | Orchestrator, Generator | Conexão com Níveis, Etapa 1 |
+| `customer_profile.json` | Discovery Agent | Catalog, Generator, Evaluator | Etapa 2, Debug erro 1 |
+| `discovery_state.json` | Discovery Agent | Catalog (validação) | Avaliação de Qualidade |
+| `catalog_snapshot.json` | Catalog Agent | Generator | Etapa 3, Extensão 2 |
+| `recommendation_draft.json` | Generator | Evaluator | Etapa 4, Exemplos JSON |
+| `evaluation_verdict.json` | Evaluator | Orchestrator, Order | Etapa 5, Debug erro 3 |
+| `feedback.json` | Evaluator (se rejeitado) | Generator (retry) | Anti-padrão 5 |
+| `order_state.json` | Order Agent | Payment | Etapa 6, Debug erro 4 |
+| `payment_state.json` | Payment Agent | Fulfillment | Etapa 7, Debug erro 4 |
+| `fulfillment_state.json` | Fulfillment Agent | Notification (futuro) | Etapa 8, Debug erro 5 |
+| `audit_log.jsonl` | Orchestrator | Time de operação | Checklist pré-produção |
+
+### Comandos úteis para exploração
+
+```bash
+# Executar o pipeline completo com o caso Marina
+python koda_customer_journey_pipeline.py
+
+# Listar todos os arquivos de estado gerados
+ls -la state/wa_5511998765432/
+
+# Ver o plano gerado pelo Planner
+cat state/wa_5511998765432/plan.json | python -m json.tool
+
+# Ver o veredito do Evaluator
+cat state/wa_5511998765432/evaluation_verdict.json | python -m json.tool
+
+# Seguir o audit log em tempo real (durante execução)
+tail -f state/wa_5511998765432/audit_log.jsonl
+
+# Contar quantas vezes cada evento apareceu no log
+cut -d'"' -f4 state/wa_5511998765432/audit_log.jsonl | sort | uniq -c | sort -rn
+
+# Extrair apenas eventos de erro do log
+grep "error\|rejected\|fallback" state/wa_5511998765432/audit_log.jsonl
+
+# Comparar dois state files (ex: order vs payment)
+diff <(cat state/wa_5511998765432/order_state.json | python -m json.tool) \
+     <(cat state/wa_5511998765432/payment_state.json | python -m json.tool)
+```
+
+---
+
+Um trace completo de produção teria centenas de entradas — o conceito importante é que cada entrada liga evidência, decisão e proteção. Quando o time mantém esse vínculo, auditoria, debugging e evolução de prompt deixam de depender de memória humana e passam a seguir o mesmo contrato do sistema.
+
+---
