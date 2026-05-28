@@ -4658,4 +4658,4 @@ Use esta checklist antes de implementar, revisar ou alterar um pipeline multi-ag
 | Atualizado | Maio 2026 |
 | Próximo estudo | `curriculum/05-core-concepts/08-evaluation-rubrics.md` |
 
-Written for FutanBear | KODA Project
+Escrito para FutanBear | Projeto KODA
