@@ -704,7 +704,8 @@ def execute_contract(contract: dict) -> ExecutionResult:
             return report_failure(
                 step=step,
                 reason=done_check.failure_reason,
-                evidence=step_result
+                evidence=step_result,
+                completed_count=len(results)
             )
     
     # Todos os passos concluidos
@@ -718,7 +719,7 @@ def execute_contract(contract: dict) -> ExecutionResult:
     )
 
 
-def report_failure(step: dict, reason: str, evidence: dict = None) -> ExecutionResult:
+def report_failure(step: dict, reason: str, evidence: dict = None, completed_count: int = 0) -> ExecutionResult:
     """
     Reporta falha ao Planner. NAO improvisa. NAO continua.
     """
@@ -729,7 +730,7 @@ def report_failure(step: dict, reason: str, evidence: dict = None) -> ExecutionR
         "done_criteria": step["done_criteria"],
         "failure_reason": reason,
         "evidence": evidence,
-        "completed_steps_before_failure": len(results),
+        "completed_steps_before_failure": completed_count,
         "timestamp": now()
     }
     
@@ -1068,8 +1069,8 @@ Sprint Contracts sao o **mecanismo de acoplamento** entre Planner e Executor. Se
 5. **O QUE FAZER SE FALHAR:** Qual a politica de erro? (resiliencia)
 
 **Para uma explicacao completa de Sprint Contracts, veja:**
-→ `curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md`
-→ `curriculum/05-core-concepts/04-sprint-contracts.md`
+→ `../02-nivel-2-practical-patterns/02-sprint-contracts.md`
+→ `04-sprint-contracts.md` (em construcao)
 
 ### Planning/Execution + Multi-Agent Systems (Nivel 3)
 
@@ -1102,7 +1103,7 @@ No Nivel 3, a separacao evolui naturalmente para **sistemas multi-agente**, onde
 No Nivel 3, passos independentes podem ser executados em paralelo por multiplos Executores, cada um com seu proprio Generator/Evaluator interno. O Planner coordena o todo.
 
 **Para uma explicacao completa, veja:**
-→ `curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md`
+→ `../03-nivel-3-advanced-architecture/01-multi-agent-systems.md`
 
 ---
 
@@ -1196,6 +1197,9 @@ flowchart TB
     end
 
     CLIENT --> ROUTER
+    PD --> PD_FLOW
+    OP --> OP_FLOW
+    FF --> FF_FLOW
     PD_FLOW --> EVAL
     OP_FLOW --> EVAL
     FF_FLOW --> EVAL
@@ -1663,7 +1667,7 @@ Sub-Contrato A (validacoes):
 
 | Decisao | Nivel 2 (Recomendado) | Nivel 3 (Avancado) | Trade-off Principal |
 |---------|----------------------|-------------------|-------------------|
-| Agentes | Mesmo modelo, prompts diferentes | Modelos diferentes (Opus + Haiku) | Simplicidade vs Custo |
+| Agentes | Modelos diferentes (Opus + Haiku) | Modelos diferentes + especializacao | Simplicidade vs Custo |
 | Sincronizacao | Sincrono (<10s), Assincrono (>10s) | Sempre assincrono com fila | Latencia vs Experiencia |
 | Rigidez do Contrato | Rigido (sem desvios) | Flexivel (paralelizacao) | Previsibilidade vs Eficiencia |
 | Estado | Stateful com checkpoint | Stateful com cache distribuido | Performance vs Resiliencia |
@@ -1857,7 +1861,7 @@ Parece contraintuitivo — afinal, agora temos 2-3 agentes em vez de 1. Mas:
 | **Tokens por pedido (medio)** | 12,000 | 8,500 | -29% |
 | **Custo API por pedido** | R$ 0.18 | R$ 0.14 | -22% |
 | **Custo de erros por mes** | R$ 4,500 | R$ 800 | -82% |
-| **ROI mensal** | — | R$ 3,700 economizados | — |
+| **ROI mensal** | — | R$ 12,750 economizados | — |
 
 **Explicacao do ROI:**
 
@@ -2038,13 +2042,13 @@ Agora que voce domina Planning/Execution Separation, voce esta pronto para:
 
 | Proximo Passo | Onde | Por Que |
 |---------------|------|---------|
-| **Sprint Contracts em profundidade** | `02-sprint-contracts.md` (Nivel 2) | O contrato e o mecanismo que viabiliza a separacao |
-| **Generator/Evaluator em profundidade** | `01-generator-evaluator-pattern.md` (Nivel 2) | A segunda perna da triade arquitetural |
-| **Multi-Agent Systems** | `01-multi-agent-systems.md` (Nivel 3) | Evolucao natural: Planner, Generator e Evaluator como agentes independentes |
-| **State Persistence** | `02-state-persistence.md` (Nivel 3) | Como manter estado entre Planning e Execution |
-| **Harness Evolution** | `05-harness-evolution.md` (Nivel 3) | Quando e como simplificar a separacao conforme modelos evoluem |
-| **KODA Architecture** | `04-nivel-4-koda-specific/01-koda-architecture.md` | Implementacao real no KODA |
-| **Order Processing Case Study** | `09-case-studies/04-koda-order-processing.md` | Exemplo real de P/E Separation em producao |
+| **Sprint Contracts em profundidade** | `../02-nivel-2-practical-patterns/02-sprint-contracts.md` (Nivel 2) | O contrato e o mecanismo que viabiliza a separacao |
+| **Generator/Evaluator em profundidade** | `../02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md` (Nivel 2) | A segunda perna da triade arquitetural |
+| **Multi-Agent Systems** | `../03-nivel-3-advanced-architecture/01-multi-agent-systems.md` (Nivel 3) | Evolucao natural: Planner, Generator e Evaluator como agentes independentes |
+| **State Persistence** | `../03-nivel-3-advanced-architecture/02-state-persistence.md` (Nivel 3) | Como manter estado entre Planning e Execution |
+| **Harness Evolution** | `../03-nivel-3-advanced-architecture/05-harness-evolution.md` (Nivel 3) | Quando e como simplificar a separacao conforme modelos evoluem |
+| **KODA Architecture** | `../04-nivel-4-koda-specific/01-koda-architecture.md` | Implementacao real no KODA |
+| **Order Processing Case Study** | `../09-case-studies/04-koda-order-processing.md` | Exemplo real de P/E Separation em producao |
 
 ### Perguntas Frequentes
 
@@ -2153,7 +2157,7 @@ Executor: Segue cada passo, coleta evidencias, nao tenta "adivinhar" a causa
 Planner: "Vaga: Senior Backend Engineer, Node.js, 5+ anos"
   → Decompoe:
     Passo 1: Analisar descricao da vaga e extrair requisitos obrigatorios vs desejaveis
-    Passo 2: Buscar candidatos no ATS com匹配 de keywords
+    Passo 2: Buscar candidatos no ATS com match de keywords
     Passo 3: Filtrar por experiencia comprovada (5+ anos)
     Passo 4: Verificar disponibilidade (candidatos que responderam nos ultimos 30 dias)
     Passo 5: Ordenar por fit score (experiencia + stack + disponibilidade)
@@ -2200,18 +2204,18 @@ Executor: Coleta dados, calcula score, aplica regra — sem "feeling" subjetivo
 
 | Conceito Relacionado | Arquivo | Conexao |
 |---------------------|---------|---------|
-| **Os 3 Problemas Fundamentais** | `01-nivel-1-fundamentals/01-why-agents-lose-plot.md` | Problema 2 e o Planning/Execution Collapse |
-| **Generator/Evaluator Pattern** | `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md` | Segunda perna da triade arquitetural |
-| **Sprint Contracts** | `02-nivel-2-practical-patterns/02-sprint-contracts.md` | Mecanismo de acoplamento Planner→Executor |
-| **Rubric Design** | `02-nivel-2-practical-patterns/03-rubric-design.md` | Criterios de done do Evaluator |
-| **Trace Reading** | `02-nivel-2-practical-patterns/04-trace-reading.md` | Debugging de contratos e execucoes |
-| **KODA Nivel 2** | `02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md` | Aplicacao dos padroes no KODA |
-| **Multi-Agent Systems** | `03-nivel-3-advanced-architecture/01-multi-agent-systems.md` | Evolucao para agentes independentes |
-| **State Persistence** | `03-nivel-3-advanced-architecture/02-state-persistence.md` | Como manter estado entre fases |
-| **File-Based Coordination** | `03-nivel-3-advanced-architecture/03-file-based-coordination.md` | Coordenacao via arquivos (contratos) |
-| **Harness Evolution** | `03-nivel-3-advanced-architecture/05-harness-evolution.md` | Quando simplificar a separacao |
-| **KODA Architecture** | `04-nivel-4-koda-specific/01-koda-architecture.md` | Implementacao real no KODA |
-| **Order Processing Case** | `09-case-studies/04-koda-order-processing.md` | Caso real de P/E Separation |
+| **Os 3 Problemas Fundamentais** | `../01-nivel-1-fundamentals/01-why-agents-lose-plot.md` | Problema 2 e o Planning/Execution Collapse |
+| **Generator/Evaluator Pattern** | `../02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md` | Segunda perna da triade arquitetural |
+| **Sprint Contracts** | `../02-nivel-2-practical-patterns/02-sprint-contracts.md` | Mecanismo de acoplamento Planner→Executor |
+| **Rubric Design** | `../02-nivel-2-practical-patterns/03-rubric-design.md` | Criterios de done do Evaluator |
+| **Trace Reading** | `../02-nivel-2-practical-patterns/04-trace-reading.md` | Debugging de contratos e execucoes |
+| **KODA Nivel 2** | `../02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md` | Aplicacao dos padroes no KODA |
+| **Multi-Agent Systems** | `../03-nivel-3-advanced-architecture/01-multi-agent-systems.md` | Evolucao para agentes independentes |
+| **State Persistence** | `../03-nivel-3-advanced-architecture/02-state-persistence.md` | Como manter estado entre fases |
+| **File-Based Coordination** | `../03-nivel-3-advanced-architecture/03-file-based-coordination.md` | Coordenacao via arquivos (contratos) |
+| **Harness Evolution** | `../03-nivel-3-advanced-architecture/05-harness-evolution.md` | Quando simplificar a separacao |
+| **KODA Architecture** | `../04-nivel-4-koda-specific/01-koda-architecture.md` | Implementacao real no KODA |
+| **Order Processing Case** | `../09-case-studies/04-koda-order-processing.md` | Caso real de P/E Separation |
 
 ### Glossario de Termos deste Modulo
 
