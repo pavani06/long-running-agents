@@ -281,7 +281,7 @@ Hard rules sao a rede de seguranca. Elas dizem: "independentemente do score medi
 
 **Por que hard rules ignoram o score medio?** Imagine: restriction_compliance = 2 (40 normalizado × 0.30 = 12), todas as outras = 5. Score final = 12 + 20 + 15 + 10 + 10 + 10 + 5 = 82. Tecnicamente abaixo de 85, seria revise. Mas se os thresholds fossem mais baixos (approve=80), esse output seria aprovado com score 82 — apesar de recomendar um produto com lactose para um cliente intolerante. Hard rules existem para impedir exatamente isso.
 
-**Quando uma dimension deve virar hard rule:** Quando uma falha nessa dimension causa dano serio mesmo que todo o resto esteja perfeito. As seis dimensions que viram hard rules no KODA: Restriction Compliance, Safety Boundary, Medical Claim Control, Customer Consent, Pricing Accuracy, Promo Correctness.
+**Quando uma dimension deve virar hard rule:** Quando uma falha nessa dimension causa dano serio mesmo que todo o resto esteja perfeito. As seis dimensions que viram hard rules no KODA: Restriction Compliance, Safety, Medical Claim Control, Customer Consent, Pricing Accuracy, Promo Correctness.
 
 #### 5. Evidence Rules — A Justificativa Obrigatoria
 
@@ -389,6 +389,8 @@ flowchart TD
     Violation?"}
     THRESH{"Score >=
     Threshold?"}
+    SEV{"Severity
+    critical?"}
     APPR["Approve
     output segue para
     o cliente"]
@@ -430,7 +432,9 @@ flowchart TD
     THRESH -->|">= 85"| APPR
     THRESH -->|"70 a 84"| REV
     THRESH -->|"50 a 69"| REJ
-    THRESH -->|"< 50"| REJ
+    THRESH -->|"< 50"| SEV
+    SEV -->|Nao| REJ
+    SEV -->|Sim| ESC
     APPR --> TRACE
     APPR --> OUT
     REV --> TRACE
@@ -452,6 +456,7 @@ flowchart TD
     style SUM fill:#FFB347,color:#7a4a00
     style HARD fill:#FF6B6B,color:#7a0000
     style THRESH fill:#FF6B6B,color:#7a0000
+    style SEV fill:#FF6B6B,color:#7a0000
     style APPR fill:#90EE90,color:#1a5c1a
     style REV fill:#FFB347,color:#7a4a00
     style REJ fill:#FF6B6B,color:#7a0000
@@ -536,7 +541,7 @@ Soma: 12.0 + 16.0 + 15.0 + 10.0 + 8.0 + 6.0 + 2.0 = **69.0 / 100**.
 
 #### Etapa 9: Aplicar Thresholds
 
-Se nenhuma hard rule violada: >= 85 approve, 70-84 revise, 50-69 reject, < 50 escalate.
+Se nenhuma hard rule violada: >= 85 approve, 70-84 revise, 50-69 reject. Se < 50, verifica severity — se critical, escalate; senao, reject.
 
 #### Etapa 10: Verificar Maximo de Tentativas
 
@@ -666,11 +671,11 @@ flowchart LR
     E -->|"recomenda Plant Choco
     score 95, R$ 109,90"| F
     F -->|"quero comprar"| G
-    G -->|"score 78 → revise
-    cupom de 1a compra
-    para cliente recorrente"| H
-    G -->|"score 92 → approve
-    apos correcao do cupom"| H
+    G -->|"score 58 → reject
+    cupom invalido —
+    hard rule triggered"| H
+    G -->|"score 100 → approve
+    apos recalculo sem cupom"| H
     H -->|"pedido confirmado
     total R$ 109,90"| I
     I -->|"score 90 → approve
@@ -702,12 +707,12 @@ flowchart LR
 | 02:40 | Multi-Candidate Ranking: Plant Choco (95) > IsoZero (84) > ChocoMax (69, rejeitada) | — | — | Plant Choco selecionada |
 | 02:45 | KODA: "Ana, recomendo a Protein Plant Choco. Ela e 100% vegetal, zero lactose..." | — | — | Recomendacao enviada |
 | 05:00 | Ana: "Perfeito! Quero comprar" | — | — | Checkout inicia |
-| 05:30 | Pedido: 1x Plant Choco, cupom PRIMEIRACOMPRA, frete R$ 12,90 | Order Processing | valid=4, pricing=3, promo=2, inventory=5, confirm=4, fail=4 → **78** | Revise (cupom invalido) |
-| 05:45 | KODA explica: cupom de 1a compra nao se aplica (Ana ja comprou antes). Total: R$ 122,80 | — | — | Correcao |
-| 05:50 | Pedido recalculado sem cupom | Order Processing | valid=5, pricing=5, promo=5, inventory=5, confirm=5, fail=5 → **92** | Approve |
+| 05:30 | Pedido: 1x Plant Choco, cupom PRIMEIRACOMPRA, frete gratis | Order Processing | valid=4, pricing=2, promo=1, inventory=5, confirm=3, fail=3 → **58** | Reject (hard rule: cupom invalido) |
+| 05:45 | KODA: cupom de 1a compra nao se aplica — Ana ja comprou antes. Recalculando sem cupom. Total: R$ 109,90 | — | — | Correcao |
+| 05:50 | Pedido recalculado sem cupom | Order Processing | valid=5, pricing=5, promo=5, inventory=5, confirm=5, fail=5 → **100** | Approve |
 | 06:00 | Mensagem de confirmacao | Conversation Quality | clarity=5, empathy=4, completeness=5, tone=5, action=4, continuity=5 → **90** | Approve |
 | 06:05 | Verificacao de seguranca | Response Safety | medical=5, restriction=5, dosage=5, boundary=5, sensitive=5 → **95** | Approve |
-| 06:10 | KODA: "Perfeito, Ana! Seu pedido da Protein Plant Choco esta confirmado. Total: R$ 122,80. Prazo: 2 dias uteis." | — | — | Conversa concluida |
+| 06:10 | KODA: "Perfeito, Ana! Seu pedido da Protein Plant Choco esta confirmado. Total: R$ 109,90. Prazo: 2 dias uteis." | — | — | Conversa concluida |
 
 ### Analise: O Que as Rubrics Impediram
 
@@ -717,7 +722,7 @@ Com rubrics, tres camadas de protecao atuaram:
 
 1. **Recommendation Quality (minuto 2:35):** Hard rule de restriction compliance rejeitou Whey ChocoMax. Multi-Candidate Ranking comparou 3 opcoes e selecionou a melhor (Plant Choco, 95).
 
-2. **Order Processing (minuto 5:30):** Promo correctness detectou que o cupom PRIMEIRACOMPRA nao se aplicava a uma cliente recorrente. Score 78 → revise. Apos correcao, 92 → approve.
+2. **Order Processing (minuto 5:30):** Promo correctness detectou que o cupom PRIMEIRACOMPRA nao se aplicava a uma cliente recorrente. Score 58 → reject por hard rule. Apos reprocessamento sem cupom, 100 → approve.
 
 3. **Conversation Quality + Response Safety (minutos 6:00-6:05):** Dupla verificacao da mensagem final — tom adequado (90) e seguranca garantida (95).
 
@@ -853,11 +858,11 @@ Cada camada registrou sua decisao no trace. Seis meses depois, qualquer pessoa p
 DIMENSIONS DE QUALIDADE KODA (24 dimensions)
 │
 ├── SEGURANCA & RESTRICOES (5 dimensions)
-│   ├── Restriction Compliance → Recommendation Quality, Response Safety
-│   ├── Safety Boundary → Response Safety, Recommendation Quality
+│   ├── Restriction Compliance → Recommendation Quality
+│   ├── Restriction Warning → Response Safety
 │   ├── Medical Claim Control → Response Safety
 │   ├── Dosage Caution → Response Safety
-│   └── Escalation Judgment → Response Safety, Conversation Quality
+│   └── Professional Boundary → Response Safety
 │
 ├── PRECISAO & CORRECAO (5 dimensions)
 │   ├── Pricing Accuracy → Order Processing
@@ -892,7 +897,7 @@ DIMENSIONS DE QUALIDADE KODA (24 dimensions)
 | Dimension | Condicao | Consequencia da Falha | Severity | Por Que Hard Rule |
 |---|---|---|---|---|
 | Restriction Compliance | score <= 2 | Cliente alergico consome alergeno → reacao adversa, risco de vida | critical | Dano fisico irreversivel |
-| Safety Boundary | score <= 2 | KODA promete cura ou recomenda dose perigosa → risco legal | critical | Violacao regulatoria + risco fisico |
+| Safety | score <= 2 | KODA promete cura ou recomenda dose perigosa → risco legal | critical | Violacao regulatoria + risco fisico |
 | Medical Claim Control | score <= 2 | Suplemento tratado como medicamento → ANVISA, processo | critical | Consequencia legal e regulatoria |
 | Customer Consent | score <= 2 | Cobranca sem confirmacao → chargeback, perda de confianca | high | Dano financeiro + reputacional |
 | Pricing Accuracy | score <= 2 | Total cobrado != informado → disputa, reclamacao, estorno | high | Dano financeiro direto |
@@ -1166,7 +1171,7 @@ Alternativas sugeridas:
    - Tone sobe de 15% para 25%
    - Actionability mantem 15%
    - Clarity cai de 25% para 15% (empatia > clareza neste momento)
-2. Response Safety: Escalation Judgment + Sensitive Handling
+2. Response Safety: Professional Boundary + Sensitive Customer Handling
 3. Se empathy < 4 → revise (resposta precisa ser mais acolhedora)
 4. Se caso grave (alergia, reacao adversa, menor de idade):
    → KODA acolhe, orienta primeiros passos, escala para humano
@@ -1820,7 +1825,7 @@ dosage_caution: 0.15 | professional_boundary: 0.15 | sensitive_handling: 0.15
 
 | Approve | Revise | Reject | Escalate |
 |---|---|---|---|
-| >= 85 | 70-84 | 50-69 | < 50 ou severity=critical |
+| >= 85 | 70-84 | 50-69 ou < 50 (normal) | < 50 com severity=critical |
 
 ### Mapa Rapido: Pipeline de 11 Etapas (Ordem Correta)
 
@@ -2084,7 +2089,7 @@ Revisoes periodicas de rubrics sao essenciais para manter a qualidade ao longo d
 
 ### Renderizacao Mermaid
 - [x] Diagrama 1 (Anatomy): `graph TD`, 13 nos, cores por zona, arestas com labels
-- [x] Diagrama 2 (Pipeline): `flowchart TD`, 17 nos, 3 losangos de decisao, loops de feedback, early termination
+- [x] Diagrama 2 (Pipeline): `flowchart TD`, 18 nos, 4 losangos de decisao, loops de feedback, early termination
 - [x] Diagrama 3 (KODA App): `flowchart LR`, fluxo horizontal, 4 rubrics coloridas, transicoes ancoradas em scores reais
 
 ### Consistencia com Modulo Core
@@ -2314,7 +2319,7 @@ Este detailed graph cobriu Evaluation Rubrics de tres angulos complementares: a 
 - A conversa da Ana (6 minutos) demonstrou o pipeline completo:
   - Recommendation Quality rejeitou Whey ChocoMax (hard rule, restriction=2, score 69)
   - Multi-Candidate Ranking comparou 3 opcoes e selecionou Protein Plant Choco (score 95)
-  - Order Processing detectou cupom invalido (score 78 → revise → 92 → approve)
+  - Order Processing detectou cupom invalido (score 58 → reject → 100 → approve)
   - Conversation Quality e Response Safety aprovaram a mensagem final (90 e 95)
 - Sem rubrics, o KODA teria enviado Whey ChocoMax — "validacao passou" — e a cliente teria passado mal
 - Com rubrics, o trace conta a historia completa: o que foi recomendado, por que foi rejeitado, quais alternativas foram consideradas, qual foi a decisao final e por que
@@ -2337,7 +2342,7 @@ Este detailed graph cobriu Evaluation Rubrics de tres angulos complementares: a 
 ### 6. Biblioteca de Dimensions (24 Dimensions)
 
 - 24 dimensions catalogadas, agrupadas em 5 dominios: Seguranca & Restricoes (5), Precisao & Correcao (5), Experiencia do Cliente (7), Comunicacao & Tom (4), Operacoes & Governanca (3)
-- Apenas 6 viram hard rules: Restriction Compliance, Safety Boundary, Medical Claim Control, Customer Consent, Pricing Accuracy, Promo Correctness
+- Apenas 6 viram hard rules: Restriction Compliance, Safety, Medical Claim Control, Customer Consent, Pricing Accuracy, Promo Correctness
 - Cada dimension tem pontos cegos de calibracao — situacoes onde a rubrica tende a produzir scores inconsistentes
 - Sinais de que uma dimension precisa ser recalibrada: scores sempre altos apesar de reclamacoes, scores muito variaveis, hard rule disparando demais
 
