@@ -575,3877 +575,1566 @@ Vale para handoff humano.
 
 Vale para qualquer parte do KODA onde o cliente espera continuidade.
 
-### Atlas conceitual de Sprint Contracts
-
-Esta seção aprofunda o conceito por ângulos curtos e independentes.
-Ela serve como referência de leitura, revisão e discussão em equipe.
-Cada bloco descreve uma decisão arquitetural que aparece quando contracts saem do papel e entram no KODA.
-
-#### Nota 001: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 002: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 003: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 004: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 005: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 006: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 007: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 008: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 009: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 010: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 011: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 012: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 013: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 014: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 015: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 016: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 017: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 018: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 019: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 020: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 021: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 022: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 023: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 024: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 025: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 026: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 027: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 028: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 029: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 030: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 031: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 032: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 033: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 034: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 035: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 036: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 037: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 038: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 039: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 040: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 041: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 042: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 043: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 044: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 045: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 046: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 047: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 048: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 049: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 050: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 051: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 052: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 053: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 054: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 055: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 056: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 057: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 058: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 059: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 060: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 061: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 062: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 063: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 064: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 065: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 066: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 067: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 068: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 069: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 070: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 071: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 072: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 073: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 074: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 075: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 076: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 077: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 078: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 079: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 080: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 081: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 082: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 083: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 084: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 085: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 086: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 087: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 088: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 089: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 090: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 091: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 092: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 093: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 094: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 095: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 096: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 097: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 098: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 099: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 100: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 101: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 102: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 103: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 104: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 105: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 106: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 107: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 108: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 109: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 110: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 111: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 112: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 113: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 114: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 115: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 116: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 117: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 118: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 119: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 120: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 121: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 122: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 123: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 124: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 125: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 126: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 127: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 128: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 129: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 130: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 131: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 132: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 133: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 134: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 135: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 136: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 137: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 138: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 139: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 140: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 141: Escopo em contracts reais
-
-- Situação: em KODA, escopo claro impede que Product Discovery vire Checkout sem perceber.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o agente sabe quando continuar e quando abrir novo sprint.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 142: Autoridade do dado em contracts reais
-
-- Situação: em KODA, mensagem atual de João deve ter precedência sobre preferência antiga quando houver conflito.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract evita que memória persistida atropele intenção recente.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 143: Critério testável em contracts reais
-
-- Situação: em KODA, um Evaluator precisa reprovar com evidência, não com sensação.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time reduz discussão subjetiva depois da falha.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 144: Falha honesta em contracts reais
-
-- Situação: em KODA, quando não há produto compatível, KODA deve dizer isso com clareza.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: confiança cresce porque o sistema não finge certeza.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 145: Renegociação em contracts reais
-
-- Situação: em KODA, mudança de whey para BCAA altera o espaço de solução.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: novo contract impede que critérios antigos contaminem decisão nova.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 146: Budget em contracts reais
-
-- Situação: em KODA, limite de R$ 50 não é sugestão se foi declarado como restrição.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o contract impede recomendação acima do combinado.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 147: Segurança em contracts reais
-
-- Situação: em KODA, lactose intolerance deve vencer preferência de sabor.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema protege o cliente antes de otimizar satisfação.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 148: Evidência em contracts reais
-
-- Situação: em KODA, cada recomendação precisa trazer produto, preço, estoque e motivo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o Evaluator consegue verificar sem adivinhar.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 149: Estado em contracts reais
-
-- Situação: em KODA, contract ativo precisa sobreviver a compaction e restart.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: long-running agents dependem de memória fora do prompt.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 150: Auditabilidade em contracts reais
-
-- Situação: em KODA, cada verdict deve registrar cláusula aprovada ou reprovada.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: trace reading fica mais rápido e menos opinativo.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 151: Versioning em contracts reais
-
-- Situação: em KODA, mudanças em criteria precisam preservar histórico.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: métricas antigas continuam interpretáveis.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 152: Retry em contracts reais
-
-- Situação: em KODA, retry só faz sentido quando o contract continua válido.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o sistema evita repetir execução contra premissa quebrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 153: Escala em contracts reais
-
-- Situação: em KODA, multi-agent handoff precisa carregar contract, não apenas resumo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: agentes diferentes compartilham a mesma promessa.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 154: Custo em contracts reais
-
-- Situação: em KODA, contract reduz tokens ao limitar fontes e tentativas.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o investimento inicial retorna em menos retrabalho.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 155: Latência em contracts reais
-
-- Situação: em KODA, negociação curta antes evita loops longos depois.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: cliente recebe resposta mais confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 156: Produto em contracts reais
-
-- Situação: em KODA, feature crítica merece contract antes de polish de prompt.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: arquitetura protege o valor principal.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 157: Observabilidade em contracts reais
-
-- Situação: em KODA, contract dá nomes aos eventos.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: dashboards podem mostrar falha por critério.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 158: Operação em contracts reais
-
-- Situação: em KODA, support humano precisa ver o contract ativo.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: handoff humano começa com contexto confiável.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 159: Aprendizado em contracts reais
-
-- Situação: em KODA, contracts rejeitados revelam onde a feature é ambígua.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: o time melhora design de produto.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-#### Nota 160: Disciplina em contracts reais
-
-- Situação: em KODA, não se deve relaxar critério em silêncio.
-- Decisão de contract: declarar essa regra antes do Generator gastar tokens.
-- Efeito esperado: qualquer exceção vira renegotiation registrada.
-- Pergunta de revisão: o Evaluator conseguiria testar essa regra sem pedir contexto extra?
-- Sinal de maturidade: a regra aparece no contract, no state store e no audit log.
-- Risco se ignorar: o agente pode parecer útil enquanto viola uma promessa importante.
-
-### Matriz de tradeoffs conceituais
-
-Sprint Contracts sempre trocam uma forma de custo por outra.
-A equipe paga custo de design para reduzir custo de falha.
-A matriz abaixo registra tradeoffs recorrentes em decisões de arquitetura.
-
-#### Tradeoff 001: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 002: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 003: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 004: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 005: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 006: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 007: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 008: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 009: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 010: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 011: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 012: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 013: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 014: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 015: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 016: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 017: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 018: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 019: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 020: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 021: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 022: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 023: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 024: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 025: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 026: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 027: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 028: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 029: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 030: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 031: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 032: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 033: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 034: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 035: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 036: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 037: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 038: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 039: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 040: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 041: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 042: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 043: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 044: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 045: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 046: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 047: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 048: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 049: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 050: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 051: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 052: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 053: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 054: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 055: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 056: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 057: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 058: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 059: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 060: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 061: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 062: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 063: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 064: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 065: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 066: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 067: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 068: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 069: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 070: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 071: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 072: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 073: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 074: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 075: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 076: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 077: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 078: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 079: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 080: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 081: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 082: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 083: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 084: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 085: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 086: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 087: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 088: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 089: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 090: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 091: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 092: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 093: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 094: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 095: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 096: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 097: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 098: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 099: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 100: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 101: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 102: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 103: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 104: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 105: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 106: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 107: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 108: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 109: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 110: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 111: mais critérios
-
-- Benefício: aumenta proteção.
-- Custo: aumenta chance de rejeição por rigidez.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 112: menos critérios
-
-- Benefício: aumenta velocidade inicial.
-- Custo: aumenta ambiguidade no fim.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 113: contract genérico
-
-- Benefício: reduz manutenção.
-- Custo: pode ignorar contexto específico do cliente.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 114: contract específico
-
-- Benefício: aumenta fit com o caso.
-- Custo: exige geração e validação mais cuidadosas.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 115: failure handling detalhado
-
-- Benefício: reduz improviso.
-- Custo: exige prever caminhos de falha.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 116: failure handling simples
-
-- Benefício: facilita adoção.
-- Custo: pode deixar lacunas em produção.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 117: versioning rigoroso
-
-- Benefício: protege auditoria.
-- Custo: aumenta disciplina operacional.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 118: versioning informal
-
-- Benefício: parece rápido.
-- Custo: quebra comparação histórica.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 119: negotiation longa
-
-- Benefício: descobre ambiguidade cedo.
-- Custo: pode elevar latência.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-#### Tradeoff 120: negotiation curta
-
-- Benefício: reduz overhead.
-- Custo: pode deixar critério fraco.
-- Decisão recomendada: escolha o lado que reduz o risco dominante da feature.
-- Para Product Discovery, segurança e confiança normalmente vencem velocidade pura.
-- Para exploração interna, velocidade pode vencer formalidade.
-- O contract deve tornar essa escolha explícita para que o time não rediscuta a cada incidente.
-
-### Vocabulário operacional
-
-Os termos abaixo aparecem em conversas de arquitetura sobre Sprint Contracts.
-A definição curta ajuda a equipe a falar a mesma língua.
-
-#### Termo 001: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 002: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 003: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 004: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 005: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 006: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 007: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 008: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 009: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 010: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 011: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 012: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 013: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 014: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 015: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 016: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 017: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 018: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 019: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 020: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 021: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 022: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 023: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 024: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 025: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 026: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 027: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 028: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 029: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 030: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 031: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 032: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 033: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 034: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 035: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 036: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 037: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 038: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 039: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 040: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 041: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 042: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 043: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 044: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 045: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 046: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 047: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 048: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 049: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 050: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 051: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 052: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 053: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 054: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 055: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 056: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 057: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 058: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 059: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 060: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 061: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 062: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 063: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 064: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 065: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 066: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 067: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 068: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 069: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 070: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 071: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 072: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 073: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 074: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 075: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 076: `active_contract`
-
-- Definição: contract aceito e usado para governar o sprint atual.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 077: `candidate_output`
-
-- Definição: resultado produzido pelo Generator antes de aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 078: `contract_draft`
-
-- Definição: proposta ainda não aceita pelo Evaluator.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 079: `contract_id`
-
-- Definição: identificador único do acordo concreto.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 080: `contract_template`
-
-- Definição: forma reutilizável que gera contracts concretos.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 081: `evidence_required`
-
-- Definição: lista de provas que o output precisa carregar.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 082: `failure_reason`
-
-- Definição: motivo específico de reprovação ou bloqueio.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 083: `fulfilled`
-
-- Definição: estado final quando o contract foi cumprido.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 084: `input_precedence`
-
-- Definição: regra que decide qual dado vence em conflito.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 085: `negotiation_round`
-
-- Definição: troca entre Generator e Evaluator antes do aceite.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 086: `renegotiated`
-
-- Definição: estado quando mudança exige novo acordo.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 087: `success_threshold`
-
-- Definição: limiar mínimo para aprovação.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 088: `verdict`
-
-- Definição: decisão do Evaluator com razões.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 089: `version_policy`
-
-- Definição: regra que define quando contract muda de versão.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-#### Termo 090: `customer_visible_commitment`
-
-- Definição: promessa feita ao cliente e preservada pelo sistema.
-- Uso em KODA: aparece no fluxo de Product Discovery, Checkout ou Support quando há promessa que precisa ser preservada.
-- Erro comum: tratar o termo como detalhe de implementação, quando ele representa uma decisão de coordenação.
-- Boa prática: registrar o termo no contract ou no audit log quando ele afeta comportamento visível ao cliente.
-
-### Heurísticas para revisão em equipe
-
-Use estas heurísticas em review de arquitetura.
-Elas ajudam a decidir se um contract está pronto para produção.
-
-#### Heurística 001
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 002
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 003
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 004
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 005
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 006
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 007
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 008
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 009
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 010
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 011
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 012
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 013
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 014
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 015
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 016
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 017
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 018
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 019
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 020
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 021
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 022
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 023
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 024
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 025
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 026
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 027
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 028
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 029
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 030
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 031
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 032
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 033
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 034
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 035
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 036
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 037
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 038
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 039
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 040
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 041
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 042
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 043
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 044
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 045
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 046
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 047
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 048
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 049
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 050
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 051
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 052
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 053
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 054
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 055
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 056
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 057
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 058
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 059
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 060
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 061
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 062
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 063
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 064
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 065
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 066
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 067
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 068
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 069
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 070
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 071
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 072
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 073
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 074
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 075
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 076
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 077
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 078
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 079
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 080
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 081
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 082
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 083
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 084
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 085
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 086
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 087
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 088
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 089
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 090
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 091
-
-- Pergunta: Se o cliente pudesse ler o contract, ele reconheceria a promessa feita?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 092
-
-- Pergunta: Se o Generator falhar, o Evaluator sabe apontar a cláusula exata?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 093
-
-- Pergunta: Se o cliente mudar de ideia, o sistema sabe diferenciar retry de renegotiation?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 094
-
-- Pergunta: Se o catálogo estiver incompleto, o failure handling protege confiança?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 095
-
-- Pergunta: Se a conversa for compactada, o contract continua disponível?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 096
-
-- Pergunta: Se a versão mudar, métricas antigas continuam comparáveis?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 097
-
-- Pergunta: Se um humano assumir, ele entende o acordo em menos de um minuto?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 098
-
-- Pergunta: Se um output passar, há evidência suficiente para explicar o porquê?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 099
-
-- Pergunta: Se não houver produto perfeito, o sistema pede escolha em vez de inventar?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
-
-#### Heurística 100
-
-- Pergunta: Se dois critérios conflitarem, a precedência está declarada?
-- Interpretação: uma resposta insegura indica que o contract ainda depende de memória humana.
-- Ação: ajuste input specification, success criteria ou failure handling antes de liberar.
-- Evidência esperada: o contract mostra a regra sem precisar consultar conversa paralela.
+
+## 📥 Os Três Pilares em Profundidade
+
+Os três pilares de um Sprint Contract parecem simples quando aparecem em uma lista.
+Input Specification.
+Success Criteria.
+Failure Handling.
+Mas a profundidade do padrão está justamente no que cada pilar impede.
+Input Specification impede que o agente trabalhe com material errado.
+Success Criteria impede que o agente confunda output com resultado.
+Failure Handling impede que o sistema improvise no momento em que mais precisa de disciplina.
+Em KODA, esses três pilares aparecem toda vez que uma conversa deixa de ser casual e passa a carregar uma promessa.
+Quando João diz que tem lactose intolerance, isso não é apenas contexto.
+É uma restrição.
+Quando João diz que só pode gastar R$ 50, isso não é apenas preferência.
+É um limite operacional.
+Quando João prefere morango, isso não tem a mesma força que uma restrição de saúde.
+É uma preferência negociável.
+Um Sprint Contract existe para não deixar essas categorias se misturarem.
+
+### 📥 Input Specification: o que pode entrar no sprint
+
+Input Specification define quais informações têm permissão para influenciar a execução.
+Essa frase parece burocrática.
+Na prática, ela protege o cliente.
+Um Generator sem Input Specification tende a usar tudo que vê.
+Histórico antigo.
+Preferência persistida.
+Mensagem recente.
+Suposição sobre perfil de cliente.
+Trecho de catálogo.
+Memória comprimida.
+Tudo vira material de decisão.
+Isso é perigoso porque long-running agents vivem cercados de informação parcialmente correta.
+Uma preferência antiga pode ter sido superada.
+Um produto pode ter mudado de preço.
+Um snapshot de estoque pode estar vencido.
+Uma inferência do agente pode parecer plausível, mas nunca foi confirmada pelo cliente.
+Input Specification separa informação disponível de informação autorizada.
+Essa distinção é uma das bases da confiança.
+Para KODA, informação disponível pode incluir meses de histórico do cliente.
+Informação autorizada para o sprint atual pode ser apenas a mensagem atual, o perfil persistido relevante, o catálogo vigente e as regras de negócio de segurança.
+Se João comprou whey de chocolate em janeiro, isso pode ser útil.
+Se hoje João diz que quer morango, a mensagem atual vence.
+Se o catálogo antigo dizia que um produto era sem lactose, mas o catálogo atual não confirma, o produto não deve passar.
+O contract precisa dizer isso antes da recomendação.
+
+#### Fontes autorizadas
+
+Uma fonte autorizada é uma fonte que o Generator pode usar sem pedir permissão adicional.
+No Product Discovery do KODA, fontes típicas incluem a mensagem atual do WhatsApp.
+Incluem preferências persistidas do cliente.
+Incluem snapshot de catálogo.
+Incluem snapshot de preço.
+Incluem snapshot de estoque.
+Incluem políticas comerciais vigentes.
+Incluem regras de segurança, como não recomendar produto incompatível com restrição declarada.
+A lista parece óbvia.
+O valor está nas exclusões.
+O Generator não deve inventar margem de preço.
+Não deve usar produto fora do snapshot.
+Não deve considerar estoque antigo como se fosse atual.
+Não deve tratar uma inferência sobre objetivo de treino como fato confirmado.
+Não deve decidir que uma restrição de saúde é flexível só porque dificulta encontrar produtos.
+Input Specification também define se o Generator pode perguntar mais ao cliente.
+Em alguns sprints, a resposta certa é recomendar.
+Em outros, é fazer uma pergunta de clarificação.
+Essa decisão não deve ser improvisada.
+Se o contract permite no máximo duas perguntas antes de recomendar, o Generator sabe quando parar de perguntar.
+Se o contract exige confirmação de alergia antes de recomendar, o Generator sabe que não pode pular esse passo.
+
+#### Precedence rules
+
+Precedence rules dizem qual fonte vence quando duas fontes entram em conflito.
+Esse é um dos pontos mais importantes do contract.
+Conflito de dados é normal em conversas reais.
+João pode ter perfil antigo dizendo "prefere chocolate".
+Hoje ele escreve "dessa vez quero morango".
+O histórico e a mensagem atual entram em conflito.
+Sem precedence rule, o modelo decide com base em saliência textual.
+Com precedence rule, o sistema decide com base em arquitetura.
+Uma regra saudável para KODA é: mensagem atual vence preferência persistida quando o assunto é preferência negociável.
+Outra regra saudável é: restrição de segurança vence preferência de sabor.
+Outra é: catálogo atual vence memória do agente.
+Outra é: budget confirmado vence sugestão promocional.
+Precedence rules também precisam tratar ausência de dado.
+Se o cliente não informou budget, o Generator pode recomendar por faixa de preço ou deve perguntar?
+Se o cliente informou lactose intolerance, mas o catálogo só tem campo `contains_milk`, como mapear?
+Se a informação de estoque está indisponível, a recomendação pode avançar?
+A resposta depende do risco.
+Para suplemento, restrição alimentar e estoque são críticos.
+Um contract maduro escolhe o lado seguro.
+
+#### Quando restringir o que o Generator pode ver
+
+Pode parecer estranho esconder informação do Generator.
+A intuição comum diz: quanto mais contexto, melhor.
+Em long-running agents, isso nem sempre é verdade.
+Mais contexto pode significar mais ruído.
+Mais ruído pode significar mais chance de misturar compromissos antigos com objetivos novos.
+Restringir contexto é útil quando o sprint precisa de foco.
+No Checkout, o Generator não precisa rever toda a conversa de Product Discovery.
+Ele precisa do produto aprovado, preço aprovado, endereço, método de pagamento e confirmação do cliente.
+No Support, o agente não precisa reabrir recomendações antigas se o cliente pergunta apenas sobre status de entrega.
+No Fulfillment, o agente não precisa inferir novas preferências de sabor.
+Ele precisa cumprir o pedido aceito.
+Input Specification permite essa redução.
+Ele cria um pacote mínimo suficiente para a tarefa.
+Isso economiza tokens.
+Também reduz interferência.
+O objetivo não é deixar o Generator cego.
+É impedir que ele use informação que não deveria governar aquele sprint.
+
+#### Dados conflitantes e dados ambíguos
+
+Dados conflitantes dizem coisas incompatíveis.
+Dados ambíguos dizem algo incompleto.
+Os dois precisam de tratamento diferente.
+Se João diz "até R$ 50" e o perfil antigo diz "costuma comprar premium", há conflito.
+A mensagem atual deve vencer.
+Se João diz "não posso com leite" e o catálogo diferencia lactose, whey isolate, caseína e milk protein, há ambiguidade.
+O sistema talvez precise perguntar ou aplicar default seguro.
+Um bom Input Specification classifica esses casos.
+Conflito resolvível por precedência não precisa parar o sprint.
+Ambiguidade de segurança pode exigir clarificação.
+Ambiguidade de preferência pode virar tradeoff explicado.
+Por exemplo, se não há morango sem lactose abaixo de R$ 50, KODA pode perguntar se João aceita chocolate.
+Mas não pode perguntar se João aceita lactose.
+A diferença é moral e operacional.
+O contract precisa capturar essa diferença.
+
+### ✅ Success Criteria: o que conta como pronto
+
+Success Criteria são a parte mais visível do contract.
+Eles dizem como o Evaluator decide se o output passou.
+Mas o erro comum é escrever criteria como uma lista de desejos.
+"A resposta deve ser útil."
+"A recomendação deve ser boa."
+"O cliente deve entender."
+Essas frases apontam uma intenção correta.
+Ainda não são critérios testáveis.
+Um critério testável permite duas coisas.
+Permite que o Generator planeje.
+Permite que o Evaluator reprove.
+Se ninguém consegue reprovar, não há critério.
+Há decoração.
+
+#### Critérios binários
+
+Critérios binários passam ou falham.
+Eles são essenciais para restrições duras.
+Produto está em estoque.
+Preço é menor ou igual a R$ 50.
+Produto é marcado como sem lactose.
+Resposta não inclui produto fora do catálogo.
+Cliente confirmou intenção de compra antes de Checkout.
+Esses critérios são bons porque reduzem debate.
+Eles também são bons porque protegem invariantes.
+Quando um critério binário falha, o sprint não deve seguir como se nada tivesse acontecido.
+Se o produto tem lactose, não importa que seja barato.
+Se está fora de estoque, não importa que combine com sabor.
+Se o cliente não confirmou endereço, não importa que o resto do checkout esteja pronto.
+Critérios binários formam a linha de segurança.
+
+#### Critérios pontuados
+
+Nem tudo é binário.
+Uma recomendação pode ser tecnicamente válida, mas pouco útil.
+Um produto pode respeitar budget e lactose, mas não combinar bem com objetivo.
+Uma explicação pode ser factual, mas confusa.
+Nesses casos, criteria pontuados ajudam.
+Um Evaluator pode avaliar clareza de explicação em uma escala.
+Pode avaliar fit com objetivo.
+Pode avaliar qualidade do tradeoff apresentado.
+Pode avaliar se a resposta é curta o suficiente para WhatsApp.
+Critérios pontuados exigem cuidado.
+Eles não devem substituir critérios binários de segurança.
+Devem complementar.
+Uma boa regra é separar gate criteria de quality criteria.
+Gate criteria decidem se o output pode ser mostrado.
+Quality criteria decidem se o output precisa melhorar antes de ser ideal.
+Para KODA, gate criteria incluem lactose, estoque, preço e consentimento.
+Quality criteria incluem clareza, empatia, ordem de recomendação e explicação de tradeoff.
+
+#### O produto existe vs a recomendação ajuda
+
+Um erro frequente é confundir validade factual com utilidade.
+"O produto existe" é necessário.
+Não é suficiente.
+"O produto está em estoque" é necessário.
+Não é suficiente.
+"O produto cabe no orçamento" é necessário.
+Não é suficiente.
+Uma recomendação genuinamente útil conecta o produto ao problema do cliente.
+Se João quer voltar a treinar, KODA precisa explicar por que aquela opção faz sentido.
+Se a opção não é morango, KODA precisa dizer o tradeoff.
+Se só há uma opção, KODA precisa explicar que os critérios restringiram o conjunto.
+Isso muda o Evaluator.
+Ele não deve apenas checar campos.
+Deve checar relação entre fatos.
+Produto, restrição, objetivo e explicação precisam formar uma linha coerente.
+Essa é a diferença entre catalog search e consultative recommendation.
+KODA não é apenas uma busca de catálogo.
+KODA promete orientação.
+Success Criteria devem proteger essa promessa.
+
+#### Critérios mínimos e critérios alvo
+
+Nem todo contract deve exigir o ideal para passar.
+Em conversas reais, há situações em que o ideal não existe.
+Talvez não haja três produtos sem lactose abaixo de R$ 50.
+Talvez haja apenas um.
+Talvez nenhum tenha sabor morango.
+Se o contract exige três opções sempre, ele força falha quando uma resposta honesta seria melhor.
+Por isso, é útil separar minimum criteria e target criteria.
+Minimum criteria definem o que precisa ser verdade para avançar.
+Target criteria definem o resultado preferido.
+No Product Discovery, minimum pode ser uma opção válida com explicação clara.
+Target pode ser três opções ordenadas por fit.
+Se o target não for atingido, KODA ainda pode responder, desde que explique a limitação.
+Essa distinção reduz rigidez desnecessária.
+Também evita que o agente invente opções para cumprir número.
+Um contract maduro prefere uma recomendação honesta a três recomendações fabricadas.
+
+#### Evidência como parte do output
+
+Success Criteria exigem evidência.
+Sem evidência, o Evaluator precisa confiar no Generator.
+Isso desfaz a separação de responsabilidades.
+A evidência pode ser simples.
+`product_id`.
+Preço.
+Status de estoque.
+Flag de lactose.
+Motivo conectado ao objetivo.
+Tradeoff declarado.
+Fonte do dado.
+Timestamp do snapshot.
+Evidência não precisa aparecer inteira para o cliente.
+Mas precisa estar disponível para avaliação.
+O cliente recebe uma resposta limpa.
+O Evaluator recebe o material de verificação.
+O Audit Log guarda a razão.
+Essa separação permite qualidade sem poluir a experiência de WhatsApp.
+
+### ⚠️ Failure Handling: o caminho quando o contract não fecha
+
+Failure Handling não é apêndice.
+Failure Handling é parte central do contract.
+Na prática, ele define a diferença entre sistema confiável e sistema que improvisa bonito.
+Todo sprint importante deve assumir que pode falhar.
+Não porque a equipe é pessimista.
+Porque o mundo real não se encaixa sempre no template.
+Produto acaba.
+Preço muda.
+Cliente muda de ideia.
+Catálogo fica incompleto.
+Pagamento falha.
+Mensagem chega ambígua.
+Modelo gera output incompleto.
+Evaluator rejeita.
+Se o contract não diz o que acontece nesses casos, o agente vai decidir sozinho no pior momento possível.
+
+#### Graceful degradation
+
+Graceful degradation é quando o sistema reduz ambição sem trair o cliente.
+Se não há três recomendações, entregar uma recomendação válida e explicar a limitação pode ser aceitável.
+Se não há morango, oferecer chocolate sem lactose abaixo de R$ 50 pode ser aceitável.
+Se estoque está incerto, pedir confirmação ou avisar que precisa checar pode ser aceitável.
+Graceful degradation preserva confiança porque não esconde a limitação.
+O ponto é degradar dimensão negociável, não restrição crítica.
+Sabor pode degradar.
+Quantidade de opções pode degradar.
+Estilo da explicação pode degradar.
+Segurança alimentar não deve degradar.
+Consentimento de pagamento não deve degradar.
+
+Endereço de entrega não deve ser inferido em checkout sem confirmação.
+
+#### Hard fail
+
+Hard fail é quando o sistema deve parar.
+
+Não é fracasso do produto.
+
+É proteção.
+
+Se uma recomendação viola lactose intolerance, hard fail.
+
+Se Checkout não tem confirmação explícita, hard fail.
+
+Se preço mudou depois da confirmação e ficou acima do budget, hard fail ou renegotiation.
+
+Se o Evaluator não consegue verificar uma condição crítica, hard fail.
+
+Hard fail precisa ser customer-safe.
+
+KODA não deve responder com erro técnico.
+
+Deve explicar de forma humana.
+
+"Não encontrei uma opção que cumpra tudo com segurança. Posso buscar alternativas se você quiser ajustar sabor ou orçamento."
+
+Essa resposta é muito melhor que uma recomendação arriscada.
+
+#### Retry, renegotiation e escalation
+
+Retry significa tentar de novo dentro do mesmo contract.
+
+Use retry quando o contract continua correto, mas o output falhou.
+
+Exemplo: o Generator esqueceu de incluir evidência de estoque.
+
+O Evaluator rejeita.
+
+O Generator refaz com a evidência.
+
+Renegotiation significa criar ou ajustar o contract porque a premissa mudou.
+
+Use renegotiation quando João troca whey por BCAA.
+
+Use quando o budget muda.
+
+Use quando o cliente aceita abrir mão de morango.
+
+Use quando uma fonte autorizada fica indisponível e a resposta segura exige nova escolha.
+
+Escalation significa mover para humano ou fluxo superior.
+
+Use quando o sistema não consegue resolver com segurança.
+
+Use quando há conflito de saúde.
+
+Use quando pagamento falha de forma ambígua.
+
+Use quando o cliente está irritado e a próxima ação automatizada pode piorar.
+
+A distinção é simples.
+
+Retry corrige execução.
+
+Renegotiation corrige acordo.
+
+Escalation corrige autoridade.
+
+#### Safe defaults
+
+Safe defaults são decisões conservadoras quando falta informação.
+
+Em KODA, o default seguro para restrição alimentar é não recomendar produto duvidoso.
+
+O default seguro para budget é não ultrapassar sem confirmação.
+
+O default seguro para checkout é não cobrar sem consentimento claro.
+
+O default seguro para estoque é não prometer disponibilidade sem confirmação.
+
+Safe defaults precisam estar no contract.
+
+Se ficarem apenas na cultura do time, vão falhar quando o sistema crescer.
+
+Um default seguro não precisa tornar a experiência fria.
+
+Ele pode ser comunicado com cuidado.
+
+"Para não te indicar algo incompatível, preciso confirmar uma coisa."
+
+Essa frase protege o cliente e mantém tom consultivo.
+
+O contract define a disciplina.
+
+A resposta final define a experiência.
+
+---
+
+## 🤝 O Lifecycle de Negociação
+
+Um Sprint Contract não nasce pronto.
+
+Ele passa por um lifecycle.
+
+Esse lifecycle transforma contexto em acordo.
+
+A diferença entre um contract maduro e um prompt longo está nessa sequência.
+
+Prompt longo tenta antecipar tudo em uma instrução.
+
+Contract negociado permite crítica antes da execução.
+
+O processo não precisa ser lento.
+
+Em muitos casos, negotiation acontece em poucos turnos internos.
+
+O importante é que cada etapa tenha uma pergunta distinta.
+
+Proposal pergunta: qual é o acordo inicial?
+
+Critique pergunta: esse acordo é testável?
+
+Revision pergunta: o que precisa mudar para ficar seguro?
+
+Seal pergunta: todos aceitam a versão ativa?
+
+Execution pergunta: o Generator está trabalhando dentro do acordo?
+
+Verification pergunta: o output cumpriu o acordo?
+
+Resolution pergunta: qual é o próximo estado?
+
+### 🧾 Proposal
+
+Proposal é o rascunho inicial do contract.
+
+Ele pode ser criado pelo Generator.
+
+Pode ser criado pelo harness.
+
+Pode ser criado por um template preenchido com dados da conversa.
+
+Em KODA, o harness costuma ter boa posição para iniciar a proposta porque vê feature, cliente e estado.
+
+Quando João pede suplemento sem lactose até R$ 50, o harness reconhece Product Discovery.
+
+Ele seleciona o template de Product Discovery.
+
+Preenche slots com restrição, budget, preferência e canal.
+
+Adiciona fontes autorizadas.
+
+Adiciona failure paths conhecidos.
+
+O Generator pode então revisar se a proposta faz sentido para execução.
+
+Uma boa proposal não tenta ser perfeita.
+
+Ela tenta ser criticável.
+
+Isso é importante.
+
+Se a proposta é vaga, o Evaluator não consegue criticar.
+
+Se é excessivamente fechada, o Generator perde autonomia antes de entender o problema.
+
+A proposta boa tem granularidade suficiente para discussão.
+
+### 🔍 Critique
+
+Critique é o momento em que o Evaluator procura ambiguidade.
+
+Ele não está avaliando o output.
+
+Ainda não existe output.
+
+Ele está avaliando o contract.
+
+O Evaluator pergunta se cada critério pode ser testado.
+
+Pergunta se há conflito entre critérios.
+
+Pergunta se falta fonte para algum dado.
+
+Pergunta se failure handling cobre os casos prováveis.
+
+Pergunta se o contract deixa espaço para o Generator burlar a intenção.
+
+No caso de João, o Evaluator pode questionar: budget de R$ 50 inclui frete?
+
+Pode questionar: lactose intolerance está representada no catálogo com confiança?
+
+Pode questionar: sabor morango é obrigatório ou preferencial?
+
+Pode questionar: se houver apenas uma opção válida, isso é sucesso parcial ou falha?
+
+Essas perguntas são valiosas porque aparecem antes da recomendação.
+
+O custo de responder agora é pequeno.
+
+O custo de descobrir depois pode ser perda de confiança.
+
+### ✍️ Revision
+
+Revision é o ajuste do contract depois da crítica.
+
+O Generator ou harness incorpora decisões.
+
+Budget passa a ser definido como preço do produto, não frete, se essa for a regra de negócio.
+
+Lactose vira restrição obrigatória.
+
+Morango vira preferência negociável.
+
+Uma opção válida vira minimum.
+
+Três opções viram target.
+
+Sem opção válida vira failure handling com pergunta ao cliente.
+
+Revision deve alterar o contract, não apenas a conversa interna.
+
+Se a decisão não entra no artefato, ela se perde.
+
+Esse é um erro comum em times.
+
+A equipe discute, concorda, mas o contract continua vago.
+
+Depois o agente segue o texto vago.
+
+Revision só está completa quando o artefato ativo reflete a decisão.
+
+### 🔏 Seal
+
+Seal é o aceite.
+
+O contract deixa de ser draft.
+
+Vira documento governante.
+
+Esse momento precisa ser explícito.
+
+Não precisa ser teatral.
+
+Mas precisa deixar rastro.
+
+State Store deve registrar versão.
+
+Audit Log deve registrar quem aceitou ou qual componente aceitou.
+
+O contract deve receber status ativo.
+
+A partir desse ponto, o Generator não está apenas respondendo.
+
+Ele está cumprindo um acordo.
+
+O Evaluator não está apenas opinando.
+
+Ele está julgando contra o acordo aceito.
+
+Seal também protege contra moving target.
+
+Depois que o contract está ativo, critérios não devem mudar silenciosamente.
+
+Se a realidade muda, o sistema renegocia.
+
+Não reescreve o passado.
+
+### ⚙️ Execution
+
+Execution é o trabalho do Generator sob restrição.
+
+O Generator consulta fontes autorizadas.
+
+Ignora fontes não autorizadas.
+
+Coleta evidência.
+
+Constrói candidate output.
+
+Respeita token budget.
+
+Respeita limites de perguntas ao cliente.
+
+Respeita critérios de parada.
+
+A execução boa não é a mais criativa possível.
+
+É a mais criativa dentro do contract.
+
+Isso preserva autonomia sem perder controle.
+
+O Generator ainda pode escolher ordem de recomendações.
+
+Pode escolher tom.
+
+Pode explicar tradeoffs.
+
+Pode decidir entre produtos válidos.
+
+Mas não pode relaxar lactose.
+
+Não pode inventar estoque.
+
+Não pode ultrapassar budget sem renegotiation.
+
+Esse é o equilíbrio certo.
+
+Contract não elimina inteligência.
+
+Contract canaliza inteligência.
+
+### 🧪 Verification
+
+Verification é onde o Evaluator compara output e contract.
+
+Ele não deve avaliar contra preferência pessoal.
+
+Não deve inventar critério novo.
+
+Não deve aprovar porque a resposta parece boa.
+
+Deve verificar cláusulas.
+
+Primeiro, estrutura.
+
+O output contém recomendações?
+
+Contém evidência?
+
+Contém justificativa?
+
+Depois, invariantes.
+
+Cada produto está em estoque?
+
+Cada preço está dentro do limite?
+
+Cada produto respeita lactose intolerance?
+
+Depois, qualidade.
+
+A explicação conecta produto e objetivo?
+
+O tradeoff foi transparente?
+
+A resposta cabe no contexto de WhatsApp?
+
+A verificação deve produzir verdict.
+
+Pass.
+
+Fail.
+
+Needs renegotiation.
+
+Escalate.
+
+O verdict deve incluir razões.
+
+Razões vagas quebram o loop.
+
+"Ruim" não ajuda.
+
+"Produto `sku_123` custa R$ 60 e viola budget de R$ 50" ajuda.
+
+### 🧭 Resolution
+
+Resolution decide o próximo estado.
+
+Se passou, KODA pode responder ao cliente.
+
+Se falhou por execução incompleta, volta para retry.
+
+Se falhou por requisito alterado, abre renegotiation.
+
+Se falhou por risco não resolvido, escala.
+
+Resolution é onde contracts protegem long-running conversations.
+
+Sem resolution clara, o sistema fica preso em loop.
+
+Ou pior, avança apesar de falha.
+
+Um bom contract declara max retries.
+
+Declara quando parar de tentar.
+
+Declara quando pedir input ao cliente.
+
+Declara quando chamar humano.
+
+Isso evita que o agente transforme incerteza em insistência.
+
+Em KODA, insistência pode parecer pressão de venda.
+
+Contracts ajudam a manter a postura de consultor confiável.
+
+---
+
+## 🧠 Analogias & Mental Models
+
+Sprint Contracts ficam intuitivos quando você os compara com sistemas que já usam acordos antes da execução.
+
+A ideia não nasceu em IA.
+
+Ela aparece em construção, direito, APIs e cozinhas profissionais.
+
+Essas analogias ajudam porque mostram um padrão humano antigo.
+
+Quando o custo de erro é alto, pessoas sérias definem critérios antes de agir.
+
+### 🏗️ Construção: arquiteto, construtor e inspetor
+
+Imagine uma reforma.
+
+O arquiteto desenha o projeto.
+
+O construtor executa.
+
+O inspetor verifica.
+
+Ninguém trabalha com a instrução "faça uma casa boa".
+
+Há planta.
+
+Há medidas.
+
+Há materiais.
+
+Há tolerâncias.
+
+Há normas.
+
+Há vistoria.
+
+Se o construtor usa material diferente, não basta dizer que ficou bonito.
+
+O inspetor compara com especificação.
+
+Se a especificação estava ambígua, a equipe precisa esclarecer antes de construir a próxima parte.
+
+Em KODA, o contract é a planta do sprint.
+
+Generator é construtor.
+
+Evaluator é inspetor.
+
+Harness coordena o canteiro.
+
+State Store guarda a versão da planta.
+
+Audit Log registra vistorias.
+
+A analogia também mostra um limite.
+
+Você não precisa de planta completa para cada parafuso.
+
+Mas precisa de planta para paredes estruturais.
+
+Da mesma forma, KODA não precisa de contract pesado para frase casual.
+
+Precisa de contract para recomendação, checkout, fulfillment e escalation.
+
+### ⚖️ Contratos legais: partes, obrigações e remédios
+
+Um contrato legal define partes.
+
+Define obrigações.
+
+Define condições.
+
+Define remedies quando algo falha.
+
+O ponto dos remedies é importante.
+
+Contrato não diz apenas o que deve acontecer se tudo der certo.
+
+Diz o que acontece quando não dá.
+
+Sprint Contracts funcionam do mesmo jeito.
+
+Input Specification define objeto e escopo.
+
+Success Criteria definem obrigação de entrega.
+
+Failure Handling define remedy.
+
+Se não houver produto válido, o remedy pode ser pedir relaxamento de preferência.
+
+Se pagamento falhar, o remedy pode ser pedir outro método.
+
+Se houver risco de saúde, o remedy pode ser escalation.
+
+Essa analogia também ensina que contrato sem consequência é fraco.
+
+Se o Evaluator rejeita e nada muda, o contract é simbólico.
+
+Se failure handling não altera fluxo, ele não governa.
+
+Um contract real muda o que o sistema faz.
+
+### 🔌 API contracts: interface antes de implementação
+
+Em software, uma API contract define como componentes conversam.
+
+OpenAPI descreve endpoints, payloads, responses e errors.
+
+Interface segregation evita que consumidores dependam de detalhes desnecessários.
+
+O consumidor não precisa saber como o serviço calcula.
+
+Precisa saber o que enviar e o que receber.
+
+Sprint Contracts fazem isso entre agentes.
+
+O Evaluator não precisa ler todos os pensamentos do Generator.
+
+Precisa receber candidate output com evidência no formato esperado.
+
+O Generator não precisa saber a implementação interna do Evaluator.
+
+Precisa saber quais criteria serão aplicados.
+
+Essa analogia fortalece a ideia de versioning.
+
+Quando uma API muda contrato, clientes precisam se adaptar.
+
+Quando um Sprint Contract muda criteria, Generator, Evaluator, tests e metrics precisam saber.
+
+Sem versioning, você compara outputs julgados por regras diferentes como se fossem iguais.
+
+Isso distorce aprendizado.
+
+### 🍽️ Cozinha de restaurante: o ticket como contract
+
+Em um restaurante bom, o salão não grita instruções vagas para a cozinha.
+
+O pedido vira ticket.
+
+O ticket diz prato.
+
+Diz ponto da carne.
+
+Diz restrições.
+
+Diz mesa.
+
+Diz observações.
+
+Se o cliente tem alergia, isso aparece destacado.
+
+A cozinha executa contra o ticket.
+
+O expediter confere antes de sair.
+
+Se falta algo, o prato não vai para a mesa.
+
+O ticket é um contract operacional.
+
+Ele não contém a história inteira do cliente.
+
+Contém o que a cozinha precisa para entregar certo.
+
+Essa é uma excelente imagem para KODA.
+
+A conversa inteira com João pode ser longa.
+
+O Product Discovery sprint precisa de um ticket claro.
+
+Sem lactose.
+
+Até R$ 50.
+
+Preferência por morango.
+
+Objetivo de treino.
+
+Estoque atual.
+
+Se a cozinha não tem morango, ela não inventa.
+
+Ela avisa o salão.
+
+O salão volta ao cliente.
+
+Isso é failure handling.
+
+### 🧭 O mental model principal
+
+O mental model mais útil é este: Sprint Contract é uma promessa operacional.
+
+Não é documento decorativo.
+
+Não é comentário.
+
+Não é checklist solta.
+
+É a coisa que decide o próximo passo quando há dúvida.
+
+Se duas pessoas leem o contract e ainda discordam sobre o que fazer, o contract está fraco.
+
+Se o Generator precisa adivinhar, o contract está fraco.
+
+Se o Evaluator não consegue reprovar, o contract está fraco.
+
+Se a falha não muda o fluxo, o contract está fraco.
+
+Um contract forte reduz interpretação justamente nos pontos de maior risco.
+
+---
+
+## 🧱 Design Principles & Anti-Patterns
+
+Sprint Contracts devem ser desenhados com parcimônia.
+
+O objetivo é clareza operacional, não formalismo por formalismo.
+
+Um contract bom dá liberdade onde a liberdade melhora o resultado.
+
+E impõe limite onde liberdade vira risco.
+
+Essa seção separa princípios de anti-patterns.
+
+Os princípios ajudam a criar contracts úteis.
+
+Os anti-patterns mostram como contracts viram teatro se forem mal aplicados.
+
+### ✅ Princípio 1: Testability first
+
+Escreva criteria pensando no Evaluator.
+
+Se o Evaluator não consegue testar, o Generator não consegue confiar.
+
+Testability first muda a forma de escrever.
+
+Em vez de "resposta completa", escreva quais elementos precisam estar presentes.
+
+Em vez de "produto adequado", escreva quais restrições tornam o produto adequado.
+
+Em vez de "tom bom", escreva limites de comunicação quando houver risco.
+
+Testability não significa reduzir tudo a boolean.
+
+Significa deixar claro como julgamento acontece.
+
+Um critério qualitativo pode ser testável se tiver evidência e escala.
+
+Por exemplo: "a explicação conecta cada recomendação a pelo menos uma necessidade declarada do cliente".
+
+Isso ainda exige julgamento.
+
+Mas o julgamento tem alvo.
+
+### ✅ Princípio 2: explicit over implicit
+
+Agentes falham em long-running workflows porque o implícito se perde.
+
+O humano acha que está claro.
+
+O modelo vê texto concorrente.
+
+O Evaluator julga tarde.
+
+O harness não sabe qual promessa preservar.
+
+O contract deve explicitar o que seria perigoso deixar subentendido.
+
+Se budget é limite, diga.
+
+Se sabor é preferência, diga.
+
+Se lactose é restrição obrigatória, diga.
+
+Se mudança de categoria exige novo sprint, diga.
+
+Se uma opção válida é aceitável quando três não existem, diga.
+
+O explícito reduz elegância aparente.
+
+Aumenta confiabilidade real.
+
+### ✅ Princípio 3: scope confinement
+
+Um sprint precisa ter fronteira.
+
+Product Discovery não deve fazer checkout escondido.
+
+Checkout não deve redesenhar recomendação.
+
+Support não deve alterar pedido sem autorização.
+
+Fulfillment não deve prometer prazo sem fonte logística.
+
+Scope confinement impede que uma boa intenção gere efeito colateral.
+
+O Generator pode querer ajudar mais.
+
+O contract lembra qual ajuda é permitida agora.
+
+Isso é especialmente importante em WhatsApp.
+
+Conversas são fluidas.
+
+Cliente muda assunto.
+
+Agente tenta acompanhar.
+
+Sem fronteira, o sistema mistura estados.
+
+Com contract, mudança de assunto pode virar renegotiation ou novo sprint.
+
+### ✅ Princípio 4: version everything
+
+Todo contract que governa comportamento precisa de versão.
+
+Versão não é burocracia.
+
+É memória institucional.
+
+Quando a equipe muda criterion, precisa saber quando mudou.
+
+Quando métrica melhora, precisa saber qual contract estava ativo.
+
+Quando incidente acontece, precisa saber qual versão falhou.
+
+Versioning também protege rollout gradual.
+
+Você pode testar Product Discovery contract v1.1 com parte dos clientes.
+
+Pode comparar com v1.0.
+
+Pode rollback se aumento de rejeições prejudicar experiência.
+
+Sem versão, você tem apenas sensação.
+
+Com versão, você tem engenharia.
+
+### ✅ Princípio 5: preserve useful autonomy
+
+Contract não deve transformar agente em formulário morto.
+
+O Generator ainda precisa raciocinar.
+
+Precisa ordenar opções.
+
+Precisa explicar tradeoffs.
+
+Precisa adaptar linguagem.
+
+Precisa decidir quando uma pergunta adicional ajuda.
+
+O contract deve restringir o que não pode ser violado.
+
+Não deve prescrever cada palavra.
+
+Se você especifica demais, perde a vantagem do modelo.
+
+Se especifica de menos, perde confiabilidade.
+
+O desenho bom fica no meio.
+
+Ele dá guardrails para fatos, segurança e estado.
+
+Ele dá autonomia para síntese, empatia e comunicação.
+
+### ❌ Anti-pattern: contract by hope
+
+Contract by hope é um contract que parece sério, mas não decide nada.
+
+Ele diz "faça recomendação de alta qualidade".
+
+Diz "considere restrições do cliente".
+
+Diz "seja útil".
+
+Diz "evite erros".
+
+Essas frases são verdadeiras.
+
+Mas não são suficientes.
+
+Elas não dizem quais restrições.
+
+Não dizem quais erros bloqueiam.
+
+Não dizem qual evidência é necessária.
+
+Não dizem o que fazer quando não houver opção.
+
+Contract by hope cria falsa segurança.
+
+O time acha que formalizou.
+
+Na hora da falha, o Evaluator continua julgando por intuição.
+
+### ❌ Anti-pattern: moving target
+
+Moving target acontece quando criteria mudam durante o sprint sem renegotiation.
+
+O Generator começa buscando três opções abaixo de R$ 50.
+
+No meio, alguém decide aceitar até R$ 60 porque está difícil.
+
+Depois o Evaluator rejeita porque o budget original era R$ 50.
+
+Ou aprova porque gostou da resposta.
+
+O problema não é mudar critério.
+
+Mudança pode ser necessária.
+
+O problema é mudar sem registrar novo acordo.
+
+Moving target destrói confiança entre agentes.
+
+Também destrói métricas.
+
+Você não sabe se o output falhou por execução ruim ou por contract instável.
+
+A cura é simples.
+
+Se criteria mudam, renegotiate.
+
+Se renegotiate, versione.
+
+Se versionou, registre.
+
+### ❌ Anti-pattern: rubber stamp
+
+Rubber stamp é o Evaluator que nunca rejeita.
+
+Ele existe no diagrama.
+
+Não existe na prática.
+
+Aprova outputs incompletos.
+
+Aceita evidência ausente.
+
+Transforma falha em comentário leve.
+
+Diz "looks good" quando deveria bloquear.
+
+Esse anti-pattern é comum quando o time mede apenas velocidade.
+
+Evaluator que rejeita parece atrapalhar.
+
+Mas em sistema crítico, rejeição correta é recurso de qualidade.
+
+Se nada é rejeitado, o contract não governa.
+
+Para evitar rubber stamp, acompanhe taxa de rejeição por criterion.
+
+Uma taxa zero por muito tempo pode indicar perfeição.
+
+Mais provavelmente indica avaliação fraca.
+
+### ❌ Anti-pattern: contract waterfall
+
+Contract waterfall é o oposto do contract by hope.
+
+O time tenta especificar tudo antes de aprender.
+
+Cria contracts enormes.
+
+Prevê exceções raras.
+
+Bloqueia execução por detalhe secundário.
+
+Transforma cada sprint em cerimônia.
+
+Isso mata adoção.
+
+Sprint Contracts devem começar onde há risco claro.
+
+Depois evoluir com evidência.
+
+Não tente formalizar toda conversa do KODA no primeiro dia.
+
+Comece por Product Discovery ou Checkout.
+
+Observe falhas reais.
+
+Ajuste templates.
+
+Expanda quando o padrão provar valor.
+
+### Quando não usar contracts
+
+Não use Sprint Contracts para brainstorming interno sem risco.
+
+Não use para pergunta casual que não muda estado.
+
+Não use quando o objetivo é explorar possibilidades antes de definir compromisso.
+
+Não use quando a formalidade custaria mais que a falha.
+
+Não use para substituir conversa humana de descoberta.
+
+Não use para esconder incerteza atrás de formato.
+
+Contracts são melhores quando há promessa, risco e verificação.
+
+Sem esses três elementos, um prompt simples pode ser suficiente.
+
+A maturidade está em saber diferenciar.
+
+---
+
+## 🧩 Contract Templates & Reusability
+
+Um contract concreto governa um sprint específico.
+
+Um template governa a criação de muitos contracts parecidos.
+
+Essa distinção permite escala.
+
+KODA não deve escrever um Product Discovery contract do zero para cada cliente.
+
+Também não deve usar um texto fixo que ignora contexto.
+
+A solução é template parametrizado.
+
+O template define estrutura.
+
+Os parâmetros definem caso.
+
+### Biblioteca de templates
+
+Uma template library é um conjunto de contract templates por feature.
+
+Product Discovery.
+
+Checkout.
+
+Fulfillment.
+
+Support escalation.
+
+Payment recovery.
+
+Inventory substitution.
+
+Cada template contém slots.
+
+Slots de cliente.
+
+Slots de restrição.
+
+Slots de budget.
+
+Slots de feature.
+
+Slots de fontes autorizadas.
+
+Slots de failure handling.
+
+A biblioteca evita reinvenção.
+
+Também melhora governança.
+
+Quando a equipe aprende algo sobre lactose intolerance, atualiza o Product Discovery template.
+
+Quando aprende algo sobre cobrança duplicada, atualiza Checkout.
+
+Quando aprende algo sobre prazo de entrega, atualiza Fulfillment.
+
+### Parametrização para clientes e contextos
+
+Parameterization é onde o template vira contract real.
+
+Para João, o slot `customer_id` recebe `wa_5511987654321`.
+
+O slot `budget_limit_brl` recebe `50`.
+
+O slot `dietary_constraints` recebe `lactose_intolerance`.
+
+O slot `preferred_flavor` recebe `morango`.
+
+O slot `minimum_recommendations` pode receber `1`.
+
+O slot `target_recommendations` pode receber `3`.
+
+Esses valores não são apenas preenchimento.
+
+Eles governam execução.
+
+Se João depois aceita orçamento de R$ 60, isso não deve editar silenciosamente o contract antigo.
+
+Deve gerar nova versão ou novo contract.
+
+A parametrização precisa preservar histórico.
+
+### Template versioning
+
+Templates também têm versão.
+
+Isso é diferente da versão do contract concreto.
+
+Template version diz qual molde foi usado.
+
+Contract version diz qual acordo específico governou aquele sprint.
+
+Imagine que Product Discovery template v1.0 trata lactose intolerance como boolean simples.
+
+Depois a equipe descobre que precisa diferenciar lactose, milk protein e dairy avoidance.
+
+Cria template v2.0.
+
+Contracts antigos continuam ligados a v1.0.
+
+Contracts novos usam v2.0.
+
+Quando uma métrica melhora, você sabe se foi por mudança de template.
+
+Quando uma falha acontece, você sabe se o problema já foi corrigido em versão nova.
+
+### Exemplo de template conceitual
+
+```yaml
+template_id: koda.product_discovery.template
+version: 1.0.0
+slots:
+  customer_id: required
+  current_goal: required
+  dietary_constraints: required
+  allergies: optional
+  budget_limit_brl: optional
+  preferred_flavor: optional
+  catalog_snapshot_id: required
+  inventory_snapshot_id: required
+input_rules:
+  current_message_overrides_persisted_preferences: true
+  safety_constraints_override_preferences: true
+  catalog_snapshot_required: true
+success_rules:
+  minimum_recommendations: slot_or_default
+  target_recommendations: slot_or_default
+  every_product_must_be_in_stock: true
+  every_product_must_respect_dietary_constraints: true
+failure_rules:
+  no_match: ask_to_relax_negotiable_constraint
+  safety_ambiguity: ask_clarifying_question_or_escalate
+  customer_changes_goal: create_new_contract
+```
+
+Esse template não é o contract de João.
+
+É o molde.
+
+O contract de João nasce quando slots recebem valores e o Evaluator aceita a versão ativa.
+
+### Reutilização sem generalização vazia
+
+O risco de templates é ficar genérico demais.
+
+Um template que serve para tudo geralmente não protege nada.
+
+Product Discovery e Checkout têm riscos diferentes.
+
+Product Discovery lida com fit, restrição e estoque.
+
+Checkout lida com consentimento, preço final, pagamento e endereço.
+
+Support lida com histórico, tom e escalation.
+
+Templates devem compartilhar conceitos, não critérios cegamente.
+
+A biblioteca ideal tem vocabulário comum e policies específicas.
+
+Isso permite reuso sem apagar diferença de domínio.
+
+---
+
+## 🔬 Theory & First Principles
+
+Sprint Contracts funcionam porque atacam um problema fundamental de coordenação.
+
+Agentes não compartilham intenção da mesma forma que humanos em uma sala.
+
+Mesmo humanos falham nisso.
+
+A frase "todo mundo sabe o que pronto significa" quase sempre é falsa.
+
+Em sistemas de IA, é mais falsa ainda.
+
+O contract existe porque significado operacional precisa ser externalizado.
+
+### Common knowledge problem
+
+Common knowledge não é apenas algo que todos sabem.
+
+É algo que todos sabem, todos sabem que todos sabem, e todos sabem que todos sabem que todos sabem.
+
+Em uma equipe humana pequena, isso às vezes surge pela convivência.
+
+Mesmo assim, falha.
+
+Em agentes, não surge automaticamente.
+
+O Generator pode interpretar "boa recomendação" como melhor fit nutricional.
+
+O Evaluator pode interpretar como menor risco de reclamação.
+
+O harness pode interpretar como resposta dentro do token budget.
+
+O cliente pode interpretar como produto que respeita budget.
+
+Todos usam a mesma palavra.
+
+Ninguém compartilha exatamente o mesmo significado.
+
+Sprint Contract cria common knowledge artificial.
+
+Ele coloca o significado fora da cabeça dos participantes.
+
+Agora todos podem apontar para o mesmo artefato.
+
+Isso reduz coordenação implícita.
+
+### Contract como coordination artifact
+
+Um coordination artifact é um objeto que permite trabalho conjunto sem alinhamento constante.
+
+Mapas são coordination artifacts.
+
+Tickets de cozinha são coordination artifacts.
+
+Pull requests são coordination artifacts.
+
+Runbooks são coordination artifacts.
+
+Sprint Contracts entram nessa família.
+
+Eles permitem que Generator, Evaluator, harness e humano compartilhem estado de compromisso.
+
+O artefato não precisa conter tudo.
+
+Precisa conter o suficiente para coordenar decisão.
+
+Essa é a diferença entre documentação e contract.
+
+Documentação explica.
+
+Contract governa.
+
+Se o artefato não muda comportamento, ele ainda é documentação.
+
+Quando muda execução, verificação e failure handling, ele vira contract.
+
+### Redução de custo de coordenação
+
+Coordenação custa tokens.
+
+Custa latência.
+
+Custa atenção humana.
+
+Custa retrabalho.
+
+Sem contract, cada etapa precisa reinterpretar intenção.
+
+O Generator interpreta.
+
+O Evaluator reinterpreta.
+
+O humano reinterpreta no debug.
+
+O próximo sprint reinterpreta o resumo.
+
+Cada reinterpretação é chance de drift.
+
+Com contract, a interpretação principal acontece uma vez, antes da execução.
+
+Depois o sistema referencia o artefato.
+
+Isso não elimina custo.
+
+Move custo para o início.
+
+Esse movimento é vantajoso quando erro tardio é caro.
+
+Em Product Discovery, erro tardio pode quebrar confiança.
+
+Em Checkout, erro tardio pode virar cobrança errada.
+
+Em Fulfillment, erro tardio pode virar promessa falsa de entrega.
+
+Contracts são investimento contra custo de desalinhamento.
+
+### Specificity vs autonomy
+
+Há uma tensão central em Sprint Contracts.
+
+Quanto mais específico o contract, menor a chance de interpretação errada.
+
+Quanto mais específico, menor a autonomia do agente.
+
+Quanto mais aberto o contract, maior a autonomia.
+
+Quanto mais aberto, maior o risco de drift.
+
+O ponto ideal depende do risco.
+
+Para restrição alimentar, especificidade alta.
+
+Para tom de mensagem, autonomia maior.
+
+Para preço final de checkout, especificidade alta.
+
+Para explicação consultiva, autonomia moderada.
+
+Para brainstorming interno, autonomia alta.
+
+Essa calibragem é design.
+
+Não existe resposta universal.
+
+O erro de times iniciantes é tratar todos os critérios com a mesma força.
+
+Um contract maduro diferencia invariants, preferences e guidance.
+
+Invariants não podem ser violados.
+
+Preferences podem ser negociadas.
+
+Guidance orienta qualidade sem bloquear todo output.
+
+### Incentivos e accountability
+
+Sprint Contracts também mudam incentivos.
+
+O Generator sabe que será avaliado contra criteria explícitos.
+
+Isso reduz a tendência de produzir resposta bonita mas inválida.
+
+O Evaluator sabe que aceitou o contract.
+
+Isso reduz a tendência de inventar critérios depois.
+
+O harness sabe qual estado deve avançar.
+
+Isso reduz decisões escondidas no código.
+
+A equipe sabe qual versão estava ativa.
+
+Isso reduz blame difuso.
+
+Accountability não significa procurar culpado.
+
+Significa conseguir dizer qual parte do sistema precisa melhorar.
+
+Se o contract era ambíguo, melhore contract.
+
+Se o Generator violou criteria claro, melhore execução.
+
+Se o Evaluator aprovou errado, melhore evaluation.
+
+Se failure handling não cobriu caso real, melhore template.
+
+Sem contract, tudo vira "o agente errou".
+
+Com contract, erro ganha anatomia.
+
+### O primeiro princípio prático
+
+O primeiro princípio prático é simples.
+
+Defina a promessa antes de gastar tokens tentando cumpri-la.
+
+Essa frase resume o padrão.
+
+Ela também resume a maturidade de long-running agents.
+
+Agentes que trabalham por horas não falham apenas porque esquecem.
+
+Falham porque compromissos ficam implícitos.
+
+Sprint Contracts tornam compromissos explícitos, verificáveis e evolutivos.
+
+Essa é a ponte entre intenção humana e execução autônoma.
+
 
 ---
 
