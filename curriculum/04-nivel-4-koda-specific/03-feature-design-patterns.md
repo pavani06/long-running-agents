@@ -1268,1294 +1268,268 @@ KODA vai merecer confiança.
 
 ---
 
-### Caderno de Revisão Avançada
-As linhas abaixo consolidam decisões de design que aparecem repetidamente quando o time cria features KODA em produção.
-Cada item é uma pergunta ou regra que pode ser usada em review técnico real.
-- Revisão avançada 01 — **Contract:** verifique se cada campo obrigatório tem fonte explícita e freshness definida.
-- Revisão avançada 02 — **Contract:** rejeite contratos que dependem de texto livre quando o pipeline precisa de campo estruturado.
-- Revisão avançada 03 — **Contract:** mantenha business_goal curto para evitar feature com objetivo difuso.
-- Revisão avançada 04 — **Input:** separe preferência durável de preferência momentânea para evitar recomendações antigas.
-- Revisão avançada 05 — **Input:** exija catalog_snapshot fresco quando preço ou estoque aparecerem na mensagem.
-- Revisão avançada 06 — **Input:** inclua journey_state para impedir growth action durante suporte.
-- Revisão avançada 07 — **Input:** inclua offer_history em qualquer feature que possa repetir sugestão.
-- Revisão avançada 08 — **Input:** inclua risk_register quando suplemento, saúde ou restrição alimentar estiverem em jogo.
-- Revisão avançada 09 — **Output:** mantenha customer_message_draft separado de candidate_action.
-- Revisão avançada 10 — **Output:** inclua evidence com fonte para cada claim comercial.
-- Revisão avançada 11 — **Output:** inclua risk_flags mesmo quando Generator acha que está seguro.
-- Revisão avançada 12 — **Output:** inclua state_updates propostos, mas não persista antes de approval.
-- Revisão avançada 13 — **Generator:** limite candidatos antes de chamar modelo para respeitar token budget.
-- Revisão avançada 14 — **Generator:** gere alternativas com trade-offs diferentes, não variações superficiais.
-- Revisão avançada 15 — **Generator:** registre incerteza como dado estruturado.
-- Revisão avançada 16 — **Generator:** nunca transforme falta de dado em afirmação confiante.
-- Revisão avançada 17 — **Evaluator:** trate safety como hard gate, não apenas peso de score.
-- Revisão avançada 18 — **Evaluator:** retorne rejection_code estável para métricas e dashboards.
-- Revisão avançada 19 — **Evaluator:** escreva feedback acionável para retry.
-- Revisão avançada 20 — **Evaluator:** diferencie REJECTED de DEFERRED para não descartar oportunidade boa fora de hora.
-- Revisão avançada 21 — **Rubric:** calibre pesos com conversas reais e revisão humana.
-- Revisão avançada 22 — **Rubric:** mantenha mínimos por dimensão para evitar média mascarando falha grave.
-- Revisão avançada 23 — **Rubric:** revise thresholds quando rejection_rate sobe sem melhora em qualidade.
-- Revisão avançada 24 — **Rubric:** registre score e justificativa para permitir auditoria posterior.
-- Revisão avançada 25 — **Trace:** grave feature_run_id em cada evento relacionado.
-- Revisão avançada 26 — **Trace:** registre input hash para proteger privacidade e manter replay possível.
-- Revisão avançada 27 — **Trace:** registre primeiro erro, não apenas erro final.
-- Revisão avançada 28 — **Trace:** mantenha timestamps suficientes para debugar latência.
-- Revisão avançada 29 — **State:** persista apenas decisões aprovadas e fatos duráveis.
-- Revisão avançada 30 — **State:** expire fatos transitórios como objeção momentânea quando a jornada mudar.
-### Biblioteca de Cenários de Treino
-- Cenário de treino 001: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 002: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 003: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 004: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 005: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 006: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 007: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 008: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 009: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 010: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 011: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 012: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 013: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 014: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 015: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 016: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 017: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 018: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 019: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 020: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 021: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 022: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 023: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 024: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 025: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 026: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 027: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 028: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 029: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 030: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 031: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 032: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 033: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 034: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 035: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 036: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 037: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 038: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 039: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 040: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 041: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 042: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 043: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 044: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 045: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 046: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 047: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 048: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 049: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 050: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 051: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 052: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 053: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 054: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 055: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 056: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 057: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 058: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 059: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 060: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 061: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 062: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 063: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 064: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 065: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 066: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 067: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 068: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 069: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 070: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 071: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 072: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 073: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 074: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 075: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 076: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 077: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 078: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 079: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 080: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 081: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 082: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 083: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 084: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 085: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 086: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 087: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 088: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 089: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 090: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 091: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 092: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 093: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 094: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 095: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 096: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 097: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 098: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 099: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 100: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 101: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 102: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 103: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 104: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 105: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 106: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 107: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 108: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 109: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 110: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-- Cenário de treino 111: Cliente pede whey barato, mas tem intolerância à lactose. Resultado esperado: Product Recommendation deve escolher produto sem lactose e dentro do orçamento.
-- Cenário de treino 112: Cliente quer checkout rápido depois de comparar três marcas. Resultado esperado: Upsell deve ficar DEFERRED para não atrasar decisão.
-- Cenário de treino 113: Cliente reclama que entrega anterior atrasou. Resultado esperado: Feature comercial deve ceder lugar para suporte e confiança.
-- Cenário de treino 114: Cliente aceita produto premium e pergunta se precisa de mais alguma coisa. Resultado esperado: Upsell pode sugerir complemento relevante com tom consultivo.
-- Cenário de treino 115: Cliente cita orientação médica contra estimulantes. Resultado esperado: Safety Guard bloqueia pré-treino estimulante e sugere alternativa segura.
-- Cenário de treino 116: Cliente abandona carrinho e volta no dia seguinte. Resultado esperado: Reengagement confirma disponibilidade sem pressão.
-- Cenário de treino 117: Cliente usa cupom e clube ao mesmo tempo. Resultado esperado: Feature de desconto valida cumulatividade antes de exibir preço.
-- Cenário de treino 118: Cliente troca orçamento no meio da conversa. Resultado esperado: State distingue preferência recente de orçamento antigo.
-- Cenário de treino 119: Catálogo fica indisponível por alguns segundos. Resultado esperado: Feature abstém e KODA comunica que vai verificar antes de recomendar.
-- Cenário de treino 120: Evaluator rejeita três tentativas seguidas. Resultado esperado: Pipeline escala para humano com trace e rejection codes.
-### Rubrics de Referência por Feature
-- Rubric referência 01: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 02: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 03: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 04: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 05: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 06: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 07: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 08: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 09: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 10: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 11: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 12: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 13: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 14: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 15: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 16: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 17: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 18: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 19: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 20: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 21: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 22: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 23: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 24: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 25: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 26: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 27: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 28: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 29: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 30: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 31: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 32: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 33: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 34: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 35: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 36: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 37: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 38: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 39: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 40: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 41: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 42: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 43: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 44: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 45: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 46: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 47: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 48: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 49: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 50: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 51: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 52: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 53: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 54: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-- Rubric referência 55: **Product Recommendation** usa safety 35%, goal_fit 25%, budget_fit 15%, clarity 15%, choice_quality 10%.
-- Rubric referência 56: **Contextual Upsell** usa timing 25%, relevance 25%, trust_preservation 25%, commercial_value 15%, clarity 10%.
-- Rubric referência 57: **Cart Reengagement** usa usefulness 30%, timing 25%, freshness 20%, tone 15%, actionability 10%.
-- Rubric referência 58: **Safety Guard** usa safety 60%, clarity 20%, escalation_quality 10%, empathy 10%.
-- Rubric referência 59: **Discount Explanation** usa price_accuracy 40%, policy_fit 25%, clarity 20%, fairness 15%.
-- Rubric referência 60: **Fulfillment Promise** usa eta_accuracy 35%, inventory_confidence 25%, partner_availability 20%, customer_clarity 20%.
-### Anti-Patterns que Quebram Features KODA
-- Anti-pattern 01: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 02: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 03: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 04: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 05: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 06: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 07: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 08: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 09: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 10: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 11: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 12: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 13: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 14: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 15: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 16: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 17: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 18: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 19: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 20: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 21: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 22: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 23: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 24: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 25: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 26: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 27: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 28: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 29: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 30: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 31: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 32: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 33: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 34: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 35: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 36: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 37: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 38: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 39: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 40: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 41: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 42: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 43: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 44: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 45: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 46: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 47: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 48: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 49: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 50: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 51: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 52: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 53: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 54: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 55: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 56: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 57: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 58: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 59: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 60: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 61: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 62: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 63: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 64: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 65: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 66: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 67: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 68: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 69: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 70: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 71: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 72: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 73: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 74: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 75: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 76: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 77: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 78: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 79: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 80: **Feature sem owner** — ninguém responde quando incidente aparece.
-- Anti-pattern 81: **Prompt-only feature** — parece rápida, mas não tem contract, trace nem state policy.
-- Anti-pattern 82: **Evaluator decorativo** — aprova quase tudo e não protege contra self-evaluation collapse.
-- Anti-pattern 83: **Contract sem tests** — documenta promessa que ninguém verifica.
-- Anti-pattern 84: **State update otimista** — grava ação antes do Evaluator aprovar.
-- Anti-pattern 85: **Trace raso** — registra resultado final, mas não registra decisão intermediária.
-- Anti-pattern 86: **Rubric média-cega** — média alta esconde falha crítica em safety.
-- Anti-pattern 87: **Upsell insistente** — aumenta attach_rate no curto prazo e destrói trust no longo prazo.
-- Anti-pattern 88: **Token budget infinito** — copia catálogo inteiro e degrada resposta em conversa longa.
-- Anti-pattern 89: **Fallback silencioso** — troca produto rejeitado sem registrar motivo.
-- Anti-pattern 90: **Feature sem owner** — ninguém responde quando incidente aparece.
-### Checklist de Readiness para Produção
-- Readiness 001: Feature flag criada e documentada.
-- Readiness 002: Rollback testado em staging.
-- Readiness 003: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 004: Alertas definidos para violation de safety.
-- Readiness 005: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 006: Rubric revisada por engenharia e produto.
-- Readiness 007: Suporte treinado para ler rejection_code básico.
-- Readiness 008: Owner definido para incidentes.
-- Readiness 009: Canary inicial limitado a público de baixo risco.
-- Readiness 010: Decision log atualizado com trade-offs aceitos.
-- Readiness 011: Feature flag criada e documentada.
-- Readiness 012: Rollback testado em staging.
-- Readiness 013: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 014: Alertas definidos para violation de safety.
-- Readiness 015: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 016: Rubric revisada por engenharia e produto.
-- Readiness 017: Suporte treinado para ler rejection_code básico.
-- Readiness 018: Owner definido para incidentes.
-- Readiness 019: Canary inicial limitado a público de baixo risco.
-- Readiness 020: Decision log atualizado com trade-offs aceitos.
-- Readiness 021: Feature flag criada e documentada.
-- Readiness 022: Rollback testado em staging.
-- Readiness 023: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 024: Alertas definidos para violation de safety.
-- Readiness 025: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 026: Rubric revisada por engenharia e produto.
-- Readiness 027: Suporte treinado para ler rejection_code básico.
-- Readiness 028: Owner definido para incidentes.
-- Readiness 029: Canary inicial limitado a público de baixo risco.
-- Readiness 030: Decision log atualizado com trade-offs aceitos.
-- Readiness 031: Feature flag criada e documentada.
-- Readiness 032: Rollback testado em staging.
-- Readiness 033: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 034: Alertas definidos para violation de safety.
-- Readiness 035: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 036: Rubric revisada por engenharia e produto.
-- Readiness 037: Suporte treinado para ler rejection_code básico.
-- Readiness 038: Owner definido para incidentes.
-- Readiness 039: Canary inicial limitado a público de baixo risco.
-- Readiness 040: Decision log atualizado com trade-offs aceitos.
-- Readiness 041: Feature flag criada e documentada.
-- Readiness 042: Rollback testado em staging.
-- Readiness 043: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 044: Alertas definidos para violation de safety.
-- Readiness 045: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 046: Rubric revisada por engenharia e produto.
-- Readiness 047: Suporte treinado para ler rejection_code básico.
-- Readiness 048: Owner definido para incidentes.
-- Readiness 049: Canary inicial limitado a público de baixo risco.
-- Readiness 050: Decision log atualizado com trade-offs aceitos.
-- Readiness 051: Feature flag criada e documentada.
-- Readiness 052: Rollback testado em staging.
-- Readiness 053: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 054: Alertas definidos para violation de safety.
-- Readiness 055: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 056: Rubric revisada por engenharia e produto.
-- Readiness 057: Suporte treinado para ler rejection_code básico.
-- Readiness 058: Owner definido para incidentes.
-- Readiness 059: Canary inicial limitado a público de baixo risco.
-- Readiness 060: Decision log atualizado com trade-offs aceitos.
-- Readiness 061: Feature flag criada e documentada.
-- Readiness 062: Rollback testado em staging.
-- Readiness 063: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 064: Alertas definidos para violation de safety.
-- Readiness 065: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 066: Rubric revisada por engenharia e produto.
-- Readiness 067: Suporte treinado para ler rejection_code básico.
-- Readiness 068: Owner definido para incidentes.
-- Readiness 069: Canary inicial limitado a público de baixo risco.
-- Readiness 070: Decision log atualizado com trade-offs aceitos.
-- Readiness 071: Feature flag criada e documentada.
-- Readiness 072: Rollback testado em staging.
-- Readiness 073: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 074: Alertas definidos para violation de safety.
-- Readiness 075: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 076: Rubric revisada por engenharia e produto.
-- Readiness 077: Suporte treinado para ler rejection_code básico.
-- Readiness 078: Owner definido para incidentes.
-- Readiness 079: Canary inicial limitado a público de baixo risco.
-- Readiness 080: Decision log atualizado com trade-offs aceitos.
-- Readiness 081: Feature flag criada e documentada.
-- Readiness 082: Rollback testado em staging.
-- Readiness 083: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 084: Alertas definidos para violation de safety.
-- Readiness 085: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 086: Rubric revisada por engenharia e produto.
-- Readiness 087: Suporte treinado para ler rejection_code básico.
-- Readiness 088: Owner definido para incidentes.
-- Readiness 089: Canary inicial limitado a público de baixo risco.
-- Readiness 090: Decision log atualizado com trade-offs aceitos.
-- Readiness 091: Feature flag criada e documentada.
-- Readiness 092: Rollback testado em staging.
-- Readiness 093: Dashboard com approval_rate, rejection_rate e complaint_rate.
-- Readiness 094: Alertas definidos para violation de safety.
-- Readiness 095: Trace replay validado em pelo menos dez conversas simuladas.
-- Readiness 096: Rubric revisada por engenharia e produto.
-- Readiness 097: Suporte treinado para ler rejection_code básico.
-- Readiness 098: Owner definido para incidentes.
-- Readiness 099: Canary inicial limitado a público de baixo risco.
-- Readiness 100: Decision log atualizado com trade-offs aceitos.
-### Mini-Glossário Operacional
-- **feature contract:** contrato versionado que define promessa operacional da feature.
-- **input contract:** estrutura de dados que a feature exige para rodar sem adivinhar.
-- **output contract:** estrutura que a feature promete entregar ao pipeline seguinte.
-- **Generator:** componente que cria proposta dentro do contrato.
-- **Evaluator:** componente que avalia proposta contra contract, constraints e rubric.
-- **rubric:** sistema de pontuação multi-dimensional para qualidade.
-- **trace:** registro estruturado de eventos e decisões.
-- **pipeline:** sequência de etapas que transforma mensagem do cliente em ação segura.
-- **context window:** limite de tokens disponível para o modelo processar de uma vez.
-- **token budget:** orçamento explícito de tokens para input, geração, avaliação e resposta.
-- **harness:** estrutura de suporte que guia, valida e observa o agente.
-- **Sprint Contract:** promessa entre etapas ou módulos em um ciclo de execução.
 ---
 
+### Aprofundamento: Design de Contracts para Features Complexas
+Nem toda feature é independente. Algumas features precisam coordenar múltiplos passos — como um checkout completo que envolve validação de estoque, cálculo de frete, aplicação de desconto e processamento de pagamento. Para esses casos, o contrato precisa evoluir.
+
+#### Contratos com Dependências
+
+Quando uma feature depende do output de outra, o contrato deve declarar explicitamente:
+
+```json
+{
+  "feature_contract": {
+    "feature_name": "checkout_completo",
+    "dependencies": {
+      "requires": [
+        {"feature": "product_recommendation", "output_field": "recommendations", "min_version": "2.3.0"},
+        {"feature": "customer_context_loader", "output_field": "customer_context", "min_version": "1.0.0"}
+      ],
+      "optional": [
+        {"feature": "upsell", "output_field": "suggestions"}
+      ]
+    }
+  }
+}
+```
+
+Isso permite que o Feature Router valide não apenas o input da feature atual, mas também que todas as dependências foram satisfeitas antes da execução.
+
+#### Contratos com Timeouts e Degradação
+
+Features que dependem de APIs externas precisam de contratos que especifiquem comportamento sob falha:
+
+- **Timeout:** Se o catálogo não responder em 2 segundos, usar cache da última hora
+- **Degradação:** Se o serviço de frete estiver indisponível, exibir "frete a calcular" em vez de bloquear o checkout
+- **Fallback:** Se o Evaluator rejeitar 3 vezes, usar uma regra determinística como fallback
+
+O contrato deve declarar esses modos de operação:
+
+```json
+{
+  "resilience_contract": {
+    "timeout_ms": 2000,
+    "degraded_mode": {
+      "condition": "catalog_api_timeout",
+      "behavior": "use_cached_catalog",
+      "max_cache_age_seconds": 3600,
+      "client_message": "Estou verificando a disponibilidade mais recente..."
+    },
+    "fallback_mode": {
+      "condition": "evaluator_rejected_3x",
+      "behavior": "use_deterministic_rule",
+      "rule": "recommend_top_selling_in_category"
+    }
+  }
+}
+```
+
 ### Catálogo de Decisões de Design para Review Técnico
-Esta seção substitui intuição por perguntas concretas que um time pode usar em design review de features KODA.
-- Decisão de review 001: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 002: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 003: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 004: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 005: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 006: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 007: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 008: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 009: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 010: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 011: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 012: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 013: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 014: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 015: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 016: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 017: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 018: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 019: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 020: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 021: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 022: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 023: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 024: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 025: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 026: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 027: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 028: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 029: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 030: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 031: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 032: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 033: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 034: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 035: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 036: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 037: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 038: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 039: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 040: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 041: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 042: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 043: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 044: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 045: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 046: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 047: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 048: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 049: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 050: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 051: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 052: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 053: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 054: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 055: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 056: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 057: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 058: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 059: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 060: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 061: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 062: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 063: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 064: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 065: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 066: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 067: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 068: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 069: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 070: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 071: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 072: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 073: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 074: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 075: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 076: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 077: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 078: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 079: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 080: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 081: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 082: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 083: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 084: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 085: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 086: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 087: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 088: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 089: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 090: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 091: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 092: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 093: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 094: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 095: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 096: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 097: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 098: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 099: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 100: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 101: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 102: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 103: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 104: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 105: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 106: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 107: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 108: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 109: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 110: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 111: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 112: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 113: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 114: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 115: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 116: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 117: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 118: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 119: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 120: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 121: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 122: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 123: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 124: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 125: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 126: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 127: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 128: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 129: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 130: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 131: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 132: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 133: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 134: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 135: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 136: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 137: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 138: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 139: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 140: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 141: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 142: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 143: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 144: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 145: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 146: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 147: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 148: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 149: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 150: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 151: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 152: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 153: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 154: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 155: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 156: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 157: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 158: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 159: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 160: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 161: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 162: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 163: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 164: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 165: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 166: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 167: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 168: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 169: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 170: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 171: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 172: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 173: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 174: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 175: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 176: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 177: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 178: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 179: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 180: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 181: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 182: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 183: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 184: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 185: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 186: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 187: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 188: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 189: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 190: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-- Decisão de review 191: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante descoberta de produto; isso evita restrição alimentar ignorada, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 192: **Router** — confirme que candidates são poucos e justificados durante comparação de marcas; isso evita preço desatualizado, porque features demais competem por atenção e latência.
-- Decisão de review 193: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante decisão de compra; isso evita estoque antigo, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 194: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante checkout; isso evita upsell agressivo, porque clareza não pode violar privacidade.
-- Decisão de review 195: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pós-compra; isso evita oferta repetida, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 196: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante reclamação de entrega; isso evita trace incompleto, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 197: **Input contract** — confirme que cada campo obrigatório tem source explícito durante reengagement; isso evita state update prematuro, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 198: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante aplicação de cupom; isso evita rubric leniente, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 199: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante pedido com restrição alimentar; isso evita token budget estourado, porque garantia não verificável vira slogan.
-- Decisão de review 200: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pedido com orçamento apertado; isso evita mensagem confusa, porque conversão não compensa quebra de confiança.
-- Decisão de review 201: **Generator** — confirme que o Generator não envia resposta final sozinho durante descoberta de produto; isso evita restrição alimentar ignorada, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 202: **Evaluator** — confirme que rejection_code é específico e estável durante comparação de marcas; isso evita preço desatualizado, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 203: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante decisão de compra; isso evita estoque antigo, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 204: **Trace** — confirme que feature_run_id aparece em todos os eventos durante checkout; isso evita upsell agressivo, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 205: **State** — confirme que apenas APPROVED gera commit durável durante pós-compra; isso evita oferta repetida, porque estado otimista cria repetição e contradição.
-- Decisão de review 206: **Token budget** — confirme que catálogo foi pré-filtrado antes do modelo durante reclamação de entrega; isso evita trace incompleto, porque catálogo bruto consome context window sem melhorar decisão.
-- Decisão de review 207: **Router** — confirme que candidates são poucos e justificados durante reengagement; isso evita state update prematuro, porque features demais competem por atenção e latência.
-- Decisão de review 208: **Decision Merger** — confirme que só uma ação comercial primária chega ao WhatsApp durante aplicação de cupom; isso evita rubric leniente, porque mensagem com múltiplas vendas parece spam.
-- Decisão de review 209: **Message Composer** — confirme que texto final preserva evidence sem expor dados sensíveis durante pedido com restrição alimentar; isso evita token budget estourado, porque clareza não pode violar privacidade.
-- Decisão de review 210: **Testing** — confirme que há unit, integration, acceptance e evaluation tests durante pedido com orçamento apertado; isso evita mensagem confusa, porque uma camada sozinha não cobre feature KODA real.
-- Decisão de review 211: **Contract** — confirme que o contrato tem nome, versão, owner e business_goal testável durante descoberta de produto; isso evita restrição alimentar ignorada, porque sem identidade estável, incidentes ficam impossíveis de agrupar.
-- Decisão de review 212: **Input contract** — confirme que cada campo obrigatório tem source explícito durante comparação de marcas; isso evita preço desatualizado, porque sem source, o Generator começa a adivinhar.
-- Decisão de review 213: **Output contract** — confirme que mensagem, ação e state_updates estão separados durante decisão de compra; isso evita estoque antigo, porque sem separação, proposta rejeitada pode vazar para o cliente.
-- Decisão de review 214: **Guarantees** — confirme que cada guarantee pode virar teste ou trace check durante checkout; isso evita upsell agressivo, porque garantia não verificável vira slogan.
-- Decisão de review 215: **Constraints** — confirme que constraints de safety vencem objetivos comerciais durante pós-compra; isso evita oferta repetida, porque conversão não compensa quebra de confiança.
-- Decisão de review 216: **Generator** — confirme que o Generator não envia resposta final sozinho durante reclamação de entrega; isso evita trace incompleto, porque self-evaluation collapse volta quando geração e aprovação se misturam.
-- Decisão de review 217: **Evaluator** — confirme que rejection_code é específico e estável durante reengagement; isso evita state update prematuro, porque sem código, dashboard e retry ficam cegos.
-- Decisão de review 218: **Rubric** — confirme que safety tem hard gate quando há restrição crítica durante aplicação de cupom; isso evita rubric leniente, porque média ponderada não pode esconder risco de saúde.
-- Decisão de review 219: **Trace** — confirme que feature_run_id aparece em todos os eventos durante pedido com restrição alimentar; isso evita token budget estourado, porque sem correlação, replay vira caça ao tesouro.
-- Decisão de review 220: **State** — confirme que apenas APPROVED gera commit durável durante pedido com orçamento apertado; isso evita mensagem confusa, porque estado otimista cria repetição e contradição.
-### Casos de Borda que Devem Entrar no Banco de QA
-- Caso de borda 001: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 002: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 003: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 004: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 005: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 006: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 007: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 008: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 009: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 010: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 011: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 012: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 013: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 014: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 015: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 016: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 017: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 018: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 019: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 020: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 021: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 022: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 023: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 024: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 025: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 026: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 027: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 028: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 029: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 030: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 031: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 032: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 033: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 034: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 035: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 036: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 037: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 038: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 039: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 040: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 041: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 042: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 043: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 044: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 045: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 046: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 047: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 048: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 049: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 050: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 051: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 052: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 053: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 054: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 055: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 056: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 057: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 058: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 059: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 060: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 061: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 062: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 063: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 064: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 065: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 066: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 067: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 068: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 069: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 070: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 071: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 072: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 073: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 074: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 075: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 076: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 077: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 078: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 079: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 080: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 081: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 082: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 083: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 084: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 085: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 086: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 087: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 088: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 089: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 090: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 091: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 092: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 093: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 094: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 095: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 096: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 097: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 098: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 099: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 100: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 101: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 102: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 103: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 104: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 105: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 106: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 107: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 108: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 109: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 110: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 111: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 112: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 113: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 114: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 115: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 116: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 117: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 118: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 119: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 120: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 121: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 122: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 123: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 124: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 125: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 126: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 127: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 128: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 129: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 130: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 131: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 132: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 133: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 134: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 135: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 136: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 137: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 138: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 139: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 140: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 141: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 142: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 143: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 144: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 145: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 146: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 147: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 148: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 149: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 150: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 151: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 152: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 153: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 154: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 155: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 156: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 157: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 158: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 159: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 160: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 161: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 162: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 163: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 164: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 165: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 166: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 167: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 168: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 169: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 170: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 171: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 172: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 173: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 174: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 175: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 176: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 177: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 178: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 179: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 180: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 181: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 182: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 183: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 184: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 185: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 186: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 187: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 188: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 189: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 190: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 191: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 192: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 193: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 194: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 195: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 196: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 197: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 198: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 199: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 200: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 201: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 202: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 203: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 204: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 205: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 206: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 207: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 208: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 209: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 210: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-- Caso de borda 211: **Cliente declara sem lactose no início e esquece de repetir depois**. Feature foco: `product_recommendation`. Resultado esperado: state persistence deve manter restrição e Evaluator deve bloquear lactose.
-- Caso de borda 212: **Cliente muda orçamento de R$ 200 para R$ 120 no meio da conversa**. Feature foco: `contextual_upsell`. Resultado esperado: latest_customer_intent deve atualizar budget transitório e trace deve registrar mudança.
-- Caso de borda 213: **Cliente aceita whey, mas recusa creatina explicitamente**. Feature foco: `discount_explanation`. Resultado esperado: offer_history deve bloquear novo upsell de creatina nesta conversa.
-- Caso de borda 214: **Cliente pergunta por entrega antes de escolher produto**. Feature foco: `fulfillment_promise`. Resultado esperado: fulfillment feature deve responder disponibilidade geral sem prometer ETA específico.
-- Caso de borda 215: **Cliente reclama de cobrança duplicada**. Feature foco: `safety_guard`. Resultado esperado: support intent deve vencer features comerciais no Decision Merger.
-- Caso de borda 216: **Catálogo retorna produto sem campo lactose_free**. Feature foco: `product_recommendation`. Resultado esperado: Product Recommendation deve abstêr ou escalar em vez de assumir seguro.
-- Caso de borda 217: **Cupom do cliente não é cumulativo com clube**. Feature foco: `contextual_upsell`. Resultado esperado: Discount feature deve aplicar melhor desconto válido e explicar sem confusão.
-- Caso de borda 218: **Generator produz três opções, mas uma não tem evidence**. Feature foco: `discount_explanation`. Resultado esperado: Output contract validation deve falhar antes do Evaluator.
-- Caso de borda 219: **Evaluator rejeita top-1 por timing ruim**. Feature foco: `fulfillment_promise`. Resultado esperado: Decision Merger deve tentar top-2 ou DEFERRED, nunca enviar top-1.
-- Caso de borda 220: **Trace commit falha depois de mensagem pronta**. Feature foco: `safety_guard`. Resultado esperado: pipeline deve impedir envio se ação crítica não é auditável.
-### Frases de Feedback Úteis do Evaluator
-- Feedback Evaluator 001: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 002: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 003: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 004: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 005: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 006: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 007: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 008: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 009: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 010: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 011: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 012: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 013: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 014: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 015: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 016: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 017: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 018: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 019: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 020: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 021: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 022: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 023: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 024: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 025: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 026: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 027: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 028: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 029: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 030: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 031: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 032: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 033: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 034: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 035: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 036: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 037: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 038: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 039: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 040: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 041: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 042: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 043: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 044: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 045: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 046: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 047: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 048: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 049: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 050: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 051: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 052: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 053: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 054: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 055: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 056: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 057: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 058: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 059: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 060: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 061: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 062: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 063: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 064: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 065: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 066: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 067: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 068: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 069: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 070: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 071: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 072: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 073: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 074: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 075: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 076: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 077: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 078: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 079: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 080: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 081: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 082: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 083: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 084: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 085: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 086: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 087: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 088: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 089: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 090: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 091: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 092: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 093: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 094: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 095: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 096: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 097: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 098: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 099: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 100: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 101: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 102: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 103: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 104: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 105: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 106: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 107: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 108: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 109: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 110: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 111: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 112: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 113: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 114: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 115: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 116: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 117: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 118: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 119: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 120: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 121: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 122: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 123: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 124: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 125: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 126: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 127: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 128: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 129: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 130: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-- Feedback Evaluator 131: `RESTRICTION_CONFLICT` — Remova o SKU porque ele viola uma restrição persistida do cliente.
-- Feedback Evaluator 132: `STALE_CATALOG_SNAPSHOT` — Atualize o catalog_snapshot antes de gerar nova proposta.
-- Feedback Evaluator 133: `PRICE_OBJECTION_RECENT` — Adie o upsell porque houve objeção de preço nos últimos turnos.
-- Feedback Evaluator 134: `MISSING_EVIDENCE` — Inclua evidence para cada claim sobre preço, estoque ou compatibilidade.
-- Feedback Evaluator 135: `MESSAGE_TOO_LONG` — Reduza a mensagem para caber em leitura rápida de WhatsApp.
-- Feedback Evaluator 136: `REPEATED_OFFER` — Não repita oferta recusada sem mudança objetiva de contexto.
-- Feedback Evaluator 137: `UNMAPPED_HEALTH_RISK` — Escale para humano porque a condição informada não está mapeada no catálogo.
-- Feedback Evaluator 138: `LOW_GOAL_FIT` — Substitua o produto por opção mais alinhada ao objetivo declarado.
-- Feedback Evaluator 139: `WEAK_TIMING` — Marque DEFERRED e tente novamente após avanço na jornada.
-- Feedback Evaluator 140: `STATE_COMMIT_RISK` — Separe state_updates propostos de commits aprovados.
-### Métricas de Produção por Feature
-- Métrica 001: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 002: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 003: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 004: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 005: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 006: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 007: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 008: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 009: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 010: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 011: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 012: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 013: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 014: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 015: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 016: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 017: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 018: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 019: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 020: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 021: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 022: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 023: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 024: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 025: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 026: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 027: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 028: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 029: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 030: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 031: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 032: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 033: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 034: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 035: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 036: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 037: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 038: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 039: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 040: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 041: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 042: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 043: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 044: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 045: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 046: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 047: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 048: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 049: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 050: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 051: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 052: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 053: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 054: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 055: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 056: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 057: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 058: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 059: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 060: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 061: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 062: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 063: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 064: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 065: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 066: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 067: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 068: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 069: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 070: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 071: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 072: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 073: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 074: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 075: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 076: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 077: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 078: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 079: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 080: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 081: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 082: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 083: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 084: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 085: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 086: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 087: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 088: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 089: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 090: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 091: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 092: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 093: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 094: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 095: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 096: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 097: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 098: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 099: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 100: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 101: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 102: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 103: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 104: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 105: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 106: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 107: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 108: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 109: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 110: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 111: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 112: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 113: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 114: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 115: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 116: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 117: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 118: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 119: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 120: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 121: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 122: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 123: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 124: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 125: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 126: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 127: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 128: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 129: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 130: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-- Métrica 131: **Product Recommendation** acompanha `recommendation_accuracy`; mede se produto recomendado foi aceito sem devolução ou reclamação.
-- Métrica 132: **Product Recommendation** acompanha `restriction_violation_rate`; deve permanecer em zero para restrições críticas.
-- Métrica 133: **Contextual Upsell** acompanha `attach_rate`; mede aceitação de complemento sem confundir com pressão comercial.
-- Métrica 134: **Contextual Upsell** acompanha `upsell_complaint_rate`; alerta quando growth começa a ferir confiança.
-- Métrica 135: **Discount Explanation** acompanha `price_mismatch_rate`; mede diferença entre preço explicado e preço cobrado.
-- Métrica 136: **Fulfillment Promise** acompanha `eta_accuracy`; mede promessa de entrega contra entrega real.
-- Métrica 137: **Safety Guard** acompanha `human_review_rate`; mede quantos casos ambíguos exigiram humano.
-- Métrica 138: **Cart Reengagement** acompanha `helpful_return_rate`; mede retorno útil sem sensação de perseguição.
-- Métrica 139: **All Features** acompanha `trace_completeness`; mede decisões com replay possível.
-- Métrica 140: **All Features** acompanha `first_pass_approval_rate`; mede qualidade inicial do Generator.
-### Critérios de Prontidão para Aprovar uma Feature
-- Prontidão 001: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 002: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 003: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 004: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 005: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 006: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 007: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 008: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 009: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 010: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 011: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 012: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 013: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 014: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 015: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 016: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 017: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 018: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 019: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 020: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 021: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 022: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 023: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 024: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 025: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 026: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 027: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 028: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 029: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 030: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 031: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 032: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 033: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 034: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 035: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 036: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 037: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 038: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 039: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 040: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 041: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 042: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 043: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 044: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 045: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 046: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 047: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 048: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 049: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 050: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 051: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 052: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 053: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 054: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 055: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 056: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 057: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 058: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 059: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 060: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 061: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 062: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 063: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 064: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 065: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 066: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 067: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 068: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 069: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 070: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 071: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 072: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 073: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 074: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 075: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 076: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 077: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 078: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 079: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 080: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 081: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 082: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 083: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 084: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 085: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 086: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 087: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 088: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 089: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 090: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 091: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 092: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 093: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 094: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 095: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 096: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 097: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 098: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 099: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 100: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 101: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 102: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 103: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 104: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 105: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 106: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 107: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 108: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 109: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 110: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 111: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 112: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 113: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 114: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 115: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 116: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 117: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 118: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 119: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 120: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 121: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 122: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 123: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 124: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 125: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 126: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 127: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 128: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 129: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 130: confirme que decision log registra trade-offs aceitos antes do rollout.
-- Prontidão 131: confirme que feature flag existe, foi testada e tem owner operacional.
-- Prontidão 132: confirme que rollback foi ensaiado sem depender de deploy manual arriscado.
-- Prontidão 133: confirme que contract tests cobrem ausência de campos obrigatórios.
-- Prontidão 134: confirme que integration tests atravessam Router, Contract, Generator, Evaluator e Commit.
-- Prontidão 135: confirme que acceptance tests descrevem comportamento percebido pelo cliente.
-- Prontidão 136: confirme que rubric foi revisada por engenharia e produto.
-- Prontidão 137: confirme que traces de rejeição são legíveis por alguém fora do time autor.
-- Prontidão 138: confirme que dashboard mostra approval_rate, rejection_rate, latency e complaint_rate.
-- Prontidão 139: confirme que canary inicial limita exposição de clientes de alto risco.
-- Prontidão 140: confirme que decision log registra trade-offs aceitos antes do rollout.
+
+Quando o time revisa um Feature Contract, estas são as perguntas que Fernando faz:
+
+**Sobre o Input Contract:**
+- Todo campo obrigatório tem uma fonte de dados conhecida que existe em produção?
+- Campos opcionais têm defaults seguros ou a feature trata ausência explicitamente?
+- Dados sensíveis (saúde, financeiro) têm validação extra de frescor?
+- O input contract é compatível com o output contract do módulo upstream?
+
+**Sobre o Output Contract:**
+- Todo campo garantido como "never_null" realmente nunca pode ser null?
+- O formato do output é consumível pelo próximo módulo sem adaptação?
+- Métricas de latência e token budget são realistas para o modelo em uso?
+- O output inclui metadados suficientes para tracing (timestamp, version, generator_id)?
+
+**Sobre o Evaluator e Rubric:**
+- A dimensão de safety tem peso suficiente para bloquear recomendações perigosas?
+- O threshold de aprovação foi calibrado com dados reais ou é um número arbitrário?
+- Os códigos de rejeição são específicos o bastante para o Generator aprender com eles?
+- Existe um caso documentado onde HUMAN_REVIEW é a resposta correta?
+
+**Sobre Integração:**
+- A feature modifica estado persistente? Se sim, apenas após APPROVED?
+- A feature concorre com outras features pelo mesmo recurso (ex: token budget)?
+- O trace cobre o ciclo completo: input → generator → evaluator → verdict?
+- O rollback é possível sem corromper o estado de outras features?
+
+### Anti-Patterns que Quebram Features KODA
+
+Em produção, o time KODA já encontrou estes anti-patterns repetidamente. Evite-os:
+
+**Anti-Pattern 1: Contract After Code**
+O desenvolvedor implementa a feature inteira e só depois escreve o contrato — adaptando o contrato para justificar o que já foi feito. Resultado: contrato não protege nada, apenas documenta o que já existe.
+
+**Correção:** Escreva o contrato primeiro. Revise com o time. Só então implemente.
+
+**Anti-Pattern 2: Evaluator Que Sempre Aprova**
+O Evaluator foi escrito pelo mesmo desenvolvedor que escreveu o Generator. Ele "confia" no Generator e aprova 99% dos outputs. Resultado: sycophancy por procuração.
+
+**Correção:** O Evaluator deve ser escrito ou revisado por alguém que NÃO implementou o Generator. Ou use um rubric com dimensões objetivas que forçam verificação.
+
+**Anti-Pattern 3: Feature Monolítica**
+Uma única feature faz recomendação, upsell, aplica desconto E agenda follow-up. Resultado: impossível testar, impossível debugar, impossível desligar parcialmente.
+
+**Correção:** Uma feature = uma responsabilidade. Se precisa de 4 capacidades, crie 4 features com contratos independentes.
+
+**Anti-Pattern 4: Contrato Implícito**
+"O módulo de recomendação sempre retorna entre 1 e 5 produtos" — mas isso não está escrito em lugar nenhum. Um dia, alguém muda e retorna 10. O pipeline quebra silenciosamente.
+
+**Correção:** Toda expectativa entre módulos deve ser um contrato explícito, versionado e validado.
+
+**Anti-Pattern 5: Testes Só do Happy Path**
+Os testes cobrem apenas o cenário ideal: cliente com orçamento folgado, sem restrições, catálogo cheio. Primeiro cliente real com restrição de lactose quebra tudo.
+
+**Correção:** Os test_scenarios no contrato devem incluir: happy path, edge cases, falhas de dependência, dados ausentes, e o pior cenário razoável.
+
+**Anti-Pattern 6: Métrica Única de Sucesso**
+"O sucesso da feature é medido por taxa de conversão." Resultado: feature otimiza para vender a qualquer custo, inclusive recomendando produtos inadequados.
+
+**Correção:** Toda feature deve ter métricas balanceadas: conversão, satisfação, reclamação, taxa de devolução e trust_score.
+
+**Anti-Pattern 7: Deploy sem Shadow Mode**
+Feature nova vai direto para produção com clientes reais. Primeiro bug acontece com um cliente VIP.
+
+**Correção:** Shadow mode por 24-48h. Feature executa, gera traces, mas output não chega ao cliente. Só ative após métricas estáveis.
+
+### Casos de Borda que Todo Feature Contract Deve Cobrir
+
+Antes de aprovar um Feature Contract para produção, verifique se estes cenários estão cobertos:
+
+**Cenário 1: Cliente Muda de Ideia no Meio da Conversa**
+Cliente começa pedindo whey, depois decide que quer vegan, depois pergunta sobre preço. O estado da feature deve refletir a intenção MAIS RECENTE, não a primeira.
+
+**Cenário 2: Dados de Catálogo Desatualizados**
+O Generator recomenda um produto que estava em estoque há 10 minutos, mas agora está esgotado. O Evaluator deve verificar estoque EM TEMPO REAL, não confiar no cache do Generator.
+
+**Cenário 3: Restrição Não Documentada**
+Cliente nunca disse que é alérgico, mas o histórico de compras mostra que só compra produtos sem glúten. A feature deve inferir restrições implícitas? (Resposta: apenas se o contract explicitamente permitir inferência com confidence threshold.)
+
+**Cenário 4: Duas Features Conflitantes**
+Upsell sugere um produto, mas Safety Guard detecta que o cliente mencionou uma condição médica que contraindica esse produto. O Decision Merger deve priorizar Safety Guard sobre Upsell — e o contrato de Upsell deve declarar que respeita veto de Safety.
+
+**Cenário 5: Token Budget Estourado**
+A conversa já consumiu 80% da context window. A feature deve ser capaz de operar em modo reduzido (ex: 1 recomendação em vez de 5, menos explicação).
+
+**Cenário 6: Cliente Pede para Não Receber Sugestões**
+"Para de me oferecer coisas, só quero comprar isso." A feature NÃO deve insistir. Deve registrar a preferência e silenciar por um período configurável.
+
+**Cenário 7: Rollback de Funcionalidade**
+Uma feature em produção começa a causar reclamações. O feature flag permite desligá-la em segundos, não em horas. O contrato deve especificar o comportamento do sistema quando a feature é desligada (ex: pipeline pula a feature, sem efeitos colaterais).
+
+### Debugging e Troubleshooting de Features em Produção
+
+Quando uma feature falha em produção, o trace é seu melhor amigo. Mas você precisa saber LER o trace.
+
+#### Anatomia de um Trace de Feature
+
+```
+[2026-05-28 14:32:45.100] ROUTER: customer_id=wa_55119..., intent=product_recommendation
+[2026-05-28 14:32:45.150] CONTRACT_FEAT-001: input validated ✅
+[2026-05-28 14:32:45.200] GENERATOR_FEAT-001: started (model=claude-sonnet-4-6, temp=0.7)
+[2026-05-28 14:32:46.800] GENERATOR_FEAT-001: completed (tokens=847, candidates=8)
+[2026-05-28 14:32:46.850] CONTRACT_FEAT-001: output schema validated ✅
+[2026-05-28 14:32:46.900] EVALUATOR_FEAT-001: started (rubric_version=2.3)
+[2026-05-28 14:32:47.600] EVALUATOR_FEAT-001: verdict=REJECTED, score=3.2
+[2026-05-28 14:32:47.610] EVALUATOR_FEAT-001: issue=LACTOSE_VIOLATION (rec #1), severity=CRITICAL
+[2026-05-28 14:32:47.620] EVALUATOR_FEAT-001: issue=OVER_BUDGET (rec #3), severity=MEDIUM
+[2026-05-28 14:32:47.630] FEEDBACK: sent to generator (2 issues)
+[2026-05-28 14:32:47.700] GENERATOR_FEAT-001: retry #2 started
+[2026-05-28 14:32:48.900] GENERATOR_FEAT-001: completed (tokens=623, candidates=4)
+[2026-05-28 14:32:49.500] EVALUATOR_FEAT-001: verdict=APPROVED, score=8.7 ✅
+[2026-05-28 14:32:49.510] MERGER: feature output merged into response
+```
+
+#### Checklist de Debug
+
+Quando a feature falha, investigue nesta ordem:
+
+1. **O input era válido?** Verifique `CONTRACT_FEAT-xxx: input validated` — se falhou aqui, o problema está no módulo upstream.
+2. **O Generator produziu output?** Verifique `GENERATOR_FEAT-xxx: completed` — se não, é falha de API ou timeout.
+3. **O output passou na validação de schema?** Verifique `CONTRACT_FEAT-xxx: output schema validated` — se falhou, o Generator não respeitou o contrato.
+4. **O Evaluator aprovou ou rejeitou?** Verifique `EVALUATOR_FEAT-xxx: verdict` — se REJECTED, leia as issues.
+5. **As issues fazem sentido?** Se o Evaluator rejeitou por um motivo que parece errado, o problema pode estar no rubric (muito severo) ou nos dados do Evaluator (desatualizados).
+6. **O retry funcionou?** Se a segunda tentativa foi aprovada, o feedback loop funcionou — mas investigue por que a primeira falhou.
+7. **O merger integrou corretamente?** Verifique se o output da feature não conflitou com outras features.
+
+### Workflow de Time para Feature Design
+
+O time KODA desenvolveu um processo que funciona:
+
+#### Semana -2: Discovery
+- Product Manager descreve o problema de negócio (não a solução)
+- Time de engenharia faz spike técnico: é viável?
+- Identificar dependências e riscos
+
+#### Semana -1: Contract Design
+- 1-2 engenheiros escrevem o Feature Contract (apenas o JSON, sem código)
+- Review com todo o time: contrato faz sentido? Cobrimos edge cases?
+- Product Manager valida: os test_scenarios refletem o que o cliente deve experimentar?
+
+#### Semana 1: Implementação
+- Generator e Evaluator implementados em paralelo (por devs diferentes, idealmente)
+- Testes de contract escritos primeiro (TDD)
+- Testes de integração em seguida
+
+#### Semana 2: Shadow + Deploy
+- Feature em shadow mode por 48h
+- Métricas revisadas diariamente
+- Se approval_rate >= 80% e zero CRITICAL issues, ativar para 10% dos clientes (canary)
+- Após 72h de canary sem regressão, ativar para 100%
+
+#### Semana 3+: Monitoramento Contínuo
+- Dashboard com approval_rate, latency p50/p99, rejection_reasons
+- Alerta se approval_rate cair abaixo de 70%
+- Retrospectiva após 30 dias: a feature entregou o valor esperado?
+
+### Evolução de Features: Quando Refatorar vs. Reescrever
+
+Features evoluem. Mas COMO evoluem faz diferença:
+
+#### Quando Refatorar (Manter o FEAT-ID)
+
+- O contrato principal não muda (mesmos input/output garantidos)
+- A mudança é interna (otimização do Generator, ajuste de rubric)
+- Os módulos downstream não precisam ser alterados
+- Os testes existentes continuam válidos
+
+Exemplo: Ajustar o peso da dimensão "safety" de 0.25 para 0.30 no rubric.
+
+#### Quando Versionar (Manter FEAT-ID, Incrementar Versão)
+
+- O output contract ganha campos NOVOS (não quebra consumidores existentes)
+- Garantias são adicionadas (não removidas)
+- Changelog documenta a evolução
+
+Exemplo: Adicionar campo `confidence_interval` ao output, mantendo todos os campos anteriores.
+
+#### Quando Criar Nova Feature (Novo FEAT-ID)
+
+- O input contract muda de forma incompatível
+- Uma garantia existente é removida
+- O comportamento fundamental da feature muda
+- Módulos downstream precisariam ser reescritos
+
+Exemplo: Transformar "Product Recommendation" de recomendação única para recomendação comparativa com explicação de trade-offs.
+
+**Regra de Ouro:** Se você está mudando o que a feature PROMETE, está criando uma feature nova. Se está mudando COMO ela entrega a promessa, está refatorando.
+
+### Playbook de Resposta a Incidentes
+
+Quando uma feature causa um incidente em produção:
+
+1. **Contenção (0-5 min):** Desligar a feature via feature flag. Zero hesitação.
+2. **Diagnóstico (5-30 min):** Ler os traces das últimas decisões da feature. Identificar o padrão de falha.
+3. **Comunicação (30-60 min):** Reportar ao time: qual feature, qual falha, quantos clientes afetados, ação tomada.
+4. **Correção (1-4 horas):** Corrigir o contrato, generator ou evaluator. Testar contra o cenário que causou o incidente.
+5. **Reativação Controlada (4-24 horas):** Shadow mode → canary 1% → canary 10% → 100%.
+6. **Postmortem (24-72 horas):** Documentar: o que aconteceu, por que não foi detectado antes, o que muda no processo para evitar recorrência.
+
+NUNCA:
+- Corrigir em produção sem passar pelo ciclo de teste
+- Reativar sem shadow mode
+- Culpar o modelo ("a IA alucinou") — se a feature deixou passar, o contrato ou evaluator falhou
+
 ### Mini-Glossário Aplicado
 - **feature contract:** contrato versionado que define promessa operacional da feature no contexto do KODA.
 - **input contract:** estrutura de dados exigida antes de uma feature rodar no contexto do KODA.
