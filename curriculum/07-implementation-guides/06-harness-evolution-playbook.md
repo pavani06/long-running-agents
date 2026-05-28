@@ -271,13 +271,19 @@ def effective_trigger_rate(real_preventions: int, total_turns: int) -> float:
         return 0.0
     return real_preventions / total_turns
 
-context_loader_rate = effective_trigger_rate(
+# Preventions breakdown: 12 criticas + 47 nao-criticas = 59 total
+context_loader_rate_critica = effective_trigger_rate(
     real_preventions=12,
     total_turns=145000,
 )
+context_loader_rate_total = effective_trigger_rate(
+    real_preventions=59,
+    total_turns=145000,
+)
 
-print(f"Effective Trigger Rate: {context_loader_rate:.6%}")
-# Resultado esperado: 0.008276%
+print(f"Effective Trigger Rate (critica): {context_loader_rate_critica:.6%}")
+print(f"Effective Trigger Rate (total): {context_loader_rate_total:.6%}")
+# Resultado: 0.008% critica, 0.041% total
 ```
 
 Interprete assim:
@@ -432,9 +438,9 @@ O dashboard deve caber em uma tela. Se precisa de cinco abas para decidir, você
 ├──────────────────────┴──────────────────────┴──────────────────────────────┤
 │ RECOMENDAÇÃO DO DIAGNÓSTICO                                                  │
 │ REMOVE: Budget Guard                                                         │
-│ SIMPLIFY: Context Loader, Priority Extractor                                 │
+│ SIMPLIFY: Context Loader, Format Validator                                   │
 │ KEEP: Evaluator, Safety, Compliance, State Persistence                       │
-│ INVESTIGATE: Format Validator                                                │
+│ INVESTIGATE: Priority Extractor                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -446,8 +452,8 @@ O dashboard deve caber em uma tela. Se precisa de cinco abas para decidir, você
 | Budget Guard | 0% | 0 | R$ 300 | 0x | Baixa | Não | 92/100 | REMOVE |
 | Evaluator | 12.4% | 31 | R$ 2400 | 8.7x | Baixa | Sim | 15/100 | KEEP |
 | State Persistence | Sempre ativo | 0 | R$ 600 | Não aplicável | Baixa | Sim | 5/100 | KEEP |
-| Format Validator | 0.05% | 14 | R$ 120 | 1.3x | Média | Não | 54/100 | INVESTIGATE |
-| Priority Extractor | 0.02% | 81 | R$ 480 | 0.7x | Alta | Não | 75/100 | SIMPLIFY |
+| Format Validator | 0.05% | 14 | R$ 120 | 1.3x | Média | Não | 54/100 | SIMPLIFY |
+| Priority Extractor | 0.02% | 81 | R$ 480 | 0.7x | Alta | Não | 75/100 | INVESTIGATE |
 
 Score alto significa candidato forte a mudança. Score baixo significa manter.
 
@@ -579,9 +585,9 @@ harness_governance:
 | Ordem | Componente | Ação | Risco | Janela | Gate de avanço | Rollback |
 |-------|------------|------|-------|--------|----------------|----------|
 | 1 | Budget Guard | REMOVE | Baixo | Semanas 4 a 8 | Zero regressões em 14 dias | Flag `remove_budget_guard=false` |
-| 2 | Priority Extractor | SIMPLIFY | Médio | Semanas 9 a 10 | False positives caem 50% | Flag `priority_extractor_mode=full` |
+| 2 | Format Validator | SIMPLIFY | Baixo | Semanas 9 a 10 | Shadow test concluido | Flag `format_validator_mode=strict` |
 | 3 | Context Loader | SIMPLIFY | Médio | Próximo trimestre | Accuracy delta menor que 1% | Flag `context_loader_mode=full` |
-| 4 | Format Validator | INVESTIGATE | Médio | Próximo trimestre | Shadow test concluído | Sem alteração em prod |
+| 4 | Priority Extractor | INVESTIGATE | Médio | Próximo trimestre | Coletar metricas de redundancia | Sem alteração em prod |
 
 ### 📋 Passo 7: Prepare Comunicação para Stakeholders
 
@@ -663,7 +669,7 @@ feature_flags:
       enabled: false
       description: "Remove Budget Guard from the main KODA pipeline."
       owner: "conversational-core"
-      created_at: "2026-05-28"
+      created_at: "2025-11-01"
       rollback_value: false
       rollout:
         mode: percentage
@@ -939,6 +945,139 @@ alerts:
     action: "pause rollout and notify support owner"
 ```
 
+### ✅ Ferramentas e Automação
+
+A validação fica mais confiável quando os comandos são repetíveis. Esta seção mostra uma automação mínima para dashboard, alertas e cálculo de ROI. Use como referência para criar scripts reais no repositório do KODA.
+
+#### ✅ Criar Dashboard por Comando
+
+```bash
+koda dashboards create harness-budget-guard-removal \
+  --folder harness-evolution \
+  --owner conversational-core \
+  --source dashboards/templates/harness-removal.json
+```
+
+Depois configure as variáveis do dashboard.
+
+```bash
+koda dashboards set-var harness-budget-guard-removal component BudgetGuard
+koda dashboards set-var harness-budget-guard-removal flag harness_evolution.remove_budget_guard
+koda dashboards set-var harness-budget-guard-removal baseline_window 14d
+koda dashboards set-var harness-budget-guard-removal observation_window 14d
+```
+
+Painéis mínimos:
+
+| Painel | Query | Por que existe |
+|--------|-------|----------------|
+| Flag rollout | `feature_flag_percentage(remove_budget_guard)` | Confirma exposição real |
+| Incomplete responses | `rate(koda_incomplete_responses[15m])` | Sintoma principal de regressão |
+| Token budget exceeded | `rate(koda_token_budget_exceeded[15m])` | Sintoma específico do componente removido |
+| Latência p95 | `histogram_quantile(0.95, koda_turn_latency_ms)` | Confirma benefício esperado |
+| Support mentions | `count_support_tickets(labels=['incomplete_response'])` | Captura sinal humano |
+| Evaluator rejection | `rate(koda_evaluator_rejections[15m])` | Detecta efeito indireto |
+
+#### ✅ Criar Alertas por YAML
+
+```yaml
+alert_group: harness_evolution_budget_guard
+owner: conversational-core
+route: koda-platform-oncall
+alerts:
+  - name: incomplete_response_regression
+    query: "rate(koda_incomplete_responses[15m])"
+    baseline: "avg_over_time(koda_incomplete_responses[14d])"
+    condition: "current > baseline + 0.002"
+    for: "10m"
+    severity: page
+  - name: token_budget_exceeded_regression
+    query: "rate(koda_token_budget_exceeded[15m])"
+    baseline: "0"
+    condition: "current > 0.0005"
+    for: "10m"
+    severity: page
+  - name: support_ticket_spike
+    query: "support_ticket_rate(incomplete_response, 1h)"
+    baseline: "support_ticket_rate(incomplete_response, 14d)"
+    condition: "current > baseline * 1.25"
+    for: "1h"
+    severity: ticket
+```
+
+Aplicação:
+
+```bash
+koda alerts apply alerts/harness-evolution-budget-guard.yaml
+koda alerts test incomplete_response_regression --sample-window 2026-04-01T10:00:00Z/2026-04-01T11:00:00Z
+```
+
+#### ✅ Script de ROI para Revisão Trimestral
+
+```python
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class HarnessComponentMetrics:
+    name: str
+    real_preventions_90d: int
+    average_error_cost_brl: float
+    token_cost_brl_90d: float
+    maintenance_hours_90d: float
+    engineering_hour_cost_brl: float
+    latency_cost_brl_90d: float
+    debug_cost_brl_90d: float
+
+    @property
+    def protected_value(self) -> float:
+        return self.real_preventions_90d * self.average_error_cost_brl
+
+    @property
+    def operational_cost(self) -> float:
+        return (
+            self.token_cost_brl_90d
+            + self.maintenance_hours_90d * self.engineering_hour_cost_brl
+            + self.latency_cost_brl_90d
+            + self.debug_cost_brl_90d
+        )
+
+    @property
+    def roi(self) -> float:
+        if self.operational_cost == 0:
+            return float("inf")
+        return self.protected_value / self.operational_cost
+
+components = [
+    HarnessComponentMetrics("BudgetGuard", 0, 50, 600, 3, 100, 0, 0),
+    HarnessComponentMetrics("ContextLoader", 59, 50, 810, 3, 150, 200, 0),
+]
+
+for component in components:
+    print(component.name, round(component.roi, 2), component.operational_cost)
+```
+
+Saída esperada para revisão:
+
+```text
+BudgetGuard 0.0 900
+ContextLoader 2.02 1460
+```
+
+O exemplo preserva o ROI 2.0x do Context Loader e o ROI 0x do Budget Guard. O importante é manter a mesma janela para todos os componentes durante uma revisão real.
+
+#### ✅ Automação de Comparativo Antes e Depois
+
+```bash
+koda harness compare \
+  --component BudgetGuard \
+  --before 2026-04-01/2026-04-14 \
+  --after 2026-04-15/2026-04-29 \
+  --metrics incomplete_response_rate,token_budget_exceeded,latency_p95_ms,csat_proxy \
+  --output docs/harness-evolution/2026-q2-budget-guard-validation.md
+```
+
+Esse comando não substitui julgamento humano. Ele só evita copiar número manualmente e errar a baseline.
+
 ### ✅ Passo 3: Execute a Bateria de Regressão
 
 | Caso | Entrada | Saída esperada | Métrica protegida |
@@ -954,7 +1093,7 @@ alerts:
 {
   "post_removal_regression_result": {
     "component_removed": "BudgetGuard",
-    "executed_at": "2026-05-28T10:00:00Z",
+    "executed_at": "2026-04-15T10:00:00Z",
     "cases_total": 6,
     "cases_passed": 6,
     "cases_failed": 0,
@@ -1028,7 +1167,7 @@ metrics query 'rate(budget_guard.skipped_by_flag[5m])'
 Aceito
 
 ## Data
-2026-05-28
+2026-04-15
 
 ## Contexto
 Budget Guard foi criado quando o modelo principal tinha janela de 32K tokens. Ele protegia o KODA contra respostas incompletas causadas por estouro de contexto.
@@ -1118,23 +1257,538 @@ Aplicar o mesmo processo ao Priority Extractor, sem iniciar antes de fechar o re
 
 ## 🚀 Aplicação KODA: Walkthrough Completo de Remoção do Budget Guard
 
-Esta seção mostra uma execução concreta no KODA, do diagnóstico à celebração. O componente escolhido é Budget Guard porque ele é o melhor primeiro alvo: zero triggers em 180 dias, ROI 0x, baixo risco e rollback simples.
+Esta seção acompanha a remoção do Budget Guard como se você estivesse executando a wave dentro do time KODA. O objetivo é tirar a decisão do plano abstrato e mostrar o trabalho real: query, conversa, scorecard, comunicação, flag, canary, validação e arquivo.
 
-### 🩺 Diagnóstico KODA
+O componente escolhido é deliberadamente simples. Budget Guard teve zero triggers reais em 180 dias, ROI 0x e uma responsabilidade ligada a um limite de modelo que mudou de 32K para 200K tokens. Ele é o primeiro alvo correto porque permite treinar o processo sem tocar nos invariantes.
 
-Você abre o dashboard de 180 dias e confirma que `budget_guard.blocked` está em zero. O modelo atual tem janela de 200K tokens. Conversas típicas do KODA ficam em 50K tokens. O componente custa R$ 300 por mês entre tokens, manutenção e debug. A scorecard marca 92/100 para remoção.
+### 🩺 Diagnóstico KODA Detalhado
 
-### 📋 Planejamento KODA
+Você começa a manhã com duas abas abertas. A primeira é o dashboard de métricas do KODA. A segunda é o ADR antigo que criou o Budget Guard. Antes de falar com alguém, você quer saber se a história que o time conta sobre o componente ainda aparece nos dados.
 
-Você classifica Budget Guard como REMOVE. O roadmap coloca a remoção na Wave 1. Fernando aprova porque Safety, Compliance, Evaluator e State Persistence não mudam. Produto valida que não há mudança esperada para cliente.
+A pergunta inicial é direta: nos últimos 180 dias, quantas vezes o Budget Guard impediu uma resposta incompleta que chegaria ao cliente?
 
-### 🔧 Execução KODA
+```sql
+SELECT
+  component_name,
+  COUNT(*) AS executions,
+  SUM(CASE WHEN event_type = 'blocked' THEN 1 ELSE 0 END) AS blocks,
+  SUM(CASE WHEN event_type = 'real_prevention' THEN 1 ELSE 0 END) AS real_preventions,
+  SUM(CASE WHEN event_type = 'false_positive' THEN 1 ELSE 0 END) AS false_positives,
+  PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY latency_ms) AS p95_latency_ms
+FROM harness_component_events
+WHERE component_name = 'BudgetGuard'
+  AND created_at >= DATE '2025-11-01'
+  AND created_at < DATE '2026-05-01'
+GROUP BY component_name;
+```
 
-Você cria `remove_budget_guard`, roda shadow test, depois canary 5%, 25% e 100%. Durante todo o rollout, o dashboard observa `incomplete_response_rate`, `token_budget_exceeded`, `latency_p95_ms` e tickets de suporte.
+O resultado não deixa muito espaço para interpretação.
 
-### ✅ Validação KODA
+| Campo | Valor retornado |
+|-------|-----------------|
+| component_name | BudgetGuard |
+| executions | 8.702.114 |
+| blocks | 0 |
+| real_preventions | 0 |
+| false_positives | 0 |
+| p95_latency_ms | 38ms |
 
-Depois de 14 dias, incomplete responses ficam estáveis em 0.12%, token budget exceeded continua em 0%, latência p95 cai 250ms e nenhum ticket novo aparece. O código vai para `archive/components/budget-guard-v1/` com README e ADR.
+Você roda a segunda query para entender se o componente ao menos estava perto de disparar. Um componente pode não bloquear, mas ainda operar perto do threshold.
+
+```sql
+SELECT
+  DATE_TRUNC('week', created_at) AS week,
+  MAX(context_tokens) AS max_context_tokens,
+  AVG(context_tokens) AS avg_context_tokens,
+  MAX(context_window_tokens) AS model_window,
+  MAX(context_tokens * 1.0 / context_window_tokens) AS max_window_ratio
+FROM koda_turn_metrics
+WHERE created_at >= DATE '2025-11-01'
+  AND created_at < DATE '2026-05-01'
+GROUP BY 1
+ORDER BY 1;
+```
+
+A tela mostra que a conversa mais longa chegou a 72K tokens. O limite operacional do Budget Guard era 80% da janela de 200K, ou 160K tokens. A maior conversa real ficou em 36% da janela.
+
+| Semana | Max tokens | Média tokens | Janela do modelo | Maior uso da janela |
+|--------|------------|--------------|------------------|---------------------|
+| 2025-11-03 | 51.204 | 8.912 | 200.000 | 25.6% |
+| 2025-12-01 | 58.990 | 9.104 | 200.000 | 29.5% |
+| 2026-01-05 | 61.331 | 10.441 | 200.000 | 30.7% |
+| 2026-02-02 | 64.775 | 11.028 | 200.000 | 32.4% |
+| 2026-03-02 | 68.112 | 10.883 | 200.000 | 34.1% |
+| 2026-04-06 | 72.004 | 12.017 | 200.000 | 36.0% |
+
+A terceira query mede custo. O Budget Guard é barato comparado ao Context Loader, mas custo pequeno ainda é custo quando o valor é zero.
+
+```sql
+SELECT
+  SUM(extra_prompt_tokens) AS monthly_tokens,
+  SUM(extra_prompt_tokens) * 0.00015 AS estimated_brl,
+  SUM(latency_ms) / 1000.0 / 3600.0 AS latency_hours,
+  COUNT(DISTINCT trace_id) AS traces_touched
+FROM harness_component_costs
+WHERE component_name = 'BudgetGuard'
+  AND created_at >= DATE '2026-04-01'
+  AND created_at < DATE '2026-05-01';
+```
+
+| Métrica de custo | Valor de abril |
+|------------------|----------------|
+| Tokens extras | 1.333.420 |
+| Custo estimado de API | R$ 200 |
+| Horas acumuladas de latência | 92.4h distribuídas entre turns |
+| Custo de manutenção | 1h por mês, R$ 100 estimados |
+| Custo total usado no ROI | R$ 300 por mês |
+
+Você então chama Marina, tech lead do Conversational Core, para validar se a métrica está correta. A conversa importa porque dashboard sem contexto pode mentir.
+
+```text
+Você: Marina, o dashboard mostra zero blocks do Budget Guard em 180 dias. Isso bate com sua memória?
+
+Marina: Bate. Desde que migramos para janela de 200K, ninguém mencionou Budget Guard em incident review.
+
+Você: Existe algum caminho onde ele bloqueia sem registrar `blocked`?
+
+Marina: Não. O wrapper emite `budget_guard.blocked` antes de retornar resposta. Se não tem evento, não bloqueou.
+
+Você: E alguma proteção indireta? Algo como ajustar prompt, truncar histórico ou reduzir catálogo?
+
+Marina: Não mais. Isso ficou no History Compactor. Budget Guard só compara tokens contra limite e decide se bloqueia.
+
+Você: Então a responsabilidade atual é só detectar limite extremo?
+
+Marina: Exato. E esse limite extremo nunca chegou perto.
+
+Você: Se a gente remover com flag, qual seria o sintoma de regressão?
+
+Marina: `incomplete_response_rate`, `token_budget_exceeded` e tickets de cliente dizendo que KODA cortou resposta no meio.
+```
+
+Com isso, você preenche a scorecard ao vivo. Não é uma tabela para parecer técnico. É a decisão se tornando auditável.
+
+| Critério | Evidência | Pontuação |
+|----------|-----------|-----------|
+| Trigger efetivo | 0 prevenções reais em 180 dias | 20 de 20 |
+| ROI | 0x, porque valor protegido foi R$ 0 | 20 de 20 |
+| Redundância | Alertas agregados e History Compactor cobrem observação de contexto | 12 de 15 |
+| Risco de remoção | Baixo, não toca Safety, Compliance, Evaluator ou State Persistence | 15 de 15 |
+| Reversibilidade | Feature flag pode reativar em menos de 15 minutos | 15 de 15 |
+| Clareza de owner | Conversational Core assume flag e rollback | 5 de 5 |
+| Evidência de modelo | Janela atual 200K, conversas reais abaixo de 72K | 7 de 10 |
+| Custo | R$ 300 por mês e uma etapa a mais no pipeline | 5 de 5 |
+
+Score final: 99 de 105, convertido para 94/100. A recomendação é REMOVE.
+
+Você também registra o que não está sendo decidido. Isso evita que uma remoção simples vire precedente perigoso.
+
+| Fora do escopo | Motivo |
+|----------------|--------|
+| Remover Evaluator | Invariante de qualidade, não relacionado ao limite de contexto |
+| Remover State Persistence | Protege memória entre sessões e auditoria |
+| Remover Safety checks | Alergia e contraindicação são proteção de cliente |
+| Remover History Compactor | Ainda necessário para conversas acima de 2h |
+| Alterar prompt do Generator | Não é necessário para Budget Guard |
+
+O diagnóstico termina com uma frase que você escreve no relatório: "Budget Guard protege uma janela de contexto que o KODA não usa mais na prática".
+
+Essa frase é forte porque é específica. Ela não diz que o componente é ruim. Ela diz que a condição que justificava sua existência deixou de aparecer em produção.
+
+### 📋 Planejamento KODA Detalhado
+
+Com a scorecard pronta, você não vai direto para código. Você monta o plano de mudança. O primeiro artefato é uma matriz de risco preenchida com dados do KODA, não com categorias genéricas.
+
+| Risco | Probabilidade | Impacto | Evidência | Mitigação |
+|-------|---------------|---------|-----------|-----------|
+| Resposta incompleta em conversa longa | Baixa | Médio | Maior conversa real em 36% da janela | Alerta `incomplete_response_rate` |
+| Estouro de token budget sem bloqueio | Baixa | Médio | Zero `token_budget_exceeded` em 180 dias | Alerta específico em 10 minutos |
+| Regressão em cauda longa | Baixa | Alto | Poucas conversas acima de 60K tokens | Revisão manual de 100 traces longos |
+| Falha de rollback | Muito baixa | Alto | Feature flag central já usada em produção | Teste de rollback em staging |
+| Confusão do suporte | Média | Baixo | Mudança invisível para cliente | Mensagem prévia no canal de suporte |
+
+A feature flag precisa ser pequena e explícita. Nada de flag ampla como `new_harness_mode`. Uma flag ampla cria medo e rollback confuso.
+
+```yaml
+feature_flags:
+  harness_evolution:
+    remove_budget_guard:
+      enabled: false
+      owner: conversational-core
+      created_for: adr-remove-budget-guard
+      description: "Skip BudgetGuard in KODA main pipeline after 180 days with zero triggers."
+      rollout:
+        strategy: percentage
+        percentage: 0
+        sticky_key: conversation_id
+      rollback:
+        safe_value: false
+        expected_time_minutes: 15
+        owner_on_call: koda-platform-oncall
+      success_metrics:
+        incomplete_response_rate_delta_max: 0.002
+        token_budget_exceeded_rate_delta_max: 0.0005
+        latency_p95_delta_max_ms: 50
+      stop_metrics:
+        p0_or_p1_incident_count_min: 1
+        support_ticket_spike_multiplier: 1.25
+        evaluator_rejection_spike_multiplier: 1.10
+```
+
+Você escreve a comunicação para stakeholders em três versões. A primeira vai para engenharia.
+
+```markdown
+# Engenharia: Wave 1 de Harness Evolution
+
+Vamos remover Budget Guard do caminho principal do KODA usando feature flag.
+
+Evidência:
+- Zero blocks e zero prevenções reais em 180 dias.
+- Maior conversa real usou 36% da janela de contexto atual.
+- ROI 0x.
+- Rollback por flag em menos de 15 minutos.
+
+Escopo:
+- Muda apenas Budget Guard.
+- Não altera Evaluator.
+- Não altera State Persistence.
+- Não altera Safety ou Compliance.
+- Não altera prompts do Generator.
+
+Plano:
+- Shadow test em staging por 2 dias.
+- Canary 5% por 24 horas.
+- Canary 25% por 24 horas.
+- 100% com observação por 14 dias.
+```
+
+A segunda vai para produto.
+
+```markdown
+# Produto: Remoção Invisível de Componente Sem Uso
+
+Vamos retirar uma proteção antiga que não disparou nenhuma vez nos últimos 180 dias.
+
+Impacto esperado para cliente:
+- Nenhuma mudança de experiência.
+- Nenhuma mudança de tom do KODA.
+- Nenhuma mudança no fluxo de compra.
+- Possível redução pequena de latência.
+
+Como vamos proteger cliente:
+- Rollout gradual.
+- Monitoramento de resposta incompleta.
+- Monitoramento de tickets de suporte.
+- Rollback rápido por feature flag.
+```
+
+A terceira vai para suporte.
+
+```markdown
+# Suporte: Sintomas para Observar na Wave Budget Guard
+
+Durante a próxima wave, avisem no canal `#koda-harness-evolution` se aparecerem tickets com estes sintomas:
+
+- Cliente diz que a resposta veio cortada.
+- Cliente diz que KODA parou no meio de uma recomendação.
+- Cliente diz que KODA esqueceu parte longa da conversa.
+- Conversas acima de 2 horas parecem terminar sem conclusão.
+
+Não esperamos aumento desses casos. O objetivo é apenas ter olhos humanos no período de canary.
+```
+
+Fernando revisa e faz uma pergunta que parece simples: "E se der certo rápido?".
+
+A resposta correta é: ainda assim você observa 14 dias. Harness Evolution não recompensa pressa. Recompensa causalidade.
+
+O plano final entra no roadmap trimestral assim:
+
+| Semana | Ação | Owner | Gate |
+|--------|------|-------|------|
+| 1 | Diagnóstico e scorecard | Você | Recomendação REMOVE aprovada |
+| 2 | Feature flag e shadow test | Conversational Core | Shadow diff sem degradação |
+| 3 | Canary 5% e 25% | Platform on-call | Alertas limpos |
+| 4 | 100% e início da observação | Conversational Core | Sem P0/P1 |
+| 5 | Observação dias 1 a 7 | Suporte e Produto | Tickets estáveis |
+| 6 | Observação dias 8 a 14 | Engenharia | Métricas estáveis |
+| 7 | Archive e ADR | Você | Decisão documentada |
+
+### 🔧 Execução KODA Detalhada
+
+No dia da execução, você começa por staging. O primeiro comando não muda produção. Ele confirma que a flag existe, está desligada e tem owner.
+
+```bash
+koda flags get harness_evolution.remove_budget_guard
+```
+
+Saída esperada:
+
+```json
+{
+  "key": "harness_evolution.remove_budget_guard",
+  "enabled": false,
+  "percentage": 0,
+  "owner": "conversational-core",
+  "rollback_value": false
+}
+```
+
+Você ativa shadow test em staging.
+
+```bash
+koda shadow-tests start budget_guard_removal --env staging --duration 48h --sample 100
+```
+
+Depois roda a bateria de regressão específica.
+
+```bash
+npm run lint
+npm run test:unit
+koda test-harness run --suite long-context --component budget-guard-removal
+koda test-harness run --suite incomplete-response --component budget-guard-removal
+```
+
+O relatório de staging vem assim:
+
+| Suite | Casos | Passou | Falhou | Observação |
+|-------|-------|--------|--------|------------|
+| long-context | 24 | 24 | 0 | Maior fixture com 150K tokens respondeu completa |
+| incomplete-response | 18 | 18 | 0 | Nenhum truncamento detectado |
+| evaluator-safety | 31 | 31 | 0 | Safety inalterado |
+| checkout-regression | 22 | 22 | 0 | Fluxo de compra inalterado |
+
+O dashboard de staging mostra duas linhas sobrepostas. A linha azul é baseline com Budget Guard. A linha verde é candidate sem Budget Guard. Elas ficam idênticas em `incomplete_response_rate`. A linha verde fica levemente melhor em latência p95.
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ DASHBOARD: staging budget_guard_removal                       │
+├──────────────────────────────┬──────────────┬───────────────┤
+│ Métrica                      │ Baseline     │ Candidate     │
+├──────────────────────────────┼──────────────┼───────────────┤
+│ incomplete_response_rate     │ 0.00%        │ 0.00%         │
+│ token_budget_exceeded        │ 0            │ 0             │
+│ latency_p95_ms               │ 3910ms       │ 3868ms        │
+│ evaluator_rejection_rate     │ 6.8%         │ 6.8%          │
+└──────────────────────────────┴──────────────┴───────────────┘
+```
+
+No dia 1 de produção, você faz canary 5%.
+
+```bash
+koda flags set harness_evolution.remove_budget_guard.enabled true --env production
+koda flags set harness_evolution.remove_budget_guard.rollout.percentage 5 --env production
+koda flags audit harness_evolution.remove_budget_guard --last 10
+```
+
+Você anota o horário exato: 10h05. Isso importa para comparar gráficos.
+
+Às 11h05, a primeira hora está limpa.
+
+| Métrica | Baseline 14 dias | Canary 5% primeira hora | Status |
+|---------|------------------|--------------------------|--------|
+| incomplete_response_rate | 0.12% | 0.11% | Limpo |
+| token_budget_exceeded | 0.00% | 0.00% | Limpo |
+| latency_p95_ms | 4100ms | 4058ms | Melhor |
+| evaluator_rejection_rate | 6.8% | 6.9% | Dentro do threshold |
+| tickets de suporte | 3 por dia | 0 na primeira hora | Limpo |
+
+Às 18h00, você revisa 20 traces longos. Um deles tem 61K tokens e passa sem diferença. Você cola o resumo no canal da wave.
+
+```markdown
+Canary 5%: parcial de 8 horas
+- 31.204 turns no grupo candidate.
+- 0 token_budget_exceeded.
+- 0 incidentes.
+- p95 44ms melhor que baseline.
+- 20 traces longos revisados manualmente.
+- Recomendação: manter até completar 24h e avançar para 25% se noite ficar limpa.
+```
+
+No dia 2, às 10h10, o canary 5% completou 24 horas.
+
+```bash
+koda metrics compare \
+  --flag harness_evolution.remove_budget_guard \
+  --window 24h \
+  --baseline 14d
+```
+
+A comparação confirma estabilidade.
+
+| Métrica | Baseline | Candidate 5% | Delta | Gate |
+|---------|----------|--------------|-------|------|
+| incomplete_response_rate | 0.12% | 0.12% | 0.00% | Passou |
+| token_budget_exceeded | 0.00% | 0.00% | 0.00% | Passou |
+| latency_p95_ms | 4100ms | 4052ms | -48ms | Passou |
+| CSAT proxy | 88.0% | 88.1% | +0.1% | Passou |
+
+Você avança para 25%.
+
+```bash
+koda flags set harness_evolution.remove_budget_guard.rollout.percentage 25 --env production
+```
+
+No dashboard, a descrição visual é simples: nenhuma linha vermelha aparece, a linha de tráfego candidate sobe para 25%, e as métricas protegidas continuam grudadas na baseline.
+
+No dia 3, você encontra um ruído: evaluator rejection rate sobe de 6.8% para 7.1% por 40 minutos. O alerta não dispara porque o threshold é 10%, mas você investiga mesmo assim.
+
+```bash
+koda traces sample \
+  --where "flag.remove_budget_guard=true" \
+  --metric evaluator_rejection_rate \
+  --window 1h \
+  --limit 25
+```
+
+A análise mostra que os rejects vieram de uma promoção vencida no catálogo, não de contexto longo. Você registra como não relacionado.
+
+| Trace | Motivo da rejeição | Relacionado ao Budget Guard |
+|-------|--------------------|-----------------------------|
+| trc_8112 | Cupom expirado | Não |
+| trc_8177 | Estoque divergente | Não |
+| trc_8190 | Produto com lactose para cliente intolerante | Não, Safety funcionando |
+| trc_8244 | Preço promocional desatualizado | Não |
+
+No dia 4, você avança para 100%.
+
+```bash
+koda flags set harness_evolution.remove_budget_guard.rollout.percentage 100 --env production
+```
+
+Você não arquiva código nesse momento. O componente está fora do caminho principal, mas a decisão ainda está em observação.
+
+### ✅ Validação KODA Detalhada
+
+A validação começa no primeiro dia de 100%. Você cria três checkpoints formais: Dia 1, Dia 7 e Dia 14.
+
+#### ✅ Dia 1 de Observação
+
+| Métrica | Baseline | Dia 1 | Leitura |
+|---------|----------|-------|---------|
+| Turns processados | 482.110 | 489.004 | Volume normal |
+| incomplete_response_rate | 0.12% | 0.12% | Estável |
+| token_budget_exceeded | 0 | 0 | Estável |
+| latency_p95_ms | 4100ms | 3854ms | Melhorou 246ms |
+| evaluator_rejection_rate | 6.8% | 6.9% | Dentro do threshold |
+| tickets com resposta cortada | 3 por dia | 2 | Estável |
+
+Notas do dia 1:
+
+- Nenhum alerta disparou.
+- Suporte não reportou novo padrão de reclamação.
+- Os 10 maiores traces do dia ficaram abaixo de 74K tokens.
+- A flag permaneceu em 100% sem rollback.
+- Fernando pediu para não iniciar a próxima wave ainda.
+
+#### ✅ Dia 7 de Observação
+
+No dia 7, você compara uma semana inteira. Esse é o primeiro ponto em que variações diárias param de confundir.
+
+```bash
+koda metrics compare \
+  --window 7d \
+  --before-window 14d \
+  --flag harness_evolution.remove_budget_guard
+```
+
+| Métrica | Antes | Depois 7 dias | Delta |
+|---------|-------|---------------|-------|
+| Latência p95 | 4100ms | 3860ms | -240ms |
+| Tokens extras do Budget Guard | 1.333.420 por mês estimado | 0 | -100% |
+| Incomplete responses | 0.12% | 0.12% | 0.00% |
+| Token budget exceeded | 0 | 0 | 0 |
+| Tickets relacionados | 21 por semana | 19 por semana | -2 |
+| CSAT proxy | 88.0% | 88.0% | 0.0% |
+
+A reunião de checkpoint dura 18 minutos. As notas são objetivas.
+
+```markdown
+# Checkpoint Dia 7: Budget Guard Removal
+
+Participantes:
+- Você, owner da wave
+- Marina, Conversational Core
+- Renan, Platform on-call
+- Paula, Produto
+- Júlia, Suporte
+
+Decisões:
+- Manter flag em 100%.
+- Não iniciar próxima wave até Dia 14.
+- Revisar mais 20 traces acima de 60K tokens.
+- Preparar ADR em modo rascunho.
+
+Observações:
+- Suporte não percebeu mudança.
+- Produto não viu alteração em funil.
+- Engenharia confirmou que rollback continua funcional.
+```
+
+#### ✅ Dia 14 de Observação
+
+No dia 14, você tem evidência suficiente para encerrar a wave.
+
+| Métrica | 14 dias antes | 14 dias depois | Resultado |
+|---------|---------------|----------------|-----------|
+| incomplete_response_rate | 0.12% | 0.12% | Estável |
+| token_budget_exceeded | 0 | 0 | Estável |
+| latency_p95_ms | 4100ms | 3850ms | Melhorou |
+| incidents P0/P1 | 0 | 0 | Estável |
+| tickets de suporte relacionados | 42 | 39 | Estável |
+| CSAT proxy | 88% | 88% | Estável |
+| custo mensal do componente | R$ 300 | R$ 0 | Melhorou |
+
+Você escreve o post-mortem positivo com tom direto. A vitória é pequena e real.
+
+```markdown
+# Post-Mortem Positivo: Budget Guard Saiu sem Incidente
+
+Resumo:
+Removemos Budget Guard do caminho principal do KODA após 180 dias com zero triggers reais.
+
+Resultado:
+- 14 dias sem P0 ou P1.
+- 0 token_budget_exceeded.
+- incomplete_response_rate estável em 0.12%.
+- latência p95 reduziu de 4100ms para 3850ms.
+- custo mensal estimado reduzido em R$ 300.
+
+Lição principal:
+Componentes ligados a limites de modelo precisam ser reavaliados quando o modelo muda.
+
+Próxima ação:
+Arquivar Budget Guard e só então preparar investigação do Priority Extractor.
+```
+
+O README do arquivo fica completo, não simbólico.
+
+```markdown
+# Budget Guard v1
+
+## Resumo
+Budget Guard protegia o KODA contra estouro de contexto quando o modelo principal tinha janela de 32K tokens.
+
+## Período ativo
+Criado em 2025-10-01.
+Removido do caminho principal em 2026-04-15.
+Arquivado após observação concluída em 2026-04-29.
+
+## Por que foi seguro remover
+- Janela do modelo aumentou para 200K tokens.
+- Maior conversa observada em 180 dias ficou em 72K tokens.
+- Zero blocks em 180 dias.
+- Zero prevenções reais.
+- Shadow test e canary não mostraram degradação.
+
+## Como reavaliar no futuro
+Se KODA mudar para modelo com janela menor ou passar a anexar catálogos muito maiores, rode novo diagnóstico. Não restaure este componente sem medir Effective Trigger Rate, ROI e regressões.
+
+## Artefatos relacionados
+- `metrics/diagnostic-180-days.json`
+- `metrics/shadow-test-30-days.json`
+- `metrics/post-removal-14-days.json`
+- `decisions/adr-remove-budget-guard.md`
+```
 
 ### 🚀 Exemplo KODA 1: Budget Guard
 
@@ -1164,10 +1818,158 @@ Depois de 14 dias, incomplete responses ficam estáveis em 0.12%, token budget e
 |-------|-------|
 | Motivo original | Destacar alergias, orçamento e preferências antes do Planner |
 | Evidência atual | Alta redundância com Evaluator e Context Loader |
-| Classificação | SIMPLIFY |
+| Classificação | INVESTIGATE |
 | Risco | Médio |
-| Plano | Mover prioridade para rubrica do Evaluator e remover extractor dedicado |
-| Resultado esperado | Menos falsos positivos e menos uma etapa no pipeline |
+| Plano | Coletar métricas de redundância antes de decidir simplificação |
+| Resultado esperado | Decidir com dados se a prioridade deve migrar para rubrica do Evaluator |
+
+### 🧬 Context Loader: Sub-Walkthrough de Simplificação em 3 Waves
+
+O Context Loader não é um caso de remoção direta. Ele ainda entregou 12 prevenções críticas e 47 prevenções não críticas em 145K turns. O problema é que o custo ficou desproporcional: 1200 tokens por turno, 450ms de latência e 340 falsos positivos.
+
+A decisão correta é SIMPLIFY. Você reduz uma camada por vez, mede, observa e só então avança.
+
+#### 🧬 Estado Antes da Simplificação
+
+```json
+{
+  "component": "ContextLoader",
+  "version": "1.3",
+  "tokens_per_turn": 1200,
+  "latency_ms_per_turn": 450,
+  "monthly_tokens": 5400000,
+  "critical_preventions_90d": 12,
+  "non_critical_preventions_90d": 47,
+  "false_positives_90d": 340,
+  "accuracy_with_loader": "97.2%",
+  "accuracy_without_loader_shadow": "96.8%"
+}
+```
+
+O shadow test sem loader mostrou delta de -0.4%, dentro da margem de erro. Mesmo assim, o time não remove de uma vez porque há casos críticos de alergia e restrição médica.
+
+#### 🧬 Wave 1: Remover Redundância
+
+A primeira wave remove duplicação, não responsabilidade. Dados críticos continuam no system prompt. O que sai é repetição no user message e marcação explícita que o modelo atual já não precisa.
+
+| Antes da Wave 1 | Depois da Wave 1 |
+|-----------------|------------------|
+| Dados críticos no system prompt e no user message | Dados críticos apenas no system prompt |
+| Tags `HIGH_PRIORITY` em alergias e orçamento | Prioridade descrita em linguagem natural |
+| System prompt com 2000 tokens | System prompt com 800 tokens |
+| Custo: 1200 tokens por turno | Custo: 700 tokens por turno |
+
+```yaml
+feature_flags:
+  harness_evolution:
+    context_loader_wave_1:
+      enabled: false
+      mode: remove_redundancy
+      rollout:
+        percentage: 0
+      expected_savings:
+        tokens_per_turn: 500
+        latency_ms: 150
+      guardrails:
+        critical_constraint_recall_min: 0.995
+        allergy_violation_max: 0
+        accuracy_delta_max: 0.005
+```
+
+Você aplica em 5%, 25% e 100%, mas com janela menor que remoção completa porque a responsabilidade permanece.
+
+| Dia | Percentual | Resultado |
+|-----|------------|-----------|
+| 1 | 5% | Recall crítico 99.8%, zero incidentes |
+| 2 | 25% | Accuracy 97.1%, sem spike de suporte |
+| 3 a 7 | 100% | Acurácia manteve 97.1%, zero incidentes |
+
+Economia confirmada: 500 tokens por turno e 150ms por turno.
+
+#### 🧬 Wave 2: Relaxar Constraints Redundantes
+
+A segunda wave é mais delicada. Você aumenta threshold de compressão de histórico de 30 para 90 minutos, remove validação pós-turno de constraints que o Evaluator já cobre, e deixa de carregar `customer_profile` em todo turno.
+
+| Antes da Wave 2 | Depois da Wave 2 |
+|-----------------|------------------|
+| Compressão após 30 minutos | Compressão após 90 minutos |
+| Validação pós-turno no Context Loader | Validação no Evaluator |
+| `customer_profile` carregado a cada turno | `customer_profile` carregado no início e em mudança real |
+| Custo: 700 tokens por turno | Custo: 300 tokens por turno |
+
+```yaml
+shadow_tests:
+  context_loader_wave_2:
+    enabled: true
+    duration_days: 14
+    traffic_sample_percentage: 50
+    baseline_path: "context_loader.wave_1"
+    candidate_path: "context_loader.wave_2"
+    metrics:
+      - critical_constraint_recall
+      - allergy_violation_count
+      - budget_preference_recall
+      - evaluator_rejection_rate
+      - customer_confusion_ticket_rate
+    decision_rule:
+      promote_if:
+        accuracy_delta_abs_max: 0.005
+        allergy_violation_count: 0
+        p0_or_p1_incidents: 0
+```
+
+Resultado do shadow test:
+
+| Métrica | Wave 1 | Wave 2 candidate | Delta |
+|---------|--------|------------------|-------|
+| Acurácia | 97.1% | 97.0% | -0.1% |
+| Recall de alergia | 99.9% | 99.9% | 0.0% |
+| Recall de orçamento | 98.4% | 98.3% | -0.1% |
+| Falsos positivos | 210 | 121 | -89 |
+| Latência adicionada | 300ms | 100ms | -200ms |
+
+A decisão é avançar para 100%, porque o delta não é significativo e os falsos positivos caíram.
+
+#### 🧬 Wave 3: Consolidar no History Compactor
+
+A terceira wave muda a forma arquitetural. O Context Loader deixa de existir como componente independente. A lógica residual vai para o History Compactor, que já decide quando compactar e quando preservar informação crítica.
+
+| Antes da Wave 3 | Depois da Wave 3 |
+|-----------------|------------------|
+| Context Loader dedicado com 300 tokens por turno | Função residual dentro do History Compactor |
+| Um stage a mais no pipeline | Nenhum stage dedicado |
+| Owner separado | Owner do History Compactor |
+| Latência residual de 100ms | Latência residual 0ms no caminho comum |
+
+```python
+class HistoryCompactor:
+    def compact_if_needed(self, conversation, customer_profile):
+        if conversation.duration_minutes < 90:
+            return conversation.recent_context()
+
+        compacted_history = self.summarize_old_segments(conversation)
+        critical_facts = self.extract_critical_facts(customer_profile)
+
+        return {
+            "recent_context": conversation.last_messages(limit=12),
+            "compacted_history": compacted_history,
+            "critical_facts": critical_facts,
+        }
+```
+
+A validação da Wave 3 compara pipeline, não só métrica isolada.
+
+| Métrica | Antes v1.3 | Depois v2.0 | Delta |
+|---------|------------|-------------|-------|
+| Tokens por turno | 1200 | 0 dedicado | -100% |
+| Latência por turno | 450ms | 0 dedicada | -100% |
+| Componentes dedicados | 1 | 0 | -1 |
+| Acurácia | 97.2% | 97.0% | -0.2% |
+| Horas manutenção por mês | 3h | 0h dedicadas | -100% |
+
+A frase final do ADR não diz que o Context Loader foi deletado. Ela diz: "A responsabilidade essencial de preservar fatos críticos foi absorvida pelo History Compactor e pelo Evaluator".
+
+Essa diferença importa. Remover código sem preservar responsabilidade é fragilizar. Absorver responsabilidade em componente mais adequado é evolução.
 
 ### 🚀 O Que Não Remover no KODA
 
@@ -1179,36 +1981,34 @@ Depois de 14 dias, incomplete responses ficam estáveis em 0.12%, token budget e
 | Compliance LGPD | Protege obrigação regulatória |
 | Confirmação de pagamento | Protege decisão irreversível |
 
----
-
 ## 📄 Templates de Documentação
 
 Copie estes templates para o seu repositório quando executar uma evolução real. Eles são completos o suficiente para começar sem voltar à teoria.
 
-### 📄 Diagnostic Report Template
+### 📄 Template de Relatorio de Diagnostico
 
 ```markdown
 # Diagnostic Report: Budget Guard
 
 ## Resumo Executivo
 Componente analisado: Budget Guard
-Período analisado: 2025-11-28 a 2026-05-28
-Recomendação: KEEP, SIMPLIFY, REMOVE ou INVESTIGATE
+Período analisado: 2025-10-01 a 2026-03-31
+Recomendação: REMOVE
 
 ## Motivo Original
-Descreva por que o componente foi criado, qual fraqueza do modelo ele cobria e qual incidente ou risco motivou sua criação.
+Proteger o KODA contra estouro de janela de contexto quando o modelo tinha apenas 32K tokens. O componente monitorava consumo de tokens por turno e truncava conversa ao atingir 80% da janela, prevenindo respostas truncadas.
 
 ## Métricas Coletadas
 | Métrica | Valor |
 |---------|-------|
-| Total de turns analisados | 145000 |
-| Triggers brutos | 352 |
-| Prevenções reais | 12 |
-| Falsos positivos | 340 |
-| Tokens por turno | 1200 |
-| Latência por turno | 450ms |
-| Custo mensal | R$ 1610 |
-| ROI | 2.0x |
+| Total de turns analisados | 180000 |
+| Triggers brutos | 0 |
+| Prevenções reais | 0 |
+| Falsos positivos | 0 |
+| Tokens por turno | 0 (nunca disparou) |
+| Latência por turno | 0ms (nunca disparou) |
+| Custo mensal | R$ 300 (manutencao + monitoramento) |
+| ROI | 0x |
 
 ## Effective Trigger Rate
 Fórmula: prevenções reais / total de turns.
@@ -1230,7 +2030,7 @@ Classifique impacto e probabilidade. Declare invariantes relacionados.
 Explique por que a recomendação foi escolhida e qual evidência ainda falta, se houver.
 ```
 
-### 📄 Evolution Roadmap Template
+### 📄 Template de Roadmap de Evolucao
 
 ```markdown
 # Evolution Roadmap: 2026 Q2
@@ -1250,7 +2050,9 @@ Reduzir complexidade do harness sem reduzir safety, compliance, qualidade ou con
 | Ordem | Componente | Ação | Risco | Janela | Gate | Rollback |
 |-------|------------|------|-------|--------|------|----------|
 | 1 | Budget Guard | REMOVE | Baixo | Semana 4 | 14 dias sem regressão | Flag false |
-| 2 | Priority Extractor | SIMPLIFY | Médio | Semana 9 | FP reduzido sem accuracy cair | Mode full |
+| 2 | Priority Extractor | INVESTIGATE | Médio | Proximo trimestre | Coletar metricas de redundancia | Sem alteracao em prod |
+| 3 | Context Loader | SIMPLIFY | Médio | Proximo trimestre | Accuracy delta menor que 1% | Flag context_loader_mode=full |
+| 4 | Format Validator | SIMPLIFY | Baixo | Proximo trimestre | Shadow test concluido | Flag format_validator_mode=strict |
 
 ## Comunicação
 Liste stakeholders, data da comunicação e canal usado.
@@ -1259,19 +2061,19 @@ Liste stakeholders, data da comunicação e canal usado.
 Liste dashboards, testes, owners e aprovações necessárias.
 ```
 
-### 📄 Removal ADR Template
+### 📄 Template de ADR de Remocao
 
 ```markdown
 # ADR: Remover Budget Guard
 
 ## Status
-Proposto
+Aceito
 
 ## Data
-2026-05-28
+2026-04-15
 
 ## Contexto
-Descreva por que o componente existia e qual mudança tornou a remoção possível.
+Budget Guard protegia o modelo de 32K tokens contra estouro de contexto que causava respostas truncadas. Com a janela atual de 200K (6.25x maior), conversas tipicas do KODA (~50K tokens) nunca atingem 80% do limite. O modelo atual tambem lida melhor com contextos longos, documentado no changelog.
 
 ## Evidência
 - Effective Trigger Rate: 0%
@@ -1302,15 +2104,68 @@ Descreva flag, tempo esperado e métrica que confirma retorno.
 - Archive: `archive/components/budget-guard-v1/`
 ```
 
-### 📄 Post-Removal Validation Report Template
+### 📄 Template de Execucao por Wave
+
+```markdown
+# Execution Record: Wave 1 — Budget Guard
+
+## Resumo da Wave
+Componente: Budget Guard
+Acao: REMOVE
+Data de inicio: 2026-04-01
+Data de 100%: 2026-04-03
+Responsavel: Conversational Core Team
+
+## Feature Flag
+| Campo | Valor |
+|-------|-------|
+| Nome da flag | harness_evolution.remove_budget_guard |
+| Valor padrao | false |
+| Rollback | Alterar para false (sem deploy) |
+| Dashboard | dashboards/harness/budget-guard-removal |
+
+## Shadow Test
+| Campo | Valor |
+|-------|-------|
+| Ativo | Sim (componente roda em paralelo, output descartado) |
+| Duracao | 48 horas antes do canary 5% |
+| Resultado | Zero diferenca entre baseline e candidate |
+
+## Canary Rollout
+| Percentual | Data | Metricas dentro do threshold? | Avanca? |
+|------------|------|-------------------------------|---------|
+| 5% | 2026-04-01 | Sim (latencia, incomplete, tickets) | Sim |
+| 25% | 2026-04-02 | Sim | Sim |
+| 100% | 2026-04-03 | Sim | Sim |
+
+## Arquivo de Codigo
+| Campo | Valor |
+|-------|-------|
+| Caminho | archive/components/budget-guard-v1/ |
+| README | Contem motivo original, metricas usadas, data da remocao e licoes |
+| ADR vinculado | docs/decisions/adr-remove-budget-guard.md |
+
+## Observacao Pos-Remocao
+| Metrica | Baseline | Target | Observado |
+|---------|----------|--------|-----------|
+| incomplete_response_rate | 0.12% | <= 0.13% | 0.11% |
+| token_budget_exceeded | 0% | <= 0.01% | 0% |
+| latency_p95_ms | 4100 | <= 4150 | 3850 |
+| tickets_suporte_novos | 0 | <= 2 | 0 |
+
+## Decisao Final
+Encerrar remocao com sucesso. Agendar proxima wave para proximo trimestre.
+```
+
+### 📄 Template de Relatorio de Validacao Pos-Remocao
 
 ```markdown
 # Post-Removal Validation Report: Budget Guard
 
 ## Resumo
 Componente removido: Budget Guard
-Data de início do canary: 2026-05-14
-Data de 100%: 2026-05-16
+Data de início do canary: 2026-04-01
+Data de 100%: 2026-04-03
 Período de observação: 14 dias
 Decisão final: Encerrar, manter observação ou rollback
 
@@ -1334,7 +2189,7 @@ Declare se rollback foi necessário. Se não foi, confirme que permaneceu dispon
 Explique por que a remoção é considerada segura.
 ```
 
-### 📄 Quarterly Review Agenda Template
+### 📄 Template de Agenda de Revisao Trimestral
 
 ```markdown
 # Agenda: Quarterly Harness Evolution Review
@@ -1377,1035 +2232,274 @@ Confirmar próximos passos e data da primeira validação.
 
 ---
 
-## 🧰 Runbook Detalhado por Dia
-
-Esta seção transforma o playbook em uma rotina de execução. Use quando você estiver conduzindo a mudança em produção e quiser reduzir ambiguidade operacional.
-
-### 🧰 Dia 1: Execução Guiada
-
-O foco do dia é inventário e alinhamento de invariantes. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para inventário e alinhamento de invariantes | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para inventário e alinhamento de invariantes | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para inventário e alinhamento de invariantes | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para inventário e alinhamento de invariantes | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para inventário e alinhamento de invariantes | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que inventário e alinhamento de invariantes tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 2: Execução Guiada
-
-O foco do dia é coleta de métricas e validação de fontes. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para coleta de métricas e validação de fontes | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para coleta de métricas e validação de fontes | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para coleta de métricas e validação de fontes | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para coleta de métricas e validação de fontes | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para coleta de métricas e validação de fontes | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que coleta de métricas e validação de fontes tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 3: Execução Guiada
-
-O foco do dia é análise de falsos positivos. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para análise de falsos positivos | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para análise de falsos positivos | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para análise de falsos positivos | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para análise de falsos positivos | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para análise de falsos positivos | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que análise de falsos positivos tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 4: Execução Guiada
-
-O foco do dia é cálculo de custo e ROI. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para cálculo de custo e ROI | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para cálculo de custo e ROI | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para cálculo de custo e ROI | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para cálculo de custo e ROI | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para cálculo de custo e ROI | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que cálculo de custo e ROI tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 5: Execução Guiada
-
-O foco do dia é scorecard e classificação preliminar. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para scorecard e classificação preliminar | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para scorecard e classificação preliminar | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para scorecard e classificação preliminar | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para scorecard e classificação preliminar | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para scorecard e classificação preliminar | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que scorecard e classificação preliminar tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 6: Execução Guiada
-
-O foco do dia é revisão com engenharia. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para revisão com engenharia | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para revisão com engenharia | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para revisão com engenharia | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para revisão com engenharia | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para revisão com engenharia | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que revisão com engenharia tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 7: Execução Guiada
-
-O foco do dia é revisão com produto e suporte. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para revisão com produto e suporte | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para revisão com produto e suporte | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para revisão com produto e suporte | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para revisão com produto e suporte | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para revisão com produto e suporte | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que revisão com produto e suporte tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 8: Execução Guiada
-
-O foco do dia é roadmap e matriz de risco. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para roadmap e matriz de risco | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para roadmap e matriz de risco | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para roadmap e matriz de risco | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para roadmap e matriz de risco | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para roadmap e matriz de risco | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que roadmap e matriz de risco tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 9: Execução Guiada
-
-O foco do dia é comunicação de stakeholders. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para comunicação de stakeholders | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para comunicação de stakeholders | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para comunicação de stakeholders | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para comunicação de stakeholders | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para comunicação de stakeholders | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que comunicação de stakeholders tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 10: Execução Guiada
-
-O foco do dia é feature flag e configuração de shadow test. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para feature flag e configuração de shadow test | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para feature flag e configuração de shadow test | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para feature flag e configuração de shadow test | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para feature flag e configuração de shadow test | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para feature flag e configuração de shadow test | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que feature flag e configuração de shadow test tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 11: Execução Guiada
-
-O foco do dia é shadow test em staging. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para shadow test em staging | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para shadow test em staging | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para shadow test em staging | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para shadow test em staging | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para shadow test em staging | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que shadow test em staging tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que shadow test em staging tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 12: Execução Guiada
-
-O foco do dia é shadow test com amostra de produção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para shadow test com amostra de produção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para shadow test com amostra de produção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para shadow test com amostra de produção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para shadow test com amostra de produção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para shadow test com amostra de produção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que shadow test com amostra de produção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 13: Execução Guiada
-
-O foco do dia é revisão manual de traces. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para revisão manual de traces | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para revisão manual de traces | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para revisão manual de traces | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para revisão manual de traces | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para revisão manual de traces | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que revisão manual de traces tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 14: Execução Guiada
-
-O foco do dia é go ou pause antes do canary. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para go ou pause antes do canary | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para go ou pause antes do canary | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para go ou pause antes do canary | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para go ou pause antes do canary | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para go ou pause antes do canary | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que go ou pause antes do canary tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 15: Execução Guiada
-
-O foco do dia é canary 5%. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para canary 5% | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para canary 5% | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para canary 5% | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para canary 5% | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para canary 5% | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que canary 5% tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 16: Execução Guiada
-
-O foco do dia é revisão do canary 5%. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para revisão do canary 5% | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para revisão do canary 5% | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para revisão do canary 5% | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para revisão do canary 5% | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para revisão do canary 5% | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que revisão do canary 5% tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 17: Execução Guiada
-
-O foco do dia é canary 25%. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para canary 25% | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para canary 25% | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para canary 25% | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para canary 25% | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para canary 25% | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que canary 25% tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 18: Execução Guiada
-
-O foco do dia é revisão do canary 25%. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para revisão do canary 25% | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para revisão do canary 25% | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para revisão do canary 25% | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para revisão do canary 25% | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para revisão do canary 25% | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que revisão do canary 25% tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 19: Execução Guiada
-
-O foco do dia é canary 100%. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para canary 100% | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para canary 100% | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para canary 100% | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para canary 100% | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para canary 100% | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que canary 100% tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que canary 100% tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 20: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 21: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 22: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 23: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 24: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 25: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 26: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 27: Execução Guiada
-
-O foco do dia é observação pós-remoção. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para observação pós-remoção | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para observação pós-remoção | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que observação pós-remoção tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 28: Execução Guiada
-
-O foco do dia é comparativo final antes e depois. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para comparativo final antes e depois | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para comparativo final antes e depois | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para comparativo final antes e depois | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para comparativo final antes e depois | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para comparativo final antes e depois | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que comparativo final antes e depois tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 29: Execução Guiada
-
-O foco do dia é ADR, archive e documentação. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para ADR, archive e documentação | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para ADR, archive e documentação | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para ADR, archive e documentação | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para ADR, archive e documentação | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para ADR, archive e documentação | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que ADR, archive e documentação tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
-
-### 🧰 Dia 30: Execução Guiada
-
-O foco do dia é post-mortem positivo e próxima wave. Não avance se a evidência do dia anterior estiver incompleta.
-
-| Bloco | Ação | Saída esperada |
-|-------|------|----------------|
-| 1 | Executar verificação 1 para post-mortem positivo e próxima wave | Evidência registrada no artefato da fase |
-| 2 | Executar verificação 2 para post-mortem positivo e próxima wave | Evidência registrada no artefato da fase |
-| 3 | Executar verificação 3 para post-mortem positivo e próxima wave | Evidência registrada no artefato da fase |
-| 4 | Executar verificação 4 para post-mortem positivo e próxima wave | Evidência registrada no artefato da fase |
-| 5 | Executar verificação 5 para post-mortem positivo e próxima wave | Evidência registrada no artefato da fase |
-
-Checklist do dia:
-- [ ] Passo 1: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 2: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 3: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 4: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 5: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 6: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-- [ ] Passo 7: confirmar que post-mortem positivo e próxima wave tem evidência verificável e owner definido.
-
-Critério de parada: se uma métrica crítica piorar além do threshold, pause a wave e volte para a última decisão aprovada.
+## 🧰 Runbook de Execucao por Fase
+
+A tabela abaixo resume as acoes concretas por fase. Execute na ordem; cada linha depende da conclusao da anterior.
+
+### 🩺 Fase de Diagnostico: Acoes Diarias
+
+| Dia | Acao especifica | Artefato | Gate de avanco |
+|-----|-----------------|----------|----------------|
+| 1 | Listar componentes do pipeline e marcar invariantes (Safety, Compliance, Evaluator, State Persistence) | Inventario inicial | Todos os componentes listados, invariantes confirmados com tech lead |
+| 2 | Coletar metricas de trigger bruto e prevencao real dos ultimos 60-90 dias para cada componente | Planilha de metricas por componente | Nenhum componente sem metrica; classificar sem metrica como INVESTIGATE |
+| 3 | Analisar falsos positivos: amostrar 50+ triggers, classificar em categorias, calcular False Positive Ratio | Relatorio de falsos positivos | Categorias documentadas, ratio calculado para cada componente |
+| 4 | Calcular custo operacional completo (tokens, latencia, manutencao, onboarding) e ROI padronizado | Planilha de custos e ROI | ROI calculado para todos os componentes com triggers |
+| 5 | Preencher scorecard com os 7 sinais e classificar cada componente como KEEP, SIMPLIFY, REMOVE ou INVESTIGATE | Scorecard completo | Cada componente tem classificacao e justificativa em 1 paragrafo |
+| 6 | Revisar scorecard com tech lead e produto; ajustar classificacoes com input cross-functional | Scorecard revisado | Aprovacao de tech lead registrada |
+
+### 📋 Fase de Planejamento: Acoes Diarias
+
+| Dia | Acao especifica | Artefato | Gate de avanco |
+|-----|-----------------|----------|----------------|
+| 1 | Ordenar componentes candidatos por risco (matriz: probabilidade x impacto) e agrupar em waves | Matriz de risco e waves | Waves definidas, cada uma com no maximo 1 componente de medio risco |
+| 2 | Definir gates de avanco por wave (metricas, thresholds, periodo de observacao) e rollback por componente | Roadmap com gates e rollbacks | Rollback documentado e testavel para cada componente |
+| 3 | Escrever comunicacao para stakeholders (produto, suporte, engenharia, lideranca) com cronograma | Comunicacao escrita | Comunicacao revisada por tech lead |
+| 4 | Criar feature flags no codigo, configurar dashboard de observacao e alertas de regressao | Flags ativas em staging, dashboard populates | Flags testadas em staging com toggle manual |
+
+### 🔧 Fase de Execucao: Acoes Diarias
+
+| Dia | Acao especifica | Artefato | Gate de avanco |
+|-----|-----------------|----------|----------------|
+| 1 | Ativar feature flag para shadow test (componente roda em paralelo, output descartado) | Shadow test ativo | 24h sem erro no componente shadow |
+| 2 | Ativar canary 5% com monitoramento ativo no dashboard dedicado | Canary 5% ativo | 24h com metricas dentro dos thresholds |
+| 3 | Expandir para canary 25%, revisar metricas e tickets de suporte | Canary 25% ativo | 24h sem tickets novos atribuidos a mudanca |
+| 4 | Expandir para canary 100% | Componente fora do pipeline principal | Confirmar com tech lead |
+| 5 | Arquivar codigo removido em archive/components/<nome>/ com README | Codigo arquivado | README contem motivo original, metrica usada, data da remocao |
+| 6 | Escrever ADR de remocao e publicar no repositorio | ADR publicado | ADR revisado por tech lead |
+
+### ✅ Fase de Validacao: Acoes Diarias
+
+| Dia | Acao especifica | Artefato | Gate de avanco |
+|-----|-----------------|----------|----------------|
+| 1-7 | Observar dashboard: incomplete responses, erros, latencia, tickets de suporte | Log diario de observacao | Nenhum alerta disparado |
+| 8-14 | Continuar observacao, preparar post-mortem positivo e relatorio de validacao | Relatorio preliminar | Metricas estaveis por 14 dias consecutivos |
+| 15 | Comparar metricas antes/depois, preencher relatorio final, comunicar stakeholders | Relatorio de validacao final | Deltas dentro dos thresholds definidos no roadmap |
+| 16 | Agendar proxima revisao trimestral e atualizar inventario de componentes | Calendario trimestral | Proxima data de revisao no calendario do time |
 
 ---
 
-## 🧾 Apêndice Operacional: Microchecks de Revisão
-
-Use estes microchecks durante review assíncrono. Eles evitam que decisões importantes fiquem implícitas.
-
-### 🧾 Microcheck 1: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 1 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 1 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 1 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 1 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 1 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 1 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 1 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 2: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 2 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 2 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 2 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 2 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 2 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 2 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 2 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 3: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 3 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 3 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 3 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 3 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 3 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 3 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 3 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 4: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 4 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 4 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 4 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 4 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 4 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 4 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 4 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 5: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 5 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 5 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 5 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 5 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 5 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 5 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 5 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 6: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 6 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 6 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 6 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 6 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 6 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 6 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 6 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 7: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 7 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 7 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 7 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 7 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 7 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 7 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 7 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 8: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 8 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 8 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 8 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 8 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 8 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 8 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 8 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 9: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 9 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 9 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 9 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 9 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 9 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 9 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 9 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 10: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 10 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 10 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 10 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 10 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 10 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 10 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 10 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 11: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 11 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 11 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 11 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 11 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 11 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 11 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 11 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 12: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 12 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 12 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 12 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 12 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 12 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 12 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 12 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 13: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 13 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 13 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 13 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 13 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 13 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 13 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 13 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 14: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 14 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 14 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 14 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 14 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 14 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 14 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 14 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 15: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 15 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 15 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 15 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 15 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 15 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 15 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 15 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 16: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 16 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 16 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 16 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 16 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 16 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 16 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 16 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 17: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 17 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 17 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 17 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 17 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 17 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 17 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 17 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 18: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 18 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 18 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 18 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 18 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 18 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 18 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 18 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 19: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 19 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 19 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 19 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 19 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 19 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 19 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 19 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 20: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 20 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 20 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 20 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 20 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 20 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 20 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 20 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 21: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 21 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 21 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 21 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 21 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 21 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 21 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 21 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 22: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 22 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 22 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 22 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 22 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 22 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 22 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 22 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 23: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 23 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 23 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 23 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 23 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 23 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 23 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 23 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 24: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 24 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 24 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 24 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 24 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 24 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 24 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 24 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 25: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 25 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 25 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 25 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 25 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 25 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 25 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 25 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 26: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 26 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 26 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 26 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 26 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 26 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 26 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 26 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 27: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 27 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 27 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 27 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 27 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 27 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 27 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 27 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 28: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 28 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 28 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 28 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 28 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 28 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 28 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 28 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 29: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 29 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 29 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 29 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 29 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 29 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 29 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 29 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 30: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 30 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 30 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 30 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 30 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 30 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 30 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 30 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 31: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 31 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 31 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 31 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 31 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 31 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 31 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 31 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 32: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 32 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 32 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 32 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 32 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 32 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 32 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 32 tem decisão documentada no relatório da wave.
-
-### 🧾 Microcheck 33: Evidência Antes de Opinião
-
-- [ ] O componente avaliado no microcheck 33 tem métrica de valor real, não apenas descrição de intenção.
-- [ ] O componente avaliado no microcheck 33 tem custo de tokens registrado.
-- [ ] O componente avaliado no microcheck 33 tem custo de latência registrado.
-- [ ] O componente avaliado no microcheck 33 tem owner técnico identificado.
-- [ ] O componente avaliado no microcheck 33 não é Safety, Compliance, Evaluator ou State Persistence.
-- [ ] O componente avaliado no microcheck 33 tem rollback definido antes de qualquer deploy.
-- [ ] O componente avaliado no microcheck 33 tem decisão documentada no relatório da wave.
+## 🧾 Apendice Operacional: Microchecks de Revisao
+
+Use estes microchecks durante review assincrono para evitar que decisoes importantes fiquem implicitas. Cada um cobre uma dimensao distinta.
+
+### 🧾 Microcheck 1: Inventario Completo
+
+- [ ] Todos os componentes do pipeline estao listados com owner, funcao e posicao no fluxo.
+- [ ] Nenhum componente ficou de fora por ser "obvio" ou "sempre existiu".
+
+### 🧾 Microcheck 2: Metricas Confiaveis
+
+- [ ] Trigger bruto foi separado de prevencao real para todos os componentes.
+- [ ] A janela de coleta e de pelo menos 60 dias; 90 dias foi usada quando disponivel.
+- [ ] As metricas vem de observabilidade de producao, nao de estimativa ou intuicao.
+
+### 🧾 Microcheck 3: Falsos Positivos Analisados
+
+- [ ] Pelo menos 50 triggers foram revisados manualmente para classificar entre prevencao real e falso positivo.
+- [ ] Categorias de falso positivo estao documentadas (ex: ma interpretacao de constraint, bug de parsing).
+
+### 🧾 Microcheck 4: ROI Calculado Corretamente
+
+- [ ] O custo operacional inclui tokens, latencia, horas de manutencao e complexidade de onboarding.
+- [ ] O valor protegido usa prevencoes reais multiplicadas pelo custo medio do erro.
+- [ ] Componentes com ROI < 1x por dois trimestres consecutivos estao marcados para investigacao.
+
+### 🧾 Microcheck 5: Invariantes Protegidos
+
+- [ ] Safety, Compliance, Evaluator e State Persistence estao explicitamente classificados como KEEP.
+- [ ] Nenhum invariante foi classificado como REMOVE ou SIMPLIFY sem decisao arquitetural documentada.
+
+### 🧾 Microcheck 6: Classificacao Clara
+
+- [ ] Cada componente tem exatamente uma classificacao: KEEP, SIMPLIFY, REMOVE ou INVESTIGATE.
+- [ ] A justificativa cita metrica concreta, nao opiniao (ex: "0 triggers em 180 dias", nao "parece desnecessario").
+
+### 🧾 Microcheck 7: Uma Wave por Vez
+
+- [ ] Cada wave do roadmap contem no maximo 1 componente de medio risco ou 2 de baixo risco.
+- [ ] O plano respeita o periodo de 14 dias de observacao entre waves.
+
+### 🧾 Microcheck 8: Rollback Pronto
+
+- [ ] Para cada componente candidato a remocao, o comando de rollback esta documentado e foi testado.
+- [ ] Feature flag permite reativacao em menos de 15 minutos sem deploy.
+
+### 🧾 Microcheck 9: Codigo Arquivado com Memoria
+
+- [ ] Componentes removidos estao em archive/components/<nome>/ com README contendo motivo, metricas e data.
+- [ ] O ADR de remocao esta linkado no README do arquivo.
+
+### 🧾 Microcheck 10: Post-Mortem Positivo
+
+- [ ] O relatorio final lista: o que mudou, metricas antes/depois, aprendizados e quem participou.
+- [ ] A proxima data de revisao trimestral esta agendada.
+- [ ] O time foi comunicado e entende por que o componente foi removido.
+
+---
+
+## 🚨 Cenários de Falha e Recuperação
+
+Harness Evolution precisa de planos para quando a evidência não confirma sua hipótese. Uma falha controlada no shadow test ou no canary não é derrota. É o processo funcionando antes que cliente sofra.
+
+### 🚨 Cenário 1: Shadow Test Mostra Degradação
+
+Situação: você roda shadow test do Context Loader Wave 2 e o candidate perde 2.3% de acurácia, acima do limite de 0.5%.
+
+| Métrica | Baseline | Candidate | Delta | Gate |
+|---------|----------|-----------|-------|------|
+| Acurácia | 97.1% | 94.8% | -2.3% | Falhou |
+| Recall de alergia | 99.9% | 99.2% | -0.7% | Falhou |
+| Falsos positivos | 210 | 88 | Melhorou | Não compensa risco |
+| Latência | 300ms | 100ms | Melhorou | Não compensa risco |
+
+A resposta correta é pausar. Não ajuste threshold para caber no resultado.
+
+```bash
+koda shadow-tests stop context_loader_wave_2 --reason "accuracy_delta_above_gate"
+koda flags set harness_evolution.context_loader_wave_2.enabled false --env staging
+koda incident-notes create --type harness_evolution_learning --component ContextLoader
+```
+
+O relatório deve registrar a hipótese refutada:
+
+```markdown
+## Decisão
+Não promover Context Loader Wave 2 neste trimestre.
+
+## Motivo
+O shadow test mostrou queda de 2.3% na acurácia e queda de 0.7% no recall de alergia. A economia de 400 tokens por turno não justifica risco de segurança do cliente.
+
+## Próxima ação
+Investigar alternativa menor: manter `customer_profile` em todo turno para clientes com alergia ou restrição médica, e relaxar apenas para conversas sem constraints críticas.
+```
+
+### 🚨 Cenário 2: Stakeholder Questiona a Remoção
+
+Situação: Produto diz que remover Budget Guard parece arriscado porque "ele foi criado para proteger cliente".
+
+Não responda com opinião. Responda com escopo e rollback.
+
+```text
+Produto: Se isso protege cliente, por que tirar?
+
+Você: Porque nos últimos 180 dias ele protegeu zero clientes. A maior conversa chegou a 36% da janela atual. A proteção que continua relevante está no Evaluator e no History Compactor, que não vamos mexer.
+
+Produto: E se aparecer uma conversa enorme amanhã?
+
+Você: Temos alerta de token_budget_exceeded e rollback por flag. Também vamos revisar manualmente os maiores traces durante 14 dias.
+
+Produto: Cliente vai notar?
+
+Você: Não deve notar. Se notar, será por resposta incompleta, e esse é exatamente o alerta de parada.
+```
+
+Se o stakeholder ainda não concordar, a decisão vira INVESTIGATE por mais um ciclo. Isso é aceitável. O que não é aceitável é remover sem alinhamento quando a confiança organizacional ainda não existe.
+
+### 🚨 Cenário 3: Canary 5% Dispara Alerta
+
+Situação: após 3 horas de canary 5%, `incomplete_response_rate` sobe de 0.12% para 0.42%.
+
+A regra é rollback primeiro, investigação depois.
+
+```bash
+koda flags set harness_evolution.remove_budget_guard.rollout.percentage 0 --env production
+koda flags set harness_evolution.remove_budget_guard.enabled false --env production
+koda alerts ack incomplete_response_regression --reason "rollback_executed"
+koda traces export --flag harness_evolution.remove_budget_guard --window 3h --output evidence/budget-guard-canary-failure.jsonl
+```
+
+Depois você classifica os traces.
+
+| Categoria | Quantidade | Leitura |
+|-----------|------------|---------|
+| Resposta realmente cortada | 7 | Regressão provável |
+| Cliente abandonou antes da resposta | 3 | Não relacionado |
+| Erro de API do catálogo | 2 | Não relacionado |
+| Trace incompleto por logging | 1 | Observabilidade |
+
+Se houver regressão provável, a decisão é reverter a recomendação para INVESTIGATE.
+
+```markdown
+## Resultado do Canary 5%
+Rollback executado após alerta de incomplete_response_rate.
+
+## Decisão
+Budget Guard não será removido neste ciclo.
+
+## Aprendizado
+A métrica de zero triggers estava correta, mas o componente pode estar interagindo com truncamento silencioso antes do evento `blocked`. Precisamos instrumentar `near_limit_warning` antes de nova tentativa.
+```
+
+### 🚨 Cenário 4: Dois Trimestres Sem Nenhuma Mudança
+
+Situação: o time faz review trimestral, identifica candidatos, mas sempre adia por medo.
+
+Isso é o anti-padrão Never Remove aparecendo como prudência. A recuperação é escolher a menor mudança segura possível.
+
+| Sintoma | Correção |
+|---------|----------|
+| Todo componente fica como INVESTIGATE | Definir qual métrica falta e prazo para coletar |
+| Nenhuma feature flag é criada | Criar flag para componente de ROI 0x mesmo antes do canary |
+| Stakeholders pedem mais dados indefinidamente | Definir decisão binária para a próxima review |
+| Roadmap só adiciona componentes | Aplicar One In One Out na próxima proposta |
+
+A conversa com Fernando pode soar assim:
+
+```text
+Fernando: O que removemos nos últimos dois trimestres?
+
+Você: Nada. Investigamos três componentes, mas não executamos.
+
+Fernando: Então nosso processo está incompleto. Harness Evolution sem remoção vira observabilidade passiva.
+
+Você: Proponho Budget Guard como wave de confiança. ROI 0x, zero triggers, rollback simples.
+
+Fernando: Aprovado. Uma wave pequena, bem feita, antes de qualquer discussão maior.
+```
+
+### 🚨 Cenário 5: A Remoção Funciona, Mas Outro Componente Fica Mais Caro
+
+Situação: Budget Guard sai, mas Evaluator rejection rate sobe 12% por duas semanas.
+
+Você não declara vitória só porque o componente removido não gerou incidente. Você verifica se transferiu custo para outra parte.
+
+```sql
+SELECT
+  rejection_reason,
+  COUNT(*) AS count
+FROM evaluator_rejections
+WHERE created_at >= DATE '2026-04-15'
+  AND created_at < DATE '2026-04-29'
+GROUP BY rejection_reason
+ORDER BY count DESC;
+```
+
+Se o aumento vier de motivos não relacionados, documente. Se vier de contexto longo, a remoção precisa ser reavaliada.
+
+### 🚨 Cenário 6: Rollback Falha em Staging
+
+Situação: a flag volta para `false`, mas o pipeline não executa Budget Guard porque o código foi removido cedo demais.
+
+Isso viola o playbook. Código só é arquivado depois dos 14 dias.
+
+Recuperação:
+
+```bash
+koda deploy revert --service koda-orchestrator --to last-known-good
+koda flags set harness_evolution.remove_budget_guard.enabled false --env staging
+koda regression run --suite budget-guard-rollback
+```
+
+A ação preventiva é adicionar teste de rollback ao checklist da wave.
+
+```yaml
+rollback_test:
+  required_before_canary: true
+  checks:
+    - flag_false_executes_component
+    - metrics_budget_guard_executed_increments
+    - blocked_path_still_returns_safe_response
+```
 
 ---
 
@@ -2505,6 +2599,40 @@ Se marcou menos de 18 itens, releia as fases correspondentes antes de conduzir u
 ### ❓ E se a economia for pequena?
 
 **Resposta:** Ainda pode valer a pena se reduzir complexidade. Mas documente o benefício real, não venda como grande ganho financeiro.
+
+
+### ❓ Como decidir entre SIMPLIFY e REMOVE quando o ROI é marginal?
+
+**Resposta:** Use risco e preservação de responsabilidade. Se o componente ainda previne casos críticos, escolha SIMPLIFY. Context Loader com ROI 2.0x e 12 prevenções críticas não deve sair direto. Ele deve perder redundância primeiro.
+
+### ❓ Posso usar apenas testes offline para remover um componente?
+
+**Resposta:** Não. Teste offline ajuda a bloquear erro óbvio, mas não substitui shadow test e canary. Harness existe para produção real, com tráfego real, dados reais e comportamento de cauda longa.
+
+### ❓ O que faço quando o componente não tem owner claro?
+
+**Resposta:** Classifique como INVESTIGATE até owner existir. Remoção sem owner vira risco operacional, porque ninguém responde por métricas, rollback ou documentação.
+
+### ❓ Como tratar componentes criados por incidentes antigos?
+
+**Resposta:** Comece pelo incidente original. Pergunte se a causa ainda existe, se o modelo mudou, se outra proteção cobre o cenário e se a métrica protegida apareceu nos últimos 90 ou 180 dias. Respeite a história, mas exija evidência atual.
+
+### ❓ Quando uma melhoria de modelo justifica abrir review extraordinária?
+
+**Resposta:** Quando o changelog toca diretamente a fraqueza que originou componentes caros. Exemplo: janela de contexto 6x maior justifica revisar Budget Guard, Context Loader e History Compactor. Ainda assim, changelog abre hipótese, não autoriza remoção.
+
+### ❓ E se a remoção reduzir custo mas piorar onboarding porque o arquivo foi para archive?
+
+**Resposta:** Atualize a documentação de arquitetura. O novo dev não deve precisar ler archive para entender o fluxo atual. Archive responde por que algo existiu, não como o sistema funciona hoje.
+
+### ❓ Como comparar métricas se o tráfego mudou muito entre antes e depois?
+
+**Resposta:** Normalize por turn, por conversa e por segmento. Compare grupos equivalentes, especialmente conversas longas. Se houve campanha comercial ou sazonalidade, estenda a janela ou use shadow test como evidência principal.
+
+### ❓ O que fazer quando suporte relata problema mas dashboard está limpo?
+
+**Resposta:** Trate suporte como sinal real. Abra amostra de traces, confira labels e verifique se a métrica está capturando o sintoma correto. Às vezes o problema é observabilidade, não ausência de regressão.
+
 
 ---
 
