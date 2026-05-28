@@ -330,24 +330,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Contexto (Context Management): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contexto (Context Management): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Token budget esta documentado e medido por turno?
+- [ ] Blocos `critical_state`, `history_summary`, `recent_window` e `turn_request` aparecem separados no prompt?
+- [ ] Resumo antigo preserva decisoes, restricoes, preferencias e pendencias em campos nomeados?
+- [ ] Alergias, orcamento e compromissos comerciais foram promovidos para state duravel?
+- [ ] Trace registra por que cada fonte entrou ou saiu do contexto?
+- [ ] Teste de conversa longa prova recall de restricao dita no inicio?
+- [ ] Corte por excesso de tokens falha antes da chamada ou compacta de forma controlada?
+- [ ] Context window exclui dados obsoletos ou conflitantes com o state atual?
+- [ ] Owner da politica de contexto e data da ultima revisao estao visiveis?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -430,24 +421,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Contratos (Contracts/Sprint Contracts): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Todo contrato define inputs, outputs e criterios de sucesso?
+- [ ] Campos obrigatorios tem tipos, exemplos validos e schema versionado?
+- [ ] Failure modes incluem input invalido, timeout, dependencia indisponivel e output fora do schema?
+- [ ] Cada contrato declara owner responsavel pela interface?
+- [ ] Boundary test cobre input minimo valido, input invalido e output inesperado?
+- [ ] Mudanca de contrato aponta para ADR, issue ou changelog com impacto?
+- [ ] Fronteiras entre Planner, Generator, Evaluator, Order e Fulfillment estao explicitas?
+- [ ] Criterio de sucesso usa condicao objetiva, como score minimo ou decisao aprovada?
+- [ ] Contrato bloqueia execucao quando falta campo critico de catalogo, preco ou restricao?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -530,24 +512,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Avaliação (Evaluation/Rubrics): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Rubrica tem dimensoes nomeadas com pesos que somam 100%?
+- [ ] Threshold operacional reprova automaticamente abaixo da nota minima?
+- [ ] Rubrica tem blocker absoluto para violacoes criticas?
+- [ ] Evaluator e separado do Generator e nao aceita autoaprovacao?
+- [ ] Cada nota traz evidencia por dimensao, como campo, trace ref ou dado de catalogo?
+- [ ] Conjunto de calibracao inclui exemplos aprovados, reprovados e limitrofes?
+- [ ] Replay da avaliacao produz decisao comparavel sobre o mesmo output?
+- [ ] Falsos positivos e falsos negativos sao revisados por humano em cadencia definida?
+- [ ] Score alto nao mascara alergia, preco divergente, estoque ausente ou pagamento duplicado?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -630,24 +603,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Persistência (State Persistence): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Persistência (State Persistence): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Estado critico sobrevive a restart do processo?
+- [ ] Checkpoints existem antes e depois de acoes caras ou irreversiveis?
+- [ ] State schema inclui `schema_version`, timestamps, owner e campos obrigatorios?
+- [ ] Recovery foi testado matando o processo no meio da jornada?
+- [ ] Replay usa artefatos salvos sem depender de memoria oral do time?
+- [ ] Arquivos de estado usam escrita temporaria e rename atomico?
+- [ ] Politica de retencao cobre state, traces e dados pessoais?
+- [ ] Backup foi restaurado em ambiente seguro e registrado?
+- [ ] Escolha entre files, SQLite, Redis ou banco esta justificada por volume e concorrencia?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -730,24 +694,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Coordenação (Multi-Agent Coordination): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Lock file, transacao ou fila serializa escrita em carrinho, pedido, perfil ou estoque?
+- [ ] Status file publica `pending`, `running`, `completed` ou `failed` com timestamp?
+- [ ] JSON protocol define `correlation_id`, `agent_id`, `schema_version` e `audit_refs`?
+- [ ] Outputs finais so aparecem depois de escrita completa e atomica?
+- [ ] Reprocessamento do mesmo evento e idempotente?
+- [ ] Locks tem TTL, owner e regra de recuperacao contra deadlock?
+- [ ] Dependencias impedem Fulfillment antes de Evaluation aprovado?
+- [ ] Teste concorrente dispara dois agentes sobre o mesmo recurso?
+- [ ] Trace mostra ordem real de leitura, escrita e liberacao entre agentes?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -830,24 +785,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Segurança & Guardrails: verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Segurança & Guardrails: verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Input externo passa por schema, limite de tamanho e normalizacao antes do prompt?
+- [ ] Output final valida formato, catalogo, politica comercial e restricoes do cliente?
+- [ ] Constraint checker bloqueia alergia, orcamento, regiao e estoque incompatíveis?
+- [ ] Guardrails falham fechado em acoes irreversiveis?
+- [ ] Fallback seguro pede confirmacao, escala para humano ou pausa a acao?
+- [ ] Budget guard limita tokens, custo, retries, tool calls e duracao por turno?
+- [ ] Prompt injection e delimitada e nao pode redefinir instrucoes de sistema?
+- [ ] Pagamento, estoque e envio exigem aprovacao validada antes de executar?
+- [ ] Logs mostram qual guardrail aceitou, rejeitou ou acionou fallback?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -930,24 +876,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Evolução (Harness Evolution): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Evolução (Harness Evolution): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Cada componente esta marcado como BUILD, STABILIZE, SIMPLIFY ou REMOVE?
+- [ ] Metricas mostram falhas reais prevenidas pelo componente?
+- [ ] Tokens, latencia, manutencao e falsos positivos sao medidos?
+- [ ] Componentes desnecessarios sao identificados e removidos?
+- [ ] Simplificacao exige shadow test ou A/B sem regressao relevante?
+- [ ] Remocao de guardrail critico tem rollback e aprovacao registrada?
+- [ ] Feature flag ou versao anterior permite restaurar comportamento anterior?
+- [ ] Mudanca estrutural tem ADR ou changelog com alternativas e consequencias?
+- [ ] Revisao ocorre apos upgrade de modelo ou ciclo trimestral?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -1030,24 +967,15 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ### Micro-checklist de revisão rápida
 
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 01 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 02 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 03 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 04 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 05 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 06 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 07 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 08 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 09 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 10 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 11 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 12 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 13 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 14 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 15 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 16 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 17 confirma evidência objetiva antes de marcar PASS.
-- [ ] Observabilidade (Traces/Monitoring): verificação rápida 18 confirma evidência objetiva antes de marcar PASS.
+- [ ] Trace permite reconstruir decisao sem reencenar o incidente?
+- [ ] Cada jornada conecta input, contexto, contrato, geracao, avaliacao, guardrail e output?
+- [ ] Audit log registra pagamento, estoque, dados pessoais e promessa ao cliente?
+- [ ] Dashboard mostra latencia, custo, score de rubrica, fallback rate e error rate?
+- [ ] Alertas tem threshold, severidade, owner e runbook com primeira acao?
+- [ ] Replay de debug abre artefatos salvos e reproduz a jornada?
+- [ ] WhatsApp message id, session id, order id e trace id aparecem correlacionados?
+- [ ] Conversas aprovadas tambem sao amostradas para detectar falhas silenciosas?
+- [ ] Guia de trace reading esta disponivel para incidentes comuns?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -1389,3109 +1317,840 @@ Você agora tem uma forma objetiva de avaliar harness quality. O ponto central �
 
 Use estes cartões durante uma revisão real. Cada cartão força uma pergunta objetiva, uma evidência e uma decisão. Eles existem para evitar que a checklist vire conversa abstrata.
 
+Em vez de quatro cartões mecanicamente iguais por foco, cada categoria agora tem cartões substantivos que combinam evidência, teste, trace e ownership quando isso muda a decisão de auditoria.
+
 ### 🧠 Cartões de auditoria - Contexto (Context Management)
 
-#### Cartão 001: Mapa de fontes de contexto - foco em evidência
+#### Cartão A1: Fontes de contexto e orçamento por chamada
 
-**Pergunta objetiva:** O harness demonstra que “Existe lista versionada de todas as fontes que entram no prompt: mensagens recentes, summary, state, catálogo, contrato e trace refs.” com foco em evidência?
+**Pergunta objetiva:** A chamada mostra exatamente quais fontes entraram no prompt e quanto do token budget cada bloco consumiu?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- trace de prompt com secoes nomeadas para system, critical_state, history_summary, recent_window, catalogo e turn_request
+- relatorio de tokens planejados e reais por bloco
+- politica versionada de entrada, permanencia e expiracao de contexto
+- exemplo de chamada longa do KODA com corte ou compactacao registrado
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** o revisor localiza uma chamada real, confere fontes e tokens por bloco, e entende por que cada bloco entrou sem depender de explicacao oral.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** o prompt aparece como texto unico, historico completo ou colecao de mensagens sem budget, sem fonte e sem motivo auditavel.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra um trace real de conversa longa.
+- Confira se `critical_state` aparece separado de historico recente.
+- Compare tokens planejados contra tokens reais.
+- Procure registro de bloco removido, compactado ou mantido.
+- Confirme que catalogo e contrato entram por referencia versionada.
+- Verifique se o limite e aplicado antes da chamada ao modelo.
 
-#### Cartão 002: Mapa de fontes de contexto - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual informacao critica ficaria fora se o historico crescesse mais 30 minutos?
+- Qual teste falha quando alguem remove a medicao de tokens?
+- Quem revisa a politica quando o modelo ou limite de contexto muda?
+- A regra pertence ao contexto ou deveria virar state duravel?
 
-**Pergunta objetiva:** O harness demonstra que “Existe lista versionada de todas as fontes que entram no prompt: mensagens recentes, summary, state, catálogo, contrato e trace refs.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A2: Recall de restricoes e compactacao segura
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** Uma restricao dita cedo pelo cliente sobrevive a resumo, corte de janela e turnos posteriores?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- teste automatizado de conversa longa com alergia, orcamento ou preferencia declarada no inicio
+- summary JSON com campos separados para restricoes, decisoes, preferencias e pendencias
+- state duravel apontando source_message_id da restricao
+- trace do Evaluator recebendo a restricao no momento da recomendacao
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** a restricao antiga reaparece em state, prompt e avaliacao quando afeta a decisao, e o teste mostra falha se ela for esquecida.
 
-#### Cartão 003: Mapa de fontes de contexto - foco em trace
+**FAIL:** a restricao existe apenas em historico bruto, resumo narrativo ou memoria do agente, sem teste que proteja contra esquecimento.
 
-**Pergunta objetiva:** O harness demonstra que “Existe lista versionada de todas as fontes que entram no prompt: mensagens recentes, summary, state, catálogo, contrato e trace refs.” com foco em trace?
+**Verificação em 30 segundos:**
+- Busque uma restricao alimentar no inicio do trace.
+- Verifique se ela foi promovida para `critical_state`.
+- Abra o summary e confira campo dedicado, nao texto solto.
+- Confirme que o Evaluator usa a mesma restricao.
+- Execute mentalmente o que acontece se a janela recente nao inclui a mensagem original.
+- Cheque se ha owner para politica de promocao para state.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- A compactacao preserva a evidencia original ou apenas a conclusao?
+- O que acontece quando summary e state entram em conflito?
+- Qual alerta indica perda de recall critico em producao?
+- Qual custo adicional essa protecao adiciona?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 004: Mapa de fontes de contexto - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Existe lista versionada de todas as fontes que entram no prompt: mensagens recentes, summary, state, catálogo, contrato e trace refs.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 005: Janela recente definida - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O harness limita a janela recente por número de mensagens ou tokens e registra o corte aplicado em cada turno.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 006: Janela recente definida - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O harness limita a janela recente por número de mensagens ou tokens e registra o corte aplicado em cada turno.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 007: Janela recente definida - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O harness limita a janela recente por número de mensagens ou tokens e registra o corte aplicado em cada turno.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 008: Janela recente definida - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O harness limita a janela recente por número de mensagens ou tokens e registra o corte aplicado em cada turno.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 009: Token budget medido - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Cada chamada registra tokens planejados e tokens reais por bloco, com limite máximo antes de chamar o modelo.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 010: Token budget medido - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Cada chamada registra tokens planejados e tokens reais por bloco, com limite máximo antes de chamar o modelo.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 011: Token budget medido - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Cada chamada registra tokens planejados e tokens reais por bloco, com limite máximo antes de chamar o modelo.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 012: Token budget medido - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada chamada registra tokens planejados e tokens reais por bloco, com limite máximo antes de chamar o modelo.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 013: Compaction estruturada - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Resumos antigos preservam decisões, restrições, pendências, preferências e audit refs em campos separados.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 014: Compaction estruturada - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Resumos antigos preservam decisões, restrições, pendências, preferências e audit refs em campos separados.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 015: Compaction estruturada - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Resumos antigos preservam decisões, restrições, pendências, preferências e audit refs em campos separados.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 016: Compaction estruturada - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Resumos antigos preservam decisões, restrições, pendências, preferências e audit refs em campos separados.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 017: Critério de promoção para state - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há regra objetiva para mover informação do contexto para state durável, como alergia, orçamento confirmado ou endereço.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 018: Critério de promoção para state - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há regra objetiva para mover informação do contexto para state durável, como alergia, orçamento confirmado ou endereço.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 019: Critério de promoção para state - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há regra objetiva para mover informação do contexto para state durável, como alergia, orçamento confirmado ou endereço.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 020: Critério de promoção para state - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há regra objetiva para mover informação do contexto para state durável, como alergia, orçamento confirmado ou endereço.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 021: Separação contexto/state/summary - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O documento de arquitetura define o que fica em context window, o que vira state e o que vira summary.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 022: Separação contexto/state/summary - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O documento de arquitetura define o que fica em context window, o que vira state e o que vira summary.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 023: Separação contexto/state/summary - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O documento de arquitetura define o que fica em context window, o que vira state e o que vira summary.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 024: Separação contexto/state/summary - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O documento de arquitetura define o que fica em context window, o que vira state e o que vira summary.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 025: Teste de recall crítico - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Existe cenário automatizado em que uma restrição dita cedo é relembrada corretamente após janela longa.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 026: Teste de recall crítico - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Existe cenário automatizado em que uma restrição dita cedo é relembrada corretamente após janela longa.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 027: Teste de recall crítico - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Existe cenário automatizado em que uma restrição dita cedo é relembrada corretamente após janela longa.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 028: Teste de recall crítico - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Existe cenário automatizado em que uma restrição dita cedo é relembrada corretamente após janela longa.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 029: Falha por excesso de tokens - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Quando o orçamento estoura, o harness falha antes da chamada ou compacta de forma controlada, nunca corta aleatoriamente.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 030: Falha por excesso de tokens - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Quando o orçamento estoura, o harness falha antes da chamada ou compacta de forma controlada, nunca corta aleatoriamente.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 031: Falha por excesso de tokens - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Quando o orçamento estoura, o harness falha antes da chamada ou compacta de forma controlada, nunca corta aleatoriamente.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 032: Falha por excesso de tokens - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Quando o orçamento estoura, o harness falha antes da chamada ou compacta de forma controlada, nunca corta aleatoriamente.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 📜 Cartões de auditoria - Contratos (Contracts/Sprint Contracts)
 
-#### Cartão 033: Inputs explícitos - foco em evidência
+#### Cartão A3: Interface contratual executavel
 
-**Pergunta objetiva:** O harness demonstra que “Cada contrato lista arquivos, campos e pré-condições obrigatórias para iniciar a etapa.” com foco em evidência?
+**Pergunta objetiva:** Cada etapa declara inputs, outputs, schema_version e criterios de sucesso antes de executar trabalho caro?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- sprint_contract.json ou documento equivalente versionado
+- schema de input e output com campos obrigatorios, tipos e exemplos
+- teste de contrato cobrindo input minimo valido e input invalido
+- trace mostrando o contrato usado por Planner, Generator ou Evaluator
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** um revisor consegue validar a fronteira sem ler codigo interno e encontra criterio objetivo para iniciar e concluir a etapa.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** a etapa depende de combinacao informal de prompt, comentario em PR ou conhecimento do autor sobre campos esperados.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra o contrato da feature revisada.
+- Marque inputs obrigatorios e pre-condicoes.
+- Marque outputs, tipos e exemplos.
+- Confira `schema_version` e owner.
+- Procure criterio de sucesso objetivo.
+- Confirme que teste falha com campo critico ausente.
 
-#### Cartão 034: Inputs explícitos - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual consumidor quebra se este output mudar?
+- O contrato define unidade de preco, moeda e disponibilidade?
+- Como uma versao antiga e rejeitada ou migrada?
+- A fronteira esta no contrato certo ou vazou para prompt?
 
-**Pergunta objetiva:** O harness demonstra que “Cada contrato lista arquivos, campos e pré-condições obrigatórias para iniciar a etapa.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A4: Falha e mudanca de contrato controladas
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** O contrato explica como falhar, recuperar e auditar alteracoes de interface?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- lista de failure modes para input invalido, timeout, dependencia indisponivel e output fora do schema
+- fallback ou stop condition por modo de falha
+- ADR, issue ou changelog para mudanca relevante de contrato
+- trace ou log registrando contrato rejeitado e motivo
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** a falha prevista produz estado seguro, mensagem auditavel e dono claro; mudancas de contrato tem motivo e impacto registrados.
 
-#### Cartão 035: Inputs explícitos - foco em trace
+**FAIL:** falhas sao tratadas por retry cego, excecao generica ou conversa oral, e mudancas de campo nao deixam rastro.
 
-**Pergunta objetiva:** O harness demonstra que “Cada contrato lista arquivos, campos e pré-condições obrigatórias para iniciar a etapa.” com foco em trace?
+**Verificação em 30 segundos:**
+- Leia a secao de failure handling.
+- Procure timeout e dependencia externa indisponivel.
+- Verifique se output fora do schema bloqueia a etapa.
+- Confira owner de manutencao do contrato.
+- Ache uma mudanca recente e seu motivo.
+- Confirme que o trace registra rejeicao de contrato.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- O que acontece se Product Discovery entrega preco em string?
+- Quem aprova quebra de compatibilidade?
+- A falha pausa a jornada ou deixa Fulfillment continuar?
+- Qual cliente seria afetado por aceitar output parcial?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 036: Inputs explícitos - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada contrato lista arquivos, campos e pré-condições obrigatórias para iniciar a etapa.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 037: Outputs verificáveis - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Cada output tem schema, campos obrigatórios, tipos esperados e exemplos válidos em documentação ou teste.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 038: Outputs verificáveis - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Cada output tem schema, campos obrigatórios, tipos esperados e exemplos válidos em documentação ou teste.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 039: Outputs verificáveis - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Cada output tem schema, campos obrigatórios, tipos esperados e exemplos válidos em documentação ou teste.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 040: Outputs verificáveis - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada output tem schema, campos obrigatórios, tipos esperados e exemplos válidos em documentação ou teste.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 041: Critério de sucesso - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O contrato define condição objetiva de conclusão, como `evaluation.decision == approved` e `score >= 85`.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 042: Critério de sucesso - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O contrato define condição objetiva de conclusão, como `evaluation.decision == approved` e `score >= 85`.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 043: Critério de sucesso - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O contrato define condição objetiva de conclusão, como `evaluation.decision == approved` e `score >= 85`.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 044: Critério de sucesso - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O contrato define condição objetiva de conclusão, como `evaluation.decision == approved` e `score >= 85`.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 045: Failure modes declarados - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O contrato lista pelo menos erro de input inválido, timeout, output inválido e dependência indisponível.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 046: Failure modes declarados - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O contrato lista pelo menos erro de input inválido, timeout, output inválido e dependência indisponível.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 047: Failure modes declarados - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O contrato lista pelo menos erro de input inválido, timeout, output inválido e dependência indisponível.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 048: Failure modes declarados - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O contrato lista pelo menos erro de input inválido, timeout, output inválido e dependência indisponível.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 049: Versionamento de interface - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Todo artefato possui `schema_version` e há regra de compatibilidade entre versões.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 050: Versionamento de interface - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Todo artefato possui `schema_version` e há regra de compatibilidade entre versões.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 051: Versionamento de interface - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Todo artefato possui `schema_version` e há regra de compatibilidade entre versões.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 052: Versionamento de interface - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Todo artefato possui `schema_version` e há regra de compatibilidade entre versões.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 053: Ownership único - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Para cada contrato existe um owner responsável por manter schema, rubrica e exemplos.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 054: Ownership único - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Para cada contrato existe um owner responsável por manter schema, rubrica e exemplos.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 055: Ownership único - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Para cada contrato existe um owner responsável por manter schema, rubrica e exemplos.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 056: Ownership único - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Para cada contrato existe um owner responsável por manter schema, rubrica e exemplos.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 057: Boundary test - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que envia input válido mínimo, input inválido e output fora do schema para a fronteira.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 058: Boundary test - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que envia input válido mínimo, input inválido e output fora do schema para a fronteira.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 059: Boundary test - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que envia input válido mínimo, input inválido e output fora do schema para a fronteira.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 060: Boundary test - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que envia input válido mínimo, input inválido e output fora do schema para a fronteira.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 061: Auditoria de alteração - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Toda mudança de contrato relevante aponta para ADR, issue ou changelog com motivo e impacto.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 062: Auditoria de alteração - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Toda mudança de contrato relevante aponta para ADR, issue ou changelog com motivo e impacto.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 063: Auditoria de alteração - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Toda mudança de contrato relevante aponta para ADR, issue ou changelog com motivo e impacto.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 064: Auditoria de alteração - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Toda mudança de contrato relevante aponta para ADR, issue ou changelog com motivo e impacto.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### ⚖️ Cartões de auditoria - Avaliação (Evaluation/Rubrics)
 
-#### Cartão 065: Dimensões definidas - foco em evidência
+#### Cartão A5: Rubrica com dimensoes, pesos e blockers
 
-**Pergunta objetiva:** O harness demonstra que “Rubrica lista dimensões nomeadas, como segurança, adequação, completude, consistência e formato.” com foco em evidência?
+**Pergunta objetiva:** A decisao de qualidade combina score ponderado com blockers absolutos para riscos criticos?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- rubric.md ou JSON com dimensoes nomeadas e pesos que somam 100%
+- threshold operacional explicito
+- blockers para alergia, preco divergente, estoque ausente, pagamento duplicado ou acao insegura
+- evaluation.json real com score por dimensao
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** a avaliacao reprova automaticamente uma violacao critica mesmo quando o score agregado e alto.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** a avaliacao usa nota unica, julgamento subjetivo ou autoaprovacao do Generator sem blockers verificaveis.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Some os pesos da rubrica.
+- Confirme threshold minimo.
+- Procure lista de blockers absolutos.
+- Abra uma avaliacao real.
+- Verifique score por dimensao.
+- Simule violacao de alergia com score alto.
 
-#### Cartão 066: Dimensões definidas - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual blocker teria evitado o incidente da Renata?
+- O score agregado pode mascarar risco de saude ou pagamento?
+- Quem calibrou os pesos?
+- Qual evidencia sustenta cada dimensao?
 
-**Pergunta objetiva:** O harness demonstra que “Rubrica lista dimensões nomeadas, como segurança, adequação, completude, consistência e formato.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A6: Independencia, evidencia e calibracao do Evaluator
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** O Evaluator julga com evidencias externas ao Generator e e calibrado contra exemplos reais?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- trace separando Generator e Evaluator
+- evaluation.json com citacao de campo, trace ref ou dado de catalogo por dimensao
+- calibration set com casos aprovados, reprovados e limitrofes
+- relatorio de falsos positivos e falsos negativos revisado por humano
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** o Evaluator recebe output e evidencias, produz justificativa auditavel por dimensao e tem calibracao periodica documentada.
 
-#### Cartão 067: Dimensões definidas - foco em trace
+**FAIL:** o Generator aprova o proprio trabalho ou o Evaluator aceita justificativa do Generator como prova suficiente.
 
-**Pergunta objetiva:** O harness demonstra que “Rubrica lista dimensões nomeadas, como segurança, adequação, completude, consistência e formato.” com foco em trace?
+**Verificação em 30 segundos:**
+- Confira se Generator e Evaluator sao etapas separadas.
+- Abra evidencias usadas em uma nota.
+- Veja se ha exemplos limitrofes.
+- Procure revisao humana de falso negativo.
+- Confirme replay de avaliacao.
+- Compare decisao atual com rubrica versionada.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- A avaliacao e reproduzivel sobre o mesmo output?
+- Que caso aprovado virou incidente depois?
+- O Evaluator acessa catalogo atual ou apenas texto gerado?
+- Qual dimensao mais diverge da revisao humana?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 068: Dimensões definidas - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Rubrica lista dimensões nomeadas, como segurança, adequação, completude, consistência e formato.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 069: Pesos somam 100% - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Os pesos da rubrica totalizam exatamente 100% e cada peso tem justificativa.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 070: Pesos somam 100% - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Os pesos da rubrica totalizam exatamente 100% e cada peso tem justificativa.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 071: Pesos somam 100% - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Os pesos da rubrica totalizam exatamente 100% e cada peso tem justificativa.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 072: Pesos somam 100% - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Os pesos da rubrica totalizam exatamente 100% e cada peso tem justificativa.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 073: Threshold operacional - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Existe nota mínima objetiva para aprovar, como `score >= 85`, e resultado abaixo disso reprova.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 074: Threshold operacional - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Existe nota mínima objetiva para aprovar, como `score >= 85`, e resultado abaixo disso reprova.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 075: Threshold operacional - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Existe nota mínima objetiva para aprovar, como `score >= 85`, e resultado abaixo disso reprova.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 076: Threshold operacional - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Existe nota mínima objetiva para aprovar, como `score >= 85`, e resultado abaixo disso reprova.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 077: Blockers absolutos - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Critérios como alergia violada, preço divergente ou pagamento duplicado reprovam mesmo com score alto.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 078: Blockers absolutos - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Critérios como alergia violada, preço divergente ou pagamento duplicado reprovam mesmo com score alto.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 079: Blockers absolutos - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Critérios como alergia violada, preço divergente ou pagamento duplicado reprovam mesmo com score alto.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 080: Blockers absolutos - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Critérios como alergia violada, preço divergente ou pagamento duplicado reprovam mesmo com score alto.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 081: Separação Generator/Evaluator - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O Evaluator recebe output e evidências, mas não depende da autoavaliação do Generator.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 082: Separação Generator/Evaluator - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O Evaluator recebe output e evidências, mas não depende da autoavaliação do Generator.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 083: Separação Generator/Evaluator - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O Evaluator recebe output e evidências, mas não depende da autoavaliação do Generator.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 084: Separação Generator/Evaluator - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O Evaluator recebe output e evidências, mas não depende da autoavaliação do Generator.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 085: Evidência por dimensão - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Cada nota inclui citação de campo, trace ref ou dado usado para decidir.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 086: Evidência por dimensão - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Cada nota inclui citação de campo, trace ref ou dado usado para decidir.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 087: Evidência por dimensão - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Cada nota inclui citação de campo, trace ref ou dado usado para decidir.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 088: Evidência por dimensão - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada nota inclui citação de campo, trace ref ou dado usado para decidir.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 089: Calibração periódica - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há amostra revisada por humano para medir falso positivo e falso negativo da rubrica.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 090: Calibração periódica - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há amostra revisada por humano para medir falso positivo e falso negativo da rubrica.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 091: Calibração periódica - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há amostra revisada por humano para medir falso positivo e falso negativo da rubrica.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 092: Calibração periódica - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há amostra revisada por humano para medir falso positivo e falso negativo da rubrica.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 093: Replay de avaliação - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “É possível reexecutar a avaliação sobre o mesmo output e obter decisão comparável.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 094: Replay de avaliação - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “É possível reexecutar a avaliação sobre o mesmo output e obter decisão comparável.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 095: Replay de avaliação - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “É possível reexecutar a avaliação sobre o mesmo output e obter decisão comparável.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 096: Replay de avaliação - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “É possível reexecutar a avaliação sobre o mesmo output e obter decisão comparável.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 💾 Cartões de auditoria - Persistência (State Persistence)
 
-#### Cartão 097: Checkpoint por fase - foco em evidência
+#### Cartão A7: Checkpoint, schema e recovery real
 
-**Pergunta objetiva:** O harness demonstra que “Cada fase longa salva checkpoint antes e depois de ações caras ou irreversíveis.” com foco em evidência?
+**Pergunta objetiva:** O estado critico fica salvo em formato versionado e a jornada retoma corretamente apos crash?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- state files ou tabelas com `schema_version`, timestamps, owner e campos obrigatorios
+- checkpoint log antes e depois de acoes caras ou irreversiveis
+- teste que mata o processo e retoma do ultimo checkpoint
+- procedimento de restore documentado
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** o revisor consegue identificar ultimo checkpoint valido e demonstrar como o processo retoma sem perder carrinho, restricoes ou avaliacao.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** estado critico vive apenas em memoria, variavel de worker ou historico conversacional sem recovery testado.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra um state real de sessao.
+- Confira schema_version e timestamps.
+- Localize checkpoint antes de pagamento ou estoque.
+- Leia o teste de crash.
+- Verifique owner do schema.
+- Confirme que restart nao apaga carrinho ou restricao.
 
-#### Cartão 098: Checkpoint por fase - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual campo minimo permite retomar a jornada?
+- O que acontece se o deploy reinicia entre avaliacao e pedido?
+- Quem migra schema antigo?
+- Qual dado pessoal deve expirar?
 
-**Pergunta objetiva:** O harness demonstra que “Cada fase longa salva checkpoint antes e depois de ações caras ou irreversíveis.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A8: Replay, atomicidade e backend escolhido
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** Os artefatos persistidos permitem replay auditavel e escrita segura sob falha parcial?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- replay script ou modo diagnostico com inputs salvos
+- trace com refs para plan, generation, evaluation, status e outputs
+- implementacao ou padrao documentado de write `.tmp` seguido de rename atomico
+- ADR justificando files, SQLite, Redis ou banco remoto por volume, concorrencia e auditabilidade
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** uma decisao pode ser reconstruida com artefatos salvos e nenhum leitor consome estado parcial.
 
-#### Cartão 099: Checkpoint por fase - foco em trace
+**FAIL:** replay exige memoria do time, logs soltos ou reexecucao manual; arquivos podem ficar parcialmente escritos.
 
-**Pergunta objetiva:** O harness demonstra que “Cada fase longa salva checkpoint antes e depois de ações caras ou irreversíveis.” com foco em trace?
+**Verificação em 30 segundos:**
+- Abra pasta de trace de uma sessao.
+- Siga refs ate cada artefato persistido.
+- Confirme escrita atomica no padrao usado.
+- Verifique se leitores ignoram `.tmp`.
+- Leia justificativa do backend.
+- Procure evidencia de restore ou replay recente.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- O backend suporta concorrencia atual?
+- Que artefato falta para reproduzir uma decisao?
+- Como detectar arquivo parcial?
+- Backup foi restaurado ou apenas configurado?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 100: Checkpoint por fase - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada fase longa salva checkpoint antes e depois de ações caras ou irreversíveis.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 101: Schema de estado - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “State files ou tabelas possuem campos obrigatórios, `schema_version`, timestamps e owner.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 102: Schema de estado - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “State files ou tabelas possuem campos obrigatórios, `schema_version`, timestamps e owner.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 103: Schema de estado - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “State files ou tabelas possuem campos obrigatórios, `schema_version`, timestamps e owner.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 104: Schema de estado - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “State files ou tabelas possuem campos obrigatórios, `schema_version`, timestamps e owner.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 105: Recovery testado - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que mata o processo no meio da jornada e verifica retomada a partir do último checkpoint.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 106: Recovery testado - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que mata o processo no meio da jornada e verifica retomada a partir do último checkpoint.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 107: Recovery testado - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que mata o processo no meio da jornada e verifica retomada a partir do último checkpoint.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 108: Recovery testado - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que mata o processo no meio da jornada e verifica retomada a partir do último checkpoint.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 109: Replay determinístico - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Um trace salvo contém inputs suficientes para reexecutar Planner, Generator e Evaluator em modo diagnóstico.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 110: Replay determinístico - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Um trace salvo contém inputs suficientes para reexecutar Planner, Generator e Evaluator em modo diagnóstico.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 111: Replay determinístico - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Um trace salvo contém inputs suficientes para reexecutar Planner, Generator e Evaluator em modo diagnóstico.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 112: Replay determinístico - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Um trace salvo contém inputs suficientes para reexecutar Planner, Generator e Evaluator em modo diagnóstico.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 113: Atomic write - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Arquivos JSON são escritos em `.tmp` e publicados com rename atômico.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 114: Atomic write - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Arquivos JSON são escritos em `.tmp` e publicados com rename atômico.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 115: Atomic write - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Arquivos JSON são escritos em `.tmp` e publicados com rename atômico.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 116: Atomic write - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Arquivos JSON são escritos em `.tmp` e publicados com rename atômico.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 117: Retenção definida - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Existe política de retenção para state, traces e dados pessoais, com justificativa de negócio.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 118: Retenção definida - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Existe política de retenção para state, traces e dados pessoais, com justificativa de negócio.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 119: Retenção definida - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Existe política de retenção para state, traces e dados pessoais, com justificativa de negócio.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 120: Retenção definida - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Existe política de retenção para state, traces e dados pessoais, com justificativa de negócio.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 121: Backups verificáveis - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Backup é restaurado periodicamente em ambiente seguro e a restauração é documentada.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 122: Backups verificáveis - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Backup é restaurado periodicamente em ambiente seguro e a restauração é documentada.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 123: Backups verificáveis - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Backup é restaurado periodicamente em ambiente seguro e a restauração é documentada.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 124: Backups verificáveis - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Backup é restaurado periodicamente em ambiente seguro e a restauração é documentada.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 125: Escolha de backend - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “A arquitetura explica por que usa files, SQLite, Redis ou banco, considerando concorrência, queries e operação.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 126: Escolha de backend - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “A arquitetura explica por que usa files, SQLite, Redis ou banco, considerando concorrência, queries e operação.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 127: Escolha de backend - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “A arquitetura explica por que usa files, SQLite, Redis ou banco, considerando concorrência, queries e operação.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 128: Escolha de backend - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “A arquitetura explica por que usa files, SQLite, Redis ou banco, considerando concorrência, queries e operação.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 🤝 Cartões de auditoria - Coordenação (Multi-Agent Coordination)
 
-#### Cartão 129: Lock para recurso compartilhado - foco em evidência
+#### Cartão A9: Escrita compartilhada sem race condition
 
-**Pergunta objetiva:** O harness demonstra que “Qualquer escrita em pedido, carrinho, perfil ou estoque usa lock, transação ou fila serializadora.” com foco em evidência?
+**Pergunta objetiva:** Agentes que alteram carrinho, pedido, perfil ou estoque usam lock, transacao ou fila serializadora?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- lock.json com owner, recurso, timestamp e TTL
+- teste concorrente disparando dois agentes sobre o mesmo recurso
+- codigo ou documento de atomic publish
+- trace mostrando aquisicao, escrita e liberacao do lock
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** duas execucoes concorrentes preservam consistencia e o trace mostra qual agente escreveu primeiro.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** agentes escrevem no mesmo arquivo, pedido ou carrinho por timing favoravel sem bloqueio verificavel.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Identifique recurso compartilhado.
+- Procure lock, transacao ou fila.
+- Confira TTL e owner.
+- Abra teste concorrente.
+- Verifique idempotencia do reprocessamento.
+- Confirme que output final nao aparece parcial.
 
-#### Cartão 130: Lock para recurso compartilhado - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual race condition duplicaria pedido?
+- O lock preso tem recuperacao segura?
+- Reprocessar webhook duplica estoque reservado?
+- O teste falha sem lock?
 
-**Pergunta objetiva:** O harness demonstra que “Qualquer escrita em pedido, carrinho, perfil ou estoque usa lock, transação ou fila serializadora.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A10: Protocolo, status e ordem entre agentes
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** A colaboracao multi-agent segue protocolo explicito de status, dependencias e ids correlacionados?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- status files com `pending`, `running`, `completed` ou `failed` e motivo
+- schema de protocolo com `correlation_id`, `agent_id`, `schema_version` e `audit_refs`
+- grafo ou contrato de dependencias entre Planner, Generator, Evaluator, Order e Fulfillment
+- trace ponta a ponta mostrando ordem real
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** um novo dev consegue prever quem pode ler, escrever e prosseguir em cada fase, e o trace confirma a ordem executada.
 
-#### Cartão 131: Lock para recurso compartilhado - foco em trace
+**FAIL:** agentes descobrem progresso por polling informal, nomes de arquivo soltos ou suposicao de que outro agente ja terminou.
 
-**Pergunta objetiva:** O harness demonstra que “Qualquer escrita em pedido, carrinho, perfil ou estoque usa lock, transação ou fila serializadora.” com foco em trace?
+**Verificação em 30 segundos:**
+- Abra o status atual da jornada.
+- Confira timestamps e motivo de falha.
+- Leia schema do protocolo JSON.
+- Verifique dependencia Fulfillment apos avaliacao aprovada.
+- Siga correlation_id em todo trace.
+- Procure audit refs nos handoffs.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- Quem decide que a etapa esta completa?
+- O que impede Fulfillment antes de Evaluation?
+- Como um agente reage a status `failed`?
+- O protocolo mudou sem versionamento?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 132: Lock para recurso compartilhado - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Qualquer escrita em pedido, carrinho, perfil ou estoque usa lock, transação ou fila serializadora.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 133: Status visível - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Cada agente publica `pending`, `running`, `completed` ou `failed` com timestamp e motivo.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 134: Status visível - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Cada agente publica `pending`, `running`, `completed` ou `failed` com timestamp e motivo.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 135: Status visível - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Cada agente publica `pending`, `running`, `completed` ou `failed` com timestamp e motivo.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 136: Status visível - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada agente publica `pending`, `running`, `completed` ou `failed` com timestamp e motivo.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 137: JSON protocol estável - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Mensagens entre agentes seguem schema com `correlation_id`, `agent_id`, `schema_version` e `audit_refs`.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 138: JSON protocol estável - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Mensagens entre agentes seguem schema com `correlation_id`, `agent_id`, `schema_version` e `audit_refs`.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 139: JSON protocol estável - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Mensagens entre agentes seguem schema com `correlation_id`, `agent_id`, `schema_version` e `audit_refs`.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 140: JSON protocol estável - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Mensagens entre agentes seguem schema com `correlation_id`, `agent_id`, `schema_version` e `audit_refs`.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 141: Atomic publish - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Outputs finais só aparecem quando completos; leitores ignoram arquivos `.tmp`.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 142: Atomic publish - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Outputs finais só aparecem quando completos; leitores ignoram arquivos `.tmp`.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 143: Atomic publish - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Outputs finais só aparecem quando completos; leitores ignoram arquivos `.tmp`.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 144: Atomic publish - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Outputs finais só aparecem quando completos; leitores ignoram arquivos `.tmp`.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 145: Idempotência - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Reprocessar o mesmo evento não cria pedido duplicado nem reserva estoque duas vezes.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 146: Idempotência - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Reprocessar o mesmo evento não cria pedido duplicado nem reserva estoque duas vezes.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 147: Idempotência - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Reprocessar o mesmo evento não cria pedido duplicado nem reserva estoque duas vezes.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 148: Idempotência - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Reprocessar o mesmo evento não cria pedido duplicado nem reserva estoque duas vezes.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 149: Timeout de lock - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Locks têm TTL, owner e regra de recuperação para evitar deadlock permanente.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 150: Timeout de lock - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Locks têm TTL, owner e regra de recuperação para evitar deadlock permanente.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 151: Timeout de lock - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Locks têm TTL, owner e regra de recuperação para evitar deadlock permanente.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 152: Timeout de lock - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Locks têm TTL, owner e regra de recuperação para evitar deadlock permanente.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 153: Ordem de execução - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Dependências entre agentes são declaradas, por exemplo Fulfillment só roda após Evaluation aprovado.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 154: Ordem de execução - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Dependências entre agentes são declaradas, por exemplo Fulfillment só roda após Evaluation aprovado.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 155: Ordem de execução - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Dependências entre agentes são declaradas, por exemplo Fulfillment só roda após Evaluation aprovado.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 156: Ordem de execução - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Dependências entre agentes são declaradas, por exemplo Fulfillment só roda após Evaluation aprovado.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 157: Teste de concorrência - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que dispara dois agentes sobre o mesmo recurso e verifica ausência de race condition.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 158: Teste de concorrência - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que dispara dois agentes sobre o mesmo recurso e verifica ausência de race condition.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 159: Teste de concorrência - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que dispara dois agentes sobre o mesmo recurso e verifica ausência de race condition.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 160: Teste de concorrência - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há teste que dispara dois agentes sobre o mesmo recurso e verifica ausência de race condition.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 🛡️ Cartões de auditoria - Segurança & Guardrails
 
-#### Cartão 161: Input validation - foco em evidência
+#### Cartão A11: Validacao de entrada, saida e constraints
 
-**Pergunta objetiva:** O harness demonstra que “Mensagens, webhook payloads e tool results passam por schema e limites de tamanho antes de uso.” com foco em evidência?
+**Pergunta objetiva:** Dados externos e respostas finais passam por validacao objetiva antes de influenciar prompt ou cliente?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- schemas de webhook, mensagem e tool result
+- validator logs de input e output
+- constraint checker para alergia, orcamento, regiao, estoque e catalogo
+- casos de teste de prompt injection e output invalido
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** inputs invalidos sao rejeitados antes do prompt e outputs perigosos sao bloqueados antes do WhatsApp ou acao externa.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** cliente, tool output ou texto gerado entram sem delimitacao e a resposta final depende de bom comportamento do modelo.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra schema de entrada.
+- Confira limite de tamanho.
+- Procure delimitacao de conteudo nao confiavel.
+- Veja validacao contra catalogo.
+- Confirme checker de restricoes do cliente.
+- Leia log de uma rejeicao real.
 
-#### Cartão 162: Input validation - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- O cliente pode redefinir instrucao de sistema?
+- Produto fora de estoque passa pela validacao?
+- A mensagem final cita dado medico sem checagem?
+- Qual teste cobre prompt injection?
 
-**Pergunta objetiva:** O harness demonstra que “Mensagens, webhook payloads e tool results passam por schema e limites de tamanho antes de uso.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A12: Falha fechada, fallback e acoes irreversiveis
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** Guardrails bloqueiam ou pausam quando o risco envolve pagamento, dados pessoais, saude, estoque ou promessa comercial?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- policy de guardrails com fail-closed para riscos criticos
+- fallback handlers especificos para confirmacao, humano ou pausa
+- budget guard para tokens, retries, tool calls e duracao
+- audit log de aprovacao antes de pagamento, estoque ou envio ao cliente
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** acoes irreversiveis so executam depois de aprovacao validada; falhas conhecidas entram em fallback seguro e rastreavel.
 
-#### Cartão 163: Input validation - foco em trace
+**FAIL:** o harness tenta de novo cegamente, envia resposta parcial ou executa pagamento/estoque sem aprovacao final.
 
-**Pergunta objetiva:** O harness demonstra que “Mensagens, webhook payloads e tool results passam por schema e limites de tamanho antes de uso.” com foco em trace?
+**Verificação em 30 segundos:**
+- Procure regra fail-closed.
+- Abra fallback de restricao ambigua.
+- Confira limites de budget.
+- Verifique aprovacao antes de pagamento.
+- Leia audit log de acao irreversivel.
+- Confirme owner de cada guardrail critico.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- Fallback informa risco ao cliente ou esconde incerteza?
+- Retry pode multiplicar pagamento?
+- Budget guard para a jornada toda existe?
+- Qual guardrail falharia se removido amanha?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 164: Input validation - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Mensagens, webhook payloads e tool results passam por schema e limites de tamanho antes de uso.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 165: Output validation - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Resposta final é validada contra formato, política comercial, restrições médicas e dados de catálogo.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 166: Output validation - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Resposta final é validada contra formato, política comercial, restrições médicas e dados de catálogo.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 167: Output validation - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Resposta final é validada contra formato, política comercial, restrições médicas e dados de catálogo.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 168: Output validation - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Resposta final é validada contra formato, política comercial, restrições médicas e dados de catálogo.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 169: Constraint checker - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Restrições do cliente, como alergia, orçamento e região, são checadas por código ou evaluator independente.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 170: Constraint checker - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Restrições do cliente, como alergia, orçamento e região, são checadas por código ou evaluator independente.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 171: Constraint checker - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Restrições do cliente, como alergia, orçamento e região, são checadas por código ou evaluator independente.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 172: Constraint checker - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Restrições do cliente, como alergia, orçamento e região, são checadas por código ou evaluator independente.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 173: Fallback handler - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Cada falha conhecida tem fallback seguro: pedir confirmação, escalar para humano ou pausar a ação.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 174: Fallback handler - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Cada falha conhecida tem fallback seguro: pedir confirmação, escalar para humano ou pausar a ação.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 175: Fallback handler - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Cada falha conhecida tem fallback seguro: pedir confirmação, escalar para humano ou pausar a ação.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 176: Fallback handler - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada falha conhecida tem fallback seguro: pedir confirmação, escalar para humano ou pausar a ação.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 177: Budget guard - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há limite explícito para tokens, custo, número de retries, tool calls e duração por turno.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 178: Budget guard - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há limite explícito para tokens, custo, número de retries, tool calls e duração por turno.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 179: Budget guard - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há limite explícito para tokens, custo, número de retries, tool calls e duração por turno.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 180: Budget guard - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há limite explícito para tokens, custo, número de retries, tool calls e duração por turno.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 181: Format validator - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “JSON, markdown operacional, links e mensagens WhatsApp têm validação objetiva antes do envio.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 182: Format validator - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “JSON, markdown operacional, links e mensagens WhatsApp têm validação objetiva antes do envio.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 183: Format validator - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “JSON, markdown operacional, links e mensagens WhatsApp têm validação objetiva antes do envio.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 184: Format validator - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “JSON, markdown operacional, links e mensagens WhatsApp têm validação objetiva antes do envio.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 185: Proteção contra prompt injection - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Conteúdo de cliente e tool output é delimitado e não pode redefinir instruções do sistema.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 186: Proteção contra prompt injection - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Conteúdo de cliente e tool output é delimitado e não pode redefinir instruções do sistema.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 187: Proteção contra prompt injection - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Conteúdo de cliente e tool output é delimitado e não pode redefinir instruções do sistema.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 188: Proteção contra prompt injection - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Conteúdo de cliente e tool output é delimitado e não pode redefinir instruções do sistema.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 189: Bloqueio de ação irreversível - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Pagamento, estoque e envio ao cliente exigem aprovação validada antes de execução.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 190: Bloqueio de ação irreversível - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Pagamento, estoque e envio ao cliente exigem aprovação validada antes de execução.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 191: Bloqueio de ação irreversível - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Pagamento, estoque e envio ao cliente exigem aprovação validada antes de execução.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 192: Bloqueio de ação irreversível - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Pagamento, estoque e envio ao cliente exigem aprovação validada antes de execução.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 🧬 Cartões de auditoria - Evolução (Harness Evolution)
 
-#### Cartão 193: Fase declarada - foco em evidência
+#### Cartão A13: Fase, efetividade e custo do componente
 
-**Pergunta objetiva:** O harness demonstra que “Cada componente do harness tem fase atual e data da última revisão.” com foco em evidência?
+**Pergunta objetiva:** Cada protecao do harness tem fase declarada, metricas de efetividade e custo operacional medido?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- inventario de componentes com BUILD, STABILIZE, SIMPLIFY ou REMOVE
+- dashboard de falhas reais prevenidas, falsos positivos e falsos negativos
+- medicao de tokens, latencia, manutencao e onboarding
+- owner e data da ultima revisao
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** o time sabe quais componentes ainda estao provando valor, quais custam caro e quais precisam estabilizar ou simplificar.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** componentes antigos continuam por inercia, sem metricas de beneficio, custo ou dono atual.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra inventario de harness.
+- Confira fase atual.
+- Veja metrica de falha prevenida.
+- Compare custo de tokens e latencia.
+- Procure owner e ultima revisao.
+- Identifique componente sem uso recente.
 
-#### Cartão 194: Fase declarada - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual componente virou peso morto apos upgrade de modelo?
+- O custo de onboarding justifica a protecao?
+- Que metrica cairia se removermos este nivel?
+- Quem decide transicao de fase?
 
-**Pergunta objetiva:** O harness demonstra que “Cada componente do harness tem fase atual e data da última revisão.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A14: Simplificacao, remocao e rollback seguro
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** Simplificar ou remover uma protecao exige evidencia, experimento controlado e volta segura?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- criterio de simplificacao com periodo minimo e shadow test ou A/B controlado
+- plano de rollback por feature flag, versao anterior ou procedimento testado
+- ADR ou changelog explicando contexto, alternativas e consequencias
+- aprovacao registrada para remover guardrail critico
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** a remocao so ocorre depois de evidencia comparativa e pode ser revertida rapidamente sem perder auditabilidade.
 
-#### Cartão 195: Fase declarada - foco em trace
+**FAIL:** o time remove guardrail porque parece redundante, sem shadow mode, sem rollback e sem registro de risco aceito.
 
-**Pergunta objetiva:** O harness demonstra que “Cada componente do harness tem fase atual e data da última revisão.” com foco em trace?
+**Verificação em 30 segundos:**
+- Leia criterio de remocao.
+- Verifique resultado de shadow test.
+- Confirme feature flag ou rollback.
+- Abra ADR da mudanca.
+- Procure aprovacao para guardrail critico.
+- Cheque monitoramento pos-remocao.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- Qual regressao o shadow mode detectaria?
+- Quem pode reativar a protecao?
+- A remocao muda contrato ou rubrica?
+- Qual alerta acompanha o rollout?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 196: Fase declarada - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada componente do harness tem fase atual e data da última revisão.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 197: Métricas de efetividade - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Dashboard mostra quantas falhas reais o componente preveniu no período avaliado.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 198: Métricas de efetividade - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Dashboard mostra quantas falhas reais o componente preveniu no período avaliado.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 199: Métricas de efetividade - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Dashboard mostra quantas falhas reais o componente preveniu no período avaliado.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 200: Métricas de efetividade - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Dashboard mostra quantas falhas reais o componente preveniu no período avaliado.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 201: Custo total medido - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Tokens, latência, manutenção, complexidade de onboarding e falsos positivos são medidos.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 202: Custo total medido - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Tokens, latência, manutenção, complexidade de onboarding e falsos positivos são medidos.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 203: Custo total medido - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Tokens, latência, manutenção, complexidade de onboarding e falsos positivos são medidos.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 204: Custo total medido - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Tokens, latência, manutenção, complexidade de onboarding e falsos positivos são medidos.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 205: Critério de simplificação - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há limite objetivo, como baixa efetividade por 60 dias e shadow test sem regressão relevante.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 206: Critério de simplificação - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há limite objetivo, como baixa efetividade por 60 dias e shadow test sem regressão relevante.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 207: Critério de simplificação - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há limite objetivo, como baixa efetividade por 60 dias e shadow test sem regressão relevante.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 208: Critério de simplificação - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há limite objetivo, como baixa efetividade por 60 dias e shadow test sem regressão relevante.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 209: Critério de remoção - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Remoção exige evidência, plano de rollback e aprovação registrada.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 210: Critério de remoção - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Remoção exige evidência, plano de rollback e aprovação registrada.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 211: Critério de remoção - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Remoção exige evidência, plano de rollback e aprovação registrada.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 212: Critério de remoção - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Remoção exige evidência, plano de rollback e aprovação registrada.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 213: Rollback pronto - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Existe feature flag, versão anterior ou procedimento de restauração testado.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 214: Rollback pronto - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Existe feature flag, versão anterior ou procedimento de restauração testado.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 215: Rollback pronto - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Existe feature flag, versão anterior ou procedimento de restauração testado.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 216: Rollback pronto - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Existe feature flag, versão anterior ou procedimento de restauração testado.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 217: ADR ou changelog - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Mudanças estruturais têm documento com contexto, decisão, alternativas e consequências.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 218: ADR ou changelog - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Mudanças estruturais têm documento com contexto, decisão, alternativas e consequências.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 219: ADR ou changelog - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Mudanças estruturais têm documento com contexto, decisão, alternativas e consequências.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 220: ADR ou changelog - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Mudanças estruturais têm documento com contexto, decisão, alternativas e consequências.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 221: Revisão periódica - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O time revisa componentes após upgrade de modelo ou a cada ciclo trimestral.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 222: Revisão periódica - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O time revisa componentes após upgrade de modelo ou a cada ciclo trimestral.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 223: Revisão periódica - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O time revisa componentes após upgrade de modelo ou a cada ciclo trimestral.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 224: Revisão periódica - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O time revisa componentes após upgrade de modelo ou a cada ciclo trimestral.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
 
 ### 📡 Cartões de auditoria - Observabilidade (Traces/Monitoring)
 
-#### Cartão 225: Trace completo - foco em evidência
+#### Cartão A15: Trace reconstrutivel de ponta a ponta
 
-**Pergunta objetiva:** O harness demonstra que “Cada jornada possui trace com fases, timestamps, agent_id, input refs, output refs e decisão final.” com foco em evidência?
+**Pergunta objetiva:** O trace permite explicar o que aconteceu, por que aconteceu e qual fronteira decidiu?
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Evidência aceitável:**
+- trace com fases, timestamps, agent_id, input refs, output refs e decisao final
+- correlacao entre WhatsApp message id, session id, order id e trace id
+- refs para contexto, contrato, geracao, avaliacao, guardrail, fallback e output
+- exemplo de incidente reconstruido sem reencenar a jornada
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**PASS:** um revisor reconstrói a decisao final abrindo artefatos e refs, sem depender de memoria do autor ou rerun do modelo.
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**FAIL:** logs sao soltos, incompletos ou centrados em texto do modelo, sem conectar entrada, avaliacao, validacao e acao final.
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Verificação em 30 segundos:**
+- Abra trace de uma jornada real.
+- Siga correlation_id entre sistemas.
+- Localize contexto usado na chamada.
+- Abra contrato e avaliacao referenciados.
+- Confira guardrail ou fallback acionado.
+- Explique a decisao final em uma frase.
 
-#### Cartão 226: Trace completo - foco em teste
+**Perguntas de follow-up quando houver dúvida:**
+- Qual parte do trace aponta a causa raiz?
+- O incidente pode ser debugado sem repetir chamada ao modelo?
+- A decisao errada veio de contexto, rubrica ou guardrail?
+- Qual artefato faltaria em auditoria externa?
 
-**Pergunta objetiva:** O harness demonstra que “Cada jornada possui trace com fases, timestamps, agent_id, input refs, output refs e decisão final.” com foco em teste?
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+#### Cartão A16: Monitoramento acionavel e aprendizagem operacional
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
+**Pergunta objetiva:** Dashboards, alertas e amostragem mostram qualidade, custo, risco e drift de comportamento?
 
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
+**Evidência aceitável:**
+- dashboard com latencia, custo, aprovacao de rubrica, fallback rate, error rate e metricas de negocio
+- alert rules com threshold, severidade, owner e runbook
+- audit log imutavel para pagamento, estoque, dados pessoais e promessa ao cliente
+- amostragem de conversas aprovadas e guia de trace reading para o time
 
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**PASS:** alertas orientam primeira acao, dashboards mostram sintomas tecnicos e de negocio, e amostras aprovadas detectam falhas silenciosas.
 
-#### Cartão 227: Trace completo - foco em trace
+**FAIL:** observabilidade mede apenas volume e latencia, sem qualidade, guardrails, owner de alerta ou aprendizado pos-incidente.
 
-**Pergunta objetiva:** O harness demonstra que “Cada jornada possui trace com fases, timestamps, agent_id, input refs, output refs e decisão final.” com foco em trace?
+**Verificação em 30 segundos:**
+- Abra dashboard da feature.
+- Veja fallback rate e score de rubrica.
+- Confira alerta com owner.
+- Leia runbook da primeira acao.
+- Procure amostra de conversas aprovadas.
+- Verifique guia de trace reading.
 
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
+**Perguntas de follow-up quando houver dúvida:**
+- Qual alerta teria pego recomendacao com lactose?
+- Quem acorda quando fallback sobe?
+- Dashboards separam falha tecnica de risco ao cliente?
+- Como findings viram melhoria de rubrica ou contrato?
 
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 228: Trace completo - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Cada jornada possui trace com fases, timestamps, agent_id, input refs, output refs e decisão final.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 229: Audit log crítico - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Ações sobre pagamento, estoque, dados pessoais e promessa ao cliente entram em audit log imutável.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 230: Audit log crítico - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Ações sobre pagamento, estoque, dados pessoais e promessa ao cliente entram em audit log imutável.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 231: Audit log crítico - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Ações sobre pagamento, estoque, dados pessoais e promessa ao cliente entram em audit log imutável.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 232: Audit log crítico - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Ações sobre pagamento, estoque, dados pessoais e promessa ao cliente entram em audit log imutável.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 233: Dashboard operacional - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Há métricas de latência, custo, aprovação de rubrica, fallback rate e error rate por feature.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 234: Dashboard operacional - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Há métricas de latência, custo, aprovação de rubrica, fallback rate e error rate por feature.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 235: Dashboard operacional - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Há métricas de latência, custo, aprovação de rubrica, fallback rate e error rate por feature.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 236: Dashboard operacional - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Há métricas de latência, custo, aprovação de rubrica, fallback rate e error rate por feature.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 237: Alertas acionáveis - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Alertas têm threshold, owner, severidade e runbook com primeira ação clara.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 238: Alertas acionáveis - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Alertas têm threshold, owner, severidade e runbook com primeira ação clara.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 239: Alertas acionáveis - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Alertas têm threshold, owner, severidade e runbook com primeira ação clara.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 240: Alertas acionáveis - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Alertas têm threshold, owner, severidade e runbook com primeira ação clara.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 241: Debug por replay - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Engenheiro consegue abrir uma pasta ou registro e reproduzir a jornada com os artefatos salvos.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 242: Debug por replay - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Engenheiro consegue abrir uma pasta ou registro e reproduzir a jornada com os artefatos salvos.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 243: Debug por replay - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Engenheiro consegue abrir uma pasta ou registro e reproduzir a jornada com os artefatos salvos.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 244: Debug por replay - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Engenheiro consegue abrir uma pasta ou registro e reproduzir a jornada com os artefatos salvos.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 245: Correlação ponta a ponta - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “WhatsApp message id, session id, order id e trace id aparecem conectados.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 246: Correlação ponta a ponta - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “WhatsApp message id, session id, order id e trace id aparecem conectados.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 247: Correlação ponta a ponta - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “WhatsApp message id, session id, order id e trace id aparecem conectados.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 248: Correlação ponta a ponta - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “WhatsApp message id, session id, order id e trace id aparecem conectados.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 249: Amostragem de qualidade - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “Conversas aprovadas também são amostradas para detectar falhas silenciosas.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 250: Amostragem de qualidade - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “Conversas aprovadas também são amostradas para detectar falhas silenciosas.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 251: Amostragem de qualidade - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “Conversas aprovadas também são amostradas para detectar falhas silenciosas.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 252: Amostragem de qualidade - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “Conversas aprovadas também são amostradas para detectar falhas silenciosas.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 253: Leitura de trace treinada - foco em evidência
-
-**Pergunta objetiva:** O harness demonstra que “O time possui guia e exemplos de trace reading para incidentes comuns.” com foco em evidência?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 254: Leitura de trace treinada - foco em teste
-
-**Pergunta objetiva:** O harness demonstra que “O time possui guia e exemplos de trace reading para incidentes comuns.” com foco em teste?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 255: Leitura de trace treinada - foco em trace
-
-**Pergunta objetiva:** O harness demonstra que “O time possui guia e exemplos de trace reading para incidentes comuns.” com foco em trace?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
-
-#### Cartão 256: Leitura de trace treinada - foco em owner
-
-**Pergunta objetiva:** O harness demonstra que “O time possui guia e exemplos de trace reading para incidentes comuns.” com foco em owner?
-
-**Evidência aceitável:** artefato versionado, teste executável, trace real, dashboard, schema, ADR ou log de auditoria que possa ser revisado por outra pessoa.
-
-**PASS:** uma pessoa nova no time consegue localizar a evidência, entender a regra e reproduzir a verificação sem pedir contexto oral.
-
-**FAIL:** a resposta depende de memória do autor, comportamento esperado do modelo, print solto, comentário em chat ou “sempre funcionou assim”.
-
-**Ação recomendada:** criar ou atualizar o artefato mínimo que torna a regra verificável antes de aumentar autonomia do agente.
+**Ação recomendada:** registre o menor artefato verificável que transforma a resposta em PASS ou declare risco aceito com owner e data.
 
 ---
+
+### Matriz complementar de evidências para os cartões
+
+Use esta matriz para registrar achados sem recriar cartões duplicados. Ela mantém a revisão objetiva: sinais de risco, campos mínimos de evidência e decisão esperada por categoria.
+
+#### Contexto - sinais de risco que mudam a decisão
+
+- Fonte ausente no prompt apesar de estar no contrato ativo.
+- Token budget calculado depois da chamada ao modelo.
+- Resumo narrativo misturando restricao critica com conversa casual.
+- State e summary discordando sobre alergia, orcamento ou endereco.
+- Trace sem motivo para remover bloco antigo.
+- Catalogo inteiro enviado sem recorte por necessidade.
+- Janela recente cortada por quantidade fixa sem registro de tokens.
+- Owner da politica de contexto inexistente ou desatualizado.
+- Teste de conversa longa sem restricao dita no inicio.
+- Critical_state montado, mas nao entregue ao Evaluator.
+- Mensagem antiga usada como verdade mesmo depois de correcao do cliente.
+- Compactacao que perde source_message_id da evidencia original.
+
+#### Contexto - campos mínimos para registrar PASS ou FAIL
+
+- trace_id da chamada revisada
+- budget planejado e budget real por bloco
+- lista de fontes aceitas no prompt
+- regra de promocao para state duravel
+- teste que falha quando restricao antiga some
+- owner da politica de contexto
+- data da ultima revisao do limite de contexto
+- exemplo de bloco compactado com motivo
+- campo do state que guarda restricao critica
+- acao tomada quando o budget estoura
+
+#### Contexto - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Contratos - sinais de risco que mudam a decisão
+
+- Campo obrigatorio usado por consumidor mas ausente do schema.
+- Preco sem unidade clara, como centavos, reais ou string formatada.
+- Contrato sem success criteria objetivo.
+- Output parcial aceito como se fosse completo.
+- Falha de dependencia tratada como retry infinito.
+- Mudanca de schema sem versionamento ou changelog.
+- Owner de contrato confundido com owner do codigo.
+- Boundary test cobrindo apenas caminho feliz.
+- Planner e Generator compartilhando suposicoes nao documentadas.
+- Fulfillment consumindo contrato antes de avaliacao aprovada.
+- Exemplo valido desatualizado em relacao ao schema atual.
+- Contrato permitindo campo livre onde deveria haver enum.
+
+#### Contratos - campos mínimos para registrar PASS ou FAIL
+
+- contract_id e schema_version
+- inputs obrigatorios e pre-condicoes
+- outputs obrigatorios e exemplos validos
+- criterio de conclusao da etapa
+- failure modes explicitamente listados
+- teste de input invalido
+- teste de output fora do schema
+- owner da interface
+- issue ou ADR de mudanca recente
+- consumidor principal do contrato
+
+#### Contratos - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Avaliação - sinais de risco que mudam a decisão
+
+- Score unico sem dimensoes auditaveis.
+- Pesos que nao somam 100%.
+- Blocker critico descrito em texto, mas nao implementado na decisao.
+- Generator julgando o proprio output.
+- Evaluator aceitando justificativa do Generator como evidencia.
+- Alergia tratada como penalidade leve em vez de reprovação absoluta.
+- Rubrica sem exemplos limitrofes.
+- Calibracao feita uma vez e esquecida.
+- Replay impossivel porque evidencias nao foram salvas.
+- Falso negativo sem dono para ajuste de rubrica.
+- Threshold alterado sem impacto medido.
+- Output aprovado sem citar dado de catalogo usado na nota.
+
+#### Avaliação - campos mínimos para registrar PASS ou FAIL
+
+- rubric_version aplicada
+- dimensoes e pesos
+- threshold minimo
+- lista de blockers absolutos
+- evaluation_id do caso revisado
+- evidencia por dimensao
+- separacao entre Generator e Evaluator
+- calibration set usado
+- resultado de replay
+- ultimo falso negativo revisado
+
+#### Avaliação - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Persistência - sinais de risco que mudam a decisão
+
+- Carrinho mantido apenas em memoria de worker.
+- Checkpoint salvo depois de acao irreversivel, nao antes.
+- State sem schema_version ou timestamp.
+- Recovery descrito em arquitetura, mas nunca testado.
+- Replay dependendo de logs soltos sem inputs originais.
+- Arquivo JSON escrito diretamente sem publicacao atomica.
+- Backup configurado, mas restauracao nunca ensaiada.
+- Dados pessoais sem retencao definida.
+- Backend escolhido por conveniencia sem discutir concorrencia.
+- State antigo lido sem migracao ou rejeicao clara.
+- Checkpoint parcial consumido por agente seguinte.
+- Trace sem refs para artefatos persistidos.
+
+#### Persistência - campos mínimos para registrar PASS ou FAIL
+
+- state schema e versao
+- ultimo checkpoint valido
+- acao cara ou irreversivel protegida
+- resultado de teste de crash
+- procedimento de restore
+- padrao de escrita atomica
+- politica de retencao
+- justificativa do backend
+- artefatos minimos para replay
+- owner de migracao de schema
+
+#### Persistência - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Coordenação - sinais de risco que mudam a decisão
+
+- Dois agentes escrevendo no mesmo recurso sem lock.
+- Status file sem timestamp ou motivo de falha.
+- Mensagem JSON sem correlation_id.
+- Leitor consumindo arquivo temporario ou parcial.
+- Webhook reprocessado criando pedido duplicado.
+- Lock sem TTL prendendo jornada indefinidamente.
+- Dependencia entre agentes documentada, mas nao aplicada.
+- Teste concorrente inexistente para carrinho ou estoque.
+- Agent_id ausente no audit trail.
+- Status completed escrito antes de output final estar pronto.
+- Protocolo alterado sem schema_version.
+- Fallback de deadlock exigindo intervencao manual nao registrada.
+
+#### Coordenação - campos mínimos para registrar PASS ou FAIL
+
+- recurso compartilhado revisado
+- lock ou transacao usada
+- TTL e owner do lock
+- status atual da etapa
+- schema do protocolo JSON
+- correlation_id ponta a ponta
+- teste de concorrencia
+- regra de idempotencia
+- ordem entre agentes
+- trace de aquisicao e liberacao
+
+#### Coordenação - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Segurança & Guardrails - sinais de risco que mudam a decisão
+
+- Webhook aceito sem schema ou limite de tamanho.
+- Tool output misturado ao prompt sem delimitacao.
+- Resposta final enviada sem checagem de catalogo.
+- Alergia, regiao ou estoque tratados apenas por prompt.
+- Fallback generico dizendo para tentar novamente.
+- Guardrail critico falhando aberto por conveniencia.
+- Budget guard por chamada, mas nao por jornada inteira.
+- Prompt injection sem teste regressivo.
+- Pagamento executado antes de aprovacao validada.
+- Log de rejeicao sem motivo acionavel.
+- Retry duplicando acao externa.
+- Politica comercial atualizada sem atualizar validator.
+
+#### Segurança & Guardrails - campos mínimos para registrar PASS ou FAIL
+
+- schema de entrada
+- validator de output
+- constraint checker aplicado
+- policy fail-closed
+- fallback especifico
+- budget maximo por turno e jornada
+- teste de prompt injection
+- aprovacao antes de acao irreversivel
+- audit log de bloqueio
+- owner de cada guardrail critico
+
+#### Segurança & Guardrails - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Evolução - sinais de risco que mudam a decisão
+
+- Componente sem fase BUILD, STABILIZE, SIMPLIFY ou REMOVE.
+- Guardrail mantido sem medir falhas prevenidas.
+- Custo de token crescendo sem decisao explicita.
+- Falso positivo alto sem plano de ajuste.
+- Componente criado para modelo antigo ainda obrigatorio.
+- Remocao proposta sem shadow test.
+- Rollback mencionado, mas nao testado.
+- ADR ausente para mudanca estrutural.
+- Revisao trimestral pulada apos upgrade de modelo.
+- Owner antigo ainda listado para componente critico.
+- Simplificacao confundida com apagar evidencia.
+- Metrica de sucesso sem baseline anterior.
+
+#### Evolução - campos mínimos para registrar PASS ou FAIL
+
+- fase atual do componente
+- data da ultima revisao
+- falhas reais prevenidas
+- tokens e latencia adicionados
+- falsos positivos e falsos negativos
+- criterio de simplificacao
+- resultado de shadow test
+- plano de rollback
+- ADR ou changelog
+- owner da proxima decisao
+
+#### Evolução - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+#### Observabilidade - sinais de risco que mudam a decisão
+
+- Trace sem input refs ou output refs.
+- Logs que mostram texto final, mas nao decisao intermediaria.
+- Audit log ausente para promessa comercial.
+- Dashboard medindo volume sem qualidade.
+- Alerta sem owner ou runbook.
+- Replay impossivel por falta de artefatos.
+- WhatsApp id desconectado de order id.
+- Conversas aprovadas nunca amostradas.
+- Trace reading conhecido por uma pessoa apenas.
+- Incidente reencenado manualmente em vez de reconstruido.
+- Fallback rate agregado sem separar por feature.
+- Metricas tecnicas sem sintoma de negocio associado.
+
+#### Observabilidade - campos mínimos para registrar PASS ou FAIL
+
+- trace_id e correlation_id
+- fases com timestamps
+- input refs e output refs
+- audit log de acao critica
+- dashboard de qualidade e custo
+- alerta com owner e severidade
+- runbook da primeira acao
+- artefatos de replay
+- amostragem de aprovados
+- link para guia de trace reading
+
+#### Observabilidade - decisão de auditoria
+
+- Marque PASS somente quando a evidência existir fora da conversa oral.
+- Marque FAIL quando o comportamento depender de intenção, prompt solto ou sorte operacional.
+- Marque RISCO ACEITO apenas com owner, impacto, prazo e monitoramento explícitos.
+- Reabra o cartão se a evidência estiver certa, mas estiver no lugar arquitetural errado.
+
+### Protocolo de fechamento dos cartões de auditoria
+
+Use este protocolo depois de revisar os cartões de uma categoria.
+
+- Confirme que o PASS aponta para artefato, nao para opiniao.
+- Confirme que o FAIL descreve impacto ao cliente ou ao time.
+- Confirme que cada risco aceito tem owner unico.
+- Confirme que cada owner tem prazo de revisao.
+- Confirme que cada evidencia pode ser aberta por uma pessoa nova.
+- Confirme que prints soltos nao substituem trace, teste ou contrato.
+- Confirme que logs sem correlation_id nao contam como audit trail completo.
+- Confirme que teste manual sem roteiro nao conta como recovery test.
+- Confirme que dashboard sem threshold nao conta como alerta acionavel.
+- Confirme que fallback generico nao conta como protecao de seguranca.
+- Confirme que retry cego nao conta como failure handling.
+- Confirme que schema sem exemplo valido nao conta como contrato completo.
+- Confirme que exemplo valido sem teste nao protege regressao.
+- Confirme que owner antigo nao conta como ownership atual.
+- Confirme que ADR proposta nao conta como decisao aceita.
+- Confirme que shadow test tem baseline antes de autorizar remocao.
+- Confirme que rollout limitado define limite, duracao e criterio de parada.
+- Confirme que monitoramento cobre sintoma tecnico e sintoma de negocio.
+- Confirme que a decisao final registra aprovado, bloqueado ou risco aceito.
+- Confirme que o proximo revisor saberia repetir a mesma verificacao.
+- Registre links para contratos, traces, testes, dashboards e ADRs usados.
+- Registre a versao do modelo quando ela afetar avaliacao ou contexto.
+- Registre a versao da rubrica quando ela afetar aprovacao.
+- Registre a versao do schema quando ela afetar handoff entre agentes.
+- Registre a janela de tempo analisada quando usar metricas.
+- Registre amostras analisadas quando usar evidência estatistica.
+- Registre excecoes aprovadas por produto ou engenharia.
+- Registre qualquer conflito entre score agregado e blocker absoluto.
+- Registre qualquer falta de evidência como FAIL, nao como pendencia neutra.
+- Registre quando a protecao esta no lugar errado e precisa migrar de camada.
+- Use o menor artefato suficiente para fechar o gap, sem criar processo extra.
+- Reavalie a categoria quando o artefato minimo ficar pronto.
 
 ## 📚 Apêndice B: Perguntas de Calibração por Nível de Maturidade
 
@@ -4584,7 +2243,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Avaliação (Evaluation/Rubrics) está no nível 1 neste harness?
-- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Avaliação (Evaluation/Rubrics) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4592,7 +2251,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Avaliação (Evaluation/Rubrics) está no nível 2 neste harness?
-- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Avaliação (Evaluation/Rubrics) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4600,7 +2259,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Avaliação (Evaluation/Rubrics) está no nível 3 neste harness?
-- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Avaliação (Evaluation/Rubrics) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4608,7 +2267,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Avaliação (Evaluation/Rubrics) está no nível 4 neste harness?
-- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Avaliação (Evaluation/Rubrics) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4616,7 +2275,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Avaliação (Evaluation/Rubrics) está no nível 5 neste harness?
-- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Avaliação (Evaluation/Rubrics) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Avaliação (Evaluation/Rubrics) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4626,7 +2285,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Persistência (State Persistence) está no nível 1 neste harness?
-- Qual métrica mudaria se Persistência (State Persistence) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Persistência (State Persistence) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Persistência (State Persistence) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4634,7 +2293,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Persistência (State Persistence) está no nível 2 neste harness?
-- Qual métrica mudaria se Persistência (State Persistence) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Persistência (State Persistence) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Persistência (State Persistence) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4642,7 +2301,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Persistência (State Persistence) está no nível 3 neste harness?
-- Qual métrica mudaria se Persistência (State Persistence) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Persistência (State Persistence) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Persistência (State Persistence) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4650,7 +2309,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Persistência (State Persistence) está no nível 4 neste harness?
-- Qual métrica mudaria se Persistência (State Persistence) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Persistência (State Persistence) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Persistência (State Persistence) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4658,7 +2317,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Persistência (State Persistence) está no nível 5 neste harness?
-- Qual métrica mudaria se Persistência (State Persistence) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Persistência (State Persistence) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Persistência (State Persistence) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4668,7 +2327,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Coordenação (Multi-Agent Coordination) está no nível 1 neste harness?
-- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Coordenação (Multi-Agent Coordination) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4676,7 +2335,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Coordenação (Multi-Agent Coordination) está no nível 2 neste harness?
-- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Coordenação (Multi-Agent Coordination) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4684,7 +2343,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Coordenação (Multi-Agent Coordination) está no nível 3 neste harness?
-- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Coordenação (Multi-Agent Coordination) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4692,7 +2351,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Coordenação (Multi-Agent Coordination) está no nível 4 neste harness?
-- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Coordenação (Multi-Agent Coordination) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4700,7 +2359,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Coordenação (Multi-Agent Coordination) está no nível 5 neste harness?
-- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Coordenação (Multi-Agent Coordination) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Coordenação (Multi-Agent Coordination) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4710,7 +2369,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Segurança & Guardrails está no nível 1 neste harness?
-- Qual métrica mudaria se Segurança & Guardrails fosse removido ou enfraquecido?
+- Qual métrica mudaria se Segurança & Guardrails fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Segurança & Guardrails neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4718,7 +2377,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Segurança & Guardrails está no nível 2 neste harness?
-- Qual métrica mudaria se Segurança & Guardrails fosse removido ou enfraquecido?
+- Qual métrica mudaria se Segurança & Guardrails fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Segurança & Guardrails neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4726,7 +2385,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Segurança & Guardrails está no nível 3 neste harness?
-- Qual métrica mudaria se Segurança & Guardrails fosse removido ou enfraquecido?
+- Qual métrica mudaria se Segurança & Guardrails fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Segurança & Guardrails neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4734,7 +2393,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Segurança & Guardrails está no nível 4 neste harness?
-- Qual métrica mudaria se Segurança & Guardrails fosse removido ou enfraquecido?
+- Qual métrica mudaria se Segurança & Guardrails fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Segurança & Guardrails neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4742,7 +2401,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Segurança & Guardrails está no nível 5 neste harness?
-- Qual métrica mudaria se Segurança & Guardrails fosse removido ou enfraquecido?
+- Qual métrica mudaria se Segurança & Guardrails fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Segurança & Guardrails neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4752,7 +2411,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Evolução (Harness Evolution) está no nível 1 neste harness?
-- Qual métrica mudaria se Evolução (Harness Evolution) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Evolução (Harness Evolution) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Evolução (Harness Evolution) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4760,7 +2419,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Evolução (Harness Evolution) está no nível 2 neste harness?
-- Qual métrica mudaria se Evolução (Harness Evolution) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Evolução (Harness Evolution) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Evolução (Harness Evolution) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4768,7 +2427,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Evolução (Harness Evolution) está no nível 3 neste harness?
-- Qual métrica mudaria se Evolução (Harness Evolution) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Evolução (Harness Evolution) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Evolução (Harness Evolution) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4776,7 +2435,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Evolução (Harness Evolution) está no nível 4 neste harness?
-- Qual métrica mudaria se Evolução (Harness Evolution) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Evolução (Harness Evolution) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Evolução (Harness Evolution) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4784,7 +2443,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Evolução (Harness Evolution) está no nível 5 neste harness?
-- Qual métrica mudaria se Evolução (Harness Evolution) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Evolução (Harness Evolution) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Evolução (Harness Evolution) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4794,7 +2453,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 1
 
 - O que provaria que Observabilidade (Traces/Monitoring) está no nível 1 neste harness?
-- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Observabilidade (Traces/Monitoring) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4802,7 +2461,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 2
 
 - O que provaria que Observabilidade (Traces/Monitoring) está no nível 2 neste harness?
-- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Observabilidade (Traces/Monitoring) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4810,7 +2469,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 3
 
 - O que provaria que Observabilidade (Traces/Monitoring) está no nível 3 neste harness?
-- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Observabilidade (Traces/Monitoring) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4818,7 +2477,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 4
 
 - O que provaria que Observabilidade (Traces/Monitoring) está no nível 4 neste harness?
-- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Observabilidade (Traces/Monitoring) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
@@ -4826,7 +2485,7 @@ Use estes cartões durante uma revisão real. Cada cartão força uma pergunta o
 #### Nível 5
 
 - O que provaria que Observabilidade (Traces/Monitoring) está no nível 5 neste harness?
-- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removido ou enfraquecido?
+- Qual métrica mudaria se Observabilidade (Traces/Monitoring) fosse removida ou enfraquecida?
 - Qual incidente passado de KODA teria sido prevenido por Observabilidade (Traces/Monitoring) neste nível?
 - Qual custo adicional este nível adiciona em tokens, latência, manutenção ou onboarding?
 - Qual evidência faria Fernando aceitar este nível como suficiente para a próxima release?
