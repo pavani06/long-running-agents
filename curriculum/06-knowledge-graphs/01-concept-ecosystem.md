@@ -719,33 +719,51 @@ A boa arquitetura combina risco com coordenação.
 
 ## 🧭 Flow Diagram: Sequência de Aprendizado e Implementação
 
-Este diagrama segue a ideia do grafo `learn`: aprender fundações antes de padrões, padrões antes de coordenação, coordenação antes de produção KODA.
+Este diagrama segue o grafo `learn` de `00-all-diagrams.txt`: aprender fundações antes de padrões, padrões antes de coordenação, coordenação antes de produção KODA. A estrutura de 4 níveis com subgrafos foi preservada; os nós foram expandidos para os nomes completos dos conceitos.
 
 ```mermaid
-flowchart LR
-L1A["Context Basics"] --> C1["Context Management & Token Budgeting"]
-L1B["Single Agent Design"] --> C2["Planning vs. Execution Separation"]
-L1C["Basic Validation"] --> C3["Generator/Evaluator Pattern"]
-C1 --> C5["State Persistence & File-Based Coordination"]
-C2 --> C4["Sprint Contracts & Negotiation"]
-C3 --> C8["Evaluation Rubrics & Subjective Quality Measurement"]
-C5 --> C7["Multi-Agent Coordination"]
-C4 --> C7
-C8 --> C6["Harness Evolution"]
-C7 --> C6
-C6 --> KODA["Production KODA"]
-style L1A fill:#E3F2FD,color:#1a3c5c
-style L1B fill:#E3F2FD,color:#1a3c5c
-style L1C fill:#E3F2FD,color:#1a3c5c
+graph TB
+subgraph L1["NÍVEL 1 — Foundations"]
+A1["Context Basics\nToken Budgeting"]
+A2["Single Agent Design\nBasic Harness"]
+A3["Basic Validation\nSimple Checks"]
+end
+subgraph L2["NÍVEL 2 — Patterns"]
+B1["Context Management\n& Token Budgeting"]
+B2["Planning vs.\nExecution Separation"]
+B3["Generator/Evaluator\nPattern"]
+end
+subgraph L3["NÍVEL 3 — Advanced"]
+C1["State Persistence\n& File-Based Coord"]
+C2["Sprint Contracts\n& Negotiation"]
+C3["Multi-Agent\nCoordination"]
+end
+subgraph L4["NÍVEL 4 — KODA Production"]
+D1["Evaluation Rubrics\n& Quality Measurement"]
+D2["Harness Evolution\nas Models Improve"]
+D3["Production KODA\nWhatsApp Agent"]
+end
+A1 --> B1
+A2 --> B2
+A3 --> B3
+B1 --> C1
+B2 --> C2
+B3 --> C3
+C1 --> D1
+C2 --> D2
+C3 --> D3
+style A1 fill:#E3F2FD,color:#1a3c5c
+style A2 fill:#E3F2FD,color:#1a3c5c
+style A3 fill:#E3F2FD,color:#1a3c5c
+style B1 fill:#BBDEFB,color:#1a3c5c
+style B2 fill:#F3E5F5,color:#4a1a5c
+style B3 fill:#E8F5E9,color:#1a5c1a
 style C1 fill:#BBDEFB,color:#1a3c5c
-style C5 fill:#BBDEFB,color:#1a3c5c
 style C2 fill:#F3E5F5,color:#4a1a5c
-style C4 fill:#F3E5F5,color:#4a1a5c
-style C3 fill:#E8F5E9,color:#1a5c1a
-style C8 fill:#E8F5E9,color:#1a5c1a
-style C7 fill:#FFF3E0,color:#7a4a00
-style C6 fill:#FFF3E0,color:#7a4a00
-style KODA fill:#FFD700,color:#7a5c00
+style C3 fill:#FFF3E0,color:#7a4a00
+style D1 fill:#E8F5E9,color:#1a5c1a
+style D2 fill:#FFF3E0,color:#7a4a00
+style D3 fill:#FFD700,color:#7a5c00
 ```
 
 ### A Leitura Correta
@@ -939,7 +957,7 @@ O harness protege riscos de negócio, não apenas limitações do modelo.
 
 ## 🧬 KODA Application Diagram: Features Para Concepts
 
-Este diagrama segue o grafo `feat` de `00-all-diagrams.txt`, usando as mesmas features e os 8 conceitos completos.
+Este diagrama segue o grafo `feat` de `00-all-diagrams.txt` como base, usando as mesmas features e os 8 conceitos completos. As arestas tracejadas são relações secundárias sugeridas pela prática de produção do KODA, que expandem o mapeamento original.
 
 ```mermaid
 graph LR
@@ -1148,7 +1166,7 @@ Ela treina seu olhar para ver arquitetura, não apenas tópicos.
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+Context Management é otimizado para manter a janela limpa, mas dados críticos que deveriam ser persistidos são descartados na compressão. A conversa fica rápida e vazia: o agente responde bem, mas esquece fatos que mudam o resultado do pedido.
 
 ---
 
@@ -1160,7 +1178,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+O planejador herda contexto poluído (dados antigos misturados com novos) e produz um plano internamente consistente, mas baseado em premissas erradas. A execução segue perfeitamente um plano que já nasceu torto.
 
 ---
 
@@ -1172,7 +1190,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+Ambos recebem o mesmo contexto completo, desperdiçando tokens e poluindo o Evaluator com informação irrelevante. O Evaluator fica sobrecarregado e perde precisão nos critérios que realmente importam, aprovando outputs que deveria rejeitar.
 
 ---
 
@@ -1184,7 +1202,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+O planejador descreve o que fazer, mas ninguém assume responsabilidade explícita. Cada módulo acha que o outro vai cuidar da etapa crítica. O resultado é um vácuo de accountability: todos concordaram com o plano, ninguém entregou a execução.
 
 ---
 
@@ -1196,7 +1214,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+O Generator produz outputs sem estrutura clara (texto livre, sem seções, sem contrato). O Evaluator não consegue isolar o que avaliar e acaba julgando estilo em vez de correção. A qualidade da avaliação cai porque o input não foi pensado para ser avaliável.
 
 ---
 
@@ -1208,7 +1226,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+Agentes entram em loop de renegociação porque não há contrato formal definindo escopo e critério de saída. Cada agente interpreta a tarefa de forma diferente, produzindo resultados incompatíveis que exigem retrabalho constante.
 
 ---
 
@@ -1220,7 +1238,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+Cada agente mantém sua própria cópia de estado em memória, e as cópias divergem silenciosamente. QA aprova um pedido com preço de clube, mas pagamento processa o preço cheio porque leu uma versão anterior do carrinho. O cliente recebe cobrança errada.
 
 ---
 
@@ -1232,7 +1250,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+O Evaluator julga com critérios vagos ("parece bom", "soa confiante") e aprova outputs com falhas objetivas. Sem rubric, a avaliação vira opinião. O sistema acredita que está com 98% de qualidade, mas está aprovando recomendações perigosas com confiança inabalável.
 
 ---
 
@@ -1244,7 +1262,7 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+O harness nunca é ajustado porque não há métrica objetiva para decidir. Checks que eram necessários no modelo antigo continuam rodando e consumindo tokens. Checks que deveriam ser adicionados para cobrir novos riscos nunca são criados. O harness envelhece sem que ninguém perceba.
 
 ---
 
@@ -1256,13 +1274,15 @@ A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do
 
 **Erro se a relação for ignorada:**
 
-A equipe melhora uma parte, mas a falha escapa pela fronteira com outra parte do sistema.
+A arquitetura multi-agent funciona, mas o harness nunca é adaptado às descobertas da coordenação. O sistema acumula proteções desnecessárias e ignora gaps reais. A equipe sabe que algo está errado, mas não tem mecanismo para traduzir observação operacional em mudança de harness.
 
 ---
 
 ## 📚 Cartões de Estudo do Ecossistema
 
-Use os cartões abaixo em workshops.
+Use os cartões abaixo em workshops. Cada conceito tem de 12 a 18 cartões organizados por pergunta.
+
+**Nota para o instrutor:** Os cartões seguem uma estrutura consistente de pergunta, discussão, exemplo e resposta esperada. Os exemplos são pontos de partida — customize com casos reais do KODA da sua semana. A repetição intencional da estrutura serve para criar um ritmo de workshop; a repetição de conteúdo genérico deve ser substituída por exemplos vivos da operação.
 Cada cartão é curto, mas força uma conversa real.
 Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
@@ -1278,7 +1298,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -1288,7 +1308,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -1298,7 +1318,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -1308,7 +1328,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -1318,7 +1338,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -1328,7 +1348,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -1338,7 +1358,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -1348,7 +1368,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -1358,7 +1378,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -1368,7 +1388,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -1378,7 +1398,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -1388,7 +1408,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -1398,7 +1418,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -1408,7 +1428,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -1418,7 +1438,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -1428,7 +1448,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -1438,7 +1458,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -1448,7 +1468,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA sabe o que lembrar, o que comprimir e o que buscar fora da janela antes de responder.
+**Exemplo KODA:** Context Management aplicado: KODA mantém coerência em conversas de 2+ horas no WhatsApp.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -1466,7 +1486,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -1476,7 +1496,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -1486,7 +1506,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -1496,7 +1516,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -1506,7 +1526,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -1516,7 +1536,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -1526,7 +1546,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -1536,7 +1556,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -1546,7 +1566,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -1556,7 +1576,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -1566,7 +1586,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -1576,7 +1596,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -1586,7 +1606,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -1596,7 +1616,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -1606,7 +1626,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -1616,7 +1636,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -1626,7 +1646,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -1636,7 +1656,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA não tenta vender, validar estoque, calcular frete e cobrar no mesmo impulso.
+**Exemplo KODA:** Planning/Execution separados: KODA planeja cada etapa do pedido antes de executar.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -1654,7 +1674,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -1664,7 +1684,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -1674,7 +1694,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -1684,7 +1704,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -1694,7 +1714,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -1704,7 +1724,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -1714,7 +1734,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -1724,7 +1744,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -1734,7 +1754,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -1744,7 +1764,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -1754,7 +1774,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -1764,7 +1784,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -1774,7 +1794,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -1784,7 +1804,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -1794,7 +1814,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -1804,7 +1824,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -1814,7 +1834,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -1824,7 +1844,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA gera uma recomendação e outro componente verifica se ela é correta, segura e boa.
+**Exemplo KODA:** Generator/Evaluator aplicado: KODA valida cada recomendação com agente separado antes de enviar.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -1842,7 +1862,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -1852,7 +1872,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -1862,7 +1882,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -1872,7 +1892,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -1882,7 +1902,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -1892,7 +1912,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -1902,7 +1922,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -1912,7 +1932,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -1922,7 +1942,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -1932,7 +1952,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -1942,7 +1962,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -1952,7 +1972,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -1962,7 +1982,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -1972,7 +1992,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -1982,7 +2002,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -1992,7 +2012,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -2002,7 +2022,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -2012,7 +2032,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA combina o que cada módulo vai entregar antes de processar um pedido.
+**Exemplo KODA:** Sprint Contracts aplicados: KODA combina o que cada módulo vai entregar antes de processar um pedido.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -2030,7 +2050,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -2040,7 +2060,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -2050,7 +2070,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -2060,7 +2080,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -2070,7 +2090,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -2080,7 +2100,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -2090,7 +2110,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -2100,7 +2120,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -2110,7 +2130,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -2120,7 +2140,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -2130,7 +2150,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -2140,7 +2160,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -2150,7 +2170,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -2160,7 +2180,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -2170,7 +2190,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -2180,7 +2200,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -2190,7 +2210,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -2200,7 +2220,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA preserva alergias, preferências, carrinho, status de pagamento e histórico de compra.
+**Exemplo KODA:** State Persistence aplicado: KODA preserva alergias, preferências, carrinho e histórico de compra.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -2218,7 +2238,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -2228,7 +2248,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -2238,7 +2258,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -2248,7 +2268,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -2258,7 +2278,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -2268,7 +2288,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -2278,7 +2298,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -2288,7 +2308,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -2298,7 +2318,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -2308,7 +2328,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -2318,7 +2338,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -2328,7 +2348,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -2338,7 +2358,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -2348,7 +2368,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -2358,7 +2378,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -2368,7 +2388,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -2378,7 +2398,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -2388,7 +2408,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA simplifica checks quando o modelo amadurece e reforça checks onde o risco continua alto.
+**Exemplo KODA:** Harness Evolution aplicado: KODA simplifica checks quando o modelo amadurece e reforça onde o risco continua.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -2406,7 +2426,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -2416,7 +2436,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -2426,7 +2446,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -2436,7 +2456,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -2446,7 +2466,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -2456,7 +2476,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -2466,7 +2486,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -2476,7 +2496,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -2486,7 +2506,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -2496,7 +2516,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -2506,7 +2526,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -2516,7 +2536,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -2526,7 +2546,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -2536,7 +2556,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -2546,7 +2566,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -2556,7 +2576,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -2566,7 +2586,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -2576,7 +2596,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA coordena discovery, pricing, fulfillment, QA e atendimento em um fluxo único.
+**Exemplo KODA:** Multi-Agent Coordination aplicado: KODA coordena discovery, pricing, fulfillment e QA em fluxo único.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -2594,7 +2614,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure a menor falha observável antes do incidente grande.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O sintoma aparece quando KODA parece confiante, mas perde uma condição que já existia na conversa.
 
@@ -2604,7 +2624,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Não aceite resposta genérica. Peça uma escolha concreta.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** A decisão é explicitar onde o conceito entra no fluxo, antes de escrever prompts ou dividir agentes.
 
@@ -2614,7 +2634,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se o cliente ficaria irritado ao repetir, provavelmente deve ser lembrado.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O estado relevante inclui fatos que mudam o resultado, como restrição, endereço, clube, carrinho e promessa feita.
 
@@ -2624,7 +2644,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Conecte técnica com confiança, receita, segurança ou custo.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O risco reduzido é uma mistura de erro operacional, perda de confiança e custo de correção.
 
@@ -2634,7 +2654,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Sem evidência, a arquitetura vira crença.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O trace deve mostrar input, decisão, output, critério usado e resultado observado.
 
@@ -2644,7 +2664,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Traduza bug interno para experiência do cliente.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** No WhatsApp, a falha aparece como pergunta repetida, promessa errada ou recomendação que ignora o cliente.
 
@@ -2654,7 +2674,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Procure fronteiras entre módulos, agentes ou etapas.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O handoff crítico é aquele em que uma parte assume que outra parte preservou contexto, contrato ou critério.
 
@@ -2664,7 +2684,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Transforme bom em critério observável.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O critério deve medir precisão, adequação, segurança ou clareza, conforme o risco da feature.
 
@@ -2674,7 +2694,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Toda proteção tem preço em latência, tokens ou complexidade.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O custo costuma ser mais tokens, mais latência, mais arquivos ou mais disciplina operacional.
 
@@ -2684,7 +2704,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Mostre o retorno operacional, não só a elegância técnica.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O benefício é reduzir falhas silenciosas antes que elas cheguem ao cliente.
 
@@ -2694,7 +2714,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Simplicidade também é uma escolha arquitetural.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** Use menos peso quando a ação é reversível, simples e sem risco financeiro ou de saúde.
 
@@ -2704,7 +2724,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Aprendizado fora de ordem cria ilusões de domínio.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** A dependência correta aparece no grafo de aprendizado, não na preferência pessoal da equipe.
 
@@ -2714,7 +2734,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Separe limitação do modelo de risco do negócio.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** Quando o modelo melhora, a equipe mede antes de remover proteção.
 
@@ -2724,7 +2744,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Escolha uma feature concreta, não uma categoria vaga.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** A feature mais dependente é aquela onde o erro seria visível para o cliente em menos de uma conversa.
 
@@ -2734,7 +2754,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Prefira medidas que o time pode acompanhar toda semana.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** A métrica deve combinar qualidade interna com impacto externo, como approval rate e satisfação.
 
@@ -2744,7 +2764,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Se você não consegue contar, ainda não entendeu direito.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** Um bom exemplo cabe em uma conversa curta com cliente, decisão interna e consequência clara.
 
@@ -2754,7 +2774,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Nomear o erro ajuda a equipe a reconhecer cedo.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O anti-padrão é confiar em inteligência bruta quando o problema pede estrutura.
 
@@ -2764,7 +2784,7 @@ Eles também ajudam a atingir fluência, que é o objetivo deste módulo.
 
 **Como discutir:** Maturidade é comportamento repetível, não leitura concluída.
 
-**Exemplo KODA:** KODA avalia tom, adequação, segurança, precisão e utilidade antes de falar com o cliente.
+**Exemplo KODA:** Evaluation Rubrics aplicados: KODA avalia tom, adequação, segurança e precisão antes de responder.
 
 **Resposta esperada:** O checkpoint é a equipe conseguir explicar, aplicar e debugar o conceito sem depender de memória solta.
 
@@ -2913,11 +2933,13 @@ Se só consegue repetir definição, ainda falta prática.
 
 ## 🔗 Próximos Passos
 
-Depois deste módulo, siga para os outros knowledge graphs da seção 06.
+Depois deste módulo, siga para os outros knowledge graphs da seção 06 (quando disponíveis).
 
 * `02-koda-feature-dependencies.md`, para aprofundar feature por feature.
 * `03-learning-progression.md`, para transformar o mapa em plano de onboarding.
 * `04-problem-solution-mapping.md`, para ligar falhas reais a padrões arquiteturais.
+
+Enquanto esses módulos não chegam, revise os diagramas em `00-all-diagrams.txt` e os arquivos em `detailed-graphs/`.
 
 Se você lidera o time KODA, use este módulo em workshop.
 Peça para cada pessoa escolher uma feature e mapear quais conceitos aparecem.
