@@ -119,6 +119,27 @@ Um **multi-agent system** é o conjunto de agentes. A **coordenação multi-agen
 4. A clareza do contrato entre agentes é a métrica principal.
 5. A capacidade de auditar uma decisão depois do fato é a prova de maturidade.
 
+### Agentes LLM vs. Serviços Determinísticos: Uma Distinção Essencial
+
+Nem todo componente do pipeline precisa ser um agente LLM. No KODA, alguns componentes são **serviços determinísticos** (código tradicional, sem chamada de modelo) e outros são **agentes LLM** (usam Claude ou outro modelo para raciocinar).
+
+**Serviços determinísticos (não usam LLM):**
+- **Catalog API:** Consulta de SKU, preço, estoque — é uma API REST tradicional.
+- **Inventory Check:** Verificar se há unidades disponíveis em uma cidade — é uma query SQL.
+- **Price Calculation:** Aplicar desconto de clube, cupom, frete — é aritmética, não raciocínio.
+- **Payment Processing:** Cobrar cartão — é uma chamada de API de gateway, nunca um LLM.
+- **Constraint Validation (parte do Filter):** "189.90 > 180? Bloqueia." — é uma comparação numérica.
+
+**Agentes LLM (usam modelo para raciocinar):**
+- **Search Agent:** Traduz intenção do cliente ("quero algo para ganhar massa") em queries de catálogo.
+- **Ranking Agent:** Pondera múltiplas dimensões (custo, satisfação, adequação) para ordenar.
+- **Recommendation Agent:** Transforma dados em linguagem natural adequada ao tom e contexto.
+- **Evaluator:** Julga se a recomendação final respeita constraints, tom e fatos — requer julgamento.
+
+**Regra prática:** Se a decisão pode ser tomada com `if/else` ou aritmética, use um serviço determinístico. Se a decisão exige julgamento, interpretação de linguagem natural ou ponderação de múltiplos fatores qualitativos, use um agente LLM. Misturar os dois em um pipeline é normal e esperado — o importante é saber qual é qual.
+
+Neste módulo, usamos o termo "agente" para os componentes LLM do pipeline. Os serviços determinísticos são tratados como infraestrutura (APIs, bancos, funções) que os agentes consultam. O **orchestrator** pode ser determinístico (um script de roteamento) ou um agente LLM (se a decisão de roteamento for complexa) — no KODA, usamos um orchestrator determinístico com regras explícitas de roteamento por intenção.
+
 ---
 
 ## 3. 📊 Os Paradigmas de Coordenação
@@ -663,7 +684,7 @@ Os contratos abaixo são o que transforma "agentes conversando" em "sistema coor
 
 #### Contrato: Search Agent
 
-**Responsabilidade:** Buscar produtos no catálogo que atendem ao objetivo do cliente e cabe no orçamento. O Search Agent não filtra, não ranqueia e não recomenda — apenas busca.
+**Responsabilidade:** Buscar produtos no catálogo que correspondem ao objetivo do cliente. O Search Agent aplica um **pré-filtro de orçamento** (intervalo amplo: ±20% da faixa) para reduzir o volume de candidatos enviados ao Filter Agent — mas **não é o gatekeeper autoritativo de constraints**. A validação rigorosa de orçamento, restrições alimentares e prazos é responsabilidade exclusiva do Filter Agent.
 
 **Input Schema:**
 ```json
@@ -994,7 +1015,7 @@ Os contratos abaixo são o que transforma "agentes conversando" em "sistema coor
 
 ### 🧪 Pipeline Walkthrough: O Trace Completo de Rafael
 
-Abaixo está o trace real de como a conversa do prólogo foi processada. Cada linha do audit log mostra exatamente qual agente agiu, com qual input, qual output e quanto tempo levou.
+Abaixo está um trace de exemplo, construído com base nos padrões de coordenação do KODA, de como a conversa do prólogo seria processada. Cada linha do audit log mostra exatamente qual agente agiu, com qual input, qual output e quanto tempo levou.
 
 **Audit Log (.jsonl):**
 
@@ -1024,7 +1045,7 @@ Abaixo está o trace real de como a conversa do prólogo foi processada. Cada li
 
 4. **Evaluator é o agente mais rápido (1.85s).** Isso é esperado: ele lê uma recomendação pronta e verifica contra constraints conhecidas. Não gera, não busca, não ranqueia — apenas valida.
 
-5. **Fan-out não foi usado neste trace.** Como a conversa do Rafael era simples (3 mensagens, objetivo claro), o orchestrator escolheu sequential coordination. Se houvesse 5 clientes simultâneos, o orchestrator poderia fazer fan-out do Search Agent para todos em parallel.
+5. **Fan-out não foi usado neste trace.** Como a conversa do Rafael era simples (3 mensagens, objetivo claro), o orchestrator escolheu sequential coordination. Se houvesse múltiplas consultas independentes dentro da mesma conversa (ex: comparar preço de 3 produtos específicos simultaneamente), o orchestrator poderia usar parallel coordination para consultar os 3 em paralelo e depois fazer fan-in dos resultados para comparação.
 
 **Lições do trace:**
 
@@ -1214,17 +1235,17 @@ Auditabilidade: Alta — trace linear, fácil de seguir
 #### Parallel (Search + Stock + Price + Reviews simultâneos)
 
 ```
-Latência total: 4.50s (max das etapas paralelas)
+Latência total: 13.00s
   Search:  2.90s |
-  Stock:   1.80s |-- paralelo
-  Price:   3.10s |   max = 4.20s (Ranking)
+  Stock:   1.80s |-- paralelo (max = 3.10s do PriceAgent)
+  Price:   3.10s |
   Reviews: 1.50s |
   -----------------
   Fan-in:  0.30s (consolidação)
   Ranking: 4.20s
   Rec:     3.55s
   Eval:    1.85s
-  Total:  14.10s
+  Total:  13.00s
 
 Token budget: 14,500 tokens (4 agentes paralelos, contextos separados)
 Custo API: R$ 0.21 por pipeline (+75% vs sequential)
@@ -1262,7 +1283,7 @@ Auditabilidade: Complexa — 3 traces paralelos, avaliador compara outputs
 | Paradigma | Latência | Custo | Resiliência | Auditabilidade | Melhor Para |
 |---|---|---|---|---|---|
 | Sequential | 15.85s | R$ 0.12 | Baixa | Alta | Checkout, validação |
-| Parallel | 14.10s | R$ 0.21 | Média | Média | Discovery com múltiplas fontes |
+| Parallel | 13.00s | R$ 0.21 | Média | Média | Discovery com múltiplas fontes |
 | Fan-out/Fan-in | 7.80s | R$ 0.36 | Alta | Complexa | Exploração de opções, ranking competitivo |
 | Choreography | 12.50s | R$ 0.18 | Alta | Baixa | Eventos assíncronos, notificações |
 | Hierarchical | 22.30s | R$ 0.45 | Muito Alta | Muito Alta | Jornadas longas multi-domínio |
@@ -1345,24 +1366,33 @@ O Filter Agent é extraído porque suas regras são binárias e bem definidas (c
 
 ---
 
-#### Fase 4: Separar Ranking e Recommendation (2-3 dias)
+#### Fase 4: Separar Ranking (1-2 dias)
 
-Esses dois são extraídos juntos porque são os últimos a sair do Core Agent.
+O Ranking Agent é extraído agora porque sua responsabilidade (ordenação de candidatos) é bem definida e independente da escrita da resposta.
 
 **Passos:**
-1. Extrair lógica de ranking (comparação de candidatos) para Ranking Agent
-2. Extrair lógica de recommendation (escrita da mensagem) para Recommendation Agent
-3. Core Agent se torna Conversation Orchestrator puro (roteamento, não geração)
-4. Implementar contratos completos para Ranking e Recommendation
-5. Pipeline final: Search → Filter → Ranking → Recommendation → Evaluator
-6. Teste de regressão: 100 conversas antigas, comparar outputs novo vs antigo
-7. Ajustar prompts até outputs serem equivalentes ou melhores
+1. Extrair lógica de ranking (comparação de candidatos) para Ranking Agent dedicado
+2. Core Agent (agora "Orchestrator + Recommendation") lê output do Ranking
+3. Implementar contrato completo para Ranking Agent
+4. Validar que os scores de ranking são consistentes com o agente único anterior
+
+#### Fase 5: Separar Recommendation (1-2 dias)
+
+O Recommendation Agent é o último a ser extraído. Ele transforma dados técnicos em linguagem natural.
+
+**Passos:**
+1. Extrair lógica de recommendation (escrita da mensagem) para Recommendation Agent
+2. Core Agent se torna Conversation Orchestrator puro (roteamento, não geração)
+3. Implementar contrato completo para Recommendation Agent
+4. Pipeline final: Search → Filter → Ranking → Recommendation → Evaluator
+5. Teste de regressão: 100 conversas antigas, comparar outputs novo vs antigo
+6. Ajustar prompts até outputs serem equivalentes ou melhores
 
 **Checkpoint:** Pipeline multi-agente completo. Mesma qualidade ou melhor que agente único.
 
 ---
 
-#### Fase 5: Otimização e Observabilidade (contínuo)
+#### Fase 6: Otimização e Observabilidade (contínuo)
 
 Com o pipeline rodando, o foco muda para performance e debug.
 
@@ -1504,7 +1534,7 @@ O pipeline usa 31% menos tokens porque:
 
 ### 🏭 Pipelines por Intenção no KODA
 
-O KODA atende múltiplas intenções de cliente — cada uma exige um pipeline de coordenação diferente. Abaixo, três pipelines reais usados em produção.
+O KODA atende múltiplas intenções de cliente — cada uma exige um pipeline de coordenação diferente. Abaixo, três pipelines representativos dos padrões de coordenação aplicados no KODA.
 
 #### Pipeline 1: Product Discovery
 
@@ -1538,7 +1568,7 @@ WhatsApp Response
 - Fan-out é raro neste pipeline (~10% das conversas). A maioria é Sequential.
 - O tom é exploratório: "Se quiser, posso mostrar mais opções" — não fecha venda.
 - Token budget: 10,200 tokens. Latência: 12-16 segundos.
-- Se o cliente pergunta "e esse aqui?" sobre um produto específico, o pipeline faz early-exit após Search + Recommendation, pulando Filter e Ranking.
+- Se o cliente pergunta "e esse aqui?" sobre um produto específico, o pipeline mantém Search + Filter (para constraints obrigatórias como alergias e orçamento) + Recommendation + Evaluator, pulando apenas o Ranking (já que é um único produto, não há o que ordenar).
 
 **Exemplo de trace (discovery simples):**
 ```
@@ -2149,12 +2179,13 @@ O combo precisa:
 
 **Solução de referência:**
 
-**1. Agentes (5 agentes):**
+**1. Agentes (6 agentes):**
 - **Combo Search Agent:** Busca proteínas + complementos + acessórios que atendem ao objetivo.
 - **Combo Filter Agent:** Remove itens que violam restrições ou não têm estoque. Também filtra combos onde itens têm prazos de entrega diferentes (precisa chegar junto).
 - **Combo Builder Agent:** Gera combinações válidas (proteína × complemento × acessório) respeitando orçamento total.
 - **Combo Ranking Agent:** Ordena combos por: custo-benefício, sinergia entre produtos, avaliações.
 - **Evaluator:** Gate final — todas as constraints respeitadas?
+- **Recommendation Agent:** Transforma o combo vencedor em resposta humanizada para WhatsApp.
 
 **2. Paradigma:** Sequential com fan-out na busca. Combo Search Agent faz fan-out para buscar proteínas, complementos e acessórios em paralelo. Depois, Sequential: Filter → Builder → Ranking → Evaluator.
 
