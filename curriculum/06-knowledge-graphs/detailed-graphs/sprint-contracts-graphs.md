@@ -895,4507 +895,1742 @@ validar em produção ◄── versionar mudança ◄── testar trace e fail
 
 ## 🧭 Seção 10: Atlas de Nos do Sprint Contract
 
-Use estes cartões como mapa de estudo.
+Use este atlas como uma lente de leitura, não como uma lista decorativa de termos.
 
-Cada cartão descreve um nó ou uma aresta importante do grafo.
+Cada cartão abaixo descreve um ponto específico do grafo de Sprint Contracts.
 
-Eles são curtos de propósito.
+A ordem segue a vida real do KODA: primeiro o sistema entende o que está em jogo, depois negocia o acordo, executa, verifica, resolve e aprende.
 
-A intenção é facilitar revisão, mentoria e design review.
-### Cartao 001: Input Specification como no do grafo
+Os cartões são diferentes entre si porque cada nó falha de um jeito diferente.
 
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
+Se dois cartões parecem resolver o mesmo problema, volte ao trace e pergunte qual decisão cada um governa.
 
-**Aresta principal:** Este no se conecta a State Store porque a relacao `autoriza` mostra quem pode usar qual informação.
+### Cartao 001: Input Specification
 
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
+**Papel:** Define o conjunto exato de dados que pode governar o sprint atual, separando mensagem recente, memória persistida, catálogo, preço e estoque.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Aresta principal:** Liga `latest_customer_message` a `authorized_sources`; no caso de João, a frase atual sobre lactose tem mais autoridade que uma compra antiga de whey comum.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
+**Conexao curricular:** Conecta diretamente a Context Management porque transforma contexto bruto em contexto permitido.
 
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
+**Sinal no KODA:** O Product Discovery recebe snapshot de catálogo e não consulta uma lista antiga guardada no prompt.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Risco se ignorar:** KODA mistura preferência histórica com restrição atual e recomenda produto incompatível.
 
----
+**Leitura de trace:** Procure o evento em que o harness declara fontes aceitas antes de chamar o Generator.
 
-### Cartao 002: Success Criteria como no do grafo
+### Cartao 002: Success Criteria
 
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
+**Papel:** Converte a ideia de "recomendação boa" em critérios que podem reprovar uma resposta, como preço, estoque, restrição alimentar e justificativa.
 
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
+**Aresta principal:** Liga `active_contract` a `evaluator_verdict`; o Evaluator não inventa critérios depois que o output chega.
 
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
+**Conexao curricular:** Depende de Evaluation Rubrics, mas seleciona apenas os critérios relevantes para este sprint específico.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Sinal no KODA:** A recomendação para João só passa se cada produto tiver evidência de lactose-free, preço dentro do budget e motivo conectado ao objetivo.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
+**Risco se ignorar:** Uma resposta educada e persuasiva passa mesmo violando uma condição crítica.
 
-**Risco se ignorar:** critério que não reprova nada é decoração.
+**Leitura de trace:** Verifique se cada critério possui pelo menos uma evidência no candidate output.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+### Cartao 003: Failure Handling
 
----
+**Papel:** Define antecipadamente o que KODA faz quando não consegue cumprir o acordo sem quebrar confiança.
 
-### Cartao 003: Failure Handling como no do grafo
+**Aresta principal:** Liga `evaluator_fail` a `next_action`; uma falha vira retry, renegotiation ou escalation, não improviso.
 
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
+**Conexao curricular:** Usa Harness Patterns para transformar falha em controle de fluxo.
 
-**Aresta principal:** Este no se conecta a Validator porque a relacao `evidencia` mostra qual prova acompanha o output.
+**Sinal no KODA:** Se não houver produto sem lactose abaixo de R$ 50, KODA pergunta se João prefere relaxar sabor, budget ou categoria.
 
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
+**Risco se ignorar:** O sistema tenta parecer útil e oferece uma opção fora do contract.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Leitura de trace:** O verdict deve apontar uma próxima ação explícita, não apenas uma nota negativa.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
+### Cartao 004: Agreed Contract
 
-**Risco se ignorar:** falha sem caminho vira retry cego.
+**Papel:** Representa o ponto em que draft, críticas e revisões viram fonte de verdade para o sprint.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Aresta principal:** Liga `seal_contract` a `generator_start`; o Generator só começa quando há versão ativa.
 
----
+**Conexao curricular:** Reforça Planning/Execution Separation porque execução não começa durante a negociação.
 
-### Cartao 004: Agreed Contract como no do grafo
+**Sinal no KODA:** O contrato de Product Discovery fica ativo antes da primeira consulta final ao catálogo.
 
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
+**Risco se ignorar:** O alvo muda durante a execução e ninguém sabe qual critério vale.
 
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
+**Leitura de trace:** Procure `contract_id`, `version` e `active` antes do candidate output.
 
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
+### Cartao 005: Generator Execution
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Papel:** Executa a tarefa dentro dos limites do contract, escolhendo produtos, linguagem e ordem sem alterar restrições.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
+**Aresta principal:** Liga `authorized_sources` a `candidate_output`; a criatividade do Generator só opera sobre dados permitidos.
 
-**Risco se ignorar:** sem seal há moving target.
+**Conexao curricular:** Fortalece Generator/Evaluator ao deixar claro que o Generator constrói, mas não aprova.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Sinal no KODA:** O Generator pode sugerir sabor chocolate como tradeoff, mas precisa explicar que morango era preferência, não obrigação.
 
----
+**Risco se ignorar:** O Generator resolve o problema errado com uma resposta bem escrita.
 
-### Cartao 005: Generator Execution como no do grafo
+**Leitura de trace:** Compare as consultas feitas com a lista de fontes autorizadas.
 
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
+### Cartao 006: Candidate Output
 
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `coordena` mostra handoff entre papéis diferentes.
+**Papel:** É o pacote submetido para avaliação, contendo resposta proposta, dados de suporte e evidência por item.
 
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
+**Aresta principal:** Liga `generator_submission` a `evidence_required`; cada afirmação verificável deve carregar prova.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Conexao curricular:** Torna Trace Reading mais objetivo porque a equipe lê o output junto das evidências, não só a mensagem final.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
+**Sinal no KODA:** Cada produto recomendado traz `product_id`, preço, estoque, flag lactose-free e razão ligada ao objetivo do cliente.
 
-**Risco se ignorar:** criatividade sem limite vira risco.
+**Risco se ignorar:** O Evaluator precisa reconsultar tudo ou aprovar com base em texto persuasivo.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Leitura de trace:** Um candidate output incompleto deve falhar antes de chegar ao cliente.
 
----
+### Cartao 007: Evaluator Verification
 
-### Cartao 006: Candidate Output como no do grafo
+**Papel:** Compara output e contract, separando falha estrutural, violação de invariant e queda de qualidade.
 
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
+**Aresta principal:** Liga `candidate_output` a `verdict`; o julgamento é uma decisão registrada com razões específicas.
 
-**Aresta principal:** Este no se conecta a Critique porque a relacao `prioriza` mostra precedência entre restrição e preferência.
+**Conexao curricular:** Usa Rubric Design para qualidade sem abandonar as cláusulas situadas do contract.
 
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
+**Sinal no KODA:** O Evaluator rejeita `sku_123` porque custa R$ 59,90 apesar de ter descrição convincente.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Risco se ignorar:** KODA confunde plausibilidade com conformidade.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
+**Leitura de trace:** Razões como `over_budget` e `missing_stock_evidence` são mais úteis que "resposta fraca".
 
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
+### Cartao 008: Proposal
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Papel:** Cria um draft criticável com escopo inicial, fontes prováveis, critérios e caminhos de falha.
 
----
+**Aresta principal:** Liga `feature_trigger` a `contract_draft`; o harness traduz intenção de Product Discovery em acordo inicial.
 
-### Cartao 007: Evaluator Verification como no do grafo
+**Conexao curricular:** Aplica Planning/Execution Separation porque transforma intenção em plano antes da ação.
 
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
+**Sinal no KODA:** Ao detectar "quero suplemento sem lactose até R$ 50", o harness escolhe template de discovery e preenche slots.
 
-**Aresta principal:** Este no se conecta a Revision porque a relacao `audita` mostra como o trace fica reconstruível.
+**Risco se ignorar:** A primeira resposta já vira execução sem ninguém discutir o significado de sucesso.
 
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
+**Leitura de trace:** Um draft bom contém lacunas visíveis para crítica, não apenas instruções genéricas.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+### Cartao 009: Critique e Negotiation
 
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
+**Papel:** Testa se o contract pode ser avaliado, se há conflito entre critérios e se falta fonte para alguma promessa.
 
-**Risco se ignorar:** julgamento sem contract vira gosto.
+**Aresta principal:** Liga `draft_contract` a `revision_request`; a crítica muda o contract antes de mudar o output.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Conexao curricular:** Expande Generator/Evaluator para antes da execução, usando o Evaluator como crítico de acordo.
 
----
+**Sinal no KODA:** O Evaluator pergunta se budget inclui frete e se sabor morango é obrigatório ou negociável.
 
-### Cartao 008: State Store como no do grafo
+**Risco se ignorar:** A ambiguidade aparece tarde, depois que João já recebeu uma recomendação confusa.
 
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
+**Leitura de trace:** Toda pergunta de negotiation deve virar revisão ou decisão explícita.
 
-**Aresta principal:** Este no se conecta a Seal porque a relacao `limita` mostra como token budget vira regra operacional.
+### Cartao 010: Revision
 
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
+**Papel:** Atualiza o artefato ativo quando a negociação resolve uma ambiguidade concreta.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Aresta principal:** Liga `negotiation_answer` a `contract_version_candidate`; uma decisão verbal só conta se entrar no contract.
 
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
+**Conexao curricular:** Ajuda Trace Reading porque registra por que um critério mudou.
 
-**Risco se ignorar:** contract só no prompt não dura.
+**Sinal no KODA:** Morango passa de `required_condition` para `negotiable_preference` antes da execução.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Risco se ignorar:** A equipe acha que decidiu algo, mas o Generator continua lendo a versão antiga.
 
----
+**Leitura de trace:** Compare draft e revised draft para ver a mudança exata.
 
-### Cartao 009: Audit Log como no do grafo
+### Cartao 011: Seal
 
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
+**Papel:** Marca o momento em que a versão revisada deixa de ser proposta e passa a governar execução.
 
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `renegocia` mostra quando retry não é suficiente.
+**Aresta principal:** Liga `contract_version_candidate` a `active_contract`; o State Store grava a versão selada.
 
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
+**Conexao curricular:** Depende de State Persistence para sobreviver a turnos e compaction.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Sinal no KODA:** O contrato `product_discovery.001` é selado antes de qualquer resposta visível para João.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
+**Risco se ignorar:** O sistema executa contra um draft que ainda poderia estar em disputa.
 
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
+**Leitura de trace:** O evento de seal deve indicar versão, timestamp e componente que aceitou.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+### Cartao 012: Contract Schema
 
----
+**Papel:** Define a forma comum para contracts, incluindo identidade, input, criteria, failure handling, limites e política de auditoria.
 
-### Cartao 010: Validator como no do grafo
+**Aresta principal:** Liga `feature_template` a `validator`; o schema permite validar antes de confiar.
 
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
+**Conexao curricular:** Prepara Harness Evolution porque versões de schema podem ser comparadas e simplificadas.
 
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `resolve` mostra o próximo estado após verdict.
+**Sinal no KODA:** Product Discovery e Checkout usam famílias diferentes, mas compartilham campos como `contract_id`, `version` e `state_policy`.
 
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
+**Risco se ignorar:** Cada agente cria seu próprio formato e os handoffs ficam frágeis.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Leitura de trace:** Um contract sem campo obrigatório deve ser rejeitado antes de chegar ao Generator.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
+### Cartao 013: Validator
 
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
+**Papel:** Faz checagem mecânica: campos obrigatórios, tipos, estados permitidos, evidência mínima e transições válidas.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Aresta principal:** Liga `contract_schema` a `execution_allowed`; sem validação estrutural, não há início seguro.
 
----
+**Conexao curricular:** É um Harness Pattern concreto, diferente do Evaluator semântico.
 
-### Cartao 011: Contract Schema como no do grafo
+**Sinal no KODA:** O Validator bloqueia um Checkout Contract sem endereço confirmado ou sem política de cupom.
 
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
+**Risco se ignorar:** O Evaluator recebe trabalho que deveria ter falhado por formato básico.
 
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `autoriza` mostra quem pode usar qual informação.
+**Leitura de trace:** Diferencie `schema_invalid` de `criteria_failed` para não depurar o componente errado.
 
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
+### Cartao 014: State Store
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Papel:** Guarda contract ativo, versão, estado, counters de retry, compromissos visíveis e histórico de renegotiation.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
+**Aresta principal:** Liga `seal_contract` a `next_turn_resume`; a promessa continua válida fora da context window.
 
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
+**Conexao curricular:** É a ponte direta com State Persistence.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Sinal no KODA:** João volta no dia seguinte e KODA recupera que lactose era restrição obrigatória, não detalhe de conversa antiga.
 
----
+**Risco se ignorar:** O contract some quando a conversa é compactada ou reiniciada.
 
-### Cartao 012: Proposal como no do grafo
+**Leitura de trace:** Todo avanço de estado deve ter update persistido, não só mensagem em prompt.
 
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
+### Cartao 015: Audit Log
 
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
+**Papel:** Registra o porquê das decisões: proposal, crítica, seal, execução, verdict, resolution e resposta ao cliente.
 
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
+**Aresta principal:** Liga `verdict_reason` a `postmortem_evidence`; o log torna a falha discutível por fatos.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Conexao curricular:** Fortalece Trace Reading e reduz discussão subjetiva em incidentes.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
+**Sinal no KODA:** A equipe consegue explicar que o produto foi rejeitado por estoque, não por erro de linguagem.
 
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
+**Risco se ignorar:** Debug vira reconstrução manual de conversa longa.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Leitura de trace:** Um log útil mostra a cláusula violada e o dado que provou a violação.
 
----
+### Cartao 016: Resolution
 
-### Cartao 013: Critique como no do grafo
+**Papel:** Decide o estado final do sprint: responder, repetir, renegociar, escalar ou abrir próximo contract.
 
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
+**Aresta principal:** Liga `evaluator_verdict` a `customer_visible_action`; nenhum output deve escapar sem resolução.
 
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `evidencia` mostra qual prova acompanha o output.
+**Conexao curricular:** Usa Harness Patterns para bloquear avanço quando a decisão não está clara.
 
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
+**Sinal no KODA:** Depois de aprovação, Product Discovery encerra e Checkout abre novo contract separado.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Risco se ignorar:** O sistema fica em loop ou avança apesar de falha.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
+**Leitura de trace:** Procure uma única resolução dominante para cada sprint.
 
-**Risco se ignorar:** crítica tardia custa confiança.
+### Cartao 017: Retry
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Papel:** Permite nova execução quando o contract continua válido e a falha foi de cumprimento, não de escopo.
 
----
+**Aresta principal:** Liga `fail_with_reasons` a `generator_retry`; a repetição recebe razões específicas.
 
-### Cartao 014: Revision como no do grafo
+**Conexao curricular:** Conecta Generator/Evaluator com controle de loop do harness.
 
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
+**Sinal no KODA:** O Generator refaz a resposta retirando produto fora do budget após rejeição do Evaluator.
 
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
+**Risco se ignorar:** KODA repete a mesma falha com custo maior de tokens.
 
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
+**Leitura de trace:** Retry sem mudança observável no input do Generator é sinal de loop fraco.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+### Cartao 018: Renegotiation
 
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
+**Papel:** Abre nova versão quando o mundo muda ou quando o contract inicial não representa mais a necessidade do cliente.
 
-**Risco se ignorar:** decisão fora do contract se perde.
+**Aresta principal:** Liga `requirement_changed` a `new_contract_version`; mudança de requisito não deve editar o passado.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Conexao curricular:** É essencial para Multi-Agent Coordination porque cada agente precisa saber qual versão vale.
 
----
+**Sinal no KODA:** João troca de whey para BCAA e o sistema não tenta reaproveitar critérios de proteína como se nada tivesse mudado.
 
-### Cartao 015: Seal como no do grafo
+**Risco se ignorar:** O Evaluator reprova corretamente, mas o harness insiste no contract obsoleto.
 
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
+**Leitura de trace:** A nova versão deve mencionar o motivo da renegotiation.
 
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `coordena` mostra handoff entre papéis diferentes.
+### Cartao 019: Escalation
 
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
+**Papel:** Move o caso para humano ou fallback seguro quando automação não deve continuar sozinha.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Aresta principal:** Liga `max_retries_exceeded` a `human_review_queue`; limite operacional vira proteção de confiança.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
+**Conexao curricular:** Relaciona Harness Patterns e Safety Guard em situações de risco.
 
-**Risco se ignorar:** aceite implícito não protege produção.
+**Sinal no KODA:** Depois de duas falhas de pagamento com mensagens inconsistentes do gateway, KODA para e chama suporte.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Risco se ignorar:** O agente insiste em uma ação financeira ou sensível sem certeza suficiente.
 
----
+**Leitura de trace:** Escalation deve preservar contract, evidência e tentativa anterior para o humano continuar.
 
-### Cartao 016: Resolution como no do grafo
+### Cartao 020: Precedence Rules
 
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
+**Papel:** Define o que vence quando dados entram em conflito: mensagem atual, memória, regra comercial, safety ou preferência.
 
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `prioriza` mostra precedência entre restrição e preferência.
+**Aresta principal:** Liga `current_customer_message` a `persisted_preferences` com ordem explícita de autoridade.
 
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
+**Conexao curricular:** Detalha Context Management além de seleção de tokens.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Sinal no KODA:** Histórico mostra sabor chocolate, mas João pede morango hoje; a preferência atual vence, salvo restrição de estoque ou segurança.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
+**Risco se ignorar:** KODA parece não ouvir o cliente porque usa dado antigo com autoridade errada.
 
-**Risco se ignorar:** sem resolution o loop não termina.
+**Leitura de trace:** Conflitos de dado devem apontar a regra que decidiu a prioridade.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+### Cartao 021: Evidence
 
----
+**Papel:** É a prova que permite verificar uma afirmação do output sem depender da confiança no texto do modelo.
 
-### Cartao 017: Renegotiation como no do grafo
+**Aresta principal:** Liga `catalog_snapshot_id` a `recommendation_claim`; cada claim importante precisa de origem.
 
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
+**Conexao curricular:** Une Trace Reading e Evaluation Rubrics em avaliação baseada em fatos.
 
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `audita` mostra como o trace fica reconstruível.
+**Sinal no KODA:** A frase "tem em estoque" precisa apontar para snapshot de inventory, não para uma memória da conversa.
 
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
+**Risco se ignorar:** O Evaluator aprova afirmações sem base e o cliente descobre a falha depois.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Leitura de trace:** Evidência ausente deve ser tratada como falha, mesmo se a recomendação parecer correta.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
+### Cartao 022: Version
 
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
+**Papel:** Identifica qual contract, schema e critérios estavam ativos quando uma decisão foi tomada.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Aresta principal:** Liga `contract_change` a `metrics_interpretation`; sem versão, métricas antigas e novas se misturam.
 
----
+**Conexao curricular:** Apoia Harness Evolution porque permite comparar antes e depois.
 
-### Cartao 018: Escalation como no do grafo
+**Sinal no KODA:** A versão 1.1 muda sabor de obrigatório para negociável e reduz renegotiation desnecessária.
 
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
+**Risco se ignorar:** A equipe não sabe se uma melhora veio do modelo, do prompt ou do contract.
 
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `limita` mostra como token budget vira regra operacional.
+**Leitura de trace:** Toda decisão auditável deve carregar contract version.
 
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
+### Cartao 023: Customer Commitment
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Papel:** Representa frases que KODA já disse ao cliente e que passam a ter peso arquitetural.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
+**Aresta principal:** Liga `customer_visible_response` a `future_contract_constraints`; promessa feita vira restrição para próximos sprints.
 
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
+**Conexao curricular:** Conecta State Persistence a confiança conversacional.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Sinal no KODA:** Se KODA prometeu "não vou sugerir produto com lactose", Checkout e Upsell também precisam respeitar isso.
 
----
+**Risco se ignorar:** KODA contradiz uma promessa recente e perde credibilidade.
 
-### Cartao 019: Product Discovery como no do grafo
+**Leitura de trace:** Compromissos visíveis devem aparecer no State Store, não só no histórico textual.
 
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
+### Cartao 024: Operational Limits
 
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `renegocia` mostra quando retry não é suficiente.
+**Papel:** Controla limites práticos do sprint: token budget, número de consultas, retries, perguntas ao cliente e timeouts.
 
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
+**Aresta principal:** Liga `contract_execution` a `resource_guard`; o contract também protege custo e latência.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Conexao curricular:** Aplica Token Budgeting como regra de execução, não como conselho genérico.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
+**Sinal no KODA:** Product Discovery permite no máximo três consultas ao catálogo antes de pedir decisão ou relaxar critério.
 
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
+**Risco se ignorar:** O agente pesquisa demais, demora para responder e ainda não melhora a decisão.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Leitura de trace:** Estouro de limite deve gerar resolution, não continuar silenciosamente.
 
----
+### Cartao 025: Feature Template
 
-### Cartao 020: Checkout como no do grafo
+**Papel:** Fornece estrutura inicial para uma família de sprints sem fingir que todos os clientes são iguais.
 
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
+**Aresta principal:** Liga `feature_router` a `proposal`; o template acelera o draft, mas ainda precisa ser criticado.
 
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `resolve` mostra o próximo estado após verdict.
+**Conexao curricular:** Ajuda Harness Evolution porque templates podem ser revisados a partir de falhas reais.
 
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
+**Sinal no KODA:** Product Discovery, Checkout e Fulfillment têm templates distintos com critérios próprios.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+**Risco se ignorar:** O time copia um contract de recomendação para pagamento e deixa lacunas transacionais.
 
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
+**Leitura de trace:** Um template saudável mostra quais campos vieram preenchidos e quais foram decididos na negociação.
 
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
+### Cartao 026: Multi-Agent Handoff
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Papel:** Formaliza a passagem de responsabilidade entre agentes especializados sem perder escopo, evidência ou restrições.
 
----
+**Aresta principal:** Liga `product_discovery_success` a `checkout_contract`; o output aprovado vira input autorizado do próximo agente.
 
-### Cartao 021: Payment Agent como no do grafo
+**Conexao curricular:** É o ponto de encontro entre Sprint Contracts e Multi-Agent Coordination.
 
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
+**Sinal no KODA:** O Checkout Agent recebe produto selecionado, preço aprovado e restrições, mas não reabre recomendação de suplementos.
 
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `autoriza` mostra quem pode usar qual informação.
+**Risco se ignorar:** Cada agente reinterpreta a conversa e cria decisões incompatíveis.
 
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
+**Leitura de trace:** Handoff bom tem contract de saída e contract de entrada com referências cruzadas.
 
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
+### Cartao 027: Safety Guard
 
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
+**Papel:** Mantém restrições de risco acima de preferências comerciais, upsell e fluidez de conversa.
 
-**Risco se ignorar:** pagamento duplicado é falha grave.
+**Aresta principal:** Liga `mandatory_constraints` a `decision_merger`; safety tem veto sobre recomendação e checkout.
 
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Conexao curricular:** Usa Evaluation Rubrics, mas opera como blocker no contract.
 
----
+**Sinal no KODA:** Uma oferta de combo é bloqueada se qualquer item viola lactose intolerance declarada.
 
-### Cartao 022: Fulfillment Agent como no do grafo
+**Risco se ignorar:** Crescimento de receita vence segurança do cliente.
 
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 023: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 024: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 025: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 026: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 027: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 028: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 029: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 030: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 031: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 032: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 033: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 034: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 035: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 036: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 037: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 038: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 039: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 040: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 041: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 042: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 043: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 044: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 045: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 046: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 047: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 048: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 049: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 050: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 051: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 052: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 053: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 054: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 055: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 056: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 057: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 058: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 059: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 060: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 061: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 062: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 063: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 064: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 065: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 066: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 067: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 068: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 069: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 070: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 071: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 072: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 073: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 074: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 075: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 076: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 077: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 078: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 079: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 080: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 081: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 082: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 083: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 084: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 085: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 086: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 087: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 088: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 089: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 090: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 091: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 092: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 093: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 094: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 095: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 096: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 097: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 098: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 099: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 100: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 101: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 102: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 103: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 104: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 105: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 106: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 107: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 108: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 109: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 110: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 111: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 112: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 113: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 114: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 115: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 116: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 117: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 118: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 119: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 120: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 121: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 122: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 123: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 124: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 125: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 126: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 127: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 128: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 129: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 130: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 131: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 132: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 133: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 134: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 135: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 136: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 137: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 138: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 139: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 140: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 141: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 142: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 143: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 144: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 145: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 146: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 147: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 148: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 149: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 150: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 151: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 152: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 153: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 154: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 155: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 156: Candidate Output como no do grafo
-
-**Papel:** Candidate Output carrega resposta e evidência dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Critique porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Candidate Output foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** output sem evidência enfraquece avaliação.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 157: Evaluator Verification como no do grafo
-
-**Papel:** Evaluator Verification julga contra cláusulas dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Revision porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Evaluator Verification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** julgamento sem contract vira gosto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 158: State Store como no do grafo
-
-**Papel:** State Store mantém versão e estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Seal porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que State Store foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** contract só no prompt não dura.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 159: Audit Log como no do grafo
-
-**Papel:** Audit Log registra decisão e motivo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Resolution porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Audit Log foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem log a equipe reconstrói por palpite.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 160: Validator como no do grafo
-
-**Papel:** Validator checa estrutura e invariantes dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Renegotiation porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Validator foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** schema flexível demais permite contract quebrado.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 161: Contract Schema como no do grafo
-
-**Papel:** Contract Schema padroniza campos e tipos dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Escalation porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-evolution, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Contract Schema foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem schema cada equipe cria dialeto.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 162: Proposal como no do grafo
-
-**Papel:** Proposal cria draft criticável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Product Discovery porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Proposal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** proposta perfeita demais demora; vaga demais não ajuda.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 163: Critique como no do grafo
-
-**Papel:** Critique testa ambiguidade cedo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Checkout porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Critique foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** crítica tardia custa confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 164: Revision como no do grafo
-
-**Papel:** Revision incorpora decisões no artefato dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Payment Agent porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e trace-reading, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Revision foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** decisão fora do contract se perde.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 165: Seal como no do grafo
-
-**Papel:** Seal torna versão governante dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Fulfillment Agent porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Seal foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** aceite implícito não protege produção.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 166: Resolution como no do grafo
-
-**Papel:** Resolution decide próximo estado dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Safety Guard porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Resolution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem resolution o loop não termina.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 167: Renegotiation como no do grafo
-
-**Papel:** Renegotiation cria nova versão quando o mundo muda dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Journey State Machine porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Renegotiation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** mudar critério em silêncio quebra métricas.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 168: Escalation como no do grafo
-
-**Papel:** Escalation leva risco a humano ou fallback seguro dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Decision Merger porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Escalation foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** automatizar além do seguro corrói confiança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 169: Product Discovery como no do grafo
-
-**Papel:** Product Discovery aplica contract à recomendação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Input Specification porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Product Discovery foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** cliente sente quando restrição é esquecida.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 170: Checkout como no do grafo
-
-**Papel:** Checkout aplica contract à transação dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Success Criteria porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e koda-feature, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Checkout foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pedido sem contrato expõe dinheiro e estoque.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 171: Payment Agent como no do grafo
-
-**Papel:** Payment Agent exige idempotency dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Failure Handling porque a relacao `autoriza` mostra quem pode usar qual informação.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Payment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** pagamento duplicado é falha grave.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 172: Fulfillment Agent como no do grafo
-
-**Papel:** Fulfillment Agent exige promessa logística verificável dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Agreed Contract porque a relacao `bloqueia` mostra onde o contract impede avanço inseguro.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Fulfillment Agent foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** entrega prometida sem reserva vira incidente.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 173: Safety Guard como no do grafo
-
-**Papel:** Safety Guard bloqueia violação crítica dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Generator Execution porque a relacao `evidencia` mostra qual prova acompanha o output.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Safety Guard foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** segurança não pode ser preferência.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 174: Journey State Machine como no do grafo
-
-**Papel:** Journey State Machine controla mudança de etapa dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Candidate Output porque a relacao `versiona` mostra quando uma mudança vira nova realidade.
-
-**Conexao curricular:** A leitura mais forte aqui e state-persistence, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Journey State Machine foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** avançar cedo demais muda a conversa.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 175: Decision Merger como no do grafo
-
-**Papel:** Decision Merger resolve conflito entre features dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Evaluator Verification porque a relacao `coordena` mostra handoff entre papéis diferentes.
-
-**Conexao curricular:** A leitura mais forte aqui e multi-agent-coordination, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Decision Merger foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** upsell não pode vencer segurança.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 176: Input Specification como no do grafo
-
-**Papel:** Input Specification define quais dados entram no sprint dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a State Store porque a relacao `prioriza` mostra precedência entre restrição e preferência.
-
-**Conexao curricular:** A leitura mais forte aqui e context-management, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Input Specification foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** fonte autorizada sem precedência vira ruído.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 177: Success Criteria como no do grafo
-
-**Papel:** Success Criteria define o que conta como pronto dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Audit Log porque a relacao `audita` mostra como o trace fica reconstruível.
-
-**Conexao curricular:** A leitura mais forte aqui e evaluation-rubrics, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Success Criteria foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** critério que não reprova nada é decoração.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 178: Failure Handling como no do grafo
-
-**Papel:** Failure Handling define como falhar sem improviso dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Validator porque a relacao `limita` mostra como token budget vira regra operacional.
-
-**Conexao curricular:** A leitura mais forte aqui e harness-patterns, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Failure Handling foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** falha sem caminho vira retry cego.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 179: Agreed Contract como no do grafo
-
-**Papel:** Agreed Contract congela o acordo ativo dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Contract Schema porque a relacao `renegocia` mostra quando retry não é suficiente.
-
-**Conexao curricular:** A leitura mais forte aqui e planning-execution-separation, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Agreed Contract foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** sem seal há moving target.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
-
----
-
-### Cartao 180: Generator Execution como no do grafo
-
-**Papel:** Generator Execution produz dentro dos limites dentro de Sprint Contracts.
-
-**Aresta principal:** Este no se conecta a Proposal porque a relacao `resolve` mostra o próximo estado após verdict.
-
-**Conexao curricular:** A leitura mais forte aqui e generator-evaluator, pois o contract torna esse conceito verificavel no sprint.
-
-**Sinal no KODA:** Em Product Discovery, Checkout ou handoff multi-agent, este no aparece quando a conversa precisa preservar compromisso alem da resposta imediata.
-
-**Pergunta de diagnostico:** Que evidencia mostra que Generator Execution foi respeitado antes de KODA responder ao cliente?
-
-**Risco se ignorar:** criatividade sem limite vira risco.
-
-**Criterio de dominio:** Voce consegue apontar no trace onde este no foi criado, validado, usado e encerrado.
+**Leitura de trace:** Quando safety bloqueia, o Audit Log deve registrar a restrição e a feature que tentou avançar.
 
 ---
 
 ## 🛤️ Seção 11: Caminhos de Leitura do Grafo
 
-Os cartões anteriores descrevem nós.
-
-Agora vamos ler caminhos.
-
-Um caminho mostra como uma decisão percorre o sistema.
-
-Cada caminho abaixo pode ser usado em review técnico.
-### Caminho 001: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 002: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 003: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 004: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 005: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 006: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 007: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 008: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 009: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 010: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 011: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 012: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 013: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 014: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 015: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 016: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 017: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 018: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 019: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 020: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 021: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 022: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 023: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 024: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 025: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 026: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 027: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 028: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 029: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 030: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 031: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 032: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 033: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 034: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 035: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 036: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 037: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 038: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 039: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 040: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 041: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 042: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 043: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 044: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 045: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 046: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 047: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 048: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 049: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 050: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 051: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 052: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 053: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 054: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 055: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 056: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 057: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 058: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 059: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 060: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 061: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 062: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 063: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 064: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 065: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 066: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 067: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 068: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 069: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 070: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 071: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 072: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 073: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 074: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 075: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 076: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 077: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 078: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 079: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 080: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 081: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 082: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 083: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 084: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 085: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 086: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 087: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 088: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 089: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 090: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 091: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 092: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 093: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 094: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 095: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 096: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 097: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 098: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 099: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 100: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 101: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 102: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 103: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 104: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 105: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 106: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 107: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 108: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 109: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 110: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 111: Restricao de Lactose
-
-1. **Origem:** O caminho comeca em `mensagem atual`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Input Specification`.
-3. **Coordenacao:** O caminho passa por `Safety Guard` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `resposta segura`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 112: Budget de Joao
-
-1. **Origem:** O caminho comeca em `preferencia declarada`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Success Criteria`.
-3. **Coordenacao:** O caminho passa por `Catalog Snapshot` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Failure Handling` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `renegotiation honesta`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 113: Sabor Morango
-
-1. **Origem:** O caminho comeca em `preferencia negociavel`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `precedence rules`.
-3. **Coordenacao:** O caminho passa por `Generator Execution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `candidate output` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `explicacao de tradeoff`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 114: Estoque Atual
-
-1. **Origem:** O caminho comeca em `inventory snapshot`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Contract Schema`.
-3. **Coordenacao:** O caminho passa por `Validator` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `bloqueio de produto indisponivel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 115: Checkout Seguro
-
-1. **Origem:** O caminho comeca em `selected product`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Checkout Contract`.
-3. **Coordenacao:** O caminho passa por `Payment Agent` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Audit Log` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `order confirmation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 116: Handoff de Pricing
-
-1. **Origem:** O caminho comeca em `cart state`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Pricing Contract`.
-3. **Coordenacao:** O caminho passa por `Decision Merger` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `State Store` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `preco final coerente`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 117: Entrega Mesmo Dia
-
-1. **Origem:** O caminho comeca em `delivery address`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Fulfillment Contract`.
-3. **Coordenacao:** O caminho passa por `route evidence` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `Evaluator Verification` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `ETA confiavel`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 118: Retry com Razao
-
-1. **Origem:** O caminho comeca em `failed verdict`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `failure reasons`.
-3. **Coordenacao:** O caminho passa por `Generator Revision` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `new candidate` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `pass ou escalation`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 119: Mudanca de Categoria
-
-1. **Origem:** O caminho comeca em `cliente muda whey para BCAA`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `Renegotiation`.
-3. **Coordenacao:** O caminho passa por `new contract version` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `fresh criteria` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `nova recomendacao`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
-
-### Caminho 120: Aprendizado do Harness
-
-1. **Origem:** O caminho comeca em `audit events`.
-2. **Formalizacao:** O primeiro ponto arquitetural e `metric aggregation`.
-3. **Coordenacao:** O caminho passa por `Harness Evolution` para evitar interpretacao solta.
-4. **Verificacao:** A evidencia chega em `contract template update` antes de qualquer resposta final.
-5. **Resultado:** O estado desejado e `menos ambiguidade`.
-6. **Leitura de trace:** Se algo falhar, procure a primeira aresta sem evidencia suficiente.
-7. **Pergunta para review:** Este caminho tem input, criterio, failure path e audit event?
+Os caminhos abaixo substituem a leitura genérica por trajetórias reais de decisão.
+
+Cada caminho mostra origem, contract, validação, failure path e sinal de trace.
+
+Use-os como exercícios de design review: se você não consegue localizar uma etapa no trace, o grafo está incompleto.
+
+### Caminho 1: Restrição de Lactose
+
+João escreve: "tenho intolerância à lactose, então não quero passar mal".
+
+O Harness marca `lactose_intolerance` como mandatory constraint, não como preferência.
+
+Input Specification autoriza mensagem atual, perfil persistido e snapshot de catálogo com flag nutricional.
+
+Precedence Rules dizem que safety constraint vence sabor, preço promocional e upsell.
+
+O Product Discovery Contract exige `lactose_free_evidence` para cada item recomendado.
+
+O Generator consulta apenas produtos com evidência nutricional suficiente.
+
+Candidate Output inclui product_id e flag de lactose-free por recomendação.
+
+Evaluator Verification reprova qualquer item com evidência ausente, mesmo que o produto pareça adequado.
+
+Safety Guard tem veto final antes da resposta visível.
+
+Resolution permite resposta se todos os itens passam; caso contrário, retry com razão específica.
+
+O Audit Log deve mostrar a cláusula de lactose como blocker aplicado.
+
+Se João comprar depois, Checkout herda o compromisso de não inserir item com lactose no carrinho.
+
+### Caminho 2: Budget de João
+
+João diz que pode gastar até R$ 50 no produto principal.
+
+A Proposal registra `budget_limit_brl: 50` e marca frete como fora do budget salvo regra comercial contrária.
+
+Critique pergunta se o limite inclui cupom, frete ou apenas preço do item.
+
+Revision fixa que o critério vale para preço final do produto antes do frete.
+
+Catalog Agent retorna opções de R$ 44,90, R$ 49,90 e R$ 59,90.
+
+Generator pode usar as duas primeiras, mas não deve mostrar a terceira como recomendação principal.
+
+Evaluator rejeita candidate output se o item de R$ 59,90 aparecer sem renegotiation.
+
+Failure Handling aciona pergunta ao cliente quando nenhuma opção cumpre lactose e budget ao mesmo tempo.
+
+A mensagem segura é: "posso buscar opções acima de R$ 50 ou manter o limite e trocar sabor?".
+
+State Store registra que budget não foi relaxado até João confirmar.
+
+O caminho termina em recomendação aprovada ou em novo contract versionado.
+
+O risco evitado é KODA parecer que ignorou uma restrição financeira explícita.
+
+### Caminho 3: Mudança de Categoria
+
+A conversa começa com whey sem lactose, mas João pergunta depois se BCAA faria mais sentido.
+
+O Harness detecta mudança de categoria e pausa o Product Discovery Contract ativo.
+
+Resolution classifica o evento como `requirement_changed`, não como falha do Generator.
+
+Renegotiation abre nova versão com `category_focus: bcaa_or_alternative`.
+
+Input Specification mantém lactose e budget porque continuam compromissos do cliente.
+
+Success Criteria muda: agora o output precisa comparar adequação de BCAA versus proteína para o objetivo declarado.
+
+Generator não deve reaproveitar ranking de whey como se fosse catálogo equivalente.
+
+Evaluator verifica se a explicação deixa claro quando BCAA não substitui proteína.
+
+Se a mudança exigir pergunta ao cliente, Failure Handling permite uma pergunta curta antes de recomendar.
+
+Audit Log vincula a nova versão ao motivo: mudança de categoria no meio da conversa.
+
+O caminho termina com nova recomendação ou com orientação educativa aprovada.
+
+O risco evitado é carregar critérios obsoletos para uma categoria nova.
+
+### Caminho 4: Checkout com Cupom
+
+João escolhe um produto aprovado e informa que tem cupom de primeira compra.
+
+Product Discovery encerra com success e abre um Checkout Contract separado.
+
+Input Specification de Checkout inclui produto selecionado, quantidade, preço aprovado, cupom informado, endereço e forma de pagamento.
+
+Contract Schema exige `coupon_policy`, `price_snapshot_id` e `stock_reservation_id`.
+
+Validator bloqueia execução se o cupom não tiver fonte de validação.
+
+Generator monta carrinho com subtotal, desconto, frete e total visível.
+
+Evaluator confere se o desconto respeita elegibilidade e não altera margem mínima.
+
+Payment Agent só recebe total depois que o Evaluator aprova carrinho e cupom.
+
+Failure Handling distingue cupom inválido de pagamento recusado.
+
+Se o cupom falha, KODA explica antes de cobrar.
+
+Se pagamento falha, KODA não altera o preço nem tenta novamente sem autorização.
+
+Audit Log registra cupom, cálculo e confirmação mostrada ao cliente.
+
+### Caminho 5: Handoff Multi-Agent
+
+Product Agent aprova recomendação para João e precisa passar responsabilidade ao Checkout Agent.
+
+O handoff inclui contract_id de origem, produto escolhido, restrições mantidas, preço aprovado e evidência.
+
+Checkout Agent não recebe a conversa inteira como autoridade principal.
+
+Ele recebe output aprovado mais customer commitments persistidos.
+
+O novo Checkout Contract declara que não pode substituir produto sem voltar ao cliente.
+
+Pricing Agent valida preço e cupom sem reavaliar adequação nutricional.
+
+Order Agent monta carrinho e grava idempotency key.
+
+Payment Agent autoriza cobrança apenas após approval do carrinho.
+
+Fulfillment Agent recebe pedido pago e contrato logístico próprio.
+
+Decision Merger impede que um upsell entre no carrinho sem novo mini-contract.
+
+Audit Log mostra cada fronteira com input de entrada e output de saída.
+
+O risco evitado é telefone sem fio entre agentes especializados.
+
+### Caminho 6: Falha de Estoque
+
+Generator recomenda um produto que parecia válido no catálogo inicial.
+
+Durante Verification, Evaluator consulta o snapshot de estoque exigido pelo contract.
+
+O item está sem estoque na região de João.
+
+Evaluator retorna `fail:not_in_stock` com product_id e snapshot_id.
+
+Resolution decide entre retry e renegotiation conforme alternativas disponíveis.
+
+Se existem produtos equivalentes em estoque, retry orienta o Generator a substituir o item.
+
+Se não existem produtos equivalentes, Failure Handling pede escolha ao cliente.
+
+A resposta não deve dizer "temos esse produto" nem esconder a indisponibilidade.
+
+State Store registra que aquele SKU não deve reaparecer no mesmo sprint.
+
+Audit Log preserva a evidência de estoque que causou reprovação.
+
+O caminho termina em nova recomendação aprovada ou em espera por decisão do cliente.
+
+O risco evitado é prometer compra que o KODA não consegue cumprir.
+
+### Caminho 7: Retorno no Dia Seguinte
+
+João volta no dia seguinte perguntando: "e aquele produto sem lactose?".
+
+Context Management sozinho poderia trazer trechos antigos de forma incompleta.
+
+State Store recupera customer commitments, contract version e última resolution.
+
+O Harness verifica se o Product Discovery Contract ainda é válido ou se snapshots expiraram.
+
+Se preço e estoque expiraram, Renegotiation técnica atualiza fontes sem apagar restrições do cliente.
+
+Input Specification mantém lactose e budget porque foram compromissos persistidos.
+
+Generator reconsulta catálogo e estoque frescos.
+
+Evaluator compara a nova recomendação contra o contract restaurado.
+
+KODA responde reconhecendo continuidade: "vou manter sem lactose e até R$ 50".
+
+Audit Log registra retomada de sprint, refresh de snapshot e nova verificação.
+
+O risco evitado é tratar retorno como conversa nova e esquecer restrição crítica.
+
+O caminho mostra por que contract precisa viver fora do prompt.
+
+### Caminho 8: Escalação para Humano
+
+Checkout falha duas vezes porque o gateway retorna respostas inconsistentes para o mesmo pagamento.
+
+Retry count no State Store chega ao limite definido em Operational Limits.
+
+Resolution proíbe terceira tentativa automática.
+
+Escalation cria pacote para humano com contract, carrinho, cupom, tentativas, erros e mensagem segura sugerida.
+
+KODA informa João sem expor detalhes internos: "preciso confirmar seu pagamento com suporte antes de seguir".
+
+Payment Agent não tenta nova cobrança sem autorização humana.
+
+Audit Log preserva idempotency key e respostas do gateway.
+
+Support Agent recebe contexto suficiente para continuar sem pedir tudo de novo.
+
+Customer Commitment registra que KODA não confirmou pedido ainda.
+
+O caminho termina em revisão humana, cancelamento seguro ou retomada com novo contract.
+
+O risco evitado é cobrança duplicada ou confirmação falsa de pedido.
+
+Esse caminho diferencia falha técnica recuperável de risco financeiro.
 
 ---
 
-## 🧯 Seção 12: Playbook de Diagnostico
+## 💼 Complemento da Seção 6: Checkout Protegido por Sprint Contracts
 
-Use este playbook quando uma conversa do KODA falhar apesar de parecer bem escrita.
+Este complemento aprofunda a aplicação KODA sem alterar a Seção 6 original.
 
-### Passo 1: Localize o Contract
+Checkout merece contract próprio porque muda a natureza da promessa.
 
-Pergunte se o sprint tinha contract ativo.
+No Product Discovery, KODA promete recomendação adequada.
 
-Se não tinha, a falha pode ser ausência de acordo.
+No Checkout, KODA promete transação coerente.
 
-Se tinha, registre `contract_id`, versão e estado.
+A diferença é grande.
 
-### Passo 2: Compare Input Disponivel e Input Autorizado
+Uma recomendação ruim prejudica confiança.
 
-Nem todo dado visto pelo modelo deveria governar a decisão.
+Um checkout ruim pode cobrar errado, vender produto indisponível ou confirmar endereço incorreto.
 
-Procure conflito entre mensagem atual, memória persistida, catálogo e regra de negócio.
+Por isso o Checkout Contract deve começar apenas depois de Product Discovery terminar em success.
 
-### Passo 3: Leia Success Criteria Como Teste
+O input inicial é o produto aprovado, não a conversa inteira reaberta.
 
-Cada critério deveria ser capaz de reprovar algo.
+O contract declara `selected_product_id`.
 
-Se nenhum critério reprovaria o output problemático, o contract estava fraco.
+Declara quantidade.
 
-### Passo 4: Leia Failure Handling Como Protocolo
+Declara preço visto pelo cliente.
 
-Falha boa aponta próxima ação.
+Declara cupom informado.
 
-Falha ruim gera desculpa, repetição ou improviso.
+Declara endereço escolhido.
 
-### Passo 5: Verifique Audit Log
+Declara forma de entrega.
 
-O audit log deve permitir reconstruir proposal, negotiation, seal, execution, verification e resolution.
+Declara forma de pagamento.
 
-Se falta evento, o trace está incompleto.
+Declara se há consentimento para cobrança.
 
-### Passo 6: Decida Entre Retry, Renegotiation e Escalation
+O Validator roda antes de qualquer chamada ao gateway.
 
-Retry serve quando a execução errou contra contract ainda válido.
+Se falta endereço, o sprint não pode cobrar.
 
-Renegotiation serve quando o requisito mudou ou era ambíguo.
+Se falta confirmação de quantidade, o sprint não pode reservar estoque definitivo.
 
-Escalation serve quando risco excede autonomia segura.
+Se o cupom não foi validado, o sprint não pode mostrar total final como certo.
+
+O Generator de Checkout monta uma proposta de carrinho.
+
+Essa proposta inclui subtotal, desconto, frete, total, prazo e itens.
+
+Candidate Output não é ainda uma confirmação de pedido.
+
+É uma proposta verificável.
+
+O Evaluator confere se o subtotal bate com o snapshot de preço.
+
+Confere se o desconto é permitido para João.
+
+Confere se o cupom não foi usado antes.
+
+Confere se o estoque foi reservado ou se a mensagem deixa claro que ainda falta confirmação.
+
+Confere se o endereço pertence à área de entrega.
+
+Confere se o texto não promete pagamento concluído antes da autorização.
+
+Se tudo passa, Resolution permite pedir confirmação final.
+
+Depois da confirmação, abre-se uma etapa de pagamento com idempotency key.
+
+O Payment Agent recebe apenas total aprovado, método autorizado e idempotency key.
+
+Ele não recalcula recomendação.
+
+Ele não altera cupom.
+
+Ele não troca produto.
+
+Se o gateway aprova, o State Store registra transação e o Audit Log registra autorização.
+
+Se o gateway recusa, Failure Handling diferencia cartão recusado, timeout e erro inconsistente.
+
+Cartão recusado pode pedir outro método.
+
+Timeout pode consultar status antes de tentar de novo.
+
+Erro inconsistente pode escalar.
+
+A confirmação ao cliente só sai quando contract, pagamento e estado concordam.
+
+Esse fluxo impede três incidentes clássicos.
+
+Primeiro: cobrar valor diferente do mostrado.
+
+Segundo: confirmar produto que não está reservado.
+
+Terceiro: repetir cobrança por retry mal definido.
+
+Um Checkout Contract maduro também protege linguagem.
+
+KODA não deve dizer "pedido confirmado" antes do pagamento.
+
+Não deve dizer "cupom aplicado" antes da validação.
+
+Não deve dizer "entrega hoje" antes de Fulfillment aprovar.
+
+Cada frase visível vira Customer Commitment.
+
+Esses compromissos alimentam o próximo contract.
+
+Quando Checkout passa, Fulfillment recebe pedido pago, endereço e promessa logística permitida.
+
+Quando Checkout falha, o cliente recebe uma explicação curta e segura.
+
+O contract não torna checkout burocrático.
+
+Ele evita que KODA use fluidez conversacional onde precisa de precisão transacional.
+
+### Checklist do Checkout Contract
+
+- Produto selecionado vem de Product Discovery aprovado.
+- Preço possui snapshot atual.
+- Cupom possui política e evidência de elegibilidade.
+- Estoque está reservado ou claramente pendente.
+- Endereço está validado para entrega.
+- Total final é calculado antes de confirmação.
+- Pagamento usa idempotency key.
+- Retry tem limite explícito.
+- Escalation preserva contexto para humano.
+- Confirmação ao cliente só ocorre após resolution de success.
+
+---
+
+## 🤝 Complemento da Seção 6: Multi-Agent Coordination com Contracts em Cada Fronteira
+
+Multi-Agent Coordination não significa colocar vários agentes para conversar livremente.
+
+No KODA, vários agentes livres podem criar velocidade aparente e inconsistência real.
+
+Sprint Contracts transformam cada fronteira em passagem controlada.
+
+A primeira fronteira é Product Discovery para Checkout.
+
+Product Discovery entrega recomendação aprovada, justificativa e restrições preservadas.
+
+Checkout recebe produto escolhido e compromissos, mas não reinterpreta objetivo nutricional.
+
+A segunda fronteira é Checkout para Payment.
+
+Checkout entrega total aprovado, consentimento e idempotency key.
+
+Payment recebe apenas o necessário para autorização.
+
+Payment não decide cupom.
+
+Payment não altera carrinho.
+
+Payment não promete entrega.
+
+A terceira fronteira é Payment para Fulfillment.
+
+Payment entrega transação aprovada e pedido associado.
+
+Fulfillment recebe endereço, itens pagos e restrições logísticas.
+
+Fulfillment não altera preço.
+
+Fulfillment não troca produto sem novo contract.
+
+A quarta fronteira é Fulfillment para Customer Response.
+
+Fulfillment entrega ETA, tracking ou limitação.
+
+Customer Response transforma isso em mensagem clara.
+
+O Decision Merger observa todas as fronteiras.
+
+Ele resolve conflitos entre upsell, suporte, safety e checkout.
+
+Se Safety Guard bloqueia um item, nenhum agente posterior pode reintroduzi-lo.
+
+Se Pricing Agent rejeita cupom, Payment não pode cobrar valor com desconto inválido.
+
+Se Fulfillment não aprova entrega no mesmo dia, Customer Response não pode prometer hoje.
+
+Essa arquitetura reduz fan-out mental.
+
+Cada agente conhece seu contract local.
+
+O Harness conhece o grafo completo.
+
+State Store mantém os artefatos entre fronteiras.
+
+Audit Log permite reconstruir cada passagem.
+
+Um incidente multi-agent normalmente aparece como uma aresta fraca.
+
+A pergunta de debug é: qual handoff perdeu restrição, evidência ou versão?
+
+Se Product Agent entregou produto sem stock evidence, o erro nasceu antes de Checkout.
+
+Se Checkout recalculou preço sem snapshot, o erro nasceu na fronteira de pricing.
+
+Se Payment foi chamado duas vezes, o erro nasceu em idempotency ou retry policy.
+
+Se Fulfillment prometeu rota sem estoque local, o erro nasceu na fronteira logística.
+
+Sprint Contracts não eliminam especialização.
+
+Eles tornam especialização auditável.
+
+No KODA, isso é a diferença entre uma equipe de agentes e uma cadeia de promessas verificáveis.
+
+### Contratos por Fronteira
+
+| Fronteira | Input Governante | Output Esperado | Failure Path |
+|---|---|---|---|
+| Product Discovery -> Checkout | Produto aprovado, restrições e razão | Carrinho proposto | Reabrir escolha se item indisponível |
+| Checkout -> Payment | Total aprovado e consentimento | Autorização idempotente | Pedir outro método ou escalar |
+| Payment -> Fulfillment | Pedido pago e endereço | Reserva e ETA | Recalcular entrega ou avisar atraso |
+| Fulfillment -> Customer Response | Status logístico | Mensagem ao cliente | Suporte humano se promessa falhar |
+
+---
+
+## 🔗 Complemento da Seção 7: Mini-Cenarios de Conexao Curricular
+
+Este complemento mostra como uma pessoa desenvolvedora do KODA usa Sprint Contracts junto com outros conceitos.
+
+### Token Budgeting em Produto com Muitas Restrições
+
+Uma dev percebe que o prompt de Product Discovery está carregando histórico completo de João.
+
+Ela cria contract que lista apenas mensagem atual, preferências persistidas críticas e snapshots frescos.
+
+O token budget deixa de ser corte arbitrário e vira política do sprint.
+
+A recomendação melhora porque KODA carrega menos texto e mais autoridade.
+
+### Context Management em Retorno de Cliente
+
+João volta depois de horas e pergunta sobre "aquele sem lactose".
+
+A dev não confia apenas na context window.
+
+Ela recupera Customer Commitment e contract ativo do State Store.
+
+Context Management seleciona o resumo; Sprint Contract define o que continua obrigatório.
+
+### Harness Patterns em Bloqueio de Avanço
+
+Um teste mostra que KODA às vezes responde mesmo com Evaluator fail.
+
+A dev move a regra para o harness: sem resolution de success, resposta não sai.
+
+O contract deixa de ser documentação e vira gate operacional.
+
+### Generator/Evaluator em Retry Útil
+
+O Evaluator rejeita um item por budget.
+
+Em vez de pedir "melhore a resposta", o harness envia ao Generator a cláusula violada e o SKU específico.
+
+O retry fica mais barato e mais provável de passar.
+
+### Rubric Design em Qualidade Situada
+
+A rubric geral valoriza tom consultivo e clareza.
+
+O contract de João adiciona blockers: lactose, budget e estoque.
+
+A dev aprende que uma resposta pode ter tom excelente e ainda falhar no sprint.
+
+### Trace Reading em Incidente de Cupom
+
+Um cliente recebeu total errado com cupom.
+
+A dev lê o trace por contract: proposal, validation, candidate cart, evaluator verdict e payment call.
+
+Ela descobre que o cupom foi mostrado antes de validation.
+
+A correção vai para Contract Schema e Validator, não para wording do prompt.
+
+### Multi-Agent Coordination em Checkout
+
+Product Agent aprova produto, mas Checkout Agent troca por combo com desconto.
+
+A dev adiciona handoff contract que proíbe substituição sem confirmação do cliente.
+
+Coordenação deixa de depender de boa vontade entre agentes.
+
+### State Persistence em Compaction
+
+Uma conversa longa sofre compaction e perde detalhes textuais.
+
+O contract persiste restrições e compromissos fora do prompt.
+
+Após compaction, o Generator ainda recebe o acordo ativo.
+
+### Harness Evolution em Templates
+
+Depois de uma semana, métricas mostram muitas renegotiations por sabor.
+
+A dev altera template para tratar sabor como preferência por padrão, salvo quando cliente declara obrigação.
+
+A mudança recebe nova versão e pode ser comparada com a anterior.
+
+### Planning/Execution Separation em Feature Nova
+
+Antes de implementar Subscription, a equipe desenha contracts para oferta, aceite, pagamento recorrente e pausa.
+
+Cada etapa tem criteria e failure handling próprios.
+
+A feature nasce como sequência de promessas, não como prompt gigante.
+
+---
+
+## 🧯 Seção 12: Padrões de Falha que o Grafo Revela
+
+O grafo de Sprint Contracts é útil porque transforma falhas vagas em padrões reconhecíveis.
+
+Abaixo estão cinco padrões que aparecem em traces reais de agentes longos.
+
+### Falha 1: Fonte Sem Autoridade
+
+O trace mostra que o Generator usou uma preferência antiga de sabor contra a mensagem atual.
+
+O contract tinha authorized sources, mas não tinha Precedence Rules.
+
+O output parecia personalizado, mas João sentiu que não foi ouvido.
+
+A correção não é aumentar contexto.
+
+A correção é declarar autoridade entre fontes.
+
+No próximo trace, a mensagem atual deve vencer memória persistida para preferências reversíveis.
+
+Safety constraints continuam acima das duas.
+
+### Falha 2: Critério Sem Evidência
+
+O Evaluator aprovou recomendação porque a descrição do produto dizia "leve" e "digestivo".
+
+O contract exigia lactose-free, mas não exigia evidence field correspondente.
+
+O grafo mostra aresta quebrada entre Success Criteria e Evidence.
+
+A correção é exigir flag nutricional ou fonte equivalente.
+
+Se o catálogo não possui essa evidência, Failure Handling deve pedir alternativa segura.
+
+O trace futuro precisa mostrar product_id e evidence pointer por item.
+
+### Falha 3: Retry Sem Mudança
+
+O Evaluator rejeitou output por estoque.
+
+O harness pediu retry, mas enviou o mesmo prompt sem razão específica.
+
+O Generator recomendou o mesmo SKU de novo.
+
+O grafo revela ausência de aresta entre verdict reason e Generator Execution.
+
+A correção é transformar fail em instrução objetiva: remover SKU sem estoque e buscar substituto.
+
+Retry útil sempre carrega cláusula violada, evidência e limite de tentativas.
+
+### Falha 4: Renegotiation Tratada Como Continuação
+
+João mudou de whey para BCAA.
+
+O sistema continuou usando critérios de recomendação de proteína.
+
+O Evaluator rejeitou várias respostas, mas o contract nunca mudou.
+
+O grafo mostra que requirement_changed deveria apontar para new contract version.
+
+A correção é abrir renegotiation quando categoria, budget ou restrição crítica muda.
+
+O trace precisa registrar motivo da nova versão.
+
+### Falha 5: Handoff Sem Contract de Entrada
+
+Product Agent aprovou uma recomendação, mas Checkout Agent recebeu apenas resumo textual.
+
+Checkout recalculou preço, ignorou tradeoff de sabor e sugeriu combo.
+
+O grafo mostra perda na fronteira Product Discovery -> Checkout.
+
+A correção é criar contract de saída e contract de entrada.
+
+O handoff deve carregar produto aprovado, restrições, preço visto e compromissos visíveis.
+
+Decision Merger deve bloquear upsell que contradiz Safety Guard.
+
+### Como Usar Estes Padrões em Postmortem
+
+Comece pelo sintoma visível ao cliente.
+
+Localize o sprint ativo no State Store.
+
+Leia a aresta que deveria ter impedido o sintoma.
+
+Verifique se a aresta tinha dados, critério, evidência e resolution.
+
+Se faltou dado, corrija Input Specification.
+
+Se faltou teste, corrija Success Criteria.
+
+Se faltou ação, corrija Failure Handling.
+
+Se faltou persistência, corrija State Store.
+
+Se faltou rastro, corrija Audit Log.
+
+Esse método evita culpar genericamente "o modelo".
+
+Ele aponta o componente arquitetural que precisa mudar.
+
+---
+
+## 📈 Seção 13: Evolução do Grafo
+
+O grafo de Sprint Contracts não nasce completo.
+
+Ele evolui conforme KODA adiciona features e aprende com incidentes.
+
+### v1: Product Discovery Apenas
+
+A primeira versão cobre recomendação com restrições.
+
+Os nós principais são Input Specification, Success Criteria, Failure Handling, Generator, Evaluator e Audit Log.
+
+O objetivo é impedir recomendações incompatíveis com lactose, budget e estoque.
+
+O State Store guarda contract ativo e customer commitments básicos.
+
+O maior risco é formalizar pouco e deixar critérios no prompt.
+
+A métrica central é evaluator_fail_rate por cláusula.
+
+Quando v1 estabiliza, a equipe sabe quais critérios realmente bloqueiam erro.
+
+### v2: Product Discovery + Checkout
+
+A segunda versão adiciona transação.
+
+O grafo ganha Checkout Contract, Coupon Validation, Payment Authorization e Idempotency.
+
+O output aprovado de Product Discovery vira input autorizado para Checkout.
+
+O risco muda de recomendação ruim para cobrança ou confirmação incorreta.
+
+Operational Limits ficam mais importantes porque retries podem causar efeitos externos.
+
+Audit Log precisa registrar cálculo de total, cupom e autorização.
+
+A métrica central passa a incluir payment_retry_rate e cart_validation_fail_rate.
+
+### v3: Multi-Agent Coordination
+
+A terceira versão adiciona fronteiras entre agentes.
+
+Product Agent, Checkout Agent, Payment Agent e Fulfillment Agent recebem contracts próprios.
+
+O grafo deixa de ser uma linha e vira cadeia de handoffs.
+
+Cada fronteira precisa de input, output, criteria, failure path e owner.
+
+Decision Merger entra para resolver conflitos entre safety, upsell, suporte e fulfillment.
+
+State Store passa a guardar relações entre contracts, não apenas contracts isolados.
+
+Audit Log precisa permitir replay de uma jornada completa.
+
+A métrica central passa a ser handoff_failure_rate por fronteira.
+
+### v4: Evolução Guiada por Evidência
+
+Depois que v3 roda em produção, a equipe começa a remover peso onde não há risco.
+
+Contracts simples podem virar templates mais curtos.
+
+Critérios que nunca reprovam nada são removidos ou reescritos.
+
+Failure paths frequentes viram melhorias de produto ou catálogo.
+
+Model upgrades podem reduzir retries, mas não removem obrigações de segurança.
+
+A equipe compara versões antes de simplificar.
+
+O grafo evolui como sistema vivo.
+
+Ele não tenta prever todas as features futuras.
+
+Ele garante que cada nova feature saiba que promessa está assumindo.
+
+### Regra de Manutenção
+
+Atualize o grafo quando uma feature nova cria compromisso visível ao cliente.
+
+Atualize quando um agente novo recebe ou entrega decisão crítica.
+
+Atualize quando um incident postmortem revela aresta ausente.
+
+Atualize quando uma métrica mostra contract caro demais ou fraco demais.
+
+Não atualize por estética.
+
+Atualize quando o mapa deixa de explicar produção.
+
+---
+
+
+## 🧰 Seção 14: Playbooks de Design Review para Sprint Contracts
+
+Esta seção adiciona material operacional para revisar contracts antes de eles chegarem à produção.
+
+Ela não substitui os diagramas.
+
+Ela transforma o grafo em perguntas de review.
+
+Use estes playbooks em PRs, planning, incident review e onboarding.
+
+### Playbook 1: Review de Input Specification
+
+Comece perguntando qual evento disparou o sprint.
+
+Se o evento é mensagem do cliente, copie a frase que criou obrigação.
+
+Se o evento é mudança de estado, copie o estado anterior e o estado proposto.
+
+Liste as fontes que o Generator pode usar.
+
+Liste também as fontes que ele não pode usar.
+
+Essa segunda lista evita inferência acidental.
+
+Verifique se existe snapshot para dados voláteis.
+
+Preço é dado volátil.
+
+Estoque é dado volátil.
+
+Cupom é dado volátil.
+
+Disponibilidade logística é dado volátil.
+
+Preferência persistida pode ser menos autoritativa que mensagem atual.
+
+Restrição de segurança pode ser mais autoritativa que qualquer preferência.
+
+O review deve procurar conflitos explícitos.
+
+Mensagem atual contra histórico.
+
+Catálogo contra texto livre.
+
+Preço promocional contra política comercial.
+
+Estoque local contra estoque nacional.
+
+Se não há regra de precedência, o contract ainda está incompleto.
+
+Um bom reviewer pergunta: o que o modelo poderia usar indevidamente aqui?
+
+Depois pergunta: o contract bloqueia isso ou apenas espera bom senso?
+
+A saída do review é uma lista curta de fontes autorizadas com prioridade.
+
+Se essa lista ficar longa demais, o sprint talvez esteja grande demais.
+
+### Playbook 2: Review de Success Criteria
+
+Leia cada critério como se fosse um teste.
+
+Se o critério não consegue falhar, ele não protege nada.
+
+Troque adjetivos por condições observáveis.
+
+"Boa recomendação" vira preço, estoque, restrição e razão.
+
+"Resposta clara" vira máximo de opções, tradeoff explícito e próxima ação.
+
+"Checkout correto" vira total calculado, cupom validado e pagamento autorizado.
+
+Separe blockers de scoring.
+
+Blocker reprova mesmo se o resto está excelente.
+
+Scoring melhora ranking, mas não bloqueia sozinho.
+
+Lactose para João é blocker.
+
+Sabor morango pode ser scoring ou preferência.
+
+Preço acima do budget é blocker até João renegociar.
+
+Tom consultivo é critério de qualidade, mas não compensa violação de safety.
+
+Peça evidência para cada blocker.
+
+Se não há evidência, o critério vira fé no modelo.
+
+Verifique também a condição de parada.
+
+O sprint para quando encontra três opções?
+
+Para quando encontra uma opção suficiente?
+
+Para quando todas as categorias permitidas foram examinadas?
+
+Sem stop condition, o agente tende a pesquisar demais ou parar cedo demais.
+
+A saída do review é uma lista de critérios que podem reprovar um output real.
+
+### Playbook 3: Review de Failure Handling
+
+Imagine que nenhum produto cumpre todos os critérios.
+
+O que KODA diz?
+
+Imagine que o cliente muda budget no meio.
+
+O que KODA registra?
+
+Imagine que o Evaluator reprova por evidência ausente.
+
+O Generator recebe qual razão?
+
+Imagine que o gateway de pagamento fica inconsistente.
+
+Quando o sistema para?
+
+Failure Handling precisa diferenciar falhas.
+
+Falha de execução pode ir para retry.
+
+Falha de requisito pode ir para renegotiation.
+
+Falha de risco pode ir para escalation.
+
+Falha de dado ausente pode pedir input.
+
+Falha de ferramenta pode aguardar ou consultar status.
+
+Não misture todas em "tentar novamente".
+
+Retry sem razão é desperdício.
+
+Renegotiation sem versão é confusão.
+
+Escalation sem pacote de contexto sobrecarrega suporte.
+
+Um bom review exige mensagem segura para o cliente em cada failure path.
+
+Essa mensagem não deve esconder a limitação.
+
+Também não deve expor detalhe interno desnecessário.
+
+A saída do review é uma tabela de falha, próxima ação e mensagem segura.
+
+### Playbook 4: Review de Handoff
+
+Todo handoff precisa de contrato de saída e contrato de entrada.
+
+A saída do agente anterior não deve ser texto solto.
+
+Ela precisa carregar evidência.
+
+Ela precisa carregar restrições preservadas.
+
+Ela precisa indicar versão.
+
+Ela precisa declarar o que o próximo agente não deve reinterpretar.
+
+No KODA, Product Discovery entrega produto aprovado e razão.
+
+Checkout transforma isso em carrinho, não em nova recomendação.
+
+Payment transforma carrinho aprovado em autorização, não em recálculo comercial.
+
+Fulfillment transforma pedido pago em promessa logística, não em oferta de produto.
+
+O reviewer deve procurar perda de autoridade.
+
+A restrição de lactose atravessa a fronteira?
+
+O preço visto pelo cliente atravessa a fronteira?
+
+O cupom validado atravessa a fronteira?
+
+A idempotency key atravessa a fronteira correta?
+
+Se a resposta for "está no histórico", o handoff está fraco.
+
+Handoff bom usa artefato explícito.
+
+A saída do review é um mapa de entrada, saída, owner e failure path por fronteira.
+
+### Playbook 5: Review de Audit Log
+
+Audit Log não é logar tudo.
+
+É logar o que reconstrói decisão.
+
+Comece pelos eventos mínimos.
+
+Contract proposed.
+
+Negotiation question.
+
+Revision accepted.
+
+Contract sealed.
+
+Generator submitted candidate.
+
+Evaluator returned verdict.
+
+Resolution selected next state.
+
+Customer-visible message sent.
+
+Para Checkout, adicione coupon validation.
+
+Para Payment, adicione idempotency key e gateway status.
+
+Para Fulfillment, adicione reservation e ETA evidence.
+
+Cada evento precisa de timestamp.
+
+Cada evento precisa de contract_id.
+
+Cada evento precisa de version.
+
+Cada verdict precisa de reasons.
+
+Cada failure path precisa de next_action.
+
+O reviewer deve tentar responder: se o cliente reclamar amanhã, conseguimos explicar?
+
+Se a resposta depende de memória humana, o Audit Log falhou.
+
+A saída do review é uma lista de eventos obrigatórios por contract family.
+
+### Playbook 6: Review de Operational Limits
+
+Operational Limits protegem custo, latência e experiência do cliente.
+
+Defina token budget por sprint.
+
+Defina máximo de consultas ao catálogo.
+
+Defina máximo de perguntas antes de recomendar.
+
+Defina máximo de retries.
+
+Defina timeout para ferramentas externas.
+
+Defina quando uma tentativa deve aguardar status em vez de repetir.
+
+No Product Discovery, muitas perguntas parecem cuidado, mas podem virar atrito.
+
+No Checkout, muitos retries podem virar risco financeiro.
+
+No Fulfillment, muitas consultas podem atrasar confirmação.
+
+O reviewer deve perguntar: qual limite evita insistência?
+
+Também deve perguntar: qual limite evita resposta prematura?
+
+Limite baixo demais força fallback ruim.
+
+Limite alto demais cria agente teimoso.
+
+A saída do review é uma política que equilibra segurança, custo e fluidez.
+
+---
+
+## 🧪 Seção 15: Exemplos de Trace Reading com Sprint Contracts
+
+Esta seção mostra como o grafo muda a leitura de traces.
+
+O objetivo não é adicionar mais teoria.
+
+O objetivo é mostrar o tipo de evidência que uma pessoa do time deve procurar.
+
+### Trace 1: Recomendação Aprovada
+
+O trace começa com `feature_trigger: product_discovery`.
+
+A mensagem de João declara lactose intolerance e budget de R$ 50.
+
+O harness cria draft com três fontes autorizadas: mensagem atual, perfil e catálogo.
+
+O Evaluator pergunta se budget inclui frete.
+
+Revision define que budget vale para produto antes do frete.
+
+Seal registra versão 1.0.1.
+
+Generator consulta catálogo snapshot `cat_2026_05_28_0910`.
+
+Candidate Output apresenta dois produtos.
+
+Cada produto tem product_id, preço, estoque e lactose-free evidence.
+
+Evaluator aprova com razões vazias e score de adequação suficiente.
+
+Resolution envia resposta ao cliente.
+
+Audit Log vincula a resposta à versão do contract.
+
+A leitura do trace é rápida porque cada etapa tem artefato.
+
+A equipe não precisa inferir o que o modelo "quis fazer".
+
+Ela lê o que o sistema concordou em fazer.
+
+### Trace 2: Recomendação Reprovada por Estoque
+
+O trace mostra candidate output com produto `sku_whey_204`.
+
+O preço está dentro do budget.
+
+A flag lactose-free existe.
+
+A justificativa é boa.
+
+Mas o inventory snapshot indica `out_of_stock_local`.
+
+Evaluator retorna `fail:not_in_stock`.
+
+A razão inclui product_id e snapshot_id.
+
+Resolution escolhe retry porque há alternativas em estoque.
+
+Generator recebe instrução para remover `sku_whey_204`.
+
+Segundo candidate output troca o produto por `sku_whey_118`.
+
+Evaluator aprova.
+
+O cliente nunca vê a opção indisponível.
+
+O padrão revelado é: falha foi de evidência operacional, não de linguagem.
+
+A correção futura pode ser cache de estoque mais fresco.
+
+### Trace 3: Cupom Inválido no Checkout
+
+O Checkout Contract inclui cupom `JOAO10`.
+
+Validator exige política de cupom antes de cálculo final.
+
+Coupon service retorna que o cupom vale apenas para primeira compra.
+
+State Store mostra compra anterior.
+
+Evaluator rejeita carrinho com desconto aplicado.
+
+Failure Handling seleciona mensagem explicativa.
+
+KODA diz que o cupom não está elegível e mostra total sem desconto.
+
+Payment Agent não recebe chamada antes da nova confirmação.
+
+Audit Log registra cupom, motivo de rejeição e mensagem ao cliente.
+
+O incidente evitado é cobrança com desconto inválido.
+
+O trace também prova que KODA não tentou esconder a falha.
+
+### Trace 4: Renegotiation por Mudança de Categoria
+
+O contract ativo é de whey.
+
+João pergunta: "BCAA não seria melhor?".
+
+Harness classifica como mudança de categoria.
+
+Resolution encerra a tentativa atual como `renegotiation_required`.
+
+Novo draft preserva lactose e budget.
+
+Success Criteria agora exige comparação entre objetivo e categoria.
+
+Generator explica que BCAA não substitui proteína para o objetivo declarado.
+
+Evaluator aprova porque a resposta não força venda.
+
+Audit Log vincula contract v1 de whey ao contract v2 de comparação.
+
+A leitura mostra que KODA respeitou a mudança sem esquecer compromissos.
+
+### Trace 5: Escalação por Pagamento Inconsistente
+
+Checkout Contract passa.
+
+Payment Agent envia autorização com idempotency key `pay_778`.
+
+Gateway retorna timeout.
+
+Harness consulta status antes de retry.
+
+Gateway retorna estado ambíguo.
+
+Retry count chega a limite 2.
+
+Resolution seleciona escalation.
+
+KODA informa João que vai confirmar com suporte.
+
+Support recebe contract, carrinho, total, idempotency key e respostas do gateway.
+
+Nenhuma terceira cobrança automática é feita.
+
+O trace prova que a escalação protegeu cliente e empresa.
+
+---
+
+## 🧱 Seção 16: Padrões de Escrita para Contracts KODA
+
+Esta seção ajuda a transformar decisões arquiteturais em linguagem consistente.
+
+Ela evita que cada contract pareça escrito por uma pessoa diferente.
+
+### Escreva Restrições Como Obrigações
+
+Use frases como "todo item recomendado deve".
+
+Evite frases como "tentar priorizar" quando o critério é obrigatório.
+
+Obrigação ambígua enfraquece o Evaluator.
+
+Se lactose é blocker, escreva como blocker.
+
+Se sabor é preferência, escreva como preferência.
+
+Se budget exige confirmação para mudar, escreva essa condição.
+
+### Escreva Preferências Como Tradeoffs
+
+Preferência não deve parecer falha automática.
+
+Para João, morango é desejável.
+
+Mas se a única opção segura e barata for baunilha, o contract pode permitir tradeoff.
+
+Nesse caso, Success Criteria deve exigir explicação visível.
+
+O cliente precisa entender por que a preferência não venceu.
+
+Tradeoff sem explicação parece descuido.
+
+### Escreva Falhas Como Estados
+
+Não escreva "se der errado, tentar novamente".
+
+Escreva qual erro leva a qual estado.
+
+`no_valid_product` leva a pergunta ao cliente.
+
+`missing_evidence` leva a retry com razão.
+
+`payment_ambiguous` leva a status check ou escalation.
+
+`customer_changes_category` leva a new contract version.
+
+Estados claros reduzem loops.
+
+### Escreva Evidência Como Campo Obrigatório
+
+Se o Evaluator precisa verificar algo, o Generator precisa entregar a evidência.
+
+Não deixe evidência escondida na prosa.
+
+Use campos como `product_id`, `snapshot_id`, `price_brl`, `stock_status` e `constraint_evidence`.
+
+A mensagem ao cliente pode ser natural.
+
+O candidate output precisa ser verificável.
+
+Essa separação mantém fluidez sem perder auditabilidade.
+
+### Escreva Versioning Como Parte do Design
+
+Não espere o primeiro incidente para versionar.
+
+Toda mudança de critério relevante precisa de nova versão.
+
+Mudança de wording talvez não precise.
+
+Mudança de blocker precisa.
+
+Mudança de fonte autorizada precisa.
+
+Mudança de failure path precisa.
+
+Versioning permite comparar métricas sem confundir eras diferentes.
+
+### Escreva Customer Commitments Separadamente
+
+Nem tudo que KODA diz vira compromisso durável.
+
+Mas algumas frases viram.
+
+"Vou manter sem lactose" vira compromisso.
+
+"Vou buscar até R$ 50" vira compromisso.
+
+"Esse total fica R$ 48,90" vira compromisso transacional até expirar snapshot.
+
+"Entrega hoje" vira compromisso logístico se Fulfillment aprovou.
+
+Essas frases devem entrar no State Store.
+
+Se ficarem apenas na conversa, podem desaparecer na compaction.
+
+### Escreva Limites Como Proteção, Não Como Punição
+
+Max retries protege o cliente contra insistência.
+
+Max catalog queries protege latência.
+
+Max customer questions protege experiência.
+
+Token budget protege custo e foco.
+
+Timeout protege contra ferramenta externa instável.
+
+Explique no contract o que acontece ao atingir limite.
+
+Limite sem resolution apenas cria nova falha.
+
+### Escreva Handoffs Com Owner
+
+Cada contract deve deixar claro quem entrega e quem verifica.
+
+Product Agent entrega recomendação.
+
+Evaluator aprova recomendação.
+
+Checkout Agent monta carrinho.
+
+Payment Agent autoriza pagamento.
+
+Fulfillment Agent confirma logística.
+
+Owner claro reduz buracos entre agentes.
+
+Quando todo mundo é dono, ninguém é dono.
+
+---
+
+## 🧭 Seção 17: Mapa de Decisão para Quando Usar Sprint Contracts
+
+Sprint Contracts não devem ser aplicados mecanicamente em tudo.
+
+Use o mapa abaixo como decisão prática.
+
+### Use Contract Forte Quando Há Risco de Segurança
+
+Alergia, intolerância, contraindicação e promessa médica exigem contract forte.
+
+KODA vende suplementos, então linguagem de saúde precisa ser cuidadosa.
+
+Mesmo quando o sistema não dá conselho médico, ele deve respeitar restrições declaradas.
+
+Safety Guard deve ter veto.
+
+Evaluator deve exigir evidência.
+
+Failure Handling deve preferir pergunta ou escalation a suposição.
+
+### Use Contract Forte Quando Há Dinheiro
+
+Checkout, cupom, pagamento, assinatura e reembolso exigem contract forte.
+
+Qualquer erro pode virar perda financeira ou chargeback.
+
+Idempotency precisa estar no contract.
+
+Total precisa ser verificável.
+
+Consentimento precisa ser claro.
+
+Mensagem de confirmação precisa esperar autorização.
+
+### Use Contract Médio Quando Há Recomendação Personalizada
+
+Product Discovery geralmente precisa de contract médio a forte.
+
+Se a recomendação envolve apenas preferência leve, o contract pode ser curto.
+
+Se envolve restrição corporal, budget e estoque, precisa ser forte.
+
+A força do contract acompanha o custo de errar.
+
+### Use Contract Leve Quando Há Exploração Reversível
+
+Brainstorming interno pode usar contract leve.
+
+Perguntas exploratórias sem promessa ao cliente podem usar prompt estruturado.
+
+Mesmo assim, defina objetivo e stop condition.
+
+Não crie schema pesado quando o custo de falha é baixo.
+
+### Não Use Contract Quando a Conversa Ainda Busca Escopo Humano
+
+Se o cliente ainda não declarou objetivo suficiente, talvez o sprint correto seja discovery question.
+
+Formalizar cedo demais pode congelar uma intenção que ainda não existe.
+
+Nesse caso, o harness deve fazer uma pergunta clara.
+
+Depois que a intenção ganha forma, o contract aparece.
+
+### Reavalie a Força do Contract com Métricas
+
+Se evaluator_fail_rate é baixo e impacto é baixo, simplifique.
+
+Se renegotiation_rate é alto, revise templates.
+
+Se escalation_rate sobe, revise failure paths.
+
+Se customer_visible_correction_rate sobe, revise criteria e evidence.
+
+O grafo deve ficar mais preciso, não apenas maior.
 
 ---
 
