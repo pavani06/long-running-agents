@@ -11,7 +11,7 @@
 
 ## 📖 Prólogo: O Momento em que Tudo Começa
 
-Você acabou de ser nomeado líder técnico de um projeto de long-running agents. Sua equipe está animada. O roadmap está claro. A visão é ambiciosa: construir agentes que operam por horas, mantendo contexto, tomando decisões confiaveis, escalando com elegância.
+Você acabou de ser nomeado líder técnico de um projeto de long-running agents. Sua equipe está animada. O roadmap está claro. A visão é ambiciosa: construir agentes que operam por horas, mantendo contexto, tomando decisões confiáveis, escalando com elegância.
 
 Mas antes de qualquer linha de código de produção, você enfrenta o primeiro desafio real:
 
@@ -37,7 +37,7 @@ Já vi times talentosos perderem semanas porque:
 **Este guia existe para que você não cometa esses erros.**
 
 Em 90 minutos, você vai:
-1. Estruturar um repositório que escala do prototipo à produção
+1. Estruturar um repositório que escala do protótipo à produção
 2. Configurar o ambiente de desenvolvimento completo
 3. Instalar e validar todas as dependências
 4. Criar seu primeiro agente funcional (hello world)
@@ -310,14 +310,48 @@ source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
 
 # Instale as dependências core
-pip install anthropic>=0.39.0     # API Anthropic (Claude)
-pip install openai>=1.50.0        # API OpenAI (opcional)
-pip install pydantic>=2.0         # Validação de dados
-pip install python-dotenv>=1.0    # Carregar .env
-pip install structlog>=24.0       # Logging estruturado
-pip install rich>=13.0            # Output colorido no terminal
-pip install pytest>=8.0           # Testes
-pip install pytest-asyncio>=0.24  # Testes assíncronos
+pip install "anthropic>=0.39.0"      # API Anthropic (Claude)
+pip install "openai>=1.50.0"         # API OpenAI (opcional)
+pip install "pydantic>=2.0"          # Validação de dados
+pip install "python-dotenv>=1.0"     # Carregar .env
+pip install "structlog>=24.0"        # Logging estruturado
+pip install "rich>=13.0"             # Output colorido no terminal
+pip install "pytest>=8.0"            # Testes
+pip install "pytest-asyncio>=0.24"   # Testes assíncronos
+
+# Alternativa: criar requirements.txt e instalar de uma vez
+# (veja o bloco requirements.txt abaixo)
+```
+
+#### requirements.txt (para instalação reproduzível)
+
+Crie `requirements.txt` na raiz do projeto:
+
+```text
+# requirements.txt — Dependências Python do projeto
+
+# API de LLMs
+anthropic>=0.39.0
+openai>=1.50.0
+
+# Validação e Configuração
+pydantic>=2.0
+python-dotenv>=1.0
+
+# Logging e Output
+structlog>=24.0
+rich>=13.0
+
+# Testes
+pytest>=8.0
+pytest-asyncio>=0.24
+pytest-cov>=5.0
+```
+
+Depois instale tudo com um comando:
+
+```bash
+pip install -r requirements.txt
 ```
 
 #### Node.js (Ferramentas Auxiliares)
@@ -464,7 +498,14 @@ echo "Configuração:"
 if [ -f .env ]; then
     echo "  ✅ .env existe"
     if grep -q "ANTHROPIC_API_KEY=sk-ant-" .env; then
-        echo "  ✅ ANTHROPIC_API_KEY configurada"
+        # Rejeita placeholder (ex: sk-ant-xxxxxxxxxxxxx)
+        if grep -q "xxxx" .env; then
+            echo "  ❌ ANTHROPIC_API_KEY contém placeholder (xxxxxxxxxxxxx)"
+            echo "     Substitua pela sua key real em .env"
+            ERRORS=$((ERRORS + 1))
+        else
+            echo "  ✅ ANTHROPIC_API_KEY configurada"
+        fi
     else
         echo "  ❌ ANTHROPIC_API_KEY NÃO configurada em .env"
         ERRORS=$((ERRORS + 1))
@@ -1217,11 +1258,50 @@ class TestHelloAgent:
 
 ### Executando o Hello World
 
+**Importante:** O script `hello_agent.py` importa do pacote `src/`. Para que o Python encontre o módulo, use um destes métodos:
+
+**Método 1 (recomendado):** Instale o projeto em modo editável:
+
+```bash
+# Adicione um setup.py ou pyproject.toml mínimo, ou use:
+pip install -e .
+```
+
+**Método 2:** Execute com PYTHONPATH:
+
 ```bash
 # Ative o ambiente virtual
 source venv/bin/activate
 
-# Execute o agente
+# Execute com PYTHONPATH apontando para a raiz do projeto
+PYTHONPATH="$(pwd)" python3 src/hello_agent.py
+```
+
+**Método 3:** Crie um `pyproject.toml` mínimo na raiz:
+
+```toml
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "long-running-agents"
+version = "0.1.0"
+
+[tool.setuptools]
+packages = ["src", "src.agents", "src.orchestration", "src.persistence", "src.config", "src.tools", "src.evaluation"]
+```
+
+Depois instale:
+
+```bash
+pip install -e .
+```
+
+Agora execute:
+
+```bash
 python3 src/hello_agent.py
 
 # Output esperado:
@@ -1573,11 +1653,18 @@ def main():
     load_dotenv()
 
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
-    has_key = bool(api_key and api_key.startswith("sk-ant-"))
+    # Rejeita chaves placeholder (ex: sk-ant-xxxxxxxxxxxxx)
+    is_placeholder = "xxxx" in api_key or "placeholder" in api_key.lower()
+    has_key = bool(
+        api_key
+        and api_key.startswith("sk-ant-")
+        and len(api_key) > 30
+        and not is_placeholder
+    )
     all_ok &= check(
         "ANTHROPIC_API_KEY configurada",
         has_key,
-        "Configure em .env",
+        "Configure sua key real em .env (não use placeholder)",
     )
 
     # === 3. Estrutura de Diretórios ===
@@ -2748,9 +2835,15 @@ class SetupVerifier:
 
         if has_env:
             api_key = os.getenv("ANTHROPIC_API_KEY", "")
-            has_key = bool(api_key and api_key.startswith("sk-ant-"))
+            is_placeholder = "xxxx" in api_key or "placeholder" in api_key.lower()
+            has_key = bool(
+                api_key
+                and api_key.startswith("sk-ant-")
+                and len(api_key) > 30
+                and not is_placeholder
+            )
             self.check("Config", "ANTHROPIC_API_KEY configurada", has_key,
-                       "Adicione sua key em .env. Obtenha em: https://console.anthropic.com/")
+                       "Configure sua key real em .env (não use placeholder)")
 
         # === 5. Git ===
         print("\n🔧 GIT")
@@ -2982,17 +3075,6 @@ git status | grep .env && echo "⚠️ Cuidado!" || echo "✅ OK"
 ---
 
 ## 📋 Metadata
-
-| Campo | Valor |
-|-------|-------|
-| **Arquivo** | 01-setup-guide.md |
-| **Módulo** | 07 - Implementation Guides |
-| **Tempo** | 90 minutos |
-| **Status** | ✅ Completo |
-| **Próximo** | 02-team-progression-guide.md |
-| **Dependências** | Nenhuma (independente) |
-| **Aplicável a** | Todos os níveis (1-4) |
-| **Atualizado** | Maio 2026 |
 
 | Campo | Valor |
 |-------|-------|
