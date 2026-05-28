@@ -324,9 +324,11 @@ class Product:
 @dataclass
 class CustomerProfile:
     """Perfil do cliente com preferências e restrições."""
-    customer_id: str
-    name: str
-    whatsapp_number: str
+    schema_version: str = "2.0"
+    conversation_id: str = ""
+    customer_id: str = ""
+    name: str = ""
+    whatsapp_number: str = ""
     budget_brl: Optional[float] = None
     dietary_restrictions: list[str] = field(default_factory=list)
     allergies: list[str] = field(default_factory=list)
@@ -560,6 +562,7 @@ def catalog_agent(
     intent: Intent,
     profile: CustomerProfile,
     catalog: list[Product],
+    customer_message: str = "",
     max_results: int = 5,
 ) -> list[Product]:
     """Filtra e ranqueia produtos do catálogo baseado no perfil e intenção.
@@ -599,6 +602,7 @@ def generator_agent(
     profile: CustomerProfile,
     products: list[Product],
     conversation_id: str = "",
+    feedback: str = "",
 ) -> Generation:
     """Gera resposta natural em PT-BR para WhatsApp.
 
@@ -607,6 +611,12 @@ def generator_agent(
     - Apresentação dos produtos com emojis relevantes
     - Informação de preço e características principais
     - Pergunta de engajamento no final
+
+    Se feedback for fornecido (retry loop):
+    - Re-filtrar produtos removendo os que causaram rejeição
+    - Ex: se feedback menciona "RESTRICAO_ORCAMENTO falhou", remover produtos acima do orçamento
+    - Ex: se feedback menciona "RESTRICAO_LACTOSE falhou", remover produtos com lactose
+    - Gerar nova resposta apenas com os produtos corrigidos
 
     Template de resposta:
     ```
