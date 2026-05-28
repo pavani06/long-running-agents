@@ -42,7 +42,7 @@ Quando o Generator erra (e ele vai errar — cupom inválido, estoque zerado), o
 │  │   GENERATOR      │     │   EVALUATOR      │                   │
 │  │   OrderProcessor │────▶│ OrderValidator   │                   │
 │  │                  │     │                  │                   │
-│  │ • Valida estoque │     │ • 8 critérios    │                   │
+│  │ • Valida estoque │     │ • 9 critérios    │                   │
 │  │ • Atualiza preço │     │ • Score 0-10     │                   │
 │  │ • Aplica desconto│     │ • Feedback       │                   │
 │  │ • Calcula frete  │     │ • Severidade     │                   │
@@ -120,15 +120,15 @@ Antes de escrever uma linha de código, o contrato precisa ser definido. Este é
 
 ### Por Que Este Contrato Funciona
 
-Este contrato resolve os 3 problemas que o prólogo do exercício descreveu:
+Este contrato resolve cada um dos problemas que o prólogo do exercício descreveu:
 
-1. **Cupom PRIMEIRA20 indevido** → `[SC3]` + `[F2]`: O contrato força a validação de `first_purchase_only`. Se o cliente já comprou antes, o Evaluator rejeita e o Generator aplica o desconto alternativo (clube 10%).
+1. **Cupom PRIMEIRA20 indevido** → `[SC3]`: O contrato força a validação de `first_purchase_only`. Se o cliente já comprou antes, o Evaluator rejeita e o Generator aplica o desconto alternativo (clube 10%).
 
-2. **Preço desatualizado do BCAA** → `[SC2]` + `[F4]`: O contrato exige que o Generator consulte o catálogo em tempo real. O Evaluator compara cada `unit_price` com `catalog.current_price`. Se divergir, é rejeitado.
+2. **Preço desatualizado do BCAA** → `[SC2]`: O contrato exige que o Generator consulte o catálogo em tempo real. O Evaluator compara cada `unit_price` com `catalog.current_price`. Se divergir, é rejeitado.
 
-3. **Double discount (cupom + clube)** → `[SC4]` + `[SC5]` + `[F3]`: O contrato proíbe cumulatividade e exige que o maior desconto seja aplicado. O Evaluator calcula `max(cupom_amount, club_amount)` e compara com o que foi aplicado.
+3. **Double discount (cupom + clube)** → `[SC4]` + `[SC5]`: O contrato proíbe cumulatividade e exige que o maior desconto seja aplicado. O Evaluator calcula `max(cupom_amount, club_amount)` e compara com o que foi aplicado.
 
-4. **Creatina sem estoque** → `[SC1]` + `[F1]`: O contrato exige `stock_qty >= qty` para cada item. O Evaluator verifica cada item contra o catálogo e rejeita se algum estiver zerado.
+4. **Creatina sem estoque** → `[SC1]`: O contrato exige `stock_qty >= qty` para cada item. O Evaluator verifica cada item contra o catálogo e rejeita se algum estiver zerado.
 
 O contrato também estabelece o **limite de 3 tentativas** (`TENTATIVAS MÁXIMAS: 3`) — evitando que o sistema entre em loop infinito tentando corrigir um pedido impossível.
 
