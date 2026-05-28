@@ -293,6 +293,18 @@ Em produção, a melhor arquitetura costuma combinar as três camadas.
 | Resposta ao cliente | Retoma do ponto seguro | Reconstrói e segue como se nada tivesse ocorrido | Explica opção segura quando mundo externo mudou |
 | Exemplo KODA | Timeout ao gerar recomendação | Reprocessar turns após deploy | Liberar estoque se pagamento falhou depois de reserva |
 
+### Tabela comparativa de coordenação com persistência
+
+State persistence não vive sozinha. Ela transforma cada estratégia de coordenação entre agentes, reduzindo retrabalho e eliminando pontos cegos quando falhas ocorrem.
+
+| Estratégia de Coordenação | Sem Persistência | Com Persistência | Ganho |
+| --- | --- | --- | --- |
+| **Sequencial** (Planner → Generator → Evaluator) | Se o Evaluator falha, perde-se `plan.json` e `generation.json`. Recomeça do zero, refazendo trabalho dos dois agentes anteriores. | Cada agente escreve seu artefato em disco. Se o Evaluator falha, o sistema detecta que `plan.json` e `generation.json` já existem e reexecuta apenas o Evaluator. | Retrabalho cai de 100% para ~10%. Planner e Generator nunca refazem trabalho já validado. |
+| **Paralelo** (N Generators concorrentes) | Se 1 dos N Generators falha, não há registro de quem terminou. Ou refaz todos (N× custo) ou assume inconsistência silenciosa. | Cada Generator escreve seu output em disco com nome único. Sistema verifica quais arquivos existem, reexecuta apenas os ausentes. | Retrabalho cai de 100% para ~1/N. Inconsistência silenciosa eliminada. |
+| **Event-driven** (agentes reagem a eventos) | Se um agente perde um evento (crash, rede, race condition), ele nunca reage. Estado fica inconsistente sem detecção. | Eventos são persistidos em fila durável (Redis Streams com AOF, SQLite queue). Cada agente processa do último evento confirmado (offset). | Eventos perdidos caem de ~5% para <0.1%. Reprocessamento é determinístico. |
+| **Orquestrado** (orchestrator central) | Se o orchestrator morre, todo o pipeline para. Nenhum agente sabe o estado dos outros. | Orchestrator mantém `pipeline_state.json` com fase, agentes concluídos e próximos passos. Ao reiniciar, lê o estado e retoma de onde parou. | Downtime de pipeline cai de "recomeçar tudo" para "retomar do último checkpoint". |
+| **Choreography** (agentes autônomos sem orquestrador) | Sem estado compartilhado, agentes não sabem se dependentes terminaram. Duplicação de trabalho ou deadlock silencioso. | Cada agente publica seu estado em local conhecido (`state/sessions/{id}/agents/{agent}/status.json`). Agentes downstream leem antes de agir. | Coordenação descentralizada torna-se observável e recuperável. |
+
 ---
 
 ## 🗄️ Arquitetura de Persistência em Camadas
@@ -380,8 +392,7 @@ def atomic_write_json(path: Path, data: dict) -> None:
     handle = tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent, delete=False, suffix=".tmp")
     try:
         json.dump(data, handle, ensure_ascii=False, indent=2, sort_keys=True)
-        handle.write("
-")
+        handle.write("\n")
         handle.flush()
         os.fsync(handle.fileno())
     finally:
@@ -805,8 +816,7 @@ def atomic_write_json(path: Path, data: dict) -> None:
     handle = tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent, delete=False, suffix=".tmp")
     try:
         json.dump(data, handle, ensure_ascii=False, indent=2, sort_keys=True)
-        handle.write("
-")
+        handle.write("\n")
         handle.flush()
         os.fsync(handle.fileno())
     finally:
