@@ -154,81 +154,81 @@ Agora que você tem o Sprint Contract definindo as regras, vamos implementar o p
 ### Visão Geral: Como Dois Agentes Colaboram para Comparar Produtos
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     PRODUCT COMPARISON SYSTEM                       │
-│                                                                     │
-│  ┌──────────────────┐        ┌──────────────────┐                  │
-│  │   DISCOVER        │        │   CLIENTE         │                  │
-│  │   SPRINT OUTPUT   │        │   CONTEXT         │                  │
-│  │   (5 produtos)    │        │   (restrições)    │                  │
-│  └────────┬─────────┘        └────────┬─────────┘                  │
-│           │                           │                             │
-│           └───────────┬───────────────┘                             │
-│                       │                                             │
-│                       ▼                                             │
-│         ┌─────────────────────────────┐                            │
-│         │   customer_context.json     │   ← IMUTÁVEL               │
-│         │   + discover_results.json   │                             │
-│         └─────────────┬───────────────┘                            │
-│                       │                                             │
-│                       ▼                                             │
-│         ┌─────────────────────────────┐                            │
-│         │      GENERATOR              │   ← CRIA                   │
-│         │  comparison_generator.py    │                             │
-│         │                             │                             │
-│         │  "Vou comparar os 3         │                             │
-│         │   melhores produtos para    │                             │
-│         │   este cliente."            │                             │
-│         └─────────────┬───────────────┘                            │
-│                       │                                             │
-│                       │ escreve                                     │
-│                       ▼                                             │
-│         ┌─────────────────────────────┐                            │
-│         │  generator_draft_v{N}.json  │   ← STATE FILE             │
-│         │  {                          │                             │
-│         │    "rankings": [...],        │                             │
-│         │    "analyses": [...],        │                             │
-│         │    "confidence": 0.82        │                             │
-│         │  }                          │                             │
-│         └─────────────┬───────────────┘                            │
-│                       │                                             │
-│                       │ lê                                          │
-│                       ▼                                             │
-│         ┌─────────────────────────────┐                            │
-│         │      EVALUATOR              │   ← VERIFICA               │
-│         │  comparison_evaluator.py    │                             │
-│         │                             │                             │
-│         │  "Product #1 tem lactose?   │                             │
-│         │   Product #2 em estoque?    │                             │
-│         │   Análise tem 3 dimensões?" │                             │
-│         └─────────────┬───────────────┘                            │
-│                       │                                             │
-│              ┌────────┴────────┐                                    │
-│              │                 │                                    │
-│           APPROVED         REJECTED                                 │
-│              │                 │                                    │
-│              ▼                 ▼                                    │
-│    ┌──────────────────┐  ┌──────────────────┐                      │
-│    │ Enviar ao cliente │  │ feedback_v{N}.json│                      │
-│    │ "Top 3 comparados"│  │ → Generator tenta │                      │
-│    └──────────────────┘  │   novamente       │                      │
-│                          └────────┬─────────┘                      │
-│                                   │                                 │
-│                                   ▼                                 │
-│                          ┌──────────────────┐                      │
-│                          │ Se iter > 3:     │                      │
-│                          │ Escalar a humano │                      │
-│                          └──────────────────┘                      │
-│                                                                     │
-│  ┌─────────────────────────────────────────────────────────────┐   │
-│  │                    AUDIT LOG (JSONL)                         │   │
-│  │  {"ts":"...","event":"case_init","case_id":"CMP-001"}        │   │
-│  │  {"ts":"...","event":"gen_complete","iteration":1,...}       │   │
-│  │  {"ts":"...","event":"eval_complete","verdict":"REJECTED"}   │   │
-│  │  {"ts":"...","event":"gen_complete","iteration":2,...}       │   │
-│  │  {"ts":"...","event":"eval_complete","verdict":"APPROVED"}   │   │
-│  └─────────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────────┘
++===================================================================+
+|                     PRODUCT COMPARISON SYSTEM                      |
+|                                                                   |
+|  +------------------+        +------------------+                 |
+|  |   DISCOVER        |        |   CLIENTE         |                |
+|  |   SPRINT OUTPUT   |        |   CONTEXT         |                |
+|  |   (5 produtos)    |        |   (restricoes)    |                |
+|  +--------+---------+        +--------+---------+                 |
+|           |                           |                            |
+|           +-------------+-------------+                            |
+|                         |                                          |
+|                         v                                          |
+|          +-----------------------------+                          |
+|          |   customer_context.json     |   <- IMUTAVEL             |
+|          |   + discover_results.json   |                          |
+|          +--------------+--------------+                          |
+|                         |                                          |
+|                         v                                          |
+|          +-----------------------------+                          |
+|          |      GENERATOR              |   <- CRIA                |
+|          |  comparison_generator.py    |                          |
+|          |                             |                          |
+|          |  "Vou comparar os 3         |                          |
+|          |   melhores produtos para    |                          |
+|          |   este cliente."            |                          |
+|          +--------------+--------------+                          |
+|                         |                                          |
+|                         | escreve                                  |
+|                         v                                          |
+|          +-----------------------------+                          |
+|          |  generator_draft_v{N}.json  |   <- STATE FILE          |
+|          |  {                          |                          |
+|          |    "rankings": [...],        |                          |
+|          |    "analyses": [...],        |                          |
+|          |    "confidence": 0.82        |                          |
+|          |  }                          |                          |
+|          +--------------+--------------+                          |
+|                         |                                          |
+|                         | le                                       |
+|                         v                                          |
+|          +-----------------------------+                          |
+|          |      EVALUATOR              |   <- VERIFICA            |
+|          |  comparison_evaluator.py    |                          |
+|          |                             |                          |
+|          |  "Product #1 tem lactose?   |                          |
+|          |   Product #2 em estoque?    |                          |
+|          |   Analise tem 3 dimensoes?" |                          |
+|          +--------------+--------------+                          |
+|                         |                                          |
+|               +---------+---------+                               |
+|               |                   |                                |
+|           APPROVED           REJECTED                              |
+|               |                   |                                |
+|               v                   v                                |
+|    +-------------------+  +-------------------+                    |
+|    | Enviar ao cliente |  | feedback_v{N}.json |                    |
+|    | "Top 3 comparados"|  | -> Generator tenta |                    |
+|    +-------------------+  |    novamente       |                    |
+|                           +---------+---------+                    |
+|                                     |                              |
+|                                     v                              |
+|                           +-------------------+                    |
+|                           | Se iter > 3:      |                    |
+|                           | Escalar a humano  |                    |
+|                           +-------------------+                    |
+|                                                                   |
+|  +-----------------------------------------------------------+   |
+|  |                    AUDIT LOG (JSONL)                       |   |
+|  |  {"ts":"...","event":"case_init","case_id":"CMP-001"}      |   |
+|  |  {"ts":"...","event":"gen_complete","iteration":1,...}     |   |
+|  |  {"ts":"...","event":"eval_complete","verdict":"REJECTED"} |   |
+|  |  {"ts":"...","event":"gen_complete","iteration":2,...}     |   |
+|  |  {"ts":"...","event":"eval_complete","verdict":"APPROVED"} |   |
+|  +-----------------------------------------------------------+   |
++===================================================================+
 ```
 
 ### Estrutura de Arquivos do Projeto
@@ -331,9 +331,23 @@ class Product:
         return allergen.lower() in [a.lower() for a in self.allergens]
 
     def contains_lactose(self) -> bool:
-        """Verifica se o produto contém lactose (dos ingredientes ou info nutricional)."""
+        """
+        Verifica se o produto contém lactose.
+
+        Estratégia de duas camadas:
+        1. Tabela nutricional: verifica VALORES de campos relacionados a lactose.
+           Se `lactose_por_porcao` > 0, contém lactose.
+           Se `lactose_por_porcao` == 0, assume-se livre de lactose.
+        2. Ingredientes (fallback): verifica strings nos ingredientes.
+        """
+        # Camada 1: valores da tabela nutricional (mais confiável)
+        lactose_value = self.nutritional_info.get("lactose_por_porcao")
+        if lactose_value is not None:
+            return lactose_value > 0
+
+        # Camada 2: análise textual dos ingredientes (fallback)
         lactose_indicators = ["lactose", "leite", "whey concentrado", "caseína"]
-        all_text = " ".join(self.ingredients + list(self.nutritional_info.keys())).lower()
+        all_text = " ".join(self.ingredients).lower()
         return any(indicator in all_text for indicator in lactose_indicators)
 
 
@@ -450,8 +464,8 @@ import json
 from datetime import datetime, timezone
 from typing import Optional
 from comparison_models import (
-    CustomerContext, Product, ProductAnalysis,
-    RankedProduct, GeneratorDraft
+    CustomerContext, CustomerRestrictions, Product,
+    ProductAnalysis, RankedProduct, GeneratorDraft
 )
 
 
@@ -1569,7 +1583,12 @@ class ComparisonOrchestrator:
     ):
         self.customer = customer
         self.discover_products = discover_products
-        self.state_dir = Path(state_dir) / customer.customer_id
+        # Sanitiza customer_id para uso seguro em paths de arquivo
+        safe_id = "".join(
+            c for c in customer.customer_id
+            if c.isalnum() or c in "-_"
+        )
+        self.state_dir = Path(state_dir) / safe_id
         self.generator = ComparisonGenerator(max_products=3)
         self.evaluator = ComparisonEvaluator(inventory_db=inventory_db)
         self.audit_log: list[dict] = []
@@ -2042,11 +2061,17 @@ class TestGenerator(unittest.TestCase):
         self.products = make_products()
 
     def test_generates_exactly_3_products(self):
-        """Deve gerar exatamente 3 produtos quando há elegíveis suficientes."""
+        """
+        Deve gerar exatamente 3 produtos quando há elegíveis suficientes.
+
+        Com 5 produtos e apenas 1 (WHEY-ISOLADO-001) contendo lactose,
+        restam 4 elegíveis. O Generator deve selecionar os 3 melhores.
+        """
         draft = self.generator.run(self.customer, self.products)
-        self.assertLessEqual(len(draft.rankings), 3)
-        self.assertGreater(len(draft.rankings), 0,
-                          "Deve gerar pelo menos 1 produto")
+        self.assertEqual(
+            len(draft.rankings), 3,
+            f"Deve gerar exatamente 3 produtos, mas gerou {len(draft.rankings)}"
+        )
 
     def test_excludes_lactose_products_for_intolerant_customer(self):
         """Cliente intolerante à lactose NÃO deve receber produtos com lactose."""
@@ -2498,7 +2523,7 @@ class TestFailureScenarios(unittest.TestCase):
     """Testa o comportamento do sistema em cenários ruins."""
 
     def test_no_eligible_products_after_filtering(self):
-        """Quando nenhum produto passa nas restrições, deve reportar claramente."""
+        """Quando nenhum produto passa nas restrições, deve reportar falha."""
         customer = make_customer(lactose_intolerant=True, budget=1.0)
         customer.restrictions.allergic_to = [
             "leite", "soja", "amendoim", "ervilha", "arroz"
@@ -2512,11 +2537,13 @@ class TestFailureScenarios(unittest.TestCase):
             )
             result = orch.run()
 
-            # Deve falhar (não há produtos elegíveis)
-            self.assertIn(result["status"], ["failed", "success"])
-            # Se for success, rankings devem ser vazios
-            if result["status"] == "success":
-                self.assertEqual(len(result.get("rankings", [])), 0)
+            # Com restrições tão severas, nenhum produto deve ser elegível.
+            # O sistema deve falhar após max_iterations.
+            self.assertEqual(
+                result["status"], "failed",
+                "Sistema deve falhar quando nenhum produto é elegível"
+            )
+            self.assertEqual(result["iterations_used"], 3)
 
     def test_max_iterations_fallback(self):
         """Após max_iterations, deve escalar para humano."""
@@ -2702,7 +2729,7 @@ A solução de Product Comparison não vive isolada. Ela se integra com:
 
 ### Métricas de Impacto no KODA
 
-Implementando Generator/Evaluator no Product Comparison, o KODA observou:
+Implementando Generator/Evaluator no Product Comparison, a equipe KODA poderia observar (métricas ilustrativas baseadas em simulações e benchmarks do padrão G/E):
 
 | Métrica | Antes (Agente Único) | Depois (G/E) | Impacto |
 |---------|---------------------|--------------|---------|
