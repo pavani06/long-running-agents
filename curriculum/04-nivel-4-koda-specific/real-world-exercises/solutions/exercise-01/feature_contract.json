@@ -1,0 +1,191 @@
+{
+  "feature_contract": {
+    "feature_name": "koda.product_recommendation",
+    "feature_version": "1.0.0",
+    "owner": "koda-commerce-core",
+    "business_goal": "Ajudar o cliente a escolher o suplemento mais adequado com seguranca, respeitando restricoes de saude, orcamento e disponibilidade real.",
+    "customer_promise": "KODA so recomenda produtos compativeis com seu objetivo, restricoes, orcamento e que estejam em estoque no momento da recomendacao.",
+    "activation_policy": {
+      "when_to_run": [
+        "latest_customer_intent.category == product_discovery",
+        "cliente expressa objetivo como ganho_muscular, emagrecimento, energia ou recuperacao",
+        "catalog_snapshot.available_products_count >= 1",
+        "journey_state.current_stage in (DESCOBERTA, COMPARACAO)",
+        "journey_state.sentiment != frustrado"
+      ],
+      "when_not_to_run": [
+        "cliente tem restricao de seguranca sem mapeamento no catalogo",
+        "cliente esta perguntando sobre reembolso, reclamacao ou suporte",
+        "journey_state.current_stage == CHECKOUT",
+        "journey_state.current_stage == SUPORTE",
+        "stock freshness is older than accepted_inventory_ttl (300s)",
+        "cliente demonstrou frustracao recente (sentiment == frustrado)",
+        "token_budget_remaining < 500"
+      ]
+    },
+    "input_contract": {
+      "required": [
+        "conversation_id",
+        "customer_profile.restrictions",
+        "customer_profile.goal",
+        "customer_profile.budget_range",
+        "catalog_snapshot.products",
+        "journey_state.current_stage",
+        "journey_state.sentiment",
+        "offer_history"
+      ],
+      "properties": {
+        "conversation_id": {
+          "type": "string",
+          "must_be_stable": true,
+          "source": "harness"
+        },
+        "customer_profile": {
+          "type": "object",
+          "source": "state_persistence"
+        },
+        "customer_profile.restrictions": {
+          "type": "array",
+          "examples": ["sem_lactose", "sem_gluten", "gastrite"],
+          "source": "state_persistence",
+          "rule": "restricoes de state_persistence vencem qualquer palpite do modelo"
+        },
+        "customer_profile.goal": {
+          "type": "enum",
+          "values": ["ganho_muscular", "emagrecimento", "energia", "recuperacao"],
+          "source": "state_persistence"
+        },
+        "customer_profile.budget_range": {
+          "type": "tuple",
+          "format": "(min, max)",
+          "source": "state_persistence"
+        },
+        "catalog_snapshot": {
+          "type": "object",
+          "source": "fresh_catalog_read",
+          "rule": "deve ter timestamp recente (< 300s)"
+        },
+        "journey_state": {
+          "type": "object",
+          "source": "server_state"
+        },
+        "offer_history": {
+          "type": "array",
+          "source": "state_persistence"
+        }
+      }
+    },
+    "output_contract": {
+      "required": [
+        "feature_run_id",
+        "status",
+        "recommended_products",
+        "customer_message_draft",
+        "evidence",
+        "risk_flags",
+        "state_updates"
+      ],
+      "properties": {
+        "feature_run_id": {
+          "type": "string",
+          "format": "stable_unique_id"
+        },
+        "status": {
+          "type": "enum",
+          "values": ["PROPOSED", "ABSTAINED"]
+        },
+        "recommended_products": {
+          "type": "array",
+          "min_items": 0,
+          "max_items": 3,
+          "item_required": ["sku", "name", "price", "why_this_customer", "restriction_checks", "score"]
+        },
+        "customer_message_draft": {
+          "type": "string",
+          "max_whatsapp_lines": 8,
+          "tone": "consultivo e direto, nunca agressivo"
+        },
+        "evidence": {
+          "type": "array",
+          "description": "fatos usados para justificar a proposta, cada um com fonte"
+        },
+        "risk_flags": {
+          "type": "array",
+          "allowed": ["restriction_sensitive", "price_sensitive", "stock_low", "budget_uncertainty", "first_time_buyer", "sentiment_fragile", "limited_options"]
+        },
+        "state_updates": {
+          "type": "object",
+          "description": "mudancas a serem persistidas apenas apos aprovacao"
+        },
+        "abstain_reason": {
+          "type": "string",
+          "optional": true,
+          "description": "razao da abstencao quando status == ABSTAINED"
+        }
+      }
+    },
+    "guarantees": [
+      "Nenhum produto recomendado viola customer_profile.restrictions",
+      "Todo produto recomendado existe no catalog_snapshot usado e esta em estoque",
+      "Todo preco exibido vem do mesmo catalog_snapshot avaliado",
+      "A recomendacao explica por que o produto combina com o objetivo do cliente",
+      "Nenhum produto recusado anteriormente e reoferecido sem mudanca de contexto",
+      "Toda acao tem trace_id e feature_run_id correlacionaveis",
+      "A feature se abstem quando dados criticos estao ausentes",
+      "Apenas decisoes aprovadas geram state update permanente"
+    ],
+    "constraints": [
+      "Nao recomendar suplemento contraindicado por saude ou restricao alimentar",
+      "Nao inventar disponibilidade, preco ou beneficio clinico",
+      "Nao recomendar produto fora do orcamento sem explicar o trade-off",
+      "Nao recomendar mais de 3 produtos para evitar overload cognitivo",
+      "Nao usar alegacoes medicas nao autorizadas",
+      "Nao pressionar cliente que demonstrou objecao de preco",
+      "Nao converter silencio do cliente em consentimento de compra"
+    ],
+    "evaluation_rubric": {
+      "rubric_id": "koda.product_recommendation.v1",
+      "approval_threshold": 0.82,
+      "dimensions": {
+        "safety": {"weight": 0.30, "minimum": 0.80, "description": "Compatibilidade com restricoes de saude"},
+        "goal_fit": {"weight": 0.25, "minimum": 0.70, "description": "Aderencia ao objetivo declarado"},
+        "budget_fit": {"weight": 0.15, "minimum": 0.60, "description": "Respeito ao orcamento e sensibilidade de preco"},
+        "timing": {"weight": 0.15, "minimum": 0.60, "description": "Momento adequado na jornada do cliente"},
+        "clarity": {"weight": 0.15, "minimum": 0.70, "description": "Clareza da mensagem, tom consultivo e acionabilidade"}
+      },
+      "blockers": [
+        "Produto recomendado viola restricao de saude documentada do cliente",
+        "Preco exibido difere do catalog_snapshot (preco inventado)",
+        "Produto esta fora de estoque (in_stock == false)",
+        "Recomendacao ignora contraindicacao medica conhecida",
+        "Mensagem contem promessa de resultado fisico garantido",
+        "Oferta recusada foi reoferecida sem mudanca de contexto",
+        "Produto com alergeno conhecido para cliente com alergia documentada"
+      ]
+    },
+    "trace_events": [
+      "feature_activation_checked",
+      "feature_input_validated",
+      "feature_generation_completed",
+      "feature_output_validated",
+      "feature_evaluation_completed",
+      "feature_merge_decided",
+      "feature_state_committed",
+      "feature_message_sent"
+    ],
+    "token_budget": {
+      "max_input_tokens": 4500,
+      "max_generator_output_tokens": 900,
+      "max_evaluator_tokens": 1100,
+      "reserved_customer_response_tokens": 500
+    },
+    "state_policy": {
+      "read": ["customer_profile", "offer_history", "journey_state"],
+      "write": ["offer_history", "recommended_products_log"],
+      "expire": {
+        "catalog_snapshot": {"ttl_seconds": 300},
+        "journey_state.sentiment": {"ttl_turns": 3}
+      }
+    }
+  }
+}
