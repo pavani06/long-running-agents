@@ -141,6 +141,22 @@ VALIDADE MÍNIMA                         QUALIDADE REAL
 | Human Evaluation | Muito alta em casos ambíguos | Alto | Lenta | Auditoria, amostras críticas, calibração inicial | Não escala para todo output |
 | Hybrid approaches | Muito alta quando bem desenhada | Médio a alto | Moderada | Sistemas de produção com risco real | Exige roteamento, métricas e disciplina operacional |
 
+### Estratégias de Coordenação: Como Rubrics Orquestram Decisões
+
+A rubrica não vive sozinha. Ela se conecta a outros componentes do harness para transformar score em ação. A tabela abaixo compara as principais estratégias de coordenação entre rubrics e o resto do sistema.
+
+| Estratégia | Como Funciona | Quando Usar | Custo Operacional | Risco |
+| --- | --- | --- | --- | --- |
+| **Single Evaluator Gate** | Um Evaluator aplica a rubrica e decide approve/reject em uma passada | Tarefas simples com critérios bem definidos (ex: validação de cupom) | Baixo (1 call) | Baixo — se a rubrica for bem calibrada |
+| **Generator/Evaluator Loop** | Generator produz, Evaluator pontua com rubrica, devolve feedback se score abaixo do threshold; repete até aprovar ou esgotar tentativas | Recomendações, processamento de pedidos, qualquer tarefa onde qualidade > latência | Médio (2-5 calls por tarefa) | Médio — loops podem divergir se feedback não for específico |
+| **Hard-rule Pre-gate + Rubric Score** | Regras duras (pass/fail) rodam primeiro; se passam, a rubrica avalia qualidade; se falham, rejeição imediata sem gastar tokens com rubrica | Sistemas com validações obrigatórias (estoque, preço, segurança) antes de julgar qualidade | Baixo a médio | Baixo — regras duras são triviais de manter; rubrica só é chamada quando necessário |
+| **Human-in-the-Loop Sampling** | Rubrica pontua; outputs com score em faixa cinza (ex: 65-80) são encaminhados para revisão humana; acima de 80 segue automático; abaixo de 65 rejeitado | Ambientes de alto risco onde falsos positivos custam caro (ex: alergias, pagamentos) | Alto (custo humano por amostra) | Baixo para outputs revisados; depende de boa amostragem |
+| **Dual/Ensemble Evaluator** | Dois ou mais Evaluators aplicam a mesma rubrica independentemente; scores são comparados; se divergem além do tolerável, escala para humano ou terceiro Evaluator | Decisões irreversíveis ou de alto valor (ex: aprovar pedido acima de R$ 1000) | Alto (2+ calls) | Muito baixo — viés de Evaluator único é mitigado |
+| **Threshold-based Routing** | Rubrica atribui score; o sistema roteia automaticamente: approve (>85), revise (70-84), reject (<70), escalate (<50 e severity=critical) | Sistemas maduros que já calibraram thresholds com dados reais de produção | Médio | Baixo se thresholds forem calibrados; alto se forem arbitrários |
+| **Continuous Calibration Loop** | Rubrica pontua em produção; outcomes reais (devoluções, reclamações, recompra) são coletados; pesos e thresholds são reajustados periodicamente | Sistemas que operam em escala e acumulam dados de feedback do cliente | Médio (infra de métricas) | Baixo — melhora contínua, mas requer disciplina de review |
+
+**Como escolher:** Comece com Single Evaluator Gate para tasks simples. Adicione Hard-rule Pre-gate quando houver regras duras. Evolua para Generator/Evaluator Loop quando qualidade > latência. Incorpore Human-in-the-Loop quando o custo do erro for alto. Reserve Dual/Ensemble para decisões de alto valor. Threshold-based Routing e Continuous Calibration são estágios de maturidade — implemente quando já tiver dados de produção.
+
 ---
 
 ## 🏗️ Anatomia de uma Rubrica
