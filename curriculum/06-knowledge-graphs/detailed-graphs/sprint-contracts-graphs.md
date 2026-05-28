@@ -155,30 +155,30 @@ Ao final deste grafo, você deve conseguir:
 ## 🗺️ Roadmap Visual do Módulo
 
 ```text
-ENTRADA: você entende Generator/Evaluator e já viu por que agentes longos perdem foco
+ENTRADA: voce entende Generator/Evaluator e ja viu por que agentes longos perdem foco
   │
-  ├─ SEÇÃO 1: Forma mínima do contract
-  │   └─ Três pilares e Diagrama 1
+  ├─ SECOES 1-3: Fundacao visual
+  │   └─ Forma minima, arquitetura de componentes, lifecycle de validacao
   │
-  ├─ SEÇÃO 2: Arquitetura de componentes
-  │   └─ Contract Schema, Validator, State Store, Audit Log, Generator, Evaluator, Harness
+  ├─ SECOES 4-5: Estrategia e modelo mental
+  │   └─ Modelo mental de grafo, tabela comparativa de coordenacao
   │
-  ├─ SEÇÃO 3: Lifecycle de validação
-  │   └─ Proposal, negotiation, seal, execution, verification, resolution
+  ├─ SECAO 6: Aplicacao KODA
+  │   └─ Product Discovery, Checkout, Multi-Agent Coordination
   │
-  ├─ SEÇÃO 4: Estratégias de coordenação
-  │   └─ Tabela comparativa e critérios de escolha
+  ├─ SECAO 7: Conexoes curriculares
+  │   └─ Nivel 1, Nivel 2, Nivel 3 e conceitos transversais
   │
-  ├─ SEÇÃO 5: Aplicação KODA
-  │   └─ Product Discovery, Checkout e Multi-Agent Coordination
+  ├─ SECOES 8-9: Diagnostico
+  │   └─ Anti-padroes, metrica e observabilidade
   │
-  ├─ SEÇÃO 6: Conexões com o currículo
-  │   └─ Nível 1, Nível 2, Nível 3 e conceitos transversais
+  ├─ SECOES 10-11: Navegacao
+  │   └─ Atlas de 27 nos, 8 caminhos de leitura
   │
-  ├─ SEÇÃO 7: Atlas de nós e caminhos
-  │   └─ Cartões de leitura para estudo e diagnóstico
+  ├─ SECOES 12-17: Aplicacao avancada
+  │   └─ Padroes de falha, evolucao, playbooks, trace reading, padroes de escrita, mapa de decisao
   │
-  └─ SAÍDA: você consegue usar Sprint Contracts como mapa operacional de confiança
+  └─ SAIDA: voce consegue usar Sprint Contracts como mapa operacional de confianca
 ```
 
 ---
@@ -1503,7 +1503,7 @@ Esse caminho diferencia falha técnica recuperável de risco financeiro.
 
 ---
 
-## 💼 Complemento da Seção 6: Checkout Protegido por Sprint Contracts
+## 💼 Seção 12: Checkout Protegido por Sprint Contracts
 
 Este complemento aprofunda a aplicação KODA sem alterar a Seção 6 original.
 
@@ -1634,7 +1634,7 @@ Ele evita que KODA use fluidez conversacional onde precisa de precisão transaci
 
 ---
 
-## 🤝 Complemento da Seção 6: Multi-Agent Coordination com Contracts em Cada Fronteira
+## 🤝 Seção 13: Multi-Agent Coordination com Contracts em Cada Fronteira
 
 Multi-Agent Coordination não significa colocar vários agentes para conversar livremente.
 
@@ -1725,7 +1725,7 @@ No KODA, isso é a diferença entre uma equipe de agentes e uma cadeia de promes
 
 ---
 
-## 🔗 Complemento da Seção 7: Mini-Cenarios de Conexao Curricular
+## 🔗 Seção 14: Mini-Cenarios de Conexao Curricular
 
 Este complemento mostra como uma pessoa desenvolvedora do KODA usa Sprint Contracts junto com outros conceitos.
 
@@ -1817,7 +1817,7 @@ A feature nasce como sequência de promessas, não como prompt gigante.
 
 ---
 
-## 🧯 Seção 12: Padrões de Falha que o Grafo Revela
+## 🧯 Seção 15: Padrões de Falha que o Grafo Revela
 
 O grafo de Sprint Contracts é útil porque transforma falhas vagas em padrões reconhecíveis.
 
@@ -1921,7 +1921,7 @@ Ele aponta o componente arquitetural que precisa mudar.
 
 ---
 
-## 📈 Seção 13: Evolução do Grafo
+## 📈 Seção 16: Evolução do Grafo
 
 O grafo de Sprint Contracts não nasce completo.
 
@@ -2014,7 +2014,7 @@ Atualize quando o mapa deixa de explicar produção.
 ---
 
 
-## 🧰 Seção 14: Playbooks de Design Review para Sprint Contracts
+## 🧰 Seção 17: Playbooks de Design Review para Sprint Contracts
 
 Esta seção adiciona material operacional para revisar contracts antes de eles chegarem à produção.
 
@@ -2280,7 +2280,7 @@ A saída do review é uma política que equilibra segurança, custo e fluidez.
 
 ---
 
-## 🧪 Seção 15: Exemplos de Trace Reading com Sprint Contracts
+## 🧪 Seção 18: Exemplos de Trace Reading com Sprint Contracts
 
 Esta seção mostra como o grafo muda a leitura de traces.
 
@@ -2422,7 +2422,7 @@ O trace prova que a escalação protegeu cliente e empresa.
 
 ---
 
-## 🧱 Seção 16: Padrões de Escrita para Contracts KODA
+## 🧱 Seção 19: Padrões de Escrita para Contracts KODA
 
 Esta seção ajuda a transformar decisões arquiteturais em linguagem consistente.
 
@@ -2556,7 +2556,7 @@ Quando todo mundo é dono, ninguém é dono.
 
 ---
 
-## 🧭 Seção 17: Mapa de Decisão para Quando Usar Sprint Contracts
+## 🧭 Seção 20: Mapa de Decisão para Quando Usar Sprint Contracts
 
 Sprint Contracts não devem ser aplicados mecanicamente em tudo.
 
