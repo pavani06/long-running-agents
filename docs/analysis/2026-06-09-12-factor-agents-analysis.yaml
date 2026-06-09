@@ -1,0 +1,259 @@
+# Analise de Conhecimento Nao-Obvio: 12-Factor Agents (Dex Horthy)
+#
+# Convencoes:
+# - type: analise estruturada derivada da transcricao da palestra
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim e rastreavel a transcricao original
+# - Sem marketing, anedotas, historias pessoais, repeticao
+
+meta:
+  title: "12-Factor Agents — Extracao de Conhecimento Nao-Obvio"
+  source: "Dex Horthy — 12-Factor Agents: Patterns of reliable LLM applications (AI Engineer, 2025)"
+  speaker: "Dex Horthy"
+  channel: "AI Engineer"
+  created: 2026-06-09
+  type: analysis
+  extraction_rules:
+    keep:
+      - frameworks
+      - patterns
+      - architectures
+      - workflows
+      - implementation_details
+      - operational_lessons
+      - failures
+      - tradeoffs
+    ignore:
+      - marketing
+      - anecdotes
+      - personal_stories
+      - repetition
+
+frameworks:
+  - name: "Agent Loop Decomposition"
+    factor: "Factors 3, 5"
+    description: >
+      O agente e decomposto em quatro componentes que o builder deve possuir diretamente,
+      nao delegar a um framework.
+    components:
+      - name: prompt
+        role: "instrucoes sobre como selecionar o proximo passo"
+      - name: switch_statement
+        role: "recebe JSON de saida do modelo e decide deterministicamente o que fazer"
+      - name: context_builder
+        role: "como o historico e montado e passado ao modelo — formato, densidade, limpeza"
+      - name: loop
+        role: "determina quando, onde, como e por que sair; permite break, switch, summarize, LM as judge"
+    non_obvious_implication: >
+      Possuir o loop permite injetar operacoes arbitrarias (sumarizacao, validacao por outro LLM,
+      interrupcao para aprovacao humana) sem que o framework precise saber. O loop deixa de ser
+      caixa-preta do runtime para ser codigo de aplicacao comum.
+
+  - name: "Micro-Agents Architecture"
+    factor: "Factor 10"
+    description: >
+      Pequenos loops de agente (3-10 passos) embutidos em DAGs majoritariamente deterministicos.
+    structure: "[DAG deterministico] -> [micro-agent loop: 3-10 passos] -> [DAG deterministico]"
+    characteristics:
+      - "O DAG e majoritariamente deterministico; apenas nos especificos contem agent loops"
+      - "Cada micro-agent tem responsabilidade clara e escopo limitado"
+      - "O modelo nao decide o DAG inteiro, apenas o proximo passo dentro de um no predeterminado"
+    concrete_example:
+      system: "HumanLayer deploy pipeline"
+      flow:
+        - "CI/CD deterministico executa build e testes"
+        - "PR mergeado -> agent decide ordem de deploy (frontend/backend)"
+        - "Proposta enviada para aprovacao humana"
+        - "Deploy executado deterministicamente"
+        - "Testes E2E contra prod (deterministico)"
+        - "Se falha -> rollback agent (outro micro-agent, mesma estrutura)"
+    tradeoff:
+      gain: "Previsibilidade, debugabilidade, contextos pequenos e focados"
+      cost: "Mais codigo deterministico para escrever e manter; menos 'magica' autonoma"
+
+  - name: "Scaffolding vs Wrapper"
+    factor: "Factor 12"
+    description: >
+      Distincao emprestada do ecossistema frontend aplicada a agent frameworks.
+    models:
+      - name: wrapper
+        example: "Bootstrap CSS"
+        ownership: "O framework e uma dependencia opaca; voce configura parametros"
+      - name: scaffolding
+        example: "shadcn/ui"
+        ownership: "O codigo e copiado para o seu projeto; voce possui e modifica"
+    application_to_agents: >
+      create-12-factor-agent gera codigo que voce possui. Quando o agente chega a 70-80%
+      e precisa dos ultimos 20%, voce edita o prompt diretamente no seu codigo, em vez de
+      fazer engenharia reversa de call stacks do framework.
+    tradeoff:
+      gain: "Codigo que voce entende e modifica; sem camadas opacas"
+      cost: "Duplicacao de codigo entre projetos; sem atualizacoes automaticas do framework"
+
+patterns:
+  - name: "Tool Use is Harmful Reframe"
+    factor: "Factor 4"
+    thesis: >
+      Tool use e uma abstracao errada. Na pratica, "tools" sao JSON gerado pelo LLM +
+      dispatch deterministico por codigo. Nao ha nada magico no mecanismo.
+    practical_decomposition:
+      illusion: "agent.use_tool('send_email', to='...', body='...')"
+      reality:
+        - "llm.generate(prompt) -> produz JSON"
+        - "deterministic_handler(json_output) -> switch statement processa"
+        - "append_to_context(result) -> resultado vai para o context window"
+    design_consequences:
+      - "O dispatch handler pode ser testado deterministicamente, sem LLM"
+      - "Cada dispatch pode ser versionado, logado e auditado como operacao de software normal"
+      - "Validacao, rate limiting e circuit breaking podem ser adicionados no switch statement"
+      - "O loop de erro (tool call falha -> erro no context -> retry) fica visivel e controlavel"
+
+  - name: "First Token as Intent Routing"
+    factor: "Factor 8"
+    description: >
+      A distincao entre tool call e mensagem para humano e empurrada para o primeiro token
+      de linguagem natural gerado pelo modelo, em vez de ser um campo separado no schema.
+    traditional_schema:
+      action_field: "type: 'tool_call' | 'message'"
+    proposed_pattern:
+      first_token_examples:
+        - token: "I'll send an email to..."
+          intent: "dispatch para ferramenta"
+        - token: "I need clarification on..."
+          intent: "mensagem para humano"
+        - token: "The task is complete."
+          intent: "finalizar"
+    rationale: >
+      O primeiro token e onde o modelo coloca mais massa de probabilidade e onde o sampling
+      tem mais impacto. A decisao de routing acontece no ponto de maior confianca do modelo.
+      O modelo "entende" linguagem natural melhor do que schemas de acao.
+    implication: >
+      Ganha-se multiplas intencoes sem enum fechado — o modelo pode expressar
+      "preciso falar com um manager" sem hardcoding no schema.
+
+  - name: "Context Serialization for Pause/Resume"
+    factor: "Factor 7"
+    description: >
+      Serializar o context window para banco de dados permite pausar e retomar agentes
+      de forma transparente.
+    flow:
+      - step: 1
+        action: "Requisicao entra -> contexto carregado do banco"
+      - step: 2
+        action: "LLM decide proximo passo -> pode ser long-running tool call"
+      - step: 3
+        action: "Contexto serializado -> salvo no banco com state_id"
+      - step: 4
+        action: "Workflow interrompido (a ferramenta executa async)"
+      - step: 5
+        action: "Callback chega com state_id + resultado"
+      - step: 6
+        action: "Contexto carregado do banco via state_id"
+      - step: 7
+        action: "Resultado appendado ao contexto"
+      - step: 8
+        action: "Contexto reenviado ao LLM"
+    non_obvious_detail: >
+      O agente nao sabe que houve pausa. Do ponto de vista do LLM, o proximo prompt contem
+      o historico completo como se nada tivesse acontecido em background.
+    precondition: "Possuir o context window (Factor 3). Se um framework monta o contexto internamente, a serializacao e impossivel."
+
+  - name: "Error Cleanup in Context Window"
+    factor: "Factor 3"
+    rules:
+      - "Quando um tool call falha e depois um subsequente e bem-sucedido: limpar todos os erros pendentes"
+      - "Sumarizar erros — nunca incluir stack traces completos"
+      - "Nunca fazer append cego de toda resposta no contexto"
+    failure_mode: >
+      Erros acumulados no context window causam 'spiral out': o agente alucina sobre erros
+      passados, tenta corrigir problemas ja resolvidos, ou entra em loop de retry porque
+      o contexto esta poluido com informacao de falha.
+
+operational_lessons:
+  - name: "The 70-80% Quality Trap"
+    description: >
+      Frameworks permitem chegar a 70-80% de qualidade rapidamente — suficiente para demo
+      ou para convencer stakeholders. Os ultimos 20% exigem possuir os internals (prompts,
+      contexto, control flow). Quem nao possui fica preso fazendo engenharia reversa de
+      call stacks do framework.
+    failure_pattern: >
+      Time escala baseado na demo de 80%, depois descobre que nao consegue ir alem sem
+      reescrever. Acaba jogando tudo fora e comecando do zero.
+    anti_solution: >
+      Tentar resolver os 20% finais adicionando mais detalhes ao prompt dentro do framework,
+      sem acesso ao context builder. Exemplo: DevOps agent onde duas horas de prompt
+      engineering reproduziram o que um bash script faria em 90 segundos.
+
+  - name: "Not Every Problem Needs an Agent"
+    heuristic: >
+      Se o problema pode ser resolvido deterministicamente com um script simples,
+      nao use um agente. Teste: voce conseguiria escrever a solucao em bash/python
+      em menos de 2 minutos?
+    case_study:
+      problem: "Executar passos de build em ordem"
+      agent_attempt: "Duas horas refinando prompt com a ordem exata de cada passo"
+      outcome: "Prompt virou essencialmente um bash script em linguagem natural — mais verboso e menos confiavel"
+      correct_solution: "Bash script de 90 segundos"
+
+  - name: "Long Contexts Degrade Reliability"
+    observation: >
+      Mesmo com APIs que aceitam 2M tokens, colocar muitos tokens no contexto sempre degrada
+      a qualidade comparado a um contexto menor e mais curado.
+    implication: >
+      O agente com loop simples (append tudo ao contexto ate o LLM dizer 'pronto') nao funciona
+      para workflows longos. A solucao e arquitetar contextos pequenos e focados (micro-agents),
+      nao esperar que modelos melhorem com contextos gigantes.
+
+  - name: "Bleeding Edge Strategy"
+    description: >
+      Encontre algo exatamente no limite do que o modelo consegue fazer de forma confiavel
+      (nao acerta 100%). Se voce conseguir fazer isso funcionar de forma confiavel atraves
+      de engenharia de harness, voce criou algo que ninguem mais consegue replicar.
+    attribution: "Estrategia atribuida ao time do NotebookLM"
+    key_insight: >
+      Nao use o modelo para o que ele ja faz perfeitamente, nem para o que ele comprovadamente
+      nao consegue — use na fronteira onde engenharia de sistema faz a diferenca.
+
+tradeoffs:
+  - decision: "Micro-agents em DAG deterministico vs. agente autonomo monolitico"
+    gain: "Previsibilidade, debugabilidade, contextos pequenos"
+    cost: "Mais codigo deterministico para escrever e manter; menos 'magica'"
+  - decision: "Possuir o context window vs. delegar ao framework"
+    gain: "Controle sobre densidade de tokens, pause/resume, limpeza de erros"
+    cost: "Responsabilidade por formato, serializacao, reconstituicao"
+  - decision: "Scaffolding (shadcn-style) vs. Wrapper (bootstrap-style)"
+    gain: "Codigo que voce entende e modifica; sem camadas opacas"
+    cost: "Duplicacao de codigo entre projetos; sem atualizacoes automaticas do framework"
+  - decision: "Primeiro token como routing vs. campo de acao no schema"
+    gain: "Modelo opera no dominio que entende melhor (linguagem natural); intencoes abertas"
+    cost: "Perda de garantias estruturais; parsing de intencao e fuzzy"
+  - decision: "Framework abstrai infra vs. framework abstrai AI"
+    gain: "Builders focam em prompts, contexto, eval — o que diferencia qualidade"
+    cost: "Infraestrutura (state, human contact, serializacao) vira responsabilidade do framework, exigindo confianca no fornecedor"
+  - decision: "Stateless agents + state externo vs. stateful agents"
+    gain: "Reconstituicao, pause/resume, debug via inspecao de estado"
+    cost: "Complexidade de gerenciar estado externo; latencia de serializacao/desserializacao"
+
+failure_patterns:
+  - pattern: "Append cego de erros no contexto"
+    consequence: "Spiral out, perda de contexto, loops de retry infinitos"
+  - pattern: "Delegar o context window ao framework"
+    consequence: "Impossibilidade de limpar, sumarizar ou otimizar tokens; perda de qualidade em workflows longos"
+  - pattern: "Comecar com framework que abstrai AI parts"
+    consequence: "Os 20% finais de qualidade sao inalcancaveis sem reescrever"
+  - pattern: "Agente autonomo para problemas deterministicos"
+    consequence: "Horas de prompt engineering para reproduzir o que um script faria em segundos"
+  - pattern: "Contexto monolitico crescente"
+    consequence: "Degradacao de qualidade proporcional ao tamanho do contexto, mesmo em modelos com janelas grandes"
+  - pattern: "Schema rigido para intencao do agente"
+    consequence: "Impede o modelo de expressar nuances como 'preciso de aprovacao de um manager' sem redefinir o schema"
+
+synthesis:
+  unifying_principle: >
+    Context engineering e a disciplina unificada. Prompt, memoria, RAG, historico —
+    tudo e 'como colocar os tokens certos no modelo'. O harness (switch, loop, state,
+    serializacao) existe para servir o contexto, nao o contrario.
+  implications:
+    - "Frameworks devem expor o context builder como API publica, nao como detalhe interno"
+    - "Testes de agente devem incluir testes do contexto montado (snapshot testing de tokens)"
+    - "A otimizacao principal nao e de latencia ou throughput do LLM — e de densidade de informacao por token no contexto"
