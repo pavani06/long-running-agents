@@ -1,0 +1,439 @@
+# Modelo Mental: Curriculum Long-Running Agents
+# Data: 2026-06-09 | Tipo: Síntese | Escopo: curriculum/
+
+meta:
+  titulo: "Modelo Mental: Curriculum Long-Running Agents"
+  data: "2026-06-09"
+  tipo: "Síntese / Modelo Mental"
+  escopo: "Diretório curriculum/"
+  versao: "1.0"
+
+visao_geral:
+  o_que_e: >
+    Programa educacional de 12 semanas para ensinar uma equipe a construir agentes
+    de IA que operam de forma confiável por horas (long-running agents).
+  caso_pratico:
+    nome: KODA
+    descricao: "Agente de vendas de suplementos esportivos via WhatsApp"
+    desafio: "Manter coerência em conversas de 2+ horas"
+
+problema_raiz:
+  descricao: "Agentes de IA falham em tarefas longas por três motivos"
+  causas:
+    - nome: "Context Amnesia"
+      descricao: "Esquecem informações críticas após 30-60 minutos (overflow da context window)"
+    - nome: "Planning Collapse"
+      descricao: "Misturam planejar, executar e verificar num único passo, perdendo o fio"
+    - nome: "Self-Evaluation Collapse"
+      descricao: "Aprovam o próprio trabalho ruim (sycophancy: tendência a agradar)"
+
+solucao:
+  conceito_chave: "Harness"
+  analogia: "Se o agente é o piloto, o harness é o avião + torre de controle + combustível"
+  definicao: "Infraestrutura que envolve o agente para torná-lo confiável por períodos longos"
+  componentes:
+    - "Gerenciamento de memória e contexto"
+    - "Decomposição de tarefas em etapas"
+    - "Separação entre geração e avaliação"
+    - "Coordenação multi-agente"
+
+arquitetura_curriculo:
+  estrutura_diretorios:
+    documentos_mestres:
+      - arquivo: "README.md"
+        proposito: "Visão geral, métricas de sucesso, fluxos de leitura"
+      - arquivo: "INDEX.md"
+        proposito: "Navegação rápida por perfil e pergunta"
+      - arquivo: "MASTER_PLAN.md"
+        proposito: "Plano mestre com roadmap completo"
+      - arquivo: "QUICK_START.md"
+        proposito: "Onboarding em 45 minutos"
+      - arquivo: "EXECUTION_PLAN.md"
+        proposito: "Cronograma detalhado de 12 semanas"
+      - arquivo: "GLOSSARY.md"
+        proposito: "60+ termos técnicos com definições"
+      - arquivo: "FAQ.md"
+        proposito: "Perguntas frequentes (3863 linhas)"
+      - arquivo: "DELIVERY-COMPLETE.md"
+        proposito: "Status de entrega dos artefatos"
+
+    niveis:
+      - id: "01-nivel-1-fundamentals"
+        nome: "Fundamentos"
+        carga: "3-4h"
+        pergunta: "Por que agentes falham em tarefas longas?"
+        resultado: "Compreensão dos 3 problemas principais"
+        topicos:
+          - "01-why-agents-lose-plot.md (45min)"
+          - "02-token-budgeting.md (45min)"
+          - "03-basic-harness-patterns.md (45min)"
+          - "exercises/ (45min)"
+          - "koda-applications/ (30min)"
+      - id: "02-nivel-2-practical-patterns"
+        nome: "Padrões Práticos"
+        carga: "6-8h"
+        pergunta: "Como fazemos agentes mais confiáveis?"
+        resultado: "Aplica Generator/Evaluator, Sprint Contracts, Rubrics"
+        topicos:
+          - "01-generator-evaluator-pattern.md (90min)"
+          - "02-sprint-contracts.md (90min)"
+          - "03-rubric-design.md (90min)"
+          - "04-trace-reading.md (90min)"
+          - "exercises/ (120min)"
+          - "koda-applications/ (60min)"
+      - id: "03-nivel-3-advanced-architecture"
+        nome: "Arquitetura Avançada"
+        carga: "8-10h"
+        pergunta: "Como construímos sistemas sofisticados?"
+        resultado: "Desenha multi-agent systems com state persistence"
+        topicos:
+          - "01-multi-agent-systems.md (90min)"
+          - "02-state-persistence.md (90min)"
+          - "03-file-based-coordination.md (90min)"
+          - "04-server-side-compaction.md (60min)"
+          - "05-harness-evolution.md (90min)"
+          - "exercises/ (150min)"
+          - "koda-applications/ (60min)"
+      - id: "04-nivel-4-koda-specific"
+        nome: "KODA-Específico"
+        carga: "Contínuo (10h+)"
+        pergunta: "Como aplicamos tudo no KODA?"
+        resultado: "Expert em harness do KODA, melhoria contínua"
+        topicos:
+          - "01-koda-architecture.md (90min)"
+          - "02-customer-journey-flows.md (90min)"
+          - "03-feature-design-patterns.md (90min)"
+          - "04-evaluation-rubrics-koda.md (90min)"
+          - "05-harness-improvements.md (90min)"
+          - "real-world-exercises/ (180min)"
+          - "case-studies/ (120min)"
+
+    camadas_transversais:
+      - pasta: "05-core-concepts"
+        descricao: "8 conceitos em profundidade (~2000-2600 linhas cada)"
+        formato: "Explicação narrativa + 3 knowledge graphs Mermaid + aplicação KODA + checklist"
+      - pasta: "06-knowledge-graphs"
+        descricao: "35+ diagramas Mermaid"
+        conteudos:
+          - "01-concept-ecosystem.md"
+          - "02-koda-feature-dependencies.md"
+          - "03-learning-progression.md"
+          - "04-problem-solution-mapping.md"
+          - "detailed-graphs/ (8 arquivos de conceitos)"
+      - pasta: "07-implementation-guides"
+        descricao: "Guias de setup e operação"
+        conteudos:
+          - "01-setup-guide.md"
+          - "02-team-progression-guide.md"
+          - "03-harness-design-checklist.md"
+          - "04-evaluation-rubric-template.md"
+          - "05-trace-analysis-guide.md"
+          - "06-harness-evolution-playbook.md"
+      - pasta: "08-tools-templates"
+        descricao: "Templates reutilizáveis"
+        conteudos:
+          - "team-progress-tracker.md"
+          - "learning-assessment-rubric.md"
+          - "knowledge-graph-template.md"
+          - "sprint-contract-template.md"
+          - "evaluation-rubric-template.md"
+          - "architecture-decision-record-template.md"
+      - pasta: "09-case-studies"
+        descricao: "5 estudos de caso"
+        conteudos:
+          - "retro-game-maker.md (Generator/Evaluator)"
+          - "browser-daw-app.md (Multi-agent + State)"
+          - "koda-product-discovery.md"
+          - "koda-order-processing.md"
+          - "koda-fulfillment-workflow.md"
+      - pasta: "10-references"
+        descricao: "Referências externas"
+        conteudos:
+          - "anthropic-presentation-summary.md"
+          - "model-capability-timeline.md"
+          - "additional-resources.md"
+
+conceitos_core:
+  descricao: "Cada conceito tem explicação narrativa (história do Fernando/KODA), 3 knowledge graphs Mermaid, aplicação prática no KODA, checklist de implementação"
+  lista:
+    - id: 1
+      nome: "Context Management"
+      nivel: 1
+      complexidade: "Baixa"
+      prioridade: "Alta"
+    - id: 2
+      nome: "Planning vs. Execution Separation"
+      nivel: 2
+      complexidade: "Média"
+      prioridade: "Alta"
+    - id: 3
+      nome: "Generator/Evaluator Pattern"
+      nivel: 2
+      complexidade: "Média"
+      prioridade: "Alta"
+    - id: 4
+      nome: "Sprint Contracts"
+      nivel: 2
+      complexidade: "Média"
+      prioridade: "Média"
+    - id: 5
+      nome: "State Persistence"
+      nivel: 3
+      complexidade: "Alta"
+      prioridade: "Média"
+    - id: 6
+      nome: "Harness Evolution"
+      nivel: 3
+      complexidade: "Alta"
+      prioridade: "Média"
+    - id: 7
+      nome: "Multi-Agent Coordination"
+      nivel: 3
+      complexidade: "Alta"
+      prioridade: "Média"
+    - id: 8
+      nome: "Evaluation Rubrics"
+      nivel: 2
+      complexidade: "Média"
+      prioridade: "Média"
+
+  progressao: >
+    Context Management (N1) → Planning/Execution Separation (N2) →
+    Generator/Evaluator (N2) ←→ Sprint Contracts (N2) ←→ Evaluation Rubrics (N2) →
+    Multi-Agent Coordination (N3) ←→ State Persistence (N3) →
+    Harness Evolution (N3) → Aplicação completa em KODA (N4)
+
+glossario:
+  termos:
+    - termo: "Harness"
+      definicao: "Infraestrutura que sustenta agentes (memória, planejamento, avaliação, coordenação)"
+      nivel: 1
+    - termo: "Context Window"
+      definicao: "Memória imediata do modelo. Opus 4.6: ~1M tokens (~6h de trabalho)"
+      nivel: 1
+    - termo: "Token Budget"
+      definicao: "Gerenciamento consciente de quantos tokens estão disponíveis vs. usados"
+      nivel: 1
+    - termo: "Generator/Evaluator"
+      definicao: "Padrão onde um agente gera e outro avalia — evita sycophancy"
+      nivel: 2
+    - termo: "Sprint"
+      definicao: "Unidade de trabalho de 30-120 minutos de execução do agente"
+      nivel: 2
+    - termo: "Sprint Contract"
+      definicao: "Acordo negociado entre Generator e Evaluator sobre critérios de conclusão"
+      nivel: 2
+    - termo: "Rubric"
+      definicao: "Conjunto de critérios mensuráveis (escala 1-10) para avaliar qualidade subjetiva"
+      nivel: 2
+    - termo: "Trace"
+      definicao: "Log detalhado de cada passo do agente — ferramenta principal de debugging"
+      nivel: 2
+    - termo: "Sycophancy"
+      definicao: "Tendência do LLM de agradar/aprovar trabalho ruim"
+      nivel: 2
+    - termo: "Context Amnesia"
+      definicao: "Quando o agente 'esquece' contexto anterior por ter excedido a janela"
+      nivel: 1
+    - termo: "Context Anxiety"
+      definicao: "Comportamento ansioso do agente ao se aproximar do limite de contexto"
+      nivel: 1
+    - termo: "Context Rot"
+      definicao: "Perda gradual de coerência conforme avança na janela de contexto"
+      nivel: 1
+    - termo: "Harness Evolution"
+      definicao: "Remover componentes de harness quando o modelo subjacente melhora"
+      nivel: 3
+    - termo: "Planner"
+      definicao: "Agente especializado em decompor problemas em sprints"
+      nivel: 2
+    - termo: "Compaction"
+      definicao: "Resumir/comprimir contexto antigo mantendo informações-chave"
+      nivel: 3
+    - termo: "MCP (Model Context Protocol)"
+      definicao: "Protocolo para agentes usarem ferramentas/APIs externas"
+      nivel: 2
+    - termo: "METR"
+      definicao: "Model Evaluation Task Completion Rate — % de tarefas completadas com sucesso"
+      nivel: 1
+    - termo: "Ralph Loop"
+      definicao: "Técnica de loop incremental (Jeffrey Huntley, jul/2025) — substituída por Generator/Evaluator"
+      nivel: 2
+    - termo: "ADR"
+      definicao: "Architecture Decision Record — documento de decisão arquitetural"
+      nivel: 3
+    - termo: "Self-Evaluation"
+      definicao: "Quando um agente avalia seu próprio trabalho (ruim: sycophancy)"
+      nivel: 2
+    - termo: "Verification Loop"
+      definicao: "Ciclo onde gerador cria, verificador testa, feedback é retornado"
+      nivel: 2
+
+cronograma:
+  semanas_totais: 12
+  fases:
+    - semanas: "1-2"
+      fase: "Fundação"
+      nivel: 1
+      entregaveis:
+        - "Todos entendem os 3 problemas"
+        - "Exercícios do Nível 1 completos"
+        - "Documento de síntese criado"
+    - semanas: "3-4"
+      fase: "Padrões"
+      nivel: 2
+      entregaveis:
+        - "Generator/Evaluator para 1 feature KODA"
+        - "Sprint contracts escritos"
+        - "Rubrics iniciais criadas"
+    - semanas: "5-6"
+      fase: "Arquitetura"
+      nivel: 3
+      entregaveis:
+        - "Multi-agent design para KODA"
+        - "State persistence implementada"
+        - "Harness evolution plan"
+    - semanas: "7-12"
+      fase: "Aplicação"
+      nivel: 4
+      entregaveis:
+        - "Melhorias contínuas no KODA"
+        - "Equipe mentoreia novos membros"
+        - "Features novas usando padrões aprendidos"
+
+metricas_sucesso:
+  - marco: "Semana 2"
+    criterio: "100% da equipe entende os 3 problemas"
+  - marco: "Semana 4"
+    criterio: "100% domina padrões práticos; rubrics para 2+ features KODA"
+  - marco: "Semana 6"
+    criterio: "60-80% em Nível 3; arquitetura melhorada proposta"
+  - marco: "Semana 12"
+    criterio: "50%+ em Nível 4; equipe mentoreia; KODA significativamente melhorado"
+
+padroes_design:
+  - nome: "Generator/Evaluator Pattern"
+    descricao: "Separa criação de julgamento. Generator cria, Evaluator avalia contra rubric + testes."
+    por_que_funciona: "Generator não sofre de sycophancy porque não avalia o próprio trabalho. Evaluator é treinado para ser crítico."
+    fluxo:
+      - "Generator cria artefato"
+      - "Evaluator avalia contra rubric + testes"
+      - "Feedback estruturado retorna ao Generator"
+
+  - nome: "Multi-Agent System"
+    descricao: "Planner decompõe em sprints, Generator executa, Evaluator verifica. Coordenação via estado persistente (arquivos)."
+    papeis:
+      - agente: "Planner"
+        funcao: "Decompõe problema em sprints"
+      - agente: "Generator"
+        funcao: "Executa cada sprint"
+      - agente: "Evaluator"
+        funcao: "Verifica qualidade contra rubric"
+
+  - nome: "Sprint Contract"
+    descricao: "Acordo negociado entre Generator e Evaluator ANTES da execução sobre o que 'pronto' significa."
+    exemplo:
+      generator: "Vou implementar checkout com Stripe"
+      evaluator: "Aceito se: (1) testa com 3 cartões reais, (2) maneja erros, (3) não expõe dados"
+      resultado: "Contrato firmado — ambos sabem o que é sucesso"
+
+  - nome: "Harness Evolution"
+    descricao: "Conforme o modelo melhora, componentes de harness se tornam desnecessários."
+    exemplo_evolucao:
+      - componente: "Context reset"
+        opus_45: "Essencial"
+        opus_46: "Não precisa"
+      - componente: "Sprint decomposition"
+        opus_45: "Necessário"
+        opus_46: "Opcional"
+      - componente: "Eval cadence"
+        opus_45: "Per-sprint"
+        opus_46: "Single pass"
+
+contexto_repositorio:
+  produto_principal: "O currículo em markdown"
+  outros_componentes:
+    opencode_agents:
+      descricao: "Definições de agentes no padrão HoP (Handoff Protocol)"
+      arquivos:
+        - "hop-orchestrator-rezek.md (orquestrador principal)"
+        - "koda-hop-init-basic.md (inicializador KODA)"
+        - "hop-live-whatsapp-tester.md (tester WhatsApp)"
+    opencode_skills:
+      descricao: "Skills de workflow"
+      skills:
+        - "issue-start"
+        - "issue-review"
+        - "issue-finish"
+        - "issue-workflow"
+        - "refine-issue"
+        - "orchestrator"
+        - "doc-coauthoring"
+        - "writing-plans"
+    docs_analise:
+      descricao: "7 diagnósticos do backend real do KODA"
+      path: "docs/analysis/mhc-backend/"
+      arquivos:
+        - "2026-05-28-output-validation-structured-generation.md"
+        - "2026-05-28-janela-deslizante-contexto.md"
+        - "2026-05-28-output-validation-state-persistence.md"
+        - "2026-05-26-nivel-3-comparacao.md"
+        - "2026-05-26-harness-diagnostic.md"
+        - "2026-05-26-nivel-2-diagnostic.md"
+        - "2026-05-26-pedido-bling-agente.md"
+    web:
+      descricao: "Portal HTML estático + visualizador de diagramas"
+      arquivos:
+        - "koda_course_portal.html"
+        - "koda_knowledge_graphs_35_diagrams.html"
+        - "mhc_visao_estrategica.html"
+    stack:
+      runtime: "Node >= 20.18"
+      linter: "ESLint 10"
+      tipo_modulo: "ESM"
+      sem_codigo_fonte: true
+
+navegacao_por_perfil:
+  - perfil: "Iniciante total"
+    caminho:
+      - "curriculum/QUICK_START.md"
+      - "Nível 1"
+      - "Exercícios"
+  - perfil: "Conhece LLMs, quer padrões"
+    caminho:
+      - "Nível 2: 01-generator-evaluator-pattern.md"
+  - perfil: "Arquiteto / sênior"
+    caminho:
+      - "Nível 3: 01-multi-agent-systems.md"
+  - perfil: "Trabalha no KODA"
+    caminho:
+      - "Nível 4: 01-koda-architecture.md"
+  - perfil: "Precisa de referência rápida"
+    caminho:
+      - "GLOSSARY.md ou INDEX.md"
+  - perfil: "Líder de projeto"
+    caminho:
+      - "MASTER_PLAN.md"
+      - "EXECUTION_PLAN.md"
+
+principios:
+  - "Aprenda no seu ritmo — cada pessoa é diferente"
+  - "Compreenda antes de memorizar — foco no 'porquê', não só no 'como'"
+  - "Aplique no KODA — melhor forma de aprender é usando em código real"
+  - "Ensine outros — você realmente aprendeu quando pode ensinar"
+  - "Documente — compartilhe aprendizados com a equipe"
+  - "Itere — padrões evoluem conforme novos modelos chegam"
+
+fontes:
+  - "curriculum/README.md"
+  - "curriculum/MASTER_PLAN.md"
+  - "curriculum/INDEX.md"
+  - "curriculum/QUICK_START.md"
+  - "curriculum/GLOSSARY.md"
+  - "curriculum/FAQ.md"
+  - "curriculum/EXECUTION_PLAN.md"
+  - "curriculum/DELIVERY-COMPLETE.md"
+  - "docs/system-of-record.md"
+  - "AGENTS.md"
+  - "05-core-concepts/01-context-management.md"
+  - "05-core-concepts/03-generator-evaluator-pattern.md"
