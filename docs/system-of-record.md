@@ -30,6 +30,7 @@ O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff P
 | [.opencode/skills/orchestrator/SKILL.md](.opencode/skills/orchestrator/SKILL.md) | Coordenação de agentes paralelos, dashboard de status |
 | [.opencode/skills/doc-coauthoring/SKILL.md](.opencode/skills/doc-coauthoring/SKILL.md) | Workflow de co-autoria de documentação |
 | [.opencode/skills/writing-plans/SKILL.md](.opencode/skills/writing-plans/SKILL.md) | Criação de planos de implementação detalhados |
+| [.opencode/skills/error-context-hygiene/SKILL.md](.opencode/skills/error-context-hygiene/SKILL.md) | Skill de implementação: 4 regras de higiene de erro no contexto |
 | [AGENTS.md](AGENTS.md) | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -112,7 +113,18 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` está vazio. Documentos esperados quando o domínio correspondente amadurecer:
+`docs/canonical/` não está mais vazio. Há 4 padrões canônicos ativos.
+
+### Padrões canônicos ativos
+
+| Documento | Cobre |
+|---|---|
+| `error-context-hygiene.md` | Padrão 6 (12FA): higiene de erros no contexto do agente |
+| `deterministic-tool-dispatch.md` | Padrão 2 (12FA): dispatch determinístico de ferramentas |
+| `owned-agent-control-loop.md` | Padrão 3 (12FA): loop de controle do agente com 4 componentes |
+| `serializable-pause-resume-state.md` | Padrão 4 (12FA): serialização de estado para pause/resume |
+
+### Documentos esperados quando o domínio correspondente amadurecer
 
 | Documento | Cobre |
 |---|---|
@@ -133,10 +145,22 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 - [2026-05-26-nivel-2-diagnostic.md](docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md) — maturidade de padrões Nível 2 no sistema
 - [2026-05-26-pedido-bling-agente.md](docs/analysis/mhc-backend/2026-05-26-pedido-bling-agente.md) — falha de notificação de pedido pago (webhook/ERP)
 
+### Análises comparativas (12-Factor Agents)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-09-12-factor-agents-analysis.md` | Extração de conhecimento não-óbvio da talk 12-Factor Agents |
+| `2026-06-09-12-factor-agents-analysis.yaml` | YAML com frameworks, padrões, lições operacionais |
+| `2026-06-09-agentic-patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
+| `2026-06-09-agentic-patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-09-pattern-classification.md` | Classificação comparativa dos 8 padrões vs. repo |
+| `2026-06-09-pattern-classification.yaml` | YAML com evidência por padrão |
+| `2026-06-09-integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+
 ## Planos
 
 - [docs/plans/2026-05-26-curriculum-completion-strategy.md](docs/plans/2026-05-26-curriculum-completion-strategy.md) — estratégia de execução para completar o currículo via GitHub Issues/Milestones
 
 ---
 
-*Última atualização: 2026-05-28*
+*Última atualização: 2026-06-09*

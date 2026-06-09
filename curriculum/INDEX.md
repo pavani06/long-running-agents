@@ -98,6 +98,7 @@ FAQ.md       (perguntas comuns)
 - `02-nivel-2-practical-patterns/exercises/exercise-01.md` (Generator/Evaluator)
 - `02-nivel-2-practical-patterns/exercises/exercise-02.md` (Sprint Contracts)
 - `02-nivel-2-practical-patterns/exercises/exercise-03.md` (Rubric Design)
+- `02-nivel-2-practical-patterns/exercises/exercise-04-error-context-hygiene.md` (Error Context Hygiene)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)

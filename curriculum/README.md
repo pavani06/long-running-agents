@@ -82,6 +82,7 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-01.md
 │   │   │   ├── exercise-02.md
 │   │   │   ├── exercise-03.md
+│   │   │   ├── exercise-04-error-context-hygiene.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-2-koda.md
