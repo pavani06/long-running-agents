@@ -1,0 +1,272 @@
+title: "Agentic Patterns from 12-Factor Agents"
+type: digest
+date: 2026-06-09
+sources_covered: 1
+sources:
+  - "sources/2026-06-09-12-factor-agents"
+tags:
+  - synthesis
+  - ai
+  - agents
+  - software-engineering
+  - context-engineering
+extraction_scope:
+  source: "Dex Horthy — 12-Factor Agents: Patterns of reliable LLM applications (AI Engineer, 2025)"
+  excluded:
+    - marketing
+    - anecdotes
+    - personal stories
+    - repetition
+    - principles without concrete mechanics
+    - pure strategy patterns
+    - delivery patterns
+    - product patterns
+patterns:
+  - name: "Structured Output Contract"
+    problem_solved: "Natural-language requests are difficult for deterministic application code to consume directly."
+    inputs:
+      - "User sentence, event, task request, or operational message."
+      - "A target data shape such as JSON."
+      - "Prompt instructions that ask the model to transform the input into that shape."
+    outputs:
+      - "A structured JSON object representing intent, parameters, or the next action."
+      - "A machine-readable contract that downstream code can inspect."
+    benefits:
+      - "Turns model output into something ordinary software can route, validate, and execute."
+      - "Lets agentic behavior be introduced as one modular capability inside an existing app."
+      - "Keeps the model focused on the high-value conversion from language to structure."
+    limitations:
+      - "The JSON does not do anything by itself; downstream control flow is still required."
+      - "Reliability depends on the prompt and the chosen structure."
+      - "It is only one piece of an agentic system, not the whole agent loop."
+    components:
+      model_role: "Convert language into a structured object."
+      contract: "JSON schema or agreed action shape."
+      downstream_code: "Consumes and routes the structured object."
+    flow:
+      steps:
+        - "Receive natural-language input."
+        - "Prompt the model to emit the target JSON shape."
+        - "Pass the JSON to deterministic application code."
+
+  - name: "Deterministic Tool Dispatch"
+    problem_solved: "Treating tool use as a magical agent abstraction obscures what actually happens and makes systems harder to debug."
+    inputs:
+      - "JSON emitted by the model."
+      - "Deterministic handlers, switch statements, or loop branches."
+      - "Optional tool results to feed back into later context."
+    outputs:
+      - "Invoked code paths or API calls selected from the JSON."
+      - "Tool results that can be appended, summarized, or routed into the next step."
+    benefits:
+      - "Reframes tools as plain JSON plus code."
+      - "Makes dispatch inspectable and testable with normal software techniques."
+      - "Avoids hiding critical routing logic inside opaque framework internals."
+    limitations:
+      - "Requires the application to own the mapping between JSON shapes and code paths."
+      - "Bad or ambiguous JSON still needs handling by the surrounding loop."
+      - "Feeding tool results back blindly can create context-window problems."
+    components:
+      action_object: "Model-produced JSON."
+      dispatcher: "Switch statement, loop branch, or handler registry."
+      handler: "Deterministic code that performs the selected operation."
+      result_policy: "Chooses whether and how to feed results back into context."
+    flow:
+      steps:
+        - "Read the model-produced action object."
+        - "Dispatch to the matching deterministic handler."
+        - "Capture the result."
+        - "Route, summarize, or append the result for later model calls."
+
+  - name: "Owned Agent Control Loop"
+    problem_solved: "Naive agent loops that repeatedly send the whole context back to the model become unreliable on longer workflows."
+    inputs:
+      - "Incoming event or user message."
+      - "Prompt that instructs the model how to select the next step."
+      - "Context-window builder."
+      - "Switch statement or dispatcher for model-selected actions."
+      - "Exit, break, summarize, or judge conditions."
+    outputs:
+      - "A materialized sequence of executed steps."
+      - "Final answer, completion signal, or handoff to another branch."
+      - "Updated execution context for the next loop iteration."
+    benefits:
+      - "Gives developers explicit control over when to continue, pause, summarize, judge, or exit."
+      - "Makes agent behavior easier to reason about as ordinary control flow."
+      - "Reduces reliance on hidden framework loops and unbounded context growth."
+    limitations:
+      - "Requires building and maintaining the inner loop instead of outsourcing it entirely."
+      - "Does not eliminate the need to design prompts, context, dispatch, and state carefully."
+      - "Long workflows still need bounded decomposition to stay reliable."
+    components:
+      prompt: "Instructions for selecting the next step."
+      context_builder: "Constructs the model input for each iteration."
+      dispatcher: "Executes the chosen action."
+      loop_controller: "Decides continue, break, summarize, judge, pause, or exit."
+    flow:
+      steps:
+        - "Load the current event and state."
+        - "Build the context window."
+        - "Ask the model for the next structured step."
+        - "Dispatch the step through deterministic code."
+        - "Update state and decide whether to continue or exit."
+
+  - name: "Serializable Pause/Resume State"
+    problem_solved: "Long-running tools and asynchronous work do not fit cleanly into a single synchronous model loop."
+    inputs:
+      - "Execution state such as current step, next step, retry counts, and loop position."
+      - "Business state such as messages, displayed data, and pending approvals."
+      - "Context window owned by the application."
+      - "State ID stored in a database."
+      - "Callback result from a long-running tool."
+    outputs:
+      - "Serialized state that can be paused and later reloaded."
+      - "Resumed agent execution with the callback result appended to the program state."
+      - "REST API or MCP-style interaction surface for launching and resuming workflows."
+    benefits:
+      - "Supports launch, pause, and resume semantics like standard APIs."
+      - "Lets long-running work happen outside the immediate model call."
+      - "Keeps the model unaware of background execution details while the application preserves continuity."
+    limitations:
+      - "Requires the application to own state and context serialization."
+      - "Requires reliable state IDs and callback plumbing."
+      - "The loop must distinguish execution state from business state."
+    components:
+      state_store: "Database keyed by state ID."
+      execution_state: "Loop position, current step, next step, retries."
+      business_state: "Messages, displayed data, approvals, user-visible facts."
+      callback_surface: "Endpoint or server entry point that receives long-running tool results."
+    flow:
+      steps:
+        - "Start the workflow through an API or server surface."
+        - "When a long-running tool is called, serialize context and state."
+        - "Let the tool run out of band."
+        - "Receive callback with state ID and result."
+        - "Reload state, append the result, and resume the model loop."
+
+  - name: "Token-Level Prompt and Context Builder"
+    problem_solved: "Hidden prompt construction and generic message history make it difficult to improve agent reliability past a quality threshold."
+    inputs:
+      - "Hand-authored prompt tokens."
+      - "Event state, thread model, memory, retrieval results, history, and business data."
+      - "Formatting choice such as standard message arrays, a single user message, or system-message structure."
+      - "Evaluation cases and knobs to test prompt/context variants."
+    outputs:
+      - "A deliberately constructed prompt and context window."
+      - "Dense, clear model input optimized for the next decision."
+      - "Repeatable variants that can be evaluated."
+    benefits:
+      - "Improves reliability by controlling what tokens enter the model."
+      - "Allows experimentation with different context layouts and prompt variants."
+      - "Treats prompt, memory, RAG, and history as one context-engineering surface."
+    limitations:
+      - "Requires inspecting and tuning individual tokens instead of relying on defaults."
+      - "There is no single guaranteed best format; the transcript frames this as something to try and evaluate."
+      - "The approach costs more engineering effort than generated or framework-owned prompts."
+    components:
+      prompt_text: "Hand-controlled instruction tokens."
+      state_model: "Application-specific representation of event and thread state."
+      context_sources: "Memory, RAG, history, and other relevant state."
+      serializer: "Transforms state into the chosen model-message format."
+      evals: "Cases used to compare prompt and context variants."
+    flow:
+      steps:
+        - "Model the event and thread state explicitly."
+        - "Select which context sources belong in the next model call."
+        - "Serialize them into a dense and clear prompt/context format."
+        - "Evaluate variants and adjust tokens deliberately."
+
+  - name: "Error Context Hygiene"
+    problem_solved: "Blindly appending tool errors and stack traces to context can cause retry loops to spin out, lose context, or get stuck."
+    inputs:
+      - "Failed tool call."
+      - "Associated API error or exception."
+      - "Pending error list."
+      - "Subsequent valid tool call, if one occurs."
+    outputs:
+      - "A concise error summary placed into the context window."
+      - "Cleared pending errors after a valid tool call."
+      - "Retry context that tells the model what it needs without dumping full stack traces."
+    benefits:
+      - "Enables model-assisted recovery from wrong API calls or unavailable APIs."
+      - "Reduces context pollution from raw errors."
+      - "Prevents stale errors from biasing later steps after progress resumes."
+    limitations:
+      - "The transcript calls this pattern controversial when used alone."
+      - "It depends on owning the context window rather than blindly appending messages."
+      - "Poorly managed retries can still loop or degrade reliability."
+    components:
+      error_capture: "Records the failed tool call and associated error."
+      summarizer: "Condenses errors before adding them to context."
+      cleanup_policy: "Clears pending errors after a valid tool call."
+      retry_policy: "Controls whether and how the model retries."
+    flow:
+      steps:
+        - "Capture the failed tool call and error."
+        - "Summarize the actionable error information."
+        - "Add the summary to context and retry."
+        - "When a valid tool call happens, clear stale pending errors."
+
+  - name: "Human Contact Intent Tool"
+    problem_solved: "Agents often avoid the early decision between calling a software tool and sending a message to a human."
+    inputs:
+      - "Current agent state and trace."
+      - "Natural-language intent options such as done, need clarification, or need approval from a manager."
+      - "Human-contact tool or communication channel."
+      - "Human response to bring back into the trace."
+    outputs:
+      - "Routed message to a human when the model selects a human-facing intent."
+      - "Clarification, approval, rejection, or instruction from the human."
+      - "Updated context that lets the workflow continue."
+    benefits:
+      - "Moves the tool-versus-human choice into tokens the model understands naturally."
+      - "Supports agents that collaborate with humans instead of pretending every step is autonomous."
+      - "Gives the model multiple human-facing outcomes beyond a single final answer."
+    limitations:
+      - "Requires explicit design of human-contact intents and routing."
+      - "Human latency and availability become part of the workflow."
+      - "The transcript only sketches the mechanism and points to deeper treatment elsewhere."
+    components:
+      intent_set: "Human-facing states such as done, clarification, or approval needed."
+      router: "Maps selected intent to a human-contact action."
+      human_channel: "Surface used to contact and receive input from the human."
+      trace_update: "Adds the human response back into state."
+    flow:
+      steps:
+        - "Ask the model to choose an intent in natural language."
+        - "If the intent is human-facing, route through the human-contact tool."
+        - "Receive the human response."
+        - "Append the response to state and continue the workflow."
+
+  - name: "Micro-Agent Islands in a Deterministic DAG"
+    problem_solved: "Fully open-ended agents with long workflows and large context windows are unreliable, while fully deterministic workflows cannot handle every natural-language decision point."
+    inputs:
+      - "Mostly deterministic workflow or DAG."
+      - "Small focused agent loop bounded to roughly three to ten steps."
+      - "Natural-language decision point that can be converted into JSON."
+      - "Human approvals or corrections when required."
+      - "Deterministic code to resume after the agent island finishes."
+    outputs:
+      - "JSON next-step decision or bounded sequence of decisions."
+      - "Completed subtask handed back to deterministic workflow code."
+      - "Optional rollback or follow-up micro-agent when the deterministic path fails."
+    benefits:
+      - "Keeps context manageable."
+      - "Gives each agent loop a clear responsibility."
+      - "Allows large systems with many tools and steps while preserving deterministic scaffolding."
+    limitations:
+      - "Requires decomposition into small agent loops and deterministic surrounding code."
+      - "Not every problem needs an agent; purely scripted sequences may be simpler."
+      - "The boundary of what the model can do reliably must be engineered and tested."
+    components:
+      deterministic_dag: "The surrounding workflow that owns the reliable path."
+      micro_agent_loop: "A bounded three-to-ten-step agentic segment."
+      boundary_task: "The point where natural language is useful for choosing the next structured step."
+      handoff: "Return from the micro-agent to deterministic code."
+    flow:
+      steps:
+        - "Run deterministic workflow until a natural-language decision point."
+        - "Invoke a small focused agent loop."
+        - "Convert the model's decision into JSON next-step state."
+        - "Execute or approve the bounded subtask."
+        - "Return to deterministic workflow code."
