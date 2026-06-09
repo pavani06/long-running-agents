@@ -31,6 +31,7 @@ O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff P
 | [.opencode/skills/doc-coauthoring/SKILL.md](.opencode/skills/doc-coauthoring/SKILL.md) | Workflow de co-autoria de documentação |
 | [.opencode/skills/writing-plans/SKILL.md](.opencode/skills/writing-plans/SKILL.md) | Criação de planos de implementação detalhados |
 | [.opencode/skills/error-context-hygiene/SKILL.md](.opencode/skills/error-context-hygiene/SKILL.md) | Skill de implementação: 4 regras de higiene de erro no contexto |
+| [.opencode/skills/analyze-and-improve/SKILL.md](.opencode/skills/analyze-and-improve/SKILL.md) | Pipeline knowledge → patterns → classification → improvements |
 | [AGENTS.md](AGENTS.md) | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
