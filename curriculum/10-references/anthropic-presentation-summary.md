@@ -3,6 +3,7 @@ title: "Resumo da Apresentação Anthropic: Building Long-Running Agents"
 type: curriculum-reference
 aliases: []
 tags: [curriculo-conteudo, referencia, fundamentos-de-agentes, sistemas-de-agentes, memoria-externa, avaliacao-separada, coordenacao-de-agentes]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---
 # 🧭 Resumo da Apresentação Anthropic: Building Long-Running Agents
@@ -1789,34 +1790,34 @@ A apresentação da Anthropic funciona como mapa de origem para o currículo. Ca
 
 ### Nível 1: Fundamentos
 
-- [Por Que Agentes Perdem o Foco?](../01-nivel-1-fundamentals/01-why-agents-lose-plot.md) explica os problemas que a apresentação assume como ponto de partida.
-- [Token Budgeting](../01-nivel-1-fundamentals/02-token-budgeting.md) aprofunda o custo de usar context window como memória.
-- [Basic Harness Patterns](../01-nivel-1-fundamentals/03-basic-harness-patterns.md) mostra a primeira camada de controle ao redor do modelo.
-- [Aplicações KODA Nível 1](../01-nivel-1-fundamentals/koda-applications/nivel-1-koda.md) traduz as falhas de contexto para conversas reais de venda.
+- [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Por Que Agentes Perdem o Foco?]] explica os problemas que a apresentação assume como ponto de partida.
+- [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]] aprofunda o custo de usar context window como memória.
+- [[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]] mostra a primeira camada de controle ao redor do modelo.
+- [[curriculum/01-nivel-1-fundamentals/koda-applications/nivel-1-koda|Aplicações KODA Nível 1]] traduz as falhas de contexto para conversas reais de venda.
 
 ### Nível 2: Padrões práticos
 
-- [Generator/Evaluator Pattern](../02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md) é a aplicação mais direta da separação entre criação e avaliação.
-- [Sprint Contracts](../02-nivel-2-practical-patterns/02-sprint-contracts.md) formaliza promessas entre etapas.
-- [Rubric Design](../02-nivel-2-practical-patterns/03-rubric-design.md) transforma qualidade em critérios verificáveis.
-- [Trace Reading](../02-nivel-2-practical-patterns/04-trace-reading.md) ensina a ler os rastros que o harness registra.
-- [Aplicações KODA Nível 2](../02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md) mostra como esses padrões mudam o comportamento do produto.
+- [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]] é a aplicação mais direta da separação entre criação e avaliação.
+- [[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]] formaliza promessas entre etapas.
+- [[curriculum/02-nivel-2-practical-patterns/03-rubric-design|Rubric Design]] transforma qualidade em critérios verificáveis.
+- [[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading]] ensina a ler os rastros que o harness registra.
+- [[curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda|Aplicações KODA Nível 2]] mostra como esses padrões mudam o comportamento do produto.
 
 ### Nível 3: Arquitetura avançada
 
-- [Multi-Agent Systems](../03-nivel-3-advanced-architecture/01-multi-agent-systems.md) expande a coordenação entre papéis especializados.
-- [State Persistence](../03-nivel-3-advanced-architecture/02-state-persistence.md) aprofunda a fonte de verdade fora da context window.
-- [File-Based Coordination](../03-nivel-3-advanced-architecture/03-file-based-coordination.md) implementa a coordenação por artefatos que a apresentação defende.
-- [Server-Side Compaction](../03-nivel-3-advanced-architecture/04-server-side-compaction.md) mostra como compactar sem perder fatos críticos.
-- [Harness Evolution](../03-nivel-3-advanced-architecture/05-harness-evolution.md) mostra como o harness cresce conforme risco e complexidade aumentam.
+- [[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]] expande a coordenação entre papéis especializados.
+- [[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]] aprofunda a fonte de verdade fora da context window.
+- [[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]] implementa a coordenação por artefatos que a apresentação defende.
+- [[curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction|Server-Side Compaction]] mostra como compactar sem perder fatos críticos.
+- [[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution]] mostra como o harness cresce conforme risco e complexidade aumentam.
 
 ### Nível 4: KODA específico
 
-- [KODA Architecture](../04-nivel-4-koda-specific/01-koda-architecture.md) aplica os blocos da apresentação ao produto real.
-- [Customer Journey Flows](../04-nivel-4-koda-specific/02-customer-journey-flows.md) mostra onde estado precisa atravessar etapas da conversa.
-- [Feature Design Patterns](../04-nivel-4-koda-specific/03-feature-design-patterns.md) ajuda a escolher padrões por feature.
-- [Evaluation Rubrics KODA](../04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md) adapta rubric design para riscos específicos de venda de suplementos.
-- [Harness Improvements](../04-nivel-4-koda-specific/05-harness-improvements.md) mostra como evoluir o sistema sem quebrar confiança.
+- [[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]] aplica os blocos da apresentação ao produto real.
+- [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]] mostra onde estado precisa atravessar etapas da conversa.
+- [[curriculum/04-nivel-4-koda-specific/03-feature-design-patterns|Feature Design Patterns]] ajuda a escolher padrões por feature.
+- [[curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda|Evaluation Rubrics KODA]] adapta rubric design para riscos específicos de venda de suplementos.
+- [[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Harness Improvements]] mostra como evoluir o sistema sem quebrar confiança.
 
 ### Mapa conceitual
 
@@ -2353,28 +2354,28 @@ Depois de ler esta referência, escolha o próximo material de acordo com sua ne
 
 ### Se você quer entender o problema
 
-1. Leia [Por Que Agentes Perdem o Foco?](../01-nivel-1-fundamentals/01-why-agents-lose-plot.md).
-2. Leia [Token Budgeting](../01-nivel-1-fundamentals/02-token-budgeting.md).
+1. Leia [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Por Que Agentes Perdem o Foco?]].
+2. Leia [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]].
 3. Releia o prólogo deste módulo e escreva um exemplo real do seu produto.
 
 ### Se você quer implementar o primeiro padrão
 
-1. Leia [Generator/Evaluator Pattern](../02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md).
+1. Leia [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]].
 2. Escolha uma feature KODA de baixo risco.
 3. Crie `generator_draft.json` e `evaluator_verdict.json` para essa feature.
 4. Defina uma rubric simples com 5 critérios.
 
 ### Se você quer desenhar arquitetura
 
-1. Leia [State Persistence](../03-nivel-3-advanced-architecture/02-state-persistence.md).
-2. Leia [File-Based Coordination](../03-nivel-3-advanced-architecture/03-file-based-coordination.md).
+1. Leia [[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]].
+2. Leia [[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]].
 3. Desenhe onde cada artefato fica no diretório `state/`.
 4. Defina quais arquivos são imutáveis e quais são versionados.
 
 ### Se você quer aplicar no KODA
 
-1. Leia [KODA Architecture](../04-nivel-4-koda-specific/01-koda-architecture.md).
-2. Leia [Evaluation Rubrics KODA](../04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md).
+1. Leia [[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]].
+2. Leia [[curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda|Evaluation Rubrics KODA]].
 3. Pegue uma conversa real e marque onde cada decisão deveria ter sido persistida.
 4. Escreva um trace manual antes de automatizar.
 
@@ -2460,23 +2461,23 @@ Se você travou em mais de duas respostas, volte para as Seções 2, 3 e 6.
 
 ### Dentro deste currículo
 
-- [Nível 1: Por Que Agentes Perdem o Foco?](../01-nivel-1-fundamentals/01-why-agents-lose-plot.md)
-- [Nível 1: Token Budgeting](../01-nivel-1-fundamentals/02-token-budgeting.md)
-- [Nível 1: Basic Harness Patterns](../01-nivel-1-fundamentals/03-basic-harness-patterns.md)
-- [Nível 2: Generator/Evaluator Pattern](../02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md)
-- [Nível 2: Sprint Contracts](../02-nivel-2-practical-patterns/02-sprint-contracts.md)
-- [Nível 2: Rubric Design](../02-nivel-2-practical-patterns/03-rubric-design.md)
-- [Nível 2: Trace Reading](../02-nivel-2-practical-patterns/04-trace-reading.md)
-- [Nível 3: Multi-Agent Systems](../03-nivel-3-advanced-architecture/01-multi-agent-systems.md)
-- [Nível 3: State Persistence](../03-nivel-3-advanced-architecture/02-state-persistence.md)
-- [Nível 3: File-Based Coordination](../03-nivel-3-advanced-architecture/03-file-based-coordination.md)
-- [Nível 3: Server-Side Compaction](../03-nivel-3-advanced-architecture/04-server-side-compaction.md)
-- [Nível 3: Harness Evolution](../03-nivel-3-advanced-architecture/05-harness-evolution.md)
-- [Nível 4: KODA Architecture](../04-nivel-4-koda-specific/01-koda-architecture.md)
-- [Nível 4: Customer Journey Flows](../04-nivel-4-koda-specific/02-customer-journey-flows.md)
-- [Nível 4: Feature Design Patterns](../04-nivel-4-koda-specific/03-feature-design-patterns.md)
-- [Nível 4: Evaluation Rubrics KODA](../04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md)
-- [Nível 4: Harness Improvements](../04-nivel-4-koda-specific/05-harness-improvements.md)
+- [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Nível 1: Por Que Agentes Perdem o Foco?]]
+- [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Nível 1: Token Budgeting]]
+- [[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Nível 1: Basic Harness Patterns]]
+- [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Nível 2: Generator/Evaluator Pattern]]
+- [[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Nível 2: Sprint Contracts]]
+- [[curriculum/02-nivel-2-practical-patterns/03-rubric-design|Nível 2: Rubric Design]]
+- [[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Nível 2: Trace Reading]]
+- [[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Nível 3: Multi-Agent Systems]]
+- [[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|Nível 3: State Persistence]]
+- [[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|Nível 3: File-Based Coordination]]
+- [[curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction|Nível 3: Server-Side Compaction]]
+- [[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Nível 3: Harness Evolution]]
+- [[curriculum/04-nivel-4-koda-specific/01-koda-architecture|Nível 4: KODA Architecture]]
+- [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Nível 4: Customer Journey Flows]]
+- [[curriculum/04-nivel-4-koda-specific/03-feature-design-patterns|Nível 4: Feature Design Patterns]]
+- [[curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda|Nível 4: Evaluation Rubrics KODA]]
+- [[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Nível 4: Harness Improvements]]
 
 ### Fora deste currículo
 
