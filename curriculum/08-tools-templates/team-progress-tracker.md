@@ -3,6 +3,7 @@ title: "Team Progress Tracker"
 type: curriculum-template
 aliases: []
 tags: [curriculo-conteudo, template, acompanhamento-de-equipe, gestao-de-progresso, monitoramento-semanal, mentoria, dashboard-de-aprendizado, planejamento-de-capacidade]
+relates-to: ["[[curriculum/EXECUTION_PLAN|Execution Plan]]", "[[curriculum/MASTER_PLAN|Master Plan]]"]
 last_updated: 2026-06-10
 ---
 # 📊 Team Progress Tracker
