@@ -9,15 +9,34 @@ metadata:
   priority: high
 ---
 
+## Invocation
+
+This skill REQUIRES one mandatory parameter and accepts two optional parameters:
+
+| Parameter | Required | Description |
+|---|---|---|
+| `source` | **Yes** | Absolute path or URL to the document to analyze. Ex: `Raw-Knowledge/sources/2026-06-09-12-factor-agents.md` |
+| `date` | No | Date for output dir. Defaults to today (`YYYY-MM-DD`). Ex: `2026-06-09` |
+| `source-slug` | No | Short slug for output dir. Derived from source filename if omitted. Ex: `12-factor-agents` |
+
+Example invocation:
+
+```
+Load analyze-and-improve with source=Raw-Knowledge/sources/2026-06-09-12-factor-agents.md, date=2026-06-09, source-slug=12-factor-agents
+```
+
+The orchestrator MUST validate the source file exists before starting any phase.
+
 ## What I Do
 
-Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 5 fases:
+Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 6 fases, todas delegadas a sub-agentes especializados:
 
-1. **Knowledge Extraction** — Extrair conhecimento nao-obvio de um documento fonte
-2. **Pattern Extraction** — Identificar padroes reutilizaveis (via sub-agente ultrabrain)
-3. **Classification** — Classificar cada padrao contra o repositorio alvo
-4. **Improvement Generation** — Gerar artefatos em 7 categorias, priorizados por impacto
-5. **Integration** — Atualizar system-of-record, indices, e commitar
+0. **Repository Mental Model** — Construir modelo mental do repositorio alvo (delegado: `ultrabrain`)
+1. **Knowledge Extraction** — Extrair conhecimento nao-obvio de um documento fonte (delegado: `deep`)
+2. **Pattern Extraction** — Identificar padroes reutilizaveis (delegado: `ultrabrain`)
+3. **Classification** — Classificar cada padrao contra o repositorio alvo (delegado: `deep`)
+4. **Improvement Generation** — Gerar artefatos em 7 categorias, priorizados por impacto (delegado: `deep` em paralelo)
+5. **Integration** — Atualizar system-of-record, indices, e commitar (delegado: `quick`)
 
 ## When to Use Me
 
@@ -26,7 +45,7 @@ Load this skill when:
 - Voce tem uma fonte externa de conhecimento (transcript de talk, paper academico, knowledge base entry, documentacao de biblioteca) e quer extrair padroes aplicaveis ao seu repositorio
 - Voce quer classificar padroes extraidos contra o que ja existe no codigo/curriculo
 - Voce quer gerar um roadmap de melhorias priorizadas por impacto
-- Voce quer seguir o mesmo workflow que produziu `docs/analysis/2026-06-09-*` no repositorio `long-running-agents`
+- Voce quer seguir o mesmo workflow que produziu `docs/analysis/2026-06-09-12-factor-agents/` no repositorio `long-running-agents`
 
 Nao use quando:
 
@@ -38,9 +57,121 @@ Nao use quando:
 
 Antes de comecar, verifique:
 
-- [ ] O documento fonte existe e esta acessivel (path absoluto ou URL)
+- [ ] O parametro `source` foi fornecido e o documento fonte existe e esta acessivel (path absoluto ou URL)
+- [ ] Os parametros `date` e `source-slug` foram resolvidos (derivados se nao fornecidos)
+- [ ] O diretorio de output `docs/analysis/<date>-<source-slug>/` foi criado
 - [ ] O repositorio alvo tem `docs/system-of-record.md` (ou equivalente) para resolver precedencia
 - [ ] Voce leu `AGENTS.md` do repositorio alvo para conhecer regras de commit, estilo, e gates
+
+## Target Repository Context
+
+TODA delegacao via `task()` nas Phases 0-5 DEVE incluir este bloco no prompt:
+
+```
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+  branch: main
+```
+
+Isso garante que todo sub-agente sabe:
+- Onde escrever arquivos de output (caminho completo)
+- Qual repositorio sera commitado (para mensagens de commit e referencias)
+- Onde encontrar as regras de precedencia (`system-of-record.md`)
+- Qual branch usar
+
+## Output Directory Structure
+
+TODOS os outputs das fases 0-4 vao para o mesmo diretorio:
+
+```
+docs/analysis/<date>-<source-slug>/
+  mental-model.md        # Phase 0
+  mental-model.yaml
+  analysis.md            # Phase 1
+  analysis.yaml
+  patterns.md            # Phase 2
+  patterns.yaml
+  classification.md      # Phase 3
+  classification.yaml
+  integration-roadmap.md # Phase 4
+```
+
+Artefatos concretos (canonical docs, skills, exercises) gerados na Phase 4 vao para seus diretorios definitivos (`docs/canonical/`, `.opencode/skills/`, `curriculum/`).
+
+---
+
+## Phase 0: Repository Mental Model
+
+**Objetivo:** Antes de analisar o documento externo, construir um modelo mental do repositorio alvo — entender goals, arquitetura, padroes, abstracoes e terminologia. Esse modelo serve como contexto canonico para todas as fases subsequentes.
+
+### Delegacao
+
+Delegue para `ultrabrain`:
+
+```typescript
+task(
+  category="ultrabrain",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Build a mental model of the target repository.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+First, read and understand the repository by examining:
+- AGENTS.md (operational rules, commit style, gates)
+- README.md (project goals, overview)
+- docs/system-of-record.md (documentation precedence, domain map)
+- docs/canonical/ (authoritative descriptions of systems)
+- docs/decisions/ (accepted ADRs)
+- curriculum/ (structure, levels, concepts, glossary)
+- .opencode/agents/ (agent definitions, handoff protocol)
+- .opencode/skills/ (existing skills and their domains)
+
+Build a structured mental model covering:
+1. Project Goals — what the repository builds or teaches
+2. Architecture — core abstractions and their relationships
+3. Patterns — existing design and implementation patterns
+4. Abstractions — key terminology and concepts (from glossary and canonical docs)
+5. Curriculum Structure — progression, levels, exercises
+6. Existing Gaps — what is documented as missing or pending
+
+Do not analyze the external source document yet. Focus ONLY on the repository.
+
+OUTPUT: Write TWO files in <output_dir>:
+- docs/analysis/<date>-<source-slug>/mental-model.md — structured markdown with the sections above
+- docs/analysis/<date>-<source-slug>/mental-model.yaml — typed mirror with the same structure
+
+The YAML must use typed fields:
+  meta: {title, date, repo, type: 'mental-model'}
+  goals: [list of goals]
+  architecture: {abstractions: [...], relationships: [...]}
+  patterns: [{name, where_defined, maturity}]
+  terminology: [{term, definition, source}]
+  curriculum: {levels: [...], concepts: [...]}
+  gaps: [{what, where_documented}]"
+)
+```
+
+### Output
+
+```
+docs/analysis/<date>-<source-slug>/mental-model.md
+docs/analysis/<date>-<source-slug>/mental-model.yaml
+```
+
+### Gate
+
+- [ ] O modelo mental cobre goals, arquitetura, padroes, abstracoes, terminologia e gaps
+- [ ] Ambos os arquivos (.md e .yaml) foram escritos no diretorio correto
+
+---
 
 ## Phase 1: Knowledge Extraction
 
@@ -56,64 +187,64 @@ Antes de comecar, verifique:
 | Decisoes de design com justificativa | Conselhos genericos sem mecanica |
 | Anti-padroes documentados | "E importante fazer X" sem o como |
 
-### Prompt de extracao
+### Delegacao
 
-Use este prompt com o documento fonte:
+Delegue para `deep`:
 
-```
-TASK: Extract all non-obvious knowledge from the document below.
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Extract all non-obvious knowledge from the source document below.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+SOURCE DOCUMENT: <paste full content or provide path>
+
 IGNORE: marketing, anecdotes, personal stories, repetition.
 KEEP: frameworks, patterns, architectures, workflows, implementation
 details, operational lessons, failures, tradeoffs.
-OUTPUT: structured markdown with sections for:
-1. Frameworks & Models — conceptual structures presented
-2. Patterns & Architectures — reusable designs with mechanics
-3. Operational Lessons — what worked, what failed, what surprised
-4. Tradeoffs — explicit cost/benefit discussions
-5. Failure Patterns — what breaks and why
-6. Synthesis — cross-cutting insights the author may not have named
 
-After the markdown analysis, produce a YAML mirror with the same structure
-using typed fields (frameworks as list of objects with name+components,
-patterns with name+problem+mechanism, etc.).
+OUTPUT: Write TWO files in <output_dir>:
+- docs/analysis/<date>-<source-slug>/analysis.md — structured markdown with sections for:
+  1. Frameworks & Models — conceptual structures presented
+  2. Patterns & Architectures — reusable designs with mechanics
+  3. Operational Lessons — what worked, what failed, what surprised
+  4. Tradeoffs — explicit cost/benefit discussions
+  5. Failure Patterns — what breaks and why
+  6. Synthesis — cross-cutting insights the author may not have named
+- docs/analysis/<date>-<source-slug>/analysis.yaml — typed mirror with the same structure
+
+The YAML must use typed fields:
+  meta: {title, source, date, type: 'analysis'}
+  frameworks: [{name, components: [...]}]
+  patterns: [{name, problem, mechanism}]
+  operational_lessons: [{lesson, context}]
+  tradeoffs: [{decision, benefit, cost}]
+  failure_patterns: [{pattern, cause, mitigation}]
+  synthesis: string"
+)
 ```
 
 ### Output
 
-Dois arquivos em `docs/analysis/`:
-
 ```
-docs/analysis/<date>-<source-slug>-analysis.md
-docs/analysis/<date>-<source-slug>-analysis.yaml
+docs/analysis/<date>-<source-slug>/analysis.md
+docs/analysis/<date>-<source-slug>/analysis.yaml
 ```
 
-O YAML deve espelhar o markdown com campos tipados:
+### Gate
 
-```yaml
-meta:
-  title: "..."
-  date: "YYYY-MM-DD"
-  source: "..."
-frameworks:
-  - name: "..."
-    components: [...]
-patterns:
-  - name: "..."
-    problem: "..."
-    mechanism: "..."
-operational_lessons:
-  - lesson: "..."
-    context: "..."
-tradeoffs:
-  - decision: "..."
-    benefit: "..."
-    cost: "..."
-failure_patterns:
-  - pattern: "..."
-    cause: "..."
-    mitigation: "..."
-synthesis: "..."
-```
+- [ ] Os arquivos analysis.md e analysis.yaml existem no diretorio de output
+- [ ] Nao contem marketing, anedotas, ou filler
+- [ ] O YAML espelha o markdown com campos tipados
+
+---
 
 ## Phase 2: Pattern Extraction
 
@@ -134,7 +265,7 @@ Cada padrao deve ter 6 campos obrigatorios:
 
 ### Delegacao
 
-Delegue para `ultrabrain` — esse e um trabalho de sintese que exige raciocinio sobre a analise extraida:
+Delegue para `ultrabrain`:
 
 ```typescript
 task(
@@ -142,23 +273,40 @@ task(
   load_skills=[],
   run_in_background=false,
   prompt="TASK: Identify reusable patterns from the knowledge extraction below.
-           Only keep patterns applicable to agentic systems.
+Only keep patterns applicable to agentic systems.
 
-           For each pattern, provide: name, problem solved, inputs, outputs,
-           benefits, limitations. Then produce a YAML mirror adding components
-           (list of sub-elements) and flow (sequence of steps) per pattern.
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
 
-           KNOWLEDGE EXTRACTION:
-           <paste the markdown analysis from Phase 1>"
+For each pattern, provide: name, problem solved, inputs, outputs,
+benefits, limitations. Then produce a YAML mirror adding components
+(list of sub-elements) and flow (sequence of steps) per pattern.
+
+OUTPUT: Write TWO files in <output_dir>:
+- docs/analysis/<date>-<source-slug>/patterns.md
+- docs/analysis/<date>-<source-slug>/patterns.yaml
+
+KNOWLEDGE EXTRACTION:
+<paste the markdown analysis from Phase 1>"
 )
 ```
 
 ### Output
 
 ```
-docs/analysis/<date>-agentic-patterns.md
-docs/analysis/<date>-agentic-patterns.yaml
+docs/analysis/<date>-<source-slug>/patterns.md
+docs/analysis/<date>-<source-slug>/patterns.yaml
 ```
+
+### Gate
+
+- [ ] Cada padrao tem os 6 campos obrigatorios preenchidos
+- [ ] O YAML adiciona `components` e `flow` por padrao
+
+---
 
 ## Phase 3: Classification
 
@@ -193,22 +341,71 @@ Siga `docs/system-of-record.md`:
 5. `curriculum/` — material de ensino
 6. READMEs e resumos operacionais
 
-### Output
+### Delegacao
 
-```
-docs/analysis/<date>-pattern-classification.md
-docs/analysis/<date>-pattern-classification.yaml
-```
+Delegue para `deep`:
 
-O markdown deve ter uma tabela-sumario no final:
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Classify each extracted pattern against the target repository using evidence-based classification.
 
-```
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+CLASSIFICATION RULES:
+- Already Exists: pattern is documented, implemented, or taught at equivalent depth
+- Partial Coverage: elements exist but key mechanics, reframe, or formalization are missing
+- Missing: not present in any form (doc, code, or curriculum)
+- Better Implementation: repo has a superior or more mature version of the same idea
+
+EVIDENCE REQUIREMENTS:
+For every classification, cite file:line references. For 'Missing', confirm NOT_FOUND
+with the locations searched. Follow the precedence order from system-of-record.md:
+decisions/ > canonical/ > evidence/ > analysis/ > curriculum/ > READMEs.
+
+Read the repository mental model at docs/analysis/<date>-<source-slug>/mental-model.md
+for quick orientation. Then search the repo (grep, read files) for each pattern.
+
+PATTERNS TO CLASSIFY:
+<paste the patterns.md or patterns.yaml from Phase 2>
+
+OUTPUT: Write TWO files in <output_dir>:
+- docs/analysis/<date>-<source-slug>/classification.md — one section per pattern with:
+  - Classification + justification
+  - Evidence (file:line references or NOT_FOUND)
+  - Integration value (Low/Medium/High)
+  - Summary table at the end
+- docs/analysis/<date>-<source-slug>/classification.yaml — typed mirror
+
+Summary table format:
 | # | Pattern | Classification | Integration Value |
 |---|---|---|---|
 | 1 | ... | Already Exists | Low |
 | 2 | ... | Partial Coverage | Medium |
-| ... | ... | ... | ... |
+| ... | ... | ... | ... |"
+)
 ```
+
+### Output
+
+```
+docs/analysis/<date>-<source-slug>/classification.md
+docs/analysis/<date>-<source-slug>/classification.yaml
+```
+
+### Gate
+
+- [ ] Cada padrao classificado com evidencia file:line ou `NOT_FOUND`
+- [ ] Tabela-sumario no final do markdown
+- [ ] As fontes de evidencia respeitam a precedencia do `system-of-record.md`
+
+---
 
 ## Phase 4: Improvement Generation
 
@@ -242,38 +439,142 @@ O markdown deve ter uma tabela-sumario no final:
 2. **Skills para padroes Missing** — Skills de implementacao tem maior reuso.
 3. **Exercises para Missing e P1** — Exercicios solidificam aprendizado.
 4. **Roadmap de integracao** — Conecta tudo ao curriculo existente.
-5. **Atualizacao de indices** — system-of-record.md, INDEX.md, README.md.
 
-### Conteudo de cada artefato
+### Delegacao (paralela)
 
-**Canonical doc** deve conter:
+Para padroes Missing e P1, dispare agentes `deep` em paralelo — um por tipo de artefato:
+
+**Agente 1: Canonical Docs**
+
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=true,
+  prompt="TASK: Create canonical docs for patterns classified as Missing or P1.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+Read docs/analysis/<date>-<source-slug>/classification.md for the list of patterns
+to create canonical docs for (Missing and P1 only).
+
+EACH CANONICAL DOC must contain:
 - Type, Status, Source, Classification, Precedence
-- Problem (o que o padrao resolve)
-- Solution (mecanismo detalhado)
-- Implementation in this repo (o que ja existe, o que falta)
-- Tradeoffs (tabela beneficio vs custo)
-- Relationship to Other Patterns (dependencias e complementos)
-- References (links para analises, codigo, curriculo)
+- Problem (what the pattern solves)
+- Solution (detailed mechanism)
+- Implementation in this repo (what already exists, what is missing)
+- Tradeoffs (benefit vs cost table)
+- Relationship to Other Patterns (dependencies and complements)
+- References (links to analyses, code, curriculum)
 
-**Skill** deve conter:
-- Frontmatter com nome, descricao rica em triggers, metadata
+Write files to: docs/canonical/<slug>.md"
+)
+```
+
+**Agente 2: Skills**
+
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=true,
+  prompt="TASK: Create implementation skills for patterns classified as Missing.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+Read docs/analysis/<date>-<source-slug>/classification.md for Missing patterns.
+
+EACH SKILL must contain:
+- Frontmatter with name, description rich in triggers, metadata
 - What I Do (contract)
-- When to Use Me (triggers positivos e negativos)
-- The Anti-Pattern (codigo errado)
-- The Pattern (codigo correto)
+- When to Use Me (positive and negative triggers)
+- The Anti-Pattern (wrong code)
+- The Pattern (correct code)
 - Implementation rules (classifier, summarizer, format rules)
 - Integration with existing repo infrastructure
-- Quality Gates (checklist de verificacao)
+- Quality Gates (verification checklist)
 - References
 
-**Exercise** deve seguir o formato do curriculo:
-- Prologo narrativo (cenario realista que deu errado)
-- Cenario com dados de entrada
-- Requisitos funcionais e tecnicos
-- Tarefa em partes (diagnostico → implementacao → pipeline)
-- Codigo esqueleto em Python
-- Criterios de aceitacao com asserts
-- Rubric de avaliacao
+Write files to: .opencode/skills/<slug>/SKILL.md"
+)
+```
+
+**Agente 3: Exercises**
+
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=true,
+  prompt="TASK: Create curriculum exercises for patterns classified as Missing.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+Read docs/analysis/<date>-<source-slug>/classification.md for Missing patterns.
+
+EACH EXERCISE must follow the curriculum format:
+- Narrative prologue (realistic scenario that went wrong)
+- Scenario with input data
+- Functional and technical requirements
+- Task in parts (diagnosis → implementation → pipeline)
+- Skeleton code in Python
+- Acceptance criteria with asserts
+- Evaluation rubric
+
+Write files to: curriculum/<appropriate-level>/exercises/exercise-<XX>-<slug>.md"
+)
+```
+
+**Agente 4: Integration Roadmap**
+
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Create an integration roadmap mapping all patterns to concrete integration points.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+Read docs/analysis/<date>-<source-slug>/classification.md for all classified patterns.
+
+Create a roadmap with:
+1. Summary matrix (pattern, classification, impact, effort, priority, integration surface)
+2. Artifacts created during this session (canonical docs, skills, exercises)
+3. Cross-reference table linking patterns to curriculum levels
+4. Gap analysis (what is still uncovered)
+
+OUTPUT:
+- docs/analysis/<date>-<source-slug>/integration-roadmap.md"
+)
+```
+
+Os agentes 1-3 rodam em paralelo (`run_in_background=true`). O agente 4 (roadmap) roda sincrono depois que 1-3 completam, pois referencia os artefatos criados.
+
+### Gate
+
+- [ ] Missing patterns tem canonical doc + skill + exercise
+- [ ] P1 patterns tem canonical doc
+- [ ] Integration roadmap conecta todos os artefatos criados
+- [ ] Nao foram criados artefatos para Already Exists ou Better Implementation
+
+---
 
 ## Phase 5: Integration
 
@@ -288,36 +589,74 @@ O markdown deve ter uma tabela-sumario no final:
 | `curriculum/README.md` | Se a arvore de diretorios mudou, atualizar diagrama. |
 | `curriculum/MASTER_PLAN.md` | Se contagem de exercicios ou topicos mudou, atualizar. |
 
-### Verificacao pos-integracao
+### Delegacao
 
-```bash
-git diff --stat  # Confirmar quais arquivos foram alterados
+Delegue para `quick`:
+
+```typescript
+task(
+  category="quick",
+  load_skills=["git-master"],
+  run_in_background=false,
+  prompt="TASK: Update index documents that became stale after improvement generation.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+CHECK AND UPDATE:
+1. docs/system-of-record.md — add new canonical docs and skills to tables; update last-modified date
+2. curriculum/INDEX.md — add new exercises to the listing
+3. curriculum/README.md — update directory tree if changed
+4. curriculum/MASTER_PLAN.md — update exercise/topic counts if changed
+
+Then run: git diff --stat to confirm which files were changed.
+Commits MUST follow the repo style: type(scope): short description"
+)
 ```
 
-Commite seguindo o estilo do repo: `type(scope): short description`
+### Gate
+
+- [ ] `git diff --stat` mostra apenas arquivos relacionados a essa sessao
+- [ ] `docs/system-of-record.md` reflete o novo estado (data atualizada)
+
+---
 
 ## Anti-Patterns
 
+- **Executar fases diretamente em vez de delegar.** Toda fase deve ser uma sub-task via `task()` com categoria adequada — o orquestrador supervisiona, nao executa.
+- **Pular a Phase 0.** Sem modelo mental do repositorio, as fases subsequentes classificam sem contexto e produzem duplicacao.
+- **Esquecer o bloco TARGET_REPOSITORY em uma delegacao.** Sem ele, o sub-agente nao sabe onde escrever outputs nem qual repo commitara.
 - **Pular a classificacao** e gerar melhorias sem evidencia do que ja existe. Isso produz duplicacao.
-- **Criar artefatos para Already Exists**. So cross-reference.
-- **Delegar extracao de padroes para quick**. Precisa de ultrabrain — e trabalho de sintese.
-- **Esquecer o YAML mirror**. Toda analise e classificacao deve ter .md + .yaml. O YAML permite consumo programatico futuro.
-- **Ignorar system-of-record.md**. A precedencia importa — nao classifique como Missing sem verificar canonical/ e decisions/.
-- **Criar exercises sem esqueleto de codigo**. O formato do curriculo exige codigo Python com dataclasses e asserts.
-- **Atualizar system-of-record sem atualizar a data**. A data de ultima atualizacao no rodape e o unico sinal de frescor.
+- **Criar artefatos para Already Exists.** So cross-reference.
+- **Delegar extracao de padroes para quick.** Precisa de ultrabrain — e trabalho de sintese.
+- **Esquecer o YAML mirror.** Toda analise e classificacao deve ter .md + .yaml. O YAML permite consumo programatico futuro.
+- **Ignorar system-of-record.md.** A precedencia importa — nao classifique como Missing sem verificar canonical/ e decisions/.
+- **Criar exercises sem esqueleto de codigo.** O formato do curriculo exige codigo Python com dataclasses e asserts.
+- **Atualizar system-of-record sem atualizar a data.** A data de ultima atualizacao no rodape e o unico sinal de frescor.
+- **Invocar a skill sem fornecer o parametro `source`.** A skill nao tem como adivinhar qual documento analisar.
+
+---
 
 ## Verification Gates
 
-Depois de completar as 5 fases:
+Depois de completar as 6 fases:
 
-- [ ] `docs/analysis/` contem os 3 pares .md+.yaml (knowledge, patterns, classification)
+- [ ] O parametro `source` foi fornecido e validado antes de qualquer execucao
+- [ ] `docs/analysis/<date>-<source-slug>/` contem os 4 pares .md+.yaml (mental-model, analysis, patterns, classification)
+- [ ] `docs/analysis/<date>-<source-slug>/integration-roadmap.md` existe
 - [ ] `docs/canonical/` contem docs para padroes Missing e P1
 - [ ] `.opencode/skills/` contem skills para padroes Missing
 - [ ] `curriculum/` contem exercises para padroes Missing
-- [ ] `docs/system-of-record.md` reflete o novo estado
+- [ ] `docs/system-of-record.md` reflete o novo estado com data atualizada
 - [ ] `curriculum/INDEX.md` lista os novos exercicios
 - [ ] `git status` mostra apenas arquivos relacionados a essa sessao
 - [ ] Commits seguem o estilo `type(scope): short description`
+- [ ] Toda delegacao usou `task()` com categoria adequada — nenhuma fase foi executada inline pelo orquestrador
+
+---
 
 ## Reference Implementation
 
@@ -329,17 +668,18 @@ O workflow completo foi executado em 2026-06-09 no repositorio `long-running-age
 
 | Fase | Arquivos |
 |---|---|
-| Knowledge Extraction | `docs/analysis/2026-06-09-12-factor-agents-analysis.md` + `.yaml` |
-| Pattern Extraction | `docs/analysis/2026-06-09-agentic-patterns.md` + `.yaml` |
-| Classification | `docs/analysis/2026-06-09-pattern-classification.md` + `.yaml` |
+| Mental Model | `docs/analysis/2026-06-09-12-factor-agents/mental-model.md` + `.yaml` |
+| Knowledge Extraction | `docs/analysis/2026-06-09-12-factor-agents/analysis.md` + `.yaml` |
+| Pattern Extraction | `docs/analysis/2026-06-09-12-factor-agents/patterns.md` + `.yaml` |
+| Classification | `docs/analysis/2026-06-09-12-factor-agents/classification.md` + `.yaml` |
 | Improvements | `docs/canonical/{error-context-hygiene,deterministic-tool-dispatch,owned-agent-control-loop,serializable-pause-resume-state}.md` |
 | | `.opencode/skills/error-context-hygiene/SKILL.md` |
 | | `curriculum/.../exercise-04-error-context-hygiene.md` |
-| | `docs/analysis/2026-06-09-integration-roadmap.md` |
+| | `docs/analysis/2026-06-09-12-factor-agents/integration-roadmap.md` |
 | Integration | `docs/system-of-record.md`, `curriculum/INDEX.md`, `curriculum/README.md` |
 
 **Resultado da classificacao:** 3 Already Exists, 4 Partial Coverage, 1 Missing (Error Context Hygiene)
 
 ---
 
-*Skill version: 1.0 | Reference session: 2026-06-09*
+*Skill version: 2.0 | Reference session: 2026-06-09*
