@@ -1,7 +1,7 @@
 ---
 title: "🚀 QUICK START: Seu Caminho para Long-Running Agents"
 type: curriculum-index
-aliases: []
+aliases: ["quickstart", "comece aqui", "inicio rapido"]
 tags: [curriculo-conteudo]
 last_updated: 2026-06-10
 ---

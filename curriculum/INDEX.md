@@ -1,7 +1,7 @@
 ---
 title: "📑 ÍNDICE EXECUTIVO: Navegação Rápida"
 type: curriculum-index
-aliases: ["indice", "navegacao"]
+aliases: ["indice", "navegacao", "hub", "mapa do site"]
 tags: [curriculo-conteudo]
 last_updated: 2026-06-10
 ---

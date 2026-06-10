@@ -1,7 +1,7 @@
 ---
 title: "📚 PLANO MESTRE: Curso de Long-Running Agents para KODA"
 type: curriculum-index
-aliases: []
+aliases: ["master plan", "plano mestre", "roadmap"]
 tags: [curriculo-conteudo]
 last_updated: 2026-06-10
 ---

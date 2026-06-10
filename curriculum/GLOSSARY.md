@@ -1,7 +1,7 @@
 ---
 title: "📖 GLOSSÁRIO: Termos Essenciais"
 type: curriculum-index
-aliases: []
+aliases: ["glossario", "termos", "definicoes"]
 tags: [curriculo-conteudo, reference]
 last_updated: 2026-06-10
 ---

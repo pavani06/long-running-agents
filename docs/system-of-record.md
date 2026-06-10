@@ -1,7 +1,7 @@
 ---
 title: "System of Record"
 type: system-of-record
-aliases: ["system of record", "source of truth", "governance index"]
+aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca"]
 last_updated: 2026-06-10
 relates-to: []
