@@ -4,6 +4,7 @@ type: curriculum-koda-application
 nivel: 2
 aliases: []
 tags: [curriculo-conteudo, nivel-2, koda, arquitetura-koda, refatoracao-arquitetural, padroes-integrados, casos-de-uso-koda, confiabilidade-operacional, monitoramento-em-producao, otimizacao-de-roi, transicao-para-nivel-3]
+relates-to: ["[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator]]", "[[docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic|MHC Level 2 Diagnostic]]"]
 last_updated: 2026-06-10
 ---
 # 🚀 KODA em Evolução: Padrões Avançados e Refatoração Arquitetural

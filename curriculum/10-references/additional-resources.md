@@ -3,6 +3,7 @@ title: "Additional Resources: Seu Mapa do Ecossistema de Long-Running Agents"
 type: curriculum-reference
 aliases: []
 tags: [curriculo-conteudo, referencia, curadoria-de-recursos, bibliografia-tecnica, papers-de-llms, ferramentas-de-agentes, ecossistema-de-ia]
+relates-to: ["[[curriculum/GLOSSARY|Glossary]]", "[[docs/system-of-record|System of Record]]"]
 last_updated: 2026-06-10
 ---
 # 📚 Additional Resources: Seu Mapa do Ecossistema de Long-Running Agents

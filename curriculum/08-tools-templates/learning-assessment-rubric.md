@@ -3,6 +3,7 @@ title: "Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Conc
 type: curriculum-template
 aliases: []
 tags: [curriculo-conteudo, template, avaliacao-de-aprendizado, autoavaliacao, dominio-conceitual, mentoria, progresso-pedagogico, medicao-de-compreensao]
+relates-to: ["[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 last_updated: 2026-06-10
 ---
 # 📋 Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts
@@ -2513,4 +2514,4 @@ Se você lembrar de apenas uma coisa, lembre disto: compreensão real deixa rast
 ---
 
 **Template criado para o currículo KODA Long-Running Agents.**
-**Issue: #52 | Arquivo: curriculum/08-tools-templates/learning-assessment-rubric.md**
+**Issue: #52 | Arquivo: [[curriculum/08-tools-templates/learning-assessment-rubric|Learning Assessment Rubric]]**

@@ -4,6 +4,7 @@ type: curriculum-solution
 nivel: 1
 aliases: []
 tags: [curriculo-conteudo, nivel-1, solucao, structured-output, json-schema, schema-validation, fallback-pattern, audit-logging, business-constraints, product-recommendation, pydantic, python, implementacao-referencia]
+relates-to: ["[[curriculum/01-nivel-1-fundamentals/exercises/exercise-02-structured-output|Exercise 02 Structured Output]]"]
 last_updated: 2026-06-10
 ---
 # 🧩 Solucao do Exercicio 02: Structured Output com Pydantic

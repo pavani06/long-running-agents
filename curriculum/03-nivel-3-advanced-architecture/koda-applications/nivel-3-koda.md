@@ -4,6 +4,7 @@ type: curriculum-koda-application
 nivel: 3
 aliases: []
 tags: [curriculo-conteudo, nivel-3, koda, aplicacao-koda, jornada-do-cliente, vendas-por-whatsapp, arquitetura-integrada, recuperacao-de-carrinho, seguranca-alimentar, contexto-longo, observabilidade, decisoes-arquiteturais, sistema-confiavel]
+relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]", "[[docs/analysis/mhc-backend/2026-05-26-nivel-3-comparacao|MHC Level 3 Comparison]]"]
 last_updated: 2026-06-10
 ---
 # 🚀 KODA em Arquitetura Avançada: Sistemas que Sobrevivem a Horas, Falhas e Evolução

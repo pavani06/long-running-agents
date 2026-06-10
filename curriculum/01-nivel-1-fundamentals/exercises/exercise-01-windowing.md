@@ -4,6 +4,7 @@ type: curriculum-exercise
 nivel: 1
 aliases: []
 tags: [curriculo-conteudo, nivel-1, exercicio, context-management, token-budgeting, sliding-window, history-compression, metadata-preservation, head-tail-pattern, conversation-manager, python, dataclass]
+relates-to: ["[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Plot]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 last_updated: 2026-06-10
 ---
 # 🪟 Exercício 1: Implementar History Windowing
