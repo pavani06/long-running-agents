@@ -332,6 +332,12 @@ eval_maturity_gate:
   review_date: "2026-07-01"
 ```
 
+### Closed-loop capability hardening
+
+Harness Evolution também decide quando uma prática operacional deixa de ser prompt manual e vira capacidade institucional. Em uma [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]], o agente lê artefatos reais da empresa, sugere próximos trabalhos, registra decisões e usa bugs ou resultados para atualizar o próximo ciclo.
+
+Quando esse loop se repete com sucesso, ele entra no [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]: workflow executado, skillify, unit tests, LLM evals, integration tests, resolver trigger, trigger eval, check-resolvable, smoke test e schema. Sem essas provas, a automação ainda é um ritual manual; com elas, vira uma capacidade roteável do harness.
+
 ---
 
 ## 🏗️ Fase 1: BUILD — "Preciso Proteger o Modelo das Próprias Fraquezas"
@@ -1192,6 +1198,8 @@ Use este checklist quando for implementar Harness Evolution no seu próprio sist
 - [ ] **Estabelecer baseline:** Acurácia atual, latência atual, custo atual — tudo medido
 - [ ] **Nomear pain signal de eval:** Reclamação, gargalo manual, score/feedback mismatch, edge case escapado ou aumento de risco de release
 - [ ] **Escolher próxima capacidade mínima:** Não criar corpus, dashboard ou suite sem dor explícita e owner
+- [ ] **Mapear loop fechado:** Identificar quais artefatos de empresa o agente lê, quais próximos trabalhos ou decisões ele propõe e onde o resultado volta para memória operacional
+- [ ] **Separar candidatos a skillify:** Marcar workflows repetidos que já funcionaram uma vez e exigir evidência de pipeline antes de tratá-los como capacidade do harness
 
 ### Fase 1: Identificar Candidatos
 

@@ -641,6 +641,12 @@ O catálogo é compacto para viver no contexto ativo. O conteúdo completo perma
 
 **Riscos:** preview grande vira blob e concorre com o contexto ativo; preview pequeno demais esconde relevância; itens podem ficar stale se a sessão muda; IDs precisam ser únicos entre sessões para evitar recuperar conteúdo errado.
 
+#### Resolver-Based Context Progressive Disclosure
+
+O mesmo princípio vale para instruções operacionais. Um harness maduro não coloca todas as regras em um `CLAUDE.md` ou system prompt gigante; ele mantém uma base curta e usa um resolver para carregar skills, runbooks e políticas apenas quando o task atual aciona triggers positivos e não aciona exemplos negativos.
+
+Esse desenho transforma gerenciamento de contexto em uma superfície testável: cada skill precisa de descrição, regras de ativação, casos em que não deve carregar e trigger evals que provem que o resolver encontra a capacidade certa. Para o padrão completo, veja [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]].
+
 ### 5. Compaction/Compression server-side e client-side
 
 **Como funciona:** Compacta mensagens, tool results e estados antes de enviá-los ao modelo ou usa mecanismos do servidor para condensar histórico.

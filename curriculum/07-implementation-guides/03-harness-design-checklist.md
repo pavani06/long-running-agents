@@ -303,6 +303,7 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Compaction estruturada | Resumos antigos preservam decisões, restrições, pendências, preferências e audit refs em campos separados. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Critério de promoção para state | Há regra objetiva para mover informação do contexto para state durável, como alergia, orçamento confirmado ou endereço. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Separação contexto/state/summary | O documento de arquitetura define o que fica em context window, o que vira state e o que vira summary. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Progressive disclosure por resolver | Skills e runbooks ficam fora do prompt base e são carregados por triggers positivos, exemplos negativos e trigger evals, conforme [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]. | Existe matriz de triggers, evals e misses revisados. | Instruções crescem em arquivo monolítico sem teste de carregamento. | Registre skill, owner, trigger eval e data. |
 | Teste de recall crítico | Existe cenário automatizado em que uma restrição dita cedo é relembrada corretamente após janela longa. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Falha por excesso de tokens | Quando o orçamento estoura, o harness falha antes da chamada ou compacta de forma controlada, nunca corta aleatoriamente. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 
@@ -357,6 +358,7 @@ Por que importa: se o harness for truncado junto com o payload, o agente perde i
 - [ ] Resumo antigo preserva decisoes, restricoes, preferencias e pendencias em campos nomeados?
 - [ ] Alergias, orcamento e compromissos comerciais foram promovidos para state duravel?
 - [ ] Trace registra por que cada fonte entrou ou saiu do contexto?
+- [ ] Resolver registra qual skill carregou, qual trigger disparou e qual trigger negativo foi considerado?
 - [ ] Teste de conversa longa prova recall de restricao dita no inicio?
 - [ ] Corte por excesso de tokens falha antes da chamada ou compacta de forma controlada?
 - [ ] Context window exclui dados obsoletos ou conflitantes com o state atual?
@@ -1258,6 +1260,8 @@ Esse é o tipo de problema que parece uma falha de prompt, mas é falha de harne
 - [ ] A mensagem WhatsApp final cita a restrição quando ela influenciou a recomendação.
 - [ ] O trace conecta WhatsApp message id, recommendation id, evaluation id e order id.
 - [ ] O dashboard mede taxa de bloqueio por restrição e falsos positivos revisados por humano.
+- [ ] O loop de operação lê artifacts reais, sugere próximo trabalho e registra feedback em memória operacional, conforme [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]].
+- [ ] Todo workflow recorrente promovido a skill passou por tests, evals, resolver trigger, check-resolvable, smoke test e schema, conforme [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skillify Pipeline]].
 
 ---
 
@@ -2533,4 +2537,3 @@ Use este protocolo depois de revisar os cartões de uma categoria.
 *Este guia integra padrões dos Níveis 1, 2 e 3 do currículo de Long-Running Agents.*
 
 *Use como documento vivo: cada auditoria real deve melhorar critérios, evidências e exemplos.*
-
