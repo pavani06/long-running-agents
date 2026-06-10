@@ -4,6 +4,7 @@ type: curriculum-solution
 nivel: 2
 aliases: []
 tags: [curriculo-conteudo, nivel-2, solucao, generator-evaluator-pattern, sprint-contract, pipeline-orchestration, retry-loop, order-checkout, double-discount-prevention, catalog-validation, python, dataclass, implementacao-referencia]
+relates-to: ["[[curriculum/02-nivel-2-practical-patterns/exercises/exercise-02|Exercise 02]]"]
 last_updated: 2026-06-10
 ---
 # ✅ Solução do Exercício 2: Implement Sprint Contracts com Generator/Evaluator
@@ -1148,7 +1149,7 @@ Isso evita loops infinitos e garante que pedidos complexos não fiquem presos no
 
 ## ✅ Checklist de Conclusão
 
-Conferindo contra o checklist do [exercício](/curriculum/02-nivel-2-practical-patterns/exercises/exercise-02.md):
+Conferindo contra o checklist do [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-02|exercício]]:
 
 - [x] Sprint Contract especificado com Input + Criteria + Failure Handling (Parte 1) — veja seção "📋 Parte 1" acima
 - [x] `generator_process_order()` implementado e funcional (Parte 2) — linha 320 do código

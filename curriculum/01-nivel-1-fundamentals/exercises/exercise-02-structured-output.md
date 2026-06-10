@@ -4,6 +4,7 @@ type: curriculum-exercise
 nivel: 1
 aliases: []
 tags: [curriculo-conteudo, nivel-1, exercicio, structured-output, json-schema, schema-validation, fallback-pattern, audit-logging, business-constraints, product-recommendation, pydantic, python]
+relates-to: ["[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---
 # ✅ Exercício 2: Implementar Structured Output (JSON Schema Validation)

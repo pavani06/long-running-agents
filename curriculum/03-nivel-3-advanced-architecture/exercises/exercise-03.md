@@ -4,6 +4,7 @@ type: curriculum-exercise
 nivel: 3
 aliases: []
 tags: [curriculo-conteudo, nivel-3, exercicio, harness-evolution, architecture-review, roi-analysis, component-removal, build-stabilize-simplify-remove, changelog-driven-decisions, false-positive-analysis, shadow-test, feature-flag, cost-optimization, exercicio-conceitual]
+relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]]"]
 last_updated: 2026-06-10
 ---
 # ⚙️ Exercício 3: Plano de Evolução do Harness KODA
