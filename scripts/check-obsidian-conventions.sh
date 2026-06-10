@@ -152,6 +152,134 @@ for f in "$REPO_ROOT"/docs/canonical/*.md; do
     done <<< "$wikilinks"
 done
 
+# --- Check 8: Canvas file path validity ---
+echo ""
+echo "--- Check 8: Canvas file paths (no broken references) ---"
+for canvas in "$REPO_ROOT"/*.canvas; do
+    [ -f "$canvas" ] || continue
+    canvas_name="$(basename "$canvas")"
+    # Use python3 to parse JSON and check every file-type node path exists
+    broken=$(python3 -c "
+import json, os, sys
+with open('$canvas') as f:
+    data = json.load(f)
+broken = []
+for node in data.get('nodes', []):
+    if node.get('type') == 'file':
+        p = node['file']
+        if not os.path.exists(os.path.join('$REPO_ROOT', p)):
+            broken.append(p)
+if broken:
+    for b in broken:
+        print(b)
+" 2>&1)
+    if [ -z "$broken" ]; then
+        report_ok "$canvas_name — all paths valid"
+    else
+        while IFS= read -r path; do
+            report_err "$canvas_name — broken path: $path"
+        done <<< "$broken"
+    fi
+done
+
+# --- Check 9: Frontmatter in ALL curriculum .md files ---
+echo ""
+echo "--- Check 9: Frontmatter in ALL curriculum/ .md files ---"
+while IFS= read -r -d '' f; do
+    [ "$(basename "$f")" = ".gitkeep" ] && continue
+    if head -1 "$f" | grep -q '^---$'; then
+        if grep -q '^type:' "$f"; then
+            if grep -q '^tags:' "$f"; then
+                report_ok "${f#$REPO_ROOT/}"
+            else
+                report_err "${f#$REPO_ROOT/} — missing 'tags:' in frontmatter"
+            fi
+        else
+            report_err "${f#$REPO_ROOT/} — missing 'type:' in frontmatter"
+        fi
+    else
+        report_err "${f#$REPO_ROOT/} — missing YAML frontmatter"
+    fi
+done < <(find "$REPO_ROOT"/curriculum -name '*.md' -print0)
+
+# --- Check 10: Tag taxonomy validation (warning only) ---
+echo ""
+echo "--- Check 10: Tag taxonomy (unrecognized tags) ---"
+tag_results=$(python3 -c "
+import os
+import pathlib
+import re
+
+REPO = pathlib.Path(r'''$REPO_ROOT''')
+
+domain_tags = {
+    'agentes-orquestracao',
+    'curriculo-conteudo',
+    'stack-tooling',
+    'governanca',
+    'portal-web',
+}
+structural_tags = {'index', 'reference'}
+
+
+def extract_frontmatter_tags(path):
+    try:
+        content = path.read_text(encoding='utf-8')
+    except OSError:
+        return set()
+    if not content.startswith('---'):
+        return set()
+    parts = content.split('---', 2)
+    if len(parts) < 3:
+        return set()
+    frontmatter = parts[1]
+    tags = set()
+    for line in frontmatter.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith('tags:'):
+            continue
+        value = stripped[len('tags:'):].strip()
+        if value.startswith('[') and value.endswith(']'):
+            value = value[1:-1]
+        for item in re.split(r',', value):
+            tag = item.strip().strip(chr(34)).strip(chr(39))
+            if tag:
+                tags.add(tag)
+    return tags
+
+
+def collect_tags(root):
+    tags = set()
+    if not root.is_dir():
+        return tags
+    for path in root.rglob('*.md'):
+        tags |= extract_frontmatter_tags(path)
+    return tags
+
+
+sor_tags = extract_frontmatter_tags(REPO / 'docs' / 'system-of-record.md')
+canonical_tags = collect_tags(REPO / 'docs' / 'canonical')
+analysis_tags = collect_tags(REPO / 'docs' / 'analysis')
+
+allowed = domain_tags | structural_tags | sor_tags | canonical_tags | analysis_tags
+
+violations = []
+for root in [REPO / 'docs' / 'analysis', REPO / 'curriculum']:
+    if not root.is_dir():
+        continue
+    for path in root.rglob('*.md'):
+        for tag in sorted(extract_frontmatter_tags(path)):
+            if tag not in allowed:
+                violations.append(f'{path.relative_to(REPO)}: unrecognized tag {tag!r}')
+
+for violation in sorted(set(violations)):
+    print(violation)
+" 2>&1 || true)
+while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    report_warn "$line"
+done <<< "$tag_results"
+
 # --- Summary ---
 echo ""
 echo "=== Summary ==="

@@ -1,0 +1,22 @@
+name: Check Obsidian Conventions
+
+on:
+  push:
+    paths:
+      - '**.md'
+      - '**.canvas'
+      - 'scripts/check-obsidian-conventions.sh'
+  pull_request:
+    paths:
+      - '**.md'
+      - '**.canvas'
+      - 'scripts/check-obsidian-conventions.sh'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Obsidian convention checks
+        run: bash scripts/check-obsidian-conventions.sh
