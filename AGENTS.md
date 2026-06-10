@@ -132,15 +132,15 @@ block is delimited by `---` on its own lines at the very start of the file (line
 
 | type | Directories | Required fields | Optional fields |
 |---|---|---|---|
-| `canonical` | `docs/canonical/` | `title`, `type`, `tags` | `aliases`, `last_updated`, `relates-to`, `sources` |
-| `analysis` | `docs/analysis/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated`, `relates-to`, `sources` |
-| `system-of-record` | `docs/` | `title`, `type`, `tags`, `last_updated` | `aliases`, `relates-to` |
-| `plan` | `docs/plans/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated`, `relates-to` |
-| `curriculum-index` | `curriculum/` (top-level only) | `title`, `type`, `tags`, `last_updated` | `aliases`, `relates-to` |
-| `lesson` | `curriculum/0*-*/` | `title`, `type`, `tags`, `level` | `duration`, `aliases`, `relates-to` |
-| `exercise` | `curriculum/0*-*/exercises/` | `title`, `type`, `tags`, `level` | `duration`, `aliases`, `relates-to` |
-| `case-study` | `curriculum/0*-*/case-studies/` | `title`, `type`, `tags` | `aliases`, `relates-to` |
-| `index` | root | `title`, `type`, `tags` | `aliases`, `last_updated`, `relates-to` |
+| `canonical` | `docs/canonical/` | `title`, `type`, `tags`, `aliases` | `last_updated`, `relates-to`, `sources` |
+| `analysis` | `docs/analysis/` | `title`, `type`, `tags`, `date`, `aliases` | `last_updated`, `relates-to`, `sources` |
+| `system-of-record` | `docs/` | `title`, `type`, `tags`, `last_updated`, `aliases` | `relates-to` |
+| `plan` | `docs/plans/` | `title`, `type`, `tags`, `date`, `aliases` | `last_updated`, `relates-to` |
+| `curriculum-index` | `curriculum/` (top-level only) | `title`, `type`, `tags`, `last_updated`, `aliases` | `relates-to` |
+| `lesson` | `curriculum/0*-*/` | `title`, `type`, `tags`, `level`, `aliases` | `duration`, `relates-to` |
+| `exercise` | `curriculum/0*-*/exercises/` | `title`, `type`, `tags`, `level`, `aliases` | `duration`, `relates-to` |
+| `case-study` | `curriculum/0*-*/case-studies/` | `title`, `type`, `tags`, `aliases` | `relates-to` |
+| `index` | root | `title`, `type`, `tags`, `aliases` | `last_updated`, `relates-to` |
 
 All YAML list fields use `[]` for empty, `["single"]` for one value, `["a", "b"]` for
 multiple. Fields not applicable to a document type MUST NOT be present.
