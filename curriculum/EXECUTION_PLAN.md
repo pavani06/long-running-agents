@@ -3,6 +3,7 @@ title: "🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo"
 type: curriculum-index
 aliases: []
 tags: [curriculo-conteudo]
+relates-to: ["[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/INDEX|Curriculum Index]]"]
 last_updated: 2026-06-10
 ---
 # 🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo

@@ -3,6 +3,7 @@ title: "Delivery Complete"
 type: curriculum-index
 aliases: ["entrega final", "delivery report", "status"]
 tags: ["index", "curriculo-conteudo"]
+relates-to: ["[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/EXECUTION_PLAN|Execution Plan]]"]
 last_updated: "2026-05"
 ---
 # ENTREGA FINAL COMPLETA - TUDO PRONTO PARA USO

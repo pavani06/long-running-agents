@@ -3,6 +3,7 @@ title: "❓ FAQ: Perguntas Frequentes sobre o Currículo"
 type: curriculum-index
 aliases: ["perguntas frequentes", "duvidas", "faq"]
 tags: [curriculo-conteudo, reference]
+relates-to: ["[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/GLOSSARY|Glossary]]", "[[curriculum/QUICK_START|Quick Start]]"]
 last_updated: 2026-06-10
 ---
 # ❓ FAQ: Perguntas Frequentes sobre o Currículo
