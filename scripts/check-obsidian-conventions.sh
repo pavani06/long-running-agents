@@ -280,6 +280,21 @@ while IFS= read -r line; do
     report_warn "$line"
 done <<< "$tag_results"
 
+# --- Check 11: relates-to presence in ALL monitored markdown files ---
+echo ""
+echo "--- Check 11: relates-to presence in docs/canonical/, docs/analysis/, curriculum/ ---"
+while IFS= read -r -d '' f; do
+    [ "$(basename "$f")" = ".gitkeep" ] && continue
+    # Extract frontmatter block and check for relates-to:
+    # Use here-string to avoid pipefail SIGPIPE with grep -q
+    frontmatter=$(sed -n '/^---$/,/^---$/p' "$f")
+    if grep -q '^relates-to:' <<< "$frontmatter"; then
+        report_ok "${f#$REPO_ROOT/}"
+    else
+        report_err "${f#$REPO_ROOT/} — missing 'relates-to:' in frontmatter"
+    fi
+done < <(find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -name '*.md' -print0)
+
 # --- Summary ---
 echo ""
 echo "=== Summary ==="

@@ -134,13 +134,13 @@ block is delimited by `---` on its own lines at the very start of the file (line
 |---|---|---|---|
 | `canonical` | `docs/canonical/` | `title`, `type`, `tags` | `aliases`, `last_updated`, `relates-to`, `sources` |
 | `analysis` | `docs/analysis/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated`, `relates-to`, `sources` |
-| `system-of-record` | `docs/` | `title`, `type`, `tags`, `last_updated` | `aliases` |
-| `plan` | `docs/plans/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated` |
-| `curriculum-index` | `curriculum/` (top-level only) | `title`, `type`, `tags`, `last_updated` | `aliases` |
-| `lesson` | `curriculum/0*-*/` | `title`, `type`, `tags`, `level` | `duration`, `aliases` |
-| `exercise` | `curriculum/0*-*/exercises/` | `title`, `type`, `tags`, `level` | `duration`, `aliases` |
-| `case-study` | `curriculum/0*-*/case-studies/` | `title`, `type`, `tags` | `aliases` |
-| `index` | root | `title`, `type`, `tags` | `aliases`, `last_updated` |
+| `system-of-record` | `docs/` | `title`, `type`, `tags`, `last_updated` | `aliases`, `relates-to` |
+| `plan` | `docs/plans/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated`, `relates-to` |
+| `curriculum-index` | `curriculum/` (top-level only) | `title`, `type`, `tags`, `last_updated` | `aliases`, `relates-to` |
+| `lesson` | `curriculum/0*-*/` | `title`, `type`, `tags`, `level` | `duration`, `aliases`, `relates-to` |
+| `exercise` | `curriculum/0*-*/exercises/` | `title`, `type`, `tags`, `level` | `duration`, `aliases`, `relates-to` |
+| `case-study` | `curriculum/0*-*/case-studies/` | `title`, `type`, `tags` | `aliases`, `relates-to` |
+| `index` | root | `title`, `type`, `tags` | `aliases`, `last_updated`, `relates-to` |
 
 All YAML list fields use `[]` for empty, `["single"]` for one value, `["a", "b"]` for
 multiple. Fields not applicable to a document type MUST NOT be present.
@@ -219,3 +219,20 @@ via `[[wikilinks]]` para garantir consistencia semantica:
 - Esta verificacao e um passo manual no momento do commit — o script de
   validacao emite warnings sobre gaps de interseccao entre documentos
   linkados, mas a decisao final e do autor.
+
+### 16.8 Cross-reference completeness — `relates-to` is mandatory
+
+Every markdown file under `docs/canonical/`, `docs/analysis/`, and `curriculum/`
+(excluding `.gitkeep`) MUST have a `relates-to:` field in its YAML frontmatter.
+
+This ensures the Obsidian Graph View shows connections between documents.
+Without `relates-to`, a document is an island — it may reference other files
+but creates no edges in the knowledge graph.
+
+The validation script enforces this with a hard error (not a warning).
+Missing `relates-to` in any monitored file fails the CI check on PR.
+
+When creating a new document:
+1. Identify which canonical docs, analyses, or curriculum files it connects to.
+2. Add `relates-to: ["[[path|Display]]", ...]` in the frontmatter.
+3. Run `bash scripts/check-obsidian-conventions.sh` before committing.
