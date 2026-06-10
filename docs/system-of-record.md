@@ -114,7 +114,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 4 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 9 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -124,6 +124,11 @@ Tópicos candidatos a ADR:
 | `deterministic-tool-dispatch.md` | Padrão 2 (12FA): dispatch determinístico de ferramentas |
 | `owned-agent-control-loop.md` | Padrão 3 (12FA): loop de controle do agente com 4 componentes |
 | `serializable-pause-resume-state.md` | Padrão 4 (12FA): serialização de estado para pause/resume |
+| `head-tail-context-truncation.md` | Context reduction com head, tail e middle recuperável por handle |
+| `addressable-memory-catalog.md` | Catálogo de memória omitida com `id`, `location`, `preview`, `scope` e `fetch` |
+| `n-plus-one-long-session-evals.md` | Evals long-session no padrão N+1 para validar continuidade após redução de contexto |
+| `stable-harness-prompt.md` | Preservação do harness prompt estável durante redução de contexto |
+| `late-failure-regression-suite.md` | Suite de regressão para falhas tardias em sessões longas |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -164,4 +169,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-09*
+*Última atualização: 2026-06-10*
