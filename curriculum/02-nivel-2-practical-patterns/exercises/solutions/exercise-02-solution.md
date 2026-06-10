@@ -1,3 +1,11 @@
+---
+title: "Solução do Exercício 2: Implement Sprint Contracts com Generator/Evaluator"
+type: curriculum-solution
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, solucao]
+last_updated: 2026-06-10
+---
 # ✅ Solução do Exercício 2: Implement Sprint Contracts com Generator/Evaluator
 ## Order Checkout — Implementação Completa com Validação
 

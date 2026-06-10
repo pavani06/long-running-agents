@@ -1,3 +1,11 @@
+---
+title: "KODA em Arquitetura Avançada: Sistemas que Sobrevivem a Horas, Falhas e Evolução"
+type: curriculum-koda-application
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, koda]
+last_updated: 2026-06-10
+---
 # 🚀 KODA em Arquitetura Avançada: Sistemas que Sobrevivem a Horas, Falhas e Evolução
 ## Como aplicar Nível 3 ao agente de vendas por WhatsApp da KODA
 

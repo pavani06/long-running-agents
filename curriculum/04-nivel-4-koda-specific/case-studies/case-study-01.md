@@ -1,3 +1,11 @@
+---
+title: "Case Study: Lançamento do KODA Same-Day Delivery"
+type: curriculum-case-study
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # 🚀 Case Study: Lançamento do KODA Same-Day Delivery
 ## Como Padrões de Long-Running Agents Transformaram uma Promessa Arriscada em Vantagem Competitiva
 

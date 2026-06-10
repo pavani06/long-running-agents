@@ -1,3 +1,11 @@
+---
+title: "Exercicio 1: Implementar Feature de Recomendacao KODA com Generator/Evaluator"
+type: curriculum-exercise
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, exercicio]
+last_updated: 2026-06-10
+---
 # 🎯 Exercicio 1: Implementar Feature de Recomendacao KODA com Generator/Evaluator
 ## Nivel 4 — KODA-Especifico — Real-World Feature
 

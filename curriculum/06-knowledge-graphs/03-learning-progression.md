@@ -1,3 +1,10 @@
+---
+title: "Learning Progression: Do Primeiro Conceito ao KODA em Produção"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧭 Learning Progression: Do Primeiro Conceito ao KODA em Produção
 ## Como navegar os 4 níveis, os 8 conceitos core, e os caminhos de aprendizagem do currículo
 
@@ -96,7 +103,7 @@ Este diagrama mostra a rota principal, os tópicos de cada nível, e as conexõe
 
 ```mermaid
 graph TD
-    START["Entrada no programa\nConhece LLMs básicos"]
+    START["Entrada no programa<br/>Conhece LLMs básicos"]
     subgraph N1["Nível 1: Conceitos Fundamentais, 3 a 4h"]
         N1A["Por que agentes perdem o foco"]
         N1B["Token Budgeting"]

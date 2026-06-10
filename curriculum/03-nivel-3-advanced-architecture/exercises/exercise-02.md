@@ -1,3 +1,11 @@
+---
+title: "Exercício 2: Implementar Checkpointing e Recovery com SQLite"
+type: curriculum-exercise
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, exercicio]
+last_updated: 2026-06-10
+---
 # 🛡️ Exercício 2: Implementar Checkpointing e Recovery com SQLite
 
 ## State Persistence para KODA sobreviver a crashes sem esquecer Pedro

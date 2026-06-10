@@ -1,3 +1,11 @@
+---
+title: "Padrões de Design de Features: Como Estender o KODA com Confiança"
+type: curriculum-lesson
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, koda]
+last_updated: 2026-06-10
+---
 # 🎯 Padrões de Design de Features: Como Estender o KODA com Confiança
 ## Templates, Contratos e Padrões para Novas Funcionalidades
 

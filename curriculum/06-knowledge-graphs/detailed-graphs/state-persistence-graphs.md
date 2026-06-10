@@ -1,3 +1,10 @@
+---
+title: "Grafos de State Persistence"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Grafos de State Persistence
 ## Mapas de conhecimento para persistência, checkpointing e recovery em long-running agents do KODA
 

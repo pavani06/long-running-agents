@@ -1,3 +1,10 @@
+---
+title: "Evaluation Rubric Template para KODA"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 🎯 Evaluation Rubric Template para KODA
 ## Uma ferramenta prática para transformar julgamento de qualidade em critérios claros
 

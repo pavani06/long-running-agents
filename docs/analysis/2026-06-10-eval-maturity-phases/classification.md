@@ -1,3 +1,13 @@
+---
+title: "Eval Maturity Pattern Classification"
+type: analysis
+date: 2026-06-10
+domain: eval-maturity
+aliases: []
+tags: [analise, evals, maturity-model, classification]
+last_updated: 2026-06-10
+---
+
 # Eval Maturity Pattern Classification
 
 **Date:** 2026-06-10  

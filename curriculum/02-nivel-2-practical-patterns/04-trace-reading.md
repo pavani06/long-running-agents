@@ -1,3 +1,12 @@
+---
+title: "Padrão Trace Reading: Transformando a Caixa-Preta em Glass Box"
+type: curriculum-lesson
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
+last_updated: 2026-06-10
+---
 # 📊 Padrão Trace Reading: Transformando a Caixa-Preta em Glass Box
 ## Como Debugar Agentes Long-Running Através de Trails Completos de Decisão
 

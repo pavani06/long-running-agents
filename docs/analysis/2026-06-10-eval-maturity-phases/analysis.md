@@ -1,3 +1,13 @@
+---
+title: "Analise de Conhecimento Nao-Obvio: The Maturity Phases of Running Evals"
+type: analysis
+date: 2026-06-10
+domain: eval-maturity
+aliases: []
+tags: [analise, evals, maturity-model]
+last_updated: 2026-06-10
+---
+
 # Analise de Conhecimento Nao-Obvio: The Maturity Phases of Running Evals
 
 > Fonte: Phil Hetzel, Braintrust - "The maturity phases of running evals" (Braintrust, 2026-06-10)

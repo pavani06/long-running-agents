@@ -1,3 +1,10 @@
+---
+title: "Knowledge Graphs de Coordenação Multi-Agente"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Knowledge Graphs de Coordenação Multi-Agente
 ## Como visualizar Search Agent, Filter Agent, Ranking Agent, Recommendation Agent, Evaluator e Orchestrator como um sistema coerente para KODA
 

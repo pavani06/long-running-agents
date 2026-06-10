@@ -1,3 +1,10 @@
+---
+title: "Sprint Contract Template"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 📋 Sprint Contract Template
 ## Template Completo para Contratos Entre Generator e Evaluator no KODA
 

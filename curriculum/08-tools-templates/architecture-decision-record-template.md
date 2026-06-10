@@ -1,3 +1,10 @@
+---
+title: "Architecture Decision Record (ADR) Template"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 📋 Architecture Decision Record (ADR) Template
 ## Documentando Decisões Arquiteturais para Long-Running Agents
 

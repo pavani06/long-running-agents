@@ -1,3 +1,12 @@
+---
+title: "Server-Side Compaction: A Arte de Manter Contexto Sem Perder a Essência"
+type: curriculum-lesson
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"]
+last_updated: 2026-06-10
+---
 # 🗜️ Server-Side Compaction: A Arte de Manter Contexto Sem Perder a Essência
 ## Como Técnicas de Compactação no Servidor Transformam Agentes que Esquecem em Agentes que Lembram
 

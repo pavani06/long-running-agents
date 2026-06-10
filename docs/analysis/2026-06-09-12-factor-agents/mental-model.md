@@ -1,3 +1,13 @@
+---
+title: "Modelo Mental: Curriculum Long-Running Agents"
+type: analysis
+date: 2026-06-09
+domain: 12-factor-agents
+aliases: []
+tags: [analise, 12-factor-agents, agent-loop, mental-model]
+last_updated: 2026-06-10
+---
+
 # Modelo Mental: Curriculum Long-Running Agents
 
 **Data:** 2026-06-09

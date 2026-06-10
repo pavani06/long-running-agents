@@ -1,3 +1,10 @@
+---
+title: "Checklist de Design de Harness para Agentes Confiáveis"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🧪 Checklist de Design de Harness para Agentes Confiáveis
 ## Como Avaliar Contexto, Contratos, Avaliação, Persistência, Coordenação, Segurança, Evolução e Observabilidade em Sistemas Long-Running
 

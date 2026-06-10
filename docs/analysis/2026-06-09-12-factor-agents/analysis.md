@@ -1,3 +1,13 @@
+---
+title: "Analise de Conhecimento Nao-Obvio: 12-Factor Agents (Dex Horthy)"
+type: analysis
+date: 2026-06-09
+domain: 12-factor-agents
+aliases: []
+tags: [analise, 12-factor-agents, agent-loop]
+last_updated: 2026-06-10
+---
+
 # Analise de Conhecimento Nao-Obvio: 12-Factor Agents (Dex Horthy)
 
 > Fonte: Dex Horthy — "12-Factor Agents: Patterns of reliable LLM applications" (AI Engineer, 2025)

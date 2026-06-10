@@ -1,3 +1,10 @@
+---
+title: "Detailed Graph: Context Management"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Detailed Graph: Context Management
 ## Hierarchical connections, KODA application flow, and the architecture that prevents Context Amnesia in 2h+ WhatsApp conversations
 

@@ -1,3 +1,10 @@
+---
+title: "Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🧬 Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção
 ## Guia Prático para Diagnosticar, Planejar, Executar e Validar Remoções com Segurança
 

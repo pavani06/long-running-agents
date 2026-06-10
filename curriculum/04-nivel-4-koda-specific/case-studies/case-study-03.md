@@ -1,3 +1,11 @@
+---
+title: "Case Study 3: KODA Continuous Improvement — 6 Meses de Evolução"
+type: curriculum-case-study
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # 🔄 Case Study 3: KODA Continuous Improvement — 6 Meses de Evolução
 ## Como Ciclos de Feedback, Simplificação de Harness e Rubrics Adaptativas Transformaram um Sistema Frágil em uma Plataforma que se Auto-Melhora
 

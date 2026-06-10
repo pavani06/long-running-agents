@@ -1,3 +1,10 @@
+---
+title: "Template: Knowledge Graph para Conceitos de Long-Running Agents"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 🧠 Template: Knowledge Graph para Conceitos de Long-Running Agents
 ## Como Criar Diagramas Mermaid que Comunicam Arquitetura, Fluxo e Complexidade
 
@@ -581,13 +588,13 @@ Este diagrama mostra **onde o conceito se posiciona no ecossistema**. Ele respon
 
 ```mermaid
 graph TD
-    PRE1["Nome do Pré-requisito 1\nbreve descrição"]
-    PRE2["Nome do Pré-requisito 2\nbreve descrição"]
-    CORE["NOME DO CONCEITO\nCentral"]
-    REL1["Conceito Relacionado 1\nbreve descrição"]
-    REL2["Conceito Relacionado 2\nbreve descrição"]
-    DEP1["Conceito Dependente 1\nbreve descrição"]
-    DEP2["Conceito Dependente 2\nbreve descrição"]
+    PRE1["Nome do Pré-requisito 1<br/>breve descrição"]
+    PRE2["Nome do Pré-requisito 2<br/>breve descrição"]
+    CORE["NOME DO CONCEITO<br/>Central"]
+    REL1["Conceito Relacionado 1<br/>breve descrição"]
+    REL2["Conceito Relacionado 2<br/>breve descrição"]
+    DEP1["Conceito Dependente 1<br/>breve descrição"]
+    DEP2["Conceito Dependente 2<br/>breve descrição"]
     
     PRE1 -->|must understand| CORE
     PRE2 -->|must understand| CORE
@@ -626,7 +633,7 @@ graph TD
 
 ```mermaid
 graph TD
-    CTX["Context Management\n& Token Budgeting"]
+    CTX["Context Management<br/>& Token Budgeting"]
     LLM["LLM Token Architecture"]
     LIMIT["Context Window Limits"]
     STATE["State Persistence"]
@@ -671,13 +678,13 @@ graph TD
 
 ```mermaid
 graph TD
-    GEN["Generator/Evaluator\nPattern"]
-    CM["Context Management\n& Token Budgeting"]
-    STATE["State Persistence\n& File-Based Coord"]
-    RUBRIC["Evaluation Rubrics\n& Quality Measurement"]
-    SPRINT["Sprint Contracts\n& Negotiation"]
-    MULTI["Multi-Agent\nCoordination"]
-    HARNESS["Harness Evolution\n& Continuous Improvement"]
+    GEN["Generator/Evaluator<br/>Pattern"]
+    CM["Context Management<br/>& Token Budgeting"]
+    STATE["State Persistence<br/>& File-Based Coord"]
+    RUBRIC["Evaluation Rubrics<br/>& Quality Measurement"]
+    SPRINT["Sprint Contracts<br/>& Negotiation"]
+    MULTI["Multi-Agent<br/>Coordination"]
+    HARNESS["Harness Evolution<br/>& Continuous Improvement"]
     
     CM -->|must understand| GEN
     STATE -->|feeds data to| GEN
@@ -715,18 +722,18 @@ Este diagrama ancora o conceito em uma **conversa real de WhatsApp**. Ele respon
 
 ```mermaid
 flowchart LR
-    A["Entrada do\nSistema"]
-    B["Etapa 1\nProcessamento"]
-    C["Etapa 2\nDecisão"]
-    D["Etapa 3\nAção"]
-    E["Saída para\no Cliente"]
+    A["Entrada do<br/>Sistema"]
+    B["Etapa 1<br/>Processamento"]
+    C["Etapa 2<br/>Decisão"]
+    D["Etapa 3<br/>Ação"]
+    E["Saída para<br/>o Cliente"]
     
     A -->|trigger| B
     B -->|analisa| C
     C -->|executa| D
     D -->|responde| E
     
-    P["Problema sem\no conceito"]
+    P["Problema sem<br/>o conceito"]
     C -.-|evitado por| P
     
     style C fill:#FFD700,color:#7a5c00
@@ -795,10 +802,10 @@ Este diagrama mostra **a progressão de maturidade** do conceito. Ele responde: 
 
 ```mermaid
 graph LR
-    N1["Nível 1\n[Awareness]\nDescrição curta"]
-    N2["Nível 2\n[Prática]\nDescrição curta"]
-    N3["Nível 3\n[Avançado]\nDescrição curta"]
-    N4["Nível 4\n[KODA]\nDescrição curta"]
+    N1["Nível 1<br/>[Awareness]<br/>Descrição curta"]
+    N2["Nível 2<br/>[Prática]<br/>Descrição curta"]
+    N3["Nível 3<br/>[Avançado]<br/>Descrição curta"]
+    N4["Nível 4<br/>[KODA]<br/>Descrição curta"]
     N1 -->|progression| N2
     N2 -->|progression| N3
     N3 -->|progression| N4
@@ -1020,7 +1027,7 @@ Esta seção contém um exemplo completo e autocontido de um detailed graph pree
 
 ```mermaid
 graph TD
-    CTX["Context Management\n& Token Budgeting"]
+    CTX["Context Management<br/>& Token Budgeting"]
     LLM["LLM Token Architecture"]
     LIMIT["Context Window Limits"]
     STATE["State Persistence"]
@@ -1048,16 +1055,16 @@ graph TD
 
 ```mermaid
 flowchart TD
-    MSG["Nova mensagem\ndo WhatsApp"]
-    PARSE["Parsing & Normalização\nextrai texto, intenção, entidades"]
-    CLASS["Classificação de Relevância\ncrítica / útil / ruído / sensível"]
-    CRIT{"Informação\ncrítica?"}
-    COMP["Compaction Engine\nresume blocos antigos,\npreserva fatos estáveis"]
-    WINDOW["Sliding Window\nmantém últimas N mensagens,\ndescarta fora do budget"]
-    PERSIST["State Persistence\nsalva em customer_profile,\nsession_state, cart, commitments"]
-    RETRIEVE["Retrieval\nbusca fatos persistentes\nrelevantes para o turno atual"]
-    INJECT["Context Injection\nmonta o prompt com:\nsystem + perfil + resumo +\njanela + catálogo + espaço"]
-    MODEL["Modelo recebe\ncontexto completo e\ngera resposta"]
+    MSG["Nova mensagem<br/>do WhatsApp"]
+    PARSE["Parsing & Normalização<br/>extrai texto, intenção, entidades"]
+    CLASS["Classificação de Relevância<br/>crítica / útil / ruído / sensível"]
+    CRIT{"Informação<br/>crítica?"}
+    COMP["Compaction Engine<br/>resume blocos antigos,<br/>preserva fatos estáveis"]
+    WINDOW["Sliding Window<br/>mantém últimas N mensagens,<br/>descarta fora do budget"]
+    PERSIST["State Persistence<br/>salva em customer_profile,<br/>session_state, cart, commitments"]
+    RETRIEVE["Retrieval<br/>busca fatos persistentes<br/>relevantes para o turno atual"]
+    INJECT["Context Injection<br/>monta o prompt com:<br/>system + perfil + resumo +<br/>janela + catálogo + espaço"]
+    MODEL["Modelo recebe<br/>contexto completo e<br/>gera resposta"]
     
     MSG -->|received by| PARSE
     PARSE -->|feeds| CLASS
@@ -1086,10 +1093,10 @@ flowchart TD
 
 ```mermaid
 graph LR
-    N1["Nível 1\nBasic context\nawareness"]
-    N2["Nível 2\nToken budget\nallocation"]
-    N3["Nível 3\nDynamic pruning\nstrategies"]
-    N4["Nível 4\nKODA: Multi-turn\nsales conversations"]
+    N1["Nível 1<br/>Basic context<br/>awareness"]
+    N2["Nível 2<br/>Token budget<br/>allocation"]
+    N3["Nível 3<br/>Dynamic pruning<br/>strategies"]
+    N4["Nível 4<br/>KODA: Multi-turn<br/>sales conversations"]
     N1 -->|progression| N2
     N2 -->|progression| N3
     N3 -->|progression| N4
@@ -1837,10 +1844,10 @@ graph TD
 
 ```mermaid
 graph TD
-    A["State Persistence\n& File-Based Coord"]
-    B["Context Management\n& Token Budgeting"]
-    C["Multi-Agent\nCoordination"]
-    D["Evaluation Rubrics\n& Quality Measurement"]
+    A["State Persistence<br/>& File-Based Coord"]
+    B["Context Management<br/>& Token Budgeting"]
+    C["Multi-Agent<br/>Coordination"]
+    D["Evaluation Rubrics<br/>& Quality Measurement"]
     B -->|enables| A
     A -->|enables| C
     C -->|requires| D
@@ -2035,13 +2042,13 @@ Este é um exemplo "fast-track" — um detailed graph preenchido de forma compac
 
 ```mermaid
 graph TD
-    SPRINT["Sprint Contracts\n& Negotiation"]
-    CM["Context Management\n& Token Budgeting"]
-    STATE["State Persistence\n& File-Based Coord"]
-    GENEVAL["Generator/Evaluator\nPattern"]
-    RUBRIC["Evaluation Rubrics\n& Quality Measurement"]
-    MULTI["Multi-Agent\nCoordination"]
-    HARNESS["Harness Evolution\n& Continuous Improvement"]
+    SPRINT["Sprint Contracts<br/>& Negotiation"]
+    CM["Context Management<br/>& Token Budgeting"]
+    STATE["State Persistence<br/>& File-Based Coord"]
+    GENEVAL["Generator/Evaluator<br/>Pattern"]
+    RUBRIC["Evaluation Rubrics<br/>& Quality Measurement"]
+    MULTI["Multi-Agent<br/>Coordination"]
+    HARNESS["Harness Evolution<br/>& Continuous Improvement"]
     
     CM -->|provides clean context for| SPRINT
     STATE -->|provides shared truth for| SPRINT
@@ -2063,14 +2070,14 @@ graph TD
 
 ```mermaid
 flowchart LR
-    REQ["KODA recebe\npedido do cliente"]
-    GEN["Generator\nproduz recomendação"]
-    CONTRACT["Sprint Contract\ndefine: input, output,\nguarantees, constraints"]
-    EVAL["Evaluator\nverifica contra\ncontract + rubric"]
-    APPROVED{"Contract\nsatisfied?"}
-    SEND["Envia resposta\nao cliente"]
-    REJECT["Rejeita:\nregistra violação,\nsolicita regeneração"]
-    PROBLEM["Sem contrato:\nGenerator e Evaluator\ntêm expectativas diferentes"]
+    REQ["KODA recebe<br/>pedido do cliente"]
+    GEN["Generator<br/>produz recomendação"]
+    CONTRACT["Sprint Contract<br/>define: input, output,<br/>guarantees, constraints"]
+    EVAL["Evaluator<br/>verifica contra<br/>contract + rubric"]
+    APPROVED{"Contract<br/>satisfied?"}
+    SEND["Envia resposta<br/>ao cliente"]
+    REJECT["Rejeita:<br/>registra violação,<br/>solicita regeneração"]
+    PROBLEM["Sem contrato:<br/>Generator e Evaluator<br/>têm expectativas diferentes"]
     
     REQ --> GEN
     GEN --> EVAL
@@ -2090,10 +2097,10 @@ flowchart LR
 
 ```mermaid
 graph LR
-    N1["Nível 1\nDocumented\ninterfaces"]
-    N2["Nível 2\nStatic\ncontracts"]
-    N3["Nível 3\nAutomated\nenforcement"]
-    N4["Nível 4\nKODA: Dynamic\nnegotiation"]
+    N1["Nível 1<br/>Documented<br/>interfaces"]
+    N2["Nível 2<br/>Static<br/>contracts"]
+    N3["Nível 3<br/>Automated<br/>enforcement"]
+    N4["Nível 4<br/>KODA: Dynamic<br/>negotiation"]
     N1 -->|progression| N2
     N2 -->|progression| N3
     N3 -->|progression| N4

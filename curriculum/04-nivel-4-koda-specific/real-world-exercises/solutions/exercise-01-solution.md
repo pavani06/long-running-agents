@@ -1,3 +1,11 @@
+---
+title: "Solucao do Exercicio 1: Feature KODA — Recomendacao de Produto com Generator/Evaluator"
+type: curriculum-solution
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, solucao]
+last_updated: 2026-06-10
+---
 # 🎯 Solucao do Exercicio 1: Feature KODA — Recomendacao de Produto com Generator/Evaluator
 ## Implementacao Completa com Python, Feature Contract, Rubricas e Testes de Qualidade
 

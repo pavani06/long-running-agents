@@ -1,3 +1,10 @@
+---
+title: "Sprint Contracts: Contratos Testáveis para Agentes de Longa Duração"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, sprint-contracts]
+last_updated: 2026-06-10
+---
 # 🎯 Sprint Contracts: Contratos Testáveis para Agentes de Longa Duração
 ## Como transformar intenção vaga em acordo explícito, verificável e evolutivo
 

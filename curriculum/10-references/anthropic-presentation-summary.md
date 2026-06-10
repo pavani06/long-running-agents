@@ -1,3 +1,10 @@
+---
+title: "Resumo da Apresentação Anthropic: Building Long-Running Agents"
+type: curriculum-reference
+aliases: []
+tags: [curriculo-conteudo, referencia]
+last_updated: 2026-06-10
+---
 # 🧭 Resumo da Apresentação Anthropic: Building Long-Running Agents
 ## A origem prática dos padrões que sustentam agentes que trabalham por horas
 

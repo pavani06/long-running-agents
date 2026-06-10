@@ -1,3 +1,13 @@
+---
+title: "Análise: Janela Deslizante + Resumo + Metadados no Contexto do Agente"
+type: analysis
+date: 2026-05-28
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, context-engineering, context-window]
+last_updated: 2026-06-10
+---
+
 # Análise: Janela Deslizante + Resumo + Metadados no Contexto do Agente
 
 **Data:** 2026-05-28

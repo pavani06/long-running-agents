@@ -1,3 +1,11 @@
+---
+title: "Solucao do Exercicio 1: Sistema Multi-Agente Planner/Generator/Evaluator"
+type: curriculum-solution
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, solucao]
+last_updated: 2026-06-10
+---
 # 🧩 Solucao do Exercicio 1: Sistema Multi-Agente Planner/Generator/Evaluator
 ## Implementacao Completa com Python, Testes e Analise de Design Decisions
 

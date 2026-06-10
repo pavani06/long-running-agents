@@ -1,3 +1,11 @@
+---
+title: "Exercício 1: Design a Sprint Contract"
+type: curriculum-exercise
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, exercicio]
+last_updated: 2026-06-10
+---
 # 📋 Exercício 1: Design a Sprint Contract
 ## Nível 2 - Padrões Práticos
 

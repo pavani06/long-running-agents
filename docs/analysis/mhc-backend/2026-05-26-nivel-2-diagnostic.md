@@ -1,3 +1,13 @@
+---
+title: "Diagnóstico: Arquitetura KODA no `mhc-backend` vs. Padrões Nível 2"
+type: analysis
+date: 2026-05-26
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, nivel-2, padroes-praticos]
+last_updated: 2026-06-10
+---
+
 # Diagnóstico: Arquitetura KODA no `mhc-backend` vs. Padrões Nível 2
 
 **Data:** 2026-05-26

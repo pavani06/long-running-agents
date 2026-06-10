@@ -1,3 +1,10 @@
+---
+title: "Estudo de Caso 4 (KODA): Order Processing"
+type: curriculum-case-study
+aliases: []
+tags: [curriculo-conteudo, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # Estudo de Caso 4 (KODA): Order Processing
 
 **Nível de Complexidade:** Nível 3  

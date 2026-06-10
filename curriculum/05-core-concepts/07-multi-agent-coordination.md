@@ -1,3 +1,10 @@
+---
+title: "Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination]
+last_updated: 2026-06-10
+---
 # 🤝 Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema
 ## Como orquestrar Search Agent, Ranking Agent, Filter Agent e Recommendation Agent sem perder contexto, qualidade ou auditabilidade
 

@@ -1,3 +1,12 @@
+---
+title: "Exercicio 4: Implementar Error Context Hygiene no Loop de Ferramentas"
+type: curriculum-exercise
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, exercicio]
+relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
+last_updated: 2026-06-10
+---
 # Exercicio 4: Implementar Error Context Hygiene no Loop de Ferramentas
 ## Nivel 2 - Padroes Praticos
 

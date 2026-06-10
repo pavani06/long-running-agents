@@ -1,3 +1,11 @@
+---
+title: "Evaluation Rubrics para KODA"
+type: curriculum-lesson
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, koda]
+last_updated: 2026-06-10
+---
 # 📏 Evaluation Rubrics para KODA
 ## Como transformar qualidade conversacional em decisões auditáveis de negócio
 

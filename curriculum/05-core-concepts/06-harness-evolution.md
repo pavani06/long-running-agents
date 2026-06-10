@@ -1,3 +1,10 @@
+---
+title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, harness-evolution]
+last_updated: 2026-06-10
+---
 # 🧬 Harness Evolution: Construir, Medir, Simplificar, Remover
 ## O Ciclo de Vida dos Componentes de Scaffolding em Agentes de IA que Rodam por Horas
 

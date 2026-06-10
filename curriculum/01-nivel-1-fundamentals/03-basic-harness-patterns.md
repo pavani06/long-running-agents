@@ -1,3 +1,12 @@
+---
+title: "Padrões Básicos de Harness: A Estrutura que Sustenta Agentes"
+type: curriculum-lesson
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, fundamentos]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"]
+last_updated: 2026-06-10
+---
 # 🏗️ Padrões Básicos de Harness: A Estrutura que Sustenta Agentes
 ## Como Construir um "Sistema Imunológico" para Agentes de Longa Duração
 

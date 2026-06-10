@@ -1,3 +1,11 @@
+---
+title: "Exercício 1: Implementar History Windowing"
+type: curriculum-exercise
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, exercicio]
+last_updated: 2026-06-10
+---
 # 🪟 Exercício 1: Implementar History Windowing
 
 **Nível:** 1 - Fundamentals  

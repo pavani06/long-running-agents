@@ -1,3 +1,11 @@
+---
+title: "Exercício 2: Implementar Pipeline Completo de Customer Journey com Agentes Coordenados"
+type: curriculum-exercise
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, exercicio]
+last_updated: 2026-06-10
+---
 # 🏋️ Exercício 2: Implementar Pipeline Completo de Customer Journey com Agentes Coordenados
 ## Nível 4 — KODA-Específico
 

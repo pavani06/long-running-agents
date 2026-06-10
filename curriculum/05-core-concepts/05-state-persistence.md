@@ -1,3 +1,10 @@
+---
+title: "State Persistence: A Memória Durável dos Agentes Long-Running"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, state-persistence]
+last_updated: 2026-06-10
+---
 # 🎯 State Persistence: A Memória Durável dos Agentes Long-Running
 ## Como transformar conversas frágeis em jornadas recuperáveis, auditáveis e confiáveis
 

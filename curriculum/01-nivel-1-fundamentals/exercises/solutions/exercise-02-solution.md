@@ -1,3 +1,11 @@
+---
+title: "Solucao do Exercicio 02: Structured Output com Pydantic"
+type: curriculum-solution
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, solucao]
+last_updated: 2026-06-10
+---
 # 🧩 Solucao do Exercicio 02: Structured Output com Pydantic
 ## Validacao de JSON Schema, Regras de Negocio, Fallback Seguro e Auditoria para Recomendacoes KODA
 

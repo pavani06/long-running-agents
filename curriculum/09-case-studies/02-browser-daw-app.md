@@ -1,3 +1,10 @@
+---
+title: "Estudo de Caso 2: Browser DAW (Digital Audio Workstation)"
+type: curriculum-case-study
+aliases: []
+tags: [curriculo-conteudo, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # Estudo de Caso 2: Browser DAW (Digital Audio Workstation)
 
 **Nível de Complexidade:** Nível 3–4  

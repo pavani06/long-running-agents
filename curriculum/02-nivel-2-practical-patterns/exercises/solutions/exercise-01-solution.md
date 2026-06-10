@@ -1,3 +1,11 @@
+---
+title: "Solução: Exercício 1 — Sprint Contract + Generator/Evaluator para Product Comparison"
+type: curriculum-solution
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, solucao]
+last_updated: 2026-06-10
+---
 # ✅ Solução: Exercício 1 — Sprint Contract + Generator/Evaluator para Product Comparison
 ## Implementação Completa do Padrão Generator/Evaluator no KODA
 

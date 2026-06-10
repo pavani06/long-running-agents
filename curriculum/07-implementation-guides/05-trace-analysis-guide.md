@@ -1,3 +1,10 @@
+---
+title: "Guia de Análise de Traces: Do Sintoma ao Diagnóstico"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🔍 Guia de Análise de Traces: Do Sintoma ao Diagnóstico
 ## Como Identificar, Diagnosticar e Resolver Problemas em Agentes Através de Trace Reading
 

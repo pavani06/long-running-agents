@@ -1,3 +1,11 @@
+---
+title: "Melhorias de Harness para KODA"
+type: curriculum-lesson
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, koda]
+last_updated: 2026-06-10
+---
 # 🛠️ Melhorias de Harness para KODA
 ## Como transformar diagnóstico em propostas priorizadas, métricas e roadmap de evolução
 

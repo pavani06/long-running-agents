@@ -1,3 +1,13 @@
+---
+title: "Comparative Classification: 12-Factor Agentic Patterns vs. long-running-agents Repo"
+type: analysis
+date: 2026-06-09
+domain: 12-factor-agents
+aliases: []
+tags: [analise, 12-factor-agents, agent-loop, classification]
+last_updated: 2026-06-10
+---
+
 # Comparative Classification: 12-Factor Agentic Patterns vs. long-running-agents Repo
 
 **Date:** 2026-06-09

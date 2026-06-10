@@ -1,3 +1,13 @@
+---
+title: "Mental Model: long-running-agents"
+type: analysis
+date: 2026-06-10
+domain: eval-maturity
+aliases: []
+tags: [analise, evals, maturity-model, mental-model]
+last_updated: 2026-06-10
+---
+
 # Mental Model: long-running-agents
 
 **Date:** 2026-06-10  

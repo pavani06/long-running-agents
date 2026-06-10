@@ -1,3 +1,13 @@
+---
+title: "Integration Roadmap: Context Management Patterns -> long-running-agents"
+type: analysis
+date: 2026-06-09
+domain: context-management
+aliases: []
+tags: [analise, context-engineering, context-management, roadmap]
+last_updated: 2026-06-10
+---
+
 # Integration Roadmap: Context Management Patterns -> long-running-agents
 
 **Date:** 2026-06-10

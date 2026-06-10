@@ -1,3 +1,13 @@
+---
+title: "Diagnóstico: Output Validation & State Persistence no mhc-backend"
+type: analysis
+date: 2026-05-28
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, validacao, state, persistence]
+last_updated: 2026-06-10
+---
+
 # Diagnóstico: Output Validation & State Persistence no mhc-backend
 
 **Data:** 2026-05-28

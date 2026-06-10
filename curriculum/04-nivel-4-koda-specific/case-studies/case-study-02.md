@@ -1,3 +1,11 @@
+---
+title: "Case Study 2: KODA Scale-Up — De 100 para 10.000 Conversas por Dia"
+type: curriculum-case-study
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # 📈 Case Study 2: KODA Scale-Up — De 100 para 10.000 Conversas por Dia
 ## Como a Arquitetura Multi-Agent, Compaction e Coordenação Baseada em Arquivos Transformaram um Protótipo Frágil em uma Plataforma de Produção Resiliente
 

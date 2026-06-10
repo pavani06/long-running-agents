@@ -1,3 +1,13 @@
+---
+title: "Analise de Conhecimento Nao-Obvio: Context Management in Agents (Arize / Alex)"
+type: analysis
+date: 2026-06-09
+domain: context-management
+aliases: []
+tags: [analise, context-engineering, context-management]
+last_updated: 2026-06-10
+---
+
 # Analise de Conhecimento Nao-Obvio: Context Management in Agents (Arize / Alex)
 
 > Fonte: Sally-Ann Delucia, Arize - "How We Solved Context Management in Agents" (AI Engineer, 2026-05-10)

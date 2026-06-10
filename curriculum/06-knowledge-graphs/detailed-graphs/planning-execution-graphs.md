@@ -1,3 +1,10 @@
+---
+title: "Planning vs Execution: Arquitetura Visual da Separação que Transforma Agentes Confusos em Sistemas Precisos"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Planning vs Execution: Arquitetura Visual da Separação que Transforma Agentes Confusos em Sistemas Precisos
 ## Detailed Graph — Diagramas, Fluxos e Conexões do Conceito Planning/Execution Separation
 
@@ -665,19 +672,19 @@ flowchart TB
     end
 
     subgraph ROUTER["🔀 ROUTER — Classificador de Intenção"]
-        R_INTENT{"Qual a intenção\n do cliente?"}
-        R_SIMPLE["Consulta Simples\n→ Single-Pass"]
-        R_COMPLEX["Tarefa Complexa\n→ Ativa Planner"]
+        R_INTENT{"Qual a intenção<br/> do cliente?"}
+        R_SIMPLE["Consulta Simples<br/>→ Single-Pass"]
+        R_COMPLEX["Tarefa Complexa<br/>→ Ativa Planner"]
 
         R_INTENT -->|"Preço? Estoque? FAQ?"| R_SIMPLE
-        R_INTENT -->|"Pedido, Descoberta,\n Fulfillment"| R_COMPLEX
+        R_INTENT -->|"Pedido, Descoberta,<br/> Fulfillment"| R_COMPLEX
     end
 
     subgraph DISCOVERY["🛍️ FLUXO 1: PRODUCT DISCOVERY"]
         direction TB
-        D_PLANNER["🧠 Planner de Discovery\n─────────────────\nAnalisa: preferências,\nrestrições, orçamento\n\nDefine: filtros, ordenação,\nnúmero de opções"]
-        D_CONTRACT["📋 Contrato Discovery\npassos: busca → filtro → ordenação → preço"]
-        D_EXECUTOR["⚡ Executor de Discovery\n─────────────────\n• Consulta catálogo\n• Filtra por restrições\n• Verifica estoque\n• Calcula preço com desconto"]
+        D_PLANNER["🧠 Planner de Discovery<br/>─────────────────<br/>Analisa: preferências,<br/>restrições, orçamento<br/><br/>Define: filtros, ordenação,<br/>número de opções"]
+        D_CONTRACT["📋 Contrato Discovery<br/>passos: busca → filtro → ordenação → preço"]
+        D_EXECUTOR["⚡ Executor de Discovery<br/>─────────────────<br/>• Consulta catálogo<br/>• Filtra por restrições<br/>• Verifica estoque<br/>• Calcula preço com desconto"]
 
         D_PLANNER -->|"Sprint Contract"| D_CONTRACT
         D_CONTRACT -->|"Passos ordenados"| D_EXECUTOR
@@ -685,9 +692,9 @@ flowchart TB
 
     subgraph ORDERS["📦 FLUXO 2: ORDER PROCESSING"]
         direction TB
-        O_PLANNER["🧠 Planner de Orders\n─────────────────\nAnalisa: produtos, cupom,\nendereço, pagamento\n\nDefine: sequência de\nvalidações e fallbacks"]
-        O_CONTRACT["📋 Contrato Orders\npassos: validar → cupom → preço → pagamento → confirmar"]
-        O_EXECUTOR["⚡ Executor de Orders\n─────────────────\n• Valida SKUs e estoque\n• Aplica cupom e descontos\n• Calcula total + frete\n• Processa pagamento\n• Gera confirmação"]
+        O_PLANNER["🧠 Planner de Orders<br/>─────────────────<br/>Analisa: produtos, cupom,<br/>endereço, pagamento<br/><br/>Define: sequência de<br/>validações e fallbacks"]
+        O_CONTRACT["📋 Contrato Orders<br/>passos: validar → cupom → preço → pagamento → confirmar"]
+        O_EXECUTOR["⚡ Executor de Orders<br/>─────────────────<br/>• Valida SKUs e estoque<br/>• Aplica cupom e descontos<br/>• Calcula total + frete<br/>• Processa pagamento<br/>• Gera confirmação"]
 
         O_PLANNER -->|"Sprint Contract"| O_CONTRACT
         O_CONTRACT -->|"Passos ordenados"| O_EXECUTOR
@@ -695,9 +702,9 @@ flowchart TB
 
     subgraph FULFILL["🚚 FLUXO 3: FULFILLMENT"]
         direction TB
-        F_PLANNER["🧠 Planner de Fulfillment\n─────────────────\nAnalisa: CEP, produtos,\nSLA, centros de distribuição\n\nDefine: rota, prioridade,\nestratégia de entrega"]
-        F_CONTRACT["📋 Contrato Fulfillment\npassos: localizar CD → rota → SLA → rastreio"]
-        F_EXECUTOR["⚡ Executor de Fulfillment\n─────────────────\n• Localiza produtos nos CDs\n• Calcula rota e ETA\n• Verifica same-day\n• Gera tracking\n• Confirma entrega"]
+        F_PLANNER["🧠 Planner de Fulfillment<br/>─────────────────<br/>Analisa: CEP, produtos,<br/>SLA, centros de distribuição<br/><br/>Define: rota, prioridade,<br/>estratégia de entrega"]
+        F_CONTRACT["📋 Contrato Fulfillment<br/>passos: localizar CD → rota → SLA → rastreio"]
+        F_EXECUTOR["⚡ Executor de Fulfillment<br/>─────────────────<br/>• Localiza produtos nos CDs<br/>• Calcula rota e ETA<br/>• Verifica same-day<br/>• Gera tracking<br/>• Confirma entrega"]
 
         F_PLANNER -->|"Sprint Contract"| F_CONTRACT
         F_CONTRACT -->|"Passos ordenados"| F_EXECUTOR
@@ -705,16 +712,16 @@ flowchart TB
 
     subgraph EVALUATION["🔍 EVALUATOR (Compartilhado)"]
         EV_RUBRIC["Rubricas de Qualidade KODA"]
-        EV_CHECK["Verifica cada resultado:\n• Precisão dos dados\n• Segurança (alergia, preço)\n• Completude\n• Tom adequado\n• Consistência entre fluxos"]
-        EV_RESULT{"Resultado da\nAvaliação?"}
+        EV_CHECK["Verifica cada resultado:<br/>• Precisão dos dados<br/>• Segurança (alergia, preço)<br/>• Completude<br/>• Tom adequado<br/>• Consistência entre fluxos"]
+        EV_RESULT{"Resultado da<br/>Avaliação?"}
 
         EV_RUBRIC --> EV_CHECK
         EV_CHECK --> EV_RESULT
     end
 
     subgraph OUTPUT["✅ Resposta ao Cliente"]
-        RESP_APPROVED["Resposta Aprovada\n→ Enviada ao WhatsApp"]
-        RESP_REJECTED["Resposta Rejeitada\n→ Feedback para Planner"]
+        RESP_APPROVED["Resposta Aprovada<br/>→ Enviada ao WhatsApp"]
+        RESP_REJECTED["Resposta Rejeitada<br/>→ Feedback para Planner"]
     end
 
     CLIENT --> ROUTER
@@ -826,15 +833,15 @@ Planning/Execution Separation não existe isoladamente. Ele se conecta a outros 
 ```mermaid
 graph TB
     subgraph FUNDACAO["🏗️ FUNDAÇÃO (Nível 1)"]
-        CM["Context Management\n& Token Budgeting"]
-        BH["Basic Harness\nPatterns"]
+        CM["Context Management<br/>& Token Budgeting"]
+        BH["Basic Harness<br/>Patterns"]
     end
 
     subgraph PES["🧠 PLANNING/EXECUTION SEPARATION"]
-        PLANNER["Planner\n(Estrategista)"]
-        CONTRACT["Sprint Contract\n(Interface)"]
-        EXECUTOR["Executor\n(Operário)"]
-        REPLAN["Replanning\n(Ciclo)"]
+        PLANNER["Planner<br/>(Estrategista)"]
+        CONTRACT["Sprint Contract<br/>(Interface)"]
+        EXECUTOR["Executor<br/>(Operário)"]
+        REPLAN["Replanning<br/>(Ciclo)"]
 
         PLANNER --> CONTRACT
         CONTRACT --> EXECUTOR
@@ -843,16 +850,16 @@ graph TB
     end
 
     subgraph PADROES["🔧 PADRÕES RELACIONADOS (Nível 2)"]
-        GE["Generator/Evaluator\nPattern"]
-        SC["Sprint Contracts\n& Negotiation"]
-        RD["Rubric Design &\nQuality Measurement"]
-        TR["Trace Reading\n& Debugging"]
+        GE["Generator/Evaluator<br/>Pattern"]
+        SC["Sprint Contracts<br/>& Negotiation"]
+        RD["Rubric Design &<br/>Quality Measurement"]
+        TR["Trace Reading<br/>& Debugging"]
     end
 
     subgraph AVANCADO["🚀 AVANÇADO (Nível 3)"]
-        SP["State Persistence &\nFile-Based Coordination"]
-        MA["Multi-Agent\nCoordination"]
-        HE["Harness Evolution\n(as Models Improve)"]
+        SP["State Persistence &<br/>File-Based Coordination"]
+        MA["Multi-Agent<br/>Coordination"]
+        HE["Harness Evolution<br/>(as Models Improve)"]
     end
 
     subgraph KODA_PROD["🏭 KODA EM PRODUÇÃO (Nível 4)"]

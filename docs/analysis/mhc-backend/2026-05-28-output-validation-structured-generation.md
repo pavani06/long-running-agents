@@ -1,3 +1,13 @@
+---
+title: "Análise: Output Validation (Structured Generation) no mhc-backend"
+type: analysis
+date: 2026-05-28
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, validacao, structured-output, zod]
+last_updated: 2026-06-10
+---
+
 # Análise: Output Validation (Structured Generation) no mhc-backend
 
 **Data:** 2026-05-28

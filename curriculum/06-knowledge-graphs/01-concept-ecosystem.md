@@ -1,3 +1,10 @@
+---
+title: "Concept Ecosystem"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Concept Ecosystem
 ## Como os 8 Conceitos Core se Conectam na Arquitetura de Long-Running Agents do KODA
 
@@ -724,24 +731,24 @@ Este diagrama segue o grafo `learn` de `00-all-diagrams.txt`: aprender fundaçõ
 ```mermaid
 graph TB
 subgraph L1["NÍVEL 1 — Foundations"]
-A1["Context Basics\nToken Budgeting"]
-A2["Single Agent Design\nBasic Harness"]
-A3["Basic Validation\nSimple Checks"]
+A1["Context Basics<br/>Token Budgeting"]
+A2["Single Agent Design<br/>Basic Harness"]
+A3["Basic Validation<br/>Simple Checks"]
 end
 subgraph L2["NÍVEL 2 — Patterns"]
-B1["Context Management\n& Token Budgeting"]
-B2["Planning vs.\nExecution Separation"]
-B3["Generator/Evaluator\nPattern"]
+B1["Context Management<br/>& Token Budgeting"]
+B2["Planning vs.<br/>Execution Separation"]
+B3["Generator/Evaluator<br/>Pattern"]
 end
 subgraph L3["NÍVEL 3 — Advanced"]
-C1["State Persistence\n& File-Based Coord"]
-C2["Sprint Contracts\n& Negotiation"]
-C3["Multi-Agent\nCoordination"]
+C1["State Persistence<br/>& File-Based Coord"]
+C2["Sprint Contracts<br/>& Negotiation"]
+C3["Multi-Agent<br/>Coordination"]
 end
 subgraph L4["NÍVEL 4 — KODA Production"]
-D1["Evaluation Rubrics\n& Quality Measurement"]
-D2["Harness Evolution\nas Models Improve"]
-D3["Production KODA\nWhatsApp Agent"]
+D1["Evaluation Rubrics<br/>& Quality Measurement"]
+D2["Harness Evolution<br/>as Models Improve"]
+D3["Production KODA<br/>WhatsApp Agent"]
 end
 A1 --> B1
 A2 --> B2

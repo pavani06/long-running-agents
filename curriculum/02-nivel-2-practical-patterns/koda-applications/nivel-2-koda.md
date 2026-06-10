@@ -1,3 +1,11 @@
+---
+title: "KODA em Evolução: Padrões Avançados e Refatoração Arquitetural"
+type: curriculum-koda-application
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, koda]
+last_updated: 2026-06-10
+---
 # 🚀 KODA em Evolução: Padrões Avançados e Refatoração Arquitetural
 ## De um Agente Bom a um Agente Resiliente - Nível 2 em Ação
 

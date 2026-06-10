@@ -1,3 +1,13 @@
+---
+title: "Integration Roadmap: 12-Factor Agents Patterns → long-running-agents"
+type: analysis
+date: 2026-06-09
+domain: 12-factor-agents
+aliases: []
+tags: [analise, 12-factor-agents, agent-loop, roadmap]
+last_updated: 2026-06-10
+---
+
 # Integration Roadmap: 12-Factor Agents Patterns → long-running-agents
 
 **Date:** 2026-06-09

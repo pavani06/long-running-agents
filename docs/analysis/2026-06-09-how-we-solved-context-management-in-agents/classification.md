@@ -1,3 +1,13 @@
+---
+title: "Pattern Classification: How We Solved Context Management in Agents"
+type: analysis
+date: 2026-06-09
+domain: context-management
+aliases: []
+tags: [analise, context-engineering, context-management, classification]
+last_updated: 2026-06-10
+---
+
 # Pattern Classification: How We Solved Context Management in Agents
 
 Scope: classifies the 7 extracted context-management patterns against `long-running-agents` using the repository precedence order in `docs/system-of-record.md`: decisions, canonical docs, evidence, analysis, curriculum, then operational READMEs and skills (`docs/system-of-record.md:5`, `docs/system-of-record.md:7`, `docs/system-of-record.md:8`, `docs/system-of-record.md:9`, `docs/system-of-record.md:10`, `docs/system-of-record.md:11`, `docs/system-of-record.md:12`). `docs/decisions/` is currently empty, so no ADR overrides were found (`docs/system-of-record.md:105`, `docs/system-of-record.md:107`).

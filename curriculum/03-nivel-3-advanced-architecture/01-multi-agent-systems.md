@@ -1,3 +1,11 @@
+---
+title: "Sistemas Multi-Agente para Arquiteturas Confiáveis"
+type: curriculum-lesson
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+last_updated: 2026-06-10
+---
 # 🔗 Sistemas Multi-Agente para Arquiteturas Confiáveis
 ## Como Planner, Generator e Evaluator Transformam Jornadas Longas em Fluxos Auditáveis
 

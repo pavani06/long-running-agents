@@ -1,3 +1,12 @@
+---
+title: "Harness Evolution: Quando Remover é Tão Importante Quanto Construir"
+type: curriculum-lesson
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"]
+last_updated: 2026-06-10
+---
 # 🧬 Harness Evolution: Quando Remover é Tão Importante Quanto Construir
 ## Como Evoluir a Arquitetura de Agentes Conforme Modelos Melhoram, sem Deixar o Sistema Frágil
 

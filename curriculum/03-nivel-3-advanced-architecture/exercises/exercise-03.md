@@ -1,3 +1,11 @@
+---
+title: "Exercício 3: Plano de Evolução do Harness KODA"
+type: curriculum-exercise
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, exercicio]
+last_updated: 2026-06-10
+---
 # ⚙️ Exercício 3: Plano de Evolução do Harness KODA
 ## Nível 3 — Arquitetura Avançada
 

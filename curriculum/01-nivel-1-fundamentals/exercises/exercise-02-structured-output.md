@@ -1,3 +1,11 @@
+---
+title: "Exercício 2: Implementar Structured Output (JSON Schema Validation)"
+type: curriculum-exercise
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, exercicio]
+last_updated: 2026-06-10
+---
 # ✅ Exercício 2: Implementar Structured Output (JSON Schema Validation)
 
 **Nível:** 1 - Fundamentals  

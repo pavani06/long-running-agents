@@ -1,3 +1,10 @@
+---
+title: "Estudo de Caso 3 (KODA): Product Discovery"
+type: curriculum-case-study
+aliases: []
+tags: [curriculo-conteudo, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # Estudo de Caso 3 (KODA): Product Discovery
 
 **Nível de Complexidade:** Nível 2–3  

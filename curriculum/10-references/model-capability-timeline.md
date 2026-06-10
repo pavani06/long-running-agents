@@ -1,3 +1,10 @@
+---
+title: "Model Capability Timeline: A Evolução que Possibilitou Long-Running Agents"
+type: curriculum-reference
+aliases: []
+tags: [curriculo-conteudo, referencia]
+last_updated: 2026-06-10
+---
 # 🕰️ Model Capability Timeline: A Evolução que Possibilitou Long-Running Agents
 ## Como Cada Salto em Capacidade de LLM Redefiniu o Que é Possível em Agentes Autônomos
 

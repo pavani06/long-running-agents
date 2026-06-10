@@ -1,3 +1,10 @@
+---
+title: "Generator/Evaluator Graphs"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧠 Generator/Evaluator Graphs
 ## Detailed Knowledge Graph — Arquitetura, Fluxo, Coordenação e Aplicação KODA
 

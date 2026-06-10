@@ -1,3 +1,10 @@
+---
+title: "Guia de Setup: Preparando o Terreno para Long-Running Agents"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🛠️ Guia de Setup: Preparando o Terreno para Long-Running Agents
 ## Da Máquina Limpa ao Primeiro Agente Funcional em 90 Minutos
 

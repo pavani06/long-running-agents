@@ -1,3 +1,10 @@
+---
+title: "KODA Feature Dependencies: O Mapa de Como Cada Feature se Conecta aos Conceitos Core"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🔗 KODA Feature Dependencies: O Mapa de Como Cada Feature se Conecta aos Conceitos Core
 ## Quais capacidades do KODA dependem de quais fundamentos — e o que quebra quando um conceito muda
 

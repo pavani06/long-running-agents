@@ -1,3 +1,10 @@
+---
+title: "Template de Evaluation Rubric para Agentes Confiáveis"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🎯 Template de Evaluation Rubric para Agentes Confiáveis
 ## Guia prático para transformar critérios de qualidade em scoring auditável
 

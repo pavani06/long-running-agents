@@ -1,3 +1,10 @@
+---
+title: "Problem-Solution Mapping: Cada Falha Tem Um Padrão Que a Resolve"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🗺️ Problem-Solution Mapping: Cada Falha Tem Um Padrão Que a Resolve
 ## Como Mapear Problemas Reais de Long-Running Agents para Soluções Arquiteturais Concretas
 
@@ -165,45 +172,45 @@ Este diagrama mostra cada classe de problema que um long-running agent enfrenta 
 graph LR
     subgraph PROBLEMS["🔴 PROBLEMAS (3 Níveis)"]
         subgraph N1_PROBS["Nível 1: Fundamentais"]
-            P1["Context Amnesia\nEsquece informações\nem conversas longas"]
-            P2["Planning-Execution Collapse\nTenta fazer tudo\nde uma vez"]
-            P3["Self-Evaluation Collapse\nAprova a própria\nresposta errada"]
+            P1["Context Amnesia<br/>Esquece informações<br/>em conversas longas"]
+            P2["Planning-Execution Collapse<br/>Tenta fazer tudo<br/>de uma vez"]
+            P3["Self-Evaluation Collapse<br/>Aprova a própria<br/>resposta errada"]
         end
 
         subgraph N2_PROBS["Nível 2: Qualidade e Visibilidade"]
-            P4["Qualidade Inconsistente\nRecomendações válidas\nmas mediocres"]
-            P5["Coordenação Fraca\nMódulos entregam\ndados inconsistentes"]
-            P6["Invisibilidade\nNão se sabe por que\nalgo falhou"]
-            P7["Custo e Latência\nSistema fica lento\ne caro com o tempo"]
+            P4["Qualidade Inconsistente<br/>Recomendações válidas<br/>mas mediocres"]
+            P5["Coordenação Fraca<br/>Módulos entregam<br/>dados inconsistentes"]
+            P6["Invisibilidade<br/>Não se sabe por que<br/>algo falhou"]
+            P7["Custo e Latência<br/>Sistema fica lento<br/>e caro com o tempo"]
         end
 
         subgraph N3_PROBS["Nível 3: Escala e Resiliência"]
-            P8["Estado Fragmentado\nDados se perdem\nentre agentes"]
-            P9["Conflito entre Agentes\nMúltiplos agentes\ndiscordam sobre estado"]
-            P10["Harness Envelhecido\nChecks acumulados\ndesaceleram o sistema"]
-            P11["Falhas em Cascata\nErro em um módulo\nquebra todo o pipeline"]
+            P8["Estado Fragmentado<br/>Dados se perdem<br/>entre agentes"]
+            P9["Conflito entre Agentes<br/>Múltiplos agentes<br/>discordam sobre estado"]
+            P10["Harness Envelhecido<br/>Checks acumulados<br/>desaceleram o sistema"]
+            P11["Falhas em Cascata<br/>Erro em um módulo<br/>quebra todo o pipeline"]
         end
     end
 
     subgraph SOLUTIONS["🟢 SOLUÇÕES (Padrões Arquiteturais)"]
         subgraph N1_SOLS["Nível 1"]
-            S1["State Persistence\nPersistir fora\nda context window"]
-            S2["Planning Separation\nSeparar plano\nde execução"]
-            S3["Generator/Evaluator\nDois agentes:\num cria, outro avalia"]
+            S1["State Persistence<br/>Persistir fora<br/>da context window"]
+            S2["Planning Separation<br/>Separar plano<br/>de execução"]
+            S3["Generator/Evaluator<br/>Dois agentes:<br/>um cria, outro avalia"]
         end
 
         subgraph N2_SOLS["Nível 2"]
-            S4["Rubric Design\nCritérios multidimensionais\nde qualidade"]
-            S5["Sprint Contracts\nContratos explícitos\nentre módulos"]
-            S6["Trace Reading\nAudit logging para\ndiagnóstico preciso"]
-            S7["Token Budgeting\nAlocação consciente\nde contexto"]
+            S4["Rubric Design<br/>Critérios multidimensionais<br/>de qualidade"]
+            S5["Sprint Contracts<br/>Contratos explícitos<br/>entre módulos"]
+            S6["Trace Reading<br/>Audit logging para<br/>diagnóstico preciso"]
+            S7["Token Budgeting<br/>Alocação consciente<br/>de contexto"]
         end
 
         subgraph N3_SOLS["Nível 3"]
-            S8["State Persistence\nSingle source of truth\ncompartilhada"]
-            S9["File-Based Coord\nLock files + JSON\ncomo canal de comunicação"]
-            S10["Harness Evolution\nCiclo BUILD→STABILIZE\n→SIMPLIFY→REMOVE"]
-            S11["Multi-Agent Coord\nOrchestrator + agentes\nespecializados"]
+            S8["State Persistence<br/>Single source of truth<br/>compartilhada"]
+            S9["File-Based Coord<br/>Lock files + JSON<br/>como canal de comunicação"]
+            S10["Harness Evolution<br/>Ciclo BUILD→STABILIZE<br/>→SIMPLIFY→REMOVE"]
+            S11["Multi-Agent Coord<br/>Orchestrator + agentes<br/>especializados"]
         end
     end
 
@@ -1206,29 +1213,29 @@ Este diagrama mostra os problemas mais frequentes do KODA em produção e quais 
 ```mermaid
 graph TB
     subgraph KODA_PROBS["🔴 Problemas Específicos do KODA"]
-        KP1["Alergia Ignorada\nRecomenda produto\ncom alérgeno"]
-        KP2["Promessa Prematura\nConfirma entrega\nantes de verificar"]
-        KP3["Double Discount\nAplica cupom + clube\nindevidamente"]
-        KP4["Upsell Irrelevante\nOferece produto nao-vegano\npara cliente vegano"]
-        KP5["Carrinho Abandonado\nCliente desiste por\nfalta de confianca"]
-        KP6["Same-Day Quebrado\nPromete entrega hoje\nsem estoque local"]
-        KP7["Resposta Generica\nNao verifica status\nreal do pedido"]
-        KP8["Onboarding Overwhelm\nLista 12 features para\ncliente novo"]
-        KP9["Roteamento Errado\nAtiva feature errada\npara a intencao"]
-        KP10["Conflito Safety vs Rec\nSafety bloqueia mas\nRecommendation insiste"]
+        KP1["Alergia Ignorada<br/>Recomenda produto<br/>com alérgeno"]
+        KP2["Promessa Prematura<br/>Confirma entrega<br/>antes de verificar"]
+        KP3["Double Discount<br/>Aplica cupom + clube<br/>indevidamente"]
+        KP4["Upsell Irrelevante<br/>Oferece produto nao-vegano<br/>para cliente vegano"]
+        KP5["Carrinho Abandonado<br/>Cliente desiste por<br/>falta de confianca"]
+        KP6["Same-Day Quebrado<br/>Promete entrega hoje<br/>sem estoque local"]
+        KP7["Resposta Generica<br/>Nao verifica status<br/>real do pedido"]
+        KP8["Onboarding Overwhelm<br/>Lista 12 features para<br/>cliente novo"]
+        KP9["Roteamento Errado<br/>Ativa feature errada<br/>para a intencao"]
+        KP10["Conflito Safety vs Rec<br/>Safety bloqueia mas<br/>Recommendation insiste"]
     end
 
     subgraph KODA_SOLS["🟢 Soluções Aplicadas no KODA"]
-        KS1["State Persistence\ncustomer_context.json\ncom alergias e restricoes"]
-        KS2["Planning Separation\nVerificar → Reservar →\nCalcular → Confirmar"]
-        KS3["Sprint Contracts\nPricing contract:\nbest_only rule"]
-        KS4["Rubric Design\nCompatibilidade com\nperfil: peso 40%"]
-        KS5["Generator/Evaluator\nEvaluator verifica contra\nperfil antes de recomendar"]
-        KS6["Multi-Agent Coord\nOrchestrator consulta\nInventory + Fulfillment"]
-        KS7["Trace Reading\naudit.jsonl com\neventos de decisao"]
-        KS8["Feature Router + Evaluator\nRouter classifica →\nEvaluator verifica"]
-        KS9["Decision Merger\nSafety priority = 100\noverride all others"]
-        KS10["Harness Evolution\nRevisao trimestral\nde thresholds"]
+        KS1["State Persistence<br/>customer_context.json<br/>com alergias e restricoes"]
+        KS2["Planning Separation<br/>Verificar → Reservar →<br/>Calcular → Confirmar"]
+        KS3["Sprint Contracts<br/>Pricing contract:<br/>best_only rule"]
+        KS4["Rubric Design<br/>Compatibilidade com<br/>perfil: peso 40%"]
+        KS5["Generator/Evaluator<br/>Evaluator verifica contra<br/>perfil antes de recomendar"]
+        KS6["Multi-Agent Coord<br/>Orchestrator consulta<br/>Inventory + Fulfillment"]
+        KS7["Trace Reading<br/>audit.jsonl com<br/>eventos de decisao"]
+        KS8["Feature Router + Evaluator<br/>Router classifica →<br/>Evaluator verifica"]
+        KS9["Decision Merger<br/>Safety priority = 100<br/>override all others"]
+        KS10["Harness Evolution<br/>Revisao trimestral<br/>de thresholds"]
     end
 
     KP1 --> KS1

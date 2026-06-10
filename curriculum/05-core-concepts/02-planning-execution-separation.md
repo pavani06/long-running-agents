@@ -1,3 +1,10 @@
+---
+title: "Planning vs Execution: Por Que Separar Planejamento de Execucao?"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, planning-execution]
+last_updated: 2026-06-10
+---
 # 🧠 Planning vs Execution: Por Que Separar Planejamento de Execucao?
 ## O Conceito Arquitetural que Transforma Agentes Confusos em Sistemas Precisos
 
@@ -219,7 +226,7 @@ flowchart TB
     end
 
     subgraph CONTRACT["📋 SPRINT CONTRACT"]
-        SC["Plano estruturado:\n- Passos numerados\n- Pre-condicoes\n- Criterios de done\n- Dependencias"]
+        SC["Plano estruturado:<br/>- Passos numerados<br/>- Pre-condicoes<br/>- Criterios de done<br/>- Dependencias"]
     end
 
     subgraph EXECUTION["⚡ FASE 2: EXECUTION"]
@@ -1171,25 +1178,25 @@ flowchart TB
     end
 
     subgraph PD_FLOW["🛍️ Fluxo Product Discovery"]
-        PD_P["🧠 Planner Discovery\n- Analisa preferencias\n- Define filtros\n- Define ordenacao"]
-        PD_E["⚡ Executor Discovery\n- Consulta catalogo\n- Verifica estoque\n- Calcula frete"]
+        PD_P["🧠 Planner Discovery<br/>- Analisa preferencias<br/>- Define filtros<br/>- Define ordenacao"]
+        PD_E["⚡ Executor Discovery<br/>- Consulta catalogo<br/>- Verifica estoque<br/>- Calcula frete"]
         PD_P -->|"Sprint Contract"| PD_E
     end
 
     subgraph OP_FLOW["📦 Fluxo Order Processing"]
-        OP_P["🧠 Planner Orders\n- Decompoe validacoes\n- Define dependencias\n- Define fallbacks"]
-        OP_E["⚡ Executor Orders\n- Valida estoque\n- Valida cupom\n- Calcula total\n- Processa pagamento"]
+        OP_P["🧠 Planner Orders<br/>- Decompoe validacoes<br/>- Define dependencias<br/>- Define fallbacks"]
+        OP_E["⚡ Executor Orders<br/>- Valida estoque<br/>- Valida cupom<br/>- Calcula total<br/>- Processa pagamento"]
         OP_P -->|"Sprint Contract"| OP_E
     end
 
     subgraph FF_FLOW["🚚 Fluxo Fulfillment"]
-        FF_P["🧠 Planner Fulfillment\n- Define rota\n- Define prioridade\n- Define comunicacao"]
-        FF_E["⚡ Executor Fulfillment\n- Aloca estoque\n- Gera etiqueta\n- Rastreia entrega"]
+        FF_P["🧠 Planner Fulfillment<br/>- Define rota<br/>- Define prioridade<br/>- Define comunicacao"]
+        FF_E["⚡ Executor Fulfillment<br/>- Aloca estoque<br/>- Gera etiqueta<br/>- Rastreia entrega"]
         FF_P -->|"Sprint Contract"| FF_E
     end
 
     subgraph EVAL["🔍 Evaluator (comum)"]
-        EV["Verifica cada resultado\ncontra rubricas KODA"]
+        EV["Verifica cada resultado<br/>contra rubricas KODA"]
     end
 
     subgraph OUTPUT["✅ Resposta"]

@@ -1,3 +1,10 @@
+---
+title: "Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 📋 Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts
 ## Critérios objetivos, verificáveis e calibrados para auto-avaliação e mentoria no currículo KODA
 

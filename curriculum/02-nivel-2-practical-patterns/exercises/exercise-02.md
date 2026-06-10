@@ -1,3 +1,11 @@
+---
+title: "Exercício 2: Implement Sprint Contracts com Generator/Evaluator"
+type: curriculum-exercise
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, exercicio]
+last_updated: 2026-06-10
+---
 # 🏗️ Exercício 2: Implement Sprint Contracts com Generator/Evaluator
 ## Nível 2 - Padrões Práticos
 

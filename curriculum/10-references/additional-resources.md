@@ -1,3 +1,10 @@
+---
+title: "Additional Resources: Seu Mapa do Ecossistema de Long-Running Agents"
+type: curriculum-reference
+aliases: []
+tags: [curriculo-conteudo, referencia]
+last_updated: 2026-06-10
+---
 # 📚 Additional Resources: Seu Mapa do Ecossistema de Long-Running Agents
 ## Papers, Blog Posts, Vídeos, Repositórios e Ferramentas Curados
 

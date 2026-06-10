@@ -1,3 +1,11 @@
+---
+title: "Customer Journey Flows: A Máquina de Estados que Guia Cada Cliente"
+type: curriculum-lesson
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, koda]
+last_updated: 2026-06-10
+---
 # 🗺️ Customer Journey Flows: A Máquina de Estados que Guia Cada Cliente
 ## Como KODA Gerencia Awareness, Consideration, Decision e Retention com Precisao Cirurgica
 

@@ -1,3 +1,13 @@
+---
+title: "Diagnóstico: Pedido Pago Não Encontrado no Bling e Agente Não Notificado"
+type: analysis
+date: 2026-05-26
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, bling, pedido, erro]
+last_updated: 2026-06-10
+---
+
 # Diagnóstico: Pedido Pago Não Encontrado no Bling e Agente Não Notificado
 
 **Data:** 26 Maio 2026

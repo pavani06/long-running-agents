@@ -1,3 +1,11 @@
+---
+title: "Arquitetura KODA: O Sistema que Transformou um Chatbot em uma Operação Comercial"
+type: curriculum-lesson
+nivel: 4
+aliases: []
+tags: [curriculo-conteudo, nivel-4, koda]
+last_updated: 2026-06-10
+---
 # 🏗️ Arquitetura KODA: O Sistema que Transformou um Chatbot em uma Operação Comercial
 ## Visão Completa da Arquitetura do Agente de Vendas via WhatsApp — Componentes, Fluxo de Dados, Integração e Pipeline
 

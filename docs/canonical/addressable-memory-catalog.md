@@ -4,7 +4,7 @@ type: canonical
 aliases: ["memory catalog", "addressable memory"]
 tags: ["context-engineering"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]"]
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"]
 sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
 ---
 # Addressable Memory Catalog

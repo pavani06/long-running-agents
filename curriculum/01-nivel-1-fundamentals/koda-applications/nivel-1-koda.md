@@ -1,3 +1,11 @@
+---
+title: "KODA em Ação: Aplicando Conceitos de Nível 1"
+type: curriculum-koda-application
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, koda]
+last_updated: 2026-06-10
+---
 # 🎯 KODA em Ação: Aplicando Conceitos de Nível 1
 ## Da Teoria à Prática - Long-Running Agents no Mundo Real do KODA
 

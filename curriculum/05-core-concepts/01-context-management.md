@@ -1,3 +1,11 @@
+---
+title: "Context Management: Como Agentes Mantêm o Foco por Horas"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, context-management]
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
+last_updated: 2026-06-10
+---
 # 🧠 Context Management: Como Agentes Mantêm o Foco por Horas
 ## O Core Concept #1 para construir KODA como um agente que lembra, decide e vende com confiança
 

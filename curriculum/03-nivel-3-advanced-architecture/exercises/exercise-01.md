@@ -1,3 +1,11 @@
+---
+title: "Exercício 1: Implementar Sistema Multi-Agente Planner/Generator/Evaluator"
+type: curriculum-exercise
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, exercicio]
+last_updated: 2026-06-10
+---
 # 🧠 Exercício 1: Implementar Sistema Multi-Agente Planner/Generator/Evaluator
 ## Nível 3 — Arquitetura Avançada
 

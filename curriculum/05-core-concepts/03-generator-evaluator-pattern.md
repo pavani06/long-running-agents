@@ -1,3 +1,11 @@
+---
+title: "Generator/Evaluator Pattern: Por Que Duas Mentes Julgam Melhor Que Uma"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, generator-evaluator]
+relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
+last_updated: 2026-06-10
+---
 # 🎯 Generator/Evaluator Pattern: Por Que Duas Mentes Julgam Melhor Que Uma
 ## Fundamento Cognitivo Para Agentes Que Precisam Gerar, Criticar e Corrigir Com Honestidade
 

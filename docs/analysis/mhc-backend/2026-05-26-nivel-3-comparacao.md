@@ -1,3 +1,13 @@
+---
+title: "Diagnóstico: Arquitetura KODA no mhc-backend vs. Nível 3 de Referência"
+type: analysis
+date: 2026-05-26
+domain: mhc-backend
+aliases: []
+tags: [analise, mhc-backend, diagnostico, nivel-3, arquitetura-avancada]
+last_updated: 2026-06-10
+---
+
 # Diagnóstico: Arquitetura KODA no mhc-backend vs. Nível 3 de Referência
 
 **Repositório analisado:** https://github.com/chatshop-io/mhc-backend.git

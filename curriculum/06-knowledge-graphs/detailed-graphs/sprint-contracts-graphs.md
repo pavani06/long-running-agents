@@ -1,3 +1,10 @@
+---
+title: "Sprint Contracts Knowledge Graph"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🎯 Sprint Contracts Knowledge Graph
 ## O mapa visual de como acordos testáveis transformam conversas longas do KODA em execução confiável
 

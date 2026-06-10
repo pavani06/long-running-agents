@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d9bc3849ffac579b",
+        "id": "bf537dbeb60b8b24",
         "type": "tabs",
         "children": [
           {
-            "id": "0d3dbe9f0a4fd85f",
+            "id": "e831ec7c2c55684c",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -176,7 +176,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "0d3dbe9f0a4fd85f",
+  "active": "e831ec7c2c55684c",
   "lastOpenFiles": [
     "curriculum/08-tools-templates/evaluation-rubric-template.md",
     "index.md",

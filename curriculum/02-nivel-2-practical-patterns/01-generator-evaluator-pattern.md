@@ -1,3 +1,12 @@
+---
+title: "Padrão Generator/Evaluator: Quando Um Agente Não É Suficiente"
+type: curriculum-lesson
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
+last_updated: 2026-06-10
+---
 # 🔄 Padrão Generator/Evaluator: Quando Um Agente Não É Suficiente
 ## Como Duas Mentes Colaborativas Criam Confiabilidade e Qualidade
 

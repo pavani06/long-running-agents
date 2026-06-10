@@ -1,3 +1,11 @@
+---
+title: "Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga"
+type: curriculum-core-concept
+aliases: []
+tags: [curriculo-conteudo, conceitos-core, evaluation-rubrics]
+relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]"]
+last_updated: 2026-06-10
+---
 # 🎯 Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga
 ## Como transformar julgamento subjetivo em score confiável para agentes long-running
 

@@ -1,3 +1,10 @@
+---
+title: "Team Progress Tracker"
+type: curriculum-template
+aliases: []
+tags: [curriculo-conteudo, template]
+last_updated: 2026-06-10
+---
 # 📊 Team Progress Tracker
 ## Template Interativo para Rastreamento de Progresso da Equipe no Currículo Long-Running Agents
 

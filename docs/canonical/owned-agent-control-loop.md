@@ -4,7 +4,7 @@ type: canonical
 aliases: ["control loop", "agent loop ownership"]
 tags: ["agent-loop", "harness", "12-factor-agents"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]"]
+relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns Lesson]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
 sources: []
 ---
 # Owned Agent Control Loop

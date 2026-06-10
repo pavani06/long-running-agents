@@ -1,3 +1,10 @@
+---
+title: "Knowledge Graph: Harness Evolution"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🧬 Knowledge Graph: Harness Evolution
 ## O Ciclo de Vida dos Componentes de Scaffolding em Agentes de IA — Mapa Conceitual Completo
 

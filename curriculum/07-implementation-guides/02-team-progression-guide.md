@@ -1,3 +1,10 @@
+---
+title: "Guia de Progressão da Equipe"
+type: curriculum-guide
+aliases: []
+tags: [curriculo-conteudo, guia-implementacao]
+last_updated: 2026-06-10
+---
 # 🧭 Guia de Progressão da Equipe
 ## Como Escalar o Aprendizado de Long-Running Agents na Sua Organização
 

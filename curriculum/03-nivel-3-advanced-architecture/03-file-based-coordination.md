@@ -1,3 +1,11 @@
+---
+title: "Coordenacao Baseada em Arquivos para Agentes Confiaveis"
+type: curriculum-lesson
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+last_updated: 2026-06-10
+---
 # 🔗 Coordenacao Baseada em Arquivos para Agentes Confiaveis
 ## Como lock files, status files e JSON protocol tornam o KODA auditável, retomável e seguro
 

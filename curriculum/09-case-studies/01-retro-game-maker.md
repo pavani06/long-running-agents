@@ -1,3 +1,10 @@
+---
+title: "Estudo de Caso 1: Retro Game Maker"
+type: curriculum-case-study
+aliases: []
+tags: [curriculo-conteudo, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # Estudo de Caso 1: Retro Game Maker
 
 **Nível de Complexidade:** Nível 2–3  

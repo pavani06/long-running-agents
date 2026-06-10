@@ -1,3 +1,11 @@
+---
+title: "Solucao do Exercicio 2: State Persistence com SQLite e Recovery"
+type: curriculum-solution
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, solucao]
+last_updated: 2026-06-10
+---
 # ✅ Solucao do Exercicio 2: State Persistence com SQLite e Recovery
 ## Implementando Checkpointing, Atomic Writes e Recuperacao de Falhas para o KODA
 

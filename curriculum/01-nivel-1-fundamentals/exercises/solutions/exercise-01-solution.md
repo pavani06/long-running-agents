@@ -1,3 +1,11 @@
+---
+title: "Solucao do Exercicio 1: History Windowing para Gerenciamento de Contexto"
+type: curriculum-solution
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, solucao]
+last_updated: 2026-06-10
+---
 # 🪟 Solucao do Exercicio 1: History Windowing para Gerenciamento de Contexto
 ## Implementacao Completa com Sliding Window, Compression Engine e Preservacao de Estado Critico
 

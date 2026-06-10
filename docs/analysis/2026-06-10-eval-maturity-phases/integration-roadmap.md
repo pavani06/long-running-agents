@@ -1,3 +1,13 @@
+---
+title: "Integration Roadmap: Eval Maturity Patterns -> long-running-agents"
+type: analysis
+date: 2026-06-10
+domain: eval-maturity
+aliases: []
+tags: [analise, evals, maturity-model, roadmap]
+last_updated: 2026-06-10
+---
+
 # Integration Roadmap: Eval Maturity Patterns -> long-running-agents
 
 **Date:** 2026-06-10  

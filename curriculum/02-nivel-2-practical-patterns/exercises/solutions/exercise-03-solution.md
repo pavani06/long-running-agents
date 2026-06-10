@@ -1,3 +1,11 @@
+---
+title: "Solução: Exercício 3 — Handle Failure Scenarios"
+type: curriculum-solution
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, solucao]
+last_updated: 2026-06-10
+---
 # ✅ Solução: Exercício 3 — Handle Failure Scenarios
 ## Respostas Comentadas para os 3 Cenários de Falha com Análise Completa
 

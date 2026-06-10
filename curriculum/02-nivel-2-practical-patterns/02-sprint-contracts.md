@@ -1,3 +1,11 @@
+---
+title: "Padrão Sprint Contracts: Acordos Negociados Entre Agentes"
+type: curriculum-lesson
+nivel: 2
+aliases: []
+tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+last_updated: 2026-06-10
+---
 # 📋 Padrão Sprint Contracts: Acordos Negociados Entre Agentes
 ## Como Definir Expectativas Claras Antes de Começar
 

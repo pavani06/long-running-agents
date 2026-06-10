@@ -1,3 +1,10 @@
+---
+title: "Estudos de Caso: Padrões de Agentes de Longa Duração"
+type: curriculum-case-study
+aliases: []
+tags: [curriculo-conteudo, caso-de-estudo]
+last_updated: 2026-06-10
+---
 # Estudos de Caso: Padrões de Agentes de Longa Duração
 
 **Audiência:** Time Técnico FutanBear  

@@ -1,3 +1,11 @@
+---
+title: "Por Que Agentes Perdem o Foco?"
+type: curriculum-lesson
+nivel: 1
+aliases: []
+tags: [curriculo-conteudo, nivel-1, fundamentos]
+last_updated: 2026-06-10
+---
 # 🎯 Por Que Agentes Perdem o Foco?
 ## Os 3 Problemas Fundamentais de Long-Running Agents
 

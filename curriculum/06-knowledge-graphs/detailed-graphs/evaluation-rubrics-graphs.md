@@ -1,3 +1,10 @@
+---
+title: "Detailed Graph: Evaluation Rubrics"
+type: curriculum-knowledge-graph
+aliases: []
+tags: [curriculo-conteudo, knowledge-graph, mermaid]
+last_updated: 2026-06-10
+---
 # 🎯 Detailed Graph: Evaluation Rubrics
 ## Hierarchical connections, evaluation flow, and KODA quality rubrics that transform vague quality into measurable, auditable scores
 

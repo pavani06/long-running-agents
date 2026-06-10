@@ -1,3 +1,12 @@
+---
+title: "Persistência de Estado para Agentes Long-Running"
+type: curriculum-lesson
+nivel: 3
+aliases: []
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
+last_updated: 2026-06-10
+---
 # 💾 Persistência de Estado para Agentes Long-Running
 ## Como SQLite, JSON Files e Checkpointing Mantêm Agentes Vivos Através de Falhas
 
