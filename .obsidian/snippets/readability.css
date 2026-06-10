@@ -1,0 +1,23 @@
+.markdown-preview-view {
+  max-width: 720px;
+  margin-inline: auto;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.markdown-preview-view p,
+.markdown-preview-view ul,
+.markdown-preview-view ol,
+.markdown-preview-view blockquote {
+  margin-top: 0.8em;
+}
+
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+}
