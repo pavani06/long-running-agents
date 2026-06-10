@@ -123,7 +123,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 24 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 28 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -153,6 +153,10 @@ Tópicos candidatos a ADR:
 | `epistemic-memory-graph.md` | Grafo de memória com status epistêmico e proveniência |
 | `domain-embedded-workflow-automation-wedge.md` | Wedge de automação de workflow embutido no domínio e guiado por evidência |
 | `obsidian-document-conventions.md` | Convencoes de frontmatter, wikilinks, tags e validacao para documentos Obsidian-ready (AGENTS.md Rule 16) |
+| `external-state-persistence.md` | Persistência de estado externo como estratégia unificada: catálogo, recuperação exata, pause/resume e writeback |
+| `plan-execute-verify.md` | Separação explícita em três fases (planejar → executar → verificar) com checkpoints e contratos por fase |
+| `generator-evaluator.md` | Arquitetura de dois agentes: Generator (criativo) + Evaluator (imparcial) com loop de feedback |
+| `constraint-anchored-evaluation.md` | Avaliação objetiva ancorada em constraints explícitas e verificáveis do estado persistido |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 

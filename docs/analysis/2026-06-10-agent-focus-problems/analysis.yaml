@@ -1,0 +1,67 @@
+meta:
+  title: "Knowledge Extraction: Por Que Agentes Perdem o Foco?"
+  source: "curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot.md"
+  date: "2026-06-10"
+  type: "analysis"
+
+frameworks:
+  - name: "Three Fundamental Problems"
+    components:
+      - "Context Amnesia — finite window causes information loss"
+      - "Planning-Execution Collapse — single-pass processing degrades under complexity"
+      - "Self-Evaluation Collapse — confirmation bias prevents error detection"
+  - name: "Context Rot Degradation Curve"
+    components:
+      - "0-60min: excellent"
+      - "60-120min: good"
+      - "120-180min: acceptable"
+      - "180+min: erratic"
+
+patterns:
+  - name: "Generator-Evaluator"
+    problem: "All three fundamental problems simultaneously"
+    mechanism: "Separate generation agent from evaluation agent with constraint checking and feedback loop"
+  - name: "External State Persistence"
+    problem: "Context amnesia"
+    mechanism: "Store critical data in external file/database, load per turn"
+  - name: "Plan-Execute-Verify"
+    problem: "Planning-Execution collapse"
+    mechanism: "Three separate phases with explicit checkpoints"
+  - name: "Constraint-Anchored Evaluation"
+    problem: "Self-evaluation collapse"
+    mechanism: "Evaluator checks output against explicit constraints, not subjective judgment"
+
+operational_lessons:
+  - lesson: "Cascade effect amplifies individual failures into compound failures"
+    context: "Amnesia → reprocessing chaos → undetected errors → client loss"
+  - lesson: "Architecture (70-80%) dominates prompting (20-30%) for quality"
+    context: "Engineers iterating on prompts hit a structural ceiling"
+  - lesson: "Middle of conversation degrades first, not the oldest content"
+    context: "Head-tail attention mechanics cause mid-conversation information loss"
+
+tradeoffs:
+  - decision: "External state persistence"
+    benefit: "Survives any conversation length"
+    cost: "Extraction logic + I/O latency per turn"
+  - decision: "Plan-Execute-Verify separation"
+    benefit: "Clear debugging, checkpoint verification"
+    cost: "Latency from 3 separate phases"
+  - decision: "External evaluator"
+    benefit: "Catches 10-12% more errors, impartial"
+    cost: "2x LLM calls per turn"
+  - decision: "Constraint-anchored evaluation"
+    benefit: "Objective, auditable, actionable"
+    cost: "Only catches explicitly modeled constraints"
+
+failure_patterns:
+  - pattern: "Silent failure propagation"
+    cause: "Self-evaluation cannot detect own errors"
+    mitigation: "External evaluator with constraint checking"
+  - pattern: "Mid-conversation information loss"
+    cause: "Context window saturation; head-tail truncation"
+    mitigation: "External state persistence for critical data"
+  - pattern: "Single-pass cascade errors"
+    cause: "Planning and execution mixed in single context"
+    mitigation: "Separate plan-execute-verify phases"
+
+synthesis: "Architectural problems require architectural solutions. Better prompting helps 20-30%; separation of concerns (external state, explicit phases, impartial evaluation) delivers the remaining 70-80%. The Generator-Evaluator pattern unifies all three solutions."

@@ -1,0 +1,81 @@
+meta:
+  title: "Classification: Agent Focus Problems vs Repository"
+  source: "docs/analysis/2026-06-10-agent-focus-problems/patterns.md"
+  date: "2026-06-10"
+  type: "classification"
+
+classifications:
+  - pattern: "External State Persistence"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      existing:
+        - "docs/canonical/addressable-memory-catalog.md — catalog of omitted memory"
+        - "docs/canonical/head-tail-context-truncation.md — preserves head+tail with external middle"
+        - "docs/canonical/serializable-pause-resume-state.md — full state serialization"
+        - "docs/canonical/stable-harness-prompt.md — stable harness separation"
+        - "docs/canonical/epistemic-memory-graph.md — epistemic labels and provenance"
+        - "docs/canonical/closed-loop-agent-operating-system.md — state writeback loop"
+      missing:
+        - "No unified canonical doc connecting catalog, recovery, pause/resume, and writeback"
+        - "No explicit naming as 'External State Persistence'"
+        - "No tradeoff analysis across the 6 component pieces as a unified strategy"
+    justification: "Repo has all mechanical pieces across 6 docs but no umbrella pattern that names and unifies them."
+
+  - pattern: "Plan-Execute-Verify"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      existing:
+        - "docs/canonical/owned-agent-control-loop.md — loop decomposition with intervention points"
+        - "docs/canonical/deterministic-tool-dispatch.md — deterministic dispatch"
+        - "docs/canonical/closed-loop-agent-operating-system.md — execution routing"
+        - "docs/canonical/serializable-pause-resume-state.md — checkpoints"
+        - "docs/canonical/resolver-based-context-progressive-disclosure.md — load-on-demand"
+        - "docs/canonical/stable-harness-prompt.md — stable operating contract"
+        - "docs/canonical/split-brain-planning-review.md — independent review before execution"
+      missing:
+        - "No canonical doc naming the three-phase loop explicitly (Plan → Execute → Verify)"
+        - "owned-agent-control-loop.md is closest but uses different terminology"
+        - "No explicit contract for valid plan vs execution vs verification phases"
+    justification: "Repo covers controlled execution extensively but never names or formalizes the plan-execute-verify triad."
+
+  - pattern: "Generator-Evaluator"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      existing:
+        - "docs/canonical/multi-model-evaluation-council.md — model diversity as evaluators"
+        - "docs/canonical/eval-tier-stratification.md — fast/medium/deep tiers"
+        - "docs/canonical/pr-gated-eval-enforcement.md — eval enforcement on merge"
+        - "docs/canonical/repeatable-agent-spot-check-set.md — seed set with baselines"
+        - "docs/canonical/production-grounded-eval-sampling.md — production-anchored sampling"
+        - "docs/canonical/n-plus-one-long-session-evals.md — N+1 follow-up grading"
+        - "docs/canonical/skill-resolver-skillify-capability-pipeline.md — eval-gated promotion"
+      missing:
+        - "No canonical doc anchoring Generator-Evaluator as unified architecture"
+        - "Existing eval docs focus on mechanics, not the generator↔evaluator loop"
+        - "No explicit framing of two-agent architecture as deliberate pattern"
+    justification: "Repo has mature eval infrastructure but no Generator-Evaluator canonical doc. Curriculum teaches it; no canonical formalizes it."
+
+  - pattern: "Constraint-Anchored Evaluation"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      existing:
+        - "docs/canonical/repeatable-agent-spot-check-set.md — expected outcomes with constraints"
+        - "docs/canonical/pr-gated-eval-enforcement.md — threshold enforcement"
+        - "docs/canonical/eval-tier-stratification.md — tier-specific thresholds"
+        - "docs/canonical/split-brain-planning-review.md — independent rubrics"
+        - "docs/canonical/skill-resolver-skillify-capability-pipeline.md — compliance tests"
+      missing:
+        - "No canonical doc placing constraints as the spine of evaluation"
+        - "Existing docs mention thresholds but not 'constraint anchoring' as named pattern"
+        - "No explicit mapping from state persistence constraints to evaluation criteria"
+    justification: "Repo uses constraint-based checking implicitly. Pattern exists in practice but is not formalized."
+
+summary_table:
+  - {number: 1, pattern: "External State Persistence", classification: "Partial Coverage", integration_value: "High"}
+  - {number: 2, pattern: "Plan-Execute-Verify", classification: "Partial Coverage", integration_value: "High"}
+  - {number: 3, pattern: "Generator-Evaluator", classification: "Partial Coverage", integration_value: "High"}
+  - {number: 4, pattern: "Constraint-Anchored Evaluation", classification: "Partial Coverage", integration_value: "High"}
