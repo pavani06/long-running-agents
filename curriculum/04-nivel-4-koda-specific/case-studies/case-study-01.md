@@ -3,7 +3,7 @@ title: "Case Study: Lançamento do KODA Same-Day Delivery"
 type: curriculum-case-study
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+tags: [curriculo-conteudo, nivel-4, caso-de-estudo, entrega-no-mesmo-dia, coordenacao-logistica, reserva-de-estoque, roteamento-e-eta, lock-files, state-persistence, rubricas-de-evaluacao, recuperacao-de-incidente, deploy-gradual, adr-arquitetural]
 last_updated: 2026-06-10
 ---
 # 🚀 Case Study: Lançamento do KODA Same-Day Delivery

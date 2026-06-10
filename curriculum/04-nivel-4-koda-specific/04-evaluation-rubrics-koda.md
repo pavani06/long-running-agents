@@ -3,7 +3,7 @@ title: "Evaluation Rubrics para KODA"
 type: curriculum-lesson
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, koda]
+tags: [curriculo-conteudo, nivel-4, koda, rubricas-de-avaliacao, avaliacao-de-qualidade, validacao-negocial, recomendacao-de-produtos, resposta-ao-cliente, negociacao-de-preco, follow-up, calibracao-de-evaluadores, feedback-loop, human-review]
 last_updated: 2026-06-10
 ---
 # 📏 Evaluation Rubrics para KODA

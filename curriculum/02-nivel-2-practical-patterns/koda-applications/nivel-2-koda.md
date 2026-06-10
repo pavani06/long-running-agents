@@ -3,7 +3,7 @@ title: "KODA em Evolução: Padrões Avançados e Refatoração Arquitetural"
 type: curriculum-koda-application
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, koda]
+tags: [curriculo-conteudo, nivel-2, koda, arquitetura-koda, refatoracao-arquitetural, padroes-integrados, casos-de-uso-koda, confiabilidade-operacional, monitoramento-em-producao, otimizacao-de-roi, transicao-para-nivel-3]
 last_updated: 2026-06-10
 ---
 # 🚀 KODA em Evolução: Padrões Avançados e Refatoração Arquitetural

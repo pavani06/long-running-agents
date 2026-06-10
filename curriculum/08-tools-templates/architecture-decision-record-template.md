@@ -2,7 +2,7 @@
 title: "Architecture Decision Record (ADR) Template"
 type: curriculum-template
 aliases: []
-tags: [curriculo-conteudo, template]
+tags: [curriculo-conteudo, template, decisoes-arquiteturais, registro-de-decisao, documentacao-tecnica, governanca-arquitetural, padrao-de-documentacao]
 last_updated: 2026-06-10
 ---
 # 📋 Architecture Decision Record (ADR) Template

@@ -3,7 +3,7 @@ title: "Padrão Trace Reading: Transformando a Caixa-Preta em Glass Box"
 type: curriculum-lesson
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+tags: [curriculo-conteudo, nivel-2, padroes-praticos, observabilidade, leitura-de-traces, logs-estruturados, rastreamento-de-decisoes, analise-de-falhas, diagnostico-de-bugs, linha-do-tempo, transparencia-arquitetural]
 relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10
 ---

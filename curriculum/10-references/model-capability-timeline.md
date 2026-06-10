@@ -2,7 +2,7 @@
 title: "Model Capability Timeline: A Evolução que Possibilitou Long-Running Agents"
 type: curriculum-reference
 aliases: []
-tags: [curriculo-conteudo, referencia]
+tags: [curriculo-conteudo, referencia, evolucao-de-modelos, linha-do-tempo, capacidades-de-llms, historico-de-modelos, planejamento-de-harness]
 last_updated: 2026-06-10
 ---
 # 🕰️ Model Capability Timeline: A Evolução que Possibilitou Long-Running Agents

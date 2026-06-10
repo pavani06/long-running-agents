@@ -3,7 +3,7 @@ title: "Token Budgeting: O Orçamento Invisível dos Agentes"
 type: curriculum-lesson
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, fundamentos]
+tags: [curriculo-conteudo, nivel-1, fundamentos, orcamento-de-tokens, gestao-de-contexto, burn-rate, janela-movel, buffer-de-resposta, buffer-de-resumo, compressao-de-contexto, agrupamento-semantico, estrategia-hibrida, monitoramento-proativo]
 last_updated: 2026-06-10
 ---
 # 💰 Token Budgeting: O Orçamento Invisível dos Agentes

@@ -3,7 +3,7 @@ title: "Customer Journey Flows: A Máquina de Estados que Guia Cada Cliente"
 type: curriculum-lesson
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, koda]
+tags: [curriculo-conteudo, nivel-4, koda, maquina-de-estados, jornada-do-cliente, aarrr-adaptado, guard-conditions, sub-estados, metricas-por-etapa, tratamento-de-excecoes, handoff-humano, testes-property-based, novos-fluxos]
 last_updated: 2026-06-10
 ---
 # 🗺️ Customer Journey Flows: A Máquina de Estados que Guia Cada Cliente

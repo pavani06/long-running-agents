@@ -2,7 +2,7 @@
 title: "Estudo de Caso 2: Browser DAW (Digital Audio Workstation)"
 type: curriculum-case-study
 aliases: []
-tags: [curriculo-conteudo, caso-de-estudo]
+tags: [curriculo-conteudo, caso-de-estudo, persistencia-de-estado, coordenacao-por-arquivos, audio-no-browser, operacao-continua, agentes-colaborativos]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 2: Browser DAW (Digital Audio Workstation)

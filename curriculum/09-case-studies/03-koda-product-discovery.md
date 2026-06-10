@@ -2,7 +2,7 @@
 title: "Estudo de Caso 3 (KODA): Product Discovery"
 type: curriculum-case-study
 aliases: []
-tags: [curriculo-conteudo, caso-de-estudo]
+tags: [curriculo-conteudo, caso-de-estudo, recomendacao-de-produtos, validacao-de-recomendacoes, inventario-em-tempo-real, whatsapp, avaliacao-com-rubrica]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 3 (KODA): Product Discovery

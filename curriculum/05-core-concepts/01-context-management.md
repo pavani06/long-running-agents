@@ -2,7 +2,7 @@
 title: "Context Management: Como Agentes Mantêm o Foco por Horas"
 type: curriculum-core-concept
 aliases: []
-tags: [curriculo-conteudo, conceitos-core, context-management]
+tags: [curriculo-conteudo, conceitos-core, context-management, gestao-de-memoria, janela-de-contexto, resumo-progressivo, persistencia-de-estado, busca-semantica, orquestracao-de-contexto, arquitetura-de-memoria, orcamento-de-tokens]
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10
 ---

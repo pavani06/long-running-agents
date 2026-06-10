@@ -2,7 +2,7 @@
 title: "Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção"
 type: curriculum-guide
 aliases: []
-tags: [curriculo-conteudo, guia-implementacao]
+tags: [curriculo-conteudo, guia-implementacao, evolucao-arquitetural, remocao-segura, simplificacao, feature-flags, canary-release, rollback, validacao-pos-remocao, roi]
 last_updated: 2026-06-10
 ---
 # 🧬 Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção

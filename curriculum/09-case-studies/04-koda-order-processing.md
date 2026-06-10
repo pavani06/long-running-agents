@@ -2,7 +2,7 @@
 title: "Estudo de Caso 4 (KODA): Order Processing"
 type: curriculum-case-study
 aliases: []
-tags: [curriculo-conteudo, caso-de-estudo]
+tags: [curriculo-conteudo, caso-de-estudo, processamento-de-pedidos, workflow-multietapas, preco-e-pagamento, idempotencia, fulfillment]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 4 (KODA): Order Processing

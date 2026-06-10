@@ -3,7 +3,7 @@ title: "KODA em Ação: Aplicando Conceitos de Nível 1"
 type: curriculum-koda-application
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, koda]
+tags: [curriculo-conteudo, nivel-1, koda, aplicacao-pratica, diagnostico-de-conversas, traces-de-conversa, decision-record, recomendacao-de-produtos, validacao-de-pedidos, checkout-seguro, budget-de-tokens, melhoria-de-features, operacao-em-producao]
 last_updated: 2026-06-10
 ---
 # 🎯 KODA em Ação: Aplicando Conceitos de Nível 1

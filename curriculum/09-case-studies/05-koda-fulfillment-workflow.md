@@ -2,7 +2,7 @@
 title: "Estudo de Caso 5 (KODA): Fulfillment & Same-Day Delivery"
 type: curriculum-case-study
 aliases: []
-tags: [curriculo-conteudo, caso-de-estudo]
+tags: [curriculo-conteudo, caso-de-estudo, entrega-no-mesmo-dia, logistica, coordenacao-multi-agente, estado-persistente, rastreamento-de-entregas, operacao-continua]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 5 (KODA): Fulfillment & Same-Day Delivery

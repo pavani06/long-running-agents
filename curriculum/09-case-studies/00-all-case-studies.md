@@ -2,7 +2,7 @@
 title: "Estudos de Caso: Padrões de Agentes de Longa Duração"
 type: curriculum-case-study
 aliases: []
-tags: [curriculo-conteudo, caso-de-estudo]
+tags: [curriculo-conteudo, caso-de-estudo, compilacao-de-casos, visao-geral, padroes-de-agentes, arquitetura-aplicada, multi-agentes]
 last_updated: 2026-06-10
 ---
 # Estudos de Caso: Padrões de Agentes de Longa Duração

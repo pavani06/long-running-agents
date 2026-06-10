@@ -2,7 +2,7 @@
 title: "Template: Knowledge Graph para Conceitos de Long-Running Agents"
 type: curriculum-template
 aliases: []
-tags: [curriculo-conteudo, template]
+tags: [curriculo-conteudo, template, grafo-de-conhecimento, diagramas-mermaid, visualizacao-de-arquitetura, relacionamentos-conceituais, modelagem-de-conhecimento]
 last_updated: 2026-06-10
 ---
 # 🧠 Template: Knowledge Graph para Conceitos de Long-Running Agents

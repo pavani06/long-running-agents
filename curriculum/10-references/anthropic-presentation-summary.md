@@ -2,7 +2,7 @@
 title: "Resumo da Apresentação Anthropic: Building Long-Running Agents"
 type: curriculum-reference
 aliases: []
-tags: [curriculo-conteudo, referencia]
+tags: [curriculo-conteudo, referencia, fundamentos-de-agentes, sistemas-de-agentes, memoria-externa, avaliacao-separada, coordenacao-de-agentes]
 last_updated: 2026-06-10
 ---
 # 🧭 Resumo da Apresentação Anthropic: Building Long-Running Agents

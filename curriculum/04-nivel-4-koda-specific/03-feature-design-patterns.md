@@ -3,7 +3,7 @@ title: "Padrões de Design de Features: Como Estender o KODA com Confiança"
 type: curriculum-lesson
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, koda]
+tags: [curriculo-conteudo, nivel-4, koda, contratos-de-feature, generator-evaluator, validacao-de-saida, roteamento-de-features, integracao-com-pipeline, orcamento-de-tokens, decision-merger, testes-de-integracao, debugging-de-feature, governanca-de-features]
 last_updated: 2026-06-10
 ---
 # 🎯 Padrões de Design de Features: Como Estender o KODA com Confiança

@@ -3,7 +3,7 @@ title: "Rubric Design: Como Ensinar um Evaluator a Ser Crítico e Justo"
 type: curriculum-lesson
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+tags: [curriculo-conteudo, nivel-2, padroes-praticos, criterios-mensuraveis, avaliacao-qualitativa, dimensoes-de-avaliacao, pesos-e-thresholds, escalas-de-avaliacao, exemplos-ancora, feedback-estruturado, calibracao-de-evaluator, seguranca-alergica]
 last_updated: 2026-06-10
 ---
 # 📏 Rubric Design: Como Ensinar um Evaluator a Ser Crítico e Justo

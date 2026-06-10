@@ -2,7 +2,7 @@
 title: "Problem-Solution Mapping: Cada Falha Tem Um Padrão Que a Resolve"
 type: curriculum-knowledge-graph
 aliases: []
-tags: [curriculo-conteudo, knowledge-graph, mermaid]
+tags: [curriculo-conteudo, knowledge-graph, mermaid, mapeamento-problema-solucao, diagnostico-arquitetural, triagem-de-sintomas, causa-raiz, severidade-e-impacto, falsos-positivos, prescricao-arquitetural, anti-padroes, depuracao-de-agentes]
 last_updated: 2026-06-10
 ---
 # 🗺️ Problem-Solution Mapping: Cada Falha Tem Um Padrão Que a Resolve

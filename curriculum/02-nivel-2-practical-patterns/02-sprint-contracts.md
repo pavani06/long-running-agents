@@ -3,7 +3,7 @@ title: "Padrão Sprint Contracts: Acordos Negociados Entre Agentes"
 type: curriculum-lesson
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+tags: [curriculo-conteudo, nivel-2, padroes-praticos, contratos-entre-agentes, negociacao-de-escopo, definicao-de-pronto, criterios-de-sucesso, tratamento-de-falhas, conversas-longas, alinhamento-de-expectativas, loops-de-retry]
 last_updated: 2026-06-10
 ---
 # 📋 Padrão Sprint Contracts: Acordos Negociados Entre Agentes

@@ -2,7 +2,7 @@
 title: "Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema"
 type: curriculum-core-concept
 aliases: []
-tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination]
+tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination, orquestracao-de-agentes, sistemas-multiagente, trabalho-paralelo, fan-out-fan-in, sincronizacao-de-estado, resolucao-de-conflitos, rastreamento-de-decisoes, idempotencia]
 last_updated: 2026-06-10
 ---
 # 🤝 Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema

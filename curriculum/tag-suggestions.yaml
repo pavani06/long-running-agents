@@ -1,0 +1,688 @@
+# Tag Suggestions for Curriculum Documents
+# Generated: 2026-06-10
+# Purpose: Enrich YAML frontmatter `tags:` with thematic tags reflecting actual document content.
+# Usage: Feed this file to an agent in another session to apply the suggested tags.
+# Format: Each entry maps a file path to current_tags and suggested_new_tags (additive, do not remove existing).
+
+# ── Nível 1: Fundamentos ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot.md:
+  current_tags: [curriculo-conteudo, nivel-1, fundamentos]
+  suggested_new_tags:
+    - amnesia-de-contexto
+    - janela-de-contexto
+    - rot-de-contexto
+    - separacao-de-planejamento-e-execucao
+    - autoavaliacao
+    - avaliador-externo
+    - generator-evaluator
+    - erros-silenciosos
+    - confianca-do-cliente
+    - relacionamento-com-cliente
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/01-nivel-1-fundamentals/02-token-budgeting.md:
+  current_tags: [curriculo-conteudo, nivel-1, fundamentos]
+  suggested_new_tags:
+    - orcamento-de-tokens
+    - gestao-de-contexto
+    - burn-rate
+    - janela-movel
+    - buffer-de-resposta
+    - buffer-de-resumo
+    - compressao-de-contexto
+    - agrupamento-semantico
+    - estrategia-hibrida
+    - monitoramento-proativo
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns.md:
+  current_tags: [curriculo-conteudo, nivel-1, fundamentos]
+  suggested_new_tags:
+    - harness-de-agente
+    - validacao-de-entrada
+    - geracao-estruturada
+    - validacao-de-saida
+    - persistencia-de-estado
+    - fallback-e-retry
+    - guardrails
+    - metricas-de-confiabilidade
+    - arquitetura-de-producao
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/01-nivel-1-fundamentals/koda-applications/nivel-1-koda.md:
+  current_tags: [curriculo-conteudo, nivel-1, koda]
+  suggested_new_tags:
+    - aplicacao-pratica
+    - diagnostico-de-conversas
+    - traces-de-conversa
+    - decision-record
+    - recomendacao-de-produtos
+    - validacao-de-pedidos
+    - checkout-seguro
+    - budget-de-tokens
+    - melhoria-de-features
+    - operacao-em-producao
+
+# ── Nível 2: Padrões Práticos ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md:
+  current_tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+  suggested_new_tags:
+    - separacao-de-responsabilidades
+    - anti-sycophancy
+    - avaliacao-critica
+    - feedback-loop
+    - persistencia-de-estado
+    - arquivos-json
+    - auditabilidade
+    - recomendacao-de-produtos
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md:
+  current_tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+  suggested_new_tags:
+    - contratos-entre-agentes
+    - negociacao-de-escopo
+    - definicao-de-pronto
+    - criterios-de-sucesso
+    - tratamento-de-falhas
+    - conversas-longas
+    - alinhamento-de-expectativas
+    - loops-de-retry
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/02-nivel-2-practical-patterns/03-rubric-design.md:
+  current_tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+  suggested_new_tags:
+    - criterios-mensuraveis
+    - avaliacao-qualitativa
+    - dimensoes-de-avaliacao
+    - pesos-e-thresholds
+    - escalas-de-avaliacao
+    - exemplos-ancora
+    - feedback-estruturado
+    - calibracao-de-evaluator
+    - seguranca-alergica
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/02-nivel-2-practical-patterns/04-trace-reading.md:
+  current_tags: [curriculo-conteudo, nivel-2, padroes-praticos]
+  suggested_new_tags:
+    - observabilidade
+    - leitura-de-traces
+    - logs-estruturados
+    - rastreamento-de-decisoes
+    - analise-de-falhas
+    - diagnostico-de-bugs
+    - linha-do-tempo
+    - transparencia-arquitetural
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md:
+  current_tags: [curriculo-conteudo, nivel-2, koda]
+  suggested_new_tags:
+    - arquitetura-koda
+    - refatoracao-arquitetural
+    - padroes-integrados
+    - casos-de-uso-koda
+    - confiabilidade-operacional
+    - monitoramento-em-producao
+    - otimizacao-de-roi
+    - transicao-para-nivel-3
+
+# ── Nível 3: Arquitetura Avançada ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md:
+  current_tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+  suggested_new_tags:
+    - sistemas-multiagente
+    - planejamento-geracao-validacao
+    - decomposicao-de-jornada
+    - orquestracao-de-agentes
+    - ownership-de-responsabilidades
+    - coordenacao-sequencial
+    - coordenacao-paralela
+    - orientado-a-eventos
+    - canais-de-comunicacao
+    - auditabilidade
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md:
+  current_tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+  suggested_new_tags:
+    - persistencia-de-estado
+    - checkpointing
+    - recuperacao-de-falhas
+    - retomada-de-sessao
+    - sqlite
+    - arquivos-json
+    - redis
+    - escrita-atomica
+    - rollback
+    - padrao-saga
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination.md:
+  current_tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+  suggested_new_tags:
+    - coordenacao-baseada-em-arquivos
+    - arquivos-de-lock
+    - arquivos-de-status
+    - protocolo-json
+    - controle-de-concorrencia
+    - condicao-de-corrida
+    - manifest-auditavel
+    - idempotencia
+    - escrita-atomica
+    - rastreamento-auditavel
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md:
+  current_tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+  suggested_new_tags:
+    - compactacao-no-servidor
+    - sumarizacao-extrativa
+    - sumarizacao-abstrativa
+    - chunking-semantico
+    - priorizacao-de-contexto
+    - janela-deslizante-adaptativa
+    - retencao-de-contexto
+    - budget-de-tokens
+    - conversas-longas
+    - validacao-de-contexto
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md:
+  current_tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+  suggested_new_tags:
+    - evolucao-de-harness
+    - simplificacao-arquitetural
+    - remocao-de-componentes
+    - shadow-testing
+    - canary-deploy
+    - feature-flags
+    - roi-arquitetural
+    - adrs
+    - invariantes-arquiteturais
+    - corpus-de-avaliacao
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md:
+  current_tags: [curriculo-conteudo, nivel-3, koda]
+  suggested_new_tags:
+    - aplicacao-koda
+    - jornada-do-cliente
+    - vendas-por-whatsapp
+    - arquitetura-integrada
+    - recuperacao-de-carrinho
+    - seguranca-alimentar
+    - contexto-longo
+    - observabilidade
+    - decisoes-arquiteturais
+    - sistema-confiavel
+
+# ── Nível 4: Koda Específico ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/01-koda-architecture.md:
+  current_tags: [curriculo-conteudo, nivel-4, koda]
+  suggested_new_tags:
+    - arquitetura-de-agentes
+    - pipeline-de-vendas
+    - integracao-whatsapp-business
+    - coordenacao-multi-agente
+    - persistencia-de-estado
+    - fluxo-de-dados-end-to-end
+    - auditoria-e-observabilidade
+    - tratamento-de-erros
+    - seguranca-operacional
+    - evolucao-de-harness
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md:
+  current_tags: [curriculo-conteudo, nivel-4, koda]
+  suggested_new_tags:
+    - maquina-de-estados
+    - jornada-do-cliente
+    - aarrr-adaptado
+    - guard-conditions
+    - sub-estados
+    - metricas-por-etapa
+    - tratamento-de-excecoes
+    - handoff-humano
+    - testes-property-based
+    - novos-fluxos
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/03-feature-design-patterns.md:
+  current_tags: [curriculo-conteudo, nivel-4, koda]
+  suggested_new_tags:
+    - contratos-de-feature
+    - generator-evaluator
+    - validacao-de-saida
+    - roteamento-de-features
+    - integracao-com-pipeline
+    - orcamento-de-tokens
+    - decision-merger
+    - testes-de-integracao
+    - debugging-de-feature
+    - governanca-de-features
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md:
+  current_tags: [curriculo-conteudo, nivel-4, koda]
+  suggested_new_tags:
+    - rubricas-de-avaliacao
+    - avaliacao-de-qualidade
+    - validacao-negocial
+    - recomendacao-de-produtos
+    - resposta-ao-cliente
+    - negociacao-de-preco
+    - follow-up
+    - calibracao-de-evaluadores
+    - feedback-loop
+    - human-review
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:
+  current_tags: [curriculo-conteudo, nivel-4, koda]
+  suggested_new_tags:
+    - melhorias-de-harness
+    - priorizacao-de-propostas
+    - roadmap-de-evolucao
+    - manifest-de-turno
+    - compactacao-server-side
+    - checkpoint-comercial
+    - shadow-test
+    - canary-release
+    - roi-de-harness
+    - governanca-arquitetural
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/case-studies/case-study-01.md:
+  current_tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+  suggested_new_tags:
+    - entrega-no-mesmo-dia
+    - coordenacao-logistica
+    - reserva-de-estoque
+    - roteamento-e-eta
+    - lock-files
+    - state-persistence
+    - rubricas-de-evaluacao
+    - recuperacao-de-incidente
+    - deploy-gradual
+    - adr-arquitetural
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/case-studies/case-study-02.md:
+  current_tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+  suggested_new_tags:
+    - escalabilidade
+    - multi-agent
+    - compactacao
+    - coordenacao-baseada-em-arquivos
+    - balanceamento-de-carga
+    - gerenciamento-de-estado
+    - concorrencia
+    - observabilidade
+    - custo-operacional
+    - throughput
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/04-nivel-4-koda-specific/case-studies/case-study-03.md:
+  current_tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+  suggested_new_tags:
+    - melhoria-continua
+    - ciclos-de-feedback
+    - rubricas-adaptativas
+    - simplificacao-de-harness
+    - telemetria
+    - cultura-de-melhoria
+    - calibracao-de-rubricas
+    - metricas-de-qualidade
+    - learning-cards
+    - governanca-de-produto
+
+# ── Core Concepts (05) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/01-context-management.md:
+  current_tags: [curriculo-conteudo, conceitos-core, context-management]
+  suggested_new_tags:
+    - gestao-de-memoria
+    - janela-de-contexto
+    - resumo-progressivo
+    - persistencia-de-estado
+    - busca-semantica
+    - orquestracao-de-contexto
+    - arquitetura-de-memoria
+    - orcamento-de-tokens
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/02-planning-execution-separation.md:
+  current_tags: [curriculo-conteudo, conceitos-core, planning-execution]
+  suggested_new_tags:
+    - separacao-de-responsabilidades
+    - arquitetura-por-fases
+    - contratos-de-execucao
+    - replanejamento
+    - controle-de-fluxo
+    - execucao-sequencial
+    - desacoplamento
+    - verificacao-por-etapas
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/03-generator-evaluator-pattern.md:
+  current_tags: [curriculo-conteudo, conceitos-core, generator-evaluator]
+  suggested_new_tags:
+    - independencia-de-avaliacao
+    - revisao-critica
+    - reducao-de-bajulacao
+    - correcao-iterativa
+    - loop-de-feedback
+    - qualidade-de-saida
+    - seguranca-de-resposta
+    - auditabilidade
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/04-sprint-contracts.md:
+  current_tags: [curriculo-conteudo, conceitos-core, sprint-contracts]
+  suggested_new_tags:
+    - acordo-explicito
+    - especificacao-de-entradas
+    - criterios-de-sucesso
+    - negociacao-de-escopo
+    - controle-de-mudancas
+    - versionamento-de-contratos
+    - autonomia-com-limites
+    - coordenacao-por-contrato
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/05-state-persistence.md:
+  current_tags: [curriculo-conteudo, conceitos-core, state-persistence]
+  suggested_new_tags:
+    - persistencia-de-estado
+    - recuperacao-de-sessao
+    - retomada-de-conversa
+    - pontos-de-controle
+    - durabilidade
+    - resiliencia-operacional
+    - trilha-de-auditoria
+    - idempotencia
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/06-harness-evolution.md:
+  current_tags: [curriculo-conteudo, conceitos-core, harness-evolution]
+  suggested_new_tags:
+    - ciclo-de-vida-do-harness
+    - manutenibilidade
+    - reducao-de-complexidade
+    - divida-tecnica
+    - otimizacao-de-custo
+    - simplificacao-arquitetural
+    - evolucao-continua
+    - governanca-tecnica
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/07-multi-agent-coordination.md:
+  current_tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination]
+  suggested_new_tags:
+    - orquestracao-de-agentes
+    - sistemas-multiagente
+    - trabalho-paralelo
+    - fan-out-fan-in
+    - sincronizacao-de-estado
+    - resolucao-de-conflitos
+    - rastreamento-de-decisoes
+    - idempotencia
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/05-core-concepts/08-evaluation-rubrics.md:
+  current_tags: [curriculo-conteudo, conceitos-core, evaluation-rubrics]
+  suggested_new_tags:
+    - avaliacao-de-qualidade
+    - rubricas-multidimensionais
+    - pontuacao-ponderada
+    - calibracao-de-rubricas
+    - limiares-de-decisao
+    - auditoria-de-avaliacao
+    - observabilidade-de-qualidade
+    - diagnostico-de-desempenho
+
+# ── Knowledge Graphs (06) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/06-knowledge-graphs/01-concept-ecosystem.md:
+  current_tags: [curriculo-conteudo, knowledge-graph, mermaid]
+  suggested_new_tags:
+    - ecossistema-conceitual
+    - arquitetura-de-agentes
+    - conceitos-core
+    - dependencias-conceituais
+    - contexto-e-estado
+    - planejamento-e-execucao
+    - verificacao-de-qualidade
+    - coordenacao-multi-agente
+    - evolucao-do-harness
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/06-knowledge-graphs/02-koda-feature-dependencies.md:
+  current_tags: [curriculo-conteudo, knowledge-graph, mermaid]
+  suggested_new_tags:
+    - dependencias-entre-features
+    - mapeamento-de-capacidades
+    - analise-de-impacto
+    - risco-arquitetural
+    - priorizacao-tecnica
+    - saude-de-dependencias
+    - regressao-cruzada
+    - coordenacao-entre-features
+    - confiabilidade-operacional
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/06-knowledge-graphs/03-learning-progression.md:
+  current_tags: [curriculo-conteudo, knowledge-graph, mermaid]
+  suggested_new_tags:
+    - trilha-de-aprendizagem
+    - progressao-pedagogica
+    - pre-requisitos
+    - roteiros-de-estudo
+    - mentoria-tecnica
+    - prontidao-operacional
+    - sequenciamento-curricular
+    - avaliacao-de-aprendizagem
+    - onboarding-tecnico
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/06-knowledge-graphs/04-problem-solution-mapping.md:
+  current_tags: [curriculo-conteudo, knowledge-graph, mermaid]
+  suggested_new_tags:
+    - mapeamento-problema-solucao
+    - diagnostico-arquitetural
+    - triagem-de-sintomas
+    - causa-raiz
+    - severidade-e-impacto
+    - falsos-positivos
+    - prescricao-arquitetural
+    - anti-padroes
+    - depuracao-de-agentes
+
+# ── Implementation Guides (07) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/01-setup-guide.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - setup
+    - infraestrutura
+    - ambiente-de-desenvolvimento
+    - estrutura-de-repositorio
+    - dependencias
+    - configuracao
+    - onboarding
+    - automacao
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/02-team-progression-guide.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - lideranca-tecnica
+    - progressao-de-equipe
+    - mentoring
+    - aprendizado-continuo
+    - checkpoints
+    - metricas-de-aprendizado
+    - avaliacao-formativa
+    - gestao-de-capacidade
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/03-harness-design-checklist.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - harness
+    - auditoria
+    - qualidade
+    - seguranca
+    - guardrails
+    - persistencia-de-estado
+    - coordenacao-multi-agente
+    - observabilidade
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/04-evaluation-rubric-template.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - rubric
+    - scoring
+    - avaliacao
+    - criterios-de-qualidade
+    - calibracao
+    - versionamento
+    - feedback-estruturado
+    - criterios-de-bloqueio
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/05-trace-analysis-guide.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - traces
+    - debugging
+    - diagnostico
+    - troubleshooting
+    - analise-temporal
+    - causa-raiz
+    - observabilidade
+    - incidentes
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/07-implementation-guides/06-harness-evolution-playbook.md:
+  current_tags: [curriculo-conteudo, guia-implementacao]
+  suggested_new_tags:
+    - evolucao-arquitetural
+    - remocao-segura
+    - simplificacao
+    - feature-flags
+    - canary-release
+    - rollback
+    - validacao-pos-remocao
+    - roi
+
+# ── Tools & Templates (08) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/architecture-decision-record-template.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - decisoes-arquiteturais
+    - registro-de-decisao
+    - documentacao-tecnica
+    - governanca-arquitetural
+    - padrao-de-documentacao
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/evaluation-rubric-template.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - avaliacao-de-qualidade
+    - criterios-de-avaliacao
+    - rubrica
+    - calibracao
+    - avaliacao-automatizada
+    - validacao-de-outputs
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/knowledge-graph-template.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - grafo-de-conhecimento
+    - diagramas-mermaid
+    - visualizacao-de-arquitetura
+    - relacionamentos-conceituais
+    - modelagem-de-conhecimento
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/learning-assessment-rubric.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - avaliacao-de-aprendizado
+    - autoavaliacao
+    - dominio-conceitual
+    - mentoria
+    - progresso-pedagogico
+    - medicao-de-compreensao
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/sprint-contract-template.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - contratos-de-sprint
+    - acordo-entre-agentes
+    - criterios-de-aceitacao
+    - especificacao-de-entrada
+    - gestao-de-risco
+    - validacao-multietapas
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/08-tools-templates/team-progress-tracker.md:
+  current_tags: [curriculo-conteudo, template]
+  suggested_new_tags:
+    - acompanhamento-de-equipe
+    - gestao-de-progresso
+    - monitoramento-semanal
+    - mentoria
+    - dashboard-de-aprendizado
+    - planejamento-de-capacidade
+
+# ── Case Studies (09) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/00-all-case-studies.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - compilacao-de-casos
+    - visao-geral
+    - padroes-de-agentes
+    - arquitetura-aplicada
+    - multi-agentes
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/01-retro-game-maker.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - planejamento-de-sprints
+    - escopo-dividido
+    - multi-agentes
+    - harness-de-agentes
+    - coordenacao-iterativa
+    - contexto-longo
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/02-browser-daw-app.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - persistencia-de-estado
+    - coordenacao-por-arquivos
+    - audio-no-browser
+    - operacao-continua
+    - agentes-colaborativos
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/03-koda-product-discovery.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - recomendacao-de-produtos
+    - validacao-de-recomendacoes
+    - inventario-em-tempo-real
+    - whatsapp
+    - avaliacao-com-rubrica
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/04-koda-order-processing.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - processamento-de-pedidos
+    - workflow-multietapas
+    - preco-e-pagamento
+    - idempotencia
+    - fulfillment
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/09-case-studies/05-koda-fulfillment-workflow.md:
+  current_tags: [curriculo-conteudo, caso-de-estudo]
+  suggested_new_tags:
+    - entrega-no-mesmo-dia
+    - logistica
+    - coordenacao-multi-agente
+    - estado-persistente
+    - rastreamento-de-entregas
+    - operacao-continua
+
+# ── References (10) ──
+/mnt/c/Users/pavan/long-running-agents/curriculum/10-references/additional-resources.md:
+  current_tags: [curriculo-conteudo, referencia]
+  suggested_new_tags:
+    - curadoria-de-recursos
+    - bibliografia-tecnica
+    - papers-de-llms
+    - ferramentas-de-agentes
+    - ecossistema-de-ia
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/10-references/anthropic-presentation-summary.md:
+  current_tags: [curriculo-conteudo, referencia]
+  suggested_new_tags:
+    - fundamentos-de-agentes
+    - sistemas-de-agentes
+    - memoria-externa
+    - avaliacao-separada
+    - coordenacao-de-agentes
+
+/mnt/c/Users/pavan/long-running-agents/curriculum/10-references/model-capability-timeline.md:
+  current_tags: [curriculo-conteudo, referencia]
+  suggested_new_tags:
+    - evolucao-de-modelos
+    - linha-do-tempo
+    - capacidades-de-llms
+    - historico-de-modelos
+    - planejamento-de-harness

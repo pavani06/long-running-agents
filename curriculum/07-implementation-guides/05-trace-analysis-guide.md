@@ -2,7 +2,7 @@
 title: "Guia de Análise de Traces: Do Sintoma ao Diagnóstico"
 type: curriculum-guide
 aliases: []
-tags: [curriculo-conteudo, guia-implementacao]
+tags: [curriculo-conteudo, guia-implementacao, traces, debugging, diagnostico, troubleshooting, analise-temporal, causa-raiz, observabilidade, incidentes]
 last_updated: 2026-06-10
 ---
 # 🔍 Guia de Análise de Traces: Do Sintoma ao Diagnóstico

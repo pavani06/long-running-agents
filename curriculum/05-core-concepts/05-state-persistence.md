@@ -2,7 +2,7 @@
 title: "State Persistence: A Memória Durável dos Agentes Long-Running"
 type: curriculum-core-concept
 aliases: []
-tags: [curriculo-conteudo, conceitos-core, state-persistence]
+tags: [curriculo-conteudo, conceitos-core, state-persistence, persistencia-de-estado, recuperacao-de-sessao, retomada-de-conversa, pontos-de-controle, durabilidade, resiliencia-operacional, trilha-de-auditoria, idempotencia]
 last_updated: 2026-06-10
 ---
 # 🎯 State Persistence: A Memória Durável dos Agentes Long-Running

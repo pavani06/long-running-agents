@@ -2,7 +2,7 @@
 title: "Sprint Contracts: Contratos Testáveis para Agentes de Longa Duração"
 type: curriculum-core-concept
 aliases: []
-tags: [curriculo-conteudo, conceitos-core, sprint-contracts]
+tags: [curriculo-conteudo, conceitos-core, sprint-contracts, acordo-explicito, especificacao-de-entradas, criterios-de-sucesso, negociacao-de-escopo, controle-de-mudancas, versionamento-de-contratos, autonomia-com-limites, coordenacao-por-contrato]
 last_updated: 2026-06-10
 ---
 # 🎯 Sprint Contracts: Contratos Testáveis para Agentes de Longa Duração

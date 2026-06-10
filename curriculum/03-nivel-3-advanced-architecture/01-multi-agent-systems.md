@@ -3,7 +3,7 @@ title: "Sistemas Multi-Agente para Arquiteturas Confiáveis"
 type: curriculum-lesson
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, sistemas-multiagente, planejamento-geracao-validacao, decomposicao-de-jornada, orquestracao-de-agentes, ownership-de-responsabilidades, coordenacao-sequencial, coordenacao-paralela, orientado-a-eventos, canais-de-comunicacao, auditabilidade]
 last_updated: 2026-06-10
 ---
 # 🔗 Sistemas Multi-Agente para Arquiteturas Confiáveis

@@ -3,7 +3,7 @@ title: "Case Study 3: KODA Continuous Improvement — 6 Meses de Evolução"
 type: curriculum-case-study
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, caso-de-estudo]
+tags: [curriculo-conteudo, nivel-4, caso-de-estudo, melhoria-continua, ciclos-de-feedback, rubricas-adaptativas, simplificacao-de-harness, telemetria, cultura-de-melhoria, calibracao-de-rubricas, metricas-de-qualidade, learning-cards, governanca-de-produto]
 last_updated: 2026-06-10
 ---
 # 🔄 Case Study 3: KODA Continuous Improvement — 6 Meses de Evolução

@@ -3,7 +3,7 @@ title: "Persistência de Estado para Agentes Long-Running"
 type: curriculum-lesson
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, persistencia-de-estado, checkpointing, recuperacao-de-falhas, retomada-de-sessao, sqlite, arquivos-json, redis, escrita-atomica, rollback, padrao-saga]
 relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 last_updated: 2026-06-10
 ---

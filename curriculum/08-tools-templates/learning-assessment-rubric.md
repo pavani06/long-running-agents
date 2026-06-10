@@ -2,7 +2,7 @@
 title: "Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts"
 type: curriculum-template
 aliases: []
-tags: [curriculo-conteudo, template]
+tags: [curriculo-conteudo, template, avaliacao-de-aprendizado, autoavaliacao, dominio-conceitual, mentoria, progresso-pedagogico, medicao-de-compreensao]
 last_updated: 2026-06-10
 ---
 # 📋 Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts

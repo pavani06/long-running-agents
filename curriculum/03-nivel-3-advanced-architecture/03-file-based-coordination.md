@@ -3,7 +3,7 @@ title: "Coordenacao Baseada em Arquivos para Agentes Confiaveis"
 type: curriculum-lesson
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada]
+tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, coordenacao-baseada-em-arquivos, arquivos-de-lock, arquivos-de-status, protocolo-json, controle-de-concorrencia, condicao-de-corrida, manifest-auditavel, idempotencia, escrita-atomica, rastreamento-auditavel]
 last_updated: 2026-06-10
 ---
 # 🔗 Coordenacao Baseada em Arquivos para Agentes Confiaveis

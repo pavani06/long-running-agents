@@ -2,7 +2,7 @@
 title: "Checklist de Design de Harness para Agentes Confiáveis"
 type: curriculum-guide
 aliases: []
-tags: [curriculo-conteudo, guia-implementacao]
+tags: [curriculo-conteudo, guia-implementacao, harness, auditoria, qualidade, seguranca, guardrails, persistencia-de-estado, coordenacao-multi-agente, observabilidade]
 last_updated: 2026-06-10
 ---
 # 🧪 Checklist de Design de Harness para Agentes Confiáveis

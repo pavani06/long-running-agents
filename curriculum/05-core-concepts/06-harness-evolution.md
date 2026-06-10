@@ -2,7 +2,7 @@
 title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
 type: curriculum-core-concept
 aliases: []
-tags: [curriculo-conteudo, conceitos-core, harness-evolution]
+tags: [curriculo-conteudo, conceitos-core, harness-evolution, ciclo-de-vida-do-harness, manutenibilidade, reducao-de-complexidade, divida-tecnica, otimizacao-de-custo, simplificacao-arquitetural, evolucao-continua, governanca-tecnica]
 last_updated: 2026-06-10
 ---
 # 🧬 Harness Evolution: Construir, Medir, Simplificar, Remover

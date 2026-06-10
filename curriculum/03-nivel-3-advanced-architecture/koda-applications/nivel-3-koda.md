@@ -3,7 +3,7 @@ title: "KODA em Arquitetura Avançada: Sistemas que Sobrevivem a Horas, Falhas e
 type: curriculum-koda-application
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, koda]
+tags: [curriculo-conteudo, nivel-3, koda, aplicacao-koda, jornada-do-cliente, vendas-por-whatsapp, arquitetura-integrada, recuperacao-de-carrinho, seguranca-alimentar, contexto-longo, observabilidade, decisoes-arquiteturais, sistema-confiavel]
 last_updated: 2026-06-10
 ---
 # 🚀 KODA em Arquitetura Avançada: Sistemas que Sobrevivem a Horas, Falhas e Evolução

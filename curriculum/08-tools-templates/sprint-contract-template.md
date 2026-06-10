@@ -2,7 +2,7 @@
 title: "Sprint Contract Template"
 type: curriculum-template
 aliases: []
-tags: [curriculo-conteudo, template]
+tags: [curriculo-conteudo, template, contratos-de-sprint, acordo-entre-agentes, criterios-de-aceitacao, especificacao-de-entrada, gestao-de-risco, validacao-multietapas]
 last_updated: 2026-06-10
 ---
 # 📋 Sprint Contract Template

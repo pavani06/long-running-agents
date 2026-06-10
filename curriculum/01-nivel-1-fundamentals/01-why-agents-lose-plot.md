@@ -3,7 +3,7 @@ title: "Por Que Agentes Perdem o Foco?"
 type: curriculum-lesson
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, fundamentos]
+tags: [curriculo-conteudo, nivel-1, fundamentos, amnesia-de-contexto, janela-de-contexto, rot-de-contexto, separacao-de-planejamento-e-execucao, autoavaliacao, avaliador-externo, generator-evaluator, erros-silenciosos, confianca-do-cliente, relacionamento-com-cliente]
 last_updated: 2026-06-10
 ---
 # 🎯 Por Que Agentes Perdem o Foco?
