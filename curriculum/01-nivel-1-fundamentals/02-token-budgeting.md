@@ -2,8 +2,8 @@
 title: "Token Budgeting: O Orçamento Invisível dos Agentes"
 type: curriculum-lesson
 nivel: 1
-aliases: ["orçamento tokens", "token budget", "gestão de contexto", "burn rate"]
-tags: [curriculo-conteudo, nivel-1, fundamentos, orcamento-de-tokens, gestao-de-contexto, burn-rate, janela-movel, buffer-de-resposta, buffer-de-resumo, compressao-de-contexto, agrupamento-semantico, estrategia-hibrida, monitoramento-proativo]
+aliases: ["orçamento tokens", "token budget", "gestão de contexto", "burn rate", "janela de contexto", "compressão de contexto", "buffer de resumo", "estratégias de orçamento"]
+tags: [curriculo-conteudo, nivel-1, fundamentos, orcamento-de-tokens, gestao-de-contexto, burn-rate, janela-movel, buffer-de-resposta, buffer-de-resumo, compressao-de-contexto, agrupamento-semantico, estrategia-hibrida, monitoramento-proativo, explicit-token-budget-ledger, registro-de-orcamento-de-tokens, burn-rate-runtime-forecast, previsao-de-consumo-de-tokens, phase-gated-token-health-monitor, monitor-de-saude-de-tokens, durable-fact-selective-history, historico-seletivo-com-fatos-duraveis, summary-buffer-continuity, buffer-de-resumo-continuo, semantic-topic-bucketing, agrupamento-semantico-por-topico, hybrid-context-stack, pilha-de-contexto-hibrida, budget-aware-session-handoff, handoff-por-orcamento]
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10
 ---
