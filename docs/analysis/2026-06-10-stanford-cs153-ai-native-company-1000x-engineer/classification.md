@@ -6,6 +6,7 @@ date: 2026-06-10
 sources:
   - "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.md"
 aliases: ["classificação CS153", "gap analysis CS153", "11 padrões classificação"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|CS153 Patterns]]"]
 ---
 # Classification: Stanford CS153 AI Native Company Patterns
 

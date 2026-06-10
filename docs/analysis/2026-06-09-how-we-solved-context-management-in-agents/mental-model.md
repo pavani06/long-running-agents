@@ -6,6 +6,7 @@ domain: context-management
 aliases: ["modelo mental contexto", "framework contexto", "context management repo", "KODA contexto"]
 tags: [analise, context-engineering, context-management, mental-model]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
 ---
 
 # Mental Model: long-running-agents

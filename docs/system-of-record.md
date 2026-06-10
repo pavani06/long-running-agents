@@ -133,6 +133,12 @@ Tópicos candidatos a ADR:
 | `deterministic-tool-dispatch.md` | Padrão 2 (12FA): dispatch determinístico de ferramentas |
 | `owned-agent-control-loop.md` | Padrão 3 (12FA): loop de controle do agente com 4 componentes |
 | `serializable-pause-resume-state.md` | Padrão 4 (12FA): serialização de estado para pause/resume |
+| `invariant-compensation-split.md` | Classificação de componentes do harness como invariantes de domínio vs compensações temporárias de modelo |
+| `application-owned-agent-control-plane.md` | Contrato unificado de control plane: prompt versionado, schema de ação, dispatch determinístico, estado persistente e gates de intervenção |
+| `structured-generation-constraint-validation-circuit.md` | Circuito de geração estruturada + validação de constraints de domínio com repair, rejeição e audit |
+| `versioned-durable-agent-state.md` | Contrato de estado durável versionado com schema, migração, writeback, reload e audit trail |
+| `tested-degradation-ladder.md` | Escada de degradação testada: classificação de falha → retry → fallback seguro → escalação humana com testes por degrau |
+| `measured-harness-evolution-lifecycle.md` | Ciclo de vida BUILD → STABILIZE → SIMPLIFY → REMOVE com ROI, archive e reativação |
 | `head-tail-context-truncation.md` | Context reduction com head, tail e middle recuperável por handle |
 | `addressable-memory-catalog.md` | Catálogo de memória omitida com `id`, `location`, `preview`, `scope` e `fetch` |
 | `n-plus-one-long-session-evals.md` | Evals long-session no padrão N+1 para validar continuidade após redução de contexto |

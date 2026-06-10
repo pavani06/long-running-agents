@@ -6,6 +6,7 @@ domain: eval-maturity
 aliases: ["modelo mental evals", "precedencia evals", "framework evals", "EDD"]
 tags: [analise, evals, maturity-model, mental-model]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
 ---
 
 # Mental Model: long-running-agents

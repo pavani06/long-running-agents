@@ -6,6 +6,7 @@ domain: ai-native-company
 aliases: ["Stanford CS153", "AI native company", "1000x engineer", "empresa AI-native"]
 tags: [agentes-orquestracao, evals, context-engineering]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model|CS153 Mental Model]]"]
 ---
 
 # Analise de Conhecimento Nao-Obvio: Stanford CS153 AI Native Company

@@ -1,5 +1,8 @@
 ---
-aliases: ["métodos construção", "harness métodos", "construção harness"]
+type: article
+date: 2026-06-10
+tags: ["agentes-orquestracao", "harness", "context-engineering", "arquitetura", "governanca", "production", "application-owned-agent-control-plane", "plano-de-controle-do-agente", "structured-generation-constraint-validation-circuit", "circuito-geracao-estruturada-validacao-constraints", "versioned-durable-agent-state", "estado-persistente-versionado", "tested-degradation-ladder", "escada-de-degradacao-testada", "invariant-compensation-split", "separacao-invariante-compensacao", "measured-harness-evolution-lifecycle", "ciclo-vida-evolucao-harness-medido"]
+aliases: ["métodos construção", "harness métodos", "construção harness", "evolução harness", "BUILD STABILIZE SIMPLIFY REMOVE", "ciclo de vida harness", "arquitetura invisível", "simplificação harness"]
 ---
 
 # A Arquitetura Invisível: Como Harnesses Evoluem e o Que Torna um Bom Harness de Agentes

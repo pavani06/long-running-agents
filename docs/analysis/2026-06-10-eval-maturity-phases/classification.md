@@ -6,6 +6,7 @@ domain: eval-maturity
 aliases: ["classificacao evals", "gap evals", "lacunas evals", "EDD"]
 tags: [analise, evals, maturity-model, classification]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/patterns|Eval Maturity Patterns]]"]
 ---
 
 # Eval Maturity Pattern Classification
