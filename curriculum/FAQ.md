@@ -1,3 +1,10 @@
+---
+title: "❓ FAQ: Perguntas Frequentes sobre o Currículo"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo, reference]
+last_updated: 2026-06-10
+---
 # ❓ FAQ: Perguntas Frequentes sobre o Currículo
 ## Respostas claras para aprender, aplicar e mentorar Long-Running Agents no KODA
 

@@ -1,3 +1,10 @@
+---
+title: "🚀 QUICK START: Seu Caminho para Long-Running Agents"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo]
+last_updated: 2026-06-10
+---
 # 🚀 QUICK START: Seu Caminho para Long-Running Agents
 
 **⏱️ Tempo Estimado:** 45 minutos (este guia + introdução)

@@ -1,3 +1,12 @@
+---
+title: "Eval-to-Production Correlation Tracking"
+type: canonical
+aliases: ["correlation tracking", "eval production correlation"]
+tags: ["evals", "production"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+---
 # Eval-to-Production Correlation Tracking
 
 **Type:** canonical

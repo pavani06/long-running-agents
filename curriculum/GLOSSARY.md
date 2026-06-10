@@ -1,3 +1,10 @@
+---
+title: "📖 GLOSSÁRIO: Termos Essenciais"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo, reference]
+last_updated: 2026-06-10
+---
 # 📖 GLOSSÁRIO: Termos Essenciais
 
 Referência rápida de termos usados neste programa.

@@ -1,3 +1,12 @@
+---
+title: "Stable Harness Prompt During Context Reduction"
+type: canonical
+aliases: ["harness prompt", "stable prompt"]
+tags: ["harness", "context-engineering"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+---
 # Stable Harness Prompt During Context Reduction
 
 **Type:** canonical

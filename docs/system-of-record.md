@@ -1,3 +1,12 @@
+---
+title: "System of Record"
+type: system-of-record
+aliases: ["system of record", "source of truth", "governance index"]
+tags: ["index", "arquitetura", "governanca"]
+last_updated: 2026-06-10
+relates-to: []
+sources: []
+---
 # System of Record
 
 Mapa das fontes canônicas do `long-running-agents`. Quando duas fontes divergirem, a precedência abaixo resolve o conflito.
@@ -19,20 +28,20 @@ O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff P
 
 | Fonte | Cobre |
 |---|---|
-| [.opencode/agents/hop-orchestrator-rezek.md](.opencode/agents/hop-orchestrator-rezek.md) | Orquestrador principal — governança, source-of-truth, coordenação |
-| [.opencode/agents/koda-hop-init-basic.md](.opencode/agents/koda-hop-init-basic.md) | Subagente de inicial guiada do KODA |
-| [.opencode/agents/hop-live-whatsapp-tester.md](.opencode/agents/hop-live-whatsapp-tester.md) | Subagente de teste live de WhatsApp |
-| [.opencode/skills/issue-start/SKILL.md](.opencode/skills/issue-start/SKILL.md) | Workflow claim → worktree → execution brief |
-| [.opencode/skills/issue-review/SKILL.md](.opencode/skills/issue-review/SKILL.md) | Workflow validação → draft PR → second-agent review |
-| [.opencode/skills/issue-finish/SKILL.md](.opencode/skills/issue-finish/SKILL.md) | Workflow merge → cleanup branch/worktree/labels |
-| [.opencode/skills/issue-workflow/SKILL.md](.opencode/skills/issue-workflow/SKILL.md) | Ciclo completo de lifecycle de issue |
-| [.opencode/skills/refine-issue/SKILL.md](.opencode/skills/refine-issue/SKILL.md) | Decomposição de issues em sub-issues com dependências |
-| [.opencode/skills/orchestrator/SKILL.md](.opencode/skills/orchestrator/SKILL.md) | Coordenação de agentes paralelos, dashboard de status |
-| [.opencode/skills/doc-coauthoring/SKILL.md](.opencode/skills/doc-coauthoring/SKILL.md) | Workflow de co-autoria de documentação |
-| [.opencode/skills/writing-plans/SKILL.md](.opencode/skills/writing-plans/SKILL.md) | Criação de planos de implementação detalhados |
-| [.opencode/skills/error-context-hygiene/SKILL.md](.opencode/skills/error-context-hygiene/SKILL.md) | Skill de implementação: 4 regras de higiene de erro no contexto |
-| [.opencode/skills/analyze-and-improve/SKILL.md](.opencode/skills/analyze-and-improve/SKILL.md) | Pipeline knowledge → patterns → classification → improvements |
-| [AGENTS.md](AGENTS.md) | Regras operacionais obrigatórias para agentes e colaboradores |
+| [[.opencode/agents/hop-orchestrator-rezek|.opencode/agents/hop-orchestrator-rezek.md]] | Orquestrador principal — governança, source-of-truth, coordenação |
+| [[.opencode/agents/koda-hop-init-basic|.opencode/agents/koda-hop-init-basic.md]] | Subagente de inicial guiada do KODA |
+| [[.opencode/agents/hop-live-whatsapp-tester|.opencode/agents/hop-live-whatsapp-tester.md]] | Subagente de teste live de WhatsApp |
+| [[.opencode/skills/issue-start/SKILL|.opencode/skills/issue-start/SKILL.md]] | Workflow claim → worktree → execution brief |
+| [[.opencode/skills/issue-review/SKILL|.opencode/skills/issue-review/SKILL.md]] | Workflow validação → draft PR → second-agent review |
+| [[.opencode/skills/issue-finish/SKILL|.opencode/skills/issue-finish/SKILL.md]] | Workflow merge → cleanup branch/worktree/labels |
+| [[.opencode/skills/issue-workflow/SKILL|.opencode/skills/issue-workflow/SKILL.md]] | Ciclo completo de lifecycle de issue |
+| [[.opencode/skills/refine-issue/SKILL|.opencode/skills/refine-issue/SKILL.md]] | Decomposição de issues em sub-issues com dependências |
+| [[.opencode/skills/orchestrator/SKILL|.opencode/skills/orchestrator/SKILL.md]] | Coordenação de agentes paralelos, dashboard de status |
+| [[.opencode/skills/doc-coauthoring/SKILL|.opencode/skills/doc-coauthoring/SKILL.md]] | Workflow de co-autoria de documentação |
+| [[.opencode/skills/writing-plans/SKILL|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
+| [[.opencode/skills/error-context-hygiene/SKILL|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
+| [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements |
+| [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
 
@@ -42,12 +51,12 @@ O currículo é o produto principal do repositório: um programa completo de 12 
 
 | Fonte | Cobre |
 |---|---|
-| [curriculum/README.md](curriculum/README.md) | Visão geral do programa, estrutura, métricas de sucesso |
-| [curriculum/MASTER_PLAN.md](curriculum/MASTER_PLAN.md) | Plano mestre com todos os níveis e conceitos |
-| [curriculum/INDEX.md](curriculum/INDEX.md) | Índice executivo com navegação por perfil |
-| [curriculum/QUICK_START.md](curriculum/QUICK_START.md) | Onboarding rápido em 45 minutos |
-| [curriculum/EXECUTION_PLAN.md](curriculum/EXECUTION_PLAN.md) | Cronograma detalhado de 12 semanas |
-| [curriculum/GLOSSARY.md](curriculum/GLOSSARY.md) | Glossário de termos técnicos |
+| [[curriculum/README|curriculum/README.md]] | Visão geral do programa, estrutura, métricas de sucesso |
+| [[curriculum/MASTER_PLAN|curriculum/MASTER_PLAN.md]] | Plano mestre com todos os níveis e conceitos |
+| [[curriculum/INDEX|curriculum/INDEX.md]] | Índice executivo com navegação por perfil |
+| [[curriculum/QUICK_START|curriculum/QUICK_START.md]] | Onboarding rápido em 45 minutos |
+| [[curriculum/EXECUTION_PLAN|curriculum/EXECUTION_PLAN.md]] | Cronograma detalhado de 12 semanas |
+| [[curriculum/GLOSSARY|curriculum/GLOSSARY.md]] | Glossário de termos técnicos |
 | `curriculum/01-nivel-1-fundamentals/` | Nível 1 — conceitos fundamentais (3-4h) |
 | `curriculum/02-nivel-2-practical-patterns/` | Nível 2 — padrões práticos (6-8h) |
 | `curriculum/03-nivel-3-advanced-architecture/` | Nível 3 — arquitetura avançada (8-10h) |
@@ -72,7 +81,7 @@ Três artefatos HTML estáticos e uma proposta de arquitetura futura.
 | [web/koda_course_portal.html](web/koda_course_portal.html) | Portal do curso — data-driven, vanilla JS, metadata-only |
 | [web/koda_knowledge_graphs_35_diagrams.html](web/koda_knowledge_graphs_35_diagrams.html) | Visualizador dos 35 diagramas Mermaid com renderização sequencial |
 | [web/mhc_visao_estrategica.html](web/mhc_visao_estrategica.html) | Visão estratégica MHC |
-| [webpage/analise-arquitetural.md](webpage/analise-arquitetural.md) | Proposta de arquitetura SPA com content chunking, hash routing, lazy Mermaid, busca full-text, dark mode |
+| [[webpage/analise-arquitetural|webpage/analise-arquitetural.md]] | Proposta de arquitetura SPA com content chunking, hash routing, lazy Mermaid, busca full-text, dark mode |
 
 > **Pendente**: `docs/canonical/portal-architecture.md` quando a SPA proposta for implementada.
 
@@ -94,7 +103,7 @@ Três artefatos HTML estáticos e uma proposta de arquitetura futura.
 
 | Fonte | Cobre |
 |---|---|
-| [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) | Template de PR com checklist de crossroad files e revisão |
+| [[.github/PULL_REQUEST_TEMPLATE|.github/PULL_REQUEST_TEMPLATE.md]] | Template de PR com checklist de crossroad files e revisão |
 | [.github/CODEOWNERS](.github/CODEOWNERS) | Política de code ownership para crossroad files |
 | [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) | Templates de issue (config.yml, technical.md) |
 | [.github/dependabot.yml](.github/dependabot.yml) | Configuração de atualização automática de dependências |
@@ -150,13 +159,13 @@ Tópicos candidatos a ADR:
 
 Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
-- [2026-05-28-output-validation-structured-generation.md](docs/analysis/mhc-backend/2026-05-28-output-validation-structured-generation.md) — validação estruturada com Zod/LangChain
-- [2026-05-28-janela-deslizante-contexto.md](docs/analysis/mhc-backend/2026-05-28-janela-deslizante-contexto.md) — janela deslizante, resumo e metadados no contexto do agente
-- [2026-05-28-output-validation-state-persistence.md](docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence.md) — camadas de validação e persistência de estado
-- [2026-05-26-nivel-3-comparacao.md](docs/analysis/mhc-backend/2026-05-26-nivel-3-comparacao.md) — comparação KODA vs. padrões Nível 3
-- [2026-05-26-harness-diagnostic.md](docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md) — arquitetura KODA vs. padrões de harness
-- [2026-05-26-nivel-2-diagnostic.md](docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md) — maturidade de padrões Nível 2 no sistema
-- [2026-05-26-pedido-bling-agente.md](docs/analysis/mhc-backend/2026-05-26-pedido-bling-agente.md) — falha de notificação de pedido pago (webhook/ERP)
+- [[docs/analysis/mhc-backend/2026-05-28-output-validation-structured-generation]] — validação estruturada com Zod/LangChain
+- [[docs/analysis/mhc-backend/2026-05-28-janela-deslizante-contexto]] — janela deslizante, resumo e metadados no contexto do agente
+- [[docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence]] — camadas de validação e persistência de estado
+- [[docs/analysis/mhc-backend/2026-05-26-nivel-3-comparacao]] — comparação KODA vs. padrões Nível 3
+- [[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic]] — arquitetura KODA vs. padrões de harness
+- [[docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic]] — maturidade de padrões Nível 2 no sistema
+- [[docs/analysis/mhc-backend/2026-05-26-pedido-bling-agente]] — falha de notificação de pedido pago (webhook/ERP)
 
 ### Análises comparativas (12-Factor Agents)
 
@@ -186,7 +195,7 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ## Planos
 
-- [docs/plans/2026-05-26-curriculum-completion-strategy.md](docs/plans/2026-05-26-curriculum-completion-strategy.md) — estratégia de execução para completar o currículo via GitHub Issues/Milestones
+- [[docs/plans/2026-05-26-curriculum-completion-strategy|docs/plans/2026-05-26-curriculum-completion-strategy.md]] — estratégia de execução para completar o currículo via GitHub Issues/Milestones
 
 ---
 

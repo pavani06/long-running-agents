@@ -1,3 +1,10 @@
+---
+title: "🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo]
+last_updated: 2026-06-10
+---
 # 🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo
 
 **Data:** Maio 2026  

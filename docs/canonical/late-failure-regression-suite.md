@@ -1,3 +1,12 @@
+---
+title: "Late-Failure Regression Suite"
+type: canonical
+aliases: ["regression suite", "late failure"]
+tags: ["evals", "error-handling"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+---
 # Late-Failure Regression Suite
 
 **Type:** canonical

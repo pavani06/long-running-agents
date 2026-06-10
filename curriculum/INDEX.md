@@ -1,3 +1,10 @@
+---
+title: "📑 ÍNDICE EXECUTIVO: Navegação Rápida"
+type: curriculum-index
+aliases: ["indice", "navegacao"]
+tags: [curriculo-conteudo]
+last_updated: 2026-06-10
+---
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
 **Para quando você precisa achar algo rapidinho.**
@@ -8,11 +15,11 @@
 
 ### ❓ "Sou novo, não entendo nada"
 ```
-QUICK_START.md (15 min)
+[[curriculum/QUICK_START|QUICK_START.md]] (15 min)
     ↓
-01-nivel-1-fundamentals/01-why-agents-lose-plot.md
+[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|01-nivel-1-fundamentals/01-why-agents-lose-plot.md]]
     ↓
-01-nivel-1-fundamentals/exercises/
+[[curriculum/01-nivel-1-fundamentals/exercises|01-nivel-1-fundamentals/exercises/]]
 ```
 
 **Tempo estimado:** 4-5 horas, semana 1-2
@@ -21,11 +28,11 @@ QUICK_START.md (15 min)
 
 ### 💼 "Conheço LLMs, quero padrões práticos"
 ```
-02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md
+[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md]]
     ↓
-02-nivel-2-practical-patterns/02-sprint-contracts.md
+[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|02-nivel-2-practical-patterns/02-sprint-contracts.md]]
     ↓
-02-nivel-2-practical-patterns/exercises/
+[[curriculum/02-nivel-2-practical-patterns/exercises|02-nivel-2-practical-patterns/exercises/]]
 ```
 
 **Tempo estimado:** 8-10 horas, semanas 2-3
@@ -34,11 +41,11 @@ QUICK_START.md (15 min)
 
 ### 🏗️ "Sou architect, preciso de sistema completo"
 ```
-03-nivel-3-advanced-architecture/01-multi-agent-systems.md
+[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|03-nivel-3-advanced-architecture/01-multi-agent-systems.md]]
     ↓
-03-nivel-3-advanced-architecture/02-state-persistence.md
+[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|03-nivel-3-advanced-architecture/02-state-persistence.md]]
     ↓
-03-nivel-3-advanced-architecture/exercises/
+[[curriculum/03-nivel-3-advanced-architecture/exercises|03-nivel-3-advanced-architecture/exercises/]]
 ```
 
 **Tempo estimado:** 10-12 horas, semanas 3-4
@@ -47,11 +54,11 @@ QUICK_START.md (15 min)
 
 ### 🎯 "Trabalho em KODA, preciso aplicar tudo"
 ```
-04-nivel-4-koda-specific/01-koda-architecture.md
+[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|04-nivel-4-koda-specific/01-koda-architecture.md]]
     ↓
-04-nivel-4-koda-specific/case-studies/
+[[curriculum/04-nivel-4-koda-specific/case-studies|04-nivel-4-koda-specific/case-studies/]]
     ↓
-04-nivel-4-koda-specific/real-world-exercises/
+[[curriculum/04-nivel-4-koda-specific/real-world-exercises|04-nivel-4-koda-specific/real-world-exercises/]]
 ```
 
 **Tempo estimado:** Contínuo, semanas 5-12
@@ -60,11 +67,11 @@ QUICK_START.md (15 min)
 
 ### 🔍 "Preciso de resposta rápida"
 ```
-GLOSSARY.md  (definições)
+[[curriculum/GLOSSARY|GLOSSARY.md]]  (definições)
     ↓
-FAQ.md       (perguntas comuns)
+[[curriculum/FAQ|FAQ.md]]       (perguntas comuns)
     ↓
-06-knowledge-graphs/ (diagramas)
+[[curriculum/06-knowledge-graphs|06-knowledge-graphs/]] (diagramas)
 ```
 
 **Tempo estimado:** Lookup instantâneo
@@ -254,22 +261,22 @@ FAQ.md       (perguntas comuns)
 
 ### Primeira Vez?
 ```
-README.md (5 min)
+[[curriculum/README|README.md]] (5 min)
     ↓
-QUICK_START.md (15 min)
+[[curriculum/QUICK_START|QUICK_START.md]] (15 min)
     ↓
-MASTER_PLAN.md (30 min)
+[[curriculum/MASTER_PLAN|MASTER_PLAN.md]] (30 min)
     ↓
 Começar Nível apropriado
 ```
 
 ### Quer aprender um conceito específico?
 ```
-Procura em 05-core-concepts/
+Procura em [[curriculum/05-core-concepts|05-core-concepts/]]
     ↓
 Leia explicação profunda
     ↓
-Veja Knowledge Graphs em 06-knowledge-graphs/
+Veja Knowledge Graphs em [[curriculum/06-knowledge-graphs|06-knowledge-graphs/]]
     ↓
 Faça exercício relacionado
     ↓
@@ -278,17 +285,17 @@ Veja case study
 
 ### Quer implementar algo?
 ```
-Procura padrão em 02-3-nivel-X/
+Procura padrão em [[curriculum/02-3-nivel-X|02-3-nivel-X/]]
     ↓
 Leia seção "Como aplicar"
     ↓
-Use template em 08-tools-templates/
+Use template em [[curriculum/08-tools-templates|08-tools-templates/]]
     ↓
-Veja exemplo em 09-case-studies/
+Veja exemplo em [[curriculum/09-case-studies|09-case-studies/]]
     ↓
 Implementa em seu código
     ↓
-Use guia em 07-implementation-guides/
+Use guia em [[curriculum/07-implementation-guides|07-implementation-guides/]]
 ```
 
 ---

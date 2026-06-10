@@ -1,3 +1,12 @@
+---
+title: "Repeatable Agent Spot-Check Set"
+type: canonical
+aliases: ["spot check", "repeatable eval"]
+tags: ["evals"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+---
 # Repeatable Agent Spot-Check Set
 
 **Type:** canonical

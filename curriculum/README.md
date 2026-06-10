@@ -1,3 +1,10 @@
+---
+title: "📚 Curso: Building Long-Running Agents para KODA"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo]
+last_updated: 2026-06-10
+---
 # 📚 Curso: Building Long-Running Agents para KODA
 
 > Transformar equipe em especialistas de agentes que rodam por horas

@@ -1,3 +1,10 @@
+---
+title: "📚 PLANO MESTRE: Curso de Long-Running Agents para KODA"
+type: curriculum-index
+aliases: []
+tags: [curriculo-conteudo]
+last_updated: 2026-06-10
+---
 # 📚 PLANO MESTRE: Curso de Long-Running Agents para KODA
 
 **Data de Criação:** Maio 2026  

@@ -1,3 +1,12 @@
+---
+title: "Deterministic Tool Dispatch"
+type: canonical
+aliases: ["tool dispatch", "deterministic tools"]
+tags: ["agent-loop", "12-factor-agents"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
+sources: []
+---
 # Deterministic Tool Dispatch
 
 **Type:** Canonical Pattern

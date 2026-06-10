@@ -1,3 +1,12 @@
+---
+title: "Error Context Hygiene"
+type: canonical
+aliases: ["error hygiene", "failure context"]
+tags: ["context-engineering", "error-handling", "12-factor-agents"]
+last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
+sources: []
+---
 # Error Context Hygiene
 
 **Type:** Canonical Pattern

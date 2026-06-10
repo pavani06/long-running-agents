@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "c264def3af29c48a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d9bc3849ffac579b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d3dbe9f0a4fd85f",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "781170d6002400ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "322079893aa05844",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "93a398033493627c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "7ea6b31cc7ddab37",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b89561a8b9206a03",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "84434abc6e58c358",
+    "type": "split",
+    "children": [
+      {
+        "id": "3f8d76072e7a67a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a392ed8987d3762c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "42eed0a39933fddc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "9aa06d1cde5fc7e7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "68edb9c2ddd3d917",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "70565a438306f58b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "0d3dbe9f0a4fd85f",
+  "lastOpenFiles": [
+    "curriculum/08-tools-templates/evaluation-rubric-template.md",
+    "index.md",
+    "prompts/PROMPTS-08-obsidian-governance.md",
+    "prompts/PROMPTS-07-obsidian-adaptation.md",
+    "docs/analysis/2026-06-09-12-factor-agents/mental-model.md",
+    "docs/canonical/eval-to-production-correlation-tracking.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/integration-roadmap.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/patterns.md",
+    "docs/canonical/production-failure-regression-flywheel.md",
+    "docs/canonical/pr-gated-eval-enforcement.md",
+    "docs/canonical/eval-tier-stratification.md",
+    "docs/canonical/production-grounded-eval-sampling.md",
+    "docs/canonical/repeatable-agent-spot-check-set.md",
+    "docs/canonical/pain-signal-eval-progression-gate.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/classification.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/mental-model.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases/classification.yaml",
+    "docs/analysis/2026-06-10-eval-maturity-phases/patterns.yaml",
+    "docs/analysis/2026-06-10-eval-maturity-phases/analysis.yaml",
+    "docs/analysis/2026-06-10-eval-maturity-phases/mental-model.yaml",
+    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md",
+    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md",
+    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md",
+    "docs/analysis/2026-06-10-eval-maturity-phases"
+  ]
+}
