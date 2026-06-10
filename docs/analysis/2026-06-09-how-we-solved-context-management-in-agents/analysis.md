@@ -6,6 +6,7 @@ domain: context-management
 aliases: []
 tags: [analise, context-engineering, context-management]
 last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
 ---
 
 # Analise de Conhecimento Nao-Obvio: Context Management in Agents (Arize / Alex)
