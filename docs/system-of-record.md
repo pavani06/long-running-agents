@@ -140,6 +140,14 @@ Tópicos candidatos a ADR:
 | `tested-degradation-ladder.md` | Escada de degradação testada: classificação de falha → retry → fallback seguro → escalação humana com testes por degrau |
 | `measured-harness-evolution-lifecycle.md` | Ciclo de vida BUILD → STABILIZE → SIMPLIFY → REMOVE com ROI, archive e reativação |
 | `head-tail-context-truncation.md` | Context reduction com head, tail e middle recuperável por handle |
+| `explicit-token-budget-ledger.md` | Ledger explícito para calcular custo de prompt, reservas e saldo de tokens por passo |
+| `burn-rate-runtime-forecast.md` | Projeção em tempo real do consumo de tokens e da autonomia restante da sessão |
+| `phase-gated-token-health-monitor.md` | Monitor de saúde que converte orçamento e burn rate em fases operacionais |
+| `durable-fact-selective-history.md` | Política seletiva que combina fatos duráveis com histórico recente |
+| `summary-buffer-continuity.md` | Buffer de resumo contínuo com atualização incremental e frescor explícito |
+| `semantic-topic-bucketing.md` | Agrupamento semântico por tópico para reter e resumir contexto por tema |
+| `hybrid-context-stack.md` | Pilha híbrida de contexto com prompt, memória, estado durável e omissões recuperáveis |
+| `budget-aware-session-handoff.md` | Handoff de sessão consciente do orçamento com reset do contexto ativo |
 | `addressable-memory-catalog.md` | Catálogo de memória omitida com `id`, `location`, `preview`, `scope` e `fetch` |
 | `n-plus-one-long-session-evals.md` | Evals long-session no padrão N+1 para validar continuidade após redução de contexto |
 | `stable-harness-prompt.md` | Preservação do harness prompt estável durante redução de contexto |
