@@ -5,6 +5,7 @@ date: 2026-05-26
 domain: mhc-backend
 aliases: []
 tags: [analise, mhc-backend, diagnostico, nivel-2, padroes-praticos]
+relates-to: ["[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]", "[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]]"]
 last_updated: 2026-06-10
 ---
 
@@ -12,7 +13,7 @@ last_updated: 2026-06-10
 
 **Data:** 2026-05-26
 **Repositório analisado:** [`chatshop-io/mhc-backend`](https://github.com/chatshop-io/mhc-backend)
-**Referência curricular:** [`nivel-2-koda.md`](https://github.com/pavani06/long-running-agents/blob/main/curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md)
+**Referência curricular:** [[curriculum/02-nivel-2-practical-patterns/koda-applications/nivel-2-koda|nivel-2-koda.md]]
 **Stack:** Express.js 4.18, TypeScript 5.3, Prisma 5.7 (PostgreSQL 16), LangGraph, LangChain + OpenAI (gpt-4o-mini / gpt-5-mini), Pinecone, Redis 7, Trigger.dev 4.3
 
 ---

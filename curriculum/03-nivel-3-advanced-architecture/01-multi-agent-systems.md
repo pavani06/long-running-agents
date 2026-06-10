@@ -4,6 +4,7 @@ type: curriculum-lesson
 nivel: 3
 aliases: []
 tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, sistemas-multiagente, planejamento-geracao-validacao, decomposicao-de-jornada, orquestracao-de-agentes, ownership-de-responsabilidades, coordenacao-sequencial, coordenacao-paralela, orientado-a-eventos, canais-de-comunicacao, auditabilidade]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[curriculum/05-core-concepts/07-multi-agent-coordination|Multi-Agent Coordination Concept]]"]
 last_updated: 2026-06-10
 ---
 # 🔗 Sistemas Multi-Agente para Arquiteturas Confiáveis
@@ -1468,4 +1469,3 @@ Esse é o tipo de sistema que clientes sentem, mesmo sem ver.
 | Status | Completo |
 | Próximo | `curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md` |
 | Atualizado | Maio 2026 |
-

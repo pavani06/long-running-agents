@@ -3,6 +3,7 @@ title: "Guia de Progressão da Equipe"
 type: curriculum-guide
 aliases: []
 tags: [curriculo-conteudo, guia-implementacao, lideranca-tecnica, progressao-de-equipe, mentoring, aprendizado-continuo, checkpoints, metricas-de-aprendizado, avaliacao-formativa, gestao-de-capacidade]
+relates-to: ["[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/EXECUTION_PLAN|Execution Plan]]"]
 last_updated: 2026-06-10
 ---
 # 🧭 Guia de Progressão da Equipe

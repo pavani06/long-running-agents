@@ -3,6 +3,7 @@ title: "Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Que
 type: curriculum-guide
 aliases: []
 tags: [curriculo-conteudo, guia-implementacao, evolucao-arquitetural, remocao-segura, simplificacao, feature-flags, canary-release, rollback, validacao-pos-remocao, roi]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
 last_updated: 2026-06-10
 ---
 # 🧬 Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção

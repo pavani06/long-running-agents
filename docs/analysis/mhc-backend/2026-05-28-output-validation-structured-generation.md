@@ -5,6 +5,7 @@ date: 2026-05-28
 domain: mhc-backend
 aliases: []
 tags: [analise, mhc-backend, diagnostico, validacao, structured-output, zod]
+relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence|Output Validation Diagnostic]]"]
 last_updated: 2026-06-10
 ---
 

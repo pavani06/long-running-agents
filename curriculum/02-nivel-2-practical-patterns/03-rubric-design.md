@@ -4,6 +4,7 @@ type: curriculum-lesson
 nivel: 2
 aliases: []
 tags: [curriculo-conteudo, nivel-2, padroes-praticos, criterios-mensuraveis, avaliacao-qualitativa, dimensoes-de-avaliacao, pesos-e-thresholds, escalas-de-avaliacao, exemplos-ancora, feedback-estruturado, calibracao-de-evaluator, seguranca-alergica]
+relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
 last_updated: 2026-06-10
 ---
 # 📏 Rubric Design: Como Ensinar um Evaluator a Ser Crítico e Justo

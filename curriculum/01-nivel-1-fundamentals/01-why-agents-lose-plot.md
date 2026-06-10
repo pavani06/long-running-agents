@@ -4,6 +4,7 @@ type: curriculum-lesson
 nivel: 1
 aliases: []
 tags: [curriculo-conteudo, nivel-1, fundamentos, amnesia-de-contexto, janela-de-contexto, rot-de-contexto, separacao-de-planejamento-e-execucao, autoavaliacao, avaliador-externo, generator-evaluator, erros-silenciosos, confianca-do-cliente, relacionamento-com-cliente]
+relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"]
 last_updated: 2026-06-10
 ---
 # 🎯 Por Que Agentes Perdem o Foco?
@@ -654,4 +655,3 @@ No próximo módulo, vamos técnico. Mas você já tem a sabedoria.
 | **Próximo** | 02-token-budgeting.md |
 | **Crítica para** | Todos os níveis subsequentes |
 | **Atualizado** | Maio 2026 |
-

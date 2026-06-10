@@ -4,6 +4,7 @@ type: curriculum-lesson
 nivel: 4
 aliases: []
 tags: [curriculo-conteudo, nivel-4, koda, contratos-de-feature, generator-evaluator, validacao-de-saida, roteamento-de-features, integracao-com-pipeline, orcamento-de-tokens, decision-merger, testes-de-integracao, debugging-de-feature, governanca-de-features]
+relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation]]"]
 last_updated: 2026-06-10
 ---
 # 🎯 Padrões de Design de Features: Como Estender o KODA com Confiança

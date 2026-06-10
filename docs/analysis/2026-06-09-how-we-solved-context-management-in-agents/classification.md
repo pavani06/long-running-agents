@@ -6,6 +6,7 @@ domain: context-management
 aliases: []
 tags: [analise, context-engineering, context-management, classification]
 last_updated: 2026-06-10
+relates-to: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"]
 ---
 
 # Pattern Classification: How We Solved Context Management in Agents

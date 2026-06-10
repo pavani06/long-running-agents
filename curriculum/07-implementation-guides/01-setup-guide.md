@@ -3,6 +3,7 @@ title: "Guia de Setup: Preparando o Terreno para Long-Running Agents"
 type: curriculum-guide
 aliases: []
 tags: [curriculo-conteudo, guia-implementacao, setup, infraestrutura, ambiente-de-desenvolvimento, estrutura-de-repositorio, dependencias, configuracao, onboarding, automacao]
+relates-to: ["[[curriculum/QUICK_START|Quick Start]]", "[[README|Repository README]]"]
 last_updated: 2026-06-10
 ---
 # 🛠️ Guia de Setup: Preparando o Terreno para Long-Running Agents
