@@ -3,6 +3,7 @@ title: "Checklist de Design de Harness para Agentes Confiáveis"
 type: curriculum-guide
 aliases: []
 tags: [curriculo-conteudo, guia-implementacao, harness, auditoria, qualidade, seguranca, guardrails, persistencia-de-estado, coordenacao-multi-agente, observabilidade]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---
 # 🧪 Checklist de Design de Harness para Agentes Confiáveis

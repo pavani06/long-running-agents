@@ -1,0 +1,387 @@
+# Plano de Implementacao: Cross-References para Obsidian
+# Arquivo: .omo/plans/cross-reference-implementation.yaml
+# Gerado: 2026-06-10
+# Objetivo: Adicionar wikilinks [[...]] e campos `relates-to` nos documentos
+#          que hoje nao tem cross-referencias, melhorando o Graph View do Obsidian.
+#
+# Diagnostico base:
+#   - docs/canonical/:     23/24 (96%) ja tem relates-to
+#   - docs/analysis/:       2/27 ( 7%) tem relates-to
+#   - curriculum/:         10/93 (11%) tem relates-to
+#   - MHC backend analysis: 0 wikilinks, usa raw GitHub links
+
+plan:
+  name: "cross-reference-implementation"
+  description: >
+    Adicionar wikilinks e campos relates-to nos documentos de analysis/,
+    curriculum/, e converter links raw do MHC backend para [[wikilinks]],
+    criando um grafo rico de conexoes para navegacao no Obsidian.
+  total_files_touched: ~65
+  estimated_time: "60-90 minutos de execucao automatizada"
+
+  # -------------------------------------------------------------------
+  # FASE 1: Analises principais (9 arquivos, alto impacto)
+  # -------------------------------------------------------------------
+  phase_1:
+    name: "relates-to nas analises principais"
+    priority: "P0 - maximo impacto"
+    description: >
+      Cada analysis.md principal referencia canonicos que originou.
+      Adicionar `relates-to` no frontmatter com [[wikilinks]] para os canonicos
+      correspondentes. Isso cria triangulacao: analise -> canonico -> outras analises.
+    files:
+      - path: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+        reason: "Esta analise extraiu os 4 padroes 12FA que viraram canonicos"
+
+      - path: "docs/analysis/2026-06-09-12-factor-agents/patterns.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+        reason: "Catalogo de padroes extraidos"
+
+      - path: "docs/analysis/2026-06-09-12-factor-agents/classification.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+        reason: "Classifica cobertura dos canonicos contra padroes 12FA"
+
+      - path: "docs/analysis/2026-06-09-12-factor-agents/integration-roadmap.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-12-factor-agents/classification|12FA Classification]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+        reason: "Define roadmap de integracao dos padroes ao curriculo"
+
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
+        relates_to:
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
+          - "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"
+        reason: "Analise de context management que originou 5 canonicos"
+
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]"
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+        reason: "Catalogo de padroes de context management"
+
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]"
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
+        reason: "Classifica cobertura de context management"
+
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md"
+        relates_to:
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification|Context Mgmt Classification]]"
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
+          - "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"
+        reason: "Roadmap de integracao context management"
+
+      - path: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+        relates_to:
+          - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
+          - "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]"
+          - "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]"
+          - "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]"
+          - "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]"
+          - "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]"
+          - "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]"
+        reason: "Analise de maturidade de evals que originou 7 canonicos"
+
+  # -------------------------------------------------------------------
+  # FASE 2: Links cruzados entre analises (3 conexoes)
+  # -------------------------------------------------------------------
+  phase_2:
+    name: "links cruzados entre analises"
+    priority: "P1 - clusters tematicos"
+    description: >
+      Analises que compartilham dominios devem se referenciar mutuamente.
+      Isso cria clusters tematicos no Graph View do Obsidian.
+    cross_links:
+      - from: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
+        to: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
+        reason: "Ambas tratam de context engineering e error handling"
+
+      - from: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
+        to: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+        reason: "12FA menciona evals como factor; eval maturity expande o tema"
+
+      - from: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
+        to: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+        reason: "Context management cita long-session evals; eval maturity aprofunda"
+
+  # -------------------------------------------------------------------
+  # FASE 3: Links raw do MHC backend -> wikilinks (7 arquivos)
+  # -------------------------------------------------------------------
+  phase_3:
+    name: "converter links raw MHC backend para wikilinks"
+    priority: "P1 - conecta diagnosticos ao vault"
+    description: >
+      Os 7 arquivos em docs/analysis/mhc-backend/ usam links raw do GitHub
+      como [text](https://github.com/.../blob/main/curriculum/...).
+      Converter para [[wikilinks]] para navegacao interna no Obsidian.
+      Adicionar tambem `relates-to` no frontmatter.
+    files:
+      - path: "docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md"
+        convert_links:
+          - "curriculo 03-basic-harness-patterns.md -> [[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]"
+        relates_to:
+          - "[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md"
+        relates_to:
+          - "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"
+          - "[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]]"
+          - "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-26-nivel-3-comparacao.md"
+        relates_to:
+          - "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-26-pedido-bling-agente.md"
+        relates_to:
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-28-janela-deslizante-contexto.md"
+        relates_to:
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence.md"
+        relates_to:
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"
+
+      - path: "docs/analysis/mhc-backend/2026-05-28-output-validation-structured-generation.md"
+        relates_to:
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence|Output Validation Diagnostic]]"
+
+  # -------------------------------------------------------------------
+  # FASE 4: relates-to nas licoes do curriculo (26 arquivos)
+  # -------------------------------------------------------------------
+  phase_4:
+    name: "relates-to nas licoes do curriculo"
+    priority: "P2 - conecta aprendizado aos canonicos"
+    description: >
+      Cada licao que referencia conceitos documentados em canonicos ou analises
+      deve ter `relates-to` no frontmatter com os [[wikilinks]] correspondentes.
+      Isso permite que um aluno no Obsidian navegue da licao para a fundamentacao
+      tecnica e vice-versa.
+    files:
+      - path: "curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot.md"
+        relates_to:
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"
+
+      - path: "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md"
+        relates_to:
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+
+      - path: "curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[curriculum/05-core-concepts/04-sprint-contracts|Sprint Contracts Concept]]"
+
+      - path: "curriculum/02-nivel-2-practical-patterns/03-rubric-design.md"
+        relates_to:
+          - "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"
+          - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"
+
+      - path: "curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]"
+          - "[[curriculum/05-core-concepts/07-multi-agent-coordination|Multi-Agent Coordination Concept]]"
+
+      - path: "curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination.md"
+        relates_to:
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]"
+          - "[[curriculum/05-core-concepts/05-state-persistence|State Persistence Concept]]"
+
+      - path: "curriculum/04-nivel-4-koda-specific/01-koda-architecture.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"
+
+      - path: "curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md"
+        relates_to:
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+
+      - path: "curriculum/04-nivel-4-koda-specific/03-feature-design-patterns.md"
+        relates_to:
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+          - "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation]]"
+
+      - path: "curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md"
+        relates_to:
+          - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
+          - "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]"
+          - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"
+
+      - path: "curriculum/04-nivel-4-koda-specific/05-harness-improvements.md"
+        relates_to:
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]"
+          - "[[docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence|Output Validation Diagnostic]]"
+
+      - path: "curriculum/05-core-concepts/02-planning-execution-separation.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"
+
+      - path: "curriculum/05-core-concepts/04-sprint-contracts.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts Lesson]]"
+
+      - path: "curriculum/05-core-concepts/05-state-persistence.md"
+        relates_to:
+          - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
+          - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence Lesson]]"
+
+      - path: "curriculum/05-core-concepts/06-harness-evolution.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"
+
+      - path: "curriculum/05-core-concepts/07-multi-agent-coordination.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems Lesson]]"
+
+      - path: "curriculum/06-knowledge-graphs/01-concept-ecosystem.md"
+        relates_to:
+          - "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"
+          - "[[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator/Evaluator Concept]]"
+          - "[[curriculum/INDEX|Curriculum Index]]"
+
+      - path: "curriculum/06-knowledge-graphs/02-koda-feature-dependencies.md"
+        relates_to:
+          - "[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]]"
+          - "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]"
+
+      - path: "curriculum/06-knowledge-graphs/03-learning-progression.md"
+        relates_to:
+          - "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]"
+          - "[[curriculum/INDEX|Curriculum Index]]"
+
+      - path: "curriculum/06-knowledge-graphs/04-problem-solution-mapping.md"
+        relates_to:
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]"
+
+      - path: "curriculum/07-implementation-guides/01-setup-guide.md"
+        relates_to:
+          - "[[curriculum/QUICK_START|Quick Start]]"
+          - "[[README|Repository README]]"
+
+      - path: "curriculum/07-implementation-guides/02-team-progression-guide.md"
+        relates_to:
+          - "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]"
+          - "[[curriculum/EXECUTION_PLAN|Execution Plan]]"
+
+      - path: "curriculum/07-implementation-guides/03-harness-design-checklist.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
+          - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
+
+      - path: "curriculum/07-implementation-guides/04-evaluation-rubric-template.md"
+        relates_to:
+          - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
+          - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"
+
+      - path: "curriculum/07-implementation-guides/05-trace-analysis-guide.md"
+        relates_to:
+          - "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"
+          - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
+          - "[[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading Lesson]]"
+
+      - path: "curriculum/07-implementation-guides/06-harness-evolution-playbook.md"
+        relates_to:
+          - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
+          - "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"
+          - "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"
+
+  # -------------------------------------------------------------------
+  # FASE 5: Links body text nas analises (opcional, menor prioridade)
+  # -------------------------------------------------------------------
+  phase_5:
+    name: "wikilinks no corpo do texto das analises"
+    priority: "P3 - enriquece navegacao inline"
+    description: >
+      Alem do `relates-to` no frontmatter, adicionar [[wikilinks]] inline
+      no corpo do texto onde o documento menciona conceitos que tem pagina
+      propria no vault. Isso e complementar e de menor prioridade.
+    strategy: >
+      Para cada analysis.md, identificar mencoes a nomes de canonicos
+      ou outras analises no corpo do texto e converter em [[wikilinks]].
+      Nao converter links em blocos de codigo ou inline code.
+
+  # -------------------------------------------------------------------
+  # REGRAS GERAIS
+  # -------------------------------------------------------------------
+  rules:
+    - "NUNCA modificar o corpo do texto alem de adicionar wikilinks (fase 5) ou converter links raw (fase 3)"
+    - "NUNCA alterar tags existentes no frontmatter"
+    - "NUNCA remover campos existentes do frontmatter"
+    - "Adicionar `relates-to` APENAS se o arquivo ainda nao tem esse campo"
+    - "Se o arquivo ja tem `relates-to`, adicionar novos itens ao array existente"
+    - "Formato do array: ['[[path|Display]]', '[[path2|Display2]]']"
+    - "Manter wikilinks em uma linha so (single-line array)"
+    - "Respeitar a indentacao existente do frontmatter YAML (2 espacos)"
+    - "NAO adicionar `sources` em arquivos que nao sao canonicos"
+    - "Verificar que cada [[wikilink]] aponta para um arquivo existente"
+
+  # -------------------------------------------------------------------
+  # VERIFICACAO
+  # -------------------------------------------------------------------
+  verification:
+    - "Rodar: bash scripts/check-obsidian-conventions.sh"
+    - "Check 6 (broken wikilinks) deve passar sem erros"
+    - "Check 7 (cross-reference tag gaps) pode emitir warnings -- serao tratados separadamente"
+    - "Abrir Obsidian e inspecionar Graph View local de alguns arquivos para confirmar conexoes"
+    - "Verificar que nenhum arquivo foi corrompido (frontmatter YAML continua valido)"

@@ -3,6 +3,7 @@ title: "Concept Ecosystem"
 type: curriculum-knowledge-graph
 aliases: []
 tags: [curriculo-conteudo, knowledge-graph, mermaid, ecossistema-conceitual, arquitetura-de-agentes, conceitos-core, dependencias-conceituais, contexto-e-estado, planejamento-e-execucao, verificacao-de-qualidade, coordenacao-multi-agente, evolucao-do-harness]
+relates-to: ["[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]", "[[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator/Evaluator Concept]]", "[[curriculum/INDEX|Curriculum Index]]"]
 last_updated: 2026-06-10
 ---
 # 🧠 Concept Ecosystem
@@ -2983,4 +2984,3 @@ Você está aprendendo a manter confiança por horas.
 | Domínios | Context & State, Planning, Verification, Architecture |
 | Aplicação | KODA WhatsApp supplement sales agent |
 | Atualizado | Maio 2026 |
-
