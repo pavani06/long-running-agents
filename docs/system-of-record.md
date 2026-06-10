@@ -123,7 +123,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 16 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 17 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -145,6 +145,7 @@ Tópicos candidatos a ADR:
 | `pr-gated-eval-enforcement.md` | Enforcement de evals no fluxo de PR e merge |
 | `production-failure-regression-flywheel.md` | Flywheel de regressão para falhas de produção |
 | `eval-to-production-correlation-tracking.md` | Rastreamento de correlação entre score de eval e outcomes de produção |
+| `obsidian-document-conventions.md` | Convencoes de frontmatter, wikilinks, tags e validacao para documentos Obsidian-ready (AGENTS.md Rule 16) |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -154,6 +155,7 @@ Tópicos candidatos a ADR:
 | `curriculum-model.md` | Taxonomia de níveis, tipos de artefato, critérios de qualidade |
 | `portal-architecture.md` | Decisões de design do portal, modelo de dados, pipeline de renderização |
 | `crossroad-change-policy.md` | Política de alteração em arquivos de alto blast radius |
+| `obsidian-document-conventions.md` | AGENTS.md Rule 16 ja cobre — documento canonico so precisa ser criado se a convencao crescer alem de uma regra |
 
 ## Análises e diagnósticos
 

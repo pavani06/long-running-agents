@@ -116,3 +116,106 @@ After three materially different failed attempts, stop changing files, document 
 ## Rule 15: Do Not Modify Runtime Artifacts Casually
 
 Do not alter paths or contents under `.runtime/` or `artifacts/` unless the task is explicitly about runtime state, evidence, migration, or artifacts.
+
+## Rule 16: Obsidian Document Conventions
+
+All documentation intended for human consumption through Obsidian MUST follow these
+conventions. The validation script `scripts/check-obsidian-conventions.sh` enforces them.
+
+### 16.1 Frontmatter is mandatory
+
+Every markdown file under `docs/canonical/`, `docs/analysis/`, and `curriculum/` index
+files MUST have YAML frontmatter with at minimum `type:` and `tags:`. The frontmatter
+block is delimited by `---` on its own lines at the very start of the file (line 1).
+
+### 16.2 Document types and their required fields
+
+| type | Directories | Required fields | Optional fields |
+|---|---|---|---|
+| `canonical` | `docs/canonical/` | `title`, `type`, `tags` | `aliases`, `last_updated`, `relates-to`, `sources` |
+| `analysis` | `docs/analysis/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated`, `relates-to`, `sources` |
+| `system-of-record` | `docs/` | `title`, `type`, `tags`, `last_updated` | `aliases` |
+| `plan` | `docs/plans/` | `title`, `type`, `tags`, `date` | `aliases`, `last_updated` |
+| `curriculum-index` | `curriculum/` (top-level only) | `title`, `type`, `tags`, `last_updated` | `aliases` |
+| `lesson` | `curriculum/0*-*/` | `title`, `type`, `tags`, `level` | `duration`, `aliases` |
+| `exercise` | `curriculum/0*-*/exercises/` | `title`, `type`, `tags`, `level` | `duration`, `aliases` |
+| `case-study` | `curriculum/0*-*/case-studies/` | `title`, `type`, `tags` | `aliases` |
+| `index` | root | `title`, `type`, `tags` | `aliases`, `last_updated` |
+
+All YAML list fields use `[]` for empty, `["single"]` for one value, `["a", "b"]` for
+multiple. Fields not applicable to a document type MUST NOT be present.
+
+### 16.3 Wikilinks for all cross-references
+
+Use `[[path/relative/to/repo/root|Display Text]]` for every reference to another
+markdown file in this repository. Never use `[text](path.md)`. Leave external URLs
+(`https://...`) as standard markdown links. Do not convert links inside fenced code
+blocks or inline code.
+
+### 16.4 Tags — derivadas dos dominios do projeto
+
+As tags de um documento DEVEM corresponder a um dominio documentado em
+[[docs/system-of-record|system-of-record.md]], na secao "Dominios do projeto".
+
+Use o nome do dominio em lowercase com hifens. Exemplos:
+- "Agentes e orquestracao" → `agentes-orquestracao`
+- "Curriculo e conteudo" → `curriculo-conteudo`
+- "Stack e tooling" → `stack-tooling`
+- "Governanca de repositorio" → `governanca`
+
+Tags mais especificas que um dominio sao permitidas desde que ancoradas em um topico
+existente no system-of-record ou em um canonical doc. Exemplos validos:
+`context-engineering`, `evals`, `error-handling`, `harness`, `12-factor-agents`,
+`production` — todos referenciam topicos tratados nos canonicos ou analises listados
+no system-of-record.
+
+Se um documento introduz um topico novo que nao esta no system-of-record, adicione-o
+primeiro ao system-of-record (na secao do dominio correspondente) e depois use a tag
+correspondente. Nao crie tags para topicos nao documentados.
+
+Para garantir que as tags reflitam o conteudo real do documento sendo
+commitado:
+- Antes de definir as tags, leia o documento e identifique quais dominios
+  e topicos do system-of-record se aplicam ao assunto tratado.
+- As tags devem corresponder ao conteudo do documento, nao apenas ao
+  diretorio onde ele se encontra.
+- Prefira tags de dominio (mapeamento direto) e complemente com tags de
+  topico mais especificas quando o documento aprofunda um subtopico
+  documentado.
+
+Tags estruturais (independentes de dominio):
+- `index` — catalogos, navegacao, mapas
+- `reference` — glossarios, FAQs, referencias
+
+### 16.5 Slug naming
+
+Filenames use lowercase with hyphens: `error-context-hygiene.md`. No spaces, no
+underscores (except `_moc-` prefix for Maps of Content), no special characters.
+The filename is the canonical identifier — renaming breaks wikilinks.
+
+### 16.6 Validation
+
+Run `bash scripts/check-obsidian-conventions.sh` before committing documentation
+changes. The script checks:
+- Files in `docs/canonical/` and `docs/analysis/` have YAML frontmatter with `type`
+- No raw `[text](path.md)` links remain in monitored directories
+- No broken `[[wikilinks]]` point to nonexistent files
+- Cross-reference tag gaps between linked documents (warning only, nao bloqueia o commit)
+
+### 16.7 Cross-reference tag consistency
+
+Ao definir as tags de um documento, leia os documentos que ele referencia
+via `[[wikilinks]]` para garantir consistencia semantica:
+
+- Documentos interligados que tratam do mesmo topico devem compartilhar ao
+  menos uma tag em comum. Divergencias devem ser intencionais e
+  justificaveis.
+- Se um documento referencia [[docs/canonical/error-context-hygiene]],
+  por exemplo, considere incluir `error-handling` ou `context-engineering`
+  entre suas tags, se o assunto for relacionado.
+- Tags herdadas por transitividade: se A referencia B, e B tem a tag
+  `evals`, A tambem deve considerar `evals` caso o assunto de A envolva
+  o topico tratado em B.
+- Esta verificacao e um passo manual no momento do commit — o script de
+  validacao emite warnings sobre gaps de interseccao entre documentos
+  linkados, mas a decisao final e do autor.

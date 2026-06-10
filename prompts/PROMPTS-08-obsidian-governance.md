@@ -83,6 +83,16 @@ Se um documento introduz um topico novo que nao esta no system-of-record, adicio
 primeiro ao system-of-record (na secao do dominio correspondente) e depois use a tag
 correspondente. Nao crie tags para topicos nao documentados.
 
+Para garantir que as tags reflitam o conteudo real do documento sendo
+commitado:
+- Antes de definir as tags, leia o documento e identifique quais dominios
+  e topicos do system-of-record se aplicam ao assunto tratado.
+- As tags devem corresponder ao conteudo do documento, nao apenas ao
+  diretorio onde ele se encontra.
+- Prefira tags de dominio (mapeamento direto) e complemente com tags de
+  topico mais especificas quando o documento aprofunda um subtopico
+  documentado.
+
 Tags estruturais (independentes de dominio):
 - `index` — catalogos, navegacao, mapas
 - `reference` — glossarios, FAQs, referencias
@@ -100,6 +110,25 @@ changes. The script checks:
 - Files in `docs/canonical/` and `docs/analysis/` have YAML frontmatter with `type`
 - No raw `[text](path.md)` links remain in monitored directories
 - No broken `[[wikilinks]]` point to nonexistent files
+- Cross-reference tag gaps between linked documents (warning only, nao bloqueia o commit)
+
+### 16.7 Cross-reference tag consistency
+
+Ao definir as tags de um documento, leia os documentos que ele referencia
+via `[[wikilinks]]` para garantir consistencia semantica:
+
+- Documentos interligados que tratam do mesmo topico devem compartilhar ao
+  menos uma tag em comum. Divergencias devem ser intencionais e
+  justificaveis.
+- Se um documento referencia [[docs/canonical/error-context-hygiene]],
+  por exemplo, considere incluir `error-handling` ou `context-engineering`
+  entre suas tags, se o assunto for relacionado.
+- Tags herdadas por transitividade: se A referencia B, e B tem a tag
+  `evals`, A tambem deve considerar `evals` caso o assunto de A envolva
+  o topico tratado em B.
+- Esta verificacao e um passo manual no momento do commit — o script de
+  validacao emite warnings sobre gaps de interseccao entre documentos
+  linkados, mas a decisao final e do autor.
 ```
 
 Insert this as a new section at the end of AGENTS.md, after Rule 15, with a blank line separating them.
@@ -232,6 +261,37 @@ for f in "$REPO_ROOT"/docs/canonical/*.md; do
     done <<< "$wikilinks"
 done
 
+# --- Check 7: Cross-reference tag consistency (warning only) ---
+echo ""
+echo "--- Check 7: Cross-reference tag consistency in docs/canonical/ ---"
+for f in "$REPO_ROOT"/docs/canonical/*.md; do
+    [ "$(basename "$f")" = ".gitkeep" ] && continue
+    # Extract tags from this file's frontmatter
+    file_tags=$(sed -n '/^---$/,/^---$/p' "$f" | grep '^tags:' | sed 's/^tags: *//' | tr -d '[]"' | tr ',' '\n' | sed 's/^ *//;s/ *$//' | grep -v '^$' || true)
+    # Extract wikilinks
+    wikilinks=$(grep -oP '\[\[\K[^\]|]+' "$f" || true)
+    while IFS= read -r link; do
+        [ -z "$link" ] && continue
+        [[ "$link" =~ :// ]] && continue
+        target="$REPO_ROOT/${link}.md"
+        [ ! -f "$target" ] && target="$REPO_ROOT/${link}"
+        [ ! -f "$target" ] && continue
+        # Extract tags from linked file
+        linked_tags=$(sed -n '/^---$/,/^---$/p' "$target" | grep '^tags:' | sed 's/^tags: *//' | tr -d '[]"' | tr ',' '\n' | sed 's/^ *//;s/ *$//' | grep -v '^$' || true)
+        # Check for at least one tag in common
+        common=0
+        for t in $file_tags; do
+            for lt in $linked_tags; do
+                [ "$t" = "$lt" ] && common=1 && break
+            done
+            [ "$common" -eq 1 ] && break
+        done
+        if [ "$common" -eq 0 ] && [ -n "$file_tags" ] && [ -n "$linked_tags" ]; then
+            report_warn "$(basename "$f") — no tags in common with [[$link]]"
+        fi
+    done <<< "$wikilinks"
+done
+
 # --- Summary ---
 echo ""
 echo "=== Summary ==="
@@ -287,7 +347,7 @@ MUST NOT DO:
 - Do NOT add npm dependencies or modify package.json
 - Do NOT modify CI configs (.github/workflows/)
 - Do NOT change file names or directory structure
-- Do NOT enforce a closed tag vocabulary in the validation script — the script only checks that `tags:` is present in frontmatter, NOT the specific tag values. Tag consistency is a review concern, not an automated check.
+- Do NOT enforce a closed tag vocabulary in the validation script. The script checks that `tags:` is present in frontmatter and emits warnings (never errors) for cross-reference tag gaps between linked documents (Check 7). Tag vocabulary validity is a review concern, not a blocking automated check.
 
 CONTEXT:
 
@@ -310,7 +370,7 @@ However, `long-running-agents` is a software project, not a pure knowledge base,
 The tag vocabulary is NOT hardcoded in AGENTS.md or the validation script. Instead, 16.4 establishes that tags must come from domains documented in `docs/system-of-record.md`. This means:
 - When a new domain is added to system-of-record, new tags become valid automatically
 - The script does NOT validate tag values — it only checks that `tags:` exists in frontmatter
-- Tag consistency is reviewed by humans, not enforced by automation
+- Tag consistency is primarily reviewed by humans; the script emits warnings for cross-reference tag gaps (Check 7) but does not block the commit
 - This avoids the fragility of a frozen tag list that rejects valid new topics
 
 For the validation script's Check 5 (raw markdown links), the grep pattern `](.*\.md)` catches `[text](path.md)` patterns. The script excludes lines with `http` (external URLs) and lines starting with whitespace+backtick (inline code, heuristic). This is intentionally simple — false negatives are acceptable; false positives are not.
