@@ -6,6 +6,7 @@ domain: 12-factor-agents
 aliases: ["modelo conceitual 12FA", "framework mental 12FA", "curriculo agentes", "12FA"]
 tags: [analise, 12-factor-agents, agent-loop, mental-model]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12-Factor Agents Analysis]]"]
 ---
 
 # Modelo Mental: Curriculum Long-Running Agents

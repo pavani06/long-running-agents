@@ -6,6 +6,7 @@ domain: eval-maturity
 aliases: ["roadmap evals", "plano evals", "integracao evals", "EDD"]
 tags: [analise, evals, maturity-model, roadmap]
 last_updated: 2026-06-10
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/classification|Eval Maturity Classification]]"]
 ---
 
 # Integration Roadmap: Eval Maturity Patterns -> long-running-agents

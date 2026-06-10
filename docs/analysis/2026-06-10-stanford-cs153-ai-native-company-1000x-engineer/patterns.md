@@ -6,6 +6,7 @@ sources:
   - "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.md"
 tags: [agentes-orquestracao, evals, context-engineering]
 aliases: ["CS153 patterns", "11 padrões", "catálogo CS153"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|CS153 Analysis]]"]
 ---
 
 # Agentic Patterns from Stanford CS153 AI Native Company
