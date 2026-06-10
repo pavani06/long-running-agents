@@ -4,17 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "bf537dbeb60b8b24",
+        "id": "1bc16859c9b15330",
         "type": "tabs",
         "children": [
           {
-            "id": "e831ec7c2c55684c",
+            "id": "5ec975bccdaba7b7",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "canvas",
+              "state": {
+                "file": "reading-flow.canvas",
+                "viewState": {
+                  "x": 485,
+                  "y": 630,
+                  "zoom": -1.687829022799074
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "reading-flow"
             }
           }
         ]
@@ -49,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#nivel-2",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/canonical/stable-harness-prompt.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +107,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for stable-harness-prompt"
             }
           },
           {
@@ -108,11 +116,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "docs/canonical/stable-harness-prompt.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from stable-harness-prompt"
             }
           },
           {
@@ -150,12 +159,23 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "docs/canonical/stable-harness-prompt.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of stable-harness-prompt"
+            }
+          },
+          {
+            "id": "0e905acbc2f4151c",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           }
         ]
@@ -176,32 +196,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "e831ec7c2c55684c",
+  "active": "5ec975bccdaba7b7",
   "lastOpenFiles": [
-    "curriculum/08-tools-templates/evaluation-rubric-template.md",
-    "index.md",
-    "prompts/PROMPTS-08-obsidian-governance.md",
-    "prompts/PROMPTS-07-obsidian-adaptation.md",
-    "docs/analysis/2026-06-09-12-factor-agents/mental-model.md",
-    "docs/canonical/eval-to-production-correlation-tracking.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases/integration-roadmap.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases/patterns.md",
-    "docs/canonical/production-failure-regression-flywheel.md",
-    "docs/canonical/pr-gated-eval-enforcement.md",
-    "docs/canonical/eval-tier-stratification.md",
-    "docs/canonical/production-grounded-eval-sampling.md",
-    "docs/canonical/repeatable-agent-spot-check-set.md",
-    "docs/canonical/pain-signal-eval-progression-gate.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases/classification.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases/mental-model.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md",
+    "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.yaml",
+    "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.md",
+    "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.yaml",
+    "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.md",
+    "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer",
+    "document-architecture.canvas",
+    "curriculum/GLOSSARY.md",
+    "curriculum/INDEX.md",
+    "dashboards/curriculum-progress.md",
+    "dashboards/obsidian-home.md",
+    "dashboards/analysis-hub.md",
+    "dashboards",
+    "reading-flow.canvas",
+    "templates/template-curriculum-index.md",
+    "templates/template-curriculum-lesson.md",
+    "templates/template-analysis.md",
+    "templates/template-canonical.md",
+    "templates",
+    "docs/plans/2026-06-10-obsidian-reading-improvements.md",
+    "docs/articles/evals-ecommerce-koda.md",
+    "scripts/check-obsidian-conventions.sh",
+    "docs/articles/rubricas-multidimensionais-arquitetura.md",
+    "docs/articles/harness-evolution-metodos-construcao.md",
+    "curriculum/10-references/anthropic-presentation-summary.md",
+    "curriculum/05-core-concepts/08-evaluation-rubrics.md",
+    "docs/articles",
+    "curriculum/05-core-concepts/04-sprint-contracts.md",
+    "curriculum/05-core-concepts/03-generator-evaluator-pattern.md",
+    "curriculum/05-core-concepts/02-planning-execution-separation.md",
+    "curriculum/06-knowledge-graphs/02-koda-feature-dependencies.md",
+    "curriculum/06-knowledge-graphs/01-concept-ecosystem.md",
+    "curriculum/07-implementation-guides/01-setup-guide.md",
+    "curriculum/07-implementation-guides/05-trace-analysis-guide.md",
+    "curriculum/08-tools-templates/architecture-decision-record-template.md",
+    "scripts/apply-tag-suggestions.py",
+    "curriculum/tag-suggestions.yaml",
     "docs/analysis/2026-06-10-eval-maturity-phases/classification.yaml",
-    "docs/analysis/2026-06-10-eval-maturity-phases/patterns.yaml",
-    "docs/analysis/2026-06-10-eval-maturity-phases/analysis.yaml",
-    "docs/analysis/2026-06-10-eval-maturity-phases/mental-model.yaml",
-    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md",
-    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md",
-    "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md",
-    "docs/analysis/2026-06-10-eval-maturity-phases"
+    "docs/analysis/2026-06-10-eval-maturity-phases/patterns.yaml"
   ]
 }

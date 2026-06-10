@@ -1,1 +1,7 @@
-{}
+{
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "note-type-colors",
+    "readability"
+  ]
+}
