@@ -3,7 +3,7 @@
 **Type:** Canonical Pattern
 **Status:** Active
 **Source:** Dex Horthy — "12-Factor Agents" (AI Engineer, 2025), adapted for long-running-agents
-**Classification:** Missing — no equivalent mechanism exists in the repo (per `docs/analysis/2026-06-09-pattern-classification.md`)
+**Classification:** Missing — no equivalent mechanism exists in the repo (per `docs/analysis/2026-06-09-12-factor-agents/classification.md`)
 **Precedence:** Level 2 (`docs/system-of-record.md:8`)
 
 ---
@@ -141,10 +141,10 @@ The pattern applies to these repo surfaces:
 
 ## References
 
-- `docs/analysis/2026-06-09-pattern-classification.md` — classification as Missing with gap evidence
+- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — classification as Missing with gap evidence
 - `docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md:320` — "sem retry loop com feedback"
 - `docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md` — multi-point gap analysis
-- `docs/analysis/2026-06-09-agentic-patterns.md` — pattern 6 definition with inputs/outputs/benefits/limitations
+- `docs/analysis/2026-06-09-12-factor-agents/patterns.md` — pattern 6 definition with inputs/outputs/benefits/limitations
 - `.opencode/skills/error-context-hygiene/SKILL.md` — implementation skill for agents
 
 ---

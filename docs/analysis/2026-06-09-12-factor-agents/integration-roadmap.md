@@ -3,7 +3,7 @@
 **Date:** 2026-06-09
 **Type:** Analysis
 **Precedence:** Level 4 (`docs/system-of-record.md:10`)
-**Source:** `docs/analysis/2026-06-09-pattern-classification.md`
+**Source:** `docs/analysis/2026-06-09-12-factor-agents/classification.md`
 
 ---
 
@@ -148,9 +148,9 @@ From the pattern analysis, these decisions warrant formal ADRs:
 
 ## References
 
-- `docs/analysis/2026-06-09-pattern-classification.md` — full classification with evidence
-- `docs/analysis/2026-06-09-agentic-patterns.md` — 8 pattern definitions with 6 fields each
-- `docs/analysis/2026-06-09-12-factor-agents-analysis.md` — non-obvious knowledge extraction
+- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — full classification with evidence
+- `docs/analysis/2026-06-09-12-factor-agents/patterns.md` — 8 pattern definitions with 6 fields each
+- `docs/analysis/2026-06-09-12-factor-agents/analysis.md` — non-obvious knowledge extraction
 - `docs/canonical/error-context-hygiene.md` — canonical pattern doc
 - `docs/canonical/deterministic-tool-dispatch.md` — canonical pattern doc
 - `docs/canonical/owned-agent-control-loop.md` — canonical pattern doc

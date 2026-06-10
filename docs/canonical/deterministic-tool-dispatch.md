@@ -3,7 +3,7 @@
 **Type:** Canonical Pattern
 **Status:** Active
 **Source:** Dex Horthy — "12-Factor Agents" (AI Engineer, 2025), adapted for long-running-agents
-**Classification:** Partial Coverage — mechanics exist, philosophical reframe missing (per `docs/analysis/2026-06-09-pattern-classification.md`)
+**Classification:** Partial Coverage — mechanics exist, philosophical reframe missing (per `docs/analysis/2026-06-09-12-factor-agents/classification.md`)
 **Precedence:** Level 2 (`docs/system-of-record.md:8`)
 
 ---
@@ -102,8 +102,8 @@ The repo treats tool dispatch as standard engineering practice **without naming 
 
 ## References
 
-- `docs/analysis/2026-06-09-pattern-classification.md` — classification as Partial Coverage
-- `docs/analysis/2026-06-09-agentic-patterns.md` — pattern 2 definition
+- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — classification as Partial Coverage
+- `docs/analysis/2026-06-09-12-factor-agents/patterns.md` — pattern 2 definition
 - `docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence.md` — dispatch chain documentation
 - `curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md` — existing contract teaching
 

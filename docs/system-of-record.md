@@ -150,13 +150,13 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 | Arquivo | Cobre |
 |---|---|
-| `2026-06-09-12-factor-agents-analysis.md` | Extração de conhecimento não-óbvio da talk 12-Factor Agents |
-| `2026-06-09-12-factor-agents-analysis.yaml` | YAML com frameworks, padrões, lições operacionais |
-| `2026-06-09-agentic-patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
-| `2026-06-09-agentic-patterns.yaml` | YAML com componentes e fluxo por padrão |
-| `2026-06-09-pattern-classification.md` | Classificação comparativa dos 8 padrões vs. repo |
-| `2026-06-09-pattern-classification.yaml` | YAML com evidência por padrão |
-| `2026-06-09-integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+| `2026-06-09-12-factor-agents/analysis.md` | Extração de conhecimento não-óbvio da talk 12-Factor Agents |
+| `2026-06-09-12-factor-agents/analysis.yaml` | YAML com frameworks, padrões, lições operacionais |
+| `2026-06-09-12-factor-agents/patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
+| `2026-06-09-12-factor-agents/patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-09-12-factor-agents/classification.md` | Classificação comparativa dos 8 padrões vs. repo |
+| `2026-06-09-12-factor-agents/classification.yaml` | YAML com evidência por padrão |
+| `2026-06-09-12-factor-agents/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
 
 ## Planos
 

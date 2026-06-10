@@ -189,7 +189,7 @@ Before declaring error handling complete, verify:
 ## References
 
 - `docs/canonical/error-context-hygiene.md` — canonical pattern description
-- `docs/analysis/2026-06-09-pattern-classification.md` — classification as Missing
+- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — classification as Missing
 - `docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md:320` — "sem retry loop com feedback"
 - `docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md` — multi-point gap analysis
 

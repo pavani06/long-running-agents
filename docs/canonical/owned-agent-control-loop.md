@@ -3,7 +3,7 @@
 **Type:** Canonical Pattern
 **Status:** Active
 **Source:** Dex Horthy — "12-Factor Agents" (AI Engineer, 2025), adapted for long-running-agents
-**Classification:** Partial Coverage — general principle exists, specific 4-component decomposition missing (per `docs/analysis/2026-06-09-pattern-classification.md`)
+**Classification:** Partial Coverage — general principle exists, specific 4-component decomposition missing (per `docs/analysis/2026-06-09-12-factor-agents/classification.md`)
 **Precedence:** Level 2 (`docs/system-of-record.md:8`)
 
 ---
@@ -123,8 +123,8 @@ The repo already has stronger harness ownership than most codebases. The 12FA pa
 
 ## References
 
-- `docs/analysis/2026-06-09-pattern-classification.md` — classification as Partial Coverage
-- `docs/analysis/2026-06-09-agentic-patterns.md` — pattern 3 definition
+- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — classification as Partial Coverage
+- `docs/analysis/2026-06-09-12-factor-agents/patterns.md` — pattern 3 definition
 - `curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns.md` — harness ownership foundation
 - `curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md` — harness evolution lifecycle
 
