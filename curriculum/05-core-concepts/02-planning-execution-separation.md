@@ -3,6 +3,7 @@ title: "Planning vs Execution: Por Que Separar Planejamento de Execucao?"
 type: curriculum-core-concept
 aliases: []
 tags: [curriculo-conteudo, conceitos-core, planning-execution, separacao-de-responsabilidades, arquitetura-por-fases, contratos-de-execucao, replanejamento, controle-de-fluxo, execucao-sequencial, desacoplamento, verificacao-por-etapas]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-10
 ---
 # 🧠 Planning vs Execution: Por Que Separar Planejamento de Execucao?
