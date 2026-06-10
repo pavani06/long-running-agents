@@ -3,7 +3,7 @@ title: "Por Que Agentes Perdem o Foco?"
 type: curriculum-lesson
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, fundamentos, amnesia-de-contexto, janela-de-contexto, rot-de-contexto, separacao-de-planejamento-e-execucao, autoavaliacao, avaliador-externo, generator-evaluator, erros-silenciosos, confianca-do-cliente, relacionamento-com-cliente]
+tags: [curriculo-conteudo, nivel-1, fundamentos, amnesia-de-contexto, janela-de-contexto, rot-de-contexto, separacao-de-planejamento-e-execucao, autoavaliacao, avaliador-externo, generator-evaluator, erros-silenciosos, confianca-do-cliente, relacionamento-com-cliente, external-state-persistence, persistencia-de-estado-externo, plan-execute-verify, planejar-executar-verificar, constraint-anchored-evaluation, avaliacao-ancorada-em-constraints]
 relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"]
 last_updated: 2026-06-10
 ---
