@@ -3,7 +3,7 @@ title: "Solução: Exercício 1 — Sprint Contract + Generator/Evaluator para P
 type: curriculum-solution
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, solucao]
+tags: [curriculo-conteudo, nivel-2, solucao, sprint-contract, contract-design, success-criteria, failure-handling, input-specification, product-comparison, koda-scenario, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # ✅ Solução: Exercício 1 — Sprint Contract + Generator/Evaluator para Product Comparison

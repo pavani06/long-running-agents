@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 1: Sistema Multi-Agente Planner/Generator/Evaluator
 type: curriculum-solution
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, solucao]
+tags: [curriculo-conteudo, nivel-3, solucao, multi-agent-system, planner-agent, generator-agent, evaluator-agent, file-based-coordination, audit-trail, sycophancy-prevention, budget-guard, dietary-restriction-validation, python, dataclass, json-state, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # 🧩 Solucao do Exercicio 1: Sistema Multi-Agente Planner/Generator/Evaluator

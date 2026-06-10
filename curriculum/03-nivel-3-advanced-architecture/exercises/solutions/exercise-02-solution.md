@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 2: State Persistence com SQLite e Recovery"
 type: curriculum-solution
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, solucao]
+tags: [curriculo-conteudo, nivel-3, solucao, checkpointing, crash-recovery, state-persistence, snapshot, rollback, atomic-writing, audit-trail, session-state, journey-phase, sqlite, wal-mode, python, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # ✅ Solucao do Exercicio 2: State Persistence com SQLite e Recovery

@@ -3,7 +3,7 @@ title: "Exercício 1: Implementar History Windowing"
 type: curriculum-exercise
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, exercicio]
+tags: [curriculo-conteudo, nivel-1, exercicio, context-management, token-budgeting, sliding-window, history-compression, metadata-preservation, head-tail-pattern, conversation-manager, python, dataclass]
 last_updated: 2026-06-10
 ---
 # 🪟 Exercício 1: Implementar History Windowing

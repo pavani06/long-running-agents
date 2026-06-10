@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 1: Feature KODA — Recomendacao de Produto com Gen
 type: curriculum-solution
 nivel: 4
 aliases: []
-tags: [curriculo-conteudo, nivel-4, solucao]
+tags: [curriculo-conteudo, nivel-4, solucao, generator-evaluator-pattern, feature-contract, rubric-evaluation, fallback-safe, product-recommendation, dietary-restrictions, budget-constraint, e-commerce, supplement-catalog, python, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # 🎯 Solucao do Exercicio 1: Feature KODA — Recomendacao de Produto com Generator/Evaluator

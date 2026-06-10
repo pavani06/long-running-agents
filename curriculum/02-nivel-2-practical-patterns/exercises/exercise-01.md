@@ -3,7 +3,7 @@ title: "Exercício 1: Design a Sprint Contract"
 type: curriculum-exercise
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, exercicio]
+tags: [curriculo-conteudo, nivel-2, exercicio, sprint-contract, contract-design, success-criteria, failure-handling, input-specification, product-comparison, koda-scenario, exercicio-conceitual]
 last_updated: 2026-06-10
 ---
 # 📋 Exercício 1: Design a Sprint Contract

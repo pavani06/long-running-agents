@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 1: History Windowing para Gerenciamento de Contexto
 type: curriculum-solution
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, solucao]
+tags: [curriculo-conteudo, nivel-1, solucao, context-management, token-budgeting, sliding-window, history-compression, metadata-preservation, head-tail-pattern, conversation-manager, python, dataclass, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # 🪟 Solucao do Exercicio 1: History Windowing para Gerenciamento de Contexto

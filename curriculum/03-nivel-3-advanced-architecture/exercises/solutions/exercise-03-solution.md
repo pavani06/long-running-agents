@@ -3,7 +3,7 @@ title: "Solução de Referência — Exercício 3: Plano de Evolução do Harnes
 type: curriculum-solution
 nivel: 3
 aliases: []
-tags: [curriculo-conteudo, nivel-3, solucao]
+tags: [curriculo-conteudo, nivel-3, solucao, harness-evolution, architecture-review, roi-analysis, component-removal, build-stabilize-simplify-remove, changelog-driven-decisions, cost-optimization, implementacao-referencia]
 last_updated: 2026-06-10
 ---
 # 📝 Solução de Referência — Exercício 3: Plano de Evolução do Harness KODA

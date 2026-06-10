@@ -3,7 +3,7 @@ title: "Exercício 2: Implementar Structured Output (JSON Schema Validation)"
 type: curriculum-exercise
 nivel: 1
 aliases: []
-tags: [curriculo-conteudo, nivel-1, exercicio]
+tags: [curriculo-conteudo, nivel-1, exercicio, structured-output, json-schema, schema-validation, fallback-pattern, audit-logging, business-constraints, product-recommendation, pydantic, python]
 last_updated: 2026-06-10
 ---
 # ✅ Exercício 2: Implementar Structured Output (JSON Schema Validation)

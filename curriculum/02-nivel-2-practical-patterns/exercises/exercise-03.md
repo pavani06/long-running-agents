@@ -3,7 +3,7 @@ title: "Exercício 3: Handle Failure Scenarios"
 type: curriculum-exercise
 nivel: 2
 aliases: []
-tags: [curriculo-conteudo, nivel-2, exercicio]
+tags: [curriculo-conteudo, nivel-2, exercicio, failure-scenarios, harness, resilience-patterns, error-detection, rollback-pattern, product-availability, allergy-validation, price-change, client-communication, exercicio-conceitual]
 last_updated: 2026-06-10
 ---
 # ⚠️ Exercício 3: Handle Failure Scenarios
