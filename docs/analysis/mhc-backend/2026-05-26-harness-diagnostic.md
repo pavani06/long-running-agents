@@ -5,6 +5,7 @@ date: 2026-05-26
 domain: mhc-backend
 aliases: []
 tags: [analise, mhc-backend, diagnostico, harness]
+relates-to: ["[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"]
 last_updated: 2026-06-10
 ---
 
@@ -12,7 +13,7 @@ last_updated: 2026-06-10
 
 **Data:** 2026-05-26
 **Repositório analisado:** [`chatshop-io/mhc-backend`](https://github.com/chatshop-io/mhc-backend)
-**Referência curricular:** [`03-basic-harness-patterns.md`](https://github.com/pavani06/long-running-agents/blob/main/curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns.md)
+**Referência curricular:** [[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|03-basic-harness-patterns.md]]
 **Stack:** Express.js 4.18, TypeScript 5.3, Prisma 5.7 (PostgreSQL 16), LangGraph, LangChain + OpenAI (gpt-4o-mini), Pinecone, Redis 7, Trigger.dev 4.3
 
 ---

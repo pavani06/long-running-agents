@@ -5,6 +5,7 @@ date: 2026-05-26
 domain: mhc-backend
 aliases: []
 tags: [analise, mhc-backend, diagnostico, bling, pedido, erro]
+relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 last_updated: 2026-06-10
 ---
 

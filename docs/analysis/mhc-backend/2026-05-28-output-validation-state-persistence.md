@@ -5,6 +5,7 @@ date: 2026-05-28
 domain: mhc-backend
 aliases: []
 tags: [analise, mhc-backend, diagnostico, validacao, state, persistence]
+relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"]
 last_updated: 2026-06-10
 ---
 
