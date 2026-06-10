@@ -6,6 +6,7 @@ domain: 12-factor-agents
 aliases: []
 tags: [analise, 12-factor-agents, agent-loop, roadmap]
 last_updated: 2026-06-10
+relates-to: ["[[docs/analysis/2026-06-09-12-factor-agents/classification|12FA Classification]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 ---
 
 # Integration Roadmap: 12-Factor Agents Patterns → long-running-agents

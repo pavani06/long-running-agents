@@ -6,6 +6,7 @@ domain: 12-factor-agents
 aliases: []
 tags: [analise, 12-factor-agents, agent-loop, classification]
 last_updated: 2026-06-10
+relates-to: ["[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]", "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 ---
 
 # Comparative Classification: 12-Factor Agentic Patterns vs. long-running-agents Repo
