@@ -1611,6 +1611,46 @@ Redução de pelo menos 30% nos tokens do harness.
 - **Métrica de segurança:** nenhum aumento em incidente crítico.
 - **Critério de reversão:** qualquer regressão em alergia, orçamento, pagamento ou entrega.
 
+### Padrão: corpus de eval amostrado de produção
+
+O replay de conversas reais anonimizadas deixa de ser uma atividade genérica e vira um artefato nomeado: `production_sampled_eval_corpus`. Esse corpus é a ponte entre Harness Evolution e produção. Ele garante que uma remoção, simplificação ou troca de modelo seja testada contra casos que clientes reais já geraram, com privacidade e labels explícitos.
+
+Um corpus válido para KODA registra:
+
+| Campo | Por que existe | Exemplo |
+|---|---|---|
+| `case_id` | Permite repetir o mesmo caso em PRs futuros | `koda_prod_replay_rafael_caffeine_001` |
+| Fonte | Liga fixture redigida ao trace/ticket original sem expor PII | `support_ticket_2026_05_118` |
+| Cobertura | Mostra qual risco o caso representa | conversa longa, checkout, alergia, cupom, suporte |
+| Redação | Prova que telefone, endereço e dados sensíveis foram removidos | `redaction_reviewed: true` |
+| Label esperado | Define comportamento correto antes de rodar candidate | rejeitar pré-treino com cafeína |
+| Baseline | Preserva resultado da versão atual | `prompt.koda.v3: pass` |
+| Candidate | Registra resultado da mudança | `prompt.koda.v4: pass` |
+| Retenção | Evita manter dado bruto por tempo indefinido | fixture redigida revisada mensalmente |
+
+```yaml
+production_sampled_eval_corpus:
+  corpus_id: "koda_prod_sampled_eval_2026_05"
+  owner: "conversational-core"
+  selection_policy:
+    source: "conversas reais anonimizadas"
+    minimum_cases:
+      long_context: 20
+      checkout_payment: 20
+      dietary_restriction: 20
+      support_complaint: 10
+  case_requirements:
+    - case_id
+    - expected_behavior
+    - prohibited_behavior
+    - state_fixture
+    - baseline_result
+    - redaction_status
+  replay_before_canary: true
+```
+
+Nos cartões de evolução, a frase "replay de conversas reais anonimizadas antes de canary" deve ser lida como: selecionar casos para esse corpus, salvar baseline/candidate, rodar o tier adequado e anexar o relatório ao ADR ou PR de mudança.
+
 ---
 
 ## 🏗️ Parte 6: Arquitetura Integrada

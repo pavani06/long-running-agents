@@ -812,7 +812,46 @@ Critério de saída: existe evidência escrita de que a etapa foi concluída.
 ### Passo 8: Rodar regression set
 Aplique a rubric em outputs antigos que causaram incidentes e confirme que seriam reprovados.
 - Inclua N+1 long-session fixtures: conversas 10+ turnos com compactação, 11º turno testa continuidade contextual.
+- Inclua casos do Production Failure Regression Flywheel: reclamação de usuário, tool misuse, state persistence failure, scoring gap e escaped edge case.
 Critério de saída: existe evidência escrita de que a etapa foi concluída.
+
+#### Template de regression eval case
+
+Use este bloco quando uma saída antiga, incidente ou trace diagnosticada precisa virar caso durável de regressão.
+
+```yaml
+regression_eval_case:
+  case_id: "regression_YYYY_MM_slug_001"
+  source:
+    incident_id: "support_or_incident_id"
+    trace_id: "trace_id_original"
+    production_window: "YYYY-MM-DD/YYYY-MM-DD"
+  failure_class: "context_loss | tool_misuse | state_persistence | rubric_gap | prompt_regression | pricing_policy | safety_escape | latency_cost"
+  input_fixture: "fixtures/evals/<case_id>/input.json"
+  state_fixture: "fixtures/evals/<case_id>/state.json"
+  output_under_test: "fixtures/evals/<case_id>/baseline_output.json"
+  rubric:
+    rubric_id: "recommendation_quality_v1"
+    expected_label: "reject"
+    expected_dimension_failures:
+      - "restriction_compliance"
+      - "safety"
+  expected_behavior: "Uma frase testável sobre a resposta correta."
+  prohibited_behavior: "O comportamento antigo que nunca pode voltar."
+  suite_tier: "fast | medium | deep"
+  owner: "squad-or-person"
+  refresh_trigger: "mudança em prompt/model/tool/rubric/context/memory/agent-loop relacionado"
+  baseline_result: "fails_on_version_x"
+  candidate_requirement: "must_pass_before_merge"
+```
+
+Checklist do caso:
+
+- [ ] O caso falha na versão que causou ou permitiu o incidente.
+- [ ] O caso passa na correção proposta antes do merge.
+- [ ] O expected behavior é verificável sem opinião solta.
+- [ ] O owner sabe quando atualizar, deduplicar ou arquivar o caso.
+- [ ] O tier escolhido é o mais barato que ainda detecta a regressão.
 
 ### Passo 9: Registrar versão
 Documente o que mudou, por que mudou e qual métrica deve melhorar.
@@ -875,6 +914,7 @@ Por isso, calibration não é luxo.
 14. **Atualização versionada:** Mudanças em pesos, gates ou decision rule têm versão e motivo.
 15. **Testada com incidentes reais:** Outputs que já causaram problema são usados como regression examples.
 16. **Context degradation cases:** late-failure fixtures estão incluídos no regression set.
+17. **Regression flywheel:** incidentes, reclamações, tool misuse e scoring gaps têm template de caso com owner, tier e baseline/candidate.
 
 ---
 

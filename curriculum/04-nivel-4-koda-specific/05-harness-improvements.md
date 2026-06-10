@@ -425,6 +425,19 @@ O diagrama abaixo compara o estado diagnosticado com uma proposta incremental. A
 
 ## 🚦 Propostas de Melhoria Priorizadas
 
+### Campos comuns para qualquer proposta
+
+Antes de priorizar uma melhoria, registre estes campos junto da proposta. Eles mantêm as recomendações como propostas governadas, não como desejo arquitetural solto.
+
+| Campo | Como preencher | Exemplo |
+|---|---|---|
+| `eval_maturity_trigger` | Dor que justifica subir a maturidade de eval | `user_complaint`, `manual_bottleneck`, `score_feedback_mismatch`, `escaped_edge_case`, `release_risk_increase` |
+| `current_eval_capability` | O que já existe para detectar regressão | trace manual + rubric shadow |
+| `next_eval_capability` | Menor capacidade nova que responde à dor | fast spot-check seed + corpus médio |
+| `production_sampled_corpus` | Se usa shadow/canary, qual corpus real redigido valida a proposta | `koda_prod_sampled_eval_2026_05` |
+| `rollback_or_disable` | Como voltar sem migrar dados ou quebrar produção | flag ou config |
+| `review_date` | Quando medir se a melhoria ainda paga custo | 30 ou 90 dias |
+
 ### P1: Manifest de turno auditável
 
 **Prioridade:** Muito alta
@@ -510,6 +523,13 @@ O diagrama abaixo compara o estado diagnosticado com uma proposta incremental. A
 - O 11º turno testa continuidade, follow-up, ausência de alucinação
 - Aprovação requer ≥95% de acerto
 
+**Requisitos de corpus production-sampled:**
+- Casos vêm de conversas reais anonimizadas, com telefone, endereço, pedido e dados sensíveis redigidos antes de virar fixture.
+- Cada fixture registra `case_id`, etapa da jornada, classe de risco, state fixture, baseline atual, expected behavior e owner.
+- A amostra cobre conversas longas, checkout, restrição alimentar, suporte pós-venda e falhas de política comercial.
+- A proposta define retenção, refresh mensal e regra de deleção se a redaction ficar insuficiente.
+- Shadow test ou canary só avança quando o corpus mostra candidate dentro de threshold de qualidade, latência e custo.
+
 ### P5: Checkpoint comercial antes de efeitos externos
 
 **Prioridade:** Alta
@@ -581,6 +601,7 @@ O diagrama abaixo compara o estado diagnosticado com uma proposta incremental. A
 * Instrumentar tool calls principais com nome, duração, argumentos redigidos e resultado resumido.
 * Adicionar custo estimado por chamada LLM quando o provider expuser tokens.
 * Criar amostra de 50 conversas longas para shadow tests de compactação.
+* Transformar a amostra em `production_sampled_eval_corpus` com redaction, labels, baseline e owner.
 * Definir rubrica inicial de recomendação KODA com pesos e threshold.
 * Rodar Evaluator em shadow mode para não afetar usuário.
 * Documentar ADR da melhoria de manifest e ADR da rubrica inicial.
@@ -768,6 +789,8 @@ O harness passa a ser governado por ciclo de vida, com remoção segura e decis�
 * [ ] Definir dono técnico por proposta.
 * [ ] Definir métrica principal e métrica de segurança.
 * [ ] Escolher uma amostra de conversas reais anonimizadas.
+* [ ] Registrar `eval_maturity_trigger` para justificar a próxima capacidade de eval.
+* [ ] Converter amostra em corpus com `case_id`, label esperado, retenção, redaction e baseline.
 * [ ] Criar critérios de rollback antes de alterar comportamento.
 * [ ] Registrar ADR inicial quando houver mudança arquitetural.
 

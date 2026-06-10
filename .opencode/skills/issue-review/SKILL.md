@@ -56,6 +56,8 @@ npm --prefix "$WORKTREE" run ops:preflight
 
 Add surface-specific gates when relevant:
 
+Eval-sensitive changes include prompt, model, tool, context, memory, rubric, evaluator policy, agent-loop, sampling, corpus, or rollout-threshold changes. For those PRs, select validation from the eval tier registry documented in `curriculum/07-implementation-guides/06-harness-evolution-playbook.md` and save the summary for the PR body's `Eval impact` section.
+
 ```bash
 npm --prefix "$WORKTREE" run lint
 npm --prefix "$WORKTREE" run test:unit
@@ -74,6 +76,14 @@ If a validation step fails, stop. Show the relevant error and fix before creatin
 
 Save validation output summaries for the PR body.
 
+For eval-sensitive PRs, also capture:
+
+- Baseline and candidate versions for the affected prompt, model, tool, context, memory, rubric, or agent loop.
+- Fast, medium, and deep tiers selected from the registry, plus skipped tiers and waiver rationale.
+- Quality, latency, and cost deltas against explicit thresholds.
+- Failing `case_id` or `trace_id` examples with expected behavior and current decision.
+- Merge recommendation: pass, block, or waiver with owner and backfill date.
+
 ### Step 3 - Check HoP-specific gates
 
 Before opening the PR, verify:
@@ -82,6 +92,8 @@ Before opening the PR, verify:
 - No unrelated cleanup or formatting churn.
 - `.runtime/` and `artifacts/` changes, if any, respect `HOP_TENANT_ID` tenant isolation.
 - Crossroad files are documented in the PR template if touched.
+- Eval-sensitive changes include a completed `Eval impact` section in the PR body, not only generic test output.
+- Any skipped eval tier has waiver rationale, owner, risk, and backfill date.
 - Env var changes update `.env.example` and relevant docs.
 - Dashboard/UI changes follow `DESIGN.md`.
 - Behavior or architecture changes update relevant `docs/canonical/`, `docs/guides/`, `docs/evidence/`, or ADRs as appropriate.
@@ -118,6 +130,10 @@ Closes #N
 
 ---
 
+## Eval impact
+
+N/A
+
 ## Crossroad-file impact
 
 N/A
@@ -134,7 +150,7 @@ gh pr create \
   --draft
 ```
 
-Fill the PR template accurately. If any crossroad file changed, replace `N/A` with the full crossroad section: affected files, change type, migration/consumer impact, regression proof, mock parity if relevant, and code-owner approval expectation.
+Fill the PR template accurately. If the diff touches prompt, model, tool, context, memory, rubric, or agent-loop behavior, replace `Eval impact` N/A with the eval report summary from Step 2. If any crossroad file changed, replace `N/A` with the full crossroad section: affected files, change type, migration/consumer impact, regression proof, mock parity if relevant, and code-owner approval expectation.
 
 ### Step 5 - Gather review context
 
@@ -165,6 +181,7 @@ Review for:
 - Config/env var documentation (`.env.example` and docs)
 - Dashboard compliance with `DESIGN.md` if UI changed
 - Documentation precedence and ADR conflicts
+- Eval-sensitive PR evidence: tier registry selection, baseline/candidate versions, quality/latency/cost delta, threshold result, skipped-tier waiver, and failure examples
 - Security: no secrets, no type suppressions, no unsafe external side effects
 
 Report findings as BLOCKING or ADVISORY. Do not rewrite code.

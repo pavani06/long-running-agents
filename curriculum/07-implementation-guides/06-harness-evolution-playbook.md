@@ -738,6 +738,52 @@ shadow_tests:
         - "manual_review_accepts_sample_of_100_traces"
 ```
 
+#### 🔧 Production-sampled eval corpus
+
+Shadow test não deve depender só de exemplos inventados. Quando a mudança toca prompt, modelo, tool, contexto, memória, rubric ou loop de agente, crie um corpus de eval amostrado de produção antes do canary. O corpus é um artefato governado: ele explica de onde vieram os casos, por que representam tráfego real e como podem ser reproduzidos sem expor dados sensíveis.
+
+| Campo do corpus | Requisito | Exemplo KODA |
+|---|---|---|
+| `case_id` | ID estável para replay e PR report | `prod_replay_2026_04_checkout_coupon_017` |
+| Superfície | Feature, canal, etapa da jornada e risco | WhatsApp checkout, cupom, pagamento |
+| Redação | PII, telefone, endereço e payload sensível removidos antes de entrar no corpus | `customer_id` pseudonimizado |
+| Retenção | Janela de retenção e data de expiração | 90 dias para amostra bruta, permanente só para fixture redigida |
+| Cobertura | Distribuição por objetivo, restrição, orçamento, conversa longa, suporte e checkout | mínimo de 5 casos por classe crítica |
+| Label esperado | Comportamento correto, comportamento proibido e critérios de aceite | não aplicar cupom vencido; explicar alternativa |
+| Replay | Comando ou harness que reproduz baseline e candidate | `koda eval replay --corpus prod-sampled-koda-2026-04` |
+| Refresh | Cadência de atualização e owner | mensal, Conversational Core |
+| Deleção | Processo para remover caso se redaction, consent ou retenção falhar | excluir fixture e registrar substituto |
+
+Checklist mínimo antes de usar o corpus como gate:
+
+- [ ] Amostra veio de tráfego real ou shadow/canary, não de cenário sintético isolado.
+- [ ] Dados sensíveis foram redigidos e revisados antes de versionar fixture.
+- [ ] Cada caso tem `expected_behavior`, `failure_class` opcional e label de risco.
+- [ ] Há baseline salvo para comparar prompt/model/rubric atual contra candidate.
+- [ ] Casos duplicados foram agrupados para não superponderar um mesmo incidente.
+- [ ] Owner e data de refresh estão explícitos.
+
+```yaml
+production_sampled_eval_corpus:
+  corpus_id: "koda_prod_sampled_eval_2026_04"
+  owner: "conversational-core"
+  source_window: "2026-04-01/2026-04-30"
+  retention:
+    raw_sample_days: 90
+    redacted_fixture: "permanent_until_review"
+  replay_command: "koda eval replay --corpus koda_prod_sampled_eval_2026_04 --baseline current --candidate branch"
+  coverage_targets:
+    long_conversation: 20
+    checkout_payment: 20
+    dietary_restriction: 20
+    support_complaint: 10
+  labels_required:
+    - expected_behavior
+    - prohibited_behavior
+    - risk_class
+    - source_trace_id
+```
+
 ### 🔧 Passo 4: Rode Testes de Regressão Antes do Canary
 
 ```bash
@@ -1072,6 +1118,24 @@ ContextLoader 2.02 1460
 
 O exemplo preserva o ROI 2.0x do Context Loader e o ROI 0x do Budget Guard. O importante é manter a mesma janela para todos os componentes durante uma revisão real.
 
+#### ✅ Registry de tiers de eval
+
+A registry evita que cada PR invente seu próprio nível de validação. Ela torna explícitos runtime, custo, flakiness, trigger, threshold, poder de decisão e reporting esperado.
+
+| Tier | Runtime alvo | Custo | Flakiness aceitável | Conteúdo | Trigger | Threshold | Poder de decisão | Report |
+|---|---:|---:|---:|---|---|---|---|---|
+| Fast | < 5 min | baixo | ~0% | lint/unit, spot-check seed set, casos de regressão críticos pequenos | todo PR eval-sensitive | 100% pass em hard rules | bloqueia merge | PR `Eval impact` |
+| Medium | 15-45 min | médio | < 2% | component regression, N+1 fixtures, corpus redigido médio | prompt/tool/rubric/context/memory changes | sem regressão vs baseline e delta dentro do threshold | bloqueia ou exige waiver | relatório anexado ao PR |
+| Deep | horas ou dias | alto | controlada por owner | production-sampled replay, shadow test, canary, análise de suporte | model change, agent-loop change, rollout amplo ou risco alto | qualidade não cai, latência/custo dentro do limite, produção sem piora | decide rollout/canary | dashboard + validation report |
+
+| Suite | Tier | Trigger específico | Owner | Quarentena |
+|---|---|---|---|---|
+| `koda_fast_spot_check_seed` | Fast | qualquer mudança em prompt, model, tool, context, memory, rubric ou loop | Conversational Core | caso flaky sai do gate e vira incidente de suite |
+| `component_regression_battery` | Medium | componente de harness alterado | Platform | requer substituto de cobertura antes de remover caso |
+| `n_plus_one_long_session` | Medium | compaction, retrieval, memory ou context policy | Context & Retrieval | zero regressões; caso flaky precisa owner |
+| `production_sampled_eval_corpus` | Deep | canary, model upgrade ou mudança de loop | Conversational Core | atualização mensal e redaction review |
+| `shadow_or_canary_report` | Deep | mudança com impacto em produção | On-call + Produto | não avança com alerta aberto |
+
 #### ✅ Automação de Comparativo Antes e Depois
 
 ```bash
@@ -1087,15 +1151,15 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
 
 ### ✅ Passo 3: Execute a Bateria de Regressão
 
-| Caso | Entrada | Saída esperada | Métrica protegida |
-|------|---------|----------------|-------------------|
-| Conversa longa padrão | Histórico de 50K tokens | Resposta completa | incomplete_response_rate |
-| Conversa longa extrema | Histórico de 140K tokens | Alerta agregado, sem resposta truncada | token_budget_exceeded |
-| Mudança tardia de pedido | Cliente altera produto no fim | KODA usa informação recente | context_recall |
-| Pedido com alergia | Cliente tem alergia registrada | Evaluator bloqueia produto inseguro | safety_rejection |
-| Catálogo grande | Lista extensa de produtos | Resposta seleciona opções relevantes | quality_score |
-| Long-Session N+1 | 5 fixtures × 11 turnos | Degradação após compactação | Bloqueia rollout | Context & Retrieval |
-| Falha simulada de API | Modelo retorna erro temporário | Retry simples ou escalação | availability_fallback |
+| Caso | Entrada | Saída esperada | Métrica protegida | Owner |
+|------|---------|----------------|-------------------|-------|
+| Conversa longa padrão | Histórico de 50K tokens | Resposta completa | incomplete_response_rate | Conversational Core |
+| Conversa longa extrema | Histórico de 140K tokens | Alerta agregado, sem resposta truncada | token_budget_exceeded | Platform |
+| Mudança tardia de pedido | Cliente altera produto no fim | KODA usa informação recente | context_recall | Context & Retrieval |
+| Pedido com alergia | Cliente tem alergia registrada | Evaluator bloqueia produto inseguro | safety_rejection | Quality Platform |
+| Catálogo grande | Lista extensa de produtos | Resposta seleciona opções relevantes | quality_score | Catalog |
+| Long-Session N+1 | 5 fixtures × 11 turnos | Degradação após compactação bloqueia rollout | context_continuity | Context & Retrieval |
+| Falha simulada de API | Modelo retorna erro temporário | Retry simples ou escalação | availability_fallback | Platform |
 
 ```json
 {
@@ -1115,15 +1179,42 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
 }
 ```
 
-### Late-Failure Regression Suite (contexto)
+### Production Failure Regression Flywheel
 
-Falhas tardias, especialmente depois do turno 15, não devem ficar como incidentes isolados. Cada falha de contexto tardia vira caso permanente de regressão para proteger mudanças futuras em truncation, retrieval, prompt e memória.
+A Late-Failure Regression Suite continua obrigatória para contexto longo, mas ela é um caso específico de uma regra maior: toda falha de produção que ensina algo sobre comportamento de agente deve virar candidato a eval de regressão. O objetivo não é acumular casos infinitos. O objetivo é impedir que reclamações, tool misuse, falhas de estado, scoring gaps e edge cases escapados reapareçam depois que o time já aprendeu a diagnosticá-los.
 
-1. **Captura:** todo incidente de contexto tardio gera caso na suite.
-2. **Fixture:** cada caso guarda `session_fixture`, `next_turn` e `expected_behavior`.
-3. **Metadados:** cada caso registra `context_strategy`, `failure_class` e `evidence`.
-4. **Gate:** a suite roda ANTES de mudanças em truncation/retrieval/prompt/memória.
-5. **Ownership:** revisão mensal; casos 3 meses sem falhar podem ser arquivados com justificativa.
+1. **Intake:** ticket de suporte, incidente, canary alert, shadow diff, human review ou trace manual abre um item com `source_event`, impacto e owner.
+2. **Taxonomia:** classifique como `context_loss`, `tool_misuse`, `state_persistence`, `rubric_gap`, `prompt_regression`, `pricing_policy`, `safety_escape`, `latency_cost` ou `other`.
+3. **Fixture:** crie entrada replayable com estado mínimo, inputs, versões de prompt/model/rubric/tool e comportamento esperado.
+4. **Tier assignment:** coloque o caso no tier mais barato que ainda detecta a regressão: fast para spot-check, medium para corpus/regression, deep para replay production-sampled ou canary.
+5. **Deduplicação:** se dois incidentes têm mesma causa raiz e mesmo expected behavior, mantenha um caso canônico e vincule os demais como evidência.
+6. **Gate:** todo PR que toca a superfície causal roda o tier que contém o caso antes de merge.
+7. **Backfill proof:** o relatório de correção só fecha quando o caso falha na versão antiga, passa na candidate e aparece na registry.
+8. **Pruning:** casos sem falha por 2 ciclos podem ser arquivados apenas com justificativa, owner e substituto de cobertura.
+
+| Falha de produção | Caso de regressão | Tier inicial | Gate futuro |
+|---|---|---|---|
+| Cliente reclama que KODA esqueceu cafeína após 4h | Fixture N+1 com restrição no meio da conversa | Medium | Mudanças em compaction, retrieval e memory |
+| Tool aplica cupom vencido | Trace com `price_policy_snapshot` e expected reject | Fast | Mudanças em tool, rubric ou checkout prompt |
+| Evaluator dá score alto a produto inseguro | Output antigo + rubric label esperado `reject` | Medium | Mudanças em rubric/evaluator |
+| Canary aumenta tickets de resposta incompleta | Production-sampled replay com baseline/candidate | Deep | Mudanças em modelo, contexto ou loop |
+
+```yaml
+production_failure_regression_case:
+  case_id: "regression_2026_05_coupon_expired_001"
+  source_event: "support_ticket_8421"
+  failure_class: "pricing_policy"
+  root_cause: "evaluator_ignored_coupon_expiration"
+  expected_behavior: "KODA rejeita cupom vencido, explica motivo e oferece continuar sem desconto."
+  suite_tier: "fast"
+  gate_for:
+    - "tool:coupon_validation"
+    - "rubric:promotion_validation"
+    - "prompt:checkout"
+  baseline_status: "fails_on_2026_05_12"
+  candidate_status: "must_pass_before_merge"
+  owner: "checkout-platform"
+```
 
 Exemplo concreto:
 
@@ -1165,6 +1256,68 @@ O período de 14 dias é parte da mudança, não burocracia. Muitos problemas de
 | 14 | Decisão final e arquivamento | Podemos declarar a remoção estável? |
 
 ### ✅ Passo 5: Compare Antes e Depois
+
+#### ✅ Dashboard de correlação eval -> produção
+
+Além de comparar baseline e candidate, acompanhe se os scores de eval continuam prevendo métricas reais. Se o score sobe mas produção piora, a suite está calibrada para o alvo errado.
+
+| Painel | Compara | Sinal saudável | Sinal de recalibração |
+|---|---|---|---|
+| Score distribution | p50/p90 de eval score por versão | Candidate melhora sem cauda ruim crescer | Score médio sobe enquanto reclamações sobem |
+| Incomplete response rate | Eval de completude vs produção | Score baixo concentra respostas incompletas | Incidentes aparecem em score alto |
+| Evaluator rejection rate | Rejects offline vs rejects em produção | Tendência parecida entre ambientes | Produção rejeita casos que eval aprovou |
+| Support tickets | Tags de suporte vs failure classes | Ticket cai nas classes cobertas | Nova classe recorrente sem caso no corpus |
+| CSAT proxy | Score de qualidade vs satisfação | Score alto acompanha CSAT | Score alto não move CSAT |
+| Latency e cost | Tier e candidate vs p95/custo real | Melhorias respeitam orçamento | Eval ignora custo que cliente sente |
+
+```yaml
+eval_production_correlation_report:
+  report_id: "koda_eval_prod_corr_2026_05"
+  window: "14d"
+  eval_scores:
+    corpus: "koda_prod_sampled_eval_2026_04"
+    baseline_version: "prompt.checkout.v3"
+    candidate_version: "prompt.checkout.v4"
+  production_metrics:
+    - incomplete_response_rate
+    - evaluator_rejection_rate
+    - support_ticket_rate
+    - csat_proxy
+    - latency_p95_ms
+    - cost_per_turn
+  recalibration_triggers:
+    - "score_p90_up_and_support_tickets_up"
+    - "hard_rule_escape_in_score_above_85"
+    - "latency_p95_delta_above_threshold_despite_quality_pass"
+```
+
+#### ✅ PR eval report
+
+Use este formato no PR sempre que a mudança tocar prompt, modelo, tool, context, memory, rubric ou agent-loop. Ele transforma o comparativo baseline/candidate em evidência de merge, não em comentário solto.
+
+```markdown
+## Eval impact
+
+Superfície: prompt `checkout_recommendation.v3` -> `checkout_recommendation.v4`
+Baseline: model `claude-sonnet-4.6`, rubric `promotion_validation_v1`
+Candidate: model `claude-sonnet-4.6`, rubric `promotion_validation_v1`
+
+Tiers executados:
+- Fast: `koda_fast_spot_check_seed` (4/4 passou)
+- Medium: `checkout_regression_battery` (38/38 passou)
+- Deep: `koda_prod_sampled_eval_2026_04` (120/120 passou)
+
+| Métrica | Baseline | Candidate | Delta | Threshold | Resultado |
+|---|---:|---:|---:|---:|---|
+| Quality score p50 | 84 | 89 | +5 | >= 0 | Passou |
+| Hard-rule escapes | 1 | 0 | -1 | 0 | Passou |
+| Latency p95 | 4100ms | 4160ms | +60ms | <= +100ms | Passou |
+| Cost per turn | R$ 0.041 | R$ 0.043 | +4.8% | <= +8% | Passou |
+
+Falhas revisadas: nenhuma regressão aberta. `regression_2026_05_coupon_expired_001` falhava no baseline e passou na candidate.
+Skipped tiers: nenhum.
+Merge policy: aprovado se CI e review humano confirmarem o mesmo relatório.
+```
 
 | Métrica | 14 dias antes | 14 dias depois | Delta | Decisão |
 |---------|---------------|----------------|-------|---------|

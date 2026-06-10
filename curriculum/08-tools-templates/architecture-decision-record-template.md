@@ -192,6 +192,22 @@ Exemplo de forças:
 
 ---
 
+## Eval Capability Impact (opcional)
+
+Preencha quando a decisão altera prompt, model, tool, context, memory, rubric, evaluator, agent-loop ou capacidade de eval. Se não se aplica, escreva N/A.
+
+| Campo | Valor |
+|---|---|
+| Pain signal | user complaint / manual bottleneck / score-feedback mismatch / escaped edge case / release-risk increase |
+| Current eval capability | O que detecta regressão hoje |
+| Chosen next capability | Menor capacidade nova que esta decisão exige |
+| Deferred capabilities | O que foi deliberadamente deixado para depois |
+| Owner | Pessoa ou squad responsável |
+| Operating cost | Runtime, latência, custo financeiro ou revisão humana |
+| Review date | Data para decidir KEEP, SIMPLIFY ou REMOVE |
+
+---
+
 ## Decisão
 
 Declare a decisão de forma clara e sem ambiguidade. Use uma frase direta:
@@ -582,6 +598,7 @@ Use este checklist antes de submeter seu ADR para review. Um ADR só está pront
 - [ ] **Alternativas:** Pelo menos 2 alternativas documentadas com prós/contras/razão de rejeição
 - [ ] **Consequências positivas:** Lista concreta do que melhora (com métricas se possível)
 - [ ] **Consequências negativas:** Lista honesta de trade-offs, riscos, e complexidade adicional
+- [ ] **Eval Capability Impact:** Preenchido ou marcado como N/A quando a decisão toca prompt, model, tool, context, memory, rubric, evaluator ou agent-loop
 - [ ] **Autocontido:** Alguém lendo daqui a 2 anos entende sem precisar de links externos
 - [ ] **Linguagem neutra:** Não tem tom de "eu acho", "talvez", "provavelmente"
 - [ ] **Decisores listados:** Quem aprovou (2+ pessoas para decisões significativas)
@@ -648,6 +665,7 @@ ADR-001 (Persistência)      ADR-002 (Generator/Evaluator)
 | Análise de problema ou investigação | **Doc de análise** | "Análise de latência nas conversas de pico" |
 | Lição aprendida com incidente | **Post-mortem** | "Incidente #42: Cache stale causou preço errado" |
 | Avaliação de qualidade de output | **Rubric** | "Rubric de qualidade de recomendação" |
+| Próxima capacidade de eval por dor observada | **ADR + eval gate** | "Adicionar corpus production-sampled porque score não prevê tickets" |
 | Contrato entre módulos | **Sprint Contract** | "Contrato do módulo SEARCH → RANKING" |
 
 ### O Fluxo: De ADR a Código

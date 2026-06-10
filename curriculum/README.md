@@ -313,7 +313,17 @@ Veja `EXECUTION_PLAN.md` para cronograma semanal detalhado.
 → `02-nivel-2-practical-patterns/04-trace-reading.md`
 
 ### "Preciso avaliar qualidade de output"
-→ `03-evaluation-rubrics.md` + template em `08-tools-templates/`
+→ `02-nivel-2-practical-patterns/03-rubric-design.md` + template em `08-tools-templates/`
+→ docs canônicos de maturidade de evals em `../docs/canonical/`
+
+### "Preciso evoluir meus evals"
+→ `../docs/canonical/pain-signal-eval-progression-gate.md`
+→ `../docs/canonical/repeatable-agent-spot-check-set.md`
+→ `../docs/canonical/eval-tier-stratification.md`
+→ `../docs/canonical/pr-gated-eval-enforcement.md`
+→ `../docs/canonical/production-grounded-eval-sampling.md`
+→ `../docs/canonical/production-failure-regression-flywheel.md`
+→ `../docs/canonical/eval-to-production-correlation-tracking.md`
 
 ### "Quero propor melhoria em KODA"
 → `03-nivel-3-advanced-architecture/05-harness-evolution.md`

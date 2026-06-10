@@ -183,6 +183,21 @@ FAQ.md       (perguntas comuns)
 ### "Como avalio qualidade?"
 → `02-nivel-2-practical-patterns/03-rubric-design.md`
 → `05-core-concepts/08-evaluation-rubrics.md`
+→ `../docs/canonical/pain-signal-eval-progression-gate.md`
+→ `../docs/canonical/eval-tier-stratification.md`
+→ `../docs/canonical/pr-gated-eval-enforcement.md`
+→ `../docs/canonical/production-grounded-eval-sampling.md`
+→ `../docs/canonical/production-failure-regression-flywheel.md`
+→ `../docs/canonical/eval-to-production-correlation-tracking.md`
+
+### "Como evoluo a maturidade dos meus evals?"
+→ `../docs/canonical/pain-signal-eval-progression-gate.md`
+→ `../docs/canonical/repeatable-agent-spot-check-set.md`
+→ `../docs/canonical/eval-tier-stratification.md`
+→ `../docs/canonical/pr-gated-eval-enforcement.md`
+→ `../docs/canonical/production-grounded-eval-sampling.md`
+→ `../docs/canonical/production-failure-regression-flywheel.md`
+→ `../docs/canonical/eval-to-production-correlation-tracking.md`
 
 ### "Como debugo agent behavior?"
 → `02-nivel-2-practical-patterns/04-trace-reading.md`

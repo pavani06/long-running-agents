@@ -4586,6 +4586,50 @@ Ação:
 
 Esses 4 casos cobrem **95% dos problemas reais** que você vai encontrar. 🎯
 
+### Fast spot-check seed set
+
+Estes quatro casos também são o primeiro seed set `fast` de eval. O objetivo não é cobrir tudo. É ter quatro checks estáveis, baratos e repetíveis que rodam sempre que uma mudança toca prompt, model, tool, context, memory, rubric ou agent-loop.
+
+| case_id | Caso | Expected outcome | Tool behavior aceitável | State fixture | Baseline | Owner | Refresh trigger |
+|---|---|---|---|---|---|---|---|
+| `fast_trace_gen_eval_mismatch_001` | Gen/Eval Mismatch | Detectar `generation_id` divergente e reprovar | Script pode apontar fila, binding ou payload como suspeita, mas deve bloquear approval | `trace-caso1-gen-eval-mismatch` | `status=FAIL`, `type=gen_eval_mismatch` | Conversational Core | Mudança em Generator/Evaluator handoff |
+| `fast_trace_context_amnesia_002` | Context Amnesia | Reprovar recomendação que viola constraint carregada no Sprint Contract | Pode sugerir context loading ou evaluator check, mas não pode aprovar | `trace-caso2-context-amnesia` | `status=FAIL`, dietary violation | Context & Retrieval | Mudança em context, memory ou contract loading |
+| `fast_trace_legitimate_change_003` | Mudança legítima | Aprovar quando contrato atualizado precede geração e decisão respeita novo contrato | Não deve gerar falso positivo de budget antigo | `trace-caso3-legitimate-change` | `status=PASS` | Conversational Core | Mudança em timeline ou contract snapshot |
+| `fast_trace_eval_rubber_stamp_004` | Evaluator falhou | Reprovar quando Evaluator aprova budget/dietary violations | Deve bloquear mesmo se checks internos dizem PASS | `trace-caso4-eval-failed` | `status=FAIL`, eval approved despite failures | Quality Platform | Mudança em rubric, evaluator ou hard rules |
+
+Regras do seed set:
+
+- [ ] Cada caso tem fixture versionada e saída baseline salva.
+- [ ] O seed set roda em menos de 5 minutos.
+- [ ] Qualquer hard-rule escape bloqueia merge.
+- [ ] Caso flaky sai do gate só com owner, issue e substituto temporário.
+- [ ] Novo incidente de produção diagnosticado neste módulo vira candidato ao medium regression corpus.
+
+### Exercício: transforme uma trace diagnosticada em regression eval case
+
+Escolha uma trace nova ou um dos quatro casos acima e faça o fechamento operacional:
+
+1. Nomeie `case_id` estável e classe de falha.
+2. Escreva `expected_behavior` em uma frase testável.
+3. Defina `state_fixture` mínimo para reproduzir o problema sem dados sensíveis.
+4. Rode baseline e confirme que a versão antiga falha ou que o caso representa um falso positivo conhecido.
+5. Atribua tier inicial: fast se cabe em spot-check, medium se precisa corpus/regression, deep se precisa replay production-sampled.
+6. Defina owner e refresh trigger.
+7. Registre o caso em PR ou relatório com `source_trace_id`, `baseline_result` e `candidate_result`.
+
+```yaml
+regression_eval_case:
+  case_id: "fast_trace_eval_rubber_stamp_004"
+  source_trace_id: "trace-caso4-eval-failed"
+  failure_class: "eval_approved_despite_failures"
+  expected_behavior: "Evaluator rejeita recomendação acima do budget e não vegana."
+  state_fixture: "fixtures/traces/caso4-eval-failed.json"
+  suite_tier: "fast"
+  baseline_result: "FAIL detectado pelo trace_analyzer"
+  owner: "quality-platform"
+  refresh_trigger: "mudança em evaluator, rubric ou sprint contract checks"
+```
+
 ---
 
 ## 🎯 Conclusão: Do "Black Box" ao "Glass Box"

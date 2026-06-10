@@ -292,6 +292,39 @@ NOVO MODELO (ciclo reinicia com menos scaffolding inicial)
 
 Vamos explorar cada fase em profundidade.
 
+### Eval-maturity gate: qual dor justifica a próxima capacidade?
+
+Antes de adicionar um novo Evaluator, corpus, dashboard ou suite, pare e nomeie o sinal de dor. Harness Evolution não deve subir maturidade de eval por estética. A próxima capacidade precisa responder a uma dor observável.
+
+| Pain signal | Próxima capacidade mínima | Exemplo KODA |
+|---|---|---|
+| Reclamação de usuário | Caso de regressão a partir da trace diagnosticada | cliente recebeu produto com lactose |
+| Gargalo de avaliação manual | Spot-check seed set ou rubric com anchors | reviewers discordam em recomendações simples |
+| Score não bate com feedback | Correlation report e recalibração | score 90, mas suporte recebe tickets |
+| Edge case escapado | Production-sampled corpus com label esperado | cupom vencido aprovado no canary |
+| Risco de release aumentou | Tier medium/deep antes de merge | troca de modelo ou agent-loop |
+
+Checklist do gate:
+
+- [ ] Qual pain signal foi observado e onde está a evidência?
+- [ ] Qual capacidade atual falhou em detectar ou explicar o problema?
+- [ ] Qual é a menor capacidade nova que detecta esse problema daqui em diante?
+- [ ] Qual custo operacional ela adiciona em runtime, revisão humana ou manutenção?
+- [ ] Quem é owner e quando a capacidade será revisada para simplificação?
+
+```yaml
+eval_maturity_gate:
+  pain_signal: "score_feedback_mismatch"
+  evidence: "scores altos em recomendações que geraram tickets de suporte"
+  current_capability: "rubric recommendation_quality_v1 sem correlation report"
+  next_capability: "monthly score-to-production correlation report"
+  deferred_capabilities:
+    - "deep canary eval dashboard"
+  owner: "quality-platform"
+  operating_cost: "1h/semana de análise + painel mensal"
+  review_date: "2026-07-01"
+```
+
 ---
 
 ## 🏗️ Fase 1: BUILD — "Preciso Proteger o Modelo das Próprias Fraquezas"
@@ -1150,6 +1183,8 @@ Use este checklist quando for implementar Harness Evolution no seu próprio sist
 - [ ] **Configurar coleta de métricas:** Tokens/turno, latência, taxa de acionamento, falsos positivos — por componente
 - [ ] **Criar dashboard de efetividade:** Visualização de ROI por componente, tendências, alertas
 - [ ] **Estabelecer baseline:** Acurácia atual, latência atual, custo atual — tudo medido
+- [ ] **Nomear pain signal de eval:** Reclamação, gargalo manual, score/feedback mismatch, edge case escapado ou aumento de risco de release
+- [ ] **Escolher próxima capacidade mínima:** Não criar corpus, dashboard ou suite sem dor explícita e owner
 
 ### Fase 1: Identificar Candidatos
 

@@ -511,6 +511,43 @@ flowchart TD
     H --> A
 ```
 
+### Correlation reports e score drift
+
+Continuous Calibration só é confiável quando o time mede se o score prevê produção. Um relatório de correlação compara distribuição de scores com outcomes reais e procura drift: o score melhora, mas reclamações, devoluções, rejeições humanas, tickets ou custo pioram.
+
+| Sinal | O que significa | Ação |
+|---|---|---|
+| Score alto com reclamação alta | A rubrica não mede a dor do cliente | Adicionar dimension, hard rule ou anchor de incidente |
+| Score baixo com boa conversão e poucos tickets | Threshold pode estar severo demais | Recalibrar cutoff depois de human review |
+| Score médio sobe enquanto reject rate em produção sobe | Evaluator offline e produção divergem | Comparar fixtures, prompt e versão de rubric |
+| Score estável com latência/custo crescendo | Rubrica ignora custo operacional | Adicionar metric gate ou decision policy de custo |
+| Casos de hard rule escapam com score > 85 | Média ponderada está escondendo risco | Transformar a falha em veto, não em peso |
+
+```yaml
+correlation_report:
+  report_id: "rubric_corr_2026_05"
+  rubric_id: "recommendation_quality_v1"
+  window: "30d"
+  score_distribution:
+    p50: 84
+    p90: 93
+    hard_rule_escape_count: 1
+  production_outcomes:
+    complaint_rate: "2.1%"
+    refund_rate: "0.6%"
+    human_disagreement_rate: "14%"
+    support_ticket_top_classes:
+      - "lactose_trace_not_explained"
+      - "coupon_stackability_confusion"
+  recalibration_triggers:
+    - "human_disagreement_rate > 10%"
+    - "hard_rule_escape_count > 0"
+    - "score_p90_up_and_complaint_rate_up"
+  next_action: "recalibrate restriction_compliance anchors and add promotion clarity hard rule"
+```
+
+Recalibre quando qualquer trigger acima aparecer por uma janela completa, quando uma nova classe de incidente entra no regression flywheel, ou quando mudança de modelo/prompt altera a distribuição de scores sem mudança equivalente nos outcomes.
+
 ## 🧪 Trace Reading + Rubrics: Diagnosticando Underperformance
 
 Quando KODA underperforms, o score é uma pista. O trace é o caminho completo.
@@ -843,6 +880,7 @@ Escolha poucas dimensions por rubrica. O objetivo desta biblioteca é dar vocabu
 | Revise rate | Quanto retrabalho existe? | Moderado e explicado | Muito alto sem ganho |
 | Human disagreement rate | Humanos discordam do Evaluator? | Abaixo de 10% | Acima de 20% |
 | Outcome correlation | Score prevê satisfação? | Score alto acompanha conversão | Score alto não prevê nada |
+| Score drift | A relação score/outcome mudou? | Score e produção caminham juntos | Score melhora enquanto tickets, custo ou rejeições pioram |
 | Hard rule escapes | Falhas graves passaram? | Zero ou perto de zero | Qualquer escape de safety |
 
 | Área | Antes de rubrics | Depois de rubrics | Por que muda |

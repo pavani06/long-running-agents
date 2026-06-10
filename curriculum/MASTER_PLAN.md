@@ -465,6 +465,7 @@ Pode pular diretamente para tópico de interesse:
 - **Precisa de definição?** → `GLOSSARY.md`
 - **Precisa de exemplo?** → `09-case-studies/`
 - **Precisa de checklist?** → `07-implementation-guides/`
+- **Precisa evoluir evals?** → `../docs/canonical/pain-signal-eval-progression-gate.md` e docs correlatos em `../docs/canonical/`
 
 ---
 

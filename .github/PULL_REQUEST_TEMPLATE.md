@@ -17,6 +17,48 @@
 
 ---
 
+## Eval impact
+
+<!-- Opcional. Se este PR NÃO altera prompt, modelo, tool, context, memória, rubric ou agent-loop, escreva "N/A". -->
+<!-- Se altera qualquer superfície eval-sensitive, preencha o relatório abaixo e vincule evidência. -->
+
+**Superfície eval-sensitive afetada:**
+
+<!-- prompt / model / tool / context / memory / rubric / agent-loop / N/A -->
+
+**Baseline version:**
+
+<!-- ex: prompt koda-recommendation.v3, model claude-sonnet-4.6, rubric recommendation_quality_v1 -->
+
+**Candidate version:**
+
+<!-- ex: prompt koda-recommendation.v4, model claude-sonnet-4.7, rubric recommendation_quality_v2 -->
+
+**Eval tiers executados:**
+
+- [ ] Fast spot-check seed set
+- [ ] Medium regression/corpus suite
+- [ ] Deep production-sampled replay, shadow test ou canary
+- [ ] Tier pulado com justificativa/waiver abaixo
+
+**Resultado baseline vs candidate:**
+
+| Métrica | Baseline | Candidate | Delta | Threshold | Resultado |
+|---|---:|---:|---:|---:|---|
+| Quality score |  |  |  |  |  |
+| Latency p95 |  |  |  |  |  |
+| Cost per turn |  |  |  |  |  |
+
+**Falhas ou regressões relevantes:**
+
+<!-- Liste exemplos com case_id/trace_id, expected behavior e decisão. -->
+
+**Waiver / tiers pulados:**
+
+<!-- Explique risco aceito, owner, data de revisão e plano de backfill. -->
+
+---
+
 ## Crossroad-file impact
 
 <!-- Se este PR NÃO toca nenhum crossroad file, escreva "N/A" e apague o checklist abaixo. -->

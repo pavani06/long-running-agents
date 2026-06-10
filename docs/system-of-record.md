@@ -114,7 +114,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 9 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 16 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -129,6 +129,13 @@ Tópicos candidatos a ADR:
 | `n-plus-one-long-session-evals.md` | Evals long-session no padrão N+1 para validar continuidade após redução de contexto |
 | `stable-harness-prompt.md` | Preservação do harness prompt estável durante redução de contexto |
 | `late-failure-regression-suite.md` | Suite de regressão para falhas tardias em sessões longas |
+| `pain-signal-eval-progression-gate.md` | Gate de progressão de evals dirigido por sinais de dor |
+| `repeatable-agent-spot-check-set.md` | Seed set repetível de spot-checks para workflows críticos |
+| `production-grounded-eval-sampling.md` | Amostragem de evals ancorada em produção e replay representativo |
+| `eval-tier-stratification.md` | Estratificação fast/medium/deep para suites de eval |
+| `pr-gated-eval-enforcement.md` | Enforcement de evals no fluxo de PR e merge |
+| `production-failure-regression-flywheel.md` | Flywheel de regressão para falhas de produção |
+| `eval-to-production-correlation-tracking.md` | Rastreamento de correlação entre score de eval e outcomes de produção |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -162,6 +169,20 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-06-09-12-factor-agents/classification.md` | Classificação comparativa dos 8 padrões vs. repo |
 | `2026-06-09-12-factor-agents/classification.yaml` | YAML com evidência por padrão |
 | `2026-06-09-12-factor-agents/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+
+### Análises comparativas (Eval Maturity Phases)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-10-eval-maturity-phases/analysis.md` | Framework de maturidade de evals e sinais de transição |
+| `2026-06-10-eval-maturity-phases/analysis.yaml` | YAML com framework, fases e sinais |
+| `2026-06-10-eval-maturity-phases/patterns.md` | Padrões operacionais extraídos da maturidade de evals |
+| `2026-06-10-eval-maturity-phases/patterns.yaml` | YAML com padrões operacionais |
+| `2026-06-10-eval-maturity-phases/classification.md` | Classificação das lacunas e coberturas do repositório |
+| `2026-06-10-eval-maturity-phases/classification.yaml` | YAML com evidências e lacunas |
+| `2026-06-10-eval-maturity-phases/mental-model.md` | Modelo mental e precedência da análise |
+| `2026-06-10-eval-maturity-phases/mental-model.yaml` | YAML do modelo mental |
+| `2026-06-10-eval-maturity-phases/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
 
 ## Planos
 
