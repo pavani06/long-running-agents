@@ -15,28 +15,45 @@ This skill REQUIRES one mandatory parameter and accepts two optional parameters:
 
 | Parameter | Required | Description |
 |---|---|---|
-| `source` | **Yes** | Absolute path or URL to the document to analyze. Ex: `Raw-Knowledge/sources/2026-06-09-12-factor-agents.md` |
+| `source` | **Yes** | Absolute path, URL, or array of paths to the document(s) to analyze. Single file: `Raw-Knowledge/sources/2026-06-09-slug.md`. Multiple files: array of paths (aggregated before Phase 1). Ex: `["Raw-Knowledge/sources/slug.md", "Raw-Knowledge/concepts/related.md", "Raw-Knowledge/entities/tool.md"]` |
 | `date` | No | Date for output dir. Defaults to today (`YYYY-MM-DD`). Ex: `2026-06-09` |
 | `source-slug` | No | Short slug for output dir. Derived from source filename if omitted. Ex: `12-factor-agents` |
 
-Example invocation:
+Example invocations:
 
 ```
+# Single source
 Load analyze-and-improve with source=Raw-Knowledge/sources/2026-06-09-12-factor-agents.md, date=2026-06-09, source-slug=12-factor-agents
+
+# Multiple sources (knowledge base: source + concepts + entity)
+Load analyze-and-improve with source=["Raw-Knowledge/sources/slug.md", "Raw-Knowledge/concepts/smart-truncation.md", "Raw-Knowledge/entities/alex.md"], date=2026-06-09, source-slug=context-management
 ```
 
-The orchestrator MUST validate the source file exists before starting any phase.
+### Multi-source aggregation
+
+When `source` is an array of paths:
+
+1. Validar que TODOS os arquivos existem.
+2. Agregar em um arquivo temporario (`/tmp/opencode/aggregated-<source-slug>.md`).
+3. Estruturar o agregado com uma secao por arquivo, preservando:
+   - Metadados de proveniencia (path original, tipo — source/concept/entity)
+   - Conteudo completo de cada arquivo
+4. Incluir no `meta.original_sources` do `analysis.yaml` os paths originais como array.
+5. Passar o path do agregado como `SOURCE DOCUMENT` para a Phase 1.
+
+O arquivo agregado e temporario — nao persiste no repositorio apos a analise.
 
 ## What I Do
 
-Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 6 fases, todas delegadas a sub-agentes especializados:
+Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 7 fases (6 base + 1 opcional), todas delegadas a sub-agentes especializados:
 
 0. **Repository Mental Model** — Construir modelo mental do repositorio alvo (delegado: `ultrabrain`)
 1. **Knowledge Extraction** — Extrair conhecimento nao-obvio de um documento fonte (delegado: `deep`)
 2. **Pattern Extraction** — Identificar padroes reutilizaveis (delegado: `ultrabrain`)
 3. **Classification** — Classificar cada padrao contra o repositorio alvo (delegado: `deep`)
 4. **Improvement Generation** — Gerar artefatos em 7 categorias, priorizados por impacto (delegado: `deep` em paralelo)
-5. **Integration** — Atualizar system-of-record, indices, e commitar (delegado: `quick`)
+5. **Integration** — Atualizar system-of-record e indices (delegado: `quick`)
+6. **Curriculum Deep Integration** (opcional) — Integrar Missing e Partial Coverage no curriculo existente com profundidade total (delegado: `deep`)
 
 ## When to Use Me
 
@@ -65,7 +82,7 @@ Antes de comecar, verifique:
 
 ## Target Repository Context
 
-TODA delegacao via `task()` nas Phases 0-5 DEVE incluir este bloco no prompt:
+TODA delegacao via `task()` nas Phases 0-6 DEVE incluir este bloco no prompt:
 
 ```
 TARGET_REPOSITORY:
@@ -613,7 +630,7 @@ CHECK AND UPDATE:
 4. curriculum/MASTER_PLAN.md — update exercise/topic counts if changed
 
 Then run: git diff --stat to confirm which files were changed.
-Commits MUST follow the repo style: type(scope): short description"
+Do NOT commit. The orchestrator handles the commit decision."
 )
 ```
 
@@ -621,6 +638,134 @@ Commits MUST follow the repo style: type(scope): short description"
 
 - [ ] `git diff --stat` mostra apenas arquivos relacionados a essa sessao
 - [ ] `docs/system-of-record.md` reflete o novo estado (data atualizada)
+
+### Commit Gate
+
+Apos a Phase 5 (e Phase 6 se executada), o orquestrador DEVE:
+
+1. Rodar `git diff --stat` para confirmar o escopo das mudancas.
+2. **Perguntar ao usuario:** "Quer commitar?"
+3. Se sim: commit com estilo do repo (`type(scope): short description`).
+4. **Perguntar ao usuario:** "Quer fazer push?"
+5. Se sim: `git push origin main`.
+
+NUNCA commitar ou dar push sem pergunta explicita. O `AGENTS.md` do repositorio alvo tem precedencia — se ele diz "Do not commit unless the user explicitly asks", respeite.
+
+---
+
+## Phase 6: Curriculum Deep Integration (opcional)
+
+**Objetivo:** Integrar padroes Missing e Partial Coverage no curriculo existente. Para Partial Coverage, enriquece modulos que ja tratam do tema com a mecanica que faltava. Para Missing, garante que o novo conceito nao viva isolado — os core concepts, checklists e playbooks que tratam do mesmo dominio ganham a profundidade que o tema merece, indo alem de um simples cross-reference.
+
+### Quando executar
+
+| Classification + Value | Executar Phase 6? | Tratamento |
+|---|---|---|
+| **Missing** + High | SIM | Canonical doc + skill + exercise (Phase 4) + integracao profunda nos modulos existentes (Phase 6) |
+| **Missing** + Medium | SIM | Mesmo tratamento — Missing sempre merece integracao nos modulos que tratam do dominio |
+| Partial Coverage + High | SIM | Enriquece modulos existentes com a mecanica que faltava |
+| Partial Coverage + Medium | OPCIONAL | Phase 6 ou apenas canonical doc, a criterio do orquestrador |
+| Already Exists | NAO | So cross-reference nos artefatos da propria sessao |
+| Better Implementation | NAO | Documentar superioridade, nao duplicar |
+
+### Fluxo
+
+```
+Phase 6: Curriculum Deep Integration
+  ├── 6a. Gap analysis — cruzar classification com arquivos do curriculum/
+  │     Para Missing: identificar quais core concepts, checklists e playbooks
+  │     tratam do mesmo dominio e devem ganhar a nova mecanica.
+  │     Para Partial Coverage: identificar quais arquivos ja tratam do tema
+  │     e onde falta a mecanica, nome, teste ou gate.
+  │     Em ambos os casos: secoes e linhas exatas onde o tema aparece.
+  ├── 6b. Insertion plan — mapear arquivo + secao + linha para cada padrao
+  │     Respeitar a taxonomia e formato de cada documento do curriculo.
+  │     Para Missing: a profundidade e a mesma de Partial Coverage — o conceito
+  │     novo merece subsecoes, checklists, gates e exemplos nos modulos existentes.
+  ├── 6c. Executor prompt — construir prompt autocontido com instrucoes de `edit`
+  │     cirurgicas, sem `write` (nunca reescrever arquivos inteiros)
+  ├── 6d. Delegated execution — agente `deep` modifica arquivos do curriculum/
+  └── Gate: git diff --stat mostra apenas curriculum/ + system-of-record.md
+```
+
+### Regras
+
+- NUNCA criar arquivos novos no `curriculum/` — apenas modificar existentes.
+- NUNCA modificar os canonicos em `docs/canonical/` (ja sao a verdade).
+- Respeitar formato, estilo e idioma (PT-BR) de cada arquivo do curriculo.
+- Usar `edit` para insercoes cirurgicas, nunca `write`.
+- Preservar a ordem de dependencia entre padroes (ex: stable harness antes de head-tail truncation).
+- **Missing e Partial Coverage recebem a mesma profundidade de integracao.** A diferenca e o ponto de partida: Missing parte do zero (conceito novo), Partial Coverage parte do que ja existe (enriquece).
+
+### Delegacao
+
+Delegue para `deep`:
+
+```typescript
+task(
+  category="deep",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Execute curriculum deep integration for Missing and Partial Coverage patterns.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: docs/analysis/<date>-<source-slug>/
+  system_of_record: docs/system-of-record.md
+
+Read docs/analysis/<date>-<source-slug>/classification.md for patterns to integrate:
+- ALL Missing patterns (regardless of Integration Value)
+- Partial Coverage patterns with Integration Value High
+
+PHASE 6a — Gap Analysis:
+For each target pattern, cross-reference with curriculum files:
+- Search curriculum/ for related content (grep by concept name, mechanism keywords)
+- Read matching files to understand format, style, and existing coverage
+- Identify exact insertion points: file + section + line range
+- For Missing: find the core concepts, checklists, and playbooks that should
+  teach this new concept. The bar is: 'se um aluno lesse so os core concepts,
+  ele sairia sabendo que esse padrao existe e por que importa?'
+
+PHASE 6b — Insertion Plan:
+Map every pattern to specific edit locations. Output a plan with:
+- File path, section name, line range
+- What to add (subsection, checklist item, test case, dataclass, gate, example)
+- How it connects to existing content
+- For Missing patterns: plan must include subsections in core concepts (not just
+  cross-references), checklist items in harness design, and gates in playbooks —
+  same depth as Partial Coverage.
+
+PHASE 6c — Executor Prompt:
+Build a self-contained prompt for the execution agent. Include:
+- Exact `edit` instructions with oldString/newString pairs
+- Order of operations (respect pattern dependencies)
+- Verification steps after each edit
+
+PHASE 6d — Execute:
+Apply all edits to curriculum files. After all edits:
+- Run git diff --stat (only curriculum/ files should be modified)
+- Verify docs/canonical/ is untouched
+- Report summary of changes grouped by classification (Missing vs Partial)
+
+MUST NOT:
+- Create new files in curriculum/
+- Modify any file in docs/canonical/
+- Use write (use edit for surgical insertions)
+- Add shallow 1-line cross-references for Missing — Missing merece a mesma
+  profundidade que Partial Coverage (subsecoes, exemplos, checklists, gates)
+- Commit changes"
+)
+```
+
+### Gate
+
+- [ ] Apenas arquivos em `curriculum/` foram modificados (confirmar com `git diff --name-only`)
+- [ ] `docs/canonical/` nao foi alterado
+- [ ] Nenhum arquivo novo foi criado no `curriculum/`
+- [ ] Formato e estilo de cada arquivo foram preservados
+- [ ] Missing patterns tem integracao com mesma profundidade que Partial Coverage
+- [ ] Commit Gate executado apos esta fase (perguntar ao usuario)
 
 ---
 
@@ -637,32 +782,42 @@ Commits MUST follow the repo style: type(scope): short description"
 - **Criar exercises sem esqueleto de codigo.** O formato do curriculo exige codigo Python com dataclasses e asserts.
 - **Atualizar system-of-record sem atualizar a data.** A data de ultima atualizacao no rodape e o unico sinal de frescor.
 - **Invocar a skill sem fornecer o parametro `source`.** A skill nao tem como adivinhar qual documento analisar.
+- **Agregar multiplos sources sem preservar proveniencia.** Quando `source` for array, o `analysis.yaml` deve incluir `meta.original_sources` com os paths originais. Sem isso, a rastreabilidade e perdida.
+- **Executar Phase 6 para Already Exists ou Better Implementation.** So cross-reference — o curriculo ja cobre ou supera o padrao.
+- **Tratar Missing com cross-reference raso na Phase 6.** Missing e o gap mais importante — merece a mesma profundidade que Partial Coverage: subsecoes, exemplos, checklists, gates nos modulos existentes.
+- **Criar arquivos novos no curriculum/ durante a Phase 6.** A integracao profunda modifica modulos existentes, nunca cria novos. Exercicios novos sao criados na Phase 4, nao na Phase 6.
+- **Committar ou dar push sem perguntar ao usuario.** O Commit Gate exige confirmacao explicita. O `AGENTS.md` do repo alvo tem a palavra final.
 
 ---
 
 ## Verification Gates
 
-Depois de completar as 6 fases:
+Depois de completar as fases (0-5 obrigatorias, 6 opcional):
 
 - [ ] O parametro `source` foi fornecido e validado antes de qualquer execucao
+- [ ] Se `source` for array: agregacao produziu arquivo temporario com metadados de proveniencia
 - [ ] `docs/analysis/<date>-<source-slug>/` contem os 4 pares .md+.yaml (mental-model, analysis, patterns, classification)
 - [ ] `docs/analysis/<date>-<source-slug>/integration-roadmap.md` existe
 - [ ] `docs/canonical/` contem docs para padroes Missing e P1
 - [ ] `.opencode/skills/` contem skills para padroes Missing
 - [ ] `curriculum/` contem exercises para padroes Missing
 - [ ] `docs/system-of-record.md` reflete o novo estado com data atualizada
-- [ ] `curriculum/INDEX.md` lista os novos exercicios
+- [ ] `curriculum/INDEX.md` lista os novos exercicios (se houver)
+- [ ] Se Phase 6 executada: apenas `curriculum/` foi modificado; `docs/canonical/` intocado
 - [ ] `git status` mostra apenas arquivos relacionados a essa sessao
+- [ ] Commit Gate: usuario foi perguntado antes de commitar e antes de dar push
 - [ ] Commits seguem o estilo `type(scope): short description`
 - [ ] Toda delegacao usou `task()` com categoria adequada — nenhuma fase foi executada inline pelo orquestrador
 
 ---
 
-## Reference Implementation
+## Reference Implementations
 
-O workflow completo foi executado em 2026-06-09 no repositorio `long-running-agents`, produzindo:
+O workflow completo foi executado em duas sessoes no repositorio `long-running-agents`:
 
-**Fonte:** `Raw-Knowledge/sources/2026-06-09-12-factor-agents.md` (Dex Horthy talk)
+### Sessao 1: 12-Factor Agents (2026-06-09)
+
+**Fonte:** `Raw-Knowledge/sources/2026-06-09-12-factor-agents.md` (Dex Horthy talk) — single source
 
 **Artefatos gerados:**
 
@@ -680,6 +835,31 @@ O workflow completo foi executado em 2026-06-09 no repositorio `long-running-age
 
 **Resultado da classificacao:** 3 Already Exists, 4 Partial Coverage, 1 Missing (Error Context Hygiene)
 
+> **Nota sobre Phase 6:** Na sessao 1, a Phase 6 ainda nao existia. Com a skill v3.0, o padrao Missing (Error Context Hygiene) tambem receberia integracao profunda — subsecao em `01-context-management.md`, item no `03-harness-design-checklist.md`, e gate no `06-harness-evolution-playbook.md`.
+
+### Sessao 2: Context Management in Agents (2026-06-10)
+
+**Fonte:** Multi-source aggregation de 4 arquivos do `Raw-Knowledge`:
+- `sources/2026-06-09-how-we-solved-context-management-in-agents.md` (video transcript)
+- `concepts/smart-truncation.md` (concept page)
+- `concepts/long-session-evals.md` (concept page)
+- `entities/alex.md` (entity page)
+
+**Artefatos gerados:**
+
+| Fase | Arquivos |
+|---|---|
+| Mental Model | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/mental-model.md` + `.yaml` |
+| Knowledge Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md` + `.yaml` |
+| Pattern Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md` + `.yaml` |
+| Classification | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md` + `.yaml` |
+| Improvements | `docs/canonical/{head-tail-context-truncation,addressable-memory-catalog,n-plus-one-long-session-evals,stable-harness-prompt,late-failure-regression-suite}.md` |
+| | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md` |
+| Integration | `docs/system-of-record.md` |
+| Phase 6 (Curriculum) | 8 arquivos em `curriculum/` modificados (+218 linhas): checklist, core concepts, exercicio windowing, server-side compaction, harness improvements, evolution playbook, rubric template |
+
+**Resultado da classificacao:** 1 Already Exists, 5 Partial Coverage, 1 Better Implementation, 0 Missing
+
 ---
 
-*Skill version: 2.0 | Reference session: 2026-06-09*
+*Skill version: 3.0 | Reference sessions: 2026-06-09, 2026-06-10*
