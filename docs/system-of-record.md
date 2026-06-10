@@ -123,7 +123,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 17 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 24 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -145,6 +145,13 @@ Tópicos candidatos a ADR:
 | `pr-gated-eval-enforcement.md` | Enforcement de evals no fluxo de PR e merge |
 | `production-failure-regression-flywheel.md` | Flywheel de regressão para falhas de produção |
 | `eval-to-production-correlation-tracking.md` | Rastreamento de correlação entre score de eval e outcomes de produção |
+| `closed-loop-agent-operating-system.md` | Sistema operacional de loop fechado para agentes long-running |
+| `skill-resolver-skillify-capability-pipeline.md` | Pipeline de capacidade do workflow ao skill resolvível e testado |
+| `resolver-based-context-progressive-disclosure.md` | Disclosure de contexto progressivo guiado por resolver |
+| `split-brain-planning-review.md` | Revisão de planejamento com rubricas separadas de engenharia e destino |
+| `multi-model-evaluation-council.md` | Conselho de avaliação com múltiplos modelos e política de divergência |
+| `epistemic-memory-graph.md` | Grafo de memória com status epistêmico e proveniência |
+| `domain-embedded-workflow-automation-wedge.md` | Wedge de automação de workflow embutido no domínio e guiado por evidência |
 | `obsidian-document-conventions.md` | Convencoes de frontmatter, wikilinks, tags e validacao para documentos Obsidian-ready (AGENTS.md Rule 16) |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
@@ -194,6 +201,20 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-06-10-eval-maturity-phases/mental-model.md` | Modelo mental e precedência da análise |
 | `2026-06-10-eval-maturity-phases/mental-model.yaml` | YAML do modelo mental |
 | `2026-06-10-eval-maturity-phases/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+
+### Análises comparativas (Stanford CS153 AI Native Company)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.md` | Extração de conhecimento não-óbvio da fonte Stanford CS153 |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.yaml` | YAML com a extração estruturada |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.md` | Catálogo dos 11 padrões agentic extraídos |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.yaml` | YAML com o catálogo de padrões |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification.md` | Classificação dos 11 padrões contra o repositório |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification.yaml` | YAML com a classificação estruturada |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.md` | Modelo mental de orientação do pacote |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.yaml` | YAML do modelo mental |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/integration-roadmap.md` | Mapa de integração dos padrões classificados nas superfícies do repositório |
 
 ## Planos
 

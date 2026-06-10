@@ -57,6 +57,13 @@ Referência rápida de termos usados neste programa.
 
 ## C
 
+### Closed-Loop Company
+**Definição:** Modelo operacional em que agentes leem estado real da empresa, como código, issues, reuniões, artefatos e decisões, e devolvem próximos trabalhos, bugs e atualizações de decisão para fechar o ciclo entre observação e execução. No currículo, use este termo como ponte para [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]].
+
+**Nível:** 3
+
+---
+
 ### Compaction (Contexto Compaction)
 **Definição:** Processo de resumir ou comprimir contexto antigo para fazer espaço para novo contexto, mantendo informações-chave.
 
@@ -96,6 +103,13 @@ Referência rápida de termos usados neste programa.
 **Em KODA:** Quantidade de conversação + histórico que KODA pode "ver" por vez.
 
 **Nível:** 1
+
+---
+
+### Context Progressive Disclosure
+**Definição:** Arquitetura de contexto em que instruções e capacidades ficam em diretórios de skills carregados por regras de trigger, em vez de viverem todas em um prompt monolítico. O padrão canônico é [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]].
+
+**Nível:** 3
 
 ---
 
@@ -367,6 +381,13 @@ while not complete:
 
 ## S
 
+### Skillify Pipeline
+**Definição:** Pipeline de hardening que transforma um workflow que funcionou uma vez em uma skill roteável, testada e resolvível, com unit tests, LLM evals, integration tests, resolver trigger, trigger eval, check-resolvable, smoke test e schema. Veja [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]].
+
+**Nível:** 3
+
+---
+
 ### Self-Evaluation (Autossavaliação)
 **Definição:** Quando um agente avalia seu próprio trabalho.
 
@@ -564,6 +585,7 @@ Feedback → Volta ao Generator
 - Multi-Agent System
 - Memory/State, Compaction
 - Harness Evolution
+- Closed-Loop Company, Skillify Pipeline, Context Progressive Disclosure
 - Architecture Decision Record
 
 ### Nível 4 (KODA-Específico)
