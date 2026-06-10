@@ -3,6 +3,7 @@ title: "Estudo de Caso 3 (KODA): Product Discovery"
 type: curriculum-case-study
 aliases: []
 tags: [curriculo-conteudo, caso-de-estudo, recomendacao-de-produtos, validacao-de-recomendacoes, inventario-em-tempo-real, whatsapp, avaliacao-com-rubrica]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 3 (KODA): Product Discovery

@@ -3,6 +3,7 @@ title: "Estudo de Caso 1: Retro Game Maker"
 type: curriculum-case-study
 aliases: []
 tags: [curriculo-conteudo, caso-de-estudo, planejamento-de-sprints, escopo-dividido, multi-agentes, harness-de-agentes, coordenacao-iterativa, contexto-longo]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 last_updated: 2026-06-10
 ---
 # Estudo de Caso 1: Retro Game Maker
