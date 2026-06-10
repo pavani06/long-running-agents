@@ -2,7 +2,7 @@
 title: "Melhorias de Harness para KODA"
 type: curriculum-lesson
 nivel: 4
-aliases: []
+aliases: ["melhorias harness", "harness KODA", "otimização harness", "roadmap melhorias"]
 tags: [curriculo-conteudo, nivel-4, koda, melhorias-de-harness, priorizacao-de-propostas, roadmap-de-evolucao, manifest-de-turno, compactacao-server-side, checkpoint-comercial, shadow-test, canary-release, roi-de-harness, governanca-arquitetural]
 relates-to: ["[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence|Output Validation Diagnostic]]"]
 last_updated: 2026-06-10

@@ -3,7 +3,7 @@ title: "Eval Maturity Pattern Classification"
 type: analysis
 date: 2026-06-10
 domain: eval-maturity
-aliases: []
+aliases: ["classificacao evals", "gap evals", "lacunas evals", "EDD"]
 tags: [analise, evals, maturity-model, classification]
 last_updated: 2026-06-10
 ---

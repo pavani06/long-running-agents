@@ -5,6 +5,7 @@ tags: [agentes-orquestracao, evals, context-engineering, governanca]
 date: 2026-06-10
 sources:
   - "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.md"
+aliases: ["classificação CS153", "gap analysis CS153", "11 padrões classificação"]
 ---
 # Classification: Stanford CS153 AI Native Company Patterns
 

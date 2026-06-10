@@ -1,7 +1,7 @@
 ---
 title: "Generator/Evaluator Graphs"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["grafo gerador avaliador", "G&E diagrams", "diagrama Mermaid", "feedback loop"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
 relates-to: ["[[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator/Evaluator Pattern]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"]
 last_updated: 2026-06-10

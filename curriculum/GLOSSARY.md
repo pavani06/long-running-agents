@@ -1,7 +1,7 @@
 ---
 title: "📖 GLOSSÁRIO: Termos Essenciais"
 type: curriculum-index
-aliases: ["glossario", "termos", "definicoes"]
+aliases: ["glossário termos", "definições", "terminologia"]
 tags: [curriculo-conteudo, reference]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"]
 last_updated: 2026-06-10

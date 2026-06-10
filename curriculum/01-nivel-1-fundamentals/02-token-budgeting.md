@@ -2,7 +2,7 @@
 title: "Token Budgeting: O Orçamento Invisível dos Agentes"
 type: curriculum-lesson
 nivel: 1
-aliases: []
+aliases: ["orçamento tokens", "token budget", "gestão de contexto", "burn rate"]
 tags: [curriculo-conteudo, nivel-1, fundamentos, orcamento-de-tokens, gestao-de-contexto, burn-rate, janela-movel, buffer-de-resposta, buffer-de-resumo, compressao-de-contexto, agrupamento-semantico, estrategia-hibrida, monitoramento-proativo]
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10

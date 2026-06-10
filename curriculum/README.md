@@ -1,7 +1,7 @@
 ---
 title: "📚 Curso: Building Long-Running Agents para KODA"
 type: curriculum-index
-aliases: ["curriculo", "indice curricular"]
+aliases: ["visão geral", "sobre currículo", "overview"]
 tags: [curriculo-conteudo]
 relates-to: ["[[README|Repository README]]", "[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/QUICK_START|Quick Start]]"]
 last_updated: 2026-06-10

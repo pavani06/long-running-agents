@@ -1,7 +1,7 @@
 ---
 title: "Planning vs Execution: Arquitetura Visual da Separação que Transforma Agentes Confusos em Sistemas Precisos"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["grafo planejamento execucao", "separacao planejamento", "diagrama Mermaid", "planner executor"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
 relates-to: ["[[curriculum/05-core-concepts/02-planning-execution-separation|Planning/Execution Separation]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-10

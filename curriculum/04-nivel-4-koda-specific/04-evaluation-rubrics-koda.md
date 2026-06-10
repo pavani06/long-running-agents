@@ -2,7 +2,7 @@
 title: "Evaluation Rubrics para KODA"
 type: curriculum-lesson
 nivel: 4
-aliases: []
+aliases: ["rubricas KODA", "avaliação KODA", "KODA evals", "business validation"]
 tags: [curriculo-conteudo, nivel-4, koda, rubricas-de-avaliacao, avaliacao-de-qualidade, validacao-negocial, recomendacao-de-produtos, resposta-ao-cliente, negociacao-de-preco, follow-up, calibracao-de-evaluadores, feedback-loop, human-review]
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
 last_updated: 2026-06-10

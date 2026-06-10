@@ -2,7 +2,7 @@
 title: "Exercício 1: Design a Sprint Contract"
 type: curriculum-exercise
 nivel: 2
-aliases: []
+aliases: ["design sprint contract", "contrato comparação", "product comparison", "critérios sucesso"]
 tags: [curriculo-conteudo, nivel-2, exercicio, sprint-contract, contract-design, success-criteria, failure-handling, input-specification, product-comparison, koda-scenario, exercicio-conceitual]
 relates-to: ["[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]]"]
 last_updated: 2026-06-10

@@ -2,7 +2,7 @@
 title: "Solução do Exercício 02: Pipeline Multi-Agent da Jornada KODA"
 type: curriculum-solution
 nivel: 4
-aliases: []
+aliases: ["solução pipeline jornada", "multi-agent journey", "pedido fulfillment", "estado por arquivos"]
 tags: [curriculo-conteudo, nivel-4, solucao, multi-agent-pipeline, state-machine, journey-stage, file-based-coordination, guard-conditions, customer-journey, discovery-agent, catalog-agent, order-agent, fulfillment-agent, retention-agent, python, implementacao-referencia]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/real-world-exercises/exercise-02|Exercicio 2]]"]
 last_updated: 2026-06-10

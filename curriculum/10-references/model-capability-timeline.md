@@ -1,7 +1,7 @@
 ---
 title: "Model Capability Timeline: A Evolução que Possibilitou Long-Running Agents"
 type: curriculum-reference
-aliases: []
+aliases: ["timeline modelos", "evolucao modelos", "model capability", "capacidades LLM"]
 tags: [curriculo-conteudo, referencia, evolucao-de-modelos, linha-do-tempo, capacidades-de-llms, historico-de-modelos, planejamento-de-harness]
 relates-to: ["[[curriculum/MASTER_PLAN|Master Plan]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 last_updated: 2026-06-10

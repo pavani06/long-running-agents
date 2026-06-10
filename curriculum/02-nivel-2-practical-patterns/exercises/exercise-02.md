@@ -2,7 +2,7 @@
 title: "Exercício 2: Implement Sprint Contracts com Generator/Evaluator"
 type: curriculum-exercise
 nivel: 2
-aliases: []
+aliases: ["implementar sprint contracts", "checkout seguro", "generator evaluator checkout", "pipeline pedido"]
 tags: [curriculo-conteudo, nivel-2, exercicio, generator-evaluator-pattern, sprint-contract, pipeline-orchestration, retry-loop, order-checkout, double-discount-prevention, catalog-validation, python, dataclass]
 relates-to: ["[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]]"]
 last_updated: 2026-06-10

@@ -3,7 +3,7 @@ title: "Integration Roadmap: Stanford CS153 AI Native Company Patterns"
 type: analysis
 date: 2026-06-10
 tags: ["agentes-orquestracao", "curriculo-conteudo", "context-engineering", "evals", "governanca"]
-aliases: ["stanford cs153 integration roadmap", "ai-native company roadmap"]
+aliases: ["roadmap CS153", "integracao CS153", "AI-native roadmap", "Stanford patterns"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]
 sources: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]

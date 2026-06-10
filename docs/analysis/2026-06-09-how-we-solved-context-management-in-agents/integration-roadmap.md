@@ -3,7 +3,7 @@ title: "Integration Roadmap: Context Management Patterns -> long-running-agents"
 type: analysis
 date: 2026-06-09
 domain: context-management
-aliases: []
+aliases: ["roadmap contexto", "plano contexto", "integracao context management", "N+1"]
 tags: [analise, context-engineering, context-management, roadmap]
 last_updated: 2026-06-10
 relates-to: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification|Context Mgmt Classification]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"]

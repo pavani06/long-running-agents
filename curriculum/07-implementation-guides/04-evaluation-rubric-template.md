@@ -1,7 +1,7 @@
 ---
 title: "Template de Evaluation Rubric para Agentes Confiáveis"
 type: curriculum-guide
-aliases: []
+aliases: ["template rubrica", "rubric template", "modelo avaliacao", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, rubric, scoring, avaliacao, criterios-de-qualidade, calibracao, versionamento, feedback-estruturado, criterios-de-bloqueio]
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
 last_updated: 2026-06-10

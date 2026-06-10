@@ -2,7 +2,7 @@
 title: "Exercício 2: Implementar Pipeline Completo de Customer Journey com Agentes Coordenados"
 type: curriculum-exercise
 nivel: 4
-aliases: []
+aliases: ["pipeline jornada", "customer journey pipeline", "agentes coordenados", "state machine KODA"]
 tags: [curriculo-conteudo, nivel-4, exercicio, multi-agent-pipeline, state-machine, journey-stage, file-based-coordination, guard-conditions, awareness-consideration-decision-retention, customer-journey, discovery-agent, catalog-agent, order-agent, fulfillment-agent, retention-agent, e-commerce, python]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]", "[[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Harness Improvements]]"]
 last_updated: 2026-06-10

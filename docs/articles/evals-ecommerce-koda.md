@@ -1,3 +1,7 @@
+---
+aliases: ["evals ecommerce", "avaliação KODA", "ecommerce evals"]
+---
+
 # Das Promessas Falsas às Decisões Auditáveis: Como Evals Transformaram um Agente de E-Commerce no WhatsApp
 
 **Por que a diferença entre um agente que "soa bem" e um agente que é bom está em uma camada de avaliação que a maioria dos times nunca constrói — e como o KODA construiu a sua.**

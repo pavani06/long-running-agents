@@ -1,7 +1,7 @@
 ---
 title: "📑 ÍNDICE EXECUTIVO: Navegação Rápida"
 type: curriculum-index
-aliases: ["indice", "navegacao", "hub", "mapa do site"]
+aliases: ["índice currículo", "navegação", "mapa currículo"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/QUICK_START|Quick Start]]", "[[curriculum/GLOSSARY|Glossary]]"]
 last_updated: 2026-06-10

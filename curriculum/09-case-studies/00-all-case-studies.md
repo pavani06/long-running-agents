@@ -1,7 +1,7 @@
 ---
 title: "Estudos de Caso: Padrões de Agentes de Longa Duração"
 type: curriculum-case-study
-aliases: []
+aliases: ["indice casos", "todos casos", "case studies index", "casos agentes"]
 tags: [curriculo-conteudo, caso-de-estudo, compilacao-de-casos, visao-geral, padroes-de-agentes, arquitetura-aplicada, multi-agentes]
 relates-to: ["[[curriculum/09-case-studies/01-retro-game-maker|Retro Game Maker]]", "[[curriculum/09-case-studies/03-koda-product-discovery|KODA Product Discovery]]"]
 last_updated: 2026-06-10

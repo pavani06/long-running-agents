@@ -2,7 +2,7 @@
 title: "Exercício 2: Implementar Checkpointing e Recovery com SQLite"
 type: curriculum-exercise
 nivel: 3
-aliases: []
+aliases: ["checkpoint SQLite", "crash recovery", "persistência sessão", "rollback estado"]
 tags: [curriculo-conteudo, nivel-3, exercicio, checkpointing, crash-recovery, state-persistence, snapshot, rollback, atomic-writing, audit-trail, session-state, journey-phase, sqlite, wal-mode, python]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"]
 last_updated: 2026-06-10

@@ -1,7 +1,7 @@
 ---
 title: "Detailed Graph: Evaluation Rubrics"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["grafo rubricas", "rubricas avaliacao", "diagrama Mermaid", "evaluation flow"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
 relates-to: ["[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-10

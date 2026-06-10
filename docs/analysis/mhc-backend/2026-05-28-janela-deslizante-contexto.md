@@ -3,7 +3,7 @@ title: "Análise: Janela Deslizante + Resumo + Metadados no Contexto do Agente"
 type: analysis
 date: 2026-05-28
 domain: mhc-backend
-aliases: []
+aliases: ["sliding window", "resumo contexto", "truncation contexto", "janela contexto"]
 tags: [analise, mhc-backend, diagnostico, context-engineering, context-window]
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"]
 last_updated: 2026-06-10

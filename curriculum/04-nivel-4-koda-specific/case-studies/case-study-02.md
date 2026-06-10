@@ -2,7 +2,7 @@
 title: "Case Study 2: KODA Scale-Up — De 100 para 10.000 Conversas por Dia"
 type: curriculum-case-study
 nivel: 4
-aliases: []
+aliases: ["caso KODA escala", "scale-up KODA", "10000 conversas", "throughput agentes"]
 tags: [curriculo-conteudo, nivel-4, caso-de-estudo, escalabilidade, multi-agent, compactacao, coordenacao-baseada-em-arquivos, balanceamento-de-carga, gerenciamento-de-estado, concorrencia, observabilidade, custo-operacional, throughput]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 last_updated: 2026-06-10

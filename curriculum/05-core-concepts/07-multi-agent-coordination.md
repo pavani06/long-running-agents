@@ -1,7 +1,7 @@
 ---
 title: "Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema"
 type: curriculum-core-concept
-aliases: []
+aliases: ["coordenacao multi-agente", "multi-agent", "orquestracao", "fan-out fan-in"]
 tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination, orquestracao-de-agentes, sistemas-multiagente, trabalho-paralelo, fan-out-fan-in, sincronizacao-de-estado, resolucao-de-conflitos, rastreamento-de-decisoes, idempotencia]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems Lesson]]"]
 last_updated: 2026-06-10

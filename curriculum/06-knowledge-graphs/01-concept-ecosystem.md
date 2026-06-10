@@ -1,7 +1,7 @@
 ---
 title: "Concept Ecosystem"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["ecossistema conceitos", "grafo conhecimento", "diagrama Mermaid", "mapa core concepts"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid, ecossistema-conceitual, arquitetura-de-agentes, conceitos-core, dependencias-conceituais, contexto-e-estado, planejamento-e-execucao, verificacao-de-qualidade, coordenacao-multi-agente, evolucao-do-harness]
 relates-to: ["[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]", "[[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator/Evaluator Concept]]", "[[curriculum/INDEX|Curriculum Index]]"]
 last_updated: 2026-06-10

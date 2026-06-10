@@ -1,3 +1,7 @@
+---
+aliases: ["melhorias leitura", "Obsidian reading", "leitura Obsidian"]
+---
+
 # Obsidian Reading Improvements — Execution Plan
 
 **Objective:** Improve Obsidian reading/navigation experience across 7 fronts: Dataview dashboards, templates, bookmarks, CSS snippets, community plugins, aliases, and canvas maps.

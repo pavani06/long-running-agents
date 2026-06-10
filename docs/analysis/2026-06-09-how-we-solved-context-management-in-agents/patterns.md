@@ -6,6 +6,7 @@ sources_covered: 1
 sources: ["docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"]
 tags: [synthesis, ai, agents, context-engineering, memory]
 relates-to: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]
+aliases: ["padrões contexto", "context patterns", "catálogo contexto"]
 ---
 
 # Agentic Patterns from How We Solved Context Management in Agents

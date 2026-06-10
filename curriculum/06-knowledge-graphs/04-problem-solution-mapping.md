@@ -1,7 +1,7 @@
 ---
 title: "Problem-Solution Mapping: Cada Falha Tem Um Padrão Que a Resolve"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["mapeamento problema-solucao", "grafo conhecimento", "diagrama Mermaid", "diagnostico agentes"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid, mapeamento-problema-solucao, diagnostico-arquitetural, triagem-de-sintomas, causa-raiz, severidade-e-impacto, falsos-positivos, prescricao-arquitetural, anti-padroes, depuracao-de-agentes]
 relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]"]
 last_updated: 2026-06-10

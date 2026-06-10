@@ -1,7 +1,7 @@
 ---
 title: "Learning Assessment Rubric: Como Medir Compreensão Real dos 8 Core Concepts"
 type: curriculum-template
-aliases: []
+aliases: ["rubrica aprendizado", "avaliacao learning", "assessment rubric", "compreensao conceitos"]
 tags: [curriculo-conteudo, template, avaliacao-de-aprendizado, autoavaliacao, dominio-conceitual, mentoria, progresso-pedagogico, medicao-de-compreensao]
 relates-to: ["[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 last_updated: 2026-06-10

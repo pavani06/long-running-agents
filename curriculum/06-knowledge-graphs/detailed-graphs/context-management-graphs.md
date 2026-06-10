@@ -1,7 +1,7 @@
 ---
 title: "Detailed Graph: Context Management"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["grafo contexto", "gerenciamento contexto", "diagrama Mermaid", "context flow"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
 relates-to: ["[[curriculum/05-core-concepts/01-context-management|Context Management]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]
 last_updated: 2026-06-10

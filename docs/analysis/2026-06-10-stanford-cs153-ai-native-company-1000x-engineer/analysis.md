@@ -3,7 +3,7 @@ title: "Analise de Conhecimento Nao-Obvio: Stanford CS153 AI Native Company"
 type: analysis
 date: 2026-06-10
 domain: ai-native-company
-aliases: []
+aliases: ["Stanford CS153", "AI native company", "1000x engineer", "empresa AI-native"]
 tags: [agentes-orquestracao, evals, context-engineering]
 last_updated: 2026-06-10
 ---

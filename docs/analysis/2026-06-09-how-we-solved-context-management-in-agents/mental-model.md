@@ -3,7 +3,7 @@ title: "Mental Model: long-running-agents"
 type: analysis
 date: 2026-06-09
 domain: context-management
-aliases: []
+aliases: ["modelo mental contexto", "framework contexto", "context management repo", "KODA contexto"]
 tags: [analise, context-engineering, context-management, mental-model]
 last_updated: 2026-06-10
 ---

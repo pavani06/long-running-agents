@@ -3,7 +3,7 @@ title: "Mental Model: long-running-agents"
 type: analysis
 date: 2026-06-10
 domain: eval-maturity
-aliases: []
+aliases: ["modelo mental evals", "precedencia evals", "framework evals", "EDD"]
 tags: [analise, evals, maturity-model, mental-model]
 last_updated: 2026-06-10
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Guia de Análise de Traces: Do Sintoma ao Diagnóstico"
 type: curriculum-guide
-aliases: []
+aliases: ["analise trace", "debug traces", "trace guide", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, traces, debugging, diagnostico, troubleshooting, analise-temporal, causa-raiz, observabilidade, incidentes]
 relates-to: ["[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading Lesson]]"]
 last_updated: 2026-06-10

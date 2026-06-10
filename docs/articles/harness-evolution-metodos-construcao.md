@@ -1,3 +1,7 @@
+---
+aliases: ["métodos construção", "harness métodos", "construção harness"]
+---
+
 # A Arquitetura Invisível: Como Harnesses Evoluem e o Que Torna um Bom Harness de Agentes
 
 **Por que a diferença entre um agente que funciona em demo e um que funciona em produção não está no modelo — está na estrutura que o sustenta.**

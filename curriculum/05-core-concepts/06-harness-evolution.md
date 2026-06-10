@@ -1,7 +1,7 @@
 ---
 title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
 type: curriculum-core-concept
-aliases: []
+aliases: ["evolucao harness", "harness lifecycle", "maturidade harness", "simplificacao arquitetural"]
 tags: [curriculo-conteudo, conceitos-core, harness-evolution, ciclo-de-vida-do-harness, manutenibilidade, reducao-de-complexidade, divida-tecnica, otimizacao-de-custo, simplificacao-arquitetural, evolucao-continua, governanca-tecnica]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
 last_updated: 2026-06-10

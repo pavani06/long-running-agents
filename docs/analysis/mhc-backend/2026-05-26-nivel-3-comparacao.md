@@ -3,7 +3,7 @@ title: "Diagnóstico: Arquitetura KODA no mhc-backend vs. Nível 3 de Referênci
 type: analysis
 date: 2026-05-26
 domain: mhc-backend
-aliases: []
+aliases: ["comparacao N3", "KODA benchmark", "nivel 3 padroes", "KODA N3"]
 tags: [analise, mhc-backend, diagnostico, nivel-3, arquitetura-avancada]
 relates-to: ["[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]", "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"]
 last_updated: 2026-06-10

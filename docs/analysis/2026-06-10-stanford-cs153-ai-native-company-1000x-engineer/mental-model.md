@@ -3,7 +3,7 @@ title: "Mental Model: Stanford CS153 AI-Native Company 1000x Engineer"
 type: analysis
 tags: ["agentes-orquestracao", "curriculo-conteudo", "context-engineering", "evals", "governanca"]
 date: 2026-06-10
-aliases: ["repo mental model", "stanford cs153 mental model"]
+aliases: ["modelo CS153", "orientacao CS153", "AI-native mental model", "1000x engineer"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-09-12-factor-agents/mental-model|12-Factor Agents Mental Model]]", "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/mental-model|Context Management Mental Model]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/mental-model|Eval Maturity Mental Model]]"]
 sources: ["[[AGENTS|AGENTS]]", "[[README|README]]", "[[docs/system-of-record|System of Record]]", "[[curriculum/README|Curriculum README]]"]

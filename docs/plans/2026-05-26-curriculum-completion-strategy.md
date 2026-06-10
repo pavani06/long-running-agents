@@ -1,3 +1,7 @@
+---
+aliases: ["estratégia conclusão", "completion strategy", "GitHub Issues"]
+---
+
 # Prompt: Estrategia de Execucao para Completar o Curriculo Long-Running Agents
 
 **Objetivo:** Produzir um plano de execucao utilizando GitHub Issues, Milestones e Projects para completar os ~65 arquivos restantes do curriculo `curriculum/`, organizado por dependencias e prioridades.

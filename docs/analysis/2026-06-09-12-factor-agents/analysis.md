@@ -3,7 +3,7 @@ title: "Analise de Conhecimento Nao-Obvio: 12-Factor Agents (Dex Horthy)"
 type: analysis
 date: 2026-06-09
 domain: 12-factor-agents
-aliases: []
+aliases: ["analise 12FA", "12 factor agents", "Dex Horthy", "12FA"]
 tags: [analise, 12-factor-agents, agent-loop]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]

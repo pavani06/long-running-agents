@@ -3,7 +3,7 @@ title: "Diagnóstico: Arquitetura KODA no `mhc-backend` vs. Padrões Nível 2"
 type: analysis
 date: 2026-05-26
 domain: mhc-backend
-aliases: []
+aliases: ["diagnostico N2", "maturidade nivel 2", "N2 diagnostic", "KODA N2"]
 tags: [analise, mhc-backend, diagnostico, nivel-2, padroes-praticos]
 relates-to: ["[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]", "[[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]]"]
 last_updated: 2026-06-10

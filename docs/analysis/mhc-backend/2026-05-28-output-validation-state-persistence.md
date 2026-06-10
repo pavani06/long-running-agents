@@ -3,7 +3,7 @@ title: "Diagnóstico: Output Validation & State Persistence no mhc-backend"
 type: analysis
 date: 2026-05-28
 domain: mhc-backend
-aliases: []
+aliases: ["validacao saida", "state persistence", "output validation", "persistencia estado"]
 tags: [analise, mhc-backend, diagnostico, validacao, state, persistence]
 relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence]]"]
 last_updated: 2026-06-10

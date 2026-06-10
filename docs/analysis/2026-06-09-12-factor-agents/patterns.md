@@ -6,6 +6,7 @@ sources_covered: 1
 sources: ["sources/2026-06-09-12-factor-agents"]
 tags: [synthesis, ai, agents, software-engineering, context-engineering]
 relates-to: ["[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
+aliases: ["catálogo 12FA", "12FA patterns", "padrões 12FA"]
 ---
 
 # Agentic Patterns from 12-Factor Agents

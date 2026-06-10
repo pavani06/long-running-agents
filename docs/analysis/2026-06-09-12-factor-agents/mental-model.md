@@ -3,7 +3,7 @@ title: "Modelo Mental: Curriculum Long-Running Agents"
 type: analysis
 date: 2026-06-09
 domain: 12-factor-agents
-aliases: []
+aliases: ["modelo conceitual 12FA", "framework mental 12FA", "curriculo agentes", "12FA"]
 tags: [analise, 12-factor-agents, agent-loop, mental-model]
 last_updated: 2026-06-10
 ---

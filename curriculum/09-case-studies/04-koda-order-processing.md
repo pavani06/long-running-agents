@@ -1,7 +1,7 @@
 ---
 title: "Estudo de Caso 4 (KODA): Order Processing"
 type: curriculum-case-study
-aliases: []
+aliases: ["order processing", "processamento pedido", "caso pedidos", "workflow checkout"]
 tags: [curriculo-conteudo, caso-de-estudo, processamento-de-pedidos, workflow-multietapas, preco-e-pagamento, idempotencia, fulfillment]
 relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
@@ -226,4 +226,3 @@ DEPOIS (Sprint Contracts):
 ---
 
 ---
-

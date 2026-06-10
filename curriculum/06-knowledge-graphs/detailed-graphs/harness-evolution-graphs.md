@@ -1,7 +1,7 @@
 ---
 title: "Knowledge Graph: Harness Evolution"
 type: curriculum-knowledge-graph
-aliases: []
+aliases: ["grafo harness", "evolucao harness", "diagrama Mermaid", "harness lifecycle"]
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
 relates-to: ["[[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"]
 last_updated: 2026-06-10

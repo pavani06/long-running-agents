@@ -3,7 +3,7 @@ title: "Diagnóstico: Arquitetura KODA no `mhc-backend` vs. Padrões de Harness"
 type: analysis
 date: 2026-05-26
 domain: mhc-backend
-aliases: []
+aliases: ["diagnostico harness", "arquitetura KODA", "harness KODA", "mhc harness"]
 tags: [analise, mhc-backend, diagnostico, harness]
 relates-to: ["[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"]
 last_updated: 2026-06-10

@@ -2,7 +2,7 @@
 title: "Arquitetura KODA: O Sistema que Transformou um Chatbot em uma Operação Comercial"
 type: curriculum-lesson
 nivel: 4
-aliases: []
+aliases: ["arquitetura KODA", "KODA system", "KODA design", "pipeline vendas"]
 tags: [curriculo-conteudo, nivel-4, koda, arquitetura-de-agentes, pipeline-de-vendas, integracao-whatsapp-business, coordenacao-multi-agente, persistencia-de-estado, fluxo-de-dados-end-to-end, auditoria-e-observabilidade, tratamento-de-erros, seguranca-operacional, evolucao-de-harness]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"]
 last_updated: 2026-06-10

@@ -7,6 +7,7 @@ sources:
   - "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
   - "docs/analysis/2026-06-10-eval-maturity-phases/analysis.yaml"
 tags: [synthesis, ai, agents, evals, eval-driven-development]
+aliases: ["padrões evals", "eval patterns", "catálogo evals"]
 ---
 
 # Agentic Eval-Driven Development Patterns

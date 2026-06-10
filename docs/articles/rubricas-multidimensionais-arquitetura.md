@@ -1,3 +1,7 @@
+---
+aliases: ["rubricas multi", "arquitetura rubricas", "multidimensional rubrics"]
+---
+
 # Rubricas Multidimensionais: O Que a Arquitetura do Seu Sistema Precisa Garantir para um Evaluator Funcionar
 
 **Avaliar output de agente com um único critério é como julgar um piloto só pela velocidade. Quando o sistema lida com dinheiro, saúde e confiança, cada dimensão de qualidade exige uma fonte de verdade diferente — e a arquitetura precisa entregar cada uma delas.**

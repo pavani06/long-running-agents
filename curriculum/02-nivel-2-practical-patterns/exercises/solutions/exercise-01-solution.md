@@ -2,7 +2,7 @@
 title: "Solução: Exercício 1 — Sprint Contract + Generator/Evaluator para Product Comparison"
 type: curriculum-solution
 nivel: 2
-aliases: []
+aliases: ["solução sprint contract", "comparação produtos", "generator evaluator produto", "contrato KODA"]
 tags: [curriculo-conteudo, nivel-2, solucao, sprint-contract, contract-design, success-criteria, failure-handling, input-specification, product-comparison, koda-scenario, implementacao-referencia]
 relates-to: ["[[curriculum/02-nivel-2-practical-patterns/exercises/exercise-01|Exercise 01]]"]
 last_updated: 2026-06-10

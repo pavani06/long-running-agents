@@ -2,7 +2,7 @@
 title: "Server-Side Compaction: A Arte de Manter Contexto Sem Perder a Essência"
 type: curriculum-lesson
 nivel: 3
-aliases: []
+aliases: ["compactação contexto", "server compaction", "redução contexto", "contexto longo"]
 tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, compactacao-no-servidor, sumarizacao-extrativa, sumarizacao-abstrativa, chunking-semantico, priorizacao-de-contexto, janela-deslizante-adaptativa, retencao-de-contexto, budget-de-tokens, conversas-longas, validacao-de-contexto]
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"]
 last_updated: 2026-06-10

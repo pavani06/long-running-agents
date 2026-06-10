@@ -3,7 +3,7 @@ title: "Analise de Conhecimento Nao-Obvio: The Maturity Phases of Running Evals"
 type: analysis
 date: 2026-06-10
 domain: eval-maturity
-aliases: []
+aliases: ["maturidade evals", "eval phases", "transition signals", "EDD"]
 tags: [analise, evals, maturity-model]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]", "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]"]

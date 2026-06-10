@@ -2,7 +2,7 @@
 title: "Solução: Exercício 3 — Handle Failure Scenarios"
 type: curriculum-solution
 nivel: 2
-aliases: []
+aliases: ["solução falhas", "alergia estoque escopo", "resposta harness", "comunicação cliente"]
 tags: [curriculo-conteudo, nivel-2, solucao, failure-scenarios, harness, resilience-patterns, error-detection, rollback-pattern, allergy-validation, client-communication, implementacao-referencia]
 relates-to: ["[[curriculum/02-nivel-2-practical-patterns/exercises/exercise-03|Exercise 03]]"]
 last_updated: 2026-06-10

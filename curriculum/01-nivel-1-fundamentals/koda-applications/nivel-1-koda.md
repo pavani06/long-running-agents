@@ -2,7 +2,7 @@
 title: "KODA em Ação: Aplicando Conceitos de Nível 1"
 type: curriculum-koda-application
 nivel: 1
-aliases: []
+aliases: ["KODA N1", "aplicação KODA fundamentos", "KODA nível 1", "diagnóstico conversas"]
 tags: [curriculo-conteudo, nivel-1, koda, aplicacao-pratica, diagnostico-de-conversas, traces-de-conversa, decision-record, recomendacao-de-produtos, validacao-de-pedidos, checkout-seguro, budget-de-tokens, melhoria-de-features, operacao-em-producao]
 relates-to: ["[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Plot]]", "[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns]]", "[[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic|MHC Harness Diagnostic]]"]
 last_updated: 2026-06-10
