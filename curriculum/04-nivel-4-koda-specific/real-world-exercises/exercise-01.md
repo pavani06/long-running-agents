@@ -4,6 +4,7 @@ type: curriculum-exercise
 nivel: 4
 aliases: []
 tags: [curriculo-conteudo, nivel-4, exercicio, generator-evaluator-pattern, feature-contract, rubric-evaluation, fallback-safe, product-recommendation, dietary-restrictions, budget-constraint, e-commerce, supplement-catalog, whatsapp-tone, python]
+relates-to: ["[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]]", "[[curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda|Evaluation Rubrics KODA]]"]
 last_updated: 2026-06-10
 ---
 # 🎯 Exercicio 1: Implementar Feature de Recomendacao KODA com Generator/Evaluator
