@@ -3,6 +3,7 @@ title: "Planning vs Execution: Arquitetura Visual da Separação que Transforma 
 type: curriculum-knowledge-graph
 aliases: []
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
+relates-to: ["[[curriculum/05-core-concepts/02-planning-execution-separation|Planning/Execution Separation]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-10
 ---
 # 🧠 Planning vs Execution: Arquitetura Visual da Separação que Transforma Agentes Confusos em Sistemas Precisos
@@ -34,7 +35,7 @@ Resultado: Teresa recebeu uma confirmação de pedido com o whey errado, o cupom
 
 O que aconteceu dentro do KODA naqueles 12 segundos não foi um bug. Foi um **colapso arquitetural**. O KODA tentou planejar e executar ao mesmo tempo, e as duas atividades se destruíram mutuamente.
 
-Este módulo não vai repetir a explicação conceitual de Planning/Execution Separation — isso está no [Core Concept](../../05-core-concepts/02-planning-execution-separation.md). O que este módulo faz é **mostrar visualmente** como essa separação funciona, através de diagramas que revelam a estrutura interna, os fluxos de decisão, os caminhos de delegação e a aplicação real no KODA.
+Este módulo não vai repetir a explicação conceitual de Planning/Execution Separation — isso está no [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]]. O que este módulo faz é **mostrar visualmente** como essa separação funciona, através de diagramas que revelam a estrutura interna, os fluxos de decisão, os caminhos de delegação e a aplicação real no KODA.
 
 Se o Core Concept é o "livro-texto", este Detailed Graph é o "mapa de anatomia". Você vai ver o conceito em ação, conexão por conexão, decisão por decisão.
 
@@ -208,7 +209,7 @@ flowchart TB
 
 ### Mapeamento para o Core Concept
 
-Este diagrama é a **visualização direta** das Seções 1 e 2 do [Core Concept](../../05-core-concepts/02-planning-execution-separation.md). Cada bloco do diagrama corresponde a uma seção:
+Este diagrama é a **visualização direta** das Seções 1 e 2 do [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]]. Cada bloco do diagrama corresponde a uma seção:
 
 | Bloco do Diagrama | Seção no Core Concept |
 |---|---|
@@ -419,7 +420,7 @@ Este blueprint revela decisões de design que não são óbvias em diagramas de 
 
 ### Mapeamento para o Core Concept
 
-Este diagrama ASCII é a **visualização direta** das Seções 2, 3, 5 e 6 do [Core Concept](../../05-core-concepts/02-planning-execution-separation.md):
+Este diagrama ASCII é a **visualização direta** das Seções 2, 3, 5 e 6 do [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]]:
 
 | Elemento do Diagrama ASCII | Seção no Core Concept |
 |---|---|
@@ -536,7 +537,7 @@ Este diagrama de sequência revela **7 pontos críticos de decisão** que determ
 
 ### Mapeamento para o Core Concept
 
-Este diagrama é a **visualização direta** das Seções 2 e 3 do [Core Concept](../../05-core-concepts/02-planning-execution-separation.md):
+Este diagrama é a **visualização direta** das Seções 2 e 3 do [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]]:
 
 | Elemento do Diagrama de Sequência | Seção no Core Concept |
 |---|---|
@@ -651,7 +652,7 @@ NÍVEL DE MATURIDADE ARQUITETURAL
 
 ### Mapeamento para o Core Concept
 
-Esta tabela expande a **Tabela Comparativa da Seção 4** do [Core Concept](../../05-core-concepts/02-planning-execution-separation.md), adicionando:
+Esta tabela expande a **Tabela Comparativa da Seção 4** do [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]], adicionando:
 - Mais dimensões de comparação (previsibilidade, debugabilidade)
 - Árvore de decisão prática
 - Progressão de maturidade
@@ -811,7 +812,7 @@ flowchart TB
 
 ### Mapeamento para o Core Concept
 
-Este diagrama é a **visualização direta** da Seção 6 do [Core Concept](../../05-core-concepts/02-planning-execution-separation.md):
+Este diagrama é a **visualização direta** da Seção 6 do [[curriculum/05-core-concepts/02-planning-execution-separation|Core Concept]]:
 
 | Elemento do Diagrama | Seção no Core Concept |
 |---|---|

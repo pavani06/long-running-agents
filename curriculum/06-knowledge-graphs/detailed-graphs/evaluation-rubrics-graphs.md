@@ -3,6 +3,7 @@ title: "Detailed Graph: Evaluation Rubrics"
 type: curriculum-knowledge-graph
 aliases: []
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
+relates-to: ["[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-10
 ---
 # 🎯 Detailed Graph: Evaluation Rubrics
@@ -2509,4 +2510,3 @@ Review cadence: Quarterly (next review: August 2026)
 Contact: #long-running-agents curriculum channel
 Dependencies: 05-core-concepts/08-evaluation-rubrics.md
 Cross-references: 06-knowledge-graphs/01-concept-ecosystem.md, 02-nivel-2-practical-patterns/03-rubric-design.md
-

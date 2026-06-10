@@ -3,6 +3,7 @@ title: "Knowledge Graphs de Coordenação Multi-Agente"
 type: curriculum-knowledge-graph
 aliases: []
 tags: [curriculo-conteudo, knowledge-graph, mermaid]
+relates-to: ["[[curriculum/05-core-concepts/07-multi-agent-coordination|Multi-Agent Coordination]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]"]
 last_updated: 2026-06-10
 ---
 # 🧠 Knowledge Graphs de Coordenação Multi-Agente
