@@ -612,6 +612,27 @@ function retrieveRelevantContext(query, customerId):
 - Caso 04: Rafael compara três marcas por quarenta minutos; KODA transforma a comparação em resumo estruturado antes de recomendar.
 - Caso 05: Bianca volta depois de uma semana; KODA recupera histórico persistente, não tenta reconstruir tudo pela conversa atual.
 
+### Addressable Memory Catalog
+
+Enquanto retrieval busca por similaridade semântica, o catálogo de memória endereçável expõe conteúdo omitido como uma lista navegável de handles. Ele não tenta adivinhar qual trecho parece parecido; ele mostra ao agente quais itens ficaram fora do contexto ativo e como recuperar cada um de forma determinística.
+
+Campos mínimos do catálogo:
+
+| Campo | Descrição |
+|------|-----------|
+| `id` | Handle estável para recuperar e auditar o item omitido. |
+| `kind` | Tipo do item: mensagem, tool call, span, decisão, resultado ou artefato. |
+| `location` | Posição conversacional, timestamp, turno, span ou caminho de origem. |
+| `preview` | Pista curta de relevância, pequena o bastante para não virar blob. |
+| `scope` | Limite de sessão, usuário, tarefa, privacidade ou trace. |
+| `fetch` | Contrato de ferramenta ou ponteiro de storage para recuperar o conteúdo exato. |
+
+O catálogo é compacto para viver no contexto ativo. O conteúdo completo permanece fora do prompt até que o agente escolha um `id` específico, permitindo recuperação determinística sem reabrir todo o histórico omitido.
+
+**Exemplo KODA:** após head-tail truncation de 500 spans, o catálogo lista 30 omitidos com tipo, preview e ID. Quando o avaliador pergunta sobre um span específico, KODA consulta o catálogo e recupera só aquele item, sem reidratar a conversa inteira.
+
+**Riscos:** preview grande vira blob e concorre com o contexto ativo; preview pequeno demais esconde relevância; itens podem ficar stale se a sessão muda; IDs precisam ser únicos entre sessões para evitar recuperar conteúdo errado.
+
 ### 5. Compaction/Compression server-side e client-side
 
 **Como funciona:** Compacta mensagens, tool results e estados antes de enviá-los ao modelo ou usa mecanismos do servidor para condensar histórico.
@@ -646,6 +667,14 @@ function compactContext(contextBlocks):
 - Caso 03: Rafael compara três marcas por quarenta minutos; KODA transforma a comparação em resumo estruturado antes de recomendar.
 - Caso 04: Bianca volta depois de uma semana; KODA recupera histórico persistente, não tenta reconstruir tudo pela conversa atual.
 - Caso 05: Lucas pede "aquele produto que eu quase comprei"; KODA usa retrieval para achar o evento antigo de carrinho abandonado.
+
+#### Head-Tail Truncation (variante de Compaction)
+
+Head-tail truncation é uma variante de compaction que preserva duas âncoras temporais enquanto externaliza o meio. O head mantém objetivo, restrições e definições iniciais. O tail mantém estado atual, últimas mensagens e resultado mais recente. O system prompt fica fora da política de redução e continua intacto.
+
+A diferença para sliding window é que sliding window descarta o passado fora da janela. A diferença para summarization é que summarization comprime sem garantir recuperação exata. Head-tail mantém o conteúdo omitido acessível via catálogo, com IDs e previews para fetch determinístico.
+
+**Exemplo KODA:** em uma sessão de 2h com 40 turnos, o contexto ativo mantém system prompt, turnos 1-3 com a alergia, turnos 37-40 sobre frete e checkout, além do resultado mais recente. Os turnos 4-36 ficam no catálogo endereçável, recuperáveis quando um follow-up mencionar uma comparação antiga.
 
 ### 6. Hybrid Context Orchestration
 

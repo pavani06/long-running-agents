@@ -505,6 +505,11 @@ O diagrama abaixo compara o estado diagnosticado com uma proposta incremental. A
 * Tem plano de rollback ou desativação por configuração.
 * Tem dono técnico e cadência de revisão.
 
+**N+1 Long-Session Evals como gate de P4:**
+- Fixtures de 10 turnos realistas com política de compactação aplicada
+- O 11º turno testa continuidade, follow-up, ausência de alucinação
+- Aprovação requer ≥95% de acerto
+
 ### P5: Checkpoint comercial antes de efeitos externos
 
 **Prioridade:** Alta
@@ -564,6 +569,7 @@ O diagrama abaixo compara o estado diagnosticado com uma proposta incremental. A
 * Gera evidência que suporte decisão técnica.
 * Tem plano de rollback ou desativação por configuração.
 * Tem dono técnico e cadência de revisão.
+* Late-Failure Regression Suite como requisito: toda mudança em compactação/retrieval/memória requer suite antes do merge. Novos casos adicionados automaticamente quando incidente de contexto é resolvido.
 
 ---
 
@@ -791,6 +797,7 @@ Se esta fase falhar, o cliente fica protegido e o time sabe como voltar ao compo
 * [ ] Medir concordância humana em amostra semanal.
 * [ ] Registrar falsos positivos e falsos negativos.
 * [ ] Ajustar rubrica com evidência, não opinião isolada.
+* [ ] Late-failure regression suite passou (0 regressões)
 * [ ] Definir threshold para canary.
 
 **Pergunta de controle:**
@@ -938,6 +945,14 @@ Promover para canary, ajustar rubrica ou encerrar proposta.
 * Registro do output proposto.
 * Decisão comparativa.
 * Observação sobre custo e risco.
+
+### Shadow Test N+1 (específico para compactação)
+
+1. **Fixture:** 10 conversas reais de KODA com 15+ turnos cada
+2. **Aplicar:** Política de compactação atual (head-tail com catálogo)
+3. **Testar:** Para cada conversa, 16ª pergunta dependente de contexto dos turnos 5-10
+4. **Medir:** Taxa de acerto vs baseline (sem compactação)
+5. **Gate:** N+1 ≥ baseline −5% → aprova; abaixo → revisa política antes de canary
 
 ---
 

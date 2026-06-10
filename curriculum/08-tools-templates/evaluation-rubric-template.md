@@ -811,6 +811,7 @@ Critério de saída: existe evidência escrita de que a etapa foi concluída.
 
 ### Passo 8: Rodar regression set
 Aplique a rubric em outputs antigos que causaram incidentes e confirme que seriam reprovados.
+- Inclua N+1 long-session fixtures: conversas 10+ turnos com compactação, 11º turno testa continuidade contextual.
 Critério de saída: existe evidência escrita de que a etapa foi concluída.
 
 ### Passo 9: Registrar versão
@@ -873,6 +874,7 @@ Por isso, calibration não é luxo.
 13. **Sem critérios ornamentais:** Nenhum critério existe apenas porque parece sofisticado.
 14. **Atualização versionada:** Mudanças em pesos, gates ou decision rule têm versão e motivo.
 15. **Testada com incidentes reais:** Outputs que já causaram problema são usados como regression examples.
+16. **Context degradation cases:** late-failure fixtures estão incluídos no regression set.
 
 ---
 

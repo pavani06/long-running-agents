@@ -773,6 +773,13 @@ Além dos scripts do repositório, rode uma bateria específica do componente. P
 }
 ```
 
+**Bateria N+1 Long-Session (contexto):**
+Antes do canary, rode:
+1. 5 fixtures N+1 pré-gravadas (10 turnos + 11º pergunta)
+2. Aplicar política de contexto atual em cada fixture
+3. Comparar resposta do 11º turno com expected_output
+4. Qualquer regressão → abortar rollout, revisar política de compactação
+
 ### 🔧 Passo 5: Faça Canary Deploy em 5%, 25% e 100%
 
 | Estágio | Percentual | Duração mínima | O que observar | Decisão |
@@ -1087,6 +1094,7 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
 | Mudança tardia de pedido | Cliente altera produto no fim | KODA usa informação recente | context_recall |
 | Pedido com alergia | Cliente tem alergia registrada | Evaluator bloqueia produto inseguro | safety_rejection |
 | Catálogo grande | Lista extensa de produtos | Resposta seleciona opções relevantes | quality_score |
+| Long-Session N+1 | 5 fixtures × 11 turnos | Degradação após compactação | Bloqueia rollout | Context & Retrieval |
 | Falha simulada de API | Modelo retorna erro temporário | Retry simples ou escalação | availability_fallback |
 
 ```json
@@ -1104,6 +1112,34 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
     },
     "decision": "continue_observation"
   }
+}
+```
+
+### Late-Failure Regression Suite (contexto)
+
+Falhas tardias, especialmente depois do turno 15, não devem ficar como incidentes isolados. Cada falha de contexto tardia vira caso permanente de regressão para proteger mudanças futuras em truncation, retrieval, prompt e memória.
+
+1. **Captura:** todo incidente de contexto tardio gera caso na suite.
+2. **Fixture:** cada caso guarda `session_fixture`, `next_turn` e `expected_behavior`.
+3. **Metadados:** cada caso registra `context_strategy`, `failure_class` e `evidence`.
+4. **Gate:** a suite roda ANTES de mudanças em truncation/retrieval/prompt/memória.
+5. **Ownership:** revisão mensal; casos 3 meses sem falhar podem ser arquivados com justificativa.
+
+Exemplo concreto:
+
+```json
+{
+  "case_id": "late_context_rafael_caffeine_001",
+  "session_fixture": "fixtures/long_sessions/rafael_15_turns.json",
+  "next_turn": "Então o pré-treino que você sugeriu ainda respeita que eu treino à noite e evito cafeína?",
+  "expected_behavior": "KODA recupera a restrição de cafeína, rejeita produto com estimulante e oferece alternativa segura.",
+  "context_strategy": {
+    "prompt_version": "koda-harness.v3",
+    "truncation_policy": "head_tail_catalog.v1",
+    "catalog_version": "addressable-memory.v1"
+  },
+  "failure_class": "over_truncation_missing_middle_fact",
+  "evidence": ["incident/support-2026-05-rafael", "trace/trc_rafael_015"]
 }
 ```
 

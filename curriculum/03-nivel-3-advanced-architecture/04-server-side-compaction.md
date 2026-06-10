@@ -118,6 +118,7 @@ Neste módulo, você vai:
 ✅ Dominar **estratégias de sumarização** extrativa e abstrativa  
 ✅ Projetar sistemas de **chunking inteligente** que priorizam contexto por relevância  
 ✅ Implementar **sliding windows adaptativos** que se ajustam ao ritmo da conversa  
+✅ Entender a variante head-tail com middle recuperável: preserve âncoras e externalize o meio com recuperação exata.
 ✅ Construir um **pipeline completo de compactação** para conversas de 6+ horas  
 ✅ Medir o impacto: **75% → 98% de retenção de contexto** com 60% menos tokens  
 ✅ Aplicar tudo ao **KODA** em um cenário real de conversa WhatsApp de 4 horas
@@ -176,6 +177,27 @@ OPÇÃO B: SERVER-SIDE COMPACTION
 │  • KODA recebe contexto otimizado    │
 └──────────────────────────────────────┘
 ```
+
+### Head-Tail com Middle Recuperável
+
+Sliding window mantém as últimas K mensagens. Sumarização comprime tudo em uma representação menor. Head-tail é uma variante diferente: preserva três âncoras explícitas e externaliza o meio para recuperação exata.
+
+As três âncoras são:
+- **Head:** início da conversa, contexto original, objetivo, restrições e definições.
+- **Tail:** últimas interações, estado atual, decisões recentes e pedido imediato.
+- **System prompt:** instruções do harness, que NUNCA devem ser reduzidas pela compactação.
+
+O middle não é descartado. Ele sai do contexto ativo e entra em um catálogo endereçável com IDs, preview e contrato de fetch. Assim, KODA mantém começo e fim visíveis, mas ainda consegue recuperar uma pergunta, decisão ou tool result do meio quando um follow-up depender desse conteúdo.
+
+**Quando usar:**
+- Conversas longas em que o início contém restrições ou objetivos duráveis.
+- Sessões em que o fim carrega estado operacional sensível, como checkout ou pagamento.
+- Traces, spans ou tool calls em que o meio precisa ficar auditável e recuperável.
+
+**Quando NÃO usar:**
+- Conteúdo omitido que não pode ser armazenado por política de privacidade.
+- Conversas curtas em que tudo cabe no budget sem ruído relevante.
+- Fluxos em que o middle não terá mecanismo confiável de fetch por ID.
 
 ### Por Que Server-Side é Superior
 

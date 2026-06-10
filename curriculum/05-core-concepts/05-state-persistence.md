@@ -585,6 +585,8 @@ stateDiagram-v2
 | FULFILLMENT | Reserva, pedido, tracking, transportadora, promessa | SQLite + JSON audit | Delta por evento de entrega | Não duplicar reserva nem promessa |
 | FOLLOW_UP | Data agendada, pedido relacionado, resposta do cliente | SQLite | Full snapshot ao agendar, delta ao responder | Retomar suporte com pedido correto |
 
+O Addressable Memory Catalog complementa a persistência de estado: estado durável guarda facts/checkpoints; catálogo guarda handles para conteúdo omitido recuperável. No KODA, `retrieval_manifest.json` já cumpre parte desse papel. A diferença é explicitar `preview` e `kind`, para o agente saber o que pode buscar sem carregar tudo de volta.
+
 ### Implementação completa em Python
 
 ```python
@@ -1870,6 +1872,8 @@ Critério de qualidade: um recovery nessa fase deve conseguir explicar por que c
 **Ação recomendada:** Salvar `manifest.json` com arquivos e decisões usados.
 
 **Pergunta de revisão:** este campo tem dono, backend, checkpoint e recovery definidos?
+
+> O catálogo de memória endereçável estende o conceito de manifest com campos `kind`, `preview` e `fetch`. Enquanto o manifest descreve O QUE foi usado na decisão, o catálogo descreve O QUE está disponível para recuperação futura.
 
 ### Nota de decisão 22: Status visível
 

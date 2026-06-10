@@ -57,14 +57,47 @@ Seu trabalho: **implementar History Windowing para resolver isso.**
 - [ ] Memória de críticas: nunca perder decisões/preferências
 - [ ] Rastreabilidade: conseguir debugar o que foi comprimido
 
+### Requisitos Adicionais — Variante Head-Tail
+
+**Funcional:**
+- [ ] Preservar system prompt intacto.
+- [ ] Manter head (N mensagens iniciais) e tail (M finais) no contexto ativo.
+- [ ] Remover o middle do contexto ativo, mas armazená-lo com IDs recuperáveis.
+
+**Técnico:**
+- [ ] Cada mensagem do middle deve ter `id`, `role`, `preview` com 80 caracteres e `full_text`.
+- [ ] Contexto final deve seguir a forma `[system_prompt] + [head] + [tail] + [latest_result]`.
+- [ ] Implementar função `fetch_omitted(id)` para recuperar conteúdo omitido por handle.
+
+**Validação:**
+- [ ] Contexto ativo contém system prompt, primeiro turno, último turno e resultado.
+- [ ] Middle está ausente do contexto ativo, mas recuperável.
+- [ ] Follow-up que referencia o middle é respondido corretamente após fetch.
+
 ---
 
 ## 🚀 Starter Code
 
 ```python
+from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Dict, Optional
 import json
+
+@dataclass
+class OmittedMessage:
+    id: str
+    role: str  # "user" | "assistant" | "tool"
+    preview: str  # primeiros 80 caracteres
+    full_text: str
+
+@dataclass
+class ContextWindow:
+    system_prompt: str
+    head: list[Message]
+    tail: list[Message]
+    latest_result: str
+    memory_catalog: list[OmittedMessage]  # middle armazenado
 
 class ConversationManager:
     """
@@ -274,9 +307,68 @@ def test_context_output():
     print("✅ Test 4 passou!")
 
 
+def test_head_tail_preserves_anchors():
+    """System prompt, primeira e última mensagens estão no contexto ativo."""
+    print("\n🧪 Test 5: Head-Tail Preserva Âncoras")
+
+    manager = ConversationManager(max_window_messages=5)
+    context_window = manager.get_context_for_model()
+
+    assert "system" in context_window.lower() or "critical" in context_window.lower(), (
+        "System prompt ou contexto crítico deve estar preservado"
+    )
+    assert "recent" in context_window.lower() or "messages" in context_window.lower(), (
+        "Tail recente deve estar no contexto ativo"
+    )
+
+    print("✅ Test 5 passou!")
+
+
+def test_middle_is_recoverable():
+    """Mensagem do middle pode ser recuperada por fetch_omitted(id)."""
+    print("\n🧪 Test 6: Middle Recuperável")
+
+    omitted = OmittedMessage(
+        id="msg_middle_001",
+        role="user",
+        preview="Cliente comparou whey vegano e isolado antes de decidir",
+        full_text="Cliente comparou whey vegano e isolado antes de decidir pelo produto sem lactose.",
+    )
+
+    assert omitted.id == "msg_middle_001", "Mensagem omitida deve ter ID estável"
+    assert omitted.full_text.startswith(omitted.preview[:40]), (
+        "Preview deve apontar para o conteúdo recuperável"
+    )
+
+    print("✅ Test 6 passou!")
+
+
+def test_followup_after_truncation():
+    """Follow-up que referencia middle ainda é respondido corretamente após fetch."""
+    print("\n🧪 Test 7: Follow-up Após Truncation")
+
+    omitted = OmittedMessage(
+        id="msg_middle_002",
+        role="assistant",
+        preview="KODA explicou que whey vegano evita lactose",
+        full_text="KODA explicou que whey vegano evita lactose e cabe no orçamento confirmado.",
+    )
+    followup = "aquele whey sem lactose ainda cabe no orçamento?"
+
+    assert "lactose" in omitted.full_text.lower(), (
+        "Fetch do middle deve recuperar o fato necessário ao follow-up"
+    )
+    assert "orçamento" in omitted.full_text.lower(), (
+        "Fetch do middle deve recuperar o critério usado na resposta"
+    )
+    assert "whey" in followup.lower(), "Follow-up deve referenciar conteúdo omitido"
+
+    print("✅ Test 7 passou!")
+
+
 def simulate_long_conversation():
     """Simulação: Conversa de 4 horas"""
-    print("\n🧪 Test 5: Simulação - Conversa Longa (4 horas)")
+    print("\n🧪 Test 8: Simulação - Conversa Longa (4 horas)")
     
     manager = ConversationManager(max_window_messages=20)
     

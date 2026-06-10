@@ -315,6 +315,21 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ✅ O harness monta `critical_state`, `history_summary`, `recent_window` e `turn_request` separadamente, calcula tokens por bloco e compacta antes de qualquer chamada.
 
+### X. Stable Harness Prompt (NÃO redutível por compactação)
+
+O que um bom harness faz: o system prompt do harness é a âncora estável da chamada. Compactação reduz history, tool calls e payload, mas NUNCA resume ou trunca o harness prompt. Esse prompt tem budget próprio, versionamento independente e é avaliado separadamente da política de contexto.
+
+Por que importa: se o harness for truncado junto com o payload, o agente perde instruções silenciosamente. O sintoma pode parecer esquecimento de contexto, mas a causa real é perda do contrato operacional que definia papel, ferramentas, segurança e formato.
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Budget separado | System prompt tem budget de tokens separado do payload. | Existe evidência verificável e atualizada. | Prompt e payload disputam o mesmo corte de compactação. | Registre link para artefato, owner e data. |
+| Harness não redutível | Política de compactação NUNCA resume ou trunca o harness prompt. | Existe teste ou contrato protegendo a regra. | Compactador trata system prompt como histórico comum. | Registre link para artefato, owner e data. |
+| ID versionado | Cada versão do harness prompt tem ID semântico versionado. | Replay e traces registram a versão usada. | Mudanças de prompt não deixam rastro auditável. | Registre link para artefato, owner e data. |
+| Evals dedicados | Mudanças no harness prompt são testadas com evals dedicados. | Gate roda antes de rollout. | Prompt muda sem avaliação separada. | Registre link para artefato, owner e data. |
+| Replay metadata | Metadata de replay inclui `prompt_version`. | Incidente consegue reconstruir prompt ativo. | Replay depende do prompt atual por acidente. | Registre link para artefato, owner e data. |
+| Teste anti-mutação | Existe teste que falha se a compactação mutar o harness. | Teste cobre truncation, summarization e externalização. | Compactação pode alterar instruções sem alerta. | Registre link para artefato, owner e data. |
+
 ### Perguntas de auditoria
 
 - Qual artefato prova que esta regra existe fora da cabeça do agente?
@@ -873,6 +888,8 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - O que acontece quando a proteção deixa passar um caso inválido?
 - Como um novo dev descobriria essa regra sem perguntar para Fernando?
 - A regra está no lugar certo ou deveria virar contrato, state, rubric ou guardrail?
+- O harness prompt tem versionamento independente da política de contexto?
+- Mudanças no harness passam pelo mesmo gate de regressão que mudanças de compactação?
 
 ### Micro-checklist de revisão rápida
 
