@@ -192,6 +192,7 @@
   },
   "active": "7ea6b31cc7ddab37",
   "lastOpenFiles": [
+    "NEXT_FINDINGS.md",
     "docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock",
     "docs/analysis/2026-06-11-patterns-for-ai-agents",
     "harness/harness-analysis.sh",
@@ -223,7 +224,6 @@
     "docs/analysis/2026-06-10-token-budgeting/classification.md",
     "docs/analysis/2026-06-10-token-budgeting/analysis.yaml",
     "docs/analysis/2026-06-10-token-budgeting/analysis.md",
-    "docs/analysis/2026-06-10-token-budgeting",
     "docs/canonical/versioned-durable-agent-state.md",
     "docs/canonical/tested-degradation-ladder.md",
     "docs/canonical/structured-generation-constraint-validation-circuit.md",
