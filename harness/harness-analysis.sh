@@ -231,7 +231,7 @@ $prompt"
     log_info "Prompt: $prompt"
     log_info "Executando $AGENT_CLI..."
 
-    $AGENT_CLI -p "$prompt"
+    $AGENT_CLI run "$prompt"
 
     local exit_code=$?
     if [ $exit_code -ne 0 ]; then
@@ -291,7 +291,7 @@ If PASS, state it clearly as the first word of your response."
     log_info "Executando $AGENT_CLI --agent $EVALUATOR_AGENT..."
 
     local verdict
-    verdict=$($AGENT_CLI --agent "$EVALUATOR_AGENT" -p "$review_prompt" 2>&1) || true
+    verdict=$($AGENT_CLI run "$review_prompt" 2>&1) || true
 
     echo "$verdict"
 
