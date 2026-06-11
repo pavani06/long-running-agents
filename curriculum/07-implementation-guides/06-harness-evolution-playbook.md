@@ -554,6 +554,38 @@ Monte uma lista que comece por mudanças de baixo risco. O primeiro componente r
 
 O módulo conceitual define o ritmo trimestral Review, Implement, Observe. Este playbook transforma isso em agenda operacional.
 
+Mas ha um ritmo complementar que alimenta o trimestral: **o Garbage Collection Day semanal**, formalizado em [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]].
+
+**GC Day Semanal (60-90 minutos, toda sexta-feira):**
+
+Enquanto o ciclo trimestral decide o destino estrutural dos componentes (SIMPLIFY, REMOVE), o GC Day semanal captura padroes de falha na semana em que eles emergem -- antes que virem estatistica trimestral.
+
+| Horario | Atividade | Pergunta-chave |
+|---------|-----------|----------------|
+| 09:00-09:20 | Coleta: revisar PRs da semana, tickets de suporte, rejeicoes do Evaluator, escapes de seguranca | Que padroes se repetiram esta semana? |
+| 09:20-09:45 | Classifica: categorizar cada observacao na taxonomia de falhas (context_loss, tool_misuse, rubric_gap, safety_escape, pricing_policy, latency_cost) | Este padrao e novo ou recorrente? |
+| 09:45-10:15 | Converte: para cada padrao com 2+ ocorrencias, gerar uma acao concreta (nova lint rule, atualizacao de skill, ajuste de reviewer prompt, caso de regressao) | Qual e a menor acao que elimina esta classe de problema? |
+| 10:15-10:30 | Prioriza: ordenar acoes por frequencia × severidade e registrar no backlog de harness | O que entra no sprint atual e o que vai para o backlog? |
+
+**Tabela de conversao -- de observacao humana a guardrail automatizado:**
+
+| Observacao no GC Day | Taxonomia | Conversao |
+|---|---|---|
+| "Quintoo PR este mes sem `aria-describedby` em input de senha" | tool_misuse | Nova lint rule: `require-aria-describedby-password` |
+| "Cupons vencidos passaram 3 vezes no Evaluator" | rubric_gap | Blocker `coupon_expiration` na rubrica + caso de regressao tier fast |
+| "Cliente reclamou que restricao foi esquecida apos 3h" | context_loss | Novo caso N+1 no tier medium de regressao |
+| "Agente usou `localStorage` para token -- 2o escape de seguranca no mes" | safety_escape | Nova regra no Security Persona + lint rule `no-localstorage-token` |
+
+**Checklist minima do GC Day:**
+- [ ] PRs da semana foram revisados e padroes de slop anotados
+- [ ] Tickets de suporte com causa raiz de harness foram classificados
+- [ ] Cada padrao recorrente (2+ ocorrencias) gerou uma acao concreta
+- [ ] Acoes foram priorizadas e registradas no backlog de harness
+- [ ] O backlog de conversoes esta visivel para todo o time
+- [ ] Nenhum GC Day termina sem pelo menos 1 guardrail novo ou melhorado
+
+### 📋 Passo 5: Aplique One In One Out
+
 | Semana | Atividade | Saída |
 |--------|-----------|-------|
 | 1 | Review de métricas e scorecard | Lista de candidatos |
@@ -1189,7 +1221,7 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
 
 ### Production Failure Regression Flywheel
 
-A Late-Failure Regression Suite continua obrigatória para contexto longo, mas ela é um caso específico de uma regra maior: toda falha de produção que ensina algo sobre comportamento de agente deve virar candidato a eval de regressão. O objetivo não é acumular casos infinitos. O objetivo é impedir que reclamações, tool misuse, falhas de estado, scoring gaps e edge cases escapados reapareçam depois que o time já aprendeu a diagnosticá-los.
+A Late-Failure Regression Suite continua obrigatória para contexto longo, mas ela é um caso específico de uma regra maior: toda falha de produção que ensina algo sobre comportamento de agente deve virar candidato a eval de regressão. Este processo e formalizado como **Failure Pattern Classification Loop** em [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]. O objetivo não é acumular casos infinitos. O objetivo é impedir que reclamações, tool misuse, falhas de estado, scoring gaps e edge cases escapados reapareçam depois que o time já aprendeu a diagnosticá-los.
 
 1. **Intake:** ticket de suporte, incidente, canary alert, shadow diff, human review ou trace manual abre um item com `source_event`, impacto e owner.
 2. **Taxonomia:** classifique como `context_loss`, `tool_misuse`, `state_persistence`, `rubric_gap`, `prompt_regression`, `pricing_policy`, `safety_escape`, `latency_cost` ou `other`.

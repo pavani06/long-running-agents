@@ -928,6 +928,48 @@ CAPACIDADE DO MODELO
 | **Grounding factual melhor** | "Improved factual accuracy" | Fact Checker, Source Validator, Hallucination Detector | Reduzir para domínios de alto risco apenas (saúde, finanças) |
 | **Velocidade de inferência** | "Latency reduced by X%" | Cache Layer, Pre-computation, Batch Processing | Reavaliar necessidade de cache se latência não é mais problema |
 
+### O Modelo Mental do Compilador Fuzzy
+
+Existe uma lente conceitual que unifica todas as decisoes de Harness Evolution em um unico frame mental. E o modelo do **LLM como Compilador Fuzzy**, formalizado em [[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]].
+
+A intuicao e simples: trate o LLM como um backend de compilacao, o harness como passes de otimizacao, e o codigo gerado como artefato de build descartavel.
+
+| Conceito Tradicional | Equivalente no Harness |
+|---|---|
+| **Source code** | Constraints de dominio, regras de negocio, rubricas de qualidade |
+| **Compiler** | O harness (prompts + lint rules + validators + reviewers) |
+| **Optimization passes** | Cada validacao que o harness aplica (lint, type check, review, constraint check) |
+| **Backend** | O modelo de LLM especifico (Claude 3.5, Claude 4, GPT-5) |
+| **Binary / build artifact** | O codigo gerado pelo agente |
+| **Recompilar** | Trocar o modelo e regenerar o artefato a partir das mesmas constraints |
+
+A implicacao mais profunda: **o ativo duravel nao e o codigo gerado, mas as constraints que o produziram.** Quando voce troca de modelo, voce nao reescreve codigo -- voce recompila o mesmo source com um backend melhor.
+
+Este modelo mental conecta diretamente com o [[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]: invariants de dominio sao o "source code" que sobrevive a qualquer backend; compensations de modelo sao "optimization passes" que existem apenas para um backend especifico e sao candidatas a remocao quando o backend melhora.
+
+**Exemplo KODA -- A migracao que nao destruiu nada:**
+
+```
+ANTES (preservando codigo -- ERRADO):
+  Migracao Claude 3.5 -> Claude 4: 6 semanas reescrevendo 6.200 linhas
+
+DEPOIS (preservando constraints -- CERTO):
+  Migracao: mesmo source (domain_constraints.json), backend novo.
+  Resultado: zero rewrites. Codigo regenerado em minutos.
+  O que sobreviveu: "cliente alergico nunca recebe produto com alergeno"
+  O que foi descartado: "recarregue perfil a cada 3 turns" (compensacao)
+```
+
+Fernando aprendeu essa licao na pratica. Na primeira migracao de modelo, o time preservou o codigo e perdeu 6 semanas. Na segunda, preservou as constraints e perdeu zero dias. A diferenca foi o modelo mental.
+
+**Checklist rapida -- Voce esta preservando o ativo certo?**
+- [ ] As constraints de dominio estao em documentos versionados, separadas do codigo gerado?
+- [ ] Toda regra do harness esta classificada como invariante de dominio ou compensacao de modelo?
+- [ ] Ao trocar de modelo, voce regenera o codigo a partir das constraints (nao reescreve)?
+- [ ] As compensacoes de modelo tem um criterio de expiracao documentado?
+
+---
+
 ### Quando NÃO Remover — Mesmo com Modelo Melhor
 
 Algumas proteções são **invariantes arquiteturais**. Sua presença não depende da qualidade do modelo — depende da natureza do domínio ou do sistema.
@@ -1075,6 +1117,33 @@ TRIMESTRE 1              TRIMESTRE 2              TRIMESTRE 3
 - Coletar dados para o próximo ciclo de review
 - NÃO fazer novas mudanças no harness neste período
 - Documentar lições aprendidas para o próximo trimestre
+
+### O Ritmo Semanal: Garbage Collection Day
+
+Alem da cadencia trimestral de BUILD/STABILIZE/SIMPLIFY/REMOVE, o harness precisa de um **ritmo semanal** para capturar padroes de falha enquanto ainda estao frescos. Este e o **Garbage Collection Day**, formalizado em [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]].
+
+**O que e:** Toda sexta-feira (ou dia equivalente), o time revisa feedback humano de PR, tickets de suporte, falsos positivos do Evaluator e escapes de seguranca. Cada observacao recorrente e classificada e convertida em um guardrail automatizado.
+
+**Mecanica semanal (90 minutos):**
+
+```
+09:00-09:20 — COLETA: Revisar PRs da semana, tickets de suporte, rejeicoes do Evaluator
+09:20-09:45 — CLASSIFICA: Categorizar padroes (context_loss, tool_misuse, rubric_gap, safety_escape...)
+09:45-10:15 — CONVERTE: Para cada padrao recorrente, abrir uma acao concreta
+10:15-10:30 — PRIORIZA: Ordenar acoes por frequencia e severidade
+```
+
+**Exemplos de conversao de observacao em guardrail:**
+
+| Observacao Humana | Padrao | Conversao |
+|---|---|---|
+| "Terceiro PR esta semana sem `autocomplete` em input de email" | tool_misuse | Nova lint rule: `require-autocomplete-email` |
+| "Cupom vencido passou no Evaluator pela segunda vez" | rubric_gap | Adicionar blocker `coupon_expiration` na rubrica |
+| "Cliente reclamou que KODA esqueceu restricao apos 3h" | context_loss | Novo caso N+1 no tier medium de regressao |
+
+**Por que semanal, nao trimestral:** O ciclo trimestral e bom para decisoes estruturais (remover um componente inteiro). Mas padroes de falha se acumulam rapido. Se o time espera 3 meses para converter "input de email sem autocomplete" em lint rule, o mesmo erro aparece em 30+ PRs nesse periodo. A cadencia semanal captura o padrao na semana em que ele emerge.
+
+**Conexao com o ciclo trimestral:** O GC Day alimenta a fase REVIEW da cadencia trimestral. Quando chega a Semana 1 do trimestre, o time ja tem 12+ semanas de GC Days documentados -- as decisoes trimestrais (SIMPLIFY, REMOVE) sao informadas por dezenas de decisoes semanais.
 
 ### Tabela: Componentes Atuais do KODA → Evolução Planejada
 

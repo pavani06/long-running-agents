@@ -869,6 +869,10 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Rollback pronto | Existe feature flag, versão anterior ou procedimento de restauração testado. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | ADR ou changelog | Mudanças estruturais têm documento com contexto, decisão, alternativas e consequências. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Revisão periódica | O time revisa componentes após upgrade de modelo ou a cada ciclo trimestral. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Separação invariante vs compensação | Cada componente do harness esta classificado como invariante de dominio ou compensacao de modelo, conforme [[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]. Compensacoes tem criterio de expiracao documentado. | Existe evidencia verificavel e atualizada. | Nao ha distincao entre o que e permanente e o que e temporario. | Registre link para artefato, owner e data. |
+| GC Day semanal | Existe um ritual semanal documentado onde feedback humano de revisao e convertido em guardrails automatizados (lint rules, skills, reviewer prompts), conforme [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]]. | Calendario fixo, owner definido, backlog de conversoes visivel. | Padroes de falha sao tratados caso a caso, sem sistematizacao. | Registre link para artefato, owner e data. |
+| Classificacao de padroes de falha | Falhas, escapes e misbehaviors sao classificados por taxonomia (context_loss, tool_misuse, rubric_gap, safety_escape, etc.) e convertidos em casos de regressao com tier assignment, conforme [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]. | Taxonomia documentada, casos vinculados a tiers de eval, deduplicacao ativa. | Cada falha gera um card avulso, sem classificacao ou prevencao sistemica. | Registre link para artefato, owner e data. |
+| Documentacao baseada em personas | Conhecimento especializado (front-end, seguranca, UX, produto) vive em documentos NFR por persona, nao apenas em AGENTS.md universal. Agentes herdam as personas relevantes automaticamente, conforme [[docs/canonical/persona-based-documentation|Persona-Based Documentation]]. | Cada especialidade tem dono, documento versionado e dispatch por tipo de tarefa. | Conhecimento de qualidade vive na cabeca dos especialistas ou em comentarios de PR. | Registre link para artefato, owner e data. |
 
 ### Evidências que um revisor deve pedir
 
@@ -912,6 +916,12 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - [ ] Feature flag ou versao anterior permite restaurar comportamento anterior?
 - [ ] Mudanca estrutural tem ADR ou changelog com alternativas e consequencias?
 - [ ] Revisao ocorre apos upgrade de modelo ou ciclo trimestral?
+- [ ] Cada componente esta classificado como invariante de dominio ou compensacao de modelo?
+- [ ] Compensacoes de modelo tem criterio de expiracao e gatilho de reavaliacao?
+- [ ] Existe um ritual semanal (GC Day) para converter feedback humano em guardrails automatizados?
+- [ ] Falhas e escapes sao classificados por taxonomia e convertidos em casos de regressao?
+- [ ] Especialistas mantem documentos NFR por persona, e agentes herdam esse conhecimento automaticamente?
+- [ ] O AGENTS.md e complementado por personas especializadas, nao substituido por elas?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -1305,6 +1315,10 @@ Quando o time estiver com pouco tempo, use este roteiro. Ele não substitui a le
 | File-Based Coordination | `../03-nivel-3-advanced-architecture/03-file-based-coordination.md` | Use para lock files, status files, JSON protocol e atomic writes. |
 | Harness Evolution | `../03-nivel-3-advanced-architecture/05-harness-evolution.md` | Use para BUILD/STABILIZE/SIMPLIFY/REMOVE e remoção segura. |
 | Aplicações KODA Nível 2 | `../02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md` | Use para conectar padrões práticos à jornada real do KODA. |
+| LLM as Fuzzy Compiler | [[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]] | Use para classificar componentes como invariante vs compensacao e decidir o que sobrevive a upgrades de modelo. |
+| Garbage Collection Day | [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] | Use para implementar o ritual semanal de conversao de feedback humano em guardrails. |
+| Failure Pattern Classification | [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] | Use para classificar falhas por taxonomia e converter em casos de regressao. |
+| Persona-Based Documentation | [[docs/canonical/persona-based-documentation|Persona-Based Documentation]] | Use para estruturar documentos NFR por especialidade e multiplicar conhecimento entre agentes. |
 
 ---
 

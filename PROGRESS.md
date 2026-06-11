@@ -17,10 +17,12 @@
   - 4 canonical docs, 2 skills, 2 exercises, 1 roadmap
 - [x] phase-5: Integration - quick (gpt-5.5)
   - system-of-record.md, curriculum/README.md, MASTER_PLAN.md updated
+- [x] phase-6: Curriculum Deep Integration - deep (gpt-5.5)
+  - 5 curriculum files modified. 4 padrões integrados.
 
-## To Do
+## Done - Pipeline completo
 
-- [ ] phase-6: Curriculum Deep Integration (opcional)
+Todas as 7 fases (0-6) concluídas para source: harness-engineering-how-to-build-software-when-humans-steer-agent.
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next

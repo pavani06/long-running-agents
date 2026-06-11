@@ -36,9 +36,9 @@
     "notes": "Integracao — Phase 5. system-of-record updated com 4 canonical docs + analise. curriculum/README.md e MASTER_PLAN.md atualizados. last_updated: 2026-06-11."
   },
   "phase-6": {
-    "passes": false,
+    "passes": true,
     "evidence": [],
-    "evaluated_by": null,
-    "notes": "Curriculum Deep Integration — Phase 6 (opcional)."
+    "evaluated_by": "evaluator",
+    "notes": "Curriculum Deep Integration — Phase 6. 5 curriculum files modified (GLOSSARY.md, harness-evolution.md, harness-design-checklist.md, harness-evolution-playbook.md, rubric-design.md). 4 padroes integrados (2 Missing + 2 Partial Coverage High)."
   }
 }

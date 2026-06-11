@@ -4108,6 +4108,66 @@ Compartilhe seu rubric com o time:
 
 ---
 
+## Além do Evaluator: A Meta-Rubrica de Classificação de Falhas
+
+Tudo que voce aprendeu sobre rubricas para avaliar outputs de agente se aplica em um nivel acima: **avaliar o proprio harness**. O padrao [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] estende o conceito de rubrica para classificar falhas recorrentes e converte-las em melhorias sistematicas.
+
+### A Taxonomia como Rubrica do Harness
+
+Assim como uma rubrica de avaliacao tem dimensoes (seguranca, adequacao, clareza), a taxonomia de falhas do harness classifica cada escape ou misbehavior em categorias acionaveis:
+
+| Categoria | O que detecta | Exemplo KODA | Acao tipica |
+|---|---|---|---|
+| `context_loss` | Agente esqueceu informacao dita antes | Cliente disse que e alergico a lactose no inicio, KODA recomenda whey com lactose na hora 3 | Caso N+1 no tier medium |
+| `tool_misuse` | Agente usou ferramenta errada ou com parametros errados | Aplicou cupom vencido porque nao validou `expires_at` | Nova lint rule ou constraint no tool schema |
+| `rubric_gap` | Evaluator aprovou algo que deveria ter rejeitado | Score 90 em recomendacao com produto fora de estoque | Adicionar blocker `in_stock` na rubrica |
+| `safety_escape` | Output violou regra de seguranca ou saude | Token JWT armazenado em `localStorage` | Nova regra no Security Persona + lint rule |
+| `prompt_regression` | Mudanca de prompt causou degradacao | Novo prompt de checkout reduziu taxa de conversao | Rollback + teste A/B antes do proximo deploy |
+| `state_persistence` | Estado foi perdido ou corrompido | Carrinho desapareceu apos restart do worker | Checkpoint adicional + teste de recovery |
+| `pricing_policy` | Preco, desconto ou cupom aplicado incorretamente | Desconto de 30%% aplicado quando maximo era 15%% | Blocker na rubrica de promo + shadow test |
+| `latency_cost` | Componente adicionou latencia ou custo desproporcional | Context Loader: 450ms/turno para 0.008%% de efetividade | Diagnostico de ROI → SIMPLIFY ou REMOVE |
+
+### O Ciclo: Observar → Classificar → Converter → Verificar
+
+```
+FALHA ESCAPA EM PRODUCAO
+        │
+        ▼
+┌──────────────────┐
+│ 1. OBSERVAR      │  Ticket de suporte, alerta, rejeicao do Evaluator, GC Day
+│    Coletar        │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ 2. CLASSIFICAR   │  Aplicar taxonomia: context_loss? tool_misuse? rubric_gap?
+│    Taxonomia      │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ 3. CONVERTER      │  Criar caso de regressao, lint rule, atualizacao de skill,
+│    Em guardrail   │  ajuste de reviewer prompt, ou novo blocker de rubrica
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ 4. VERIFICAR      │  Caso falha na versao antiga? Passa na candidate?
+│    Backfill proof │  Esta na registry de evals? Cobertura documentada?
+└──────────────────┘
+```
+
+Este ciclo e o que transforma "o time aprendeu com o incidente" em "o harness aprendeu com o incidente". A diferenca e que o harness nao esquece.
+
+**Checklist -- Voce esta classificando falhas sistematicamente?**
+- [ ] Toda falha em producao recebe uma categoria da taxonomia?
+- [ ] Categorias recorrentes (3+ ocorrencias) geram uma acao de harness, nao apenas um card de correcao?
+- [ ] Casos de regressao tem tier assignment (fast/medium/deep) e gate documentado?
+- [ ] Casos duplicados sao consolidados (manter um canonico, vincular evidencias)?
+- [ ] Casos sem falha por 2+ ciclos sao promovidos a archive com justificativa?
+
+---
+
 ## Última Mensagem
 
 > "Um rubric não é perfeição. É clareza."

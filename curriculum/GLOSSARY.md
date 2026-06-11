@@ -164,7 +164,53 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+## F
+
+### Failure Pattern Classification Loop (Loop de Classificacao de Padroes de Falha)
+**Definicao:** Ritual semanal onde o time revisa falhas, erros e comportamentos indesejados dos agentes, classifica-os por categoria (context_loss, tool_misuse, state_persistence, rubric_gap, prompt_regression, safety_escape, latency_cost) e converte padroes recorrentes em guardrails automatizados (lint rules, skills, reviewer prompts, testes de regressao).
+
+**Componentes:** Taxonomia de falhas, cadencia semanal de revisao, pipeline de conversao de observacao humana em automacao de harness, deduplicacao de casos, tier assignment (fast/medium/deep) e pruning de casos obsoletos.
+
+**Em KODA:** Toda sexta-feira, o time revisa tickets de suporte, traces de falha e rejeicoes do Evaluator. Encontrou 7 bugs de navegacao por teclado no mes? Vira um lint rule. Cupons vencidos passaram 3 vezes? Vira um caso de regressao no tier fast. O objetivo e eliminar classes de comportamento, nao instancias.
+
+**Ver tambem:** Garbage Collection Day, Production Failure Regression Flywheel, Tested Degradation Ladder
+
+**Nivel:** 3
+
+---
+
+### Fuzzy Compiler (LLM as Fuzzy Compiler)
+**Definicao:** Modelo mental que trata o LLM como um compilador fuzzy, o harness como passes de otimizacao, e o codigo gerado como artefato de build descartavel. O ativo duravel nao e o codigo que o agente produziu -- sao as constraints de dominio, as regras de negocio e as rubricas de qualidade que geraram aquele codigo.
+
+**Implicacao:** Quando o modelo melhora, voce nao reescreve codigo -- voce recompila o mesmo source com um backend melhor. As constraints de dominio ("cliente alergico nunca recebe produto com alergeno") sobrevivem a qualquer troca de modelo. As compensacoes de modelo ("recarregue perfil a cada 3 turns") sao candidatas a remocao.
+
+**Componentes do modelo mental:**
+- Source code = constraints de dominio, regras de negocio, rubricas de qualidade
+- Compiler = o harness (prompts + lint rules + validators + reviewers)
+- Optimization passes = cada validacao que o harness aplica
+- Backend = o modelo de LLM especifico
+- Binary / build artifact = o codigo gerado pelo agente
+
+**Ver tambem:** Invariant-Compensation Split, Harness Evolution, Measured Harness Evolution Lifecycle
+
+**Nivel:** 3
+
+---
+
 ## G
+
+### Garbage Collection Day (Dia de Coleta de Lixo do Harness)
+**Definicao:** Meta-loop semanal (tipicamente sexta-feira) onde feedback humano de revisao de codigo, tickets de suporte e observacoes de producao e sistematicamente convertido em guardrails automatizados do harness. Fecha o ciclo entre "um humano percebeu um padrao" e "o harness impede esse padrao automaticamente".
+
+**Mecanica:** Toda semana, o time revisa: (1) categorias de slop observadas em revisoes de PR, (2) tickets de suporte com causa raiz de harness, (3) falsos positivos e falsos negativos do Evaluator, (4) escapes de seguranca ou qualidade. Cada categoria identificada gera uma acao concreta: nova lint rule, atualizacao de skill, ajuste de reviewer prompt, ou novo caso de regressao.
+
+**Por que importa:** Sem este ritual semanal, o conhecimento de revisao fica na cabeca dos revisores humanos. Com ele, cada observacao vira um guardrail que protege todos os agentes futuros. E a diferenca entre "o revisor apontou isso 14 vezes" e "o revisor apontou isso uma vez e nunca mais".
+
+**Ver tambem:** Failure Pattern Classification Loop, QA-to-Backlog Feedback Loop, Production Failure Regression Flywheel
+
+**Nivel:** 3
+
+---
 
 ### Generator (Gerador)
 **Definição:** Um agente responsável por construir/criar algo.
@@ -348,6 +394,24 @@ Sprint 4: Play mode
 **Contexto:** Modelos Claude são continuamente pós-treinados, daí melhorias entre versões.
 
 **Nível:** 1
+
+---
+
+### Persona-Based Documentation (Documentacao Baseada em Personas)
+**Definicao:** Modelo onde cada especialista do time (front-end architect, security engineer, UX engineer, product owner) documenta sua especialidade como um documento NFR duravel. Agentes implementadores carregam as personas relevantes para a tarefa antes de codar. Revisores carregam as personas relevantes para o diff automaticamente.
+
+**Por que importa:** Substitui o modelo de um AGENTS.md universal e generico por documentos especializados que multiplicam conhecimento. Uma atualizacao no Security Persona melhora todos os agentes que tocam em auth a partir do dia seguinte. Elimina o gargalo onde o especialista humano precisa apontar os mesmos problemas em todo PR.
+
+**Mecanica de dispatch:**
+- PR toca em `.tsx`? Carrega Frontend Persona + UX Persona
+- PR toca em `auth`? Carrega Security Persona
+- PR toca em `analytics`? Carrega Product Persona
+
+**Em KODA:** Camila (Frontend) mantem 12 regras sobre autocomplete, aria, CSS variables e state machines. Roberta (Security) mantem 8 regras sobre tokens, XSS, CORS e sanitizacao. Todo agente que implementa formulario recebe as regras das duas automaticamente.
+
+**Ver tambem:** AGENTS.md, Durable Non-Functional Requirements Memory, Reviewer Agents as CI Gates
+
+**Nivel:** 3
 
 ---
 
@@ -588,6 +652,9 @@ Feedback → Volta ao Generator
 - Harness Evolution
 - Closed-Loop Company, Skillify Pipeline, Context Progressive Disclosure
 - Architecture Decision Record
+- LLM as Fuzzy Compiler, Invariant-Compensation Split
+- Persona-Based Documentation, Failure Pattern Classification Loop
+- Garbage Collection Day, QA-to-Backlog Feedback Loop
 
 ### Nível 4 (KODA-Específico)
 - KODA, suas capacidades e aplicações
