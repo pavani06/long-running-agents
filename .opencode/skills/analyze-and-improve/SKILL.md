@@ -11,13 +11,14 @@ metadata:
 
 ## Invocation
 
-This skill REQUIRES one mandatory parameter and accepts two optional parameters:
+This skill REQUIRES one mandatory parameter and accepts three optional parameters:
 
 | Parameter | Required | Description |
 |---|---|---|
 | `source` | **Yes** | Absolute path, URL, or array of paths to the document(s) to analyze. Single file: `Raw-Knowledge/sources/2026-06-09-slug.md`. Multiple files: array of paths (aggregated before Phase 1). Ex: `["Raw-Knowledge/sources/slug.md", "Raw-Knowledge/concepts/related.md", "Raw-Knowledge/entities/tool.md"]` |
 | `date` | No | Date for output dir. Defaults to today (`YYYY-MM-DD`). Ex: `2026-06-09` |
 | `source-slug` | No | Short slug for output dir. Derived from source filename if omitted. Ex: `12-factor-agents` |
+| `incremental` | No | Boolean, default `false`. When `true`, Phase 0 reuses the most recent mental model from `mapa-mental-repo/` and only updates deltas instead of rebuilding from scratch. |
 
 Example invocations:
 
@@ -132,13 +133,43 @@ docs/analysis/<date>-<source-slug>/
 
 Artefatos concretos (canonical docs, skills, exercises) gerados na Phase 4 vao para seus diretorios definitivos (`docs/canonical/`, `.opencode/skills/`, `curriculum/`).
 
+## Mapa Mental Repository
+
+O diretorio `mapa-mental-repo/` na raiz do repositorio alvo versiona os modelos mentais
+com data, servindo como cache canonico para o modo incremental:
+
+```
+mapa-mental-repo/
+  YYYY-MM-DD-<source-slug>-mental-model.md
+  YYYY-MM-DD-<source-slug>-mental-model.yaml
+  archive/                              # Modelos alem dos 5 mais recentes ou com > 90 dias
+```
+
+**Regras:**
+- Todo modelo mental gerado na Phase 0 (full ou incremental) DEVE ser copiado para ca.
+- O nome do arquivo inclui a data E o `source-slug` para rastreabilidade bidirecional.
+- Manter no maximo 5 modelos ativos na raiz; mover os excedentes para `archive/`.
+- Modelos em `archive/` com mais de 90 dias podem ser removidos.
+- Este diretorio e versionado no git — faz parte do repositorio.
+
 ---
 
 ## Phase 0: Repository Mental Model
 
-**Objetivo:** Antes de analisar o documento externo, construir um modelo mental do repositorio alvo — entender goals, arquitetura, padroes, abstracoes e terminologia. Esse modelo serve como contexto canonico para todas as fases subsequentes.
+**Objetivo:** Antes de analisar o documento externo, construir ou atualizar um modelo mental do repositorio alvo — entender goals, arquitetura, padroes, abstracoes e terminologia. Esse modelo serve como contexto canonico para todas as fases subsequentes.
 
-### Delegacao
+Dois modos de operacao, controlados pelo parametro `incremental`:
+
+### Modo Full Rebuild (`incremental=false` — default)
+
+Comportamento padrao: o agente `ultrabrain` le o repositorio do zero e constroi
+o modelo mental completo. Use quando:
+- E a primeira execucao no repositorio (`mapa-mental-repo/` vazio)
+- O modelo anterior tem mais de 30 dias
+- Os deltas detectados somam mais de 10 itens
+- Voce quer garantia de consistencia total
+
+#### Delegacao (Full Rebuild)
 
 Delegue para `ultrabrain`:
 
@@ -197,10 +228,137 @@ docs/analysis/<date>-<source-slug>/mental-model.md
 docs/analysis/<date>-<source-slug>/mental-model.yaml
 ```
 
-### Gate
+#### Gate (Full Rebuild)
 
 - [ ] O modelo mental cobre goals, arquitetura, padroes, abstracoes, terminologia e gaps
 - [ ] Ambos os arquivos (.md e .yaml) foram escritos no diretorio correto
+
+### Modo Incremental (`incremental=true`)
+
+Quando `incremental=true`, o orquestrador executa um fluxo de 3 passos.
+Apenas o Passo 0b e delegado; os Passos 0a e 0c sao executados diretamente pelo orquestrador.
+
+#### Passo 0a: Validacao rapida (orquestrador — NAO delegar)
+
+1. **Verificar cache**: Liste `mapa-mental-repo/` no repositorio alvo.
+   Se o diretorio nao existe ou esta vazio: **fallback imediato para full rebuild**.
+2. **Carregar modelo anterior**: Identifique o arquivo `.yaml` mais recente por data no nome
+   (use `ls -1 mapa-mental-repo/*.yaml | sort | tail -1`).
+   Leia o YAML completo — ele sera a base do modelo atualizado.
+3. **Scan rapido de deltas** desde a data do modelo anterior:
+   ```bash
+   # Novos canonical docs
+   find docs/canonical/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
+   # Novos ADRs
+   find docs/decisions/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
+   # Novos arquivos no curriculum
+   find curriculum/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
+   # Novas skills
+   ls -lt .opencode/skills/ | head -20
+   # Novos agentes
+   ls -lt .opencode/agents/ | head -20
+   ```
+4. **Classificar deltas** e produzir `docs/analysis/<date>-<source-slug>/delta-report.md`:
+   - Cada delta classificado: `novo-canonical-doc`, `novo-adr`, `novo-exercicio`,
+     `nova-licao`, `nova-skill`, `novo-agente`, `atualizacao`
+   - Para cada delta: path do arquivo, data de modificacao, breve descricao do conteudo
+   - Contagem total de deltas
+   - Data do modelo anterior usado como base
+5. **Decidir modo**: Conte os deltas. Se `total_deltas > 10` OU
+   `dias_desde_modelo_anterior > 30`: **fallback para full rebuild**.
+   Caso contrario: prossiga para o Passo 0b.
+
+#### Passo 0b: Atualizacao incremental (delegado para `ultrabrain`)
+
+```typescript
+task(
+  category="ultrabrain",
+  load_skills=[],
+  run_in_background=false,
+  prompt="TASK: Update the repository mental model incrementally using the previous model as base.
+
+TARGET_REPOSITORY:
+  path: <absolute-path-to-repo>
+  name: <repo-name>
+  output_dir: <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/
+  system_of_record: <absolute-path-to-repo>/docs/system-of-record.md
+  branch: main
+
+PREVIOUS MENTAL MODEL (YAML) — use this as your base structure:
+<paste the FULL content of mapa-mental-repo/<ultimo>-mental-model.yaml>
+
+DELTA REPORT — only these items need attention:
+<paste the FULL content of delta-report.md>
+
+INSTRUCTIONS:
+1. Load the previous mental model as your base. Keep ALL existing entries
+   that are NOT affected by the deltas — do not re-describe them.
+2. For each delta in the delta report, decide:
+   - NEW ENTRY: add to the relevant section (goals, architecture, patterns,
+     terminology, curriculum, gaps). Read the source file to understand it.
+   - UPDATE: modify an existing entry's fields. Cite what changed and why.
+   - NO CHANGE: the entry already accurately describes the current state.
+3. Update meta.date to today's date.
+4. Add meta.based_on: pointing to the previous model file name.
+5. Update the gaps section: remove gaps that were resolved (new docs, new ADRs),
+   add any new gaps discovered during delta analysis.
+6. Do NOT re-read the entire repository. Trust the base model for untouched areas
+   and only read files referenced in the delta report.
+
+OUTPUT: Write TWO files:
+- docs/analysis/<date>-<source-slug>/mental-model.md — updated markdown
+- docs/analysis/<date>-<source-slug>/mental-model.yaml — updated typed mirror
+
+The YAML must use the same typed fields as full rebuild, plus:
+  meta: {title, date, repo, type: 'mental-model', based_on: '<previous-model-filename>'}
+  goals: [list of goals]
+  architecture: {abstractions: [...], relationships: [...]}
+  patterns: [{name, where_defined, maturity}]
+  terminology: [{term, definition, source}]
+  curriculum: {levels: [...], concepts: [...]}
+  gaps: [{what, where_documented}]"
+)
+```
+
+#### Passo 0c: Salvamento em `mapa-mental-repo/` (orquestrador — sempre executar)
+
+Apos QUALQUER Phase 0 (full rebuild OU incremental), o orquestrador DEVE:
+
+1. **Criar o diretorio se necessario**:
+   ```bash
+   mkdir -p mapa-mental-repo/archive
+   ```
+2. **Copiar os arquivos** com timestamp:
+   ```bash
+   cp docs/analysis/<date>-<source-slug>/mental-model.md  \
+      mapa-mental-repo/<date>-<source-slug>-mental-model.md
+   cp docs/analysis/<date>-<source-slug>/mental-model.yaml \
+      mapa-mental-repo/<date>-<source-slug>-mental-model.yaml
+   ```
+3. **Enforce o limite de 5 modelos ativos**:
+   ```bash
+   # Listar modelos .yaml por data, pular os 5 mais recentes, mover o resto
+   ls -1 mapa-mental-repo/*-mental-model.yaml | sort -r | tail -n +6 | while read yaml; do
+     md="${yaml%.yaml}.md"
+     mv "$yaml" "$md" mapa-mental-repo/archive/
+   done
+   ```
+4. **Limpeza de archive (> 90 dias)**:
+   ```bash
+   find mapa-mental-repo/archive/ -name '*.yaml' -mtime +90 -delete
+   find mapa-mental-repo/archive/ -name '*.md' -mtime +90 -delete
+   ```
+5. **Commit implicito**: Os arquivos em `mapa-mental-repo/` sao parte do repositorio
+   e serao commitados junto com os demais artefatos da sessao (respeitando o Commit Gate).
+
+#### Gate (Incremental)
+
+- [ ] `delta-report.md` existe em `docs/analysis/<date>-<source-slug>/`
+- [ ] Modelo anterior foi carregado com sucesso e seu path esta registrado
+- [ ] Fallback para full rebuild foi considerado e a decisao esta documentada
+- [ ] O modelo mental atualizado cobre todas as secoes obrigatorias
+- [ ] Ambos os arquivos (.md e .yaml) foram escritos no diretorio correto
+- [ ] Passo 0c executado: copias em `mapa-mental-repo/` existem
 
 ---
 
@@ -812,6 +970,12 @@ MUST NOT:
 - **Committar ou dar push sem perguntar ao usuario.** O Commit Gate exige confirmacao explicita. O `AGENTS.md` do repo alvo tem a palavra final.
 - **Usar `edit` para atualizar PROGRESS.md.** PROGRESS.md e curto e `edit` frequentemente falha por whitespace. Use `write` (reescrita completa) para atualiza-lo.
 - **Deixar `analysis.md` sem `aliases:` no frontmatter.** O check-obsidian-conventions.sh reporta erro que polui todas as fases subsequentes. Preencha `aliases` com pelo menos 2 variantes do titulo.
+- **Usar `incremental=true` sem modelos anteriores.** Se `mapa-mental-repo/` esta vazio, o modo incremental faz fallback para full rebuild automaticamente — mas isso indica que o parametro foi usado sem necessidade.
+- **Forcar incremental quando o repo mudou muito.** Se deltas > 10 itens ou modelo anterior > 30 dias, faca full rebuild. O custo do full rebuild e menor que o risco de inconsistencia por atualizacao parcial.
+- **Delegar o Passo 0a (validacao de deltas).** O scan rapido de deltas e responsabilidade do orquestrador — requer acesso ao filesystem e comandos `find`/`ls`. Nao delegue para sub-agente.
+- **Esquecer de executar o Passo 0c.** Sem a copia em `mapa-mental-repo/`, a proxima execucao incremental nao tem base para comparar. Isso quebra o modo incremental silenciosamente.
+- **Acumular mais de 5 modelos ativos em `mapa-mental-repo/`.** O Passo 0c ja faz a limpeza automatica, mas se houver falha nesse passo, o diretorio polui e dificulta identificar o modelo mais recente.
+- **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
 
 ---
 
@@ -833,6 +997,10 @@ Depois de completar as fases (0-5 obrigatorias, 6 opcional):
 - [ ] Commit Gate: usuario foi perguntado antes de commitar e antes de dar push
 - [ ] Commits seguem o estilo `type(scope): short description`
 - [ ] Toda delegacao usou `task()` com categoria adequada — nenhuma fase foi executada inline pelo orquestrador
+- [ ] Se `incremental=true`: `delta-report.md` existe e o modelo anterior foi carregado com sucesso (ou fallback documentado)
+- [ ] Mental model versionado em `mapa-mental-repo/<date>-<source-slug>-mental-model.{md,yaml}`
+- [ ] `mapa-mental-repo/` tem no maximo 5 modelos ativos na raiz; excedentes estao em `archive/`
+- [ ] Se `incremental=true`, o `mental-model.yaml` tem campo `meta.based_on` apontando para o modelo anterior
 
 ---
 
@@ -887,4 +1055,4 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 
 ---
 
-*Skill version: 3.1 | Reference sessions: 2026-06-09, 2026-06-10, 2026-06-11*
+*Skill version: 3.2 | Reference sessions: 2026-06-09, 2026-06-10, 2026-06-11*
