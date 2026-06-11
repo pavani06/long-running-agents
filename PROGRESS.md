@@ -9,10 +9,12 @@
   - 145+ linhas MD + 320 linhas YAML. 20 canonical patterns mapeados.
 - [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
   - 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 lessons, 7 tradeoffs.
+- [x] phase-2: Pattern Extraction (16 padrões) - ultrabrain (gpt-5.5)
+  - 405+ linhas MD + 547 linhas YAML. 16 padrões com components + flow.
 
 ## To Do
 
-- [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
+- [ ] phase-3: Classification
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next

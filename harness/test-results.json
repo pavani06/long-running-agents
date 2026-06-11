@@ -12,10 +12,10 @@
     "notes": "Extracao de conhecimento — Phase 1. 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 operational lessons, 7 tradeoffs, 7 failure patterns, synthesis com 5 insights emergentes."
   },
   "phase-2": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Extracao de padroes reutilizaveis — Phase 2."
+    "passes": true,
+    "evidence": ["docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns.md", "docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns.yaml"],
+    "evaluated_by": "evaluator",
+    "notes": "Extracao de padroes reutilizaveis — Phase 2. 16 padroes com 6 campos obrigatorios cada + components + flow. 405+ linhas MD + 547 linhas YAML."
   },
   "phase-3": {
     "passes": false,
