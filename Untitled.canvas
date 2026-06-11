@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"0dc98ba4d62900c4","x":300,"y":-340,"width":180,"height":270,"type":"text","text":""},
+		{"id":"28aec20d0475b584","x":-440,"y":-300,"width":560,"height":580,"type":"file","file":"docs/canonical/explicit-token-budget-ledger.md"}
+	],
+	"edges":[
+		{"id":"7b0ba75068c86ffe","fromNode":"0dc98ba4d62900c4","fromSide":"bottom","toNode":"28aec20d0475b584","toSide":"right"}
+	]
+}
