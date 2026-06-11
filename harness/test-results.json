@@ -6,10 +6,10 @@
     "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve. 145+ linhas MD + 320 linhas YAML com file:line references. Cobre goals, arquitetura (10 abstracoes, 5 relationships), patterns (20 canonical docs), terminologia (17 termos), curriculo (4 niveis, 8 conceitos) e gaps (11 gaps documentados)."
   },
   "phase-1": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Extracao de conhecimento — Phase 1."
+    "passes": true,
+    "evidence": ["docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis.md", "docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis.yaml"],
+    "evaluated_by": "evaluator",
+    "notes": "Extracao de conhecimento — Phase 1. 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 operational lessons, 7 tradeoffs, 7 failure patterns, synthesis com 5 insights emergentes."
   },
   "phase-2": {
     "passes": false,

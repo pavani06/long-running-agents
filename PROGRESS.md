@@ -6,11 +6,13 @@
 ## Done
 
 - [x] phase-0: Repository Mental Model - ultrabrain (gpt-5.5)
-  - 145+ linhas MD + 320 linhas YAML. 20 canonical patterns mapeados, 10 abstracoes, 11 gaps.
+  - 145+ linhas MD + 320 linhas YAML. 20 canonical patterns mapeados.
+- [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
+  - 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 lessons, 7 tradeoffs.
 
 ## To Do
 
-- [ ] phase-1: Knowledge Extraction - deep (gpt-5.5)
+- [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next

@@ -1,0 +1,338 @@
+# Analise de Conhecimento Nao-Obvio: Harness Engineering (Ryan Lopopolo, OpenAI)
+#
+# Convencoes:
+# - type: analise estruturada derivada da transcricao da palestra
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim e rastreavel a transcricao original (source file:line)
+# - Sem marketing, anedotas, historias pessoais, Q&A banter
+# - YAML e espelho tipado do analysis.md — mesma informacao, formato estruturado
+
+meta:
+  title: "Harness Engineering — Extracao de Conhecimento Nao-Obvio"
+  source: "Ryan Lopopolo (OpenAI) — Harness Engineering: How to Build Software When Humans Steer, Agents Execute"
+  speaker: "Ryan Lopopolo"
+  affiliation: "OpenAI"
+  event: "AI Engineer"
+  published: 2026-04-17
+  created: 2026-06-11
+  type: analysis
+  source_file: "/mnt/c/Users/pavan/raw-knowledge/sources/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md"
+  extraction_rules:
+    keep:
+      - frameworks
+      - patterns
+      - architectures
+      - workflows
+      - implementation_details
+      - operational_lessons
+      - failures
+      - tradeoffs
+    ignore:
+      - marketing
+      - anecdotes
+      - personal_stories
+      - Q&A_banter
+      - laptop_in_car_anecdotes
+
+frameworks:
+  - name: "Scarcity Inversion"
+    description: >
+      Implementacao deixou de ser o recurso escasso. Code is free, infinitely parallel, and disposable.
+      Recursos escassos: tempo humano, atencao humana/do modelo, janela de contexto.
+    source_lines: "L86-99, L154-157"
+    non_obvious_implication: >
+      P3s deixam de ser abandonados para serem disparados imediatamente em paralelo (4x).
+      A stack rank tradicional colapsa quando codigo e gratuito.
+    components:
+      - name: scarce_human_time
+      - name: scarce_attention
+      - name: scarce_context_window
+
+  - name: "Harness Engineering Discipline"
+    description: >
+      Harness = estruturas (docs, guardrails, lint rules, review agents) que permitem que
+      agentes facam o trabalho completo. Definicao operacional: "give the model text at the right time."
+    source_lines: "L646-654"
+    quality_metric: "Toda interacao humana com o agente e uma falha do harness — se voce digita 'continue', o harness falhou em prover contexto suficiente."
+    metric_source: "L880-884"
+    non_obvious_implication: >
+      O harness sobrevive a avancos de capacidade de modelo porque nao depende de truques especificos
+      de modelo. E sobre gerenciamento operacional de contexto — o que e uma constante.
+    components:
+      - name: documentation
+        role: "documentacao de NFRs, guias de estilo, ADRs"
+      - name: guardrails
+        role: "lint rules, tests estruturais, verificadores de codigo"
+      - name: review_agents
+        role: "agentes persona-based que revisam todo push/CI"
+      - name: just_in_time_surfacing
+        role: "entregar instrucoes no momento certo, nao upfront"
+
+  - name: "Non-Functional Requirements Framework"
+    description: >
+      Modelos viram trilhoes de linhas de codigo e podem satisfazer qualquer estilo — se especificado.
+      Um patch requer ~500 micro-decisoes sobre NFRs subespecificados.
+    source_lines: "L245-258"
+    components:
+      - name: documented_nfrs
+        role: "tornar gosto e qualidade visiveis ao modelo"
+      - name: persona_based_documentation
+        role: "cada membro do time documenta sua especialidade; todo agente herda esse conhecimento"
+    non_obvious_implication: >
+      Gosto nao-documentado e invisivel ao modelo. A unica forma de obter codigo consistentemente
+      aceitavel e escrever NFRs em documentacao duravel. Personas multiplicam leverage:
+      um engenheiro documenta QA plans uma vez, e toda trajetoria de agente os produz.
+
+  - name: "Garbage Collection Day Meta-Loop"
+    description: >
+      Ritual semanal (sextas-feiras) que fecha o loop: feedback humano de review →
+      documentacao → prompt injection automatizado → agentes self-healing.
+    source_lines: "L996-1018"
+    loop_flow:
+      - stage: 1
+        action: "Observar slop durante a semana"
+      - stage: 2
+        action: "Categorizar por classe de mau comportamento"
+      - stage: 3
+        action: "Converter em documentacao duravel"
+      - stage: 4
+        action: "Automatizar prompt injection para self-healing"
+    non_obvious_implication: >
+      Converte code review sincrono humano (bloqueante) em guardrails assincronos automatizados,
+      acumulando leverage a cada semana. Cada sexta-feira o harness melhora.
+
+  - name: "LLM as Fuzzy Compiler"
+    description: >
+      LLM = compilador fuzzy; harness constraints = optimization passes; trocar modelo =
+      trocar backend de geracao de codigo. Codigo e artefato de build descartavel.
+    source_lines: "L1103-1135"
+    components:
+      - name: fuzzy_compiler
+        role: "o LLM que gera codigo a partir de prompts + constraints"
+      - name: optimization_passes
+        role: "lint rules, review agents, verificadores estruturais"
+      - name: code_generation_backend
+        role: "o modelo especifico (GPT 5.2, Codex, Claude Code) — intercambiavel"
+    non_obvious_implication: >
+      O ativo duravel nao e o codigo gerado, mas os prompts, constraints e documentacao
+      que o produziram. Codigo e descartavel e regeneravel.
+
+patterns:
+  - name: "Prompt Injection Taxonomy"
+    description: >
+      Taxonomia abrangente de superficies de injecao de prompt no repositorio.
+      A fronteira entre codigo e prompt se dissolve.
+    source_lines: "L307-435"
+    problem: "Como manter o agente alinhado com NFRs quando o contexto e paginado para fora ao longo do tempo?"
+    mechanism: >
+      Multiplique as superficies de injecao de instrucao: AGENTS.md, lint error messages com
+      remediation steps, test failures como prompts, review agent comments em PRs, skills,
+      rules files, agent SDKs embedded in tests.
+    surfaces:
+      - name: agents_md
+        limitation: "auto-compaction pagina para fora"
+      - name: lint_errors_as_prompts
+        example: "'nao use unknown — parse, don't validate no edge, o tipo vem do zod'"
+      - name: test_failures_as_prompts
+      - name: review_agent_comments
+        context: "comentarios que o agente implementador deve enderecar antes do merge"
+      - name: skills
+        context: "instrucoes encapsuladas que escondem complexidade de infra"
+      - name: rules_files
+      - name: agent_sdks_in_tests
+        context: "SDKs que revisam a codebase usando prompts embutidos"
+
+  - name: "Just-in-Time Context Surfacing"
+    description: >
+      Em vez de front-loading, instrucoes sao apresentadas no momento em que sao relevantes
+      (lint/test time), permitindo que o agente prototype livremente antes.
+    source_lines: "L647-691"
+    problem: "Front-loading sobrecarrega o contexto inicial e instrucoes podem ser paginadas para fora antes de serem uteis."
+    mechanism: >
+      1. Deixe o agente prototipar e experimentar livremente.
+      2. No lint/test time, apresente instrucoes corretivas.
+      3. O agente modifica o patch para aderir e sobe para GitHub.
+    concrete_example: "Componentes React: nao especifique decomposicao upfront; deixe construir a UI, depois exija quebrar em componentes pequenos e stateless no lint time."
+    rationale: "Instrucoes chegam quando o agente tem contexto completo do trabalho feito, nao antes."
+
+  - name: "Reviewer Agents as CI Gates"
+    description: >
+      Agentes de revisao persona-based disparados em todo push/CI que verificam
+      conformidade com NFRs documentados.
+    source_lines: "L326-336, L1024-1038"
+    problem: "Code review humano sincrono e o gargalo que bloqueia throughput de agentes."
+    mechanism: >
+      Cada persona do time (front-end architect, reliability engineer, scalability)
+      tem um agente de revisao que verifica o patch contra documentacao de NFRs.
+      Surface apenas P2+. O agente implementador pode acknowledge, defer, ou reject feedback.
+    personas:
+      - "front-end architect"
+      - "reliability engineer"
+      - "scalability engineer"
+    key_design_choice: "Nao exigir que todo feedback seja enderecado — evitar que o agente seja bullied por reviewers e entre em loops infinitos."
+    bias: "Codigo aceito, nao perfeito."
+
+  - name: "Deep Skills Strategy"
+    description: >
+      Manter 5-10 skills profundas, nao muitas skills rasas. Skills escondem complexidade
+      de infraestrutura que muda frequentemente.
+    source_lines: "L596-615"
+    problem: "Infraestrutura muda frequentemente; skills rasas expoem agentes a esse churn."
+    mechanism: >
+      Skills encapsulam toda a complexidade de operar o ambiente de dev (lancar app,
+      subir observability, conectar Chrome DevTools). Agentes invocam skills, nao
+      gerenciam infra.
+    meta: "Usar agentes para escrever prompts de skills: apontou Codex para prompting cookbooks da OpenAI para sintetizar skills de escrita de prompts."
+    non_obvious_outcome: >
+      Migracao de Chrome DevTools protocol → daemon aconteceu sem Ryan saber por 3 semanas.
+      Codex continuou funcionando porque a skill escondeu a mudanca.
+
+  - name: "Codebase Uniformity"
+    description: >
+      Fazer tudo do mesmo jeito possivel: um ORM, um pattern de CI, um async helper,
+      uma linguagem. Tokens se tornam mais previsiveis.
+    source_lines: "L912-945"
+    problem: "Modelo gasta atencao adaptando-se a padroes inconsistentes em diferentes partes do repo."
+    mechanism: >
+      750 packages em workspace PNPM, isolados por dominio de negocio.
+      Um jeito canonical de fazer cada coisa. Linting que impoe uso de shared utilities.
+      Refatoracao em larga escala via 15 agentes em paralelo.
+    non_obvious_implication: "'Code in the file system is also text which means it's effectively prompts' — arquitetura de codigo e engenharia de prompts em escala."
+
+  - name: "PR as Hub-and-Spoke Broadcast"
+    description: >
+      PR como dominio de broadcast onde agentes e humanos colaboram sem bloqueio
+      sequencial.
+    source_lines: "L753-792"
+    problem: "Colaboracao sequencial (review obrigatorio, feedback obrigatorio) bloqueia throughput."
+    mechanism: >
+      Qualquer participante (humano ou agente) pode revisar ou pular.
+      Agente implementador tem autonomia para acknowledge, defer, ou reject feedback.
+      Bias para aceitacao sobre perfeicao.
+    non_obvious_property: >
+      Remove o failure mode de agente ser bullied por reviewers e entrar em loops infinitos.
+
+  - name: "Micro-Harnesses for Code Structure"
+    description: >
+      Testes e verificadores que assertam estrutura do codigo (nao sintaxe/comportamento):
+      package privacy, dependency edges, deduplicacao de schemas, canonical utilities.
+    source_lines: "L564-589"
+    problem: "Agentes otimizam para coerencia local de um pacote, criando implementacoes duplicadas em vez de usar shared utilities."
+    mechanism: >
+      Pseudo-linters estruturais que detectam violacoes de package privacy, dependency
+      edges entre camadas, schemas duplicados, e nao-uso de async helpers canonicos.
+      Executam como parte do harness local, nao como lint tradicional.
+
+operational_lessons:
+  - name: "Code Review Humano e o Gargalo"
+    lesson: >
+      Com 3-5 PRs por engenheiro por dia em time de 3 pessoas, merge conflicts sao
+      inevitaveis se code review humano sincrono for o unico gate de qualidade.
+    context: "L978-989"
+    mitigation: "Tree out o codigo + automatizar code review via reviewer agents."
+
+  - name: "Auto-Compaction Redefine Design de Contexto"
+    lesson: >
+      Construa esperando que o contexto sera paginado para fora ao longo do tempo.
+      Estrategia: continual refresh, nao front-loading.
+    context: "L311-321"
+    observation: "GPT 5.4/Codex auto-compaction e 'fantastic' — Ryan nunca mais usa /new."
+
+  - name: "Plans Nao-Lidos Sao Perigosos"
+    lesson: >
+      Aprovar plano de agente sem ler injeta instrucoes potencialmente ruins que o
+      agente seguira fielmente.
+    context: "L1075-1088"
+    recommendation: "Pule plan mode ou exija revisao humana linha-por-linha do plano como PR separado."
+
+  - name: "Token Budget em Tercos"
+    lesson: "~1/3 planejamento/curadoria, ~1/3 implementacao, ~1/3 CI."
+    context: "L1055-1059"
+    rationale: "Gastar tokens em CI e necessario porque escrever codigo nao e mais a parte dificil — fazer o codigo ser aceito e."
+
+  - name: "Agentes Constroem Suas Proprias Ferramentas"
+    lesson: >
+      A medida que atividades alem de escrita de codigo (QA testing, triagem de feedback,
+      deteccao de PII, runbooks) precisam de automacao, agentes constroem ferramentas
+      para agentes. Documente processos e criterios de aceitacao — a meta-programacao.
+    context: "L1183-1208"
+
+  - name: "Infrascructure Changes Silently"
+    lesson: >
+      Migracao de Chrome DevTools protocol → daemon aconteceu sem Ryan saber por 3 semanas.
+      Skills profundas esconderam a mudanca; Codex continuou funcionando.
+    context: "L607-615"
+
+tradeoffs:
+  - decision: "Short-term velocity hit para construir guardrails"
+    benefit: "Reducao permanente de slop; leverage acumulado a cada semana"
+    cost: "Menos features no curto prazo enquanto se investiga e resolve falhas do agente"
+  - decision: "Codebase uniformity radical (one way, one ORM, one language)"
+    benefit: "Tokens previsiveis; atencao do modelo reduzida; migracoes viaveis com agentes"
+    cost: "Perda de flexibilidade local; ditadura arquitetural necessaria"
+  - decision: "5-10 deep skills vs. many shallow skills"
+    benefit: "Complexidade de infra escondida; manutencao baixa; agentes nao rastreiam churn"
+    cost: "Menos cobertura superficial; cada skill precisa de investimento profundo"
+  - decision: "Just-in-time context surfacing vs. front-loading"
+    benefit: "Nao sobrecarrega contexto inicial; instrucoes chegam quando relevantes"
+    cost: "Risco de auto-compaction paginar instrucoes antes do momento certo"
+  - decision: "Bias toward code accepted vs. code perfect"
+    benefit: "Throughput alto; agentes nao sao bullied por reviewers"
+    cost: "Codigo mergeado pode conter problemas P3 resolvidos depois"
+  - decision: "First-party harness dependency (Codex) vs. construir proprio"
+    benefit: "Ride the wave do post-training do lab; foco em NFRs, nao em mecanica"
+    cost: "Vendor lock-in; menos controle sobre o harness em si"
+  - decision: "Agentes revisores CI vs. code review humano"
+    benefit: "Review assincrono, nao-bloqueante, consistente, escala com carga"
+    cost: "Reviews podem perder nuances; requer documentacao duravel dos NFRs"
+
+failure_patterns:
+  - pattern: "Agentes otimizando para coerencia local"
+    cause: "Modelo naturalmente prefere solucoes autocontidas no pacote em vez de buscar shared utilities"
+    mitigation: "Micro-harnesses estruturais que verificam package privacy e dependency edges"
+  - pattern: "Contexto paginado silenciosamente"
+    cause: "Auto-compaction remove instrucoes do meio da trajetoria sem deteccao"
+    mitigation: "Continual refresh + just-in-time surfacing em vez de front-loading"
+  - pattern: "Agente bullied por reviewers"
+    cause: "Todo feedback de reviewer deve ser obrigatoriamente enderecado"
+    mitigation: "Agente implementador pode acknowledge, defer, ou reject feedback"
+  - pattern: "Plans nao-lidos encodam instrucoes ruins"
+    cause: "Plano gerado por agente e aprovado sem leitura humana"
+    mitigation: "Pular plan mode ou exigir revisao humana do plano como PR separado"
+  - pattern: "Slop acumulando semanalmente"
+    cause: "Sem ritual de Garbage Collection, padroes de slop nunca sao convertidos em guardrails"
+    mitigation: "Ritual semanal de categorizacao e automacao de feedback humano"
+  - pattern: "NFRs nao-especificadas"
+    cause: "Gosto e qualidade nao-documentados sao invisiveis ao modelo"
+    mitigation: "Documentacao persona-based de todos os NFRs; ~500 micro-decisoes por patch"
+  - pattern: "Code review humano como unico gate"
+    cause: "Humanos sao o unico bloqueador de merge; PRs acumulam; merge conflicts explodem"
+    mitigation: "Reviewer agents como CI gates que convertem NFRs em verificacoes automatizadas"
+
+synthesis:
+  unifying_principle: >
+    Harness engineering e context engineering em escala de repositorio. Docs, lint rules,
+    review agents, skills, test failures, CI checks — tudo e uma superficie de prompt injection.
+    O harness existe para entregar o texto certo no momento certo. O objetivo e converter
+    toda interacao humana sincrona em um guardrail assincrono automatizado.
+  emergent_insights:
+    - insight: "O harness e um sistema que aprende"
+      detail: >
+        Garbage Collection Day e o meta-loop: observa falhas → documenta → automatiza →
+        observa novas falhas. Cada semana o harness melhora.
+    - insight: "Unidade de valor e prompt + guardrails, nao codigo"
+      detail: >
+        Se codigo e artefato descartavel e refatoracao e gratuita, o ativo duravel e o
+        conhecimento codificado em documentacao, regras e skills.
+    - insight: "Todo engenheiro vira staff engineer"
+      detail: >
+        Cada pessoa gerencia um time de agentes tao grande quanto sua capacidade de delegar
+        e seu token budget. Habilidade central: decompor trabalho, escrever NFRs, construir guardrails.
+    - insight: "Arquitetura de repositorio e affordance para o modelo"
+      detail: >
+        Codebase uniformity, package isolation, estrutura previsivel — tudo reduz custo de
+        atencao do modelo. "Code in the file system is also text which means it's effectively prompts."
+    - insight: "Futuro: delegacao assincrona de longa duracao"
+      detail: >
+        Visao final: token budget + quarter/half/year de trabalho + ranking humano →
+        maquinas avancam o produto continuamente, sem maos no volante.
