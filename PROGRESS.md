@@ -11,10 +11,12 @@
   - 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 lessons, 7 tradeoffs.
 - [x] phase-2: Pattern Extraction (16 padrões) - ultrabrain (gpt-5.5)
   - 405+ linhas MD + 547 linhas YAML. 16 padrões com components + flow.
+- [x] phase-3: Classification - deep (gpt-5.5) x2 parallel
+  - 4 Better Impl, 3 Already Exists, 7 Partial Coverage, 2 Missing
 
 ## To Do
 
-- [ ] phase-3: Classification
+- [ ] phase-4: Improvement Generation
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next
