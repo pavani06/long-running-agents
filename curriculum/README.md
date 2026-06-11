@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["visão geral", "sobre currículo", "overview"]
 tags: [curriculo-conteudo]
 relates-to: ["[[README|Repository README]]", "[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/QUICK_START|Quick Start]]"]
-last_updated: 2026-06-10
+last_updated: 2026-06-11
 ---
 # 📚 Curso: Building Long-Running Agents para KODA
 
@@ -105,6 +105,8 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-01.md
 │   │   │   ├── exercise-02.md
 │   │   │   ├── exercise-03.md
+│   │   │   ├── exercise-04-llm-as-fuzzy-compiler.md
+│   │   │   ├── exercise-05-persona-based-documentation.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md

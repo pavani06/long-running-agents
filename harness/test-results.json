@@ -30,10 +30,10 @@
     "notes": "Geracao de artefatos e roadmap — Phase 4. 4 canonical docs + 2 skills + 2 exercises + integration roadmap."
   },
   "phase-5": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Integracao — Phase 5."
+    "passes": true,
+    "evidence": ["docs/system-of-record.md"],
+    "evaluated_by": "evaluator",
+    "notes": "Integracao — Phase 5. system-of-record updated com 4 canonical docs + analise. curriculum/README.md e MASTER_PLAN.md atualizados. last_updated: 2026-06-11."
   },
   "phase-6": {
     "passes": false,

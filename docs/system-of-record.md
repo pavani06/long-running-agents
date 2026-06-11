@@ -2,7 +2,7 @@
 title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
-tags: ["index", "arquitetura", "governanca"]
+tags: ["index", "arquitetura", "governanca", "harness-engineering"]
 last_updated: 2026-06-11
 relates-to: []
 sources: []
@@ -123,7 +123,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 28 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 55 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -177,6 +177,10 @@ Tópicos candidatos a ADR:
 | `vertical-slice-issue-generation.md` | Geração de issues como fatias verticais cross-layer com comportamento observável |
 | `architecture-as-agent-affordance.md` | Arquitetura como affordance para agentes: deep modules, interfaces simples, testes de fronteira |
 | `qa-to-backlog-feedback-loop.md` | Achados de QA/review como entrada de backlog com captura, triagem e conversão em issues |
+| `llm-as-fuzzy-compiler.md` | LLM como compilador fuzzy: código como artefato de build descartável, separação entre prompt e output |
+| `persona-based-documentation.md` | Documentação baseada em personas: NFRs e documentos por especialidade (dev, QA, architect, manager) |
+| `garbage-collection-day-meta-loop.md` | Meta-loop semanal de limpeza de harness: revisão de slop, guardrails e cadência de manutenção |
+| `failure-pattern-classification-loop.md` | Loop de classificação de padrões de falha: categorização de slop e misbehavior de agentes |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 

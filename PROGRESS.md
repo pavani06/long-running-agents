@@ -15,10 +15,12 @@
   - 4 Better Impl, 3 Already Exists, 7 Partial Coverage, 2 Missing
 - [x] phase-4: Improvement Generation - deep (gpt-5.5) x4 parallel
   - 4 canonical docs, 2 skills, 2 exercises, 1 roadmap
+- [x] phase-5: Integration - quick (gpt-5.5)
+  - system-of-record.md, curriculum/README.md, MASTER_PLAN.md updated
 
 ## To Do
 
-- [ ] phase-5: Integration
+- [ ] phase-6: Curriculum Deep Integration (opcional)
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next
