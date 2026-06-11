@@ -79,6 +79,18 @@ Antes de comecar, verifique:
 - [ ] O diretorio de output `docs/analysis/<date>-<source-slug>/` foi criado
 - [ ] O repositorio alvo tem `docs/system-of-record.md` (ou equivalente) para resolver precedencia
 - [ ] Voce leu `AGENTS.md` do repositorio alvo para conhecer regras de commit, estilo, e gates
+- [ ] Voce leu `docs/canonical/obsidian-document-conventions.md` (se existir) ou o `AGENTS.md` Rule 16 para conhecer as convencoes de frontmatter, wikilinks, tags, aliases, e relates-to
+
+### Execution mechanism
+
+Este pipeline pode ser executado de duas formas. Escolha a correta para seu contexto:
+
+| Mecanismo | Quando usar |
+|---|---|
+| **Skill `harness-analyze-and-improve`** | Dentro de uma sessao opencode. Usa `task()` nativo para delegar fases. |
+| **Bash `harness/harness-analysis.sh`** | Terminal real (bash externo). Invoca `opencode run` para cada fase. |
+
+O skill harness e recomendado para execucao interativa dentro do opencode. O bash harness e util para automacao externa e CI/CD, mas requer ambiente bash completo (grep, python3/jq, date, mkdir) e **nao funciona quando invocado de dentro de uma sessao opencode**.
 
 ## Target Repository Context
 
@@ -88,10 +100,12 @@ TODA delegacao via `task()` nas Phases 0-6 DEVE incluir este bloco no prompt:
 TARGET_REPOSITORY:
   path: <absolute-path-to-repo>
   name: <repo-name>
-  output_dir: docs/analysis/<date>-<source-slug>/
-  system_of_record: docs/system-of-record.md
+  output_dir: <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/
+  system_of_record: <absolute-path-to-repo>/docs/system-of-record.md
   branch: main
 ```
+
+**CRITICAL**: Todos os paths no bloco devem ser absolutos (ex: `/home/user/repo/docs/analysis/...`). Nunca use paths relativos — sub-agentes podem resolver `docs/analysis/...` a partir de diretorios de trabalho diferentes, escrevendo em locais incorretos. O `output_dir` e `system_of_record` devem ser paths completos.
 
 Isso garante que todo sub-agente sabe:
 - Onde escrever arquivos de output (caminho completo)
@@ -260,6 +274,8 @@ docs/analysis/<date>-<source-slug>/analysis.yaml
 - [ ] Os arquivos analysis.md e analysis.yaml existem no diretorio de output
 - [ ] Nao contem marketing, anedotas, ou filler
 - [ ] O YAML espelha o markdown com campos tipados
+- [ ] `analysis.md` tem frontmatter Obsidian completo: `title`, `type: analysis`, `tags`, `date`, `aliases` (pelo menos 2), `relates-to` (pelo menos 1 wikilink)
+- [ ] Rodar `bash scripts/check-obsidian-conventions.sh` (se existir) e corrigir violacoes ANTES de prosseguir para Phase 2. Violacoes nao corrigidas viram falso-positivos em todas as fases subsequentes.
 
 ---
 
@@ -328,6 +344,8 @@ docs/analysis/<date>-<source-slug>/patterns.yaml
 ## Phase 3: Classification
 
 **Objetivo:** Comparar cada padrao contra o que ja existe no repositorio alvo. Classificar em 4 categorias com evidencia.
+
+> **Batch splitting**: Para fontes com mais de 8 padroes, divida a classificacao em lotes menores (max 8 padroes por agente) e execute em paralelo. Um unico agente `deep` pode abortar por timeout ao classificar muitos padroes. Se `deep` falhar, `ultrabrain` e um fallback confiavel.
 
 ### Regras de classificacao
 
@@ -587,9 +605,12 @@ Os agentes 1-3 rodam em paralelo (`run_in_background=true`). O agente 4 (roadmap
 ### Gate
 
 - [ ] Missing patterns tem canonical doc + skill + exercise
-- [ ] P1 patterns tem canonical doc
+- [ ] P1 patterns (Partial Coverage High) tem canonical doc
+- [ ] P2 patterns (Partial Coverage Medium) tem canonical doc (exercise opcional, a criterio do orquestrador)
 - [ ] Integration roadmap conecta todos os artefatos criados
 - [ ] Nao foram criados artefatos para Already Exists ou Better Implementation
+- [ ] **0 Missing e esperado**: Nem toda fonte produz padroes Missing. Se todos forem Partial Coverage ou Already Exists, as acoes P0 (skill + exercise) simplesmente nao se aplicam. Isso nao e falha do pipeline.
+- [ ] **Exercicios novos sao criados na Phase 4, NAO na Phase 6.** A Phase 4 pode criar novos arquivos em `curriculum/` (exercises). A Phase 6 apenas modifica arquivos existentes — nunca cria novos. Se um exercise for necessario, crie-o aqui na Phase 4.
 
 ---
 
@@ -774,6 +795,7 @@ MUST NOT:
 - **Executar fases diretamente em vez de delegar.** Toda fase deve ser uma sub-task via `task()` com categoria adequada — o orquestrador supervisiona, nao executa.
 - **Pular a Phase 0.** Sem modelo mental do repositorio, as fases subsequentes classificam sem contexto e produzem duplicacao.
 - **Esquecer o bloco TARGET_REPOSITORY em uma delegacao.** Sem ele, o sub-agente nao sabe onde escrever outputs nem qual repo commitara.
+- **Usar paths relativos no TARGET_REPOSITORY ou nos prompts.** Sempre use paths absolutos. Sub-agentes podem resolver paths relativos a partir de diretorios de trabalho diferentes, escrevendo arquivos no local errado.
 - **Pular a classificacao** e gerar melhorias sem evidencia do que ja existe. Isso produz duplicacao.
 - **Criar artefatos para Already Exists.** So cross-reference.
 - **Delegar extracao de padroes para quick.** Precisa de ultrabrain — e trabalho de sintese.
@@ -786,7 +808,10 @@ MUST NOT:
 - **Executar Phase 6 para Already Exists ou Better Implementation.** So cross-reference — o curriculo ja cobre ou supera o padrao.
 - **Tratar Missing com cross-reference raso na Phase 6.** Missing e o gap mais importante — merece a mesma profundidade que Partial Coverage: subsecoes, exemplos, checklists, gates nos modulos existentes.
 - **Criar arquivos novos no curriculum/ durante a Phase 6.** A integracao profunda modifica modulos existentes, nunca cria novos. Exercicios novos sao criados na Phase 4, nao na Phase 6.
+- **Confundir criacao de arquivos entre Phase 4 e Phase 6.** Phase 4 PODE criar novos arquivos (exercises, skills, canonical docs). Phase 6 NUNCA cria novos arquivos — apenas modifica existentes com `edit` cirurgico.
 - **Committar ou dar push sem perguntar ao usuario.** O Commit Gate exige confirmacao explicita. O `AGENTS.md` do repo alvo tem a palavra final.
+- **Usar `edit` para atualizar PROGRESS.md.** PROGRESS.md e curto e `edit` frequentemente falha por whitespace. Use `write` (reescrita completa) para atualiza-lo.
+- **Deixar `analysis.md` sem `aliases:` no frontmatter.** O check-obsidian-conventions.sh reporta erro que polui todas as fases subsequentes. Preencha `aliases` com pelo menos 2 variantes do titulo.
 
 ---
 
@@ -862,4 +887,4 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 
 ---
 
-*Skill version: 3.0 | Reference sessions: 2026-06-09, 2026-06-10*
+*Skill version: 3.1 | Reference sessions: 2026-06-09, 2026-06-10, 2026-06-11*

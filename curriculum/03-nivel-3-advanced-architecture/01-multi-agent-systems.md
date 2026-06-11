@@ -911,6 +911,111 @@ Regras praticas de coordenação:
 6. Sempre permita replay do trace.
 7. Trate state como fonte de verdade, não a memória temporaria do modelo.
 
+### Gate de Roteamento: Tarefas AFK vs. Human-in-the-Loop
+
+Nem toda tarefa que chega ao sistema multi-agente deveria ser executada por um agente sem supervisão. O padrão **Human/AFK Task Routing Gate** (extraído do workflow de Matt Pocock) define um classificador explícito que decide, antes da execução, se uma tarefa está pronta para execução autônoma (AFK-ready) ou requer julgamento humano (human-in-loop).
+
+**A matriz de classificação avalia:**
+
+| Dimensão | AFK-Ready | Human-in-Loop |
+|----------|-----------|---------------|
+| **Ambiguidade** | Objetivo claro, restrições explícitas, critérios de done definidos | Escopo ambíguo, múltiplas interpretações válidas, decisões subjetivas |
+| **Arquitetura** | Mudança contida em módulo com boundary tests | Refatoração cross-cutting, mudança de interface pública, novo padrão arquitetural |
+| **QA e verificação** | Testes existentes cobrem o caminho, CI/CD definido | Sem testes no caminho alterado, verificação requer julgamento humano |
+| **Julgamento de produto** | Comportamento esperado é não-ambíguo, alinhamento prévio registrado | Decisão afeta experiência do usuário, tom de voz, ou política de negócio |
+
+**Componentes do Gate:**
+- **Task classifier:** inspeciona cada item do backlog contra a matriz
+- **Ambiguity detector:** identifica issues com múltiplas interpretações válidas
+- **Feedback-loop readiness check:** verifica se há testes, métricas ou gates configurados para dar feedback ao agente
+- **Human escalation path:** para tarefas bloqueadas, caminho claro de quem decide e quando
+
+**Como o orquestrador usa o gate:**
+```
+Backlog Item → Task Router → [AFK-Ready] → Ready Queue → Agente executa
+                           → [Human-in-Loop] → Review Queue → Humano decide
+                           → [Blocked] → Blocker Queue → Aguarda resolução
+```
+
+**Exemplo KODA — classificação de tarefas:**
+```
+Tarefa: "Adicionar filtro de preço na busca de suplementos"
+  Ambiguidade: BAIXA (critério claro: slider entre R$ 0 e R$ 500)
+  Arquitetura: BAIXA (mudança contida no componente de busca)
+  QA: MÉDIA (testes de busca existem, mas precisam ser estendidos)
+  Produto: BAIXA (comportamento padrão, sem decisão de UX)
+  → Classificação: AFK-READY
+
+Tarefa: "Reformular tom das mensagens de recomendação para público premium"
+  Ambiguidade: ALTA (o que é 'tom premium'? múltiplas interpretações)
+  Arquitetura: BAIXA (mudança de template, não de estrutura)
+  QA: ALTA (sem teste objetivo para 'tom adequado')
+  Produto: ALTA (decisão de branding e experiência)
+  → Classificação: HUMAN-IN-LOOP
+```
+
+Este gate conecta-se com o padrão de **Vertical-Slice Issue Generation** e com o [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]] do KODA, onde a classificação AFK/human determina se um agente pode avançar autonomamente na jornada do cliente.
+
+### Decomposição por Fatias Verticais (Vertical-Slice Issue Generation)
+
+O padrão **Vertical-Slice Issue Generation** (extraído do workflow de Matt Pocock) resolve uma limitação crítica da decomposição tradicional de tarefas: em vez de fatiar o trabalho por camada horizontal (arquivo de banco → arquivo de API → arquivo de UI), fatia-se por **caminho de comportamento observável** que atravessa todas as camadas necessárias para entregar uma funcionalidade completa.
+
+**O problema da decomposição horizontal:**
+```
+Issue #1: Criar tabela 'promotions' no banco
+Issue #2: Criar endpoint GET /promotions
+Issue #3: Criar componente PromotionBanner no frontend
+→ Cada issue testada isoladamente passa. Integração só acontece no final.
+→ Feedback de integração é tardio. Agentes paralelos pisam no mesmo código.
+```
+
+**A solução por fatia vertical:**
+```
+Issue #1 (slice): "Cliente vê banner de desconto de 15% na página do produto"
+  → Tabela 'promotions' + endpoint GET + componente PromotionBanner
+  → Teste: banner renderiza com desconto correto para SKU elegível
+
+Issue #2 (slice): "Cliente aplica cupom no checkout e vê preço atualizado"
+  → Lógica de aplicação + endpoint POST + componente Carrinho
+  → Teste: preço final reflete desconto após aplicar cupom
+```
+
+**Regras para fatiar verticalmente:**
+1. Cada slice produz **comportamento observável** — o cliente (ou o teste) vê algo funcionar.
+2. Cada slice **atravessa camadas** — banco, lógica, API, UI — na medida exata para aquele comportamento.
+3. Cada slice cabe em **uma sessão de agente** — escopo pequeno o suficiente para ser implementado e verificado em um ciclo AFK.
+4. Cada slice declara seus **acceptance criteria** como comportamento, não como checklist de arquivos.
+
+**Blocker graph para slices:**
+```
+Slice A (Banner de desconto) ──┐
+                                ├──► Slice C (Cupom + desconto combinados)
+Slice B (Aplicar cupom) ───────┘
+                                │
+Slice D (Frete dinâmico) ───────┤
+                                │
+Slice E (Checkout completo) ◄───┘
+```
+
+**Exemplo KODA — decomposição de uma feature de recomendação:**
+```
+PRD: "Cliente recebe recomendação personalizada com base no histórico"
+
+Slices verticais:
+  S1: "Cliente novo vê recomendações genéricas (best-sellers)"
+      → tabela best_sellers + endpoint + mensagem WhatsApp
+  S2: "Cliente com 1 compra vê recomendação da mesma categoria"
+      → lógica de afinidade + endpoint + mensagem
+  S3: "Cliente com 3+ compras vê recomendação personalizada com desconto"
+      → modelo de recomendação + regra de desconto + endpoint + mensagem
+  S4: "Cliente recebe follow-up 7 dias após compra com recomendação complementar"
+      → job de follow-up + lógica de cross-sell + mensagem proativa
+```
+
+Cada slice é AFK-ready (testável, revisável, com escopo contido) e pode ser executada por um agente diferente em paralelo, com isolamento de worktree e branch.
+
+Esta estratégia conecta-se diretamente com o [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator]] (cada slice tem seu próprio ciclo G/E) e com as estratégias de coordenação paralela descritas acima.
+
 ---
 
 ## 🎓 Aplicação KODA: Decomposição do Customer Journey em Agentes

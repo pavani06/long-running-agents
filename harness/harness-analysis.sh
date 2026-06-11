@@ -30,7 +30,26 @@ MAX_ITERATIONS="${MAX_ITERATIONS:-20}"
 AGENT_CLI="${AGENT_CLI:-opencode}"
 EVALUATOR_AGENT="${EVALUATOR_AGENT:-evaluator}"
 
-# Cores para output
+# ── Minimum Environment Requirements ────────────────────────────────────────────
+#
+# Este script foi adaptado para funcionar em ambientes com PATH restrito.
+# Dependencias obrigatorias:
+#   - /bin/bash (shebang #!/bin/bash, NAO #!/usr/bin/env bash)
+#   - git (para commits, diffs, e verificacao de repo)
+#   - opencode CLI (para delegacao de fases)
+#
+# Dependencias removidas (implementacoes bash-only como fallback):
+#   - python3: substituido por bash regex em get_next_feature() e run_evaluator()
+#   - jq: nao necessario (bash regex cobre o parse de JSON simples)
+#   - grep -P: substituido por bash [[ =~ ]] com regex em run_builder()
+#   - date: removido de commit_checkpoint() (mensagem estatica)
+#   - mkdir/cp/chmod: use write/edit tools do opencode para manipulacao de arquivos
+#   - ls/find: use read tool do opencode para listagem de diretorios
+#
+# Se python3 ou jq estiverem disponiveis, as funcoes os utilizam preferencialmente.
+# As implementacoes bash-only sao fallbacks automaticos quando as ferramentas faltam.
+
+# ── Cores para output ───────────────────────────────────────────────────────────
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -135,11 +154,27 @@ check_steering() {
         steer_content=$(cat "$STEER_FILE")
         log_warn "STEER.md tem conteúdo. Injetando no builder..."
         echo "$steer_content"
-        # Limpa o arquivo após leitura
+        # Restaura o placeholder completo após leitura (nunca deixa vazio)
         cat > "$STEER_FILE" <<'EOF'
 # STEER.md — Canal de Redirecionamento
 
-> Escreva aqui para redirecionar o agente. O conteúdo é lido e o arquivo limpo.
+> Este arquivo é monitorado pelo agente. Escreva aqui para redirecionar o
+> agente no meio de uma sessão longa sem precisar reiniciar.
+>
+> O agente lê este arquivo periodicamente. Se encontrar conteúdo, ele:
+> 1. Lê a orientação
+> 2. Incorpora imediatamente (prioridade sobre o plano atual)
+> 3. Limpa o arquivo (para evitar re-leitura)
+>
+> **Uso:** `echo "sua orientação aqui" > STEER.md`
+>
+> **Exemplos:**
+> - "Pare de usar PostgreSQL. Migre tudo para SQLite."
+> - "Ignore a feature atual. Priorize correção de bug no login."
+> - "O layout está muito escuro. Use tons mais claros no tema."
+> - "Antes de continuar, adicione testes para o módulo auth."
+
+<!-- Apague esta mensagem placeholder na primeira vez que usar o canal -->
 EOF
         return 0
     fi
@@ -331,7 +366,7 @@ commit_checkpoint() {
     if ! git diff --quiet || ! git diff --cached --quiet; then
         log_info "Commit de checkpoint..."
         git add -A
-        git commit -m "checkpoint: $(date '+%Y-%m-%d %H:%M')" || true
+        git commit -m "checkpoint: harness analysis" || true
         log_ok "Commit realizado."
     fi
 }

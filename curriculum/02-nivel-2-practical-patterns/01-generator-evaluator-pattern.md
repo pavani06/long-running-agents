@@ -2196,6 +2196,54 @@ Você agora consegue:
 
 ---
 
+### 🌉 Pré-Planejamento: O Padrão Grill-Me Alignment Interview
+
+Antes de ativar o Generator, há uma etapa que determina se o Generator/Evaluator sequer deve ser acionado: o **alinhamento de intenção**.
+
+O padrão **Grill-Me Alignment Interview** (extraído do workflow de Matt Pocock) estabelece um gate de pré-planejamento onde o agente entrevista o humano uma pergunta por vez, oferece respostas recomendadas, e registra decisões e deferrals em um ledger antes de qualquer código ser escrito.
+
+**Por que isso importa para Generator/Evaluator:**
+
+O Generator só funciona bem quando o problema está bem definido. Se houver ambiguidade sobre o que o cliente realmente precisa, o Generator vai gerar soluções para o problema errado — e o Evaluator vai aprovar ou rejeitar baseado em critérios que não capturam a ambiguidade original.
+
+**Componentes do Grill-Me:**
+- **Fresh context:** isolar o contexto de planejamento antes de qualquer execução
+- **One-question-at-a-time loop:** uma pergunta focada por vez, sem atropelar
+- **Recommended-answer generator:** o agente sugere respostas para o humano editar (não inventar do zero)
+- **Decision and deferral ledger:** registro explícito do que foi decidido e do que foi intencionalmente adiado
+
+**Quando aplicar antes do Generator/Evaluator:**
+- O objetivo do cliente tem múltiplas interpretações possíveis ("preciso de um suplemento" → qual objetivo? qual restrição?)
+- Há trade-offs de produto/arquitetura que só o humano pode resolver
+- O escopo não está claro e o Generator pode disparar em várias direções
+
+**Exemplo KODA — antes de recomendar produtos:**
+```
+KODA (Grill-Me): "Você mencionou 'ganhar massa'. Isso significa:
+  A) Ganho de peso geral (bulking) — recomendaria hipercalóricos
+  B) Ganho de massa magra (definição) — recomendaria whey + treino
+  Qual descreve melhor seu objetivo?"
+  
+Cliente: "B, com certeza. Não quero engordar."
+
+KODA: "Registrado: objetivo = massa magra. Próxima pergunta:
+  Você tem alguma restrição alimentar? Se não tiver certeza,
+  posso sugerir uma lista para você conferir."
+```
+
+O ledger de decisões fica registrado no state file como `alignment_ledger.json`, servindo de contrato para o Generator e de referência para o Evaluator verificar se a recomendação respeita o que foi alinhado.
+
+**Conexão com o fluxo G/E:**
+```
+Grill-Me Alignment → Decision Ledger → Generator → Evaluator
+       ↑                                  ↓          ↓
+       └──── feedback se rejeitado ───────┘          │
+                                                     ↓
+                                              Output Aprovado
+```
+
+Este padrão é explorado em profundidade no conceito de [[curriculum/05-core-concepts/02-planning-execution-separation|Planning/Execution Separation]] e no módulo de [[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]].
+
 ### 📞 Dúvidas?
 
 Se ficou confuso em algo, não é falha sua — é falha deste módulo.

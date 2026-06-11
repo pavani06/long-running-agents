@@ -1185,6 +1185,92 @@ KODA esta sempre disponivel para suporte. Mas tem regras claras:
 - Duvidas sobre saude: encaminhar para profissional ("consulte seu medico")
 - Reclamacoes: seguir fluxo de complaint (registrar, escalar se necessario)
 
+### Sub-Estado: QA_TO_BACKLOG — Fechando o Ciclo de Feedback
+
+O padrão **QA-to-Backlog Feedback Loop** (extraído do workflow de Matt Pocock) estabelece que observações de QA, revisão e suporte não são eventos terminais — são **entradas para o backlog de melhorias**. Sem este ciclo, defeitos descobertos permanecem como memória informal do time e não geram ação estruturada.
+
+**O ciclo de feedback fechado no KODA:**
+
+```
+SUPPORT (cliente reporta problema)
+       ↓
+QA_TO_BACKLOG (triagem e classificação)
+       ↓
+┌──────────────────────────────────────────────┐
+│ 1. Capturar finding como structured observation │
+│    → severity, affected_state, reproduction   │
+│ 2. Triar: é defeito, melhoria ou feature nova? │
+│    → blocker: impede transição de estado?      │
+│ 3. Converter em ação de backlog                 │
+│    → vertical-slice issue OU regression case   │
+│ 4. Devolver ao Kanban (intake lane)            │
+│    → rotular AFK-ready ou human-in-loop        │
+└──────────────────────────────────────────────┘
+       ↓
+Novo item no board → execução → verificação → closed loop
+```
+
+**Matriz de triagem QA-to-Backlog:**
+
+| Severidade | Tipo | Ação no Backlog | Afeta estado da jornada? |
+|-----------|------|----------------|-------------------------|
+| CRITICAL | Defeito — cliente recebeu produto errado | Criar regression case + blocker issue | Sim: bloquear transição para DECISION até correção |
+| HIGH | Defeito — cupom não aplicado em produto elegível | Criar vertical-slice issue de correção | Sim: adicionar guard condition extra em DECISION:CHECKOUT |
+| MEDIUM | Melhoria — explicação da recomendação ficou confusa | Criar issue de melhoria no backlog | Não: fluxo continua, melhoria é assíncrona |
+| LOW | UX — mensagem poderia ser mais curta | Agregar em epic de UX, revisar no trimestre | Não |
+
+**Exemplo KODA — uma observação de QA vira ação de backlog:**
+
+```
+[QA finding capturado durante revisão de conversa]:
+  "Cliente perguntou 'tem algo mais barato?' e KODA recomendou 
+   produto R$ 5 mais barato mas com lactose. Cliente era intolerante."
+  
+  Severity: HIGH
+  Type: DEFECT
+  Affected state: CONSIDERATION:COMPARISON
+  Root cause: FILTERING não reaplicou restrição após cliente mudar critério
+  
+  → Backlog issue criada:
+    Title: "FILTERING deve reaplicar todas as restrições quando cliente 
+            altera critério de ordenação (preço, popularidade)"
+    Labels: AFK-ready, vertical-slice, consideration-filtering
+    Acceptance criteria:
+      - Ao mudar ordenação de produtos, restrições (dieta, alergia) 
+        são reaplicadas antes da nova lista ser exibida
+      - Teste: cliente intolerante à lactose filtra por 'mais barato' 
+        → nenhum produto com lactose aparece
+    Blocker for: CONSIDERATION → VALIDATION (se restrições não mantidas)
+```
+
+**Integração com o board Kanban:**
+
+O KODA mantém um board com lanes específicas para o ciclo QA-to-Backlog:
+
+```
+BACKLOG → READY (AFK) → IN PROGRESS → REVIEW → DONE
+   ↑                                              │
+   └──── QA_INTAKE ←──── QA findings ─────────────┘
+```
+
+A lane `QA_INTAKE` recebe observações de:
+- **Review findings:** segunda passagem de agente revisor encontra problemas
+- **Customer support:** tickets de suporte revelam padrões de defeito
+- **Production monitoring:** métricas mostram degradação em estado específico
+- **Human QA:** revisões manuais de amostras de conversa
+
+Cada item em `QA_INTAKE` passa pela matriz de triagem antes de ser convertido em issue e movido para `BACKLOG` com as labels apropriadas.
+
+**Checklist de integridade do ciclo QA-to-Backlog:**
+- [ ] Toda observação de QA/review gera um artefato rastreável (não fica em memória de time)
+- [ ] Cada finding tem severity, affected_state, e root cause registrados
+- [ ] Defeitos críticos bloqueiam a transição de estado correspondente
+- [ ] Regression cases são criados para defeitos que não devem recorrer
+- [ ] O board reflete a distinção entre trabalho novo (features) e trabalho corretivo (QA findings)
+- [ ] Tempo médio de QA_INTAKE → BACKLOG é medido e otimizado (< 48h para HIGH/CRITICAL)
+
+Este padrão conecta-se diretamente ao [[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]] (o board multi-agente recebe os itens de QA) e ao [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]] (os findings de QA alimentam a calibração das rubricas do Evaluator).
+
 ---
 
 ## 📊 Metricas por Etapa: O Painel de Controle do KODA

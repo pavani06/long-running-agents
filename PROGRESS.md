@@ -2,27 +2,24 @@
 
 > Pipeline analyze-and-improve gerenciado pelo harness.
 > Cada fase é uma feature com contrato default-FAIL.
-> O harness.sh avança automaticamente entre fases.
 
 ## Done
 
-<!-- Fases concluídas e aprovadas pelo evaluator -->
-<!-- Formato: - [x] phase-N: descrição - commit abc1234 [evaluator: PASS] -->
+- [x] phase-0: Repository Mental Model - ultrabrain (gpt-5.5)
+- [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
+- [x] phase-2: Pattern Extraction (15 padrões) - ultrabrain (gpt-5.5)
 
 ## In Progress
 
-<!-- A fase atual. Exatamente UMA por vez. -->
+- [x] phase-3: Classification - ultrabrain
+  - 1 Better Impl, 12 Partial Coverage, 2 Already Exists
 
-- [ ] phase-0: Repository Mental Model
-  - Output esperado: docs/analysis/<date>-<slug>/mental-model.md + .yaml
-  - Delegado: ultrabrain
-  - Bloqueios: nenhum
+## In Progress
+
+- [ ] phase-4: Improvement Generation — 3 deep agents em paralelo
 
 ## Next
 
-- [ ] phase-1: Knowledge Extraction
-- [ ] phase-2: Pattern Extraction
-- [ ] phase-3: Classification
 - [ ] phase-4: Improvement Generation
 - [ ] phase-5: Integration
 - [ ] phase-6: Curriculum Deep Integration (opcional)
@@ -32,12 +29,8 @@
 - **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock.md
 - **date**: 2026-06-07
 - **source-slug**: full-walkthrough-workflow-for-ai-coding-matt-pocock
-- **output_dir**: docs/analysis/<date>-<source-slug>/
+- **output_dir**: docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/
 
 ## Notes
 
-- Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
-- Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `bash scripts/check-obsidian-conventions.sh`
-- Evidência: outputs em docs/analysis/<date>-<slug>/
 - Commits: `git commit -m "analysis(<slug>): <fase>"`

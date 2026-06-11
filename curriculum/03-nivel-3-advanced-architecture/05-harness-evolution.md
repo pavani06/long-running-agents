@@ -943,6 +943,99 @@ Algumas proteções são **invariantes arquiteturais**. Sua presença não depen
 
 ---
 
+## 🏛️ Arquitetura como Affordance de Agente: Refatorando para Deep Modules
+
+Harness Evolution trata de remover componentes externos que se tornaram desnecessários. Mas há uma estratégia complementar e mais profunda: **refatorar o código da aplicação para que o próprio agente navegue melhor, reduzindo a necessidade de harness desde a raiz**.
+
+O padrão **Architecture-as-Agent-Affordance Refactoring** (extraído do workflow de Matt Pocock) parte de uma premissa simples: agentes de IA sofrem com código acoplado, interfaces complexas e módulos rasos. Cada arquivo que o agente precisa ler para entender uma mudança é carga cognitiva que consome tokens e degrada a qualidade. A arquitetura do código é, portanto, uma **affordance** (uma propriedade do ambiente que convida a uma ação correta) — e pode ser melhorada deliberadamente para reduzir o custo cognitivo de sessões futuras de agente.
+
+### Sinais de que a Arquitetura Está Dificultando o Agente
+
+| Sinal | O Agente... | Causa Arquitetural |
+|-------|------------|-------------------|
+| **Exploração excessiva** | Lê 12+ arquivos para uma mudança de 1 arquivo | Dependências espalhadas, sem encapsulamento |
+| **Erros de interface** | Chama função com parâmetros errados repetidamente | Interface pública complexa, muitos parâmetros opcionais |
+| **Mudanças em cascata** | Altera 5 arquivos para uma feature que deveria tocar 1 | Módulos rasos que não encapsulam comportamento |
+| **Testes frágeis** | Quebra testes não relacionados ao mudar uma função | Testes acoplados a implementação, não a comportamento |
+| **Paralisia de decisão** | Fica indeciso sobre onde colocar o código novo | Módulo sem responsabilidade clara, múltiplos lugares "possíveis" |
+
+### O Padrão Deep Module
+
+Um **deep module** (termo de John Ousterhout, adaptado para contexto de agentes) é um módulo que:
+
+1. **Esconde complexidade atrás de uma interface simples** — o agente vê 1-2 funções públicas, não 15 internals
+2. **Encapsula comportamento, não apenas dados** — o módulo sabe "processar pedido", não apenas "guardar pedido"
+3. **Tem boundary tests que verificam contrato, não implementação** — o agente pode refatorar internals sem quebrar testes
+
+**Antes (módulo raso — difícil para o agente):**
+```
+order_utils.ts    — 15 funções exportadas, nenhuma ownership clara
+order_validator.ts — 8 funções, algumas duplicam order_utils
+pricing.ts         — 12 funções, acoplado a order_utils e cart.ts
+cart.ts            — 20 funções, estado misturado com lógica
+```
+O agente precisa ler 4 arquivos e ~55 funções para entender como "aplicar desconto no pedido".
+
+**Depois (deep module — o agente vê uma interface):**
+```
+order/
+  index.ts          — 3 exports: createOrder, applyDiscount, submitOrder
+  internals/        — complexidade escondida, agente não precisa ler
+  order.test.ts     — testa createOrder, applyDiscount, submitOrder (boundary)
+```
+O agente lê 1 arquivo, 3 funções. Carga cognitiva reduzida em 90%.
+
+### Refatoração como Estratégia de Harness Evolution
+
+Esta abordagem complementa o ciclo BUILD → STABILIZE → SIMPLIFY → REMOVE com uma dimensão estrutural:
+
+| Estratégia | Atua em | Exemplo |
+|-----------|---------|---------|
+| **Harness Evolution** | Componentes externos ao código (wrappers do modelo) | Remover Budget Guard porque o modelo já não estoura contexto |
+| **Architecture Affordance** | Estrutura interna do código (módulos, interfaces, testes) | Extrair `order/` como deep module para que o agente não precise de Context Loader para navegar |
+
+**Quando aplicar refatoração de affordance:**
+- Durante o planejamento de uma feature, identifique se o código existente forçaria o agente a ler muitos arquivos
+- Se sim, modele a refatoração como **primeira fatia vertical** do trabalho
+- Crie issues de follow-up no backlog de arquitetura para módulos identificados como "rasos"
+- Apply boundary tests ANTES da refatoração (lock behavior) e use-os como prova de que a refatoração não quebrou nada
+
+**Exemplo KODA — aplicação em Order Processing:**
+```
+Diagnóstico: Agente lê 7 arquivos para processar validação de pedido
+  → order_utils.ts, order_validator.ts, pricing.ts, cart.ts,
+    promo_engine.ts, inventory.ts, shipping.ts
+
+Plano de refatoração (fatia vertical):
+  S1: Extrair Pricing deep module (applyDiscount, calculateTotal)
+       → Boundary tests: desconto de clube, cupom, double-discount
+  S2: Extrair Inventory deep module (checkAvailability, reserveStock)
+       → Boundary tests: estoque regional, race condition
+  S3: Extrair Order deep module (create, validate, submit)
+       → Boundary tests: pedido completo, falha de pagamento, idempotência
+
+Resultado: Agente lê 3 arquivos (pricing/index, inventory/index, order/index)
+          em vez de 7. Tokens de exploração reduzidos em 60%.
+          Menos necessidade de harness de contexto.
+          Menos erros de interface.
+```
+
+### Checklist de Affordance Architecture
+
+Antes de iniciar uma implementação com agente, verifique:
+- [ ] O módulo que será alterado tem menos de 5 exports públicos?
+- [ ] As funções públicas têm nomes que descrevem comportamento, não implementação?
+- [ ] Existem boundary tests que sobreviveriam a uma refatoração interna?
+- [ ] O agente consegue entender o contrato lendo apenas os testes?
+- [ ] Dependências entre módulos são explícitas e unidirecionais?
+- [ ] Há um "single place to look" para cada comportamento de negócio?
+
+Se a resposta for NÃO para 2+ itens, a arquitetura está criando carga cognitiva que o harness precisará compensar. Considere refatorar como pré-requisito da feature.
+
+Este padrão conecta-se ao [[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]] (a interface do deep module é o contrato que o agente segue) e ao módulo de [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution Core Concept]] (a arquitetura bem fatorada reduz a necessidade de harness).
+
+---
+
 ## 🗺️ Estratégia de Evolução Incremental
 
 Evolução de harness não é um projeto com começo, meio e fim. É um **processo contínuo** integrado ao ritmo de desenvolvimento do time.

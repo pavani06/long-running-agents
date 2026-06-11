@@ -1080,6 +1080,55 @@ Sprint Contracts sao o **mecanismo de acoplamento** entre Planner e Executor. Se
 → `../02-nivel-2-practical-patterns/02-sprint-contracts.md`
 → `04-sprint-contracts.md` (em construcao)
 
+### Planning/Execution + Shared Design Concept Handoff
+
+Entre o alinhamento com o humano e a produção do Sprint Contract, existe um ponto de passagem crítico que muitas arquiteturas tratam como implícito: o **Shared Design Concept Handoff**.
+
+Este padrão (extraído do workflow de Matt Pocock) estabelece que a conversa de alinhamento com o humano é o **ativo principal** do planejamento — não o PRD, não o plano, não o contrato. O PRD e o Sprint Contract são derivações. O conceito compartilhado é a fonte.
+
+**O problema que resolve:**
+Um plano escrito não carrega todo o julgamento tácito de produto e arquitetura que emergiu durante a conversa de alinhamento. Se o Planner produz um Sprint Contract sem referência explícita ao conceito compartilhado, o Generator e o Evaluator operam sobre uma simplificação que pode ter perdido nuances críticas.
+
+**O contrato de handoff declara:**
+- **Assumptions:** o que foi assumido sobre o domínio, o cliente, as restrições
+- **Decisions:** decisões explícitas tomadas durante o alinhamento
+- **Deferrals:** o que foi intencionalmente adiado (e por quê)
+- **Trust boundary:** o que o PRD e o Sprint Contract estão autorizados a resumir sem perder fidelidade
+
+**Fluxo completo com Shared Design Concept:**
+```
+Grill-Me Interview (alinhamento)
+       ↓
+Shared Design Concept (handoff contract)
+       ↓
+Destination PRD (escopo navegacional)
+       ↓
+Planner (Sprint Contract)
+       ↓
+Executor (Generator → Evaluator)
+       ↓
+Review (contra o conceito compartilhado original)
+```
+
+**Por que isso importa para Planning/Execution Separation:**
+O Planner não opera no vácuo. Se o Planner recebe apenas "processar pedido #1234" sem o conceito compartilhado do que significa "processar bem" para este cliente específico, o contrato resultante será genérico. O Shared Design Concept Handoff garante que o Planner tenha acesso ao julgamento humano capturado durante o alinhamento, produzindo contratos mais precisos e reduzindo replannings.
+
+**Exemplo KODA — antes do Planner decompor um pedido:**
+```
+Shared Concept registrado:
+  - Cliente prefere receber tudo junto, mesmo que atrase 1 dia
+  - Cupom tem prioridade sobre frete grátis (cliente disse explicitamente)
+  - Produtos veganos são hard constraint (alergia), não preferência
+
+Planner usa esses campos ao decompor:
+  Passo 4: "Se frete grátis conflitar com cupom, priorizar cupom"
+  Passo 6: "Se entrega parcelada for mais rápida, oferecer mas 
+           informar que cliente prefere entrega única"
+  Passo 2: "Filtrar catálogo: vegano = obrigatório (não é preferência)"
+```
+
+Este padrão conecta-se diretamente ao [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator]] (que executa os passos definidos) e ao módulo de [[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]] (onde o conceito compartilhado é distribuído entre agentes especializados).
+
 ### Planning/Execution + Multi-Agent Systems (Nivel 3)
 
 No Nivel 3, a separacao evolui naturalmente para **sistemas multi-agente**, onde Planner, Generator e Evaluator sao agentes independentes rodando em paralelo ou sequencialmente.

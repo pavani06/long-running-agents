@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca"]
-last_updated: 2026-06-10
+last_updated: 2026-06-11
 relates-to: []
 sources: []
 ---
@@ -171,6 +171,12 @@ Tópicos candidatos a ADR:
 | `plan-execute-verify.md` | Separação explícita em três fases (planejar → executar → verificar) com checkpoints e contratos por fase |
 | `generator-evaluator.md` | Arquitetura de dois agentes: Generator (criativo) + Evaluator (imparcial) com loop de feedback |
 | `constraint-anchored-evaluation.md` | Avaliação objetiva ancorada em constraints explícitas e verificáveis do estado persistido |
+| `grill-me-alignment-interview.md` | Entrevista de alinhamento um-pergunta-por-vez com respostas recomendadas e ledger de decisões/deferrals |
+| `shared-design-concept-handoff.md` | Contrato de handoff do conceito compartilhado entre entrevista de alinhamento e artefatos downstream |
+| `human-afk-task-routing-gate.md` | Gate de classificação que roteia tarefas como AFK-ready ou human-in-loop em 4 dimensões |
+| `vertical-slice-issue-generation.md` | Geração de issues como fatias verticais cross-layer com comportamento observável |
+| `architecture-as-agent-affordance.md` | Arquitetura como affordance para agentes: deep modules, interfaces simples, testes de fronteira |
+| `qa-to-backlog-feedback-loop.md` | Achados de QA/review como entrada de backlog com captura, triagem e conversão em issues |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -234,10 +240,24 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.yaml` | YAML do modelo mental |
 | `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/integration-roadmap.md` | Mapa de integração dos padrões classificados nas superfícies do repositório |
 
+### Análises comparativas (Matt Pocock AI Coding Workflow)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.md` | Modelo mental do repositório long-running-agents |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.yaml` | YAML do modelo mental |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.md` | Extração de conhecimento não-óbvio: frameworks, patterns, tradeoffs, failure patterns |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.yaml` | YAML com extração estruturada |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.md` | 15 padrões agentic extraídos com 6 campos cada |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.md` | Classificação comparativa: 1 Better Impl, 12 Partial, 2 Exists |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.yaml` | YAML com evidência file:line por padrão |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/integration-roadmap.md` | Roadmap de integração com 5 fases sequenciais e 12 canonical docs |
+
 ## Planos
 
 - [[docs/plans/2026-05-26-curriculum-completion-strategy|docs/plans/2026-05-26-curriculum-completion-strategy.md]] — estratégia de execução para completar o currículo via GitHub Issues/Milestones
 
 ---
 
-*Última atualização: 2026-06-10*
+*Última atualização: 2026-06-11*

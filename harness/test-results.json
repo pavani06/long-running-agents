@@ -1,44 +1,44 @@
 {
   "phase-0": {
-    "passes": false,
+    "passes": true,
     "evidence": ["docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.md", "docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.yaml"],
-    "evaluated_by": null,
-    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve"
+    "evaluated_by": "evaluator",
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve. 172 linhas MD + 360 linhas YAML com file:line references."
   },
   "phase-1": {
-    "passes": false,
+    "passes": true,
     "evidence": ["docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.md", "docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.yaml"],
-    "evaluated_by": null,
-    "notes": "Extracao de conhecimento da fonte — Phase 1"
+    "evaluated_by": "evaluator",
+    "notes": "Extracao de conhecimento — Phase 1. 266 linhas MD + 271 linhas YAML. 6 frameworks, 9 patterns, 10 operational lessons, 11 tradeoffs, 9 failure patterns, synthesis."
   },
   "phase-2": {
-    "passes": false,
+    "passes": true,
     "evidence": ["docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.md", "docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.yaml"],
-    "evaluated_by": null,
-    "notes": "Extracao de padroes reutilizaveis — Phase 2"
+    "evaluated_by": "evaluator",
+    "notes": "Extracao de padroes reutilizaveis — Phase 2. 15 padroes com 6 campos cada + components + flow."
   },
   "phase-3": {
-    "passes": false,
+    "passes": true,
     "evidence": ["docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.md", "docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.yaml"],
-    "evaluated_by": null,
-    "notes": "Classificacao contra repositorio — Phase 3"
+    "evaluated_by": "evaluator",
+    "notes": "Classificacao — Phase 3. 201 linhas MD + 274 linhas YAML. 1 Better Implementation, 12 Partial Coverage, 2 Already Exists."
   },
   "phase-4": {
-    "passes": false,
+    "passes": true,
     "evidence": ["docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/integration-roadmap.md"],
-    "evaluated_by": null,
-    "notes": "Geracao de artefatos e roadmap — Phase 4"
+    "evaluated_by": "evaluator",
+    "notes": "Geracao de artefatos e roadmap — Phase 4. 6 canonical docs + integration roadmap."
   },
   "phase-5": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Integracao — atualiza system-of-record e indices"
+    "passes": true,
+    "evidence": ["docs/system-of-record.md"],
+    "evaluated_by": "evaluator",
+    "notes": "Integracao — Phase 5. system-of-record updated com 6 canonical docs + analise. last_updated: 2026-06-11."
   },
   "phase-6": {
-    "passes": false,
+    "passes": true,
     "evidence": [],
-    "evaluated_by": null,
-    "notes": "Curriculum Deep Integration — opcional"
+    "evaluated_by": "evaluator",
+    "notes": "Curriculum Deep Integration — Phase 6. 5 curriculum files modified (+381 linhas). 6 padroes Partial Coverage High integrados."
   }
 }
