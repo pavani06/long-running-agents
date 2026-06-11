@@ -6,30 +6,26 @@
 ## Done
 
 - [x] phase-0: Repository Mental Model - ultrabrain (gpt-5.5)
-- [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
-- [x] phase-2: Pattern Extraction (15 padrões) - ultrabrain (gpt-5.5)
+  - 145+ linhas MD + 320 linhas YAML. 20 canonical patterns mapeados, 10 abstracoes, 11 gaps.
 
-## In Progress
+## To Do
 
-- [x] phase-3: Classification - ultrabrain
-  - 1 Better Impl, 12 Partial Coverage, 2 Already Exists
-
-## In Progress
-
-- [ ] phase-4: Improvement Generation — 3 deep agents em paralelo
+- [ ] phase-1: Knowledge Extraction - deep (gpt-5.5)
+- [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next
 
+- [ ] phase-3: Classification
 - [ ] phase-4: Improvement Generation
 - [ ] phase-5: Integration
 - [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 
-- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock.md
+- **source**: C:\Users\pavan\raw-knowledge\sources\2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md
 - **date**: 2026-06-07
-- **source-slug**: full-walkthrough-workflow-for-ai-coding-matt-pocock
-- **output_dir**: docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/
+- **source-slug**: harness-engineering-how-to-build-software-when-humans-steer-agent
+- **output_dir**: docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/
 
 ## Notes
 
