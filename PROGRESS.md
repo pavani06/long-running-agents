@@ -13,10 +13,12 @@
   - 405+ linhas MD + 547 linhas YAML. 16 padrões com components + flow.
 - [x] phase-3: Classification - deep (gpt-5.5) x2 parallel
   - 4 Better Impl, 3 Already Exists, 7 Partial Coverage, 2 Missing
+- [x] phase-4: Improvement Generation - deep (gpt-5.5) x4 parallel
+  - 4 canonical docs, 2 skills, 2 exercises, 1 roadmap
 
 ## To Do
 
-- [ ] phase-4: Improvement Generation
+- [ ] phase-5: Integration
 - [ ] phase-2: Pattern Extraction - ultrabrain (gpt-5.5)
 
 ## Next

@@ -24,10 +24,10 @@
     "notes": "Classificacao — Phase 3. 446 linhas MD + 445 linhas YAML. 4 Better Implementation, 3 Already Exists, 7 Partial Coverage, 2 Missing."
   },
   "phase-4": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Geracao de artefatos e roadmap — Phase 4."
+    "passes": true,
+    "evidence": ["docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/integration-roadmap.md"],
+    "evaluated_by": "evaluator",
+    "notes": "Geracao de artefatos e roadmap — Phase 4. 4 canonical docs + 2 skills + 2 exercises + integration roadmap."
   },
   "phase-5": {
     "passes": false,

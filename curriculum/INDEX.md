@@ -112,6 +112,8 @@ last_updated: 2026-06-10
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
 - `03-nivel-3-advanced-architecture/exercises/exercise-02.md` (State Persistence)
 - `03-nivel-3-advanced-architecture/exercises/exercise-03.md` (Harness Evolution)
+- `03-nivel-3-advanced-architecture/exercises/exercise-04-llm-as-fuzzy-compiler.md` (LLM as Fuzzy Compiler)
+- `03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation.md` (Persona-Based Documentation)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`
