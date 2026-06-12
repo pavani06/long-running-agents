@@ -115,6 +115,12 @@ Extract from PROGRESS.md:
 - `source-slug` (short slug)
 - `output_dir` = `docs/analysis/<date>-<source-slug>/`
 
+**Before delegating**, write the current timestamp to `harness/test-results.json`
+for the current phase's `started_at` field. Use ISO 8601 format (UTC):
+  `date -u +%Y-%m-%dT%H:%M:%SZ`
+
+This enables duration calculation after the phase completes.
+
 Build a delegation prompt following the `analyze-and-improve` skill's prescription for that phase. Use `task()` with the correct category.
 
 TARGET_REPOSITORY block in EVERY delegation — use absolute paths:
@@ -154,15 +160,23 @@ Run a self-check:
 - Run `bash scripts/check-obsidian-conventions.sh` (if available)
 
 If PASS:
-- Update `harness/test-results.json`: set `evaluated_by` to `"evaluator"` for that phase
+- Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
+- Calculate `duration_seconds` = elapsed seconds between `started_at` and `completed_at`.
+  Use shell arithmetic: compute epoch difference with `date -d` (GNU) or
+  a tool available in the execution environment. Store as integer seconds
+  in `harness/test-results.json`.
+- Set `evaluated_by` to `"evaluator"` for that phase
 - Update PROGRESS.md: use edit com oldString/newString precisos.
   Prefira editar a secao '## Done' e '## To Do' individualmente.
   Se edit falhar (whitespace mismatch), leia o arquivo novamente
   e tente com contexto adicional.
 
 If NEEDS_WORK:
+- Increment `retry_count` in `harness/test-results.json` for the current phase.
+  This tracks how many times the phase was retried before eventually passing —
+  essential for identifying pipeline bottlenecks.
 - Write findings to `NEXT_FINDINGS.md`
-- Do NOT update test-results.json (so harness retries on next run)
+- Do NOT change `passes` or `evaluated_by` (so harness retries on next run)
 
 ### Step 7: Advance or Stop
 
@@ -173,7 +187,21 @@ If NEEDS_WORK:
   a) AGENT_STOP file exists at repo root, OR
   b) No more pending phases (all passes=true), OR
   c) A phase fails evaluation (NEEDS_WORK)
-- If no more pending phases: report completion
+- If no more pending phases (all passes=true): report completion with a
+  metrics summary. Read `harness/test-results.json` and output a table:
+
+  ```
+  Pipeline Metrics Summary:
+    phase-0:  NNNs (N retries)
+    phase-1:  NNNs (N retries)
+    ...
+    phase-6:  NNNs (N retries) [optional]
+    TOTAL:    NNNNs (N total retries)
+  ```
+
+  This summary answers the question "onde o pipeline gasta mais tempo?"
+  and guides optimization efforts. Phases with `retry_count > 0` or
+  `duration_seconds > 600` (10 min) are flagged with `← bottleneck`.
 
 ## Kill Switch
 

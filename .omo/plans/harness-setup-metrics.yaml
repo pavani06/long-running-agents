@@ -1,0 +1,130 @@
+plan:
+  name: "harness-setup-metrics"
+  objective: >
+    Criar setup-analysis.sh portátil dentro do skill analyze-and-improve e
+    adicionar campos de métricas (duration_seconds, retry_count, started_at,
+    completed_at) ao test-results.json, com suporte nos dois orquestradores
+    (harness-analyze-and-improve skill + harness-analysis.sh bash).
+  created: "2026-06-12"
+  target_repo: "/mnt/c/Users/pavan/long-running-agents"
+  skill_dir: "/mnt/c/Users/pavan/.opencode/skills/analyze-and-improve"
+
+  architecture:
+    layers:
+      - name: "analyze-and-improve (user skill)"
+        path: ".opencode/skills/analyze-and-improve/"
+        role: "Pipeline specification — WHAT to do"
+      - name: "harness-analyze-and-improve (project skill)"
+        path: "long-running-agents/.opencode/skills/harness-analyze-and-improve/"
+        role: "Native orchestrator via task() — HOW to execute within opencode"
+      - name: "harness-analysis.sh (bash script)"
+        path: "long-running-agents/harness/harness-analysis.sh"
+        role: "External orchestrator via opencode run — HOW to execute from terminal"
+      - name: "Shared state"
+        paths:
+          - "PROGRESS.md"
+          - "harness/test-results.json"
+          - "harness/.evidence-reads"
+        role: "State consumed by both orchestrators"
+
+  tasks:
+    - id: "1"
+      name: "Criar estrutura harness/ dentro do skill analyze-and-improve"
+      description: >
+        Criar diretório harness/ e subdiretório templates/ no skill user-scope.
+        Isso torna os assets portáteis para qualquer repo alvo.
+      inputs: []
+      outputs:
+        - ".opencode/skills/analyze-and-improve/harness/"
+        - ".opencode/skills/analyze-and-improve/harness/templates/"
+      verification:
+        - "ls -d .opencode/skills/analyze-and-improve/harness/templates/"
+
+    - id: "2"
+      name: "Criar template PROGRESS.md para análise"
+      description: >
+        Template com seções Done, In Progress, Next, Analysis Context, Notes.
+        Usa placeholders {{SOURCE}}, {{DATE}}, {{SOURCE_SLUG}} que o
+        setup-analysis.sh substitui.
+      inputs: []
+      outputs:
+        - ".opencode/skills/analyze-and-improve/harness/templates/PROGRESS.md"
+      verification:
+        - "grep 'Analysis Context' .opencode/skills/analyze-and-improve/harness/templates/PROGRESS.md"
+
+    - id: "3"
+      name: "Criar template test-results.json com métricas"
+      description: >
+        Template com 7 fases (phase-0 a phase-6) e os campos de métricas:
+        duration_seconds, retry_count, started_at, completed_at.
+        Usa placeholder {{DATE_SLUG}} nos paths de evidence.
+      inputs: []
+      outputs:
+        - ".opencode/skills/analyze-and-improve/harness/templates/test-results.json"
+      verification:
+        - "python3 -c 'import json; json.load(open(\"template\"))' (JSON válido)"
+        - "grep 'duration_seconds' template"
+        - "grep 'retry_count' template"
+
+    - id: "4"
+      name: "Criar setup-analysis.sh"
+      description: >
+        Script bash que recebe --source, --date, --source-slug e --target-repo.
+        Gera PROGRESS.md e harness/test-results.json no repo alvo com valores
+        reais (sem placeholders). Cria diretório docs/analysis/<date>-<slug>/.
+        Copia templates STEER.md se não existirem. Sem dependência de python3/jq.
+      inputs:
+        - ".opencode/skills/analyze-and-improve/harness/templates/PROGRESS.md"
+        - ".opencode/skills/analyze-and-improve/harness/templates/test-results.json"
+      outputs:
+        - ".opencode/skills/analyze-and-improve/harness/setup-analysis.sh"
+      verification:
+        - "bash -n setup-analysis.sh (syntax check)"
+        - "chmod +x setup-analysis.sh"
+        - "./setup-analysis.sh --help (exibe uso)"
+
+    - id: "5"
+      name: "Atualizar harness-analyze-and-improve SKILL.md com métricas"
+      description: >
+        Adicionar ao Step 4 (Delegate Phase): escrever started_at timestamp
+        no test-results.json antes da delegação.
+        Adicionar ao Step 6 (Evaluate): em PASS, calcular duration_seconds e
+        escrever completed_at. Em NEEDS_WORK, incrementar retry_count.
+      inputs:
+        - "long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      outputs:
+        - "long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md (updated)"
+      verification:
+        - "grep 'started_at' SKILL.md"
+        - "grep 'duration_seconds' SKILL.md"
+        - "grep 'retry_count' SKILL.md"
+
+    - id: "6"
+      name: "Atualizar harness-analysis.sh com métricas"
+      description: >
+        Adicionar ao run_builder(): registrar started_at no JSON antes de invocar.
+        Adicionar ao run_evaluator(): em PASS, calcular duration e completed_at.
+        No loop principal: incrementar retry_count em NEEDS_WORK.
+        Adicionar função report_metrics() que imprime sumário ao final.
+      inputs:
+        - "long-running-agents/harness/harness-analysis.sh"
+      outputs:
+        - "long-running-agents/harness/harness-analysis.sh (updated)"
+      verification:
+        - "bash -n harness-analysis.sh (syntax check)"
+        - "grep 'started_at' harness-analysis.sh"
+        - "grep 'duration_seconds' harness-analysis.sh"
+        - "grep 'retry_count' harness-analysis.sh"
+
+    - id: "7"
+      name: "Verificação final e dry-run"
+      description: >
+        Rodar setup-analysis.sh em modo dry-run contra o repo long-running-agents
+        para validar que os arquivos são gerados corretamente.
+        Verificar que test-results.json gerado tem os campos de métricas.
+      inputs: []
+      outputs:
+        - "Validacao concluida"
+      verification:
+        - "setup-analysis.sh --dry-run gera preview sem escrever"
+        - "Todos os arquivos alterados passam lsp_diagnostics"

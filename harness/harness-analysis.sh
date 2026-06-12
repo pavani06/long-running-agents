@@ -209,6 +209,104 @@ check_evidence() {
     return 0
 }
 
+# ── Métricas ────────────────────────────────────────────────────────────────────
+
+# Registra um campo de métrica no test-results.json usando bash builtins.
+# Uso: write_metric <phase> <field> <value>
+write_metric() {
+    local phase="$1"
+    local field="$2"
+    local value="$3"
+    local tmpfile="${RESULTS_FILE}.tmp"
+    local in_target=false
+
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^[[:space:]]*\"$phase\"[[:space:]]*:[[:space:]]*\{$ ]]; then
+            in_target=true
+            echo "$line"
+        elif $in_target && [[ "$line" =~ \"$field\"[[:space:]]*:[[:space:]]* ]]; then
+            # Substitui o valor do campo (null, 0, ou string existente)
+            if [[ "$value" =~ ^[0-9]+$ ]] || [ "$value" = "null" ]; then
+                echo "$line" | sed -E "s/(\"$field\"[[:space:]]*:[[:space:]]*)[^,]*,/\1$value,/"
+            else
+                echo "$line" | sed -E "s/(\"$field\"[[:space:]]*:[[:space:]]*)[^,]*,/\1\"$value\",/"
+            fi
+        else
+            if $in_target && [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
+                in_target=false
+            fi
+            echo "$line"
+        fi
+    done < "$RESULTS_FILE" > "$tmpfile" && command mv "$tmpfile" "$RESULTS_FILE" 2>/dev/null || true
+}
+
+# Gera sumário de métricas a partir do test-results.json.
+report_metrics() {
+    echo ""
+    echo -e "${BLUE}══════════════════════════════════════════════════════════════${NC}"
+    echo -e "${BLUE}  Pipeline Metrics Summary${NC}"
+    echo -e "${BLUE}══════════════════════════════════════════════════════════════${NC}"
+    echo ""
+
+    local total_duration=0
+    local total_retries=0
+    local phase
+    local in_block=false
+    local current_phase=""
+    local current_duration=""
+    local current_retries=""
+
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^[[:space:]]*\"(phase-[0-9]+)\"[[:space:]]*:[[:space:]]*\{$ ]]; then
+            # Print previous phase metrics if available
+            if [ -n "$current_phase" ]; then
+                local flag=""
+                if [ -n "$current_duration" ] && [ "$current_duration" != "null" ] && [ "$current_duration" -gt 600 ] 2>/dev/null; then
+                    flag=" $(echo -e "${YELLOW}← bottleneck${NC}")"
+                fi
+                if [ -n "$current_retries" ] && [ "$current_retries" != "0" ] && [ "$current_retries" != "null" ]; then
+                    flag="$flag ($current_retries retries)"
+                fi
+                printf "  %-12s %6ss%s\n" "$current_phase" "${current_duration:-?}" "$flag"
+            fi
+            current_phase="${BASH_REMATCH[1]}"
+            current_duration=""
+            current_retries=""
+            in_block=true
+        elif $in_block; then
+            if [[ "$line" =~ \"duration_seconds\"[[:space:]]*:[[:space:]]*([0-9]+|null) ]]; then
+                current_duration="${BASH_REMATCH[1]}"
+                if [ "$current_duration" != "null" ] && [ "$current_duration" -gt 0 ] 2>/dev/null; then
+                    total_duration=$((total_duration + current_duration))
+                fi
+            elif [[ "$line" =~ \"retry_count\"[[:space:]]*:[[:space:]]*([0-9]+) ]]; then
+                current_retries="${BASH_REMATCH[1]}"
+                if [ -n "$current_retries" ] && [ "$current_retries" -gt 0 ] 2>/dev/null; then
+                    total_retries=$((total_retries + current_retries))
+                fi
+            elif [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
+                in_block=false
+            fi
+        fi
+    done < "$RESULTS_FILE"
+
+    # Print last phase
+    if [ -n "$current_phase" ]; then
+        local flag=""
+        if [ -n "$current_duration" ] && [ "$current_duration" != "null" ] && [ "$current_duration" -gt 600 ] 2>/dev/null; then
+            flag=" $(echo -e "${YELLOW}← bottleneck${NC}")"
+        fi
+        if [ -n "$current_retries" ] && [ "$current_retries" != "0" ] && [ "$current_retries" != "null" ]; then
+            flag="$flag ($current_retries retries)"
+        fi
+        printf "  %-12s %6ss%s\n" "$current_phase" "${current_duration:-?}" "$flag"
+    fi
+
+    echo ""
+    printf "  %-12s %6ss (%d total retries)\n" "TOTAL" "$total_duration" "$total_retries"
+    echo ""
+}
+
 # ── Builder (adaptado para fases do analyze-and-improve) ───────────────────────
 
 run_builder() {
@@ -265,6 +363,14 @@ $prompt"
 
     log_info "Prompt: $prompt"
     log_info "Executando $AGENT_CLI..."
+
+    # Registra o momento de início da fase
+    local started_at
+    started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "")
+    if [ -n "$started_at" ]; then
+        write_metric "$feature" "started_at" "$started_at"
+        log_info "Métrica: started_at=$started_at"
+    fi
 
     $AGENT_CLI run "$prompt"
 
@@ -335,6 +441,32 @@ If PASS, state it clearly as the first word of your response."
 
     if [ "$verdict_line" = "PASS" ]; then
         log_ok "Evaluator: PASS"
+
+        # Calcula duração e registra completed_at
+        local completed_at duration_sec
+        completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "")
+
+        # Extrai started_at do JSON para calcular duração
+        local started_at_val
+        started_at_val=$(while IFS= read -r line; do
+            if [[ "$line" =~ \"started_at\"[[:space:]]*:[[:space:]]*\"([^\"]+)\" ]]; then
+                echo "${BASH_REMATCH[1]}"
+                break
+            fi
+        done < <(sed -n "/\"$feature\"/,/^\s*\},/p" "$RESULTS_FILE"))
+
+        if [ -n "$started_at_val" ] && [ -n "$completed_at" ]; then
+            local start_epoch end_epoch
+            start_epoch=$(date -d "$started_at_val" +%s 2>/dev/null || echo "0")
+            end_epoch=$(date -d "$completed_at" +%s 2>/dev/null || echo "0")
+            if [ "$start_epoch" != "0" ] && [ "$end_epoch" != "0" ]; then
+                duration_sec=$((end_epoch - start_epoch))
+                write_metric "$feature" "duration_seconds" "$duration_sec"
+                write_metric "$feature" "completed_at" "$completed_at"
+                log_info "Métrica: duration=${duration_sec}s, completed_at=$completed_at"
+            fi
+        fi
+
         # Mark as evaluated using bash builtins (no python3 dependency)
         local tmpfile="${RESULTS_FILE}.tmp"
         local in_target=false
@@ -431,6 +563,19 @@ main_loop() {
             log_ok "Fase '$feature' APROVADA pelo evaluator."
         else
             log_warn "Fase '$feature' REPROVADA. Achados em NEXT_FINDINGS.md."
+
+            # Incrementa retry_count no test-results.json
+            local current_retries
+            current_retries=$(while IFS= read -r line; do
+                if [[ "$line" =~ \"retry_count\"[[:space:]]*:[[:space:]]*([0-9]+) ]]; then
+                    echo "${BASH_REMATCH[1]}"
+                    break
+                fi
+            done < <(sed -n "/\"$feature\"/,/^\s*\},/p" "$RESULTS_FILE"))
+            local new_retries=$(( ${current_retries:-0} + 1 ))
+            write_metric "$feature" "retry_count" "$new_retries"
+            log_info "Métrica: retry_count=$new_retries"
+
             commit_checkpoint
             continue
         fi
@@ -451,6 +596,7 @@ main_loop() {
     else
         log_ok "Pipeline analyze-and-improve completo!"
     fi
+    report_metrics
 }
 
 # ── Entrada ─────────────────────────────────────────────────────────────────────
