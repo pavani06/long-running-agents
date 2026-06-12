@@ -1,0 +1,1146 @@
+# Plano de Implementacao: Quality Gates no Pipeline analyze-and-improve
+# =============================================================================
+# Objetivo: Adicionar verificacao de QUALIDADE (conteudo) ao pipeline,
+# complementando a verificacao de forma que ja existe. O pipeline sempre
+# constroi -- a governanca garante que o construido esta correto.
+#
+# Arquivos alvo principais:
+#   - .opencode/skills/harness-analyze-and-improve/SKILL.md (249 linhas)
+#   - harness/test-results.json (schema)
+#   - docs/analysis/.deferred-ledger.yaml (novo)
+#
+# Patterns aplicados (do SDD Trap, ja canonicalizados):
+#   - Pattern #1: Value-Gated Agent Control Loop → Quality Gate com redo
+#   - Pattern #2: Manual Brake Question Gate → Quality Brake rubric
+#   - Pattern #4: Continue Decision Checkpoint → Checkpoints entre fases
+#   - Pattern #6: Deferred Ledger → Risk tracking ledger
+#   - Pattern #10: Carry Debt Sunset Gate → Metadados de qualidade + revisao
+#
+# Versao alvo do harness: 2.0 (adiciona quality gate ao Step 6)
+# =============================================================================
+
+meta:
+  title: "Plano: Quality Gates no Pipeline analyze-and-improve"
+  type: plan
+  date: "2026-06-12"
+  target_files:
+    - ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+    - "harness/test-results.json"
+    - "docs/analysis/.deferred-ledger.yaml"
+  estimated_effort: "~90 min (leitura + edicao + verificacao)"
+  estimated_lines_added: "~180"
+  estimated_lines_removed: "~10"
+  key_insight: |
+    O harness atual verifica forma (frontmatter, existencia de arquivo,
+    wikilinks). Falta verificacao de conteudo (o canonical doc esta
+    conceitualmente correto? a extracao capturou o insight central?
+    a classificacao tem evidencias solidas?). O Generator-Evaluator
+    esta documentado no repo mas nao e usado pelo proprio pipeline.
+
+# =============================================================================
+# RESPOSTAS AS QUESTOES-CHAVE DO BRIEF
+# =============================================================================
+
+key_questions_answered:
+  - question: "O agente avaliador deve ser o mesmo modelo da fase que ele avalia ou um modelo diferente?"
+    answer: |
+      DIFERENTE. Este e o cerne do Generator-Evaluator. O gerador (agente da
+      fase) e o avaliador devem ser modelos distintos para evitar confirmation
+      bias. Regra pratica:
+      - Fase executada por deep → avaliador usa ultrabrain
+      - Fase executada por ultrabrain → avaliador usa deep
+      - Fase executada por quick (Phase 5) → avaliador usa ultrabrain
+      Isso garante que o vies do gerador nao contamina a avaliacao.
+
+  - question: "O quality gate CP-4 deve BLOQUEAR Phase 4 ou apenas EMITIR warning?"
+    answer: |
+      BLOQUEAR. CP-4 (Phase 3 → Phase 4) e o checkpoint mais critico.
+      Se a classificacao esta errada, 4 agentes deep em paralelo (Phase 4)
+      criam canonical docs, skills, exercises baseados em gaps incorretos.
+      Custo: redo da Phase 3 (~30-50K tokens) vs. custo de 4 agentes deep
+      criando artefatos errados (~200-400K tokens + custo de limpeza).
+      A barra e ALTA: se o avaliador encontrar evidencias fracas, redo na
+      Phase 3 ANTES de disparar Phase 4.
+
+  - question: "O .deferred-ledger.yaml e atualizado pelo harness ou por um agente separado?"
+    answer: |
+      Pelo harness (orquestrador). E um artefato simples (YAML com listas
+      de entradas por categoria) que o orquestrador atualiza inline apos
+      cada execucao completa do pipeline. Nao requer delegacao — o harness
+      le o estado atual, adiciona a nova entrada, e sobrescreve o arquivo.
+      A complexidade esta no schema, nao na operacao de append.
+
+  - question: "Os campos quality_checked_at/review_due_at vao no frontmatter dos canonical docs ou em um arquivo separado?"
+    answer: |
+      No frontmatter dos canonical docs. Segue a convencao existente de
+      metadados no frontmatter (AGENTS.md Rule 16). Campos sao opcionais —
+      docs existentes sem esses campos continuam validos. Docs novos criados
+      na Phase 4 recebem review_due_at = hoje + 6 meses automaticamente.
+      Campos: quality_checked_at, review_due_at, quality_owner, redo_count.
+
+  - question: "Como o harness distingue redo de partial-redo na pratica?"
+    answer: |
+      O harness le o veredicto do avaliador e classifica:
+      - redo: problemas estruturais. Ex: "o analysis.md nao capturou o
+        insight central do artigo", "3 dos 6 campos dos patterns estao
+        vazios". A fase inteira e re-delegada com feedback.
+      - partial-redo: gaps pontuais. Ex: "faltou preencher o campo aliases
+        no frontmatter", "a tabela-sumario tem um erro de contagem".
+        O harness faz edits cirurgicos nos arquivos de output (usando edit).
+      Criterio: se o problema pode ser corrigido com <5 edits pontuais
+      e nao altera a estrutura conceitual do output → partial-redo.
+      Caso contrario → redo.
+
+  - question: "Qual o custo em tokens de adicionar um agente avaliador por fase?"
+    answer: |
+      Estimativa por fase (agente le output ~500-2000 linhas + insumo +
+      emite veredicto ~200-500 linhas):
+      - CP-1 a CP-3: ~8-15K tokens cada
+      - CP-4: ~15-25K tokens (leitura mais profunda, evidencias)
+      - CP-5: ~20-40K tokens total (4 artefatos, avaliados separadamente)
+      Total adicional: ~60-115K tokens por execucao completa.
+      Justificativa: um erro na Phase 1 que contamina Phase 2→3→4 custa
+      ~400-600K tokens (4 agentes deep em paralelo + reexecucao). O custo
+      do quality gate e ~15-20% do custo total do pipeline, e previne
+      o cenario de falha em cascata que custa 3-5x mais.
+
+# =============================================================================
+# PRE-IMPLEMENTATION CHECKS
+# =============================================================================
+
+pre_implementation_checks:
+  - item: "Confirmar estado atual do harness-analyze-and-improve/SKILL.md"
+    command: "wc -l /mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+    expected: "249"
+    action_if_fail: "Re-ler o arquivo para confirmar baseline antes de editar"
+
+  - item: "Confirmar que continue-decision-checkpoint.md NAO existe"
+    command: "ls /mnt/c/Users/pavan/long-running-agents/docs/canonical/continue-decision-checkpoint.md 2>/dev/null"
+    expected: "File not found"
+    action_if_fail: "Se existir: ler e incorporar ao plano como referencia adicional"
+
+  - item: "Confirmar schema atual do test-results.json"
+    command: "python3 -c \"import json; f=open('/mnt/c/Users/pavan/long-running-agents/harness/test-results.json'); d=json.load(f); print(list(d['phase-0'].keys()))\""
+    expected: "['passes', 'evidence', 'evaluated_by', 'notes', 'duration_seconds', 'retry_count', 'started_at', 'completed_at']"
+    action_if_fail: "Re-ler test-results.json para confirmar campos existentes"
+
+  - item: "Confirmar que harness/templates/test-results.json existe e tem estrutura completa"
+    command: "python3 -c \"import json; f=open('/mnt/c/Users/pavan/long-running-agents/harness/templates/test-results.json'); d=json.load(f); print(sorted(d.keys()))\""
+    expected: "['phase-0', 'phase-1', 'phase-2', 'phase-3', 'phase-4', 'phase-5', 'phase-6']"
+    action_if_fail: "Template precisa ser atualizado primeiro (fora do escopo deste plano)"
+
+  - item: "Confirmar que generator-evaluator.md existe (referencia central)"
+    command: "ls /mnt/c/Users/pavan/long-running-agents/docs/canonical/generator-evaluator.md"
+    expected: "File exists"
+    action_if_fail: "Gap critico: o plano referencia Generator-Evaluator como fundamento"
+
+  - item: "Verificar se .deferred-ledger.yaml ja existe (nao deve)"
+    command: "ls /mnt/c/Users/pavan/long-running-agents/docs/analysis/.deferred-ledger.yaml 2>/dev/null"
+    expected: "File not found"
+    action_if_fail: "Se existir: ler, entender estado atual, e fazer merge no novo schema"
+
+# =============================================================================
+# TASK 1: Atualizar test-results.json — novos campos de qualidade
+# =============================================================================
+# Objetivo: Adicionar campos quality_threshold, quality_check_passed,
+# quality_evaluated_by, e quality_feedback a cada fase no schema.
+# Estes campos sao preenchidos pelo quality gate (Step 6 modificado).
+# =============================================================================
+
+task_1:
+  id: "schema-quality-fields"
+  file: "harness/test-results.json"
+  effort: "5 min"
+  description: "Adicionar campos de quality gate ao schema de cada fase no test-results.json ativo"
+  dependencies: []
+  changes:
+    - edit_id: "add-quality-fields-active"
+      type: "edit"
+      file: "harness/test-results.json"
+      old_string: |-
+            "duration_seconds": null,
+            "retry_count": 0,
+            "started_at": null,
+            "completed_at": null
+      new_string: |-
+            "duration_seconds": null,
+            "retry_count": 0,
+            "started_at": null,
+            "completed_at": null,
+            "quality_threshold": "medium",
+            "quality_check_passed": null,
+            "quality_evaluated_by": null,
+            "quality_feedback": null,
+            "quality_redo_count": 0
+      verification:
+        - "Todos os 7 blocos phase-N tem os 4 novos campos"
+        - "quality_threshold e 'medium' por default em phases 0-3,5,6 e 'high' em phase-4"
+        - "quality_check_passed, quality_evaluated_by, quality_feedback sao null"
+        - "quality_redo_count e 0"
+
+# =============================================================================
+# TASK 2: Atualizar template test-results.json — novos campos
+# =============================================================================
+# Objetivo: Espelhar os novos campos no template para que o Step 0
+# (reset state) produza um arquivo completo.
+# =============================================================================
+
+task_2:
+  id: "schema-quality-fields-template"
+  file: "harness/templates/test-results.json"
+  effort: "5 min"
+  description: "Adicionar campos de quality gate ao template para reset future-proof"
+  dependencies: []
+  changes:
+    - edit_id: "add-quality-fields-template"
+      type: "edit"
+      file: "harness/templates/test-results.json"
+      old_string: |-
+            "duration_seconds": null,
+            "retry_count": 0,
+            "started_at": null,
+            "completed_at": null
+      new_string: |-
+            "duration_seconds": null,
+            "retry_count": 0,
+            "started_at": null,
+            "completed_at": null,
+            "quality_threshold": "medium",
+            "quality_check_passed": null,
+            "quality_evaluated_by": null,
+            "quality_feedback": null,
+            "quality_redo_count": 0
+      verification:
+        - "Template tem os 4 novos campos em todas as 7 fases"
+        - "Template e JSON valido (python3 -m json.tool)"
+
+# =============================================================================
+# TASK 3: Modificar harness Step 6 — adicionar quality gate apos form check
+# =============================================================================
+# Local: .opencode/skills/harness-analyze-and-improve/SKILL.md, secao '### Step 6: Evaluate'
+# Linhas ~164-189 (Step 6 atual)
+#
+# Objetivo: Apos a verificacao de forma (arquivos existem, conteudo substancial,
+# Obsidian conventions), adicionar um segundo passo: delegar para um agente
+# avaliador independente que avalia QUALIDADE do conteudo e emite pass | redo |
+# partial-redo.
+#
+# O Step 6 atual tem 2 blocos: "If PASS:" e "If NEEDS_WORK:"
+# O novo Step 6 tera 2 fases: (A) Form check (atual), (B) Quality check (novo)
+#
+# Fluxo novo:
+#   6a. Run form self-check (atual)
+#   6b. If form PASS → delegate quality evaluator
+#   6c. Read evaluator verdict: pass | redo | partial-redo
+#   6d. If pass → same as current PASS flow + fill quality fields
+#   6e. If redo → increment quality_redo_count, re-delegate phase with feedback
+#   6f. If partial-redo → apply specific corrections, then mark pass
+# =============================================================================
+
+task_3:
+  id: "harness-step6-quality-gate"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "30 min"
+  description: "Reescrever Step 6 para incluir quality gate com agente avaliador independente"
+  dependencies: ["task_1", "task_2"]
+  changes:
+
+    # ------------------------------------------------------------------
+    # Edicao 3a: Expandir descricao do Step 6
+    # ------------------------------------------------------------------
+    - edit_id: "step6-expand-header"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+        ### Step 6: Evaluate
+
+        Run a self-check:
+        - Do output files exist and have substantial content?
+        - Does content match the phase objective?
+        - Are Obsidian conventions followed (if applicable)? Check for mandatory fields: `type`, `tags`, `aliases`, `relates-to`.
+        - Run `bash scripts/check-obsidian-conventions.sh` (if available)
+
+        If PASS:
+        - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
+        - Calculate `duration_seconds` = elapsed seconds between `started_at` and `completed_at`.
+          Use shell arithmetic: compute epoch difference with `date -d` (GNU) or
+          a tool available in the execution environment. Store as integer seconds
+          in `harness/test-results.json`.
+        - Set `evaluated_by` to `"evaluator"` for that phase
+        - Update PROGRESS.md: use edit com oldString/newString precisos.
+          Prefira editar a secao '## Done' e '## To Do' individualmente.
+          Se edit falhar (whitespace mismatch), leia o arquivo novamente
+          e tente com contexto adicional.
+
+        If NEEDS_WORK:
+        - Increment `retry_count` in `harness/test-results.json` for the current phase.
+          This tracks how many times the phase was retried before eventually passing —
+          essential for identifying pipeline bottlenecks.
+        - Write findings to `NEXT_FINDINGS.md`
+        - Do NOT change `passes` or `evaluated_by` (so harness retries on next run)
+      new_string: |-
+        ### Step 6: Evaluate
+
+        A avaliacao tem dois estagios. Execute ambos em sequencia.
+
+        #### Step 6a: Form Check (self-check)
+
+        Run a self-check:
+        - Do output files exist and have substantial content?
+        - Does content match the phase objective?
+        - Are Obsidian conventions followed (if applicable)? Check for mandatory fields: `type`, `tags`, `aliases`, `relates-to`.
+        - Run `bash scripts/check-obsidian-conventions.sh` (if available)
+
+        If form NEEDS_WORK:
+        - Increment `retry_count` in `harness/test-results.json` for the current phase.
+        - Write findings to `NEXT_FINDINGS.md`
+        - Do NOT change `passes` or `evaluated_by` (so harness retries on next run)
+        - STOP. Do not proceed to quality check.
+
+        If form PASS, proceed to Step 6b.
+
+        #### Step 6b: Quality Check (delegated to independent evaluator)
+
+        After form passes, delegate a QUALITY evaluation to an independent agent.
+        This implements the [[docs/canonical/generator-evaluator|Generator-Evaluator]]
+        pattern: the phase agent is the Generator, the quality evaluator is the
+        independent Evaluator.
+
+        **Evaluator model selection:**
+        - If phase was executed by `deep` → evaluator uses `ultrabrain`
+        - If phase was executed by `ultrabrain` → evaluator uses `deep`
+        - If phase was executed by `quick` → evaluator uses `ultrabrain`
+
+        **Quality thresholds by phase:**
+        | Phase | Checkpoint | Threshold | Bar |
+        |-------|-----------|-----------|-----|
+        | phase-0 | CP-1 | low | Modelo mental capturou estrutura real do repo? |
+        | phase-1 | CP-2 | medium | Extracao e fiel ao artigo fonte? Sem vies, sem omissao? |
+        | phase-2 | CP-3 | medium | Patterns tem 6 campos preenchidos? Nomes sao precisos? |
+        | phase-3 | CP-4 | high | Evidencias da classificacao sao solidas? NOT_FOUND tem lista de locais? |
+        | phase-4 | CP-5 | high | Cada artefato atende ao contrato? Conceitualmente correto? |
+        | phase-5 | CP-6 | low | System-of-record e indices foram atualizados corretamente? |
+        | phase-6 | CP-7 | medium | Curriculum modificado preserva formato e estilo? |
+
+        **Delegation contract for the evaluator:**
+
+        ```typescript
+        task(
+          category="<evaluator-model>",
+          load_skills=[],
+          run_in_background=false,
+          prompt="TASK: Evaluate the quality of the phase output below. You are an
+        INDEPENDENT evaluator — you did NOT generate this output. Your job is to
+        find what is wrong, missing, or conceptually incorrect.
+
+        TARGET_REPOSITORY:
+          path: <absolute-path-to-repo>
+          name: <repo-name>
+          output_dir: <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/
+          system_of_record: <absolute-path-to-repo>/docs/system-of-record.md
+          branch: main
+
+        CURRENT PHASE: <phase-N>
+        QUALITY THRESHOLD: <low|medium|high>
+
+        EVALUATION RUBRIC — Quality Brake Questions (from Manual Brake pattern,
+        translated for quality):
+
+        1. 'Quem vai usar este artefato, e o que quebra se ele estiver errado?'
+           → Se ninguem usaria ou o erro for inofensivo: barra mais baixa
+           → Se for referenciado por 5+ outros docs: barra mais alta
+
+        2. 'Ainda publicariamos este artefato se auditar sua qualidade custasse
+           uma semana?'
+           → Restaura o custo-proxy: se a resposta for 'nao', o artefato precisa
+             de mais revisao antes de ser publicado
+
+        3. 'Quem e o dono de dizer este artefato nao esta pronto, refaca?'
+           → O harness registra quem avaliou e quem pode vetar
+
+        PHASE-SPECIFIC CHECKS:
+
+        [Phase 0 — Repository Mental Model]:
+        - O modelo cobre goals, arquitetura, padroes, abstracoes, terminologia e gaps?
+        - As abstracoes estao nomeadas corretamente (batem com system-of-record.md)?
+        - Ha gaps obvios que o modelo deveria ter capturado mas nao capturou?
+
+        [Phase 1 — Knowledge Extraction]:
+        - A sintese capturou corretamente os frameworks, patterns e tradeoffs do artigo fonte?
+        - Ha vies de interpretacao? Algum conceito foi mal compreendido?
+        - O analysis.md filtra marketing, anedotas e filler conforme as regras?
+        - As secoes (Frameworks, Patterns, Lessons, Tradeoffs, Failures, Synthesis)
+          tem conteudo substancial e nao-obvio?
+
+        [Phase 2 — Pattern Extraction]:
+        - Cada pattern tem os 6 campos obrigatorios (name, problem_solved, inputs,
+          outputs, benefits, limitations) preenchidos com conteudo real?
+        - Os nomes dos patterns sao precisos e descritivos?
+        - Nao ha patterns duplicados ou triviais (ex: 'testar e importante')?
+        - Os patterns sao aplicaveis a sistemas agenticos (escopo declarado)?
+
+        [Phase 3 — Classification]:
+        - Cada classificacao tem evidencias file:line concretas?
+        - NOT_FOUND inclui a lista de locais buscados (nao apenas 'NOT_FOUND')?
+        - A tabela-sumario confere com as classificacoes detalhadas?
+        - As fontes de evidencia respeitam a precedencia do system-of-record.md?
+        - Alguma classificacao parece errada? (ex: marcou Missing mas o repo tem
+          coverage clara em canonical docs)
+
+        [Phase 4 — Improvement Generation]:
+        - Cada canonical doc cobre: Problem, Solution, Implementation in this repo,
+          Tradeoffs, Relationship to Other Patterns, References?
+        - Cada canonical doc esta conceitualmente alinhado com o pattern original?
+        - Skills tem: What I Do, When to Use, Anti-Pattern, Pattern, Quality Gates?
+        - Exercises seguem o formato do curriculum (narrative, scenario, requirements,
+          skeleton code, acceptance criteria)?
+        - Artefatos para Missing tem canonical doc + skill + exercise?
+        - Artefatos para P1 tem canonical doc?
+        - NAO foram criados artefatos para Already Exists ou Better Implementation?
+
+        [Phase 5 — Integration]:
+        - system-of-record.md reflete o novo estado com data atualizada?
+        - Indices (INDEX.md, README.md, MASTER_PLAN.md) foram atualizados?
+        - git diff --stat mostra apenas arquivos relacionados a esta sessao?
+
+        [Phase 6 — Curriculum Deep Integration]:
+        - Apenas curriculum/ foi modificado (docs/canonical/ intocado)?
+        - Nenhum arquivo novo foi criado no curriculum/?
+        - Formato, estilo e idioma (PT-BR) foram preservados?
+        - Missing patterns tem integracao profunda (subsecoes, checklists, gates),
+          nao apenas cross-references?
+
+        INPUTS — Read these files:
+        1. The phase output files (evidence paths from test-results.json):
+           <list evidence paths for this phase>
+        2. The original source/input for this phase:
+           <paste relevant input — source document for Phase 1, patterns.md for Phase 2, etc.>
+        3. The repository mental model (for context):
+           docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md
+
+        OUTPUT: Emit a structured verdict in this EXACT format:
+
+        VERDICT: <pass|redo|partial-redo>
+
+        JUSTIFICATION: <2-5 sentences explaining the verdict. Reference specific
+        findings with file:line when applicable.>
+
+        FINDINGS:
+        - <finding 1 — specific, actionable>
+        - <finding 2>
+        - ...
+
+        CORRECTIONS_NEEDED (only for partial-redo):
+        - file: <path>, issue: <what to fix>, suggestion: <how to fix>
+        - ...
+
+        REDO_FEEDBACK (only for redo):
+        <Precise instructions for the next agent attempting this phase.
+        Include: what was wrong, what the correct approach is, what to
+        avoid, and any constraints the next agent must respect.>"
+        )
+        ```
+
+        #### Step 6c: Process Evaluator Verdict
+
+        Read the evaluator's output and extract VERDICT from the first line.
+
+        **If VERDICT = pass:**
+        - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json`
+        - Calculate `duration_seconds` = elapsed seconds between `started_at` and `completed_at`
+        - Set `evaluated_by` to `"evaluator"` for that phase
+        - Set `quality_check_passed` to `true`
+        - Set `quality_evaluated_by` to the evaluator model name (e.g., `"ultrabrain"`)
+        - Set `quality_feedback` to the evaluator's JUSTIFICATION (first 200 chars)
+        - Update PROGRESS.md: use edit com oldString/newString precisos
+
+        **If VERDICT = redo:**
+        - Increment `quality_redo_count` in `harness/test-results.json`
+        - Write the evaluator's REDO_FEEDBACK to `NEXT_FINDINGS.md`
+        - Do NOT change `passes` or `evaluated_by` (harness retries with feedback)
+        - Set `quality_check_passed` to `false`
+        - Set `quality_evaluated_by` to the evaluator model name
+        - Set `quality_feedback` to the evaluator's JUSTIFICATION
+        - For CP-4 (phase-3 → phase-4): BLOCK phase-4. The harness must NOT
+          advance to phase-4 until phase-3 passes quality check.
+
+        **If VERDICT = partial-redo:**
+        - Apply the specific corrections listed in CORRECTIONS_NEEDED
+          using `edit` tool with oldString/newString from the suggestion
+        - After corrections, mark as pass (no re-delegation needed)
+        - Increment `quality_redo_count` for tracking (even partial counts)
+        - Set `quality_check_passed` to `true` after corrections applied
+        - Set `quality_feedback` to "partial-redo: <summary of corrections applied>"
+
+        #### Quality Gate Flow Summary
+
+        ```
+        Step 6a: Form Check
+              │
+              ├── NEEDS_WORK → increment retry_count, write NEXT_FINDINGS.md, STOP
+              │
+              ▼ PASS
+        Step 6b: Delegate Quality Evaluator (independent agent)
+              │
+              ▼
+        Step 6c: Process Verdict
+              │
+              ├── pass → mark complete, advance
+              │
+              ├── redo → increment quality_redo_count, write feedback, STOP
+              │         (harness retries same phase on next run with feedback)
+              │
+              └── partial-redo → apply corrections, mark pass, advance
+        ```
+      verification:
+        - "Step 6 agora tem subsecoes 6a, 6b, 6c"
+        - "Step 6a e o form check original (com NEEDS_WORK tratado primeiro)"
+        - "Step 6b contem a tabela de quality thresholds por fase"
+        - "Step 6b contem o bloco task() com o prompt template do avaliador"
+        - "Step 6b contem phase-specific checks para todas as 7 fases"
+        - "Step 6b menciona Generator-Evaluator como fundamento"
+        - "Step 6c processa os 3 veredictos (pass, redo, partial-redo)"
+        - "Step 6c menciona que CP-4 (phase-3) BLOQUEIA phase-4"
+        - "Fluxograma ASCII no final confirma o fluxo"
+
+# =============================================================================
+# TASK 4: Adicionar Anti-Patterns sobre quality gates
+# =============================================================================
+# Local: .opencode/skills/harness-analyze-and-improve/SKILL.md, secao '## Anti-Patterns'
+# Aproximadamente linha 229 (antes de '## Reference')
+# =============================================================================
+
+task_4:
+  id: "harness-anti-patterns-quality"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "5 min"
+  description: "Adicionar anti-patterns relacionados ao quality gate"
+  dependencies: ["task_3"]
+  changes:
+    - edit_id: "anti-patterns-quality"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+        ## Reference
+      new_string: |-
+        - Avancar para Phase 4 sem quality gate CP-4 ter passado. O CP-4 e o
+          checkpoint mais critico — uma classificacao errada gera 4 agentes deep
+          criando artefatos baseados em gaps incorretos. Custo do redo da Phase 3
+          (~30-50K tokens) e muito menor que o custo de limpar canonical docs,
+          skills e exercises errados.
+        - Usar o mesmo modelo como gerador e avaliador. O quality gate implementa
+          Generator-Evaluator: gerador e avaliador devem ser modelos DIFERENTES.
+          Se deep gerou → ultrabrain avalia. Se ultrabrain gerou → deep avalia.
+          Mesmo modelo = confirmation bias = quality gate inutil.
+        - Tratar partial-redo como redo. Se o avaliador diz 'partial-redo' com
+          correcoes pontuais (frontmatter, typo, tabela), aplique os edits e
+          avance. Nao re-delegue a fase inteira para corrigir um campo aliases.
+        - Ignorar o veredicto do quality evaluator e marcar pass mesmo assim.
+          Se o avaliador disse redo, a fase nao passou. O harness NAO tem
+          autoridade para sobrepor o avaliador de qualidade.
+        - Delegar o quality evaluator com run_in_background=true. A avaliacao
+          de qualidade e sincrona — o harness precisa do veredicto para decidir
+          se avanca ou re-delega. Background evaluation quebra a cadeia de decisao.
+        - Executar qualidade sem ler o output da fase. O prompt do avaliador
+          DEVE incluir os paths dos arquivos de output (evidence) e o insumo
+          original da fase. Sem isso, o avaliador avalia contra nada.
+
+        ## Reference
+      verification:
+        - "6 novos anti-patterns adicionados antes de ## Reference"
+        - "Anti-pattern sobre CP-4 menciona custo comparativo"
+        - "Anti-pattern sobre modelo menciona Generator-Evaluator"
+        - "Anti-pattern sobre partial-redo vs redo explica criterio"
+        - "Anti-pattern sobre background menciona cadeia de decisao"
+
+# =============================================================================
+# TASK 5: Atualizar Step 7 — integracao com quality gate
+# =============================================================================
+# Local: .opencode/skills/harness-analyze-and-improve/SKILL.md, secao '### Step 7: Advance or Stop'
+# Objetivo: Adicionar logica de bloqueio CP-4 e referenciar quality_redo_count
+# no metrics summary.
+# =============================================================================
+
+task_5:
+  id: "harness-step7-quality"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "10 min"
+  description: "Atualizar Step 7 para integrar com quality gate decisions"
+  dependencies: ["task_3"]
+  changes:
+    - edit_id: "step7-quality-integration"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+        ### Step 7: Advance or Stop
+
+        - If `mode=once`: stop after one phase, ask user "Continue?"
+        - If `mode=feature:<phase-N>`: stop after that phase
+        - If `mode=loop`: auto-advance to next pending phase WITHOUT
+          asking. Only stop if:
+          a) AGENT_STOP file exists at repo root, OR
+          b) No more pending phases (all passes=true), OR
+          c) A phase fails evaluation (NEEDS_WORK)
+        - If no more pending phases (all passes=true): report completion with a
+          metrics summary. Read `harness/test-results.json` and output a table:
+
+          ```
+          Pipeline Metrics Summary:
+            phase-0:  NNNs (N retries)
+            phase-1:  NNNs (N retries)
+            ...
+            phase-6:  NNNs (N retries) [optional]
+            TOTAL:    NNNNs (N total retries)
+          ```
+
+          This summary answers the question "onde o pipeline gasta mais tempo?"
+          and guides optimization efforts. Phases with `retry_count > 0` or
+          `duration_seconds > 600` (10 min) are flagged with `← bottleneck`.
+      new_string: |-
+        ### Step 7: Advance or Stop
+
+        - If `mode=once`: stop after one phase, ask user "Continue?"
+        - If `mode=feature:<phase-N>`: stop after that phase
+        - If `mode=loop`: auto-advance to next pending phase WITHOUT
+          asking. Only stop if:
+          a) AGENT_STOP file exists at repo root, OR
+          b) No more pending phases (all passes=true), OR
+          c) A phase fails evaluation (NEEDS_WORK or quality_redo)
+
+        **CP-4 Block Rule (Phase 3 → Phase 4):**
+        Before advancing from phase-3 to phase-4, CHECK that phase-3's
+        `quality_check_passed` is `true`. If phase-3 passed form check
+        but failed quality check (quality_check_passed is false or null),
+        do NOT advance to phase-4. The quality gate at CP-4 is a hard block —
+        a classification error at phase-3 causes 4 parallel deep agents
+        in phase-4 to create artifacts based on incorrect gaps.
+
+        - If no more pending phases (all passes=true): report completion with a
+          metrics summary. Read `harness/test-results.json` and output a table:
+
+          ```
+          Pipeline Metrics Summary:
+            phase-0:  NNNs (N retries, N quality-redos)
+            phase-1:  NNNs (N retries, N quality-redos)
+            ...
+            phase-6:  NNNs (N retries, N quality-redos) [optional]
+            TOTAL:    NNNNs (N total retries, N total quality-redos)
+          ```
+
+          This summary answers the question "onde o pipeline gasta mais tempo?"
+          and guides optimization efforts. Phases with `retry_count > 0` or
+          `duration_seconds > 600` (10 min) are flagged with `← bottleneck`.
+          Phases with `quality_redo_count > 0` are flagged with `← quality`.
+      verification:
+        - "Step 7 inclui 'or quality_redo' na condicao de parada"
+        - "Step 7 inclui a regra CP-4 Block com justificativa"
+        - "Metrics summary inclui quality-redos por fase"
+        - "Legenda de flags inclui '← quality'"
+
+# =============================================================================
+# TASK 6: Criar .deferred-ledger.yaml
+# =============================================================================
+# Objetivo: Criar o ledger de risco que rastreia skill debt, dependence debt,
+# e carry debt acumulados pelas execucoes do pipeline.
+# Local: docs/analysis/.deferred-ledger.yaml (novo arquivo)
+#
+# Schema:
+#   meta: {title, type, last_updated, description}
+#   executions: [list of past pipeline executions with metrics]
+#   skill_debt: {audit_count_this_month, last_deep_audit_date, assessment}
+#   dependence_debt: {pipeline_model_dependencies, degradation_risk}
+#   carry_debt: [list of artifacts with quality issues, redo_count > 0]
+# =============================================================================
+
+task_6:
+  id: "create-deferred-ledger"
+  file: "docs/analysis/.deferred-ledger.yaml"
+  effort: "15 min"
+  description: "Criar o deferred ledger YAML com schema inicial e seed data"
+  dependencies: []
+  type: "write"
+  content: |-
+    # Deferred Ledger for Agentic Work — Pipeline analyze-and-improve
+    # =============================================================================
+    # Rastreia 3 categorias de divida acumulada pelas execucoes do pipeline:
+    #   Skill Debt: quantas auditorias profundas foram feitas este mes?
+    #   Dependence Debt: o pipeline depende de quais modelos? Algum degradou?
+    #   Carry Debt: artefatos com problemas de qualidade que persistem?
+    #
+    # Este arquivo NAO bloqueia o pipeline — e um artefato informativo que
+    # o orquestrador consulta para decidir "precisamos de auditoria profunda?"
+    #
+    # Atualizado pelo harness apos cada execucao completa (todas as fases).
+    # =============================================================================
+
+    meta:
+      title: "Deferred Ledger — Pipeline analyze-and-improve"
+      type: "ledger"
+      last_updated: "2026-06-12"
+      description: >
+        Risk tracking ledger for the analyze-and-improve pipeline. Tracks skill
+        debt (human audit atrophy), dependence debt (model degradation risk),
+        and carry debt (low-quality artifacts in permanent inventory).
+
+    # ---------------------------------------------------------------------------
+    # Execucoes do pipeline — uma entrada por execucao completa
+    # ---------------------------------------------------------------------------
+    executions:
+      - execution_id: "2026-06-12-quality-gates"
+        date: "2026-06-12"
+        source_slug: "idsd-method"
+        phases_completed: 4
+        total_retries: 0
+        total_quality_redos: 0
+        artifacts_created: 0
+        artifacts_with_redo: 0
+        notes: "Execucao inicial do quality-gated harness. Fases 0-3 completas, Phase 4 pendente."
+
+    # ---------------------------------------------------------------------------
+    # Skill Debt — Julgamento humano nao exercitado atrofia
+    # ---------------------------------------------------------------------------
+    skill_debt:
+      deep_audits_this_month: 0
+      last_deep_audit_date: null
+      assessment: >
+        Nenhuma auditoria profunda foi realizada neste mes. A capacidade humana
+        de julgar qualidade de canonical docs esta em risco de atrofia.
+        Recomendacao: agendar uma sessao de auditoria de 1-2h para revisar
+        canonical docs criados nas ultimas 4 semanas.
+      next_recommended_audit: "2026-07-01"
+
+    # ---------------------------------------------------------------------------
+    # Dependence Debt — Dependencia em modelos que podem degradar
+    # ---------------------------------------------------------------------------
+    dependence_debt:
+      pipeline_dependencies:
+        - model: "deep"
+          used_in: ["phase-1", "phase-3", "phase-4", "phase-6"]
+          degradation_risk: "medium"
+          notes: "Modelo principal para extracao, classificacao, geracao. Se degradar, quality gate deve detectar via redo counts."
+        - model: "ultrabrain"
+          used_in: ["phase-0", "phase-2"]
+          degradation_risk: "low"
+          notes: "Modelo para sintese e modelo mental. Degradacao afeta qualidade do modelo mental e extracao de patterns."
+        - model: "quick"
+          used_in: ["phase-5"]
+          degradation_risk: "low"
+          notes: "Usado apenas para integracao (atualizar indices). Impacto limitado."
+      degradation_indicators:
+        - "Aumento sustentado de quality_redo_count (>2 por execucao por 3 execucoes)"
+        - "Avaliador comeca a detectar mesmos tipos de erro repetidamente"
+        - "Fase especifica consistentemente mais lenta (>2x baseline)"
+      last_health_check: null
+
+    # ---------------------------------------------------------------------------
+    # Carry Debt — Artefatos de baixa qualidade viram inventario permanente
+    # ---------------------------------------------------------------------------
+    carry_debt:
+      artifacts_with_quality_issues: []
+      # Formato de cada entrada:
+      #   - artifact_path: path relativo ao repo
+      #   - created_in_execution: execution_id
+      #   - quality_redo_count: quantas vezes precisou de redo
+      #   - last_review_date: quando foi revisado pela ultima vez
+      #   - dependents: [paths que referenciam este artefato via wikilinks]
+      #   - risk: "low" | "medium" | "high" (quantos artefatos dependem deste)
+      artifacts_sunset_candidates: []
+      # Artefatos com review_due_at vencido — candidatos a auditoria ou remocao
+      total_carry_artifacts: 0
+      notes: >
+        Todo artefato criado na Phase 4 recebe review_due_at = criacao + 6 meses
+        no frontmatter. Artefatos com review_due_at vencido aparecem em
+        artifacts_sunset_candidates e devem ser auditados na proxima execucao.
+
+    # ---------------------------------------------------------------------------
+    # Meta-ledger: o proprio ledger tambem acumula carry debt
+    # ---------------------------------------------------------------------------
+    ledger_health:
+      last_updated_by: "harness"
+      update_cadence: "after_each_full_pipeline_execution"
+      notes: "Este arquivo e atualizado pelo harness — nao requer manutencao manual."
+  verification:
+    - "Arquivo e YAML valido (python3 -c 'import yaml; yaml.safe_load(open(...))')"
+    - "Tem as 3 secoes de debt: skill_debt, dependence_debt, carry_debt"
+    - "Meta tem last_updated e type: ledger"
+    - "Executions tem a execucao atual como seed data"
+    - "Schema de carry_debt.artifacts_with_quality_issues documentado em comentario"
+
+# =============================================================================
+# TASK 7: Atualizar harness para popular .deferred-ledger.yaml
+# =============================================================================
+# Objetivo: Apos execucao completa do pipeline (todas as fases pass),
+# o harness atualiza o .deferred-ledger.yaml com os dados da execucao.
+# Local: .opencode/skills/harness-analyze-and-improve/SKILL.md, Step 7
+# =============================================================================
+
+task_7:
+  id: "harness-populate-ledger"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "10 min"
+  description: "Adicionar atualizacao do deferred ledger no Step 7 apos conclusao"
+  dependencies: ["task_5", "task_6"]
+  changes:
+    - edit_id: "step7-ledger-update"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+          Phases with `quality_redo_count > 0` are flagged with `← quality`.
+      new_string: |-
+          Phases with `quality_redo_count > 0` are flagged with `← quality`.
+
+          ### Step 7b: Update Deferred Ledger
+
+          After ALL phases are complete (pipeline finished successfully), update
+          `docs/analysis/.deferred-ledger.yaml`:
+
+          1. Read the current ledger file.
+          2. Append a new entry to `executions:` with:
+             - execution_id, date, source_slug
+             - phases_completed, total_retries, total_quality_redos
+             - artifacts_created (count), artifacts_with_redo (count)
+          3. Update `carry_debt.artifacts_with_quality_issues`:
+             - For each artifact created in this execution with quality_redo_count > 0,
+               add an entry with artifact_path, quality_redo_count, dependents (estimate
+               from wikilinks pointing to it), and risk level.
+          4. Update `carry_debt.total_carry_artifacts` with the new count.
+          5. Update `meta.last_updated` to today's date.
+          6. Update `dependence_debt.last_health_check` to today's date.
+          7. Write the updated ledger back to `docs/analysis/.deferred-ledger.yaml`.
+
+          This is a simple YAML append operation — do NOT delegate. The harness
+          reads, modifies, and writes the file directly.
+
+          **Sunset Check (pre-Phase 0 for next execution):**
+          Before the NEXT pipeline execution, quickly scan the ledger:
+          - If `skill_debt.deep_audits_this_month` is 0 and it's past the 15th,
+            suggest to the user: "0 deep audits this month. Schedule one?"
+          - If `carry_debt.artifacts_sunset_candidates` is non-empty, list them
+            and suggest: "N artifacts have expired review dates. Audit before
+            creating more?"
+          - This is INFORMATIONAL only — does not block the pipeline.
+      verification:
+        - "Step 7b adicionado apos metrics summary"
+        - "Descreve 7 passos de atualizacao do ledger"
+        - "Menciona que NAO deve delegar — harness faz inline"
+        - "Inclui Sunset Check para a proxima execucao"
+        - "Sunset Check e informativo, nao bloqueante"
+
+# =============================================================================
+# TASK 8: Adicionar campos de qualidade no frontmatter de canonical docs
+# =============================================================================
+# Objetivo: Definir o contrato para que canonical docs criados na Phase 4
+# recebam metadados de qualidade: quality_checked_at, review_due_at,
+# quality_owner, redo_count.
+#
+# Estes campos sao OPCIONAIS no frontmatter — docs existentes sem eles
+# continuam validos. Apenas docs NOVOS criados na Phase 4 recebem.
+#
+# Esta task modifica o prompt de delegacao da Phase 4 no analyze-and-improve/SKILL.md
+# para incluir a instrucao de adicionar estes campos.
+# =============================================================================
+
+task_8:
+  id: "canonical-quality-frontmatter"
+  file: ".opencode/skills/analyze-and-improve/SKILL.md"
+  effort: "15 min"
+  description: "Adicionar campos de qualidade no contrato da Phase 4 (canonical docs)"
+  dependencies: []
+  changes:
+    - edit_id: "phase4-quality-frontmatter"
+      type: "edit"
+      file: ".opencode/skills/analyze-and-improve/SKILL.md"
+      old_string: |-
+        Write files to: docs/canonical/<slug>.md"
+      new_string: |-
+        Write files to: docs/canonical/<slug>.md
+
+        QUALITY METADATA: Every canonical doc created MUST include these additional
+        frontmatter fields (they are OPTIONAL per AGENTS.md Rule 16, but mandatory
+        for pipeline-created canonical docs):
+
+        quality_checked_at: null  # Set to null on creation — filled on first deep audit
+        review_due_at: <today + 6 months in YYYY-MM-DD>  # ISO 8601 date
+        quality_owner: "pipeline"  # Who is responsible for auditing quality
+        redo_count: 0  # How many times this artifact needed quality redo
+
+        These fields enable the Carry Debt Sunset Gate: every artifact has an
+        expiration date for mandatory review, a named quality owner, and a
+        counter for how many times it needed to be redone before passing."
+      verification:
+        - "Prompt do Agente 1 (Canonical Docs) na Phase 4 inclui QUALITY METADATA"
+        - "Campos listados: quality_checked_at, review_due_at, quality_owner, redo_count"
+        - "review_due_at usa today + 6 meses"
+        - "quality_owner default e 'pipeline'"
+        - "Campos sao descritos como opcionais per AGENTS.md Rule 16, mas mandatorios para o pipeline"
+
+# =============================================================================
+# TASK 9: Atualizar Verification Gates do analyze-and-improve/SKILL.md
+# =============================================================================
+# Objetivo: Adicionar gates de verificacao relacionados a quality gates
+# e deferred ledger no final do analyze-and-improve/SKILL.md.
+# =============================================================================
+
+task_9:
+  id: "verification-gates-quality"
+  file: ".opencode/skills/analyze-and-improve/SKILL.md"
+  effort: "5 min"
+  description: "Adicionar verification gates sobre quality gates e deferred ledger"
+  dependencies: ["task_6", "task_8"]
+  changes:
+    - edit_id: "verification-gates-quality"
+      type: "edit"
+      file: ".opencode/skills/analyze-and-improve/SKILL.md"
+      old_string: |-
+        - [ ] Se `incremental=true`, o `mental-model.yaml` tem campo `meta.based_on` apontando para o modelo anterior
+
+        ---
+
+        ## Reference Implementations
+      new_string: |-
+        - [ ] Se `incremental=true`, o `mental-model.yaml` tem campo `meta.based_on` apontando para o modelo anterior
+        - [ ] Quality gate executado para TODAS as fases: quality_check_passed e quality_evaluated_by preenchidos em test-results.json
+        - [ ] Nenhuma fase avancou com quality_check_passed=false (especialmente CP-4: phase-3 → phase-4)
+        - [ ] Generator e evaluator usaram modelos DIFERENTES (deep→ultrabrain ou ultrabrain→deep)
+        - [ ] `docs/analysis/.deferred-ledger.yaml` foi atualizado com a execucao corrente
+        - [ ] Canonical docs criados na Phase 4 tem quality_checked_at, review_due_at, quality_owner, redo_count no frontmatter
+        - [ ] `review_due_at` nos canonical docs novos e exatamente hoje + 6 meses
+        - [ ] Artifacts com quality_redo_count > 0 estao listados em .deferred-ledger.yaml → carry_debt
+
+        ---
+
+        ## Reference Implementations
+      verification:
+        - "8 novos verification gates adicionados"
+        - "Gate do CP-4 menciona phase-3 → phase-4 especificamente"
+        - "Gate do Generator-Evaluator menciona modelos diferentes"
+        - "Gate do deferred ledger menciona atualizacao"
+        - "Gate do review_due_at menciona hoje + 6 meses"
+
+# =============================================================================
+# TASK 10: Atualizar Anti-Patterns do analyze-and-improve/SKILL.md
+# =============================================================================
+
+task_10:
+  id: "analyze-anti-patterns-quality"
+  file: ".opencode/skills/analyze-and-improve/SKILL.md"
+  effort: "5 min"
+  description: "Adicionar anti-patterns sobre quality gates no pipeline principal"
+  dependencies: ["task_8"]
+  changes:
+    - edit_id: "analyze-anti-patterns-quality"
+      type: "edit"
+      file: ".opencode/skills/analyze-and-improve/SKILL.md"
+      old_string: |-
+        - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+
+        ---
+
+        ## Verification Gates
+      new_string: |-
+        - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+        - **Aceitar qualidade de forma como suficiente.** O harness-analyze-and-improve agora executa quality gate com avaliador independente. Se o harness reportar passes=true mas quality_check_passed for false ou null, o quality gate nao foi executado —investigue.
+        - **Criar canonical docs na Phase 4 sem os campos de qualidade no frontmatter.** Todo canonical doc criado pelo pipeline DEVE ter quality_checked_at, review_due_at, quality_owner, redo_count. Docs sem esses campos nao serao rastreados pelo Carry Debt Sunset Gate e acumularao como carry debt invisivel.
+        - **Ignorar o .deferred-ledger.yaml entre execucoes.** O ledger existe para responder "estamos acumulando divida?". Se o harness nao atualiza-lo apos cada execucao, o ledger perde a utilidade e o risco acumula silenciosamente.
+
+        ---
+
+        ## Verification Gates
+      verification:
+        - "3 novos anti-patterns adicionados"
+        - "Anti-pattern sobre quality gate menciona quality_check_passed"
+        - "Anti-pattern sobre canonical docs menciona campos de qualidade"
+        - "Anti-pattern sobre ledger menciona risco silencioso"
+
+# =============================================================================
+# TASK 11: Adicionar Phase 4.5 — Preencher review_due_at nos artefatos criados
+# =============================================================================
+# Objetivo: Apos a Phase 4 (Improvement Generation), o harness preenche
+# review_due_at = hoje + 6 meses em todos os canonical docs criados.
+# Isso e feito pelo harness (orquestrador), nao delegado.
+# Local: .opencode/skills/harness-analyze-and-improve/SKILL.md, apos Step 6
+# =============================================================================
+
+task_11:
+  id: "harness-phase4-review-dates"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "10 min"
+  description: "Adicionar logica de preenchimento de review_due_at pos-Phase 4"
+  dependencies: ["task_3", "task_8"]
+  changes:
+    - edit_id: "phase4-review-dates"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+        ### Step 7: Advance or Stop
+      new_string: |-
+        ### Step 6d: Post-Phase 4 Sunset Dates (harness — not delegated)
+
+        After Phase 4 passes quality check (CP-5), the harness MUST fill
+        `review_due_at` in every canonical doc created during this phase:
+
+        1. Identify canonical docs created: scan `docs/canonical/` for files
+           modified in the current git session (use `git diff --name-only`
+           to find `.md` files in `docs/canonical/`).
+        2. For each new/modified canonical doc, read the frontmatter.
+        3. If `review_due_at` is not set or is null, compute:
+           `review_due_at = <today + 6 months>` (ISO 8601: YYYY-MM-DD).
+        4. Use `edit` to add or update the `review_due_at` field.
+        5. Confirm: `grep review_due_at docs/canonical/<slug>.md` returns a date.
+
+        This is the Carry Debt Sunset Gate in action: every artifact gets a
+        mandatory review date 6 months from creation. The pre-Phase 0 sunset
+        check (Step 7b) will flag expired dates for audit.
+
+        ### Step 7: Advance or Stop
+      verification:
+        - "Step 6d inserido entre Step 6c e Step 7"
+        - "Descreve 5 passos para preencher review_due_at"
+        - "Usa git diff --name-only para identificar arquivos novos"
+        - "Usa edit para adicionar campo, nao write"
+        - "Menciona Carry Debt Sunset Gate como fundamento"
+        - "Review date e hoje + 6 meses"
+
+# =============================================================================
+# TASK 12: Atualizar anti-pattern sobre commit sem quality gate
+# =============================================================================
+
+task_12:
+  id: "harness-commit-quality-warning"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  effort: "3 min"
+  description: "Adicionar warning no Commit Gate sobre quality gate"
+  dependencies: ["task_3"]
+  changes:
+    - edit_id: "commit-gate-quality"
+      type: "edit"
+      file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      old_string: |-
+        ## Commit Gate
+
+        NEVER commit without asking the user. After each phase completes:
+        1. Show `git diff --stat`
+        2. Ask: "Commit phase-N?"
+        3. If yes: commit with message `analysis(<slug>): phase <N>`
+        4. Ask: "Push?"
+        5. If yes: `git push`
+      new_string: |-
+        ## Commit Gate
+
+        NEVER commit without asking the user. After each phase completes:
+        1. Show `git diff --stat`
+        2. **Quality gate check**: Verify that `quality_check_passed` is `true`
+           in `harness/test-results.json` for the current phase. If false or null,
+           warn the user: "Quality gate not passed for this phase. Commit anyway?"
+        3. Ask: "Commit phase-N?"
+        4. If yes: commit with message `analysis(<slug>): phase <N>`
+        5. Ask: "Push?"
+        6. If yes: `git push`
+      verification:
+        - "Commit Gate inclui step 2 de quality gate check"
+        - "Warning ao usuario se quality_check_passed nao for true"
+        - "Nao bloqueia commit — apenas avisa"
+
+# =============================================================================
+# POST-IMPLEMENTATION: Verificacao integrada
+# =============================================================================
+
+integration_test:
+  description: "Testar o pipeline completo com quality gates ativos"
+  scenario: |
+    Usar uma analise existente (ex: idsd-method, fases 0-3 ja completas)
+    e executar a partir da Phase 4 com o novo harness.
+
+  steps:
+    - "1. Rodar harness com mode=feature:phase-4"
+    - "2. Verificar que Step 6a (form check) executa primeiro"
+    - "3. Verificar que Step 6b (quality evaluator) e delegado com modelo DIFERENTE do gerador"
+    - "4. Verificar que o veredicto do avaliador (pass/redo/partial-redo) e processado corretamente"
+    - "5. Se pass: verificar que quality_check_passed=true em test-results.json"
+    - "6. Verificar que canonical docs criados tem review_due_at no frontmatter"
+    - "7. Rodar harness com mode=loop para completar fases 4-6"
+    - "8. Verificar que .deferred-ledger.yaml foi atualizado"
+    - "9. Verificar metrics summary inclui quality-redos"
+    - "10. Rodar bash scripts/check-obsidian-conventions.sh — confirmar zero erros"
+
+  expected_behavior:
+    - "Quality gate adiciona ~60-115K tokens ao pipeline total"
+    - "Fases com output de baixa qualidade sao re-delegadas com feedback"
+    - "CP-4 bloqueia Phase 4 se classificacao tiver evidencias fracas"
+    - "Deferred ledger acumula dados entre execucoes"
+
+rollback_plan:
+  description: "Como reverter se o quality gate quebrar o pipeline"
+  steps:
+    - "1. O quality gate e aditivo — o form check original (Step 6a) continua funcionando"
+    - "2. Se o avaliador estiver causando falsos redo: ajustar quality_threshold da fase para 'low'"
+    - "3. Se o custo de tokens for inaceitavel: quality gate pode ser desabilitado por fase (setar quality_threshold para 'none' — futuro enhancement)"
+    - "4. Rollback completo: reverter harness-analyze-and-improve/SKILL.md para o estado pre-quality-gate (guardar backup do arquivo original de 249 linhas antes de editar)"
+    - "5. test-results.json com novos campos e backward-compatible — campos extras sao ignorados pelo harness antigo"
+    - "6. .deferred-ledger.yaml pode ser deletado sem impacto — e artefato informativo"
+
+# =============================================================================
+# FILES AFFECTED — Resumo
+# =============================================================================
+
+files_affected:
+  modified:
+    - ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+    - ".opencode/skills/analyze-and-improve/SKILL.md"
+    - "harness/test-results.json"
+    - "harness/templates/test-results.json"
+  created:
+    - "docs/analysis/.deferred-ledger.yaml"
+  not_modified:
+    - "docs/canonical/*.md"  # Nenhum canonical doc existente e alterado
+    - "AGENTS.md"  # Nao requer novas regras (quality fields sao opcionais per Rule 16)
+    - "scripts/check-obsidian-conventions.sh"  # Campos novos sao opcionais — script nao quebra
+
+# =============================================================================
+# ORDEM DE EXECUCAO
+# =============================================================================
+# As tasks tem dependencias. Ordem recomendada:
+#
+# Fase 1 (paralelo):
+#   task_1 (test-results.json schema)
+#   task_2 (template schema)
+#   task_6 (criar .deferred-ledger.yaml)
+#   task_8 (phase4 quality frontmatter no analyze-and-improve/SKILL.md)
+#
+# Fase 2 (depende de task_1, task_2):
+#   task_3 (harness Step 6 — quality gate principal)
+#
+# Fase 3 (depende de task_3):
+#   task_4 (anti-patterns quality no harness)
+#   task_5 (Step 7 quality integration)
+#   task_11 (Phase 4.5 sunset dates)
+#   task_12 (commit gate quality warning)
+#
+# Fase 4 (depende de task_5, task_6):
+#   task_7 (harness populate ledger)
+#
+# Fase 5 (depende de task_6, task_8):
+#   task_9 (verification gates)
+#   task_10 (anti-patterns no analyze-and-improve)
+#
+# Tasks totalmente independentes na Fase 1 podem ser executadas em paralelo.
+# =============================================================================
+
+parallel_batches:
+  batch_1:
+    - "task_1"
+    - "task_2"
+    - "task_6"
+    - "task_8"
+  batch_2:
+    - "task_3"
+  batch_3:
+    - "task_4"
+    - "task_5"
+    - "task_11"
+    - "task_12"
+  batch_4:
+    - "task_7"
+  batch_5:
+    - "task_9"
+    - "task_10"
