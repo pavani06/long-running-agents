@@ -1,0 +1,238 @@
+meta:
+  title: "Comparative Classification: IDSD Method Patterns vs. long-running-agents Repo"
+  date: 2026-06-12
+  repo: "pavani06/long-running-agents"
+  patterns_source: "IDSD Method analysis (2026-06-12)"
+  evidence_sources:
+    - "docs/canonical/"
+    - ".opencode/skills/"
+    - ".opencode/agents/"
+    - "curriculum/"
+    - "docs/system-of-record.md"
+    - "AGENTS.md"
+  precedence_order:
+    - "docs/decisions/"
+    - "docs/canonical/"
+    - "docs/evidence/"
+    - "docs/analysis/"
+    - "curriculum/"
+    - "READMEs"
+
+classification_legend:
+  already_exists: "Pattern is documented, implemented, or taught with equivalent depth"
+  partial_coverage: "Elements exist but missing key mechanics, reframe, or formalization"
+  missing: "Not present in any form (doc, code, or curriculum)"
+  better_implementation: "Repo has a superior or more mature version of the same idea"
+
+patterns:
+  - id: 1
+    name: "ICE Craft Separation"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    summary: >
+      Repo separates ownership across canonical docs (Owner-of-No, Grill-Me, Control Plane)
+      but does not formalize Intent-Context-Expectations as named crafts with distinct owners.
+    evidence_exists:
+      - "docs/canonical/owner-of-no-role-design.md:29-51 -- explicit ownership with refusal authority and decision vocabulary"
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- structured interview separating intent capture from implementation"
+      - "docs/canonical/application-owned-agent-control-plane.md:29-64 -- owned components including context builder"
+      - "docs/canonical/manual-brake-question-gate.md:31-36 -- explicit ownership question: who owns saying no"
+      - "docs/canonical/value-gated-agent-control-loop.md:73-78 -- intent statements attached to build decisions"
+      - "docs/canonical/shared-design-concept-handoff.md:30-48 -- human judgment separated from agent interpretation"
+    what_is_missing:
+      - "ICE triad not named as formal decomposition with distinct craft owners"
+      - "Context and Expectations not formalized as equivalent first-class crafts alongside Intent"
+    integration_priority_reason: >
+      The ICE decomposition is the architectural frame for the other three High-priority gaps
+      (Expectations Boundary, Gap-Filling Cost). Formalizing it would unify existing ownership
+      and context patterns under a single decision framework.
+
+  - id: 2
+    name: "Intent as Five-Part Primitive"
+    classification: "Missing"
+    integration_value: "Medium"
+    summary: >
+      Five-part intent structure (description, constraints, failure, success, connections)
+      not present in any repo document, skill, or curriculum. Existing mechanisms capture
+      equivalent information through different frames.
+    not_found_searches:
+      - "docs/canonical/ -- 57 files searched for five-part, five-field, intent completeness gate. All NOT_FOUND."
+      - "docs/canonical/grill-me-alignment-interview.md -- captures decisions in ledger, not five specific intent fields"
+      - "docs/canonical/manual-brake-question-gate.md -- diagnostic questions, not intent structure fields"
+      - "docs/canonical/vertical-slice-issue-generation.md -- issue generation without five-part intent format"
+      - "curriculum/08-tools-templates/sprint-contract-template.md -- scope and criteria, not five-part intent"
+      - ".opencode/skills/ -- objectives and success criteria, not five-part primitive"
+    evidence_nearby:
+      - "docs/canonical/grill-me-alignment-interview.md:30-37 -- decision/deferral ledger structurally similar"
+      - "docs/canonical/constraint-anchored-evaluation.md:29-56 -- constraint lists cover the constraints field"
+      - "curriculum/05-core-concepts/04-sprint-contracts.md -- explicit scope, success/failure criteria"
+    integration_priority_reason: >
+      Five-part format is an authoring convention. Equivalent information already captured
+      via alignment interview, constraint evaluation, and sprint contracts. Formalizing
+      would add precision but is more a reframing than a new capability.
+
+  - id: 3
+    name: "Human-Owned Expectations Boundary"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    summary: >
+      Repo separates evaluation from generation and assigns explicit ownership, but does not
+      formalize Expectations as a standalone artifact authored exclusively by the outcome owner.
+      Done boundary exists in contracts/rubrics/constraints but ownership is implicit.
+    evidence_exists:
+      - "docs/canonical/owner-of-no-role-design.md:29-51 -- explicit ownership with refusal authority"
+      - "docs/canonical/generator-evaluator.md:31-73 -- Generator builds, Evaluator validates against rubrics"
+      - "docs/canonical/constraint-anchored-evaluation.md:29-56 -- explicit, verifiable constraint lists"
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- captures human judgment before execution"
+      - "docs/canonical/value-gated-agent-control-loop.md:73-78 -- intent statements and scope constraints"
+      - "docs/canonical/manual-brake-question-gate.md:33-35 -- who needs this and what breaks"
+      - "curriculum/05-core-concepts/04-sprint-contracts.md -- explicit done criteria in contract format"
+    what_is_missing:
+      - "Expectations not formalized as a named artifact with single outcome-owner"
+      - "Ownership of done definition is distributed across rubric author, interviewer, evaluator"
+      - "No governance rule that outcome owner (not builder) must define the done boundary"
+    integration_priority_reason: >
+      Closes the accountability gap between intent collection and validation. Combined with
+      ICE Craft Separation, would complete the ownership architecture: Intent owned by
+      outcome-owner, Context owned by harness, Expectations owned by outcome-owner.
+
+  - id: 4
+    name: "Harness-Owned Progressive Context"
+    classification: "Better Implementation"
+    integration_value: "Low"
+    summary: >
+      Repo has formalized progressive context as a resolver-based architecture with trigger
+      evals, capability directory, and layered context stack -- more sophisticated than
+      the IDSD pattern's general progressive-context description.
+    evidence_exceeds:
+      - "docs/canonical/resolver-based-context-progressive-disclosure.md:28-53 -- five-part resolver model with trigger evals"
+      - "docs/canonical/hybrid-context-stack.md:28-42 -- layered assembly with explicit budget ordering"
+      - "docs/canonical/head-tail-context-truncation.md:26-39 -- bounded active context with recoverable middle"
+      - "docs/canonical/addressable-memory-catalog.md:28-53 -- catalogued context with id, location, preview, fetch"
+      - "docs/canonical/stable-harness-prompt.md:26-41 -- invariant harness instructions preserved during reduction"
+      - "docs/canonical/skill-resolver-skillify-capability-pipeline.md -- full pipeline from workflow to skill"
+      - ".opencode/skills/issue-start/SKILL.md:16-23 -- load-on-demand skill triggers in production"
+      - "curriculum/GLOSSARY.md:110-113 -- Context Progressive Disclosure defined as curriculum concept"
+    why_better: >
+      IDSD describes progressive context as general approach. Repo formalizes it as resolver-based
+      architecture with trigger contracts, evals, deduplication, layered stack, and curriculum
+      content. Repo also handles context reduction (truncation), not just disclosure.
+
+  - id: 5
+    name: "Agentic Loop with Validation Gate"
+    classification: "Already Exists"
+    integration_value: "Low"
+    summary: >
+      Generator-Evaluator canonical doc explicitly describes the build-validate-retry loop.
+      Owned Agent Control Loop provides the loop architecture. Plan-Execute-Verify provides
+      phase separation. Constraint-Anchored Evaluation provides validation mechanics.
+    evidence_exists:
+      - "docs/canonical/generator-evaluator.md:31-73 -- Generator builds, Evaluator validates, rejects with feedback, retries"
+      - "docs/canonical/owned-agent-control-loop.md:29-75 -- 4-component loop with intervention points"
+      - "docs/canonical/plan-execute-verify.md:31-60 -- three-phase separation with verify phase and retry paths"
+      - "docs/canonical/structured-generation-constraint-validation-circuit.md -- generate-validate-repair-reject-audit cycle"
+      - "docs/canonical/constraint-anchored-evaluation.md:29-56 -- verification matrix with per-constraint pass/fail"
+      - "docs/canonical/closed-loop-agent-operating-system.md:28-45 -- continuous operating loop with feedback writeback"
+      - "docs/canonical/value-gated-agent-control-loop.md:31-69 -- pre-execution build/experiment/defer/stop gate"
+    coverage_assessment: >
+      The repo's Generator-Evaluator + Owned Agent Control Loop + Plan-Execute-Verify +
+      Constraint-Anchored Evaluation together provide a more mature implementation of the
+      same concept. Validation against expectations, retry with feedback, and explicit
+      pass/fail gates are all formalized and taught in the curriculum.
+
+  - id: 6
+    name: "Presence-in-the-Loop Operating Metric"
+    classification: "Missing"
+    integration_value: "Medium"
+    summary: >
+      No presence metric, presence timeline, stale-presence warning, or involvement measurement
+      exists in any repo document. All human gates are at entry points (pre-execution) or
+      exit points (review, merge), not during active agent work.
+    not_found_searches:
+      - "docs/canonical/ -- 57 files searched for presence timeline, stale presence, absent owner, involvement metric. All NOT_FOUND."
+      - "docs/canonical/manual-brake-question-gate.md -- pre-execution checkpoint, not ongoing presence measurement"
+      - "docs/canonical/human-afk-task-routing-gate.md -- classification at routing time, not presence metric"
+      - "docs/canonical/grill-me-alignment-interview.md -- pre-planning interview, not during-execution presence"
+      - "docs/canonical/owner-of-no-role-design.md -- assigns ownership, not presence measurement"
+      - ".opencode/skills/issue-start/SKILL.md -- workflow transition, not presence tracking"
+      - "curriculum/ -- no lesson on presence measurement or stale-owner detection"
+    evidence_nearby:
+      - "docs/canonical/manual-brake-question-gate.md:31-36 -- human checkpoint before execution"
+      - "docs/canonical/human-afk-task-routing-gate.md:30-52 -- routes to human-in-loop when ambiguity exists"
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- structured human answers before agent proceeds"
+    integration_priority_reason: >
+      Would add a governance dimension the repo currently lacks: measuring whether the human
+      who owns the outcome was actually involved during the work, not just at the gate.
+      Lower priority than ICE/Expectations/Gap-Filling because it is a measurement layer
+      rather than a structural architecture change.
+
+  - id: 7
+    name: "Symphony Trap Awareness"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    summary: >
+      Repo philosophy is explicitly anti-upfront-spec (LLM as Fuzzy Compiler, intent-first,
+      production-grounded), but the specific ritual of reverse-engineering specs from
+      running systems is not formalized as a named practice.
+    evidence_exists:
+      - "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md -- complete analysis of upfront-spec trap"
+      - "docs/canonical/llm-as-fuzzy-compiler.md:27-28 -- code as disposable build artifact, harness as durable asset"
+      - "docs/canonical/production-grounded-eval-sampling.md:26-52 -- evals anchored in production interactions"
+      - "docs/canonical/production-failure-regression-flywheel.md:28-60 -- failures become regression knowledge"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:28-50 -- eval scores correlated with production outcomes"
+    what_is_missing:
+      - "Reverse-engineering ritual: running prototype, ambiguity probes, behavior distillation"
+      - "Spec distillation from observed behavior not formalized as named practice"
+      - "Reframe: repo validates against production rather than reverse-engineering from it"
+    integration_priority_reason: >
+      The repo's philosophy already embodies Symphony Trap awareness. Adding the specific
+      reverse-engineering ritual would complement production-grounded evals with a
+      systematic spec-distillation practice for situations where running systems exist
+      before formal documentation.
+
+  - id: 8
+    name: "Token Economics of Gap-Filling"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    summary: >
+      Repo has extensive token economics infrastructure but does not formalize gap-filling
+      cost attribution. Cannot map token consumption to specific missing ICE fields or
+      measure the exponential penalty of filling gaps during execution.
+    evidence_exists:
+      - "docs/canonical/explicit-token-budget-ledger.md:29-62 -- per-call ledger with fixed vs reducible cost"
+      - "docs/canonical/burn-rate-runtime-forecast.md:28-60 -- consumption velocity, acceleration, runway"
+      - "docs/canonical/phase-gated-token-health-monitor.md:32-55 -- green/yellow/orange/red health phases"
+      - "docs/canonical/deferred-ledger-agentic-work.md:29-56 -- strategic debt tracking including dependence debt"
+      - "docs/canonical/budget-aware-session-handoff.md:28-53 -- session handoff with budget consideration"
+      - "docs/canonical/manual-brake-question-gate.md:33-34 -- cost-proxy question as gap-filling approximation"
+      - "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md:34-566 -- full curriculum lesson"
+    what_is_missing:
+      - "Gap-cost report tied to finished outcomes, not raw generation speed"
+      - "Token cost attribution to specific missing ICE fields"
+      - "Mechanism identifying that retry was caused by missing intent/context/expectations"
+      - "Owner question or missing-context request that closes the actual gap"
+    not_found_searches:
+      - "docs/canonical/ -- searched for gap cost report, gap fill token, missing ice field. All NOT_FOUND."
+    integration_priority_reason: >
+      Closes the measurement loop the repo already partially built. Pre-execution gates
+      prevent gaps, token ledger tracks cost, gap-attribution explains why. Would make
+      the cost-proxy question in Manual Brake measurable rather than intuitive, and
+      turn ICE hygiene from a governance preference into a visible cost driver.
+
+summary:
+  totals:
+    already_exists: 1
+    better_implementation: 1
+    partial_coverage: 4
+    missing: 2
+  highest_priority:
+    - "ICE Craft Separation (Partial, High) -- architectural frame for ownership separation"
+    - "Human-Owned Expectations Boundary (Partial, High) -- closes accountability gap"
+    - "Token Economics of Gap-Filling (Partial, High) -- completes measurement loop"
+  repo_strengths:
+    - "Harness-Owned Progressive Context exceeds IDSD pattern (Better Implementation)"
+    - "Agentic Loop with Validation Gate is fully covered by Generator-Evaluator + owned loop architecture (Already Exists)"
+  related_classifications:
+    - "The Trap SDD (2026-06-11): Intent-First Spec Loop as Better Implementation, similar value-gating gaps"
+    - "12-Factor Agents (2026-06-09): Owned Agent Control Loop as Partial Coverage, similar loop ownership gaps"
+    - "Token Budgeting (2026-06-10): Explicit Token Budget Ledger as Partial Coverage, similar measurement gaps"

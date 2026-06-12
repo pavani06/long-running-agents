@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
-last_updated: 2026-06-11
+last_updated: 2026-06-12
 relates-to: []
 sources: []
 ---
@@ -46,6 +46,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/manual-brake-question-gate/SKILL|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
 | [[.opencode/skills/deferred-ledger-agentic-work/SKILL|.opencode/skills/deferred-ledger-agentic-work/SKILL.md]] | Ledger de trabalho agentic diferido com rastreamento de dívida e sunset gates |
 | [[.opencode/skills/owner-of-no-role/SKILL|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
+| [[.opencode/skills/intent-five-part-primitive/SKILL|.opencode/skills/intent-five-part-primitive/SKILL.md]] | Decomposição de intenção em cinco partes primitivas para especificação precisa de tarefas |
+| [[.opencode/skills/presence-in-the-loop-metric/SKILL|.opencode/skills/presence-in-the-loop-metric/SKILL.md]] | Métrica de presença-no-loop para calibrar intervenção humana em workflows agentic |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -194,6 +196,12 @@ Tópicos candidatos a ADR:
 | `accidental-brake-replacement.md` | Anti-padrão de substituição acidental de freios: como gates de segurança são removidos silenciosamente |
 | `value-gated-agent-control-loop.md` | Loop de controle do agente com gates de valor: o agente só avança quando o valor incremental é validado |
 | `carry-debt-sunset-gate.md` | Gate de sunset para dívida carregada: prazo máximo para resolver débitos antes que bloqueiem o pipeline |
+| `intent-five-part-primitive.md` | Intenção decomposta em cinco partes primitivas: goal, context, constraints, verification, handoff |
+| `presence-in-the-loop-metric.md` | Métrica de presença-no-loop: calibração do grau de intervenção humana necessária por tarefa |
+| `ice-craft-separation.md` | ICE Craft Separation: separação entre intenção (ICE) e execução artesanal (craft) no workflow agentic |
+| `human-owned-expectations-boundary.md` | Fronteira de expectativas de propriedade humana: delimitação explícita do que o humano mantém sob seu controle |
+| `token-economics-gap-filling.md` | Economia de tokens do preenchimento de lacunas: custo de inferência vs. custo de especificação |
+| `symphony-trap-awareness.md` | Consciência da armadilha da sinfonia: risco de over-specification e perda de adaptabilidade em sistemas agentic |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -271,10 +279,16 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification.yaml` | YAML com evidência file:line por padrão |
 | `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-integration-roadmap.md` | Roadmap de integração com 5 fases sequenciais e 12 canonical docs |
 
+### Análises comparativas (IDSD Method — Intent-Driven Specification Development)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-12-idsd-method/` | Pacote de análise do método IDSD: especificação via intenção decomposta em cinco primitivas |
+
 ## Planos
 
 - [[docs/plans/2026-05-26-curriculum-completion-strategy|docs/plans/2026-05-26-curriculum-completion-strategy.md]] — estratégia de execução para completar o currículo via GitHub Issues/Milestones
 
 ---
 
-*Última atualização: 2026-06-11*
+*Última atualização: 2026-06-12*

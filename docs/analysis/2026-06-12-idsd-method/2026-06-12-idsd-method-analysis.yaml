@@ -1,0 +1,287 @@
+# Analise de Conhecimento Nao-Obvio: IDSD — Intent-Driven Software Development
+#
+# Convencoes:
+# - type: analise estruturada derivada do artigo Medium
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim rastreavel ao artigo original
+# - Sem marketing, self-promotion, anedotas, historias pessoais, filler, repeticao
+
+meta:
+  title: "IDSD — Intent-Driven Software Development: Extracao de Conhecimento Nao-Obvio"
+  source: "https://medium.com/activated-thinker/the-method-that-replaces-spec-driven-development-idsd-66e921f6cdf7"
+  author: "Kapil Viren Ahuja"
+  published: "2026-05-20"
+  date: "2026-06-12"
+  type: "analysis"
+  extraction_rules:
+    keep:
+      - frameworks
+      - architectures
+      - workflows
+      - implementation_details
+      - operational_lessons
+      - failures
+      - tradeoffs
+      - design_decisions_with_justification
+      - documented_anti_patterns
+    ignore:
+      - marketing
+      - self_promotion
+      - anecdotes
+      - personal_stories
+      - repetition
+      - padding
+      - filler
+      - generic_advice_without_mechanics
+
+frameworks:
+  - name: "ICE Framework — Intent, Context, Expectations"
+    description: >
+      Decomposicao em tres partes que substitui a spec monolítica no desenvolvimento agentico.
+      Cada parte tem um dono diferente e proposito distinto. O humano possui Intent e Expectations;
+      o harness possui Context e o Loop.
+    components:
+      - name: "Intent"
+        role: "Primitivo de primeira classe com cinco componentes obrigatorios"
+        sub_components:
+          - "description: o que se quer"
+          - "constraints: restricoes ao redor do que se quer"
+          - "failure_scenarios: cenarios sob os quais falha"
+          - "success_scenarios: cenarios sob os quais tem sucesso"
+          - "connections: links para outros intents afetados por mudancas aqui"
+        non_obvious: "Faltar qualquer um dos cinco devolve o controle ao agente para preencher o buraco."
+      - name: "Expectations"
+        role: "Fronteira de done/failed/limits em linguagem do usuario"
+        non_obvious: >
+          Deliberadamente nao e uma spec. E um craft separado escrito pela mesma pessoa que escreveu
+          o Intent. O momento em que a definicao de done se afasta dessa pessoa, o agente decide done por ela.
+      - name: "Context"
+        role: "O como: tecnologia, sistema existente, constraints do codebase"
+        non_obvious: >
+          Deve vir do harness e ser alimentado progressivamente conforme necessario, nao despejado
+          como parede no inicio. O harness possui o Context e o entrega sob demanda.
+    owner_split:
+      human: ["Intent", "Expectations"]
+      harness: ["Context", "Loop"]
+
+  - name: "IDSD — Intent-Driven Software Development"
+    description: >
+      Declarar outcomes e deixar a maquina determinar implementacao como modo normal de trabalho.
+      Recusa que um unico documento sirva como intent, definicao de done, workflow e contexto
+      simultaneamente.
+    sequence:
+      - "Humano fornece Intent + Expectations"
+      - "Harness puxa Context, codifica, valida contra Expectations"
+      - "Se expectations nao atendidas → itera"
+      - "Se atendidas → merge"
+    non_obvious: >
+      spec-kit, BMAD, Kiro, Tessl, Agent OS sao harnesses — uteis, mas apenas harnesses. ICE e o metodo
+      que decide o que e o trabalho antes que o harness o manipule. Adotar harness sem metodo e o default
+      porque o harness tem botao de download.
+
+  - name: "Single-Document Failure Model (SDD Collapse)"
+    description: >
+      SDD colapsa porque pede que um documento carregue quatro responsabilidades distintas
+      (Intent, Done, Workflow, Context), e os gaps entre elas sao deixados para o agente preencher.
+    root_causes:
+      - "Engineers do not take time to learn what a spec actually is for agentic contexts"
+      - "Methods going viral were built for 40-minute greenfield YouTube demos, not enterprise codebases"
+    non_obvious: "Os buracos na spec nao sao um defeito da spec — sao o resultado de funcoes conflitantes num unico artefato."
+
+  - name: "Symphony Trap — Retrospective Spec Sold as Upfront Method"
+    description: >
+      OpenAI produziu a melhor spec agentica ja vista (Symphony: 2,169 linhas, 18 secoes,
+      linguagem formal must-and-should) — mas a produziu por ultimo, extraindo-a de um sistema
+      que ja rodava. A industria vende o output como se fosse o metodo.
+    timeline:
+      - "6 meses construindo ferramenta interna com Codex, zero codigo humano"
+      - "Sistema funcionando → destilacao da spec do sistema vivo"
+      - "Codex implementa spec em Elixir (one shot)"
+      - "Codex reimplementa mesma spec em TypeScript, Go, Rust, Java, Python para sacudir ambiguidades"
+    non_obvious: >
+      A unica organizacao que produziu uma spec tao boa a produziu por ultimo, por engenharia reversa
+      de software que ja estava vivo. Nao se pode escrever a spec upfront. A industria vende o artefato
+      como processo.
+
+  - name: "Drift is Absence — The Reframe"
+    description: >
+      O que se chama de "agent drift" e na verdade a saida do humano do loop. Drift e a palavra
+      que se alcanca quando nao se quer dizer que saiu.
+    non_obvious: >
+      Uma spec boa nao se sustenta sozinha — ela se sustenta porque alguem permanece no loop
+      enquanto ela roda. O autor tinha uma spec boa e ainda assim o agente derivou, custando
+      3 dias de retrabalho e ~$985 em tokens.
+
+patterns:
+  - name: "Intent as Five-Part Primitive"
+    problem: "Specs tradicionais nao capturam o que o agente precisa para decidir nos gaps deixados pelo humano."
+    mechanism: >
+      Cinco elementos obrigatorios que juntos formam um intent: description, constraints,
+      failure scenarios, success scenarios, connections. Exemplo: "usuario quer tenis vermelho
+      por menos de $90" demonstra todos os cinco. Connections criam rastreabilidade — uma mudanca
+      em um intent e rastreavel a tudo que toca.
+
+  - name: "Practical First Move — One Hour, Not a Methodology Rollout"
+    problem: "Times nao estao prontos para adocao metodologica completa (dois degraus acima da realidade)."
+    mechanism: >
+      Pegar um unico outcome real que vai shipar esta semana. Escrever as cinco partes do intent.
+      Entregar para alguem que nao estava na sua cabeca. Perguntar onde o agente ainda teria que
+      adivinhar. Fechar esses buracos, nao o sistema inteiro. Custa uma hora.
+
+  - name: "Expectations as Separable Craft"
+    problem: "Definicao de done se afasta do dono do outcome; agente decide done pelo humano."
+    mechanism: >
+      Expectations e um artefato separado, escrito pela mesma pessoa do Intent, em linguagem
+      do usuario. Contem: cenarios de done, cenarios de failed, limites. Manter como craft proprio,
+      owned pelo mesmo humano que possui o intent.
+
+  - name: "Progressive Context Disclosure via Harness"
+    problem: "Contexto despejado como parede upfront sobrecarrega o agente e dilui relevancia."
+    mechanism: >
+      Context (tech, sistema existente, constraints) e owned pelo harness e alimentado
+      progressivamente conforme necessario. Nao e um dump unico no inicio.
+
+  - name: "Presence-in-the-Loop (not Approval-at-the-Gate)"
+    problem: "Humano chega no fim para abencoar um diff grande demais para realmente ler."
+    mechanism: >
+      Metrica central: presenca no loop, nao aprovacao no gate. O humano e parte do time
+      enquanto o trabalho acontece. Nyra: "O risco e o dia em que um agente escreve 10K linhas
+      que parecem certas e ninguem possui o que 'certo' significa."
+
+  - name: "Harness vs. Method Distinction"
+    problem: "Organizacoes adotam harnesses (spec-kit, BMAD) sem metodo (ICE)."
+    mechanism: >
+      spec-kit, BMAD, Kiro, Tessl, Agent OS sao harnesses. ICE e o metodo que decide o que
+      e o trabalho antes do harness manipula-lo. Harness sem metodo = falha dos 3 dias de
+      retrabalho em escala enterprise.
+
+operational_lessons:
+  - lesson: "Voce nao consegue escrever a spec upfront — a prova do Symphony"
+    context: >
+      A melhor spec agentica ja produzida (Symphony da OpenAI) foi gerada por ultimo, extraida
+      de um sistema que ja funcionava. A industria vende o artefato como processo.
+
+  - lesson: "Uma spec boa nao se sustenta sozinha — presenca no loop e o que sustenta"
+    context: >
+      O autor tinha uma spec boa e o agente ainda derivou: 3 dias de retrabalho, ~$985 em tokens
+      (150-200M tokens/dia a precos Opus). Dinheiro real para criar e desfazer o problema.
+
+  - lesson: "Estar errado enquanto se sente rapido — METR 2025"
+    context: >
+      Estudo controlado: devs experientes foram mensuravelmente mais lentos com AI e sairam
+      certos de que estavam mais rapidos. Estar errado enquanto se sente rapido e a falha inteira.
+
+  - lesson: "Paradoxo economico: preco por token cai, custo por outcome sobe"
+    context: >
+      Agente deixado para preencher gaps queima mais tokens por resultado. Tokens gastos sendo
+      confiantemente errado. SDD quebrado infla custo; inflacao desce ao cliente, nao ao vendor.
+
+  - lesson: "Dogfooding — rode seu metodo em si mesmo antes da conta do cliente"
+    context: >
+      O time do autor migra de SDD para IDSD rodando o metodo internamente. Flywheel so compoe
+      se girar, e so gira se alguem tomar a primeira volta.
+
+  - lesson: "SDD nao e novo — a falha e repetir sem aprender"
+    context: >
+      Larman e Basili (IEEE Computer 2003): iterative development desde os 1950s. XP 2004:
+      spec completa e ideal falho; spec deve emergir como testes e contratos.
+
+  - lesson: "Tres dias de retrabalho custaram $985 — token economics real"
+    context: >
+      150-200M tokens/dia a precos Opus. Dinheiro gasto para fazer o problema e pagar de novo
+      para desfazer. A spec era boa — exatamente por isso o caso e instrutivo.
+
+tradeoffs:
+  - decision: "Spec monolítica (SDD) vs. crafts separados (ICE)"
+    benefit: "Documento unico, simples de gerenciar"
+    cost: "Gaps entre Intent, Done, Workflow e Context preenchidos pelo agente; colapso sob pressao"
+
+  - decision: "Escrever spec upfront vs. extrair spec do sistema rodando (Symphony)"
+    benefit: "Ilusao de controle antecipado"
+    cost: "Spec tem buracos que agente preenche; unica spec boa foi retrospectiva"
+
+  - decision: "Harness sem metodo vs. harness com metodo (ICE)"
+    benefit: "Adocao rapida (download button)"
+    cost: "Mesma falha de 3 dias de retrabalho, em escala e com nome de cliente"
+
+  - decision: "Contexto despejado upfront vs. contexto progressivo"
+    benefit: "Simplicidade de implementacao do harness"
+    cost: "Diluicao do que importa; agente decide com base em ruido"
+
+  - decision: "Revisor-no-gate vs. presente-no-loop"
+    benefit: "Menor custo de atencao humana (so no final)"
+    cost: "Diff grande demais para ler; agente decide done pelo humano"
+
+  - decision: "Rollout metodologico completo vs. one-hour practical start"
+    benefit: "Cobertura sistematica"
+    cost: "Times dois degraus abaixo; risco real e ninguem possuir significado de 'certo'"
+
+  - decision: "Escrever codigo manualmente vs. delegar a agentes com gaps"
+    benefit: "Agentic: rapido para author"
+    cost: "Agentic com gaps: caro para rodar; tokens queimados em estar confiantemente errado"
+
+  - decision: "Focar no formato do documento vs. focar em quem possui cada craft"
+    benefit: "Formatos faceis de padronizar"
+    cost: "Formato nunca foi o problema; o que mudou e o que cada arquivo e e quem o possui"
+
+failure_patterns:
+  - pattern: "Single-document collapse"
+    cause: "Um documento deve servir como intent, done, workflow e contexto simultaneamente"
+    mitigation: "Decompor em Intent (5 partes), Expectations e Context, com donos distintos"
+
+  - pattern: "Symphony trap — selling output as method"
+    cause: "Incentivo comercial de quem vende harnesses; a melhor spec foi retrospectiva"
+    mitigation: "Reconhecer que specs de qualidade emergem de sistemas vivos, nao de especulacao upfront"
+
+  - pattern: "Agent drift is actually human absence"
+    cause: "Ilusao de que spec boa e suficiente sem presenca continua; usa-se 'drift' para evitar admitir ausencia"
+    mitigation: "Metrica de presenca no loop, nao aprovacao no gate"
+
+  - pattern: "Harness without method at scale"
+    cause: "Harness tem botao de download; metodo nao tem"
+    mitigation: "Metodo antes do harness — defina o que e o trabalho antes de entrega-lo ao harness"
+
+  - pattern: "Being wrong while feeling fast"
+    cause: "Vies de percepcao — velocidade de geracao mascara baixa qualidade do resultado"
+    mitigation: "Medir outcomes, nao velocidade percebida; referenciar METR 2025"
+
+  - pattern: "Done definition drift"
+    cause: "Expectations nao sao craft separado com dono explicito; definicao de done migra para o agente"
+    mitigation: "Expectations escritas pela mesma pessoa do Intent, em linguagem do usuario"
+
+  - pattern: "Context wall at start"
+    cause: "Harness nao implementa progressive disclosure; contexto e dump unico upfront"
+    mitigation: "Context alimentado pelo harness progressivamente, sob demanda"
+
+  - pattern: "Monolithic context fed to fill gaps"
+    cause: "Gaps nos cinco componentes do Intent; agente preenche buracos queimando tokens sendo confiantemente errado"
+    mitigation: "Fechar os cinco componentes do intent antes de entregar ao agente; validar com alguem externo"
+
+synthesis: >
+  O insight unificador e que o SDD colapsa por uma falha de decomposicao, nao de formato.
+  Pedir que um documento carregue simultaneamente Intent, Expectations, Workflow e Context
+  e um erro de arquitetura da decisao — os gaps entre essas funcoes sao exatamente onde os
+  agentes tomam decisoes ruins. A resposta nao e uma spec melhor ou um formato melhor; e
+  separar os crafts e atribuir donos distintos a cada um.
+
+  Tres implicacoes estruturais:
+
+  1. A arquitetura da decisao e o verdadeiro problema de engenharia nao resolvido. O problema
+  nao e que agentes constroem mal — e que constroem coisas que nao deveriam existir. O design
+  do fluxo de decisao (quem define intent, com que granularidade, quem valida expectations,
+  quem fecha gaps) e mais impactante que o design do codigo produzido.
+
+  2. O output do Symphony prova que o metodo real e o inverso do que se vende. A unica spec
+  de qualidade RFC para agentes foi documentacao retrospectiva de sistema vivo. Processo real:
+  construir → extrair spec → rebuild multi-linguagem. A industria vende: escrever spec → construir.
+  A inversao esconde que o primeiro passo e o mais caro e incerto.
+
+  3. ICE e uma arquitetura de control plane para agentes. Intent + Expectations como contrato
+  de valor, Context como configuracao ambiental, Loop como motor de execucao. Humano = control
+  plane; harness = data plane. Ecoa diretamente padroes como application-owned-agent-control-plane
+  e value-gated-agent-control-loop no repositorio long-running-agents.
+
+  Para agentes long-running, o harness deve incorporar Intent-gating antes do ciclo de construcao:
+  validar os cinco componentes do intent, expectations verificaveis e contexto progressivo.
+  Sem esse gate, o harness e motor sem volante — eficiente em produzir codigo, cego sobre
+  o que deveria ou nao ser produzido.

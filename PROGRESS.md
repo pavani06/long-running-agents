@@ -2,68 +2,59 @@
 
 > Pipeline analyze-and-improve gerenciado pelo harness.
 > Cada fase é uma feature com contrato default-FAIL.
+> O harness avança automaticamente entre fases.
 
 ## Done
 
-- [x] phase-0: Repository Mental Model - ultrabrain (gpt-5.5)
-  - Output: docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-mental-model.md + .yaml
-- [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
-  - Output: docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md (175 linhas) + .yaml (129 linhas)
-  - 5 frameworks, 5 patterns, 7 operational lessons, 8 tradeoffs, 8 failure patterns
-  - Tags registradas em system-of-record: spec-driven-development, agentic-coding, decision-discipline
-- [x] phase-2: Pattern Extraction - deep (gpt-5.5)
-  - Output: docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns.md + .yaml
-  - 10 padroes agentic reutilizaveis com components + flow
-- [x] phase-3: Classification - deep (gpt-5.5)
-  - Output: docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification.md (298 linhas) + .yaml (259 linhas)
-  - 2 Better Impl, 0 Already Exists, 4 Partial Coverage, 4 Missing
-- [x] phase-4: Improvement Generation - deep (gpt-5.5)
-  - Output: 6 canonical docs, 3 skills, 3 exercises, 1 integration roadmap
-  - Canonical: manual-brake-question-gate.md, deferred-ledger-agentic-work.md, owner-of-no-role-design.md, value-gated-agent-control-loop.md, carry-debt-sunset-gate.md, accidental-brake-replacement.md
-  - Skills: manual-brake-question-gate/, deferred-ledger-agentic-work/, owner-of-no-role/
-  - Exercises: exercise-04-owner-of-no-role.md, exercise-05-manual-brake-question-gate.md, exercise-06-deferred-ledger-agentic-work.md
-  - Roadmap: 2026-06-11-the-trap-spec-driven-development-is-setting-integration-roadmap.md (328 linhas, 10 patterns mapped with gap analysis)
-- [x] phase-5: Integration - quick (gpt-5.5)
-  - system-of-record.md (+9 canonical/skills, +3 tags), curriculum/INDEX.md (+3 exercises), curriculum/README.md, curriculum/MASTER_PLAN.md
-  - Duplicate exercises cleaned up
-- [x] phase-6: Curriculum Deep Integration - deep (gpt-5.5)
-  - 7 curriculum files modified (448 insertions, 8 deletions)
-  - 6 padroes integrados: 4 Missing (Manual Brake, Deferred Ledger, Owner-of-No, Accidental Brake) + 2 P1 Partial Coverage (Value-Gated ACL, Carry Debt Sunset)
+- [x] phase-0: Repository Mental Model — bg_8f483bb7 — full rebuild (14 deltas) — 57 canonical patterns mapeados
+  - Modelos em mapa-mental-repo/2026-06-12-idsd-method-mental-model.{md,yaml}
+- [x] phase-1: Knowledge Extraction — ses_142d7a07dffeXadm9vMzj1rT3j — análise estruturada do artigo IDSD
+  - 6 seções: Frameworks, Patterns, Operational Lessons, Tradeoffs, Failure Patterns, Synthesis
+  - Obsidian check: [OK] para ambos os arquivos
+- [x] phase-2: Pattern Extraction — ses_142d2ec77ffen8ijU206SkK3RZ — 8 padrões (ICE, Intent Gate, Expectations Boundary, Progressive Context, Loop Validation, Presence-in-Loop, Retrospective Spec, Token Economics)
+  - 6 campos obrigatórios + components + flow por padrão
+  - YAML validado, Obsidian OK para patterns.md
+- [x] phase-3: Classification — ses_142ce6728ffe3qgw6uvdIP1lQi — 2 Missing, 3 Partial Coverage High, 1 PC Medium, 1 Already Exists, 1 Better Implementation
+  - Evidence-based com file:line references
+  - Summary table presente
+- [x] phase-4a: Canonical Docs (bg_7f3ea33a) — 6 docs: intent-five-part-primitive, presence-in-the-loop-metric, ice-craft-separation, human-owned-expectations-boundary, token-economics-gap-filling, symphony-trap-awareness
+- [x] phase-4b: Skills (bg_410ff01a) — 2 skills: intent-five-part-primitive, presence-in-the-loop-metric
+- [x] phase-4c: Exercises (bg_b0f4f391) — 2 exercises: Level 2 exercise-05 (intent), Level 3 exercise-06 (presence)
+- [x] phase-4d: Integration Roadmap (ses_142c187ecffem653iSCOwSZP5o) — summary matrix, artifacts catalog, cross-reference tables, gap analysis (6 closed, 11 remaining)
+- [x] phase-5: Integration (ses_142bd0657ffedNndaMZ7pXyzz1) — system-of-record.md (+18), INDEX.md (+2), MASTER_PLAN.md (2 edits)
+- [x] phase-6: Curriculum Deep Integration (ses_142babb47ffeYb1pGUf5JvLILs) — 5 patterns em 5 arquivos: sprint-contracts, token-budgeting, multi-agent-systems, GLOSSARY, INDEX (+628/-116)
 
-## Done - Pipeline completo
+## In Progress
 
-Todas as 7 fases (0-6) concluidas para source: the-trap-spec-driven-development-is-setting.
+<!-- A fase atual. Exatamente UMA por vez. -->
+
+- [ ] phase-0: Repository Mental Model
+  - Output esperado: docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model.md + .yaml
+  - Delegado: ultrabrain (bg_8f483bb7)
+  - Modo: full rebuild (14 deltas > 10 threshold; delta-report.md escrito)
+  - Background: sim — aguardando notificacao do sistema
+  - Bloqueios: nenhum
+
+## Next
+
+- [ ] phase-1: Knowledge Extraction
+- [ ] phase-2: Pattern Extraction
+- [ ] phase-3: Classification
+- [ ] phase-4: Improvement Generation
+- [ ] phase-5: Integration
+- [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 
-- **source**: C:\Users\pavan\raw-knowledge\sources\2026-06-11-the-trap-spec-driven-development-is-setting.md
-- **date**: 2026-06-11
-- **source-slug**: the-trap-spec-driven-development-is-setting
-- **output_dir**: docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/
+- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-11-the-method-that-replaces-spec-driven-development-—-idsd.md
+- **date**: 2026-06-12
+- **source-slug**: idsd-method
+- **output_dir**: docs/analysis/2026-06-12-idsd-method/
 
 ## Notes
 
-- Commits: `git commit -m "analysis(<slug>): <fase>"`
-- Bootstrap: `./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh --source <path> [--date YYYY-MM-DD] [--source-slug <slug>]`
-- Executar: `./harness/harness-analysis.sh` (bash) ou `Load harness-analyze-and-improve` (skill nativa)
-
-## Archive
-
-Sessões anteriores concluídas (histórico):
-
-### harness-engineering-how-to-build-software-when-humans-steer-agent (data desconhecida)
-
-- [x] phase-0: Repository Mental Model - ultrabrain (gpt-5.5)
-  - 145+ linhas MD + 320 linhas YAML. 20 canonical patterns mapeados.
-- [x] phase-1: Knowledge Extraction - deep (gpt-5.5)
-  - 211+ linhas MD + 338 linhas YAML. 5 frameworks, 7 patterns, 6 lessons, 7 tradeoffs.
-- [x] phase-2: Pattern Extraction (16 padrões) - ultrabrain (gpt-5.5)
-  - 405+ linhas MD + 547 linhas YAML. 16 padrões com components + flow.
-- [x] phase-3: Classification - deep (gpt-5.5) x2 parallel
-  - 4 Better Impl, 3 Already Exists, 7 Partial Coverage, 2 Missing
-- [x] phase-4: Improvement Generation - deep (gpt-5.5) x4 parallel
-  - 4 canonical docs, 2 skills, 2 exercises, 1 roadmap
-- [x] phase-5: Integration - quick (gpt-5.5)
-  - system-of-record.md, curriculum/README.md, MASTER_PLAN.md updated
-- [x] phase-6: Curriculum Deep Integration - deep (gpt-5.5)
-  - 7 curriculum files modified. 6 padroes integrados (4 Missing + 2 Partial Coverage High).
+- Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
+- Rodar: não se aplica (análise de documento, não build de código)
+- Testar: `bash scripts/check-obsidian-conventions.sh`
+- Evidência: outputs em docs/analysis/2026-06-12-idsd-method/
+- Commits: `git commit -m "analysis(idsd-method): <fase>"`

@@ -211,7 +211,7 @@ koda-long-running-agents/
 - [ ] Consigo escrever sprint contracts com critérios testáveis
 - [ ] Posso criar uma rubric para avaliar outputs
 - [ ] Consigo ler e interpretar agent traces
-- [ ] Completei os 3 exercícios do Nível 2
+- [ ] Completei os 5 exercícios do Nível 2
 - [ ] Consigo aplicar padrões ao KODA
 
 ---
@@ -234,7 +234,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 6 exercícios do Nível 3
+- [ ] Completei os 7 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

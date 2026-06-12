@@ -295,6 +295,58 @@ Evaluator: Verifica se order está completa, preços corretos, inventory ok
 
 ---
 
+### Human-Owned Expectations Boundary (Fronteira de Expectativas de Propriedade Humana)
+
+**Definição:** Padrão de governança onde a definição de "pronto" (expectations) é um artefato separado, de autoria exclusiva do outcome owner (quem quer o resultado), e não do Generator (quem implementa) ou do Evaluator (quem avalia). O harness consome esse artefato para validação, mas não o modifica.
+
+**Por que importa:** Sem essa fronteira, agentes decidem o que conta como sucesso durante a execução -- e tendem a definir sucesso como "o que consegui implementar", não como "o que o outcome owner precisava". A fronteira transforma "done" de sensação em artefato auditável.
+
+**Em KODA:** No Product Discovery, a definição de recomendação válida ("sem lactose, em estoque, abaixo de R$ 50, com justificativa conectada ao objetivo") é escrita pelo PM de produto, não pelo Generator que busca no catálogo. O Evaluator julga contra essa definição, não contra sua própria interpretação.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]], [[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]], Generator/Evaluator Pattern, Sprint Contract
+
+---
+
+## I
+
+### ICE Craft Separation (Separação de Crafts ICE)
+
+**Definição:** Decomposição do trabalho agentic em três crafts distintos com donos explícitos: **Intent** (o que deve ser feito -- dono: outcome owner), **Context** (informação necessária para executar -- dono: harness), e **Expectations** (definição de pronto -- dono: outcome owner). A separação impede que um único documento monolítico misture intenção, contexto e critérios de validação.
+
+**Por que importa:** Quando intent, context e expectations viajam no mesmo prompt, o agente preenche as lacunas entre eles por inferência. Cada lacuna preenchida por inferência é uma decisão que o outcome owner não tomou. A separação explícita força que cada lacuna seja identificada e fechada pelo dono correto antes da execução.
+
+**Os três crafts:**
+- **Intent Craft:** O que o outcome owner quer. Formalizado como descrição, constraints, failure scenarios, success scenarios e connections.
+- **Context Craft:** O que o harness sabe. Catálogo, código, estado do sistema, documentação canônica, decisões de arquitetura.
+- **Expectations Craft:** Como saber se deu certo. Rubricas, critérios de aceitação, condições de parada, definição de falha.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/ice-craft-separation|ICE Craft Separation]], Intent as Five-Part Primitive, Human-Owned Expectations Boundary, [[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]
+
+---
+
+### Intent as Five-Part Primitive (Intenção como Primitiva de Cinco Partes)
+
+**Definição:** Formalização do intent como uma estrutura de cinco campos obrigatórios -- description, constraints, failure scenarios, success scenarios, connections -- que devem ser preenchidos e validados por um Intent Completeness Gate antes que qualquer agente inicie a execução.
+
+**Por que importa:** Intents subespecificados são a causa raiz de grande parte do token waste em sistemas agentic. "Melhora a busca" parece um intent, mas é apenas um título. Sem constraints, o agente não sabe o que não pode quebrar. Sem failure scenarios, não sabe o que constitui erro. Sem connections, não sabe quais sistemas são afetados. O gate rejeita intents incompletos com perguntas direcionadas ao outcome owner.
+
+**Os cinco campos:**
+- **Description:** O que deve ser feito (uma frase com verbo de ação e sistema afetado).
+- **Constraints:** Limites booleanos verificáveis que o trabalho deve respeitar.
+- **Failure Scenarios:** Cenários que definem output errado (condição + comportamento esperado).
+- **Success Scenarios:** Cenários que definem output certo (da perspectiva do outcome owner).
+- **Connections:** Referências a outros intents, sistemas ou documentos canônicos afetados.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive|Exercício 5: Intent Five-Part Primitive]], ICE Craft Separation
+
+---
+
 ## K
 
 ### KODA
@@ -412,6 +464,24 @@ Sprint 4: Play mode
 **Ver tambem:** AGENTS.md, Durable Non-Functional Requirements Memory, Reviewer Agents as CI Gates
 
 **Nivel:** 3
+
+---
+
+### Presence-in-the-Loop Metric (Métrica de Presença no Loop)
+
+**Definição:** Métrica de governança que mede o envolvimento humano DURANTE a execução do agente -- não apenas a aprovação simbólica ao final. Composta por quatro sinais: presence timeline (linha do tempo de interações), stale-presence warnings (alertas de ausência prolongada), required intervention points (checkpoints obrigatórios de parada), e review confidence signal (score de 0.0 a 1.0 que calibra o escrutínio do revisor final).
+
+**Por que importa:** Aprovação final chega tarde demais. Um agente pode gerar 2.300 linhas em 6 horas sem supervisão, e o code review descobrir na hora 7 que a premissa estava errada desde a hora 1. A métrica de presença força intervenção cedo, quando corrigir é barato, e produz um sinal de confiança que informa o revisor se aquele diff foi supervisionado ou produzido no vácuo.
+
+**Quatro sinais:**
+- **Presence Timeline:** Registro cronológico de cada interação humana (pergunta respondida, direção corrigida, decisão aprovada).
+- **Stale-Presence Warnings:** Alertas quando o owner fica ausente além de thresholds configurados por perfil de risco (warning, critical, escalation).
+- **Intervention Checkpoints:** Pontos obrigatórios de parada antes de decisões arquiteturais, mudanças de direção ou acúmulo de diff.
+- **Review Confidence Signal:** Score agregado baseado em densidade de interações, presença ativa vs passiva, gaps de supervisão e cobertura de checkpoints.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Metric]], [[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]], [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric|Exercício 6: Presence-in-the-Loop]]
 
 ---
 
@@ -563,6 +633,23 @@ Restante: 140,000 para agent rodar
 
 ---
 
+### Token Economics of Gap-Filling (Economia de Tokens do Preenchimento de Lacunas)
+
+**Definição:** Modelo de atribuição de custo que conecta tokens gastos a lacunas específicas nos campos de Intent, Context e Expectations. A premissa central: agentes que preenchem lacunas de ICE durante a execução queimam exponencialmente mais tokens por outcome concluído do que agentes que recebem ICE completo antes de começar.
+
+**Por que importa:** O token ledger do harness sabe quanto você gastou. O burn rate monitor sabe a que velocidade. Mas nenhum dos dois sabe POR QUE o custo foi alto. Gap-filling token economics fecha esse loop: identifica que 40% dos tokens foram gastos preenchendo a lacuna "quem precisa disso", ou que os retries 3-7 foram causados por uma constraint ambígua que deveria estar no intent. Isso torna o cost-proxy do Manual Brake mensurável.
+
+**Mecanismo de atribuição:**
+- **Gap-cost report:** Relatório que mapeia cada retry e cada turno de clarificação a um campo ICE específico ausente ou ambíguo.
+- **Missing-context request:** Quando o agente detecta que falta um dado para decidir, emite uma pergunta direcionada ao outcome owner em vez de inferir.
+- **Budget guardrail:** Se o custo de gap-filling excede um threshold, o harness para e exige clarificação em vez de continuar queimando tokens.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/token-economics-gap-filling|Token Economics of Gap-Filling]], [[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]], [[docs/canonical/burn-rate-runtime-forecast|Burn Rate Runtime Forecast]], Token Budget, ICE Craft Separation
+
+---
+
 ### Trace (Agent Trace)
 **Definição:** Log detalhado de cada passo que um agente toma.
 
@@ -645,6 +732,9 @@ Feedback → Volta ao Generator
 - Planner, Self-Evaluation, Sycophancy
 - Sprint, Trace, Verification Loop
 - MCP, Ralph Loop
+- ICE Craft Separation, Intent as Five-Part Primitive
+- Human-Owned Expectations Boundary
+- Token Economics of Gap-Filling
 
 ### Nível 3 (Arquitetura Avançada)
 - Multi-Agent System
@@ -655,6 +745,7 @@ Feedback → Volta ao Generator
 - LLM as Fuzzy Compiler, Invariant-Compensation Split
 - Persona-Based Documentation, Failure Pattern Classification Loop
 - Garbage Collection Day, QA-to-Backlog Feedback Loop
+- Presence-in-the-Loop Metric
 
 ### Nível 4 (KODA-Específico)
 - KODA, suas capacidades e aplicações

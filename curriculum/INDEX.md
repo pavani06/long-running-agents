@@ -107,6 +107,7 @@ last_updated: 2026-06-11
 - `02-nivel-2-practical-patterns/exercises/exercise-02.md` (Sprint Contracts)
 - `02-nivel-2-practical-patterns/exercises/exercise-03.md` (Rubric Design)
 - `02-nivel-2-practical-patterns/exercises/exercise-04-error-context-hygiene.md` (Error Context Hygiene)
+- `02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive.md` (Intent Five-Part Primitive)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
@@ -114,6 +115,7 @@ last_updated: 2026-06-11
 - `03-nivel-3-advanced-architecture/exercises/exercise-03.md` (Harness Evolution)
 - `03-nivel-3-advanced-architecture/exercises/exercise-04-llm-as-fuzzy-compiler.md` (LLM as Fuzzy Compiler)
 - `03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation.md` (Persona-Based Documentation)
+- `03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md` (Presence-in-the-Loop Metric)
 - `03-nivel-arquiteto/exercises/exercise-04-owner-of-no-role.md` (Owner of No Role)
 
 **Nível 4 (KODA)**
@@ -192,6 +194,19 @@ last_updated: 2026-06-11
 ### "Como defino 'pronto'?"
 → `02-nivel-2-practical-patterns/02-sprint-contracts.md`
 → `05-core-concepts/04-sprint-contracts.md`
+→ `../docs/canonical/human-owned-expectations-boundary.md`
+→ `../docs/canonical/ice-craft-separation.md`
+
+### "Como formalizo o intent antes de liberar o agente?"
+→ `02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive.md`
+→ `../docs/canonical/intent-five-part-primitive.md`
+→ `../docs/canonical/grill-me-alignment-interview.md`
+→ `05-core-concepts/04-sprint-contracts.md` (seção ICE Craft Separation)
+
+### "Como evito que o agente gaste tokens preenchendo lacunas?"
+→ `01-nivel-1-fundamentals/02-token-budgeting.md` (seção Gap-Filling)
+→ `../docs/canonical/token-economics-gap-filling.md`
+→ `../docs/canonical/intent-five-part-primitive.md`
 
 ### "Como avalio qualidade?"
 → `02-nivel-2-practical-patterns/03-rubric-design.md`
@@ -219,6 +234,11 @@ last_updated: 2026-06-11
 ### "Como coordeno múltiplos agentes?"
 → `03-nivel-3-advanced-architecture/01-multi-agent-systems.md`
 → `05-core-concepts/07-multi-agent-coordination.md`
+
+### "Como garanto que humanos supervisionam agentes durante a execução?"
+→ `03-nivel-3-advanced-architecture/01-multi-agent-systems.md` (seção Governança da Presença)
+→ `03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md`
+→ `../docs/canonical/presence-in-the-loop-metric.md`
 
 ### "Como persisto estado?"
 → `03-nivel-3-advanced-architecture/02-state-persistence.md`

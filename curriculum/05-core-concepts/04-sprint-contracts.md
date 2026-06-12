@@ -584,6 +584,141 @@ Vale para handoff humano.
 Vale para qualquer parte do KODA onde o cliente espera continuidade.
 
 
+## 🧩 ICE Craft Separation: Por Trás dos Sprint Contracts
+
+Sprint Contracts não nasceram do nada. Eles são a resposta prática a um problema estrutural do design agentic: a confusão entre **intenção**, **contexto** e **expectativas**.
+
+Quando um agente recebe um prompt monolítico que mistura "o que eu quero", "aqui estão os dados disponíveis" e "me avalie com esses critérios", três coisas ruins acontecem:
+
+1. O agente não sabe o que é negociável e o que é invariante.
+2. O outcome owner não sabe quais decisões o agente tomou por ele.
+3. O harness não sabe qual promessa preservar quando o contexto encolhe.
+
+A solução não é escrever prompts maiores. A solução é separar os crafts.
+
+### Os Três Crafts
+
+**Intent Craft -- dono: outcome owner.** O que deve ser feito, por que importa, quais restrições são imutáveis, como seria o sucesso e como seria a falha. O intent não diz como implementar. Ele diz o que constitui cumprir a promessa.
+
+**Context Craft -- dono: harness.** Informação que o agente precisa para executar: catálogo, código, documentação canônica, estado do sistema, decisões de arquitetura, preferências do cliente. O harness é dono do contexto porque só ele sabe o que está fresco, o que está autorizado e o que deve ser omitido.
+
+**Expectations Craft -- dono: outcome owner.** A definição de "pronto" -- escrita por quem quer o resultado, não por quem vai implementá-lo. Inclui critérios de aceitação, rubricas, condições de parada e definições de falha. O Evaluator consome expectations para julgar, mas não as modifica.
+
+```text
+┌─────────────────────────────────────────────────────────┐
+│                   ICE CRAFT SEPARATION                    │
+│                                                          │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │   INTENT     │  │   CONTEXT    │  │ EXPECTATIONS │  │
+│  │              │  │              │  │              │  │
+│  │ Dono:        │  │ Dono:        │  │ Dono:        │  │
+│  │ outcome      │  │ harness      │  │ outcome      │  │
+│  │ owner        │  │              │  │ owner        │  │
+│  │              │  │              │  │              │  │
+│  │ O que?       │  │ Com o quê?   │  │ Como saber   │  │
+│  │ Por quê?     │  │ Dados, docs, │  │ que deu      │  │
+│  │ Limites,     │  │ estado,      │  │ certo?       │  │
+│  │ restrições   │  │ código       │  │              │  │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  │
+│         │                 │                 │           │
+│         └─────────┬───────┴─────────┬───────┘           │
+│                   │                 │                    │
+│                   ▼                 ▼                    │
+│            ┌──────────────────────────────┐             │
+│            │      SPRINT CONTRACT          │             │
+│            │  (acordo que une os três)     │             │
+│            └──────────────────────────────┘             │
+└─────────────────────────────────────────────────────────┘
+```
+
+A separação ICE não é burocracia. É o que permite que cada parte do sistema tenha um dono claro. Quando uma recomendação do KODA falha, a separação ICE permite diagnosticar se o problema foi:
+
+- **Intent mal definido:** o outcome owner não especificou que lactose intolerance é bloqueante.
+- **Context desatualizado:** o harness forneceu snapshot de catálogo vencido.
+- **Expectations ambíguas:** o Evaluator não tinha critério claro para reprovar produto com `contains_milk` quando cliente tem lactose intolerance.
+
+Sem separação ICE, a falha vira "o agente errou" -- e ninguém sabe qual parte do sistema melhorar.
+
+### Intent como Primitiva de Cinco Partes
+
+Se o intent é um craft separado com dono explícito, ele precisa de forma. A experiência mostra que intents descritos como prosa livre ("melhora a busca", "otimiza o pipeline") geram agentes que preenchem as lacunas por inferência -- e inferem as constraints que tornam a implementação mais fácil, não as que tornam o resultado mais útil.
+
+O padrão **Intent as Five-Part Primitive** resolve isso exigindo cinco campos antes da execução:
+
+| Campo | Pergunta que responde | Exemplo para KODA |
+|---|---|---|
+| **Description** | O que deve ser feito? | "Implementar filtro de alergia no pipeline de busca para que produtos com alergenos do cliente nunca apareçam nos resultados" |
+| **Constraints** | Quais limites são imutáveis? | "Nenhum produto com alergeno do cliente aparece nos resultados", "Filtro aplicado ANTES da consulta ao catálogo" |
+| **Failure Scenarios** | O que constitui erro? | "Catálogo indisponível: exibir produtos cacheados com aviso de dados potencialmente desatualizados" |
+| **Success Scenarios** | O que o outcome owner vê quando funciona? | "Cliente com restrição de lactose busca 'whey' e vê apenas produtos com lactose_free=True" |
+| **Connections** | Quais sistemas ou intents são afetados? | "INTENT-041 (catálogo com flag de alergeno)", "CANONICAL-allergy-blocking (constraint de domínio)" |
+
+O Intent Completeness Gate valida esses cinco campos antes de liberar qualquer agente. Intents que chegam com campos vazios ou ambíguos são rejeitados com perguntas direcionadas ao outcome owner -- nunca com "descreva melhor", mas com "qual métrica de latência define 'rápido'? (ex: p95 < 200ms)".
+
+Isso não é burocracia. É mover o custo da ambiguidade para antes da execução, quando corrigir é barato. O exercício [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive|Intent Five-Part Primitive]] demonstra que um intent de 1 campo ("melhora a busca") custou 3.2 milhões de tokens e gerou 2.400 linhas descartadas, enquanto o mesmo intent com 5 campos teria custado 180 mil tokens e resolvido o problema na primeira tentativa.
+
+### Human-Owned Expectations Boundary
+
+Expectations são o terceiro craft do ICE. E a regra mais importante sobre expectations é: **quem quer o resultado escreve a definição de pronto. Quem implementa não pode redefinir "pronto" durante a execução.**
+
+Essa fronteira parece óbvia, mas é violada o tempo todo em sistemas agentic:
+
+- O Generator decide que "duas recomendações são suficientes" quando o contract pedia três, porque a terceira era difícil de encontrar.
+- O Evaluator aprova um output que viola uma constraint porque "ficou bom no geral".
+- O harness ajusta um critério de latência porque o modelo atual é mais lento.
+
+Em todos esses casos, a expectations boundary foi cruzada -- e o outcome owner perdeu o controle sobre o que significa "done".
+
+O padrão **Human-Owned Expectations Boundary** estabelece que:
+
+1. **Expectations são um artefato separado** do intent e do contexto. Elas vivem em rubricas, checklists, critérios de aceitação e definições de falha.
+2. **Expectations têm um único dono:** o outcome owner. Nem o Generator, nem o Evaluator, nem o harness podem modificá-las.
+3. **Expectations são consumidas, não reinterpretadas.** O Evaluator julga contra elas. Se as expectations são ambíguas, o Evaluator devolve perguntas ao owner -- não preenche as lacunas.
+4. **Expectations viajam com o contract.** Quando um Sprint Contract é versionado, as expectations que o governam são imutáveis para aquela versão.
+
+No KODA, a expectations boundary é o que impede que uma recomendação de produto viole lactose intolerance porque "o produto era mais barato e o cliente parecia com pressa". A boundary não está no prompt. Está na arquitetura.
+
+### Como ICE, Intent Five-Part e Expectations se Conectam
+
+```text
+Outcome Owner                Harness                     Agent System
+     │                          │                             │
+     │  Intent (5-part)         │                             │
+     ├─────────────────────────►│                             │
+     │                          │                             │
+     │  Expectations            │                             │
+     ├─────────────────────────►│                             │
+     │                          │                             │
+     │                          │  Context (resolver)         │
+     │                          ├────────────────────────────►│
+     │                          │                             │
+     │                          │  Sprint Contract            │
+     │                          │  (Intent + Context          │
+     │                          │   + Expectations)           │
+     │                          ├────────────────────────────►│
+     │                          │                             │
+     │                          │                    Generator executa
+     │                          │                    Evaluator valida
+     │                          │                             │
+     │                          │  Verdict + Evidence         │
+     │                          │◄────────────────────────────┤
+     │                          │                             │
+     │  Resultado               │                             │
+     │◄─────────────────────────┤                             │
+```
+
+Os Sprint Contracts deste documento são o mecanismo que operacionaliza a separação ICE. O Input Specification é o Context Craft. Os Success Criteria são o Expectations Craft. O Failure Handling protege ambos. E o Intent Craft -- a descrição do que deve ser feito e por quê -- é o que inicia o lifecycle.
+
+Quando você entende ICE, você entende por que Sprint Contracts funcionam. Não é porque "contratos são bons". É porque separar intent, context e expectations resolve o problema de coordenação que faz agentes longos perderem o foco.
+
+**Para aprofundar:**
+- [[docs/canonical/ice-craft-separation|ICE Craft Separation]] -- canonical doc com a definição formal e ownership assignments
+- [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]] -- canonical doc com o gate de completude e validação por campo
+- [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]] -- canonical doc com a fronteira de ownership
+- [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive|Exercício 5: Intent Five-Part Primitive]] -- implementação prática do gate
+- [[curriculum/GLOSSARY|Glossário]] -- entradas para ICE Craft Separation, Intent as Five-Part Primitive e Human-Owned Expectations Boundary
+
+
 ## 📥 Os Três Pilares em Profundidade
 
 Os três pilares de um Sprint Contract parecem simples quando aparecem em uma lista.

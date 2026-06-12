@@ -1629,6 +1629,149 @@ Esse é o tipo de sistema que clientes sentem, mesmo sem ver.
 
 ---
 
+## 👁️ Governança da Presença: Quem Estava Olhando Enquanto os Agentes Trabalhavam?
+
+Sistemas multi-agente operam por horas. Planner, Generator, Evaluator, state store e harness trabalham em coordenação. Mas há uma pergunta que a arquitetura não responde sozinha: **quem estava presente durante a execução?**
+
+### O Problema do Diff Que Ninguém Viu Nascer
+
+Uma segunda-feira comum no KODA. O PM escreve: `"@dev_agent implementa o sistema de notificação de pedidos do KODA. O cliente precisa saber quando o pedido saiu para entrega."`
+
+O agente multi-agente funciona perfeitamente -- do ponto de vista técnico:
+
+```
+08:00  Planner:   Decompõe em 5 passos. OK.
+08:15  Generator: Modela schema de notificações. OK.
+08:45  Generator: Integra com API de logística. OK.
+09:30  Generator: Implementa sistema de templates de mensagem. OK.
+        ┌─ AQUI o agente decidiu que notificações seriam por EMAIL ─┐
+        │  O KODA é um sistema de WHATSAPP. Clientes não usam email. │
+        │  Mas ninguém viu essa decisão. Ninguém estava presente.    │
+        └────────────────────────────────────────────────────────────┘
+11:00  Generator: Implementa agendador (cron job). OK.
+12:30  Generator: Testes de integração. Passam.
+14:00  Evaluator:  Output passa nos critérios técnicos.
+       Agente conclui. Abre PR com 2.300 linhas.
+
+14:15  Reviewer (humano) abre o PR:
+       "Espera... isso envia EMAIL? O KODA é WhatsApp!"
+       "E essa integração usa a API antiga de logística -- mudamos
+        para a Loggi há 3 meses."
+       "E por que tem um cron job? O KODA já tem um scheduler..."
+```
+
+O custo: 6 horas de agente, 2.300 linhas geradas, 91% descartadas, 4.8 milhões de tokens. Se um humano tivesse sido convocado para um checkpoint na hora 1, o desvio teria sido corrigido com 400 linhas em 1.5 horas.
+
+A arquitetura multi-agente funcionou. A **governança** da arquitetura falhou.
+
+### Presence-in-the-Loop: A Métrica Que Faltava
+
+O padrão [[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Operating Metric]] resolve isso medindo o envolvimento humano DURANTE a execução -- não apenas a aprovação simbólica ao final. Quatro sinais compõem a métrica:
+
+**1. Presence Timeline**
+
+Linha do tempo que registra cada interação humana durante a execução:
+
+```text
+t=0     t=30m    t=55m    t=90m    t=120m   t=210m   t=360m
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+START    ASK      ANSWER   APPROVE  CORRECT  ......   REVIEW
+         (25m)    (35m)    (60m)    (90m)             (150m)
+gap=0    gap=30   gap=25   gap=5    gap=30   ......gap=150
+                                              ▲
+                               STALE-PRESENCE CRITICAL
+                               (150min sem interação)
+```
+
+A timeline torna visível o vácuo de supervisão. Não é vigilância -- é rastreabilidade de governança.
+
+**2. Stale-Presence Warnings**
+
+Alertas emitidos quando o owner fica ausente além de thresholds configurados por perfil de risco:
+
+| Perfil | Warning | Critical | Escalation |
+|---|---|---|---|
+| Baixo | 60 min | 180 min | 360 min |
+| Médio | 30 min | 90 min | 180 min |
+| Alto | 15 min | 45 min | 90 min |
+| Crítico | 5 min | 15 min | 30 min |
+
+Um refactor de CSS com baixo risco pode tolerar 60 minutos sem supervisão. Uma migração de banco de dados em produção com perfil crítico exige checkpoint a cada 15 minutos.
+
+**3. Intervention Checkpoints**
+
+Pontos obrigatórios de parada onde o agente PAUSA e só continua após confirmação humana:
+
+- **Decisão arquitetural:** escolha de tecnologia, canal de comunicação, padrão de integração.
+- **Mudança de direção:** escopo expandiu, reduziu ou mudou de domínio.
+- **Acúmulo de diff:** diff acumulado desde o último checkpoint excede threshold (ex: 500 linhas).
+- **Passagem de fase:** transição de planejamento → implementação → teste → deploy.
+
+No caso do KODA, um checkpoint obrigatório de "decisão arquitetural" na hora 1 teria parado o agente antes de implementar notificação por email. A pergunta "Qual o canal de comunicação do KODA?" teria sido respondida em 30 segundos pelo outcome owner.
+
+**4. Review Confidence Signal**
+
+Score de 0.0 a 1.0 que o revisor final usa para calibrar o nível de escrutínio:
+
+| Score | Verdict | Significado para o revisor |
+|---|---|---|
+| >= 0.85 | HIGH_CONFIDENCE | Revisão leve -- supervisão foi densa e ativa |
+| >= 0.60 | MODERATE_SUPERVISION | Revisão normal -- houve supervisão com gaps |
+| >= 0.30 | LOW_SUPERVISION | Revisão profunda -- vários gaps longos |
+| < 0.30 | UNSUPERVISED | Revisão completa -- essencialmente não houve supervisão |
+
+O score é calculado a partir de: densidade de interações (intervenções/hora), proporção de presença ativa vs passiva (responder pergunta vs apenas abrir o PR), maior gap sem supervisão, e cobertura de checkpoints obrigatórios.
+
+Um PR com score 0.92 pode receber revisão focada em arquitetura. Um PR com score 0.12 exige revisão linha a linha -- porque ninguém estava olhando enquanto o código era gerado.
+
+### Integrando Presence-in-the-Loop ao Sistema Multi-Agente
+
+O PresenceTracker não é mais um agente -- é uma camada transversal de governança que observa a interação entre Planner, Generator, Evaluator e outcome owner:
+
+```text
+┌────────────────────────────────────────────────────────────┐
+│                   PRESENCE TRACKER                          │
+│                   (camada transversal)                       │
+│                                                              │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐                │
+│  │ Planner  │──▶│ Generator│──▶│ Evaluator│                │
+│  └──────────┘   └──────────┘   └──────────┘                │
+│        │              │               │                      │
+│        ▼              ▼               ▼                      │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │              PRESENCE TIMELINE                       │   │
+│  │                                                      │   │
+│  │  [t=0]    Planner concluiu decomposição              │   │
+│  │  [t=5]    OWNER APPROVED: plano de 5 passos          │   │
+│  │  [t=25]   OWNER ANSWERED: "API da Loggi, não antiga" │   │
+│  │  [t=90]   CHECKPOINT: decisão de scheduling          │   │
+│  │  [t=92]   OWNER APPROVED: usar scheduler existente   │   │
+│  │  [t=150]  ⚠️ STALE-PRESENCE WARNING (58min sem dono) │   │
+│  │  [t=210]  🔴 STALE-PRESENCE CRITICAL (118min)        │   │
+│  │  [t=360]  REVIEWER OPENED PR                         │   │
+│  │                                                      │   │
+│  │  Review Confidence: 0.72 (MODERATE_SUPERVISION)      │   │
+│  └─────────────────────────────────────────────────────┘   │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Checklist de Governança para Sistemas Multi-Agente
+
+- [ ] Todo sprint com mais de 60 minutos de execução tem checkpoints obrigatórios definidos.
+- [ ] Checkpoints são configurados por perfil de risco: baixo (CSS refactor), médio (feature nova), alto (integração externa), crítico (migração de dados, mudança de auth).
+- [ ] O PresenceTracker registra eventos de interação com distinção entre presença ativa (respondeu pergunta, corrigiu direção) e passiva (abriu o PR, olhou por 30 segundos).
+- [ ] Stale-presence warnings são emitidos automaticamente quando o owner excede thresholds.
+- [ ] O Review Confidence Signal é anexado ao PR como evidência de governança.
+- [ ] A equipe revisa sessões com score < 0.30 em retrospectiva para identificar por que a supervisão falhou.
+
+**Para aprofundar:**
+- [[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Operating Metric]] -- canonical doc com a definição formal
+- [[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]] -- gate complementar de pre-execução
+- [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric|Exercício 6: Presence-in-the-Loop]] -- implementação prática do PresenceTracker
+- [[curriculum/GLOSSARY|Glossário]] -- entrada para Presence-in-the-Loop Metric
+
+---
+
 ## 📋 Metadata
 
 | Campo | Valor |
