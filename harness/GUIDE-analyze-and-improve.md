@@ -595,19 +595,23 @@ Antes de declarar a análise concluída:
 
 ## 10. Próximos passos
 
-Depois que o pipeline rodar com sucesso uma vez:
+Itens ja implementados (2026-06-12):
 
-1. **Automatize o setup**: crie um script `harness/setup-analysis.sh` que recebe
-   `source`, `date`, `source-slug` e prepara PROGRESS.md + test-results.json
-   automaticamente.
+1. ~~**Automatize o setup**~~ `harness/setup-analysis.sh` criado dentro do skill
+   `analyze-and-improve`. Uso: `./harness/setup-analysis.sh --source <path>
+   --date YYYY-MM-DD --source-slug <slug> --target-repo <path>`
 
-2. **Skillify o harness wrapper**: transforme este fluxo em uma skill
-   `analyze-with-harness` que recebe os mesmos parâmetros do
-   `analyze-and-improve` mas usa o harness por baixo.
+2. ~~**Skillify o harness wrapper**~~ `harness-analyze-and-improve` ja existe como
+   skill nativa no projeto. Usa `task()` para delegar cada fase com suporte a
+   `mode=once`, `mode=feature:phase-N`, e `mode=loop`.
 
-3. **Paralelize fases independentes**: Phase 0 (modelo mental) e Phase 1
+3. ~~**Métricas**~~ Campos `duration_seconds`, `retry_count`, `started_at`,
+   `completed_at` adicionados ao `test-results.json`. Ambos os orquestradores
+   (skill harness e bash harness) registram e reportam metricas com sumario
+   de bottlenecks ao final do pipeline.
+
+Pendentes:
+
+4. **Paralelize fases independentes**: Phase 0 (modelo mental) e Phase 1
    (extração) podem rodar em paralelo porque não dependem uma da outra
    (a Phase 1 não usa o output da Phase 0).
-
-4. **Métricas**: adicione ao test-results.json campos de `duration_seconds`
-   e `retry_count` para medir onde o pipeline gasta mais tempo.

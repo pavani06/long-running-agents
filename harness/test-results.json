@@ -3,42 +3,70 @@
     "passes": false,
     "evidence": ["docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-mental-model.md", "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-mental-model.yaml"],
     "evaluated_by": null,
-    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve"
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-1": {
     "passes": false,
     "evidence": ["docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md", "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis.yaml"],
     "evaluated_by": null,
-    "notes": "Extracao de conhecimento da fonte — Phase 1"
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-2": {
     "passes": false,
     "evidence": ["docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns.md", "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns.yaml"],
     "evaluated_by": null,
-    "notes": "Extracao de padroes reutilizaveis — Phase 2"
+    "notes": "Extracao de padroes reutilizaveis — Phase 2",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-3": {
     "passes": false,
     "evidence": ["docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification.md", "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification.yaml"],
     "evaluated_by": null,
-    "notes": "Classificacao contra repositorio — Phase 3"
+    "notes": "Classificacao contra repositorio — Phase 3",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-4": {
     "passes": false,
     "evidence": ["docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-integration-roadmap.md"],
     "evaluated_by": null,
-    "notes": "Geracao de artefatos e roadmap — Phase 4"
+    "notes": "Geracao de artefatos e roadmap — Phase 4",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-5": {
     "passes": false,
     "evidence": [],
     "evaluated_by": null,
-    "notes": "Integracao — atualiza system-of-record e indices"
+    "notes": "Integracao — atualiza system-of-record e indices",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-6": {
     "passes": false,
     "evidence": [],
     "evaluated_by": null,
-    "notes": "Curriculum Deep Integration — opcional"
+    "notes": "Curriculum Deep Integration — opcional",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   }
 }

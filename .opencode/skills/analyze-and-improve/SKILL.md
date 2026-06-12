@@ -77,6 +77,7 @@ Antes de comecar, verifique:
 
 - [ ] O parametro `source` foi fornecido e o documento fonte existe e esta acessivel (path absoluto ou URL)
 - [ ] Os parametros `date` e `source-slug` foram resolvidos (derivados se nao fornecidos)
+- [ ] `PROGRESS.md` e `harness/test-results.json` foram inicializados via `setup-analysis.sh` (ou manualmente conforme o template)
 - [ ] O diretorio de output `docs/analysis/<date>-<source-slug>/` foi criado
 - [ ] O repositorio alvo tem `docs/system-of-record.md` (ou equivalente) para resolver precedencia
 - [ ] Voce leu `AGENTS.md` do repositorio alvo para conhecer regras de commit, estilo, e gates
@@ -90,6 +91,14 @@ Este pipeline pode ser executado de duas formas. Escolha a correta para seu cont
 |---|---|
 | **Skill `harness-analyze-and-improve`** | Dentro de uma sessao opencode. Usa `task()` nativo para delegar fases. |
 | **Bash `harness/harness-analysis.sh`** | Terminal real (bash externo). Invoca `opencode run` para cada fase. |
+
+Ambos os mecanismos dependem de `PROGRESS.md` + `harness/test-results.json` inicializados.
+Use o script de bootstrap para prepara-los:
+
+```bash
+./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+  --source <path> --date YYYY-MM-DD --source-slug <slug> --target-repo <path>
+```
 
 O skill harness e recomendado para execucao interativa dentro do opencode. O bash harness e util para automacao externa e CI/CD, mas requer ambiente bash completo (grep, python3/jq, date, mkdir) e **nao funciona quando invocado de dentro de uma sessao opencode**.
 
@@ -120,15 +129,15 @@ TODOS os outputs das fases 0-4 vao para o mesmo diretorio:
 
 ```
 docs/analysis/<date>-<source-slug>/
-  mental-model.md        # Phase 0
-  mental-model.yaml
-  analysis.md            # Phase 1
-  analysis.yaml
-  patterns.md            # Phase 2
-  patterns.yaml
-  classification.md      # Phase 3
-  classification.yaml
-  integration-roadmap.md # Phase 4
+  <date>-<source-slug>-mental-model.md        # Phase 0
+  <date>-<source-slug>-mental-model.yaml
+  <date>-<source-slug>-analysis.md            # Phase 1
+  <date>-<source-slug>-analysis.yaml
+  <date>-<source-slug>-patterns.md            # Phase 2
+  <date>-<source-slug>-patterns.yaml
+  <date>-<source-slug>-classification.md      # Phase 3
+  <date>-<source-slug>-classification.yaml
+  <date>-<source-slug>-integration-roadmap.md # Phase 4
 ```
 
 Artefatos concretos (canonical docs, skills, exercises) gerados na Phase 4 vao para seus diretorios definitivos (`docs/canonical/`, `.opencode/skills/`, `curriculum/`).
@@ -207,8 +216,8 @@ Build a structured mental model covering:
 Do not analyze the external source document yet. Focus ONLY on the repository.
 
 OUTPUT: Write TWO files in <output_dir>:
-- docs/analysis/<date>-<source-slug>/mental-model.md — structured markdown with the sections above
-- docs/analysis/<date>-<source-slug>/mental-model.yaml — typed mirror with the same structure
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md — structured markdown with the sections above
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml — typed mirror with the same structure
 
 The YAML must use typed fields:
   meta: {title, date, repo, type: 'mental-model'}
@@ -224,8 +233,8 @@ The YAML must use typed fields:
 ### Output
 
 ```
-docs/analysis/<date>-<source-slug>/mental-model.md
-docs/analysis/<date>-<source-slug>/mental-model.yaml
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml
 ```
 
 #### Gate (Full Rebuild)
@@ -306,8 +315,8 @@ INSTRUCTIONS:
    and only read files referenced in the delta report.
 
 OUTPUT: Write TWO files:
-- docs/analysis/<date>-<source-slug>/mental-model.md — updated markdown
-- docs/analysis/<date>-<source-slug>/mental-model.yaml — updated typed mirror
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md — updated markdown
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml — updated typed mirror
 
 The YAML must use the same typed fields as full rebuild, plus:
   meta: {title, date, repo, type: 'mental-model', based_on: '<previous-model-filename>'}
@@ -400,14 +409,14 @@ KEEP: frameworks, patterns, architectures, workflows, implementation
 details, operational lessons, failures, tradeoffs.
 
 OUTPUT: Write TWO files in <output_dir>:
-- docs/analysis/<date>-<source-slug>/analysis.md — structured markdown with sections for:
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-analysis.md — structured markdown with sections for:
   1. Frameworks & Models — conceptual structures presented
   2. Patterns & Architectures — reusable designs with mechanics
   3. Operational Lessons — what worked, what failed, what surprised
   4. Tradeoffs — explicit cost/benefit discussions
   5. Failure Patterns — what breaks and why
   6. Synthesis — cross-cutting insights the author may not have named
-- docs/analysis/<date>-<source-slug>/analysis.yaml — typed mirror with the same structure
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-analysis.yaml — typed mirror with the same structure
 
 The YAML must use typed fields:
   meta: {title, source, date, type: 'analysis'}
@@ -423,8 +432,8 @@ The YAML must use typed fields:
 ### Output
 
 ```
-docs/analysis/<date>-<source-slug>/analysis.md
-docs/analysis/<date>-<source-slug>/analysis.yaml
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-analysis.md
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-analysis.yaml
 ```
 
 ### Gate
@@ -477,8 +486,8 @@ benefits, limitations. Then produce a YAML mirror adding components
 (list of sub-elements) and flow (sequence of steps) per pattern.
 
 OUTPUT: Write TWO files in <output_dir>:
-- docs/analysis/<date>-<source-slug>/patterns.md
-- docs/analysis/<date>-<source-slug>/patterns.yaml
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.md
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.yaml
 
 KNOWLEDGE EXTRACTION:
 <paste the markdown analysis from Phase 1>"
@@ -488,8 +497,8 @@ KNOWLEDGE EXTRACTION:
 ### Output
 
 ```
-docs/analysis/<date>-<source-slug>/patterns.md
-docs/analysis/<date>-<source-slug>/patterns.yaml
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.md
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.yaml
 ```
 
 ### Gate
@@ -562,19 +571,19 @@ For every classification, cite file:line references. For 'Missing', confirm NOT_
 with the locations searched. Follow the precedence order from system-of-record.md:
 decisions/ > canonical/ > evidence/ > analysis/ > curriculum/ > READMEs.
 
-Read the repository mental model at docs/analysis/<date>-<source-slug>/mental-model.md
+Read the repository mental model at docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md
 for quick orientation. Then search the repo (grep, read files) for each pattern.
 
 PATTERNS TO CLASSIFY:
 <paste the patterns.md or patterns.yaml from Phase 2>
 
 OUTPUT: Write TWO files in <output_dir>:
-- docs/analysis/<date>-<source-slug>/classification.md — one section per pattern with:
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md — one section per pattern with:
   - Classification + justification
   - Evidence (file:line references or NOT_FOUND)
   - Integration value (Low/Medium/High)
   - Summary table at the end
-- docs/analysis/<date>-<source-slug>/classification.yaml — typed mirror
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml — typed mirror
 
 Summary table format:
 | # | Pattern | Classification | Integration Value |
@@ -588,8 +597,8 @@ Summary table format:
 ### Output
 
 ```
-docs/analysis/<date>-<source-slug>/classification.md
-docs/analysis/<date>-<source-slug>/classification.yaml
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md
+docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 ```
 
 ### Gate
@@ -652,7 +661,7 @@ TARGET_REPOSITORY:
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
 
-Read docs/analysis/<date>-<source-slug>/classification.md for the list of patterns
+Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for the list of patterns
 to create canonical docs for (Missing and P1 only).
 
 EACH CANONICAL DOC must contain:
@@ -683,7 +692,7 @@ TARGET_REPOSITORY:
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
 
-Read docs/analysis/<date>-<source-slug>/classification.md for Missing patterns.
+Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for Missing patterns.
 
 EACH SKILL must contain:
 - Frontmatter with name, description rich in triggers, metadata
@@ -715,7 +724,7 @@ TARGET_REPOSITORY:
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
 
-Read docs/analysis/<date>-<source-slug>/classification.md for Missing patterns.
+Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for Missing patterns.
 
 EACH EXERCISE must follow the curriculum format:
 - Narrative prologue (realistic scenario that went wrong)
@@ -745,7 +754,7 @@ TARGET_REPOSITORY:
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
 
-Read docs/analysis/<date>-<source-slug>/classification.md for all classified patterns.
+Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for all classified patterns.
 
 Create a roadmap with:
 1. Summary matrix (pattern, classification, impact, effort, priority, integration surface)
@@ -754,7 +763,7 @@ Create a roadmap with:
 4. Gap analysis (what is still uncovered)
 
 OUTPUT:
-- docs/analysis/<date>-<source-slug>/integration-roadmap.md"
+- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-integration-roadmap.md"
 )
 ```
 
@@ -893,7 +902,7 @@ TARGET_REPOSITORY:
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
 
-Read docs/analysis/<date>-<source-slug>/classification.md for patterns to integrate:
+Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for patterns to integrate:
 - ALL Missing patterns (regardless of Integration Value)
 - Partial Coverage patterns with Integration Value High
 
@@ -986,7 +995,7 @@ Depois de completar as fases (0-5 obrigatorias, 6 opcional):
 - [ ] O parametro `source` foi fornecido e validado antes de qualquer execucao
 - [ ] Se `source` for array: agregacao produziu arquivo temporario com metadados de proveniencia
 - [ ] `docs/analysis/<date>-<source-slug>/` contem os 4 pares .md+.yaml (mental-model, analysis, patterns, classification)
-- [ ] `docs/analysis/<date>-<source-slug>/integration-roadmap.md` existe
+- [ ] `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-integration-roadmap.md` existe
 - [ ] `docs/canonical/` contem docs para padroes Missing e P1
 - [ ] `.opencode/skills/` contem skills para padroes Missing
 - [ ] `curriculum/` contem exercises para padroes Missing
@@ -1016,14 +1025,14 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 
 | Fase | Arquivos |
 |---|---|
-| Mental Model | `docs/analysis/2026-06-09-12-factor-agents/mental-model.md` + `.yaml` |
-| Knowledge Extraction | `docs/analysis/2026-06-09-12-factor-agents/analysis.md` + `.yaml` |
-| Pattern Extraction | `docs/analysis/2026-06-09-12-factor-agents/patterns.md` + `.yaml` |
-| Classification | `docs/analysis/2026-06-09-12-factor-agents/classification.md` + `.yaml` |
+| Mental Model | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-mental-model.md` + `.yaml` |
+| Knowledge Extraction | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md` + `.yaml` |
+| Pattern Extraction | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.md` + `.yaml` |
+| Classification | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md` + `.yaml` |
 | Improvements | `docs/canonical/{error-context-hygiene,deterministic-tool-dispatch,owned-agent-control-loop,serializable-pause-resume-state}.md` |
 | | `.opencode/skills/error-context-hygiene/SKILL.md` |
 | | `curriculum/.../exercise-04-error-context-hygiene.md` |
-| | `docs/analysis/2026-06-09-12-factor-agents/integration-roadmap.md` |
+| | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md` |
 | Integration | `docs/system-of-record.md`, `curriculum/INDEX.md`, `curriculum/README.md` |
 
 **Resultado da classificacao:** 3 Already Exists, 4 Partial Coverage, 1 Missing (Error Context Hygiene)
@@ -1042,12 +1051,12 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 
 | Fase | Arquivos |
 |---|---|
-| Mental Model | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/mental-model.md` + `.yaml` |
-| Knowledge Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md` + `.yaml` |
-| Pattern Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md` + `.yaml` |
-| Classification | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md` + `.yaml` |
+| Mental Model | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-mental-model.md` + `.yaml` |
+| Knowledge Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md` + `.yaml` |
+| Pattern Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md` + `.yaml` |
+| Classification | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md` + `.yaml` |
 | Improvements | `docs/canonical/{head-tail-context-truncation,addressable-memory-catalog,n-plus-one-long-session-evals,stable-harness-prompt,late-failure-regression-suite}.md` |
-| | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md` |
+| | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-integration-roadmap.md` |
 | Integration | `docs/system-of-record.md` |
 | Phase 6 (Curriculum) | 8 arquivos em `curriculum/` modificados (+218 linhas): checklist, core concepts, exercicio windowing, server-side compaction, harness improvements, evolution playbook, rubric template |
 
