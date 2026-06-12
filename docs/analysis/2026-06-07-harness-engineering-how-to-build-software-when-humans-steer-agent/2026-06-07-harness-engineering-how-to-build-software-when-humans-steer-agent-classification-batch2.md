@@ -4,8 +4,8 @@ type: analysis
 tags: ["agentes-orquestracao", "harness", "context-engineering", "evals", "governanca"]
 date: 2026-06-11
 aliases: ["classification batch 2", "harness engineering classification batch 2", "patterns 9-16 classification"]
-relates-to: ["[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]", "[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-mental-model|Harness Engineering Mental Model]]", "[[docs/system-of-record|System of Record]]"]
-sources: ["[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]", "[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]"]
+relates-to: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-mental-model|Harness Engineering Mental Model]]", "[[docs/system-of-record|System of Record]]"]
+sources: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]"]
 ---
 
 # Classification Batch 2: Patterns 9-16
@@ -14,7 +14,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 9: Micro-Harnesses Architecture
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:134-139]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:134-139]]
 
 **Classification: Partial Coverage**
 
@@ -34,7 +34,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 10: QA Plan as Agent Contract
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:95-104, 163-165]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:95-104, 163-165]]
 
 **Classification: Already Exists**
 
@@ -56,7 +56,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 11: Token Budget Optimization
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:159-161]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:159-161]]
 
 **Classification: Better Implementation**
 
@@ -76,7 +76,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 12: Failure Pattern Classification Loop
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:47-57, 185-193]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:47-57, 185-193]]
 
 **Classification: Partial Coverage**
 
@@ -97,7 +97,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 13: LLM as Fuzzy Compiler
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:59-63, 201-210]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:59-63, 201-210]]
 
 **Classification: Missing**
 
@@ -116,7 +116,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 14: Harness-as-Context-Manager
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:35-39, 201-210]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:35-39, 201-210]]
 
 **Classification: Better Implementation**
 
@@ -137,7 +137,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 15: Persona-Based Documentation
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:41-45, 99-101]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:41-45, 99-101]]
 
 **Classification: Missing**
 
@@ -158,7 +158,7 @@ Evidence-based classification of patterns 9 through 16 extracted from the Harnes
 
 ## Pattern 16: Harness Evolution Lifecycle
 
-**Source:** [[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:203-210]]
+**Source:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis.md:203-210]]
 
 **Classification: Better Implementation**
 

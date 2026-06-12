@@ -15,13 +15,13 @@ Source: Matt Pocock talk "Full Walkthrough: Workflow for AI Coding" (AI Engineer
 
 ### Software engineering fundamentals as the AI coding substrate
 
-The talk's deepest model is that AI coding does not replace software engineering discipline; it increases the payoff of old disciplines. [[concepts/vertical-slices]], [[concepts/deep-modules]], TDD, code review, issue decomposition, and feedback loops become control surfaces for agents. The model treats agents as faster implementers inside the same engineering system, not as a new system that can bypass architecture and verification.
+The talk's deepest model is that AI coding does not replace software engineering discipline; it increases the payoff of old disciplines. [[docs/canonical/vertical-slice-issue-generation|vertical slices]], [[docs/canonical/architecture-as-agent-affordance|deep modules]], TDD, code review, issue decomposition, and feedback loops become control surfaces for agents. The model treats agents as faster implementers inside the same engineering system, not as a new system that can bypass architecture and verification.
 
 Non-obvious implication: the scarce resource is no longer keystrokes. The scarce resources are task framing, module boundaries, feedback quality, and review attention. AI makes poor architecture and weak tests more expensive because it can generate bad code faster.
 
 ### Smart zone / dumb zone
 
-[[concepts/smart-zone-dumb-zone]] is a context-quality model, not just a token-count warning. The working assumption is that useful reasoning degrades well before the nominal context window is full, around the practical smart-zone ceiling discussed in the source. The workflow therefore optimizes for predictable reasoning quality rather than maximum context retention.
+[[docs/canonical/addressable-memory-catalog|smart zone / dumb zone]] is a context-quality model, not just a token-count warning. The working assumption is that useful reasoning degrades well before the nominal context window is full, around the practical smart-zone ceiling discussed in the source. The workflow therefore optimizes for predictable reasoning quality rather than maximum context retention.
 
 Operational shape:
 
@@ -33,25 +33,25 @@ Operational shape:
 
 ### Shared design concept before plans
 
-The [[concepts/grill-me-skill]] is a planning model where the goal is not a perfect plan artifact. The goal is a [[concepts/shared-design-concept]] between human and agent. The agent interviews the human aggressively, one question at a time, to expose hidden constraints, unresolved product calls, architectural assumptions, and domain unknowns.
+The [[docs/canonical/grill-me-alignment-interview|grill-me skill]] is a planning model where the goal is not a perfect plan artifact. The goal is a [[docs/canonical/shared-design-concept-handoff|shared design concept]] between human and agent. The agent interviews the human aggressively, one question at a time, to expose hidden constraints, unresolved product calls, architectural assumptions, and domain unknowns.
 
 The resulting conversation is the real planning asset. The PRD is downstream summarization, not the source of truth by itself. This reverses a common spec-driven instinct: the workflow trusts the PRD because alignment happened before it, not because the PRD is detailed enough to remove judgment.
 
 ### PRD as destination, not executable spec
 
-[[concepts/prd-as-destination]] frames the PRD as a navigational artifact. It says where the system is going and what matters, but it is not treated as a literal code-generation contract. It is useful enough to generate issues, define scope, and keep agents oriented. It is not a permanent repository bible.
+[[docs/canonical/carry-debt-sunset-gate|PRD as destination]] frames the PRD as a navigational artifact. It says where the system is going and what matters, but it is not treated as a literal code-generation contract. It is useful enough to generate issues, define scope, and keep agents oriented. It is not a permanent repository bible.
 
-The important boundary is temporal: a PRD is valuable during planning and issue generation, but can become [[concepts/doc-rot]] after implementation if it remains in the repo as apparently-current context.
+The important boundary is temporal: a PRD is valuable during planning and issue generation, but can become [[docs/canonical/carry-debt-sunset-gate|doc rot]] after implementation if it remains in the repo as apparently-current context.
 
 ### Human-in-loop versus AFK classification
 
-[[concepts/human-in-loop-vs-afk]] is the task-routing model. Planning, ambiguity resolution, architectural judgment, prototype interpretation, QA, and final review require human presence. Bounded implementation issues can run AFK only after they have clear scope, dependencies, feedback loops, and module boundaries.
+[[docs/canonical/human-afk-task-routing-gate|human-in-loop vs AFK]] is the task-routing model. Planning, ambiguity resolution, architectural judgment, prototype interpretation, QA, and final review require human presence. Bounded implementation issues can run AFK only after they have clear scope, dependencies, feedback loops, and module boundaries.
 
 The model is not "automate everything." It is "move implementation into bounded queues while keeping judgment at the boundaries."
 
 ### Architecture as agent affordance
 
-[[concepts/deep-modules]] are presented as both human architecture and agent architecture. Deep modules give agents larger behavioral surfaces with simple public interfaces. They reduce navigation burden, make tests more meaningful, and let humans own the interface while agents fill internals.
+[[docs/canonical/architecture-as-agent-affordance|deep modules]] are presented as both human architecture and agent architecture. Deep modules give agents larger behavioral surfaces with simple public interfaces. They reduce navigation burden, make tests more meaningful, and let humans own the interface while agents fill internals.
 
 This reframes architecture as an input to agent performance. A shallow, highly coupled codebase is not just ugly; it is hostile terrain for an agent.
 
@@ -77,7 +77,7 @@ Architecture role: bridges high-level intent to issue decomposition.
 
 Problem: agents tend to implement horizontally, such as all database changes, then all API changes, then all UI changes, which delays integration feedback.
 
-Pattern: generate issues as [[concepts/vertical-slices]] that cross layers and produce observable behavior. Each issue should be small enough for one AFK session but complete enough to test a real path. Represent dependencies as blockers rather than as a single linear phase list.
+Pattern: generate issues as [[docs/canonical/vertical-slice-issue-generation|vertical slices]] that cross layers and produce observable behavior. Each issue should be small enough for one AFK session but complete enough to test a real path. Represent dependencies as blockers rather than as a single linear phase list.
 
 Architecture role: turns planning into an integration-feedback graph.
 

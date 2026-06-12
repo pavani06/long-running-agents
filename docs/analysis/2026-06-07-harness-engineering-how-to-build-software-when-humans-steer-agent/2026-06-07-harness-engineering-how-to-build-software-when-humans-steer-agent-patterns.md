@@ -4,13 +4,13 @@ type: analysis
 tags: ["agentes-orquestracao", "harness", "context-engineering", "evals", "governanca"]
 date: 2026-06-11
 aliases: ["harness engineering patterns", "agentic harness patterns", "long-running harness patterns"]
-relates-to: ["[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]"]
-sources: ["[[docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]"]
+relates-to: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]"]
+sources: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]"]
 ---
 
 # Reusable Agentic Patterns from Harness Engineering
 
-Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md`. Only reusable patterns for agentic systems and long-running agent workflows are included; generic productivity advice, vendor-specific mechanics, marketing, and trivial preferences are excluded.
+Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md`. Only reusable patterns for agentic systems and long-running agent workflows are included; generic productivity advice, vendor-specific mechanics, marketing, and trivial preferences are excluded.
 
 ## 1. Durable Non-Functional Requirements Memory
 
@@ -33,8 +33,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Stale NFRs can institutionalize old decisions after the codebase changes.
   - Does not replace executable checks when a preference can be enforced mechanically.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:41
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:45
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:41
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:45
 
 ## 2. Instruction Injection Surface Map
 
@@ -57,8 +57,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Hidden or inconsistent injection points can make behavior hard to debug.
   - The map must evolve when tooling, CI, or review workflows change.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:69
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:83
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:69
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:83
 
 ## 3. Just-in-Time Context Surfacing
 
@@ -81,8 +81,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Auto-compaction can remove earlier context before the corrective phase arrives.
   - Requires reliable phase triggers such as lint failures, tests, or review gates.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:85
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:93
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:85
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:93
 
 ## 4. Reviewer Agents as CI Gates
 
@@ -105,8 +105,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Agents can miss nuanced product judgment that humans would catch.
   - If every finding is mandatory, the implementer can enter endless correction loops.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:95
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:104
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:95
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:104
 
 ## 5. Implementation Agent Feedback Autonomy
 
@@ -129,10 +129,10 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Incorrect deferrals can merge defects that should have been fixed immediately.
   - Works best when reviewers produce grounded findings rather than vague preferences.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:95
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:104
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:124
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:130
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:95
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:104
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:124
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:130
 
 ## 6. Weekly Harness Garbage Collection Loop
 
@@ -155,8 +155,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Poor categorization can create narrow rules that miss the real failure class.
   - New guardrails can add false positives or token cost if not measured.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:47
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:57
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:47
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:57
 
 ## 7. Deep Skill Capability Wrappers
 
@@ -179,8 +179,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Too few skills can leave important workflows unsupported.
   - Skills become dangerous if they perform side effects without approval gates.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:106
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:113
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:106
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:113
 
 ## 8. Codebase Uniformity as Agent Affordance
 
@@ -203,8 +203,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Migrations still need isolation, review, and integration discipline.
   - Uniformity is harmful when it hides real domain differences behind one abstraction.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:114
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:122
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:114
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:122
 
 ## 9. Structural Micro-Harnesses
 
@@ -227,8 +227,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Requires careful messages so agents can repair failures without guessing.
   - Overuse can encode taste as rigid structure where flexibility is needed.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:134
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:139
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:134
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:139
 
 ## 10. Continual Context Refresh for Compacted Sessions
 
@@ -251,10 +251,10 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Poor refresh policies can either miss needed guidance or reintroduce prompt bloat.
   - Critical state still needs durable storage outside the active context.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:151
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:153
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:85
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:93
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:151
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:153
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:85
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:93
 
 ## 11. Reviewed Plans as Execution Artifacts
 
@@ -277,8 +277,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Can slow small tasks where the harness already supplies enough structure.
   - A reviewed plan can still become stale if implementation discovers new facts.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:155
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:157
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:155
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:157
 
 ## 12. PR Broadcast Hub for Agent Collaboration
 
@@ -301,10 +301,10 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Long-lived PRs still create conflicts and stale context.
   - The PR hub needs clear merge authority and feedback semantics.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:124
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:132
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:145
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:149
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:124
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:132
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:145
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:149
 
 ## 13. Token Budget Allocation Ledger
 
@@ -327,8 +327,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Rigid allocations can waste budget when one phase is unusually simple.
   - Token planning cannot compensate for weak tests or unclear acceptance criteria.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:159
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:161
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:159
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:161
 
 ## 14. Agent-Built Tooling Loop
 
@@ -351,8 +351,8 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Generated tools still need ownership, tests, and security review.
   - Some workflows require live side effects or secrets that need explicit approval.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:163
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:165
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:163
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:165
 
 ## 15. Durable Harness Asset Preservation
 
@@ -375,10 +375,10 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Harness assets can also rot if not measured and pruned.
   - Versioning prompts and guardrails adds governance overhead.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:59
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:63
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:201
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:210
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:59
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:63
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:201
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:210
 
 ## 16. Parallel Candidate Agent Races
 
@@ -401,5 +401,5 @@ Scope: extracted from `/mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-ha
   - Needs isolation and merge discipline to avoid conflicts and mixed partial solutions.
   - Selection quality is limited by the evaluator rubric and available tests.
 - **source_reference:**
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:23
-  - /mnt/c/Users/pavan/long-running-agents/docs/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:31
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:23
+  - /mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis.md:31

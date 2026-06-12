@@ -5,14 +5,14 @@ date: 2026-06-10
 tags: ["agentes-orquestracao", "curriculo-conteudo", "context-engineering", "evals", "governanca"]
 aliases: ["roadmap CS153", "integracao CS153", "AI-native roadmap", "Stanford patterns"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification>|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model>|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]
-sources: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis>|Stanford CS153 Analysis]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns>|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification>|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model>|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]
+relates-to: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]
+sources: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model|Stanford CS153 Mental Model]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/INDEX|Curriculum Index]]"]
 ---
 # Integration Roadmap: Stanford CS153 AI Native Company Patterns
 
 ## Scope
 
-This roadmap maps the 11 classified Stanford CS153 AI Native Company patterns from [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification>|classification]] into concrete integration points for `long-running-agents`. It uses the repository precedence model in [[docs/system-of-record|System of Record]], the repository orientation in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model>|mental-model]], and the level structure in [[curriculum/README|curriculum README]] and [[curriculum/INDEX|curriculum index]].
+This roadmap maps the 11 classified Stanford CS153 AI Native Company patterns from [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]] into concrete integration points for `long-running-agents`. It uses the repository precedence model in [[docs/system-of-record|System of Record]], the repository orientation in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model|mental-model]], and the level structure in [[curriculum/README|curriculum README]] and [[curriculum/INDEX|curriculum index]].
 
 Priority is assigned as follows:
 
@@ -55,15 +55,15 @@ The Stanford CS153 analysis package now contains these analysis artifacts:
 
 | Artifact | Status | Role |
 |---|---|---|
-| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model>|mental-model.md]] | Created | Repository orientation before external-source comparison |
+| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model|mental-model.md]] | Created | Repository orientation before external-source comparison |
 | `docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model.yaml` | Created | Structured form of the repository mental model |
-| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis>|analysis.md]] | Created | Non-obvious knowledge extraction from the Stanford CS153 source |
+| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|analysis.md]] | Created | Non-obvious knowledge extraction from the Stanford CS153 source |
 | `docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis.yaml` | Created | Structured extraction output |
-| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns>|patterns.md]] | Created | 11 agentic patterns extracted from the analysis |
+| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|patterns.md]] | Created | 11 agentic patterns extracted from the analysis |
 | `docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns.yaml` | Created | Structured pattern catalog |
-| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification>|classification.md]] | Created | Classification of all 11 patterns against the repo |
+| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification.md]] | Created | Classification of all 11 patterns against the repo |
 | `docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification.yaml` | Created | Structured classification output |
-| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-integration-roadmap>|integration-roadmap.md]] | Created by this step | Integration map from classified patterns to repository surfaces |
+| [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-integration-roadmap|integration-roadmap.md]] | Created by this step | Integration map from classified patterns to repository surfaces |
 
 ### Canonical Docs
 
