@@ -43,23 +43,53 @@ Load harness-analyze-and-improve with mode=feature:phase-0
 Load harness-analyze-and-improve with mode=loop
 ```
 
+mode=loop: executa TODAS as fases pendentes sem perguntar.
+So para em AGENT_STOP, falha de fase, ou conclusao total.
+Commits cada fase automaticamente. Pergunta push so no final.
+
 ## Phase → Agent Mapping
 
 Conforme `analyze-and-improve` SKILL.md:
 
-| Phase | Agent | Category |
-|---|---|---|
-| phase-0 | ultrabrain | Repository Mental Model |
-| phase-1 | deep | Knowledge Extraction |
-| phase-2 | ultrabrain | Pattern Extraction |
-| phase-3 | deep or ultrabrain | Classification |
-| phase-4 | deep (parallel) | Improvement Generation |
-| phase-5 | quick | Integration |
-| phase-6 | deep | Curriculum Deep Integration |
+| Phase | Agent | Category | Background |
+|---|---|---|---|
+| phase-0 | ultrabrain | Repository Mental Model | true |
+| phase-1 | deep | Knowledge Extraction | false |
+| phase-2 | ultrabrain | Pattern Extraction | true |
+| phase-3 | deep or ultrabrain | Classification | true (batches) |
+| phase-4 | deep (parallel) | Improvement Generation | true |
+| phase-5 | quick | Integration | false |
+| phase-6 | deep | Curriculum Deep Integration | true |
 
-> **Nota Phase 3**: Para classificacao com mais de 8 padroes, divida em lotes de no maximo 8 padroes por agente. Se `deep` abortar, use `ultrabrain` como fallback.
+> **Nota Phase 3**: Para classificacao com mais de 8 padroes, divida em lotes de no maximo 8 padroes por agente (background). Apos ambos completarem, o ORQUESTRADOR consolida os batch files em classification.md + classification.yaml inline (NAO delegar — sao operacoes simples de concatenacao e formatacao de tabela). Se `deep` abortar, use `ultrabrain` como fallback.
+
+> Fases com background=true usam run_in_background=true no task().
+> Isso evita que um abort mate a sessao inteira — o harness
+> continua vivo e o sistema notifica quando completar.
+
+> **Nota Phase 6**: Divida os padroes em 2 agentes paralelos:
+> - Agente A: Missing patterns (gap analysis + insertion + execucao)
+> - Agente B: Partial Coverage High patterns (gap + insertion + exec)
+> Cada agente edita arquivos DISJUNTOS do curriculum/. Verifique
+> antes de disparar que os arquivos alvo nao conflitam.
 
 ## Execution Flow
+
+### Step 0: Reset State (fresh analysis)
+
+Before reading context, check if test-results.json has ALL phases
+with passes=true from a PREVIOUS analysis. If yes, reset it:
+
+1. Read harness/test-results.json
+2. If ALL phase-N entries have passes=true AND the source-slug
+   in PROGRESS.md differs from the last committed analysis,
+   overwrite test-results.json with fresh template (all phases
+   passes=false, evidence=[], evaluated_by=null).
+3. Template is at: harness/templates/test-results.json
+
+This prevents the "sed PLACEHOLDER not found" problem from
+session harness-engineering, where test-results.json still
+held Matt Pocock data.
 
 ### Step 1: Read Context
 
@@ -99,6 +129,15 @@ TARGET_REPOSITORY:
 
 **CRITICAL**: All file paths in delegation prompts must be absolute. Never use relative paths — agents may resolve them from wrong working directories.
 
+**Pattern Names for Phase 3 (Classification)**:
+- Os nomes dos padroes no prompt de delegacao DEVEM ser extraidos
+  do arquivo patterns.md (fonte canonica), NAO do analysis.md.
+- Inclua no prompt: "Use the pattern names exactly as they appear
+  in patterns.md. Do not rename or use analysis.md section titles."
+- Isso evita o problema da sessao harness-engineering onde
+  'QA Plan as Agent Contract' nao correspondia a nenhum padrao
+  do patterns.md (o nome real era 'Sprint Contract').
+
 ### Step 5: Verify Output
 
 After the delegation completes:
@@ -116,7 +155,10 @@ Run a self-check:
 
 If PASS:
 - Update `harness/test-results.json`: set `evaluated_by` to `"evaluator"` for that phase
-- Update `PROGRESS.md`: use `write` to rewrite the file (not `edit`). PROGRESS.md is short and `edit` often fails on whitespace mismatches.
+- Update PROGRESS.md: use edit com oldString/newString precisos.
+  Prefira editar a secao '## Done' e '## To Do' individualmente.
+  Se edit falhar (whitespace mismatch), leia o arquivo novamente
+  e tente com contexto adicional.
 
 If NEEDS_WORK:
 - Write findings to `NEXT_FINDINGS.md`
@@ -124,9 +166,13 @@ If NEEDS_WORK:
 
 ### Step 7: Advance or Stop
 
-- If `mode=once`: stop after one phase
+- If `mode=once`: stop after one phase, ask user "Continue?"
 - If `mode=feature:<phase-N>`: stop after that phase
-- If `mode=loop`: go back to Step 2 for the next pending phase
+- If `mode=loop`: auto-advance to next pending phase WITHOUT
+  asking. Only stop if:
+  a) AGENT_STOP file exists at repo root, OR
+  b) No more pending phases (all passes=true), OR
+  c) A phase fails evaluation (NEEDS_WORK)
 - If no more pending phases: report completion
 
 ## Kill Switch
@@ -150,7 +196,12 @@ NEVER commit without asking the user. After each phase completes:
 - Usar paths relativos em delegacoes — sempre absolutos
 - Commitar sem perguntar ao usuario
 - Executar Phase 6 sem antes verificar se ha Missing ou Partial Coverage High
-- Usar `edit` no PROGRESS.md — use `write` (reescrita completa)
+- Usar `write` no PROGRESS.md sem reler o arquivo antes —
+  o tool write exige read previo. Use edit com oldString exato.
+- Reagir a notificacoes [BACKGROUND TASK RESULT READY] antes do
+  [ALL BACKGROUND TASKS COMPLETE]. Espere sempre o ALL COMPLETE
+  para coletar resultados de todos os background agents de uma vez.
+  Notificacoes parciais sao informativas, nao acionaveis.
 
 ## Reference
 

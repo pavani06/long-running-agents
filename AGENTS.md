@@ -236,3 +236,18 @@ When creating a new document:
 1. Identify which canonical docs, analyses, or curriculum files it connects to.
 2. Add `relates-to: ["[[path|Display]]", ...]` in the frontmatter.
 3. Run `bash scripts/check-obsidian-conventions.sh` before committing.
+
+## Rule 17: Background Task Discipline
+
+When using parallel background agents (run_in_background=true):
+
+- Do NOT react to individual [BACKGROUND TASK RESULT READY]
+  notifications. These are informational only.
+- Wait for [ALL BACKGROUND TASKS COMPLETE] before collecting
+  any results via background_output().
+- Collect ALL results in a single batch after ALL COMPLETE.
+- Individual READY notifications before ALL COMPLETE mean
+  "one finished, others still running" — not "act now."
+
+This prevents wasted cycles waiting for partial completions
+and ensures results are processed as a coherent batch.

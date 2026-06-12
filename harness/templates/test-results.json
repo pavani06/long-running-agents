@@ -1,8 +1,9 @@
 {
-  "_placeholder": {
-    "passes": false,
-    "evidence": null,
-    "evaluated_by": null,
-    "notes": "Substitua pelas features reais do PROGRESS.md"
-  }
+  "phase-0": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve." },
+  "phase-1": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de conhecimento — Phase 1." },
+  "phase-2": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de padroes reutilizaveis — Phase 2." },
+  "phase-3": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Classificacao — Phase 3." },
+  "phase-4": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Geracao de artefatos e roadmap — Phase 4." },
+  "phase-5": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Integracao — Phase 5." },
+  "phase-6": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Curriculum Deep Integration — Phase 6 (opcional)." }
 }

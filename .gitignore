@@ -40,3 +40,7 @@ artifacts/
 # Supabase generated
 supabase/.combined-migration.sql
 .worktrees/
+
+# Obsidian local state (auto-generated, not content)
+.obsidian/workspace.json
+.obsidian/graph.json

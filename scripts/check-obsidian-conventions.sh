@@ -43,7 +43,7 @@ while IFS= read -r -d '' f; do
     else
         report_err "${f#$REPO_ROOT/} — missing YAML frontmatter"
     fi
-done < <(find "$REPO_ROOT"/docs/analysis -name '*.md' -print0)
+done < <(find "$REPO_ROOT"/docs/analysis -type f -name '*.md' -print0)
 
 # --- Check 3: Frontmatter in curriculum index files ---
 echo ""
@@ -200,7 +200,7 @@ while IFS= read -r -d '' f; do
     else
         report_err "${f#$REPO_ROOT/} — missing YAML frontmatter"
     fi
-done < <(find "$REPO_ROOT"/curriculum -name '*.md' -print0)
+done < <(find "$REPO_ROOT"/curriculum -type f -name '*.md' -print0)
 
 # --- Check 10: Tag taxonomy validation (warning only) ---
 echo ""
@@ -293,7 +293,7 @@ while IFS= read -r -d '' f; do
     else
         report_err "${f#$REPO_ROOT/} — missing 'relates-to:' in frontmatter"
     fi
-done < <(find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -name '*.md' -print0)
+done < <(find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -type f -name '*.md' -print0)
 
 # --- Check 12: aliases presence and non-empty in all monitored .md files ---
 echo ""
@@ -309,7 +309,7 @@ while IFS= read -r -d '' f; do
     else
         report_ok "${f#$REPO_ROOT/}"
     fi
-done < <(find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -name '*.md' -print0)
+done < <(find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -type f -name '*.md' -print0)
 
 # --- Summary ---
 echo ""
