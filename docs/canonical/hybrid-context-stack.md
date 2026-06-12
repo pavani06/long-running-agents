@@ -4,14 +4,14 @@ type: canonical
 aliases: ["pilha de contexto hibrida", "layered context", "context stack", "multi-layer context assembly"]
 tags: ["context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
-sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+relates-to: ["[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 ---
 # Hybrid Context Stack
 
 **Type:** canonical
 **Status:** active
-**Source:** [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]
+**Source:** [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]
 **Classification:** Partial Coverage
 **Precedence:** document-level 2 (canonical) per [[docs/system-of-record|System of Record]]:14-21
 
@@ -23,13 +23,13 @@ No single context-budgeting strategy handles every phase of a long-running agent
 
 The repository already has strong canonical pieces for this stack. [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]] defines context-builder blocks for stable prompt, head, tail, omitted middle, tool or trace bulk, and durable state ([[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]:30-40). [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]] defines bounded active context plus recoverable middle ([[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]:28-39). [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]] defines retrieval metadata for omitted content ([[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:30-43). [[docs/canonical/external-state-persistence|External State Persistence]] defines loading durable state and merging it with current context ([[docs/canonical/external-state-persistence|External State Persistence]]:31-57).
 
-The gap is assembly policy. The Phase 3 classification found `NOT_FOUND` for a single hybrid context stack with budgeted inclusion order and a context-builder decision trace, even though the component layers exist across canonical docs ([[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]:94-100).
+The gap is assembly policy. The Phase 3 classification found `NOT_FOUND` for a single hybrid context stack with budgeted inclusion order and a context-builder decision trace, even though the component layers exist across canonical docs ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:94-100).
 
 ## Solution
 
 A Hybrid Context Stack is a budget-aware context-builder policy that assembles each model call from ordered layers. It does not let stable harness instructions, durable facts, summaries, recent conversational texture, and recoverable omitted content compete as one raw transcript.
 
-The extracted pattern defines the inputs as stable harness prompt and tool contracts, durable structured facts, summary buffer, recent-message window, and optional compressed blocks, topic buckets, or token-health actions. Its outputs are a layered active context under a known token budget, a prioritized inclusion order, and a decision trace explaining what was kept, summarized, compressed, or omitted ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]:191-212).
+The extracted pattern defines the inputs as stable harness prompt and tool contracts, durable structured facts, summary buffer, recent-message window, and optional compressed blocks, topic buckets, or token-health actions. Its outputs are a layered active context under a known token budget, a prioritized inclusion order, and a decision trace explaining what was kept, summarized, compressed, or omitted ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:191-212).
 
 The stack policy is:
 
@@ -82,7 +82,7 @@ EXTERNAL STORES
 
 ## Context-Builder Decision Trace
 
-Every context build should emit a trace that is small enough to log or attach to replay artifacts. The trace exists because the hybrid stack is more complex than a single window or summary, and component interactions can hide bugs unless the context builder is observable ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]:209-212).
+Every context build should emit a trace that is small enough to log or attach to replay artifacts. The trace exists because the hybrid stack is more complex than a single window or summary, and component interactions can hide bugs unless the context builder is observable ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:209-212).
 
 Minimum trace fields:
 
@@ -140,9 +140,9 @@ Example trace shape:
 | Benefit | Cost | Mitigation |
 |---|---|---|
 | Balances stable instructions, durable facts, summaries, recent turns, and omitted-memory handles instead of relying on one truncation trick | More complex than a recent window or summary alone | Keep a fixed inclusion order and emit a decision trace every build. |
-| Preserves decision-critical state while still bounding active prompt size | Requires token estimates for every layer | Use the source budget model: total context minus processed input minus response and safety buffers ([[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:17-37). |
+| Preserves decision-critical state while still bounding active prompt size | Requires token estimates for every layer | Use the source budget model: total context minus processed input minus response and safety buffers ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:17-37). |
 | Makes omitted content recoverable rather than silently lost | Requires storage and catalog metadata | Use stable IDs, locations, previews, scopes, and fetch handles ([[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:30-43). |
-| Lets the harness adjust strategy by session phase | Needs monitoring and threshold tuning | Use token-health actions such as continue, monitor, compress, summarize, or new session from the extracted monitor pattern ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]:59-79). |
+| Lets the harness adjust strategy by session phase | Needs monitoring and threshold tuning | Use token-health actions such as continue, monitor, compress, summarize, or new session from the extracted monitor pattern ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:59-79). |
 | Supports production continuity across long sessions | Summary or compression may still lose nuance | Preserve exact source spans externally and fetch them by handle when needed. |
 
 ## Relationship to Other Patterns
@@ -159,10 +159,10 @@ Example trace shape:
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:34-62 - token budgeting definition and available-space equation.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:375-424 - hybrid approach with recent window, summary buffer, and fixed critical context.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:445-459 - conversation viability calculator with response and safety reserve.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:103-109 - Hybrid Context Stack extraction from source analysis.
-- [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]:191-212 - reusable Hybrid Context Stack pattern with inputs, outputs, benefits, and limitations.
-- `docs/analysis/2026-06-10-token-budgeting/patterns.yaml:288-321` - YAML source flow: reserve budget, inject durable facts, add summaries, add recent window, compress or omit, and log final inclusion decision.
-- [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]:94-100 - Partial Coverage classification and NOT_FOUND gap.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:103-109 - Hybrid Context Stack extraction from source analysis.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:191-212 - reusable Hybrid Context Stack pattern with inputs, outputs, benefits, and limitations.
+- `docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns.yaml:288-321` - YAML source flow: reserve budget, inject durable facts, add summaries, add recent window, compress or omit, and log final inclusion decision.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:94-100 - Partial Coverage classification and NOT_FOUND gap.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]:30-40 - existing context-builder block list.
 - [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]:28-39 - bounded active context with recoverable middle.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:30-43 - omitted-memory retrieval metadata.

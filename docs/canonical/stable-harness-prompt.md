@@ -5,7 +5,7 @@ aliases: ["harness prompt", "stable prompt"]
 tags: ["harness", "context-engineering"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns|Basic Harness Patterns Lesson]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
-sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]
 ---
 # Stable Harness Prompt During Context Reduction
 
@@ -50,11 +50,11 @@ The repo already separates prompt ownership from context construction in several
 - That same canonical doc notes that the repo has a hand-authored system prompt and an excellent context builder, while prompt versioning and evals remain a gap (`docs/canonical/owned-agent-control-loop.md:87`).
 - State Persistence describes the context window as including system prompt, recent messages, summaries, tools, and injected state (`curriculum/05-core-concepts/05-state-persistence.md:140`).
 - State Persistence also says prompt, rubric, catalog, and schema need versions for replay (`curriculum/05-core-concepts/05-state-persistence.md:1414`).
-- The source analysis lists preserving the system prompt during truncation as a tradeoff with explicit cost and benefit (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:203`).
+- The source analysis lists preserving the system prompt during truncation as a tradeoff with explicit cost and benefit (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:203`).
 
 ### What is missing
 
-The classification found no explicit rule named `Stable Harness Prompt During Context Reduction` or equivalent `preserve system prompt while truncating payload` outside this analysis output (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:80`). Existing documents imply the separation, but they do not state it as a canonical context-reduction invariant.
+The classification found no explicit rule named `Stable Harness Prompt During Context Reduction` or equivalent `preserve system prompt while truncating payload` outside this analysis output (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:80`). Existing documents imply the separation, but they do not state it as a canonical context-reduction invariant.
 
 The missing implementation details are:
 
@@ -82,8 +82,8 @@ The missing implementation details are:
 
 ## References
 
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:203` — tradeoff entry for preserving the system prompt during truncation.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:68` — Partial Coverage classification and gap.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:203` — tradeoff entry for preserving the system prompt during truncation.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:68` — Partial Coverage classification and gap.
 - `docs/canonical/owned-agent-control-loop.md:20` — prompt and context builder as separate components.
 - `docs/canonical/owned-agent-control-loop.md:87` — prompt versioning and eval gap.
 - `curriculum/05-core-concepts/05-state-persistence.md:140` — context window includes system prompt and other blocks.

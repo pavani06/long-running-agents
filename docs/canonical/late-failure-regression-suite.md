@@ -5,7 +5,7 @@ aliases: ["regression suite", "late failure"]
 tags: ["evals", "error-handling"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]
 ---
 # Late-Failure Regression Suite
 
@@ -50,11 +50,11 @@ The repo already has mature regression and rollout practices that this suite can
 - The evaluation rubric template requires applying rubrics to old incident outputs as a regression set and using real problem outputs as regression examples (`curriculum/08-tools-templates/evaluation-rubric-template.md:812`).
 - The harness evolution playbook requires regression tests before canary, staged rollout with shadow diffs, canary metrics, rollback decisions, and 14-day observation (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741`).
 - Harness Improvements defines comparison-controlled shadow testing, rollback or disablement, technical ownership, and review cadence as acceptance criteria (`curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:480`).
-- The source analysis identifies late-session forgetting and N+1 evals as the mechanism for turning context degradation into a reproducible bug (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:50`).
+- The source analysis identifies late-session forgetting and N+1 evals as the mechanism for turning context degradation into a reproducible bug (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:50`).
 
 ### What is missing
 
-The classification found no named late-session context regression suite in the canonical docs, curriculum, evidence, decisions, or operational skills (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:95`). Existing suites are broader harness and rubric regressions rather than a first-class family for late context failures.
+The classification found no named late-session context regression suite in the canonical docs, curriculum, evidence, decisions, or operational skills (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:95`). Existing suites are broader harness and rubric regressions rather than a first-class family for late context failures.
 
 The missing implementation details are:
 
@@ -82,9 +82,9 @@ The missing implementation details are:
 
 ## References
 
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:50` — context quality as observable through long-session evals.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:221` — late-session forgetting failure pattern.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:84` — Partial Coverage classification and gap.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:50` — context quality as observable through long-session evals.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:221` — late-session forgetting failure pattern.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:84` — Partial Coverage classification and gap.
 - `curriculum/08-tools-templates/evaluation-rubric-template.md:812` — old incident outputs as regression examples.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741` — regression tests before canary rollout.
 - `curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:480` — shadow testing, rollback, ownership, and review cadence.

@@ -4,8 +4,8 @@ type: canonical
 tags: ["evals", "agentes-orquestracao"]
 aliases: ["model-diverse evaluator council", "evaluation council", "multi-model judging"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
+relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
 ---
 # Multi-Model Evaluation Council
 
@@ -59,7 +59,7 @@ The repo already teaches evaluator plurality and escalation:
 
 ### What is missing
 
-The Partial Coverage gap is model diversity and council governance. The repo has multiple evaluator roles, but the classification found no formal Multi-Model Evaluation Council, no required evaluator model diversity, no model-specific blind-spot calibration, and no council aggregation policy outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:109-122.
+The Partial Coverage gap is model diversity and council governance. The repo has multiple evaluator roles, but the classification found no formal Multi-Model Evaluation Council, no required evaluator model diversity, no model-specific blind-spot calibration, and no council aggregation policy outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:109-122.
 
 Missing implementation details:
 
@@ -84,12 +84,12 @@ Missing implementation details:
 - **Calibrated by:** [[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]], because council quality must be measured against real outcomes.
 - **Strengthened by:** [[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]], which gives the council representative cases instead of synthetic examples only.
 - **Builds on:** [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]] dual/ensemble evaluator guidance.
-- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]:140-159 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:109-122.
+- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]:140-159 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:109-122.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|patterns]]:140-159 - extracted pattern definition.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:109-122 - Partial Coverage classification and model-diversity gap.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|patterns]]:140-159 - extracted pattern definition.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:109-122 - Partial Coverage classification and model-diversity gap.
 - [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]:156-164 - existing evaluation coordination strategies.
 - [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]:162-166 - existing dual/ensemble evaluator guidance.
 - [[curriculum/06-knowledge-graphs/detailed-graphs/evaluation-rubrics-graphs|Evaluation Rubrics Graphs]]:827 - graph evidence for independent evaluator comparison.

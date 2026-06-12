@@ -423,6 +423,72 @@ Coordenação real falha. APIs demoram. Webhooks duplicam. Agentes podem precisa
 
 Não registre apenas logs técnicos. Registre decisões: qual agente decidiu, com qual input, qual output, qual confiança, qual evidência e qual validação.
 
+### Pattern 7: Value-Gated Coordination — "O Agente Só Avança Quando o Valor Incremental é Validado"
+
+**Problema:** A coordenação multi-agente resolve o COMO executar — sequential, parallel, fan-out/fan-in, orchestrator — mas não resolve o SE executar. Sem um gate de valor, o pipeline coordena perfeitamente... a construção da coisa errada.
+
+**O vocabulário de decisão de valor:** O orquestrador deve classificar cada intenção que recebe em um de quatro verbos antes de rotear para execução:
+
+- **Build:** a intenção tem valor claro, dono nomeado, constraints definidas — execute o pipeline.
+- **Experiment:** a intenção é promissora mas incerta — execute um pipeline reduzido com critério de parada antes de comprometer recursos completos.
+- **Defer:** a intenção pode ter valor mas não agora — registre no backlog com rationale e condição de reativação.
+- **Stop:** a intenção não justifica o custo de construção — recuse com explicação construtiva e alternativas de menor custo.
+
+Estes quatro verbos formam o gate de valor que deve preceder qualquer decisão de coordenação. Sem eles, o orquestrador é apenas um roteador de execução — ele coordena trabalho sem questionar se o trabalho deveria existir.
+
+**As Três Perguntas-Freio (Manual Brake Question Gate):** Antes de classificar uma intenção como Build ou Experiment, o orquestrador — ou o humano que o alimenta — deve responder três perguntas. Elas são o equivalente agentic do freio manual que existia naturalmente quando construir software custava caro:
+
+1. **"Quem precisa disso, e o que quebra se não existir?"** — Força a nomeação do stakeholder real e do custo da omissão. Se a resposta for vaga ("os usuários", "seria legal ter"), a intenção é Defer ou Stop.
+2. **"Ainda construiríamos isso se custasse uma semana de tempo de engenharia?"** — Usa um cost proxy para simular o freio econômico que tokens baratos removeram. Se a resposta for não, a intenção é Stop.
+3. **"Quem é o dono de dizer não para isso?"** — Força a nomeação de um refusal owner. Se ninguém pode dizer não, a intenção é Defer até que um dono seja designado.
+
+Estas três perguntas são o freio que o pipeline de coordenação não tem por padrão. O Generator/Evaluator avalia qualidade de output. O Manual Brake avalia valor de input. Ambos são gates, mas em extremidades opostas do pipeline: o Brake protege a entrada, o Evaluator protege a saída.
+
+**Integração com o fluxo de coordenação existente:**
+
+```
+Intenção do cliente
+       │
+       ▼
+┌──────────────────────┐
+│ Manual Brake Gate    │  ← NOVO: Classifica em Build/Experiment/Defer/Stop
+│ (3 perguntas-freio) │
+└──────┬───────────────┘
+       │
+       ├── Stop → "Não vamos construir isso. Motivo: [rationale]"
+       ├── Defer → "Vale a pena, mas não agora. Condição: [reativação]"
+       │
+       ▼ (Build ou Experiment)
+┌──────────────────────┐
+│ Conversation         │
+│ Orchestrator         │  ← EXISTENTE: Roteia para pipeline
+└──────┬───────────────┘
+       │
+       ▼
+   Pipeline existente: Search → Filter → Ranking → Recommendation → Evaluator
+```
+
+**Onde o Brake vive:** O Manual Brake Gate não é um agente LLM. É um ponto de decisão determinístico — ou humano — que classifica a intenção antes que qualquer token de execução seja gasto. Em sistemas com AFK, o [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]] pode incorporar as três perguntas-freio como parte da classificação de prontidão da tarefa. Em sistemas com intervenção humana, o Brake é executado manualmente na entrada do pipeline.
+
+**O Owner-of-No: O Papel Cujo Trabalho é Recusar**
+
+Coordenar múltiplos agentes significa distribuir responsabilidades. Mas há uma responsabilidade que sistemas multi-agente raramente designam: **o papel cujo trabalho explícito é recusar trabalho de baixo valor.**
+
+Este papel — o Owner-of-No — não é um agente que diz "não" por pessimismo. É um papel de design com três funções:
+
+1. **Autoridade de recusa:** pode classificar qualquer intenção como Stop ou Defer, com rationale registrado.
+2. **Alternativa construtiva:** quando recusa, oferece uma intenção alternativa de menor escopo ou um experimento mais barato. A recusa nunca é um "não" vazio.
+3. **Calibração de valor:** revisa periodicamente as decisões de Build/Experiment/Defer/Stop e compara com outcomes reais para calibrar o julgamento de valor do time.
+
+No pipeline KODA, o Owner-of-No pode ser:
+- Um papel humano (Product Owner, Tech Lead) para decisões de produto.
+- Uma política declarativa no Orchestrator ("intenções com custo estimado > R$ 500/mês exigem aprovação humana").
+- Um agente especializado com autoridade de recusa, treinado com exemplos de decisões passadas e seus outcomes.
+
+**Por que isso importa:** Sem um Owner-of-No explícito, a decisão de parar é sempre acidental — acontece quando alguém corajoso diz não sob pressão, não quando o sistema foi projetado para recusar. O resultado é que tudo que parece "barato de construir" avança, e o pipeline de coordenação multi-agente se torna uma máquina de executar trabalho que nunca deveria ter começado.
+
+**Relação com os paradigmas de coordenação:** O Value Gate e o Owner-of-No se acoplam naturalmente ao Orchestrator coordination (o orquestrador aplica a classificação antes de rotear) e ao Hierarchical coordination (o Owner-of-No é um papel de supervisão que aprova ou recusa antes da delegação para líderes de domínio). Eles não substituem nenhum paradigma — adicionam uma camada de decisão de valor que precede a decisão de coordenação.
+
 ---
 
 ## 6. 📐 Mermaid Diagram 1 - Tipos de Agentes e Relações
@@ -636,6 +702,11 @@ Este diagrama é específico do KODA: ele mostra busca, filtro, ranking, recomen
 - [ ] Medir latência total e latência por agente.
 - [ ] Medir custo de token budget por etapa.
 - [ ] Revisar traces reais antes de expandir para mais agentes.
+- [ ] Definir o gate de valor antes do gate de execução: classificar cada intenção como Build, Experiment, Defer ou Stop.
+- [ ] Responder as três perguntas-freio para cada intenção: quem precisa e o que quebra, custaria uma semana de engenharia, quem pode dizer não.
+- [ ] Designar um Owner-of-No — papel ou política com autoridade explícita de recusa — para cada domínio do pipeline.
+- [ ] Registrar a rationale de recusa ou deferral no trace store, não apenas aprovações.
+- [ ] Separar gate de valor (entrada) de gate de qualidade (saída): o Manual Brake avalia input, o Evaluator avalia output.
 
 ### Sinais de que a implementação está saudável
 
@@ -653,6 +724,9 @@ Este diagrama é específico do KODA: ele mostra busca, filtro, ranking, recomen
 - O fan-in junta textos sem rubrica de comparação.
 - O time não sabe qual agente causou uma recomendação errada.
 - Uma falha de estoque derruba toda a conversa em vez de produzir alternativa segura.
+- Intenções entram no pipeline sem classificação de valor — tudo vira Build por padrão.
+- Ninguém consegue nomear quem tem autoridade para recusar uma feature proposta.
+- O pipeline coordena perfeitamente trabalho que nunca deveria ter sido iniciado.
 
 ---
 
@@ -664,6 +738,9 @@ Este diagrama é específico do KODA: ele mostra busca, filtro, ranking, recomen
 - **`curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md`:** Ajuda a manter context window enxuta quando conversas e traces crescem.
 - **`curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md`:** Mostra como evoluir harness sem criar complexidade acidental.
 - **`curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md`:** Aplica arquitetura avançada no domínio real do KODA.
+- **`docs/canonical/manual-brake-question-gate`:** As três perguntas-freio e o fluxo completo de classificação Build/Experiment/Defer/Stop.
+- **`docs/canonical/value-gated-agent-control-loop`:** O gate de valor no loop de controle do agente.
+- **`docs/canonical/owner-of-no-role-design`:** O papel cujo trabalho explícito é recusar trabalho de baixo valor.
 
 ### Como ler essas referências
 
@@ -683,6 +760,9 @@ Este diagrama é específico do KODA: ele mostra busca, filtro, ranking, recomen
 - **KODA precisa de coordenação porque customer journey mistura busca, filtros, ranking, recomendação e avaliação:** sem divisão, um agente único confunde prioridades.
 - **State persistence e trace store são a memória operacional da coordenação:** sem eles, retry, debug e auditoria ficam frágeis.
 - **Evaluator precisa ser gate real:** a resposta final só deve chegar ao WhatsApp depois que fatos, restrições, tom e promessa comercial forem validados.
+- **Value Gate precede Coordination Gate:** classificar a intenção (Build/Experiment/Defer/Stop) antes de decidir o paradigma de coordenação evita que o pipeline execute trabalho que nunca deveria ter começado.
+- **As três perguntas-freio substituem o freio econômico que tokens baratos removeram:** "quem precisa disso?", "construiria se custasse uma semana?", "quem pode dizer não?".
+- **Owner-of-No é um papel de design, não uma personalidade:** ter alguém cujo trabalho explícito é recusar trabalho de baixo valor transforma o "não" de ato de coragem em responsabilidade documentada.
 
 ---
 

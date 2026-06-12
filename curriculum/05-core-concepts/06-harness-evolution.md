@@ -725,6 +725,66 @@ O código NÃO é deletado. É arquivado. Daqui a 2 anos, se alguém perguntar "
 
 ---
 
+## 🕐 Carry Debt Sunset Gate — O Que o REMOVE Não Cobre
+
+As quatro fases do ciclo (BUILD → STABILIZE → SIMPLIFY → REMOVE) foram desenhadas para componentes do harness — peças de engenharia que compensam limitações do modelo. Mas agentes não criam apenas componentes de harness. Eles criam artefatos: skills, prompts, arquivos de estado, dashboards, scripts, documentação, configurações.
+
+Esses artefatos têm um ciclo de vida diferente. Eles não são "removidos" quando o modelo melhora. Eles são **mantidos, aposentados, arquivados ou promovidos** com base no valor que entregam e no custo que impõem.
+
+O [[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]] estende o ciclo de vida do harness para esses artefatos com quatro decisões e um deadline:
+
+### As Quatro Decisões de Artefato
+
+| Decisão | Significado | Exemplo KODA |
+|---|---|---|
+| **Keep** | O artefato entrega valor ativo, tem owner nomeado e data de próxima revisão | `evaluator-rubric-v2` — usado diariamente, mantido pelo quality-platform, revisão em 90 dias |
+| **Retire** | O artefato cumpriu seu propósito e deve ser removido do caminho ativo | `context-loader-v1` — absorvido pelo History Compactor, código arquivado em `archive/` |
+| **Archive** | O artefato não é mais usado ativamente mas tem valor histórico ou de referência | `budget-guard-v1` — documenta por que existiu e por que foi removido |
+| **Promote** | O artefato provou valor e deve ser elevado a componente oficial do harness com dono e SLA | `experimental-ranking-heuristic` → `Ranking Agent v2` com contrato, testes e owner |
+
+### O Que Torna Isso Diferente do REMOVE
+
+O REMOVE do ciclo de harness é sobre componentes de engenharia que se tornaram desnecessários porque o modelo melhorou. O Sunset Gate é sobre artefatos que os agentes criaram e que agora precisam de uma decisão de ciclo de vida — independentemente de o modelo ter melhorado ou não.
+
+A pergunta do REMOVE é: "Este componente ainda é necessário dado o modelo atual?"
+A pergunta do Sunset Gate é: "Este artefato tem dono, valor e data de revisão?"
+
+### A Regra do Prazo (Sunset Date)
+
+Todo artefato criado por um agente deve ter uma **data de sunset** — uma data futura em que ele será revisado e classificado como Keep, Retire, Archive ou Promote. Sem data de sunset, artefatos se acumulam silenciosamente e viram carry debt.
+
+```
+Exemplo de registro de artefato com sunset date:
+
+artifacts/koda-recommendation-v1.json:
+  created_by: "Recommendation Agent (via Orchestrator)"
+  created_at: "2026-01-15"
+  owner: "quality-platform"
+  sunset_date: "2026-04-15"    ← 90 dias após criação
+  value_hypothesis: "Melhorar precisão de recomendações para clientes com restrições alimentares"
+  review_outcome: "Promote → Canonical (evaluator-rubric-v2)"
+  next_review: "2026-07-15"
+```
+
+### Integração com o Ciclo de Vida do Harness
+
+O Sunset Gate se encaixa como uma camada complementar ao ciclo BUILD-STABILIZE-SIMPLIFY-REMOVE:
+
+- **BUILD e STABILIZE** se aplicam a componentes de harness (engenharia).
+- O **Sunset Gate** se aplica a artefatos (output de agente) com o vocabulário Keep/Retire/Archive/Promote.
+- Ambos convergem no princípio comum: **nada vive para sempre sem revisão explícita.**
+
+### Checklist: Carry Debt Sunset Gate
+
+- [ ] Todo artefato criado por agente tem uma data de sunset registrada (máximo 90 dias após criação).
+- [ ] Todo artefato tem um owner nomeado responsável pela decisão Keep/Retire/Archive/Promote.
+- [ ] O inventário de artefatos é revisado trimestralmente junto com a revisão de harness.
+- [ ] Artefatos promovidos a componentes oficiais entram no ciclo BUILD → STABILIZE com owner e contrato.
+- [ ] Artefatos aposentados são arquivados com rationale (por que existiu, por que saiu, o que aprendemos).
+- [ ] O princípio "One In, One Out" se aplica também a artefatos: cada novo artefato criado deve indicar qual artefato existente será aposentado, salvo exceções de segurança.
+
+---
+
 ## ⚠️ Anti-Padrões de Harness Evolution
 
 Saber o que NÃO fazer é tão importante quanto saber o que fazer.

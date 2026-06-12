@@ -11,11 +11,11 @@ A skill `analyze-and-improve` ([SKILL.md:46-56]) orquestra 7 fases:
 
 | Fase | Delegado      | Output principal                                |
 |------|-------------- |-------------------------------------------------|
-| 0    | `ultrabrain`  | `mental-model.md` + `.yaml`                     |
-| 1    | `deep`        | `analysis.md` + `.yaml`                         |
-| 2    | `ultrabrain`  | `patterns.md` + `.yaml`                         |
-| 3    | `deep`        | `classification.md` + `.yaml`                   |
-| 4    | `deep` (x7)   | `integration-roadmap.md` + artefatos concretos   |
+| 0    | `ultrabrain`  | `<date>-<source-slug>-mental-model.md` + `.yaml`                     |
+| 1    | `deep`        | `<date>-<source-slug>-analysis.md` + `.yaml`                         |
+| 2    | `ultrabrain`  | `<date>-<source-slug>-patterns.md` + `.yaml`                         |
+| 3    | `deep`        | `<date>-<source-slug>-classification.md` + `.yaml`                   |
+| 4    | `deep` (x7)   | `<date>-<source-slug>-integration-roadmap.md` + artefatos concretos   |
 | 5    | `quick`       | atualiza system-of-record, índices              |
 | 6    | `deep`        | (opcional) integração no curriculum             |
 
@@ -118,7 +118,7 @@ Crie `PROGRESS.md` na raiz do repositório (ou sobrescreva se já existir):
 <!-- A fase atual. Exatamente UMA por vez. -->
 
 - [ ] phase-0: Repository Mental Model
-  - Output esperado: docs/analysis/<date>-<slug>/mental-model.md + .yaml
+  - Output esperado: docs/analysis/<date>-<slug>/<date>-<source-slug>-mental-model.md + .yaml
   - Delegado: ultrabrain
   - Bloqueios: nenhum
 
@@ -155,31 +155,31 @@ Sobrescreva `harness/test-results.json`:
 {
   "phase-0": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/mental-model.md", "docs/analysis/PLACEHOLDER/mental-model.yaml"],
+    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-mental-model.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-mental-model.yaml"],
     "evaluated_by": null,
     "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve"
   },
   "phase-1": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/analysis.md", "docs/analysis/PLACEHOLDER/analysis.yaml"],
+    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-analysis.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-analysis.yaml"],
     "evaluated_by": null,
     "notes": "Extracao de conhecimento da fonte — Phase 1"
   },
   "phase-2": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/patterns.md", "docs/analysis/PLACEHOLDER/patterns.yaml"],
+    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-patterns.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-patterns.yaml"],
     "evaluated_by": null,
     "notes": "Extracao de padroes reutilizaveis — Phase 2"
   },
   "phase-3": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/classification.md", "docs/analysis/PLACEHOLDER/classification.yaml"],
+    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-classification.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-classification.yaml"],
     "evaluated_by": null,
     "notes": "Classificacao contra repositorio — Phase 3"
   },
   "phase-4": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/integration-roadmap.md"],
+    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-integration-roadmap.md"],
     "evaluated_by": null,
     "notes": "Geracao de artefatos e roadmap — Phase 4"
   },
@@ -500,7 +500,7 @@ touch AGENT_STOP
 cat NEXT_FINDINGS.md
 
 # 3. Redirecione manualmente
-echo "Fase phase-3: o classification.md está genérico. Use os patterns extraídos
+echo "Fase phase-3: o <date>-<source-slug>-classification.md está genérico. Use os patterns extraídos
 na fase 2 como input. Compare cada pattern com o que já existe em docs/canonical/.
 Seja específico: para CADA pattern, diga se existe (Existing Coverage), existe
 parcialmente (Partial Coverage), ou não existe (Missing Coverage)." > STEER.md
@@ -531,11 +531,11 @@ print('phase-6 marcada como concluída')
 
 | Fase | O agente faz | Evidência | Tempo típico |
 |------|-------------|-----------|-------------|
-| 0 | Lê AGENTS.md, README, system-of-record, canonical docs, curriculum. Constrói modelo mental do repositório. | `mental-model.md` + `.yaml` | 3-5 min |
-| 1 | Lê o documento fonte (transcrição YouTube). Extrai conhecimento não-óbvio. Filtra ruído. | `analysis.md` + `.yaml` | 5-15 min |
-| 2 | Identifica padrões reutilizáveis no conhecimento extraído. | `patterns.md` + `.yaml` | 3-5 min |
-| 3 | Classifica cada padrão contra o repositório: Existing/Partial/Missing Coverage. | `classification.md` + `.yaml` | 3-8 min |
-| 4 | Gera artefatos em 7 categorias (canonical docs, skills, exercises, ...) priorizados por impacto. | `integration-roadmap.md` + artefatos | 10-30 min |
+| 0 | Lê AGENTS.md, README, system-of-record, canonical docs, curriculum. Constrói modelo mental do repositório. | `<date>-<source-slug>-mental-model.md` + `.yaml` | 3-5 min |
+| 1 | Lê o documento fonte (transcrição YouTube). Extrai conhecimento não-óbvio. Filtra ruído. | `<date>-<source-slug>-analysis.md` + `.yaml` | 5-15 min |
+| 2 | Identifica padrões reutilizáveis no conhecimento extraído. | `<date>-<source-slug>-patterns.md` + `.yaml` | 3-5 min |
+| 3 | Classifica cada padrão contra o repositório: Existing/Partial/Missing Coverage. | `<date>-<source-slug>-classification.md` + `.yaml` | 3-8 min |
+| 4 | Gera artefatos em 7 categorias (canonical docs, skills, exercises, ...) priorizados por impacto. | `<date>-<source-slug>-integration-roadmap.md` + artefatos | 10-30 min |
 | 5 | Atualiza system-of-record.md, índices, wikilinks. | `git diff system-of-record.md` | 2-5 min |
 | 6 | Integra Missing/Partial Coverage no curriculum existente com profundidade total. | arquivos em `curriculum/` | 5-20 min |
 
@@ -574,11 +574,11 @@ mkdir -p docs/analysis/2026-06-11-patterns-for-ai-agents
 
 # Ao final, todos os outputs estão em:
 ls docs/analysis/2026-06-11-patterns-for-ai-agents/
-# mental-model.md    mental-model.yaml
-# analysis.md        analysis.yaml
-# patterns.md        patterns.yaml
-# classification.md  classification.yaml
-# integration-roadmap.md
+# 2026-06-11-patterns-for-ai-agents-mental-model.md    2026-06-11-patterns-for-ai-agents-mental-model.yaml
+# 2026-06-11-patterns-for-ai-agents-analysis.md        2026-06-11-patterns-for-ai-agents-analysis.yaml
+# 2026-06-11-patterns-for-ai-agents-patterns.md        2026-06-11-patterns-for-ai-agents-patterns.yaml
+# 2026-06-11-patterns-for-ai-agents-classification.md  2026-06-11-patterns-for-ai-agents-classification.yaml
+# 2026-06-11-patterns-for-ai-agents-integration-roadmap.md
 ```
 
 ## 9. Checklist de verificação

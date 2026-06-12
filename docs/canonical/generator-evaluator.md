@@ -5,7 +5,7 @@ aliases: ["generator evaluator", "two-agent review", "avaliador externo", "evalu
 tags: ["agentes-orquestracao", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
-sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]"]
+sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]
 ---
 
 # Generator-Evaluator
@@ -24,7 +24,7 @@ Agents evaluating their own output suffer from confirmation bias: they search fo
 
 The missed constraints are the real failure: the client said they are allergic to whey, asked for vegan options, and still wanted quality within budget [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:223-227. The structural root cause is that the same context and perspective that generated the response also evaluates it, creating a closed validation loop: KODA is invested in its own answer, searches for confirming evidence, and has no external perspective [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:229-232.
 
-The quantified gap is large enough to be a production risk. The source frames a 15% real error rate, with self-evaluation detecting 3% and a human or external evaluator detecting 14%, leaving an 11% silent failure rate [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:237-243. The analysis generalizes this as self-evaluation detecting about 3% of real errors, external evaluation detecting about 14%, and a 10-12 percentage-point silent failure gap [[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:18.
+The quantified gap is large enough to be a production risk. The source frames a 15% real error rate, with self-evaluation detecting 3% and a human or external evaluator detecting 14%, leaving an 11% silent failure rate [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:237-243. The analysis generalizes this as self-evaluation detecting about 3% of real errors, external evaluation detecting about 14%, and a 10-12 percentage-point silent failure gap [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:18.
 
 ## Solution
 
@@ -94,15 +94,15 @@ Without Generator-Evaluator, one agent tries to understand the user, recommend a
 - [[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]] anchors evaluation in representative production interactions, traces, tool results, and state snapshots with privacy, labeling, replay, and refresh mechanics [[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]:26-52.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] separates reviewer concerns by having independent engineering and product-destination reviewers apply distinct rubrics before reconciliation [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:26-41.
 - The system of record lists 24 active canonical patterns and includes the evaluation infrastructure docs, but does not list `generator-evaluator.md` among active canonical documents before this addition [[docs/system-of-record|System of Record]]:124-155.
-- The classification for this analysis explicitly says 12+ canonical docs cover evaluation infrastructure, including multi-model evaluation, eval tiers, PR-gated enforcement, spot checks, production sampling, regression flywheels, long-session evals, late-failure suites, eval-to-production correlation, pain-signal progression, workflow automation, and skill promotion [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:59-79.
+- The classification for this analysis explicitly says 12+ canonical docs cover evaluation infrastructure, including multi-model evaluation, eval tiers, PR-gated enforcement, spot checks, production sampling, regression flywheels, long-session evals, late-failure suites, eval-to-production correlation, pain-signal progression, workflow automation, and skill promotion [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:59-79.
 
 ### What is missing
 
-1. No canonical doc that explicitly names and formalizes the Generator-Evaluator two-agent architecture; the classification identifies this as the first Generator-Evaluator gap [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:80-83.
-2. Existing eval docs focus on evaluation mechanics, not the generator↔evaluator loop with feedback; the classification states the mature eval docs explain how to evaluate rather than the architecture decision itself [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:85-86.
-3. No explicit contract for what the Generator produces versus what the Evaluator checks; the extracted pattern defines candidate response, binary verdict, and rejection feedback, but the classification says no canonical doc frames this two-agent architecture as a deliberate pattern [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Patterns]]:30-33 [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:83.
-4. No documented feedback loop mechanism in canonical form; the curriculum diagram shows rejected output returning to the Generator with feedback, while the classification says the generator↔evaluator loop with feedback is not anchored by one canonical doc [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:456-464 [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:82.
-5. No integration guide showing how state persistence, constraint-anchored evaluation, and generator-evaluator compose; the pattern analysis lists External State Persistence, Generator-Evaluator, and Constraint-Anchored Evaluation as separate extracted patterns, and the summary classifies all four extracted patterns as Partial Coverage candidates for canonicalization [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Patterns]]:8-42 [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]]:114-123.
+1. No canonical doc that explicitly names and formalizes the Generator-Evaluator two-agent architecture; the classification identifies this as the first Generator-Evaluator gap [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:80-83.
+2. Existing eval docs focus on evaluation mechanics, not the generator↔evaluator loop with feedback; the classification states the mature eval docs explain how to evaluate rather than the architecture decision itself [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:85-86.
+3. No explicit contract for what the Generator produces versus what the Evaluator checks; the extracted pattern defines candidate response, binary verdict, and rejection feedback, but the classification says no canonical doc frames this two-agent architecture as a deliberate pattern [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Patterns]]:30-33 [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:83.
+4. No documented feedback loop mechanism in canonical form; the curriculum diagram shows rejected output returning to the Generator with feedback, while the classification says the generator↔evaluator loop with feedback is not anchored by one canonical doc [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:456-464 [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:82.
+5. No integration guide showing how state persistence, constraint-anchored evaluation, and generator-evaluator compose; the pattern analysis lists External State Persistence, Generator-Evaluator, and Constraint-Anchored Evaluation as separate extracted patterns, and the summary classifies all four extracted patterns as Partial Coverage candidates for canonicalization [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Patterns]]:8-42 [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]]:114-123.
 
 ## Tradeoffs
 
@@ -124,9 +124,9 @@ Without Generator-Evaluator, one agent tries to understand the user, recommend a
 ## References
 
 - [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:420-464 — Generator-Evaluator diagram and explanation
-- [[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]] — knowledge extraction with silent failure quantification
-- [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Patterns]] — pattern definition
-- [[docs/analysis/2026-06-10-agent-focus-problems/classification|Classification]] — classification evidence
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]] — knowledge extraction with silent failure quantification
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Patterns]] — pattern definition
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Classification]] — classification evidence
 - [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]] — model diversity evaluation
 - [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] — eval enforcement on merge
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] — independent review architecture

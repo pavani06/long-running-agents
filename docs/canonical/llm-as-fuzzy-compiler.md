@@ -4,15 +4,15 @@ type: canonical
 tags: ["agentes-orquestracao", "harness", "governanca", "context-engineering"]
 aliases: ["LLM as compiler", "fuzzy compiler", "code as build artifact", "disposable code", "compiler mental model", "code generation backend"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|Harness Engineering Classification]]"]
-sources: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns|Harness Engineering Patterns]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|Harness Engineering Classification]]"]
+relates-to: ["[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|Harness Engineering Classification]]"]
+sources: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|Harness Engineering Classification]]"]
 ---
 
 # LLM as Fuzzy Compiler
 
 **Type:** canonical
 **Status:** active
-**Source:** analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/
+**Source:** analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/
 **Classification:** Missing
 **Precedence:** document-level 2 (canonical) per [[docs/system-of-record|System of Record]]
 
@@ -24,9 +24,9 @@ Teams building with AI agents default to treating model output as the durable as
 
 This mental model treats the LLM as an oracle whose output is precious. In reality, the LLM is a probabilistic transformer with no guarantees about consistency across model versions. Code produced by one model version may look different from code produced by another even when both satisfy the same acceptance constraints. The durable asset was never the code; it was always the constraints that define what acceptable code looks like.
 
-The source identifies this as a fundamental reframe: "code is a disposable build artifact" and "what matters is preserving the prompts, guardrails, and documentation that produced the code, not the code itself" ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|analysis]]:61-63, 208). Without this reframe, teams waste maintenance effort on generated output while the reusable system knowledge — prompts, lint rules, NFR documents, reviewer rubrics, skills — receives no versioning, governance, or lifecycle management.
+The source identifies this as a fundamental reframe: "code is a disposable build artifact" and "what matters is preserving the prompts, guardrails, and documentation that produced the code, not the code itself" ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis]]:61-63, 208). Without this reframe, teams waste maintenance effort on generated output while the reusable system knowledge — prompts, lint rules, NFR documents, reviewer rubrics, skills — receives no versioning, governance, or lifecycle management.
 
-The repository currently has no canonical doc, curriculum lesson, or skill that frames the LLM as a compiler backend. Adjacent canonical docs cover related but distinct concepts: `invariant-compensation-split.md` classifies harness controls by domain risk vs. model weakness, and `measured-harness-evolution-lifecycle.md` governs component lifecycle, but neither frames the LLM as a compilation target nor code as a disposable artifact ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|classification]]:297-309).
+The repository currently has no canonical doc, curriculum lesson, or skill that frames the LLM as a compiler backend. Adjacent canonical docs cover related but distinct concepts: `invariant-compensation-split.md` classifies harness controls by domain risk vs. model weakness, and `measured-harness-evolution-lifecycle.md` governs component lifecycle, but neither frames the LLM as a compilation target nor code as a disposable artifact ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|classification]]:297-309).
 
 ## Solution
 
@@ -60,7 +60,7 @@ The model works as follows:
 
 1. **Harness assets (source of truth).** Prompts, guardrails, lint rules, reviewer rubrics, NFR documents, and skills define what acceptable output looks like. These are versioned, governed, and treated as durable engineering artifacts. They survive model changes because they encode domain requirements, not model-specific behavior.
 
-2. **LLM backend (fuzzy compiler).** The model is a code-generation backend — analogous to LLVM or Cranelift in traditional compilation. Different model versions produce different output, but the acceptance constraints (harness assets) produce valid output regardless of the generation process. Swapping models is like swapping compiler backends: the output changes, the constraints do not ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|analysis]]:61-62).
+2. **LLM backend (fuzzy compiler).** The model is a code-generation backend — analogous to LLVM or Cranelift in traditional compilation. Different model versions produce different output, but the acceptance constraints (harness assets) produce valid output regardless of the generation process. Swapping models is like swapping compiler backends: the output changes, the constraints do not ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis]]:61-62).
 
 3. **Harness as optimization passes.** Each harness component functions as a compiler pass: lint rules catch syntax-level violations, reviewer rubrics enforce architectural constraints, skills encapsulate complex workflows, NFR documents encode domain requirements, and eval suites validate behavioral correctness. These passes run at different phases of the compilation pipeline and collectively ensure the generated code meets acceptance criteria.
 
@@ -87,14 +87,14 @@ The model works as follows:
 
 ### What is missing from the pattern
 
-The classification marks LLM as Fuzzy Compiler as Missing after searching all canonical docs, curriculum lessons, decisions, skills, and agent definitions. The concept appears only in the Harness Engineering analysis documents themselves, not in any repo artifact ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|classification]]:297-309).
+The classification marks LLM as Fuzzy Compiler as Missing after searching all canonical docs, curriculum lessons, decisions, skills, and agent definitions. The concept appears only in the Harness Engineering analysis documents themselves, not in any repo artifact ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|classification]]:297-309).
 
 Missing pieces:
 
 1. No canonical doc frames the LLM as a compiler backend rather than an oracle. The closest doc (`invariant-compensation-split.md`) addresses harness component governance but does not adopt the compiler mental model.
 2. No curriculum lesson or core concept teaches the compiler-mental-model as a pedagogical frame. The curriculum teaches harness evolution (Core Concept 6) and constraint-anchored evaluation but does not teach code-as-disposable-artifact.
 3. No explicit policy distinguishes durable harness assets (versioned, governed) from disposable code output (regenerated, not maintained). The `measured-harness-evolution-lifecycle.md` governs harness components but does not classify code output as the product of a compilation process.
-4. The source's `Durable Harness Asset Preservation` pattern ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns|patterns]]:367) captures "generated code treated as replaceable output" but has no corresponding canonical doc or curriculum integration.
+4. The source's `Durable Harness Asset Preservation` pattern ([[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|patterns]]:367) captures "generated code treated as replaceable output" but has no corresponding canonical doc or curriculum integration.
 
 ## Tradeoffs
 
@@ -113,14 +113,14 @@ Missing pieces:
 - **Delivered by:** [[docs/canonical/hybrid-context-stack|Hybrid Context Stack]] and [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]] because layered context assembly and on-demand loading are the delivery mechanism for compiler passes.
 - **Complements:** [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]] because feedback writeback updates harness assets based on observed behavior, closing the compilation-improvement loop.
 - **Feeds:** [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] because the weekly cadence of converting review feedback into automated guardrails is how harness assets improve systematically.
-- **Comes from:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns|Harness Engineering Patterns]]:357-381 and its Missing classification in [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|classification]]:295-309.
+- **Comes from:** [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]:357-381 and its Missing classification in [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|classification]]:295-309.
 
 ## References
 
-- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|analysis]]:59-63 — LLM as fuzzy compiler, harness as optimization passes, model swap as backend swap.
-- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/analysis|analysis]]:201-210 — synthesis: harness as context operating system, unit of value shifts from code to prompt+guardrails.
-- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/patterns|patterns]]:357-381 — Durable Harness Asset Preservation pattern: version harness assets, treat generated code as replaceable output.
-- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md/classification|classification]]:295-309 — Missing classification with NOT_FOUND evidence across canonical docs, curriculum, decisions, skills, and agents.
+- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis]]:59-63 — LLM as fuzzy compiler, harness as optimization passes, model swap as backend swap.
+- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|analysis]]:201-210 — synthesis: harness as context operating system, unit of value shifts from code to prompt+guardrails.
+- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|patterns]]:357-381 — Durable Harness Asset Preservation pattern: version harness assets, treat generated code as replaceable output.
+- [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|classification]]:295-309 — Missing classification with NOT_FOUND evidence across canonical docs, curriculum, decisions, skills, and agents.
 - [[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]:31-60 — classification of harness controls as domain invariants vs. model compensations.
 - [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]:29-62 — BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle with ROI, archive, and reactivation.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41 — stable harness prompt preservation during context reduction.

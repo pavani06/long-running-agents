@@ -5,7 +5,7 @@ aliases: ["PR gated", "eval enforcement"]
 tags: ["evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[curriculum/08-tools-templates/evaluation-rubric-template|Evaluation Rubric Template]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # PR-Gated Eval Enforcement
 
@@ -62,7 +62,7 @@ The repo already has strong PR workflow and validation:
 - The same skill requires relevant gates from `package.json`, optional surface-specific gates, and validation output summaries for the PR body (`.opencode/skills/issue-review/SKILL.md:44`).
 - The PR template requires test evidence and regression-suite verification for crossroad files (`.github/PULL_REQUEST_TEMPLATE.md:11`).
 - Issue review says behavior or architecture changes should update relevant canonical docs, guides, evidence, or ADRs and must not contradict accepted ADRs (`.opencode/skills/issue-review/SKILL.md:77`).
-- The classification says this is strong PR validation, but not eval-specific PR gating for prompt/model/tool/loop changes (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:84`).
+- The classification says this is strong PR validation, but not eval-specific PR gating for prompt/model/tool/loop changes (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:84`).
 
 ### What needs to be added
 
@@ -97,18 +97,18 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:121` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:79` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:88` - issue-review workflow evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:89` - PR template evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:90` - behavior and architecture documentation gate evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:121` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:79` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:88` - issue-review workflow evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:89` - PR template evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:90` - behavior and architecture documentation gate evidence.
 - `.opencode/skills/issue-review/SKILL.md:44` - current validation step.
 - `.opencode/skills/issue-review/SKILL.md:75` - validation output summaries for PR body.
 - `.github/PULL_REQUEST_TEMPLATE.md:11` - current test evidence section.
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

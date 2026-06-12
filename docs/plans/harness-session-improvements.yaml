@@ -1,0 +1,383 @@
+# Plano de Implementacao: Correcoes do Harness (pos-sessao harness-engineering)
+# Gerado em: 2026-06-11
+# Sessao de origem: harness-engineering-how-to-build-software-when-humans-steer-agent
+# Para uso por: qualquer agente em sessao futura
+
+meta:
+  title: "Harness Session Improvements — Post-Mortem Fixes"
+  type: plan
+  date: 2026-06-11
+  session_source: "harness-engineering-how-to-build-software-when-humans-steer-agent"
+  total_effort_estimate: "~45 min"
+  files_affected: 5
+
+# ============================================================================
+# ORDEM DE EXECUCAO
+# ============================================================================
+# As tasks abaixo sao majoritariamente independentes e podem ser executadas
+# em paralelo. A unica dependencia real: ler cada arquivo antes de edita-lo.
+#
+# Ordem recomendada: executar todas as leituras em paralelo, depois todos os
+# edits em paralelo. O commit e unico no final (1 commit para todas as mudancas).
+# ============================================================================
+
+tasks:
+
+  # --------------------------------------------------------------------------
+  # TASK 1: harness-analyze-and-improve/SKILL.md — 8 correcoes no mesmo arquivo
+  # --------------------------------------------------------------------------
+  - id: "skill-rewrite"
+    file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+    effort: "20 min"
+    description: "Reescrever o harness skill com 8 melhorias estruturais"
+    changes:
+
+      - id: "A3-step-0"
+        priority: P0
+        what: "Adicionar Step 0: Reset test-results.json antes de iniciar pipeline"
+        detail: |
+          Inserir entre a secao '## Execution Flow' e '### Step 1: Read Context'
+          um novo step:
+
+          ### Step 0: Reset State (fresh analysis)
+
+          Before reading context, check if test-results.json has ALL phases
+          with passes=true from a PREVIOUS analysis. If yes, reset it:
+          1. Read harness/test-results.json
+          2. If ALL phase-N entries have passes=true AND the source-slug
+             in PROGRESS.md differs from the last committed analysis,
+             overwrite test-results.json with fresh template (all phases
+             passes=false, evidence=[], evaluated_by=null).
+          3. Template is at: harness/templates/test-results.json
+             (update it first — see task 3 below)
+
+          This prevents the "sed PLACEHOLDER not found" problem from
+          session harness-engineering, where test-results.json still
+          held Matt Pocock data.
+
+      - id: "B1-loop-mode"
+        priority: P0
+        what: "Implementar modo loop automatico — reduz 6 perguntas para 0-1"
+        detail: |
+          Modificar Step 7 (Advance or Stop):
+
+          Atual:
+            - If mode=once: stop after one phase
+            - If mode=loop: go back to Step 2 for next pending phase
+
+          Novo:
+            - If mode=once: stop after one phase, ask user "Continue?"
+            - If mode=loop: auto-advance to next pending phase WITHOUT
+              asking. Only stop if:
+              a) AGENT_STOP file exists at repo root, OR
+              b) No more pending phases (all passes=true), OR
+              c) A phase fails evaluation (NEEDS_WORK)
+            - Commit Gate behavior in loop mode:
+              Commit after EVERY phase automatically (no per-phase ask).
+              Only ask about PUSH at the very end (all phases done).
+              Message format: analysis(<slug>): phase <N>
+
+          Adicionar ao topo da secao '## Invocation' o comportamento
+          do modo loop:
+            mode=loop: executa TODAS as fases pendentes sem perguntar.
+            So para em AGENT_STOP, falha de fase, ou conclusao total.
+            Commita cada fase automaticamente. Pergunta push so no final.
+
+      - id: "A1-background"
+        priority: P1
+        what: "Usar run_in_background=true para fases pesadas (0, 2, 4)"
+        detail: |
+          Atualizar a tabela '## Phase -> Agent Mapping' adicionando
+          coluna 'Background':
+
+          | Phase | Agent | Category | Background |
+          |-------|-------|----------|------------|
+          | phase-0 | ultrabrain | Repository Mental Model | true |
+          | phase-1 | deep | Knowledge Extraction | false |
+          | phase-2 | ultrabrain | Pattern Extraction | true |
+          | phase-3 | deep or ultrabrain | Classification | true (batches) |
+          | phase-4 | deep (parallel) | Improvement Generation | true |
+          | phase-5 | quick | Integration | false |
+          | phase-6 | deep | Curriculum Deep Integration | true |
+
+          Adicionar nota:
+          > Fases com background=true usam run_in_background=true no task().
+          > Isso evita que um abort mate a sessao inteira — o harness
+          > continua vivo e o sistema notifica quando completar.
+
+      - id: "B2-D2-merge-inline"
+        priority: P1
+        what: "Phase 3: orquestrador consolida batches, nao delega merge"
+        detail: |
+          Atualizar a nota da Phase 3 na tabela Phase -> Agent Mapping:
+
+          Antes:
+            > Nota Phase 3: Para classificacao com mais de 8 padroes,
+            > divida em lotes de no maximo 8 padroes por agente.
+
+          Depois:
+            > Nota Phase 3: Para classificacao com mais de 8 padroes,
+            > divida em lotes de no maximo 8 padroes por agente (background).
+            > Apos ambos completarem, o ORQUESTRADOR consolida os batch files
+            > em classification.md + classification.yaml inline (NAO delegar
+            > — sao operacoes simples de concatenacao e formatacao de tabela).
+            > Se deep abortar, use ultrabrain como fallback.
+
+      - id: "B4-phase6-parallel"
+        priority: P2
+        what: "Phase 6: paralelizar em 2 agentes (Missing vs Partial Coverage)"
+        detail: |
+          Adicionar nota na tabela Phase -> Agent Mapping para phase-6:
+
+          Antes:
+            | phase-6 | deep | Curriculum Deep Integration |
+
+          Depois:
+            | phase-6 | deep x2 (parallel) | Curriculum Deep Integration |
+
+          > Nota Phase 6: Divida os padroes em 2 agentes paralelos:
+          > - Agente A: Missing patterns (gap analysis + insertion + execucao)
+          > - Agente B: Partial Coverage High patterns (gap + insertion + exec)
+          > Cada agente edita arquivos DISJUNTOS do curriculum/. Verifique
+          > antes de disparar que os arquivos alvo nao conflitam.
+
+      - id: "D1-pattern-names"
+        priority: P1
+        what: "Nomes de padroes sempre do patterns.md, nunca do analysis.md"
+        detail: |
+          Adicionar ao Step 4 (Delegate Phase), na secao de construcao
+          do prompt, uma regra explicita:
+
+          Para Phase 3 (Classification):
+          - Os nomes dos padroes no prompt de delegacao DEVEM ser extraidos
+            do arquivo patterns.md (fonte canonica), NAO do analysis.md.
+          - Inclua no prompt: "Use the pattern names exactly as they appear
+            in patterns.md. Do not rename or use analysis.md section titles."
+          - Isso evita o problema da sessao harness-engineering onde
+            'QA Plan as Agent Contract' nao correspondia a nenhum padrao
+            do patterns.md (o nome real era 'Sprint Contract').
+
+      - id: "A2-write-to-edit"
+        priority: P2
+        what: "Step 6: trocar 'use write' por 'use edit' para PROGRESS.md"
+        detail: |
+          Na secao Step 6 (Evaluate), trocar:
+
+          Antes (linha 119):
+            - Update PROGRESS.md: use write to rewrite the file (not edit).
+              PROGRESS.md is short and edit often fails on whitespace mismatches.
+
+          Depois:
+            - Update PROGRESS.md: use edit com oldString/newString precisos.
+              Prefira editar a secao '## Done' e '## To Do' individualmente.
+              Se edit falhar (whitespace mismatch), leia o arquivo novamente
+              e tente com contexto adicional.
+
+          Tambem remover da secao '## Anti-Patterns':
+            - "Usar edit no PROGRESS.md — use write (reescrita completa)"
+
+          Substituir por:
+            - "Usar write no PROGRESS.md sem reler o arquivo antes —
+              o tool write exige read previo. Use edit com oldString exato."
+
+      - id: "B3-discipline"
+        priority: P2
+        what: "Adicionar regra de disciplina: nao reagir a notificacoes parciais"
+        detail: |
+          Adicionar ao final da secao '## Anti-Patterns':
+
+          - Reagir a notificacoes [BACKGROUND TASK RESULT READY] antes do
+            [ALL BACKGROUND TASKS COMPLETE]. Espere sempre o ALL COMPLETE
+            para coletar resultados de todos os background agents de uma vez.
+            Notificacoes parciais sao informativas, nao acionaveis.
+
+  # --------------------------------------------------------------------------
+  # TASK 2: scripts/check-obsidian-conventions.sh — 1 correcao
+  # --------------------------------------------------------------------------
+  - id: "C1-script-fix"
+    file: "scripts/check-obsidian-conventions.sh"
+    effort: "5 min"
+    description: "Corrigir find para ignorar diretorios com nome .md"
+    changes:
+      - id: "C1-type-f"
+        priority: P0
+        what: "Adicionar -type f em todos os find que buscam *.md"
+        detail: |
+          O script usa find ... -name '*.md' sem -type f.
+          Quando um DIRETORIO termina com .md (ex: docs/analysis/2026-...-agent.md/),
+          o find o retorna e o sed tenta le-lo como arquivo, produzindo:
+            sed: read error on ... Is a directory
+
+          Correcao: adicionar -type f em TODOS os comandos find do script
+          que buscam por arquivos .md. Sao 4 ocorrencias:
+
+          Linha 46 (Check 2):
+            find "$REPO_ROOT"/docs/analysis -name '*.md' -print0
+            → find "$REPO_ROOT"/docs/analysis -type f -name '*.md' -print0
+
+          Linha 203 (Check 9):
+            find "$REPO_ROOT"/curriculum -name '*.md' -print0
+            → find "$REPO_ROOT"/curriculum -type f -name '*.md' -print0
+
+          Linha 296 (Check 11):
+            find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -name '*.md' -print0
+            → find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -type f -name '*.md' -print0
+
+          Linha 312 (Check 12):
+            find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -name '*.md' -print0
+            → find "$REPO_ROOT"/docs/canonical "$REPO_ROOT"/docs/analysis "$REPO_ROOT"/curriculum -type f -name '*.md' -print0
+
+          Validacao: apos editar, rodar o script e confirmar que o erro
+          'sed: read error on ... Is a directory' nao aparece mais.
+
+  # --------------------------------------------------------------------------
+  # TASK 3: harness/templates/test-results.json — template com fases reais
+  # --------------------------------------------------------------------------
+  - id: "A3-template"
+    file: "harness/templates/test-results.json"
+    effort: "2 min"
+    description: "Substituir placeholder unico por estrutura completa de 7 fases"
+    changes:
+      - id: "template-phases"
+        priority: P0
+        what: "Template com todas as 7 fases em estado inicial (passes: false)"
+        detail: |
+          Conteudo atual (placeholder):
+            { "_placeholder": { "passes": false, ... } }
+
+          Novo conteudo (7 fases, todas passes: false):
+            {
+              "phase-0": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve." },
+              "phase-1": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de conhecimento — Phase 1." },
+              "phase-2": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de padroes reutilizaveis — Phase 2." },
+              "phase-3": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Classificacao — Phase 3." },
+              "phase-4": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Geracao de artefatos e roadmap — Phase 4." },
+              "phase-5": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Integracao — Phase 5." },
+              "phase-6": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Curriculum Deep Integration — Phase 6 (opcional)." }
+            }
+
+          Isso permite que o Step 0 (task A3-step-0) sobrescreva
+          test-results.json com um reset limpo ao iniciar nova analise.
+
+  # --------------------------------------------------------------------------
+  # TASK 4: .gitignore — silenciar auto-save do Obsidian
+  # --------------------------------------------------------------------------
+  - id: "C2-gitignore"
+    file: ".gitignore"
+    effort: "1 min"
+    description: "Adicionar arquivos de estado local do Obsidian ao gitignore"
+    changes:
+      - id: "obsidian-ignore"
+        priority: P1
+        what: "Adicionar .obsidian/workspace.json e .obsidian/graph.json"
+        detail: |
+          Adicionar ao final do arquivo (apos a linha '.worktrees/'):
+
+            # Obsidian local state (auto-generated, not content)
+            .obsidian/workspace.json
+            .obsidian/graph.json
+
+          Esses arquivos sao modificados pelo Obsidian em background a cada
+          novo wikilink criado, poluindo git diff --stat durante sessoes
+          de analise. Nao sao conteudo — sao estado local da UI.
+
+  # --------------------------------------------------------------------------
+  # TASK 5: AGENTS.md — regra de disciplina para background agents
+  # --------------------------------------------------------------------------
+  - id: "B3-agents-rule"
+    file: "AGENTS.md"
+    effort: "3 min"
+    description: "Adicionar regra sobre notificacoes de background tasks"
+    changes:
+      - id: "background-discipline"
+        priority: P2
+        what: "Nova regra: Rule 17 — Background Task Discipline"
+        detail: |
+          Adicionar apos Rule 16 (linha 238):
+
+            ## Rule 17: Background Task Discipline
+
+            When using parallel background agents (run_in_background=true):
+
+            - Do NOT react to individual [BACKGROUND TASK RESULT READY]
+              notifications. These are informational only.
+            - Wait for [ALL BACKGROUND TASKS COMPLETE] before collecting
+              any results via background_output().
+            - Collect ALL results in a single batch after ALL COMPLETE.
+            - Individual READY notifications before ALL COMPLETE mean
+              "one finished, others still running" — not "act now."
+
+            This prevents wasted cycles waiting for partial completions
+            and ensures results are processed as a coherent batch.
+
+  # --------------------------------------------------------------------------
+  # TASK 6: Instalar marksman LSP (C4)
+  # --------------------------------------------------------------------------
+  - id: "C4-lsp"
+    file: null  # system package, not a repo file
+    effort: "5 min"
+    description: "Instalar marksman LSP para validacao de markdown/wikilinks"
+    changes:
+      - id: "install-marksman"
+        priority: P2
+        what: "Instalar marksman language server para arquivos .md"
+        detail: |
+          marksman e um LSP para markdown que valida wikilinks quebrados,
+          frontmatter, e headings. Complementa check-obsidian-conventions.sh
+          com validacao em tempo real no editor.
+
+          Instalacao (Linux/WSL):
+            npm install -g marksman
+            # ou
+            brew install marksman  # se tiver Homebrew
+
+          Apos instalar, verificar se o opencode detecta:
+            which marksman
+
+          Configuracao no opencode (se necessario):
+            Adicionar ao opencode.json ou configuracao do LSP:
+              "marksman": { "filetypes": ["markdown"] }
+
+          NOTA: marksman NAO estava instalado no ambiente da sessao
+          harness-engineering. Isso significa que lsp_diagnostics em .md
+          sempre retornava "no server" — step de verificacao sempre pulado.
+
+  # --------------------------------------------------------------------------
+  # TASK 7 (POSTERGADA): Silenciar warnings de tags — C3
+  # --------------------------------------------------------------------------
+  - id: "C3-postergada"
+    status: postergada
+    description: "Silenciar warnings de tags nao reconhecidas no script de convencoes"
+    detail: |
+      O script check-obsidian-conventions.sh Check 10 emite centenas de
+      warnings sobre tags nao reconhecidas em arquivos de curriculo.
+      Todos sao pre-existentes, nao bloqueiam commits, e poluem o output.
+
+      Correcao futura (fora do escopo desta sessao):
+      - Opcao A: Fazer limpeza em massa nas tags do curriculo
+      - Opcao B: Filtrar output do script com 2>/dev/null para warnings
+      - Opcao C: Adicionar flag --quiet ao script
+
+# ============================================================================
+# VERIFICACAO POS-IMPLEMENTACAO
+# ============================================================================
+verification:
+  - "Rodar bash scripts/check-obsidian-conventions.sh — confirmar que o erro 'Is a directory' desapareceu"
+  - "Rodar git diff --stat — confirmar apenas os 5 arquivos esperados"
+  - "Testar Step 0: criar PROGRESS.md fake com source-slug diferente, rodar reset — verificar que test-results.json foi sobrescrito"
+  - "Testar modo loop: criar cenario com 2 fases pendentes, rodar — verificar que avanca sem perguntar"
+  - "Testar marksman: abrir um .md com wikilink quebrado — verificar diagnostico"
+  - "Testar .gitignore: modificar .obsidian/workspace.json — verificar que git nao rastreia"
+
+# ============================================================================
+# COMMIT
+# ============================================================================
+commit:
+  message: "fix(harness): post-mortem improvements from harness-engineering session"
+  scope: |
+    - .opencode/skills/harness-analyze-and-improve/SKILL.md (8 changes)
+    - scripts/check-obsidian-conventions.sh (-type f fix)
+    - harness/templates/test-results.json (full phase template)
+    - .gitignore (obsidian state files)
+    - AGENTS.md (Rule 17: background task discipline)
+  push: "Perguntar ao usuario antes de push"

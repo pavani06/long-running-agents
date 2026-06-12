@@ -1,0 +1,132 @@
+plan:
+  id: 2026-06-12-analysis-artifact-renaming
+  title: Renomear artefatos analyze-and-improve com prefixo date-title
+  status: completed
+  created: 2026-06-12
+  rationale: |
+    Arquivos gerados dentro de docs/analysis/<date>-<slug>/ usam nomes
+    genéricos (analysis.md, classification.md, etc.), tornando-os
+    irreconhecíveis fora do contexto do diretório. A nova convenção
+    prefixa cada artefato com <date>-<slug>-, permitindo busca por
+    nome de arquivo no Obsidian, rg, e fuzzy finder.
+
+  target_convention:
+    old: "docs/analysis/<date>-<slug>/<artifact>.{md,yaml}"
+    new: "docs/analysis/<date>-<slug>/<date>-<slug>-<artifact>.{md,yaml}"
+    not_affected:
+      - mapa-mental-repo/ (já usa o formato correto)
+      - mhc-backend/ (usa flat naming próprio, fora do escopo)
+      - HoP/ e Taya-State/ (não são gerados por analyze-and-improve)
+
+  phases:
+    - id: phase-0-prerequisites
+      name: Pré-requisitos e preparação
+      agent: sisyphus
+      status: completed
+      tasks:
+        - t0: Identificar todos os diretórios de análise
+        - t1: Mapear referências internas que quebram com renomeação
+        - t2: Identificar todos os arquivos de código que geram os paths
+
+    - id: phase-1-fix-dir-names
+      name: Corrigir nomes de diretório com bug (.md no final)
+      agent: quick
+      status: pending
+      dependencies: [phase-0-prerequisites]
+      repo: long-running-agents
+      tasks:
+        - t1: "git mv 2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent.md → ...steer-agent"
+        - t2: "git mv 2026-06-11-the-trap-spec-driven-development-is-setting.md → ...setting"
+
+    - id: phase-2-rename-artifacts
+      name: Renomear artefatos dentro dos diretórios
+      agent: deep
+      status: pending
+      dependencies: [phase-1-fix-dir-names]
+      repos: [long-running-agents, raw-knowledge]
+      description: |
+        Para cada diretório, aplicar git mv nos arquivos:
+        análise.md → <date>-<slug>-analysis.md (e .yaml)
+        classification.md → <date>-<slug>-classification.md (e .yaml)
+        mental-model.md → <date>-<slug>-mental-model.md (e .yaml)
+        patterns.md → <date>-<slug>-patterns.md (e .yaml)
+        integration-roadmap.md → <date>-<slug>-integration-roadmap.md
+        classification-batch1.md → <date>-<slug>-classification-batch1.md
+        classification-batch2.md → <date>-<slug>-classification-batch2.md
+
+    - id: phase-3-update-internal-refs
+      name: Atualizar referências internas (wikilinks e paths)
+      agent: deep
+      status: pending
+      dependencies: [phase-2-rename-artifacts]
+      repo: long-running-agents
+      description: |
+        Buscar e substituir em todos os arquivos .md do repo:
+        - PROGRESS.md
+        - index.md
+        - docs/system-of-record.md
+        - docs/analysis/*/ (wikilinks internos, frontmatter relates-to)
+        - harness/GUIDE-analyze-and-improve.md
+        - mapa-mental-repo/*.md (auto-referências)
+        - curriculum/ (cross-references)
+        - rawfiles/ (cross-references)
+        Padrão: /analysis\.md → <date>-<slug>-analysis.md etc.
+
+    - id: phase-4-update-skill
+      name: Atualizar analyze-and-improve SKILL.md
+      agent: deep
+      status: pending
+      dependencies: [phase-0-prerequisites]
+      file: /mnt/c/Users/pavan/.opencode/skills/analyze-and-improve/SKILL.md
+      description: |
+        Atualizar:
+        1. Seção "Output Directory Structure" (linhas 121-132)
+        2. Todos os blocos OUTPUT nos prompts das fases 0-6
+        3. Seção "Output" de cada fase
+        4. Seção "Gate" que referencia nomes de arquivo
+        5. Reference Implementations (seções Sessao 1 e Sessao 2)
+        Manter mapa-mental-repo/ inalterado (já está correto).
+
+    - id: phase-5-update-harness
+      name: Atualizar scripts e templates de harness
+      agent: deep
+      status: pending
+      dependencies: [phase-4-update-skill]
+      description: |
+        Atualizar:
+        1. /home/pavanpavan/.config/opencode/harness/GUIDE-analyze-and-improve.md
+           - Templates de PROGRESS.md e test-results.json
+           - Builder function references
+        2. /home/pavanpavan/.config/opencode/harness/EXAMPLES.md
+           - mkdir examples
+        3. /mnt/c/Users/pavan/long-running-agents/harness/harness-analysis.sh
+           - output_dir construction (linha 238)
+           - Builder prompt com paths
+        4. /mnt/c/Users/pavan/long-running-agents/harness/test-results.json
+           - Evidence paths (4, 10, 16, 22, 28)
+        5. /mnt/c/Users/pavan/long-running-agents/harness/templates/test-results.json
+           - Template notes
+        6. /mnt/c/Users/pavan/long-running-agents/harness/GUIDE-analyze-and-improve.md
+           - (cópia local, igual à global)
+        7. /mnt/c/Users/pavan/long-running-agents/PROGRESS.md
+           - output_dir field (linha 67)
+
+    - id: phase-6-update-doc-to-canonical
+      name: Atualizar doc-to-canonical SKILL.md (skill derivada)
+      agent: quick
+      status: pending
+      dependencies: [phase-4-update-skill]
+      file: /home/pavanpavan/.config/opencode/skills/doc-to-canonical/SKILL.md
+      description: |
+        Mesma convenção de paths que analyze-and-improve.
+        Atualizar todos os paths de output nas fases.
+
+    - id: phase-7-validate
+      name: Validação final
+      agent: sisyphus
+      status: pending
+      dependencies: [phase-3-update-internal-refs, phase-5-update-harness, phase-6-update-doc-to-canonical]
+      description: |
+        - rg para confirmar que nenhum path antigo persiste
+        - lsp_diagnostics nos arquivos alterados
+        - git status para verificar escopo das mudanças

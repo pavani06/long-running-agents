@@ -111,6 +111,10 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md
 │   │
+├── 03-nivel-arquiteto/
+│   └── exercises/
+│       └── exercise-04-owner-of-no-role.md
+│
 │   └── 04-nivel-4-koda-specific/
 │       ├── 01-koda-architecture.md
 │       ├── 02-customer-journey-flows.md
@@ -120,6 +124,8 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │       ├── real-world-exercises/
 │       │   ├── exercise-01.md
 │       │   ├── exercise-02.md
+│       │   ├── exercise-05-manual-brake-question-gate.md
+│       │   ├── exercise-06-deferred-ledger-agentic-work.md
 │       │   └── solutions/
 │       └── case-studies/
 │           ├── case-study-01.md

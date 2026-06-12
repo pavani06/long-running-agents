@@ -11,7 +11,7 @@
 		{"id":"analysis-group-12fa","type":"text","text":"docs/analysis/2026-06-09-12-factor-agents/","x":-340,"y":760,"width":360,"height":120},
 		{"id":"analysis-group-context","type":"text","text":"docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/","x":40,"y":760,"width":420,"height":120},
 		{"id":"analysis-group-evals","type":"text","text":"docs/analysis/2026-06-10-eval-maturity-phases/","x":500,"y":760,"width":360,"height":120},
-		{"id":"analysis-12fa","type":"file","file":"docs/analysis/2026-06-09-12-factor-agents/analysis.md","x":-340,"y":930,"width":360,"height":180},
+		{"id":"analysis-12fa","type":"file","file":"docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md","x":-340,"y":930,"width":360,"height":180},
 		{"id":"analysis-context","type":"file","file":"docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md","x":40,"y":930,"width":420,"height":180},
 		{"id":"analysis-evals","type":"file","file":"docs/analysis/2026-06-10-eval-maturity-phases/analysis.md","x":500,"y":930,"width":360,"height":180}
 	],

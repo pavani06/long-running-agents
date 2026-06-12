@@ -5,7 +5,7 @@ aliases: ["head tail truncation", "context truncation"]
 tags: ["context-engineering"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting Lesson]]"]
-sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]
 ---
 # Head-Tail Context Truncation with Recoverable Middle
 
@@ -47,11 +47,11 @@ The repo already teaches the broader context-management ingredients that this pa
 - Level 1 windowing asks learners to keep recent messages, compress old history, preserve critical metadata, and return an optimized context (`curriculum/01-nivel-1-fundamentals/exercises/exercise-01-windowing.md:13`).
 - The harness checklist requires an explicit context policy, a system-prompt budget, structured old-history summaries, durable critical state, and explainability for context blocks (`curriculum/07-implementation-guides/03-harness-design-checklist.md:273`).
 - Server-side compaction keeps recent context complete, stores older ranges at different summary densities, and injects external state (`curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md:327`).
-- The source analysis defines smart truncation as `[system_prompt][head][tail][latest_result]` plus a recoverable memory store (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:65`).
+- The source analysis defines smart truncation as `[system_prompt][head][tail][latest_result]` plus a recoverable memory store (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:65`).
 
 ### What is missing
 
-The classification found no explicit canonical or curriculum pattern for preserving both head and tail while making the omitted middle exactly recoverable by handle (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:16`). Existing material covers sliding windows, summaries, retrieval, state, and compaction, but it does not name this as a specific compaction variant.
+The classification found no explicit canonical or curriculum pattern for preserving both head and tail while making the omitted middle exactly recoverable by handle (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:16`). Existing material covers sliding windows, summaries, retrieval, state, and compaction, but it does not name this as a specific compaction variant.
 
 The missing implementation details are:
 
@@ -79,9 +79,9 @@ The missing implementation details are:
 
 ## References
 
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:65` — smart truncation mechanism.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md:14` — extracted reusable pattern.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:5` — Partial Coverage classification and gap.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:65` — smart truncation mechanism.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md:14` — extracted reusable pattern.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:5` — Partial Coverage classification and gap.
 - `curriculum/01-nivel-1-fundamentals/exercises/exercise-01-windowing.md:13` — existing windowing exercise.
 - `curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md:327` — existing server-side compaction coverage.
 - `curriculum/07-implementation-guides/03-harness-design-checklist.md:273` — context policy checklist.

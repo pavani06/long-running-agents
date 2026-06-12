@@ -5,7 +5,7 @@ aliases: ["regression flywheel", "failure flywheel"]
 tags: ["evals", "production", "error-handling"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # Production Failure Regression Flywheel
 
@@ -62,7 +62,7 @@ The repo already has a context-specific version and adjacent rubric guidance:
 - That suite should run before context-strategy changes ship, during harness canaries, and after incident fixes (`docs/canonical/late-failure-regression-suite.md:33`).
 - The harness evolution playbook says every late context incident generates a permanent regression case with fixture, metadata, gate, and ownership (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1118`).
 - The rubric template requires applying rubrics to old incident outputs and includes N+1 long-session fixtures in the regression set (`curriculum/08-tools-templates/evaluation-rubric-template.md:812`).
-- The classification says this is strong but not generalized across all production failures, complaints, escaped edge cases, tool misuse, scoring gaps, and suite deduplication (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:98`).
+- The classification says this is strong but not generalized across all production failures, complaints, escaped edge cases, tool misuse, scoring gaps, and suite deduplication (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:98`).
 
 ### What needs to be added
 
@@ -97,19 +97,19 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:142` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:93` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:102` - Late-Failure Regression Suite evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:103` - canonical gate evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:104` - playbook permanent regression evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:105` - rubric incident-output evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:142` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:93` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:102` - Late-Failure Regression Suite evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:103` - canonical gate evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:104` - playbook permanent regression evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:105` - rubric incident-output evidence.
 - `docs/canonical/late-failure-regression-suite.md:17` - context-specific regression suite.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1118` - permanent late-context regression case rule.
 - `curriculum/08-tools-templates/evaluation-rubric-template.md:812` - old incidents as regression examples.
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

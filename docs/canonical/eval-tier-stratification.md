@@ -5,7 +5,7 @@ aliases: ["eval tiers", "stratification"]
 tags: ["evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # Eval Tier Stratification
 
@@ -57,7 +57,7 @@ The repo already has multiple validation layers:
 - The issue-review skill defines core gates and optional surface-specific gates including lint, unit, integration, dashboard, fixture parity, evidence verification, CI gates, and branch-protection verification (`.opencode/skills/issue-review/SKILL.md:44`).
 - The harness playbook separates lint/unit checks, component regression batteries, N+1 long-session gates, staging shadow tests, and canary phases (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741`).
 - `package.json` defines real local validation commands such as `npm run lint`, `npm run test:unit`, and `npm run test:integration` (`package.json:8`).
-- The classification says the layers exist, but there is no explicit fast/medium/deep eval tier taxonomy (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:71`).
+- The classification says the layers exist, but there is no explicit fast/medium/deep eval tier taxonomy (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:71`).
 
 ### What needs to be added
 
@@ -91,10 +91,10 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:100` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:66` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:75` - issue-review validation layer evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:76` - harness playbook layered eval evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:100` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:66` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:75` - issue-review validation layer evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:76` - harness playbook layered eval evidence.
 - `.opencode/skills/issue-review/SKILL.md:44` - current review gate validation step.
 - `.opencode/skills/issue-review/SKILL.md:57` - optional surface-specific gates.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741` - regression battery.
@@ -102,7 +102,7 @@ Add:
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

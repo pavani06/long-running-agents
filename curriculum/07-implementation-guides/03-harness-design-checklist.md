@@ -259,18 +259,106 @@ Use este scorecard para resumir a maturidade do harness depois de aplicar as cat
 | Segurança & Guardrails | Depende de prompt e memória implícita | Tem algumas regras manuais | Possui contratos e validações principais | É testado, auditável e recuperável | Mede qualidade, custo e evolução continuamente | 1-5 |
 | Evolução (Harness Evolution) | Depende de prompt e memória implícita | Tem algumas regras manuais | Possui contratos e validações principais | É testado, auditável e recuperável | Mede qualidade, custo e evolução continuamente | 1-5 |
 | Observabilidade (Traces/Monitoring) | Depende de prompt e memória implícita | Tem algumas regras manuais | Possui contratos e validações principais | É testado, auditável e recuperável | Mede qualidade, custo e evolução continuamente | 1-5 |
+| Decisão de Valor (Value Gate) | Toda intenção vira Build por padrão | Existe intenção de questionar valor, mas informal | Há um gate com vocabulário (Build/Experiment/Defer/Stop) e owner nomeado | Gate é aplicado consistentemente, decisões são auditadas | O gate é calibrado com outcomes, o Owner-of-No é um papel institucionalizado | 1-5 |
 
 ### Interpretação da pontuação
 
-- **8-15 pontos:** harness experimental. Use apenas em demo, protótipo ou fluxo sem risco comercial.
-- **16-24 pontos:** harness inicial. Pode rodar com supervisão humana e baixa autonomia.
-- **25-32 pontos:** harness operacional. Aceitável para produção limitada com monitoramento ativo.
-- **33-38 pontos:** harness robusto. Adequado para produção em escala com incident response definido.
-- **39-40 pontos:** harness excelente. Além de confiável, é evolutivo, auditável e ensina o time a melhorar.
+- **9-17 pontos:** harness experimental. Use apenas em demo, protótipo ou fluxo sem risco comercial.
+- **18-27 pontos:** harness inicial. Pode rodar com supervisão humana e baixa autonomia.
+- **28-36 pontos:** harness operacional. Aceitável para produção limitada com monitoramento ativo.
+- **37-43 pontos:** harness robusto. Adequado para produção em escala com incident response definido.
+- **44-45 pontos:** harness excelente. Além de confiável, é evolutivo, auditável e ensina o time a melhorar.
 
 ### Regra de bloqueio
 
 Mesmo com score alto, qualquer FAIL crítico em Segurança, Persistência ou Avaliação pode bloquear produção. Score agregado nunca deve esconder risco absoluto.
+
+---
+
+## 🚦 0. Decisão de Valor (Value Decision Gate)
+
+Esta categoria é nova e não existia na checklist original do Fernando. Ela foi adicionada após a análise do [[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis|The Trap SDD Analysis]], que revelou que o harness governa COMO o agente executa mas raramente governa SE o agente deve executar.
+
+### O que um bom harness faz
+
+- Toda intenção que entra no pipeline é classificada em um dos quatro verbos de valor: **Build** (valor claro, construa), **Experiment** (promissor mas incerto, explore com critério de parada), **Defer** (valor possível mas não agora, registre com condição de reativação), **Stop** (não justifica o custo, recuse com alternativa).
+- As três perguntas-freio são respondidas e registradas para cada intenção classificada como Build ou Experiment: Quem precisa disso e o que quebra se não existir? Ainda construiríamos se custasse uma semana de engenharia? Quem é o dono de dizer não?
+- Existe um Owner-of-No nomeado — papel ou política com autoridade explícita de recusa — para cada domínio do pipeline.
+- O gate de valor (entrada) é separado do gate de qualidade (saída): o Manual Brake avalia input, o Evaluator avalia output.
+- Recusas e deferrals são registrados com rationale no trace store, não apenas aprovações.
+- O time revisa periodicamente as decisões Build/Experiment/Defer/Stop contra outcomes reais para calibrar o julgamento de valor.
+
+### Por que isso importa no KODA
+
+KODA não vive em uma chamada isolada de LLM. Ele vive em conversas que atravessam minutos, horas, preferências, restrições, estoque, preço e confiança.
+
+Quando a dimensão de valor falha, o time constrói features que ninguém pediu, acumula carry debt de artefatos sem owner, e o pipeline de coordenação multi-agente se torna uma máquina de executar trabalho que nunca deveria ter começado.
+
+### Checklist PASS/FAIL
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Classificação de intenção | Toda intenção que entra no pipeline é classificada como Build, Experiment, Defer ou Stop antes da execução. | Existe evidência verificável e atualizada. | Toda intenção vira Build por padrão, sem classificação explícita. | Registre link para artefato, owner e data. |
+| Perguntas-freio respondidas | Para cada intenção classificada como Build ou Experiment, as três perguntas-freio têm respostas registradas. | Existe evidência verificável e atualizada. | Features são aprovadas sem que ninguém saiba quem precisa delas ou quem pode dizer não. | Registre link para artefato, owner e data. |
+| Owner-of-No designado | Existe um papel ou política com autoridade explícita de recusa para cada domínio do pipeline. | Existe evidência verificável e atualizada. | Ninguém consegue nomear quem tem autoridade para recusar uma feature. | Registre link para artefato, owner e data. |
+| Separação value gate / quality gate | O gate de valor (entrada) e o gate de qualidade (saída) são componentes distintos com responsabilidades diferentes. | Existe evidência verificável e atualizada. | O Evaluator é o único gate — não há verificação de valor na entrada. | Registre link para artefato, owner e data. |
+| Rationale de recusa registrada | Recusas e deferrals são registrados com rationale no trace store, não apenas aprovações. | Existe evidência verificável e atualizada. | Só se registra o que foi aprovado; recusas desaparecem sem registro. | Registre link para artefato, owner e data. |
+| Calibração de julgamento | O time revisa periodicamente decisões de valor contra outcomes reais para calibrar o julgamento. | Existe evidência verificável e atualizada. | Decisões de Build/Stop nunca são revisitadas para aprendizado. | Registre link para artefato, owner e data. |
+| Deferred Ledger ativo | As três categorias de dívida (skill, dependence, carry) são monitoradas e revisadas trimestralmente. | Existe evidência verificável e atualizada. | O time só olha para custo de tokens, ignora dívida estrutural. | Registre link para artefato, owner e data. |
+
+### Evidências que um revisor deve pedir
+
+- registro de classificação Build/Experiment/Defer/Stop para as últimas N intenções
+- respostas documentadas às três perguntas-freio
+- nome do Owner-of-No para cada domínio
+- trace de recusa com rationale
+- relatório trimestral de calibração de julgamento
+
+### Exemplo de falha típica
+
+❌ O time implementa 12 features em um mês porque "o agente consegue fazer cada uma em 20 minutos". Nenhuma passou pelo Manual Brake. Seis meses depois, 8 features nunca foram usadas — mas consomem tokens de manutenção e superfície de bug.
+
+### Exemplo de desenho melhor
+
+✅ Antes de qualquer feature entrar no pipeline, o Orchestrator aplica o Manual Brake Gate: classifica como Build/Experiment/Defer/Stop, registra as três respostas, e só roteia para execução se a classificação for Build ou Experiment com Owner-of-No aprovando.
+
+### Micro-checklist de revisão rápida
+
+- [ ] Toda intencao que entra no pipeline tem classificacao Build, Experiment, Defer ou Stop registrada?
+- [ ] As tres perguntas-freio tem respostas documentadas para intencoes Build e Experiment?
+- [ ] Existe um Owner-of-No nomeado para cada dominio com autoridade explicita de recusa?
+- [ ] O gate de valor (Manual Brake) e operacionalmente separado do gate de qualidade (Evaluator)?
+- [ ] Recusas sao registradas com rationale, nao apenas aprovacoes?
+- [ ] O Deferred Ledger (skill debt, dependence debt, carry debt) e revisado trimestralmente?
+- [ ] Decisoes de valor passadas sao comparadas com outcomes reais para calibrar julgamento?
+
+### Perguntas de auditoria
+
+- Qual artefato prova que esta regra existe fora da cabeca do agente?
+- Qual teste falharia se alguem removesse essa protecao amanha?
+- Qual trace mostraria que a protecao foi acionada em producao?
+- Quem e o owner desta regra e quando ela foi revisada pela ultima vez?
+- Qual e o custo em tokens, latencia ou manutencao desta protecao?
+- Qual falha real de cliente esta protecao previne?
+- O que acontece quando a protecao rejeita um caso valido?
+- O que acontece quando a protecao deixa passar um caso invalido?
+- Como um novo dev descobriria essa regra sem perguntar para Fernando?
+- A regra esta no lugar certo ou deveria virar contrato, state, rubric ou guardrail?
+
+### Critérios de bloqueio para esta categoria
+
+- Bloqueie produção se features entram no pipeline sem classificação de valor.
+- Bloqueie produção se não há Owner-of-No nomeado para decisões de produto.
+- Bloqueie produção se o único argumento para construir é "o agente consegue fazer rápido".
+- Permita rollout limitado apenas quando o risco estiver documentado, monitorado e reversível.
+
+### Sinais de maturidade crescente
+
+- **Nível 1:** toda intenção vira Build por padrão.
+- **Nível 2:** existe intenção de questionar valor, mas é informal e depende de indivíduos corajosos.
+- **Nível 3:** há um gate com vocabulário Build/Experiment/Defer/Stop, perguntas-freio, e Owner-of-No nomeado.
+- **Nível 4:** o gate é aplicado consistentemente, decisões são auditadas, e o Deferred Ledger é revisado trimestralmente.
+- **Nível 5:** o gate é calibrado com outcomes reais, o Owner-of-No é um papel institucionalizado, e o time trata recusas como prática normal de engenharia.
 
 ---
 

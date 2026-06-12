@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "evals", "curriculo-conteudo"]
 aliases: ["automation wedge", "embedded workflow discovery", "domain workflow wedge"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
+relates-to: ["[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
 ---
 # Domain-Embedded Workflow Automation Wedge
 
@@ -61,7 +61,7 @@ The repo already contains strong domain workflow and eval material:
 
 ### What is missing
 
-The Partial Coverage gap is the discovery wedge itself. The repo has domain workflows and KODA-specific evals, but the classification found no formal pattern for shadowing messy customer work, extracting operator decisions and edge cases, or deciding which workflow slice to automate first from observed operations outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:173-187.
+The Partial Coverage gap is the discovery wedge itself. The repo has domain workflows and KODA-specific evals, but the classification found no formal pattern for shadowing messy customer work, extracting operator decisions and edge cases, or deciding which workflow slice to automate first from observed operations outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:173-187.
 
 Missing implementation details:
 
@@ -85,12 +85,12 @@ Missing implementation details:
 - **Feeds:** [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] when edge cases or failed automations become permanent regression cases.
 - **Uses:** [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] when wedge selection needs both engineering feasibility and product-destination pressure.
 - **Builds on:** [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]] and [[curriculum/09-case-studies/04-koda-order-processing|KODA Order Processing Case Study]] for existing domain workflow decomposition.
-- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]:224-243 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:173-187.
+- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]:224-243 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:173-187.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|patterns]]:224-243 - extracted pattern definition.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:173-187 - Partial Coverage classification and missing shadowing/wedge mechanics.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|patterns]]:224-243 - extracted pattern definition.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:173-187 - Partial Coverage classification and missing shadowing/wedge mechanics.
 - [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]]:36-46 - existing Awareness workflow modeling.
 - [[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]]:76-110 - existing Consideration workflow decomposition.
 - [[curriculum/09-case-studies/04-koda-order-processing|KODA Order Processing Case Study]]:18-28 - existing multi-step operational pain.

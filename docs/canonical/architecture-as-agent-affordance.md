@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "arquitetura", "governanca"]
 aliases: ["deep module refactoring", "agent affordance architecture", "architecture for agents", "agent-navigable architecture"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[.opencode/skills/writing-plans/SKILL|writing-plans skill]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/writing-plans/SKILL|writing-plans skill]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Architecture-as-Agent-Affordance Refactoring
 
@@ -19,9 +19,9 @@ sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-ma
 
 ## Problem
 
-Agents navigate codebases through surface-level structure: file names, import graphs, function signatures, and inline patterns. A shallow, highly coupled module structure forces the agent to read more files to understand a single behavior, track tangled dependencies, and guess at boundaries that are not encoded in the architecture. The source analysis frames this directly: a shallow, highly coupled codebase is not just ugly; it is hostile terrain for an agent ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Analysis]]:72).
+Agents navigate codebases through surface-level structure: file names, import graphs, function signatures, and inline patterns. A shallow, highly coupled module structure forces the agent to read more files to understand a single behavior, track tangled dependencies, and guess at boundaries that are not encoded in the architecture. The source analysis frames this directly: a shallow, highly coupled codebase is not just ugly; it is hostile terrain for an agent ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Analysis]]:72).
 
-The repository values clear interfaces and boundaries. The writing-plans skill maps files, responsibilities, boundaries, and interfaces before defining tasks. The split-brain planning review evaluates scope, dependencies, and risk. AGENTS.md demands small, explicit, and testable scripts and functions. But none of these rules name architecture as a deliberate input to agent performance. They treat boundaries as design hygiene, not as runtime affordances that reduce navigation cost, error rate, and cognitive load for the next agent session ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:232-236).
+The repository values clear interfaces and boundaries. The writing-plans skill maps files, responsibilities, boundaries, and interfaces before defining tasks. The split-brain planning review evaluates scope, dependencies, and risk. AGENTS.md demands small, explicit, and testable scripts and functions. But none of these rules name architecture as a deliberate input to agent performance. They treat boundaries as design hygiene, not as runtime affordances that reduce navigation cost, error rate, and cognitive load for the next agent session ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:232-236).
 
 The consequence is missed leverage: each improvement cycle produces completion evidence but does not leave the codebase more navigable for the next agent. The next session inherits the same coupling, the same cost of understanding, and the same risk of breaking distant behavior.
 
@@ -37,7 +37,7 @@ The pattern from the source identifies three architectural moves as agent afford
 
 3. **Reduced coupling to reduce blast radius.** Coupled modules create cascading agent errors: a change to the order model unintentionally breaks invoice generation because both share a common utility that was not clearly owned. Deep modules with clear ownership boundaries limit the blast radius of any single change and reduce the number of files an agent must read to understand the consequences of its work.
 
-The pattern flow: inspect dependency clusters and coupled behavior, identify boundaries where a deeper module can own behavior behind a simple interface, define tests around the behavior boundary, refactor or create issues for the architectural change, and use the improved boundary as a future agent affordance ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:407-411).
+The pattern flow: inspect dependency clusters and coupled behavior, identify boundaries where a deeper module can own behavior behind a simple interface, define tests around the behavior boundary, refactor or create issues for the architectural change, and use the improved boundary as a future agent affordance ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:407-411).
 
 Critical distinction: this is architecture work, not formatting cleanup. Renaming files, reordering imports, or wrapping multiple functions in a class is not architecture-as-affordance. Deep modules hide complexity while exposing behavior; shallow reorganizations hide neither.
 
@@ -53,7 +53,7 @@ Critical distinction: this is architecture work, not formatting cleanup. Renamin
 
 ### What is missing from the pattern
 
-The Partial Coverage gap is that the repository treats architecture as code quality but not as a deliberate agent affordance. The classification found no canonical doc, curriculum material, or skill that names deep modules, boundary tests, or coupling reduction as explicit agent-performance inputs ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:234-236).
+The Partial Coverage gap is that the repository treats architecture as code quality but not as a deliberate agent affordance. The classification found no canonical doc, curriculum material, or skill that names deep modules, boundary tests, or coupling reduction as explicit agent-performance inputs ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:234-236).
 
 Missing pieces:
 
@@ -79,14 +79,14 @@ Missing pieces:
 - **Enables:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] because boundary tests at the public interface level survive internal refactors, keeping the evaluator useful across architecture changes.
 - **Feeds:** [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] by reducing navigation time and error rate inside the loop's exploration phase.
 - **Relates to:** [[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]] because wedge selection benefits from clean boundaries between deterministic integration and model judgment.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:381-411 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:220-237.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:381-411 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:220-237.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:381-411 - extracted pattern definition with dependency clusters, deep modules, boundary tests, and architecture follow-up backlog.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:220-237 - Partial Coverage classification and gap analysis for Architecture-as-Agent-Affordance.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:68-72 - deep modules as agent architecture and hostile terrain for agents.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:140-146 - improve-codebase-architecture skill pattern description.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:381-411 - extracted pattern definition with dependency clusters, deep modules, boundary tests, and architecture follow-up backlog.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:220-237 - Partial Coverage classification and gap analysis for Architecture-as-Agent-Affordance.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:68-72 - deep modules as agent architecture and hostile terrain for agents.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:140-146 - improve-codebase-architecture skill pattern description.
 - [[.opencode/skills/writing-plans/SKILL|writing-plans skill]]:22-29 - file mapping, boundaries, and interfaces before task definition.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:30-41 - existing planning-review evaluation of scope, dependencies, and risk.
 - [[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]:43-48 - deterministic vs model-judgment boundary separation.

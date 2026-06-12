@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "governanca"]
 aliases: ["AFK routing", "human-in-loop gate", "task classifier", "AFK-ready gate", "human/agent routing", "routing gate"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Human/AFK Task Routing Gate
 
@@ -65,7 +65,7 @@ The repo has operational routing mechanisms that partially cover task classifica
 
 ### What is missing
 
-The Partial Coverage gap is the absence of an explicit classification matrix that scores tasks on ambiguity, architecture, feedback-loop readiness, and product judgment to produce an AFK-ready or human-in-loop routing decision. The classification found no skill, canonical doc, or curriculum material that defines Human/AFK Task Routing Gate or the four-dimensional classifier outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:91-107.
+The Partial Coverage gap is the absence of an explicit classification matrix that scores tasks on ambiguity, architecture, feedback-loop readiness, and product judgment to produce an AFK-ready or human-in-loop routing decision. The classification found no skill, canonical doc, or curriculum material that defines Human/AFK Task Routing Gate or the four-dimensional classifier outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:91-107.
 
 Missing implementation details:
 
@@ -92,14 +92,14 @@ Missing implementation details:
 - **Precedes:** [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]], because AFK-ready tasks are the only ones that should enter the execute phase without human presence.
 - **Connects to:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] and [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]], which provide the feedback loops that make AFK execution safe.
 - **Depends on:** [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]] for priority synthesis and execution routing that consume the AFK/human classification.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:130-158 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:91-107.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:130-158 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:91-107.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:130-158 - extracted pattern definition with components and flow.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:91-107 - Partial Coverage classification and gap note.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:62-66 - human-in-loop vs AFK classification model.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:153-153 - planning remains human-in-loop operational lesson.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:130-158 - extracted pattern definition with components and flow.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:91-107 - Partial Coverage classification and gap note.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:62-66 - human-in-loop vs AFK classification model.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:153-153 - planning remains human-in-loop operational lesson.
 - [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:51-63 - existing priority-based next-task suggestion.
 - [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:165-180 - existing blocker handling and human escalation.
 - [[.opencode/skills/issue-start/SKILL|issue-start skill]]:38-45 - existing work-claiming and ownership gates.

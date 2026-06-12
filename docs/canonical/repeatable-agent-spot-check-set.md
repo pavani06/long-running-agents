@@ -5,7 +5,7 @@ aliases: ["spot check", "repeatable eval"]
 tags: ["evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # Repeatable Agent Spot-Check Set
 
@@ -59,7 +59,7 @@ The repo already has repeatable trace examples and regression-battery guidance:
 - The trace-reading curriculum provides four reconstructed real KODA trace cases with trace JSON, manual analysis, script output, diagnosis, and lesson (`curriculum/02-nivel-2-practical-patterns/04-trace-reading.md:3876`).
 - The same trace-reading module says those cases can be used for practice, training, CI/CD automation, and comparison with new traces (`curriculum/02-nivel-2-practical-patterns/04-trace-reading.md:4580`).
 - The harness-evolution playbook includes a component-specific regression battery with concrete long-context and context-limit cases (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741`).
-- The classification identifies this as repeatable adjacent material but not a named seed-set formalization (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:28`).
+- The classification identifies this as repeatable adjacent material but not a named seed-set formalization (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:28`).
 
 ### What needs to be added
 
@@ -92,17 +92,17 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:37` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:23` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:32` - reconstructed KODA trace case evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:33` - practice, training, CI/CD, and comparison evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:34` - harness regression battery evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:37` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:23` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:32` - reconstructed KODA trace case evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:33` - practice, training, CI/CD, and comparison evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:34` - harness regression battery evidence.
 - `curriculum/02-nivel-2-practical-patterns/04-trace-reading.md:3876` - real trace case structure.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741` - regression battery cases.
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

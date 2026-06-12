@@ -5,7 +5,7 @@ aliases: ["correlation tracking", "eval production correlation"]
 tags: ["evals", "production"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # Eval-to-Production Correlation Tracking
 
@@ -60,7 +60,7 @@ The repo already has adjacent calibration and production metric mechanics:
 - The harness playbook shows staging and canary dashboards comparing baseline and candidate metrics such as incomplete response rate, token budget, latency, evaluator rejection rate, and CSAT proxy (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1596`).
 - The canary comparison records baseline, candidate, delta, and gate status for production metrics (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1654`).
 - Feature readiness requires calibrated rubrics, replayable traces, and canary metrics with no trust regression (`curriculum/04-nivel-4-koda-specific/03-feature-design-patterns.md:1193`).
-- The classification says these are adjacent mechanics, but not a named correlation-tracking pattern with decay alerts or recalibration triggers (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:127`).
+- The classification says these are adjacent mechanics, but not a named correlation-tracking pattern with decay alerts or recalibration triggers (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:127`).
 
 ### What needs to be added
 
@@ -96,12 +96,12 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:184` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:122` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:131` - Continuous Calibration Loop evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:132` - baseline/candidate dashboard evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:133` - feature readiness evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:134` - missing named correlation-tracking pattern.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:184` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:122` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:131` - Continuous Calibration Loop evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:132` - baseline/candidate dashboard evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:133` - feature readiness evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:134` - missing named correlation-tracking pattern.
 - `curriculum/05-core-concepts/08-evaluation-rubrics.md:153` - production rubric score calibration strategy.
 - `curriculum/05-core-concepts/08-evaluation-rubrics.md:156` - outcomes collected and weights/thresholds adjusted.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1596` - staging baseline/candidate dashboard.
@@ -110,7 +110,7 @@ Add:
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

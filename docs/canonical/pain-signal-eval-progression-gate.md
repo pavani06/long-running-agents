@@ -5,7 +5,7 @@ aliases: ["pain signal", "progression gate"]
 tags: ["evals", "production"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/analysis|Eval Maturity Analysis]]"]
+sources: ["[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]
 ---
 # Pain-Signal Eval Progression Gate
 
@@ -58,7 +58,7 @@ The repo already has adjacent decision habits for harness evolution and rollback
 
 - The KODA harness-evolution framework asks which concrete failure a component prevents, how often it prevents that failure, what token, latency, and maintenance cost it adds, whether replay or A/B proves removal safe, and how quickly rollback can happen (`curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md:1490`).
 - Harness-improvement proposals require evidence, rollback or config disablement, a technical owner, a review cadence, and metrics such as critical-fact loss or harness value (`curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:498`).
-- The classification identifies this as an adjacent mechanic, not a formal eval-maturity gate (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:15`).
+- The classification identifies this as an adjacent mechanic, not a formal eval-maturity gate (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:15`).
 
 ### What needs to be added
 
@@ -91,17 +91,17 @@ Add:
 
 ## References
 
-- `docs/analysis/2026-06-10-eval-maturity-phases/patterns.md:16` - extracted pattern definition.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:10` - Partial Coverage classification.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:19` - KODA harness-evolution evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/classification.md:20` - harness-improvement proposal evidence.
-- `docs/analysis/2026-06-10-eval-maturity-phases/mental-model.md:16` - documentation precedence context.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md:16` - extracted pattern definition.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:10` - Partial Coverage classification.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:19` - KODA harness-evolution evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:20` - harness-improvement proposal evidence.
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-mental-model.md:16` - documentation precedence context.
 - `curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md:1490` - harness-evolution failure and cost questions.
 - `curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:498` - evidence, rollback, ownership, and metric requirements.
 
 ## Better Implementation Cross-References
 
-Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/classification.md:108`).
+Do not create separate canonical docs for Metricized Agent Eval Contract or Canary Eval Rollout Gate from this analysis. The classification says the repo already has better implementations: Sprint Contracts, KODA rubrics, and baseline/candidate score comparison exceed the metricized contract pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:37`), while staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md:108`).
 
 ---
 

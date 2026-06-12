@@ -2865,7 +2865,47 @@ Se marcou menos de 18 itens, releia as fases correspondentes antes de conduzir u
 
 ---
 
-## 📚 Referências & Próximas Leituras
+## 🕐 Além do Harness: Carry Debt Sunset Gate para Artefatos
+
+Este playbook ensina a remover e simplificar componentes do harness — peças de engenharia que compensam limitações do modelo. Mas agentes não criam apenas componentes. Eles criam **artefatos**: skills, prompts, dashboards, arquivos de configuração, scripts, documentação.
+
+Esses artefatos não seguem o ciclo BUILD → STABILIZE → SIMPLIFY → REMOVE. Eles seguem o ciclo do [[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]]: **Keep, Retire, Archive, Promote** — com uma data de sunset que força a revisão.
+
+### A Regra do Sunset
+
+**Todo artefato criado por agente deve ter uma data de sunset.** Essa data é o dia em que o artefato será revisado e classificado. Se ninguém revisar até lá, o artefato é automaticamente marcado como "candidate for retirement" e entra na pauta do próximo GC Day.
+
+```
+Regra prática:
+  Artefatos experimentais      → sunset em 30 dias
+  Artefatos em produção        → sunset em 90 dias
+  Artefatos promovidos a canon → sunset em 180 dias (revisão semestral)
+```
+
+### Checklist de Artefato (antes de criar)
+
+Antes que um agente crie um novo artefato, responda:
+
+- [ ] Qual problema real este artefato resolve? (não "seria legal ter")
+- [ ] Quem é o owner de manutenção?
+- [ ] Qual é a data de sunset (quando será revisado)?
+- [ ] Que métrica determinará se ele deve ser Keep ou Retire?
+- [ ] Qual artefato existente será aposentado para abrir espaço? (One In, One Out)
+
+### O Inventário de Artefatos
+
+Mantenha um inventário simples, revisado trimestralmente, junto com a revisão de harness:
+
+| Artefato | Criado por | Owner | Sunset | Status | Próxima Revisão |
+|---|---|---|---|---|---|
+| `evaluator-rubric-v2` | Recommendation Agent | quality-platform | 90 dias | Keep (Promote) | 2026-07-15 |
+| `experimental-ranking-heuristic` | Ranking Agent | conversational-core | 30 dias | Keep (Evaluate) | 2026-05-01 |
+| `legacy-context-loader-config` | Context Loader (v1) | — | expirado | Retire | — |
+| `welcome-message-template` | Recommendation Agent | product-team | 90 dias | Archive | 2026-04-01 |
+
+O inventário de artefatos é tão importante quanto o inventário de componentes do harness. Ambos respondem à mesma pergunta: "O que estamos carregando, quem é o dono, e quando vamos revisar?"
+
+---
 
 - `curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md`, módulo conceitual de Harness Evolution.
 - `curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`, base para entender por que Evaluator permanece invariante.
@@ -2875,6 +2915,8 @@ Se marcou menos de 18 itens, releia as fases correspondentes antes de conduzir u
 - ADR de remoção criado durante a execução real.
 - Dashboard trimestral de efetividade do harness.
 - Changelog do modelo em produção, usado apenas como hipótese para testes.
+- [[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]] — estende o ciclo de vida do harness para artefatos criados por agentes (skills, prompts, dashboards, configurações) com vocabulário Keep/Retire/Archive/Promote.
+- [[docs/canonical/accidental-brake-replacement|Accidental Brake Replacement]] — anti-padrão de remover gates de segurança herdados sem substituí-los por gates intencionais no harness.
 
 ---
 

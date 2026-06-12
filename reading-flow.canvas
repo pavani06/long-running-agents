@@ -1,651 +1,87 @@
 {
-  "nodes": [
-    {
-      "id": "root-index",
-      "type": "file",
-      "file": "index.md",
-      "x": -1120,
-      "y": -40,
-      "width": 320,
-      "height": 180
-    },
-    {
-      "id": "quick-start",
-      "type": "file",
-      "file": "curriculum/QUICK_START.md",
-      "x": -1120,
-      "y": 220,
-      "width": 320,
-      "height": 180
-    },
-    {
-      "id": "curriculum-hub",
-      "type": "file",
-      "file": "curriculum/INDEX.md",
-      "x": -700,
-      "y": 90,
-      "width": 360,
-      "height": 200
-    },
-    {
-      "id": "level-1",
-      "type": "text",
-      "text": "01-nivel-1-fundamentals",
-      "x": -250,
-      "y": 80,
-      "width": 300,
-      "height": 120
-    },
-    {
-      "id": "level-1-1",
-      "type": "file",
-      "file": "curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot.md",
-      "x": -250,
-      "y": 260,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-1-2",
-      "type": "file",
-      "file": "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md",
-      "x": -250,
-      "y": 460,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-1-3",
-      "type": "file",
-      "file": "curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns.md",
-      "x": -250,
-      "y": 660,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-2",
-      "type": "text",
-      "text": "02-nivel-2-practical-patterns",
-      "x": 120,
-      "y": 80,
-      "width": 300,
-      "height": 120
-    },
-    {
-      "id": "level-2-1",
-      "type": "file",
-      "file": "curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md",
-      "x": 120,
-      "y": 260,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-2-2",
-      "type": "file",
-      "file": "curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md",
-      "x": 120,
-      "y": 460,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-2-3",
-      "type": "file",
-      "file": "curriculum/02-nivel-2-practical-patterns/03-rubric-design.md",
-      "x": 120,
-      "y": 660,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-2-4",
-      "type": "file",
-      "file": "curriculum/02-nivel-2-practical-patterns/04-trace-reading.md",
-      "x": 120,
-      "y": 860,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "level-3",
-      "type": "text",
-      "text": "03-nivel-3-advanced-architecture",
-      "x": 490,
-      "y": 80,
-      "width": 340,
-      "height": 120
-    },
-    {
-      "id": "level-3-1",
-      "type": "file",
-      "file": "curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md",
-      "x": 490,
-      "y": 260,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-3-2",
-      "type": "file",
-      "file": "curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md",
-      "x": 490,
-      "y": 460,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-3-3",
-      "type": "file",
-      "file": "curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination.md",
-      "x": 490,
-      "y": 660,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-3-4",
-      "type": "file",
-      "file": "curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md",
-      "x": 490,
-      "y": 860,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-3-5",
-      "type": "file",
-      "file": "curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md",
-      "x": 490,
-      "y": 1060,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-4",
-      "type": "text",
-      "text": "04-nivel-4-koda-specific",
-      "x": 870,
-      "y": 80,
-      "width": 300,
-      "height": 120
-    },
-    {
-      "id": "level-4-1",
-      "type": "file",
-      "file": "curriculum/04-nivel-4-koda-specific/01-koda-architecture.md",
-      "x": 870,
-      "y": 260,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-4-2",
-      "type": "file",
-      "file": "curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md",
-      "x": 870,
-      "y": 460,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-4-3",
-      "type": "file",
-      "file": "curriculum/04-nivel-4-koda-specific/03-feature-design-patterns.md",
-      "x": 870,
-      "y": 660,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-4-4",
-      "type": "file",
-      "file": "curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md",
-      "x": 870,
-      "y": 860,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "level-4-5",
-      "type": "file",
-      "file": "curriculum/04-nivel-4-koda-specific/05-harness-improvements.md",
-      "x": 870,
-      "y": 1060,
-      "width": 320,
-      "height": 160
-    },
-    {
-      "id": "glossary",
-      "type": "file",
-      "file": "curriculum/GLOSSARY.md",
-      "x": -700,
-      "y": 980,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "faq",
-      "type": "file",
-      "file": "curriculum/FAQ.md",
-      "x": -360,
-      "y": 980,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "master-plan",
-      "type": "file",
-      "file": "curriculum/MASTER_PLAN.md",
-      "x": -20,
-      "y": 980,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "core-concepts",
-      "type": "text",
-      "text": "05-core-concepts",
-      "x": 320,
-      "y": 980,
-      "width": 260,
-      "height": 120
-    },
-    {
-      "id": "knowledge-graphs",
-      "type": "text",
-      "text": "06-knowledge-graphs",
-      "x": 620,
-      "y": 980,
-      "width": 260,
-      "height": 120
-    },
-    {
-      "id": "implementation-guides",
-      "type": "text",
-      "text": "07-implementation-guides",
-      "x": 920,
-      "y": 980,
-      "width": 300,
-      "height": 120
-    },
-    {
-      "id": "tools-templates",
-      "type": "text",
-      "text": "08-tools-templates",
-      "x": 1240,
-      "y": 980,
-      "width": 280,
-      "height": 120
-    },
-    {
-      "id": "case-studies",
-      "type": "text",
-      "text": "09-case-studies",
-      "x": 1550,
-      "y": 980,
-      "width": 260,
-      "height": 120
-    },
-    {
-      "id": "references",
-      "type": "text",
-      "text": "10-references",
-      "x": 1830,
-      "y": 980,
-      "width": 240,
-      "height": 120
-    },
-    {
-      "id": "core-concepts-file",
-      "type": "file",
-      "file": "curriculum/05-core-concepts/01-context-management.md",
-      "x": 320,
-      "y": 1140,
-      "width": 260,
-      "height": 160
-    },
-    {
-      "id": "knowledge-graphs-file",
-      "type": "file",
-      "file": "curriculum/06-knowledge-graphs/01-concept-ecosystem.md",
-      "x": 620,
-      "y": 1140,
-      "width": 260,
-      "height": 160
-    },
-    {
-      "id": "implementation-guides-file",
-      "type": "file",
-      "file": "curriculum/07-implementation-guides/01-setup-guide.md",
-      "x": 920,
-      "y": 1140,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "tools-templates-file",
-      "type": "file",
-      "file": "curriculum/08-tools-templates/architecture-decision-record-template.md",
-      "x": 1240,
-      "y": 1140,
-      "width": 300,
-      "height": 160
-    },
-    {
-      "id": "case-studies-file",
-      "type": "file",
-      "file": "curriculum/09-case-studies/00-all-case-studies.md",
-      "x": 1550,
-      "y": 1140,
-      "width": 280,
-      "height": 160
-    },
-    {
-      "id": "references-file",
-      "type": "file",
-      "file": "curriculum/10-references/additional-resources.md",
-      "x": 1830,
-      "y": 1140,
-      "width": 260,
-      "height": 160
-    }
-  ],
-  "edges": [
-    {
-      "id": "edge-root-hub",
-      "fromNode": "root-index",
-      "toNode": "curriculum-hub",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-quickstart",
-      "fromNode": "curriculum-hub",
-      "toNode": "quick-start",
-      "fromSide": "top",
-      "toSide": "bottom"
-    },
-    {
-      "id": "edge-quickstart-level1",
-      "fromNode": "quick-start",
-      "toNode": "level-1",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-level1-level2",
-      "fromNode": "level-1",
-      "toNode": "level-2",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-level2-level3",
-      "fromNode": "level-2",
-      "toNode": "level-3",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-level3-level4",
-      "fromNode": "level-3",
-      "toNode": "level-4",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-level1",
-      "fromNode": "curriculum-hub",
-      "toNode": "level-1",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-level2",
-      "fromNode": "curriculum-hub",
-      "toNode": "level-2",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-level3",
-      "fromNode": "curriculum-hub",
-      "toNode": "level-3",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-level4",
-      "fromNode": "curriculum-hub",
-      "toNode": "level-4",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "edge-hub-glossary",
-      "fromNode": "curriculum-hub",
-      "toNode": "glossary",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-faq",
-      "fromNode": "curriculum-hub",
-      "toNode": "faq",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-master-plan",
-      "fromNode": "curriculum-hub",
-      "toNode": "master-plan",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-core-concepts",
-      "fromNode": "curriculum-hub",
-      "toNode": "core-concepts",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-knowledge-graphs",
-      "fromNode": "curriculum-hub",
-      "toNode": "knowledge-graphs",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-implementation-guides",
-      "fromNode": "curriculum-hub",
-      "toNode": "implementation-guides",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-tools-templates",
-      "fromNode": "curriculum-hub",
-      "toNode": "tools-templates",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-case-studies",
-      "fromNode": "curriculum-hub",
-      "toNode": "case-studies",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-hub-references",
-      "fromNode": "curriculum-hub",
-      "toNode": "references",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level1-file1",
-      "fromNode": "level-1",
-      "toNode": "level-1-1",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level1-file2",
-      "fromNode": "level-1",
-      "toNode": "level-1-2",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level1-file3",
-      "fromNode": "level-1",
-      "toNode": "level-1-3",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level2-file1",
-      "fromNode": "level-2",
-      "toNode": "level-2-1",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level2-file2",
-      "fromNode": "level-2",
-      "toNode": "level-2-2",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level2-file3",
-      "fromNode": "level-2",
-      "toNode": "level-2-3",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level2-file4",
-      "fromNode": "level-2",
-      "toNode": "level-2-4",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level3-file1",
-      "fromNode": "level-3",
-      "toNode": "level-3-1",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level3-file2",
-      "fromNode": "level-3",
-      "toNode": "level-3-2",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level3-file3",
-      "fromNode": "level-3",
-      "toNode": "level-3-3",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level3-file4",
-      "fromNode": "level-3",
-      "toNode": "level-3-4",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level3-file5",
-      "fromNode": "level-3",
-      "toNode": "level-3-5",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level4-file1",
-      "fromNode": "level-4",
-      "toNode": "level-4-1",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level4-file2",
-      "fromNode": "level-4",
-      "toNode": "level-4-2",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level4-file3",
-      "fromNode": "level-4",
-      "toNode": "level-4-3",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level4-file4",
-      "fromNode": "level-4",
-      "toNode": "level-4-4",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-level4-file5",
-      "fromNode": "level-4",
-      "toNode": "level-4-5",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-core-concepts-file",
-      "fromNode": "core-concepts",
-      "toNode": "core-concepts-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-knowledge-graphs-file",
-      "fromNode": "knowledge-graphs",
-      "toNode": "knowledge-graphs-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-implementation-guides-file",
-      "fromNode": "implementation-guides",
-      "toNode": "implementation-guides-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-tools-templates-file",
-      "fromNode": "tools-templates",
-      "toNode": "tools-templates-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-case-studies-file",
-      "fromNode": "case-studies",
-      "toNode": "case-studies-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "edge-references-file",
-      "fromNode": "references",
-      "toNode": "references-file",
-      "fromSide": "bottom",
-      "toSide": "top"
-    }
-  ]
+	"nodes":[
+		{"id":"root-index","type":"file","file":"index.md","x":-1120,"y":-40,"width":320,"height":180},
+		{"id":"quick-start","type":"file","file":"curriculum/QUICK_START.md","x":-1120,"y":220,"width":320,"height":180},
+		{"id":"curriculum-hub","type":"file","file":"curriculum/INDEX.md","x":-700,"y":90,"width":360,"height":200},
+		{"id":"level-1","type":"text","text":"01-nivel-1-fundamentals","x":-250,"y":80,"width":300,"height":120},
+		{"id":"level-1-1","type":"file","file":"curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot.md","x":-250,"y":260,"width":300,"height":160},
+		{"id":"level-1-2","type":"file","file":"curriculum/01-nivel-1-fundamentals/02-token-budgeting.md","x":-250,"y":460,"width":300,"height":160},
+		{"id":"level-1-3","type":"file","file":"curriculum/01-nivel-1-fundamentals/03-basic-harness-patterns.md","x":-250,"y":660,"width":300,"height":160},
+		{"id":"level-2","type":"text","text":"02-nivel-2-practical-patterns","x":120,"y":80,"width":300,"height":120},
+		{"id":"level-2-1","type":"file","file":"curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md","x":120,"y":260,"width":300,"height":160},
+		{"id":"level-2-2","type":"file","file":"curriculum/02-nivel-2-practical-patterns/02-sprint-contracts.md","x":120,"y":460,"width":300,"height":160},
+		{"id":"level-2-3","type":"file","file":"curriculum/02-nivel-2-practical-patterns/03-rubric-design.md","x":120,"y":660,"width":300,"height":160},
+		{"id":"level-2-4","type":"file","file":"curriculum/02-nivel-2-practical-patterns/04-trace-reading.md","x":120,"y":860,"width":300,"height":160},
+		{"id":"level-3","type":"text","text":"03-nivel-3-advanced-architecture","x":490,"y":80,"width":340,"height":120},
+		{"id":"level-3-1","type":"file","file":"curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md","x":490,"y":260,"width":320,"height":160},
+		{"id":"level-3-2","type":"file","file":"curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md","x":490,"y":460,"width":320,"height":160},
+		{"id":"level-3-3","type":"file","file":"curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination.md","x":490,"y":660,"width":320,"height":160},
+		{"id":"level-3-4","type":"file","file":"curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md","x":490,"y":860,"width":320,"height":160},
+		{"id":"level-3-5","type":"file","file":"curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md","x":490,"y":1060,"width":320,"height":160},
+		{"id":"level-4","type":"text","text":"04-nivel-4-koda-specific","x":870,"y":80,"width":300,"height":120},
+		{"id":"level-4-1","type":"file","file":"curriculum/04-nivel-4-koda-specific/01-koda-architecture.md","x":870,"y":260,"width":320,"height":160},
+		{"id":"level-4-2","type":"file","file":"curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md","x":870,"y":460,"width":320,"height":160},
+		{"id":"level-4-3","type":"file","file":"curriculum/04-nivel-4-koda-specific/03-feature-design-patterns.md","x":870,"y":660,"width":320,"height":160},
+		{"id":"level-4-4","type":"file","file":"curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md","x":870,"y":860,"width":320,"height":160},
+		{"id":"level-4-5","type":"file","file":"curriculum/04-nivel-4-koda-specific/05-harness-improvements.md","x":870,"y":1060,"width":320,"height":160},
+		{"id":"glossary","type":"file","file":"curriculum/GLOSSARY.md","x":-700,"y":980,"width":300,"height":160},
+		{"id":"faq","type":"file","file":"curriculum/FAQ.md","x":-360,"y":980,"width":300,"height":160},
+		{"id":"master-plan","type":"file","file":"curriculum/MASTER_PLAN.md","x":-20,"y":980,"width":300,"height":160},
+		{"id":"core-concepts","type":"text","text":"05-core-concepts","x":320,"y":980,"width":260,"height":120},
+		{"id":"knowledge-graphs","type":"text","text":"06-knowledge-graphs","x":620,"y":980,"width":260,"height":120},
+		{"id":"implementation-guides","type":"text","text":"07-implementation-guides","x":920,"y":980,"width":300,"height":120},
+		{"id":"tools-templates","type":"text","text":"08-tools-templates","x":1240,"y":980,"width":280,"height":120},
+		{"id":"case-studies","type":"text","text":"09-case-studies","x":1550,"y":980,"width":260,"height":120},
+		{"id":"references","type":"text","text":"10-references","x":1830,"y":980,"width":240,"height":120},
+		{"id":"core-concepts-file","type":"file","file":"curriculum/05-core-concepts/01-context-management.md","x":320,"y":1140,"width":260,"height":160},
+		{"id":"knowledge-graphs-file","type":"file","file":"curriculum/06-knowledge-graphs/01-concept-ecosystem.md","x":620,"y":1140,"width":260,"height":160},
+		{"id":"implementation-guides-file","type":"file","file":"curriculum/07-implementation-guides/01-setup-guide.md","x":920,"y":1140,"width":300,"height":160},
+		{"id":"tools-templates-file","type":"file","file":"curriculum/08-tools-templates/architecture-decision-record-template.md","x":1240,"y":1140,"width":300,"height":160},
+		{"id":"case-studies-file","type":"file","file":"curriculum/09-case-studies/00-all-case-studies.md","x":1550,"y":1140,"width":280,"height":160},
+		{"id":"references-file","type":"file","file":"curriculum/10-references/additional-resources.md","x":1830,"y":1140,"width":260,"height":160}
+	],
+	"edges":[
+		{"id":"edge-root-hub","fromNode":"root-index","toNode":"curriculum-hub","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-quickstart","fromNode":"curriculum-hub","toNode":"quick-start","fromSide":"top","toSide":"bottom"},
+		{"id":"edge-quickstart-level1","fromNode":"quick-start","toNode":"level-1","fromSide":"right","toSide":"left"},
+		{"id":"edge-level1-level2","fromNode":"level-1","toNode":"level-2","fromSide":"right","toSide":"left"},
+		{"id":"edge-level2-level3","fromNode":"level-2","toNode":"level-3","fromSide":"right","toSide":"left"},
+		{"id":"edge-level3-level4","fromNode":"level-3","toNode":"level-4","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-level1","fromNode":"curriculum-hub","toNode":"level-1","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-level2","fromNode":"curriculum-hub","toNode":"level-2","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-level3","fromNode":"curriculum-hub","toNode":"level-3","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-level4","fromNode":"curriculum-hub","toNode":"level-4","fromSide":"right","toSide":"left"},
+		{"id":"edge-hub-glossary","fromNode":"curriculum-hub","toNode":"glossary","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-faq","fromNode":"curriculum-hub","toNode":"faq","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-master-plan","fromNode":"curriculum-hub","toNode":"master-plan","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-core-concepts","fromNode":"curriculum-hub","toNode":"core-concepts","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-knowledge-graphs","fromNode":"curriculum-hub","toNode":"knowledge-graphs","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-implementation-guides","fromNode":"curriculum-hub","toNode":"implementation-guides","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-tools-templates","fromNode":"curriculum-hub","toNode":"tools-templates","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-case-studies","fromNode":"curriculum-hub","toNode":"case-studies","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-hub-references","fromNode":"curriculum-hub","toNode":"references","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level1-file1","fromNode":"level-1","toNode":"level-1-1","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level1-file2","fromNode":"level-1","toNode":"level-1-2","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level1-file3","fromNode":"level-1","toNode":"level-1-3","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level2-file1","fromNode":"level-2","toNode":"level-2-1","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level2-file2","fromNode":"level-2","toNode":"level-2-2","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level2-file3","fromNode":"level-2","toNode":"level-2-3","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level2-file4","fromNode":"level-2","toNode":"level-2-4","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level3-file1","fromNode":"level-3","toNode":"level-3-1","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level3-file2","fromNode":"level-3","toNode":"level-3-2","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level3-file3","fromNode":"level-3","toNode":"level-3-3","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level3-file4","fromNode":"level-3","toNode":"level-3-4","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level3-file5","fromNode":"level-3","toNode":"level-3-5","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level4-file1","fromNode":"level-4","toNode":"level-4-1","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level4-file2","fromNode":"level-4","toNode":"level-4-2","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level4-file3","fromNode":"level-4","toNode":"level-4-3","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level4-file4","fromNode":"level-4","toNode":"level-4-4","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-level4-file5","fromNode":"level-4","toNode":"level-4-5","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-core-concepts-file","fromNode":"core-concepts","toNode":"core-concepts-file","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-knowledge-graphs-file","fromNode":"knowledge-graphs","toNode":"knowledge-graphs-file","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-implementation-guides-file","fromNode":"implementation-guides","toNode":"implementation-guides-file","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-tools-templates-file","fromNode":"tools-templates","toNode":"tools-templates-file","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-case-studies-file","fromNode":"case-studies","toNode":"case-studies-file","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-references-file","fromNode":"references","toNode":"references-file","fromSide":"bottom","toSide":"top"}
+	]
 }

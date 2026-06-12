@@ -4,14 +4,14 @@ type: canonical
 aliases: ["historico seletivo com fatos duraveis", "selective history", "critical context injection"]
 tags: ["context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
-sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+relates-to: ["[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 ---
 # Durable Fact Selective History
 
 **Type:** Canonical Pattern
 **Status:** Active
-**Source:** [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]] and [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]
+**Source:** [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]] and [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]
 **Classification:** Partial Coverage
 **Precedence:** Level 2, because active canonical docs outrank analysis and curriculum according to [[docs/system-of-record|System of Record]]:14-21.
 
@@ -21,9 +21,9 @@ sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting A
 
 Passing the entire transcript into every model call gives high early quality but creates late-session failure as history grows. The source lesson shows the anti-pattern directly: `full_history = get_all_messages_ever()` grows to 80K tokens, feels excellent in the first minutes, starts producing bugs after 30 minutes, and can crash after 60 minutes ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:172-190).
 
-Blind windowing fixes token growth but can drop distant facts that still govern later decisions. The same lesson therefore defines the correct pattern as recent messages plus critical client context such as allergies, budget, and purchase history ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:191-217). The Phase 3 analysis generalizes that mechanism: keep recent history plus critical structured context, separating durable facts from transient conversation turns ([[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:65-70).
+Blind windowing fixes token growth but can drop distant facts that still govern later decisions. The same lesson therefore defines the correct pattern as recent messages plus critical client context such as allergies, budget, and purchase history ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:191-217). The Phase 3 analysis generalizes that mechanism: keep recent history plus critical structured context, separating durable facts from transient conversation turns ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:65-70).
 
-The repository already has adjacent canonical pieces, but no single contract for selective history. Phase 3 classifies this pattern as Partial Coverage because existing docs cover durable state extraction, persistence, injection, and omitted-memory handles, but do not unify recent conversational texture, structured durable facts, durable-memory updates, and explicit dropping of transient turns ([[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]:44-50).
+The repository already has adjacent canonical pieces, but no single contract for selective history. Phase 3 classifies this pattern as Partial Coverage because existing docs cover durable state extraction, persistence, injection, and omitted-memory handles, but do not unify recent conversational texture, structured durable facts, durable-memory updates, and explicit dropping of transient turns ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:44-50).
 
 ## Solution
 
@@ -107,7 +107,7 @@ Assemble selective history after the stable harness prompt and before generation
 5. Compact catalog previews for omitted content that can be fetched by handle.
 6. Current user request.
 
-This keeps the durable state from competing with the raw transcript. It also matches the hybrid token-budgeting lesson, which places critical client context, older summary, and recent window into separate layers ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:375-415), and the Phase 3 synthesis, which says stable critical facts, compressed older history, and recent conversational texture should not compete in one undifferentiated transcript ([[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:225-227).
+This keeps the durable state from competing with the raw transcript. It also matches the hybrid token-budgeting lesson, which places critical client context, older summary, and recent window into separate layers ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:375-415), and the Phase 3 synthesis, which says stable critical facts, compressed older history, and recent conversational texture should not compete in one undifferentiated transcript ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:225-227).
 
 ## Tradeoffs
 
@@ -140,17 +140,17 @@ This keeps the durable state from competing with the raw transcript. It also mat
 
 ### What this doc canonicalizes
 
-This document names the missing selective-history contract identified by Phase 3: active context is not full history, not blind windowing, and not durable state alone. It is the deliberate combination of recent conversational texture plus structured durable facts, with explicit update, freshness, provenance, and omission rules. That gap is the exact NOT_FOUND in the Phase 3 classification ([[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]:44-50).
+This document names the missing selective-history contract identified by Phase 3: active context is not full history, not blind windowing, and not durable state alone. It is the deliberate combination of recent conversational texture plus structured durable facts, with explicit update, freshness, provenance, and omission rules. That gap is the exact NOT_FOUND in the Phase 3 classification ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:44-50).
 
 ## References
 
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:172-217 - full-history anti-pattern and selective-history example.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:375-415 - hybrid context layers with critical context, summary buffer, and recent window.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:65-70 - selective history as recent history plus critical structured context.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:121-127 - operational lessons on degradation, buffers, and critical facts.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:225-227 - synthesis that stable critical facts, older history, and recent texture should not compete in one transcript.
-- [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Agentic Patterns]]:81-101 - extracted Durable Fact Selective History pattern.
-- [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Pattern Classification]]:44-50 - Partial Coverage classification and NOT_FOUND gap.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:65-70 - selective history as recent history plus critical structured context.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:121-127 - operational lessons on degradation, buffers, and critical facts.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:225-227 - synthesis that stable critical facts, older history, and recent texture should not compete in one transcript.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:81-101 - extracted Durable Fact Selective History pattern.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:44-50 - Partial Coverage classification and NOT_FOUND gap.
 - [[docs/canonical/external-state-persistence|External State Persistence]]:31-65 - durable extraction, external store, merge, and persistence boundary.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]:30-40 - context blocks and durable-state freshness injection.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-43 - omitted-memory handles, previews, and exact fetch contract.

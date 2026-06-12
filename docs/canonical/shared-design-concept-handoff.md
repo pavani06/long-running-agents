@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "context-engineering", "governanca"]
 aliases: ["design concept handoff", "shared mental model handoff", "alignment handoff", "concept contract"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Shared Design Concept Handoff
 
@@ -59,7 +59,7 @@ The repo has adjacent mechanisms that support parts of the handoff:
 
 ### What is missing
 
-The Partial Coverage gap is the absence of a formal handoff layer that treats the alignment conversation as a primary asset and preserves the shared concept as a durable contract for downstream PRD, issue generation, and review. The classification found no canonical doc, skill, or curriculum material that names Shared Design Concept Handoff or defines the handoff contract outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:58-73.
+The Partial Coverage gap is the absence of a formal handoff layer that treats the alignment conversation as a primary asset and preserves the shared concept as a durable contract for downstream PRD, issue generation, and review. The classification found no canonical doc, skill, or curriculum material that names Shared Design Concept Handoff or defines the handoff contract outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:58-73.
 
 Missing implementation details:
 
@@ -84,13 +84,13 @@ Missing implementation details:
 - **Complements:** [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]], because the shared concept is what the engineering and product reviewers evaluate against.
 - **Precedes:** [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]], because the shared concept defines the destination that planning, execution, and verification must preserve.
 - **Depends on:** [[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]] to track the freshness and provenance of shared concept assumptions across sessions.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:69-97 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:58-73.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:69-97 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:58-73.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:69-97 - extracted pattern definition with components and flow.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:58-73 - Partial Coverage classification and gap note.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:50-54 - shared design concept as the real planning asset.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:69-97 - extracted pattern definition with components and flow.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:58-73 - Partial Coverage classification and gap note.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:50-54 - shared design concept as the real planning asset.
 - [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:28-42 - existing meta-context collection workflow.
 - [[.opencode/skills/issue-start/SKILL|issue-start skill]]:111-147 - existing execution brief with scope and criteria.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:35-41 - existing reconciliation and deferred ambition recording.

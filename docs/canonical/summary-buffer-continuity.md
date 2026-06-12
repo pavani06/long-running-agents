@@ -4,15 +4,15 @@ type: canonical
 aliases: ["buffer de resumo continuo", "rolling summary", "conversation summarization", "resumo de sessao"]
 tags: ["context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
-sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 ---
 
 # Summary Buffer Continuity
 
 **Type:** canonical
 **Status:** active
-**Source:** [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]] and [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]
+**Source:** [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]] and [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]
 **Classification:** Partial Coverage
 **Precedence:** document-level 2 (canonical) per [[docs/system-of-record|System of Record]]:14-21
 
@@ -20,13 +20,13 @@ sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting A
 
 ## Problem
 
-Older conversation often contains critical state, but the full transcript cannot remain verbatim in every model call forever. The token-budgeting source names this directly: Summary Buffer solves the case where older conversation may contain critical state but cannot remain verbatim, by periodically summarizing old or full history into a compact buffer included with recent messages ([[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:79-85).
+Older conversation often contains critical state, but the full transcript cannot remain verbatim in every model call forever. The token-budgeting source names this directly: Summary Buffer solves the case where older conversation may contain critical state but cannot remain verbatim, by periodically summarizing old or full history into a compact buffer included with recent messages ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:79-85).
 
 The original lesson gives the concrete mechanism: an 80K-token two-hour history is periodically summarized into a 2K-token paragraph that preserves allergy, budget, brand preference, and delivery information ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:250-260). It also shows the expected trigger shape: summarize every 50 messages and focus on critical customer information ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:262-274).
 
 Existing canonical docs cover adjacent pieces but not the lifecycle. [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] makes summarization and compression explicit context-builder interventions ([[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:60-63). [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]] allows reducible history and tool bulk to be summarized, truncated, externalized, or retrieved while preserving the harness prompt ([[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:28-41). [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]] warns that opaque summarization can remove exact details without auditable recovery ([[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]:24) and requires omitted middle content to remain exactly recoverable rather than only summarized ([[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]:59).
 
-The gap is therefore not "can the system summarize?" The gap is a rolling summary-buffer contract with freshness metadata, update rules, target budget, quality checks, and portability as a handoff artifact. The classification records this as Partial Coverage and NOT_FOUND for a canonical summary-buffer lifecycle ([[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:64-72).
+The gap is therefore not "can the system summarize?" The gap is a rolling summary-buffer contract with freshness metadata, update rules, target budget, quality checks, and portability as a handoff artifact. The classification records this as Partial Coverage and NOT_FOUND for a canonical summary-buffer lifecycle ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:64-72).
 
 ## Solution
 
@@ -85,9 +85,9 @@ The buffer appears in the active context only after the stable harness prompt an
 
 1. **Select source span.** Choose older turns that exceed the active-history budget or have crossed the summarization threshold. The original lesson uses a periodic trigger every 50 messages as a simple example ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:262-274), while the production scenario triggers Summary Buffer in the orange phase and keeps only the latest 10 messages verbatim ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:545-553).
 2. **Protect durable facts first.** Extract or refresh structured facts before summarization. Token Budgeting frames critical customer facts as separate context such as allergies, budget, and purchase history ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:191-217), and [[docs/canonical/external-state-persistence|External State Persistence]] separates durable facts from greetings, filler, and ephemeral scratchpads ([[docs/canonical/external-state-persistence|External State Persistence]]:59-65).
-3. **Summarize under a target budget.** Produce a compact old-history summary with explicit `target_tokens`. The extracted pattern requires target token budget and freshness metadata as inputs and emits a compact buffer included with recent messages ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:125-137).
-4. **Merge, do not append blindly.** Fold the new span into the existing buffer by replacing stale or superseded claims, preserving open threads, and recording the new `source_span`. The pattern identifies summary drift as a limitation when updates are not anchored to source state ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:142-145).
-5. **Attach freshness metadata.** Set `fresh_at`, `stale_after`, and `quality_status` so the context builder can decide whether to reuse, refresh, or exclude the buffer. The classification gap specifically calls out missing freshness metadata and update rules ([[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:64-70).
+3. **Summarize under a target budget.** Produce a compact old-history summary with explicit `target_tokens`. The extracted pattern requires target token budget and freshness metadata as inputs and emits a compact buffer included with recent messages ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:125-137).
+4. **Merge, do not append blindly.** Fold the new span into the existing buffer by replacing stale or superseded claims, preserving open threads, and recording the new `source_span`. The pattern identifies summary drift as a limitation when updates are not anchored to source state ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:142-145).
+5. **Attach freshness metadata.** Set `fresh_at`, `stale_after`, and `quality_status` so the context builder can decide whether to reuse, refresh, or exclude the buffer. The classification gap specifically calls out missing freshness metadata and update rules ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:64-70).
 6. **Preserve exact recovery.** Store or reference the source span through [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]] handles. The catalog provides `id`, `kind`, `location`, `preview`, `scope`, and `fetch` fields for exact omitted-content recovery ([[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-43).
 7. **Include beside recent tail.** Assemble the next context as stable prompt, durable facts, summary buffer, recent messages, latest result, and retrieval handles. This matches the hybrid context-stack idea in the source, which combines critical context, summary buffer, and recent window ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:375-415).
 
@@ -97,16 +97,16 @@ Run quality checks before a summary buffer becomes the active continuity layer.
 
 | Check | Pass condition | Evidence anchor |
 |---|---|---|
-| Durable fact preservation | Constraints, preferences, commitments, and task state are either unchanged in structured state or explicitly referenced | [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:124-127 |
+| Durable fact preservation | Constraints, preferences, commitments, and task state are either unchanged in structured state or explicitly referenced | [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:124-127 |
 | Source anchoring | Every buffer has `source_span` and `recovery_refs` for exact recovery | [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]:56-61 |
-| Freshness | `fresh_at` covers the summarized span and `stale_after` tells the context builder when to refresh | [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:64-70 |
-| Budget fit | `summary_text` stays within `target_tokens` and leaves room for recent tail plus response buffer | [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:50-61 |
+| Freshness | `fresh_at` covers the summarized span and `stale_after` tells the context builder when to refresh | [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:64-70 |
+| Budget fit | `summary_text` stays within `target_tokens` and leaves room for recent tail plus response buffer | [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:50-61 |
 | Continuity behavior | N+1 follow-up still resolves old references after the buffer replaces old verbatim turns | [[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]:20-40 |
-| Drift control | Refresh replaces stale claims rather than accumulating contradictions or vague paraphrases | [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:142-145 |
+| Drift control | Refresh replaces stale claims rather than accumulating contradictions or vague paraphrases | [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:142-145 |
 
 ## Portability and Handoff
 
-A summary buffer is portable only when it carries enough metadata for the next session, sub-agent, or operator to know what it summarizes and how to recover exact details. The pattern extraction names portability as a benefit: the buffer creates a handoff artifact for new sessions or sub-agents ([[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:138-145). Budget-aware session transition also depends on preserving enough state to avoid user-visible discontinuity when the active context budget is reset ([[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:171-179).
+A summary buffer is portable only when it carries enough metadata for the next session, sub-agent, or operator to know what it summarizes and how to recover exact details. The pattern extraction names portability as a benefit: the buffer creates a handoff artifact for new sessions or sub-agents ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:138-145). Budget-aware session transition also depends on preserving enough state to avoid user-visible discontinuity when the active context budget is reset ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:171-179).
 
 Portable handoff payload:
 
@@ -141,10 +141,10 @@ Portable handoff payload:
 
 ## References
 
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:79-85 - Summary Buffer problem, mechanism, and best fit.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:147-151 - Summary Buffer benefit and cost.
-- [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:125-145 - extracted Summary Buffer Continuity inputs, outputs, benefits, and limitations.
-- [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:64-72 - Partial Coverage evidence and lifecycle gap.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:79-85 - Summary Buffer problem, mechanism, and best fit.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:147-151 - Summary Buffer benefit and cost.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:125-145 - extracted Summary Buffer Continuity inputs, outputs, benefits, and limitations.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:64-72 - Partial Coverage evidence and lifecycle gap.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:250-283 - original Summary Buffer lesson and tradeoffs.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:545-553 - orange-phase trigger for activating Summary Buffer.
 - [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:60-63 - summarization and compression as context-builder interventions.

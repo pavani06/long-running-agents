@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "context-engineering", "evals", "governanca"]
 aliases: ["skillify pipeline", "skill resolver pipeline", "capability pipeline", "routable skill lifecycle"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]]"]
+relates-to: ["[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]]"]
 ---
 # Skill-Resolver-Skillify Capability Pipeline
 
@@ -82,15 +82,15 @@ Missing pieces:
 - **Uses:** [[docs/canonical/eval-tier-stratification|Eval Tier Stratification]] to choose fast trigger checks, medium integration checks, and deep capability regression tests.
 - **Can start from:** [[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]] when repeated manual checks reveal a workflow worth skillifying.
 - **Example of existing skill shape:** [[docs/canonical/error-context-hygiene|Error Context Hygiene]], which has focused triggers and explicit rules but would still need resolver eval and smoke evidence under this pipeline.
-- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] pattern 4.
+- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] pattern 4.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]] lines 77-97 - extracted capability pipeline pattern.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] lines 60-74 - Partial Coverage classification and High integration value.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 80-86 - skillify mechanism and compliance-heavy insight.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 152-155 - operational lesson that skillify without tests is incomplete.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 197-200 - one-shot macro, duplicate skill, and trigger-eval false confidence failure modes.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]] lines 77-97 - extracted capability pipeline pattern.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] lines 60-74 - Partial Coverage classification and High integration value.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 80-86 - skillify mechanism and compliance-heavy insight.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 152-155 - operational lesson that skillify without tests is incomplete.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 197-200 - one-shot macro, duplicate skill, and trigger-eval false confidence failure modes.
 - [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 and 102-119 - current analysis-to-artifact pipeline.
 - [[.opencode/skills/error-context-hygiene/SKILL|error-context-hygiene skill]] lines 15-20 - focused operational skill example.
 

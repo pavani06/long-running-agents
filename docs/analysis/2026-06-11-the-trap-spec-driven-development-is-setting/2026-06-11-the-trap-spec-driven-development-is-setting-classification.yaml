@@ -1,0 +1,259 @@
+meta:
+  title: "Comparative Classification: The Trap SDD Patterns vs. long-running-agents Repo"
+  date: 2026-06-11
+  repo: "pavani06/long-running-agents"
+  patterns_source: "The Trap Spec-Driven Development Is Setting (2026-06-11)"
+  evidence_sources:
+    - "docs/canonical/"
+    - ".opencode/skills/"
+    - ".opencode/agents/"
+    - "curriculum/"
+    - "docs/system-of-record.md"
+    - "AGENTS.md"
+  precedence_order:
+    - "docs/decisions/"
+    - "docs/canonical/"
+    - "docs/evidence/"
+    - "docs/analysis/"
+    - "curriculum/"
+    - "READMEs"
+
+classification_legend:
+  already_exists: "Pattern is documented, implemented, or taught with equivalent depth"
+  partial_coverage: "Elements exist but missing key mechanics, reframe, or formalization"
+  missing: "Not present in any form"
+  better_implementation: "Repo has a superior or more mature version of the same idea"
+
+patterns:
+  - id: 1
+    name: "Value-Gated Agent Control Loop"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    summary: >
+      The repo governs HOW agents execute (context, dispatch, evaluation) but does not
+      formalize a value gate that governs WHETHER the agent should build at all.
+    evidence_exists:
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- structured pre-planning interview with decision/deferral ledger"
+      - "docs/canonical/human-afk-task-routing-gate.md:30-52 -- four-dimension task classifier before autonomous execution"
+      - "docs/canonical/owned-agent-control-loop.md:68-75 -- loop intervention points: break, summarize, LM-as-judge, human approval, force terminate"
+      - "docs/canonical/application-owned-agent-control-plane.md:29-64 -- unified control plane with gates for execution quality"
+      - "docs/canonical/closed-loop-agent-operating-system.md:28-37 -- state intake, priority synthesis, execution routing, feedback writeback"
+    what_is_missing:
+      - "Specific decision vocabulary: build, experiment, defer, stop -- attached to intent statements and scope constraints before execution"
+      - "No canonical doc formalizes a value-gating decision point in the agent control loop"
+    source_gap_quote: >
+      'O harness nao deve apenas governar COMO o agente constroi (contexto, dispatch, avaliacao)
+      -- deve tambem governar SE o agente deve construir.' -- 2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md:175
+    integration_note: >
+      The repo has pre-execution infrastructure (alignment interview, routing gate) but
+      lacks the value-decision vocabulary. Adding a value gate would close the loop named
+      by the source analysis itself.
+
+  - id: 2
+    name: "Manual Brake Question Gate"
+    classification: "Missing"
+    integration_value: "High"
+    summary: >
+      The three specific diagnostic questions (who needs this, cost proxy, refusal owner)
+      are not present in any repo document, skill, or curriculum.
+    searches_conducted:
+      - "docs/canonical/grill-me-alignment-interview.md -- NOT_FOUND for brake questions"
+      - "docs/canonical/human-afk-task-routing-gate.md -- NOT_FOUND for cost/refusal dimensions"
+      - "docs/canonical/split-brain-planning-review.md -- NOT_FOUND for cost-proxy or refusal-owner"
+      - ".opencode/skills/issue-start/SKILL.md -- NOT_FOUND for brake questions"
+      - ".opencode/agents/ -- NOT_FOUND for refusal-owner role"
+      - "curriculum/ -- NOT_FOUND for brake question teaching"
+    nearby_mechanisms:
+      - "docs/canonical/grill-me-alignment-interview.md:28-35 -- structurally similar one-question-at-a-time flow, different questions"
+      - ".opencode/skills/issue-start/SKILL.md:111-147 -- execution brief with objective, success criteria, scope"
+    integration_note: >
+      These three questions are lightweight, immediately usable, and address the gap
+      the source analysis names: no mechanism forces the value question before building.
+
+  - id: 3
+    name: "Intent-First Spec Loop"
+    classification: "Better Implementation"
+    integration_value: "Low -- repo already exceeds the pattern's maturity"
+    summary: >
+      The repo has a fully documented, multi-layer intent-first pipeline (Grill-Me →
+      Shared Design Concept → PRD/Issue → Plan → Execute → Verify) that exceeds
+      the source's brief IDSD reference.
+    evidence:
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- structured interview with decision/deferral ledger"
+      - "docs/canonical/shared-design-concept-handoff.md:30-48 -- shared concept as primary asset; PRD as downstream summarization"
+      - "docs/canonical/shared-design-concept-handoff.md:40 -- 'The shared concept is the primary asset; the PRD is a downstream summarization'"
+      - "docs/canonical/plan-execute-verify.md:31-56 -- three-phase separation starting from intent"
+      - "docs/canonical/human-afk-task-routing-gate.md:91 -- 'the handoff clarity determines whether tasks are ready for AFK execution'"
+      - "Flow: Grill-Me → Shared Design Concept → PRD/Issue → Plan → Execute → Verify"
+    why_better: >
+      The source mentions IDSD briefly (2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md:50-52). The repo not only implements
+      the intent-first sequence but formalizes each stage as a canonical pattern with
+      documented components, flow, tradeoffs, decision/deferral ledger, assumption
+      classification, and trust boundaries -- elements the source does not describe.
+
+  - id: 4
+    name: "Continue Decision Checkpoint"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    summary: >
+      The repo has loop controls and lifecycle decisions but does not formalize the
+      experiment-boundary checkpoint where Continue is the dangerous verb.
+    evidence_exists:
+      - "docs/canonical/owned-agent-control-loop.md:68-75 -- explicit loop intervention points: break, summarize, LM-as-judge, human approval gate, force terminate"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:29-62 -- BUILD/STABILIZE/SIMPLIFY/REMOVE with quarterly cadence and ROI thresholds"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:58 -- ROI below 1x for two consecutive quarters triggers removal"
+      - "docs/canonical/garbage-collection-day-meta-loop.md:31-55 -- weekly review cadence"
+      - "docs/canonical/closed-loop-agent-operating-system.md:32-35 -- feedback writeback and execution routing"
+    what_is_missing:
+      - "Specific experiment-boundary checkpoint with Continue/pivot/stop/archive decision vocabulary"
+      - "Stop criteria defined before experiments continue"
+      - "The source's key insight: 'the verb that creates the problem is not Build -- it's Continue' (2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md:76)"
+    integration_note: >
+      The repo has structural pieces (loop controls, lifecycle decisions, cadences) but
+      lacks the specific decision vocabulary and placement at the experiment boundary.
+
+  - id: 5
+    name: "Owner-of-No Role"
+    classification: "Missing"
+    integration_value: "Medium"
+    summary: >
+      No agent, skill, canonical doc, or curriculum material defines a named role whose
+      explicit job is to refuse low-value work.
+    searches_conducted:
+      - ".opencode/agents/hop-orchestrator-rezek.md -- NOT_FOUND: coordinates governance, not refusal"
+      - ".opencode/agents/koda-hop-init-basic.md -- NOT_FOUND: init agent, not refusal role"
+      - ".opencode/agents/hop-live-whatsapp-tester.md -- NOT_FOUND: tester agent, not refusal role"
+      - ".opencode/skills/orchestrator/SKILL.md -- NOT_FOUND: routes work, does not refuse"
+      - ".opencode/skills/issue-review/SKILL.md -- NOT_FOUND: validates quality, not value refusal"
+      - "docs/canonical/split-brain-planning-review.md -- NOT_FOUND: approves plans, not refusal"
+      - "docs/system-of-record.md:25-46 -- NOT_FOUND: no refusal-owner role in domain map"
+      - "curriculum/ -- NOT_FOUND for refusal-ownership as designed role"
+    nearby_mechanisms:
+      - ".opencode/skills/issue-review/SKILL.md:14-15 -- 'Nothing merges until the user explicitly confirms' -- quality gate, not value refusal"
+    integration_note: >
+      More organizational than technical. Could be valuable as curriculum content
+      (Level 3 or 4) about harness governance role design.
+
+  - id: 6
+    name: "Deferred Ledger for Agentic Work"
+    classification: "Missing"
+    integration_value: "High"
+    summary: >
+      The repo tracks token costs extensively but does not classify debt into skill,
+      dependence, and carry categories.
+    searches_conducted:
+      - "docs/canonical/explicit-token-budget-ledger.md -- NOT_FOUND: cost ledger, not debt classification"
+      - "docs/canonical/burn-rate-runtime-forecast.md -- NOT_FOUND: consumption projection, not debt risk"
+      - "docs/canonical/phase-gated-token-health-monitor.md -- NOT_FOUND: health monitoring, not debt categories"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md -- NOT_FOUND: component ROI, not organizational debt"
+      - "Searched for 'skill debt', 'dependence debt', 'carry debt' across docs/canonical/, curriculum/, .opencode/ -- NOT_FOUND"
+    nearby_mechanisms:
+      - "docs/canonical/explicit-token-budget-ledger.md:29-62 -- per-call ledger with fixed cost, reducible cost, output reservation"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:52-58 -- ROI calculation for component removal decisions"
+    integration_note: >
+      The three debt categories (skill, dependence, carry) are a novel risk framework.
+      The repo already has the instrumentation pieces (token ledger, burn rate, health
+      monitor) that a debt ledger would consume.
+
+  - id: 7
+    name: "Silent Degradation Sentinel Evals"
+    classification: "Better Implementation"
+    integration_value: "Low -- repo already exceeds the pattern's maturity"
+    summary: >
+      The repo has 15+ canonical docs covering eval infrastructure that form a more
+      comprehensive degradation-detection system than a single sentinel check.
+    evidence:
+      - "docs/canonical/repeatable-agent-spot-check-set.md:28-49 -- 5-15 seed cases with baseline, expected outcome, grading notes"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:28-50 -- detects when eval scores stop predicting production outcomes"
+      - "docs/canonical/production-grounded-eval-sampling.md:28-52 -- real production replays with baseline/candidate comparison"
+      - "docs/canonical/tested-degradation-ladder.md:29-65 -- classify-retry-fallback-escalate-log rungs"
+      - "docs/canonical/late-failure-regression-suite.md:50-53 -- regression, staged rollout, shadow diffs, 14-day observation"
+      - "docs/canonical/eval-tier-stratification.md:26-50 -- fast/medium/deep tiers with cost and owner metadata"
+      - "docs/canonical/pain-signal-eval-progression-gate.md:40-51 -- maps pain signals to minimum eval investments"
+      - "docs/canonical/production-failure-regression-flywheel.md:28-40 -- production failures become durable regression cases"
+      - "docs/canonical/pr-gated-eval-enforcement.md:28-53 -- PR-gated eval checks with baseline/candidate and merge policy"
+      - "docs/canonical/multi-model-evaluation-council.md:30-47 -- multi-model evaluation with retry, needs-human routing"
+    why_better: >
+      The source describes a single sentinel check (golden tasks + baselines). The repo
+      has a full detect-classify-respond-improve eval ecosystem with production grounding,
+      correlation tracking, degradation ladder, tiered infrastructure, PR gates, and
+      failure regression.
+
+  - id: 8
+    name: "Accidental Brake Replacement"
+    classification: "Missing"
+    integration_value: "Low -- not applicable to a curriculum/pattern library"
+    summary: >
+      The concept of auditing external bureaucracy and replacing it with intentional
+      harness gates is not present. The repo created its own governance from scratch.
+    searches_conducted:
+      - "docs/canonical/ -- NOT_FOUND: 55 patterns cover agent-internal harness, not external bureaucracy"
+      - ".github/ -- PR template, CODEOWNERS, issue templates, dependabot -- intentional governance, not replacement"
+      - ".opencode/skills/issue-review/SKILL.md -- validation gates designed intentionally"
+      - "AGENTS.md -- rules designed for agent behavior, not inherited from bureaucracy"
+      - "docs/system-of-record.md:104-115 -- governance is intentional from the start"
+      - "curriculum/ -- NOT_FOUND for bureaucracy replacement teaching"
+    integration_note: >
+      The repo is a curriculum and canonical pattern library, not an enterprise with
+      inherited governance. The concept could be valuable as curriculum content for
+      enterprise teams.
+
+  - id: 9
+    name: "Judgment Exercise Cadence"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    summary: >
+      The repo has established review cadences (weekly GC day, quarterly harness evolution)
+      but they focus on harness improvement, not on exercising human value judgment.
+    evidence_exists:
+      - "docs/canonical/garbage-collection-day-meta-loop.md:31-55 -- weekly cadence for review; non-negotiable"
+      - "docs/canonical/garbage-collection-day-meta-loop.md:54 -- 'Feature pressure, release deadlines, and incident response do not cancel GC Day'"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:59-61 -- quarterly cycle with observation weeks"
+      - "docs/canonical/pain-signal-eval-progression-gate.md:28-38 -- evidence-driven eval investment gate"
+      - "docs/canonical/split-brain-planning-review.md:28-41 -- dual-rubric review with deferred ambitions"
+      - "docs/canonical/grill-me-alignment-interview.md:28-46 -- individual value questions, not recurring cadence"
+    what_is_missing:
+      - "Specific purpose of exercising judgment muscle (build/don't-build practice)"
+      - "Recorded build/don't-build rationales and calibration examples"
+      - "Refusal practice as a designed behavior"
+    integration_note: >
+      The repo has the ritual infrastructure but not this specific purpose. Could be
+      added as a layer on existing cadences or as a new curriculum exercise.
+
+  - id: 10
+    name: "Carry Debt Sunset Gate"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    summary: >
+      The repo has a mature component lifecycle (BUILD/STABILIZE/SIMPLIFY/REMOVE) with
+      archiving, but scoped to harness components, not general agent-created artifacts.
+    evidence_exists:
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:50 -- REMOVE phase with archive under archive/components/<name>/"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:58 -- ROI below 1x for two quarters triggers removal"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:60 -- One In, One Out rule"
+      - "docs/canonical/garbage-collection-day-meta-loop.md:46-54 -- weekly guardrail construction, not retirement"
+      - "docs/canonical/invariant-compensation-split.md:29-60 -- pre-retirement classification of components"
+    what_is_missing:
+      - "Artifact-level inventory: what agents created, for whom, with what value hypothesis"
+      - "Expiration dates or review triggers per artifact"
+      - "Named maintenance owners for retained artifacts"
+      - "Keep/retire/archive/promote decision vocabulary applied to general agent output"
+    integration_note: >
+      The repo already has the lifecycle mechanics for harness components. Extending
+      to agent-created artifacts would address the carry debt gap the source identifies.
+
+summary:
+  better_implementation: [3, 7]
+  already_exists: []
+  partial_coverage: [1, 4, 9, 10]
+  missing: [2, 5, 6, 8]
+  key_insight: >
+    The long-running-agents repo is strong in HOW agents execute (eval infrastructure,
+    context management, loop control) but gap-heavy in WHETHER agents should execute
+    (value gates, brake questions, debt tracking, refusal roles, artifact retirement).
+    The two Better Implementations represent areas where the repo's existing investment
+    naturally exceeds the source material. The four Missing classifications all concern
+    value decision-making, organizational risk accounting, and governance that the
+    repo's engineering-focused architecture does not address. This aligns with the
+    source analysis's conclusion that 'a arquitetura da decisao e mais importante que
+    a arquitetura do codigo na era agentica' (2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md:171).

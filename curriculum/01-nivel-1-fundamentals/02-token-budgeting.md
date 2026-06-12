@@ -702,6 +702,54 @@ Lembra do `01-why-agents-lose-plot.md`? Ele descrevia **3 problemas**:
 
 ---
 
+## 📊 Além dos Tokens: As Três Categorias de Dívida Agentica
+
+Token budgeting resolve o problema visível: quanto custa cada turno do agente. Mas há um problema menos visível que o orçamento de tokens não captura: **a dívida que o trabalho agentic acumula mesmo quando os tokens são baratos.**
+
+O [[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]] classifica essa dívida em três categorias. Conhecê-las é essencial porque token budgeting sem deferred ledger é como controlar o caixa da empresa sem olhar para as dívidas de longo prazo.
+
+### As Três Categorias de Dívida
+
+**1. Skill Debt (Dívida de Habilidade)**
+
+O que é: a capacidade de tomar boas decisões de build/don't-build que se deteriora quando o time para de exercitá-la. Toda vez que alguém diz "custa pouco, vamos construir" sem aplicar as três perguntas-freio, o time acumula skill debt. A habilidade de discernir valor se atrofia.
+
+Como aparece no KODA: o time aprova 12 features em um mês porque "o agente consegue implementar cada uma em 20 minutos". Nenhuma delas é testada com "quem precisa disso e o que quebra se não existir?". Seis meses depois, 8 dessas features nunca foram usadas por clientes — mas consomem tokens de manutenção, superfície de bug e complexidade de onboarding.
+
+**2. Dependence Debt (Dívida de Dependência)**
+
+O que é: a exposição ao risco de que o modelo, a ferramenta ou o provedor de API degrade, mude de preço, ou mude de comportamento de forma que quebre fluxos que dependem dele. Quanto mais o pipeline confia em capacidades específicas de um modelo, maior a dependence debt.
+
+Como aparece no KODA: o pipeline usa structured output nativo do modelo Claude atual para gerar `evaluation.json`. Se o próximo modelo mudar o formato de structured output ou o provedor aumentar o preço em 3x, todas as recomendações param de funcionar. A dependence debt não é visível nos tokens gastos hoje — ela só aparece quando a dependência quebra.
+
+**3. Carry Debt (Dívida de Carregamento)**
+
+O que é: artefatos que foram baratos para o agente criar mas que se tornam carga permanente de manutenção, segurança, teste e compreensão. Cada prompt, cada skill, cada componente de harness, cada arquivo de estado que o agente produz vira um ativo que alguém precisa manter.
+
+Como aparece no KODA: o time cria 15 skills para o agente em 3 meses. Cada uma funciona. Mas ninguém documentou qual skill depende de qual, qual está em uso e qual foi substituída. O custo de manutenção dessas skills (atualizar prompts quando o modelo muda, testar regressões, onboard novos devs) cresce linearmente enquanto o valor entregue por skill adicional diminui.
+
+### A Relação com Token Budgeting
+
+Token budgeting mede o custo operacional visível (tokens por turno). O Deferred Ledger mede o custo estrutural invisível (dívida acumulada). Ambos são necessários:
+
+| Dimensão | Token Budgeting | Deferred Ledger |
+|---|---|---|
+| O que mede | Custo operacional por turno | Dívida estrutural acumulada |
+| Unidade | Tokens, latência, R$ | Categorias de dívida, risco de exposição |
+| Quando age | Durante a execução | Durante o planejamento e revisão |
+| Pergunta-chave | "Quanto custa este turno?" | "Quanto custa manter isto por 12 meses?" |
+| Ferramenta | Phase-Gated Token Health Monitor | [[docs/canonical/deferred-ledger-agentic-work\|Deferred Ledger]] + [[docs/canonical/carry-debt-sunset-gate\|Carry Debt Sunset Gate]] |
+
+### Checklist: Você Entende as Três Dívidas?
+
+- [ ] Consigo classificar uma decisão recente do time como skill debt, dependence debt ou carry debt.
+- [ ] Sei quantos artefatos o agente criou nos últimos 90 dias e quem é o owner de manutenção de cada um.
+- [ ] Tenho uma data de revisão para cada artefato criado pelo agente (sunset gate).
+- [ ] Consigo estimar o custo de manter o pipeline atual por 12 meses se o preço do modelo dobrar.
+- [ ] Sei qual componente do harness depende de qual capacidade específica do modelo atual.
+
+---
+
 ## 📝 Notas Finais
 
 > *"Um agente sem token budgeting é como um negócio sem fluxo de caixa - que parece estar bem até desabar subitamente."*

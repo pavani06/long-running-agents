@@ -12,7 +12,7 @@ sources: []
 **Type:** Canonical Pattern
 **Status:** Active
 **Source:** Dex Horthy — "12-Factor Agents" (AI Engineer, 2025), adapted for long-running-agents
-**Classification:** Partial Coverage — repo has richer state model, but different mechanism (per `docs/analysis/2026-06-09-12-factor-agents/classification.md`)
+**Classification:** Partial Coverage — repo has richer state model, but different mechanism (per `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md`)
 **Precedence:** Level 2 (`docs/system-of-record.md:8`)
 
 ---
@@ -139,8 +139,8 @@ The 12FA serialization pattern would add a **complementary mechanism** for scena
 
 ## References
 
-- `docs/analysis/2026-06-09-12-factor-agents/classification.md` — classification as Partial Coverage
-- `docs/analysis/2026-06-09-12-factor-agents/patterns.md` — pattern 4 definition
+- `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md` — classification as Partial Coverage
+- `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.md` — pattern 4 definition
 - `docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md` — Padrao 3, state persistence layers
 - `docs/analysis/mhc-backend/2026-05-28-output-validation-state-persistence.md` — confirmation of no LangGraph checkpointer
 - `curriculum/05-core-concepts/05-state-persistence.md` — Core Concept 5

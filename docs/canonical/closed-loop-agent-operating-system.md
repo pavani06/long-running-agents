@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "context-engineering", "governanca"]
 aliases: ["closed-loop agent OS", "agent operating system", "operational agent loop"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]]"]
 ---
 # Closed-Loop Agent Operating System
 
@@ -83,13 +83,13 @@ Missing pieces:
 - **Uses:** [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]] to make omitted or historical state discoverable without loading all memory.
 - **Feeds:** [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] when failures discovered by operations become replayable tests.
 - **Depends on:** [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]] and [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]] so the operating system can route work to durable capabilities without global prompt bloat.
-- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] pattern 1.
+- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] pattern 1.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]] lines 14-33 - extracted problem, inputs, outputs, benefits, and limitations.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] lines 13-28 - Partial Coverage classification and High integration value.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 201-214 - open-loop company drift and capability-as-operating-system synthesis.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]] lines 14-33 - extracted problem, inputs, outputs, benefits, and limitations.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] lines 13-28 - Partial Coverage classification and High integration value.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 201-214 - open-loop company drift and capability-as-operating-system synthesis.
 - [[docs/system-of-record|System of Record]] lines 14-46 - precedence and agent domain map.
 - [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] lines 12-62 - current dashboard and task-selection mechanics.
 - [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 - current knowledge-to-improvement loop.

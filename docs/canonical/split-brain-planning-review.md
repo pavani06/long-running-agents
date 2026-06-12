@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "evals", "governanca"]
 aliases: ["dual-rubric planning review", "engineering and CEO review", "split-brain review"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
 ---
 # Split-Brain Planning Review
 
@@ -54,7 +54,7 @@ The repo already separates planning, execution, generation, and evaluation:
 
 ### What is missing
 
-The Partial Coverage gap is the explicit split between engineering-quality review and product or CEO-destination review. The classification found no canonical doc, curriculum material, or skill that names Split-Brain Planning Review or defines Stanford-specific CEO-review and 10x-ambition mechanics outside the current analysis in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:93-107.
+The Partial Coverage gap is the explicit split between engineering-quality review and product or CEO-destination review. The classification found no canonical doc, curriculum material, or skill that names Split-Brain Planning Review or defines Stanford-specific CEO-review and 10x-ambition mechanics outside the current analysis in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:93-107.
 
 Missing implementation details:
 
@@ -78,12 +78,12 @@ Missing implementation details:
 - **Complements:** [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]], which reviews eval-sensitive changes at PR time while this pattern reviews the plan before execution.
 - **Uses:** [[docs/canonical/eval-tier-stratification|Eval Tier Stratification]] when the engineering reviewer decides which evidence tier the plan must produce.
 - **Depends on:** [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]] for the base separation between planner and executor.
-- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]:119-138 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:93-107.
+- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]:119-138 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:93-107.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|patterns]]:119-138 - extracted pattern definition.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:93-107 - Partial Coverage classification and missing CEO-review mechanics.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|patterns]]:119-138 - extracted pattern definition.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:93-107 - Partial Coverage classification and missing CEO-review mechanics.
 - [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:47-54 - existing Planner and Executor separation.
 - [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:60-72 - Planner, Generator, and Evaluator responsibility split.
 - [[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator Evaluator Pattern]]:151-153 - creator/judge separation.

@@ -1,0 +1,76 @@
+meta:
+  title: "Reusable Patterns: Agent Focus Problems"
+  source: "docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis.md"
+  date: "2026-06-10"
+  type: "patterns"
+
+patterns:
+  - name: "External State Persistence"
+    problem_solved: "Context Amnesia — agents forget critical information when conversations exceed context window"
+    inputs: "Client/session identifier, critical conversation data, interaction history"
+    outputs: "Persisted state in external storage loaded every turn"
+    benefits: "Survives any conversation length; cross-session resumption; decouples agent memory from model memory"
+    limitations: "Extraction logic required; stale data invalidation; I/O latency per turn; schema evolution"
+    components:
+      - "Critical data extraction from conversation"
+      - "External storage (JSON, DB, cache)"
+      - "Per-turn state loading"
+      - "Schema versioning for evolution"
+    flow:
+      - "Extract critical data from conversation turn"
+      - "Write to external storage keyed by session ID"
+      - "On next turn, load state from storage"
+      - "Merge loaded state with current context window"
+
+  - name: "Plan-Execute-Verify"
+    problem_solved: "Planning-Execution Collapse — single-pass processing degrades under task complexity"
+    inputs: "Complex task, business constraints, system state"
+    outputs: "Plan (atomic steps with criteria), Execution (per-step with checkpoints), Verification (pass/fail per step)"
+    benefits: "Clean per-phase context; localizable failures; granular retry; quality preservation under complexity"
+    limitations: "Added latency; overhead for simple tasks; requires orchestrator; plan staleness risk"
+    components:
+      - "Planner: decomposes task into atomic steps"
+      - "Executor: runs each step with checkpoint after completion"
+      - "Verifier: validates each step against success criteria"
+    flow:
+      - "Receive complex task"
+      - "Phase 1: Generate explicit plan with per-step criteria"
+      - "Phase 2: Execute each step, checkpoint after each"
+      - "Phase 3: Verify all steps produced expected results"
+      - "If any step fails: retry only that step"
+
+  - name: "Generator-Evaluator"
+    problem_solved: "Self-Evaluation Collapse + indirectly Context Amnesia and Planning Collapse"
+    inputs: "Generator: user request, context, persisted data; Evaluator: generator output, constraints, rubrics"
+    outputs: "Generator: candidate response; Evaluator: approve/reject + feedback; loop on rejection"
+    benefits: "Impartial evaluation; 10-12% more error detection; creative + safe separation; model diversity possible"
+    limitations: "2x LLM calls; additional latency; evaluator errors possible; requires explicit rubrics"
+    components:
+      - "Generator agent: creative, focused on response quality"
+      - "Evaluator agent: impartial, focused on constraint verification"
+      - "Feedback loop: rejected outputs return to Generator with specific feedback"
+      - "Rubric store: explicit quality criteria and business rules"
+    flow:
+      - "Generator produces candidate response"
+      - "Evaluator checks response against constraints and rubrics"
+      - "If approved: deliver to user"
+      - "If rejected: return to Generator with specific feedback"
+      - "Generator produces revised response"
+      - "Repeat until approved or max retries reached"
+
+  - name: "Constraint-Anchored Evaluation"
+    problem_solved: "Vague evaluations miss errors; evaluators need concrete verifiable criteria"
+    inputs: "Constraint list from state persistence, Generator output, business rules"
+    outputs: "Verification matrix (binary per constraint), aggregate verdict, violation identification"
+    benefits: "Objective verification; actionable feedback; reduced false positives; auditable decisions"
+    limitations: "Only catches explicit constraints; implicit constraints missed; maintenance burden; may be overly rigid"
+    components:
+      - "Constraint store: explicit rules from state persistence and business logic"
+      - "Verifier: checks each constraint against Generator output"
+      - "Verdict aggregator: pass only if ALL constraints pass"
+      - "Violation reporter: identifies which constraint failed and why"
+    flow:
+      - "Load constraints from state persistence"
+      - "For each constraint, verify against Generator output"
+      - "If all pass: approve"
+      - "If any fail: reject with specific violation details"

@@ -101,7 +101,7 @@ architecture:
         - "docs/canonical/eval-to-production-correlation-tracking.md:26-50"
     - from: "Analyze-and-improve"
       to: "This task family"
-      relationship: "Phase 0 builds mental-model.md and mental-model.yaml before external source analysis."
+      relationship: "Phase 0 builds YYYY-MM-DD-slug-mental-model.md and YYYY-MM-DD-slug-mental-model.yaml before external source analysis."
       sources:
         - ".opencode/skills/analyze-and-improve/SKILL.md:123-190"
 

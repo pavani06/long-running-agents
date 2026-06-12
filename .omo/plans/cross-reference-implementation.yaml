@@ -30,7 +30,7 @@ plan:
       Adicionar `relates-to` no frontmatter com [[wikilinks]] para os canonicos
       correspondentes. Isso cria triangulacao: analise -> canonico -> outras analises.
     files:
-      - path: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
+      - path: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md"
         relates_to:
           - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
           - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
@@ -38,35 +38,35 @@ plan:
           - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
         reason: "Esta analise extraiu os 4 padroes 12FA que viraram canonicos"
 
-      - path: "docs/analysis/2026-06-09-12-factor-agents/patterns.md"
+      - path: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis|12FA Analysis]]"
           - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
           - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
           - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
           - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
         reason: "Catalogo de padroes extraidos"
 
-      - path: "docs/analysis/2026-06-09-12-factor-agents/classification.md"
+      - path: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-12-factor-agents/analysis|12FA Analysis]]"
-          - "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis|12FA Analysis]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns|12FA Patterns]]"
           - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
           - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
           - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
           - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
         reason: "Classifica cobertura dos canonicos contra padroes 12FA"
 
-      - path: "docs/analysis/2026-06-09-12-factor-agents/integration-roadmap.md"
+      - path: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-12-factor-agents/classification|12FA Classification]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification|12FA Classification]]"
           - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
           - "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"
           - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
           - "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"
         reason: "Define roadmap de integracao dos padroes ao curriculo"
 
-      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md"
         relates_to:
           - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
           - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
@@ -75,31 +75,31 @@ plan:
           - "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"
         reason: "Analise de context management que originou 5 canonicos"
 
-      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md"
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]"
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Mgmt Analysis]]"
           - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
           - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
         reason: "Catalogo de padroes de context management"
 
-      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md"
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Mgmt Analysis]]"
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Mgmt Analysis]]"
           - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
           - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
           - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
         reason: "Classifica cobertura de context management"
 
-      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md"
+      - path: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-integration-roadmap.md"
         relates_to:
-          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification|Context Mgmt Classification]]"
+          - "[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification|Context Mgmt Classification]]"
           - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
           - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"
           - "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]"
           - "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"
         reason: "Roadmap de integracao context management"
 
-      - path: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+      - path: "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md"
         relates_to:
           - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
           - "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]"
@@ -120,16 +120,16 @@ plan:
       Analises que compartilham dominios devem se referenciar mutuamente.
       Isso cria clusters tematicos no Graph View do Obsidian.
     cross_links:
-      - from: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
-        to: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
+      - from: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md"
+        to: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md"
         reason: "Ambas tratam de context engineering e error handling"
 
-      - from: "docs/analysis/2026-06-09-12-factor-agents/analysis.md"
-        to: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+      - from: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md"
+        to: "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md"
         reason: "12FA menciona evals como factor; eval maturity expande o tema"
 
-      - from: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md"
-        to: "docs/analysis/2026-06-10-eval-maturity-phases/analysis.md"
+      - from: "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md"
+        to: "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md"
         reason: "Context management cita long-session evals; eval maturity aprofunda"
 
   # -------------------------------------------------------------------
@@ -310,7 +310,7 @@ plan:
           - "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"
           - "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"
           - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
-          - "[[docs/analysis/2026-06-09-12-factor-agents/patterns|12FA Patterns]]"
+          - "[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns|12FA Patterns]]"
 
       - path: "curriculum/07-implementation-guides/01-setup-guide.md"
         relates_to:

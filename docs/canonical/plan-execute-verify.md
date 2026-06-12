@@ -5,7 +5,7 @@ aliases: ["planejar executar verificar", "separation of concerns", "separação 
 tags: ["agentes-orquestracao", "12-factor-agents"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
-sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]"]
+sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]
 ---
 
 # Plan-Execute-Verify
@@ -20,7 +20,7 @@ sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Ex
 
 ## Problem
 
-Planning-Execution Collapse happens when an agent tries to plan, execute, and verify inside the same pass. The source lesson describes this as doing everything in one context window and one call, like driving while reading a map, checking GPS, and deciding at the same time ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:115-122). The analysis extracts the same structural failure: quality collapses under task complexity because there is no explicit plan, no checkpoints, and planning information mixes with execution information ([[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:16-17).
+Planning-Execution Collapse happens when an agent tries to plan, execute, and verify inside the same pass. The source lesson describes this as doing everything in one context window and one call, like driving while reading a map, checking GPS, and deciding at the same time ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:115-122). The analysis extracts the same structural failure: quality collapses under task complexity because there is no explicit plan, no checkpoints, and planning information mixes with execution information ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:16-17).
 
 In the KODA order-processing scenario, KODA receives a 5-product order and tries to verify catalog existence, confirm stock in Sao Paulo, calculate shipping, apply a 20% coupon, process payment, and confirm same-day delivery in one run ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:123-140). While doing that, it loses track of the client's address, whether the client asked for a guarantee, and whether the promotion applies to the product ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:137-139). The result is confusion, errors, and retries ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:142-142).
 
@@ -28,7 +28,7 @@ The structural issue is not that KODA needs a better prompt. The lesson names fi
 
 ## Solution
 
-Decompose complex work into three distinct phases: Plan, Execute, Verify. The source curriculum states the solution as separation of concerns: planning asks what needs to be done, execution does each thing carefully, and verification checks whether everything worked ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:398-405). The extracted pattern makes the phase outputs explicit: Plan produces atomic steps with per-step success criteria, Execute isolates each step with checkpoint verification, and Verify validates that all steps produced the expected results ([[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Patterns]]:17-24).
+Decompose complex work into three distinct phases: Plan, Execute, Verify. The source curriculum states the solution as separation of concerns: planning asks what needs to be done, execution does each thing carefully, and verification checks whether everything worked ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:398-405). The extracted pattern makes the phase outputs explicit: Plan produces atomic steps with per-step success criteria, Execute isolates each step with checkpoint verification, and Verify validates that all steps produced the expected results ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Patterns]]:17-24).
 
 ```
 Complex Task
@@ -71,7 +71,7 @@ Approved Outcome
 | Execute | Step results and checkpoints | Current step, required inputs, relevant tools, prior checkpoint state | Step result matches its success criterion before the next step starts |
 | Verify | Final verdict, failures, and retry target | Plan, all checkpoints, business constraints, expected outputs | All planned success criteria pass or the failed step is returned for re-execution |
 
-The purpose is context separation. In a single-pass flow, planning tokens, tool results, partial decisions, retries, and verification notes all compete inside the same reasoning pass. In Plan-Execute-Verify, each phase receives only the context it needs and emits a bounded artifact for the next phase. The pattern extraction names the benefits as clean per-phase context, localizable failures, granular retry, and quality that remains flat as task complexity increases ([[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Patterns]]:21-24). The curriculum makes the same quality claim operationally: agents that separate planning from execution maintain quality on complex tasks, can reflect and adjust plans, and are easier to debug, while agents that mix everything fall quickly with complexity and produce cascading errors ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:175-183).
+The purpose is context separation. In a single-pass flow, planning tokens, tool results, partial decisions, retries, and verification notes all compete inside the same reasoning pass. In Plan-Execute-Verify, each phase receives only the context it needs and emits a bounded artifact for the next phase. The pattern extraction names the benefits as clean per-phase context, localizable failures, granular retry, and quality that remains flat as task complexity increases ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Patterns]]:21-24). The curriculum makes the same quality claim operationally: agents that separate planning from execution maintain quality on complex tasks, can reflect and adjust plans, and are easier to debug, while agents that mix everything fall quickly with complexity and produce cascading errors ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:175-183).
 
 ## Implementation in this repo
 
@@ -87,10 +87,10 @@ The purpose is context separation. In a single-pass flow, planning tokens, tool 
 
 ### What is missing
 
-1. No canonical doc explicitly names the three phases Plan -> Execute -> Verify with documented intervention points; the classification lists this as the first missing item for the pattern ([[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Classification]]:49-50).
-2. No explicit contract defines what constitutes a valid plan, a valid execution phase, and a valid verification phase; the classification names this as a gap even though the source pattern defines the desired phase outputs ([[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Classification]]:51-53; [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Patterns]]:21-24).
-3. No formalized checkpoint mechanism is documented as the Plan-Execute-Verify boundary, even though the extracted pattern requires checkpoint verification during execution and the related canonical docs only cover checkpoint pieces separately ([[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Patterns]]:21-24; [[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Classification]]:40-48).
-4. No canonical doc frames this as the direct solution to Planning-Execution Collapse; the classification says the curriculum teaches the pattern explicitly, but no canonical doc formalizes it ([[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Classification]]:54-55).
+1. No canonical doc explicitly names the three phases Plan -> Execute -> Verify with documented intervention points; the classification lists this as the first missing item for the pattern ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Classification]]:49-50).
+2. No explicit contract defines what constitutes a valid plan, a valid execution phase, and a valid verification phase; the classification names this as a gap even though the source pattern defines the desired phase outputs ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Classification]]:51-53; [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Patterns]]:21-24).
+3. No formalized checkpoint mechanism is documented as the Plan-Execute-Verify boundary, even though the extracted pattern requires checkpoint verification during execution and the related canonical docs only cover checkpoint pieces separately ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Patterns]]:21-24; [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Classification]]:40-48).
+4. No canonical doc frames this as the direct solution to Planning-Execution Collapse; the classification says the curriculum teaches the pattern explicitly, but no canonical doc formalizes it ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Classification]]:54-55).
 
 ## Tradeoffs
 
@@ -112,9 +112,9 @@ The purpose is context separation. In a single-pass flow, planning tokens, tool 
 
 - [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:115-152 — problem description and KODA single-pass order-processing scenario.
 - [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:398-405 — three-phase separation of concerns solution.
-- [[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:10-18 — three fundamental long-running-agent problems and Planning-Execution Collapse summary.
-- [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Patterns]]:17-24 — Plan-Execute-Verify pattern definition.
-- [[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Classification]]:33-56 — Partial Coverage classification and missing unified canonical doc.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:10-18 — three fundamental long-running-agent problems and Planning-Execution Collapse summary.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Patterns]]:17-24 — Plan-Execute-Verify pattern definition.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Classification]]:33-56 — Partial Coverage classification and missing unified canonical doc.
 - [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:31-75 — loop structure and intervention points.
 - [[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]:39-67 — auditable deterministic execution.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:26-41 — independent planning review before execution.

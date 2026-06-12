@@ -271,7 +271,7 @@ Aliases em PT-BR para termos de navegação: `FAQ` → `"perguntas frequentes"`,
   Esperado: 0
 
 - [ ] **Passo 8.3: Verificação qualitativa por amostragem**
-  Comando: `grep "^aliases:" docs/analysis/2026-06-09-12-factor-agents/analysis.md docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md curriculum/GLOSSARY.md`
+  Comando: `grep "^aliases:" docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md curriculum/03-nivel-3-advanced-architecture/02-state-persistence.md curriculum/GLOSSARY.md`
   Esperado: cada linha mostra 2-5 aliases significativos (não genéricos como "doc" ou "file")
 
 - [ ] **Passo 8.4: Verificação dos 10 arquivos que não tinham campo**

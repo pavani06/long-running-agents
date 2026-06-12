@@ -4,8 +4,8 @@ type: canonical
 tags: ["context-engineering", "agentes-orquestracao", "evals"]
 aliases: ["resolver progressive disclosure", "skill context disclosure", "load-on-demand skills", "context progressive disclosure"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]]"]
+relates-to: ["[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]]"]
 ---
 # Resolver-Based Context Progressive Disclosure
 
@@ -79,15 +79,15 @@ Missing pieces:
 - **Complements:** [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]], which protects universal harness instructions while progressive disclosure keeps non-universal guidance out of base context.
 - **Complements:** [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]] and [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]], which recover omitted session state rather than routing capability instructions.
 - **Should be evaluated by:** [[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]] when resolver behavior must survive long sessions and compaction.
-- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] pattern 5.
+- **Grounded by:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] pattern 5.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]] lines 98-118 - extracted resolver progressive disclosure pattern.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]] lines 76-91 - Partial Coverage classification and High integration value.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 88-92 - resolver mechanics for loading task-specific skills.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 148-150 - Claude.md growth as context architecture smell.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis|Stanford CS153 Analysis]] lines 197-200 - token overflow, duplicate skill, and trigger-eval failure modes.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]] lines 98-118 - extracted resolver progressive disclosure pattern.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] lines 76-91 - Partial Coverage classification and High integration value.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 88-92 - resolver mechanics for loading task-specific skills.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 148-150 - Claude.md growth as context architecture smell.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 197-200 - token overflow, duplicate skill, and trigger-eval failure modes.
 - [[.opencode/skills/issue-start/SKILL|issue-start skill]] lines 16-23 - current load-on-demand issue setup skill.
 - [[.opencode/skills/issue-review/SKILL|issue-review skill]] lines 16-23 and 38-40 - current review skill trigger and compaction gate.
 - [[.opencode/skills/issue-finish/SKILL|issue-finish skill]] lines 18-24 - current finish skill trigger.

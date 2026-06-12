@@ -4,8 +4,8 @@ type: canonical
 tags: ["context-engineering", "agentes-orquestracao"]
 aliases: ["belief-status memory graph", "epistemic graph memory", "belief-aware retrieval"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Stanford CS153 Classification]]", "[[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]]"]
-sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
+relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]]"]
+sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
 ---
 # Epistemic Memory Graph
 
@@ -64,7 +64,7 @@ The repo already has structural memory and graph foundations:
 
 ### What is missing
 
-The Partial Coverage gap is belief-status-aware memory. The classification found no Epistemic Memory Graph implementation and no matches for epistemic labels such as hunch, person-specific belief, world knowledge, reciprocal rank fusion, or dynamic ontology mechanics outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:140-155.
+The Partial Coverage gap is belief-status-aware memory. The classification found no Epistemic Memory Graph implementation and no matches for epistemic labels such as hunch, person-specific belief, world knowledge, reciprocal rank fusion, or dynamic ontology mechanics outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:140-155.
 
 Missing implementation details:
 
@@ -88,12 +88,12 @@ Missing implementation details:
 - **Supports:** [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]] when omitted context must be recovered with belief status intact.
 - **Feeds:** [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] by preserving whether a failure came from stale memory, contested belief, or missing source evidence.
 - **Builds on:** [[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]] and [[curriculum/08-tools-templates/knowledge-graph-template|Knowledge Graph Template]] for graph thinking.
-- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|Stanford CS153 Patterns]]:182-201 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:140-155.
+- **Comes from:** [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]:182-201 and its Partial Coverage classification in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:140-155.
 
 ## References
 
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns|patterns]]:182-201 - extracted pattern definition.
-- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification|classification]]:140-155 - Partial Coverage classification and epistemic-memory gap.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|patterns]]:182-201 - extracted pattern definition.
+- [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:140-155 - Partial Coverage classification and epistemic-memory gap.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:22-24 - existing need for compact retrieval choice.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-43 - existing addressable catalog schema.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:57-66 - current missing implementation details.

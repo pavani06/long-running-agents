@@ -1499,6 +1499,46 @@ Agora você sabe: **o destino de toda boa arquitetura de agentes não é crescer
 
 ---
 
+### Anti-Padrão 6: "Accidental Brake Replacement"
+
+**O que é:** Remover um gate de segurança, validação ou controle do harness porque o modelo novo "parece melhor" — sem verificar se aquele gate estava substituindo intencionalmente uma proteção que o processo anterior (burocracia, revisão manual, checklist humana) oferecia.
+
+**Por que é perigoso:** Organizações que adotam agentes frequentemente herdam gates de segurança de processos pré-agentes: revisão de PR, aprovação de compliance, teste de segurança, code review. Esses gates são burocracia acidental — mas dentro deles podem existir proteções reais que ninguém documentou. Quando o harness substitui esses processos por automação, o risco não é remover a burocracia — é remover a proteção que vivia disfarçada de burocracia.
+
+O [[docs/canonical/accidental-brake-replacement|Accidental Brake Replacement]] descreve o anti-padrão assim: "O freio de valor que o SDD removeu não era apenas burocracia — era o ponto onde alguém perguntava 'isso realmente precisa existir?'. Removê-lo sem substituí-lo por um gate intencional no harness é trocar um freio acidental por freio nenhum."
+
+```
+❌ ERRADO:
+   Antes: Toda feature passava por 3 gates: code review → security scan → CAB approval.
+   Depois: Agente gera PR, agente revisa PR, agente mergeia PR.
+   Resultado: Os 3 gates sumiram. O harness não substituiu nenhum deles — apenas os removeu.
+   Seis meses depois: incidente de segurança porque o security scan não existe mais.
+
+✅ CERTO:
+   Antes: Toda feature passava por 3 gates: code review → security scan → CAB approval.
+   Auditoria identificou que:
+   - code review = validação de qualidade (substituído pelo Evaluator no pipeline)
+   - security scan = validação de vulnerabilidades (substituído por lint rule + security persona)
+   - CAB approval = decisão de valor/risco (substituído pelo Manual Brake Question Gate)
+   Depois: Agente gera, Evaluator valida, security persona audita, Brake aprova.
+   Cada gate acidental foi substituído por um gate intencional do harness.
+```
+
+**Como evitar:**
+1. Antes de automatizar qualquer processo existente, mapeie os gates atuais e classifique o que cada um realmente protege.
+2. Para cada gate removido, documente qual componente do harness assume essa proteção.
+3. Se um gate acidental não tem substituição no harness, ele não pode ser removido.
+4. Mantenha um "brake registry" — inventário de todos os gates de segurança e valor com mapeamento entre gate pré-agente e gate no harness.
+
+**Checklist de auditoria de Accidental Brake Replacement:**
+- [ ] Todos os gates de segurança e valor do processo pré-agente foram mapeados.
+- [ ] Para cada gate removido, há um componente do harness que assume a mesma proteção.
+- [ ] O mapeamento gate acidental → gate intencional está documentado e revisável.
+- [ ] Nenhum gate foi removido sem que um shadow test ou período de observação confirmasse que a proteção equivalente funciona.
+- [ ] O time consegue responder: "se este gate falhar, qual incidente pode ocorrer e como detectamos?"
+
+---
+
 ## ❓ Perguntas Frequentes
 
 ### P: "Se o harness funciona, por que eu deveria remover partes dele?"
@@ -1674,6 +1714,8 @@ feature_flags:
 ---
 
 **Pronto para o Nível 4? O KODA te espera.**
+
+Mas antes de seguir, lembre-se: o que você removeu ou simplificou até aqui foram **componentes do harness** — peças de engenharia que compensavam limitações do modelo. Agentes também criam **artefatos** (skills, prompts, dashboards, configurações) que precisam de um ciclo de vida próprio. O [[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]] estende os princípios de Harness Evolution para esses artefatos com quatro decisões: Keep, Retire, Archive, Promote — todas ancoradas em uma data de sunset que força a revisão antes que o artefato vire carry debt permanente.
 
 ---
 

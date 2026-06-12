@@ -1,0 +1,209 @@
+title: Token Budgeting Pattern Classification
+type: analysis
+date: 2026-06-10
+tags:
+  - agentes-orquestracao
+  - curriculo-conteudo
+  - context-engineering
+aliases:
+  - token budgeting classification
+  - classificacao token budgeting
+  - token budget coverage
+relates_to:
+  - docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns.md
+  - docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis.md
+  - docs/canonical/head-tail-context-truncation.md
+  - docs/canonical/stable-harness-prompt.md
+  - docs/canonical/external-state-persistence.md
+sources:
+  system_of_record: docs/system-of-record.md
+  patterns: docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns.md
+  canonical_docs_read: all Markdown files present under docs/canonical/
+notes:
+  - "Classifications use the actual pattern titles found in patterns.md; several abbreviated names in the task differed from the file."
+  - "Missing means NOT_FOUND after reading system-of-record.md and all Markdown files present under docs/canonical/."
+patterns:
+  - id: 1
+    name: Explicit Token Budget Ledger
+    classification: Partial Coverage
+    integration_value: High
+    justification: Canonical docs cover deliberate context construction, block separation, stable prompt budget boundaries, and context-reduction policies, but no token budget ledger with response reserve, safety reserve, remaining budget, and budget percentage.
+    evidence:
+      - ref: docs/canonical/owned-agent-control-loop.md:60
+        claim: Context Builder assembles history, memory, tool results, and business state.
+      - ref: docs/canonical/owned-agent-control-loop.md:61
+        claim: Every token should be constructed deliberately.
+      - ref: docs/canonical/stable-harness-prompt.md:28
+        claim: Stable harness prompt is separated from reducible payload.
+      - ref: docs/canonical/stable-harness-prompt.md:30
+        claim: Context builder uses distinct context blocks and reduction policies.
+      - ref: docs/canonical/head-tail-context-truncation.md:28
+        claim: Active context is bounded by stable prompt, head, tail, latest result, and recoverable middle.
+      - not_found: Canonical ledger schema with response reserve, safety reserve, remaining-budget percentage, and per-call budget breakdown.
+  - id: 2
+    name: Burn-Rate Runtime Forecast
+    classification: Missing
+    integration_value: High
+    justification: No canonical doc covers timestamped token usage, token consumption velocity, acceleration, or estimated remaining messages/minutes.
+    evidence:
+      - not_found: NOT_FOUND after reading system-of-record.md and all Markdown files present under docs/canonical/.
+      - ref: docs/canonical/head-tail-context-truncation.md:28
+        claim: Closest context-budget evidence is structural context bounding, not runtime forecasting.
+      - ref: docs/canonical/stable-harness-prompt.md:30
+        claim: Closest prompt evidence defines context blocks, not burn-rate runway.
+      - ref: docs/canonical/measured-harness-evolution-lifecycle.md:52
+        claim: Closest metric evidence uses ROI and token cost for component lifecycle, not live token burn forecast.
+      - ref: docs/canonical/eval-tier-stratification.md:38
+        claim: Eval metadata includes runtime and cost budget, not session token runway.
+  - id: 3
+    name: Phase-Gated Token Health Monitor
+    classification: Partial Coverage
+    integration_value: High
+    justification: Loop controls and degradation gates exist, but no token-health monitor maps budget and burn-rate signals to health phases and token-specific interventions.
+    evidence:
+      - ref: docs/canonical/owned-agent-control-loop.md:68
+        claim: Loop controls include break, summarize, judge, human approval, and force terminate.
+      - ref: docs/canonical/tested-degradation-ladder.md:29
+        claim: Degradation ladder orders failure classification, retry, fallback, escalation, and logging.
+      - ref: docs/canonical/pain-signal-eval-progression-gate.md:40
+        claim: Pain signals are mapped to next capabilities, but not token-health phases.
+      - not_found: Token-specific green/yellow/orange/red monitor driven by remaining budget and burn-rate acceleration.
+  - id: 4
+    name: Durable Fact Selective History
+    classification: Partial Coverage
+    integration_value: High
+    justification: Durable external state and context injection exist, but no unified selective-history contract combines recent turns, structured durable facts, update rules, and transient-turn omission.
+    evidence:
+      - ref: docs/canonical/external-state-persistence.md:31
+        claim: Critical data is extracted, written to external storage, loaded on next turn, and merged with current context.
+      - ref: docs/canonical/external-state-persistence.md:59
+        claim: Durable facts are distinguished from non-durable content.
+      - ref: docs/canonical/stable-harness-prompt.md:30
+        claim: Durable state is a separately injected context block.
+      - ref: docs/canonical/addressable-memory-catalog.md:28
+        claim: Omitted content can be represented with stable handles and previews.
+      - not_found: Single selective-history contract for recent texture plus structured durable facts.
+  - id: 5
+    name: Windowed Recent History
+    classification: Better Implementation
+    integration_value: Medium
+    justification: Canonical head-tail truncation is stronger than blind recent-window retention because it preserves original anchors, current state, and recoverable omitted middle.
+    evidence:
+      - ref: docs/canonical/head-tail-context-truncation.md:20
+        claim: Naive one-sided truncation loses either latest state or original constraints.
+      - ref: docs/canonical/head-tail-context-truncation.md:28
+        claim: Active context preserves stable prompt, head, tail, latest result, and recoverable middle.
+      - ref: docs/canonical/head-tail-context-truncation.md:63
+        claim: Tradeoffs include boundary selection and storage in exchange for bounded, auditable context.
+  - id: 6
+    name: Summary Buffer Continuity
+    classification: Partial Coverage
+    integration_value: High
+    justification: Summarization exists as a context intervention, but there is no explicit rolling summary-buffer lifecycle.
+    evidence:
+      - ref: docs/canonical/owned-agent-control-loop.md:60
+        claim: Context Builder can summarize and compress old context.
+      - ref: docs/canonical/stable-harness-prompt.md:28
+        claim: Reducible context may be summarized, truncated, externalized, or retrieved.
+      - ref: docs/canonical/head-tail-context-truncation.md:24
+        claim: Opaque summarization can remove exact details without auditable recovery.
+      - ref: docs/canonical/head-tail-context-truncation.md:59
+        claim: Omitted middle should be exact recoverable content, not only summarized.
+      - not_found: Canonical rolling summary buffer with freshness metadata, update rules, target budget, and quality checks.
+  - id: 7
+    name: Targeted Semantic Compression
+    classification: Partial Coverage
+    integration_value: Medium
+    justification: Compression and error summarization exist, but no general semantic compression contract exists for arbitrary verbose payloads under fidelity criteria.
+    evidence:
+      - ref: docs/canonical/owned-agent-control-loop.md:42
+        claim: Context Builder has summarize, compress, and inject interventions.
+      - ref: docs/canonical/stable-harness-prompt.md:37
+        claim: Tool or trace bulk can be summarized, externalized, or delegated.
+      - ref: docs/canonical/error-context-hygiene.md:30
+        claim: Error context hygiene compresses failures to what the model needs.
+      - not_found: General-purpose semantic compression with required facts, fidelity criteria, target budget, and omission notes.
+  - id: 8
+    name: Semantic Topic Bucketing
+    classification: Missing
+    integration_value: Medium
+    justification: No canonical doc defines topic-specific buckets with per-topic summaries, retention policy, and source-span mappings.
+    evidence:
+      - not_found: NOT_FOUND after reading system-of-record.md and all Markdown files present under docs/canonical/.
+      - ref: docs/canonical/addressable-memory-catalog.md:28
+        claim: Adjacent memory catalog fields provide handles and previews, not topic buckets.
+      - ref: docs/canonical/epistemic-memory-graph.md:28
+        claim: Adjacent epistemic graph adds labels, provenance, and graph retrieval, not topic-bucketed summarization.
+      - ref: docs/canonical/external-state-persistence.md:59
+        claim: Durable categories are defined, but not semantic topic buckets.
+  - id: 9
+    name: Hybrid Context Stack
+    classification: Partial Coverage
+    integration_value: High
+    justification: The component layers exist across canonical docs, but no single canonical stack policy assembles them under a token budget with a decision trace.
+    evidence:
+      - ref: docs/canonical/stable-harness-prompt.md:30
+        claim: Context blocks include stable prompt, head, tail, omitted middle, tool/trace bulk, and durable state.
+      - ref: docs/canonical/head-tail-context-truncation.md:28
+        claim: Bounded active context uses stable prompt, head, tail, latest result, and recoverable memory.
+      - ref: docs/canonical/addressable-memory-catalog.md:30
+        claim: Omitted content has retrieval metadata.
+      - ref: docs/canonical/external-state-persistence.md:31
+        claim: Durable state is loaded and merged with current context.
+      - not_found: Unified context stack with budgeted inclusion order and context-builder decision trace.
+  - id: 10
+    name: Budget-Aware Session Handoff
+    classification: Partial Coverage
+    integration_value: High
+    justification: Handoff, pause/resume, durable state, and recoverable memory exist, but no handoff trigger is tied to token red phase or active-budget reset.
+    evidence:
+      - ref: docs/canonical/serializable-pause-resume-state.md:31
+        claim: Context window, execution state, and business state can be serialized for pause/resume.
+      - ref: docs/canonical/application-owned-agent-control-plane.md:53
+        claim: Loop controller can output handoff as an explicit control action.
+      - ref: docs/canonical/external-state-persistence.md:95
+        claim: External state composes with pause/resume, long-session evals, and feedback writeback.
+      - ref: docs/canonical/addressable-memory-catalog.md:28
+        claim: Recoverable memory handles can support handoff payloads.
+      - not_found: Token-health red-phase handoff trigger, burn-rate-based handoff, or explicit active-budget reset contract.
+summary:
+  - id: 1
+    pattern: Explicit Token Budget Ledger
+    classification: Partial Coverage
+    integration_value: High
+  - id: 2
+    pattern: Burn-Rate Runtime Forecast
+    classification: Missing
+    integration_value: High
+  - id: 3
+    pattern: Phase-Gated Token Health Monitor
+    classification: Partial Coverage
+    integration_value: High
+  - id: 4
+    pattern: Durable Fact Selective History
+    classification: Partial Coverage
+    integration_value: High
+  - id: 5
+    pattern: Windowed Recent History
+    classification: Better Implementation
+    integration_value: Medium
+  - id: 6
+    pattern: Summary Buffer Continuity
+    classification: Partial Coverage
+    integration_value: High
+  - id: 7
+    pattern: Targeted Semantic Compression
+    classification: Partial Coverage
+    integration_value: Medium
+  - id: 8
+    pattern: Semantic Topic Bucketing
+    classification: Missing
+    integration_value: Medium
+  - id: 9
+    pattern: Hybrid Context Stack
+    classification: Partial Coverage
+    integration_value: High
+  - id: 10
+    pattern: Budget-Aware Session Handoff
+    classification: Partial Coverage
+    integration_value: High

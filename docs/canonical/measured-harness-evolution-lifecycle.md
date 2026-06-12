@@ -5,7 +5,7 @@ aliases: ["harness lifecycle", "ciclo vida harness", "harness evolution", "BUILD
 tags: ["agentes-orquestracao", "harness", "governanca"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
-sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction: Harness Evolution]]"]
+sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]
 ---
 
 # Measured Harness Evolution Lifecycle
@@ -55,7 +55,7 @@ Use ROI as the removal-governance threshold:
 ROI = (Erros Prevenidos × Custo Médio do Erro) / (Custo Operacional do Componente)
 ```
 
-A component with ROI below 1x for two consecutive quarters becomes a removal candidate [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:187-193. Count false positives, latency, token cost, infrastructure cost, maintenance hours, and user outcomes as part of the component's measured cost because the extracted pattern defines those metrics as lifecycle inputs [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:275-285.
+A component with ROI below 1x for two consecutive quarters becomes a removal candidate [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:187-193. Count false positives, latency, token cost, infrastructure cost, maintenance hours, and user outcomes as part of the component's measured cost because the extracted pattern defines those metrics as lifecycle inputs [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:275-285.
 
 Govern cadence with a quarterly cycle: week 1 reviews model changelogs, metrics, and component classification; weeks 2-3 implement feature flags, shadow tests, and documented removals; weeks 4-12 observe without stacking new harness changes [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:179-182. Apply One In, One Out so each new harness component marks an existing component for removal investigation in the next cycle [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:183-185.
 
@@ -74,8 +74,8 @@ Removal must preserve causal attribution: one removal at a time, independent fea
 
 ### What is missing
 
-- No existing canonical doc defines the complete BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle with component archive, ROI calculation, reversible removal, and reactivation path [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:160-175.
-- No existing canonical doc assigns every harness component to a lifecycle state and then archives removed components with reason, metrics, validation results, rollback path, and reactivation path [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:175-175.
+- No existing canonical doc defines the complete BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle with component archive, ROI calculation, reversible removal, and reactivation path [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:160-175.
+- No existing canonical doc assigns every harness component to a lifecycle state and then archives removed components with reason, metrics, validation results, rollback path, and reactivation path [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:175-175.
 - The missing archive contract is a standard `archive/components/<component>/` record with README, ADR, decision date, metrics, validation process, post-removal outcome, rollback path, and feature-flag reactivation path [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:113-114 [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:199-201.
 - The missing governance contract is the ROI threshold plus quarterly review cadence and One In, One Out rule as a single canonical lifecycle rather than adjacent eval or rollout mechanics [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:179-193.
 
@@ -83,10 +83,10 @@ Removal must preserve causal attribution: one removal at a time, independent fea
 
 | Benefit | Cost |
 |---|---|
-| Keeps the harness as small as possible while preserving measured quality [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:286-289 | Requires enough traffic, observability, and patience for shadow and canary windows [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:290-293 |
-| Counts false positives and operating cost as first-class design signals [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:286-289 | Slower than big-bang cleanup because only one component changes at a time [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:195-198 |
-| Makes removal reversible and institutionally documented instead of destructive [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:286-289 | Bad metrics or short observation windows can produce false confidence [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:290-293 |
-| Can reduce latency, tokens, cost, and component count without changing quality when evidence supports simplification [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:209-215 | Creates documentation and archive surface that must remain organized [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:112-119 |
+| Keeps the harness as small as possible while preserving measured quality [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:286-289 | Requires enough traffic, observability, and patience for shadow and canary windows [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:290-293 |
+| Counts false positives and operating cost as first-class design signals [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:286-289 | Slower than big-bang cleanup because only one component changes at a time [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:195-198 |
+| Makes removal reversible and institutionally documented instead of destructive [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:286-289 | Bad metrics or short observation windows can produce false confidence [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:290-293 |
+| Can reduce latency, tokens, cost, and component count without changing quality when evidence supports simplification [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:209-215 | Creates documentation and archive surface that must remain organized [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:112-119 |
 
 ## Relationship to Other Patterns
 
@@ -103,10 +103,10 @@ Removal must preserve causal attribution: one removal at a time, independent fea
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:117-125 - harness ossification cost as bugs, latency, tokens, complexity, onboarding burden, and maintenance.
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:179-198 - quarterly cadence, One In One Out, ROI threshold, feature flags, shadow tests, canary, and observation window.
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:199-215 - component archive requirements and measured heavy-to-essential KODA comparison.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:26-33 - extracted BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle and KODA examples.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:101-110 - operational lessons for measurement, false positives, shadow tests, quarterly cadence, One In One Out, ROI, and harness reduction.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:275-307 - structured pattern definition, inputs, outputs, benefits, limitations, components, and flow.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:160-175 - Partial Coverage classification and missing canonical lifecycle contract.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:26-33 - extracted BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle and KODA examples.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:101-110 - operational lessons for measurement, false positives, shadow tests, quarterly cadence, One In One Out, ROI, and harness reduction.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:275-307 - structured pattern definition, inputs, outputs, benefits, limitations, components, and flow.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:160-175 - Partial Coverage classification and missing canonical lifecycle contract.
 - [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]:51-60 - adjacent decision record and harness-evolution questions.
 - [[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]:28-52 - production-sampled replay and baseline/candidate deltas.
 - [[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]:50-53 - regression, staged rollout, shadow diffs, canary metrics, rollback, and observation.

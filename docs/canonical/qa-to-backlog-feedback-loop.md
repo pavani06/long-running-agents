@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "governanca", "evals"]
 aliases: ["QA feedback loop", "review-to-backlog", "QA intake lane", "feedback-driven backlog"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]", "[[.opencode/skills/orchestrator/SKILL|orchestrator skill]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]", "[[.opencode/skills/orchestrator/SKILL|orchestrator skill]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # QA-to-Backlog Feedback Loop
 
@@ -19,17 +19,17 @@ sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-ma
 
 ## Problem
 
-QA and review findings are often treated as terminal events: find bugs, report them, fix them, close the review. The findings evaporate into informal memory, issue comments, or chat messages after the fix is applied. The workflow closes, and the system loses the discovered knowledge. The source analysis captures this as a recurring failure pattern: treating QA as a pass/fail gate instead of an input to the next bounded agent tasks ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Analysis]]:155-156).
+QA and review findings are often treated as terminal events: find bugs, report them, fix them, close the review. The findings evaporate into informal memory, issue comments, or chat messages after the fix is applied. The workflow closes, and the system loses the discovered knowledge. The source analysis captures this as a recurring failure pattern: treating QA as a pass/fail gate instead of an input to the next bounded agent tasks ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Analysis]]:155-156).
 
 The repository has strong mechanisms for production failures (the Production Failure Regression Flywheel converts incidents into durable eval cases), and the Closed-Loop Agent OS includes feedback writeback as a named surface. But the pipeline from QA observations and review findings to backlog issues that agents can claim is informal. A reviewer who discovers that error messages leak internal state, that the dark-mode toggle shifts layout, or that the order-confirmation email fires twice can comment on the PR and block merge. But after the fix, there is no structured path to convert that finding into a regression check, a backlog item with severity and priority, or a durable slice that prevents recurrence.
 
-The gap is not that findings are ignored; it is that findings leave no structured trace in the agent's operating surface. They become comments on closed PRs and issues, not items on the board ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:270-273).
+The gap is not that findings are ignored; it is that findings leave no structured trace in the agent's operating surface. They become comments on closed PRs and issues, not items on the board ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:270-273).
 
 ## Solution
 
 Formalize QA and review findings as backlog inputs that produce vertical-slice issues or regression cases. The loop converts observations into actionable work rather than closing the cycle with a merge.
 
-The pattern from the source defines the mechanics: capture QA and review findings as structured observations, triage each finding for severity, blocker status, and ownership, convert actionable findings into vertical-slice issues or regression cases, and return the new work to the Kanban board instead of leaving it as informal memory ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:469-472).
+The pattern from the source defines the mechanics: capture QA and review findings as structured observations, triage each finding for severity, blocker status, and ownership, convert actionable findings into vertical-slice issues or regression cases, and return the new work to the Kanban board instead of leaving it as informal memory ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:469-472).
 
 A finding flows through four stages:
 
@@ -56,7 +56,7 @@ The loop closes when a finding produces a resolved issue and the resolution surv
 
 ### What is missing from the pattern
 
-The Partial Coverage gap is the structured conversion from QA/review findings to backlog items. The classification found that the repo has the flywheel (production failures), writeback surface (Closed-Loop OS), and blocker handling (orchestrator), but no formal intake lane, severity triage, or regression-issue generation from QA/review findings ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:272-273).
+The Partial Coverage gap is the structured conversion from QA/review findings to backlog items. The classification found that the repo has the flywheel (production failures), writeback surface (Closed-Loop OS), and blocker handling (orchestrator), but no formal intake lane, severity triage, or regression-issue generation from QA/review findings ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:272-273).
 
 Missing pieces:
 
@@ -82,13 +82,13 @@ Missing pieces:
 - **Consumes:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] outputs because the evaluator produces findings that the feedback loop converts into issues.
 - **Depends on:** [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]] because the Verify phase is the natural capture point for behavioral findings before they enter the triage pipeline.
 - **Integrates with:** [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] because PR gates produce the findings that the loop routes into the backlog.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:443-472 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:256-274.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:443-472 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:256-274.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:443-472 - extracted pattern definition with QA observation, reviewer finding, severity/blocker metadata, regression check, and Kanban intake lane.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:256-274 - Partial Coverage classification and gap analysis for QA-to-Backlog feedback loop.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:155-156 - QA creates more work rather than closing the loop permanently.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:443-472 - extracted pattern definition with QA observation, reviewer finding, severity/blocker metadata, regression check, and Kanban intake lane.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:256-274 - Partial Coverage classification and gap analysis for QA-to-Backlog feedback loop.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:155-156 - QA creates more work rather than closing the loop permanently.
 - [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]:28-40 - existing regression case creation from production failures.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]:32-45 - existing feedback writeback surface and minimum operating contract.
 - [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]:18-25 - existing acceptance criteria and progress/blocker commenting.

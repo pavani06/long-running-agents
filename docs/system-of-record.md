@@ -2,7 +2,7 @@
 title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
-tags: ["index", "arquitetura", "governanca", "harness-engineering"]
+tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
 last_updated: 2026-06-11
 relates-to: []
 sources: []
@@ -26,6 +26,8 @@ Mapa das fontes canônicas do `long-running-agents`. Quando duas fontes divergir
 
 O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff Protocol): cada agente tem um escopo fechado, um dono, e gates de validação.
 
+Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-development`, `context-engineering`, `evals`, `error-handling`, `harness-engineering`, `12-factor-agents`, `production`.
+
 | Fonte | Cobre |
 |---|---|
 | [[.opencode/agents/hop-orchestrator-rezek|.opencode/agents/hop-orchestrator-rezek.md]] | Orquestrador principal — governança, source-of-truth, coordenação |
@@ -41,6 +43,9 @@ O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff P
 | [[.opencode/skills/writing-plans/SKILL|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
 | [[.opencode/skills/error-context-hygiene/SKILL|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
 | [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements |
+| [[.opencode/skills/manual-brake-question-gate/SKILL|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
+| [[.opencode/skills/deferred-ledger-agentic-work/SKILL|.opencode/skills/deferred-ledger-agentic-work/SKILL.md]] | Ledger de trabalho agentic diferido com rastreamento de dívida e sunset gates |
+| [[.opencode/skills/owner-of-no-role/SKILL|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -100,6 +105,8 @@ Três artefatos HTML estáticos e uma proposta de arquitetura futura.
 | [opencode.json](opencode.json) | Configuração do OpenCode (MCP context7) |
 
 ### Governança de repositório
+
+Topicos cobertos: `governanca`, `decision-discipline`, `spec-driven-development`.
 
 | Fonte | Cobre |
 |---|---|
@@ -181,6 +188,12 @@ Tópicos candidatos a ADR:
 | `persona-based-documentation.md` | Documentação baseada em personas: NFRs e documentos por especialidade (dev, QA, architect, manager) |
 | `garbage-collection-day-meta-loop.md` | Meta-loop semanal de limpeza de harness: revisão de slop, guardrails e cadência de manutenção |
 | `failure-pattern-classification-loop.md` | Loop de classificação de padrões de falha: categorização de slop e misbehavior de agentes |
+| `manual-brake-question-gate.md` | Gate de pergunta-freio manual: intervenção humana obrigatória antes de ações irreversíveis do agente |
+| `deferred-ledger-agentic-work.md` | Ledger de trabalho agentic diferido: rastreamento explícito de dívida técnica com sunset gates |
+| `owner-of-no-role-design.md` | Design pattern Owner of No Role: cada artefato tem exatamente um dono, papéis são explícitos e não ambíguos |
+| `accidental-brake-replacement.md` | Anti-padrão de substituição acidental de freios: como gates de segurança são removidos silenciosamente |
+| `value-gated-agent-control-loop.md` | Loop de controle do agente com gates de valor: o agente só avança quando o valor incremental é validado |
+| `carry-debt-sunset-gate.md` | Gate de sunset para dívida carregada: prazo máximo para resolver débitos antes que bloqueiem o pipeline |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -208,55 +221,55 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 | Arquivo | Cobre |
 |---|---|
-| `2026-06-09-12-factor-agents/analysis.md` | Extração de conhecimento não-óbvio da talk 12-Factor Agents |
-| `2026-06-09-12-factor-agents/analysis.yaml` | YAML com frameworks, padrões, lições operacionais |
-| `2026-06-09-12-factor-agents/patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
-| `2026-06-09-12-factor-agents/patterns.yaml` | YAML com componentes e fluxo por padrão |
-| `2026-06-09-12-factor-agents/classification.md` | Classificação comparativa dos 8 padrões vs. repo |
-| `2026-06-09-12-factor-agents/classification.yaml` | YAML com evidência por padrão |
-| `2026-06-09-12-factor-agents/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md` | Extração de conhecimento não-óbvio da talk 12-Factor Agents |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.yaml` | YAML com frameworks, padrões, lições operacionais |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md` | Classificação comparativa dos 8 padrões vs. repo |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.yaml` | YAML com evidência por padrão |
+| `2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
 
 ### Análises comparativas (Eval Maturity Phases)
 
 | Arquivo | Cobre |
 |---|---|
-| `2026-06-10-eval-maturity-phases/analysis.md` | Framework de maturidade de evals e sinais de transição |
-| `2026-06-10-eval-maturity-phases/analysis.yaml` | YAML com framework, fases e sinais |
-| `2026-06-10-eval-maturity-phases/patterns.md` | Padrões operacionais extraídos da maturidade de evals |
-| `2026-06-10-eval-maturity-phases/patterns.yaml` | YAML com padrões operacionais |
-| `2026-06-10-eval-maturity-phases/classification.md` | Classificação das lacunas e coberturas do repositório |
-| `2026-06-10-eval-maturity-phases/classification.yaml` | YAML com evidências e lacunas |
-| `2026-06-10-eval-maturity-phases/mental-model.md` | Modelo mental e precedência da análise |
-| `2026-06-10-eval-maturity-phases/mental-model.yaml` | YAML do modelo mental |
-| `2026-06-10-eval-maturity-phases/integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md` | Framework de maturidade de evals e sinais de transição |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.yaml` | YAML com framework, fases e sinais |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md` | Padrões operacionais extraídos da maturidade de evals |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.yaml` | YAML com padrões operacionais |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md` | Classificação das lacunas e coberturas do repositório |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.yaml` | YAML com evidências e lacunas |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-mental-model.md` | Modelo mental e precedência da análise |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-mental-model.yaml` | YAML do modelo mental |
+| `2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-integration-roadmap.md` | Roadmap de integração dos padrões ao currículo |
 
 ### Análises comparativas (Stanford CS153 AI Native Company)
 
 | Arquivo | Cobre |
 |---|---|
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.md` | Extração de conhecimento não-óbvio da fonte Stanford CS153 |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/analysis.yaml` | YAML com a extração estruturada |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.md` | Catálogo dos 11 padrões agentic extraídos |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/patterns.yaml` | YAML com o catálogo de padrões |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification.md` | Classificação dos 11 padrões contra o repositório |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/classification.yaml` | YAML com a classificação estruturada |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.md` | Modelo mental de orientação do pacote |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/mental-model.yaml` | YAML do modelo mental |
-| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/integration-roadmap.md` | Mapa de integração dos padrões classificados nas superfícies do repositório |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis.md` | Extração de conhecimento não-óbvio da fonte Stanford CS153 |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis.yaml` | YAML com a extração estruturada |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns.md` | Catálogo dos 11 padrões agentic extraídos |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns.yaml` | YAML com o catálogo de padrões |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification.md` | Classificação dos 11 padrões contra o repositório |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification.yaml` | YAML com a classificação estruturada |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model.md` | Modelo mental de orientação do pacote |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-mental-model.yaml` | YAML do modelo mental |
+| `2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-integration-roadmap.md` | Mapa de integração dos padrões classificados nas superfícies do repositório |
 
 ### Análises comparativas (Matt Pocock AI Coding Workflow)
 
 | Arquivo | Cobre |
 |---|---|
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.md` | Modelo mental do repositório long-running-agents |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/mental-model.yaml` | YAML do modelo mental |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.md` | Extração de conhecimento não-óbvio: frameworks, patterns, tradeoffs, failure patterns |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis.yaml` | YAML com extração estruturada |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.md` | 15 padrões agentic extraídos com 6 campos cada |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns.yaml` | YAML com componentes e fluxo por padrão |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.md` | Classificação comparativa: 1 Better Impl, 12 Partial, 2 Exists |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification.yaml` | YAML com evidência file:line por padrão |
-| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/integration-roadmap.md` | Roadmap de integração com 5 fases sequenciais e 12 canonical docs |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-mental-model.md` | Modelo mental do repositório long-running-agents |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-mental-model.yaml` | YAML do modelo mental |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis.md` | Extração de conhecimento não-óbvio: frameworks, patterns, tradeoffs, failure patterns |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis.yaml` | YAML com extração estruturada |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns.md` | 15 padrões agentic extraídos com 6 campos cada |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification.md` | Classificação comparativa: 1 Better Impl, 12 Partial, 2 Exists |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification.yaml` | YAML com evidência file:line por padrão |
+| `2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-integration-roadmap.md` | Roadmap de integração com 5 fases sequenciais e 12 canonical docs |
 
 ## Planos
 

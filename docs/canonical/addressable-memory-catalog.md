@@ -5,7 +5,7 @@ aliases: ["memory catalog", "addressable memory"]
 tags: ["context-engineering"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]"]
-sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]
 ---
 # Addressable Memory Catalog
 
@@ -52,11 +52,11 @@ The repo has several adjacent mechanisms:
 - The same curriculum warns that retrieval can return a similar but wrong chunk and needs privacy and scope filters (`curriculum/05-core-concepts/01-context-management.md:600`).
 - Multi-agent coordination uses `output_ref` handles for internal agent outputs (`curriculum/05-core-concepts/07-multi-agent-coordination.md:552`).
 - State persistence asks for a human-readable manifest listing files and decisions used by a response (`curriculum/05-core-concepts/05-state-persistence.md:1864`).
-- The source analysis identifies IDs, conversational location, message distance, and previews as the concrete memory-store interface (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:82`).
+- The source analysis identifies IDs, conversational location, message distance, and previews as the concrete memory-store interface (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:82`).
 
 ### What is missing
 
-The classification found no explicit pattern for an omitted-memory catalog with `id + location + preview` in the canonical docs, curriculum, evidence, decisions, or operational skills (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:32`). Existing retrieval material is broader and usually semantic; this pattern needs a deterministic catalog for truncated context recovery.
+The classification found no explicit pattern for an omitted-memory catalog with `id + location + preview` in the canonical docs, curriculum, evidence, decisions, or operational skills (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:32`). Existing retrieval material is broader and usually semantic; this pattern needs a deterministic catalog for truncated context recovery.
 
 The missing implementation details are:
 
@@ -84,9 +84,9 @@ The missing implementation details are:
 
 ## References
 
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:82` — memory store with IDs, position, and preview.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md:37` — extracted reusable pattern.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:20` — Partial Coverage classification and gap.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:82` — memory store with IDs, position, and preview.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md:37` — extracted reusable pattern.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:20` — Partial Coverage classification and gap.
 - `curriculum/05-core-concepts/01-context-management.md:580` — existing retrieval coverage.
 - `curriculum/05-core-concepts/01-context-management.md:600` — retrieval risk and scope-filter coverage.
 - `curriculum/05-core-concepts/07-multi-agent-coordination.md:552` — existing `output_ref` handle practice.

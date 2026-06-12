@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["índice currículo", "navegação", "mapa currículo"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/QUICK_START|Quick Start]]", "[[curriculum/GLOSSARY|Glossary]]"]
-last_updated: 2026-06-10
+last_updated: 2026-06-11
 ---
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
@@ -114,10 +114,13 @@ last_updated: 2026-06-10
 - `03-nivel-3-advanced-architecture/exercises/exercise-03.md` (Harness Evolution)
 - `03-nivel-3-advanced-architecture/exercises/exercise-04-llm-as-fuzzy-compiler.md` (LLM as Fuzzy Compiler)
 - `03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation.md` (Persona-Based Documentation)
+- `03-nivel-arquiteto/exercises/exercise-04-owner-of-no-role.md` (Owner of No Role)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-02.md`
+- `04-nivel-4-koda-specific/real-world-exercises/exercise-05-manual-brake-question-gate.md` (Manual Brake Question Gate)
+- `04-nivel-4-koda-specific/real-world-exercises/exercise-06-deferred-ledger-agentic-work.md` (Deferred Ledger Agentic Work)
 
 **Soluções:** Em `exercises/solutions/` em cada nível
 

@@ -50,15 +50,15 @@ O problema central é que **modelos de linguagem são otimizados para fluência,
 
 ## 2. O Modelo de Maturidade: 5 Fases para Sair do Achismo
 
-Em junho de 2026, Phil Hetzel, da Braintrust, publicou uma análise sobre as fases de maturidade na adoção de evals em agentes de IA. O framework descreve uma progressão observada em empresas que saem de nenhum processo estruturado até evals integradas ao fluxo de desenvolvimento (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:23`).
+Em junho de 2026, Phil Hetzel, da Braintrust, publicou uma análise sobre as fases de maturidade na adoção de evals em agentes de IA. O framework descreve uma progressão observada em empresas que saem de nenhum processo estruturado até evals integradas ao fluxo de desenvolvimento (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:23`).
 
-O insight mais importante do modelo não é a sequência em si — é o mecanismo de transição. **Cada fase só deve ser abandonada quando a dor da fase atual se torna insustentável.** Não se avança por calendário, se avança por sinal de saturação. E pular fases é a causa número um de infraestrutura de eval que ninguém usa, porque o time não construiu o músculo de rodar evals e agir sobre eles (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:87`).
+O insight mais importante do modelo não é a sequência em si — é o mecanismo de transição. **Cada fase só deve ser abandonada quando a dor da fase atual se torna insustentável.** Não se avança por calendário, se avança por sinal de saturação. E pular fases é a causa número um de infraestrutura de eval que ninguém usa, porque o time não construiu o músculo de rodar evals e agir sobre eles (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:87`).
 
 Vamos percorrer as cinco fases com exemplos concretos de como elas se manifestam em um agente de e-commerce como o KODA.
 
 ### Fase 1: Ad Hoc Testing — "Parece bom, vai"
 
-O time testa prompts manualmente, mexe em dois ou três exemplos, e manda para produção baseado em sensação. Não há avaliação estruturada, repetibilidade, cobertura, nem capacidade de distinguir melhoria de regressão (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:27`).
+O time testa prompts manualmente, mexe em dois ou três exemplos, e manda para produção baseado em sensação. Não há avaliação estruturada, repetibilidade, cobertura, nem capacidade de distinguir melhoria de regressão (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:27`).
 
 No KODA, essa era a realidade da Versão 1 (março de 2026): um agente único que respondia clientes no WhatsApp. Funcionava para conversas de 5 minutos. Quebrava em conversas de 2 horas. Quando uma mudança de prompt piorava as recomendações, o time só descobria por reclamação de cliente.
 
@@ -66,7 +66,7 @@ O sinal de saída da Fase 1 é inequívoco: **uma mudança que parecia boa pioro
 
 ### Fase 2: Spot Check Evals — "Temos 15 casos que rodamos antes de cada deploy"
 
-O time escreve um conjunto pequeno de casos (10 a 50) em uma planilha ou script simples e os roda manual ou semi-automaticamente. O ganho é repetibilidade: pela primeira vez, é possível comparar a versão nova com a anterior nos mesmos inputs. A limitação é que os casos refletem apenas o que o time já conhece — são derivados de memória interna, não da distribuição real de uso (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:28`).
+O time escreve um conjunto pequeno de casos (10 a 50) em uma planilha ou script simples e os roda manual ou semi-automaticamente. O ganho é repetibilidade: pela primeira vez, é possível comparar a versão nova com a anterior nos mesmos inputs. A limitação é que os casos refletem apenas o que o time já conhece — são derivados de memória interna, não da distribuição real de uso (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:28`).
 
 No KODA, os primeiros spot checks nasceram das conversas que deram errado. Casos como:
 
@@ -80,7 +80,7 @@ O sinal de saída da Fase 2: **os spot checks cresceram até ficar doloroso roda
 
 ### Fase 3: Structured Evals With Metrics — "Definimos o que 'bom' significa com números"
 
-O time define critérios de qualidade mensuráveis, com test set, scoring e métricas acompanhadas ao longo do tempo. Entram accuracy, distribuição de latência e custo por eval run. O risco é acreditar em scores que não representam uso real ou critérios mal calibrados (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:29`).
+O time define critérios de qualidade mensuráveis, com test set, scoring e métricas acompanhadas ao longo do tempo. Entram accuracy, distribuição de latência e custo por eval run. O risco é acreditar em scores que não representam uso real ou critérios mal calibrados (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:29`).
 
 É nesta fase que as rubricas do KODA nascem. Em vez de "a resposta está boa?", a pergunta vira: qual o `overall_score` em cada dimensão? Accuracy do produto: 0.30. Relevance ao contexto: 0.70. Safety and constraints: 0.20. Com pesos e thresholds explícitos, o julgamento de qualidade vira medição repetível.
 
@@ -88,7 +88,7 @@ O sinal de saída da Fase 3: **os scores não correlacionam com o feedback real 
 
 ### Fase 4: Production-Grounded Evals — "Nosso eval set vem do tráfego real"
 
-O eval set passa a ser construído por amostragem de tráfego real de produção: captura, armazenamento e replay de interações reais. A distribuição de teste passa a coincidir com a distribuição de uso. Entram A/B tests, canary deployments com eval gates e dashboards que correlacionam scores com métricas de produção (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:30`).
+O eval set passa a ser construído por amostragem de tráfego real de produção: captura, armazenamento e replay de interações reais. A distribuição de teste passa a coincidir com a distribuição de uso. Entram A/B tests, canary deployments com eval gates e dashboards que correlacionam scores com métricas de produção (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:30`).
 
 Para o KODA, isso significa capturar conversas reais de WhatsApp (com privacidade e redação de dados sensíveis), rotular o expected behavior e rodar o agente candidato contra as mesmas interações que o agente atual enfrentou. O padrão canônico de Production-Grounded Eval Sampling define os requisitos: captura com filtros de privacidade, política de retenção, critérios de amostragem por segmento, cobertura de workflows críticos e replay infrastructure (`docs/canonical/production-grounded-eval-sampling.md:32-42`).
 
@@ -96,11 +96,11 @@ O sinal de saída da Fase 4: **você tem volume e representatividade, mas edge c
 
 ### Fase 5: Continuous Eval-Driven Development — "Cada incidente vira um caso de regressão permanente"
 
-Evals viram parte nativa do workflow de desenvolvimento. Cada PR tem resultados de eval anexados. Suites de regressão crescem automaticamente quando falhas de produção são detectadas. Existem tiers de eval por custo e profundidade. A característica-chave é o sistema ser **self-improving**: melhorar sem curadoria manual contínua (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:31`).
+Evals viram parte nativa do workflow de desenvolvimento. Cada PR tem resultados de eval anexados. Suites de regressão crescem automaticamente quando falhas de produção são detectadas. Existem tiers de eval por custo e profundidade. A característica-chave é o sistema ser **self-improving**: melhorar sem curadoria manual contínua (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:31`).
 
 No KODA, a Fase 5 se manifesta no Production Failure Regression Flywheel: cada falha de produção — seja uma reclamação de cliente, um edge case que escapou, um mal uso de ferramenta ou um gap de scoring — vira automaticamente um caso de regressão durável. O padrão define o ciclo completo: intake da falha, captura da interação e trace, aplicação de filtros de privacidade, rotulagem de expected behavior, deduplicação, atribuição ao tier correto e backfill para provar que o agente corrigido agora passa (`docs/canonical/production-failure-regression-flywheel.md:30-41`).
 
-O princípio unificador do modelo é que **maturidade de eval não é uma escala de ferramenta — é uma escala de confiança operacional**. Cada fase remove uma fonte diferente de ilusão: a Fase 1 remove a ilusão de que feeling detecta regressão; a Fase 2 remove a ilusão de que memória humana basta; a Fase 3 remove a ausência de métricas; a Fase 4 remove a ilusão de que um test set manual representa usuários; a Fase 5 remove a dependência de curadoria manual para lembrar falhas passadas (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:140`).
+O princípio unificador do modelo é que **maturidade de eval não é uma escala de ferramenta — é uma escala de confiança operacional**. Cada fase remove uma fonte diferente de ilusão: a Fase 1 remove a ilusão de que feeling detecta regressão; a Fase 2 remove a ilusão de que memória humana basta; a Fase 3 remove a ausência de métricas; a Fase 4 remove a ilusão de que um test set manual representa usuários; a Fase 5 remove a dependência de curadoria manual para lembrar falhas passadas (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:140`).
 
 ---
 
@@ -397,9 +397,9 @@ Isso não contradiz o ideal de self-improvement da Fase 5 — é complementar a 
 
 ### Não Pule Fases — É Sobre Músculo, Não Sobre Ferramenta
 
-A lição mais repetida em todo o material: tentar ir direto para continuous eval-driven development falha porque a automação pressupõe hábitos anteriores — escrever casos, rodá-los, confiar em métricas, comparar com produção e agir sobre regressão. Sem esse músculo, a organização constrói infraestrutura que ninguém usa (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:87`).
+A lição mais repetida em todo o material: tentar ir direto para continuous eval-driven development falha porque a automação pressupõe hábitos anteriores — escrever casos, rodá-los, confiar em métricas, comparar com produção e agir sobre regressão. Sem esse músculo, a organização constrói infraestrutura que ninguém usa (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:87`).
 
-O gargalo principal não é escolher entre Braintrust, LangSmith ou construir in-house. É transformar eval em parte obrigatória do desenvolvimento — com liderança que sustenta a regra de "não enviar sem evals" e time que desenvolveu a prática de agir sobre resultados (`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md:91`).
+O gargalo principal não é escolher entre Braintrust, LangSmith ou construir in-house. É transformar eval em parte obrigatória do desenvolvimento — com liderança que sustenta a regra de "não enviar sem evals" e time que desenvolveu a prática de agir sobre resultados (`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md:91`).
 
 ### Separe Geração de Avaliação — Sempre
 
@@ -459,7 +459,7 @@ E modelos de linguagem não foram feitos para acertar todas as vezes. Foram feit
 
 Este artigo é baseado no repositório [`long-running-agents`](https://github.com/MHC-AI/long-running-agents), que documenta padrões de arquitetura para agentes de IA, e na operação real do KODA, agente de vendas via WhatsApp. As afirmações técnicas são rastreáveis aos seguintes artefatos:
 
-- Modelo de maturidade: [`docs/analysis/2026-06-10-eval-maturity-phases/analysis.md`](https://github.com/MHC-AI/long-running-agents/blob/main/docs/analysis/2026-06-10-eval-maturity-phases/analysis.md), baseado em Phil Hetzel, Braintrust (2026)
+- Modelo de maturidade: [`docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md`](https://github.com/MHC-AI/long-running-agents/blob/main/docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md), baseado em Phil Hetzel, Braintrust (2026)
 - Padrões canônicos: [`docs/canonical/`](https://github.com/MHC-AI/long-running-agents/tree/main/docs/canonical) (eval-tier-stratification, pain-signal-eval-progression-gate, production-grounded-eval-sampling, repeatable-agent-spot-check-set, production-failure-regression-flywheel)
 - Rubricas KODA: [`curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md`](https://github.com/MHC-AI/long-running-agents/blob/main/curriculum/04-nivel-4-koda-specific/04-evaluation-rubrics-koda.md)
 - Arquitetura KODA: [`curriculum/04-nivel-4-koda-specific/01-koda-architecture.md`](https://github.com/MHC-AI/long-running-agents/blob/main/curriculum/04-nivel-4-koda-specific/01-koda-architecture.md)

@@ -180,7 +180,7 @@ MUST NOT DO:
 - Do NOT touch files in `rawfiles/`, `prompts/`, `.opencode/`, `.github/`, `web/`, `webpage/`, `scripts/`, `eslint-rules/`
 - Do NOT touch `AGENTS.md`, `README.md`, `package.json`, `Makefile`, or any non-markdown file
 - Do NOT modify any existing body content beyond link syntax conversion
-- Do NOT add frontmatter to files that already have it (the 3 `docs/analysis/*/patterns.md` files)
+- Do NOT add frontmatter to files that already have it (the 3 `docs/analysis/*/\*-patterns.md` files)
 - Do NOT change file names or directory structure
 - Do NOT convert external URLs (`https://...`) to wikilinks
 - Do NOT convert links inside fenced code blocks (```) or inline code (`)
@@ -192,15 +192,15 @@ Repository root: `/mnt/c/Users/pavan/long-running-agents`
 
 This is a software project with documentation, not a pure knowledge base like `raw-knowledge`. The goal is to make the authoritative documentation surfaces navigable in Obsidian without disrupting the project's existing structure.
 
-The repo has 190 markdown files. Only 3 have YAML frontmatter (all `docs/analysis/*/patterns.md`). Zero files use `[[wikilinks]]` — all cross-references are standard `[text](path.md)`.
+The repo has 190 markdown files. Only 3 have YAML frontmatter (all `docs/analysis/*/\*-patterns.md`). Zero files use `[[wikilinks]]` — all cross-references are standard `[text](path.md)`.
 
 Key files you must read before editing to extract titles, summaries, and link targets:
 - All 15 files in `docs/canonical/`
 - `docs/system-of-record.md`
 - All 7 curriculum index files listed above
-- `docs/analysis/2026-06-09-12-factor-agents/analysis.md` (source for several canonical docs)
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md` (source for context-engineering canonical docs)
-- `docs/analysis/2026-06-10-eval-maturity-phases/analysis.md` (source for eval canonical docs)
+- `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md` (source for several canonical docs)
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md` (source for context-engineering canonical docs)
+- `docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md` (source for eval canonical docs)
 
 The reference pattern for Obsidian-ready frontmatter comes from `raw-knowledge` at `/mnt/c/Users/pavan/Raw-Knowledge`. Key conventions:
 - All YAML list values use `[]` for empty, `["value"]` for single, `["value1", "value2"]` for multiple

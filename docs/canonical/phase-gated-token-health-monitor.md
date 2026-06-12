@@ -4,15 +4,15 @@ type: canonical
 aliases: ["monitor de saude de tokens", "token health phases", "green yellow orange red"]
 tags: ["context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
-sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+relates-to: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
+sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 ---
 
 # Phase-Gated Token Health Monitor
 
 **Type:** canonical
 **Status:** active
-**Source:** [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]] and [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]
+**Source:** [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]] and [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]
 **Classification:** Partial Coverage
 **Precedence:** document-level 2, because active canonical docs outrank analyses in the repository precedence model [[docs/system-of-record|System of Record]]:14-21.
 
@@ -20,15 +20,15 @@ sources: ["[[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting A
 
 ## Problem
 
-Agentes long-running geralmente percebem pressao de tokens tarde demais: depois que a qualidade cai, o raciocinio enfraquece, as respostas encurtam ou o limite de contexto chega. A analise de token budgeting identifica esse problema diretamente no padrao extraido: agentes descobrem pressao de tokens apenas depois de degradacao ou limite de contexto [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:59-79.
+Agentes long-running geralmente percebem pressao de tokens tarde demais: depois que a qualidade cai, o raciocinio enfraquece, as respostas encurtam ou o limite de contexto chega. A analise de token budgeting identifica esse problema diretamente no padrao extraido: agentes descobrem pressao de tokens apenas depois de degradacao ou limite de contexto [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:59-79.
 
-A causa e que saude de contexto nao e apenas um numero estatico de tokens restantes. O modelo de budget divide a sessao em input, output, context window e burn rate [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:28-37. A fonte curricular tambem define burn rate como `(Input + Output) / Minutos de Conversa` e usa essa taxa para planejar compactacao e mudanca de estrategia [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:143-165. Portanto, uma sessao com muito contexto aparente ainda pode estar em risco se o consumo estiver acelerando [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:37.
+A causa e que saude de contexto nao e apenas um numero estatico de tokens restantes. O modelo de budget divide a sessao em input, output, context window e burn rate [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:28-37. A fonte curricular tambem define burn rate como `(Input + Output) / Minutos de Conversa` e usa essa taxa para planejar compactacao e mudanca de estrategia [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:143-165. Portanto, uma sessao com muito contexto aparente ainda pode estar em risco se o consumo estiver acelerando [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:37.
 
 ## Solution
 
-Defina um monitor de saude de tokens que rode em cada turno, iteracao de loop ou montagem de contexto. O monitor recebe percentual de budget restante, previsao de burn rate, sinal de aceleracao e a lista de acoes disponiveis; ele retorna uma fase `green`, `yellow`, `orange` ou `red`, uma acao deterministica e uma razao auditavel. O padrao extraido especifica esses inputs e outputs: percentual restante, burn-rate forecast, thresholds, contexto atual, acoes de compactacao ou handoff, fase de saude, acao recomendada e motivo de intervencao [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:63-71.
+Defina um monitor de saude de tokens que rode em cada turno, iteracao de loop ou montagem de contexto. O monitor recebe percentual de budget restante, previsao de burn rate, sinal de aceleracao e a lista de acoes disponiveis; ele retorna uma fase `green`, `yellow`, `orange` ou `red`, uma acao deterministica e uma razao auditavel. O padrao extraido especifica esses inputs e outputs: percentual restante, burn-rate forecast, thresholds, contexto atual, acoes de compactacao ou handoff, fase de saude, acao recomendada e motivo de intervencao [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:63-71.
 
-O objetivo nao e substituir o context builder. O objetivo e transformar token budgeting em um controle de runtime que informa quando o loop deve continuar, observar, resumir, comprimir, reduzir contexto ou iniciar nova sessao. A analise chama isso de loop threshold-driven em vez de resposta unica no fim da janela [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:39-49.
+O objetivo nao e substituir o context builder. O objetivo e transformar token budgeting em um controle de runtime que informa quando o loop deve continuar, observar, resumir, comprimir, reduzir contexto ou iniciar nova sessao. A analise chama isso de loop threshold-driven em vez de resposta unica no fim da janela [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:39-49.
 
 ```text
 +-------------------+      +-------------------+      +----------------------+
@@ -65,7 +65,7 @@ Thresholds devem ser calibrados por modelo, produto e estrategia de contexto. Co
 | `orange` | Budget em faixa de risco ou aceleracao indica risco antes do proximo checkpoint | `summarize` ou `compress` | Ainda ha espaco para compactar com qualidade antes de pressao critica |
 | `red` | Budget abaixo do limite critico, runway insuficiente ou comportamento degradado observado | `new_session`, `handoff` ou `force_terminate` | Continuar no contexto atual ameaca qualidade, continuidade ou confiabilidade |
 
-O monitor deve reservar buffer de resposta e buffer de seguranca antes de calcular disponibilidade. A calculadora curricular reserva resposta e seguranca antes de calcular tokens disponiveis [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:445-459. A analise tambem registra que reservar output e obrigatorio porque o tamanho da resposta e desconhecido antes da geracao [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:121-125.
+O monitor deve reservar buffer de resposta e buffer de seguranca antes de calcular disponibilidade. A calculadora curricular reserva resposta e seguranca antes de calcular tokens disponiveis [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:445-459. A analise tambem registra que reservar output e obrigatorio porque o tamanho da resposta e desconhecido antes da geracao [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:121-125.
 
 ## Implementation Contract
 
@@ -99,18 +99,18 @@ A acao retornada deve ser executavel pelo loop, nao apenas registrada. [[docs/ca
 
 ### What is missing
 
-- Um contrato canonico que una percentual restante e burn-rate forecast em fases token-specific. A classificacao marcou `Phase-Gated Token Health Monitor` como Partial Coverage e registrou NOT_FOUND para fases de saude de tokens guiadas por percentual restante e aceleracao de burn rate [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:34-42.
-- Um forecast canonico de burn rate. A classificacao marcou `Burn-Rate Runtime Forecast` como Missing e registrou NOT_FOUND para velocidade de consumo, aceleracao e minutos ou mensagens restantes [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:24-32.
-- Um ledger canonico de budget por chamada. A classificacao marcou `Explicit Token Budget Ledger` como Partial Coverage e registrou ausencia de schema com response reserve, safety reserve, percentual restante e breakdown por chamada [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:14-22.
-- Uma decisao de atuacao que feche o loop: o padrao extraido avisa que o monitor so e util se o harness implementar a acao retornada [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:76-79.
+- Um contrato canonico que una percentual restante e burn-rate forecast em fases token-specific. A classificacao marcou `Phase-Gated Token Health Monitor` como Partial Coverage e registrou NOT_FOUND para fases de saude de tokens guiadas por percentual restante e aceleracao de burn rate [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:34-42.
+- Um forecast canonico de burn rate. A classificacao marcou `Burn-Rate Runtime Forecast` como Missing e registrou NOT_FOUND para velocidade de consumo, aceleracao e minutos ou mensagens restantes [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:24-32.
+- Um ledger canonico de budget por chamada. A classificacao marcou `Explicit Token Budget Ledger` como Partial Coverage e registrou ausencia de schema com response reserve, safety reserve, percentual restante e breakdown por chamada [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:14-22.
+- Uma decisao de atuacao que feche o loop: o padrao extraido avisa que o monitor so e util se o harness implementar a acao retornada [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:76-79.
 
 ## Operating Rules
 
 1. Calcule saude antes de montar o prompt final para o modelo, porque o context builder precisa saber se deve reduzir, resumir ou externalizar blocos antes da chamada.
-2. Subtraia buffer de resposta e safety buffer antes de classificar a fase, porque gastar toda a janela em input reduz a capacidade de gerar uma resposta util [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:121-125.
-3. Promova a fase quando a aceleracao de burn rate encurtar o runway, mesmo se o percentual restante parecer confortavel. A analise registra que budget health e temporal, nao apenas espacial [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:37.
-4. Em `orange`, compacte enquanto ainda ha contexto suficiente para resumir com qualidade. A analise lista intervencao tardia como falha e recomenda thresholds que intervenham enquanto ainda ha espaco para resumir com seguranca [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:219-223.
-5. Em `red`, prefira handoff ou nova sessao quando a continuidade dentro do contexto atual ameacar qualidade. A analise trata transicao de sessao como fluxo intencional quando o budget esta baixo [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:127.
+2. Subtraia buffer de resposta e safety buffer antes de classificar a fase, porque gastar toda a janela em input reduz a capacidade de gerar uma resposta util [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:121-125.
+3. Promova a fase quando a aceleracao de burn rate encurtar o runway, mesmo se o percentual restante parecer confortavel. A analise registra que budget health e temporal, nao apenas espacial [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:37.
+4. Em `orange`, compacte enquanto ainda ha contexto suficiente para resumir com qualidade. A analise lista intervencao tardia como falha e recomenda thresholds que intervenham enquanto ainda ha espaco para resumir com seguranca [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:219-223.
+5. Em `red`, prefira handoff ou nova sessao quando a continuidade dentro do contexto atual ameacar qualidade. A analise trata transicao de sessao como fluxo intencional quando o budget esta baixo [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:127.
 
 ## Evaluation and Observability
 
@@ -128,10 +128,10 @@ Casos de eval devem cobrir pelo menos:
 
 | Benefit | Cost |
 |---|---|
-| Intervem antes de crash ou degradacao visivel, alinhado ao objetivo de agir antes da qualidade colapsar [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:121-127 | Thresholds precisam calibracao com traces reais e comportamento do modelo [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:76-79 |
-| Converte token budgeting em loop de controle, nao truncation reativo [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:72-75 | Thresholds agressivos podem aumentar latencia ou churn de resumos [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:76-79 |
-| Usa pontos de intervencao ja definidos no loop owned [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:68-75 | O harness precisa implementar cada acao retornada, ou o monitor vira telemetria passiva [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:76-79 |
-| Ajuda a escolher entre resumo, compressao e nova sessao com base em runway, nao intuicao [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:486-519 | Forecasts podem errar quando usuarios ou tool payloads mudam abruptamente [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:54-57 |
+| Intervem antes de crash ou degradacao visivel, alinhado ao objetivo de agir antes da qualidade colapsar [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:121-127 | Thresholds precisam calibracao com traces reais e comportamento do modelo [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:76-79 |
+| Converte token budgeting em loop de controle, nao truncation reativo [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:72-75 | Thresholds agressivos podem aumentar latencia ou churn de resumos [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:76-79 |
+| Usa pontos de intervencao ja definidos no loop owned [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:68-75 | O harness precisa implementar cada acao retornada, ou o monitor vira telemetria passiva [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:76-79 |
+| Ajuda a escolher entre resumo, compressao e nova sessao com base em runway, nao intuicao [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:486-519 | Forecasts podem errar quando usuarios ou tool payloads mudam abruptamente [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:54-57 |
 
 ## Relationship to Other Patterns
 
@@ -143,11 +143,11 @@ Casos de eval devem cobrir pelo menos:
 
 ## References
 
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:28-37 - quatro componentes do budget e burn rate.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:39-49 - modelo de fases verde, amarela, laranja e vermelha.
-- [[docs/analysis/2026-06-10-token-budgeting/analysis|Token Budgeting Analysis]]:111-117 - token health monitor como mecanismo operacional.
-- [[docs/analysis/2026-06-10-token-budgeting/patterns|Token Budgeting Patterns]]:59-79 - padrao extraido do Phase-Gated Token Health Monitor.
-- [[docs/analysis/2026-06-10-token-budgeting/classification|Token Budgeting Classification]]:34-42 - classificacao Partial Coverage e lacuna NOT_FOUND.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:28-37 - quatro componentes do budget e burn rate.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:39-49 - modelo de fases verde, amarela, laranja e vermelha.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:111-117 - token health monitor como mecanismo operacional.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Patterns]]:59-79 - padrao extraido do Phase-Gated Token Health Monitor.
+- [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Classification]]:34-42 - classificacao Partial Coverage e lacuna NOT_FOUND.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:486-519 - red flags de burn rate, baixo budget e comportamento ansioso.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:523-566 - fases KODA e acoes associadas.
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:577-603 - exemplo de implementacao com thresholds e actions.

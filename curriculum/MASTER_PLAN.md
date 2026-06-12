@@ -98,6 +98,10 @@ koda-long-running-agents/
 │   └── koda-applications/
 │       └── nivel-3-koda.md
 │
+├── 03-nivel-arquiteto/
+│   └── exercises/
+│       └── exercise-04-owner-of-no-role.md
+│
 ├── 04-nivel-4-koda-specific/
 │   ├── 01-koda-architecture.md
 │   ├── 02-customer-journey-flows.md
@@ -107,6 +111,8 @@ koda-long-running-agents/
 │   ├── real-world-exercises/
 │   │   ├── exercise-01.md
 │   │   ├── exercise-02.md
+│   │   ├── exercise-05-manual-brake-question-gate.md
+│   │   ├── exercise-06-deferred-ledger-agentic-work.md
 │   │   └── solutions/
 │   └── case-studies/
 │       ├── case-study-01.md
@@ -228,7 +234,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 5 exercícios do Nível 3
+- [ ] Completei os 6 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

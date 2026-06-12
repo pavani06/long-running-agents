@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "context-engineering", "governanca"]
 aliases: ["grill-me interview", "alignment interview", "one-question-at-a-time interview", "grilling session", "pre-planning interview"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Grill-Me Alignment Interview
 
@@ -58,7 +58,7 @@ The repo has adjacent mechanisms that partially cover alignment interviewing:
 
 ### What is missing
 
-The Partial Coverage gap is the absence of a structured one-question-at-a-time interview workflow with recommended answers and a formal decision/deferral ledger. The classification found no skill, canonical doc, or curriculum material that names Grill-Me Alignment Interview or defines the interview loop mechanics outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:41-57.
+The Partial Coverage gap is the absence of a structured one-question-at-a-time interview workflow with recommended answers and a formal decision/deferral ledger. The classification found no skill, canonical doc, or curriculum material that names Grill-Me Alignment Interview or defines the interview loop mechanics outside the analysis package [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:41-57.
 
 Missing implementation details:
 
@@ -83,14 +83,14 @@ Missing implementation details:
 - **Complements:** [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]], which provides a review split for plans that emerge from the interview.
 - **Precedes:** [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]], because the interview must close ambiguity before planning, executing, and verifying begin.
 - **Depends on:** [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]] for feedback writeback of interview outcomes into persistent memory.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:38-67 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:41-57.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:38-67 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:41-57.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:38-67 - extracted pattern definition with components and flow.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:41-57 - Partial Coverage classification and gap note.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:52-54 - shared design concept before plans framing.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:78-82 - grill-me skill pattern description.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:38-67 - extracted pattern definition with components and flow.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:41-57 - Partial Coverage classification and gap note.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:52-54 - shared design concept before plans framing.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:78-82 - grill-me skill pattern description.
 - [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:20-23 - existing context gathering workflow.
 - [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:88-98 - existing clarification question generation.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:28-41 - existing dual-rubric review with deferred decisions.

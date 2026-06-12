@@ -31,18 +31,18 @@ last_updated: 2026-06-10
 
 ## Analyses
 
-- [[docs/analysis/2026-06-09-12-factor-agents/analysis.md|12-Factor Agents Analysis]] — Extracts the owned loop, deterministic dispatch, micro-agent, and scaffold patterns from 12-Factor Agents.
-- [[docs/analysis/2026-06-09-12-factor-agents/patterns.md|12-Factor Agents Patterns]] — Lists extracted agentic patterns with reusable problem, mechanism, and tradeoff structures.
-- [[docs/analysis/2026-06-09-12-factor-agents/classification.md|12-Factor Agents Classification]] — Compares extracted 12FA patterns against repository coverage and implementation gaps.
-- [[docs/analysis/2026-06-09-12-factor-agents/integration-roadmap.md|12-Factor Agents Integration Roadmap]] — Plans how selected 12FA patterns should enter curriculum and canonical docs.
-- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md|Context Management in Agents Analysis]] — Analyzes strategic context selection, recoverable memory, truncation, and long-session evals.
-- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md|Context Management Patterns]] — Extracts reusable context-management patterns for truncation, catalogs, and late-session validation.
-- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md|Context Management Classification]] — Classifies context-management coverage across canonical docs, curriculum, evidence, and gaps.
-- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/integration-roadmap.md|Context Management Integration Roadmap]] — Maps context-management gaps into canonical, curriculum, and evaluation work.
-- [[docs/analysis/2026-06-10-eval-maturity-phases/analysis.md|Eval Maturity Phases Analysis]] — Describes eval maturity from ad hoc testing to continuous eval-driven development.
-- [[docs/analysis/2026-06-10-eval-maturity-phases/patterns.md|Eval Maturity Patterns]] — Captures production sampling, PR gates, eval tiers, and regression-flywheel operating patterns.
-- [[docs/analysis/2026-06-10-eval-maturity-phases/classification.md|Eval Maturity Classification]] — Classifies repository coverage for eval-maturity phases and identifies missing formal mechanisms.
-- [[docs/analysis/2026-06-10-eval-maturity-phases/integration-roadmap.md|Eval Maturity Integration Roadmap]] — Prioritizes how eval-maturity patterns should become canonical and operational guidance.
+- [[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-analysis.md|12-Factor Agents Analysis]] — Extracts the owned loop, deterministic dispatch, micro-agent, and scaffold patterns from 12-Factor Agents.
+- [[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-patterns.md|12-Factor Agents Patterns]] — Lists extracted agentic patterns with reusable problem, mechanism, and tradeoff structures.
+- [[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md|12-Factor Agents Classification]] — Compares extracted 12FA patterns against repository coverage and implementation gaps.
+- [[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md|12-Factor Agents Integration Roadmap]] — Plans how selected 12FA patterns should enter curriculum and canonical docs.
+- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md|Context Management in Agents Analysis]] — Analyzes strategic context selection, recoverable memory, truncation, and long-session evals.
+- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md|Context Management Patterns]] — Extracts reusable context-management patterns for truncation, catalogs, and late-session validation.
+- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md|Context Management Classification]] — Classifies context-management coverage across canonical docs, curriculum, evidence, and gaps.
+- [[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-integration-roadmap.md|Context Management Integration Roadmap]] — Maps context-management gaps into canonical, curriculum, and evaluation work.
+- [[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md|Eval Maturity Phases Analysis]] — Describes eval maturity from ad hoc testing to continuous eval-driven development.
+- [[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-patterns.md|Eval Maturity Patterns]] — Captures production sampling, PR gates, eval tiers, and regression-flywheel operating patterns.
+- [[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification.md|Eval Maturity Classification]] — Classifies repository coverage for eval-maturity phases and identifies missing formal mechanisms.
+- [[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-integration-roadmap.md|Eval Maturity Integration Roadmap]] — Prioritizes how eval-maturity patterns should become canonical and operational guidance.
 - [[docs/analysis/mhc-backend/2026-05-26-harness-diagnostic.md|MHC Backend Harness Diagnostic]] — Diagnoses KODA backend architecture against Level 1 harness patterns and state infrastructure.
 - [[docs/analysis/mhc-backend/2026-05-26-nivel-2-diagnostic.md|MHC Backend Level 2 Diagnostic]] — Assesses practical pattern maturity for KODA workflows and validation behavior.
 - [[docs/analysis/mhc-backend/2026-05-26-nivel-3-comparacao.md|MHC Backend Level 3 Comparison]] — Compares KODA architecture with advanced multi-agent and state-persistence expectations.

@@ -5,7 +5,7 @@ aliases: ["persistência de estado externo", "memória externa", "external memor
 tags: ["context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
-sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]"]
+sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]
 ---
 
 # External State Persistence
@@ -20,7 +20,7 @@ sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Ex
 
 ## Problem
 
-Agents that rely only on in-context memory forget critical information as conversations exceed the effective context window. The source analysis names this failure mode **Context Amnesia** and records the degradation curve as 0-60 minutes excellent, 60-120 minutes good, 120-180 minutes acceptable, and 180+ minutes erratic; it also classifies the root cause as architectural finite context windows rather than a model bug ([[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:10-15).
+Agents that rely only on in-context memory forget critical information as conversations exceed the effective context window. The source analysis names this failure mode **Context Amnesia** and records the degradation curve as 0-60 minutes excellent, 60-120 minutes good, 120-180 minutes acceptable, and 180+ minutes erratic; it also classifies the root cause as architectural finite context windows rather than a model bug ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:10-15).
 
 The KODA scenario is concrete: a client says "Sou alérgico a glúten" at minute 5, then asks at minute 52 which recommendation is gluten-free, and KODA recommends a product with gluten because it no longer remembers the allergy ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:58-70). In the longer cascade story, the client repeats the gluten allergy between minutes 15 and 45, KODA later processes checkout with a product that violates it, and the client cancels after losing trust ([[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:269-308).
 
@@ -54,7 +54,7 @@ Merge with Current Context
 Generate / Evaluate Response
 ```
 
-This decouples **agent memory** from **model memory**. The model context window handles the current conversation, while the persistent store handles durable facts that must survive truncation, pauses, and cross-session return. The extracted pattern defines the inputs as client/session identifier plus critical data, the output as state persisted in external storage and loaded every turn, and the benefit as independence from the model context window ([[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Problems Patterns]]:8-15).
+This decouples **agent memory** from **model memory**. The model context window handles the current conversation, while the persistent store handles durable facts that must survive truncation, pauses, and cross-session return. The extracted pattern defines the inputs as client/session identifier plus critical data, the output as state persisted in external storage and loaded every turn, and the benefit as independence from the model context window ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Problems Patterns]]:8-15).
 
 | Persist externally | Do not persist as durable state |
 |---|---|
@@ -77,10 +77,10 @@ This decouples **agent memory** from **model memory**. The model context window 
 
 ### What is missing
 
-1. No unified naming of these six pieces as **External State Persistence**; the classification says the repo has the mechanical pieces distributed across six canonical docs but lacks the umbrella pattern that names them as a deliberate architectural strategy ([[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Problems Classification]]:23-29).
-2. No explicit policy for what data qualifies for external storage versus staying in context; the extracted pattern identifies this extraction decision as a limitation because the system must distinguish persistent data from ephemeral content ([[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Problems Patterns]]:12-15).
-3. No canonical doc connects catalog, exact recovery, pause/resume, and writeback as one cohesive external-memory strategy; this gap is stated directly in the classification ([[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Problems Classification]]:23-29).
-4. No tradeoff analysis compares external persistence against larger context windows or summarization-only as a unified strategy; the source analysis records external persistence as a tradeoff, while the classification says no unified tradeoff analysis exists across the six component pieces ([[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:51-58; [[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Problems Classification]]:23-27).
+1. No unified naming of these six pieces as **External State Persistence**; the classification says the repo has the mechanical pieces distributed across six canonical docs but lacks the umbrella pattern that names them as a deliberate architectural strategy ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Problems Classification]]:23-29).
+2. No explicit policy for what data qualifies for external storage versus staying in context; the extracted pattern identifies this extraction decision as a limitation because the system must distinguish persistent data from ephemeral content ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Problems Patterns]]:12-15).
+3. No canonical doc connects catalog, exact recovery, pause/resume, and writeback as one cohesive external-memory strategy; this gap is stated directly in the classification ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Problems Classification]]:23-29).
+4. No tradeoff analysis compares external persistence against larger context windows or summarization-only as a unified strategy; the source analysis records external persistence as a tradeoff, while the classification says no unified tradeoff analysis exists across the six component pieces ([[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:51-58; [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Problems Classification]]:23-27).
 
 ## Tradeoffs
 
@@ -103,9 +103,9 @@ This decouples **agent memory** from **model memory**. The model context window 
 
 - [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:49-111 — problem description, degradation curve, and KODA allergy scenario.
 - [[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]:390-397 — external persistence solution overview.
-- [[docs/analysis/2026-06-10-agent-focus-problems/analysis|Knowledge Extraction]]:10-18 — three fundamental problems and Context Amnesia framing.
-- [[docs/analysis/2026-06-10-agent-focus-problems/patterns|Agent Focus Problems Patterns]]:8-15 — External State Persistence pattern definition.
-- [[docs/analysis/2026-06-10-agent-focus-problems/classification|Agent Focus Problems Classification]]:13-29 — Partial Coverage evidence and missing umbrella doc.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]:10-18 — three fundamental problems and Context Amnesia framing.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-patterns|Agent Focus Problems Patterns]]:8-15 — External State Persistence pattern definition.
+- [[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-classification|Agent Focus Problems Classification]]:13-29 — Partial Coverage evidence and missing umbrella doc.
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-43 — catalog component.
 - [[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]:31-34 — serialization component.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]:28-45 — writeback component.

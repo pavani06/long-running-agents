@@ -1462,6 +1462,71 @@ Multi-agente ruim parece teatro.
 
 ---
 
+## 👤 O Papel Que Falta: Owner-of-No — O Agente Cujo Trabalho é Recusar
+
+Planner, Generator, Evaluator, Orchestrator — todos esses papéis existem para **executar** trabalho. Mas há um papel que sistemas multi-agente raramente incluem: o papel cujo trabalho explícito é **recusar trabalho de baixo valor**.
+
+O [[docs/canonical/owner-of-no-role-design|Owner-of-No Role]] preenche essa lacuna. Não é um agente pessimista. É um papel de design com autoridade, critérios e responsabilidade de produzir alternativas construtivas quando recusa.
+
+### Por que o Owner-of-No é necessário em sistemas multi-agente
+
+Sistemas multi-agente amplificam um risco específico: quando cada agente é especializado em executar bem sua parte, **nenhum agente é especializado em questionar se o trabalho todo deveria existir.** O Search Agent busca o melhor catálogo. O Filter Agent aplica constraints perfeitamente. O Ranking Agent ordena com precisão. O Recommendation Agent escreve uma resposta impecável. Mas se a pergunta original do cliente não justificava todo esse pipeline — por exemplo, "me mostra todos os produtos da loja" sem intenção de compra — ninguém no pipeline diz "isso não deveria rodar".
+
+O Owner-of-No é o papel que faz essa pergunta antes que o pipeline gaste tokens.
+
+### As Três Funções do Owner-of-No
+
+1. **Autoridade de recusa com critérios:** O Owner-of-No pode classificar qualquer intenção como Stop (não construa) ou Defer (não agora). A decisão é baseada em critérios documentados — não em humor ou cansaço. Exemplos de critérios: "intenção sem stakeholder nomeado", "custo estimado de manutenção > valor projetado", "intenção duplica feature existente".
+
+2. **Alternativa construtiva obrigatória:** Toda recusa deve incluir uma alternativa. "Não vamos construir X, mas podemos experimentar Y com 10% do escopo e medir por 30 dias." A recusa nunca é um "não" vazio — é um "não, mas..."
+
+3. **Calibração de julgamento:** O Owner-of-No revisa periodicamente suas decisões passadas contra outcomes reais. "Das 15 features que recusei no último trimestre, quantas alguém pediu depois? Das 20 que aprovei, quantas entregaram o valor projetado?" Esta calibração transforma o julgamento de valor em uma habilidade que melhora com prática.
+
+### Onde o Owner-of-No se encaixa no pipeline KODA
+
+```
+Intenção do cliente
+       │
+       ▼
+┌──────────────────────┐
+│ Owner-of-No          │  ← Classifica: Build, Experiment, Defer, Stop
+│ (papel humano ou     │
+│  política declarativa)│
+└──────┬───────────────┘
+       │
+       ├── Stop  → "Não vamos construir isso. Alternativa: [X]"
+       ├── Defer → "Vale, mas não agora. Condição: [Y]"
+       │
+       ▼ (Build ou Experiment)
+┌──────────────────────┐
+│ Orchestrator         │  ← Roteia para pipeline
+└──────┬───────────────┘
+       │
+       ▼
+   Pipeline: Planner → Generator → Evaluator
+```
+
+No KODA, o Owner-of-No pode ser implementado de três formas, dependendo da maturidade do time:
+
+- **Nível inicial:** Um papel humano (Product Owner, Tech Lead) com a responsabilidade explícita de recusar features que não passam nas três perguntas-freio.
+- **Nível intermediário:** Uma política declarativa no Orchestrator: "features com custo estimado > R$ 500/mês ou sem stakeholder nomeado exigem aprovação do Owner-of-No antes de entrar no pipeline."
+- **Nível avançado:** Um agente especializado Owner-of-No que classifica intenções automaticamente com base em histórico de decisões passadas, escalando para humano apenas casos ambíguos.
+
+### Owner-of-No não é o Evaluator
+
+É comum confundir os dois. O Evaluator avalia a **qualidade do output** (a recomendação está correta? respeita constraints?). O Owner-of-No avalia o **valor do input** (esta intenção justifica o custo de execução?). São gates complementares em extremidades opostas do pipeline:
+
+| Dimensão | Evaluator | Owner-of-No |
+|---|---|---|
+| O que avalia | Qualidade do output | Valor do input |
+| Quando age | Depois da execução | Antes da execução |
+| Vocabulário | APPROVED / REJECTED | Build / Experiment / Defer / Stop |
+| Erro mais grave | Aprovar output errado | Aprovar trabalho que não deveria existir |
+
+Ambos são necessários. Um pipeline sem Evaluator entrega output de baixa qualidade. Um pipeline sem Owner-of-No entrega output de alta qualidade... para features que ninguém precisava.
+
+---
+
 ## 🚀 Checkpoint: O Que Você Aprendeu
 
 - [ ] Consigo explicar por que Generator/Evaluator e o caso de 2 agentes do padrão N-agent.

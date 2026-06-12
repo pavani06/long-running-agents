@@ -5,7 +5,7 @@ aliases: ["invariant compensation", "compensacao invariante", "separacao invaria
 tags: ["agentes-orquestracao", "harness", "governanca"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
-sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction: Harness Evolution]]"]
+sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]
 ---
 
 # Invariant-Compensation Split
@@ -28,7 +28,7 @@ The concrete failure is governance by intuition: "the model improved" becomes a 
 
 ## Solution
 
-Classify every harness control as either a **domain invariant** or a **model-specific compensation** before simplification or removal. The extracted pattern defines the input as a component inventory, the failure each component prevents, domain risk classes, current model capability, incident history, and cost/false-positive metrics; its output is a keep, simplify, measure, or removal-candidate decision with explicit rationale [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns|Pattern Extraction]]:171-191.
+Classify every harness control as either a **domain invariant** or a **model-specific compensation** before simplification or removal. The extracted pattern defines the input as a component inventory, the failure each component prevents, domain risk classes, current model capability, incident history, and cost/false-positive metrics; its output is a keep, simplify, measure, or removal-candidate decision with explicit rationale [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns|Pattern Extraction]]:171-191.
 
 ```
                  +----------------------------+
@@ -91,10 +91,10 @@ Before/after:
 
 ### What is missing
 
-1. No active canonical doc classifies harness controls as permanent domain invariants versus temporary model-specific compensations; the classification marks Invariant-Compensation Split as Missing after reading the system of record and all 27 existing canonical docs [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:143-158.
-2. Adjacent canonical docs cover cost, removal safety, stable prompts, and eval metadata, but the classification says those are non-equivalent because they do not define invariant/compensation classification [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:149-156.
-3. The repository lacked a canonical component-inventory contract with failure-prevention rationale, domain-invariant criteria, compensation criteria, false-positive/cost metrics, and keep/simplify/measure/remove decisions [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:156-158.
-4. The source analysis names permanent invariants and quarterly review behavior, but before this document that distinction lived in analysis/article material rather than Level 2 canonical documentation [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:47-49 [[docs/system-of-record|System of Record]]:14-21.
+1. No active canonical doc classifies harness controls as permanent domain invariants versus temporary model-specific compensations; the classification marks Invariant-Compensation Split as Missing after reading the system of record and all 27 existing canonical docs [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:143-158.
+2. Adjacent canonical docs cover cost, removal safety, stable prompts, and eval metadata, but the classification says those are non-equivalent because they do not define invariant/compensation classification [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:149-156.
+3. The repository lacked a canonical component-inventory contract with failure-prevention rationale, domain-invariant criteria, compensation criteria, false-positive/cost metrics, and keep/simplify/measure/remove decisions [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:156-158.
+4. The source analysis names permanent invariants and quarterly review behavior, but before this document that distinction lived in analysis/article material rather than Level 2 canonical documentation [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:47-49 [[docs/system-of-record|System of Record]]:14-21.
 
 ## Tradeoffs
 
@@ -110,18 +110,18 @@ Before/after:
 - **Depends on:** [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]], because the component inventory is only actionable when Prompt, Context Builder, Switch Statement, and Loop controls are visible intervention points [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:29-75.
 - **Validated by:** [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]], because harness evolution decisions need observed pain, evidence, current capability, selected next step, owner, operating cost, and review date [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]:51-60.
 - **Complements:** [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]], because stable prompt preservation is one example of an invariant-like harness contract that must not be removed by generic context reduction [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41.
-- **Complements:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] and [[docs/canonical/external-state-persistence|External State Persistence]], because the source analysis identifies external evaluation and state persistence as permanent invariants rather than temporary model compensations [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:47-49.
+- **Complements:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] and [[docs/canonical/external-state-persistence|External State Persistence]], because the source analysis identifies external evaluation and state persistence as permanent invariants rather than temporary model compensations [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:47-49.
 
 ## References
 
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:15-17 - Context Loader cost and model-capability change scenario.
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:117-125 - harness ossification as bug surface, latency, token cost, complexity, and maintenance.
 - [[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]:161-171 - permanent architectural invariants and quarterly-review boundary.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:47-49 - permanent-invariant model extracted from the source article.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/analysis|Knowledge Extraction]]:134-140 - synthesis: smallest measured harness that preserves invariants.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns|Pattern Extraction]]:171-191 - Invariant-Compensation Split definition, inputs, outputs, benefits, and limitations.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/patterns.yaml|Pattern Extraction YAML]]:242-273 - structured component list and flow for this pattern.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification|Classification]]:143-158 - Missing classification and NOT_FOUND confirmation.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/classification.yaml|Classification YAML]]:197-217 - structured Missing classification and nearest adjacent evidence.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:47-49 - permanent-invariant model extracted from the source article.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:134-140 - synthesis: smallest measured harness that preserves invariants.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns|Pattern Extraction]]:171-191 - Invariant-Compensation Split definition, inputs, outputs, benefits, and limitations.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:242-273 - structured component list and flow for this pattern.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:143-158 - Missing classification and NOT_FOUND confirmation.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification.yaml|Classification YAML]]:197-217 - structured Missing classification and nearest adjacent evidence.
 - [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]:57-60 - adjacent harness-evolution and rollback questions.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41 - adjacent stable prompt preservation during context reduction.

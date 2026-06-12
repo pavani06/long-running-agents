@@ -5,7 +5,7 @@ aliases: ["n+1 evals", "long session evals"]
 tags: ["evals", "context-engineering"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics Concept]]"]
-sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis|Context Management Analysis]]"]
+sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]
 ---
 # N+1 Long-Session Evals
 
@@ -45,14 +45,14 @@ The eval result is not merely "within token budget". The pass condition is that 
 
 The repo already has the evaluation vocabulary and adjacent long-session practices:
 
-- The source analysis defines the target mechanic as loading 10 turns, applying the normal context and memory strategy, and testing the 11th turn (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:98`).
+- The source analysis defines the target mechanic as loading 10 turns, applying the normal context and memory strategy, and testing the 11th turn (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:98`).
 - Harness Improvements proposes a sample of 50 long conversations for compaction shadow tests (`curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:570`).
 - Harness Improvements also prescribes measuring critical-fact retention in long, noisy conversations after shadow compaction (`curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:1030`).
 - The harness evolution playbook includes a regression battery for long conversations, incomplete responses, and context limits (`curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741`).
 
 ### What is missing
 
-The classification found no named `N+1` long-session eval in the canonical docs, curriculum, evidence, decisions, or operational skills outside this analysis output (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:64`). Existing tests are broader long-conversation or harness-evolution checks; this pattern names the precise fixture shape.
+The classification found no named `N+1` long-session eval in the canonical docs, curriculum, evidence, decisions, or operational skills outside this analysis output (`docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:64`). Existing tests are broader long-conversation or harness-evolution checks; this pattern names the precise fixture shape.
 
 The missing implementation details are:
 
@@ -80,9 +80,9 @@ The missing implementation details are:
 
 ## References
 
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/analysis.md:98` — source N+1 eval mechanism.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/patterns.md:106` — extracted long-session N+1 pattern.
-- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/classification.md:52` — Partial Coverage classification and gap.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis.md:98` — source N+1 eval mechanism.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md:106` — extracted long-session N+1 pattern.
+- `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md:52` — Partial Coverage classification and gap.
 - `curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:570` — long-conversation compaction shadow tests.
 - `curriculum/04-nivel-4-koda-specific/05-harness-improvements.md:1030` — critical-fact retention in long noisy conversations.
 - `curriculum/07-implementation-guides/06-harness-evolution-playbook.md:741` — regression battery for long conversations and context limits.

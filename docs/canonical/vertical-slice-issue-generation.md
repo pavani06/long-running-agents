@@ -4,8 +4,8 @@ type: canonical
 tags: ["agentes-orquestracao", "governanca"]
 aliases: ["vertical slice issues", "layer-spanning issues", "behavior-path issues", "vertical slice generation"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[.opencode/skills/refine-issue/SKILL|refine-issue skill]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]"]
-sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Workflow Analysis]]"]
+relates-to: ["[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/refine-issue/SKILL|refine-issue skill]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Vertical-Slice Issue Generation
 
@@ -19,9 +19,9 @@ sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-ma
 
 ## Problem
 
-Agents tend to implement horizontally: all database changes, then all API changes, then all UI changes, one layer at a time. This delays integration feedback and makes AFK progress look larger than it truly is. The source analysis describes the failure mode as building all infrastructure layers before a single behavior path works, leaving the agent with invisible integration failures that surface only when layers finally meet ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|Matt Pocock Analysis]]:94-95).
+Agents tend to implement horizontally: all database changes, then all API changes, then all UI changes, one layer at a time. This delays integration feedback and makes AFK progress look larger than it truly is. The source analysis describes the failure mode as building all infrastructure layers before a single behavior path works, leaving the agent with invisible integration failures that surface only when layers finally meet ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Analysis]]:94-95).
 
-The repository already decomposes issues into executable sub-issues, but the decomposition is organized by file or file pair rather than by observable behavior path. Each sub-issue targets a single file or tightly-coupled pair, defines its dependencies, and gates progress on acceptance criteria and a verification step. This produces clean work items with clear dependencies but can miss the cross-layer integration that makes a slice work end-to-end ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:113-121).
+The repository already decomposes issues into executable sub-issues, but the decomposition is organized by file or file pair rather than by observable behavior path. Each sub-issue targets a single file or tightly-coupled pair, defines its dependencies, and gates progress on acceptance criteria and a verification step. This produces clean work items with clear dependencies but can miss the cross-layer integration that makes a slice work end-to-end ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:113-121).
 
 A batch of five file-level sub-issues that all complete does not guarantee that the database change, the API handler, and the UI component all agree on the same behavior. The feedback cycle that catches this gap arrives late: at the Verification Gate, at PR review, or during manual QA.
 
@@ -45,7 +45,7 @@ The mechanics differ from file-level decomposition in three ways:
 
 3. **Dependencies are behavior-blockers, not file-blockers.** A slice that lets a user view orders depends on the slice that lets a user place orders, not on the file that defines the OrderRepository interface. Dependencies encode the integration graph, not the file graph.
 
-The pattern from the source specifies this as the output of a Destination PRD: convert destination goals into observable behavior paths, slice each path across the layers needed to make one behavior work, attach acceptance checks and blockers, and keep each slice small enough for one AFK implementation session ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:185-188).
+The pattern from the source specifies this as the output of a Destination PRD: convert destination goals into observable behavior paths, slice each path across the layers needed to make one behavior work, attach acceptance checks and blockers, and keep each slice small enough for one AFK implementation session ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:185-188).
 
 Boundary rules for slice sizing:
 
@@ -65,7 +65,7 @@ Boundary rules for slice sizing:
 
 ### What is missing from the pattern
 
-The Partial Coverage gap is that issue generation is organized by file/pair rather than by layer-spanning behavior path. The classification found no guidance for vertical-slice generation in docs, curriculum, or skills outside this analysis package ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:120-124).
+The Partial Coverage gap is that issue generation is organized by file/pair rather than by layer-spanning behavior path. The classification found no guidance for vertical-slice generation in docs, curriculum, or skills outside this analysis package ([[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:120-124).
 
 Missing pieces:
 
@@ -91,13 +91,13 @@ Missing pieces:
 - **Enables:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] because each slice produces testable behavior that a separate evaluator can verify against the acceptance criteria.
 - **Integrates with:** [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]] because vertical slices populate the ready queue with independently grabbable, cross-layer work items.
 - **Depends on:** [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] for the current decomposition workflow and dependency management that vertical-slice generation extends.
-- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|Matt Pocock Patterns]]:160-188 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:108-124.
+- **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:160-188 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:108-124.
 
 ## References
 
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/patterns|patterns]]:160-188 - extracted pattern definition with behavior paths, layer-spanning tasks, acceptance checks, and blocker graph.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/classification|classification]]:108-124 - Partial Coverage classification and gap analysis for vertical-slice mechanics.
-- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/analysis|analysis]]:92-98 - vertical-slice issue generation as integration-feedback graph.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:160-188 - extracted pattern definition with behavior paths, layer-spanning tasks, acceptance checks, and blocker graph.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:108-124 - Partial Coverage classification and gap analysis for vertical-slice mechanics.
+- [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:92-98 - vertical-slice issue generation as integration-feedback graph.
 - [[.opencode/skills/refine-issue/SKILL|refine-issue skill]]:8-86 - existing decomposition workflow, sub-issue template, dependency model, and Verification Gate.
 - [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]:59-82 - existing sub-issue creation with acceptance criteria and BLOCKED BY.
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:29-73 - three-phase decomposition with plan, execute, verify gates.
