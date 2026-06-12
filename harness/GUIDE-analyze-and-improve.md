@@ -149,61 +149,49 @@ Crie `PROGRESS.md` na raiz do repositório (ou sobrescreva se já existir):
 
 ### 4.4 Criar test-results.json com contrato para cada fase
 
-Sobrescreva `harness/test-results.json`:
+> **Nota:** O script `setup-analysis.sh` gera este arquivo automaticamente. O exemplo abaixo
+> documenta o schema para referência. O template canônico está em
+> `.opencode/skills/analyze-and-improve/harness/templates/test-results.json`.
+
+Schema (todas as 7 fases seguem o mesmo padrão):
 
 ```json
 {
   "phase-0": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-mental-model.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-mental-model.yaml"],
+    "evidence": ["docs/analysis/<date>-<slug>/<date>-<slug>-mental-model.md", "..."],
     "evaluated_by": null,
-    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve"
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   },
   "phase-1": {
     "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-analysis.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-analysis.yaml"],
+    "evidence": ["docs/analysis/<date>-<slug>/<date>-<slug>-analysis.md", "..."],
     "evaluated_by": null,
-    "notes": "Extracao de conhecimento da fonte — Phase 1"
-  },
-  "phase-2": {
-    "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-patterns.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-patterns.yaml"],
-    "evaluated_by": null,
-    "notes": "Extracao de padroes reutilizaveis — Phase 2"
-  },
-  "phase-3": {
-    "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-classification.md", "docs/analysis/PLACEHOLDER/PLACEHOLDER-classification.yaml"],
-    "evaluated_by": null,
-    "notes": "Classificacao contra repositorio — Phase 3"
-  },
-  "phase-4": {
-    "passes": false,
-    "evidence": ["docs/analysis/PLACEHOLDER/PLACEHOLDER-integration-roadmap.md"],
-    "evaluated_by": null,
-    "notes": "Geracao de artefatos e roadmap — Phase 4"
-  },
-  "phase-5": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Integracao — atualiza system-of-record e indices"
-  },
-  "phase-6": {
-    "passes": false,
-    "evidence": [],
-    "evaluated_by": null,
-    "notes": "Curriculum Deep Integration — opcional"
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": null,
+    "retry_count": 0,
+    "started_at": null,
+    "completed_at": null
   }
+  // ... phases 2-6 seguem o mesmo padrão
 }
 ```
 
-Substitua `PLACEHOLDER` pelo `<date>-<source-slug>` real ANTES de rodar:
+Campos de métricas (registrados automaticamente pelo harness durante a execução):
 
-```bash
-# Exemplo:
-sed -i 's/PLACEHOLDER/2026-06-11-minha-talk/g' harness/test-results.json
-```
+| Campo | Tipo | Quando é escrito |
+|---|---|---|
+| `duration_seconds` | number\|null | Calculado pelo harness ao final da fase (completed_at - started_at) |
+| `retry_count` | number | Incrementado a cada NEEDS_WORK do evaluator |
+| `started_at` | string (ISO 8601)\|null | Registrado pelo builder antes de delegar a fase |
+| `completed_at` | string (ISO 8601)\|null | Registrado pelo harness quando o evaluator aprova |
+
+A geração via `setup-analysis.sh` dispensa o `sed` de PLACEHOLDER — o script faz
+a substituição diretamente a partir dos parâmetros `--source`, `--date`, `--source-slug`.
 
 ### 4.5 Copiar e adaptar harness.sh
 
@@ -412,21 +400,23 @@ export EVALUATOR_AGENT="evaluator"
 ```bash
 cd /mnt/c/Users/pavan/long-running-agents
 
-# 1. Editar PROGRESS.md com os dados da fonte
-#    Preencha: source, date, source-slug
-vim PROGRESS.md
+# Único comando necessário — o script gera PROGRESS.md, test-results.json,
+# cria o diretório de output, e configura STEER.md:
+./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+  --source "Raw-Knowledge/sources/2026-06-11-patterns-for-ai-agents.md" \
+  --date "2026-06-11" \
+  --source-slug "patterns-for-ai-agents"
 
-# 2. Substituir PLACEHOLDER no test-results.json
-sed -i "s/PLACEHOLDER/$(grep -oP 'source-slug\*\*: \K.+' PROGRESS.md | head -1)/g" harness/test-results.json
-#    (Ou faça manualmente: troque PLACEHOLDER por ex: 2026-06-11-minha-talk)
+# Para preview sem escrever:
+./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+  --source "Raw-Knowledge/sources/minha-talk.md" --dry-run
 
-# 3. Criar diretório de output
-mkdir -p "docs/analysis/$(grep -oP 'date\*\*: \K.+' PROGRESS.md | head -1)-$(grep -oP 'source-slug\*\*: \K.+' PROGRESS.md | head -1)"
-
-# 4. Verificar que está tudo pronto
+# Verificar que está tudo pronto
 cat PROGRESS.md
-cat harness/test-results.json | python3 -m json.tool
+python3 -c "import json; json.load(open('harness/test-results.json'))" && echo "JSON válido"
 ```
+O `setup-analysis.sh` substitui os passos manuais de editar PROGRESS.md, rodar sed
+para PLACEHOLDER, e criar diretório de output. Consulte `--help` para todas as opções.
 
 ### 5.2 Rodar o loop completo (modo automático)
 
@@ -547,18 +537,14 @@ cd /mnt/c/Users/pavan/long-running-agents
 # Suponha que você tem a transcrição de uma talk em:
 # Raw-Knowledge/sources/2026-06-11-patterns-for-ai-agents.md
 
-# 1. Editar PROGRESS.md:
-#    source: Raw-Knowledge/sources/2026-06-11-patterns-for-ai-agents.md
-#    date: 2026-06-11
-#    source-slug: patterns-for-ai-agents
+# 1. Rodar o setup (substitui edição manual de PROGRESS.md, sed de PLACEHOLDER,
+#    e criação de diretório):
+./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+  --source "Raw-Knowledge/sources/2026-06-11-patterns-for-ai-agents.md" \
+  --date "2026-06-11" \
+  --source-slug "patterns-for-ai-agents"
 
-# 2. Atualizar test-results.json:
-sed -i 's/PLACEHOLDER/2026-06-11-patterns-for-ai-agents/g' harness/test-results.json
-
-# 3. Criar diretório de output:
-mkdir -p docs/analysis/2026-06-11-patterns-for-ai-agents
-
-# 4. Rodar:
+# 2. Rodar o harness:
 ./harness/harness-analysis.sh
 
 # O harness vai:

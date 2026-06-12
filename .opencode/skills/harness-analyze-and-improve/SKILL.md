@@ -15,6 +15,16 @@ Orquestro a execucao do pipeline `analyze-and-improve` diretamente via `task()`,
 
 Leio `PROGRESS.md` e `harness/test-results.json` para determinar a proxima fase pendente, delego para o agente apropriado conforme a prescricao da skill `analyze-and-improve`, e atualizo o progresso apos cada fase.
 
+**Setup inicial**: Antes da primeira execucao, rode o script de bootstrap para criar os arquivos de contrato:
+
+```bash
+./.opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+  --source <path> --date YYYY-MM-DD --source-slug <slug>
+```
+
+Isso gera `PROGRESS.md` e `harness/test-results.json` com os parametros corretos.
+Ambos os mecanismos de execucao abaixo dependem desses arquivos existirem.
+
 ## Dual Execution Mechanism
 
 O harness existe em duas formas. Use a correta para seu contexto:
