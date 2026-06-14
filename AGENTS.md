@@ -19,17 +19,33 @@ Each work session should handle one concrete task. If a second unrelated task ap
 
 Do not hide confusion. Surface tradeoffs, missing context, and conflicts before acting.
 
+Liste premissas explicitamente antes de implementar. Se houver incerteza, pergunte — o custo de uma pergunta e menor que o de codigo descartado.
+
+> Detalhes operacionais: [[.opencode/skills/karpathy-guidelines/SKILL|karpathy-guidelines]] — principio "Think Before Coding"
+
 ## Rule 2: Minimum Viable Change
 
 Write the minimum code or documentation that solves the current task. No speculative abstractions, future-proofing, or unrelated cleanup.
+
+Nenhuma abstracao para codigo usado uma unica vez. Se 200 linhas podem ser 50, reescreva. Pergunta-ancora: "Um engenheiro senior diria que isso esta supercomplicado?"
+
+> Detalhes operacionais: [[.opencode/skills/karpathy-guidelines/SKILL|karpathy-guidelines]] — principio "Simplicity First"
 
 ## Rule 3: Touch Only What You Must
 
 Modify only files required for the task. Clean up only your own mess. Never revert user or tool changes you did not make unless explicitly asked.
 
+Nao "melhore" codigo adjacente, comentarios, ou formatacao. Respeite o estilo existente do arquivo. Se notar problemas nao relacionados, mencione no comentario final — nao corrija. Cada linha alterada deve ser rastreavel ao pedido.
+
+> Detalhes operacionais: [[.opencode/skills/karpathy-guidelines/SKILL|karpathy-guidelines]] — principio "Surgical Changes"
+
 ## Rule 4: Define Success and Verify It
 
 Before implementation, define what done means in concrete, checkable terms. After implementation, verify against that condition with the narrowest relevant checks first, then wider checks when appropriate.
+
+Transforme tarefas vagas em metas verificaveis: "Adiciona validacao" → "Escreva teste → implemente → verifique que passa". Para tarefas multi-etapa, use o formato: `1. [Passo] → verify: [check]`. Criterios fortes permitem loop autonomo ate passar.
+
+> Detalhes operacionais: [[.opencode/skills/karpathy-guidelines/SKILL|karpathy-guidelines]] — principio "Goal-Driven Execution"
 
 ## Rule 5: GitHub Issues and Branches
 
@@ -241,13 +257,15 @@ When creating a new document:
 
 When using parallel background agents (run_in_background=true):
 
-- Do NOT react to individual [BACKGROUND TASK RESULT READY]
-  notifications. These are informational only.
+- Do NOT collect results from individual [BACKGROUND TASK RESULT READY]
+  notifications via background_output(). These are informational only
+  for progress tracking, not action triggers.
+- You MAY emit short commentary acknowledging progress ("Phase 4a done,
+  2/3 complete") — this keeps the human in the loop without violating
+  the rule against premature result collection.
 - Wait for [ALL BACKGROUND TASKS COMPLETE] before collecting
   any results via background_output().
 - Collect ALL results in a single batch after ALL COMPLETE.
-- Individual READY notifications before ALL COMPLETE mean
-  "one finished, others still running" — not "act now."
 
 This prevents wasted cycles waiting for partial completions
-and ensures results are processed as a coherent batch.
+while maintaining visibility into long-running parallel work.

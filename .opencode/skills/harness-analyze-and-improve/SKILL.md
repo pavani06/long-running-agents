@@ -284,7 +284,9 @@ NEVER commit without asking the user. After each phase completes:
 - Reagir a notificacoes [BACKGROUND TASK RESULT READY] antes do
   [ALL BACKGROUND TASKS COMPLETE]. Espere sempre o ALL COMPLETE
   para coletar resultados de todos os background agents de uma vez.
-  Notificacoes parciais sao informativas, nao acionaveis.
+  Notificacoes parciais sao informativas, nao acionaveis —
+  voce PODE emitir commentary curto de progresso ("Phase 4a concluida, 2/3"),
+  mas NUNCA chame background_output() antes de ALL COMPLETE.
 
 ## Reference
 

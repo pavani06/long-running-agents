@@ -18,7 +18,7 @@ This skill REQUIRES one mandatory parameter and accepts three optional parameter
 | `source` | **Yes** | Absolute path, URL, or array of paths to the document(s) to analyze. Single file: `Raw-Knowledge/sources/2026-06-09-slug.md`. Multiple files: array of paths (aggregated before Phase 1). Ex: `["Raw-Knowledge/sources/slug.md", "Raw-Knowledge/concepts/related.md", "Raw-Knowledge/entities/tool.md"]` |
 | `date` | No | Date for output dir. Defaults to today (`YYYY-MM-DD`). Ex: `2026-06-09` |
 | `source-slug` | No | Short slug for output dir. Derived from source filename if omitted. Ex: `12-factor-agents` |
-| `incremental` | No | Boolean, default `false`. When `true`, Phase 0 reuses the most recent mental model from `mapa-mental-repo/` and only updates deltas instead of rebuilding from scratch. |
+| `incremental` | No | Boolean, default `false`. When `true`, Phase 0 reuses the most recent mental model from `mapa-mental-repo/` and only updates deltas instead of rebuilding from scratch. **Novo:** Se nao especificado, o orquestrador aplica heuristica de elegibilidade automatica (Passo 0-pre). Passe `incremental=false` explicitamente para forcar full rebuild mesmo com modelo recente. |
 
 Example invocations:
 
@@ -173,6 +173,42 @@ mapa-mental-repo/
 **Objetivo:** Antes de analisar o documento externo, construir ou atualizar um modelo mental do repositorio alvo — entender goals, arquitetura, padroes, abstracoes e terminologia. Esse modelo serve como contexto canonico para todas as fases subsequentes.
 
 Dois modos de operacao, controlados pelo parametro `incremental`:
+
+### Passo 0-pre: Incremental Eligibility Check (orquestrador — NAO delegar)
+
+Antes de decidir entre full rebuild e incremental, o orquestrador DEVE:
+
+0. **Verificar parametro explicito**: Se `incremental` foi passado explicitamente:
+   - `incremental=true` → pular este check, ir direto para "### Modo Incremental"
+   - `incremental=false` → pular este check, ir direto para "### Modo Full Rebuild"
+   - Se nao foi passado (omitido) → prosseguir com os passos abaixo.
+
+1. **Verificar modelos recentes**: Liste `mapa-mental-repo/*.yaml` por data.
+   Se o diretorio esta vazio → full rebuild (sem escolha).
+
+2. **Carregar o modelo mais recente**: Leia o `.yaml` mais recente.
+   Extraia `meta.date` e os campos `terminology`, `goals`, `patterns`.
+
+3. **Calcular relevancia tematica**: Compare o `source-slug` da analise atual
+   com o slug extraido do nome do arquivo do modelo
+   (ex: `mapa-mental-repo/2026-06-12-idsd-method-mental-model.yaml` → slug = `idsd-method`).
+   Heuristicas de match:
+   - Ambos contem o mesmo acronimo (ex: "idsd", "ice", "sdd") → ALTA
+   - Ambos pertencem a mesma serie do mesmo autor → ALTA
+   - Compartilham ≥2 dominios de system-of-record → MEDIA
+   - Sem sobreposicao tematica → BAIXA
+
+4. **Decidir modo**:
+   - Se `dias_desde_modelo <= 7` E `relevancia >= MEDIA` → **adotar incremental automaticamente** (sem perguntar)
+   - Se `dias_desde_modelo <= 30` E `relevancia == ALTA` → **adotar incremental automaticamente**
+   - Se `dias_desde_modelo <= 30` E `relevancia == MEDIA` → **sugerir incremental ao usuario** via commentary
+   - Caso contrario → full rebuild (default)
+
+5. **Documentar a decisao** no commentary: "Usando modo incremental com base em
+   `mapa-mental-repo/<modelo-anterior>` (X dias, relevancia Y)."
+
+Se incremental for adotado, pular para "### Modo Incremental". Caso contrario,
+prosseguir com "### Modo Full Rebuild".
 
 ### Modo Full Rebuild (`incremental=false` — default)
 
@@ -745,6 +781,17 @@ Write files to: curriculum/<appropriate-level>/exercises/exercise-<XX>-<slug>.md
 
 Os agentes 1-3 rodam em paralelo (`run_in_background=true`).
 
+### Heartbeat durante execucao paralela
+
+Enquanto os agentes 1-3 rodam em background, o orquestrador DEVE:
+
+1. A cada notificacao `[BACKGROUND TASK RESULT READY]`, emitir commentary:
+   "Phase 4a concluida (XmYs), N/3 completos. Aguardando restantes."
+2. NUNCA chamar `background_output()` antes de `ALL COMPLETE`.
+3. Se o tempo total estimado exceder 5 minutos, emitir um commentary
+   adicional com ETA: "Exercises e o mais longo (~7min historico)."
+4. Apos `ALL COMPLETE`, coletar todos os outputs em batch e prosseguir.
+
 ### Gate
 
 - [ ] Missing patterns tem canonical doc + skill + exercise
@@ -932,6 +979,16 @@ Apos a Phase 5 (e Phase 6 se executada), o orquestrador DEVE:
 4. **Perguntar ao usuario:** "Quer fazer push?"
 5. Se sim: `git push origin main`.
 
+5.5. **Resetar PROGRESS.md para template limpo** — apos commit bem-sucedido,
+   o orquestrador DEVE resetar o `PROGRESS.md` na raiz do repositorio alvo:
+   ```bash
+   cp .opencode/skills/analyze-and-improve/harness/templates/PROGRESS-clean.md PROGRESS.md
+   git add PROGRESS.md
+   git commit -m "chore(harness): reset PROGRESS.md after pipeline completion"
+   ```
+   Se o usuario optar por nao commitar o reset, o arquivo fica modificado
+   localmente e sera sobrescrito pelo proximo `setup-analysis.sh`.
+
 NUNCA commitar ou dar push sem pergunta explicita. O `AGENTS.md` do repositorio alvo tem precedencia — se ele diz "Do not commit unless the user explicitly asks", respeite.
 
 ---
@@ -1084,6 +1141,12 @@ MUST NOT:
 - **Esperar input do usuario entre fases.** O pipeline e deterministico: output da fase N e input da N+1. Apos cada `task()` completar, o orquestrador DEVE coletar o resultado, atualizar PROGRESS.md e disparar a proxima fase IMEDIATAMENTE. Os unicos gates que param o pipeline sao o Commit Gate (perguntar antes de commit/push) e interrupcao explicita do usuario.
 - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
 - **Usar sync para fases de leitura pesada.** Fases que leem mais de 5 arquivos ou usam `ultrabrain`/`deep` como categoria DEVEM usar `run_in_background=true`. O harness interpreta silencio como travamento em sync; background tem janela de inatividade maior e evita aborts. Aplica-se a Phases 0, 1, 2 e 3.
+- **Ficar em silencio durante background tasks.** Quando agentes paralelos
+  estao rodando (Phase 4 tipica), o orquestrador DEVE emitir commentary de
+  progresso a cada notificacao `[BACKGROUND TASK RESULT READY]`. O formato:
+  "Phase 4a concluida (4m23s), 2/3 completos. Aguardando 4c (exercises)."
+  Isso mantem o humano no loop sem violar a Rule 17 — o orquestrador NAO
+  coleta outputs parciais, apenas sinaliza milestones.
 
 ---
 
