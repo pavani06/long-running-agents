@@ -103,26 +103,40 @@ check_prerequisites() {
 
 # ── Lógica de contrato ────────────────────────────────────────────────────────
 
-# Retorna o nome da próxima fase com passes=false (bash puro)
+# Retorna o nome da próxima fase pendente (passes=false, evaluated_by=null).
+# Fases com passes=false + evaluated_by preenchido são "rework" e emitem warning.
 get_next_feature() {
     local in_block=false
     local current_key=""
+    local passes_val=""
+    local eval_val=""
     while IFS= read -r line; do
-        # Detect start of a phase block: "phase-N": {
         if [[ "$line" =~ ^[[:space:]]*\"(phase-[0-9]+)\"[[:space:]]*:[[:space:]]*\{$ ]]; then
             current_key="${BASH_REMATCH[1]}"
             in_block=true
+            passes_val=""
+            eval_val=""
             continue
         fi
-        # Inside a block, look for "passes": false
-        if $in_block && [[ "$line" =~ \"passes\"[[:space:]]*:[[:space:]]*false ]]; then
-            echo "$current_key"
-            return 0
-        fi
-        # End of block
-        if $in_block && [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
-            in_block=false
-            current_key=""
+        if $in_block; then
+            if [[ "$line" =~ \"passes\"[[:space:]]*:[[:space:]]*(true|false) ]]; then
+                passes_val="${BASH_REMATCH[1]}"
+            elif [[ "$line" =~ \"evaluated_by\"[[:space:]]*:[[:space:]]*(null|\"[^\"]+\") ]]; then
+                eval_val="${BASH_REMATCH[1]}"
+            elif [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
+                if [ "$passes_val" = "false" ]; then
+                    if [ "$eval_val" = "null" ]; then
+                        echo "$current_key"
+                        return 0
+                    else
+                        log_warn "Phase $current_key has passes=false but was already evaluated by $eval_val — needs rework."
+                    fi
+                fi
+                in_block=false
+                current_key=""
+                passes_val=""
+                eval_val=""
+            fi
         fi
     done < "$RESULTS_FILE"
     return 1
@@ -467,13 +481,15 @@ If PASS, state it clearly as the first word of your response."
             fi
         fi
 
-        # Mark as evaluated using bash builtins (no python3 dependency)
+        # Mark as evaluated and passed using bash builtins (no python3 dependency)
         local tmpfile="${RESULTS_FILE}.tmp"
         local in_target=false
         while IFS= read -r line; do
             if [[ "$line" =~ ^[[:space:]]*\"$feature\"[[:space:]]*:[[:space:]]*\{$ ]]; then
                 in_target=true
                 echo "$line"
+            elif $in_target && [[ "$line" =~ \"passes\"[[:space:]]*:[[:space:]]*false ]]; then
+                echo "${line/false/true}"
             elif $in_target && [[ "$line" =~ \"evaluated_by\"[[:space:]]*:[[:space:]]*null ]]; then
                 echo "${line/null/\"evaluator\"}"
             else

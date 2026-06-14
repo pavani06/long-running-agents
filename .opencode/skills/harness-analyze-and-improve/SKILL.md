@@ -44,6 +44,7 @@ Ambos leem os mesmos arquivos de contrato (`PROGRESS.md`, `harness/test-results.
 
 | Param | Required | Description |
 |---|---|---|
+| `source` | No | Path absoluto ou URL do documento fonte. Se fornecido, o harness executa o bootstrap automaticamente (deriva `date` como hoje e `source-slug` do nome do arquivo) antes do Step 0. |
 | `mode` | No | `once` (default), `loop` (todas as fases), ou `feature:<phase-N>` (fase especifica) |
 
 Examples:
@@ -51,6 +52,7 @@ Examples:
 Load harness-analyze-and-improve with mode=once
 Load harness-analyze-and-improve with mode=feature:phase-0
 Load harness-analyze-and-improve with mode=loop
+Load harness-analyze-and-improve with source=C:\Users\pavan\raw-knowledge\sources\2026-06-11-talk.md, mode=loop
 ```
 
 mode=loop: executa TODAS as fases pendentes sem perguntar.
@@ -90,17 +92,46 @@ Conforme `analyze-and-improve` SKILL.md:
 
 ## Execution Flow
 
+### Step -1: Auto-Bootstrap (if `source` provided)
+
+If the `source` parameter was provided at invocation and
+`PROGRESS.md` + `harness/test-results.json` do not yet exist:
+
+1. Derive `date` = today (`YYYY-MM-DD`).
+2. Derive `source-slug` from the filename (strip date prefix
+   `YYYY-MM-DD-` and extension `.md`/`.txt`/`.pdf`).
+3. Run the bootstrap script:
+   ```bash
+   echo "s" | bash .opencode/skills/analyze-and-improve/harness/setup-analysis.sh \
+     --source "<source>" --date <date> --source-slug <slug>
+   ```
+   The `echo "s"` auto-confirms the overwrite prompt if files
+   already exist from a previous analysis.
+4. Verify `PROGRESS.md` and `harness/test-results.json` were created
+   and the output directory exists at `docs/analysis/<date>-<slug>/`.
+
+If the files ALREADY exist AND the `source-slug` in `PROGRESS.md`
+matches — skip bootstrap and continue to Step 0 (state validation).
+
+If the files exist but the slug DIFFERS — proceed to Step 0
+(stale detection will offer reset).
+
 ### Step 0: Reset State (fresh analysis)
 
-Before reading context, check if test-results.json has ALL phases
-with passes=true from a PREVIOUS analysis. If yes, reset it:
+Before reading context, perform state validation:
 
-1. Read harness/test-results.json
-2. If ALL phase-N entries have passes=true AND the source-slug
-   in PROGRESS.md differs from the last committed analysis,
-   overwrite test-results.json with fresh template (all phases
-   passes=false, evidence=[], evaluated_by=null).
-3. Template is at: harness/templates/test-results.json
+1. Read harness/test-results.json and PROGRESS.md
+2. Detect stale state: if PROGRESS.md has phases in `## Done`
+   but test-results.json has those same phases with passes=false,
+   ALERT the user: "Estado inconsistente detectado. PROGRESS.md
+   mostra fases concluídas mas test-results.json tem passes=false.
+   Deseja resetar para iniciar nova análise? (sim/não)"
+3. If user says "sim" OR if ALL phase-N entries have passes=true
+   AND the source-slug in PROGRESS.md differs from the last
+   committed analysis, overwrite test-results.json with fresh
+   template (all phases passes=false, evidence=[], evaluated_by=null).
+3. Template is at: .opencode/skills/analyze-and-improve/harness/templates/test-results.json
+   (canonical template with expected evidence paths for phases 0-4).
 
 This prevents the "sed PLACEHOLDER not found" problem from
 session harness-engineering, where test-results.json still
@@ -114,7 +145,11 @@ Read these files to understand the current state:
 
 ### Step 2: Determine Next Phase
 
-Find the first phase in `test-results.json` where `passes` is `false`. Skip phases where `evaluated_by` is already set (they were evaluated but not passing — needs rework).
+Find the first phase in `test-results.json` where `passes` is `false`.
+- Phases with `passes: true` are complete — skip them.
+- Phases with `passes: false` AND `evaluated_by` already set were evaluated
+  but not passing — they need rework. Flag them to the user before retrying.
+- Phases with `passes: false` AND `evaluated_by: null` are pending — execute them.
 
 If `mode=feature:<phase-N>`, force that phase regardless of state.
 
@@ -162,9 +197,10 @@ TARGET_REPOSITORY:
 ### Step 5: Verify Output
 
 After the delegation completes:
-1. Read each evidence file listed in `test-results.json` for that phase
-2. Confirm files exist and have substantial content
-3. Log evidence to `harness/.evidence-reads` (one path per line)
+1. Clear `harness/.evidence-reads` (truncate to empty — evidence is per-phase, not cumulative)
+2. Read each evidence file listed in `test-results.json` for that phase
+3. Confirm files exist and have substantial content
+4. Log evidence to `harness/.evidence-reads` (one path per line)
 
 ### Step 6: Evaluate
 
@@ -175,6 +211,7 @@ Run a self-check:
 - Run `bash scripts/check-obsidian-conventions.sh` (if available)
 
 If PASS:
+- Set `passes` to `true` for the current phase in `harness/test-results.json`
 - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
 - Calculate `duration_seconds` = elapsed seconds between `started_at` and `completed_at`.
   Use shell arithmetic: compute epoch difference with `date -d` (GNU) or
@@ -200,8 +237,11 @@ If NEEDS_WORK:
 - If `mode=loop`: auto-advance to next pending phase WITHOUT
   asking. Only stop if:
   a) AGENT_STOP file exists at repo root, OR
-  b) No more pending phases (all passes=true), OR
+  b) All phases have `passes: true` (pipeline complete), OR
   c) A phase fails evaluation (NEEDS_WORK)
+- If condition (b): read `harness/test-results.json` and output
+  a Pipeline Metrics Summary (duration per phase, retry counts,
+  bottleneck flags for phases >600s or retry_count >0).
 - If no more pending phases (all passes=true): report completion with a
   metrics summary. Read `harness/test-results.json` and output a table:
 
