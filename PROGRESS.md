@@ -24,25 +24,7 @@
 - [x] phase-5: Integration (ses_142bd0657ffedNndaMZ7pXyzz1) — system-of-record.md (+18), INDEX.md (+2), MASTER_PLAN.md (2 edits)
 - [x] phase-6: Curriculum Deep Integration (ses_142babb47ffeYb1pGUf5JvLILs) — 5 patterns em 5 arquivos: sprint-contracts, token-budgeting, multi-agent-systems, GLOSSARY, INDEX (+628/-116)
 
-## In Progress
 
-<!-- A fase atual. Exatamente UMA por vez. -->
-
-- [ ] phase-0: Repository Mental Model
-  - Output esperado: docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model.md + .yaml
-  - Delegado: ultrabrain (bg_8f483bb7)
-  - Modo: full rebuild (14 deltas > 10 threshold; delta-report.md escrito)
-  - Background: sim — aguardando notificacao do sistema
-  - Bloqueios: nenhum
-
-## Next
-
-- [ ] phase-1: Knowledge Extraction
-- [ ] phase-2: Pattern Extraction
-- [ ] phase-3: Classification
-- [ ] phase-4: Improvement Generation
-- [ ] phase-5: Integration
-- [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 

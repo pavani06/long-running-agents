@@ -46,7 +46,7 @@ O arquivo agregado e temporario — nao persiste no repositorio apos a analise.
 
 ## What I Do
 
-Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 7 fases (6 base + 1 opcional), todas delegadas a sub-agentes especializados:
+Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipeline tem 7 fases (Phase 6 executada por default, pode ser pulada), todas delegadas a sub-agentes especializados:
 
 0. **Repository Mental Model** — Construir modelo mental do repositorio alvo (delegado: `ultrabrain`)
 1. **Knowledge Extraction** — Extrair conhecimento nao-obvio de um documento fonte (delegado: `deep`)
@@ -54,7 +54,7 @@ Eu transformo conhecimento externo em melhorias concretas no repositorio. O pipe
 3. **Classification** — Classificar cada padrao contra o repositorio alvo (delegado: `deep`)
 4. **Improvement Generation** — Gerar artefatos em 7 categorias, priorizados por impacto (delegado: `deep` em paralelo)
 5. **Integration** — Atualizar system-of-record e indices (delegado: `quick`)
-6. **Curriculum Deep Integration** (opcional) — Integrar Missing e Partial Coverage no curriculo existente com profundidade total (delegado: `deep`)
+6. **Curriculum Deep Integration** (default) — Integrar Missing e Partial Coverage no curriculo existente com profundidade total (delegado: `deep`). Pode ser pulada se o usuario solicitar.
 
 ## When to Use Me
 
@@ -102,6 +102,10 @@ Use o script de bootstrap para prepara-los:
 
 O skill harness e recomendado para execucao interativa dentro do opencode. O bash harness e util para automacao externa e CI/CD, mas requer ambiente bash completo (grep, python3/jq, date, mkdir) e **nao funciona quando invocado de dentro de uma sessao opencode**.
 
+**Phase 0 e Phase 1 podem rodar em paralelo** quando o documento fonte (parametro `source`) ja esta disponivel no inicio da sessao. A Phase 0 le o repositorio; a Phase 1 le o documento fonte — sao independentes. Dispare ambas com `run_in_background=true` no mesmo turno e colete os resultados antes de prosseguir para Phase 2.
+
+O orquestrador NAO deve pausar entre fases para check-in. O pipeline avanca automaticamente: coleta output → atualiza PROGRESS.md → dispara proxima fase. Interrupcao so por Commit Gate ou comando explicito.
+
 ## Target Repository Context
 
 TODA delegacao via `task()` nas Phases 0-6 DEVE incluir este bloco no prompt:
@@ -137,7 +141,6 @@ docs/analysis/<date>-<source-slug>/
   <date>-<source-slug>-patterns.yaml
   <date>-<source-slug>-classification.md      # Phase 3
   <date>-<source-slug>-classification.yaml
-  <date>-<source-slug>-integration-roadmap.md # Phase 4
 ```
 
 Artefatos concretos (canonical docs, skills, exercises) gerados na Phase 4 vao para seus diretorios definitivos (`docs/canonical/`, `.opencode/skills/`, `curriculum/`).
@@ -186,7 +189,7 @@ Delegue para `ultrabrain`:
 task(
   category="ultrabrain",
   load_skills=[],
-  run_in_background=false,
+  run_in_background=true,
   prompt="TASK: Build a mental model of the target repository.
 
 TARGET_REPOSITORY:
@@ -283,7 +286,7 @@ Apenas o Passo 0b e delegado; os Passos 0a e 0c sao executados diretamente pelo 
 task(
   category="ultrabrain",
   load_skills=[],
-  run_in_background=false,
+  run_in_background=true,
   prompt="TASK: Update the repository mental model incrementally using the previous model as base.
 
 TARGET_REPOSITORY:
@@ -393,7 +396,7 @@ Delegue para `deep`:
 task(
   category="deep",
   load_skills=[],
-  run_in_background=false,
+  run_in_background=true,
   prompt="TASK: Extract all non-obvious knowledge from the source document below.
 
 TARGET_REPOSITORY:
@@ -471,7 +474,7 @@ Delegue para `ultrabrain`:
 task(
   category="ultrabrain",
   load_skills=[],
-  run_in_background=false,
+  run_in_background=true,
   prompt="TASK: Identify reusable patterns from the knowledge extraction below.
 Only keep patterns applicable to agentic systems.
 
@@ -551,7 +554,7 @@ Delegue para `deep`:
 task(
   category="deep",
   load_skills=[],
-  run_in_background=false,
+  run_in_background=true,
   prompt="TASK: Classify each extracted pattern against the target repository using evidence-based classification.
 
 TARGET_REPOSITORY:
@@ -739,35 +742,10 @@ Write files to: curriculum/<appropriate-level>/exercises/exercise-<XX>-<slug>.md
 )
 ```
 
-**Agente 4: Integration Roadmap**
+<!-- OBSOLETO: Agent 4 (Integration Roadmap) fundido na Phase 5. A geracao do roadmap
+     agora e feita como "Artifacts Created Summary" dentro da propria Phase 5. -->
 
-```typescript
-task(
-  category="deep",
-  load_skills=[],
-  run_in_background=false,
-  prompt="TASK: Create an integration roadmap mapping all patterns to concrete integration points.
-
-TARGET_REPOSITORY:
-  path: <absolute-path-to-repo>
-  name: <repo-name>
-  output_dir: docs/analysis/<date>-<source-slug>/
-  system_of_record: docs/system-of-record.md
-
-Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for all classified patterns.
-
-Create a roadmap with:
-1. Summary matrix (pattern, classification, impact, effort, priority, integration surface)
-2. Artifacts created during this session (canonical docs, skills, exercises)
-3. Cross-reference table linking patterns to curriculum levels
-4. Gap analysis (what is still uncovered)
-
-OUTPUT:
-- docs/analysis/<date>-<source-slug>/<date>-<source-slug>-integration-roadmap.md"
-)
-```
-
-Os agentes 1-3 rodam em paralelo (`run_in_background=true`). O agente 4 (roadmap) roda sincrono depois que 1-3 completam, pois referencia os artefatos criados.
+Os agentes 1-3 rodam em paralelo (`run_in_background=true`).
 
 ### Gate
 
@@ -793,6 +771,10 @@ Os agentes 1-3 rodam em paralelo (`run_in_background=true`). O agente 4 (roadmap
 | `curriculum/INDEX.md` | Se novos exercicios foram criados, adicionar a listagem. |
 | `curriculum/README.md` | Se a arvore de diretorios mudou, atualizar diagrama. |
 | `curriculum/MASTER_PLAN.md` | Se contagem de exercicios ou topicos mudou, atualizar. |
+
+### Artifacts Created Summary
+
+Antes de atualizar os indices, o agente DEVE ler os outputs da Phase 4 (canonical docs, skills, exercises) e gerar uma secao de "Artifacts Created" dentro do proprio system-of-record.md ou como subsecao da atualizacao. Isso substitui a antiga Agent 4 (Integration Roadmap separado).
 
 ### Delegacao
 
@@ -841,7 +823,9 @@ NUNCA commitar ou dar push sem pergunta explicita. O `AGENTS.md` do repositorio 
 
 ---
 
-## Phase 6: Curriculum Deep Integration (opcional)
+## Phase 6: Curriculum Deep Integration (default — pode ser pulada)
+
+Esta fase faz parte do pipeline default. O orquestrador a executa automaticamente apos a Phase 5. O usuario pode pular a Phase 6 explicitamente ("pule a Phase 6", "nao faca a integracao curricular").
 
 **Objetivo:** Integrar padroes Missing e Partial Coverage no curriculo existente. Para Partial Coverage, enriquece modulos que ja tratam do tema com a mecanica que faltava. Para Missing, garante que o novo conceito nao viva isolado — os core concepts, checklists e playbooks que tratam do mesmo dominio ganham a profundidade que o tema merece, indo alem de um simples cross-reference.
 
@@ -852,7 +836,7 @@ NUNCA commitar ou dar push sem pergunta explicita. O `AGENTS.md` do repositorio 
 | **Missing** + High | SIM | Canonical doc + skill + exercise (Phase 4) + integracao profunda nos modulos existentes (Phase 6) |
 | **Missing** + Medium | SIM | Mesmo tratamento — Missing sempre merece integracao nos modulos que tratam do dominio |
 | Partial Coverage + High | SIM | Enriquece modulos existentes com a mecanica que faltava |
-| Partial Coverage + Medium | OPCIONAL | Phase 6 ou apenas canonical doc, a criterio do orquestrador |
+| Partial Coverage + Medium | SIM | Phase 6 ou apenas canonical doc, a criterio do orquestrador |
 | Already Exists | NAO | So cross-reference nos artefatos da propria sessao |
 | Better Implementation | NAO | Documentar superioridade, nao duplicar |
 
@@ -984,18 +968,20 @@ MUST NOT:
 - **Delegar o Passo 0a (validacao de deltas).** O scan rapido de deltas e responsabilidade do orquestrador — requer acesso ao filesystem e comandos `find`/`ls`. Nao delegue para sub-agente.
 - **Esquecer de executar o Passo 0c.** Sem a copia em `mapa-mental-repo/`, a proxima execucao incremental nao tem base para comparar. Isso quebra o modo incremental silenciosamente.
 - **Acumular mais de 5 modelos ativos em `mapa-mental-repo/`.** O Passo 0c ja faz a limpeza automatica, mas se houver falha nesse passo, o diretorio polui e dificulta identificar o modelo mais recente.
+- **Esperar input do usuario entre fases.** O pipeline e deterministico: output da fase N e input da N+1. Apos cada `task()` completar, o orquestrador DEVE coletar o resultado, atualizar PROGRESS.md e disparar a proxima fase IMEDIATAMENTE. Os unicos gates que param o pipeline sao o Commit Gate (perguntar antes de commit/push) e interrupcao explicita do usuario.
 - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+- **Usar sync para fases de leitura pesada.** Fases que leem mais de 5 arquivos ou usam `ultrabrain`/`deep` como categoria DEVEM usar `run_in_background=true`. O harness interpreta silencio como travamento em sync; background tem janela de inatividade maior e evita aborts. Aplica-se a Phases 0, 1, 2 e 3.
 
 ---
 
 ## Verification Gates
 
-Depois de completar as fases (0-5 obrigatorias, 6 opcional):
+Depois de completar as fases (0-5 obrigatorias, 6 executada por default — pode ser pulada):
 
 - [ ] O parametro `source` foi fornecido e validado antes de qualquer execucao
 - [ ] Se `source` for array: agregacao produziu arquivo temporario com metadados de proveniencia
 - [ ] `docs/analysis/<date>-<source-slug>/` contem os 4 pares .md+.yaml (mental-model, analysis, patterns, classification)
-- [ ] `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-integration-roadmap.md` existe
+- [ ] `docs/system-of-record.md` contem secao "Artifacts Created" listando os outputs da Phase 4 (substitui o antigo integration-roadmap.md)
 - [ ] `docs/canonical/` contem docs para padroes Missing e P1
 - [ ] `.opencode/skills/` contem skills para padroes Missing
 - [ ] `curriculum/` contem exercises para padroes Missing
