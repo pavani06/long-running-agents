@@ -1,0 +1,481 @@
+# Plano de Planejamento: Quality Gates no Pipeline analyze-and-improve
+# =============================================================================
+# Objetivo deste arquivo: servir como brief de contexto para um agente em outra
+# sessao ler tudo, entender o cenario, e produzir um plano detalhado de execucao.
+#
+# O que NAO e este arquivo: nao e o plano de implementacao final. E o brief que
+# o agente usara para PRODUZIR o plano detalhado (com edits, verificacoes, ordem).
+#
+# Contexto de origem: sessao 2026-06-12, discussao sobre como os patterns extraidos
+# do artigo "The Trap Spec-Driven Development Is Setting" se aplicariam ao proprio
+# pipeline analyze-and-improve.
+# =============================================================================
+
+meta:
+  title: "Plano: Quality Gates no Pipeline analyze-and-improve"
+  type: plan
+  date: "2026-06-12"
+  source_discussion: "Aplicacao dos patterns SDD Trap ao pipeline analyze-and-improve"
+  target_agent_task: "Ler todo o contexto e produzir plano detalhado de implementacao"
+  estimated_reading_time: "45-60 min"
+  key_insight: |
+    O pipeline sempre constroi -- a governanca nao e sobre frear a construcao,
+    mas sobre garantir que o que foi construido esta CORRETO. O harness atual
+    verifica forma (frontmatter, existencia de arquivo, wikilinks). Falta
+    verificacao de conteudo (o canonical doc esta conceitualmente correto?
+    a extracao capturou o insight central? a classificacao tem evidencias solidas?).
+
+# =============================================================================
+# LISTA DE LEITURA OBRIGATORIA (para o agente que for planejar)
+# =============================================================================
+
+required_reading:
+  pipeline_definition:
+    - path: ".opencode/skills/analyze-and-improve/SKILL.md"
+      why: "Definicao completa do pipeline: 7 fases, delegacao, gates, anti-patterns"
+      lines: 1067
+    - path: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+      why: "Orquestrador do pipeline: phase mapping, execution flow, step 0-7, commit gate"
+      lines: 249
+
+  sdd_trap_methodology:
+    - path: "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis.md"
+      why: "Extracao de conhecimento do artigo fonte: frameworks, patterns, failure patterns"
+      lines: 175
+    - path: "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns.md"
+      why: "10 patterns extraidos com 6 campos cada (name, problem, inputs, outputs, benefits, limitations)"
+      lines: 283
+    - path: "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification.md"
+      why: "Classificacao de cada pattern contra o repo: 4 Missing, 4 Partial Coverage, 2 Better Implementation"
+      lines: 298
+
+  canonical_docs_relevantes:
+    - path: "docs/canonical/value-gated-agent-control-loop.md"
+      why: "Pattern #1: gate de build/experiment/defer/stop no control loop"
+    - path: "docs/canonical/manual-brake-question-gate.md"
+      why: "Pattern #2: tres perguntas diagnosticas antes de construir"
+    - path: "docs/canonical/continue-decision-checkpoint.md"
+      why: "Se existir: Pattern #4: checkpoint continue/pivot/stop/archive entre fases"
+    - path: "docs/canonical/deferred-ledger-agentic-work.md"
+      why: "Pattern #6: classificacao de divida em skill/dependence/carry"
+    - path: "docs/canonical/carry-debt-sunset-gate.md"
+      why: "Pattern #10: gate de aposentadoria para artefatos"
+    - path: "docs/canonical/generator-evaluator.md"
+      why: "Padrao Generator-Evaluator: o pipeline NAO USA isso para seus proprios outputs -- gap central"
+    - path: "docs/canonical/owned-agent-control-loop.md"
+      why: "Loop de controle atual: break, terminate, human approval -- sem qualidade de conteudo"
+
+  estado_atual:
+    - path: "harness/test-results.json"
+      why: "Contrato de fases: como o harness avalia passes/NEEDS_WORK hoje"
+    - path: "PROGRESS.md"
+      why: "Contexto da analise atual (idsd-method), formato de rastreamento de fases"
+
+  padroes_de_plano:
+    - path: "docs/plans/2026-06-11-incremental-mental-model.yaml"
+      why: "Exemplo de plano YAML com edits detalhados, pre-implementation checks, verificacoes"
+    - path: "docs/plans/harness-session-improvements.yaml"
+      why: "Exemplo de plano YAML com tasks paralelizaveis e order de execucao"
+
+  convencoes:
+    - path: "AGENTS.md"
+      why: "Regras do repo: commit style, validation gates, document conventions, Rule 17 background tasks"
+
+# =============================================================================
+# REENQUADRAMENTO: de VALUE gate para QUALITY gate
+# =============================================================================
+
+reframing:
+  wrong_question: "Devemos construir estes artefatos?"
+  correct_question: "O que foi construido esta correto e completo? Se nao, refaz."
+
+  why: |
+    O pipeline analyze-and-improve tem uma premissa inegociavel: os artefatos
+    DEVEM ser construidos. O proposito e gerar canonical docs, skills e exercicios
+    para que o repositorio sirva como base de referencia encadeada -- LLMs leem,
+    humanos leem, tudo via wikilinks no Obsidian. A pergunta "devo construir?"
+    nao faz sentido; a resposta e sempre sim.
+
+    O que falta: um loop de verificacao de QUALIDADE com direito a recusa e
+    reexecucao. Hoje o harness verifica forma (frontmatter, existencia de
+    arquivo, wikilinks). Nao verifica conteudo (o canonical doc esta correto?
+    a extracao capturou o insight central? a classificacao tem evidencias solidas?).
+
+  quality_brake_translation:
+    manual_brake_questions:
+      original_q1: "Who needs this, and what breaks for them if it never exists?"
+      quality_q1: "Quem vai usar este canonical doc, e o que quebra se ele estiver errado?"
+      original_q2: "Would we still build it if it cost a week of engineering time?"
+      quality_q2: "Ainda publicariamos este doc se auditar sua qualidade custasse uma semana?"
+      original_q3: "Who owns saying no to this?"
+      quality_q3: "Quem e o dono de dizer 'este doc nao esta pronto, refaca'?"
+
+    value_gate_vocabulary:
+      original: "build | experiment | defer | stop"
+      quality: "pass | redo | partial-redo"
+      pass: "Output tem qualidade. Avanca para proxima fase."
+      redo: "Output tem problemas estruturais. Re-delega a fase inteira com feedback."
+      partial_redo: "Output majoritariamente bom mas com gaps pontuais. Re-delega apenas correcoes."
+
+# =============================================================================
+# 6 ATOS: como os patterns se aplicam ao pipeline
+# =============================================================================
+
+acts:
+
+  # ---------------------------------------------------------------------------
+  # ATO 1: Value-Gated Agent Control Loop como Quality Gate com redo
+  # ---------------------------------------------------------------------------
+  - id: "ato-1"
+    pattern: "Value-Gated Agent Control Loop (Pattern #1)"
+    canonical_doc: "docs/canonical/value-gated-agent-control-loop.md"
+    problem: |
+      O harness avalia cada fase com gate binario: passes=true ou NEEDS_WORK.
+      A avaliacao e feita pelo orquestrador (le output, decide se "tem conteudo
+      substancial") e pelo check-obsidian-conventions.sh (frontmatter, wikilinks).
+      Nao ha um agente independente avaliando se o canonical doc esta
+      CONCEITUALMENTE correto.
+
+      Exemplo: Phase 1 (Knowledge Extraction) produz analysis.md. O harness
+      verifica "existe e tem conteudo" → passes=true. Mas ninguem verifica se
+      a sintese capturou corretamente o insight central do artigo.
+
+      Ironia central: o repositorio tem o padrao Generator-Evaluator documentado
+      em docs/canonical/generator-evaluator.md, mas o pipeline analyze-and-improve
+      NAO USA Generator-Evaluator para seus proprios outputs.
+
+    solution: |
+      Introduzir um gate pos-phase com vocabulario pass | redo | partial-redo.
+      Um segundo agente (avaliador independente) le o output da fase contra
+      a fonte/dados originais e decide se a qualidade e suficiente.
+
+    integration_points:
+      - phase: "Phase 1 (Knowledge Extraction)"
+        check: "O analysis.md capturou corretamente os frameworks, patterns e tradeoffs do artigo fonte? Ha vies de interpretacao? Algum conceito foi mal compreendido?"
+      - phase: "Phase 2 (Pattern Extraction)"
+        check: "Os patterns extraidos tem os 6 campos obrigatorios preenchidos? Os nomes sao precisos? Nao ha patterns duplicados ou triviais?"
+      - phase: "Phase 3 (Classification)"
+        check: "Cada classificacao tem evidencias file:line? NOT_FOUND inclui lista de locais buscados? A tabela-sumario confere?"
+      - phase: "Phase 4 (Improvement Generation)"
+        check: "Cada canonical doc cobre Problem, Solution, Implementation, Tradeoffs, References? Esta conceitualmente alinhado com o pattern original?"
+
+    harness_change: |
+      Modificar harness-analyze-and-improve/SKILL.md Step 6 (Evaluate):
+      - Atual: verifica existencia de arquivos + check-obsidian-conventions.sh
+      - Novo: apos verificacao de forma, delegar para agente avaliador (deep ou
+        ultrabrain) que le o output e o insumo original e emite pass | redo |
+        partial-redo com justificativa
+      - Se redo: incrementar retry_count, re-delegar a fase com feedback
+      - Se partial-redo: delegar apenas as correcoes especificas
+      - Se pass: prosseguir como hoje
+
+  # ---------------------------------------------------------------------------
+  # ATO 2: Manual Brake Question Gate como Quality Brake
+  # ---------------------------------------------------------------------------
+  - id: "ato-2"
+    pattern: "Manual Brake Question Gate (Pattern #2)"
+    canonical_doc: "docs/canonical/manual-brake-question-gate.md"
+    problem: |
+      Nenhuma pergunta de qualidade conceitual existe no pipeline. O harness
+      avanca fases com base em forma, nao em conteudo.
+
+      A Pergunta 1 traduzida e a mais poderosa: um canonical doc sobre
+      manual-brake-question-gate.md que esta conceitualmente ERRADO nao e
+      inofensivo -- ele sera referenciado por outros docs via wikilinks,
+      carregado como skill, usado em exercicios. O erro propaga.
+
+    solution: |
+      Inserir as 3 perguntas (traduzidas para qualidade) como parte do gate
+      de avaliacao pos-phase. Nao e um gate separado -- e o criterio que o
+      avaliador usa para decidir pass | redo | partial-redo.
+
+    harness_change: |
+      O prompt de delegacao do agente avaliador (Ato 1) DEVE incluir estas
+      perguntas como rubrica:
+
+      1. "Quem vai usar este artefato, e o que quebra se ele estiver errado?"
+         → Se ninguem usaria ou o erro for inofensivo: barra mais baixa
+         → Se for referenciado por 5+ outros docs: barra mais alta
+
+      2. "Ainda publicariamos este artefato se auditar sua qualidade custasse uma semana?"
+         → Restaura o custo-proxy: se a resposta for "nao", o artefato precisa
+           de mais revisao antes de ser publicado
+
+      3. "Quem e o dono de dizer 'este artefato nao esta pronto, refaca'?"
+         → O harness registra quem avaliou e quem pode vetar
+
+  # ---------------------------------------------------------------------------
+  # ATO 3: Continue Decision Checkpoint como Quality Gate entre fases
+  # ---------------------------------------------------------------------------
+  - id: "ato-3"
+    pattern: "Continue Decision Checkpoint (Pattern #4)"
+    canonical_doc: "docs/canonical/continue-decision-checkpoint.md"
+    note: "Verificar se este canonical doc existe; foi marcado como 'not created' no roadmap"
+    problem: |
+      O harness avanca de fase em fase com passes=true como unico criterio.
+      Nao ha checkpoint que pergunte: "o output desta fase e solido o suficiente
+      para a proxima fase construir em cima dele?"
+
+      Isso e critico porque o pipeline e sequencial e cada fase consome o output
+      da anterior. Um erro na Phase 1 (extracao) contamina todas as fases
+      subsequentes. O CP mais arriscado e entre Phase 3 e Phase 4: uma
+      classificacao errada gera canonical docs baseados em gaps imaginarios.
+
+    solution: |
+      Adicionar checkpoints entre fases com pesos diferentes:
+      - CP-1 (Phase 0 → Phase 1): barra baixa. Modelo mental capturou estrutura? Ok.
+      - CP-2 (Phase 1 → Phase 2): barra media. Extracao e fiel ao artigo fonte?
+      - CP-3 (Phase 2 → Phase 3): barra media. Patterns tem nomes e campos corretos?
+      - CP-4 (Phase 3 → Phase 4): barra ALTA. Evidencias da classificacao sao solidas?
+        NOT_FOUND tem lista de locais buscados? As conclusoes sao defensaveis?
+
+      Cada checkpoint usa o mesmo agente avaliador do Ato 1, mas com threshold
+      de aprovacao variavel por fase.
+
+    harness_change: |
+      Modificar harness-analyze-and-improve/SKILL.md Step 6 (Evaluate):
+      - Adicionar campo quality_threshold no test-results.json por fase
+      - CP-4 (Phase 3 → Phase 4): se o avaliador encontrar evidencias fracas,
+        redo na Phase 3 ANTES de disparar Phase 4
+      - Isso evita o cenario onde 4 agentes deep em paralelo (Phase 4) criam
+        artefatos baseados em gaps incorretos
+
+  # ---------------------------------------------------------------------------
+  # ATO 4: Deferred Ledger aplicado a qualidade (nao a custo)
+  # ---------------------------------------------------------------------------
+  - id: "ato-4"
+    pattern: "Deferred Ledger for Agentic Work (Pattern #6)"
+    canonical_doc: "docs/canonical/deferred-ledger-agentic-work.md"
+    problem: |
+      O pipeline nao tem nenhum mecanismo de contabilidade de divida de
+      qualidade. Apos 3 execucoes, o repositorio acumulou ~15 canonical docs,
+      varias skills, exercicios. Ninguem pergunta:
+      - Estamos acumulando canonical docs que ninguem audita?
+      - Se o modelo deep degradar, quanto tempo ate percebermos?
+      - Quantos artefatos tem erros conceituais nao detectados?
+
+    solution: |
+      Manter um ledger simples em docs/analysis/.deferred-ledger.md (ou YAML)
+      atualizado a cada execucao do pipeline. Tres categorias:
+
+      Skill Debt: Quantas auditorias profundas foram feitas este mes? Se zero,
+      a capacidade humana de julgar qualidade de canonical docs esta atrofiando.
+
+      Dependence Debt: O pipeline depende dos modelos ultrabrain e deep. Se um
+      deles degradar silenciosamente, o harness continua marcando passes=true
+      porque a verificacao e superficial. Registrar: "dependencia em deep para
+      qualidade de canonical docs -- sem verificacao independente."
+
+      Carry Debt: Artefatos de baixa qualidade viram inventario permanente.
+      Quando um canonical doc errado e referenciado por 5 outros docs, o custo
+      de corrigir e 5x maior. Registrar artefatos que tiveram redo e seus
+      dependentes.
+
+    harness_change: |
+      - Criar docs/analysis/.deferred-ledger.yaml como artefato de risk tracking
+      - Apos cada execucao completa do pipeline, atualizar o ledger com:
+        - execucao_id, data, fases com redo, contagem de retry_count total
+        - artefatos criados, artefatos que tiveram redo, artefatos expirados
+      - O ledger NAO bloqueia o pipeline -- e um artefato informativo que o
+        orquestrador consulta para decisao de "precisamos de uma auditoria
+        profunda este mes?"
+
+  # ---------------------------------------------------------------------------
+  # ATO 5: Carry Debt Sunset Gate aplicado a qualidade
+  # ---------------------------------------------------------------------------
+  - id: "ato-5"
+    pattern: "Carry Debt Sunset Gate (Pattern #10)"
+    canonical_doc: "docs/canonical/carry-debt-sunset-gate.md"
+    problem: |
+      O pipeline cria artefatos permanentes. Nao ha mecanismo de aposentadoria
+      ou revisao periodica. Canonical docs, skills e exercicios sao criados e
+      esquecidos.
+
+      Agravante: um canonical doc criado com base em uma extracao errada so
+      sera detectado quando alguem tropecar nele. Se ninguem tropecar, o erro
+      persiste indefinidamente e propaga via wikilinks.
+
+    solution: |
+      Todo artefato criado na Phase 4 ganha metadados de qualidade:
+
+      1. quality_checked_at: data da ultima auditoria profunda (inicialmente null)
+      2. review_due_at: data de revisao obrigatoria (ex: +6 meses)
+      3. quality_owner: quem responde por auditar (inicialmente "pipeline")
+      4. redo_count: quantas vezes este artefato precisou ser refeito
+      5. sunset_decision: keep | needs_review | retire | archive
+
+      Gatilhos de revisao:
+      - Tempo: review_due_at chegou
+      - Erro detectado: alguem encontrou problema conceitual
+      - Modelo mudou: o modelo que gerou o artefato foi atualizado
+
+    harness_change: |
+      - Adicionar frontmatter fields opcionais nos canonical docs:
+        quality_checked_at, review_due_at, quality_owner, redo_count
+      - Adicionar step pos-Phase 4: para cada artefato criado, preencher
+        review_due_at = hoje + 6 meses
+      - Adicionar check pre-Phase 0: listar artefatos com review_due_at vencido
+        e sugerir auditoria
+
+  # ---------------------------------------------------------------------------
+  # ATO 6: Visao integrada -- o pipeline com os 5 patterns
+  # ---------------------------------------------------------------------------
+  - id: "ato-6"
+    description: "Fluxo completo do pipeline com todos os quality gates inseridos"
+
+    integrated_flow: |
+      Fonte externa
+              │
+              ▼
+      Phase 0: Repository Mental Model
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Quality CP-1: modelo mental capturou │
+      │ a estrutura real do repo?            │
+      │ pass | redo (com gaps especificos)   │
+      └─────────────────────────────────────┘
+              │
+              ▼
+      Phase 1: Knowledge Extraction
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Quality CP-2: extracao e fiel ao    │
+      │ artigo fonte? Sem vies, sem omissao? │
+      │ Avaliador usa Manual Brake Q1-Q3    │
+      │ pass | redo | partial-redo          │
+      └─────────────────────────────────────┘
+              │
+              ▼
+      Phase 2: Pattern Extraction
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Quality CP-3: patterns tem 6 campos │
+      │ preenchidos? Nomes sao precisos?     │
+      │ pass | redo | partial-redo          │
+      └─────────────────────────────────────┘
+              │
+              ▼
+      Phase 3: Classification
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Quality CP-4 (CRITICO): evidencias  │
+      │ da classificacao sao solidas?        │
+      │ NOT_FOUND tem lista de locais?       │
+      │ Barra ALTA -- redo antes Phase 4     │
+      │ pass | redo (fase especifica)        │
+      └─────────────────────────────────────┘
+              │
+              ▼
+      Phase 4: Improvement Generation
+        ├── Agente A: canonical docs
+        ├── Agente B: skills
+        ├── Agente C: exercises
+        └── Agente D: roadmap
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Quality CP-5: cada artefato atende   │
+      │ ao contrato? Conceitualmente correto? │
+      │ Avaliador por artefato               │
+      │ pass | redo | partial-redo          │
+      │ + preenche review_due_at, redo_count │
+      └─────────────────────────────────────┘
+              │
+              ▼
+      Phase 5: Integration
+      Phase 6: Curriculum Deep Integration
+              │
+              ▼
+      ┌─────────────────────────────────────┐
+      │ Deferred Ledger Update:             │
+      │ - Skill Debt: auditorias este mes?   │
+      │ - Dependence Debt: algum redo?       │
+      │ - Carry Debt: artefatos expirados?   │
+      │ - Sunset Gate: revisar vencidos      │
+      └─────────────────────────────────────┘
+
+    files_affected:
+      harness:
+        - ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+        - "harness/test-results.json"
+      new_artifacts:
+        - "docs/analysis/.deferred-ledger.yaml"
+      existing_touched:
+        - "docs/canonical/value-gated-agent-control-loop.md"
+        - "docs/canonical/manual-brake-question-gate.md"
+        - "docs/canonical/deferred-ledger-agentic-work.md"
+        - "docs/canonical/carry-debt-sunset-gate.md"
+
+# =============================================================================
+# INSTRUCOES PARA O AGENTE QUE FOR PLANEJAR
+# =============================================================================
+
+instructions_for_planning_agent:
+  goal: |
+    Produzir um plano detalhado de implementacao (em YAML, seguindo o padrao
+    de docs/plans/) que um agente executor possa seguir. O plano deve conter
+    edits especificos, verificacoes, e ordem de execucao.
+
+  must_do:
+    - "Ler TODOS os arquivos em required_reading antes de planejar"
+    - "Ler os canonical docs listados para entender cada pattern em profundidade"
+    - "Verificar se docs/canonical/continue-decision-checkpoint.md existe; se nao, notar como gap"
+    - "Mapear exatamente quais linhas do harness-analyze-and-improve/SKILL.md precisam ser modificadas"
+    - "Definir o contrato do agente avaliador: prompt template, criterios de pass/redo/partial-redo"
+    - "Projetar o schema do .deferred-ledger.yaml"
+    - "Projetar os novos campos no test-results.json (quality_threshold, quality_check_passed, etc.)"
+    - "Definir thresholds de qualidade por fase (CP-4 tem barra mais alta que CP-1)"
+    - "Garantir que o plano respeita Rule 2 (Minimum Viable Change) e Rule 3 (Touch Only What You Must)"
+    - "Seguir o formato de plano YAML do repo (ver docs/plans/ existentes como referencia)"
+
+  must_not_do:
+    - "NAO implementar nada -- apenas planejar"
+    - "NAO modificar arquivos existentes"
+    - "NAO criar novos arquivos (exceto o proprio plano YAML de saida)"
+    - "NAO assumir que continue-decision-checkpoint.md existe sem verificar"
+    - "NAO propor changes que violem AGENTS.md (especialmente Rule 9: sem type suppressions, Rule 10: seguir padroes existentes)"
+    - "NAO planejar para o cenario errado -- o foco e QUALIDADE, nao decisao de construir/nao-construir"
+
+  expected_output: |
+    Um arquivo YAML em docs/plans/2026-06-12-quality-gates-implementation.yaml
+    contendo:
+
+    1. meta: title, type, date, target_files, estimated_effort
+    2. pre_implementation_checks: comandos de verificacao antes de comecar
+    3. tasks: lista de tasks com:
+       - id, file, effort, description
+       - changes: array de edits com old_string/new_string precisos
+       - verification: como verificar que o edit foi aplicado corretamente
+       - dependencies: quais tasks devem ser concluidas antes
+    4. integration_test: como testar o pipeline completo apos todas as mudancas
+    5. rollback_plan: como reverter se algo quebrar
+
+  key_questions_to_answer_in_plan:
+    - "O agente avaliador deve ser o mesmo modelo da fase que ele avalia ou um modelo diferente?"
+    - "O quality gate CP-4 deve BLOQUEAR Phase 4 ou apenas EMITIR warning?"
+    - "O .deferred-ledger.yaml e atualizado pelo harness ou por um agente separado?"
+    - "Os campos quality_checked_at/review_due_at vao no frontmatter dos canonical docs ou em um arquivo separado?"
+    - "Como o harness distingue redo de partial-redo na pratica?"
+    - "Qual o custo em tokens de adicionar um agente avaliador por fase?"
+
+# =============================================================================
+# REFERENCIAS CRUZADAS
+# =============================================================================
+
+references:
+  source_discussion: "Sessao 2026-06-12 com Sisyphus sobre aplicacao dos patterns SDD Trap ao pipeline"
+  related_canonical_docs:
+    - "docs/canonical/generator-evaluator.md"
+    - "docs/canonical/grill-me-alignment-interview.md"
+    - "docs/canonical/human-afk-task-routing-gate.md"
+    - "docs/canonical/measured-harness-evolution-lifecycle.md"
+    - "docs/canonical/closed-loop-agent-operating-system.md"
+  related_analyses:
+    - "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/"
+  related_plans:
+    - "docs/plans/2026-06-11-incremental-mental-model.yaml"
+    - "docs/plans/harness-session-improvements.yaml"
