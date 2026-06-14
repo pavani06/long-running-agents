@@ -1,0 +1,241 @@
+meta:
+  title: "Comparative Classification: Quarto Book Publishing Patterns vs. long-running-agents Repo"
+  date: "2026-06-14"
+  repo: "long-running-agents"
+  patterns_source: "Quarto Book Publishing knowledge extraction"
+  pattern_count: 9
+  evidence_sources:
+    - "docs/canonical/"
+    - "curriculum/"
+    - ".opencode/skills/"
+    - "docs/analysis/"
+    - "AGENTS.md"
+    - ".github/workflows/"
+    - "README.md"
+
+classification_legend:
+  already_exists: "Pattern is documented, implemented, or taught at equivalent depth"
+  partial_coverage: "Elements exist but key mechanics, reframe, or formalization are missing"
+  missing: "Not present in any form (doc, code, or curriculum)"
+  better_implementation: "Repo has a superior or more mature version of the same idea"
+
+domain_context: >
+  The long-running-agents repository is an agentic AI engineering codebase. The 9
+  Quarto Book Publishing patterns describe documentation publishing workflows from a
+  fundamentally different domain. All patterns are expected to be Missing or Partial
+  Coverage — that is correct, not a failure of analysis. Partial Coverage arises only
+  through analogous concepts (curriculum structure, CI gates, orientation surfaces)
+  that serve different purposes than their Quarto counterparts.
+
+patterns:
+  - id: 1
+    name: "Config-Driven Publishing Contract"
+    classification: "Missing"
+    integration_value: "Low — different domain"
+    justification: >
+      The repo has no publishing manifest, no book configuration file, and no
+      config-driven documentation build system. Searches for _quarto.yml, publishing
+      manifest, declarative config returned matches only within the Quarto analysis
+      directory. The closest analogous concept is the application-owned agent control
+      plane for agent execution, not documentation publishing.
+    evidence:
+      not_found:
+        - "_quarto.yml, publishing manifest, declarative config, config-driven — searched across docs/canonical/, curriculum/, .opencode/skills/, README.md, AGENTS.md"
+      analogous:
+        - "docs/canonical/application-owned-agent-control-plane.md:31-60 — versioned prompt contract for agent control planes"
+        - "AGENTS.md:136-160 — Obsidian document conventions, not publishing manifests"
+        - "docs/system-of-record.md:140-223 — 62 canonical patterns, none about publishing configuration"
+
+  - id: 2
+    name: "Parts-Based Chapter Organization"
+    classification: "Partial Coverage"
+    integration_value: "Low — curriculum already structured"
+    justification: >
+      The repo's curriculum uses a 4-level structure (Nivel 1-4) with semantic parts
+      that group related lessons, exercises, and case studies. This mirrors hierarchical
+      content grouping but serves teaching progression, not book publishing navigation.
+      The repo does not formalize parts-based organization as a named pattern, and
+      lacks the publishing-specific mechanics (manifest-driven navigation rendering,
+      link validation after reorganization).
+    evidence:
+      exists:
+        - "curriculum/README.md:190-248 — 4-level curriculum structure with parts"
+        - "curriculum/MASTER_PLAN.md:184-270 — level definitions with hierarchical grouping"
+        - "curriculum/INDEX.md — executive index with navigation by level"
+      not_found:
+        - "parts-based, chapter organization, navigation sections as named patterns — searched across docs/canonical/, curriculum/, .opencode/skills/"
+      what_is_missing:
+        - "Formalization as a named reusable pattern"
+        - "Manifest-driven navigation rendering from content structure"
+        - "Link validation after chapter reorganization"
+        - "Parts taxonomy driven by publishing manifest rather than teaching progression"
+
+  - id: 3
+    name: "Landing Page as Reader Orientation"
+    classification: "Partial Coverage"
+    integration_value: "Low — existing orientation surfaces"
+    justification: >
+      The repo has orientation surfaces (README.md, INDEX.md, QUICK_START.md) that
+      guide readers with purpose, audience, and start-here paths before deep content.
+      These serve analogous purposes to the Quarto landing page pattern. However, they
+      are curriculum indices, not a formalized pattern, and lack the publishing-specific
+      mechanics: audience routing from manifest, staleness review triggers, and keeping
+      onboarding concerns out of ordinary chapters.
+    evidence:
+      exists:
+        - "README.md:19-30 — purpose and audience definition"
+        - "curriculum/INDEX.md — executive index with per-profile navigation"
+        - "curriculum/QUICK_START.md — onboarding path"
+        - "curriculum/README.md:190-248 — level orientation with duration and focus"
+      not_found:
+        - "landing page, reader orientation, entry page as named patterns — searched across docs/canonical/, curriculum/, .opencode/skills/"
+      what_is_missing:
+        - "Formalized landing page pattern with audience routing"
+        - "Staleness review trigger when curriculum structure changes"
+        - "Separation of orientation concerns from chapter content"
+
+  - id: 4
+    name: "Notebook/Markdown Source Bridge"
+    classification: "Missing"
+    integration_value: "Low — no notebook infrastructure"
+    justification: >
+      The repo has no notebook infrastructure, no Jupyter integration, no Quarto
+      rendering, and no pipeline that converts exploratory authoring artifacts into
+      published content. Markdown is used as the final format — the authoring format
+      IS the content format. There is no bridge because there is nothing to bridge.
+      The llm-as-fuzzy-compiler canonical doc treats code as build artifact from agent
+      generation, unrelated to notebook publishing.
+    evidence:
+      not_found:
+        - "notebook, jupyter, .ipynb, executable notebook — searched across docs/canonical/, curriculum/, .opencode/skills/, README.md"
+        - "Any Jupyter kernel, requirements.txt for notebook dependencies, or quarto tooling"
+      analogous:
+        - "docs/canonical/llm-as-fuzzy-compiler.md:65 — code as build artifact, unrelated to notebook publishing"
+      unrelated_match:
+        - "docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis.md — single mention of notebook in Stanford analysis"
+
+  - id: 5
+    name: "Live Preview Authoring Loop"
+    classification: "Missing"
+    integration_value: "Low — no rendered doc surface"
+    justification: >
+      The repo has no preview server, no hot reload infrastructure, and no live
+      authoring loop for documentation. The closest analogous concept is the
+      Plan-Execute-Verify canonical doc for agent execution loops, and the Obsidian
+      conventions validation script for post-edit checking — neither provides live
+      preview. No rendered documentation surface exists that would benefit from preview.
+    evidence:
+      not_found:
+        - "live preview, hot reload, preview server, quarto preview — searched across docs/canonical/, curriculum/, .opencode/skills/, AGENTS.md"
+      analogous:
+        - "docs/canonical/plan-execute-verify.md:31-76 — Plan-Execute-Verify loop for agent execution"
+        - "AGENTS.md:136-160 — Obsidian conventions with batch validation, not live preview"
+      unrelated:
+        - "scripts/check-obsidian-conventions.sh — post-edit validation, not live preview server"
+
+  - id: 6
+    name: "Dependency-Gated Atomic Build"
+    classification: "Partial Coverage"
+    integration_value: "Low — existing CI gates adequate"
+    justification: >
+      The repo has CI gating infrastructure (GitHub Actions workflow, validation gates
+      in AGENTS.md Rule 7, npm scripts for lint/test) that validates changes before
+      merge. This is analogous to the dependency-gated build concept. However, the gates
+      target code quality and documentation conventions, not notebook execution,
+      dependency diagnostics for publishing toolchains, or full-book rendering. No
+      canonical doc formalizes the pattern.
+    evidence:
+      exists:
+        - ".github/workflows/check-obsidian-conventions.yml:1-22 — CI workflow with push/PR triggers"
+        - "AGENTS.md:69-78 — validation gates (lint, test:unit)"
+        - "package.json:8-13 — lint and test scripts"
+        - ".opencode/skills/issue-review/SKILL.md:44-85 — CI gates reference"
+      not_found:
+        - "quarto check, jupyter, notebook execution, atomic build, dependency-gated — searched across docs/canonical/, curriculum/, AGENTS.md"
+      what_is_missing:
+        - "Notebook execution gate or dependency diagnostic for publishing toolchains"
+        - "Atomic full-book render as a single pass/fail unit"
+        - "Deploy boundary that only releases a consistent full artifact"
+
+  - id: 7
+    name: "Single-Command Deploy"
+    classification: "Missing"
+    integration_value: "Low — no static site to deploy"
+    justification: >
+      The repo has no deploy command, no gh-pages configuration, and no static site
+      publishing mechanism. AGENTS.md Rule 9 explicitly states that publishing requires
+      explicit human approval — the repo treats publishing as a gated, human-approved
+      action, not an automated single command. No deploy script, gh-pages branch, or
+      static site hosting configuration exists.
+    evidence:
+      not_found:
+        - "quarto publish, gh-pages, single-command deploy, publish branch — searched across docs/canonical/, curriculum/, .opencode/skills/, AGENTS.md, .github/"
+        - "Any deploy script, gh-pages branch, or static site hosting configuration"
+      contrary:
+        - "AGENTS.md:93-100 — Rule 9: publishing requires explicit approval"
+
+  - id: 8
+    name: "Push-to-Publish CI/CD Pipeline"
+    classification: "Partial Coverage"
+    integration_value: "Low — validation CI already exists"
+    justification: >
+      The repo has CI/CD infrastructure (GitHub Actions, push/PR triggers) that runs
+      validation on changes. This is the substrate for a CI/CD pipeline but targets
+      validation, not publishing. The repo explicitly gates publishing behind human
+      approval (AGENTS.md:100), contradicting automated push-to-publish. No deploy
+      step exists in any workflow — the pipeline stops at validation.
+    evidence:
+      exists:
+        - ".github/workflows/check-obsidian-conventions.yml:1-22 — CI workflow with push/PR triggers, validation only"
+        - "AGENTS.md:69-78 — Rule 7 validation gates"
+      not_found:
+        - "Deploy step, gh-pages push, quarto publish in any CI workflow or script"
+        - "push-to-publish, automated deploy, CI/CD pipeline for documentation — searched across docs/canonical/, curriculum/, .github/"
+      what_is_missing:
+        - "Automated deploy step after validation passes"
+        - "CI workflow that publishes to static hosting"
+        - "Reconciliation with AGENTS.md:100 explicit approval requirement"
+
+  - id: 9
+    name: "Multi-Format Source Fan-Out"
+    classification: "Missing"
+    integration_value: "Low — no multi-format publishing need"
+    justification: >
+      The repo has no multi-format publishing infrastructure — no HTML/PDF/ePub/Word
+      generation from a canonical source. The closest analogous concept is
+      persona-based-documentation.md, which creates different documentation surfaces
+      for different persona audiences. This shares the "one source, multiple outputs"
+      philosophy but targets persona-specific NFR documents, not format-specific
+      rendering. The repo's static HTML artifacts are hand-built single-format outputs.
+    evidence:
+      not_found:
+        - "multi-format, ePub, PDF output, Word output, format fan-out, format matrix — searched across docs/canonical/, curriculum/, .opencode/skills/, README.md"
+        - "Any Quarto, Pandoc, LaTeX, or other multi-format rendering tooling"
+      analogous:
+        - "docs/canonical/persona-based-documentation.md:30-69 — persona-specific documentation surfaces, different outputs for different audiences"
+      unrelated:
+        - "web/koda_course_portal.html — single-format HTML, hand-built not generated"
+
+summary:
+  missing: [1, 4, 5, 7, 9]
+  partial_coverage: [2, 3, 6, 8]
+  already_exists: []
+  better_implementation: []
+  key_insight: >
+    All 9 Quarto Book Publishing patterns fall into Missing (5) or Partial Coverage (4).
+    This is expected and correct — the long-running-agents repo is an agentic AI
+    engineering codebase, and documentation publishing patterns from Quarto describe a
+    fundamentally different domain. The Partial Coverage classifications are through
+    analogous concepts (curriculum structure, CI gates, orientation surfaces) that serve
+    different purposes than their Quarto counterparts. None of the patterns have High
+    integration value because the repo has no documentation publishing surface to which
+    they could be applied.
+  partial_coverage_detail:
+    - pattern: "Parts-Based Chapter Organization"
+      reason: "Curriculum's 4-level structure mirrors hierarchical content grouping, but serves teaching progression, not book publishing navigation."
+    - pattern: "Landing Page as Reader Orientation"
+      reason: "README.md, INDEX.md, QUICK_START.md orient readers, but are curriculum indices, not a formalized landing page pattern."
+    - pattern: "Dependency-Gated Atomic Build"
+      reason: "CI workflow gates documentation quality, but targets conventions (wikilinks, frontmatter), not notebook execution or full-book rendering."
+    - pattern: "Push-to-Publish CI/CD Pipeline"
+      reason: "GitHub Actions infrastructure exists for validation, but AGENTS.md:100 gates publishing behind human approval, and no deploy step exists."

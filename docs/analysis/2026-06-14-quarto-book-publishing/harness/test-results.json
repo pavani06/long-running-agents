@@ -1,0 +1,10 @@
+{
+  "pipeline": "analyze-and-improve",
+  "source": "/mnt/c/Users/pavan/raw-knowledge/sources/2026-06-14-write-a-book-using-jupyter-in-10-minutes.md",
+  "target_repo": "/mnt/c/Users/pavan/long-running-agents",
+  "date": "2026-06-14",
+  "source_slug": "quarto-book-publishing",
+  "incremental": false,
+  "incremental_decision": "full rebuild (47 deltas > 10 threshold since 2026-06-12 model)",
+  "phases": {}
+}

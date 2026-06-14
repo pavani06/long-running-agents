@@ -139,7 +139,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 62 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 65 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -220,6 +220,9 @@ Tópicos candidatos a ADR:
 | `goal-atomicity-split.md` | Decomposição de goals complexos em unidades atômicas verificáveis |
 | `constraint-budget-gate.md` | Gate de orçamento de constraints: limite explícito de constraints por tarefa |
 | `constraint-failure-decision-rule.md` | Regra de decisão para falha de constraint: degrade, retry ou escalate |
+| `quarto-publishing-architecture.md` | Arquitetura de publicação Quarto: contrato config-driven, source bridge notebook/Markdown, multi-format fan-out |
+| `quarto-authoring-workflow.md` | Fluxo de autoria Quarto: live preview loop, dependency-gated build, single-command deploy, push-to-publish CI/CD |
+| `quarto-content-structure.md` | Estrutura de conteúdo Quarto: parts-based chapter organization, landing page como orientação do leitor |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
