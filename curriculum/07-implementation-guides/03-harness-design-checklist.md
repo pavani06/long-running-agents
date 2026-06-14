@@ -502,6 +502,8 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Ownership único | Para cada contrato existe um owner responsável por manter schema, rubrica e exemplos. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Boundary test | Há teste que envia input válido mínimo, input inválido e output fora do schema para a fronteira. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Auditoria de alteração | Toda mudança de contrato relevante aponta para ADR, issue ou changelog com motivo e impacto. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Constraint budget gate | O contrato limita constraints a 5-7 itens direcionais, incondicionais e em linguagem de negócio. Constraints de implementação ("usar Redis", "escrever em TypeScript") são reclassificadas como contexto. | Lista tem entre 5 e 7 constraints; cada constraint é direcional e verificável. | Lista tem 12+ itens, mistura constraints reais com preferências de implementação e critérios de qualidade. | Registre a lista de constraints, data de revisão e owner. |
+| Constraint classification gate | Cada constraint passa no teste "Saber isso muda como o Builder escreve código?" Items que falham são movidos para failure conditions. | Existe classificação documentada; constraints e failure conditions estão em artefatos separados. | Constraints e failure conditions misturados no mesmo prompt; o Generator recebe critérios de avaliação. | Registre link para a matriz de classificação, owner e data. |
 
 ### Evidências que um revisor deve pedir
 
@@ -543,12 +545,16 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - [ ] Fronteiras entre Planner, Generator, Evaluator, Order e Fulfillment estao explicitas?
 - [ ] Criterio de sucesso usa condicao objetiva, como score minimo ou decisao aprovada?
 - [ ] Contrato bloqueia execucao quando falta campo critico de catalogo, preco ou restricao?
+- [ ] Constraints estao limitadas a 5-7 itens direcionais em linguagem de negocio?
+- [ ] Constraints de implementacao foram reclassificadas como contexto ou failure conditions?
+- [ ] Cada constraint passa no teste "saber isso muda como o Builder escreve codigo?"?
 
 ### Critérios de bloqueio para esta categoria
 
 - Bloqueie produção se a categoria afeta pagamento, saúde, dados pessoais ou promessa de entrega e não há validação objetiva.
-- Bloqueie produção se o único argumento for “o modelo costuma acertar”.
+- Bloqueie produção se o único argumento for "o modelo costuma acertar".
 - Bloqueie produção se não houver trace suficiente para explicar uma decisão errada depois do fato.
+- Bloqueie produção se a lista de constraints tem mais de 12 itens sem classificação -- constraint lists infladas escondem especificações de implementação.
 - Permita rollout limitado apenas quando o risco estiver documentado, monitorado e reversível.
 
 ### Sinais de maturidade crescente
@@ -572,6 +578,8 @@ Esta categoria verifica se um harness bom separa geração de julgamento e trans
 - Critérios de aprovação combinam score ponderado com bloqueios absolutos.
 - Cada avaliação produz evidência auditável, não apenas uma nota final.
 - A rubrica é calibrada com exemplos aprovados, reprovados e limítrofes.
+- Generator e Evaluator operam com superfícies de informação seladas: o Generator não vê a rubrica nem as failure conditions; o Evaluator não depende da autoavaliação do Generator.
+- O harness previne ativamente reward-hacking mantendo métricas de avaliação fora do contexto do Generator.
 
 ### Por que isso importa no KODA
 
@@ -593,6 +601,8 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Evidência por dimensão | Cada nota inclui citação de campo, trace ref ou dado usado para decidir. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Calibração periódica | Há amostra revisada por humano para medir falso positivo e falso negativo da rubrica. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
 | Replay de avaliação | É possível reexecutar a avaliação sobre o mesmo output e obter decisão comparável. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Superfícies de informação seladas | O Generator NÃO recebe rubricas, failure conditions detalhadas, thresholds de aprovação ou exemplos de outputs reprovados. O Evaluator NÃO recebe justificativas do Generator como evidência. | Existe matriz de visibilidade declarando quais artefatos cada agente pode acessar. Os prompts de Generator e Evaluator são construídos a partir de fontes diferentes. | Generator e Evaluator recebem o mesmo prompt com a mesma rubrica. O Generator pode ver os critérios pelos quais será avaliado. | Registre a matriz de visibilidade, versão e owner. |
+| Prevenção de reward-hacking | O desenho do harness parte da premissa de que o Generator otimizará para o que consegue ver. Failure conditions que o Generator poderia "gaming" são movidas para a superfície selada do Evaluator. | Existe pelo menos um caso documentado onde uma métrica visível ao Generator foi substituída por uma verificação cega do Evaluator. | O Generator tem acesso a todas as métricas e rubricas; nenhuma verificação é cega. | Registre link para o ADR de compartmentation, owner e data. |
 
 ### Evidências que um revisor deve pedir
 
@@ -634,12 +644,16 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - [ ] Replay da avaliacao produz decisao comparavel sobre o mesmo output?
 - [ ] Falsos positivos e falsos negativos sao revisados por humano em cadencia definida?
 - [ ] Score alto nao mascara alergia, preco divergente, estoque ausente ou pagamento duplicado?
+- [ ] Generator e Evaluator recebem superfícies de informação diferentes (Generator nao ve a rubrica)?
+- [ ] Existe matriz de visibilidade documentando quais artefatos cada agente pode acessar?
+- [ ] Failure conditions que poderiam ser "gamificadas" estao na superficie selada do Evaluator?
 
 ### Critérios de bloqueio para esta categoria
 
 - Bloqueie produção se a categoria afeta pagamento, saúde, dados pessoais ou promessa de entrega e não há validação objetiva.
-- Bloqueie produção se o único argumento for “o modelo costuma acertar”.
+- Bloqueie produção se o único argumento for "o modelo costuma acertar".
 - Bloqueie produção se não houver trace suficiente para explicar uma decisão errada depois do fato.
+- Bloqueie produção se Generator e Evaluator compartilham a mesma superfície de informação sem matriz de visibilidade -- sem compartimentação, o Generator aprende a otimizar para os checks que conhece.
 - Permita rollout limitado apenas quando o risco estiver documentado, monitorado e reversível.
 
 ### Sinais de maturidade crescente

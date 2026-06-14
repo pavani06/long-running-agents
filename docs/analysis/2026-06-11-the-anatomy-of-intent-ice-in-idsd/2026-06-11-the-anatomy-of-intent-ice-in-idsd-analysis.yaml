@@ -1,0 +1,325 @@
+# Análise de Conhecimento Não-Óbvio: The Anatomy of Intent — ICE in IDSD
+#
+# Convenções:
+# - type: extração estruturada derivada do artigo fonte
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim é rastreável ao documento fonte
+# - Sem marketing, anedotas, histórias pessoais, repetição
+
+meta:
+  title: "The Anatomy of Intent — ICE in IDSD: Extração de Conhecimento Não-Óbvio"
+  source: "Kapil Viren Ahuja — The Anatomy of Intent (ICE in IDSD). Built from Where Spec-Driven Breaks (2026-05-27)"
+  date: 2026-06-11
+  type: analysis
+  extraction_rules:
+    keep:
+      - frameworks
+      - patterns
+      - architectures
+      - workflows
+      - implementation_details
+      - operational_lessons
+      - failures
+      - tradeoffs
+    ignore:
+      - marketing
+      - anecdotes
+      - personal_stories
+      - repetition
+
+frameworks:
+  - name: "ICE Framework (Intent, Context, Expectations)"
+    description: >
+      Decompõe o trabalho com agentes em três artefatos com donos
+      explícitos. Intent é escrito pelo humano (goal + constraints +
+      failure conditions). Context é assemb lado pelo harness (stack,
+      padrões, arquitetura). Expectations é gerado de intent+context
+      e validado em checkpoint. ICE é descrito como "ainda uma spec,
+      mas uma spec que deixa o modelo fazer o que foi construído para
+      fazer — perseguir um goal."
+    components:
+      - name: Intent
+        owner: human
+        role: "o que se quer — goal, constraints, failure conditions"
+      - name: Context
+        owner: harness
+        role: "entorno técnico — stack, padrões, arquitetura, tentativas anteriores"
+      - name: Expectations
+        owner: human (veto)
+        role: "o que conta como pronto — gerado de intent+context, checkpoint humano"
+    non_obvious_implication: >
+      ICE não é apenas decomposição de documento — é decomposição de dono.
+      A separação de ownership é o mecanismo de defesa estrutural, não a
+      estrutura do prompt. Cada artefato pertence a uma entidade diferente.
+      O método é indissociável do harness (Garura) que faz o trabalho de carga.
+
+  - name: "Intent Decomposition (3-part model)"
+    description: >
+      O Intent é decomposto em três partes: Goal, Constraints, Failure
+      Conditions. Reduzido de um modelo anterior de cinco partes (Goal,
+      Constraints, Failure Conditions, Connections, Scenarios). A redução
+      custou semanas e deixou cicatrizes operacionais.
+    components:
+      - name: Goal
+        role: "outcome desejado — uma sentença, sem 'and', sem ferramentas, sem patterns"
+        test: "duas implementações completamente diferentes podem ambas satisfazer isso?"
+      - name: Constraints
+        role: "qualidades não-funcionais que o outcome deve carregar"
+        characteristics:
+          - "direcionais — apontam para onde chegar, não como"
+          - "incondicionais — output erra constraint, falha"
+          - "linguagem de negócio — sem patterns de implementação"
+          - "limite duro: 5-7 linhas"
+      - name: Failure Conditions
+        role: "checks binários que o validator roda contra o output"
+        characteristics:
+          - "observáveis — script determina true/false sem julgamento humano"
+          - "post-output — descrevem o que o validator pega depois"
+          - "compartmentados — builder não os vê"
+    non_obvious_implication: >
+      Connections continuam parte do modelo conceitual mas são "managed
+      differently" — quando engenheiros escreviam Connections no intent,
+      o slot sangrava para Context. Scenarios foram split: failure scenarios
+      (binários) ficaram como failure conditions no Intent; success scenarios
+      moveram para Expectations porque LLMs fazem reward-hack se builder e
+      validator compartilham os mesmos scenarios.
+
+  - name: "Compartmented Evaluation Model"
+    description: >
+      Builder recebe goal + constraints. Validator recebe failure conditions
+      como evals (idealmente criptografadas). Builder não pode ensinar um
+      teste que não pode ver. Esse é o defense estrutural contra o modelo
+      otimizando para checks em vez do outcome.
+    components:
+      - name: Builder
+        receives: "goal + constraints"
+        role: "gera output"
+      - name: Validator
+        receives: "failure conditions (evals criptografadas)"
+        role: "checa output contra checks binários"
+      - name: Human
+        receives: "visão completa em checkpoints"
+        role: "escreve Intent, veta Expectations"
+    non_obvious_implication: >
+      A compartimentalização é a única defesa estrutural conhecida contra
+      reward-hacking. Sem ela, entregar constraints ao builder convida o
+      modelo a produzir output que passa nos checks sem satisfazer o intent.
+      A compartimentalização só funciona se cada requirement estiver no lado
+      certo da linha constraint/failure condition.
+
+  - name: "Garura Harness"
+    description: >
+      O harness que faz o trabalho de carga: assembla context, compartimentaliza
+      evals, faz checkpoint de expectations. O Intent é a única parte que o
+      humano escreve. Sem Garura, a disciplina de intents é custo sem retorno.
+    components:
+      - "Context assembly — junta padrões do org, stack, arquitetura"
+      - "Eval compartmentation — criptografa failure conditions para o validator"
+      - "Expectations checkpointing — gera expectations de intent+context, valida com humano"
+    non_obvious_implication: >
+      ICE é indissociável de Garura. O autor é explícito: sem o harness,
+      a disciplina de escrever intents não vale a pena. Adotar ICE sem
+      harness equivalente não é ICE parcial — é spec-driven com outro nome.
+
+patterns:
+  - name: "Two-Implementations Test (Goal vs. Spec)"
+    problem: "Humanos escrevem specs e chamam de goals porque o outcome está claro na cabeça e a mão digita o método sob deadline."
+    mechanism: >
+      Para cada goal candidato: duas implementações completamente diferentes
+      podem ambas satisfazer isso? Se sim, é goal. Se só uma possível, é spec
+      disfarçada. O fix nunca é adicionar detalhe — é split em múltiplos intents.
+    non_obvious_detail: >
+      O teste expõe a premissa do autor: o agente é decision-maker, não typist.
+      Escrever a implementação no goal degrada o agente e perde o ponto de usá-lo.
+
+  - name: "Constraint vs. Failure Condition Split (Decision Rule)"
+    problem: "Engenheiros consistentemente misturam constraints com failure conditions — o autor admite que esse é um dos três failures que ainda comete."
+    mechanism: >
+      Regra de decisão: "Would knowing this change how the builder writes code?"
+      Sim → constraint (builder precisa saber para design call).
+      Não → failure condition (validator checa depois).
+      Constraints são direcionais; failure conditions são binários.
+    non_obvious_detail: >
+      A razão secundária importa tanto quanto a primária: confundir os dois
+      produz constraints que viram thresholds arbitrários em vez de direções,
+      e failure conditions que o builder tenta otimizar em vez do validator checar.
+
+  - name: "Compartmented Evaluation Architecture"
+    problem: "LLMs fazem reward-hack — otimizam para checks visíveis, não para o outcome."
+    mechanism: >
+      Três entidades com superfícies de informação diferentes. Builder vê
+      goal+constraints. Validator vê failure conditions (criptografadas).
+      Human vê tudo só em checkpoints. Builder não pode ensinar teste que não vê.
+    non_obvious_detail: >
+      Documentado empiricamente: quando builder e validator compartilhavam
+      scenarios, o builder "over-fitted to the scenarios, and the validator
+      did not know which side of the line they were on."
+
+  - name: "Scenario Split Architecture"
+    problem: "Scenarios servem duas funções conflitantes — guia de construção e critério de validação — e o mesmo artefato para ambos causa over-fitting."
+    mechanism: >
+      Split em dois destinos com donos diferentes. Failure conditions ficam no
+      Intent (binários, validator é dono). Success scenarios movem para
+      Expectations (gerados de intent+context, checkpoint humano).
+    non_obvious_detail: >
+      O split é declarado "non-negotiable" porque é o defense estrutural contra
+      o modelo jogando com os checks. Sem o split, a compartimentalização colapsa.
+
+  - name: "Constraint List Discipline"
+    problem: "A lista de constraints cresce — 6 viram 16 — cada linha sussurrando uma escolha de implementação. É o drift mais fácil de volta para SDD."
+    mechanism: >
+      Limite rígido de 5-7 constraints. Cada constraint em linguagem de negócio,
+      direcional, incondicional. Se escolhe ferramenta ou pattern, vai para
+      Context. Se a lista passa do limite, algo nela não é constraint — o resto
+      é Context ou Expectations.
+    non_obvious_detail: >
+      O limite não é arbitrário. Constraints são o ponto de drift mais perigoso
+      porque cada constraint extra é uma decisão de design que o humano tirou
+      do builder. Cada decisão tirada reduz os graus de liberdade do agente.
+
+  - name: "Goal Atomicity"
+    problem: "Intents com conjunção ('and') escondem múltiplos goals que deveriam ser separados."
+    mechanism: >
+      Um goal = uma sentença, sem "and", sem conjunção. Quando precisa de "and",
+      são dois goals fingindo ser um. O fix é split. O método escala por quantidade
+      de intents, não por peso de cada intent.
+
+operational_lessons:
+  - lesson: "A redução de 5 para 3 partes de Intent não foi limpa e custou semanas"
+    context: >
+      Connections e Scenarios eram partes reais do modelo. Connections sangraram
+      para Context quando engenheiros as escreviam no intent. Scenarios causavam
+      over-fitting quando builder e validator compartilhavam os mesmos exemplos.
+      O autor documenta o custo real de refinar um modelo conceitual contra a
+      realidade operacional de times e harnesses.
+
+  - lesson: "O autor ainda comete três failures toda vez que escreve intents sob deadline"
+    context: >
+      (1) Method-in-goal: a mão digita "Build a Go microservice with..." em vez
+      de "Build a microservice that...". (2) Constraint list bloat: 6 viram 16.
+      (3) Mixing constraints with failures: consome todos os ciclos cognitivos.
+      O método é duro até para quem o criou — "Anyone who tells you the three-part
+      intent is easy to write is selling you the same kind of leash with a
+      friendlier handle."
+
+  - lesson: "O método escala por decomposição, não por densidade"
+    context: >
+      Quando um intent fica complexo, o fix nunca é adicionar detalhe — é split
+      em múltiplos intents. Contra-intuitivo para engenheiros treinados em specs
+      que crescem por acumulação de requirements. A disciplina é inversa: se o
+      goal precisa de 'and', são dois goals.
+
+  - lesson: "O harness faz o método valer a pena"
+    context: >
+      Sem Garura (assemblar context, compartimentalizar evals, checkpoint
+      expectations), a disciplina de escrever intents corretos é custo sem
+      retorno. Com Garura, o workflow acelera 3-4x. O autor gasta 1-2 dias
+      escrevendo intents para um epic e entrega para o time rodar o build
+      com muito pouco input de volta.
+
+  - lesson: "SDD tooling contradiz a si mesmo em arquivos shipped juntos"
+    context: >
+      O manifesto declara TDD NON-NEGOTIABLE. O task template diz OPTIONAL.
+      O arquivo de execução diz "Follow the TDD approach." Três ordens para
+      uma decisão, shipped juntas. O modelo recebe regras contraditórias,
+      elege um dogma, obedece, improvisa o resto — o exato comportamento que
+      SDD foi adotado para prevenir.
+
+  - lesson: "O tooling de SDD instrui o modelo a preencher gaps ativamente"
+    context: >
+      O Spec Kit não apenas deixa holes — ele comanda o modelo a preenchê-los
+      com "informed guesses" e "reasonable defaults", limitando admissão de
+      ignorância a 3 marcadores NEEDS CLARIFICATION. Onde a spec silencia, o
+      modelo inventa o goal, e o tooling limita quantas vezes ele admite que
+      está adivinhando.
+
+tradeoffs:
+  - decision: "ICE (intent-driven) vs. SDD (spec-driven)"
+    benefit: "Modelo persegue outcome em vez de preencher formulário; agente é decision-maker, não typist"
+    cost: "Disciplina humana pesada (1-2 dias por epic); requer harness forte (Garura) para valer a pena"
+
+  - decision: "Goal como outcome vs. goal como mini-spec"
+    benefit: "Builder escolhe arquitetura, stack e patterns; escala por decomposição de intents"
+    cost: "Teste constante de 'isso é goal ou spec?' — erro mais barato de cometer e mais caro de descobrir tarde"
+
+  - decision: "Constraints como qualidades direcionais vs. requirements exaustivos"
+    benefit: "Builder mantém liberdade de design; constraints em linguagem de negócio sobrevivem a mudanças de stack"
+    cost: "Disciplina para manter 5-7 linhas; tentação constante de transformar constraints em spec"
+
+  - decision: "Compartmented evaluation vs. shared evaluation"
+    benefit: "Defesa estrutural contra reward-hacking; builder não pode ensinar teste que não vê"
+    cost: "Complexidade de infra: evals criptografadas, validator separado, checkpoint humano"
+
+  - decision: "3-part Intent vs. 5-part Intent"
+    benefit: "Linha mais sharp entre partes; menos ambiguidade de ownership"
+    cost: "Perda de granularidade — Connections e Scenarios são reais mas precisam de tratamento separado; redução custou semanas"
+
+  - decision: "Intent-driven scaling vs. spec-driven scaling"
+    benefit: "Escala por quantidade de intents focados e pequenos"
+    cost: "Requer decomposição disciplinada de epics em outcomes atômicos"
+
+  - decision: "SDD para times novos vs. ICE para times maduros"
+    benefit: "SDD é racional para times novos, codebase frágil, stakes regulatórios — previsibilidade importa mais que velocidade"
+    cost: "SDD colapsa fora desse caso: spec com holes dá liberdade sem proteção, constraint sem instinto do modelo para balancear"
+
+failure_patterns:
+  - pattern: "Spec-in-disguise goal"
+    cause: "Humano escreve o método no goal porque o outcome está claro na cabeça e a deadline pressiona"
+    mitigation: "Two-implementations test — se só uma implementação satisfaz, é spec, não goal"
+    example: "'Build a Go microservice with gRPC and PostgreSQL' em vez de 'Build a microservice that handles the product catalog'"
+
+  - pattern: "Constraint list bloat"
+    cause: "Tentação de capturar todo requirement na Intent em nome de completude (waterfall trap)"
+    mitigation: "Limite rígido de 5-7 constraints. Se passou, algo não é constraint — o resto é Context ou Expectations"
+    symptom: "6 constraints viram 16, cada linha sussurrando uma escolha de implementação"
+
+  - pattern: "Mixing constraints with failure conditions"
+    cause: "Distinção sutil que exige disciplina cognitiva constante — o autor gasta todos os ciclos mentais nisso"
+    mitigation: "Regra de decisão: 'Would knowing this change how the builder writes code?' Sim → constraint. Não → failure condition"
+    consequence: "Quebra a compartimentalização e convida coverage gaming"
+
+  - pattern: "Contradictory tool rules in SDD tooling"
+    cause: "Método cresceu por acumulação sem reconciliação — manifesto, template e executor divergiram"
+    mitigation: "Reconciliação explícita de regras conflitantes antes de ship"
+    evidence: "TDD NON-NEGOTIABLE no manifesto, OPTIONAL no template, 'Follow TDD' no executor — três ordens para uma decisão"
+
+  - pattern: "Spec tooling instructs gap-filling"
+    cause: "Tooling internalizou que specs são incompletas e escolheu resolver com inferência do modelo em vez de reduzir escopo"
+    mitigation: "Limitar escopo em vez de delegar preenchimento de gaps ao modelo"
+    evidence: "'Make informed guesses', 'use common patterns to fill gaps', cap de 3 NEEDS CLARIFICATION"
+
+  - pattern: "Scenario over-fitting"
+    cause: "Builder e validator compartilham os mesmos scenarios — collapse do papel duplo como guia e critério"
+    mitigation: "Split estrutural: failure conditions no Intent (binários, validator dono), success scenarios nas Expectations (gerados, checkpoint humano)"
+    consequence: "Builder over-fits aos exemplos; validator perde independência e não sabe de que lado da linha está"
+
+  - pattern: "Silent method drift back to SDD"
+    cause: "Hábito de spec-writing é mais forte que disciplina de intent-writing; cada constraint extra parece inofensiva"
+    mitigation: "Revisão de constraints como gate explícito — cada linha deve passar no teste 'molda design ou é checkável depois?'"
+    danger_zone: "Constraints são o lugar mais fácil de driftar ICE de volta para SDD"
+
+synthesis: >
+  LLMs são goal-seeking engines, e alimentá-los com specs é alimentar a abstração
+  errada. A indústria construiu tooling para transformar o modelo de "creative
+  writer" em "disciplined specification engineer" — o produto é um harness cujo
+  propósito declarado é prevenir o modelo de fazer o que foi construído para fazer.
+  ICE propõe o inverso: dar ao modelo um outcome para perseguir, cercado de
+  constraints que apontam direção e failure conditions que pegam desvio.
+
+  Três consequências para sistemas agentic: (1) Compartmentalização é o defense
+  estrutural contra o modelo, não contra o humano — se o builder pode ver os
+  failure conditions, o sistema está vulnerável a reward-hacking por construção.
+  (2) A linha entre constraint e failure condition é a decisão de design mais
+  importante do método — errar essa linha quebra o defense estrutural inteiro.
+  (3) ICE é indissociável do harness — sem Garura (ou equivalente), a disciplina
+  de intents é custo sem retorno; adotar ICE sem harness não é ICE parcial, é
+  spec-driven com outro nome.
+
+  O que o autor não nomeia explicitamente: ICE é uma linguagem de contrato entre
+  humano e agente onde o contrato especifica o que (goal), com que qualidades
+  (constraints), e como saber se falhou (failure conditions), enquanto deixa o
+  como para o agente. A anatomia Goal + Constraints + Failure Conditions é
+  independente de domínio — o exemplo do "red shoe under thirty dollars" mostra
+  que a estrutura funciona para qualquer outcome consumer-facing. ICE não é um
+  método de coding — é um método de especificação de outcomes para agentes, e
+  coding é um caso especial.

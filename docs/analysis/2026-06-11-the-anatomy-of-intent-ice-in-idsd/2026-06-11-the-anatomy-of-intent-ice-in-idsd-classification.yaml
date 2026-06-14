@@ -1,0 +1,342 @@
+# Comparative Classification: The Anatomy of Intent Patterns vs. long-running-agents Repo
+# YAML mirror of 2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification.md
+# Generated: 2026-06-14
+
+meta:
+  title: "Comparative Classification: The Anatomy of Intent Patterns vs. long-running-agents Repo"
+  type: analysis
+  date: 2026-06-11
+  last_updated: 2026-06-14
+  repo_analyzed: pavani06/long-running-agents
+  patterns_source: "The Anatomy of Intent - ICE in IDSD (2026-06-11)"
+  evidence_basis:
+    - docs/canonical/
+    - .opencode/skills/
+    - .opencode/agents/
+    - curriculum/
+    - docs/system-of-record.md
+    - AGENTS.md
+  precedence_order:
+    - decisions/
+    - canonical/
+    - evidence/
+    - analysis/
+    - curriculum/
+    - READMEs
+
+classification_legend:
+  - class: Already Exists
+    meaning: Pattern is documented, implemented, or taught with equivalent depth
+  - class: Partial Coverage
+    meaning: Elements exist but missing key mechanics, reframe, or formalization
+  - class: Missing
+    meaning: Not present in any form (doc, code, or curriculum)
+  - class: Better Implementation
+    meaning: Repo has a superior or more mature version of the same idea
+
+patterns:
+  - id: 1
+    name: ICE Ownership Boundary
+    classification: Already Exists
+    integration_value: Low
+    why: >
+      The repo formalized ICE Craft Separation as a canonical doc that defines explicit
+      ownership for each craft with a formal ownership table and gap list mechanism.
+    evidence:
+      exists:
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:53-58"
+          description: "Explicit ownership table mapping Intent to Outcome owner, Context to Harness, Expectations to Outcome owner, Loop execution to Harness."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:31"
+          description: "The separation of owners is the central architectural point."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:39-43"
+          description: "Context owned by harness with progressive disclosure policy."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:62"
+          description: "Gap list mechanism making boundaries visible when crafts are separated."
+        - source: "[[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]]:29-51"
+          description: "Explicit ownership role with refusal authority, complementing craft ownership model."
+        - source: "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:43-48"
+          description: "Ownership rule: same person who wrote Intent writes Expectations."
+      missing: []
+    justification: >
+      The repo defines ownership boundaries at equivalent or greater depth. The ownership map
+      is formalized in the ICE Craft Separation table with named crafts and a formal table.
+      The pattern describes a generalized ownership boundary; the repo implements it with
+      named crafts, a formal table, and operational skills that enforce it.
+
+  - id: 2
+    name: Three-Part Intent Contract
+    classification: Partial Coverage
+    integration_value: Medium
+    why: >
+      The repo formalizes intent as a five-part primitive (5 fields) rather than a three-part
+      contract (3 slots). Core elements overlap but the repo adds success scenarios and
+      connections as first-class intent fields. The three-slot decomposition is simpler but
+      not present as a named contract in the repo.
+    evidence:
+      exists:
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41"
+          description: "Five-field intent schema: description (≈goal), constraints, failure scenarios (≈failure conditions), success scenarios, and connections."
+        - source: "[[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive skill]]:19-23"
+          description: "Operational skill enforcing five-field completeness gate before agent execution."
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:43-48"
+          description: "Completeness gate mechanics blocking agent execution when fields are missing."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:35"
+          description: "Five-part structure ensures completeness: any missing field is a visible gap."
+      missing:
+        - description: "No three-slot contract (goal, constraints, failure conditions) as a named decomposition."
+        - description: "Repo chose five fields; three of them map to the three-part contract, but success scenarios remain in Intent rather than being routed to Expectations."
+        - description: "No variant skill or canonical doc offers a three-field intent contract as an alternative."
+    searched_locations_not_found:
+      - "docs/canonical/: 57 docs searched for three-part, three-slot, three-field intent"
+      - "docs/canonical/intent-five-part-primitive.md: defines five fields, no three-slot variant"
+      - ".opencode/skills/: intent-five-part-primitive uses five fields; no three-part variant"
+
+  - id: 3
+    name: Two-Implementations Goal Test
+    classification: Missing
+    integration_value: Medium
+    why: >
+      No canonical doc, curriculum lesson, skill, or agent defines a two-implementations test
+      or any equivalent heuristic for distinguishing goals from implementation specifications.
+      The concept exists only in the source analysis being classified.
+    evidence:
+      exists: []
+      missing:
+        - description: "No heuristic asks whether two substantially different implementations could satisfy the same goal statement."
+        - description: "No training example or exercise teaches the difference between a goal and a spec in disguise."
+        - description: "No pre-flight test or gate separates goal statements from implementation methods."
+      nearby:
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41"
+          description: "Decomposes intent into structured fields but does not include a goal-vs-spec classification test."
+        - source: "[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]:28-46"
+          description: "Captures decisions through structured interview questions, but none probe whether the statement is a goal or a specification."
+        - source: "[[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]]"
+          description: "Generates issues as observable behavior but does not validate goal-vs-spec purity."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for two-implementation, alternative implementation, different implementation, goal.*test, spec.*disguise"
+      - ".opencode/skills/: no skill performs this classification test"
+      - "curriculum/: no training example or exercise teaches the two-implementations test"
+      - "docs/analysis/: concept appears only in source analysis 2026-06-11-the-anatomy-of-intent-ice-in-idsd-analysis.md:174"
+
+  - id: 4
+    name: Goal Atomicity Split
+    classification: Missing
+    integration_value: Medium
+    why: >
+      The repo has no rule, heuristic, or gate that enforces goal atomicity through conjunction
+      scanning. No canonical doc, skill, or curriculum lesson teaches "if the goal needs 'and',
+      it's two goals." The concept appears only in the source analysis.
+    evidence:
+      exists: []
+      missing:
+        - description: "No rule enforces one goal = one sentence without conjunctions."
+        - description: "No conjunction-scanning mechanism for splitting multi-goal intents."
+        - description: "No curriculum exercise teaches goal atomicity by conjunction splitting."
+      nearby:
+        - source: "[[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]]"
+          description: "Generates single-purpose vertical slices with observable behavior. Adjacent to atomic goals but uses a different decomposition method."
+        - source: "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:31-60"
+          description: "Separates work into three explicit phases. Adjacent to work decomposition but at the plan phase level."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for goal atomic, one goal one sentence, split.*goal, conjunction.*goal, no.*and.*goal"
+      - ".opencode/skills/: issue-start and orchestrator split work into issues but do not use conjunction scanning"
+      - "curriculum/: no lesson teaches goal atomicity by conjunction splitting"
+
+  - id: 5
+    name: Constraint Budget Gate
+    classification: Missing
+    integration_value: Medium
+    why: >
+      The repo's Constraint-Anchored Evaluation anchors evaluation on constraint lists but does
+      not impose a numeric budget or a classification gate. Constraint list growth is noted as
+      a cost to manage, not as a hard gate. No mechanism limits constraints to 5-7 or filters
+      out implementation-level constraints.
+    evidence:
+      exists: []
+      missing:
+        - description: "No numeric budget (5-7) limits the number of constraints on an intent."
+        - description: "No business-language filter ensures constraints are directional and unconditional."
+        - description: "No reclassification mechanism routes implementation-level constraints to Context or Expectations."
+        - description: "No skill or gate enforces constraint budget before agent execution."
+      nearby:
+        - source: "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:29-56"
+          description: "Anchors evaluation on explicit constraints with verification matrix but imposes no budget or classification gate."
+        - source: "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:89"
+          description: "Explicitly notes constraint list growth as a cost: 'Constraint list can grow large, adding evaluation latency' -- a risk, not a gate."
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41"
+          description: "Constraints field of intent has no numeric limit or business-language filter."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for constraint budget, constraint limit, 5 constraint, 7 constraint, directional constraint, unconditional constraint"
+      - "docs/canonical/constraint-anchored-evaluation.md: defines constraint verification but no budget gate"
+      - ".opencode/skills/: no skill applies a constraint budget gate"
+
+  - id: 6
+    name: Constraint-Failure Decision Rule
+    classification: Missing
+    integration_value: Medium
+    why: >
+      No canonical doc, skill, or curriculum lesson provides a decision rule for classifying
+      requirements as constraints (builder-facing) versus failure conditions (validator-facing).
+      The fields exist in the five-part intent but are classified by author judgment without
+      a formal heuristic.
+    evidence:
+      exists: []
+      missing:
+        - description: "No decision question: 'Would knowing this change how the builder writes code?'"
+        - description: "No rule classifies requirements into constraint vs. failure condition categories."
+        - description: "No mechanism ensures that items classified as failure conditions are not also visible to the builder."
+      nearby:
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41"
+          description: "Lists constraints and failure scenarios as separate fields but provides no decision rule for classifying an item into one field or the other."
+        - source: "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:35-41"
+          description: "Defines failed scenarios as an expectations field but does not define the boundary between constraints (intent) and failure conditions (expectations)."
+        - source: "[[docs/canonical/generator-evaluator|Generator-Evaluator]]:77-83"
+          description: "Generator builds and Evaluator checks. Architecture implies different information surfaces but no rule classifies what goes on which surface."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for constraint.*failure decision, would knowing this change, builder guidance.*validator, constraint or failure condition"
+      - ".opencode/skills/: intent-five-part-primitive checks completeness but does not classify items"
+
+  - id: 7
+    name: Compartmented Evaluation Architecture
+    classification: Partial Coverage
+    integration_value: High
+    why: >
+      Generator-Evaluator structurally separates builder from evaluator with distinct information
+      contexts. ICE Craft Separation further separates crafts with explicit owners. However, the
+      repo does not formalize "sealed information surfaces," "encrypted evals," or an audit
+      trail of information visibility. The architectural separation exists but compartmentation
+      as a named property with leakage prevention is not formalized.
+    evidence:
+      exists:
+        - source: "[[docs/canonical/generator-evaluator|Generator-Evaluator]]:31-85"
+          description: "Separates Generator (conversation context, candidate output) from Evaluator (persisted client state, rubrics, constraints) with distinct information contexts and responsibilities."
+        - source: "[[docs/canonical/generator-evaluator|Generator-Evaluator]]:77-83"
+          description: "Dimension table showing Generator and Evaluator have different primary responsibilities, context needs, model characteristics, and failure modes."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:53-58"
+          description: "Ownership table separating Intent (human), Context (harness), Expectations (human), and Loop execution (harness) with explicit agent modification permissions."
+        - source: "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:29-56"
+          description: "Evaluator verification matrix checking output against explicit constraints -- independent validation mechanics."
+        - source: "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:31-60"
+          description: "Separates planning from execution from verification with explicit phase boundaries."
+      missing:
+        - description: "No formal 'sealed information surfaces' as an architectural property."
+        - description: "No 'encrypted evals' or hidden failure conditions mechanic."
+        - description: "No audit trail of information visibility per participant."
+        - description: "No explicit leakage prevention rule or mechanism."
+        - description: "No naming of 'reward-hacking prevention' as the design intent behind Generator-Evaluator separation."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for compartment, sealed, information surface, hidden eval, reward hack, builder cannot"
+      - "docs/canonical/generator-evaluator.md: separates information contexts implicitly but does not name them as sealed compartments"
+
+  - id: 8
+    name: Scenario Destination Split
+    classification: Partial Coverage
+    integration_value: Medium
+    why: >
+      Both success and failure scenarios exist in both the five-part intent and the expectations
+      boundary. The repo has the scenario fields distributed across both artifacts but does not
+      formalize a routing rule that sends failure scenarios exclusively to Intent and success
+      scenarios exclusively to Expectations. The overlap is acknowledged but not split.
+    evidence:
+      exists:
+        - source: "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:39-40"
+          description: "Failure scenarios and success scenarios are both fields of the five-part intent."
+        - source: "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:36-37"
+          description: "Done scenarios (success) and failed scenarios (failure) are both fields of the Expectations artifact."
+        - source: "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:110"
+          description: "Acknowledges the overlap: 'The five-part intent's success/failure scenarios overlap with Expectations.'"
+      missing:
+        - description: "No explicit routing rule: failure scenarios → Intent (binary failure conditions), success scenarios → Expectations (done scenarios)."
+        - description: "No human checkpoint for generated expectations; repo treats expectations as directly authored, not generated."
+        - description: "No framing of the problem as scenarios serving conflicting roles (builder guidance vs. validator checks)."
+    searched_locations_not_found:
+      - "docs/canonical/: searched for scenario destination, scenario split, scenario routing, binary.*failure condition"
+
+  - id: 9
+    name: Harness-Owned Context Assembly
+    classification: Already Exists
+    integration_value: Low
+    why: >
+      The repo has extensive, mature harness-owned context assembly formalized across multiple
+      canonical docs. The Application-Owned Agent Control Plane explicitly states 'Context is
+      constructed, not appended.' ICE Craft Separation assigns Context ownership to the harness.
+      The repo's context infrastructure exceeds the pattern: resolver-based progressive disclosure,
+      layered hybrid context stack, addressable memory catalogs, budget-ledgered assembly, and
+      stable harness prompt preservation.
+    evidence:
+      exists:
+        - source: "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]:70-71"
+          description: "Context is constructed, not appended. Build each model call from approved state, history, memory, tool results, and business facts."
+        - source: "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]:39-43"
+          description: "Harness owns Context selection, freshness, and disclosure policy. Agent never decides what context it needs."
+        - source: "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]:28-53"
+          description: "Five-part resolver model (thin base context, capability directory, positive triggers, negative triggers, trigger evals)."
+        - source: "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]:28-42"
+          description: "Layered context assembly with explicit budget ordering across prompt, memory, durable state, summaries, latest result, and recoverable handles."
+        - source: "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41"
+          description: "Preserves invariant harness instructions separately from reducible context payload."
+        - source: "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-53"
+          description: "Catalogs omitted context with id, location, preview, scope, and fetch for recovery."
+        - source: "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]:29-62"
+          description: "Per-call ledger separating fixed harness cost from reducible context cost."
+        - source: "[[docs/canonical/external-state-persistence|External State Persistence]]:29-57"
+          description: "Durable state outside the context window, reloaded on demand."
+        - source: "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]:26-41"
+          description: "Preserves head (goal, constraints) and tail (current state) while keeping middle recoverable."
+        - source: "[[curriculum/GLOSSARY|Glossary]]:110-113"
+          description: "Defines Context Progressive Disclosure as a curriculum concept, taught and not just documented."
+        - source: "[[.opencode/skills/issue-start/SKILL|issue-start]]:16-23"
+          description: "Demonstrates load-on-demand skill triggers in production -- progressive context disclosure in the agent lifecycle."
+      missing: []
+    justification: >
+      The repo already implements context assembly at greater depth and maturity than the pattern
+      describes. The resolver-based model adds trigger contracts, evals, deduplication, and a
+      layered context stack that handles both disclosure and reduction -- elements not present
+      in the pattern. The repo also teaches this in the curriculum and implements it in
+      operational skills.
+
+summary:
+  totals:
+    already_exists: 2
+    partial_coverage: 3
+    missing: 4
+    better_implementation: 0
+  highest_integration_priorities:
+    - pattern: Compartmented Evaluation Architecture
+      value: High
+      reason: >
+        Adds sealed information surfaces and reward-hacking prevention to the existing
+        Generator-Evaluator architecture. The repo has the structural separation but not
+        the explicit compartmentation with leakage prevention.
+  repo_strengths:
+    - pattern: Harness-Owned Context Assembly
+      description: >
+        Mature context engineering infrastructure exceeding the pattern: resolver-based
+        progressive disclosure, hybrid context stack, addressable memory catalogs,
+        budget-ledgered assembly, and stable harness prompt preservation.
+    - pattern: ICE Ownership Boundary
+      description: >
+        ICE Craft Separation canonical doc provides explicit ownership boundaries with
+        a formal table, gap list mechanism, and method-vs-harness distinction.
+  integration_opportunities:
+    - description: >
+        The four Missing patterns (Two-Implementations Goal Test, Goal Atomicity Split,
+        Constraint Budget Gate, Constraint-Failure Decision Rule) are lightweight heuristics
+        and decision rules that could be added as review gates or skill triggers within
+        existing workflows.
+    - description: >
+        Constraint-Failure Decision Rule and Constraint Budget Gate pair naturally with
+        the five-part intent and constraint-anchored evaluation.
+    - description: >
+        Two-Implementations Goal Test and Goal Atomicity Split pair naturally with intent
+        authoring and the Grill-Me alignment interview.
+  related_classifications:
+    - date: 2026-06-12
+      source: IDSD Method
+      description: >
+        Classified 8 patterns including ICE Craft Separation (Partial Coverage), Intent as
+        Five-Part Primitive (Missing), Human-Owned Expectations Boundary (Partial Coverage),
+        Token Economics of Gap-Filling (Partial Coverage). Those patterns have since been
+        promoted to canonical docs. This classification covers 9 different patterns from
+        the same author's Anatomy of Intent analysis, focusing more on constraint management,
+        goal composition, and evaluation compartmentation.

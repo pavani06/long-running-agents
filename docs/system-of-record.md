@@ -41,6 +41,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/orchestrator/SKILL|.opencode/skills/orchestrator/SKILL.md]] | Coordenação de agentes paralelos, dashboard de status |
 | [[.opencode/skills/doc-coauthoring/SKILL|.opencode/skills/doc-coauthoring/SKILL.md]] | Workflow de co-autoria de documentação |
 | [[.opencode/skills/writing-plans/SKILL|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
+| [[.opencode/skills/karpathy-guidelines/SKILL|.opencode/skills/karpathy-guidelines/SKILL.md]] | Diretrizes comportamentais Karpathy: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
 | [[.opencode/skills/error-context-hygiene/SKILL|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
 | [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements |
 | [[.opencode/skills/manual-brake-question-gate/SKILL|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
@@ -50,6 +51,10 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/presence-in-the-loop-metric/SKILL|.opencode/skills/presence-in-the-loop-metric/SKILL.md]] | Métrica de presença-no-loop para calibrar intervenção humana em workflows agentic |
 | [[.opencode/skills/shadow-review-pipeline/SKILL|.opencode/skills/shadow-review-pipeline/SKILL.md]] | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
 | [[.opencode/skills/contextual-severity-calibration/SKILL|.opencode/skills/contextual-severity-calibration/SKILL.md]] | Calibração contextual de severidade em revisões de código |
+| [[.opencode/skills/two-implementations-goal-test/SKILL|.opencode/skills/two-implementations-goal-test/SKILL.md]] | Teste de duas implementações para validação de goal specification |
+| [[.opencode/skills/goal-atomicity-split/SKILL|.opencode/skills/goal-atomicity-split/SKILL.md]] | Decomposição de goals complexos em unidades atômicas |
+| [[.opencode/skills/constraint-budget-gate/SKILL|.opencode/skills/constraint-budget-gate/SKILL.md]] | Gate de orçamento explícito de constraints por tarefa |
+| [[.opencode/skills/constraint-failure-decision-rule/SKILL|.opencode/skills/constraint-failure-decision-rule/SKILL.md]] | Regra de decisão para falha de constraint com três caminhos |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -134,7 +139,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 55 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 62 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -208,6 +213,13 @@ Tópicos candidatos a ADR:
 | `contextual-severity-calibration.md` | Calibração contextual de severidade: ajuste de severidade baseado no contexto do código revisado |
 | `review-contract-checklist.md` | Checklist de contrato de review: itens verificáveis obrigatórios em toda revisão de código |
 | `pre-commit-ai-review-gate.md` | Gate de AI review pré-commit: validação automática por agente antes do commit |
+| `compartmented-evaluation-architecture.md` | Arquitetura de avaliação compartimentada com separação de responsabilidades entre componentes |
+| `three-part-intent-contract.md` | Contrato de intenção em três partes: goal, scenario, destination |
+| `scenario-destination-split.md` | Separação entre cenário (contexto de execução) e destino (resultado esperado) |
+| `two-implementations-goal-test.md` | Teste de duas implementações para validar se o goal está corretamente especificado |
+| `goal-atomicity-split.md` | Decomposição de goals complexos em unidades atômicas verificáveis |
+| `constraint-budget-gate.md` | Gate de orçamento de constraints: limite explícito de constraints por tarefa |
+| `constraint-failure-decision-rule.md` | Regra de decisão para falha de constraint: degrade, retry ou escalate |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 

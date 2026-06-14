@@ -657,6 +657,101 @@ O Intent Completeness Gate valida esses cinco campos antes de liberar qualquer a
 
 Isso não é burocracia. É mover o custo da ambiguidade para antes da execução, quando corrigir é barato. O exercício [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive|Intent Five-Part Primitive]] demonstra que um intent de 1 campo ("melhora a busca") custou 3.2 milhões de tokens e gerou 2.400 linhas descartadas, enquanto o mesmo intent com 5 campos teria custado 180 mil tokens e resolvido o problema na primeira tentativa.
 
+### Goal vs Specification: The Two-Implementations Test
+
+Mesmo com os cinco campos preenchidos, o campo **Description** ainda pode esconder um problema: especificações de implementação disfarçadas de goals. O padrão **Two-Implementations Goal Test** resolve isso com uma única pergunta de revisão:
+
+> "Duas implementações substancialmente diferentes podem ambas satisfazer esta descrição?"
+
+Se a resposta for sim, você tem um goal legítimo -- ele descreve O QUE alcançar. Se a resposta for não -- só uma implementação específica funciona -- você tem uma especificação mascarada de goal.
+
+**Exemplo que falha no teste:**
+
+```
+Description: "Implementar busca com TF-IDF e similaridade de cosseno no Pinecone"
+```
+
+Só existe uma implementação possível: usar TF-IDF + cosseno + Pinecone. Isso não é um goal -- é uma especificação ditando COMO implementar. Se esse texto chega ao Generator, o agente vai configurar Pinecone, escrever tokenização TF-IDF e ignorar alternativas mais simples que resolveriam o mesmo problema.
+
+**O mesmo outcome, reescrito como goal:**
+
+```
+Description: "Cliente vê produtos ordenados por relevância para sua consulta"
+```
+
+Agora duas implementações diferentes podem satisfazer: busca full-text no PostgreSQL, embedding similarity via vector store, filtro por categoria + ordenação por popularidade, ou TF-IDF no Pinecone. O Generator pode escolher a abordagem mais adequada ao contexto (catálogo disponível, latência aceitável, custo operacional).
+
+**Quando aplicar o teste:**
+
+O teste das duas implementações deve ser aplicado durante a **Grill-Me Alignment Interview** ([[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]), antes que o intent seja selado. O entrevistador pergunta: "Se eu lesse apenas esta descrição e desse para dois engenheiros diferentes, eles produziram soluções fundamentalmente diferentes que ainda assim te satisfariam?" Se a resposta for hesitante, há especificação embutida que precisa ser extraída.
+
+**O que fazer com a especificação extraída:**
+
+Especificações extraídas do Description não são descartadas -- são reclassificadas:
+- Se for uma **restrição real** ("o sistema deve responder em menos de 200ms"), vira **constraint**.
+- Se for uma **preferência de implementação** ("usar Pinecone porque já temos conta"), vira **contexto** (o harness decide, não o intent).
+- Se for uma **suposição não validada** ("TF-IDF é melhor que busca textual"), vira **pergunta de clarificação** para o outcome owner.
+
+O ponto não é proibir menção a tecnologias. É impedir que tecnologias específicas entrem no campo que define O QUE o sistema deve alcançar.
+
+**Conexão com o Intent Completeness Gate:**
+
+O teste das duas implementações pode rodar como um sub-gate dentro do Intent Completeness Gate. Antes de liberar o intent para execução, o gate aplica a pergunta-âncora ao campo Description. Se o campo falhar no teste (só uma implementação possível), o gate rejeita com uma pergunta direcionada: "Isso descreve O QUE alcançar ou COMO implementar? Se for O QUE, reescreva para que dois times diferentes possam chegar a soluções diferentes."
+
+**Para aprofundar:**
+- [[docs/canonical/two-implementations-goal-test|Two-Implementations Goal Test]] -- canonical doc com a definição formal e a heurística de classificação
+- [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test|Exercício: Two-Implementations Goal Test]] -- exercício prático de diagnóstico e classificação
+- [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test skill]] -- skill operacional que executa o teste
+
+### Goal Atomicity: One Sentence, No "And"
+
+Intents mal escritos frequentemente escondem múltiplos goals em uma única frase composta. O padrão **Goal Atomicity Split** resolve isso com uma regra simples:
+
+> Um goal = uma frase. Se a frase tem "e" conectando duas ações independentes, são dois goals.
+
+**Exemplo que precisa de split:**
+
+```
+Description: "Melhorar a busca de produtos e adicionar filtro de preço"
+```
+
+Este intent contém dois goals independentes: (1) melhorar a qualidade da busca, (2) adicionar funcionalidade de filtro por preço. Eles têm critérios de sucesso diferentes, constraints diferentes, e possivelmente owners diferentes. Juntá-los em um intent único força o agente a tomar decisões de priorização que pertencem ao outcome owner.
+
+**A regra do "e":**
+
+Percorra a descrição do intent procurando a conjunção "e". Para cada ocorrência, aplique o teste de independência: as duas partes conectadas pelo "e" podem ser implementadas E verificadas separadamente?
+
+- "Buscar produtos sem lactose e abaixo de R$ 50" -- o "e" conecta duas constraints do mesmo goal (filtrar produtos). Isso NÃO exige split.
+- "Recomendar whey e processar pagamento" -- o "e" conecta duas ações com ciclos de vida diferentes (Product Discovery vs Checkout). Isso EXIGE split.
+- "Otimizar latência e melhorar cobertura de busca" -- o "e" conecta dois objetivos que podem conflitar (resultados mais rápidos vs. resultados mais abrangentes). Isso EXIGE split, e o split força o outcome owner a decidir qual é prioritário.
+
+**Por que goals atômicos importam:**
+
+Goals compostos criam três problemas:
+1. **Coordenação oculta:** O agente precisa decidir a ordem, a prioridade e o trade-off entre os sub-goals sem que o outcome owner tenha explicitado essas decisões.
+2. **Verificação ambígua:** Se o agente melhora a busca mas não implementa o filtro de preço, o intent foi cumprido ou não? Sem atomicidade, a resposta depende de interpretação.
+3. **Token waste:** O agente gasta tokens tentando resolver múltiplos problemas na mesma sessão, frequentemente com retries causados por conflitos entre os sub-goals.
+
+**Conexão com Vertical-Slice Issue Generation:**
+
+Goal atomicity é o equivalente no nível de intent do que [[docs/canonical/vertical-slice-issue-generation|Vertical-Slice Issue Generation]] é no nível de implementação. Um goal atômico gera uma fatia vertical com comportamento observável. Um goal composto força o agente a decompor durante a execução -- exatamente o que o Planner deveria fazer ANTES da execução.
+
+**O que fazer após o split:**
+
+Cada goal atômico resultante deve:
+1. Ter seus próprios cinco campos (Description, Constraints, Failure Scenarios, Success Scenarios, Connections).
+2. Passar pelo Two-Implementations Goal Test individualmente.
+3. Ter seu próprio Sprint Contract com Input Specification, Success Criteria e Failure Handling.
+4. Ser rastreável a um owner específico.
+
+Um intent original com 3 goals atômicos gera 3 ciclos independentes de Planner → Generator → Evaluator, cada um com seu próprio state, audit trail e critério de done.
+
+**Para aprofundar:**
+- [[docs/canonical/goal-atomicity-split|Goal Atomicity Split]] -- canonical doc com a definição formal e heurística de split
+- [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] -- padrão complementar de decomposição por comportamento observável
+- [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split|Exercício: Goal Atomicity Split]] -- exercício prático com implementação do splitter
+- [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split skill]] -- skill operacional que executa a decomposição
+
 ### Human-Owned Expectations Boundary
 
 Expectations são o terceiro craft do ICE. E a regra mais importante sobre expectations é: **quem quer o resultado escreve a definição de pronto. Quem implementa não pode redefinir "pronto" durante a execução.**

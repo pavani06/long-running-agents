@@ -74,6 +74,54 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Compartmented Evaluation Architecture (Arquitetura de Avaliacao Compartimentada)
+
+**Definição:** Padrão arquitetural onde Builder (Generator) e Validator (Evaluator) recebem superfícies de informação seladas -- o Builder recebe apenas goal e constraints, o Validator recebe failure conditions (potencialmente encriptados ou ocultos). A compartimentação impede que o Builder faça reward-hacking otimizando outputs para checks visíveis em vez de outcomes reais.
+
+**Por que importa:** O Generator-Evaluator separa responsabilidades, mas sem superfícies seladas o Generator pode acessar as rubricas do Evaluator e otimizar contra elas. Compartimentação formaliza a fronteira de informação: o que o Builder pode ver vs. o que o Validator usa para julgar. Isso fornece uma defesa estrutural contra o agente otimizar para checks em vez de outcomes.
+
+**Elementos-chave:** Superfícies de informação seladas, failure conditions ocultas ou encriptadas do Builder, audit trail de visibilidade de informação, prevenção de leakage (não copiar failure conditions para o prompt do Builder), e "reward-hacking prevention" como intenção de design explícita.
+
+**Em KODA:** No Product Discovery, o Generator recebe customer_context e goal, mas não recebe as failure conditions detalhadas do Evaluator. O Evaluator verifica contra rubrica que o Generator não viu, criando um teste cego que impede otimização superficial.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]], [[docs/canonical/generator-evaluator|Generator-Evaluator]], [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]], Generator/Evaluator Pattern
+
+---
+
+### Constraint Budget Gate (Gate de Orcamento de Constraints)
+
+**Definição:** Heurística que impõe um limite rígido de 5 a 7 constraints direcionais e incondicionais em linguagem de negócio para cada tarefa. Constraints que escolhem ferramentas, nomeiam padrões ou descrevem implementação são reclassificadas como contexto; checks que medem output viram failure conditions. Previne que listas de constraints cresçam até virarem especificações de implementação disfarçadas.
+
+**Por que importa:** O repositório já trata o crescimento de constraint lists como risco ("Constraint list can grow large, adding evaluation latency"). O Constraint Budget Gate transforma esse risco em disciplina: um limite numérico explícito que força o author de intent a priorizar o que realmente é constraint (guia o Builder) vs. o que é contexto ou failure condition.
+
+**A regra dos 5-7:** Constraints devem ser direcionais ("o produto não pode conter lactose"), incondicionais (não "se possível, evite lactose"), e em linguagem de negócio (não "usar campo lactose_free=True no filtro SQL"). O número 5-7 é uma heurística calibrada por domínio, não uma prova matemática.
+
+**Em KODA:** Uma intent de Product Discovery poderia ter constraints como: (1) produto sem lactose, (2) preço <= R$ 220, (3) em estoque em SP, (4) não recomendar estimulantes noturnos, (5) explicar trade-off quando preferência conflita com restrição. Se a lista chega a 12 itens, o gate força reclassificação: metade vira contexto ou failure conditions.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/constraint-budget-gate|Constraint Budget Gate]], [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]], [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-budget-gate|Exercício: Constraint Budget Gate]]
+
+---
+
+### Constraint-Failure Decision Rule (Regra de Decisao Constraint-Failure)
+
+**Definição:** Heurística de classificação que pergunta: "Saber isso mudaria como o Builder escreve código?" Se sim, é uma constraint (guia o Builder durante a geração). Se não -- só pode ser verificado depois que o output existe -- é uma failure condition (guia o Validator durante a checagem). Previne que times misturem orientação de Builder com checks de Validator.
+
+**Por que importa:** O five-part intent tem campos separados para constraints e failure scenarios, mas nenhum mecanismo diz ao author como decidir qual campo usar para cada item. A decision rule resolve isso com uma única pergunta operacional. Constraints que só fazem sentido depois do output (ex: "a mensagem final não deve ter mais de 300 caracteres") são failure conditions, não constraints.
+
+**A pergunta-âncora:** "Se eu contasse isso ao Builder ANTES dele começar, ele escreveria código diferente?" Se sim → constraint. Se não → failure condition. Exemplo: "o produto não pode ter lactose" muda como o Builder busca no catálogo → constraint. "A resposta final deve ser educada" só pode ser verificada depois → failure condition.
+
+**Em KODA:** Na criação de um Sprint Contract para recomendação, a regra classifica "não recomendar produtos com lactose" como constraint (muda a busca) e "explicação deve conectar produto ao objetivo" como failure condition (só pode ser avaliada no output final). Essa classificação determina qual agente recebe cada informação.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]], [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]], [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule|Exercício: Constraint-Failure Decision Rule]]
+
+---
+
 ### Context Anxiety
 **Definição:** Comportamento observado onde agentes se comportam de forma ansiosa/com pressa ao se aproximarem do limite de contexto.
 
@@ -209,6 +257,22 @@ Referência rápida de termos usados neste programa.
 **Ver tambem:** Failure Pattern Classification Loop, QA-to-Backlog Feedback Loop, Production Failure Regression Flywheel
 
 **Nivel:** 3
+
+---
+
+### Goal Atomicity Split (Divisao Atomica de Metas)
+
+**Definição:** Heurística que exige que cada goal seja uma única frase sem conjunções. Quando "e" aparece na descrição de um goal, ele deve ser dividido em múltiplos goals atômicos. "Melhorar a busca e adicionar filtro de preço" vira dois goals: (1) melhorar a busca, (2) adicionar filtro de preço. Previne que intents multi-goal escondam complexidade de coordenação.
+
+**Por que importa:** Goals compostos escondem trade-offs. Um agente que recebe "otimizar latência e melhorar cobertura" não sabe qual priorizar quando os dois conflitam. A atomicidade força o outcome owner a decidir prioridades ANTES da execução, quando o custo da decisão é baixo. Cada goal atômico pode ter seu próprio Sprint Contract, suas próprias constraints, e seu próprio Evaluator.
+
+**A regra do "e":** Percorra a descrição do goal. Cada "e" que conecta duas ações independentes é um ponto de split. "E" que conecta detalhes de uma mesma ação ("buscar produtos sem lactose e abaixo de R$ 50") não necessariamente exige split -- o teste é: as duas partes podem ser implementadas e verificadas independentemente?
+
+**Em KODA:** "Recomendar whey e processar pagamento" são dois goals atômicos com ciclos de vida diferentes. O primeiro pertence ao Discovery Agent, o segundo ao Order Agent. Dividi-los evita que o mesmo agente tente recomendar e cobrar na mesma chamada.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/goal-atomicity-split|Goal Atomicity Split]], [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]], [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split|Exercício: Goal Atomicity Split]]
 
 ---
 
@@ -669,6 +733,22 @@ Restante: 140,000 para agent rodar
 
 ---
 
+### Two-Implementations Goal Test (Teste das Duas Implementacoes)
+
+**Definição:** Heurística para distinguir goals de especificações disfarçadas. A pergunta de revisão: "Duas implementações substancialmente diferentes podem ambas satisfazer isto?" Se sim, é um goal (descreve O QUE alcançar). Se não, é uma especificação mascarada de goal (descreve COMO implementar). "Mostrar produtos ordenados por relevância" é goal; "usar TF-IDF com similaridade de cosseno no Pinecone" é especificação.
+
+**Por que importa:** Agentes tratam especificações como ordens literais. Se o intent diz "implementar com Pinecone", o agente implementa com Pinecone -- mesmo que uma busca simples resolva melhor. O teste das duas implementações expõe especificações que chegaram vestidas de goal e força o outcome owner a separar O QUE de COMO antes da execução.
+
+**A pergunta-âncora:** "Se eu lesse apenas este goal e desse para dois times diferentes, eles produziriam soluções fundamentalmente diferentes que ainda assim satisfariam o outcome owner?" Se sim → goal puro. Se não → tem especificação embutida. Remova a especificação do goal e mova para constraints (se for restrição real) ou para contexto (se for preferência de implementação).
+
+**Em KODA:** "Recomendar produtos com TF-IDF no Pinecone" falha no teste (só uma implementação possível). "Cliente vê recomendações personalizadas baseadas no histórico" passa (múltiplas implementações: busca semântica, filtro por categoria, modelo de afinidade, etc.).
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/two-implementations-goal-test|Two-Implementations Goal Test]], [[docs/canonical/intent-five-part-primitive|Intent Five-Part Primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test|Exercício: Two-Implementations Goal Test]]
+
+---
+
 ## V
 
 ### Verification Loop (Loop de Verificação)
@@ -735,6 +815,7 @@ Feedback → Volta ao Generator
 - ICE Craft Separation, Intent as Five-Part Primitive
 - Human-Owned Expectations Boundary
 - Token Economics of Gap-Filling
+- Two-Implementations Goal Test, Goal Atomicity Split
 
 ### Nível 3 (Arquitetura Avançada)
 - Multi-Agent System
@@ -746,6 +827,8 @@ Feedback → Volta ao Generator
 - Persona-Based Documentation, Failure Pattern Classification Loop
 - Garbage Collection Day, QA-to-Backlog Feedback Loop
 - Presence-in-the-Loop Metric
+- Constraint Budget Gate, Constraint-Failure Decision Rule
+- Compartmented Evaluation Architecture
 
 ### Nível 4 (KODA-Específico)
 - KODA, suas capacidades e aplicações

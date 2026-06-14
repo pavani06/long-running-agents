@@ -742,6 +742,144 @@ O padrão busca julgamento honesto, não negatividade automática.
 
 Essa frase é o coração do módulo.
 
+### Constraint ou Failure Condition? A Regra de Classificacao
+
+Ter Generator e Evaluator separados resolve metade do problema. A outra metade é decidir **o que cada um recebe**. O padrão **Constraint-Failure Decision Rule** fornece uma heurística de classificação:
+
+> "Saber isso mudaria como o Builder escreve código?"
+
+Se a resposta for **sim**, a informação é uma **constraint** -- ela guia o Generator DURANTE a geração. O Generator precisa dela para construir o output corretamente desde o primeiro token.
+
+Se a resposta for **não** -- a informação só pode ser verificada depois que o output existe -- é uma **failure condition** -- ela guia o Evaluator DURANTE a checagem. O Evaluator precisa dela para julgar, mas o Generator não ganha nada em vê-la antes.
+
+**Exemplos de classificação:**
+
+| Informação | Pergunta-âncora | Resposta | Classificação | Quem recebe |
+|---|---|---|---|---|
+| "Produto não pode conter lactose" | Saber isso muda como o Generator busca no catálogo? | Sim -- ele filtra antes de recomendar | **Constraint** | Generator + Evaluator |
+| "A resposta final deve ter no máximo 300 caracteres" | Saber isso muda como o Generator escreve? | Sim -- ele controla o tamanho durante a geração | **Constraint** | Generator + Evaluator |
+| "A mensagem deve conectar o produto ao objetivo do cliente" | Saber isso muda como o Generator escolhe o produto? | Não -- ele já escolheu o produto. Só afeta a explicação final. Pode ser verificado depois. | **Failure Condition** | Apenas Evaluator |
+| "Nenhum cliente pode receber recomendação de produto com alergeno" | Saber isso muda como o Generator busca? | Sim -- é um bloqueio absoluto | **Constraint** (bloqueante) | Generator + Evaluator |
+| "O tom da resposta deve ser consultivo, não agressivo" | Saber isso muda como o Generator escreve? | Parcialmente -- pode influenciar, mas é subjetivo. Melhor verificar depois. | **Failure Condition** | Apenas Evaluator |
+
+**Por que essa classificação importa:**
+
+Quando constraints e failure conditions se misturam no mesmo prompt, dois problemas aparecem:
+
+1. O Generator recebe informações que não consegue usar (ex: critérios de qualidade textual) e as ignora ou as trata como ruído.
+2. O Evaluator usa constraints que recebeu do Generator como se fossem evidência, em vez de verificá-las independentemente.
+
+A decision rule resolve isso forçando o autor do intent a classificar cada item antes que ele entre no sistema. Constraints vão para o Generator e para o Evaluator (para verificação). Failure conditions vão APENAS para o Evaluator.
+
+**Conexão com o Five-Part Intent:**
+
+No [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]], o campo **Constraints** deve conter apenas itens que passam no teste "muda como o Builder escreve código". O campo **Failure Scenarios** deve conter itens que falham no teste mas que o Evaluator precisa verificar. O Intent Completeness Gate pode aplicar a decision rule como parte da validação: se um item no campo Constraints falha no teste, ele é movido para Failure Scenarios com um aviso.
+
+**Para aprofundar:**
+- [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] -- canonical doc com a definição formal
+- [[docs/canonical/constraint-budget-gate|Constraint Budget Gate]] -- padrão complementar que limita constraints a 5-7
+- [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule|Exercício: Constraint-Failure Decision Rule]] -- exercício prático de classificação
+- [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule skill]] -- skill operacional
+
+### Compartmented Evaluation: Superficies de Informacao Seladas
+
+A separação Generator/Evaluator cria dois roles. Mas sem uma fronteira explícita de **informação**, os roles podem compartilhar mais do que deveriam. O padrão **Compartmented Evaluation Architecture** resolve isso formalizando o conceito de superfícies de informação seladas -- uma defesa estrutural contra reward-hacking.
+
+**O problema do Evaluator transparente:**
+
+No modelo básico de Generator/Evaluator, ambos os agentes frequentemente recebem o mesmo contexto. O Generator vê a rubrica. O Generator vê os critérios de avaliação. O Generator vê as failure conditions. Isso cria um incentivo perverso: em vez de resolver o problema do outcome owner, o Generator otimiza seu output para passar nos checks que ele sabe que virão.
+
+Isso é **reward-hacking** aplicado a agentes: o sistema mede X, o agente maximiza X, mas X não captura o que realmente importa. O Generator aprende a produzir outputs que "passam na rubrica" sem necessariamente resolver o problema.
+
+**Exemplo KODA -- o Generator que aprendeu o teste:**
+
+Se o Generator sabe que o Evaluator verifica `lactose_free=true`, ele pode:
+1. Filtrar produtos por `lactose_free=true` (correto)
+2. Mas também pode começar a recomendar produtos com `lactose_free=true` que são ruins em outras dimensões (preço alto, estoque baixo, sabor ignorado) porque sabe que a flag passa no check
+
+O Generator não está trapaceando conscientemente. Ele está respondendo ao ambiente de avaliação que foi criado para ele. Se o ambiente é transparente, o comportamento se adapta ao ambiente, não ao problema.
+
+**A solução: superfícies seladas**
+
+A Compartmented Evaluation Architecture define duas superfícies de informação:
+
+```text
+┌─────────────────────────────────────────────────────────┐
+│              SUPERFÍCIE DO BUILDER                       │
+│  (Generator recebe APENAS isto)                          │
+│                                                          │
+│  • Goal (o que alcançar)                                 │
+│  • Constraints (limites durante a geração)               │
+│  • Context (catálogo, estado do cliente, políticas)      │
+│  • NÃO recebe: rubric, failure conditions,               │
+│    critérios de avaliação, exemplos de teste             │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│              SUPERFÍCIE DO VALIDATOR                      │
+│  (Evaluator recebe APENAS isto)                          │
+│                                                          │
+│  • Output do Generator (artefato a ser julgado)          │
+│  • Failure conditions (o que constitui erro)             │
+│  • Rubric (critérios de avaliação)                       │
+│  • Ground truth (fontes de verdade: catálogo,            │
+│    estado do cliente, políticas)                         │
+│  • Context factual compartilhado com o Generator         │
+│    (para verificar, não para gerar)                      │
+└─────────────────────────────────────────────────────────┘
+```
+
+**O que é selado e o que é compartilhado:**
+
+- **Compartilhado:** Fatos objetivos sobre o cliente e o domínio (customer_context.json, catálogo, políticas de negócio). Ambos precisam da mesma verdade factual.
+- **Selado (Builder não vê):** Rubricas de avaliação, failure conditions detalhadas, exemplos de outputs que foram reprovados, thresholds de aprovação, critérios de qualidade textual.
+- **Selado (Validator não vê):** Raciocínio interno do Generator, justificativas persuasivas, confidence scores auto-atribuídos.
+
+**Por que compartilhar fatos é seguro:**
+
+O Generator e o Evaluator precisam compartilhar o contexto factual para que a avaliação seja justa. Se o Generator usou `catalog_snapshot_v3.json` e o Evaluator usa `catalog_snapshot_v5.json`, a rejeição pode ser por divergência de dados, não por erro do Generator. Fatos compartilhados criam uma base comum de verdade.
+
+O que NÃO deve ser compartilhado é o mecanismo de julgamento. O Generator não deve saber quais dimensões da rubrica têm peso maior. Não deve saber qual threshold de score aprova. Não deve ver exemplos de falha anteriores (que ele poderia aprender a evitar superficialmente).
+
+**Encrypted evals e o conceito de teste cego:**
+
+O padrão leva a ideia ao extremo propondo "encrypted evals" -- failure conditions que são transformadas em testes automatizados que o Builder não pode ler. Isso não significa criptografia literal (embora possa). Significa que as failure conditions são compiladas em um formato que só o Evaluator consegue interpretar:
+
+- Failure conditions viram assertions em código que o Generator não acessa.
+- Rubricas viram scoring functions com pesos que o Generator desconhece.
+- Exemplos de teste viram casos de eval armazenados fora do contexto do Generator.
+
+**Audit trail de visibilidade:**
+
+Um componente essencial da compartimentação é o registro do que cada agente pôde ver. O audit trail deve documentar:
+
+- Quais artefatos o Generator recebeu (versões, timestamps).
+- Quais artefatos o Evaluator recebeu (versões, timestamps).
+- Se houve leakage (ex: um humano copiou failure conditions para o prompt do Generator).
+- Qual versão da rubrica foi usada na avaliação.
+
+Esse registro permite diagnosticar se uma falha foi causada por informação ausente (Generator não recebeu dado que precisava) ou por leakage (Generator recebeu dado que permitiu gaming).
+
+**Prevenção de leakage:**
+
+Leakage acontece quando a fronteira de informação é violada. Exemplos comuns:
+- Um humano cola failure conditions no prompt do Generator "para ajudar".
+- O harness inclui a rubrica no system prompt compartilhado.
+- O feedback do Evaluator inclui detalhes da rubrica que o Generator não deveria ver.
+- O state file compartilhado contém campos de avaliação.
+
+A arquitetura deve tratar leakage como bug de segurança, não como conveniência operacional. Cada campo em cada artefato deve ter uma regra de visibilidade: `builder_visible`, `validator_visible`, ou `shared`.
+
+**Conexão com o Generator/Evaluator existente:**
+
+O Generator/Evaluator pattern do repositório já separa responsabilidades. A Compartmented Evaluation Architecture adiciona a separação de **informação** como uma camada adicional. Não basta ter dois agentes. É preciso garantir que cada um receba apenas a informação necessária para seu papel.
+
+**Para aprofundar:**
+- [[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]] -- canonical doc com a definição formal
+- [[docs/canonical/generator-evaluator|Generator-Evaluator]] -- arquitetura base que a compartimentação estende
+- [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]] -- padrão de avaliação ancorada em constraints
+- [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] -- classificação do que vai para cada superfície
+
 ---
 
 ## 📊 Diagrama 2: Fluxo Detalhado Com State Files, Feedback Loop e Veredito

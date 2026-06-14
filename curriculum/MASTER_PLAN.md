@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["plano mestre", "visão completa", "master plan"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/EXECUTION_PLAN|Execution Plan]]"]
-last_updated: 2026-06-11
+last_updated: 2026-06-14
 ---
 # 📚 PLANO MESTRE: Curso de Long-Running Agents para KODA
 
@@ -77,10 +77,12 @@ koda-long-running-agents/
 │   ├── exercises/
 │   │   ├── exercise-01.md
 │   │   ├── exercise-02.md
-│   │   ├── exercise-03.md
-│   │   └── solutions/
-│   └── koda-applications/
-│       └── nivel-2-koda.md
+  │   │   ├── exercise-03.md
+  │   │   ├── exercise-two-implementations-goal-test.md
+  │   │   ├── exercise-goal-atomicity-split.md
+  │   │   └── solutions/
+  │   └── koda-applications/
+  │       └── nivel-2-koda.md
 │
 ├── 03-nivel-3-advanced-architecture/
 │   ├── 01-multi-agent-systems.md
@@ -93,10 +95,12 @@ koda-long-running-agents/
 │   │   ├── exercise-02.md
 │   │   ├── exercise-03.md
 │   │   ├── exercise-04-llm-as-fuzzy-compiler.md
-│   │   ├── exercise-05-persona-based-documentation.md
-│   │   └── solutions/
-│   └── koda-applications/
-│       └── nivel-3-koda.md
+  │   │   ├── exercise-05-persona-based-documentation.md
+  │   │   ├── exercise-constraint-budget-gate.md
+  │   │   ├── exercise-constraint-failure-decision-rule.md
+  │   │   └── solutions/
+  │   └── koda-applications/
+  │       └── nivel-3-koda.md
 │
 ├── 03-nivel-arquiteto/
 │   └── exercises/
@@ -216,7 +220,7 @@ koda-long-running-agents/
 - [ ] Consigo escrever sprint contracts com critérios testáveis
 - [ ] Posso criar uma rubric para avaliar outputs
 - [ ] Consigo ler e interpretar agent traces
-- [ ] Completei os 5 exercícios do Nível 2
+- [ ] Completei os 7 exercícios do Nível 2
 - [ ] Consigo aplicar padrões ao KODA
 
 ---
@@ -239,7 +243,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 9 exercícios do Nível 3
+- [ ] Completei os 11 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

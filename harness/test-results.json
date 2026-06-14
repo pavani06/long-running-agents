@@ -1,84 +1,84 @@
 {
   "phase-0": {
-    "passes": true,
+    "passes": false,
     "evidence": [
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-mental-model.md",
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-mental-model.yaml"
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-mental-model.md",
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-mental-model.yaml"
     ],
-    "evaluated_by": "evaluator",
-    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
-    "duration_seconds": 470,
+    "evaluated_by": null,
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T18:45:26Z",
-    "completed_at": "2026-06-14T18:53:16Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-1": {
-    "passes": true,
+    "passes": false,
     "evidence": [
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis.md",
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis.yaml"
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-analysis.md",
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-analysis.yaml"
     ],
-    "evaluated_by": "evaluator",
-    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
-    "duration_seconds": 470,
+    "evaluated_by": null,
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T18:45:26Z",
-    "completed_at": "2026-06-14T18:53:16Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-2": {
-    "passes": true,
+    "passes": false,
     "evidence": [
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns.md",
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns.yaml"
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns.md",
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns.yaml"
     ],
-    "evaluated_by": "evaluator",
-    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
-    "duration_seconds": 199,
+    "evaluated_by": null,
+    "notes": "Extracao de padroes reutilizaveis — Phase 2",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T18:53:37Z",
-    "completed_at": "2026-06-14T18:56:56Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-3": {
-    "passes": true,
+    "passes": false,
     "evidence": [
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification.md",
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification.yaml"
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification.md",
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification.yaml"
     ],
-    "evaluated_by": "evaluator",
-    "notes": "Classificacao contra repositorio \u2014 Phase 3",
-    "duration_seconds": 237,
+    "evaluated_by": null,
+    "notes": "Classificacao contra repositorio — Phase 3",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T18:57:06Z",
-    "completed_at": "2026-06-14T19:01:03Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-4": {
-    "passes": true,
+    "passes": false,
     "evidence": [
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-artifacts.yaml",
-      "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-artifacts.md"
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-artifacts.yaml",
+      "docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-artifacts.md"
     ],
-    "evaluated_by": "evaluator",
-    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
-    "duration_seconds": 670,
+    "evaluated_by": null,
+    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T19:01:10Z",
-    "completed_at": "2026-06-14T19:12:20Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-5": {
-    "passes": true,
+    "passes": false,
     "evidence": [],
-    "evaluated_by": "evaluator",
-    "notes": "Integracao \u2014 atualiza system-of-record e indices",
-    "duration_seconds": 137,
+    "evaluated_by": null,
+    "notes": "Integracao — atualiza system-of-record e indices",
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-14T19:12:27Z",
-    "completed_at": "2026-06-14T19:14:44Z"
+    "started_at": null,
+    "completed_at": null
   },
   "phase-6": {
     "passes": false,
     "evidence": [],
     "evaluated_by": null,
-    "notes": "Curriculum Deep Integration \u2014 opcional",
+    "notes": "Curriculum Deep Integration — opcional",
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,

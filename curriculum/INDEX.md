@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["índice currículo", "navegação", "mapa currículo"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/QUICK_START|Quick Start]]", "[[curriculum/GLOSSARY|Glossary]]"]
-last_updated: 2026-06-11
+last_updated: 2026-06-14
 ---
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
@@ -108,6 +108,8 @@ last_updated: 2026-06-11
 - `02-nivel-2-practical-patterns/exercises/exercise-03.md` (Rubric Design)
 - `02-nivel-2-practical-patterns/exercises/exercise-04-error-context-hygiene.md` (Error Context Hygiene)
 - `02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive.md` (Intent Five-Part Primitive)
+- `02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test.md` (Two Implementations Goal Test)
+- `02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split.md` (Goal Atomicity Split)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
@@ -119,6 +121,8 @@ last_updated: 2026-06-11
 - `03-nivel-arquiteto/exercises/exercise-04-owner-of-no-role.md` (Owner of No Role)
 - `03-nivel-3-operational/exercises/exercise-shadow-review-pipeline.md` (Shadow Review Pipeline)
 - `03-nivel-3-operational/exercises/exercise-contextual-severity-calibration.md` (Contextual Severity Calibration)
+- `03-nivel-3-advanced-architecture/exercises/exercise-constraint-budget-gate.md` (Constraint Budget Gate)
+- `03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule.md` (Constraint Failure Decision Rule)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`
