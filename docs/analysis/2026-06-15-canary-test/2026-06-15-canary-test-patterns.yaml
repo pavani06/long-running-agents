@@ -1,0 +1,146 @@
+meta:
+  title: "Reusable Agentic Patterns from Canary Test Code Review"
+  type: analysis
+  date: 2026-06-15
+  source: "docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis.md"
+  extraction_scope: "Only reusable patterns applicable to agentic review systems, agentic governance, or agent-operated validation loops. Repository classification is out of scope."
+  pattern_count: 4
+  tags:
+    - agentic-coding
+    - governanca
+    - decision-discipline
+    - harness-engineering
+    - evals
+    - spec-driven-development
+
+patterns:
+  - name: "Shadow Review Pipeline"
+    "problem solved": "Agentic reviewers are hard to trust as blocking gates before their agreement rate, false positives, and missed-find value are observed in the target workflow."
+    inputs:
+      - "Open PRs or proposed changes."
+      - "Human review outcomes."
+      - "AI reviewer outcomes captured without blocking merges."
+      - "Agreement categories such as true positive, false positive, missed-by-human, and missed-by-AI."
+      - "Shadow-period duration and dashboard or log sink."
+    outputs:
+      - "Non-blocking AI review trace for each change."
+      - "Agreement and false-positive metrics by check category."
+      - "Data-backed decision about which checks can graduate to blocking status."
+      - "Trust evidence for developers and reviewers before workflow enforcement changes."
+    benefits:
+      - "De-risks adoption because human workflow does not change during measurement."
+      - "Turns gating decisions from opinion into observed reliability data."
+      - "Reveals which AI review categories add value and which create noise."
+    limitations:
+      - "Provides no blocking protection during the shadow period."
+      - "Requires enough review volume to produce useful agreement data."
+      - "Metrics are only actionable if AI findings are structured enough to compare with human outcomes."
+    components:
+      - "Human review lane"
+      - "AI review lane"
+      - "Non-blocking dashboard or log sink"
+      - "Agreement classifier"
+      - "Gate graduation decision policy"
+    flow:
+      - "Open a change or PR."
+      - "Run human review and AI review in parallel."
+      - "Record AI findings without blocking the merge."
+      - "Compare human and AI outcomes by category."
+      - "After the shadow period, decide which checks are reliable enough to become gates."
+
+  - name: "Review Contract Checklist"
+    "problem solved": "Freeform agent review produces ambiguous comments that are hard to verify, compare, or turn into repeatable gates."
+    inputs:
+      - "A review-contract.yaml or equivalent checklist attached to the change."
+      - "Explicit review dimensions such as security surface, migrations, API compatibility, error handling, and test coverage."
+      - "The code diff or artifact under review."
+      - "Project conventions and applicability rules for each checklist item."
+    outputs:
+      - "Per-item status such as pass, fail, or not-applicable."
+      - "Structured findings tied to specific review dimensions."
+      - "A review artifact that humans, dashboards, and later gates can inspect consistently."
+    benefits:
+      - "Gives the agent independent, bounded checks instead of an open-ended instruction to comment."
+      - "Makes review output actionable without forcing humans to reinterpret freeform prose."
+      - "Creates comparable data for shadow pipelines and future gate decisions."
+    limitations:
+      - "A weak or incomplete contract can omit important risks."
+      - "Checklist maintenance costs grow as the system and review policy evolve."
+      - "It does not replace human architectural judgment when dimensions require tradeoff evaluation."
+    components:
+      - "Review contract artifact"
+      - "Checklist dimensions"
+      - "Applicability rule per dimension"
+      - "Per-item status model"
+      - "Structured finding renderer"
+    flow:
+      - "Attach or load the review contract for the change."
+      - "For each checklist item, decide whether it applies."
+      - "Run the agentic review for each applicable item independently."
+      - "Emit pass, fail, or not-applicable status per item."
+      - "Aggregate structured findings for human review, dashboards, or gates."
+
+  - name: "Pre-Commit AI Review Gate"
+    "problem solved": "Agentic review that runs only after push creates slow feedback loops and lets trivial issues reach shared CI or PR review surfaces."
+    inputs:
+      - "Local git diff or staged diff."
+      - "AI reviewer prompt constrained to potential bugs, project-style violations, and security concerns."
+      - "Project-specific conventions rather than generic best-practice defaults."
+      - "Pass/block policy for local gate results."
+    outputs:
+      - "Early pass or block decision before push."
+      - "Focused finding list for bugs, project convention violations, and security concerns."
+      - "Local remediation loop before shared pipeline resources are used."
+    benefits:
+      - "Shortens feedback latency for mechanical and policy-level issues."
+      - "Keeps CI and human review focused on higher-value checks."
+      - "Reduces noise when the prompt enforces the team's actual rules."
+    limitations:
+      - "Local hooks can be bypassed unless paired with server-side or PR gates."
+      - "The agent remains a fast, shallow first pass and should not own architecture or design approval."
+      - "Poor prompt tuning can produce noisy output that developers learn to ignore."
+    components:
+      - "Diff collector"
+      - "Three-axis triage prompt"
+      - "Project convention pack"
+      - "AI reviewer invocation"
+      - "Pass/block gate policy"
+    flow:
+      - "Collect the local diff before push."
+      - "Prompt the AI reviewer for bugs, project convention violations, and security concerns."
+      - "Parse or review the focused findings."
+      - "Apply the pass/block policy."
+      - "Let the developer fix locally before pushing or escalate the finding to later review."
+
+  - name: "Contextual Severity Calibration"
+    "problem solved": "One-size-fits-all agent review over-reviews low-risk modules while under-reviewing critical paths."
+    inputs:
+      - "Module-level risk-profile.yaml or equivalent risk metadata."
+      - "Risk level such as critical, high, medium, or low."
+      - "Applicable check set such as style, correctness, security, performance, and data integrity."
+      - "Changed file paths or module ownership metadata."
+      - "Historical false-positive and agreement metrics when available."
+    outputs:
+      - "Risk-adjusted review depth for the changed module."
+      - "Calibrated severity labels for findings."
+      - "Check selection proportional to the blast radius and failure cost of the change."
+    benefits:
+      - "Reduces reviewer fatigue on low-risk changes."
+      - "Increases scrutiny where failures have high security, data, performance, or integrity cost."
+      - "Makes agentic review effort proportional to operational risk instead of uniform across the codebase."
+    limitations:
+      - "Requires maintained risk profiles and ownership of module metadata."
+      - "Misclassified modules can create either false confidence or unnecessary friction."
+      - "Calibration needs periodic re-evaluation as the product, architecture, and empirical review data change."
+    components:
+      - "Module risk profile"
+      - "Changed-path mapper"
+      - "Check-set selector"
+      - "Severity calibration policy"
+      - "Metric feedback loop"
+    flow:
+      - "Map changed files to modules or ownership areas."
+      - "Load each module's risk profile."
+      - "Select checks and severity thresholds from the declared risk level."
+      - "Run the agentic review with risk-adjusted depth."
+      - "Feed false-positive and agreement metrics back into future calibration."

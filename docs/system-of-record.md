@@ -26,7 +26,7 @@ Mapa das fontes canônicas do `long-running-agents`. Quando duas fontes divergir
 
 O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff Protocol): cada agente tem um escopo fechado, um dono, e gates de validação.
 
-Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-development`, `context-engineering`, `evals`, `error-handling`, `harness-engineering`, `12-factor-agents`, `production`.
+Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-development`, `context-engineering`, `evals`, `error-handling`, `harness-engineering`, `12-factor-agents`, `production`, `code-review`, `shadow-review`.
 
 | Fonte | Cobre |
 |---|---|
@@ -48,6 +48,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/owner-of-no-role/SKILL|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
 | [[.opencode/skills/intent-five-part-primitive/SKILL|.opencode/skills/intent-five-part-primitive/SKILL.md]] | Decomposição de intenção em cinco partes primitivas para especificação precisa de tarefas |
 | [[.opencode/skills/presence-in-the-loop-metric/SKILL|.opencode/skills/presence-in-the-loop-metric/SKILL.md]] | Métrica de presença-no-loop para calibrar intervenção humana em workflows agentic |
+| [[.opencode/skills/shadow-review-pipeline/SKILL|.opencode/skills/shadow-review-pipeline/SKILL.md]] | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
+| [[.opencode/skills/contextual-severity-calibration/SKILL|.opencode/skills/contextual-severity-calibration/SKILL.md]] | Calibração contextual de severidade em revisões de código |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -202,6 +204,10 @@ Tópicos candidatos a ADR:
 | `human-owned-expectations-boundary.md` | Fronteira de expectativas de propriedade humana: delimitação explícita do que o humano mantém sob seu controle |
 | `token-economics-gap-filling.md` | Economia de tokens do preenchimento de lacunas: custo de inferência vs. custo de especificação |
 | `symphony-trap-awareness.md` | Consciência da armadilha da sinfonia: risco de over-specification e perda de adaptabilidade em sistemas agentic |
+| `shadow-review-pipeline.md` | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
+| `contextual-severity-calibration.md` | Calibração contextual de severidade: ajuste de severidade baseado no contexto do código revisado |
+| `review-contract-checklist.md` | Checklist de contrato de review: itens verificáveis obrigatórios em toda revisão de código |
+| `pre-commit-ai-review-gate.md` | Gate de AI review pré-commit: validação automática por agente antes do commit |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 

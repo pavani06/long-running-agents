@@ -1,0 +1,202 @@
+meta:
+  title: "Comparative Classification: Canary Test Code Review Patterns vs. long-running-agents Repo"
+  date: 2026-06-15
+  repo: "long-running-agents"
+  patterns_source: "Canary Test Code Review (extracted via analyze-and-improve pipeline)"
+  evidence_sources:
+    - "docs/canonical/"
+    - "docs/evidence/"
+    - "docs/analysis/"
+    - "curriculum/"
+    - ".opencode/skills/"
+    - "docs/system-of-record.md"
+
+classification_legend:
+  already_exists: "Pattern is documented, implemented, or taught with equivalent depth"
+  partial_coverage: "Elements exist but missing key mechanics, reframe, or formalization"
+  missing: "Not present in any form (doc, code, or curriculum)"
+  better_implementation: "Repo has a superior or more mature version of the same idea"
+
+dependency_chain:
+  description: "Sequential dependency identified in canary-test analysis"
+  steps:
+    - "Review Contract Checklist enables Shadow Review Pipeline (structured findings needed for agreement metrics)"
+    - "Shadow Review Pipeline generates efficacy data that feeds Contextual Severity Calibration (false-positive rates per module)"
+    - "Contextual Severity Calibration informs Pre-Commit AI Review Gate (risk-adjusted prompt depth)"
+
+patterns:
+  - id: 1
+    name: "Shadow Review Pipeline"
+    classification: "Missing"
+    integration_value: "Medium"
+    summary: >
+      The repo has general shadow/canary stages for production deployment safety but
+      no specific mechanism for shadowing an AI code reviewer alongside human review,
+      collecting agreement metrics, and using shadow-period data to graduate AI checks
+      to blocking status.
+    evidence_adjacent:
+      - file: "docs/canonical/eval-to-production-correlation-tracking.md"
+        line: 113
+        note: "Mentions staged shadow tests as Better Implementation of external canary-gate patterns, but for production deployment, not AI review shadowing."
+      - file: "docs/canonical/eval-tier-stratification.md"
+        line: 58
+        note: "References shadow tests and canary phases in harness playbook context; production deployment safety."
+      - file: "docs/canonical/measured-harness-evolution-lifecycle.md"
+        line: 60
+        note: "Shadow tests in quarterly harness cadence; deployment safety, not AI review trust-building."
+      - file: "docs/canonical/domain-embedded-workflow-automation-wedge.md"
+        line: 64
+        note: "Shadowing messy customer work for operational workflow discovery; not AI review shadowing."
+    evidence_not_found:
+      - "No canonical doc describing non-blocking AI review shadow mode."
+      - "No mechanism for agreement metrics (true positive, false positive, missed-by-human, missed-by-AI) between AI and human review."
+      - "No shadow period concept with dashboard/log sink for AI review trust data."
+      - "No graduation process from shadow to blocking based on agreement-rate thresholds."
+      - "No agreement-category taxonomy for AI review findings."
+      - "NOT_FOUND in all 55 canonical docs, curriculum, .opencode/skills/, docs/evidence/."
+    gap: >
+      The repo's canary/shadow infrastructure is about verifying agent behavior changes
+      in production, not about building trust in an AI code reviewer. The Shadow Review
+      Pipeline would add the trust-calibration phase that precedes automated review gates.
+
+  - id: 2
+    name: "Review Contract Checklist"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    summary: >
+      The repo has evaluation rubrics, constraint-anchored checking with verification
+      matrices, sprint contracts, and per-dimension evaluation. But the specific
+      review-contract.yaml format for AI code review with explicit review dimensions
+      and per-item pass/fail/not-applicable status is not present.
+    evidence_exists:
+      - file: "docs/canonical/constraint-anchored-evaluation.md"
+        lines: "31-49"
+        note: "Verification matrix (constraint -> check -> pass/fail -> violation detail) with aggregate verdict. Closest structural match."
+      - file: "docs/canonical/generator-evaluator.md"
+        lines: "57-65"
+        note: "Evaluator applies rubrics and business rules with access to client data and rubrics."
+      - file: "docs/canonical/split-brain-planning-review.md"
+        lines: "28-41"
+        note: "Independent rubrics applied by separate reviewers, reconciled through explicit decisions."
+      - file: "docs/canonical/pr-gated-eval-enforcement.md"
+        lines: "30-43"
+        note: "Structured PR eval report with explicit fields (change_scope, baseline, quality_delta, thresholds, merge_policy)."
+      - file: "curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md"
+        lines: "72-131"
+        note: "Sprint Contracts teach pre-agreed definition of done between Generator and Evaluator."
+      - file: "docs/canonical/repeatable-agent-spot-check-set.md"
+        lines: "30-42"
+        note: "Eval cases with expected_outcome, acceptable_tool_behavior, baseline, and grading_notes."
+    what_is_missing:
+      - "review-contract.yaml format attached to each change with explicit review dimensions."
+      - "Per-item status (pass/fail/not-applicable) specifically for code review dimensions."
+      - "Review dimensions (security surface, migrations, API compatibility, error handling, test coverage) as named concept for AI code review."
+      - "Contract attachment to the change itself (existing sprint contracts define work scope, not review scope per change)."
+      - "review-contract.yaml: NOT_FOUND as file or template outside canary-test analysis."
+    gap: >
+      The repo's constraint-anchored evaluation and sprint contracts provide the structural
+      foundation for structured review. Formalizing a review-contract.yaml for AI code
+      review would extend these patterns into the code review domain, making AI review
+      output comparable and auditable.
+
+  - id: 3
+    name: "Pre-Commit AI Review Gate"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    summary: >
+      The repo has eval tier stratification with pre-commit as a trigger and
+      standard pre-commit hooks for lint/formatting. But no AI-based pre-commit
+      review mechanism — receiving a local diff and checking for bugs, project
+      convention violations, and security concerns before push.
+    evidence_exists:
+      - file: "docs/canonical/eval-tier-stratification.md"
+        line: 34
+        note: "Fast eval tier lists pre-commit as trigger: 'Local change, pre-commit, small PR' with decision power to block local readiness."
+      - file: "docs/canonical/eval-tier-stratification.md"
+        lines: "30-49"
+        note: "Comprehensive tier metadata: runtime_budget, cost_budget, flakiness_policy, trigger, threshold, reporting, owner."
+      - file: "docs/canonical/failure-pattern-classification-loop.md"
+        lines: "67-69"
+        note: "Lint rules as commit-time guardrail surface with low token cost and instant latency."
+      - file: "curriculum/07-implementation-guides/01-setup-guide.md"
+        lines: "2452-2487"
+        note: "Standard pre-commit hooks for lint/ruff formatting (mechanical, not AI-based)."
+      - file: "docs/canonical/pr-gated-eval-enforcement.md"
+        lines: "30-53"
+        note: "PR-level eval enforcement with structured reports, but operates after push, not pre-commit."
+    what_is_missing:
+      - "AI reviewer prompt designed for pre-commit invocation receiving local git diff."
+      - "Pass/block policy for local AI pre-commit results."
+      - "Integration between AI pre-commit findings and eval tier stratification fast tier."
+      - "Project-specific convention injection into pre-commit AI review prompt."
+      - "No canonical doc, skill, or curriculum lesson describing AI pre-commit review."
+    gap: >
+      The fast eval tier's pre-commit trigger provides a natural slot for an AI pre-commit
+      review gate. The repo's project convention documentation (AGENTS.md rules, canonical
+      patterns) would serve as rich input to the AI reviewer prompt.
+
+  - id: 4
+    name: "Contextual Severity Calibration"
+    classification: "Missing"
+    integration_value: "High"
+    summary: >
+      The repo has no mechanism for adjusting review depth or severity by module
+      risk profile. Blast radius is mentioned in isolated contexts (module design,
+      planned crossroad policy), but no risk-profile.yaml, module-level risk metadata,
+      risk-adjusted check selection, or calibrated severity labels exist.
+    evidence_adjacent:
+      - file: "docs/canonical/human-afk-task-routing-gate.md"
+        line: 35
+        note: "Architecture dimension mentions system-wide blast radius for human vs. agent task routing; not about review severity."
+      - file: "docs/canonical/architecture-as-agent-affordance.md"
+        line: 38
+        note: "Reduced coupling to reduce blast radius; module design principle, not review severity calibration."
+      - file: "docs/canonical/tested-degradation-ladder.md"
+        lines: "29-60"
+        note: "Classifies failures by type (retryable/unsafe/hold); not by module risk profile."
+      - file: "docs/system-of-record.md"
+        line: 213
+        note: "crossroad-change-policy.md documented as pending for high blast-radius files; not yet created."
+      - file: "docs/canonical/eval-tier-stratification.md"
+        lines: "26-49"
+        note: "Tier selection by change type (prompt, model, tool, loop); not by module risk level."
+    evidence_not_found:
+      - "risk-profile.yaml format: NOT_FOUND as file or template anywhere in repo (only in canary-test analysis itself)."
+      - "Module-level risk metadata (critical, high, medium, low)."
+      - "Risk-adjusted check selection proportional to blast radius and failure cost."
+      - "Calibrated severity labels that adjust by module."
+      - "Module risk profile maintenance and periodic re-evaluation process."
+      - "Feedback loop from false-positive rates per module into severity calibration."
+      - "NOT_FOUND in all 55 canonical docs, curriculum, .opencode/skills/, docs/evidence/."
+    gap: >
+      This is a genuinely new concept. Currently, all eval tiers apply uniformly
+      regardless of which module changed. Module-level risk profiles would make agentic
+      review effort proportional to operational risk, reducing fatigue on low-risk changes
+      and increasing scrutiny where failures have high cost.
+
+summary_table:
+  - id: 1
+    pattern: "Shadow Review Pipeline"
+    classification: "Missing"
+    integration_value: "Medium"
+  - id: 2
+    pattern: "Review Contract Checklist"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+  - id: 3
+    pattern: "Pre-Commit AI Review Gate"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+  - id: 4
+    pattern: "Contextual Severity Calibration"
+    classification: "Missing"
+    integration_value: "High"
+
+key_insight: >
+  The long-running-agents repo has a mature eval infrastructure (tier stratification,
+  constraint-anchored evaluation, PR-gated enforcement, generator-evaluator) that covers
+  the structural dimensions of agentic evaluation. It is weaker on the operational
+  dimensions specific to AI code review: building trust through shadow pipelines,
+  structuring review output through dimensioned contracts, catching issues at pre-commit
+  time with AI, and calibrating review depth by module risk. Two patterns are fully novel;
+  two extend existing concepts into the AI code review domain.

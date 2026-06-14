@@ -1,0 +1,54 @@
+meta:
+  type: artifact-manifest
+  date: "2026-06-15"
+  source_slug: canary-test
+  classification_file: docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification.yaml
+  phases_completed: [phase-0, phase-1, phase-2, phase-3]
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/shadow-review-pipeline.md
+      pattern: Shadow Review Pipeline
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/contextual-severity-calibration.md
+      pattern: Contextual Severity Calibration
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/review-contract-checklist.md
+      pattern: Review Contract Checklist
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/pre-commit-ai-review-gate.md
+      pattern: Pre-Commit AI Review Gate
+      classification: Partial Coverage
+      priority: P1
+  skills:
+    - path: .opencode/skills/shadow-review-pipeline/SKILL.md
+      pattern: Shadow Review Pipeline
+      classification: Missing
+    - path: .opencode/skills/contextual-severity-calibration/SKILL.md
+      pattern: Contextual Severity Calibration
+      classification: Missing
+  exercises:
+    - path: curriculum/03-nivel-3-operational/exercises/exercise-shadow-review-pipeline.md
+      pattern: Shadow Review Pipeline
+      classification: Missing
+    - path: curriculum/03-nivel-3-operational/exercises/exercise-contextual-severity-calibration.md
+      pattern: Contextual Severity Calibration
+      classification: Missing
+
+skipped:
+  already_exists: []
+  better_implementation: []
+
+gate:
+  integration_map:
+    docs/system-of-record.md:
+      - "Adicionar shadow-review-pipeline e contextual-severity-calibration na tabela Skills (secao Agentes e orquestracao)"
+      - "Adicionar 4 novos canonical docs na tabela Canonical Docs"
+      - "Adicionar topicos shadow-review, severity-calibration, review-contract, pre-commit-review sob dominio evals ou agentic-coding"
+    curriculum/INDEX.md:
+      - "Adicionar 2 novos exercicios (shadow-review-pipeline, contextual-severity-calibration) em Nivel 3"
+    curriculum/MASTER_PLAN.md:
+      - "Atualizar contagem de exercicios Nivel 3"

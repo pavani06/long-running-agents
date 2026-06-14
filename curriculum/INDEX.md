@@ -117,6 +117,8 @@ last_updated: 2026-06-11
 - `03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation.md` (Persona-Based Documentation)
 - `03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md` (Presence-in-the-Loop Metric)
 - `03-nivel-arquiteto/exercises/exercise-04-owner-of-no-role.md` (Owner of No Role)
+- `03-nivel-3-operational/exercises/exercise-shadow-review-pipeline.md` (Shadow Review Pipeline)
+- `03-nivel-3-operational/exercises/exercise-contextual-severity-calibration.md` (Contextual Severity Calibration)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`
@@ -395,6 +397,7 @@ Use guia em [[curriculum/07-implementation-guides|07-implementation-guides/]]
 - `03-nivel-3-advanced-architecture/04-server-side-compaction.md`
 - `03-nivel-3-advanced-architecture/05-harness-evolution.md`
 - `03-nivel-3-advanced-architecture/exercises/`
+- `03-nivel-3-operational/exercises/`
 - `03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md`
 
 ### 📚 Conteúdo Nível 4

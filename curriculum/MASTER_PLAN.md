@@ -102,6 +102,11 @@ koda-long-running-agents/
 │   └── exercises/
 │       └── exercise-04-owner-of-no-role.md
 │
+├── 03-nivel-3-operational/
+│   └── exercises/
+│       ├── exercise-shadow-review-pipeline.md
+│       └── exercise-contextual-severity-calibration.md
+│
 ├── 04-nivel-4-koda-specific/
 │   ├── 01-koda-architecture.md
 │   ├── 02-customer-journey-flows.md
@@ -227,14 +232,14 @@ koda-long-running-agents/
 | File-Based Coordination | `03-file-based-coordination.md` | 90 min | ⏳ |
 | Server-Side Compaction | `04-server-side-compaction.md` | 60 min | ⏳ |
 | Harness Evolution | `05-harness-evolution.md` | 90 min | ⏳ |
-| Exercícios Nível 3 | `exercises/` | 210 min | ⏳ |
+| Exercícios Nível 3 | `exercises/` | 270 min | ⏳ |
 | KODA Applications | `koda-applications/nivel-3-koda.md` | 60 min | ⏳ |
 
 **Critérios de Conclusão:**
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 7 exercícios do Nível 3
+- [ ] Completei os 9 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

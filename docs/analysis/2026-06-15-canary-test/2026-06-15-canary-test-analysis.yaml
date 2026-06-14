@@ -1,0 +1,292 @@
+meta:
+  title: "Canary Test — Code Review Patterns for AI-Assisted Development"
+  date: 2026-06-15
+  source: "sources/2026-06-15-canary-test-code-review-patterns.md"
+  type: analysis
+  tags:
+    - agentic-coding
+    - governanca
+    - decision-discipline
+    - harness-engineering
+    - evals
+    - spec-driven-development
+  aliases:
+    - "canary test code review"
+    - "code review patterns analysis"
+
+frameworks_and_models:
+  - name: "AI Reviewer Capability Model — Fast but Shallow"
+    description: >
+      AI reviewers detect mechanical issues (unused imports, missing type annotations,
+      security anti-patterns) rapidly but cannot evaluate architecture or design depth.
+      Positioned as first pass, not sole gate.
+    source_claim: "AI reviewers are fast but shallow — use them as a first pass, not the only pass."
+
+  - name: "Review Triage Model — Three-Question Prompt"
+    description: >
+      The AI reviewer prompt must request exactly three categories: potential bugs,
+      style violations against the project's own conventions, and security concerns.
+      This triage ensures humans focus on architecture and design, not linting.
+    dimensions:
+      - potential_bugs
+      - style_violations_against_project_conventions
+      - security_concerns
+    source_claim: "The human reviewer focuses on architecture and design decisions, not linting."
+
+  - name: "Risk Stratification Model — Module-Level Profiles"
+    description: >
+      Each module directory contains a risk-profile.yaml declaring risk level and
+      applicable checks. The AI reviewer reads this profile before analyzing the diff
+      and adjusts severity accordingly.
+    levels:
+      - level: low
+        checks: ["style"]
+      - level: medium
+        checks: ["style", "correctness"]
+      - level: high
+        checks: ["style", "correctness", "security"]
+      - level: critical
+        checks: ["style", "correctness", "security", "performance", "data_integrity"]
+    source_claim: "A change to the payment module deserves stricter review than a change to the help page copy."
+
+  - name: "Review Contract Model — Structured Checklist"
+    description: >
+      Every PR includes a review-contract.yaml listing exactly what to check. Five
+      dimensions, each with pass/fail/not-applicable status. Converts review from
+      freeform commentary to structured, independently processable items.
+    dimensions:
+      - security_surface_changes
+      - data_model_migrations
+      - api_compatibility
+      - error_handling_coverage
+      - test_coverage_for_new_paths
+    item_statuses: ["pass", "fail", "not-applicable"]
+    source_claim: "This pattern eliminates the 'I didn't know I was supposed to check that' problem."
+
+patterns_and_architectures:
+  - name: "Pre-Commit Gate"
+    description: >
+      AI reviewer runs as local pre-commit hook before push. Receives diff as input
+      with prompt configured for three triage questions. Catches obvious issues before
+      they reach CI.
+    flow:
+      - "git diff"
+      - "AI reviewer (prompt: bugs + project conventions + security)"
+      - "gate: pass/block"
+    structural_property: "Operates locally before CI, reducing feedback loop time."
+    source_claim: "Configure your pre-commit to call the AI with a prompt that includes the diff and asks for three specific things."
+
+  - name: "Review Contract as Checklist"
+    description: >
+      Every PR includes review-contract.yaml with five dimensions. AI reviewers process
+      each item independently, returning structured pass/fail/not-applicable instead of
+      freeform commentary.
+    contract_structure:
+      items:
+        - dimension: security_surface
+          status: "pass | fail | not-applicable"
+        - dimension: data_model_migrations
+          status: "pass | fail | not-applicable"
+        - dimension: api_compatibility
+          status: "pass | fail | not-applicable"
+        - dimension: error_handling_coverage
+          status: "pass | fail | not-applicable"
+        - dimension: test_coverage_new_paths
+          status: "pass | fail | not-applicable"
+    structural_property: "Independent item processing enables structured, actionable output per dimension."
+    source_claim: "Makes AI reviewers more effective because they can process each contract item independently, returning structured results instead of freeform commentary."
+
+  - name: "Shadow Review Pipeline"
+    description: >
+      AI reviewer runs in parallel with human review for 2 weeks without blocking
+      merges. Results are logged to a dashboard. After the shadow period, agreement
+      data drives decisions about which AI checks are reliable enough to block merges.
+    flow:
+      - "PR opened"
+      - "parallel: [human reviews] + [AI reviews → dashboard logs only]"
+      - "2-week shadow period"
+      - "data analysis: agreement rates, false positive rates"
+      - "decision: which checks graduate to blocking gates"
+    empirical_metrics:
+      true_positives_found_by_ai_missed_by_human: "30-40% of issues"
+      false_positive_rate: "15-20% of flags"
+      shadow_period_duration: "2 weeks"
+    structural_property: "De-risks adoption by collecting evidence before changing anyone's workflow."
+    source_claim: "De-risks adoption because no one's workflow changes until there's data proving the AI adds value."
+
+  - name: "Contextual Severity Calibration"
+    description: >
+      Each module directory contains risk-profile.yaml declaring risk level and
+      applicable checks. AI reviewer reads the profile before analyzing the diff,
+      adjusting check set and severity per module.
+    module_config: "risk-profile.yaml per directory"
+    config_fields:
+      risk_level: "critical | high | medium | low"
+      checks: ["list of applicable check types"]
+    structural_property: "Review depth is proportional to actual risk, avoiding both over-review and under-review."
+    source_claim: "The AI reviewer should calibrate its severity levels based on which module changed."
+
+operational_lessons:
+  what_worked:
+    - lesson: "Prompt tuning to team conventions reduces noise"
+      detail: >
+        Configuring the AI prompt to match the team's actual conventions (not industry
+        defaults) produces less noisy, more actionable output. The AI must enforce the
+        team's rules, not generic best practices.
+      source_claim: "The AI should enforce YOUR rules, not industry defaults."
+
+    - lesson: "Shadow period de-risks AI review adoption"
+      detail: >
+        Running AI reviewer for 2 weeks without blocking merges removes resistance
+        because no workflow changes until data proves value. Transforms adoption from
+        opinion-based to data-driven.
+      source_claim: "No one's workflow changes until there's data proving the AI adds value."
+
+    - lesson: "Structured contracts improve AI reviewer effectiveness"
+      detail: >
+        Converting review from freeform commentary to structured checklist with
+        independent items makes AI reviewers significantly more effective. Each
+        contract item is processed independently, producing structured output.
+      source_claim: "Makes AI reviewers more effective because they can process each contract item independently."
+
+    - lesson: "Three-axis triage produces focused output"
+      detail: >
+        Requesting bugs + style violations + security concerns as fixed output
+        categories produces more focused results than open-ended prompts.
+
+  what_failed:
+    - failure: "Generic prompts produce ignored output"
+      detail: >
+        When the AI reviewer prompt uses generic industry rules instead of team
+        conventions, the output is noisy enough that developers stop reading it
+        entirely. The failure chain is: generic prompt → high noise → developer
+        ignores → AI reviewer becomes useless.
+      source_claim: "Common failure mode: developers start ignoring the AI output because it's too noisy."
+
+  empirical_data:
+    ai_catch_rate_missed_by_humans: "30-40%"
+    ai_false_positive_rate: "15-20%"
+    recommended_shadow_period: "2 weeks"
+
+tradeoffs_and_design_decisions:
+  - tradeoff: "Speed vs. Depth"
+    decision: "Use AI as first pass (fast, mechanical), human for architecture and design."
+    rationale: >
+      AI reviewers are inherently fast and shallow. Attempting to make them replace
+      deep review is ineffective. The cost of false negatives on architecture decisions
+      is too high to delegate to AI.
+    source_claim: "AI reviewers are fast but shallow — use them as a first pass, not the only pass."
+
+  - tradeoff: "Coverage vs. Signal-to-Noise Ratio"
+    decision: "Narrow prompt to team conventions, sacrificing generic best-practice coverage for higher action rate."
+    rationale: >
+      An AI reviewer that reports 100 issues with 85 ignored is worse than one
+      reporting 30 issues with 28 acted upon. Action rate on findings is the metric
+      that matters, not raw volume.
+    source_claim: "Fix this by tuning the prompt to match your team's actual conventions, not generic best practices."
+
+  - tradeoff: "Immediate Blocking vs. Gradual Adoption"
+    decision: "2-week shadow pipeline with zero blocking, followed by data-driven gating decision."
+    rationale: >
+      Blocking merges with AI review on day 1 generates resistance and distrust.
+      The shadow period builds trust with objective data. The cost of 2 weeks without
+      AI protection is acceptable given that the alternative (tool rejection) costs more.
+    source_claim: "After the shadow period, use the data to decide which AI checks are reliable enough to block merges."
+
+  - tradeoff: "Uniform Review vs. Risk-Calibrated Review"
+    decision: "Module-level risk profiles that modulate review depth proportionally to risk."
+    rationale: >
+      Uniform review treats help page code with the same severity as payment module
+      code, generating both fatigue (over-review of low-risk code) and risk
+      (under-review of critical code). Risk calibration allocates effort proportionally.
+    source_claim: "A low-risk module might get only style checks, while a critical module gets full security, performance, and data integrity checks."
+
+  - tradeoff: "Freeform Commentary vs. Structured Results"
+    decision: "Structured pass/fail/not-applicable per contract item instead of freeform AI comments."
+    rationale: >
+      Freeform commentary is ambiguous and requires additional human interpretation
+      to become actionable. Structured results per contract item are immediately
+      actionable and verifiable.
+    source_claim: "Returning structured results instead of freeform commentary."
+
+failure_patterns_and_antipatterns:
+  - pattern: "AI Output Ignored Due to Noise"
+    cause: "Prompt uses generic industry rules instead of team conventions."
+    failure_mechanism: >
+      AI generates high volume of flags, most irrelevant to the project. Developer
+      learns most flags are false/irrelevant and stops reading output. AI reviewer
+      becomes background noise.
+    prevention: "Tune prompt to match team's actual conventions."
+    source_claim: "Developers start ignoring the AI output because it's too noisy. Fix this by tuning the prompt to match your team's actual conventions."
+
+  - pattern: "AI as Sole Review Gate"
+    cause: "Delegating all review, including architecture and design, to AI."
+    failure_mechanism: >
+      AI reviewer is inherently shallow and cannot evaluate architectural tradeoffs,
+      design cohesion, or domain fit. Deep issues pass undetected.
+    prevention: "Position AI as first pass for mechanical issues; human owns architecture and design."
+    source_claim: "Use them as a first pass, not the only pass."
+
+  - pattern: "One-Size-Fits-All Review Depth"
+    cause: "Applying the same scrutiny level to all modules regardless of risk."
+    failure_mechanism: >
+      Low-risk modules get excessive review (fatigue, wasted time). Critical modules
+      get insufficient review (unmitigated risk). Team loses confidence because effort
+      is not proportional to impact.
+    prevention: "Implement risk-profile.yaml per module with calibrated review depth."
+
+  - pattern: "Freeform AI Commentary"
+    cause: "Letting AI reviewer produce unstructured freeform comments without a prior contract."
+    failure_mechanism: >
+      Freeform comments are ambiguous, hard to verify, and require the human to
+      re-read the diff for context. Action latency increases. Issues may be ignored
+      due to lack of clarity.
+    prevention: "Use review contracts with structured items and pass/fail/not-applicable status."
+    source_claim: "Returning structured results instead of freeform commentary."
+
+  - pattern: "Premature Gating Without Data"
+    cause: "Blocking merges with AI reviewer without prior evidence that checks are reliable."
+    failure_mechanism: >
+      Team experiences blocks from false positives, loses trust in the tool, and seeks
+      bypasses (direct commits, disabling the hook). Tool is rejected before proving
+      value.
+    prevention: "Shadow pipeline for 2 weeks with agreement data before any blocking gates."
+
+synthesis:
+  pipeline_description: >
+    The four patterns form an AI review maturity pipeline from initial adoption to
+    calibrated operation.
+  stages:
+    - stage: 1
+      pattern: "Shadow Review Pipeline"
+      role: "Entry point — introduces AI review with zero risk, collects data, enables data-driven adoption."
+      problem_solved: "Adoption resistance."
+
+    - stage: 2
+      pattern: "Review Contract as Checklist"
+      role: "Structure — converts AI review from freeform commentary to structured, actionable verifications."
+      problem_solved: "Output quality and actionability."
+
+    - stage: 3
+      pattern: "Pre-Commit Gate"
+      role: "Tactical layer — moves verification to earliest possible moment (pre-push), minimizing feedback cycle."
+      problem_solved: "Feedback latency."
+
+    - stage: 4
+      pattern: "Contextual Severity Calibration"
+      role: "Optimization layer — ensures review effort is proportional to actual code risk."
+      problem_solved: "Effort allocation."
+
+  dependencies:
+    - "Shadow pipeline depends on review contracts: Without structured contracts, shadow period agreement data would be ambiguous and non-actionable."
+    - "Pre-commit gate depends on severity calibration: Without risk calibration, pre-commit gate applies uniform weight to all modules, causing fatigue and encouraging bypass."
+    - "Severity calibration is fed by shadow pipeline data: False positive rates per module collected during shadow period inform which severity levels are trustworthy per module type."
+
+  emergent_property: "Data-Driven Review Governance"
+  emergent_property_description: >
+    The complete system creates a continuous improvement cycle: shadow pipeline
+    generates efficacy data → data informs severity calibration → calibrated severity
+    reduces false positives → fewer false positives increase trust → increased trust
+    expands AI review scope → new scope returns to shadow pipeline for validation.
+    This closes the loop between adoption, calibration, and expansion, transforming AI
+    review from a static tool into a self-improving system.

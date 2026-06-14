@@ -6,37 +6,42 @@
 
 ## Done
 
-- [x] phase-0: Repository Mental Model — bg_8f483bb7 — full rebuild (14 deltas) — 57 canonical patterns mapeados
-  - Modelos em mapa-mental-repo/2026-06-12-idsd-method-mental-model.{md,yaml}
-- [x] phase-1: Knowledge Extraction — ses_142d7a07dffeXadm9vMzj1rT3j — análise estruturada do artigo IDSD
-  - 6 seções: Frameworks, Patterns, Operational Lessons, Tradeoffs, Failure Patterns, Synthesis
-  - Obsidian check: [OK] para ambos os arquivos
-- [x] phase-2: Pattern Extraction — ses_142d2ec77ffen8ijU206SkK3RZ — 8 padrões (ICE, Intent Gate, Expectations Boundary, Progressive Context, Loop Validation, Presence-in-Loop, Retrospective Spec, Token Economics)
-  - 6 campos obrigatórios + components + flow por padrão
-  - YAML validado, Obsidian OK para patterns.md
-- [x] phase-3: Classification — ses_142ce6728ffe3qgw6uvdIP1lQi — 2 Missing, 3 Partial Coverage High, 1 PC Medium, 1 Already Exists, 1 Better Implementation
-  - Evidence-based com file:line references
-  - Summary table presente
-- [x] phase-4a: Canonical Docs (bg_7f3ea33a) — 6 docs: intent-five-part-primitive, presence-in-the-loop-metric, ice-craft-separation, human-owned-expectations-boundary, token-economics-gap-filling, symphony-trap-awareness
-- [x] phase-4b: Skills (bg_410ff01a) — 2 skills: intent-five-part-primitive, presence-in-the-loop-metric
-- [x] phase-4c: Exercises (bg_b0f4f391) — 2 exercises: Level 2 exercise-05 (intent), Level 3 exercise-06 (presence)
-- [x] phase-4d: Integration Roadmap (ses_142c187ecffem653iSCOwSZP5o) — summary matrix, artifacts catalog, cross-reference tables, gap analysis (6 closed, 11 remaining)
-- [x] phase-5: Integration (ses_142bd0657ffedNndaMZ7pXyzz1) — system-of-record.md (+18), INDEX.md (+2), MASTER_PLAN.md (2 edits)
-- [x] phase-6: Curriculum Deep Integration (ses_142babb47ffeYb1pGUf5JvLILs) — 5 patterns em 5 arquivos: sprint-contracts, token-budgeting, multi-agent-systems, GLOSSARY, INDEX (+628/-116)
+- [x] phase-0: Repository Mental Model — 6 seções (goals, arquitetura, patterns, terminologia, curriculo, gaps), 17 patterns mapeados, 10 gaps [evaluator: PASS]
+- [x] phase-1: Knowledge Extraction — 4 padrões (Pre-Commit Gate, Review Contract, Shadow Pipeline, Severity Calibration), 6 seções [evaluator: PASS]
+- [x] phase-2: Pattern Extraction — 4 padrões (Shadow Review Pipeline, Review Contract Checklist, Pre-Commit AI Review Gate, Contextual Severity Calibration), 6 campos + components/flow [evaluator: PASS]
+- [x] phase-3: Classification — 2 Missing (Shadow Review Pipeline, Contextual Severity Calibration), 2 Partial Coverage (Review Contract Checklist, Pre-Commit AI Review Gate) [evaluator: PASS]
+- [x] phase-4: Improvement Generation — 8 artefatos (4 canonical docs, 2 skills, 2 exercises) + artifacts manifest [evaluator: PASS]
+- [x] phase-5: Integration — system-of-record.md (+4 canonical, +2 skills), curriculum/INDEX.md (+2 exercises), MASTER_PLAN.md (7→9 exercises) [evaluator: PASS]
 
+## In Progress
 
+<!-- A fase atual. Exatamente UMA por vez. -->
+
+- [ ] phase-0: Repository Mental Model
+  - Output esperado: docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-mental-model.md + .yaml
+  - Delegado: ultrabrain
+  - Bloqueios: nenhum
+
+## Next
+
+- [ ] phase-1: Knowledge Extraction
+- [ ] phase-2: Pattern Extraction
+- [ ] phase-3: Classification
+- [ ] phase-4: Improvement Generation
+- [ ] phase-5: Integration
+- [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 
-- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-11-the-method-that-replaces-spec-driven-development-—-idsd.md
-- **date**: 2026-06-12
-- **source-slug**: idsd-method
-- **output_dir**: docs/analysis/2026-06-12-idsd-method/
+- **source**: sources/2026-06-15-canary-test-code-review-patterns.md
+- **date**: 2026-06-15
+- **source-slug**: canary-test
+- **output_dir**: docs/analysis/2026-06-15-canary-test/
 
 ## Notes
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
 - Testar: `bash scripts/check-obsidian-conventions.sh`
-- Evidência: outputs em docs/analysis/2026-06-12-idsd-method/
-- Commits: `git commit -m "analysis(idsd-method): <fase>"`
+- Evidência: outputs em docs/analysis/2026-06-15-canary-test/
+- Commits: `git commit -m "analysis(canary-test): <fase>"`
