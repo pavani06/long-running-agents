@@ -74,7 +74,7 @@ The universal `AGENTS.md` remains as the base contract: operational rules (commi
 
 - [[AGENTS|AGENTS.md]] lines 1-238 provides a single universal instruction file with 16 rules governing agent behavior. This is the base contract that persona-specific documents would extend.
 - [[.opencode/agents/hop-orchestrator-rezek|orchestrator agent]] provides governance-persona coordination as the HoP orchestrator, demonstrating role-specific agent scopes.
-- [[.opencode/skills/review-work/SKILL|review-work skill]] performs second-agent review with structured quality criteria, but uses generic quality dimensions rather than persona-specific rubrics.
+- the review-work skill performs second-agent review with structured quality criteria, but uses generic quality dimensions rather than persona-specific rubrics.
 - [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]] lines 30-47 runs multiple evaluators with divergence policy. This is the closest existing mechanic to persona-specific evaluation, but evaluators are model-based (different models), not persona-based (different quality dimensions).
 - [[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]] lines 30-44 converts QA findings into backlog issues with capture, triage, convert, and return-to-board stages. Persona-specific reviewer findings would feed into this loop.
 - [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] defines merge-policy gates. Persona-specific reviewer findings would add dimension-specific merge criteria.
@@ -119,7 +119,7 @@ Missing pieces:
 - [[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|classification]]:333-349 — Missing classification with NOT_FOUND evidence across canonical docs, curriculum, core concepts, skills, and agents.
 - [[AGENTS|AGENTS.md]]:1-238 — universal agent instructions without persona-specific sections.
 - [[.opencode/agents/hop-orchestrator-rezek|orchestrator agent]] — governance-persona coordination agent.
-- [[.opencode/skills/review-work/SKILL|review-work skill]] — second-agent review with generic quality criteria.
+- review-work skill — second-agent review with generic quality criteria.
 - [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]:30-47 — model-based evaluators with divergence policy.
 - [[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]]:30-44 — capture, triage, convert, return-to-board pipeline for review findings.
 

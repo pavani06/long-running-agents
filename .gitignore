@@ -44,3 +44,4 @@ supabase/.combined-migration.sql
 # Obsidian local state (auto-generated, not content)
 .obsidian/workspace.json
 .obsidian/graph.json
+.obsidian/app.json
