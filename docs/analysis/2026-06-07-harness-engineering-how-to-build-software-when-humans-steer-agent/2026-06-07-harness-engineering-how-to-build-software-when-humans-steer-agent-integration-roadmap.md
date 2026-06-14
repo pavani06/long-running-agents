@@ -9,6 +9,11 @@ relates-to: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-softwa
 sources: ["[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|Harness Engineering Classification]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-patterns|Harness Engineering Patterns]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: Harness Engineering Patterns → long-running-agents
 
 **Date:** 2026-06-11

@@ -9,6 +9,11 @@ last_updated: 2026-06-10
 relates-to: ["[[docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification|12FA Classification]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: 12-Factor Agents Patterns → long-running-agents
 
 **Date:** 2026-06-09

@@ -10,6 +10,11 @@ relates-to: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding
 sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|WFAC Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|WFAC Patterns]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: Matt Pocock AI Coding Workflow Patterns → long-running-agents
 
 **Date:** 2026-06-07

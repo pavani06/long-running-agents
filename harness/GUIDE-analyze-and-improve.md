@@ -15,7 +15,7 @@ A skill `analyze-and-improve` ([SKILL.md:46-56]) orquestra 7 fases:
 | 1    | `deep`        | `<date>-<source-slug>-analysis.md` + `.yaml`                         |
 | 2    | `ultrabrain`  | `<date>-<source-slug>-patterns.md` + `.yaml`                         |
 | 3    | `deep`        | `<date>-<source-slug>-classification.md` + `.yaml`                   |
-| 4    | `deep` (x7)   | `<date>-<source-slug>-integration-roadmap.md` + artefatos concretos   |
+| 4    | `deep` (x3)   | artifacts manifest (.md + .yaml) + artefatos concretos   |
 | 5    | `quick`       | atualiza system-of-record, índices              |
 | 6    | `deep`        | (opcional) integração no curriculum             |
 
@@ -525,7 +525,7 @@ print('phase-6 marcada como concluída')
 | 1 | Lê o documento fonte (transcrição YouTube). Extrai conhecimento não-óbvio. Filtra ruído. | `<date>-<source-slug>-analysis.md` + `.yaml` | 5-15 min |
 | 2 | Identifica padrões reutilizáveis no conhecimento extraído. | `<date>-<source-slug>-patterns.md` + `.yaml` | 3-5 min |
 | 3 | Classifica cada padrão contra o repositório: Existing/Partial/Missing Coverage. | `<date>-<source-slug>-classification.md` + `.yaml` | 3-8 min |
-| 4 | Gera artefatos em 7 categorias (canonical docs, skills, exercises, ...) priorizados por impacto. | `<date>-<source-slug>-integration-roadmap.md` + artefatos | 10-30 min |
+| 4 | Gera artefatos em 7 categorias (canonical docs, skills, exercises, ...) priorizados por impacto. | `<date>-<source-slug>-artifacts.yaml` + `.md` + artefatos | 10-30 min |
 | 5 | Atualiza system-of-record.md, índices, wikilinks. | `git diff system-of-record.md` | 2-5 min |
 | 6 | Integra Missing/Partial Coverage no curriculum existente com profundidade total. | arquivos em `curriculum/` | 5-20 min |
 
@@ -564,8 +564,59 @@ ls docs/analysis/2026-06-11-patterns-for-ai-agents/
 # 2026-06-11-patterns-for-ai-agents-analysis.md        2026-06-11-patterns-for-ai-agents-analysis.yaml
 # 2026-06-11-patterns-for-ai-agents-patterns.md        2026-06-11-patterns-for-ai-agents-patterns.yaml
 # 2026-06-11-patterns-for-ai-agents-classification.md  2026-06-11-patterns-for-ai-agents-classification.yaml
-# 2026-06-11-patterns-for-ai-agents-integration-roadmap.md
+# 2026-06-11-patterns-for-ai-agents-artifacts.yaml
+# 2026-06-11-patterns-for-ai-agents-artifacts.md
 ```
+
+## 8.5. O Artifacts Manifest
+
+A partir de 2026-06-14, o output da Phase 4 mudou: em vez de um único `integration-roadmap.md`, o orquestrador gera um **artifacts manifest** — um par de arquivos `.yaml` + `.md` que serve como contrato entre a Phase 4 (geração de artefatos) e a Phase 5 (integração nos índices).
+
+**O que é**: Um manifesto que lista todos os artefatos concretos gerados na Phase 4 (canonical docs, skills, exercises), mapeia cada um para os índices que a Phase 5 deve atualizar (Integration Map), e documenta padrões não gerados (skipped) com justificativa.
+
+**Quem gera**: O orquestrador, como ação direta (não delegada), após a Phase 4 completar e antes de disparar a Phase 5.
+
+**Formato**: Um par de arquivos em `docs/analysis/<date>-<source-slug>/`:
+- `<date>-<source-slug>-artifacts.yaml` — estrutura tipada com `meta`, `artifacts`, `skipped`, `gate`
+- `<date>-<source-slug>-artifacts.md` — sumário legível com tabela de artefatos, Integration Map, e seção de skipped
+
+**Exemplo** (baseado na sessão 12-Factor Agents):
+```
+docs/analysis/2026-06-09-12-factor-agents/
+  2026-06-09-12-factor-agents-artifacts.yaml
+  2026-06-09-12-factor-agents-artifacts.md
+```
+
+O `artifacts.yaml` lista:
+```yaml
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/error-context-hygiene.md
+      pattern: Error Context Hygiene
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/deterministic-tool-dispatch.md
+      pattern: Deterministic Tool Dispatch
+      classification: Partial Coverage
+      priority: P1
+  skills:
+    - path: .opencode/skills/error-context-hygiene/SKILL.md
+      pattern: Error Context Hygiene
+      classification: Missing
+  exercises:
+    - path: curriculum/02-nivel-2-practical-patterns/exercises/exercise-04-error-context-hygiene.md
+      pattern: Error Context Hygiene
+      classification: Missing
+skipped:
+  already_exists:
+    - pattern: Serialized Pause/Resume State
+      evidence: docs/canonical/serializable-pause-resume-state.md:1
+```
+
+O `artifacts.md` contém o Integration Map — uma tabela que conecta cada artefato aos índices que a Phase 5 deve atualizar. A Phase 5 lê o manifesto como input e segue o Integration Map para saber exatamente quais documentos de índice modificar.
+
+> **Nota**: Sessões anteriores a 2026-06-14 usavam `integration-roadmap.md` (formato legacy).
+> O conteúdo (rastreabilidade classificação → artefatos → integração) é preservado no novo formato.
 
 ## 9. Checklist de verificação
 
@@ -598,6 +649,10 @@ Itens ja implementados (2026-06-12):
 
 Pendentes:
 
-4. **Paralelize fases independentes**: Phase 0 (modelo mental) e Phase 1
+4. **Migração para artifacts manifest**: Concluída em 2026-06-14. O formato
+   `integration-roadmap.md` foi substituído pelo par `artifacts.{yaml,md}`.
+   Sessões históricas mantêm o formato legacy com banner de depreciação.
+
+5. **Paralelize fases independentes**: Phase 0 (modelo mental) e Phase 1
    (extração) podem rodar em paralelo porque não dependem uma da outra
    (a Phase 1 não usa o output da Phase 0).

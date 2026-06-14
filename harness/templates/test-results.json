@@ -3,7 +3,7 @@
   "phase-1": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de conhecimento — Phase 1.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
   "phase-2": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Extracao de padroes reutilizaveis — Phase 2.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
   "phase-3": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Classificacao — Phase 3.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
-  "phase-4": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Geracao de artefatos e roadmap — Phase 4.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
+  "phase-4": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Geracao de artefatos e artifacts manifest — Phase 4.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
   "phase-5": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Integracao — Phase 5.", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null },
   "phase-6": { "passes": false, "evidence": [], "evaluated_by": null, "notes": "Curriculum Deep Integration — Phase 6 (opcional).", "duration_seconds": null, "retry_count": 0, "started_at": null, "completed_at": null }
 }

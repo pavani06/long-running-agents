@@ -54,10 +54,11 @@
   "phase-4": {
     "passes": false,
     "evidence": [
-      "docs/analysis/{{DATE_SLUG}}/{{DATE_SLUG}}-integration-roadmap.md"
+      "docs/analysis/{{DATE_SLUG}}/{{DATE_SLUG}}-artifacts.yaml",
+      "docs/analysis/{{DATE_SLUG}}/{{DATE_SLUG}}-artifacts.md"
     ],
     "evaluated_by": null,
-    "notes": "Geracao de artefatos e roadmap — Phase 4",
+    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,

@@ -9,6 +9,11 @@ last_updated: 2026-06-10
 relates-to: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification|Context Mgmt Classification]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: Context Management Patterns -> long-running-agents
 
 **Date:** 2026-06-10

@@ -141,6 +141,8 @@ docs/analysis/<date>-<source-slug>/
   <date>-<source-slug>-patterns.yaml
   <date>-<source-slug>-classification.md      # Phase 3
   <date>-<source-slug>-classification.yaml
+  <date>-<source-slug>-artifacts.yaml          # Phase 4 (manifesto)
+  <date>-<source-slug>-artifacts.md
 ```
 
 Artefatos concretos (canonical docs, skills, exercises) gerados na Phase 4 vao para seus diretorios definitivos (`docs/canonical/`, `.opencode/skills/`, `curriculum/`).
@@ -624,7 +626,7 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 | **New Patterns** | `docs/canonical/<slug>.md` | Doc canonico formalizando padrao Partial |
 | **New Examples** | `docs/analysis/examples/` ou inline em exercicios | Before/after de codigo demonstrando o padrao |
 | **New Exercises** | `curriculum/0X-nivel-X-*/exercises/exercise-0X.md` | Exercicio hands-on para o curriculo |
-| **New Documentation** | `docs/analysis/` ou `docs/canonical/` | Roadmap de integracao, cross-reference |
+| **New Documentation** | `docs/analysis/` ou `docs/canonical/` | Artifacts manifest, cross-reference |
 | **New Agent Architectures** | `docs/canonical/` | Decomposicao arquitetonica com componentes |
 | **New Runtime Features** | `.opencode/skills/<slug>/SKILL.md` (patterns section) | Padroes de implementacao code-ready |
 
@@ -634,7 +636,7 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 |---|---|---|
 | **Missing** | P0 | Criar canonical doc + skill + exercise + example |
 | **Partial Coverage (High value)** | P1 | Criar canonical doc com reframe/naming |
-| **Partial Coverage (Medium value)** | P2 | Criar canonical doc, postergar exercise |
+| **Partial Coverage (Medium value)** | P2 | Criar canonical doc; exercise opcional (Phase 4) |
 | **Already Exists** | — | Apenas cross-reference, nao criar artefatos novos |
 | **Better Implementation** | — | Documentar superioridade, nao duplicar |
 
@@ -643,11 +645,10 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 1. **Canonical docs primeiro** — `docs/canonical/` e o nivel 2 de precedencia. Docs canonicos estabelecem a verdade antes de exercicios e skills referenciarem eles.
 2. **Skills para padroes Missing** — Skills de implementacao tem maior reuso.
 3. **Exercises para Missing e P1** — Exercicios solidificam aprendizado.
-4. **Roadmap de integracao** — Conecta tudo ao curriculo existente.
 
 ### Delegacao (paralela)
 
-Para padroes Missing e P1, dispare agentes `deep` em paralelo — um por tipo de artefato:
+Para padroes Missing, P1 e P2, dispare agentes `deep` em paralelo — um por tipo de artefato:
 
 **Agente 1: Canonical Docs**
 
@@ -656,7 +657,7 @@ task(
   category="deep",
   load_skills=[],
   run_in_background=true,
-  prompt="TASK: Create canonical docs for patterns classified as Missing or P1.
+  prompt="TASK: Create canonical docs for patterns classified as Missing, P1, or P2.
 
 TARGET_REPOSITORY:
   path: <absolute-path-to-repo>
@@ -665,7 +666,7 @@ TARGET_REPOSITORY:
   system_of_record: docs/system-of-record.md
 
 Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for the list of patterns
-to create canonical docs for (Missing and P1 only).
+to create canonical docs for (Missing, P1, and P2).
 
 EACH CANONICAL DOC must contain:
 - Type, Status, Source, Classification, Precedence
@@ -742,20 +743,20 @@ Write files to: curriculum/<appropriate-level>/exercises/exercise-<XX>-<slug>.md
 )
 ```
 
-<!-- OBSOLETO: Agent 4 (Integration Roadmap) fundido na Phase 5. A geracao do roadmap
-     agora e feita como "Artifacts Created Summary" dentro da propria Phase 5. -->
-
 Os agentes 1-3 rodam em paralelo (`run_in_background=true`).
 
 ### Gate
 
 - [ ] Missing patterns tem canonical doc + skill + exercise
 - [ ] P1 patterns (Partial Coverage High) tem canonical doc
-- [ ] P2 patterns (Partial Coverage Medium) tem canonical doc (exercise opcional, a criterio do orquestrador)
-- [ ] Integration roadmap conecta todos os artefatos criados
+- [ ] P2 patterns (Partial Coverage Medium) tem canonical doc (exercise opcional; se criado, deve ser na Phase 4)
 - [ ] Nao foram criados artefatos para Already Exists ou Better Implementation
 - [ ] **0 Missing e esperado**: Nem toda fonte produz padroes Missing. Se todos forem Partial Coverage ou Already Exists, as acoes P0 (skill + exercise) simplesmente nao se aplicam. Isso nao e falha do pipeline.
 - [ ] **Exercicios novos sao criados na Phase 4, NAO na Phase 6.** A Phase 4 pode criar novos arquivos em `curriculum/` (exercises). A Phase 6 apenas modifica arquivos existentes — nunca cria novos. Se um exercise for necessario, crie-o aqui na Phase 4.
+- [ ] Artifacts manifest (`<date>-<source-slug>-artifacts.yaml` + `.md`) gerado pelo orquestrador em `docs/analysis/<date>-<source-slug>/`
+- [ ] Manifest YAML lista todos os artefatos Phase 4 em `artifacts.canonical_docs`, `artifacts.skills`, `artifacts.exercises`, `artifacts.examples`
+- [ ] Padrões não gerados (Already Exists, Better Implementation) registrados em `skipped.*` com justificativa
+- [ ] Manifest Markdown contém "Integration Map" conectando cada artefato às superfícies que Phase 5 deve atualizar
 
 ---
 
@@ -772,9 +773,104 @@ Os agentes 1-3 rodam em paralelo (`run_in_background=true`).
 | `curriculum/README.md` | Se a arvore de diretorios mudou, atualizar diagrama. |
 | `curriculum/MASTER_PLAN.md` | Se contagem de exercicios ou topicos mudou, atualizar. |
 
-### Artifacts Created Summary
+### Pre-requisito: Artifacts Manifest
 
-Antes de atualizar os indices, o agente DEVE ler os outputs da Phase 4 (canonical docs, skills, exercises) e gerar uma secao de "Artifacts Created" dentro do proprio system-of-record.md ou como subsecao da atualizacao. Isso substitui a antiga Agent 4 (Integration Roadmap separado).
+Antes de delegar a Phase 5, o orquestrador DEVE gerar o artifacts manifest (ação direta, não delegada):
+
+1. Ler `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml`
+2. Listar arquivos criados em `docs/canonical/`, `.opencode/skills/`, `curriculum/` nesta sessão
+3. Gerar `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.yaml` com a estrutura tipada (meta, artifacts, skipped, gate)
+4. Gerar `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.md` com:
+   - Tabela-sumário de artefatos criados
+   - Integration Map: tabela conectando cada artefato → índice que Phase 5 deve atualizar
+   - Seção de padrões skipped com justificativa
+
+O manifesto é o contrato que a Phase 5 lê como input. Sem ele, a Phase 5 não sabe o que integrar.
+
+### Schema do Artifacts Manifest YAML
+
+```yaml
+meta:
+  type: artifact-manifest
+  date: <YYYY-MM-DD>
+  source_slug: <slug>
+  classification_file: docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/<slug>.md
+      pattern: <pattern-name>
+      classification: Missing | Partial Coverage
+      priority: P0 | P1 | P2
+  skills:
+    - path: .opencode/skills/<slug>/SKILL.md
+      pattern: <pattern-name>
+      classification: Missing
+  exercises:
+    - path: curriculum/<level>/exercises/<filename>.md
+      pattern: <pattern-name>
+      classification: Missing
+  examples:
+    - path: docs/analysis/examples/<slug>.md
+      pattern: <pattern-name>
+      description: <before/after ou exemplo demonstrativo>
+
+skipped:
+  already_exists:
+    - pattern: <pattern-name>
+      evidence: <file:line reference>
+  better_implementation:
+    - pattern: <pattern-name>
+      reason: <why repo version is superior>
+
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: <N>
+    skills: <N>
+    exercises: <N>
+    examples: <N>
+  notes: []
+```
+
+### Schema do Artifacts Manifest Markdown
+
+```markdown
+---
+title: "Artifacts Manifest: <source-title>"
+type: analysis
+date: <YYYY-MM-DD>
+aliases: ["manifesto <slug>", "artifacts <slug>"]
+tags: ["analise", "roadmap", "<dominio>"]
+relates-to:
+  - "[[docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification|Classificação]]"
+---
+
+# Artifacts Manifest: <source-title>
+
+## Summary
+
+| # | Pattern | Classification | Priority | Artifacts Created |
+|---|---|---|---|---|
+| 1 | ... | Missing | P0 | canonical, skill, exercise |
+| 2 | ... | Partial Coverage | P1 | canonical |
+| ... | ... | ... | ... | ... |
+
+## Integration Map
+
+| Artifact | Path | Updates |
+|---|---|---|
+| `<name>` canonical doc | `docs/canonical/<slug>.md` | `system-of-record.md` → domínio `<dominio>` |
+| `<name>` skill | `.opencode/skills/<slug>/SKILL.md` | `system-of-record.md` → domínio `<dominio>` |
+| `<name>` exercise | `curriculum/<level>/exercises/<file>.md` | `INDEX.md`, `README.md`, `MASTER_PLAN.md` |
+
+## Skipped
+
+| Pattern | Reason |
+|---|---|
+| `<name>` | Already Exists — ver `docs/canonical/<slug>.md` |
+| `<name>` | Better Implementation — repo version is superior |
+```
 
 ### Delegacao
 
@@ -785,19 +881,36 @@ task(
   category="quick",
   load_skills=["git-master"],
   run_in_background=false,
-  prompt="TASK: Update index documents that became stale after improvement generation.
+  prompt="TASK: Update index documents using the artifacts manifest as input.
 
 TARGET_REPOSITORY:
   path: <absolute-path-to-repo>
   name: <repo-name>
-  output_dir: docs/analysis/<date>-<source-slug>/
-  system_of_record: docs/system-of-record.md
+  output_dir: <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/
+  system_of_record: <absolute-path-to-repo>/docs/system-of-record.md
+  branch: main
+
+INPUT: Read the artifacts manifest at:
+  - <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.yaml
+  - <absolute-path-to-repo>/docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.md
+
+The manifest lists ALL artifacts created in Phase 4 and maps each one to the
+index documents that need updating. Use it as your authoritative source.
 
 CHECK AND UPDATE:
-1. docs/system-of-record.md — add new canonical docs and skills to tables; update last-modified date
+1. docs/system-of-record.md — add new canonical docs and skills to the
+   appropriate domain tables; update last-modified date
 2. curriculum/INDEX.md — add new exercises to the listing
 3. curriculum/README.md — update directory tree if changed
 4. curriculum/MASTER_PLAN.md — update exercise/topic counts if changed
+
+For each artifact listed in the manifest, follow the Integration Map in the
+.md to know exactly which index document(s) to update.
+
+MUST NOT:
+- Guess which artifacts were created — use the manifest
+- Skip artifacts listed in the manifest
+- Modify files outside the Integration Map targets
 
 Then run: git diff --stat to confirm which files were changed.
 Do NOT commit. The orchestrator handles the commit decision."
@@ -836,7 +949,7 @@ Esta fase faz parte do pipeline default. O orquestrador a executa automaticament
 | **Missing** + High | SIM | Canonical doc + skill + exercise (Phase 4) + integracao profunda nos modulos existentes (Phase 6) |
 | **Missing** + Medium | SIM | Mesmo tratamento — Missing sempre merece integracao nos modulos que tratam do dominio |
 | Partial Coverage + High | SIM | Enriquece modulos existentes com a mecanica que faltava |
-| Partial Coverage + Medium | SIM | Phase 6 ou apenas canonical doc, a criterio do orquestrador |
+| Partial Coverage + Medium | SIM | Integração completa nos módulos existentes — mesma profundidade que PC High |
 | Already Exists | NAO | So cross-reference nos artefatos da propria sessao |
 | Better Implementation | NAO | Documentar superioridade, nao duplicar |
 
@@ -888,7 +1001,7 @@ TARGET_REPOSITORY:
 
 Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for patterns to integrate:
 - ALL Missing patterns (regardless of Integration Value)
-- Partial Coverage patterns with Integration Value High
+- ALL Partial Coverage patterns with Integration Value High or Medium
 
 PHASE 6a — Gap Analysis:
 For each target pattern, cross-reference with curriculum files:
@@ -981,8 +1094,9 @@ Depois de completar as fases (0-5 obrigatorias, 6 executada por default — pode
 - [ ] O parametro `source` foi fornecido e validado antes de qualquer execucao
 - [ ] Se `source` for array: agregacao produziu arquivo temporario com metadados de proveniencia
 - [ ] `docs/analysis/<date>-<source-slug>/` contem os 4 pares .md+.yaml (mental-model, analysis, patterns, classification)
-- [ ] `docs/system-of-record.md` contem secao "Artifacts Created" listando os outputs da Phase 4 (substitui o antigo integration-roadmap.md)
-- [ ] `docs/canonical/` contem docs para padroes Missing e P1
+- [ ] `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.yaml` existe e lista todos os artefatos Phase 4
+- [ ] `docs/analysis/<date>-<source-slug>/<date>-<source-slug>-artifacts.md` existe e contém Integration Map
+- [ ] `docs/canonical/` contem docs para padroes Missing, P1 e P2
 - [ ] `.opencode/skills/` contem skills para padroes Missing
 - [ ] `curriculum/` contem exercises para padroes Missing
 - [ ] `docs/system-of-record.md` reflete o novo estado com data atualizada
@@ -1018,7 +1132,7 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 | Improvements | `docs/canonical/{error-context-hygiene,deterministic-tool-dispatch,owned-agent-control-loop,serializable-pause-resume-state}.md` |
 | | `.opencode/skills/error-context-hygiene/SKILL.md` |
 | | `curriculum/.../exercise-04-error-context-hygiene.md` |
-| | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md` |
+| | `docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-integration-roadmap.md` (formato legacy) |
 | Integration | `docs/system-of-record.md`, `curriculum/INDEX.md`, `curriculum/README.md` |
 
 **Resultado da classificacao:** 3 Already Exists, 4 Partial Coverage, 1 Missing (Error Context Hygiene)
@@ -1042,11 +1156,16 @@ O workflow completo foi executado em duas sessoes no repositorio `long-running-a
 | Pattern Extraction | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-patterns.md` + `.yaml` |
 | Classification | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-classification.md` + `.yaml` |
 | Improvements | `docs/canonical/{head-tail-context-truncation,addressable-memory-catalog,n-plus-one-long-session-evals,stable-harness-prompt,late-failure-regression-suite}.md` |
-| | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-integration-roadmap.md` |
+| | `docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-integration-roadmap.md` (formato legacy) |
 | Integration | `docs/system-of-record.md` |
 | Phase 6 (Curriculum) | 8 arquivos em `curriculum/` modificados (+218 linhas): checklist, core concepts, exercicio windowing, server-side compaction, harness improvements, evolution playbook, rubric template |
 
 **Resultado da classificacao:** 1 Already Exists, 5 Partial Coverage, 1 Better Implementation, 0 Missing
+
+> **Nota sobre formato**: Sessões a partir de 2026-06-14 usam o artifacts manifest
+> (`<date>-<source-slug>-artifacts.{md,yaml}`) em vez de `integration-roadmap.md`.
+> O formato e o contrato entre fases evoluíram; o conteúdo (rastreabilidade
+> classificação → artefatos → integração) é preservado.
 
 ---
 

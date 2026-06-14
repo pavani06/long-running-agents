@@ -9,6 +9,11 @@ relates-to: ["[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-set
 sources: ["[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification|SDD Trap Classification]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns|SDD Trap Patterns]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: The Trap SDD Patterns → long-running-agents
 
 **Date:** 2026-06-11

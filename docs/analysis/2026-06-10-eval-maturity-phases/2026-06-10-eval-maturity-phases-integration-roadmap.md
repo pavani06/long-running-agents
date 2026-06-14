@@ -9,6 +9,11 @@ last_updated: 2026-06-10
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-classification|Eval Maturity Classification]]"]
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: Eval Maturity Patterns -> long-running-agents
 
 **Date:** 2026-06-10  

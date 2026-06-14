@@ -71,6 +71,11 @@ Conforme `analyze-and-improve` SKILL.md:
 | phase-5 | quick | Integration | false |
 | phase-6 | deep | Curriculum Deep Integration | true |
 
+> **Nota Phase 4**: A partir de 2026-06-14, a Phase 4 gera 3 agentes em paralelo
+> (canonical docs, skills, exercises). O artifacts manifest (`<date>-<source-slug>-artifacts.yaml` + `.md`)
+> é gerado pelo orquestrador como ação direta após a Phase 4, antes de delegar a Phase 5.
+> Consulte o SKILL.md principal para o schema do manifesto.
+
 > **Nota Phase 3**: Para classificacao com mais de 8 padroes, divida em lotes de no maximo 8 padroes por agente (background). Apos ambos completarem, o ORQUESTRADOR consolida os batch files em classification.md + classification.yaml inline (NAO delegar — sao operacoes simples de concatenacao e formatacao de tabela). Se `deep` abortar, use `ultrabrain` como fallback.
 
 > Fases com background=true usam run_in_background=true no task().
@@ -79,7 +84,7 @@ Conforme `analyze-and-improve` SKILL.md:
 
 > **Nota Phase 6**: Divida os padroes em 2 agentes paralelos:
 > - Agente A: Missing patterns (gap analysis + insertion + execucao)
-> - Agente B: Partial Coverage High patterns (gap + insertion + exec)
+> - Agente B: Partial Coverage High e Medium patterns (gap + insertion + exec)
 > Cada agente edita arquivos DISJUNTOS do curriculum/. Verifique
 > antes de disparar que os arquivos alvo nao conflitam.
 
@@ -233,7 +238,7 @@ NEVER commit without asking the user. After each phase completes:
 - Esquecer o bloco TARGET_REPOSITORY na delegacao
 - Usar paths relativos em delegacoes — sempre absolutos
 - Commitar sem perguntar ao usuario
-- Executar Phase 6 sem antes verificar se ha Missing ou Partial Coverage High
+- Executar Phase 6 sem antes verificar se ha Missing ou Partial Coverage (High ou Medium)
 - Usar `write` no PROGRESS.md sem reler o arquivo antes —
   o tool write exige read previo. Use edit com oldString exato.
 - Reagir a notificacoes [BACKGROUND TASK RESULT READY] antes do

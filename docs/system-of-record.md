@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
-last_updated: 2026-06-12
+last_updated: 2026-06-14
 relates-to: []
 sources: []
 ---
@@ -285,10 +285,17 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 |---|---|
 | `2026-06-12-idsd-method/` | Pacote de análise do método IDSD: especificação via intenção decomposta em cinco primitivas |
 
+> **Nota sobre formato**: Sessões de análise anteriores a 2026-06-14 contêm
+> `integration-roadmap.md` (formato legacy). Sessões a partir de 2026-06-14 usam
+> `<date>-<source-slug>-artifacts.{md,yaml}` como artifacts manifest.
+> Ambos os formatos servem ao mesmo propósito: rastreabilidade classificação →
+> artefatos → integração. Consulte o [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve SKILL.md]]
+> para o contrato atual.
+
 ## Planos
 
 - [[docs/plans/2026-05-26-curriculum-completion-strategy|docs/plans/2026-05-26-curriculum-completion-strategy.md]] — estratégia de execução para completar o currículo via GitHub Issues/Milestones
 
 ---
 
-*Última atualização: 2026-06-12*
+*Última atualização: 2026-06-14*

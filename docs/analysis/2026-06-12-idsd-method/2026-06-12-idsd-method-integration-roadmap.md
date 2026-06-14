@@ -9,6 +9,11 @@ sources: ["[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classif
 last_updated: 2026-06-12
 ---
 
+> [!warning] Formato legado
+> Este arquivo usa o formato histórico `integration-roadmap.md`.
+> Sessões a partir de 2026-06-14 usam `<date>-<source-slug>-artifacts.{md,yaml}`.
+> Preservado para rastreabilidade e estabilidade de wikilinks.
+
 # Integration Roadmap: IDSD Method Patterns → long-running-agents
 
 **Date:** 2026-06-12
