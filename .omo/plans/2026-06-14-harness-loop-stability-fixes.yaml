@@ -1,0 +1,615 @@
+# Plano de Execução: Estabilização do Loop harness-analyze-and-improve
+# =============================================================================
+# Criado por: Sisyphus (oracle-assisted)
+# Data: 2026-06-14
+# Origem: Oracle assessment pós-migração artifacts-manifest (commit 3aa7f13)
+# =============================================================================
+#
+# CONTEXTO:
+# A migração de integration-roadmap → artifacts-manifest (commit 3aa7f13) foi
+# concluída nos arquivos de spec, mas o Oracle identificou 5 falhas estruturais
+# que impedem o loop do harness-analyze-and-improve de rodar end-to-end.
+#
+# As correções de wikilinks/canvas/index (.obsidian/) desta sessão estão OK
+# e validadas (scripts/check-obsidian-conventions.sh → 0 errors).
+# Mas a estabilidade do loop depende dos fixes abaixo.
+#
+# SEVERIDADE DOS FINDINGS (Oracle):
+#   CRITICAL (2): estado contraditório, loop não prova conclusão
+#   HIGH     (3): manifest nunca exercitado, Phase 5 sem input, templates divergentes
+#   MEDIUM   (1): validação atual não cobre estabilidade do loop
+#   LOW      (1): .evidence-reads stale
+#
+# PARA A SESSÃO EXECUTORA:
+# Leia este arquivo por inteiro antes de começar. As tasks são atômicas e
+# verificáveis. Cada task tem oldString/newString precisos, verificação pós-edit,
+# e gate de rollback. Modo de execução: tasks 1-2 em série (mesmo arquivo),
+# tasks 3-4 em série (mesmo arquivo), depois 5-6-7 em paralelo.
+# Task 8 (canary) é GATE final — só depois dela os fixes são considerados validados.
+# =============================================================================
+
+meta:
+  title: "harness-analyze-and-improve — Loop Stability Fixes"
+  type: plan
+  date: "2026-06-14"
+  based_on: "Oracle assessment (ses_1389c80edffeCL207dpwWH4ro6)"
+  target_repo: "/mnt/c/Users/pavan/long-running-agents"
+  estimated_effort: "90-120 min (fixes) + 60 min (canary session)"
+  task_count: 8
+  files_affected:
+    - ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+    - "harness/harness-analysis.sh"
+    - ".opencode/skills/analyze-and-improve/harness/templates/test-results.json"
+    - "harness/templates/test-results.json"
+    - "scripts/check-harness-state.sh"
+
+# =============================================================================
+# EXECUTION RULES
+# =============================================================================
+
+execution_rules:
+  serial_tasks:
+    - reason: "Tasks 1-2 modificam o mesmo arquivo SKILL.md"
+      task_ids: [1, 2]
+    - reason: "Tasks 3-4 modificam o mesmo arquivo harness-analysis.sh"
+      task_ids: [3, 4]
+  parallel_ok:
+    - reason: "Tasks 5, 6, 7 são independentes entre si (arquivos diferentes)"
+      task_ids: [5, 6, 7]
+  commit_policy:
+    - "NÃO commitar — AGENTS.md Rule 6"
+  workdir: "/mnt/c/Users/pavan/long-running-agents"
+  touching_policy:
+    - "Modificar apenas os arquivos em files_affected (AGENTS.md Rule 3)"
+    - "NÃO modificar PROGRESS.md, harness/test-results.json, nem docs/"
+
+# =============================================================================
+# PRE-FLIGHT CHECK (antes de qualquer edit)
+# =============================================================================
+
+pre_flight:
+  - check: "pwd"
+    command: "pwd"
+    expected: "/mnt/c/Users/pavan/long-running-agents"
+  - check: "git status --short"
+    command: "git status --short"
+    expected_contains:
+      - "M .gitignore"
+      - "M docs/canonical/accidental-brake-replacement.md"
+      - "M docs/canonical/persona-based-documentation.md"
+      - "M document-architecture.canvas"
+      - "M index.md"
+      - "D .obsidian/"
+  - check: "wc -l SKILL.md"
+    command: "wc -l .opencode/skills/harness-analyze-and-improve/SKILL.md"
+    expected: "254"
+  - check: "wc -l harness-analysis.sh"
+    command: "wc -l harness/harness-analysis.sh"
+    expected_contains: "633"
+  - check: "templates existem"
+    command: "ls .opencode/skills/analyze-and-improve/harness/templates/test-results.json harness/templates/test-results.json"
+    expected: "dois arquivos listados"
+
+# =============================================================================
+# TASK 1: SKILL harness — PASS seta passes: true
+# =============================================================================
+# PROBLEMA:
+#   O fluxo PASS (SKILL.md:177-185) grava completed_at, duration_seconds,
+#   evaluated_by, e atualiza PROGRESS.md, mas NUNCA seta passes: true.
+#   O Step 2 (SKILL.md:117) seleciona a próxima fase buscando a primeira
+#   com passes: false. Resultado: fases aprovadas permanecem semanticamente
+#   pendentes e o loop nunca detecta conclusão.
+# =============================================================================
+
+task_1:
+  id: 1
+  title: "SKILL harness — PASS seta passes: true"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  severity: CRITICAL
+  estimated_minutes: 5
+  depends_on: []
+
+  step_a_insert_passes_true:
+    description: "Inserir 'Set passes to true' como primeiro item do bloco If PASS"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        If PASS:
+        - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
+      newString: |
+        If PASS:
+        - Set `passes` to `true` for the current phase in `harness/test-results.json`
+        - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
+    verify:
+      - item: "Linhas 177-179 contêm 'Set passes to true' antes de 'Write completed_at'"
+      - command: "sed -n '177,180p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+  step_b_update_next_phase_selection:
+    description: "Atualizar Step 2 para reconhecer passes:true como fase concluída"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        Find the first phase in `test-results.json` where `passes` is `false`. Skip phases where `evaluated_by` is already set (they were evaluated but not passing — needs rework).
+      newString: |
+        Find the first phase in `test-results.json` where `passes` is `false`.
+        - Phases with `passes: true` are complete — skip them.
+        - Phases with `passes: false` AND `evaluated_by` already set were evaluated
+          but not passing — they need rework. Flag them to the user before retrying.
+        - Phases with `passes: false` AND `evaluated_by: null` are pending — execute them.
+    verify:
+      - item: "Linhas 115-120 contêm a nova lógica de 3 estados"
+      - command: "sed -n '115,122p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+  step_c_update_completion_detection:
+    description: "No Step 7, adicionar 'all phases have passes: true' como condição de conclusão"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        - If `mode=loop`: auto-advance to next pending phase WITHOUT
+          asking. Only stop if:
+          a) AGENT_STOP file exists at repo root, OR
+          b) No more pending phases (all passes=true), OR
+          c) A phase fails evaluation (NEEDS_WORK)
+      newString: |
+        - If `mode=loop`: auto-advance to next pending phase WITHOUT
+          asking. Only stop if:
+          a) AGENT_STOP file exists at repo root, OR
+          b) All phases have `passes: true` (pipeline complete), OR
+          c) A phase fails evaluation (NEEDS_WORK)
+        - If condition (b): read `harness/test-results.json` and output
+          a Pipeline Metrics Summary (duration per phase, retry counts,
+          bottleneck flags for phases >600s or retry_count >0).
+    verify:
+      - item: "Linhas 200-210 contêm 'All phases have passes: true' e métricas"
+      - command: "sed -n '200,215p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+# =============================================================================
+# TASK 2: SKILL harness — Corrigir Step 0 (template path + stale detection)
+# =============================================================================
+# PROBLEMA:
+#   Step 0 Reset aponta para harness/templates/test-results.json (sem evidências),
+#   mas o setup real usa o template canônico em .opencode/skills/.../templates/.
+#   Além disso, quando test-results.json tem passes:false mas PROGRESS.md mostra
+#   fases concluídas (estado stale), o Step 0 não detecta.
+# =============================================================================
+
+task_2:
+  id: 2
+  title: "SKILL harness — Corrigir Step 0 Reset (template path + stale detection)"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  severity: HIGH
+  estimated_minutes: 10
+  depends_on: [1]
+
+  step_a_fix_template_path:
+    description: "Atualizar path do template para o canônico"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        3. Template is at: harness/templates/test-results.json
+
+        This prevents the "sed PLACEHOLDER not found" problem from
+        session harness-engineering, where test-results.json still
+        held Matt Pocock data.
+      newString: |
+        3. Template is at: .opencode/skills/analyze-and-improve/harness/templates/test-results.json
+           (canonical template with expected evidence paths for phases 0-4).
+
+        This prevents the "sed PLACEHOLDER not found" problem from
+        session harness-engineering, where test-results.json still
+        held Matt Pocock data.
+    verify:
+      - item: "Linha 103 contém path canônico"
+      - command: "sed -n '100,108p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+  step_b_add_stale_detection:
+    description: "Adicionar detecção de estado stale no Step 0"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        Before reading context, check if test-results.json has ALL phases
+        with passes=true from a PREVIOUS analysis. If yes, reset it:
+
+        1. Read harness/test-results.json
+        2. If ALL phase-N entries have passes=true AND the source-slug
+           in PROGRESS.md differs from the last committed analysis,
+           overwrite test-results.json with fresh template (all phases
+           passes=false, evidence=[], evaluated_by=null).
+      newString: |
+        Before reading context, perform state validation:
+
+        1. Read harness/test-results.json and PROGRESS.md
+        2. Detect stale state: if PROGRESS.md has phases in `## Done`
+           but test-results.json has those same phases with passes=false,
+           ALERT the user: "Estado inconsistente detectado. PROGRESS.md
+           mostra fases concluídas mas test-results.json tem passes=false.
+           Deseja resetar para iniciar nova análise? (sim/não)"
+        3. If user says "sim" OR if ALL phase-N entries have passes=true
+           AND the source-slug in PROGRESS.md differs from the last
+           committed analysis, overwrite test-results.json with fresh
+           template (all phases passes=false, evidence=[], evaluated_by=null).
+    verify:
+      - item: "Linhas 93-110 contêm stale detection + template path canônico"
+      - command: "sed -n '93,115p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+# =============================================================================
+# TASK 3: Bash harness — PASS seta passes: true
+# =============================================================================
+# PROBLEMA:
+#   O bash harness (harness-analysis.sh:470-486) no fluxo PASS apenas substitui
+#   evaluated_by: null → "evaluator", mas nunca seta passes: true.
+#   Mesmo defeito de contrato que o skill harness.
+# =============================================================================
+
+task_3:
+  id: 3
+  title: "Bash harness — PASS seta passes: true"
+  file: "harness/harness-analysis.sh"
+  severity: CRITICAL
+  estimated_minutes: 10
+  depends_on: []
+
+  step_a_add_passes_true_in_while_loop:
+    description: "No bloco while do evaluate_phase(), adicionar substituição passes: false → true antes de evaluated_by"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/harness/harness-analysis.sh"
+      oldString: |
+        # Mark as evaluated using bash builtins (no python3 dependency)
+        local tmpfile="${RESULTS_FILE}.tmp"
+        local in_target=false
+        while IFS= read -r line; do
+            if [[ "$line" =~ ^[[:space:]]*\"$feature\"[[:space:]]*:[[:space:]]*\{$ ]]; then
+                in_target=true
+                echo "$line"
+            elif $in_target && [[ "$line" =~ \"evaluated_by\"[[:space:]]*:[[:space:]]*null ]]; then
+                echo "${line/null/\"evaluator\"}"
+            else
+                if $in_target && [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
+                    in_target=false
+                fi
+                echo "$line"
+            fi
+        done < "$RESULTS_FILE" > "$tmpfile" && command mv "$tmpfile" "$RESULTS_FILE" 2>/dev/null || true
+        return 0
+      newString: |
+        # Mark as evaluated and passed using bash builtins (no python3 dependency)
+        local tmpfile="${RESULTS_FILE}.tmp"
+        local in_target=false
+        while IFS= read -r line; do
+            if [[ "$line" =~ ^[[:space:]]*\"$feature\"[[:space:]]*:[[:space:]]*\{$ ]]; then
+                in_target=true
+                echo "$line"
+            elif $in_target && [[ "$line" =~ \"passes\"[[:space:]]*:[[:space:]]*false ]]; then
+                echo "${line/false/true}"
+            elif $in_target && [[ "$line" =~ \"evaluated_by\"[[:space:]]*:[[:space:]]*null ]]; then
+                echo "${line/null/\"evaluator\"}"
+            else
+                if $in_target && [[ "$line" =~ ^[[:space:]]*\},?$ ]]; then
+                    in_target=false
+                fi
+                echo "$line"
+            fi
+        done < "$RESULTS_FILE" > "$tmpfile" && command mv "$tmpfile" "$RESULTS_FILE" 2>/dev/null || true
+        return 0
+    verify:
+      - item: "Bloco while tem elif para passes: false → true ANTES do elif de evaluated_by"
+      - item: "Comentário alterado para 'Mark as evaluated and passed'"
+      - command: "sed -n '469,492p' harness/harness-analysis.sh"
+
+# =============================================================================
+# TASK 4: Bash harness — Atualizar seleção de próxima fase
+# =============================================================================
+# PROBLEMA:
+#   O bash harness seleciona a próxima fase buscando passes: false,
+#   mas não distingue fases concluídas (passes:true) de fases pendentes.
+#   Precisa ser atualizado para o mesmo contrato de 3 estados da Task 1.
+# =============================================================================
+
+task_4:
+  id: 4
+  title: "Bash harness — Atualizar seleção de próxima fase"
+  file: "harness/harness-analysis.sh"
+  severity: HIGH
+  estimated_minutes: 15
+  depends_on: [3]
+
+  pre_step_read:
+    description: "ANTES de editar, ler as linhas 95-130 para localizar o ponto exato de seleção de fase"
+    command: "sed -n '95,130p' harness/harness-analysis.sh"
+    note: "O bash harness pode usar python3 -c, grep, ou jq para selecionar a próxima fase. Identifique o mecanismo exato antes de editar."
+
+  step_a_update_selection_logic:
+    description: |
+      Ajustar a lógica de seleção de próxima fase para:
+      - Pular fases com passes: true (concluídas)
+      - Tratar fases com passes: false + evaluated_by preenchido como "rework pendente"
+      - Selecionar primeira fase com passes: false + evaluated_by: null como "pendente"
+
+      O comportamento deve ser idêntico ao contrato de 3 estados definido na Task 1, Step B.
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/harness/harness-analysis.sh"
+      oldString: "PLACEHOLDER_LEIA_O_ARQUIVO_PRIMEIRO"
+      newString: "PLACEHOLDER_LEIA_O_ARQUIVO_PRIMEIRO"
+    verify:
+      - command: "bash -n harness/harness-analysis.sh"
+      - item: "Syntax check passa (exit code 0)"
+
+# =============================================================================
+# TASK 5: Sync test-results.json templates
+# =============================================================================
+# PROBLEMA:
+#   Duas fontes de template: harness/templates/ (base, sem evidências) e
+#   .opencode/skills/.../templates/ (canônico, com evidências esperadas).
+#   A Task 2 já corrigiu o path no SKILL.md. Esta task sincroniza os arquivos.
+# =============================================================================
+
+task_5:
+  id: 5
+  title: "Sync test-results.json templates — canonical > base"
+  severity: HIGH
+  estimated_minutes: 5
+  depends_on: []
+
+  step_a_copy_canonical_over_base:
+    command: "cp .opencode/skills/analyze-and-improve/harness/templates/test-results.json harness/templates/test-results.json"
+
+  step_b_verify_identical:
+    command: "diff .opencode/skills/analyze-and-improve/harness/templates/test-results.json harness/templates/test-results.json"
+    expected: "sem output (arquivos idênticos)"
+
+  step_c_verify_evidence_fields:
+    command: "python3 -c \"import json; d=json.load(open('harness/templates/test-results.json')); phases=[k for k in d if k.startswith('phase')]; print(f'Phases: {len(phases)}'); [print(f'  {p}: evidence={len(d[p].get(chr(34)+chr(34).join(['evidence','']),[]))} items') for p in phases]\""
+
+# =============================================================================
+# TASK 6: Criar scripts/check-harness-state.sh (pre-flight validator)
+# =============================================================================
+# PROBLEMA:
+#   Nenhuma validação automática confere consistência PROGRESS.md ↔ test-results.json.
+#   O script atual (check-obsidian-conventions.sh) valida apenas frontmatter e wikilinks.
+# =============================================================================
+
+task_6:
+  id: 6
+  title: "Criar scripts/check-harness-state.sh — pre-flight validator"
+  severity: MEDIUM
+  estimated_minutes: 20
+  depends_on: []
+
+  specification:
+    purpose: "Validar consistência do estado do harness antes de iniciar o loop"
+    location: "/mnt/c/Users/pavan/long-running-agents/scripts/check-harness-state.sh"
+    permissions: "chmod +x após criação"
+    mode: "read-only — nunca modifica arquivos"
+
+    checks:
+      - id: "check-1"
+        name: "Arquivos de contrato existem"
+        what: "Verifica que PROGRESS.md e harness/test-results.json existem"
+        on_fail: "exit 1"
+
+      - id: "check-2"
+        name: "JSON válido"
+        what: "Verifica que harness/test-results.json é JSON parseable"
+        on_fail: "exit 2"
+
+      - id: "check-3"
+        name: "Consistência de fases PROGRESS.md ↔ test-results.json"
+        what: "Se PROGRESS.md lista fase-N em Done mas test-results.json tem passes: false → [WARN] stale state"
+        on_fail: "warning apenas (exit 0)"
+
+      - id: "check-4"
+        name: "Evidências existem no disco"
+        what: "Para cada fase com passes: true ou evaluated_by preenchido, verifica arquivos em evidence[]"
+        on_fail: "exit 1"
+
+      - id: "check-5"
+        name: "Artifacts manifest (post-migration)"
+        what: "Se phase-4 está em Done no PROGRESS.md, verifica artifacts.yaml/.md. Se ausentes → [WARN] formato legacy."
+        on_fail: "warning apenas (exit 0)"
+
+      - id: "check-6"
+        name: "AGENT_STOP status"
+        what: "Verifica se AGENT_STOP existe na raiz do repo (informativo)"
+        on_fail: "informativo (exit 0)"
+
+      - id: "check-7"
+        name: "Divergência de templates"
+        what: "Compara os dois templates de test-results.json. Se diferentes → [WARN]"
+        on_fail: "warning apenas (exit 0)"
+
+    output_format: "Color-coded: [OK] verde, [WARN] amarelo, [ERR] vermelho. Summary: 'N errors, M warnings'."
+
+    example_output: |
+      === check-harness-state.sh ===
+      [OK] PROGRESS.md e test-results.json existem
+      [OK] test-results.json é JSON válido (7 phases)
+      [WARN] Stale state: phase-0..phase-6 em Done mas passes=false
+      [ERR] Missing evidence: artifacts.yaml (phase-4)
+      [ERR] Missing evidence: artifacts.md (phase-4)
+      [WARN] Phase 4 Done mas artifacts manifest não encontrado (legacy?)
+      [OK] AGENT_STOP não detectado
+      [WARN] Templates divergentes
+      === 2 errors, 4 warnings ===
+
+    post_creation:
+      - "chmod +x scripts/check-harness-state.sh"
+      - "Rodar o script: bash scripts/check-harness-state.sh"
+      - "Verificar exit code 0 (warnings não quebram o exit code)"
+
+# =============================================================================
+# TASK 7: Limpar .evidence-reads por fase
+# =============================================================================
+# PROBLEMA:
+#   harness/.evidence-reads acumula entradas de múltiplas sessões (4 entradas
+#   atuais, algumas inválidas). Deveria ser limpo no início de cada fase.
+# =============================================================================
+
+task_7:
+  id: 7
+  title: "Limpar .evidence-reads no início de cada fase"
+  file: ".opencode/skills/harness-analyze-and-improve/SKILL.md"
+  severity: LOW
+  estimated_minutes: 5
+  depends_on: [1]
+
+  step_a_add_clear_evidence_reads:
+    description: "No Step 5 (Verify Output), adicionar limpeza de .evidence-reads como passo 1"
+    edit:
+      filePath: "/mnt/c/Users/pavan/long-running-agents/.opencode/skills/harness-analyze-and-improve/SKILL.md"
+      oldString: |
+        ### Step 5: Verify Output
+
+        After the delegation completes:
+        1. Read each evidence file listed in `test-results.json` for that phase
+        2. Confirm files exist and have substantial content
+        3. Log evidence to `harness/.evidence-reads` (one path per line)
+      newString: |
+        ### Step 5: Verify Output
+
+        After the delegation completes:
+        1. Clear `harness/.evidence-reads` (truncate to empty — evidence is per-phase, not cumulative)
+        2. Read each evidence file listed in `test-results.json` for that phase
+        3. Confirm files exist and have substantial content
+        4. Log evidence to `harness/.evidence-reads` (one path per line)
+    verify:
+      - item: "Step 5 começa com 'Clear harness/.evidence-reads'"
+      - command: "sed -n '162,172p' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+
+# =============================================================================
+# TASK 8: Canary session — loop completo com artifacts manifest
+# =============================================================================
+# PROBLEMA:
+#   O formato artifacts.yaml/.md está completamente especificado mas NUNCA
+#   foi exercitado. Zero arquivos desse tipo existem no repo. Phase 4 →
+#   manifest generation → Phase 5 manifest consumption é um caminho não validado.
+#
+# ESTA TASK É UM GATE: só considere os fixes validados depois que a canary
+# produzir artifacts.yaml/.md reais e a Phase 5 consumir o manifesto.
+# =============================================================================
+
+task_8:
+  id: 8
+  title: "Canary session — loop completo com artifacts manifest"
+  severity: HIGH
+  estimated_minutes: 60
+  depends_on: [1, 2, 3, 4, 5, 6, 7]
+  type: gate
+
+  pre_conditions:
+    - "Tasks 1-7 concluídas e verificadas"
+    - "scripts/check-harness-state.sh passa com 0 errors (warnings OK)"
+    - "git status mostra apenas arquivos das tasks 1-7 modificados"
+
+  canary_spec:
+    source_description: |
+      Usar uma fonte de teste curta e autocontida (1-2 páginas, 3-5 padrões).
+      O importante é que seja pequena o suficiente para rodar rápido (30-60 min)
+      mas gere ao menos 1 canonical doc + 1 skill + 1 exercise.
+
+    date: "2026-06-15"
+    source_slug: "canary-test"
+
+    phases: [phase-0, phase-1, phase-2, phase-3, phase-4, phase-5]
+    phase_6_optional: true
+
+    critical_checkpoints:
+      - name: "Phase 4 Gate — manifest generation"
+        description: "Orquestrador gerou artifacts.yaml + artifacts.md como ação direta"
+        verify_command: "ls docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-artifacts.yaml docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-artifacts.md"
+
+      - name: "Phase 5 — manifest consumption"
+        description: "Agente quick leu manifest como input autoritativo e atualizou índices"
+        verify_command: "git diff --stat -- docs/system-of-record.md curriculum/INDEX.md"
+
+      - name: "test-results.json state"
+        description: "Fases concluídas têm passes: true, evaluated_by preenchido, duration > 0"
+        verify_command: "python3 -c \"import json; d=json.load(open('harness/test-results.json')); [print(f'{k}: passes={v[chr(34)+chr(34).join(['passes',''])]}, eval={v[chr(34)+chr(34).join(['evaluated_by',''])]}, dur={v.get(chr(34)+chr(34).join(['duration_seconds','']),chr(63))}s') for k,v in d.items() if k.startswith('phase')]\""
+
+    success_criteria:
+      - "Loop completou phase-0 até phase-5 sem intervenção manual (exceto Commit Gates)"
+      - "artifacts.yaml e artifacts.md existem e são JSON/YAML válidos"
+      - "Phase 5 leu o manifesto e atualizou os índices corretos"
+      - "test-results.json tem passes: true para fases concluídas"
+      - "scripts/check-obsidian-conventions.sh → 0 errors"
+      - "scripts/check-harness-state.sh → 0 errors"
+
+    failure_handling:
+      - "Se a canary falhar: NÃO considerar os fixes validados"
+      - "Documentar ponto de falha exato (fase, erro, output)"
+      - "Ajustar edits das tasks 1-7 conforme necessário"
+      - "Reexecutar a canary após ajustes"
+
+# =============================================================================
+# VERIFICATION GATES (pós-execução de todas as tasks)
+# =============================================================================
+
+final_verification:
+  - gate: "VG-1"
+    description: "Skill harness — PASS seta passes: true"
+    command: "grep -A5 'If PASS:' .opencode/skills/harness-analyze-and-improve/SKILL.md | grep 'passes'"
+    expected: "linha contendo 'Set passes to true'"
+
+  - gate: "VG-2"
+    description: "Skill harness — Step 0 aponta para template canônico"
+    command: "grep 'Template is at:' .opencode/skills/harness-analyze-and-improve/SKILL.md"
+    expected: "path contendo .opencode/skills/analyze-and-improve/harness/templates/"
+
+  - gate: "VG-3"
+    description: "Bash harness — syntax check"
+    command: "bash -n harness/harness-analysis.sh"
+    expected: "exit code 0"
+
+  - gate: "VG-4"
+    description: "Templates sincronizados"
+    command: "diff .opencode/skills/analyze-and-improve/harness/templates/test-results.json harness/templates/test-results.json"
+    expected: "sem output"
+
+  - gate: "VG-5"
+    description: "Pre-flight validator funcional"
+    command: "bash scripts/check-harness-state.sh"
+    expected: "exit code 0"
+
+  - gate: "VG-6"
+    description: "Obsidian conventions continuam limpas"
+    command: "bash scripts/check-obsidian-conventions.sh"
+    expected: "0 [ERR]"
+
+  - gate: "VG-7"
+    description: "Nenhum arquivo fora do escopo modificado"
+    command: "git diff --stat"
+    expected: "apenas arquivos em files_affected"
+
+# =============================================================================
+# ROLLBACK PLAN
+# =============================================================================
+
+rollback:
+  description: "Se algo quebrar, reverter para o estado pré-fixes"
+  commands:
+    - "git checkout -- .opencode/skills/harness-analyze-and-improve/SKILL.md"
+    - "git checkout -- harness/harness-analysis.sh"
+    - "git checkout -- harness/templates/test-results.json"
+    - "rm -f scripts/check-harness-state.sh"
+  safe_files:
+    description: "NÃO fazer checkout nestes — são correções de wikilinks já validadas"
+    files:
+      - ".gitignore"
+      - "docs/canonical/accidental-brake-replacement.md"
+      - "docs/canonical/persona-based-documentation.md"
+      - "document-architecture.canvas"
+      - "index.md"
+
+# =============================================================================
+# ESTIMATIVA DE ESFORÇO
+# =============================================================================
+
+effort_breakdown:
+  task_1: "5 min — 3 edits no SKILL.md"
+  task_2: "10 min — 2 edits no SKILL.md"
+  task_3: "10 min — 1 edit no harness-analysis.sh"
+  task_4: "15 min — 1 edit no harness-analysis.sh (requer leitura prévia)"
+  task_5: "5 min — cp + diff + verify"
+  task_6: "20 min — criar script shell de ~100 linhas"
+  task_7: "5 min — 1 edit no SKILL.md"
+  task_8: "60 min — canary session end-to-end"
+  total: "~130 min (2h10)"

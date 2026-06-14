@@ -1,0 +1,710 @@
+# Plano de Execução: analyze-and-improve — Correções Pós-Review (IDSD Method)
+# =============================================================================
+# Versão revisada e convertida para YAML executável.
+# Original: docs/plans/2026-06-12-analyze-and-improve-post-review-fixes.md
+# Revisão: 2026-06-13 (Sisyphus) — 4 gaps corrigidos, edits precisos, dependências explícitas
+# =============================================================================
+#
+# RESUMO DAS CORREÇÕES APLICADAS AO PLANO ORIGINAL:
+#
+# 1. Tarefa 1 Passo 2: "Após o último anti-pattern" era vago.
+#    Corrigido: ponto exato é depois da linha 987 (último item da lista Anti-Patterns).
+#
+# 2. Tarefa 5: Original dizia "remover bloco task()", mas não identificava o bloco exato.
+#    Corrigido: o bloco é "Agente 4: Integration Roadmap" (linhas 742-768),
+#    e a fusão é na descrição da Phase 5 (linha 789, após a tabela "O que verificar").
+#
+# 3. Tarefa 6: Linhas 27-45 hardcoded. Confirmado que batem com PROGRESS.md atual,
+#    mas adicionada verificação prévia para validar.
+#
+# 4. Dependências entre tasks: Tasks 1-5 modificam o mesmo arquivo (SKILL.md).
+#    Adicionada regra de serialização para evitar conflitos de merge.
+#
+# 5. Adicionada task 0 (pre-check) que verifica estado do repo antes de começar.
+#
+# 6. Verificações com rg: adicionado workdir explícito (long-running-agents/)
+#    e flags -i onde necessário para evitar falsos negativos por case.
+# =============================================================================
+
+meta:
+  title: "analyze-and-improve — Post-Review Fixes (IDSD Method)"
+  type: plan
+  date: "2026-06-13"
+  based_on: "docs/plans/2026-06-12-analyze-and-improve-post-review-fixes.md"
+  target_repo: "/mnt/c/Users/pavan/long-running-agents"
+  estimated_effort: "60-90 min"
+  task_count: 10
+  files_affected:
+    - ".opencode/skills/analyze-and-improve/SKILL.md"
+    - "PROGRESS.md"
+    - "docs/canonical/ice-craft-separation.md"
+    - "curriculum/05-core-concepts/04-sprint-contracts.md"
+    - "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md"
+
+# =============================================================================
+# EXECUTION RULES (leia antes de começar)
+# =============================================================================
+
+execution_rules:
+  serial_tasks:
+    - reason: "Tasks 1-5 modificam o mesmo arquivo SKILL.md. Devem ser executadas em ordem sequencial."
+      task_ids: [1, 2, 3, 4, 5]
+  parallel_ok:
+    - reason: "Tasks 6-9 não conflitam entre si (arquivos diferentes). Podem rodar em paralelo após task 5."
+      task_ids: [6, 7, 8, 9]
+  commit_policy:
+    - "NÃO commitar — o Commit Gate pertence ao orquestrador (AGENTS.md Rule 6)"
+  workdir:
+    - "Todos os comandos devem ser executados a partir de: /mnt/c/Users/pavan/long-running-agents"
+  touching_policy:
+    - "Modificar apenas os 6 arquivos listados em files_affected (AGENTS.md Rule 3)"
+    - "NÃO modificar AGENTS.md, system-of-record.md, ou qualquer outro arquivo"
+
+# =============================================================================
+# PRE-IMPLEMENTATION CHECKS
+# =============================================================================
+
+pre_implementation_checks:
+  - id: "check-0"
+    description: "Verificar que os 5 arquivos alvo existem e estão no estado esperado"
+    command: |
+      for f in \
+        .opencode/skills/analyze-and-improve/SKILL.md \
+        PROGRESS.md \
+        docs/canonical/ice-craft-separation.md \
+        curriculum/05-core-concepts/04-sprint-contracts.md \
+        curriculum/01-nivel-1-fundamentals/02-token-budgeting.md; do
+        test -f "$f" && echo "EXISTS: $f" || echo "MISSING: $f"
+      done
+    expected: "Todos os 5 arquivos EXISTEM"
+
+  - id: "check-1"
+    description: "Confirmar que SKILL.md tem a seção Anti-Patterns e Phase 6"
+    command: 'grep -n "## Anti-Patterns\|## Phase 6" .opencode/skills/analyze-and-improve/SKILL.md'
+    expected: "2 linhas: Anti-Patterns (~960) e Phase 6 (~844)"
+
+  - id: "check-2"
+    description: "Contar blocos run_in_background=false que serão alterados"
+    command: 'grep -c "run_in_background=false" .opencode/skills/analyze-and-improve/SKILL.md'
+    expected: "7 ocorrências (Phase 0×2, Phase 1, Phase 2, Phase 3, Phase 4 Agent 4, Phase 5, Phase 6). Serão alteradas: Phases 0-3 (5 ocorrências)."
+
+  - id: "check-3"
+    description: "Confirmar que PROGRESS.md tem as seções a remover (linhas 27-45)"
+    command: 'sed -n "27,45p" PROGRESS.md | head -3'
+    expected: 'Deve mostrar "## In Progress" como primeira linha'
+
+  - id: "check-4"
+    description: "Verificar status do git — workspace deve estar limpo ou apenas com alterações esperadas"
+    command: "git status --short"
+    expected: "Apenas os 6 arquivos alvo aparecem (se houver alterações prévias). Sem arquivos não relacionados."
+
+# =============================================================================
+# TASKS
+# =============================================================================
+
+tasks:
+
+  # ---------------------------------------------------------------------------
+  # TASK 1: Background-first policy
+  # ---------------------------------------------------------------------------
+  - id: 1
+    title: "SKILL.md: Background-first como política obrigatória"
+    file: ".opencode/skills/analyze-and-improve/SKILL.md"
+    effort: "15 min"
+    dependencies: []
+    description: |
+      Adicionar anti-pattern sobre sync em fases pesadas e alterar run_in_background=false→true
+      para Phases 0, 0b, 1, 2, 3. Phases 4d (Agent 4), 5, 6 mantêm sync.
+    changes:
+      - step: "1a"
+        description: "Adicionar anti-pattern na seção Anti-Patterns (após linha 987, último item)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+        new_string: |
+          - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+          - **Usar sync para fases de leitura pesada.** Fases que leem mais de 5 arquivos ou usam `ultrabrain`/`deep` como categoria DEVEM usar `run_in_background=true`. O harness interpreta silencio como travamento em sync; background tem janela de inatividade maior e evita aborts. Aplica-se a Phases 0, 1, 2 e 3.
+        verification:
+          command: 'grep -c "Usar sync para fases de leitura pesada" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+      - step: "1b"
+        description: "Alterar run_in_background=false→true na delegação Phase 0 (full rebuild, linha 189)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Build a mental model of the target repository.
+        new_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=true,
+            prompt="TASK: Build a mental model of the target repository.
+        verification:
+          command: 'sed -n "185,195p" .opencode/skills/analyze-and-improve/SKILL.md | grep "run_in_background=true"'
+          expected: "1 match: run_in_background=true"
+
+      - step: "1c"
+        description: "Alterar run_in_background=false→true na delegação Phase 0b (incremental, linha 286)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Update the repository mental model incrementally using the previous model as base.
+        new_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=true,
+            prompt="TASK: Update the repository mental model incrementally using the previous model as base.
+        verification:
+          command: 'grep -c "run_in_background=true" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "Pelo menos 5 (após todas as alterações desta task)"
+
+      - step: "1d"
+        description: "Alterar run_in_background=false→true na delegação Phase 1 (linha 396)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          task(
+            category="deep",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Extract all non-obvious knowledge from the source document below.
+        new_string: |
+          task(
+            category="deep",
+            load_skills=[],
+            run_in_background=true,
+            prompt="TASK: Extract all non-obvious knowledge from the source document below.
+        verification:
+          command: 'grep -A2 "Phase 1: Knowledge Extraction" .opencode/skills/analyze-and-improve/SKILL.md | head -5'
+          expected: "Header visível (verificação de contexto, não de conteúdo)"
+
+      - step: "1e"
+        description: "Alterar run_in_background=false→true na delegação Phase 2 (linha 474)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Identify reusable patterns from the knowledge extraction below.
+        new_string: |
+          task(
+            category="ultrabrain",
+            load_skills=[],
+            run_in_background=true,
+            prompt="TASK: Identify reusable patterns from the knowledge extraction below.
+        verification:
+          command: 'grep -c "run_in_background=true" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "Pelo menos 5"
+
+      - step: "1f"
+        description: "Alterar run_in_background=false→true na delegação Phase 3 (linha 554)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          task(
+            category="deep",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Classify each extracted pattern against the target repository using evidence-based classification.
+        new_string: |
+          task(
+            category="deep",
+            load_skills=[],
+            run_in_background=true,
+            prompt="TASK: Classify each extracted pattern against the target repository using evidence-based classification.
+        verification:
+          command: 'grep -c "run_in_background=true" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "Pelo menos 6"
+
+    final_verification:
+      command: 'grep "run_in_background=false" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: |
+        Apenas 3 ocorrências restantes:
+        - Phase 4 Agent 4 (Integration Roadmap)
+        - Phase 5 (Integration)
+        - Phase 6 (Curriculum Deep Integration)
+
+  # ---------------------------------------------------------------------------
+  # TASK 2: Phase 0 + Phase 1 parallelism
+  # ---------------------------------------------------------------------------
+  - id: 2
+    title: "SKILL.md: Paralelismo Phase 0 + Phase 1"
+    file: ".opencode/skills/analyze-and-improve/SKILL.md"
+    effort: "5 min"
+    dependencies: [1]
+    description: |
+      Adicionar instrução de paralelismo na seção "Execution mechanism" (linhas 86-103),
+      após a tabela de mecanismos e o bloco bash do setup-analysis.sh.
+    changes:
+      - step: "2a"
+        description: "Inserir instrução de paralelismo após o bloco bash setup (linha 103: '...requer ambiente bash completo...')"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          O skill harness e recomendado para execucao interativa dentro do opencode. O bash harness e util para automacao externa e CI/CD, mas requer ambiente bash completo (grep, python3/jq, date, mkdir) e **nao funciona quando invocado de dentro de uma sessao opencode**.
+        new_string: |
+          O skill harness e recomendado para execucao interativa dentro do opencode. O bash harness e util para automacao externa e CI/CD, mas requer ambiente bash completo (grep, python3/jq, date, mkdir) e **nao funciona quando invocado de dentro de uma sessao opencode**.
+
+          **Phase 0 e Phase 1 podem rodar em paralelo** quando o documento fonte (parametro `source`) ja esta disponivel no inicio da sessao. A Phase 0 le o repositorio; a Phase 1 le o documento fonte — sao independentes. Dispare ambas com `run_in_background=true` no mesmo turno e colete os resultados antes de prosseguir para Phase 2.
+        verification:
+          command: 'grep -c "podem rodar em paralelo" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+  # ---------------------------------------------------------------------------
+  # TASK 3: Autonomous pipeline (auto-advance)
+  # ---------------------------------------------------------------------------
+  - id: 3
+    title: "SKILL.md: Pipeline autônomo — auto-avanço entre fases"
+    file: ".opencode/skills/analyze-and-improve/SKILL.md"
+    effort: "10 min"
+    dependencies: [2]
+    description: |
+      Adicionar anti-pattern e instrução no Execution mechanism para evitar
+      que o orquestrador espere input do usuário entre fases.
+    changes:
+      - step: "3a"
+        description: "Adicionar anti-pattern na seção Anti-Patterns (antes do último item da lista atual)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+          - **Usar sync para fases de leitura pesada.**
+        new_string: |
+          - **Esperar input do usuario entre fases.** O pipeline e deterministico: output da fase N e input da N+1. Apos cada `task()` completar, o orquestrador DEVE coletar o resultado, atualizar PROGRESS.md e disparar a proxima fase IMEDIATAMENTE. Os unicos gates que param o pipeline sao o Commit Gate (perguntar antes de commit/push) e interrupcao explicita do usuario.
+          - **Usar `incremental=true` em repositorios diferentes do long-running-agents.** O modo incremental depende da convencao `mapa-mental-repo/`. So use em repositorios que adotaram essa convencao.
+          - **Usar sync para fases de leitura pesada.**
+        verification:
+          command: 'grep -c "Esperar input do usuario entre fases" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+      - step: "3b"
+        description: "Adicionar instrução de auto-avanço no Execution mechanism (após o bloco de paralelismo inserido na Task 2)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          **Phase 0 e Phase 1 podem rodar em paralelo** quando o documento fonte (parametro `source`) ja esta disponivel no inicio da sessao. A Phase 0 le o repositorio; a Phase 1 le o documento fonte — sao independentes. Dispare ambas com `run_in_background=true` no mesmo turno e colete os resultados antes de prosseguir para Phase 2.
+        new_string: |
+          **Phase 0 e Phase 1 podem rodar em paralelo** quando o documento fonte (parametro `source`) ja esta disponivel no inicio da sessao. A Phase 0 le o repositorio; a Phase 1 le o documento fonte — sao independentes. Dispare ambas com `run_in_background=true` no mesmo turno e colete os resultados antes de prosseguir para Phase 2.
+
+          O orquestrador NAO deve pausar entre fases para check-in. O pipeline avanca automaticamente: coleta output → atualiza PROGRESS.md → dispara proxima fase. Interrupcao so por Commit Gate ou comando explicito.
+        verification:
+          command: 'grep -c "NAO deve pausar entre fases" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+  # ---------------------------------------------------------------------------
+  # TASK 4: Phase 6 as opt-in
+  # ---------------------------------------------------------------------------
+  - id: 4
+    title: "SKILL.md: Phase 6 como opt-in (não opcional padrão)"
+    file: ".opencode/skills/analyze-and-improve/SKILL.md"
+    effort: "15 min"
+    dependencies: [3]
+    description: |
+      Alterar status da Phase 6 de "opcional" para "opt-in".
+      Atualizar cabeçalho, descrição, e lista de fases no "What I Do".
+      Atualizar também a menção no Verification Gates.
+    changes:
+      - step: "4a"
+        description: "Alterar cabeçalho da Phase 6 de '(opcional)' para '(opt-in)'"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: '## Phase 6: Curriculum Deep Integration (opcional)'
+        new_string: '## Phase 6: Curriculum Deep Integration (opt-in — executar apenas quando solicitado)'
+        verification:
+          command: 'grep -c "opt-in" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "Pelo menos 1"
+
+      - step: "4b"
+        description: "Adicionar instrução de opt-in no início da seção Phase 6 (após o cabeçalho e antes do objetivo)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          ## Phase 6: Curriculum Deep Integration (opt-in — executar apenas quando solicitado)
+
+          **Objetivo:** Integrar padroes Missing e Partial Coverage no curriculo existente.
+        new_string: |
+          ## Phase 6: Curriculum Deep Integration (opt-in — executar apenas quando solicitado)
+
+          Esta fase NAO faz parte do pipeline default. O orquestrador so a executa quando o usuario solicita explicitamente ("faca a integracao curricular", "execute a Phase 6"). O escopo padrao do pipeline termina na Phase 5.
+
+          **Objetivo:** Integrar padroes Missing e Partial Coverage no curriculo existente.
+        verification:
+          command: 'grep -c "NAO faz parte do pipeline default" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+      - step: "4c"
+        description: "Atualizar descrição no 'What I Do' (linha 57): de 'opcional' para 'opt-in'"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: "6. **Curriculum Deep Integration** (opcional) — Integrar Missing e Partial Coverage no curriculo existente com profundidade total (delegado: `deep`)"
+        new_string: "6. **Curriculum Deep Integration** (opt-in) — Integrar Missing e Partial Coverage no curriculo existente com profundidade total (delegado: `deep`). Executar apenas quando solicitado."
+        verification:
+          command: 'grep "Curriculum Deep Integration" .opencode/skills/analyze-and-improve/SKILL.md | grep "opt-in"'
+          expected: "1 match com opt-in"
+
+      - step: "4d"
+        description: "Atualizar Verification Gates (linha 993): de 'opcional' para 'opt-in'"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: "Depois de completar as fases (0-5 obrigatorias, 6 opcional):"
+        new_string: "Depois de completar as fases (0-5 obrigatorias, 6 opt-in — executar apenas quando solicitado):"
+        verification:
+          command: 'grep "0-5 obrigatorias" .opencode/skills/analyze-and-improve/SKILL.md | grep "opt-in"'
+          expected: "1 match"
+
+  # ---------------------------------------------------------------------------
+  # TASK 5: Merge Phase 4d (Agent 4 roadmap) into Phase 5
+  # ---------------------------------------------------------------------------
+  - id: 5
+    title: "SKILL.md: Fundir Agent 4 (Integration Roadmap) na Phase 5"
+    file: ".opencode/skills/analyze-and-improve/SKILL.md"
+    effort: "15 min"
+    dependencies: [4]
+    description: |
+      O Agent 4 da Phase 4 (Integration Roadmap, linhas 742-768) roda sync e gera
+      integration-roadmap.md. Fundir essa responsabilidade na Phase 5 (Integration).
+      A Phase 5 já atualiza índices — adicionar a geração do roadmap summary como
+      primeiro passo economiza um agente e reduz critical path.
+    changes:
+      - step: "5a"
+        description: "Adicionar instrução de geração de roadmap na Phase 5 (após a tabela 'O que verificar', antes de 'Delegacao')"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          ### Delegacao
+
+          Delegue para `quick`:
+
+          ```typescript
+          task(
+            category="quick",
+            load_skills=["git-master"],
+        new_string: |
+          ### Artifacts Created Summary
+
+          Antes de atualizar os indices, o agente DEVE ler os outputs da Phase 4 (canonical docs, skills, exercises) e gerar uma secao de "Artifacts Created" dentro do proprio system-of-record.md ou como subsecao da atualizacao. Isso substitui a antiga Agent 4 (Integration Roadmap separado).
+
+          ### Delegacao
+
+          Delegue para `quick`:
+
+          ```typescript
+          task(
+            category="quick",
+            load_skills=["git-master"],
+        verification:
+          command: 'grep -c "Artifacts Created Summary" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+      - step: "5b"
+        description: "Comentar/remover o bloco Agent 4 (Integration Roadmap, linhas 742-768)"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: |
+          **Agente 4: Integration Roadmap**
+
+          ```typescript
+          task(
+            category="deep",
+            load_skills=[],
+            run_in_background=false,
+            prompt="TASK: Create an integration roadmap mapping all patterns to concrete integration points.
+
+          TARGET_REPOSITORY:
+            path: <absolute-path-to-repo>
+            name: <repo-name>
+            output_dir: docs/analysis/<date>-<source-slug>/
+            system_of_record: docs/system-of-record.md
+
+          Read docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.md for all classified patterns.
+
+          Create a roadmap with:
+          1. Summary matrix (pattern, classification, impact, effort, priority, integration surface)
+          2. Artifacts created during this session (canonical docs, skills, exercises)
+          3. Cross-reference table linking patterns to curriculum levels
+          4. Gap analysis (what is still uncovered)
+
+          OUTPUT:
+          - docs/analysis/<date>-<source-slug>/<date>-<source-slug>-integration-roadmap.md"
+          )
+          ```
+        new_string: |
+          <!-- OBSOLETO: Agent 4 (Integration Roadmap) fundido na Phase 5. A geracao do roadmap
+               agora e feita como "Artifacts Created Summary" dentro da propria Phase 5. -->
+        verification:
+          command: 'grep -c "OBSOLETO.*Agent 4.*Integration Roadmap" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1"
+
+      - step: "5c"
+        description: "Atualizar referência aos agentes paralelos (linha 770): remover menção ao Agent 4"
+        type: "edit"
+        file: ".opencode/skills/analyze-and-improve/SKILL.md"
+        old_string: "Os agentes 1-3 rodam em paralelo (`run_in_background=true`). O agente 4 (roadmap) roda sincrono depois que 1-3 completam, pois referencia os artefatos criados."
+        new_string: "Os agentes 1-3 rodam em paralelo (`run_in_background=true`)."
+        verification:
+          command: 'grep "agentes 1-3 rodam em paralelo" .opencode/skills/analyze-and-improve/SKILL.md'
+          expected: "1 match, sem menção ao agente 4"
+
+  # ---------------------------------------------------------------------------
+  # TASK 6: PROGRESS.md — Remove stale blocks
+  # ---------------------------------------------------------------------------
+  - id: 6
+    title: "PROGRESS.md: Remover blocos 'In Progress' e 'Next' stale"
+    file: "PROGRESS.md"
+    effort: "5 min"
+    dependencies: [5]
+    parallel_group: "docs-fixes"
+    description: |
+      Como todas as fases estão em Done, remover as seções "In Progress" e "Next"
+      que contêm placeholders da execução concluída. Deixar apenas Done e Analysis Context.
+      IMPORTANTE: Verificar antes se as linhas 27-45 ainda correspondem ao esperado.
+    changes:
+      - step: "6a"
+        description: "Verificar conteúdo atual das linhas 27-45 antes de remover"
+        type: "bash"
+        command: 'sed -n "27,45p" PROGRESS.md'
+        expected: |
+          Deve conter "## In Progress" e "## Next".
+          Se o conteúdo for diferente, ajustar os números de linha.
+
+      - step: "6b"
+        description: "Remover linhas 27-45 (In Progress + Next)"
+        type: "edit"
+        file: "PROGRESS.md"
+        old_string: |
+          ## In Progress
+
+          <!-- A fase atual. Exatamente UMA por vez. -->
+
+          - [ ] phase-0: Repository Mental Model
+            - Output esperado: docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model.md + .yaml
+            - Delegado: ultrabrain (bg_8f483bb7)
+            - Modo: full rebuild (14 deltas > 10 threshold; delta-report.md escrito)
+            - Background: sim — aguardando notificacao do sistema
+            - Bloqueios: nenhum
+
+          ## Next
+
+          - [ ] phase-1: Knowledge Extraction
+          - [ ] phase-2: Pattern Extraction
+          - [ ] phase-3: Classification
+          - [ ] phase-4: Improvement Generation
+          - [ ] phase-5: Integration
+          - [ ] phase-6: Curriculum Deep Integration (opcional)
+        new_string: |
+        verification:
+          command: 'grep -c "In Progress" PROGRESS.md'
+          expected: "0 (ou apenas no cabeçalho explicativo do topo, linha 1-3)"
+
+  # ---------------------------------------------------------------------------
+  # TASK 7: ice-craft-separation.md — Add symphony-trap-awareness
+  # ---------------------------------------------------------------------------
+  - id: 7
+    title: "ice-craft-separation.md: Adicionar symphony-trap-awareness ao relates-to"
+    file: "docs/canonical/ice-craft-separation.md"
+    effort: "5 min"
+    dependencies: []
+    parallel_group: "docs-fixes"
+    description: |
+      O relates-to na linha 7 omite symphony-trap-awareness entre os irmãos canônicos.
+      Adicionar o wikilink preservando a ordem alfabética dos itens existentes.
+    changes:
+      - step: "7a"
+        description: "Adicionar symphony-trap-awareness ao relates-to (linha 7, após 'presence-in-the-loop-metric')"
+        type: "edit"
+        file: "docs/canonical/ice-craft-separation.md"
+        old_string: 'relates-to: ["[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]", "[[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Metric]]", "[[docs/canonical/token-economics-gap-filling|Token Economics of Gap-Filling]]"'
+        new_string: 'relates-to: ["[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]", "[[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Metric]]", "[[docs/canonical/symphony-trap-awareness|Symphony Trap Awareness]]", "[[docs/canonical/token-economics-gap-filling|Token Economics of Gap-Filling]]"'
+        verification:
+          command: 'grep "symphony-trap-awareness" docs/canonical/ice-craft-separation.md'
+          expected: "1+ matches (na linha 7, dentro de relates-to)"
+
+  # ---------------------------------------------------------------------------
+  # TASK 8: 04-sprint-contracts.md — Add ICE canonical links
+  # ---------------------------------------------------------------------------
+  - id: 8
+    title: "04-sprint-contracts.md: Adicionar links ICE ao relates-to"
+    file: "curriculum/05-core-concepts/04-sprint-contracts.md"
+    effort: "5 min"
+    dependencies: []
+    parallel_group: "docs-fixes"
+    description: |
+      O relates-to (linha 6) está desatualizado — não referencia os canônicos ICE
+      que são citados no corpo do documento (linhas 715-717).
+    changes:
+      - step: "8a"
+        description: "Ler frontmatter atual para confirmar estado"
+        type: "bash"
+        command: 'sed -n "1,8p" curriculum/05-core-concepts/04-sprint-contracts.md'
+        expected: "Deve mostrar relates-to com apenas 2 itens"
+
+      - step: "8b"
+        description: "Adicionar os 3 links ICE ao relates-to"
+        type: "edit"
+        file: "curriculum/05-core-concepts/04-sprint-contracts.md"
+        old_string: 'relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts Lesson]]"]'
+        new_string: 'relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts Lesson]]", "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]"]'
+        verification:
+          command: 'grep "ice-craft-separation" curriculum/05-core-concepts/04-sprint-contracts.md'
+          expected: "Pelo menos 1 match no frontmatter"
+
+  # ---------------------------------------------------------------------------
+  # TASK 9: 02-token-budgeting.md — Add token-economics links
+  # ---------------------------------------------------------------------------
+  - id: 9
+    title: "02-token-budgeting.md: Adicionar links de token-economics ao relates-to"
+    file: "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md"
+    effort: "5 min"
+    dependencies: []
+    parallel_group: "docs-fixes"
+    description: |
+      O relates-to (linha 7) está desatualizado — não referencia os canônicos
+      de token economics citados no corpo (linhas 842-843).
+    changes:
+      - step: "9a"
+        description: "Ler frontmatter atual para confirmar estado"
+        type: "bash"
+        command: 'sed -n "1,8p" curriculum/01-nivel-1-fundamentals/02-token-budgeting.md'
+        expected: "Deve mostrar relates-to com 3 itens, sem token-economics"
+
+      - step: "9b"
+        description: "Adicionar os 2 links de token economics ao relates-to"
+        type: "edit"
+        file: "curriculum/01-nivel-1-fundamentals/02-token-budgeting.md"
+        old_string: 'relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]'
+        new_string: 'relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/token-economics-gap-filling|Token Economics of Gap-Filling]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]"]'
+        verification:
+          command: 'grep "token-economics-gap-filling" curriculum/01-nivel-1-fundamentals/02-token-budgeting.md'
+          expected: "1+ matches (no frontmatter)"
+
+# =============================================================================
+# VERIFICATION FINAL (após todas as tasks)
+# =============================================================================
+
+verification_final:
+  workdir: "/mnt/c/Users/pavan/long-running-agents"
+
+  checks:
+    - id: "v1"
+      description: "Apenas fases leves com run_in_background=false"
+      command: 'grep "run_in_background=false" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: |
+        3 ocorrências: Phase 4 Agent 4 comment (OBSOLETO), Phase 5, Phase 6.
+        Se houver mais de 3, alguma alteração não foi aplicada (Task 1).
+
+    - id: "v2"
+      description: "Anti-patterns novos inseridos"
+      command: 'grep -c "Usar sync para fases de leitura pesada\|Esperar input do usuario entre fases" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: "2"
+
+    - id: "v3"
+      description: "Paralelismo Phase 0+1 documentado"
+      command: 'grep -c "podem rodar em paralelo" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: "1"
+
+    - id: "v4"
+      description: "Auto-avanço documentado"
+      command: 'grep -c "NAO deve pausar entre fases" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: "1"
+
+    - id: "v5"
+      description: "Phase 6 marcada como opt-in"
+      command: 'grep -ci "opt-in" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: "Pelo menos 3 (cabeçalho, What I Do, Verification Gates)"
+
+    - id: "v6"
+      description: "Agent 4 removido (OBSOLETO)"
+      command: 'grep -c "OBSOLETO.*Agent 4" .opencode/skills/analyze-and-improve/SKILL.md'
+      expected: "1"
+
+    - id: "v7"
+      description: "PROGRESS.md limpo (sem In Progress stale)"
+      command: 'grep -c "In Progress" PROGRESS.md'
+      expected: "0 (ou apenas no header explicativo linha 1-5)"
+
+    - id: "v8"
+      description: "ice-craft-separation.md: symphony-trap-awareness presente"
+      command: 'grep -c "symphony-trap-awareness" docs/canonical/ice-craft-separation.md'
+      expected: "1+"
+
+    - id: "v9"
+      description: "04-sprint-contracts.md: ice-craft-separation no frontmatter"
+      command: 'grep -c "ice-craft-separation" curriculum/05-core-concepts/04-sprint-contracts.md'
+      expected: "1+"
+
+    - id: "v10"
+      description: "02-token-budgeting.md: token-economics-gap-filling no frontmatter"
+      command: 'grep -c "token-economics-gap-filling" curriculum/01-nivel-1-fundamentals/02-token-budgeting.md'
+      expected: "1+"
+
+    - id: "v11"
+      description: "Obsidian conventions — sem novas violações"
+      command: "bash scripts/check-obsidian-conventions.sh"
+      expected: "As 5 violações preexistentes permanecem. Zero novas violações."
+
+    - id: "v12"
+      description: "Apenas os 6 arquivos alvo foram modificados"
+      command: "git diff --stat"
+      expected: |
+        Lista contém apenas:
+        - .opencode/skills/analyze-and-improve/SKILL.md
+        - PROGRESS.md
+        - docs/canonical/ice-craft-separation.md
+        - curriculum/05-core-concepts/04-sprint-contracts.md
+        - curriculum/01-nivel-1-fundamentals/02-token-budgeting.md
+        (Possivelmente +1 se o system-of-record.md for tocado pela verificação)
+
+    - id: "v13"
+      description: "NÃO commitar"
+      command: "echo 'Commit Gate: verifique git diff --stat e pergunte ao usuario antes de commitar'"
+      expected: "Mensagem de lembrete exibida"
+
+# =============================================================================
+# ROLLBACK PLAN
+# =============================================================================
+
+rollback:
+  description: "Se algo quebrar ou o resultado não for o esperado:"
+  steps:
+    - "git checkout -- .opencode/skills/analyze-and-improve/SKILL.md PROGRESS.md docs/canonical/ice-craft-separation.md curriculum/05-core-concepts/04-sprint-contracts.md curriculum/01-nivel-1-fundamentals/02-token-budgeting.md"
+    - "Isso reverte todos os 5 arquivos ao estado do último commit."
+    - "Se arquivos foram commitados por engano: git reset HEAD~1 (apenas se não houve push)."
+    - "NUNCA usar git reset --hard sem aprovação explícita do usuário (AGENTS.md Rule 9)."
+
+# =============================================================================
+# EXECUTION ORDER SUMMARY
+# =============================================================================
+
+execution_order:
+  phase_1_sequential:
+    - task: 1
+      note: "Background-first policy (5 edits, alto risco de conflito)"
+    - task: 2
+      note: "Paralelismo Phase 0+1 (1 edit, depende da estrutura pós-task-1)"
+    - task: 3
+      note: "Auto-avanço (2 edits, referencia texto inserido na task 2)"
+    - task: 4
+      note: "Phase 6 opt-in (4 edits)"
+    - task: 5
+      note: "Fundir Agent 4 na Phase 5 (3 edits, mais complexo)"
+
+  phase_2_parallel:
+    parallel_group: "docs-fixes"
+    tasks: [6, 7, 8, 9]
+    note: "Arquivos diferentes, sem conflito entre si. Rodar em paralelo após task 5."
+
+  phase_3_verification:
+    note: "Rodar todos os 13 checks de verification_final. Se algum falhar, revisar a task correspondente."
