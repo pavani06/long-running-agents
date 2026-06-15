@@ -483,7 +483,7 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-analysis.yaml
 - [ ] Nao contem marketing, anedotas, ou filler
 - [ ] O YAML espelha o markdown com campos tipados
 - [ ] `analysis.md` tem frontmatter Obsidian completo: `title`, `type: analysis`, `tags`, `date`, `aliases` (pelo menos 2), `relates-to` (pelo menos 1 wikilink)
-- [ ] Rodar `bash scripts/check-obsidian-conventions.sh` (se existir) e corrigir violacoes ANTES de prosseguir para Phase 2. Violacoes nao corrigidas viram falso-positivos em todas as fases subsequentes.
+- [ ] Rodar `npx tsx scripts/validate-obsidian.ts` (se existir) e corrigir violacoes ANTES de prosseguir para Phase 2. Violacoes nao corrigidas viram falso-positivos em todas as fases subsequentes.
 
 ---
 
@@ -1132,7 +1132,7 @@ MUST NOT:
 - **Confundir criacao de arquivos entre Phase 4 e Phase 6.** Phase 4 PODE criar novos arquivos (exercises, skills, canonical docs). Phase 6 NUNCA cria novos arquivos — apenas modifica existentes com `edit` cirurgico.
 - **Committar ou dar push sem perguntar ao usuario.** O Commit Gate exige confirmacao explicita. O `AGENTS.md` do repo alvo tem a palavra final.
 - **Usar `edit` para atualizar PROGRESS.md.** PROGRESS.md e curto e `edit` frequentemente falha por whitespace. Use `write` (reescrita completa) para atualiza-lo.
-- **Deixar `analysis.md` sem `aliases:` no frontmatter.** O check-obsidian-conventions.sh reporta erro que polui todas as fases subsequentes. Preencha `aliases` com pelo menos 2 variantes do titulo.
+- **Deixar `analysis.md` sem `aliases:` no frontmatter.** O validate-obsidian.ts reporta erro que polui todas as fases subsequentes. Preencha `aliases` com pelo menos 2 variantes do titulo.
 - **Usar `incremental=true` sem modelos anteriores.** Se `mapa-mental-repo/` esta vazio, o modo incremental faz fallback para full rebuild automaticamente — mas isso indica que o parametro foi usado sem necessidade.
 - **Forcar incremental quando o repo mudou muito.** Se deltas > 10 itens ou modelo anterior > 30 dias, faca full rebuild. O custo do full rebuild e menor que o risco de inconsistencia por atualizacao parcial.
 - **Delegar o Passo 0a (validacao de deltas).** O scan rapido de deltas e responsabilidade do orquestrador — requer acesso ao filesystem e comandos `find`/`ls`. Nao delegue para sub-agente.

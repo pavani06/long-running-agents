@@ -136,7 +136,7 @@ Do not alter paths or contents under `.runtime/` or `artifacts/` unless the task
 ## Rule 16: Obsidian Document Conventions
 
 All documentation intended for human consumption through Obsidian MUST follow these
-conventions. The validation script `scripts/check-obsidian-conventions.sh` enforces them.
+conventions. The validation script `scripts/validate-obsidian.ts` enforces them.
 
 ### 16.1 Frontmatter is mandatory
 
@@ -211,11 +211,14 @@ The filename is the canonical identifier — renaming breaks wikilinks.
 
 ### 16.6 Validation
 
-Run `bash scripts/check-obsidian-conventions.sh` before committing documentation
+Run `npx tsx scripts/validate-obsidian.ts` before committing documentation
 changes. The script checks:
-- Files in `docs/canonical/` and `docs/analysis/` have YAML frontmatter with `type`
-- No raw `[text](path.md)` links remain in monitored directories
+- YAML frontmatter with `type:` and `tags:` in `docs/canonical/`, `docs/analysis/`, and `curriculum/`
+- No raw `[text](path.md)` links remain in `docs/canonical/`
 - No broken `[[wikilinks]]` point to nonexistent files
+- `relates-to:` field present in all monitored files (hard error at CI)
+- `aliases:` field present and non-empty in all monitored files
+- Tag taxonomy: tags in `docs/analysis/` and `curriculum/` must be recognized
 - Cross-reference tag gaps between linked documents (warning only, nao bloqueia o commit)
 
 ### 16.7 Cross-reference tag consistency
@@ -251,7 +254,7 @@ Missing `relates-to` in any monitored file fails the CI check on PR.
 When creating a new document:
 1. Identify which canonical docs, analyses, or curriculum files it connects to.
 2. Add `relates-to: ["[[path|Display]]", ...]` in the frontmatter.
-3. Run `bash scripts/check-obsidian-conventions.sh` before committing.
+3. Run `npx tsx scripts/validate-obsidian.ts` before committing.
 
 ## Rule 17: Background Task Discipline
 

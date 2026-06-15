@@ -20,4 +20,4 @@
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `bash scripts/check-obsidian-conventions.sh`
+- Testar: `npx tsx scripts/validate-obsidian.ts`

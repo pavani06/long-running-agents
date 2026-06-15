@@ -437,7 +437,7 @@ TASKS:
    b. Does the content match the phase objective (mental model, extraction, patterns, etc.)?
    c. Are Obsidian conventions followed (YAML frontmatter, wikilinks, tags)?
    d. Is the content substantive (not generic, not repetitive)?
-5. Run 'bash scripts/check-obsidian-conventions.sh' to verify conventions
+5. Run 'npx tsx scripts/validate-obsidian.ts' to verify conventions
 6. Return PASS or NEEDS_WORK with specific findings.
 
 If NEEDS_WORK, list exactly what is missing or wrong.

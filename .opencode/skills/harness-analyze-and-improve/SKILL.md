@@ -208,7 +208,7 @@ Run a self-check:
 - Do output files exist and have substantial content?
 - Does content match the phase objective?
 - Are Obsidian conventions followed (if applicable)? Check for mandatory fields: `type`, `tags`, `aliases`, `relates-to`.
-- Run `bash scripts/check-obsidian-conventions.sh` (if available)
+- Run `npx tsx scripts/validate-obsidian.ts` (if available)
 
 If PASS:
 - Set `passes` to `true` for the current phase in `harness/test-results.json`

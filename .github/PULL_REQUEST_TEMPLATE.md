@@ -86,4 +86,4 @@
 - [ ] Regression suite verificada
 - [ ] Mock parity mantida (se supabase-client/mock alterados)
 - [ ] Code-owner approval obtida
-- [ ] Obsidian conventions: `bash scripts/check-obsidian-conventions.sh` passes
+- [ ] Obsidian conventions: `npx tsx scripts/validate-obsidian.ts` passes

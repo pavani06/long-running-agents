@@ -142,7 +142,7 @@ Crie `PROGRESS.md` na raiz do repositório (ou sobrescreva se já existir):
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `bash scripts/check-obsidian-conventions.sh`
+- Testar: `npx tsx scripts/validate-obsidian.ts`
 - Evidência: outputs em docs/analysis/<date>-<slug>/
 - Commits: `git commit -m "analysis(<slug>): <fase>"`
 ```
@@ -303,7 +303,7 @@ TASKS:
    b. Does the content match the phase objective (mental model, extraction, patterns, etc.)?
    c. Are Obsidian conventions followed (YAML frontmatter, wikilinks, tags)?
    d. Is the content substantive (not generic, not repetitive)?
-5. Run 'bash scripts/check-obsidian-conventions.sh' to verify conventions
+5. Run 'npx tsx scripts/validate-obsidian.ts' to verify conventions
 6. Return PASS or NEEDS_WORK with specific findings.
 
 If NEEDS_WORK, list exactly what is missing or wrong.
@@ -625,7 +625,7 @@ Antes de declarar a análise concluída:
 - [ ] PROGRESS.md tem todas as 7 fases em Done
 - [ ] test-results.json tem `evaluated_by: "evaluator"` para cada fase
 - [ ] `docs/analysis/<date>-<slug>/` contém todos os 10+ arquivos de output
-- [ ] `bash scripts/check-obsidian-conventions.sh` passa sem erros
+- [ ] `npx tsx scripts/validate-obsidian.ts` passa sem erros
 - [ ] system-of-record.md foi atualizado (se Phase 5 rodou)
 - [ ] Todos os commits têm mensagens no formato `analysis(<slug>): phase N`
 - [ ] Nenhum arquivo temporário ficou em `/tmp/opencode/`

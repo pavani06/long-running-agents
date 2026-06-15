@@ -45,3 +45,9 @@ supabase/.combined-migration.sql
 .obsidian/workspace.json
 .obsidian/graph.json
 .obsidian/app.json
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env
