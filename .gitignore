@@ -51,3 +51,5 @@ supabase/.combined-migration.sql
 
 # Ignore Smart Environment folder
 .smart-env
+# OneDrive sync artifacts
+.tmp.driveupload/
