@@ -59,6 +59,7 @@ Canonical ledger fields:
 | `safety_buffer` | Fixed margin that keeps the call away from the hard limit | The analysis says a fixed safety buffer turns context management from reactive truncation into proactive session control (`docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis.md:125`). |
 | `remaining_budget` | Tokens left after all planned input and reservations | The analysis names remaining budget as operational room for continuation (`docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis.md:26`). |
 | `budget_percentage` | Remaining budget divided by total context window | The curriculum dashboard displays available tokens as a percentage (`curriculum/01-nivel-1-fundamentals/02-token-budgeting.md:472`). |
+| `count_mode` | Which counting method produced this ledger entry: `"tokenizer"` (exact count via @goliapkg/tiktoken-wasm) or `"heuristic"` (estimated via message count, session_info, or character-count fallback) | The budget-monitor skill records count_mode in every ledger entry so downstream consumers know the precision of the numbers. |
 | `action` | Decision for the next loop step: continue, monitor, compact, retrieve, or start a new session | The analysis maps budget phases to continue, monitor, compress, or new session (`docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis.md:43`). |
 
 ASCII flow:

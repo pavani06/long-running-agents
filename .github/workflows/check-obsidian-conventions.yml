@@ -5,14 +5,12 @@ on:
     paths:
       - '**.md'
       - '**.canvas'
-      - 'scripts/check-obsidian-conventions.sh'
       - 'scripts/validate-obsidian.ts'
       - 'package.json'
   pull_request:
     paths:
       - '**.md'
       - '**.canvas'
-      - 'scripts/check-obsidian-conventions.sh'
       - 'scripts/validate-obsidian.ts'
       - 'package.json'
   workflow_dispatch:
@@ -28,4 +26,4 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run Obsidian convention checks
-        run: npx tsx scripts/validate-obsidian.ts
+        run: npm run validate:obsidian

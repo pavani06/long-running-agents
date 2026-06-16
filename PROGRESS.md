@@ -33,6 +33,6 @@ Todas as fases concluídas. Aguardando Commit Gate.
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `bash scripts/check-obsidian-conventions.sh`
+- Testar: `npx tsx scripts/validate-obsidian.ts`
 - Evidência: outputs em docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/
 - Commits: `git commit -m "analysis(the-anatomy-of-intent-ice-in-idsd): <fase>"`

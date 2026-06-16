@@ -12,7 +12,7 @@
 
 import { scan, parseFrontmatter, extractWikilinkTargets } from "@pavani/obsidian-eval";
 import { resolve } from "node:path";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
 
@@ -77,6 +77,7 @@ const checkLabels: Record<string, string> = {
   "5": "Check 5: Raw markdown links in docs/canonical/",
   "6": "Check 6: Broken wikilinks in docs/canonical/",
   "7": "Check 7: Cross-reference tag consistency in docs/canonical/",
+  "8": "Check 8: Canvas file paths (no broken references)",
   "9": "Check 9: Frontmatter in ALL curriculum/ .md files",
   "10": "Check 10: Tag taxonomy (unrecognized tags)",
   "11": "Check 11: relates-to presence in monitored files",
@@ -277,6 +278,52 @@ for (const [path] of vault.notes) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// Check 8: Canvas file paths — check every file-type node exists on disk
+// ═══════════════════════════════════════════════════════════════════════════
+
+function walkCanvasFiles(dir: string): string[] {
+  const results: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = resolve(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...walkCanvasFiles(fullPath));
+    } else if (entry.isFile() && entry.name.endsWith(".canvas")) {
+      results.push(fullPath);
+    }
+  }
+  return results;
+}
+
+const canvasFiles = walkCanvasFiles(REPO_ROOT);
+
+for (const canvasPath of canvasFiles) {
+  const canvasName = canvasPath.slice(REPO_ROOT.length + 1);
+  let data: { nodes?: { type?: string; file?: string }[] };
+  try {
+    data = JSON.parse(readFileSync(canvasPath, "utf-8")) as typeof data;
+  } catch {
+    violations.push({
+      file: canvasName, line: 1, check: "8",
+      message: "invalid JSON in canvas file",
+    });
+    continue;
+  }
+
+  const nodes = Array.isArray(data.nodes) ? data.nodes : [];
+  for (const node of nodes) {
+    if (!node || typeof node !== "object") continue;
+    if (node.type !== "file" || !node.file) continue;
+    const resolvedPath = resolve(REPO_ROOT, node.file);
+    if (!existsSync(resolvedPath)) {
+      violations.push({
+        file: canvasName, line: 1, check: "8",
+        message: `broken path: ${node.file}`,
+      });
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // Check 9: Frontmatter in ALL curriculum/ .md files (type: + tags: required)
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -420,7 +467,7 @@ if (jsonMode) {
   console.log(JSON.stringify(results, null, 2));
 } else {
   // Human-readable, grouped by check
-  const ordered = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12];
+  const ordered = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   for (const checkNum of ordered) {
     const checkStr = String(checkNum);
     // Violations for this check

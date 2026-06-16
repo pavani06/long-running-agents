@@ -36,7 +36,9 @@ Minimum catalog fields:
 | `location` | Turn number, span position, timestamp, distance from current turn, or source path |
 | `preview` | Small relevance hint sized to guide retrieval without recreating context bloat |
 | `scope` | Session, user, task, trace, or privacy boundary |
-| `fetch` | Tool contract or storage pointer used to recover exact content |
+| `fetch` | (deprecated — use `tool` + `path`) Original tool contract or storage pointer used to recover exact content |
+| `tool` | Concrete tool to use for retrieval. Currently only `"read"` is allowed for automatic fetch |
+| `path` | Relative workspace path to the file, validated against allowlist with realpath canonicalization |
 
 The catalog itself can be injected into active context because it is compact. Exact content stays outside the prompt until the agent selects one or more IDs. Retrieval then returns the selected item, not the whole archive.
 

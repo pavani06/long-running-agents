@@ -82,6 +82,7 @@ O contrato minimo do monitor e:
 | `action` | `continue`, `monitor`, `summarize`, `compress`, `new_session`, `handoff` ou `force_terminate` |
 | `reason` | Frase curta com o threshold, runway ou sinal que disparou a fase |
 | `context_action_target` | Bloco ou politica que a acao deve executar, como older history, summary buffer ou handoff payload |
+| `count_mode` | `"tokenizer"` when exact token counting is available, `"heuristic"` when using estimation fallback |
 
 A acao retornada deve ser executavel pelo loop, nao apenas registrada. [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] ja define pontos de intervencao para `break`, `summarize`, `LM-as-judge`, `human approval gate` e `force terminate` [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]:68-75. O monitor usa esses pontos como atuadores: `orange` aciona summarizacao ou compressao no context builder; `red` aciona handoff, nova sessao, gate humano ou terminacao forcada.
 
