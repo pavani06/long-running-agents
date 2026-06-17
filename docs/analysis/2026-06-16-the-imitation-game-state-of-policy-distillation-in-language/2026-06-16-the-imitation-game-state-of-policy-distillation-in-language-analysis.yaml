@@ -1,0 +1,390 @@
+# Analise de Conhecimento Nao-Obvio: The Imitation Game — Policy Distillation
+#
+# Convencoes:
+# - type: analise estruturada derivada de fonte de blog
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim e rastreavel ao documento fonte por secao/line reference
+# - Sem marketing, anedotas, historias pessoais, repeticao
+
+meta:
+  title: "The Imitation Game — On-Policy Distillation — Extracao de Conhecimento Nao-Obvio"
+  source: "/mnt/c/Users/pavan/raw-knowledge/sources/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language.md"
+  author: "Chinmay Karkar"
+  created: 2026-06-16
+  type: analysis
+  extraction_rules:
+    keep:
+      - frameworks
+      - patterns
+      - architectures
+      - workflows
+      - implementation_details
+      - operational_lessons
+      - failures
+      - tradeoffs
+      - open_problems
+    ignore:
+      - marketing
+      - anecdotes
+      - personal_stories
+      - repetition
+      - generic_advice_without_mechanics
+
+frameworks:
+  - name: "On-Policy Distillation Loop"
+    source_section: "But what is On policy distillation?"
+    source_lines: "l29-71"
+    description: >
+      On-policy distillation acopla a distribuicao de treinamento a distribuicao de
+      inferencia fazendo o proprio estudante gerar os dados sobre os quais recebe
+      supervisao do professor. O loop: Prompt -> Student Rollout (y ~ pi_theta) ->
+      Teacher Scoring (pi_T) -> KL Loss -> Gradient Update -> Novo Student.
+    key_equations:
+      off_policy: "E_{x~D}[D_KL(pi_T(·|x) || pi_theta(·|x))]  — forward KL sobre dataset fixo"
+      on_policy: "E_{x~D, y~pi_theta(·|x)}[D_KL(pi_T(·|x,y) || pi_theta(·|x,y))]  — reverse KL sobre rollouts do estudante"
+    non_obvious_implication: >
+      O estudante sempre e treinado nos prefixos que ele mesmo gera — a distribuicao de
+      treinamento e sempre igual a de inferencia. Isso fecha o exposure bias gap e reduz
+      o erro acumulado de O(eT^2) (off-policy) para O(eT) (on-policy).
+    agentic_relevance: >
+      Agentes long-running geram suas proprias trajetorias. O gap entre dados de treinamento
+      estaticos e prefixos auto-gerados em producao e o mesmo mecanismo de exposure bias.
+      Treinar em rollouts de producao (com erros e prefixos estranhos) e mais valioso que
+      datasets curados.
+    components:
+      - name: prompt
+        role: "x — input prompt"
+      - name: student_rollout
+        role: "y ~ pi_theta(·|x) — respostas amostradas da distribuicao do estudante"
+      - name: teacher_scoring
+        role: "pi_T(·|x, y_<t) — distribuicao next-token do professor sobre os prefixos do estudante"
+      - name: kl_loss
+        role: "D(pi_T || pi_theta) — divergencia entre distribuicoes do professor e estudante"
+      - name: gradient_update
+        role: "gradient descent sobre a divergencia"
+
+  - name: "Forward KL vs Reverse KL — Dois Regimes de Aprendizado"
+    source_section: "Notation — Forward vs reverse KL"
+    source_lines: "l66-69"
+    description: >
+      A literatura de OPD e fundamentalmente uma disputa sobre qual direcao de KL usar.
+    components:
+      - name: forward_kl
+        formula: "D_KL(pi_T || pi_theta)"
+        behavior: "Mode-covering: estudante tem que cobrir toda massa do professor"
+        penalty_zone: "Tokens que o professor gosta mas o estudante nao"
+        best_when: "Professor >> estudante, distribuicao unimodal"
+        training_equivalent: "SFT — forward KL + termo de entropia fixo"
+      - name: reverse_kl
+        formula: "D_KL(pi_theta || pi_T)"
+        behavior: "Mode-seeking: estudante pode ignorar modos que nao consegue representar"
+        penalty_zone: "Tokens que o estudante poe massa mas o professor desgosta"
+        best_when: "Estudante menor que professor, preservacao de comportamento existente"
+        training_equivalent: "RL com KL regularization — reverse KL contra politca otima"
+    agentic_relevance: >
+      Forward KL = cobertura de casos de borda (agente tenta cobrir todos os cenarios).
+      Reverse KL = especializacao em caminhos confiaveis (agente foca no que executa bem).
+      O tradeoff e identico ao dilema exploracao vs exploracao em RL.
+
+  - name: "Self-Distillation como Dissociacao entre Professor e Modelo Externo"
+    source_section: "On Policy Self Distillation"
+    source_lines: "l312-320"
+    description: >
+      Professor e estudante compartilham os mesmos pesos. A unica diferenca e que
+      o professor recebe privileged information (PI) que o estudante nao ve:
+      solucao de referencia, stack trace, documento, instrucao de estilo.
+      O per-token log-ratio entre as duas visoes vira sinal de aprendizado.
+    structure: >
+      [Student View: pi_theta(·|x)] <-- mesmo modelo --> [Teacher View: pi_theta(·|x, PI)]
+    key_mechanism: >
+      Advantage: A_t = log P_T(y_t | x, PI, y_<t) - log P_S(y_t | x, y_<t)
+      O gradiente nao flui atraves do advantage para evitar explosao de variancia.
+    agentic_relevance: >
+      Qualquer fonte de informacao disponivel em design-time mas nao em runtime pode atuar
+      como PI: playbooks, diagramas de arquitetura, logs completos. Self-distillation permite
+      "assar" conhecimento nos pesos para nao carrega-lo no context window durante a execucao.
+
+  - name: "Taxonomia de PI por Confianca no Sinal"
+    source_section: "On Policy Self Distillation"
+    source_lines: "l415, l464"
+    description: >
+      Os metodos OPSD revelam um espectro de confianca no sinal de PI, com diferentes
+      estrategias de gate para filtrar supervisao nao-conflavel.
+    levels:
+      - method: "Self-Distilled Reasoner"
+        pi: "Solucao de referencia y*"
+        trust: "Alta (por construcao)"
+        gate: "Nenhum"
+      - method: "SDPO"
+        pi: "Feedback textual do ambiente"
+        trust: "Alta (verifier-grounded)"
+        gate: "Nenhum"
+      - method: "GATES"
+        pi: "Documento recuperado"
+        trust: "Media (pode estar errado)"
+        gate: "Consensus: so destila quando k rollouts do tutor concordam"
+      - method: "CRISP"
+        pi: "Instrucao 'be concise'"
+        trust: "Alta (shared latent rule)"
+        gate: "Nenhum"
+      - method: "RLSD"
+        pi: "PI + verifier binario"
+        trust: "Media"
+        gate: "Split: magnitude do self-distillation, sinal do verifier"
+    agentic_relevance: >
+      Catalogo de estrategias para validar saidas de sub-agentes. O padrao do GATES
+      (amostrar multiplas execucoes, confiar so com consenso) e diretamente aplicavel
+      a verificacao de planos gerados por agentes.
+
+patterns:
+  - name: "Teacher-Mixed Sampling como Curriculo de Autonomia"
+    source_lines: "l177-178, l187-205, l224"
+    description: >
+      Amostragem mista entre rollouts do professor (estaveis, baratos) e rollouts do
+      estudante (representativos, inicialmente ruins). GKD formaliza como dial lambda;
+      DistiLLM transforma em schedule adaptativo que migra de off-policy para on-policy.
+    mechanism: >
+      p_tilde = alpha * p_T + (1-alpha) * q_theta, com importance sampling
+      L_GKD = (1-lambda)*L_off + lambda*L_on
+    agentic_relevance: >
+      Curriculo de autonomia: comecar com supervisao densa (rollouts de operador humano
+      ou agente experiente), aumentar progressivamente a proporcao de rollouts auto-gerados.
+      O dial lambda e o grau de autonomia do agente.
+
+  - name: "Log-Ratio como Advantage sem Reward Model"
+    source_lines: "l340-348"
+    description: >
+      O per-token log-ratio entre visao com PI e visao sem PI atua como advantage,
+      substituindo "reward minus baseline" do RL tradicional. Denso (per-token),
+      nao requer reward model, usa o proprio professor como sinal.
+    mechanism: >
+      A_t = log P_T(y_t | x, PI, y_<t) - log P_S(y_t | x, y_<t)
+      L = -E[(1/|y|) * sum_t A_t * log P_S(y_t | x, y_<t)]
+    agentic_relevance: >
+      Qualquer diferenca entre duas visoes do mesmo modelo gera sinal de aprendizado.
+      Agente com logs completos (visao PI) vs agente com contexto truncado (visao sem PI):
+      o log-ratio ensina a operar com contexto reduzido — exatamente o problema de
+      context management em agentes long-running.
+
+  - name: "AOPD: Separacao Assimetrica entre Tokens Positivos e Negativos"
+    source_lines: "l255-274"
+    description: >
+      Tokens com advantage negativo tem caudas pesadas, variancia extrema, e stagnacao
+      em zero — comportamentos qualitativamente diferentes dos tokens com advantage positivo.
+      Solucao: rotear tokens positivos para OPD padrao, negativos/zero para forward KL top-K.
+    mechanism: >
+      L_AOPD = E[(1/|y|)*sum_t G_t*L_FKL_t + (1-G_t)*L_OPD_t]
+      G_t = I(P_T(y_t) <= P_S(y_t))
+      L_FKL_t = top-K forward KL sobre TopK(P_T(·|c_t), K)
+    agentic_relevance: >
+      Tratamento assimetrico de feedback: falhas tem mecanicas diferentes de sucessos
+      (caudas pesadas, dominancia de gradiente, estagnacao). Correcoes devem ser roteadas
+      para pipeline diferente do reforco positivo, nao tratadas simetricamente.
+
+  - name: "CRISP: PI como Instrucao de Estilo para Compressao Emergente"
+    source_lines: "l417-433"
+    description: >
+      PI e uma unica instrucao ("be concise"). Reverse KL automaticamente comprime
+      problemas faceis mais que dificeis — sem heuristicas de token budget.
+    mechanism: >
+      L_CRISP = E[ (1/|y|)*sum_t D_KL(pi_theta(·|x, y_<t) || pi_theta(·|x, c, y_<t)) ]
+      onde c = "be concise"
+    agentic_relevance: >
+      Compressao de contexto pode ser emergente em vez de programada. Uma visao do agente
+      com instrucao de compressao como professor, reverse KL para aprender a comprimir
+      automaticamente. O agente aprende a ser sucinto em tarefas faceis e verboso so
+      quando necessario.
+
+  - name: "RLSD: Split entre Magnitude (Self-Distillation) e Direcao (Verifier)"
+    source_lines: "l435-464"
+    description: >
+      Self-distillation puro sofre de information leakage: estudante imita forma de outputs
+      com PI mesmo sem PI. Solucao: self-distillation controla magnitude do update;
+      verifier externo decide a direcao.
+    mechanism: >
+      Delta_t = stopgrad(log P_T(y_t) - log P_S(y_t))
+      w_t = exp(sign(A) * Delta_t) = (P_T/P_S)^sign(A)
+      L_RLSD = E[(1/G)*sum_i (1/|y_i|)*sum_t min(w_t*A, clip(w_t, 1-eps, 1+eps)*A)]
+    agentic_relevance: >
+      Separacao entre intensidade de conviccao e direcao de correcao. Agente pode ter
+      alta conviccao interna sobre importancia de tokens (magnitude do self-distillation),
+      mas precisa de sinal externo (humano, teste, verifier deterministico) para saber
+      se a direcao esta correta. Formalizacao matematica de "trust but verify".
+
+operational_lessons:
+  - name: "Token-Level KL != Sequence-Level KL"
+    source_lines: "l483-495"
+    description: >
+      O token-level sampled KL e viesado em relacao ao sequence-level KL. O vies piora
+      com acoplamento temporal forte entre tokens (regime de raciocinio longo).
+    agentic_implication: >
+      Metrica proxy != metrica real. Score de passo individual nao captura qualidade
+      da trajetoria completa. A verificacao precisa ser no nivel da trajetoria, nao do passo.
+
+  - name: "Prefix Drift Silencioso"
+    source_lines: "l497-509"
+    description: >
+      Erro precoce do estudante empurra trajetoria para fora do suporte do professor.
+      Sinal do professor degrada de informativo -> ruidoso -> prejudicial sem aviso.
+    agentic_implication: >
+      Um agente que erra tool call no passo 3 gera prefixos nos passos 4-10 que nenhum
+      supervisor consegue avaliar. Supervisor devolve feedback aleatorio. Agente aprende
+      com ruido e reforca comportamento errado.
+
+  - name: "Gradient SNR Collapse em Prompts Dificeis"
+    source_lines: "l509"
+    description: >
+      Em prompts onde pass rate do estudante e ~0%, todo rollout contem erro precoce
+      e o per-prompt gradient SNR desaparece. O modelo aprende zero exatamente onde
+      mais precisa aprender.
+    agentic_implication: >
+      Loop de morte: agente falha -> recebe supervisao ruidosa -> nao melhora -> continua
+      falhando. Requer deteccao precoce e intervencao (re-ancoragem em prefixo confiavel).
+
+  - name: "Local Teachability Collapse"
+    source_lines: "l511-521"
+    description: >
+      Mesmo com professor calibrado, a margem do professor decai ao longo da trajetoria.
+      Existe ponto de mudanca onde o gradiente para de carregar informacao util.
+      A janela de supervisao otima e trajetoria-especifica, nao posicional.
+    agentic_implication: >
+      Supervisao nao e binaria (util/inutil) — e continua e decrescente. A janela de
+      supervisao deve ser adaptativa por trajetoria, nao fixa por posicao.
+
+  - name: "Rock Tokens e Alocacao de Esforco de Otimizacao"
+    source_lines: "l523-533"
+    description: >
+      ~18% dos tokens exibem loss persistentemente alta que nunca diminui, absorvendo
+      ~40% da norma do gradiente sem melhorar o modelo.
+    agentic_implication: >
+      Medir nao apenas "o que o agente aprendeu", mas "onde o agente esta gastando seu
+      orcamento de aprendizado sem retorno". Identificar e isolar comportamentos que
+      consomem ciclos de melhoria sem produzir ganho.
+
+  - name: "Gap de Calibracao PI"
+    source_lines: "l547-559"
+    description: >
+      Professor calcula confianca sob PI que o estudante nao tem em producao.
+      P(correct|x, PI) != P(correct|x). Estudante herda overconfidence, pior nos
+      problemas mais dificeis.
+    agentic_implication: >
+      Calibracao deve ser medida na distribuicao de producao, nao na de treinamento.
+      Qualquer supervisor com acesso a informacao privilegiada introduz vies de calibracao
+      que precisa ser corrigido separadamente.
+
+  - name: "Epistemic Suppression por Compressao"
+    source_lines: "l561"
+    description: >
+      Compressao de raciocinio suprime hedging phrases e uncertainty markers, produzindo
+      traces mais curtas porem mais confiantemente erradas nos passos elididos.
+    agentic_implication: >
+      Resumo de contexto que omite hedging induz o agente a tratar informacao incerta
+      como certa. Compressao de contexto deve preservar marcadores de incerteza.
+
+tradeoffs:
+  - decision: "On-policy (gerar proprio dado) vs. Off-policy (dataset fixo)"
+    gain: "Erro O(eT) linear em vez de O(eT^2) quadratico; fecha exposure bias gap"
+    cost: "Custo computacional de gerar rollouts a cada passo; rollouts inuteis no inicio"
+  - decision: "Reverse KL (mode-seeking) vs. Forward KL (mode-covering)"
+    gain: "Foco no que o estudante representa bem; evita espalhar massa em modos inalcancaveis"
+    cost: "Colapso de diversidade: Pass@k cai; perda de estrategias alternativas"
+  - decision: "Self-distillation vs. Teacher externo"
+    gain: "Nao requer modelo maior; aproveita conhecimento latente do proprio modelo"
+    cost: "Risco de information leakage: estudante imita forma de outputs com PI sem ter PI"
+  - decision: "PI como sinal unico vs. PI + verifier externo (RLSD)"
+    gain: "Simplicidade de loop unico"
+    cost: "PI pode estar errado sem deteccao; calibracao sofre; leakage risk"
+  - decision: "Compressao de raciocinio vs. Preservacao de traco completo"
+    gain: "Menor custo de inferencia; compressao adaptativa por dificuldade (CRISP)"
+    cost: "Supressao de hedging markers; traces mais curtas porem mais confiantemente erradas"
+  - decision: "Multi-teacher averaging vs. Multi-teacher routing"
+    gain: "Ensemble natural; cobertura de todos os dominios"
+    cost: "Distribuicao media mais plana que qualquer teacher; discordancia empurra para algo que nenhum teacher diria"
+  - decision: "Token-level supervision vs. Sequence-level supervision"
+    gain: "Sinal denso per-token; credit assignment fino"
+    cost: "Vies em relacao ao target sequencial real; gradiente noise em trajetorias longas"
+
+failure_patterns:
+  - pattern: "Token-Level KL como Proxy Fragil"
+    source_lines: "l483-495"
+    mechanism: >
+      Token-level sampled KL e viesado em relacao ao sequence-level KL. Vies piora com
+      acoplamento temporal forte — exatamente o regime de raciocinio longo.
+    agentic_consequence: >
+      Agente avaliado por taxa de acerto por passo otimiza proxy que diverge da metrica
+      real de sucesso da tarefa completa. Quanto mais longa a trajetoria, pior o vies.
+
+  - pattern: "Prefix Drift e Colapso de Gradient SNR"
+    source_lines: "l497-509"
+    mechanism: >
+      Erro precoce -> trajetoria fora do suporte do professor -> sinal vira ruido ->
+      gradiente SNR colapsa nos prompts mais dificeis.
+    agentic_consequence: >
+      Agente aprende zero exatamente nas tarefas onde mais precisa aprender.
+      Loop de morte: falha -> supervisao ruidosa -> nao melhora -> continua falhando.
+
+  - pattern: "Colapso de Diversidade (Pass@1 sobe, Pass@k desce)"
+    source_lines: "l535-545"
+    mechanism: >
+      Reverse KL agressivo concentra massa em uma unica estrategia por prompt.
+      Greedy melhora, sampling perde diversidade.
+    agentic_consequence: >
+      Agente otimizado para melhor resposta perde capacidade de explorar alternativas.
+      Sem fallback quando a primeira estrategia falha.
+
+  - pattern: "Information Leakage no Self-Distillation"
+    source_lines: "l435-438"
+    mechanism: >
+      Estudante aprende a imitar forma de outputs PI-conditioned (padroes lexicos,
+      estrutura, confianca) mesmo sem PI, colapsando em producao.
+    agentic_consequence: >
+      Agente treinado com logs completos aprende a "parecer que tem acesso a logs"
+      em vez de raciocinar sem eles. Em producao, output com formato de quem tem PI
+      mas conteudo incorreto.
+
+  - pattern: "Overconfidence por Gap de Calibracao PI"
+    source_lines: "l547-559"
+    mechanism: >
+      Professor condicionado em PI tem confianca > estudante sem PI. Destilar essa
+      confianca como target produz estudante overconfident.
+    agentic_consequence: >
+      Agente treinado com supervisor oraculo tem calibracao irreal. Em producao,
+      age com certeza injustificada e nao escala para humanos.
+
+  - pattern: "Epistemic Suppression por Compressao"
+    source_lines: "l561"
+    mechanism: >
+      Compressao suprime hedging e uncertainty markers. Trace mais curta porem
+      mais confiantemente errada nos passos elididos.
+    agentic_consequence: >
+      Resumo de contexto que omite hedging induz decisoes baseadas em certeza falsa.
+      Erros propagados com confianca.
+
+  - pattern: "Professor Fraco — Dense Supervision vira Dense Noise"
+    source_lines: "l563-573"
+    mechanism: >
+      Se o professor nao e significativamente melhor que o estudante, a supervisao
+      densa se torna ruido denso. O pipeline degenera silenciosamente.
+    agentic_consequence: >
+      Um supervisor que e apenas marginalmente melhor que o agente nao fornece
+      sinal de aprendizado util — e necessario um gap de capacidade significativo.
+
+synthesis:
+  unifying_principle: >
+    OPD formaliza um problema universal em sistemas agenticos: como um sistema aprende
+    com as proprias trajetorias sem depender de dados estaticos que nao refletem sua
+    distribuicao real de operacao. As respostas formam um catalogo de mecanicas
+    transferiveis: feche o exposure bias gap, separe magnitude de direcao (RLSD split),
+    gate o sinal de supervisao por confiabilidade (GATES consensus), meca o que voce
+    nao esta medindo (proxy metrics), e reconheca que supervisao tem prazo de validade
+    (local teachability collapse).
+  core_implications:
+    - "Context management como self-distillation: full context em treinamento como PI, contexto truncado em producao como no-PI view"
+    - "Error cascades como prefix drift: mesmo mecanismo — erro precoce -> tokens fora do suporte -> supervisao vira ruido"
+    - "Multi-teacher OPD como especializacao de sub-agentes: specialise then unify template para agentes deployable"
+    - "Cross-tokenizer OPD como interoperabilidade: solucoes de alinhamento entre vocabularios como mecanicas de traducao entre agentes heterogeneos"
+    - "Fronteira atual: PI + verifier (RLSD) como consenso emergente — self-distillation da densidade, verifier da direcao"
+  weak_mappings:
+    - "Analogia tokenizer mismatch -> agent action space mismatch: sugestiva mas metodos cross-tokenizer validados apenas em espacos de tokens discretos"
+    - "Rock tokens -> comportamentos agenticos nao-melhoraveis: rock tokens sao fenomeno estatistico de distribuicoes de token; acoes de agente sao semanticas e discretas"
+    - "Teacher capability gap -> supervisor minimamente competente: a matematica se aplica mas a metrica de gap em agentes e qualitativa, nao quantitativa como em OPD"
