@@ -3,8 +3,8 @@ title: "Checklist de Design de Harness para Agentes Confiáveis"
 type: curriculum-guide
 aliases: ["checklist harness", "design checklist", "harness design", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, harness, auditoria, qualidade, seguranca, guardrails, persistencia-de-estado, coordenacao-multi-agente, observabilidade]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
-last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/on-policy-rollout-feedback-loop|On-Policy Rollout Feedback Loop]]", "[[docs/canonical/asymmetric-failure-correction-router|Asymmetric Failure Correction Router]]"]
+last_updated: 2026-06-16
 ---
 # 🧪 Checklist de Design de Harness para Agentes Confiáveis
 ## Como Avaliar Contexto, Contratos, Avaliação, Persistência, Coordenação, Segurança, Evolução e Observabilidade em Sistemas Long-Running
@@ -975,6 +975,86 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | GC Day semanal | Existe um ritual semanal documentado onde feedback humano de revisao e convertido em guardrails automatizados (lint rules, skills, reviewer prompts), conforme [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]]. | Calendario fixo, owner definido, backlog de conversoes visivel. | Padroes de falha sao tratados caso a caso, sem sistematizacao. | Registre link para artefato, owner e data. |
 | Classificacao de padroes de falha | Falhas, escapes e misbehaviors sao classificados por taxonomia (context_loss, tool_misuse, rubric_gap, safety_escape, etc.) e convertidos em casos de regressao com tier assignment, conforme [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]. | Taxonomia documentada, casos vinculados a tiers de eval, deduplicacao ativa. | Cada falha gera um card avulso, sem classificacao ou prevencao sistemica. | Registre link para artefato, owner e data. |
 | Documentacao baseada em personas | Conhecimento especializado (front-end, seguranca, UX, produto) vive em documentos NFR por persona, nao apenas em AGENTS.md universal. Agentes herdam as personas relevantes automaticamente, conforme [[docs/canonical/persona-based-documentation|Persona-Based Documentation]]. | Cada especialidade tem dono, documento versionado e dispatch por tipo de tarefa. | Conhecimento de qualidade vive na cabeca dos especialistas ou em comentarios de PR. | Registre link para artefato, owner e data. |
+
+### On-Policy Rollout Feedback: Fechando o Gap de Exposure Bias
+
+Um agente treinado ou avaliado apenas com scripts curados quebra quando suas próprias trajetórias de produção contêm erros iniciais, tool outputs estranhos ou context drift que nunca apareceram nos dados estáticos. Esse é o **exposure-bias gap**: a distribuição de inferência do agente difere da distribuição de treinamento, e o gap se agrava quadraticamente — O(eT²) — em trajetórias longas, porque cada passo errado empurra o próximo para mais longe de qualquer coisa contra a qual o agente foi avaliado.
+
+**O que um bom harness faz:** transforma as próprias trajetórias de produção do agente em sinal de aprendizado. Quando o agente executa uma tarefa, captura o trace completo — decisões, tool calls, resultados, snapshots de contexto e outcome final. Um teacher, evaluator, verificador ou revisor humano pontua os próprios prefixos do agente (suas decisões reais, não as ideais). Esses prefixos pontuados alimentam targets de update: regras de prompt, skills, casos de eval, política de memória ou dados de fine-tuning. Depois, re-executa a tarefa contra o agente atualizado e mede se a performance melhorou.
+
+```
+Tarefa → Agent Rollout → Teacher/Evaluator pontua prefixos do próprio agente
+                ↑                                                |
+                |                                                v
+                +---- Re-run verification ← Update targets: <---+
+                     com agente atualizado     prompts, skills, evals, memória
+```
+
+**Por que isso importa no KODA:** o agente tem pass@1 de 94% em evals de benchmark, mas sucesso real em workflows de 10+ passos é 62%. A diferença são os prefixos "off-distribution" que nenhum eval curado antecipou. Sem o loop on-policy, o agente nunca aprende a se recuperar dos próprios erros.
+
+**Relação com padrões existentes:** O repo já tem [[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]] para captura de traces e [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] para converter falhas em casos de eval. O loop on-policy preenche o gap entre esses dois: ele pontua os prefixos do agente e os alimenta de volta como targets de update com re-run verification. Para o padrão completo, veja [[docs/canonical/on-policy-rollout-feedback-loop|On-Policy Rollout Feedback Loop]].
+
+**Modos de falha:**
+- **Cold-start collapse:** rollouts iniciais produzem traces inutilizáveis. Mitigação: comece com teacher-mixed sampling (alpha * teacher + (1-alpha) * student) e aumente a proporção do student gradualmente.
+- **Prefix drift:** um erro inicial empurra a trajetória para fora do suporte do evaluator, e todo scoring subsequente vira ruído. Mitigação: detecte prefix drift cedo e re-ancore em um prefixo known-good antes de pontuar.
+- **Proxy metric divergence:** scores por passo podem divergir do sucesso no nível da trajetória. Mitigação: pontue no nível da trajetória, não por passo.
+
+**Checklist adicional:**
+- [ ] Traces de produção são capturados com decisões, tool calls e snapshots de contexto por passo.
+- [ ] Prefixos do agente são pontuados por teacher/evaluator independente, não por autoavaliação.
+- [ ] Prefixos pontuados alimentam targets de update: prompts, skills, evals ou política de memória.
+- [ ] Re-run verification confirma que o update melhorou a performance (medida sob a visão runtime, não teacher view).
+- [ ] Filtros de privacidade e segurança protegem secrets e dados pessoais nos traces de produção.
+
+### Asymmetric Failure Correction Router: Roteamento Dual-Channel de Feedback
+
+Agentes de melhoria tradicionais tratam feedback de sucesso e falha simetricamente — roteando ambos pelo mesmo caminho com a mesma mecânica. Mas sucessos e falhas têm propriedades fundamentalmente diferentes: falhas exibem gradientes heavy-tailed, variância extrema e estagnação próxima de zero quando a taxa de erro é alta. Roteá-las pela mesma máquina de correção ou super-corrige falhas (inundando o loop com ruído) ou sub-reforça sucessos (perdendo sinal de boas trajetórias).
+
+**O que um bom harness faz:** roteia feedback de performance do agente por dois canais assimétricos com mecânicas diferentes: um **correction channel** para falhas (reparo, regressão, root-cause analysis, escalação) e um **reinforcement channel** para sucessos (exemplars, demonstrações, calibração de confiança, redução de supervisão). Mantém logs de aprendizado separados para "o que corrigir" e "o que imitar".
+
+```
+Agent Trace + Outcome
+        │
+        v
+[Success/Failure Classifier]
+        │
+   +----+----+
+   |         |
+[SUCCESS]  [FAILURE]
+   |         |
+   v         v
++--------+  +--------+
+|Reinforce|  |Correct |
+|Channel  |  |Channel |
++--------+  +--------+
+   |         |
+   v         v
+Exemplars   Root Cause
+Demos       Classification
+Confidence  Regression Case
+Calibration Repair/Retry
+Reduced     Escalation
+Supervision Human Review
+```
+
+**Classificação determinística:** verifier rejection, constraint failure, repeated retry, confidence drop → failure. Task completion, verifier approval, user confirmation → success.
+
+**Por que isso importa no KODA:** O agente processa 200 conversas por dia. 75 são sucesso, 25 falham. Sem separação assimétrica, as 25 falhas dominam a fila de revisão porque geram mais discussão. As 75 histórias de sucesso são ignoradas. Após 3 meses, o time tem uma taxonomia rica de padrões de falha e zero conhecimento sistematizado do que o agente faz bem.
+
+**Relação com padrões existentes:** O repo já tem [[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]] para classificação de severidade e [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] para classificação de causa raiz. O router assimétrico adiciona o canal de sucesso (exemplars, calibração, redução de supervisão) que está ausente, e separa as mecânicas dos dois canais. Para o padrão completo, veja [[docs/canonical/asymmetric-failure-correction-router|Asymmetric Failure Correction Router]].
+
+**Modos de falha:**
+- **False-positive classification:** comportamento normal de exploração é classificado como falha e roteado para correção pesada. Mitigação: exija pelo menos dois sinais independentes de falha antes de rotear pelo correction channel.
+- **Success blindness:** o reinforcement channel é negligenciado porque falhas são mais salientes. Mitigação: revisão programada do log "what to imitate"; flag em classes de tarefa onde o log de sucesso cresceu sem calibração ou redução de supervisão.
+- **Channel crossover:** um trace de falha corrigido depois tem sucesso na mesma tarefa, mas o registro da correção é perdido porque os canais são separados. Mitigação: link entradas de correção e reforço por classe de tarefa; track "failure → correction → re-test → success" como loop fechado.
+
+**Checklist adicional:**
+- [ ] Feedback de performance do agente é classificado deterministicamente como sucesso ou falha.
+- [ ] Canal de correção (falhas) e canal de reforço (sucessos) têm mecânicas diferentes e logs separados.
+- [ ] Falhas nunca fluem pelo reinforcement channel; sucessos nunca disparam criação de caso de regressão.
+- [ ] Failures requerem pelo menos 2 sinais independentes (verifier rejection + confidence drop, ou evaluator rejection + constraint failure) antes de roteamento.
+- [ ] Log "what to imitate" é revisado periodicamente; classes de tarefa com backlog de sucesso não examinado são flagadas.
+- [ ] Entradas de correção e reforço são linkadas por classe de tarefa para track do loop fechado.
 
 ### Evidências que um revisor deve pedir
 
