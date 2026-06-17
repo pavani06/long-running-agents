@@ -1,0 +1,87 @@
+meta:
+  title: "Artifacts Manifest: Policy Distillation Patterns"
+  date: "2026-06-16"
+  type: "artifacts-manifest"
+  source_slug: "the-imitation-game-state-of-policy-distillation-in-language"
+  target_repository: "/mnt/c/Users/pavan/long-running-agents"
+  classification: "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-classification.yaml"
+summary:
+  canonical_docs: 7
+  skills: 2
+  exercises: 2
+  skipped: 1
+canonical_docs:
+  - pattern: "On-Policy Rollout Feedback Loop"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    path: "docs/canonical/on-policy-rollout-feedback-loop.md"
+    action: "created"
+  - pattern: "Autonomy Curriculum Sampling"
+    classification: "Missing"
+    integration_value: "Medium"
+    path: "docs/canonical/autonomy-curriculum-sampling.md"
+    action: "created"
+  - pattern: "Privileged Context Self-Distillation"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    path: "docs/canonical/privileged-context-self-distillation.md"
+    action: "created"
+  - pattern: "Consensus-Gated Privileged Information"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    path: "docs/canonical/consensus-gated-privileged-information.md"
+    action: "created"
+  - pattern: "Asymmetric Failure Correction Router"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    path: "docs/canonical/asymmetric-failure-correction-router.md"
+    action: "created"
+  - pattern: "Magnitude-Direction Verifier Split"
+    classification: "Missing"
+    integration_value: "High"
+    path: "docs/canonical/magnitude-direction-verifier-split.md"
+    action: "created"
+  - pattern: "Adaptive Style Compression Teacher"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    path: "docs/canonical/adaptive-style-compression-teacher.md"
+    action: "created"
+skills:
+  - pattern: "Autonomy Curriculum Sampling"
+    classification: "Missing"
+    integration_value: "Medium"
+    path: ".opencode/skills/autonomy-curriculum-sampling/SKILL.md"
+    action: "created"
+  - pattern: "Magnitude-Direction Verifier Split"
+    classification: "Missing"
+    integration_value: "High"
+    path: ".opencode/skills/magnitude-direction-verifier-split/SKILL.md"
+    action: "created"
+exercises:
+  - pattern: "Autonomy Curriculum Sampling"
+    classification: "Missing"
+    integration_value: "Medium"
+    path: "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-autonomy-curriculum-sampling.md"
+    action: "created"
+  - pattern: "Magnitude-Direction Verifier Split"
+    classification: "Missing"
+    integration_value: "High"
+    path: "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-magnitude-direction-verifier-split.md"
+    action: "created"
+skipped:
+  - pattern: "Trajectory Failure Pattern Classifier"
+    classification: "Already Exists"
+    integration_value: "Low"
+    reason: "Covered by docs/canonical/failure-pattern-classification-loop.md; cross-reference only."
+integration_map:
+  system_of_record:
+    add_canonical_docs: 7
+    add_skills: 2
+  curriculum_index:
+    add_exercises: 2
+  master_plan:
+    update_level_3_exercise_count: true
+  phase_5_inputs:
+    - "docs/system-of-record.md"
+    - "curriculum/INDEX.md"
+    - "curriculum/MASTER_PLAN.md"
