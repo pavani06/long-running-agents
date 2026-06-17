@@ -1,0 +1,204 @@
+meta:
+  title: "Classification: Policy Distillation Patterns against long-running-agents"
+  date: "2026-06-16"
+  type: "classification"
+  source_patterns: "/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-patterns.md"
+  source_analysis: "/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-analysis.md"
+  source_mental_model: "/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-mental-model.md"
+  repository: "long-running-agents"
+  evidence_precedence:
+    - "docs/decisions/ (empty)"
+    - "docs/canonical/ (65 active)"
+    - "docs/evidence/ (empty)"
+    - "docs/analysis/"
+    - "curriculum/"
+    - "READMEs and operational summaries"
+
+classifications:
+  - name: "On-Policy Rollout Feedback Loop"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      - "docs/canonical/production-grounded-eval-sampling.md:28-52 — production trace capture and replay against baseline/candidate"
+      - "docs/canonical/production-failure-regression-flywheel.md:28-40 — failure → durable eval regression case"
+      - "docs/canonical/qa-to-backlog-feedback-loop.md:24,50 — review findings → backlog items with capture/triage"
+      - "docs/canonical/closed-loop-agent-operating-system.md:32-45 — feedback writeback OS surface"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:50-76 — eval score → production outcome correlation"
+    missing_parts:
+      - "No explicit on-policy prefix sampling: agent runs on its own trajectory, scores own prefixes, feeds back as update targets"
+      - "No loop that closes exposure-bias gap between curated examples and runtime agent trajectories"
+      - "Missing: rollout → score on own prefixes → update targets (prompts, skills, evals) → re-run verification"
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Canonical doc framing the on-policy loop as the bridge between production-grounded sampling and regression flywheel. Skill that implements the rollout→score→update→verify loop for harness parameter tuning."
+
+  - name: "Autonomy Curriculum Sampling"
+    classification: "Missing"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:29-62 — BUILD→STABILIZE→SIMPLIFY→REMOVE stages (adjacent: harness components, not agent autonomy)"
+      - "curriculum/README.md:192-247 — 4-level learning progression (adjacent: learning, not operational autonomy)"
+      - "docs/canonical/resolver-based-context-progressive-disclosure.md — progressive skill loading by trigger"
+      - "docs/canonical/domain-embedded-workflow-automation-wedge.md:48-71 — validation before broad rollout"
+    missing_parts:
+      - "No autonomy mix parameter (lambda) or explicit schedule from teacher-heavy to student-heavy"
+      - "No readiness gates that control autonomy increase per task class"
+      - "No map from observe→assist→own phases with metrics per phase"
+    searched_locations:
+      - "docs/canonical/ (all 65 patterns)"
+      - "curriculum/ (all levels, core concepts, implementation guides)"
+      - ".opencode/skills/"
+      - "Result: NOT_FOUND — no explicit autonomy curriculum sampling mechanism"
+    recommendation: "Canonical doc formalizing autonomy curriculum with lambda mix, readiness gates, and observe/assist/own phase progression. Connects to existing Harness Evolution for operational integration."
+
+  - name: "Privileged Context Self-Distillation"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/hybrid-context-stack.md:20-42 — layered context assembly (target surface for distilled rules)"
+      - "docs/canonical/external-state-persistence.md:31-57 — durable facts survive sessions (distillation target)"
+      - "docs/canonical/head-tail-context-truncation.md:26-39 — recoverable middle (privileged-like info)"
+      - "docs/canonical/summary-buffer-continuity.md — compressed history buffer (analogous output)"
+      - "docs/canonical/budget-aware-session-handoff.md:62-75 — compressed state transfer between sessions"
+      - "docs/canonical/durable-fact-selective-history.md — selective extraction of durable facts from history"
+    missing_parts:
+      - "No explicit teacher-view (privileged) vs. student-view (runtime) comparison using the same agent"
+      - "No delta extraction: where privileged context changed the decision/confidence/reasoning"
+      - "No distillation from teacher view delta to compact runtime rules with calibration under runtime view"
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Canonical doc that bridges the existing context-management stack with a self-distillation mechanic. Integrates with Hybrid Context Stack (target) and Durable Fact Selective History (source)."
+
+  - name: "Consensus-Gated Privileged Information"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/multi-model-evaluation-council.md:24-40 — model-diverse council with independent scoring, aggregation, disagreement policy"
+      - "docs/canonical/generator-evaluator.md:31-85 — generator↔evaluator rejection loop with binary verdict"
+      - "docs/canonical/shadow-review-pipeline.md:27-31 — shadow period with agreement metrics before blocking"
+      - "curriculum/05-core-concepts/08-evaluation-rubrics.md:156-164 — dual/ensemble evaluator with divergence escalation"
+      - "docs/canonical/split-brain-planning-review.md:26-41 — independent engineering and destination review before reconciliation"
+    missing_parts:
+      - "Consensus gate scoped only to evaluation outputs, not general privileged information (retrieved docs, plans, sub-agent findings)"
+      - "No trust threshold for accepting candidate PI into prompts, skills, or memory"
+      - "No audit record of dissenting outputs with accepted/rejected/deferred classifications"
+      - "No escalation path when consensus is weak on privileged information"
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Canonical doc generalizing the Multi-Model Evaluation Council pattern to all privileged information with trust thresholds, audit records, and escalation. Integrates with existing council mechanics."
+
+  - name: "Asymmetric Failure Correction Router"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/tested-degradation-ladder.md:29-65 — severity-classified failure handling with retry/fallback/escalation"
+      - "docs/canonical/failure-pattern-classification-loop.md:27-45 — root cause → guardrail surface mapping"
+      - "docs/canonical/production-failure-regression-flywheel.md:28-40 — failure → durable eval regression"
+      - "docs/canonical/qa-to-backlog-feedback-loop.md:30-44 — review findings → backlog items"
+      - "docs/canonical/generator-evaluator.md:31-85 — generator/evaluator separation (binary verdict, not asymmetric routing)"
+      - "docs/canonical/constraint-failure-decision-rule.md:25-58 — asymmetric requirement classification (constraint vs failure condition, different domain)"
+    missing_parts:
+      - "No explicit success-routing channel: exemplars, demonstrations, confidence calibration, reduced supervision"
+      - "No separate correction channel for failures distinct from reinforcement channel for successes"
+      - "No separate learning logs for 'what to imitate' vs. 'what to correct'"
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Canonical doc formalizing the asymmetric split: success → exemplars/confidence; failure → repair/regression/root-cause. Integrates with existing Degradation Ladder (failure side) and Measured Harness Evolution (success side)."
+
+  - name: "Magnitude-Direction Verifier Split"
+    classification: "Missing"
+    integration_value: "High"
+    evidence:
+      - "docs/canonical/generator-evaluator.md:31-85 — external evaluation direction via separate agent"
+      - "docs/canonical/constraint-anchored-evaluation.md:29-56 — external constraint verification"
+      - "docs/canonical/compartmented-evaluation-architecture.md:64 — builder/validator surface separation"
+      - "docs/canonical/eval-tier-stratification.md:26-50 — verification at appropriate tiers"
+    missing_parts:
+      - "No extraction of internal model confidence as magnitude signal (self-distillation delta, log-ratio, attention hotspot)"
+      - "No combination of magnitude (where agent thinks change matters) with direction (verifier says correct/incorrect)"
+      - "No weighted correction plan based on magnitude × direction"
+      - "No escalation when magnitude is high but direction is uncertain"
+      - "No audit trail separating confidence evidence from correctness evidence"
+    searched_locations:
+      - "docs/canonical/ (all eval, harness, and control-loop patterns)"
+      - "curriculum/05-core-concepts/03-generator-evaluator-pattern.md"
+      - ".opencode/skills/"
+      - "Result: NOT_FOUND — no magnitude+direction combination mechanism"
+    recommendation: "Canonical doc + skill + exercise. Bridges Generator-Evaluator (direction) with internal model confidence extraction (magnitude). Formalizes 'trust but verify' for agent improvement loops."
+
+  - name: "Adaptive Style Compression Teacher"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/head-tail-context-truncation.md:26-39 — fixed-rule head+tail context reduction"
+      - "docs/canonical/summary-buffer-continuity.md — continuous compressed summary buffer"
+      - "docs/canonical/durable-fact-selective-history.md — selective fact retention"
+      - "docs/canonical/budget-aware-session-handoff.md:27-62 — budget-driven compression trigger"
+      - "docs/canonical/hybrid-context-stack.md:20-42 — layered context assembly"
+      - "docs/canonical/semantic-topic-bucketing.md — topic-based context grouping"
+    missing_parts:
+      - "No adaptive compression strength conditioned on task difficulty (verifier uncertainty, unresolved constraints, failed attempts)"
+      - "No uncertainty marker preservation in compressed output (hedging, unknowns, open decisions)"
+      - "No downstream eval validating that compressed context preserves task success and calibration"
+      - "All current strategies use fixed rules regardless of task complexity"
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Canonical doc extending Head-Tail Context Truncation and Summary Buffer with task-difficulty-conditioned compression. Preserves uncertainty markers. Validates via downstream task evals."
+
+  - name: "Trajectory Failure Pattern Classifier"
+    classification: "Already Exists"
+    integration_value: "Low"
+    evidence:
+      - "docs/canonical/failure-pattern-classification-loop.md:23-65 — observe→classify→build→verify loop with root cause taxonomy"
+      - "docs/canonical/failure-pattern-classification-loop.md:67-75 — guardrail surface mapping table"
+      - "docs/canonical/production-failure-regression-flywheel.md:42-54 — failure taxonomy and regression conversion"
+      - "docs/canonical/tested-degradation-ladder.md:29-65 — severity classification"
+      - "docs/canonical/garbage-collection-day-meta-loop.md:101 — FPCL as GC Day execution mechanic"
+      - "curriculum/07-implementation-guides/03-harness-design-checklist.md:976 — classified failure → regression case"
+    reason_exists: "The Failure Pattern Classification Loop covers the same mechanism: classify failures by root cause mechanism → route to specific mitigation surface → write regression artifact. The taxonomy differs (policy-distillation failure classes vs. harness-engineering root causes) but the architectural role and operational pattern are equivalent. The repo's implementation is more mature with guardrail surface mapping, severity stacking, and integration with the harness evolution lifecycle."
+    searched_locations:
+      - "docs/decisions/ (empty)"
+      - "docs/canonical/ (canonical pattern catalog)"
+      - "docs/evidence/ (empty)"
+      - "docs/analysis/ (prior analyses)"
+      - "curriculum/ (core concepts, guides, exercises)"
+      - ".opencode/skills/ (operational skills)"
+      - "README.md and operational summaries"
+    recommendation: "Cross-reference only. No new canonical doc, skill, or exercise needed."
+
+result:
+  total_patterns: 8
+  already_exists: 1
+  partial_coverage: 5
+  missing: 2
+  better_implementation: 0
