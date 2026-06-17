@@ -3,8 +3,8 @@ title: "Context Management: Como Agentes Mantêm o Foco por Horas"
 type: curriculum-core-concept
 aliases: ["gerenciamento contexto", "contexto agente", "token management", "memoria persistente"]
 tags: [curriculo-conteudo, conceitos-core, context-management, gestao-de-memoria, janela-de-contexto, resumo-progressivo, persistencia-de-estado, busca-semantica, orquestracao-de-contexto, arquitetura-de-memoria, orcamento-de-tokens]
-relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
-last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/privileged-context-self-distillation|Privileged Context Self-Distillation]]", "[[docs/canonical/adaptive-style-compression-teacher|Adaptive Style Compression Teacher]]"]
+last_updated: 2026-06-16
 ---
 # 🧠 Context Management: Como Agentes Mantêm o Foco por Horas
 ## O Core Concept #1 para construir KODA como um agente que lembra, decide e vende com confiança
@@ -690,6 +690,23 @@ A diferença para sliding window é que sliding window descarta o passado fora d
 
 **Exemplo KODA:** em uma sessão de 2h com 40 turnos, o contexto ativo mantém system prompt, turnos 1-3 com a alergia, turnos 37-40 sobre frete e checkout, além do resultado mais recente. Os turnos 4-36 ficam no catálogo endereçável, recuperáveis quando um follow-up mencionar uma comparação antiga.
 
+#### Compressão Adaptativa por Dificuldade (Adaptive Style Compression)
+
+Compressão tradicional aplica a mesma política a toda tarefa. Uma consulta simples de "qual o preço da creatina?" recebe o mesmo head+tail truncation que uma disputa de pedido com erros de pagamento, divergência de estoque e restrições conflitantes. O resultado: tarefas fáceis carregam contexto demais (desperdiçando tokens) e tarefas difíceis perdem informações críticas (a compressão corta hedging, marcadores de incerteza e decisões em aberto que o agente precisava preservar).
+
+**Como funciona:** Condicione a força da compressão a sinais de dificuldade da tarefa: incerteza do verificador, número de constraints não resolvidas, tentativas falhas, profundidade de dependências e ambiguidade do outcome. Em tarefas fáceis, comprima agressivamente (sumários concisos, contexto mínimo). Em tarefas difíceis, preserve deliberação, hedging, qualificadores de confiança e decisões em aberto — mesmo que isso custe tokens extras.
+
+**Sinais de dificuldade que disparam preservação:**
+- **Verifier uncertainty:** o avaliador não conseguiu decidir com confiança acima do threshold.
+- **Unresolved constraints:** há 3+ constraints que o Filter Agent não conseguiu resolver.
+- **Failed attempt count:** o agente já tentou 2+ vezes e ainda não produziu output aprovado.
+- **Dependency depth:** a tarefa atual depende de 3+ outputs de agentes anteriores.
+- **Outcome ambiguity:** há múltiplas respostas possíveis e nenhuma é claramente superior.
+
+**Exemplo KODA:** em uma sessão de atendimento, KODA comprime o histórico para handoff. Para um "check order status" simples (3 turnos), a compressão produz "Cliente verificou pedido #KDA-8842. Status: em rota. Satisfeito." — 2 frases, 20 tokens. Para uma disputa complexa (22 turnos, 5 constraints não resolvidas, 3 tentativas falhas), a mesma política de compressão preserva o hedging do turno 8 ("não tenho certeza sobre a disponibilidade no armazém — deixe-me verificar") e a decisão em aberto do turno 14 ("o sistema de inventário retornou um status inesperado — isso pode ser um problema de dados"). O agente que recebe o handoff vê a incerteza, não uma falsa confiança.
+
+**Por que isso importa:** Compressão que suprime hedging e incerteza produz contexto mais curto mas transmite confiança falsa. O agente downstream age como se fatos incertos fossem certos. Preservar deliberação em tarefas difíceis é mais caro em tokens, mas mais barato que uma decisão errada propagada por 10 turnos. Para o padrão completo, veja [[docs/canonical/adaptive-style-compression-teacher|Adaptive Style Compression Teacher]].
+
 ### 6. Hybrid Context Orchestration
 
 **Como funciona:** Combina janela recente, resumo, estado persistente, retrieval e compaction em um pipeline único.
@@ -738,6 +755,54 @@ function assembleKodaContext(turn):
 | Vector Retrieval | Busca contexto por similaridade semântica | Alta, mas dependente de ranking | Médio a alto | Custo de embeddings e busca | Memória longa e documentação | Histórico de compras e preferências |
 | Compaction/Compression | Compacta blocos de baixo risco | Média, dependente da política | Baixo a médio | Reduz tokens | Tool results longos e transcrições | Áudios, catálogos, explicações antigas |
 | Hybrid Orchestration | Combina todas as camadas por prioridade | Muito alta | Médio | Melhor custo por venda confiável | Agentes de produção | Conversa WhatsApp 2h+ completa |
+
+### 7. Privileged Context Self-Distillation: Descobrir o Que Vale a Pena Salvar
+
+As estratégias 1-6 decidem **como** armazenar, comprimir e recuperar contexto. Mas nenhuma delas responde à pergunta anterior: **quais fatos específicos fazem diferença na decisão do agente?**
+
+**Como funciona:** Rode o mesmo agente, na mesma tarefa, sob duas visões de contexto diferentes: uma **teacher view** com informação privilegiada completa (logs completos, documentos de referência, troubleshooting guides) e uma **student view** apenas com o que estaria disponível em runtime. Compare os outputs para identificar onde a informação privilegiada mudou a decisão, a confiança ou o raciocínio. Destaque apenas os deltas úteis — os fatos que realmente alteraram a saída — em artefatos compactos de runtime: regras de prompt, skills, memory writebacks ou casos de eval.
+
+**Por que existe:** Informação privilegiada é cara. Carregar 40K tokens de documentação para tomar uma decisão de 2K tokens é desperdício. Mas adivinhar o que é relevante também é perigoso. A auto-destilação elimina a adivinhação: ela mede, decisão por decisão, onde o contexto privilegiado realmente importou.
+
+```
++------------------+     +--------------------+     +--------------------+
+| Mesma tarefa     | --> | Teacher View       | --> | Extração de delta: |
+|                  |     | agent(x, PI)       |     | onde a PI mudou    |
+|                  |     | logs, docs, refs   |     | a decisão?         |
++------------------+     +--------------------+     +--------+-----------+
+                          +--------------------+              |
+                          | Student View       |              |
+                          | agent(x)           |              |
+                          | contexto runtime   |              |
+                          +--------------------+              |
+                                                              v
++------------------+     +--------------------+     +--------------------+
+| Calibrar sob     | <-- | Destilar deltas    | <-- | Deltas úteis de PI|
+| visão runtime    |     | em artefatos       |     | (fatos que mudaram|
+| (sem PI)         |     | compactos          |     | decisões)         |
++------------------+     +--------------------+     +--------------------+
+```
+
+**Prós:**
+- ✅ Converte análise cara de design-time em conhecimento operacional reutilizável.
+- ✅ Não requer modelo teacher maior — o mesmo agente serve como teacher e student.
+- ✅ Reduz custo e latência ao substituir cargas completas de contexto por regras destiladas.
+- ✅ Produz evidência auditável de quais fatos importam e quais são ruído.
+
+**Contras:**
+- ⚠️ Informação privilegiada pode vazar como falsa confiança ou premissas inalcançáveis.
+- ⚠️ Segredos e dados privados não devem ser destilados em artefatos reutilizáveis.
+- ⚠️ A comparação dual-view adiciona custo computacional de design-time.
+- ⚠️ Artefatos destilados envelhecem e precisam de re-destilação quando as fontes mudam.
+
+**Quando KODA usa:** KODA usa self-distillation para converter a experiência da equipe de operações — que já tratou 500 disputas de pedido e sabe quais informações realmente importam — em regras de runtime que o agente carrega sem precisar dos logs completos, do catálogo inteiro ou dos playbooks de troubleshooting em toda chamada.
+
+**Exemplo concreto:**
+- Caso 01: A equipe de operações sabe que disputas de pedido precisam do status do gateway de pagamento, mas não dos 200+ turnos de conversa. Self-distillation confirma: o delta está no campo `payment_status`, não no histórico completo.
+- Caso 02: Em recomendações de produto, self-distillation revela que `lactose_free`, `budget_brl` e `delivery_city` respondem por 90% dos deltas de decisão. Os outros 15 campos do catálogo raramente alteram a recomendação. Esses três campos são promovidos a `critical_state`.
+- Caso 03: Em troubleshooting, o agente consultava um playbook de 15 páginas para cada erro. Self-distillation mostrou que apenas 3 das 47 regras do playbook realmente mudavam a ação do agente. As 3 regras foram destiladas em um skill de 20 linhas.
+
+**Relação com as outras estratégias:** Self-distillation não substitui nenhuma das estratégias 1-6 — ela as **alimenta**. Sliding Window, Summarization, State Persistence, Retrieval e Compaction respondem "como armazenar". Self-distillation responde "o que vale a pena armazenar". Para o padrão completo, veja [[docs/canonical/privileged-context-self-distillation|Privileged Context Self-Distillation]].
 
 ### Como escolher a estratégia certa
 

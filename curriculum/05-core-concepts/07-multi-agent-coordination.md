@@ -3,8 +3,8 @@ title: "Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Co
 type: curriculum-core-concept
 aliases: ["coordenacao multi-agente", "multi-agent", "orquestracao", "fan-out fan-in"]
 tags: [curriculo-conteudo, conceitos-core, multi-agent-coordination, orquestracao-de-agentes, sistemas-multiagente, trabalho-paralelo, fan-out-fan-in, sincronizacao-de-estado, resolucao-de-conflitos, rastreamento-de-decisoes, idempotencia]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems Lesson]]"]
-last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/consensus-gated-privileged-information|Consensus-Gated Privileged Information]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems Lesson]]"]
+last_updated: 2026-06-16
 ---
 # 🤝 Coordenação Multi-Agente: Quando Vários Agentes Precisam Trabalhar Como Um Sistema
 ## Como orquestrar Search Agent, Ranking Agent, Filter Agent e Recommendation Agent sem perder contexto, qualidade ou auditabilidade
@@ -488,6 +488,54 @@ No pipeline KODA, o Owner-of-No pode ser:
 **Por que isso importa:** Sem um Owner-of-No explícito, a decisão de parar é sempre acidental — acontece quando alguém corajoso diz não sob pressão, não quando o sistema foi projetado para recusar. O resultado é que tudo que parece "barato de construir" avança, e o pipeline de coordenação multi-agente se torna uma máquina de executar trabalho que nunca deveria ter começado.
 
 **Relação com os paradigmas de coordenação:** O Value Gate e o Owner-of-No se acoplam naturalmente ao Orchestrator coordination (o orquestrador aplica a classificação antes de rotear) e ao Hierarchical coordination (o Owner-of-No é um papel de supervisão que aprova ou recusa antes da delegação para líderes de domínio). Eles não substituem nenhum paradigma — adicionam uma camada de decisão de valor que precede a decisão de coordenação.
+
+---
+
+### Pattern 8: Consensus-Gated Privileged Information — "Nem Toda Informação Merece Confiança Automática"
+
+**Problema:** Um agente recebe informação privilegiada de múltiplas fontes — documentos recuperados, outputs de sub-agentes, planos gerados, respostas de referência — e trata todo sinal como igualmente confiável. Quando uma fonte está errada (documento desatualizado, output alucinado de sub-agente, plano impreciso), o erro se propaga para decisões, prompts, skills e memória sem nenhum gate. Um único documento errado no knowledge base pode envenenar todos os turnos subsequentes de uma sessão de 30 passos.
+
+**Concreto no KODA:** um agente de atendimento recupera a política de devolução do knowledge base. O documento está em cache desatualizado e indica prazo de 7 dias quando a política real é 30 dias. O agente aplica o limite de 7 dias por 4 turnos. O cliente escala. A causa raiz não é o raciocínio do agente — é que nenhum mecanismo validou a informação recuperada antes que o agente agisse sobre ela.
+
+O repo já aplica este padrão aos outputs de avaliação via [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]] — o council usa diversidade de modelos, scoring independente, thresholds de concordância e política de discordância. O que falta é generalizar esse gate para **toda informação privilegiada**, não apenas resultados de eval.
+
+**O vocabulário do consensus gate:**
+
+```
+Informação candidata (doc recuperado, output de sub-agente, plano, referência)
+        │
+        ▼
+┌──────────────────────────────┐
+│ Múltiplos passes de avaliação │
+│ (avaliadores independentes,   │
+│  modelos ou rubricas diversas) │
+└──────────────┬───────────────┘
+               │
+        ┌──────┴──────┐
+        │             │
+   [ACCEPT]      [REJECT/DEFER]
+   concordância   sem consenso
+   > threshold    ou conflito
+        │             │
+        ▼             ▼
+  Informação      Escalado para
+  confiável       revisão humana
+  entra no loop   com registro
+  do agente       de auditoria
+```
+
+**Regras do gate:**
+- **Diversidade de avaliadores:** múltiplos passes independentes com configurações diferentes (modelos, rubricas ou perspectivas). Dois avaliadores usando o mesmo modelo com prompts diferentes podem concordar no mesmo erro — diversidade real é essencial.
+- **Métrica de concordância:** match exato de resposta, concordância de score de rubrica, consenso semântico ou contagem de conflitos. A métrica depende da categoria da informação: consenso semântico para documentos, match exato para respostas de referência.
+- **Threshold configurável:** nível mínimo de concordância para aceitar a informação (ex: 2 de 3 concordam, ou score médio > 0.8). Calibre por categoria.
+- **Registro de auditoria:** documente status accepted/rejected/deferred por candidato, com rationale, outputs dissidentes e evidência de consenso.
+- **Caminho de escalação:** quando o consenso é fraco ou conflitante, roteie para revisão humana com o pacote de evidências.
+
+**Integração com o fluxo de coordenação existente:** O consensus gate se acopla naturalmente ao Orchestrator coordination: antes de passar informação privilegiada para qualquer agente do pipeline, o orchestrator aplica o gate. Se a informação é rejeitada, o orchestrator escala ou solicita fonte alternativa. Se deferida (consenso fraco), marca como "pending verification" e o agente a utiliza com qualificador de confiança explícito.
+
+**Por que isso importa:** Sem consensus gate, informação não verificada se propaga silenciosamente. Com ele, cada fato que entra no loop do agente tem um score de confiança, uma trilha de auditoria e um caminho de escalação quando a confiança é baixa. Para o padrão completo, veja [[docs/canonical/consensus-gated-privileged-information|Consensus-Gated Privileged Information]].
+
+**Relação com os paradigmas de coordenação:** O consensus gate é ortogonal ao paradigma de coordenação — ele não substitui sequential, parallel, fan-out/fan-in, orchestrator ou choreography. Ele adiciona uma camada de validação que precede a decisão de coordenação. O orchestrator pode aplicar o gate antes de rotear, ou o gate pode ser um agente especializado que o orchestrator consulta. Em sistemas choreography, o gate pode ser um evento que múltiplos agentes escutam antes de consumir informação compartilhada.
 
 ---
 

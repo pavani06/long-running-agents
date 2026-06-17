@@ -3,8 +3,8 @@ title: "Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga"
 type: curriculum-core-concept
 aliases: ["rubricas avaliacao", "sistema evals", "rubric design", "quality scoring"]
 tags: [curriculo-conteudo, conceitos-core, evaluation-rubrics, avaliacao-de-qualidade, rubricas-multidimensionais, pontuacao-ponderada, calibracao-de-rubricas, limiares-de-decisao, auditoria-de-avaliacao, observabilidade-de-qualidade, diagnostico-de-desempenho]
-relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]"]
-last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/magnitude-direction-verifier-split|Magnitude-Direction Verifier Split]]"]
+last_updated: 2026-06-16
 ---
 # 🎯 Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga
 ## Como transformar julgamento subjetivo em score confiável para agentes long-running
@@ -162,8 +162,69 @@ A rubrica não vive sozinha. Ela se conecta a outros componentes do harness para
 | **Dual/Ensemble Evaluator** | Dois ou mais Evaluators aplicam a mesma rubrica independentemente; scores são comparados; se divergem além do tolerável, escala para humano ou terceiro Evaluator | Decisões irreversíveis ou de alto valor (ex: aprovar pedido acima de R$ 1000) | Alto (2+ calls) | Muito baixo — viés de Evaluator único é mitigado |
 | **Threshold-based Routing** | Rubrica atribui score; o sistema roteia automaticamente: approve (>85), revise (70-84), reject (<70), escalate (<50 e severity=critical) | Sistemas maduros que já calibraram thresholds com dados reais de produção | Médio | Baixo se thresholds forem calibrados; alto se forem arbitrários |
 | **Continuous Calibration Loop** | Rubrica pontua em produção; outcomes reais (devoluções, reclamações, recompra) são coletados; pesos e thresholds são reajustados periodicamente | Sistemas que operam em escala e acumulam dados de feedback do cliente | Médio (infra de métricas) | Baixo — melhora contínua, mas requer disciplina de review |
+| **Magnitude-Direction Verifier Split** | O agente extrai seu próprio sinal de confiança interna (magnitude: onde acredita que a mudança importa) e o Evaluator fornece o sinal externo de correção (direction: está certo ou errado). Os dois sinais são combinados em um plano de correção ponderado. Alta magnitude + direção incerta → escalação humana | Loops de melhoria contínua onde o agente se auto-avalia (self-distillation, feedback interno) e o risco de overconfidence é real | Médio a alto (infra de extração de magnitude + verifier por update) | Médio — verifier vira bottleneck se todo update esperar direction signal; mitigar com tiered verification |
 
-**Como escolher:** Comece com Single Evaluator Gate para tasks simples. Adicione Hard-rule Pre-gate quando houver regras duras. Evolua para Generator/Evaluator Loop quando qualidade > latência. Incorpore Human-in-the-Loop quando o custo do erro for alto. Reserve Dual/Ensemble para decisões de alto valor. Threshold-based Routing e Continuous Calibration são estágios de maturidade — implemente quando já tiver dados de produção.
+**Como escolher:** Comece com Single Evaluator Gate para tasks simples. Adicione Hard-rule Pre-gate quando houver regras duras. Evolua para Generator/Evaluator Loop quando qualidade > latência. Incorpore Human-in-the-Loop quando o custo do erro for alto. Reserve Dual/Ensemble para decisões de alto valor. Threshold-based Routing e Continuous Calibration são estágios de maturidade — implemente quando já tiver dados de produção. Magnitude-Direction Verifier Split é para sistemas que já têm self-distillation ou melhoria autônoma — onde o agente está aprendendo com os próprios erros e o risco de aprender a direção errada é real.
+
+### Magnitude-Direction Split: "Trust But Verify" como Arquitetura
+
+O padrão [[docs/canonical/magnitude-direction-verifier-split|Magnitude-Direction Verifier Split]] resolve uma tensão fundamental em agentes que melhoram sozinhos. O agente tem o sinal mais denso de onde a mudança importa — ele sabe em quais decisões estava incerto, quais passos carregam alta convicção, onde o log-ratio entre outputs amostrados foi grande. Esse é o **sinal de magnitude**: quanto empurrar cada decisão.
+
+Mas o agente é a pior fonte para julgar se a direção da mudança está correta. Self-distillation pura — atualizar com base na própria confiança do modelo — produz vazamento de informação: o agente aprende a imitar a forma de outputs privilegiados sem a substância, e o overconfidence compõe.
+
+O **sinal de direction** vem de fora: um teste determinístico, uma rubrica de Evaluator, uma revisão humana, uma validação de constraint. Ele é esparso (binário ou escalar, não per-token), mas é a única fonte confiável de "está certo" vs. "está errado".
+
+A matriz de decisão combina os dois:
+
+```
+Magnitude × Direction       Direction +1      Direction -1      Direction 0
+                           (verifier: OK)    (verifier: ERRO)  (incerto)
+─────────────────────────────────────────────────────────────────────────
+Magnitude HIGH              REINFORCE          CORRECT           ESCALATE
+                            Reforçar prompts,  Corrigir regras,  Humano revisa
+                            skills, evals      adicionar caso    bundle de
+                            com sinal positivo de regressão      evidência
+
+Magnitude MEDIUM            reinforce          correct           defer
+                            Ajuste leve         Correção pontual  Adiar para
+                                                                 próxima janela
+
+Magnitude LOW               ignore             ignore            ignore
+                            Não gasta esforço  Não gasta esforço Não gasta
+                            de melhoria         de melhoria       esforço
+```
+
+**REINFORCE (HIGH, +1):** O agente estava muito convicto e o verifier confirmou que estava certo. Este é o caso mais valioso: reforçar o comportamento com atualizações de prompt, skill ou eval cases. Exemplo KODA: o agente recomendou plant-based para cliente com intolerância à lactose, com alta confiança interna, e o Evaluator deu score 95 com restriction_compliance = 5. Reforçar: adicionar este caso como exemplo positivo no prompt do Generator.
+
+**CORRECT (HIGH, -1):** O agente estava muito convicto mas estava errado. Este é o caso mais perigoso se ignorado: o agente está confiantemente errado. A correção precisa ser forte: ajustar regras de prompt, adicionar caso de regressão, re-executar verificação. Exemplo KODA: o agente recomendou whey com traços de lactose com alta confiança, mas o Evaluator deu restriction_compliance = 2. Corrigir: adicionar regra explícita no prompt e um regression case.
+
+**ESCALATE (HIGH, 0):** O agente estava muito convicto mas o verifier não consegue determinar direção (rubrica ambígua, teste não cobre o caso, Evaluators discordam). Este caso sobe para revisão humana com um bundle de evidência: o sinal de magnitude (por que o agente achou que isso importava) e a ambiguidade de direction (por que o verifier não decidiu). Exemplo KODA: recomendação para cliente com restrição "prefere evitar lactose" — não é intolerância declarada, mas é preferência. O Evaluator não consegue decidir se restriction_compliance é 3 ou 4. Escalar para humano.
+
+**Trilha de auditoria separada:** Um dos requisitos do padrão é que a evidência de magnitude (o que o agente pensou) e a evidência de direction (o que o verifier concluiu) sejam registradas separadamente. Isso permite auditar, semanas depois, se uma correção foi baseada em conviction genuína do agente ou em viés do verifier.
+
+### Magnitude-Direction no Contexto das Rubricas KODA
+
+As rubricas do KODA já fornecem o direction signal. Cada dimension da rubrica — restriction_compliance, safety, price_fit — produz um score que o Evaluator fundamenta com evidence. Esse score é o direction: +1 (approve, score alto), -1 (reject, score baixo), ou 0 (revise, zona cinza).
+
+O que falta em muitos sistemas KODA é o **magnitude signal** — o agente não expõe sua confiança interna por decisão. Implementar a extração de magnitude significa capturar, para cada recomendação ou ação do Generator:
+
+- **Self-distillation delta:** O quanto a distribuição de probabilidade do modelo mudou entre a primeira amostra e a amostra final. Um delta alto indica que o modelo "realmente pensou" sobre essa decisão.
+- **Disagreement intensity:** Se o Generator produz 3 candidatos e eles divergem muito (um recomenda whey, outro plant-based, outro creatina), a magnitude é alta — o agente está incerto. Se os 3 convergem, a magnitude é baixa — o agente está confiante mas talvez overconfident.
+- **Log-ratio:** Em modelos que expõem log-probabilidades, a razão entre a probabilidade do token escolhido e a do segundo colocado.
+
+Com magnitude + direction, o pipeline de melhoria do KODA ganha priorização: em vez de revisar todas as discordâncias entre Generator e Evaluator com o mesmo peso, o time foca nas de alta magnitude — aquelas em que o agente realmente acreditava no que fez, para o bem ou para o mal.
+
+### Checklist: Magnitude-Direction Gate
+
+Antes de tratar um update como acionável, verifique:
+
+- [ ] O sinal de magnitude foi extraído e registrado (self-distillation delta, disagreement intensity ou log-ratio)
+- [ ] O sinal de direction veio de um verifier externo (rubrica, teste determinístico, revisão humana) — nunca do próprio agente
+- [ ] A combinação magnitude × direction foi classificada na matriz (REINFORCE, CORRECT, ESCALATE, defer, ignore)
+- [ ] Casos ESCALATE (HIGH, 0) têm bundle de evidência completo: magnitude evidence + direction ambiguity
+- [ ] Após CORRECT, o verifier foi re-executado para confirmar que a correção surtiu efeito na direção pretendida
+- [ ] A trilha de auditoria separa confidence evidence de correctness evidence
+- [ ] Nenhum update foi aplicado com direction signal vindo exclusivamente do próprio agente (self-distillation sem verifier externo)
 
 ---
 

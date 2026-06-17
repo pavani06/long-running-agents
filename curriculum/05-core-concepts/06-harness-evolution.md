@@ -3,8 +3,8 @@ title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
 type: curriculum-core-concept
 aliases: ["evolucao harness", "harness lifecycle", "maturidade harness", "simplificacao arquitetural"]
 tags: [curriculo-conteudo, conceitos-core, harness-evolution, ciclo-de-vida-do-harness, manutenibilidade, reducao-de-complexidade, divida-tecnica, otimizacao-de-custo, simplificacao-arquitetural, evolucao-continua, governanca-tecnica]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
-last_updated: 2026-06-10
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
+last_updated: 2026-06-16
 ---
 # 🧬 Harness Evolution: Construir, Medir, Simplificar, Remover
 ## O Ciclo de Vida dos Componentes de Scaffolding em Agentes de IA que Rodam por Horas
@@ -782,6 +782,128 @@ O Sunset Gate se encaixa como uma camada complementar ao ciclo BUILD-STABILIZE-S
 - [ ] Artefatos promovidos a componentes oficiais entram no ciclo BUILD → STABILIZE com owner e contrato.
 - [ ] Artefatos aposentados são arquivados com rationale (por que existiu, por que saiu, o que aprendemos).
 - [ ] O princípio "One In, One Out" se aplica também a artefatos: cada novo artefato criado deve indicar qual artefato existente será aposentado, salvo exceções de segurança.
+
+---
+
+## 🎛️ Autonomy Curriculum: Quando o Próprio Agente Evolui
+
+Até agora falamos de evoluir componentes do harness — as peças de engenharia que protegem o modelo. Mas existe uma segunda progressão que o time KODA precisou enfrentar: **a evolução da autonomia do próprio agente.**
+
+O harness evolui do BUILD ao REMOVE. O agente evolui de observar humanos trabalharem até operar de forma independente. As duas progressões são paralelas e complementares.
+
+### O Salto Binário Que Machuca
+
+A maioria dos times de agentes opera com um modelo binário de autonomia: ou um humano revisa toda ação do agente (supervisão total, cara e lenta) ou o agente opera sem supervisão (autonomia total, arriscada). Não existe meio-termo.
+
+O Fernando viveu isso no KODA. O agente atendia 150 consultas de produto por dia. Para a família de tarefas "consultar status de pedido", o agente tinha 98% de acurácia — não precisava de supervisão humana. Para "modificar pedido multi-item com restrições conflitantes", a acurácia era de 34%. Mas não havia mecanismo para dar autonomia na primeira família e manter supervisão humana na segunda. O resultado: supervisão total em tudo (desperdiçando tempo humano onde o agente já era bom) ou autonomia total em tudo (arriscando pedidos errados onde o agente ainda era fraco).
+
+O conceito vem do padrão [[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]], inspirado em Teacher-Mixed Sampling da literatura de On-Policy Distillation. A mesma ideia que funciona para treinar modelos — aumentar gradualmente a proporção de dados gerados pelo próprio estudante conforme ele melhora — funciona para autonomia operacional de agentes.
+
+### O Lambda de Autonomia: Um Dial, Não um Switch
+
+A solução é um parâmetro explícito de autonomia por classe de tarefa. Um único dial que substitui o salto binário:
+
+```
+Autonomy Lambda: 0.0 (supervisão total)  ──────────────►  1.0 (autonomia total)
+
+Fase:           OBSERVE                  ASSIST                   OWN
+Lambda:         [0.0 ─ 0.3]            [0.3 ─ 0.7]            [0.7 ─ 1.0]
+Mecânica:       Humano faz,             Agente propõe,          Agente executa,
+                agente observa           humano aprova           humano monitora exceções
+```
+
+**Observe (lambda 0.0–0.3):** O agente assiste o trabalho humano e registra padrões. Ele não age — só constrói seu modelo mental do que é correto para aquela classe de tarefa. Nesta fase, o agente coleta dados de demonstração: o que o humano fez, por que fez, quais constraints foram consideradas. O output é um dataset de exemplos anotados, não uma ação.
+
+**Assist (lambda 0.3–0.7):** O agente propõe ações e o humano aprova ou rejeita. A proposta do agente inclui o raciocínio por trás da decisão (trace). O humano confirma a correção (direction signal positivo) ou rejeita com justificativa (direction signal negativo). Cada interação Assist produz um par decisão + veredito que alimenta o pipeline de melhoria do agente. No KODA, uma recomendação de produto no Assist passa pelo Evaluator primeiro, depois pelo revisor humano — duas camadas de direction signal.
+
+**Own (lambda 0.7–1.0):** O agente executa ações de forma independente. O humano só é acionado quando uma exceção dispara — scores abaixo do threshold na rubrica, restrições violadas, ou incerteza alta do próprio agente. O agente em Own ainda gera traces completos; a diferença é que o humano monitora por exceção, não por aprovação.
+
+### Readiness Gates: O Que Precisa Ser Verdade Para Avançar o Lambda
+
+Avançar de Observe para Assist, e de Assist para Own, exige gates com métricas objetivas — não intuição. Cada classe de tarefa tem seus próprios gates:
+
+| Gate | O que mede | Threshold para avançar |
+|---|---|---|
+| **Task success rate** | Percentual de execuções corretas (sem intervenção humana corretiva) | > 90% por 14 dias consecutivos |
+| **Repair rate** | Quando o agente erra, ele se auto-corrige? | > 70% das falhas são auto-corrigidas sem escalação |
+| **Unsafe-action rate** | Ações que violam constraints de segurança (alergias, orçamento, consentimento) | Zero nos últimos 30 dias |
+| **Evaluator confidence** | O Evaluator atribui score alto (> 85) e o score correlaciona com outcomes reais | Correlação score-outcome > 0.8 por 30 dias |
+
+Exemplo KODA para a classe "consultar status de pedido":
+- Lambda atual: 0.85 (Own)
+- Success rate: 98% nos últimos 90 dias
+- Repair rate: 92%
+- Unsafe-action rate: 0 em 180 dias
+- Evaluator confidence: correlação 0.91
+- **Decisão:** Manter em Own. Nenhuma ação necessária.
+
+Exemplo KODA para a classe "modificar pedido multi-item":
+- Lambda atual: 0.35 (Assist inicial)
+- Success rate: 67% nos últimos 90 dias
+- Repair rate: 28%
+- Unsafe-action rate: 1 caso nos últimos 30 dias (promoção aplicada incorretamente)
+- Evaluator confidence: correlação 0.45
+- **Decisão:** NÃO avançar. Manter em Assist. Investigar a falha de promoção.
+
+### Regressão: Quando o Lambda Precisa Voltar
+
+Autonomia não é monotônica. Se as métricas degradam após um avanço, o lambda precisa recuar. A regra de regressão é simples e automática:
+
+> Se success rate cair abaixo do threshold por 3 janelas consecutivas de 7 dias, reduzir o lambda para o valor estável anterior e congelar avanços por 30 dias.
+
+Fernando implementou isso como uma proteção automática no dashboard do KODA — o lambda não sobe sem aprovação humana, mas desce automaticamente se as métricas piorarem. É um mecanismo de segurança assimétrico: promover exige evidência, degradar é automático.
+
+### Política de Schedule: Quando Revisar o Lambda
+
+- **Revisão programada:** Trimestral, alinhada com a revisão de harness (mesmo calendário, mesma reunião).
+- **Revisão extraordinária:** Quando um novo modelo é lançado e o changelog indica melhoria relevante para uma classe de tarefa.
+- **Janela de estabilidade:** Só avance o lambda após no mínimo 14 dias de métricas estáveis com tráfego consistente.
+
+### Conexão com Harness Evolution
+
+As duas progressões se complementam:
+
+| Dimensão | Harness Components | Agent Autonomy |
+|---|---|---|
+| **O que evolui** | Peças de engenharia (Context Loader, Evaluator, Budget Guard) | Quem decide e age (humano vs. agente) |
+| **Progressão** | BUILD → STABILIZE → SIMPLIFY → REMOVE | Observe → Assist → Own |
+| **Gatilho de avanço** | Shadow test mostra que componente não é mais necessário | Readiness gates mostram que agente é confiável |
+| **Gatilho de regressão** | Incidente prova que componente ainda é necessário | Métricas caem abaixo do threshold |
+| **Frequência de revisão** | Trimestral | Trimestral (mesmo calendário) |
+| **Quem decide** | Time de engenharia com métricas | Time de operações + engenharia com readiness gates |
+
+**O princípio comum:** Nada avança sem evidência. Nada fica para sempre sem revisão. Ambos usam métricas objetivas, shadow testing e janelas de estabilidade.
+
+### Checklist: Autonomy Curriculum Gate
+
+Use este checklist antes de avançar o lambda de qualquer classe de tarefa:
+
+- [ ] Task success rate > 90% por pelo menos 14 dias consecutivos com tráfego real
+- [ ] Repair rate > 70% (agente corrige a maioria dos próprios erros sem escalação)
+- [ ] Unsafe-action rate = zero nos últimos 30 dias
+- [ ] Evaluator confidence: correlação score-outcome > 0.8
+- [ ] Shadow mode: agente rodou em paralelo na fase atual por 14 dias e os outcomes foram comparados
+- [ ] Métricas são por classe de tarefa, não agregadas (o agente pode estar pronto para Own em "consultar pedido" e ainda em Observe para "modificar pedido")
+- [ ] Rollback definido: qual o lambda anterior e como reverter em < 1 hora se necessário
+- [ ] Time de operações foi notificado com 48h de antecedência
+
+### Exemplo KODA: Quatro Classes de Tarefa, Quatro Lambdas Diferentes
+
+| Classe de Tarefa | Lambda | Fase | Success Rate | Próxima Revisão |
+|---|---|---|---|---|
+| Consultar status de pedido | 0.85 | Own | 98% | Out/2026 |
+| Recomendar produto (sem restrições) | 0.65 | Assist | 91% | Out/2026 (candidato a Own) |
+| Recomendar produto (com alergias) | 0.40 | Assist | 72% | Out/2026 |
+| Modificar pedido multi-item | 0.35 | Assist | 67% | Out/2026 |
+| Processar reembolso | 0.10 | Observe | N/A (sem autonomia) | Out/2026 |
+
+Esta tabela substitui a pergunta binária "o agente está pronto?" pela pergunta granular "para quais tarefas o agente está pronto, e com qual nível de supervisão?".
+
+**O que muda na prática:**
+- Antes: 150 consultas/dia, 100% com supervisão humana = 150 revisões humanas.
+- Depois: 60 consultas de status (Own, zero supervisão) + 60 recomendações com alergias (Assist, aprovação humana) + 20 recomendações sem restrições (Assist, aprovação humana) + 10 reembolsos (Observe, humano faz tudo). Total de revisões humanas: 80 em vez de 150. Redução de 47% no esforço de supervisão sem aumento de risco.
+
+O Fernando não removeu o humano do loop. Ele colocou o humano exatamente onde o agente ainda precisa dele — e em nenhum outro lugar.
 
 ---
 
