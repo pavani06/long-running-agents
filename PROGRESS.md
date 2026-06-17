@@ -6,33 +6,29 @@
 
 ## Done
 
-- [x] phase-0: Repository Mental Model — 30 patterns mapeados, 28 termos, 14 gaps [evaluator: PASS]
-- [x] phase-1: Knowledge Extraction — 4 frameworks, 6 patterns, 6 lessons, 7 tradeoffs, 7 failure patterns [evaluator: PASS]
-- [x] phase-2: Pattern Extraction — 9 padrões aplicáveis a sistemas agentic [evaluator: PASS]
-- [x] phase-3: Classification — 2 Already Exists, 3 Partial Coverage, 4 Missing [evaluator: PASS]
-- [x] phase-4: Improvement Generation — 7 canonical docs, 4 skills, 4 exercises, 1 integration roadmap [evaluator: PASS]
-- [x] phase-5: Integration — system-of-record.md (+7 canonical, +4 skills), curriculum/INDEX.md (+4 exercises), MASTER_PLAN.md (5→7 N2, 9→11 N3) [evaluator: PASS]
-- [x] phase-6: Curriculum Deep Integration — 4 curriculum files modificados (+332 inserções cirúrgicas) para 4 Missing + 1 Partial Coverage High [evaluator: PASS]
+- [x] phase-0: Repository Mental Model — mental-model.md + mental-model.yaml gerados e validados [evaluator: PASS]
+- [x] phase-1: Knowledge Extraction — analysis.md + analysis.yaml gerados e validados [evaluator: PASS]
+- [x] phase-2: Pattern Extraction — 8 padrões extraídos com campos obrigatórios e YAML espelhado [evaluator: PASS]
+- [x] phase-3: Classification — 1 Already Exists, 5 Partial Coverage, 2 Missing [evaluator: PASS]
+- [x] phase-4: Improvement Generation — 7 canonical docs, 2 skills, 2 exercises, artifacts manifest [evaluator: PASS]
+- [x] phase-5: Integration — SOR + curriculum INDEX/MASTER_PLAN/README atualizados [evaluator: PASS]
+- [x] phase-6: Curriculum Deep Integration — 5 arquivos curriculares existentes integrados, sem novos arquivos [evaluator: PASS]
 
 ## Done ✓
 
 Todas as fases concluídas. Aguardando Commit Gate.
-- [ ] phase-3: Classification
-- [ ] phase-4: Improvement Generation
-- [ ] phase-5: Integration
-- [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 
-- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-11-the-anatomy-of-intent-(ice-in-idsd).-built-from-where-spec-d.md
-- **date**: 2026-06-11
-- **source-slug**: the-anatomy-of-intent-ice-in-idsd
-- **output_dir**: docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/
+- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language.md
+- **date**: 2026-06-16
+- **source-slug**: the-imitation-game-state-of-policy-distillation-in-language
+- **output_dir**: docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/
 
 ## Notes
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `npx tsx scripts/validate-obsidian.ts`
-- Evidência: outputs em docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/
-- Commits: `git commit -m "analysis(the-anatomy-of-intent-ice-in-idsd): <fase>"`
+- Testar: `npm run validate:obsidian` (baseline atual: 3 erros preexistentes em docs/analysis/2026-06-14-quarto-book-publishing/PROGRESS.md)
+- Evidência: outputs em docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/
+- Commits: `git commit -m "analysis(the-imitation-game-state-of-policy-distillation-in-language): full pipeline"`

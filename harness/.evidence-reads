@@ -1,2 +1,5 @@
-docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns.md
-docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns.yaml
+curriculum/05-core-concepts/01-context-management.md
+curriculum/05-core-concepts/06-harness-evolution.md
+curriculum/05-core-concepts/07-multi-agent-coordination.md
+curriculum/05-core-concepts/08-evaluation-rubrics.md
+curriculum/07-implementation-guides/03-harness-design-checklist.md
