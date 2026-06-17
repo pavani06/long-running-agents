@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
-last_updated: 2026-06-14
+last_updated: 2026-06-16
 relates-to: []
 sources: []
 ---
@@ -55,6 +55,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/goal-atomicity-split/SKILL|.opencode/skills/goal-atomicity-split/SKILL.md]] | Decomposição de goals complexos em unidades atômicas |
 | [[.opencode/skills/constraint-budget-gate/SKILL|.opencode/skills/constraint-budget-gate/SKILL.md]] | Gate de orçamento explícito de constraints por tarefa |
 | [[.opencode/skills/constraint-failure-decision-rule/SKILL|.opencode/skills/constraint-failure-decision-rule/SKILL.md]] | Regra de decisão para falha de constraint com três caminhos |
+| [[.opencode/skills/autonomy-curriculum-sampling/SKILL|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] | Skill de implementação: amostragem curricular progressiva (observe→assist→own) para autonomia do modelo |
+| [[.opencode/skills/magnitude-direction-verifier-split/SKILL|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] | Skill de implementação: separação magnitude/direção em verificadores de output |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -223,6 +225,13 @@ Tópicos candidatos a ADR:
 | `quarto-publishing-architecture.md` | Arquitetura de publicação Quarto: contrato config-driven, source bridge notebook/Markdown, multi-format fan-out |
 | `quarto-authoring-workflow.md` | Fluxo de autoria Quarto: live preview loop, dependency-gated build, single-command deploy, push-to-publish CI/CD |
 | `quarto-content-structure.md` | Estrutura de conteúdo Quarto: parts-based chapter organization, landing page como orientação do leitor |
+| `on-policy-rollout-feedback-loop.md` | Loop de feedback on-policy com rollout e correção contínua professor→estudante |
+| `autonomy-curriculum-sampling.md` | Amostragem curricular progressiva (observe→assist→own) para autonomia do modelo estudante |
+| `privileged-context-self-distillation.md` | Self-distillation com contexto privilegiado para transferência de raciocínio professor→estudante |
+| `consensus-gated-privileged-information.md` | Gate de consenso entre múltiplos avaliadores para filtrar informações privilegiadas |
+| `asymmetric-failure-correction-router.md` | Roteador assimétrico que separa correção de falhas de reforço de sucessos |
+| `magnitude-direction-verifier-split.md` | Separação magnitude/direção em verificadores para avaliação mais precisa e grounded |
+| `adaptive-style-compression-teacher.md` | Professor adaptativo de compressão de estilo que ajusta dificuldade por exemplo para preservar qualidade |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -319,4 +328,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-14*
+*Última atualização: 2026-06-16*

@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["plano mestre", "visão completa", "master plan"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/EXECUTION_PLAN|Execution Plan]]"]
-last_updated: 2026-06-14
+last_updated: 2026-06-16
 ---
 # 📚 PLANO MESTRE: Curso de Long-Running Agents para KODA
 
@@ -95,12 +95,14 @@ koda-long-running-agents/
 │   │   ├── exercise-02.md
 │   │   ├── exercise-03.md
 │   │   ├── exercise-04-llm-as-fuzzy-compiler.md
-  │   │   ├── exercise-05-persona-based-documentation.md
-  │   │   ├── exercise-constraint-budget-gate.md
-  │   │   ├── exercise-constraint-failure-decision-rule.md
-  │   │   └── solutions/
-  │   └── koda-applications/
-  │       └── nivel-3-koda.md
+│   │   ├── exercise-05-persona-based-documentation.md
+│   │   ├── exercise-constraint-budget-gate.md
+│   │   ├── exercise-constraint-failure-decision-rule.md
+│   │   ├── exercise-autonomy-curriculum-sampling.md
+│   │   ├── exercise-magnitude-direction-verifier-split.md
+│   │   └── solutions/
+│   └── koda-applications/
+│       └── nivel-3-koda.md
 │
 ├── 03-nivel-arquiteto/
 │   └── exercises/
@@ -243,7 +245,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 11 exercícios do Nível 3
+- [ ] Completei os 13 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

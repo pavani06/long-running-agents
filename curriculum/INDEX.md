@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["índice currículo", "navegação", "mapa currículo"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/QUICK_START|Quick Start]]", "[[curriculum/GLOSSARY|Glossary]]"]
-last_updated: 2026-06-14
+last_updated: 2026-06-16
 ---
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
@@ -123,6 +123,8 @@ last_updated: 2026-06-14
 - `03-nivel-3-operational/exercises/exercise-contextual-severity-calibration.md` (Contextual Severity Calibration)
 - `03-nivel-3-advanced-architecture/exercises/exercise-constraint-budget-gate.md` (Constraint Budget Gate)
 - `03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule.md` (Constraint Failure Decision Rule)
+- `03-nivel-3-advanced-architecture/exercises/exercise-autonomy-curriculum-sampling.md` (Autonomy Curriculum Sampling)
+- `03-nivel-3-advanced-architecture/exercises/exercise-magnitude-direction-verifier-split.md` (Magnitude-Direction Verifier Split)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`

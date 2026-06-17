@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["visão geral", "sobre currículo", "overview"]
 tags: [curriculo-conteudo]
 relates-to: ["[[README|Repository README]]", "[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/QUICK_START|Quick Start]]"]
-last_updated: 2026-06-14
+last_updated: 2026-06-16
 ---
 # 📚 Curso: Building Long-Running Agents para KODA
 
@@ -111,6 +111,8 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-05-persona-based-documentation.md
 │   │   │   ├── exercise-constraint-budget-gate.md
 │   │   │   ├── exercise-constraint-failure-decision-rule.md
+│   │   │   ├── exercise-autonomy-curriculum-sampling.md
+│   │   │   ├── exercise-magnitude-direction-verifier-split.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md
