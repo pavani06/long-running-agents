@@ -1,7 +1,29 @@
+---
+title: "Pipeline Progress: quarto-book-publishing"
+type: analysis
+tags:
+  - stack-tooling
+  - governanca
+  - knowledge-management
+date: 2026-06-14
+aliases:
+  - quarto book publishing progress
+  - pipeline progress quarto
+relates-to:
+  - "[[docs/canonical/quarto-publishing-architecture|Quarto Publishing Architecture]]"
+  - "[[docs/canonical/quarto-authoring-workflow|Quarto Authoring Workflow]]"
+  - "[[docs/canonical/quarto-content-structure|Quarto Content Structure]]"
+  - "[[docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-mental-model|Quarto Mental Model]]"
+  - "[[docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification|Quarto Classification]]"
+  - "[[docs/system-of-record|System of Record]]"
+sources:
+  - "[[vault:raw-knowledge/sources/2026-06-14-write-a-book-using-jupyter-in-10-minutes|Write a Book Using Jupyter in 10 Minutes]]"
+---
+
 # Pipeline Progress: quarto-book-publishing
 
-**Source:** `/mnt/c/Users/pavan/raw-knowledge/sources/2026-06-14-write-a-book-using-jupyter-in-10-minutes.md`
-**Target:** `/mnt/c/Users/pavan/long-running-agents`
+**Source:** `raw-knowledge/sources/2026-06-14-write-a-book-using-jupyter-in-10-minutes.md`
+**Target:** `long-running-agents`
 **Date:** 2026-06-14
 **Mode:** full rebuild (47 deltas since 2026-06-12 model > 10 threshold)
 

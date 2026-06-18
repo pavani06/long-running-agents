@@ -1,3 +1,20 @@
+---
+title: "Padrão Sprint Contracts: Acordos Negociados Entre Agentes"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+  - spec-driven-development
+aliases:
+  - sprint contracts
+  - contratos de sprint
+  - acordos entre agentes
+relates-to:
+  - "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]"
+  - "[[curriculum/05-core-concepts/04-sprint-contracts|Sprint Contracts]]"
+---
+
 # 📋 Padrão Sprint Contracts: Acordos Negociados Entre Agentes
 ## Como Definir Expectativas Claras Antes de Começar
 

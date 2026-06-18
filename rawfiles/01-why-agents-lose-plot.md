@@ -1,3 +1,20 @@
+---
+title: "Por Que Agentes Perdem o Foco?"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+  - context-engineering
+aliases:
+  - why agents lose the plot
+  - perda de foco agentes
+  - context window overflow
+relates-to:
+  - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+  - "[[curriculum/05-core-concepts/01-context-management|Context Management]]"
+---
+
 # 🎯 Por Que Agentes Perdem o Foco?
 ## Os 3 Problemas Fundamentais de Long-Running Agents
 

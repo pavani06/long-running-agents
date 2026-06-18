@@ -1,3 +1,21 @@
+---
+title: "Token Budgeting: O Orçamento Invisível dos Agentes"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+  - context-engineering
+aliases:
+  - token budgeting
+  - orcamento de tokens
+  - token economics
+relates-to:
+  - "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]"
+  - "[[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]]"
+  - "[[curriculum/05-core-concepts/01-context-management|Context Management]]"
+---
+
 # 💰 Token Budgeting: O Orçamento Invisível dos Agentes
 ## Como Gerenciar Tokens como um CFO Gerencia Dinheiro
 

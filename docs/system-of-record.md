@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
-last_updated: 2026-06-16
+last_updated: 2026-06-17
 relates-to: []
 sources: []
 ---
@@ -26,7 +26,7 @@ Mapa das fontes canônicas do `long-running-agents`. Quando duas fontes divergir
 
 O sistema de agentes é definido em `.opencode/` e segue o modelo HoP (Handoff Protocol): cada agente tem um escopo fechado, um dono, e gates de validação.
 
-Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-development`, `context-engineering`, `evals`, `error-handling`, `harness-engineering`, `12-factor-agents`, `production`, `code-review`, `shadow-review`.
+Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-development`, `context-engineering`, `evals`, `error-handling`, `harness-engineering`, `12-factor-agents`, `production`, `code-review`, `shadow-review`, `knowledge-management`.
 
 | Fonte | Cobre |
 |---|---|
@@ -141,7 +141,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 65 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 85 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -232,6 +232,7 @@ Tópicos candidatos a ADR:
 | `asymmetric-failure-correction-router.md` | Roteador assimétrico que separa correção de falhas de reforço de sucessos |
 | `magnitude-direction-verifier-split.md` | Separação magnitude/direção em verificadores para avaliação mais precisa e grounded |
 | `adaptive-style-compression-teacher.md` | Professor adaptativo de compressão de estilo que ajusta dificuldade por exemplo para preservar qualidade |
+| `cross-context-knowledge-siloing.md` | Conhecimento criado em um contexto de agente (namespace de repo, corpo de handoff) que se torna invisível para agentes em outro contexto — dois sub-padrões: isolamento por namespace e soterramento em corpo não indexado |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -328,4 +329,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-16*
+*Última atualização: 2026-06-17*

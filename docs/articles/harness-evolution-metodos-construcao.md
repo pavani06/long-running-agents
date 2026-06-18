@@ -1,8 +1,30 @@
 ---
+title: "A Arquitetura Invisível: Como Harnesses Evoluem e o Que Torna um Bom Harness de Agentes"
 type: article
 date: 2026-06-10
-tags: ["agentes-orquestracao", "harness", "context-engineering", "arquitetura", "governanca", "production", "application-owned-agent-control-plane", "plano-de-controle-do-agente", "structured-generation-constraint-validation-circuit", "circuito-geracao-estruturada-validacao-constraints", "versioned-durable-agent-state", "estado-persistente-versionado", "tested-degradation-ladder", "escada-de-degradacao-testada", "invariant-compensation-split", "separacao-invariante-compensacao", "measured-harness-evolution-lifecycle", "ciclo-vida-evolucao-harness-medido"]
-aliases: ["métodos construção", "harness métodos", "construção harness", "evolução harness", "BUILD STABILIZE SIMPLIFY REMOVE", "ciclo de vida harness", "arquitetura invisível", "simplificação harness"]
+tags:
+  - agentes-orquestracao
+  - harness-engineering
+  - context-engineering
+  - arquitetura
+  - governanca
+  - production
+aliases:
+  - métodos construção
+  - harness métodos
+  - construção harness
+  - evolução harness
+  - BUILD STABILIZE SIMPLIFY REMOVE
+  - ciclo de vida harness
+  - arquitetura invisível
+  - simplificação harness
+relates-to:
+  - "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]"
+  - "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]"
+  - "[[docs/canonical/structured-generation-constraint-validation-circuit|Structured Generation and Constraint Validation]]"
+  - "[[docs/canonical/versioned-durable-agent-state|Versioned Durable Agent State]]"
+  - "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]"
+  - "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]"
 ---
 
 # A Arquitetura Invisível: Como Harnesses Evoluem e o Que Torna um Bom Harness de Agentes

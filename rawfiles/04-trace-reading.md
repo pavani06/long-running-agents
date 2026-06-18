@@ -1,3 +1,20 @@
+---
+title: "Padrão Trace Reading: Transformando a Caixa-Preta em Glass Box"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - evals
+  - agentes-orquestracao
+aliases:
+  - trace reading
+  - leitura de traces
+  - glass box debugging
+relates-to:
+  - "[[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]"
+  - "[[curriculum/07-implementation-guides/05-trace-analysis-guide|Trace Analysis Guide]]"
+---
+
 # 📊 Padrão Trace Reading: Transformando a Caixa-Preta em Glass Box
 ## Como Debugar Agentes Long-Running Através de Trails Completos de Decisão
 

@@ -1,5 +1,21 @@
 ---
-aliases: ["evals ecommerce", "avaliação KODA", "ecommerce evals"]
+title: "Das Promessas Falsas às Decisões Auditáveis: Como Evals Transformaram um Agente de E-Commerce no WhatsApp"
+type: article
+date: 2026-06-12
+tags:
+  - evals
+  - agentes-orquestracao
+  - production
+aliases:
+  - evals ecommerce
+  - avaliação KODA
+  - ecommerce evals
+relates-to:
+  - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
+  - "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]"
+  - "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]"
+  - "[[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]]"
+  - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]"
 ---
 
 # Das Promessas Falsas às Decisões Auditáveis: Como Evals Transformaram um Agente de E-Commerce no WhatsApp

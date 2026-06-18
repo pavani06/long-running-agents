@@ -1,3 +1,19 @@
+---
+title: "Padrão Generator/Evaluator: Quando Um Agente Não É Suficiente"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+aliases:
+  - generator evaluator pattern
+  - padrao generator evaluator
+  - dual agent architecture
+relates-to:
+  - "[[docs/canonical/generator-evaluator|Generator-Evaluator]]"
+  - "[[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator-Evaluator Core Concept]]"
+---
+
 # 🔄 Padrão Generator/Evaluator: Quando Um Agente Não É Suficiente
 ## Como Duas Mentes Colaborativas Criam Confiabilidade e Qualidade
 

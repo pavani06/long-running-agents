@@ -1,3 +1,21 @@
+---
+title: "analyze-and-improve — Correções de Qualidade de Sessão (Anatomy of Intent) — Plano de Execução"
+type: plan
+date: 2026-06-14
+tags:
+  - governanca
+  - stack-tooling
+  - knowledge-management
+aliases:
+  - session quality fixes anatomy of intent
+  - correcoes qualidade sessao
+  - ICE session quality
+relates-to:
+  - "[[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve Skill]]"
+  - "[[docs/system-of-record|System of Record]]"
+  - "[[AGENTS|AGENTS.md]]"
+---
+
 # analyze-and-improve — Correções de Qualidade de Sessão (Anatomy of Intent) — Plano de Execução
 
 **Objetivo:** Corrigir 3 falhas de processo e UX identificadas na execução do pipeline analyze-and-improve em 2026-06-14 (The Anatomy of Intent — ICE in IDSD). 1 alteração no `harness-analysis.sh`, 2 alterações na `SKILL.md`, 1 novo script.

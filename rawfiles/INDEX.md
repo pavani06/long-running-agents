@@ -1,3 +1,20 @@
+---
+title: "Índice Executivo: Navegação Rápida"
+type: source
+date: 2026-05-26
+tags:
+  - index
+  - curriculo-conteudo
+aliases:
+  - indice executivo
+  - navegacao rapida
+  - executive index
+relates-to:
+  - "[[rawfiles/README|README]]"
+  - "[[rawfiles/MASTER_PLAN|Master Plan]]"
+  - "[[curriculum/INDEX|Curriculum Index]]"
+---
+
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
 **Para quando você precisa achar algo rapidinho.**

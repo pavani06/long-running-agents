@@ -1,3 +1,18 @@
+---
+title: "KODA em Ação: Aplicando Conceitos de Nível 1"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+aliases:
+  - KODA nivel 1
+  - nivel 1 KODA
+  - KODA fundamentals
+relates-to:
+  - "[[curriculum/01-nivel-1-fundamentals/|Nivel 1 Fundamentals]]"
+---
+
 # 🎯 KODA em Ação: Aplicando Conceitos de Nível 1
 ## Da Teoria à Prática - Long-Running Agents no Mundo Real do KODA
 

@@ -1,3 +1,28 @@
+---
+title: "Índice Completo de Prompts"
+type: prompt
+date: 2026-05-26
+tags:
+  - index
+  - curriculo-conteudo
+  - stack-tooling
+aliases:
+  - indice de prompts
+  - prompt index
+  - todos os prompts
+relates-to:
+  - "[[prompts/PROMPTS-01-curso-completo|Curso Completo]]"
+  - "[[prompts/PROMPTS-02-knowledge-graphs|Knowledge Graphs]]"
+  - "[[prompts/PROMPTS-03-exercises|Exercises]]"
+  - "[[prompts/PROMPTS-04-case-studies|Case Studies]]"
+  - "[[prompts/PROMPT-05-analise-web-interativa|Analise Web Interativa]]"
+  - "[[prompts/PROMPTS-06-analise-comparativa-koda-ecommerce|Analise KODA Ecommerce]]"
+  - "[[prompts/PROMPTS-07-obsidian-adaptation|Obsidian Adaptation]]"
+  - "[[prompts/PROMPTS-08-obsidian-governance|Obsidian Governance]]"
+  - "[[prompts/PROMPT_APRESENTACAO_HTML|Apresentacao HTML]]"
+  - "[[curriculum/README|Curriculum README]]"
+---
+
 # 📝 ÍNDICE COMPLETO DE PROMPTS
 
 **Todos os prompts necessários para gerar o currículo completo**

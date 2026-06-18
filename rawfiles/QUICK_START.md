@@ -1,3 +1,18 @@
+---
+title: "Quick Start: Seu Caminho para Long-Running Agents"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+aliases:
+  - quick start
+  - inicio rapido
+  - caminho agentes
+relates-to:
+  - "[[rawfiles/README|README]]"
+  - "[[curriculum/QUICK_START|Curriculum Quick Start]]"
+---
+
 # 🚀 QUICK START: Seu Caminho para Long-Running Agents
 
 **⏱️ Tempo Estimado:** 45 minutos (este guia + introdução)

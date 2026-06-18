@@ -1,3 +1,18 @@
+---
+title: "Prompt: Generate Comprehensive Case Studies"
+type: prompt
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+aliases:
+  - case studies prompt
+  - casos de estudo
+  - geracao de casos
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[curriculum/09-case-studies/|Case Studies]]"
+---
+
 # 📝 PROMPT: Generate Comprehensive Case Studies
 
 ## Como Usar Este Prompt

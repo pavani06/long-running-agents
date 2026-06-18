@@ -1,3 +1,19 @@
+---
+title: "Exercício 1: Implementar History Windowing"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - context-engineering
+aliases:
+  - exercise 1 windowing
+  - history windowing exercise
+  - exercicio windowing
+relates-to:
+  - "[[curriculum/01-nivel-1-fundamentals/|Nivel 1 Fundamentals]]"
+  - "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]"
+---
+
 # 🪟 Exercício 1: Implementar History Windowing
 
 **Nível:** 1 - Fundamentals  

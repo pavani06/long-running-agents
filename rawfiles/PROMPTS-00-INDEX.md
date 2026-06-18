@@ -1,3 +1,20 @@
+---
+title: "Índice Completo de Prompts"
+type: source
+date: 2026-05-26
+tags:
+  - index
+  - curriculo-conteudo
+  - stack-tooling
+aliases:
+  - indice de prompts
+  - prompt index
+  - todos os prompts
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompts Index]]"
+  - "[[rawfiles/README|README]]"
+---
+
 # 📝 ÍNDICE COMPLETO DE PROMPTS
 
 **Todos os prompts necessários para gerar o currículo completo**

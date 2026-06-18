@@ -1,3 +1,21 @@
+---
+title: "analyze-and-improve — Correções Pós-Review (IDSD Method) — Plano de Execução"
+type: plan
+date: 2026-06-12
+tags:
+  - governanca
+  - stack-tooling
+  - knowledge-management
+aliases:
+  - post-review fixes IDSD
+  - correcoes analyze and improve
+  - IDSD review corrections
+relates-to:
+  - "[[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve Skill]]"
+  - "[[docs/system-of-record|System of Record]]"
+  - "[[AGENTS|AGENTS.md]]"
+---
+
 # analyze-and-improve — Correções Pós-Review (IDSD Method) — Plano de Execução
 
 **Objetivo:** Corrigir as falhas de processo e qualidade identificadas na revisão do pipeline analyze-and-improve executado em 2026-06-12 (IDSD Method). 5 alterações na SKILL.md + 4 correções pontuais em arquivos.

@@ -1,3 +1,19 @@
+---
+title: "Documentação Gerada — Próximos Passos"
+type: source
+date: 2026-05-26
+tags:
+  - index
+  - curriculo-conteudo
+aliases:
+  - getting started
+  - proximos passos
+  - onboarding
+relates-to:
+  - "[[rawfiles/README|README]]"
+  - "[[rawfiles/INDEX|Index]]"
+---
+
 # 🎉 DOCUMENTAÇÃO GERADA - PRÓXIMOS PASSOS
 
 **Data:** Maio 2026  

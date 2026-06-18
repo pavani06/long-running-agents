@@ -1,3 +1,19 @@
+---
+title: "Exercício 1: Design a Sprint Contract"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+aliases:
+  - exercise 1 sprint contract
+  - sprint contract design
+  - exercicio contrato sprint
+relates-to:
+  - "[[curriculum/02-nivel-2-practical-patterns/|Nivel 2 Practical Patterns]]"
+  - "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]"
+---
+
 # 📋 Exercício 1: Design a Sprint Contract
 ## Nível 2 - Padrões Práticos
 

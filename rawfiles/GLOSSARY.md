@@ -1,3 +1,19 @@
+---
+title: "Glossário: Termos Essenciais"
+type: source
+date: 2026-05-26
+tags:
+  - reference
+  - curriculo-conteudo
+aliases:
+  - glossario
+  - termos essenciais
+  - glossary
+relates-to:
+  - "[[rawfiles/INDEX|Index]]"
+  - "[[curriculum/GLOSSARY|Curriculum Glossary]]"
+---
+
 # 📖 GLOSSÁRIO: Termos Essenciais
 
 Referência rápida de termos usados neste programa.

@@ -1,3 +1,19 @@
+---
+title: "Prompt: Criar Apresentação Web Interativa — Curso de Agentes de Longa Duração"
+type: source
+date: 2026-05-26
+tags:
+  - stack-tooling
+  - curriculo-conteudo
+aliases:
+  - apresentacao html prompt
+  - web presentation
+  - pagina interativa
+relates-to:
+  - "[[prompts/PROMPT_APRESENTACAO_HTML|Apresentacao HTML Prompt]]"
+  - "[[rawfiles/PROMPTS-00-INDEX|Prompts Index]]"
+---
+
 # 🎯 PROMPT: Criar Apresentação Web Interativa - Curso de Agentes de Longa Duração
 
 ## Como Usar Este Prompt

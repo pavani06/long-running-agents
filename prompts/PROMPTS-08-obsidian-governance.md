@@ -1,3 +1,22 @@
+---
+title: "Prompt: Obsidian Governance — Frente 4"
+type: prompt
+date: 2026-06-10
+tags:
+  - stack-tooling
+  - governanca
+  - curriculo-conteudo
+aliases:
+  - obsidian governance prompt
+  - governanca obsidian
+  - frente 4
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[prompts/PROMPTS-07-obsidian-adaptation|Obsidian Adaptation]]"
+  - "[[AGENTS|AGENTS.md]]"
+  - "[[docs/system-of-record|System of Record]]"
+---
+
 # PROMPTS-08: Obsidian Governance — Frente 4
 
 > Entrega este prompt APOS a execucao do PROMPTS-07 (adaptacao). Ele cria a camada de

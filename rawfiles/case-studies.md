@@ -1,3 +1,19 @@
+---
+title: "Estudos de Caso: Padrões de Agentes de Longa Duração"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+aliases:
+  - case studies
+  - estudos de caso
+  - long running case studies
+relates-to:
+  - "[[curriculum/09-case-studies/|Case Studies]]"
+  - "[[rawfiles/INDEX|Index]]"
+---
+
 # Estudos de Caso: Padrões de Agentes de Longa Duração
 
 **Audiência:** Time Técnico FutanBear  

@@ -1,3 +1,20 @@
+---
+title: "Prompt: Análise Comparativa Completa — Arquitetura de Agentes de E-commerce"
+type: prompt
+date: 2026-06-05
+tags:
+  - agentes-orquestracao
+  - curriculo-conteudo
+aliases:
+  - analise comparativa koda
+  - ecommerce agent architecture
+  - comparacao mhc curriculo
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[docs/analysis/mhc-backend/|MHC Backend Analyses]]"
+  - "[[curriculum/README|Curriculum README]]"
+---
+
 # PROMPT: Análise Comparativa Completa — Arquitetura de Agentes de E-commerce entre `mhc-backend` (Produção) e Currículo KODA (Referência)
 
 **Tipo:** Prompt de exploração, análise e geração de repositório completo  

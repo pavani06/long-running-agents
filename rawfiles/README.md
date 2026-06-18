@@ -1,3 +1,20 @@
+---
+title: "Curso: Building Long-Running Agents para KODA"
+type: source
+date: 2026-05-26
+tags:
+  - index
+  - curriculo-conteudo
+aliases:
+  - README curso
+  - long running agents KODA
+  - curso agentes
+relates-to:
+  - "[[curriculum/README|Curriculum README]]"
+  - "[[rawfiles/MASTER_PLAN|Master Plan]]"
+  - "[[rawfiles/INDEX|Index]]"
+---
+
 # 📚 Curso: Building Long-Running Agents para KODA
 
 > Transformar equipe em especialistas de agentes que rodam por horas

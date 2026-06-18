@@ -1,3 +1,19 @@
+---
+title: "Plano de Execução Atualizado: Implementação do Currículo"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - governanca
+aliases:
+  - execution plan updated
+  - plano de execucao atualizado
+  - implementacao curriculo v2
+relates-to:
+  - "[[rawfiles/EXECUTION_PLAN|Execution Plan]]"
+  - "[[rawfiles/DELIVERY-COMPLETE|Delivery Complete]]"
+---
+
 # 🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo
 
 **Data:** Maio 2026  

@@ -1,3 +1,20 @@
+---
+title: "Padrões Básicos de Harness: A Estrutura que Sustenta Agentes"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+  - harness-engineering
+aliases:
+  - basic harness patterns
+  - padroes de harness
+  - estrutura de agentes
+relates-to:
+  - "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution]]"
+  - "[[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]]"
+---
+
 # 🏗️ Padrões Básicos de Harness: A Estrutura que Sustenta Agentes
 ## Como Construir um "Sistema Imunológico" para Agentes de Longa Duração
 

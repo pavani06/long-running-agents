@@ -1,3 +1,18 @@
+---
+title: "Prompt: Generate Practical Exercises and Solutions"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+aliases:
+  - exercises prompt
+  - exercicios praticos
+  - geracao de exercicios
+relates-to:
+  - "[[prompts/PROMPTS-03-exercises|Exercises Prompt]]"
+  - "[[rawfiles/PROMPTS-00-INDEX|Prompts Index]]"
+---
+
 # 📝 PROMPT: Generate Practical Exercises and Solutions
 
 ## Como Usar Este Prompt

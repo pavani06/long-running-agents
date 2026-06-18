@@ -1,3 +1,20 @@
+---
+title: "Plano de Execução: Implementação do Currículo"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - governanca
+aliases:
+  - execution plan
+  - plano de execucao
+  - implementacao curriculo
+relates-to:
+  - "[[rawfiles/EXECUTION_PLAN-UPDATED|Execution Plan Updated]]"
+  - "[[rawfiles/MASTER_PLAN|Master Plan]]"
+  - "[[curriculum/EXECUTION_PLAN|Curriculum Execution Plan]]"
+---
+
 # 🗓️ PLANO DE EXECUÇÃO: Implementação do Currículo
 
 **Data:** Maio 2026  

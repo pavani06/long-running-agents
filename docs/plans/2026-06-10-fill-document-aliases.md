@@ -3,6 +3,10 @@ title: "Preenchimento de Aliases nos Documentos — Plano de Execução"
 type: plan
 date: 2026-06-10
 tags: ["governanca", "curriculo-conteudo"]
+aliases:
+  - preenchimento de aliases
+  - fill aliases
+  - metadata aliases
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[AGENTS|AGENTS.md]]"]
 ---
 

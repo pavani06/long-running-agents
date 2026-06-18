@@ -1,3 +1,19 @@
+---
+title: "KODA em Evolução: Padrões Avançados e Refatoração Arquitetural"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+  - harness-engineering
+aliases:
+  - KODA nivel 2
+  - nivel 2 KODA
+  - KODA advanced
+relates-to:
+  - "[[curriculum/02-nivel-2-practical-patterns/|Nivel 2 Practical Patterns]]"
+---
+
 # 🚀 KODA em Evolução: Padrões Avançados e Refatoração Arquitetural
 ## De um Agente Bom a um Agente Resiliente - Nível 2 em Ação
 

@@ -1,3 +1,19 @@
+---
+title: "Exercício 2: Implementar Structured Output (JSON Schema Validation)"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - agentes-orquestracao
+aliases:
+  - exercise 2 structured output
+  - JSON schema validation
+  - exercicio output estruturado
+relates-to:
+  - "[[curriculum/01-nivel-1-fundamentals/|Nivel 1 Fundamentals]]"
+  - "[[docs/canonical/structured-generation-constraint-validation-circuit|Structured Generation]]"
+---
+
 # ✅ Exercício 2: Implementar Structured Output (JSON Schema Validation)
 
 **Nível:** 1 - Fundamentals  

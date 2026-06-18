@@ -1,3 +1,19 @@
+---
+title: "Rubric Design: Como Ensinar um Evaluator a Ser Crítico e Justo"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - evals
+aliases:
+  - rubric design
+  - design de rubricas
+  - evaluator rubric
+relates-to:
+  - "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]"
+  - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]"
+---
+
 # 📏 Rubric Design: Como Ensinar um Evaluator a Ser Crítico e Justo
 ## Transformando Intuição Vaga em Critérios Mensuráveis
 

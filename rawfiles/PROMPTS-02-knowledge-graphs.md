@@ -1,3 +1,19 @@
+---
+title: "Prompt: Generate Knowledge Graphs in Mermaid Format"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - stack-tooling
+aliases:
+  - knowledge graphs prompt
+  - diagramas mermaid
+  - geracao de grafos
+relates-to:
+  - "[[prompts/PROMPTS-02-knowledge-graphs|Knowledge Graphs Prompt]]"
+  - "[[rawfiles/PROMPTS-00-INDEX|Prompts Index]]"
+---
+
 # 📝 PROMPT: Generate Knowledge Graphs in Mermaid Format
 
 ## Como Usar Este Prompt

@@ -1,5 +1,21 @@
 ---
-aliases: ["rubricas multi", "arquitetura rubricas", "multidimensional rubrics"]
+title: "Rubricas Multidimensionais: O Que a Arquitetura do Seu Sistema Precisa Garantir para um Evaluator Funcionar"
+type: article
+date: 2026-06-12
+tags:
+  - evals
+  - arquitetura
+  - agentes-orquestracao
+aliases:
+  - rubricas multi
+  - arquitetura rubricas
+  - multidimensional rubrics
+relates-to:
+  - "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]"
+  - "[[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]]"
+  - "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"
+  - "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]"
+  - "[[curriculum/02-nivel-2-practical-patterns/03-rubric-design|Rubric Design]]"
 ---
 
 # Rubricas Multidimensionais: O Que a Arquitetura do Seu Sistema Precisa Garantir para um Evaluator Funcionar

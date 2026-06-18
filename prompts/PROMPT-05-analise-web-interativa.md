@@ -1,3 +1,19 @@
+---
+title: "Prompt: Análise de Arquitetura para Página Web Interativa do Currículo KODA"
+type: prompt
+date: 2026-05-26
+tags:
+  - stack-tooling
+  - curriculo-conteudo
+aliases:
+  - analise web interativa
+  - web architecture analysis
+  - pagina web curriculo
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[web/koda_course_portal.html|KODA Course Portal]]"
+---
+
 # PROMPT: Análise de Arquitetura para Página Web Interativa do Currículo KODA
 
 **Tipo:** Prompt de análise técnica

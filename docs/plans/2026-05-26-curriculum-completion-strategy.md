@@ -1,5 +1,20 @@
 ---
-aliases: ["estratégia conclusão", "completion strategy", "GitHub Issues"]
+title: "Estratégia de Execução para Completar o Currículo Long-Running Agents"
+type: plan
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - governanca
+  - stack-tooling
+aliases:
+  - estratégia conclusão
+  - completion strategy
+  - GitHub Issues
+relates-to:
+  - "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]"
+  - "[[curriculum/INDEX|Curriculum Index]]"
+  - "[[docs/system-of-record|System of Record]]"
+  - "[[AGENTS|AGENTS.md]]"
 ---
 
 # Prompt: Estrategia de Execucao para Completar o Curriculo Long-Running Agents

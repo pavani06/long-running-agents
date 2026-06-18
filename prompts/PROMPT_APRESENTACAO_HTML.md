@@ -1,3 +1,19 @@
+---
+title: "Prompt: Criar Apresentação Web Interativa — Curso de Agentes de Longa Duração"
+type: prompt
+date: 2026-05-26
+tags:
+  - stack-tooling
+  - curriculo-conteudo
+aliases:
+  - apresentacao html prompt
+  - web presentation
+  - pagina interativa
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[web/koda_course_portal.html|KODA Course Portal]]"
+---
+
 # 🎯 PROMPT: Criar Apresentação Web Interativa - Curso de Agentes de Longa Duração
 
 ## Como Usar Este Prompt

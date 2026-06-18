@@ -1,3 +1,22 @@
+---
+title: "Prompt: Obsidian Adaptation — Frentes 1-3"
+type: prompt
+date: 2026-06-10
+tags:
+  - stack-tooling
+  - governanca
+  - curriculo-conteudo
+aliases:
+  - obsidian adaptation prompt
+  - adaptacao obsidian
+  - frentes 1 a 3
+relates-to:
+  - "[[prompts/PROMPTS-00-INDEX|Prompt Index]]"
+  - "[[prompts/PROMPTS-08-obsidian-governance|Obsidian Governance]]"
+  - "[[AGENTS|AGENTS.md]]"
+  - "[[docs/system-of-record|System of Record]]"
+---
+
 # PROMPTS-07: Obsidian Adaptation — Frentes 1-3
 
 > Entrega este prompt para um agente executor. Ele adiciona frontmatter YAML e converte links

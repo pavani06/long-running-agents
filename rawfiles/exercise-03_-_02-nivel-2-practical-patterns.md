@@ -1,3 +1,20 @@
+---
+title: "Exercício 3: Handle Failure Scenarios"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+  - error-handling
+  - agentes-orquestracao
+aliases:
+  - exercise 3 failure scenarios
+  - handle failures
+  - exercicio falhas
+relates-to:
+  - "[[curriculum/02-nivel-2-practical-patterns/|Nivel 2 Practical Patterns]]"
+  - "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]"
+---
+
 # ⚠️ Exercício 3: Handle Failure Scenarios
 ## Nível 2 - Padrões Práticos
 

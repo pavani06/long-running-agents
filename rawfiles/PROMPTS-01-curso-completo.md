@@ -1,3 +1,18 @@
+---
+title: "Prompt: Creating a Comprehensive Course on Long-Running Agents"
+type: source
+date: 2026-05-26
+tags:
+  - curriculo-conteudo
+aliases:
+  - curso completo prompt
+  - comprehensive course
+  - geracao de curriculo
+relates-to:
+  - "[[prompts/PROMPTS-01-curso-completo|Curso Completo Prompt]]"
+  - "[[rawfiles/PROMPTS-00-INDEX|Prompts Index]]"
+---
+
 # 📝 PROMPT: Creating a Comprehensive Course on Long-Running Agents
 
 ## Como Usar Este Prompt

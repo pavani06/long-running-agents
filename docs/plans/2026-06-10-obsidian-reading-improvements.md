@@ -1,5 +1,18 @@
 ---
-aliases: ["melhorias leitura", "Obsidian reading", "leitura Obsidian"]
+title: "Obsidian Reading Improvements — Execution Plan"
+type: plan
+date: 2026-06-10
+tags:
+  - stack-tooling
+  - curriculo-conteudo
+aliases:
+  - melhorias leitura
+  - Obsidian reading
+  - leitura Obsidian
+relates-to:
+  - "[[docs/system-of-record|System of Record]]"
+  - "[[AGENTS|AGENTS.md]]"
+  - "[[curriculum/INDEX|Curriculum Index]]"
 ---
 
 # Obsidian Reading Improvements — Execution Plan
