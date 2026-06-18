@@ -1,0 +1,413 @@
+# Memory Selection Problem — Reusable Patterns (YAML)
+# Extracted from: 2026-06-18-memory-selection-problem-analysis.yaml
+# Domain: Agentic systems — context selection, degradation prevention, memory architecture
+
+meta:
+  title: "Memory Selection Problem — Reusable Patterns"
+  type: analysis
+  date: 2026-06-18
+  source: "2026-06-18-memory-selection-problem-analysis.yaml"
+  author: "@eng_khairallah1 (source), extracted by Sisyphus-Junior"
+  tags: ["context-engineering", "agentes-orquestracao", "harness-engineering", "token-budgeting"]
+  pattern_count: 8
+
+patterns:
+  - name: "Deliberate Forgetting"
+    problem_solved: >
+      Context windows accumulate noise from irrelevant tokens because forgetting only
+      happens by accident (truncation) or indiscriminate compression, not by informed
+      decision about what to keep vs. discard.
+    inputs:
+      - "Active context window contents (tool results, conversation history, progress notes)"
+      - "Task state and current goal"
+      - "Relational context graph with dependency, provenance, and supersession edges"
+      - "Token budget remaining for current step"
+    outputs:
+      - "Promotion/demotion decisions per token or chunk (what enters active window, what moves to cold storage)"
+      - "Shrunk working set retaining only what is relevant to the current task state"
+      - "Explicit discard log recording what was dropped and why, enabling later retrieval if needed"
+    benefits:
+      - "Prevents context rot accumulation where each appended token degrades subsequent step quality"
+      - "Shifts design question from 'how to store everything' to 'what can I afford to forget now'"
+      - "Makes agent quality a function of exclusion decision quality, not storage capacity"
+      - "Reduces near-miss distractors that drive the compounding error rate toward the cliff"
+    limitations:
+      - "Requires a relational context graph to make informed forgetting decisions; similarity-based stores cannot support this"
+      - "Aggressive forgetting can drop details whose importance only becomes apparent later"
+      - "The forgetting policy itself consumes tokens to evaluate relevance; in extremely tight budgets, the evaluation cost may exceed the savings"
+    components:
+      - name: "Relevance Evaluator"
+        role: "Assesses each context unit's relevance to the current task state using relational graph traversal"
+      - name: "Promotion/Demotion Engine"
+        role: "Executes tier transitions based on relevance scores, moving tokens between hot, warm, and cold storage"
+      - name: "Discard Logger"
+        role: "Records what was dropped and the rationale, enabling cold-storage retrieval if discarded context becomes relevant later"
+      - name: "Budget Gate"
+        role: "Ensures the evaluation cost of the forgetting decision does not exceed the token savings it generates"
+    flow:
+      - step: 1
+        action: "Receive current task state and active context window snapshot"
+      - step: 2
+        action: "Traverse relational context graph to identify context units connected to the current task"
+      - step: 3
+        action: "Score each context unit by relevance (connectedness to current task) and recency"
+      - step: 4
+        action: "Demote low-scoring units to warm/cold storage; log discard decisions"
+      - step: 5
+        action: "Promote high-scoring units from warm storage to hot (active window)"
+      - step: 6
+        action: "Verify working set size against token budget; iterate if over budget"
+
+  - name: "Smallest Sufficient Context"
+    problem_solved: >
+      The instinctive response to agent degradation is to increase the context window,
+      but the reliably usable fraction grows sublinearly — larger windows only raise
+      the ceiling on accumulated noise before the cliff.
+    inputs:
+      - "Task definition and current step in the agent execution plan"
+      - "Relational context graph with typed edges (dependencies, provenance, supersession, causation)"
+      - "Order-preserving token sequence from cold/warm storage"
+      - "Model's effective context utilization profile (known head/tail bias)"
+    outputs:
+      - "Minimal token set that satisfies the sufficiency condition for the current reasoning step"
+      - "Structured retrieval plan that traverses the relational graph to collect only connected tokens"
+      - "Token count budget allocation per step"
+    benefits:
+      - "Order-preserving retrieval of a few thousand well-chosen tokens outperforms dumping a full 128K window into the model"
+      - "Selection is driven by structure (relational relevance) rather than similarity (embedding proximity)"
+      - "Each reasoning step operates on the cleanest possible context, slowing the compounding error rate"
+    limitations:
+      - "Requires a structured selection layer — not achievable with traditional embedding stores"
+      - "Determining sufficiency is itself a hard problem; underestimation causes incomplete context"
+      - "The relational graph must be maintained (supersession updates, dependency tracking)"
+      - "For tasks with highly interconnected dependencies, the minimal sufficient subset may still be large"
+    components:
+      - name: "Sufficiency Estimator"
+        role: "Determines the minimum token set needed for the agent to reason correctly about the current step"
+      - name: "Relational Traversal Engine"
+        role: "Walks the context graph along typed edges to collect connected context units"
+      - name: "Order-Preserving Assembler"
+        role: "Assembles retrieved tokens in their original sequence order to preserve temporal coherence"
+      - name: "Capacity Profiler"
+        role: "Maps the model's known head/tail attention bias to place highest-importance tokens at attended positions"
+    flow:
+      - step: 1
+        action: "Parse current task step to identify what information is required"
+      - step: 2
+        action: "Traverse relational graph from the task node along dependency, provenance, and causation edges"
+      - step: 3
+        action: "Collect all reachable context units up to a relevance-depth threshold"
+      - step: 4
+        action: "Sort collected units by original temporal order to preserve sequence coherence"
+      - step: 5
+        action: "Apply capacity profiler: place critical tokens at head/tail positions the model attends to"
+      - step: 6
+        action: "Trim to token budget; verify sufficiency condition is still met"
+
+  - name: "Tiered Context Storage with Promotion/Demotion"
+    problem_solved: >
+      Keeping all context in active memory is unsustainable; keeping everything in cold
+      storage is useless when the model needs to reason — the system must dynamically move
+      context across storage tiers based on relevance.
+    inputs:
+      - "Hot tier contents (in-memory cache: what the model is reasoning about now)"
+      - "Warm tier contents (NVMe: recently relevant context, accessible with low latency)"
+      - "Cold tier contents (object storage: complete history, rarely accessed)"
+      - "Relevance signals from the current task state and relational graph traversal"
+    outputs:
+      - "Promotion decisions: cold → warm → hot when context becomes relevant to the current step"
+      - "Demotion decisions: hot → warm → cold when context is no longer needed for the current reasoning"
+      - "Working set maintained deliberately small, with the decision layer as the gate between the model and everything it could know"
+    benefits:
+      - "Keeps the active working set small on purpose, preventing context rot"
+      - "Enables on-demand retrieval from cold storage when previously dropped details become relevant again"
+      - "Separates storage concern (where data lives) from selection concern (what the model attends to)"
+      - "Scales linearly with history volume; storage cost in cold tier is negligible"
+    limitations:
+      - "Promotion/demotion policy must be tuned per domain; generic recency-based policies fail when relevance is non-monotonic"
+      - "Cold → hot promotion latency can stall reasoning if not anticipated with prefetch"
+      - "Requires infrastructure for three storage tiers with different latency characteristics"
+    components:
+      - name: "Hot Tier Cache"
+        role: "In-memory store holding the current active context window accessible with sub-millisecond latency"
+      - name: "Warm Tier Store"
+        role: "NVMe-backed store for recently relevant context, accessible with low latency (~1ms)"
+      - name: "Cold Tier Archive"
+        role: "Object storage for complete history, supporting on-demand retrieval with higher latency (~100ms)"
+      - name: "Tier Orchestrator"
+        role: "Executes promotion and demotion decisions based on relevance scores and prefetch predictions"
+    flow:
+      - step: 1
+        action: "Monitor active context window in hot tier as the model reasons through current step"
+      - step: 2
+        action: "When step completes, evaluate each context unit's continued relevance"
+      - step: 3
+        action: "Demote irrelevant units: hot → warm (if recently relevant) or hot → cold (if likely obsolete)"
+      - step: 4
+        action: "Before next step, traverse relational graph to predict which cold/warm units will be needed"
+      - step: 5
+        action: "Prefetch predicted units: cold → warm, warm → hot"
+      - step: 6
+        action: "Assemble new active window in hot tier; verify size against token budget"
+
+  - name: "Relational Context Graph"
+    problem_solved: >
+      Embedding stores answer "what is similar to X" — not "what is relevant to this task
+      in this state." Similarity flattens semantic relationships, returning near-misses that
+      act as distractors and accelerate the agent cliff.
+    inputs:
+      - "All context units generated during agent execution (tool results, decisions, state snapshots, progress notes)"
+      - "The relationships between them: dependencies, provenance, supersession, causation"
+      - "Current task state and goal"
+    outputs:
+      - "Queryable graph with typed edges: dependencies, provenance, supersession, causation"
+      - "Traversal results that return connected context, not merely similar context"
+      - "Selection (returning what is relevant) instead of retrieval (returning what is near)"
+    benefits:
+      - "Transforms retrieval into selection: the model receives context connected by real semantic relationships"
+      - "Supersession edges prevent stale context from entering the window"
+      - "Provenance edges enable debugging: trace any conclusion back through the chain of derivations"
+      - "Causation edges enable learning: link decisions to outcomes across sessions"
+    limitations:
+      - "Graph maintenance is non-trivial: every new context unit must be classified with edge types"
+      - "Bootstrapping requires either manual schema design or a bootstrap phase where edge types are inferred"
+      - "Tooling maturity for relational context graphs is far behind embedding stores"
+      - "Graph traversal latency can exceed similarity search for deep dependency chains"
+    components:
+      - name: "Node Ingestor"
+        role: "Creates graph nodes for each new context unit (tool result, decision, state snapshot, note) with metadata"
+      - name: "Edge Classifier"
+        role: "Classifies relationships between nodes into typed edges: dependency, provenance, supersession, causation"
+      - name: "Supersession Updater"
+        role: "Marks obsolete nodes and redirects edges when context is superseded by newer versions"
+      - name: "Traversal Engine"
+        role: "Executes graph traversals along typed edges to collect context connected to a query node"
+    flow:
+      - step: 1
+        action: "Intercept every context unit the agent generates (tool result, decision, state snapshot)"
+      - step: 2
+        action: "Create a graph node for the unit with metadata (timestamp, agent ID, session ID, task step)"
+      - step: 3
+        action: "Classify relationships to existing nodes: dependency, provenance, supersession, or causation"
+      - step: 4
+        action: "If supersession is detected, update the superseded node's edges and mark it as stale"
+      - step: 5
+        action: "On context query, traverse the graph from the task node along typed edges to collect connected context"
+      - step: 6
+        action: "Return traversed context in dependency order, with superseded nodes excluded"
+
+  - name: "Neutral Selection Layer"
+    problem_solved: >
+      Organizations accumulate context as their most durable asset in agentic systems,
+      but soldering context strategy to vendor-specific memory features makes that asset
+      a hostage to someone else's roadmap — and prevents cross-model, cross-agent,
+      cross-session coherence.
+    inputs:
+      - "Structured context from all agents, sessions, and models in the organization"
+      - "Model-agnostic context format (independent of any single model's memory API)"
+      - "Query from any agent regardless of which model it uses"
+    outputs:
+      - "Selected context subset served to any model through a uniform interface"
+      - "System-of-record view that no single framework, app, or lab can sustain alone"
+      - "Portable organizational asset: context that survives model migrations, vendor changes, and architectural evolution"
+    benefits:
+      - "Context survives model migrations — the same structured record serves any model, present and future"
+      - "Cross-agent coherence: agents share a unified view of organizational context"
+      - "Vendor independence: the organization's most durable asset is not locked into a single model provider"
+      - "Composable: the selection layer can evolve independently of both models and storage backends"
+    limitations:
+      - "Requires building and maintaining the layer; integration with each model is manual"
+      - "Higher initial engineering cost compared to using built-in vendor memory features"
+      - "Becomes a single point of failure for context delivery if not replicated"
+      - "The abstraction boundary adds latency — every context query traverses the selection layer before reaching the model"
+    components:
+      - name: "Model-agnostic Context Format"
+        role: "Standardized schema for context units that any model can consume, independent of vendor-specific memory APIs"
+      - name: "Context Router"
+        role: "Receives context queries from any agent/model and routes them to the appropriate selection strategy"
+      - name: "Multi-Tenant Registry"
+        role: "Tracks which context belongs to which agent, session, and model; enforces isolation and sharing policies"
+      - name: "Vendor Adapter"
+        role: "Translates the model-agnostic context format into each model's native input format"
+    flow:
+      - step: 1
+        action: "Agent generates context unit in model-agnostic format — store in the neutral layer"
+      - step: 2
+        action: "Any agent (same or different model) queries the selection layer for relevant context"
+      - step: 3
+        action: "Context Router resolves the query against the Relational Context Graph and Tiered Storage"
+      - step: 4
+        action: "Selected context is assembled in the model-agnostic format"
+      - step: 5
+        action: "Vendor Adapter translates to the target model's native input format"
+      - step: 6
+        action: "Context is injected into the model's prompt; model reasons and produces output"
+
+  - name: "Context Health Monitoring"
+    problem_solved: >
+      Agents fail catastrophically (the cliff) rather than degrading gracefully, making
+      failures unpredictable and hard to recover from — binary success/failure monitoring
+      per step does not detect the approaching inflection point.
+    inputs:
+      - "Effective context size: the fraction of the window the model can reliably reason about"
+      - "Near-miss rate: proportion of retrieved context that is similar but not relevant (distractors)"
+      - "Contradiction rate: frequency of outputs contradicting prior decisions or facts"
+      - "Step-by-step quality metrics, not just final outcome"
+    outputs:
+      - "Context health score that predicts proximity to the cliff before degradation becomes catastrophic"
+      - "Early warning alerts when health metrics cross predefined thresholds"
+      - "Intervention triggers: pause agent, flush and reload context, or hand off to human operator"
+      - "Trend dashboard showing health trajectory across sessions and models"
+    benefits:
+      - "Detects the approach of catastrophic failure before it happens, enabling preemptive intervention"
+      - "Shifts monitoring from binary (pass/fail) to continuous (health trajectory), matching the actual failure mode"
+      - "Near-miss rate directly measures the quality of the selection layer"
+      - "Enables automated recovery: when health score drops, trigger context flush and reload"
+    limitations:
+      - "Defining near-miss requires ground truth about what context is actually relevant — circular with the selection problem"
+      - "Contradiction detection requires comparing current outputs against prior decisions, adding token cost"
+      - "Thresholds for health metrics are domain-specific and require calibration from production data"
+      - "The monitoring system itself consumes context tokens, marginally contributing to the problem it detects"
+    components:
+      - name: "Effective Context Estimator"
+        role: "Measures the fraction of the current window the model is reliably attending to, accounting for head/tail bias"
+      - name: "Near-Miss Detector"
+        role: "Compares retrieved context against task requirements to flag context that entered the window but was irrelevant"
+      - name: "Contradiction Scanner"
+        role: "Compares each model output against prior decisions and facts to detect inconsistencies"
+      - name: "Health Score Aggregator"
+        role: "Combines effective context size, near-miss rate, and contradiction rate into a single health trajectory score"
+    flow:
+      - step: 1
+        action: "After each agent step, compute effective context size from window occupancy and known attention profile"
+      - step: 2
+        action: "Compare retrieved context against the task's actual requirements to measure near-miss rate"
+      - step: 3
+        action: "Scan the model's output for contradictions with prior decisions stored in the relational graph"
+      - step: 4
+        action: "Aggregate the three metrics into a health score and append to the trajectory"
+      - step: 5
+        action: "If health score crosses warning threshold, emit early warning alert"
+      - step: 6
+        action: "If health score crosses critical threshold, trigger intervention: pause, flush context, reload from relational graph"
+
+  - name: "Selection-Budgeted Retrieval"
+    problem_solved: >
+      Retrieval systems built to solve the memory problem feed the degradation loop —
+      every retrieval adds tokens, every added token shrinks effective context, and
+      the system that was built to help becomes the engine of failure.
+    inputs:
+      - "Candidate retrieval items with their token costs"
+      - "Information value estimate per candidate (how much does this item reduce uncertainty about the current task?)"
+      - "Current token budget remaining for the step"
+      - "Historical retrieval utility data (which retrievals were actually used by the model vs. ignored)"
+    outputs:
+      - "Cost-benefit ranking of retrieval candidates: token cost vs. predicted information value"
+      - "Retrieval decision per candidate: promote, defer, or skip"
+      - "Budget consumption log tracking tokens spent on retrieval vs. tokens spent on reasoning"
+      - "Feedback loop: update utility estimates based on whether retrieved items were actually referenced"
+    benefits:
+      - "Prevents the memory feedback loop by making retrieval itself budget-aware"
+      - "Each retrieval is justified by its predicted contribution to the task, not by its similarity score"
+      - "Historical utility data creates a learning loop: the system gets better at predicting which retrievals matter"
+      - "Tokens are conserved for reasoning rather than spent on near-miss context that the model will ignore"
+    limitations:
+      - "Information value estimation is hard — utility is only known after the model uses or ignores the context"
+      - "In exploration-heavy tasks, the system may over-penalize retrieval and starve the model of discoveries"
+      - "Requires instrumentation to track which retrieved items the model actually referenced"
+      - "The budgeting logic adds a decision step before every retrieval, increasing per-step latency"
+    components:
+      - name: "Token Cost Estimator"
+        role: "Computes the token count for each candidate retrieval item"
+      - name: "Information Value Predictor"
+        role: "Estimates the expected reduction in task uncertainty if a given context item is retrieved, using historical utility data"
+      - name: "Budget Tracker"
+        role: "Maintains the remaining token budget per step and allocates between retrieval and reasoning"
+      - name: "Utility Feedback Loop"
+        role: "After the model produces output, checks which retrieved items were actually referenced and updates the predictor"
+    flow:
+      - step: 1
+        action: "Identify all candidate context items from the relational graph that could be relevant to the current step"
+      - step: 2
+        action: "Compute token cost for each candidate"
+      - step: 3
+        action: "Estimate information value for each candidate using historical utility data"
+      - step: 4
+        action: "Rank candidates by value/cost ratio; allocate budget from most to least valuable"
+      - step: 5
+        action: "Retrieve and inject top-ranked candidates into context; log budget consumption"
+      - step: 6
+        action: "After model output, compare referenced items against retrieved items; update utility predictor"
+
+  - name: "Agent Degradation Loop Prevention"
+    problem_solved: >
+      Agent degradation in long-running tasks is not a failure of model capacity but a
+      self-reinforcing 4-link feedback loop — unequal context attention → compounding
+      errors → state externalization → inert memory feedback — that must be intercepted
+      at the system level, not the model level.
+    inputs:
+      - "The four links of the degradation loop and their interaction dynamics"
+      - "System design choices at each link that can break the feedback cycle"
+      - "Monitoring signals from Context Health Monitoring to detect which link is currently dominant"
+    outputs:
+      - "Link-specific interventions at each of the four links"
+      - "Degradation trajectory forecast estimating time-to-cliff under current conditions"
+      - "Diagnostic classification: which link is currently driving degradation"
+    benefits:
+      - "Treats the root cause (the feedback loop) rather than treating symptoms"
+      - "Each link has a specific, implementable intervention — no single silver bullet required"
+      - "The loop model explains why standalone fixes fail: solving only one link leaves the other three to drive degradation"
+      - "Provides a diagnostic framework for classifying and responding to degradation"
+    limitations:
+      - "The four links interact nonlinearly; optimizing one link can shift pressure to another"
+      - "Implementing all four interventions simultaneously adds significant system complexity"
+      - "The loop is permanent — no intervention eliminates it entirely; the goal is to push the cliff far enough"
+      - "Requires cross-cutting instrumentation across attention, verification, state, and retrieval layers"
+    components:
+      - name: "Link 1 Interceptor: Structured Context Ordering"
+        role: "Places high-importance tokens at head and tail positions the model attends to reliably, countering unequal context attention"
+      - name: "Link 2 Interceptor: Verification Gate"
+        role: "Detects off-trajectory tool calls between steps before they can compound, countering error multiplication"
+      - name: "Link 3 Interceptor: Relational State Externalization"
+        role: "Persists external state in the relational context graph rather than ad-hoc scratchpads, countering state fragmentation"
+      - name: "Link 4 Interceptor: Budgeted Retrieval"
+        role: "Applies Selection-Budgeted Retrieval to prevent memory retrieval from feeding the loop, countering inert memory feedback"
+    flow:
+      - step: 1
+        action: "Monitor Context Health metrics to detect which link of the degradation loop is currently dominant"
+      - step: 2
+        action: "Classify the degradation mode: Link 1 (attention dilution), Link 2 (error cascade), Link 3 (state fragmentation), Link 4 (retrieval overload)"
+      - step: 3
+        action: "Apply the corresponding link-specific interceptor"
+      - step: 4
+        action: "Measure health metrics after intervention to confirm the degradation rate has slowed"
+      - step: 5
+        action: "If metrics continue to degrade, escalate: apply next link's interceptor or trigger human handoff"
+      - step: 6
+        action: "Forecast time-to-cliff under current trajectory; if insufficient for task completion, trigger preemptive handoff"
+
+cross_pattern_dependencies:
+  "Deliberate Forgetting":
+    requires:
+      - "Relational Context Graph"
+      - "Neutral Selection Layer"
+  "Smallest Sufficient Context":
+    requires:
+      - "Relational Context Graph"
+      - "Tiered Context Storage"
+  "Tiered Context Storage":
+    enables:
+      - "Deliberate Forgetting"
+      - "Selection-Budgeted Retrieval"
+  "Relational Context Graph":
+    is_foundation_of: "All other selection patterns"
+  "Neutral Selection Layer":
+    wraps:
+      - "Relational Context Graph"
+      - "Tiered Context Storage"
+  "Context Health Monitoring":
+    feeds: "Agent Degradation Loop Prevention"
+  "Selection-Budgeted Retrieval":
+    directly_counters: "Link 4 of Agent Degradation Loop"
+  "Agent Degradation Loop Prevention":
+    orchestrates: "All other patterns as link-specific interventions"

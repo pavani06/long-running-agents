@@ -804,6 +804,254 @@ As estratégias 1-6 decidem **como** armazenar, comprimir e recuperar contexto. 
 
 **Relação com as outras estratégias:** Self-distillation não substitui nenhuma das estratégias 1-6 — ela as **alimenta**. Sliding Window, Summarization, State Persistence, Retrieval e Compaction respondem "como armazenar". Self-distillation responde "o que vale a pena armazenar". Para o padrão completo, veja [[docs/canonical/privileged-context-self-distillation|Privileged Context Self-Distillation]].
 
+### 8. Tiered Context Storage (Hot/Warm/Cold)
+
+**Como funciona:** Organiza o contexto em três tiers com latências e contratos distintos: hot (memória ativa, sub-ms), warm (NVMe, ~1ms), cold (object storage, ~100ms). Um Tier Orchestrator move unidades de contexto entre tiers por relevância — promove `cold → warm → hot` quando o grafo relacional sinaliza que serão necessárias, demote `hot → warm → cold` quando deixam de ser relevantes para o passo atual.
+
+**Por que existe:** O modelo binário atual (ativo vs. externo) força escolhas radicais: ou o contexto está na janela ou está completamente fora. Não existe estado intermediário para contexto "recentemente relevante, pode ser necessário em breve". Sem tiers dinâmicos, o agente carrega contexto stale na janela (degrada atenção) ou descarta contexto que vira inesperadamente relevante no passo seguinte (latência de cold fetch).
+
+**Componentes:**
+- **Hot Tier Cache:** Tudo o que o modelo está raciocinando agora.
+- **Warm Tier Store:** Contexto recentemente relevante, acessível com baixa latência.
+- **Cold Tier Archive:** Histórico completo, recuperável sob demanda.
+- **Tier Orchestrator:** Motor de promoção e demotion baseado em relevance scores e prefetch predictions.
+
+**Pseudocódigo simples:**
+```python
+def orchestrate_tiers(current_step, hot_window, warm_store, cold_archive, budget):
+    # Demote: hot → warm/cold
+    for unit in hot_window:
+        if not is_relevant(unit, current_step):
+            demote(unit, warm_store if unit.recently_relevant else cold_archive)
+    # Prefetch: cold/warm → hot
+    predicted = traverse_graph(current_step.task_node)
+    for unit in predicted:
+        if in_tier(unit, cold_archive):
+            promote(unit, warm_store)
+        if in_tier(unit, warm_store) and is_critical(unit):
+            promote(unit, hot_window)
+    # Verify budget
+    assert token_count(hot_window) <= budget
+```
+
+**Prós:**
+- ✅ Mantém working set pequeno de propósito, prevenindo context rot.
+- ✅ Recuperação on-demand de cold storage quando detalhes descartados viram relevantes.
+- ✅ Separa storage concern (onde vive) de selection concern (o que o modelo atende).
+- ✅ Escala linearmente com volume de histórico.
+
+**Contras:**
+- ⚠️ Política de promoção/demotion precisa ser calibrada por domínio.
+- ⚠️ Latência de `cold → hot` pode travar raciocínio se não houver prefetch.
+- ⚠️ Exige infraestrutura para três tiers com características diferentes.
+
+**Quando KODA usa:** KODA mantém a conversa ativa de Camila no hot tier, o resumo da fase de comparação no warm tier (acessível se ela retomar o tema), e o histórico completo de 2h+ no cold tier (recuperável se ela perguntar sobre um detalhe dito no minuto 15).
+
+**Conexão com o currículo:** Este padrão estende [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]] substituindo o modelo binário ativo/externo por três tiers dinâmicos. Usa [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]] para handles estáveis entre tiers. Documento canônico: [[docs/canonical/tiered-context-storage|Tiered Context Storage]].
+
+### 9. Selection-Budgeted Retrieval
+
+**Como funciona:** Cada retrieval é justificado por custo-benefício, não por similaridade. Um Information Value Predictor estima o quanto cada candidato reduz a incerteza da tarefa. Um Token Cost Estimator calcula o custo em tokens. Os candidatos são rankeados por `value / cost` e o orçamento de retrieval é alocado dos mais para os menos valiosos. Um Utility Feedback Loop rastreia quais itens recuperados foram realmente referenciados pelo modelo e atualiza o preditor.
+
+**Por que existe:** O repositório tem as duas metades separadas: tracking de token budget ([[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]) e infraestrutura de retrieval ([[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]], [[docs/canonical/semantic-topic-bucketing|Semantic Topic Bucketing]]). Mas o retrieval não é budget-aware: o ledger tem ação `retrieve` sem mecanismo de decisão, e o catálogo permite fetch por handle sem ranking de custo-benefício. Sem esse padrão, quando o budget aperta, o sistema continua recuperando near-miss distractors que custam tokens e degradam qualidade de raciocínio.
+
+**Pseudocódigo simples:**
+```python
+def budgeted_select(candidates, available_budget):
+    ranked = []
+    for c in candidates:
+        cost = estimate_tokens(c)
+        value = predict_information_value(c)
+        ranked.append((value / cost, c))
+    ranked.sort(reverse=True)
+    selected, spent = [], 0
+    for ratio, item in ranked:
+        if spent + estimate_tokens(item) <= available_budget:
+            selected.append(item)
+            spent += estimate_tokens(item)
+    return selected
+
+def update_utility_feedback(retrieved_items, model_output):
+    for item in retrieved_items:
+        was_used = referenced_in_output(item, model_output)
+        update_predictor(item, was_used)
+```
+
+**Prós:**
+- ✅ Previne o memory feedback loop (Link 4 da degradação): retrieval não alimenta a janela com ruído.
+- ✅ Cada retrieval se justifica por contribuição prevista à tarefa, não por similaridade.
+- ✅ Feedback loop cria aprendizado cross-session: o sistema melhora em prever quais retrievals importam.
+- ✅ Tokens são conservados para raciocínio, não para near-miss distractors.
+
+**Contras:**
+- ⚠️ Estimar valor de informação é difícil — utilidade real só é conhecida depois.
+- ⚠️ Em tarefas exploratórias, pode penalizar retrieval e privar o modelo de descobertas.
+- ⚠️ Exige instrumentação para rastrear quais itens recuperados foram referenciados.
+
+**Quando KODA usa:** Antes de recomendar um combo para Camila, KODA identifica 15 candidatos de contexto (histórico de preferências, reviews de produto, comparações anteriores). Em vez de injetar todos, estima valor/custo de cada um e aloca budget de retrieval dos mais para os menos valiosos. Após a recomendação, verifica quais itens Camila realmente perguntou sobre e atualiza o preditor.
+
+**Conexão com o currículo:** Este padrão faz a ponte entre [[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]] e [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]], tornando o retrieval budget-aware. É o contramedida direto ao Link 4 (inert memory feedback) do Agent Degradation Loop. Documento canônico: [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]].
+
+### 10. Deliberate Forgetting
+
+**Como funciona:** Fazer o esquecimento virar uma operação intencional de primeira classe. A cada passo, um Relevance Evaluator percorre o grafo relacional para pontuar cada unidade de contexto por relevância à tarefa atual. Um Promotion/Demotion Engine move tokens entre tiers com base nos scores. Um Discard Logger registra o que foi descartado e o racional, permitindo recuperação futura. Um Budget Gate garante que o custo de avaliar o esquecimento não exceda a economia de tokens gerada.
+
+**Por que existe:** O repositório trata compaction, summarization e truncation como intervenções reativas (disparadas por budget) — não como um loop proativo de relevance scoring. A pergunta de design muda: não é "como armazenar tudo", mas "o que posso me dar ao luxo de esquecer agora". A qualidade do agente vira função da qualidade das decisões de exclusão, não da capacidade de armazenamento.
+
+**Componentes:**
+- **Relevance Evaluator:** Pontua cada unidade de contexto por relevância à tarefa atual usando travessia do grafo relacional (não similaridade).
+- **Promotion/Demotion Engine:** Executa transições entre tiers com base nos scores.
+- **Discard Logger:** Registra o que foi descartado e por quê, com audit trail.
+- **Budget Gate:** Garante que o custo de avaliar não exceda a economia.
+
+**Pseudocódigo simples:**
+```python
+def deliberate_forgetting_step(active_window, task_state, graph, budget):
+    # Score each context unit
+    scores = {}
+    for unit in active_window:
+        relevance = traverse_typed_edges(graph, unit, task_state)
+        recency = time_since_creation(unit)
+        scores[unit.id] = relevance * recency_decay(recency)
+    # Demote low-scoring
+    for unit in active_window:
+        if scores[unit.id] < DEMOTION_THRESHOLD:
+            demote_to_warm_or_cold(unit)
+            log_discard(unit, scores[unit.id], "relevance below threshold")
+    # Promote high-scoring from warm
+    for unit in warm_store:
+        if scores.get(unit.id, 0) > PROMOTION_THRESHOLD:
+            promote_to_hot(unit, active_window)
+    # Verify cost of evaluation < savings
+    eval_cost = estimation_tokens_used
+    savings = tokens_freed_by_demotions
+    assert eval_cost < savings * BUDGET_GATE_RATIO
+```
+
+**Prós:**
+- ✅ Previne context rot: cada token appended não degrada qualidade do passo seguinte.
+- ✅ Pergunta de design muda de "como armazenar tudo" para "o que posso esquecer agora".
+- ✅ Qualidade do agente vira função da decisão de exclusão, não da capacidade de storage.
+- ✅ Reduz near-miss distractors que aceleram a compounding error rate.
+
+**Contras:**
+- ⚠️ Exige um grafo relacional para decisões informadas; stores baseados em similaridade não suportam.
+- ⚠️ Esquecimento agressivo pode descartar detalhes cuja importância só aparece depois.
+- ⚠️ A política de esquecimento consome tokens para avaliar relevância; em budgets extremamente apertados, o custo de avaliação pode exceder a economia.
+
+**Quando KODA usa:** Na conversa de 2h com Camila, o Deliberate Forgetting percorre o contexto ativo a cada mudança de fase (Discovery → Comparison → Cart → Checkout). Contexto da fase anterior que não é mais relevante é demovido para warm/cold com log de descarte. Quando Camila retoma um tema da fase de comparação, o discard log permite recuperar exatamente o que foi removido.
+
+**Conexão com o currículo:** Depende de [[docs/canonical/relational-context-graph|Relational Context Graph]] para relevance signals. Requer Tiered Context Storage (item 8) para a infraestrutura de tiers. Estende [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] adicionando um passo proativo de forgetting ao loop de controle. Documento canônico: [[docs/canonical/deliberate-forgetting|Deliberate Forgetting]].
+
+### 11. Smallest Sufficient Context
+
+**Como funciona:** Minimizar tokens à condição de suficiência: determinar o subconjunto mínimo que o agente precisa para raciocinar corretamente sobre o passo atual. Um Sufficiency Estimator determina o token set mínimo. Um Relational Traversal Engine percorre o grafo por edges tipados (dependency, provenance, causation) para coletar unidades conectadas. Um Order-Preserving Assembler remonta os tokens na ordem temporal original. Um Capacity Profiler mapeia o viés de atenção do modelo (head/tail bias) para posicionar tokens críticos nas posições atendidas.
+
+**Por que existe:** O repositório monta contexto por camadas estruturais ([[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]: harness prompt → durable state → task state → recent texture). Isso é budget-aware mas não sufficiency-aware: não determina o subconjunto mínimo para o passo atual. O resultado é contexto com tokens "estruturalmente bem posicionados" mas relacionalmente irrelevantes. A resposta instintiva à degradação (aumentar a janela) é justamente o oposto do necessário: janelas maiores só aumentam o teto de ruído acumulado antes do cliff.
+
+**Componentes:**
+- **Sufficiency Estimator:** Determina o token set mínimo necessário para o passo atual.
+- **Relational Traversal Engine:** Percorre o grafo por edges tipados para coletar contexto conectado.
+- **Order-Preserving Assembler:** Remonta tokens na ordem temporal original para coerência.
+- **Capacity Profiler:** Mapeia o head/tail bias do modelo para posicionamento ótimo.
+
+**Pseudocódigo simples:**
+```python
+def assemble_smallest_sufficient(task_step, graph, storage, budget):
+    # Determine what info is required
+    required = parse_requirements(task_step)
+    # Traverse graph from task node along typed edges
+    collected = traverse_graph(
+        start_node=task_step.task_node,
+        edge_types=["dependency", "provenance", "causation"],
+        max_depth=RELEVANCE_DEPTH
+    )
+    # Sort by original temporal order
+    ordered = sort_by_timestamp(collected)
+    # Apply capacity profiler: critical tokens at head/tail
+    positioned = apply_attention_profile(ordered, model_capacity_profile)
+    # Trim to budget
+    trimmed = trim_to_budget(positioned, budget)
+    # Verify sufficiency
+    assert estimate_sufficiency(trimmed, task_step) >= MIN_SUFFICIENCY
+    return trimmed
+```
+
+**Prós:**
+- ✅ Retrieval order-preserving de poucos milhares de tokens bem escolhidos supera dumping de janela cheia.
+- ✅ Seleção guiada por estrutura (relevância relacional), não por similaridade (proximidade de embedding).
+- ✅ Cada passo de raciocínio opera sobre o contexto mais limpo possível, reduzindo compounding error rate.
+- ✅ Viés de atenção do modelo é tratado como recurso a otimizar (capacity profiling).
+
+**Contras:**
+- ⚠️ Determinar suficiência é um problema difícil: subestimação causa contexto incompleto.
+- ⚠️ O grafo relacional precisa ser mantido com atualizações de supersession e tracking de dependências.
+- ⚠️ Para tarefas com dependências altamente interconectadas, o subconjunto mínimo ainda pode ser grande.
+
+**Quando KODA usa:** Ao recomendar whey para Camila, o Smallest Sufficient Context percorre o grafo a partir do nó da tarefa atual (recommendation) por edges de dependency (restrições alimentares), provenance (de onde veio a preferência por chocolate) e causation (decisões anteriores que afetam esta). Coleta apenas os 3-5 fatos conectados, ordena temporalmente, posiciona restrição de lactose no head (posição de alta atenção) e monta um prompt de 2K tokens em vez de 30K.
+
+**Conexão com o currículo:** Estende [[docs/canonical/hybrid-context-stack|Hybrid Context Stack]] substituindo camadas estruturais por estimação de suficiência relacional. Requer [[docs/canonical/relational-context-graph|Relational Context Graph]] para edges tipados. Requer Tiered Context Storage (item 8) para infraestrutura de retrieval. Documento canônico: [[docs/canonical/smallest-sufficient-context|Smallest Sufficient Context]].
+
+### 12. Relational Context Graph (Foundation)
+
+**Como funciona:** Substitui retrieval baseado em similaridade por seleção relacional. Constrói um grafo de contexto onde nós representam unidades de contexto (tool results, decisões, state snapshots, notas de progresso) e edges carregam relacionamentos semânticos tipados: **dependency** (A depende de B), **provenance** (A foi derivado de B), **supersession** (A foi substituído por B — A é stale), **causation** (decisão D causou outcome O). A query primitiva muda: em vez de "encontre vetores similares", percorra o grafo por edges tipados para coletar contexto conectado.
+
+**Por que existe:** Embedding stores respondem "o que é similar a X" — não "o que é relevante para esta tarefa neste estado". Similaridade achata relacionamentos semânticos, retornando near-misses que agem como distractors e aceleram o cliff do agente (Link 1 do degradation loop: atenção desigual ao contexto). O repositório tem infraestrutura de grafo ([[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]) com labeling epistêmico, mas não tem os quatro edge types formais nem os componentes de classificação e supersession.
+
+**Quatro edge types formais:**
+
+| Edge Type | Significado | Exemplo KODA |
+|---|---|---|
+| Dependency | A depende de B (B deve estar presente para entender A) | Recomendação de whey depende da restrição de lactose |
+| Provenance | A foi derivado de B (cadeia de derivação) | Decisão de recomendar whey isolado veio da mensagem "não posso lactose" no minuto 3 |
+| Supersession | A foi substituído por B (B é a versão atual; A é stale) | Orçamento de R$ 180 foi substituído por R$ 220 no minuto 29 |
+| Causation | Decisão D causou outcome O (linka decisões a consequências) | Recomendação sem lactose causou satisfação na compra seguinte |
+
+**Componentes:**
+- **Node Ingestor:** Cria nós para cada unidade de contexto com metadados.
+- **Edge Classifier:** Classifica relacionamentos nos quatro tipos formais.
+- **Supersession Updater:** Marca nós obsoletos e redireciona edges.
+- **Traversal Engine:** Executa traversals por edges tipados para coleta de contexto.
+
+**Pseudocódigo simples:**
+```python
+def ingest_context_unit(unit, graph):
+    node = create_node(unit, metadata={timestamp, agent_id, session_id})
+    graph.add_node(node)
+    # Classify edges to existing nodes
+    for existing in graph.nodes:
+        edge_type = classify_relationship(node, existing)
+        if edge_type:
+            graph.add_edge(node, existing, edge_type)
+    # Handle supersession
+    if edge_type == "supersession":
+        mark_stale(existing)
+        redirect_edges(existing, node)
+
+def query_context(task_node, graph):
+    return graph.traverse(
+        start=task_node,
+        edges=["dependency", "provenance", "causation"],
+        exclude_stale=True,
+        order_by="dependency_depth"
+    )
+```
+
+**Prós:**
+- ✅ Transforma retrieval em selection: o modelo recebe contexto conectado por relacionamentos reais.
+- ✅ Supersession edges previnem que contexto stale entre na janela.
+- ✅ Provenance edges permitem debugging: trace qualquer conclusão pela cadeia de derivações.
+- ✅ Causation edges permitem aprendizado: linka decisões a outcomes cross-session.
+
+**Contras:**
+- ⚠️ Manutenção do grafo não é trivial: cada unidade nova precisa de classificação de edges.
+- ⚠️ Bootstrap exige schema manual ou fase de bootstrap com inferência de edge types.
+- ⚠️ Maturidade de tooling para grafos relacionais está muito atrás de embedding stores.
+
+**Quando KODA usa:** Cada interação de Camila — tool results do catálogo, decisões de recomendação, snapshots de estado do carrinho — vira um nó no grafo relacional. Edges de dependency conectam a recomendação ao perfil de restrições. Edges de provenance conectam cada decisão à mensagem que a originou. Edges de supersession marcam o orçamento antigo como stale quando Camila aumenta o limite. Edges de causation conectam recomendações a satisfação em compras futuras.
+
+**Conexão com o currículo:** Este é o **padrão fundação** de todos os outros padrões de seleção. Deliberate Forgetting, Smallest Sufficient Context e Selection-Budgeted Retrieval dependem dele para relevance signals via typed edge traversal. Estende [[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]] adicionando os quatro edge types formais ao labeling epistêmico existente. Documento canônico: [[docs/canonical/relational-context-graph|Relational Context Graph]].
+
 ### Como escolher a estratégia certa
 
 **Regra de decisão 001:** Se o dado é crítico para saúde ou segurança, use State Persistence antes de qualquer resumo.

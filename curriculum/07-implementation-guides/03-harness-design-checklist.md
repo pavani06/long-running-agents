@@ -452,6 +452,10 @@ Por que importa: se o harness for truncado junto com o payload, o agente perde i
 - [ ] Corte por excesso de tokens falha antes da chamada ou compacta de forma controlada?
 - [ ] Context window exclui dados obsoletos ou conflitantes com o state atual?
 - [ ] Owner da politica de contexto e data da ultima revisao estao visiveis?
+- [ ] Retrieval e budget-aware: candidatos sao rankeados por value/cost ratio antes de injetar na janela? ([[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]])
+- [ ] Existe um Information Value Predictor que estima reducao de incerteza por candidato?
+- [ ] Contexto e armazenado em formato agnostico de modelo, permitindo consumo cross-model? ([[docs/canonical/neutral-selection-layer|Neutral Selection Layer]])
+- [ ] Contexto sobrevive a migracao de modelo sem perder estrutura ou proveniencia?
 
 ### Critérios de bloqueio para esta categoria
 
@@ -845,6 +849,64 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - **Nível 3:** há contrato, validação e teste principal.
 - **Nível 4:** há métricas, replay e revisão periódica.
 - **Nível 5:** há evolução contínua com custo, qualidade e remoção controlada.
+
+---
+
+## 🏥 7. Context Health Monitoring (Qualidade além dos Tokens)
+
+Esta categoria verifica se um harness bom monitora qualidade do contexto — não apenas quantidade de tokens. O repositório já tem monitoramento sofisticado de token health ([[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]] com fases green/yellow/orange/red). Mas tokens são a dimensão de quantidade. A dimensão de qualidade — o modelo está efetivamente raciocinando sobre o contexto que recebeu? — exige métricas diferentes.
+
+### O que um bom harness faz
+
+- Monitora **effective context size**: a fração da janela que o modelo está efetivamente atendendo (head/tail bias faz o meio ser sub-atendido).
+- Mede **near-miss rate**: proporção de contexto recuperado que entrou na janela mas era similar, não relevante (distractors).
+- Detecta **contradiction rate**: frequência de outputs que contradizem decisões ou fatos anteriores no grafo relacional.
+- Agrega as três dimensões em um **health score** contínuo (não binário pass/fail), detectando aproximação do cliff antes que a falha seja catastrófica.
+- Dispara intervenções preventivas quando o health score cruza thresholds: flush e reload de contexto, ou handoff para operador humano.
+
+### Por que isso importa no KODA
+
+Agentes não degradam gradualmente — eles mantêm performance aparente e então sofrem cliff (colapso súbito). Monitoramento binário (pass/fail por passo) não detecta a aproximação do ponto de inflexão. O [[docs/canonical/context-health-monitoring|Context Health Monitoring]] transforma o monitoramento de binário para contínuo (trajetória de saúde), permitindo intervenção antes da catástrofe.
+
+### Checklist PASS/FAIL
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Effective context estimator | O harness mede a fração da janela que o modelo está efetivamente atendendo, ajustando por head/tail bias. | Existe evidência verificável e atualizada. | O harness sabe o tamanho da janela mas não mede eficácia de atenção. | [[docs/canonical/context-health-monitoring|Context Health Monitoring]] |
+| Near-miss detector | O harness compara contexto recuperado contra requisitos reais da tarefa para detectar distractors. | Existe evidência verificável e atualizada. | Retrieval injeta contexto sem medir se ele era relevante ou distrator. | Mede qualidade da camada de seleção. |
+| Contradiction scanner | Cada output é comparado contra decisões e fatos anteriores armazenados no grafo relacional. | Existe evidência verificável e atualizada. | Contradições só são detectadas post-hoc em análise de incidente. | [[docs/canonical/relational-context-graph|Relational Context Graph]] |
+| Health score aggregator | Métricas de effective context, near-miss e contradiction são combinadas em um score de saúde contínuo. | Existe evidência verificável e atualizada. | Monitoramento é exclusivamente sobre tokens (quantidade), não sobre qualidade. | Health trajectory, não snapshots binários. |
+| Preemptive intervention triggers | Quando o health score cruza thresholds de warning/critical, o harness dispara flush, reload ou handoff. | Existe evidência verificável e atualizada. | Intervenção só acontece depois que o agente já falhou (reativa). | Prevenção, não reação. |
+
+### Evidências que um revisor deve pedir
+
+- health score dashboard com effective context, near-miss rate e contradiction rate
+- trace de intervenção preventiva (health score caiu → flush disparado)
+- calibração de thresholds de health score com dados de produção
+- comparação de near-miss rate antes/depois de melhorias na camada de seleção
+
+### Critérios de bloqueio para esta categoria
+
+- Bloqueie produção se não há monitoramento de qualidade de contexto além de token count.
+- Bloqueie produção se o único sinal de health é "o modelo respondeu sem erro".
+- Permita rollout limitado com thresholds conservadores até calibrar com dados reais.
+
+### Sinais de maturidade crescente
+
+- **Nível 1:** monitoramento binário pass/fail por passo.
+- **Nível 2:** token health monitor com fases green/yellow/orange/red.
+- **Nível 3:** effective context size e near-miss rate são medidos, health score existe.
+- **Nível 4:** contradiction detection usa grafo relacional, intervenções são automatizadas.
+- **Nível 5:** health trajectory prevê time-to-cliff e dispara handoff preventivo.
+
+### Micro-checklist de revisão rápida
+
+- [ ] O harness mede a fracao da janela que o modelo efetivamente atende (effective context size)?
+- [ ] Near-miss rate e medido: quantos itens recuperados eram distractors, nao relevantes?
+- [ ] Outputs sao comparados contra decisoes anteriores para detectar contradicoes?
+- [ ] As tres metricas (effective context, near-miss, contradiction) sao agregadas em um health score?
+- [ ] Existem thresholds de warning e critical que disparam intervencao preventiva?
+- [ ] O health score e uma trajetoria continua, nao um snapshot binario?
 
 ---
 

@@ -372,6 +372,16 @@ def bucket_messages_by_topic(conversation):
 
 ---
 
+### Além do Orçamento Linear: Retrieval Também Precisa de Budget
+
+As quatro estratégias acima gerenciam tokens que já estão no contexto. Mas há uma fonte de tokens que muitas vezes é tratada como gratuita: **retrieval**. Cada item recuperado do histórico, do catálogo ou do perfil adiciona tokens à janela. Se o retrieval não é budget-aware, o sistema que foi construído para resolver o problema de memória pode se tornar o motor da degradação — este é o Link 4 (inert memory feedback) do Agent Degradation Loop.
+
+**O princípio:** Cada retrieval deve se justificar por `valor de informação / custo em tokens`, não por similaridade com a query. O padrão [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]] formaliza isso: ranking de candidatos por value/cost ratio, alocação de budget dos mais para os menos valiosos, e feedback loop que aprende quais retrievals realmente importaram.
+
+**Exemplo KODA:** Antes de recomendar whey para Camila, o sistema identifica 15 candidatos de contexto. Em vez de injetar todos, estima o valor de informação de cada um (quanto reduz a incerteza sobre a recomendação?) e o custo em tokens. Com budget de 3K tokens para retrieval, seleciona os top 5 por value/cost — digamos, restrição de lactose (80 tokens, alto valor), orçamento (50 tokens, alto valor) e três outras preferências fortes. Os 10 candidatos restantes ficam para o próximo passo ou são descartados.
+
+**Conexão com o currículo:** Este padrão faz a ponte entre token budget tracking e retrieval infrastructure. Ele será aprofundado no Nível 3. Documento canônico: [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]].
+
 ### Estratégia 5: The Hybrid Approach (Híbrida)
 **Ideia:** Combinar múltiplas estratégias.
 

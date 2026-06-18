@@ -146,7 +146,11 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   ├── 05-state-persistence.md
 │   ├── 06-harness-evolution.md
 │   ├── 07-multi-agent-coordination.md
-│   └── 08-evaluation-rubrics.md
+│   ├── 08-evaluation-rubrics.md
+│   └── exercises/
+│       ├── exercise-tiered-context-storage.md
+│       ├── exercise-neutral-selection-layer.md
+│       └── exercise-selection-budgeted-retrieval.md
 │
 ├── 📊 KNOWLEDGE GRAPHS/
 │   ├── 01-concept-ecosystem.md

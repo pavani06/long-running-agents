@@ -25,6 +25,19 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Agent Degradation Loop Prevention (Prevencao do Loop de Degradacao)
+**Definição:** Framework diagnóstico que identifica qual dos quatro links do loop de degradação está dominando e aplica o interceptor específico. Os quatro links: (1) atenção desigual ao contexto, (2) erros que se compõem, (3) fragmentação de estado externo, (4) feedback inerte de memória (retrieval que alimenta a janela com ruído). Trata a causa raiz (o loop de feedback) em vez de sintomas individuais.
+
+**Por que importa:** Resolver apenas um link deixa os outros três para continuar a degradação. O loop é permanente — nenhuma intervenção o elimina; o objetivo é empurrar o cliff para além da duração da tarefa.
+
+**Em KODA:** Numa conversa de 2h+, o Context Health Monitoring detecta que o Link 1 (atenção desigual) está dominando. O interceptor aplica structured context ordering: tokens críticos (restrições, orçamento) são posicionados no head/tail da janela onde o modelo atende melhor.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]], [[docs/canonical/context-health-monitoring|Context Health Monitoring]], [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]]
+
+---
+
 ### Agent Loop (Loop do Agente)
 **Definição:** O ciclo repetitivo onde um agente: recebe input → pensa → toma ação → recebe resultado → repete.
 
@@ -155,6 +168,19 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Context Health Monitoring (Monitoramento de Saude do Contexto)
+**Definição:** Extensão do token health monitoring (quantidade) para qualidade de contexto: effective context size (fração da janela efetivamente atendida), near-miss rate (proporção de contexto recuperado que era distrator, não relevante), contradiction rate (frequência de outputs que contradizem decisões anteriores). Agregado em um health score contínuo que detecta aproximação do cliff antes da falha catastrófica.
+
+**Por que importa:** Agentes não degradam gradualmente — eles mantêm performance aparente e então sofrem cliff (colapso súbito). Monitoramento binário pass/fail não detecta a aproximação. Health score contínuo permite intervenção preventiva.
+
+**Em KODA:** Após 90 minutos de conversa com Camila, o effective context size cai de 85% para 40% e o near-miss rate sobe. O health score cruza o threshold de warning. O harness dispara flush e reload de contexto antes que KODA comece a recomendar produtos com lactose.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/context-health-monitoring|Context Health Monitoring]], [[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]], [[docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]]
+
+---
+
 ### Context Progressive Disclosure
 **Definição:** Arquitetura de contexto em que instruções e capacidades ficam em diretórios de skills carregados por regras de trigger, em vez de viverem todas em um prompt monolítico. O padrão canônico é [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]].
 
@@ -171,6 +197,21 @@ Referência rápida de termos usados neste programa.
 - Ambos concordam: contrato feito.
 
 **Nível:** 2
+
+---
+
+## D
+
+### Deliberate Forgetting (Esquecimento Deliberado)
+**Definição:** Tratar o esquecimento como operação intencional de primeira classe, executada a cada passo. Um Relevance Evaluator pontua cada unidade de contexto por relevância à tarefa atual usando travessia do grafo relacional (não similaridade). Um Promotion/Demotion Engine move tokens entre tiers. Um Discard Logger registra o que foi descartado e o racional. Um Budget Gate garante que o custo de avaliar não exceda a economia.
+
+**Por que importa:** Agent quality vira função da qualidade das decisões de exclusão, não da capacidade de armazenamento. A pergunta de design muda de "como armazenar tudo" para "o que posso me dar ao luxo de esquecer agora".
+
+**Em KODA:** A cada mudança de fase na conversa de Camila, o Deliberate Forgetting percorre o contexto ativo, demove unidades da fase anterior para warm/cold com log de descarte, e promove unidades relevantes para a nova fase.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/deliberate-forgetting|Deliberate Forgetting]], [[docs/canonical/relational-context-graph|Relational Context Graph]], [[docs/canonical/tiered-context-storage|Tiered Context Storage]]
 
 ---
 
@@ -484,6 +525,23 @@ Evaluator: Verifica se order está completa, preços corretos, inventory ok
 
 ---
 
+## N
+
+### Neutral Selection Layer (Camada de Selecao Neutra)
+**Definição:** Camada de seleção de contexto agnóstica de modelo e independente de vendor, que serve contexto através de uma interface uniforme independente de qual modelo, vendor ou sessão o consome. Três propriedades: neutra (não acoplada a um modelo único), horizontal (cross-agent, cross-session, cross-model), estruturada (relacional, com edges tipados de dependência, proveniência e supersession).
+
+**Por que importa:** Organizações acumulam contexto como seu ativo mais durável em sistemas agenticos. Soldar a estratégia de contexto a features de memória de um vendor específico torna esse ativo refém do roadmap de outro. A camada neutra permite que o mesmo contexto sirva qualquer modelo, presente e futuro.
+
+**Componentes:** Model-Agnostic Context Format, Context Router, Multi-Tenant Registry, Vendor Adapter.
+
+**Em KODA:** O perfil de restrições alimentares de Camila é armazenado em formato agnóstico. Se o modelo muda de Claude para outro provider, o mesmo structured record é traduzido pelo Vendor Adapter sem perder estrutura ou proveniência.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/neutral-selection-layer|Neutral Selection Layer]], [[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]], [[docs/canonical/relational-context-graph|Relational Context Graph]]
+
+---
+
 ## P
 
 ### Planner (Planejador)
@@ -551,6 +609,19 @@ Sprint 4: Play mode
 
 ## R
 
+### Relational Context Graph (Grafo de Contexto Relacional)
+**Definição:** Substitui retrieval baseado em similaridade (embedding stores) por seleção relacional. Nós representam unidades de contexto (tool results, decisões, state snapshots); edges carregam relacionamentos semânticos tipados: dependency (A depende de B), provenance (A foi derivado de B), supersession (A foi substituído por B — A é stale), causation (decisão D causou outcome O). É o padrão fundação de todos os outros padrões de seleção.
+
+**Por que importa:** Embedding stores respondem "o que é similar a X" — não "o que é relevante para esta tarefa neste estado". Similaridade achata relacionamentos semânticos, retornando near-misses que agem como distractors e aceleram o cliff do agente. O grafo transforma retrieval em selection: o modelo recebe contexto conectado por relacionamentos reais.
+
+**Em KODA:** Cada tool result do catálogo, cada decisão de recomendação, cada snapshot de carrinho vira um nó. Edges de dependency conectam recomendações a restrições. Edges de provenance conectam decisões às mensagens que as originaram. Edges de supersession marcam preferências antigas como stale.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/relational-context-graph|Relational Context Graph]], [[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]], [[docs/canonical/deliberate-forgetting|Deliberate Forgetting]], [[docs/canonical/smallest-sufficient-context|Smallest Sufficient Context]]
+
+---
+
 ### Ralph Loop (Ralph Technique)
 **Definição:** Técnica onde um agente roda em loop incrementally, resolvendo um task por iteração.
 
@@ -587,6 +658,19 @@ while not complete:
 
 ---
 
+### Selection-Budgeted Retrieval (Retrieval com Orcamento de Selecao)
+**Definição:** Padrão que torna o retrieval budget-aware: cada candidato de contexto é rankeado por `valor de informação / custo em tokens`, e o orçamento de retrieval é alocado dos mais para os menos valiosos. Um Information Value Predictor estima redução de incerteza. Um Utility Feedback Loop rastreia quais itens recuperados foram realmente referenciados e atualiza o preditor. É o contramedida direto ao Link 4 (inert memory feedback) do Agent Degradation Loop.
+
+**Por que importa:** Retrieval construído para resolver o problema de memória pode se tornar o motor da degradação: cada retrieval adiciona tokens, cada token adicionado encolhe effective context. Sem budget-awareness, o sistema recupera near-miss distractors que custam tokens e degradam qualidade.
+
+**Em KODA:** Antes de recomendar whey, KODA identifica 15 candidatos de contexto. Em vez de injetar todos, estima value/cost de cada um e aloca budget de retrieval dos mais para os menos valiosos. Após a recomendação, verifica quais Camila referenciou e atualiza o preditor.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]], [[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]], [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]
+
+---
+
 ### Self-Evaluation (Autossavaliação)
 **Definição:** Quando um agente avalia seu próprio trabalho.
 
@@ -607,6 +691,19 @@ Evaluator: É bom? Não, porque...
 **Lição:** Sempre use Evaluator separado!
 
 **Nível:** 2
+
+---
+
+### Smallest Sufficient Context (Menor Contexto Suficiente)
+**Definição:** Minimizar tokens à condição de suficiência: determinar o subconjunto mínimo que o agente precisa para raciocinar corretamente sobre o passo atual. Um Sufficiency Estimator determina o token set mínimo. Um Relational Traversal Engine percorre o grafo por edges tipados (dependency, provenance, causation) para coletar contexto conectado. Um Order-Preserving Assembler remonta os tokens na ordem temporal original. Um Capacity Profiler posiciona tokens críticos nas posições de head/tail que o modelo atende melhor.
+
+**Por que importa:** A resposta instintiva à degradação (aumentar a janela) é o oposto do necessário: janelas maiores só aumentam o teto de ruído acumulado. Retrieval order-preserving de poucos milhares de tokens bem escolhidos supera dumping de janela cheia.
+
+**Em KODA:** Ao recomendar whey, o Smallest Sufficient Context percorre o grafo a partir do nó da tarefa, coleta apenas os 3-5 fatos conectados por edges tipados, ordena temporalmente, posiciona restrição de lactose no head e monta um prompt de 2K tokens em vez de 30K.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/smallest-sufficient-context|Smallest Sufficient Context]], [[docs/canonical/relational-context-graph|Relational Context Graph]], [[docs/canonical/tiered-context-storage|Tiered Context Storage]]
 
 ---
 
@@ -711,6 +808,22 @@ Restante: 140,000 para agent rodar
 **Nível:** 2
 
 **Ver também:** [[docs/canonical/token-economics-gap-filling|Token Economics of Gap-Filling]], [[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]], [[docs/canonical/burn-rate-runtime-forecast|Burn Rate Runtime Forecast]], Token Budget, ICE Craft Separation
+
+---
+
+### Tiered Context Storage (Armazenamento de Contexto em Tiers)
+
+**Definição:** Arquitetura de três tiers de contexto — hot (memória ativa, sub-ms), warm (NVMe, ~1ms), cold (object storage, ~100ms) — com um Tier Orchestrator que move unidades de contexto entre tiers por relevância. Promove `cold → warm → hot` quando o grafo relacional sinaliza que serão necessárias. Demote `hot → warm → cold` quando deixam de ser relevantes. Estende o modelo binário ativo/externo do [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]] para três tiers com dinâmica de relevância.
+
+**Por que importa:** O modelo binário força escolhas radicais: ou o contexto está na janela ou está completamente fora. Sem um warm tier, o agente carrega contexto stale que degrada atenção ou descarta contexto que vira inesperadamente relevante no passo seguinte (latência de cold fetch).
+
+**Componentes:** Hot Tier Cache, Warm Tier Store, Cold Tier Archive, Tier Orchestrator.
+
+**Em KODA:** A conversa ativa de Camila está no hot tier, o resumo da fase de comparação no warm tier (acessível se ela retomar o tema), e o histórico completo de 2h+ no cold tier (recuperável se ela perguntar sobre detalhe do minuto 15).
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/tiered-context-storage|Tiered Context Storage]], [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]], [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]], [[docs/canonical/deliberate-forgetting|Deliberate Forgetting]]
 
 ---
 

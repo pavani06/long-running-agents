@@ -6,29 +6,40 @@
 
 ## Done
 
-- [x] phase-0: Repository Mental Model — mental-model.md + mental-model.yaml gerados e validados [evaluator: PASS]
-- [x] phase-1: Knowledge Extraction — analysis.md + analysis.yaml gerados e validados [evaluator: PASS]
-- [x] phase-2: Pattern Extraction — 8 padrões extraídos com campos obrigatórios e YAML espelhado [evaluator: PASS]
-- [x] phase-3: Classification — 1 Already Exists, 5 Partial Coverage, 2 Missing [evaluator: PASS]
-- [x] phase-4: Improvement Generation — 7 canonical docs, 2 skills, 2 exercises, artifacts manifest [evaluator: PASS]
-- [x] phase-5: Integration — SOR + curriculum INDEX/MASTER_PLAN/README atualizados [evaluator: PASS]
-- [x] phase-6: Curriculum Deep Integration — 5 arquivos curriculares existentes integrados, sem novos arquivos [evaluator: PASS]
+- [x] phase-0: Repository Mental Model — 546 linhas [evaluator: PASS]
+- [x] phase-1: Knowledge Extraction — 545 linhas, 6 seções, 9 wikilinks [evaluator: PASS]
+- [x] phase-2: Pattern Extraction — 8 padrões, schema validado [evaluator: PASS]
+- [x] phase-3: Classification — 5 Partial Coverage, 3 Missing [evaluator: PASS]
+- [x] phase-4: Improvement Generation — 14 artifacts, auto-eval 1.0 [evaluator: PASS]
+- [x] phase-5: Integration — 4 índices atualizados [evaluator: PASS]
+- [x] phase-6: Curriculum Deep Integration — 9 arquivos, 500 inserções [evaluator: PASS]
 
 ## Done ✓
 
-Todas as fases concluídas. Aguardando Commit Gate.
+**Pipeline completo.** 7/7 fases aprovadas, 0 retries, 41min total.
+
+Pipeline Metrics Summary:
+  phase-0: 295s | phase-1: 295s | phase-2: 281s | phase-3: 364s
+  phase-4: 661s ← bottleneck (14 artifacts) | phase-5: 114s | phase-6: 475s
+  TOTAL: 2485s (0 retries)
+
+Aguardando Commit Gate.
+- [ ] phase-3: Classification
+- [ ] phase-4: Improvement Generation
+- [ ] phase-5: Integration
+- [ ] phase-6: Curriculum Deep Integration (opcional)
 
 ## Analysis Context
 
-- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language.md
-- **date**: 2026-06-16
-- **source-slug**: the-imitation-game-state-of-policy-distillation-in-language
-- **output_dir**: docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/
+- **source**: /mnt/c/Users/pavan/raw-knowledge/sources/2026-06-17-your-ai-agents-don't-have-a-memory-problem.-they-have-a-sele.md
+- **date**: 2026-06-18
+- **source-slug**: memory-selection-problem
+- **output_dir**: docs/analysis/2026-06-18-memory-selection-problem/
 
 ## Notes
 
 - Stack: Node.js, OpenCode agents, Obsidian-compatible markdown
 - Rodar: não se aplica (análise de documento, não build de código)
-- Testar: `npm run validate:obsidian` (baseline atual: 3 erros preexistentes em docs/analysis/2026-06-14-quarto-book-publishing/PROGRESS.md)
-- Evidência: outputs em docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/
-- Commits: `git commit -m "analysis(the-imitation-game-state-of-policy-distillation-in-language): full pipeline"`
+- Testar: `npx tsx scripts/validate-obsidian.ts`
+- Evidência: outputs em docs/analysis/2026-06-18-memory-selection-problem/
+- Commits: `git commit -m "analysis(memory-selection-problem): <fase>"`

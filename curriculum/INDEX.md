@@ -125,6 +125,9 @@ last_updated: 2026-06-16
 - `03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule.md` (Constraint Failure Decision Rule)
 - `03-nivel-3-advanced-architecture/exercises/exercise-autonomy-curriculum-sampling.md` (Autonomy Curriculum Sampling)
 - `03-nivel-3-advanced-architecture/exercises/exercise-magnitude-direction-verifier-split.md` (Magnitude-Direction Verifier Split)
+- `05-core-concepts/exercises/exercise-tiered-context-storage.md` (Tiered Context Storage)
+- `05-core-concepts/exercises/exercise-neutral-selection-layer.md` (Neutral Selection Layer)
+- `05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md` (Selection-Budgeted Retrieval)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`
@@ -194,6 +197,40 @@ last_updated: 2026-06-16
 ### "Como mantenho contexto?"
 → `01-nivel-1-fundamentals/02-token-budgeting.md`
 → `05-core-concepts/01-context-management.md`
+
+### "Como seleciono o contexto mínimo que o agente precisa?"
+→ `05-core-concepts/01-context-management.md` (seção Smallest Sufficient Context)
+→ `../docs/canonical/smallest-sufficient-context.md`
+→ `../docs/canonical/relational-context-graph.md`
+
+### "Como evito que retrieval de memória alimente a degradação?"
+→ `05-core-concepts/01-context-management.md` (seção Selection-Budgeted Retrieval)
+→ `01-nivel-1-fundamentals/02-token-budgeting.md` (seção Além do Orçamento Linear)
+→ `../docs/canonical/selection-budgeted-retrieval.md`
+
+### "Como esqueço proativamente para prevenir context rot?"
+→ `05-core-concepts/01-context-management.md` (seção Deliberate Forgetting)
+→ `../docs/canonical/deliberate-forgetting.md`
+→ `../docs/canonical/tiered-context-storage.md`
+
+### "Como organizo o contexto em tiers (hot/warm/cold)?"
+→ `05-core-concepts/01-context-management.md` (seção Tiered Context Storage)
+→ `05-core-concepts/05-state-persistence.md` (seção Tiered Context Storage)
+→ `../docs/canonical/tiered-context-storage.md`
+
+### "Como monitoro a qualidade do contexto, não só a quantidade de tokens?"
+→ `07-implementation-guides/03-harness-design-checklist.md` (seção Context Health Monitoring)
+→ `../docs/canonical/context-health-monitoring.md`
+→ `../docs/canonical/phase-gated-token-health-monitor.md`
+
+### "Como o loop de degradação de 4 links afeta agentes long-running?"
+→ `../docs/canonical/agent-degradation-loop-prevention.md`
+→ `../docs/canonical/context-health-monitoring.md`
+→ `07-implementation-guides/06-harness-evolution-playbook.md` (GC Day checklist)
+
+### "Como mantenho contexto portável entre modelos e vendors?"
+→ `../docs/canonical/neutral-selection-layer.md`
+→ `../docs/canonical/llm-as-fuzzy-compiler.md`
 
 ### "Como separo geração de avaliação?"
 → `02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md`

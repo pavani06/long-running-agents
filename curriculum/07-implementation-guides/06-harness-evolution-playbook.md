@@ -575,6 +575,9 @@ Enquanto o ciclo trimestral decide o destino estrutural dos componentes (SIMPLIF
 | "Cupons vencidos passaram 3 vezes no Evaluator" | rubric_gap | Blocker `coupon_expiration` na rubrica + caso de regressao tier fast |
 | "Cliente reclamou que restricao foi esquecida apos 3h" | context_loss | Novo caso N+1 no tier medium de regressao |
 | "Agente usou `localStorage` para token -- 2o escape de seguranca no mes" | safety_escape | Nova regra no Security Persona + lint rule `no-localstorage-token` |
+| "Agente comecou a responder com confianca mas contradizendo decisoes anteriores -- cliff approaching" | context_health | Verificar near-miss rate e contradiction rate; calibrar health score thresholds ([[docs/canonical/context-health-monitoring\|Context Health Monitoring]]) |
+| "Retrieval injetou 15 itens mas modelo so referenciou 3 -- 12 distractors" | retrieval_efficiency | Ativar Selection-Budgeted Retrieval; medir value/cost ratio dos candidatos ([[docs/canonical/selection-budgeted-retrieval\|Selection-Budgeted Retrieval]]) |
+| "Agente perdeu coerencia em conversa de 3h -- sintomas de Link 1 e Link 3 simultaneos" | degradation_loop | Classificar link dominante; aplicar interceptor especifico ([[docs/canonical/agent-degradation-loop-prevention\|Agent Degradation Loop Prevention]]) |
 
 **Checklist minima do GC Day:**
 - [ ] PRs da semana foram revisados e padroes de slop anotados
@@ -583,6 +586,8 @@ Enquanto o ciclo trimestral decide o destino estrutural dos componentes (SIMPLIF
 - [ ] Acoes foram priorizadas e registradas no backlog de harness
 - [ ] O backlog de conversoes esta visivel para todo o time
 - [ ] Nenhum GC Day termina sem pelo menos 1 guardrail novo ou melhorado
+- [ ] Metricas de context health (near-miss rate, contradiction rate) foram revisadas e thresholds ajustados se necessario ([[docs/canonical/context-health-monitoring|Context Health Monitoring]])
+- [ ] Sinais de degradation loop (attention dilution, error cascade, state fragmentation, retrieval overload) foram checados; link dominante classificado se houve degradacao ([[docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]])
 
 ### 📋 Passo 5: Aplique One In One Out
 

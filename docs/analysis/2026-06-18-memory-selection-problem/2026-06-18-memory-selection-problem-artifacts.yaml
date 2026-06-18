@@ -1,0 +1,77 @@
+meta:
+  type: artifact-manifest
+  date: 2026-06-18
+  source_slug: memory-selection-problem
+  classification_file: docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.yaml
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/tiered-context-storage.md
+      pattern: Tiered Context Storage with Promotion/Demotion
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/neutral-selection-layer.md
+      pattern: Neutral Selection Layer
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/selection-budgeted-retrieval.md
+      pattern: Selection-Budgeted Retrieval
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/deliberate-forgetting.md
+      pattern: Deliberate Forgetting
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/smallest-sufficient-context.md
+      pattern: Smallest Sufficient Context
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/relational-context-graph.md
+      pattern: Relational Context Graph
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/context-health-monitoring.md
+      pattern: Context Health Monitoring
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/agent-degradation-loop-prevention.md
+      pattern: Agent Degradation Loop Prevention
+      classification: Partial Coverage
+      priority: P1
+
+  skills:
+    - path: .opencode/skills/tiered-context-storage/SKILL.md
+      pattern: Tiered Context Storage with Promotion/Demotion
+      classification: Missing
+    - path: .opencode/skills/neutral-selection-layer/SKILL.md
+      pattern: Neutral Selection Layer
+      classification: Missing
+    - path: .opencode/skills/selection-budgeted-retrieval/SKILL.md
+      pattern: Selection-Budgeted Retrieval
+      classification: Missing
+
+  exercises:
+    - path: curriculum/05-core-concepts/exercises/exercise-tiered-context-storage.md
+      pattern: Tiered Context Storage with Promotion/Demotion
+      classification: Missing
+    - path: curriculum/05-core-concepts/exercises/exercise-neutral-selection-layer.md
+      pattern: Neutral Selection Layer
+      classification: Missing
+    - path: curriculum/05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md
+      pattern: Selection-Budgeted Retrieval
+      classification: Missing
+
+skipped:
+  already_exists: []
+  better_implementation: []
+
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 8
+    skills: 3
+    exercises: 3
+  notes:
+    - "3 Missing (P0): canonical doc + skill + exercise cada"
+    - "5 Partial Coverage High (P1): canonical doc com reframe/naming do gap"
+    - "system-of-record.md atualizado com 8 novas entradas"

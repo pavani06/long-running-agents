@@ -138,7 +138,11 @@ koda-long-running-agents/
 │   ├── 05-state-persistence.md
 │   ├── 06-harness-evolution.md
 │   ├── 07-multi-agent-coordination.md
-│   └── 08-evaluation-rubrics.md
+│   ├── 08-evaluation-rubrics.md
+│   └── exercises/
+│       ├── exercise-tiered-context-storage.md
+│       ├── exercise-neutral-selection-layer.md
+│       └── exercise-selection-budgeted-retrieval.md
 │
 ├── 06-knowledge-graphs/
 │   ├── 01-concept-ecosystem.md
@@ -245,7 +249,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 13 exercícios do Nível 3
+- [ ] Completei os 16 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

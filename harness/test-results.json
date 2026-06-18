@@ -2,86 +2,86 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-mental-model.md",
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-mental-model.yaml"
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.md",
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
-    "duration_seconds": 621,
+    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
+    "duration_seconds": 295,
     "retry_count": 0,
-    "started_at": "2026-06-17T01:27:43Z",
-    "completed_at": "2026-06-17T01:38:03Z"
+    "started_at": "2026-06-18T12:45:47Z",
+    "completed_at": "2026-06-18T12:50:42Z"
   },
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-analysis.md",
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-analysis.yaml"
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.md",
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de conhecimento da fonte — Phase 1",
-    "duration_seconds": 621,
+    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
+    "duration_seconds": 295,
     "retry_count": 0,
-    "started_at": "2026-06-17T01:27:43Z",
-    "completed_at": "2026-06-17T01:38:03Z"
+    "started_at": "2026-06-18T12:45:47Z",
+    "completed_at": "2026-06-18T12:50:42Z"
   },
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-patterns.md",
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-patterns.yaml"
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.md",
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de padroes reutilizaveis — Phase 2",
-    "duration_seconds": 488,
+    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
+    "duration_seconds": 281,
     "retry_count": 0,
-    "started_at": "2026-06-17T01:38:19Z",
-    "completed_at": "2026-06-17T01:46:26Z"
+    "started_at": "2026-06-18T12:50:55Z",
+    "completed_at": "2026-06-18T12:55:36Z"
   },
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-classification.md",
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-classification.yaml"
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.md",
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Classificacao contra repositorio — Phase 3",
-    "duration_seconds": 378,
+    "notes": "Classificacao contra repositorio \u2014 Phase 3",
+    "duration_seconds": 364,
     "retry_count": 0,
-    "started_at": "2026-06-17T01:46:26Z",
-    "completed_at": "2026-06-17T01:52:43Z"
+    "started_at": "2026-06-18T12:55:36Z",
+    "completed_at": "2026-06-18T13:01:40Z"
   },
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-artifacts.yaml",
-      "docs/analysis/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language/2026-06-16-the-imitation-game-state-of-policy-distillation-in-language-artifacts.md"
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-artifacts.yaml",
+      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-artifacts.md"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
-    "duration_seconds": 766,
+    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
+    "duration_seconds": 661,
     "retry_count": 0,
-    "started_at": "2026-06-17T01:52:43Z",
-    "completed_at": "2026-06-17T02:05:28Z"
+    "started_at": "2026-06-18T13:01:40Z",
+    "completed_at": "2026-06-18T13:12:41Z"
   },
   "phase-5": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Integracao — atualiza system-of-record e indices",
-    "duration_seconds": 274,
+    "notes": "Integracao \u2014 atualiza system-of-record e indices",
+    "duration_seconds": 114,
     "retry_count": 0,
-    "started_at": "2026-06-17T02:05:28Z",
-    "completed_at": "2026-06-17T02:10:02Z"
+    "started_at": "2026-06-18T13:12:41Z",
+    "completed_at": "2026-06-18T13:14:35Z"
   },
   "phase-6": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Curriculum Deep Integration — opcional",
-    "duration_seconds": 463,
+    "notes": "Curriculum Deep Integration \u2014 opcional",
+    "duration_seconds": 475,
     "retry_count": 0,
-    "started_at": "2026-06-17T02:10:02Z",
-    "completed_at": "2026-06-17T02:17:45Z"
+    "started_at": "2026-06-18T13:14:35Z",
+    "completed_at": "2026-06-18T13:22:30Z"
   }
 }

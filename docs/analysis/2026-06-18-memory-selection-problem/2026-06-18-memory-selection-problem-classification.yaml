@@ -1,0 +1,274 @@
+# Memory Selection Problem — Pattern Classification (YAML)
+# Typed mirror of 2026-06-18-memory-selection-problem-classification.md
+# Domain: Agentic systems — context selection, degradation prevention, memory architecture
+
+meta:
+  title: "Memory Selection Problem — Pattern Classification"
+  type: analysis
+  date: 2026-06-18
+  source: "2026-06-18-memory-selection-problem-patterns.yaml"
+  repository: "long-running-agents"
+  branch: "main"
+  classification_count: 8
+  partial_coverage: 5
+  missing: 3
+  already_exists: 0
+  better_implementation: 0
+
+entries:
+  - pattern_name: "Deliberate Forgetting"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >
+      The repo has extensive context management: deliberate context construction (owned-agent-control-loop),
+      explicit compaction triggers (phase-gated-token-health-monitor), head-tail truncation with recoverable
+      middle (head-tail-context-truncation), and selective history with explicit dropping of transient turns
+      (durable-fact-selective-history). However, the deliberate forgetting concept as formalized in the pattern
+      — relevance evaluator, promotion/demotion engine, discard logger with rationale, budget gate on evaluation
+      cost — is not unified into a single mechanism. The repo treats summarization/compaction/truncation as
+      reactive or budget-driven interventions, not as a proactive "what can I afford to forget now"
+      relevance-scoring loop.
+    evidence:
+      - file: "docs/canonical/owned-agent-control-loop.md"
+        line: 60
+        quote: "Context Builder — What the model sees beyond the prompt: history, memory, tool results, business state. You construct every token deliberately. Intervention: summarize old history, inject fresh context, compress verbose tool results."
+      - file: "docs/canonical/durable-fact-selective-history.md"
+        line: 32
+        quote: "Recent conversational texture: the current request, latest turns, short-lived phrasing, and immediate local state needed to answer naturally. Structured durable facts: constraints, preferences, commitments, task state, business facts, and other critical context that must survive windowing, summarization, compaction, and session handoff."
+      - file: "docs/canonical/head-tail-context-truncation.md"
+        line: 37
+        quote: "The middle is not discarded. It is stored as exact recoverable content and exposed through an addressable catalog or retrieval tool."
+      - file: "docs/canonical/phase-gated-token-health-monitor.md"
+        line: 65
+        quote: "orange: Budget em faixa de risco ou aceleracao indica risco antes do proximo checkpoint. summarize ou compress."
+    missing_mechanics:
+      - "Relevance Evaluator: no mechanism scores context units by relevance to current task"
+      - "Promotion/Demotion Engine: binary keep/omit, not scored tier transitions"
+      - "Discard Logger: no record of what was dropped and why"
+      - "Budget Gate on evaluation cost vs. token savings"
+
+  - pattern_name: "Smallest Sufficient Context"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >
+      The repo has foundations for budget-aware, layered context assembly: hybrid context stack with ordered
+      layers (hybrid-context-stack), bounded active context with head/tail anchors (head-tail-context-truncation),
+      retrieval by handle (addressable-memory-catalog), and per-call budget awareness (explicit-token-budget-ledger).
+      However, the core idea of "sufficiency estimation" — determining the minimal subset by relational graph
+      traversal — is not present. The repo assembles by structural layers, not by relational relevance to the
+      current reasoning step. Missing: sufficiency estimator, relational traversal engine for context collection,
+      order-preserving assembly from graph results, and capacity profiler mapping attention bias.
+    evidence:
+      - file: "docs/canonical/hybrid-context-stack.md"
+        line: 36
+        quote: "Reserve non-negotiable budget before loading reducible content: model context window, response buffer, safety buffer, stable harness prompt, and tool contracts. Inject durable state and current task state next."
+      - file: "docs/canonical/head-tail-context-truncation.md"
+        line: 28
+        quote: "Preserve a bounded active context made of the stable harness prompt, the head, the tail, and the latest result. Move the middle into external memory with retrieval handles."
+      - file: "docs/canonical/addressable-memory-catalog.md"
+        line: 28
+        quote: "Represent omitted context as an addressable catalog. Each omitted message, tool call, span, prompt fragment, trace segment, or intermediate result receives a stable identifier plus enough metadata."
+      - file: "docs/canonical/explicit-token-budget-ledger.md"
+        line: 30
+        quote: "Maintain an explicit token budget ledger for each planned model call before dispatch."
+    missing_mechanics:
+      - "Sufficiency Estimator: no mechanism determines minimum token set needed for current step"
+      - "Relational Traversal Engine: retrieval by handle/topic, not by dependency/provenance traversal"
+      - "Capacity Profiler: no formal mapping of model attention bias to token placement"
+
+  - pattern_name: "Tiered Context Storage with Promotion/Demotion"
+    classification: "Missing"
+    integration_value: "Medium"
+    justification: >
+      NOT_FOUND across all 85 canonical docs and the system-of-record pattern inventory. The repo has a binary
+      two-tier model: active context vs. external memory (head-tail-context-truncation), with retrieval handles
+      for external access (addressable-memory-catalog). No hot/warm/cold tier definitions, no promotion/demotion
+      engine for context movement between tiers, no tier orchestrator, and no latency-aware storage policies.
+      The only "promotion" patterns found are cross-context-knowledge-siloing (knowledge promotion pipeline)
+      and carry-debt-sunset-gate (artifact promotion path) — neither relates to storage tier management.
+      The only "tiers" in the repo refer to eval tier stratification (fast/medium/deep).
+    evidence: []
+    locations_searched:
+      - "docs/canonical/ — all 85 canonical docs for 'hot', 'warm', 'cold', 'tier storage', 'promotion', 'demotion'"
+      - "docs/system-of-record.md:144-235 — active canonical pattern inventory"
+    missing_mechanics:
+      - "Three-tier storage architecture (hot/warm/cold)"
+      - "Promotion/Demotion Engine: no dynamic context movement between tiers"
+      - "Tier Orchestrator: no relevance-driven tier transitions with prefetch predictions"
+      - "Latency-aware storage policies for context retrieval"
+
+  - pattern_name: "Relational Context Graph"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >
+      The repo has significant graph infrastructure: epistemic-memory-graph with epistemic labels and hybrid
+      retrieval fusion, provenance tracking for durable facts (durable-fact-selective-history), addressable
+      memory catalog providing node metadata foundations, and a knowledge graph curriculum teaching graph
+      thinking. However, the formal typed edges (dependency, provenance, supersession, causation) and
+      components (Node Ingestor, Edge Classifier, Supersession Updater, Traversal Engine) are not present.
+      The epistemic graph focuses on belief-status labeling, not on the four formal edge types for
+      relational context selection. Supersession is not formalized as a graph operation.
+    evidence:
+      - file: "docs/canonical/epistemic-memory-graph.md"
+        line: 28
+        quote: "Represent operational memory as a graph whose nodes carry both retrieval metadata and epistemic labels. Minimum node fields: id, kind, epistemic_status, source, owner, validity_scope, retrieval_keys, last_verified."
+      - file: "docs/canonical/epistemic-memory-graph.md"
+        line: 47
+        quote: "Follow backlinks and explicit graph edges to adjacent decisions, incidents, rubrics, and workflow concepts. Fuse ranked candidates from search, vector retrieval, backlinks, and graph traversal."
+      - file: "docs/canonical/durable-fact-selective-history.md"
+        line: 94
+        quote: "Attach provenance: every durable fact should record its source turn, tool result, artifact, or owner."
+      - file: "docs/canonical/addressable-memory-catalog.md"
+        line: 30
+        quote: "Minimum catalog fields: id, kind, location, preview, scope, fetch, tool, path."
+    missing_mechanics:
+      - "Edge Classifier: no component classifies relationships into typed edges (dependency, provenance, supersession, causation)"
+      - "Supersession Updater: no mechanism marks obsolete nodes and redirects edges"
+      - "Node Ingestor for context units: no automatic graph node creation from tool results and state snapshots"
+
+  - pattern_name: "Neutral Selection Layer"
+    classification: "Missing"
+    integration_value: "Medium"
+    justification: >
+      NOT_FOUND across all 85 canonical docs. The repo has philosophical alignment with vendor independence
+      (llm-as-fuzzy-compiler treats code as disposable and constraints as durable) but no implementation of
+      a model-agnostic, vendor-independent context selection layer. No standardized context format for
+      cross-model consumption, no context router for agent/model queries, no multi-tenant registry with
+      isolation policies, and no vendor adapter translating to model-native formats. The repo's context
+      architecture (hybrid-context-stack, head-tail-truncation, addressable-memory-catalog) is designed
+      for a single agent/context flow within a single model ecosystem.
+    evidence:
+      - file: "docs/canonical/llm-as-fuzzy-compiler.md"
+        line: 25
+        quote: "The LLM is a probabilistic transformer with no guarantees about consistency across model versions. Code produced by one model version may look different from code produced by another even when both satisfy the same acceptance constraints."
+    locations_searched:
+      - "docs/canonical/ — all 85 canonical docs for 'neutral', 'model-agnostic', 'vendor', 'vendor-independent', 'cross-model', 'selection layer', 'portable context'"
+      - "docs/system-of-record.md:144-235 — active canonical pattern inventory"
+    missing_mechanics:
+      - "Model-Agnostic Context Format: no standardized schema for cross-model consumption"
+      - "Context Router: no routing layer for agent/model queries to selection strategies"
+      - "Multi-Tenant Registry: no tracking of context ownership by agent, session, model"
+      - "Vendor Adapter: no translation from agnostic format to model-native input"
+
+  - pattern_name: "Context Health Monitoring"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >
+      The repo has sophisticated token-budget-oriented health monitoring: phase-gated-token-health-monitor
+      with green/yellow/orange/red phases, burn-rate-runtime-forecast with acceleration detection, tested
+      degradation ladder for severity classification, failure pattern classification loop, late-failure
+      regression suite, and N+1 long-session evals. This is a Better Implementation of token health
+      monitoring. However, the pattern's concept of context health monitoring introduces quality dimensions
+      beyond token count: effective context size (attention effectiveness), near-miss rate (retrieval quality),
+      and contradiction rate (output consistency). These semantic quality metrics are not present in the repo's
+      monitoring, which focuses entirely on token budget and burn rate.
+    evidence:
+      - file: "docs/canonical/phase-gated-token-health-monitor.md"
+        line: 29
+        quote: "Defina um monitor de saude de tokens que rode em cada turno, iteracao de loop ou montagem de contexto. O monitor recebe percentual de budget restante, previsao de burn rate, sinal de aceleracao."
+      - file: "docs/canonical/burn-rate-runtime-forecast.md"
+        line: 31
+        quote: "Track token usage as a timestamped time series and forecast session runway from current consumption velocity, acceleration, reserved output capacity, and configured safety buffer."
+      - file: "docs/canonical/tested-degradation-ladder.md"
+        line: 29
+        quote: "Define a tested degradation ladder: an ordered contract that starts at failure classification, allows bounded repair only when recovery is plausible, falls back to a conservative safe action or hold."
+      - file: "docs/canonical/failure-pattern-classification-loop.md"
+        line: 31
+        quote: "Classify every observed agent failure into a root cause class and map each class to the smallest guardrail surface that eliminates the class."
+    missing_mechanics:
+      - "Effective Context Estimator: no measurement of attention effectiveness within the window"
+      - "Near-Miss Detector: no comparison of retrieved vs. actually relevant context"
+      - "Contradiction Scanner: no detection of outputs contradicting prior decisions"
+      - "Health Score Aggregator: no combined metric merging context quality dimensions"
+
+  - pattern_name: "Selection-Budgeted Retrieval"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      NOT_FOUND across all 85 canonical docs. The repo has the two foundational pieces that this pattern
+      would bridge: explicit token budget tracking (explicit-token-budget-ledger) and retrieval infrastructure
+      (addressable-memory-catalog, semantic-topic-bucketing). However, the retrieval is not budget-aware:
+      the budget ledger has a 'retrieve' action but no mechanism for deciding what to retrieve under budget
+      constraints; the addressable memory catalog enables retrieval by handle but without cost-benefit ranking.
+      Missing: information value predictor, cost-benefit ranking of candidates, utility feedback loop learning
+      from actual usage, and token cost estimation per retrieval candidate.
+    evidence:
+      - file: "docs/canonical/explicit-token-budget-ledger.md"
+        line: 63
+        quote: "action: Decision for the next loop step: continue, monitor, compact, retrieve, or start a new session."
+      - file: "docs/canonical/addressable-memory-catalog.md"
+        line: 28
+        quote: "Represent omitted context as an addressable catalog. Each omitted message, tool call, span, prompt fragment, trace segment, or intermediate result receives a stable identifier plus enough metadata for the agent to choose what to fetch."
+    locations_searched:
+      - "docs/canonical/ — all 85 canonical docs for 'retrieval budget', 'selection-budgeted', 'information value', 'utility feedback', 'retrieval cost', 'cost-benefit retrieval'"
+      - "docs/system-of-record.md:144-235 — active canonical pattern inventory"
+    missing_mechanics:
+      - "Information Value Predictor: no estimate of task uncertainty reduction from retrieval"
+      - "Cost-Benefit Ranking: no ranking of candidates by value/cost ratio under budget"
+      - "Utility Feedback Loop: no tracking of which retrieved items were actually referenced"
+      - "Token Cost Estimator per retrieval candidate"
+
+  - pattern_name: "Agent Degradation Loop Prevention"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >
+      The repo extensively addresses individual links of the 4-link degradation loop but lacks the unified
+      diagnostic framework. Link 1 (unequal attention) partially covered by head-tail-context-truncation
+      (structural, not attention-profile-driven). Link 2 (compounding errors) strongly covered by
+      error-context-hygiene, tested-degradation-ladder, generator-evaluator, constraint-anchored-evaluation.
+      Link 3 (state externalization) strongly covered by external-state-persistence, versioned-durable-agent-state.
+      Link 4 (inert memory feedback) not covered — requires Selection-Budgeted Retrieval (pattern 7, Missing).
+      Missing: diagnostic classification identifying which link drives degradation, link-specific interceptor
+      orchestration, degradation trajectory forecast, and cross-link interaction awareness.
+    evidence:
+      - file: "docs/canonical/head-tail-context-truncation.md"
+        line: 28
+        quote: "Link 1: Preserve a bounded active context made of the stable harness prompt, the head, the tail, and the latest result."
+      - file: "docs/canonical/error-context-hygiene.md"
+        line: 93
+        quote: "Link 2: bounded retry with summarized error, attempt count, success detection, and pending-error cleanup."
+      - file: "docs/canonical/tested-degradation-ladder.md"
+        line: 29
+        quote: "Link 2: ordered contract: classify failure, bounded repair, safe fallback or hold, human escalation, outcome log, rung tests."
+      - file: "docs/canonical/external-state-persistence.md"
+        line: 31
+        quote: "Link 3: Externalize critical state to persistent storage and load it on every turn. Decouples agent memory from model memory."
+      - file: "docs/canonical/versioned-durable-agent-state.md"
+        line: 25
+        quote: "Link 3: durable-state inputs include preferences, decisions, commitments, cart or workflow state, and active constraints."
+    missing_mechanics:
+      - "Diagnostic Classification: no mechanism identifies which link drives current degradation"
+      - "Link-Specific Interceptor Orchestration: individual patterns exist but not coordinated"
+      - "Degradation Trajectory Forecast: no time-to-cliff estimation by dominant link"
+      - "Cross-Link Interaction Awareness: no documentation of link-to-link pressure shifting"
+      - "Link 4 Inert Memory Feedback: not covered — Selection-Budgeted Retrieval (Missing)"
+
+cross_pattern_dependencies:
+  "Relational Context Graph":
+    is_foundation_of:
+      - "Deliberate Forgetting"
+      - "Smallest Sufficient Context"
+    repo_coverage: "Partial Coverage — epistemic-memory-graph provides foundation"
+  "Tiered Context Storage":
+    enables:
+      - "Deliberate Forgetting"
+      - "Selection-Budgeted Retrieval"
+    repo_coverage: "Missing — no three-tier architecture"
+  "Neutral Selection Layer":
+    wraps:
+      - "Relational Context Graph"
+      - "Tiered Context Storage"
+    repo_coverage: "Missing — no vendor-independent selection layer"
+  "Selection-Budgeted Retrieval":
+    directly_counters: "Link 4 of Agent Degradation Loop"
+    repo_coverage: "Missing — no retrieval cost-benefit ranking"
+  "Agent Degradation Loop Prevention":
+    orchestrates: "All other patterns as link-specific interventions"
+    repo_coverage: "Partial Coverage — 3 of 4 links covered individually, no unified framework"
+
+summary:
+  partial_coverage: 5
+  missing: 3
+  already_exists: 0
+  better_implementation: 0
+  total: 8

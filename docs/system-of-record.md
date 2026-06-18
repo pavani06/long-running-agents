@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
-last_updated: 2026-06-17
+last_updated: 2026-06-18
 relates-to: []
 sources: []
 ---
@@ -43,7 +43,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/writing-plans/SKILL|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
 | [[.opencode/skills/karpathy-guidelines/SKILL|.opencode/skills/karpathy-guidelines/SKILL.md]] | Diretrizes comportamentais Karpathy: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
 | [[.opencode/skills/error-context-hygiene/SKILL|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
-| [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements |
+| [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements. Harness com cache, retry, model tiering, schemas, chunking, trajectory, eval, refinement (8 módulos, stdlib). Completion catalog: `.omo/plans/2026-06-18-analyze-and-improve-speedup-completion.md` |
 | [[.opencode/skills/manual-brake-question-gate/SKILL|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
 | [[.opencode/skills/deferred-ledger-agentic-work/SKILL|.opencode/skills/deferred-ledger-agentic-work/SKILL.md]] | Ledger de trabalho agentic diferido com rastreamento de dívida e sunset gates |
 | [[.opencode/skills/owner-of-no-role/SKILL|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
@@ -57,6 +57,9 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/constraint-failure-decision-rule/SKILL|.opencode/skills/constraint-failure-decision-rule/SKILL.md]] | Regra de decisão para falha de constraint com três caminhos |
 | [[.opencode/skills/autonomy-curriculum-sampling/SKILL|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] | Skill de implementação: amostragem curricular progressiva (observe→assist→own) para autonomia do modelo |
 | [[.opencode/skills/magnitude-direction-verifier-split/SKILL|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] | Skill de implementação: separação magnitude/direção em verificadores de output |
+| [[.opencode/skills/tiered-context-storage/SKILL|.opencode/skills/tiered-context-storage/SKILL.md]] | Skill de implementação: armazenamento de contexto em três camadas com promoção/demissão dinâmica |
+| [[.opencode/skills/neutral-selection-layer/SKILL|.opencode/skills/neutral-selection-layer/SKILL.md]] | Skill de implementação: camada de seleção model-agnostic e vendor-independent |
+| [[.opencode/skills/selection-budgeted-retrieval/SKILL|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -78,6 +81,7 @@ O currículo é o produto principal do repositório: um programa completo de 12 
 | `curriculum/03-nivel-3-advanced-architecture/` | Nível 3 — arquitetura avançada (8-10h) |
 | `curriculum/04-nivel-4-koda-specific/` | Nível 4 — aplicação específica ao KODA (contínuo) |
 | `curriculum/05-core-concepts/` | 8 conceitos core com explicações, graphs e checklists |
+| `curriculum/05-core-concepts/exercises/` | Exercícios avançados (N3): tiered-context-storage, neutral-selection-layer, selection-budgeted-retrieval |
 | `curriculum/06-knowledge-graphs/` | 35+ diagramas Mermaid |
 | `curriculum/07-implementation-guides/` | Guias de setup, progressão, harness design |
 | `curriculum/08-tools-templates/` | Templates de sprint contract, rubrica, ADR, progress tracker |
@@ -233,6 +237,14 @@ Tópicos candidatos a ADR:
 | `magnitude-direction-verifier-split.md` | Separação magnitude/direção em verificadores para avaliação mais precisa e grounded |
 | `adaptive-style-compression-teacher.md` | Professor adaptativo de compressão de estilo que ajusta dificuldade por exemplo para preservar qualidade |
 | `cross-context-knowledge-siloing.md` | Conhecimento criado em um contexto de agente (namespace de repo, corpo de handoff) que se torna invisível para agentes em outro contexto — dois sub-padrões: isolamento por namespace e soterramento em corpo não indexado |
+| `tiered-context-storage.md` | Armazenamento de contexto em três camadas (hot/warm/cold) com promoção e demissão dinâmica baseada em relevância |
+| `neutral-selection-layer.md` | Camada de seleção de contexto model-agnostic e vendor-independent: formato portável, router multi-tenant, adaptador por modelo |
+| `selection-budgeted-retrieval.md` | Retrieval com budget awareness: ranking de candidatos por valor/custo, feedback loop de utilidade, prevenção do loop de memória inerte |
+| `deliberate-forgetting.md` | Esquecimento intencional como operação de primeira classe: avaliador de relevância, motor de promoção/demissão, log de descarte com rationale |
+| `smallest-sufficient-context.md` | Contexto mínimo suficiente: estimador de suficiência, travessia relacional, montagem order-preserving, capacity profiler |
+| `relational-context-graph.md` | Grafo de contexto relacional com arestas tipadas (dependência, proveniência, suplantação, causação) que transforma retrieval em seleção |
+| `context-health-monitoring.md` | Monitoramento de saúde do contexto além de tokens: tamanho efetivo, taxa de near-misses, taxa de contradições, score agregado |
+| `agent-degradation-loop-prevention.md` | Prevenção do loop de degradação de 4 elos: interceptores por elo, classificação diagnóstica, orquestração cross-link |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
@@ -316,6 +328,19 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 |---|---|
 | `2026-06-12-idsd-method/` | Pacote de análise do método IDSD: especificação via intenção decomposta em cinco primitivas |
 
+### Análises comparativas (Memory Selection Problem)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.md` | Extração de frameworks (4-link degradation loop, selection vs. capacity axis shift) |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.yaml` | YAML com frameworks, lições operacionais, tradeoffs, failure patterns |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.md` | 8 padrões agentic extraídos com 6 campos cada |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.yaml` | YAML com componentes e fluxo por padrão |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.md` | Classificação comparativa: 3 Missing (P0), 5 Partial Coverage High (P1) |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.yaml` | YAML com evidência file:line e missing mechanics por padrão |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.md` | Modelo mental: selection vs. capacity, similarity is not relevance, effective context |
+| `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.yaml` | YAML do modelo mental |
+
 > **Nota sobre formato**: Sessões de análise anteriores a 2026-06-14 contêm
 > `integration-roadmap.md` (formato legacy). Sessões a partir de 2026-06-14 usam
 > `<date>-<source-slug>-artifacts.{md,yaml}` como artifacts manifest.
@@ -329,4 +354,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-17*
+*Última atualização: 2026-06-18*

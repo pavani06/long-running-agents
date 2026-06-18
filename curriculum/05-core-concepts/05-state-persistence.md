@@ -595,6 +595,20 @@ stateDiagram-v2
 
 O Addressable Memory Catalog complementa a persistência de estado: estado durável guarda facts/checkpoints; catálogo guarda handles para conteúdo omitido recuperável. No KODA, `retrieval_manifest.json` já cumpre parte desse papel. A diferença é explicitar `preview` e `kind`, para o agente saber o que pode buscar sem carregar tudo de volta.
 
+#### Tiered Context Storage: Além do Modelo Binário Ativo/Externo
+
+A arquitetura de persistência em três camadas (Redis → SQLite → JSON) descrita acima é uma arquitetura de **storage**. Mas a arquitetura de **contexto** — o que o modelo efetivamente recebe no prompt — precisa de uma abstração complementar: o modelo de três tiers de contexto (hot/warm/cold) com promoção e demotion por relevância.
+
+**A diferença:**
+- **Storage layers** (Redis, SQLite, JSON) respondem: onde o dado vive fisicamente e com qual durabilidade.
+- **Context tiers** (hot, warm, cold) respondem: qual a probabilidade de o modelo precisar deste dado no próximo passo.
+
+O [[docs/canonical/tiered-context-storage|Tiered Context Storage]] conecta essas duas dimensões: o Tier Orchestrator decide quais dados mover entre tiers (promoção/demotion) baseado em relevance scores do [[docs/canonical/relational-context-graph|Relational Context Graph]], e os storage backends (Redis para hot, SQLite para warm, JSON/object storage para cold) provêm os contratos de latência correspondentes.
+
+**Exemplo KODA:** Quando Camila está na fase de recomendação, o perfil de restrições alimentares está no hot tier (Redis, sub-ms). As preferências de sabor da fase de discovery estão no warm tier (SQLite, ~1ms — acessíveis se ela mudar de ideia). O histórico completo de 2h está no cold tier (JSON audit, ~100ms — recuperável se ela perguntar sobre um detalhe do minuto 15). Quando a conversa avança para checkout, o Tier Orchestrator demote as preferências de sabor para cold (não são mais críticas) e promove o carrinho e endereço para hot.
+
+**Conexão com o currículo:** O Tiered Context Storage estende o modelo de três camadas de persistência adicionando dinâmica de relevância. Ele não substitui Redis/SQLite/JSON — ele os utiliza como backends com contratos de latência diferentes. Para o padrão completo, veja [[docs/canonical/tiered-context-storage|Tiered Context Storage]].
+
 ### Implementação completa em Python
 
 ```python
