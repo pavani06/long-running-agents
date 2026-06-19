@@ -3,7 +3,7 @@ title: "Epistemic Memory Graph"
 type: canonical
 tags: ["context-engineering", "agentes-orquestracao"]
 aliases: ["belief-status memory graph", "epistemic graph memory", "belief-aware retrieval"]
-last_updated: 2026-06-10
+last_updated: 2026-06-19
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]]"]
 sources: ["[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Agentic Patterns from Stanford CS153 AI Native Company]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Classification: Stanford CS153 AI Native Company Patterns]]"]
 ---
@@ -62,16 +62,41 @@ The repo already has structural memory and graph foundations:
 - Knowledge graphs are framed as a connected ecosystem of concepts rather than isolated techniques in [[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]]:75-91.
 - The graph template defines knowledge graphs as methodical diagrams for dependencies, operational order, and maturity timelines in [[curriculum/08-tools-templates/knowledge-graph-template|Knowledge Graph Template]]:51-60.
 
-### What is missing
+### What was implemented (2026-06-19)
 
-The Partial Coverage gap is belief-status-aware memory. The classification found no Epistemic Memory Graph implementation and no matches for epistemic labels such as hunch, person-specific belief, world knowledge, reciprocal rank fusion, or dynamic ontology mechanics outside the current Stanford pattern file in [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|classification]]:140-155.
+The Fase C3 implementation (`obsidian-eval` module) addresses items 1, 3, and 4 from the gap analysis. Item 2 (hybrid vector retrieval) is deferred to Phase 2.
 
-Missing implementation details:
+**Implementation plan:** `.omo/plans/2026-06-19-epistemic-memory-graph.md`
 
-1. Epistemic labels that distinguish facts, beliefs, hypotheses, preferences, stale assumptions, and contested knowledge.
-2. Hybrid retrieval that fuses search, vectors, backlinks, and graph traversal.
-3. Dynamic ontology governance for adding domain-specific labels and relationships.
-4. Freshness and ownership metadata so agents know when memory must be verified before use.
+**Location:** `obsidian-eval/src/`
+
+| Module | Lines | Responsibility |
+|---|---|---|
+| `epistemic-types.ts` | 59 | `EpistemicNode` (8 canonical fields), `EpistemicEdge`, `EpistemicStatus` (8 labels), `NodeKind` (13 categories) |
+| `entity-extractor.ts` | 178 | `extractFromNote()` extracts Session, Decision, FileRef, SkillUse from handoffs; Fact from durable-facts. Deterministic, zero LLM. Maps `confidence` → epistemic status, `valid_to` → stale. |
+| `epistemic-graph.ts` | 180 | `EpistemicGraph` class: `build()`, `backlinks()`, `forwardLinks()`, `affectedBy()`, `mostModifiedFiles()`, `contestedFacts()`, `staleFacts()`, `hypotheses()`, `decisionsByRepo()`, `sessionContext()`, `stats()` |
+
+**CLI integration:** `obsidian-eval/src/cli.ts` — three subcommands:
+- `epistemic build` — scans vault, builds graph, caches to `~/.cache/obsidian-eval/`
+- `epistemic query <keyword>` — queries the graph (affectedBy, mostModifiedFiles, staleFacts, etc.)
+- `epistemic stats` — prints summary (node kinds, edge kinds, epistemic statuses, repos)
+
+**Test coverage:** 29 tests across 4 suites (`test/epistemic-*.test.ts`), all passing.
+
+**Validated against real vault:** `~/sisyphus-runtime/` yields 174 nodes (19 sessions, 45 decisions, 55 file refs, 11 facts, 42 skill uses), 191 edges, across 4 repos (`_global`, `a-casa-conta`, `long-running-agents`, `obsidian-eval`).
+
+**Example queries:**
+```bash
+obsidian-eval ~/sisyphus-runtime epistemic query budget-monitor
+# → 2 decisions referencing budget-monitor
+
+obsidian-eval ~/sisyphus-runtime epistemic query mostModifiedFiles
+# → session-handoff/SKILL.md (5×), reflection-run.ts (4×), canonical-context/SKILL.md (3×)
+```
+
+**Still missing (Phase 2):**
+- Hybrid retrieval fusing keyword search, vector embeddings, backlinks, and graph traversal into ranked results.
+- Integration with `canonical-context` skill for automated context injection.
 
 ## Tradeoffs
 
@@ -102,4 +127,4 @@ Missing implementation details:
 
 ---
 
-*Created: 2026-06-10 | From: Stanford CS153 pattern classification | Precedence: canonical*
+*Created: 2026-06-10 | Implemented: 2026-06-19 | From: Stanford CS153 pattern classification | Precedence: canonical*

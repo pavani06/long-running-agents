@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-06-18
+last_updated: 2026-06-19
 relates-to: []
 sources: []
 ---
@@ -60,6 +60,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/tiered-context-storage/SKILL|.opencode/skills/tiered-context-storage/SKILL.md]] | Skill de implementação: armazenamento de contexto em três camadas com promoção/demissão dinâmica |
 | [[.opencode/skills/neutral-selection-layer/SKILL|.opencode/skills/neutral-selection-layer/SKILL.md]] | Skill de implementação: camada de seleção model-agnostic e vendor-independent |
 | [[.opencode/skills/selection-budgeted-retrieval/SKILL|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
+| [[.opencode/skills/devils-advocate/SKILL|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -118,6 +119,9 @@ Três artefatos HTML estáticos e uma proposta de arquitetura futura.
 | [Makefile](Makefile) | Atalhos para lint e testes |
 | [.env.example](.env.example) | Template de variáveis de ambiente |
 | [opencode.json](opencode.json) | Configuração do OpenCode (MCP context7) |
+| [../obsidian-eval/](../obsidian-eval/) | Runtime da CLI `obsidian-eval`: scan, query, graph, write, manifest, epistemic graph (módulos `epistemic-types.ts`, `entity-extractor.ts`, `epistemic-graph.ts`). Biblioteca `@pavani/obsidian-eval`. |
+| [../scripts/telemetry/](../scripts/telemetry/) | Stack de telemetria do runtime Sisyphus: `tracer.ts` (spans), `trace-cli.ts` (CLI), `task-wrapper.sh` (wrapper --start-only/--end-last/--wrap), `collector.ts` (SQLite), `collect-session.sh` (bridge), `session-end-hook.sh` (hook pós-sessão). 25 testes. |
+| [[docs/canonical/trace-instrumentation|Trace Instrumentation]] | Padrão canônico de instrumentação de tracing: 3 camadas de defesa (instrução no AGENTS.md, enforcement post-hoc, health check cross-session), 3 modos de wrapper, 8 skills instrumentados. |
 
 ### Governança de repositório
 
@@ -196,7 +200,7 @@ Tópicos candidatos a ADR:
 | `resolver-based-context-progressive-disclosure.md` | Disclosure de contexto progressivo guiado por resolver |
 | `split-brain-planning-review.md` | Revisão de planejamento com rubricas separadas de engenharia e destino |
 | `multi-model-evaluation-council.md` | Conselho de avaliação com múltiplos modelos e política de divergência |
-| `epistemic-memory-graph.md` | Grafo de memória com status epistêmico e proveniência |
+| `epistemic-memory-graph.md` | Grafo de memória com status epistêmico e proveniência. Implementado 2026-06-19 em `obsidian-eval/src/`. |
 | `domain-embedded-workflow-automation-wedge.md` | Wedge de automação de workflow embutido no domínio e guiado por evidência |
 | `obsidian-document-conventions.md` | Convencoes de frontmatter, wikilinks, tags e validacao para documentos Obsidian-ready (AGENTS.md Rule 16) |
 | `external-state-persistence.md` | Persistência de estado externo como estratégia unificada: catálogo, recuperação exata, pause/resume e writeback |

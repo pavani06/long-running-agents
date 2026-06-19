@@ -12,12 +12,10 @@ aliases:
   - como-testar-skills
 last_updated: 2026-06-18
 relates-to:
-  - "[[docs/canonical/evaluation-rubrics|Evaluation Rubrics]]"
-  - "[[docs/canonical/harness-evolution-lifecycle|Harness Evolution Lifecycle]]"
-  - "[[docs/decisions/|Decisions]]"
+  - "[[curriculum/06-knowledge-graphs/detailed-graphs/evaluation-rubrics-graphs|Evaluation Rubrics]]"
 sources:
-  - "[[.omo/plans/2026-06-18-skill-test-harness-framework.md|Skill Test Harness Framework]]"
-  - "[[.omo/plans/2026-06-18-skill-test-harness-expansion.md|Expansion Plan]]"
+  - "Skill Test Harness Framework (.omo/plans/2026-06-18-skill-test-harness-framework.md)"
+  - "Expansion Plan (.omo/plans/2026-06-18-skill-test-harness-expansion.md)"
 ---
 
 # Skill Testing Conventions
