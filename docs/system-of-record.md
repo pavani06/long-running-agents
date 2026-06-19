@@ -2,7 +2,7 @@
 title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
-tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline"]
+tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
 last_updated: 2026-06-18
 relates-to: []
 sources: []
@@ -132,6 +132,16 @@ Topicos cobertos: `governanca`, `decision-discipline`, `spec-driven-development`
 | [scripts/create-curriculum-issues.sh](scripts/create-curriculum-issues.sh) | Script de automação de criação de issues do currículo |
 
 > **Nota**: O PR template referencia crossroad files (`src/lib/safe-console.js`, `src/lib/logger.js`, etc.) e `docs/guides/crossroad-change-policy.md` que ainda não existem no repositório. Esses arquivos devem ser criados quando houver código fonte.
+
+### Testes e QA
+
+Topicos cobertos: `testes-qa`.
+
+| Fonte | Cobre |
+|---|---|
+| [[docs/canonical/skill-testing-conventions|Skill Testing Conventions]] | Framework de test harness para skills |
+| [[docs/canonical/evaluation-rubrics|Evaluation Rubrics]] | Rubricas de avaliacao |
+| [[docs/canonical/harness-evolution-lifecycle|Harness Evolution Lifecycle]] | Ciclo de vida do harness |
 
 ## Decisões de arquitetura (ADRs)
 
