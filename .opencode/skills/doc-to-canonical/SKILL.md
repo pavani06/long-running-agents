@@ -9,6 +9,15 @@ metadata:
   priority: high
 ---
 
+## Harness Modules
+
+Este skill utiliza módulos compartilhados no diretório `harness/`:
+
+- **`harness/cache_bridge.py`**: bridge para o CacheStore do `analyze-and-improve`. Reutiliza cache de fases com SHA-256 source hash keying. Use `from harness.cache_bridge import compute_source_hash, CacheStore` para verificar cache antes de re-executar extração de conhecimento.
+- **`harness/refine.py`**: `CanonicalEntry` + `CanonicalRefinementSession` para refinement pós-geração de canonical docs. Preserva `grounding_prompt` imutável com `refinement_history` acumulativo. Use `from harness.refine import save_session, load_session`.
+
+Cache: `~/.kc_analyze_cache/` (chmod 700). Refinement: `refine_session.json` no output_dir.
+
 ## Invocation
 
 This skill REQUIRES one mandatory parameter and accepts two optional parameters:
