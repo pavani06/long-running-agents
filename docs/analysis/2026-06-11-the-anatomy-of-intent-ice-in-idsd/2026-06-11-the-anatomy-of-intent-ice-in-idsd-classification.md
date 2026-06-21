@@ -130,7 +130,7 @@ The repo has no rule, heuristic, or gate that enforces goal atomicity through co
 
 **What exists nearby:**
 - [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] -- generates single-purpose vertical slices with observable behavior. Conceptually adjacent to atomic goals but uses a different decomposition method (cross-layer behavior) rather than conjunction splitting.
-- [[docs/canonical/refine-issue/SKILL|refine-issue skill]] (from `.opencode/skills/`) -- decomposes issues into sub-issues with dependencies. Structurally adjacent to goal splitting but uses issue decomposition logic, not goal-language heuristics.
+- `.opencode/skills/refine-issue/SKILL` -- decomposes issues into sub-issues with dependencies. Structurally adjacent to goal splitting but uses issue decomposition logic, not goal-language heuristics.
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:31-60 -- separates work into three explicit phases. Adjacent to work decomposition but at the plan phase level, not the goal atomicity level.
 
 **Integration opportunity:**

@@ -94,6 +94,17 @@ The handoff payload is not the old transcript. It is a compact, auditable start 
 2. It defines the fresh-session payload as the product of durable facts, current objective, open decisions, latest state, summary buffer, recoverable memory handles, and explicit handoff instructions ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:218-226).
 3. It makes active-budget reset an explicit success condition: the new session starts with essential state carried forward, not with the exhausted context window copied forward ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:223-230).
 
+### Naming contract (2026-06-19)
+
+The `session-handoff` skill delegates filename generation to `~/scripts/sisyphus/handoff-path.sh` — a deterministic script that is the single source of truth for handoff naming:
+
+```
+handoff-path.sh <repo> <agent>
+→ sessions/<repo>/<YYYY-MM-DD-HHMMSS-utc>-<agent>-handoff.md
+```
+
+This architectural decision (Camada C — Prevention) removes the degree of freedom that caused same-day handoff collisions. The script is complemented by a post-write validation (Camada B — Safety net) that fails the handoff if the written path doesn't match the expected path, ensuring no silent deviation.
+
 ## Tradeoffs
 
 | Decision | Benefit | Cost |

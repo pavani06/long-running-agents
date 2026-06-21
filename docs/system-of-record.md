@@ -122,6 +122,7 @@ Três artefatos HTML estáticos e uma proposta de arquitetura futura.
 | [../obsidian-eval/](../obsidian-eval/) | Runtime da CLI `obsidian-eval`: scan, query, graph, write, manifest, epistemic graph (módulos `epistemic-types.ts`, `entity-extractor.ts`, `epistemic-graph.ts`). Biblioteca `@pavani/obsidian-eval`. |
 | [../scripts/telemetry/](../scripts/telemetry/) | Stack de telemetria do runtime Sisyphus: `tracer.ts` (spans), `trace-cli.ts` (CLI), `task-wrapper.sh` (wrapper --start-only/--end-last/--wrap), `collector.ts` (SQLite), `collect-session.sh` (bridge), `session-end-hook.sh` (hook pós-sessão). 25 testes. |
 | [[docs/canonical/trace-instrumentation|Trace Instrumentation]] | Padrão canônico de instrumentação de tracing: 3 camadas de defesa (instrução no AGENTS.md, enforcement post-hoc, health check cross-session), 3 modos de wrapper, 8 skills instrumentados. |
+| [../scripts/sisyphus/handoff-path.sh](../scripts/sisyphus/handoff-path.sh) | Single source of truth para nome determinístico de handoff (`sessions/<repo>/<YYYY-MM-DD-HHMMSS-utc>-<agent>-handoff.md`). Previne colisões same-day removendo o grau de liberdade do agente. Usado pelo `session-handoff/SKILL.md` com safety net (Camada B) de validação pós-write. |
 
 ### Governança de repositório
 
@@ -144,8 +145,7 @@ Topicos cobertos: `testes-qa`.
 | Fonte | Cobre |
 |---|---|
 | [[docs/canonical/skill-testing-conventions|Skill Testing Conventions]] | Framework de test harness para skills |
-| [[docs/canonical/evaluation-rubrics|Evaluation Rubrics]] | Rubricas de avaliacao |
-| [[docs/canonical/harness-evolution-lifecycle|Harness Evolution Lifecycle]] | Ciclo de vida do harness |
+| [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] | Ciclo de vida BUILD → STABILIZE → SIMPLIFY → REMOVE |
 
 ## Decisões de arquitetura (ADRs)
 
