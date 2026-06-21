@@ -14,6 +14,7 @@ aliases:
 relates-to:
   - "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]"
   - "[[docs/canonical/budget-aware-session-handoff|Budget-Aware Session Handoff]]"
+  - "[[AGENTS.md#trace-instrumentation-template|Trace Instrumentation Template]]"
 ---
 
 # Trace Instrumentation
@@ -70,11 +71,17 @@ bash ~/scripts/telemetry/task-wrapper.sh --wrap \
   --tokens 5000
 ```
 
-## Enforcement (3 Camadas)
+## Enforcement (4 Camadas)
 
-1. **Instrução**: `AGENTS.md` → `## Trace Instrumentation Gate` (junto aos gates de pré-delegação)
-2. **Warning pós-sessão**: `session-end-hook.sh` → trace coverage check no `telemetry.db`
-3. **Health check cross-session**: `canonical-context` → `## Trace Health Check` consulta últimas 5 sessões
+1. **Template Injection**: `AGENTS.md` → `## Trace Instrumentation — TEMPLATE` — comandos `task-wrapper.sh` são parte do bloco de delegação, não passos opcionais. Modo rápido (bloco único com `--start-only` + delegação + `--end-last`).
+2. **Auto-verificação pré-delegação**: O template inclui check "task-wrapper.sh --start-only foi executado?" antes de cada `task()`.
+3. **Warning pós-sessão**: `session-end-hook.sh` → trace coverage check no `telemetry.db`.
+4. **Health check cross-session**: `canonical-context` → `## Trace Health Check` consulta últimas 5 sessões.
+5. **Scavenger safety net**: `scavenge-sessions.sh` (systemd timer, 15min) detecta artifacts órfãos.
+
+### Por que template injection em vez de regra separada?
+
+A evidência (5/5 sessões recentes com 0% trace coverage, apesar da regra existir desde 2026-06-19) mostra que regras em seções separadas são puladas pelo LLM sob carga cognitiva. Template injection resolve isso tornando os comandos de instrumentação PARTE do bloco de delegação — o LLM segue o template, e a instrumentação vem junto.
 
 ## Limitação Conhecida (W5)
 
@@ -90,7 +97,7 @@ cd ~/scripts/telemetry && node --import tsx --test test/tracer.test.ts         #
 
 ## Ver também
 
-- `AGENTS.md` → `## Trace Instrumentation Gate`
+- `AGENTS.md` → `## Trace Instrumentation — TEMPLATE`
 - `budget-monitor/SKILL.md` → `## Trace Instrumentation`
 - `canonical-context/SKILL.md` → `## Trace Health Check`
 - Plano: `.omo/plans/2026-06-19-trace-auto-instrumentation.md`
