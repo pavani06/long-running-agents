@@ -28,10 +28,10 @@ Maps each of the 9 classified patterns to integration surfaces, prioritised by i
 |---|---|---|---|---|---|---|
 | 1 | ICE Ownership Boundary | Already Exists | None | None | — | No new integration needed. Covered at greater depth by [[docs/canonical/ice-craft-separation|ICE Craft Separation]], [[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]], and [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]. |
 | 2 | Three-Part Intent Contract | Partial Coverage | Medium | Low | P2 | [[docs/canonical/three-part-intent-contract|Three-Part Intent Contract]] canonical doc. Missing skill and exercise. Complements [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]] as an alternative decomposition model. |
-| 3 | Two-Implementations Goal Test | Missing | Medium | Low | P1 | [[docs/canonical/two-implementations-goal-test|Two-Implementations Goal Test]] canonical, [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test skill]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test|exercise (Level 2)]]. |
-| 4 | Goal Atomicity Split | Missing | Medium | Low | P1 | [[docs/canonical/goal-atomicity-split|Goal Atomicity Split]] canonical, [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split skill]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split|exercise (Level 2)]]. |
-| 5 | Constraint Budget Gate | Missing | Medium | Low | P1 | [[docs/canonical/constraint-budget-gate|Constraint Budget Gate]] canonical, [[.opencode/skills/constraint-budget-gate/SKILL|constraint-budget-gate skill]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-budget-gate|exercise (Level 3)]]. |
-| 6 | Constraint-Failure Decision Rule | Missing | High | Low | **P0** | [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] canonical, [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule skill]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule|exercise (Level 3)]]. Foundational heuristic that feeds into Patterns 5, 7, and 8. |
+| 3 | Two-Implementations Goal Test | Missing | Medium | Low | P1 | [[docs/canonical/two-implementations-goal-test|Two-Implementations Goal Test]] canonical, [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test skill]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test|exercise (Level 2)]]. |
+| 4 | Goal Atomicity Split | Missing | Medium | Low | P1 | [[docs/canonical/goal-atomicity-split|Goal Atomicity Split]] canonical, [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split skill]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split|exercise (Level 2)]]. |
+| 5 | Constraint Budget Gate | Missing | Medium | Low | P1 | [[docs/canonical/constraint-budget-gate|Constraint Budget Gate]] canonical, [[.opencode/skills/constraint-budget-gate/SKILL.md|constraint-budget-gate skill]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-budget-gate|exercise (Level 3)]]. |
+| 6 | Constraint-Failure Decision Rule | Missing | High | Low | **P0** | [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] canonical, [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule skill]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule|exercise (Level 3)]]. Foundational heuristic that feeds into Patterns 5, 7, and 8. |
 | 7 | Compartmented Evaluation Architecture | Partial Coverage | High | Medium | **P0** | [[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]] canonical doc. **HIGH** integration value per classification. Extends [[docs/canonical/generator-evaluator|Generator-Evaluator]] with sealed information surfaces. Missing skill and exercise. |
 | 8 | Scenario Destination Split | Partial Coverage | Medium | Low | P2 | [[docs/canonical/scenario-destination-split|Scenario Destination Split]] canonical doc. Clarifies the routing rule between failure scenarios (Intent) and success scenarios (Expectations). Missing skill and exercise. |
 | 9 | Harness-Owned Context Assembly | Already Exists | None | None | — | Repo exceeds pattern depth. Covered by [[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]], [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]], [[docs/canonical/hybrid-context-stack|Hybrid Context Stack]], and 6 additional canonical docs (see classification for full evidence). |
@@ -74,10 +74,10 @@ All artifacts map directly to patterns from the [[docs/analysis/2026-06-11-the-a
 
 | Directory | Pattern # | Pattern | Status |
 |---|---|---|---|
-| [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test/]] | 3 | Two-Implementations Goal Test | Done |
-| [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split/]] | 4 | Goal Atomicity Split | Done |
-| [[.opencode/skills/constraint-budget-gate/SKILL|constraint-budget-gate/]] | 5 | Constraint Budget Gate | Done |
-| [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule/]] | 6 | Constraint-Failure Decision Rule | Done |
+| [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test/]] | 3 | Two-Implementations Goal Test | Done |
+| [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split/]] | 4 | Goal Atomicity Split | Done |
+| [[.opencode/skills/constraint-budget-gate/SKILL.md|constraint-budget-gate/]] | 5 | Constraint Budget Gate | Done |
+| [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule/]] | 6 | Constraint-Failure Decision Rule | Done |
 
 All four skills are authored as review gates / pre-flight checks that run against candidate intent fields before the agent receives them. Each produces a binary verdict and actionable reclassification recommendations.
 
@@ -143,7 +143,7 @@ Three patterns have canonical docs but no operational skills:
 
 | Pattern # | Pattern | Integration Value | Gap |
 |---|---|---|---|
-| 2 | Three-Part Intent Contract | Medium | No skill. Would benefit from a skill that validates the three-slot completeness gate (analogous to [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]] for the five-part model). |
+| 2 | Three-Part Intent Contract | Medium | No skill. Would benefit from a skill that validates the three-slot completeness gate (analogous to [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] for the five-part model). |
 | 7 | Compartmented Evaluation Architecture | **High** | **Critical gap.** This is the only High-value pattern without a skill. A compartmentation audit skill could verify that failure conditions are not leaked to the builder prompt, validate sealed information surfaces, and detect reward-hacking vectors. |
 | 8 | Scenario Destination Split | Medium | No skill. A routing skill could classify scenario statements into Intent (failure) vs Expectations (success) destinations and flag scenarios that appear in both. |
 

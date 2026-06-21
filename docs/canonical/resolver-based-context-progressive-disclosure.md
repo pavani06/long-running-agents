@@ -43,10 +43,10 @@ The resolver becomes the context router. It does not merely save tokens; it defi
 
 ### What already exists
 
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]] lines 16-23 defines a narrow task-scoped load condition for starting issue work.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]] lines 16-23 defines a separate load condition for validation, PR preparation, and second-agent review.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]] lines 38-40 requires context compaction before CI and PR creation.
-- [[.opencode/skills/issue-finish/SKILL|issue-finish skill]] lines 18-24 narrows merge and cleanup to a separate mechanical context after explicit approval.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]] lines 16-23 defines a narrow task-scoped load condition for starting issue work.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]] lines 16-23 defines a separate load condition for validation, PR preparation, and second-agent review.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]] lines 38-40 requires context compaction before CI and PR creation.
+- [[.opencode/skills/issue-finish/SKILL.md|issue-finish skill]] lines 18-24 narrows merge and cleanup to a separate mechanical context after explicit approval.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]] keeps invariant harness instructions stable while other context is reduced.
 - [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]] and [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]] address context recovery once old context has been omitted.
 
@@ -88,9 +88,9 @@ Missing pieces:
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 88-92 - resolver mechanics for loading task-specific skills.
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 148-150 - Claude.md growth as context architecture smell.
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 197-200 - token overflow, duplicate skill, and trigger-eval failure modes.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]] lines 16-23 - current load-on-demand issue setup skill.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]] lines 16-23 and 38-40 - current review skill trigger and compaction gate.
-- [[.opencode/skills/issue-finish/SKILL|issue-finish skill]] lines 18-24 - current finish skill trigger.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]] lines 16-23 - current load-on-demand issue setup skill.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]] lines 16-23 and 38-40 - current review skill trigger and compaction gate.
+- [[.opencode/skills/issue-finish/SKILL.md|issue-finish skill]] lines 18-24 - current finish skill trigger.
 
 ---
 

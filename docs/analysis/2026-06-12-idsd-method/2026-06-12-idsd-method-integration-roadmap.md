@@ -58,12 +58,12 @@ Map each of the 8 agentic patterns extracted from the IDSD Method to concrete in
 
 | File | Pattern # | Classification | Status |
 |---|---|---|---|
-| [[docs/canonical/ice-craft-separation\|ice-craft-separation.md]] | 1 — ICE Craft Separation | Partial Coverage → Formalized | Done |
-| [[docs/canonical/intent-five-part-primitive\|intent-five-part-primitive.md]] | 2 — Intent as Five-Part Primitive | Missing → Filled | Done |
-| [[docs/canonical/human-owned-expectations-boundary\|human-owned-expectations-boundary.md]] | 3 — Human-Owned Expectations Boundary | Partial Coverage → Formalized | Done |
-| [[docs/canonical/presence-in-the-loop-metric\|presence-in-the-loop-metric.md]] | 6 — Presence-in-the-Loop Metric | Missing → Filled | Done |
-| [[docs/canonical/symphony-trap-awareness\|symphony-trap-awareness.md]] | 7 — Symphony Trap Awareness | Partial Coverage → Formalized | Done |
-| [[docs/canonical/token-economics-gap-filling\|token-economics-gap-filling.md]] | 8 — Token Economics of Gap-Filling | Partial Coverage → Formalized | Done |
+| [[docs/canonical/ice-craft-separation.md|ice-craft-separation]] | 1 — ICE Craft Separation | Partial Coverage → Formalized | Done |
+| [[docs/canonical/intent-five-part-primitive.md|intent-five-part-primitive]] | 2 — Intent as Five-Part Primitive | Missing → Filled | Done |
+| [[docs/canonical/human-owned-expectations-boundary.md|human-owned-expectations-boundary]] | 3 — Human-Owned Expectations Boundary | Partial Coverage → Formalized | Done |
+| [[docs/canonical/presence-in-the-loop-metric.md|presence-in-the-loop-metric]] | 6 — Presence-in-the-Loop Metric | Missing → Filled | Done |
+| [[docs/canonical/symphony-trap-awareness.md|symphony-trap-awareness]] | 7 — Symphony Trap Awareness | Partial Coverage → Formalized | Done |
+| [[docs/canonical/token-economics-gap-filling.md|token-economics-gap-filling]] | 8 — Token Economics of Gap-Filling | Partial Coverage → Formalized | Done |
 
 **Grouped by classification:**
 
@@ -77,8 +77,8 @@ Map each of the 8 agentic patterns extracted from the IDSD Method to concrete in
 
 | Directory | Pattern # | Pattern | Status |
 |---|---|---|---|
-| [[.opencode/skills/intent-five-part-primitive/SKILL\|intent-five-part-primitive/SKILL.md]] | 2 | Intent as Five-Part Primitive | Done |
-| [[.opencode/skills/presence-in-the-loop-metric/SKILL\|presence-in-the-loop-metric/SKILL.md]] | 6 | Presence-in-the-Loop Metric | Done |
+| [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive/SKILL.md]] | 2 | Intent as Five-Part Primitive | Done |
+| [[.opencode/skills/presence-in-the-loop-metric/SKILL.md|presence-in-the-loop-metric/SKILL.md]] | 6 | Presence-in-the-Loop Metric | Done |
 
 Both skills define YAML frontmatter with description, triggers, compatibility (`opencode`), metadata (audience, workflow, priority), and operational instructions. Each implements the corresponding pattern as a loadable agent capability.
 
@@ -88,8 +88,8 @@ Both skills define YAML frontmatter with description, triggers, compatibility (`
 
 | File | Pattern # | Level | Status |
 |---|---|---|---|
-| [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive\|exercise-05-intent-five-part-primitive.md]] | 2 — Intent as Five-Part Primitive | Nivel 2 | Done |
-| [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric\|exercise-06-presence-in-the-loop-metric.md]] | 6 — Presence-in-the-Loop Metric | Nivel 3 | Done |
+| [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive.md|exercise-05-intent-five-part-primitive]] | 2 — Intent as Five-Part Primitive | Nivel 2 | Done |
+| [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md|exercise-06-presence-in-the-loop-metric]] | 6 — Presence-in-the-Loop Metric | Nivel 3 | Done |
 
 Both exercises follow the curriculum exercise format: prolog (narrative scenario), objectives, prerequisites, implementation steps, and solution guide.
 
@@ -97,10 +97,10 @@ Both exercises follow the curriculum exercise format: prolog (narrative scenario
 
 | File | Scope |
 |---|---|
-| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model\|2026-06-12-idsd-method-mental-model.md]] + `.yaml` | Full repo mental model (Phase 0) |
-| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-analysis\|2026-06-12-idsd-method-analysis.md]] | Knowledge extraction from IDSD source |
-| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-patterns\|2026-06-12-idsd-method-patterns.md]] | 8 agentic patterns extracted |
-| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classification\|2026-06-12-idsd-method-classification.md]] | Comparative classification vs. repo |
+| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model.md|2026-06-12-idsd-method-mental-model]] + `.yaml` | Full repo mental model (Phase 0) |
+| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-analysis.md|2026-06-12-idsd-method-analysis]] | Knowledge extraction from IDSD source |
+| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-patterns.md|2026-06-12-idsd-method-patterns]] | 8 agentic patterns extracted |
+| [[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classification.md|2026-06-12-idsd-method-classification]] | Comparative classification vs. repo |
 | `2026-06-12-idsd-method-integration-roadmap.md` (this file) | Integration roadmap |
 
 ---
@@ -124,25 +124,25 @@ Both exercises follow the curriculum exercise format: prolog (narrative scenario
 
 | # | Pattern | Primary Canonical Docs | Supporting Canonical Docs |
 |---|---|---|---|
-| 1 | ICE Craft Separation | [[docs/canonical/ice-craft-separation\|ICE Craft Separation]] (new) | [[docs/canonical/owner-of-no-role-design\|Owner-of-No Role Design]], [[docs/canonical/grill-me-alignment-interview\|Grill-Me Alignment Interview]], [[docs/canonical/application-owned-agent-control-plane\|Application-Owned Agent Control Plane]], [[docs/canonical/shared-design-concept-handoff\|Shared Design Concept Handoff]] |
-| 2 | Intent as Five-Part Primitive | [[docs/canonical/intent-five-part-primitive\|Intent as Five-Part Primitive]] (new) | [[docs/canonical/ice-craft-separation\|ICE Craft Separation]], [[docs/canonical/grill-me-alignment-interview\|Grill-Me Alignment Interview]], [[docs/canonical/constraint-anchored-evaluation\|Constraint-Anchored Evaluation]] |
-| 3 | Human-Owned Expectations Boundary | [[docs/canonical/human-owned-expectations-boundary\|Human-Owned Expectations Boundary]] (new) | [[docs/canonical/ice-craft-separation\|ICE Craft Separation]], [[docs/canonical/generator-evaluator\|Generator-Evaluator]], [[docs/canonical/owner-of-no-role-design\|Owner-of-No Role Design]], [[docs/canonical/constraint-anchored-evaluation\|Constraint-Anchored Evaluation]], [[docs/canonical/value-gated-agent-control-loop\|Value-Gated Agent Control Loop]] |
-| 4 | Harness-Owned Progressive Context | [[docs/canonical/resolver-based-context-progressive-disclosure\|Resolver-Based Context Progressive Disclosure]] | [[docs/canonical/hybrid-context-stack\|Hybrid Context Stack]], [[docs/canonical/head-tail-context-truncation\|Head-Tail Context Truncation]], [[docs/canonical/addressable-memory-catalog\|Addressable Memory Catalog]], [[docs/canonical/stable-harness-prompt\|Stable Harness Prompt]], [[docs/canonical/skill-resolver-skillify-capability-pipeline\|Skill-Resolver-Skillify Pipeline]] |
-| 5 | Agentic Loop with Validation Gate | [[docs/canonical/generator-evaluator\|Generator-Evaluator]] | [[docs/canonical/owned-agent-control-loop\|Owned Agent Control Loop]], [[docs/canonical/plan-execute-verify\|Plan-Execute-Verify]], [[docs/canonical/constraint-anchored-evaluation\|Constraint-Anchored Evaluation]], [[docs/canonical/value-gated-agent-control-loop\|Value-Gated Agent Control Loop]], [[docs/canonical/structured-generation-constraint-validation-circuit\|Structured Generation + Constraint Validation Circuit]] |
-| 6 | Presence-in-the-Loop Metric | [[docs/canonical/presence-in-the-loop-metric\|Presence-in-the-Loop Metric]] (new) | [[docs/canonical/manual-brake-question-gate\|Manual Brake Question Gate]], [[docs/canonical/human-afk-task-routing-gate\|Human/AFK Task Routing Gate]], [[docs/canonical/grill-me-alignment-interview\|Grill-Me Alignment Interview]], [[docs/canonical/owner-of-no-role-design\|Owner-of-No Role Design]], [[docs/canonical/value-gated-agent-control-loop\|Value-Gated Agent Control Loop]] |
-| 7 | Symphony Trap Awareness | [[docs/canonical/symphony-trap-awareness\|Symphony Trap Awareness]] (new) | [[docs/canonical/llm-as-fuzzy-compiler\|LLM as Fuzzy Compiler]], [[docs/canonical/production-grounded-eval-sampling\|Production-Grounded Eval Sampling]], [[docs/canonical/production-failure-regression-flywheel\|Production Failure Regression Flywheel]], [[docs/canonical/eval-to-production-correlation-tracking\|Eval-to-Production Correlation Tracking]] |
-| 8 | Token Economics of Gap-Filling | [[docs/canonical/token-economics-gap-filling\|Token Economics of Gap-Filling]] (new) | [[docs/canonical/explicit-token-budget-ledger\|Explicit Token Budget Ledger]], [[docs/canonical/burn-rate-runtime-forecast\|Burn Rate Runtime Forecast]], [[docs/canonical/phase-gated-token-health-monitor\|Phase-Gated Token Health Monitor]], [[docs/canonical/deferred-ledger-agentic-work\|Deferred Ledger for Agentic Work]], [[docs/canonical/budget-aware-session-handoff\|Budget-Aware Session Handoff]], [[docs/canonical/manual-brake-question-gate\|Manual Brake Question Gate]] |
+| 1 | ICE Craft Separation | [[docs/canonical/ice-craft-separation.md|ICE Craft Separation]] (new) | [[docs/canonical/owner-of-no-role-design.md|Owner-of-No Role Design]], [[docs/canonical/grill-me-alignment-interview.md|Grill-Me Alignment Interview]], [[docs/canonical/application-owned-agent-control-plane.md|Application-Owned Agent Control Plane]], [[docs/canonical/shared-design-concept-handoff.md|Shared Design Concept Handoff]] |
+| 2 | Intent as Five-Part Primitive | [[docs/canonical/intent-five-part-primitive.md|Intent as Five-Part Primitive]] (new) | [[docs/canonical/ice-craft-separation.md|ICE Craft Separation]], [[docs/canonical/grill-me-alignment-interview.md|Grill-Me Alignment Interview]], [[docs/canonical/constraint-anchored-evaluation.md|Constraint-Anchored Evaluation]] |
+| 3 | Human-Owned Expectations Boundary | [[docs/canonical/human-owned-expectations-boundary.md|Human-Owned Expectations Boundary]] (new) | [[docs/canonical/ice-craft-separation.md|ICE Craft Separation]], [[docs/canonical/generator-evaluator.md|Generator-Evaluator]], [[docs/canonical/owner-of-no-role-design.md|Owner-of-No Role Design]], [[docs/canonical/constraint-anchored-evaluation.md|Constraint-Anchored Evaluation]], [[docs/canonical/value-gated-agent-control-loop.md|Value-Gated Agent Control Loop]] |
+| 4 | Harness-Owned Progressive Context | [[docs/canonical/resolver-based-context-progressive-disclosure.md|Resolver-Based Context Progressive Disclosure]] | [[docs/canonical/hybrid-context-stack.md|Hybrid Context Stack]], [[docs/canonical/head-tail-context-truncation.md|Head-Tail Context Truncation]], [[docs/canonical/addressable-memory-catalog.md|Addressable Memory Catalog]], [[docs/canonical/stable-harness-prompt.md|Stable Harness Prompt]], [[docs/canonical/skill-resolver-skillify-capability-pipeline.md|Skill-Resolver-Skillify Pipeline]] |
+| 5 | Agentic Loop with Validation Gate | [[docs/canonical/generator-evaluator.md|Generator-Evaluator]] | [[docs/canonical/owned-agent-control-loop.md|Owned Agent Control Loop]], [[docs/canonical/plan-execute-verify.md|Plan-Execute-Verify]], [[docs/canonical/constraint-anchored-evaluation.md|Constraint-Anchored Evaluation]], [[docs/canonical/value-gated-agent-control-loop.md|Value-Gated Agent Control Loop]], [[docs/canonical/structured-generation-constraint-validation-circuit.md|Structured Generation + Constraint Validation Circuit]] |
+| 6 | Presence-in-the-Loop Metric | [[docs/canonical/presence-in-the-loop-metric.md|Presence-in-the-Loop Metric]] (new) | [[docs/canonical/manual-brake-question-gate.md|Manual Brake Question Gate]], [[docs/canonical/human-afk-task-routing-gate.md|Human/AFK Task Routing Gate]], [[docs/canonical/grill-me-alignment-interview.md|Grill-Me Alignment Interview]], [[docs/canonical/owner-of-no-role-design.md|Owner-of-No Role Design]], [[docs/canonical/value-gated-agent-control-loop.md|Value-Gated Agent Control Loop]] |
+| 7 | Symphony Trap Awareness | [[docs/canonical/symphony-trap-awareness.md|Symphony Trap Awareness]] (new) | [[docs/canonical/llm-as-fuzzy-compiler.md|LLM as Fuzzy Compiler]], [[docs/canonical/production-grounded-eval-sampling.md|Production-Grounded Eval Sampling]], [[docs/canonical/production-failure-regression-flywheel.md|Production Failure Regression Flywheel]], [[docs/canonical/eval-to-production-correlation-tracking.md|Eval-to-Production Correlation Tracking]] |
+| 8 | Token Economics of Gap-Filling | [[docs/canonical/token-economics-gap-filling.md|Token Economics of Gap-Filling]] (new) | [[docs/canonical/explicit-token-budget-ledger.md|Explicit Token Budget Ledger]], [[docs/canonical/burn-rate-runtime-forecast.md|Burn Rate Runtime Forecast]], [[docs/canonical/phase-gated-token-health-monitor.md|Phase-Gated Token Health Monitor]], [[docs/canonical/deferred-ledger-agentic-work.md|Deferred Ledger for Agentic Work]], [[docs/canonical/budget-aware-session-handoff.md|Budget-Aware Session Handoff]], [[docs/canonical/manual-brake-question-gate.md|Manual Brake Question Gate]] |
 
 ### 3.3 Patterns → Skills
 
 | # | Pattern | Existing Skills | New Skills (this session) | Missing Skills |
 |---|---|---|---|---|
 | 1 | ICE Craft Separation | `analyze-and-improve`, `owner-of-no-role`, `manual-brake-question-gate`, `grill-me-alignment-interview` | — | `ice-craft-separation` (P0 future) |
-| 2 | Intent as Five-Part Primitive | — | [[.opencode/skills/intent-five-part-primitive/SKILL\|intent-five-part-primitive]] | — |
+| 2 | Intent as Five-Part Primitive | — | [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] | — |
 | 3 | Human-Owned Expectations Boundary | `generator-evaluator`, `owner-of-no-role` | — | `human-owned-expectations-boundary` (P0 future) |
 | 4 | Harness-Owned Progressive Context | `issue-start`, `issue-review`, `issue-finish` (resolver loading), `skillify` | — | — |
 | 5 | Agentic Loop with Validation Gate | `orchestrator`, `issue-review` (validation gates) | — | — |
-| 6 | Presence-in-the-Loop Metric | — | [[.opencode/skills/presence-in-the-loop-metric/SKILL\|presence-in-the-loop-metric]] | — |
+| 6 | Presence-in-the-Loop Metric | — | [[.opencode/skills/presence-in-the-loop-metric/SKILL.md|presence-in-the-loop-metric]] | — |
 | 7 | Symphony Trap Awareness | `llm-as-fuzzy-compiler` | — | `symphony-trap-awareness` (P2 future) |
 | 8 | Token Economics of Gap-Filling | `deferred-ledger-agentic-work`, `manual-brake-question-gate` | — | `token-economics-gap-filling` (P0 future) |
 

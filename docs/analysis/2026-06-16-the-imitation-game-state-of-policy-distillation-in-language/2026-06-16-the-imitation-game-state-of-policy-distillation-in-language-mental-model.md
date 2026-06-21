@@ -4,7 +4,7 @@ type: analysis
 date: 2026-06-16
 aliases: ["modelo mental policy distillation", "phase 0 policy distillation", "long-running-agents mental model", "repository mental model"]
 tags: ["agentes-orquestracao", "curriculo-conteudo", "context-engineering", "evals", "governanca", "harness-engineering"]
-relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL|Analyze and Improve Skill]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL.md|Analyze and Improve Skill]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 sources: ["[[AGENTS|AGENTS.md]]", "[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]"]
 ---
 

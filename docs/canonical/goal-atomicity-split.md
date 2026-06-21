@@ -70,8 +70,8 @@ Applied mechanically, the conjunction rule can create too many tiny tasks. Judgm
 - [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] -- generates single-purpose vertical slices with observable behavior. Conceptually adjacent to atomic goals but uses a different decomposition method (cross-layer behavior) rather than conjunction-based splitting of goal statements.
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:31-60 -- separates work into three explicit phases. Adjacent to work decomposition but at the plan phase level, not the goal atomicity level.
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41 -- the description field is where the atomicity rule applies. A completeness gate could check whether the description field contains one sentence with one outcome.
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] -- decomposes issues into sub-issues with dependencies. Structurally adjacent to goal splitting but uses issue decomposition logic, not goal-language heuristics.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]] -- creates isolated worktrees for individual issues. Atomic goals would create cleaner, more focused issues for this workflow.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] -- decomposes issues into sub-issues with dependencies. Structurally adjacent to goal splitting but uses issue decomposition logic, not goal-language heuristics.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]] -- creates isolated worktrees for individual issues. Atomic goals would create cleaner, more focused issues for this workflow.
 
 ### What is missing from the pattern
 

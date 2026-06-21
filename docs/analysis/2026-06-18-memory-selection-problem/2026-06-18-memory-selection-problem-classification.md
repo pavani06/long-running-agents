@@ -356,7 +356,7 @@ All 8 patterns target the core harness concern of context engineering, which is 
 
 ### Cross-Pattern Dependencies
 
-Per the source patterns YAML ([[docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns|patterns.yaml]]:389-412), the Relational Context Graph is the foundation of all other selection patterns. Deliberate Forgetting and Smallest Sufficient Context both require it. Tiered Context Storage enables Deliberate Forgetting and Selection-Budgeted Retrieval. Selection-Budgeted Retrieval directly counters Link 4 of the Agent Degradation Loop. The Neutral Selection Layer wraps the Relational Context Graph and Tiered Context Storage as a vendor-independent interface.
+Per the source patterns YAML ([[docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns|patterns.md]]:389-412), the Relational Context Graph is the foundation of all other selection patterns. Deliberate Forgetting and Smallest Sufficient Context both require it. Tiered Context Storage enables Deliberate Forgetting and Selection-Budgeted Retrieval. Selection-Budgeted Retrieval directly counters Link 4 of the Agent Degradation Loop. The Neutral Selection Layer wraps the Relational Context Graph and Tiered Context Storage as a vendor-independent interface.
 
 This dependency graph means integration should start with the Relational Context Graph (pattern 4) as the foundational building block, then layer Selection-Budgeted Retrieval (pattern 7) and Tiered Context Storage (pattern 3) on top.
 

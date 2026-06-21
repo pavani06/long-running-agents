@@ -61,8 +61,8 @@ The intentional replacements must be hardened against the same pressure that cre
 
 - `docs/canonical/` -- 55 canonical patterns cover agent-internal harness engineering; none address external bureaucracy replacement.
 - [[.github/PULL_REQUEST_TEMPLATE|PR template]], [[.github/CODEOWNERS]], [[.github/ISSUE_TEMPLATE/technical.md|issue templates]] -- these are intentional governance mechanisms, not inherited bureaucracy.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]] -- validation gates (lint, test, eval) are designed intentionally, not inherited from bureaucracy.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]] -- worktree setup and claim are internal workflow, not bureaucracy replacement.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]] -- validation gates (lint, test, eval) are designed intentionally, not inherited from bureaucracy.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]] -- worktree setup and claim are internal workflow, not bureaucracy replacement.
 - [[AGENTS]] -- rules are designed for agent behavior, not inherited from organizational bureaucracy.
 
 ### What is missing from the pattern

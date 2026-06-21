@@ -57,11 +57,11 @@ Flow:
 
 The repo has operational routing mechanisms that partially cover task classification:
 
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:51-63 defines priority-based next-task suggestion, skipping tasks with agent:working, blocked status, and open blockers.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:38-45 prevents stealing work already claimed by agent:working or an assignee.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]:51-63 defines priority-based next-task suggestion, skipping tasks with agent:working, blocked status, and open blockers.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:38-45 prevents stealing work already claimed by agent:working or an assignee.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]:32-35 includes priority synthesis, execution routing, and feedback writeback.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:37-41 reserves extra review for high-impact roadmaps, ambiguous bets, and major agent-system changes.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:165-180 documents blocker handling and return to queue for human intervention.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]:165-180 documents blocker handling and return to queue for human intervention.
 
 ### What is missing
 
@@ -100,9 +100,9 @@ Missing implementation details:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:91-107 - Partial Coverage classification and gap note.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:62-66 - human-in-loop vs AFK classification model.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:153-153 - planning remains human-in-loop operational lesson.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:51-63 - existing priority-based next-task suggestion.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:165-180 - existing blocker handling and human escalation.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:38-45 - existing work-claiming and ownership gates.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]:51-63 - existing priority-based next-task suggestion.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]:165-180 - existing blocker handling and human escalation.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:38-45 - existing work-claiming and ownership gates.
 
 ---
 

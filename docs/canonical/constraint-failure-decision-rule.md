@@ -65,7 +65,7 @@ The rule is a single question applied to each candidate requirement. It does not
 - [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:35-41 -- defines failed scenarios and limits as expectations fields. Adjacent to failure conditions but does not define the constraint/failure boundary.
 - [[docs/canonical/generator-evaluator|Generator-Evaluator]]:77-83 -- the Generator builds, the Evaluator checks. The architecture implies different information surfaces, but no rule classifies what goes on which surface.
 - [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:29-56 -- anchors evaluation on explicit constraint lists. The constraints the evaluator uses should ideally be pre-classified by the decision rule, but the classification step does not exist.
-- [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive skill]]:19-23 -- checks field completeness but does not classify items into constraint versus failure condition using a decision rule.
+- [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive skill]]:19-23 -- checks field completeness but does not classify items into constraint versus failure condition using a decision rule.
 - [[curriculum/05-core-concepts/04-sprint-contracts|Sprint Contracts]] -- separates scope from success criteria and failure handling using a contract negotiation frame, not a constraint-versus-failure heuristic.
 
 ### What is missing from the pattern

@@ -120,8 +120,8 @@ Before/after:
 - [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:47-49 - permanent-invariant model extracted from the source article.
 - [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction]]:134-140 - synthesis: smallest measured harness that preserves invariants.
 - [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns|Pattern Extraction]]:171-191 - Invariant-Compensation Split definition, inputs, outputs, benefits, and limitations.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.yaml|Pattern Extraction YAML]]:242-273 - structured component list and flow for this pattern.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-patterns.md|Pattern Extraction YAML]]:242-273 - structured component list and flow for this pattern.
 - [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification|Classification]]:143-158 - Missing classification and NOT_FOUND confirmation.
-- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification.yaml|Classification YAML]]:197-217 - structured Missing classification and nearest adjacent evidence.
+- [[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification.md|Classification YAML]]:197-217 - structured Missing classification and nearest adjacent evidence.
 - [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]:57-60 - adjacent harness-evolution and rollback questions.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41 - adjacent stable prompt preservation during context reduction.

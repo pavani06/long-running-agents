@@ -14,7 +14,7 @@ sources: ["[[docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-b
 **Date:** 2026-06-14
 **Type:** Analysis
 **Precedence:** Level 4 (`docs/system-of-record.md`: análise e diagnóstico)
-**Source:** `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification.yaml`
+**Source:** `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification.md`
 **Domain verdict:** Different domain. All 9 patterns have **Low** integration value.
 
 ---
@@ -233,10 +233,10 @@ This is the first analysis where every pattern received Low integration value. T
 
 ## References
 
-- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification.yaml` — full classification with evidence for all 9 patterns
-- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-patterns.yaml` — 9 pattern definitions with components and flow
-- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-analysis.yaml` — non-obvious knowledge extraction from the Quarto source
-- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-mental-model.yaml` — repository mental model and domain gaps
+- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification.md` — full classification with evidence for all 9 patterns
+- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-patterns.md` — 9 pattern definitions with components and flow
+- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-analysis.md` — non-obvious knowledge extraction from the Quarto source
+- `docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-mental-model.md` — repository mental model and domain gaps
 - `docs/system-of-record.md` — documentation precedence and domain taxonomy
 - `AGENTS.md` — operational rules, validation gates, and publishing constraints
 - `docs/canonical/application-owned-agent-control-plane.md` — versioned contract analog

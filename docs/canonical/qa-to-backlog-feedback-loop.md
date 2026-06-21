@@ -4,7 +4,7 @@ type: canonical
 tags: ["agentes-orquestracao", "governanca", "evals"]
 aliases: ["QA feedback loop", "review-to-backlog", "QA intake lane", "feedback-driven backlog"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]", "[[.opencode/skills/orchestrator/SKILL|orchestrator skill]]"]
+relates-to: ["[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]", "[[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]"]
 sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # QA-to-Backlog Feedback Loop
@@ -50,8 +50,8 @@ The loop closes when a finding produces a resolved issue and the resolution surv
 - [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] lines 28-40 transforms production failures into durable regression cases with trace, labels, tier assignment, deduplication, and links to incident/PR. This is the closest existing mechanism to a feedback loop, but it is scoped to production failures, not QA/review findings.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]] lines 32-35 includes feedback writeback as one of four operating system surfaces, alongside state intake, priority synthesis, and execution routing.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]] lines 43-45 requires ownership, validation, and memory update before writeback becomes authoritative.
-- [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]] lines 18-25 mandates updating acceptance criteria and commenting progress, decisions, and blockers during work.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] lines 165-180 handles blocker triage and manual intervention when agents cannot resolve blocking findings after three attempts.
+- [[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]] lines 18-25 mandates updating acceptance criteria and commenting progress, decisions, and blockers during work.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] lines 165-180 handles blocker triage and manual intervention when agents cannot resolve blocking findings after three attempts.
 - [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] defines merge-policy gates for eval-sensitive changes, creating a natural point where blocking findings can be injected into the backlog.
 
 ### What is missing from the pattern
@@ -91,8 +91,8 @@ Missing pieces:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:155-156 - QA creates more work rather than closing the loop permanently.
 - [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]:28-40 - existing regression case creation from production failures.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]:32-45 - existing feedback writeback surface and minimum operating contract.
-- [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]:18-25 - existing acceptance criteria and progress/blocker commenting.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]]:165-180 - existing blocker handling and manual intervention comment.
+- [[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]:18-25 - existing acceptance criteria and progress/blocker commenting.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]:165-180 - existing blocker handling and manual intervention comment.
 - [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]:28-53 - existing merge-gate policy for eval-sensitive changes.
 
 ---

@@ -49,8 +49,8 @@ The repo already separates planning, execution, generation, and evaluation:
 - Planning/execution separation is taught as Planner and Executor phases to avoid collapse between strategy and implementation in [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:47-54.
 - Planner, Generator, and Evaluator are presented as separate responsibilities in reliable multi-agent systems in [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:60-72.
 - Generator/Evaluator separation states that one role creates and another judges so the system proves it is right in [[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator Evaluator Pattern]]:151-153.
-- The issue refinement skill decomposes high-level issues into executable sub-issues with dependency relationships in [[.opencode/skills/refine-issue/SKILL|refine-issue skill]]:8-21.
-- The issue review skill provides validation and second-agent review before merge in [[.opencode/skills/issue-review/SKILL|issue-review skill]]:12-15.
+- The issue refinement skill decomposes high-level issues into executable sub-issues with dependency relationships in [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]]:8-21.
+- The issue review skill provides validation and second-agent review before merge in [[.opencode/skills/issue-review/SKILL.md|issue-review skill]]:12-15.
 
 ### What is missing
 
@@ -87,8 +87,8 @@ Missing implementation details:
 - [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:47-54 - existing Planner and Executor separation.
 - [[curriculum/05-core-concepts/02-planning-execution-separation|Planning Execution Separation]]:60-72 - Planner, Generator, and Evaluator responsibility split.
 - [[curriculum/05-core-concepts/03-generator-evaluator-pattern|Generator Evaluator Pattern]]:151-153 - creator/judge separation.
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]]:8-21 - existing issue decomposition workflow.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]]:12-15 - existing second-agent review gate.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]]:8-21 - existing issue decomposition workflow.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]]:12-15 - existing second-agent review gate.
 
 ---
 

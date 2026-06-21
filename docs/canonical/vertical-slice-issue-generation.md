@@ -4,7 +4,7 @@ type: canonical
 tags: ["agentes-orquestracao", "governanca"]
 aliases: ["vertical slice issues", "layer-spanning issues", "behavior-path issues", "vertical slice generation"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/refine-issue/SKILL|refine-issue skill]]", "[[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]"]
+relates-to: ["[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]]", "[[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]"]
 sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Vertical-Slice Issue Generation
@@ -57,10 +57,10 @@ Boundary rules for slice sizing:
 
 ### What already exists
 
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] lines 8-21 decomposes an issue into focused sub-issues with dependencies, acceptance criteria, and a Verification Gate. The sub-issue template includes target file, change type, action guidance, verify command, acceptance criteria, blocked-by, and enables relationships.
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] lines 46-70 defines sub-issues by file or tightly-coupled pair. The dependency model orders foundation work first (types, interfaces, schemas), flows dependencies down (A imports from B implies B first), pairs tests with implementation, and always places a Verification Gate last.
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] lines 80-86 requires a final Verification Gate sub-issue blocked by all implementation sub-issues, which validates all acceptance criteria before the parent issue can complete.
-- [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]] lines 59-82 creates sub-issues with acceptance criteria, progress log, and BLOCKED BY blocks for dependency modeling.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] lines 8-21 decomposes an issue into focused sub-issues with dependencies, acceptance criteria, and a Verification Gate. The sub-issue template includes target file, change type, action guidance, verify command, acceptance criteria, blocked-by, and enables relationships.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] lines 46-70 defines sub-issues by file or tightly-coupled pair. The dependency model orders foundation work first (types, interfaces, schemas), flows dependencies down (A imports from B implies B first), pairs tests with implementation, and always places a Verification Gate last.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] lines 80-86 requires a final Verification Gate sub-issue blocked by all implementation sub-issues, which validates all acceptance criteria before the parent issue can complete.
+- [[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]] lines 59-82 creates sub-issues with acceptance criteria, progress log, and BLOCKED BY blocks for dependency modeling.
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]] separates planning, execution, and verification into distinct phases with checkpoints. Vertical slices align with this: each slice is a plan-execute-verify unit whose phases produce observable behavior.
 
 ### What is missing from the pattern
@@ -90,7 +90,7 @@ Missing pieces:
 - **Consumes:** [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] because the Destination PRD and behavior paths should pass both engineering review (can this slice be built?) and product review (is this the right behavior to build first?).
 - **Enables:** [[docs/canonical/generator-evaluator|Generator-Evaluator]] because each slice produces testable behavior that a separate evaluator can verify against the acceptance criteria.
 - **Integrates with:** [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]] because vertical slices populate the ready queue with independently grabbable, cross-layer work items.
-- **Depends on:** [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] for the current decomposition workflow and dependency management that vertical-slice generation extends.
+- **Depends on:** [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] for the current decomposition workflow and dependency management that vertical-slice generation extends.
 - **Comes from:** [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]:160-188 and its Partial Coverage classification in [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:108-124.
 
 ## References
@@ -98,8 +98,8 @@ Missing pieces:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:160-188 - extracted pattern definition with behavior paths, layer-spanning tasks, acceptance checks, and blocker graph.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:108-124 - Partial Coverage classification and gap analysis for vertical-slice mechanics.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:92-98 - vertical-slice issue generation as integration-feedback graph.
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]]:8-86 - existing decomposition workflow, sub-issue template, dependency model, and Verification Gate.
-- [[.opencode/skills/issue-workflow/SKILL|issue-workflow skill]]:59-82 - existing sub-issue creation with acceptance criteria and BLOCKED BY.
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]]:8-86 - existing decomposition workflow, sub-issue template, dependency model, and Verification Gate.
+- [[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]:59-82 - existing sub-issue creation with acceptance criteria and BLOCKED BY.
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]:29-73 - three-phase decomposition with plan, execute, verify gates.
 
 ---

@@ -31,10 +31,10 @@ analyze-and-improve para a fonte `2026-06-15-canary-test-code-review-patterns.md
 
 | # | Path | Pattern | Classification | Priority |
 |---|---|---|---|---|
-| 1 | [[docs/canonical/shadow-review-pipeline\|shadow-review-pipeline]] | Shadow Review Pipeline | Missing | P0 |
-| 2 | [[docs/canonical/contextual-severity-calibration\|contextual-severity-calibration]] | Contextual Severity Calibration | Missing | P0 |
-| 3 | [[docs/canonical/review-contract-checklist\|review-contract-checklist]] | Review Contract Checklist | Partial Coverage | P1 |
-| 4 | [[docs/canonical/pre-commit-ai-review-gate\|pre-commit-ai-review-gate]] | Pre-Commit AI Review Gate | Partial Coverage | P1 |
+| 1 | [[docs/canonical/shadow-review-pipeline.md|shadow-review-pipeline]] | Shadow Review Pipeline | Missing | P0 |
+| 2 | [[docs/canonical/contextual-severity-calibration.md|contextual-severity-calibration]] | Contextual Severity Calibration | Missing | P0 |
+| 3 | [[docs/canonical/review-contract-checklist.md|review-contract-checklist]] | Review Contract Checklist | Partial Coverage | P1 |
+| 4 | [[docs/canonical/pre-commit-ai-review-gate.md|pre-commit-ai-review-gate]] | Pre-Commit AI Review Gate | Partial Coverage | P1 |
 
 ## Skills
 

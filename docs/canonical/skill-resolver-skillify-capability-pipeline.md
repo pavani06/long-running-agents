@@ -46,10 +46,10 @@ The key rule is that skill text alone is not enough. The resolver and acceptance
 ### What already exists
 
 - [[docs/system-of-record|System of Record]] lines 34-43 lists operational skills for issue lifecycle, orchestration, doc co-authoring, planning, error-context hygiene, and analyze-and-improve.
-- [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 includes improvement generation and integration after classification.
-- [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 102-119 defines concrete artifact slots such as canonical docs, skills, exercises, and artifacts manifest outputs.
-- [[.opencode/skills/error-context-hygiene/SKILL|error-context-hygiene skill]] lines 15-20 demonstrates a focused operational skill with explicit behavioral rules.
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]] lines 57-85 already requires eval-sensitive changes to preserve baseline/candidate, tier, delta, failure example, and merge recommendation evidence.
+- [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve skill]] lines 46-56 includes improvement generation and integration after classification.
+- [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve skill]] lines 102-119 defines concrete artifact slots such as canonical docs, skills, exercises, and artifacts manifest outputs.
+- [[.opencode/skills/error-context-hygiene/SKILL.md|error-context-hygiene skill]] lines 15-20 demonstrates a focused operational skill with explicit behavioral rules.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]] lines 57-85 already requires eval-sensitive changes to preserve baseline/candidate, tier, delta, failure example, and merge recommendation evidence.
 - [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] documents how eval-sensitive changes should be represented at review time.
 
 ### What is missing from the pattern
@@ -91,8 +91,8 @@ Missing pieces:
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 80-86 - skillify mechanism and compliance-heavy insight.
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 152-155 - operational lesson that skillify without tests is incomplete.
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 197-200 - one-shot macro, duplicate skill, and trigger-eval false confidence failure modes.
-- [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 and 102-119 - current analysis-to-artifact pipeline.
-- [[.opencode/skills/error-context-hygiene/SKILL|error-context-hygiene skill]] lines 15-20 - focused operational skill example.
+- [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve skill]] lines 46-56 and 102-119 - current analysis-to-artifact pipeline.
+- [[.opencode/skills/error-context-hygiene/SKILL.md|error-context-hygiene skill]] lines 15-20 - focused operational skill example.
 
 ---
 

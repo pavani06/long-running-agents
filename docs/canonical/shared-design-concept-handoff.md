@@ -52,8 +52,8 @@ Flow:
 
 The repo has adjacent mechanisms that support parts of the handoff:
 
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:28-42 collects meta-context, audience, impact, format, and constraints before drafting a document.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:111-147 creates an execution brief with objective, success criteria, scope, out-of-scope, strategy, and validation.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:28-42 collects meta-context, audience, impact, format, and constraints before drafting a document.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:111-147 creates an execution brief with objective, success criteria, scope, out-of-scope, strategy, and validation.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:35-41 requires reconciling reviewer outputs, recording disagreements, accepted tradeoffs, and deferred ambition.
 - [[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]:36-49 includes epistemic status, last verified timestamp, and labels to distinguish stale memory before acting.
 
@@ -91,8 +91,8 @@ Missing implementation details:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|patterns]]:69-97 - extracted pattern definition with components and flow.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:58-73 - Partial Coverage classification and gap note.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:50-54 - shared design concept as the real planning asset.
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:28-42 - existing meta-context collection workflow.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:111-147 - existing execution brief with scope and criteria.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:28-42 - existing meta-context collection workflow.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:111-147 - existing execution brief with scope and criteria.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:35-41 - existing reconciliation and deferred ambition recording.
 - [[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]:36-49 - existing epistemic status tracking for stale memory detection.
 

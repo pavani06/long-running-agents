@@ -3,7 +3,7 @@ title: 'Budget-Aware Session Handoff'
 type: canonical
 aliases: ["handoff por orcamento", "budget-driven handoff", "session transition", "troca de sessao"]
 tags: ["context-engineering", "agentes-orquestracao"]
-last_updated: 2026-06-10
+last_updated: 2026-06-19
 relates-to: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]
 sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]", "[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 ---
@@ -69,14 +69,15 @@ The handoff payload is not the old transcript. It is a compact, auditable start 
 
 | Field | Purpose | Source pattern |
 |---|---|---|
-| `trigger` | Records the red-phase, burn-rate, or runway reason for transition | Phase-gated token health returns phase, action, and reason ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:59-79) |
+| `trigger` | Trigger type: "manual" (user command), "red-phase" (budget ≤20%, automatic), "orange-phase" (budget ≤40%, state preparation), or "user-request" (another skill/agent). When red-phase, burn-rate and runway reason are recorded via `budget_context`. The full trigger schema is in session-handoff/SKILL.md:212. | Phase-gated token health returns phase, action, and reason ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:59-79) |
 | `objective` | Preserves the current user goal or task frame | Budget-aware handoff inputs include current objective and latest state ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:218-226) |
-| `durable_facts` | Carries constraints, preferences, business state, and other facts that must survive session transition | Durable facts survive windowing, summarization, and session transition ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:81-101) |
+| `relates-to` | Cross-vault wikilinks to durable facts (constraints, preferences) in `facts/<repo>/` and canonical docs in knowledge vaults. Facts are persisted separately via `appendFact()`, not embedded in the handoff frontmatter. | Durable facts survive windowing, summarization, and session transition ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:81-101) |
 | `summary_buffer` | Compresses older continuity without spending the new session on full history | Summary buffer creates a portable handoff artifact for new sessions or sub-agents ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:125-145) |
 | `memory_handles` | Points to exact recoverable source content that the new session can fetch on demand | Addressable memory uses stable `id`, `kind`, `location`, `preview`, `scope`, `tool`, and `path` fields ([[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-43). The `tool` field specifies the concrete retrieval tool (only `"read"` for automatic fetch), and `path` is the workspace-relative file path validated against an allowlist with realpath canonicalization |
 | `open_decisions` | Names unresolved decisions, pending approvals, or next actions so the new session does not restart planning from scratch | The owned control plane makes loop decisions such as continue, pause, handoff, or terminate explicit ([[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]:53-64) |
 | `continuity_message` | Explains the transition to the user or downstream agent without exposing internal token mechanics unnecessarily | The red-phase KODA example prepares a new specialist handoff message ([[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:555-566) |
-| `count_mode` | Records whether the budget numbers in this handoff came from exact token counting (`"tokenizer"`) or heuristic estimation (`"heuristic"`), so the next session knows the precision of the trigger | The budget-monitor skill includes count_mode in red-phase handoff payloads |
+
+**Nota:** A tabela acima é o contrato canônico mínimo. O schema completo do frontmatter tem 27 campos — ver `session-handoff/SKILL.md:204-227` para a especificação completa. Campos adicionais incluem: `id`, `title`, `type`, `date`, `agent`, `repo`, `status`, `tags`, `budget_context` (burn_rate, accelerating, phase_reason, recovered, previous_error), `planned_budget`, `next_action`, `execution_graph` (futuro), `current_node` (futuro), `relevance_log`, `reflected_at`, `reflection_batch`.
 
 ## Implementation in this repo
 
@@ -93,6 +94,16 @@ The handoff payload is not the old transcript. It is a compact, auditable start 
 1. It makes red-phase token health a valid handoff trigger instead of treating handoff only as a human, workflow, or failure-control event ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:104-112).
 2. It defines the fresh-session payload as the product of durable facts, current objective, open decisions, latest state, summary buffer, recoverable memory handles, and explicit handoff instructions ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:218-226).
 3. It makes active-budget reset an explicit success condition: the new session starts with essential state carried forward, not with the exhausted context window copied forward ([[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:223-230).
+
+### What was built from this (2026-06-16 — 2026-06-19)
+
+The following runtime components now implement this canonical contract:
+
+- **`session-handoff` skill** (`~/.config/opencode/skills/session-handoff/SKILL.md`, 815 lines): Automates handoff with 4 trigger types, 27-field frontmatter, secret redaction, and durable fact persistence via `obsidian-eval`.
+- **`handoff-path.sh`** (`~/scripts/sisyphus/handoff-path.sh`): Deterministic filename generator with UTC timestamps, preventing same-day collisions. Single source of truth for handoff naming.
+- **`budget-monitor` skill**: Integrates token budget monitoring with red-phase automatic handoff via real tokenizer (`@goliapkg/tiktoken-wasm`).
+- **Vault `sisyphus-runtime`**: 42 handoffs persisted across 6 repos, 33 in `_global/`.
+- **Cross-session learning loop**: `reflection-runner` (crontab 09:00 BRT) → `facts/_global/principles.md` → `canonical-context` injection in next session.
 
 ### Naming contract (2026-06-19)
 

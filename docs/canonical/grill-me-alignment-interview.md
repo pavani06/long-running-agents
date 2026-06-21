@@ -51,8 +51,8 @@ Flow:
 
 The repo has adjacent mechanisms that partially cover alignment interviewing:
 
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:20-23 defines context gathering, refinement, and reader testing for documents.
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:88-98 requires generating 5-10 clarification questions and exiting when those questions demonstrate understanding.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:20-23 defines context gathering, refinement, and reader testing for documents.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:88-98 requires generating 5-10 clarification questions and exiting when those questions demonstrate understanding.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:28-41 defines independent engineering and product/destination reviewers with recorded decisions and deferred ambitions.
 - [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]:32-35 includes priority synthesis and feedback writeback, which would consume the decision ledger.
 
@@ -91,8 +91,8 @@ Missing implementation details:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:41-57 - Partial Coverage classification and gap note.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:52-54 - shared design concept before plans framing.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:78-82 - grill-me skill pattern description.
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:20-23 - existing context gathering workflow.
-- [[.opencode/skills/doc-coauthoring/SKILL|doc-coauthoring skill]]:88-98 - existing clarification question generation.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:20-23 - existing context gathering workflow.
+- [[.opencode/skills/doc-coauthoring/SKILL.md|doc-coauthoring skill]]:88-98 - existing clarification question generation.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:28-41 - existing dual-rubric review with deferred decisions.
 
 ---

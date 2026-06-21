@@ -161,7 +161,7 @@ Example trace shape:
 - [[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]:445-459 - conversation viability calculator with response and safety reserve.
 - [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]:103-109 - Hybrid Context Stack extraction from source analysis.
 - [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns|Token Budgeting Agentic Patterns]]:191-212 - reusable Hybrid Context Stack pattern with inputs, outputs, benefits, and limitations.
-- `docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns.yaml:288-321` - YAML source flow: reserve budget, inject durable facts, add summaries, add recent window, compress or omit, and log final inclusion decision.
+- `docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-patterns.md:288-321` - YAML source flow: reserve budget, inject durable facts, add summaries, add recent window, compress or omit, and log final inclusion decision.
 - [[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-classification|Token Budgeting Pattern Classification]]:94-100 - Partial Coverage classification and NOT_FOUND gap.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]:30-40 - existing context-builder block list.
 - [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]:28-39 - bounded active context with recoverable middle.

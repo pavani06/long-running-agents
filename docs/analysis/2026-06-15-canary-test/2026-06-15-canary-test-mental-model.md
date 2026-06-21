@@ -6,7 +6,7 @@ domain: canary-test
 aliases: ["modelo mental long-running-agents", "canary mental model", "repo mental model"]
 tags: [analise, agentes-orquestracao, curriculo-conteudo, mental-model]
 last_updated: 2026-06-15
-relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve Skill]]"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve Skill]]"]
 sources: []
 ---
 

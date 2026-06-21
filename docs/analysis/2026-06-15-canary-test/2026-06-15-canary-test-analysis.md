@@ -5,8 +5,8 @@ tags: ["agentic-coding", "governanca", "decision-discipline", "harness-engineeri
 date: 2026-06-15
 aliases: ["canary test code review", "code review patterns analysis"]
 relates-to:
-  - "[[.opencode/skills/manual-brake-question-gate/SKILL|manual-brake-question-gate]]"
-  - "[[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]]"
+  - "[[.opencode/skills/manual-brake-question-gate/SKILL.md|manual-brake-question-gate]]"
+  - "[[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]]"
   - "[[docs/canonical/constraint-anchored-evaluation|constraint-anchored-evaluation]]"
   - "[[docs/canonical/multi-model-evaluation-council|multi-model-evaluation-council]]"
   - "[[docs/canonical/pr-gated-eval-enforcement|pr-gated-eval-enforcement]]"

@@ -1,0 +1,26 @@
+---
+title: "Shared Design Concept Handoff"
+type: canonical
+tags: ["agentes-orquestracao", "context-engineering", "governanca"]
+aliases: ["design concept handoff", "shared mental model handoff", "alignment handoff", "concept contract"]
+last_updated: 2026-06-11
+relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]
+sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Agentic Patterns from Matt Pocock Workflow]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Classification: Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
+---
+# Shared Design Concept Handoff
+
+**Type:** canonical
+**Status:** active
+**Source:** analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/
+**Classification:** Partial Coverage, High integration value
+**Precedence:** document-level 2 (canonical) per [[docs/system-of-record|System of Record]]
+
+---
+
+## Problem
+
+A written plan cannot carry all tacit product and architecture judgment by itself. When the alignment conversation ends and the PRD is written, something is lost: the human's tone, the agent's interpretation of tradeoffs, the reasoning behind deferred decisions, and the shared understanding of which assumptions are load-bearing.
+
+Without a formal handoff of that shared concept, downstream artifacts (PRDs, issues, review criteria) operate from a shallow summary. The PRD becomes the only downstream contract, but it was never supposed to carry the full weight of alignment. Later agents and reviewers have only the prose artifact, not the shared understanding that produced it. This causes two failure modes: agents implement literally against PRD text without understanding intent, and reviewers check PRD compliance instead of checking whether the implementation preserves the design concept.
+
+The asset that matters is the human-agent conversation after grilling, not any single written artifact. Without a handoff contract, that asse

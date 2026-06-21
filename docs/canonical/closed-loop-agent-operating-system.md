@@ -50,9 +50,9 @@ Minimum operating contract:
 
 - [[docs/system-of-record|System of Record]] lines 14-21 defines the documentation precedence hierarchy used when operational knowledge conflicts.
 - [[docs/system-of-record|System of Record]] lines 25-46 maps the `.opencode` agent system, lifecycle skills, orchestrator, and analysis pipeline into project domains.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] lines 12-15 fetches state, summarizes active work, suggests next issues, generates prompts, and cleans up sessions.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] lines 27-62 defines a dashboard and priority logic for choosing the next task.
-- [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 defines a pipeline from repository model through extraction, classification, improvements, integration, and curriculum integration.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] lines 12-15 fetches state, summarizes active work, suggests next issues, generates prompts, and cleans up sessions.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] lines 27-62 defines a dashboard and priority logic for choosing the next task.
+- [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve skill]] lines 46-56 defines a pipeline from repository model through extraction, classification, improvements, integration, and curriculum integration.
 - [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] provides the inner-loop harness frame for an individual agent.
 - [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] defines how failures become durable regression knowledge.
 
@@ -91,8 +91,8 @@ Missing pieces:
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]] lines 13-28 - Partial Coverage classification and High integration value.
 - [[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-analysis|Stanford CS153 Analysis]] lines 201-214 - open-loop company drift and capability-as-operating-system synthesis.
 - [[docs/system-of-record|System of Record]] lines 14-46 - precedence and agent domain map.
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] lines 12-62 - current dashboard and task-selection mechanics.
-- [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve skill]] lines 46-56 - current knowledge-to-improvement loop.
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] lines 12-62 - current dashboard and task-selection mechanics.
+- [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve skill]] lines 46-56 - current knowledge-to-improvement loop.
 
 ---
 

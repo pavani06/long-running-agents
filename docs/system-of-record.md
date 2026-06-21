@@ -33,34 +33,34 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/agents/hop-orchestrator-rezek|.opencode/agents/hop-orchestrator-rezek.md]] | Orquestrador principal — governança, source-of-truth, coordenação |
 | [[.opencode/agents/koda-hop-init-basic|.opencode/agents/koda-hop-init-basic.md]] | Subagente de inicial guiada do KODA |
 | [[.opencode/agents/hop-live-whatsapp-tester|.opencode/agents/hop-live-whatsapp-tester.md]] | Subagente de teste live de WhatsApp |
-| [[.opencode/skills/issue-start/SKILL|.opencode/skills/issue-start/SKILL.md]] | Workflow claim → worktree → execution brief |
-| [[.opencode/skills/issue-review/SKILL|.opencode/skills/issue-review/SKILL.md]] | Workflow validação → draft PR → second-agent review |
-| [[.opencode/skills/issue-finish/SKILL|.opencode/skills/issue-finish/SKILL.md]] | Workflow merge → cleanup branch/worktree/labels |
-| [[.opencode/skills/issue-workflow/SKILL|.opencode/skills/issue-workflow/SKILL.md]] | Ciclo completo de lifecycle de issue |
-| [[.opencode/skills/refine-issue/SKILL|.opencode/skills/refine-issue/SKILL.md]] | Decomposição de issues em sub-issues com dependências |
-| [[.opencode/skills/orchestrator/SKILL|.opencode/skills/orchestrator/SKILL.md]] | Coordenação de agentes paralelos, dashboard de status |
-| [[.opencode/skills/doc-coauthoring/SKILL|.opencode/skills/doc-coauthoring/SKILL.md]] | Workflow de co-autoria de documentação |
-| [[.opencode/skills/writing-plans/SKILL|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
-| [[.opencode/skills/karpathy-guidelines/SKILL|.opencode/skills/karpathy-guidelines/SKILL.md]] | Diretrizes comportamentais Karpathy: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
-| [[.opencode/skills/error-context-hygiene/SKILL|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
-| [[.opencode/skills/analyze-and-improve/SKILL|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements. Harness com cache, retry, model tiering, schemas, chunking, trajectory, eval, refinement (8 módulos, stdlib). Completion catalog: `.omo/plans/2026-06-18-analyze-and-improve-speedup-completion.md` |
-| [[.opencode/skills/manual-brake-question-gate/SKILL|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
-| [[.opencode/skills/deferred-ledger-agentic-work/SKILL|.opencode/skills/deferred-ledger-agentic-work/SKILL.md]] | Ledger de trabalho agentic diferido com rastreamento de dívida e sunset gates |
-| [[.opencode/skills/owner-of-no-role/SKILL|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
-| [[.opencode/skills/intent-five-part-primitive/SKILL|.opencode/skills/intent-five-part-primitive/SKILL.md]] | Decomposição de intenção em cinco partes primitivas para especificação precisa de tarefas |
-| [[.opencode/skills/presence-in-the-loop-metric/SKILL|.opencode/skills/presence-in-the-loop-metric/SKILL.md]] | Métrica de presença-no-loop para calibrar intervenção humana em workflows agentic |
-| [[.opencode/skills/shadow-review-pipeline/SKILL|.opencode/skills/shadow-review-pipeline/SKILL.md]] | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
-| [[.opencode/skills/contextual-severity-calibration/SKILL|.opencode/skills/contextual-severity-calibration/SKILL.md]] | Calibração contextual de severidade em revisões de código |
-| [[.opencode/skills/two-implementations-goal-test/SKILL|.opencode/skills/two-implementations-goal-test/SKILL.md]] | Teste de duas implementações para validação de goal specification |
-| [[.opencode/skills/goal-atomicity-split/SKILL|.opencode/skills/goal-atomicity-split/SKILL.md]] | Decomposição de goals complexos em unidades atômicas |
-| [[.opencode/skills/constraint-budget-gate/SKILL|.opencode/skills/constraint-budget-gate/SKILL.md]] | Gate de orçamento explícito de constraints por tarefa |
-| [[.opencode/skills/constraint-failure-decision-rule/SKILL|.opencode/skills/constraint-failure-decision-rule/SKILL.md]] | Regra de decisão para falha de constraint com três caminhos |
-| [[.opencode/skills/autonomy-curriculum-sampling/SKILL|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] | Skill de implementação: amostragem curricular progressiva (observe→assist→own) para autonomia do modelo |
-| [[.opencode/skills/magnitude-direction-verifier-split/SKILL|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] | Skill de implementação: separação magnitude/direção em verificadores de output |
-| [[.opencode/skills/tiered-context-storage/SKILL|.opencode/skills/tiered-context-storage/SKILL.md]] | Skill de implementação: armazenamento de contexto em três camadas com promoção/demissão dinâmica |
-| [[.opencode/skills/neutral-selection-layer/SKILL|.opencode/skills/neutral-selection-layer/SKILL.md]] | Skill de implementação: camada de seleção model-agnostic e vendor-independent |
-| [[.opencode/skills/selection-budgeted-retrieval/SKILL|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
-| [[.opencode/skills/devils-advocate/SKILL|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
+| [[.opencode/skills/issue-start/SKILL.md|.opencode/skills/issue-start/SKILL.md]] | Workflow claim → worktree → execution brief |
+| [[.opencode/skills/issue-review/SKILL.md|.opencode/skills/issue-review/SKILL.md]] | Workflow validação → draft PR → second-agent review |
+| [[.opencode/skills/issue-finish/SKILL.md|.opencode/skills/issue-finish/SKILL.md]] | Workflow merge → cleanup branch/worktree/labels |
+| [[.opencode/skills/issue-workflow/SKILL.md|.opencode/skills/issue-workflow/SKILL.md]] | Ciclo completo de lifecycle de issue |
+| [[.opencode/skills/refine-issue/SKILL.md|.opencode/skills/refine-issue/SKILL.md]] | Decomposição de issues em sub-issues com dependências |
+| [[.opencode/skills/orchestrator/SKILL.md|.opencode/skills/orchestrator/SKILL.md]] | Coordenação de agentes paralelos, dashboard de status |
+| [[.opencode/skills/doc-coauthoring/SKILL.md|.opencode/skills/doc-coauthoring/SKILL.md]] | Workflow de co-autoria de documentação |
+| [[.opencode/skills/writing-plans/SKILL.md|.opencode/skills/writing-plans/SKILL.md]] | Criação de planos de implementação detalhados |
+| [[.opencode/skills/karpathy-guidelines/SKILL.md|.opencode/skills/karpathy-guidelines/SKILL.md]] | Diretrizes comportamentais Karpathy: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
+| [[.opencode/skills/error-context-hygiene/SKILL.md|.opencode/skills/error-context-hygiene/SKILL.md]] | Skill de implementação: 4 regras de higiene de erro no contexto |
+| [[.opencode/skills/analyze-and-improve/SKILL.md|.opencode/skills/analyze-and-improve/SKILL.md]] | Pipeline knowledge → patterns → classification → improvements. Harness com cache, retry, model tiering, schemas, chunking, trajectory, eval, refinement (8 módulos, stdlib). Completion catalog: `.omo/plans/2026-06-18-analyze-and-improve-speedup-completion.md` |
+| [[.opencode/skills/manual-brake-question-gate/SKILL.md|.opencode/skills/manual-brake-question-gate/SKILL.md]] | Gate de pergunta-freio manual que interrompe o agente antes de ações irreversíveis |
+| [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|.opencode/skills/deferred-ledger-agentic-work/SKILL.md]] | Ledger de trabalho agentic diferido com rastreamento de dívida e sunset gates |
+| [[.opencode/skills/owner-of-no-role/SKILL.md|.opencode/skills/owner-of-no-role/SKILL.md]] | Design pattern onde cada artefato tem um único dono e papéis são explícitos |
+| [[.opencode/skills/intent-five-part-primitive/SKILL.md|.opencode/skills/intent-five-part-primitive/SKILL.md]] | Decomposição de intenção em cinco partes primitivas para especificação precisa de tarefas |
+| [[.opencode/skills/presence-in-the-loop-metric/SKILL.md|.opencode/skills/presence-in-the-loop-metric/SKILL.md]] | Métrica de presença-no-loop para calibrar intervenção humana em workflows agentic |
+| [[.opencode/skills/shadow-review-pipeline/SKILL.md|.opencode/skills/shadow-review-pipeline/SKILL.md]] | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
+| [[.opencode/skills/contextual-severity-calibration/SKILL.md|.opencode/skills/contextual-severity-calibration/SKILL.md]] | Calibração contextual de severidade em revisões de código |
+| [[.opencode/skills/two-implementations-goal-test/SKILL.md|.opencode/skills/two-implementations-goal-test/SKILL.md]] | Teste de duas implementações para validação de goal specification |
+| [[.opencode/skills/goal-atomicity-split/SKILL.md|.opencode/skills/goal-atomicity-split/SKILL.md]] | Decomposição de goals complexos em unidades atômicas |
+| [[.opencode/skills/constraint-budget-gate/SKILL.md|.opencode/skills/constraint-budget-gate/SKILL.md]] | Gate de orçamento explícito de constraints por tarefa |
+| [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|.opencode/skills/constraint-failure-decision-rule/SKILL.md]] | Regra de decisão para falha de constraint com três caminhos |
+| [[.opencode/skills/autonomy-curriculum-sampling/SKILL.md|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] | Skill de implementação: amostragem curricular progressiva (observe→assist→own) para autonomia do modelo |
+| [[.opencode/skills/magnitude-direction-verifier-split/SKILL.md|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] | Skill de implementação: separação magnitude/direção em verificadores de output |
+| [[.opencode/skills/tiered-context-storage/SKILL.md|.opencode/skills/tiered-context-storage/SKILL.md]] | Skill de implementação: armazenamento de contexto em três camadas com promoção/demissão dinâmica |
+| [[.opencode/skills/neutral-selection-layer/SKILL.md|.opencode/skills/neutral-selection-layer/SKILL.md]] | Skill de implementação: camada de seleção model-agnostic e vendor-independent |
+| [[.opencode/skills/selection-budgeted-retrieval/SKILL.md|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
+| [[.opencode/skills/devils-advocate/SKILL.md|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -359,7 +359,7 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 > `integration-roadmap.md` (formato legacy). Sessões a partir de 2026-06-14 usam
 > `<date>-<source-slug>-artifacts.{md,yaml}` como artifacts manifest.
 > Ambos os formatos servem ao mesmo propósito: rastreabilidade classificação →
-> artefatos → integração. Consulte o [[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve SKILL.md]]
+> artefatos → integração. Consulte o [[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve SKILL.md]]
 > para o contrato atual.
 
 ## Planos

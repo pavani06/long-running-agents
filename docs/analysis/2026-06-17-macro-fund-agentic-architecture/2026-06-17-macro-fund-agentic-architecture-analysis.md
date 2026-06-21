@@ -60,7 +60,7 @@ O fluxo correto:
 - Cenários confirmatórios (reforçam a prior do PM)
 - Cenários adversariais (falsificadores explícitos — o que quebraria a tese)
 
-Mapeamento para o repositório: [[.opencode/skills/shadow-review-pipeline/SKILL|shadow-review-pipeline]] implementa o padrão de revisão adversarial paralela. A lógica é transferível diretamente para o mandato do analista.
+Mapeamento para o repositório: [[.opencode/skills/shadow-review-pipeline/SKILL.md|shadow-review-pipeline]] implementa o padrão de revisão adversarial paralela. A lógica é transferível diretamente para o mandato do analista.
 
 ### 2.2 PMs — Prior + Update Bayesiano + Mode-Seeking Natural
 
@@ -70,7 +70,7 @@ O problema estrutural: o PM naturalmente faz mode-seeking (reverse KL). Cenário
 
 **O calibration gap PI→Execução**: o PM desenvolve convicção calibrada na presença do analista (com PI). Em produção, age com essa convicção herdada mas sem a PI que a sustentava. A solução estrutural: o PM deve persistir não apenas a conclusão ("long EURUSD") mas os **falsificadores explícitos** — o que quebraria a tese — que são os marcadores de incerteza que a compressão normal suprime.
 
-Mapeamento: [[.opencode/skills/magnitude-direction-verifier-split/SKILL|magnitude-direction-verifier-split]] já implementa a separação entre convicção interna (magnitude) e sinal externo de validação (direção). Esta skill é o RLSD split aplicado ao PM.
+Mapeamento: [[.opencode/skills/magnitude-direction-verifier-split/SKILL.md|magnitude-direction-verifier-split]] já implementa a separação entre convicção interna (magnitude) e sinal externo de validação (direção). Esta skill é o RLSD split aplicado ao PM.
 
 ### 2.3 Comitê — Pré-Compromisso antes da Revelação
 
@@ -165,10 +165,10 @@ O repositório já possui implementações parciais de cada componente deste mod
 
 | Componente macro | Skill existente | Gap |
 |---|---|---|
-| RLSD split (PM) | [[.opencode/skills/magnitude-direction-verifier-split/SKILL|magnitude-direction-verifier-split]] | Aplicação para sizing de posição, não apenas output validation |
-| Curriculo de autonomia (analista→PM) | [[.opencode/skills/autonomy-curriculum-sampling/SKILL|autonomy-curriculum-sampling]] | Lambda dial entre supervisão densa e rollout autônomo |
-| Comitê adversarial | [[.opencode/skills/shadow-review-pipeline/SKILL|shadow-review-pipeline]] | Mandato adversarial para analista, não apenas code review |
-| Presença do Head | [[.opencode/skills/presence-in-the-loop-metric/SKILL|presence-in-the-loop-metric]] | Calibrar quando Head intervém vs. deixa o sistema rodar |
+| RLSD split (PM) | [[.opencode/skills/magnitude-direction-verifier-split/SKILL.md|magnitude-direction-verifier-split]] | Aplicação para sizing de posição, não apenas output validation |
+| Curriculo de autonomia (analista→PM) | [[.opencode/skills/autonomy-curriculum-sampling/SKILL.md|autonomy-curriculum-sampling]] | Lambda dial entre supervisão densa e rollout autônomo |
+| Comitê adversarial | [[.opencode/skills/shadow-review-pipeline/SKILL.md|shadow-review-pipeline]] | Mandato adversarial para analista, não apenas code review |
+| Presença do Head | [[.opencode/skills/presence-in-the-loop-metric/SKILL.md|presence-in-the-loop-metric]] | Calibrar quando Head intervém vs. deixa o sistema rodar |
 | Loop de PM | [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] | Os 4 componentes (prompt=template, context=PI, dispatch=execução, loop=feedback) |
 | Conselho de avaliação | [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]] | Pré-compromisso + aggregation opaca + escalação de divergências |
 | Detecção de drift | [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] | Falsificador cruzado como trigger de regime reassessment |

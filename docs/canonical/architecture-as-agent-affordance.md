@@ -4,7 +4,7 @@ type: canonical
 tags: ["agentes-orquestracao", "arquitetura", "governanca"]
 aliases: ["deep module refactoring", "agent affordance architecture", "architecture for agents", "agent-navigable architecture"]
 last_updated: 2026-06-11
-relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/writing-plans/SKILL|writing-plans skill]]"]
+relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/writing-plans/SKILL.md|writing-plans skill]]"]
 sources: ["[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Workflow Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|Matt Pocock Workflow Analysis]]"]
 ---
 # Architecture-as-Agent-Affordance Refactoring
@@ -45,7 +45,7 @@ Critical distinction: this is architecture work, not formatting cleanup. Renamin
 
 ### What already exists
 
-- [[.opencode/skills/writing-plans/SKILL|writing-plans skill]] lines 22-29 maps files, responsibilities, boundaries, and interfaces before defining implementation tasks. It requires clear-boundary design units, smaller focused files, and following established patterns.
+- [[.opencode/skills/writing-plans/SKILL.md|writing-plans skill]] lines 22-29 maps files, responsibilities, boundaries, and interfaces before defining implementation tasks. It requires clear-boundary design units, smaller focused files, and following established patterns.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] lines 30-41 evaluates scope, dependencies, tests, and risk during planning review, and records tradeoffs and deferred ambition for future agents.
 - [[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]] lines 43-48 separates deterministic system integration from model-owned judgment and chooses slices with evidence before expanding automation surface.
 - [[AGENTS]] lines 86-90 demands following existing module patterns, keeping scripts and functions small, explicit, and testable.
@@ -87,7 +87,7 @@ Missing pieces:
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|classification]]:220-237 - Partial Coverage classification and gap analysis for Architecture-as-Agent-Affordance.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:68-72 - deep modules as agent architecture and hostile terrain for agents.
 - [[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-analysis|analysis]]:140-146 - improve-codebase-architecture skill pattern description.
-- [[.opencode/skills/writing-plans/SKILL|writing-plans skill]]:22-29 - file mapping, boundaries, and interfaces before task definition.
+- [[.opencode/skills/writing-plans/SKILL.md|writing-plans skill]]:22-29 - file mapping, boundaries, and interfaces before task definition.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:30-41 - existing planning-review evaluation of scope, dependencies, and risk.
 - [[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]:43-48 - deterministic vs model-judgment boundary separation.
 - [[AGENTS]]:86-90 - existing code standards for small, explicit, testable scripts.

@@ -36,8 +36,8 @@ Phase 4 generated concrete artifacts for all Missing and Partial Coverage patter
 
 | Pattern | Classification | Value | Path |
 |---|---|---|---|
-| Autonomy Curriculum Sampling | Missing | Medium | [[.opencode/skills/autonomy-curriculum-sampling/SKILL|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] |
-| Magnitude-Direction Verifier Split | Missing | High | [[.opencode/skills/magnitude-direction-verifier-split/SKILL|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] |
+| Autonomy Curriculum Sampling | Missing | Medium | [[.opencode/skills/autonomy-curriculum-sampling/SKILL.md|.opencode/skills/autonomy-curriculum-sampling/SKILL.md]] |
+| Magnitude-Direction Verifier Split | Missing | High | [[.opencode/skills/magnitude-direction-verifier-split/SKILL.md|.opencode/skills/magnitude-direction-verifier-split/SKILL.md]] |
 
 ## Exercises
 

@@ -5,7 +5,7 @@ date: 2026-06-10
 sources_covered: 2
 sources:
   - "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md"
-  - "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.yaml"
+  - "docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis.md"
 tags: [synthesis, ai, agents, evals, eval-driven-development]
 aliases: ["padrões evals", "eval patterns", "catálogo evals"]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-10-eval-maturity-phases/2026-06-10-eval-maturity-phases-analysis|Eval Maturity Analysis]]"]

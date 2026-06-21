@@ -57,7 +57,7 @@ The gate is a decision point, not a checklist. The answers must be challenged, n
 
 - [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]:28-35 asks one-question-at-a-time to expose hidden constraints and record decisions -- structurally similar to the brake question gate, but its questions focus on architecture, scope, and product decisions rather than value, cost-proxy, and refusal ownership.
 - [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]:32-37 classifies tasks on ambiguity, architecture, feedback-loop readiness, and product judgment -- a pre-execution filter without the value/cost/ownership dimensions.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:111-147 creates an execution brief with objective, success criteria, scope, and out-of-scope -- a build contract without the cost/refusal dimension.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:111-147 creates an execution brief with objective, success criteria, scope, and out-of-scope -- a build contract without the cost/refusal dimension.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:28-41 reviews plans with dual rubrics but does not include cost-proxy or refusal-owner questions.
 
 ### What is missing from the pattern

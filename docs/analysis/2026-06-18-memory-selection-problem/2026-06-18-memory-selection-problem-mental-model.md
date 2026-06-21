@@ -31,7 +31,7 @@ Target audience: "Pessoas de negócio com skill em construção de agentes e sis
 Operational scope:
 - Teaching: 12-week curriculum, 4 levels, 8 core concepts ([[curriculum/README|curriculum/README.md]]:1-7)
 - Reference: 85+ canonical patterns ([[docs/system-of-record|system-of-record.md]]:144-235)
-- Automation: harness pipeline (`analyze-and-improve` in 7 phases) ([[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve SKILL.md]]:49-57)
+- Automation: harness pipeline (`analyze-and-improve` in 7 phases) ([[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve SKILL.md]]:49-57)
 - Navigation: Obsidian vault with wikilinks, dataview dashboards, knowledge graphs ([[README|README.md]]:110-121)
 
 ## 2. Architecture
@@ -145,7 +145,7 @@ All patterns reside in `docs/canonical/`. The system-of-record lists 85 active c
 
 ### Pattern Creation Pipeline
 
-New patterns enter via the `analyze-and-improve` pipeline ([[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve SKILL.md]]:49-57):
+New patterns enter via the `analyze-and-improve` pipeline ([[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve SKILL.md]]:49-57):
 1. Knowledge Extraction from external source
 2. Pattern Extraction into reusable forms
 3. Classification against repository (Better Impl, Partial Coverage, Missing)

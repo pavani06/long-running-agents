@@ -5,7 +5,7 @@ tags: ["agentes-orquestracao", "curriculo-conteudo", "harness-engineering", "con
 date: 2026-06-12
 aliases: ["idsd mental model", "modelo mental idsd", "repository mental model", "phase 0 idsd", "full rebuild mental model"]
 last_updated: 2026-06-12
-relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL|Analyze and Improve Skill]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL.md|Analyze and Improve Skill]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 sources: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/GLOSSARY|Glossary]]"]
 ---
 # Mental Model: long-running-agents

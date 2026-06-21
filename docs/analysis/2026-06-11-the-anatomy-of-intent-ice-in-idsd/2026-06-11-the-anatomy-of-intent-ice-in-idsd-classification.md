@@ -68,7 +68,7 @@ The repo formalizes intent as a five-part primitive (description, constraints, f
 **What exists:**
 
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:33-41 -- five-field intent schema with description, constraints, failure scenarios, success scenarios, and connections.
-- [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive skill]]:19-23 -- operational skill enforcing the five-field completeness gate.
+- [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive skill]]:19-23 -- operational skill enforcing the five-field completeness gate.
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:43-48 -- completeness gate mechanics blocking agent execution when fields are missing.
 - [[docs/canonical/ice-craft-separation|ICE Craft Separation]]:35 -- the five-part structure ensures completeness: "any missing field is a visible gap, not an invisible delegation to the agent."
 
@@ -277,7 +277,7 @@ The repo has extensive, mature harness-owned context assembly infrastructure for
 - [[docs/canonical/external-state-persistence|External State Persistence]]:29-57 -- durable state outside the context window.
 - [[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]:26-41 -- preserves head (goal, constraints) and tail (current state) while keeping middle recoverable.
 - [[curriculum/GLOSSARY|Glossary]]:110-113 -- defines "Context Progressive Disclosure" as a curriculum concept, taught and not just documented.
-- [[.opencode/skills/issue-start/SKILL|issue-start]]:16-23 -- demonstrates load-on-demand skill triggers in production, implementing progressive context disclosure in the agent lifecycle.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start]]:16-23 -- demonstrates load-on-demand skill triggers in production, implementing progressive context disclosure in the agent lifecycle.
 
 **What is missing from the pattern:**
 The repo already implements context assembly at greater depth and maturity than the pattern describes. The repo's resolver-based model adds trigger contracts, evals, deduplication, and a layered context stack that handles both disclosure and reduction -- elements not present in the pattern's "harness assembles context" description. The repo also teaches this in the curriculum (Context Management core concept, Level 1 token budgeting) and implements it in operational skills.

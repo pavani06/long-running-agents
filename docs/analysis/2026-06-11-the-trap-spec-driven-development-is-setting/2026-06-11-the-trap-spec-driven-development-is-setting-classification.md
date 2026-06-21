@@ -70,7 +70,7 @@ The three specific diagnostic questions ("Who needs this, and what breaks?", "Wo
 
 **What exists nearby:**
 - [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]:28-35 asks one-question-at-a-time to expose hidden constraints and record decisions -- structurally similar, different questions.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:111-147 creates an execution brief with "objective, success criteria, scope, out-of-scope" -- a build contract without the cost/refusal dimension.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:111-147 creates an execution brief with "objective, success criteria, scope, out-of-scope" -- a build contract without the cost/refusal dimension.
 - [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]:32-37 routes tasks to AFK or human-in-loop -- classification without the brake questions.
 
 **Integration value:** High. These three questions are lightweight, immediately usable, and address the gap the source analysis names: no mechanism forces the value question before building.
@@ -140,7 +140,7 @@ No agent, skill, canonical doc, or curriculum material defines a named role whos
 - `curriculum/` -- no lesson on refusal-ownership as a designed role; Core Concept 7 (Multi-Agent Coordination) covers agent specialization but not refusal roles
 
 **What exists nearby:**
-- [[.opencode/skills/issue-review/SKILL|issue-review skill]]:14-15 "Nothing merges until the user explicitly confirms" -- a stop-before-merge gate but focused on quality, not value.
+- [[.opencode/skills/issue-review/SKILL.md|issue-review skill]]:14-15 "Nothing merges until the user explicitly confirms" -- a stop-before-merge gate but focused on quality, not value.
 - The issue lifecycle skills (start, review, finish) gate work at quality checkpoints, not value checkpoints.
 
 **Integration value:** Medium. The pattern is more organizational than technical. The repo's domain is curriculum and canonical patterns, not team role design. The concept could be valuable as curriculum content (Level 3 or 4) about harness governance.

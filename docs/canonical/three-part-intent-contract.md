@@ -71,7 +71,7 @@ The three-part contract is not a template -- it is a discipline. The value is no
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]:43-48 -- completeness gate mechanics blocking agent execution when fields are missing. A completeness gate for the three-part contract would be simpler: three fields instead of five.
 - [[docs/canonical/ice-craft-separation|ICE Craft Separation]]:35 -- "The five-part structure ensures completeness: any missing field is a visible gap, not an invisible delegation to the agent." The same principle applies to the three-part structure with fewer fields.
 - [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]:35-41 -- the Expectations artifact with done scenarios, failed scenarios, limits, non-goals, and outcome owner. In the three-part model, success scenarios would move from intent to this Expectations artifact.
-- [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive skill]]:19-23 -- operational skill enforcing the five-field completeness gate. A three-part variant could enforce a simpler gate.
+- [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive skill]]:19-23 -- operational skill enforcing the five-field completeness gate. A three-part variant could enforce a simpler gate.
 
 ### What is missing from the pattern
 

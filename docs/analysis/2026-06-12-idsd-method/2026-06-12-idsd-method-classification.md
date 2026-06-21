@@ -126,7 +126,7 @@ The repo has formalized progressive context disclosure as a mature canonical pat
 - [[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]:28-53 catalogs omitted context with `id`, `location`, `preview`, `scope`, and `fetch` -- making context recovery explicit rather than lost on reduction.
 - [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]:26-41 preserves invariant harness instructions separately from reducible context -- distinguishing what must never be removed from what can be progressively disclosed.
 - [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]] formalizes the full pipeline from one-off workflow to resolver-routed, tested skill -- the broader context-routing infrastructure.
-- [[.opencode/skills/issue-start/SKILL|issue-start skill]]:16-23 and [[.opencode/skills/issue-review/SKILL|issue-review skill]]:16-23 demonstrate load-on-demand skill triggers in production -- practical progressive disclosure in the agent lifecycle.
+- [[.opencode/skills/issue-start/SKILL.md|issue-start skill]]:16-23 and [[.opencode/skills/issue-review/SKILL.md|issue-review skill]]:16-23 demonstrate load-on-demand skill triggers in production -- practical progressive disclosure in the agent lifecycle.
 - [[curriculum/GLOSSARY|Glossary]]:110-113 defines "Context Progressive Disclosure" as a curriculum concept -- taught, not just documented.
 
 **Why better:**

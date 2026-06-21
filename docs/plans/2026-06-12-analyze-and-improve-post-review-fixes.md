@@ -11,7 +11,7 @@ aliases:
   - correcoes analyze and improve
   - IDSD review corrections
 relates-to:
-  - "[[.opencode/skills/analyze-and-improve/SKILL|analyze-and-improve Skill]]"
+  - "[[.opencode/skills/analyze-and-improve/SKILL.md|analyze-and-improve Skill]]"
   - "[[docs/system-of-record|System of Record]]"
   - "[[AGENTS|AGENTS.md]]"
 ---
