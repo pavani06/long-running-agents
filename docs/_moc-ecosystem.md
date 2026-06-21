@@ -14,8 +14,8 @@ date: 2026-06-21
 
 ## Entry Points
 - [[../../AGENTS|AGENTS.md — Mapa do Ecossistema]]
-- [[ecosystem-glossary|Glossário do Ecossistema]]
-- [[system-of-record|System of Record]]
+- [[docs/ecosystem-glossary|Glossário do Ecossistema]]
+- [[docs/system-of-record|System of Record]]
 
 ## Vaults
 - [[../README|long-running-agents README]]
@@ -46,6 +46,6 @@ date: 2026-06-21
 - [[../../../.omo/plans/2026-06-21-knowledge-pipeline-readability|Readability Plan]]
 
 ## Navegação
-- [[cross-vault-taxonomy|Cross-Vault Tag Taxonomy]]
+- [[docs/cross-vault-taxonomy|Cross-Vault Tag Taxonomy]]
 - [[curriculum/GLOSSARY|Glossário do Currículo]]
 - [[curriculum/INDEX|Índice do Currículo]]

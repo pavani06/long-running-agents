@@ -6,8 +6,8 @@ tags: [documentation, taxonomy, cross-vault]
 status: stable
 date: 2026-06-21
 relates-to:
-  - "[[system-of-record|System of Record]]"
-  - "[[ecosystem-glossary|Ecosystem Glossary]]"
+  - "[[docs/system-of-record|System of Record]]"
+  - "[[docs/ecosystem-glossary|Ecosystem Glossary]]"
 ---
 
 # Cross-Vault Tag Taxonomy
@@ -22,7 +22,7 @@ busca.
 
 | Vault | Convencao | Exemplo |
 |---|---|---|
-| `long-running-agents` | Tags planas em portugues, derivadas dos dominios do [[system-of-record]] | `agentes-orquestracao`, `context-engineering`, `governanca` |
+| `long-running-agents` | Tags planas em portugues, derivadas dos dominios do [[docs/system-of-record]] | `agentes-orquestracao`, `context-engineering`, `governanca` |
 | `mhc-knowledge-base` | Tags hierarquicas com namespace: `categoria/valor` | `domain/ecommerce-koda`, `artifact/intent`, `capability/checkout` |
 | `raw-knowledge` | Tags planas em ingles, vocabulario aberto por topico | `ai`, `agents`, `context`, `evals`, `harness` |
 | `sisyphus-runtime` | Tags planas em ingles, vocabulario fechado (runtime state) | `runtime-state`, `telemetry`, `trace` |

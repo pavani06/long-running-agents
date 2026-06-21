@@ -10,7 +10,7 @@ status: stable
 date: 2026-06-21
 relates-to:
   - "[[curriculum/GLOSSARY|Glossário do Currículo]]"
-  - "[[system-of-record|System of Record]]"
+  - "[[docs/system-of-record|System of Record]]"
   - "[[../../agent-analysis/docs/glossary|Glossário Agent-Analysis]]"
 ---
 
