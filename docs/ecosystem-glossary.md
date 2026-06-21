@@ -12,6 +12,9 @@ relates-to:
   - "[[curriculum/GLOSSARY|Glossário do Currículo]]"
   - "[[docs/system-of-record|System of Record]]"
   - "[[../../agent-analysis/docs/glossary|Glossário Agent-Analysis]]"
+  - "[[../../obsidian-eval/docs/walkthroughs/pipeline-completo|Pipeline Walkthrough]]"
+  - "[[../../obsidian-eval/articles/memory-os-article/index|Memory OS Architecture]]"
+  - "[[cross-vault-taxonomy|Cross-Vault Tag Taxonomy]]"
 ---
 
 # Glossário do Ecossistema Pavan
@@ -24,6 +27,11 @@ Para termos do domínio KODA/MHC, veja o
 
 Os termos estão organizados em 4 níveis: **Runtime** (infraestrutura),
 **Pipeline** (fluxo de conhecimento), **Agente** (conceitos), **Qualidade** (verificação).
+
+**Navegação rápida:** Para uma visão completa de como os termos se encaixam no fluxo real,
+leia o [[../../obsidian-eval/docs/walkthroughs/pipeline-completo|Pipeline Walkthrough]]
+(um fato traçado do handoff ao execution graph). A arquitetura está documentada no
+[[../../obsidian-eval/articles/memory-os-article/index|artigo Memory OS]].
 
 ---
 
