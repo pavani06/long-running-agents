@@ -188,7 +188,11 @@ Expected: `test_canonical_alignment.py` aparece na listagem, todos os 3 novos te
 
 - [ ] **Step 1: Inserir seção Canonical References após a seção "Quando NÃO usar"**
 
-Find line 27 (`---` after "Quando NÃO usar" section). After that line, insert:
+Localize a linha `---` após "Quando NÃO usar" com grep dinâmico (evita cascade de line numbers):
+```bash
+grep -n '^---$' ~/.config/opencode/skills/system-design/SKILL.md | head -1
+```
+Após essa linha, insira:
 
 ```markdown
 
@@ -240,7 +244,11 @@ Expected: `2` (uma no heading, uma no texto da nota de resolução)
 
 - [ ] **Step 1: Fase 1 — inserir micro-passo após o heading**
 
-Find line 31 (`### Fase 1: Requirements Gathering`). After the heading line, insert before `**Objetivo:**`:
+Localize o heading da Fase 1 dinamicamente:
+```bash
+grep -n '^### Fase 1: Requirements Gathering$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Após a linha do heading, insira antes de `**Objetivo:**`:
 
 ```markdown
 
@@ -256,7 +264,10 @@ Se budget ≤20% (red phase): pular injeção, prosseguir sem canons.
 
 - [ ] **Step 2: Fase 2 — inserir micro-passo após o heading**
 
-Find line 59 (`### Fase 2: High-Level Design`). After the heading line, insert before `**Objetivo:**`:
+```bash
+grep -n '^### Fase 2: High-Level Design$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Após a linha do heading, insira antes de `**Objetivo:**`:
 
 ```markdown
 
@@ -270,7 +281,10 @@ Fallback orçamentário: yellow→top-1 (`generator-evaluator`), red→skip.
 
 - [ ] **Step 3: Fase 3 — inserir micro-passo após o heading**
 
-Find line 77 (`### Fase 3: Deep Dive`). After the heading line, insert before `**Objetivo:**`:
+```bash
+grep -n '^### Fase 3: Deep Dive$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Após a linha do heading, insira antes de `**Objetivo:**`:
 
 ```markdown
 
@@ -283,13 +297,15 @@ Find line 77 (`### Fase 3: Deep Dive`). After the heading line, insert before `*
 - `asymmetric-failure-correction-router` — separar fluxo de correção (root cause,
   repair, regression) do fluxo de reforço (exemplars, confidence calibration)
 
-Fallback: yellow→top-2 (invariant-compensation-split + failure-pattern-classification-loop),
-red→skip.
+Fallback: yellow→top-1 (`invariant-compensation-split`), red→skip.
 ```
 
 - [ ] **Step 4: Fase 4 — inserir micro-passo após o heading**
 
-Find line 106 (`### Fase 4: Scale and Reliability`). After the heading line, insert before `**Objetivo:**`:
+```bash
+grep -n '^### Fase 4: Scale and Reliability$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Após a linha do heading, insira antes de `**Objetivo:**`:
 
 ```markdown
 
@@ -304,7 +320,10 @@ Fallback: yellow→top-1 (`tested-degradation-ladder`), red→skip.
 
 - [ ] **Step 5: Fase 5 — inserir micro-passo após o heading**
 
-Find line 133 (`### Fase 5: Trade-off Analysis`). After the heading line, insert before `**Objetivo:**`:
+```bash
+grep -n '^### Fase 5: Trade-off Analysis$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Após a linha do heading, insira antes de `**Objetivo:**`:
 
 ```markdown
 
@@ -331,7 +350,11 @@ Expected: `5`
 
 - [ ] **Step 1: Adicionar seção de Fallback após Output final**
 
-Find `## Integracoes` (line 162). Before that line, insert:
+Localize `## Integracoes` dinamicamente:
+```bash
+grep -n '^## Integracoes$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Antes dessa linha, insira:
 
 ```markdown
 
@@ -373,6 +396,14 @@ python3 -m pytest ~/.config/opencode/skills/system-design/harness/tests/test_can
 ```
 Expected: 3 passed (test_skill_references_canonical_docs, test_all_vault_references_resolve, test_canonical_refs_count_matches_expected)
 
+- [ ] **Step 2.5: Integration smoke test — verificar injeção real de canons**
+Carregue a skill `system-design` com um prompt dummy e verifique que os canons são mencionados:
+```bash
+grep -c "docs/canonical/" ~/.config/opencode/skills/system-design/SKILL.md
+```
+Expected: `>= 14` (todos os canons estão referenciados no SKILL.md).
+Para o teste de integração real, execute `system-design` com prompt "design a simple blog system" e confirme visualmente que `constraint-budget-gate` e `intent-five-part-primitive` aparecem no contexto da Fase 1.
+
 - [ ] **Step 3: Commit Onda 1**
 ```bash
 cd ~/.config/opencode
@@ -397,7 +428,10 @@ Add test_canonical_alignment.py — validates all vault references resolve."
 
 - [ ] **Step 1: Inserir Compliance Gate antes de Output final**
 
-Find `## Output final` (line ~150). Before that line, insert:
+```bash
+grep -n '^## Output final$' ~/.config/opencode/skills/system-design/SKILL.md
+```
+Antes dessa linha, insira:
 
 ```markdown
 
@@ -624,3 +658,10 @@ Expected: Dois commits visíveis (Onda 1, Onda 2).
 ---
 
 **Plan complete.** Total: 9 tarefas, ~45 passos, 2 commits, 6 arquivos alterados (4 criados/modificados + 2 deletados).
+
+**Notas de execução:**
+- **Line numbers**: Todas as tasks usam `grep -n` para localizar headings dinamicamente (não dependem de números de linha fixos). Isso evita o cascade failure de edições sequenciais.
+- **Integration smoke test**: Além dos testes de harness, execute `system-design` com prompt dummy ("design a simple blog system") e verifique que os canons aparecem no contexto do agente em cada fase.
+- **Git state**: Verifique `git status --porcelain skills/system-design/` antes de começar. O SKILL.md pode ter modificações pré-existentes — use `git stash` se necessário.
+- **pytest**: O harness padrão usa `run_tests.py` (stdlib-only). `python3 -m pytest` é conveniência adicional — certifique-se de que está instalado (`pip install pytest`).
+- **Snapshot count**: Task 8 Step 3 espera "14 entries" mas o número real pode ser menor se algum vault não resolver. Ajuste a verificação se necessário.
