@@ -1,4 +1,4 @@
-# Skill-Canons Bridge — Plano de Execução
+# Skill-Canons Bridge — Plano de Execução (REV 2 — pós-red-team)
 
 **Goal:** Conectar a skill `system-design` aos 14 padrões canônicos do vault `long-running-agents`, com injeção inline por fase, harness de alinhamento e compliance gate pós-design.
 
@@ -8,7 +8,45 @@
 
 **Source plan:** `.omo/plans/2026-06-23-skill-canons-bridge.md` (REV 3.2, aprovado)
 
+**Red Team:** Momus + Devil's Advocate + Oracle (2 tentativas, 10 findings — ver seção "Post-Red-Team")
+**Status:** REV 2 — todos os findings endereçados
+
 ---
+
+## Post-Red-Team: Findings e Soluções
+
+### Tentativa 1: REJECT — Path `docs/plans/` não suportado
+
+**Causa:** O skill `writing-plans` salva em `docs/plans/` (convenção do repo `long-running-agents`). O agente `momus` só aceita `.omo/plans/*.md` como path canônico de plano no workspace root. O `oracle` também não encontrou o arquivo porque procurou em `/mnt/c/Users/pavan/docs/plans/` (workspace root), não em `long-running-agents/docs/plans/`.
+
+**Solução:** Copiar o execution plan para `.omo/plans/` antes de submeter ao red team. Esta cópia é mantida em sync com o original em `long-running-agents/docs/plans/`. Ambos os paths são válidos para consumo — `.omo/plans/` para revisão por agentes, `docs/plans/` para versionamento no repo de conhecimento.
+
+```bash
+# Comando de sync (executar após cada edição no plano):
+cp long-running-agents/docs/plans/2026-06-23-skill-canons-bridge-execution.md \
+   .omo/plans/2026-06-23-skill-canons-bridge-execution.md
+```
+
+### Tentativa 2: 10 findings — soluções aplicadas
+
+| # | Agente | Severidade | Achado | Solução |
+|---|---|---|---|---|
+| 1 | Oracle | CRITICAL | Line number cascade: Tasks 3-7 usam números de linha do arquivo original, que ficam errados após inserções sequenciais | ✅ **REV 1:** Substituído `Find line N` por `grep -n '^heading$'` em todas as tasks. Cada step localiza o heading dinamicamente, imune a shifts. |
+| 2 | Oracle | MAJOR | Fase 3 yellow fallback usa top-2, architecture plan diz top-1 | ✅ **REV 1:** Corrigido para `yellow→top-1 (invariant-compensation-split)`. |
+| 3 | Oracle | MAJOR | Integration smoke test ausente — architecture plan exige executar system-design com prompt dummy | ✅ **REV 1:** Adicionado Task 6 Step 2.5 com verificação de grep + instrução para smoke test manual. |
+| 4 | Oracle | MAJOR | `test_all_external_references_reachable()` ausente — architecture plan especifica 3 testes, execution plan tem 2+1 diferente | ✅ **REV 2:** Adicionado como stub no `test_canonical_alignment.py` (ver Task 2). Passa com skip documentado porque CANONICAL_REFS não tem URLs externas. Será ativado quando a primeira URL externa for adicionada. |
+| 5 | Oracle | MODERATE | Snapshot count "14 entries" frágil — se vault não resolver, count é menor | ✅ **REV 2:** Verificação alterada para `>= 11` (todos os vaults ativos devem resolver). Documentado que o número real pode variar por ambiente. |
+| 6 | Oracle | MODERATE | Lifecycle tracking sem task de implementação | ✅ **REV 2:** Adicionada nota na seção "Execution Notes": lifecycle tracking é governança contínua, não tarefa de implementação. O canon `measured-harness-evolution-lifecycle.md` está em CANONICAL_REFS como referência. |
+| 7 | Oracle | MINOR | Portability verification sem task | ✅ **REV 2:** Deferido para `ecosystem-portability.md`. Este plano herda portabilidade do vault registry unificado. Nota adicionada. |
+| 8 | Oracle + DA | MINOR | Git state assumption + SKILL.md já modificado | ✅ **REV 1:** Documentado em Execution Notes. |
+| 9 | Oracle | MINOR | pytest dependency não documentada | ✅ **REV 1:** Documentado em Execution Notes. |
+| 10 | Oracle | MINOR | Sem rollback guidance | ✅ **REV 1:** Documentado em Execution Notes. |
+| 11 | Momus | MINOR | `grep -c "Canonical References"` espera 2 mas pode dar 1 | ✅ **REV 2:** Alterado para `>= 1`. O objetivo é confirmar presença, não contagem exata. |
+| 12 | Momus | MINOR | `grep -c "Compliance Gate"` espera 2 mas case-sensitive pode dar 1 | ✅ **REV 2:** Alterado para `grep -ci "compliance gate"` (case-insensitive). |
+| 13 | DA | MINOR | Task 2 Step 2 testa `"Canonical References" in SKILL.md` antes da string existir (só inserida na Task 3) | ✅ **REV 2:** Documentado como expected: Task 2 Step 2 terá 1/3 falha (test_skill_references_canonical_docs). O developer executa Task 3 e re-verifica em Task 6. Adicionada nota no Step 2. |
+
+---
+
 
 ## File Map
 
@@ -172,13 +210,29 @@ def test_canonical_refs_count_matches_expected():
     assert len(CANONICAL_REFS) == 14, (
         f"CANONICAL_REFS tem {len(CANONICAL_REFS)} entradas, esperado 14"
     )
+
+
+def test_all_external_references_reachable():
+    """Stub: verifica URLs externas quando existirem em CANONICAL_REFS.
+    Atualmente CANONICAL_REFS so tem vault references — sem URLs externas.
+    Este teste passa com skip documentado. Sera ativado quando a primeira
+    URL externa for adicionada a CANONICAL_REFS (ex: documentacao AWS)."""
+    external_refs = [
+        (vault, path) for vault, path, phase in CANONICAL_REFS
+        if vault == "external"
+    ]
+    if not external_refs:
+        print("SKIP: no external URL references in CANONICAL_REFS — stub test passes")
+        return
+    # TODO: implementar curl -s + content-type check quando houver URLs
+    assert False, "External URL checking not yet implemented"
 ```
 
-- [ ] **Step 2: Executar o teste**
+- [ ] **Step 2: Executar o teste (espera-se 1 falha)**
 ```bash
 python3 ~/.config/opencode/skills/system-design/harness/run_tests.py
 ```
-Expected: `test_canonical_alignment.py` aparece na listagem, todos os 3 novos testes passam.
+Expected: `test_canonical_alignment.py` aparece na listagem. `test_skill_references_canonical_docs` FALHA (a string "Canonical References" ainda não está no SKILL.md — será adicionada na Task 3). Os outros 3 testes passam. Esta falha é esperada e será resolvida na Task 6.
 
 ---
 
@@ -234,7 +288,7 @@ Em caso de falha, prosseguir sem canons (ver Fallback abaixo).
 ```bash
 grep -c "Canonical References" ~/.config/opencode/skills/system-design/SKILL.md
 ```
-Expected: `2` (uma no heading, uma no texto da nota de resolução)
+Expected: `>= 1` (a seção foi inserida — o número exato depende de quantas vezes a frase aparece no texto)
 
 ---
 
@@ -458,9 +512,9 @@ explícita: "Compliance gate skipped — low complexity design."
 
 - [ ] **Step 2: Verificar que a seção foi inserida**
 ```bash
-grep -c "Compliance Gate" ~/.config/opencode/skills/system-design/SKILL.md
+grep -ci "compliance gate" ~/.config/opencode/skills/system-design/SKILL.md
 ```
-Expected: `2` (heading + menção no texto)
+Expected: `>= 1` (case-insensitive — captura "Compliance Gate" e "compliance gate")
 
 ---
 
@@ -592,9 +646,9 @@ Expected: 3 passed. `test_staleness_snapshot_bootstrap` cria `canonical-snapshot
 
 - [ ] **Step 3: Verificar que o snapshot foi criado**
 ```bash
-python3 -c "import json; d=json.load(open('$HOME/.config/opencode/skills/system-design/harness/canonical-snapshot.json')); print(f'{len(d)} entries in snapshot')"
+python3 -c "import json; d=json.load(open('$HOME/.config/opencode/skills/system-design/harness/canonical-snapshot.json')); print(f'{len(d)} entries in snapshot (expected >= 11 active vault refs)')"
 ```
-Expected: `14 entries in snapshot`
+Expected: `>= 11 entries` (todos os vaults ativos devem resolver no ambiente corrente; se `obsidian-eval` falhar para algum vault, o count será menor — isso é esperado e não é erro)
 
 ---
 
@@ -659,9 +713,14 @@ Expected: Dois commits visíveis (Onda 1, Onda 2).
 
 **Plan complete.** Total: 9 tarefas, ~45 passos, 2 commits, 6 arquivos alterados (4 criados/modificados + 2 deletados).
 
-**Notas de execução:**
-- **Line numbers**: Todas as tasks usam `grep -n` para localizar headings dinamicamente (não dependem de números de linha fixos). Isso evita o cascade failure de edições sequenciais.
-- **Integration smoke test**: Além dos testes de harness, execute `system-design` com prompt dummy ("design a simple blog system") e verifique que os canons aparecem no contexto do agente em cada fase.
+**Execution Notes (pré-requisitos e caveats):**
+- **Line numbers**: Todas as tasks usam `grep -n` para localizar headings dinamicamente (não dependem de números de linha fixos). Isso evita o cascade failure de edições sequenciais no mesmo arquivo.
+- **Integration smoke test**: Além dos testes de harness, execute `system-design` com prompt dummy ("design a simple blog system") e verifique visualmente que `constraint-budget-gate` e `intent-five-part-primitive` aparecem no contexto da Fase 1.
 - **Git state**: Verifique `git status --porcelain skills/system-design/` antes de começar. O SKILL.md pode ter modificações pré-existentes — use `git stash` se necessário.
 - **pytest**: O harness padrão usa `run_tests.py` (stdlib-only). `python3 -m pytest` é conveniência adicional — certifique-se de que está instalado (`pip install pytest`).
-- **Snapshot count**: Task 8 Step 3 espera "14 entries" mas o número real pode ser menor se algum vault não resolver. Ajuste a verificação se necessário.
+- **Snapshot count**: Task 8 Step 3 espera `>= 11` entries, não exatamente 14. Se `obsidian-eval resolve-vault` falhar para algum vault, o count será menor — isso é esperado.
+- **Rollback**: Se qualquer task 3-5 ou 7 falhar no meio da edição do SKILL.md, reverta com `git checkout -- skills/system-design/SKILL.md` antes de retry.
+- **Lifecycle tracking**: O componente "Lifecycle tracking" do architecture plan é governança contínua, não tarefa de implementação. O canon `measured-harness-evolution-lifecycle.md` está em CANONICAL_REFS como referência para quando o tracking for ativado (após 60 dias de BUILD).
+- **Portability**: A verificação de portabilidade (`setup-vault-symlinks.sh`, `OBSIDIAN_EVAL_VAULTS_BASE`) é coberta pelo plano `ecosystem-portability.md`. Este execution plan herda a portabilidade do vault registry unificado.
+- **Task 2 → Task 3 dependency**: `test_skill_references_canonical_docs` falha na Task 2 porque a seção "Canonical References" só é adicionada na Task 3. Isso é esperado — o teste passa na re-verificação da Task 6.
+- **Path duality**: O execution plan existe em dois paths: `long-running-agents/docs/plans/` (versionado no repo de conhecimento) e `.omo/plans/` (sync para revisão por agentes momus/oracle). Ambos devem ser mantidos em sync.
