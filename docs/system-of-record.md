@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-06-19
+last_updated: 2026-06-24
 relates-to: []
 sources: []
 ---
@@ -30,9 +30,9 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 
 | Fonte | Cobre |
 |---|---|
-| [[.opencode/agents/hop-orchestrator-rezek|.opencode/agents/hop-orchestrator-rezek.md]] | Orquestrador principal — governança, source-of-truth, coordenação |
-| [[.opencode/agents/koda-hop-init-basic|.opencode/agents/koda-hop-init-basic.md]] | Subagente de inicial guiada do KODA |
-| [[.opencode/agents/hop-live-whatsapp-tester|.opencode/agents/hop-live-whatsapp-tester.md]] | Subagente de teste live de WhatsApp |
+| [[.opencode/agents/hop-orchestrator-rezek.md|.opencode/agents/hop-orchestrator-rezek.md]] | Orquestrador principal — governança, source-of-truth, coordenação |
+| [[.opencode/agents/koda-hop-init-basic.md|.opencode/agents/koda-hop-init-basic.md]] | Subagente de inicial guiada do KODA |
+| [[.opencode/agents/hop-live-whatsapp-tester.md|.opencode/agents/hop-live-whatsapp-tester.md]] | Subagente de teste live de WhatsApp |
 | [[.opencode/skills/issue-start/SKILL.md|.opencode/skills/issue-start/SKILL.md]] | Workflow claim → worktree → execution brief |
 | [[.opencode/skills/issue-review/SKILL.md|.opencode/skills/issue-review/SKILL.md]] | Workflow validação → draft PR → second-agent review |
 | [[.opencode/skills/issue-finish/SKILL.md|.opencode/skills/issue-finish/SKILL.md]] | Workflow merge → cleanup branch/worktree/labels |
@@ -149,7 +149,11 @@ Topicos cobertos: `testes-qa`.
 
 ## Decisões de arquitetura (ADRs)
 
-`docs/decisions/` está vazio. Nenhum ADR formal foi registrado.
+`docs/decisions/`:
+
+| ADR | Status | Data |
+|-----|--------|------|
+| [[docs/decisions/2026-06-24-skill-canons-bridge-implementation|Skill-Canons Bridge — Decisões de Implementação (Ondas 0-2)]] | accepted | 2026-06-24 |
 
 Tópicos candidatos a ADR:
 - Escolha de stack do portal (vanilla JS estático vs. framework)
