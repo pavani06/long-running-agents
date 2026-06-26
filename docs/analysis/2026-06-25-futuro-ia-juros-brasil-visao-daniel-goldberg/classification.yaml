@@ -1,0 +1,222 @@
+meta:
+  title: "Comparative Classification: Goldberg Macro/Institutional Patterns vs. long-running-agents Repo"
+  date: 2026-06-25
+  repo: "pavani06/long-running-agents"
+  patterns_source: "Daniel Goldberg — Market Makers #378: Futuro da IA, Juros e Brasil"
+  evidence_sources:
+    - "docs/system-of-record.md"
+    - "docs/canonical/"
+  domain_note: >
+    The long-running-agents repo covers agentic patterns (agent architecture,
+    harness engineering, context management, evals). All 85+ canonical docs are
+    in this domain. The 10 extracted patterns are from macroeconomics,
+    institutional design, and investment strategy — a completely different domain.
+    All classifications are "Missing" by domain mismatch, not by repo gap.
+
+classification_legend:
+  already_exists: "Canonical doc covers the pattern with equivalent depth"
+  partial_coverage: "Elements exist across multiple canonical docs but no unified doc"
+  missing: "No canonical doc covers the pattern (NOT_FOUND confirmed)"
+  better_implementation: "Repo has a superior version of the same idea"
+
+patterns:
+  - id: 1
+    name: "Energy Value Chain Spread Analysis"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models value chain layers, cost-to-price spreads,
+      or capital allocation across industrial layers. Domain mismatch:
+      repo covers agent engineering, not industry analysis.
+    evidence:
+      - "system-of-record.md:164-265 lists 85+ canonical docs — all agentic patterns"
+      - "No canonical doc contains 'value chain', 'spread capture', 'cost surface', 'accounting bridge'"
+    missing_mechanics:
+      - "Value chain layer modeling from physical input to final service"
+      - "Cost-to-price spread computation and normalization per layer"
+      - "Accounting treatment bridge (capex → depreciation → revenue recognition)"
+      - "Spread sustainability assessment via competitive dynamics"
+
+  - id: 2
+    name: "Inelastic Market Flow Dominance Model"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models market elasticity, capital flow distortions,
+      or gap between market price and intrinsic value. Token budget docs
+      (explicit-token-budget-ledger.md) are about session economics, not
+      capital markets.
+    evidence:
+      - "NOT_FOUND: 'market elasticity', 'flow dominance', 'intrinsic value gap', 'arbitrage feasibility' across 85+ canonical docs"
+      - "explicit-token-budget-ledger.md covers agent session token budget, not capital flows"
+    missing_mechanics:
+      - "Price-demand elasticity estimation for asset classes"
+      - "Capital flow-vs-price correlation tracking"
+      - "Distortion persistence modeling based on elasticity"
+      - "Arbitrage feasibility assessment given bounded arbitrage capacity"
+
+  - id: 3
+    name: "Social Archetype Classification"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc classifies social or economic systems by incentive
+      archetype. failure-pattern-classification-loop.md classifies agent
+      misbehaviors (model weakness, harness constraint, coherence violation),
+      not societal archetypes.
+    evidence:
+      - "failure-pattern-classification-loop.md:48 — classifies agent failures into 4 root cause classes"
+      - "No canonical doc contains 'Creation', 'Abundance', 'Predation' as archetypes"
+      - "No canonical doc contains 'social archetype', 'incentive diagnosis', 'rent-seeking'"
+    missing_mechanics:
+      - "Three-archetype taxonomy with diagnostic signals"
+      - "Intervention matrix: effective vs ineffective by archetype"
+      - "Scale adapter: country → industry → firm level application"
+      - "External openness test for competitive disruption of extraction"
+
+  - id: 4
+    name: "Institutional Layer Amplification"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models institutional layers with gap amplification.
+      eval-tier-stratification.md stratifies eval tiers (fast/medium/deep),
+      not regulatory layers. tiered-context-storage.md is about agent context
+      storage layers (hot/warm/cold), not governance.
+    evidence:
+      - "eval-tier-stratification.md:32-36 — stratifies evals into fast/medium/deep tiers"
+      - "tiered-context-storage.md — layers context storage (hot/warm/cold), not institutional analysis"
+      - "No canonical doc contains 'institutional layer', 'jurisprudence gap', 'amplification factor'"
+    missing_mechanics:
+      - "Three-layer stack: formal law → jurisprudence → advocacy/implementation"
+      - "Gap measurement at each layer relative to benchmark"
+      - "Amplification factor: how gap at layer N translates to layer N+1"
+      - "Predictability index: probability outcome aligns with formal rule"
+
+  - id: 5
+    name: "Second-Order Institutional Interaction"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models interaction effects between institutional reforms.
+      agent-degradation-loop-prevention.md models interaction between degradation
+      links in agent software, not institutional reforms.
+    evidence:
+      - "agent-degradation-loop-prevention.md:22-28 — models 4-link degradation feedback loop in agents"
+      - "No canonical doc contains 'institutional reform interaction', 'power inversion', 'accountability gap'"
+    missing_mechanics:
+      - "Actor power and incentive map for institutional actors"
+      - "First-order effect model: how each reform independently shifts actor map"
+      - "Interaction engine: composite shifts from Reform A × Reform B"
+      - "Power inversion detection: composite effect vs constitutional design"
+
+  - id: 6
+    name: "Spread Capture as Analytical Primitive"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc proposes analytical primitives for economic analysis.
+      intent-five-part-primitive.md defines primitives for task specification
+      (goal, constraints, failure scenarios, success scenarios, connections),
+      not for investment analysis.
+    evidence:
+      - "intent-five-part-primitive.md — primitives for agent task specification"
+      - "No canonical doc contains 'analytical primitive', 'spread capture', 'dominant capture agent'"
+    missing_mechanics:
+      - "Spread map: all cost-to-price gaps ranked by magnitude and persistence"
+      - "Capture attribution: which entity captures each spread"
+      - "Sustainability scoring based on competitive moat analysis"
+      - "Disruption vector scanning for potential spread compressors"
+
+  - id: 7
+    name: "Asymmetric Binary-Outcome Positioning"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models binary-outcome investing, probability gaps,
+      or negative convexity. Constraint-failure-decision-rule.md handles
+      binary decisions (degrade/retry/escalate) for agent constraint failures,
+      not for investment positioning.
+    evidence:
+      - "constraint-failure-decision-rule.md — three-path decision for constraint failures"
+      - "No canonical doc contains 'binary outcome', 'implied probability', 'negative convexity', 'risk of ruin'"
+    missing_mechanics:
+      - "Real vs market-implied probability estimation and gap computation"
+      - "Required premium calculation for negative convexity compensation"
+      - "Payoff asymmetry structuring: pre-paid upside, carried downside"
+      - "Risk-of-ruin estimation over N independent binary bets"
+
+  - id: 8
+    name: "Institutional Safety Valve Escalation Cycle"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >
+      No canonical doc models institutional escalation cycles or legitimacy
+      erosion. tested-degradation-ladder.md handles agent failure escalation
+      (retry → fallback → human escalation), not branch-vs-branch governance
+      conflict.
+    evidence:
+      - "tested-degradation-ladder.md — failure classification → retry → fallback → human escalation for agents"
+      - "No canonical doc contains 'safety valve', 'escalation cycle', 'legitimacy erosion', 'branch overreach'"
+    missing_mechanics:
+      - "Formal vs actual power mapping per governance branch"
+      - "Overreach and intervention event detection"
+      - "Legitimacy erosion rate per branch per cycle"
+      - "Break condition identification: crisis, reform, or external intervention"
+
+  - id: 9
+    name: "Capex-Revenue Credit Mispricing"
+    classification: "Missing"
+    integration_value: "Medium"
+    justification: >
+      No canonical doc models capex depreciation gaps, technological obsolescence
+      as credit risk, or accounting-vs-real useful life. measured-harness-evolution-lifecycle.md
+      covers lifecycle stages (BUILD→STABILIZE→SIMPLIFY→REMOVE) for harness components,
+      not capital asset depreciation.
+    evidence:
+      - "measured-harness-evolution-lifecycle.md — lifecycle stages for harness components"
+      - "No canonical doc contains 'capex depreciation', 'technological obsolescence rate', 'credit mispricing'"
+    missing_mechanics:
+      - "Depreciation gap: accounting useful life minus technological useful life"
+      - "Equity cushion: how much equity value must be destroyed before debt impairment"
+      - "Default trigger scenarios from obsolescence acceleration"
+      - "Credit spread vs modeled obsolescence risk comparison"
+
+  - id: 10
+    name: "Credibility Cascade in Regulated Assets"
+    classification: "Missing"
+    integration_value: "Medium"
+    justification: >
+      No canonical doc models credibility cascades, forced-selling dynamics,
+      or catalyst-driven discount closure. error-context-hygiene.md covers
+      context pollution (error → bad decision → more errors), superficially
+      analogous but in agent context management, not asset pricing.
+    evidence:
+      - "error-context-hygiene.md — error context pollution leading to degradation, not credibility cascades"
+      - "No canonical doc contains 'credibility cascade', 'restatement', 'forced selling', 'credibility discount'"
+    missing_mechanics:
+      - "Intrinsic value model: regulated asset valuation independent of credibility events"
+      - "Credibility event tracking: restatement → auditor → downgrade → forced selling"
+      - "Forced-selling supply estimation from rating-constrained holders"
+      - "Catalyst identification: events that would close the credibility discount"
+
+summary:
+  already_exists: []
+  partial_coverage: []
+  missing: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  better_implementation: []
+  key_insight: >
+    All 10 patterns are classified as Missing due to a fundamental domain
+    mismatch. The long-running-agents repo covers agentic patterns for AI
+    agent engineering (85+ canonical docs on agent architecture, harness
+    engineering, context management, evals, and code governance). The
+    extracted patterns are from macroeconomics, institutional design, and
+    investment strategy — domains not represented in the repository.
+    
+    This is not a gap in the repo; it is a scope boundary. Integrating
+    these patterns would require establishing a new domain (e.g., "análise
+    econômica e institucional") in the system-of-record, which would
+    represent a significant scope expansion of the project.
+    
+    These patterns are better suited for a dedicated repository or vault
+    focused on macroeconomic and investment analytical frameworks.

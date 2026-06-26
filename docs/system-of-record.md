@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-06-24
+last_updated: 2026-06-25
 relates-to: []
 sources: []
 ---
@@ -216,6 +216,7 @@ Tópicos candidatos a ADR:
 | `human-afk-task-routing-gate.md` | Gate de classificação que roteia tarefas como AFK-ready ou human-in-loop em 4 dimensões |
 | `vertical-slice-issue-generation.md` | Geração de issues como fatias verticais cross-layer com comportamento observável |
 | `architecture-as-agent-affordance.md` | Arquitetura como affordance para agentes: deep modules, interfaces simples, testes de fronteira |
+| `asymmetric-binary-outcome-positioning.md` | Posicionamento binário assimétrico: quatro etapas para precificar eventos de resultado binário modelando probabilidade real vs. implícita, convexidade negativa e risco de ruína em sequência |
 | `qa-to-backlog-feedback-loop.md` | Achados de QA/review como entrada de backlog com captura, triagem e conversão em issues |
 | `llm-as-fuzzy-compiler.md` | LLM como compilador fuzzy: código como artefato de build descartável, separação entre prompt e output |
 | `persona-based-documentation.md` | Documentação baseada em personas: NFRs e documentos por especialidade (dev, QA, architect, manager) |
@@ -231,6 +232,10 @@ Tópicos candidatos a ADR:
 | `presence-in-the-loop-metric.md` | Métrica de presença-no-loop: calibração do grau de intervenção humana necessária por tarefa |
 | `ice-craft-separation.md` | ICE Craft Separation: separação entre intenção (ICE) e execução artesanal (craft) no workflow agentic |
 | `human-owned-expectations-boundary.md` | Fronteira de expectativas de propriedade humana: delimitação explícita do que o humano mantém sob seu controle |
+| `institutional-layer-amplification.md` | Amplificação institucional em camadas: gaps regulatórios que se ampliam a cada nível (lei → jurisprudência → advocacia), destruindo previsibilidade para alocadores de capital que analisam apenas a lei formal |
+| `second-order-institutional-interaction.md` | Interação institucional de segunda ordem: duas reformas analisadas isoladamente que, combinadas, invertem a estrutura de poder pretendida e criam vantagens compostas não antecipadas |
+| `institutional-safety-valve-escalation-cycle.md` | Ciclo de escalada da válvula de segurança institucional: intervenções de emergência de um ramo para conter outro resolvem crises imediatas mas erodem legitimidade e amplificam conflito a cada ciclo |
+| `credibility-cascade-regulated-assets.md` | Cascata de credibilidade em ativos regulados: falhas sequenciais de credibilidade (restatement → auditor → rating → venda forçada) que descolam o preço de mercado do valor intrínseco, criando oportunidades assimétricas em ativos fundamentalmente sólidos |
 | `token-economics-gap-filling.md` | Economia de tokens do preenchimento de lacunas: custo de inferência vs. custo de especificação |
 | `symphony-trap-awareness.md` | Consciência da armadilha da sinfonia: risco de over-specification e perda de adaptabilidade em sistemas agentic |
 | `shadow-review-pipeline.md` | Pipeline de shadow review: agente shadow executa revisão paralela antes do merge |
@@ -263,6 +268,11 @@ Tópicos candidatos a ADR:
 | `relational-context-graph.md` | Grafo de contexto relacional com arestas tipadas (dependência, proveniência, suplantação, causação) que transforma retrieval em seleção |
 | `context-health-monitoring.md` | Monitoramento de saúde do contexto além de tokens: tamanho efetivo, taxa de near-misses, taxa de contradições, score agregado |
 | `agent-degradation-loop-prevention.md` | Prevenção do loop de degradação de 4 elos: interceptores por elo, classificação diagnóstica, orquestração cross-link |
+| `energy-value-chain-spread-analysis.md` | Modelo de análise de spread em cadeias de valor multi-camada (MWh→tokens→inferência) |
+| `inelastic-market-flow-dominance-model.md` | Modelo de dominância de fluxo em mercados inelásticos (elasticidade ~0.2) |
+| `social-archetype-classification.md` | Taxonomia de arquétipos sociais: Criação, Abundância, Predação |
+| `spread-capture-analytical-primitive.md` | Primitiva analítica: substituir "qual o valor?" por "quem captura o spread?" |
+| `capex-revenue-credit-mispricing.md` | Mispricing de crédito quando obsolescência tecnológica supera depreciação contábil |
 
 ### Documentos esperados quando o domínio correspondente amadurecer
 
