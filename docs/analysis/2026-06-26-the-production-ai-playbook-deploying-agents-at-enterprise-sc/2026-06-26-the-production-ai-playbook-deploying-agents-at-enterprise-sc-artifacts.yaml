@@ -1,0 +1,79 @@
+meta:
+  type: artifact-manifest
+  date: '2026-06-26'
+  source_slug: the-production-ai-playbook-deploying-agents-at-enterprise-sc
+  classification_file: /mnt/c/Users/pavan/docs/analysis/2026-06-26-the-production-ai-playbook-deploying-agents-at-enterprise-sc/2026-06-26-the-production-ai-playbook-deploying-agents-at-enterprise-sc-classification.yaml
+artifacts:
+  canonical_docs:
+  - path: docs/canonical/3-layer-evaluation-architecture.md
+    pattern: 3-Layer Evaluation Architecture
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/eval-driven-development-timeline.md
+    pattern: Eval-Driven Development Timeline
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/living-eval-dataset.md
+    pattern: Living Eval Dataset
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/behavioral-eval-path-analysis.md
+    pattern: Behavioral Eval Path Analysis
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/centralized-cross-framework-tracing.md
+    pattern: Centralized Cross-Framework Tracing
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/prompt-as-code-causal-change-management.md
+    pattern: Prompt-as-Code with Causal Change Management
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/eval-dashboard-primary-detection-surface.md
+    pattern: Eval Dashboard as Primary Detection Surface
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/multi-agent-fault-tolerance.md
+    pattern: Multi-Agent Fault Tolerance
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/agent-specific-data-freshness-pipeline.md
+    pattern: Agent-Specific Data Freshness Pipeline
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/governance-context-injection-pii-prevention.md
+    pattern: Governance Context Injection for PII Prevention
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/business-outcome-first-eval-pipeline.md
+    pattern: Business-Outcome-First Eval Pipeline
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/model-switching-architecture-enterprise-eval-gate.md
+    pattern: Model-Switching Architecture with Enterprise Eval Gate
+    classification: Partial Coverage
+    priority: P2
+  skills:
+  - path: .opencode/skills/behavioral-eval-path-analysis/SKILL.md
+    pattern: Behavioral Eval Path Analysis
+    classification: Missing
+  exercises:
+  - path: curriculum/04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis.md
+    pattern: Behavioral Eval Path Analysis
+    classification: Missing
+  examples: []
+skipped:
+  already_exists:
+  - pattern: Production Incident to Eval Flywheel
+    reason: Already Exists — repo has production-failure-regression-flywheel canonical
+      doc + flywheel daemon implementation
+  better_implementation: []
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 12
+    skills: 1
+    exercises: 1
+    examples: 0
+  notes:
+  - 12 canonical docs, 1 skill, 1 exercise created in Phase 4

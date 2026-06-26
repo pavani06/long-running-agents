@@ -1,0 +1,90 @@
+{
+  "batch": "B",
+  "entries": [
+    {
+      "pattern_name": "Eval Dashboard as Primary Detection Surface",
+      "classification": "Partial Coverage",
+      "evidence": [
+        {"file": "long-running-agents/docs/canonical/production-failure-regression-flywheel.md", "line": 28, "quote": "Every production failure that reveals a behavioral gap should become a durable eval regression case"},
+        {"file": "long-running-agents/docs/canonical/eval-tier-stratification.md", "line": 28, "quote": "Organize evals into fast, medium, and deep tiers. Each tier must declare runtime, cost, flakiness tolerance, trigger, threshold, reporting format, owner, and escalation policy."},
+        {"file": "long-running-agents/docs/canonical/pain-signal-eval-progression-gate.md", "line": 28, "quote": "Treat eval maturity as a gate driven by pain signals instead of a calendar roadmap."},
+        {"file": "scripts/telemetry/flywheel-health.sh", "line": 1, "quote": "Verificacao completa do pipeline flywheel — relatorio de saude com PASS/FAIL por componente"},
+        {"file": "AGENTS.md", "line": 343, "quote": "FLYWHEEL_ALERT:N detection gate: 'N flywheel finding(s) requerem atencao (severity P1 ou score >= 60)'"}
+      ],
+      "integration_value": "Medium",
+      "what_exists": "The repo has a production failure regression flywheel that converts incidents into eval regression cases (production-failure-regression-flywheel.md:28-40), eval tier stratification with fast/medium/deep tiers (eval-tier-stratification.md:28-50), pain-signal-driven eval investment (pain-signal-eval-progression-gate.md:28-50), a flywheel daemon with anomaly detection (60s loop, anomaly_score >= 80 triggers QI loop), SLO checker with burn rate alerts, and the FLYWHEEL_ALERT gate that injects findings into session context.",
+      "what_missing": "Missing the eval dashboard as PRIMARY detection surface: no real-time quality dashboard showing pass/fail rates per eval layer/category/agent, no streaming eval results feeding an always-on monitoring surface, no anomaly alerts keyed to eval quality regression thresholds (as opposed to operational/trace anomaly alerts). The flywheel detects trace anomalies and operational failures — not eval quality regressions surfaced as the first place to look during incidents. The repo detects failures post-hoc via traces, not pre-emptively via eval quality dashboards."
+    },
+    {
+      "pattern_name": "Multi-Agent Fault Tolerance",
+      "classification": "Partial Coverage",
+      "evidence": [
+        {"file": "long-running-agents/docs/canonical/tested-degradation-ladder.md", "line": 29, "quote": "Define a tested degradation ladder: an ordered contract that starts at failure classification, allows bounded repair only when recovery is plausible, falls back to a conservative safe action or hold when automation is unsafe, escalates to a human with summarized context when automated recovery is insufficient, logs the outcome, and tests each rung before production reliance"},
+        {"file": "long-running-agents/docs/canonical/tested-degradation-ladder.md", "line": 46, "quote": "[4. Human escalation / context to continue work]"},
+        {"file": "long-running-agents/docs/canonical/error-context-hygiene.md", "line": 93, "quote": "bounded retry integration with max_retries, one-line error summaries, context injection by attempt, success detection, and pending-error cleanup"},
+        {"file": "long-running-agents/docs/canonical/owned-agent-control-loop.md", "line": 68, "quote": "loop intervention points: break, summarize, LM-as-judge, human approval gate, and force terminate"},
+        {"file": ".opencode/skills/analyze-and-improve/harness/retry.py", "line": 25, "quote": "Exponential backoff retry logic — stdlib only (asyncio, random, time, typing)"}
+      ],
+      "integration_value": "High",
+      "what_exists": "The repo has a tested degradation ladder pattern (tested-degradation-ladder.md:29-63) that defines failure classification → retry with repair → safe fallback or hold → human escalation → outcome log + rung tests. Exponential backoff retry with jitter is implemented in harness/retry.py. Error context hygiene provides bounded retry with summarized errors and cleanup. Owned agent control loop defines explicit intervention points including break, human approval gate, and force terminate. Multi-model evaluation council routes to retry, needs-human, or rubric-update (multi-model-evaluation-council.md:30-47).",
+      "what_missing": "Missing Saga pattern (compensating transactions across distributed agents — no compensating action design or reverse-order rollback for multi-step agent workflows). Missing Circuit Breaker at the agent orchestration layer (no failure-rate-threshold-based tripping that stops cascading failures by routing to fallback — the HoP circuit-breaker.js referenced by codegraph is in Documents/Codex/, not in this repo). The degradation ladder covers single-agent failure recovery, not multi-agent distributed transaction fault tolerance with Saga rollback and rate-threshold circuit breaking."
+    },
+    {
+      "pattern_name": "Agent-Specific Data Freshness Pipeline",
+      "classification": "Missing",
+      "evidence": [
+        {"file": "NOT_FOUND: long-running-agents/docs/canonical/ (all 85+ files)", "line": 0, "quote": "No canonical doc for agent-specific data freshness pipeline, freshness guarantees, or staleness monitoring"},
+        {"file": "NOT_FOUND: long-running-agents/curriculum/ and long-running-agents/docs/analysis/", "line": 0, "quote": "No curriculum module or analysis covering data pipelines designed for agent consumption"},
+        {"file": "NOT_FOUND: plans/adr/ and .omo/plans/", "line": 0, "quote": "No ADRs or plans addressing agent-specific data freshness pipeline architecture"},
+        {"file": "agent-analysis/Programa-conhecimento-aplicado/projeto-koda/freshness.py", "line": 74, "quote": "Closest artifact: application-level freshness gate in KODA e-commerce domain — detects stale price/stock at send time, NOT a data pipeline infrastructure pattern"},
+        {"file": "obsidian-eval/src/ground-truth.ts", "line": 133, "quote": "Closest artifact: epistemic drift detection between candidate principles and ground truths, NOT data freshness"}
+      ],
+      "integration_value": "Low",
+      "what_exists": "NOT_FOUND across all evidence sources for a data pipeline architecture pattern. The closest artifacts are: (1) freshness.py in agent-analysis — application-level freshness gate in the KODA e-commerce domain that detects stale price/stock at send time, not a data pipeline infrastructure pattern; (2) checkDrift in obsidian-eval — epistemic drift detection between candidate principles and ground truths, not data freshness. Searched paths: long-running-agents/docs/canonical/ (all 85+ files), long-running-agents/docs/decisions/, long-running-agents/docs/analysis/, long-running-agents/curriculum/, plans/adr/, .omo/plans/, obsidian-eval/src/.",
+      "what_missing": "No agent-specific data pipeline architecture: no freshness guarantees with SLAs for re-ingestion/re-embedding after source document changes, no consistency checks flagging contradictory records before agent ingestion, no staleness monitoring in the tracing layer that detects when agent responses reference outdated document versions, no event-driven update triggers for source document changes, no data pipelines designed for agent consumption rather than human dashboard consumption."
+    },
+    {
+      "pattern_name": "Governance Context Injection for PII Prevention",
+      "classification": "Missing",
+      "evidence": [
+        {"file": "NOT_FOUND: long-running-agents/docs/canonical/ (all 85+ files)", "line": 0, "quote": "No PII, governance context, data catalog, or sensitive data detection canonical docs found"},
+        {"file": "NOT_FOUND: long-running-agents/curriculum/ (all levels N1-N4)", "line": 0, "quote": "No PII or governance injection modules in any curriculum level"},
+        {"file": "NOT_FOUND: long-running-agents/docs/analysis/", "line": 0, "quote": "No PII-related analysis documents found"},
+        {"file": "NOT_FOUND: plans/adr/ and .omo/plans/", "line": 0, "quote": "No ADRs or plans mentioning PII, governance injection, or data catalog tagging"},
+        {"file": "NOT_FOUND: ~/.config/opencode/skills/", "line": 0, "quote": "No skill implementing PII detection, governance context injection, or compliance audit"}
+      ],
+      "integration_value": "Low",
+      "what_exists": "NOT_FOUND across all evidence sources. ZERO PII-related canonical docs, curriculum materials, analysis documents, ADRs, or skill implementations. ZERO references to data catalog PII tagging, governance context injection, pre-generation deterministic PII detection, or compliance audit records for sensitive data. The KODA domain (e-commerce) operates in a PII-rich environment (customer names, addresses, payment info) but the repo addresses PII concerns only indirectly through general-purpose constraint-anchored evaluation and compartmented evaluation — never as a domain-specific governance injection pattern.",
+      "what_missing": "No PII tagging in any data catalog, no governance metadata injection into agent prompts (informing the model which fields are sensitive), no pre-generation deterministic PII detection via NER or regex, no post-generation PII scan as safety net, no audit record of governance context per query. The pattern's core mechanic (Unity Catalog → prompt injection → model awareness of PII fields) is entirely absent."
+    },
+    {
+      "pattern_name": "Business-Outcome-First Eval Pipeline",
+      "classification": "Partial Coverage",
+      "evidence": [
+        {"file": "long-running-agents/docs/canonical/pain-signal-eval-progression-gate.md", "line": 28, "quote": "Treat eval maturity as a gate driven by pain signals instead of a calendar roadmap. The gate asks whether current evidence shows that the next eval capability is now necessary."},
+        {"file": "long-running-agents/docs/canonical/pain-signal-eval-progression-gate.md", "line": 44, "quote": "User complaints repeat for known workflows → Add or expand Repeatable Agent Spot-Check Set"},
+        {"file": "long-running-agents/docs/canonical/eval-to-production-correlation-tracking.md", "line": 1, "quote": "Eval-to-Production Correlation Tracking"},
+        {"file": "long-running-agents/docs/canonical/production-grounded-eval-sampling.md", "line": 1, "quote": "Production-Grounded Eval Sampling"}
+      ],
+      "integration_value": "Medium",
+      "what_exists": "The repo ties eval investments to business-visible pain signals (user complaints, manual bottlenecks, escaped edge cases) via pain-signal-eval-progression-gate.md:28-50. Production-grounded eval sampling uses real production queries (not synthetic). Eval-to-production correlation tracking measures eval score vs. production outcomes. The KODA domain has business-specific eval rubrics and sprint contracts with human-escalation outcomes.",
+      "what_missing": "Missing the business-outcome-FIRST sequence: 'Define success in business terms → create golden answers from domain experts → build Python pipeline to compare AI outputs against business-outcome metrics.' The repo's eval investment starts from technical pain (incidents, regressions, manual bottlenecks), not from business outcome definition (deflection rate target, CSAT threshold, revenue impact). No golden answers authored by human domain experts as the eval foundation (200+ queries with human-authored expectations). No deflection rate prediction from eval scores. No Python evaluation pipeline that compares agent outputs against business-outcome-aligned golden answers as the FIRST step before building technical eval infrastructure."
+    },
+    {
+      "pattern_name": "Model-Switching Architecture with Enterprise Eval Gate",
+      "classification": "Partial Coverage",
+      "evidence": [
+        {"file": "long-running-agents/docs/canonical/neutral-selection-layer.md", "line": 28, "quote": "A model-agnostic selection layer that sits between the model and the store, serving context through a uniform interface regardless of which model, vendor, or session requests it. Three properties define the layer: Neutral (not coupled to a single model), Horizontal (cross-agent, cross-session, cross-model), Structured (relational, not merely storage)."},
+        {"file": "long-running-agents/docs/canonical/neutral-selection-layer.md", "line": 71, "quote": "Context survives model migrations — same structured record serves any model"},
+        {"file": "long-running-agents/docs/canonical/neutral-selection-layer.md", "line": 73, "quote": "Vendor independence: the organization's most durable asset is not locked in"},
+        {"file": "long-running-agents/docs/canonical/llm-as-fuzzy-compiler.md", "line": 1, "quote": "LLM as Fuzzy Compiler — model output as disposable artifact, constraints as durable"},
+        {"file": "long-running-agents/docs/canonical/multi-model-evaluation-council.md", "line": 28, "quote": "Use a model-diverse evaluation council for high-value decisions, risky agent behavior changes, ambiguous rubric cases, and production-impacting releases."},
+        {"file": "long-running-agents/docs/canonical/neutral-selection-layer.md", "line": 53, "quote": "NOT_FOUND across all 85 canonical docs"},
+        {"file": "long-running-agents/curriculum/GLOSSARY.md", "line": 530, "quote": "Neutral Selection Layer: Camada de selecao model-agnostic e vendor-independent"}
+      ],
+      "integration_value": "Medium",
+      "what_exists": "The repo has strong philosophical foundation for model independence: neutral-selection-layer.md defines model-agnostic context format, vendor adapter, and cross-model portability. LLM-as-fuzzy-compiler treats models as swappable compiler backends and generated code as disposable. Multi-model-evaluation-council uses model diversity for evaluation. Neutral selection layer is taught in the curriculum (N3 exercises). The codebase uses multiple LLM providers (DeepSeek for orchestrator, Anthropic for momus, etc.) demonstrating practical multi-model operation.",
+      "what_missing": "The neutral-selection-layer is classified as 'Missing (P0)' — it's a documented pattern, not an implementation. Missing: an enterprise eval dataset that is maintained independently of any specific model provider (the dataset that tests model upgrades against domain-specific data before adoption), side-by-side model comparison infrastructure (run candidate model against enterprise eval dataset, compare to current baseline), a model-switching decision framework (switch/hold/hybrid based on eval comparison), provider-upgrade testing against enterprise-specific data (not public benchmarks), and a mechanical process for model comparison that replaces subjective debate with data-driven reports. The philosophical alignment exists but the concrete infrastructure does not."
+    }
+  ]
+}

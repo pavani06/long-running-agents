@@ -1,0 +1,692 @@
+# The Production AI Playbook — Reusable Patterns (YAML)
+# Extracted from: 2026-06-26-the-production-ai-playbook-deploying-agents-at-enterprise-sc-analysis.yaml
+# Domain: Agentic systems — evaluation, production operations, multi-agent orchestration, governance, observability
+
+meta:
+  title: "The Production AI Playbook — Reusable Patterns"
+  source: "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks"
+  date: 2026-06-26
+  type: analysis
+  tags: ["evals", "agentes-orquestracao", "production", "governanca", "monitoramento"]
+  pattern_count: 13
+
+patterns:
+  - name: "3-Layer Evaluation Architecture"
+    problem_solved: >
+      Agents can produce correct outputs via incorrect or wasteful execution paths; evaluating
+      only the final answer hides expensive behavioral failures (redundant tool calls, loops,
+      unnecessary API consumption) that surface only under production scale.
+    inputs:
+      - "Agent execution traces (tool calls, API invocations, intermediate decisions)"
+      - "Agent response outputs (text, structured data)"
+      - "Schema definitions for expected output formats"
+      - "PII taxonomy from the data catalog"
+      - "Golden answers from the living eval dataset"
+    outputs:
+      - "Layer 1 (Deterministic) verdict: regex/pattern match on output format, PII presence, schema validity — zero LLM cost"
+      - "Layer 2 (Semantic/LLM-as-Judge) verdict: groundedness, safety, relevance, faithfulness scores via LLM evaluation"
+      - "Layer 3 (Behavioral) verdict: tool call redundancy count, loop detection flag, duplicate API detection, path efficiency score"
+      - "Stratified pass/fail gating at each layer with independent frequency controls per layer"
+    benefits:
+      - "Catches the 'right answer, wrong path' failure mode invisible to semantic-only evaluation"
+      - "Layer 1 blocks known failure modes (PII leaks, malformed outputs) at near-zero cost in CI"
+      - "Layer 2 catches quality regressions before they reach production with moderate LLM cost"
+      - "Layer 3 reveals the per-query cost profile of the agent, enabling cost optimization before scale"
+      - "Stratification allows each layer to run at its own frequency (every PR vs. merge-only), controlling eval cost"
+    limitations:
+      - "Layer 3 requires full execution traces from all tool calls — adds engineering complexity to the tracing pipeline"
+      - "LLM-as-Judge (Layer 2) introduces its own evaluation error rate; it can endorse bad responses or flag good ones"
+      - "Behavioral eval is expensive to run on every commit; requires cost governance (stratified subset in CI, full suite on merge)"
+      - "The three layers must be designed together — adding Layer 3 post-hoc requires retrofitting trace collection"
+    components:
+      - name: "Layer 1: Deterministic Validator"
+        role: "Regex, NER, PII detection, and schema validation with zero LLM cost — runs on every PR in CI"
+      - name: "Layer 2: LLM-as-Judge Evaluator"
+        role: "Evaluates groundedness, safety, relevance, and faithfulness via LLM calls — runs on PR and nightly"
+      - name: "Layer 3: Behavioral Analyzer"
+        role: "Analyzes full tool call traces for redundancy, loops, duplicate APIs, and path efficiency — full suite on merge to main"
+      - name: "Eval Cost Governor"
+        role: "Controls which layers run at which frequency, using stratified subset sampling for CI to cap costs"
+    flow:
+      - step: 1
+        action: "Layer 1 runs deterministically on every agent output — validate format, detect PII, check schema"
+      - step: 2
+        action: "If Layer 1 passes, Layer 2 evaluates semantic quality via LLM-as-Judge (groundedness, safety, relevance)"
+      - step: 3
+        action: "Layer 3 analyzes the full execution trace for behavioral issues (redundant tool calls, loops, duplicate APIs)"
+      - step: 4
+        action: "Each layer gates independently — a failure at any layer blocks the change from proceeding"
+      - step: 5
+        action: "Cost governor enforces: Layer 1 always runs; Layer 2 on PR and nightly; Layer 3 full on merge, subset on CI"
+
+  - name: "Eval-Driven Development Timeline"
+    problem_solved: >
+      Model selection decisions made before evaluation infrastructure exists are based on intuition
+      and public benchmarks, not domain-specific performance — resulting in weeks of subjective
+      debate and suboptimal model choices for the actual production domain.
+    inputs:
+      - "~200 real production queries with golden answers from human agents"
+      - "Candidate models to evaluate (any number, any provider)"
+      - "Centralized eval infrastructure (Layers 1-3) built in weeks 1-6"
+      - "Tracing and data foundation pipelines"
+    outputs:
+      - "Week 7: data-driven model comparison report ranking all candidates by performance against enterprise eval dataset"
+      - "Selected model with domain-specific performance evidence, not intuition or public benchmarks"
+      - "Model-switching infrastructure that can re-run comparison when a provider updates their model"
+    benefits:
+      - "Eliminates subjective model debates: weeks of debate replaced by hours of data-driven comparison"
+      - "Model chosen based on performance on your data, your domain, your failure patterns — not MMLU scores"
+      - "The same eval dataset that selected the model also serves as the regression suite for every subsequent change"
+      - "Model switching becomes mechanical: run new model against eval dataset, compare scores, decide"
+    limitations:
+      - "Requires organizational discipline to invest 6 weeks in eval infrastructure before any model experimentation"
+      - "Initial ~200 golden answers must come from human agents, creating bootstrapping dependency on operational staff"
+      - "If the domain evolves rapidly, an eval dataset built on historical queries may not represent emerging patterns"
+      - "Timeline assumes greenfield project; retrofitting into an existing agent system may require different phasing"
+    components:
+      - name: "Golden Dataset Builder"
+        role: "Collects ~200 real human agent queries and responses as the initial eval dataset (weeks 1-2)"
+      - name: "Data Foundation Pipeline"
+        role: "Builds ingestion, embedding updates, and centralized trace collection infrastructure (weeks 3-6)"
+      - name: "Model Comparison Engine"
+        role: "Runs all candidate models against the eval dataset and produces a ranked comparison report (weeks 7-8)"
+      - name: "Model-Switching Infrastructure"
+        role: "Architecture that accepts any model implementing a standard interface, enabling future model swaps"
+    flow:
+      - step: 1
+        action: "Weeks 1-2: Build evaluation layer — collect ~200 real human agent queries, author golden answers"
+      - step: 2
+        action: "Weeks 3-6: Build data foundation (ingestion, embeddings) and centralized tracing infrastructure"
+      - step: 3
+        action: "Week 7: Run all candidate models against the enterprise eval dataset"
+      - step: 4
+        action: "Week 7: Produce ranked comparison report with domain-specific performance evidence"
+      - step: 5
+        action: "Week 8: Select model based on data, deploy with eval dataset as continuous regression suite"
+
+  - name: "Living Eval Dataset"
+    problem_solved: >
+      Static test suites do not catch regressions from new failure modes discovered in production —
+      each incident teaches a lesson that is lost unless codified as a permanent test case that
+      prevents reoccurrence.
+    inputs:
+      - "Initial ~200 golden answer pairs (human agent query + correct response)"
+      - "Every production incident's failure trace and root cause analysis"
+      - "Every new feature specification"
+      - "Dataset categorization taxonomy (security, login, tool calls, knowledge retrieval, math/reasoning)"
+      - "Ownership assignment per category"
+    outputs:
+      - "Monotonically growing eval dataset (never shrinks; obsolete cases archived, not deleted)"
+      - "Per-category test suites with independent ownership and maintenance cycles"
+      - "Partitioned execution plans: fast subset for CI (stratified), full suite for merge to main"
+      - "Traceable lineage from every test case back to the incident or feature that created it"
+    benefits:
+      - "Every incident leaves a permanent scar in the test suite — that scar prevents the same failure from happening twice"
+      - "Monotonic growth means the system gets strictly safer over time; each failure invests in future quality"
+      - "Categorization and ownership prevent the dataset from becoming an unmanageable monolith"
+      - "Cost-controlled execution (stratified CI subset vs. full suite on merge) keeps eval economically sustainable"
+    limitations:
+      - "Unchecked growth without maintenance leads to an uncategorized monolith that is expensive and hard to govern"
+      - "Converting each incident into a well-formed test case requires human or automated process — raw incident logs are not test cases"
+      - "Golden answers must be authored or reviewed by humans to avoid training eval against model-generated hallucinations"
+      - "Dataset must be actively groomed; test cases for deprecated features must be archived (not deleted, for traceability)"
+    components:
+      - name: "Golden Answer Author"
+        role: "Domain expert or automated system that converts real queries and incident data into well-formed test cases with correct answers"
+      - name: "Category Registry"
+        role: "Taxonomy of eval categories (security, login, tool calls, knowledge retrieval, math) with assigned owners"
+      - name: "Dataset Partitioner"
+        role: "Divides the eval dataset into stratified subsets for cost-controlled execution (CI subset vs. full merge suite)"
+      - name: "Lineage Tracker"
+        role: "Records which incident, feature, or improvement created each test case, enabling traceability"
+      - name: "Archive Manager"
+        role: "Archives obsolete test cases for deprecated features (preserving traceability) while removing them from active execution"
+    flow:
+      - step: 1
+        action: "Bootstrap dataset with ~200 real human agent queries and manually authored golden answers"
+      - step: 2
+        action: "Categorize each test case (security, login, tool calls, etc.) and assign category owners"
+      - step: 3
+        action: "On every production incident, convert the failure into a new test case with root cause context"
+      - step: 4
+        action: "On every new feature, add new test cases covering the feature's expected behavior"
+      - step: 5
+        action: "Partition execution: CI runs stratified subset; merge to main runs full suite"
+      - step: 6
+        action: "Periodically groom: archive deprecated feature tests; verify golden answer quality; reassign ownership"
+
+  - name: "Production Incident to Eval Flywheel"
+    problem_solved: >
+      Production failures in agentic systems are treated as one-off incidents to be fixed and forgotten,
+      instead of treated as the highest-signal input to the evaluation system — missing the opportunity
+      to convert failure cost into future quality.
+    inputs:
+      - "Production incident signal (CSAT drop, anomaly alert, PII breach flag)"
+      - "Centralized trace collection spanning all agent frameworks"
+      - "LLM judge reports from recent evaluation runs"
+      - "Living eval dataset as the target for new test cases"
+      - "ITSM integration for incident tracking"
+    outputs:
+      - "Step 1 (Detect): incident identified via eval dashboard as primary detection surface"
+      - "Step 2 (Diagnose): root cause isolated from traces (stale embeddings, prompt drift, tool loop)"
+      - "Step 3 (Contain): immediate mitigation via prompt rollback, human deflection, or circuit breaker"
+      - "Step 4 (Fix): root cause corrected in code, data, or configuration"
+      - "Step 5 (Add to Dataset): new test case covering the exact failure scenario added to living eval dataset"
+    benefits:
+      - "Closes the learning loop: every incident is an investment in future quality, not just a cost"
+      - "Eval dashboard as primary detection surface means quality regressions caught before CSAT surveys"
+      - "Trace-based diagnosis enables precise root cause identification — no more 'the agent is broken' with no explanation"
+      - "ITSM integration fits into existing enterprise incident management workflows"
+    limitations:
+      - "Step 5 requires the failed query and expected correct output — generic degradations are harder to codify as test cases"
+      - "Containment actions require versioned prompts and a routing layer — not present in ad-hoc agent deployments"
+      - "Flywheel assumes tracing coverage exists for the incident — uninstrumented code paths make diagnosis blind"
+      - "Eval dashboard as primary detection surface requires eval alerts configured with same rigor as production SLO alerts"
+    components:
+      - name: "Incident Detector"
+        role: "Monitors eval dashboard for CSAT drops, anomaly alerts, and PII breach flags"
+      - name: "Trace Diagnostician"
+        role: "Consumes centralized traces to isolate root cause (stale embeddings, prompt drift, tool loops)"
+      - name: "Containment Router"
+        role: "Executes immediate mitigation: prompt rollback, human deflection routing, or circuit breaker activation"
+      - name: "Fix Verifier"
+        role: "Validates the root cause correction by re-running the eval suite against the fixed system"
+      - name: "Test Case Generator"
+        role: "Converts the incident into a new test case with the query, failure trace, and corrected expected output"
+    flow:
+      - step: 1
+        action: "Detect: eval dashboard registers CSAT drop or anomaly alert; incident is created in ITSM"
+      - step: 2
+        action: "Diagnose: trace analysis identifies root cause — e.g., stale embeddings from outdated vector DB"
+      - step: 3
+        action: "Contain: rollback prompt to last known good version, route affected queries to human operators"
+      - step: 4
+        action: "Fix: update vector DB with new policy document; correct the data freshness trigger"
+      - step: 5
+        action: "Add to Dataset: create test case replicating the stale-data scenario with expected correct response"
+      - step: 6
+        action: "Verify: run the new test case and the full eval suite to confirm no regression before closing incident"
+
+  - name: "Behavioral Eval Path Analysis"
+    problem_solved: >
+      An agent can return the correct answer while executing a wasteful path (redundant DB calls,
+      unnecessary external API calls) — invisible to semantic evaluation but financially unsustainable
+      at scale.
+    inputs:
+      - "Full execution trace from each agent query (ordered tool calls with timestamps and parameters)"
+      - "Expected execution path template (correct sequence and count of tool calls for the query type)"
+      - "Cost model per tool call (DB query cost, external API cost, LLM call cost)"
+      - "Query categorization (simple lookup vs. multi-step reasoning vs. transactional)"
+    outputs:
+      - "Redundancy score: count of unnecessary repeated calls to the same tool with equivalent parameters"
+      - "Loop detection flag: tool call sequences that form semantic cycles"
+      - "Path efficiency score: ratio of necessary calls to total calls for the query category"
+      - "Duplicate API detection: multiple calls to different external APIs retrieving overlapping data"
+      - "Per-query cost attribution in dollars: sum of all tool call costs"
+    benefits:
+      - "Reveals the 'wrong path, right answer' failure mode that demo evaluations never expose"
+      - "Quantifies per-query cost profile, enabling cost prediction at scale (20,000 queries/month)"
+      - "Path efficiency scores provide a leading indicator of production cost before CSAT drops"
+      - "Loop detection catches infinite or near-infinite tool call cycles before they consume budgets"
+    limitations:
+      - "Requires full trace instrumentation of every tool call — retrofitting existing agents is high effort"
+      - "Defining the correct path template per query category requires expert knowledge of agent design intent"
+      - "Cost model accuracy depends on real pricing data from DB/API providers; stale models mislead decisions"
+      - "Path analysis is expensive on every query; requires sampling or cost-tiered execution"
+    components:
+      - name: "Trace Collector"
+        role: "Captures every tool call with timestamp, parameters, and duration during agent execution"
+      - name: "Path Template Engine"
+        role: "Stores expected execution path templates per query category, defining the correct tool call sequence"
+      - name: "Redundancy Detector"
+        role: "Identifies repeated calls to the same tool with semantically equivalent parameters"
+      - name: "Cycle Detector"
+        role: "Detects semantic loops in tool call sequences (call A → call B → call A with same intent)"
+      - name: "Cost Attributor"
+        role: "Maps each tool call to its dollar cost using the cost model, producing per-query cost attribution"
+    flow:
+      - step: 1
+        action: "Collect full execution trace from agent query — all tool calls ordered by invocation time"
+      - step: 2
+        action: "Classify the query into a category (simple lookup, multi-step reasoning, transactional)"
+      - step: 3
+        action: "Retrieve expected execution path template for the query category"
+      - step: 4
+        action: "Compare actual trace against template: count redundant calls, detect loops, check API duplication"
+      - step: 5
+        action: "Score path efficiency: necessary_calls / total_calls; threshold determines pass/fail"
+      - step: 6
+        action: "Attribute dollar cost per query: sum tool call costs; flag queries exceeding cost threshold"
+
+  - name: "Centralized Cross-Framework Tracing"
+    problem_solved: >
+      Enterprises deploy multiple agent frameworks across multiple clouds, creating fragmented
+      observability where no unified view exists and debugging requires switching between disconnected tools.
+    inputs:
+      - "Execution traces from all agent frameworks (CrewAI, LangChain, custom) via adapters or OpenTelemetry"
+      - "Agent identity metadata (framework type, agent version, model version, deployment region)"
+      - "Query context (user input, session ID, timestamp)"
+      - "Tool call records (tool name, parameters, duration, success/failure)"
+    outputs:
+      - "Centralized trace layer with unified schema across all frameworks"
+      - "Dashboards: single-pane view of all agent activity regardless of framework"
+      - "Text-to-SQL interface: ad-hoc queries over trace data"
+      - "LLM judge reports: automated quality evaluation consuming the unified trace stream"
+      - "Auditor reports: compliance evidence of end-to-end traceability"
+      - "Online monitoring: real-time anomaly detection over the unified trace stream"
+    benefits:
+      - "Single debugging surface: trace any query from any agent in any framework from one tool"
+      - "Regulatory compliance: centralized trace layer satisfies audit requirements for AI onboarding"
+      - "Framework-independent evaluation: LLM judges and dashboards consume same format regardless of framework"
+      - "Enables cross-framework comparisons: measure relative performance of CrewAI vs. LangChain vs. custom agents"
+    limitations:
+      - "Requires per-framework adapter development; each framework's trace format is different"
+      - "Trace volume at enterprise scale demands significant storage and processing infrastructure"
+      - "Schema evolution: new trace fields from framework updates must be accommodated without breaking consumers"
+      - "Adds latency: trace forwarding is an additional network hop per tool call; sampling may be required at scale"
+    components:
+      - name: "Framework Adapters"
+        role: "Collect traces from each agent framework (CrewAI, LangChain, custom) and translate to unified schema"
+      - name: "Centralized Trace Layer"
+        role: "Single repository of all agent traces in unified schema, serving as the system of record for observability"
+      - name: "Unified Dashboard"
+        role: "Single-pane visualization of all agent activity across frameworks, time, and regions"
+      - name: "Text-to-SQL Interface"
+        role: "Enables ad-hoc natural language queries over trace data for custom analysis"
+      - name: "Multi-Consumer Bus"
+        role: "Routes the unified trace stream to dashboards, LLM judges, auditors, and online monitoring consumers"
+    flow:
+      - step: 1
+        action: "Framework adapters collect traces from each agent framework at execution time"
+      - step: 2
+        action: "Traces are normalized into the unified schema and forwarded to the centralized trace layer"
+      - step: 3
+        action: "Centralized trace layer stores and indexes traces, serving as the single source of observability truth"
+      - step: 4
+        action: "Multi-consumer bus routes traces to dashboards (visualization), LLM judges (quality eval), auditors (compliance)"
+      - step: 5
+        action: "Online monitoring consumes the stream for real-time anomaly detection"
+      - step: 6
+        action: "Text-to-SQL interface enables ad-hoc investigation: 'show all queries with >5 tool calls last week'"
+
+  - name: "Prompt-as-Code with Causal Change Management"
+    problem_solved: >
+      Prompts are the most frequently changed and least version-controlled component of agentic systems —
+      generic commit messages make rollback and debugging impossible because no one knows why a prompt
+      changed or what failure it addressed.
+    inputs:
+      - "Prompt version history in a version-controlled repository"
+      - "Production incident records that triggered prompt changes"
+      - "CSAT metrics or eval scores that degraded before the change"
+      - "Diagnostic evidence from trace analysis identifying which prompt component failed"
+    outputs:
+      - "Versioned prompt with commit message answering: (1) why changed, (2) what failure caused it, (3) what failure it addresses"
+      - "Prompt rollback capability: any previous version restorable with full context of why it was replaced"
+      - "Audit trail linking every prompt change to a specific incident, eval regression, or feature requirement"
+      - "Change impact prediction: when a prompt changes, eval dataset runs to quantify the effect before deploy"
+    benefits:
+      - "Debuggable prompt history: you know not just what changed but why, triggered by what, targeting what"
+      - "Safe rollbacks: if a prompt change degrades quality, rollback with full context — not guesswork"
+      - "Compliance: regulated industries can demonstrate every prompt change was justified by evidence"
+      - "Change impact quantification: running eval dataset before deploy catches prompt regressions before production"
+    limitations:
+      - "Requires discipline from every engineer touching prompts — cultural adoption of commit message standards is hard"
+      - "Three-question format works for reactive (incident-driven) changes but is less natural for proactive improvements"
+      - "Prompt version history grows unboundedly; outdated prompts should be archived but traceable"
+      - "Does not capture implicit prompt changes from model provider updates — same text, different behavior"
+    components:
+      - name: "Prompt Version Store"
+        role: "Git repository or equivalent storing every prompt version with immutable history"
+      - name: "Causal Commit Validator"
+        role: "Enforces the three-question commit message format: why changed, what failure caused, what failure addressed"
+      - name: "Rollback Engine"
+        role: "Restores any previous prompt version with full context of why it was replaced"
+      - name: "Change Impact Runner"
+        role: "When a prompt changes, runs the eval dataset against the new prompt and reports quality delta before deploy"
+      - name: "Audit Trail Exporter"
+        role: "Produces compliance reports linking every prompt change to its triggering incident or feature"
+    flow:
+      - step: 1
+        action: "Engineer modifies prompt in response to a production incident or quality regression"
+      - step: 2
+        action: "Commit message documents: (1) causal trigger, (2) diagnostic context, (3) predictive intent"
+      - step: 3
+        action: "Change Impact Runner executes eval dataset against new prompt version, compares to baseline"
+      - step: 4
+        action: "If eval scores degrade, block the change; if they improve or hold, allow deploy"
+      - step: 5
+        action: "Deploy new prompt version; audit trail is automatically generated for compliance"
+
+  - name: "Eval Dashboard as Primary Detection Surface"
+    problem_solved: >
+      Traditional production monitoring surfaces latency and error rates but not agent quality regressions —
+      hallucination rate increases, response degradation, and answer accuracy drift only become visible
+      days later through CSAT surveys.
+    inputs:
+      - "Streaming eval results from all three layers across all agents and queries"
+      - "CSAT scores as a lagging validation signal"
+      - "Historical quality baselines (expected pass rates per layer, category, agent)"
+      - "Anomaly detection thresholds calibrated per evaluation layer"
+    outputs:
+      - "Real-time quality dashboard: pass/fail rates per eval layer, category, and agent"
+      - "Anomaly alerts when pass rates drop below baseline thresholds for any category"
+      - "Trend visualization: quality trajectory over time, detecting slow degradation before catastrophe"
+      - "Drill-down capability: aggregate quality score → failing eval category → individual failing queries → full trace"
+    benefits:
+      - "Quality regressions detected in minutes (via eval), not in weeks (via CSAT surveys)"
+      - "Eval dashboard is the first place the team looks during an incident — not logs, not APM"
+      - "Trend visibility catches slow degradation (e.g., embeddings gradually going stale) that binary alerts miss"
+      - "Drill-down from dashboard to individual trace enables rapid diagnosis without context-switching tools"
+    limitations:
+      - "Eval dashboard is only as good as the eval dataset — gaps in test coverage are gaps in visibility"
+      - "High false-positive rate from Layer 2 (LLM-as-Judge) can create alert fatigue if thresholds are not calibrated"
+      - "Requires eval infrastructure to be always-on, not batch — streaming eval results in real time adds cost"
+      - "Dashboard is a detection surface, not a diagnosis surface — tells you quality dropped, traces tell you why"
+    components:
+      - name: "Streaming Eval Ingestor"
+        role: "Consumes continuous eval results from all three layers across all agents"
+      - name: "Quality Dashboard Renderer"
+        role: "Visualizes pass/fail rates per layer, category, and agent in real time"
+      - name: "Anomaly Alert Engine"
+        role: "Compares current pass rates against historical baselines; fires alerts when thresholds are crossed"
+      - name: "Trend Analyzer"
+        role: "Tracks quality trajectory over time, detecting slow degradation before it triggers binary thresholds"
+      - name: "Drill-Down Router"
+        role: "Links aggregate quality metrics to individual failing queries and their full execution traces"
+    flow:
+      - step: 1
+        action: "Streaming eval results from all three layers enter the dashboard continuously"
+      - step: 2
+        action: "Dashboard renders real-time pass/fail rates per layer, category, and agent"
+      - step: 3
+        action: "Anomaly engine compares rates against historical baselines; fires alerts on threshold breach"
+      - step: 4
+        action: "Trend analyzer tracks quality trajectory, warning of slow degradation before binary alerts trigger"
+      - step: 5
+        action: "On alert, operator drills down: aggregate score → failing category → individual failing query → full trace"
+
+  - name: "Multi-Agent Fault Tolerance"
+    problem_solved: >
+      Multi-agent workflows fail partially — one agent succeeds, another times out, a third returns stale data.
+      Without fault tolerance, partial failures either go undetected or crash the entire workflow.
+    inputs:
+      - "Multi-agent workflow definition with ordered steps and dependencies"
+      - "Per-step compensating action (reverse operation that undoes the step's effect)"
+      - "Failure threshold configuration per agent (error rate, latency percentile)"
+      - "Human escalation policy (which failure classes require human judgment vs. automated fallback)"
+      - "Orchestrator state tracking completed, in-progress, and failed steps"
+    outputs:
+      - "Saga rollback: if step N fails, compensating actions for steps 1..N-1 execute in reverse order"
+      - "Circuit breaker activation: failure threshold exceeded → circuit opens → fallback to default response or human"
+      - "Human escalation: confidence below threshold → query routed to human with full context"
+      - "Partial completion log: which steps succeeded, which failed, and what compensating actions were applied"
+    benefits:
+      - "Prevents cascading failures: a slow external API does not degrade the entire multi-agent system"
+      - "Maintains consistency: Saga ensures distributed transactions across agents are atomic"
+      - "Graceful degradation: circuit breaker routes failing agents to fallback responses instead of errors"
+      - "Audit trail: every failure, rollback, and escalation is logged for post-incident analysis"
+    limitations:
+      - "Compensating actions must be designed and tested for every step — not every operation has a clean undo"
+      - "Saga adds latency: each step awaits confirmation; rollback multiplies the number of operations"
+      - "Circuit breaker thresholds require tuning; too sensitive degrades UX, too lenient allows cascading failures"
+      - "Human escalation introduces variable latency and requires operational staffing for escalation queues"
+    components:
+      - name: "Saga Coordinator"
+        role: "Manages distributed transaction across agents: tracks step completion, triggers compensating actions on failure"
+      - name: "Circuit Breaker"
+        role: "Monitors per-agent failure rate; opens circuit at threshold, routes to fallback; closes after recovery period"
+      - name: "Human Escalation Router"
+        role: "Routes queries to human operators when confidence is below threshold or circuit is open, with full failure context"
+      - name: "Failure Audit Logger"
+        role: "Records every failure, rollback, and escalation for post-incident analysis and eval dataset enrichment"
+    flow:
+      - step: 1
+        action: "Orchestrator dispatches workflow steps to agents in order, tracking completion state"
+      - step: 2
+        action: "Circuit breaker monitors each agent's failure rate and latency; opens if thresholds breached"
+      - step: 3
+        action: "If a step fails, Saga Coordinator triggers compensating actions for all previously completed steps"
+      - step: 4
+        action: "If circuit is open or confidence is below threshold, Human Escalation Router routes query to operator"
+      - step: 5
+        action: "Failure Audit Logger records the full failure chain for post-incident analysis and eval updates"
+
+  - name: "Agent-Specific Data Freshness Pipeline"
+    problem_solved: >
+      Data pipelines built for human consumption tolerate staleness and ambiguity because humans infer context.
+      Agents treat every data point literally — stale embeddings produce confident wrong answers that damage trust.
+    inputs:
+      - "Source documents (policy documents, product catalogs, FAQs, knowledge bases) from organizational systems"
+      - "Update timestamps and change logs for each source document"
+      - "Vector database or knowledge base consuming embeddings derived from source documents"
+      - "Agent query patterns and their data dependencies"
+    outputs:
+      - "Freshness guarantee: every source document change triggers automatic re-ingestion and re-embedding within defined SLA"
+      - "Consistency checks: contradictory records across documents flagged before ingestion"
+      - "Staleness monitoring: tracing layer detects when agent responses reference outdated document versions"
+      - "Update triggers: event-driven pipeline reacting to source document changes, not periodic batch"
+    benefits:
+      - "Prevents stale RAG failure: bank changed rates, emailed customers, but agent kept quoting old rates from stale vector DB"
+      - "Data quality becomes first-class engineering concern — 60% of project time allocated to data foundation"
+      - "Event-driven freshness eliminates gap between 'document changed' and 'agent knows about the change'"
+      - "Consistency checks prevent contradictory information from entering the agent's knowledge base"
+    limitations:
+      - "Requires integration with every source document system — legacy systems often lack webhooks or change events"
+      - "Embedding regeneration latency is non-trivial; large knowledge bases may take minutes to re-embed, creating a freshness gap"
+      - "Consistency checks require semantic comparison between documents, which may add LLM cost"
+      - "The 60% time investment must be justified against business value; for low-stakes use cases, may be overinvestment"
+    components:
+      - name: "Source Change Detector"
+        role: "Monitors source document systems for changes (webhooks, polling, change logs) and triggers re-ingestion"
+      - name: "Re-embedding Pipeline"
+        role: "Re-processes changed documents through embedding generation and updates the vector database"
+      - name: "Consistency Checker"
+        role: "Compares new documents against existing ones for contradictions before ingestion"
+      - name: "Staleness Monitor"
+        role: "Correlates agent responses with document versions to detect when agents reference stale data"
+      - name: "Freshness SLA Enforcer"
+        role: "Tracks time from document change to vector DB update; alerts if SLA is breached"
+    flow:
+      - step: 1
+        action: "Source Change Detector identifies a document update (policy change, new FAQ, product catalog revision)"
+      - step: 2
+        action: "Consistency Checker compares the updated document against related documents for contradictions"
+      - step: 3
+        action: "If consistent, Re-embedding Pipeline generates new embeddings and updates the vector database"
+      - step: 4
+        action: "Freshness SLA Enforcer tracks latency from change detection to vector DB update"
+      - step: 5
+        action: "Staleness Monitor correlates agent responses with document versions; triggers CSAT alert if stale data detected"
+
+  - name: "Governance Context Injection for PII Prevention"
+    problem_solved: >
+      Agents access enterprise data catalogs containing PII but the model has no awareness of which fields are
+      sensitive — it treats all data as safe, causing PII breaches that would be compliance incidents in production.
+    inputs:
+      - "Data catalog with PII tagging per field (Unity Catalog or equivalent)"
+      - "Agent prompt template with injection points for governance context"
+      - "Deterministic PII detection patterns (regex for SSN, phone, email, credit card)"
+      - "Query context (which tables/fields the agent accessed during this query)"
+    outputs:
+      - "Before-generation injection: governance context (list of PII-tagged fields accessed) injected into prompt"
+      - "Model awareness: prompt tells the model which fields contain PII and must not be exposed in response"
+      - "Post-generation verification: Layer 1 deterministic eval scans output for PII patterns as safety net"
+      - "Audit record: every query's governance context and PII scan result logged for compliance auditors"
+    benefits:
+      - "Prevents PII breaches before generation — model knows which fields are sensitive"
+      - "47 PII breaches caught in testing; without this pattern, each would have been a compliance incident"
+      - "Governance context travels with data: PII tags in catalog propagate through queries into prompts automatically"
+      - "Deterministic PII scan (Layer 1) provides safety net even if model ignores governance context"
+    limitations:
+      - "Requires a data catalog with PII tagging — organizations without mature data governance must build this first"
+      - "PII tagging coverage gaps: untagged fields are not injected into prompt and may be exposed"
+      - "Model may still expose PII despite governance context — injection is a prompt instruction, not a hard constraint"
+      - "Post-generation PII scan catches breaches but does not prevent them; response has already been generated"
+    components:
+      - name: "PII Tag Registry"
+        role: "Data catalog (e.g., Unity Catalog) with PII tags per field — SSN, phone, email, credit card, address"
+      - name: "Governance Context Injector"
+        role: "Intercepts agent queries, identifies which PII-tagged fields were accessed, injects context into prompt"
+      - name: "Deterministic PII Scanner"
+        role: "Post-generation regex scan for PII patterns in agent output as a safety net after model generation"
+      - name: "Compliance Audit Logger"
+        role: "Records every query's governance context injection and PII scan result for regulatory auditors"
+    flow:
+      - step: 1
+        action: "Agent queries the data catalog, accessing tables and fields"
+      - step: 2
+        action: "Governance Context Injector identifies which accessed fields have PII tags in the registry"
+      - step: 3
+        action: "Before model generation, inject governance context into prompt: list of PII-tagged fields, exposure rules"
+      - step: 4
+        action: "Model generates response with governance awareness — composes safe references (e.g., 'account ending in XXXX')"
+      - step: 5
+        action: "Deterministic PII Scanner scans the generated output as a safety net — blocks response if PII detected"
+      - step: 6
+        action: "Compliance Audit Logger records the full governance context and scan result for regulatory evidence"
+
+  - name: "Business-Outcome-First Eval Pipeline"
+    problem_solved: >
+      Engineering teams build eval pipelines starting with technical metrics instead of business outcomes,
+      creating misalignment where the technical eval passes but the business outcome fails.
+    inputs:
+      - "Business success definition (e.g., '60% deflection rate', 'CSAT above 4.2')"
+      - "Manual golden answers created by domain experts for initial ~200 queries"
+      - "Real production queries from human agent logs (not synthetic queries)"
+      - "Business metrics the agent is intended to improve"
+    outputs:
+      - "Business-aligned eval rubric: each test case scored against golden answer by a metric correlated with business outcome"
+      - "Python evaluation pipeline built after, not before, the golden dataset exists"
+      - "Deflection rate prediction: eval pass rate predicts production deflection rate, enabling go/no-go decisions"
+      - "Iteration loop: eval metrics drive improvements until business outcome threshold is met"
+    benefits:
+      - "Prevents the 'technically correct, business irrelevant' trap: eval measures what matters to the business"
+      - "Golden answers authored by domain experts, not models, ensure eval represents real customer expectations"
+      - "Starting with business outcomes and manual golden answers is faster than starting with engineering"
+      - "Deflection rate prediction from eval scores enables evidence-based deployment decisions"
+    limitations:
+      - "Requires access to real production queries and domain experts — not feasible for pre-product agents"
+      - "Manual golden answer authoring does not scale beyond ~200 cases; automation required above that"
+      - "Business metric correlation with eval scores must be validated empirically and may drift as domain evolves"
+      - "Pipeline requires maintenance as business outcomes change; a deflection-rate eval may not measure new business goals"
+    components:
+      - name: "Business Outcome Definition"
+        role: "Formalizes the business success metric (deflection rate, CSAT, resolution time) that the agent must achieve"
+      - name: "Golden Answer Author"
+        role: "Domain experts manually author correct answers for ~200 real production queries"
+      - name: "Eval Pipeline Builder"
+        role: "Constructs the Python evaluation pipeline that compares agent responses against golden answers"
+      - name: "Outcome Correlation Validator"
+        role: "Validates that eval pass rates correlate with business outcomes; re-validates periodically"
+    flow:
+      - step: 1
+        action: "Define business success: '60% of customer queries deflected without human intervention'"
+      - step: 2
+        action: "Collect ~200 real production queries from human agent logs"
+      - step: 3
+        action: "Domain experts author golden answers for each query — what a correct response looks like"
+      - step: 4
+        action: "Build Python evaluation pipeline that compares agent responses against golden answers"
+      - step: 5
+        action: "Run eval; correlate pass rates with business outcome; iterate until threshold met"
+
+  - name: "Model-Switching Architecture with Enterprise Eval Gate"
+    problem_solved: >
+      Committing to a single model provider creates vendor lock-in — when the provider updates their model,
+      performance may degrade silently because the organization cannot test the new model against their
+      specific domain before customers are affected.
+    inputs:
+      - "Enterprise eval dataset (domain-specific, not public benchmarks)"
+      - "Current model performance baseline (pass rates on all three eval layers)"
+      - "Candidate model (new model version, new provider, or fine-tuned variant)"
+      - "Model-switching infrastructure: architecture accepting any model via standard interface"
+    outputs:
+      - "Side-by-side comparison: candidate model run against enterprise eval dataset, compared to current baseline"
+      - "Switching decision: data-driven recommendation (switch, hold, or hybrid per query category)"
+      - "Regression report: specific test cases where candidate performs worse than current"
+      - "Deployment plan: canary deployment to subset of traffic, compare eval scores, expand or rollback"
+    benefits:
+      - "Vendor independence: model selection governed by domain-specific performance data, not provider relationships"
+      - "Provider updates become testable: run eval dataset against new model version to decide if update is safe"
+      - "No single point of model failure: if one model degrades, switch to another already tested against eval dataset"
+      - "The eval dataset that selected the model also serves as continuous validation for every subsequent change"
+    limitations:
+      - "Multi-model architecture adds complexity: prompting, tool call formats, and output parsing differ between models"
+      - "Running full eval suite against multiple models multiplies LLM call costs (Layer 2-3 per candidate)"
+      - "Model behavior can change without provider announcement — continuous eval monitoring is required"
+      - "Eval dataset may have model-specific biases if golden answers were authored with one model's output style in mind"
+    components:
+      - name: "Model Interface Abstraction"
+        role: "Standard interface that any model implements, decoupling agent orchestration from model provider"
+      - name: "Eval Comparison Engine"
+        role: "Runs candidate model against the full enterprise eval dataset and produces delta vs. current baseline"
+      - name: "Regression Reporter"
+        role: "Identifies specific test cases where candidate model underperforms, enabling targeted investigation"
+      - name: "Canary Deployer"
+        role: "Deploys new model to a subset of traffic; compares eval scores; expands or rollbacks based on performance"
+      - name: "Continuous Eval Monitor"
+        role: "Continuously runs eval against production models to detect silent degradation from provider updates"
+    flow:
+      - step: 1
+        action: "Establish current model baseline by running enterprise eval dataset against production model"
+      - step: 2
+        action: "When evaluating a candidate model, run the same eval dataset and produce side-by-side comparison"
+      - step: 3
+        action: "Regression Reporter identifies test cases where candidate underperforms; engineers investigate"
+      - step: 4
+        action: "Decision: switch (candidate is better), hold (candidate is worse), hybrid (use candidate for some categories)"
+      - step: 5
+        action: "If switching, canary-deploy to subset of traffic; compare eval scores under real load"
+      - step: 6
+        action: "Continuous Eval Monitor runs against production models to detect silent degradation from provider updates"
+
+cross_pattern_dependencies:
+  "3-Layer Evaluation Architecture":
+    is_foundation_of: "All other eval patterns"
+    requires:
+      - "Centralized Cross-Framework Tracing"
+  "Eval-Driven Development Timeline":
+    requires:
+      - "3-Layer Evaluation Architecture"
+      - "Living Eval Dataset"
+  "Living Eval Dataset":
+    enables:
+      - "Production Incident to Eval Flywheel"
+      - "Model-Switching Architecture with Enterprise Eval Gate"
+  "Production Incident to Eval Flywheel":
+    feeds: "Living Eval Dataset"
+    requires:
+      - "Centralized Cross-Framework Tracing"
+      - "Eval Dashboard as Primary Detection Surface"
+  "Behavioral Eval Path Analysis":
+    is_implementation_of: "Layer 3 of 3-Layer Evaluation Architecture"
+    requires:
+      - "Centralized Cross-Framework Tracing"
+  "Centralized Cross-Framework Tracing":
+    enables:
+      - "Behavioral Eval Path Analysis"
+      - "Eval Dashboard as Primary Detection Surface"
+      - "Production Incident to Eval Flywheel"
+      - "Governance Context Injection for PII Prevention"
+  "Prompt-as-Code with Causal Change Management":
+    feeds: "Production Incident to Eval Flywheel (Contain step)"
+  "Eval Dashboard as Primary Detection Surface":
+    feeds: "Production Incident to Eval Flywheel (Detect step)"
+  "Multi-Agent Fault Tolerance":
+    relates_to: "Agent-Specific Data Freshness Pipeline"
+    is_application_of: "Orchestrator-Worker and Choreography patterns in production"
+  "Agent-Specific Data Freshness Pipeline":
+    prevents: "Stale RAG Data failure pattern"
+    feeds: "Production Incident to Eval Flywheel (Fix step)"
+  "Governance Context Injection for PII Prevention":
+    implements: "Layer 1 of 3-Layer Evaluation Architecture (PII detection)"
+    requires:
+      - "Centralized Cross-Framework Tracing"
+  "Business-Outcome-First Eval Pipeline":
+    feeds: "Living Eval Dataset"
+    ensures: "Eval metrics correlate with business outcomes, not just technical accuracy"
+  "Model-Switching Architecture with Enterprise Eval Gate":
+    requires:
+      - "Living Eval Dataset"
+      - "3-Layer Evaluation Architecture"
+    enables: "Vendor independence and safe model migration"

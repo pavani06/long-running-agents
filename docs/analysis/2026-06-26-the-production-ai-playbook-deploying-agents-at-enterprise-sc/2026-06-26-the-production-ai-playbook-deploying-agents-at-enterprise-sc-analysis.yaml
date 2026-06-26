@@ -1,0 +1,298 @@
+meta:
+  title: "The Production AI Playbook — Deploying Agents at Enterprise Scale (Sandipan Bhaumik, Databricks)"
+  source: "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks"
+  date: 2026-06-26
+  type: analysis
+  source_url: "https://www.youtube.com/watch?v=ObTPqBGsEbA"
+  domain: production-ai-playbook
+  aliases:
+    - "production AI playbook"
+    - "enterprise AI agents"
+    - "Databricks production framework"
+    - "5-pillar framework"
+    - "Bhaumik production AI"
+
+frameworks:
+  - name: "5-Pillar Production AI Framework"
+    components:
+      - Evaluation
+      - Observability
+      - "Data Foundation"
+      - "Multi-Agent Orchestration"
+      - Governance
+    principle: "All 5 pillars must be designed before any code is written; they are interdependent, not sequential"
+    key_insight: "Agents don't forgive you — data built for human consumption fails with agents"
+
+  - name: "3-Layer Evaluation Architecture"
+    components:
+      - name: "Layer 1 — Deterministic"
+        mechanism: "Regex, NER, PII detection, schema validation"
+        cost: "Low (zero LLM calls)"
+        frequency: "CI + every PR"
+      - name: "Layer 2 — Semantic / LLM-as-Judge"
+        mechanism: "Groundedness, safety, relevance, faithfulness evaluation"
+        cost: "Medium (LLM calls)"
+        frequency: "PR + nightly"
+      - name: "Layer 3 — Behavioral"
+        mechanism: "Tool call analysis, loop detection, duplicate API detection, path efficiency"
+        cost: "High (full trace analysis)"
+        frequency: "Merge to main (full suite), CI (subset)"
+    key_insight: "Layer 3 is the most neglected but catches the most expensive failures — agents can have the right answer with the wrong (expensive) path"
+
+  - name: "Eval-Driven Development Timeline"
+    components:
+      - phase: "Weeks 1-2"
+        activity: "Evaluation layer construction"
+        artifact: "200 real cases from human agents → initial golden dataset"
+      - phase: "Weeks 3-6"
+        activity: "Data foundation + tracing infrastructure"
+        artifact: "Ingestion pipelines, embedding updates, centralized trace collection"
+      - phase: "Weeks 7-8"
+        activity: "Model selection via data-driven comparison"
+        artifact: "Run all candidate models against eval dataset → select best performer"
+    key_insight: "Model is selected in week 7 of 8-week project; eval infrastructure comes first"
+
+  - name: "Data Flywheel"
+    mechanism: "Eval dataset grows monotonically from production incidents"
+    lifecycle:
+      - "Start with ~200 real cases from human agents"
+      - "Every production incident adds a new test case"
+      - "Every new feature adds new scenarios"
+    result: "The bigger it grows, the better the system becomes — each incident leaves a permanent scar preventing regression"
+
+  - name: "Production Incident Playbook"
+    mechanism: "5-step loop integrated with ITSM systems"
+    steps:
+      - step: Detect
+        tool: "Eval dashboard (primary detection surface, not logs/APM)"
+      - step: Diagnose
+        tool: "Centralized trace collection + LLM judge reports"
+      - step: Contain
+        tool: "Prompt rollback, human deflection, circuit breaker"
+      - step: Fix
+        tool: "Eval dataset reports identify specific gap"
+      - step: "Add to Living Dataset"
+        tool: "New test case covers exact failure scenario"
+
+patterns:
+  - name: "Orchestrator-Worker"
+    problem: "Complex multi-agent workflows with compliance and audit requirements"
+    mechanism: "Central agent distributes tasks to specialized workers, aggregates results. All communication passes through orchestrator."
+    tradeoff: "High debugability, higher latency"
+
+  - name: "Choreography"
+    problem: "Low-latency critical workflows with independent agents"
+    mechanism: "Agents communicate directly via events; no central coordinator."
+    tradeoff: "Low latency, harder to debug"
+
+  - name: "Human-in-the-Loop"
+    problem: "High-risk decisions requiring human judgment"
+    mechanism: "Confidence threshold triggers human intervention; agent pauses and escalates."
+    tradeoff: "Variable latency, highest safety"
+
+  - name: "Saga (Fault Tolerance)"
+    problem: "Distributed transactions across multiple agents"
+    mechanism: "Each step has a compensating action; if one step fails, previous steps are reversed"
+
+  - name: "Compensation (Fault Tolerance)"
+    problem: "Partial failure in multi-agent workflow"
+    mechanism: "Rollback completed operations via compensating actions"
+
+  - name: "Circuit Breaker (Fault Tolerance)"
+    problem: "Cascading failures — one slow agent degrades all others"
+    mechanism: "Failure threshold opens circuit → fallback to default response or human"
+
+  - name: "Centralized Cross-Framework Tracing"
+    problem: "Multiple agent frameworks (CrewAI, LangChain) across multiple clouds create fragmented observability"
+    mechanism: "All frameworks → collect traces → centralized trace layer → serve multiple consumers (dashboards, text-to-SQL, LLM judges, auditors, online monitoring)"
+
+  - name: "Prompt-as-Code with Causal Commit Messages"
+    problem: "Prompt changes without traceability make debugging and rollback impossible"
+    mechanism: "Each prompt commit documents: (1) why changed, (2) what failure caused it, (3) what failure it addresses"
+
+  - name: "Living Eval Dataset"
+    problem: "Static test suites don't catch regressions from new failure modes"
+    mechanism: "Dataset starts with ~200 golden cases, grows monotonically from every production incident. Categorized, owned, partitioned for cost control."
+
+  - name: "Behavioral Eval Cost Governance"
+    problem: "Full behavioral eval suite is expensive to run on every commit"
+    mechanism: "CI runs stratified subset; merge to main runs full suite. Partitionable eval dataset enables cost control."
+
+  - name: "Dual Data Strategy"
+    problem: "Question data (what AI answers) and tracking data (observability) have different schemas and update cadences"
+    mechanism: "Separate pipelines, schemas, and strategies for each data type"
+
+  - name: "Business-Success-First Evaluation Pipeline"
+    problem: "Teams start with engineering metrics instead of business outcomes"
+    mechanism: "Define success in business terms → create golden answers manually → build Python pipeline to compare AI responses against golden dataset"
+
+  - name: "Eval Dashboard as Primary Detection Surface"
+    problem: "Logs and APM don't surface AI quality regressions"
+    mechanism: "Eval dashboard is the primary surface for detecting CSAT drops and quality regressions"
+
+operational_lessons:
+  - lesson: "Eval-first, model-last timeline works"
+    context: "Model selected in week 7 with 200 real cases; weeks of subjective debate replaced by data-driven comparison"
+    category: worked
+
+  - lesson: "Living eval dataset grows from ~200 to N, each incident adds a case"
+    context: "Monotonic growth prevents regression; 'the bigger it grows, the better your system becomes'"
+    category: worked
+
+  - lesson: "Behavioral eval catches redundant tool calls invisible to semantic eval"
+    context: "Agent correctly answered balance query but made 3 redundant DB + 2 unnecessary API calls; detected by Layer 3"
+    category: worked
+
+  - lesson: "Centralized cross-framework tracing enables unified observability"
+    context: "Multiple frameworks across multiple clouds feed into one trace layer serving dashboards, judges, auditors, and monitoring"
+    category: worked
+
+  - lesson: "Deterministic eval (Layer 1) caught 47 PII breaches in testing"
+    context: "PII tagging in Unity Catalog + deterministic PII detection prevented compliance incidents before production"
+    category: worked
+
+  - lesson: "Data foundation consumes 60% of project time"
+    context: "Data built for humans fails with agents; 'Agents don't forgive you' — quality requirements are much higher for AI consumption"
+    category: worked
+
+  - lesson: "6-month $85K POC failed without observability"
+    context: "Built without evals, metrics, or accountability. 'Nobody knew if the system was working or not.' Rebuilt in 8 weeks with eval-first approach."
+    category: failed
+
+  - lesson: "Model-first approach leads to subjective debates without data"
+    context: "Selecting model before building eval infrastructure means decisions are based on intuition and public benchmarks, not real domain data"
+    category: failed
+
+  - lesson: "Stale RAG data causes invisible failures"
+    context: "Bank changed interest rates, sent emails, but vector DB wasn't updated. CSAT dropped. Without tracing, the failure was invisible — agent kept giving confident wrong answers."
+    category: failed
+
+  - lesson: "No accountability design prevents debugging"
+    context: "Without per-agent tracing and metrics, impossible to attribute failures to specific components"
+    category: failed
+
+  - lesson: "Data quality is the dominant constraint, not model quality"
+    context: "60% of project time on data foundation, not prompt engineering or model tuning"
+    category: surprised
+
+  - lesson: "Observability is a regulatory prerequisite, not an engineering choice"
+    context: "'In Europe or regulated industries, you cannot even onboard AI into production without tracing'"
+    category: surprised
+
+  - lesson: "Model selection can be deferred to week 7"
+    context: "Eval infrastructure built first → all candidate models tested against real data → data decides, not opinions"
+    category: surprised
+
+  - lesson: "Behavioral eval reveals the 'right answer, wrong path' problem"
+    context: "Traditional eval focus on output correctness hides inefficiencies that become expensive at 20,000 calls/month"
+    category: surprised
+
+  - lesson: "Business-success-first pipeline is faster than engineering-first"
+    context: "Define success in business terms (60% deflection rate), create golden answers, then build pipeline — faster than starting with engineering"
+    category: surprised
+
+tradeoffs:
+  - decision: "Orchestrator-Worker vs Choreography"
+    path_a: "Orchestrator-Worker (centralized, debuggable, higher latency)"
+    path_b: "Choreography (decentralized, lower latency, harder to debug)"
+    recommendation: "Use orchestrator-worker when compliance/audit/debugging are critical; use choreography when latency is the dominant constraint"
+
+  - decision: "Early vs Late Model Selection"
+    path_a: "Early selection (traditional — choose model first, build around it)"
+    path_b: "Late selection (eval-driven — build eval dataset first, let data choose model in week 7)"
+    recommendation: "Late selection. The enterprise eval dataset is the only benchmark that matters; public benchmarks don't predict domain-specific performance."
+
+  - decision: "Behavioral Eval Breadth vs Cost"
+    path_a: "Run full behavioral suite on every commit (maximum safety)"
+    path_b: "Run subset in CI, full suite only on merge to main (cost control)"
+    recommendation: "Hybrid approach — stratified subset in CI for fast feedback, full suite on merge for comprehensive coverage"
+
+  - decision: "Single Model vs Multi-Model Flexibility"
+    path_a: "Commit to one model provider (simpler ops)"
+    path_b: "Architecture supports model switching (tests new models against eval dataset)"
+    recommendation: "Architecture must support model switching. Provider model updates must be tested against enterprise eval dataset, not public benchmarks."
+
+  - decision: "Data Quality for Humans vs Agents"
+    path_a: "Use existing data pipelines built for human consumption (dashboards, reports)"
+    path_b: "Build agent-specific data pipelines with freshness guarantees, consistency checks, and update triggers"
+    recommendation: "Agent-specific pipelines are mandatory. Human-forgiving data fails catastrophically with agents — this is not an optimization, it's a prerequisite."
+
+failure_patterns:
+  - pattern: "The Demo Trap"
+    cause: "Agent works in demo (5 queries) → assumed ready for production (20,000 queries/month)"
+    mitigation: "Eval dataset with 200+ real cases + behavioral eval suite + tracing from day 1"
+    severity: Critical
+    evidence: "Caused the $85K/6-month POC failure"
+
+  - pattern: "Missing Behavioral Eval Layer"
+    cause: "Teams evaluate only output correctness (Layer 1+2), ignoring execution path"
+    mitigation: "Implement Layer 3 with tool call tracing; detect redundant calls, loops, duplicate APIs"
+    severity: High
+    evidence: "Agent correctly answered balance query but made 3 redundant DB + 2 unnecessary API calls"
+
+  - pattern: "Stale RAG Data"
+    cause: "Policy documents change in org but vector DB not updated; agent continues with old embeddings"
+    mitigation: "Tracing detects CSAT drop → automated pipeline updates vector DB on source document changes"
+    severity: Critical
+    evidence: "Bank changed interest rates, CSAT dropped, tracing revealed stale embeddings"
+
+  - pattern: "Uncategorized Eval Dataset"
+    cause: "Dataset grows without categorization, ownership, or maintenance → becomes unmanageable monolith"
+    mitigation: "Categorize by domain, assign owners, partition for CI vs full suite"
+    severity: Medium
+
+  - pattern: "Opaque Prompt History"
+    cause: "Generic commit messages ('updated prompt', 'improved response') without causal context"
+    mitigation: "Prompt commit discipline: document trigger, diagnosis, and predictive intent for every change"
+    severity: High
+
+  - pattern: "PII Breaches"
+    cause: "No PII tagging in data catalog; model treats all data as public"
+    mitigation: "Unity Catalog PII tagging → governance context injected into prompt → model knows sensitive fields"
+    severity: Critical
+    evidence: "47 breaches caught in testing phase"
+
+  - pattern: "Reliance on Public Benchmarks for Model Selection"
+    cause: "Public benchmarks (MMLU, HumanEval) are the only metrics available without enterprise eval dataset"
+    mitigation: "Build enterprise eval dataset first; use it exclusively for model selection and change decisions"
+    severity: Medium
+
+  - pattern: "No Accountability Design"
+    cause: "Multi-agent system without per-agent tracing, metrics, or failure attribution capability"
+    mitigation: "Centralized trace collection from day 1; per-agent spans; per-agent metrics in dashboard"
+    severity: Critical
+    evidence: "POC failed because 'nobody knew if the system was working'"
+
+key_quotes:
+  - text: "Agents don't forgive you. Data that works for humans — who infer context, ignore inconsistencies, and forgive ambiguity — fails catastrophically with agents that treat every data point literally."
+    context: "Explaining why 60% of project time goes to data foundation"
+
+  - text: "You can have the right answer with the wrong path. The agent correctly tells you your balance but made 3 redundant database calls and 2 unnecessary API calls. Fine in a demo; expensive at 20,000 calls per month."
+    context: "Motivating the need for behavioral eval (Layer 3)"
+
+  - text: "In Europe or regulated industries, you cannot even onboard AI into production without tracing. Observability isn't an engineering nice-to-have — it's a regulatory prerequisite."
+    context: "Positioning observability as non-optional for regulated markets"
+
+  - text: "Model selection became very quick once we had 200 real cases in our eval dataset. Weeks of subjective debate replaced by hours of data-driven comparison."
+    context: "The payoff of eval-first, model-last approach"
+
+  - text: "The eval dataset is a living organism. It starts with ~200 real cases from human agents. Every production failure adds a new case. The bigger it grows, the better your system becomes."
+    context: "Describing the data flywheel pattern"
+
+  - text: "Every incident leaves a permanent scar in the test suite. That scar prevents the same failure from happening twice."
+    context: "The regression prevention mechanism of the living eval dataset"
+
+synthesis: |
+  Six cross-cutting insights emerge from synthesizing Bhaumik's framework:
+
+  1. Eval-as-Immune-System: The evaluation architecture maps to biological immunity — Layer 1 (innate, rigid rules blocking known pathogens/PII), Layer 2 (adaptive, learning to recognize bad responses), Layer 3 (monitoring internal organ health — tool calls, not just output skin). The living eval dataset is immunological memory: each incident leaves a permanent scar.
+
+  2. Inversion of Model-Selection-First: The most counterintuitive insight — model is selected in week 7 of an 8-week project. This resolves a causality problem: you can't evaluate a model for your domain until you have an eval dataset representing that domain. The dataset answers the model question with data, not opinions.
+
+  3. Regulatory Forcing Function on Observability: Tracing is adopted not because it's good engineering but because regulators require it. This resolves the incentive problem: without regulation, teams skip tracing (immediate cost, future benefit); with regulation, tracing is cost of market entry. Teams in unregulated markets should treat it as if regulated.
+
+  4. Data Quality as Dominant Constraint: 60% time allocation to data foundation is the most revealing metric. Data tools evolved for human consumption (tolerant of ambiguity); agents have zero tolerance. Agent-specific data pipelines with freshness guarantees and update triggers are not optimization — they are prerequisite.
+
+  5. Demo→Production Gap is Behavioral, Not Semantic: The failure mode is not wrong answers but wrong paths. Layer 2 evaluates the skin; Layer 3 evaluates the organs. Systems without behavioral eval look healthy in demo and collapse under production scale.
+
+  6. Governance as Pre-Production, Not Post-Production: 47 PII breaches caught in testing. Each would have been a compliance incident if governance were added after deploy. PII tagging in the data catalog injecting governance context into prompts is an architectural pattern, not a review process.
