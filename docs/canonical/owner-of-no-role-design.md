@@ -62,7 +62,7 @@ The Owner-of-No role works best when embedded in existing workflows:
 
 ### What already exists
 
-- [[.opencode/agents/hop-orchestrator-rezek|hop-orchestrator-rezek]]: coordinates governance and role activation -- does not have refusal authority.
+- [[.opencode/agents/hop-orchestrator-rezek.md|hop-orchestrator-rezek]]: coordinates governance and role activation -- does not have refusal authority.
 - [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]: suggests next tasks and priorities -- routes work, does not refuse it.
 - [[.opencode/skills/issue-review/SKILL.md|issue-review skill]]:14-15 validates and gates before merge with explicit user confirmation -- a stop-before-merge gate focused on quality, not value.
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]:28-41 reviews plans with dual rubrics -- approval, not refusal ownership.

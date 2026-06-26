@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-06-25
+last_updated: 2026-06-26
 relates-to: []
 sources: []
 ---
@@ -61,6 +61,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/neutral-selection-layer/SKILL.md|.opencode/skills/neutral-selection-layer/SKILL.md]] | Skill de implementação: camada de seleção model-agnostic e vendor-independent |
 | [[.opencode/skills/selection-budgeted-retrieval/SKILL.md|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
 | [[.opencode/skills/devils-advocate/SKILL.md|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
+| [[.opencode/skills/behavioral-eval-path-analysis/SKILL.md|.opencode/skills/behavioral-eval-path-analysis/SKILL.md]] | Skill: Behavioral Eval Path Analysis (Layer 3) — detecta wrong-path-right-answer: duplicatas, loops, uso incorreto de ferramentas, custo por query. Integrado ao trace pipeline e QI loop. |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -83,6 +84,7 @@ O currículo é o produto principal do repositório: um programa completo de 12 
 | `curriculum/04-nivel-4-koda-specific/` | Nível 4 — aplicação específica ao KODA (contínuo) |
 | `curriculum/05-core-concepts/` | 8 conceitos core com explicações, graphs e checklists |
 | `curriculum/05-core-concepts/exercises/` | Exercícios avançados (N3): tiered-context-storage, neutral-selection-layer, selection-budgeted-retrieval |
+| `curriculum/04-nivel-3-engenharia-avancada/exercises/` | Exercício N3: behavioral-eval-path-analysis — detectar wrong-path-right-answer em traces de execução |
 | `curriculum/06-knowledge-graphs/` | 35+ diagramas Mermaid |
 | `curriculum/07-implementation-guides/` | Guias de setup, progressão, harness design |
 | `curriculum/08-tools-templates/` | Templates de sprint contract, rubrica, ADR, progress tracker |
@@ -163,7 +165,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 85 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há ~116 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -196,6 +198,7 @@ Tópicos candidatos a ADR:
 | `repeatable-agent-spot-check-set.md` | Seed set repetível de spot-checks para workflows críticos |
 | `production-grounded-eval-sampling.md` | Amostragem de evals ancorada em produção e replay representativo |
 | `eval-tier-stratification.md` | Estratificação fast/medium/deep para suites de eval |
+| `behavioral-eval-path-analysis.md` | Layer 3 da arquitetura de avaliação: detecção de duplicatas, loops, uso incorreto de ferramentas e atribuição de custo em traces de execução de agentes |
 | `pr-gated-eval-enforcement.md` | Enforcement de evals no fluxo de PR e merge |
 | `production-failure-regression-flywheel.md` | Flywheel de regressão para falhas de produção |
 | `eval-to-production-correlation-tracking.md` | Rastreamento de correlação entre score de eval e outcomes de produção |
@@ -273,8 +276,17 @@ Tópicos candidatos a ADR:
 | `social-archetype-classification.md` | Taxonomia de arquétipos sociais: Criação, Abundância, Predação |
 | `spread-capture-analytical-primitive.md` | Primitiva analítica: substituir "qual o valor?" por "quem captura o spread?" |
 | `capex-revenue-credit-mispricing.md` | Mispricing de crédito quando obsolescência tecnológica supera depreciação contábil |
-
-### Documentos esperados quando o domínio correspondente amadurecer
+| `eval-dashboard-primary-detection-surface.md` | Dashboard de qualidade como superfície primária de detecção: pass/fail rates por layer/categoria/agente em tempo real, anomaly alerts calibrados por regressão de qualidade, drill-down para trace individual |
+| `multi-agent-fault-tolerance.md` | Tolerância a falhas multi-agente: Saga pattern (compensating transactions), Circuit Breaker na camada de orquestração, escalação humana com contexto completo, contrato de orquestração por step |
+| `agent-specific-data-freshness-pipeline.md` | Pipeline de frescor de dados para agentes: garantias de frescor com SLAs, consistency checks antes da ingestão, staleness monitoring na camada de tracing, pipeline event-driven |
+| `governance-context-injection-pii-prevention.md` | Prevenção de PII via injeção de governance context: data catalog PII tagging, injeção before-generation, post-generation deterministic scan como safety net, audit record por query |
+| `business-outcome-first-eval-pipeline.md` | Pipeline de eval ancorado em business outcomes: define success em termos de negócio → golden answers de domain experts → Python pipeline comparativo, deflection rate prediction |
+| `model-switching-architecture-enterprise-eval-gate.md` | Arquitetura de model-switching com enterprise eval gate: dataset de eval independente de provider, side-by-side comparison infrastructure, switch/hold/hybrid decision framework, continuous eval monitoring |
+| `3-layer-evaluation-architecture.md` | Arquitetura de avaliação em 3 camadas por tipo de mecanismo: Deterministic (regex/schema/PII, custo zero), Semantic (LLM-as-Judge, groundedness/safety/faithfulness), Behavioral (trace path analysis, redundancy/loop/efficiency/cost). Compõe generator-evaluator, constraint-anchored-evaluation, trace-instrumentation. |
+| `eval-driven-development-timeline.md` | Timeline de desenvolvimento eval-first com model-selection-last: 6 semanas de infraestrutura de eval antes de qualquer experimentação com modelos. Modelo escolhido por desempenho no dataset de eval do domínio, não por benchmarks públicos. Complementa pain-signal-eval-progression-gate com o princípio de sequência. |
+| `living-eval-dataset.md` | Dataset de eval com crescimento monotônico: cada incidente de produção adiciona um caso permanente. Categorização por domínio (security, auth, tool calls, knowledge retrieval, math/reasoning) com ownership model. Execução particionada (stratified CI → full merge → scheduled regression). Compõe production-failure-regression-flywheel + production-grounded-eval-sampling. |
+| `centralized-cross-framework-tracing.md` | Camada de tracing centralizada com schema unificado para múltiplos agent frameworks. Per-framework adapter pattern, OpenTelemetry integration, text-to-SQL query interface, cross-framework performance comparison, trace sampling em escala enterprise. Extensão do trace-instrumentation de single-framework para multi-framework. |
+| `prompt-as-code-causal-change-management.md` | Disciplina de commit causal para prompts: 3 perguntas obrigatórias (why changed, what failure caused it, what failure it addresses). Prompt rollback infrastructure via git revert. Audit trail ligando cada mudança de prompt a incident/regressão/feature. Pre-deploy eval gate quantificando impacto antes do deploy. |
 
 | Documento | Cobre |
 |---|---|
@@ -382,4 +394,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-18*
+*Última atualização: 2026-06-26*

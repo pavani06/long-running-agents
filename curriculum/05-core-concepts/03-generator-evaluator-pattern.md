@@ -880,6 +880,98 @@ O Generator/Evaluator pattern do repositório já separa responsabilidades. A Co
 - [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]] -- padrão de avaliação ancorada em constraints
 - [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] -- classificação do que vai para cada superfície
 
+### Governance Context Injection: Compartimentação Aplicada à Prevenção de PII
+
+A Compartmented Evaluation Architecture define superfícies de informação seladas entre Generator e Evaluator. O padrão **Governance Context Injection for PII Prevention** (Bhaumik) estende esse princípio para o domínio de dados sensíveis: o data catalog sabe quais campos contêm PII, e essa informação é injetada como contexto semântico no prompt do agente **antes** da geração — para que o modelo saiba quais campos são sensíveis e componha respostas que os protejam.
+
+**O problema que resolve:**
+
+Agentes acessam catálogos de dados corporativos contendo PII (SSN, telefone, endereço, dados de pagamento), mas o modelo não tem consciência de quais campos são sensíveis. Ele trata todos os dados como seguros para incluir na resposta. O resultado: PII aparece no output porque o modelo simplesmente não sabia que aquele campo era sensível.
+
+No case de Bhaumik, **47 vazamentos de PII foram capturados na fase de testes** — cada um teria sido um incidente de compliance em produção. A causa raiz não foi um modelo malicioso ou um prompt mal escrito. Foi a ausência de um mecanismo que informasse ao modelo: "estes campos que você está lendo contêm PII — não os exponha na resposta."
+
+**O mecanismo em 4 etapas:**
+
+```
+ETAPA 1: DATA CATALOG PII TAGGING
+┌─────────────────────────────────────────────────────────────┐
+│ Unity Catalog (ou equivalente) marca campos como PII:        │
+│   customer.ssn          → PII (tag: pii_ssn)                │
+│   customer.phone        → PII (tag: pii_phone)               │
+│   customer.address      → PII (tag: pii_address)             │
+│   customer.name         → PII (tag: pii_name)                │
+│   order.total           → NOT PII                            │
+│   product.sku           → NOT PII                            │
+└─────────────────────────────────────────────────────────────┘
+        │ a query acessa customer.ssn, customer.name, order.total
+        ▼
+ETAPA 2: GOVERNANCE CONTEXT INJECTION (before-generation)
+┌─────────────────────────────────────────────────────────────┐
+│ Antes do modelo gerar a resposta, o governance context é     │
+│ injetado NO PROMPT (não é um check pós-geração):             │
+│                                                              │
+│ "GOVERNANCE CONTEXT: Esta query acessou os seguintes campos  │
+│  classificados como PII no data catalog:                     │
+│  - customer.ssn (PII — NÃO EXPOR na resposta)                │
+│  - customer.name (PII — referenciar como 'conta terminada    │
+│    em XXXX' se necessário)                                   │
+│  Os demais campos acessados (order.total, product.sku) NÃO   │
+│  contêm PII e podem ser referenciados normalmente."          │
+└─────────────────────────────────────────────────────────────┘
+        │ o modelo agora SABE quais campos são sensíveis
+        ▼
+ETAPA 3: GERAÇÃO COM AWARENESS
+┌─────────────────────────────────────────────────────────────┐
+│ O modelo gera a resposta com consciência dos campos PII:     │
+│                                                              │
+│ "Sua conta terminada em 4567 tem um pedido de R$ 234,56     │
+│  para o produto WHEY-001. O pedido será enviado para o       │
+│  endereço cadastrado."                                       │
+│                                                              │
+│ (Não expõe SSN, nome completo ou endereço)                   │
+└─────────────────────────────────────────────────────────────┘
+        │ safety net determinístico
+        ▼
+ETAPA 4: POST-GENERATION DETERMINISTIC PII SCAN (Camada 1)
+┌─────────────────────────────────────────────────────────────┐
+│ Regex/NER scan deterministico no output:                     │
+│   • SSN pattern: \d{3}-\d{2}-\d{4} → NOT FOUND ✓            │
+│   • Phone pattern: \(\d{3}\) \d{3}-\d{4} → NOT FOUND ✓      │
+│   • Credit card: \d{4}[\s-]\d{4}[\s-]\d{4}[\s-]\d{4} → 0 ✓ │
+│                                                              │
+│ Resultado: PII scan limpo. Response liberada.                │
+│ Audit record: governance context + scan result → compliance  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Por que before-generation é superior a post-generation apenas:**
+
+Um scan pós-geração (Etapa 4 sozinha) detecta PII depois que a resposta já foi gerada — se encontrar, bloqueia a resposta, mas o dano de exposição já ocorreu no contexto da sessão. A injeção before-generation (Etapa 2) previne o vazamento antes que ele aconteça, porque o modelo compõe a resposta já com consciência dos campos sensíveis. A Etapa 4 é o safety net, não a defesa primária.
+
+**O governance context viaja com os dados:**
+
+A beleza do padrão é que os PII tags vivem no data catalog — não nos prompts. Quando um analista de dados marca `customer.ssn` como PII no Unity Catalog, essa tag automaticamente se propaga para todo prompt que acessar aquele campo. Não há anotação manual de prompts por caso de uso. O governance context é derivado do catálogo no momento da query.
+
+**Conexão com a Compartmented Evaluation Architecture:**
+
+A Compartmented Evaluation define superfícies de informação seladas. O Governance Context Injection adiciona uma terceira superfície: a **superfície de governance** — metadados do data catalog que informam ao modelo o que é sensível, sem expor os dados sensíveis em si. Isso é compartimentação aplicada à camada de dados: o modelo vê que um campo é PII (governance metadata) sem ver o conteúdo do campo se ele for irrelevante para a query.
+
+**Checklist de implementação:**
+
+- [ ] Data catalog tem PII tagging por campo (SSN, phone, email, address, payment info)
+- [ ] Toda query ao data catalog retorna, além dos dados, os PII tags dos campos acessados
+- [ ] O governance context é injetado no prompt ANTES da geração (before-generation, não post-generation)
+- [ ] O prompt de governance é declarativo: lista campos sensíveis e a regra (NÃO EXPOR), sem ambiguity
+- [ ] Post-generation deterministic PII scan (regex + NER) roda como safety net em todo output
+- [ ] Audit record registra: governance context injetado + resultado do PII scan + versão do data catalog
+- [ ] Cobertura de PII tagging é auditada: campos não taggeados são risco silencioso
+- [ ] PII scan é Camada 1 (determinístico, custo zero) — roda em todo commit e em todo output de produção
+
+**Para aprofundar:**
+- [[docs/canonical/governance-context-injection-pii-prevention|Governance Context Injection for PII Prevention]] — canonical doc
+- [[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]] — Camada 1 deterministic scan como safety net
+- [[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]] — fundação teórica da compartimentação
+
 ---
 
 ## 📊 Diagrama 2: Fluxo Detalhado Com State Files, Feedback Loop e Veredito

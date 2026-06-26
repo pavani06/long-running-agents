@@ -5112,6 +5112,59 @@ Use isso para melhorar prompts do Generator, lógica do Evaluator, etc.
 
 ---
 
+## 🌐 Além do Single-Framework: Centralized Cross-Framework Tracing
+
+Até aqui, este módulo tratou de trace reading dentro de um único runtime (KODA no OpenCode/Sisyphus). Em ambientes enterprise, porém, é comum ter múltiplos frameworks de agente operando simultaneamente — CrewAI para um time, LangChain para outro, agentes customizados para um terceiro — cada um com seu próprio formato de trace. O *Centralized Cross-Framework Tracing* de Bhaumik resolve a fragmentação resultante: sem uma camada unificada, debugging requer context-switching entre ferramentas desconectadas e não há visão única da atividade dos agentes.
+
+### A arquitetura de unificação
+
+```
+   CrewAI traces        LangChain traces       Custom agent traces
+        │                      │                       │
+        ▼                      ▼                       ▼
+┌──────────────┐      ┌──────────────┐       ┌──────────────┐
+│ Adapter      │      │ Adapter      │       │ Adapter      │
+│ CrewAI →     │      │ LangChain →  │       │ Custom →     │
+│ Unified      │      │ Unified      │       │ Unified      │
+└──────┬───────┘      └──────┬───────┘       └──────┬───────┘
+       │                     │                      │
+       └─────────────────────┼──────────────────────┘
+                             │
+                             ▼
+              ┌─────────────────────────────┐
+              │  Centralized Trace Layer     │
+              │  (unified schema, SQLite)    │
+              └─────────────┬───────────────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          ▼                 ▼                  ▼
+   ┌────────────┐   ┌────────────┐   ┌────────────────┐
+   │ Dashboards │   │ LLM Judges │   │ Text-to-SQL    │
+   │ (única     │   │ (consomem  │   │ ("queries com  │
+   │  visão)    │   │  formato   │   │  >5 tool calls │
+   │            │   │  unificado)│   │  esta semana") │
+   └────────────┘   └────────────┘   └────────────────┘
+```
+
+### O que a unificação habilita
+
+- **Single debugging surface:** Trace qualquer query de qualquer agente em qualquer framework a partir de uma ferramenta única. O trace schema unificado (trace_id, session_id, tool_calls[], spans[]) é o contrato comum.
+- **Framework-independent evaluation:** LLM judges e dashboards consomem o mesmo formato de trace independentemente de qual framework produziu os dados. Isso permite comparação cross-framework: "CrewAI é mais eficiente que LangChain para queries de checkout?"
+- **Compliance audit:** "Você não pode nem fazer onboarding de AI em produção sem tracing." A camada centralizada satisfaz requisitos de auditoria — toda query é rastreável end-to-end, independentemente do framework.
+- **Per-framework adapter pattern:** Cada framework precisa de um adapter que traduz seu formato nativo de trace para o schema unificado. O adapter é thin — só faz tradução de formato, sem lógica de negócio.
+
+### Aplicação no ecossistema Pavan
+
+O runtime do Sisyphus já implementa tracing centralizado via `task-wrapper.sh → trace-state.json → collector.ts → telemetry.db` (padrão [[docs/canonical/trace-instrumentation|Trace Instrumentation]]). A diferença para o modelo enterprise é que o Sisyphus opera com um único framework (OpenCode). A arquitetura de adapter seria necessária se o ecossistema incorporasse CrewAI, LangChain ou agentes customizados no futuro. O schema de trace existente (`trace_id`, `session_id`, `span_id`, `tool_name`, `params`, `duration_ms`, `tokens`) já é genérico o suficiente para servir como schema unificado — bastaria escrever os adapters de importação.
+
+### O que NÃO está implementado
+
+- Text-to-SQL interface para queries ad-hoc sobre traces (ex: "mostre todas as queries que usaram mais de 5 tool_calls nos últimos 7 dias")
+- Coleta de traces via OpenTelemetry (o runtime atual usa arquivos em tmpfs, não um protocolo padrão de observabilidade)
+- Trace sampling em escala enterprise (o volume atual não exige sampling; em escala de milhões de queries/dia, seria necessário)
+
+---
+
 ## 🎓 Para Aprender Mais
 
 Este documento é o **Módulo 4 de Nível 2** do Curso Completo de Padrões KODA.

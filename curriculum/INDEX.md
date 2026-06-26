@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["índice currículo", "navegação", "mapa currículo"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/MASTER_PLAN|Master Plan]]", "[[curriculum/QUICK_START|Quick Start]]", "[[curriculum/GLOSSARY|Glossary]]"]
-last_updated: 2026-06-16
+last_updated: 2026-06-26
 ---
 # 📑 ÍNDICE EXECUTIVO: Navegação Rápida
 
@@ -128,6 +128,7 @@ last_updated: 2026-06-16
 - `05-core-concepts/exercises/exercise-tiered-context-storage.md` (Tiered Context Storage)
 - `05-core-concepts/exercises/exercise-neutral-selection-layer.md` (Neutral Selection Layer)
 - `05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md` (Selection-Budgeted Retrieval)
+- `04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis.md` (Behavioral Eval Path Analysis)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`

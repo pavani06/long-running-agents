@@ -539,6 +539,92 @@ Informação candidata (doc recuperado, output de sub-agente, plano, referência
 
 ---
 
+### Pattern 9: Saga e Circuit Breaker — Tolerância a Falhas Multi-Agente
+
+**Problema:** Workflows multi-agente falham parcialmente — um agente conclui com sucesso, outro sofre timeout, um terceiro retorna dados stale. Sem tolerância a falhas, falhas parciais ou passam despercebidas (produzindo resultados incorretos) ou derrubam o workflow inteiro (perdendo o progresso dos agentes bem-sucedidos). O repositório já possui o [[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]] — classification → retry with repair → safe fallback → human escalation — que cobre recuperação de falha em agente único. O que falta é a camada de orquestração para falhas **distribuídas** entre múltiplos agentes.
+
+**Saga Pattern — Compensação transacional distribuída:**
+
+Em um workflow onde o Order Agent confirma um pedido e o Payment Agent processa o pagamento, se o Payment Agent falha após o Order Agent ter debitado o estoque, é preciso desfazer a ação do primeiro agente. O Saga pattern define **compensating actions** — operações reversas executadas em ordem inversa — para cada passo do workflow:
+
+```
+Workflow: Checkout
+  Step 1: ReservationAgent reserva estoque    → compensating: liberar estoque
+  Step 2: PricingAgent aplica desconto        → compensating: reverter desconto
+  Step 3: PaymentAgent processa pagamento     → compensating: estornar pagamento
+  Step 4: FulfillmentAgent agenda entrega     → compensating: cancelar agendamento
+
+Se Step 3 falha:
+  → executa compensating de Step 2 (reverte desconto)
+  → executa compensating de Step 1 (libera estoque)
+  → sistema retorna ao estado pré-workflow
+```
+
+**Regras do Saga no pipeline KODA:**
+- Cada passo que produz efeito colateral (escrita em banco, chamada de API externa, agendamento) DEVE declarar sua compensating action.
+- Nem toda operação tem undo limpo (ex: envio de email, notificação push). Essas operações devem ser os **últimos passos** do workflow.
+- Compensating actions são testadas como parte do [[docs/canonical/tested-degradation-ladder|degradation ladder]] — cada rung da ladder inclui o teste da ação compensatória correspondente.
+- O orchestrator mantém um log de quais passos completaram e quais compensating actions foram executadas — esse log é a trilha de auditoria do rollback.
+
+**Circuit Breaker — Proteção contra falhas em cascata:**
+
+Quando um agente ou serviço externo começa a falhar consistentemente, continuar chamando-o não apenas desperdiça recursos como propaga o erro para outros agentes que dependem dele. O Circuit Breaker monitora a taxa de falha por agente e abre o circuito quando um threshold é atingido:
+
+```
+Estado do Circuito por Agente:
+
+CLOSED (normal)          → falhas acumulam no contador
+  │
+  ├─ falhas > threshold (ex: 5 falhas em 60s)
+  │
+  ▼
+OPEN (proteção ativa)    → chamadas são redirecionadas para fallback
+  │                         sem tentar o agente original
+  │
+  ├─ timeout (ex: 30s)
+  │
+  ▼
+HALF-OPEN (teste)        → uma chamada de teste é permitida
+  │
+  ├─ sucesso → CLOSED
+  └─ falha   → OPEN (reset do timeout)
+```
+
+**Fallback por agente no KODA:**
+
+| Agente | Fallback quando circuito abre |
+|---|---|
+| Search Agent | Retornar top-10 best-sellers (cache estático) |
+| Filter Agent | Aplicar apenas constraints CRITICAL (lactose, orçamento); pular constraints SOFT |
+| Ranking Agent | Ordenar por popularidade (query SQL simples, sem LLM) |
+| Recommendation Agent | Template pré-aprovado com placeholder de produto |
+| Payment Agent | Rota para fila de revisão humana com contexto completo |
+
+**Integração com a Degradation Ladder existente:** O Circuit Breaker é a primeira linha de defesa — ele impede que falhas se propaguem. Se o fallback também falhar, o fluxo desce para a Degradation Ladder: classify → retry with repair → safe action/hold → human escalation. O Saga é a terceira linha: se o workflow precisa ser desfeito, as compensating actions garantem consistência. As três camadas juntas formam a tolerância a falhas completa:
+
+```
+Falha detectada
+    │
+    ▼
+Circuit Breaker: circuito aberto? → usa fallback
+    │ (circuito fechado ou fallback falhou)
+    ▼
+Degradation Ladder: retry → repair → safe fallback → human escalation
+    │ (workflow multi-passo precisa ser desfeito)
+    ▼
+Saga: compensating actions em ordem reversa → estado pré-workflow
+```
+
+**Checklist de tolerância a falhas multi-agente:**
+- [ ] Todo agente que produz efeito colateral tem uma compensating action documentada e testada
+- [ ] Circuit Breaker configurado por agente com thresholds de falha (taxa, latência, timeout) documentados
+- [ ] Fallback para cada agente está implementado e testado (não é "erro genérico" — é uma resposta de contingência específica)
+- [ ] O orchestrator registra no trace store: qual circuito abriu, qual fallback foi usado, quais compensating actions foram executadas
+- [ ] Testes de integração cobrem: falha no meio do workflow → rollback completo → estado pré-workflow confirmado
+- [ ] Operações sem undo limpo (email, notificação) são posicionadas como últimos passos do workflow
+
+---
+
 ## 6. 📐 Mermaid Diagram 1 - Tipos de Agentes e Relações
 
 ```mermaid

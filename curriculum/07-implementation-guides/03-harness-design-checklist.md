@@ -456,6 +456,20 @@ Por que importa: se o harness for truncado junto com o payload, o agente perde i
 - [ ] Existe um Information Value Predictor que estima reducao de incerteza por candidato?
 - [ ] Contexto e armazenado em formato agnostico de modelo, permitindo consumo cross-model? ([[docs/canonical/neutral-selection-layer|Neutral Selection Layer]])
 - [ ] Contexto sobrevive a migracao de modelo sem perder estrutura ou proveniencia?
+- [ ] Documentos-fonte tem `last_updated` e `version` no catalogo de dados e mudancas disparam re-ingestao automatica (event-driven, nao batch)? ([[docs/canonical/agent-specific-data-freshness-pipeline|Agent-Specific Data Freshness Pipeline]])
+- [ ] Embeddings no vector DB tem timestamp de geracao vinculado ao `document_version` da fonte?
+- [ ] Staleness monitoring detecta quando spans referenciam versoes desatualizadas de documentos (`span_version < current_version`)?
+
+### Requisito: Data Freshness Pipeline
+
+Dados em pipelines de agentes têm um requisito que pipelines para dashboards humanos não têm: o agente trata cada dado como verdade literal. Um embedding gerado há 3 semanas produz respostas tão confiantes quanto um gerado há 3 minutos — mas potencialmente erradas. O *stale RAG failure mode* (agente responde com dados corretos de uma versão obsoleta do documento) é invisível para métricas de latência e error rate, mas produz dano real ao cliente.
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Freshness SLA | Todo documento-fonte tem SLA de re-ingestão após mudança (ex: < 5 min). Pipeline é event-driven, não batch. | Existe evidência verificável e atualizada. | Re-ingestão é batch (diária/semanal) ou manual. | Registre link para artefato, owner e data. |
+| Consistency checks | Documentos contraditórios são detectados antes da ingestão (ex: duas políticas com taxas diferentes para o mesmo produto). | Existe evidência verificável e atualizada. | Documentos contraditórios entram no vector DB sem detecção. | Registre link para artefato, owner e data. |
+| Staleness monitoring | Tracing registra `document_version` em spans de conhecimento externo; alerta quando `span_version < current_version`. | Existe evidência verificável e atualizada. | Não há como saber se o agente usou dado fresco ou stale. | Registre link para artefato, owner e data. |
+| Embedding timestamps | Todo embedding tem timestamp de geração e referência ao `document_version`. | Existe evidência verificável e atualizada. | Embeddings são gerados sem metadados de versão. | Registre link para artefato, owner e data. |
 
 ### Critérios de bloqueio para esta categoria
 
@@ -667,6 +681,26 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - **Nível 3:** há contrato, validação e teste principal.
 - **Nível 4:** há métricas, replay e revisão periódica.
 - **Nível 5:** há evolução contínua com custo, qualidade e remoção controlada.
+
+### Requisito: Behavioral Eval (Layer 3 — Path Analysis)
+
+A avaliação de output (Camadas 1 e 2) responde "o agente disse a coisa certa?" O behavioral eval (Camada 3) responde "o agente chegou lá pelo caminho certo?" Um agente pode recomendar o produto correto (Camada 2 aprova) mas ter feito 6 chamadas de banco quando 1 bastava, 2 chamadas redundantes a APIs externas, e um loop de 3 tool calls que se anulam. Em escala (20.000+ queries/mês), esse desperdício é financeiramente insustentável — e invisível para métricas de qualidade de output.
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Trace pipeline instrumentado | Toda tool call gera span no trace (`task-wrapper.sh --wrap`). | Existe evidência verificável e atualizada. | Tool calls não produzem spans ou tracing não cobre todos os caminhos. | Registre link para artefato, owner e data. |
+| Redundancy score por categoria | Score mede chamadas repetidas à mesma ferramenta com parâmetros equivalentes. Baseline: < 1.2 por query. | Existe evidência verificável e atualizada. | Não há medição de chamadas redundantes. | Registre link para artefato, owner e data. |
+| Loop detection ativo | Detecta ciclos A→B→A no grafo de tool calls com mesma intenção semântica. Zero loops tolerados. | Existe evidência verificável e atualizada. | Loops podem ocorrer sem detecção. | Registre link para artefato, owner e data. |
+| Path efficiency ratio | Razão entre chamadas necessárias (definidas no template de caminho esperado) e chamadas totais. > 70% para lookup, > 50% para queries complexas. | Existe evidência verificável e atualizada. | Não há template de caminho esperado nem medição de eficiência. | Registre link para artefato, owner e data. |
+| Cost attribution por query | Custo real em dólares de todas as tool calls da query (LLM + DB + APIs externas). | Existe evidência verificável e atualizada. | Custo por query não é medido ou é estimado, não medido. | Registre link para artefato, owner e data. |
+| Expected path templates | Cada categoria de query tem template de caminho esperado (sequência e contagem de tool calls). | Existe evidência verificável e atualizada. | Não há definição do caminho correto por categoria de query. | Registre link para artefato, owner e data. |
+| Behavioral eval gate | Antes de escala de produção, redundancy < 1.2, zero loops, path efficiency nos thresholds, custo < 2× baseline. | Existe evidência verificável e atualizada. | Agente vai para produção sem behavioral eval. | Registre link para artefato, owner e data. |
+
+**Para aprofundar:**
+- [[docs/canonical/behavioral-eval-path-analysis|Behavioral Eval Path Analysis]] — canonical doc
+- [[docs/canonical/trace-instrumentation|Trace Instrumentation]] — pré-requisito
+- [[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]] — arquitetura completa
+- [[curriculum/04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis|Exercício: Behavioral Eval Path Analysis]] — exercício prático N3
 
 ---
 
@@ -983,6 +1017,21 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - [ ] Prompt injection e delimitada e nao pode redefinir instrucoes de sistema?
 - [ ] Pagamento, estoque e envio exigem aprovacao validada antes de executar?
 - [ ] Logs mostram qual guardrail aceitou, rejeitou ou acionou fallback?
+- [ ] Data catalog tem PII tagging por campo e o governance context (lista de campos sensiveis acessados) e injetado no prompt ANTES da geracao? ([[docs/canonical/governance-context-injection-pii-prevention|Governance Context Injection for PII Prevention]])
+- [ ] Post-generation deterministic PII scan (regex + NER) roda como safety net em todo output de producao?
+- [ ] Audit record registra governance context injetado + resultado do PII scan + versao do data catalog?
+
+### Requisito: Governance Context Injection (Prevenção de PII)
+
+Agentes acessam catálogos de dados contendo PII, mas sem um mecanismo que informe ao modelo quais campos são sensíveis, o modelo trata todos os dados como seguros para incluir na resposta. O padrão resolve isso em 4 etapas: (1) PII tagging no data catalog, (2) governance context injetado no prompt before-generation, (3) modelo gera resposta com awareness dos campos sensíveis, (4) post-generation deterministic PII scan como safety net.
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| PII tagging no data catalog | Campos com PII (SSN, phone, email, address, payment) são marcados no data catalog. | Existe evidência verificável e atualizada. | Data catalog não tem PII tagging ou tagging é incompleto. | Registre link para artefato, owner e data. |
+| Governance context before-generation | Lista de campos PII acessados pela query é injetada no prompt ANTES do modelo gerar a resposta. | Existe evidência verificável e atualizada. | PII prevention é apenas post-generation (scan reativo, sem prevenção). | Registre link para artefato, owner e data. |
+| Post-generation PII scan (Camada 1) | Regex/NER scan deterministico no output detecta padrões de SSN, phone, email, credit card. Roda em todo output. | Existe evidência verificável e atualizada. | Não há scan de PII no output ou scan é apenas amostral. | Registre link para artefato, owner e data. |
+| Audit record por query | Toda query registra: governance context injetado, campos PII acessados, resultado do PII scan, versão do data catalog. | Existe evidência verificável e atualizada. | Não há audit trail de governance context por query. | Registre link para artefato, owner e data. |
+| Cobertura de PII tagging | Cobertura de PII tagging é auditada periodicamente; campos não taggeados são risco silencioso. | Existe evidência verificável e atualizada. | PII tagging é estático, sem auditoria de cobertura. | Registre link para artefato, owner e data. |
 
 ### Critérios de bloqueio para esta categoria
 

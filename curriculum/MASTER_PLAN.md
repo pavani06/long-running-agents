@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["plano mestre", "visão completa", "master plan"]
 tags: [curriculo-conteudo]
 relates-to: ["[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/EXECUTION_PLAN|Execution Plan]]"]
-last_updated: 2026-06-16
+last_updated: 2026-06-26
 ---
 # 📚 PLANO MESTRE: Curso de Long-Running Agents para KODA
 
@@ -112,6 +112,10 @@ koda-long-running-agents/
 │   └── exercises/
 │       ├── exercise-shadow-review-pipeline.md
 │       └── exercise-contextual-severity-calibration.md
+│
+├── 04-nivel-3-engenharia-avancada/
+│   └── exercises/
+│       └── exercise-behavioral-eval-path-analysis.md
 │
 ├── 04-nivel-4-koda-specific/
 │   ├── 01-koda-architecture.md

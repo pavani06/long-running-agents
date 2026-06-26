@@ -4,7 +4,7 @@ type: curriculum-index
 aliases: ["visão geral", "sobre currículo", "overview"]
 tags: [curriculo-conteudo]
 relates-to: ["[[README|Repository README]]", "[[docs/system-of-record|System of Record]]", "[[curriculum/INDEX|Curriculum Index]]", "[[curriculum/QUICK_START|Quick Start]]"]
-last_updated: 2026-06-16
+last_updated: 2026-06-26
 ---
 # 📚 Curso: Building Long-Running Agents para KODA
 
@@ -120,6 +120,10 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 ├── 03-nivel-arquiteto/
 │   └── exercises/
 │       └── exercise-04-owner-of-no-role.md
+│
+├── 04-nivel-3-engenharia-avancada/
+│   └── exercises/
+│       └── exercise-behavioral-eval-path-analysis.md
 │
 │   └── 04-nivel-4-koda-specific/
 │       ├── 01-koda-architecture.md

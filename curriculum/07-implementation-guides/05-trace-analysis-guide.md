@@ -2501,6 +2501,79 @@ E visibilidade é o primeiro passo para consertar qualquer coisa.
 
 ---
 
+## 📊 Eval Dashboard como Superfície Primária de Detecção
+
+O *Eval Dashboard as Primary Detection Surface* de Bhaumik inverte a hierarquia tradicional de monitoramento. Em sistemas convencionais, a primeira coisa que o time olha durante um incidente são logs de infraestrutura, APM, métricas de latência e erro. Mas essas superfícies revelam problemas operacionais — não revelam **regressões de qualidade** do agente (aumento na taxa de alucinação, degradação de resposta, drift na acurácia das recomendações). Essas regressões só se tornam visíveis dias ou semanas depois, via CSAT surveys ou reclamações de clientes.
+
+**O princípio:** O eval dashboard deve ser o primeiro lugar que o time olha durante um incidente — não logs, não APM. Se a qualidade do agente está degradando, o dashboard mostra em minutos (via streaming de eval results), não em semanas (via CSAT).
+
+### Componentes do dashboard de qualidade
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    EVAL DASHBOARD — QUALITY FIRST                    │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────────────┐  ┌─────────────────────┐                   │
+│  │ Pass Rate por Layer  │  │ Pass Rate por        │                   │
+│  │ Layer 1: ██████ 99% │  │ Categoria            │                   │
+│  │ Layer 2: ████░░ 87% │  │ security:    99% ▲  │                   │
+│  │ Layer 3: ███░░░ 72% │  │ tool_calls:  85% ▼  │  ← ALERTA        │
+│  └─────────────────────┘  │ knowledge:   91% —  │                   │
+│                           └─────────────────────┘                   │
+│  ┌─────────────────────────────────────────────┐                    │
+│  │ Trend: últimas 24h                            │                    │
+│  │ Pass rate Layer 2: 91% → 87% (▼ 4% em 6h)   │  ← DEGRADAÇÃO     │
+│  │ Principal categoria afetada: tool_calls       │                    │
+│  └─────────────────────────────────────────────┘                    │
+│                                                                     │
+│  ┌─────────────────────────────────────────────┐                    │
+│  │ Anomaly Alerts (thresholds por camada)        │                    │
+│  │ ⚠  Layer 2 tool_calls pass rate < 85%        │                    │
+│  │    (baseline: 91%, threshold: 85%)            │                    │
+│  │    Afetando: 23 queries na última hora        │                    │
+│  └─────────────────────────────────────────────┘                    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Por que o dashboard é a superfície primária (não secundária)
+
+| Superfície tradicional | O que detecta | O que NÃO detecta |
+|---|---|---|
+| Logs de erro | Exceptions, timeouts, crashes | Recomendação correta mas inadequada |
+| APM / métricas de infra | Latência, throughput, CPU | Alucinação, resposta insegura, tom errado |
+| CSAT surveys | Satisfação do cliente (lag de dias) | Degradação em tempo real |
+| **Eval Dashboard** | **Regressão de qualidade em minutos** | Falhas de infraestrutura (complementar) |
+
+**O eval dashboard NÃO substitui APM e logs — ele complementa.** APM diz "o sistema está lento". O eval dashboard diz "o sistema está respondendo errado". Os dois juntos cobrem o espectro completo de falhas.
+
+### Integração com o pipeline de trace existente
+
+O dashboard consome o mesmo pipeline de traces descrito neste guia. A diferença é o consumo: em vez de análise post-hoc (debugging após incidente), o dashboard consome os eval results em **streaming** e os apresenta em tempo real. O [[docs/canonical/trace-instrumentation|Trace Instrumentation]] existente (`task-wrapper.sh → collector.ts → telemetry.db`) já fornece os dados brutos. O que o dashboard adiciona é:
+
+1. **Agregação por camada e categoria** em tempo real (não batch diário)
+2. **Thresholds de anomalia calibrados** por camada — alertas disparam quando pass rate cai abaixo do baseline
+3. **Drill-down:** do score agregado → categoria afetada → queries individuais → trace completo
+4. **Trend visualization:** qualidade ao longo do tempo, detectando degradação lenta (ex: embeddings gradualmente ficando stale) que alertas binários não capturam
+
+### Limitações e calibração
+
+- O dashboard é tão bom quanto o dataset que o alimenta — gaps na cobertura de eval são gaps de visibilidade
+- Layer 2 (LLM-as-Judge) tem taxa de erro própria e pode gerar falsos positivos. Calibrar thresholds por categoria reduz alert fatigue
+- O dashboard é superfície de **detecção**, não de **diagnóstico** — ele mostra que a qualidade caiu, mas você ainda precisa dos traces para descobrir por quê
+
+### Checklist de maturidade do eval dashboard
+
+- [ ] Pass rates por camada (1, 2, 3) visíveis em tempo real (atualização < 5 min)
+- [ ] Pass rates por categoria (security, tool_calls, knowledge, login, math) com baselines históricos
+- [ ] Anomaly alerts configurados com thresholds por camada/categoria (não um threshold global)
+- [ ] Drill-down funcional: alerta → categoria → query específica → trace completo
+- [ ] Trend visualization cobre pelo menos 7 dias para detectar degradação lenta
+- [ ] O dashboard é o primeiro lugar que o time abre durante um incidente — essa é a prova de que ele é a superfície primária
+
+---
+
 ## 📚 Leitura Complementar
 
 | Recurso | Onde Encontrar |

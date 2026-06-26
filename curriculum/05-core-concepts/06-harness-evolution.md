@@ -234,6 +234,69 @@ Mas os andaimes têm custo real.
 
 > **"O harness que você constrói hoje não é o harness que você vai precisar amanhã. A pergunta não é se você deve evoluí-lo. A pergunta é se você tem um processo para fazer isso com segurança."**
 
+### Model-Switching Architecture: O Enterprise Eval Gate
+
+O *Model-Switching Architecture with Enterprise Eval Gate* de Bhaumik resolve o problema do vendor lock-in: quando uma organização se compromete com um único provider de modelo, atualizações do provider podem degradar desempenho silenciosamente porque não há como testar o novo modelo contra dados específicos do domínio antes que os clientes sejam afetados. O repositório já possui a base filosófica — [[docs/canonical/neutral-selection-layer|Neutral Selection Layer]], [[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]], [[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]] — mas o que falta é a infraestrutura concreta de comparação.
+
+**Os 4 componentes do Enterprise Eval Gate:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   ENTERPRISE EVAL GATE                            │
+│                                                                   │
+│  1. DATASET INDEPENDENTE DE PROVIDER                              │
+│     → Mantido fora de qualquer infraestrutura de provider          │
+│     → Golden answers de especialistas de domínio, não de modelos  │
+│     → Cobertura: security, login, tool_calls, knowledge, math     │
+│                                                                   │
+│  2. SIDE-BY-SIDE COMPARISON                                       │
+│     → Modelo candidato roda contra dataset                        │
+│     → Scores comparados ao baseline atual (3 camadas)             │
+│     → Relatório automático: PASS/FAIL/WARN por categoria          │
+│                                                                   │
+│  3. SWITCHING DECISION FRAMEWORK                                  │
+│     → Switch: candidato supera baseline em TODAS as categorias    │
+│     → Hold: candidato é pior em categoria crítica                 │
+│     → Hybrid: candidato melhor em X, pior em Y → rota por query   │
+│                                                                   │
+│  4. CANARY DEPLOYMENT                                             │
+│     → 5% do tráfego para novo modelo, 95% para baseline           │
+│     → Eval dashboard compara scores em tempo real                 │
+│     → Rollback automático se qualquer métrica degradar > threshold │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Exemplo KODA — decisão de switching:**
+
+```
+Provider anuncia atualização do modelo DeepSeek V4 → V5
+
+1. Roda enterprise eval dataset (218 casos, 5 categorias) contra V5
+2. Compara com baseline V4:
+
+   Categoria          V4 (baseline)    V5 (candidato)    Decisão
+   ─────────────────────────────────────────────────────────────
+   security           98% PASS         99% PASS          ✓ melhor
+   login              95% PASS         93% PASS          ✗ pior
+   tool_calls         87% PASS         91% PASS          ✓ melhor
+   knowledge          82% PASS         85% PASS          ✓ melhor
+   math_reasoning     78% PASS         76% PASS          ✗ pior
+
+3. Decisão: HYBRID
+   → Usar V5 para tool_calls, knowledge, security
+   → Manter V4 para login e math_reasoning
+   → Reavaliar em 30 dias ou na próxima atualização do provider
+```
+
+**Conexão com o ciclo BUILD-STABILIZE-SIMPLIFY-REMOVE:** O Enterprise Eval Gate é o mecanismo que alimenta o ciclo. Quando um novo modelo é lançado (gatilho do ciclo), o gate fornece a evidência para decidir se componentes do harness podem ser simplificados (o modelo cobre a fraqueza que o componente protegia) ou removidos (o modelo tornou o componente redundante). Sem o gate, a decisão de simplificar ou remover é baseada em intuição — com ele, é baseada em comparação data-driven.
+
+**Checklist:**
+- [ ] Enterprise eval dataset mantido independentemente de qualquer provider de modelo
+- [ ] Pipeline de side-by-side comparison é automatizado (executável com um comando)
+- [ ] Switching decision framework documentado: critérios de switch, hold e hybrid são explícitos
+- [ ] Canary deployment com rollback automático configurado para toda troca de modelo
+- [ ] Provider updates são testados contra o dataset ANTES de qualquer exposição a tráfego real
+
 ---
 
 ## 🔄 O Ciclo de Vida do Harness: As Quatro Fases
@@ -341,6 +404,40 @@ Quando esse loop se repete com sucesso, ele entra no [[docs/canonical/skill-reso
 
 ---
 
+### Model-Selection-Last: Infraestrutura de Avaliação Antes da Escolha do Modelo
+
+O *Eval-Driven Development Timeline* de Bhaumik introduz um princípio contraintuitivo: **construa toda a infraestrutura de avaliação antes de escolher qual modelo usar**. A intuição padrão é o oposto — "escolhe o modelo primeiro, depois avalia se funciona". Esse instinto produz semanas de debate subjetivo baseado em benchmarks públicos (MMLU, HumanEval) que não têm correlação com desempenho no domínio real.
+
+**A sequência correta:**
+
+```
+Semanas 1-6: CONSTRUIR INFRAESTRUTURA DE AVALIAÇÃO
+  → Living eval dataset (~200 golden answers de especialistas)
+  → Pipeline de avaliação em 3 camadas (determinística, semântica, comportamental)
+  → Tracing e data foundation pipelines
+  → Dashboards de qualidade
+
+Semanas 7-8: COMPARAR MODELOS COM DADOS REAIS
+  → Rodar dataset contra cada candidato (qualquer provider)
+  → Relatório de comparação: scores por camada, por categoria, por query type
+  → Decisão baseada em evidência de domínio, não em intuição ou benchmark público
+
+Resultado: "semanas de debate substituídas por horas de comparação orientada a dados"
+```
+
+**Por que isso funciona:** O mesmo dataset que seleciona o modelo também serve como suíte de regressão para toda mudança subsequente — de prompt, de tool, de provider. A decisão de modelo deixa de ser um evento único e vira um processo mecânico: novo modelo disponível → roda dataset → compara scores → decide (switch/hold/hybrid).
+
+**Conexão com o pain-signal gate:** O eval-maturity gate (acima) pergunta "qual dor justifica a próxima capacidade de avaliação?". O model-selection-last responde "qual capacidade de avaliação justifica a escolha do modelo?". Ambos compartilham o princípio: **evidência antes de decisão**. A diferença é o alvo — o pain-signal gate decide qual capacidade de eval construir; o model-selection-last usa a capacidade já construída para decidir qual modelo adotar.
+
+**Checklist:**
+- [ ] Dataset de avaliação com pelo menos ~200 golden answers de domínio existe antes de qualquer experimento com modelos
+- [ ] Pipeline de avaliação em 3 camadas está operacional e produz scores comparáveis entre modelos
+- [ ] Relatório de comparação de modelos é gerado automaticamente (não requer análise manual)
+- [ ] O dataset que selecionou o modelo também serve como suíte de regressão para mudanças futuras
+- [ ] Model switching é um processo mecânico: rodar dataset → comparar → decidir — não um debate de arquitetura
+
+---
+
 ## 🏗️ Fase 1: BUILD — "Preciso Proteger o Modelo das Próprias Fraquezas"
 
 ### Gatilho
@@ -430,6 +527,43 @@ A solução foi um componente robusto:
 - [x] Zero incidentes críticos (P0/P1) atribuídos a falhas que o componente deveria prevenir
 - [x] Time documentou o que o componente faz, por que existe, e quais assumptions justificam sua existência
 - [x] Métricas básicas de latência e consumo de tokens estão sendo coletadas
+
+### Prompt-as-Code: A Disciplina de Commit de 3 Perguntas
+
+O *Prompt-as-Code with Causal Change Management* de Bhaumik trata prompts como ativos versionados de primeira classe — tão críticos quanto código de produção — e exige que cada mudança de prompt responda a três perguntas no commit message. Sem essa disciplina, o histórico de prompts é ilegível: mensagens como "updated prompt" ou "improved response" tornam rollback e debugging impossíveis porque ninguém sabe **por que** o prompt mudou ou **qual falha** estava corrigindo.
+
+**As 3 perguntas obrigatórias em todo commit de prompt:**
+
+```
+commit: "fix(prompt): restricao lactose agora veta explicitamente baixo teor"
+
+1. POR QUE mudou? (causal trigger)
+   → Incidente #47: cliente intolerante recebeu whey com traços de lactose.
+       O prompt anterior dizia "evitar produtos com lactose" — o modelo interpretava
+       "baixo teor" como aceitável.
+
+2. QUAL FALHA causou a mudança? (diagnostic context)
+   → Evaluator aprovou recomendação com restriction_compliance = 2.
+       O anchor da rubrica dizia "reconhece restrição mas mantém risco" = score 2,
+       mas isso não era suficiente para VETAR a recomendação.
+
+3. QUAL FALHA esta mudança corrige? (predictive intent)
+   → Impede que qualquer produto com traços de lactose (baixo teor, contaminação
+       cruzada) seja recomendado para clientes com intolerância declarada.
+       Alvo: reduzir restriction_compliance < 4 de 12% para < 2% das recomendações.
+```
+
+**O que isso habilita:**
+
+- **Rollback seguro:** Se uma mudança de prompt degrada qualidade, reverter para a versão anterior com contexto completo — não é adivinhação.
+- **Audit trail:** Cada mudança de prompt é linkada a um incidente, uma regressão de eval ou um requisito de feature. Compliance: indústrias reguladas podem demonstrar que toda mudança foi justificada por evidência.
+- **Change impact quantification:** Antes do deploy, o eval dataset roda contra o novo prompt e quantifica o efeito na qualidade — capturando regressões antes da exposição em produção.
+
+**Conexão com o harness existente:** O [[docs/canonical/stable-harness-prompt|Stable Harness Prompt]] já define que prompts devem ser versionados e tratados como entradas de primeira classe. O Prompt-as-Code adiciona a disciplina de commit que torna esse versionamento **operacionalmente útil** — não basta versionar, é preciso saber o contexto causal de cada versão.
+
+**Integração com o ciclo BUILD-STABILIZE-SIMPLIFY-REMOVE:** Prompts também passam pelo ciclo de vida do harness. Um prompt criado na fase BUILD (defensivo, com muitas instruções explícitas) pode ser simplificado na fase SIMPLIFY (quando o modelo melhora e não precisa mais de tanta orientação explícita). A disciplina de commit de 3 perguntas se aplica a **todas** as fases — BUILD, STABILIZE, SIMPLIFY e REMOVE.
+
+**Limitação:** A disciplina funciona para mudanças reativas (incident-driven) mas é menos natural para melhorias proativas (refinamento de tom, experimentação). Para esses casos, a pergunta 1 se torna "qual hipótese de melhoria estamos testando?" e a pergunta 3 se torna "qual métrica vamos observar para validar a hipótese?".
 
 ---
 

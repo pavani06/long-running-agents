@@ -14,13 +14,13 @@ tags:
   - sisyphus-runtime
   - agent-maturity
 relates-to:
-  - "[[observabilidade-agentica-plano-macro]]"
-  - "[[obs-fase1-foundation-tracing]]"
-  - "[[obs-fase2-measurement-slos]]"
-  - "[[obs-fase3-visibility-dashboard-runbooks]]"
-  - "[[obs-fase4-validation-workshop]]"
-  - "[[obs-fase5-integration-hardening]]"
-  - "[[maturidade-llm-estado-atual-e-gaps]]"
+  - "observabilidade-agentica-plano-macro"
+  - "obs-fase1-foundation-tracing"
+  - "obs-fase2-measurement-slos"
+  - "obs-fase3-visibility-dashboard-runbooks"
+  - "obs-fase4-validation-workshop"
+  - "obs-fase5-integration-hardening"
+  - "maturidade-llm-estado-atual-e-gaps"
   - "[[vault:long-running-agents/docs/canonical/budget-aware-session-handoff|Budget-Aware Session Handoff]]"
   - "[[vault:long-running-agents/docs/canonical/context-health-monitoring|Context Health Monitoring]]"
   - "[[vault:long-running-agents/docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]]"

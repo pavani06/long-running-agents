@@ -149,6 +149,99 @@ VALIDADE MÍNIMA                         QUALIDADE REAL
 | Human Evaluation | Muito alta em casos ambíguos | Alto | Lenta | Auditoria, amostras críticas, calibração inicial | Não escala para todo output |
 | Hybrid approaches | Muito alta quando bem desenhada | Médio a alto | Moderada | Sistemas de produção com risco real | Exige roteamento, métricas e disciplina operacional |
 
+### As 3 Camadas de Avaliação: Determinística → Semântica → Comportamental
+
+O ecossistema de avaliação de agentes se organiza naturalmente em três camadas, cada uma com custo, latência e poder de detecção diferentes. Esta taxonomia (do padrão *3-Layer Evaluation Architecture* de Bhaumik) complementa a estratificação por schedule (fast/medium/deep) — enquanto a estratificação por schedule diz **quando** rodar, a estratificação por tipo diz **o que** cada camada detecta.
+
+```
+CAMADA 1: DETERMINÍSTICA (zero custo de LLM)
+┌─────────────────────────────────────────────────────────────┐
+│ Regex, schema validation, PII detection, NER, format checks │
+│ Roda em todo PR. Bloqueia falhas conhecidas.                │
+│ Exemplo KODA: SKU existe? Preço é positivo? Tem PII?        │
+└─────────────────────────────────────────────────────────────┘
+        │ se passa
+        ▼
+CAMADA 2: SEMÂNTICA (LLM-as-Judge)
+┌─────────────────────────────────────────────────────────────┐
+│ Groundedness, safety, relevance, faithfulness scores        │
+│ Roda em PR gate ou merge. Custo moderado de LLM.            │
+│ Exemplo KODA: Recomendação respeita restrição alimentar?    │
+└─────────────────────────────────────────────────────────────┘
+        │ se passa
+        ▼
+CAMADA 3: COMPORTAMENTAL (Path Analysis)
+┌─────────────────────────────────────────────────────────────┐
+│ Tool call redundancy, loop detection, path efficiency,      │
+│ duplicate API detection, per-query cost attribution         │
+│ Roda em merge/release. Mais cara, revela custo real.        │
+│ Exemplo KODA: 6 chamadas para pegar 1 dado de saldo?        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Por que as três camadas importam:** Um agente pode retornar a resposta correta (Camada 2 aprova) mas percorrer um caminho caro e redundante (Camada 3 reprova). Esse é o *wrong path, right answer* — invisível para avaliação semântica, financeiramente insustentável em escala. A Camada 1 bloqueia falhas conhecidas a custo zero. A Camada 2 detecta regressões de qualidade. A Camada 3 revela o perfil de custo real do agente e previne desperdício antes do scale-up.
+
+**Independência de frequência:** Cada camada pode rodar em cadência própria — Camada 1 em todo commit (custo zero), Camada 2 no PR gate (custo moderado), Camada 3 no merge para main ou release canary (custo mais alto, mas justificado pelo que detecta). Essa estratificação por tipo + schedule é o que torna o sistema de avaliação economicamente sustentável em produção.
+
+### Camada 3 em Profundidade: Behavioral Eval Path Analysis
+
+A Camada 3 é a mais negligenciada e a mais reveladora. Enquanto as Camadas 1 e 2 avaliam o **output** (o que o agente respondeu), a Camada 3 avalia o **caminho** (como o agente chegou lá). Um agente pode retornar "seu saldo é R$ 1.234,56" — resposta correta, Camada 2 aprova — mas ter feito 3 chamadas redundantes ao banco, 2 chamadas desnecessárias a uma API externa de cotação, e um loop de 4 tool calls que se anulam. Esse é o *wrong path, right answer*: invisível para avaliação semântica, financeiramente insustentável a 20.000 consultas/mês.
+
+**Os quatro detectores da Camada 3:**
+
+| Detector | O que mede | Exemplo KODA | Gatilho de alerta |
+|---|---|---|---|
+| **Redundancy Score** | Chamadas repetidas à mesma ferramenta com parâmetros equivalentes | `get_product(sku="WHEY001")` chamado 3× na mesma consulta | `redundancy_score > 1` |
+| **Loop Detection** | Ciclos semânticos no grafo de tool calls: A→B→A com mesma intenção | `search_products("whey")` → `filter_by("lactose_free")` → `search_products("whey")` | `loop_detected == true` |
+| **Path Efficiency** | Razão entre chamadas necessárias e chamadas totais para a categoria da query | Query de lookup simples (1 chamada esperada) executou 5 chamadas → eficiência 20% | `path_efficiency < 0.5` |
+| **Cost Attribution** | Custo real em dólares de todas as tool calls da query, incluindo LLM, DB e APIs externas | Query custou $0.047 sendo que o baseline da categoria é $0.012 | `cost > 3× baseline` |
+
+**Template de caminho esperado por categoria de query:**
+
+Cada categoria de query (lookup simples, recomendação, processamento de pedido, multi-step reasoning) deve ter um *expected execution path template* — a sequência correta e a contagem esperada de tool calls. O template é a referência contra a qual o Behavioral Eval compara a execução real:
+
+```json
+{
+  "query_category": "product_recommendation",
+  "expected_path": {
+    "tools": [
+      {"tool": "get_customer_context", "max_calls": 1},
+      {"tool": "search_products", "max_calls": 2},
+      {"tool": "filter_by_restrictions", "max_calls": 1},
+      {"tool": "rank_by_preferences", "max_calls": 1},
+      {"tool": "check_stock", "max_calls": 1}
+    ],
+    "max_total_calls": 8,
+    "forbidden_patterns": [
+      "search_products → search_products (same params)",
+      "get_customer_context → get_customer_context"
+    ]
+  }
+}
+```
+
+**Conexão com o trace pipeline:**
+
+A Camada 3 consome o pipeline de tracing (`trace-instrumentation.md` → `trace-state.json` → `telemetry.db`) como fonte de dados. Cada span de tool call no trace vira um nó no grafo de execução que os quatro detectores analisam. Sem tracing, a Camada 3 é cega — por isso a instrumentação de tracing é pré-requisito para behavioral eval.
+
+**Gate de behavioral eval para produção:**
+
+Antes de liberar um agente para escala de produção (20.000+ queries/mês), o behavioral eval deve passar nestes gates:
+
+- [ ] Redundancy score médio por categoria < 1.2 (sem chamadas repetidas sistemáticas)
+- [ ] Zero loops detectados no conjunto de eval (loop em produção = custo infinito)
+- [ ] Path efficiency > 70% para queries de lookup, > 50% para queries complexas
+- [ ] Custo médio por query por categoria dentro de 2× do baseline
+- [ ] Template de caminho esperado definido para toda categoria de query em produção
+- [ ] Trace pipeline instrumentado e validado (pré-requisito)
+
+**Para aprofundar:**
+- [[docs/canonical/behavioral-eval-path-analysis|Behavioral Eval Path Analysis]] — canonical doc com a definição formal
+- [[docs/canonical/trace-instrumentation|Trace Instrumentation]] — pipeline de tracing que alimenta a Camada 3
+- [[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]] — arquitetura completa das três camadas
+- [[.opencode/skills/behavioral-eval-path-analysis/SKILL|behavioral-eval-path-analysis skill]] — skill operacional
+- [[curriculum/04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis|Exercício: Behavioral Eval Path Analysis]] — exercício prático N3
+
 ### Estratégias de Coordenação: Como Rubrics Orquestram Decisões
 
 A rubrica não vive sozinha. Ela se conecta a outros componentes do harness para transformar score em ação. A tabela abaixo compara as principais estratégias de coordenação entre rubrics e o resto do sistema.
@@ -616,6 +709,117 @@ correlation_report:
 ```
 
 Recalibre quando qualquer trigger acima aparecer por uma janela completa, quando uma nova classe de incidente entra no regression flywheel, ou quando mudança de modelo/prompt altera a distribuição de scores sem mudança equivalente nos outcomes.
+
+## 📈 Living Eval Dataset: Crescimento Monotônico e Execução Particionada
+
+Uma suíte de testes estáticos não protege contra modos de falha novos — cada incidente em produção ensina uma lição que se perde a menos que seja codificada como caso de teste permanente. O *Living Eval Dataset* (padrão de Bhaumik) formaliza essa disciplina com três garantias:
+
+### Garantia 1: Crescimento monotônico
+
+O dataset de avaliação **nunca encolhe**. Casos obsoletos (features depreciadas, produtos descontinuados) são arquivados com rastreabilidade, não deletados. Cada incidente, cada edge case escapado, cada regressão detectada em produção adiciona pelo menos um caso de teste. O resultado: o sistema fica **estritamente mais seguro** ao longo do tempo — cada falha passada investe em qualidade futura.
+
+```
+Incidente #47: Cliente intolerante à lactose recebeu whey com traços
+  → Adiciona 3 casos ao dataset:
+    1. lactose_explicit + whey_regular → FAIL (Camada 2)
+    2. lactose_explicit + whey_baixo_teor → WARN (Camada 2)
+    3. lactose_explicit + whey_zero_lactose → PASS
+```
+
+### Garantia 2: Categorização e ownership
+
+O dataset cresce, mas não vira um monólito ingovernável. Cada caso pertence a uma categoria com dono nomeado e ciclo de manutenção:
+
+| Categoria | Owner | Exemplos | Ciclo de revisão |
+|---|---|---|---|
+| `security` | Security team | PII leaks, injection, auth bypass | Mensal |
+| `login` | Auth platform | Authentication flows, token refresh | Quinzenal |
+| `tool_calls` | Agent platform | Duplicate detection, loop prevention | Semanal |
+| `knowledge_retrieval` | Data platform | Stale embeddings, RAG accuracy | Quinzenal |
+| `math_reasoning` | Quality platform | Calculation errors, unit conversions | Mensal |
+
+### Garantia 3: Execução particionada por custo
+
+Rodar o dataset completo (centenas de casos, Camadas 2 e 3) em todo commit é economicamente inviável. A solução é particionar:
+
+- **CI subset:** Amostra estratificada de ~20% dos casos, cobrindo todas as categorias. Roda em todo PR. Custo: baixo.
+- **Full merge suite:** Dataset completo. Roda no merge para `main`. Custo: moderado.
+- **Release canary:** Dataset completo + tráfego real espelhado. Roda antes de release. Custo: alto, justificado pelo risco.
+
+Esta arquitetura de dataset é o alicerce do [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]] — cada incidente de produção alimenta o dataset, que por sua vez previne a reincidência. A classificação do incidente (prompt issue, tool misuse, context loss, etc.) determina em qual categoria e camada o novo caso entra.
+
+### Bootstrap: os ~200 casos iniciais
+
+O dataset começa com golden answers criadas por especialistas de domínio (não por modelos) a partir de queries reais de produção. Esses ~200 casos iniciais cobrem os cenários mais frequentes e os modos de falha mais caros. A partir deles, o crescimento é orgânico — cada incidente adiciona casos, cada feature nova adiciona cobertura.
+
+## 🎯 Business-Outcome-First: Definir Sucesso em Termos de Negócio Antes de Construir Infraestrutura de Eval
+
+O *Business-Outcome-First Eval Pipeline* de Bhaumik corrige uma inversão comum: times de engenharia constroem pipelines de avaliação começando por métricas técnicas (latência, throughput, acurácia) em vez de outcomes de negócio (taxa de deflection, CSAT, impacto em receita). O resultado é um sistema de eval que passa tecnicamente mas falha em entregar valor de negócio — o agente está "correto" mas não está resolvendo o problema do cliente.
+
+### A sequência correta: negócio primeiro, engenharia depois
+
+```
+DEFINIÇÃO (semanas 1-2)         CONSTRUÇÃO (semanas 3-6)         VALIDAÇÃO (semanas 7-8)
+┌──────────────────────┐    ┌──────────────────────────┐    ┌──────────────────────────┐
+│ 1. Definir sucesso    │    │ 4. Criar golden answers   │    │ 7. Rodar eval pipeline   │
+│    em termos de       │    │    (~200 queries reais    │    │    contra golden answers │
+│    negócio            │    │    com respostas de       │    │                          │
+│    Ex: "60% das       │    │    especialistas)         │    │ 8. Comparar scores com   │
+│    queries deflectidas│    │                          │    │    métricas de negócio   │
+│    sem intervenção    │    │ 5. Construir pipeline     │    │                          │
+│    humana"            │    │    Python de comparação   │    │ 9. Prever deflection     │
+│                       │    │    (agent output vs.      │    │    rate a partir dos     │
+│ 2. Identificar métrica│    │    golden answer)         │    │    eval scores           │
+│    de negócio alvo    │    │                          │    │                          │
+│    Ex: deflection rate│    │ 6. Alinhar métricas de    │    │ 10. Decidir go/no-go     │
+│                       │    │    eval com métricas de   │    │     baseado em evidência │
+│ 3. Definir threshold  │    │    negócio                │    │     de negócio           │
+│    de sucesso          │    │                          │    │                          │
+│    Ex: deflection >60%│    │                          │    │                          │
+└──────────────────────┘    └──────────────────────────┘    └──────────────────────────┘
+```
+
+### Por que negócio primeiro
+
+O pipeline de eval do repositório (pain-signal gate, stratified tiers, production sampling, regression flywheel) começa de sinais técnicos de dor — incidentes, regressões, gargalos manuais. Isso é correto para **evoluir** a infraestrutura de eval. Mas a **definição inicial** do que significa sucesso deve vir do negócio:
+
+| Abordagem | Pergunta inicial | Resultado |
+|---|---|---|
+| Engenharia primeiro | "Qual métrica técnica podemos medir?" | Eval mede latência e acurácia; negócio não sabe se o agente está gerando valor |
+| Negócio primeiro | "Qual outcome de negócio o agente deve entregar?" | Eval mede o que importa; engenharia constrói pipeline para medir esse outcome |
+
+### Golden answers de especialistas, não de modelos
+
+Os ~200 casos iniciais do Living Eval Dataset devem ser authored por especialistas de domínio humano — pessoas que conhecem o negócio e sabem qual seria a resposta ideal para cada query real de produção. Golden answers geradas por modelos introduzem viés: o eval aprende a validar o estilo do modelo, não a correção de domínio.
+
+**Exemplo KODA — golden answer de especialista vs. modelo:**
+
+```
+Query real: "Tenho intolerância a lactose, orçamento de R$ 120, prefiro chocolate.
+             O que você recomenda?"
+
+Golden answer (especialista humano):
+  "Recomendo a Proteína Vegetal Chocolate 900g (R$ 109,90). É zero lactose,
+   sabor chocolate, 30 doses, e está R$ 10 abaixo do seu orçamento.
+   O Whey Isolado também é seguro, mas custa R$ 199,90 — acima do seu teto."
+
+Golden answer (modelo, NÃO usar):
+  "Recomendo o Whey Isolado Chocolate! É uma excelente opção pós-treino,
+   rico em proteínas e aminoácidos essenciais. [não menciona preço, não
+   compara alternativas, não prioriza restrição]"
+```
+
+### Deflection rate prediction
+
+O objetivo final do pipeline é prever, a partir dos eval scores, qual será a taxa de deflection em produção. Se o eval dataset tem 200 casos e o agente passa em 170 (85% pass rate), a expectativa é que ~85% das queries em produção sejam resolvidas sem intervenção humana. Essa correlação deve ser validada empiricamente: comparar pass rate do eval com deflection rate real em produção por 30 dias e ajustar a calibração.
+
+### Checklist: Business-Outcome-First Gate
+
+- [ ] Métrica de sucesso de negócio definida antes de qualquer linha de código de eval (ex: "deflection rate > 60%")
+- [ ] Golden answers iniciais authored por especialistas de domínio humano, não por modelos
+- [ ] Pipeline de comparação (agent output vs. golden answer) implementado e automatizado
+- [ ] Correlação eval-score → business-outcome validada com pelo menos 30 dias de dados de produção
+- [ ] Threshold de go/no-go para deployment baseado em métrica de negócio, não apenas em pass rate técnico
 
 ## 🧪 Trace Reading + Rubrics: Diagnosticando Underperformance
 

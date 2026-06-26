@@ -464,6 +464,42 @@ Um sistema maduro pergunta:
 - Qual dado deve ser resumido por hierarquia?
 - Qual dado deve ficar fora do prompt porque só adiciona ruído?
 
+### Data Freshness: O Contexto Não Basta Estar Presente — Precisa Estar Atualizado
+
+Dados em pipelines de agentes têm um problema que dados para dashboards humanos não têm: o agente trata cada dado como verdade literal, sem o julgamento contextual que um humano aplica. Um humano vê um relatório de vendas de ontem e sabe que pode estar desatualizado. Um agente recebe um embedding gerado há 3 semanas e responde com a confiança de quem leu o documento agora.
+
+**O problema do "Stale RAG":**
+
+O banco mudou a taxa de juros. Enviou e-mails para os clientes. Atualizou o site. Mas o vector DB do agente ainda tem embeddings da versão antiga do documento de políticas. O agente continua respondendo com a taxa velha — com confiança, com boa formatação, com tom humano. O cliente não tem como saber que a informação está errada. Esse é o *stale RAG failure mode*: a resposta é bem construída, mas ancorada em dados obsoletos.
+
+**As três garantias de um pipeline de dados para agentes:**
+
+| Garantia | O que significa | Mecanismo | SLA típico |
+|---|---|---|---|
+| **Freshness guarantee** | Toda mudança em documento-fonte dispara re-ingestão e re-embedding automáticos | Event-driven pipeline: webhook no documento-fonte → trigger de re-embedding → atualização do vector DB | < 5 minutos da mudança |
+| **Consistency checks** | Registros contraditórios entre documentos são detectados antes da ingestão | Semantic diff entre documentos: "política A diz juros 12%, política B diz 14% para o mesmo produto" → flag para revisão humana | Pré-ingestão (bloqueante) |
+| **Staleness monitoring** | A camada de tracing detecta quando respostas do agente referenciam versões desatualizadas de documentos | Compare `document_version` no trace span com `current_version` no catálogo de documentos; dispare alerta se `span_version < current_version - 1` | Contínuo (a cada query) |
+
+**Por que pipelines de dados para agentes são diferentes de pipelines para dashboards:**
+
+Pipelines para dashboards toleram staleness (o humano infere contexto), ambiguidade (o humano resolve) e inconsistência (o humano aplica julgamento). Pipelines para agentes precisam de freshness guarantees com SLA, consistency checks pré-ingestão, e staleness monitoring na camada de tracing — porque o agente não tem o julgamento contextual do humano. O dado chega ao prompt como verdade; se estiver errado, a resposta estará errada com confiança.
+
+**Checklist de freshness para contexto de agente:**
+
+- [ ] Todo documento-fonte tem `last_updated` e `version` registrados no catálogo de dados
+- [ ] Mudanças em documentos-fonte disparam re-ingestão automática (event-driven, não batch)
+- [ ] Embeddings no vector DB têm timestamp de geração e referência ao `document_version`
+- [ ] Consistency checks rodam antes da ingestão e bloqueiam dados contraditórios
+- [ ] A camada de tracing registra `document_version` em spans que referenciam conhecimento externo
+- [ ] Staleness monitoring alerta quando `span_version < current_version`
+- [ ] Existe SLA documentado para o gap entre mudança no documento-fonte e atualização no vector DB
+- [ ] O ciclo de vida dos dados está documentado: ingest → embed → serve → detect stale → re-ingest
+
+**Conexão com o ecossistema:**
+- [[docs/canonical/agent-specific-data-freshness-pipeline|Agent-Specific Data Freshness Pipeline]] — canonical doc
+- [[docs/canonical/trace-instrumentation|Trace Instrumentation]] — camada de tracing que alimenta staleness monitoring
+- [[curriculum/05-core-concepts/05-state-persistence|State Persistence]] — estado durável vs. dados frescos (tensões e complementaridade)
+
 ---
 
 ## 📊 SEÇÃO 2: Estratégias de Gerenciamento de Contexto
