@@ -1,0 +1,557 @@
+# Mental Model YAML — ecossistema-pavan
+# Typed mirror of the mental model markdown
+# Generated: 2026-06-26
+
+meta:
+  title: "Mental Model — ecossistema-pavan"
+  date: 2026-06-26
+  repo: ecossistema-pavan
+  type: mental-model
+  sources:
+    - AGENTS.md
+    - long-running-agents/README.md
+    - long-running-agents/docs/system-of-record.md
+    - long-running-agents/curriculum/GLOSSARY.md
+    - long-running-agents/docs/ecosystem-glossary.md
+    - obsidian-eval/README.md
+    - .omo/plans/
+    - plans/adr/
+
+goals:
+  - "Resolver degradação de agentes de IA em execuções longas via harness engineering, não prompts/modelos melhores"
+  - "Currículo completo de 12 semanas (4 níveis, 8 conceitos core) sobre construção de agentes long-running"
+  - "85+ padrões canônicos de arquitetura agentica como sistema de referência autoritativo"
+  - "Runtime programável para vaults Obsidian (obsidian-eval, @pavani/obsidian-eval no npm)"
+  - "Pipeline de ingestão de conhecimento externo (analyze-and-improve, 7 fases)"
+  - "Sistema de agentes com Handoff Protocol — 28 skills, 3 agentes, 237 testes"
+  - "Stack de telemetria com learning flywheel cross-session de ciclo fechado"
+  - "Livro agentico publicado via Quarto (10 capítulos, 70+ padrões mapeados)"
+  - "Runtime privado cross-session (sisyphus-runtime) com handoffs, fatos duráveis, pipeline de conhecimento"
+
+architecture:
+  abstractions:
+    - name: Vault
+      definition: "Repositório de conhecimento em Markdown gerenciado pelo obsidian-eval, com MANIFEST.md declarando exports/imports"
+      location: obsidian-eval/src/types.ts
+    - name: CanonicalDoc
+      definition: "Documento autoritativo (type: canonical) que define padrão reutilizável de design de agente"
+      location: long-running-agents/docs/canonical/
+    - name: Skill
+      definition: "Conjunto de instruções e workflows para domínio específico, carregado via skill(name=...)"
+      location: ~/.config/opencode/skills/
+    - name: Handoff
+      definition: "Snapshot de estado de sessão OpenCode persistido como nota (type: session-handoff) no vault de runtime"
+      location: ~/sisyphus-runtime/sessions/
+    - name: DurableFact
+      definition: "Conhecimento persistido com valid_from/valid_to, confidence, provenance"
+      location: ~/sisyphus-runtime/facts/
+    - name: ExecutionGraph
+      definition: "DAG de tarefas com nós, status (pending/in_progress/completed/blocked), estimativas de tokens, contexto de retomada"
+      location: obsidian-eval/src/execution-graph.ts
+    - name: TraceSpan
+      definition: "Registro instrumentado de chamada task(): categoria, subagent_type, duração, tokens, success/failure"
+      location: ~/scripts/telemetry/trace-cli.ts
+    - name: KnowledgePipeline
+      definition: "Fluxo completo: handoff → compressWorkingMemory → relevanceScore → promotePatterns → buildProvenance → checkDrift → appendFact"
+      location: obsidian-eval/src/memory-layers.ts
+    - name: LearningFlywheel
+      definition: "Sistema que detecta padrões de falha, classifica severidade e dispara correção automática via QI loop (60s daemon)"
+      location: ~/scripts/telemetry/flywheel-daemon.service
+    - name: TokenBudget
+      definition: "Orçamento de tokens com 4 fases: green (>60%), yellow (>40%), orange (>20%), red (≤20%)"
+      location: ~/.config/opencode/skills/budget-monitor/
+    - name: GroundTruth
+      definition: "Assertions imutáveis definidas por humanos que bloqueiam contaminação do pipeline de conhecimento"
+      location: ~/sisyphus-runtime/facts/_global/ground-truth.md
+    - name: ADR
+      definition: "Architecture Decision Record formalizado com contexto, opções, trade-offs e consequências"
+      location: plans/adr/
+    - name: SystemOfRecord
+      definition: "Documento que define precedência (6 níveis) e fontes canônicas de cada domínio"
+      location: long-running-agents/docs/system-of-record.md
+    - name: EpistemicGraph
+      definition: "Grafo de entidades e relacionamentos extraído automaticamente do vault de runtime (174 nós, 191 edges)"
+      location: obsidian-eval/src/epistemic-graph.ts
+
+  relationships:
+    - from: Handoff
+      to: canonical-context skill
+      description: "Injeta contexto de continuidade na sessão N+1"
+    - from: Handoff
+      to: KnowledgePipeline
+      description: "Alimenta compressWorkingMemory → promotePatterns → DurableFact"
+    - from: DurableFact
+      to: checkDrift
+      description: "Validação contra Ground Truths antes da promoção"
+    - from: KnowledgePipeline
+      to: ReflectionLoop
+      description: "Pipeline diário (09:00 BRT): Gather → Analyze → Synthesize → Apply"
+    - from: TraceSpan
+      to: TelemetryDB
+      description: "Persistência em SQLite para dashboards, SLOs e análise"
+    - from: TelemetryDB
+      to: FlywheelDaemon
+      description: "Processa triggers a cada 60s → consumer dispara QI loop se anomaly_score ≥ 80"
+    - from: ExecutionGraph
+      to: canonical-context skill
+      description: "Fornece estado de execução para retomada cross-session"
+    - from: EpistemicGraph
+      to: Vault
+      description: "Extrai entidades e relacionamentos do vault de runtime"
+
+patterns:
+  - name: explicit-token-budget-ledger
+    where_defined: docs/canonical/explicit-token-budget-ledger.md
+    maturity: implemented
+    category: context-engineering
+  - name: burn-rate-runtime-forecast
+    where_defined: docs/canonical/burn-rate-runtime-forecast.md
+    maturity: implemented
+    category: context-engineering
+  - name: phase-gated-token-health-monitor
+    where_defined: docs/canonical/phase-gated-token-health-monitor.md
+    maturity: implemented
+    category: context-engineering
+  - name: head-tail-context-truncation
+    where_defined: docs/canonical/head-tail-context-truncation.md
+    maturity: canonical
+    category: context-engineering
+  - name: addressable-memory-catalog
+    where_defined: docs/canonical/addressable-memory-catalog.md
+    maturity: canonical
+    category: context-engineering
+  - name: tiered-context-storage
+    where_defined: docs/canonical/tiered-context-storage.md
+    maturity: canonical-exercise
+    category: context-engineering
+  - name: neutral-selection-layer
+    where_defined: docs/canonical/neutral-selection-layer.md
+    maturity: canonical-exercise
+    category: context-engineering
+  - name: selection-budgeted-retrieval
+    where_defined: docs/canonical/selection-budgeted-retrieval.md
+    maturity: canonical-exercise
+    category: context-engineering
+  - name: deliberate-forgetting
+    where_defined: docs/canonical/deliberate-forgetting.md
+    maturity: canonical
+    category: context-engineering
+  - name: smallest-sufficient-context
+    where_defined: docs/canonical/smallest-sufficient-context.md
+    maturity: canonical
+    category: context-engineering
+  - name: relational-context-graph
+    where_defined: docs/canonical/relational-context-graph.md
+    maturity: canonical
+    category: context-engineering
+  - name: context-health-monitoring
+    where_defined: docs/canonical/context-health-monitoring.md
+    maturity: canonical
+    category: context-engineering
+  - name: agent-degradation-loop-prevention
+    where_defined: docs/canonical/agent-degradation-loop-prevention.md
+    maturity: canonical
+    category: context-engineering
+  - name: owned-agent-control-loop
+    where_defined: docs/canonical/owned-agent-control-loop.md
+    maturity: canonical
+    category: agent-governance
+  - name: deterministic-tool-dispatch
+    where_defined: docs/canonical/deterministic-tool-dispatch.md
+    maturity: canonical
+    category: agent-governance
+  - name: error-context-hygiene
+    where_defined: docs/canonical/error-context-hygiene.md
+    maturity: implemented
+    category: agent-governance
+  - name: serializable-pause-resume-state
+    where_defined: docs/canonical/serializable-pause-resume-state.md
+    maturity: canonical
+    category: agent-governance
+  - name: generator-evaluator
+    where_defined: docs/canonical/generator-evaluator.md
+    maturity: canonical
+    category: agent-governance
+  - name: compartmented-evaluation-architecture
+    where_defined: docs/canonical/compartmented-evaluation-architecture.md
+    maturity: canonical
+    category: agent-governance
+  - name: grill-me-alignment-interview
+    where_defined: docs/canonical/grill-me-alignment-interview.md
+    maturity: canonical
+    category: agent-governance
+  - name: measured-harness-evolution-lifecycle
+    where_defined: docs/canonical/measured-harness-evolution-lifecycle.md
+    maturity: canonical
+    category: harness-design
+  - name: closed-loop-agent-operating-system
+    where_defined: docs/canonical/closed-loop-agent-operating-system.md
+    maturity: canonical
+    category: harness-design
+  - name: llm-as-fuzzy-compiler
+    where_defined: docs/canonical/llm-as-fuzzy-compiler.md
+    maturity: canonical-exercise
+    category: harness-design
+  - name: plan-execute-verify
+    where_defined: docs/canonical/plan-execute-verify.md
+    maturity: canonical
+    category: harness-design
+  - name: budget-aware-session-handoff
+    where_defined: docs/canonical/budget-aware-session-handoff.md
+    maturity: implemented
+    category: harness-design
+  - name: eval-tier-stratification
+    where_defined: docs/canonical/eval-tier-stratification.md
+    maturity: canonical
+    category: evaluation
+  - name: pain-signal-eval-progression-gate
+    where_defined: docs/canonical/pain-signal-eval-progression-gate.md
+    maturity: canonical
+    category: evaluation
+  - name: production-failure-regression-flywheel
+    where_defined: docs/canonical/production-failure-regression-flywheel.md
+    maturity: implemented
+    category: evaluation
+  - name: intent-five-part-primitive
+    where_defined: docs/canonical/intent-five-part-primitive.md
+    maturity: canonical-exercise
+    category: intent-engineering
+  - name: constraint-budget-gate
+    where_defined: docs/canonical/constraint-budget-gate.md
+    maturity: canonical-exercise
+    category: intent-engineering
+  - name: constraint-failure-decision-rule
+    where_defined: docs/canonical/constraint-failure-decision-rule.md
+    maturity: canonical-exercise
+    category: intent-engineering
+  - name: two-implementations-goal-test
+    where_defined: docs/canonical/two-implementations-goal-test.md
+    maturity: canonical-exercise
+    category: intent-engineering
+  - name: goal-atomicity-split
+    where_defined: docs/canonical/goal-atomicity-split.md
+    maturity: canonical-exercise
+    category: intent-engineering
+  - name: ice-craft-separation
+    where_defined: docs/canonical/ice-craft-separation.md
+    maturity: canonical
+    category: intent-engineering
+  - name: persona-based-documentation
+    where_defined: docs/canonical/persona-based-documentation.md
+    maturity: canonical-exercise
+    category: review-quality
+  - name: shadow-review-pipeline
+    where_defined: docs/canonical/shadow-review-pipeline.md
+    maturity: canonical-skill
+    category: review-quality
+  - name: manual-brake-question-gate
+    where_defined: docs/canonical/manual-brake-question-gate.md
+    maturity: canonical-skill
+    category: human-in-the-loop
+  - name: presence-in-the-loop-metric
+    where_defined: docs/canonical/presence-in-the-loop-metric.md
+    maturity: canonical-exercise
+    category: human-in-the-loop
+  - name: autonomy-curriculum-sampling
+    where_defined: docs/canonical/autonomy-curriculum-sampling.md
+    maturity: canonical-exercise
+    category: model-training
+  - name: magnitude-direction-verifier-split
+    where_defined: docs/canonical/magnitude-direction-verifier-split.md
+    maturity: canonical-exercise
+    category: model-training
+  - name: epistemic-memory-graph
+    where_defined: docs/canonical/epistemic-memory-graph.md
+    maturity: implemented
+    category: cross-cutting
+  - name: obsidian-document-conventions
+    where_defined: docs/canonical/obsidian-document-conventions.md
+    maturity: implemented
+    category: cross-cutting
+
+terminology:
+  # N1 — Fundamentos
+  - term: Agent
+    definition: "Entidade autônoma de IA (baseada em LLM) que toma ações, usa ferramentas e executa tarefas em sequência"
+    source: curriculum/GLOSSARY.md:18
+    level: 1
+  - term: Context Window
+    definition: "Número total de tokens que um modelo pode processar por vez — a memória imediata do agente"
+    source: curriculum/GLOSSARY.md:158
+    level: 1
+  - term: Context Amnesia
+    definition: "Quando um agente esquece contexto anterior por ter excedido a janela de contexto"
+    source: curriculum/GLOSSARY.md:50
+    level: 1
+  - term: Token
+    definition: "Unidade básica de texto que um LLM processa (~4 caracteres)"
+    source: curriculum/GLOSSARY.md:770
+    level: 1
+  - term: Token Budget
+    definition: "Gerenciamento consciente de quantos tokens estão disponíveis e como são alocados"
+    source: curriculum/GLOSSARY.md:783
+    level: 1
+  - term: Harness
+    definition: "Infraestrutura e padrões que envolvem agentes para torná-los confiáveis por períodos longos"
+    source: curriculum/GLOSSARY.md:370
+    level: 1
+
+  # N2 — Padrões Práticos
+  - term: Generator-Evaluator
+    definition: "Duas entidades separadas: uma gera, outra avalia. Previne sycophancy"
+    source: curriculum/GLOSSARY.md:333
+    level: 2
+  - term: Sprint Contract
+    definition: "Acordo negociado entre generator e evaluator sobre o que 'pronto' significa"
+    source: curriculum/GLOSSARY.md:191
+    level: 2
+  - term: ICE Craft Separation
+    definition: "Decomposição em Intent, Context, Expectations com donos explícitos"
+    source: curriculum/GLOSSARY.md:419
+    level: 2
+  - term: Intent as Five-Part Primitive
+    definition: "Formalização do intent em 5 campos: description, constraints, failure scenarios, success scenarios, connections"
+    source: curriculum/GLOSSARY.md:436
+    level: 2
+  - term: Two-Implementations Goal Test
+    definition: "Heurística: duas implementações diferentes podem ambas satisfazer? → goal vs spec"
+    source: curriculum/GLOSSARY.md:849
+    level: 2
+  - term: Goal Atomicity Split
+    definition: "Um goal = uma sentença sem conjunções, sem 'and', sem 'then'"
+    source: curriculum/GLOSSARY.md:304
+    level: 2
+  - term: Trace (Agent Trace)
+    definition: "Log detalhado de cada passo do agente — ferramenta primária de debugging"
+    source: curriculum/GLOSSARY.md:830
+    level: 2
+
+  # N3 — Arquitetura Avançada
+  - term: Multi-Agent System
+    definition: "Múltiplos agentes independentes que coordenam entre si"
+    source: curriculum/GLOSSARY.md:512
+    level: 3
+  - term: Harness Evolution
+    definition: "Processo de simplificar/remover componentes de harness conforme o modelo melhora"
+    source: curriculum/GLOSSARY.md:387
+    level: 3
+  - term: LLM as Fuzzy Compiler
+    definition: "LLM como compilador fuzzy, harness como passes de otimização, código como artefato descartável"
+    source: curriculum/GLOSSARY.md:271
+    level: 3
+  - term: Compartmented Evaluation
+    definition: "Builder e Validator com superfícies de informação seladas"
+    source: curriculum/GLOSSARY.md:90
+    level: 3
+  - term: Garbage Collection Day
+    definition: "Meta-loop semanal de limpeza de harness: revisão de slop, guardrails, manutenção"
+    source: curriculum/GLOSSARY.md:291
+    level: 3
+  - term: Relational Context Graph
+    definition: "Grafo com edges tipados: dependency, provenance, supersession, causation"
+    source: curriculum/GLOSSARY.md:612
+    level: 3
+  - term: Tiered Context Storage
+    definition: "3 tiers (hot/warm/cold) com promoção/demissão dinâmica por relevância"
+    source: curriculum/GLOSSARY.md:814
+    level: 3
+  - term: Selection-Budgeted Retrieval
+    definition: "Retrieval com ranking por valor/custo, budget awareness"
+    source: curriculum/GLOSSARY.md:661
+    level: 3
+  - term: Deliberate Forgetting
+    definition: "Esquecimento como operação intencional de primeira classe"
+    source: curriculum/GLOSSARY.md:205
+    level: 3
+
+  # Ecossistema — Runtime
+  - term: Vault
+    definition: "Repositório de conhecimento em Markdown gerenciado pelo obsidian-eval, com MANIFEST.md"
+    source: docs/ecosystem-glossary.md:40
+    level: ecosystem
+  - term: Cross-vault Wikilink
+    definition: "Wikilink com prefixo vault:<nome>/ que referencia outro vault"
+    source: docs/ecosystem-glossary.md:96
+    level: ecosystem
+  - term: Knowledge Pipeline
+    definition: "Fluxo completo: handoff → compress → relevance → promote → provenance → drift → append"
+    source: docs/ecosystem-glossary.md:194
+    level: ecosystem
+  - term: Handoff
+    definition: "Snapshot de estado de sessão OpenCode (type: session-handoff) com continuity_message, open_decisions, memory_handles"
+    source: docs/ecosystem-glossary.md:208
+    level: ecosystem
+  - term: Durable Fact
+    definition: "Conhecimento persistido com valid_from/valid_to, confidence, provenance"
+    source: docs/ecosystem-glossary.md:248
+    level: ecosystem
+  - term: Reflection Loop
+    definition: "Pipeline cross-session: Gather → Analyze → Synthesize → Apply (diário 09:00 BRT)"
+    source: docs/ecosystem-glossary.md:327
+    level: ecosystem
+  - term: Ground Truth
+    definition: "Assertions imutáveis (5) que bloqueiam contaminação do pipeline"
+    source: docs/ecosystem-glossary.md:492
+    level: ecosystem
+  - term: Drift Detection
+    definition: "Verificação de que princípio candidato não contradiz ground truth (Jaccard similarity > 0.3)"
+    source: docs/ecosystem-glossary.md:510
+    level: ecosystem
+  - term: Telemetry DB
+    definition: "Banco SQLite com métricas de sessão: tokens, traces, SLOs, burn rates"
+    source: docs/ecosystem-glossary.md:117
+    level: ecosystem
+  - term: Execution Graph
+    definition: "DAG de tarefas com nós, status, estimativas de tokens, contexto de retomada O(1)"
+    source: docs/ecosystem-glossary.md:177
+    level: ecosystem
+  - term: Epistemic Graph
+    definition: "Grafo de entidades e relacionamentos extraído do vault de runtime (174 nós, 191 edges)"
+    source: docs/ecosystem-glossary.md:469
+    level: ecosystem
+  - term: System of Record
+    definition: "Documento que define precedência (6 níveis) e fontes canônicas de cada domínio"
+    source: docs/ecosystem-glossary.md:569
+    level: ecosystem
+  - term: Orchestrator
+    definition: "Agente principal (Sisyphus) que decompõe tarefas e delega para sub-agentes especializados"
+    source: docs/ecosystem-glossary.md:445
+    level: ecosystem
+  - term: Token Budget (ecosystem)
+    definition: "Orçamento de tokens com 4 fases: green (>60%), yellow (>40%), orange (>20%), red (≤20%)"
+    source: docs/ecosystem-glossary.md:418
+    level: ecosystem
+
+curriculum:
+  levels:
+    - name: N1 — Fundamentos
+      duration: 3-4h
+      question: "Por que agentes falham em tarefas longas?"
+      concepts:
+        - context-window
+        - token-budget
+        - basic-harness
+        - amnesia
+        - context-rot
+      exercises: 3
+      lessons: 3
+    - name: N2 — Padrões Práticos
+      duration: 6-8h
+      question: "Como fazer agentes mais confiáveis?"
+      concepts:
+        - generator-evaluator
+        - sprint-contracts
+        - rubrics
+        - trace-reading
+        - ice-separation
+        - intent-primitives
+      exercises: 7
+      lessons: 4
+    - name: N3 — Arquitetura Avançada
+      duration: 8-10h
+      question: "Como construir sistemas sofisticados?"
+      concepts:
+        - multi-agent
+        - state-persistence
+        - file-coordination
+        - harness-evolution
+        - fuzzy-compiler
+        - tiered-context
+        - constraint-engineering
+      exercises: 13
+      lessons: 5
+    - name: N4 — Aplicação KODA
+      duration: "Contínuo (semanas 5-12)"
+      question: "Como aplicar tudo em produção?"
+      concepts:
+        - koda-architecture
+        - customer-journeys
+        - feature-patterns
+        - production-evals
+        - harness-improvements
+      exercises: 5
+      lessons: 5
+
+  concepts:
+    - name: Context Management
+      where: 05-core-concepts/01-context-management.md
+      level: 1
+      status: pending
+    - name: Planning-Execution Separation
+      where: 05-core-concepts/02-planning-execution-separation.md
+      level: 2
+      status: pending
+    - name: Generator-Evaluator Pattern
+      where: 05-core-concepts/03-generator-evaluator-pattern.md
+      level: 2
+      status: pending
+    - name: Sprint Contracts
+      where: 05-core-concepts/04-sprint-contracts.md
+      level: 2
+      status: pending
+    - name: State Persistence
+      where: 05-core-concepts/05-state-persistence.md
+      level: 3
+      status: pending
+    - name: Harness Evolution
+      where: 05-core-concepts/06-harness-evolution.md
+      level: 3
+      status: pending
+    - name: Multi-Agent Coordination
+      where: 05-core-concepts/07-multi-agent-coordination.md
+      level: 3
+      status: pending
+    - name: Evaluation Rubrics
+      where: 05-core-concepts/08-evaluation-rubrics.md
+      level: 2
+      status: pending
+
+gaps:
+  - what: "Runtime Canonical Eval Gate — avaliação automatizada pós-task() contra regras canônicas"
+    where_documented: ".omo/plans/2026-06-21-runtime-canonical-eval-gate.md"
+    status: awaiting-authorization
+    severity: P0
+  - what: "Handoff como RunContext (Opção B) — 'crash = pause' na fronteira de task()"
+    where_documented: ".omo/plans/2026-06-20-handoff-runcontext-option-b.md"
+    status: blocked
+    severity: P0
+  - what: "Classifier calibration — calibração do LLM-as-judge com dados reais de produção"
+    where_documented: ".omo/plans/2026-06-23-correction-first-scavenger-pipeline-unified.md"
+    status: pending
+    severity: P1
+  - what: "Scavenger dry-run — teste do pipeline scavenger com dados reais"
+    where_documented: ".omo/plans/2026-06-23-correction-first-scavenger-pipeline-unified.md"
+    status: pending
+    severity: P1
+  - what: "E2E smoke test (8.4) do scavenger pipeline completo"
+    where_documented: ".omo/plans/2026-06-23-correction-first-scavenger-pipeline-unified.md"
+    status: pending
+    severity: P1
+  - what: "KODA Domain Evals — golden dataset de 20-30 cenários ecommerce"
+    where_documented: ".omo/plans/2026-06-21-runtime-canonical-eval-gate.md (Gap 2b)"
+    status: not-started
+    severity: P1
+  - what: "agent-lifecycle.md — ciclo claim → worktree → implement → review → merge → cleanup"
+    where_documented: "long-running-agents/docs/system-of-record.md:281"
+    status: pending-doc
+    severity: P2
+  - what: "curriculum-model.md — taxonomia de níveis, tipos de artefato, critérios de qualidade"
+    where_documented: "long-running-agents/docs/system-of-record.md:282"
+    status: pending-doc
+    severity: P2
+  - what: "portal-architecture.md — decisões de design do portal, modelo de dados"
+    where_documented: "long-running-agents/docs/system-of-record.md:283"
+    status: pending-doc
+    severity: P2
+  - what: "crossroad-change-policy.md — política de alteração em arquivos de alto blast radius"
+    where_documented: "long-running-agents/docs/system-of-record.md:284"
+    status: pending-doc
+    severity: P2
+  - what: "8 core concepts com status ⏳ (pending) — conteúdo não finalizado"
+    where_documented: "long-running-agents/curriculum/README.md (tabela de conceitos)"
+    status: pending-curriculum
+    severity: P2
+  - what: "ADRs de decisões de runtime não formalizados — vivem em .omo/plans/, não em plans/adr/"
+    where_documented: "plans/adr/ (13 aceitos) vs .omo/plans/ (177 planos)"
+    status: pending-governance
+    severity: P2

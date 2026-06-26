@@ -1724,6 +1724,14 @@ Mas antes de seguir, lembre-se: o que você removeu ou simplificou até aqui for
 
 ---
 
+## Padrões Relacionados (Sierra)
+
+**[[docs/canonical/confidence-gated-continual-learning|Confidence-Gated Continual Learning]]** — Mecanismo de quatro estágios (detectar → sugerir → revisar → implantar) com thresholds de confiança que determinam quando uma melhoria pode ser aplicada automaticamente (FYI) ou exige aprovação humana. Veja o exercício em [[exercises/exercise-confidence-gated-learning|Exercise: Confidence-Gated Learning]].
+
+Este padrão complementa o ciclo BUILD→STABILIZE→SIMPLIFY→REMOVE adicionando uma dimensão de automação: enquanto o harness evolution decide quando um componente pode ser removido, o confidence-gated learning decide quando uma melhoria descoberta pelo agente pode ser implantada sem supervisão humana.
+
+---
+
 ## 📋 Metadata
 
 | Campo | Valor |

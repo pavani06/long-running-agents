@@ -2516,3 +2516,12 @@ Estes 5 cenários cobrem ~90% dos desafios reais de context management em conver
 | **Crítica para** | Conversas KODA WhatsApp 2h+, memória confiável, checkout seguro |
 | **Diagramas Mermaid** | 3 |
 | **Atualizado** | Maio 2026 |
+
+---
+
+## Padrões Relacionados (Sierra)
+
+**Temporal Context Injection** — O momento em que você injeta contexto importa tanto quanto o conteúdo injetado. Injetar contexto cedo demais causa distração e custo desnecessário; injetar tarde demais causa decisões sem a informação crítica. O padrão também alerta para o risco de incoerência na compactação de prompts: comprimir contexto pode produzir resumos sintaticamente corretos mas semanticamente contraditórios com o estado atual da conversa.
+
+- **Documento canônico:** [[docs/canonical/temporal-context-injection]]
+- **Relevância para Context Management:** As 12 estratégias de gerenciamento de contexto deste módulo decidem *o que* armazenar, comprimir e recuperar. O Temporal Context Injection adiciona a dimensão do *quando*: em que fase da conversa cada estratégia deve ser acionada. No KODA, a restrição de lactose do cliente deve ser injetada no momento exato da recomendação — nem antes (polui o raciocínio sobre preferência de sabor) nem depois (a recomendação já saiu errada).

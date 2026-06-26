@@ -110,6 +110,9 @@ last_updated: 2026-06-26
 - `02-nivel-2-practical-patterns/exercises/exercise-05-intent-five-part-primitive.md` (Intent Five-Part Primitive)
 - `02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test.md` (Two Implementations Goal Test)
 - `02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split.md` (Goal Atomicity Split)
+- `02-nivel-2-practical-patterns/exercises/exercise-multi-provider-routing.md` (Multi-Provider Model Routing)
+- `02-nivel-2-practical-patterns/exercises/exercise-confidence-gated-learning.md` (Confidence-Gated Continual Learning)
+- `02-nivel-2-practical-patterns/exercises/exercise-auth-coupled-memory.md` (Auth-Coupled Memory Architecture)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
@@ -135,6 +138,7 @@ last_updated: 2026-06-26
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-02.md`
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-05-manual-brake-question-gate.md` (Manual Brake Question Gate)
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-06-deferred-ledger-agentic-work.md` (Deferred Ledger Agentic Work)
+- `04-nivel-4-koda-specific/exercises/exercise-regulated-data-boundary.md` (Regulated Data Boundary)
 
 **Soluções:** Em `exercises/solutions/` em cada nível
 

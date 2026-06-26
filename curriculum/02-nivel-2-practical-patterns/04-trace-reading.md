@@ -5192,3 +5192,10 @@ Agora você não é mais um espectador de um black box. Você é um **engenheiro
 Boa sorte. 🚀
 
 ---
+
+## Padrões Relacionados (Sierra)
+
+**Model-Switch-Driven Eval Hardening** — Trocar de modelo é a melhor forma de expor gaps na sua suite de avaliação. O processo é iterativo: (1) rode o agente com um modelo diferente, (2) observe onde os resultados divergem ou degradam, (3) descubra qual dimensão da sua eval suite não capturou a degradação, (4) endureça a eval para cobrir o gap, (5) repita. Cada switch de modelo revela fraquezas que o modelo anterior escondia.
+
+- **Documento canônico:** [[docs/canonical/model-switch-driven-eval-hardening]]
+- **Relevância para Trace Reading:** As traces estruturadas deste módulo são o mecanismo de observação que torna o eval hardening possível. Quando você troca de modelo (ex: Claude Sonnet → DeepSeek V4), as traces revelam exatamente onde o raciocínio divergiu: os `thought_process` steps mudaram? O `confidence_score` caiu? Os `checks_performed` do Evaluator produziram resultados diferentes? Sem traces, o eval hardening é adivinhação; com traces, é diagnóstico cirúrgico.

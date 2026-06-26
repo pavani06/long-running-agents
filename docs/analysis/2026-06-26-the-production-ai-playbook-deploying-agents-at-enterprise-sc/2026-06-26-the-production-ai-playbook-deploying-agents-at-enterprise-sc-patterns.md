@@ -6,7 +6,7 @@ aliases: ["production AI playbook patterns", "Bhaumik production patterns", "ent
 tags: ["evals", "agentes-orquestracao", "production", "governanca", "monitoramento"]
 relates-to: ["[[docs/analysis/2026-06-26-the-production-ai-playbook-deploying-agents-at-enterprise-sc/2026-06-26-the-production-ai-playbook-deploying-agents-at-enterprise-sc-analysis|Production AI Playbook Analysis]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]"]
 ---
-
+asl
 # The Production AI Playbook — Reusable Patterns
 
 Padrões extraídos da talk "The Production AI Playbook: Deploying Agents at Enterprise Scale" por Sandipan Bhaumik (Databricks), aplicáveis a sistemas agenticos em produção.

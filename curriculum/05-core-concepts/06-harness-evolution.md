@@ -2816,6 +2816,14 @@ ROI = R$ 3,000 / R$ 1,201.08 = 2.5x
 
 ---
 
+## Padrões Relacionados (Sierra)
+
+**[[docs/canonical/auth-coupled-memory-architecture|Auth-Coupled Memory Architecture]]** — Arquitetura de memória que acopla a persistência e recuperação de informações ao nível de autenticação do usuário: uma saudação pelo nome exige autenticação baixa, enquanto acessar dados sensíveis como documentos exige autenticação forte com verificação em múltiplos fatores. Veja o exercício em [[exercises/exercise-auth-coupled-memory|Exercise: Auth-Coupled Memory]].
+
+Este padrão adiciona uma dimensão de identidade ao harness evolution: componentes de memória auth-coupled também passam pelo ciclo BUILD→STABILIZE→SIMPLIFY→REMOVE, mas com o agravante de que o threshold de confiança do modelo não é o único critério — o nível de autenticação do usuário também determina o que pode ser simplificado ou removido.
+
+---
+
 ---
 
 ## 📋 Metadata

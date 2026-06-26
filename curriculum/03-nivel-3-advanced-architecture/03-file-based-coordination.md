@@ -1688,3 +1688,12 @@ E esse é o melhor elogio que ela poderia receber.
 | Status | Completo |
 | Próximo | `curriculum/03-nivel-3-advanced-architecture/04-server-side-compaction.md` |
 | Atualizado | Maio 2026 |
+
+---
+
+## Padrões Relacionados (Sierra)
+
+**File-System Materialization** — Materializar lógica de domínio em estruturas do sistema de arquivos é a estratégia 80/20 para agentes de código: em 80% dos casos, reformule o problema em algo que modelos já entendem (arquivos, diffs, grep); nos outros 20%, ensine o modelo com skills e injeção de contexto. O sistema de arquivos é o território nativo de coding agents — eles nasceram para ler, escrever e manipular arquivos com precisão cirúrgica.
+
+- **Documento canônico:** [[docs/canonical/file-system-materialization]]
+- **Relevância para File-Based Coordination:** Este módulo já aplica o princípio central do File-System Materialization ao transformar o file system em communication bus entre agentes. O padrão da Sierra explicita o *porquê*: agentes de código são excepcionalmente bons em operações de arquivo (git diff, grep, atomic write) e o file system oferece auditabilidade natural que APIs e message queues não têm. A decisão arquitetural de usar JSON files como coordination bus — em vez de gRPC ou Redis — é validada por este princípio.

@@ -230,7 +230,7 @@ koda-long-running-agents/
 - [ ] Consigo escrever sprint contracts com critérios testáveis
 - [ ] Posso criar uma rubric para avaliar outputs
 - [ ] Consigo ler e interpretar agent traces
-- [ ] Completei os 7 exercícios do Nível 2
+- [ ] Completei os 10 exercícios do Nível 2
 - [ ] Consigo aplicar padrões ao KODA
 
 ---

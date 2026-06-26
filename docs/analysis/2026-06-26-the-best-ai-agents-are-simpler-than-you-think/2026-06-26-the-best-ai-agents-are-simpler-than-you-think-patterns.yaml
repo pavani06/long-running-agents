@@ -1,0 +1,583 @@
+meta:
+  title: "Patterns"
+  source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
+  date: "2026-06-26"
+  total_patterns: 18
+
+clusters:
+  - name: "Model Selection & Routing"
+    patterns:
+      - name: "Task-Routed Model Tiering"
+        problem_solved: "Using a single frontier model for every subtask within an agent turn wastes cost and latency on tasks that don't need frontier-level reasoning."
+        inputs:
+          - "Conversation turn with multiple subtasks (classification, retrieval, reasoning, response generation)"
+          - "Per-task latency budgets and quality requirements"
+          - "Model capability profiles across frontier, in-house, and lightweight classifiers"
+        outputs:
+          - "Task-to-model routing decisions per turn"
+          - "Parallel dispatch of subtasks to different model tiers"
+          - "Aggregated response from independently computed subtasks"
+        benefits:
+          - "Reduces per-turn cost by routing simple classification/retrieval to lightweight models"
+          - "Decreases end-to-end latency through parallel execution across model tiers"
+          - "Maintains quality on reasoning-critical subtasks via frontier model dispatch"
+          - "Decouples model selection from orchestration logic"
+          - "Enables roughly one-third frontier, one-third in-house, one-third third-party composition"
+        limitations:
+          - "Adds routing complexity — incorrect task classification sends simple tasks to expensive models"
+          - "Requires per-task eligible model sets that must be maintained as model capabilities evolve"
+          - "Parallel dispatch coordination introduces failure modes if one model times out"
+          - "Not beneficial when all subtasks genuinely require frontier reasoning"
+        components:
+          - "Task classifier (subtask decomposition)"
+          - "Per-task eligible model registry"
+          - "Parallel dispatch orchestrator"
+          - "Response aggregator"
+        flow:
+          - "Decompose conversation turn into subtasks"
+          - "Classify each subtask by quality/latency requirements"
+          - "Route each subtask to appropriate model tier"
+          - "Execute subtasks in parallel across model tiers"
+          - "Aggregate responses into coherent agent output"
+
+      - name: "Multi-Provider Model Routing with Capacity Resilience"
+        problem_solved: "Single-provider model dependencies create catastrophic failure risk during traffic spikes or provider outages."
+        inputs:
+          - "Per-task eligible model sets across multiple providers"
+          - "Provisioned capacity and historical load patterns per provider"
+          - "Enterprise constraints (cloud regions, approved vendor lists)"
+          - "Evals that validate model-agnostic correctness across providers"
+        outputs:
+          - "Provider-agnostic task routing (model switching at task granularity)"
+          - "Load simulation results (billions of conversations/year)"
+          - "Provider fallback decisions during capacity degradation"
+        benefits:
+          - "Capacity resilience for extreme traffic spikes via multi-provider redundancy"
+          - "Enterprise compliance: supports per-customer cloud region and vendor constraints"
+          - "Model-agnostic harness — evals work across providers"
+          - "Avoids single-provider lock-in for business continuity"
+        limitations:
+          - "Eval coverage must be comprehensive enough to catch provider-specific regressions"
+          - "Adds operational overhead: model-specific prompt tuning, rate limit management"
+          - "Benefits diminish if all providers share common infrastructure"
+          - "Not justified for low-traffic systems without capacity risk"
+        components:
+          - "Per-task eligible model registry (multi-provider)"
+          - "Provider health monitor with capacity tracking"
+          - "Load simulation harness"
+          - "Model-agnostic eval suite"
+        flow:
+          - "Define per-task eligible model sets across providers"
+          - "Route each task to available provider within eligible set"
+          - "Simulate extreme load to validate capacity resilience"
+          - "Fallback to alternate provider on degradation detection"
+          - "Harden evals as switching exposes provider-specific gaps"
+
+      - name: "Structured Data + LLM Hybrid Reasoning"
+        problem_solved: "LLMs excel at conversational empathy but lack deep knowledge of individual customer preferences and structured recommendation logic."
+        inputs:
+          - "Structured customer data (preferences, purchase history, loyalty status)"
+          - "Recommendation engine outputs (cross-sell, upsell, retention offers)"
+          - "LLM conversational context (current turn, sentiment, conversation goals)"
+        outputs:
+          - "Hybrid interaction blending structured 'what to recommend' with LLM 'how to present it naturally'"
+          - "Context-aware offer selection (choosing between competing recommendations)"
+          - "Empathetic framing of recommendation logic"
+        benefits:
+          - "Combines deterministic recommendation quality with LLM conversational fluency"
+          - "Particularly effective in sales, loyalty, and retention conversations"
+          - "Leverages both previous-gen recommender data and LLM conversational awareness"
+          - "The most natural-seeming conversations require both data systems"
+        limitations:
+          - "Requires integration with customer data platforms and recommender systems"
+          - "Structured data freshness affects recommendation relevance"
+          - "Added latency from structured data fetch before LLM turn"
+          - "Not applicable when structured data is unavailable or unreliable"
+        components:
+          - "Customer data platform connector"
+          - "Recommendation engine"
+          - "Structured-to-conversational mapping layer"
+          - "Offer selection logic"
+        flow:
+          - "Fetch structured customer data and recommendations"
+          - "Inject structured context into LLM prompt (what to recommend)"
+          - "LLM selects between competing offers and frames naturally"
+          - "Deliver hybrid response blending data-driven recommendation with empathetic presentation"
+
+  - name: "Harness Architecture"
+    patterns:
+      - name: "Dual-Loop Harness Architecture"
+        problem_solved: "A single execution loop optimized for low-latency interaction cannot handle deep analysis tasks requiring extended processing."
+        inputs:
+          - "Conversational turn classification (fast response vs. deep analysis)"
+          - "Latency budgets per task type (sub-2-second for conversation, minutes+ for analysis)"
+          - "Background task description and callback context"
+        outputs:
+          - "Fast conversational loop handling real-time interaction"
+          - "Background loop spawning for extended processing with callback notification"
+          - "Convergent harness architecture — background loop converges toward tool-platform mastery"
+        benefits:
+          - "Users experience sub-2-second responses for simple interactions"
+          - "Background loop can use more expensive reasoning models with higher latency tolerance"
+          - "Convergent architecture: coding agent and deep analysis harness share tool-platform patterns"
+          - "Elegant cost-latency trade-off per task type"
+        limitations:
+          - "Callback UX complexity — user trust requires reliable follow-through"
+          - "State synchronization between loops adds architectural complexity"
+          - "Background task failures need explicit error recovery and re-engagement flows"
+          - "Not beneficial when all agent tasks are uniformly fast or uniformly slow"
+        components:
+          - "Conversational loop (low-latency, aggressive parallelism)"
+          - "Background loop (high-latency tolerance, deep analysis)"
+          - "Task classifier (fast vs. deep routing)"
+          - "Callback notification system"
+        flow:
+          - "Classify incoming task as fast-response or deep-analysis"
+          - "Fast path: process immediately in conversational loop with sub-2-second target"
+          - "Deep path: spawn background loop, notify user ('let me figure this out in 20 minutes')"
+          - "Background loop completes, triggers callback notification"
+          - "Re-engage user with analysis results"
+
+      - name: "Cognitive Process Parallelization"
+        problem_solved: "Voice agents waste latency by pipelining cognitive processes (listen → think → speak) when human cognition parallelizes them."
+        inputs:
+          - "Audio input stream (real-time)"
+          - "Intent classification and response generation models"
+          - "Tool call and data retrieval infrastructure"
+        outputs:
+          - "Concurrent listening, thinking, and speaking"
+          - "Interrupt-aware response generation (agent yields when user speaks)"
+          - "Progress indicators generated while background work completes"
+        benefits:
+          - "Dramatically reduces perceived latency in voice interaction"
+          - "Mirrors human conversation patterns — ~50% of brain power in timing, not content"
+          - "Prevents flawed architecture of imbalanced compute: simple timing logic, enormous content model"
+          - "Enables natural turn-taking with interruption handling"
+        limitations:
+          - "Adds implementation complexity — coordinating parallel cognitive streams"
+          - "Requires speculative work that may be discarded when user interrupts"
+          - "Voice-specific benefits — less relevant for text-only chat agents"
+          - "Model coordination overhead can introduce bugs in transition logic"
+        components:
+          - "Audio listener (continuous, concurrent with other processes)"
+          - "Response formulator (runs while listening)"
+          - "Interrupt detector (yields speaking when user talks)"
+          - "Speculative generation manager"
+        flow:
+          - "Receive audio input continuously"
+          - "While listening, formulate response candidates in parallel"
+          - "While speaking, listen for interruptions"
+          - "On interruption, discard current response, reformulate based on new input"
+
+      - name: "Speculative Execution for Latency Reduction"
+        problem_solved: "Sequential processing adds avoidable latency when some preparation work can run before decisions are finalized."
+        inputs:
+          - "Incoming user query"
+          - "Knowledge bases, account data, and tool APIs"
+          - "Intent classifier (running in parallel, not as a gate)"
+        outputs:
+          - "Pre-fetched data that may or may not be used"
+          - "Interim response generation ('Hold on, I'm pulling up your account')"
+          - "Reduced perceived latency through overlapping computation and wait time"
+        benefits:
+          - "Knowledge retrieval runs in parallel with and often ahead of decision about need"
+          - "Progress indicators bridge the gap between user expectation and processing time"
+          - "Trades compute cost (discarded speculative work) for latency"
+        limitations:
+          - "Wastes compute on speculative work that gets discarded"
+          - "Increases total compute cost per turn"
+          - "Requires accurate interim response generation to avoid user confusion"
+          - "Less beneficial when most tasks complete within latency budget without speculation"
+        components:
+          - "Speculative pre-fetch engine (knowledge, data, tool results)"
+          - "Interim response generator"
+          - "Intent classifier (parallel, not blocking)"
+        flow:
+          - "Receive user query"
+          - "Launch speculative pre-fetch of knowledge, account data, and tool results in parallel"
+          - "Run intent classification concurrently"
+          - "Generate interim response if latancy threshold exceeded"
+          - "Discard unused speculative results; use relevant pre-fetched data"
+
+  - name: "Context Engineering"
+    patterns:
+      - name: "Monolith-First Agent Architecture"
+        problem_solved: "Prematurely splitting agents into triage + task sub-agents deprives each of the other's context, degrading overall quality."
+        inputs:
+          - "Full task context (user intent, procedural knowledge, system constraints)"
+          - "Context engineering strategies: relevance filtering, temporal timing, progressive disclosure"
+          - "Organizational boundaries (team ownership, if applicable)"
+        outputs:
+          - "Single-agent conversation handling with selective context injection"
+          - "Rejection of multi-agent decomposition unless organizational separation is the sole motivation"
+          - "Better context retention than split-agent architectures"
+        benefits:
+          - "Avoids the anti-pattern where triage agent loses procedural context and task agent loses triage context"
+          - "Simpler architecture with fewer failure modes (fewer agent handoffs)"
+          - "Converges with framing that sub-agents are for context control, not anthropomorphized roles"
+          - "Truly separable jobs remain the only exception"
+        limitations:
+          - "Requires sophisticated context engineering to avoid context overload"
+          - "Single agent may hit context limits on very long multi-turn interactions"
+          - "Does not apply when organizational boundaries genuinely require separate agent ownership"
+          - "May not scale to extremely diverse task domains in a single agent"
+        components:
+          - "Context injection engine (temporal, relevance-filtered)"
+          - "Prompt compaction manager"
+          - "Multi-turn state tracker"
+        flow:
+          - "Receive user turn with full context"
+          - "Apply relevance filtering — show everything needed, nothing more"
+          - "Use temporal injection: don't bring context in before relevant"
+          - "Compact prompt without yanking context that would create incoherence"
+          - "Default to single-agent handling; split only for genuinely separable jobs"
+
+      - name: "Temporal Context Injection"
+        problem_solved: "Injecting all relevant context at turn start overloads the prompt, while removing previously-present context during compaction creates incoherence."
+        inputs:
+          - "Conversation history with turn-level state"
+          - "Domain knowledge to inject (articles, SOPs, customer data)"
+          - "Current task phase and expected upcoming phases"
+          - "Prompt compaction events and their timing"
+        outputs:
+          - "Context injected only when relevant to the current conversation phase"
+          - "Guarded compaction that avoids yanking context that contradicts updated system prompts"
+          - "Coherent prompt state across multi-turn interactions"
+        benefits:
+          - "Shows agents everything they need, but nothing more, at each moment"
+          - "Reduces prompt bloat and token waste on irrelevant context"
+          - "Preserves coherence across prompt compaction events"
+          - "Enables single agent to handle complex multi-turn interactions"
+        limitations:
+          - "Requires accurate prediction of when context will become relevant"
+          - "Context removal timing must avoid contradictory signals"
+          - "Adds implementation complexity: context injection must be phase-aware"
+          - "Over-aggressive compaction can degrade understanding of earlier turns"
+        components:
+          - "Context phase predictor (when will context become relevant?)"
+          - "Injection scheduler (temporal, not just relevancy-based)"
+          - "Compaction guard (detect contradictory signals before removing context)"
+          - "Prompt coherence validator"
+        flow:
+          - "Maintain conversation phase awareness"
+          - "Predict which context will become relevant in upcoming phases"
+          - "Inject context at the moment it becomes actionable, not before"
+          - "Before compaction, check that removing context won't create incoherence with updated system prompts"
+          - "Validate prompt coherence post-compaction"
+
+  - name: "Eval & Quality Infrastructure"
+    patterns:
+      - name: "Closed-Loop Agent Improvement Flywheel"
+        problem_solved: "Agent improvement cycles that stop at deployment miss the opportunity to learn from production interactions and feed insights back into the build phase."
+        inputs:
+          - "Production conversation data from all customer interactions"
+          - "Explorer agent (long-running deep research over conversations)"
+          - "Reports and always-on monitors evaluating production quality"
+          - "Ghostwriter agent (agent that builds agents)"
+          - "Declarative agent specifications"
+        outputs:
+          - "Analyze phase: insights from explorer, reports, and monitors"
+          - "Build phase: agent improvements generated by Ghostwriter"
+          - "Release phase: governance-gated deployment of improvements"
+          - "Daily closed-loop flow: Analyze → Build → Release"
+        benefits:
+          - "Proactive improvement: Ghostwriter suggests optimizations based on explorer insights"
+          - "Continuous quality uplift from production data"
+          - "Structured three-phase workflow aligns with governance requirements"
+          - "Each phase produces distinct, inspectable artifacts"
+        limitations:
+          - "Requires production volume to generate statistically meaningful insights"
+          - "Ghostwriter-generated improvements need human review for correctness"
+          - "Release governance adds friction — must be balanced against improvement velocity"
+          - "Infrastructure complexity: three phases with distinct computational profiles"
+        components:
+          - "Explorer agent (deep research over production data)"
+          - "Ghostwriter agent (builds agent improvements)"
+          - "Reports and monitors (continuous quality evaluation)"
+          - "Release governance gate"
+        flow:
+          - "Analyze: explorer researches all conversations, monitors flag issues"
+          - "Build: Ghostwriter generates improvements based on analysis insights"
+          - "Release: governance-gated deployment of verified improvements"
+          - "Repeat daily — closed loop from production back to build"
+
+      - name: "Always-On Production Monitoring with Human Triage"
+        problem_solved: "Exhaustive human review of every agent conversation is impossible at scale; random sampling misses rare but critical failure modes."
+        inputs:
+          - "Every production conversation (real-time stream)"
+          - "Monitor definitions: evaluator specifications for quality dimensions"
+          - "Human review capacity (limited, expensive)"
+        outputs:
+          - "Flagged subset of conversations requiring human attention"
+          - "Compression ratio: 10,000 conversations → ~5 human reviews"
+          - "Continuous quality signal without exhaustive manual effort"
+        benefits:
+          - "Shifts human attention from defensive (review everything) to offensive (improve resolution rate)"
+          - "Catches rare failure modes that random sampling would miss"
+          - "Treats evaluation as ongoing operational concern, not just pre-release gate"
+        limitations:
+          - "Monitor quality determines triage accuracy — poorly designed monitors miss failures or flood humans"
+          - "Requires investment in monitor development and maintenance"
+          - "Human reviewers may develop alert fatigue if false positive rate is high"
+          - "Does not replace pre-release evals — production monitoring is complementary"
+        components:
+          - "Monitor definitions (per quality dimension)"
+          - "Real-time conversation evaluation pipeline"
+          - "Triage classifier (flag vs. pass)"
+          - "Human review queue"
+        flow:
+          - "Run monitors on every production conversation in real-time"
+          - "Flag subset meeting triage criteria for human attention"
+          - "Humans review flagged conversations (strategic improvement, not exhaustive defense)"
+          - "Feed human findings back into monitor definitions to improve triage accuracy"
+
+      - name: "Model-Switch-Driven Eval Hardening"
+        problem_solved: "Eval suites designed against a single model provider develop blind spots — they test what the current model gets right but not what a different model might get wrong."
+        inputs:
+          - "Current eval suite (task-specific correctness tests)"
+          - "Task routing definition with eligible model sets"
+          - "Results from switching a task to a different model provider"
+        outputs:
+          - "Gaps exposed in the eval suite (regressions the old eval missed)"
+          - "Hardened eval suite covering provider-specific failure modes"
+          - "Model-agnostic confidence: ability to switch providers with eval-based safety net"
+        benefits:
+          - "Turns model switching from a migration risk into an eval hardening mechanism"
+          - "First switch invariably reveals the eval wasn't as good as you thought"
+          - "Continuous strengthening: each switch improves evals"
+          - "Makes the harness genuinely model-agnostic"
+        limitations:
+          - "Initial switches will surface more gaps than expected"
+          - "Eval hardening is iterative: each new provider exposes new gaps"
+          - "Not beneficial if you never intend to switch models"
+          - "Requires eval infrastructure that works across providers"
+        components:
+          - "Cross-provider eval runner"
+          - "Gap detector (compare results across models)"
+          - "Eval hardening loop (close gaps, re-run)"
+        flow:
+          - "Run current eval suite against new model provider"
+          - "Compare results — identify regressions the old eval missed"
+          - "Harden eval suite to cover newly exposed gaps"
+          - "Re-run with hardened eval — confirm coverage across both providers"
+          - "Repeat on each model switch"
+
+      - name: "Recursive AI Verification Chains"
+        problem_solved: "Non-deterministic AI components cannot be made 99.9% reliable through single-pass verification; compounding failure rates require layered checking."
+        inputs:
+          - "Primary AI output (e.g., generated conversation, classification decision)"
+          - "Verification AI models (second-pass checkers)"
+          - "Meta-verification AI models (validating the verifiers)"
+        outputs:
+          - "Three-layer verification chain: primary output → AI verification → AI meta-verification"
+          - "Each layer filters additional errors, asymptotically approaching production-grade reliability"
+          - "Composability: each verification layer follows the same architectural pattern"
+        benefits:
+          - "Achieves multi-nine reliability with non-deterministic systems through composable verification"
+          - "90% accurate primary + 90% accurate verifier + 90% accurate meta-verifier = high aggregate reliability"
+          - "Architectural principle behind always-on monitors"
+          - "Trades compute cost for reliability in a layerable, predictable way"
+        limitations:
+          - "Compute cost multiplies with each verification layer"
+          - "Correlated errors: if all AI components share the same blind spot, layering doesn't help"
+          - "Diminishing returns after 2-3 layers"
+          - "Requires diverse verification models to avoid correlated failure modes"
+        components:
+          - "Primary output generator"
+          - "AI verifier (checks primary output)"
+          - "AI meta-verifier (checks verifier decisions)"
+          - "Error aggregation and escalation"
+        flow:
+          - "Generate primary output"
+          - "Pass through AI verifier — flag likely errors"
+          - "Pass verifier decisions through meta-verifier — validate verifier accuracy"
+          - "Escalate unresolved discrepancies to human review"
+          - "Each layer filters additional errors, approaching production-grade reliability"
+
+      - name: "Confidence-Gated Continual Learning"
+        problem_solved: "Full automation of agent improvement risks deploying incorrect fixes; full manual review bottlenecks deployment velocity."
+        inputs:
+          - "Issues detected from production agent interactions"
+          - "Automated improvement suggestions"
+          - "Confidence score per suggestion (based on fix verifiability)"
+          - "Customer comfort threshold for automation"
+        outputs:
+          - "High-confidence, trivially verifiable fixes → FYI notification + auto-deployment"
+          - "Lower-confidence fixes → human review required before deployment"
+          - "Four-stage loop: detect → suggest → review → deploy"
+        benefits:
+          - "Accelerates deployment for unambiguous fixes"
+          - "Preserves human oversight for ambiguous or high-stakes changes"
+          - "Gradual: primitives are built; constraint is customer comfort, not technical capability"
+        limitations:
+          - "Confidence scoring accuracy determines safety"
+          - "Customer comfort threshold varies by domain"
+          - "Requires clear verifiability criteria per fix type"
+          - "May under-automate if confidence thresholds are set conservatively"
+        components:
+          - "Issue detector (production monitoring)"
+          - "Improvement suggester (automated fix generation)"
+          - "Confidence scorer (verifiability assessment)"
+          - "Deployment gate (auto vs. human-reviewed)"
+        flow:
+          - "Detect issues from production agent interactions"
+          - "Generate automated improvement suggestions"
+          - "Score confidence based on fix verifiability"
+          - "High confidence + trivially verifiable → auto-deploy with FYI notification"
+          - "Lower confidence → enqueue for human review before deployment"
+
+  - name: "Memory & Security Architecture"
+    patterns:
+      - name: "Three-Tier Memory Persistence"
+        problem_solved: "Memory is either fully manual or fully implicit, with no gradient between these extremes."
+        inputs:
+          - "Conversation turns with explicit save instructions"
+          - "Builder-defined memory schemas (declared upfront by agent designers)"
+          - "Implicit memory signals (agent-observed relevance patterns)"
+        outputs:
+          - "Tier 1 (explicit per-turn): user says 'save this to memory'"
+          - "Tier 2 (builder-defined): agent builders declare what matters upfront"
+          - "Tier 3 (implicit/agent-decided): agent autonomously determines what to remember"
+        benefits:
+          - "Measurably improved resolution rate through personalized recall"
+          - "Incremental adoption path: Tier 1 → Tier 2 → Tier 3 as confidence grows"
+          - "Treats memory as first-class platform primitive, not an afterthought"
+        limitations:
+          - "Implicit memory (Tier 3) can capture incorrect or sensitive information"
+          - "Memory quality degrades as automation increases"
+          - "Platform-level memory requires integration with identity resolution"
+          - "Memory bloat: without pruning, accumulated memories degrade retrieval relevance"
+        components:
+          - "Explicit save interface (user-initiated)"
+          - "Builder memory schema (declarative specs)"
+          - "Autonomous memory detector (implicit signals)"
+          - "Memory retrieval with identity resolution"
+        flow:
+          - "Tier 1: process explicit 'save this to memory' instructions per turn"
+          - "Tier 2: persist builder-declared data schemas (birthdays, preferences)"
+          - "Tier 3: agent observes patterns and autonomously extracts memories"
+          - "Retrieve relevant memories at future interactions via identity resolution"
+          - "Prune stale or low-value memories to maintain retrieval quality"
+
+      - name: "Regulated Data Boundary"
+        problem_solved: "LLM providers are not certified for regulated data, yet agents increasingly handle payments and sensitive information."
+        inputs:
+          - "Regulated data streams (payment information, authentication tokens, PII)"
+          - "LLM context window (untrusted for regulated data)"
+          - "Parallel non-AI infrastructure for regulated operations"
+        outputs:
+          - "Isolated infrastructure tier handling regulated data entirely outside LLM context"
+          - "Security boundary enforcement: sensitive data never enters a model prompt"
+          - "Compliance certification per boundary (PCI DSS Level 1 for payment tier)"
+        benefits:
+          - "Enables agent-mediated commerce where no LLM provider is PCI-certified"
+          - "Architectural isolation as enforcement mechanism, not just policy controls"
+          - "Built before it made sense as strategic bet on agent commerce growth"
+        limitations:
+          - "Adds infrastructure complexity: separate regulated data tier"
+          - "Some interactions genuinely require regulated data in context"
+          - "Certification processes are long and expensive"
+          - "Not needed for agents that never touch regulated data"
+        components:
+          - "Regulated data tier (PCI, HIPAA, auth — isolated from LLM)"
+          - "AI tier (models, prompts — never touches regulated data)"
+          - "Security boundary enforcement layer"
+          - "Compliance certification per boundary"
+        flow:
+          - "Receive conversation turn potentially containing regulated data"
+          - "Route regulated data through isolated, certified infrastructure"
+          - "Pass non-regulated context to LLM for conversational processing"
+          - "Merge LLM output with regulated data tier results at response delivery"
+          - "Never allow regulated data to enter LLM prompt or context window"
+
+      - name: "Auth-Coupled Memory Architecture"
+        problem_solved: "Memory products treat storage and retrieval as independent of identity, but extracting the right memories requires knowing who the caller is."
+        inputs:
+          - "Identity resolution signal (phone number, account ID, session token)"
+          - "Authentication confidence score"
+          - "Memory store keyed by identity"
+        outputs:
+          - "Authenticated memory retrieval (only memories belonging to the identified caller)"
+          - "Tiered access per memory sensitivity level"
+          - "Rejection of standalone memory products that lack identity coupling"
+        benefits:
+          - "Explains why memory startups haven't broken out: memory requires authentication"
+          - "Consumer products can offer memory freely; B2B vendors must couple with identity"
+          - "Memory sensitivity gating: low-sensitivity memories need less auth confidence"
+        limitations:
+          - "Authentication is imperfect — shared phone numbers break identity resolution"
+          - "Requires explicit sensitivity policy gradient per business domain"
+          - "Coupling increases integration cost: adopting memory means adopting identity"
+          - "Not applicable to anonymous agents that don't persist per-user state"
+        components:
+          - "Identity resolution service"
+          - "Authentication confidence scorer"
+          - "Memory store (keyed by identity)"
+          - "Sensitivity-gated retrieval policy"
+        flow:
+          - "Resolve caller identity (phone number, account ID, session token)"
+          - "Compute authentication confidence score"
+          - "Retrieve memories matched to resolved identity"
+          - "Gate memory access by sensitivity: low-confidence auth → low-sensitivity memories only"
+          - "Reject retrieval when identity cannot be verified"
+
+  - name: "Agent Tooling Design"
+    patterns:
+      - name: "File-System Materialization for Agent Tooling"
+        problem_solved: "Coding agents struggle with custom abstractions and DSLs because they don't map to the primitives models were trained to manipulate."
+        inputs:
+          - "Domain logic and agent specifications"
+          - "Coding agent capabilities (file system manipulation, git operations, text search)"
+          - "Model training corpus familiarity (common packages, file formats)"
+        outputs:
+          - "Domain concepts materialized as file-system artifacts (files, directories, structured text)"
+          - "Tool interfaces that coding agents already understand without custom training"
+          - "Agent-manipulable representations of declarative specifications"
+        benefits:
+          - "Coding agents cook with file systems, git, and grep — materialize into those structures"
+          - "Reduces the gap between what models know and what tasks demand"
+          - "No custom training or skill injection needed for tool usage"
+        limitations:
+          - "Some domain concepts resist materialization into file-system primitives"
+          - "Over-materialization creates file bloat and maintenance overhead"
+          - "File-system representation may not capture semantic relationships"
+          - "Requires the coding agent to be competent at file operations"
+        components:
+          - "Domain-to-filesystem mapper"
+          - "Structured text format (declarative DSL as files)"
+          - "Git-based versioning for all artifacts"
+        flow:
+          - "Design domain concepts as file-system artifacts"
+          - "Use structured formats coding agents already understand"
+          - "Leverage git for versioning, grep for search, file ops for manipulation"
+          - "Let coding agents manipulate domain logic through familiar primitives"
+
+      - name: "Model-First Interface Design (80/20 Rule)"
+        problem_solved: "Tooling interfaces designed for human engineers create a mismatch with coding agent capabilities."
+        inputs:
+          - "Task requirements and domain logic"
+          - "Coding agent capability profile (what models are genuinely good at)"
+          - "Available primitives (file systems, git, grep, common packages)"
+        outputs:
+          - "80% of interfaces reframed into model-familiar primitives"
+          - "20% of interfaces where domain abstractions are genuinely necessary — taught via skills"
+        benefits:
+          - "Avoids the 'middle ground' anti-pattern: abstractions almost model-familiar but not quite"
+          - "Default posture: meet the models on their turf"
+          - "Reduces skill injection overhead — only the novel 20% needs custom teaching"
+          - "Halfway abstractions are worse than either extreme"
+        limitations:
+          - "Some domain concepts genuinely cannot be reframed into model-familiar primitives"
+          - "Determining which 20% justifies custom abstraction requires judgment"
+          - "Model capabilities evolve — today's familiar primitives may change"
+          - "Does not address the case where no good mapping exists"
+        components:
+          - "Interface suitability classifier (model-familiar vs. custom)"
+          - "Reframing engine (domain → model-familiar primitives)"
+          - "Skill injection pipeline (for the 20% custom cases)"
+        flow:
+          - "Evaluate each interface: can this be reframed into model-familiar primitives?"
+          - "80%: reframe into file systems, git, grep, common packages"
+          - "Avoid halfway abstractions — go all the way to model-familiar or stay custom"
+          - "20%: teach genuinely novel domain abstractions via skills and context injection"
+          - "Default to model-familiar; custom model capabilities are the exception"

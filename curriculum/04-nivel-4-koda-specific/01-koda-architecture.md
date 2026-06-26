@@ -2519,6 +2519,14 @@ Isso é Nível 4.
 
 ---
 
+## Padrões Relacionados (Sierra)
+
+**[[docs/canonical/regulated-data-boundary|Regulated Data Boundary]]** — Padrão arquitetural de isolamento físico ou lógico de infraestrutura para dados regulados (PCI-DSS, LGPD), garantindo que informações sensíveis como dados de pagamento nunca toquem um LLM. Veja o exercício em [[exercises/exercise-regulated-data-boundary|Exercise: Regulated Data Boundary]].
+
+Este padrão é diretamente relevante para a arquitetura KODA: o Payment Agent já opera sem LLM por design, mas o Regulated Data Boundary formaliza essa separação como um princípio arquitetural — dados regulados vivem em um perímetro isolado, com APIs determinísticas como única interface com o resto do sistema.
+
+---
+
 ## 📋 Metadata
 
 | Campo | Valor |

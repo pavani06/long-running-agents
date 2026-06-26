@@ -1,0 +1,169 @@
+meta:
+  title: "Repository Mental Model"
+  date: "2026-06-26"
+  repo: "ecossistema-pavan"
+  type: "mental-model"
+  purpose: "Structured understanding of the repository ecosystem before analyzing external source documents."
+  key_thesis: "LLMs are capable but fragile in long-running tasks — the solution is harness engineering, not better prompts or bigger models."
+
+goals:
+  - "Agentic Engineering (Harness Engineering): Build infrastructure that surrounds LLMs and guarantees reliability across hours-long execution. Core axiom: humans steer, agents execute. Engineer's role shifts from writing code to defining work, specifying quality bars, building guardrails, removing blockers."
+  - "Knowledge Management: Multi-vault Obsidian ecosystem with typed ontologies, cross-vault wikilinks, and automated pipelines (analyze-and-improve, reflection loop) that transform raw sources into interlinked canonical knowledge."
+  - "LLM Pipelines: Production-grade pipelines closing the learning loop — analyze-and-improve (7 phases), Knowledge Pipeline (C2-C6: handoff→compress→score→promote→provenance→drift→append→simulation), Reflection Loop (Gather→Analyze→Synthesize→Apply), Learning Flywheel (failure→findings→correction→canonical docs)."
+  - "KODA Application: WhatsApp-based e-commerce agent for supplement sales, maintaining quality in 2+ hour conversations, serving as the practical anchor for all patterns."
+  - "Curriculum & Education: 12-week program teaching harness engineering across 4 levels (N1-N4) with 8 core concepts, 35+ diagrams, 5 case studies."
+
+architecture:
+  vaults:
+    - {name: "long-running-agents", path: "/mnt/c/Users/pavan/long-running-agents/", purpose: "Knowledge base: 118 canonical patterns, N1-N4 curriculum, ADRs, analyses, articles, harness", public: true}
+    - {name: "raw-knowledge", path: "/mnt/c/Users/pavan/raw-knowledge/", purpose: "Ingested sources ontology: 110 concepts, entities, typed relationships (LLM Wiki/Karpathy pattern)", public: true}
+    - {name: "mhc-knowledge-base", path: "/mnt/c/Users/pavan/mhc-knowledge-base/", purpose: "KODA e-commerce domain knowledge, templates, validation scripts", public: false}
+    - {name: "sisyphus-runtime", path: "~/sisyphus-runtime/", purpose: "Private runtime vault: session handoffs, durable facts, runtime state, telemetry.db", public: false}
+
+  projects:
+    - {name: "obsidian-eval", path: "/mnt/c/Users/pavan/obsidian-eval/", role: "CLI & npm library (@pavani/obsidian-eval): scan, query, graph, write, epistemic graph, cross-vault wikilinks"}
+    - {name: "agent-analysis", path: "/mnt/c/Users/pavan/agent-analysis/", role: "Architectural diagnosis of KODA using 8 lenses from long-running-agents"}
+    - {name: "livro-agentico", path: "/mnt/c/Users/pavan/livro-agentico/", role: "Quarto book: 10 chapters, 70+ canonical patterns mapped"}
+    - {name: "telemetry", path: "~/scripts/telemetry/", role: "Observability pipeline: tracer, collector, scavenger, SLO checker, 80 tests in 13 suites"}
+
+  abstractions:
+    - {name: "Vault", description: "Markdown knowledge repository managed by obsidian-eval; declares exports/imports in MANIFEST.md", location: "obsidian-eval/src/types.ts"}
+    - {name: "MANIFEST.md", description: "Cross-vault dependency declaration listing exports and imports per vault", location: "obsidian-eval/src/manifest.ts"}
+    - {name: "Cross-vault Wikilink", description: "[[vault:<name>/<path>]] syntax referencing documents in another vault", location: "obsidian-eval/src/index.ts"}
+    - {name: "Telemetry DB", description: "SQLite database storing session metrics (tokens, traces, SLOs)", location: "~/scripts/telemetry/collector.ts"}
+    - {name: "Trace Span", description: "Instrumented record of a task() call: category, subagent, duration, tokens, success", location: "~/scripts/telemetry/trace-cli.ts"}
+    - {name: "Execution Graph", description: "DAG of tasks modeling session orchestration with TaskNode status/parents/children/estimate", location: "obsidian-eval/src/execution-graph.ts"}
+    - {name: "Handoff", description: "Snapshot of session state persisted as note (type: session-handoff)", location: "session-handoff skill"}
+    - {name: "Durable Fact", description: "Persisted knowledge with type (constraint/preference/baseline/diagnostic/principle) and temporal validity", location: "obsidian-eval/src/types.ts"}
+    - {name: "Memory Layers", description: "3-layer pipeline: Working Memory → Session Memory → Long-term Memory", location: "obsidian-eval/src/memory-layers.ts"}
+    - {name: "Relevance Score", description: "0-1 score across 5 dimensions: recency, importance, frequency, similarity, confidence", location: "obsidian-eval/src/relevance.ts"}
+    - {name: "Promotion Candidate", description: "Pattern detected in ≥3 similar handoffs, candidate for principle", location: "obsidian-eval/src/types.ts"}
+    - {name: "Reflection Loop", description: "Cross-session pipeline: Gather→Analyze→Synthesize→Apply (automated daily)", location: "reflection-runner skill"}
+    - {name: "Canonical Doc", description: "Authoritative reference document (type: canonical) defining a reusable agent design pattern", location: "long-running-agents/docs/canonical/"}
+    - {name: "Skill", description: "Domain-specific instructions and workflows loaded by orchestrator via skill(name='...')", location: "~/.config/opencode/skills/ (30 skills)"}
+    - {name: "Harness", description: "Control infrastructure surrounding the agent: tests, reviews, conventions, skills, docs", location: "various"}
+    - {name: "Token Budget", description: "Token budget per session: Green (>50%), Yellow (30-50%), Orange (20-30%), Red (≤20%)", location: "budget-monitor skill"}
+    - {name: "Epistemic Graph", description: "Auto-extracted entity/relationship graph from runtime vault (174 nodes, 191 edges)", location: "obsidian-eval/src/epistemic-graph.ts"}
+    - {name: "Ground Truth", description: "Human-defined immutable assertions blocking knowledge pipeline contamination (5 active)", location: "obsidian-eval/src/ground-truth.ts"}
+    - {name: "Drift Detection", description: "Verification that candidate principles don't contradict ground truths", location: "obsidian-eval/src/ground-truth.ts:25-89"}
+    - {name: "Provenance Chain", description: "Audit trail recording origin of each durable fact: derived_from, reasoning_summary, premises", location: "obsidian-eval/src/types.ts:102-116"}
+    - {name: "Simulation", description: "Synthetic handoff generation to test emergent pipeline properties (5 asserts)", location: "obsidian-eval/src/simulate.ts"}
+    - {name: "System of Record", description: "Precedence document: ADRs > canonical > evidence > analysis > archive > READMEs", location: "long-running-agents/docs/system-of-record.md"}
+    - {name: "Harness Engineering", description: "Operational discipline: humans steer, agents execute; code is free, human attention is scarce", location: "raw-knowledge/concepts/harness-engineering.md"}
+    - {name: "Generator/Evaluator", description: "Two-agent architecture separating creative generation from impartial evaluation (11% silent failure gap)", location: "long-running-agents/docs/canonical/generator-evaluator.md"}
+    - {name: "Plan-Execute-Verify", description: "Decompose each task into three phases with explicit checkpoints and contracts per phase", location: "long-running-agents/docs/canonical/plan-execute-verify.md"}
+    - {name: "3-Layer Evaluation Architecture", description: "Deterministic (regex, cost zero) → Semantic (LLM-as-Judge) → Behavioral (trace path analysis)", location: "long-running-agents/docs/canonical/3-layer-evaluation-architecture.md"}
+
+  relationships:
+    - {from: "raw-knowledge", to: "long-running-agents", type: "feeds (analyze-and-improve pipeline extracts concepts → canonical docs)"}
+    - {from: "long-running-agents", to: ".opencode/skills/", type: "implements (canonical patterns become operational skills)"}
+    - {from: ".opencode/skills/", to: ".opencode/agents/", type: "loaded_by (skills are loaded by agent definitions)"}
+    - {from: ".opencode/agents/", to: "sisyphus-runtime", type: "persists_to (handoffs, durable facts, telemetry)"}
+    - {from: "sisyphus-runtime", to: "obsidian-eval", type: "managed_by (cross-vault wikilinks powered by obsidian-eval)"}
+    - {from: "obsidian-eval", to: "telemetry", type: "feeds (scheduler estimates feed trace spans)"}
+    - {from: "telemetry", to: "sisyphus-runtime", type: "writes_to (telemetry.db in runtime vault)"}
+    - {from: "mhc-knowledge-base", to: "long-running-agents", type: "informs (KODA domain feeds curriculum and canonical patterns)"}
+    - {from: "agent-analysis", to: "mhc-knowledge-base", type: "analyzes (architectural diagnosis of KODA)"}
+    - {from: "livro-agentico", to: "long-running-agents", type: "publishes (Quarto book from canonical patterns)"}
+
+patterns:
+  - {name: "Error Context Hygiene", where_defined: "long-running-agents/docs/canonical/error-context-hygiene.md", domain: "context-engineering", maturity: "established", source: "12-Factor Agents (Dex Horthy, 2025)"}
+  - {name: "Owned Agent Control Loop", where_defined: "long-running-agents/docs/canonical/owned-agent-control-loop.md", domain: "agent-loop", maturity: "established", source: "12-Factor Agents"}
+  - {name: "Budget-Aware Session Handoff", where_defined: "long-running-agents/docs/canonical/budget-aware-session-handoff.md", domain: "context-engineering", maturity: "established", source: "Token Budgeting analysis"}
+  - {name: "Generator/Evaluator", where_defined: "long-running-agents/docs/canonical/generator-evaluator.md", domain: "evals", maturity: "established", source: "Why Agents Lose Focus"}
+  - {name: "Plan-Execute-Verify", where_defined: "long-running-agents/docs/canonical/plan-execute-verify.md", domain: "agentes-orquestracao", maturity: "established"}
+  - {name: "3-Layer Evaluation Architecture", where_defined: "long-running-agents/docs/canonical/3-layer-evaluation-architecture.md", domain: "evals", maturity: "established"}
+  - {name: "Production Failure Regression Flywheel", where_defined: "long-running-agents/docs/canonical/production-failure-regression-flywheel.md", domain: "production", maturity: "established"}
+  - {name: "Evaluation Tier Stratification", where_defined: "long-running-agents/docs/canonical/eval-tier-stratification.md", domain: "evals", maturity: "established"}
+  - {name: "Addressable Memory Catalog", where_defined: "long-running-agents/docs/canonical/addressable-memory-catalog.md", domain: "context-engineering", maturity: "established"}
+  - {name: "Head-Tail Context Truncation", where_defined: "long-running-agents/docs/canonical/head-tail-context-truncation.md", domain: "context-engineering", maturity: "established"}
+  - {name: "Measured Harness Evolution Lifecycle", where_defined: "long-running-agents/docs/canonical/measured-harness-evolution-lifecycle.md", domain: "harness-engineering", maturity: "established"}
+  - {name: "Skill-Canons Bridge", where_defined: "plans/adr/2026-06-25-adr-007-canonical-context-injection-method.md", domain: "harness-engineering", maturity: "established", note: "16 canonical refs injected inline by phase"}
+  - {name: "Epistemic Memory Graph", where_defined: "long-running-agents/docs/canonical/epistemic-memory-graph.md", domain: "knowledge-management", maturity: "established", note: "Implemented 2026-06-19; 174 nodes, 191 edges"}
+  - {name: "Prompt-as-Code Causal Change Management", where_defined: "long-running-agents/docs/canonical/prompt-as-code-causal-change-management.md", domain: "production", maturity: "established"}
+  - {name: "Living Eval Dataset", where_defined: "long-running-agents/docs/canonical/living-eval-dataset.md", domain: "evals", maturity: "established"}
+  - {name: "Centralized Cross-Framework Tracing", where_defined: "long-running-agents/docs/canonical/centralized-cross-framework-tracing.md", domain: "production", maturity: "established"}
+  - {name: "Trace Instrumentation", where_defined: "long-running-agents/docs/canonical/trace-instrumentation.md", domain: "production", maturity: "established", note: "3 layers: AGENTS.md instruction, enforcement post-hoc, health check cross-session"}
+  - {name: "Deliberate Forgetting", where_defined: "long-running-agents/docs/canonical/deliberate-forgetting.md", domain: "context-engineering", maturity: "established"}
+  - {name: "Smallest Sufficient Context", where_defined: "long-running-agents/docs/canonical/smallest-sufficient-context.md", domain: "context-engineering", maturity: "established"}
+  - {name: "Agent Degradation Loop Prevention", where_defined: "long-running-agents/docs/canonical/agent-degradation-loop-prevention.md", domain: "context-engineering", maturity: "established"}
+  - {name: "LLM as Fuzzy Compiler", where_defined: "long-running-agents/docs/canonical/llm-as-fuzzy-compiler.md", domain: "harness-engineering", maturity: "established"}
+  - {name: "Governance Context Injection PII Prevention", where_defined: "long-running-agents/docs/canonical/governance-context-injection-pii-prevention.md", domain: "governanca", maturity: "established"}
+  - {name: "Business Outcome First Eval Pipeline", where_defined: "long-running-agents/docs/canonical/business-outcome-first-eval-pipeline.md", domain: "evals", maturity: "established"}
+
+terminology:
+  - {term: "Agent (Agente)", definition: "Autonomous AI entity that takes actions, uses tools, executes tasks in sequence", source: "curriculum/GLOSSARY.md"}
+  - {term: "Amnesia (Context Amnesia)", definition: "Agent forgets earlier context after exceeding context window", source: "curriculum/GLOSSARY.md"}
+  - {term: "Agent Degradation Loop", definition: "4-link cycle: uneven attention → compounding errors → state fragmentation → inert memory feedback", source: "curriculum/GLOSSARY.md"}
+  - {term: "Context Window", definition: "Token limit the model can process in a single session", source: "curriculum/GLOSSARY.md"}
+  - {term: "Harness", definition: "Scaffolding that supports the agent: memory management, tool integration, error handling, state persistence", source: "curriculum/GLOSSARY.md"}
+  - {term: "Harness Engineering", definition: "Operational discipline: humans steer, agents execute; engineer's role shifts to defining work, specifying quality bars, building guardrails", source: "raw-knowledge/concepts/harness-engineering.md"}
+  - {term: "Generator/Evaluator", definition: "Two-agent architecture separating creative generation from impartial evaluation", source: "curriculum/GLOSSARY.md"}
+  - {term: "Sprint Contract", definition: "Explicit agreement on what agent will deliver in a bounded execution block", source: "curriculum/GLOSSARY.md"}
+  - {term: "Rubric", definition: "Structured scoring criteria for evaluating agent output quality", source: "curriculum/GLOSSARY.md"}
+  - {term: "Trace", definition: "Instrumented record of agent execution path (tool calls, decisions, timing)", source: "curriculum/GLOSSARY.md"}
+  - {term: "Compaction", definition: "Summarizing conversation history to reclaim context window space", source: "curriculum/GLOSSARY.md"}
+  - {term: "Control Plane", definition: "Orchestration layer managing agent lifecycle (start, pause, resume, handoff)", source: "curriculum/GLOSSARY.md"}
+  - {term: "Vault", definition: "Markdown knowledge repository managed by obsidian-eval; declares exports/imports in MANIFEST.md", source: "ecosystem-glossary.md"}
+  - {term: "Handoff", definition: "Snapshot of session state persisted as note (type: session-handoff) in runtime vault", source: "ecosystem-glossary.md"}
+  - {term: "Durable Fact", definition: "Persisted knowledge with temporal validity (valid_from/valid_to) and provenance chain", source: "ecosystem-glossary.md"}
+  - {term: "Knowledge Pipeline", definition: "Full flow: handoff → compressWorkingMemory → relevanceScore → promotePatterns → checkDrift → appendFact → simulation", source: "ecosystem-glossary.md"}
+  - {term: "Reflection Loop", definition: "Cross-session pipeline: Gather→Analyze→Synthesize→Apply (automated daily at 09:00 BRT)", source: "ecosystem-glossary.md"}
+  - {term: "Epistemic Graph", definition: "Auto-extracted entity/relationship graph from runtime vault (174 nodes, 191 edges)", source: "ecosystem-glossary.md"}
+  - {term: "Ground Truth", definition: "Human-defined immutable assertions blocking knowledge pipeline contamination (5 active)", source: "ecosystem-glossary.md"}
+  - {term: "System of Record", definition: "Precedence document resolving documentation conflicts: ADRs > canonical > evidence > analysis > archive > READMEs", source: "ecosystem-glossary.md"}
+  - {term: "MOC (Map of Content)", definition: "Index file aggregating wikilinks for a thematic cluster (prefix _moc-)", source: "ecosystem-glossary.md"}
+  - {term: "Cross-vault Wikilink", definition: "[[vault:<name>/<path>]] syntax referencing documents in another vault", source: "ecosystem-glossary.md"}
+  - {term: "Token Budget", definition: "Budget per session: Green (>50%), Yellow (30-50%), Orange (20-30%), Red (≤20%, mandatory handoff)", source: "ecosystem-glossary.md"}
+  - {term: "Canonical Doc", definition: "Authoritative reference document (type: canonical) defining a reusable agent design pattern", source: "ecosystem-glossary.md"}
+  - {term: "Skill", definition: "Domain-specific instructions loaded by orchestrator; 30 operational skills with 237 tests, 26/26 suites passing", source: "ecosystem-glossary.md"}
+  - {term: "12-Factor Agents", definition: "Agent engineering framework by Dex Horthy (AI Engineer 2025); source of 3+ canonical patterns", source: "long-running-agents/docs/analysis/2026-06-09-12-factor-agents/"}
+  - {term: "KODA", definition: "WhatsApp-based e-commerce agent for supplement sales; practical anchor for all patterns and curriculum", source: "mhc-knowledge-base/"}
+  - {term: "Hot/Warm/Cold Context", definition: "Tiered-context-storage: hot (active window), warm (addressable memory), cold (archival storage)", source: "long-running-agents/docs/canonical/tiered-context-storage.md"}
+  - {term: "QI Loop (Quality Improvement)", definition: "Review findings → corrective action → canonical docs update cycle", source: "learning flywheel infrastructure"}
+  - {term: "Scavenger Pipeline", definition: "Post-hoc inference of trace spans from session transcripts with is_inferred=1 (lower quality)", source: "~/scripts/telemetry/scavenge-sessions.sh"}
+
+curriculum:
+  overview: "12-week program, 4 levels, 8 core concepts, 35+ Mermaid diagrams, 5 case studies"
+  levels:
+    - {level: "N1", name: "Fundamentals", duration: "3-4h", focus: "Context windows, token budgeting, basic harness patterns", key_lessons: ["why-agents-lose-plot", "token-budgeting", "basic-harness-patterns"]}
+    - {level: "N2", name: "Practical Patterns", duration: "6-8h", focus: "Generator/Evaluator, Sprint Contracts, Rubric Design, Trace Reading", key_lessons: ["generator-evaluator-pattern", "sprint-contracts", "rubric-design", "trace-reading"]}
+    - {level: "N3", name: "Advanced Architecture", duration: "8-10h", focus: "Multi-agent systems, state persistence, file-based coordination, harness evolution", key_lessons: ["multi-agent-systems", "state-persistence", "file-based-coordination", "server-side-compaction", "harness-evolution"]}
+    - {level: "N4", name: "KODA-Specific", duration: "continuous", focus: "KODA architecture, customer journeys, feature patterns, implementation", key_lessons: ["koda-architecture", "customer-journey-flows", "feature-design-patterns", "evaluation-rubrics-koda", "harness-improvements"]}
+  core_concepts:
+    - "Context Management"
+    - "Planning vs Execution Separation"
+    - "Generator/Evaluator Pattern"
+    - "Sprint Contracts"
+    - "State Persistence"
+    - "Harness Evolution"
+    - "Multi-Agent Coordination"
+    - "Evaluation Rubrics"
+  supplementary:
+    - {name: "Knowledge Graphs", location: "curriculum/06-knowledge-graphs/", description: "35+ Mermaid diagrams: concept ecosystem, KODA dependencies, learning progression"}
+    - {name: "Implementation Guides", location: "curriculum/07-implementation-guides/", description: "Setup guide, team progression, harness design checklist, rubric template"}
+    - {name: "Templates", location: "curriculum/08-tools-templates/", description: "Sprint contract, rubric, ADR, progress tracker"}
+    - {name: "Case Studies", location: "curriculum/09-case-studies/", description: "5 cases: retro-game-maker, browser-daw, 3x KODA"}
+    - {name: "References", location: "curriculum/10-references/", description: "External references, model capability timeline"}
+  entry_points:
+    - {profile: "Newcomer", entry: "QUICK_START.md", time: "45 min"}
+    - {profile: "Experienced with LLMs", entry: "MASTER_PLAN.md > Pule para Prático", time: "30 min"}
+    - {profile: "Architect / Senior", entry: "MASTER_PLAN.md > Vá Direto para Avançado", time: "30 min"}
+    - {profile: "KODA team", entry: "04-nivel-4-koda-specific/", time: "Continuous"}
+    - {profile: "Quick reference", entry: "GLOSSARY.md", time: "Lookup"}
+
+gaps:
+  - {what: "agent-lifecycle.md canonical doc not written (claim → worktree → implement → review → merge → cleanup)", where_documented: "system-of-record.md:293"}
+  - {what: "curriculum-model.md canonical doc not written (level taxonomy, artifact types, quality criteria)", where_documented: "system-of-record.md:294"}
+  - {what: "portal-architecture.md canonical doc not written (blocked on SPA implementation)", where_documented: "system-of-record.md:295"}
+  - {what: "crossroad-change-policy.md canonical doc not written (referenced by PR template but files don't exist)", where_documented: "system-of-record.md:296"}
+  - {what: "8 core concepts in curriculum/05-core-concepts/ marked as pending (⏳) — content exists but status incomplete", where_documented: "curriculum/README.md"}
+  - {what: "FAQ.md marked 'em construção' (under construction)", where_documented: "curriculum/README.md"}
+  - {what: "Gap 2a: automated evals (P0) — 8 tasks, design complete, awaiting authorization", where_documented: "AGENTS.md plan listing: 2026-06-21-runtime-canonical-eval-gate.md"}
+  - {what: "Handoff as RunContext (Option B) — blocked REV 3, 4 P0 gates pending, ~730 LOC", where_documented: "AGENTS.md plan listing: 2026-06-20-handoff-runcontext-option-b.md"}
+  - {what: "5 skill-canons bridge architectural fixes — deferred by measured-harness-evolution-lifecycle, resume after 2026-08-22", where_documented: "AGENTS.md plan listing: 2026-06-23-skill-canons-bridge-arch-fixes.md"}
+  - {what: "Scavenger pipeline pending: G2 (classifier calibration with real data), G4 (scavenger dry-run), E2E smoke test (8.4)", where_documented: "AGENTS.md plan listing: 2026-06-23-correction-first-scavenger-pipeline-unified.md"}
+  - {what: "4 candidate ADR topics not yet written (portal stack, content chunking, state persistence strategy, curriculum versioning)", where_documented: "system-of-record.md:160-164"}
+  - {what: "PR template references non-existent files (src/lib/safe-console.js, src/lib/logger.js, docs/guides/crossroad-change-policy.md)", where_documented: "system-of-record.md:141"}
+  - {what: "obsidian-eval drift detection currently lexical only (not semantic) — embedding upgrade planned", where_documented: "ecosystem-glossary.md:521"}
+  - {what: "is_inferred=1 trace spans have lower quality (no real latency, no trace_id, no measured tokens) — scavenger is fallback, not equivalent to direct instrumentation", where_documented: "AGENTS.md Trace Instrumentation Gate"}

@@ -5599,3 +5599,12 @@ Use estes cards em review semanal. Eles foram escritos para discussão rápida, 
 ---
 
 **Fim do Conceito Core 08: Evaluation Rubrics**
+
+---
+
+## Padrões Relacionados (Sierra)
+
+**Always-On Production Monitoring with Human Triage** — Monitoramento contínuo de qualidade em produção com uma camada de triagem humana. Em vez de automatizar totalmente a detecção e correção, o padrão define monitores por dimensão de qualidade, flagga conversas problemáticas e aplica uma taxa de compressão agressiva (ex: 10.000 conversas → 5 para revisão humana). O humano revisa apenas o subconjunto comprimido, fecha o loop com feedback estruturado, e o sistema aprende com cada triagem.
+
+- **Documento canônico:** [[docs/canonical/always-on-monitoring-human-triage]]
+- **Relevância para Evaluation Rubrics:** As rubricas deste módulo são os monitores por dimensão de qualidade que o padrão da Sierra pressupõe. Cada dimension (restriction_compliance, safety, price_fit) é um detector que pode flaggar conversas para triagem humana. O passo que falta no ecossistema atual é o mecanismo de compressão e o loop de feedback humano: em vez de revisar todas as recomendações com score baixo, revisar apenas as 5 mais representativas por semana e usar esse feedback para recalibrar a rubrica.

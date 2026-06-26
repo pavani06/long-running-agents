@@ -287,6 +287,16 @@ Tópicos candidatos a ADR:
 | `living-eval-dataset.md` | Dataset de eval com crescimento monotônico: cada incidente de produção adiciona um caso permanente. Categorização por domínio (security, auth, tool calls, knowledge retrieval, math/reasoning) com ownership model. Execução particionada (stratified CI → full merge → scheduled regression). Compõe production-failure-regression-flywheel + production-grounded-eval-sampling. |
 | `centralized-cross-framework-tracing.md` | Camada de tracing centralizada com schema unificado para múltiplos agent frameworks. Per-framework adapter pattern, OpenTelemetry integration, text-to-SQL query interface, cross-framework performance comparison, trace sampling em escala enterprise. Extensão do trace-instrumentation de single-framework para multi-framework. |
 | `prompt-as-code-causal-change-management.md` | Disciplina de commit causal para prompts: 3 perguntas obrigatórias (why changed, what failure caused it, what failure it addresses). Prompt rollback infrastructure via git revert. Audit trail ligando cada mudança de prompt a incident/regressão/feature. Pre-deploy eval gate quantificando impacto antes do deploy. |
+| `multi-provider-model-routing.md` | Multi-Provider Model Routing com resiliência de capacidade — roteamento dinâmico entre providers com fallback automático e balanceamento de carga (Sierra) |
+| `confidence-gated-continual-learning.md` | Confidence-Gated Continual Learning — aprendizado contínuo com gate de confiança que só incorpora novo conhecimento quando a confiança do modelo excede threshold (Sierra) |
+| `regulated-data-boundary.md` | Regulated Data Boundary — fronteira de dados regulados que isola informações sensíveis e impõe políticas de acesso por contexto (Sierra) |
+| `auth-coupled-memory-architecture.md` | Auth-Coupled Memory Architecture — arquitetura de memória acoplada a autenticação, onde o acesso a dados persistentes é vinculado à identidade do usuário (Sierra) |
+| `task-routed-model-tiering.md` | Task-Routed Model Tiering — tiering de modelos roteado por tarefa, direcionando cada subtarefa ao modelo com melhor relação custo/qualidade (Sierra) |
+| `temporal-context-injection.md` | Temporal Context Injection — injeção de contexto temporal que insere timestamps e dados cronológicos no prompt para consciência de tempo real (Sierra) |
+| `three-tier-memory-persistence.md` | Three-Tier Memory Persistence — persistência de memória em três camadas (sessão, longo prazo, arquivamento) com políticas de retenção por camada (Sierra) |
+| `always-on-monitoring-human-triage.md` | Always-On Production Monitoring with Human Triage — monitoramento contínuo de produção com triagem humana para anomalias e degradação de qualidade (Sierra) |
+| `model-switch-driven-eval-hardening.md` | Model-Switch-Driven Eval Hardening — hardening de evals dirigido por switch de modelo: cada troca de modelo dispara revalidação completa do dataset de eval (Sierra) |
+| `file-system-materialization.md` | File-System Materialization for Agent Tooling — materialização em sistema de arquivos como camada de tooling universal para agentes, expondo estado como arquivos (Sierra) |
 
 | Documento | Cobre |
 |---|---|

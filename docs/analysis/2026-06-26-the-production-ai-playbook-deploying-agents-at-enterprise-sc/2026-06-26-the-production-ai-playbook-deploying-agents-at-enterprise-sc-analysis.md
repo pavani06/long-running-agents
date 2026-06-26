@@ -37,11 +37,11 @@ Bhaumik apresenta um framework de 5 pilares que deve ser projetado **antes de qu
 
 A arquitetura de avaliação em 3 camadas, onde a camada 3 é a mais negligenciada mas a que captura as falhas mais caras:
 
-| Camada | Tipo | O que avalia | Custo | Frequência |
-|---|---|---|---|---|
-| **Layer 1 — Deterministic** | Regex, NER, PII detection, schema validation | Fatos objetivos, formato de output, presença de dados sensíveis | Baixo (zero LLM) | CI + every PR |
-| **Layer 2 — Semantic / LLM-as-Judge** | Groundedness, safety, relevance, faithfulness | Qualidade semântica da resposta: o agente respondeu o que foi perguntado? Respeitou o contexto? | Médio (LLM calls) | PR + nightly |
-| **Layer 3 — Behavioral** | Tool call analysis, loop detection, duplicate API detection, path efficiency | O agente chegou à resposta pelo caminho correto? | Alto (full trace analysis) | Merge to main (suite completa), CI (subset) |
+| Camada                                | Tipo                                                                         | O que avalia                                                                                    | Custo                      | Frequência                                  |
+| ------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------- |
+| **Layer 1 — Deterministic**           | Regex, NER, PII detection, schema validation                                 | Fatos objetivos, formato de output, presença de dados sensíveis                                 | Baixo (zero LLM)           | CI + every PR                               |
+| **Layer 2 — Semantic / LLM-as-Judge** | Groundedness, safety, relevance, faithfulness                                | Qualidade semântica da resposta: o agente respondeu o que foi perguntado? Respeitou o contexto? | Médio (LLM calls)          | PR + nightly                                |
+| **Layer 3 — Behavioral**              | Tool call analysis, loop detection, duplicate API detection, path efficiency | O agente chegou à resposta pelo caminho correto?                                                | Alto (full trace analysis) | Merge to main (suite completa), CI (subset) |
 
 **Por que a Layer 3 é crítica**: um agente pode dar a resposta correta ("seu saldo é R$ 1.234,56") pelo caminho errado (3 chamadas redundantes ao banco, 2 chamadas a uma API externa desnecessária). Em demo, parece ótimo. Em produção com 20.000 chamadas/mês, cada uma dessas chamadas redundantes custa dinheiro e latência.
 

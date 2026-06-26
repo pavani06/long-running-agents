@@ -2586,3 +2586,12 @@ Um agente long-running não é aquele que nunca cai. É aquele que sabe continua
 ---
 
 *Escrito para o currículo KODA de long-running agents, com foco em clareza conceitual, decisão arquitetural e aplicação prática.*
+
+---
+
+## Padrões Relacionados (Sierra)
+
+**Three-Tier Memory Persistence** — Persistência de memória em três tiers com gradiente de autoridade: Tier 1 (memória iniciada pelo usuário: "lembre-se disso"), Tier 2 (memória definida pelo builder: "aniversários importam"), Tier 3 (memória decidida pelo agente: inferência implícita do que persiste). Cada tier tem um contrato diferente de confiança, expiração e recuperabilidade, e a autoridade para decidir o que persiste sobe na hierarquia.
+
+- **Documento canônico:** [[docs/canonical/three-tier-memory-persistence]]
+- **Relevância para State Persistence:** Este módulo cobre os backends de persistência (Redis, SQLite, JSON) e as estratégias de checkpoint (full, delta, hybrid), mas trata toda memória como técnica — o que salvar é decidido pelo sistema. O Three-Tier Memory adiciona o gradiente de autoridade: a alergia à lactose do cliente é Tier 1 (o usuário declarou — máxima prioridade, nunca expira sem confirmação), regras de negócio como "cliente premium tem frete grátis" são Tier 2 (o builder definiu — revisão periódica), e padrões inferidos como "este cliente sempre compra chocolate" são Tier 3 (o agente inferiu — menor confiança, revalidar a cada sessão).

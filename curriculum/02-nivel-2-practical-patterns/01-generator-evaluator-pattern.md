@@ -2265,3 +2265,12 @@ Se ficou confuso em algo, não é falha sua — é falha deste módulo.
 ---
 
 *Documento gerado para o time técnico FutanBear | KODA Project | v1.0 | Mai 2026*
+
+---
+
+## Padrões Relacionados (Sierra)
+
+**Task-Routed Model Tiering** — Encaminha subtarefas para tiers de modelo diferentes no mesmo turno, com base na complexidade e risco da tarefa. Em vez de usar o mesmo modelo para tudo, tarefas simples vão para modelos leves (baixa latência, baixo custo) e tarefas complexas para modelos pesados (alta capacidade).
+
+- **Documento canônico:** [[docs/canonical/task-routed-model-tiering]]
+- **Relevância para Generator/Evaluator:** O padrão Generator/Evaluator já separa criação de avaliação em dois agentes distintos. O Task-Routed Model Tiering estende essa ideia ao permitir que o Generator use um modelo mais criativo (ex: Opus, alta temperatura) e o Evaluator use um modelo mais rigoroso (ex: Sonnet, baixa temperatura), otimizando custo e qualidade por papel. No KODA, recomendações complexas podem ser geradas por um modelo pesado enquanto validações simples de SKU podem rodar em modelos leves.

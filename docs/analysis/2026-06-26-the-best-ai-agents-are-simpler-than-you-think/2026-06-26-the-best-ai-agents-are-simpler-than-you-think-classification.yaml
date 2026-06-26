@@ -1,0 +1,189 @@
+meta:
+  title: "Classification"
+  source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
+  date: "2026-06-26"
+  repository: "long-running-agents (ecossistema-pavan)"
+  type: "classification"
+  total_patterns: 18
+  already_exists: 2
+  partial_coverage: 10
+  missing: 6
+  better_implementation: 0
+
+patterns:
+  - name: "Task-Routed Model Tiering"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "model_tier.py routes pipeline phases (3,4,6) to lighter model — phase-level, not task-level"
+      - "KODA assigns Opus to Generator, Sonnet to Evaluator — agent-level, not within-turn"
+      - "model-capability-timeline.md:2312 — industry reference, not formalized pattern"
+    evidence_what_missing:
+      - "No canonical doc for task-routed model tiering"
+      - "No parallel dispatch of subtasks to different model tiers within same turn"
+      - "No decoupling of model selection from orchestration logic"
+
+  - name: "Multi-Provider Model Routing with Capacity Resilience"
+    classification: "Missing"
+    evidence_what_exists:
+      - "model-switching-architecture-enterprise-eval-gate.md:22-25,62-70 — batch migration, not task-level"
+      - "neutral-selection-layer.md:28-48 — model-agnostic context format, no routing"
+    evidence_what_missing:
+      - "No multi-provider redundancy at task level"
+      - "No provider fallback mechanism"
+      - "No load simulation across providers"
+
+  - name: "Structured Data + LLM Hybrid Reasoning"
+    classification: "Already Exists"
+    evidence:
+      - "deterministic-tool-dispatch.md:33 — Tools are JSON + deterministic code"
+      - "multi-agent-coordination.md:130-148 — Agentes LLM vs. Serviços Determinísticos"
+      - "KODA pipeline: customer.json + catalog.json → Generator LLM → WhatsApp"
+
+  - name: "Dual-Loop Harness Architecture"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "multi-level-agent-orchestration.md — hierarchical agent orchestration"
+      - "sisyphus-junior.md — orchestrator with run_in_background=true"
+    evidence_what_missing:
+      - "No explicit dual-loop (fast conversational + slow background)"
+      - "No loop-of-loops architectural pattern"
+
+  - name: "Cognitive Process Parallelization"
+    classification: "Missing"
+    evidence_what_exists: []
+    evidence_what_missing:
+      - "Zero results across docs/canonical/, curriculum/, skills/"
+      - "Voice-specific — outside repo scope (coding-agent harness)"
+
+  - name: "Speculative Execution for Latency Reduction"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "tiered-context-storage.md — prefetch pattern in context storage"
+      - "pre-verification-gate.md — validate prerequisites before expensive computation"
+    evidence_what_missing:
+      - "No general speculative execution pattern documented"
+      - "Voice-specific latency constraint (1-2s) absent"
+
+  - name: "Monolith-First Agent Architecture"
+    classification: "Missing"
+    evidence_what_exists:
+      - "Repo is explicitly pro-multi-agent: generator-evaluator.md, multi-agent-fault-tolerance.md"
+    evidence_what_missing:
+      - "Contradicts repo's generator-evaluator split philosophy"
+      - "Wedeen's monolith loyalist position has no equivalent canonical doc"
+
+  - name: "Temporal Context Injection"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "context-engineering.md — context window management"
+      - "progressive-disclosure-agent-tool-context.md — progressive disclosure"
+      - "tiered-context-storage.md — storage tiers with retrieval timing"
+    evidence_what_missing:
+      - "No unified Temporal Context Injection pattern"
+      - "No explicit when-to-inject vs what-to-inject framing"
+      - "No prompt compaction incoherence risk coverage"
+
+  - name: "File-System Materialization for Agent Tooling"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "file-based-coordination.md — curriculum lesson on materializing domain logic to file system"
+      - "llm-as-fuzzy-compiler.md — code as disposable build artifact"
+    evidence_what_missing:
+      - "Term File-System Materialization not used"
+      - "80/20 rule framing absent"
+      - "Connection to coding agent strengths (git, grep, files) not explicit"
+
+  - name: "Closed-Loop Agent Improvement Flywheel"
+    classification: "Already Exists"
+    evidence:
+      - "closed-loop-agent-operating-system.md:26-48 — four-surface closed loop"
+      - "production-failure-regression-flywheel.md:30-41 — 9-step flywheel"
+      - "failure-pattern-classification-loop.md:35-53 — Observe→Classify→Build→Verify"
+      - "on-policy-rollout-feedback-loop.md:40-50 — production trajectories as learning signal"
+      - "garbage-collection-day-meta-loop.md — weekly GC Day cadence"
+      - "flywheel-daemon.service — operational 60s loop"
+      - "AGENTS.md:343 — FLYWHEEL_ALERT injection gate"
+    gap: "No Ghostwriter-equivalent agent for autonomous agent improvement from production data"
+
+  - name: "Always-On Production Monitoring with Human Triage"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "eval-dashboard-primary-detection-surface.md:20-44 — always-on quality dashboard"
+      - "flywheel-daemon.service — 60s loop operational monitoring"
+      - "budget-slo-check.sh — burn rate alerts every 6h"
+    evidence_what_missing:
+      - "No human triage mechanism with compression ratio"
+      - "No monitor definitions for quality dimensions"
+      - "Fully automated flywheel without human-in-the-loop triage"
+
+  - name: "Model-Switch-Driven Eval Hardening"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "model-switching-architecture-enterprise-eval-gate.md — full Switch/Hold/Hybrid design"
+      - "neutral-selection-layer.md — provider-agnostic eval format"
+      - "multi-model-evaluation-council.md — model-diverse evaluation"
+    evidence_what_missing:
+      - "The switch→discover gap→harden eval→try again insight not articulated"
+      - "Formal gate process vs iterative discovery-driven hardening"
+
+  - name: "Recursive AI Verification Chains"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "3-layer-evaluation-architecture.md — Deterministic, Semantic, Behavioral layers"
+      - "compartmented-evaluation-architecture.md — independent verification compartments"
+      - "multi-model-evaluation-council.md — model-diverse evaluation council"
+    evidence_what_missing:
+      - "No recursive AI-on-AI verification (verify the verifier)"
+      - "Repo layers are mechanism-based, not recursive LLM chains"
+      - "Chain 90% solutions to multi-nine reliability not formalized"
+
+  - name: "Confidence-Gated Continual Learning"
+    classification: "Missing"
+    evidence_what_exists:
+      - "garbage-collection-day-meta-loop.md — weekly manual review (opposite pattern)"
+    evidence_what_missing:
+      - "No confidence-gated deployment mechanism"
+      - "No Ghostwriter-equivalent agent"
+      - "No detect→suggest→review→deploy loop"
+      - "No FYI-vs-approval confidence threshold"
+
+  - name: "Three-Tier Memory Persistence"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "tiered-context-storage.md — hot/warm/cold storage tiers"
+      - "external-state-persistence.md — external state persistence"
+      - "addressable-memory-catalog.md — addressable memory"
+      - "epistemic-memory-graph.md — epistemic memory graph"
+    evidence_what_missing:
+      - "Three-tier user/builder/agent authority gradient not documented"
+      - "Tier 1: user-initiated, Tier 2: builder-defined, Tier 3: agent-decided"
+      - "Authority gradient mapping to who decides what to persist"
+
+  - name: "Regulated Data Boundary"
+    classification: "Missing"
+    evidence_what_exists:
+      - "governance-context-injection-pii-prevention.md — policy-based PII prevention"
+    evidence_what_missing:
+      - "Policy control vs architectural isolation — no separate infrastructure cluster"
+      - "No PCI DSS Level 1 equivalent pattern"
+      - "No pattern where regulated data never touches an LLM"
+
+  - name: "Auth-Coupled Memory Architecture"
+    classification: "Missing"
+    evidence_what_exists: []
+    evidence_what_missing:
+      - "No auth-to-memory coupling mechanism"
+      - "No authentication confidence score"
+      - "No memory sensitivity gating (greeting=low auth, SSN=high auth)"
+      - "Memory treated as purely technical, not identity-coupled"
+
+  - name: "Model-First Interface Design (80/20 Rule)"
+    classification: "Partial Coverage"
+    evidence_what_exists:
+      - "llm-as-fuzzy-compiler.md — code as compiler output"
+      - "resolver-disclosure-skill-discovery.md — the 20%: teach models your way"
+      - "context-engineering.md — context engineering principles"
+    evidence_what_missing:
+      - "No explicit 80/20 rule framing"
+      - "No unified decision framework: reframe problem vs build skill"
+      - "File-system materialization framing absent"

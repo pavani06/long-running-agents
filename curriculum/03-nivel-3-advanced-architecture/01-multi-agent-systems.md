@@ -1772,6 +1772,14 @@ O PresenceTracker não é mais um agente -- é uma camada transversal de governa
 
 ---
 
+## Padrões Relacionados (Sierra)
+
+**[[docs/canonical/multi-provider-model-routing|Multi-Provider Model Routing]]** — Estratégia de roteamento de tarefas entre múltiplos provedores de modelo com fallback automático e resiliência de capacidade. No KODA, isso significa que o Generator pode usar Claude Opus como primário e alternar para Sonnet se houver timeout ou degradação. Veja o exercício em [[exercises/exercise-multi-provider-routing|Exercise: Multi-Provider Routing]].
+
+Este padrão expande os conceitos de coordenação multi-agente desta lição para a camada de infraestrutura de modelos: da mesma forma que você roteia tarefas entre agentes especializados, pode rotear chamadas entre provedores com base em latência, custo e disponibilidade.
+
+---
+
 ## 📋 Metadata
 
 | Campo | Valor |

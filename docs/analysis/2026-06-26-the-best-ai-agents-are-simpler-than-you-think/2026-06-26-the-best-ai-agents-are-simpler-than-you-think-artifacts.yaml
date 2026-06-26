@@ -1,0 +1,107 @@
+meta:
+  type: artifact-manifest
+  date: "2026-06-26"
+  source_slug: the-best-ai-agents-are-simpler-than-you-think
+  classification_file: long-running-agents/docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-classification.yaml
+  total_artifacts: 18
+
+artifacts:
+  canonical_docs:
+    - path: long-running-agents/docs/canonical/multi-provider-model-routing.md
+      pattern: "Multi-Provider Model Routing with Capacity Resilience"
+      classification: Missing
+      priority: P0
+    - path: long-running-agents/docs/canonical/confidence-gated-continual-learning.md
+      pattern: "Confidence-Gated Continual Learning"
+      classification: Missing
+      priority: P0
+    - path: long-running-agents/docs/canonical/regulated-data-boundary.md
+      pattern: "Regulated Data Boundary"
+      classification: Missing
+      priority: P0
+    - path: long-running-agents/docs/canonical/auth-coupled-memory-architecture.md
+      pattern: "Auth-Coupled Memory Architecture"
+      classification: Missing
+      priority: P0
+    - path: long-running-agents/docs/canonical/task-routed-model-tiering.md
+      pattern: "Task-Routed Model Tiering"
+      classification: Partial Coverage
+      priority: P1
+    - path: long-running-agents/docs/canonical/temporal-context-injection.md
+      pattern: "Temporal Context Injection"
+      classification: Partial Coverage
+      priority: P1
+    - path: long-running-agents/docs/canonical/file-system-materialization.md
+      pattern: "File-System Materialization for Agent Tooling"
+      classification: Partial Coverage
+      priority: P1
+    - path: long-running-agents/docs/canonical/always-on-monitoring-human-triage.md
+      pattern: "Always-On Production Monitoring with Human Triage"
+      classification: Partial Coverage
+      priority: P1
+    - path: long-running-agents/docs/canonical/model-switch-driven-eval-hardening.md
+      pattern: "Model-Switch-Driven Eval Hardening"
+      classification: Partial Coverage
+      priority: P1
+    - path: long-running-agents/docs/canonical/three-tier-memory-persistence.md
+      pattern: "Three-Tier Memory Persistence"
+      classification: Partial Coverage
+      priority: P1
+  skills:
+    - path: .opencode/skills/multi-provider-routing/SKILL.md
+      pattern: "Multi-Provider Model Routing with Capacity Resilience"
+      classification: Missing
+    - path: .opencode/skills/confidence-gated-learning/SKILL.md
+      pattern: "Confidence-Gated Continual Learning"
+      classification: Missing
+    - path: .opencode/skills/regulated-data-boundary/SKILL.md
+      pattern: "Regulated Data Boundary"
+      classification: Missing
+    - path: .opencode/skills/auth-coupled-memory/SKILL.md
+      pattern: "Auth-Coupled Memory Architecture"
+      classification: Missing
+  exercises:
+    - path: long-running-agents/curriculum/02-nivel-2-practical-patterns/exercises/exercise-multi-provider-routing.md
+      pattern: "Multi-Provider Model Routing with Capacity Resilience"
+      classification: Missing
+      level: N2
+    - path: long-running-agents/curriculum/02-nivel-2-practical-patterns/exercises/exercise-confidence-gated-learning.md
+      pattern: "Confidence-Gated Continual Learning"
+      classification: Missing
+      level: N2
+    - path: long-running-agents/curriculum/04-nivel-4-koda-specific/exercises/exercise-regulated-data-boundary.md
+      pattern: "Regulated Data Boundary"
+      classification: Missing
+      level: N4
+    - path: long-running-agents/curriculum/02-nivel-2-practical-patterns/exercises/exercise-auth-coupled-memory.md
+      pattern: "Auth-Coupled Memory Architecture"
+      classification: Missing
+      level: N2
+
+skipped:
+  - pattern: "Cognitive Process Parallelization"
+    reason: "Voice-specific pattern — outside coding-agent harness scope. Not applicable to this repository."
+    classification: Missing
+  - pattern: "Monolith-First Agent Architecture"
+    reason: "Contradicts repository's generator-evaluator split philosophy. Documented in classification as contradictory to existing architecture."
+    classification: Missing
+  - pattern: "Dual-Loop Harness Architecture"
+    reason: "Partial Coverage Medium — deferred to future iteration. Parallel agent execution exists."
+    classification: Partial Coverage
+  - pattern: "Speculative Execution for Latency Reduction"
+    reason: "Partial Coverage Medium — prefetch exists in tiered storage, not generalized."
+    classification: Partial Coverage
+  - pattern: "Recursive AI Verification Chains"
+    reason: "Partial Coverage Medium — 3-layer eval exists, recursive framing not yet needed."
+    classification: Partial Coverage
+  - pattern: "Model-First Interface Design (80/20 Rule)"
+    reason: "Partial Coverage Medium — individual pieces exist, unified framework deferred."
+    classification: Partial Coverage
+
+gate:
+  canonical_docs_created: 10
+  skills_created: 4
+  exercises_created: 4
+  total_created: 18
+  skipped: 6
+  notes: "4 Missing patterns (P0) got full triage: canonical doc + skill + exercise. 6 Partial Coverage High (P1) got canonical docs. 2 Missing patterns skipped (voice-specific, contradictory). 4 Partial Coverage Medium deferred."
