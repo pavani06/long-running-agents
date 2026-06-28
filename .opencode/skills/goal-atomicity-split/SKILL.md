@@ -27,9 +27,9 @@ Carregue esta skill quando:
 
 - Voce esta escrevendo ou revisando o campo Descricao (Goal) de um intent e a sentenca tem "and", "e", "then", "depois", "also", "alem disso", ou virgulas que conectam outcomes distintos
 - Um agente entregou um output que resolve 80% do Goal mas falha nos 20% restantes -- o sintoma classico de multi-goal intent onde o agente otimizou para a parte dominante
-- O ciclo de alinhamento ([[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me]]) esta para iniciar e o Goal candidato parece "carregado" -- muitas coisas em uma frase so
+- O ciclo de alinhamento ([[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me]]) esta para iniciar e o Goal candidato parece "carregado" -- muitas coisas em uma frase so
 - Voce suspeita que a complexidade de coordenacao entre outcomes esta escondida dentro de uma unica sentenca, e o split vai revelar dependencias que precisam ser explicitas
-- O [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test]] identificou que o Goal e um goal, mas ainda parece conter multiplos outcomes -- atomicidade e pureza sao gates distintos
+- O [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test]] identificou que o Goal e um goal, mas ainda parece conter multiplos outcomes -- atomicidade e pureza sao gates distintos
 - Uma tarefa de "epic" chega como um unico intent -- epics sao colecoes de intents atomicos, nao intents gigantes
 - Voce quer que o orquestrador possa paralelizar, sequenciar, ou rotear trabalho entre agentes diferentes -- isso so e possivel se cada intent e atomico
 
@@ -241,12 +241,12 @@ O goal-atomicity-split opera como decompositor de intents, complementando a infr
 
 | Componente Existente | Como o Goal Atomicity Split complementa |
 |---|---|
-| [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]] | O primitivo de cinco partes define o formato do intent. O atomicity split garante que cada intent contem um unico outcome, prevenindo que o campo Descricao acumule multiplos outcomes e forcando o resto dos campos (constraints, falhas, sucessos, conexoes) a serem preenchidos por outcome, nao por conglomerado. |
-| [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test]] | O two-implementations test classifica goal vs spec. O atomicity split decompoe multi-goal em fragmentos atomicos ANTES da classificacao. Fluxo composto: split → test → purifica → entrega. Um goal com "and" pode ter partes que sao goals e partes que sao specs -- so o split revela isso. |
+| [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] | O primitivo de cinco partes define o formato do intent. O atomicity split garante que cada intent contem um unico outcome, prevenindo que o campo Descricao acumule multiplos outcomes e forcando o resto dos campos (constraints, falhas, sucessos, conexoes) a serem preenchidos por outcome, nao por conglomerado. |
+| [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test]] | O two-implementations test classifica goal vs spec. O atomicity split decompoe multi-goal em fragmentos atomicos ANTES da classificacao. Fluxo composto: split → test → purifica → entrega. Um goal com "and" pode ter partes que sao goals e partes que sao specs -- so o split revela isso. |
 | [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]] | O Grill-Me entrevista sobre escopo, arquitetura e constraints. Com intents atomicos, cada entrevista foca em um unico outcome -- as perguntas sao mais precisas e as respostas nao misturam contextos de outcomes diferentes. |
 | [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] | Issues geradas como fatias verticais herdam o Goal. Intents atomicos produzem fatias verticais mais focadas -- uma fatia por outcome, com comportamento observavel bem definido, em vez de uma fatia que tenta cobrir tres outcomes e nao valida nenhum completamente. |
-| [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] | O refine-issue decompoe issues em sub-issues com dependencias. O atomicity split opera no nivel acima: garante que a issue chega ao refine-issue com um unico outcome, para que a decomposicao em sub-issues opere sobre um contrato claro. |
-| [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] | O orchestrator coordena agentes paralelos. Intents atomicos permitem que o orchestrator paralelize trabalho: se Catalog, Cart e Checkout sao tres intents, tres agentes podem trabalhar simultaneamente (respeitando dependencias). Com um unico intent multi-goal, o orquestrador so pode alocar um agente sequencial. |
+| [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] | O refine-issue decompoe issues em sub-issues com dependencias. O atomicity split opera no nivel acima: garante que a issue chega ao refine-issue com um unico outcome, para que a decomposicao em sub-issues opere sobre um contrato claro. |
+| [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] | O orchestrator coordena agentes paralelos. Intents atomicos permitem que o orchestrator paralelize trabalho: se Catalog, Cart e Checkout sao tres intents, tres agentes podem trabalhar simultaneamente (respeitando dependencias). Com um unico intent multi-goal, o orquestrador so pode alocar um agente sequencial. |
 | [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]] | A fase de Plan do PEV recebe o Goal. Com um Goal atomico, o plano gerado e focado em um unico resultado. Com um Goal multi-goal, o plano tenta cobrir tudo e frequentemente falha em aprofundar cada outcome. |
 | [[docs/canonical/ice-craft-separation|ICE Craft Separation]] | A separacao de crafts atribui o Goal ao humano. O atomicity split ajuda o humano a decompor seu pensamento em outcomes atomicos, prevenindo que a complexidade de coordenacao vaze para o agente como "descubra como fazer tudo isso junto." |
 
@@ -258,7 +258,7 @@ Antes de declarar os intents atomicos como prontos para execucao, verifique:
 - [ ] Cada Goal atomico resultante e exatamente uma sentenca, sem conjuncoes, sem "and", sem "then"
 - [ ] Nenhum Goal atomico contem referencia a outro outcome na mesma sentenca (dependencias vao no campo Conexoes, nao no Goal)
 - [ ] Cada Goal atomico descreve um outcome que um usuario ou sistema experimentaria separadamente (nao apenas funcionalidades do mesmo outcome)
-- [ ] Cada Goal atomico passa no [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test]] (e um goal, nao uma spec)
+- [ ] Cada Goal atomico passa no [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test]] (e um goal, nao uma spec)
 - [ ] Dependencias entre intents atomicos estao declaradas no campo Conexoes: "Depende de" e "Desbloqueia"
 - [ ] O tipo de dependencia esta especificado: completude (so comece quando X terminar) ou contrato (X define interface que Y consome)
 - [ ] O numero de intents atomicos resultantes e gerenciável -- se o split produziu 15+ intents, o Goal original provavelmente era um epic, e intents intermediarios de coordenacao podem ser necessarios
@@ -269,10 +269,10 @@ Antes de declarar os intents atomicos como prontos para execucao, verifique:
 - [[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns|Anatomy of Intent Patterns]]:82-103 -- Pattern 4: Goal Atomicity Split
 - [[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]:113-138 -- Classificacao como Missing (Medium integration value)
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]] -- estrutura que recebe os Goals atomicos
-- [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test]] -- gate de pureza aplicado apos o split
+- [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test]] -- gate de pureza aplicado apos o split
 - [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] -- geracao de issues a partir de intents atomicos
-- [[.opencode/skills/refine-issue/SKILL|refine-issue skill]] -- decomposicao de issues em sub-issues
-- [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] -- coordenacao de agentes com intents atomicos paralelizaveis
+- [[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]] -- decomposicao de issues em sub-issues
+- [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] -- coordenacao de agentes com intents atomicos paralelizaveis
 - [[docs/canonical/plan-execute-verify|Plan-Execute-Verify]] -- fase de plan que opera sobre Goals atomicos
 
 ---

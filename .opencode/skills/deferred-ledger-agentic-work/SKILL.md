@@ -103,7 +103,7 @@ Estrutura do Deferred Ledger:
 | Indicador | Sinal de Alerta | Acao |
 |---|---|---|
 | Proporcao de "nao" no periodo | < 10% dos builds tiveram um "nao" registrado | Forcar exercicio de julgamento: revisar backlog e classificar cada item como build/dont-build |
-| Ultimo "nao" registrado | > 90 dias sem uma recusa documentada | Aplicar [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake]] no proximo ciclo de decisao |
+| Ultimo "nao" registrado | > 90 dias sem uma recusa documentada | Aplicar [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake]] no proximo ciclo de decisao |
 | Decisoes sem dono | Builds aprovados sem named owner do "sim" | Nomear owner para cada build ativo; builds sem owner entram em quarantine |
 
 #### Dependence Debt
@@ -120,7 +120,7 @@ Estrutura do Deferred Ledger:
 |---|---|---|
 | Artefatos sem owner | > 20% dos artefatos nao tem maintainer nomeado | Aplicar [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]: classificar cada artefato como keep/retire/archive/promote |
 | Artefatos nao usados | Artefatos criados ha > 90 dias sem evidencia de uso | Marcar para arquivamento ou remocao |
-| Artefatos sem value hypothesis | Criados sem responder "quem precisa disso?" | Retroativamente aplicar [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake]]; se sem valor, aposentar |
+| Artefatos sem value hypothesis | Criados sem responder "quem precisa disso?" | Retroativamente aplicar [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake]]; se sem valor, aposentar |
 
 ### Implementation Rules
 
@@ -146,7 +146,7 @@ O Deferred Ledger adiciona uma camada de risco estrategico sobre a camada de cus
 | [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] | O lifecycle governa componentes do harness com BUILD/STABILIZE/SIMPLIFY/REMOVE. O Deferred Ledger estende esse modelo para artefatos criados por agentes: aplicar keep/retire/archive/promote ao inventario de carry debt. |
 | [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] | O GC Day revisa slop e constroi guardrails semanalmente. O Deferred Ledger adiciona uma secao de revisao de divida estrutural ao GC Day: skill debt (decisoes da semana), carry debt (artefatos acumulados), dependence debt (mudancas de provider). |
 | [[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]] | O correlation tracking detecta quando evals param de prever outcomes de producao — o sinal de dependence debt se materializando. Alimente o Deferred Ledger com os dados de correlacao. |
-| [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake Question Gate]] | O Manual Brake previne carry debt e skill debt na origem (antes do build). O Deferred Ledger audita a divida que ja foi acumulada. Use o Manual Brake para prevenir, o Deferred Ledger para detectar e mitigar. |
+| [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake Question Gate]] | O Manual Brake previne carry debt e skill debt na origem (antes do build). O Deferred Ledger audita a divida que ja foi acumulada. Use o Manual Brake para prevenir, o Deferred Ledger para detectar e mitigar. |
 
 ## Quality Gates
 

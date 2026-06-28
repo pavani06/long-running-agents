@@ -14,7 +14,7 @@ metadata:
 
 Eu defino e operacionalizo o papel de Owner-of-No — a pessoa cujo trabalho nao e construir, mas garantir que so se construa o que merece ser construido. O Owner-of-No tem tres responsabilidades:
 
-1. **Recusa fundamentada**: dizer "nao" a builds que nao passam no [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake]], com racional documentado e alternativas concretas.
+1. **Recusa fundamentada**: dizer "nao" a builds que nao passam no [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake]], com racional documentado e alternativas concretas.
 2. **Fornecimento de intents**: quando diz "nao", o Owner-of-No nao apenas bloqueia — ele fornece intents alternativos: o que DEVERIA ser construido em vez disso.
 3. **Accountability documentada**: cada decisao de recusa ou aprovacao e registrada com dono, data, racional e criterios de reavaliacao.
 
@@ -27,7 +27,7 @@ Carregue esta skill quando:
 - Times agenticos estao produzindo builds sem que ninguem pergunte "alguem precisa disso?"
 - Decisoes de construcao estao se auto-aprovando ("ninguem aprovou isso. Ele se aprova sozinho, um mes de cada vez.")
 - Voce esta desenhando a estrutura de governanca de um time que usa agentic coding
-- O [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake]] identificou que nao ha dono do "nao" (Pergunta 3 sem resposta)
+- O [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake]] identificou que nao ha dono do "nao" (Pergunta 3 sem resposta)
 - Um ciclo de revisao (GC Day, Harness Evolution Lifecycle) identificou carry debt de builds sem owner
 - Voce quer evitar que "dizer nao" dependa de coragem individual em vez de design organizacional
 
@@ -53,7 +53,7 @@ Cenario:
      Ninguem consegue apontar o retorno.
 
 Consequencia:
-  - Carry debt acumula sem accountability (ver [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger]])
+  - Carry debt acumula sem accountability (ver [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger]])
   - "Dizer nao" vira ato de coragem individual, nao funcao do sistema
   - Features existem porque foram faceis de construir, nao porque alguem precisava delas
   - O time perde a capacidade de distinguir o essencial do acidental
@@ -119,13 +119,13 @@ O Owner-of-No complementa a infraestrutura de governanca do repositorio com um p
 
 | Componente Existente | Como o Owner-of-No complementa |
 |---|---|
-| [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake Question Gate]] | A Pergunta 3 do Manual Brake ("quem e o dono de dizer nao?") e respondida pelo Owner-of-No. O Owner-of-No e a institucionalizacao dessa pergunta: um papel cuja existencia garante que a pergunta sempre tem resposta. |
+| [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake Question Gate]] | A Pergunta 3 do Manual Brake ("quem e o dono de dizer nao?") e respondida pelo Owner-of-No. O Owner-of-No e a institucionalizacao dessa pergunta: um papel cuja existencia garante que a pergunta sempre tem resposta. |
 | [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]] | O Grill-Me entrevista o requisitante sobre escopo, arquitetura e constraints. O Owner-of-No participa da entrevista como a voz da recusa fundamentada: "entendi o que voce quer construir. Por que isso, e nao X?" |
 | [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] | O split-brain review avalia planos com rubricas de engenharia e destino. O Owner-of-No adiciona a terceira rubrica: valor. "O plano e tecnicamente solido, mas alguem precisa disso?" |
 | [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]] | O AFK Gate classifica tarefas como AFK-ready ou human-in-loop. O Owner-of-No define o criterio de valor para essa classificacao: uma tarefa so e AFK-ready se passou pelo value gate (Manual Brake + Owner-of-No). |
 | [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] | O GC Day revisa slop semanalmente. O Owner-of-No participa do GC Day revisando builds da semana: algum build passou sem value gate? Alguma recusa foi bypassada? |
-| [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger for Agentic Work]] | O Deferred Ledger classifica carry debt de artefatos sem owner. O Owner-of-No e o responsavel por auditar esse inventario e decidir: keep, retire, archive, ou promote. |
-| [[.opencode/skills/orchestrator/SKILL|orchestrator skill]] | O orchestrator sugere proximas tarefas e gerencia agentes paralelos. O Owner-of-No define a politica de priorizacao: tarefas que passaram pelo value gate tem prioridade sobre tarefas que ainda nao passaram. |
+| [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger for Agentic Work]] | O Deferred Ledger classifica carry debt de artefatos sem owner. O Owner-of-No e o responsavel por auditar esse inventario e decidir: keep, retire, archive, ou promote. |
+| [[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]] | O orchestrator sugere proximas tarefas e gerencia agentes paralelos. O Owner-of-No define a politica de priorizacao: tarefas que passaram pelo value gate tem prioridade sobre tarefas que ainda nao passaram. |
 
 ### Distribuicao por Dominio (Template)
 
@@ -152,7 +152,7 @@ Antes de declarar a estrutura de Owner-of-No como operacional, verifique:
 - [ ] O caminho de escalacao esta definido (o que acontece quando builder discorda da recusa)
 - [ ] Toda recusa e registrada com: data, build proposto, razao da recusa, intents alternativos oferecidos, e criterios de reavaliacao
 - [ ] Toda aprovacao e registrada com: data, build aprovado, respostas as tres perguntas do Manual Brake, e dono nomeado
-- [ ] O Owner-of-No participa do [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake]] como respondedor da Pergunta 3
+- [ ] O Owner-of-No participa do [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake]] como respondedor da Pergunta 3
 - [ ] O Owner-of-No tem slot reservado no [[docs/canonical/garbage-collection-day-meta-loop|GC Day]] para revisar decisoes da semana
 - [ ] Trimestralmente: revisao das decisoes de recusa e aprovacao para calibrar criterios
 - [ ] Nao ha builds ativos sem owner documentado (auditoria de carry debt)
@@ -166,8 +166,8 @@ Antes de declarar a estrutura de Owner-of-No como operacional, verifique:
 - [[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]] — revisao de planos (Owner-of-No adiciona rubrica de valor)
 - [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]] — gate de classificacao (Owner-of-No define criterio de valor)
 - [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] — cadencia semanal de revisao
-- [[.opencode/skills/manual-brake-question-gate/SKILL|Manual Brake Question Gate]] — as tres perguntas que o Owner-of-No aplica
-- [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger for Agentic Work]] — classificacao de carry debt de builds sem owner
+- [[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake Question Gate]] — as tres perguntas que o Owner-of-No aplica
+- [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger for Agentic Work]] — classificacao de carry debt de builds sem owner
 
 ---
 

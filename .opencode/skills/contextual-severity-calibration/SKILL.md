@@ -32,7 +32,7 @@ Carregue esta skill quando:
 - Desenvolvedores reportam fadiga de revisao porque o AI reviewer sinaliza problemas "critical" em modulos onde uma falha teria baixo impacto
 - Voce esta configurando um AI reviewer pela primeira vez em um codebase multi-modulo e quer evitar o anti-padrao de severidade uniforme
 - Uma mudanca em um modulo critico passou com revisao superficial porque o threshold de revisao era calibrado para o caso medio
-- Voce quer que o [[.opencode/skills/shadow-review-pipeline/SKILL|Shadow Review Pipeline]] produza metricas de concordancia segmentadas por nivel de risco
+- Voce quer que o [[.opencode/skills/shadow-review-pipeline/SKILL.md|Shadow Review Pipeline]] produza metricas de concordancia segmentadas por nivel de risco
 - O time esta crescendo e novos desenvolvedores nao sabem quais modulos exigem revisao mais cuidadosa — o perfil de risco documentado serve como conhecimento institucional
 - Voce precisa justificar diferentes SLAs de revisao para diferentes partes do sistema (ex: revisao de `payment/` em < 1h, `help/` em < 24h)
 
@@ -227,7 +227,7 @@ Fluxo:
 
 5. **O perfil de risco envelhece.** Modulos mudam de proposito, ganham acesso a dados sensiveis, ou sao descontinuados. O `risk-profile.yaml` deve ser revisado em cadencia regular (trimestral, ou a cada mudanca de arquitetura significativa). Um perfil desatualizado e pior que perfil nenhum porque gera falsa confianca.
 
-6. **Dados do Shadow Review Pipeline alimentam a calibracao.** As metricas de concordancia por modulo produzidas pelo [[.opencode/skills/shadow-review-pipeline/SKILL|Shadow Review Pipeline]] (TP, FP, Missed-by-AI, Missed-by-Human) sao a entrada empirica para ajustar perfis de risco. Se um modulo `medium` consistentemente tem mais Missed-by-AI que modulos `critical`, seu perfil de risco pode estar subestimado.
+6. **Dados do Shadow Review Pipeline alimentam a calibracao.** As metricas de concordancia por modulo produzidas pelo [[.opencode/skills/shadow-review-pipeline/SKILL.md|Shadow Review Pipeline]] (TP, FP, Missed-by-AI, Missed-by-Human) sao a entrada empirica para ajustar perfis de risco. Se um modulo `medium` consistentemente tem mais Missed-by-AI que modulos `critical`, seu perfil de risco pode estar subestimado.
 
 7. **Nao existe "risco zero".** Mesmo modulos `low` podem conter bugs. A calibracao nao elimina a revisao nesses modulos — reduz a profundidade e ajusta a severidade para refletir o impacto real. O desenvolvedor ainda ve os findings; so nao e forcado a trata-los como emergencia.
 
@@ -239,7 +239,7 @@ A Contextual Severity Calibration se integra a infraestrutura de evals e governa
 |---|---|
 | [[docs/canonical/eval-tier-stratification|Eval Tier Stratification]] | A estratificacao seleciona tiers por tipo de mudanca (prompt, model, tool, loop). A Severity Calibration adiciona uma segunda dimensao: dentro do mesmo tier, a profundidade varia por modulo. Um eval `fast` em `payment/` pode ser mais profundo que um eval `fast` em `help/`. |
 | [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] | O PR-gated enforcement define thresholds de merge. A Severity Calibration ajusta esses thresholds por modulo: um finding `medium` em `payment/` pode bloquear merge, enquanto o mesmo finding em `help/` e informativo. |
-| [[.opencode/skills/shadow-review-pipeline/SKILL|Shadow Review Pipeline]] | O shadow period produz metricas de concordancia (TP, FP, Missed) por modulo. A Severity Calibration consome esses dados para ajustar perfis de risco e selecao de checks. Modulos com alta taxa de FP podem ter checks reduzidos; modulos com alta taxa de Missed-by-AI podem ter checks expandidos. |
+| [[.opencode/skills/shadow-review-pipeline/SKILL.md|Shadow Review Pipeline]] | O shadow period produz metricas de concordancia (TP, FP, Missed) por modulo. A Severity Calibration consome esses dados para ajustar perfis de risco e selecao de checks. Modulos com alta taxa de FP podem ter checks reduzidos; modulos com alta taxa de Missed-by-AI podem ter checks expandidos. |
 | [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]] | A avaliacao ancorada em constraints verifica constraints explicitas. A Severity Calibration determina QUAIS constraints se aplicam a cada modulo — constraints de seguranca so se aplicam a modulos com `security` no check set. |
 | [[docs/canonical/generator-evaluator|Generator-Evaluator]] | O Evaluator aplica rubricas de qualidade. A Severity Calibration fornece ao Evaluator o perfil de risco do modulo alterado, permitindo que a rubrica seja ajustada por contexto em vez de ser uniforme. |
 | [[docs/canonical/architecture-as-agent-affordance|Architecture as Agent Affordance]] | Arquitetura como affordance enfatiza deep modules com interfaces simples e reduced coupling para reduzir blast radius. A Severity Calibration operacionaliza o conceito de blast radius: modulos com interfaces bem definidas e baixo acoplamento tendem a ter blast radius menor e, portanto, menor risco. |
@@ -258,7 +258,7 @@ Antes de declarar a calibracao de severidade como operacional, verifique:
 - [ ] A regra do maximo esta implementada: mudancas cross-module recebem a profundidade do modulo mais critico
 - [ ] A severidade dos findings e calibrada por modulo: o mesmo finding tem severidade diferente em contextos diferentes
 - [ ] O AI reviewer consulta o risk-profile.yaml ANTES de selecionar checks (nao aplica checks e depois verifica risco)
-- [ ] Dados do [[.opencode/skills/shadow-review-pipeline/SKILL|Shadow Review Pipeline]] estao segmentados por modulo e disponiveis para calibrar perfis
+- [ ] Dados do [[.opencode/skills/shadow-review-pipeline/SKILL.md|Shadow Review Pipeline]] estao segmentados por modulo e disponiveis para calibrar perfis
 - [ ] Ha uma cadencia definida para revisao e atualizacao dos perfis de risco (ex: trimestral, ou apos mudancas de arquitetura)
 - [ ] Modulos `critical` tem revisao humana obrigatoria alem da revisao AI (a calibracao aumenta, nao substitui, o escrutinio humano em modulos criticos)
 - [ ] Desenvolvedores sabem consultar o perfil de risco para entender a severidade dos findings que recebem
@@ -278,7 +278,7 @@ Antes de declarar a calibracao de severidade como operacional, verifique:
 - [[docs/canonical/generator-evaluator|Generator-Evaluator]] — arquitetura Generator-Evaluator (rubrica ajustada por perfil de risco)
 - [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] — loop de classificacao de falhas (segmentacao por modulo)
 - [[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]] — gate de valor (perfis de risco informam a pergunta "o que quebra se isso falhar?")
-- [[.opencode/skills/shadow-review-pipeline/SKILL|Shadow Review Pipeline]] — pipeline de shadow review (produz dados de concordancia por modulo que alimentam a calibracao)
+- [[.opencode/skills/shadow-review-pipeline/SKILL.md|Shadow Review Pipeline]] — pipeline de shadow review (produz dados de concordancia por modulo que alimentam a calibracao)
 
 ---
 

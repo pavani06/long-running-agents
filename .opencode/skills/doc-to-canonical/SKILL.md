@@ -364,8 +364,8 @@ type: canonical
 aliases: ["<alias1>", "<alias2>"]
 tags: ["<dominio>", "<subdominio>"]
 last_updated: <date>
-relates-to: ["[[docs/canonical/<related-slug>|Related Doc]]", "[[<source-doc-path>|Source Document]]"]
-sources: ["[[docs/analysis/<date>-<slug>/analysis|Knowledge Extraction]]"]
+relates-to: []
+sources: []
 ---
 
 # <Pattern Name>
@@ -453,7 +453,7 @@ aliases: [<2-4 search aliases in Portuguese>]
 tags: [<1-3 domain tags from system-of-record>]
 last_updated: <date>
 relates-to: [<wikilinks to related canonical docs and the source document>]
-sources: ['[[docs/analysis/<date>-<source-slug>/analysis|Knowledge Extraction]]']
+sources: []
 ---
 
 # <Pattern Name>

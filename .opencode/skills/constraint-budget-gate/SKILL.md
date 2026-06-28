@@ -29,10 +29,10 @@ Carregue esta skill quando:
 - O campo Constraints de um intent tem mais de 7 itens -- o alarme de bloat disparou
 - Voce suspeita que constraints estao se acumulando como "requirements" de spec em vez de qualidades do outcome
 - O intent foi escrito por alguem com habito de spec-writing -- cada "constraint" parece uma decisao de implementacao
-- O [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]] completou o gate de completude, mas o campo Constraints parece inflado -- completude nao garante qualidade
+- O [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] completou o gate de completude, mas o campo Constraints parece inflado -- completude nao garante qualidade
 - A avaliacao ancorada em constraints ([[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]) esta lenta ou confusa porque ha constraints demais para verificar
 - Voce esta treinando alguem a escrever constraints de qualidade e precisa de criterios objetivos de classificacao
-- O [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule]] identificou que um item e constraint, mas voce ainda suspeita que nao e uma boa constraint -- o budget gate faz a segunda passada de qualidade
+- O [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule]] identificou que um item e constraint, mas voce ainda suspeita que nao e uma boa constraint -- o budget gate faz a segunda passada de qualidade
 
 Nao use quando:
 
@@ -262,9 +262,9 @@ O constraint-budget-gate opera como gate de qualidade sobre o campo Constraints,
 
 | Componente Existente | Como o Constraint Budget Gate complementa |
 |---|---|
-| [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]] | O primitivo de cinco partes garante que o campo Constraints existe. O budget gate garante que o conteudo desse campo e enxuto, direcional, e em linguagem de negocio -- qualidade sobre quantidade. |
+| [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] | O primitivo de cinco partes garante que o campo Constraints existe. O budget gate garante que o conteudo desse campo e enxuto, direcional, e em linguagem de negocio -- qualidade sobre quantidade. |
 | [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]] | A avaliacao ancorada em constraints verifica cada constraint contra o output. Com budget controlado (≤7), a verificacao e rapida, focada, e cada falha sinaliza um problema real. Com 16 constraints, a avaliacao e lenta, ruidosa, e falsos positivos minam a confianca. |
-| [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule]] | O decision rule classifica requisitos como constraint ou failure condition. O budget gate recebe os itens classificados como constraint e aplica o limite de 5-7. Fluxo composto: decision rule → budget gate → purificacao final. |
+| [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule]] | O decision rule classifica requisitos como constraint ou failure condition. O budget gate recebe os itens classificados como constraint e aplica o limite de 5-7. Fluxo composto: decision rule → budget gate → purificacao final. |
 | [[docs/canonical/ice-craft-separation|ICE Craft Separation]] | A separacao de crafts atribui Context ao harness. O budget gate identifica constraints que sao na verdade Context (padroes do time, stack, infra) e as move para o harness montar -- preservando a separacao que a arquitetura define. |
 | [[docs/canonical/generator-evaluator|Generator-Evaluator]] | O Generator recebe constraints como guia de design. Constraints infladas viram spec -- o Generator perde latitude. Constraints enxutas (≤7, direcionais) maximizam a capacidade de geracao enquanto previnem outputs inaceitaveis. |
 | [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]] | O budget gate identifica constraints que sao na verdade Expectations (checaveis pos-output) e as move para o campo correto, mantendo a fronteira entre o que guia o builder (constraints) e o que valida o output (expectations). |
@@ -294,7 +294,7 @@ Antes de declarar o campo Constraints como aprovado pelo budget gate, verifique:
 - [[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]:141-166 -- Classificacao como Missing (Medium integration value)
 - [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:89 -- Nota sobre constraint list growth como custo
 - [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]] -- estrutura que contem o campo Constraints
-- [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule]] -- decision rule que classifica requisitos antes do budget gate
+- [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule]] -- decision rule que classifica requisitos antes do budget gate
 - [[docs/canonical/ice-craft-separation|ICE Craft Separation]] -- separacao de crafts que define Context como propriedade do harness
 - [[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]] -- destino de constraints que sao na verdade expectations
 - [[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]] -- control plane que monta Context a partir de constraints reclassificadas

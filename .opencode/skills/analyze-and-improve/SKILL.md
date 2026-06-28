@@ -889,8 +889,7 @@ type: analysis
 date: <YYYY-MM-DD>
 aliases: ["manifesto <slug>", "artifacts <slug>"]
 tags: ["analise", "roadmap", "<dominio>"]
-relates-to:
-  - "[[docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification|Classificação]]"
+relates-to: []
 ---
 
 # Artifacts Manifest: <source-title>

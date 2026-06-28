@@ -53,7 +53,7 @@ Cenario:
 
 Consequencia:
   - Feature inflation: mais coisas existem do que precisam existir
-  - Carry debt acumula silenciosamente (ver [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger for Agentic Work]])
+  - Carry debt acumula silenciosamente (ver [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger for Agentic Work]])
   - O time perde a capacidade de distinguir build-que-importa de build-porque-pode
   - Decisoes sem dono se auto-aprovam um mes de cada vez
 ```
@@ -114,7 +114,7 @@ Fluxo:
 
 2. **Nomeie o dono do nao explicitamente.** "O time" nao e um dono. "O PO" so e um dono se o PO aceitou esse papel. Uma decisao sem dono se auto-aprova.
 
-3. **Registre a decisao.** Toda aplicacao do Manual Brake produz um registro com: data, tarefa, respostas as tres perguntas, classificacao final, dono nomeado, e racional. Isso fecha o loop de accountability e alimenta o [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger]].
+3. **Registre a decisao.** Toda aplicacao do Manual Brake produz um registro com: data, tarefa, respostas as tres perguntas, classificacao final, dono nomeado, e racional. Isso fecha o loop de accountability e alimenta o [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger]].
 
 4. **Experimentos tem stop criteria.** Se a classificacao for EXPERIMENTO, o escopo deve incluir: o que constitui evidencia de retorno, quando o experimento termina (data ou condicao), e quem decide continuar ou parar.
 
@@ -127,7 +127,7 @@ O Manual Brake se encaixa entre o alinhamento e a execucao no pipeline agentico 
 | Componente Existente | Como o Manual Brake complementa |
 |---|---|
 | [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]] | O Grill-Me faz perguntas de alinhamento (escopo, arquitetura, constraints). O Manual Brake adiciona as tres perguntas de valor que o Grill-Me nao cobre: quem precisa, custo-proxy, e dono da recusa. Aplicar o Manual Brake imediatamente apos ou durante a fase final do Grill-Me. |
-| [[.opencode/skills/issue-start/SKILL|issue-start skill]] | O execution brief do issue-start tem objective, success criteria, scope, out-of-scope. O Manual Brake adiciona a dimensao ausente: a decisao de valor (experimento/build/adiar/parar) e o dono do "nao". Integrar a classificacao do Manual Brake no execution brief como campo "Value Decision". |
+| [[.opencode/skills/issue-start/SKILL.md|issue-start skill]] | O execution brief do issue-start tem objective, success criteria, scope, out-of-scope. O Manual Brake adiciona a dimensao ausente: a decisao de valor (experimento/build/adiar/parar) e o dono do "nao". Integrar a classificacao do Manual Brake no execution brief como campo "Value Decision". |
 | [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]] | O AFK Routing Gate classifica tarefas por ambiguity, architecture, feedback-loop readiness e product judgment. O Manual Brake adiciona a dimensao de valor: uma tarefa pode ser AFK-ready tecnicamente mas ainda precisar de value gate antes da execucao. |
 | [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]] | O OS de loop fechado conecta state intake, priority synthesis, execution routing e feedback writeback. O Manual Brake insere um value-gating checkpoint entre priority synthesis e execution routing. |
 | [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] | O GC Day revisa slop e misbehavior semanalmente. Pode incluir uma revisao das decisoes de Manual Brake da semana: builds que passaram pelo gate — o retorno se materializou? |
@@ -144,7 +144,7 @@ Antes de declarar uma decisao de build como validada, verifique:
 - [ ] Se EXPERIMENTO: stop criteria, data/condicao de termino, e dono do stop estao definidos
 - [ ] Se BUILD: scope constraints e criterios de verificacao de retorno estao documentados
 - [ ] Se PARAR ou ADIAR: racional registrado para auditoria futura
-- [ ] O registro da decisao esta acessivel para o [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger]] e para ciclos de revisao
+- [ ] O registro da decisao esta acessivel para o [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger]] e para ciclos de revisao
 
 ## References
 
