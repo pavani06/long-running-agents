@@ -4,7 +4,7 @@ type: curriculum-exercise
 nivel: 4
 aliases: ["deferred ledger", "divida agentica", "skill debt KODA", "dependence debt", "carry debt", "ledger de divida"]
 tags: [curriculo-conteudo, nivel-4, exercicio, debt-classification, risk-management, token-economics, skill-debt, dependence-debt, carry-debt, governance, financial-modeling]
-relates-to: ["[[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]]", "[[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]", "[[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger Skill]]", "[[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Harness Improvements]]"]
+relates-to: ["[[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]]", "[[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]", "[[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger Skill]]", "[[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Harness Improvements]]"]
 last_updated: 2026-06-11
 ---
 # 📒 Exercicio 6: Construir o Deferred Ledger de Divida Agentica do KODA
@@ -185,7 +185,7 @@ Responda:
 - [[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]] -- Gate de revisao periodica de artefatos.
 - [[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]] -- Ledger operacional que alimenta o deferred ledger.
 - [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] -- Ciclo BUILD/STABILIZE/SIMPLIFY/REMOVE.
-- [[.opencode/skills/deferred-ledger-agentic-work/SKILL|Deferred Ledger Skill]] -- Skill que mantem o deferred ledger.
+- [[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger Skill]] -- Skill que mantem o deferred ledger.
 - `docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns.md` -- Pattern 6 (Deferred Ledger for Agentic Work) e Pattern 10 (Carry Debt Sunset Gate).
 
 ---

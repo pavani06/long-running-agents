@@ -161,7 +161,7 @@ Fluxo:
   │ - Missed-by-AI findings sao usados para expandir o       │
   │   escopo de checks                                       │
   │ - Dados de concordancia por modulo alimentam o            │
-  │   [[.opencode/skills/contextual-severity-calibration/SKILL|Contextual Severity Calibration]] │
+  │   [[.opencode/skills/contextual-severity-calibration/SKILL.md|Contextual Severity Calibration]] │
   │ - Metricas historicas permitem detectar degradacao       │
   │   do AI reviewer apos mudancas de modelo ou prompt        │
   └─────────────────────────────────────────────────────────┘
@@ -216,7 +216,7 @@ O Shadow Review Pipeline se integra a infraestrutura de evals e governanca do re
 | [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] | O ciclo BUILD → STABILIZE → SIMPLIFY → REMOVE do harness. O shadow period corresponde a fase STABILIZE para AI reviewers: coleta de dados, calibracao, e decisao de promocao ou remocao. |
 | [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] | O loop de classificacao de falhas categoriza slop e misbehavior. False positives do AI reviewer sao uma categoria de slop que este loop pode capturar e encaminhar para recalibracao. |
 | [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]] | O gate de progressao por sinais de dor. Se o shadow period revela alta taxa de FP em uma categoria, isso e um pain signal que dispara revisao do prompt ou escopo daquela categoria. |
-| [[.opencode/skills/contextual-severity-calibration/SKILL|Contextual Severity Calibration]] | O shadow period produz dados de concordancia por modulo. Esses dados alimentam a calibracao de severidade contextual: modulos onde o AI reviewer tem baixa precisao podem exigir thresholds mais conservadores ou revisao humana obrigatoria. |
+| [[.opencode/skills/contextual-severity-calibration/SKILL.md|Contextual Severity Calibration]] | O shadow period produz dados de concordancia por modulo. Esses dados alimentam a calibracao de severidade contextual: modulos onde o AI reviewer tem baixa precisao podem exigir thresholds mais conservadores ou revisao humana obrigatoria. |
 
 ## Quality Gates
 
@@ -232,7 +232,7 @@ Antes de declarar o shadow period como concluido e tomar decisoes de graduacao, 
 - [ ] Categorias que falharam tem plano de recalibracao (ajuste de prompt, escopo, ou thresholds)
 - [ ] Missed-by-Human findings foram revisados para identificar lacunas no processo de revisao humana
 - [ ] O time foi comunicado sobre as decisoes de graduacao e a logica por tras delas
-- [ ] Dados de concordancia por modulo foram encaminhados para [[.opencode/skills/contextual-severity-calibration/SKILL|Contextual Severity Calibration]]
+- [ ] Dados de concordancia por modulo foram encaminhados para [[.opencode/skills/contextual-severity-calibration/SKILL.md|Contextual Severity Calibration]]
 - [ ] O dashboard do shadow period permanece acessivel como baseline historica para correlation tracking futuro
 
 ## References
@@ -247,7 +247,7 @@ Antes de declarar o shadow period como concluido e tomar decisoes de graduacao, 
 - [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] — ciclo BUILD → STABILIZE → SIMPLIFY → REMOVE (shadow = STABILIZE)
 - [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] — loop de classificacao de falhas (captura de FP para recalibracao)
 - [[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]] — gate de progressao por sinais de dor (FP como pain signal)
-- [[.opencode/skills/contextual-severity-calibration/SKILL|Contextual Severity Calibration]] — calibracao de severidade contextual (consome dados de concordancia por modulo)
+- [[.opencode/skills/contextual-severity-calibration/SKILL.md|Contextual Severity Calibration]] — calibracao de severidade contextual (consome dados de concordancia por modulo)
 
 ---
 

@@ -100,7 +100,7 @@ O repositório não é só conhecimento -- é um sistema operacional. Você pode
 | Diretório | Conteúdo |
 |---|---|
 | `harness/` | Sistema de harness que orquestra o pipeline `analyze-and-improve` em 7 fases com evaluators e gates automáticos -- guia completo em [[harness/GUIDE-analyze-and-improve|Guia do Harness]] |
-| `.opencode/agents/` | 3 agentes: [[.opencode/agents/hop-orchestrator-rezek|orquestrador principal]], [[.opencode/agents/koda-hop-init-basic|inicializador KODA]], [[.opencode/agents/hop-live-whatsapp-tester|testador WhatsApp]] |
+| `.opencode/agents/` | 3 agentes: [[.opencode/agents/hop-orchestrator-rezek.md|orquestrador principal]], [[.opencode/agents/koda-hop-init-basic.md|inicializador KODA]], [[.opencode/agents/hop-live-whatsapp-tester.md|testador WhatsApp]] |
 | `.opencode/skills/` | 28 skills: workflow de issues, orquestração, documentação, planos, error hygiene, shadow review, token budget, constraint gates, intent decomposition, e mais |
 | `dashboards/` | 3 dashboards Obsidian: [[dashboards/analysis-hub|analysis hub]], [[dashboards/curriculum-progress|curriculum progress]], [[dashboards/obsidian-home|home page]] com dataview queries |
 | `templates/` | Templates reutilizáveis: canonical doc, analysis doc, curriculum lesson, curriculum index |

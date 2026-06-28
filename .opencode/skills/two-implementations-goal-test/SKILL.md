@@ -26,12 +26,12 @@ O veredito e binario:
 Carregue esta skill quando:
 
 - Voce esta escrevendo ou revisando o campo Descricao (Goal) de um intent de cinco partes e quer garantir que ele descreve um outcome, nao um metodo
-- O ciclo de alinhamento ([[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me]]) esta para iniciar e os goals candidatos precisam de purificacao antes da entrevista
+- O ciclo de alinhamento ([[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]], [[docs/canonical/grill-me-alignment-interview|Grill-Me]]) esta para iniciar e os goals candidatos precisam de purificacao antes da entrevista
 - O agente esta recebendo instrucoes que ditam stack, protocolos, nomes de classe, ou escolhas de storage -- o sintoma classico de spec-in-disguise goal
 - Voce suspeita que o humano escreveu o metodo no goal porque o outcome estava claro na cabeca, mas a solucao ja estava formada (failure pattern #1 documentado na fonte)
 - Uma tarefa chega com descricao do tipo "implementa X usando Y com Z" -- a presenca de implementacao no goal e o trigger
 - Voce esta treinando alguem (ou um agente) a escrever intents de qualidade e precisa de um exemplo concreto da diferenca entre goal e spec
-- O [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split]] identificou multiplos intents, e cada fragmento precisa ser classificado como goal ou spec antes de seguir
+- O [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split]] identificou multiplos intents, e cada fragmento precisa ser classificado como goal ou spec antes de seguir
 
 Nao use quando:
 
@@ -201,9 +201,9 @@ O two-implementations test funciona como gate de pureza do Goal, complementando 
 
 | Componente Existente | Como o Two-Implementations Test complementa |
 |---|---|
-| [[.opencode/skills/intent-five-part-primitive/SKILL|intent-five-part-primitive]] | O primitivo de cinco partes tem o campo Descricao (Goal). O two-implementations test valida se o conteudo desse campo e de fato um goal, nao uma spec. E um gate de qualidade que opera sobre o campo antes da completude gate. |
+| [[.opencode/skills/intent-five-part-primitive/SKILL.md|intent-five-part-primitive]] | O primitivo de cinco partes tem o campo Descricao (Goal). O two-implementations test valida se o conteudo desse campo e de fato um goal, nao uma spec. E um gate de qualidade que opera sobre o campo antes da completude gate. |
 | [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]] | O Grill-Me entrevista o requisitante sobre escopo, arquitetura e constraints. Se o Goal e uma spec disfarcada, a entrevista pergunta sobre a implementacao em vez do outcome. O two-implementations test purifica o Goal antes da entrevista, garantindo que as perguntas do Grill-Me operam sobre outcomes. |
-| [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split]] | O atomicity split quebra intents multi-goal em fragmentos atomicos. O two-implementations test classifica cada fragmento como goal ou spec. O fluxo composto: split → test → purifica → entrega. |
+| [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split]] | O atomicity split quebra intents multi-goal em fragmentos atomicos. O two-implementations test classifica cada fragmento como goal ou spec. O fluxo composto: split → test → purifica → entrega. |
 | [[docs/canonical/ice-craft-separation|ICE Craft Separation]] | A separacao de crafts define que o humano escreve o Goal. O two-implementations test garante que o humano escreveu um outcome no campo Goal, nao um metodo -- preservando a separacao que a arquitetura exige. |
 | [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] | Issues geradas como fatias verticais herdam o Goal do intent. Se o Goal e uma spec disfarcada, a issue gerada e uma tarefa de implementacao sem decisao -- o oposto de uma fatia vertical com comportamento observavel. |
 | [[docs/canonical/generator-evaluator|Generator-Evaluator]] | O Generator recebe o Goal como contrato de trabalho. Se o Goal e uma spec, o Generator nao tem o que decidir -- vira um executor deterministico, desperdicando a capacidade de geracao que a arquitetura confia a ele. |
@@ -231,7 +231,7 @@ Antes de declarar um Goal como validado pelo two-implementations test, verifique
 - [[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]] -- entrevista de alinhamento que recebe o Goal purificado
 - [[docs/canonical/ice-craft-separation|ICE Craft Separation]] -- separacao de crafts que o teste protege
 - [[docs/canonical/generator-evaluator|Generator-Evaluator]] -- Generator que recebe o Goal como contrato de trabalho
-- [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split]] -- decomposicao de goals que precede o two-implementations test
+- [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split]] -- decomposicao de goals que precede o two-implementations test
 
 ---
 

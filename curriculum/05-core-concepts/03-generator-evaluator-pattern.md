@@ -779,7 +779,7 @@ No [[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]], 
 - [[docs/canonical/constraint-failure-decision-rule|Constraint-Failure Decision Rule]] -- canonical doc com a definição formal
 - [[docs/canonical/constraint-budget-gate|Constraint Budget Gate]] -- padrão complementar que limita constraints a 5-7
 - [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule|Exercício: Constraint-Failure Decision Rule]] -- exercício prático de classificação
-- [[.opencode/skills/constraint-failure-decision-rule/SKILL|constraint-failure-decision-rule skill]] -- skill operacional
+- [[.opencode/skills/constraint-failure-decision-rule/SKILL.md|constraint-failure-decision-rule skill]] -- skill operacional
 
 ### Compartmented Evaluation: Superficies de Informacao Seladas
 

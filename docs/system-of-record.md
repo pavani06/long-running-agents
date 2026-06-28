@@ -132,7 +132,7 @@ Topicos cobertos: `governanca`, `decision-discipline`, `spec-driven-development`
 
 | Fonte | Cobre |
 |---|---|
-| [[.github/PULL_REQUEST_TEMPLATE|.github/PULL_REQUEST_TEMPLATE.md]] | Template de PR com checklist de crossroad files e revisão |
+| [[.github/PULL_REQUEST_TEMPLATE.md|.github/PULL_REQUEST_TEMPLATE.md]] | Template de PR com checklist de crossroad files e revisão |
 | [.github/CODEOWNERS](.github/CODEOWNERS) | Política de code ownership para crossroad files |
 | [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) | Templates de issue (config.yml, technical.md) |
 | [.github/dependabot.yml](.github/dependabot.yml) | Configuração de atualização automática de dependências |

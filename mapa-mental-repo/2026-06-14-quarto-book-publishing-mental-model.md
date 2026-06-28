@@ -5,7 +5,7 @@ tags: ["agentes-orquestracao", "curriculo-conteudo", "harness-engineering", "con
 date: 2026-06-14
 aliases: ["quarto book publishing mental model", "modelo mental quarto", "repository mental model", "phase 0 quarto", "long-running-agents mental model"]
 last_updated: 2026-06-14
-relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL|Analyze and Improve Skill]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]", "[[.opencode/skills/analyze-and-improve/SKILL.md|Analyze and Improve Skill]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]"]
 sources: ["[[docs/system-of-record|System of Record]]", "[[README|Repository README]]", "[[AGENTS|AGENTS.md]]", "[[curriculum/README|Curriculum README]]", "[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/GLOSSARY|Glossary]]"]
 ---
 # Mental Model: long-running-agents

@@ -701,7 +701,7 @@ O teste das duas implementações pode rodar como um sub-gate dentro do Intent C
 **Para aprofundar:**
 - [[docs/canonical/two-implementations-goal-test|Two-Implementations Goal Test]] -- canonical doc com a definição formal e a heurística de classificação
 - [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-two-implementations-goal-test|Exercício: Two-Implementations Goal Test]] -- exercício prático de diagnóstico e classificação
-- [[.opencode/skills/two-implementations-goal-test/SKILL|two-implementations-goal-test skill]] -- skill operacional que executa o teste
+- [[.opencode/skills/two-implementations-goal-test/SKILL.md|two-implementations-goal-test skill]] -- skill operacional que executa o teste
 
 ### Goal Atomicity: One Sentence, No "And"
 
@@ -750,7 +750,7 @@ Um intent original com 3 goals atômicos gera 3 ciclos independentes de Planner 
 - [[docs/canonical/goal-atomicity-split|Goal Atomicity Split]] -- canonical doc com a definição formal e heurística de split
 - [[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]] -- padrão complementar de decomposição por comportamento observável
 - [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-goal-atomicity-split|Exercício: Goal Atomicity Split]] -- exercício prático com implementação do splitter
-- [[.opencode/skills/goal-atomicity-split/SKILL|goal-atomicity-split skill]] -- skill operacional que executa a decomposição
+- [[.opencode/skills/goal-atomicity-split/SKILL.md|goal-atomicity-split skill]] -- skill operacional que executa a decomposição
 
 ### Human-Owned Expectations Boundary
 
