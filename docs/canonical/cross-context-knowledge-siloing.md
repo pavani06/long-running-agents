@@ -15,6 +15,7 @@ tags:
   - context-engineering
 last_updated: 2026-06-17
 relates-to:
+  - "[[docs/canonical/operator-channel-authority|Operator-Channel Authority]]"
   - "[[docs/canonical/durable-fact-selective-history|Durable Fact Selective
     History]]"
   - "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"

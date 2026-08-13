@@ -4,7 +4,7 @@ type: canonical
 aliases: ["ciclo de escalada da valvula de seguranca institucional", "safety valve escalation", "supremo botao vermelho", "institutional degradation cycle", "ciclo vicioso institucional", "escalation cycle governance", "emergency brake cycle"]
 tags: ["agentes-orquestracao", "analise-estrutural", "instituicoes"]
 last_updated: 2026-06-25
-relates-to: ["[[docs/analysis/2026-06-25-futuro-ia-juros-brasil-visao-daniel-goldberg/patterns|Extracted Patterns]]", "[[docs/analysis/2026-06-25-futuro-ia-juros-brasil-visao-daniel-goldberg/analysis|Knowledge Extraction]]", "[[docs/canonical/second-order-institutional-interaction|Second-Order Institutional Interaction]]", "[[docs/canonical/institutional-layer-amplification|Institutional Layer Amplification]]"]
+relates-to: ["[[docs/analysis/2026-06-25-futuro-ia-juros-brasil-visao-daniel-goldberg/patterns|Extracted Patterns]]", "[[docs/analysis/2026-06-25-futuro-ia-juros-brasil-visao-daniel-goldberg/analysis|Knowledge Extraction]]", "[[docs/canonical/second-order-institutional-interaction|Second-Order Institutional Interaction]]", "[[docs/canonical/institutional-layer-amplification|Institutional Layer Amplification]]", "[[docs/canonical/operator-channel-authority|Operator-Channel Authority]]"]
 sources: ["[[docs/analysis/2026-06-25-futuro-ia-juros-brasil-visao-daniel-goldberg/analysis|Análise Estrutural — Daniel Goldberg]]"]
 ---
 
