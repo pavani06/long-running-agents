@@ -166,19 +166,20 @@ o symlink do runner.
 ## Execucao
 
 ```bash
-# Suite completa (todos os 25 skills + integracao)
+# Suite completa (todos os 27 skills + integracao)
 bash ~/.config/opencode/tests/skills/run_all_skill_tests.sh
 
 # Skill individual
 python ~/.config/opencode/skills/<nome>/harness/run_tests.py
 ```
 
-Resultado esperado: 26/26 suites, 237 testes, exit 0.
+Resultado esperado: 28/28 suites, 345 testes, exit 0.
 
 ## Historico
 
+- **2026-08-13**: Re-verificado via `run_all_skill_tests.sh` — 28/28 suites, 345 testes, 27 skills, exit 0.
 - **2026-06-18**: Fase 1 (5 skills) + Expansao (20 skills) concluidas.
-  GAP 5 resolvido. 25 skills com cobertura de testes automatizados.
+  GAP 5 resolvido. 26 skills com cobertura de testes automatizados. (Atualizado 2026-06-28: findings-pipeline harness bootstrap concluido, 27/27 suites, 314 testes.)
 - **2026-06-18**: Correcoes pos-review: SeverityGate bug fix,
   SkillContract deduplication, YAML parser unification,
   assert → raise explicito.
