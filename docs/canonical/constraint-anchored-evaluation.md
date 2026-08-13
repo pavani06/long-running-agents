@@ -4,7 +4,7 @@ type: canonical
 aliases: ["avaliação ancorada em constraints", "constraint-based evaluation", "objective evaluation", "verifiable evaluation"]
 tags: ["evals", "agentes-orquestracao"]
 last_updated: 2026-06-10
-relates-to: ["[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill Capability Pipeline]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
+relates-to: ["[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill Capability Pipeline]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]", "[[docs/canonical/structural-guarantee-over-compliance|Structural Guarantee over Compliance]]"]
 sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]
 ---
 
