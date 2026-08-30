@@ -1,5 +1,7 @@
 # QI Loop Iter 1 — Correções do Run Kavak Playbook — Plano de Execução
 
+> **✅ EXECUTADO E FECHADO (2026-08-30):** 13/13 tarefas concluídas, 15/15 critérios de re-verificação PASS, commits `dfb67d8` (LRA) e `e2d2a0d` (RK) pushados. Rastreabilidade completa no epic #145 (issues #146-#156 com handoffs comentados). Desvios documentados: Sidekick ganhou skill+exercise completos (decisão do operador no gate 2→3, REC-012); FASE 5 por verificação direcionada.
+
 **Objetivo:** Fechar os 11 findings P0/P1 do review-work de 2026-08-30 (key hardening, untrusted source, commits pendentes, Passo 0c, 6 correções de artefato) + criar skill/exercise do Sidekick (REC-012, decisão do operador no gate 2→3).
 **Fase:** Implementação
 **Dependências:** review-work concluído (2026-08-30); recomendações aprovadas (gate 2→3 ✓)
