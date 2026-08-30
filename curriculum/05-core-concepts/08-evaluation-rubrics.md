@@ -752,6 +752,41 @@ Esta arquitetura de dataset é o alicerce do [[docs/canonical/production-failure
 
 O dataset começa com golden answers criadas por especialistas de domínio (não por modelos) a partir de queries reais de produção. Esses ~200 casos iniciais cobrem os cenários mais frequentes e os modos de falha mais caros. A partir deles, o crescimento é orgânico — cada incidente adiciona casos, cada feature nova adiciona cobertura.
 
+## 🔄 Production-Contact Training Loop: o Contato com Produção É o Treinamento
+
+O Living Eval Dataset diz que o dataset cresce com produção. O *Production-Contact Training Loop* (padrão da Kavak) vai além e faz uma afirmação mais forte: **agentes só-agentes-de-laboratório não convergem**. Dados sintéticos ou históricos não substituem a distribuição real de interação. A postura operacional da fonte: colocar agentes na frente de clientes reais, colher os dados de interação e os evals, e treinar nesse loop é o único mecanismo observado que faz agentes funcionar de fato.
+
+**O loop (cadência diária), montado sobre primitivas que o repositório já tem:**
+
+```
+1. EXPOR      agente atende clientes reais
+              (na Kavak: 96% das interações totalmente agent-handled)
+2. COLHER     traces + outcomes → production_sampled_eval_corpus
+              (artefato nomeado do nivel-3-koda: replay de conversas
+               reais anonimizadas, com privacidade e labels explícitos)
+3. AVALIAR    pontuar os próprios prefixos do agente on-policy
+              (On-Policy Rollout Feedback Loop)
+4. ATUALIZAR  prefixos pontuados → regras de prompt, skills, casos
+              de eval, política de memória
+5. PROPAGAR   updates alcançam a frota na próxima instanciação
+              (Shared Fleet Learning)
+6. REIMPLANTAR o loop repete; os modos de falha encontrados
+              em produção viram o currículo
+```
+
+**O reframe de identidade:** os dados colhidos e os loops de feedback não são groundwork para os agentes; eles **são** os agentes. Um agente separado dos seus loops de dados é uma demo; com os loops, é um sistema que converge para o cliente real.
+
+**A ordem de exposição importa:** colocar agente não-provado na frente de cliente real carrega risco. Evals são freios (veja Evals-as-Brakes abaixo): o loop de contato pressupõe a suíte de freios já construída. E `production_sampled_eval_corpus` exige anonimização e labels antes de qualquer replay.
+
+**Checklist: Production-Contact Gate**
+- [ ] Existe canal de exposição a produção (mesmo limitado: canary, um canal, uma cidade) antes de qualquer claims de convergência
+- [ ] Traces e outcomes de produção são colhidos em corpus nomeado com política de privacidade (anonimização, labels)
+- [ ] O eval pontua as trajetórias próprias do agente (on-policy), não só scripts curados
+- [ ] Cada atualização volta ao agente e é re-measureada: o loop fecha em melhoria medida, não em intenção
+- [ ] A suíte de freios (evals) existe antes de ampliar exposição a clientes reais
+
+Para o padrão completo: [[docs/canonical/production-contact-training-loop|Production-Contact Training Loop]].
+
 ## 🎯 Business-Outcome-First: Definir Sucesso em Termos de Negócio Antes de Construir Infraestrutura de Eval
 
 O *Business-Outcome-First Eval Pipeline* de Bhaumik corrige uma inversão comum: times de engenharia constroem pipelines de avaliação começando por métricas técnicas (latência, throughput, acurácia) em vez de outcomes de negócio (taxa de deflection, CSAT, impacto em receita). O resultado é um sistema de eval que passa tecnicamente mas falha em entregar valor de negócio — o agente está "correto" mas não está resolvendo o problema do cliente.
@@ -820,6 +855,139 @@ O objetivo final do pipeline é prever, a partir dos eval scores, qual será a t
 - [ ] Pipeline de comparação (agent output vs. golden answer) implementado e automatizado
 - [ ] Correlação eval-score → business-outcome validada com pelo menos 30 dias de dados de produção
 - [ ] Threshold de go/no-go para deployment baseado em métrica de negócio, não apenas em pass rate técnico
+
+## 📏 Outcome-Level Eval Hierarchy: o Outcome de Negócio como Única Fonte de Verdade
+
+O Business-Outcome-First define a sequência de construção. O *Outcome-Level Eval Hierarchy* (padrão da Kavak) define o **loop de otimização** e nomeia a classe de falha que ele rejeita: **KPIs superficiais**. Número de chamadas e minutos em chamada dão sinal sem verdade; a maioria das coisas quebra no nível de conversão, que essas métricas nunca revelam. O dashboard fica eufórico (chamadas +30%, minutos +12%) enquanto a conversão fica plana, e o time passa dois trimestres otimizando música de espera porque o que mede continua melhorando.
+
+**A hierarquia como um único loop, estritamente ordenado:**
+
+```yaml
+# outcome-eval-loop.yaml
+level_1_outcome:                      # PRIMEIRA ORDEM: única fonte de verdade
+  metric: [conversao_fundos_45d, re_engagement_csat]   # converteu / voltou?
+  banned_from_readout: [call_count, minutes_on_call]   # rejeição nomeada
+level_2_architecture:                 # otimizada SOMENTE contra resultados de nível 1
+  variables: [context_policy, memory_tiers, harness_shape, model_choice]
+level_3_skills:                       # adicionadas SOMENTE onde outcomes revelam lacunas
+  trigger: outcome_gap_cluster        # ex: cotações de trade-in perdem vendas
+  action: adicionar/estender skill, depois re-medir nível 1
+cadence: re-medir o outcome após cada mudança de arquitetura/skill
+rule: nunca substituir um proxy KPI pelo readout de nível 1
+```
+
+**A regra de rejeição:** KPIs de atividade são mais baratos de instrumentar, chegam mais rápido e não correlacionam com nada que paga. A regra `banned_from_readout` é deliberada: quando o outcome prova ser lento ou ruidoso, a tentação é trocá-lo por um proxy que melhore mais rápido. A hierarquia proíbe a troca.
+
+Isso conecta o Business-Outcome-First (que define o sucesso antes do pipeline) com o correlation report da Calibração (que verifica se o score ainda prediz o outcome). Para o padrão completo: [[docs/canonical/outcome-level-eval-hierarchy|Outcome-Level Eval Hierarchy]].
+
+**Checklist: Outcome-Level Gate**
+- [ ] A métrica de primeira ordem é resultado de negócio (conversão, re-engajamento), não atividade
+- [ ] KPIs de atividade estão explicitamente banidos do readout de decisão (lista nomeada)
+- [ ] Variáveis de arquitetura só mudam contra resultados de nível 1
+- [ ] Skills só são adicionadas onde clusters de outcome revelam lacunas
+- [ ] O outcome é re-medido após cada mudança; correlação score→outcome verificada
+
+## 🚦 Evals-as-Brakes: Velocidade como Função da Qualidade dos Freios
+
+Hierarquia de outcome define **o que** medir. Evals-as-Brakes define **quão rápido você pode ir**: a resposta padrão a risco de IA é desacelerar, mas empresas que vão devagar vão devagar porque **falta freio**, não porque devagar é seguro. Velocidade e segurança tratadas como dials independentes fazem da velocidade a moeda com que se compra segurança, permanentemente.
+
+O padrão (da Kavak) acopla os dials: **a velocidade de deploy permitida é uma função da qualidade e cobertura dos evals**. O maxim da fonte: "você só pisa no acelerador se tiver os freios certos" — e a resposta correta a um incidente é **melhorar os freios** (novo caso de eval, mais cobertura), nunca reduzir a velocidade permanentemente.
+
+| Estado dos evals (freios) | Velocidade permitida (acelerador) |
+|---|---|
+| Suíte completa verde + correlação eval→produção rastreada | Auto-merge; deploy no merge |
+| Subset estratificado de CI verde; suíte completa agendada | Batch de deploy diário |
+| Superfície nova com cobertura fina de eval | Gate manual por mudança |
+| Eval falhando ou correlação eval→produção quebrada | Parar; consertar os freios primeiro |
+
+```yaml
+# velocity-policy.yaml
+velocity_tiers:
+  - name: auto-merge
+    requires:
+      eval_coverage: ">= 0.9 dos comportamentos alterados"
+      gates: [pr-eval-report, merge-threshold]
+      correlation: "score de eval prediz outcome de produção"
+  - name: daily-batch
+    requires:
+      eval_coverage: ">= 0.6"
+      gates: [stratified-ci]
+  - name: manual-gate
+    requires: {}          # piso padrão: nada sobe sem humano
+risk_response:
+  on_incident: "adicionar caso de eval + subir cobertura"   # melhorar freios
+  never: "reduzir tier de velocidade permanentemente sem justificativa de eval"
+```
+
+Os hooks de enforcement já existem no ecossistema: [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] (relatório de eval em PR que toca comportamento de agente; merge bloqueado por threshold) e [[docs/canonical/accidental-brake-replacement|Accidental Brake Replacement]] (freio burocrático lento substituído por freio de eval intencional). Para o padrão completo: [[docs/canonical/evals-as-brakes|Evals-as-Brakes]].
+
+**Checklist: Gas/Brake Coupling**
+- [ ] Existe política escrita que amarra tier de velocidade de deploy a tier de cobertura de eval
+- [ ] Aumentar velocidade só é possível investindo em evals (o investimento é o destravador)
+- [ ] Incidente gera caso de eval + cobertura maior; nunca cooling period permanente
+- [ ] Eval ruim dá sinal sem verdade: cobertura é medida sobre comportamentos alterados, e correlação com produção é rastreada
+
+## 💰 Eval-Investment Parity: a Regra 50/50 entre Agentes e Evals
+
+Freios só funcionam se alguém pagar por eles. O *Eval-Investment Parity* (Kavak) é a regra de alocação: **aproximadamente o mesmo tempo de engenharia, tokens e dinheiro construindo evals que construindo os próprios agentes**, com os evals como artefato de primeira classe co-projetado (mesmas sprints), não bolt-on pós-deploy. Na escala de 100-200 mil agentes instantiated diariamente, evals pós-hoc são aritmeticamente impossíveis; e adiar evals limita a velocidade alcançável de qualquer forma (Evals-as-Brakes acima).
+
+```yaml
+# sprint-budget.yaml
+parity_rule: "eval_track ~= agent_track"        # tempo, tokens E dinheiro
+allocation:
+  engineering_time: { agents: 50%, evals: 50% }
+  tokens:            { agents: 50%, evals: 50% }
+tracks:
+  agent_build: [harness, skills, memória, deployment]
+  eval_build:  [casos, judges, regression suite, dashboards]  # co-projetados
+gate:
+  deploy: somente quando o eval track passa   # paridade sem gate é teatro
+cadence: sustentada a cada sprint, não alocação única
+```
+
+**Tensão declarada com o pain-signal gate deste currículo:** o eval-maturity gate do Harness Evolution manda aprovar "apenas a menor capacidade de eval que resolve a dor observada". As regras coexistem com escopos diferentes: o pain-signal gate governa **qual** capacidade de eval construir a seguir (pré-escala); a paridade governa **a alocação agregada** quando contato com produção é a norma e a frota cresce (escala de frota). Aceitar paridade é aceitar explicitamente que a capacidade efetiva de builders cai pela metade, como decisão deliberada em vez de negligência silenciosa. Para o padrão completo: [[docs/canonical/eval-investment-parity|Eval-Investment Parity]].
+
+**Checklist: Parity Gate**
+- [ ] Alocação de sprint tem trilhas paralelas (agente / eval) com orçamento comparável e declarado
+- [ ] Evals são co-projetados com o agente (mesmas sprints), não squeezed no último sprint
+- [ ] Deploy é gated em resultado de eval; paridade sem gate não conta
+- [ ] A liderança aceitou por escrito o custo: metade da capacidade não vira feature
+
+## 🏁 Carve-Out Pilot com Hard P&L Target: o P&L como Readout de Eval
+
+A forma mais dura de outcome-level eval é provar que um agente **opera** uma unidade de negócio. Pilotos de agente falham de dois jeitos ao mesmo tempo: escopo não-delimitado (hackathon difuso, "todo mundo tenta um agente no seu processo", sem target org design) e readout mole (comportamento impressionante de modelo em vez de número financeiro pré-registrado). Um piloto que não pode falhar não decide nada.
+
+O padrão da Kavak: **recortar uma unidade operacional contida (uma cidade), instalar um agente no harness padrão como operador ("AI CEO"), e fazer um número de P&L duro ser o readout do eval**. A instância real: cidade isolada como experimento contido, meta de 2x lucro no mês um, resultado de 1.5x em seis semanas, com todos os KPIs movendo (CSAT, qualidade de inventário, rotação, penetração de financiamento).
+
+Quatro propriedades load-bearing:
+
+1. **Contenção por fronteira organizacional, não por escopo de ferramenta.** Uma cidade é um P&L completo com bordas limpas; o blast radius é a própria unidade (um nível acima do blast radius de módulo do Harness Design Checklist).
+2. **O harness padrão, sem modificações.** O agente do piloto roda o mesmo harness da frota-alvo; caso contrário o piloto não prova nada sobre a frota.
+3. **Readout financeiro duro.** O alvo de P&L é o eval: pré-registrado, numérico, propriedade do agente. Falhar no número é um resultado válido que decide (iterar ou matar).
+4. **Loop diário de plano-enviado/telemetria-retornada.** O agente empurra planos diários para cada trabalhador; trabalhadores devolvem notas de voz como telemetria de progresso. É o que torna microgerenciamento diário barato (notas de voz, não dashboards).
+
+```yaml
+# pilot-charter.yaml
+unit: operacoes-cidade-recorte        # unidade operacional contida
+operator: agente no standard-harness  # mesmo harness da frota-alvo
+readout:
+  metric: lucro
+  target: 2.0x baseline_mes           # alvo de P&L pré-registrado
+  horizon: mês um                     # medido: 1.5x em seis semanas
+telemetry:
+  plan_push: diário, por trabalhador
+  return_channel: notas de voz dos trabalhadores
+exit: [escalar-próxima-cidade, iterar-harness, matar]
+```
+
+**Conexões:** o readout é Business-Outcome-First levado ao extremo (lucro é o outcome); o alvo duro pressupõe os freios (Evals-as-Brakes) e a intenção de escala (frota) do harness padrão; o canal de notas de voz é o mesmo do [[docs/canonical/sidekick-pattern-physical-boundaries|Sidekick Pattern]] visto de cima. A advertência: valor vem de profundidade (enumerar cada número e cliente), não de altitude; sem unidade genuinamente isolável, o padrão não aplica. Para o padrão completo: [[docs/canonical/carve-out-pilot-hard-target|Carve-Out Pilot with Hard P&L Target]].
+
+**Checklist: Hard-Target Pilot Gate**
+- [ ] A unidade é contida por fronteira organizacional com P&L próprio (não um slice de workflow)
+- [ ] O agente opera o harness padrão, idêntico ao da frota-alvo
+- [ ] O alvo financeiro é numérico, pré-registrado antes do início e propriedade do agente
+- [ ] Existe loop diário plano-push → telemetria de retorno dos executores
+- [ ] A regra de saída (escalar, iterar, matar) foi decidida antes, pelo número
 
 ## 🧪 Trace Reading + Rubrics: Diagnosticando Underperformance
 

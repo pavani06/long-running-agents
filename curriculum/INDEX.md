@@ -121,6 +121,7 @@ last_updated: 2026-06-26
 - `03-nivel-3-advanced-architecture/exercises/exercise-04-llm-as-fuzzy-compiler.md` (LLM as Fuzzy Compiler)
 - `03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation.md` (Persona-Based Documentation)
 - `03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md` (Presence-in-the-Loop Metric)
+- `03-nivel-3-advanced-architecture/exercises/exercise-07-mega-expert-consolidation.md` (Mega-Expert Consolidation)
 - `03-nivel-arquiteto/exercises/exercise-04-owner-of-no-role.md` (Owner of No Role)
 - `03-nivel-3-operational/exercises/exercise-shadow-review-pipeline.md` (Shadow Review Pipeline)
 - `03-nivel-3-operational/exercises/exercise-contextual-severity-calibration.md` (Contextual Severity Calibration)

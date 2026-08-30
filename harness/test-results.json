@@ -2,86 +2,93 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.md",
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.md",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.yaml"
     ],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
-    "duration_seconds": 295,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T12:45:47Z",
-    "completed_at": "2026-06-18T12:50:42Z"
+    "started_at": "2026-08-30T19:56:00Z",
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:02:00Z"
   },
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.md",
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-analysis.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis.md",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis.yaml"
     ],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
-    "duration_seconds": 295,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T12:45:47Z",
-    "completed_at": "2026-06-18T12:50:42Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:14:00Z"
   },
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.md",
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-patterns.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.md",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.yaml"
     ],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
-    "duration_seconds": 281,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T12:50:55Z",
-    "completed_at": "2026-06-18T12:55:36Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:20:00Z"
   },
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.md",
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-classification.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.md",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.yaml"
     ],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Classificacao contra repositorio \u2014 Phase 3",
-    "duration_seconds": 364,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T12:55:36Z",
-    "completed_at": "2026-06-18T13:01:40Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:28:00Z"
   },
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-artifacts.yaml",
-      "docs/analysis/2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-artifacts.md"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.yaml",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.md"
     ],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
-    "duration_seconds": 661,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T13:01:40Z",
-    "completed_at": "2026-06-18T13:12:41Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:45:00Z"
   },
   "phase-5": {
     "passes": true,
     "evidence": [],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Integracao \u2014 atualiza system-of-record e indices",
-    "duration_seconds": 114,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T13:12:41Z",
-    "completed_at": "2026-06-18T13:14:35Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T20:52:00Z"
   },
   "phase-6": {
     "passes": true,
     "evidence": [],
-    "evaluated_by": "evaluator",
+    "evaluated_by": "harness-orchestrator",
     "notes": "Curriculum Deep Integration \u2014 opcional",
-    "duration_seconds": 475,
+    "duration_seconds": null,
     "retry_count": 0,
-    "started_at": "2026-06-18T13:14:35Z",
-    "completed_at": "2026-06-18T13:22:30Z"
+    "started_at": null,
+    "completed_at": null,
+    "ended_at": "2026-08-30T21:00:00Z"
   }
 }

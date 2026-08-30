@@ -1,0 +1,111 @@
+meta:
+  title: "Classification — Reusable Agentic Patterns from Kavak's Playbook for Rebuilding a Company Around AI (Batch 2: Patterns 9-14)"
+  date: '2026-08-30'
+  type: 'classification'
+  batch: 2
+entries:
+  - pattern_name: "Evals-as-Brakes"
+    classification: "Partial Coverage"
+    evidence:
+      - file: "docs/canonical/pr-gated-eval-enforcement.md"
+        line: 28
+        quote: "Require eval-specific reports on PRs that touch prompt, model, tool, context, memory, scoring, or agent-loop behavior."
+      - file: "docs/canonical/pr-gated-eval-enforcement.md"
+        line: 51
+        quote: "Block merge when thresholds fail unless an explicit waiver is recorded."
+      - file: "docs/canonical/accidental-brake-replacement.md"
+        line: 23
+        quote: "The danger is that an executive mandate to \"move faster\" or \"remove bureaucracy\" can eliminate the last remaining mechanism that prevents unchecked agentic construction, without anyone realizing what function it was serving."
+      - file: "docs/canonical/accidental-brake-replacement.md"
+        line: 50
+        quote: "Security review (takes 1 week) | Prevents vulnerable code from shipping | PR-Gated Eval Enforcement + automated security scanning at PR time"
+      - file: "docs/canonical/confidence-gated-continual-learning.md"
+        line: 24
+        quote: "Agent improvement cycles face a tension between velocity and safety."
+    integration_value: "High"
+    justification: "The brakes half exists at canonical depth: evals gate merges (PR-Gated Eval Enforcement), and the repo has an organizational brakes vocabulary (Manual Brake Question Gate, Accidental Brake Replacement mapping slow bureaucratic brakes to eval-based intentional replacements), plus a named velocity/safety tension (Confidence-Gated Continual Learning). Missing is the specific coupling rule — permitted shipping velocity set as a function of eval quality/coverage — and the response-to-risk reframe (improve the brakes rather than permanently slow down). NOT_FOUND for the coupling rule: searched docs/canonical/ and docs/system-of-record.md with 'velocity|shipping speed|go faster|go slow' — only token-burn velocity (burn-rate-runtime-forecast.md:31,49) and the confidence-gate tension (confidence-gated-continual-learning.md:24)."
+  - pattern_name: "Eval-Investment Parity"
+    classification: "Partial Coverage"
+    evidence:
+      - file: "docs/canonical/eval-driven-development-timeline.md"
+        line: 28
+        quote: "Invest 6 weeks in evaluation infrastructure before any model experimentation or selection. The timeline is deliberately inverted from conventional development: evaluation is the first thing built, not the last."
+      - file: "docs/canonical/pain-signal-eval-progression-gate.md"
+        line: 28
+        quote: "Treat eval maturity as a gate driven by pain signals instead of a calendar roadmap."
+      - file: "docs/canonical/pain-signal-eval-progression-gate.md"
+        line: 36
+        quote: "Approve only the smallest eval capability that addresses the observed pain."
+    integration_value: "Medium"
+    justification: "Evals as first-class artifacts co-designed with agents exist at canonical depth (eval-first timeline, Living Eval Dataset, Eval Tier Stratification, full evals cluster), but the parity rule itself — a ~50/50 split of time/tokens/money between agents and evals — is absent, and the repo's own investment philosophy is deliberately different: pain-signal gating mandates the smallest sufficient eval capability, explicitly rejecting proportional/calendar-driven allocation. NOT_FOUND for the parity rule: searched docs/ with 'parity|50/50|50%' — only fixture parity (eval-tier-stratification.md:57) and Supabase mock parity in the issue-review skill, i.e., test-environment parity unrelated to budget allocation."
+  - pattern_name: "Outcome-Level Eval Hierarchy"
+    classification: "Partial Coverage"
+    evidence:
+      - file: "docs/canonical/business-outcome-first-eval-pipeline.md"
+        line: 28
+        quote: "Invert the eval pipeline construction sequence: define business success first, then create golden answers from domain experts, then build the technical pipeline to compare agent outputs against business-aligned metrics."
+      - file: "docs/canonical/business-outcome-first-eval-pipeline.md"
+        line: 46
+        quote: "| Deflection | % of queries resolved without human intervention | 60% deflection rate |"
+      - file: "docs/canonical/business-outcome-first-eval-pipeline.md"
+        line: 22
+        quote: "This creates a misalignment where the technical eval passes but the business outcome fails — the agent is technically correct but business-irrelevant."
+      - file: "docs/canonical/eval-to-production-correlation-tracking.md"
+        line: 22
+        quote: "Eval scores become false safety signals when they stop predicting user outcomes."
+      - file: "docs/canonical/eval-to-production-correlation-tracking.md"
+        line: 35
+        quote: "| Production outcomes | Task success, complaints, escalations, support tickets, CSAT proxy, latency, cost, retention, or domain-specific success metrics |"
+    integration_value: "Medium"
+    justification: "The business-results-first anchor exists at canonical depth (Business-Outcome-First Eval Pipeline; Eval-to-Production Correlation Tracking with CSAT/retention/task-success outcomes and the false-safety-signal problem, which is the vanity-metric failure in other words). Missing: the explicit hierarchy as a single loop (measure business outcome → optimize agentic architecture → add skills where outcomes reveal gaps) and the named rejection of proxy KPIs (call counts, minutes on call) as a distinct failure class. NOT_FOUND for vanity-metric rejection: searched repo *.md with 'vanity|proxy KPI|superficial' — matches unrelated (reward-hacking prevention via blind rubrics, curriculum/GLOSSARY.md:98)."
+  - pattern_name: "Mega-Expert Consolidation"
+    classification: "Missing"
+    evidence:
+      - file: "docs/canonical/persona-based-documentation.md"
+        line: 23
+        quote: "When a team has specialists in different domains, their expertise is not systematically captured in durable documentation surfaces that agents can load."
+      - file: "docs/canonical/goal-atomicity-split.md"
+        line: 92
+        quote: "Scales agent work by decomposition instead of by dense mega-prompts -- one outcome per intent"
+    integration_value: "Medium"
+    justification: "NOT_FOUND in any form (doc, code, skill, or curriculum). The mechanism — one agent per specialty benchmarked against the best individual human, then fused into a single customer-facing mega expert — has no coverage. Searched locations: docs/canonical/ (grep 'mega|specialist|superhuman|best human|deflection bot|fusion|consolidat|generalist' — matches only the Kavak source package, the anti-pattern 'dense mega-prompts' in goal-atomicity-split.md:92, and persona-based-documentation.md:23, which captures specialist knowledge as docs, not agent fusion); docs/system-of-record.md:172-299 (active canonical table — no consolidation/fusion entry); curriculum/ (no mega-expert or specialist-fusion content); .opencode/skills/ (skills table at docs/system-of-record.md:33-65 — no consolidation skill); docs/analysis/ (only the Kavak source package itself). Adjacent-but-different concepts confirmed: multi-agent-fault-tolerance (orchestration reliability), split-brain-planning-review (separate rubrics)."
+  - pattern_name: "Production-Contact Training Loop"
+    classification: "Partial Coverage"
+    evidence:
+      - file: "docs/canonical/on-policy-rollout-feedback-loop.md"
+        line: 33
+        quote: "An agent trained or evaluated only on curated scripts breaks when its own production trajectories contain early mistakes, strange tool outputs, or context drift that never appeared in the static data."
+      - file: "docs/canonical/on-policy-rollout-feedback-loop.md"
+        line: 41
+        quote: "Close the exposure-bias gap by making the agent's own production trajectories the learning signal. ... Feed those scored prefixes back as update targets: prompt rules, skills, eval cases, memory policy, or training data. Then re-run the task against the updated agent and measure whether performance improved."
+      - file: "docs/canonical/production-grounded-eval-sampling.md"
+        line: 22
+        quote: "Hand-authored eval sets miss real user distributions and long-tail agent failures."
+      - file: "docs/canonical/production-failure-regression-flywheel.md"
+        line: 28
+        quote: "Every production failure that reveals a behavioral gap should become a durable eval regression case unless it is explicitly rejected as duplicate, unactionable, or out of scope."
+      - file: "docs/canonical/living-eval-dataset.md"
+        line: 28
+        quote: "A **monotonically growing** eval dataset: every production incident, every escaped edge case, every new feature specification becomes a permanent addition to the dataset."
+      - file: "curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md"
+        line: 1625
+        quote: "O replay de conversas reais anonimizadas deixa de ser uma atividade genérica e vira um artefato nomeado: `production_sampled_eval_corpus`."
+      - file: "curriculum/02-nivel-2-practical-patterns/exercises/solutions/exercise-03-solution.md"
+        line: 2477
+        quote: "É a diferença entre um agente que **funciona no laboratório** e um agente que **funciona em produção, com clientes reais**, por horas a fio."
+    integration_value: "Medium"
+    justification: "The mechanism is documented at depth: the On-Policy Rollout Feedback Loop states the convergence claim in exposure-bias terms and prescribes the exact loop (capture production traces → score → feed back as update targets → re-run and verify), supported by Production-Grounded Eval Sampling (harvesting infrastructure), the Production Failure Regression Flywheel, and the Living Eval Dataset; the curriculum teaches the lab-vs-production distinction explicitly. Missing: (a) the organizational stance that real-customer contact is the precondition for agents working at all — the on-policy doc still allows teacher-mixed/lab-side sampling for cold start, treating production contact as one option; and (b) the identity reframe that the harvested data and feedback loops ARE the agents rather than groundwork for them."
+  - pattern_name: "Carve-Out Pilot with Hard P&L Target"
+    classification: "Partial Coverage"
+    evidence:
+      - file: "docs/canonical/domain-embedded-workflow-automation-wedge.md"
+        line: 38
+        quote: "| Automation wedge | Small workflow slice with high pain, bounded scope, available data, clear owner, and testable outcome |"
+      - file: "docs/canonical/domain-embedded-workflow-automation-wedge.md"
+        line: 44
+        quote: "Prefer slices with clear before/after outcome evidence, not merely impressive model behavior."
+      - file: "docs/canonical/human-afk-task-routing-gate.md"
+        line: 35
+        quote: "| Architecture | The change fits within existing module boundaries with a clear public interface | The change crosses module boundaries, introduces new abstractions, or has system-wide blast radius |"
+    integration_value: "High"
+    justification: "Containment and outcome-anchored first slices exist: the Domain-Embedded Workflow Automation Wedge (bounded scope, testable outcome, before/after evidence), blast-radius containment at task/module level (Human-AFK Task Routing Gate, Architecture-as-Agent-Affordance), technical canary/shadow staging, and generic hard-goal machinery (Two-Implementations Goal Test, Intent Five-Part Primitive). Missing key mechanics: an agent installed as operator/CEO of a contained operating unit, a hard financial P&L target as the eval readout, and the daily plan-push/voice-note telemetry loop with human workers. NOT_FOUND for the pilot-unit/P&L mechanics: searched docs/canonical/ with 'pilot|carve|P&L|blast radius|isolated' — blast-radius matches are module design (architecture-as-agent-affordance.md:38), review calibration (contextual-severity-calibration.md:25), and task routing; no document covers an agent running a contained business unit against a profit target."

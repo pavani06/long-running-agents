@@ -1,0 +1,86 @@
+meta:
+  type: artifact-manifest
+  date: '2026-08-30'
+  source_slug: kavak-s-playbook-for-rebuilding-a-company-around-ai
+  classification_file: docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.yaml
+artifacts:
+  canonical_docs:
+  - path: docs/canonical/model-agnostic-agent-vm-harness.md
+    pattern: Model Agnostic Agent Vm Harness
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/alarm-clock-agent-lifecycle.md
+    pattern: Alarm Clock Agent Lifecycle
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/evals-as-brakes.md
+    pattern: Evals As Brakes
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/carve-out-pilot-hard-target.md
+    pattern: Carve Out Pilot Hard Target
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/mega-expert-consolidation.md
+    pattern: Mega Expert Consolidation
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/sidekick-pattern-physical-boundaries.md
+    pattern: Sidekick Pattern Physical Boundaries
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/agent-per-customer-outcome-ownership.md
+    pattern: Agent Per Customer Outcome Ownership
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/goal-driven-agents-over-workflows.md
+    pattern: Goal Driven Agents Over Workflows
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/shared-fleet-learning.md
+    pattern: Shared Fleet Learning
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/closed-loop-help-api.md
+    pattern: Closed Loop Help Api
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/eval-investment-parity.md
+    pattern: Eval Investment Parity
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/outcome-level-eval-hierarchy.md
+    pattern: Outcome Level Eval Hierarchy
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/production-contact-training-loop.md
+    pattern: Production Contact Training Loop
+    classification: Partial Coverage
+    priority: P2
+  skills:
+  - path: .opencode/skills/mega-expert-consolidation/SKILL.md
+    pattern: Mega-Expert Consolidation
+    classification: Missing
+  exercises:
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-07-mega-expert-consolidation.md
+    pattern: Mega-Expert Consolidation
+    classification: Missing
+  examples: []
+skipped:
+  already_exists: []
+  better_implementation:
+  - pattern: Scaffold Deletion on Model Step-Change
+    reason: 'Repo tem versão superior e mais governada: measured-harness-evolution-lifecycle (BUILD/STABILIZE/SIMPLIFY/REMOVE
+      com revisão trimestral de model changelogs) + model-switch-driven-eval-hardening (cada switch dispara
+      revalidação). Só cross-reference.'
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 13
+    skills: 1
+    exercises: 1
+    examples: 0
+  notes:
+  - Exercício criado na Phase 4 conforme regra (não na Phase 6).
+  - 'Ruído pré-existente não relacionado no git status: .obsidian/, .understand-anything/ (estado local
+    do Obsidian), fora do escopo desta sessão.'

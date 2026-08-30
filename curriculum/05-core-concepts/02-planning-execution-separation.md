@@ -1080,6 +1080,40 @@ Sprint Contracts sao o **mecanismo de acoplamento** entre Planner e Executor. Se
 → `../02-nivel-2-practical-patterns/02-sprint-contracts.md`
 → `04-sprint-contracts.md` (em construcao)
 
+### Planning/Execution + Goal-Driven Agents: Quando a Meta Persistente é o Contrato
+
+A separacao Planning/Execution deixa o **Planner** humano (ou upstream) decompor a tarefa em passos. O padrao [[docs/canonical/goal-driven-agents-over-workflows|Goal-Driven Agents over Workflows]] (Kavak) e o degrau seguinte: para objetivos de negocio que persistem por semanas ou meses, atribua ao agente uma **meta dura e mensuravel** e deixe o **proprio agente** decompor, replanejar e persistir ate ela. O agente e medido em **atingimento de outcome, nao em conformidade de passo**.
+
+O contrast concreto, o mesmo objetivo especificado duas vezes:
+
+```yaml
+# Especificacao de workflow (rejeitada): os passos sao o contrato
+workflow: tratar_consulta_financiamento
+steps: [classificar_intencao, buscar_ofertas, apresentar_tres_opcoes,
+        encaminhar_mesa_financiamento]
+success: cada passo executado, SLA 30s
+
+# Especificacao de goal (este padrao): o outcome e o contrato
+intent:
+  goal: "cliente fecha financiamento em 45 dias, pricing portfólio-seguro"
+  context: historico cross-channel completo do cliente, inventário, taxa
+  constraints: [teto_risco_portfolio, disclosure_regulatorio]
+  verification: funded-loan no dia 45 (eval de nível outcome)
+  handoff: físico só no entrega-de-chave
+persistence: agente sobrevive o horizonte inteiro (planos e replans próprios)
+success: outcome atingido; o plano é negócio do agente, não do contrato
+```
+
+**Por que isso importa aqui:** o workflow DAG responde chamadas; nao segura um objetivo multi-semana, nao replaneja quando a situacao do cliente muda, e ninguem no sistema e dono de "este cliente converte". Agentes goal-driven exploram as vantagens estruturais que workflows nao expressam: paciencia infinita, historico completo, planejamento de longo horizonte, sem fadiga. E a barra escolhida seleciona a arquitetura: "melhor que o melhor humano contratado" em problemas dificeis produz mega-expert; "bom o suficiente" em problemas faceis produz deflection bot.
+
+**Quando cada um aplica:** tarefa estreita e bem-delimitada continua mais simples com Planning/Execution classico (Planner humano + Sprint Contract). Objetivo de negocio multi-semana pede goal-driven: meta dura + acesso total a ferramentas + persistencia + medicao de outcome. Os dois se compoem: o Sprint Contract continua sendo a interface de um burst de trabalho, e a meta persistente e o contrato do horizonte inteiro.
+
+**Checklist de meta dura:**
+- [ ] A meta e numerica, mensuravel em outcome de negocio, e tem horizonte explicito
+- [ ] A decomposicao do plano e propriedade do agente (o contrato especifica o outcome, nao os passos)
+- [ ] O readout de sucesso e atingimento de outcome (eval de nível outcome), nao conformidade por passo
+- [ ] O agente persiste pelo horizonte inteiro, com estado duravel entre sessoes
+
 ### Planning/Execution + Shared Design Concept Handoff
 
 Entre o alinhamento com o humano e a produção do Sprint Contract, existe um ponto de passagem crítico que muitas arquiteturas tratam como implícito: o **Shared Design Concept Handoff**.

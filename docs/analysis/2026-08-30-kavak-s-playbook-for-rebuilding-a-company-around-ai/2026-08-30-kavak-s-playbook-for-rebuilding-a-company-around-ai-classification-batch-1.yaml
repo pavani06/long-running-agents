@@ -1,0 +1,80 @@
+meta:
+  title: "Classification Batch 1: Reusable Agentic Patterns from Kavak's Playbook for Rebuilding a Company Around AI"
+  date: '2026-08-30'
+  type: 'classification'
+  batch: 1
+entries:
+  - pattern_name: "Model-Agnostic Agent-VM Harness"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: "docs/canonical/neutral-selection-layer.md", line: 28, quote: "A model-agnostic selection layer that sits between the model and the store, serving context through a uniform interface regardless of which model, vendor, or session requests it."}
+      - {file: "docs/canonical/neutral-selection-layer.md", line: 53, quote: "NOT_FOUND across all 85 canonical docs. The repo has philosophical alignment with vendor independence"}
+      - {file: "docs/canonical/model-switching-architecture-enterprise-eval-gate.md", line: 24, quote: "However, the concrete infrastructure to execute model switching — an enterprise eval dataset that tests model upgrades against domain-specific data, side-by-side comparison infrastructure, and a mechanical switching decision framework — does not exist."}
+      - {file: "docs/canonical/file-system-materialization.md", line: 38, quote: "Materialize everything into files, git, and grep: Domain logic, agent specifications, configuration, knowledge bases — if a coding agent needs to interact with it, make it a file."}
+      - {file: "docs/canonical/invariant-compensation-split.md", line: 25, quote: "Or they keep compensations that only made sense for an older model, turning the harness into bug surface, latency, token cost, complexity, and maintenance burden"}
+    integration_value: "High"
+    justification: "Canonical docs cover the model-agnostic philosophy (selection layer spec, eval-gated model switching, file-system universal tooling) but the repo itself declares the concrete infrastructure NOT_FOUND, and the Kavak packaging — per-agent VM + memory + per-agent evals + goal slot + model-swap interface as one compounding harness at fleet scale — exists nowhere as a single pattern. A unifying canonical doc would tie the spec-only and infrastructure-missing pieces into the repo's compounding-asset thesis."
+  - pattern_name: "Alarm-Clock Agent Lifecycle"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: "docs/canonical/serializable-pause-resume-state.md", line: 22, quote: "Long-running tools (async API calls, human approval waits, scheduled tasks) cannot complete inside a single synchronous model call."}
+      - {file: "docs/canonical/serializable-pause-resume-state.md", line: 33, quote: "Serialize the entire agent state (context window + execution state + business state) to persistent storage. On resume, deserialize and continue from exactly where the agent paused."}
+      - {file: "docs/canonical/versioned-durable-agent-state.md", line: 23, quote: "the source analysis names this failure as state that lives only in the context window and turns failures or payment events into amnesia"}
+      - {file: "docs/canonical/closed-loop-agent-operating-system.md", line: 54, quote: "orchestrator skill lines 27-62 defines a dashboard and priority logic for choosing the next task"}
+    integration_value: "High"
+    justification: "Durable state across pauses and next-task selection exist, but the scheduling primitive itself is absent: no alarm scheduler where the agent sets its own next-wake, no wake trigger, no wake-work-sleep fleet lifecycle as a named pattern. Searched docs/canonical/, curriculum/, .opencode/skills/ for alarm|wake|sleep|scheduler|cron and agendamento|despertador|proxima tarefa — only the Kavak analysis files and unrelated matches. Core gap for a repo whose thesis is agents running for hours or days."
+  - pattern_name: "Agent-Per-Customer with Persistent Cross-Channel Memory"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: "docs/canonical/auth-coupled-memory-architecture.md", line: 24, quote: "Memory products treat storage and retrieval as independent of identity, but extracting the right memories requires knowing *who* the caller is."}
+      - {file: "docs/canonical/auth-coupled-memory-architecture.md", line: 36, quote: "Identity resolution as memory key: Every memory item is stored with an identity key (phone number, account ID, session token, or device fingerprint)."}
+      - {file: "docs/canonical/auth-coupled-memory-architecture.md", line: 61, quote: "NOT_FOUND across `docs/canonical/`, `curriculum/`, `system-of-record.md`, and `.opencode/skills/`"}
+      - {file: "docs/canonical/three-tier-memory-persistence.md", line: 51, quote: "three-tier memory \"measurably improved resolution rate\" through concrete memory applications: greeting customers by name (Tier 1), recalling previous call topics (Tier 1 + Tier 2)"}
+      - {file: "curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md", line: 719, quote: "OBJETIVO: Construir relacionamento de longo prazo."}
+    integration_value: "Medium"
+    justification: "Per-customer memory mechanics (identity-keyed memory, three-tier persistence, KODA long-term relationship goals with LTV metrics) are covered at canonical/curriculum level. Missing: one persistent agent instance per customer on its own VM (KODA is a single agent with per-customer state), years-spanning cross-channel ingestion, outcome ownership by the per-customer agent, and the portfolio constraint layer. Useful enrichment for the KODA N4 curriculum rather than a hole."
+  - pattern_name: "Goal-Driven Agents over Scripted Workflows"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: ".opencode/skills/karpathy-guidelines/SKILL.md", line: 148, quote: "## 4. Goal-Driven Execution — Metas Verificaveis"}
+      - {file: "docs/canonical/value-gated-agent-control-loop.md", line: 31, quote: "Add a value-gating decision point to the agent control loop that produces an explicit classification -- build, experiment, defer, or stop -- before execution begins"}
+      - {file: "docs/canonical/symphony-trap-awareness.md", line: 33, quote: "Replace \"write spec then build\" with \"build then distill spec from what works then rebuild with the spec as a contract.\""}
+      - {file: "docs/system-of-record.md", line: 234, quote: "intent-five-part-primitive.md | Intenção decomposta em cinco partes primitivas: goal, context, constraints, verification, handoff"}
+      - {file: "docs/system-of-record.md", line: 283, quote: "business-outcome-first-eval-pipeline.md | Pipeline de eval ancorado em business outcomes: define success em termos de negócio → golden answers de domain experts → Python pipeline comparativo, deflection rate prediction"}
+    integration_value: "Medium"
+    justification: "Task-level goal-driven execution is deeply institutionalized (verifiable goals as stop criterion, value gates, goal as specification primitive, anti-upfront-spec stance, business-outcome-anchored evals). Missing is the strategic reframe: a hard persistent business objective owned by the agent over multi-week horizons, agent-owned decomposition, outcome-attainment measurement instead of step compliance, and the superhuman bar as architecture selector. Enrichment over existing depth, not a gap fill."
+  - pattern_name: "Scaffold Deletion on Model Step-Change"
+    classification: "Better Implementation"
+    evidence:
+      - {file: "docs/canonical/measured-harness-evolution-lifecycle.md", line: 29, quote: "Treat harness evolution as a measured lifecycle, not as one-time architecture. Every component moves through four states: BUILD defensively, STABILIZE with production evidence, SIMPLIFY layer by layer, and REMOVE through archived, reversible removal"}
+      - {file: "docs/canonical/measured-harness-evolution-lifecycle.md", line: 50, quote: "REMOVE is allowed when a component has fulfilled its purpose and removal remains reversible. The Budget Guard had zero triggers for 180 days after the 200K-token model migration"}
+      - {file: "docs/canonical/measured-harness-evolution-lifecycle.md", line: 60, quote: "Govern cadence with a quarterly cycle: week 1 reviews model changelogs, metrics, and component classification"}
+      - {file: "docs/canonical/invariant-compensation-split.md", line: 23, quote: "the original Context Loader existed because a 32K-token model lost attention after 40 minutes; after a newer model held 98% accuracy at 100K tokens, that same component still cost 450ms, 1200 tokens"}
+      - {file: "docs/system-of-record.md", line: 298, quote: "model-switch-driven-eval-hardening.md | Model-Switch-Driven Eval Hardening — hardening de evals dirigido por switch de modelo: cada troca de modelo dispara revalidação completa do dataset de eval (Sierra)"}
+      - {file: "curriculum/05-core-concepts/06-harness-evolution.md", line: 156, quote: "Harness Evolution fecha o ciclo. Ele responde a pergunta que os outros 5 não respondem: \"E quando o modelo melhorar? O que acontece com todo esse scaffolding que construímos?\""}
+    integration_value: "Low"
+    justification: "The repo's canonical treatment is a more mature, governed version of the same idea: a measured BUILD/STABILIZE/SIMPLIFY/REMOVE lifecycle with ROI-threshold removal governance, quarterly model-changelog review, One In One Out, reversible archived removal, invariant-vs-compensation classification (which Kavak's radical deletion lacks), and event-driven eval revalidation on every model switch. The curriculum teaches the exact question and the cycle restarting with less scaffolding. The only Kavak-specific delta is the organizational willpower framing of wholesale deletion — narrative, not mechanism."
+  - pattern_name: "Shared Fleet Learning"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: "docs/canonical/production-failure-regression-flywheel.md", line: 28, quote: "Every production failure that reveals a behavioral gap should become a durable eval regression case unless it is explicitly rejected as duplicate, unactionable, or out of scope."}
+      - {file: "docs/canonical/cross-context-knowledge-siloing.md", line: 46, quote: "Knowledge created in one agent context becomes invisible to agents operating in a different context, causing repeated investigation of already-solved problems."}
+      - {file: "docs/canonical/confidence-gated-continual-learning.md", line: 59, quote: "NOT_FOUND across `docs/canonical/`, `curriculum/`, `system-of-record.md`, and `.opencode/skills/`."}
+      - {file: "docs/canonical/confidence-gated-continual-learning.md", line: 64, quote: "The flywheel daemon (`systemd`, 60s loop) processes triggers but deploys nothing — it surfaces findings for human review."}
+      - {file: "docs/canonical/closed-loop-agent-operating-system.md", line: 35, quote: "Feedback writeback | Persist decisions, traces, failures, eval results, canonical docs, and issue outcomes | Updated memory for future agents"}
+    integration_value: "Medium"
+    justification: "The capture side exists (failure-to-regression flywheel, monotonically growing eval dataset, feedback writeback as an OS surface) and the pathology is documented (cross-context knowledge siloing). Missing is the propagation channel: aggregating one agent's mistake into a fleet-level skill/memory/policy update distributed to all running instances by the next day — the repo's own continual-learning canonical declares auto-update deployment NOT_FOUND and the flywheel deploys nothing. A fleet-propagation doc would connect existing patterns; substantial adjacent infrastructure already exists."
+  - pattern_name: "Closed-Loop Help API (Humans Serve Agents)"
+    classification: "Partial Coverage"
+    evidence:
+      - {file: "docs/canonical/tested-degradation-ladder.md", line: 29, quote: "escalates to a human with summarized context when automated recovery is insufficient, logs the outcome, and tests each rung before production reliance"}
+      - {file: "docs/canonical/tested-degradation-ladder.md", line: 65, quote: "The final rung must turn real failures into durable eval or regression coverage, because production failures should become regression cases"}
+      - {file: "docs/canonical/operator-channel-authority.md", line: 73, quote: "Genuine escalation still exists (see Institutional Safety-Valve Escalation Cycle) — but it flows *to* the operator's channel for a decision, not *between* peers as a substitute for one."}
+      - {file: "docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-classification.md", line: 135, quote: "docs/canonical/multi-model-evaluation-council.md:37 through :45 defines retry, needs-human, disagreement escalation, and human review routing"}
+    integration_value: "Medium"
+    justification: "Escalation with full context, outcome logging, and failure-to-training-data conversion all exist at canonical level. Missing is the inversion that defines the pattern: a help API the agent calls when stuck, the resolution flowing back into the agent that asked so it continues the task, and the humans-serve-agents organizational topology. The repo's escalation is terminal (human takes over the case); no mechanism returns a resolution to the calling agent. Useful enrichment overlapping the flywheel's training-data capture."
+  - pattern_name: "Sidekick Pattern at Physical Boundaries"
+    classification: "Missing"
+    evidence: []
+    integration_value: "Low"
+    justification: "NOT_FOUND. Searched: docs/canonical/ (full directory listing reviewed, no candidate), docs/decisions/, curriculum/, .opencode/skills/, docs/system-of-record.md, via greps for sidekick|co-pilot|copilot|ride.along|mechanic|voice note|nota de voz and destreza|dexterity|physical work|trabalho fisico|presenca fisica — matches only inside the Kavak analysis package itself. Nearest non-equivalents: presence-in-the-loop-metric.md and human-afk-task-routing-gate.md (docs/system-of-record.md:219, :235) calibrate human intervention in agent tasks (inverse direction of service); curriculum/10-references/model-capability-timeline.md:919-921 mentions WhatsApp voice notes only as a client-facing latency feature, not worker telemetry feeding evals. Integration value Low: the pattern's core value sits at physical-world boundaries outside this repo's software-agent harness scope; only the telemetry-return-channel generalization transfers."

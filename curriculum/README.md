@@ -109,6 +109,7 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-03.md
 │   │   │   ├── exercise-04-llm-as-fuzzy-compiler.md
 │   │   │   ├── exercise-05-persona-based-documentation.md
+│   │   │   ├── exercise-07-mega-expert-consolidation.md
 │   │   │   ├── exercise-constraint-budget-gate.md
 │   │   │   ├── exercise-constraint-failure-decision-rule.md
 │   │   │   ├── exercise-autonomy-curriculum-sampling.md

@@ -1185,6 +1185,42 @@ KODA esta sempre disponivel para suporte. Mas tem regras claras:
 - Duvidas sobre saude: encaminhar para profissional ("consulte seu medico")
 - Reclamacoes: seguir fluxo de complaint (registrar, escalar se necessario)
 
+### Sub-Estado: AGENT-PER-CUSTOMER — Escalar o RETENTION para Outcome Ownership
+
+O estado RETENTION do KODA e um agente unico com estado por cliente. O padrao [[docs/canonical/agent-per-customer-outcome-ownership|Agent-Per-Customer Outcome Ownership]] (observado na Kavak em escala de milhoes de clientes) e a generalizacao: **uma instancia persistente de agente por cliente**, cada uma na propria VM, cada uma com meta de longo prazo (maximizar LTV), cada uma dona do **outcome do cliente**, nao da transacao corrente.
+
+**O problema que resolve:** agentes escopados por tarefa perdem contexto entre interacoes e nao sao donos de outcome nenhum. O cliente navegou financiamento ha oito meses, ligou ha dois anos sobre trade-in e entra na loja hoje: o agente-da-ligacao cumprimenta um estranho e otimiza a transacao isolada, enquanto a relacao de anos (o unico fosso em ciclos de compra de meses) evapora entre handoffs.
+
+**O manifest por cliente, na pratica KODA:**
+
+```yaml
+# customer-agent.yaml — um por cliente, instanciado a cada touchpoint
+customer_agent:
+  identity_key: "customer:MX-198.244.11"    # chave de memoria auth-coupled
+  goal:                                      # de longo prazo, nao por-tarefa
+    type: maximize_ltv
+    horizon: anos
+    constraints: [teto_risco_portfolio, politica_ofertas_concorrentes]
+  memory:
+    channels: [web, ligacoes, whatsapp, visitas]   # cross-channel, anos atrás
+    key: identity_key
+  writeback: cada interacao nova -> memoria
+```
+
+**A diferenca para o RETENTION classico do KODA:**
+- **Dono do outcome:** nenhuma métrica da jornada mede "este cliente converte no horizonte de 45 dias"; o agente-por-cliente e cobrado por isso.
+- **Ingestao cross-channel na instanciação:** todo o histórico anos-atrás consolidado na memoria keyed por identidade, nao apenas o follow-up do ultimo pedido.
+- **Limite de portfólio:** otimização por cliente bounded por constraints de nível portfólio (risco agregado, ofertas concorrentes, saúde do portfólio), o que o RETENTION single-agent não precisa modelar.
+
+**Quando NAO aplicar:** custo por agente (VM + memoria + evals) so se paga onde o valor do relacionamento excede o custo da transacao; em e-commerce de ticket baixo e ciclo curto, o RETENTION clasico com estado por cliente e suficiente. A economia que justifica na Kavak: ativar 1% da base dormente via gestao de relacionamento por agente vale centenas de milhoes.
+
+**Checklist de outcome ownership:**
+- [ ] Existe uma chave de identidade durável por cliente amarrando toda memoria cross-channel
+- [ ] A meta do agente e de longo prazo (LTV), declarada independente do canal/touchpoint corrente
+- [ ] Toda interacao nova e gravada de volta na memoria do mesmo cliente
+- [ ] Otimização por cliente e limitada por constraints de portfólio (risco, ofertas, saúde agregada)
+- [ ] O agente e medido no outcome do cliente, nao na métrica da interacao isolada
+
 ### Sub-Estado: QA_TO_BACKLOG — Fechando o Ciclo de Feedback
 
 O padrão **QA-to-Backlog Feedback Loop** (extraído do workflow de Matt Pocock) estabelece que observações de QA, revisão e suporte não são eventos terminais — são **entradas para o backlog de melhorias**. Sem este ciclo, defeitos descobertos permanecem como memória informal do time e não geram ação estruturada.

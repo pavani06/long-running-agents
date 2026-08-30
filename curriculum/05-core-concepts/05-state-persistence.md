@@ -219,6 +219,32 @@ Timeout é diferente de crash porque o processo pode continuar vivo, mas uma ope
 
 Clientes fecham o WhatsApp, voltam depois do treino e pedem opinião de outra pessoa. Quando voltam, o agente precisa saber se a conversa é continuação, nova intenção ou suporte pós-venda.
 
+### Alarm-Clock Agent Lifecycle: o agente agenda a própria volta
+
+`Session resumption` é passiva: algo externo (o cliente voltar, um webhook chegar) decide quando a sessão retoma. Para um agente long-running com objetivo de longo prazo, isso não basta. O cenário: o KODA termina um burst de trabalho às 14h e a próxima ação útil é amanhã às 9h, na manhã do cliente. As três opções padrão falham:
+
+- **Manter a sessão viva** queima tokens e degrada o contexto por 19 horas ociosas.
+- **Um orquestrador central decide os wake times** de milhares de agentes, vira gargalo e não conhece o raciocínio local de cada agente sobre quando retomar.
+- **Matar e reinstanciar do zero** apaga a memória de por que esperava; o objetivo de longo prazo reseta a cada intervalo.
+
+O padrão [[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]] (observado na frota Kavak, 100-200 mil instanciações diárias) dá ao agente um **despertador**: o ciclo **wake → work → sleep**, em que o próprio agente programa o alarme antes de dormir. Três propriedades são load-bearing:
+
+1. **Auto-agendamento.** O wake time vem do raciocínio do agente sobre o próprio objetivo ("cliente decide em 3-4 meses; retomo depois do fim de semana"), não de um poller central.
+2. **Wake trigger durável.** O alarme vive fora do processo do agente, em storage persistente; o sleep sobrevive a qualquer sessão, VM ou chamada de modelo.
+3. **Continuidade de estado.** No wake, o agente desserializa e continua exatamente de onde pausou, com `wake_reason` injetado como primeira mensagem. Bursts de trabalho vão de 3 minutos a 3 dias; o contrato de estado precisa sobreviver aos longos.
+
+```yaml
+# durable-state/alarm.yaml — escrito pelo agente antes de dormir
+alarm:
+  agent_id: koda-customer-8812
+  wake_at: 2026-09-01T09:00:00-06:00        # manhã do cliente
+  wake_reason: "retomar follow-up de financiamento; cliente disse 'semana que vem'"
+  task_pointer: tasks/financing-followup.md   # onde pegar
+  state_ref: durable-state/v3/snapshot-4471   # o que desserializar
+```
+
+O burst dentro de um ciclo: desserializar estado → trabalhar (minutos a dias) → gravar estado de volta → escrever o próximo alarme → dormir. O `scheduled_for` do FOLLOW_UP do KODA (Nota de decisão 14) já é um embrião deste padrão; o que falta nomear é o agente escolhendo o horário com raciocínio próprio e o alarme sendo primitiva durável de primeira classe.
+
 ### ROI de state persistence
 
 Persistência de estado tem ROI porque reduz abandono, retrabalho, custo de suporte e incidentes operacionais.
@@ -1007,6 +1033,14 @@ Pedro recebe uma resposta específica: seu carrinho está salvo em R$ 379,60. Es
 - [ ] Criar testes de Redis indisponível
 
 - [ ] Criar teste de cliente voltando dias depois
+
+- [ ] Agente consegue agendar a própria próxima retomada (alarm record com `wake_at` e `wake_reason`)
+
+- [ ] Alarme vive em storage durável fora do processo; sleep sobrevive a restart de VM
+
+- [ ] Wake injeta `wake_reason` e `state_ref`; burst retoma exatamente de onde pausou
+
+- [ ] Testar alarme perdido: wake faltante é incidente visível, não silêncio
 
 - [ ] Medir taxa de recuperação bem-sucedida
 

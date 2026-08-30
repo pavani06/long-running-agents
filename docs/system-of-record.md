@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-06-26
+last_updated: 2026-08-30
 relates-to: []
 sources: []
 ---
@@ -62,6 +62,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/selection-budgeted-retrieval/SKILL.md|.opencode/skills/selection-budgeted-retrieval/SKILL.md]] | Skill de implementação: retrieval com budget awareness e ranking por valor/custo |
 | [[.opencode/skills/devils-advocate/SKILL.md|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
 | [[.opencode/skills/behavioral-eval-path-analysis/SKILL.md|.opencode/skills/behavioral-eval-path-analysis/SKILL.md]] | Skill: Behavioral Eval Path Analysis (Layer 3) — detecta wrong-path-right-answer: duplicatas, loops, uso incorreto de ferramentas, custo por query. Integrado ao trace pipeline e QI loop. |
+| [[.opencode/skills/mega-expert-consolidation/SKILL.md|.opencode/skills/mega-expert-consolidation/SKILL.md]] | Skill de implementação: consolidação Mega-Expert — um agente por especialidade benchmarkado contra o melhor humano individual, fundidos em um único agente voltado ao cliente (sem handoffs, sem deflection bot). Fonte: Kavak 2026-08-30. |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -297,6 +298,19 @@ Tópicos candidatos a ADR:
 | `always-on-monitoring-human-triage.md` | Always-On Production Monitoring with Human Triage — monitoramento contínuo de produção com triagem humana para anomalias e degradação de qualidade (Sierra) |
 | `model-switch-driven-eval-hardening.md` | Model-Switch-Driven Eval Hardening — hardening de evals dirigido por switch de modelo: cada troca de modelo dispara revalidação completa do dataset de eval (Sierra) |
 | `file-system-materialization.md` | File-System Materialization for Agent Tooling — materialização em sistema de arquivos como camada de tooling universal para agentes, expondo estado como arquivos (Sierra) |
+| `model-agnostic-agent-vm-harness.md` | Harness model-agnostic em VM: cinco slots com o modelo como um slot swapável gateado por evals, absorvendo modelos step-change sem rewrites — transforma cada melhoria de modelo em valor sem reescrita (Kavak) |
+| `alarm-clock-agent-lifecycle.md` | Ciclo de vida wake → work → sleep em que o agente agenda o próprio próximo despertar — primitiva de scheduling para frotas long-running (Kavak) |
+| `evals-as-brakes.md` | Velocidade de shipping permitida como função da qualidade/cobertura de evals: "só pisa no acelerador se tiver os freios certos" — resposta ao risco de IA é construir evals, não ir mais devagar (Kavak) |
+| `carve-out-pilot-hard-target.md` | Piloto contido em uma unidade operacional com target P&L rígido (agente como "AI CEO") — containment e accountability financeira como os dois eixos do piloto (Kavak) |
+| `mega-expert-consolidation.md` | Consolidação em duas fases: um agente por especialidade benchmarkado contra o melhor humano individual, depois fusão em um único mega-expert voltado ao cliente (sem handoffs, sem deflection bot) (Kavak) |
+| `sidekick-pattern-physical-boundaries.md` | Agente "rides along" guiando humano em trabalho físico (padrão Ratatouille/El Mike); execução humana retorna como telemetria — fronteira física vira interface (Kavak) |
+| `agent-per-customer-outcome-ownership.md` | Um agente persistente por cliente (VM própria) com meta de maximizar lifetime value — escopo por cliente, não por tarefa (Kavak) |
+| `goal-driven-agents-over-workflows.md` | Agentes com meta dura mensurável (não workflow scriptado), medidos por attainment de outcome, não compliance de passo (Kavak) |
+| `shared-fleet-learning.md` | Loop de erro de um agente → atualização fleet-wide: captura → agregação → distribuição via substrato compartilhado → propagação next-day (~200k agentes) (Kavak) |
+| `closed-loop-help-api.md` | Help API que o agente chama quando trava; humanos servem o agente; resolução retorna ao agente chamador e vira training data (Kavak) |
+| `eval-investment-parity.md` | Regra de paridade orçamentária: tempo/tokens/dinheiro ~iguais em evals e na construção do agente — evals como artefato first-class, não afterthought (Kavak) |
+| `outcome-level-eval-hierarchy.md` | Hierarquia de eval com loop único: resultado de negócio primeiro (conversão), proxy KPIs (chamadas, minutos) explicitamente rejeitados do readout (Kavak) |
+| `production-contact-training-loop.md` | Contato real com cliente como mecanismo de treino: expor → colher interações/evals → alimentar updates → redeploy — agentes lab-only não convergem (Kavak) |
 
 | Documento | Cobre |
 |---|---|
@@ -391,6 +405,15 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.md` | Modelo mental: selection vs. capacity, similarity is not relevance, effective context |
 | `2026-06-18-memory-selection-problem/2026-06-18-memory-selection-problem-mental-model.yaml` | YAML do modelo mental |
 
+### Análises comparativas (Kavak's Playbook for Rebuilding a Company Around AI)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis.md` | Extração de conhecimento não-óbvio da entrevista a16z Kavak (rebuilding a company around AI) |
+| `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.md` | Padrões agentic extraídos da entrevista |
+| `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.md` | Classificação dos padrões contra o repositório |
+| `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.md` | Artifacts manifest: 13 canonical docs, 1 skill (mega-expert-consolidation), 1 exercício |
+
 > **Nota sobre formato**: Sessões de análise anteriores a 2026-06-14 contêm
 > `integration-roadmap.md` (formato legacy). Sessões a partir de 2026-06-14 usam
 > `<date>-<source-slug>-artifacts.{md,yaml}` como artifacts manifest.
@@ -404,4 +427,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-06-26*
+*Última atualização: 2026-08-30*

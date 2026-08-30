@@ -297,6 +297,58 @@ Provider anuncia atualização do modelo DeepSeek V4 → V5
 - [ ] Canary deployment com rollback automático configurado para toda troca de modelo
 - [ ] Provider updates são testados contra o dataset ANTES de qualquer exposição a tráfego real
 
+### Model-Agnostic Agent-VM Harness: O Modelo como Slot, Não como Arquitetura
+
+O Enterprise Eval Gate decide **quando** trocar de modelo. O *Model-Agnostic Agent-VM Harness* (padrão da Kavak) decide **o que a troca custa**: se o harness foi construído em torno das fraquezas do modelo atual, cada modelo novo chega em cadência mensal e transforma cada componente de compensação em um teto de capacidade. O gatilho observado na fonte foi um step-change de modelo (Opus 4.5) que levou a Kavak a deletar dois anos de infraestrutura multi-agente lucrativa em vez de deixar o scaffolding limitar o modelo mais forte.
+
+A solução empacota o harness como **cinco slots, um dos quais é o próprio modelo**:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              AGENT-VM HARNESS (model-agnostic)              │
+│                                                              │
+│  Slot 1: VM por agente      → ambiente isolado + CLI com    │
+│                                TODAS as ferramentas/APIs     │
+│  Slot 2: Memória persistente → estado durável que sobrevive  │
+│                                à chamada e à troca de modelo │
+│  Slot 3: Evals por agente   → teste de aceitação que o      │
+│                                próximo modelo deve passar    │
+│  Slot 4: Goal slot          → objetivo de longo prazo (ex:  │
+│                                maximizar LTV), independente  │
+│                                do modelo que o persegue      │
+│  Slot 5: Model-swap         → o modelo vive atrás de uma    │
+│          interface          → interface uniforme, trocável  │
+│                                por mudança de config         │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**A regra load-bearing:** nada nos slots 1-4 pode referenciar uma fraqueza específica de modelo. Compensações model-specific vivem em camada marcada e são candidatas a deleção a cada step-change, exatamente como manda o [[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]] e este ciclo BUILD-STABILIZE-SIMPLIFY-REMOVE. O paradoxo do harness (Prólogo) vira equação: o harness é simultaneamente o **ativo que deprecia** (scaffolding apodrece quando o modelo melhora) e o **ativo que compõe** (VM + memória + evals + goal absorve cada modelo novo sem rewrite).
+
+**Exemplo, o mesmo componente nos dois regimes:**
+
+```yaml
+# Regime ERRADO: compensação tecida no harness
+context_loader:
+  reason: "modelo atual perde atenção após 40min"
+  woven_in: true          # vira parte do fluxo, impossível de trocar barato
+
+# Regime CERTO: compensação como slot marcado e expirável
+context_loader:
+  reason: "modelo atual perde atenção após 40min"
+  layer: model-compensation
+  expires_on: "próximo step-change de modelo"
+  eval_gate: "se evals verdes sem o componente, REMOVE"
+```
+
+**Conexão com o ciclo:** o Model-Agnostic Agent-VM Harness é o estado final para o qual o ciclo converge. A cada rodada de SIMPLIFY/REMOVE, o harness fica mais dumb e mais agnóstico; a cada modelo novo, a troca fica mais barata (config change, não rewrite). Na Kavak, o mesmo harness roda para centenas de milhares de instanciações diárias de agentes: cada melhoria de modelo converte-se em valor de frota sem custo de reescrita. Para o padrão completo, veja [[docs/canonical/model-agnostic-agent-vm-harness|Model-Agnostic Agent-VM Harness]].
+
+**Checklist adicional:**
+- [ ] Nenhum componente dos slots 1-4 (VM, memória, evals, goal) referencia capacidade ou fraqueza de um modelo específico
+- [ ] O modelo é acessado apenas através de interface uniforme; trocar `provider/model` é mudança de configuração, não de código
+- [ ] Toda compensação model-specific está em camada marcada com critério de expiração
+- [ ] O eval suite por agente existe ANTES de qualquer troca: é o gate que o candidato deve passar
+- [ ] O goal de longo prazo é declarado de forma independente do modelo que o persegue
+
 ---
 
 ## 🔄 O Ciclo de Vida do Harness: As Quatro Fases

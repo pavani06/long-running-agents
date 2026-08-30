@@ -589,6 +589,17 @@ Enquanto o ciclo trimestral decide o destino estrutural dos componentes (SIMPLIF
 - [ ] Metricas de context health (near-miss rate, contradiction rate) foram revisadas e thresholds ajustados se necessario ([[docs/canonical/context-health-monitoring|Context Health Monitoring]])
 - [ ] Sinais de degradation loop (attention dilution, error cascade, state fragmentation, retrieval overload) foram checados; link dominante classificado se houve degradacao ([[docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]])
 
+### 📋 Requisito: a Revisão Trimestral Trata o Modelo como Slot, Não como Arquitetura
+
+A semana 1 do ritmo trimestral revisa changelogs de modelo. O resultado dessa revisão depende de uma propriedade estrutural do harness: se a capacidade do modelo atual está **tecida no fluxo** (compensações woven-in), cada modelo novo transforma o catálogo de componentes em rewrite; se o modelo vive **atrás de uma interface de swap** (VM, memória, evals e goal não referenciam fraquezas de modelo específico), a revisão trimestral termina em mudança de configuração validada pelo eval gate.
+
+O [[docs/canonical/model-agnostic-agent-vm-harness|Model-Agnostic Agent-VM Harness]] nomeia essa propriedade: o harness empacotado como cinco slots, um dos quais é o próprio modelo, trocável. As compensações model-specific que a fase de Diagnóstico deste playbook classifica devem, ao passar por SIMPLIFY/REMOVE, **não voltar como código tecido**: voltam como camada marcada com critério de expiração. É assim que o ciclo converge para harnesses mais dumb a cada rodada e trocas de modelo mais baratas a cada trimestre.
+
+**Perguntas da revisão trimestral, na versão model-agnostic:**
+- Qual componente deste inventário existe por causa de uma fraqueza de modelo que o changelog acaba de remover?
+- As compensações ativas estão em camada marcada com expiração, ou tecidas no fluxo principal?
+- A última troca de modelo foi mudança de configuração (gate de eval + swap) ou projeto de rewrite? Se foi rewrite, qual slot não-era-slot?
+
 ### 📋 Passo 5: Aplique One In One Out
 
 | Semana | Atividade | Saída |

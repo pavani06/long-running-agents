@@ -625,6 +625,156 @@ Saga: compensating actions em ordem reversa → estado pré-workflow
 
 ---
 
+### Pattern 10: Mega-Expert Consolidation — Especialistas Validados Fundidos em Um Só
+
+**Problema:** Uma organização de especialistas entrega o cliente entre times: na Kavak eram ~15 especialistas em 15 times (financiamento, consultoria de carro, compra, seguro, cotação de trade-in). Cada handoff derruba contexto e ninguém é dono do outcome completo. Quando essa organização "adota agentes", o build default espelha o organograma: um deflection bot por departamento, cada um na barra "bom o suficiente" em problemas fáceis. Mesmo especialistas-agentes excelentes reproduzem o problema do handoff em software.
+
+**A barra que muda a arquitetura:** a aposta não é "bom o suficiente", é **superhumana**: superar o melhor humano já contratado em cada dimensão que importa. Mirar "melhor que o melhor humano" em problemas difíceis muda qual arquitetura você constrói (mega-expert vs. deflection bot).
+
+**Consolidação em duas fases, cada uma gated por benchmark:**
+
+```
+FASE 1 — um agente por especialidade, contra o MELHOR humano individual
+  financing-agent  vs. o melhor underwriter já contratado
+  advisory-agent   vs. o melhor consultor de carro
+  → cada um validado no próprio eval suite, construído naquela barra
+    (é aqui que Evals-as-Brakes e Business-Outcome-First fornecem o gate)
+
+FASE 2 — fundir os especialista validados em UM mega-expert de frente
+  para o cliente
+  → fusão NÃO é ensemble vote nem router entre chatbots:
+    um agente persistente deter a relação com o cliente e invoca
+    os especialistas validados como capacidades internas
+```
+
+```yaml
+# mega-expert.yaml — um agente de frente, especialistas como capacidades
+customer_facing:
+  name: mega-expert
+  owns: [relacionamento, contexto-completo, outcome]
+  benchmark: "melhor humano já contratado, cada dimensão que importa"
+capabilities:            # especialistas da fase 1, cada um já batendo seu melhor humano
+  - financing-underwriting
+  - car-advisory
+  - insurance-quoting
+  - trade-in-valuation
+invocation: internal-tool-call    # especialistas são tools atrás do mega-expert,
+                                  # nunca handoffs de frente para o cliente
+context: memória-compartilhada-por-cliente
+no_regression: mega-expert >= especialista solo no eval de CADA especialidade fundida
+```
+
+**Mega-expert ≠ mega-prompt.** A fusão é de *capacidades avaliadas e gateadas por especialidade*, não de um prompt denso gigante. Dentro do mega-expert as especialidades continuam decompostas e avaliáveis (o repo rejeita "dense mega-prompts": escala-se por decomposição, um outcome por intenção, [[docs/canonical/goal-atomicity-split|Goal-Atomicity Split]]); o que funde é a **fronteira com o cliente** e o **benchmark que habilita a fusão**.
+
+**Checklist de fusão:**
+- [ ] Especialidades da organização enumeradas; existe um agente candidato por especialidade
+- [ ] Cada especialista é benchmarked contra o melhor indivíduo humano (não a média) em eval próprio
+- [ ] Fusão preserva decomposição interna; nenhum prompt-monolito
+- [ ] Invariante de no-regression: mega-expert >= especialista solo no eval de cada especialidade fundida
+- [ ] Especialistas invocados como tool calls internos; o cliente vê um só interlocutor
+
+Para o padrão completo e o exercício de implementação: [[docs/canonical/mega-expert-consolidation|Mega-Expert Consolidation]] e `curriculum/03-nivel-3-advanced-architecture/exercises/exercise-07-mega-expert-consolidation.md`.
+
+---
+
+### Pattern 11: Shared Fleet Learning — Um Erro Custa Uma Vez para a Frota
+
+**Problema:** aprendizado por agente significa o mesmo erro repetido em ~200 mil instâncias. O agente #41.207 mispronta um trade-in por um edge case de VIN; a falha vira caso de regressão, o dataset cresce, mas os 199.999 irmãos instanciados amanhã carregam a skill/policy antiga e erram identicamente. Aprendeu-se *sobre* a frota, não *na* frota.
+
+A captura já existe no ecossistema (Production Failure Regression Flywheel: toda falha vira caso; feedback writeback como superfície de OS). O que falta é o **canal de propagação**: do erro de um agente para um update de skill/memória/policy distribuído a todas as instâncias.
+
+```
+fleet-propagation (diário)
+1. CAPTURAR   traces de ontem → novos casos de regressão
+              (flywheel: toda falha é caso)
+2. AGREGAR    cluster de casos → patch de nível frota
+              (skill edit | política de memória | regra de prompt | caso de eval)
+3. GATEAR     confidence gate / revisão humana antes de incorporar
+              (deploy nada sem gate)
+4. DISTRIBUIR patch no SUBSTRATO COMPARTILHADO, não na instância:
+              todas as instâncias pegam na próxima instanciação/wake
+5. VERIFICAR  re-rodar o cenário-gatilho; delta de eval >= 0
+```
+
+A propriedade load-bearing é o passo 4: **agentes rodam substrato comum para updates aplicarem uniformemente**. Frota de harnesses bespoke não propaga nada. A SLA nomeada ("a frota inteira aprende até o dia seguinte") é o contrato; propagação não-gateada seria auto-deploy de erro em escala. Para o padrão completo: [[docs/canonical/shared-fleet-learning|Shared Fleet Learning]].
+
+**Checklist de propagação:**
+- [ ] Erros de instância individual viram patches de nível frota (não artefatos por contexto)
+- [ ] Existe canal de distribuição para o substrato compartilhado; update aplica na próxima instanciação
+- [ ] Todo patch passa por confidence gate ou revisão humana antes da distribuição
+- [ ] A SLA de propagação ("frota aprende até amanhã") é medida, não aspiracional
+
+---
+
+### Pattern 12: Closed-Loop Help API — Humanos Servem Agentes
+
+**Problema:** o pattern padrão de escalonamento (agente travado → fila humana tier-2 → caso esquecido) nunca fecha o loop e não gera training data, então o sistema empaca. Na escalonamento-terminal, o humano **toma conta do caso**: o cliente é servido, mas a resolução nunca volta ao agente que perguntou (o bloqueio reaparece amanhã) e nunca é capturada como dado (a frota nunca aprende).
+
+A inversão (Kavak): o agente travado **chama uma help API**; um humano atende do outro lado; a resolução **flui de volta ao agente que perguntou**, que continua a tarefa; a interação é gravada como training data.
+
+```yaml
+# Lado do agente: o bloqueio vira pergunta síncrona, não handoff
+- POST /v1/help
+  body:
+    agent_id: "koda/customer-8812"
+    task_digest: "fechar financiamento, dia 12 de 45"
+    blocker: "verificação de renda: dois empregadores, contracheques não batem"
+    attempted: ["ocr_recheck", "bureau_lookup", "pricing_conservador"]
+  response:
+    ticket_id: "help-8841"
+    eta: "00:04:00"          # humanos na agenda do agente, não fila em batch
+
+# Lado humano: resolver COM o agente, não NO LUGAR dele
+- PATCH /v1/help/help-8841
+  body:
+    resolution_note: "empregadores confirmados; usar contracheque B + carta"
+    corrected_next_action: "prosseguir_underwriting(contracheque=B)"
+    reusable: true            # roteia para propagação de frota (Pattern 11)
+  effect:
+    - resolução injetada no agente chamador → tarefa continua
+    - interação logada como training data (caso de eval + trace on-policy)
+```
+
+Dois detalhes load-bearing: humanos disponíveis **na agenda do agente** (não fila em batch), e o pattern só vale a pena **onde a resolução retornada pode ser capturada como dado**. No KODA, o Payment Agent já roteia para "fila de revisão humana com contexto completo" (Pattern 9); o que este pattern adiciona é o **caminho de volta**. Para o padrão completo: [[docs/canonical/closed-loop-help-api|Closed-Loop Help API]].
+
+**Checklist de loop fechado:**
+- [ ] O agente travado tem endpoint de help que ele invoca mid-task (não apenas rung terminal de ladder)
+- [ ] A resolução retorna ao agente chamador, que continua a tarefa (não apenas assume o caso)
+- [ ] Toda resolução é logada como training data (caso de eval / trace on-policy)
+- [ ] Resoluções reutilizáveis roteiam para propagação de frota
+
+---
+
+### Pattern 13: Sidekick Pattern at Physical Boundaries — o Agente Guia, o Humano Executa
+
+**Problema:** parte do trabalho é física: destreza, sentidos, mãos na peça. Os dois defaults falham: excluir agentes do processo físico (inspeção, custo de reparo e garantia ficam sem inteligência de software) ou escalar para humanos como fallback (o sinal de aprendizado morre no handoff: open-loop escalation). Nos dois, nenhum dado flui do mundo físico de volta para os agentes ou seus evals.
+
+A inversão de direção (Kavak, internamente "Ratatouille"): **o agente vai junto e guia o humano; a execução do humano retorna como telemetria**. O mecânico executa o trabalho físico (a destreza insubstituível); o agente conduz o procedimento (passos de inspeção, tolerâncias, dicas, próxima ação); as notas de voz do mecânico voltam como telemetria de progresso, alimentando o estado do agente e o corpus de eval. É o **mesmo harness da frota** (não um app assistente paralelo), que é o que faz escalar junto com ela.
+
+```yaml
+# sidekick-session.yaml — um mecânico, um turno
+human: mecanico-142 (execução física: destreza, sentidos)
+agent: inspection-sidekick (mesmo harness padrão da frota)
+guide_channel:
+  to_human: procedimento de inspeção passo a passo + dicas (áudio/wearable)
+  return: notas de voz por passo (telemetria de progresso)
+close_loop:
+  telemetry → estado do agente para este veículo
+  anomalias → corpus de eval como casos de regressão
+measured: [qualidade de inspeção, tempo de reparo, custo de reparo,
+           custo de garantia, CSAT]
+```
+
+**A regra de escopo:** humano-no-loop fica **exclusivamente** nas fronteiras físicas genuínas (na Kavak: 96% das interações e 95% das transações totalmente agent-handled; humanos permanecem só onde presença física é exigida, tipo entregar a chave do carro). Humano-como-fallback-generalizado é o anti-pattern; a fronteira é decisão de policy que deriva com a capacidade robótica. Para o padrão completo: [[docs/canonical/sidekick-pattern-physical-boundaries|Sidekick Pattern at Physical Boundaries]].
+
+**Checklist de fronteira física:**
+- [ ] A fronteira físico/não-físico é uma decisão de policy nomeada e revisada, não um fallback difuso
+- [ ] O sidekick roda o harness padrão da frota (sem stack paralela)
+- [ ] Existe canal de retorno de telemetria do executor (voz, checklist) alimentando estado do agente e corpus de eval
+- [ ] Anomalias do mundo físico viram casos de regressão no eval dataset
+
+---
+
 ## 6. 📐 Mermaid Diagram 1 - Tipos de Agentes e Relações
 
 ```mermaid
