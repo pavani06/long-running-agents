@@ -288,4 +288,4 @@ Precedence order applied per `docs/system-of-record.md:14-21`: decisions/ > cano
 | 13 | Production-Contact Training Loop | Partial Coverage | Medium |
 | 14 | Carve-Out Pilot with Hard P&L Target | Partial Coverage | High |
 
-**Distribuição:** 2 Missing (Mega-Expert Consolidation, Sidekick Pattern) · 9 Partial Coverage (4 High, 5 Medium) · 1 Better Implementation (Scaffold Deletion) · 2 Missing patterns → P0; PC High → P1; PC Medium → P2.
+**Distribuição:** 2 Missing (Sidekick Pattern at Physical Boundaries, Mega-Expert Consolidation) · 11 Partial Coverage (4 High, 7 Medium) · 1 Better Implementation (Scaffold Deletion on Model Step-Change) · Missing patterns → P0; PC High → P1; PC Medium → P2.

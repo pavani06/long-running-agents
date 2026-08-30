@@ -508,7 +508,7 @@ class MegaExpert:
          na mesma thread. deflected é sempre False.
     """
     mega_expert_id: str
-    fused_specialists: list[SpecialtyAgent] = field(default_factory=list)
+    fused_specialists: list[SpecialistAgent] = field(default_factory=list)
     conversation_state: set[str] = field(default_factory=set)  # fatos acumulados
 
     @property

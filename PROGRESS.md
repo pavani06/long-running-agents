@@ -12,7 +12,7 @@
 - [x] phase-0: Repository Mental Model [evaluator: PASS] — full rebuild, 4m28s
 - [x] phase-1: Knowledge Extraction [evaluator: PASS] — map-reduce 4 chunks + REDUCE, ~5m
 - [x] phase-2: Pattern Extraction [evaluator: PASS] — 14 patterns, 3m38s, cache gravado
-- [x] phase-3: Classification [evaluator: PASS] — batch split 8+6, 2 Missing · 9 PC (4H/5M) · 1 BI
+- [x] phase-3: Classification [evaluator: PASS] — batch split 8+6, 2 Missing · 11 PC (4H/7M) · 1 BI
 - [x] phase-4: Improvement Generation [evaluator: PASS] — 13 canonical docs + 1 skill + 1 exercise, manifest gerado
 - [x] phase-5: Integration [evaluator: PASS] — SOR (+27), INDEX (+1), README (+1), MASTER_PLAN (count)
 - [x] phase-6: Curriculum Deep Integration [evaluator: PASS]

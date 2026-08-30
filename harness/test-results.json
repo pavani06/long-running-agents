@@ -3,14 +3,15 @@
     "passes": true,
     "evidence": [
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.md",
-      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.yaml",
+      "mapa-mental-repo/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.yaml"
     ],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
-    "duration_seconds": null,
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": 268,
     "retry_count": 0,
     "started_at": "2026-08-30T19:56:00Z",
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:02:00Z",
     "ended_at": "2026-08-30T20:02:00Z"
   },
   "phase-1": {
@@ -19,12 +20,12 @@
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis.md",
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis.yaml"
     ],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
-    "duration_seconds": null,
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": 300,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:14:00Z",
     "ended_at": "2026-08-30T20:14:00Z"
   },
   "phase-2": {
@@ -33,62 +34,85 @@
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.md",
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.yaml"
     ],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
-    "duration_seconds": null,
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Extracao de padroes reutilizaveis — Phase 2",
+    "duration_seconds": 218,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:20:00Z",
     "ended_at": "2026-08-30T20:20:00Z"
   },
   "phase-3": {
     "passes": true,
     "evidence": [
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.md",
-      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.yaml"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.yaml",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification-batch-1.md",
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification-batch-2.md"
     ],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Classificacao contra repositorio \u2014 Phase 3",
-    "duration_seconds": null,
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Classificacao contra repositorio — Phase 3",
+    "duration_seconds": 270,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:28:00Z",
     "ended_at": "2026-08-30T20:28:00Z"
   },
   "phase-4": {
     "passes": true,
     "evidence": [
       "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.yaml",
-      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.md"
+      "docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.md",
+      "docs/canonical/ (13 novos)",
+      ".opencode/skills/mega-expert-consolidation/SKILL.md",
+      "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-07-mega-expert-consolidation.md"
     ],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
-    "duration_seconds": null,
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
+    "duration_seconds": 360,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:45:00Z",
     "ended_at": "2026-08-30T20:45:00Z"
   },
   "phase-5": {
     "passes": true,
-    "evidence": [],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Integracao \u2014 atualiza system-of-record e indices",
-    "duration_seconds": null,
+    "evidence": [
+      "docs/system-of-record.md",
+      "curriculum/INDEX.md",
+      "curriculum/README.md",
+      "curriculum/MASTER_PLAN.md"
+    ],
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Integracao — atualiza system-of-record e indices",
+    "duration_seconds": 318,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T20:52:00Z",
     "ended_at": "2026-08-30T20:52:00Z"
   },
   "phase-6": {
     "passes": true,
-    "evidence": [],
-    "evaluated_by": "harness-orchestrator",
-    "notes": "Curriculum Deep Integration \u2014 opcional",
-    "duration_seconds": null,
+    "evidence": [
+      "curriculum/05-core-concepts/07-multi-agent-coordination.md",
+      "curriculum/05-core-concepts/08-evaluation-rubrics.md",
+      "curriculum/05-core-concepts/06-harness-evolution.md",
+      "curriculum/05-core-concepts/05-state-persistence.md",
+      "curriculum/05-core-concepts/02-planning-execution-separation.md",
+      "curriculum/04-nivel-4-koda-specific/02-customer-journey-flows.md",
+      "curriculum/07-implementation-guides/03-harness-design-checklist.md",
+      "curriculum/07-implementation-guides/06-harness-evolution-playbook.md"
+    ],
+    "evaluated_by": "harness-orchestrator+review-work-2026-08-30",
+    "notes": "Curriculum Deep Integration — opcional",
+    "duration_seconds": 388,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null,
+    "completed_at": "2026-08-30T21:00:00Z",
     "ended_at": "2026-08-30T21:00:00Z"
+  },
+  "skipped_modules": {
+    "eval_golden_free": "eval.py não executado neste host — evaluator independente substituído pelo review-work 5-lane de 2026-08-30 (ver issue #145)",
+    "trajectory": "trajectory.py não inicializado no run original — registrado como dívida de processo"
   }
 }

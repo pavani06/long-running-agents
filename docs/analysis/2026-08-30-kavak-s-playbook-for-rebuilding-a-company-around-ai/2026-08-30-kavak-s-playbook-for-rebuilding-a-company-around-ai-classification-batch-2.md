@@ -1,3 +1,13 @@
+---
+title: "Classification Batch 2: Kavak's Playbook for Rebuilding a Company Around AI (Patterns 9-14)"
+type: classification
+tags: ["agentes-orquestracao", "harness-engineering", "curriculo-conteudo", "governanca"]
+date: 2026-08-30
+aliases: ["kavak classification batch 2", "kavak playbook classification 9-14"]
+relates-to: ["[[docs/system-of-record|System of Record]]", "2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.yaml", "2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-mental-model.md"]
+sources: ["2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-patterns.yaml"]
+---
+
 # Classification — Kavak's Playbook for Rebuilding a Company Around AI (Batch 2 of 2: Patterns 9-14)
 
 **Date:** 2026-08-30

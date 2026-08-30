@@ -656,6 +656,7 @@ customer_facing:
 capabilities:            # especialistas da fase 1, cada um já batendo seu melhor humano
   - financing-underwriting
   - car-advisory
+  - buying-negotiation
   - insurance-quoting
   - trade-in-valuation
 invocation: internal-tool-call    # especialistas são tools atrás do mega-expert,

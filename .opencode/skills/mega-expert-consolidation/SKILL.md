@@ -216,19 +216,44 @@ class FusionPolicy(Enum):
     # optimization bounded by portfolio health (...-analysis.md:115)
 
 
+class UncertifiedFusionError(RuntimeError):
+    """Raised when fusion is attempted without a fully certified roster."""
+
+
 @dataclass
 class MegaExpert:
-    """The ONLY object the customer talks to. Specialists are internal."""
+    """The ONLY object the customer talks to. Specialists are internal.
+
+    Construction goes ONLY through MegaExpert.from_certified(): the
+    certification is machinery, not a promise. A MegaExpert without a
+    complete certified roster cannot exist (and handle() re-checks).
+    """
     specialists: dict[str, SpecialistAgent]
+    certified_domains: frozenset[str]      # proof: every domain beat best human
     classifier: DomainClassifier
     policy: FusionPolicy = FusionPolicy.PORTFOLIO_CONSTRAINED
 
-    def certified(self, run_eval) -> bool:
-        # Fusion gate: every organ beat the best human first.
-        return all(s.certified(run_eval) for s in self.specialists.values())
+    @classmethod
+    def from_certified(cls, specialists: dict[str, SpecialistAgent],
+                       run_eval, classifier: DomainClassifier,
+                       policy: FusionPolicy = FusionPolicy.PORTFOLIO_CONSTRAINED,
+                       ) -> "MegaExpert":
+        # Fusion gate: every organ beat the best human first — proven now.
+        failed = sorted(d for d, s in specialists.items()
+                        if not s.certified(run_eval))
+        if failed:
+            raise UncertifiedFusionError(f"uncertified specialties: {failed}")
+        return cls(specialists=specialists,
+                   certified_domains=frozenset(specialists),
+                   classifier=classifier, policy=policy)
+
+    def _gate(self, domain: str) -> None:
+        if domain not in self.certified_domains:
+            raise UncertifiedFusionError(f"domain not certified: {domain}")
 
     def consult(self, domain: str, query: str, ctx: CustomerContext
                 ) -> SpecialistOpinion:
+        self._gate(domain)
         # thin adapters over the specialist agent's tool/API surface
         return SpecialistOpinion(
             domain=domain,
@@ -238,6 +263,8 @@ class MegaExpert:
         )
 
     def handle(self, customer_query: str, ctx: CustomerContext) -> MegaExpertReply:
+        if len(self.certified_domains) != len(self.specialists):
+            raise UncertifiedFusionError("roster incomplete: rebuild via from_certified")
         domains = self.classifier.involved(customer_query, ctx)
         opinions = [self.consult(d, customer_query, ctx) for d in domains]
         chosen = self._fuse(opinions, ctx)
@@ -260,6 +287,7 @@ class MegaExpert:
         return viable or opinions  # never bounce the customer to a queue
 
     def _score(self, domain: str, query: str, ctx: CustomerContext) -> float:
+        self._gate(domain)
         # confidence = weakest live margin over the best-human baseline
         return self.specialists[domain].min_margin()
 
@@ -323,6 +351,7 @@ This pattern was classified **Missing** with **integration_value: Medium** — "
 ## Quality Gates
 
 - [ ] Every specialty has a `SpecialistAgent` with enumerated `BenchmarkDimension`s covering every business dimension; no dimension without a `best_human` baseline
+- [ ] Certification is MACHINERY, not a promise: `MegaExpert` is constructible only via `MegaExpert.from_certified(...)`; direct construction without a fully certified roster raises `UncertifiedFusionError`, and `handle()` re-checks the roster before every reply
 - [ ] `certified()` gate implemented per specialist and on the fused `MegaExpert`; CI blocks shipping the interface when any specialist regresses below best-human on ANY dimension
 - [ ] Benchmark harness re-runs on model change (full re-certification, weakest-model rule)
 - [ ] Exactly ONE public entry point in the customer path (`handle`); grep the customer-facing module for queue/transfer/handoff types — must return zero matches
