@@ -1,0 +1,71 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+# --- From .gitignore (uncomment to exclude) ---
+
+# .DS_Store
+# *.py[cod]
+# .pytest_cache/
+# .mypy_cache/
+# .ruff_cache/
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
+# pnpm-debug.log*
+# .env
+# .env.local
+# .nyc_output/
+# .runtime/
+# artifacts/
+# .sisyphus/
+# supabase/.combined-migration.sql
+# .worktrees/
+# .obsidian/workspace.json
+# .obsidian/graph.json
+# .obsidian/app.json
+# .smart-env
+# .tmp.driveupload/
+
+# --- Detected directories (uncomment to exclude) ---
+
+# docs/
+# scripts/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# *.test.*
+# *.spec.*
+# *.snap
+
+# --- ACTIVE: "knowledge core" scope (chosen for this run) ---
+
+# Obsidian / editor local state (not content)
+.obsidian/
+.smart-env/
+
+# OneDrive sync artifacts
+.tmp.drivedownload/
+.tmp.driveupload/
+
+# Raw unprocessed source material (superseded by docs/ and curriculum/)
+rawfiles/
+
+# Agent tooling config, not project content
+.opencode/
+.omo/
+
+# Python bytecode and archives
+__pycache__/
+*.pyc
+*.zip
+
+# This tool's own output directory
+.understand-anything/
+
+# Derived analysis artifacts (183 files) — excluded by user choice for this run
+docs/analysis/

@@ -49,11 +49,11 @@ A arquitetura de avaliação em 3 camadas, onde a camada 3 é a mais negligencia
 
 A inversão mais contraintuitiva do framework: o modelo é selecionado na **semana 7** de um projeto de 8 semanas. A infraestrutura de avaliação é construída primeiro.
 
-| Semana | Atividade | Artefato |
-|---|---|---|
-| 1-2 | Evaluation layer | 200 casos reais de agentes humanos → golden dataset inicial |
-| 3-6 | Data foundation + tracing infrastructure | Pipelines de ingestão, embedding updates, centralized trace collection |
-| 7-8 | Model selection via data-driven comparison | Rodar todos os modelos candidatos contra o eval dataset → escolher o que performa melhor nos dados reais |
+| Semana | Atividade                                  | Artefato                                                                                                 |
+| ------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| 1-2    | Evaluation layer                           | 200 casos reais de agentes humanos → golden dataset inicial                                              |
+| 3-6    | Data foundation + tracing infrastructure   | Pipelines de ingestão, embedding updates, centralized trace collection                                   |
+| 7-8    | Model selection via data-driven comparison | Rodar todos os modelos candidatos contra o eval dataset → escolher o que performa melhor nos dados reais |
 
 **Resultado**: "Model selection became very quick" — com 200 casos reais, semanas de debate subjetivo foram eliminadas. O eval dataset decidiu.
 
@@ -94,19 +94,19 @@ Detect → Diagnose → Contain → Fix → Add to Living Dataset
 
 Três padrões de orquestração com trade-offs claros:
 
-| Padrão | Mecanismo | Latência | Debugabilidade | Quando usar |
-|---|---|---|---|---|
-| **Orchestrator-Worker** | Agente central distribui tarefas para workers especializados e agrega resultados | Alta (round-trips) | Alta (tudo passa pelo orchestrator) | Fluxos complexos, compliance, auditoria |
-| **Choreography** | Agentes se comunicam diretamente via eventos, sem coordenador central | Baixa (comunicação direta) | Baixa (difícil rastrear quem fez o quê) | Baixa latência crítica, agentes independentes |
-| **Human-in-the-Loop** | Confidence threshold dispara intervenção humana; agente pausa e escala | Variável | Alta (decisão humana documentada) | Decisões de alto risco, compliance regulatório |
+| Padrão                  | Mecanismo                                                                        | Latência                   | Debugabilidade                          | Quando usar                                    |
+| ----------------------- | -------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- | ---------------------------------------------- |
+| **Orchestrator-Worker** | Agente central distribui tarefas para workers especializados e agrega resultados | Alta (round-trips)         | Alta (tudo passa pelo orchestrator)     | Fluxos complexos, compliance, auditoria        |
+| **Choreography**        | Agentes se comunicam diretamente via eventos, sem coordenador central            | Baixa (comunicação direta) | Baixa (difícil rastrear quem fez o quê) | Baixa latência crítica, agentes independentes  |
+| **Human-in-the-Loop**   | Confidence threshold dispara intervenção humana; agente pausa e escala           | Variável                   | Alta (decisão humana documentada)       | Decisões de alto risco, compliance regulatório |
 
 ### 2.2 Fault Tolerance Patterns (aplicados na camada de orquestração)
 
-| Padrão | Problema | Mecanismo |
-|---|---|---|
-| **Saga** | Transação distribuída entre múltiplos agentes | Cada step tem uma compensating action; se um step falha, os anteriores são revertidos |
-| **Compensation** | Falha parcial em workflow multi-agent | Rollback das operações já concluídas via ações compensatórias |
-| **Circuit Breaker** | Falhas em cascata (um agente lento degrada todos) | Threshold de falhas → abre circuito → fallback para resposta padrão ou humano |
+| Padrão              | Problema                                          | Mecanismo                                                                             |
+| ------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Saga**            | Transação distribuída entre múltiplos agentes     | Cada step tem uma compensating action; se um step falha, os anteriores são revertidos |
+| **Compensation**    | Falha parcial em workflow multi-agent             | Rollback das operações já concluídas via ações compensatórias                         |
+| **Circuit Breaker** | Falhas em cascata (um agente lento degrada todos) | Threshold de falhas → abre circuito → fallback para resposta padrão ou humano         |
 
 ### 2.3 Centralized Trace Collection
 
