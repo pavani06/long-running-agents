@@ -318,10 +318,10 @@ Apenas o Passo 0b e delegado; os Passos 0a e 0c sao executados diretamente pelo 
    ```bash
    # BASE_COMMIT: meta.base_commit do yaml base; fallback = commit que introduziu o arquivo
    BASE_COMMIT=$(git log --diff-filter=A --format=%h -- mapa-mental-repo/<base>.yaml | tail -1)
-   git log --diff-filter=A --name-only --format='' "$BASE_COMMIT..HEAD" -- \
+   # Scan SEM --diff-filter=A: modificacoes (atualizacao) tambem sao deltas
+   git log --name-only --format='' "$BASE_COMMIT..HEAD" -- \
      docs/canonical docs/decisions curriculum .opencode/skills .opencode/agents docs/plans | sort -u
    ```
-   Para modelos antigos sem `meta.base_commit`, o fallback do BASE_COMMIT cobre.
 4. **Gate de reconciliacao** (antes de classificar): compare o scan com o diff bruto:
    ```bash
    git diff --name-only "$BASE_COMMIT..HEAD" -- docs/canonical docs/decisions \
