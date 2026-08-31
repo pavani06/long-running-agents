@@ -204,11 +204,19 @@ After the delegation completes:
 
 ### Step 6: Evaluate
 
-Run a self-check:
+Run a self-check — **structural AND proportional semantic verification**:
+
+Structural (always):
 - Do output files exist and have substantial content?
-- Does content match the phase objective?
 - Are Obsidian conventions followed (if applicable)? Check for mandatory fields: `type`, `tags`, `aliases`, `relates-to`.
 - Run `npx tsx scripts/validate-obsidian.ts` (if available)
+
+Semantic (proportional to artifact risk — a structural pass does NOT equal a pass):
+- **Citation sampling:** for every artifact citing `file:line` references, randomly verify 3 citations against the real files. Any miss = NEEDS_WORK.
+- **Executable content:** artifacts containing code (exercises, skills) MUST have their code blocks extracted and compiled (`python3` + `compile()` per markdown block; run sample tests where feasible) before PASS.
+- **Source fidelity** (Phase 1 only): pick 3 claims from `analysis.md` and grep the source document for supporting text. Keep reads scoped — the untrusted-source rules still apply.
+
+Record the depth in `harness/test-results.json` as `verification_depth: structural|semantic` for the phase. Absence of the field = `structural` (backward compatible).
 
 If PASS:
 - Set `passes` to `true` for the current phase in `harness/test-results.json`

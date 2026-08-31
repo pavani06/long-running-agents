@@ -10,7 +10,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-1": {
     "passes": false,
@@ -23,7 +24,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-2": {
     "passes": false,
@@ -36,7 +38,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-3": {
     "passes": false,
@@ -49,7 +52,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-4": {
     "passes": false,
@@ -62,7 +66,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-5": {
     "passes": false,
@@ -72,7 +77,8 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   },
   "phase-6": {
     "passes": false,
@@ -82,6 +88,7 @@
     "duration_seconds": null,
     "retry_count": 0,
     "started_at": null,
-    "completed_at": null
+    "completed_at": null,
+    "verification_depth": "structural"
   }
 }

@@ -127,6 +127,16 @@ Isso garante que todo sub-agente sabe:
 - Onde encontrar as regras de precedencia (`system-of-record.md`)
 - Qual branch usar
 
+### No fabricated premises in delegations
+
+A delegation prompt must never assert repo conventions (prose language, style,
+format, counts, file inventory) as facts. Instead, instruct the sub-agent to
+**detect** the dominant convention by reading 2-3 sibling artifacts in the
+target directory and follow it, reporting the detection. If an operator
+instruction conflicts with the detected convention, the sub-agent stops and
+reports before writing — it does not silently pick a side. Ten seconds of grep
+before writing the prompt prevents both failure modes.
+
 ## Output Directory Structure
 
 TODOS os outputs das fases 0-4 vao para o mesmo diretorio:
@@ -1112,6 +1122,7 @@ MUST NOT:
 
 ## Anti-Patterns
 
+- **Writing fabricated premises into delegation prompts.** Asserting repo conventions you did not verify: the sub-agent either inherits your error silently or stalls trying to resolve it. Ten seconds of grep before writing the prompt prevents both.
 - **Executar fases diretamente em vez de delegar.** Toda fase deve ser uma sub-task via `task()` com categoria adequada — o orquestrador supervisiona, nao executa.
 - **Pular a Phase 0.** Sem modelo mental do repositorio, as fases subsequentes classificam sem contexto e produzem duplicacao.
 - **Esquecer o bloco TARGET_REPOSITORY em uma delegacao.** Sem ele, o sub-agente nao sabe onde escrever outputs nem qual repo commitara.
