@@ -8,8 +8,6 @@
 
 - [x] qi-loop iter 1: skill-hardening adversarial findings (2026-08-31) — 8 findings (4 P1 / 4 P2) → REC-001..008 → epic #157 + issues #158-#167 → implementação (commits 1c927a4 RK, f19cb1d LRA) → re-verificação 8/8 PASS
 
-## Done
-
 <!-- Fases concluídas e aprovadas pelo evaluator -->
 
 - [x] qi-loop iter 1: review-work 5-lane (2026-08-30) → 11 findings P0/P1 → REC-001..012 → 11 issues (#146-#156) → implementação → re-verificação 15/15 PASS
