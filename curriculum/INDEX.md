@@ -132,6 +132,8 @@ last_updated: 2026-06-26
 - `03-nivel-3-advanced-architecture/exercises/exercise-magnitude-direction-verifier-split.md` (Magnitude-Direction Verifier Split)
 - `03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split.md` (Trial-Retention Attribution Split)
 - `03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder.md` (Agent Value Maturity Ladder)
+- `03-nivel-3-advanced-architecture/exercises/exercise-11-software-graph-review-substrate.md` (Software Graph Review Substrate)
+- `03-nivel-3-advanced-architecture/exercises/exercise-12-semantic-rule-gated-auto-approve-block.md` (Semantic-Rule-Gated Auto Approve/Block)
 - `05-core-concepts/exercises/exercise-tiered-context-storage.md` (Tiered Context Storage)
 - `05-core-concepts/exercises/exercise-neutral-selection-layer.md` (Neutral Selection Layer)
 - `05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md` (Selection-Budgeted Retrieval)

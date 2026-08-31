@@ -2,86 +2,93 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-mental-model.md",
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-mental-model.yaml"
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-mental-model.md",
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-mental-model.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
-    "duration_seconds": 259,
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": 888,
     "retry_count": 0,
-    "started_at": "2026-08-30T22:28:13Z",
-    "completed_at": "2026-08-30T22:34:19Z"
+    "started_at": "2026-08-31T16:43:24Z",
+    "completed_at": "2026-08-31T16:58:12Z",
+    "verification_depth": "semantic"
   },
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-analysis.md",
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-analysis.yaml"
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-analysis.md",
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-analysis.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
-    "duration_seconds": 178,
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": 431,
     "retry_count": 0,
-    "started_at": "2026-08-30T22:28:13Z",
-    "completed_at": "2026-08-30T22:34:19Z"
+    "started_at": "2026-08-31T16:43:24Z",
+    "completed_at": "2026-08-31T16:50:35Z",
+    "verification_depth": "semantic"
   },
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-patterns.md",
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-patterns.yaml"
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns.md",
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
-    "duration_seconds": 214,
+    "notes": "Extracao de padroes reutilizaveis — Phase 2",
+    "duration_seconds": 539,
     "retry_count": 0,
-    "started_at": "2026-08-30T22:34:42Z",
-    "completed_at": "2026-08-30T22:38:52Z"
+    "started_at": "2026-08-31T17:02:09Z",
+    "completed_at": "2026-08-31T17:11:08Z",
+    "verification_depth": "semantic"
   },
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-classification.md",
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-classification.yaml"
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.md",
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Classificacao contra repositorio \u2014 Phase 3",
-    "duration_seconds": 297,
+    "notes": "Classificacao contra repositorio — Phase 3",
+    "duration_seconds": 660,
     "retry_count": 0,
-    "started_at": "2026-08-30T22:38:52Z",
-    "completed_at": "2026-08-30T22:46:16Z"
+    "started_at": "2026-08-31T17:12:52Z",
+    "completed_at": "2026-08-31T17:23:52Z",
+    "verification_depth": "semantic"
   },
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-artifacts.yaml",
-      "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-artifacts.md"
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-artifacts.yaml",
+      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-artifacts.md"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
-    "duration_seconds": 881,
+    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
+    "duration_seconds": 941,
     "retry_count": 0,
-    "started_at": "2026-08-30T22:46:59Z",
-    "completed_at": "2026-08-30T23:01:40Z"
+    "started_at": "2026-08-31T17:24:55Z",
+    "completed_at": "2026-08-31T17:40:36Z",
+    "verification_depth": "semantic"
   },
   "phase-5": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Integracao \u2014 atualiza system-of-record e indices",
-    "duration_seconds": 375,
+    "notes": "Integracao — atualiza system-of-record e indices",
+    "duration_seconds": 306,
     "retry_count": 0,
-    "started_at": "2026-08-30T23:01:40Z",
-    "completed_at": "2026-08-30T23:07:55Z"
+    "started_at": "2026-08-31T17:43:04Z",
+    "completed_at": "2026-08-31T17:48:10Z",
+    "verification_depth": "semantic"
   },
   "phase-6": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Curriculum Deep Integration \u2014 opcional",
-    "duration_seconds": 1041,
+    "notes": "Curriculum Deep Integration — opcional",
+    "duration_seconds": 413,
     "retry_count": 0,
-    "started_at": "2026-08-30T23:07:55Z",
-    "completed_at": "2026-08-30T23:25:16Z"
+    "started_at": "2026-08-31T17:49:44Z",
+    "completed_at": "2026-08-31T17:56:37Z",
+    "verification_depth": "semantic"
   }
 }

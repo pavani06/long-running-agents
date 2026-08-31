@@ -831,6 +831,14 @@ Para monitorar a saúde do ecossistema de features, você deve acompanhar:
 | **Criticalidade Boyd** | Fan-in × impacto de negócio da feature | Score > 50 | Feature é crítica para o negócio E para o sistema — investimento prioritário |
 | **Tempo médio de recuperação** | Quanto tempo para restaurar serviço após falha | MTTR > 30 min | Melhorar checkpoints, retry automático, ou circuit breaker |
 
+### Do Mapa de Impacto à Superfície de Review: O Grafo como Substrate
+
+As seções acima usam o grafo de dependências para uma pergunta: "o que testar e o que quebra quando X muda?". Existe um segundo uso, mais avançado: fazer do próprio grafo a **superfície de review** do software. Nesse regime, os nós não são apenas features — são repositórios e serviços; as arestas carregam os contratos entre eles (quem chama quem, com qual interface), junto com o histórico de discussão de cada contrato. PRs em andamento entram como bolhas sobrepostas aos nós e arestas que tocam.
+
+Isso muda a unidade de review. Um diff isolado esconde o que o KODA já sabe explicitar: que uma mudança no `evaluation.json` afeta Generator, Safety Guard e Price Negotation simultaneamente. Review sobre o grafo pergunta "qual subgrafo afetado esta mudança toca?", e habilita o que o diff nunca vê — **colisão cross-PR**: dois PRs em voo que alteram lados opostos do mesmo contrato (um muda o produtor de `catalog.json`, outro muda o consumidor) colidem na aresta compartilhada, e a colisão aparece antes do merge, não depois.
+
+O vocabulário você já possui: os edge types tipados do [[curriculum/05-core-concepts/01-context-management|Context Management]] (dependency, provenance, supersession, causation) apontados para um novo objeto — o software sob review, em vez do contexto da conversa. Para o padrão completo e o exercício de implementação: [[docs/canonical/software-graph-review-substrate|Software Graph Review Substrate]] e [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-11-software-graph-review-substrate|Exercício 11]].
+
 ---
 
 ## ⚠️ Seção 4: Mapa de Risco — Features Mais Impactadas por Mudanças de Conceito

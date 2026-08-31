@@ -112,6 +112,8 @@ Quatro sinais compoem a metrica:
 | **Required Intervention Points** | Checkpoints obrigatorios onde o agente PAUSA e so continua apos confirmacao humana | Forca presenca em pontos criticos de decisao |
 | **Review Confidence Signal** | Score agregado (0.0 a 1.0) que o revisor final usa para calibrar o nivel de escrutinio | Permite revisao proporcional ao risco |
 
+Os quatro sinais acima compartilham uma direcao: **manter o owner dentro do loop**. Existe o sinal inverso, e conhece-lo evita confundir as duas perguntas: o **Comment-Decay Readiness Signal** certifica a **saida**. Volume e tendencia de comentarios humanos por PR decaindo rumo a zero, somados a um contador acumulado de PRs que passaram sem revisao humana, formam o criterio comportamental de graduacao para automatizar o review (~100 PRs aprovados sem comentario e o threshold observado na fonte) — deliberadamente desacoplado de benchmarks de modelo, porque a pergunta nao e "o modelo melhorou?" e sim "o processo de review ainda produz intervencao humana?". Presenca mede envolvimento durante a execucao; decay de comentarios mede a irrelevancia da intervencao no ponto de merge. Sao sinais opostos com o mesmo formato — metrica observavel + threshold + decisao de graduacao. Para o padrao completo: [[docs/canonical/comment-decay-readiness-signal|Comment-Decay Readiness Signal]].
+
 ### O Que Voce Vai Construir
 
 Voce vai implementar um `PresenceTracker` que:

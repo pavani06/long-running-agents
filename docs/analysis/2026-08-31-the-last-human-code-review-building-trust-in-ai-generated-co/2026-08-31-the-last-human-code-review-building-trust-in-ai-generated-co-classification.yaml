@@ -1,0 +1,318 @@
+meta:
+  title: 'Classification: The Last Human Code Review — Building Trust in AI-Generated Code'
+  source_slug: the-last-human-code-review-building-trust-in-ai-generated-co
+  date: '2026-08-31'
+  type: classification
+  method: evidence-based classification against docs/canonical (precedence per docs/system-of-record.md:14-21),
+    with mechanism greps for NOT_FOUND confirmation; all citations opened and read 2026-08-31
+patterns:
+- name: Dual-Interface Context Engine
+  classification: Partial Coverage
+  integration_value: Medium
+  evidence:
+  - file: docs/canonical/persona-based-documentation.md
+    line: 23
+    quote: 'When a team has specialists in different domains, their expertise is not systematically
+      captured in durable documentation surfaces that agents can load.'
+  - file: docs/canonical/persona-based-documentation.md
+    line: 25
+    quote: 'each team member documents their specialty (front-end architect, reliability engineer,
+      security, product) as durable NFR documents, and reviewer agents load persona-specific
+      rubrics ... remain as tacit knowledge in individual engineers'' heads.'
+  - file: docs/canonical/persona-based-documentation.md
+    line: 88
+    quote: 'No persona-specific NFR documents exist. `AGENTS.md` is a single universal file
+      with no persona-specific sections or role-based loading rules.'
+  - file: docs/canonical/file-system-materialization.md
+    line: 38
+    quote: 'Materialize everything into files, git, and grep: Domain logic, agent specifications,
+      configuration, knowledge bases — if a coding agent needs to interact with it, make it
+      a file. The file system is the universal interface that every coding model understands.'
+  - file: docs/canonical/file-system-materialization.md
+    line: 42
+    quote: 'the agent''s changes become diffs that can be reviewed, reverted, and branched —
+      the same workflow humans use for code.'
+  - file: docs/canonical/resolver-based-context-progressive-disclosure.md
+    line: 28
+    quote: 'Move rarely universal instructions out of the base prompt and into skills or documents
+      that the resolver loads only when the task matches their trigger contract.'
+  - file: docs/canonical/quarto-publishing-architecture.md
+    line: 85
+    quote: '`AGENTS.md` lines 136-154 defines Obsidian document conventions as a kind of documentation
+      contract: mandatory frontmatter with `type` and `tags`, wikilinks for cross-references,
+      and tag taxonomy derived from system-of-record domains.'
+  - file: docs/system-of-record.md
+    line: 127
+    quote: 'Runtime da CLI `obsidian-eval`: scan, query, graph, write, manifest, epistemic graph'
+  - file: docs/canonical/cross-context-knowledge-siloing.md
+    line: 46
+    quote: 'Knowledge created in one agent context becomes invisible to agents operating in
+      a different context, causing repeated investigation of already-solved problems.'
+  - file: NOT_FOUND
+    line: 0
+    quote: '''context lake'' and ''tribal knowledge'' in docs/canonical/ — zero matches (grep
+      2026-08-31). No doc states a codify-once/dual-render principle, a governed dual renderer,
+      self-learning codification from outage/acceptance history, or a review-report artifact
+      listing violated rules with links to the applied rule set.'
+  justification: 'Both consumption interfaces exist (persona NFR docs for codification, file-system
+    materialization as single representation, resolver as agent-facing interface, Obsidian
+    conventions as human-facing wiki style, obsidian-eval as agent query surface), and the
+    siloing canonical names the fragmentation pathology. Missing the unifying reframe: codify-once-render-twice
+    as a governed rule, the dual renderer artifact, self-learning ingestion sources (peer
+    history, accepted/unaccepted changes, production-breaking cases), and auditability-by-link
+    review reports.'
+- name: Software Graph Review Substrate
+  classification: Partial Coverage
+  integration_value: High
+  evidence:
+  - file: docs/canonical/relational-context-graph.md
+    line: 22
+    quote: 'The structural error: treating relevance as proximity in embedding space rather
+      than as a graph property.'
+  - file: docs/canonical/relational-context-graph.md
+    line: 28
+    quote: 'Build a context graph where nodes represent context units (tool results, decisions,
+      state snapshots, progress notes) and edges carry typed semantic relationships.'
+  - file: docs/canonical/relational-context-graph.md
+    line: 30
+    quote: 'Four formal edge types (table at :30-37) — Dependency, Provenance, Supersession,
+      Causation.'
+  - file: docs/canonical/relational-context-graph.md
+    line: 67
+    quote: 'What is missing (the gap, :67-74) — Edge Classifier, Supersession Updater, Node
+      Ingestor, and Traversal Engine all declared unimplemented; the substrate is spec-level.'
+  - file: docs/canonical/garbage-collection-day-meta-loop.md
+    line: 64
+    quote: '| Agent repeats the same architectural dependency violation across PRs | Structural
+      drift; no micro-harness checking dependency edges | Structural test: assert package
+      dependency edges |'
+  - file: docs/canonical/architecture-as-agent-affordance.md
+    line: 30
+    quote: 'A deep module with a simple public interface and behavior-level boundary tests
+      is not only better human design; it is more navigable terrain for the next agent.'
+  - file: NOT_FOUND
+    line: 0
+    quote: '''microservice|cross-PR|in-flight|collision|software graph|service graph|repo graph''
+      in docs/canonical/ — only budget-aware-session-handoff.md:103/:117 (handoff filename
+      collisions, unrelated). No contract-edge graph between services, no cross-PR collision
+      detection, no review-unit shift from diff to graph in docs/canonical/, curriculum/,
+      .opencode/skills/.'
+  justification: 'Graph-substrate vocabulary is canonical but its nodes are context units,
+    never the reviewed software. The source mechanics — repos/contracts as nodes/edges, in-flight
+    PRs as bubbles, cross-PR contract-collision detection, review unit shifted from diff
+    to graph — are absent; nearest anchors are the GC Day dependency-edge structural test
+    and architecture-as-affordance. A canonical here reuses existing typed-edge vocabulary
+    against a new object: a genuine hole.'
+- name: Graph-Addressed Context Placement
+  classification: Partial Coverage
+  integration_value: Medium
+  evidence:
+  - file: docs/canonical/addressable-memory-catalog.md
+    line: 28
+    quote: 'Represent omitted context as an addressable catalog. Each omitted message, tool
+      call, span, prompt fragment, trace segment, or intermediate result receives a stable
+      identifier plus enough metadata for the agent to choose what to fetch.'
+  - file: docs/canonical/addressable-memory-catalog.md
+    line: 36
+    quote: 'Catalog fields (:36-41): location, preview, scope, tool, path — placement-plus-address
+      contract with workspace path validated against allowlist.'
+  - file: docs/canonical/addressable-memory-catalog.md
+    line: 61
+    quote: 'The classification found no explicit pattern for an omitted-memory catalog with
+      `id + location + preview` in the canonical docs, curriculum, evidence, decisions,
+      or operational skills.'
+  - file: docs/canonical/smallest-sufficient-context.md
+    line: 28
+    quote: 'determine the minimal token set the agent needs to reason correctly about the
+      current step, retrieve only those tokens through relational graph traversal, and assemble
+      them in their original temporal order'
+  - file: docs/canonical/smallest-sufficient-context.md
+    line: 63
+    quote: 'Relational Traversal Engine: Retrieval is by handle or topic, not by dependency/provenance
+      traversal. Addressable Memory Catalog provides handle-based access but does not traverse
+      typed edges to collect connected context.'
+  - file: docs/canonical/relational-context-graph.md
+    line: 39
+    quote: 'traversing the graph by typed relationships converts retrieval (returning what
+      is near) into selection (returning what is relevant)'
+  - file: docs/canonical/cross-context-knowledge-siloing.md
+    line: 53
+    quote: 'the metadata that makes knowledge *retrievable* (frontmatter tags, repo namespace,
+      memory_handles) is decoupled from the content that makes knowledge *valuable*'
+  - file: NOT_FOUND
+    line: 0
+    quote: 'Placement of codified rules/standards at software-structure addresses — software-graph
+      greps (see pattern 2) return zero relevant matches in docs/canonical/; existing addressing
+      surfaces (catalog paths, skill triggers, frontmatter tags) locate memory and instructions,
+      never rules keyed to code nodes/edges.'
+  justification: 'Retrieval-by-traversal is canonical (addressable catalog, smallest-sufficient
+    traversal, typed-edge graph) and the siloing canonical names the exact not-agent-retrievable
+    failure mode. Missing: the placement discipline keyed to the software graph (pattern
+    2 presupposed) and the implementation itself — both catalog and traversal canonicals
+    declare their own machinery absent in the repo.'
+- name: Agent-to-Agent Review Comment Protocol
+  classification: Partial Coverage
+  integration_value: Medium
+  evidence:
+  - file: docs/canonical/generator-evaluator.md
+    line: 31
+    quote: 'The Evaluator is impartial and constraint-facing: it receives the candidate output,
+      reads persisted client state, applies quality rubrics and business rules, and returns
+      an approve or reject verdict with specific feedback.'
+  - file: docs/canonical/qa-to-backlog-feedback-loop.md
+    line: 42
+    quote: 'The new issues enter the Agent Kanban with severity labels, QA-intake metadata
+      (source PR, finding ID, reviewer), and blocker relationships. Agents claim them through
+      the normal ready-queue flow.'
+  - file: docs/canonical/shadow-review-pipeline.md
+    line: 62
+    quote: 'Outputs (:62-65): Non-blocking AI review trace for each change; Data-backed threshold
+      decisions: which checks graduate to blocking, which remain advisory, which are retired.'
+  - file: docs/canonical/pr-gated-eval-enforcement.md
+    line: 61
+    quote: 'The issue-review skill validates the worktree, creates a draft PR, runs second-agent
+      review, and stops before merge.'
+  - file: NOT_FOUND
+    line: 0
+    quote: '''cherry-pick|cherry pick'' across docs/ — only this source package (4 files).
+      ''dear agent|agent-to-agent|agent-parseable|background fix|fix task'' in docs/canonical/
+      — only architecture-as-agent-affordance.md:24,:26,:30 where ''next agent'' means codebase
+      navigability. No agent-addressed comment contract; no background-fix-task fix-PR artifact.'
+  justification: 'Ingredients exist (evaluator verdict with feedback, findings as agent-claimable
+    Kanban work, structured shadow findings, second-agent review). Missing the protocol itself:
+    an agent-parseable comment carrying review state to the next PR-touching agent, the background
+    fix task producing a closed fix-PR, and the cherry-pick endgame that reduces human review
+    to selecting pre-verified fixes.'
+- name: Semantic-Rule-Gated Auto Approve/Block
+  classification: Partial Coverage
+  integration_value: High
+  evidence:
+  - file: docs/canonical/evals-as-brakes.md
+    line: 51
+    quote: '| Full suite green + production-correlation tracked | Auto-merge; deploy on merge
+      |'
+  - file: docs/canonical/evals-as-brakes.md
+    line: 59
+    quote: 'velocity_tiers YAML (:59-63): - name: auto-merge; requires eval_coverage ">= 0.9
+      of changed behaviors", gates [pr-eval-report, merge-threshold], correlation "eval score
+      predicts production outcome"'
+  - file: docs/canonical/pr-gated-eval-enforcement.md
+    line: 51
+    quote: Block merge when thresholds fail unless an explicit waiver is recorded.
+  - file: docs/canonical/shadow-review-pipeline.md
+    line: 31
+    quote: 'After the shadow period, agreement metrics determine which AI checks are reliable
+      enough to graduate to blocking status.'
+  - file: docs/canonical/pre-commit-ai-review-gate.md
+    line: 75
+    quote: 'The gate operates with an explicit policy: block when any finding category produces
+      a `fail` result for a high-confidence issue; allow when findings are advisory or low-confidence.;
+      :79 — High: unambiguous violation of a documented rule | Block: must fix before push'
+  - file: docs/canonical/human-review-staged-workflow-automation.md
+    line: 58
+    quote: '**O envio irreversível permanece humano.** (the repo''s counter-philosophy: irreversible
+      actions stay human-owned)'
+  - file: NOT_FOUND
+    line: 0
+    quote: '''auto-approve|auto approve|automatically approv|automerge|auto-merge'' in docs/canonical/
+      — only evals-as-brakes.md:59 (velocity tier). No doc frames approve/block driven by
+      an expanding set of codified semantic rules accumulated as auditable context; existing
+      gates are eval-threshold/confidence driven.'
+  justification: 'Graduated rule-gated gating exists at canonical depth (auto-merge tier,
+    threshold blocking with waivers, data-driven graduation of checks, confidence-tiered
+    pass/block) and is in places more instrumented than the source. Missing the decision
+    substrate: codified semantic rules over the governed context layer as what approves/blocks,
+    with the expanding rule set itself as accumulated auditable context.'
+- name: Rule Lifecycle Analytics
+  classification: Partial Coverage
+  integration_value: Medium
+  evidence:
+  - file: docs/canonical/measured-harness-evolution-lifecycle.md
+    line: 46
+    quote: 'The Context Loader example showed 59 real preventions in 145K turns, 340 false
+      positives, and only 0.4% accuracy difference in a 50% shadow test with and without
+      the component.'
+  - file: docs/canonical/measured-harness-evolution-lifecycle.md
+    line: 55
+    quote: 'ROI = (Erros Prevenidos × Custo Médio do Erro) / (Custo Operacional do Componente);
+      :58 — A component with ROI below 1x for two consecutive quarters becomes a removal
+      candidate.'
+  - file: docs/canonical/measured-harness-evolution-lifecycle.md
+    line: 60
+    quote: 'Govern cadence with a quarterly cycle: week 1 reviews model changelogs, metrics,
+      and component classification... Apply One In, One Out'
+  - file: docs/canonical/garbage-collection-day-meta-loop.md
+    line: 48
+    quote: 'the team holds a dedicated session to review collected observations... The session
+      produces concrete outputs: updated lint rules, new or amended skills, revised reviewer
+      prompts, expanded eval cases, or updated NFR documents.'
+  - file: docs/canonical/eval-dashboard-primary-detection-surface.md
+    line: 32
+    quote: 'Real-time pass/fail rates per eval layer, per category (security, login, tool
+      calls, knowledge retrieval, math/reasoning), per agent — updated continuously.'
+  - file: docs/canonical/failure-pattern-classification-loop.md
+    line: 46
+    quote: 'which surface caught it (review, lint, test, production), and how many instances
+      were observed'
+  - file: NOT_FOUND
+    line: 0
+    quote: 'Per-rule catch counters and per-skill usage telemetry — greps ''catch rate|caught|per-rule|rule
+      usage|how many times'' in docs/canonical/ return only shadow agreement categories (shadow-review-pipeline.md:56-57)
+      and the failure-observation format (failure-pattern-classification-loop.md:46); no
+      doc counts catches or usage per codified rule/standard/skill across review runs.'
+  justification: 'Lifecycle analytics exist for harness components (catch/false-positive
+    counts, ROI-driven retire/keep, quarterly cadence) and eval categories (dashboard pass
+    rates), plus weekly GC Day review. Missing the per-rule/per-skill dimension: how many
+    times each codified rule caught an issue during review runs, usage of each rule/standard/skill
+    during review, and update/retire/keep decisions applied to that triad.'
+- name: Comment-Decay Readiness Signal
+  classification: Partial Coverage
+  integration_value: Medium
+  evidence:
+  - file: docs/canonical/presence-in-the-loop-metric.md
+    line: 31
+    quote: 'Treat human presence during agent execution as a governance metric, not as an
+      assumption. Measure when the outcome owner was involved, detect when they have been
+      absent too long, and require intervention points before the loop continues.'
+  - file: docs/canonical/presence-in-the-loop-metric.md
+    line: 63
+    quote: 'The signal does not replace the review -- it informs the reviewer about how much
+      ownership was exercised during construction.'
+  - file: docs/canonical/shadow-review-pipeline.md
+    line: 31
+    quote: 'After the shadow period, agreement metrics determine which AI checks are reliable
+      enough to graduate to blocking status. (graduation criterion exists; signal is agreement,
+      not comment decay)'
+  - file: docs/canonical/evals-as-brakes.md
+    line: 59
+    quote: 'The auto-merge tier''s requirements (:59-63, eval coverage + correlation) constitute
+      the repo''s automation-readiness criteria — eval-based, not behavioral.'
+  - file: docs/canonical/human-review-staged-workflow-automation.md
+    line: 67
+    quote: 'Phase progression | Observe (human does, agent watches) -> Assist (agent proposes,
+      human approves) -> Own (agent executes, human monitors exceptions) (quoting docs/canonical/autonomy-curriculum-sampling.md:60)'
+  - file: NOT_FOUND
+    line: 0
+    quote: '''human comments|comment volume|comments per PR|without human review'' in docs/canonical/
+      — zero matches (grep 2026-08-31); the only ''benchmark'' hits are unrelated (institutional-layer-amplification.md:51-52,
+      mega-expert-consolidation.md:41). No ~100-PR threshold, no accumulated pass-without-review
+      counter, no decoupling of review-readiness from model benchmarks.'
+  justification: 'Human-involvement measurement (presence metric, opposite goal: keeping
+    the owner in) and graduation machinery (shadow agreement graduation, eval-based auto-merge
+    tier, autonomy phase progression) exist. Missing the behavioral readiness signal itself:
+    human comments per PR volume/trend decaying toward zero, accumulated PRs passing without
+    human review, an explicit ~100-PR graduation threshold, and the benchmark-decoupling
+    claim.'
+summary:
+  counts:
+    Partial Coverage: 7
+    Missing: 0
+    Already Exists: 0
+    Better Implementation: 0
+  integration_value:
+    High: 2
+    Medium: 5
+  anti_false_missing_check: 'Semantic neighbors checked explicitly (human-review-staged-workflow-automation,
+    shadow-review-pipeline, pre-commit-ai-review-gate, relational-context-graph, addressable-memory-catalog,
+    contextual-severity-calibration via SOR :248, cross-context-knowledge-siloing, eval-dashboard-primary-detection-surface);
+    all seven mechanisms have canonical anchors, so no Missing classification was issued.'

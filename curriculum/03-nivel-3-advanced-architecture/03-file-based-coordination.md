@@ -326,6 +326,8 @@ Agente A                         Pasta compartilhada                     Agente 
 | **Contratos explícitos** | O JSON mostra campos, autores e leitores |
 | **Boa didática** | O padrão é visual e fácil de revisar em code review |
 
+Uma consequência desse desenho merece nome próprio: **o mesmo arquivo serve dois consumidores**. O agente lê `evaluation.json` como contrato estruturado; o humano abre o mesmo JSON e a pasta de trace para auditar a jornada. O passo de maturidade é codificar uma vez e renderizar duas vezes — uma camada única de codificação governada (frontmatter, schema version, ownership) da qual derivam duas renderizações: a interface verbosa e estruturada que os agentes carregam, e a interface estilo wiki (legível, navegável por links) que os humanos consultam. Auditoria vira propriedade estrutural: cada relatório de review que acusa uma violação lista a regra violada **com link para o conjunto completo de regras aplicadas** — o mesmo princípio do atomic rename, garantindo que a evidência aponta para o estado exato que a produziu. A ingestão que alimenta essa camada não é só documentação escrita à mão: histórico de revisões entre pares, mudanças aceitas e rejeitadas, e casos que quebraram em produção são fontes de codificação. Para o padrão completo: [[docs/canonical/dual-interface-context-engine|Dual-Interface Context Engine]].
+
 ### Regras básicas para começar
 
 1. Comece com uma pasta por conversa ou pedido.

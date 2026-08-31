@@ -1,0 +1,76 @@
+meta:
+  type: artifact-manifest
+  date: 2026-08-31
+  source_slug: the-last-human-code-review-building-trust-in-ai-generated-co
+  classification_file: docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.yaml
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/software-graph-review-substrate.md
+      pattern: Software Graph Review Substrate
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/semantic-rule-gated-auto-approve-block.md
+      pattern: Semantic-Rule-Gated Auto Approve/Block
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/dual-interface-context-engine.md
+      pattern: Dual-Interface Context Engine
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/graph-addressed-context-placement.md
+      pattern: Graph-Addressed Context Placement
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/agent-to-agent-review-comment-protocol.md
+      pattern: Agent-to-Agent Review Comment Protocol
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/rule-lifecycle-analytics.md
+      pattern: Rule Lifecycle Analytics
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/comment-decay-readiness-signal.md
+      pattern: Comment-Decay Readiness Signal
+      classification: Partial Coverage
+      priority: P2
+  skills: []
+  exercises:
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-11-software-graph-review-substrate.md
+      pattern: Software Graph Review Substrate
+      classification: Partial Coverage
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-12-semantic-rule-gated-auto-approve-block.md
+      pattern: Semantic-Rule-Gated Auto Approve/Block
+      classification: Partial Coverage
+  examples: []
+
+skipped:
+  already_exists: []
+  better_implementation: []
+  not_applicable:
+    - artifact_type: skills
+      reason: >-
+        Nenhum padrao classificado como Missing. A spec cria skills apenas para Missing
+        (analyze-and-improve SKILL.md:737) e o gate da Phase 4 declara que as acoes P0
+        (skill + exercise) nao incidem quando ha 0 Missing (SKILL.md:811).
+    - artifact_type: exercises
+      scope: 5 padroes P2 (Partial Coverage Medium)
+      reason: >-
+        Exercise para P2 e opcional no gate (SKILL.md:809). Criados apenas para os 2 P1
+        de alto valor de integracao, conforme a Ordem de criacao item 3 (SKILL.md:693).
+    - artifact_type: examples
+      reason: >-
+        Categoria prevista para padroes Missing com before/after de codigo. Sem Missing,
+        os exercicios P1 ja carregam o codigo demonstrativo.
+
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 7
+    skills: 0
+    exercises: 2
+    examples: 0
+  verification:
+    validate_obsidian: "16 violacoes, todas pre-existentes (14 dos pacotes 2026-06-25/26 + 2 wikilinks credibility-cascade quebrados em spread-capture-analytical-primitive.md e institutional-layer-amplification.md). ZERO envolvendo os 9 artefatos novos."
+    executable_content: "4/4 blocos python dos 2 exercicios compilam via compile() (593, 40, 558, 39 linhas)."
+    citation_sampling: "3/3 exatas (persona-based-documentation.md:88, pre-commit-ai-review-gate.md:75, measured-harness-evolution-lifecycle.md:60)."

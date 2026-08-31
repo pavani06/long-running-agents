@@ -683,6 +683,12 @@ O mesmo princípio vale para instruções operacionais. Um harness maduro não c
 
 Esse desenho transforma gerenciamento de contexto em uma superfície testável: cada skill precisa de descrição, regras de ativação, casos em que não deve carregar e trigger evals que provem que o resolver encontra a capacidade certa. Para o padrão completo, veja [[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]].
 
+#### Graph-Addressed Context Placement
+
+O catálogo endereça **memória omitida**; o resolver endereça **instruções condicionais**. Falta a terceira família: onde uma regra ou padrão codificado deve **viver**. A disciplina de placement diz que o endereço de cada conhecimento codificado é determinado pelo elemento de software que ele governa — a regra de contrato entre Generator e Evaluator mora na aresta de dependência entre os dois, não numa lista global de documentos. Sem essa disciplina, a codificação degrada no modo de falha do [[docs/canonical/cross-context-knowledge-siloing|Cross-Context Knowledge Siloing]]: o conteúdo existe, mas os metadados que o tornam recuperável estão desacoplados dele.
+
+Na prática, o placement pressupõe o endereçamento por grafo de software (serviços e contratos como nós e arestas — ver [[docs/canonical/software-graph-review-substrate|Software Graph Review Substrate]]): cada ato de codificação posiciona o conhecimento no nó ou aresta onde ele se aplica, e a recuperação durante review percorre o subgrafo afetado coletando as regras que governam exatamente aqueles elementos. É o complemento de placement do Addressable Memory Catalog e do Relational Context Graph (estratégia 12 abaixo). Para o padrão completo: [[docs/canonical/graph-addressed-context-placement|Graph-Addressed Context Placement]].
+
 ### 5. Compaction/Compression server-side e client-side
 
 **Como funciona:** Compacta mensagens, tool results e estados antes de enviá-los ao modelo ou usa mecanismos do servidor para condensar histórico.

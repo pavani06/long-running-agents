@@ -960,6 +960,12 @@ artifacts/koda-recommendation-v1.json:
   next_review: "2026-07-15"
 ```
 
+### Telemetria por Regra e por Skill: O Que a Decisão Exige Medir
+
+As quatro decisões de artefato só são tão boas quanto a telemetria que as sustenta. A fase STABILIZE instrumenta **componentes** (prevenções reais, falsos positivos, ROI por componente — o exemplo do Context Loader: 59 prevenções em 145K turns contra 340 falsos positivos). O Sunset Gate herda o princípio e muda o objeto medido: a tríade **regras, padrões e skills** que o review consome. Cada regra codificada precisa de um contador de catches (quantas vezes pegou um problema real em execuções de review) e cada skill de um contador de uso (quantas vezes foi carregada durante o processo de review) — sem isso, Keep/Retire é palpite com vocabulário de governança.
+
+A regra de decisão espelha a do ROI de componentes: regra que nunca pega nada em N revisões é candidata a Retire; regra com alto catch rate sustenta Promote; skill nunca carregada é cargo morto no catálogo. E assim como o ROI de componentes alimenta o dashboard trimestral, os contadores por regra alimentam o GC Day e a revisão de sunset com o mesmo calendário. Para o padrão completo: [[docs/canonical/rule-lifecycle-analytics|Rule Lifecycle Analytics]].
+
 ### Integração com o Ciclo de Vida do Harness
 
 O Sunset Gate se encaixa como uma camada complementar ao ciclo BUILD-STABILIZE-SIMPLIFY-REMOVE:
@@ -976,6 +982,8 @@ O Sunset Gate se encaixa como uma camada complementar ao ciclo BUILD-STABILIZE-S
 - [ ] Artefatos promovidos a componentes oficiais entram no ciclo BUILD → STABILIZE com owner e contrato.
 - [ ] Artefatos aposentados são arquivados com rationale (por que existiu, por que saiu, o que aprendemos).
 - [ ] O princípio "One In, One Out" se aplica também a artefatos: cada novo artefato criado deve indicar qual artefato existente será aposentado, salvo exceções de segurança.
+- [ ] Cada regra codificada tem contador de catches (problemas reais pegos em execuções de review) e cada skill tem contador de uso — a decisão Keep/Retire cita os números, não a impressão do time.
+- [ ] A telemetria por regra/skill é revisada no mesmo calendário do GC Day e da revisão trimestral de harness, alimentando as decisões de sunset com dados contínuos.
 
 ---
 

@@ -1160,6 +1160,8 @@ Apos completar este exercicio, voce entende:
 - Como o shadow period transforma "acho que o bot e bom" em "sei que o bot e bom para estes 3 checks especificos"
 - Por que uma taxa de 81% de falsos positivos e o resultado natural de ativar gates sem shadow period
 
+**A pergunta que fica aberta depois da graduacao:** o que o gate bloqueante usa como substrato de decisao? Este exercicio gradua checks por metricas de concordancia (precision/recall por categoria). O estagio seguinte e trocar o substrato: approve/block passam a ser decididos por **regras semanticas codificadas** — um conjunto auditavel de regras de review que cresce com o tempo, onde cada comentario humano que ainda chega vira regra nova ou emenda de regra existente, e o relatorio de review lista quais regras foram violadas com link para o conjunto aplicado. A graduacao por concordancia responde "este check e confiavel?"; o gate por regras responde "o que exatamente o gate verifica hoje, e quem decidiu isso?". Para o mecanismo completo, implemente o [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-12-semantic-rule-gated-auto-approve-block|Exercicio 12]] e leia [[docs/canonical/semantic-rule-gated-auto-approve-block|Semantic-Rule-Gated Auto Approve/Block]].
+
 **Proximo:** Exercise 8 — Contextual Severity Calibration
 
 ---

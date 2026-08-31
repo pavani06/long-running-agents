@@ -638,6 +638,8 @@ Se o Evaluator rejeitou, ele escreve feedback estruturado para o Generator ler.
 }
 ```
 
+O `feedback.json` fecha o loop **dentro da mesma iteração**: o Evaluator rejeita, o Generator lê e tenta novamente na mesma sessão. Existe a variante cross-session do mesmo contrato, e ela é o que escala review de agentes além de uma conversa: o **comentário de review endereçado ao próximo agente**. Em vez de um comentário de PR escrito para humanos, o reviewer estruturado emite um comentário em formato parseável — issue, severidade, regra violada, ação requerida — dirigido ao próximo agente que tocar aquele PR, que o consome como estado de entrada do mesmo jeito que o Generator consome `feedback.json`. Complementando, uma tarefa de correção em background pode produzir um fix-PR fechado e verificado, que o humano apenas confirma — review humana reduzida a decidir o que já veio validado. A diferença entre os dois contratos é o eixo do endereçamento: `feedback.json` fala com o agente da iteração atual; o comentário de review fala com o agente da próxima sessão. Para o protocolo completo: [[docs/canonical/agent-to-agent-review-comment-protocol|Agent-to-Agent Review Comment Protocol]].
+
 ---
 
 ### Arquivo 5: audit_log.jsonl

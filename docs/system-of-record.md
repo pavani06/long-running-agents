@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-08-30
+last_updated: 2026-08-31
 relates-to: []
 sources: []
 ---
@@ -168,7 +168,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 154 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 161 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -325,6 +325,13 @@ Tópicos candidatos a ADR:
 | `trial-retention-attribution-split.md` | Trial-Retention Attribution Split: separa "tentou e não voltou" (produto) de "nunca tentou" (change management) para atribuir ativação vs. retenção (Snowflake GTM) |
 | `owner-led-activation-blitz.md` | Owner-Led Activation Blitz: programa de adoção liderado pelo owner com dashboard e demos ao vivo para ativação (Snowflake GTM) |
 | `agent-value-maturity-ladder.md` | Agent Value Maturity Ladder: escada de 4 estágios de valor com custos de troca — detecta wow-collapse e ausência de próximo estágio (Snowflake GTM) |
+| `software-graph-review-substrate.md` | Software Graph Review Substrate: grafo de software como substrato de review, com unidade de review por componente conectado em vez de PR inteiro e detecção de colisões de contrato cross-PR (Qodo) |
+| `semantic-rule-gated-auto-approve-block.md` | Semantic-Rule-Gated Auto Approve/Block: gate de aprovação/bloqueio automático dirigido por regras semânticas, com auto-approve de PRs triviais e auto-block de violações conhecidas (Qodo) |
+| `dual-interface-context-engine.md` | Dual-Interface Context Engine: motor de contexto com duas interfaces, codificando uma vez e renderizando por persona (dev, QA, review) a partir do mesmo knowledge base (Qodo) |
+| `graph-addressed-context-placement.md` | Graph-Addressed Context Placement: posicionamento de contexto endereçado por grafo, com contexto ancorado no nó do grafo de software em vez de anexado por PR (Qodo) |
+| `agent-to-agent-review-comment-protocol.md` | Agent-to-Agent Review Comment Protocol: protocolo de comentário de review agente-para-agente, com comentários parseáveis que viram tarefas de fix em background (Qodo) |
+| `rule-lifecycle-analytics.md` | Rule Lifecycle Analytics: analytics de ciclo de vida de regras, com telemetria por regra (catch rate) para decidir manter, atualizar ou aposentar regras de review (Qodo) |
+| `comment-decay-readiness-signal.md` | Comment-Decay Readiness Signal: sinal de prontidão por decaimento de comentários, com 100 PRs sem comentário humano como critério comportamental de graduação para autonomia (Qodo) |
 
 | Documento | Cobre |
 |---|---|
@@ -428,6 +435,15 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 | `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification.md` | Classificação dos padrões contra o repositório |
 | `2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-artifacts.md` | Artifacts manifest: 13 canonical docs, 1 skill (mega-expert-consolidation), 1 exercício |
 
+### Análises comparativas (The Last Human Code Review: Building Trust in AI-Generated Code)
+
+| Arquivo | Cobre |
+|---|---|
+| `2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-analysis.md` | Extração de conhecimento não-óbvio da talk AI Engineer (Itamar Friedman, Qodo) sobre confiança em código gerado por IA |
+| `2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns.md` | Padrões agentic extraídos da talk |
+| `2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.md` | Classificação dos padrões contra o repositório |
+| `2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-artifacts.md` | Artifacts manifest: 7 canonical docs, 2 exercícios |
+
 > **Nota sobre formato**: Sessões de análise anteriores a 2026-06-14 contêm
 > `integration-roadmap.md` (formato legacy). Sessões a partir de 2026-06-14 usam
 > `<date>-<source-slug>-artifacts.{md,yaml}` como artifacts manifest.
@@ -441,4 +457,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-08-30*
+*Última atualização: 2026-08-31*
