@@ -178,4 +178,5 @@ Toca componentes compartilhados (as skills SÃO o protocolo entre sessões), mas
 - Re-verificação: **8/8 critérios PASS** (um check determinístico por finding)
 - Desvios documentados: (1) Fases 1-3 do qi-epic puladas — diagnóstico/prescrição/plano já existiam (análise adversarial in-session); (2) task-wrapper.sh ausente — trace instrumentation pulada; (3) quoting de backticks truncou 5 comentários de handoff — corrigidos com comentários completos de seguimento.
 - Ruído fora do stage: `.obsidian/` e edição pré-existente em analysis de 2026-06-26 permanecem não-commitados no vault (estado local do operador, intocado).
+- Round 2 (mesma data): findings da sessão ingest-and-improve de 2026-08-31 geraram o plano docs/plans/2026-08-31-adversarial-review-pipeline-hardening.md; a constraint 4 deste plano (nunca /home) foi supersedida pelo protocolo dual-path aprovado (D7).
 

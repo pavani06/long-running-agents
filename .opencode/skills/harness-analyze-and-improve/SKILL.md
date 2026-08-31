@@ -57,7 +57,8 @@ Load harness-analyze-and-improve with source=C:\Users\pavan\raw-knowledge\source
 
 mode=loop: executa TODAS as fases pendentes sem perguntar.
 So para em AGENT_STOP, falha de fase, ou conclusao total.
-Commits cada fase automaticamente. Pergunta push so no final.
+Commits: pergunte ao operador antes de CADA commit, sem excecao
+(secao Commit Gate abaixo). Push apenas no final, com aprovacao.
 
 ## Phase → Agent Mapping
 

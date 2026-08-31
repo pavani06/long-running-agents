@@ -302,29 +302,40 @@ Apenas o Passo 0b e delegado; os Passos 0a e 0c sao executados diretamente pelo 
 
 1. **Verificar cache**: Liste `mapa-mental-repo/` no repositorio alvo.
    Se o diretorio nao existe ou esta vazio: **fallback imediato para full rebuild**.
-2. **Carregar modelo anterior**: Identifique o arquivo `.yaml` mais recente por data no nome
-   (use `ls -1 mapa-mental-repo/*.yaml | sort | tail -1`).
-   Leia o YAML completo — ele sera a base do modelo atualizado.
-3. **Scan rapido de deltas** desde a data do modelo anterior:
+2. **Carregar modelo anterior**: Identifique o `.yaml` da base pelo commit git mais
+   recente do arquivo — NUNCA por ordenacao alfabetica (dois modelos podem compartir
+   a data no nome; `sort | tail -1` devolve o errado):
    ```bash
-   # Novos canonical docs
-   find docs/canonical/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
-   # Novos ADRs
-   find docs/decisions/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
-   # Novos arquivos no curriculum
-   find curriculum/ -name '*.md' -newer mapa-mental-repo/<ultimo>.yaml
-   # Novas skills
-   ls -lt .opencode/skills/ | head -20
-   # Novos agentes
-   ls -lt .opencode/agents/ | head -20
+   for f in mapa-mental-repo/*-mental-model.yaml; do
+     printf '%s %s\n' "$(git log -1 --format=%ci -- "$f")" "$f"
+   done | sort -r | head -1
    ```
-4. **Classificar deltas** e produzir `docs/analysis/<date>-<source-slug>/delta-report.md`:
+   Leia o YAML completo — ele sera a base do modelo atualizado.
+3. **Scan rapido de deltas** por GIT, nunca por mtime: mtimes nao sobrevivem a
+   clone/checkout, e o yaml base e sempre o ULTIMO arquivo copiado pelo Passo 0c do
+   run anterior — `find -newer <base>.yaml` e estruturalmente cego ao run imediatamente
+   anterior (no run de 2026-08-31 escondeu 25 deltas por 4 milissegundos):
+   ```bash
+   # BASE_COMMIT: meta.base_commit do yaml base; fallback = commit que introduziu o arquivo
+   BASE_COMMIT=$(git log --diff-filter=A --format=%h -- mapa-mental-repo/<base>.yaml | tail -1)
+   git log --diff-filter=A --name-only --format='' "$BASE_COMMIT..HEAD" -- \
+     docs/canonical docs/decisions curriculum .opencode/skills .opencode/agents docs/plans | sort -u
+   ```
+   Para modelos antigos sem `meta.base_commit`, o fallback do BASE_COMMIT cobre.
+4. **Gate de reconciliacao** (antes de classificar): compare o scan com o diff bruto:
+   ```bash
+   git diff --name-only "$BASE_COMMIT..HEAD" -- docs/canonical docs/decisions \
+     curriculum .opencode docs/plans | wc -l
+   ```
+   Se o total for maior que 2x os deltas encontrados: PARAR e re-escanear manualmente
+   antes de decidir o modo. (Um scan que reporta 3 quando o diff mostra 28 e dado falso.)
+5. **Classificar deltas** e produzir `docs/analysis/<date>-<source-slug>/delta-report.md`:
    - Cada delta classificado: `novo-canonical-doc`, `novo-adr`, `novo-exercicio`,
      `nova-licao`, `nova-skill`, `novo-agente`, `atualizacao`
    - Para cada delta: path do arquivo, data de modificacao, breve descricao do conteudo
    - Contagem total de deltas
    - Data do modelo anterior usado como base
-5. **Decidir modo**: Conte os deltas. Se `total_deltas > 10` OU
+6. **Decidir modo**: Conte os deltas. Se `total_deltas > 10` OU
    `dias_desde_modelo_anterior > 30`: **fallback para full rebuild**.
    Caso contrario: prossiga para o Passo 0b.
 
@@ -370,7 +381,7 @@ OUTPUT: Write TWO files:
 - docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml — updated typed mirror
 
 The YAML must use the same typed fields as full rebuild, plus:
-  meta: {title, date, repo, type: 'mental-model', based_on: '<previous-model-filename>'}
+  meta: {title, date, repo, type: 'mental-model', based_on: '<previous-model-filename>', base_commit: '<git rev-parse --short HEAD>'}
   goals: [list of goals]
   architecture: {abstractions: [...], relationships: [...]}
   patterns: [{name, where_defined, maturity}]
@@ -395,6 +406,9 @@ Apos QUALQUER Phase 0 (full rebuild OU incremental), o orquestrador DEVE:
    cp docs/analysis/<date>-<source-slug>/mental-model.yaml \
       mapa-mental-repo/<date>-<source-slug>-mental-model.yaml
    ```
+   Antes de copiar, garanta `meta.base_commit: <git rev-parse --short HEAD>` no yaml
+   (injete via python yaml round-trip se o Passo 0b nao o gerou) — o proximo run
+   escaneia `base_commit..HEAD` para achar os deltas.
 3. **Enforce o limite de 5 modelos ativos**:
    ```bash
    # Listar modelos .yaml por data, pular os 5 mais recentes, mover o resto
@@ -766,7 +780,7 @@ task(
   category="deep",
   load_skills=[],
   run_in_background=true,
-  prompt="TASK: Create curriculum exercises for patterns classified as Missing.
+  prompt="TASK: Create curriculum exercises for patterns classified as Missing, and Partial Coverage patterns with Integration Value High (see "Ordem de criacao" item 3). Do not create exercises for P2 unless the orchestrator explicitly lists them in this prompt.
 
 TARGET_REPOSITORY:
   path: <absolute-path-to-repo>
@@ -805,7 +819,7 @@ Enquanto os agentes 1-3 rodam em background, o orquestrador DEVE:
 ### Gate
 
 - [ ] Missing patterns tem canonical doc + skill + exercise
-- [ ] P1 patterns (Partial Coverage High) tem canonical doc
+- [ ] P1 patterns (Partial Coverage High) tem canonical doc + exercise
 - [ ] P2 patterns (Partial Coverage Medium) tem canonical doc (exercise opcional; se criado, deve ser na Phase 4)
 - [ ] Nao foram criados artefatos para Already Exists ou Better Implementation
 - [ ] **0 Missing e esperado**: Nem toda fonte produz padroes Missing. Se todos forem Partial Coverage ou Already Exists, as acoes P0 (skill + exercise) simplesmente nao se aplicam. Isso nao e falha do pipeline.
@@ -977,6 +991,7 @@ Do NOT commit. The orchestrator handles the commit decision."
 
 - [ ] `git diff --stat` mostra apenas arquivos relacionados a essa sessao
 - [ ] `docs/system-of-record.md` reflete o novo estado (data atualizada)
+- [ ] Contagens RECOMPUTADAS por comando (`ls <dir>/exercises/*.md | wc -l`), nunca incrementadas do valor anterior
 
 ### Commit Gate
 
@@ -999,6 +1014,7 @@ Apos a Phase 5 (e Phase 6 se executada), o orquestrador DEVE:
    localmente e sera sobrescrito pelo proximo `setup-analysis.sh`.
 
 NUNCA commitar ou dar push sem pergunta explicita. O `AGENTS.md` do repositorio alvo tem precedencia — se ele diz "Do not commit unless the user explicitly asks", respeite.
+- [ ] Se o Passo 0b detectou drift alem do reportado no delta-report.md, o report foi emendado (secao Errata) antes do commit
 
 ---
 
