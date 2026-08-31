@@ -130,6 +130,8 @@ last_updated: 2026-06-26
 - `03-nivel-3-advanced-architecture/exercises/exercise-constraint-failure-decision-rule.md` (Constraint Failure Decision Rule)
 - `03-nivel-3-advanced-architecture/exercises/exercise-autonomy-curriculum-sampling.md` (Autonomy Curriculum Sampling)
 - `03-nivel-3-advanced-architecture/exercises/exercise-magnitude-direction-verifier-split.md` (Magnitude-Direction Verifier Split)
+- `03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split.md` (Trial-Retention Attribution Split)
+- `03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder.md` (Agent Value Maturity Ladder)
 - `05-core-concepts/exercises/exercise-tiered-context-storage.md` (Tiered Context Storage)
 - `05-core-concepts/exercises/exercise-neutral-selection-layer.md` (Neutral Selection Layer)
 - `05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md` (Selection-Budgeted Retrieval)
@@ -299,6 +301,17 @@ last_updated: 2026-06-26
 ### "Como removo scaffolding?"
 → `03-nivel-3-advanced-architecture/05-harness-evolution.md`
 → `05-core-concepts/06-harness-evolution.md`
+
+### "Uso baixo depois do lançamento é falha de produto?"
+→ `05-core-concepts/08-evaluation-rubrics.md` (seção Trial-Retention Attribution Split)
+→ `../docs/canonical/trial-retention-attribution-split.md`
+→ `03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split.md`
+
+### "Como faço adoção acontecer e o valor sobreviver ao colapso do wow?"
+→ `05-core-concepts/06-harness-evolution.md` (seções Owner-Led Activation Blitz e Agent Value Maturity Ladder)
+→ `../docs/canonical/owner-led-activation-blitz.md`
+→ `../docs/canonical/agent-value-maturity-ladder.md`
+→ `03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder.md`
 
 ### "Como isso se aplica ao KODA?"
 → `04-nivel-4-koda-specific/XX-*.md`

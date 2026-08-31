@@ -63,6 +63,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/devils-advocate/SKILL.md|.opencode/skills/devils-advocate/SKILL.md]] | Skill adversarial: reviewer que encontra o caso mais forte CONTRA qualquer premissa, plano ou implementação. Usa agente momus (Claude Opus 4.7). Previne sycophancy por dissent estruturado. Wave 1 anti-sycophancy. |
 | [[.opencode/skills/behavioral-eval-path-analysis/SKILL.md|.opencode/skills/behavioral-eval-path-analysis/SKILL.md]] | Skill: Behavioral Eval Path Analysis (Layer 3) — detecta wrong-path-right-answer: duplicatas, loops, uso incorreto de ferramentas, custo por query. Integrado ao trace pipeline e QI loop. |
 | [[.opencode/skills/mega-expert-consolidation/SKILL.md|.opencode/skills/mega-expert-consolidation/SKILL.md]] | Skill de implementação: consolidação Mega-Expert — um agente por especialidade benchmarkado contra o melhor humano individual, fundidos em um único agente voltado ao cliente (sem handoffs, sem deflection bot). Fonte: Kavak 2026-08-30. |
+| [[.opencode/skills/trial-retention-attribution-split/SKILL.md|.opencode/skills/trial-retention-attribution-split/SKILL.md]] | Skill de diagnóstico: separa ativação de retenção (trial flag + weekly-active + atribuição de duas ramas) para impedir que alarme de gestão vire rollback cego do produto |
+| [[.opencode/skills/agent-value-maturity-ladder/SKILL.md|.opencode/skills/agent-value-maturity-ladder/SKILL.md]] | Skill de auditoria: classifica roadmap/deployment contra a escada de 4 estágios de valor e detecta wow-collapse não planejado e custos de troca não construídos |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -166,7 +168,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há ~116 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 154 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -311,6 +313,18 @@ Tópicos candidatos a ADR:
 | `eval-investment-parity.md` | Regra de paridade orçamentária: tempo/tokens/dinheiro ~iguais em evals e na construção do agente — evals como artefato first-class, não afterthought (Kavak) |
 | `outcome-level-eval-hierarchy.md` | Hierarquia de eval com loop único: resultado de negócio primeiro (conversão), proxy KPIs (chamadas, minutos) explicitamente rejeitados do readout (Kavak) |
 | `production-contact-training-loop.md` | Contato real com cliente como mecanismo de treino: expor → colher interações/evals → alimentar updates → redeploy — agentes lab-only não convergem (Kavak) |
+| `workflow-derived-golden-question-set.md` | Workflow-Derived Golden Question Set: conjunto dourado de ~150 perguntas derivadas do workflow real antes do launch para calibrar evals (Snowflake GTM) |
+| `quality-over-coverage-trust-scoping.md` | Quality-Over-Coverage Trust Scoping: escopo de lançamento limitado à zona de confiança — qualidade sobre cobertura, confiança como unidade de conta (Snowflake GTM) |
+| `retention-gated-phased-rollout.md` | Retention-Gated Phased Rollout: rollout em fases gateado por retenção — cohort beta só expande quando a retenção semanal sustenta (Snowflake GTM) |
+| `centralized-data-plane-inherited-rbac.md` | Centralized Data Plane with Inherited RBAC: data plane centralizado com RBAC herdado da plataforma, permitindo deploy zero-code do agente (Snowflake GTM) |
+| `human-review-staged-workflow-automation.md` | Human-Review Staged Workflow Automation: automação em estágios (monitor → draft → review → send) com humano dono do envio (Snowflake GTM) |
+| `pull-based-infrastructure-on-pain.md` | Pull-Based Infrastructure on Pain: stack mínimo de lançamento e endurecimento reativo puxado por dor, não por antecipação (Snowflake GTM) |
+| `continuous-re-architecture-budget.md` | Continuous Re-Architecture Budget: orçamento contínuo de re-arquitetura (split 60-70/30-40) absorvendo ondas de skills/MCP/progressive disclosure (Snowflake GTM) |
+| `gap-to-content-feedback-circuit.md` | Gap-to-Content Feedback Circuit: circuito gap→conteúdo — gaps de feature viram battle cards e conteúdo de enablement (Snowflake GTM) |
+| `llm-classified-log-taxonomy.md` | LLM-Classified Log Taxonomy: taxonomia de logs classificada por LLM como radar de gaps de feature a partir das perguntas dos usuários (Snowflake GTM) |
+| `trial-retention-attribution-split.md` | Trial-Retention Attribution Split: separa "tentou e não voltou" (produto) de "nunca tentou" (change management) para atribuir ativação vs. retenção (Snowflake GTM) |
+| `owner-led-activation-blitz.md` | Owner-Led Activation Blitz: programa de adoção liderado pelo owner com dashboard e demos ao vivo para ativação (Snowflake GTM) |
+| `agent-value-maturity-ladder.md` | Agent Value Maturity Ladder: escada de 4 estágios de valor com custos de troca — detecta wow-collapse e ausência de próximo estágio (Snowflake GTM) |
 
 | Documento | Cobre |
 |---|---|

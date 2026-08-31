@@ -1,0 +1,88 @@
+patterns:
+  - name: "Pull-Based Infrastructure on Pain"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/pain-signal-eval-progression-gate.md:28 — pull principle: eval maturity gated by pain signals, not calendar roadmap"
+      - "docs/canonical/pain-signal-eval-progression-gate.md:36 — approve only the smallest eval capability that addresses the observed pain"
+      - "docs/canonical/pain-signal-eval-progression-gate.md:40-51 — pain-signal-to-minimum-capability trigger table plus decision record"
+      - "docs/canonical/eval-investment-parity.md:58 — stated reconciliation: pain-signal gating governs which capability to build next"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:29 — harness as measured lifecycle, not one-time architecture; :52-62 — ROI threshold, quarterly cadence, One In One Out"
+      - "docs/canonical/symphony-trap-awareness.md:27 — anti-upfront-spec stance (push-based failure mode named); :33 — build then distill"
+      - "docs/system-of-record.md:198 — Pain-Signal Eval Progression Gate as active canonical (Level 2 precedence)"
+      - "NOT_FOUND — full-stack pull-based infrastructure pattern and minimal-launch sequencing; searched docs/decisions/, docs/canonical/, docs/evidence/, docs/analysis/, curriculum/, .opencode/skills/ for pull-based, on pain, minimal launch, reactive hardening (2026-08-30)"
+    justification: >-
+      The pull-on-pain investment philosophy exists at canonical depth but scoped to eval
+      capability and harness governance, not the full infrastructure stack. Missing: the
+      generalization to CI/CD, skills, progressive disclosure, memory, and interfaces, and
+      the launch-minimal sequencing that explicitly accepts the re-architecture tax.
+
+  - name: "Continuous Re-Architecture Budget"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/eval-investment-parity.md:43-53 — standing parity allocation (agents 50% / evals 50%) as explicit accepted sprint budget; analogous standing-allocation rule, different target track"
+      - "docs/canonical/eval-investment-parity.md:56 — halved builder capacity accepted as an explicit decision"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:60 — quarterly review cycle and One In One Out rule governing harness re-architecture"
+      - "docs/canonical/garbage-collection-day-meta-loop.md:48 — weekly GC Day working session; :54 — cadence non-negotiable under feature pressure, time-boxed"
+      - "docs/canonical/model-agnostic-agent-vm-harness.md:36-37 — design constraint: absorb model waves without rewrites; :79 — fleet swaps by config change, not rewrite"
+      - "docs/system-of-record.md:230, :234 — Deferred-Ledger Agentic Work and Carry-Debt Sunset Gate as active canonicals for deferred rework"
+      - "NOT_FOUND — 60-70/30-40 split, technology-wave watchlist, PRD-drift audit; searched docs/, curriculum/, .opencode/, READMEs for 60-70, 30-40, portfolio split, wave watchlist, watchlist, PRD drift, drift audit; only the source package matches (2026-08-30)"
+    justification: >-
+      Standing capacity-allocation rules exist (parity for the eval track; GC Day and the
+      quarterly lifecycle as re-investment cadences; debt ledgers for deferred rework), and
+      the repo's canonical stance on churn is to avoid rewrites via the model-agnostic
+      harness. Missing: the feature-vs-re-architecture portfolio split, the wave watchlist,
+      and the PRD-drift audit with the 80%-persistence claim.
+
+  - name: "LLM-Classified Log Taxonomy"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    evidence:
+      - "docs/canonical/3-layer-evaluation-architecture.md:45 — Layer 2 Semantic/LLM-as-Judge defined; :82 — LLM-as-Judge with rubric as the quality-surface mechanism"
+      - "docs/canonical/failure-pattern-classification-loop.md:31-33 — observe-classify-build-verify classification loop; :54-63 — root cause taxonomy with class-to-surface mapping"
+      - "docs/canonical/eval-dashboard-primary-detection-surface.md:50 — dashboard makes pain signals visible; :77 — anomaly alerts calibrated per layer"
+      - "docs/canonical/production-contact-training-loop.md:64-66 — harvesting real production interactions into the growing corpus (data source precedent)"
+      - "docs/system-of-record.md:191 — semantic-topic-bucketing (topic grouping for context retention; different object)"
+      - "docs/system-of-record.md:46 — analyze-and-improve skill: LLM extraction/classification pipeline with model tiering (tooling precedent)"
+      - "NOT_FOUND — hierarchical demand taxonomy over user question logs and feature-gap radar; searched docs/canonical/, docs/analysis/, curriculum/, .opencode/ for log taxonomy, question log, battle card, demand taxonomy; only source-package matches (2026-08-30)"
+    justification: >-
+      LLM classification mechanics exist as canonical (LLM-as-Judge layer, classification
+      loops, detection dashboards) and production logs are harvested for eval grounding, but
+      every existing instrument classifies agent behavior or failures. Missing: the reframe
+      of question logs as a demand-side taxonomy instrument with a feature-gap radar and
+      cost-engineered classification at scale.
+
+  - name: "Gap-to-Content Feedback Circuit"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - "docs/canonical/on-policy-rollout-feedback-loop.md:41 — scored prefixes fed back as update targets (prompt rules, skills, eval cases, memory policy)"
+      - "docs/canonical/production-contact-training-loop.md:37 — expose, harvest, feed back as updates, redeploy, repeat; :39-54 — assembled daily loop; :69-75 — declared missing pieces"
+      - "docs/canonical/confidence-gated-continual-learning.md:32 — four-stage detect-suggest-review-deploy loop, confidence-gated (closest structural analog)"
+      - "docs/canonical/production-failure-regression-flywheel.md:28 — production failures become durable eval regression cases"
+      - "docs/canonical/qa-to-backlog-feedback-loop.md:30-44 — capture, triage, convert, return-to-board; :57-59 — structured-conversion gap declared"
+      - "docs/system-of-record.md:46 — analyze-and-improve: automated knowledge-to-content pipeline for the repo itself"
+      - "NOT_FOUND — enablement-content generation (battle cards) fed back as agent knowledge and closure confirmation; searched docs/, curriculum/, .opencode/ for battle card, enablement, gap-to-content, feedback circuit; only source-package matches (2026-08-30)"
+    justification: >-
+      Multiple gap-to-improvement feedback circuits exist as canonical (on-policy loop,
+      production-contact loop, confidence-gated continual learning, regression flywheel,
+      QA-to-backlog), but the update artifacts are eval cases, policies, or backlog items.
+      Missing: the demand-side trigger from classified logs, the generated enablement-content
+      artifact, the feed-back channel into agent knowledge, and gap-closure confirmation.
+
+  - name: "Agent Value Maturity Ladder"
+    classification: "Missing"
+    integration_value: "Medium"
+    evidence:
+      - "NOT_FOUND — value-stage model, switching-cost ladder, habituation listener, staged capability roadmap; searched docs/decisions/, docs/canonical/, docs/evidence/, docs/analysis/, curriculum/, .opencode/, READMEs for maturity ladder, value ladder, value stage, switching cost, four-stage, hyper-personaliz, wow, habitua (2026-08-30); matches only in the source package or cross-domain"
+      - "docs/canonical/energy-value-chain-spread-analysis.md:90 — switching costs in energy-market analysis (different domain, not agent products)"
+      - "docs/canonical/autonomy-curriculum-sampling.md:41, :60 — nearest ladder, wrong object (agent autonomy phases observe-assist-own, not product value stages)"
+      - "docs/canonical/measured-harness-evolution-lifecycle.md:29 — component lifecycle progression (different object)"
+      - "docs/system-of-record.md:351-359 — eval maturity phases analysis (maturity of evals, not agent product value)"
+      - "README.md:34 — audience (business people) confirms the value/adoption dimension has a home but no content"
+    justification: >-
+      Agent-product value stages as an adoption and lock-in strategy exist in no form in the
+      repository. The staged-progression shape exists only for other objects (agent autonomy,
+      harness components, learner levels, eval maturity). The wow-collapse habituation signal
+      and the switching-cost ladder are absent entirely.

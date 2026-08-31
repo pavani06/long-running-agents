@@ -1,0 +1,86 @@
+meta:
+  type: artifact-manifest
+  date: '2026-08-30'
+  source_slug: gtm-ai-agents-lessons-from-deploying-to-6000-users
+  classification_file: docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-classification.yaml
+artifacts:
+  canonical_docs:
+  - path: docs/canonical/workflow-derived-golden-question-set.md
+    pattern: Workflow-Derived Golden Question Set
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/quality-over-coverage-trust-scoping.md
+    pattern: Quality-Over-Coverage Trust Scoping
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/retention-gated-phased-rollout.md
+    pattern: Retention-Gated Phased Rollout
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/centralized-data-plane-inherited-rbac.md
+    pattern: Centralized Data Plane with Inherited RBAC
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/human-review-staged-workflow-automation.md
+    pattern: Human-Review Staged Workflow Automation
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/pull-based-infrastructure-on-pain.md
+    pattern: Pull-Based Infrastructure on Pain
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/continuous-re-architecture-budget.md
+    pattern: Continuous Re-Architecture Budget
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/gap-to-content-feedback-circuit.md
+    pattern: Gap-to-Content Feedback Circuit
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/llm-classified-log-taxonomy.md
+    pattern: LLM-Classified Log Taxonomy
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/trial-retention-attribution-split.md
+    pattern: Trial-Retention Attribution Split
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/owner-led-activation-blitz.md
+    pattern: Owner-Led Activation Blitz
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/agent-value-maturity-ladder.md
+    pattern: Agent Value Maturity Ladder
+    classification: Missing
+    priority: P0
+  skills:
+  - path: .opencode/skills/trial-retention-attribution-split/SKILL.md
+    pattern: Trial-Retention Attribution Split
+    classification: Missing
+  - path: .opencode/skills/agent-value-maturity-ladder/SKILL.md
+    pattern: Agent Value Maturity Ladder
+    classification: Missing
+  exercises:
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split.md
+    pattern: Trial-Retention Attribution Split
+    classification: Missing
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder.md
+    pattern: Agent Value Maturity Ladder
+    classification: Missing
+  examples: []
+skipped:
+  already_exists:
+  - pattern: Skill Library as Instruction-Overflow Valve
+    evidence: docs/canonical/resolver-based-context-progressive-disclosure.md:22-28 + .opencode/skills/
+      (33 skills implementadas)
+  better_implementation: []
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 12
+    skills: 2
+    exercises: 2
+    examples: 0
+  notes:
+  - 'Owner-Led Activation Blitz: sem skill/exercise (org-change, nao agent-executavel); canonical cobre'
+  - Canonicals em PT-BR (decisao do operador) vs corpus majoritariamente EN

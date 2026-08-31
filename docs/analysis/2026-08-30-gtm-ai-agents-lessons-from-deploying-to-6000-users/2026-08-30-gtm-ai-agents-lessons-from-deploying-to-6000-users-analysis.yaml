@@ -1,0 +1,174 @@
+meta:
+  title: "Knowledge Extraction: GTM AI Agents — Lessons from Deploying to 6,000 Users (Snowflake)"
+  source: 'Raw-Knowledge/sources/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users.md'
+  date: '2026-08-30'
+  type: 'analysis'
+frameworks:
+  - name: "Quality is P minus one"
+    components:
+      - "Quality is one priority level before P0 — a precondition, not a competing priority"
+      - "Justified by non-determinism: user trust earned extremely hard, lost overnight"
+      - "Many AI projects fail exactly on this principle"
+  - name: "Trust economics of a free-form chatbot"
+    components:
+      - "Chatbot accepts any question; the first ~5 questions decide whether users return"
+      - "Asymmetric recovery: 10x more effort to win users back, if ever possible"
+      - "Launch surface must be engineered so first five questions land in the high-accuracy zone"
+  - name: "Quality-over-coverage principle"
+    components:
+      - "Answer 50 questions at 95% accuracy instead of 100 at 70%"
+      - "High-accuracy posture produces trust and pull ('can I get more of that?')"
+      - "Corollary: 60% of data added 6-7 months post-launch; coverage grows after trust"
+  - name: "Question-set-first evaluation"
+    components:
+      - "Extract the sales process into a spreadsheet; write 150 questions sellers will actually ask"
+      - "Question set derived from the real workflow, independent of connected data inventory"
+      - "First run at 50% accuracy made the quality gap measurable pre-launch"
+  - name: "Phased launch model with explicit gates"
+    components:
+      - "Pilot: prove accuracy/quality with AI-native early adopters; sand rough edges over weeks"
+      - "Beta (10%, ~600 people): prove MVP via request-concentration clustering + retention"
+      - "GA gate: >70% weekly-active retention rate"
+      - "GA to 6,000 users only after accuracy, coverage, and retention all proven"
+  - name: "Activation vs. retention attribution split"
+    components:
+      - "Tried and did not return → product problem (owned by product team)"
+      - "Never tried → change-management problem, not product fault"
+      - "Prevents misattributing activation failure to product quality (only 20% had tried at week 2)"
+  - name: "Change management as post-launch engineering discipline"
+    components:
+      - "Months-long activation process consuming 60-70% of owner time"
+      - "Mechanics: demos in sales meetings, adoption dashboards by team, publicized leading teams, sales-leader sponsorship"
+      - "Counterfactual: without it, product at roughly half of current usage"
+  - name: "Collapsing wow factor"
+    components:
+      - "Launch-era rockstar status decays within months as capability becomes habit then baseline"
+      - "Users return with frustrations and comparisons to other AI products"
+      - "Posture: 'every time people are happy, you should be paranoid' — plan the next reveal"
+      - "Standing still at any stage invites disruption within 1-2 months; switching costs near zero"
+  - name: "Four-stage GTM value maturity model"
+    components:
+      - "Stage 1 — Talk to your data: democratization, escape dashboards and analyst queues"
+      - "Stage 2 — Automate my workflows: MCP integrations turn assistant into orchestrator (inbox/Slack monitoring, Gmail drafts, outreach)"
+      - "Stage 3 — Team empowerment: teams build skills, custom dashboards, deploy apps/automations/alerts; escapes IT backlog"
+      - "Stage 4 — Hyper-personalization: per-seller and per-customer personalization with living context"
+  - name: "Build-launch-learn over perfect-architecture acquisition"
+    components:
+      - "Enterprises stall purchasing the perfect architecture instead of building/launching/learning"
+      - "Counter-example: launched to 6,000 with 9 pages of instructions and Google-Doc versioning"
+      - "Infrastructure (CI/CD, eval, skills, progressive disclosure) added reactively on real pain"
+  - name: "Steady-state portfolio split: features vs. re-architecture"
+    components:
+      - "60-70% of sprint work on features and quality; 30-40% on re-architecting for new technology"
+      - "Current architecture still matches ~80% of the original PRD despite churn"
+      - "Waiting compounds competitive loss: 3-4 months behind also means fewer customers"
+  - name: "Log-driven feedback loop model"
+    components:
+      - "LLM classification of 1.2M questions (40k/week) into topic taxonomy without breaking the bank"
+      - "Feature-gap radar: real-time view of unanswered or poor-quality areas (repeats, swearing at agent)"
+      - "Sales-enablement goldmine: replaces ~100 seller interviews/week; battle cards generated in minutes from Confluence/Jira/Slack/PRDs"
+      - "Org matchmaking: logs reveal teams targeting similar accounts unknowingly"
+      - "Compounding: first features hard, next easy; logs unlock hockey-stick exponential"
+patterns:
+  - name: "Workflow-derived golden question set"
+    problem: "Eval sets built from connected data test coverage, not the job to be done"
+    mechanism: "Extract real sales process to spreadsheet; write 150 questions sellers will ask regardless of connected data; run agent pre-launch; score (50%) becomes quality gate"
+  - name: "Gated phased rollout (pilot → 10% beta → GA)"
+    problem: "Non-deterministic system cannot be safely exposed to the whole org at once"
+    mechanism: "Pilot with AI-native users sands edges; 10% beta validates MVP via request-concentration clustering and >70% weekly-active retention as GA gate"
+  - name: "Centralized data plane with inherited RBAC"
+    problem: "First/ third-party data siloed across SaaS tools; per-integration governance unmanageable"
+    mechanism: "All data (Salesforce, call transcripts) unified in one platform; agents on no-code platform (Co-work) inherit role-based access controls; zero-code deploy, out-of-the-box UI and guardrails"
+  - name: "Skill library as instruction-overflow valve"
+    problem: "Business processes stop fitting inside agent instructions"
+    mechanism: "Extract processes into skill library (~20 skills); apply progressive disclosure when orchestration instructions also hit limits"
+  - name: "MCP connection wave for orchestration"
+    problem: "Data Q&A alone tops out at the talk-to-your-data value stage"
+    mechanism: "5-6 MCP connections integrate external systems; agent monitors inbox + Slack, drafts responses into Gmail, seller reviews and sends; outreach automated"
+  - name: "Post-launch infrastructure hardening sequence"
+    problem: "Google-Doc instruction versioning does not survive scale"
+    mechanism: "Add CI/CD, then eval infrastructure (unit + routing tests), then skills, then progressive disclosure, then user memory and task scheduling, then Slack interface — each when its absence becomes the binding constraint"
+  - name: "LLM-classified log taxonomy at scale"
+    problem: "40k questions/week cannot be read by humans; interviews sample tiny fractions"
+    mechanism: "LLM classification pipeline yields hierarchical topic breakdown (category → subcategory → examples) shared by feature-gap detection, enablement generation, and matchmaking"
+  - name: "Gap-to-content feedback circuit"
+    problem: "Knowledge gaps after product launches traditionally need ~100 seller interviews/week"
+    mechanism: "Query classified logs for emerging topics → ingest Confluence/Jira/Slack/PRDs → generate battle cards in minutes → feed back into agent"
+operational_lessons:
+  - lesson: "Quality-first scope (50 questions at 95%) beat breadth; users pulled expansion organically"
+    context: "Initial 150-question eval run scored 50% accuracy pre-launch; team chose narrow-and-accurate over broad-and-mediocre"
+  - lesson: "60% of data connected post-launch over 6-7 months"
+    context: "Starting small protected trust; expansion followed demand rather than preceding it"
+  - lesson: "Retention >70% of weekly actives as the GA gate"
+    context: "10% beta with ~600 users proved workflow fit beyond novelty usage"
+  - lesson: "Change management roughly doubled the usage trajectory"
+    context: "60-70% of owner time in demos, adoption dashboards, and leader sponsorship for months post-GA; counterfactual stated as half of current usage"
+  - lesson: "Only 20% of the org tried the product two weeks post-GA"
+    context: "Trial-vs-retention split reframed management disappointment from product failure to activation problem"
+  - lesson: "Logs became the primary product instrument"
+    context: "Real-time feature-gap detection, battle-card generation in minutes, cross-team matchmaking — replacing ~100 seller interviews/week"
+  - lesson: "Sellers self-adopted staged orchestration workflows"
+    context: "Agent monitors inbox/Slack, drafts to Gmail, human reviews and sends"
+  - lesson: "Wow-factor collapse arrived 4-6 months post-launch"
+    context: "Rockstar status decayed into frustration as capability became baseline expectation"
+  - lesson: "Architecture persisted at ~80% despite continuous re-architecture"
+    context: "30-40% of sprint work absorbed new tech (skills, MCP, progressive disclosure) without invalidating the original PRD"
+  - lesson: "GTM teams self-served into building team skills, dashboards, apps"
+    context: "Historical IT-backlog/SaaS-procurement dependency removed by the empowerment stage"
+tradeoffs:
+  - decision: "Quality over coverage at launch"
+    benefit: "First-five-questions trust; organic pull for expansion"
+    cost: "Deliberately narrow scope; 60% of data deferred to post-launch"
+  - decision: "Phased launch (pilot → 10% beta → GA) with retention gate"
+    benefit: "Earns the first five questions without burning bridges"
+    cost: "Slower rollout; gate discipline can delay GA"
+  - decision: "Build fast with today's stack (Google Doc versioning, 9 instruction pages)"
+    benefit: "Learning at 6,000-user scale months earlier"
+    cost: "Permanent 30-40% re-architecture tax; reactive post-launch infrastructure"
+  - decision: "No-code platform + unified data plane"
+    benefit: "RBAC inheritance, zero-code deployment, out-of-the-box UI/guardrails/curation"
+    cost: "Strategic coupling to Snowflake Co-work as builder and customer zero"
+  - decision: "LLM log classification at 40k questions/week"
+    benefit: "Real-time taxonomy, enablement automation, matchmaking"
+    cost: "Engineering effort to run at scale without breaking the bank"
+  - decision: "Heavy change-management time investment (60-70%)"
+    benefit: "Approximately 2x usage trajectory"
+    cost: "Senior product-owner time diverted from feature work for months"
+failure_patterns:
+  - pattern: "Trust collapse on bad first contact"
+    cause: "Free-form chatbot exposed before accuracy zone engineered; users bounce off first five questions"
+    mitigation: "Quality-over-coverage scoping, phased launch, workflow-derived eval set"
+  - pattern: "Coverage-first trap"
+    cause: "Attempting 100 questions at 70% accuracy shoots the product in the foot"
+    mitigation: "50-at-95 posture; expand coverage only after launch"
+  - pattern: "Activation failure misattributed to product"
+    cause: "Product works but 80% of org never tried it; management reads low usage as product failure"
+    mitigation: "Trial-vs-retention attribution split; months of demos, dashboards, leader sponsorship"
+  - pattern: "Wow-factor collapse / stagnation disruption"
+    cause: "Stopping at the first value stage; raised expectations become baseline; near-zero switching costs"
+    mitigation: "Continuous iteration through the four-stage maturity model; institutionalized paranoia"
+  - pattern: "Perfect-architecture paralysis"
+    cause: "Endless framework testing and waiting for maturity instead of building/launching/learning"
+    mitigation: "Launch with minimal viable architecture; budget 30-40% for continuous re-architecture"
+  - pattern: "Agent-instruction overload"
+    cause: "Business processes and then MCP orchestration rules exceed instruction limits"
+    mitigation: "Skill library extraction plus progressive disclosure"
+  - pattern: "Manual instruction versioning at scale"
+    cause: "Google-Doc-managed agent instruction versions for a 6,000-user deployment"
+    mitigation: "CI/CD plus eval infrastructure (unit tests, routing tests) added post-launch"
+synthesis: >
+  The unnamed through-line is that trust is the unit of account for non-deterministic
+  systems: the eval-first question set, quality-over-coverage scoping, phased rollout
+  with retention gates, and the change-management blitz all serve one function —
+  engineering the first five questions to land, because trust asymmetry (hard to earn,
+  10x to recover) dominates a chatbot surface. The lifecycle also inverts classical
+  infrastructure order: launch with almost none (Google Docs, 9 instruction pages) and
+  add CI/CD, evals, skills, and progressive disclosure reactively on pain —
+  infrastructure is pull-based, purchased with a permanent 30-40% re-architecture tax,
+  survivable because 80% of the core design persists. The classified-log taxonomy is
+  the hidden flywheel converting a Q&A product into a platform: one instrument serves
+  product (feature gaps), enablement (battle cards), and organization (matchmaking),
+  resonating with production-contact training loops and evals-as-brakes. Finally, the
+  four-stage maturity model (democratize → orchestrate → empower → personalize) doubles
+  as a switching-cost ladder: each stage raises dependence on the platform, which is
+  the strategic answer to the collapsing wow factor.

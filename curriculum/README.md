@@ -115,6 +115,8 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-constraint-failure-decision-rule.md
 │   │   │   ├── exercise-autonomy-curriculum-sampling.md
 │   │   │   ├── exercise-magnitude-direction-verifier-split.md
+│   │   │   ├── exercise-09-trial-retention-attribution-split.md
+│   │   │   ├── exercise-10-agent-value-maturity-ladder.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md

@@ -3,7 +3,7 @@ title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
 type: curriculum-core-concept
 aliases: ["evolucao harness", "harness lifecycle", "maturidade harness", "simplificacao arquitetural"]
 tags: [curriculo-conteudo, conceitos-core, harness-evolution, ciclo-de-vida-do-harness, manutenibilidade, reducao-de-complexidade, divida-tecnica, otimizacao-de-custo, simplificacao-arquitetural, evolucao-continua, governanca-tecnica]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/pull-based-infrastructure-on-pain|Pull-Based Infrastructure on Pain]]", "[[docs/canonical/human-review-staged-workflow-automation|Human-Review Staged Workflow Automation]]", "[[docs/canonical/centralized-data-plane-inherited-rbac|Centralized Data Plane with Inherited RBAC]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10: Agent Value Maturity Ladder]]"]
 last_updated: 2026-06-16
 ---
 # 🧬 Harness Evolution: Construir, Medir, Simplificar, Remover
@@ -447,6 +447,14 @@ eval_maturity_gate:
   operating_cost: "1h/semana de análise + painel mensal"
   review_date: "2026-07-01"
 ```
+
+### O gate vale para a stack inteira: pull-based infrastructure
+
+O pain-signal gate acima governa **qual capacidade de eval construir**. O caso Snowflake generaliza o princípio para a infraestrutura toda: **adicionar cada peça de infraestrutura somente quando sua ausência vira o binding constraint sentido em produção** — nunca por especulação de roadmap. O stack mínimo de lançamento do caso-fonte: 9 páginas de instruções de agente, um par de ferramentas de analista, views semânticas, um serviço de busca e versionamento de instruções num Google Doc. Nada de CI/CD, evals, skills ou progressive disclosure no dia um — cada uma dessas peças chegou **depois**, na ordem em que a ausência doeu em escala.
+
+A sequência de hardening é **descoberta, não planejada**: versionamento em Google Doc doendo em escala puxa CI/CD para instruções; regressões invisíveis entre versões puxam a infraestrutura de eval; instruções crescendo além do razoável puxam skills; o limite da janela de instrução puxa progressive disclosure; usuários voltando sem contexto puxam memory e task scheduling; demanda por canais onde o trabalho acontece puxa interfaces além do chat. Lançar mínimo e aprender em escala é o antídoto direto ao modo de falha push-based do Symphony Trap — comprar a arquitetura perfeita antes de lançar entrega a liderança de aprendizado (e de logs) a quem lançou mínimo: os padrões de taxonomia de logs e circuito gap-to-content (vistos em [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]) **dependem desse volume**.
+
+O trade-off é explícito e aceito: o lançamento mínimo gera um **imposto permanente de re-arquitetura** (30-40% de capacidade — ver [[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]]), porque cada endurecimento tardio retrabalha o que o stack mínimo improvisou. E a dor precisa estar **visível** — o que exige contato real com produção, não dashboards de demo. Para o padrão completo: [[docs/canonical/pull-based-infrastructure-on-pain|Pull-Based Infrastructure on Pain]].
 
 ### Closed-loop capability hardening
 
@@ -1090,6 +1098,87 @@ Esta tabela substitui a pergunta binária "o agente está pronto?" pela pergunta
 - Depois: 60 consultas de status (Own, zero supervisão) + 60 recomendações com alergias (Assist, aprovação humana) + 20 recomendações sem restrições (Assist, aprovação humana) + 10 reembolsos (Observe, humano faz tudo). Total de revisões humanas: 80 em vez de 150. Redução de 47% no esforço de supervisão sem aumento de risco.
 
 O Fernando não removeu o humano do loop. Ele colocou o humano exatamente onde o agente ainda precisa dele — e em nenhum outro lugar.
+
+### O degrau externo: monitor → draft → review → send
+
+A progressão Observe → Assist → Own descreve a autonomia **dentro** do sistema. O caso Snowflake nomeia o degrau que cruza a fronteira para fora: automação de **ação externa com envio irreversível propriedade do humano**. O fluxo: o agente monitora inbox e Slack carregando perguntas de clientes sobre produtos → rascunha a resposta em Gmail (sem enviar) → o vendedor revisa o rascunho → **o humano envia**. Sem esse degrau, times ou estagnam no data Q&A (valor baixo, risco baixo) ou queimam confiança com envios autônomos prematuros — o falso dilema "insight ou ação".
+
+Duas propriedades carregam o padrão. Primeiro, **o envio irreversível permanece humano como exceção permanente**, não como fase transitória a ser "otimizada" — o review é o freio de segurança da classe de ação irreversível. Segundo, **usuários auto-adotaram o fluxo em estágios como trust builder**: cada estágio de revisão constrói a confiança que justifica o seguinte — é a fase Assist aplicada a ações externas, e é literalmente o estágio 2 da escada de valor vista adiante neste módulo. O follow-up automatiza em estágios posteriores, cada um avançando só com a confiança do anterior conquistada.
+
+Para o padrão completo: [[docs/canonical/human-review-staged-workflow-automation|Human-Review Staged Workflow Automation]].
+
+---
+
+## 📣 Owner-Led Activation Blitz: A Ativação como Entregável de Engenharia
+
+Até aqui o módulo evoluiu componentes (BUILD → REMOVE) e a autonomia do agente (Observe → Assist → Own). Falta a terceira fronteira: **o produto pode funcionar perfeitamente e ainda travar porque ninguém o experimentou**. O caso Snowflake (GTM assistant, 6.000 usuários) é explícito: duas semanas após o GA, só 20% da organização havia tentado o assistente — o gargalo não era qualidade, era ativação.
+
+O padrão de falha tem duas faces. Primeiro, **ativação como afterthought**: o lançamento termina no deploy e ninguém aloca capacidade para fazer os usuários experimentarem; o gap só aparece semanas depois, quando a leitura equivocada de "uso baixo" já se instalou — é o ramo never-tried do [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]] (visto em [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]). Segundo, **patrocínio difuso como anti-padrão**: "todo mundo tenta um agente no seu processo", sem dono nominal e sem programa deliberado, gera ruído, não adoção — a mesma sombra negativa do piloto sem target org design.
+
+A solução trata a ativação como **entregável de engenharia do lançamento**, custeada com o tempo do owner do produto:
+
+| Componente | Função |
+|---|---|
+| Programa de live demos | Owner demonstra o agente ao vivo em reuniões de equipe — o momento das "primeiras 5 perguntas" acontece com suporte |
+| Dashboard de adoção por equipe | Uso segmentado por time; times líderes publicizados |
+| Canal de patrocínio de líderes | Líderes empurram uso dentro de cada equipe |
+| Rankings públicos de equipes | Pressão competitiva entre times |
+
+A propriedade estrutural que distingue o blitz do patrocínio difuso: **há um dono, com orçamento de tempo nominal e mensurável** — 60-70% do tempo do owner por meses, não um evento de lançamento. O efeito decai sem a próxima onda de demos e dashboards, portanto o programa é contínuo; no caso Snowflake, a trajetória de uso foi ~2x vs. o contrafactual sem ativação. É mobilização top-down com dono e número — o vocabulário de ownership unívoco de [[docs/canonical/owner-of-no-role-design|Owner of No Role Design]] estendido de artefatos para programas de adoção.
+
+**Conexão com o ciclo:** a fase STABILIZE mede a efetividade real de componentes; o blitz mede e move a efetividade real do lançamento. O gatilho é o attribution split: trial rate baixo → blitz (change management); retorno baixo entre quem tentou → fix de produto, não demos. O blitz enche o topo do funil; a escada de valor (abaixo) converte esse uso em retenção e dependência.
+
+**Checklist: Activation Blitz Gate**
+- [ ] O diagnóstico veio do attribution split (ramo never-tried), não de impressão de "uso baixo"
+- [ ] Existe um owner nominal do programa de ativação, com orçamento de tempo declarado (ex.: 60-70% por meses)
+- [ ] Dashboard de adoção segmentado por equipe está no ar antes da primeira onda de demos
+- [ ] Patrocínio de líderes foi garantido por equipe-alvo, não difuso
+- [ ] O programa é contínuo: a próxima onda de demos e dashboards está agendada antes do efeito da atual decair
+
+Para o padrão completo: [[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]].
+
+---
+
+## 🪜 Agent Value Maturity Ladder: Quando o Valor Percebido Evolui
+
+A progressão seguinte é a do **valor percebido pelo usuário do produto** — e ela tem um inimigo que as outras não têm: o fator wow colapsa. O que era impressionante no lançamento vira expectativa mínima meses depois, porque usuários retornam comparando o agente com os outros produtos de IA que usaram. Simultaneamente, custos de troca quase nulos deixam o usuário sair em 1-2 meses se a plataforma parar no tempo: o produto "parece pior" sem ter piorado.
+
+O *Agent Value Maturity Ladder* responde com um roadmap de capacidades em estágios que funciona simultaneamente como **escada de switching costs**:
+
+| Estágio | Valor para o usuário | Switching cost construído |
+|---|---|---|
+| 1. Talk to your data | Democratização: escapar de 1.000 dashboards e filas de 2 semanas com analistas | Hábito de dados na plataforma |
+| 2. Automate my workflows | Ações, não só respostas — monitora, rascunha, humano revisa e envia | O trabalho diário do usuário tece o produto |
+| 3. Team empowerment | Times constroem os próprios skills, dashboards, apps, alertas | Artefatos do time vivem na plataforma |
+| 4. Hyper-personalization | Por vendedor e por cliente, com contexto vivo | Memória/contexto acumulado irreplicável |
+
+Quatro regras operacionais:
+
+1. **Paranoia institucionalizada**: "toda vez que as pessoas estão felizes, você deveria estar paranoico" — converter o wow-collapse em próximos estágios planejados, não em pânico reativo.
+2. **Cadência de 1-2 meses por estágio** — o próximo "showing" é planejado antes de o atual virar baseline.
+3. **Listener de habituação** — comparações explícitas dos usuários com outros produtos de IA são o sinal de que o estágio atual virou baseline. Habituação não é retenção: o usuário pode voltar toda semana (retido) e ainda assim habituado (o wow morreu, o churn está cronometrado).
+4. **Cada estágio pressupõe a confiança do anterior** — pular estágios queima a confiança que a escada depende.
+
+A tese de lock-in: cada estágio eleva a dependência do usuário na plataforma — switching cost estratégico que novidade crua não conquista. A confiança ganha em cada estágio compra o direito de iterar no seguinte. Note o encaixe com o resto do módulo: o estágio 2 (automatização com revisão humana no envio irreversível) é o [[docs/canonical/human-review-staged-workflow-automation|Human-Review Staged Workflow Automation]] visto de cima; o estágio 3 (times construindo skills) é o [[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver Skillify Capability Pipeline]] como superfície de empoderamento.
+
+**As três progressões lado a lado:**
+
+| Dimensão | Componentes de harness | Autonomia do agente | Valor de produto |
+|---|---|---|---|
+| **O que evolui** | Peças de engenharia (Context Loader, Evaluator) | Quem decide e age (humano vs. agente) | O que o usuário recebe (escada de valor) |
+| **Progressão** | BUILD → STABILIZE → SIMPLIFY → REMOVE | Observe → Assist → Own | Talk to data → Automate → Empower → Personalize |
+| **Gatilho de avanço** | Shadow test mostra componente desnecessário | Readiness gates (success/repair rate) | Listener de habituação + cadência de 1-2 meses |
+| **Gatilho de regressão** | Incidente prova que a proteção era necessária | Métricas caem abaixo do threshold | Comparações com outros produtos / churn |
+| **Erro de objeto comum** | — | — | Confundir com a escada Observe→Assist→Own: aquela mede autonomia de execução do agente; esta mede valor percebido pelo usuário |
+
+**Checklist: Value Ladder Gate**
+- [ ] O roadmap atual nomea em qual estágio da escada o produto está e qual é o próximo degrau
+- [ ] Nenhum item do roadmap shipa estágio k sem que os degraus 1..k-1 estejam shippados (pular degrau é dívida de confiança)
+- [ ] Existe listener de habituação ativo (comparações e frustrações dos usuários chegam ao time antes do churn)
+- [ ] O próximo estágio está planejado dentro da cadência de 1-2 meses a partir do sinal de habituação
+- [ ] Envios irreversíveis do estágio 2 mantêm revisão humana (o degrau de automação não é autonomia plena)
+
+Para a auditoria de roadmap implementada em código (SKIPPED_STAGE, UNEARNED_STAGE, STALL_RISK): [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10]]. Para o padrão completo: [[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]].
 
 ---
 
@@ -2873,6 +2962,8 @@ ROI = R$ 3,000 / R$ 1,201.08 = 2.5x
 **[[docs/canonical/auth-coupled-memory-architecture|Auth-Coupled Memory Architecture]]** — Arquitetura de memória que acopla a persistência e recuperação de informações ao nível de autenticação do usuário: uma saudação pelo nome exige autenticação baixa, enquanto acessar dados sensíveis como documentos exige autenticação forte com verificação em múltiplos fatores. Veja o exercício em [[exercises/exercise-auth-coupled-memory|Exercise: Auth-Coupled Memory]].
 
 Este padrão adiciona uma dimensão de identidade ao harness evolution: componentes de memória auth-coupled também passam pelo ciclo BUILD→STABILIZE→SIMPLIFY→REMOVE, mas com o agravante de que o threshold de confiança do modelo não é o único critério — o nível de autenticação do usuário também determina o que pode ser simplificado ou removido.
+
+**[[docs/canonical/centralized-data-plane-inherited-rbac|Centralized Data Plane with Inherited RBAC]]** — A arquitetura de consolidação-e-herança que unifica os mecanismos de governança de dados de agente: em vez de N fontes × M agentes = N×M decisões manuais de acesso, os dados first-party e third-party são consolidados em uma plataforma única, o RBAC é definido **uma vez, no nível do data plane**, e todo agente deployado sobre ele **herda os controles automaticamente, com zero código de autenticação**. O [[docs/canonical/auth-coupled-memory-architecture|Auth-Coupled Memory]] (identidade como chave), o [[docs/canonical/regulated-data-boundary|Regulated Data Boundary]] (isolamento por tier) e o tagging de PII no catálogo passam a ser políticas definidas no plano e herdadas, em vez de reimplementadas por agente — postura de segurança consistente na frota e spawn de agentes novos sem gargalo de engenharia.
 
 ---
 

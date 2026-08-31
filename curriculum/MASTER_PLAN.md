@@ -100,6 +100,8 @@ koda-long-running-agents/
 │   │   ├── exercise-constraint-failure-decision-rule.md
 │   │   ├── exercise-autonomy-curriculum-sampling.md
 │   │   ├── exercise-magnitude-direction-verifier-split.md
+│   │   ├── exercise-09-trial-retention-attribution-split.md
+│   │   ├── exercise-10-agent-value-maturity-ladder.md
 │   │   └── solutions/
 │   └── koda-applications/
 │       └── nivel-3-koda.md
@@ -253,7 +255,7 @@ koda-long-running-agents/
 - [ ] Posso desenhar um sistema 3+ agentes do zero
 - [ ] Implementei coordenação baseada em arquivo
 - [ ] Entendo quando remover componentes de harness
-- [ ] Completei os 18 exercícios do Nível 3
+- [ ] Completei os 20 exercícios do Nível 3
 - [ ] Posso apoiar decisões arquiteturais do KODA
 
 ---

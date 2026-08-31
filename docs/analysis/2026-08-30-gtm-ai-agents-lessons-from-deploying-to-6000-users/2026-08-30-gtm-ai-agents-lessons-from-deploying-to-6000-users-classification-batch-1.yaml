@@ -1,0 +1,87 @@
+meta:
+  title: "Classification Batch 1: Reusable Agentic Patterns from GTM AI Agents — Lessons from Deploying to 6,000 Users (Snowflake)"
+  date: '2026-08-30'
+  type: 'classification'
+  batch: 1
+  source: "docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-patterns.yaml"
+patterns:
+  - name: "Workflow-Derived Golden Question Set"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - {file: "docs/canonical/business-outcome-first-eval-pipeline.md", line: 28, quote: "Invert the eval pipeline construction sequence: define business success first, then create golden answers from domain experts, then build the technical pipeline to compare agent outputs against business-aligned metrics."}
+      - {file: "docs/canonical/business-outcome-first-eval-pipeline.md", line: 55, quote: "Source ~200 real production queries from human agent logs (not synthetic queries). For each query, have a human domain expert author the expected correct response — the 'golden answer.'"}
+      - {file: "docs/canonical/business-outcome-first-eval-pipeline.md", line: 75, quote: "This enables evidence-based go/no-go deployment decisions: deploy when predicted deflection rate exceeds the business target, hold when it does not."}
+      - {file: "docs/canonical/domain-embedded-workflow-automation-wedge.md", line: 39, quote: "Domain eval seeds | Cases derived from observed work, including successful paths and exception paths"}
+      - {file: "docs/canonical/repeatable-agent-spot-check-set.md", line: 46, quote: "Choose 5-15 cases that cover the highest-value and highest-risk workflows."}
+      - {file: "docs/canonical/eval-driven-development-timeline.md", line: 37, quote: "Golden answers: domain experts author correct responses for the initial ~200 queries; build the living eval dataset with categorization taxonomy"}
+    justification: "Golden-answer machinery, workflow-derived eval seeds, and launch gating exist at canonical depth, but the repo's golden answers are sourced from production query logs (requires a running system). Missing mechanics: the pre-build authoring pass (~150 questions from the extracted workflow artifact before any data is connected), the workflow-extraction artifact as question source, and the recorded first-run accuracy baseline (the 50% pre-launch catch). Would slot as Step 0 of Business-Outcome-First Eval Pipeline and into the N4/KODA production curriculum."
+  - name: "Quality-Over-Coverage Trust Scoping"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - {file: "docs/canonical/evals-as-brakes.md", line: 32, quote: "Organizations respond to AI risk with the wrong dial: they slow down. ... Companies that go slow do so because they lack brakes (evals), not because slowness is safe"}
+      - {file: "docs/canonical/evals-as-brakes.md", line: 34, quote: "shipping velocity and safety are treated as independent dials"}
+      - {file: "docs/canonical/domain-embedded-workflow-automation-wedge.md", line: 43, quote: "Choose a workflow slice that operators already perform repeatedly and painfully."}
+      - {file: "docs/canonical/carve-out-pilot-hard-target.md", line: 41, quote: "Carve out one contained operating unit, install an agent in the standard harness as its operator (the 'AI CEO'), and make a hard P&L number the eval readout."}
+      - {file: "NOT_FOUND", line: 0, quote: "'trust' (case-insensitive) in docs/canonical/ — zero matches (2026-08-30; matches exist only in docs/analysis/ packages and docs/articles/). NOT_FOUND for accuracy-zone mapping, launch-scope cut, or post-launch coverage roadmap in docs/canonical/, curriculum/, .opencode/skills/."}
+    justification: "Quality-gated shipping (Evals-as-Brakes) and narrow-first slicing (wedge rules, carve-out containment) are the two existing halves. Missing reframe: scoping the user-facing launch surface by accuracy zone (50 questions at 95% vs 100 at 70), the trust-asymmetry economics (first ~5 questions, 10x recovery), the post-launch coverage roadmap, and demand-signal monitoring as the expansion trigger. No canonical doc frames trust as the unit of account for exposure scoping."
+  - name: "Retention-Gated Phased Rollout"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - {file: "docs/canonical/production-grounded-eval-sampling.md", line: 107, quote: "staged shadow tests, canaries, production metrics, rollback, and observation exceed the canary gate pattern"}
+      - {file: "docs/canonical/carve-out-pilot-hard-target.md", line: 66, quote: "exit: [scale-to-next-city, iterate-harness, kill]"}
+      - {file: "docs/canonical/autonomy-curriculum-sampling.md", line: 58, quote: "Readiness gates | Per-phase metrics that must pass before advancing lambda: task success rate, repair rate, unsafe-action rate, evaluator confidence"}
+      - {file: "docs/canonical/eval-to-production-correlation-tracking.md", line: 35, quote: "Production outcomes | Task success, complaints, escalations, support tickets, CSAT proxy, latency, cost, retention, or domain-specific success metrics"}
+      - {file: "NOT_FOUND", line: 0, quote: "'weekly-active', 'beta cohort', retention-gated GA, or request clustering in docs/canonical/, curriculum/, .opencode/skills/, docs/system-of-record.md — canonical 'retention' matches are memory/data retention (docs/canonical/semantic-topic-bucketing.md:23, :27) or telemetry purge timers (docs/plans/2026-06-18-obs-fase5-runtime-integration.md:1448-1504)."}
+    justification: "Staged rollout exists for infrastructure (shadow/canary/rollback) and pilots (carve-out with exit rule), with readiness gates on metrics. Missing the user-population axis: AI-native pilot cohort → 10% beta → GA gated on weekly-active retention (>70%) with request-concentration clustering defining must-have data. Retention appears only as a trackable outcome metric, never as a rollout gate."
+  - name: "Trial-Retention Attribution Split"
+    classification: "Missing"
+    integration_value: "Medium"
+    evidence:
+      - {file: "NOT_FOUND", line: 0, quote: "'attribution' in docs/canonical/ matches only token gap-cost attribution (docs/canonical/token-economics-gap-filling.md:33) and trace cost attribution (docs/system-of-record.md:202) — different axes. 'activation|adoption|trial' across docs/canonical/, curriculum/, .opencode/skills/, docs/system-of-record.md returns harness-adoption de-risking (docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis.md:144), HoP role activation, and feature_activation log fields (curriculum/06-knowledge-graphs/02-koda-feature-dependencies.md:1973) — none equivalent."}
+      - {file: "docs/canonical/eval-to-production-correlation-tracking.md", line: 22, quote: "Eval scores become false safety signals when they stop predicting user outcomes."}
+      - {file: "docs/canonical/qa-to-backlog-feedback-loop.md", line: 32, quote: "capture QA and review findings as structured observations, triage each finding for severity, blocker status, and ownership, convert actionable findings into vertical-slice issues or regression cases"}
+    justification: "The mechanism exists in no form: no per-user trial flag, no trial-vs-return diagnostic rule (tried-and-did-not-return → product problem; never-tried → change-management problem), no ownership routing of activation failures. The repo's attribution patterns attribute token/trace cost; its misattribution discipline is eval-vs-production. Adjacent ownership routing (QA-to-backlog) routes review findings, not activation diagnostics."
+  - name: "Owner-Led Activation Blitz"
+    classification: "Missing"
+    integration_value: "Low"
+    evidence:
+      - {file: "NOT_FOUND", line: 0, quote: "'live demo|demo program|adoption dashboard|per-team|sponsorship' across the repo — matches only in the GTM source package itself and docs/canonical/carve-out-pilot-hard-target.md:33 (sponsorship named as a FAILURE mode: 'Hackathon/use-case-sponsorship transformation: diffuse bottom-up effort with no target org design')."}
+      - {file: "docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification.md", line: 218, quote: "The repo is a curriculum and canonical pattern library, not an enterprise organization with inherited procurement, security review, or compliance gates."}
+      - {file: "docs/system-of-record.md", line: 231, quote: "owner-of-no-role-design.md | Design pattern Owner of No Role: cada artefato tem exatamente um dono, papéis são explícitos e não ambíguos (nearest name match; artifact ownership, not adoption campaigns — not equivalent)"}
+    justification: "No doc, skill, or curriculum material describes an owner-funded adoption program (60-70% owner time in demos, per-team adoption dashboards, publicized rankings, leader sponsorship). The repo is structurally a curriculum/pattern library, not an enterprise organization, and the Kavak carve-out canonical already covers org mobilization via top-down ownership. Only durable hook: a N4 case-study sidebar on the never-tried branch of the Trial-Retention Attribution Split."
+  - name: "Centralized Data Plane with Inherited RBAC"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - {file: "docs/canonical/auth-coupled-memory-architecture.md", line: 32, quote: "An auth-coupled memory architecture where memory storage, retrieval, and sensitivity gating are all keyed by identity."}
+      - {file: "docs/canonical/auth-coupled-memory-architecture.md", line: 36, quote: "Identity resolution as memory key: Every memory item is stored with an identity key (phone number, account ID, session token, or device fingerprint)."}
+      - {file: "docs/canonical/regulated-data-boundary.md", line: 32, quote: "A regulated data boundary is an architectural isolation pattern: a separate infrastructure tier handling regulated operations that is physically isolated from LLM compute."}
+      - {file: "docs/canonical/governance-context-injection-pii-prevention.md", line: 22, quote: "Agents access enterprise data catalogs containing PII (SSN, phone, address, credit card numbers, customer names) but the model has no awareness of which fields are sensitive."}
+      - {file: "docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-analysis.md", line: 186, quote: "The platform's no-code layer, deterministic compilation, and Ghostwriter all serve this persona shift"}
+      - {file: "NOT_FOUND", line: 0, quote: "'RBAC|role-based|data plane|zero-code' in docs/canonical/ — matches only in the GTM source package, docs/canonical/persona-based-documentation.md:5 (role-based DOCUMENTATION aliases; not equivalent), and the simpler-than-you-think analysis. 'MCP' — zero matches in docs/canonical/ (2026-08-30)."}
+    justification: "Agent data governance exists (identity-keyed access with confidence tiers, structural isolation boundary, data-catalog PII tagging) plus an analysis-level no-code adjacency. Missing the consolidation-and-inheritance architecture: unified first+third-party data platform, RBAC defined once at the plane, agents inheriting access controls automatically on zero-code deployment, fleet-consistent security posture. A unifying canonical would connect the three existing governance docs."
+  - name: "Skill Library as Instruction-Overflow Valve"
+    classification: "Already Exists"
+    integration_value: "Low"
+    evidence:
+      - {file: "docs/canonical/resolver-based-context-progressive-disclosure.md", line: 22, quote: "Monolithic instruction files degrade long-running agents. Every correction, preference, workflow, and domain rule gets loaded into every task, even when most of it is irrelevant. The result is token pressure, prompt interference, stale guidance, and context overflow."}
+      - {file: "docs/canonical/resolver-based-context-progressive-disclosure.md", line: 24, quote: "The pattern solves instruction bloat by replacing always-on global context with resolver-driven, task-specific disclosure."}
+      - {file: "docs/canonical/resolver-based-context-progressive-disclosure.md", line: 28, quote: "Move rarely universal instructions out of the base prompt and into skills or documents that the resolver loads only when the task matches their trigger contract."}
+      - {file: "docs/canonical/skill-resolver-skillify-capability-pipeline.md", line: 28, quote: "Promote repeated agent work through a capability pipeline. A workflow is accepted as a real capability only after it becomes a routable skill with resolver metadata, tests, evals, storage expectations, and smoke evidence."}
+      - {file: "docs/system-of-record.md", line: 33, quote: "Skills table listing the operational library; .opencode/skills/ directory listing 2026-08-30 = 33 entries (implemented, not just documented; table spans :33-:65)."}
+      - {file: "docs/system-of-record.md", line: 186, quote: "Ledger explícito para calcular custo de prompt, reservas e saldo de tokens por passo (size-pressure instrumentation)."}
+      - {file: "NOT_FOUND", line: 0, quote: "'MCP' in docs/canonical/ — zero matches; no doc frames a hard instruction-size limit as the skill-extraction trigger (repo frames pressure as token cost)."}
+    justification: "The valve mechanism is documented at canonical depth (instruction bloat → extract to skills → progressive disclosure on trigger), instrumented (token budget ledger), implemented (.opencode/skills/ with 33 skills), and exceeds the source account in places (trigger contracts, negative triggers, skillify compliance stages). The only GTM deltas are contextual, not mechanical: hard instruction-window limits as extraction trigger and MCP orchestration-rule overflow (repo has zero MCP usage). Marginal enrichment is narrative (Snowflake 9-pages-to-skill-library trajectory) for the resolver/skillify canonicals."
+  - name: "Human-Review Staged Workflow Automation"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    evidence:
+      - {file: "docs/canonical/autonomy-curriculum-sampling.md", line: 60, quote: "Phase progression | Observe (human does, agent watches) -> Assist (agent proposes, human approves) -> Own (agent executes, human monitors exceptions)"}
+      - {file: "docs/canonical/domain-embedded-workflow-automation-wedge.md", line: 47, quote: "Preserve operator review for cases where authority, risk, or missing data makes full automation unsafe."}
+      - {file: "docs/canonical/human-afk-task-routing-gate.md", line: 30, quote: "The gate classifies every task as AFK-ready (safe for autonomous agent execution) or human-in-loop (requires human judgment before, during, or after execution)."}
+      - {file: "docs/canonical/tested-degradation-ladder.md", line: 29, quote: "escalates to a human with summarized context when automated recovery is insufficient, logs the outcome, and tests each rung before production reliance"}
+      - {file: "NOT_FOUND", line: 0, quote: "Staged automation of external actions with human-owned irreversible send (monitor → draft → review → send), channel monitors, or insight→action value staging in docs/canonical/, curriculum/, .opencode/skills/ ('draft|send|inbox|Slack|channel monitor' in canonical; 'MCP' — zero matches in docs/canonical/)."}
+    justification: "The human-review gate and graduated autonomy (propose→approve→own) are covered at canonical depth, plus routing and escalation. Missing the value-staging reframe: reviewed-draft automation of external-facing actions (monitor inbox/Slack → draft into Gmail → human reviews → human sends) as the deliberate second value rung beyond data Q&A, with the irreversible send human-owned and users self-adopting the staged flow as a trust builder. Repo review gates protect code/merge decisions, not outbound external actions."

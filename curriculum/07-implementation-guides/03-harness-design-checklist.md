@@ -3,7 +3,7 @@ title: "Checklist de Design de Harness para Agentes Confiáveis"
 type: curriculum-guide
 aliases: ["checklist harness", "design checklist", "harness design", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, harness, auditoria, qualidade, seguranca, guardrails, persistencia-de-estado, coordenacao-multi-agente, observabilidade]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/on-policy-rollout-feedback-loop|On-Policy Rollout Feedback Loop]]", "[[docs/canonical/asymmetric-failure-correction-router|Asymmetric Failure Correction Router]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/on-policy-rollout-feedback-loop|On-Policy Rollout Feedback Loop]]", "[[docs/canonical/asymmetric-failure-correction-router|Asymmetric Failure Correction Router]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]]", "[[docs/canonical/retention-gated-phased-rollout|Retention-Gated Phased Rollout]]"]
 last_updated: 2026-06-16
 ---
 # 🧪 Checklist de Design de Harness para Agentes Confiáveis
@@ -260,14 +260,15 @@ Use este scorecard para resumir a maturidade do harness depois de aplicar as cat
 | Evolução (Harness Evolution) | Depende de prompt e memória implícita | Tem algumas regras manuais | Possui contratos e validações principais | É testado, auditável e recuperável | Mede qualidade, custo e evolução continuamente | 1-5 |
 | Observabilidade (Traces/Monitoring) | Depende de prompt e memória implícita | Tem algumas regras manuais | Possui contratos e validações principais | É testado, auditável e recuperável | Mede qualidade, custo e evolução continuamente | 1-5 |
 | Decisão de Valor (Value Gate) | Toda intenção vira Build por padrão | Existe intenção de questionar valor, mas informal | Há um gate com vocabulário (Build/Experiment/Defer/Stop) e owner nomeado | Gate é aplicado consistentemente, decisões são auditadas | O gate é calibrado com outcomes, o Owner-of-No é um papel institucionalizado | 1-5 |
+| Adoção e Valor (Adoption & Value) | Uso agregado lido como veredito de qualidade; ativação como afterthought | Telemetria de uso existe, mas sem separar trial de retorno | Split trial/retorno com donos roteados por ramo; ativação com owner e orçamento de tempo | Dashboards por equipe, re-check pós-intervenção, listener de habituação ativo | Roadmap auditado contra a escada de valor; cadência de estágios e lock-in monitorados | 1-5 |
 
 ### Interpretação da pontuação
 
-- **9-17 pontos:** harness experimental. Use apenas em demo, protótipo ou fluxo sem risco comercial.
-- **18-27 pontos:** harness inicial. Pode rodar com supervisão humana e baixa autonomia.
-- **28-36 pontos:** harness operacional. Aceitável para produção limitada com monitoramento ativo.
-- **37-43 pontos:** harness robusto. Adequado para produção em escala com incident response definido.
-- **44-45 pontos:** harness excelente. Além de confiável, é evolutivo, auditável e ensina o time a melhorar.
+- **10-19 pontos:** harness experimental. Use apenas em demo, protótipo ou fluxo sem risco comercial.
+- **20-29 pontos:** harness inicial. Pode rodar com supervisão humana e baixa autonomia.
+- **30-39 pontos:** harness operacional. Aceitável para produção limitada com monitoramento ativo.
+- **40-48 pontos:** harness robusto. Adequado para produção em escala com incident response definido.
+- **49-50 pontos:** harness excelente. Além de confiável, é evolutivo, auditável e ensina o time a melhorar.
 
 ### Regra de bloqueio
 
@@ -624,6 +625,7 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Acoplamento gás/freio | A velocidade de deploy permitida é função explícita da cobertura e qualidade dos evals, conforme [[docs/canonical/evals-as-brakes\|Evals-as-Brakes]]. Resposta a incidente é melhorar os freios (caso + cobertura), não cooling period permanente. | Existe política escrita amarrando tier de velocidade a tier de cobertura de eval. | Velocidade e segurança são dials independentes; incidente gera slowdown permanente sem caso de eval novo. | Registre link para velocity-policy, owner e data. |
 | Paridade de investimento em eval | Tempo de engenharia, tokens e dinheiro têm trilha de eval com alocação comparável à trilha de agente, co-projetada nas mesmas sprints, conforme [[docs/canonical/eval-investment-parity\|Eval-Investment Parity]]. | Sprint budget declarado com tracks paralelas agente/eval; deploy gated no eval track. | Evals são squeezed no último sprint ou feitos só quando dói. | Registre link para sprint-budget, owner e data. |
 | Readout de nível outcome | A métrica de primeira ordem é resultado de negócio (conversão, re-engajamento); KPIs de atividade estão banidos nominalmente do readout, conforme [[docs/canonical/outcome-level-eval-hierarchy\|Outcome-Level Eval Hierarchy]]. | Lista `banned_from_readout` documentada; arquitetura/skills só mudam contra resultados de nível 1. | Número de chamadas ou minutos em chamada servem de critério de sucesso. | Registre link para outcome-eval-loop, owner e data. |
+| Radar de demanda classificada | Logs de perguntas de produção são classificados por LLM em taxonomia hierárquica com custo engenheirado (tiering/amostragem), expondo concentrações sem resposta ou pobres como feature-gap radar, conforme [[docs/canonical/llm-classified-log-taxonomy\|LLM-Classified Log Taxonomy]]. | Taxonomia rodando em cadência, com owner de drift e pelo menos um consumidor downstream (produto, enablement, roadmap de cobertura). | Volume de perguntas existe mas ninguém classifica; gaps de cobertura são palpite de roadmap, não demanda medida. | Registre link para artefato, owner e data. |
 
 ### Evidências que um revisor deve pedir
 
@@ -1333,6 +1335,91 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 
 ---
 
+## 📣 9. Adoção e Valor (Adoption & Value)
+
+Esta categoria verifica se o harness trata adoção e valor percebido como superfície de engenharia: números de uso lidos com o diagnóstico certo, ativação com dono e orçamento, e roadmap de valor auditável. Ela nasce do caso Snowflake (GTM assistant para 6.000 usuários): duas semanas após o GA, só 20% da organização havia experimentado o produto — e o dashboard de "uso baixo" quase virou veredito de qualidade.
+
+### O que um bom harness faz
+
+- Telemetria per-usuário distingue "experimentou" (trial flag) de "voltou" (retorno em janela fixa), e a regra de dois ramos roteia o dono do fix: tentou-e-não-voltou → produto; nunca-tentou → change management ([[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]).
+- Ativação é entregável do lançamento com owner nominal e orçamento de tempo declarado: demos ao vivo, dashboard por equipe, patrocínio de líderes, rankings públicos ([[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]).
+- O roadmap de capacidades é auditado contra a escada de valor: nenhum degrau pulado, nenhum estágio shipado sem a confiança do anterior, próximo degrau dentro da cadência de 1-2 meses ([[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]).
+- Um listener de habituação traz comparações e frustrações dos usuários ao time antes de virarem churn.
+
+### Por que isso importa no KODA
+
+Quando o KODA rolasse para todos os vendedores, "ativos semanais baixos" duas semanas depois seria lido como falha do produto — sem ninguém capaz de dizer quantos vendedores sequer abriram o assistente. A fronteira de adoção falha silenciosamente: o cliente não reclama de um produto que não usa, e a primeira leitura de gestão é sempre qualidade.
+
+### Checklist PASS/FAIL
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Trial flag per-usuário | Telemetria grava quem experimentou (primeiro uso real) e quem retorna (janela fixa), por usuário. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Denominadores do split | Trial divide por elegíveis; retorno divide por quem tentou. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Roteamento de dono por ramo | Tentou-e-não-voltou tem dono do produto; nunca-tentou tem dono de ativação; re-check após cada intervenção. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Owner de ativação com orçamento | O programa de ativação tem owner nominal e orçamento de tempo declarado (ex.: 60-70% por meses). | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Dashboard de adoção por equipe | Uso segmentado por squad, com líderes publicizados e próxima onda de demos agendada. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Roadmap auditado contra a escada | O roadmap nomea o estágio de valor atual e o próximo degrau; nenhum item shipa estágio k sem 1..k-1 shippados. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Listener de habituação | Comparações e frustrações dos usuários com outros produtos de IA chegam ao time como sinal operacional. | Existe evidência verificável e atualizada. | Depende de memória, intenção, prompt solto ou comportamento não testado. | Registre link para artefato, owner e data. |
+| Escopo de launch por zona de acurácia | A superfície user-facing do lançamento é cortada pela zona de alta acurácia sobre o golden question set (ex.: 50 perguntas a 95%, não 100 a 70%), com cobertura tratada como roadmap pós-launch, conforme [[docs/canonical/quality-over-coverage-trust-scoping\|Quality-Over-Coverage Trust Scoping]]. | Existe mapa de zonas de acurácia por pergunta; o escopo publicado corresponde à zona alta; sinal de demanda ("usuários pedindo mais") monitorado como gatilho de expansão. | Launch dimensionado pelo inventário de dados; as primeiras perguntas dos usuários caem fora da zona de qualidade. | Registre link para artefato, owner e data. |
+| Gate de retenção na progressão de rollout | A progressão de exposição (piloto AI-native → beta limitado → GA) avança só com gate duro de retenção weekly-active (ex.: > 70%) além de acurácia e cobertura provadas; dados must-have definidos por clustering de requests reais, conforme [[docs/canonical/retention-gated-phased-rollout\|Retention-Gated Phased Rollout]]. | Fases com gate de retenção instrumentado desde o dia um; GA bloqueado enquanto a retenção está abaixo do threshold. | Progressão de rollout por calendário ou adoção de novidade; retenção rastreada só como outcome, nunca como gate. | Registre link para artefato, owner e data. |
+
+### Evidências que um revisor deve pedir
+
+- telemetria de ativação por usuário (trial flag e semanas ativas)
+- dashboard de adoção segmentado por equipe
+- registro do owner de ativação e do orçamento de tempo
+- auditoria do roadmap contra os estágios de valor
+- canal onde sinais de habituação são coletados
+
+### Exemplo de falha típica
+
+❌ Duas semanas pós-lançamento, "ativos semanais" baixos viram pauta de rollback — sem ninguém capaz de dizer quantos usuários sequer abriram o produto, e sem dono para a hipótese de ativação.
+
+### Exemplo de desenho melhor
+
+✅ O dashboard mostra o split por squad (trial e retorno com os denominadores certos); o ramo never-tried tem owner de ativação com 60-70% do tempo dedicado e demos agendadas; o roadmap de valor passa pelo audit de estágios antes de aprovação.
+
+### Perguntas de auditoria
+
+- Qual artefato prova que esta regra existe fora da cabeça do agente?
+- Qual teste falharia se alguém removesse essa proteção amanhã?
+- Qual trace mostraria que a proteção foi acionada em produção?
+- Quem é o owner desta regra e quando ela foi revisada pela última vez?
+- Qual é o custo em tokens, latência ou manutenção desta proteção?
+- Qual falha real de cliente esta proteção previne?
+- O que acontece quando a proteção rejeita um caso válido?
+- O que acontece quando a proteção deixa passar um caso inválido?
+- Como um novo dev descobriria essa regra sem perguntar para Fernando?
+- A regra está no lugar certo ou deveria virar contrato, state, rubric ou guardrail?
+
+### Micro-checklist de revisão rápida
+
+- [ ] Telemetria separa trial de retorno por usuario, com janela estavel e coorte minima?
+- [ ] O denominador do retorno e quem tentou (nao elegiveis)?
+- [ ] Cada ramo do split tem dono nomeado e o re-check acontece apos cada intervencao?
+- [ ] O programa de ativacao tem owner com orcamento de tempo declarado e proxima onda agendada?
+- [ ] O dashboard de adocao e segmentado por equipe?
+- [ ] O roadmap nomea o estagio de valor atual e o proximo degrau, sem pular confianca?
+- [ ] Comparacoes dos usuarios com outros produtos de IA chegam ao time antes do churn?
+
+### Critérios de bloqueio para esta categoria
+
+- Bloqueie produção se decisões de rollback ou continuidade leem uso agregado sem o split trial/retorno.
+- Bloqueie produção se o lançamento depende de adoção e não existe owner de ativação nomeado.
+- Bloqueie produção se o roadmap shipa estágio de valor sem os predecessores shippados.
+- Permita rollout limitado apenas quando o risco estiver documentado, monitorado e reversível.
+
+### Sinais de maturidade crescente
+
+- **Nível 1:** uso agregado como veredito; ativação como afterthought; roadmap sem estágios.
+- **Nível 2:** telemetria de uso existe, mas sem separar trial de retorno e sem roteamento de dono.
+- **Nível 3:** split com donos roteados; owner de ativação nomeado; roadmap nomea estágios.
+- **Nível 4:** dashboards por equipe, listener de habituação, re-check pós-intervenção.
+- **Nível 5:** escada de valor auditada por cadência; ativação contínua; lock-in monitorado como switching cost.
+
+---
+
 ## 🔀 Tabela Comparativa de Estratégias de Coordenação
 
 Coordenação não é apenas escolha técnica. Ela define como agentes compartilham verdade, como falhas são recuperadas e como o time debuga incidentes.
@@ -1621,6 +1708,9 @@ Quando o time estiver com pouco tempo, use este roteiro. Ele não substitui a le
 | Garbage Collection Day | [[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]] | Use para implementar o ritual semanal de conversao de feedback humano em guardrails. |
 | Failure Pattern Classification | [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]] | Use para classificar falhas por taxonomia e converter em casos de regressao. |
 | Persona-Based Documentation | [[docs/canonical/persona-based-documentation|Persona-Based Documentation]] | Use para estruturar documentos NFR por especialidade e multiplicar conhecimento entre agentes. |
+| Trial-Retention Attribution Split | [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]] | Use para diagnosticar uso baixo antes de decidir rollback: tentou-e-não-voltou vs. nunca-tentou, com donos roteados. |
+| Owner-Led Activation Blitz | [[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]] | Use para tratar ativação como entregável do lançamento: owner com orçamento de tempo, demos, dashboards por equipe. |
+| Agent Value Maturity Ladder | [[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]] | Use para auditar o roadmap de capacidades contra a escada de valor e o colapso do fator wow. |
 
 ---
 

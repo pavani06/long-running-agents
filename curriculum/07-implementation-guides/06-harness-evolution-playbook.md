@@ -3,7 +3,7 @@ title: "Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Que
 type: curriculum-guide
 aliases: ["playbook harness", "evolucao playbook", "harness playbook", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, evolucao-arquitetural, remocao-segura, simplificacao, feature-flags, canary-release, rollback, validacao-pos-remocao, roi]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]"]
 last_updated: 2026-06-10
 ---
 # 🧬 Playbook de Harness Evolution: Como Evoluir um Harness de Agente sem Quebrar Produção
@@ -645,6 +645,23 @@ harness_governance:
 | 3 | Context Loader | SIMPLIFY | Médio | Próximo trimestre | Accuracy delta menor que 1% | Flag `context_loader_mode=full` |
 | 4 | Priority Extractor | INVESTIGATE | Médio | Próximo trimestre | Coletar metricas de redundancia | Sem alteração em prod |
 
+### 📋 Requisito: o Roadmap passa pelo Audit da Escada de Valor
+
+O roadmap deste playbook ordena mudanças de componente. Quando ele também carrega capacidades novas para o usuário (a próxima feature, o próximo estágio do produto), um erro de ordenação custa confiança, não só latência: o *Agent Value Maturity Ladder* observa que o fator wow colapsa em meses, que cada estágio de valor pressupõe a confiança do anterior e que a cadência de 1-2 meses por estágio é o que impede a janela de churn. Antes de aprovar o roadmap, rode os três checks de bloqueio:
+
+| Check | O que pega | Severidade |
+|---|---|---|
+| `SKIPPED_STAGE` | Item de estágio k no roadmap com algum degrau j < k **sem nenhum item** no plano (o degrau foi pulado da escada) | high |
+| `UNEARNED_STAGE` | Item que shipa estágio k antes de os degraus 1..k-1 estarem shippados (shipa confiança não ganha) | high |
+| `STALL_RISK` | Listener de habituação detectou o wow quebrado e o próximo ship chega em mais de 2 meses (ou não existe) | high |
+
+Qualquer finding high bloqueia a aprovação do roadmap até o reordenamento. Envios irreversíveis em estágio de automação mantêm revisão humana. Para a implementação dos checks em código: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10]]. Para o padrão completo: [[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]].
+
+**Perguntas do audit no roadmap em revisão:**
+- Em qual estágio da escada o produto está hoje, e qual item do roadmap move para o próximo degrau?
+- Existe item shipando estágio avançado cujos predecessores ainda não estão shippados?
+- O que o listener de habituação disse nas últimas semanas, e quando chega o próximo ship?
+
 ### 📋 Passo 7: Prepare Comunicação para Stakeholders
 
 Não comunique como "vamos deletar código". Comunique como redução controlada de risco operacional e custo. Produto quer saber impacto em cliente. Suporte quer saber se tickets aumentam. Engenharia quer saber rollback. Liderança quer saber ROI.
@@ -1239,6 +1256,8 @@ Esse comando não substitui julgamento humano. Ele só evita copiar número manu
 
 A Late-Failure Regression Suite continua obrigatória para contexto longo, mas ela é um caso específico de uma regra maior: toda falha de produção que ensina algo sobre comportamento de agente deve virar candidato a eval de regressão. Este processo e formalizado como **Failure Pattern Classification Loop** em [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]. O objetivo não é acumular casos infinitos. O objetivo é impedir que reclamações, tool misuse, falhas de estado, scoring gaps e edge cases escapados reapareçam depois que o time já aprendeu a diagnosticá-los.
 
+A mesma máquina de classificação tem um objeto invertido que este playbook não cobria: o *LLM-Classified Log Taxonomy* classifica **o que os usuários perguntam** (demanda), não o que o agente fez de errado (falha) — taxonomia hierárquica de demanda sobre os logs de perguntas, com feature-gap radar expondo concentrações sem resposta. A taxonomia de root cause abaixo alimenta evals de regressão; a taxonomia de demanda alimenta produto, enablement e o roadmap de cobertura ([[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]).
+
 1. **Intake:** ticket de suporte, incidente, canary alert, shadow diff, human review ou trace manual abre um item com `source_event`, impacto e owner.
 2. **Taxonomia:** classifique como `context_loss`, `tool_misuse`, `state_persistence`, `rubric_gap`, `prompt_regression`, `pricing_policy`, `safety_escape`, `latency_cost` ou `other`.
 3. **Fixture:** crie entrada replayable com estado mínimo, inputs, versões de prompt/model/rubric/tool e comportamento esperado.
@@ -1385,6 +1404,26 @@ Merge policy: aprovado se CI e review humano confirmarem o mesmo relatório.
 | CSAT proxy | 88% | 88% | 0% | Estável |
 | Incidentes P0/P1 | 0 | 0 | 0 | Aprovado |
 | Custo mensal estimado | R$ 300 | R$ 0 | -R$ 300 | Melhorou |
+
+### ✅ Requisito: Adoção — Atribuição antes de Veredito, Ativação como Entregável
+
+As métricas de "antes e depois" deste playbook medem o sistema. Quando o rollout também expande a base de usuários (novo canal, nova equipe, GA interno), os números de uso chegam junto — e uso baixo tem duas doenças com donos diferentes. O *Trial-Retention Attribution Split* é o gate que impede a leitura errada: **nenhuma decisão de rollback, pausa ou retrabalho lê uso agregado sem antes separar trial de retorno**.
+
+| Ramo | Condição | Veredito | Dono do fix |
+|---|---|---|---|
+| Tentou e não voltou | trial alto + retorno baixo | Problema de produto | Time de produto (qualidade/cobertura) |
+| Nem tentou | trial baixo | Problema de change management | Owner do lançamento (ativação) |
+
+Guardas do gate: janela de medição estável (mínimo 2 semanas), coorte mínima por segmento, e denominadores certos (retorno divide por quem tentou). O split é diagnóstico — o fix vem do dono do ramo, seguido de re-check na janela seguinte.
+
+Quando o ramo é never-tried, o fix tem nome: *Owner-Led Activation Blitz*. Ativação é entregável de engenharia do lançamento, não afterthought de marketing: owner nominal com orçamento de tempo declarado (no caso Snowflake, 60-70% do tempo por meses), programa de demos ao vivo onde as "primeiras 5 perguntas" acontecem com suporte, dashboard de adoção por equipe com líderes publicizados e patrocínio de líderes garantido por equipe-alvo. O efeito decai entre ondas — o programa é contínuo, com a próxima onda agendada antes da atual esfriar. Para os padrões completos: [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]] e [[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]; implementação do split em código: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9]].
+
+**Checklist do gate de adoção:**
+- [ ] Telemetria per-usuário grava trial flag e retorno antes de qualquer leitura de uso
+- [ ] Denominadores certos: trial/eligíveis, retorno/tentou
+- [ ] Cada ramo tem dono nomeado; decisões de rollback citam o split, não o agregado
+- [ ] Se o ramo é never-tried: owner de ativação com orçamento de tempo, demos e dashboard por equipe no plano da wave
+- [ ] Re-check do split agendado após a intervenção, na janela seguinte
 
 ### ✅ Passo 6: Prepare Rollback Mesmo Quando Tudo Vai Bem
 

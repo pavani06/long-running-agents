@@ -1,0 +1,383 @@
+meta:
+  title: "Reusable Agentic Patterns from GTM AI Agents: Lessons from Deploying to 6,000 Users (Snowflake)"
+  source: "2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-analysis.md"
+  date: "2026-08-30"
+  type: "patterns"
+patterns:
+  - name: "Workflow-Derived Golden Question Set"
+    problem_solved: "Eval sets built from the connected-data inventory test coverage instead of the job, so quality gaps stay invisible until real users hit them."
+    inputs:
+      - "The real user workflow, extracted up front (the sales process captured in a spreadsheet)."
+      - "150 questions the users will actually ask, written before any data is connected."
+      - "Engineering objections that the data is not hooked up yet."
+    outputs:
+      - "A pre-launch accuracy score against the golden set (first run: 50%)."
+      - "A measurable quality baseline that gates launch."
+      - "A permanent regression instrument as coverage and features grow."
+    benefits:
+      - "Makes the quality gap measurable before any user sees it (the 50% score was caught pre-launch only because the set existed)."
+      - "Anchors evals in the job-to-be-done rather than the data inventory."
+      - "Independent of implementation state: can be authored before the agent exists."
+    limitations:
+      - "Requires workflow access and domain expertise before build."
+      - "The set must be maintained as the workflow evolves."
+      - "Only as good as the workflow extraction; misses exploratory or unforeseen use cases."
+    components:
+      - "Workflow extraction artifact."
+      - "Question authoring pass (~150 questions)."
+      - "Agent-under-test."
+      - "Scoring harness."
+      - "Launch gate threshold."
+    flow:
+      - "Extract the real workflow into an explicit artifact."
+      - "Write N questions users will actually ask, independent of what is connected."
+      - "Run the agent against the set before launch."
+      - "Record the accuracy score as the quality baseline."
+      - "Gate launch on the score; re-run as coverage and features expand."
+  - name: "Quality-Over-Coverage Trust Scoping"
+    problem_solved: "A free-form agent surface exposed before its accuracy zone is engineered destroys trust on first contact: the first ~5 questions decide whether users return, and recovery costs 10x or never happens."
+    inputs:
+      - "The accuracy distribution over the candidate question space."
+      - "The trust asymmetry: hard to earn, lost overnight, 10x to recover."
+      - "A coverage roadmap sequenced for after launch."
+    outputs:
+      - "A deliberately narrow launch scope: 50 questions at 95% accuracy instead of 100 at 70%."
+      - "A post-launch coverage expansion plan (60% of the data added over 6-7 months after launch)."
+    benefits:
+      - "The first five questions land inside the high-accuracy zone."
+      - "Users ask for more instead of writing the product off, pulling expansion organically."
+      - "Starting small did not block adoption; it protected trust while expansion happened."
+    limitations:
+      - "Deliberately narrow launch scope frustrates stakeholders demanding breadth."
+      - "Deferred coverage must actually ship on the roadmap."
+      - "Demands the Workflow-Derived Golden Question Set to know where the high-accuracy zone is."
+    components:
+      - "High-accuracy zone definition."
+      - "Launch scope cut."
+      - "Post-launch coverage roadmap."
+      - "Demand-signal monitor (users asking for more)."
+    flow:
+      - "Map candidate questions to accuracy zones."
+      - "Cut the launch scope to the high-accuracy zone."
+      - "Launch narrow at high accuracy."
+      - "Monitor demand signals."
+      - "Expand coverage incrementally only after trust is established."
+  - name: "Retention-Gated Phased Rollout"
+    problem_solved: "A non-deterministic system cannot be safely exposed to a whole organization at once, and novelty usage masks whether real workflow fit exists."
+    inputs:
+      - "AI-native early adopters who give feedback (pilot cohort)."
+      - "A 10% beta cohort (~600 of 6,000 users)."
+      - "The flood of 'connect this data' requests."
+      - "Weekly-active retention telemetry."
+    outputs:
+      - "A pilot to 10% beta to GA progression with explicit gates."
+      - "Request-concentration clusters that define must-have data (whether an MVP exists for daily workflows)."
+      - "A hard GA gate: >70% weekly-active retention."
+    benefits:
+      - "Earns the first five questions without burning bridges with the whole org."
+      - "Proves the MVP is real via request clustering plus retention, not anecdotes."
+      - "GA lands only after accuracy, coverage, and retention are all proven."
+    limitations:
+      - "Slower rollout; gate discipline can delay GA."
+      - "Requires retention instrumentation from day one."
+      - "Pilot quality depends on recruiting genuinely AI-native users."
+    components:
+      - "Pilot cohort."
+      - "Beta cohort (10%)."
+      - "Request clustering analysis."
+      - "Weekly-active retention metric."
+      - "GA gate (>70%)."
+    flow:
+      - "Pilot with AI-native users for a couple of weeks; sand rough edges."
+      - "Expand to a 10% beta."
+      - "Cluster 'connect this data' requests to find concentrations that define must-have data."
+      - "Measure weekly-active retention."
+      - "Open GA only when retention exceeds 70% and accuracy/coverage are proven."
+  - name: "Trial-Retention Attribution Split"
+    problem_solved: "Low usage numbers shortly after launch get misread as product failure when the real problem is that most of the organization never tried the agent at all (only 20% had tried it two weeks post-GA)."
+    inputs:
+      - "Usage telemetry that distinguishes 'tried it' from 'came back'."
+      - "The org population and time-since-launch window."
+    outputs:
+      - "A diagnostic rule: tried-and-did-not-return means product problem (owned by the product team); never-tried means change-management problem."
+      - "Corrective routing of ownership instead of a blanket product rollback."
+    benefits:
+      - "Prevents misattributing an activation failure to product quality."
+      - "Defuses management alarm with a mechanism, not an argument."
+      - "Routes the fix to the owner who can actually apply it (feeds rollout and activation patterns)."
+    limitations:
+      - "Requires clean trial/retention instrumentation."
+      - "Early windows are noisy; the split needs a stable measurement period."
+      - "Diagnostic only: fixes neither side by itself."
+    components:
+      - "Per-user trial flag."
+      - "Return/retention metric."
+      - "Attribution rule (two branches)."
+      - "Ownership routing."
+    flow:
+      - "Instrument who has tried the product."
+      - "Measure who returns (weekly active)."
+      - "If return rate is low, route to the product team."
+      - "If trial rate is low, route to change-management/activation work."
+      - "Re-check the split after each intervention."
+  - name: "Owner-Led Activation Blitz"
+    problem_solved: "An agent product that works still stalls when nobody tries it, because engineers treat adoption as someone else's job."
+    inputs:
+      - "The product owner's calendar: 60-70% of time for months post-launch."
+      - "Live demos in sales meetings."
+      - "Adoption dashboards broken down by team."
+      - "Sales-leader sponsorship."
+    outputs:
+      - "Roughly 2x usage trajectory versus the no-activation counterfactual."
+      - "Per-team adoption visibility (including publicizing leading teams)."
+      - "Leader-enforced usage push inside each team."
+    benefits:
+      - "Activation is treated as an engineering deliverable of launch, not an afterthought."
+      - "Dashboards create competitive pressure between teams."
+      - "Directly addresses the never-tried branch of the Trial-Retention Attribution Split."
+    limitations:
+      - "Diverts senior owner time from feature work for months."
+      - "Depends on securing sales-leader sponsorship."
+      - "Effect decays without the next wave of demos and dashboards."
+    components:
+      - "Live demo program."
+      - "Per-team adoption dashboard."
+      - "Leader sponsorship channel."
+      - "Publicized team rankings."
+    flow:
+      - "Launch (or diagnose the activation gap via the attribution split)."
+      - "Owner spends 60-70% of time doing live demos in team meetings."
+      - "Publish adoption dashboards by team; publicize leaders."
+      - "Secure sales-leader sponsorship to push usage."
+      - "Sustain for months; track the usage trajectory."
+  - name: "Centralized Data Plane with Inherited RBAC"
+    problem_solved: "First-party plus third-party data (Salesforce, call transcripts) siloed across SaaS tools makes per-integration governance of agent data access unmanageable."
+    inputs:
+      - "All first-party and third-party data sources."
+      - "A single data platform consolidating them."
+      - "A no-code agent deployment platform on top of it."
+    outputs:
+      - "Agents deployed with zero code that automatically inherit role-based access controls."
+      - "Out-of-the-box chat UI, platform-level guardrails, and curation for every deployed agent."
+    benefits:
+      - "Governance defined once at the data plane and inherited by every agent."
+      - "No per-agent authentication code; consistent security posture across the fleet."
+      - "Zero-code deployment removes the engineering bottleneck to spawning new agents."
+    limitations:
+      - "Strategic coupling to the platform (the builder is also customer zero)."
+      - "Data centralization is a prerequisite project with its own cost."
+      - "No-code platforms ceiling out for deeply custom behavior."
+    components:
+      - "Unified data platform."
+      - "RBAC layer at the platform."
+      - "No-code agent deployment surface."
+      - "Platform guardrails and curation."
+    flow:
+      - "Consolidate first-party and third-party data into one platform."
+      - "Define RBAC at the platform level."
+      - "Deploy agents on the platform with zero code."
+      - "Agents inherit access controls automatically."
+      - "Govern and curate centrally."
+  - name: "Skill Library as Instruction-Overflow Valve"
+    problem_solved: "Business processes and orchestration rules stop fitting inside agent instructions: instruction bloat first, then hard instruction limits when MCP orchestration rules accumulate."
+    inputs:
+      - "A growing instruction set (launched at 9 pages; kept growing)."
+      - "Repeated business processes and workflows."
+      - "MCP orchestration rules for external systems."
+      - "Instruction-window limits."
+    outputs:
+      - "A skill library (~20 skills) holding the extracted processes."
+      - "Progressive disclosure of instructions when even orchestration instructions hit limits."
+    benefits:
+      - "Core instructions stay lean; processes become modular, testable units."
+      - "Unblocks further MCP orchestration growth beyond the instruction ceiling."
+      - "Skills become the empowerment surface: teams build their own skills, dashboards, and apps."
+    limitations:
+      - "Requires skill discovery/routing quality so the agent finds the right skill."
+      - "Progressive disclosure adds retrieval latency and failure modes."
+      - "Skill sprawl needs curation and version discipline."
+    components:
+      - "Instruction budget monitor."
+      - "Skill extraction procedure."
+      - "Skill library (~20 skills)."
+      - "Progressive disclosure mechanism."
+      - "MCP orchestration rules."
+    flow:
+      - "Monitor instruction size against limits."
+      - "Extract stable, repeated processes into skills."
+      - "Route from core instructions to skills."
+      - "When orchestration instructions themselves hit limits, apply progressive disclosure."
+      - "Keep expanding the library as processes accumulate."
+  - name: "Human-Review Staged Workflow Automation"
+    problem_solved: "Data Q&A alone tops out at the 'talk to your data' value stage, while fully autonomous outbound actions are unsafe to trust to the agent on day one."
+    inputs:
+      - "MCP connections to external systems (5-6)."
+      - "Monitored channels (inbox, Slack) carrying customer product questions."
+      - "A drafting target (Gmail)."
+      - "A human reviewer (the seller)."
+    outputs:
+      - "Staged workflows: agent monitors inbox and Slack, drafts responses into Gmail, seller reviews and sends."
+      - "Automated outreach workflows with the human review gate preserved."
+    benefits:
+      - "Moves value from insight to action without trusting the agent with irreversible sends."
+      - "Human review is the safety brake; sellers self-adopted this staged flow."
+      - "Each stage builds the trust that justifies the next (feeds the Agent Value Maturity Ladder)."
+    limitations:
+      - "Human in the loop caps throughput."
+      - "Review quality depends on the drafting UI and reviewer diligence."
+      - "Every external system needs an MCP connection first."
+      - "Unsafe if stages are skipped prematurely."
+    components:
+      - "Channel monitors (inbox, Slack)."
+      - "MCP connections to external systems."
+      - "Draft target (Gmail)."
+      - "Human review gate."
+      - "Send action (human-owned)."
+    flow:
+      - "Agent monitors inbox and Slack channels."
+      - "Detects customer product questions."
+      - "Drafts a response into Gmail."
+      - "Human reviews the draft."
+      - "Human sends."
+      - "Agent progressively automates follow-up over subsequent stages."
+  - name: "Pull-Based Infrastructure on Pain"
+    problem_solved: "Pre-building perfect infrastructure (CI/CD, eval suites, skill systems) delays launch past the learning window; enterprises stall trying to purchase the perfect architecture instead of building, launching, and learning."
+    inputs:
+      - "A minimal viable launch stack (9 pages of agent instructions, a couple of analyst tools, semantic views, one search service, instruction versions in a Google Doc)."
+      - "Real pain signals emerging from scale (6,000 users, 40k questions/week)."
+    outputs:
+      - "Infrastructure added reactively, in the sequence its absence binds: CI/CD for agent instructions, eval infrastructure (unit tests, routing tests), skills, progressive disclosure, user memory and task scheduling, interfaces beyond chat (Slack)."
+      - "Learning at 6,000-user scale months earlier than the perfect-architecture path."
+    benefits:
+      - "Each infrastructure investment answers a felt constraint, not speculation."
+      - "Early launch compounds learning and logs (log-driven patterns depend on this volume)."
+      - "Avoids the competitor-lead compounding cost of waiting for maturity."
+    limitations:
+      - "Google-Doc instruction versioning at scale hurts before CI/CD arrives."
+      - "Incurs the permanent 30-40% re-architecture tax (Continuous Re-Architecture Budget)."
+      - "Pain must be visible, which requires real production contact."
+    components:
+      - "Minimal launch stack."
+      - "Pain-signal detector (binding-constraint identification)."
+      - "Infrastructure backlog."
+      - "Reactive hardening sequence."
+    flow:
+      - "Launch with the minimal viable architecture."
+      - "Feel each binding constraint as concrete pain at scale."
+      - "Add only the infrastructure that removes that constraint."
+      - "Repeat in sequence as new constraints bind."
+      - "Accept the standing re-architecture tax."
+  - name: "Continuous Re-Architecture Budget"
+    problem_solved: "Agent stacks churn in waves (skills, MCP, progressive disclosure); teams that budget nothing for absorption either freeze on legacy mechanics or thrash unpredictably."
+    inputs:
+      - "Sprint capacity at steady state."
+      - "Incoming technology waves relevant to the agent stack."
+      - "The original PRD/core design as the drift reference."
+    outputs:
+      - "A standing portfolio split: 60-70% of sprint work on new features/quality, 30-40% on constant re-architecting."
+      - "New mechanics absorbed early while ~80% of the original PRD design persists."
+    benefits:
+      - "Core design survives the churn (80% persistence) because mechanics pivot early instead of under pressure."
+      - "Compounding capability instead of legacy freeze."
+      - "Predictable allocation prevents both thrash and stagnation."
+    limitations:
+      - "Permanent 30%+ tax on feature velocity."
+      - "Assumes the core design is right: a wrong core also persists 80%."
+      - "Requires discipline so re-architecting never eats the feature budget."
+    components:
+      - "Portfolio split rule (60-70/30-40)."
+      - "Technology-wave watchlist."
+      - "PRD-drift audit."
+      - "Mechanics-pivot trigger."
+    flow:
+      - "Set the standing 60-70/30-40 split at steady state."
+      - "Watch for mechanics waves (skills, MCP, progressive disclosure)."
+      - "Pivot mechanics early inside the re-architecture budget."
+      - "Audit drift against the original PRD."
+      - "Keep the validated core stable."
+  - name: "LLM-Classified Log Taxonomy"
+    problem_solved: "Tens of thousands of questions per week (1.2M total, 40k/week) cannot be read by humans, and interviews sample a tiny, lagging fraction of what users actually ask."
+    inputs:
+      - "Production question logs at scale."
+      - "An LLM classification pipeline."
+      - "A hierarchical topic taxonomy schema (category, subcategory, example questions)."
+      - "A cost constraint ('without breaking the bank')."
+    outputs:
+      - "A near-real-time hierarchical taxonomy of what users ask."
+      - "A feature-gap radar: concentrations of questions the agent cannot answer or answers poorly (repeated questions, users 'swearing at the agent')."
+      - "A shared instrument serving product, enablement (Gap-to-Content Feedback Circuit), and org matchmaking."
+    benefits:
+      - "Replaces roughly 100 seller interviews per week with detection lag of minutes."
+      - "One instrument, three consumers: feature gaps, enablement content, cross-team matchmaking."
+      - "Real-time visibility of demand shapes the coverage roadmap with evidence."
+    limitations:
+      - "Nontrivial cost engineering to classify at 40k questions/week."
+      - "Taxonomy drift requires maintenance and re-classification discipline."
+      - "Quality signals (repeated questions, frustration) are heuristic proxies."
+      - "Cold start: needs accumulated volume before the taxonomy is useful."
+    components:
+      - "Log collection pipeline."
+      - "LLM classification job with cost controls."
+      - "Hierarchical taxonomy store."
+      - "Feature-gap radar queries."
+    flow:
+      - "Collect question logs from production."
+      - "Classify questions into the taxonomy (category, subcategory, example questions) at controlled cost."
+      - "Surface concentrations of unanswered or poor-quality topics."
+      - "Expose the taxonomy to downstream consumers (content circuit, roadmap)."
+  - name: "Gap-to-Content Feedback Circuit"
+    problem_solved: "Knowledge gaps (e.g., a new product launch) traditionally require ~100 seller interviews per week to detect and document, a loop humans cannot sustain."
+    inputs:
+      - "The classified log taxonomy (LLM-Classified Log Taxonomy) showing emerging or unanswered topics."
+      - "Internal knowledge sources: Confluence, Jira, Slack, PRDs."
+    outputs:
+      - "Auto-generated battle cards and enablement docs in minutes."
+      - "The generated content fed back into the agent as knowledge, closing the loop."
+    benefits:
+      - "A human-infeasible loop becomes automated."
+      - "Agent coverage expands driven by measured demand, not guesses."
+      - "Enablement content and agent knowledge stay synchronized from the same source."
+    limitations:
+      - "Depends on the log taxonomy upstream."
+      - "Ingestion quality varies across internal sources."
+      - "Generated content needs review before feeding back into the agent."
+      - "Risk of feedback echo: the agent's own answers shape future question logs."
+    components:
+      - "Emerging-topic query over the taxonomy."
+      - "Source ingestion (Confluence/Jira/Slack/PRDs)."
+      - "Content generator (battle cards)."
+      - "Feed-back channel into the agent."
+    flow:
+      - "Query classified logs for emerging or unanswered topics."
+      - "Ingest the related internal knowledge sources."
+      - "Generate battle cards and enablement docs in minutes."
+      - "Feed the content back into the agent."
+      - "Confirm gap closure in subsequent logs."
+  - name: "Agent Value Maturity Ladder"
+    problem_solved: "Agent deployments stall at the first value stage while the wow factor collapses within months as capability becomes baseline, and near-zero switching costs let users leave in 1-2 months if the platform stands still."
+    inputs:
+      - "The observed four-stage journey of users as agent capability deepens."
+      - "Habituation and frustration signals (users returning with comparisons to other AI products)."
+      - "A shipping cadence of one to two months per next stage."
+    outputs:
+      - "A staged capability roadmap that doubles as a switching-cost ladder: talk to your data, automate my workflows (MCP orchestration), team empowerment (self-built skills/dashboards/apps), hyper-personalization (per-seller, per-customer, living context)."
+    benefits:
+      - "Institutionalized paranoia ('every time people are happy, you should be paranoid') converts wow-collapse into planned next stages."
+      - "Each stage raises user dependence on the platform: strategic lock-in that raw novelty cannot earn."
+      - "Trust earned at each stage buys the right to iterate into the next."
+    limitations:
+      - "Requires compounding investment per stage; stages presuppose the previous ones' trust."
+      - "The personalization stage demands living customer/contact context infrastructure."
+      - "Skipping stages burns the trust the ladder depends on."
+    components:
+      - "Four-stage model."
+      - "Habituation/frustration signal listener."
+      - "Next-stage roadmap cadence (1-2 months)."
+      - "Switching-cost audit per stage."
+    flow:
+      - "Launch at stage 1 (data Q&A) with quality scoping."
+      - "Watch for habituation and frustration signals."
+      - "Ship stage 2 (workflow automation via MCP with human review)."
+      - "Enable stage 3 (team-built skills and apps)."
+      - "Progress to stage 4 (hyper-personalization with living context)."
+      - "Repeat the paranoia cycle: plan the next showing before the current one becomes baseline."

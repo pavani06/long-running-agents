@@ -4,7 +4,7 @@ type: curriculum-lesson
 nivel: 3
 aliases: ["evolução harness", "harness lifecycle", "maturidade harness", "remoção componentes"]
 tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, evolucao-de-harness, simplificacao-arquitetural, remocao-de-componentes, shadow-testing, canary-deploy, feature-flags, roi-arquitetural, adrs, invariantes-arquiteturais, corpus-de-avaliacao]
-relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]"]
+relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]]"]
 last_updated: 2026-06-10
 ---
 # 🧬 Harness Evolution: Quando Remover é Tão Importante Quanto Construir
@@ -1145,6 +1145,14 @@ Alem da cadencia trimestral de BUILD/STABILIZE/SIMPLIFY/REMOVE, o harness precis
 
 **Conexao com o ciclo trimestral:** O GC Day alimenta a fase REVIEW da cadencia trimestral. Quando chega a Semana 1 do trimestre, o time ja tem 12+ semanas de GC Days documentados -- as decisoes trimestrais (SIMPLIFY, REMOVE) sao informadas por dezenas de decisoes semanais.
 
+### O Orçamento que Paga o Ritmo: Continuous Re-Architecture Budget
+
+O GC Day semanal e o ciclo trimestral definem **como** gastar capacidade de manutenção. Nenhum dos dois define **quanta** capacidade existe. O *Continuous Re-Architecture Budget* (caso Snowflake) é a regra de alocação: um split de portfólio permanente com **60-70% da capacidade de sprint em features/qualidade novas e 30-40% em re-arquitetura contínua**, decidido uma vez e defendido contra pressão de deadline — a mesma forma de regra permanente do Eval-Investment Parity (visto em [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]), na trilha de re-arquitetura em vez da trilha de eval.
+
+O que o budget compra quando o stack choca em ondas (skills, MCP, progressive disclosure): mecânicas novas são absorvidas **cedo e dentro do orçamento**, em vez de tarde e sob pressão. Times que alocam zero capacidade congelam em mecânicas legadas ou trasham de forma imprevisível — sem alocação explícita, a escolha é feita sprint a sprint por deadline, que sempre vence, até a dívida forçar o congelamento. Três instrumentos acompanham o split: um **watchlist de ondas de tecnologia** (vigiar mecânicas entrantes relevantes ao stack), um **trigger de pivot** (trocar de mecânica dentro do budget, antes que doa) e uma **auditoria de drift contra o PRD original** — no caso-fonte, ~80% do design central persistiu porque as mecânicas pivotaram cedo; um core errado também persiste, e o imposto de 30%+ sobre velocidade de feature é visível para stakeholders todo sprint.
+
+A conta fecha com o resto do módulo: o lançamento mínimo pull-based gera o imposto que este budget aloca; o GC Day e o ciclo trimestral são os ritmos que consomem a trilha de 30-40%; e o design model-agnostic (trocar a frota por mudança de configuração, não por rewrite) reduz o tamanho da conta que o budget precisa cobrir. Para o padrão completo: [[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]].
+
 ### Tabela: Componentes Atuais do KODA → Evolução Planejada
 
 | # | Componente | Função | Fase Atual | Ação | Gatilho | Prazo |
@@ -1327,6 +1335,18 @@ Custo/turno: R$ 0.018 (-62%)
 ```
 
 A qualidade da recomendação é a mesma. Mas o sistema é 3x mais rápido, 2.6x mais barato, e tem metade dos componentes para manter e debugar.
+
+---
+
+## 🪜 A Terceira Progressão: Adoção e Valor Percebido
+
+O ciclo de vida cobre componentes (BUILD → STABILIZE → SIMPLIFY → REMOVE) e o Autonomy Curriculum cobre o agente (Observe → Assist → Own). O harness evoluído ainda enfrenta duas frentes que não são de arquitetura interna, mas decidem se o trabalho sobrevive:
+
+1. **Diagnóstico de adoção (Trial-Retention Attribution Split).** Uso baixo logo após o lançamento é sintoma, não diagnóstico. Instrumente per-usuário quem *experimentou* (trial flag) e quem *voltou* (retorno em janela fixa): tentou-e-não-voltou → problema de produto; nunca-tentou → problema de change management. Cada ramo tem dono diferente, e nenhuma decisão de rollback lê uso agregado sem passar pelo split. Implementação completa: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9]]; padrão: [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]].
+
+2. **Ativação e escada de valor.** O ramo never-tried do split se trata com ativação como entregável de engenharia: owner nominal com 60-70% do tempo em demos ao vivo por meses, dashboard de adoção por equipe e patrocínio de líderes ([[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]). E a retenção que a ativação conquista só sobrevive ao colapso do fator wow com um roadmap em estágios de valor — talk to data → automate workflows → team empowerment → hyper-personalization — onde cada degrau constrói switching cost e pressupõe a confiança do anterior, com cadência de 1-2 meses por estágio e listener de habituação ([[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]). Auditoria de roadmap em código: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10]].
+
+Aprofundamento conceitual dessas três frentes em [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution (Core Concept 06)]] e [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics (Core Concept 08)]].
 
 ---
 

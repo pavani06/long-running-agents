@@ -3,7 +3,7 @@ title: "Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga"
 type: curriculum-core-concept
 aliases: ["rubricas avaliacao", "sistema evals", "rubric design", "quality scoring"]
 tags: [curriculo-conteudo, conceitos-core, evaluation-rubrics, avaliacao-de-qualidade, rubricas-multidimensionais, pontuacao-ponderada, calibracao-de-rubricas, limiares-de-decisao, auditoria-de-avaliacao, observabilidade-de-qualidade, diagnostico-de-desempenho]
-relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/magnitude-direction-verifier-split|Magnitude-Direction Verifier Split]]"]
+relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/magnitude-direction-verifier-split|Magnitude-Direction Verifier Split]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[docs/canonical/gap-to-content-feedback-circuit|Gap-to-Content Feedback Circuit]]", "[[docs/canonical/workflow-derived-golden-question-set|Workflow-Derived Golden Question Set]]", "[[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]]", "[[docs/canonical/retention-gated-phased-rollout|Retention-Gated Phased Rollout]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9: Trial-Retention Attribution Split]]"]
 last_updated: 2026-06-16
 ---
 # 🎯 Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga
@@ -787,6 +787,81 @@ O Living Eval Dataset diz que o dataset cresce com produção. O *Production-Con
 
 Para o padrão completo: [[docs/canonical/production-contact-training-loop|Production-Contact Training Loop]].
 
+### O quarto quadrante: do gap de demanda ao conteúdo gerado
+
+Os circuitos deste módulo convertem a colheita de produção em três artefatos: casos de eval (Living Eval Dataset, Regression Flywheel), políticas e regras (on-policy updates) e itens de backlog (QA-to-Backlog). O *Gap-to-Content Feedback Circuit* (caso Snowflake) nomeia o quarto artefato que faltava: **conteúdo de conhecimento gerado** — e o gatilho que faltava: **demanda medida**, não palpite de roadmap.
+
+O instante concreto: um novo produto é lançado; vendedores recebem perguntas que ninguém sabe responder; o conhecimento existe disperso em Confluence, Jira, Slack e PRDs; a battle card de enablement chega semanas depois, defasada — e o agente, que responde essas mesmas perguntas, não fica sabendo de nada. Três consumidores do mesmo gap com três loops manuais independentes.
+
+O circuito fecha nos dois sentidos:
+
+1. **Trigger demand-side:** query nos logs classificados (seção seguinte) por tópicos emergentes ou sem resposta — o que dispara a geração é demanda medida.
+2. **Geração com artefato duplo:** ingerir as fontes internas relacionadas e gerar battle cards e docs de enablement em minutos — o mesmo conteúdo serve ao humano (enablement) e ao agente (conhecimento), sincronizados da mesma fonte.
+3. **Feed-back:** o conteúdo gerado volta ao agente como fonte de conhecimento, não só como documento para o time.
+4. **Confirmação de fechamento:** o circuito só fecha quando os logs subsequentes mostram o gap sumido — o próprio instrumento de detecção é o verificador.
+
+Riscos declarados: qualidade de ingestão varia entre fontes; conteúdo gerado precisa de review antes de voltar ao agente (o estágio review-deploy do [[docs/canonical/confidence-gated-continual-learning|Confidence-Gated Continual Learning]] aplica); e **feedback echo** — as respostas do próprio agente moldam os logs de perguntas futuros, amplificando vieses.
+
+Para o padrão completo: [[docs/canonical/gap-to-content-feedback-circuit|Gap-to-Content Feedback Circuit]].
+
+## 🛰️ LLM-Classified Log Taxonomy: o Radar do Lado da Demanda
+
+Todos os instrumentos de classificação deste módulo — LLM-as-Judge na Camada 2, o Failure Pattern Classification Loop, o dashboard de qualidade — olham para o **lado da oferta**: o que o agente fez, onde ele falhou, como regrediu. O *LLM-Classified Log Taxonomy* (caso Snowflake: 6.000 usuários, 1,2M perguntas, ~40k/semana) aponta a mesma máquina para o lado oposto: **classificar o que os usuários pedem**, em escala, com custo controlado.
+
+O problema é de volume: dezenas de milhares de perguntas por semana não podem ser lidas por humanos, e entrevistas amostram uma fração minúscula e atrasada da demanda real. O loop tradicional de detecção de gaps de conhecimento exigiria ~100 entrevistas de vendedores por semana — um loop que humanos não sustentam. Sem o instrumento, três consumidores ficam cegos: **produto** (não vê onde a demanda se concentra), **enablement** (não sabe que conteúdo produzir) e o **roadmap de cobertura** (não tem evidência para sequenciar expansão).
+
+### Componentes e fluxo
+
+| Componente | Função |
+|---|---|
+| Pipeline de coleta de logs | Perguntas de produção em volume (~40k/semana no caso-fonte) |
+| Job de classificação LLM com controles de custo | Classifica cada pergunta na taxonomia sem "quebrar o banco" — tiering de modelo e amostragem deliberados |
+| Store de taxonomia hierárquica | category → subcategory → example questions |
+| Queries de feature-gap radar | Concentrações de perguntas sem resposta ou respondidas mal (perguntas repetidas, usuários frustrados com o agente) |
+
+Fluxo: coletar logs → classificar na taxonomia a custo controlado → evidenciar concentrações de tópicos não respondidos/pobres → expor a taxonomia para os consumidores downstream (o circuito gap-to-content acima; o roadmap de cobertura do trust scoping em Evals-as-Brakes abaixo).
+
+```yaml
+# demand_taxonomy_job.yaml
+source: "question_logs (production)"
+classification:
+  engine: "llm-judge com model tiering"     # barato para rotear, caro só na borda
+  sampling: "amostragem estratificada quando o volume estoura o budget"
+  taxonomy_store:
+    levels: [category, subcategory, example_questions]
+feature_gap_radar:
+  query: "concentrações de perguntas sem resposta ou com qualidade proxy ruim"
+  quality_proxies: ["pergunta repetida pelo mesmo usuário", "frustração explícita"]
+consumers: [product_feature_gaps, enablement_content, coverage_roadmap]
+```
+
+### Propriedades operacionais
+
+- **Detecção em minutos:** substitui ~100 entrevistas/semana por lag de minutos — o gap de conhecimento fica visível antes do churn e antes da entrevista.
+- **Um instrumento, três consumidores:** feature gaps para produto, pauta de conteúdo para enablement, evidência para o roadmap de cobertura.
+- **Sinais de qualidade como proxies heurísticos:** perguntas repetidas e frustração do usuário marcam gaps mesmo sem eval formal do tópico.
+- **Cold start e drift:** a taxonomia precisa de volume acumulado antes de ser útil, e drift exige manutenção e re-classificação contínuas — a engenharia de custo (tiering, amostragem) é parte do padrão, não detalhe de implementação.
+
+### A simetria oferta/demanda
+
+| | Lado da oferta (já coberto) | Lado da demanda (este padrão) |
+|---|---|---|
+| Objeto classificado | Comportamento e falhas do agente | Perguntas dos usuários |
+| Mecânica | LLM-as-Judge + taxonomia de root cause (Failure Pattern Classification Loop) | Classificação LLM + taxonomia hierárquica de demanda |
+| Superfície | Eval dashboard (regressões de qualidade em minutos) | Feature-gap radar (concentrações de demanda em minutos) |
+| Consumidor | Time de engenharia | Produto, enablement, roadmap de cobertura |
+
+A mecânica de classificação já existe neste currículo em profundidade — o reframe é o objeto: **a mesma máquina, invertida de falha para demanda**.
+
+**Conexões:** alimenta o [[docs/canonical/gap-to-content-feedback-circuit|Gap-to-Content Feedback Circuit]] (o radar é o trigger upstream); evidencia onde expandir cobertura no [[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]] (visto em Evals-as-Brakes abaixo); é candidato à mesma posição de "primeira tela aberta" que o [[docs/canonical/eval-dashboard-primary-detection-surface|Eval Dashboard Primary Detection Surface]] ocupa do lado da oferta; e no pain-signal gate do [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]] o radar substitui heurísticas de reclamação por demanda medida. Para o padrão completo: [[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]].
+
+**Checklist: Demand-Radar Gate**
+- [ ] Logs de perguntas de produção são coletados em volume (sem volume não há demanda para classificar)
+- [ ] A classificação tem custo engenheirado: tiering de modelo e/ou amostragem deliberados, não "classificar tudo com o modelo mais caro"
+- [ ] A taxonomia é hierárquica (category → subcategory → exemplos) e tem owner de manutenção contra drift
+- [ ] O radar expõe concentrações sem resposta/pobres com proxies de qualidade (repetição, frustração)
+- [ ] Pelo menos um consumidor downstream consome a taxonomia (gap-to-content, roadmap de cobertura, backlog de produto)
+
 ## 🎯 Business-Outcome-First: Definir Sucesso em Termos de Negócio Antes de Construir Infraestrutura de Eval
 
 O *Business-Outcome-First Eval Pipeline* de Bhaumik corrige uma inversão comum: times de engenharia constroem pipelines de avaliação começando por métricas técnicas (latência, throughput, acurácia) em vez de outcomes de negócio (taxa de deflection, CSAT, impacto em receita). O resultado é um sistema de eval que passa tecnicamente mas falha em entregar valor de negócio — o agente está "correto" mas não está resolvendo o problema do cliente.
@@ -848,6 +923,16 @@ Golden answer (modelo, NÃO usar):
 
 O objetivo final do pipeline é prever, a partir dos eval scores, qual será a taxa de deflection em produção. Se o eval dataset tem 200 casos e o agente passa em 170 (85% pass rate), a expectativa é que ~85% das queries em produção sejam resolvidas sem intervenção humana. Essa correlação deve ser validada empiricamente: comparar pass rate do eval com deflection rate real em produção por 30 dias e ajustar a calibração.
 
+### Step 0: o golden question set derivado do workflow
+
+A sequência acima ancora as golden answers em queries reais de produção — o que pressupõe um sistema rodando. O caso Snowflake adiciona um passo anterior: **autorar o question set a partir do workflow real extraído, antes de qualquer dado ser conectado**. O workflow de vendas foi capturado numa planilha e ~150 perguntas foram escritas a partir dele, independentes do que a implementação expunha; quando o agente finalmente rodou contra o set, a primeira execução marcou 50% de acurácia — o gap de qualidade ficou mensurável **antes de qualquer usuário vê-lo**.
+
+O anti-padrão que o Step 0 elimina: derivar as perguntas de eval do inventário de dados conectados ("o que dá para perguntar?"). Esse eval mede a cobertura da implementação, não o trabalho que o usuário precisa fazer. A objeção de engenharia — "os dados ainda não estão conectados" — é exatamente o ponto: o set não depende do estado da implementação.
+
+Propriedades: ancorado no job-to-be-done, não no inventário de dados; autorável antes de o agente existir; o score de primeira execução vira o **baseline gravado** de qualidade; e o set permanece como instrumento permanente de regressão conforme cobertura e features crescem — é daqui que os 5-15 casos do spot-check set são selecionados, e é o score por zona deste set que o trust scoping (em Evals-as-Brakes abaixo) usa para cortar o escopo de lançamento.
+
+Para o padrão completo: [[docs/canonical/workflow-derived-golden-question-set|Workflow-Derived Golden Question Set]].
+
 ### Checklist: Business-Outcome-First Gate
 
 - [ ] Métrica de sucesso de negócio definida antes de qualquer linha de código de eval (ex: "deflection rate > 60%")
@@ -855,6 +940,8 @@ O objetivo final do pipeline é prever, a partir dos eval scores, qual será a t
 - [ ] Pipeline de comparação (agent output vs. golden answer) implementado e automatizado
 - [ ] Correlação eval-score → business-outcome validada com pelo menos 30 dias de dados de produção
 - [ ] Threshold de go/no-go para deployment baseado em métrica de negócio, não apenas em pass rate técnico
+- [ ] O question set inicial foi autorado a partir do workflow extraído (Step 0), não derivado do inventário de dados conectados
+- [ ] O score de acurácia da primeira execução contra o golden set está gravado como baseline de referência
 
 ## 📏 Outcome-Level Eval Hierarchy: o Outcome de Negócio como Única Fonte de Verdade
 
@@ -886,6 +973,47 @@ Isso conecta o Business-Outcome-First (que define o sucesso antes do pipeline) c
 - [ ] Variáveis de arquitetura só mudam contra resultados de nível 1
 - [ ] Skills só são adicionadas onde clusters de outcome revelam lacunas
 - [ ] O outcome é re-medido após cada mudança; correlação score→outcome verificada
+
+## 🔀 Trial-Retention Attribution Split: Uso Baixo é Sintoma, Não Diagnóstico
+
+A hierarquia de outcome bane KPIs de atividade do readout de decisão. O *Trial-Retention Attribution Split* (caso Snowflake: GTM assistant para 6.000 usuários, 1M+ perguntas) fecha o buraco simétrico do lado da adoção: **métrica agregada de uso vira falso sinal de falha de produto quando mistura duas populações com doenças diferentes** — quem experimentou e não voltou, e quem nunca experimentou.
+
+O cenário de falha: duas semanas depois do GA, o dashboard mostra uso baixo e a conclusão na sala da diretoria é "o assistente não presta". No caso Snowflake, apenas 20% da organização tinha sequer aberto o produto — o alarme era de **ativação**, não de qualidade. Sem o instrumento, a resposta organizacional padrão é rollback ou retrabalho genérico: ataca-se precisão, cobertura e escopo quando o defeito está no change management, ou vice-versa. O custo da atribuição errada é dobrado — o time de produto corrige um produto que não é o gargalo enquanto a falha real de ativação segue invisível.
+
+**A regra de dois ramos com roteamento de dono:**
+
+| Ramo do diagnóstico | Leitura | Dono da correção |
+|---|---|---|
+| Experimentou e não voltou (trial alto, retorno baixo) | Problema de **produto** (qualidade, cobertura, valor percebido) | Time de produto |
+| Nunca experimentou (trial baixo) | Problema de **change management** (onboarding, comunicação, patrocínio) | Owner do lançamento (ativação) |
+
+```yaml
+# activation-split.yaml
+instrumentation:
+  trial_flag: "per-usuário, gravado no primeiro uso real (não no acesso à landing page)"
+  retention: "retorno em janela fixa (ex.: weekly active)"
+denominators:
+  trial_rate: "tentou / elegíveis"
+  return_rate: "voltou / TENTOU"   # dividir por elegíveis diluiria o problema de produto
+guards:
+  min_window_weeks: 2              # primeiras semanas são ruidosas
+  min_cohort: 8                    # coorte pequena não diagnostica nada
+routing:
+  product_problem: "product-team"
+  change_management: "activation-owner"
+cadence: re-verificar o split após cada intervenção
+```
+
+Os dois denominadores carregam o diagnóstico: retorno é condicional a ter experimentado, então divide por quem tentou; trial olha a população elegível inteira, porque o ramo never-tried é definido por quem ficou de fora. A regra é scale-free — squad, região ou org inteira usam as mesmas guardas e os mesmos pisos.
+
+A simetria com o resto deste core concept é direta: eval scores viram falsos sinais de segurança quando param de predizer outcomes de usuário ([[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]] — e a retenção medida aqui é um desses outcomes); uso agregado vira falso sinal de *falha de produto* quando deixa de separar qual população está sendo medida. O split é apenas diagnóstico: não corrige nada sozinho, roteia a propriedade do fix e desarma o alarme de gestão com mecanismo, não com argumento. O ramo never-tried dispara o trabalho de ativação ([[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]], visto em [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]]); o ramo tried-and-did-not-return bloqueia a progressão de rollout faseado e pode indicar estagnação na escada de valor ([[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]). Para a implementação completa em código — instrumentação, guardas estatísticos e pipeline de re-check: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9]]. Para o padrão completo: [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]].
+
+**Checklist: Attribution Split Gate**
+- [ ] Telemetria per-usuário distingue "experimentou" (trial flag) de "voltou" (retorno em janela fixa) desde o dia um
+- [ ] O denominador do retorno é quem tentou, não a população elegível
+- [ ] Janela de medição estável (mínimo 2 semanas) e coorte mínima antes de qualquer veredito
+- [ ] Cada ramo tem dono nomeado; a intervenção errada fica visível porque o split não se move
+- [ ] Nenhuma decisão de rollback lê "uso baixo" agregado sem passar pelo split antes
 
 ## 🚦 Evals-as-Brakes: Velocidade como Função da Qualidade dos Freios
 
@@ -921,11 +1049,21 @@ risk_response:
 
 Os hooks de enforcement já existem no ecossistema: [[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]] (relatório de eval em PR que toca comportamento de agente; merge bloqueado por threshold) e [[docs/canonical/accidental-brake-replacement|Accidental Brake Replacement]] (freio burocrático lento substituído por freio de eval intencional). Para o padrão completo: [[docs/canonical/evals-as-brakes|Evals-as-Brakes]].
 
+### Freios também dimensionam a superfície de lançamento
+
+O acoplamento gás/freio governa a velocidade de deploy. O caso Snowflake estende o mesmo freio a outro dial: **o escopo user-facing do lançamento**. A economia que motiva: as **primeiras ~5 perguntas** decidem se o usuário volta, e confiança perdida custa 10x para recuperar — ou nunca é recuperada. Um launch amplo a 70% de acurácia maximiza a superfície de primeiros contatos ruins; cada usuário que queima as 5 perguntas numa zona fraca escreve o produto como "não funciona", independentemente da qualidade nas zonas boas.
+
+A regra de corte: **50 perguntas a 95% de acurácia em vez de 100 a 70**. Mapear o espaço de perguntas candidatas em zonas de acurácia (exige o golden question set com score por zona — o Step 0 acima), publicar na superfície user-facing apenas a zona alta, e tratar cobertura como **roadmap pós-launch**: no caso-fonte, 60% dos dados foram adicionados 6-7 meses depois do lançamento. A dinâmica contra-intuitiva que o caso comprova: começar pequeno não bloqueou a adoção — usuários atendidos na zona alta passam a pedir mais ("Can I get more of that?"), e esse sinal de demanda é o gatilho operacional de expansão, monitorado em vez de palpitado.
+
+Para o padrão completo: [[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]].
+
 **Checklist: Gas/Brake Coupling**
 - [ ] Existe política escrita que amarra tier de velocidade de deploy a tier de cobertura de eval
 - [ ] Aumentar velocidade só é possível investindo em evals (o investimento é o destravador)
 - [ ] Incidente gera caso de eval + cobertura maior; nunca cooling period permanente
 - [ ] Eval ruim dá sinal sem verdade: cobertura é medida sobre comportamentos alterados, e correlação com produção é rastreada
+- [ ] O escopo de launch foi cortado pela zona de alta acurácia (50@95% > 100@70%), não pelo inventário de dados
+- [ ] Existe monitor do sinal de demanda ("usuários pedindo mais") como gatilho da expansão de cobertura pós-launch
 
 ## 💰 Eval-Investment Parity: a Regra 50/50 entre Agentes e Evals
 
@@ -982,12 +1120,22 @@ exit: [escalar-próxima-cidade, iterar-harness, matar]
 
 **Conexões:** o readout é Business-Outcome-First levado ao extremo (lucro é o outcome); o alvo duro pressupõe os freios (Evals-as-Brakes) e a intenção de escala (frota) do harness padrão; o canal de notas de voz é o mesmo do [[docs/canonical/sidekick-pattern-physical-boundaries|Sidekick Pattern]] visto de cima. A advertência: valor vem de profundidade (enumerar cada número e cliente), não de altitude; sem unidade genuinamente isolável, o padrão não aplica. Para o padrão completo: [[docs/canonical/carve-out-pilot-hard-target|Carve-Out Pilot with Hard P&L Target]].
 
+### O outro eixo de rollout: a população de usuários
+
+O carve-out faseia o rollout no eixo organizacional (uma cidade); o canary faseia no eixo de infraestrutura (tráfego). O caso Snowflake completa o quadro com o eixo que faltava: **a população de usuários, com gate de retenção**. Piloto com cohort AI-native que dá feedback (lixar arestas por semanas) → beta de 10% (~600 de 6.000) → GA para a organização inteira, onde o GA só abre quando a **retenção weekly-active supera 70%**.
+
+A carga mecânica distintiva: o gate de GA combina três provas — acurácia (a zona de qualidade do trust scoping), cobertura (dados must-have conectados) e retenção (fit real de workflow, não novidade). E o que define "dado must-have" não é entrevista: é **clustering de concentração de requests** — a distribuição dos pedidos reais "connect this data" no beta revela se existe MVP para os workflows diários. Uso de novidade mascara falta de fit; retenção weekly-active como gate impede que a progressão de fases avance sobre sinais falsos — o análogo, do lado do usuário, dos scores verdes que deixam de predizer outcomes. Pós-GA, o [[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]] assume o monitoramento da retenção que este gate instalou.
+
+Para o padrão completo: [[docs/canonical/retention-gated-phased-rollout|Retention-Gated Phased Rollout]].
+
 **Checklist: Hard-Target Pilot Gate**
 - [ ] A unidade é contida por fronteira organizacional com P&L próprio (não um slice de workflow)
 - [ ] O agente opera o harness padrão, idêntico ao da frota-alvo
 - [ ] O alvo financeiro é numérico, pré-registrado antes do início e propriedade do agente
 - [ ] Existe loop diário plano-push → telemetria de retorno dos executores
 - [ ] A regra de saída (escalar, iterar, matar) foi decidida antes, pelo número
+- [ ] A progressão de rollout tem gate de retenção (ex.: weekly-active > 70%) além do readout de qualidade
+- [ ] Dados must-have são definidos por clustering de requests reais, não por entrevistas
 
 ## 🧪 Trace Reading + Rubrics: Diagnosticando Underperformance
 

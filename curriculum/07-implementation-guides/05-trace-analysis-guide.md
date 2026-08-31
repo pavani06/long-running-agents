@@ -3,7 +3,7 @@ title: "Guia de Análise de Traces: Do Sintoma ao Diagnóstico"
 type: curriculum-guide
 aliases: ["analise trace", "debug traces", "trace guide", "guia implementacao"]
 tags: [curriculo-conteudo, guia-implementacao, traces, debugging, diagnostico, troubleshooting, analise-temporal, causa-raiz, observabilidade, incidentes]
-relates-to: ["[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading Lesson]]"]
+relates-to: ["[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading Lesson]]"]
 last_updated: 2026-06-10
 ---
 # 🔍 Guia de Análise de Traces: Do Sintoma ao Diagnóstico
@@ -2563,6 +2563,12 @@ O dashboard consome o mesmo pipeline de traces descrito neste guia. A diferença
 - Layer 2 (LLM-as-Judge) tem taxa de erro própria e pode gerar falsos positivos. Calibrar thresholds por categoria reduz alert fatigue
 - O dashboard é superfície de **detecção**, não de **diagnóstico** — ele mostra que a qualidade caiu, mas você ainda precisa dos traces para descobrir por quê
 
+### A outra metade do dashboard: o radar de demanda
+
+O dashboard acima detecta regressões do **lado da oferta** — o que o agente fez de errado. O *LLM-Classified Log Taxonomy* (caso Snowflake: ~40k perguntas/semana) é a superfície espelhada do **lado da demanda**: um pipeline de classificação LLM com custo controlado (tiering de modelo, amostragem) que classifica cada pergunta de usuário numa taxonomia hierárquica (category → subcategory → example questions) e expõe o **feature-gap radar** — concentrações de perguntas sem resposta ou respondidas mal, marcadas por proxies de qualidade (perguntas repetidas, frustração explícita do usuário).
+
+A simetria vale a pena nomear: o eval dashboard mostra em minutos que a qualidade caiu; o radar de demanda mostra em minutos onde a demanda se concentra. Um serve ao time de engenharia; o outro, a produto, enablement e ao roadmap de cobertura — no caso-fonte, substituiu um loop de ~100 entrevistas de vendedores por semana por detecção com lag de minutos. Os dois compartilham os requisitos operacionais: dados em volume, calibração contra falsos positivos, e a consciência de que a superfície **detecta** (mostra a concentração), não **diagnostica** (decidir o que fazer com o gap é o circuito gap-to-content, visto em [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]). Para o padrão completo: [[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]].
+
 ### Checklist de maturidade do eval dashboard
 
 - [ ] Pass rates por camada (1, 2, 3) visíveis em tempo real (atualização < 5 min)
@@ -2571,6 +2577,7 @@ O dashboard consome o mesmo pipeline de traces descrito neste guia. A diferença
 - [ ] Drill-down funcional: alerta → categoria → query específica → trace completo
 - [ ] Trend visualization cobre pelo menos 7 dias para detectar degradação lenta
 - [ ] O dashboard é o primeiro lugar que o time abre durante um incidente — essa é a prova de que ele é a superfície primária
+- [ ] O lado da demanda tem superfície equivalente: logs de perguntas classificados em taxonomia com feature-gap radar visível junto ao eval dashboard
 
 ---
 
