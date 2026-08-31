@@ -211,3 +211,15 @@ Toca o substrato compartilhado (as skills são o protocolo entre sessões), mas 
 - 3 eixos documentados: sim.
 - Placeholders: nenhum (o único valor "a preencher na execução" é o recount do T9, cujo comando e valor esperado estão explícitos).
 - Rastreabilidade: intent-five-part → seção Intent; constraint-budget → 7 constraints em linguagem de negócio; manual-brake → "Vale a pena?"; measured-harness-evolution → Eixo 2 (patches como STABILIZE dirigido por dor medida em 2 runs). Desvio: constraint-failure-decision-rule não injetado (tier yellow), mesma justificativa do Round 1.
+
+---
+
+## Carimbo de execução
+
+**Executado em 2026-08-31 nesta sessão (qi-epic epic #168, issues #169-#180, todas fechadas com handoff).**
+
+- Commits: long-running-agents `da3a141` (commit A: skills + plan docs) · `9e1651c` (commit B: artefatos de análise) · raw-knowledge `310b097` (commit C: ingest SKILL + log.md)
+- Re-verificação: **9/9 findings PASS** (um check determinístico por finding, todos os aceites das issues verificados no disco)
+- Gate E2E (T1): simulação do novo Passo 0a com `BASE_COMMIT=b7e45fe` → scan=23, diff bruto=23, reconciliação razão 1.0 PASS. O scan enxerga o run anterior inteiro (pipeline + hardening), que é o comportamento correto: o modelo 2026-08-31 descreve o repo na Phase 0, antes do próprio output. O gate esperava errado "só os arquivos de hardening" — correção registrada aqui.
+- Desvios documentados: (1) Fases 1-2 do qi-loop puladas (diagnóstico = adversarial review; RECs persistidos em `~/.reflection/qi-loop-iter2-recommendations.md`); (2) `task-wrapper.sh` ausente — trace instrumentation pulada; (3) aceite da issue #169 ajustado: `diff-filter=A`=2 com composição 1 comando (fallback) + 1 comentário ("SEM --diff-filter=A"), porque o E2E pegou o scan com filtro subcontando `atualizacao`; (4) estado do qi-loop em `~/.reflection/qi-loop-iter2-state-long-running-agents.json` (o `state.json` global pertence à sonda #27, intocado).
+- Ruído fora do stage: nenhum — `git status` limpo nos 3 repos após push e ff-sync.
