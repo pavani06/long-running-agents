@@ -3,9 +3,13 @@
 # Scope: repository only. External source NOT analyzed.
 # Deltas aplicados: 3 (commit f19cb1d: 2 skills endurecidas + 1 plano novo).
 # Drift extra detectado no Passo 0b: o output Phase 4 do proprio run GTM (commit 5292e11,
-# 21:13:47) postdatou em segundos o snapshot da base (yaml copiado 21:14:47) e o scan por
-# mtime do Passo 0a nao o capturou — 12 canonical docs + 2 skills + 2 exercises + 9
-# enriquecimentos de curriculum foram incorporados a este modelo.
+# author 21:13:27, mtimes 21:14:47.3338) ANTEDATA o snapshot da base (yaml copiado
+# 21:14:47.3378, 4ms depois) e o scan por mtime do Passo 0a nao o capturou — 12 canonical
+# docs + 2 skills + 2 exercises + 9 enriquecimentos de curriculum foram incorporados
+# a este modelo. (Fontes: git log --format=%ai/%ci 5292e11; stat.)
+# Correcao de registro (issue #176): a versao anterior deste header invertia a
+# causalidade e citava um timestamp sem fonte verificavel. Ver delta-report.md,
+# secao Errata.
 meta:
   title: "Mental Model: The Last Human Code Review — Building Trust in AI-Generated Code (Repository Incremental Update)"
   date: '2026-08-31'
@@ -13,6 +17,7 @@ meta:
   type: 'mental-model'
   based_on: '2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-mental-model.yaml'
   repo_path: '/home/pavanpavan/long-running-agents'
+  base_commit: 'b7e45fe'
 
 goals:
   - "Base de conhecimento e currículo para agentes long-running confiáveis: sistemas de IA que operam por horas ou dias sem perder contexto, planejamento ou julgamento de qualidade (README.md:12)."

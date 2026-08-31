@@ -80,3 +80,23 @@ Os 3 deltas concentram-se em dois pontos do modelo:
   as remanescentes devem entrar.
 
 Todo o restante do modelo base permanece válido e não deve ser reescrito.
+
+## Errata (2026-08-31, pós-descoberta de drift)
+
+Escrita após o Passo 0b detectar drift que este report não capturou. O histórico
+acima é preservado como registrado na época; o que está errado nele:
+
+1. **Total real de deltas: 28**, não 3. O output da Phase 4 do próprio run GTM
+   (commit `5292e11`: 12 canonical docs + 2 skills + 2 exercises + 9 enriquecimentos
+   de curriculum = 25 itens) ficou invisível ao scan por mtime, somando-se aos
+   3 deltas verdadeiros documentados acima.
+2. **A premissa da exclusão de `docs/analysis/**` era falsa.** O report dizia
+   "artefatos dos runs anteriores, já refletidos na base" — impossível para o run
+   que PRODUZIU a base: a Phase 0 daquele run precede a Phase 4 do mesmo run, então
+   o snapshot da base não contém o output dela. Essa premissa é a raiz de por que
+   o total "3" não foi questionado.
+3. **O modo incremental foi mantido por decisão do operador** com o drift já
+   absorbido pelo Passo 0b (contagens corrigidas no modelo: 142→154 canonical,
+   33→35 skills). Sob as regras corretas, ~28 deltas (> 10) teriam forçado full
+   rebuild; o gate novo do Commit Gate ("drift detectado ⇒ errata antes do commit")
+   passa a exigir esta emenda nesses casos.
