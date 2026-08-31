@@ -167,3 +167,15 @@ Toca componentes compartilhados (as skills SÃO o protocolo entre sessões), mas
 - 3 eixos documentados: sim.
 - Placeholders: nenhum.
 - Rastreabilidade aos canons: intent-five-part → seção Intent com 5 campos; constraint-budget → 6 constraints direcionais em business language (nenhum nomeia ferramenta/padrão de implementação); manual-brake → seção "Vale a pena?"; measured-harness-evolution → Eixo 2 (remoção do tiering como decisão STABILIZE-por-dor). Desvio: constraint-failure-decision-rule não injetado (tier yellow) — classificação constraint-vs-failure do plano usa o bom senso das definições presentes nos canons carregados.
+
+---
+
+## Carimbo de execução
+
+**Executado em 2026-08-31 via qi-epic (epic #157, issues #158-#167, todos fechados com handoff).**
+
+- Commits: Raw-Knowledge `1c927a4` (skills wrapper+indexer) · long-running-agents `f19cb1d` (skills pipeline + este plano)
+- Re-verificação: **8/8 critérios PASS** (um check determinístico por finding)
+- Desvios documentados: (1) Fases 1-3 do qi-epic puladas — diagnóstico/prescrição/plano já existiam (análise adversarial in-session); (2) task-wrapper.sh ausente — trace instrumentation pulada; (3) quoting de backticks truncou 5 comentários de handoff — corrigidos com comentários completos de seguimento.
+- Ruído fora do stage: `.obsidian/` e edição pré-existente em analysis de 2026-06-26 permanecem não-commitados no vault (estado local do operador, intocado).
+
