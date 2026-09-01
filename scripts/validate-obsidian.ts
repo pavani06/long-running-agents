@@ -2,7 +2,7 @@
 /**
  * validate-obsidian.ts — Obsidian convention validator for long-running-agents.
  * Replaces scripts/check-obsidian-conventions.sh with typed queries over
- * the @pavani/obsidian-eval library.
+ * the @pavani_org/obsidian-eval library.
  *
  * Usage:
  *   npx tsx scripts/validate-obsidian.ts [--checks <list>] [--paths <list>] [--json] [--no-cache]
@@ -46,8 +46,8 @@
  *       2 on CLI usage error.
  */
 
-import { scan, parseFrontmatter, extractWikilinkTargets, walkMdFiles } from "@pavani/obsidian-eval";
-import type { Vault } from "@pavani/obsidian-eval";
+import { scan, parseFrontmatter, extractWikilinkTargets, walkMdFiles } from "@pavani_org/obsidian-eval";
+import type { Vault } from "@pavani_org/obsidian-eval";
 import { resolve, dirname, relative } from "node:path";
 import { readFileSync, existsSync, readdirSync, writeFileSync, renameSync, mkdirSync } from "node:fs";
 import { createHash } from "node:crypto";
