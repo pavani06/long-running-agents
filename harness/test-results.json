@@ -2,93 +2,93 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-mental-model.md",
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-mental-model.yaml"
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-mental-model.md",
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-mental-model.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
-    "duration_seconds": 888,
+    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
+    "duration_seconds": 585,
     "retry_count": 0,
-    "started_at": "2026-08-31T16:43:24Z",
-    "completed_at": "2026-08-31T16:58:12Z",
+    "started_at": "2026-09-01T00:21:01Z",
+    "completed_at": "2026-09-01T00:30:46Z",
     "verification_depth": "semantic"
   },
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-analysis.md",
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-analysis.yaml"
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md",
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de conhecimento da fonte — Phase 1",
-    "duration_seconds": 431,
+    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
+    "duration_seconds": 585,
     "retry_count": 0,
-    "started_at": "2026-08-31T16:43:24Z",
-    "completed_at": "2026-08-31T16:50:35Z",
+    "started_at": "2026-09-01T00:21:01Z",
+    "completed_at": "2026-09-01T00:30:46Z",
     "verification_depth": "semantic"
   },
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns.md",
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns.yaml"
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns.md",
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de padroes reutilizaveis — Phase 2",
-    "duration_seconds": 539,
+    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
+    "duration_seconds": 334,
     "retry_count": 0,
-    "started_at": "2026-08-31T17:02:09Z",
-    "completed_at": "2026-08-31T17:11:08Z",
+    "started_at": "2026-09-01T00:32:16Z",
+    "completed_at": "2026-09-01T00:38:34Z",
     "verification_depth": "semantic"
   },
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.md",
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification.yaml"
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.md",
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Classificacao contra repositorio — Phase 3",
-    "duration_seconds": 660,
+    "notes": "Classificacao contra repositorio \u2014 Phase 3",
+    "duration_seconds": 58,
     "retry_count": 0,
-    "started_at": "2026-08-31T17:12:52Z",
-    "completed_at": "2026-08-31T17:23:52Z",
+    "started_at": "2026-09-01T00:39:25Z",
+    "completed_at": "2026-09-01T00:48:28Z",
     "verification_depth": "semantic"
   },
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-artifacts.yaml",
-      "docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-artifacts.md"
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-artifacts.yaml",
+      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-artifacts.md"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
-    "duration_seconds": 941,
+    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
+    "duration_seconds": 305,
     "retry_count": 0,
-    "started_at": "2026-08-31T17:24:55Z",
-    "completed_at": "2026-08-31T17:40:36Z",
+    "started_at": "2026-09-01T00:48:28Z",
+    "completed_at": "2026-09-01T01:08:05Z",
     "verification_depth": "semantic"
   },
   "phase-5": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Integracao — atualiza system-of-record e indices",
-    "duration_seconds": 306,
+    "notes": "Integracao \u2014 atualiza system-of-record e indices",
+    "duration_seconds": 290,
     "retry_count": 0,
-    "started_at": "2026-08-31T17:43:04Z",
-    "completed_at": "2026-08-31T17:48:10Z",
+    "started_at": null,
+    "completed_at": "2026-09-01T01:14:02Z",
     "verification_depth": "semantic"
   },
   "phase-6": {
     "passes": true,
     "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Curriculum Deep Integration — opcional",
-    "duration_seconds": 413,
+    "notes": "Curriculum Deep Integration \u2014 opcional",
+    "duration_seconds": 590,
     "retry_count": 0,
-    "started_at": "2026-08-31T17:49:44Z",
-    "completed_at": "2026-08-31T17:56:37Z",
+    "started_at": "2026-09-01T01:14:12Z",
+    "completed_at": "2026-09-01T01:25:42Z",
     "verification_depth": "semantic"
   }
 }
