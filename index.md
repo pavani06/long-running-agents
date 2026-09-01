@@ -1,4 +1,5 @@
 ---
+domain: agent-patterns
 title: "Long-Running Agents — Knowledge Index"
 type: index
 aliases: ["index", "home", "mapa"]
