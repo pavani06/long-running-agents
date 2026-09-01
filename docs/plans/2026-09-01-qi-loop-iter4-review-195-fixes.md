@@ -1,3 +1,12 @@
+---
+title: "QI-loop iter 4: correções do adversarial review da execução da issue #195"
+type: plan
+date: 2026-09-01
+aliases: ["qi-loop iter 4", "plano correções review 195", "epic 197"]
+tags: ["governanca", "harness-engineering"]
+relates-to: ["[[docs/plans/2026-08-31-adversarial-review-pipeline-hardening|Pipeline Hardening Round 2]]"]
+---
+
 # QI-loop iter 4 — Plano: correções do adversarial review da issue #195
 
 **Data:** 2026-09-01 · **RECs:** `~/.reflection/qi-loop-iter4-recommendations.md` · **Fonte:** `~/sisyphus-runtime/docs/analysis/2026-09-01-adversarial-review-issue-195-execution.md`
