@@ -1,0 +1,483 @@
+meta:
+  title: "Agentic Patterns from Clay's Eval Stack (300M Agent Runs, One LangSmith Pipeline)"
+  source: "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis|Clay Eval Stack Analysis]]"
+  date: 2026-08-31
+  type: "patterns"
+  scope: "Extracted only from the Phase 1 knowledge extraction; only patterns applicable to agentic systems kept."
+patterns:
+  - name: "Eval Coverage Matrix"
+    problem_solved: "Agent teams over-invest in a single evaluation style (usually offline goldens) and stay blind to failure modes that live in other determinism/deployment combinations."
+    inputs:
+      - "Catalog of eval mechanisms: goldens, structured checks, LLM-as-judge, simulated users, A/B metrics, online evaluators, bulk trace analysis, human eval."
+      - "Two classification axes: determinism (deterministic vs nondeterministic) and deployment (offline vs online)."
+      - "Production observability constraints (trace volume, customer contact capacity)."
+    outputs:
+      - "A 2x2 coverage map with a few mechanisms in each quadrant rather than depth in one."
+      - "A gap list of uncovered quadrants."
+      - "An allocation of eval investment across mechanisms."
+    benefits:
+      - "Prevents single-quadrant blind spots; each failure-mode class gets at least one detector."
+      - "Makes online nondeterministic signal (perceived quality, user correction) a first-class eval input."
+      - "Gives a shared vocabulary for arguing about what the eval portfolio is missing."
+    limitations:
+      - "Coverage goal dilutes depth; a few mechanisms per box is a floor, not a target."
+      - "Online quadrants require production instrumentation and real traffic."
+      - "Quadrant labels hide large cost differences between mechanisms."
+    components:
+      - "Determinism axis (deterministic vs nondeterministic)"
+      - "Deployment axis (offline vs online)"
+      - "Mechanism catalog (goldens, structured checks, LLM judges, simulated users, A/B metrics, online evaluators, bulk trace analysis, human eval)"
+      - "Coverage goal (a few mechanisms per quadrant)"
+    flow:
+      - "Inventory existing eval mechanisms."
+      - "Place each mechanism on the 2x2 (determinism x offline/online)."
+      - "Identify empty or thin quadrants."
+      - "Add at least a few mechanisms to each quadrant."
+      - "Re-audit coverage as the product and volume grow."
+
+  - name: "Environment-Tiered Eval Fidelity"
+    problem_solved: "A single eval environment either reproduces production (slow, expensive, blocks local iteration) or is fast but drifts from production behavior."
+    inputs:
+      - "Per-environment fidelity requirements."
+      - "Local harness intentionally without sandbox or virtual filesystem."
+      - "Staging harness kept as close as possible to the production harness."
+      - "Developer workflow constraints (meet developers where they are)."
+    outputs:
+      - "Tier assignment per eval type (local, staging, production)."
+      - "A local suite that is cheap and fast by design."
+      - "A staging suite sharing the production harness for pre-release claims."
+    benefits:
+      - "Local speed sustains the developer habit of running evals constantly."
+      - "Staging fidelity preserves signal validity for release decisions."
+      - "Explicit tiering stops pretending that local results equal production results."
+    limitations:
+      - "Local tier knowingly lacks fidelity; its results cannot gate production claims."
+      - "Maintaining staging/production harness parity costs ongoing engineering."
+      - "Bugs that only reproduce with sandbox/VFS/real dependencies escape the local tier."
+    components:
+      - "Local tier (cheap, fast, no sandbox/VFS, intentionally low fidelity)"
+      - "Staging tier (shares the production harness)"
+      - "Production tier (real harness)"
+      - "Developer ergonomics rule"
+    flow:
+      - "Assign each eval type to an environment tier."
+      - "Run fast low-fidelity checks locally during development."
+      - "Promote candidate changes to staging running the same harness as production."
+      - "Trust only production-parity tiers for release claims."
+
+  - name: "Production-to-Offline Feedback Loop with Drift Taxonomy"
+    problem_solved: "Offline eval sets silently stop representing production, so passing evals coexist with a degrading product."
+    inputs:
+      - "Production signals: online evaluator examples, customer support tickets, perceived-eval events (user corrections)."
+      - "Human-annotated goldens."
+      - "Use-case classifier and use-case tagging over production traces."
+      - "The current offline eval set."
+    outputs:
+      - "Refreshed eval examples pulled from production."
+      - "Drift diagnosis classified into three modes: data drift, judge drift, eval-set mirroring."
+      - "Coverage audit comparing tested use cases against real production use cases."
+    benefits:
+      - "Separates three distinct failure modes instead of fighting an undifferentiated sense that evals feel stale."
+      - "Converts support tickets and user corrections into high-quality eval fuel."
+      - "Human-annotated goldens give a reference signal to detect LLM-judge overfitting."
+    limitations:
+      - "Declared unsolved at scale; the loop always lags production changes."
+      - "Requires production instrumentation and human annotation labor."
+      - "Use-case classification can itself mislabel traffic."
+    components:
+      - "Online signal sources (online evaluators, support tickets, perceived-eval events)"
+      - "Human-annotated goldens"
+      - "Drift taxonomy (data drift, judge drift, eval-set mirroring)"
+      - "Use-case classifier and tagging"
+      - "Eval-set refresh process"
+    flow:
+      - "Collect production signals (online evaluator examples, support tickets, user corrections)."
+      - "Classify production traffic by use case."
+      - "Compare tested use cases against production use cases to detect data drift."
+      - "Compare judge verdicts against human-annotated goldens to detect judge drift."
+      - "Rotate and expand eval examples to prevent eval-set mirroring."
+
+  - name: "CLI-First Eval Harness with Remote Persistence"
+    problem_solved: "Eval suites that require provisioning experiments in a platform UI create friction that kills usage."
+    inputs:
+      - "A local command-line eval suite."
+      - "A remote persistence backend for results."
+      - "Eval results and metadata from local runs."
+      - "Versioning requirements."
+    outputs:
+      - "Every result, even from local runs, written to the remote store with version persistence."
+      - "A queryable, comparable history of all eval runs."
+    benefits:
+      - "Removes UI provisioning friction; evals run wherever the developer already is."
+      - "Combines local ergonomics with central durability and versioning in one architecture."
+      - "Makes eval history comparable across runs, prompts, and developers."
+    limitations:
+      - "Requires a write path and connectivity to the remote store."
+      - "Local richness is lower than full platform features."
+      - "The remote store becomes a dependency for history and comparison."
+    components:
+      - "Local CLI eval suite"
+      - "Remote persistence backend"
+      - "Automatic result write-out"
+      - "Versioned result history"
+    flow:
+      - "Run the eval suite from the command line with no platform provisioning."
+      - "Execute locally without sandbox or VFS."
+      - "Write every result to the remote persistence store automatically."
+      - "Query versioned history for comparison across runs."
+
+  - name: "Plug-and-Play Harness with BYO Evaluators"
+    problem_solved: "Every new agent or product reconstructs an evaluation harness from scratch."
+    inputs:
+      - "A shared harness providing execution, reporting, and persistence."
+      - "A product-specific eval suite."
+      - "Product-owned evaluators (LLM judges)."
+    outputs:
+      - "An onboarding path where a new product plugs its suite and evaluators into the existing harness."
+      - "Uniform result storage, reporting, and comparison across products."
+    benefits:
+      - "New agents get evaluation infrastructure for free; only evaluators are authored."
+      - "Evaluation engineering focuses on judges and checks, not plumbing."
+      - "Cross-product comparability of results."
+    limitations:
+      - "The shared harness becomes a crossroad artifact: changes affect all products."
+      - "Evaluator quality remains each product's own burden."
+      - "Harness assumptions can misfit products with exotic execution needs."
+    components:
+      - "Shared eval harness (execution, reporting, persistence)"
+      - "Product-specific eval suite"
+      - "BYO evaluators (LLM judges)"
+      - "Onboarding contract"
+    flow:
+      - "New product authors its eval suite and evaluators."
+      - "Plug the suite into the shared harness."
+      - "Harness executes, reports, and persists results uniformly."
+      - "Product iterates on evaluators without touching harness plumbing."
+
+  - name: "Structured Partial Checks over Exact Goldens"
+    problem_solved: "Exact-output goldens break on irrelevant reordering and the resulting noisy evals end up ignored."
+    inputs:
+      - "An output structure contract to assert against."
+      - "The subset of output parts that actually matter."
+      - "Trajectory and tool-call records of the agent run."
+      - "Optional goldens for simple, stable surfaces."
+    outputs:
+      - "Partial structured assertions that only inspect the parts of the output that matter."
+      - "Trajectory/tool assertions verifying the path (e.g., a pricing question must include reading the pricing table)."
+      - "Goldens retained only for simple surfaces such as a query language."
+    benefits:
+      - "Strictness matched to output stability keeps the suite trusted and alive."
+      - "Trajectory assertions test what the agent did, not just the final text."
+      - "Fewer false failures means developers stop ignoring the suite."
+    limitations:
+      - "Choosing what matters is a judgment call that can hide regressions in ignored parts."
+      - "Partial checks cannot certify full-output correctness."
+      - "Requires structured output to assert against; free-text surfaces resist it."
+    components:
+      - "Partial structured assertions on meaningful output parts"
+      - "Trajectory/tool assertions"
+      - "Golden suite restricted to simple surfaces"
+      - "Output structure contract"
+    flow:
+      - "Define which parts of the output actually matter."
+      - "Assert only those parts in structured checks."
+      - "Assert required tool/trajectory events (e.g., pricing table read)."
+      - "Keep exact goldens only for simple stable surfaces."
+      - "Retire or relax checks that fire on irrelevant reordering."
+
+  - name: "Deterministic Multi-Turn Scripts over Simulated Users"
+    problem_solved: "Evaluating multi-turn agents with a simulated-user LLM adds a second nondeterministic agent that is noisy and needs its own management, updates, and evals."
+    inputs:
+      - "Hardcoded user turns."
+      - "Optionally, seed conversations derived from past real traces."
+      - "The agent under test and conversation-end conditions."
+    outputs:
+      - "Repeatable multi-turn eval runs with fixed user behavior."
+      - "Deterministic comparisons across prompt and harness changes."
+    benefits:
+      - "Removes a component whose maintenance cost exceeded its value."
+      - "Determinism isolates the agent under test as the only varying element."
+      - "Hardcoded turns were operationally the most useful multi-turn format."
+    limitations:
+      - "Fixed turns explore only scripted paths; unscripted conversational drift is not covered."
+      - "Coverage grows only with authoring effort."
+      - "Realism is sacrificed; results overestimate robustness in wild conversations."
+    components:
+      - "Hardcoded user turns"
+      - "Conversation-end conditions"
+      - "Optional seed traces from past real conversations"
+      - "Rejected alternative: simulated-user agent"
+    flow:
+      - "Script the user side of the conversation as fixed turns."
+      - "Run the agent under test against the scripted turns."
+      - "Evaluate final state and trajectory deterministically."
+      - "Compare runs across prompt/harness changes and retire simulated-user agents whose maintenance exceeds value."
+
+  - name: "Perceived-Eval"
+    problem_solved: "Measuring perceived agent quality in production without running explicit surveys constantly."
+    inputs:
+      - "Production conversation traces."
+      - "User correction, pushback, and redirection events."
+      - "NPS/satisfaction scores."
+      - "Behavioral telemetry: leaving the chat for other product areas, stuck, rage quitting."
+    outputs:
+      - "Negative-quality signals extracted from user correction behavior."
+      - "Objective online metrics delimiting perceived failure (chat exit, stuck, rage quit)."
+      - "Session-level inputs to the production-to-offline loop."
+    benefits:
+      - "Treats the user's correction behavior itself as evaluation data."
+      - "No survey fatigue; signal is collected continuously."
+      - "Combines subjective (NPS) and objective (behavioral) online signal."
+    limitations:
+      - "Requires instrumentation to detect corrections and pushback reliably."
+      - "Behavioral metrics can have benign causes (task done, user exploring)."
+      - "Signal resolution is per-session, not per-decision."
+    components:
+      - "Correction/pushback/redirection detector"
+      - "Behavioral metrics (chat exit, stuck, rage quit)"
+      - "NPS/satisfaction scores"
+      - "Online evaluator pipeline"
+    flow:
+      - "Instrument production conversations to capture user corrections and pushback."
+      - "Collect objective behavioral telemetry (exits, stuck, rage quits)."
+      - "Combine implicit signals with periodic explicit satisfaction measures."
+      - "Feed negative-signal sessions into the production-to-offline loop."
+
+  - name: "Unified Tool Surface Flywheel"
+    problem_solved: "Divergence between what the product exposes and what internal agents use duplicates surface area and hides failures."
+    inputs:
+      - "A single tool authority exposed identically as UI, CLI, and public API."
+      - "Internal agents invoking the exact same tools."
+      - "Production failure observations from automated bulk trace analysis and human vibe-based eval."
+    outputs:
+      - "One tool implementation serving internal and external consumers."
+      - "Tool and harness improvements driven by observed invocation failures."
+      - "An improved public API as a side effect of internal agent usage."
+    benefits:
+      - "Every agent tool failure doubles as public API quality signal."
+      - "Fewer surfaces that can diverge means more points where failure signal can be collected."
+      - "Improvements benefit internal agents, external customers, and external agents at once."
+    limitations:
+      - "Larger public failure surface: agent-induced failures are visible."
+      - "Public API design becomes constrained by agent needs."
+      - "Requires discipline to refuse agent-only backdoor tools."
+    components:
+      - "Single tool authority"
+      - "Three exposure surfaces (UI, CLI, public API)"
+      - "Internal agents consuming the same tools"
+      - "Failure signal capture (bulk trace analysis + human vibe eval)"
+      - "Improvement path for tool and harness"
+    flow:
+      - "Implement each capability once and expose it via UI, CLI, and API."
+      - "Give internal agents the exact same tools."
+      - "Observe tool and trajectory failures in production (automated and human review)."
+      - "Feed failures into tool/harness improvements."
+      - "Improvements propagate to internal agents and external API consumers."
+
+  - name: "Shadow Builds on Separated Compute"
+    problem_solved: "Agents building new data models cannot be allowed to put production serving at risk."
+    inputs:
+      - "Agent-generated data model builds."
+      - "A shadow deployment target (S3 in the source)."
+      - "Architectural separation between serving compute and development compute."
+      - "Guardrails defined up front rather than review afterwards."
+    outputs:
+      - "Shadow-built data models deployed without touching production."
+      - "Safe execution of agent experiments."
+      - "A promotion path from shadow build to serving."
+    benefits:
+      - "Experiments cannot take down production by construction, not by policy."
+      - "Anticipatory guardrails replace post-hoc human review of agent builds."
+      - "Grants agents build and deploy autonomy safely."
+    limitations:
+      - "Duplicated infrastructure cost (explicitly uncommon for startups)."
+      - "Shadow and serving environments can drift, invalidating shadow results."
+      - "Promotion criteria still require human gates or their own evals."
+    components:
+      - "Shadow deployment target (S3)"
+      - "Serving compute plane"
+      - "Development compute plane"
+      - "Up-front guardrails"
+      - "Promotion path to serving"
+    flow:
+      - "Define guardrails before granting build autonomy."
+      - "Agent builds a new data model."
+      - "Deploy the model as a shadow build on development compute."
+      - "Validate results without touching serving compute."
+      - "Promote validated models to serving."
+
+  - name: "Agent-First Data Foundation"
+    problem_solved: "Fragmented datastores force agents to spend capacity stitching databases, blocking learning loops."
+    inputs:
+      - "First-party and third-party data."
+      - "The inventory of existing fragmented stores."
+      - "Agents treated as the design-time first-class user."
+      - "Scale requirements for agent-driven compute (e.g., Athena)."
+    outputs:
+      - "A single unified data platform over which agents run."
+      - "Data models that agents can build and deploy on top of the foundation."
+      - "Elimination of cross-database stitching from agent workflows."
+    benefits:
+      - "Converts the datastore into a playground for agents."
+      - "Removes the concrete bottleneck of learning loops (data primitives, not models or evals)."
+      - "Enables long-running data work that fragmentation made impractical."
+    limitations:
+      - "Major architectural migration (four systems in the source case)."
+      - "Unification effort precedes any agent payoff."
+      - "The platform must anticipate agent-scale access patterns and guardrails up front."
+    components:
+      - "Unified data platform (first + third party)"
+      - "Agents as first-class design-time users"
+      - "Consolidation of prior fragmented stores"
+      - "Scalable compute layer (Athena)"
+    flow:
+      - "Inventory fragmented datastores the agents must stitch today."
+      - "Design the unified platform with agents as first-class users."
+      - "Migrate first-party and third-party data onto it."
+      - "Point agent execution and serving at the single platform."
+      - "Retire cross-database stitching from agent workflows."
+
+  - name: "Skills and CLI as Native Agent Data Access"
+    problem_solved: "Agents need to access the data platform natively, without human adapters."
+    inputs:
+      - "Agent-oriented skills and a dedicated CLI."
+      - "Goal-level task statements (here is this goal, I want this data model)."
+      - "Scalable compute for long executions."
+    outputs:
+      - "Long-running (1-2 hours) goal-oriented executions on the data platform."
+      - "New data models built by agents from goal statements."
+    benefits:
+      - "Gives agents the same access ergonomics humans have, at machine scale."
+      - "Goal-level delegation replaces step-level scripting of data work."
+      - "Pairs naturally with shadow builds for safe execution."
+    limitations:
+      - "Long-running execution needs budget and compute management."
+      - "Skills and CLI are an ongoing maintenance surface."
+      - "Poorly specified goals burn hours of compute before failing."
+    components:
+      - "Agent-oriented skills"
+      - "Dedicated CLI"
+      - "Goal-level task statements"
+      - "Long-running execution engine (1-2h) on scalable compute"
+    flow:
+      - "Express the data task as a goal, not a script of steps."
+      - "Agent plans and invokes skills/CLI against the platform."
+      - "Execution runs long (1-2 hours) on scalable compute."
+      - "Results land as new data models (via shadow builds for safety)."
+
+  - name: "Eval-Gated Autonomy"
+    problem_solved: "Delegating changes to agents (prompt changes by code agents, or multi-hour data tasks) is unsafe without a success criterion defined before delegation."
+    inputs:
+      - "An eval suite (built per the coverage matrix)."
+      - "Code agents or data agents requesting autonomy."
+      - "The production safety bar."
+    outputs:
+      - "Autonomy granted as a function of eval quality: eval pass is the gate for agent-made changes."
+      - "The eval suite operating as the contract between developer agents and production."
+      - "Evals-first sequencing: the suite precedes and drives delegation of long tasks."
+    benefits:
+      - "Autonomy becomes a property of the eval suite, not of trust in the agent."
+      - "Agents can iterate on prompts without a human reviewing each diff."
+      - "Long tasks get a definition of success before hours of compute are spent."
+    limitations:
+      - "Only as strong as the eval suite; inherits all of its drift modes."
+      - "Eval gate latency bounds iteration speed."
+      - "Coverage gaps in the suite become direct production risk."
+    components:
+      - "Eval suite (coverage-matrix based)"
+      - "Autonomy gate (eval pass required)"
+      - "Code agents (prompt changes) and data agents (long tasks)"
+      - "Production safety bar"
+    flow:
+      - "Build the eval suite before granting autonomy."
+      - "Require eval pass as the gate for agent-made changes."
+      - "Let code agents iterate on prompts behind the gate."
+      - "Sequence long-task delegation only after evals exist."
+      - "Treat eval quality as the ceiling of safe autonomy."
+
+  - name: "Observability-Threshold Eval Trigger"
+    problem_solved: "Teams under-invest in evals while humans can still inspect every trace, then hit a cliff when volume makes inspection structurally impossible."
+    inputs:
+      - "Volume metrics (runs per month, messages per week)."
+      - "A model of human observation capacity (traces reviewable, customers contactable)."
+      - "Current eval quality."
+    outputs:
+      - "An explicit trigger decision: below threshold, tolerate lightweight evals; above threshold (structural inability to observe), eval investment becomes non-negotiable."
+    benefits:
+      - "Aligns investment with structural need instead of maturity theater."
+      - "Avoids premature eval engineering while observation is still humanly possible."
+      - "Names the failure condition that forces the transition (300M runs/month, 100K messages/week in the source)."
+    limitations:
+      - "Threshold crossing is detected late if volume is not continuously measured."
+      - "Retrofitting evals at scale is harder than starting earlier."
+      - "Thresholds are per-product empirical values, not universal constants."
+    components:
+      - "Volume metrics (runs/month, messages/week)"
+      - "Human observation capacity model"
+      - "Trigger threshold"
+      - "Investment decision rule"
+    flow:
+      - "Measure agent run/message volume continuously."
+      - "Compare volume against human capacity to inspect traces and contact customers."
+      - "Below threshold: tolerate lightweight evals."
+      - "At threshold (structural inability to observe): make eval investment non-negotiable."
+      - "Re-evaluate the trigger as volume grows."
+
+  - name: "Bulk In-Context Trace Analysis"
+    problem_solved: "Vibe-based trace review (humans looking at a handful of examples) cannot find trends across high-volume production traces."
+    inputs:
+      - "Large trace samples (on the order of 10,000 examples)."
+      - "A frontier model with sufficient in-context capacity (the step change that enabled the pattern)."
+      - "Sub-agents, goals, and harnesses to structure the analysis."
+    outputs:
+      - "Trend reports across production traces."
+      - "Candidate failure patterns for eval and test creation."
+      - "A scalable replacement for small-sample vibe review."
+    benefits:
+      - "Scales qualitative review to production volume."
+      - "Findings feed the production-to-offline loop and grow eval sets."
+      - "Frontier-model step changes convert directly into observability."
+    limitations:
+      - "Depends on a model capability step change; smaller models cannot do it."
+      - "The analysis is itself nondeterministic and needs its own validation."
+      - "Cost per analysis pass is nontrivial at 10k-example scale."
+    components:
+      - "Large trace sample (e.g., 10k examples)"
+      - "Frontier model with large in-context capacity"
+      - "Sub-agents, goals, and harnesses"
+      - "Trend-finding prompts"
+    flow:
+      - "Sample production traces at volume."
+      - "Submit the sample in-context to a frontier model with a trend-finding goal."
+      - "Extract recurring failure patterns and trends."
+      - "Convert findings into eval cases and tool/harness improvements."
+
+  - name: "Self-Iterating Agent Loop"
+    problem_solved: "Agent improvement stalls when the data agents reason over is scattered across product silos instead of feeding a single closed loop."
+    inputs:
+      - "Customer data and third-party data unified in one foundation."
+      - "Orchestration and execution of agents over that foundation."
+      - "Observation of execution results."
+      - "A feedback channel back into the foundation."
+    outputs:
+      - "A closed loop in which all parts of the product feed a unified data foundation that agents reason over to build better iterations of themselves."
+    benefits:
+      - "Generalizes the tool flywheel from tools to the entire product."
+      - "Improvement targets become data the agents themselves can act on."
+      - "Architecture and the eval loop share the same substrate."
+    limitations:
+      - "A declared target architecture, not a finished recipe."
+      - "The weakest link (observation, feedback, or data) bounds the whole loop."
+      - "Self-iteration amplifies eval drift if the loop is unguarded."
+    components:
+      - "Unified data foundation (customer + third-party)"
+      - "Orchestration layer"
+      - "Execution layer"
+      - "Result observation"
+      - "Feedback channel into the foundation"
+    flow:
+      - "Unify customer and third-party data in one foundation."
+      - "Orchestrate agents that execute against that foundation."
+      - "Observe execution results."
+      - "Feed observations back into the foundation."
+      - "Agents reason over accumulated feedback to build better iterations of themselves."
