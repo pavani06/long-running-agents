@@ -113,6 +113,8 @@ last_updated: 2026-06-26
 - `02-nivel-2-practical-patterns/exercises/exercise-multi-provider-routing.md` (Multi-Provider Model Routing)
 - `02-nivel-2-practical-patterns/exercises/exercise-confidence-gated-learning.md` (Confidence-Gated Continual Learning)
 - `02-nivel-2-practical-patterns/exercises/exercise-auth-coupled-memory.md` (Auth-Coupled Memory Architecture)
+- `02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval.md` (Perceived-Eval)
+- `02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix.md` (Eval Coverage Matrix)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
@@ -138,6 +140,11 @@ last_updated: 2026-06-26
 - `05-core-concepts/exercises/exercise-neutral-selection-layer.md` (Neutral Selection Layer)
 - `05-core-concepts/exercises/exercise-selection-budgeted-retrieval.md` (Selection-Budgeted Retrieval)
 - `04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis.md` (Behavioral Eval Path Analysis)
+- `03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy.md` (Production-to-Offline Feedback Loop)
+- `03-nivel-3-advanced-architecture/exercises/exercise-14-unified-tool-surface-flywheel.md` (Unified Tool Surface Flywheel)
+- `03-nivel-3-advanced-architecture/exercises/exercise-15-agent-first-data-foundation.md` (Agent-First Data Foundation)
+- `03-nivel-3-advanced-architecture/exercises/exercise-16-bulk-in-context-trace-analysis.md` (Bulk In-Context Trace Analysis)
+- `03-nivel-3-advanced-architecture/exercises/exercise-17-self-iterating-agent-loop.md` (Self-Iterating Agent Loop)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`

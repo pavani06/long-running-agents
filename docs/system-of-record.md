@@ -65,6 +65,7 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/mega-expert-consolidation/SKILL.md|.opencode/skills/mega-expert-consolidation/SKILL.md]] | Skill de implementação: consolidação Mega-Expert — um agente por especialidade benchmarkado contra o melhor humano individual, fundidos em um único agente voltado ao cliente (sem handoffs, sem deflection bot). Fonte: Kavak 2026-08-30. |
 | [[.opencode/skills/trial-retention-attribution-split/SKILL.md|.opencode/skills/trial-retention-attribution-split/SKILL.md]] | Skill de diagnóstico: separa ativação de retenção (trial flag + weekly-active + atribuição de duas ramas) para impedir que alarme de gestão vire rollback cego do produto |
 | [[.opencode/skills/agent-value-maturity-ladder/SKILL.md|.opencode/skills/agent-value-maturity-ladder/SKILL.md]] | Skill de auditoria: classifica roadmap/deployment contra a escada de 4 estágios de valor e detecta wow-collapse não planejado e custos de troca não construídos |
+| [[.opencode/skills/perceived-eval/SKILL.md|.opencode/skills/perceived-eval/SKILL.md]] | Skill de implementação: instrumenta a qualidade percebida em produção tratando correção/pushback do usuário como dado de avaliação — capta correction, rage quit, chat exit, NPS e alimenta o loop produção-para-offline |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 > **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
@@ -168,7 +169,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 161 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 176 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -332,6 +333,21 @@ Tópicos candidatos a ADR:
 | `agent-to-agent-review-comment-protocol.md` | Agent-to-Agent Review Comment Protocol: protocolo de comentário de review agente-para-agente, com comentários parseáveis que viram tarefas de fix em background (Qodo) |
 | `rule-lifecycle-analytics.md` | Rule Lifecycle Analytics: analytics de ciclo de vida de regras, com telemetria por regra (catch rate) para decidir manter, atualizar ou aposentar regras de review (Qodo) |
 | `comment-decay-readiness-signal.md` | Comment-Decay Readiness Signal: sinal de prontidão por decaimento de comentários, com 100 PRs sem comentário humano como critério comportamental de graduação para autonomia (Qodo) |
+| `perceived-eval.md` | Perceived-Eval: correção/pushback do usuário em produção como dado de avaliação contínua (correction, rage quit, chat exit, NPS) alimentando o loop produção-para-offline (Clay) |
+| `eval-coverage-matrix.md` | Eval Coverage Matrix: portfólio de evals como matriz 2x2 determinismo × deployment para detectar gaps de cobertura por quadrante (Clay) |
+| `production-to-offline-feedback-loop.md` | Production-to-Offline Feedback Loop with Drift Taxonomy: taxonomia de drift (data, judge, eval-set mirroring) ligando produção ao dataset de eval offline (Clay) |
+| `unified-tool-surface-flywheel.md` | Unified Tool Surface Flywheel: uma única autoridade de tool (UI/CLI/API) onde todo upgrade é compartilhado e falha de tool vira sinal de API (Clay) |
+| `agent-first-data-foundation.md` | Agent-First Data Foundation: dados projetados para agentes como usuários de primeira classe — stitching de bancos, freshness SLA, schema explícito (Clay) |
+| `bulk-in-context-trace-analysis.md` | Bulk In-Context Trace Analysis: análise de ~10k traces em-contexto para encontrar tendências, com split-half stability como validação (Clay) |
+| `self-iterating-agent-loop.md` | Self-Iterating Agent Loop: agente que melhora a si mesmo sobre o mesmo substrato de dados, com confidence-gating contra drift amplification (Clay) |
+| `environment-tiered-eval-fidelity.md` | Environment-Tiered Eval Fidelity: fidelidade de eval escalonada por ambiente (local/staging/production) para amostragem ancorada em produção (Clay) |
+| `cli-first-eval-harness-remote-persistence.md` | CLI-First Eval Harness with Remote Persistence: harness de eval CLI-first com persistência remota de histórico de runs (Clay) |
+| `plug-and-play-eval-harness-byo-evaluators.md` | Plug-and-Play Eval Harness with BYO Evaluators: harness compartilhado multi-produto com avaliadores plugáveis (bring-your-own evaluators) (Clay) |
+| `structured-partial-checks-exact-goldens.md` | Structured Partial Checks over Exact Goldens: asserts estruturados sobre o que importa em vez de goldens exatos — strictness casada com estabilidade (Clay) |
+| `deterministic-multi-turn-scripts-simulated-users.md` | Deterministic Multi-Turn Scripts over Simulated Users: scripts multi-turn determinísticos com turnos de usuário hardcoded contra simulated users (Clay) |
+| `shadow-builds-separated-compute.md` | Shadow Builds on Separated Compute: shadow deploy em compute separado do serving para artefatos de agente (Clay) |
+| `skills-cli-native-agent-data-access.md` | Skills and CLI as Native Agent Data Access: skills/CLI como acesso nativo a dados para agentes, com trabalho no nível do goal (Clay) |
+| `observability-threshold-eval-trigger.md` | Observability-Threshold Eval Trigger: threshold de observabilidade (escala de runs/mensagens) como gatilho estrutural de investimento em evals (Clay) |
 
 | Documento | Cobre |
 |---|---|
