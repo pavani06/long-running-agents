@@ -1,7 +1,7 @@
 ---
 title: "Structural Guarantee over Compliance"
 type: canonical
-tags: ["governanca", "gate-design", "verification", "process", "decision-discipline"]
+tags: ["governanca", "gate-design", "verification", "process", "decision-discipline", "evals", "agent-loop"]
 aliases: ["garantia estrutural vence obediência", "structural guarantee", "guarantee over compliance", "put the rule in the gate", "compliance fails under load", "knowing is not preventing"]
 last_updated: 2026-08-13
 relates-to: ["[[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/operator-channel-authority|Operator-Channel Authority]]"]

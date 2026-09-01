@@ -3,7 +3,7 @@ title: "Exercicio 6: Implementar a Metrica de Presenca no Loop"
 type: curriculum-exercise
 nivel: 3
 aliases: ["presence in the loop", "metrica de presenca", "human involvement metric", "stale presence", "absent owner", "review confidence signal", "intervention checkpoint"]
-tags: [curriculo-conteudo, nivel-3, exercicio, agentes-orquestracao, governanca, presence-metric, harness-governance, human-in-the-loop, review-confidence, decision-discipline, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "agentes-orquestracao", "governanca", "evals", "decision-discipline", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-patterns|IDSD Method Patterns]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classification|IDSD Method Classification]]", "[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/value-gated-agent-control-loop|Value-Gated Agent Control Loop]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]"]
 last_updated: 2026-06-12
 ---

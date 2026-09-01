@@ -3,7 +3,7 @@ title: "Exercício 7: Construir um Shadow Review Pipeline com Métricas de Conco
 type: curriculum-exercise
 nivel: 3
 aliases: ["shadow review pipeline", "AI review shadow mode", "métricas de concordância", "graduação de reviewer automático", "confiança em AI code review"]
-tags: [curriculo-conteudo, nivel-3, exercicio, agentic-coding, evals, governanca, shadow-review, trust-calibration, agreement-metrics, false-positive-analysis, gate-graduation, python, dataclass, json-state]
+tags: ["curriculo-conteudo", "nivel-3", "agentic-coding", "evals", "governanca", "shadow-review", "gate-design", "stack-tooling", "state"]
 relates-to: ["[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]"]
 duration: "90-120 min"
 last_updated: 2026-06-14

@@ -1,3 +1,13 @@
+---
+title: "Classification: The best AI agents are simpler than you think"
+type: analysis
+tags: ["agentes-orquestracao", "knowledge-management"]
+date: "2026-06-26"
+aliases: ["sierra-classification", "best-ai-agents-classification"]
+last_updated: 2026-06-26
+relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-analysis|Knowledge Extraction]]", "[[docs/canonical/task-routed-model-tiering|Task-Routed Model Tiering]]", "[[docs/canonical/multi-provider-model-routing|Multi-Provider Model Routing]]"]
+---
+
 # Classification: The best AI agents are simpler than you think
 
 **Source**: LangChain Max Agency — Zack Reno Wedeen (Sierra)

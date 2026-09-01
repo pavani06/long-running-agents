@@ -1,11 +1,7 @@
 ---
 title: Trace Instrumentation
 type: canonical
-tags:
-  - tracing
-  - telemetry
-  - observability
-  - runtime
+tags: ["tracing", "telemetry", "observability", "runtime", "evals", "context-engineering"]
 aliases:
   - Trace Instrumentation
   - tracer wiring

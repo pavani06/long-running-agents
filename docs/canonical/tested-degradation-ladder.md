@@ -2,7 +2,7 @@
 title: 'Tested Degradation Ladder'
 type: canonical
 aliases: ["degradation ladder", "escada de degradacao", "fallback ladder", "resilience ladder"]
-tags: ["agentes-orquestracao", "harness", "production"]
+tags: ["agentes-orquestracao", "harness", "production", "error-handling", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

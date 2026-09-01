@@ -3,7 +3,7 @@ title: "Exercício 4: Refatorar o Harness como Compilador Fuzzy"
 type: curriculum-exercise
 nivel: 3
 aliases: ["llm as fuzzy compiler", "compilador fuzzy", "codigo descartavel", "harness optimization passes", "modelo como backend", "durable harness assets"]
-tags: [curriculo-conteudo, nivel-3, exercicio, harness-evolution, model-upgrade, compiler-passes, harness-assets, disposable-code, invariant-compensation, python, dataclass, architecture-review]
+tags: ["curriculo-conteudo", "nivel-3", "harness", "model-selection", "arquitetura", "stack-tooling", "code-review"]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution]]", "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]"]
 last_updated: 2026-06-11
 ---

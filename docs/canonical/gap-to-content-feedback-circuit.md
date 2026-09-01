@@ -1,7 +1,7 @@
 ---
 title: "Gap-to-Content Feedback Circuit"
 type: canonical
-tags: ["knowledge-management", "evals", "production", "agentes-orquestracao"]
+tags: ["knowledge-management", "evals", "production", "agentes-orquestracao", "agentic-coding"]
 Status: Active
 Source: "AI Engineer talk — Sait Izmit, Snowflake (GTM assistant: battle cards geradas em minutos)"
 Classification: "Partial Coverage (P2, Medium integration value)"

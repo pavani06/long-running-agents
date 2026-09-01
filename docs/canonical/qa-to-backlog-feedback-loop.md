@@ -1,7 +1,7 @@
 ---
 title: "QA-to-Backlog Feedback Loop"
 type: canonical
-tags: ["agentes-orquestracao", "governanca", "evals"]
+tags: ["agentes-orquestracao", "governanca", "evals", "agents"]
 aliases: ["QA feedback loop", "review-to-backlog", "QA intake lane", "feedback-driven backlog"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]", "[[.opencode/skills/orchestrator/SKILL.md|orchestrator skill]]"]

@@ -2,7 +2,7 @@
 title: "Evaluation Rubric Template para KODA"
 type: curriculum-template
 aliases: ["template rubrica", "modelo avaliacao", "rubric template", "criterios qualidade"]
-tags: [curriculo-conteudo, template, avaliacao-de-qualidade, criterios-de-avaliacao, rubrica, calibracao, avaliacao-automatizada, validacao-de-outputs]
+tags: ["curriculo-conteudo", "evals", "gate-design", "validacao"]
 relates-to: ["[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 last_updated: 2026-06-10
 ---

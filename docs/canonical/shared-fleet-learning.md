@@ -2,7 +2,7 @@
 title: "Shared Fleet Learning"
 type: canonical
 aliases: ["fleet learning", "shared fleet learning", "fleet-wide propagation", "one mistake fleet learns"]
-tags: ["agentes-orquestracao", "evals", "knowledge-management", "production"]
+tags: ["agentes-orquestracao", "evals", "knowledge-management", "production", "agentic-coding"]
 last_updated: 2026-08-30
 relates-to:
   - "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]"

@@ -3,7 +3,7 @@ title: "Exercício 11: Software Graph Review Substrate — Revisar o Grafo de Co
 type: exercise
 level: 3
 aliases: ["software graph review substrate", "software graph review", "grafo de software como substrato de review", "contratos como arestas", "cross-PR collision detection", "colisão cross-PR", "PR bubble", "review unit shift diff para grafo"]
-tags: [curriculo-conteudo, agentes-orquestracao, code-review, context-engineering, knowledge-management, production, software-graph-review, contract-collision, cross-pr, python, dataclass]
+tags: ["curriculo-conteudo", "agentes-orquestracao", "code-review", "context-engineering", "knowledge-management", "production", "spec-driven-development", "stack-tooling"]
 relates-to: ["[[docs/canonical/software-graph-review-substrate|Software Graph Review Substrate]]", "[[docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns|Source Patterns]]", "[[docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification|Source Classification]]", "[[docs/canonical/relational-context-graph|Relational Context Graph]]", "[[docs/canonical/architecture-as-agent-affordance|Architecture as Agent Affordance]]", "[[curriculum/03-nivel-3-operational/exercises/exercise-shadow-review-pipeline|Exercício 7: Shadow Review Pipeline]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-12-semantic-rule-gated-auto-approve-block|Exercício 12: Semantic-Rule-Gated Auto Approve/Block]]"]
 duration: "90-120 min"
 ---

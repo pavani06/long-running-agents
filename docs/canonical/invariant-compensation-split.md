@@ -2,7 +2,7 @@
 title: 'Invariant-Compensation Split'
 type: canonical
 aliases: ["invariant compensation", "compensacao invariante", "separacao invariante-compensacao", "invariant split"]
-tags: ["agentes-orquestracao", "harness", "governanca"]
+tags: ["agentes-orquestracao", "harness", "governanca", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

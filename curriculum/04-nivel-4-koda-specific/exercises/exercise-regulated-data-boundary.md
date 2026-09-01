@@ -3,7 +3,7 @@ title: "Exercicio: Regulated Data Boundary com Isolamento Arquitetural de Pagame
 type: exercise
 level: "N4"
 aliases: ["regulated data boundary", "fronteira de dados regulados", "pci isolation", "isolamento de pagamento KODA", "payment boundary", "data compliance architecture"]
-tags: [curriculo-conteudo, nivel-4, exercicio, governanca, security, koda, pci-compliance, data-isolation, payment-processing, architectural-boundary]
+tags: ["curriculo-conteudo", "governanca", "permissions", "mhc-backend", "arquitetura"]
 duration: "60-75 min"
 relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-patterns|Sierra Patterns]]", "[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-classification|Classification]]", "[[docs/canonical/governance-context-injection-pii-prevention|Governance Context Injection — PII Prevention]]", "[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|Arquitetura KODA]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]"]
 last_updated: 2026-06-26

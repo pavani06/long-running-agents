@@ -1,7 +1,7 @@
 ---
 title: "Epistemic Memory Graph"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "evals", "multi-agent", "agentic-coding", "knowledge-management"]
 aliases: ["belief-status memory graph", "epistemic graph memory", "belief-aware retrieval"]
 last_updated: 2026-06-19
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[curriculum/06-knowledge-graphs/01-concept-ecosystem|Concept Ecosystem]]"]

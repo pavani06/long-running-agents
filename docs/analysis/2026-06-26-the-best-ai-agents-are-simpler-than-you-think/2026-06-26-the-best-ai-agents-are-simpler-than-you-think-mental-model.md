@@ -1,3 +1,13 @@
+---
+title: "Repository Mental Model — Ecossistema Pavan"
+type: analysis
+tags: ["agentes-orquestracao", "curriculo-conteudo", "knowledge-management"]
+date: "2026-06-26"
+aliases: ["repository-mental-model", "ecossistema-pavan-mental-model"]
+last_updated: 2026-06-26
+relates-to: ["[[docs/system-of-record|System of Record]]", "[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-analysis|Knowledge Extraction]]"]
+---
+
 # Repository Mental Model — Ecossistema Pavan
 
 **Date:** 2026-06-26  

@@ -1,7 +1,7 @@
 ---
 title: "Shared Design Concept Handoff"
 type: canonical
-tags: ["agentes-orquestracao", "context-engineering", "governanca"]
+tags: ["agentes-orquestracao", "context-engineering", "governanca", "agents"]
 aliases: ["design concept handoff", "shared mental model handoff", "alignment handoff", "concept contract"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]

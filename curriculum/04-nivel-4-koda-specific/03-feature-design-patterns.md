@@ -3,7 +3,7 @@ title: "Padrões de Design de Features: Como Estender o KODA com Confiança"
 type: curriculum-lesson
 nivel: 4
 aliases: ["padrões features", "feature patterns", "design KODA", "contrato feature"]
-tags: [curriculo-conteudo, nivel-4, koda, contratos-de-feature, generator-evaluator, validacao-de-saida, roteamento-de-features, integracao-com-pipeline, orcamento-de-tokens, decision-merger, testes-de-integracao, debugging-de-feature, governanca-de-features]
+tags: ["curriculo-conteudo", "mhc-backend", "spec-driven-development", "evals", "validacao", "multi-agent", "harness", "token-budgeting", "decision-discipline", "testes", "diagnostico", "governanca"]
 relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation]]"]
 last_updated: 2026-06-10
 ---

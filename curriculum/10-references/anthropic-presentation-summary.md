@@ -2,7 +2,7 @@
 title: "Resumo da Apresentação Anthropic: Building Long-Running Agents"
 type: curriculum-reference
 aliases: ["Anthropic resumo", "apresentacao Anthropic", "AI presentation", "long-running agents"]
-tags: [curriculo-conteudo, referencia, fundamentos-de-agentes, sistemas-de-agentes, memoria-externa, avaliacao-separada, coordenacao-de-agentes]
+tags: ["curriculo-conteudo", "reference", "multi-agent", "context-management", "evals"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---

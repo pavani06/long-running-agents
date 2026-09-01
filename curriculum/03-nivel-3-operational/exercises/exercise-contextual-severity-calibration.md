@@ -3,7 +3,7 @@ title: "Exercício 8: Implementar Contextual Severity Calibration por Módulo"
 type: curriculum-exercise
 nivel: 3
 aliases: ["contextual severity calibration", "calibração de severidade", "risk profile por módulo", "severidade contextual", "review depth ajustado por risco"]
-tags: [curriculo-conteudo, nivel-3, exercicio, agentic-coding, evals, governanca, risk-calibration, severity-calibration, module-risk-profile, check-selection, blast-radius, false-positive-feedback, python, dataclass, yaml-risk-profile]
+tags: ["curriculo-conteudo", "nivel-3", "agentic-coding", "evals", "governanca", "gate-design", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[curriculum/03-nivel-3-operational/exercises/exercise-shadow-review-pipeline|Shadow Review Pipeline Exercise]]"]
 duration: "90-120 min"
 last_updated: 2026-06-14

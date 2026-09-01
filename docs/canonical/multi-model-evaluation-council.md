@@ -1,7 +1,7 @@
 ---
 title: "Multi-Model Evaluation Council"
 type: canonical
-tags: ["evals", "agentes-orquestracao"]
+tags: ["evals", "agentes-orquestracao", "agentic-coding", "knowledge-management"]
 aliases: ["model-diverse evaluator council", "evaluation council", "multi-model judging"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]

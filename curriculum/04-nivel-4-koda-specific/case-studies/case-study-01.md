@@ -3,7 +3,7 @@ title: "Case Study: Lançamento do KODA Same-Day Delivery"
 type: curriculum-case-study
 nivel: 4
 aliases: ["caso KODA delivery", "same-day delivery", "coordenação logística", "reserva estoque"]
-tags: [curriculo-conteudo, nivel-4, caso-de-estudo, entrega-no-mesmo-dia, coordenacao-logistica, reserva-de-estoque, roteamento-e-eta, lock-files, state-persistence, rubricas-de-evaluacao, recuperacao-de-incidente, deploy-gradual, adr-arquitetural]
+tags: ["curriculo-conteudo", "mhc-backend", "stack-tooling", "state", "evals", "production", "decision-discipline"]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10
 ---

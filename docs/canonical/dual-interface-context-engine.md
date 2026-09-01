@@ -1,7 +1,7 @@
 ---
 title: "Dual-Interface Context Engine"
 type: canonical
-tags: ["context-engineering", "knowledge-management", "code-review", "agentes-orquestracao", "governanca"]
+tags: ["context-engineering", "knowledge-management", "code-review", "agentes-orquestracao", "governanca", "arquitetura"]
 Status: Active
 Source: "AI Engineer talk — Itamar Friedman, Qodo (The Last Human Code Review: Building Trust in AI-Generated Code)"
 Classification: "Partial Coverage (P2, Medium integration value)"

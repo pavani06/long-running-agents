@@ -2,7 +2,7 @@
 title: 'Semantic Topic Bucketing'
 type: canonical
 aliases: ["agrupamento semantico", "topic bucketing", "semantic grouping", "topical summarization"]
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "context-management", "agentic-coding", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Knowledge Extraction]]"]

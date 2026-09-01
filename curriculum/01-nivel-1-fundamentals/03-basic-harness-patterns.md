@@ -3,7 +3,7 @@ title: "Padrões Básicos de Harness: A Estrutura que Sustenta Agentes"
 type: curriculum-lesson
 nivel: 1
 aliases: ["padrões harness", "harness básico", "estrutura agente", "guardrails agente"]
-tags: [curriculo-conteudo, nivel-1, fundamentos, harness-de-agente, validacao-de-entrada, geracao-estruturada, validacao-de-saida, persistencia-de-estado, fallback-e-retry, guardrails, metricas-de-confiabilidade, arquitetura-de-producao]
+tags: ["curriculo-conteudo", "harness", "validacao", "structured-output", "state", "error-handling", "gate-design", "monitoramento", "arquitetura"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"]
 last_updated: 2026-06-10
 ---

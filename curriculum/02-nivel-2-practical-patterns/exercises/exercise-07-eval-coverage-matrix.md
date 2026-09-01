@@ -3,7 +3,7 @@ title: "Exercício 7: Eval Coverage Matrix — o Portfólio de Evals Como Matriz
 type: exercise
 level: "N2"
 aliases: ["eval coverage matrix", "matriz de cobertura de evals", "2x2 determinismo x deployment", "quadrantes de eval", "gap list de evals", "portfolio de avaliação", "a few things in each box"]
-tags: [curriculo-conteudo, nivel-2, exercicio, evals, harness-engineering, governanca, coverage-matrix, eval-portfolio, quadrant-analysis, gap-analysis, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-2", "evals", "harness-engineering", "governanca", "analise-estrutural", "stack-tooling"]
 relates-to: ["[[docs/canonical/eval-coverage-matrix|Eval Coverage Matrix]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification|Clay Eval Stack Classification]]", "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/evals-as-brakes|Evals-as-Brakes]]", "[[curriculum/02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval|Exercício 6: Perceived-Eval]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy|Exercício 13: Production-to-Offline Feedback Loop with Drift Taxonomy]]"]
 duration: "60-90 min"
 last_updated: 2026-08-31

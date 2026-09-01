@@ -1,7 +1,7 @@
 ---
 title: "Context Health Monitoring"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao", "harness-engineering"]
+tags: ["context-engineering", "agentes-orquestracao", "harness-engineering", "evals"]
 aliases: ["context quality monitoring", "health score aggregator", "near-miss detection", "effective context estimation"]
 last_updated: 2026-06-18
 relates-to: ["[[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]]", "[[docs/canonical/burn-rate-runtime-forecast|Burn Rate Runtime Forecast]]", "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]", "[[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]"]

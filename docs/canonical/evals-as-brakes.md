@@ -1,7 +1,7 @@
 ---
 title: "Evals-as-Brakes"
 type: canonical
-tags: ["evals", "governanca", "testes-qa", "decision-discipline"]
+tags: ["evals", "governanca", "testes-qa", "decision-discipline", "harness-engineering"]
 aliases: ["evals as brakes", "velocity eval coupling", "brakes not slower", "eval-gated speed"]
 last_updated: 2026-08-30
 relates-to:

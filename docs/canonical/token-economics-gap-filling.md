@@ -1,7 +1,7 @@
 ---
 title: "Token Economics of Gap-Filling"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao", "harness-engineering", "governanca", "decision-discipline"]
+tags: ["context-engineering", "agentes-orquestracao", "harness-engineering", "governanca", "decision-discipline", "context-management"]
 aliases: ["gap-filling token burn", "gap-cost attribution", "ICE gap cost", "token burn gap filling", "gap fill economics", "missing field cost", "token efficiency gap filling"]
 last_updated: 2026-06-12
 relates-to: ["[[docs/canonical/ice-craft-separation|ICE Craft Separation]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/human-owned-expectations-boundary|Human-Owned Expectations Boundary]]", "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]", "[[docs/canonical/burn-rate-runtime-forecast|Burn Rate Runtime Forecast]]", "[[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]]", "[[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]]", "[[docs/canonical/budget-aware-session-handoff|Budget-Aware Session Handoff]]", "[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-analysis|IDSD Method Analysis]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-patterns|IDSD Method Patterns]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classification|IDSD Method Classification]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-mental-model|IDSD Method Mental Model]]"]

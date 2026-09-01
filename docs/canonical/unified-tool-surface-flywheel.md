@@ -2,7 +2,7 @@
 title: "Unified Tool Surface Flywheel"
 type: canonical
 aliases: ["unified tool surface", "single tool authority", "flywheel de superfície única de tools", "UI CLI API parity", "agent tool failure as API signal"]
-tags: ["agentes-orquestracao", "harness-engineering", "production"]
+tags: ["agentes-orquestracao", "harness-engineering", "production", "agent-loop"]
 last_updated: 2026-08-31
 relates-to:
   - "[[docs/canonical/file-system-materialization|File-System Materialization]]"

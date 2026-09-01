@@ -88,7 +88,7 @@ No existing coverage. The repo's analytical lens (spread capture, structural pow
 
 - **Complements:** [[docs/canonical/social-archetype-classification|Social Archetype Classification]] — Layer Amplification measures *how much* the gap widens between layers; Social Archetype Classification diagnoses *why* the gap exists (is the society Creation, Abundance, or Predation?). A Predation-archetype society will show high amplification factors because individual actors are rewarded for extracting value, not respecting rules.
 - **Applies to:** [[docs/canonical/second-order-institutional-interaction|Second-Order Institutional Interaction]] — when two reforms interact at different layers, the amplification between layers can invert the intended effect.
-- **Feeds into:** [[docs/canonical/credibility-cascade-in-regulated-assets|Credibility Cascade in Regulated Assets]] — credibility failures propagate through layers just as regulatory gaps do; the cascade mechanism and the amplification mechanism share structural similarity.
+- **Feeds into:** [[docs/canonical/credibility-cascade-regulated-assets|Credibility Cascade in Regulated Assets]] — credibility failures propagate through layers just as regulatory gaps do; the cascade mechanism and the amplification mechanism share structural similarity.
 - **Depends on:** None — this is a foundational analytical primitive.
 
 ## References

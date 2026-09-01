@@ -1,7 +1,7 @@
 ---
 title: "Alarm-Clock Agent Lifecycle"
 type: canonical
-tags: ["agentes-orquestracao", "harness-engineering", "production", "12-factor-agents"]
+tags: ["agentes-orquestracao", "harness-engineering", "production", "12-factor-agents", "evals"]
 aliases: ["alarm clock lifecycle", "wake work sleep", "agent self-scheduling", "next-wake trigger"]
 last_updated: 2026-08-30
 relates-to:

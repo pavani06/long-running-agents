@@ -2,7 +2,7 @@
 title: "State Persistence: A Memória Durável dos Agentes Long-Running"
 type: curriculum-core-concept
 aliases: ["persistencia estado", "estado agente", "pause resume state", "checkpoint recovery"]
-tags: [curriculo-conteudo, conceitos-core, state-persistence, persistencia-de-estado, recuperacao-de-sessao, retomada-de-conversa, pontos-de-controle, durabilidade, resiliencia-operacional, trilha-de-auditoria, idempotencia]
+tags: ["curriculo-conteudo", "state", "session-handoff", "verification", "durable-facts", "error-handling", "governanca"]
 relates-to: ["[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence Lesson]]"]
 last_updated: 2026-06-10
 ---

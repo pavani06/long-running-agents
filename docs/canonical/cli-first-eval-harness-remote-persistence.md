@@ -2,7 +2,7 @@
 title: "CLI-First Eval Harness with Remote Persistence"
 type: canonical
 aliases: ["cli-first evals", "harness com persistência remota", "eval history backend"]
-tags: ["evals", "harness-engineering", "production"]
+tags: ["evals", "harness-engineering", "production", "harness", "agent-loop", "observability", "agentes-orquestracao"]
 last_updated: 2026-08-31
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause-Resume State]]", "[[docs/canonical/trace-instrumentation|Trace Instrumentation]]", "[[docs/canonical/agent-specific-data-freshness-pipeline|Agent-Specific Data Freshness Pipeline]]"]
 sources: ["[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]"]

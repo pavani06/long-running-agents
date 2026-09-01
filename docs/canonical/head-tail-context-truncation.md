@@ -2,7 +2,7 @@
 title: "Head-Tail Context Truncation with Recoverable Middle"
 type: canonical
 aliases: ["head tail truncation", "context truncation"]
-tags: ["context-engineering"]
+tags: ["context-engineering", "evals", "context-management"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/late-failure-regression-suite|Late-Failure Regression Suite]]", "[[curriculum/05-core-concepts/01-context-management|Context Management Concept]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting Lesson]]"]
 sources: ["[[docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/2026-06-09-how-we-solved-context-management-in-agents-analysis|Context Management Analysis]]"]

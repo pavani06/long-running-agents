@@ -6,6 +6,8 @@ type: analysis
 domain: [inteligencia-artificial, macroeconomia, investimentos, instituicoes]
 entity: "[[entities/daniel-goldberg]]"
 tags: [analise-estrutural, frameworks, patterns, sintese]
+aliases: ["futuro-da-ia", "daniel-goldberg", "juros-e-brasil"]
+relates-to: ["[[docs/canonical/credibility-cascade-regulated-assets|Credibility Cascade in Regulated Assets]]", "[[docs/canonical/institutional-layer-amplification|Institutional Layer Amplification]]"]
 ---
 
 # Análise Estrutural: Extração de Conhecimento Não-Óbvio

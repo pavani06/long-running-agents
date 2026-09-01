@@ -3,7 +3,7 @@ title: "Padrão Sprint Contracts: Acordos Negociados Entre Agentes"
 type: curriculum-lesson
 nivel: 2
 aliases: ["contratos sprint", "sprint contracts", "contratos agente", "definição de pronto"]
-tags: [curriculo-conteudo, nivel-2, padroes-praticos, contratos-entre-agentes, negociacao-de-escopo, definicao-de-pronto, criterios-de-sucesso, tratamento-de-falhas, conversas-longas, alinhamento-de-expectativas, loops-de-retry]
+tags: ["curriculo-conteudo", "nivel-2", "padroes-praticos", "multi-agent", "governanca", "gate-design", "error-handling", "context-management"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/05-core-concepts/04-sprint-contracts|Sprint Contracts Concept]]"]
 last_updated: 2026-06-10
 ---

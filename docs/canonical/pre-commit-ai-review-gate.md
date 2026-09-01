@@ -2,7 +2,7 @@
 title: "Pre-Commit AI Review Gate"
 type: canonical
 aliases: ["pre-commit review", "AI pre-commit", "local AI gate", "pre-push AI review", "pre-commit AI hook"]
-tags: ["evals", "agentic-coding", "governanca", "harness-engineering"]
+tags: ["evals", "agentic-coding", "governanca", "harness-engineering", "stack-tooling", "error-handling", "agent-loop"]
 last_updated: 2026-06-15
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]", "[[docs/canonical/review-contract-checklist|Review Contract Checklist]]", "[[docs/canonical/contextual-severity-calibration|Contextual Severity Calibration]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]"]
 sources: ["[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis|Canary Test Analysis]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]"]

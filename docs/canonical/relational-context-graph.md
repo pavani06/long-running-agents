@@ -1,7 +1,7 @@
 ---
 title: "Relational Context Graph"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "agentic-coding"]
 aliases: ["typed edge context graph", "relational memory graph", "selection-not-retrieval graph", "structured context graph"]
 last_updated: 2026-06-18
 relates-to: ["[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/durable-fact-selective-history|Durable Fact Selective History]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]"]

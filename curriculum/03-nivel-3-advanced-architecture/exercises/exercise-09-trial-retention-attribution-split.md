@@ -3,7 +3,7 @@ title: "Exercício 9: Trial-Retention Attribution Split — Atribuir a Falha de 
 type: curriculum-exercise
 nivel: 3
 aliases: ["trial-retention attribution split", "trial retention split", "atribuição trial vs retorno", "split de ativação", "activation attribution", "never-tried vs tried-and-left", "bandeira de trial"]
-tags: [curriculo-conteudo, nivel-3, exercicio, evals, production, trial-retention-attribution, activation-diagnostic, ownership-routing, retention-metric, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "evals", "production", "analise-estrutural", "multi-agent", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-analysis|GTM AI Agents Analysis]]", "[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-classification|GTM AI Agents Classification]]", "[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-patterns|GTM AI Agents Patterns]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10: Agent Value Maturity Ladder]]"]
 last_updated: 2026-08-30
 ---

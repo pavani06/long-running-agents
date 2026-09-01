@@ -1,7 +1,7 @@
 ---
 title: "Vertical-Slice Issue Generation"
 type: canonical
-tags: ["agentes-orquestracao", "governanca"]
+tags: ["agentes-orquestracao", "governanca", "agents"]
 aliases: ["vertical slice issues", "layer-spanning issues", "behavior-path issues", "vertical slice generation"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/refine-issue/SKILL.md|refine-issue skill]]", "[[.opencode/skills/issue-workflow/SKILL.md|issue-workflow skill]]"]

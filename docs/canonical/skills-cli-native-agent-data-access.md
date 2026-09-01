@@ -2,7 +2,7 @@
 title: "Skills and CLI as Native Agent Data Access"
 type: canonical
 aliases: ["skills cli data access", "acesso nativo a dados para agentes", "goal-level data work"]
-tags: ["agentes-orquestracao", "data-platform", "harness-engineering"]
+tags: ["agentes-orquestracao", "data-platform", "harness-engineering", "agent-loop"]
 last_updated: 2026-08-31
 relates-to: ["[[docs/canonical/file-system-materialization|File-System Materialization]]", "[[docs/canonical/goal-driven-agents-over-workflows|Goal-Driven Agents over Workflows]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause-Resume State]]", "[[docs/canonical/shadow-builds-separated-compute|Shadow Builds on Separated Compute]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 sources: ["[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]"]

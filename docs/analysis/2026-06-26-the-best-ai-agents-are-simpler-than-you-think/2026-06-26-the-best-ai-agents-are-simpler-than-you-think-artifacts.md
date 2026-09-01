@@ -1,3 +1,13 @@
+---
+title: "Artifacts Manifest: The best AI agents are simpler than you think"
+type: analysis
+tags: ["agentes-orquestracao", "knowledge-management"]
+date: "2026-06-26"
+aliases: ["sierra-artifacts-manifest", "best-ai-agents-artifacts"]
+last_updated: 2026-06-26
+relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-analysis|Knowledge Extraction]]", "[[docs/canonical/regulated-data-boundary|Regulated Data Boundary]]", "[[docs/canonical/multi-provider-model-routing|Multi-Provider Model Routing]]"]
+---
+
 # Artifacts Manifest: The best AI agents are simpler than you think
 
 **Source**: LangChain Max Agency — Zack Reno Wedeen (Sierra)

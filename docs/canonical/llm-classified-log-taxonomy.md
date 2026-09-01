@@ -1,7 +1,7 @@
 ---
 title: "LLM-Classified Log Taxonomy"
 type: canonical
-tags: ["evals", "production", "knowledge-management", "agentes-orquestracao"]
+tags: ["evals", "production", "knowledge-management", "agentes-orquestracao", "agentic-coding"]
 Status: Active
 Source: "AI Engineer talk — Sait Izmit, Snowflake (GTM assistant: 6.000 usuários, 1,2M perguntas, ~40k/semana)"
 Classification: "Partial Coverage, High integration value (P1)"

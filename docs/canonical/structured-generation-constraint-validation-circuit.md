@@ -2,7 +2,7 @@
 title: 'Structured Generation and Constraint Validation Circuit'
 type: canonical
 aliases: ["structured generation circuit", "circuito geracao estruturada", "constraint validation circuit", "structured output validation"]
-tags: ["agentes-orquestracao", "harness", "evals"]
+tags: ["agentes-orquestracao", "harness", "evals", "agent-loop", "harness-engineering"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

@@ -3,7 +3,7 @@ title: "Exercicio: Aplicar o Constraint Budget Gate com Limite de 5-7 Restricoes
 type: curriculum-exercise
 nivel: 3
 aliases: ["constraint budget gate", "limite constraints", "5-7 constraint rule", "constraint budget heuristic", "constraint list gate", "implementation constraint reclassification"]
-tags: [curriculo-conteudo, nivel-3, exercicio, agentes-orquestracao, spec-driven-development, constraint-engineering, decision-discipline, harness-engineering, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "agentes-orquestracao", "spec-driven-development", "gate-design", "decision-discipline", "harness-engineering", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns|Anatomy of Intent Patterns]]", "[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/ice-craft-separation|ICE Craft Separation]]"]
 last_updated: 2026-06-14
 ---

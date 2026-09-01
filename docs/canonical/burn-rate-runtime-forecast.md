@@ -2,7 +2,7 @@
 title: 'Burn-Rate Runtime Forecast'
 type: canonical
 aliases: ["previsao de consumo de tokens", "runtime forecast", "burn rate prediction", "consumption velocity"]
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "context-management", "evals", "agentic-coding"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Knowledge Extraction]]"]

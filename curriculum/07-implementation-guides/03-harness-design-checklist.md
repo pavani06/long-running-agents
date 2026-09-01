@@ -2,7 +2,7 @@
 title: "Checklist de Design de Harness para Agentes Confiáveis"
 type: curriculum-guide
 aliases: ["checklist harness", "design checklist", "harness design", "guia implementacao"]
-tags: [curriculo-conteudo, guia-implementacao, harness, auditoria, qualidade, seguranca, guardrails, persistencia-de-estado, coordenacao-multi-agente, observabilidade]
+tags: ["curriculo-conteudo", "harness", "governanca", "gate-design", "permissions", "state", "multi-agent", "observability"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/on-policy-rollout-feedback-loop|On-Policy Rollout Feedback Loop]]", "[[docs/canonical/asymmetric-failure-correction-router|Asymmetric Failure Correction Router]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]]", "[[docs/canonical/retention-gated-phased-rollout|Retention-Gated Phased Rollout]]"]
 last_updated: 2026-06-16
 ---

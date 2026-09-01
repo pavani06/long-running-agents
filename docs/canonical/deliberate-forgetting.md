@@ -1,7 +1,7 @@
 ---
 title: "Deliberate Forgetting"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "agent-loop", "agentic-coding"]
 aliases: ["intentional forgetting", "proactive context discard", "relevance-based forgetting", "context rot prevention"]
 last_updated: 2026-06-18
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/durable-fact-selective-history|Durable Fact Selective History]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/phase-gated-token-health-monitor|Phase-Gated Token Health Monitor]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]

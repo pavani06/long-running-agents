@@ -1,7 +1,7 @@
 ---
 title: "Split-Brain Planning Review"
 type: canonical
-tags: ["agentes-orquestracao", "evals", "governanca"]
+tags: ["agentes-orquestracao", "evals", "governanca", "agent-loop", "multi-agent"]
 aliases: ["dual-rubric planning review", "engineering and CEO review", "split-brain review"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-patterns|Stanford CS153 Patterns]]", "[[docs/canonical/operator-channel-authority|Operator-Channel Authority]]", "[[docs/canonical/structural-guarantee-over-compliance|Structural Guarantee over Compliance]]"]

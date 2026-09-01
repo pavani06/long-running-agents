@@ -2,7 +2,7 @@
 title: "Harness Evolution: Construir, Medir, Simplificar, Remover"
 type: curriculum-core-concept
 aliases: ["evolucao harness", "harness lifecycle", "maturidade harness", "simplificacao arquitetural"]
-tags: [curriculo-conteudo, conceitos-core, harness-evolution, ciclo-de-vida-do-harness, manutenibilidade, reducao-de-complexidade, divida-tecnica, otimizacao-de-custo, simplificacao-arquitetural, evolucao-continua, governanca-tecnica]
+tags: ["curriculo-conteudo", "harness", "arquitetura", "production", "governanca"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/pull-based-infrastructure-on-pain|Pull-Based Infrastructure on Pain]]", "[[docs/canonical/human-review-staged-workflow-automation|Human-Review Staged Workflow Automation]]", "[[docs/canonical/centralized-data-plane-inherited-rbac|Centralized Data Plane with Inherited RBAC]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution Lesson]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-10-agent-value-maturity-ladder|Exercício 10: Agent Value Maturity Ladder]]"]
 last_updated: 2026-06-16
 ---

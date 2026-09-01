@@ -2,7 +2,7 @@
 title: "Generator-Evaluator"
 type: canonical
 aliases: ["generator evaluator", "two-agent review", "avaliador externo", "evaluator pattern"]
-tags: ["agentes-orquestracao", "evals"]
+tags: ["agentes-orquestracao", "evals", "agentic-coding"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
 sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]

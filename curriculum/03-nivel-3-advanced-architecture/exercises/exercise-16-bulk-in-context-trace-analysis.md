@@ -3,7 +3,7 @@ title: "Exercício 16: Bulk In-Context Trace Analysis — Dez Mil Traces, Zero V
 type: exercise
 level: 3
 aliases: ["bulk in-context trace analysis", "análise in-context em massa", "10k traces in-context", "trend-finding prompt", "split-half stability", "substituto do vibe review", "frontier model step change como observabilidade"]
-tags: [curriculo-conteudo, nivel-3, exercicio, evals, production, harness-engineering, trace-analysis, trend-finding, frontier-model, findings-validation, eval-case-generation, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "evals", "production", "harness-engineering", "tracing", "analise-estrutural", "ai", "stack-tooling"]
 relates-to: ["[[docs/canonical/bulk-in-context-trace-analysis|Bulk In-Context Trace Analysis]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification|Clay Eval Stack Classification]]", "[[docs/canonical/behavioral-eval-path-analysis|Behavioral Eval Path Analysis]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[docs/canonical/centralized-cross-framework-tracing|Centralized Cross-Framework Tracing]]", "[[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy|Exercício 13: Production-to-Offline Feedback Loop with Drift Taxonomy]]"]
 duration: "90-120 min"
 last_updated: 2026-08-31

@@ -3,7 +3,7 @@ title: "Exercicio: Distinguir Metas de Especificacoes com o Teste das Duas Imple
 type: curriculum-exercise
 nivel: 2
 aliases: ["two implementations goal test", "goal vs spec test", "teste duas implementacoes", "meta vs especificacao", "heuristic goal specification", "intent goal purity"]
-tags: [curriculo-conteudo, nivel-2, exercicio, agentes-orquestracao, spec-driven-development, decision-discipline, intent-structure, harness-engineering, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-2", "agentes-orquestracao", "spec-driven-development", "decision-discipline", "harness-engineering", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns|Anatomy of Intent Patterns]]", "[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]", "[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]"]
 last_updated: 2026-06-14
 ---

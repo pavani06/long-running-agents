@@ -3,7 +3,7 @@ title: "Sistemas Multi-Agente para Arquiteturas Confiáveis"
 type: curriculum-lesson
 nivel: 3
 aliases: ["multi-agente", "coordenação agentes", "multi-agent", "planner generator evaluator"]
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, sistemas-multiagente, planejamento-geracao-validacao, decomposicao-de-jornada, orquestracao-de-agentes, ownership-de-responsabilidades, coordenacao-sequencial, coordenacao-paralela, orientado-a-eventos, canais-de-comunicacao, auditabilidade]
+tags: ["curriculo-conteudo", "nivel-3", "arquitetura-avancada", "multi-agent", "verification", "mhc-backend", "governanca", "arquitetura"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[curriculum/05-core-concepts/07-multi-agent-coordination|Multi-Agent Coordination Concept]]"]
 last_updated: 2026-06-10
 ---

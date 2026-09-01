@@ -2,7 +2,7 @@
 title: "Sprint Contracts Knowledge Graph"
 type: curriculum-knowledge-graph
 aliases: ["grafo contratos sprint", "contratos sprint", "diagrama Mermaid", "acordo testavel"]
-tags: [curriculo-conteudo, knowledge-graph, mermaid]
+tags: ["curriculo-conteudo", "knowledge-management", "stack-tooling"]
 relates-to: ["[[curriculum/05-core-concepts/04-sprint-contracts|Sprint Contracts]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]"]
 last_updated: 2026-06-10
 ---

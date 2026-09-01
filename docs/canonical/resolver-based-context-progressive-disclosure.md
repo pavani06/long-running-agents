@@ -1,7 +1,7 @@
 ---
 title: "Resolver-Based Context Progressive Disclosure"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao", "evals"]
+tags: ["context-engineering", "agentes-orquestracao", "evals", "agentic-coding"]
 aliases: ["resolver progressive disclosure", "skill context disclosure", "load-on-demand skills", "context progressive disclosure"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]

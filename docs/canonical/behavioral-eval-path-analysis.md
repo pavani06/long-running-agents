@@ -2,7 +2,7 @@
 title: "Behavioral Eval Path Analysis"
 type: canonical
 aliases: ["behavioral eval", "path analysis", "tool call evaluation", "execution path scoring", "Layer 3 behavioral eval"]
-tags: ["evals", "production", "tracing", "observability"]
+tags: ["evals", "production", "tracing", "observability", "agent-loop", "context-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-26
 relates-to: ["[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/trace-instrumentation|Trace Instrumentation]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/n-plus-one-long-session-evals|N+1 Long-Session Evals]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/living-eval-dataset|Living Eval Dataset]]"]
 sources: []

@@ -3,7 +3,7 @@ title: "Exercício 8: Sidekick — o Agente que Guia Quem Faz"
 type: curriculum-exercise
 nivel: 3
 aliases: ["sidekick pattern", "ratatouille pattern", "padrão sidekick", "agente que guia quem faz", "fronteira física", "telemetria de trabalho físico", "el mike"]
-tags: [curriculo-conteudo, nivel-3, exercicio, sidekick-pattern, ratatouille, physical-boundary, human-in-the-loop, telemetria, closed-loop, eval-corpus, warranty-cost, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "agentes-orquestracao", "governanca", "telemetry", "agent-loop", "evals", "mhc-backend", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis|Kavak Playbook Analysis]]", "[[docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification|Kavak Playbook Classification]]", "[[docs/canonical/sidekick-pattern-physical-boundaries|Sidekick Pattern at Physical Boundaries]]", "[[docs/canonical/model-agnostic-agent-vm-harness|Model-Agnostic Agent-VM Harness]]", "[[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Metric]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-07-mega-expert-consolidation|Exercício 7: Mega-Expert Consolidation]]", "[[curriculum/05-core-concepts/07-multi-agent-coordination|Multi-Agent Coordination]]"]
 last_updated: 2026-08-30
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Architecture-as-Agent-Affordance Refactoring"
 type: canonical
-tags: ["agentes-orquestracao", "arquitetura", "governanca"]
+tags: ["agentes-orquestracao", "arquitetura", "governanca", "agent-loop", "agents"]
 aliases: ["deep module refactoring", "agent affordance architecture", "architecture for agents", "agent-navigable architecture"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[.opencode/skills/writing-plans/SKILL.md|writing-plans skill]]"]

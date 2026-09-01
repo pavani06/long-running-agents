@@ -2,7 +2,7 @@
 title: "Evaluation Rubrics: Medindo Qualidade Onde pass/fail Não Enxerga"
 type: curriculum-core-concept
 aliases: ["rubricas avaliacao", "sistema evals", "rubric design", "quality scoring"]
-tags: [curriculo-conteudo, conceitos-core, evaluation-rubrics, avaliacao-de-qualidade, rubricas-multidimensionais, pontuacao-ponderada, calibracao-de-rubricas, limiares-de-decisao, auditoria-de-avaliacao, observabilidade-de-qualidade, diagnostico-de-desempenho]
+tags: ["curriculo-conteudo", "evals", "decision-discipline", "observability", "diagnostico"]
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/magnitude-direction-verifier-split|Magnitude-Direction Verifier Split]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/llm-classified-log-taxonomy|LLM-Classified Log Taxonomy]]", "[[docs/canonical/gap-to-content-feedback-circuit|Gap-to-Content Feedback Circuit]]", "[[docs/canonical/workflow-derived-golden-question-set|Workflow-Derived Golden Question Set]]", "[[docs/canonical/quality-over-coverage-trust-scoping|Quality-Over-Coverage Trust Scoping]]", "[[docs/canonical/retention-gated-phased-rollout|Retention-Gated Phased Rollout]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9: Trial-Retention Attribution Split]]"]
 last_updated: 2026-06-16
 ---

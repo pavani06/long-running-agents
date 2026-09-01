@@ -3,7 +3,7 @@ title: "Exercício 6: Perceived-Eval — A Correção do Usuário Como Dado de A
 type: exercise
 level: "N2"
 aliases: ["perceived eval", "perceived-eval signal", "correção do usuário como eval", "user correction signal", "pushback detection", "rage quit metric", "chat exit telemetry", "NPS como entrada contínua"]
-tags: [curriculo-conteudo, nivel-2, exercicio, evals, production, harness-engineering, perceived-eval, user-correction, behavioral-telemetry, online-signal, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-2", "evals", "production", "harness-engineering", "telemetry", "monitoramento", "stack-tooling"]
 relates-to: ["[[docs/canonical/perceived-eval|Perceived-Eval]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]", "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification|Clay Eval Stack Classification]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy|Exercício 13: Production-to-Offline Feedback Loop with Drift Taxonomy]]"]
 duration: "60-90 min"
 last_updated: 2026-08-31
