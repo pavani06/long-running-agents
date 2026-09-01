@@ -1,333 +1,763 @@
-# Mental model mirror — long-running-agents (full rebuild, 2026-08-31)
-# Scope: repository only. External source (Inside Clay's Eval Stack) NOT analyzed here.
-# Mode: full rebuild (incremental=false explicit). Built by direct repository reading;
-# previous models in mapa-mental-repo/ used only as final cross-check, not as base.
-# Counts verified by direct listing on 2026-08-31: canonical=161, skills=35, agents=3,
-# accepted ADRs=1, analysis dirs=28 (incl. mhc-backend).
 meta:
-  title: "Mental Model: Inside Clay's Eval Stack — 300M Agent Runs, One LangSmith Pipel (Repository Full Rebuild)"
+  title: 'Mental Model: Inside Clay''s Eval Stack — 300M Agent Runs, One LangSmith Pipel (Repository Full Rebuild)'
   date: '2026-08-31'
-  repo: 'long-running-agents'
-  type: 'mental-model'
-  mode: 'full-rebuild'
-  repo_path: '/mnt/c/Users/pavan/long-running-agents'
+  repo: long-running-agents
+  type: mental-model
+  mode: full-rebuild
+  repo_path: /mnt/c/Users/pavan/long-running-agents
   counts:
     canonical_docs: 161
     skills: 35
     agents: 3
     accepted_adrs: 1
     analysis_dirs: 28
-
+  base_commit: 19e0845
 goals:
-  - "Base de conhecimento e currículo para agentes long-running confiáveis: sistemas de IA que operam por horas ou dias sem perder contexto, planejamento ou julgamento de qualidade (README.md:12)."
-  - "Documentar, ensinar e operacionalizar harness engineering: degradação de agentes longos é lacuna de engenharia, não de modelo; harness é a infraestrutura de suporte ao redor do modelo (README.md:16-18)."
-  - "Atacar três falhas estruturais de execuções longas: perda de contexto, planejamento frágil, autoavaliação cega (README.md:24-30)."
-  - "Entregar o currículo como produto principal: 12 semanas, 4 níveis, 8 conceitos core, 35+ diagramas, ancorado no caso real KODA — agente de venda de suplementos via WhatsApp com conversas de 2+ horas (curriculum/README.md:13,34; docs/system-of-record.md:72-74)."
-  - "Rodar pipeline automatizado de análise de conhecimento externo: harness analyze-and-improve em 7 fases com evaluators e gates, convertendo fontes externas em canonical docs, skills e exercícios (README.md:102,136; .opencode/skills/analyze-and-improve/SKILL.md:49-57)."
-  - "Servir de template de sistema de agentes reutilizável: .opencode/ com Handoff Protocol, 35 skills e 3 agentes (README.md:103-104,140)."
-  - "Governar documentação por precedência: ADRs > canonical > evidence > analysis > archive > READMEs via system of record (docs/system-of-record.md:14-21)."
-  - "Disciplina operacional de agentes: uma tarefa por sessão, não assumir, mudança mínima, sucesso verificável, issues/branches traceáveis, gates reais (AGENTS.md:14-16,18-32,42-78)."
-  - "Audiência: pessoas de negócio com skill em construção de agentes, de iniciantes a operadores de produção (README.md:34)."
-
+- 'Base de conhecimento e currículo para agentes long-running confiáveis: sistemas de IA que operam por horas ou dias sem perder contexto, planejamento ou julgamento de qualidade (README.md:12).'
+- 'Documentar, ensinar e operacionalizar harness engineering: degradação de agentes longos é lacuna de engenharia, não de modelo; harness é a infraestrutura de suporte ao redor do modelo (README.md:16-18).'
+- 'Atacar três falhas estruturais de execuções longas: perda de contexto, planejamento frágil, autoavaliação cega (README.md:24-30).'
+- 'Entregar o currículo como produto principal: 12 semanas, 4 níveis, 8 conceitos core, 35+ diagramas, ancorado no caso real KODA — agente de venda de suplementos via WhatsApp com conversas de 2+ horas
+  (curriculum/README.md:13,34; docs/system-of-record.md:72-74).'
+- 'Rodar pipeline automatizado de análise de conhecimento externo: harness analyze-and-improve em 7 fases com evaluators e gates, convertendo fontes externas em canonical docs, skills e exercícios (README.md:102,136;
+  .opencode/skills/analyze-and-improve/SKILL.md:49-57).'
+- 'Servir de template de sistema de agentes reutilizável: .opencode/ com Handoff Protocol, 35 skills e 3 agentes (README.md:103-104,140).'
+- 'Governar documentação por precedência: ADRs > canonical > evidence > analysis > archive > READMEs via system of record (docs/system-of-record.md:14-21).'
+- 'Disciplina operacional de agentes: uma tarefa por sessão, não assumir, mudança mínima, sucesso verificável, issues/branches traceáveis, gates reais (AGENTS.md:14-16,18-32,42-78).'
+- 'Audiência: pessoas de negócio com skill em construção de agentes, de iniciantes a operadores de produção (README.md:34).'
 architecture:
   abstractions:
-    - name: "System of Record"
-      role: "Fonte da verdade; precedência de 6 níveis; define domínios do projeto (agentes/orquestração, currículo/conteúdo, portal web, stack/tooling, governança, testes/QA); cataloga padrões ativos, análises e ADRs"
-      evidence: "docs/system-of-record.md:12-21,23-153"
-    - name: "Biblioteca de padrões canônicos"
-      role: "Camada autoritativa Level 2: 161 docs, cada um problema/mecanismo/trade-offs, frontmatter type: canonical, relates-to obrigatório, wikilinks"
-      evidence: "docs/system-of-record.md:171; listagem docs/canonical/ 2026-08-31; ex. docs/canonical/generator-evaluator.md:1-17"
-    - name: "Currículo"
-      role: "Produto principal: 4 níveis + 8 conceitos core + knowledge graphs + guias + templates + case studies + referências + documentos mestres"
-      evidence: "curriculum/README.md:13; curriculum/MASTER_PLAN.md:50-190"
-    - name: "Pipeline analyze-and-improve"
-      role: "7 fases (0-6) delegadas a sub-agentes (ultrabrain/deep/quick): mental model → extraction → patterns → classification → artifacts → integration → curriculum integration; Phase 0 e 1 podem rodar em paralelo"
-      evidence: ".opencode/skills/analyze-and-improve/SKILL.md:49-57,105"
-    - name: "Harness de execução"
-      role: "harness.sh (loop) + PROGRESS.md (estado persistente) + test-results.json default-FAIL + guardian (valida evidência) + STEER.md/AGENT_STOP (redirecionamento e kill switch humanos)"
-      evidence: "harness/GUIDE-analyze-and-improve.md §1-3"
-    - name: "Sistema de agentes HoP (House of Pace)"
-      role: "3 agentes: hop-orchestrator-rezek (primary: governança, fonte de verdade, coordenação), koda-hop-init-basic (inicialização guiada KODA), hop-live-whatsapp-tester (teste live WhatsApp)"
-      evidence: ".opencode/agents/ (3 arquivos); docs/system-of-record.md:33-35"
-    - name: "Biblioteca de skills"
-      role: "35 skills com SKILL.md: issue workflow, orquestração, análise, documentação, planos, error hygiene, gates, decomposição de intenção, métricas, anti-sycophancy"
-      evidence: ".opencode/skills/ (35 dirs); docs/system-of-record.md:36-67"
-    - name: "Cache de modelos mentais"
-      role: "mapa-mental-repo/ versiona modelos mentais do repo (max 5 ativos, archive/ além, remoção >90 dias); alimenta modo incremental do pipeline"
-      evidence: ".opencode/skills/analyze-and-improve/SKILL.md:160-172"
-    - name: "Convenções Obsidian + validação"
-      role: "Rule 16: frontmatter por tipo de doc, wikilinks [[path|display]], tags derivadas dos domínios do SOR, relates-to hard error, slug lowercase-hyphen, validador scripts/validate-obsidian.ts"
-      evidence: "AGENTS.md:136-257"
-    - name: "Camadas de apresentação"
-      role: "3 dashboards Obsidian (dataview), 3 portais HTML vanilla JS + 1 proposta SPA, 35+ diagramas Mermaid no currículo, canvas Obsidian"
-      evidence: "README.md:105,110-121"
-    - name: "Stack e tooling"
-      role: "Node >= 20.18.0 ESM, ESLint 10 + plugin-n + unicorn + 2 regras customizadas (no-catch-message, no-raw-console-in-scripts), Makefile, obsidian-eval CLI (@pavani/obsidian-eval) cross-vault"
-      evidence: "package.json; README.md:153-161; docs/system-of-record.md:114-131"
+  - name: System of Record
+    role: Fonte da verdade; precedência de 6 níveis; define domínios do projeto (agentes/orquestração, currículo/conteúdo, portal web, stack/tooling, governança, testes/QA); cataloga padrões ativos, análises
+      e ADRs
+    evidence: docs/system-of-record.md:12-21,23-153
+  - name: Biblioteca de padrões canônicos
+    role: 'Camada autoritativa Level 2: 161 docs, cada um problema/mecanismo/trade-offs, frontmatter type: canonical, relates-to obrigatório, wikilinks'
+    evidence: docs/system-of-record.md:171; listagem docs/canonical/ 2026-08-31; ex. docs/canonical/generator-evaluator.md:1-17
+  - name: Currículo
+    role: 'Produto principal: 4 níveis + 8 conceitos core + knowledge graphs + guias + templates + case studies + referências + documentos mestres'
+    evidence: curriculum/README.md:13; curriculum/MASTER_PLAN.md:50-190
+  - name: Pipeline analyze-and-improve
+    role: '7 fases (0-6) delegadas a sub-agentes (ultrabrain/deep/quick): mental model → extraction → patterns → classification → artifacts → integration → curriculum integration; Phase 0 e 1 podem rodar
+      em paralelo'
+    evidence: .opencode/skills/analyze-and-improve/SKILL.md:49-57,105
+  - name: Harness de execução
+    role: harness.sh (loop) + PROGRESS.md (estado persistente) + test-results.json default-FAIL + guardian (valida evidência) + STEER.md/AGENT_STOP (redirecionamento e kill switch humanos)
+    evidence: harness/GUIDE-analyze-and-improve.md §1-3
+  - name: Sistema de agentes HoP (House of Pace)
+    role: '3 agentes: hop-orchestrator-rezek (primary: governança, fonte de verdade, coordenação), koda-hop-init-basic (inicialização guiada KODA), hop-live-whatsapp-tester (teste live WhatsApp)'
+    evidence: .opencode/agents/ (3 arquivos); docs/system-of-record.md:33-35
+  - name: Biblioteca de skills
+    role: '35 skills com SKILL.md: issue workflow, orquestração, análise, documentação, planos, error hygiene, gates, decomposição de intenção, métricas, anti-sycophancy'
+    evidence: .opencode/skills/ (35 dirs); docs/system-of-record.md:36-67
+  - name: Cache de modelos mentais
+    role: mapa-mental-repo/ versiona modelos mentais do repo (max 5 ativos, archive/ além, remoção >90 dias); alimenta modo incremental do pipeline
+    evidence: .opencode/skills/analyze-and-improve/SKILL.md:160-172
+  - name: Convenções Obsidian + validação
+    role: 'Rule 16: frontmatter por tipo de doc, wikilinks [[path|display]], tags derivadas dos domínios do SOR, relates-to hard error, slug lowercase-hyphen, validador scripts/validate-obsidian.ts'
+    evidence: AGENTS.md:136-257
+  - name: Camadas de apresentação
+    role: 3 dashboards Obsidian (dataview), 3 portais HTML vanilla JS + 1 proposta SPA, 35+ diagramas Mermaid no currículo, canvas Obsidian
+    evidence: README.md:105,110-121
+  - name: Stack e tooling
+    role: Node >= 20.18.0 ESM, ESLint 10 + plugin-n + unicorn + 2 regras customizadas (no-catch-message, no-raw-console-in-scripts), Makefile, obsidian-eval CLI (@pavani/obsidian-eval) cross-vault
+    evidence: package.json; README.md:153-161; docs/system-of-record.md:114-131
   relationships:
-    - "SOR governa tudo: conflitos entre docs resolvem-se pela precedência (AGENTS.md:80-91 espelha docs/system-of-record.md:14-21)"
-    - "Pipeline → repositório: outputs Phase 0-4 em docs/analysis/<date>-<slug>/; artefatos concretos da Phase 4 em docs/canonical/, .opencode/skills/, curriculum/; Phase 5 atualiza SOR e índices (.opencode/skills/analyze-and-improve/SKILL.md:140-158)"
-    - "Modelo mental é insumo canônico: Phase 3 classifica padrões da fonte externa contra este modelo — contagens precisam estar corretas"
-    - "Agentes → canonical: cada agente declara fonte de verdade apontando ao SOR e a canonical docs (.opencode/agents/hop-orchestrator-rezek.md:23-29)"
-    - "Currículo ↔ canonical ↔ glossário: lições referenciam padrões via wikilink; glossário define termos com Ver também para canonical docs e níveis (curriculum/GLOSSARY.md)"
-    - "ADRs > canonical: única ADR aceita (Skill-Canons Bridge) documenta decisões cross-cutting e revisitas pendentes (docs/decisions/2026-06-24-skill-canons-bridge-implementation.md:33-93)"
-    - "Análises alimentam padrões: 28 dirs de análise (12FA, eval maturity, Matt Pocock, IDSD, memory selection, Kavak, Snowflake GTM, Qodo, macro fund, MHC/KODA backend) são proveniência da maioria dos 161 canonical docs (docs/system-of-record.md:344-452)"
-    - "Formato de sessão de análise: pós-2026-06-14 usa <date>-<source-slug>-artifacts.{md,yaml}; antes disso integration-roadmap.md legacy (docs/system-of-record.md:447-452)"
-    - "Disciplina de sessão: Rule 0 (uma tarefa por sessão) e Rule 17 (coletar background results só após ALL COMPLETE, em batch) regem a operação do pipeline (AGENTS.md:14-16,259-272)"
-
+  - 'SOR governa tudo: conflitos entre docs resolvem-se pela precedência (AGENTS.md:80-91 espelha docs/system-of-record.md:14-21)'
+  - 'Pipeline → repositório: outputs Phase 0-4 em docs/analysis/<date>-<slug>/; artefatos concretos da Phase 4 em docs/canonical/, .opencode/skills/, curriculum/; Phase 5 atualiza SOR e índices (.opencode/skills/analyze-and-improve/SKILL.md:140-158)'
+  - 'Modelo mental é insumo canônico: Phase 3 classifica padrões da fonte externa contra este modelo — contagens precisam estar corretas'
+  - 'Agentes → canonical: cada agente declara fonte de verdade apontando ao SOR e a canonical docs (.opencode/agents/hop-orchestrator-rezek.md:23-29)'
+  - 'Currículo ↔ canonical ↔ glossário: lições referenciam padrões via wikilink; glossário define termos com Ver também para canonical docs e níveis (curriculum/GLOSSARY.md)'
+  - 'ADRs > canonical: única ADR aceita (Skill-Canons Bridge) documenta decisões cross-cutting e revisitas pendentes (docs/decisions/2026-06-24-skill-canons-bridge-implementation.md:33-93)'
+  - 'Análises alimentam padrões: 28 dirs de análise (12FA, eval maturity, Matt Pocock, IDSD, memory selection, Kavak, Snowflake GTM, Qodo, macro fund, MHC/KODA backend) são proveniência da maioria dos 161
+    canonical docs (docs/system-of-record.md:344-452)'
+  - 'Formato de sessão de análise: pós-2026-06-14 usa <date>-<source-slug>-artifacts.{md,yaml}; antes disso integration-roadmap.md legacy (docs/system-of-record.md:447-452)'
+  - 'Disciplina de sessão: Rule 0 (uma tarefa por sessão) e Rule 17 (coletar background results só após ALL COMPLETE, em batch) regem a operação do pipeline (AGENTS.md:14-16,259-272)'
 patterns:
-  - {name: "Owned Agent Control Loop", where_defined: "docs/canonical/owned-agent-control-loop.md", maturity: "active (12FA)"}
-  - {name: "Deterministic Tool Dispatch", where_defined: "docs/canonical/deterministic-tool-dispatch.md", maturity: "active (12FA)"}
-  - {name: "Error Context Hygiene", where_defined: "docs/canonical/error-context-hygiene.md (+ .opencode/skills/error-context-hygiene/)", maturity: "active (12FA; skill de implementação)"}
-  - {name: "Serializable Pause/Resume State", where_defined: "docs/canonical/serializable-pause-resume-state.md", maturity: "active (12FA)"}
-  - {name: "Generator-Evaluator", where_defined: "docs/canonical/generator-evaluator.md", maturity: "active; doc registra 'Partial Coverage — 12+ eval infra docs, no unified architecture doc' (:16)"}
-  - {name: "Plan-Execute-Verify", where_defined: "docs/canonical/plan-execute-verify.md", maturity: "active"}
-  - {name: "Eval Tier Stratification (fast/medium/deep)", where_defined: "docs/canonical/eval-tier-stratification.md", maturity: "active"}
-  - {name: "Production Failure Regression Flywheel", where_defined: "docs/canonical/production-failure-regression-flywheel.md", maturity: "active"}
-  - {name: "Living Eval Dataset (crescimento monotônico por incidente)", where_defined: "docs/canonical/living-eval-dataset.md", maturity: "active"}
-  - {name: "3-Layer Evaluation Architecture (Deterministic/Semantic/Behavioral)", where_defined: "docs/canonical/3-layer-evaluation-architecture.md", maturity: "active"}
-  - {name: "Behavioral Eval Path Analysis (wrong-path-right-answer)", where_defined: "docs/canonical/behavioral-eval-path-analysis.md (+ skill + exercício N3)", maturity: "active"}
-  - {name: "Head-Tail Context Truncation", where_defined: "docs/canonical/head-tail-context-truncation.md", maturity: "active"}
-  - {name: "Addressable Memory Catalog", where_defined: "docs/canonical/addressable-memory-catalog.md", maturity: "active"}
-  - {name: "Tiered Context Storage (hot/warm/cold)", where_defined: "docs/canonical/tiered-context-storage.md (+ skill)", maturity: "active"}
-  - {name: "Neutral Selection Layer", where_defined: "docs/canonical/neutral-selection-layer.md (+ skill)", maturity: "active"}
-  - {name: "Selection-Budgeted Retrieval", where_defined: "docs/canonical/selection-budgeted-retrieval.md (+ skill)", maturity: "active"}
-  - {name: "Relational Context Graph (edges tipados)", where_defined: "docs/canonical/relational-context-graph.md", maturity: "active"}
-  - {name: "Deliberate Forgetting", where_defined: "docs/canonical/deliberate-forgetting.md", maturity: "active"}
-  - {name: "Smallest Sufficient Context", where_defined: "docs/canonical/smallest-sufficient-context.md", maturity: "active"}
-  - {name: "Agent Degradation Loop Prevention (4 links)", where_defined: "docs/canonical/agent-degradation-loop-prevention.md", maturity: "active"}
-  - {name: "Explicit Token Budget Ledger", where_defined: "docs/canonical/explicit-token-budget-ledger.md", maturity: "active"}
-  - {name: "Burn Rate Runtime Forecast", where_defined: "docs/canonical/burn-rate-runtime-forecast.md", maturity: "active"}
-  - {name: "Phase-Gated Token Health Monitor", where_defined: "docs/canonical/phase-gated-token-health-monitor.md", maturity: "active (referenciado pela ADR como budget gate 4 fases)"}
-  - {name: "Budget-Aware Session Handoff", where_defined: "docs/canonical/budget-aware-session-handoff.md", maturity: "active"}
-  - {name: "Measured Harness Evolution Lifecycle (BUILD→STABILIZE→SIMPLIFY→REMOVE)", where_defined: "docs/canonical/measured-harness-evolution-lifecycle.md", maturity: "active"}
-  - {name: "LLM as Fuzzy Compiler", where_defined: "docs/canonical/llm-as-fuzzy-compiler.md (+ skill)", maturity: "active"}
-  - {name: "Invariant-Compensation Split", where_defined: "docs/canonical/invariant-compensation-split.md", maturity: "active"}
-  - {name: "Intent Five-Part Primitive", where_defined: "docs/canonical/intent-five-part-primitive.md (+ skill)", maturity: "active"}
-  - {name: "ICE Craft Separation", where_defined: "docs/canonical/ice-craft-separation.md", maturity: "active"}
-  - {name: "Three-Part Intent Contract (goal/scenario/destination)", where_defined: "docs/canonical/three-part-intent-contract.md", maturity: "active"}
-  - {name: "Goal Atomicity Split", where_defined: "docs/canonical/goal-atomicity-split.md (+ skill)", maturity: "active"}
-  - {name: "Two-Implementations Goal Test", where_defined: "docs/canonical/two-implementations-goal-test.md (+ skill)", maturity: "active"}
-  - {name: "Constraint Budget Gate (5-7)", where_defined: "docs/canonical/constraint-budget-gate.md (+ skill)", maturity: "active"}
-  - {name: "Constraint-Failure Decision Rule", where_defined: "docs/canonical/constraint-failure-decision-rule.md (+ skill)", maturity: "active"}
-  - {name: "Constraint-Anchored Evaluation", where_defined: "docs/canonical/constraint-anchored-evaluation.md", maturity: "active"}
-  - {name: "Compartmented Evaluation Architecture", where_defined: "docs/canonical/compartmented-evaluation-architecture.md", maturity: "active"}
-  - {name: "Human-Owned Expectations Boundary", where_defined: "docs/canonical/human-owned-expectations-boundary.md", maturity: "active"}
-  - {name: "Manual Brake Question Gate", where_defined: "docs/canonical/manual-brake-question-gate.md (+ skill)", maturity: "active"}
-  - {name: "Deferred Ledger Agentic Work", where_defined: "docs/canonical/deferred-ledger-agentic-work.md (+ skill)", maturity: "active"}
-  - {name: "Carry-Debt Sunset Gate", where_defined: "docs/canonical/carry-debt-sunset-gate.md", maturity: "active"}
-  - {name: "Owner-of-No-Role Design", where_defined: "docs/canonical/owner-of-no-role-design.md (+ skill + exercício)", maturity: "active"}
-  - {name: "Value-Gated Agent Control Loop", where_defined: "docs/canonical/value-gated-agent-control-loop.md", maturity: "active"}
-  - {name: "Accidental Brake Replacement (anti-pattern)", where_defined: "docs/canonical/accidental-brake-replacement.md", maturity: "active"}
-  - {name: "Presence-in-the-Loop Metric", where_defined: "docs/canonical/presence-in-the-loop-metric.md (+ skill)", maturity: "active"}
-  - {name: "Human/AFK Task Routing Gate", where_defined: "docs/canonical/human-afk-task-routing-gate.md", maturity: "active"}
-  - {name: "Shadow Review Pipeline", where_defined: "docs/canonical/shadow-review-pipeline.md (+ skill + exercício)", maturity: "active"}
-  - {name: "Contextual Severity Calibration", where_defined: "docs/canonical/contextual-severity-calibration.md (+ skill + exercício)", maturity: "active"}
-  - {name: "Devil's Advocate (anti-sycophancy, agente momus)", where_defined: ".opencode/skills/devils-advocate/", maturity: "active (Wave 1 anti-sycophancy; sem canonical doc próprio listado)"}
-  - {name: "Garbage Collection Day Meta-Loop", where_defined: "docs/canonical/garbage-collection-day-meta-loop.md", maturity: "active"}
-  - {name: "Failure Pattern Classification Loop", where_defined: "docs/canonical/failure-pattern-classification-loop.md", maturity: "active"}
-  - {name: "QA-to-Backlog Feedback Loop", where_defined: "docs/canonical/qa-to-backlog-feedback-loop.md", maturity: "active"}
-  - {name: "Persona-Based Documentation", where_defined: "docs/canonical/persona-based-documentation.md (+ skill)", maturity: "active"}
-  - {name: "Vertical Slice Issue Generation", where_defined: "docs/canonical/vertical-slice-issue-generation.md", maturity: "active"}
-  - {name: "Grill-Me Alignment Interview", where_defined: "docs/canonical/grill-me-alignment-interview.md", maturity: "active"}
-  - {name: "Closed-Loop Agent Operating System", where_defined: "docs/canonical/closed-loop-agent-operating-system.md", maturity: "active"}
-  - {name: "Application-Owned Agent Control Plane", where_defined: "docs/canonical/application-owned-agent-control-plane.md", maturity: "active"}
-  - {name: "Versioned Durable Agent State", where_defined: "docs/canonical/versioned-durable-agent-state.md", maturity: "active"}
-  - {name: "Tested Degradation Ladder", where_defined: "docs/canonical/tested-degradation-ladder.md", maturity: "active"}
-  - {name: "Multi-Agent Fault Tolerance (Saga, Circuit Breaker)", where_defined: "docs/canonical/multi-agent-fault-tolerance.md", maturity: "active"}
-  - {name: "Skill-Resolver-Skillify Capability Pipeline", where_defined: "docs/canonical/skill-resolver-skillify-capability-pipeline.md", maturity: "active"}
-  - {name: "Resolver-Based Context Progressive Disclosure", where_defined: "docs/canonical/resolver-based-context-progressive-disclosure.md", maturity: "active"}
-  - {name: "Epistemic Memory Graph", where_defined: "docs/canonical/epistemic-memory-graph.md (implementado 2026-06-19 em obsidian-eval/src/)", maturity: "active (implementado)"}
-  - {name: "Cross-Context Knowledge Siloing", where_defined: "docs/canonical/cross-context-knowledge-siloing.md", maturity: "active"}
-  - {name: "Trace Instrumentation", where_defined: "docs/canonical/trace-instrumentation.md (3 camadas de defesa, 3 modos de wrapper, 8 skills instrumentados)", maturity: "active (implementado)"}
-  - {name: "Skill Testing Conventions", where_defined: "docs/canonical/skill-testing-conventions.md", maturity: "active"}
-  - {name: "Prompt-as-Code Causal Change Management", where_defined: "docs/canonical/prompt-as-code-causal-change-management.md", maturity: "active (Sierra)"}
-  - {name: "Centralized Cross-Framework Tracing", where_defined: "docs/canonical/centralized-cross-framework-tracing.md", maturity: "active (Sierra)"}
-  - {name: "Multi-Provider Model Routing", where_defined: "docs/canonical/multi-provider-model-routing.md", maturity: "active (Sierra)"}
-  - {name: "Model-Agnostic Agent VM Harness (5 slots)", where_defined: "docs/canonical/model-agnostic-agent-vm-harness.md", maturity: "active (Kavak 2026-08-30)"}
-  - {name: "Alarm-Clock Agent Lifecycle (wake→work→sleep)", where_defined: "docs/canonical/alarm-clock-agent-lifecycle.md", maturity: "active (Kavak)"}
-  - {name: "Evals-as-Brakes", where_defined: "docs/canonical/evals-as-brakes.md", maturity: "active (Kavak)"}
-  - {name: "Carve-Out Pilot Hard Target (AI CEO)", where_defined: "docs/canonical/carve-out-pilot-hard-target.md", maturity: "active (Kavak)"}
-  - {name: "Mega-Expert Consolidation", where_defined: "docs/canonical/mega-expert-consolidation.md (+ skill)", maturity: "active (Kavak)"}
-  - {name: "Agent-per-Customer Outcome Ownership", where_defined: "docs/canonical/agent-per-customer-outcome-ownership.md", maturity: "active (Kavak)"}
-  - {name: "Goal-Driven Agents over Workflows", where_defined: "docs/canonical/goal-driven-agents-over-workflows.md", maturity: "active (Kavak)"}
-  - {name: "Shared-Fleet Learning", where_defined: "docs/canonical/shared-fleet-learning.md", maturity: "active (Kavak)"}
-  - {name: "Closed-Loop Help API", where_defined: "docs/canonical/closed-loop-help-api.md", maturity: "active (Kavak)"}
-  - {name: "Production-Contact Training Loop", where_defined: "docs/canonical/production-contact-training-loop.md", maturity: "active (Kavak)"}
-  - {name: "Eval Investment Parity", where_defined: "docs/canonical/eval-investment-parity.md", maturity: "active (Kavak)"}
-  - {name: "Outcome-Level Eval Hierarchy", where_defined: "docs/canonical/outcome-level-eval-hierarchy.md", maturity: "active (Kavak)"}
-  - {name: "Sidekick Pattern / Physical Boundaries", where_defined: "docs/canonical/sidekick-pattern-physical-boundaries.md (+ skill)", maturity: "active (Kavak)"}
-  - {name: "Workflow-Derived Golden Question Set (~150)", where_defined: "docs/canonical/workflow-derived-golden-question-set.md", maturity: "active (Snowflake GTM 2026-08-30)"}
-  - {name: "Quality-Over-Coverage Trust Scoping", where_defined: "docs/canonical/quality-over-coverage-trust-scoping.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Retention-Gated Phased Rollout", where_defined: "docs/canonical/retention-gated-phased-rollout.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Human-Review Staged Workflow Automation (monitor→draft→review→send)", where_defined: "docs/canonical/human-review-staged-workflow-automation.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Pull-Based Infrastructure on Pain", where_defined: "docs/canonical/pull-based-infrastructure-on-pain.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Continuous Re-Architecture Budget (60-70/30-40)", where_defined: "docs/canonical/continuous-re-architecture-budget.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Gap-to-Content Feedback Circuit", where_defined: "docs/canonical/gap-to-content-feedback-circuit.md", maturity: "active (Snowflake GTM)"}
-  - {name: "LLM-Classified Log Taxonomy", where_defined: "docs/canonical/llm-classified-log-taxonomy.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Trial-Retention Attribution Split", where_defined: "docs/canonical/trial-retention-attribution-split.md (+ skill + exercício)", maturity: "active (Snowflake GTM)"}
-  - {name: "Agent Value Maturity Ladder (4 estágios)", where_defined: "docs/canonical/agent-value-maturity-ladder.md (+ skill + exercício)", maturity: "active (Snowflake GTM)"}
-  - {name: "Owner-Led Activation Blitz", where_defined: "docs/canonical/owner-led-activation-blitz.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Centralized Data Plane with Inherited RBAC", where_defined: "docs/canonical/centralized-data-plane-inherited-rbac.md", maturity: "active (Snowflake GTM)"}
-  - {name: "Software Graph Review Substrate", where_defined: "docs/canonical/software-graph-review-substrate.md", maturity: "active (Qodo 2026-08-31)"}
-  - {name: "Semantic-Rule-Gated Auto Approve/Block", where_defined: "docs/canonical/semantic-rule-gated-auto-approve-block.md", maturity: "active (Qodo)"}
-  - {name: "Dual-Interface Context Engine", where_defined: "docs/canonical/dual-interface-context-engine.md", maturity: "active (Qodo)"}
-  - {name: "Graph-Addressed Context Placement", where_defined: "docs/canonical/graph-addressed-context-placement.md", maturity: "active (Qodo)"}
-  - {name: "Agent-to-Agent Review Comment Protocol", where_defined: "docs/canonical/agent-to-agent-review-comment-protocol.md", maturity: "active (Qodo)"}
-  - {name: "Rule Lifecycle Analytics", where_defined: "docs/canonical/rule-lifecycle-analytics.md", maturity: "active (Qodo)"}
-  - {name: "Comment-Decay Readiness Signal (100 PRs sem comentário humano)", where_defined: "docs/canonical/comment-decay-readiness-signal.md", maturity: "active (Qodo)"}
-  - {name: "Issue lifecycle workflow (issue-start/issue-review/issue-finish/issue-workflow/refine-issue)", where_defined: ".opencode/skills/issue-start, issue-review, issue-finish, issue-workflow, refine-issue", maturity: "active (processo)"}
-  - {name: "Karpathy guidelines (Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution)", where_defined: ".opencode/skills/karpathy-guidelines/SKILL.md; referenciadas por AGENTS.md Rules 1-4", maturity: "active (processo)"}
-  - {name: "Skill-Canons Bridge (inline injection, promotion D8, snapshot baseline, budget gate 4 fases, cópia local)", where_defined: "docs/decisions/2026-06-24-skill-canons-bridge-implementation.md", maturity: "accepted ADR; ações abertas pendentes (:91-93)"}
-  - {name: "No-fabricated-premises em delegações", where_defined: ".opencode/skills/analyze-and-improve/SKILL.md:130-138", maturity: "active (processo)"}
-  - {name: "Pain-Signal Eval Progression Gate", where_defined: "docs/canonical/pain-signal-eval-progression-gate.md", maturity: "active (README highlight)"}
-  - {name: "Production-Grounded Eval Sampling", where_defined: "docs/canonical/production-grounded-eval-sampling.md", maturity: "active"}
-  - {name: "Eval Dashboard Primary Detection Surface", where_defined: "docs/canonical/eval-dashboard-primary-detection-surface.md", maturity: "active"}
-  - {name: "Business-Outcome-First Eval Pipeline", where_defined: "docs/canonical/business-outcome-first-eval-pipeline.md", maturity: "active"}
-  - {name: "Eval-Driven Development Timeline (eval-first, model-selection-last)", where_defined: "docs/canonical/eval-driven-development-timeline.md", maturity: "active"}
-  - {name: "Eval-to-Production Correlation Tracking", where_defined: "docs/canonical/eval-to-production-correlation-tracking.md", maturity: "active"}
-  - {name: "N+1 Long-Session Evals", where_defined: "docs/canonical/n-plus-one-long-session-evals.md", maturity: "active"}
-  - {name: "Late-Failure Regression Suite", where_defined: "docs/canonical/late-failure-regression-suite.md", maturity: "active"}
-  - {name: "PR-Gated Eval Enforcement", where_defined: "docs/canonical/pr-gated-eval-enforcement.md", maturity: "active"}
-  - {name: "Repeatable Agent Spot-Check Set", where_defined: "docs/canonical/repeatable-agent-spot-check-set.md", maturity: "active"}
-  - {name: "Model-Switching Architecture Enterprise Eval Gate", where_defined: "docs/canonical/model-switching-architecture-enterprise-eval-gate.md", maturity: "active"}
-  - {name: "Model-Switch-Driven Eval Hardening", where_defined: "docs/canonical/model-switch-driven-eval-hardening.md", maturity: "active (Sierra)"}
-  - {name: "Consensus-Gated Privileged Information", where_defined: "docs/canonical/consensus-gated-privileged-information.md", maturity: "active"}
-  - {name: "Multi-Model Evaluation Council", where_defined: "docs/canonical/multi-model-evaluation-council.md", maturity: "active"}
-  - {name: "Split-Brain Planning Review", where_defined: "docs/canonical/split-brain-planning-review.md", maturity: "active"}
-  - {name: "External State Persistence", where_defined: "docs/canonical/external-state-persistence.md", maturity: "active"}
-  - {name: "Hybrid Context Stack", where_defined: "docs/canonical/hybrid-context-stack.md", maturity: "active"}
-  - {name: "Durable Fact Selective History", where_defined: "docs/canonical/durable-fact-selective-history.md", maturity: "active"}
-  - {name: "Summary Buffer Continuity", where_defined: "docs/canonical/summary-buffer-continuity.md", maturity: "active"}
-  - {name: "Semantic Topic Bucketing", where_defined: "docs/canonical/semantic-topic-bucketing.md", maturity: "active"}
-  - {name: "Stable Harness Prompt", where_defined: "docs/canonical/stable-harness-prompt.md", maturity: "active"}
-  - {name: "Structured Generation Constraint Validation Circuit", where_defined: "docs/canonical/structured-generation-constraint-validation-circuit.md", maturity: "active"}
-  - {name: "Invariant-Compensation Split (classificação de componentes do harness)", where_defined: "docs/canonical/invariant-compensation-split.md", maturity: "active"}
-  - {name: "Confidence-Gated Continual Learning", where_defined: "docs/canonical/confidence-gated-continual-learning.md", maturity: "active (Sierra)"}
-  - {name: "Task-Routed Model Tiering", where_defined: "docs/canonical/task-routed-model-tiering.md", maturity: "active (Sierra)"}
-  - {name: "File-System Materialization", where_defined: "docs/canonical/file-system-materialization.md", maturity: "active (Sierra)"}
-  - {name: "Regulated Data Boundary", where_defined: "docs/canonical/regulated-data-boundary.md", maturity: "active (Sierra)"}
-  - {name: "Auth-Coupled Memory Architecture", where_defined: "docs/canonical/auth-coupled-memory-architecture.md", maturity: "active (Sierra)"}
-  - {name: "Temporal Context Injection", where_defined: "docs/canonical/temporal-context-injection.md", maturity: "active (Sierra)"}
-  - {name: "Three-Tier Memory Persistence", where_defined: "docs/canonical/three-tier-memory-persistence.md", maturity: "active (Sierra)"}
-  - {name: "Always-On Monitoring with Human Triage", where_defined: "docs/canonical/always-on-monitoring-human-triage.md", maturity: "active (Sierra)"}
-  - {name: "Governance Context Injection PII Prevention", where_defined: "docs/canonical/governance-context-injection-pii-prevention.md", maturity: "active"}
-  - {name: "Agent-Specific Data Freshness Pipeline", where_defined: "docs/canonical/agent-specific-data-freshness-pipeline.md", maturity: "active"}
-  - {name: "Pre-Commit AI Review Gate", where_defined: "docs/canonical/pre-commit-ai-review-gate.md", maturity: "active"}
-  - {name: "Review Contract Checklist", where_defined: "docs/canonical/review-contract-checklist.md", maturity: "active"}
-  - {name: "On-Policy Rollout Feedback Loop", where_defined: "docs/canonical/on-policy-rollout-feedback-loop.md", maturity: "active"}
-  - {name: "Privileged Context Self-Distillation", where_defined: "docs/canonical/privileged-context-self-distillation.md", maturity: "active"}
-  - {name: "Autonomy Curriculum Sampling (observe→assist→own)", where_defined: "docs/canonical/autonomy-curriculum-sampling.md (+ skill)", maturity: "active"}
-  - {name: "Asymmetric Failure Correction Router", where_defined: "docs/canonical/asymmetric-failure-correction-router.md", maturity: "active"}
-  - {name: "Magnitude-Direction Verifier Split", where_defined: "docs/canonical/magnitude-direction-verifier-split.md (+ skill)", maturity: "active"}
-  - {name: "Adaptive Style Compression Teacher", where_defined: "docs/canonical/adaptive-style-compression-teacher.md", maturity: "active"}
-  - {name: "Domain-Embedded Workflow Automation Wedge", where_defined: "docs/canonical/domain-embedded-workflow-automation-wedge.md", maturity: "active"}
-  - {name: "Obsidian Document Conventions", where_defined: "docs/canonical/obsidian-document-conventions.md; AGENTS.md Rule 16", maturity: "active"}
-
+- name: Owned Agent Control Loop
+  where_defined: docs/canonical/owned-agent-control-loop.md
+  maturity: active (12FA)
+- name: Deterministic Tool Dispatch
+  where_defined: docs/canonical/deterministic-tool-dispatch.md
+  maturity: active (12FA)
+- name: Error Context Hygiene
+  where_defined: docs/canonical/error-context-hygiene.md (+ .opencode/skills/error-context-hygiene/)
+  maturity: active (12FA; skill de implementação)
+- name: Serializable Pause/Resume State
+  where_defined: docs/canonical/serializable-pause-resume-state.md
+  maturity: active (12FA)
+- name: Generator-Evaluator
+  where_defined: docs/canonical/generator-evaluator.md
+  maturity: active; doc registra 'Partial Coverage — 12+ eval infra docs, no unified architecture doc' (:16)
+- name: Plan-Execute-Verify
+  where_defined: docs/canonical/plan-execute-verify.md
+  maturity: active
+- name: Eval Tier Stratification (fast/medium/deep)
+  where_defined: docs/canonical/eval-tier-stratification.md
+  maturity: active
+- name: Production Failure Regression Flywheel
+  where_defined: docs/canonical/production-failure-regression-flywheel.md
+  maturity: active
+- name: Living Eval Dataset (crescimento monotônico por incidente)
+  where_defined: docs/canonical/living-eval-dataset.md
+  maturity: active
+- name: 3-Layer Evaluation Architecture (Deterministic/Semantic/Behavioral)
+  where_defined: docs/canonical/3-layer-evaluation-architecture.md
+  maturity: active
+- name: Behavioral Eval Path Analysis (wrong-path-right-answer)
+  where_defined: docs/canonical/behavioral-eval-path-analysis.md (+ skill + exercício N3)
+  maturity: active
+- name: Head-Tail Context Truncation
+  where_defined: docs/canonical/head-tail-context-truncation.md
+  maturity: active
+- name: Addressable Memory Catalog
+  where_defined: docs/canonical/addressable-memory-catalog.md
+  maturity: active
+- name: Tiered Context Storage (hot/warm/cold)
+  where_defined: docs/canonical/tiered-context-storage.md (+ skill)
+  maturity: active
+- name: Neutral Selection Layer
+  where_defined: docs/canonical/neutral-selection-layer.md (+ skill)
+  maturity: active
+- name: Selection-Budgeted Retrieval
+  where_defined: docs/canonical/selection-budgeted-retrieval.md (+ skill)
+  maturity: active
+- name: Relational Context Graph (edges tipados)
+  where_defined: docs/canonical/relational-context-graph.md
+  maturity: active
+- name: Deliberate Forgetting
+  where_defined: docs/canonical/deliberate-forgetting.md
+  maturity: active
+- name: Smallest Sufficient Context
+  where_defined: docs/canonical/smallest-sufficient-context.md
+  maturity: active
+- name: Agent Degradation Loop Prevention (4 links)
+  where_defined: docs/canonical/agent-degradation-loop-prevention.md
+  maturity: active
+- name: Explicit Token Budget Ledger
+  where_defined: docs/canonical/explicit-token-budget-ledger.md
+  maturity: active
+- name: Burn Rate Runtime Forecast
+  where_defined: docs/canonical/burn-rate-runtime-forecast.md
+  maturity: active
+- name: Phase-Gated Token Health Monitor
+  where_defined: docs/canonical/phase-gated-token-health-monitor.md
+  maturity: active (referenciado pela ADR como budget gate 4 fases)
+- name: Budget-Aware Session Handoff
+  where_defined: docs/canonical/budget-aware-session-handoff.md
+  maturity: active
+- name: Measured Harness Evolution Lifecycle (BUILD→STABILIZE→SIMPLIFY→REMOVE)
+  where_defined: docs/canonical/measured-harness-evolution-lifecycle.md
+  maturity: active
+- name: LLM as Fuzzy Compiler
+  where_defined: docs/canonical/llm-as-fuzzy-compiler.md (+ skill)
+  maturity: active
+- name: Invariant-Compensation Split
+  where_defined: docs/canonical/invariant-compensation-split.md
+  maturity: active
+- name: Intent Five-Part Primitive
+  where_defined: docs/canonical/intent-five-part-primitive.md (+ skill)
+  maturity: active
+- name: ICE Craft Separation
+  where_defined: docs/canonical/ice-craft-separation.md
+  maturity: active
+- name: Three-Part Intent Contract (goal/scenario/destination)
+  where_defined: docs/canonical/three-part-intent-contract.md
+  maturity: active
+- name: Goal Atomicity Split
+  where_defined: docs/canonical/goal-atomicity-split.md (+ skill)
+  maturity: active
+- name: Two-Implementations Goal Test
+  where_defined: docs/canonical/two-implementations-goal-test.md (+ skill)
+  maturity: active
+- name: Constraint Budget Gate (5-7)
+  where_defined: docs/canonical/constraint-budget-gate.md (+ skill)
+  maturity: active
+- name: Constraint-Failure Decision Rule
+  where_defined: docs/canonical/constraint-failure-decision-rule.md (+ skill)
+  maturity: active
+- name: Constraint-Anchored Evaluation
+  where_defined: docs/canonical/constraint-anchored-evaluation.md
+  maturity: active
+- name: Compartmented Evaluation Architecture
+  where_defined: docs/canonical/compartmented-evaluation-architecture.md
+  maturity: active
+- name: Human-Owned Expectations Boundary
+  where_defined: docs/canonical/human-owned-expectations-boundary.md
+  maturity: active
+- name: Manual Brake Question Gate
+  where_defined: docs/canonical/manual-brake-question-gate.md (+ skill)
+  maturity: active
+- name: Deferred Ledger Agentic Work
+  where_defined: docs/canonical/deferred-ledger-agentic-work.md (+ skill)
+  maturity: active
+- name: Carry-Debt Sunset Gate
+  where_defined: docs/canonical/carry-debt-sunset-gate.md
+  maturity: active
+- name: Owner-of-No-Role Design
+  where_defined: docs/canonical/owner-of-no-role-design.md (+ skill + exercício)
+  maturity: active
+- name: Value-Gated Agent Control Loop
+  where_defined: docs/canonical/value-gated-agent-control-loop.md
+  maturity: active
+- name: Accidental Brake Replacement (anti-pattern)
+  where_defined: docs/canonical/accidental-brake-replacement.md
+  maturity: active
+- name: Presence-in-the-Loop Metric
+  where_defined: docs/canonical/presence-in-the-loop-metric.md (+ skill)
+  maturity: active
+- name: Human/AFK Task Routing Gate
+  where_defined: docs/canonical/human-afk-task-routing-gate.md
+  maturity: active
+- name: Shadow Review Pipeline
+  where_defined: docs/canonical/shadow-review-pipeline.md (+ skill + exercício)
+  maturity: active
+- name: Contextual Severity Calibration
+  where_defined: docs/canonical/contextual-severity-calibration.md (+ skill + exercício)
+  maturity: active
+- name: Devil's Advocate (anti-sycophancy, agente momus)
+  where_defined: .opencode/skills/devils-advocate/
+  maturity: active (Wave 1 anti-sycophancy; sem canonical doc próprio listado)
+- name: Garbage Collection Day Meta-Loop
+  where_defined: docs/canonical/garbage-collection-day-meta-loop.md
+  maturity: active
+- name: Failure Pattern Classification Loop
+  where_defined: docs/canonical/failure-pattern-classification-loop.md
+  maturity: active
+- name: QA-to-Backlog Feedback Loop
+  where_defined: docs/canonical/qa-to-backlog-feedback-loop.md
+  maturity: active
+- name: Persona-Based Documentation
+  where_defined: docs/canonical/persona-based-documentation.md (+ skill)
+  maturity: active
+- name: Vertical Slice Issue Generation
+  where_defined: docs/canonical/vertical-slice-issue-generation.md
+  maturity: active
+- name: Grill-Me Alignment Interview
+  where_defined: docs/canonical/grill-me-alignment-interview.md
+  maturity: active
+- name: Closed-Loop Agent Operating System
+  where_defined: docs/canonical/closed-loop-agent-operating-system.md
+  maturity: active
+- name: Application-Owned Agent Control Plane
+  where_defined: docs/canonical/application-owned-agent-control-plane.md
+  maturity: active
+- name: Versioned Durable Agent State
+  where_defined: docs/canonical/versioned-durable-agent-state.md
+  maturity: active
+- name: Tested Degradation Ladder
+  where_defined: docs/canonical/tested-degradation-ladder.md
+  maturity: active
+- name: Multi-Agent Fault Tolerance (Saga, Circuit Breaker)
+  where_defined: docs/canonical/multi-agent-fault-tolerance.md
+  maturity: active
+- name: Skill-Resolver-Skillify Capability Pipeline
+  where_defined: docs/canonical/skill-resolver-skillify-capability-pipeline.md
+  maturity: active
+- name: Resolver-Based Context Progressive Disclosure
+  where_defined: docs/canonical/resolver-based-context-progressive-disclosure.md
+  maturity: active
+- name: Epistemic Memory Graph
+  where_defined: docs/canonical/epistemic-memory-graph.md (implementado 2026-06-19 em obsidian-eval/src/)
+  maturity: active (implementado)
+- name: Cross-Context Knowledge Siloing
+  where_defined: docs/canonical/cross-context-knowledge-siloing.md
+  maturity: active
+- name: Trace Instrumentation
+  where_defined: docs/canonical/trace-instrumentation.md (3 camadas de defesa, 3 modos de wrapper, 8 skills instrumentados)
+  maturity: active (implementado)
+- name: Skill Testing Conventions
+  where_defined: docs/canonical/skill-testing-conventions.md
+  maturity: active
+- name: Prompt-as-Code Causal Change Management
+  where_defined: docs/canonical/prompt-as-code-causal-change-management.md
+  maturity: active (Sierra)
+- name: Centralized Cross-Framework Tracing
+  where_defined: docs/canonical/centralized-cross-framework-tracing.md
+  maturity: active (Sierra)
+- name: Multi-Provider Model Routing
+  where_defined: docs/canonical/multi-provider-model-routing.md
+  maturity: active (Sierra)
+- name: Model-Agnostic Agent VM Harness (5 slots)
+  where_defined: docs/canonical/model-agnostic-agent-vm-harness.md
+  maturity: active (Kavak 2026-08-30)
+- name: Alarm-Clock Agent Lifecycle (wake→work→sleep)
+  where_defined: docs/canonical/alarm-clock-agent-lifecycle.md
+  maturity: active (Kavak)
+- name: Evals-as-Brakes
+  where_defined: docs/canonical/evals-as-brakes.md
+  maturity: active (Kavak)
+- name: Carve-Out Pilot Hard Target (AI CEO)
+  where_defined: docs/canonical/carve-out-pilot-hard-target.md
+  maturity: active (Kavak)
+- name: Mega-Expert Consolidation
+  where_defined: docs/canonical/mega-expert-consolidation.md (+ skill)
+  maturity: active (Kavak)
+- name: Agent-per-Customer Outcome Ownership
+  where_defined: docs/canonical/agent-per-customer-outcome-ownership.md
+  maturity: active (Kavak)
+- name: Goal-Driven Agents over Workflows
+  where_defined: docs/canonical/goal-driven-agents-over-workflows.md
+  maturity: active (Kavak)
+- name: Shared-Fleet Learning
+  where_defined: docs/canonical/shared-fleet-learning.md
+  maturity: active (Kavak)
+- name: Closed-Loop Help API
+  where_defined: docs/canonical/closed-loop-help-api.md
+  maturity: active (Kavak)
+- name: Production-Contact Training Loop
+  where_defined: docs/canonical/production-contact-training-loop.md
+  maturity: active (Kavak)
+- name: Eval Investment Parity
+  where_defined: docs/canonical/eval-investment-parity.md
+  maturity: active (Kavak)
+- name: Outcome-Level Eval Hierarchy
+  where_defined: docs/canonical/outcome-level-eval-hierarchy.md
+  maturity: active (Kavak)
+- name: Sidekick Pattern / Physical Boundaries
+  where_defined: docs/canonical/sidekick-pattern-physical-boundaries.md (+ skill)
+  maturity: active (Kavak)
+- name: Workflow-Derived Golden Question Set (~150)
+  where_defined: docs/canonical/workflow-derived-golden-question-set.md
+  maturity: active (Snowflake GTM 2026-08-30)
+- name: Quality-Over-Coverage Trust Scoping
+  where_defined: docs/canonical/quality-over-coverage-trust-scoping.md
+  maturity: active (Snowflake GTM)
+- name: Retention-Gated Phased Rollout
+  where_defined: docs/canonical/retention-gated-phased-rollout.md
+  maturity: active (Snowflake GTM)
+- name: Human-Review Staged Workflow Automation (monitor→draft→review→send)
+  where_defined: docs/canonical/human-review-staged-workflow-automation.md
+  maturity: active (Snowflake GTM)
+- name: Pull-Based Infrastructure on Pain
+  where_defined: docs/canonical/pull-based-infrastructure-on-pain.md
+  maturity: active (Snowflake GTM)
+- name: Continuous Re-Architecture Budget (60-70/30-40)
+  where_defined: docs/canonical/continuous-re-architecture-budget.md
+  maturity: active (Snowflake GTM)
+- name: Gap-to-Content Feedback Circuit
+  where_defined: docs/canonical/gap-to-content-feedback-circuit.md
+  maturity: active (Snowflake GTM)
+- name: LLM-Classified Log Taxonomy
+  where_defined: docs/canonical/llm-classified-log-taxonomy.md
+  maturity: active (Snowflake GTM)
+- name: Trial-Retention Attribution Split
+  where_defined: docs/canonical/trial-retention-attribution-split.md (+ skill + exercício)
+  maturity: active (Snowflake GTM)
+- name: Agent Value Maturity Ladder (4 estágios)
+  where_defined: docs/canonical/agent-value-maturity-ladder.md (+ skill + exercício)
+  maturity: active (Snowflake GTM)
+- name: Owner-Led Activation Blitz
+  where_defined: docs/canonical/owner-led-activation-blitz.md
+  maturity: active (Snowflake GTM)
+- name: Centralized Data Plane with Inherited RBAC
+  where_defined: docs/canonical/centralized-data-plane-inherited-rbac.md
+  maturity: active (Snowflake GTM)
+- name: Software Graph Review Substrate
+  where_defined: docs/canonical/software-graph-review-substrate.md
+  maturity: active (Qodo 2026-08-31)
+- name: Semantic-Rule-Gated Auto Approve/Block
+  where_defined: docs/canonical/semantic-rule-gated-auto-approve-block.md
+  maturity: active (Qodo)
+- name: Dual-Interface Context Engine
+  where_defined: docs/canonical/dual-interface-context-engine.md
+  maturity: active (Qodo)
+- name: Graph-Addressed Context Placement
+  where_defined: docs/canonical/graph-addressed-context-placement.md
+  maturity: active (Qodo)
+- name: Agent-to-Agent Review Comment Protocol
+  where_defined: docs/canonical/agent-to-agent-review-comment-protocol.md
+  maturity: active (Qodo)
+- name: Rule Lifecycle Analytics
+  where_defined: docs/canonical/rule-lifecycle-analytics.md
+  maturity: active (Qodo)
+- name: Comment-Decay Readiness Signal (100 PRs sem comentário humano)
+  where_defined: docs/canonical/comment-decay-readiness-signal.md
+  maturity: active (Qodo)
+- name: Issue lifecycle workflow (issue-start/issue-review/issue-finish/issue-workflow/refine-issue)
+  where_defined: .opencode/skills/issue-start, issue-review, issue-finish, issue-workflow, refine-issue
+  maturity: active (processo)
+- name: Karpathy guidelines (Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution)
+  where_defined: .opencode/skills/karpathy-guidelines/SKILL.md; referenciadas por AGENTS.md Rules 1-4
+  maturity: active (processo)
+- name: Skill-Canons Bridge (inline injection, promotion D8, snapshot baseline, budget gate 4 fases, cópia local)
+  where_defined: docs/decisions/2026-06-24-skill-canons-bridge-implementation.md
+  maturity: accepted ADR; ações abertas pendentes (:91-93)
+- name: No-fabricated-premises em delegações
+  where_defined: .opencode/skills/analyze-and-improve/SKILL.md:130-138
+  maturity: active (processo)
+- name: Pain-Signal Eval Progression Gate
+  where_defined: docs/canonical/pain-signal-eval-progression-gate.md
+  maturity: active (README highlight)
+- name: Production-Grounded Eval Sampling
+  where_defined: docs/canonical/production-grounded-eval-sampling.md
+  maturity: active
+- name: Eval Dashboard Primary Detection Surface
+  where_defined: docs/canonical/eval-dashboard-primary-detection-surface.md
+  maturity: active
+- name: Business-Outcome-First Eval Pipeline
+  where_defined: docs/canonical/business-outcome-first-eval-pipeline.md
+  maturity: active
+- name: Eval-Driven Development Timeline (eval-first, model-selection-last)
+  where_defined: docs/canonical/eval-driven-development-timeline.md
+  maturity: active
+- name: Eval-to-Production Correlation Tracking
+  where_defined: docs/canonical/eval-to-production-correlation-tracking.md
+  maturity: active
+- name: N+1 Long-Session Evals
+  where_defined: docs/canonical/n-plus-one-long-session-evals.md
+  maturity: active
+- name: Late-Failure Regression Suite
+  where_defined: docs/canonical/late-failure-regression-suite.md
+  maturity: active
+- name: PR-Gated Eval Enforcement
+  where_defined: docs/canonical/pr-gated-eval-enforcement.md
+  maturity: active
+- name: Repeatable Agent Spot-Check Set
+  where_defined: docs/canonical/repeatable-agent-spot-check-set.md
+  maturity: active
+- name: Model-Switching Architecture Enterprise Eval Gate
+  where_defined: docs/canonical/model-switching-architecture-enterprise-eval-gate.md
+  maturity: active
+- name: Model-Switch-Driven Eval Hardening
+  where_defined: docs/canonical/model-switch-driven-eval-hardening.md
+  maturity: active (Sierra)
+- name: Consensus-Gated Privileged Information
+  where_defined: docs/canonical/consensus-gated-privileged-information.md
+  maturity: active
+- name: Multi-Model Evaluation Council
+  where_defined: docs/canonical/multi-model-evaluation-council.md
+  maturity: active
+- name: Split-Brain Planning Review
+  where_defined: docs/canonical/split-brain-planning-review.md
+  maturity: active
+- name: External State Persistence
+  where_defined: docs/canonical/external-state-persistence.md
+  maturity: active
+- name: Hybrid Context Stack
+  where_defined: docs/canonical/hybrid-context-stack.md
+  maturity: active
+- name: Durable Fact Selective History
+  where_defined: docs/canonical/durable-fact-selective-history.md
+  maturity: active
+- name: Summary Buffer Continuity
+  where_defined: docs/canonical/summary-buffer-continuity.md
+  maturity: active
+- name: Semantic Topic Bucketing
+  where_defined: docs/canonical/semantic-topic-bucketing.md
+  maturity: active
+- name: Stable Harness Prompt
+  where_defined: docs/canonical/stable-harness-prompt.md
+  maturity: active
+- name: Structured Generation Constraint Validation Circuit
+  where_defined: docs/canonical/structured-generation-constraint-validation-circuit.md
+  maturity: active
+- name: Invariant-Compensation Split (classificação de componentes do harness)
+  where_defined: docs/canonical/invariant-compensation-split.md
+  maturity: active
+- name: Confidence-Gated Continual Learning
+  where_defined: docs/canonical/confidence-gated-continual-learning.md
+  maturity: active (Sierra)
+- name: Task-Routed Model Tiering
+  where_defined: docs/canonical/task-routed-model-tiering.md
+  maturity: active (Sierra)
+- name: File-System Materialization
+  where_defined: docs/canonical/file-system-materialization.md
+  maturity: active (Sierra)
+- name: Regulated Data Boundary
+  where_defined: docs/canonical/regulated-data-boundary.md
+  maturity: active (Sierra)
+- name: Auth-Coupled Memory Architecture
+  where_defined: docs/canonical/auth-coupled-memory-architecture.md
+  maturity: active (Sierra)
+- name: Temporal Context Injection
+  where_defined: docs/canonical/temporal-context-injection.md
+  maturity: active (Sierra)
+- name: Three-Tier Memory Persistence
+  where_defined: docs/canonical/three-tier-memory-persistence.md
+  maturity: active (Sierra)
+- name: Always-On Monitoring with Human Triage
+  where_defined: docs/canonical/always-on-monitoring-human-triage.md
+  maturity: active (Sierra)
+- name: Governance Context Injection PII Prevention
+  where_defined: docs/canonical/governance-context-injection-pii-prevention.md
+  maturity: active
+- name: Agent-Specific Data Freshness Pipeline
+  where_defined: docs/canonical/agent-specific-data-freshness-pipeline.md
+  maturity: active
+- name: Pre-Commit AI Review Gate
+  where_defined: docs/canonical/pre-commit-ai-review-gate.md
+  maturity: active
+- name: Review Contract Checklist
+  where_defined: docs/canonical/review-contract-checklist.md
+  maturity: active
+- name: On-Policy Rollout Feedback Loop
+  where_defined: docs/canonical/on-policy-rollout-feedback-loop.md
+  maturity: active
+- name: Privileged Context Self-Distillation
+  where_defined: docs/canonical/privileged-context-self-distillation.md
+  maturity: active
+- name: Autonomy Curriculum Sampling (observe→assist→own)
+  where_defined: docs/canonical/autonomy-curriculum-sampling.md (+ skill)
+  maturity: active
+- name: Asymmetric Failure Correction Router
+  where_defined: docs/canonical/asymmetric-failure-correction-router.md
+  maturity: active
+- name: Magnitude-Direction Verifier Split
+  where_defined: docs/canonical/magnitude-direction-verifier-split.md (+ skill)
+  maturity: active
+- name: Adaptive Style Compression Teacher
+  where_defined: docs/canonical/adaptive-style-compression-teacher.md
+  maturity: active
+- name: Domain-Embedded Workflow Automation Wedge
+  where_defined: docs/canonical/domain-embedded-workflow-automation-wedge.md
+  maturity: active
+- name: Obsidian Document Conventions
+  where_defined: docs/canonical/obsidian-document-conventions.md; AGENTS.md Rule 16
+  maturity: active
 terminology:
-  - {term: "Agent", definition: "Entidade autônoma de IA (baseada em LLM) que toma ações, usa ferramentas e executa tarefas em sequência", source: "curriculum/GLOSSARY.md:17-24"}
-  - {term: "Agent Loop", definition: "Ciclo repetitivo: input → pensa → ação → resultado → repete", source: "curriculum/GLOSSARY.md:41-47"}
-  - {term: "Context Window", definition: "Total de tokens que o modelo processa por vez; memória imediata do agente", source: "curriculum/GLOSSARY.md:158-168"}
-  - {term: "Context Amnesia", definition: "Agente esquece contexto anterior por exceder a janela", source: "curriculum/GLOSSARY.md:50-57"}
-  - {term: "Context Rot", definition: "Perda gradual de coerência conforme o agente avança na janela", source: "curriculum/GLOSSARY.md:149-155"}
-  - {term: "Context Anxiety", definition: "Comportamento ansioso/precipitado próximo ao limite de contexto", source: "curriculum/GLOSSARY.md:138-145"}
-  - {term: "Harness", definition: "Infraestrutura e padrões que envolvem agentes para torná-los confiáveis por períodos longos (state persistence, planning, evaluation loops, coordenação)", source: "curriculum/GLOSSARY.md:370-383"}
-  - {term: "Harness Evolution", definition: "Simplificar/remover componentes de harness conforme o modelo melhora", source: "curriculum/GLOSSARY.md:387-399"}
-  - {term: "Token", definition: "Unidade básica de texto processada pelo LLM (~4 caracteres)", source: "curriculum/GLOSSARY.md:770-780"}
-  - {term: "Token Budget / Token Accounting", definition: "Gerenciamento consciente de quantos tokens se usa/tem disponível", source: "curriculum/GLOSSARY.md:783-794"}
-  - {term: "METR", definition: "Model Evaluation Task Completion Rate — % de tarefas completas com sucesso; benchmark de duração com 50% de sucesso", source: "curriculum/GLOSSARY.md:474-481"}
-  - {term: "Generator", definition: "Agente responsável por construir/criar; trabalha em par com Evaluator", source: "curriculum/GLOSSARY.md:320-330"}
-  - {term: "Evaluator", definition: "Agente separado que avalia e grava o trabalho de um Generator, contra rubrics", source: "curriculum/GLOSSARY.md:220-232"}
-  - {term: "Generator/Evaluator Pattern", definition: "Duas entidades separadas: uma gera, outra avalia; elimina sycophancy e fecha o loop de validação cego", source: "curriculum/GLOSSARY.md:333-352"}
-  - {term: "Sycophancy", definition: "Tendência de LLMs em agradar, aprovando qualidade inferior", source: "curriculum/GLOSSARY.md:754-764"}
-  - {term: "Sprint", definition: "Unidade de trabalho bem-definida, 30-120 minutos de tempo de agente", source: "curriculum/GLOSSARY.md:734-744"}
-  - {term: "Sprint Contract", definition: "Acordo negociado entre generator e evaluator sobre o que 'pronto' significa antes de começar", source: "curriculum/GLOSSARY.md:191-199"}
-  - {term: "Evaluation Rubric", definition: "Critérios mensuráveis para avaliar qualidade subjetiva", source: "curriculum/GLOSSARY.md:236-253"}
-  - {term: "Trace", definition: "Log detalhado de cada passo do agente (input, reasoning, ações, output); loop de debugging principal", source: "curriculum/GLOSSARY.md:830-845"}
-  - {term: "Verification Loop", definition: "Ciclo gerador cria → verificador testa → feedback retorna", source: "curriculum/GLOSSARY.md:867-880"}
-  - {term: "MCP", definition: "Model Context Protocol — protocolo para agentes usarem ferramentas/recursos externos", source: "curriculum/GLOSSARY.md:499-508"}
-  - {term: "Multi-Agent System", definition: "Múltiplos agentes independentes que coordenam entre si; padrão comum Planner + Generator + Evaluator", source: "curriculum/GLOSSARY.md:512-524"}
-  - {term: "Compaction", definition: "Resumir/comprimir contexto antigo para abrir espaço, mantendo informações-chave", source: "curriculum/GLOSSARY.md:81-87"}
-  - {term: "KODA", definition: "Agente conversacional de venda de suplementos via WhatsApp; case study e aplicação prática de todos os padrões", source: "curriculum/GLOSSARY.md:457-468"}
-  - {term: "ICE Craft Separation", definition: "Três crafts com donos explícitos: Intent (outcome owner), Context (harness), Expectations (outcome owner); impede que um documento monolítico misture os três", source: "curriculum/GLOSSARY.md:419-432"}
-  - {term: "Intent as Five-Part Primitive", definition: "Intent formalizado em 5 campos obrigatórios: description, constraints, failure scenarios, success scenarios, connections; validado por Intent Completeness Gate", source: "curriculum/GLOSSARY.md:436-451"}
-  - {term: "Human-Owned Expectations Boundary", definition: "Definição de 'pronto' é artefato de autoria exclusiva do outcome owner; harness consome mas não modifica", source: "curriculum/GLOSSARY.md:403-413"}
-  - {term: "Goal Atomicity Split", definition: "Cada goal é uma frase sem conjunções; cada 'e' conectando ações independentes é ponto de split", source: "curriculum/GLOSSARY.md:304-316"}
-  - {term: "Two-Implementations Goal Test", definition: "Se duas implementações substancialmente diferentes não podem ambas satisfazer, é especificação mascarada de goal", source: "curriculum/GLOSSARY.md:849-861"}
-  - {term: "Token Economics of Gap-Filling", definition: "Atribuição de custo: agentes que preenchem lacunas de ICE durante a execução queimam exponencialmente mais tokens por outcome", source: "curriculum/GLOSSARY.md:797-810"}
-  - {term: "Constraint Budget Gate", definition: "Limite rígido de 5-7 constraints direcionais, incondicionais, em linguagem de negócio por tarefa", source: "curriculum/GLOSSARY.md:106-118"}
-  - {term: "Constraint-Failure Decision Rule", definition: "Pergunta-âncora: 'saber isso mudaria como o Builder escreve código?' Se sim → constraint; se não → failure condition", source: "curriculum/GLOSSARY.md:122-134"}
-  - {term: "Compartmented Evaluation Architecture", definition: "Builder e Validator recebem superfícies de informação seladas; impede reward-hacking contra checks visíveis", source: "curriculum/GLOSSARY.md:90-102"}
-  - {term: "Relational Context Graph", definition: "Substitui retrieval por similaridade por seleção relacional; edges tipados: dependency, provenance, supersession, causation", source: "curriculum/GLOSSARY.md:612-621"}
-  - {term: "Deliberate Forgetting", definition: "Esquecimento como operação de primeira classe: relevance evaluator, promotion/demotion engine, discard logger, budget gate", source: "curriculum/GLOSSARY.md:205-214"}
-  - {term: "Smallest Sufficient Context", definition: "Subconjunto mínimo para raciocinar sobre o passo atual: sufficiency estimator, relational traversal, order-preserving assembler, capacity profiler", source: "curriculum/GLOSSARY.md:697-706"}
-  - {term: "Tiered Context Storage", definition: "Três tiers hot/warm/cold com Tier Orchestrator que promove/demote por relevância", source: "curriculum/GLOSSARY.md:814-826"}
-  - {term: "Neutral Selection Layer", definition: "Camada de seleção de contexto model-agnostic e vendor-independent: neutra, horizontal, estruturada", source: "curriculum/GLOSSARY.md:530-541"}
-  - {term: "Selection-Budgeted Retrieval", definition: "Candidatos rankeados por valor/custo em tokens; contramedida ao Link 4 do degradation loop", source: "curriculum/GLOSSARY.md:661-670"}
-  - {term: "Context Health Monitoring", definition: "Effective context size, near-miss rate, contradiction rate agregados em health score contínuo; detecta aproximação do cliff", source: "curriculum/GLOSSARY.md:171-180"}
-  - {term: "Agent Degradation Loop Prevention", definition: "4 links do loop de degradação: atenção desigual, erros compostos, fragmentação de estado, feedback inerte de memória; interceptores específicos por link", source: "curriculum/GLOSSARY.md:28-37"}
-  - {term: "LLM as Fuzzy Compiler", definition: "Source = constraints de domínio; compiler = harness; backend = modelo; código gerado é build descartável", source: "curriculum/GLOSSARY.md:271-285"}
-  - {term: "Persona-Based Documentation", definition: "Cada especialista documenta sua especialidade como NFR durável; agentes carregam personas relevantes ao diff", source: "curriculum/GLOSSARY.md:574-588"}
-  - {term: "Failure Pattern Classification Loop", definition: "Ritual semanal: revisar falhas, classificar por taxonomia (context_loss, tool_misuse, ...), converter padrões recorrentes em guardrails", source: "curriculum/GLOSSARY.md:258-267"}
-  - {term: "Garbage Collection Day", definition: "Meta-loop semanal convertendo feedback humano em guardrails automatizados do harness", source: "curriculum/GLOSSARY.md:291-300"}
-  - {term: "Presence-in-the-Loop Metric", definition: "Mede envolvimento humano DURANTE a execução: presence timeline, stale-presence warnings, intervention checkpoints, review confidence signal", source: "curriculum/GLOSSARY.md:592-606"}
-  - {term: "Closed-Loop Company", definition: "Agentes leem estado real da empresa e devolvem trabalho/bugs/atualizações fechando o ciclo observação→execução", source: "curriculum/GLOSSARY.md:74-78"}
-  - {term: "Skillify Pipeline", definition: "Hardening que transforma workflow em skill roteável e testada: unit tests, LLM evals, resolver trigger, smoke test, schema", source: "curriculum/GLOSSARY.md:654-658"}
-  - {term: "Ralph Loop", definition: "Agente em loop incremental resolvendo um task por iteração (Jeffrey Huntley, jul 2025); padrão anterior, substituído por generator/evaluator", source: "curriculum/GLOSSARY.md:625-641"}
-  - {term: "ADR", definition: "Architecture Decision Record — registra decisão significativa, contexto e consequências", source: "curriculum/GLOSSARY.md:61-68"}
-  - {term: "System of Record", definition: "Mapa das fontes canônicas; resolve divergências por precedência (ADRs > canonical > evidence > analysis > archive > READMEs)", source: "docs/system-of-record.md:12-21"}
-  - {term: "Handoff Protocol (HoP)", definition: "Modelo de agentes em .opencode/: cada agente tem escopo fechado, dono e gates de validação", source: "docs/system-of-record.md:27"}
-
+- term: Agent
+  definition: Entidade autônoma de IA (baseada em LLM) que toma ações, usa ferramentas e executa tarefas em sequência
+  source: curriculum/GLOSSARY.md:17-24
+- term: Agent Loop
+  definition: 'Ciclo repetitivo: input → pensa → ação → resultado → repete'
+  source: curriculum/GLOSSARY.md:41-47
+- term: Context Window
+  definition: Total de tokens que o modelo processa por vez; memória imediata do agente
+  source: curriculum/GLOSSARY.md:158-168
+- term: Context Amnesia
+  definition: Agente esquece contexto anterior por exceder a janela
+  source: curriculum/GLOSSARY.md:50-57
+- term: Context Rot
+  definition: Perda gradual de coerência conforme o agente avança na janela
+  source: curriculum/GLOSSARY.md:149-155
+- term: Context Anxiety
+  definition: Comportamento ansioso/precipitado próximo ao limite de contexto
+  source: curriculum/GLOSSARY.md:138-145
+- term: Harness
+  definition: Infraestrutura e padrões que envolvem agentes para torná-los confiáveis por períodos longos (state persistence, planning, evaluation loops, coordenação)
+  source: curriculum/GLOSSARY.md:370-383
+- term: Harness Evolution
+  definition: Simplificar/remover componentes de harness conforme o modelo melhora
+  source: curriculum/GLOSSARY.md:387-399
+- term: Token
+  definition: Unidade básica de texto processada pelo LLM (~4 caracteres)
+  source: curriculum/GLOSSARY.md:770-780
+- term: Token Budget / Token Accounting
+  definition: Gerenciamento consciente de quantos tokens se usa/tem disponível
+  source: curriculum/GLOSSARY.md:783-794
+- term: METR
+  definition: Model Evaluation Task Completion Rate — % de tarefas completas com sucesso; benchmark de duração com 50% de sucesso
+  source: curriculum/GLOSSARY.md:474-481
+- term: Generator
+  definition: Agente responsável por construir/criar; trabalha em par com Evaluator
+  source: curriculum/GLOSSARY.md:320-330
+- term: Evaluator
+  definition: Agente separado que avalia e grava o trabalho de um Generator, contra rubrics
+  source: curriculum/GLOSSARY.md:220-232
+- term: Generator/Evaluator Pattern
+  definition: 'Duas entidades separadas: uma gera, outra avalia; elimina sycophancy e fecha o loop de validação cego'
+  source: curriculum/GLOSSARY.md:333-352
+- term: Sycophancy
+  definition: Tendência de LLMs em agradar, aprovando qualidade inferior
+  source: curriculum/GLOSSARY.md:754-764
+- term: Sprint
+  definition: Unidade de trabalho bem-definida, 30-120 minutos de tempo de agente
+  source: curriculum/GLOSSARY.md:734-744
+- term: Sprint Contract
+  definition: Acordo negociado entre generator e evaluator sobre o que 'pronto' significa antes de começar
+  source: curriculum/GLOSSARY.md:191-199
+- term: Evaluation Rubric
+  definition: Critérios mensuráveis para avaliar qualidade subjetiva
+  source: curriculum/GLOSSARY.md:236-253
+- term: Trace
+  definition: Log detalhado de cada passo do agente (input, reasoning, ações, output); loop de debugging principal
+  source: curriculum/GLOSSARY.md:830-845
+- term: Verification Loop
+  definition: Ciclo gerador cria → verificador testa → feedback retorna
+  source: curriculum/GLOSSARY.md:867-880
+- term: MCP
+  definition: Model Context Protocol — protocolo para agentes usarem ferramentas/recursos externos
+  source: curriculum/GLOSSARY.md:499-508
+- term: Multi-Agent System
+  definition: Múltiplos agentes independentes que coordenam entre si; padrão comum Planner + Generator + Evaluator
+  source: curriculum/GLOSSARY.md:512-524
+- term: Compaction
+  definition: Resumir/comprimir contexto antigo para abrir espaço, mantendo informações-chave
+  source: curriculum/GLOSSARY.md:81-87
+- term: KODA
+  definition: Agente conversacional de venda de suplementos via WhatsApp; case study e aplicação prática de todos os padrões
+  source: curriculum/GLOSSARY.md:457-468
+- term: ICE Craft Separation
+  definition: 'Três crafts com donos explícitos: Intent (outcome owner), Context (harness), Expectations (outcome owner); impede que um documento monolítico misture os três'
+  source: curriculum/GLOSSARY.md:419-432
+- term: Intent as Five-Part Primitive
+  definition: 'Intent formalizado em 5 campos obrigatórios: description, constraints, failure scenarios, success scenarios, connections; validado por Intent Completeness Gate'
+  source: curriculum/GLOSSARY.md:436-451
+- term: Human-Owned Expectations Boundary
+  definition: Definição de 'pronto' é artefato de autoria exclusiva do outcome owner; harness consome mas não modifica
+  source: curriculum/GLOSSARY.md:403-413
+- term: Goal Atomicity Split
+  definition: Cada goal é uma frase sem conjunções; cada 'e' conectando ações independentes é ponto de split
+  source: curriculum/GLOSSARY.md:304-316
+- term: Two-Implementations Goal Test
+  definition: Se duas implementações substancialmente diferentes não podem ambas satisfazer, é especificação mascarada de goal
+  source: curriculum/GLOSSARY.md:849-861
+- term: Token Economics of Gap-Filling
+  definition: 'Atribuição de custo: agentes que preenchem lacunas de ICE durante a execução queimam exponencialmente mais tokens por outcome'
+  source: curriculum/GLOSSARY.md:797-810
+- term: Constraint Budget Gate
+  definition: Limite rígido de 5-7 constraints direcionais, incondicionais, em linguagem de negócio por tarefa
+  source: curriculum/GLOSSARY.md:106-118
+- term: Constraint-Failure Decision Rule
+  definition: 'Pergunta-âncora: ''saber isso mudaria como o Builder escreve código?'' Se sim → constraint; se não → failure condition'
+  source: curriculum/GLOSSARY.md:122-134
+- term: Compartmented Evaluation Architecture
+  definition: Builder e Validator recebem superfícies de informação seladas; impede reward-hacking contra checks visíveis
+  source: curriculum/GLOSSARY.md:90-102
+- term: Relational Context Graph
+  definition: 'Substitui retrieval por similaridade por seleção relacional; edges tipados: dependency, provenance, supersession, causation'
+  source: curriculum/GLOSSARY.md:612-621
+- term: Deliberate Forgetting
+  definition: 'Esquecimento como operação de primeira classe: relevance evaluator, promotion/demotion engine, discard logger, budget gate'
+  source: curriculum/GLOSSARY.md:205-214
+- term: Smallest Sufficient Context
+  definition: 'Subconjunto mínimo para raciocinar sobre o passo atual: sufficiency estimator, relational traversal, order-preserving assembler, capacity profiler'
+  source: curriculum/GLOSSARY.md:697-706
+- term: Tiered Context Storage
+  definition: Três tiers hot/warm/cold com Tier Orchestrator que promove/demote por relevância
+  source: curriculum/GLOSSARY.md:814-826
+- term: Neutral Selection Layer
+  definition: 'Camada de seleção de contexto model-agnostic e vendor-independent: neutra, horizontal, estruturada'
+  source: curriculum/GLOSSARY.md:530-541
+- term: Selection-Budgeted Retrieval
+  definition: Candidatos rankeados por valor/custo em tokens; contramedida ao Link 4 do degradation loop
+  source: curriculum/GLOSSARY.md:661-670
+- term: Context Health Monitoring
+  definition: Effective context size, near-miss rate, contradiction rate agregados em health score contínuo; detecta aproximação do cliff
+  source: curriculum/GLOSSARY.md:171-180
+- term: Agent Degradation Loop Prevention
+  definition: '4 links do loop de degradação: atenção desigual, erros compostos, fragmentação de estado, feedback inerte de memória; interceptores específicos por link'
+  source: curriculum/GLOSSARY.md:28-37
+- term: LLM as Fuzzy Compiler
+  definition: Source = constraints de domínio; compiler = harness; backend = modelo; código gerado é build descartável
+  source: curriculum/GLOSSARY.md:271-285
+- term: Persona-Based Documentation
+  definition: Cada especialista documenta sua especialidade como NFR durável; agentes carregam personas relevantes ao diff
+  source: curriculum/GLOSSARY.md:574-588
+- term: Failure Pattern Classification Loop
+  definition: 'Ritual semanal: revisar falhas, classificar por taxonomia (context_loss, tool_misuse, ...), converter padrões recorrentes em guardrails'
+  source: curriculum/GLOSSARY.md:258-267
+- term: Garbage Collection Day
+  definition: Meta-loop semanal convertendo feedback humano em guardrails automatizados do harness
+  source: curriculum/GLOSSARY.md:291-300
+- term: Presence-in-the-Loop Metric
+  definition: 'Mede envolvimento humano DURANTE a execução: presence timeline, stale-presence warnings, intervention checkpoints, review confidence signal'
+  source: curriculum/GLOSSARY.md:592-606
+- term: Closed-Loop Company
+  definition: Agentes leem estado real da empresa e devolvem trabalho/bugs/atualizações fechando o ciclo observação→execução
+  source: curriculum/GLOSSARY.md:74-78
+- term: Skillify Pipeline
+  definition: 'Hardening que transforma workflow em skill roteável e testada: unit tests, LLM evals, resolver trigger, smoke test, schema'
+  source: curriculum/GLOSSARY.md:654-658
+- term: Ralph Loop
+  definition: Agente em loop incremental resolvendo um task por iteração (Jeffrey Huntley, jul 2025); padrão anterior, substituído por generator/evaluator
+  source: curriculum/GLOSSARY.md:625-641
+- term: ADR
+  definition: Architecture Decision Record — registra decisão significativa, contexto e consequências
+  source: curriculum/GLOSSARY.md:61-68
+- term: System of Record
+  definition: Mapa das fontes canônicas; resolve divergências por precedência (ADRs > canonical > evidence > analysis > archive > READMEs)
+  source: docs/system-of-record.md:12-21
+- term: Handoff Protocol (HoP)
+  definition: 'Modelo de agentes em .opencode/: cada agente tem escopo fechado, dono e gates de validação'
+  source: docs/system-of-record.md:27
 curriculum:
   levels:
-    - {level: 1, name: "Fundamentos", directory: "curriculum/01-nivel-1-fundamentals/", focus: "Por que agentes falham", load: "3-4h", topics: "why-agents-lose-plot, token-budgeting, basic-harness-patterns + exercises + koda-applications"}
-    - {level: 2, name: "Padrões Práticos", directory: "curriculum/02-nivel-2-practical-patterns/", focus: "Padrões de confiabilidade aplicáveis", load: "6-8h", topics: "generator/evaluator, sprint contracts, rubric design, trace reading + exercises (two-implementations, goal-atomicity, intent-five-part)"}
-    - {level: 3, name: "Arquitetura Avançada", directory: "curriculum/03-nivel-3-advanced-architecture/", focus: "Sistemas multi-agente sofisticados", load: "8-10h", topics: "multi-agent systems, state persistence, file-based coordination, server-side compaction, harness evolution + 16 exercícios"}
-    - {level: 4, name: "Aplicação KODA", directory: "curriculum/04-nivel-4-koda-specific/", focus: "Aplicação prática contínua no KODA", load: "contínuo (10+h)", topics: "KODA architecture, customer journeys, feature design patterns, rubrics KODA, harness improvements + real-world exercises + case studies"}
+  - level: 1
+    name: Fundamentos
+    directory: curriculum/01-nivel-1-fundamentals/
+    focus: Por que agentes falham
+    load: 3-4h
+    topics: why-agents-lose-plot, token-budgeting, basic-harness-patterns + exercises + koda-applications
+  - level: 2
+    name: Padrões Práticos
+    directory: curriculum/02-nivel-2-practical-patterns/
+    focus: Padrões de confiabilidade aplicáveis
+    load: 6-8h
+    topics: generator/evaluator, sprint contracts, rubric design, trace reading + exercises (two-implementations, goal-atomicity, intent-five-part)
+  - level: 3
+    name: Arquitetura Avançada
+    directory: curriculum/03-nivel-3-advanced-architecture/
+    focus: Sistemas multi-agente sofisticados
+    load: 8-10h
+    topics: multi-agent systems, state persistence, file-based coordination, server-side compaction, harness evolution + 16 exercícios
+  - level: 4
+    name: Aplicação KODA
+    directory: curriculum/04-nivel-4-koda-specific/
+    focus: Aplicação prática contínua no KODA
+    load: contínuo (10+h)
+    topics: KODA architecture, customer journeys, feature design patterns, rubrics KODA, harness improvements + real-world exercises + case studies
   concepts:
-    - "01-context-management (curriculum/05-core-concepts/)"
-    - "02-planning-execution-separation"
-    - "03-generator-evaluator-pattern"
-    - "04-sprint-contracts"
-    - "05-state-persistence"
-    - "06-harness-evolution"
-    - "07-multi-agent-coordination"
-    - "08-evaluation-rubrics"
+  - 01-context-management (curriculum/05-core-concepts/)
+  - 02-planning-execution-separation
+  - 03-generator-evaluator-pattern
+  - 04-sprint-contracts
+  - 05-state-persistence
+  - 06-harness-evolution
+  - 07-multi-agent-coordination
+  - 08-evaluation-rubrics
   support_layers:
-    - "curriculum/06-knowledge-graphs/ — 35+ diagramas Mermaid (concept-ecosystem, koda-feature-dependencies, learning-progression, problem-solution-mapping + detailed-graphs)"
-    - "curriculum/07-implementation-guides/ — setup, team progression, harness design checklist, trace analysis, harness evolution playbook"
-    - "curriculum/08-tools-templates/ — templates: sprint contract, rubric, ADR, progress tracker, knowledge graph"
-    - "curriculum/09-case-studies/ — retro-game-maker, browser-daw-app, 3× KODA (discovery, order, fulfillment)"
-    - "curriculum/10-references/ — anthropic presentation, model capability timeline, additional resources"
+  - curriculum/06-knowledge-graphs/ — 35+ diagramas Mermaid (concept-ecosystem, koda-feature-dependencies, learning-progression, problem-solution-mapping + detailed-graphs)
+  - curriculum/07-implementation-guides/ — setup, team progression, harness design checklist, trace analysis, harness evolution playbook
+  - 'curriculum/08-tools-templates/ — templates: sprint contract, rubric, ADR, progress tracker, knowledge graph'
+  - curriculum/09-case-studies/ — retro-game-maker, browser-daw-app, 3× KODA (discovery, order, fulfillment)
+  - curriculum/10-references/ — anthropic presentation, model capability timeline, additional resources
   satellite_exercise_dirs:
-    - "curriculum/03-nivel-arquiteto/exercises/ (owner-of-no-role)"
-    - "curriculum/03-nivel-3-operational/exercises/ (shadow-review-pipeline, contextual-severity-calibration)"
-    - "curriculum/04-nivel-3-engenharia-avancada/exercises/ (behavioral-eval-path-analysis)"
+  - curriculum/03-nivel-arquiteto/exercises/ (owner-of-no-role)
+  - curriculum/03-nivel-3-operational/exercises/ (shadow-review-pipeline, contextual-severity-calibration)
+  - curriculum/04-nivel-3-engenharia-avancada/exercises/ (behavioral-eval-path-analysis)
   master_documents:
-    - "MASTER_PLAN.md — mapa completo, roadmap semanal, progress tracking"
-    - "QUICK_START.md — onboarding 45 min"
-    - "INDEX.md — navegação por perfil"
-    - "EXECUTION_PLAN.md — cronograma 12 semanas"
-    - "GLOSSARY.md — ~50 termos com níveis e Ver também"
-    - "FAQ.md (em construção)"
-    - "DELIVERY-COMPLETE.md, tag-suggestions.yaml"
-  progression: "Fundamentos conceituais → padrões aplicáveis → arquitetura de sistema → aplicação contínua no caso real KODA; cada nível tem critérios de conclusão checkáveis e roadmap semanal com deliverables (curriculum/MASTER_PLAN.md:196-330)"
-  source_materials: "rawfiles/ (material-fonte) e prompts/ (prompts de geração) — docs/system-of-record.md:96-97"
-
+  - MASTER_PLAN.md — mapa completo, roadmap semanal, progress tracking
+  - QUICK_START.md — onboarding 45 min
+  - INDEX.md — navegação por perfil
+  - EXECUTION_PLAN.md — cronograma 12 semanas
+  - GLOSSARY.md — ~50 termos com níveis e Ver também
+  - FAQ.md (em construção)
+  - DELIVERY-COMPLETE.md, tag-suggestions.yaml
+  progression: Fundamentos conceituais → padrões aplicáveis → arquitetura de sistema → aplicação contínua no caso real KODA; cada nível tem critérios de conclusão checkáveis e roadmap semanal com deliverables
+    (curriculum/MASTER_PLAN.md:196-330)
+  source_materials: rawfiles/ (material-fonte) e prompts/ (prompts de geração) — docs/system-of-record.md:96-97
 gaps:
-  - {what: "Canonical agent-lifecycle.md (claim → worktree → implement → review → merge → cleanup) pendente", where_documented: "docs/system-of-record.md:70"}
-  - {what: "Canonical curriculum-model.md (taxonomia de níveis, tipos de artefato, critérios de qualidade) pendente", where_documented: "docs/system-of-record.md:99"}
-  - {what: "Canonical portal-architecture.md pendente — criar quando a SPA proposta for implementada", where_documented: "docs/system-of-record.md:112"}
-  - {what: "docs/guides/crossroad-change-policy.md e crossroad files (src/lib/safe-console.js, src/lib/logger.js etc.) referenciados pelo PR template mas inexistentes — criar quando houver código fonte", where_documented: "docs/system-of-record.md:144"}
-  - {what: "ADRs candidatos não escritos: stack do portal, content chunking, persistência de estado entre agentes, versionamento do currículo", where_documented: "docs/system-of-record.md:163-167"}
-  - {what: "docs/canonical/operations/koda-init-basic-flow.md, live-whatsapp-testing-system.md, product/prd.md, architecture/architecture.md, voice-and-narrative.md e agents/roles|playbooks referenciados como fonte de verdade pelos agentes KODA mas inexistentes", where_documented: ".opencode/agents/koda-hop-init-basic.md:30-34; .opencode/agents/hop-live-whatsapp-tester.md:24-30"}
-  - {what: "index.md desatualizado: afirma docs/decisions/ vazio quando o SOR registra 1 ADR aceito (drift; index last_updated 2026-06-10)", where_documented: "index.md:77 vs docs/system-of-record.md:161"}
-  - {what: "README subconta o repositório: '85+ padrões canônicos' vs 161 reais; '28 skills' vs 35 reais", where_documented: "README.md:67,104 vs listagens 2026-08-31"}
-  - {what: "Generator-Evaluator doc registra cobertura parcial: 12+ eval infra docs existem, sem doc unificada de arquitetura Generator-Evaluator", where_documented: "docs/canonical/generator-evaluator.md:16"}
-  - {what: "Ações abertas da ADR Skill-Canons Bridge: system-design para budget gate 4 fases; shared module quando >5 skills com bridge; baselines via runs manuais", where_documented: "docs/decisions/2026-06-24-skill-canons-bridge-implementation.md:91-93"}
-  - {what: "package.json scripts referenciam src/ inexistente — repositório é majoritariamente conhecimento/documentação; gates operam sobre superfície parcial", where_documented: "package.json (scripts lint/test:unit); ausência de src/ confirmada por listagem"}
-  - {what: "FAQ.md marcado (em construção)", where_documented: "curriculum/README.md:69"}
-  - {what: "Skill devils-advocate referenciada no SOR (com path .opencode/skills/devils-advocate/SKILL.md) mas ausente de .opencode/skills/ — referência quebrada", where_documented: "docs/system-of-record.md:63 vs listagem .opencode/skills/ (35 dirs, sem devils-advocate)"}
-  - {what: "Nomenclatura de níveis inconsistente no currículo: 03-nivel-arquiteto, 03-nivel-3-operational, 04-nivel-3-engenharia-avancada coexistem com a numeração canonical dos 4 níveis", where_documented: "estrutura de curriculum/ (listagem); curriculum/MASTER_PLAN.md:109-121"}
-  - {what: "16 violações pré-existentes do validate-obsidian.ts (relates-to/aliases ausentes) nos pacotes de análise 2026-06-25 e 2026-06-26", where_documented: "execução de npx tsx scripts/validate-obsidian.ts em 2026-08-31 (16 errors)"}
-  - {what: "Diretório top-level curso-reimplementar-runtime/ (PR #144) não mapeado no README nem no Knowledge Index", where_documented: "listagem da raiz do repo; ausência em README.md:48-129 e index.md"}
+- what: Canonical agent-lifecycle.md (claim → worktree → implement → review → merge → cleanup) pendente
+  where_documented: docs/system-of-record.md:70
+- what: Canonical curriculum-model.md (taxonomia de níveis, tipos de artefato, critérios de qualidade) pendente
+  where_documented: docs/system-of-record.md:99
+- what: Canonical portal-architecture.md pendente — criar quando a SPA proposta for implementada
+  where_documented: docs/system-of-record.md:112
+- what: docs/guides/crossroad-change-policy.md e crossroad files (src/lib/safe-console.js, src/lib/logger.js etc.) referenciados pelo PR template mas inexistentes — criar quando houver código fonte
+  where_documented: docs/system-of-record.md:144
+- what: 'ADRs candidatos não escritos: stack do portal, content chunking, persistência de estado entre agentes, versionamento do currículo'
+  where_documented: docs/system-of-record.md:163-167
+- what: docs/canonical/operations/koda-init-basic-flow.md, live-whatsapp-testing-system.md, product/prd.md, architecture/architecture.md, voice-and-narrative.md e agents/roles|playbooks referenciados como
+    fonte de verdade pelos agentes KODA mas inexistentes
+  where_documented: .opencode/agents/koda-hop-init-basic.md:30-34; .opencode/agents/hop-live-whatsapp-tester.md:24-30
+- what: 'index.md desatualizado: afirma docs/decisions/ vazio quando o SOR registra 1 ADR aceito (drift; index last_updated 2026-06-10)'
+  where_documented: index.md:77 vs docs/system-of-record.md:161
+- what: 'README subconta o repositório: ''85+ padrões canônicos'' vs 161 reais; ''28 skills'' vs 35 reais'
+  where_documented: README.md:67,104 vs listagens 2026-08-31
+- what: 'Generator-Evaluator doc registra cobertura parcial: 12+ eval infra docs existem, sem doc unificada de arquitetura Generator-Evaluator'
+  where_documented: docs/canonical/generator-evaluator.md:16
+- what: 'Ações abertas da ADR Skill-Canons Bridge: system-design para budget gate 4 fases; shared module quando >5 skills com bridge; baselines via runs manuais'
+  where_documented: docs/decisions/2026-06-24-skill-canons-bridge-implementation.md:91-93
+- what: package.json scripts referenciam src/ inexistente — repositório é majoritariamente conhecimento/documentação; gates operam sobre superfície parcial
+  where_documented: package.json (scripts lint/test:unit); ausência de src/ confirmada por listagem
+- what: FAQ.md marcado (em construção)
+  where_documented: curriculum/README.md:69
+- what: Skill devils-advocate referenciada no SOR (com path .opencode/skills/devils-advocate/SKILL.md) mas ausente de .opencode/skills/ — referência quebrada
+  where_documented: docs/system-of-record.md:63 vs listagem .opencode/skills/ (35 dirs, sem devils-advocate)
+- what: 'Nomenclatura de níveis inconsistente no currículo: 03-nivel-arquiteto, 03-nivel-3-operational, 04-nivel-3-engenharia-avancada coexistem com a numeração canonical dos 4 níveis'
+  where_documented: estrutura de curriculum/ (listagem); curriculum/MASTER_PLAN.md:109-121
+- what: 16 violações pré-existentes do validate-obsidian.ts (relates-to/aliases ausentes) nos pacotes de análise 2026-06-25 e 2026-06-26
+  where_documented: execução de npx tsx scripts/validate-obsidian.ts em 2026-08-31 (16 errors)
+- what: 'Diretório top-level curso-reimplementar-runtime/ (PR #144) não mapeado no README nem no Knowledge Index'
+  where_documented: listagem da raiz do repo; ausência em README.md:48-129 e index.md
