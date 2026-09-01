@@ -189,8 +189,10 @@ Dois modos de operacao, controlados pelo parametro `incremental`:
 Antes de decidir entre full rebuild e incremental, o orquestrador DEVE:
 
 0. **Verificar parametro explicito**: Se `incremental` foi passado explicitamente:
-   - `incremental=true` → pular este check, ir direto para "### Modo Incremental"
    - `incremental=false` → pular este check, ir direto para "### Modo Full Rebuild"
+   - `incremental=true` → pular SOMENTE a heuristica tematica (item 3) — nunca os
+     gates de cache vazio, baseline valida, reconciliacao e `total_deltas > 10`
+     (executar o restante deste check normalmente)
    - Se nao foi passado (omitido) → prosseguir com os passos abaixo.
 
 1. **Verificar modelos recentes**: Liste `mapa-mental-repo/*.yaml` por data.
@@ -207,6 +209,11 @@ Antes de decidir entre full rebuild e incremental, o orquestrador DEVE:
    - Ambos pertencem a mesma serie do mesmo autor → ALTA
    - Compartilham ≥2 dominios de system-of-record → MEDIA
    - Sem sobreposicao tematica → BAIXA
+
+3.5. **Deltas em read-only antes de decidir**: execute os itens 2-4 do Passo 0a
+   (baseline por `meta.base_commit`, scan por git, gate de reconciliacao) como
+   consulta read-only. Se incremental for adotado, reutilize EXATAMENTE o mesmo
+   baseline e scan no Passo 0a — nao reescaneie.
 
 4. **Decidir modo**:
    - Se `dias_desde_modelo <= 7` E `relevancia >= MEDIA` → **adotar incremental automaticamente** (sem perguntar)
@@ -245,6 +252,8 @@ TARGET_REPOSITORY:
   name: <repo-name>
   output_dir: docs/analysis/<date>-<source-slug>/
   system_of_record: docs/system-of-record.md
+  base_commit: <PHASE0_BASE_COMMIT — capture com `git rev-parse --short HEAD`
+    imediatamente ANTES desta delegacao; o modelo descreve o repo nesse commit>
 
 First, read and understand the repository by examining:
 - AGENTS.md (operational rules, commit style, gates)
@@ -264,6 +273,10 @@ Build a structured mental model covering:
 5. Curriculum Structure — progression, levels, exercises
 6. Existing Gaps — what is documented as missing or pending
 
+The YAML meta MUST include `base_commit: '<PHASE0_BASE_COMMIT>'` (provided in
+TARGET_REPOSITORY above) — the mental model describes the repository as of that
+commit.
+
 Do not analyze the external source document yet. Focus ONLY on the repository.
 
 OUTPUT: Write TWO files in <output_dir>:
@@ -271,7 +284,7 @@ OUTPUT: Write TWO files in <output_dir>:
 - docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml — typed mirror with the same structure
 
 The YAML must use typed fields:
-  meta: {title, date, repo, type: 'mental-model'}
+  meta: {title, date, repo, type: 'mental-model', base_commit: '<PHASE0_BASE_COMMIT>'}
   goals: [list of goals]
   architecture: {abstractions: [...], relationships: [...]}
   patterns: [{name, where_defined, maturity}]
@@ -395,15 +408,18 @@ The YAML must use the same typed fields as full rebuild, plus:
 
 Apos QUALQUER Phase 0 (full rebuild OU incremental), o orquestrador DEVE:
 
+0. **Timing gate**: execute este passo ANTES de Phase 2 ou de qualquer commit.
+   Ausencia do salvamento, yaml sem `meta.base_commit`, ou contagens divergentes
+   do disco no momento da copia = bloqueio de avance do pipeline.
 1. **Criar o diretorio se necessario**:
    ```bash
    mkdir -p mapa-mental-repo/archive
    ```
-2. **Copiar os arquivos** com timestamp:
+2. **Copiar os arquivos** (nomes completos, como escritos pela Phase 0):
    ```bash
-   cp docs/analysis/<date>-<source-slug>/mental-model.md  \
+   cp docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.md  \
       mapa-mental-repo/<date>-<source-slug>-mental-model.md
-   cp docs/analysis/<date>-<source-slug>/mental-model.yaml \
+   cp docs/analysis/<date>-<source-slug>/<date>-<source-slug>-mental-model.yaml \
       mapa-mental-repo/<date>-<source-slug>-mental-model.yaml
    ```
    Antes de copiar, garanta `meta.base_commit: <git rev-parse --short HEAD>` no yaml
@@ -554,8 +570,12 @@ OUTPUT: Write TWO files in <output_dir>:
 - docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.md
 - docs/analysis/<date>-<source-slug>/<date>-<source-slug>-patterns.yaml
 
-KNOWLEDGE EXTRACTION:
-<paste the markdown analysis from Phase 1>"
+KNOWLEDGE EXTRACTION, escolha exatamente um modo:
+- INLINE: <full markdown analysis>
+- FILE: <absolute-path-to-analysis.md>
+Prefira FILE para artefatos repo-local (economico e auditavel); o agente deve
+ler o arquivo inteiro e usa-lo como unico input de conhecimento. Paths
+relativos sao proibidos. Registre no output qual modo foi usado."
 )
 ```
 
@@ -694,7 +714,7 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 
 | Classification | Priority | Acao |
 |---|---|---|
-| **Missing** | P0 | Criar canonical doc + skill + exercise + example |
+| **Missing** | P0 | Criar canonical doc + skill + exercise (o exercicio contem o exemplo executavel; `artifacts.examples` e opcional e lista somente exemplos separados realmente criados) |
 | **Partial Coverage (High value)** | P1 | Criar canonical doc com reframe/naming |
 | **Partial Coverage (Medium value)** | P2 | Criar canonical doc; exercise opcional (Phase 4) |
 | **Already Exists** | — | Apenas cross-reference, nao criar artefatos novos |
@@ -705,6 +725,22 @@ docs/analysis/<date>-<source-slug>/<date>-<source-slug>-classification.yaml
 1. **Canonical docs primeiro** — `docs/canonical/` e o nivel 2 de precedencia. Docs canonicos estabelecem a verdade antes de exercicios e skills referenciarem eles.
 2. **Skills para padroes Missing** — Skills de implementacao tem maior reuso.
 3. **Exercises para Missing e P1** — Exercicios solidificam aprendizado.
+
+### Write-assignment obrigatório (delegações paralelas)
+
+Antes de qualquer dispatch paralelo (Phases 3, 4 e 6), o orquestrador cria um
+write-assignment e o embute nos prompts:
+
+- **OWNED_FILES**: paths exatos (ou diretórios exclusivos) por agente, sem
+  sobreposição.
+- **FORBIDDEN_FILES**: tudo que outro agente da mesma onda possui.
+- **Batches**: streams com mais de 8 outputs dividem em lotes de no máximo 8.
+- **Exercícios**: o ORQUESTRADOR define level, número (após `ls` do diretório
+  de destino) e filename de cada exercise — o sub-agente não escolhe.
+- **Overlap detectado = STOP** e re-particionar antes de disparar.
+
+Na Phase 6, particione **por arquivo** (cada arquivo tem um único owner, que
+aplica todos os padrões destinados a ele), não por classificação.
 
 ### Delegacao (paralela)
 
@@ -991,16 +1027,19 @@ Do NOT commit. The orchestrator handles the commit decision."
 
 - [ ] `git diff --stat` mostra apenas arquivos relacionados a essa sessao
 - [ ] `docs/system-of-record.md` reflete o novo estado (data atualizada)
-- [ ] Contagens RECOMPUTADAS por comando (`ls <dir>/exercises/*.md | wc -l`), nunca incrementadas do valor anterior
+- [ ] TODA contagem numerica afetada pela sessao — canonical docs, skills, exercises e topicos — RECOMPUTADA por comando (`ls <dir>/*.md | wc -l`), nunca incrementada do valor anterior; mismatch = NEEDS_WORK (o orquestrador nao corrige silenciosamente o output do agente)
 
 ### Commit Gate
 
 Apos a Phase 5 (e Phase 6 se executada), o orquestrador DEVE:
 
 1. Rodar `git diff --stat` para confirmar o escopo das mudancas.
-2. **Perguntar ao usuario:** "Quer commitar?"
-3. Se sim: commit com estilo do repo (`type(scope): short description`).
-4. **Perguntar ao usuario:** "Quer fazer push?"
+2. Apresentar um COMMIT PLAN nomeado (lista exata de commits: mensagem +
+   arquivos + origem, incluindo reset/chore) e perguntar ao usuario UMA vez —
+   a aprovacao autoriza somente os commits nomeados no plano; commit extra
+   exige nova aprovacao (mesmo mecanismo do harness-analyze-and-improve).
+3. Commits com estilo do repo (`type(scope): short description`).
+4. **Perguntar ao usuario (aprovacao separada):** "Quer fazer push?"
 5. Se sim: `git push origin main`.
 
 5.5. **Resetar PROGRESS.md para template limpo** — apos commit bem-sucedido,
@@ -1066,7 +1105,10 @@ Phase 6: Curriculum Deep Integration
 
 ### Delegacao
 
-Delegue para `deep`:
+Delegue para `deep`. Um agente sync serve para cargas pequenas (<= 8 padroes e
+poucos arquivos); acima disso, divida em multiplos agentes background
+(`run_in_background=true`) sob write-assignment com OWNED_FILES disjuntos por
+arquivo (o harness prescreve 2 agentes paralelos como default para esse caso):
 
 ```typescript
 task(
@@ -1196,7 +1238,7 @@ Depois de completar as fases (0-5 obrigatorias, 6 executada por default — pode
 - [ ] Commits seguem o estilo `type(scope): short description`
 - [ ] Toda delegacao usou `task()` com categoria adequada — nenhuma fase foi executada inline pelo orquestrador
 - [ ] Se `incremental=true`: `delta-report.md` existe e o modelo anterior foi carregado com sucesso (ou fallback documentado)
-- [ ] Mental model versionado em `mapa-mental-repo/<date>-<source-slug>-mental-model.{md,yaml}`
+- [ ] Mental model versionado em `mapa-mental-repo/<date>-<source-slug>-mental-model.{md,yaml}` com `meta.base_commit` presente e coerente
 - [ ] `mapa-mental-repo/` tem no maximo 5 modelos ativos na raiz; excedentes estao em `archive/`
 - [ ] Se `incremental=true`, o `mental-model.yaml` tem campo `meta.based_on` apontando para o modelo anterior
 

@@ -57,8 +57,9 @@ Load harness-analyze-and-improve with source=C:\Users\pavan\raw-knowledge\source
 
 mode=loop: executa TODAS as fases pendentes sem perguntar.
 So para em AGENT_STOP, falha de fase, ou conclusao total.
-Commits: pergunte ao operador antes de CADA commit, sem excecao
-(secao Commit Gate abaixo). Push apenas no final, com aprovacao.
+Commits: NAO pergunte entre fases — acumule e apresente um COMMIT PLAN
+nomeado antes do primeiro commit do batch (secao Commit Gate abaixo).
+Push apenas no final, com aprovacao separada.
 
 ## Phase → Agent Mapping
 
@@ -219,8 +220,20 @@ Semantic (proportional to artifact risk — a structural pass does NOT equal a p
 
 Record the depth in `harness/test-results.json` as `verification_depth: structural|semantic` for the phase. Absence of the field = `structural` (backward compatible).
 
+Persist every verification in `verification_checks` for the phase:
+`[{kind: "citation"|"claim"|"command"|"structural", target: "<file:line|claim>", command_or_claim: "<what was checked>", expected: "...", actual: "...", passed: true|false}]`.
+`verification_depth: semantic` REQUIRES the samples actually used, all with `passed: true`. No phase may receive PASS with `evidence: []` — Phases 5/6 fill evidence with the files effectively changed (`git diff --name-only`).
+
 If PASS:
 - Set `passes` to `true` for the current phase in `harness/test-results.json`
+- Time invariants (obligatory for PASS):
+  - `duration_seconds` is derived EXCLUSIVELY from `completed_at - started_at`.
+  - Before marking PASS and before any metrics summary, validate all phases:
+    timestamps non-null, duration non-negative and consistent with the
+    timestamp difference (max tolerance 1 second).
+  - Violation = phase returns to NEEDS_WORK (fix started_at/completed_at or
+    re-execute). NEVER substitute the duration with wall time reported by the
+    sub-agent.
 - Write `completed_at` (ISO 8601 UTC) to `harness/test-results.json` for the current phase
 - Calculate `duration_seconds` = elapsed seconds between `started_at` and `completed_at`.
   Use shell arithmetic: compute epoch difference with `date -d` (GNU) or
@@ -251,6 +264,9 @@ If NEEDS_WORK:
 - If condition (b): read `harness/test-results.json` and output
   a Pipeline Metrics Summary (duration per phase, retry counts,
   bottleneck flags for phases >600s or retry_count >0).
+  Precondition: the time invariants from Step 6 were validated for ALL
+  phases (no null timestamps, no negative durations). An invalid entry
+  blocks the summary — fix the state first, never print unvalidated metrics.
 - If no more pending phases (all passes=true): report completion with a
   metrics summary. Read `harness/test-results.json` and output a table:
 
@@ -271,14 +287,23 @@ If NEEDS_WORK:
 
 Before each phase, check if `AGENT_STOP` file exists at repo root. If yes, stop the loop.
 
-## Commit Gate
+## Commit Gate (commit plan)
 
-NEVER commit without asking the user. After each phase completes:
-1. Show `git diff --stat`
-2. Ask: "Commit phase-N?"
-3. If yes: commit with message `analysis(<slug>): phase <N>`
-4. Ask: "Push?"
-5. If yes: `git push`
+Em `mode=loop`, NAO pergunte entre fases; acumule mudancas verificadas.
+Antes do primeiro commit de um batch:
+
+1. Apresente o COMMIT PLAN nomeado: lista exata de commits (mensagem + arquivos
+   + fase de origem), incluindo commits de reset/chore (ex: reset do
+   PROGRESS.md).
+2. Peca uma unica aprovacao. Ela autoriza SOMENTE os commits nomeados no plano;
+   qualquer commit adicional exige nova aprovacao.
+3. Push e sempre uma aprovacao separada.
+4. Reconcilie o plano aprovado com o historico real antes do report final
+   (`git rev-list <first>^..<last> --count` deve bater com o plano).
+
+Excecao (autorizacao unica): quando o operador pre-aprova o ciclo inteiro
+(ex: qi-epic, autorizacao unica documentada), o plano nomeado substitui as
+perguntas por batch — o plano continua obrigatorio como registro de auditoria.
 
 ## Anti-Patterns
 
