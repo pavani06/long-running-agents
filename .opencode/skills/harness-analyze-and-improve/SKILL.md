@@ -225,6 +225,7 @@ Persist every verification in `verification_checks` for the phase:
 `verification_depth: semantic` REQUIRES the samples actually used, all with `passed: true`. No phase may receive PASS with `evidence: []` — Phases 5/6 fill evidence with the files effectively changed (`git diff --name-only`).
 
 If PASS:
+- Persist `verification_checks` for the phase (Step 6 schema) — a PASS without persisted checks is not auditable
 - Set `passes` to `true` for the current phase in `harness/test-results.json`
 - Time invariants (obligatory for PASS):
   - `duration_seconds` is derived EXCLUSIVELY from `completed_at - started_at`.
