@@ -36,6 +36,7 @@ coverage/
 .runtime/
 artifacts/
 .sisyphus/
+.validator-cache/
 
 # Supabase generated
 supabase/.combined-migration.sql
