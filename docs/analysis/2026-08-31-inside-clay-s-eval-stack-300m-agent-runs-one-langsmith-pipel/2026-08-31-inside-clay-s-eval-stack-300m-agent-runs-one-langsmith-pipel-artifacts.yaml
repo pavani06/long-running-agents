@@ -1,0 +1,109 @@
+meta:
+  type: artifact-manifest
+  date: '2026-08-31'
+  source_slug: inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel
+  classification_file: docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.yaml
+artifacts:
+  canonical_docs:
+  - path: docs/canonical/perceived-eval.md
+    pattern: perceived-eval
+    classification: Missing
+    priority: P0
+  - path: docs/canonical/eval-coverage-matrix.md
+    pattern: eval-coverage-matrix
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/production-to-offline-feedback-loop.md
+    pattern: production-to-offline-feedback-loop
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/unified-tool-surface-flywheel.md
+    pattern: unified-tool-surface-flywheel
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/agent-first-data-foundation.md
+    pattern: agent-first-data-foundation
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/bulk-in-context-trace-analysis.md
+    pattern: bulk-in-context-trace-analysis
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/self-iterating-agent-loop.md
+    pattern: self-iterating-agent-loop
+    classification: Partial Coverage
+    priority: P1
+  - path: docs/canonical/environment-tiered-eval-fidelity.md
+    pattern: environment-tiered-eval-fidelity
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/cli-first-eval-harness-remote-persistence.md
+    pattern: cli-first-eval-harness-remote-persistence
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/plug-and-play-eval-harness-byo-evaluators.md
+    pattern: plug-and-play-eval-harness-byo-evaluators
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/structured-partial-checks-exact-goldens.md
+    pattern: structured-partial-checks-exact-goldens
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/deterministic-multi-turn-scripts-simulated-users.md
+    pattern: deterministic-multi-turn-scripts-simulated-users
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/shadow-builds-separated-compute.md
+    pattern: shadow-builds-separated-compute
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/skills-cli-native-agent-data-access.md
+    pattern: skills-cli-native-agent-data-access
+    classification: Partial Coverage
+    priority: P2
+  - path: docs/canonical/observability-threshold-eval-trigger.md
+    pattern: observability-threshold-eval-trigger
+    classification: Partial Coverage
+    priority: P2
+  skills:
+  - path: .opencode/skills/perceived-eval/SKILL.md
+    pattern: perceived-eval
+    classification: Missing
+  exercises:
+  - path: curriculum/02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval.md
+    pattern: perceived-eval
+    classification: Missing
+  - path: curriculum/02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix.md
+    pattern: eval-coverage-matrix
+    classification: Partial Coverage
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy.md
+    pattern: production-to-offline-feedback-loop
+    classification: Partial Coverage
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-14-unified-tool-surface-flywheel.md
+    pattern: unified-tool-surface-flywheel
+    classification: Partial Coverage
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-15-agent-first-data-foundation.md
+    pattern: agent-first-data-foundation
+    classification: Partial Coverage
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-16-bulk-in-context-trace-analysis.md
+    pattern: bulk-in-context-trace-analysis
+    classification: Partial Coverage
+  - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-17-self-iterating-agent-loop.md
+    pattern: self-iterating-agent-loop
+    classification: Partial Coverage
+  examples: []
+skipped:
+  already_exists:
+  - pattern: eval-gated-autonomy
+    evidence: docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.md secao 13 (Already
+      Exists, Low)
+  better_implementation: []
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 15
+    skills: 1
+    exercises: 7
+    examples: 0
+  notes:
+  - 'Validator: 0 ERROR nos novos arquivos; WARNs de vocabulario de tags na mesma classe dos pre-existentes'
