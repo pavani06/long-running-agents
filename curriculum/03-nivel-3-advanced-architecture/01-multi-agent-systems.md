@@ -1778,6 +1778,10 @@ O PresenceTracker não é mais um agente -- é uma camada transversal de governa
 
 Este padrão expande os conceitos de coordenação multi-agente desta lição para a camada de infraestrutura de modelos: da mesma forma que você roteia tarefas entre agentes especializados, pode rotear chamadas entre provedores com base em latência, custo e disponibilidade.
 
+**[[docs/canonical/unified-tool-surface-flywheel|Unified Tool Surface Flywheel]]** — Uma única autoridade de tool exposta identicamente como UI, CLI e API pública, com agentes internos consumindo exatamente as mesmas tools que clientes externos. A disciplina necessária: recusar tools backdoor exclusivas de agente, porque qualquer atalho interno quebra o casamento entre sinal agêntico e qualidade pública.
+
+A conexão com esta lição: a coordenação entre agentes só é auditável quando todas as ferramentas partem da mesma autoridade de dispatch — o protocolo único que esta lição constrói entre Planner, Generator e Evaluator é o análogo interno do que o padrão exige do produto inteiro (uma tool authority, todas as superfícies). O payoff é um flywheel: cada falha de tool do agente dobra como sinal de qualidade da API pública, transformando o tráfego agêntico em teste contínuo e gratuito da superfície externa.
+
 ---
 
 ## 📋 Metadata

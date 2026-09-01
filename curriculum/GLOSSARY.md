@@ -69,6 +69,21 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+## B
+
+### Bulk In-Context Trace Analysis (Análise de Traces In-Context em Massa)
+**Definição:** Substituição escalável do vibe review: uma amostra grande de traces de produção (na ordem de 10.000 exemplos) é submetida in-context a um frontier model com um goal de trend-finding — achar padrões de falha recorrentes através do volume, não classificar item a item. Findings viram casos-candidatos de eval que alimentam o loop produção→offline.
+
+**Por que importa:** Leitura humana de traces escala para um punhado de exemplos por sessão; a produção gera milhares. O step change de capacidade do frontier model (janela in-context suficiente) converte-se diretamente em observabilidade. A análise é em si não-determinística e precisa de validação própria: findings viram eval cases que confirmam ou refutam a tendência.
+
+**Em KODA:** Em vez de revisar 20 traces por semana, o time entrega a amostra semanal completa ao modelo com o goal "quais padrões de falha recorrentes você encontra?" — os padrões reportados viram casos no dataset (Living Eval Dataset).
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/bulk-in-context-trace-analysis|Bulk In-Context Trace Analysis]], [[curriculum/02-nivel-2-practical-patterns/04-trace-reading|Trace Reading]], [[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop]]
+
+---
+
 ## C
 
 ### Closed-Loop Company
@@ -215,6 +230,19 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Drift Taxonomy (Taxonomia de Drift)
+**Definição:** Diagnóstico diferencial para "evals stale" que separa três modos de falha distintos: **data drift** (a distribuição de tráfego de produção mudou; o eval set testa o passado → refresh por amostragem de produção), **judge drift** (o LLM-judge mudou de comportamento por troca de modelo/prompt/rubrica → revalidar contra goldens humanos) e **eval-set mirroring** (o sistema decorou os casos do set; score alto com produção estagnada → rotacionar casos).
+
+**Por que importa:** Sem a separação, o time trata data drift com reanotação de goldens (remédio caro e errado) ou judge drift com refresh de dataset (não corrige nada). Goldens anotados por humanos são a referência anti-overfitting do judge: sem eles, judge drift é invisível — o judge nunca diverge de si mesmo.
+
+**Em KODA:** Correlation report mostra score p90 subindo com complaint rate subindo — em vez de "recalibrar tudo", o time diagnostica: trocou o modelo do judge na semana passada? Judge drift → revalidar contra os ~200 goldens de especialista. Lançou categoria nova (veganos)? Data drift → casos novos da produção entram no dataset.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop with Drift Taxonomy]], [[docs/canonical/model-switch-driven-eval-hardening|Model-Switch-Driven Eval Hardening]], [[curriculum/05-core-concepts/08-evaluation-rubrics|Evaluation Rubrics]]
+
+---
+
 ## E
 
 ### Evaluator (Avaliador)
@@ -250,6 +278,19 @@ Referência rápida de termos usados neste programa.
 **Template:** Veja `08-tools-templates/evaluation-rubric-template.md`
 
 **Nível:** 2
+
+---
+
+### Eval Coverage Matrix (Matriz de Cobertura de Evals)
+**Definição:** Gestão do portfólio de avaliação como matriz 2x2 — **determinismo** (deterministic vs. nondeterministic) × **deployment** (offline vs. online) — com meta de cobertura "a few things in each box" (piso por quadrante, não profundidade num só), gap list explícita de quadrantes descobertos e alocação de investimento entre mecanismos.
+
+**Por que importa:** Portfólios que moram num quadrante só (tipicamente a bateria de goldens offline/deterministic) ficam cegos por construção para as classes de falha dos outros três — o incidente mora no quadrante vazio e nenhum detector o vê. O quadrante classicamente vazio é online/nondeterministic (preenchido pelo Perceived-Eval). Complementa, não compete, com as outras duas lentes: 3-Layer Evaluation Architecture (tipo de mecanismo) e tier stratification (schedule).
+
+**Em KODA:** O time mapeia: goldens de SKU (offline/deterministic), LLM-judge de recomendação (offline/nondeterministic), A/B de conversão (online/deterministic), perceived-eval de correções (online/nondeterministic) — e descobre que não tinha NENHUM detector online de qualidade percebida.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/eval-coverage-matrix|Eval Coverage Matrix]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix|Exercício: Eval Coverage Matrix]], [[docs/canonical/perceived-eval|Perceived-Eval]], [[docs/canonical/evals-as-brakes|Evals-as-Brakes]]
 
 ---
 
@@ -586,6 +627,21 @@ Sprint 4: Play mode
 **Ver tambem:** AGENTS.md, Durable Non-Functional Requirements Memory, Reviewer Agents as CI Gates
 
 **Nivel:** 3
+
+---
+
+### Perceived-Eval (Avaliação Percebida)
+**Definição:** Tratar o comportamento de correção do usuário na conversa como dado de avaliação. Três famílias de sinal combinadas: (1) eventos de **correction/pushback/redirection** extraídos dos traces ("não, eu quis dizer X", "isso está errado"); (2) **telemetria comportamental objetiva** delimitando falha percebida (saída do chat para outra área do produto, stuck, rage quit); (3) **NPS/satisfação como entrada contínua**, pareado com as métricas comportamentais — subjetivo e objetivo se confirmam mutuamente.
+
+**Por que importa:** O sinal mais rico de qualidade percebida evapora sem instrumentação: o usuário que corrige o agente está produzindo um julgamento de qualidade de graça, contínuo e sem survey fatigue. A regra é triangulação — nunca um sinal isolado, porque métricas comportamentais têm causas benignas (tarefa concluída, exploração). Resolução por sessão, não por decisão: o sinal delimita onde a percepção degradou; a localização exata vem da trace.
+
+**Em KODA:** O detector flagge "para de me mostrar whey" como REDIRECTION; a sessão termina em EXITED_TO_OTHER_SURFACE; o evento entra ranqueado no intake do loop produção→offline como caso-candidato de eval.
+
+**Distinto de:** Presence-in-the-Loop (intervenção de operadores, não percepção de usuários) e Always-On Monitoring (anomalias do sistema, não qualidade percebida pelo usuário final).
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/perceived-eval|Perceived-Eval]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval|Exercício: Perceived-Eval]], [[docs/canonical/eval-coverage-matrix|Eval Coverage Matrix]], [[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop]]
 
 ---
 
@@ -985,6 +1041,10 @@ Você vê "Generator/Evaluator" mas não entende.
 ### Self-Evaluation vs. Verification
 - **Self-Evaluation:** Agent avalia seu próprio trabalho (❌ ruim)
 - **Verification:** Evaluator separado verifica (✅ bom)
+
+### Perceived-Eval vs. Presence-in-the-Loop
+- **Perceived-Eval:** Qualidade percebida pelo usuário final do produto (correção, rage quit, NPS)
+- **Presence-in-the-Loop:** Envolvimento do operador humano durante a execução do agente
 
 ---
 

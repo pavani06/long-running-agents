@@ -4127,6 +4127,12 @@ Assim como uma rubrica de avaliacao tem dimensoes (seguranca, adequacao, clareza
 | `pricing_policy` | Preco, desconto ou cupom aplicado incorretamente | Desconto de 30%% aplicado quando maximo era 15%% | Blocker na rubrica de promo + shadow test |
 | `latency_cost` | Componente adicionou latencia ou custo desproporcional | Context Loader: 450ms/turno para 0.008%% de efetividade | Diagnostico de ROI → SIMPLIFY ou REMOVE |
 
+### Como o Caso N+1 e Construido: Scripts Multi-Turno Deterministicos
+
+A acao tipica do `context_loss` ("Caso N+1 no tier medium") tem uma mecanica definida — e uma decisao explicita contra a alternativa obvia. O *Deterministic Multi-Turn Scripts over Simulated Users* (caso Clay) carrega um **fixture fixo de N turnos** (user turns hardcoded ou derivados de traces reais) e testa o turno N+1: o comportamento do usuario e scriptado, e o agente sob teste e o unico elemento variavel — comparacoes entre mudancas de prompt e de harness sao deterministicas por construcao.
+
+A decisao contra: usar um *simulated-user LLM* para gerar os turnos adiciona um segundo agente nao-deterministico ao eval — ruidoso, e que precisa dos proprios updates e das proprias evals. Na fonte, o custo de manutencao excedeu o valor e o simulated user foi aposentado; os turnos hardcoded foram operacionalmente "o formato multi-turn mais util". O limite e declarado: scripts fixos so exploram caminhos escritos, cobertura cresce com esforco de autoria, e resultados superestimam robustez em conversas selvagens — o caso N+1 e detector de regressao de contexto, nao certificado de conversa livre. Para o padrão completo: [[docs/canonical/deterministic-multi-turn-scripts-simulated-users|Deterministic Multi-Turn Scripts over Simulated Users]].
+
 ### O Ciclo: Observar → Classificar → Converter → Verificar
 
 ```

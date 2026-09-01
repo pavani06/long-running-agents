@@ -2276,3 +2276,10 @@ Se ficou confuso em algo, não é falha sua — é falha deste módulo.
 
 - **Documento canônico:** [[docs/canonical/task-routed-model-tiering]]
 - **Relevância para Generator/Evaluator:** O padrão Generator/Evaluator já separa criação de avaliação em dois agentes distintos. O Task-Routed Model Tiering estende essa ideia ao permitir que o Generator use um modelo mais criativo (ex: Opus, alta temperatura) e o Evaluator use um modelo mais rigoroso (ex: Sonnet, baixa temperatura), otimizando custo e qualidade por papel. No KODA, recomendações complexas podem ser geradas por um modelo pesado enquanto validações simples de SKU podem rodar em modelos leves.
+
+## Padrões Relacionados (Clay)
+
+**Plug-and-Play Harness with BYO Evaluators** — Sem um harness compartilhado, cada novo agente ou produto reconstrói infraestrutura de avaliação do zero. O padrão da Clay inverte: um **harness compartilhado** provê execução, relatório e persistência; cada produto conecta sua própria suíte de eval e seus próprios evaluators (BYO LLM judges). O caminho de onboarding troca "construa plumbing" por "autore os judges e checks" — e o armazenamento uniforme torna resultados comparáveis entre produtos.
+
+- **Documento canônico:** [[docs/canonical/plug-and-play-eval-harness-byo-evaluators|Plug-and-Play Eval Harness with BYO Evaluators]]
+- **Relevância para Generator/Evaluator:** A separação Generator/Evaluator já trata a autoria do evaluator como papel distinto da geração — este padrão é essa separação escalada para a organização: o harness é o contrato compartilhado, os evaluators são autoral do time que conhece o domínio. O trade-off é o artifact-encruzilhada: mudanças no harness compartilhado afetam todos os produtos, e a qualidade do evaluator continua sendo ônus de cada produto — o padrão dá plumbing de graça, não julgamento de graça.

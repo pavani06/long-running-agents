@@ -62,6 +62,8 @@ Com rubrics, o KODA consegue dizer:
 - Desenhar uma rubrica com dimensions, weights, scoring levels, thresholds e exemplos calibrados.
 - Aplicar rubrics no KODA para recommendation quality, order processing, conversation quality e response safety.
 - Conectar Rubric Design ao padrão Generator/Evaluator, a Sprint Contracts e a Trace Reading.
+- Tratar o comportamento de correção do usuário em produção como sinal de avaliação (Perceived-Eval).
+- Diagnosticar "evals stale" com a taxonomia de drift e gerenciar o portfólio de evals como matriz de cobertura.
 - Usar scores para diagnosticar queda de qualidade, ajustar pesos e melhorar decisões reais.
 
 Este arquivo é um core concept. Ele não substitui o módulo prático de [Rubric Design](../02-nivel-2-practical-patterns/03-rubric-design.md). Ele prepara seu modelo mental para aproveitá-lo melhor.
@@ -241,6 +243,23 @@ Antes de liberar um agente para escala de produção (20.000+ queries/mês), o b
 - [[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]] — arquitetura completa das três camadas
 - [[.opencode/skills/behavioral-eval-path-analysis/SKILL|behavioral-eval-path-analysis skill]] — skill operacional
 - [[curriculum/04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis|Exercício: Behavioral Eval Path Analysis]] — exercício prático N3
+
+### A terceira lente: Eval Coverage Matrix (determinismo × deployment)
+
+As 3 Camadas acima estratificam por **tipo de mecanismo** (o que cada camada avalia); a estratificação por schedule (fast/medium/deep) diz **quando** rodar. A *Eval Coverage Matrix* (caso Clay) adiciona o terceiro par de eixos — **determinismo** (deterministic vs. nondeterministic) × **deployment** (offline vs. online) — e responde a pergunta que nenhuma lente isolada responde: **quais combinações o portfólio cobre, e quais quadrantes estão vazios?**
+
+| | Offline | Online |
+|---|---|---|
+| **Deterministic** | goldens, checks estruturados, asserções de trajetória (Camadas 1 e 3) | A/B metrics, telemetria comportamental objetiva |
+| **Nondeterministic** | LLM-as-judge (Camada 2), simulated users, bulk trace analysis | online evaluators, perceived-eval (correção do usuário), NPS |
+
+Três regras do padrão:
+
+1. **Meta de cobertura é "a few things in each box"** — alguns mecanismos por quadrante, não profundidade em um só. É piso, não teto: cada classe de modo de falha merece ao menos um detector.
+2. **Gap list explícita** de quadrantes descobertos — o output tão importante quanto a matriz em si. O quadrante clássico vazio é online/nondeterministic (preenchido pelo Perceived-Eval abaixo).
+3. **Alocação de investimento** entre mecanismos derivada da matriz e das restrições de observabilidade de produção (volume de traces, capacidade de contato com clientes).
+
+O risco que a matriz nomeia: o portfólio que mora num quadrante só — tipicamente a bateria de goldens offline/deterministic — fica cego por construção para as classes de falha dos outros três; o incidente mora no quadrante vazio e nenhum detector o vê. A cobertura por quadrante é também a unidade que sustenta a velocidade de shipping permitida em Evals-as-Brakes (abaixo). Para o padrão completo: [[docs/canonical/eval-coverage-matrix|Eval Coverage Matrix]]. Para a prática guiada: [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix|Exercício: Eval Coverage Matrix]].
 
 ### Estratégias de Coordenação: Como Rubrics Orquestram Decisões
 
@@ -710,6 +729,20 @@ correlation_report:
 
 Recalibre quando qualquer trigger acima aparecer por uma janela completa, quando uma nova classe de incidente entra no regression flywheel, ou quando mudança de modelo/prompt altera a distribuição de scores sem mudança equivalente nos outcomes.
 
+### Drift taxonomy: os três modos de "evals stale"
+
+Os decay thresholds do correlation report acusam o problema — score e produção divergem — mas o diagnóstico costuma parar num "os evals estão stale" indiferenciado, que esconde **três falhas distintas com remédios diferentes**. A *drift taxonomy* (caso Clay, do padrão Production-to-Offline Feedback Loop) é o diagnóstico diferencial:
+
+| Modo | O que derivou | Sinal característico | Remédio |
+|---|---|---|---|
+| **Data drift** | A distribuição de tráfego de produção mudou; o eval set testa o passado | Novos casos de uso aparecem no tráfego sem cobertura no eval set | Refresh por amostragem de produção; casos novos viram evals |
+| **Judge drift** | O LLM-judge mudou de comportamento (troca de modelo, prompt ou rubrica) | Divergência entre judge e goldens anotados por humanos nos mesmos casos | Reanotar/revalidar o judge contra goldens humanos |
+| **Eval-set mirroring** | O eval set foi overfitado: o sistema decorou os casos sem generalizar | Score de eval alto com outcomes de produção estagnados ou caindo | Rotação de casos; novos casos de produção nunca vistos pelo dev loop |
+
+Por que a separação importa: sem a taxonomia, o time gasta reanotação de goldens em data drift (remédio caro e errado) ou refresh de dataset em judge drift (não corrige nada). O [[docs/canonical/model-switch-driven-eval-hardening|Model-Switch-Driven Eval Hardening]] é o caso especial nomeado de judge drift: troca de modelo é o gatilho, revalidação completa do dataset é o remédio. E os inputs do refresh vêm de produção: tickets de suporte, eventos de Perceived-Eval (abaixo) e tendências de bulk trace analysis.
+
+Dois controles do padrão merecem destaque: **goldens anotados por humanos** como referência anti-overfitting do judge (sem eles, judge drift é invisível — o judge nunca diverge de si mesmo) e o **use-case classifier** sobre traces de produção como audit de cobertura (casos de uso testados vs. casos de uso reais). A fonte declara o loop **não resolvido em escala**: ele sempre atrasa as mudanças de produção. Para o padrão completo: [[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop with Drift Taxonomy]]. Para a prática guiada: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy|Exercício: Drift Taxonomy]].
+
 ## 📈 Living Eval Dataset: Crescimento Monotônico e Execução Particionada
 
 Uma suíte de testes estáticos não protege contra modos de falha novos — cada incidente em produção ensina uma lição que se perde a menos que seja codificada como caso de teste permanente. O *Living Eval Dataset* (padrão de Bhaumik) formaliza essa disciplina com três garantias:
@@ -751,6 +784,18 @@ Esta arquitetura de dataset é o alicerce do [[docs/canonical/production-failure
 ### Bootstrap: os ~200 casos iniciais
 
 O dataset começa com golden answers criadas por especialistas de domínio (não por modelos) a partir de queries reais de produção. Esses ~200 casos iniciais cobrem os cenários mais frequentes e os modos de falha mais caros. A partir deles, o crescimento é orgânico — cada incidente adiciona casos, cada feature nova adiciona cobertura.
+
+### Estrictez casada com estabilidade: checks parciais sobre goldens exatos
+
+Quanto do output o check precisa comparar? A resposta do *Structured Partial Checks over Exact Goldens* (caso Clay): **a estrictez deve casar com a estabilidade da superfície de output**. Goldens de match exato quebram em reordenações irrelevantes (ordem de keywords, ordem de nodes) — e o eval ruidoso que daí resulta não é inofensivo: false failures repetidas ensinam o time a ignorar a suíte inteira.
+
+A regra em três partes, montada sobre primitivas deste módulo:
+
+1. **Asserções parciais estruturadas** para a maior parte do output: verificar só as partes que importam — a verification matrix do Constraint-Anchored Evaluation (constraint → check → pass/fail) já é exatamente isso. O resto da resposta pode variar livremente.
+2. **Asserções de trajetória/tool calls** para o que o agente *fez*, não só o texto final: uma pergunta de preço precisa incluir a leitura da tabela de preços no caminho esperado — os expected execution path templates da Camada 3 são o mecanismo.
+3. **Goldens exatos retidos só para superfícies simples e estáveis** — uma query language, um schema fechado, um formato contratuado. Superfície estável → match exato não gera ruído; superfície livre → match exato só gera falso falha.
+
+O trade é explícito: escolher "o que importa" é um julgamento que pode esconder regressões nas partes ignoradas, e checks parciais não certificam correção do output completo. O custo oposto é maior — a suíte que chora lobo morre de ignorância. Para o padrão completo: [[docs/canonical/structured-partial-checks-exact-goldens|Structured Partial Checks over Exact Goldens]].
 
 ## 🔄 Production-Contact Training Loop: o Contato com Produção É o Treinamento
 
@@ -861,6 +906,33 @@ A mecânica de classificação já existe neste currículo em profundidade — o
 - [ ] A taxonomia é hierárquica (category → subcategory → exemplos) e tem owner de manutenção contra drift
 - [ ] O radar expõe concentrações sem resposta/pobres com proxies de qualidade (repetição, frustração)
 - [ ] Pelo menos um consumidor downstream consome a taxonomia (gap-to-content, roadmap de cobertura, backlog de produto)
+
+## 🗣️ Perceived-Eval: A Correção do Usuário Como Dado de Avaliação
+
+O radar de demanda acima minera as *perguntas* dos usuários nos logs. O *Perceived-Eval* (caso Clay) aponta a mesma telemetria para um sinal mais rico: **o comportamento de correção do próprio usuário dentro da conversa**. O usuário que corrige o agente ("não, eu quis dizer sem lactose"), que faz pushback ("isso está errado") ou que tenta redirecionar a conversa ("esquece, mostra só os veganos") está produzindo, de graça, um julgamento de qualidade item a item. Sem instrumentação, esse sinal evapora — ele nunca vira eval.
+
+O problema que o padrão resolve: medir qualidade *percebida* em produção sem rodar surveys explícitos o tempo todo. Pesquisa de satisfação é cara, intermitente e sofre de survey fatigue — e o caso cego que ela deixa passar é o pior: o agente produz output tecnicamente aceitável (a rubrica aprova, o eval passa), mas o usuário o experienciou como errado, lento ou inútil.
+
+### As três famílias de sinal
+
+| Família | O que captura | Mecânica | Custo |
+|---|---|---|---|
+| **Correção/pushback/redirection** | O usuário contesta, corrige ou tenta guiar o agente | Detector (classificador ou regra) sobre os turnos dos traces de conversa; cada evento é sinal negativo no nível da decisão | Instrumentação uma vez, coleta contínua |
+| **Telemetria comportamental objetiva** | Onde e como a sessão termina | Saída do chat para outras áreas do produto, stuck (usuário sem progresso), rage quit (abandono abrupto) | Métricas online contínuas, sem survey |
+| **NPS/satisfação como entrada contínua** | Subjetivo pontual | Pareado com as métricas comportamentais: subjetivo e objetivo se confirmam mutuamente | O que já existe, mudando o papel |
+
+**A regra da triangulação:** métricas comportamentais têm causas benignas — sair do chat pode significar tarefa concluída; repetição pode ser exploração. Por isso o padrão exige a combinação (correção + telemetria + NPS), nunca um sinal isolado. E a resolução é por **sessão**, não por decisão: o sinal delimita *onde* a percepção degradou, não *qual turno* falhou — a localização exata vem da leitura da trace (módulo Trace Reading).
+
+**Propriedades operacionais:** coleta contínua em todo o tráfego de produção (sem fadiga de survey); eventos alimentam o loop produção→offline como casos-candidatos de eval de alta qualidade (drift taxonomy acima); e o sinal ocupa formalmente o quadrante online/não-determinístico da Eval Coverage Matrix (acima) — o quadrante que portfólios de eval costumam deixar vazio.
+
+**Conexões:** fornece o outcome percebido que o [[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]] precisa medir além de CSAT pontual; e é distinto de dois vizinhos que medem outra coisa — Always-On Monitoring with Human Triage (anomalias do sistema, não percepção do usuário final) e Presence-in-the-Loop (intervenção de operadores no workflow, não percepção de clientes do produto). Para o padrão completo: [[docs/canonical/perceived-eval|Perceived-Eval]]. Para a prática guiada: [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval|Exercício: Perceived-Eval]].
+
+**Checklist: Perceived-Eval Gate**
+- [ ] Existe detector de correction/pushback/redirection rodando sobre traces de conversa (regra ou classificador, com taxa de falso positivo medida)
+- [ ] Telemetria comportamental de saída distingue exit benigno de rage quit e stuck (classificação de desfecho por sessão)
+- [ ] NPS/CSAT entra como calibração contínua pareada, não só como métrica de dashboard
+- [ ] Nenhum sinal isolado dispara ação: correção + telemetria + NPS são triangulados
+- [ ] Eventos de correção ranqueados alimentam o loop produção→offline como casos-candidatos de eval
 
 ## 🎯 Business-Outcome-First: Definir Sucesso em Termos de Negócio Antes de Construir Infraestrutura de Eval
 
@@ -1828,6 +1900,10 @@ Use estes cenários para treinar Evaluators e revisar rubrics. Cada cenário for
 - [ ] Preço e promoção usam dados atuais.
 - [ ] Restrição alimentar tem peso compatível com risco.
 - [ ] O time sabe quando usar Human Evaluation.
+- [ ] Eventos de correção/pushback do usuário e telemetria comportamental (chat exit, stuck, rage quit) são coletados como sinal de eval (Perceived-Eval).
+- [ ] O portfólio de evals tem matriz de cobertura (determinismo × deployment) com gap list de quadrantes.
+- [ ] Divergência eval↔produção é diagnosticada por modo de drift (data drift, judge drift, eval-set mirroring), não como "stale" indiferenciado.
+- [ ] Goldens de match exato são restritos a superfícies estáveis; o resto usa checks parciais e asserções de trajetória.
 
 ---
 
@@ -1840,6 +1916,9 @@ Use estes cenários para treinar Evaluators e revisar rubrics. Cada cenário for
 - Rubrics alimentam Sprint Contracts porque transformam pronto em score mínimo, hard rules e decision policy.
 - Trace Reading + Rubrics permite diagnosticar underperformance com evidência.
 - Calibration mantém a rubrica honesta, ajustando pesos e thresholds com outcomes reais.
+- Perceived-Eval converte correção, pushback e telemetria comportamental do usuário em sinal contínuo de qualidade percebida.
+- A drift taxonomy separa data drift, judge drift e eval-set mirroring — três falhas distintas com remédios distintos.
+- A estrictez dos checks casa com a estabilidade da superfície: goldens exatos só onde o output é estável.
 
 ---
 
@@ -1850,6 +1929,8 @@ Use estes cenários para treinar Evaluators e revisar rubrics. Cada cenário for
 - [KODA em Evolução, Nível 2](../02-nivel-2-practical-patterns/koda-applications/nivel-2-koda.md), para ver como rubrics se integram aos quatro padrões práticos.
 - [Sprint Contracts](../02-nivel-2-practical-patterns/02-sprint-contracts.md), para ligar score a critérios de pronto.
 - [Trace Reading](../02-nivel-2-practical-patterns/04-trace-reading.md), para debugar decisões usando scores e evidence.
+- [Exercício: Perceived-Eval](../02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval.md), para instrumentar correção do usuário como sinal de avaliação.
+- [Exercício: Eval Coverage Matrix](../02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix.md), para mapear o portfólio de evals como matriz 2x2.
 
 ---
 

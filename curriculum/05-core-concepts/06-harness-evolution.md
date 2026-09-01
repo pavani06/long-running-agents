@@ -456,6 +456,23 @@ A sequência de hardening é **descoberta, não planejada**: versionamento em Go
 
 O trade-off é explícito e aceito: o lançamento mínimo gera um **imposto permanente de re-arquitetura** (30-40% de capacidade — ver [[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]]), porque cada endurecimento tardio retrabalha o que o stack mínimo improvisou. E a dor precisa estar **visível** — o que exige contato real com produção, não dashboards de demo. Para o padrão completo: [[docs/canonical/pull-based-infrastructure-on-pain|Pull-Based Infrastructure on Pain]].
 
+### Observability-threshold trigger: quando a dor deixa de ser perceptível
+
+O pain-signal gate acima é reativo e pressupõe que a dor ainda consegue ser *sentida*. O *Observability-Threshold Eval Trigger* (caso Clay) nomeia quando essa premissa quebra: **abaixo de um threshold de volume, evals leves são toleráveis porque humanos ainda conseguem inspecionar cada trace; acima dele, a incapacidade de observar é estrutural e o investimento em evals vira não-negociável** (na fonte: 300M runs/mês, 100K mensagens/semana).
+
+O gatilho não é dor sentida — é capacidade perdida:
+
+| | Abaixo do threshold | Acima do threshold |
+|---|---|---|
+| Inspeção de traces | Humana, trace a trace, viável | Estruturalmente impossível (volume >> capacidade) |
+| Contato com cliente | Casos contatáveis e investigáveis | Amostra ínfima do tráfego real |
+| Evals leves aceitáveis? | Sim — o humano é o detector | Não — ninguém está olhando |
+| Postura | Tolerar evals leves, não superengenheirar | Investimento não-negociável em evals |
+
+A mecânica: medir volume continuamente (runs/mês, mensagens/semana), modelar a capacidade de observação humana (traces reviewáveis por semana, clientes contatáveis) e tratar o cruzamento do threshold como decisão binária — não como sentimento gradual de "estamos maduros". É o oposto de *maturity theater* (investir em evals para parecer maduro): o investimento alinha com necessidade estrutural. O padrão complementa o pain-signal gate nomeando a fronteira: a dor é o gatilho enquanto alguém pode senti-la; o threshold é o gatilho quando ninguém mais pode. E volume não medido só detecta o cruzamento tarde — retrofitting evals depois do cliff é mais caro que começar antes; thresholds são valores empíricos por produto, não constantes universais.
+
+Para o padrão completo: [[docs/canonical/observability-threshold-eval-trigger|Observability-Threshold Eval Trigger]].
+
 ### Closed-loop capability hardening
 
 Harness Evolution também decide quando uma prática operacional deixa de ser prompt manual e vira capacidade institucional. Em uma [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]], o agente lê artefatos reais da empresa, sugere próximos trabalhos, registra decisões e usa bugs ou resultados para atualizar o próximo ciclo.
@@ -495,6 +512,25 @@ Resultado: "semanas de debate substituídas por horas de comparação orientada 
 - [ ] Relatório de comparação de modelos é gerado automaticamente (não requer análise manual)
 - [ ] O dataset que selecionou o modelo também serve como suíte de regressão para mudanças futuras
 - [ ] Model switching é um processo mecânico: rodar dataset → comparar → decidir — não um debate de arquitetura
+
+### Onde o eval roda: ambientes por fidelidade
+
+A estratificação por schedule (fast/medium/deep) diz *quando* rodar. O *Environment-Tiered Eval Fidelity* (caso Clay) acrescenta o eixo que falta — *onde* rodar — com um contrato de fidelidade por tier:
+
+- **Local: baixa fidelidade por design, não por acidente.** Sem sandbox, sem virtual filesystem, sem dependências reais — e explicitamente declarado assim. O tier local existe para ser barato e rápido o suficiente que rodar evals vire hábito constante do desenvolvedor; seus resultados **não sustentam claims de produção**.
+- **Staging: paridade com o harness de produção.** "Basicamente a mesma coisa que prod" — mesmo harness, mesmo contrato, outra ponta. É o tier barato o suficiente para rodar sempre e fiel o suficiente para decisões de release.
+- **Produção: canary e monitoramento** — o tier que valida o claim final.
+
+A regra que o padrão adiciona: **só tiers com paridade de produção sustentam claims de release**. Bugs que só reproduzem com sandbox/VFS/dependências reais escapam do tier local — e o custo contínuo de manter paridade staging/prod é parte do padrão, não acidente. Para o padrão completo: [[docs/canonical/environment-tiered-eval-fidelity|Environment-Tiered Eval Fidelity]].
+
+### CLI-first com persistência: o eval roda onde o dev já está
+
+O segundo contrato de ergonomia (caso Clay, *CLI-First Eval Harness with Remote Persistence*): suítes de eval que exigem provisionar experimento em UI de plataforma criam fricção que mata o uso. O padrão corta a fricção em duas metades:
+
+1. **CLI-first:** o eval é um comando local, disparado de onde o desenvolvedor já trabalha — sem provisioning em UI, sem aguardar plataforma.
+2. **Persistência remota:** todo resultado, inclusive de runs locais, é escrito num store compartilhado com versionamento — histórico consultável e comparável entre runs, prompts e desenvolvedores.
+
+O repositório já tem a primeira metade (`harness.sh` + `test-results.json` com contrato default-FAIL + `PROGRESS.md`); a segunda é o delta — o [[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]] lista "eval history" (run IDs, distribuições de score, versão de rubrica) como componente a adicionar. Sem histórico versionado, comparação entre runs depende de artefatos locais espalhados. Para o padrão completo: [[docs/canonical/cli-first-eval-harness-remote-persistence|CLI-First Eval Harness with Remote Persistence]].
 
 ---
 

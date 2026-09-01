@@ -5199,3 +5199,10 @@ Boa sorte. 🚀
 
 - **Documento canônico:** [[docs/canonical/model-switch-driven-eval-hardening]]
 - **Relevância para Trace Reading:** As traces estruturadas deste módulo são o mecanismo de observação que torna o eval hardening possível. Quando você troca de modelo (ex: Claude Sonnet → DeepSeek V4), as traces revelam exatamente onde o raciocínio divergiu: os `thought_process` steps mudaram? O `confidence_score` caiu? Os `checks_performed` do Evaluator produziram resultados diferentes? Sem traces, o eval hardening é adivinhação; com traces, é diagnóstico cirúrgico.
+
+## Padrões Relacionados (Clay)
+
+**Bulk In-Context Trace Analysis** — A leitura manual de traces deste módulo escala para um punhado de exemplos por sessão; a produção gera milhares. O padrão da Clay substitui o *vibe review* de pequenas amostras por **análise in-context em massa**: uma amostra grande de traces (na ordem de 10.000 exemplos) é submetida a um frontier model com um goal de *trend-finding* — achar padrões de falha recorrentes através do volume, não classificar item a item. Os findings viram casos-candidatos para o eval set, alimentando o loop produção→offline com drift taxonomy.
+
+- **Documento canônico:** [[docs/canonical/bulk-in-context-trace-analysis|Bulk In-Context Trace Analysis]]
+- **Relevância para Trace Reading:** Este módulo ensina a ler *uma* trace com método (as 5 perguntas, os red flags); o padrão ensina o próximo degrau — entregar 10k traces de uma vez ao modelo com sub-agents, goals e harness para estruturar a análise. A direção é oposta à do Always-On Monitoring com triagem humana (que *comprime* 10.000 conversas → 5 para revisão humana): aqui o volume é *expandido* para síntese pelo modelo. O habilitador é o step change de capacidade do frontier model (janela in-context suficiente) — cada geração de modelo converte-se diretamente em poder de observabilidade. A análise é em si não-determinística e precisa de validação própria: findings viram eval cases que confirmam ou refutam a tendência. Prática guiada: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-16-bulk-in-context-trace-analysis|Exercício: Bulk In-Context Trace Analysis]].

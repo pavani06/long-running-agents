@@ -2363,6 +2363,8 @@ META PRINCIPAL: "Melhoria contínua não é mais um processo —
                 é uma propriedade emergente do sistema"
 ```
 
+A visão de 2027 tem nome formal no programa: **Self-Iterating Agent Loop** — um loop fechado em que todas as partes do produto alimentam uma fundação de dados unificada sobre a qual os agentes raciocinam, com o feedback acumulado retornando ao substrato em vez de a um doc, um eval set isolado ou um ticket ([[docs/canonical/self-iterating-agent-loop|Self-Iterating Agent Loop]]). O que o KCI construiu até aqui — telemetria, flywheel de regressão, rubrics adaptativas, GC Day — são exatamente os elos desse loop melhorando artefatos externos ao agente. O salto de "a plataforma se auto-melhora" para "o agente constrói iterações melhores de si mesmo" exige dois pré-requisitos que o roadmap acima ainda não nomeia: a fundação de dados unificada que os elos ainda não compartilham ([[docs/canonical/agent-first-data-foundation|Agent-First Data Foundation]]) e o gate de confiança que impede a auto-iteração de amplificar drift ([[docs/canonical/confidence-gated-continual-learning|Confidence-Gated Continual Learning]]).
+
 ### Os Riscos do Futuro
 
 Com todo progresso, o time identificou riscos que precisam ser monitorados:

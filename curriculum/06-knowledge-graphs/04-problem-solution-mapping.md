@@ -160,6 +160,7 @@ Encontre o sintoma na coluna da esquerda. A coluna da direita te diz qual padrã
 | Cliente recebe resposta genérica quando esperava personalização | Context Management + Rubric Design (N1 + N2) | State Persistence para perfil + Evaluation Rubrics com peso de personalização | N1 + N2 | 2-3 horas |
 | Sistema processa pagamento mas não confirma pedido (ou vice-versa) | Atomicidade Quebrada (N3) | File-Based Coordination com transaction log + Orchestrator de confirmação | N3 | 4-6 horas |
 | Mesmo erro acontece repetidamente sem melhoria | Falta de Feedback Loop (N2 + N3) | Trace Reading → Harness Evolution → Ajuste de Rubrics | N2 + N3 | Contínuo |
+| Agente queima contexto e tokens reconciliando dados de sistemas diferentes (traces num banco, analytics noutro, ops num terceiro) | Fundação de Dados Fragmentada | Agent-First Data Foundation: plano de dados unificado com o agente como usuário first-class de design-time | Plataforma | 1-2 trimestres |
 
 ---
 

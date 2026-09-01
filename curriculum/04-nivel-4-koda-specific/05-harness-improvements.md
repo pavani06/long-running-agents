@@ -986,6 +986,8 @@ Promover para canary, ajustar rubrica ou encerrar proposta.
 4. **Medir:** Taxa de acerto vs baseline (sem compactação)
 5. **Gate:** N+1 ≥ baseline −5% → aprova; abaixo → revisa política antes de canary
 
+Nota de vocabulário: este playbook inteiro trata **shadow test** — comparação de comportamento entre caminhos. Existe uma segunda mecânica com o mesmo prefixo, o **shadow build**: um alvo de deploy separado para artefatos construídos por agentes, com separação arquitetural entre serving compute (produção) e development compute (builds e experimentos), e guardrails definidos up front no lugar de revisão post-hoc de cada artefato. "Rodar em paralelo sem afetar usuários" descreve as duas; o objeto é diferente — comparar um caminho proposto vs. abrigar um artefato novo até sua promoção por gate. Ver [[docs/canonical/shadow-builds-separated-compute|Shadow Builds on Separated Compute]].
+
 ---
 
 ## 🧠 Aplicação KODA: Como Fernando Priorizaria as Melhorias

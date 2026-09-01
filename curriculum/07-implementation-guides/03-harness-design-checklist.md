@@ -472,6 +472,16 @@ Dados em pipelines de agentes têm um requisito que pipelines para dashboards hu
 | Staleness monitoring | Tracing registra `document_version` em spans de conhecimento externo; alerta quando `span_version < current_version`. | Existe evidência verificável e atualizada. | Não há como saber se o agente usou dado fresco ou stale. | Registre link para artefato, owner e data. |
 | Embedding timestamps | Todo embedding tem timestamp de geração e referência ao `document_version`. | Existe evidência verificável e atualizada. | Embeddings são gerados sem metadados de versão. | Registre link para artefato, owner e data. |
 
+### Requisito: Fundação de Dados Agent-First
+
+O Data Freshness Pipeline trata do *frescor* de cada documento; o requisito maior é a *fundação* sobre a qual os dados vivem. Ferramentas de dados evoluíram para consumo humano: dashboards toleram staleness, ambiguidade e inconsistência — agentes tratam cada dado literalmente e não têm essa tolerância. Pior: quando os dados vivem fragmentados (traces num sistema, analytics noutro, ops num terceiro), o agente queima orçamento de contexto e tokens só fazendo *stitching* entre bancos. A fragmentação é o gargalo concreto dos learning loops, não os modelos nem os evals. O critério de arquitetura inverte a pergunta de design-time: não é "o dashboard fica bom?" mas "o agente consegue raciocinar sobre isso?" — o agente como usuário first-class da fundação ([[docs/canonical/agent-first-data-foundation|Agent-First Data Foundation]]).
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Plano de dados unificado | First-party e third-party são consolidados num único plano de dados (com governança/RBAC herdada), não em bancos que exigem join manual por workflow agêntico. | Existe evidência verificável e atualizada. | Workflows do agente fazem cross-database stitching para reconciliar formatos e chaves antes de trabalhar. | Registre link para artefato, owner e data. |
+| Agente como usuário design-time | A plataforma é desenhada com o agente como usuário first-class desde o design (contratos de acesso, schemas estáveis, CLI nativa), não só dashboards para humanos. | Existe evidência verificável e atualizada. | A única interface consumível é dashboard/export humano; acesso de agente é adaptação retroativa. | Registre link para artefato, owner e data. |
+| Compute em escala de agente | Acesso agêntico roda em compute escalável — varreduras e joins em escala de máquina — sem consumir orçamento de contexto nem passar por export manual. | Existe evidência verificável e atualizada. | Varreduras amplas morrem em rate limit ou exigem humano intermediando com exports e tickets. | Registre link para artefato, owner e data. |
+
 ### Critérios de bloqueio para esta categoria
 
 - Bloqueie produção se a categoria afeta pagamento, saúde, dados pessoais ou promessa de entrega e não há validação objetiva.
@@ -837,6 +847,7 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Gate de benchmark de fusão | Se especialistas-agentes são fundidos em um interlocutor único, cada especialista é benchmarked contra o melhor humano individual e o fundido preserva no-regression por especialidade, conforme [[docs/canonical/mega-expert-consolidation\|Mega-Expert Consolidation]]. | Existe evidência verificável e atualizada. | Fusão sem gate, ou benchmark contra a média aprova mediocridade para fusão. | Registre link para artefato, owner e data. |
 | Propagação de frota | Erros capturados de uma instância viram patches (skill/policy/eval) distribuídos no substrato compartilhado, com confidence gate antes do deploy em frota, conforme [[docs/canonical/shared-fleet-learning\|Shared Fleet Learning]]. | Existe evidência verificável e atualizada. | Cada falha vira artefato por contexto; a frota repete o mesmo erro por instância. | Registre link para artefato, owner e data. |
 | Retorno de resolução ao agente | Escalonamento humano tem caminho de volta: a resolução retorna ao agente que perguntou (que continua a tarefa) e é logada como training data, conforme [[docs/canonical/closed-loop-help-api\|Closed-Loop Help API]]. | Existe evidência verificável e atualizada. | Escalonamento é terminal: humano toma o caso e o bloqueio reaparece amanhã. | Registre link para artefato, owner e data. |
+| Superfície única de tools | Quando o produto expõe UI, CLI e API pública, as três superfícies são renderizações da mesma tool authority — e agentes internos consomem exatamente as mesmas tools que clientes externos, sem backdoor exclusivo de agente, conforme [[docs/canonical/unified-tool-surface-flywheel\|Unified Tool Surface Flywheel]]. | Existe evidência verificável e atualizada. | Agente interno usa caminho paralelo próprio; bug de tool do agente não ensina nada sobre a API pública e cada superfície falha separadamente. | Registre link para artefato, owner e data. |
 
 ### Evidências que um revisor deve pedir
 

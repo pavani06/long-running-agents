@@ -857,6 +857,12 @@ production_sampled_eval_corpus:
     - source_trace_id
 ```
 
+#### 🔧 Shadow Test vs. Shadow Build: Mesmo Prefixo, Mecânicas Diferentes
+
+Este Passo 3 configura **shadow test de comparação** — clonar tráfego para medir o delta entre baseline e candidate antes de uma mudança no harness. O **shadow build** é outra mecânica: um alvo de deploy separado para artefatos *construídos por agentes* (data models, outputs de build), que nascem no shadow e nunca diretamente no serving. A distinção arquitetural que o habilita é a separação entre **serving compute** (o plano que atende produção) e **development compute** (o plano que roda builds e experimentos de agente): experiências não podem derrubar produção *por construção* — não há path de execução do dev compute para o serving — em vez de *por política*, porque revisão post-hoc de cada build não escala com volume de builds agent-driven e vira gargalo de autonomia.
+
+O contrato de autonomia inverte a sequência tradicional: guardrails definidos **up front** (o que o agente pode construir, onde deploya, com que orçamento) substituem revisão depois — a autonomia de build é concedida pelos guardrails, não concedida e depois auditada. O ciclo fecha com promotion path explícito: o artefato shadow é promovido a serving por gates de eval ou humanos, nunca por acesso direto ([[docs/canonical/shadow-builds-separated-compute|Shadow Builds on Separated Compute]]). Para artefatos de código, o repo já opera a versão análoga: o worktree isolado por issue é o shadow target de execução no plano de development.
+
 ### 🔧 Passo 4: Rode Testes de Regressão Antes do Canary
 
 ```bash
@@ -1308,6 +1314,8 @@ Exemplo concreto:
   "evidence": ["incident/support-2026-05-rafael", "trace/trc_rafael_015"]
 }
 ```
+
+O flywheel converte falha em caso de eval — feedback que melhora artefatos externos ao agente (a suite, não o agente). A composição-alvo na direção oposta é o **Self-Iterating Agent Loop**: o feedback retorna ao substrato de dados sobre o qual os próprios agentes raciocinam, e a melhoria deixa de ser só do harness/evals para incluir iterações do agente em si (prompts, skills, tools e data models derivados do histórico). Os elos — captura (este flywheel), observação (trace), propagação (fleet learning) — já existem como padrões do programa; o que falta é o plano de dados único que os une, com confidence gate impedindo que a auto-iteração amplifique drift ([[docs/canonical/self-iterating-agent-loop|Self-Iterating Agent Loop]]).
 
 ### ✅ Passo 4: Observe por 14 Dias
 
