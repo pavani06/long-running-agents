@@ -10,15 +10,18 @@
     "lint:fix": "eslint src/ tests/ scripts/ --fix",
     "test:unit": "node --experimental-test-module-mocks --test tests/unit/*.test.js",
     "test:integration": "node --test tests/integration/*.test.js",
-    "validate:obsidian": "npx tsx scripts/validate-obsidian.ts"
+    "validate:obsidian": "npx tsx scripts/validate-obsidian.ts",
+    "frontmatter": "tsx scripts/frontmatter.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@pavani/obsidian-eval": "^0.2.1",
+    "@types/node": "^20.19.43",
     "eslint": "^10.2.0",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-unicorn": "^64.0.0",
     "globals": "^17.5.0",
-    "tsx": "^4.22.4"
+    "tsx": "^4.22.4",
+    "yaml": "^2.9.0"
   }
 }
