@@ -62,8 +62,8 @@ Grafo: dentro de um mesmo arquivo as edições são seriais (evita conflito de e
 
 ## Execução
 
-- [ ] Iniciada: 2026-08-31
-- [ ] Onda 1: _
-- [ ] Onda 2: _
-- [ ] Re-verificação: _
+- [x] Iniciada: 2026-08-31
+- [x] Onda 1: commits RK 51d37f0 (182-184,192) + LRA 78eff65 (185-191, plan)
+- [x] Onda 2: LRA b8d304e (193) + RK 5b4b2dd (194) + LRA 9b1accd (fixup REC-008)
+- [x] Re-verificação: 13/13 REC PASS (checks determinísticos)
 - [ ] Epic fechado: _
