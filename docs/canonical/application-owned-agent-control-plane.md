@@ -2,7 +2,7 @@
 title: 'Application-Owned Agent Control Plane'
 type: canonical
 aliases: ["owned control plane", "plano de controle owned", "agent control plane", "control plane"]
-tags: ["agentes-orquestracao", "harness", "arquitetura"]
+tags: ["agentes-orquestracao", "harness", "arquitetura", "agent-loop"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

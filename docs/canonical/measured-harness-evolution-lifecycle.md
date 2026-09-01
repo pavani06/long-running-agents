@@ -2,7 +2,7 @@
 title: 'Measured Harness Evolution Lifecycle'
 type: canonical
 aliases: ["harness lifecycle", "ciclo vida harness", "harness evolution", "BUILD STABILIZE SIMPLIFY REMOVE"]
-tags: ["agentes-orquestracao", "harness", "governanca"]
+tags: ["agentes-orquestracao", "harness", "governanca", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/pain-signal-eval-progression-gate|Pain-Signal Eval Progression Gate]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

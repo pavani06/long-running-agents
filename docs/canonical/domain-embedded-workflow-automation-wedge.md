@@ -1,7 +1,7 @@
 ---
 title: "Domain-Embedded Workflow Automation Wedge"
 type: canonical
-tags: ["agentes-orquestracao", "evals", "curriculo-conteudo"]
+tags: ["agentes-orquestracao", "evals", "curriculo-conteudo", "agentic-coding"]
 aliases: ["automation wedge", "embedded workflow discovery", "domain workflow wedge"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/production-grounded-eval-sampling|Production-Grounded Eval Sampling]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|KODA Customer Journey Flows]]"]

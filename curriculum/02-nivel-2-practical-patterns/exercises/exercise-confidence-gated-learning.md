@@ -3,7 +3,7 @@ title: "Exercicio: Confidence-Gated Continual Learning com Deploy Automatico"
 type: exercise
 level: "N2"
 aliases: ["confidence-gated learning", "aprendizado continuo com confianca", "ghostwriter deploy gate", "fyi vs approval", "auto-deploy fixes", "continual improvement pipeline"]
-tags: [curriculo-conteudo, nivel-2, exercicio, harness-engineering, evals, governanca, continual-learning, confidence-scoring, ghostwriter, auto-deploy, fyi-approval]
+tags: ["curriculo-conteudo", "nivel-2", "harness-engineering", "evals", "governanca", "agent-loop", "production"]
 duration: "60-75 min"
 relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-patterns|Sierra Patterns]]", "[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-classification|Classification]]", "[[docs/canonical/garbage-collection-day-meta-loop|GC Day Meta-Loop]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]"]
 last_updated: 2026-06-26

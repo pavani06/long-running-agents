@@ -3,7 +3,7 @@ title: "Exercício 7: Consolidar Especialistas em um Mega-Expert"
 type: curriculum-exercise
 nivel: 3
 aliases: ["mega-expert consolidation", "mega expert", "fusão de especialistas", "superhuman benchmark", "deflection bot", "specialist fragmentation", "fragmentação de especialistas"]
-tags: [curriculo-conteudo, nivel-3, exercicio, mega-expert, specialist-fusion, superhuman-benchmark, benchmark-gate, deflection-bot, customer-experience, no-regression, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "agentes-orquestracao", "evals", "gate-design", "multi-agent", "mhc-backend", "production", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-analysis|Kavak Playbook Analysis]]", "[[docs/analysis/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai/2026-08-30-kavak-s-playbook-for-rebuilding-a-company-around-ai-classification|Kavak Playbook Classification]]", "[[docs/canonical/persona-based-documentation|Persona-Based Documentation]]", "[[docs/canonical/goal-atomicity-split|Goal Atomicity Split]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-05-persona-based-documentation|Exercício 5: Persona-Based Documentation]]", "[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]"]
 last_updated: 2026-08-30
 ---

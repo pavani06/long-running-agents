@@ -1,7 +1,7 @@
 ---
 title: "Persona-Based Documentation"
 type: canonical
-tags: ["agentes-orquestracao", "harness", "governanca"]
+tags: ["agentes-orquestracao", "harness", "governanca", "evals"]
 aliases: ["persona-based NFRs", "persona documentation", "role-based documentation", "specialty-owner documents", "persona-specific NFR documents", "multi-persona documentation"]
 last_updated: 2026-06-11
 relates-to: ["[[AGENTS|AGENTS.md]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/qa-to-backlog-feedback-loop|QA-to-Backlog Feedback Loop]]", "[[docs/canonical/garbage-collection-day-meta-loop|Garbage Collection Day Meta-Loop]]", "[[.opencode/agents/hop-orchestrator-rezek.md|orchestrator agent]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-analysis|Harness Engineering Analysis]]", "[[docs/analysis/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent/2026-06-07-harness-engineering-how-to-build-software-when-humans-steer-agent-classification|Harness Engineering Classification]]"]

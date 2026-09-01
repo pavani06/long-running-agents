@@ -3,7 +3,7 @@ title: "Exercício 5: Implementar Documentação Baseada em Personas"
 type: curriculum-exercise
 nivel: 3
 aliases: ["persona-based documentation", "NFR por persona", "documentação persona", "revisor persona", "rubrica especializada", "multiplicação de conhecimento"]
-tags: [curriculo-conteudo, nivel-3, exercicio, governanca, persona-based-docs, nfr-documents, reviewer-agents, knowledge-multiplication, domain-ownership, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "governanca", "documentation-publishing", "code-review", "knowledge-management", "stack-tooling"]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[AGENTS|AGENTS.md]]"]
 last_updated: 2026-06-11
 ---

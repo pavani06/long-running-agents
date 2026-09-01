@@ -1,7 +1,7 @@
 ---
 title: "Agent-to-Agent Review Comment Protocol"
 type: canonical
-tags: ["code-review", "agentes-orquestracao", "agentic-coding"]
+tags: ["code-review", "agentes-orquestracao", "agentic-coding", "evals"]
 Status: Active
 Source: "AI Engineer talk — Itamar Friedman, Qodo (The Last Human Code Review: Building Trust in AI-Generated Code)"
 Classification: "Partial Coverage (P2, Medium integration value)"

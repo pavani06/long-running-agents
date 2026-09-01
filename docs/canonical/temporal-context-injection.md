@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "agentic-coding"]
 aliases: ["temporal context timing", "phase-aware context injection", "just-in-time context", "compaction coherence"]
 relates-to: ["[[docs/canonical/tiered-context-storage|Tiered Context Storage with Promotion/Demotion]]", "[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/deliberate-forgetting|Deliberate Forgetting]]", "[[docs/canonical/resolver-based-context-progressive-disclosure|Resolver-Based Context Progressive Disclosure]]"]
 ---

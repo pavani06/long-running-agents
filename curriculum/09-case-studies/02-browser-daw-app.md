@@ -2,7 +2,7 @@
 title: "Estudo de Caso 2: Browser DAW (Digital Audio Workstation)"
 type: curriculum-case-study
 aliases: ["browser DAW", "audio app", "caso musica", "state files audio"]
-tags: [curriculo-conteudo, caso-de-estudo, persistencia-de-estado, coordenacao-por-arquivos, audio-no-browser, operacao-continua, agentes-colaborativos]
+tags: ["curriculo-conteudo", "state", "multi-agent", "portal-web", "production"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---

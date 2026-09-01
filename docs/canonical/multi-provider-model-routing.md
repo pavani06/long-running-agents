@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["agentes-orquestracao", "evals"]
+tags: ["agentes-orquestracao", "evals", "agentic-coding"]
 aliases: ["multi-provider routing", "provider fallback", "capacity resilience routing", "provider-agnostic task dispatch"]
 relates-to: ["[[docs/canonical/model-switching-architecture-enterprise-eval-gate|Model-Switching Architecture Enterprise Eval Gate]]", "[[docs/canonical/neutral-selection-layer|Neutral Selection Layer]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/task-routed-model-tiering|Task-Routed Model Tiering]]"]
 ---

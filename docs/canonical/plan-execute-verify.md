@@ -2,7 +2,7 @@
 title: "Plan-Execute-Verify"
 type: canonical
 aliases: ["planejar executar verificar", "separation of concerns", "separação de concerns", "planning execution separation"]
-tags: ["agentes-orquestracao", "12-factor-agents"]
+tags: ["agentes-orquestracao", "12-factor-agents", "context-engineering", "verification", "agentic-coding", "evals"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[curriculum/01-nivel-1-fundamentals/01-why-agents-lose-plot|Why Agents Lose Focus]]"]
 sources: ["[[docs/analysis/2026-06-10-agent-focus-problems/2026-06-10-agent-focus-problems-analysis|Knowledge Extraction]]"]

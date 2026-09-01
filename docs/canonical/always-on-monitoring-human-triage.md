@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["evals", "agentes-orquestracao", "production"]
+tags: ["evals", "agentes-orquestracao", "production", "agentic-coding"]
 aliases: ["always-on monitoring", "human triage monitoring", "production quality monitoring", "monitor-driven triage", "compression ratio monitoring"]
 relates-to: ["[[docs/canonical/eval-dashboard-primary-detection-surface|Eval Dashboard Primary Detection Surface]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]", "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/business-outcome-first-eval-pipeline|Business Outcome First Eval Pipeline]]"]
 ---

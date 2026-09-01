@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["evals", "agentes-orquestracao"]
+tags: ["evals", "agentes-orquestracao", "agentic-coding"]
 aliases: ["model-switch eval hardening", "discovery-driven eval improvement", "provider-agnostic eval hardening", "switch-to-discover-eval-gaps"]
 relates-to: ["[[docs/canonical/model-switching-architecture-enterprise-eval-gate|Model-Switching Architecture Enterprise Eval Gate]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/neutral-selection-layer|Neutral Selection Layer]]", "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/living-eval-dataset|Living Eval Dataset]]"]
 ---

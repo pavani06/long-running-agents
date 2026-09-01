@@ -2,7 +2,7 @@
 title: "Explicit Token Budget Ledger"
 type: canonical
 aliases: ["registro de orcamento de tokens", "token ledger", "budget tracking"]
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "agent-loop", "context-management"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[curriculum/01-nivel-1-fundamentals/02-token-budgeting|Token Budgeting]]"]
 sources: ["[[docs/analysis/2026-06-10-token-budgeting/2026-06-10-token-budgeting-analysis|Token Budgeting Analysis]]"]

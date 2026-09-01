@@ -1,7 +1,7 @@
 ---
 title: "Grill-Me Alignment Interview"
 type: canonical
-tags: ["agentes-orquestracao", "context-engineering", "governanca"]
+tags: ["agentes-orquestracao", "context-engineering", "governanca", "agents"]
 aliases: ["grill-me interview", "alignment interview", "one-question-at-a-time interview", "grilling session", "pre-planning interview"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]"]

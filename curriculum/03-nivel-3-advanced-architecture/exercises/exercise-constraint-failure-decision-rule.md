@@ -3,7 +3,7 @@ title: "Exercicio: Classificar Requisitos com a Constraint-Failure Decision Rule
 type: curriculum-exercise
 nivel: 3
 aliases: ["constraint failure decision rule", "builder code change rule", "constraint vs failure condition", "builder guidance validator check", "requirement classification heuristic"]
-tags: [curriculo-conteudo, nivel-3, exercicio, agentes-orquestracao, spec-driven-development, constraint-engineering, decision-discipline, harness-engineering, evals, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "agentes-orquestracao", "spec-driven-development", "gate-design", "decision-discipline", "harness-engineering", "evals", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns|Anatomy of Intent Patterns]]", "[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]"]
 last_updated: 2026-06-14
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Operator-Channel Authority"
 type: canonical
-tags: ["governanca", "multi-agent", "permissions", "cross-session", "escalation"]
+tags: ["governanca", "multi-agent", "permissions", "cross-session", "escalation", "agentes-orquestracao"]
 aliases: ["relay rule", "regra do relé", "peer-relayed authorization", "permission laundering", "operator channel", "authority provenance", "cross-session permission laundering"]
 last_updated: 2026-08-13
 relates-to: ["[[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/cross-context-knowledge-siloing|Cross-Context Knowledge Siloing]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/institutional-safety-valve-escalation-cycle|Institutional Safety-Valve Escalation Cycle]]", "[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]"]

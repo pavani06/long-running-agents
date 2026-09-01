@@ -2,7 +2,7 @@
 title: "Serializable Pause/Resume State"
 type: canonical
 aliases: ["pause resume", "serializable state"]
-tags: ["agent-loop", "12-factor-agents"]
+tags: ["agent-loop", "12-factor-agents", "context-engineering", "state"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt During Context Reduction]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[curriculum/03-nivel-3-advanced-architecture/02-state-persistence|State Persistence Lesson]]"]
 sources: []

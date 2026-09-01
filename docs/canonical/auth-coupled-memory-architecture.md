@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["agentes-orquestracao", "governanca"]
+tags: ["agentes-orquestracao", "governanca", "context-engineering"]
 aliases: ["auth-coupled memory", "identity-gated memory", "memory authentication coupling", "authenticated memory retrieval"]
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/three-tier-memory-persistence|Three-Tier Memory Persistence]]", "[[docs/canonical/regulated-data-boundary|Regulated Data Boundary]]"]
 ---

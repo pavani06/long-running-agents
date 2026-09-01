@@ -3,7 +3,7 @@ title: "Harness Evolution: Quando Remover é Tão Importante Quanto Construir"
 type: curriculum-lesson
 nivel: 3
 aliases: ["evolução harness", "harness lifecycle", "maturidade harness", "remoção componentes"]
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, evolucao-de-harness, simplificacao-arquitetural, remocao-de-componentes, shadow-testing, canary-deploy, feature-flags, roi-arquitetural, adrs, invariantes-arquiteturais, corpus-de-avaliacao]
+tags: ["curriculo-conteudo", "nivel-3", "arquitetura-avancada", "harness", "arquitetura", "shadow-review", "canary-test", "stack-tooling", "decision-discipline", "evals"]
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/canonical/trial-retention-attribution-split|Trial-Retention Attribution Split]]", "[[docs/canonical/owner-led-activation-blitz|Owner-Led Activation Blitz]]", "[[docs/canonical/agent-value-maturity-ladder|Agent Value Maturity Ladder]]", "[[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]]"]
 last_updated: 2026-06-10
 ---

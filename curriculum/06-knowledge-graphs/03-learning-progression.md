@@ -2,7 +2,7 @@
 title: "Learning Progression: Do Primeiro Conceito ao KODA em Produção"
 type: curriculum-knowledge-graph
 aliases: ["progressao aprendizado", "grafo conhecimento", "diagrama Mermaid", "roteiro curriculum"]
-tags: [curriculo-conteudo, knowledge-graph, mermaid, trilha-de-aprendizagem, progressao-pedagogica, pre-requisitos, roteiros-de-estudo, mentoria-tecnica, prontidao-operacional, sequenciamento-curricular, avaliacao-de-aprendizagem, onboarding-tecnico]
+tags: ["curriculo-conteudo", "knowledge-management", "stack-tooling", "production"]
 relates-to: ["[[curriculum/MASTER_PLAN|Curriculum Master Plan]]", "[[curriculum/INDEX|Curriculum Index]]"]
 last_updated: 2026-06-10
 ---

@@ -3,7 +3,7 @@ title: "Exercicio: Decompor Metas Multiplas com Goal Atomicity Split"
 type: curriculum-exercise
 nivel: 2
 aliases: ["goal atomicity split", "atomic goal decomposition", "divisao atomica metas", "one goal one sentence", "conjunction split", "multi-goal intent"]
-tags: [curriculo-conteudo, nivel-2, exercicio, agentes-orquestracao, spec-driven-development, decision-discipline, intent-structure, harness-engineering, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-2", "agentes-orquestracao", "spec-driven-development", "decision-discipline", "harness-engineering", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-patterns|Anatomy of Intent Patterns]]", "[[docs/analysis/2026-06-11-the-anatomy-of-intent-ice-in-idsd/2026-06-11-the-anatomy-of-intent-ice-in-idsd-classification|Anatomy of Intent Classification]]", "[[docs/canonical/vertical-slice-issue-generation|Vertical Slice Issue Generation]]", "[[docs/canonical/intent-five-part-primitive|Intent as Five-Part Primitive]]"]
 last_updated: 2026-06-14
 ---

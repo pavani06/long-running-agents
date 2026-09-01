@@ -2,7 +2,7 @@
 title: "Generator/Evaluator Pattern: Por Que Duas Mentes Julgam Melhor Que Uma"
 type: curriculum-core-concept
 aliases: ["G&E pattern", "gerador avaliador", "padrao avaliacao", "feedback loop"]
-tags: [curriculo-conteudo, conceitos-core, generator-evaluator, independencia-de-avaliacao, revisao-critica, reducao-de-bajulacao, correcao-iterativa, loop-de-feedback, qualidade-de-saida, seguranca-de-resposta, auditabilidade]
+tags: ["curriculo-conteudo", "evals", "code-review", "verification", "gate-design", "permissions", "governanca"]
 relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---

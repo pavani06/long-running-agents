@@ -1,7 +1,7 @@
 ---
 title: "Human/AFK Task Routing Gate"
 type: canonical
-tags: ["agentes-orquestracao", "governanca"]
+tags: ["agentes-orquestracao", "governanca", "evals", "agents"]
 aliases: ["AFK routing", "human-in-loop gate", "task classifier", "AFK-ready gate", "human/agent routing", "routing gate"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/shared-design-concept-handoff|Shared Design Concept Handoff]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/generator-evaluator|Generator-Evaluator]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-patterns|Matt Pocock Patterns]]", "[[docs/analysis/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock/2026-06-07-full-walkthrough-workflow-for-ai-coding-matt-pocock-classification|Matt Pocock Classification]]", "[[docs/canonical/operator-channel-authority|Operator-Channel Authority]]"]

@@ -2,7 +2,7 @@
 title: "Contextual Severity Calibration"
 type: canonical
 aliases: ["severity calibration", "risk-based review", "module risk profile", "contextual severity", "risk-adjusted review", "risk-profile"]
-tags: ["evals", "agentic-coding", "governanca", "harness-engineering"]
+tags: ["evals", "agentic-coding", "governanca", "harness-engineering", "agentes-orquestracao"]
 last_updated: 2026-06-15
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/architecture-as-agent-affordance|Architecture as Agent Affordance]]", "[[docs/canonical/human-afk-task-routing-gate|Human-AFK Task Routing Gate]]", "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]", "[[docs/canonical/shadow-review-pipeline|Shadow Review Pipeline]]", "[[docs/canonical/pre-commit-ai-review-gate|Pre-Commit AI Review Gate]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]"]
 sources: ["[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-analysis|Canary Test Analysis]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-patterns|Canary Test Patterns]]", "[[docs/analysis/2026-06-15-canary-test/2026-06-15-canary-test-classification|Canary Test Classification]]"]

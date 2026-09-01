@@ -2,7 +2,7 @@
 title: "Agent-Per-Customer Outcome Ownership"
 type: canonical
 aliases: ["agent per customer", "customer-scoped agent", "per-customer persistent agent", "outcome ownership by customer agent"]
-tags: ["agentes-orquestracao", "context-engineering", "production"]
+tags: ["agentes-orquestracao", "context-engineering", "production", "agentic-coding", "agent-loop"]
 last_updated: 2026-08-30
 relates-to:
   - "[[docs/canonical/auth-coupled-memory-architecture|Auth-Coupled Memory Architecture]]"

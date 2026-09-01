@@ -1,7 +1,7 @@
 ---
 title: "Accidental Brake Replacement"
 type: canonical
-tags: ["governanca", "decision-discipline", "agentes-orquestracao", "harness-engineering"]
+tags: ["governanca", "decision-discipline", "agentes-orquestracao", "harness-engineering", "evals"]
 aliases: ["accidental brake", "bureaucracy replacement", "bureaucratic brake", "intentional governance gates", "brake migration"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/value-gated-agent-control-loop|Value-Gated Agent Control Loop]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis|The Trap SDD Analysis]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns|SDD Trap Patterns]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification|SDD Trap Classification]]"]

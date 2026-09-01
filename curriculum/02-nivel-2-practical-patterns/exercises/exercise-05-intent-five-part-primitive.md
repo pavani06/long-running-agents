@@ -3,7 +3,7 @@ title: "Exercicio 5: Formalizar Intent como Primitiva de Cinco Partes"
 type: curriculum-exercise
 nivel: 2
 aliases: ["intent five-part primitive", "intent completeness gate", "intent estruturado", "five-field intent", "primitive de intencao", "gate de completude de intent"]
-tags: [curriculo-conteudo, nivel-2, exercicio, agentes-orquestracao, spec-driven-development, intent-structure, constraint-engineering, harness-engineering, decision-discipline, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-2", "agentes-orquestracao", "spec-driven-development", "gate-design", "harness-engineering", "decision-discipline", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-patterns|IDSD Method Patterns]]", "[[docs/analysis/2026-06-12-idsd-method/2026-06-12-idsd-method-classification|IDSD Method Classification]]", "[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts]]"]
 last_updated: 2026-06-12
 ---

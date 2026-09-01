@@ -3,7 +3,7 @@ title: "Exercicio 4: Implementar Error Context Hygiene no Loop de Ferramentas"
 type: curriculum-exercise
 nivel: 2
 aliases: ["error hygiene", "higiene contexto erro", "context pollution", "tool loop retry"]
-tags: [curriculo-conteudo, nivel-2, exercicio, error-context-hygiene, context-pollution, error-summarization, tool-loop, retry-with-feedback, clear-on-success, token-economy, stack-trace-filtering, pinecone-fallback, python]
+tags: ["curriculo-conteudo", "nivel-2", "error-handling", "context-management", "agent-tooling", "token-budgeting", "tracing", "stack-tooling"]
 relates-to: ["[[docs/canonical/error-context-hygiene|Error Context Hygiene]]"]
 last_updated: 2026-06-10
 ---

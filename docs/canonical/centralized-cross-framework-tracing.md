@@ -2,7 +2,7 @@
 title: "Centralized Cross-Framework Tracing"
 type: canonical
 aliases: ["cross-framework tracing", "unified trace layer", "multi-framework tracing", "centralized trace"]
-tags: ["tracing", "observability", "production"]
+tags: ["tracing", "observability", "production", "context-engineering"]
 last_updated: 2026-06-26
 relates-to: ["[[docs/canonical/trace-instrumentation|Trace Instrumentation]]", "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/behavioral-eval-path-analysis|Behavioral Eval Path Analysis]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/neutral-selection-layer|Neutral Selection Layer]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]"]
 sources: []

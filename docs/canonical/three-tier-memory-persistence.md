@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["agentes-orquestracao", "context-engineering"]
+tags: ["agentes-orquestracao", "context-engineering", "agentic-coding"]
 aliases: ["three-tier memory", "memory authority gradient", "explicit builder implicit memory", "memory persistence tiers"]
 relates-to: ["[[docs/canonical/tiered-context-storage|Tiered Context Storage with Promotion/Demotion]]", "[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/auth-coupled-memory-architecture|Auth-Coupled Memory Architecture]]"]
 ---

@@ -2,7 +2,7 @@
 title: "Closed-Loop Help API (Humans Serve Agents)"
 type: canonical
 aliases: ["help API", "humans serve agents", "closed-loop escalation", "agent help endpoint"]
-tags: ["agentes-orquestracao", "production", "harness-engineering"]
+tags: ["agentes-orquestracao", "production", "harness-engineering", "multi-agent"]
 last_updated: 2026-08-30
 relates-to:
   - "[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]"

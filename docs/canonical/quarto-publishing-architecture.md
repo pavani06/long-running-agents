@@ -1,7 +1,7 @@
 ---
 title: "Quarto Publishing Architecture"
 type: canonical
-tags: ["arquitetura", "stack-tooling", "spec-driven-development", "curriculo-conteudo"]
+tags: ["arquitetura", "stack-tooling", "spec-driven-development", "curriculo-conteudo", "harness", "context-engineering", "evals"]
 aliases: ["publishing architecture", "quarto architecture patterns", "publishing contract", "source bridge", "multi-format fan-out", "arquitetura de publicacao"]
 last_updated: 2026-06-14
 relates-to: ["[[AGENTS|AGENTS.md]]", "[[docs/canonical/persona-based-documentation|Persona-Based Documentation]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill Resolver Pipeline]]", "[[docs/canonical/quarto-authoring-workflow|Quarto Authoring Workflow]]", "[[docs/canonical/quarto-content-structure|Quarto Content Structure]]", "[[docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification|Quarto Classification]]"]

@@ -2,7 +2,7 @@
 title: "Deterministic Tool Dispatch"
 type: canonical
 aliases: ["tool dispatch", "deterministic tools"]
-tags: ["agent-loop", "12-factor-agents"]
+tags: ["agent-loop", "12-factor-agents", "multi-agent", "gate-design"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[curriculum/02-nivel-2-practical-patterns/02-sprint-contracts|Sprint Contracts Lesson]]", "[[docs/canonical/structural-guarantee-over-compliance|Structural Guarantee over Compliance]]"]
 sources: []

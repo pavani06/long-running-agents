@@ -2,7 +2,7 @@
 title: "Agent-Specific Data Freshness Pipeline"
 type: canonical
 aliases: ["data freshness pipeline", "agent data pipeline", "freshness guarantees", "staleness monitoring"]
-tags: ["production", "knowledge-management", "context-engineering", "harness-engineering"]
+tags: ["production", "knowledge-management", "context-engineering", "harness-engineering", "observability", "evals"]
 last_updated: 2026-06-26
 relates-to: ["[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/trace-instrumentation|Trace Instrumentation]]", "[[docs/canonical/neutral-selection-layer|Neutral Selection Layer]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]"]
 ---

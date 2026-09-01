@@ -3,7 +3,7 @@ title: "Exercício 12: Semantic-Rule-Gated Auto Approve/Block — Decidir Merge 
 type: exercise
 level: 3
 aliases: ["semantic rule gated auto approve block", "semantic-rule-gated auto approve", "auto approve auto block por regras semânticas", "rule-gated merge decision", "rule ledger", "ledger de regras semânticas", "widening gradual de automação", "auditable auto approve"]
-tags: [curriculo-conteudo, agentes-orquestracao, code-review, governanca, evals, context-engineering, production, semantic-rule-gating, auto-approve-block, rule-ledger, python, dataclass]
+tags: ["curriculo-conteudo", "agentes-orquestracao", "code-review", "governanca", "evals", "context-engineering", "production", "gate-design", "stack-tooling"]
 relates-to: ["[[docs/canonical/semantic-rule-gated-auto-approve-block|Semantic-Rule-Gated Auto Approve/Block]]", "[[docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-patterns|Source Patterns]]", "[[docs/analysis/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co/2026-08-31-the-last-human-code-review-building-trust-in-ai-generated-co-classification|Source Classification]]", "[[docs/canonical/evals-as-brakes|Evals-as-Brakes]]", "[[docs/canonical/pr-gated-eval-enforcement|PR-Gated Eval Enforcement]]", "[[docs/canonical/shadow-review-pipeline|Shadow Review Pipeline]]", "[[docs/canonical/human-review-staged-workflow-automation|Human-Review Staged Workflow Automation]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-11-software-graph-review-substrate|Exercício 11: Software Graph Review Substrate]]"]
 duration: "90-120 min"
 ---

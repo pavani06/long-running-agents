@@ -3,7 +3,7 @@ title: "Coordenacao Baseada em Arquivos para Agentes Confiaveis"
 type: curriculum-lesson
 nivel: 3
 aliases: ["coordenação arquivos", "file coordination", "handoff arquivos", "lock files"]
-tags: [curriculo-conteudo, nivel-3, arquitetura-avancada, coordenacao-baseada-em-arquivos, arquivos-de-lock, arquivos-de-status, protocolo-json, controle-de-concorrencia, condicao-de-corrida, manifest-auditavel, idempotencia, escrita-atomica, rastreamento-auditavel]
+tags: ["curriculo-conteudo", "nivel-3", "arquitetura-avancada", "multi-agent", "state", "stack-tooling", "governanca", "error-handling"]
 relates-to: ["[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]", "[[curriculum/05-core-concepts/05-state-persistence|State Persistence Concept]]"]
 last_updated: 2026-06-10
 ---

@@ -3,7 +3,7 @@ title: "Exercício 10: Agent Value Maturity Ladder — Auditar o Roadmap Contra 
 type: curriculum-exercise
 nivel: 3
 aliases: ["agent value maturity ladder", "value maturity ladder", "escada de maturidade de valor", "escada de valor", "switching cost ladder", "habituation listener", "wow collapse", "colapso do wow", "hiper-personalização"]
-tags: [curriculo-conteudo, nivel-3, exercicio, evals, production, value-maturity-ladder, switching-cost, habituation, wow-collapse, roadmap-audit, staged-capability, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "evals", "production", "analise-estrutural", "governanca", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-analysis|GTM AI Agents Analysis]]", "[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-classification|GTM AI Agents Classification]]", "[[docs/analysis/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users/2026-08-30-gtm-ai-agents-lessons-from-deploying-to-6000-users-patterns|GTM AI Agents Patterns]]", "[[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/eval-to-production-correlation-tracking|Eval-to-Production Correlation Tracking]]", "[[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution]]", "[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-trial-retention-attribution-split|Exercício 9: Trial-Retention Attribution Split]]"]
 last_updated: 2026-08-30
 ---

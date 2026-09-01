@@ -1,7 +1,7 @@
 ---
 title: "Tiered Context Storage with Promotion/Demotion"
 type: canonical
-tags: ["context-engineering", "agentes-orquestracao"]
+tags: ["context-engineering", "agentes-orquestracao", "agentic-coding", "evals"]
 aliases: ["hot warm cold storage", "context tiering", "tiered memory storage", "promotion demotion engine"]
 last_updated: 2026-06-18
 relates-to: ["[[docs/canonical/head-tail-context-truncation|Head-Tail Context Truncation with Recoverable Middle]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/hybrid-context-stack|Hybrid Context Stack]]", "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]"]

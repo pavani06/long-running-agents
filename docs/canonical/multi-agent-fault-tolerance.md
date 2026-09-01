@@ -2,7 +2,7 @@
 title: "Multi-Agent Fault Tolerance"
 type: canonical
 aliases: ["agent fault tolerance", "Saga pattern for agents", "circuit breaker for agents", "multi-agent resilience"]
-tags: ["agentes-orquestracao", "error-handling", "production", "harness-engineering"]
+tags: ["agentes-orquestracao", "error-handling", "production", "harness-engineering", "agent-loop"]
 last_updated: 2026-06-26
 relates-to: ["[[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]]", "[[docs/canonical/error-context-hygiene|Error Context Hygiene]]", "[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/multi-model-evaluation-council|Multi-Model Evaluation Council]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]"]
 ---

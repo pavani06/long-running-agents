@@ -3,7 +3,7 @@ title: "Solução de Referência — Exercício 3: Plano de Evolução do Harnes
 type: curriculum-solution
 nivel: 3
 aliases: ["solução evolução harness", "plano simplificação", "feature flags harness", "análise ROI"]
-tags: [curriculo-conteudo, nivel-3, solucao, harness-evolution, architecture-review, roi-analysis, component-removal, build-stabilize-simplify-remove, changelog-driven-decisions, cost-optimization, implementacao-referencia]
+tags: ["curriculo-conteudo", "nivel-3", "harness", "code-review", "analise-estrutural", "arquitetura", "decision-discipline", "production"]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-03|Exercise 03]]"]
 last_updated: 2026-06-10
 ---

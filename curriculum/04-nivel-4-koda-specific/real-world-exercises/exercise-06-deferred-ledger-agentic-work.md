@@ -3,7 +3,7 @@ title: "Exercicio 6: Construir o Deferred Ledger de Divida Agente do KODA"
 type: curriculum-exercise
 nivel: 4
 aliases: ["deferred ledger", "divida agentica", "skill debt KODA", "dependence debt", "carry debt", "ledger de divida"]
-tags: [curriculo-conteudo, nivel-4, exercicio, debt-classification, risk-management, token-economics, skill-debt, dependence-debt, carry-debt, governance, financial-modeling]
+tags: ["curriculo-conteudo", "arquitetura", "governanca", "token-budgeting", "analise-estrutural"]
 relates-to: ["[[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]]", "[[docs/canonical/carry-debt-sunset-gate|Carry Debt Sunset Gate]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/explicit-token-budget-ledger|Explicit Token Budget Ledger]]", "[[.opencode/skills/deferred-ledger-agentic-work/SKILL.md|Deferred Ledger Skill]]", "[[curriculum/04-nivel-4-koda-specific/05-harness-improvements|Harness Improvements]]"]
 last_updated: 2026-06-11
 ---

@@ -2,7 +2,7 @@
 title: "KODA Feature Dependencies: O Mapa de Como Cada Feature se Conecta aos Conceitos Core"
 type: curriculum-knowledge-graph
 aliases: ["dependencias KODA", "grafo conhecimento", "diagrama Mermaid", "impacto features"]
-tags: [curriculo-conteudo, knowledge-graph, mermaid, dependencias-entre-features, mapeamento-de-capacidades, analise-de-impacto, risco-arquitetural, priorizacao-tecnica, saude-de-dependencias, regressao-cruzada, coordenacao-entre-features, confiabilidade-operacional]
+tags: ["curriculo-conteudo", "knowledge-management", "stack-tooling", "arquitetura", "analise-estrutural", "governanca", "monitoramento", "testes-qa", "multi-agent", "error-handling"]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/01-koda-architecture|KODA Architecture]]", "[[curriculum/04-nivel-4-koda-specific/02-customer-journey-flows|Customer Journey Flows]]"]
 last_updated: 2026-06-10
 ---

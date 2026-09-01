@@ -2,7 +2,7 @@
 title: "Grafos de State Persistence"
 type: curriculum-knowledge-graph
 aliases: ["grafo persistencia", "persistencia estado", "diagrama Mermaid", "checkpoint recovery"]
-tags: [curriculo-conteudo, knowledge-graph, mermaid]
+tags: ["curriculo-conteudo", "knowledge-management", "stack-tooling"]
 relates-to: ["[[curriculum/05-core-concepts/05-state-persistence|State Persistence]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]"]
 last_updated: 2026-06-10
 ---

@@ -2,7 +2,7 @@
 title: "Architecture Decision Record (ADR) Template"
 type: curriculum-template
 aliases: ["ADR template", "modelo ADR", "decisao arquitetura", "registro decisao"]
-tags: [curriculo-conteudo, template, decisoes-arquiteturais, registro-de-decisao, documentacao-tecnica, governanca-arquitetural, padrao-de-documentacao]
+tags: ["curriculo-conteudo", "decision-discipline", "documentation-publishing", "governanca"]
 relates-to: ["[[docs/system-of-record|System of Record]]"]
 last_updated: 2026-06-10
 ---

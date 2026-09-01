@@ -3,7 +3,7 @@ title: "Solução do Exercício 2: Implement Sprint Contracts com Generator/Eval
 type: curriculum-solution
 nivel: 2
 aliases: ["solução checkout", "order validator", "pipeline checkout", "contrato pedido"]
-tags: [curriculo-conteudo, nivel-2, solucao, generator-evaluator-pattern, sprint-contract, pipeline-orchestration, retry-loop, order-checkout, double-discount-prevention, catalog-validation, python, dataclass, implementacao-referencia]
+tags: ["curriculo-conteudo", "nivel-2", "evals", "spec-driven-development", "multi-agent", "error-handling", "mhc-backend", "stack-tooling"]
 relates-to: ["[[curriculum/02-nivel-2-practical-patterns/exercises/exercise-02|Exercise 02]]"]
 last_updated: 2026-06-10
 ---

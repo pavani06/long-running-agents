@@ -3,7 +3,7 @@ title: "Exercicio: Multi-Provider Model Routing com Resiliencia de Capacidade"
 type: exercise
 level: "N2"
 aliases: ["multi-provider routing", "roteamento multi-provedor", "provider fallback", "capacity resilience", "model routing black friday"]
-tags: [curriculo-conteudo, nivel-2, exercicio, agentes-orquestracao, model-selection, resilience, provider-agnostic, fallback-chain, rate-limiting]
+tags: ["curriculo-conteudo", "nivel-2", "agentes-orquestracao", "model-selection", "error-handling", "arquitetura", "production"]
 duration: "60-75 min"
 relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-patterns|Sierra Patterns]]", "[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-classification|Classification]]", "[[docs/canonical/neutral-selection-layer|Neutral Selection Layer]]", "[[docs/canonical/model-switching-architecture-enterprise-eval-gate|Model-Switching Architecture]]"]
 last_updated: 2026-06-26

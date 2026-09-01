@@ -2,7 +2,7 @@
 title: 'Versioned Durable Agent State'
 type: canonical
 aliases: ["versioned state", "estado versionado", "durable state versioning", "state versioning"]
-tags: ["agentes-orquestracao", "harness", "arquitetura"]
+tags: ["agentes-orquestracao", "harness", "arquitetura", "agent-loop"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/external-state-persistence|External State Persistence]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause-Resume State]]", "[[docs/canonical/stable-harness-prompt|Stable Harness Prompt]]", "[[docs/articles/harness-evolution-metodos-construcao|A Arquitetura Invisivel]]"]
 sources: ["[[docs/analysis/2026-06-10-harness-evolution-metodos-construcao/2026-06-10-harness-evolution-metodos-construcao-analysis|Knowledge Extraction: Harness Evolution]]"]

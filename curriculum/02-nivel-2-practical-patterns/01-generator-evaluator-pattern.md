@@ -3,7 +3,7 @@ title: "Padrão Generator/Evaluator: Quando Um Agente Não É Suficiente"
 type: curriculum-lesson
 nivel: 2
 aliases: ["gerador avaliador", "generator evaluator", "padrão gerador avaliador", "anti-sycophancy"]
-tags: [curriculo-conteudo, nivel-2, padroes-praticos, separacao-de-responsabilidades, anti-sycophancy, avaliacao-critica, feedback-loop, persistencia-de-estado, arquivos-json, auditabilidade, recomendacao-de-produtos]
+tags: ["curriculo-conteudo", "nivel-2", "padroes-praticos", "arquitetura", "code-review", "evals", "verification", "state", "stack-tooling", "governanca", "mhc-backend"]
 relates-to: ["[[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]]"]
 last_updated: 2026-06-10
 ---

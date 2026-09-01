@@ -3,7 +3,7 @@ title: "Exercicio: Auth-Coupled Memory Architecture com Recuperacao por Nivel de
 type: exercise
 level: "N2"
 aliases: ["auth-coupled memory", "memoria acoplada a autenticacao", "memory sensitivity gating", "identity-gated memory", "auth confidence memory", "tiered memory access"]
-tags: [curriculo-conteudo, nivel-2, exercicio, agentes-orquestracao, security, memory-architecture, auth-coupled, identity-resolution, sensitivity-gating, access-control]
+tags: ["curriculo-conteudo", "nivel-2", "agentes-orquestracao", "permissions", "memory-architecture", "gate-design"]
 duration: "60-75 min"
 relates-to: ["[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-patterns|Sierra Patterns]]", "[[docs/analysis/2026-06-26-the-best-ai-agents-are-simpler-than-you-think/2026-06-26-the-best-ai-agents-are-simpler-than-you-think-classification|Classification]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/epistemic-memory-graph|Epistemic Memory Graph]]"]
 last_updated: 2026-06-26

@@ -3,7 +3,7 @@ title: "Exercício 4: Projetar o Papel de Owner-of-No"
 type: curriculum-exercise
 nivel: 3
 aliases: ["owner of no", "dono da recusa", "refusal owner", "role design", "negativa construtiva", "accountability negativa"]
-tags: [curriculo-conteudo, nivel-3, exercicio, governanca, agentes-orquestracao, decision-discipline, role-design, refusal-ownership, accountability, harness-governance, python, dataclass]
+tags: ["curriculo-conteudo", "nivel-3", "governanca", "agentes-orquestracao", "decision-discipline", "stack-tooling"]
 relates-to: ["[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns|SDD Trap Patterns]]", "[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/split-brain-planning-review|Split-Brain Planning Review]]"]
 last_updated: 2026-06-11
 ---

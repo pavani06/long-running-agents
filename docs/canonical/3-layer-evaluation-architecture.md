@@ -2,7 +2,7 @@
 title: "3-Layer Evaluation Architecture"
 type: canonical
 aliases: ["3-layer evals", "deterministic semantic behavioral evals", "three layer evaluation"]
-tags: ["evals", "production"]
+tags: ["evals", "production", "observability"]
 last_updated: 2026-06-26
 relates-to: ["[[docs/canonical/eval-tier-stratification|Eval Tier Stratification]]", "[[docs/canonical/generator-evaluator|Generator/Evaluator]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]]", "[[docs/canonical/trace-instrumentation|Trace Instrumentation]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/behavioral-eval-path-analysis|Behavioral Eval Path Analysis]]", "[[docs/canonical/repeatable-agent-spot-check-set|Repeatable Agent Spot-Check Set]]"]
 sources: []

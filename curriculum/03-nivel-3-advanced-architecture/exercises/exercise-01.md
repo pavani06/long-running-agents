@@ -3,7 +3,7 @@ title: "Exercício 1: Implementar Sistema Multi-Agente Planner/Generator/Evaluat
 type: curriculum-exercise
 nivel: 3
 aliases: ["sistema multi-agente", "planner generator evaluator", "coordenação JSON", "exercício multi-agent"]
-tags: [curriculo-conteudo, nivel-3, exercicio, multi-agent-system, planner-agent, generator-agent, evaluator-agent, file-based-coordination, audit-trail, sycophancy-prevention, budget-guard, dietary-restriction-validation, python, dataclass, json-state]
+tags: ["curriculo-conteudo", "nivel-3", "multi-agent", "evals", "governanca", "code-review", "token-budgeting", "mhc-backend", "stack-tooling", "state"]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems|Multi-Agent Systems]]"]
 last_updated: 2026-06-10
 ---

@@ -3,7 +3,7 @@ title: "Exercicio 5: Aplicar o Manual Brake Question Gate a Features do KODA"
 type: curriculum-exercise
 nivel: 4
 aliases: ["manual brake", "freio manual", "three brake questions", "tres perguntas de freio", "value gate KODA", "decisao de construir"]
-tags: [curriculo-conteudo, nivel-4, exercicio, decision-discipline, governanca, value-gating, manual-brake, feature-prioritization, cost-proxy, refusal-ownership, spec-driven-development]
+tags: ["curriculo-conteudo", "decision-discipline", "governanca", "gate-design", "production", "spec-driven-development"]
 relates-to: ["[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/owner-of-no-role-design|Owner-of-No Role Design]]", "[[docs/canonical/value-gated-agent-control-loop|Value-Gated Agent Control Loop]]", "[[.opencode/skills/manual-brake-question-gate/SKILL.md|Manual Brake Skill]]", "[[curriculum/04-nivel-4-koda-specific/03-feature-design-patterns|Feature Design Patterns]]"]
 last_updated: 2026-06-11
 ---

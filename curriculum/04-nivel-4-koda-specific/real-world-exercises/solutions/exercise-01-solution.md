@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 1: Feature KODA — Recomendacao de Produto com Gen
 type: curriculum-solution
 nivel: 4
 aliases: ["solução recomendação KODA", "feature contract produto", "rubric evaluation", "fallback recomendação"]
-tags: [curriculo-conteudo, nivel-4, solucao, generator-evaluator-pattern, feature-contract, rubric-evaluation, fallback-safe, product-recommendation, dietary-restrictions, budget-constraint, e-commerce, supplement-catalog, python, implementacao-referencia]
+tags: ["curriculo-conteudo", "evals", "spec-driven-development", "error-handling", "mhc-backend", "token-budgeting", "stack-tooling"]
 relates-to: ["[[curriculum/04-nivel-4-koda-specific/real-world-exercises/exercise-01|Exercicio 1]]"]
 last_updated: 2026-06-10
 ---

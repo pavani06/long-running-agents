@@ -1,7 +1,7 @@
 ---
 title: "Model-Agnostic Agent-VM Harness"
 type: canonical
-tags: ["harness-engineering", "agentes-orquestracao", "production", "agentic-coding"]
+tags: ["harness-engineering", "agentes-orquestracao", "production", "agentic-coding", "evals"]
 aliases: ["agent vm harness", "model swap interface", "model-agnostic harness", "fleet vm harness"]
 last_updated: 2026-08-30
 relates-to:

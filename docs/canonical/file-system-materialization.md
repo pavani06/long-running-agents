@@ -4,7 +4,7 @@ type: canonical
 status: draft
 source: "LangChain Max Agency — Zack Reno Wedeen (Sierra)"
 date: 2026-06-26
-tags: ["agentes-orquestracao", "harness-engineering"]
+tags: ["agentes-orquestracao", "harness-engineering", "multi-agent"]
 aliases: ["file-system materialization", "80/20 agent tooling", "model-familiar primitives", "materialized agent interfaces"]
 relates-to: ["[[docs/canonical/llm-as-fuzzy-compiler|LLM as Fuzzy Compiler]]", "[[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]"]
 ---

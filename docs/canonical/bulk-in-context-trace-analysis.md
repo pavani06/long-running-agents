@@ -2,7 +2,7 @@
 title: "Bulk In-Context Trace Analysis"
 type: canonical
 aliases: ["bulk trace analysis", "in-context trace analysis", "análise em massa de traces", "trend-finding over traces", "10k trace sample"]
-tags: ["evals", "production", "harness-engineering"]
+tags: ["evals", "production", "harness-engineering", "observability"]
 last_updated: 2026-08-31
 relates-to:
   - "[[docs/canonical/centralized-cross-framework-tracing|Centralized Cross-Framework Tracing]]"

@@ -2,7 +2,7 @@
 title: "Self-Iterating Agent Loop"
 type: canonical
 aliases: ["self-iterating loop", "agent self-improvement loop", "loop auto-iterante de agentes", "agents building better iterations of themselves", "unified foundation closed loop"]
-tags: ["agentes-orquestracao", "evals", "data-platform", "production"]
+tags: ["agentes-orquestracao", "evals", "data-platform", "production", "agentic-coding"]
 last_updated: 2026-08-31
 relates-to:
   - "[[docs/canonical/agent-first-data-foundation|Agent-First Data Foundation]]"

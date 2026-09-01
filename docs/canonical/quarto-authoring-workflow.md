@@ -1,7 +1,7 @@
 ---
 title: "Quarto Authoring Workflow"
 type: canonical
-tags: ["stack-tooling", "governanca", "curriculo-conteudo", "decision-discipline", "harness"]
+tags: ["stack-tooling", "governanca", "curriculo-conteudo", "decision-discipline", "harness", "agentes-orquestracao"]
 aliases: ["authoring workflow", "quarto workflow patterns", "publishing CI/CD", "live preview loop", "dependency-gated build", "single-command deploy", "fluxo de publicacao"]
 last_updated: 2026-06-14
 relates-to: ["[[AGENTS|AGENTS.md]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill Resolver Pipeline]]", "[[docs/canonical/domain-embedded-workflow-automation-wedge|Domain-Embedded Workflow Automation Wedge]]", "[[docs/canonical/quarto-publishing-architecture|Quarto Publishing Architecture]]", "[[docs/canonical/quarto-content-structure|Quarto Content Structure]]", "[[docs/canonical/persona-based-documentation|Persona-Based Documentation]]", "[[docs/analysis/2026-06-14-quarto-book-publishing/2026-06-14-quarto-book-publishing-classification|Quarto Classification]]"]

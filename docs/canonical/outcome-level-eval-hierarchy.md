@@ -2,7 +2,7 @@
 title: "Outcome-Level Eval Hierarchy"
 type: canonical
 aliases: ["outcome-level evals", "business results first eval", "vanity metric rejection", "outcome over proxy KPI"]
-tags: ["evals", "production", "agentes-orquestracao"]
+tags: ["evals", "production", "agentes-orquestracao", "agentic-coding"]
 last_updated: 2026-08-30
 relates-to:
   - "[[docs/canonical/business-outcome-first-eval-pipeline|Business-Outcome-First Eval Pipeline]]"

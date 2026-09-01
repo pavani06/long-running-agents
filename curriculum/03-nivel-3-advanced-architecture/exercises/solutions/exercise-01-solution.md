@@ -3,7 +3,7 @@ title: "Solucao do Exercicio 1: Sistema Multi-Agente Planner/Generator/Evaluator
 type: curriculum-solution
 nivel: 3
 aliases: ["solução multi-agente", "arquitetura planner", "audit trail JSON", "validação agentes"]
-tags: [curriculo-conteudo, nivel-3, solucao, multi-agent-system, planner-agent, generator-agent, evaluator-agent, file-based-coordination, audit-trail, sycophancy-prevention, budget-guard, dietary-restriction-validation, python, dataclass, json-state, implementacao-referencia]
+tags: ["curriculo-conteudo", "nivel-3", "multi-agent", "evals", "governanca", "code-review", "token-budgeting", "mhc-backend", "stack-tooling", "state"]
 relates-to: ["[[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01|Exercise 01]]"]
 last_updated: 2026-06-10
 ---

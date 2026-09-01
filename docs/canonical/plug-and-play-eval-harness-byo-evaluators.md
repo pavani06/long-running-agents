@@ -2,7 +2,7 @@
 title: "Plug-and-Play Eval Harness with BYO Evaluators"
 type: canonical
 aliases: ["byo evaluators", "harness compartilhado multi-produto", "plug-and-play harness"]
-tags: ["evals", "harness-engineering"]
+tags: ["evals", "harness-engineering", "harness"]
 last_updated: 2026-08-31
 relates-to: ["[[docs/canonical/generator-evaluator|Generator/Evaluator]]", "[[docs/canonical/compartmented-evaluation-architecture|Compartmented Evaluation Architecture]]", "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]", "[[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]]", "[[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]", "[[docs/canonical/cli-first-eval-harness-remote-persistence|CLI-First Eval Harness with Remote Persistence]]"]
 sources: ["[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Clay Eval Stack Patterns]]"]

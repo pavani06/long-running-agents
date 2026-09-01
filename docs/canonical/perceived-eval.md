@@ -2,7 +2,7 @@
 title: "Perceived-Eval"
 type: canonical
 aliases: ["perceived eval", "user correction as eval signal", "avaliação percebida", "rage quit metric", "chat exit metric"]
-tags: ["evals", "production", "agentes-orquestracao"]
+tags: ["evals", "production", "agentes-orquestracao", "agentic-coding"]
 last_updated: 2026-08-31
 relates-to:
   - "[[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop]]"

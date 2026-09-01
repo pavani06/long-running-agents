@@ -2,7 +2,7 @@
 title: "Agent-First Data Foundation"
 type: canonical
 aliases: ["agent first data foundation", "fundação de dados agent-first", "unified data platform for agents", "datastore as agent playground", "agents as first-class data users"]
-tags: ["data-platform", "agentes-orquestracao", "production"]
+tags: ["data-platform", "agentes-orquestracao", "production", "agentic-coding"]
 last_updated: 2026-08-31
 relates-to:
   - "[[docs/canonical/agent-specific-data-freshness-pipeline|Agent-Specific Data Freshness Pipeline]]"

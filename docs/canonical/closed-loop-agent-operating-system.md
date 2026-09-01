@@ -1,7 +1,7 @@
 ---
 title: "Closed-Loop Agent Operating System"
 type: canonical
-tags: ["agentes-orquestracao", "context-engineering", "governanca"]
+tags: ["agentes-orquestracao", "context-engineering", "governanca", "agent-loop", "evals"]
 aliases: ["closed-loop agent OS", "agent operating system", "operational agent loop"]
 last_updated: 2026-06-10
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/serializable-pause-resume-state|Serializable Pause/Resume State]]", "[[docs/canonical/addressable-memory-catalog|Addressable Memory Catalog]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/skill-resolver-skillify-capability-pipeline|Skill-Resolver-Skillify Capability Pipeline]]", "[[docs/analysis/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer/2026-06-10-stanford-cs153-ai-native-company-1000x-engineer-classification|Stanford CS153 Classification]]"]

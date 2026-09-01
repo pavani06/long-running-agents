@@ -1,7 +1,7 @@
 ---
 title: "Value-Gated Agent Control Loop"
 type: canonical
-tags: ["agentes-orquestracao", "governanca", "decision-discipline", "harness-engineering", "spec-driven-development"]
+tags: ["agentes-orquestracao", "governanca", "decision-discipline", "harness-engineering", "spec-driven-development", "agent-loop"]
 aliases: ["value gate", "value-gated loop", "build-or-not gate", "agent value gate", "value-decision gate", "value gating"]
 last_updated: 2026-06-11
 relates-to: ["[[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]", "[[docs/canonical/application-owned-agent-control-plane|Application-Owned Agent Control Plane]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent OS]]", "[[docs/canonical/grill-me-alignment-interview|Grill-Me Alignment Interview]]", "[[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]]", "[[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]]", "[[docs/canonical/deferred-ledger-agentic-work|Deferred Ledger for Agentic Work]]", "[[docs/canonical/plan-execute-verify|Plan-Execute-Verify]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-analysis|The Trap SDD Analysis]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-patterns|SDD Trap Patterns]]", "[[docs/analysis/2026-06-11-the-trap-spec-driven-development-is-setting/2026-06-11-the-trap-spec-driven-development-is-setting-classification|SDD Trap Classification]]"]
