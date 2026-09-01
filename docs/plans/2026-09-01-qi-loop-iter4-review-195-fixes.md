@@ -71,4 +71,12 @@ Um check determinístico por REC (comando + saída esperada), ex.: REC-007 `grep
 
 ## Carimbo de execução
 
-(pendente — preencher na Fase 7)
+**Executado:** 2026-09-01. Ondas 1-2 em paralelo (T1-T6 executor direto; T7-T9 sub-agentes `deep` em background), fechamento T10.
+
+**Issues:** #198 (T1), #199 (T2), #200 (T3), #201 (T4), #202 (T5), #203 (T6), #204 (T7), #205 (T8), #206 (T9) — todas fechadas com handoff verificado pelo orquestrador.
+
+**Commits:** long-running-agents `8650a01` (pin), `be9f48d` (plano frontmatter), `be9143e` (T7), `7638ec7` (T8) · agent-skills `5551564` (T2), `2eaf4b9` (T3) · opencode-config `451d178` (T3b), `3a3765b` (T4) · scripts `08ababa` (T5), `499e2f5` + `85aa35e` (T9) · sisyphus-runtime `abdcaf0` (T5 fact), `5198da0` (T6 fact) · local não-git `~/.agents/skills/implement/SKILL.md` (T6).
+
+**Re-verificação:** 10/10 checks PASS (REC-001..012; REC-002 em dois checks: identidade de sessão + correlação pai-filho via `parent_id`/`span_correlations`).
+
+**Desvios documentados:** Fase 1 reusou o review Oracle existente (findings mecânicos com file:line); `task-wrapper.sh` ausente (trace instrumentation pulada); T2/T3 aterrissaram no repo agent-skills (`~/.config/opencode/skills/issue-start` e `issue-review` são symlinks); frontmatter do plano corrigido no caminho (`be9f48d`, exigência da Rule 16 do AGENTS.md); T9 não tocou opencode-config (plugin já capturava os campos; fix no spool-consumer).
