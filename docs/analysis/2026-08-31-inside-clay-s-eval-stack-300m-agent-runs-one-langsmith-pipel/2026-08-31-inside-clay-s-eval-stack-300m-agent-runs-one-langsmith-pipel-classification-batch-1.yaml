@@ -1,0 +1,207 @@
+meta:
+  title: "Classificação Batch 1 — Agentic Patterns from Clay's Eval Stack (300M Agent Runs, One LangSmith Pipeline)"
+  date: 2026-08-31
+  type: 'classification-batch'
+  batch: 1
+  source: "[[docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns|Patterns Clay Eval Stack]]"
+  target_repository: "long-running-agents"
+  precedence: "docs/decisions/ > docs/canonical/ > docs/evidence/ > docs/analysis/ > curriculum/ > READMEs (docs/system-of-record.md:14-21)"
+classifications:
+  - pattern: "Eval Coverage Matrix"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >-
+      O catálogo de mecanismos existe distribuído e profundo (goldens, checks estruturados,
+      LLM-judge, análise comportamental, A/B/canary, eval humano — cada um com doc canônico
+      próprio), mas cada doc estratifica por um eixo só: 3-layer-evaluation-architecture por
+      tipo de mecanismo; eval-tier-stratification por velocidade/trigger. A matriz 2x2
+      (determinismo × offline/online) com meta de cobertura por quadrante e lista de gaps
+      não está formalizada em lugar nenhum — falta o vocabulário de portfólio.
+    evidence:
+      - "docs/canonical/3-layer-evaluation-architecture.md:28 — stratification por tipo de mecanismo ('what they evaluate, not by when they run'), não determinismo×deployment"
+      - "docs/canonical/eval-tier-stratification.md:32-36 — tiers fast/medium/deep por runtime/trigger/decision power"
+      - "docs/canonical/workflow-derived-golden-question-set.md:44-47 — mecanismo goldens"
+      - "docs/canonical/constraint-anchored-evaluation.md:31-33 — mecanismo checks estruturados"
+      - "docs/canonical/3-layer-evaluation-architecture.md:45-59 — mecanismo LLM-as-judge"
+      - "docs/canonical/behavioral-eval-path-analysis.md:34 — mecanismo análise comportamental de traces"
+      - "docs/articles/evals-ecommerce-koda.md:107 — A/B tests e canary deployments com eval gates"
+      - "NOT_FOUND: grep 'determinism|deterministic.*nondeterministic|offline.*online' em docs/canonical/ → único hit llm-as-fuzzy-compiler.md (sentido não relacionado)"
+    searched:
+      - "docs/canonical/ (grep eixos + leitura família evals)"
+      - "docs/decisions/ (nenhuma ADR de evals)"
+      - "docs/articles/"
+      - "curriculum/ (via docs de evals)"
+      - "docs/analysis/ (apenas auto-referências do pacote Clay)"
+
+  - pattern: "Environment-Tiered Eval Fidelity"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    justification: >-
+      As camadas de ambiente existem na prática (tier fast local/pre-commit, staging shadow
+      tests com dashboards baseline/candidate, fases de canary), mas a estratificação
+      documentada é por velocidade/trigger, não por fidelidade. O reframe central (local
+      intencionalmente low-fidelity sem sandbox/VFS; staging compartilha o harness de
+      produção; só tiers com paridade de produção sustentam claims de release) não está
+      formalizado.
+    evidence:
+      - "docs/canonical/eval-tier-stratification.md:34 — tier Fast atrelada a 'Local change, pre-commit, small PR' (eixo runtime, sem fidelidade)"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:913 — config staging_shadow"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1743 — 'Shadow test em staging por 2 dias'"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1802-1848 — execução dia-D começa em staging, dashboard baseline/candidate"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1823 — koda shadow-tests start ... --env staging (mesma CLI, ambiente diferente — paridade de facto, não nomeada)"
+      - "docs/canonical/eval-tier-stratification.md:58 — playbook já separa lint/unit, regression batteries, N+1 gates, staging shadow tests, canary phases"
+      - "NOT_FOUND: grep 'local.*sandbox|fidelity|paridade|parity' no playbook → 0 matches para sandbox/fidelity/parity"
+    searched:
+      - "docs/canonical/ (família evals)"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md (grep staging/local/fidelity/parity)"
+      - "curriculum/04-nivel-4-koda-specific/ (via cross-refs)"
+      - "docs/decisions/"
+
+  - pattern: "Production-to-Offline Feedback Loop with Drift Taxonomy"
+    classification: "Partial Coverage"
+    integration_value: "High"
+    justification: >-
+      O loop produção→offline é o mais coberto do batch: flywheel de 9 passos, refresh
+      cadence, lifecycle do dataset e até detecção de decaimento de correlação com triggers
+      de recalibração. Falta a taxonomia de drift em três modos (data drift, judge drift,
+      eval-set mirroring) — o diagnóstico diferencial que separa 'evals stale' em três
+      falhas distintas. model-switch-driven-eval-hardening é adjacente ao judge drift mas
+      não nomeia o modo de falha.
+    evidence:
+      - "docs/canonical/production-failure-regression-flywheel.md:28-41 — flywheel 9 passos: intake → capture → privacy → label → dedup → tier → backfill → link → prune"
+      - "docs/canonical/production-grounded-eval-sampling.md:41 — refresh cadence scheduled e incident-driven"
+      - "docs/canonical/living-eval-dataset.md:94-99 — lifecycle do dataset (incidente → caso permanente) + flywheel daemon + QI loop"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:38-39 — decay thresholds + recalibration triggers (drift-adjacente, sem taxonomia)"
+      - "docs/system-of-record.md:301 — model-switch-driven-eval-hardening: revalidação completa do dataset a cada troca de modelo"
+      - "NOT_FOUND: grep 'judge drift|eval drift|eval-set|data drift|mirroring|stale eval' em docs/canonical/ → 0 matches"
+    searched:
+      - "docs/canonical/ (greps taxonomia de drift + leitura dos 6 docs do loop)"
+      - "docs/decisions/"
+      - "docs/analysis/ (auto-referências)"
+      - "curriculum/ (via correlation tracking references)"
+
+  - pattern: "CLI-First Eval Harness with Remote Persistence"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    justification: >-
+      O repo tem harness de eval CLI-first real e maduro (harness.sh com contrato
+      default-FAIL e persistência local via test-results.json/PROGRESS.md; currículo ensina
+      evals por CLI). A segunda metade do padrão não existe em forma alguma: backend de
+      persistência remota com write-out automático e histórico versionado/comparável. O
+      próprio repo documenta a ausência: eval-to-production-correlation-tracking lista
+      'Eval history' como componente a ser adicionado.
+    evidence:
+      - "harness/GUIDE-analyze-and-improve.md:42 — 'test-results.json — contrato default-FAIL; harness.sh só avança se evaluator der PASS'"
+      - "harness/GUIDE-analyze-and-improve.md:39,43,50-53 — PROGRESS.md estado persistente + loop harness.sh com retomada automática"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1823 — shadow test disparado por CLI, sem provisioning em UI"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:34 — 'Eval history | Eval run IDs, score distributions...' como requisito; :65-76 confirma que o sistema não existe"
+      - "docs/system-of-record.md:128 — telemetria SQLite local (telemetry.db), não store remoto de resultados"
+      - "NOT_FOUND: grep 'LangSmith|remote persist|CLI-first|cli first' em docs/ → apenas arquivos do próprio pacote Clay"
+    searched:
+      - "docs/ (grep LangSmith/remote persist/CLI-first)"
+      - "docs/canonical/ (família evals)"
+      - "harness/GUIDE-analyze-and-improve.md (leitura direta)"
+      - "docs/system-of-record.md:128 (stack de telemetria)"
+      - "curriculum/07-implementation-guides/"
+
+  - pattern: "Plug-and-Play Harness with BYO Evaluators"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    justification: >-
+      Existe harness compartilhado real que onboarding fontes plugáveis: analyze-and-improve
+      roda qualquer fonte externa pelas mesmas 7 fases com execução, evaluators, gates e
+      persistência uniforme (8 módulos incl. eval). generator-evaluator separa a autoria do
+      evaluator como papel (fundação BYO judges). Falta o contrato específico: novos
+      produtos de agente plugando suites e evaluators próprios (BYO LLM judges) num harness
+      compartilhado com comparabilidade cross-produto. O harness do repo onboarding fontes
+      de conhecimento, não agentes/produtos; não há doc de contrato de onboarding
+      multi-produto.
+    evidence:
+      - "docs/system-of-record.md:46 — analyze-and-improve: 'Pipeline knowledge → patterns → classification → improvements. Harness com cache, retry, model tiering, schemas, chunking, trajectory, eval, refinement (8 módulos, stdlib)'"
+      - ".opencode/skills/analyze-and-improve/SKILL.md:18 — parâmetro source aceita qualquer path/URL/array (a fonte é a parte plugável)"
+      - "harness/GUIDE-analyze-and-improve.md:42,53 — evaluator como gate por fase no harness compartilhado"
+      - "docs/canonical/3-layer-evaluation-architecture.md:94 — generator-evaluator como fundação do LLM-as-Judge"
+      - "docs/canonical/compartmented-evaluation-architecture.md:52-54 — separação Generator/Evaluator como propriedade structural"
+      - "docs/system-of-record.md:152 — skill-testing-conventions (harness de teste uniforme, escopo skills)"
+      - "NOT_FOUND: nenhum doc descreve onboarding multi-produto com evaluators autoriais (leitura família harness/evals; measured-harness-evolution-lifecycle trata de ciclo de vida, não de contrato plug-and-play)"
+    searched:
+      - "docs/canonical/ (generator-evaluator, compartmented-evaluation, measured-harness-evolution-lifecycle)"
+      - ".opencode/skills/analyze-and-improve/SKILL.md"
+      - "harness/GUIDE-analyze-and-improve.md"
+      - "docs/system-of-record.md:36-67"
+      - "docs/decisions/"
+
+  - pattern: "Structured Partial Checks over Exact Goldens"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    justification: >-
+      Os três componentes mecânicos existem, cada um profundo em doc canônico próprio:
+      (a) asserções parciais estruturadas — verification matrix checa só as constraints
+      explícitas; (b) asserções de trajetória — expected execution path templates;
+      (c) goldens — golden question set e living eval dataset. Falta o reframe: a regra de
+      casar estrictez com estabilidade do output (goldens exatos quebram em reordenação
+      irrelevante → eval ruidoso → suite ignorada; reter goldens exatos só para superfícies
+      simples). O repo pende para o lado oposto — golden answers humanas como mecanismo
+      geral — sem a regra de restrição a superfícies estáveis.
+    evidence:
+      - "docs/canonical/constraint-anchored-evaluation.md:31-33 — verification matrix 'constraint -> check -> pass/fail -> violation detail'"
+      - "docs/canonical/constraint-anchored-evaluation.md:52-59 — contraste com avaliação subjetiva de output completo"
+      - "docs/canonical/behavioral-eval-path-analysis.md:76-83 — expected execution path templates por categoria de query (asserção de trajetória), mantidos junto aos golden answers"
+      - "docs/canonical/3-layer-evaluation-architecture.md:36-39 — Layer 1: asserções estruturais de schema/formato"
+      - "docs/canonical/magnitude-direction-verifier-split.md:100 — verificação graduada (direção sobre magnitude exata)"
+      - "docs/canonical/workflow-derived-golden-question-set.md:44-47 — golden set (~150 perguntas) para superfície restrita pré-launch"
+      - "NOT_FOUND: nenhum doc formula o trade goldens-exatos-vs-checks-parciais como problema de ruído/confiança da suite (grep 'golden' → 10 arquivos canônicos, lidos os 5 relevantes)"
+    searched:
+      - "docs/canonical/ (grep golden; constraint-anchored; behavioral-eval; magnitude-direction; workflow-derived-golden; living-eval-dataset)"
+      - "docs/decisions/"
+      - "curriculum/05-core-concepts/08-evaluation-rubrics.md (via relações)"
+
+  - pattern: "Deterministic Multi-Turn Scripts over Simulated Users"
+    classification: "Partial Coverage"
+    integration_value: "Medium"
+    justification: >-
+      A mecânica central existe canonizada: n-plus-one-long-session-evals carrega fixture
+      fixo de N turnos (user turns hardcoded/derivados de traces reais) e testa o turno
+      N+1 — multi-turn determinístico por construção. Fixtures derivados de conversas reais
+      também existem (spot-check set com traces KODA reconstruídos; replay de produção).
+      Falta a decisão explícita contra simulated-user LLM: o trade 'segundo agente não
+      determinístico com manutenção própria; aposentar quando manutenção excede valor' não
+      é discutido em doc, código ou currículo.
+    evidence:
+      - "docs/canonical/n-plus-one-long-session-evals.md:28-38 — 'Load a realistic N-turn conversation fixture... Ask the next-turn prompt' (turnos fixos scriptados)"
+      - "docs/canonical/n-plus-one-long-session-evals.md:38 — fixtures incluem follow-ups que referenciam produtos/decisões anteriores"
+      - "docs/canonical/repeatable-agent-spot-check-set.md:59-60 — 4 traces KODA reais reconstruídos como casos repetíveis (seed traces)"
+      - "docs/canonical/production-grounded-eval-sampling.md:40 — replay infrastructure (fixtures de produção)"
+      - "NOT_FOUND: grep 'user simulator|usuário simulado|simulated-user|agente usuário' em docs/ → apenas patterns.md:146 e analysis.md:88 do próprio pacote Clay"
+    searched:
+      - "docs/canonical/ (n-plus-one, spot-check, production-grounded)"
+      - "docs/ (grep simulated user PT/EN)"
+      - "docs/analysis/2026-06-09-how-we-solved-context-management-in-agents/ (fonte do N+1)"
+      - "curriculum/ (via N+1 references)"
+      - "docs/decisions/"
+
+  - pattern: "Perceived-Eval"
+    classification: "Missing"
+    integration_value: "High"
+    justification: >-
+      Nenhum doc, código ou currículo trata o comportamento de correção do usuário como
+      dado de avaliação. Os componentes — detector de correction/pushback/redirection,
+      métricas comportamentais (chat exit, stuck, rage quit), NPS como entrada contínua —
+      não existem em forma alguma. Existem só vizinhos fracos: CSAT como proxy de outcome
+      em lista de métricas de produção; always-on-monitoring-human-triage (anomalias do
+      sistema, não qualidade percebida pelo usuário); presence-in-the-loop-metric
+      (intervenção de operadores, não percepção de usuários).
+    evidence:
+      - "NOT_FOUND: grep 'NPS|rage quit|perceived quality|user correction|pushback' em docs/ → apenas pacote Clay + docs/articles/evals-ecommerce-koda.md (linhas casadas 107/109/167 são amostragem de produção/A-B, sem mecânica de perceived-eval)"
+      - "NOT_FOUND: grep 'correção do usuário|cliente corrige|usuário corrige' no repo inteiro → 0 matches"
+      - "docs/canonical/eval-to-production-correlation-tracking.md:35 — CSAT proxy apenas como métrica de outcome (não sinal de eval contínuo)"
+      - "curriculum/07-implementation-guides/06-harness-evolution-playbook.md:1596 — CSAT proxy em dashboard baseline/candidate"
+      - "docs/system-of-record.md:300 — always-on-monitoring-human-triage (adjacente distinto: anomalias com triagem humana)"
+      - "docs/system-of-record.md:238 — presence-in-the-loop-metric (adjacente distinto: intervenção de operadores)"
+    searched:
+      - "docs/canonical/ (greps EN/PT; leitura eval-to-production-correlation-tracking)"
+      - "docs/articles/ (conteúdo das linhas casadas inspecionado)"
+      - "docs/analysis/ (só auto-referências)"
+      - "curriculum/ (grep repo-wide CSAT|satisfação → 34 arquivos, todos como métrica de dashboard/outcome)"
+      - ".opencode/skills/"
+      - "docs/decisions/"
