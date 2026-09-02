@@ -66,9 +66,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/trial-retention-attribution-split/SKILL.md|.opencode/skills/trial-retention-attribution-split/SKILL.md]] | Skill de diagnóstico: separa ativação de retenção (trial flag + weekly-active + atribuição de duas ramas) para impedir que alarme de gestão vire rollback cego do produto |
 | [[.opencode/skills/agent-value-maturity-ladder/SKILL.md|.opencode/skills/agent-value-maturity-ladder/SKILL.md]] | Skill de auditoria: classifica roadmap/deployment contra a escada de 4 estágios de valor e detecta wow-collapse não planejado e custos de troca não construídos |
 | [[.opencode/skills/perceived-eval/SKILL.md|.opencode/skills/perceived-eval/SKILL.md]] | Skill de implementação: instrumenta a qualidade percebida em produção tratando correção/pushback do usuário como dado de avaliação — capta correction, rage quit, chat exit, NPS e alimenta o loop produção-para-offline |
+| [[docs/canonical/agent-lifecycle|Agent Lifecycle]] | Ciclo de vida unificado de issues: claim → worktree → implement → review → merge → cleanup, em 5 componentes (orchestrator, issue-start, issue-workflow, issue-review, issue-finish) com label único `agent:working` |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
-
-> **Pendente**: `docs/canonical/agent-lifecycle.md` descrevendo o ciclo claim → worktree → implement → review → merge → cleanup.
 
 ### Currículo e conteúdo
 
@@ -352,7 +351,6 @@ Tópicos candidatos a ADR:
 
 | Documento | Cobre |
 |---|---|
-| `agent-lifecycle.md` | Ciclo completo claim → worktree → implement → review → merge → cleanup |
 | `curriculum-model.md` | Taxonomia de níveis, tipos de artefato, critérios de qualidade |
 | `portal-architecture.md` | Decisões de design do portal, modelo de dados, pipeline de renderização |
 | `crossroad-change-policy.md` | Política de alteração em arquivos de alto blast radius |
