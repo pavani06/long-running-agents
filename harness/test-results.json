@@ -2,48 +2,47 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-mental-model.md",
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-mental-model.yaml"
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-mental-model.md",
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-mental-model.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Modelo mental do repositorio \u2014 Phase 0 do analyze-and-improve",
-    "duration_seconds": 650,
+    "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
+    "duration_seconds": 508,
     "retry_count": 0,
-    "started_at": "2026-09-01T00:21:01Z",
-    "completed_at": "2026-09-01T00:30:46Z",
+    "started_at": "2026-09-02T11:57:48Z",
+    "completed_at": "2026-09-02T12:06:16Z",
     "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
     "verification_checks": [
       {
-        "kind": "citation",
-        "target": "docs/system-of-record.md:14",
-        "command_or_claim": "sed -n 14p docs/system-of-record.md",
-        "expected": "\"## Preced\u00eancia\"",
-        "actual": "## Preced\u00eancia",
+        "kind": "structural",
+        "target": "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/*mental-model.{md,yaml}",
+        "command_or_claim": "files exist with substantial content (138+270 lines)",
+        "expected": "both files exist",
+        "actual": "both exist",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "mental-model.yaml meta",
+        "command_or_claim": "yaml parses; typed fields goals/architecture/patterns/terminology/curriculum/gaps present; base_commit=48c5d45",
+        "expected": "base_commit 48c5d45 + all typed fields",
+        "actual": "OK: 6 goals, 20 patterns, 19 terms, 9 gaps",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "README.md:67",
-        "command_or_claim": "sed -n 67p README.md",
-        "expected": "\"85+ padr\u00f5es can\u00f4nicos\"",
-        "actual": "`docs/canonical/` cont\u00e9m **85+ padr\u00f5es can\u00f4nicos de arquitetura agentica** -- extra\u00eddos de an\u00e1lises de sistemas em produ",
+        "target": "curriculum/GLOSSARY.md:361-370",
+        "command_or_claim": "Generator definition cited in mental model",
+        "expected": "section defines Generator",
+        "actual": "confirmed via sed",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "curriculum/GLOSSARY.md:17",
-        "command_or_claim": "sed -n 17p curriculum/GLOSSARY.md",
-        "expected": "\"### Agent (Agente)\"",
-        "actual": "### Agent (Agente)",
-        "passed": true
-      },
-      {
-        "kind": "citation",
-        "target": "curriculum/README.md:13",
-        "command_or_claim": "sed -n 13p curriculum/README.md",
-        "expected": "\"12 semanas | 4 N\u00edveis | 8 Conceitos Core\"",
-        "actual": "**Programa Completo | 12 semanas | 4 N\u00edveis | 8 Conceitos Core | 35+ Diagramas**",
+        "target": "AGENTS.md:166-168",
+        "command_or_claim": "wikilink convention cited",
+        "expected": "rule text present",
+        "actual": "confirmed via sed",
         "passed": true
       }
     ]
@@ -51,48 +50,55 @@
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md",
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.yaml"
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-analysis.md",
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-analysis.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de conhecimento da fonte \u2014 Phase 1",
-    "duration_seconds": 653,
+    "notes": "Extracao de conhecimento da fonte — Phase 1",
+    "duration_seconds": 396,
     "retry_count": 0,
-    "started_at": "2026-09-01T00:21:01Z",
-    "completed_at": "2026-09-01T00:30:46Z",
+    "started_at": "2026-09-02T12:07:05Z",
+    "completed_at": "2026-09-02T12:13:41Z",
     "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
     "verification_checks": [
       {
-        "kind": "claim",
-        "target": "transcript: coverage goal",
-        "command_or_claim": "grep -c \"few things in each\" \"/mnt/c/Users/pavan/raw-knowledge/sources/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel.md\"",
-        "expected": ">= 1 occurrence",
-        "actual": "1",
+        "kind": "structural",
+        "target": "*analysis.{md,yaml}",
+        "command_or_claim": "files exist (238+166 lines); YAML typed fields present",
+        "expected": "both files + typed mirror",
+        "actual": "5 frameworks, 6 patterns, 6 failures, 6 tradeoffs",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "scripts/validate-obsidian.ts",
+        "command_or_claim": "run validator",
+        "expected": "all checks pass",
+        "actual": "All checks passed (12/12)",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "transcript: offline goldens",
-        "command_or_claim": "grep -c \"deterministic and offline\" \"/mnt/c/Users/pavan/raw-knowledge/sources/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel.md\"",
-        "expected": ">= 1 occurrence",
-        "actual": "1",
+        "target": "20% of events rejected",
+        "command_or_claim": "grep '20% of my events' in source transcript",
+        "expected": "claim supported",
+        "actual": "1 match",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "transcript: judge overfitting",
-        "command_or_claim": "grep -c \"hill climbing on a specific LLM judge\" \"/mnt/c/Users/pavan/raw-knowledge/sources/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel.md\"",
-        "expected": ">= 1 occurrence",
-        "actual": "1",
+        "target": "20 agents after a month, non-technical contributors",
+        "command_or_claim": "grep 'we have 20 agents' in transcript",
+        "expected": "claim supported",
+        "actual": "match incl. 'not just contributed by technical people'",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "transcript: behavioral metrics",
-        "command_or_claim": "grep -c \"rage quit\" \"/mnt/c/Users/pavan/raw-knowledge/sources/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel.md\"",
-        "expected": ">= 1 occurrence",
-        "actual": "1",
+        "target": "first version built in ~1 day with Codex",
+        "command_or_claim": "grep 'took about like a day' in transcript",
+        "expected": "claim supported",
+        "actual": "match",
         "passed": true
       }
     ]
@@ -100,48 +106,39 @@
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns.md",
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-patterns.yaml"
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-patterns.md",
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-patterns.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Extracao de padroes reutilizaveis \u2014 Phase 2",
-    "duration_seconds": 3620,
+    "notes": "Extracao de padroes reutilizaveis — Phase 2",
+    "duration_seconds": 317,
     "retry_count": 0,
-    "started_at": "2026-09-01T00:32:16Z",
-    "completed_at": "2026-09-01T00:38:34Z",
-    "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
+    "started_at": "2026-09-02T12:13:41Z",
+    "completed_at": "2026-09-02T12:18:58Z",
+    "verification_depth": "structural",
     "verification_checks": [
       {
-        "kind": "claim",
-        "target": "analysis.md: structured checks",
-        "command_or_claim": "grep -c \"structured eval checks\" \"/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md\"",
-        "expected": ">= 1 occurrences",
-        "actual": "2",
+        "kind": "structural",
+        "target": "*patterns.{md,yaml}",
+        "command_or_claim": "files exist (198+291 lines); YAML parses via js-yaml",
+        "expected": "both files valid",
+        "actual": "9 patterns, all with 6 mandatory fields + components + flow",
         "passed": true
       },
       {
-        "kind": "claim",
-        "target": "analysis.md: hardcoded multi-turn",
-        "command_or_claim": "grep -cE \"hardcoded|hard-coding\" \"/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md\"",
-        "expected": ">= 1 occurrences",
-        "actual": "5",
+        "kind": "structural",
+        "target": "scripts/validate-obsidian.ts",
+        "command_or_claim": "run validator",
+        "expected": "all checks pass",
+        "actual": "All checks passed",
         "passed": true
       },
       {
-        "kind": "claim",
-        "target": "analysis.md: support tickets",
-        "command_or_claim": "grep -c \"support tickets\" \"/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md\"",
-        "expected": ">= 1 occurrences",
-        "actual": "2",
-        "passed": true
-      },
-      {
-        "kind": "claim",
-        "target": "analysis.md: data lake",
-        "command_or_claim": "grep -c \"data lake\" \"/mnt/c/Users/pavan/long-running-agents/docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-analysis.md\"",
-        "expected": ">= 1 occurrences",
-        "actual": "4",
+        "kind": "structural",
+        "target": "citation sampling",
+        "command_or_claim": "grep file:line refs in patterns.md",
+        "expected": "no citations to verify (artifact synthesizes analysis.md)",
+        "actual": "0 citations found",
         "passed": true
       }
     ]
@@ -149,40 +146,55 @@
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.md",
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-classification.yaml"
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-classification.md",
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-classification.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Classificacao contra repositorio \u2014 Phase 3",
-    "duration_seconds": 3194,
+    "notes": "Batch splitting: 9 padroes > 8 → 2 agentes background (batch-a: padroes 1-5, batch-b: 6-9); consolidacao inline pelo orquestrador",
+    "duration_seconds": 761,
     "retry_count": 0,
-    "started_at": "2026-09-01T00:39:25Z",
-    "completed_at": "2026-09-01T00:48:28Z",
+    "started_at": "2026-09-02T12:18:58Z",
+    "completed_at": "2026-09-02T12:31:39Z",
     "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
     "verification_checks": [
       {
         "kind": "citation",
-        "target": "docs/canonical/3-layer-evaluation-architecture.md:28",
-        "command_or_claim": "sed -n 28p docs/canonical/3-layer-evaluation-architecture.md",
-        "expected": "\"Organize evaluation into three layers\"",
-        "actual": "Organize evaluation into three layers defined by **what they evaluate**, not by when they run. Each layer uses a fundame",
+        "target": "docs/canonical/pull-based-infrastructure-on-pain.md:43",
+        "command_or_claim": "reactive infra claim cited by batch-b",
+        "expected": "line contains the quote",
+        "actual": "confirmed via sed",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "docs/canonical/closed-loop-agent-operating-system.md:28",
-        "command_or_claim": "sed -n 28p docs/canonical/closed-loop-agent-operating-system.md",
-        "expected": "\"closed-loop operating system\"",
-        "actual": "Build a closed-loop operating system around the agent fleet. The operating system continuously connects four surfaces:",
+        "target": "docs/canonical/presence-in-the-loop-metric.md:23-27",
+        "command_or_claim": "governance polarity problem statement",
+        "expected": "human-as-symbolic-gate text",
+        "actual": "confirmed via sed",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "docs/canonical/centralized-data-plane-inherited-rbac.md:44",
-        "command_or_claim": "sed -n 44p docs/canonical/centralized-data-plane-inherited-rbac.md",
-        "expected": "\"Plataforma unificada de dados\"",
-        "actual": "| Plataforma unificada de dados | Consolida first-party + third-party em um \u00fanico plano |",
+        "target": "docs/canonical/deterministic-tool-dispatch.md:74",
+        "command_or_claim": "Zod typed tool boundary",
+        "expected": "DynamicStructuredTool line",
+        "actual": "confirmed via grep",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "curriculum/06-knowledge-graphs/detailed-graphs/generator-evaluator-graphs.md:355",
+        "command_or_claim": "append-only audit_log.jsonl",
+        "expected": "append-only immutable text",
+        "actual": "confirmed via grep",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "classification.md + classification.yaml",
+        "command_or_claim": "inline consolidation of 2 batches",
+        "expected": "9 patterns, typed mirror, summary table",
+        "actual": "9 patterns (4 High, 5 Medium), validator clean",
         "passed": true
       }
     ]
@@ -190,24 +202,55 @@
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-artifacts.yaml",
-      "docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-artifacts.md"
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-artifacts.yaml",
+      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-artifacts.md"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Geracao de artefatos e artifacts manifest \u2014 Phase 4",
-    "duration_seconds": 2655,
+    "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
+    "duration_seconds": 866,
     "retry_count": 0,
-    "started_at": "2026-09-01T00:48:28Z",
-    "completed_at": "2026-09-01T01:08:05Z",
-    "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
+    "started_at": "2026-09-02T12:31:39Z",
+    "completed_at": "2026-09-02T12:46:05Z",
+    "verification_depth": "structural",
     "verification_checks": [
       {
-        "kind": "command",
-        "target": "manifest counts",
-        "command_or_claim": "python3 -c \"import yaml;print(yaml.safe_load(open('docs/analysis/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel/2026-08-31-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipel-artifacts.yaml'))['gate']['artifacts_count'])\"",
-        "expected": "canonical 15, skills 1, exercises 7",
-        "actual": "{'canonical_docs': 15, 'skills': 1, 'exercises': 7, 'examples': 0}",
+        "kind": "structural",
+        "target": "docs/canonical/ (9 new files)",
+        "command_or_claim": "all 9 assigned slugs exist; 883 total lines",
+        "expected": "9 canonical docs",
+        "actual": "9 OK, git shows only the assigned files",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "curriculum exercises 18-21",
+        "command_or_claim": "4 files exist; python blocks compile (ast.parse)",
+        "expected": "4 exercises with valid code",
+        "actual": "4 files, all blocks compile",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "scripts/validate-obsidian.ts",
+        "command_or_claim": "run validator over repo incl. 13 new artifacts",
+        "expected": "all checks pass",
+        "actual": "All checks passed (459 notes)",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "artifacts manifest",
+        "command_or_claim": "manifest yaml parses; counts match disk (ls)",
+        "expected": "9/0/4/0",
+        "actual": "9/0/4/0 verified",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "scope guard",
+        "command_or_claim": "git status shows no modifications to pre-existing files beyond harness state",
+        "expected": "only new files + PROGRESS/test-results",
+        "actual": "confirmed",
         "passed": true
       }
     ]
@@ -217,23 +260,47 @@
     "evidence": [
       "docs/system-of-record.md",
       "curriculum/INDEX.md",
+      "curriculum/README.md",
       "curriculum/MASTER_PLAN.md"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Integracao \u2014 atualiza system-of-record e indices",
-    "duration_seconds": null,
+    "notes": "Integracao — atualiza system-of-record e indices",
+    "duration_seconds": 391,
     "retry_count": 0,
-    "started_at": null,
-    "completed_at": "2026-09-01T01:14:02Z",
+    "started_at": "2026-09-02T12:46:05Z",
+    "completed_at": "2026-09-02T12:52:36Z",
     "verification_depth": "semantic",
-    "duration_source": "unrecoverable-started_at-null",
     "verification_checks": [
       {
+        "kind": "structural",
+        "target": "git diff --stat (4 target files)",
+        "command_or_claim": "only Integration Map targets changed",
+        "expected": "4 files",
+        "actual": "+29/-3 in exactly the 4 targets",
+        "passed": true
+      },
+      {
         "kind": "command",
-        "target": "phase-5 files changed",
-        "command_or_claim": "git show --name-only --format=\"\" 45dcdcf",
-        "expected": "exactly SOR + INDEX + MASTER_PLAN",
-        "actual": "curriculum/INDEX.md\ncurriculum/MASTER_PLAN.md\ndocs/system-of-record.md",
+        "target": "canonical count",
+        "command_or_claim": "ls docs/canonical/*.md | wc -l",
+        "expected": "185 (176+9)",
+        "actual": "185",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "N3 exercise count",
+        "command_or_claim": "ls exercises excluding solutions | wc -l",
+        "expected": "25 (21+4)",
+        "actual": "25",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "scripts/validate-obsidian.ts",
+        "command_or_claim": "run validator after index updates",
+        "expected": "all checks pass",
+        "actual": "All checks passed",
         "passed": true
       }
     ]
@@ -241,23 +308,54 @@
   "phase-6": {
     "passes": true,
     "evidence": [
-      "curriculum/ (14 lesson files, commit d4496f8)"
+      "git diff --name-only -- curriculum/"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Curriculum Deep Integration \u2014 opcional",
-    "duration_seconds": 1119,
+    "notes": "Curriculum Deep Integration — opcional | Handoffs registrados: (1) gate de fronteira tipada no 03-harness-design-checklist; (2) framing kernel no 06-harness-evolution core-concepts; (3) opcional: escada de interface vs dial de autonomia. Ficam como follow-ups, nao bloqueiam o gate.",
+    "duration_seconds": 1668,
     "retry_count": 0,
-    "started_at": "2026-09-01T01:14:12Z",
-    "completed_at": "2026-09-01T01:25:42Z",
+    "started_at": "2026-09-02T12:52:36Z",
+    "completed_at": "2026-09-02T13:20:24Z",
     "verification_depth": "semantic",
-    "duration_source": "git-commit-timestamp",
     "verification_checks": [
       {
-        "kind": "command",
-        "target": "phase-6 only curriculum modified",
-        "command_or_claim": "git show --name-only --format=\"\" d4496f8 | grep -cv \"^curriculum/\"",
-        "expected": "0 non-curriculum files",
-        "actual": "0",
+        "kind": "structural",
+        "target": "git diff scope",
+        "command_or_claim": "only curriculum/ files modified; no new files; docs/canonical untouched",
+        "expected": "13 owned curriculum files",
+        "actual": "13 modified, 0 new, canonical clean",
+        "passed": true
+      },
+      {
+        "kind": "claim",
+        "target": "causal log integration",
+        "command_or_claim": "grep caused_by in 05-state-persistence + trace guide",
+        "expected": "insertions present",
+        "actual": "present in both",
+        "passed": true
+      },
+      {
+        "kind": "claim",
+        "target": "kernel runtime integration",
+        "command_or_claim": "grep kernel section in 01-multi-agent-systems",
+        "expected": "agent-as-process section",
+        "actual": "present",
+        "passed": true
+      },
+      {
+        "kind": "claim",
+        "target": "presence ladder + prompt graph + failure ledger",
+        "command_or_claim": "grep inserted section markers",
+        "expected": "sections present",
+        "actual": "present in owned files",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "scripts/validate-obsidian.ts",
+        "command_or_claim": "full run after phase 6",
+        "expected": "no new errors",
+        "actual": "0 errors; 4 pre-existing warnings in agent-lifecycle.md (untouched file, tag-gap warnings, non-blocking)",
         "passed": true
       }
     ]
