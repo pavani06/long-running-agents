@@ -152,6 +152,7 @@ Topicos cobertos: `testes-qa`.
 |---|---|
 | [[docs/canonical/skill-testing-conventions|Skill Testing Conventions]] | Framework de test harness para skills |
 | [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] | Ciclo de vida BUILD → STABILIZE → SIMPLIFY → REMOVE |
+| [[docs/evidence/2026-09-01-qi-loop-telemetry-correlation-break|Caso de regressão: telemetria do qi-loop]] | Primeiro caso do failure flywheel em `docs/evidence/`: quebra de correlação pai-filho na telemetria (classe Tool misuse, divergência da taxonomia documentada no caso) |
 
 ## Decisões de arquitetura (ADRs)
 
