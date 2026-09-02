@@ -468,6 +468,18 @@ O pull-based infrastructure acima governa a stack em escala de produto; o *Failu
 
 Regras operacionais: **uma falha, uma peça mínima** (nada especulativo — cada componente tem justificativa observada); **a ordem é a ordem das falhas** (o sequenciamento é descoberto, não planejado); **a primeira versão é rápida e incompleta** (o resto do tempo vai para modos de falha e runtime); e **as falhas são o método, não o acidente** — o sistema quebra em produção primeiro porque a produção é a única fonte de justificativa. É a contraparte runtime do [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]: o flywheel converte falha em ativo de eval; este padrão converte falha em primitiva de runtime — duas saídas para o mesmo incidente. Para o padrão completo: [[docs/canonical/failure-accrued-runtime-growth|Failure-Accrued Runtime Growth]].
 
+### O harness como kernel: agendamento, isolamento e journaling
+
+O sedimento acima explica **quando** cada peça de runtime aparece — a ordem é a ordem das falhas; o frame do kernel explica **o que** o runtime acumulado é. O harness, visto como runtime, opera como um **kernel** que reutiliza responsabilidades clássicas de sistema operacional, e as três responsabilidades são invariantes do ciclo BUILD → STABILIZE → SIMPLIFY → REMOVE: componentes de compensação de modelo entram e saem, agendar, isolar e registrar ficam:
+
+| Responsabilidade | O que garante | Canônico |
+|---|---|---|
+| Agendamento | Decide quando cada processo-agente roda (cron, wake triggers) | [[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]] |
+| Isolamento | Cada agente executa em ambiente isolado; falha de um não contamina vizinhos | [[docs/canonical/model-agnostic-agent-vm-harness|Model-Agnostic Agent-VM Harness]] |
+| Journaling | Registra o que aconteceu e qual definição rodou | [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]] |
+
+Três propriedades definem o modelo: o agente é **processo userland de primeira classe**, não um plugin dentro das abstrações de um framework; o kernel **não conhece a semântica do agente** — agenda, isola e registra sem saber o que o agente faz, e é essa agnosticidade que separa kernel de userland; e o **frontend de definição é trocável** — a definição do agente vive na userland e o kernel a consome sem depender do formato. Para o padrão completo: [[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]]; para o tratamento em profundidade, a [[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|lição N3 gêmea]].
+
 ### Observability-threshold trigger: quando a dor deixa de ser perceptível
 
 O pain-signal gate acima é reativo e pressupõe que a dor ainda consegue ser *sentida*. O *Observability-Threshold Eval Trigger* (caso Clay) nomeia quando essa premissa quebra: **abaixo de um threshold de volume, evals leves são toleráveis porque humanos ainda conseguem inspecionar cada trace; acima dele, a incapacidade de observar é estrutural e o investimento em evals vira não-negociável** (na fonte: 300M runs/mês, 100K mensagens/semana).
@@ -1067,6 +1079,8 @@ Mecânica:       Humano faz,             Agente propõe,          Agente executa
 **Assist (lambda 0.3–0.7):** O agente propõe ações e o humano aprova ou rejeita. A proposta do agente inclui o raciocínio por trás da decisão (trace). O humano confirma a correção (direction signal positivo) ou rejeita com justificativa (direction signal negativo). Cada interação Assist produz um par decisão + veredito que alimenta o pipeline de melhoria do agente. No KODA, uma recomendação de produto no Assist passa pelo Evaluator primeiro, depois pelo revisor humano — duas camadas de direction signal.
 
 **Own (lambda 0.7–1.0):** O agente executa ações de forma independente. O humano só é acionado quando uma exceção dispara — scores abaixo do threshold na rubrica, restrições violadas, ou incerteza alta do próprio agente. O agente em Own ainda gera traces completos; a diferença é que o humano monitora por exceção, não por aprovação.
+
+Uma distinção que evita confusão de métricas: a escada e o dial não medem a mesma coisa. A [[docs/canonical/presence-interface-ladder|Presence Interface Ladder]] mede a **atenção** que o modo de interface exige do humano; o dial de autonomia ([[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]) mede a **autonomia** concedida por classe de tarefa. São métricas complementares, com polaridades opostas — reduzir a atenção exigida pela interface não equivale a aumentar a autonomia de decisão.
 
 ### Readiness Gates: O Que Precisa Ser Verdade Para Avançar o Lambda
 

@@ -1357,6 +1357,25 @@ A checklist acima exige traces completos e audit logs imutáveis; o requisito ma
 | Destino append-only único | Todos os agentes e processos publicam num único destino append-only via API comum de publish. | Existe evidência verificável e atualizada. | Cada agente escreve no próprio log, sem destino obrigatório. | Registre link para artefato, owner e data. |
 | Reconstrução falha→gatilho | Existe query que navega a cadeia causal de qualquer falha até o evento gatilho. | Existe evidência verificável e atualizada. | Investigações dependem de correlacionar timestamps manualmente. | Registre link para artefato, owner e data. |
 
+### Requisito: Fronteira Tipada entre Agente e Ferramentas e entre Agentes
+
+O log causal acima registra o que aconteceu; a fronteira tipada decide o que **pode** acontecer. A checklist de Segurança & Guardrails valida input; o requisito mais forte é a **fronteira tipada nas duas costuras do runtime**: entre agente e ferramentas (tool calls) e entre agentes (eventos). Nenhuma ação cruza a fronteira sem validação: tool call só despacha após validação por schema; evento só publica e só consome após validação na fronteira; e cada agente declara quais eventos aceita e retorna, tornando o contrato verificável em vez de implícito no prompt. A postura é a mesma nas duas fronteiras: **tornar ações ruins impossíveis, não improváveis** — o validador rejeita por código, não desencoraja por instrução ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]). O lado agente-ferramenta tem base canônica (validação estruturada de output e dispatch determinístico de ferramentas); a declaração de eventos aceitos/retornados por agente e o validador aplicado nas duas fronteiras são a lacuna registrada na evidência do padrão 1 ([[docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/classification|classificação do run]]).
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Tool call validada por schema | Toda tool call tem input e retorno tipados, validados por schema antes do dispatch executar qualquer efeito. | Existe evidência verificável e atualizada. | Dispatch executa com input não validado, ou validação depende de instrução no prompt. | Registre link para artefato, owner e data. |
+| Evento validado no publish/consume | Todo evento publicado e todo evento consumido passa por validador de schema na fronteira, que rejeita o não conforme antes de produzir efeito. | Existe evidência verificável e atualizada. | Eventos circulam sem validação, ou a validação acontece depois do efeito. | Registre link para artefato, owner e data. |
+| Eventos aceitos/retornados declarados por agente | Cada agente declara quais eventos aceita e quais retorna; a declaração é verificável em runtime, não tácita. | Existe evidência verificável e atualizada. | Descobrir o que um agente aceita exige ler o prompt ou o código; não há declaração verificável. | Registre link para artefato, owner e data. |
+| Postura impossível, não improvável | Violações de fronteira são rejeitadas por validador em runtime, não desencorajadas por instrução. | Existe evidência verificável e atualizada. | O único argumento de segurança é "o modelo costuma acertar". | Registre link para artefato, owner e data. |
+
+**Micro-checklist da fronteira tipada (revisão rápida):**
+
+- [ ] Toda tool call tem schema de input e retorno tipado validado antes do dispatch?
+- [ ] Todo evento publicado e consumido passa por validador na fronteira?
+- [ ] Cada agente declara quais eventos aceita e quais retorna?
+- [ ] Eventos nao conformes sao rejeitados por codigo, e nao por prompt?
+- [ ] A postura e tornar acoes ruins impossiveis, nao improvaveis, nas duas fronteiras?
+
 ### Critérios de bloqueio para esta categoria
 
 - Bloqueie produção se a categoria afeta pagamento, saúde, dados pessoais ou promessa de entrega e não há validação objetiva.

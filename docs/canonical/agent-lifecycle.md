@@ -1,7 +1,7 @@
 ---
 title: "Agent Lifecycle"
 type: canonical
-tags: ["agentes-orquestracao", "governanca", "harness-engineering"]
+tags: ["agentes-orquestracao", "governanca", "harness-engineering", "production", "stack-tooling"]
 aliases: ["issue lifecycle", "agent issue lifecycle", "issue claim protocol", "claim worktree review merge cleanup", "HoP issue lifecycle"]
 last_updated: 2026-09-02
 relates-to: ["[[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]]", "[[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]", "[[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]", "[[docs/canonical/skill-testing-conventions|Skill Testing Conventions]]"]
