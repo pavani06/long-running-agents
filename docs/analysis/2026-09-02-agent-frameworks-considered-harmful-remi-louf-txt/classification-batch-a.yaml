@@ -1,0 +1,107 @@
+source: docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-patterns.md
+target_repository: long-running-agents
+date: 2026-09-02
+batch: A (patterns 1-5)
+precedence: "decisions/ > canonical/ > evidence/ > analysis/ > curriculum/ > READMEs (docs/system-of-record.md:14-21)"
+patterns:
+  - name: "Typed Tool and Event Boundaries"
+    classification: "Partial Coverage"
+    justification: >-
+      The agent-tool frontier is covered at canonical depth and in implementation
+      (structured output contracts, schema validation, post-generation constraint
+      validation, deterministic dispatch with Zod-typed tool inputs). The
+      agent-agent frontier exists only as an adjacent protocol (agent-parseable
+      review comments), not as a general typed event boundary. No doc, code, or
+      curriculum defines per-agent event schemas (accepted/returned) or a
+      kernel-level validator applied at both frontiers rejecting non-conforming
+      tool calls and events before effect.
+    evidence:
+      - "docs/canonical/structured-generation-constraint-validation-circuit.md:29 — unified action-safety circuit (output schema, validator, repair/rejection, audit log)"
+      - "docs/canonical/structured-generation-constraint-validation-circuit.md:61-63 — shape validation then domain constraint validation, reject/repair on failure"
+      - "docs/canonical/deterministic-tool-dispatch.md:74 — every tool is DynamicStructuredTool with Zod schema input and typed return (mhc-backend)"
+      - "docs/canonical/deterministic-tool-dispatch.md:107 — 12FA Pattern 1 (Structured Output Contract) already named in canon"
+      - "docs/canonical/agent-to-agent-review-comment-protocol.md:37 — agent-parseable interface contract (review comments only, not general events)"
+      - "NOT_FOUND: per-agent event schemas and dual-frontier kernel validator — searched docs/canonical/, docs/decisions/, docs/evidence/, curriculum/, .opencode/"
+    integration_value: "High"
+  - name: "Content-Addressed Prompt Graph"
+    classification: "Partial Coverage"
+    justification: >-
+      Prompt versioning, rollback, and audit exist at canonical depth
+      (prompt-as-code, causal commits, git-revert rollback), prompt versions are
+      required in replay state, and addressable/graph-addressed context exists.
+      None of it is content addressing: no hash function over prompt components,
+      no content-keyed storage, no prompt as graph of hashes before rendering,
+      no component-granularity run diffs, no compaction as graph manipulation.
+      Replay is conversation-level, not exact-prompt reconstruction.
+    evidence:
+      - "docs/canonical/prompt-as-code-causal-change-management.md:28 — prompts as first-class versioned git artifacts with causal commit discipline"
+      - "docs/canonical/prompt-as-code-causal-change-management.md:80-85 — rollback infrastructure (git revert, per-component prompt files, deploy at commit)"
+      - "docs/canonical/prompt-as-code-causal-change-management.md:100-105 — audit trail answers exact prompt text per point in time (via git, not hashes)"
+      - "docs/canonical/stable-harness-prompt.md:52 — replay requires prompt/rubric/catalog/schema versions; :62 — prompt version metadata in replay artifacts"
+      - "docs/canonical/addressable-memory-catalog.md:28-43 — stable id/kind/location/preview/scope/tool/path per omitted piece (catalog ID, not content hash)"
+      - "docs/canonical/graph-addressed-context-placement.md:42-48 — knowledge keyed to software-graph nodes, retrieval by traversal"
+      - "docs/canonical/production-grounded-eval-sampling.md:28 — replay of representative interactions (conversation-level)"
+      - "NOT_FOUND: content hashing of prompt components, content-addressed storage, graph-of-hashes prompt, component diffs, compaction as graph manipulation — searched docs/canonical/, docs/decisions/, curriculum/, .opencode/ ('content-address' appears only in this source's own analysis package)"
+    integration_value: "High"
+  - name: "Append-Only Causal Event Log"
+    classification: "Partial Coverage"
+    justification: >-
+      Append-only audit logs exist in curriculum (immutable audit_log.jsonl,
+      trace stores every agent writes to, a JSONL _log() implementation) and
+      centralized tracing exists in implementation (tracer.ts →
+      trace-state.json → telemetry.db with parent_span_id). Missing: event-level
+      causal links captured at publish time (caused_by/parent_event_id —
+      parent_span_id is span hierarchy, not event causality), the single
+      mandatory append-only destination for all agents, the log-as-system-memory
+      reframe, and queryable failure-to-trigger reconstruction.
+    evidence:
+      - "curriculum/06-knowledge-graphs/detailed-graphs/generator-evaluator-graphs.md:355 — audit_log.jsonl append-only immutable, events never altered/removed"
+      - "curriculum/05-core-concepts/07-multi-agent-coordination.md:2737-2738 — trace store as immutable chronological log; :2776-2780 — each agent writes started/completed"
+      - "curriculum/02-nivel-2-practical-patterns/exercises/solutions/exercise-01-solution.md:1748-1759 — _log() appending JSONL events (timestamp, type)"
+      - "curriculum/06-knowledge-graphs/detailed-graphs/planning-execution-graphs.md:1096-1100 — WAL + append-only audit log required (no causal schema)"
+      - "docs/canonical/centralized-cross-framework-tracing.md:28-55 — unified trace schema (trace_id, span_id, parent_span_id); :123-130 — existing tracer.ts → telemetry.db pipeline"
+      - "docs/canonical/behavioral-eval-path-analysis.md:34-45 — full trace with 'causal ordering' = execution order, not event causality"
+      - "docs/canonical/asymmetric-failure-correction-router.md:74-83 — two immutable append-only logs specified; :98-103 — declared absent in repo"
+      - "NOT_FOUND: publish-time causal links (caused_by/parent_event_id), single append-only destination for all agents, common publish API, failure-to-trigger query — searched docs/canonical/, docs/decisions/, docs/evidence/ (no matches), curriculum/, .opencode/, scripts/"
+    integration_value: "High"
+  - name: "Emergent Event Topology"
+    classification: "Partial Coverage"
+    justification: >-
+      Constituent ideas exist in curriculum (message-queue channels, workers
+      consuming/publishing events with event_type, explicit fan-out/fan-in,
+      choreography named as an alternative) and one canonical shares the
+      anti-DAG stance. Missing is the defining reframe and mechanics: agents
+      communicating ONLY via typed-event pub/sub with zero declared edges,
+      topology existing solely in the log, extension by dropping an agent file
+      subscribing to public schemas, free fan-in/fan-out. The repo's canon leans
+      opposite (orchestrators, declared A→B→C workflows, Saga rollback) and no
+      pub/sub runtime or schema registry exists.
+    evidence:
+      - "curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md:616-637 — channels incl. Redis/RabbitMQ; :731-759 — event_type workers with declared coordination"
+      - "curriculum/05-core-concepts/07-multi-agent-coordination.md:201-221 — fan-out/fan-in as explicit orchestrator division; :538 — choreography as alternative paradigm"
+      - "docs/canonical/goal-driven-agents-over-workflows.md:27-58 — critique of declared workflow DAGs (alignment without typed-event mechanism)"
+      - "docs/canonical/agent-specific-data-freshness-pipeline.md:30-38 — event-driven pipeline; :70-86 — declared NOT implemented"
+      - "Counter-evidence: docs/canonical/multi-agent-fault-tolerance.md:20-40 — declared A→B→C workflows, Saga rollback; .opencode/skills/orchestrator/SKILL.md:12-29 — central orchestrator"
+      - "NOT_FOUND: zero-declared-edge architecture, log-reconstructed topology, drop-in agent-file extension via public schemas, schema registry, pub/sub runtime — searched docs/canonical/, docs/decisions/, curriculum/, .opencode/, README.md"
+    integration_value: "Medium"
+  - name: "Agent as Declarative File"
+    classification: "Partial Coverage"
+    justification: >-
+      Core mechanics already run in this repo: .opencode/agents/ holds agent
+      definitions as markdown with declarative frontmatter (description, mode,
+      temperature, tools, permissions) loaded by the OpenCode runtime —
+      git-versioned, diffable, PR-reviewable — and README markets this as a
+      reusable template. Canonical docs teach declarative agent specs as files
+      in Git (file-system-materialization, Ghostwriter YAML specs) and a
+      per-agent-role agent-vm.yaml. Missing: event subscriptions and schedules
+      as fields of the file format, folder-scan drop-in discovery, and the
+      non-coder contribution reframe.
+    evidence:
+      - ".opencode/agents/hop-orchestrator-rezek.md:1-19 — declarative agent file (description, mode, temperature, tools, permissions) loaded by OpenCode runtime"
+      - "README.md:136-140 — .opencode/ agent system (3 agents, 36 skills) offered as reusable template"
+      - "docs/canonical/file-system-materialization.md:38 — declarative agent spec as YAML in Git more agent-accessible; :52-58 — Ghostwriter edits YAML specs via Git"
+      - "docs/canonical/model-agnostic-agent-vm-harness.md:55-70 — agent-vm.yaml declarative per-agent-role spec (vm, memory, evals, goal, model)"
+      - "docs/canonical/file-system-materialization.md:66 — file-based coordination curriculum lesson"
+      - "docs/canonical/alarm-clock-agent-lifecycle.md:32-48 — self-scheduling agents exist as canonical pattern (not as file-format field)"
+      - "NOT_FOUND: events accepted/returned and schedule in the declarative format, drop-in auto-discovery story, non-coder contribution pattern — searched .opencode/, docs/canonical/, docs/decisions/, curriculum/"
+    integration_value: "Medium"

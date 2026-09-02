@@ -1,0 +1,85 @@
+# Typed mirror of classification-batch-b.md — patterns 6-9 (batch B of 2)
+# Target: long-running-agents @ base_commit 48c5d45
+# Precedence: docs/decisions/ > docs/canonical/ > docs/evidence/ > docs/analysis/ > curriculum/ > READMEs
+- name: "Agent Kernel Runtime"
+  classification: "Partial Coverage"
+  justification: >-
+    As tres responsabilidades do kernel (agendamento, isolamento, journaling) existem como
+    canonicais independentes, mas a unificacao — runtime que agenda processos, isola execucao
+    e registra journal, com o agente como processo de primeiro classe e frontend de definicao
+    trocavel — nao existe como modelo nomeado. A inversao de posse contra frameworks esta
+    documentada em Owned Agent Control Loop, mas a implementacao de referencia (mhc-backend)
+    delega o loop ao LangGraph, o exato estado que o padrao denuncia.
+  evidence:
+    - "docs/canonical/owned-agent-control-loop.md:22-27 — framework loop como black box, sem intervention points"
+    - "docs/canonical/owned-agent-control-loop.md:77-85 — tabela Framework-Owned vs Developer-Owned"
+    - "docs/canonical/owned-agent-control-loop.md:107 — 'LangGraph owns the loop'; iteracao framework-managed"
+    - "docs/canonical/model-agnostic-agent-vm-harness.md:45 — slot 1 Per-agent VM, isolated execution environment"
+    - "docs/canonical/model-agnostic-agent-vm-harness.md:36-37 — before/after da reconstrucao Kavak"
+    - "docs/canonical/alarm-clock-agent-lifecycle.md:44-48 — wake-work-sleep, self-scheduling, durable wake trigger"
+    - "docs/canonical/alarm-clock-agent-lifecycle.md:85 — repo audit: scheduler como primitiva faltante (pre-canonical)"
+    - "docs/canonical/closed-loop-agent-operating-system.md:28-37 — OS de quatro superficies (nivel operacoes, nao kernel de processos)"
+    - "docs/canonical/closed-loop-agent-operating-system.md:61-68 — Partial: mecanica espalhada, sem modelo unico de OS"
+    - "NOT_FOUND: grep 'first-class process|agent as process|supervisor|daemon|process isolation|frameworks just call' em docs/canonical/ e docs/decisions/ — apenas ruido do flywheel daemon systemd (eval-dashboard-primary-detection-surface.md:51, always-on-monitoring-human-triage.md:64); nenhum doc unifica scheduler+isolamento+journal como kernel"
+  integration_value: "High"
+- name: "Cron plus Typed Events Orchestration Surface"
+  classification: "Partial Coverage"
+  justification: >-
+    Os dois eixos existem separados: "quando" tem canonical (alarm-clock) e scheduler nativo
+    na arquitetura KODA; "porque" e ensinado como choreography/event-driven pub/sub no
+    curriculum. A composicao como superficie completa de orquestracao — cron + eventos tipados
+    substituindo a camada de framework, com agentes declarativos declarando schedules e
+    assinaturas — nao existe. O anti-orchestration-graph do repo (goal-driven-agents) chega a
+    conclusao vizinha por argumento diferente (goals, nao eventos).
+  evidence:
+    - "docs/canonical/alarm-clock-agent-lifecycle.md:30-38 — opcoes quebradas, incluindo external orchestrator poller como anti-pattern"
+    - "docs/canonical/alarm-clock-agent-lifecycle.md:44 — 'This is the scheduling primitive for the fleet'"
+    - "curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md:1660 — 'O KODA ja tem um scheduler'"
+    - "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md:43,51,66 — cron marcado REDUNDANTE, deveria usar scheduler KODA"
+    - "curriculum/05-core-concepts/07-multi-agent-coordination.md:296,309 — choreography com eventos de dominio"
+    - "curriculum/06-knowledge-graphs/04-problem-solution-mapping.md:1057 — Event Bus pub/sub"
+    - "curriculum/04-nivel-4-koda-specific/real-world-exercises/exercise-02.md:255 — coordenacao Event-Driven (Pub/Sub)"
+    - "docs/canonical/goal-driven-agents-over-workflows.md:27-33 — workflow DAG rejeitado como unidade de especificacao; :88 'goals age better than orchestration graphs'"
+    - "docs/canonical/alarm-clock-agent-lifecycle.md:85-86 — scheduler primitivo ausente no nivel de implementacao (doc-level only)"
+    - "NOT_FOUND: nenhum doc declara cron+eventos tipados como superficie de orquestracao completa/declarativa; busca por 'cron|schedule|typed events|orchestration surface' em docs/canonical/, docs/decisions/, curriculum/ retorna so os ingredientes"
+  integration_value: "Medium"
+- name: "Failure-Accrued Runtime Growth"
+  classification: "Partial Coverage"
+  justification: >-
+    O principio (nada especulativo; cada peca justificada por dor/falha observada;
+    sequenciamento descoberto) ja esta documentado a profundidade canonical em Pull-Based
+    Infrastructure on Pain e vizinhos. Faltam a instancia especifica deste fonte — mapa 1:1
+    falha-producao -> primitiva-de-runtime (log append-only, fila com retry+dedup, prompts
+    content-addressed), o framing 'runtime como sedimento das falhas' e o contraponto
+    explicito ao design upfront de agent operating systems. O proprio pull-on-pain registra
+    que o principio no repo estava escopado a eval e harness governance.
+  evidence:
+    - "docs/canonical/pull-based-infrastructure-on-pain.md:43 — infra adicionada reativamente quando a ausencia vira binding constraint"
+    - "docs/canonical/pull-based-infrastructure-on-pain.md:45-52 — tabela 1:1 infra <- dor que a puxa"
+    - "docs/canonical/pull-based-infrastructure-on-pain.md:56-59 — 'Cada investimento responde a uma restricao sentida, nao a especulacao'; sequenciamento descoberto, nao planejado"
+    - "docs/canonical/pull-based-infrastructure-on-pain.md:77-81 — NOT_FOUND declarado pelo repo: generalizacao full-stack e minimal-launch sequencing ausentes; principio escopado a eval/harness"
+    - "docs/canonical/pain-signal-eval-progression-gate.md:28,36 — menor capacidade que endereca a dor observada"
+    - "docs/canonical/symphony-trap-awareness.md:27,33 — build then distill; especificacao emerge de sistema rodando"
+    - "docs/canonical/production-failure-regression-flywheel.md:26-40 — falha -> ativo de regressao (output eval, nao peca de runtime)"
+    - "NOT_FOUND: nenhum doc mapeia incidentes nomeados a primitivas de runtime interno na ordem de aparecimento da falha; buscado em docs/canonical/, docs/analysis/ (exceto o fonte Remi Louf), curriculum/"
+  integration_value: "Medium"
+- name: "Presence-in-the-Loop Interface Ladder"
+  classification: "Partial Coverage"
+  justification: >-
+    O canonical Presence-in-the-Loop Metric cobre o nucleo da medicao (presence timeline,
+    stale-presence, thresholds por risco) mas com polaridade de governanca oposta: manter o
+    owner ENGAJADO durante trabalho de risco, versus medir atencao exigida pela interface
+    como maturidade de produto com direcao a ~zero presenca (unattended como produto; mobile
+    como transitorio). Escadas adjacentes existem (routing binario AFK/human; autonomia
+    observe/assist/own com lambda). Faltam a taxonomia de modos de interface
+    (interativo/semi-remoto/unattended) por atencao exigida e a decisao direcional de produto.
+  evidence:
+    - "docs/canonical/presence-in-the-loop-metric.md:23-27 — problema: humano aparece so no fim para aprovar diff grande (polaridade governanca)"
+    - "docs/canonical/presence-in-the-loop-metric.md:29-67 — presence timeline, stale-presence warnings, risk-tiered thresholds, intervention points"
+    - "docs/canonical/human-afk-task-routing-gate.md:30-37 — escada binaria AFK-ready vs human-in-loop em quatro dimensoes"
+    - "docs/canonical/autonomy-curriculum-sampling.md:41-63 — observe/assist/own com lambda 0.0->1.0; 'autonomy should be a dial, not a switch' (:63)"
+    - "curriculum/GLOSSARY.md:650-662 — definicao da metrica ensinada"
+    - "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric.md — implementacao PresenceTracker ensinada em N3"
+    - "curriculum/03-nivel-3-advanced-architecture/01-multi-agent-systems.md:1667-1684 — presence timeline no caso de governo multi-agente"
+    - "NOT_FOUND: grep 'semi-remote|SSH with vibes|interface ladder|maturity ladder|unattended' em docs/canonical/ — unico match e alias de docs/canonical/agent-value-maturity-ladder.md:10, que e escada de valor/switching costs (:36-52), construto diferente; nenhum doc classifica modos de interface por atencao exigida"
+  integration_value: "Medium"

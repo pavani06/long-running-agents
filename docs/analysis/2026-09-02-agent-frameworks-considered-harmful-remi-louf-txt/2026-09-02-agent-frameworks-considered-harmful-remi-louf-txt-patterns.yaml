@@ -1,0 +1,291 @@
+title: "Padroes Reutilizaveis de Sistemas Agenticos: Agent Frameworks Considered Harmful (Remi Louf, .txt)"
+type: analysis
+date: 2026-09-02
+extraction_mode: FILE
+source_file: "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-analysis.md"
+tags:
+  - agentes-orquestracao
+  - harness-engineering
+  - context-engineering
+  - error-handling
+  - production
+extraction_scope:
+  kept: "apenas padroes aplicaveis a sistemas agenticos"
+  excluded:
+    - marketing
+    - anedotas
+    - licoes puramente organizacionais
+patterns:
+  - name: "Typed Tool and Event Boundaries"
+    problem_solved: "Acoes invalidas do modelo (tool inexistente, evento fora do schema) atravessam o runtime; ~20% dos eventos eram rejeitados com modelos fracos em structured outputs."
+    inputs:
+      - "Tool calls emitidos pelo modelo na fronteira agente-ferramentas."
+      - "Eventos publicados e consumidos na fronteira agente-agentes."
+      - "Schemas declarados por agente: o que aceita e o que retorna."
+      - "Validador no kernel aplicado em ambas as fronteiras."
+    outputs:
+      - "Tool calls e eventos conformes ao schema, ou rejeitados na fronteira antes de produzir efeito."
+      - "Contrato de entrada e saida explicito por agente."
+    benefits:
+      - "Torna acoes ruins impossiveis, nao apenas improvaveis."
+      - "Elimina a perda de ~20% de eventos invalidos."
+      - "Contratos tipados entre agentes substituem convencoes implicitas."
+    limitations:
+      - "Custo de schema e validacao em toda fronteira."
+      - "Acoplamento a stack de structured outputs."
+      - "A fronteira rejeita, nao corrige: carga rejeitada continua sendo gerada por modelos fracos."
+    components:
+      typed_tool_boundary: "Validacao por schema na fronteira agente-ferramentas."
+      typed_event_boundary: "Validacao por schema na fronteira agente-agentes."
+      schema_registry: "Declaracao do que cada agente aceita e retorna."
+      kernel_validator: "Enforcement no kernel, postura non-negotiable."
+    flow:
+      steps:
+        - "Modelo emite tool call ou evento."
+        - "Kernel valida contra o schema declarado na fronteira."
+        - "Conforme: dispatch da tool ou publicacao do evento."
+        - "Inconforme: rejeicao na fronteira; a acao invalida nunca executa."
+
+  - name: "Content-Addressed Prompt Graph"
+    problem_solved: "Impossivel saber o que efetivamente entrou no contexto (compaction, quirks de provider, thinking oculto); prompts mudam sem rastro; compaction vira manipulacao de strings."
+    inputs:
+      - "Partes do prompt: system prompt, descricao de cada skill, descricao de cada tool, user message."
+      - "Funcao de hash e armazenamento enderecado por conteudo (git/Nix style)."
+      - "Respostas do modelo no mesmo esquema."
+    outputs:
+      - "Prompt como lista/grafo de hashes antes da renderizacao."
+      - "Resposta que traca de volta ao prompt exato e ao conteudo exato do contexto."
+      - "Diffs entre runs e replay identico (outro modelo ou modificacao)."
+      - "Compaction como manipulacao de grafo; KV cache facilitado."
+    benefits:
+      - "Debug por reconstrucao exata do input."
+      - "Regressao de prompt rastreavel (qual componente mudou)."
+      - "Troca de modelo por custo com avaliacao da saida."
+      - "Auditabilidade em escala."
+    limitations:
+      - "Investimento grande (deep rabbit hole)."
+      - "Nasce de falha de producao, nao de plano."
+      - "Disciplina de content addressing em toda peca, sem excecoes."
+    components:
+      prompt_decomposer: "Separa o prompt em partes nomeadas."
+      content_hasher: "Endereca cada parte por hash."
+      hash_graph: "Representacao do prompt como grafo de hashes pre-renderizacao."
+      response_store: "Respostas enderecadas no mesmo esquema."
+      diff_engine: "Compara componentes entre duas runs."
+      replay_engine: "Reconstrroi a request do grafo e reenvia identica ou modificada."
+    flow:
+      steps:
+        - "Decompor o prompt em partes (system, skills, tools, user message)."
+        - "Hashear e armazenar cada parte."
+        - "Representar o prompt como grafo de hashes antes de renderizar texto."
+        - "Armazenar a resposta no mesmo esquema."
+        - "Consultar: diff entre runs, replay, compaction via grafo."
+
+  - name: "Append-Only Causal Event Log"
+    problem_solved: "Trabalho perdido entre passos e debugging impossivel com multiplos agentes (3-4 agentes ja sao major debugging headaches)."
+    inputs:
+      - "Eventos publicados por todos os agentes e processos."
+      - "Ligacoes causais registradas no momento do evento."
+      - "Tabela unica append-only como destino obrigatorio."
+    outputs:
+      - "Log unico, queryavel, imutavel (a memoria do sistema)."
+      - "Cadeia causal navegavel de qualquer falha de volta ao gatilho."
+    benefits:
+      - "Elimina trabalho perdido: tudo salvo para sempre."
+      - "Debug viavel da falha ao gatilho."
+      - "Substrato para topologia emergente e auditoria."
+    limitations:
+      - "Volume de armazenamento cresce sem remocao."
+      - "Valor depende de todo evento ser publicado."
+      - "Causalidade precisa ser capturada no momento do evento."
+    components:
+      append_only_table: "Unica tabela de eventos, sem update/delete."
+      event_publisher: "Publicacao obrigatoria por agentes e processos."
+      causal_link: "Registro de qual evento disparou qual evento."
+      query_interface: "Consulta sobre o log completo."
+    flow:
+      steps:
+        - "Agente ou processo publica evento no log append-only."
+        - "Log registra o evento com ligacao causal ao disparador."
+        - "Falha ocorre em producao."
+        - "Navegar a cadeia causal da falha de volta ao gatilho."
+        - "Query do log para analise e auditoria."
+
+  - name: "Emergent Event Topology"
+    problem_solved: "Grafos de agentes definidos em codigo criam arestas para manter e restringem contribuicao a quem codifica."
+    inputs:
+      - "Agentes que publicam e assinam eventos tipados."
+      - "Schemas de eventos publicos e conhecidos."
+      - "Log de eventos como registro do que aconteceu."
+    outputs:
+      - "Topologia emergente do log, sem arestas declaradas."
+      - "Fan-in e fan-out gratuitos."
+      - "Extensao por drop de novo arquivo de agente."
+    benefits:
+      - "Zero arestas para manter."
+      - "Extensao sem codar (pipeline voice note, transcritor, daily brief, Slack em producao)."
+      - "Contribuicao desacoplada do codigo de orquestracao."
+    limitations:
+      - "Nenhuma visao global declarada; a topologia so existe no log."
+      - "Descoberta depende de conhecer os eventos existentes."
+      - "Debug depende integralmente do log causal."
+    components:
+      pub_sub: "Publicacao e assinatura de eventos tipados."
+      event_schemas: "Contratos publicos que viabilizam descoberta."
+      log_as_topology: "O log e a unica fonte da topologia real."
+    flow:
+      steps:
+        - "Agente publica evento tipado no log."
+        - "Assinantes declarados em seus arquivos consomem o evento."
+        - "A topologia fica registrada no que o log diz que aconteceu."
+        - "Novo agente entra conhecendo os eventos existentes, sem codar arestas."
+        - "Fan-in e fan-out emergem das assinaturas."
+
+  - name: "Agent as Declarative File"
+    problem_solved: "Editar prompt dentro de codigo de framework e restringir criacao de agentes a engenheiros."
+    inputs:
+      - "Arquivo markdown/YAML solto numa pasta com a definicao do agente (prompt, tools, eventos aceitos/retornados, schedule)."
+      - "Runtime que escaneia a pasta e carrega definicoes."
+    outputs:
+      - "Agente descoberto e executado; magicamente aparece."
+      - "Definicao versionavel no git, diffavel, reviewavel em PR."
+    benefits:
+      - "Onboarding de agente = drop de arquivo."
+      - "Contribuicao por nao-codificadores (20 agentes em um mes)."
+      - "Formato pertence a userland; frontend alternativo nao precisa usar markdown."
+    limitations:
+      - "Menos expressividade que codigo (YAML e odiado)."
+      - "Dependencia do runtime que consome o formato."
+      - "Capacidade limitada ao que o formato declarativo expressa."
+    components:
+      agent_file: "Markdown/YAML com prompt, tools, eventos e schedule."
+      discovery_scanner: "Runtime escaneia a pasta de definicoes."
+      loader: "Carrega o arquivo e instancia o processo do agente."
+      vcs_surface: "Git, diff e PR sobre os arquivos de agente."
+    flow:
+      steps:
+        - "Escrever o arquivo markdown do agente."
+        - "Dropar o arquivo na pasta de definicoes."
+        - "Runtime descobre, carrega e registra o agente."
+        - "Agente aparece e passa a rodar sob schedules e assinaturas."
+        - "Mudancas futuras entram como PR diffavel e reviewavel."
+
+  - name: "Agent Kernel Runtime"
+    problem_solved: "Frameworks invertem a relacao de posse: agentes vivem dentro das abstracoes de terceiro em vez de serem processos isolados do seu sistema."
+    inputs:
+      - "Definicoes declarativas de agentes (userland)."
+      - "Scheduler de processos, isolamento por processo, journaling (log + definicao do agente)."
+      - "Fronteiras tipadas de tool calls e eventos."
+    outputs:
+      - "Runtime que agenda, isola e faz journaling; ao kernel nao importa o que o agente faz."
+      - "Agente como processo de primeiro classe do sistema do usuario."
+    benefits:
+      - "Inverte a relacao do framework: sem plugin em abstracao de terceiro."
+      - "Reutiliza responsabilidades classicas de SO."
+      - "Frontend de definicao trocavel sem trocar o kernel."
+    limitations:
+      - "Manutencao do runtime proprio (build vs buy com infra indefinida)."
+      - "Kernel completo exige log causal, content addressing e fila com dedup."
+      - "Menor velocidade inicial que framework pronto."
+    components:
+      scheduler: "Agenda processos de agente (cron e eventos)."
+      isolation: "Cada agente roda como processo isolado."
+      journaling: "Log append-only mais definicao do agente."
+      userland: "Definicoes declarativas fora do kernel."
+      typed_boundaries: "Fronteiras validadas por schema."
+    flow:
+      steps:
+        - "Runtime escaneia a pasta de definicoes declarativas."
+        - "Carrega cada agente como processo isolado."
+        - "Agenda execucao via cron e eventos tipados."
+        - "Executa com isolamento e fronteiras validadas."
+        - "Registra journaling de tudo no log."
+
+  - name: "Cron plus Typed Events Orchestration Surface"
+    problem_solved: "Camadas adicionais de orquestracao para expressar quando um agente roda e porque ele rodou."
+    inputs:
+      - "Cron: dimensao quando (pontos no tempo)."
+      - "Eventos tipados: dimensao porque (o que aconteceu no mundo)."
+      - "Arquivos declarativos de agente com schedules e assinaturas."
+    outputs:
+      - "Sistema de agentes completo sem camada de orquestracao adicional."
+      - "Reatividade a nota de voz, email, CRM, PR aberto/mergeado."
+    benefits:
+      - "Duas primitivas baratas substituem a camada de framework."
+      - "Good old software orchestration: nada novo sob o sol."
+      - "Interface declarativa em vez de codigo de orquestracao."
+    limitations:
+      - "Cron isolado e insuficiente: ponto no tempo nao e reatividade."
+      - "Composicao dos dois eixos depende de eventos tipados."
+      - "Sem visao declarada do conjunto; o que existe so aparece no log."
+    components:
+      cron_scheduler: "Dispara agentes em pontos no tempo."
+      event_triggers: "Disparam agentes por mudanca no mundo."
+      agent_files: "Declaram schedules e assinaturas por agente."
+      pub_sub: "Entrega de eventos tipados entre agentes."
+    flow:
+      steps:
+        - "Definir schedule cron no arquivo do agente (quando)."
+        - "Evento externo chega: nota de voz, email, CRM, PR (porque)."
+        - "Runtime dispara o agente assinante."
+        - "Agente processa e emite eventos tipados."
+        - "Eventos disparam os proximos agentes da cadeia."
+
+  - name: "Failure-Accrued Runtime Growth"
+    problem_solved: "Design upfront de runtime produz pecas especulativas; a alternativa e pagar a divida conforme ela aparece."
+    inputs:
+      - "Sistema rodando em producao real."
+      - "Falhas observadas: trabalho perdido, entrega duplicada, regressao irreproduzivel de prompt."
+      - "Mapa 1:1 falha, peca."
+    outputs:
+      - "Peca minima adicionada por falha: log append-only, fila com retry e dedup, prompts content-addressed."
+      - "Runtime como sedimento das falhas."
+    benefits:
+      - "Nada especulativo; cada peca tem justificativa observada."
+      - "Contraponto pragmatico ao design upfront de agent OS."
+      - "Primeira versao em ~1 dia; o resto no runtime e nos modos de falha."
+    limitations:
+      - "O sistema quebra em producao primeiro; a falha e o metodo."
+      - "Exige producao real e observabilidade para gerar falhas."
+      - "Custo de estabilidade durante o acrescimo."
+    components:
+      failure_ledger: "Registro 1:1 de falha observada para peca do runtime."
+      production_loop: "Sistema rodando de verdade como fonte de falhas."
+      minimal_piece_rule: "Uma peca minima por falha, nada mais."
+      delivery_queue: "Fila com contagem de tentativas e dedup (nasce da entrega duplicada)."
+    flow:
+      steps:
+        - "Rodar o sistema em producao."
+        - "Observar e registrar a falha real."
+        - "Mapear 1:1 para a peca minima que impede aquela falha."
+        - "Implementar apenas essa peca."
+        - "Repetir; o runtime cresce como sedimento das falhas."
+
+  - name: "Presence-in-the-Loop Interface Ladder"
+    problem_solved: "Medir maturidade de interface de agente por capacidade do modelo esconde o gargalo real: atencao humana exigida."
+    inputs:
+      - "Inventario de interfaces (TUI, app mobile, background agent)."
+      - "Avaliacao de atencao exigida por modo (total, parcial, ~zero)."
+      - "Meta de produto de reduzir presenca humana."
+    outputs:
+      - "Classificacao em escada: interativo, semi-remoto, unattended."
+      - "Decisao direcional: o produto prometido e o modo unattended; mobile e transitorio."
+    benefits:
+      - "Presenca-no-loop como metrica de maturidade independente do modelo."
+      - "Identifica pilotar agentes pelo celular como sintoma transitorio."
+      - "Direciona investimento para remover o humano do loop."
+    limitations:
+      - "Taxonomia de produto, nao mecanismo; nao implementa nada por si."
+      - "O degrau unattended exige os demais padroes para ser seguro."
+      - "Unattended e ~zero, nao zero: falhas ainda escalam para humanos."
+    components:
+      attention_axis: "Eixo de atencao humana exigida."
+      interface_modes: "Interativo (total), semi-remoto (parcial), unattended (~zero)."
+      maturity_direction: "Direcao de evolucao da interface do produto."
+    flow:
+      steps:
+        - "Inventariar as interfaces de agente existentes."
+        - "Classificar cada uma pela atencao humana exigida."
+        - "Identificar onde a presenca humana e o gargalo."
+        - "Priorizar o degrau unattended como destino."
+        - "Medir a reducao de presenca como metrica de maturidade."

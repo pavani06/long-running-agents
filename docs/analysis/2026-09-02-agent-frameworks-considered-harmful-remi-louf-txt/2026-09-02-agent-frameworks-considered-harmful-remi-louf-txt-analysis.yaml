@@ -1,0 +1,166 @@
+# Analise de Conhecimento Nao-Obvio: Agent Frameworks Considered Harmful (Remi Louf, .txt)
+#
+# Convencoes:
+# - type: analise estruturada derivada da transcricao da palestra
+# - Estrutura: frameworks, patterns, operational_lessons, tradeoffs, failure_patterns, synthesis
+# - Todo claim e rastreavel a transcricao original
+# - Sem marketing, anedotas, historias pessoais, repeticao
+
+meta:
+  title: "Agent Frameworks Considered Harmful — Extracao de Conhecimento Nao-Obvio"
+  source: "/home/pavanpavan/raw-knowledge/sources/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt.md"
+  date: "2026-09-02"
+  type: "analysis"
+
+frameworks:
+  - name: "Taxonomia de modos de interacao humano-agente"
+    components:
+      - name: "interativo (TUI)"
+        role: "agente capaz mas exige presenca total — 'trator que voce dirige'"
+      - name: "semi-remoto (app mobile, 'SSH with vibes')"
+        role: "agente roda sem voce ao lado, mas voce corrige trajetoria por controle remoto; transitório e absurdo como estado final"
+      - name: "unattended (background agent)"
+        role: "trabalha o dia todo sem controle remoto nem atencao — estado-alvo prometido"
+      - name: "eixo da taxonomia"
+        role: "presenca humana exigida — a maturidade da interface e medida em atencao removida"
+
+  - name: "Kernel vs. framework (agente como processo)"
+    components:
+      - name: "kernel/runtime"
+        role: "agenda processos, isola, faz journaling (log + definicao do agente); nao importa o que o processo faz"
+      - name: "userland (definicao markdown)"
+        role: "agente definido em arquivo markdown descartavel/swapavel; frontend alternativo nao precisa usar markdown"
+      - name: "principio do kernel"
+        role: "tornar acoes ruins impossiveis, nao apenas improvaveis — via fronteiras tipadas"
+      - name: "inversao dos frameworks"
+        role: "frameworks call code: os agentes vivem dentro das abstracoes do framework, nao do seu sistema"
+
+  - name: "Sistema de agentes = schedules + eventos"
+    components:
+      - name: "cron"
+        role: "cobre a dimensao 'quando' — pontos no tempo; explicitamente insuficiente sozinho"
+      - name: "eventos"
+        role: "cobrem a dimensao 'porque isso aconteceu' — nova nota de voz, email, entrada de CRM, PR aberto/mergeado"
+      - name: "definicao markdown por agente"
+        role: "arquivo dropado numa pasta; runtime carrega e o agente aparece; 'a interface e isso e o produto inteiro ate agora'"
+
+  - name: "O chat e uma mentira (modelo de proveniencia do prompt)"
+    components:
+      - name: "compaction"
+        role: "contexto renderizado difere do enviado ao modelo"
+      - name: "quirks de provider"
+        role: "detalhes de montagem de contexto nao expostos"
+      - name: "thinking traces ocultos"
+        role: "OpenAI/Anthropic nao compartilham o raciocinio interno; certeza total do input e impossivel pela UI"
+      - name: "consequencia de design"
+        role: "runtime de agentes precisa de mecanismo proprio de proveniencia exata do contexto"
+
+  - name: "Runtime como divida paga por falha"
+    components:
+      - name: "nota de voz sumiu"
+        role: "gerou o log append-only (tudo salvo para sempre)"
+      - name: "brief postado 2x"
+        role: "gerou fila com contagem de tentativas e dedup"
+      - name: "prompt destroido sem rastro"
+        role: "gerou o sistema content-addressed de prompts"
+      - name: "principio"
+        role: "pagar divida conforme aparece — alternativa explicita ao design upfront de runtime"
+
+patterns:
+  - name: "Fronteiras tipadas (typed tool calls + typed events)"
+    problem: "acoes invalidas do modelo: chamar tools inexistentes, emitir eventos fora do schema (~20% de eventos rejeitados com modelo ruim em structured outputs)"
+    mechanism: "duas fronteiras com o mundo externo validadas por schema: (1) tool calls tipados agente-ferramenta; (2) eventos tipados agente-agentes, cada agente declara o que aceita e o que retorna via structured outputs; 'non-negotiable' — o kernel torna acoes ruins impossiveis, nao improvaveis"
+
+  - name: "Prompt content-addressed (grafo de hashes estilo git/Nix)"
+    problem: "impossivel saber o que entrou no contexto do modelo; prompts mudam sem rastro; compaction exige manipular strings; custo de API sem alternativa de replay"
+    mechanism: "prompt decomposto em partes (system prompt, descricao de cada skill, descricao de cada tool, user message); cada parte armazenada e enderecada por hash; o prompt e representado como lista/grafo de hashes antes de renderizar texto; resposta do modelo armazenada no mesmo esquema; toda resposta traca de volta ao input exato"
+
+  - name: "Capacidades gratuitas do grafo de hashes"
+    problem: "debug, diff, replay, compaction, KV cache e auditoria tratados normalmente como recursos separados a construir"
+    mechanism: "um unico primitivo gera todos: diff entre runs (quais componentes mudaram — user message, skill, tool — e quais eram continuacao da mesma sessao); replay (reconstruir a request do grafo e reenviar identica com outro modelo ou modificada, para eval e reducao de custo); compaction como manipulacao de grafo; KV cache management indireto; auditabilidade total em escala (saber exatamente o que aconteceu e porque retornou o que retornou)"
+
+  - name: "Log append-only com causalidade (event sourcing de agentes)"
+    problem: "trabalho perdido entre passos e debugging inviavel — 'mesmo com 3-4 agentes voce ja tem major debugging headaches'"
+    mechanism: "unica tabela append-only de eventos; todo evento publicado; eventos causalmente ligados (qual disparou qual); tudo queryavel; 'o log e a memoria do sistema — nada e perdido, tudo e observado'"
+
+  - name: "Topologia emergente por eventos (sem grafos em codigo)"
+    problem: "grafos de agentes em codigo exigem arestas mantidas em codigo e restringem contribuicao a quem programa"
+    mechanism: "agentes apenas publicam e assinam eventos tipados; zero arestas declaradas; fan-in/fan-out gratis; topologia emerge do que o log diz que aconteceu; estender o sistema = dropar novo arquivo markdown conhecendo os eventos existentes; pipeline real: voice note dropada -> evento -> transcritor emite voice-note-processed -> daily-brief combina cron + notas -> evento slack.message.post -> assinante posta no Slack"
+
+  - name: "Agente-como-arquivo markdown (contribuicao sem codigo)"
+    problem: "editar prompt dentro de codigo de framework ('passei todo o tempo editando o prompt dentro do codigo')"
+    mechanism: "definicao do agente e arquivo markdown/YAML numa pasta; runtime carrega e o agente aparece; versionavel no git, diffavel, reviewavel em PR; resultado organizacional: 20 agentes em producao apos um mes, contribuidos tambem por gente nao-tecnica"
+
+operational_lessons:
+  - lesson: "Background agents bem executados sao magicos"
+    context: "brief matinal gerado sozinho, melhor do que o manual — a promessa de anos finalmente realizavel no modo unattended"
+  - lesson: "As dificuldades sao good old engineering problems"
+    context: "nada novo sob o sol em orquestracao de agentes; e orquestracao de software classica — filas, logs, retries, versionamento"
+  - lesson: "Modelos open-source ja sao suficientes para essa workload"
+    context: "substituiu todas as APIs terceiras; roda modelo local ate no laptop; 'bom o suficiente para o que faco' (para coding, desconhecido)"
+  - lesson: "Observabilidade revela custo rapido"
+    context: "com telemetria, percebe que o custo sobe muito rapido — motivacao direta para replay com modelos open-source"
+  - lesson: "Categoria de infra unsettled: build antes de buy"
+    context: "construir primeiro para saber exatamente o que precisa e as limitacoes do que existe; vantagem para tech CEO de empresa pequena"
+  - lesson: "Framework builders deveriam eat your own dog food"
+    context: "as vezes e claro que quem constroi agent orchestration frameworks nao usa o proprio produto"
+  - lesson: "Primeira versao em ~1 dia com Codex"
+    context: "usou o proprio agente para escrever a primeira versao; o resto da semana foi gasto nos modos de falha e no runtime"
+  - lesson: "Duas semanas de imersao pratica mudaram a trajetoria da empresa"
+    context: "contra o modo 'so pensando no next thing' — parar e imergir no campo"
+
+tradeoffs:
+  - decision: "Markdown/YAML em vez de codigo de framework"
+    benefit: "versionavel, diffavel, review em PR; contribuicao por nao-codificadores; onboarding de agente = drop de arquivo"
+    cost: "YAML odiado; menos expressividade que codigo; dependencia do runtime que consome o formato"
+  - decision: "Eventos em vez de grafos em codigo"
+    benefit: "zero arestas para manter; fan-in/fan-out gratis; topologia emergente; extensivel por quem conhece os eventos"
+    cost: "sem visao global declarada — a topologia so existe no que o log diz que aconteceu; descoberta exige conhecer os eventos existentes"
+  - decision: "Content addressing de prompts"
+    benefit: "diffs entre runs, replay com outro modelo, compaction como grafo, KV cache, auditabilidade total"
+    cost: "deep rabbit hole — investimento grande, nascido de uma falha real, nao de um plano"
+  - decision: "Fronteiras tipadas obrigatorias (tools + eventos)"
+    benefit: "acoes ruins impossiveis (nao so improvaveis); elimina ~20% de eventos invalidos"
+    cost: "custo de schema/validacao em toda fronteira; acoplamento a stack de structured outputs"
+  - decision: "Build antes de buy com infra unsettled"
+    benefit: "conhecimento exato das necessidades proprias e dos limites do mercado"
+    cost: "tempo de CEO/engineering; manutencao de runtime proprio"
+  - decision: "Divida paga por falha (sem design upfront de runtime)"
+    benefit: "cada peca do runtime tem justificativa observada; nada especulativo"
+    cost: "o sistema quebra em producao primeiro — a falha e o metodo"
+
+failure_patterns:
+  - pattern: "Entrega duplicada (brief postado 2x no Slack)"
+    cause: "sem fila: multiplas tentativas sem contagem, sem dedup"
+    mitigation: "fila com contagem de tentativas e semantica de entrega"
+  - pattern: "Trabalho perdido (nota de voz sumiu)"
+    cause: "nada persistido entre passos do pipeline"
+    mitigation: "log append-only — tudo salvo para sempre"
+  - pattern: "Regressao irreproduzivel de prompt (market brief virou lixo)"
+    cause: "semana de tweaks de prompt sem versionamento; impossivel lembrar qual mudanca quebrou"
+    mitigation: "content addressing de prompts + diff entre runs"
+  - pattern: "Eventos invalidos (~20% rejeitados)"
+    cause: "modelo fraco em structured outputs emitindo payload fora do schema"
+    mitigation: "fronteiras tipadas com validacao — tornar impossivel, nao improvavel"
+  - pattern: "Opacidade de debug (nao saber o que o modelo viu)"
+    cause: "chat UI nao representa o contexto real: compaction, quirks de provider, thinking traces ocultos"
+    mitigation: "grafo de hashes do prompt — resposta traca ate o input exato"
+  - pattern: "Dor de custo ao observar telemetria"
+    cause: "burn de API sobe rapido assim que ha observabilidade"
+    mitigation: "replay do grafo com modelos open-source/locais"
+
+synthesis: >
+  O titulo fala de frameworks, mas a tese real e de dissolucao de camada: quando o runtime
+  assume as responsabilidades classicas de um kernel (agendamento, isolamento, journaling)
+  e a definicao do agente vira arquivo declarativo, a camada de framework perde razao de
+  existir — o que frameworks empacotam como grafo em codigo reaparece como duas primitivas
+  baratas (cron e evento tipado) mais um log. Segunda tese, nao nomeada pelo autor: um
+  unico primitivo — o evento content-addressed e causalmente encadeado — e a origem de
+  quase todo o resto; debug, diffs, replay, compaction, KV cache, auditabilidade e a
+  viabilidade de trocar modelo por custo derivam do mesmo grafo de hashes, nenhuma
+  construida isoladamente. Terceira tese implicita: a escada de maturidade do produto e
+  medida em atencao humana removida (TUI -> celular -> unattended), nao em capacidade do
+  modelo — a interface e o gargalo transitivo, e pilotar agentes pelo celular durante uma
+  caminhada e o sintoma do absurdo. Por fim, o metodo importa tanto quanto a arquitetura:
+  o runtime foi acrescido por falha, cada componente com justificativa observada em
+  producao — contraponto pragmatico ao design upfront de agent operating systems.

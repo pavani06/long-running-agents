@@ -1,0 +1,77 @@
+meta:
+  type: artifact-manifest
+  date: 2026-09-02
+  source_slug: agent-frameworks-considered-harmful-remi-louf-txt
+  classification_file: docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/classification.yaml
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/typed-event-boundaries.md
+      pattern: Typed Tool and Event Boundaries
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/content-addressed-prompt-graph.md
+      pattern: Content-Addressed Prompt Graph
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/append-only-causal-event-log.md
+      pattern: Append-Only Causal Event Log
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/emergent-event-topology.md
+      pattern: Emergent Event Topology
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/agent-as-declarative-file.md
+      pattern: Agent as Declarative File
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/agent-kernel-runtime.md
+      pattern: Agent Kernel Runtime
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/cron-plus-typed-events-orchestration.md
+      pattern: Cron plus Typed Events Orchestration Surface
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/failure-accrued-runtime-growth.md
+      pattern: Failure-Accrued Runtime Growth
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/presence-interface-ladder.md
+      pattern: Presence-in-the-Loop Interface Ladder
+      classification: Partial Coverage
+      priority: P2
+  skills: []
+  exercises:
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-18-typed-event-boundaries.md
+      pattern: Typed Tool and Event Boundaries
+      classification: Partial Coverage
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-19-content-addressed-prompt-graph.md
+      pattern: Content-Addressed Prompt Graph
+      classification: Partial Coverage
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-20-causal-event-log.md
+      pattern: Append-Only Causal Event Log
+      classification: Partial Coverage
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-21-agent-kernel-runtime.md
+      pattern: Agent Kernel Runtime
+      classification: Partial Coverage
+  examples: []
+
+skipped:
+  skills:
+    - reason: "0 patterns classified Missing — skills são artefatos exclusivos de Missing (P0); nenhum gerado nesta sessão"
+  already_exists: []
+  better_implementation: []
+
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 9
+    skills: 0
+    exercises: 4
+    examples: 0
+  notes:
+    - "Todas as 9 classificações foram Partial Coverage (4 High = P1, 5 Medium = P2); nenhum padrão Missing ou Already Exists"
+    - "P1 patterns (1, 2, 3, 6) receberam canonical doc + exercise; P2 (4, 5, 7, 8, 9) receberam canonical doc (exercise opcional não criado)"
+    - "Numeracao de exercicios (18-21) e slugs canonicos pre-atribuidos pelo orquestrador; todos os slugs verificados livres antes da criacao"
