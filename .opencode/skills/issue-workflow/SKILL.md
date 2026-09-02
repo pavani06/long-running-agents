@@ -12,12 +12,11 @@ Manage GitHub Issues through the full lifecycle with automatic project integrati
 ### On Session Start (ALWAYS)
 1. Detect issue number from branch or ask user
 2. Fetch issue details and display context
-3. Add `in-progress` label
+3. Add `agent:working` label
 4. Post "Starting session" comment with work plan
 
 ### During Work (AFTER EACH SIGNIFICANT CHANGE)
 1. Update acceptance criteria checkboxes when completed
-2. Post progress comment for: bug fixes, decisions, blockers
 
 ### On Session End (ALWAYS)
 1. Post handoff comment with completed/pending/next steps
@@ -26,7 +25,7 @@ Manage GitHub Issues through the full lifecycle with automatic project integrati
 
 ### On Issue Completion (ALWAYS)
 1. Verify all acceptance criteria are checked
-2. Remove `in-progress` label
+2. Remove `agent:working` label
 3. Post completion comment
 4. Close issue (or let PR close it)
 
@@ -99,8 +98,8 @@ ISSUE_NUM=$(echo "$BRANCH" | grep -oE '^issue/([0-9]+)' | cut -d/ -f2)
 # 1. Fetch and display context
 gh issue view $ISSUE_NUM --json title,body,labels,state
 
-# 2. Add in-progress label
-gh issue edit $ISSUE_NUM --add-label "in-progress"
+# 2. Add agent:working label
+gh issue edit $ISSUE_NUM --add-label "agent:working"
 
 # 3. Post starting comment with work plan
 gh issue comment $ISSUE_NUM --body "## Starting Session — $(date)
@@ -114,7 +113,7 @@ gh issue comment $ISSUE_NUM --body "## Starting Session — $(date)
 - Branch: $(git branch --show-current)"
 ```
 
-### Progress Logging
+### Progress Logging (optional)
 
 **For routine changes (file creation, minor edits):**
 ```bash
@@ -195,7 +194,7 @@ gh issue comment $ISSUE_NUM --body "## Completed — $(date)
 - [x] Code self-reviewed"
 
 # 2. Remove work labels
-gh issue edit $ISSUE_NUM --remove-label "in-progress"
+gh issue edit $ISSUE_NUM --remove-label "agent:working"
 
 # 3. Close issue
 gh issue close $ISSUE_NUM
@@ -207,7 +206,7 @@ gh issue close $ISSUE_NUM
 
 | Label | When to Add | When to Remove |
 |-------|-------------|----------------|
-| `in-progress` | Session start | Issue closed |
+| `agent:working` | Session start | Issue closed |
 | `blocked` | When blocked | When unblocked |
 
 ## Anti-Patterns
@@ -223,7 +222,7 @@ gh issue close $ISSUE_NUM
 ```bash
 # Session start
 gh issue view N --json title,body,labels,state
-gh issue edit N --add-label "in-progress"
+gh issue edit N --add-label "agent:working"
 gh issue comment N --body "..."
 
 # Progress
@@ -234,7 +233,7 @@ gh issue edit N --body "$(gh issue view N --json body -q .body | sed 's/- \[ \] 
 gh issue comment N --body "## Session Handoff..."
 
 # Completion
-gh issue edit N --remove-label "in-progress"
+gh issue edit N --remove-label "agent:working"
 gh issue comment N --body "## Completed..."
 gh issue close N
 ```
