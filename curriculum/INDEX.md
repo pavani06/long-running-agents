@@ -145,6 +145,10 @@ last_updated: 2026-06-26
 - `03-nivel-3-advanced-architecture/exercises/exercise-15-agent-first-data-foundation.md` (Agent-First Data Foundation)
 - `03-nivel-3-advanced-architecture/exercises/exercise-16-bulk-in-context-trace-analysis.md` (Bulk In-Context Trace Analysis)
 - `03-nivel-3-advanced-architecture/exercises/exercise-17-self-iterating-agent-loop.md` (Self-Iterating Agent Loop)
+- `03-nivel-3-advanced-architecture/exercises/exercise-18-typed-event-boundaries.md` (Typed Event Boundaries)
+- `03-nivel-3-advanced-architecture/exercises/exercise-19-content-addressed-prompt-graph.md` (Content-Addressed Prompt Graph)
+- `03-nivel-3-advanced-architecture/exercises/exercise-20-causal-event-log.md` (Append-Only Causal Event Log)
+- `03-nivel-3-advanced-architecture/exercises/exercise-21-agent-kernel-runtime.md` (Agent Kernel Runtime)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`

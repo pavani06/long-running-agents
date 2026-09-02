@@ -119,6 +119,10 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-10-agent-value-maturity-ladder.md
 │   │   │   ├── exercise-11-software-graph-review-substrate.md
 │   │   │   ├── exercise-12-semantic-rule-gated-auto-approve-block.md
+│   │   │   ├── exercise-18-typed-event-boundaries.md
+│   │   │   ├── exercise-19-content-addressed-prompt-graph.md
+│   │   │   ├── exercise-20-causal-event-log.md
+│   │   │   ├── exercise-21-agent-kernel-runtime.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md

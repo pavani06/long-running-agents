@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-08-31
+last_updated: 2026-09-02
 relates-to: []
 sources: []
 ---
@@ -66,6 +66,15 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/trial-retention-attribution-split/SKILL.md|.opencode/skills/trial-retention-attribution-split/SKILL.md]] | Skill de diagnóstico: separa ativação de retenção (trial flag + weekly-active + atribuição de duas ramas) para impedir que alarme de gestão vire rollback cego do produto |
 | [[.opencode/skills/agent-value-maturity-ladder/SKILL.md|.opencode/skills/agent-value-maturity-ladder/SKILL.md]] | Skill de auditoria: classifica roadmap/deployment contra a escada de 4 estágios de valor e detecta wow-collapse não planejado e custos de troca não construídos |
 | [[.opencode/skills/perceived-eval/SKILL.md|.opencode/skills/perceived-eval/SKILL.md]] | Skill de implementação: instrumenta a qualidade percebida em produção tratando correção/pushback do usuário como dado de avaliação — capta correction, rage quit, chat exit, NPS e alimenta o loop produção-para-offline |
+| [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]] | Contrato de eventos tipados entre agentes — fronteira de evento com schema e dispatch determinístico |
+| [[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]] | Grafo de prompts endereçado por conteúdo (hash) para reconstrução exata de inputs |
+| [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]] | Log de eventos causal append-only — event sourcing de agentes, log como memória |
+| [[docs/canonical/emergent-event-topology|Emergent Event Topology]] | Topologia de agentes emergente por eventos tipados — coreografia sem arestas declaradas |
+| [[docs/canonical/agent-as-declarative-file|Agent as Declarative File]] | Agente como arquivo declarativo — discovery por varredura de pasta e onboarding drop-in |
+| [[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]] | Runtime de kernel de agente — agente como processo com scheduling, isolamento e journaling |
+| [[docs/canonical/cron-plus-typed-events-orchestration|Cron plus Typed Events Orchestration Surface]] | Superfície de orquestração em dois eixos — schedules (cron) + eventos tipados |
+| [[docs/canonical/failure-accrued-runtime-growth|Failure-Accrued Runtime Growth]] | Crescimento do runtime acumulado por falhas — mapa falha→primitiva, débito pago conforme aparece |
+| [[docs/canonical/presence-interface-ladder|Presence Interface Ladder]] | Escada de interface por presença — do SSH com vibes ao unattended como produto |
 | [[docs/canonical/agent-lifecycle|Agent Lifecycle]] | Ciclo de vida unificado de issues: claim → worktree → implement → review → merge → cleanup, em 5 componentes (orchestrator, issue-start, issue-workflow, issue-review, issue-finish) com label único `agent:working` |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
@@ -169,7 +178,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 176 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 185 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -348,6 +357,15 @@ Tópicos candidatos a ADR:
 | `shadow-builds-separated-compute.md` | Shadow Builds on Separated Compute: shadow deploy em compute separado do serving para artefatos de agente (Clay) |
 | `skills-cli-native-agent-data-access.md` | Skills and CLI as Native Agent Data Access: skills/CLI como acesso nativo a dados para agentes, com trabalho no nível do goal (Clay) |
 | `observability-threshold-eval-trigger.md` | Observability-Threshold Eval Trigger: threshold de observabilidade (escala de runs/mensagens) como gatilho estrutural de investimento em evals (Clay) |
+| `typed-event-boundaries.md` | Contrato de eventos tipados entre agentes — fronteira de evento com schema e dispatch determinístico |
+| `content-addressed-prompt-graph.md` | Grafo de prompts endereçado por conteúdo (hash) para reconstrução exata de inputs |
+| `append-only-causal-event-log.md` | Log de eventos causal append-only — event sourcing de agentes, log como memória |
+| `emergent-event-topology.md` | Topologia de agentes emergente por eventos tipados — coreografia sem arestas declaradas |
+| `agent-as-declarative-file.md` | Agente como arquivo declarativo — discovery por varredura de pasta e onboarding drop-in |
+| `agent-kernel-runtime.md` | Runtime de kernel de agente — agente como processo com scheduling, isolamento e journaling |
+| `cron-plus-typed-events-orchestration.md` | Superfície de orquestração em dois eixos — schedules (cron) + eventos tipados |
+| `failure-accrued-runtime-growth.md` | Crescimento do runtime acumulado por falhas — mapa falha→primitiva, débito pago conforme aparece |
+| `presence-interface-ladder.md` | Escada de interface por presença — do SSH com vibes ao unattended como produto |
 
 | Documento | Cobre |
 |---|---|
