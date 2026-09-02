@@ -212,6 +212,26 @@ Mas os andaimes têm custo real.
 - ❌ **Não é "confiar cegamente no modelo".** Algumas proteções são invariantes e nunca saem.
 - ❌ **Não é um projeto único.** É um ritmo — trimestral, como revisão de arquitetura.
 
+### O Harness como Kernel: Agendamento, Isolamento e Journaling
+
+Antes de evoluir componentes, vale nomear o que o harness **é** como runtime. O modelo que amarra as peças: o harness opera como um **kernel** que reutiliza as responsabilidades clássicas de sistema operacional, com o agente como **processo de primeira classe do sistema do usuário** — não um plugin dentro das abstrações de um framework ([[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]]):
+
+| Responsabilidade do kernel | O que faz | Peça correspondente |
+|---|---|---|
+| **Agendamento** | Decide quando cada processo-agente roda (cron, wake triggers) | [[docs/canonical/alarm-clock-agent-lifecycle\|Alarm-Clock Agent Lifecycle]] |
+| **Isolamento** | Cada agente executa em ambiente isolado; falha não contamina vizinhos | [[docs/canonical/model-agnostic-agent-vm-harness\|Model-Agnostic Agent-VM Harness]] |
+| **Journaling** | Registra o que aconteceu e qual definição rodou | Trace layer deste módulo (componente 12, KEEP permanente) |
+
+Três propriedades do modelo:
+
+1. **Ao kernel não importa o que o agente faz.** O kernel agenda, isola e registra — sem conhecer a semântica interna do agente. Essa agnosticidade é o que separa kernel de userland.
+2. **O frontend de definição é trocável.** A definição do agente vive na userland (arquivo declarativo); o kernel a consome sem depender do formato — ver [[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]].
+3. **O princípio de design é tornar ações ruins impossíveis, não improváveis** — via fronteiras tipadas validadas em runtime para tool calls e eventos ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]).
+
+Este frame importa para a evolução em duas direções. Primeiro, ele explica o invariant #6 abaixo: componentes de compensação de modelo vão e voltam (BUILD → REMOVE), mas as três responsabilidades do kernel — agendar, isolar, registrar — **nunca saem**; o que muda é quanta muleta cada responsabilidade precisa. Segundo, ele é o antídoto ao tradeoff de framework: quem hospeda o agente nas abstrações de terceiro delega o próprio kernel ([[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]] — "LangGraph owns the loop"). Evoluir o harness é evoluir o kernel que você possui.
+
+**Granularidade:** este kernel opera no nível de processos individuais; o [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]] opera no nível das operações da frota. Camadas distintas, não sinônimos.
+
 ---
 
 ## 🔄 O Ciclo de Vida do Harness
@@ -1372,6 +1392,8 @@ Aprofundamento conceitual dessas três frentes em [[curriculum/05-core-concepts/
 
 7. **One In, One Out.** Cada componente novo força a investigação de um existente para remoção. O harness não cresce — ele se transforma.
 
+8. **O harness é um kernel: agenda, isola e registra.** Componentes de compensação de modelo entram e saem pelo ciclo de vida, mas as três responsabilidades de runtime — agendamento, isolamento, journaling — são invariantes. E o kernel que você possui é o antídoto ao framework que possuiria o seu agente.
+
 ---
 
 ## ✅ Checkpoint: O Que Você Aprendeu
@@ -1751,6 +1773,10 @@ Mas antes de seguir, lembre-se: o que você removeu ou simplificou até aqui for
 ---
 
 ## Padrões Relacionados (Sierra)
+
+**[[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]]** — O frame de runtime que unifica três canônicos já vinculados a esta lição: Alarm-Clock (agendamento), Agent-VM Harness (isolamento) e o trace/journal. A tese: o agente como processo de primeira classe do sistema do usuário, com o kernel agnóstico ao que o agente faz.
+
+A conexão com esta lição é estrutural: o ciclo BUILD→STABILIZE→SIMPLIFY→REMOVE decide o destino de **componentes** do kernel; o frame do kernel define quais responsabilidades nunca entram no ciclo (agendar, isolar, registrar são invariantes, não candidatas a remoção). Evoluir o harness sem esse frame é otimizar peças sem saber qual é a máquina.
 
 **[[docs/canonical/confidence-gated-continual-learning|Confidence-Gated Continual Learning]]** — Mecanismo de quatro estágios (detectar → sugerir → revisar → implantar) com thresholds de confiança que determinam quando uma melhoria pode ser aplicada automaticamente (FYI) ou exige aprovação humana. Veja o exercício em [[exercises/exercise-confidence-gated-learning|Exercise: Confidence-Gated Learning]].
 

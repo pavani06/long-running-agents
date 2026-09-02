@@ -824,6 +824,39 @@ otimizar apenas por preço, ignorando a alergia ao glúten.
 
 ---
 
+### Técnica 7: Reconstrução da Cadeia Causal (caused_by)
+
+#### Quando Usar
+
+Quando a falha envolve múltiplos agentes ou processos e a timeline (Técnica 1) mostra o que aconteceu, mas não explica **o que disparou o quê** — o caso clássico de "major debugging headaches" com 3-4 agentes rodando em paralelo.
+
+#### Como Fazer
+
+1. Comece pelo evento de falha e leia o campo `caused_by` dele
+2. Caminhe a cadeia de `caused_by` evento a evento até o evento gatilho
+3. Verifique se cada elo da cadeia foi capturado no publish — elo ausente significa que a causalidade não existe como dado
+
+```
+CAUSAL CHAIN: slack.message.post.failed
+════════════════════════════════════════════════════════════
+
+evt_93 slack.message.post.failed   ← FALHA (duplicate_delivery)
+  caused_by: [evt_92]
+evt_92 brief.generated             ← o brief que disparou o post
+  caused_by: [evt_91, evt_20]
+evt_91 voice_note.processed        ← o elo intermediário
+  caused_by: [evt_88]
+evt_88 voice_note.received         ← o GATILHO: a nota de voz
+
+CONCLUSÃO: a nota de voz evt_88 atravessou transcrição (evt_91)
+e brief (evt_92) até falhar na entrega duplicada (evt_93). A
+timeline mostraria 4 timestamps; a cadeia mostra quem causou quem.
+```
+
+A distinção contra tracing de spans: `parent_span_id` responde "quem chamou quem dentro de uma execução"; `caused_by` responde "qual evento do sistema disparou este evento", atravessando agentes, filas e schedules. A regra load-bearing: causalidade é capturada **no momento do publish** — reconstrução posterior não é confiável; se não foi registrada quando o evento aconteceu, não existe. Esta técnica é o consumo de diagnóstico do [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]].
+
+---
+
 ## 📊 Tabela Comparativa: Estratégias de Diagnóstico
 
 Existem três abordagens fundamentais para diagnosticar problemas em agentes. Cada uma tem seu lugar.
@@ -1795,6 +1828,7 @@ Para cada padrão, execute o teste de confirmação:
 - [ ] **Técnica 4 - Contract Compliance:** A decisão respeita TODOS os termos do Sprint Contract?
 - [ ] **Técnica 5 - Confidence Profile:** Qual o `confidence_score`? Está acima do threshold de segurança?
 - [ ] **Técnica 6 - Decision Diff:** Se houve múltiplas decisões, o que mudou entre a primeira e a última?
+- [ ] **Técnica 7 - Causal Chain:** O evento de falha tem `caused_by`? Caminhe a cadeia até o evento gatilho — a timeline mostra a ordem, a cadeia mostra a causa.
 
 ### Fase 5: Diagnóstico e Correção (10-30 minutos)
 
@@ -2440,9 +2474,9 @@ Você agora consegue identificar e diagnosticar os 6 padrões de falha que cobre
 5. **Evaluation Failure** — quando o gatekeeper aprova o que deveria rejeitar (ou vice-versa)
 6. **Coordination Failure** — quando componentes individuais funcionam mas a interação falha
 
-### As 6 Técnicas de Diagnóstico
+### As 7 Técnicas de Diagnóstico
 
-Você domina 6 técnicas para extrair a verdade de qualquer trace:
+Você domina 7 técnicas para extrair a verdade de qualquer trace:
 
 1. **Análise Temporal** — reconstruir a timeline de eventos
 2. **Data Lineage** — rastrear o caminho de um dado através do sistema
@@ -2450,6 +2484,7 @@ Você domina 6 técnicas para extrair a verdade de qualquer trace:
 4. **Contract Compliance** — validar que cada decisão respeita os contratos definidos
 5. **Confidence Profiling** — identificar decisões frágeis antes que causem problemas
 6. **Decision Diff** — comparar decisões para entender o que mudou e por quê
+7. **Causal Chain** — caminhar a cadeia `caused_by` da falha de volta ao evento gatilho
 
 ### O Sistema de Diagnóstico
 

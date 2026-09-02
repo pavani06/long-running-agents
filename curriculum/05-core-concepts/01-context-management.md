@@ -689,6 +689,16 @@ O catálogo endereça **memória omitida**; o resolver endereça **instruções 
 
 Na prática, o placement pressupõe o endereçamento por grafo de software (serviços e contratos como nós e arestas — ver [[docs/canonical/software-graph-review-substrate|Software Graph Review Substrate]]): cada ato de codificação posiciona o conhecimento no nó ou aresta onde ele se aplica, e a recuperação durante review percorre o subgrafo afetado coletando as regras que governam exatamente aqueles elementos. É o complemento de placement do Addressable Memory Catalog e do Relational Context Graph (estratégia 12 abaixo). Para o padrão completo: [[docs/canonical/graph-addressed-context-placement|Graph-Addressed Context Placement]].
 
+#### Content-Addressed Prompt Graph
+
+Falta a quarta família de endereçamento: o que efetivamente **entrou no prompt**. A sessão de chat não representa o prompt real — compaction faz o contexto renderizado diferir do enviado, e quirks de provider escondem detalhes de montagem. A disciplina de content addressing decompõe o prompt em componentes (system prompt, descrição de cada skill, descrição de cada tool, user message), armazena cada componente **endereçado por hash de conteúdo** (estilo git/Nix) e representa o prompt como um **grafo de hashes antes da renderização em texto**. A resposta do modelo fica ligada ao grafo exato que a produziu — toda resposta traça de volta ao prompt exato, e do prompt ao conteúdo exato do contexto.
+
+Um único primitivo, várias capacidades de graça: reconstrução exata do input para debug, diff por componente entre runs (mudou a user message, uma skill ou uma tool?), replay idêntico do input exato — inclusive para trocar de modelo quando o custo sobe — e compaction como manipulação de grafo em vez de edição de strings. É o complemento do Addressable Memory Catalog: o catálogo endereça o que ficou **de fora** do contexto; os hashes endereçam o que entrou.
+
+**Exemplo KODA:** o market brief de segunda "virou lixo" após uma semana de tweaks de prompt sem que ninguém conseguisse lembrar qual mudança quebrou. Com hashing por componente, o diff entre a run boa e a run ruim mostra em segundos qual componente mudou.
+
+**Riscos:** investimento grande ("deep rabbit hole", na palavra do próprio autor da disciplina); exige hashing em toda peça de prompt, sem exceções; duplicação de armazenamento por conteúdo exige garbage collection de nós mortos. Para o padrão completo: [[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]].
+
 ### 5. Compaction/Compression server-side e client-side
 
 **Como funciona:** Compacta mensagens, tool results e estados antes de enviá-los ao modelo ou usa mecanismos do servidor para condensar histórico.
@@ -2135,6 +2145,7 @@ Use este checklist quando for implementar Context Management em qualquer agent s
 - [ ] Criar fallback humano quando estado crítico está conflitante.
 - [ ] Revisar periodicamente quais dados devem expirar por privacidade e relevância.
 - [ ] Documentar exemplos reais de falhas evitadas pelo Context Management.
+- [ ] Endereçar componentes de prompt por hash de conteúdo (system, skills, tools, user message) e registrar o grafo de hashes por chamada, para que toda resposta trace de volta ao input exato ([[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]]).
 - [ ] Verificação operacional 01: executar um caso KODA onde a restrição aparece cedo e a decisão acontece tarde, confirmando que a resposta final ainda respeita a restrição.
 - [ ] Verificação operacional 02: executar um caso KODA onde a restrição aparece cedo e a decisão acontece tarde, confirmando que a resposta final ainda respeita a restrição.
 - [ ] Verificação operacional 03: executar um caso KODA onde a restrição aparece cedo e a decisão acontece tarde, confirmando que a resposta final ainda respeita a restrição.

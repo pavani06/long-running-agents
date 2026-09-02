@@ -800,6 +800,21 @@ Para KODA, uma evolução saudável costuma ser:
 3. Mover partes quentes para filas quando houver volume.
 4. Expor APIs quando houver times ou serviços independentes.
 
+### Fronteiras Tipadas: o contrato validado entre agentes
+
+Independente do canal escolhido, o agente tem **duas fronteiras com o mundo externo**, e ambas precisam de contrato tipado validado em runtime ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]):
+
+| Fronteira | Contrato | Onde valida |
+| --- | --- | --- |
+| Agente-ferramentas | Schema de input por tool; retorno tipado | Antes do dispatch da tool |
+| Agente-agentes | Eventos que o agente aceita e retorna, declarados por agente | No publish e no consume do evento |
+
+No file-based coordination do KODA, o `schema_version` do JSON protocol é o embrião dessa fronteira: um arquivo sem `schema_version` reprova validação antes de ser lido. A fronteira completa vai além da validação passiva de arquivo — ela **declara por agente** quais eventos ele aceita e retorna, e rejeita carga não-conforme **antes de produzir efeito**.
+
+A postura é non-negotiable: o runtime existe para tornar ações ruins **impossíveis, não improváveis**. A fronteira rejeita, não corrige — no caso-fonte deste padrão, com modelos fracos em structured outputs, ~20% dos eventos eram inválidos; com a fronteira tipada, esses eventos deixam de circular em vez de serem descobertos tarde demais.
+
+Para o análogo agent-agent já canônico no repo (comentários de review em formato agent-parseable), ver [[docs/canonical/agent-to-agent-review-comment-protocol|Agent-to-Agent Review Comment Protocol]].
+
 ---
 
 ## 🎯 Estratégias de Coordenação
@@ -910,6 +925,23 @@ Regras praticas de coordenação:
 5. Sempre registre quem escreveu cada decisão.
 6. Sempre permita replay do trace.
 7. Trate state como fonte de verdade, não a memória temporaria do modelo.
+
+### O Extremo Emergente: Topologia que Só Existe no Log
+
+O event-driven acima ainda desenha quem reage a quê. Existe um extremo do espectro em que **nenhuma aresta é declarada**: agentes comunicam-se somente por pub/sub de eventos tipados, e a topologia do sistema **emerge do que o log diz que aconteceu** ([[docs/canonical/emergent-event-topology|Emergent Event Topology]]).
+
+Nesse extremo:
+
+1. Eventos tipados públicos e conhecidos são o único contrato entre publicador e assinantes.
+2. O log de eventos é a única representação do pipeline — não existe grafo desenhado.
+3. Estender o sistema é dropar um novo arquivo de agente que assina os eventos existentes — sem editar orquestração, sem deploy de código de grafo.
+4. Fan-in e fan-out vêm de graça, derivados das assinaturas.
+
+O caso-fonte real descreve um pipeline de produção assim: nota de voz dropada → evento → agente transcritor → evento processado → agente daily-brief → evento de mensagem → processo assinante posta no Slack. Nenhum ponto do pipeline conhece o pipeline; cada agente conhece apenas eventos.
+
+**Posicionamento contra o canon orchestrator-first do repo:** quando a tolerância a falha exige compensação transacional (Saga rollback) e contrato por etapa ([[docs/canonical/multi-agent-fault-tolerance|Multi-Agent Fault Tolerance]]), o modelo orchestrator-first permanece. Este extremo é ensinado como **contraste**: ele completa o espectro e dá mecanismo concreto (eventos tipados no lugar de grafo) à crítica de DAGs de workflow já feita pelo canon ([[docs/canonical/goal-driven-agents-over-workflows|Goal-Driven Agents over Workflows]]).
+
+O custo do extremo é simétrico ao benefício: nenhuma visão global declarada, descoberta depende de conhecer os eventos existentes, e o debug depende integralmente do log. Zero arestas para manter significa zero arestas para consultar.
 
 ### Gate de Roteamento: Tarefas AFK vs. Human-in-the-Loop
 
@@ -1358,6 +1390,28 @@ E, principalmente, permite que a equipe entenda exatamente o que aconteceu.
 
 ---
 
+## 🧠 O Modelo de Runtime: Agente como Processo, Harness como Kernel
+
+Frameworks de agentes invertem uma relação de posse: "frameworks just call code — your agents live inside their abstractions". O agente deixa de ser um processo do seu sistema e vira um plugin dentro das abstrações de terceiro ([[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]]). O contra-modelo nomeia o runtime que sustenta a frota como um **kernel**, reutilizando as responsabilidades clássicas de sistema operacional ([[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]]):
+
+| Responsabilidade do kernel | O que faz | Peça correspondente no ecossistema do repo |
+| --- | --- | --- |
+| **Agendamento** (scheduler) | Decide quando cada processo-agente roda (cron, wake triggers) | [[docs/canonical/alarm-clock-agent-lifecycle\|Alarm-Clock Agent Lifecycle]] — wake → work → sleep |
+| **Isolamento** (processo por agente) | Cada agente executa em ambiente isolado; falha não contamina vizinhos | [[docs/canonical/model-agnostic-agent-vm-harness\|Model-Agnostic Agent-VM Harness]] — per-agent VM |
+| **Journaling** (log) | Registra o que aconteceu e qual definição de agente rodou | Trace store imutável do pipeline KODA |
+
+Três propriedades definem o modelo:
+
+1. **Ao kernel não importa o que o agente faz.** O agente é um processo; o kernel agenda, isola e registra — sem conhecer a semântica interna do agente. Essa é a regra que separa kernel de userland.
+2. **O agente é um processo de primeira classe do sistema do usuário**, não um plugin hospedado nas abstracoes de um framework.
+3. **O frontend de definição é trocável.** A definição do agente vive na userland (arquivo declarativo — ver [[curriculum/03-nivel-3-advanced-architecture/03-file-based-coordination|File-Based Coordination]]); o kernel a consome sem depender do formato.
+
+O principio de design do kernel conecta esta lição às fronteiras tipadas vistas nos canais: tornar ações ruins **impossíveis, não improváveis**, validando tool calls e eventos na fronteira ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]).
+
+**Granularidade:** este kernel opera no nível de **processos individuais**. O [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]] é "OS" no nível das **operações da frota** (state intake, priority synthesis, execution routing, feedback writeback). São camadas distintas e complementares, não sinônimos.
+
+---
+
 ## ⚠️ Quando NÃO Usar Multi-Agente
 
 Multi-agent systems não são resposta para tudo.
@@ -1459,6 +1513,10 @@ Multi-agente ruim parece teatro.
 6. File-based coordination com JSON é o caminho mais simples para aprender, auditar e evoluir.
 
 7. Multi-agent systems devem ser usados quando a jornada exige ownership separado, não porque parecem avançados.
+
+8. O agente tem duas fronteiras tipadas com o mundo externo — tool calls e eventos — e ambas devem ser validadas por schema em runtime, rejeitando carga não-conforme antes de produzir efeito.
+
+9. O runtime que sustenta a frota é um kernel: agenda (scheduler), isola (processo por agente) e registra (journal). Ao kernel não importa o que o agente faz — e o agente é processo de primeira classe do sistema do usuário, não plugin de framework.
 
 ---
 
@@ -1751,9 +1809,31 @@ O PresenceTracker não é mais um agente -- é uma camada transversal de governa
 │  │  [t=360]  REVIEWER OPENED PR                         │   │
 │  │                                                      │   │
 │  │  Review Confidence: 0.72 (MODERATE_SUPERVISION)      │   │
-│  └─────────────────────────────────────────────────────┘   │
+  │  └──────────────────────────────────────────────────────┘   │
 └────────────────────────────────────────────────────────────┘
 ```
+
+### A Outra Polaridade da Mesma Métrica: A Escada de Modos de Interface
+
+O Presence-in-the-Loop acima mede presença como **métrica de governança**: o objetivo é MANTER o humano engajado durante trabalho de risco. A mesma grandeza — atenção humana no loop — tem uma segunda polaridade, de **métrica de maturidade de produto**: o objetivo passa a ser REDUZIR a atenção que a interface exige ([[docs/canonical/presence-interface-ladder|Presence Interface Ladder]]).
+
+A escada classifica modos de interface pela atenção que exigem do humano:
+
+| Degrau | Interface | Analogia | Atenção exigida |
+|---|---|---|---|
+| Interativo | TUI no terminal | trator que você dirige mesmo que "dirija sozinho" | total — você fica "em cima" |
+| Semi-remoto | app mobile | "SSH with vibes": controle remoto, corrige a trajetória "de vez em quando" | parcial — não está ao lado, mas continua pilotando |
+| Unattended | background agent | robô de corte autônomo, sem controle remoto | ~zero — trabalha o dia todo sozinho |
+
+A escada produz uma decisão direcional de produto:
+
+1. **O produto prometido é o modo unattended** — o agente como processo de fundo que produz resultado sem ninguém apontar.
+2. **O modo mobile é transitório** — pilotar agentes pelo celular durante uma caminhada é sintoma de interface imatura, não feature de destino.
+3. **Subir na escada não é trocar o modelo** — é remover atenção humana exigida, independente da capacidade do modelo.
+
+Duas ressalvas que ligam esta escada ao resto da lição. Primeiro, unattended reduz presença a ~zero, **não a zero**: falhas ainda escalam para humanos, e o Review Confidence Signal continua existindo para o degrau final. Segundo, o degrau unattended **exige** os demais mecanismos desta lição para ser seguro — fronteiras tipadas, log de eventos, replay — porque ninguém está olhando enquanto o agente trabalha.
+
+A distinção de polaridade é o conteúdo: governança quer presença no risco; produto quer removê-la da interface. A mesma maquinaria de medição (presence timeline, stale-presence, confidence signal) serve aos dois usos — são complementos, não duplicatas.
 
 ### Checklist de Governança para Sistemas Multi-Agente
 
@@ -1763,9 +1843,12 @@ O PresenceTracker não é mais um agente -- é uma camada transversal de governa
 - [ ] Stale-presence warnings são emitidos automaticamente quando o owner excede thresholds.
 - [ ] O Review Confidence Signal é anexado ao PR como evidência de governança.
 - [ ] A equipe revisa sessões com score < 0.30 em retrospectiva para identificar por que a supervisão falhou.
+- [ ] O modo de interface de cada jornada é classificado na escada interativo / semi-remoto / unattended, com a atenção humana exigida explícita.
+- [ ] Modo mobile é tratado como estado transitório na roadmap, não como investimento de destino; a meta declarada de produto é reduzir atenção exigida, não aumentar capacidade do modelo.
 
 **Para aprofundar:**
 - [[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Operating Metric]] -- canonical doc com a definição formal
+- [[docs/canonical/presence-interface-ladder|Presence Interface Ladder]] -- a polaridade de produto: atenção exigida por degrau de interface e unattended como meta
 - [[docs/canonical/manual-brake-question-gate|Manual Brake Question Gate]] -- gate complementar de pre-execução
 - [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-06-presence-in-the-loop-metric|Exercício 6: Presence-in-the-Loop]] -- implementação prática do PresenceTracker
 - [[curriculum/GLOSSARY|Glossário]] -- entrada para Presence-in-the-Loop Metric

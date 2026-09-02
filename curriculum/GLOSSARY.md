@@ -25,6 +25,19 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Agent as Declarative File (Agente como Arquivo Declarativo)
+**Definição:** Definir o agente como um arquivo markdown/YAML solto numa pasta que o runtime escaneia e carrega — com `events` (aceita/retorna, com schema e versão) e `schedule` (cron, timezone) como campos do formato. Onboarding de agente = drop de arquivo versionável, diffável e reviewável em PR; contribuição por não-codificadores que conhecem os eventos existentes.
+
+**Por que importa:** Editar prompt dentro de código de framework restringe a criação de agentes a engenheiros e torna toda extensão um deploy de orquestração. No caso-fonte, 20 agentes entraram em produção em um mês, contribuídos não apenas por gente técnica. O formato pertence à userland: o kernel consome a definição sem depender do formato.
+
+**Em KODA:** O repo já opera a mecânica central (`.opencode/agents/` com frontmatter declarativo); o delta são os campos `events` e `schedule` no formato.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/agent-as-declarative-file|Agent as Declarative File]], [[docs/canonical/file-system-materialization|File-System Materialization]], [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]], [[docs/canonical/cron-plus-typed-events-orchestration|Cron plus Typed Events Orchestration]]
+
+---
+
 ### Agent Degradation Loop Prevention (Prevencao do Loop de Degradacao)
 **Definição:** Framework diagnóstico que identifica qual dos quatro links do loop de degradação está dominando e aplica o interceptor específico. Os quatro links: (1) atenção desigual ao contexto, (2) erros que se compõem, (3) fragmentação de estado externo, (4) feedback inerte de memória (retrieval que alimenta a janela com ruído). Trata a causa raiz (o loop de feedback) em vez de sintomas individuais.
 
@@ -35,6 +48,17 @@ Referência rápida de termos usados neste programa.
 **Nível:** 3
 
 **Ver também:** [[docs/canonical/agent-degradation-loop-prevention|Agent Degradation Loop Prevention]], [[docs/canonical/context-health-monitoring|Context Health Monitoring]], [[docs/canonical/selection-budgeted-retrieval|Selection-Budgeted Retrieval]]
+
+---
+
+### Agent Kernel Runtime (Kernel de Agentes)
+**Definição:** O runtime que sustenta a frota como um kernel de sistema operacional, reunindo três responsabilidades clássicas: **agendamento** (decide quando cada processo-agente roda — cron, wake triggers), **isolamento** (cada agente executa em ambiente próprio; falha não contamina vizinhos) e **journaling** (registra o que aconteceu e qual definição rodou). O agente é um processo de primeira classe do sistema do usuário — não um plugin nas abstrações de um framework — e ao kernel não importa o que o agente faz.
+
+**Por que importa:** Frameworks invertem a relação de posse ("your agents live inside their abstractions"): o agente vira hóspede de terceiro. O frame do kernel amarra peças que já existem separadas (scheduler, VM por agente, log/tracer) num modelo único ensinável, e define quais responsabilidades são invariantes de runtime — agendar, isolar, registrar nunca saem, enquanto componentes de compensação de modelo entram e saem pelo ciclo de vida do harness.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/agent-kernel-runtime|Agent Kernel Runtime]], [[docs/canonical/owned-agent-control-loop|Owned Agent Control Loop]], [[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]], [[docs/canonical/model-agnostic-agent-vm-harness|Model-Agnostic Agent-VM Harness]], [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]]
 
 ---
 
@@ -215,6 +239,17 @@ Referência rápida de termos usados neste programa.
 
 ---
 
+### Cron plus Typed Events (Superfície de Orquestração Cron + Eventos Tipados)
+**Definição:** A composição de duas primitivas baratas como a superfície declarativa completa de orquestração: **cron** responde QUANDO o agente roda (pontos no tempo); **eventos tipados** respondem POR QUE ele rodou (reatividade a mudança do mundo). Regras: nenhuma camada de orquestração além das duas primitivas; cron isolado é explicitamente insuficiente (é só ponto no tempo, não reatividade); as assinaturas de schedule e evento vivem no arquivo declarativo do agente.
+
+**Por que importa:** Camadas de orquestração (grafos de agentes em código, workflows de framework) existem para expressar duas coisas simples. A composição substitui a camada inteira — "você não escreve código, e esse é o produto inteiro" — com a dependência nomeada: sem eventos tipados (schema), vira spaghetti de payloads.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/cron-plus-typed-events-orchestration|Cron plus Typed Events Orchestration Surface]], [[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]], [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]], [[docs/canonical/goal-driven-agents-over-workflows|Goal-Driven Agents over Workflows]]
+
+---
+
 ## D
 
 ### Deliberate Forgetting (Esquecimento Deliberado)
@@ -244,6 +279,17 @@ Referência rápida de termos usados neste programa.
 ---
 
 ## E
+
+### Emergent Event Topology (Topologia Emergente por Eventos)
+**Definição:** Arquitetura em que agentes comunicam-se **somente** por pub/sub de eventos tipados, com **zero arestas declaradas** em código. A topologia não é desenhada: ela emerge do que o log de eventos diz que aconteceu — o log é a única representação do pipeline. Extensão = dropar um novo arquivo de agente que assina os schemas públicos existentes; fan-in/fan-out derivam das assinaturas.
+
+**Por que importa:** Grafos de agentes definidos em código criam arestas para manter e restringem contribuição a quem codifica a orquestração (cada novo participante é um deploy de grafo). No repo, o padrão é ensinado como **contraste** — o extremo choreography do espectro orchestrator-vs-choreography —, não como substituto do canon orchestrator-first (Saga, contrato por etapa).
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/emergent-event-topology|Emergent Event Topology]], [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]], [[docs/canonical/multi-agent-fault-tolerance|Multi-Agent Fault Tolerance]], [[docs/canonical/goal-driven-agents-over-workflows|Goal-Driven Agents over Workflows]]
+
+---
 
 ### Evaluator (Avaliador)
 **Definição:** Um agente separado responsável por avaliar e gravar o trabalho de um Generator.
@@ -663,6 +709,19 @@ Sprint 4: Play mode
 
 ---
 
+### Presence Interface Ladder (Escada de Modos de Interface)
+**Definição:** Taxonomia de modos de interface humano-agente classificados pela **atenção que exigem do humano**: interativo (TUI no terminal — atenção total), semi-remoto (app mobile, o "SSH with vibes" — atenção parcial) e unattended (background agent — atenção ~zero). Produz uma decisão direcional de produto: o modo unattended é a meta; pilotar pelo celular é estado transitório, não feature de destino; subir na escada é remover atenção humana exigida, não trocar o modelo.
+
+**Por que importa:** Medir maturidade por capacidade do modelo esconde o gargalo real: quanta atenção humana a interface exige. Reserva de segurança: unattended reduz presença a ~zero, não a zero — falhas ainda escalam para humanos, e o degrau exige log causal, fronteiras tipadas e replay para ser seguro.
+
+**Polaridade oposta do** Presence-in-the-Loop Metric: mesma maquinaria de medição, uso direcional invertido (governança mede para MANTER presença no risco; produto mede para REMOVER atenção da interface).
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/presence-interface-ladder|Presence Interface Ladder]], [[docs/canonical/presence-in-the-loop-metric|Presence-in-the-Loop Metric]], [[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]], [[docs/canonical/autonomy-curriculum-sampling|Autonomy Curriculum Sampling]]
+
+---
+
 ## R
 
 ### Relational Context Graph (Grafo de Contexto Relacional)
@@ -918,6 +977,17 @@ Restante: 140,000 para agent rodar
 
 ---
 
+### Typed Event Boundary (Fronteira de Eventos Tipados)
+**Definição:** Contrato de schema validado em runtime nas **duas** fronteiras do agente com o mundo externo: agente-ferramentas (tool call validado antes do dispatch) e agente-agentes (cada agente declara os eventos que aceita e retorna; o runtime valida no publish e no consume). A fronteira **rejeita, não corrige**: carga não-conforme é barrada antes de produzir efeito — ações ruins tornam-se impossíveis, não apenas improváveis.
+
+**Por que importa:** No caso-fonte, ~20% dos eventos eram inválidos e só eram descobertos depois de publicados — detecção tarde demais para impedir o efeito. Sem a fronteira agente-agentes, o que um agente aceita e retorna é convenção implícita de payload, não contrato consultável. Generaliza o comentário de review agent-parseable para eventos quaisquer.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]], [[docs/canonical/structured-generation-constraint-validation-circuit|Structured Generation and Constraint Validation Circuit]], [[docs/canonical/deterministic-tool-dispatch|Deterministic Tool Dispatch]], [[docs/canonical/agent-to-agent-review-comment-protocol|Agent-to-Agent Review Comment Protocol]]
+
+---
+
 ## V
 
 ### Verification Loop (Loop de Verificação)
@@ -995,9 +1065,11 @@ Feedback → Volta ao Generator
 - LLM as Fuzzy Compiler, Invariant-Compensation Split
 - Persona-Based Documentation, Failure Pattern Classification Loop
 - Garbage Collection Day, QA-to-Backlog Feedback Loop
-- Presence-in-the-Loop Metric
+- Presence-in-the-Loop Metric, Presence Interface Ladder
 - Constraint Budget Gate, Constraint-Failure Decision Rule
 - Compartmented Evaluation Architecture
+- Agent Kernel Runtime, Typed Event Boundary
+- Agent as Declarative File, Cron plus Typed Events, Emergent Event Topology
 
 ### Nível 4 (KODA-Específico)
 - KODA, suas capacidades e aplicações
@@ -1045,6 +1117,10 @@ Você vê "Generator/Evaluator" mas não entende.
 ### Perceived-Eval vs. Presence-in-the-Loop
 - **Perceived-Eval:** Qualidade percebida pelo usuário final do produto (correção, rage quit, NPS)
 - **Presence-in-the-Loop:** Envolvimento do operador humano durante a execução do agente
+
+### Presence-in-the-Loop Metric vs. Presence Interface Ladder
+- **Presence-in-the-Loop Metric:** Métrica de GOVERNANÇA — mede presença para MANTER o humano engajado em trabalho de risco (presença desejada maior em high-risk)
+- **Presence Interface Ladder:** Métrica de PRODUTO — mede atenção exigida pela interface para REDUZI-la a ~zero (unattended como meta); mesma maquinaria de medição, polaridade oposta
 
 ---
 

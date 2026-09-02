@@ -636,6 +636,23 @@ harness_governance:
     - "Qual componente existente perde responsabilidade com esta entrada?"
 ```
 
+### 📋 Requisito: toda peça nova de runtime entra com a falha-fonte no ledger
+
+O One In One Out acima pergunta qual componente sai quando outro entra; este requisito pergunta o que **justifica a entrada**. O *runtime-piece-per-failure ledger* é a tabela que mapeia cada peça de runtime à falha de produção observada que a puxou, na ordem em que a falha apareceu ([[docs/canonical/failure-accrued-runtime-growth|Failure-Accrued Runtime Growth]]):
+
+| Falha de produção observada | Peça que nasceu dela | Data da falha |
+|---|---|---|
+| (ex: nota de voz sumiu entre passos do pipeline) | Log append-only causal | `<data>` |
+| (ex: brief postado 2x no Slack) | Fila com retry + dedup | `<data>` |
+| (ex: regressão de prompt irreproduzível) | Prompts content-addressed | `<data>` |
+
+Regra de gate: **peça sem falha-fonte no ledger é especulação** — a proposta de componente novo que não consegue nomear a falha observada (e a data em que doeu) é rejeitada, mesmo que passe no One In One Out. As perguntas de gate do One In One Out ("qual fraqueza real do modelo este componente cobre?") ganham a contraparte de runtime: "qual falha de produção observada puxou esta peça, e quando?". O ledger também alimenta a fase de Diagnóstico: componente cuja falha-fonte não ocorre mais há dois trimestres é candidato natural a SIMPLIFY/REMOVE — a dor que o justificava morreu.
+
+**Perguntas do ledger em revisão:**
+- Toda peça do inventário de runtime tem uma linha no ledger com falha observada e data?
+- Alguma peça entrou sem dor sentida (por roadmap, medo ou estética)? Qual sai, ou qual falha a justifica retroativamente?
+- Qual falha recente de produção ainda não virou peça — e qual é a peça mínima que a elimina?
+
 ### 📋 Passo 6: Escreva o Roadmap de Evolução
 
 | Ordem | Componente | Ação | Risco | Janela | Gate de avanço | Rollback |

@@ -456,6 +456,18 @@ A sequência de hardening é **descoberta, não planejada**: versionamento em Go
 
 O trade-off é explícito e aceito: o lançamento mínimo gera um **imposto permanente de re-arquitetura** (30-40% de capacidade — ver [[docs/canonical/continuous-re-architecture-budget|Continuous Re-Architecture Budget]]), porque cada endurecimento tardio retrabalha o que o stack mínimo improvisou. E a dor precisa estar **visível** — o que exige contato real com produção, não dashboards de demo. Para o padrão completo: [[docs/canonical/pull-based-infrastructure-on-pain|Pull-Based Infrastructure on Pain]].
 
+### Runtime como sedimento das falhas: Failure-Accrued Runtime Growth
+
+O pull-based infrastructure acima governa a stack em escala de produto; o *Failure-Accrued Runtime Growth* instancia o mesmo princípio em granularidade de **peça de runtime**: o mapa 1:1 de cada falha de produção observada para a peça mínima de runtime que a elimina, na ordem em que a falha apareceu — "paguei a dívida conforme ela aparecia". O runtime é o **sedimento das falhas**, não um design anterior a elas; é o contraponto explícito ao design upfront de "agent operating systems":
+
+| Falha observada em produção | Peça de runtime que nasceu dela |
+|---|---|
+| Nota de voz sumiu (nada persistido entre passos) | Log append-only causal ([[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]]) |
+| Brief postado 2x no Slack (tentativas sem contagem, sem dedup) | Fila com contagem de tentativas + dedup |
+| Prompt destruído sem regressão rastreável (semana de tweaks) | Prompts content-addressed ([[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]]) |
+
+Regras operacionais: **uma falha, uma peça mínima** (nada especulativo — cada componente tem justificativa observada); **a ordem é a ordem das falhas** (o sequenciamento é descoberto, não planejado); **a primeira versão é rápida e incompleta** (o resto do tempo vai para modos de falha e runtime); e **as falhas são o método, não o acidente** — o sistema quebra em produção primeiro porque a produção é a única fonte de justificativa. É a contraparte runtime do [[docs/canonical/production-failure-regression-flywheel|Production Failure Regression Flywheel]]: o flywheel converte falha em ativo de eval; este padrão converte falha em primitiva de runtime — duas saídas para o mesmo incidente. Para o padrão completo: [[docs/canonical/failure-accrued-runtime-growth|Failure-Accrued Runtime Growth]].
+
 ### Observability-threshold trigger: quando a dor deixa de ser perceptível
 
 O pain-signal gate acima é reativo e pressupõe que a dor ainda consegue ser *sentida*. O *Observability-Threshold Eval Trigger* (caso Clay) nomeia quando essa premissa quebra: **abaixo de um threshold de volume, evals leves são toleráveis porque humanos ainda conseguem inspecionar cada trace; acima dele, a incapacidade de observar é estrutural e o investimento em evals vira não-negociável** (na fonte: 300M runs/mês, 100K mensagens/semana).

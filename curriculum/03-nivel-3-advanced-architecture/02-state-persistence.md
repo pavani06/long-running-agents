@@ -949,6 +949,8 @@ def replay_turns(session_id, from_turn, to_turn):
     return state
 ```
 
+**Replay multi-agente exige log causal:** o replay acima funciona dentro de uma sessão porque a ordem dos turnos é conhecida. Entre múltiplos agentes (Planner, Generator, Evaluator, Fulfillment), a ordem cronológica não basta — é a causalidade que diz qual evento disparou qual. O substrato é o *Append-Only Causal Event Log*: todo evento de todo agente publicado num único destino append-only, com `caused_by` capturado no momento do publish. A cadeia causal navegável é o que permite reconstruir de qualquer falha de volta ao evento gatilho — cronologia sozinha não reconstrói isso. Para o padrão completo: [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]].
+
 ### Estratégia 3: Compensação (Saga Pattern)
 
 Quando uma operação que altera estado externo falha no meio, a compensação desfaz os passos já concluídos.

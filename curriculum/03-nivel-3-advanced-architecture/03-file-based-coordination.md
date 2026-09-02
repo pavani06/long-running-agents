@@ -883,6 +883,43 @@ Error payload explica falha.
 
 8. Um campo desconhecido pode ser ignorado se o schema permitir extensão.
 
+### O Agente como Arquivo Declarativo
+
+O JSON protocol define o contrato dos **dados** que circulam entre agentes.
+
+O passo seguinte é tratar a própria **definição do agente** com a mesma disciplina: um arquivo declarativo solto numa pasta, que o runtime escaneia e carrega ([[docs/canonical/agent-as-declarative-file|Agent as Declarative File]]).
+
+Este repo já opera essa mecânica: `.opencode/agents/` guarda definições de agente como markdown com frontmatter declarativo (description, mode, temperature, tools, permissions), versionadas em git e diffáveis em PR. O delta do padrão são dois campos que o formato ganha:
+
+```yaml
+# agents/daily-brief.md — arquivo declarativo do agente
+description: "Gera o daily brief a partir das notas duráveis"
+mode: subagent
+temperature: 0.2
+tools:
+  read: true
+  write: true
+events:                      # delta 1: assinaturas de eventos
+  accepts:
+    - { schema: voice-note.processed, version: 1 }
+  returns:
+    - { schema: brief.generated, version: 1 }
+schedule:                    # delta 2: schedule declarativo
+  cron: "0 7 * * *"
+  timezone: America/Sao_Paulo
+```
+
+Propriedades resultantes:
+
+1. **Onboarding de agente = drop de arquivo.** O agente "magicamente aparece" no próximo scan da pasta — sem deploy, sem código de orquestração.
+2. **Versionável, diffável, reviewável em PR** — o mesmo workflow de código, sem ser código.
+3. **Contribuição por não-codificadores.** Conhecer os eventos existentes e escrever um arquivo basta; no caso-fonte, 20 agentes entraram em produção em um mês, contribuídos não apenas por gente técnica.
+4. **O formato é da userland, não do kernel.** O runtime consome o arquivo; um frontend alternativo de definição poderia nem usar markdown.
+
+Os dois campos conectam este módulo aos vizinhos: `events` é onde a fronteira de eventos tipados ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]) se torna consultável por agente; `schedule` traz o lifecycle de self-scheduling do [[docs/canonical/alarm-clock-agent-lifecycle|Alarm-Clock Agent Lifecycle]] para dentro do arquivo. Juntos, são a materialização da superfície cron + eventos tipados ([[docs/canonical/cron-plus-typed-events-orchestration|Cron plus Typed Events Orchestration Surface]]).
+
+A limitação é honesta e declarada: YAML é menos expressivo que código, e a capacidade do agente fica limitada ao que o declarativo expressa. Quando isso prender, o caminho é evoluir o formato — não mover a definição de volta para código de framework.
+
 ---
 
 ## 🔄 Pipeline de Arquivos: Diagrama Completo
@@ -1402,6 +1439,8 @@ Se a tarefa é pequena, essa disciplina pode ser excesso.
 
 15. Todo reviewer consegue reproduzir a jornada a partir da pasta.
 
+16. Toda definição de agente é um arquivo declarativo versionado na pasta escaneada pelo runtime, declarando eventos que aceita/retorna e schedule quando existir.
+
 | Anti-padrão | Risco |
 | --- | --- |
 | **Arquivo final escrito direto** | Outro agente pode ler conteúdo parcial |
@@ -1414,6 +1453,7 @@ Se a tarefa é pequena, essa disciplina pode ser excesso.
 | **Pasta sem política de retenção** | Dados antigos acumulam risco e custo |
 | **Erro apenas em log** | Supervisor e agentes não conseguem reagir pelo file system |
 | **Nome de arquivo dinâmico demais** | Leitores não descobrem artefatos sem conhecimento oculto |
+| **Definição de agente em código de framework** | Toda extensão do sistema vira deploy de código; contribuição fica restrita a quem codifica a orquestração |
 
 ### Perguntas de design antes de criar um novo arquivo
 
@@ -1566,6 +1606,8 @@ O suporte deve conseguir ver se a mensagem foi preparada ou enviada.
 
 7. O padrão é melhor quando auditabilidade, retomada e aprendizado de contrato valem mais que latência mínima.
 
+8. A definição do agente merece a mesma disciplina que os dados: arquivo declarativo na pasta do runtime, com eventos que aceita/retorna e schedule como campos do formato — onboarding por drop de arquivo, contribuição sem código de orquestração.
+
 ---
 
 ## 🚀 Checkpoint: O Que Voce Aprendeu
@@ -1599,6 +1641,8 @@ O suporte deve conseguir ver se a mensagem foi preparada ou enviada.
 - [ ] Consigo propor retry strategy para lock contention sem duplicar pedido.
 
 - [ ] Consigo explicar para Fernando por que Marina recebeu a resposta correta no fluxo coordenado.
+
+- [ ] Consigo explicar o que os campos `events` e `schedule` trazem para um arquivo declarativo de agente, e por que onboarding de agente pode ser um drop de arquivo.
 
 ---
 

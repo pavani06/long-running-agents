@@ -396,6 +396,17 @@ flowchart TB
 
 Redis responde rápido. SQLite preserva e consulta. JSON explica. Essa divisão reduz acoplamento e facilita recovery.
 
+### Append-Only Causal Event Log: o log é a memória do sistema
+
+A Layer 3 acima é um audit trail de artefatos soltos — `plan.json`, `generation.json`, `evaluation.json` — reconstruível depois, mas sem ligação entre eventos. Em sistemas multi-agente isso não basta: com 3-4 agentes escrevendo em paralelo, cronologia sem causalidade não explica nada. O upgrade é o **Append-Only Causal Event Log**: um único destino append-only como destino obrigatório de todo evento publicado por todo agente e processo, com a causalidade capturada **no momento do publish**:
+
+```jsonl
+{"id": "evt_91", "ts": "...", "agent": "transcritor", "type": "voice_note.processed", "caused_by": ["evt_88"]}
+{"id": "evt_93", "ts": "...", "agent": "slack_poster", "type": "slack.message.post.failed", "caused_by": ["evt_92"], "error_class": "duplicate_delivery"}
+```
+
+Três regras carregam o padrão: (1) **append-only, sem remoção nem alteração** — o log é a memória do sistema, nada é perdido; (2) **causalidade capturada no publish** (`caused_by`/`parent_event_id` entre eventos) — reconstrução posterior de causalidade não é confiável, se não foi registrada quando o evento aconteceu, não existe; (3) **cadeia causal navegável de qualquer falha de volta ao evento gatilho** — é a cadeia que torna o debug multi-agente viável, não a mera cronologia. A distinção contra tracing de spans: `parent_span_id` responde "quem chamou quem dentro de uma execução"; `caused_by` responde "qual evento do sistema disparou este evento", atravessando agentes, filas e schedules. Para o padrão completo: [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]].
+
 ---
 
 ## 🔄 Estratégias de Checkpointing
@@ -546,7 +557,7 @@ Salvar estado é só metade do sistema. A outra metade é saber o que fazer quan
 
 ### Replay determinístico
 
-`Replay` reconstrói estado reexecutando eventos desde um checkpoint conhecido. Com LLM, determinismo exige prompts versionados, tool outputs persistidos e modelos fixados.
+`Replay` reconstrói estado reexecutando eventos desde um checkpoint conhecido. Com LLM, determinismo exige prompts versionados, tool outputs persistidos e modelos fixados. A forma mais forte dessa exigência é o [[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]]: prompts endereçados por hash de conteúdo tornam o input exato reconstruível — o replay deixa de depender da versão registrada e passa a reconstruir a request idêntica a partir dos hashes.
 
 ### Compensation/Saga
 
@@ -1025,6 +1036,10 @@ Pedro recebe uma resposta específica: seu carrinho está salvo em R$ 379,60. Es
 - [ ] Implementar compensation para pagamento, estoque e entrega
 
 - [ ] Registrar recovery decisions em audit trail
+
+- [ ] Publicar todo evento de todo agente em um único destino append-only ([[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]])
+
+- [ ] Capturar `caused_by` no momento do publish de cada evento, nunca reconstruir causalidade depois
 
 - [ ] Criar testes de crash entre fases críticas
 

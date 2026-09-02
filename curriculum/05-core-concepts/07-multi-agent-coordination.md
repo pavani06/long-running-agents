@@ -296,6 +296,36 @@ Cada paradigma é uma forma diferente de responder: "quem trabalha, em que ordem
 - Se eventos de domínio disparam reações assíncronas, use choreography coordination.
 - Se o domínio ficou grande demais para um único coordenador, use hierarchical coordination.
 
+### A superfície mínima de orquestração: cron + eventos tipados
+
+Antes de escolher um paradigma pesado, verifique se a sua orquestração inteira não se decompõe em duas primitivas baratas. Toda camada de orquestração — grafo de agentes em código, workflow de framework — existe para responder duas perguntas simples ([[docs/canonical/cron-plus-typed-events-orchestration|Cron plus Typed Events Orchestration Surface]]):
+
+| Eixo | Pergunta | Primitiva | Cobre |
+| --- | --- | --- | --- |
+| Quando | em que momento o agente roda? | Cron (schedule) | Pontos no tempo: daily brief às 7h, market watch toda manhã |
+| Por que | o que fez o agente rodar? | Eventos tipados | Reatividade a mudança do mundo: novo email, PR mergeado, estoque baixo |
+
+Três regras desta composição:
+
+1. **Cron isolado é explicitamente insuficiente**: é só um ponto no tempo, não reatividade. Quem orquestra só com cron termina pollando o mundo em intervalos fixos e perdendo eventos entre intervalos.
+2. **A assinatura vive no contrato do agente** — schedules e assinaturas de evento declarados por agente, não codificados num orquestrador central.
+3. **Nenhuma camada adicional além das duas primitivas.** Se você precisa de um grafo para expressar "quando" e "por que", o grafo está escondendo as duas respostas dentro de código de framework.
+
+A dependência é nomeada: a composição só funciona com eventos tipados (schema), senão vira spaghetti de payloads. Por isso este padrão depende da fronteira de eventos tipados do Pattern 1 (Contract-first) abaixo.
+
+**Contraste com o canon do repo:** quando a jornada exige compensação transacional (Saga) e contrato por etapa, o orchestrator coordination permanece a escolha certa — a superfície cron + eventos cobre o espectro em que a coordenacao é declarativa e reativa.
+
+### O extremo do espectro: topologia emergente por eventos
+
+O choreography coordination acima ainda costuma ser desenhado de cima: alguém define quem reage a quê. Existe um extremo mais puro do espectro, no qual **nenhuma aresta é declarada em lugar nenhum** ([[docs/canonical/emergent-event-topology|Emergent Event Topology]]):
+
+- Agentes comunicam-se **somente** por pub/sub de eventos tipados, com schemas públicos e conhecidos.
+- A topologia não é desenhada; ela **emerge do que o log diz que aconteceu**. O log de eventos é a única representação do pipeline.
+- Estender o sistema = dropar um novo arquivo de agente que assina os eventos públicos existentes. Ninguém edita um grafo; ninguém faz deploy de código de orquestração.
+- Fan-in e fan-out saem de graça: derivam das assinaturas, não de arestas escritas à mão.
+
+O custo do extremo: nenhuma visão global declarada (a topologia só existe no log), e o debug depende integralmente do rastreio por eventos. No KODA, onde tolerância a falha exige Saga e contrato por etapa ([[docs/canonical/multi-agent-fault-tolerance|Multi-Agent Fault Tolerance]]), este extremo serve como **contraste de design**, não como arquitetura substituta: ele completa o espectro orchestrator-vs-choreography e mostra até onde a coordenacao pode ir sem um coordenador.
+
 ---
 
 ## 4. 📋 Comparative Table - Tabela Comparativa de Estratégias de Coordenação
@@ -380,6 +410,15 @@ Antes de criar agentes, defina contratos. Um agente sem contrato é apenas uma p
 - Token budget: quanto contexto ele pode consumir.
 - Timeout: quanto tempo ele pode bloquear o fluxo.
 - Evaluator rubric: como a saída será validada.
+
+**Contrato validado na fronteira, não apenas documentado:** o contrato só cumpre sua função se for **enforçado por schema em runtime, nas duas fronteiras do agente com o mundo externo** ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]):
+
+| Fronteira | Contrato | Quem valida |
+| --- | --- | --- |
+| Agente-ferramentas (tool calls) | Schema de input por tool; retorno tipado | O runtime valida o tool call antes do dispatch |
+| Agente-agentes (eventos) | Cada agente **declara** os eventos que aceita e os que retorna | O runtime valida o evento no publish e no consume |
+
+A postura é a mesma do Evaluator como gate: **a fronteira rejeita, não corrige** — carga fora do schema é barrada *antes de produzir efeito*, tornando ações ruins **impossíveis, não apenas improváveis**. Um modelo ruim em structured outputs continua gerando payloads inválidos; o que muda é que esses payloads nunca viram efeito no pipeline. A declaração de eventos aceitos/retornados torna o contrato consultável: qualquer agente (ou humano) lê o que o outro aceita antes de publicar.
 
 ### Pattern 2: Shared state, isolated reasoning
 
@@ -992,6 +1031,9 @@ Este diagrama é específico do KODA: ele mostra busca, filtro, ranking, recomen
 - [ ] Designar um Owner-of-No — papel ou política com autoridade explícita de recusa — para cada domínio do pipeline.
 - [ ] Registrar a rationale de recusa ou deferral no trace store, não apenas aprovações.
 - [ ] Separar gate de valor (entrada) de gate de qualidade (saída): o Manual Brake avalia input, o Evaluator avalia output.
+- [ ] Declarar, para cada agente, os eventos que aceita e os que retorna — contrato consultável entre agentes, não convenção implícita de payload.
+- [ ] Validar schema na fronteira em runtime: tool call barrado antes do dispatch; evento barrado no publish/consume antes de produzir efeito.
+- [ ] Verificar se a orquestração se decompõe em cron (quando) + eventos tipados (por que) antes de adicionar qualquer camada de orquestração adicional.
 
 ### Sinais de que a implementação está saudável
 
@@ -2745,6 +2787,9 @@ R: Adicionar agentes antes de adicionar contratos. Times empolgados criam 7 agen
 | **Canary test** | Teste que injeta um cenário sabidamente errado (ex: produto com lactose para cliente intolerante) e verifica se o pipeline rejeita. |
 | **Triage** | Processo de classificação inicial que decide qual pipeline ou tratamento uma requisição recebe. Usado no pipeline de Support. |
 | **Shadow mode** | Técnica de deploy onde um novo componente (ex: Evaluator) avalia outputs mas não bloqueia — apenas loga o que teria feito. |
+| **Evento tipado (typed event)** | Mensagem entre agentes com schema público declarado e validado na fronteira (publish/consume). Substitui convenção implícita de payload por contrato consultável. |
+| **Topologia emergente** | Arquitetura em que agentes comunicam-se somente por eventos tipados, com zero arestas declaradas; a topologia do sistema só existe no log de eventos. Extremo do espectro orchestrator-vs-choreography. |
+| **Superfície quando/por que** | Composição de cron (quando o agente roda) + eventos tipados (por que rodou) como a superfície declarativa mínima de orquestração — sem camada adicional de framework. |
 
 ---
 

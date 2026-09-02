@@ -428,6 +428,20 @@ Por que importa: se o harness for truncado junto com o payload, o agente perde i
 | Replay metadata | Metadata de replay inclui `prompt_version`. | Incidente consegue reconstruir prompt ativo. | Replay depende do prompt atual por acidente. | Registre link para artefato, owner e data. |
 | Teste anti-mutação | Existe teste que falha se a compactação mutar o harness. | Teste cobre truncation, summarization e externalização. | Compactação pode alterar instruções sem alerta. | Registre link para artefato, owner e data. |
 
+### Y. Componentes de Prompt Content-Addressed (input exato reconstruível)
+
+O que um bom harness faz: além de versionar o harness prompt (bloco X), o harness endereça **cada componente do prompt por hash de conteúdo** — system prompt, descrição de cada skill, descrição de cada tool, user message — e representa o prompt como grafo de hashes antes da renderização em texto. A resposta do modelo fica ligada ao grafo exato que a produziu.
+
+Por que importa: versionamento git responde "qual texto estava deployado em T", não "que componentes exatos compuseram o input renderizado desta run". Sem content addressing, uma regressão de prompt após uma semana de tweaks fica irreproduzível — ninguém lembra qual mudança quebrou. Com hashes, o diff entre a run boa e a run ruim aponta o componente exato que mudou, e replay idêntico (inclusive para troca de modelo por custo) vira reconstrução a partir dos hashes ([[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]]).
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| Hash por componente | System prompt, skills, tools e user message têm hash de conteúdo próprio. | Existe evidência verificável e atualizada. | Só existe versão de commit; componentes individuais não são endereçados. | Registre link para artefato, owner e data. |
+| Grafo antes da renderização | O prompt é representado como grafo de hashes antes de virar texto. | Existe evidência verificável e atualizada. | O pipeline só conhece o prompt já renderizado. | Registre link para artefato, owner e data. |
+| Resposta ligada ao prompt exato | Toda resposta traça de volta ao grafo que a produziu. | Existe evidência verificável e atualizada. | Resposta não tem vínculo com o input exato. | Registre link para artefato, owner e data. |
+| Diff por componente entre runs | Existe função que mostra qual componente mudou entre duas runs. | Existe evidência verificável e atualizada. | Comparação de runs é manual sobre texto renderizado. | Registre link para artefato, owner e data. |
+| Replay de input exato | Replay reconstrói a request a partir dos hashes e reenvia idêntica. | Existe evidência verificável e atualizada. | Replay depende do prompt atual por acidente. | Registre link para artefato, owner e data. |
+
 ### Perguntas de auditoria
 
 - Qual artefato prova que esta regra existe fora da cabeça do agente?
@@ -460,6 +474,8 @@ Por que importa: se o harness for truncado junto com o payload, o agente perde i
 - [ ] Documentos-fonte tem `last_updated` e `version` no catalogo de dados e mudancas disparam re-ingestao automatica (event-driven, nao batch)? ([[docs/canonical/agent-specific-data-freshness-pipeline|Agent-Specific Data Freshness Pipeline]])
 - [ ] Embeddings no vector DB tem timestamp de geracao vinculado ao `document_version` da fonte?
 - [ ] Staleness monitoring detecta quando spans referenciam versoes desatualizadas de documentos (`span_version < current_version`)?
+- [ ] Cada componente do prompt (system, skills, tools, user message) tem hash de conteudo proprio, e o grafo de hashes e registrado por chamada? ([[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]])
+- [ ] Diff entre duas runs consegue apontar qual componente de prompt mudou, sem comparar texto renderizado?
 
 ### Requisito: Data Freshness Pipeline
 
@@ -1328,6 +1344,18 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 - [ ] WhatsApp message id, session id, order id e trace id aparecem correlacionados?
 - [ ] Conversas aprovadas tambem sao amostradas para detectar falhas silenciosas?
 - [ ] Guia de trace reading esta disponivel para incidentes comuns?
+- [ ] Todo evento publicado carrega caused_by capturado no momento do publish?
+- [ ] Existe um unico destino append-only obrigatorio para todos os agentes ([[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]])?
+
+### Requisito: Causalidade no Publish (Append-Only Causal Event Log)
+
+A checklist acima exige traces completos e audit logs imutáveis; o requisito mais forte é **causalidade entre eventos, capturada no momento do publish**. Cronologia e hierarquia de span (`parent_span_id`) respondem "quando aconteceu" e "quem chamou quem dentro de uma execução"; não respondem "qual evento do sistema disparou este evento" — atravessando agentes, filas e schedules. Sem isso, debug multi-agente vira adivinhação sobre logs paralelos: com 3-4 agentes rodando junto já basta para "major debugging headaches", e o valor do log depende de TODO evento ser publicado ([[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]]).
+
+| Item | Critério | PASS | FAIL | Notas |
+|------|----------|------|------|-------|
+| caused_by no publish | Todo evento publicado carrega `caused_by`/`parent_event_id` capturado no momento da publicação. | Existe evidência verificável e atualizada. | Causalidade é reconstruída depois (ou não existe). | Registre link para artefato, owner e data. |
+| Destino append-only único | Todos os agentes e processos publicam num único destino append-only via API comum de publish. | Existe evidência verificável e atualizada. | Cada agente escreve no próprio log, sem destino obrigatório. | Registre link para artefato, owner e data. |
+| Reconstrução falha→gatilho | Existe query que navega a cadeia causal de qualquer falha até o evento gatilho. | Existe evidência verificável e atualizada. | Investigações dependem de correlacionar timestamps manualmente. | Registre link para artefato, owner e data. |
 
 ### Critérios de bloqueio para esta categoria
 

@@ -1347,6 +1347,12 @@ Você é o KODA, assistente de vendas da FutanBear Suplementos.
     )
 ```
 
+### Compaction como Operação de Grafo (Content-Addressed Prompt Graph)
+
+As sete fases acima operam sobre contexto **renderizado em texto** — e é por isso que compactar continua sendo manipulação de strings arriscada: depois da montagem, não dá mais para saber com certeza qual bloco era perfil, qual era tool call, qual era instrução. A alternativa disciplinada é o *Content-Addressed Prompt Graph*: endereçar cada componente do prompt por **hash de conteúdo** (system prompt, skills, tools, user message) e representar o prompt como **grafo de hashes antes da renderização**. Nesse regime, compaction vira operação de grafo: substituir o nó da zona compacta por um nó-resumo, manter os nós pinned da zona fresh, registrar a operação como transição entre dois grafos — nunca como edição de texto.
+
+O ganho direto para este pipeline: a `log_compaction` da Fase 7 passa a registrar o grafo antes e depois (hashes), o debug reconstrói o input exato que o modelo recebeu em cada janela, e o diff entre duas runs da mesma conversa mostra qual componente mudou. O system prompt do harness ganha proteção estrutural de graça: o nó correspondente é pinned por hash, e qualquer mutação acidental durante a compactação quebra o hash — em vez de silenciosamente degradar instruções. O custo é admitido: disciplina de hashing em toda peça de prompt e garbage collection de nós mortos. Para o padrão completo: [[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]].
+
 ---
 
 ## 📊 Parte 6: Métricas e Resultados - De 75% a 98% de Retenção de Contexto
