@@ -372,7 +372,6 @@ Tópicos candidatos a ADR:
 | `curriculum-model.md` | Taxonomia de níveis, tipos de artefato, critérios de qualidade |
 | `portal-architecture.md` | Decisões de design do portal, modelo de dados, pipeline de renderização |
 | `crossroad-change-policy.md` | Política de alteração em arquivos de alto blast radius |
-| `obsidian-document-conventions.md` | AGENTS.md Rule 16 ja cobre — documento canonico so precisa ser criado se a convencao crescer alem de uma regra |
 
 ## Análises e diagnósticos
 
