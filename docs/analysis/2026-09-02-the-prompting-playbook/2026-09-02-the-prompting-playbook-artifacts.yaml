@@ -1,0 +1,85 @@
+meta:
+  type: artifact-manifest
+  date: 2026-09-02
+  source_slug: the-prompting-playbook
+  classification_file: docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-classification.yaml
+
+artifacts:
+  canonical_docs:
+    - path: docs/canonical/eval-gated-model-migration-diagnostic.md
+      pattern: Eval-Gated Model Migration Diagnostic
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/control-edge-boundary-eval-taxonomy.md
+      pattern: Control/Edge/Boundary Eval Taxonomy
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/structural-prompt-hygiene.md
+      pattern: Structural Prompt Hygiene
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/defensive-patch-ledger.md
+      pattern: Defensive Patch Ledger
+      classification: Partial Coverage
+      priority: P1
+    - path: docs/canonical/two-sided-trade-off-instruction.md
+      pattern: Two-Sided Trade-off Instruction
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/capability-escalation-ladder.md
+      pattern: Capability Escalation Ladder
+      classification: Missing
+      priority: P0
+    - path: docs/canonical/hard-soft-constraint-grader-split.md
+      pattern: Hard/Soft Constraint Grader Split
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/two-layer-output-contract.md
+      pattern: Two-Layer Output Contract
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/generate-evaluate-repair-loop.md
+      pattern: Generate-Evaluate-Repair Loop
+      classification: Partial Coverage
+      priority: P2
+    - path: docs/canonical/ban-to-source-of-truth-rebalancing.md
+      pattern: Ban-to-Source-of-Truth Rebalancing
+      classification: Partial Coverage
+      priority: P2
+  skills:
+    - path: .opencode/skills/two-sided-trade-off-instruction/SKILL.md
+      pattern: Two-Sided Trade-off Instruction
+      classification: Missing
+    - path: .opencode/skills/capability-escalation-ladder/SKILL.md
+      pattern: Capability Escalation Ladder
+      classification: Missing
+  exercises:
+    - path: curriculum/02-nivel-2-practical-patterns/exercises/exercise-08-defensive-patch-ledger.md
+      pattern: Defensive Patch Ledger
+      classification: Partial Coverage
+    - path: curriculum/02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction.md
+      pattern: Two-Sided Trade-off Instruction
+      classification: Missing
+    - path: curriculum/03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder.md
+      pattern: Capability Escalation Ladder
+      classification: Missing
+  examples: []
+
+skipped:
+  better_implementation:
+    - pattern: Self-Check Reasoning Instruction
+      reason: "Repo resolves the same problem (unverified submissions) with external evaluation at canonical depth (generator-evaluator: self-eval detects ~3% of errors; generator creates without self-policing), and the source itself showed the instruction rung plateauing at 2/5 before graduating to the generate-evaluate-repair loop. Budget-failure (truncation) diagnosis already covered by token-budgeting curriculum."
+  partial_coverage_low:
+    - pattern: Tool Integration Triad
+      reason: "Integration value Low - schema + deterministic implementation legs already covered at canonical depth (deterministic-tool-dispatch, built on structured output contract); cross-reference only, no new artifact."
+
+gate:
+  phase4_complete: true
+  artifacts_count:
+    canonical_docs: 10
+    skills: 2
+    exercises: 3
+    examples: 0
+  notes:
+    - Write-assignment respected: canonical split 6+4 across two agents, skills and exercises disjoint.
+    - Validators (npx tsx scripts/validate-obsidian.ts) clean after Phase 4; exercise starter code parses.

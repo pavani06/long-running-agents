@@ -1,0 +1,279 @@
+meta:
+  title: 'Classification: The Prompting Playbook Patterns vs. long-running-agents'
+  date: '2026-09-02'
+  source_slug: the-prompting-playbook
+  type: classification
+  batches:
+  - classification-batch-1.yaml
+  - classification-batch-2.yaml
+patterns:
+- name: Eval-Gated Model Migration Diagnostic
+  classification: Partial Coverage
+  justification: 'The migration-gate half exists at canonical depth (eval suite before/after migration, per-case pass/fail,
+    Switch/Hold/Hybrid decision), but the diagnostic core is missing: per-failure classification into behavior difference
+    (remediable by prompt/harness tuning) vs. capability gap (unfixable by prompting), and the violation-count directional
+    metric.'
+  evidence:
+  - docs/canonical/model-switching-architecture-enterprise-eval-gate.md:43-59 — side-by-side comparison with per-category
+    breakdown, regression cases (:57), cost comparison (:59)
+  - docs/canonical/model-switching-architecture-enterprise-eval-gate.md:61-71 — Switch/Hold/Hybrid decision framework (regression-test
+    signal for migration)
+  - 'docs/canonical/model-switch-driven-eval-hardening.md:40 — switch as regression detection: eval suite runs on new provider,
+    pass/fail compared to previous'
+  - docs/canonical/model-switching-architecture-enterprise-eval-gate.md:24 — canonical itself declares concrete switching
+    infrastructure does not exist in repo
+  - 'NOT_FOUND: grep ''capability gap'' across docs/ — only this analysis''s own files plus docs/canonical/invariant-compensation-split.md:49
+    (diagram label, not a migration diagnostic)'
+  - 'NOT_FOUND: grep ''violation count|violations per|per-rule violation|count-based'' in docs/canonical/ — no matches'
+  integration_value: Medium
+- name: Control/Edge/Boundary Eval Taxonomy
+  classification: Partial Coverage
+  justification: 'Two of three case classes have canonical analogues: edge cases as permanent tests (living eval dataset,
+    regression flywheel) and control baseline (golden question set with registered baseline score). Missing: the boundary
+    class (evals testing whether the agent knows when to hand off or refuse) and the taxonomy itself with class-specific regression
+    semantics (control regression = breakage; boundary regression = calibration loss). Existing stratifications classify by
+    mechanism, speed, or determinism x deployment — never by case class.'
+  evidence:
+  - docs/canonical/living-eval-dataset.md:28 — every escaped edge case becomes a permanent addition (edge class)
+  - docs/canonical/production-failure-regression-flywheel.md:32 — intake accepts escaped edge case, converts to regression
+    case
+  - docs/canonical/workflow-derived-golden-question-set.md:44-47 — golden questions with baseline score and launch gate (control-class
+    analogue)
+  - 'docs/canonical/eval-coverage-matrix.md:66-68 — existing stratifications are single-axis: mechanism type (3-layer-evaluation-architecture.md:28),
+    speed (eval-tier-stratification.md:32-36)'
+  - 'NOT_FOUND: grep ''control case|edge case|boundary case|capability boundary|knows when to (refuse|hand off|escalate)|self-knowledge
+    of its limits'' in docs/canonical/ — 26 hits in 15 files, all incidental ''edge case'' uses; no case-class taxonomy, no
+    boundary-calibration eval class'
+  integration_value: Medium
+- name: Structural Prompt Hygiene
+  classification: Partial Coverage
+  justification: 'Functional block separation of prompt concerns exists (stable harness prompt: role, policy, tool contracts,
+    safety boundaries, response format) plus versioning/ownership discipline (prompt-as-code). Missing: the hygiene mechanics
+    proper — XML-tagged sectioning of a legacy mixed-concern prompt, redundancy/false-identity removal, the human-readability
+    rule of thumb, and measured uplift from hygiene alone.'
+  evidence:
+  - docs/canonical/stable-harness-prompt.md:22 — enumerates role, policy, tool contracts, safety boundaries, response format,
+    evaluation behavior as distinct concerns
+  - docs/canonical/stable-harness-prompt.md:30-39 — context builder assembles calls from distinct blocks with per-block reduction
+    policy
+  - 'docs/canonical/prompt-as-code-causal-change-management.md:116 — acknowledged gap: system prompt hand-authored 1800+ lines,
+    not versioned or eval''d (via owned-agent-control-loop.md:102)'
+  - 'NOT_FOUND: repo-wide grep ''XML tag|tagged section|tone of voice|prompt hygiene|structural prompt'' — only this analysis''s
+    own files; no canonical, curriculum, or skill coverage'
+  integration_value: Medium
+- name: Defensive Patch Ledger
+  classification: Partial Coverage
+  justification: 'Both halves exist in separate active canonicals: the rationale-at-write- time ledger (prompt-as-code: trigger/diagnosis/intent
+    per change, rollback, audit trail) and the model-era decay logic (invariant- compensation split: compensations for older
+    models become cost surface). Missing: the defensive-patch frame coupling them — patches for previous- model failures that
+    newer models overfit, and the rule that model migration triggers a patch audit, not just an eval re-run.'
+  evidence:
+  - 'docs/canonical/prompt-as-code-causal-change-management.md:32-59 — three mandatory commit questions: trigger, diagnosis,
+    intent'
+  - 'docs/canonical/prompt-as-code-causal-change-management.md:80-85 — rollback infrastructure: git-based versioning, deploy-by-commit,
+    rollback audit trail'
+  - docs/canonical/prompt-as-code-causal-change-management.md:98-105 — audit trail answering why each change was made and
+    what failure triggered it
+  - 'docs/canonical/invariant-compensation-split.md:23 — model-generation decay case: Context Loader kept after newer model
+    no longer needed it (450ms/1200 tokens)'
+  - docs/canonical/invariant-compensation-split.md:64-70 — rules incl. 'Record the rationale' (:70)
+  - 'NOT_FOUND: grep ''defensive|patch audit|patches'' in docs/canonical/ — 10 hits in 7 files; closest is measured-harness-evolution-lifecycle.md:44
+    (''BUILD is defensive''), about building defensively, not patch audits; no doc links patch ledger to model migration as
+    trigger'
+  integration_value: High
+- name: Two-Sided Trade-off Instruction
+  classification: Missing
+  justification: 'Not present in any form. Escalation coverage in the repo is architectural (degradation ladders, help APIs,
+    routing gates), never instructional: no doc teaches stating both the cost and the counter-cost of an action in the prompt
+    so the model exercises per-case judgment, and no doc addresses single-objective overfit such as under-escalation.'
+  evidence:
+  - 'NOT_FOUND: repo-wide grep ''cost of escalat|counter-cost|cost of not escalat|stating both sides|balanced instruction''
+    — only this analysis''s own files'
+  - 'NOT_FOUND: grep ''trade-off|tradeoff|both sides|under-escalat|over-optimiz'' in docs/canonical/ — 30 hits in 23 files,
+    all architectural/design tradeoffs (e.g. task-routed-model-tiering.md:40); none concern prompt instruction design'
+  - 'Non-equivalent adjacents rejected: tested-degradation-ladder.md:29 (runtime failure rung); closed-loop-help-api.md:30-32
+    (terminal-escalation loop closure); human-afk-task-routing-gate.md:37 (routing judgment to humans)'
+  integration_value: Medium
+- name: Capability Escalation Ladder
+  classification: Missing
+  justification: 'Not present in any form. The repo holds each lever separately (model tiering for cost routing, decomposition
+    as architecture, harness evolution ROI discipline) but has no ordered escalation procedure for a failing task (capability,
+    then reasoning budget, then instruction, then architecture) with cost/latency compared across passing routes and no economic-winner
+    analysis. Existing ''ladders'' are different patterns: runtime failure handling and organizational maturity.'
+  evidence:
+  - 'NOT_FOUND: grep ''bigger model|larger model|model upsiz|escalation ladder|reasoning budget|adaptive thinking'' in docs/canonical/
+    — 2 hits, both cross-references to the runtime degradation ladder (multi-agent-fault-tolerance.md:110, multi-provider-model-routing.md:85)'
+  - 'Non-equivalent adjacents rejected: tested-degradation-ladder.md:29 (runtime failure ladder, not capability investment);
+    task-routed-model-tiering.md:32 (tier routing for working tasks, not failing ones); model-switching-architecture-enterprise-eval-gate.md:61-71
+    (migration gate, not intra-task lever ordering); invariant-compensation-split.md:23 (obsolete compensation measurement,
+    not lever choice)'
+  integration_value: High
+- name: Hard/Soft Constraint Grader Split
+  classification: Partial Coverage
+  justification: 'The core partition — deterministic programmatic checks for binary rules, LLM judge for fuzzy preferences
+    — exists at canonical depth, generalized by evaluation-mechanism type: 3-Layer Evaluation Architecture separates Layer
+    1 Deterministic (regex/schema/PII, zero LLM cost, blocks deployment/response) from Layer 2 Semantic/LLM-as-Judge, and
+    Constraint-Anchored Evaluation defines the binary verification matrix. The curriculum''s Evaluation Rubrics teaches hard
+    rules as veto and already prescribes programmatic verification of hard rules ("nao depender so do LLM"). Missing: (1)
+    the constraint-partitioning guidance itself, a gap the repo self-acknowledges at constraint-anchored-evaluation.md:77;
+    (2) multi-trial violation-count reporting as a directional signal (magnitude-direction-verifier-split is a different axis);
+    (3) soft constraints as runtime-tunable evaluator prompt content.'
+  evidence:
+  - 'docs/canonical/3-layer-evaluation-architecture.md:30-43 — Layer 1 Deterministic: regex, schema validation, NER PII detection,
+    zero LLM cost, blocks deployment/response delivery'
+  - docs/canonical/3-layer-evaluation-architecture.md:45-59 — Layer 2 Semantic/LLM-as-Judge for groundedness, safety, relevance,
+    faithfulness, completeness
+  - 'docs/canonical/constraint-anchored-evaluation.md:31-33 — verification matrix: constraint -> check -> binary pass/fail
+    -> violation detail; approved only if all rows pass'
+  - 'docs/canonical/constraint-anchored-evaluation.md:77 — self-acknowledged gap: no guidance on what deserves a hard constraint
+    versus reviewer judgment'
+  - 'curriculum/05-core-concepts/08-evaluation-rubrics.md:2176 — anti-pattern correction: implementar verificacao programatica
+    de hard rules (nao depender so do LLM)'
+  - 'curriculum/05-core-concepts/08-evaluation-rubrics.md:705 — hard rules as veto: Transformar a falha em veto, nao em peso;
+    :1232 — hard rules PRIMEIRO, sempre'
+  - docs/canonical/magnitude-direction-verifier-split.md:100 — adjacent split (trust but verify), axis is internal-confidence
+    vs external-verifier, not deterministic checker vs LLM judge
+  - 'NOT_FOUND: violation counts per rule per trial as eval reporting convention; runtime-injected soft constraints — searched
+    docs/decisions/, docs/canonical/, docs/evidence/, curriculum/, .opencode/ (grep violation count / soft constraint / runtime
+    inject; matches only in this package''s analysis+patterns files)'
+  integration_value: Medium
+- name: Two-Layer Output Contract
+  classification: Partial Coverage
+  justification: 'Harness-side format enforcement is covered at canonical depth and taught from Nivel 1: structured outputs
+    as the agent''s exit contract with kernel validation at typed event boundaries; the generation + validation circuit; Zod
+    tool-input schemas; the N1 structured-output exercise; Format Validator / Output Parser / Schema Enforcer listed in the
+    harness-evolution table. The general principle (guarantee moves from prompt text into structure) is codified in structural-guarantee-over-compliance.
+    Stop sequences appear in the curriculum''s generator config. Missing: the explicit two-layer pairing (prompt defines the
+    format + harness enforces the same format via closing-tag stop sequence and structured outputs as one contract), the right-sizing
+    rule (conversational light vs structured heavy), and stop-sequence-as-format-boundary mechanics (the curriculum''s stop_sequences
+    are cost/bloat delimiters).'
+  evidence:
+  - docs/canonical/typed-event-boundaries.md:42 — structured outputs as contrato de saida; kernel validates the event at publish
+    and consume
+  - docs/canonical/typed-event-boundaries.md:44 — a fronteira rejeita, nao corrige
+  - 'docs/canonical/structured-generation-constraint-validation-circuit.md:29 — one action-safety circuit: output schema,
+    generation prompt, post-generation validator, repair/rejection policy, audit log'
+  - 'docs/canonical/deterministic-tool-dispatch.md:24 — the model emits JSON (a structured output); :107 — Built on: Pattern
+    1 (Structured Output Contract)'
+  - docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.md:37-39 — structured output as foundational
+    assumption; N1 exercise teaches it as one of 5 basic harness patterns
+  - 'curriculum/01-nivel-1-fundamentals/exercises/exercise-02-structured-output.md:5 — N1 exercise (aliases: structured output,
+    validacao JSON, exercicio schema)'
+  - curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md:737-748 — stop_sequences in generator_config,
+    justified as cost/bloat control, not format boundary
+  - docs/canonical/structural-guarantee-over-compliance.md:46-47 — move the guarantee from compliance to structure; :69-71
+    — the rule lives in the gate, not the memory
+  - curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md:947 — Structured Output nativo -> Format Validator,
+    Output Parser, Schema Enforcer
+  - 'NOT_FOUND: conversational-vs-structured contract sizing and stop-sequence-as-closing-tag detection — searched docs/canonical/,
+    docs/decisions/, curriculum/ (grep stop sequence / stop_sequences; only the occurrences above exist outside this package)'
+  integration_value: Medium
+- name: Tool Integration Triad
+  classification: Partial Coverage
+  justification: 'Two of the three integration points exist at canonical depth plus implementation: the tool-schema leg (every
+    tool is a DynamicStructuredTool with Zod schema input and typed return; 20+ tools in mhc-backend) and the deterministic-implementation
+    leg (dispatch is a switch statement testable with JSON fixtures without an LLM; KODA reference stack ships calculator
+    tools). The wrong-time-to-call risk is covered by eval (Behavioral Eval Path Analysis RF3 validates tool dispatch against
+    per-category permitted/prohibited templates). The prompt leg exists only as generic tool contracts inside the Stable Harness
+    Prompt. Missing: the triad formalization (instruction + schema + deterministic implementation as three jointly required
+    legs) and the reframe instructions don''t add capability — the repo''s reframe covers dispatch mechanics (tools are JSON
+    + deterministic code), not the capability-gap motivation.'
+  evidence:
+  - 'docs/canonical/deterministic-tool-dispatch.md:22-27 — 4-step dispatch reality: model emits JSON, app code reads, switch/router
+    dispatches, deterministic handler executes'
+  - 'docs/canonical/deterministic-tool-dispatch.md:31-35 — reframe: tools are not magical; tools are JSON + deterministic
+    code (dispatch mechanics, not capability-vs-instruction)'
+  - docs/canonical/deterministic-tool-dispatch.md:74 — every tool is a DynamicStructuredTool with Zod schema input and typed
+    return (schema + implementation legs)
+  - 'docs/canonical/deterministic-tool-dispatch.md:61-63 — testability: JSON fixtures, no LLM needed (deterministic implementation
+    leg)'
+  - 'curriculum/07-implementation-guides/01-setup-guide.md:115 — calculator_tool.py (Calculos: preco, desconto); :1475 — price_calculator.py'
+  - 'curriculum/04-nivel-3-engenharia-avancada/exercises/exercise-behavioral-eval-path-analysis.md:449 — RF3 Tool Dispatch
+    Validation: permitted/prohibited tools per query category; :481 — ferramenta proibida para a categoria'
+  - docs/canonical/invariant-compensation-split.md:87 — Stable Harness Prompt protects role, policy, tool contracts, safety
+    boundaries, response format (prompt leg as generic tool contracts)
+  - 'NOT_FOUND: three-leg triad with prompt instruction as mandatory leg and the principle instructions don''t add capability
+    — searched docs/canonical/, docs/decisions/, curriculum/, .opencode/skills/'
+  integration_value: Low
+- name: Generate-Evaluate-Repair Loop
+  classification: Partial Coverage
+  justification: 'The loop exists at canonical and curriculum depth: Generator-Evaluator formalizes generate -> evaluate ->
+    reject-with-feedback -> regenerate; the N2 lesson adds structured feedback with fix_instruction and bounded max_iterations
+    with escalate_to_human; the N3 KODA orchestration pseudocode calls generator_agent.repair_recommendation(draft, evaluation);
+    Structured Generation Constraint Validation Circuit composes generation + validation + repair/rejection + audit; rubrics
+    require cited evidence per evaluation. Missing: (1) the three-prompt decomposition framing with an independent repairer
+    prompt (the repo''s repair is the Generator repairing its own draft under feedback); (2) the economics comparison — loop
+    beats model-upsizing and output-limit-raising on tokens/latency (repo''s token-economics-gap-filling covers inference-vs-specification
+    cost, a different trade-off); (3) soft constraints injected into the evaluator prompt at runtime.'
+  evidence:
+  - docs/canonical/generator-evaluator.md:31 — two agents; Evaluator returns approve/reject verdict with specific feedback
+  - docs/canonical/generator-evaluator.md:70-72 — rejected output volta para GENERATOR com feedback; :116 — rejection loops
+    add latency with multiple revisions
+  - 'curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md:752-767 — mandatory feedback structure: severity,
+    issue_code, issue_text, affected_item, fix_instruction'
+  - 'curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md:712-722 — max_iterations: 3, action_if_max:
+    escalate_to_human (bounded loop)'
+  - curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda.md:383-396 — create_recommendation -> evaluator_agent.check
+    -> generator_agent.repair_recommendation(draft, evaluation)
+  - docs/canonical/structured-generation-constraint-validation-circuit.md:29 — generation, validation, repair or rejection,
+    risk flags, dispatch, audit as one path
+  - docs/canonical/constraint-anchored-evaluation.md:33 — violation detail per constraint row (evidence of every violation);
+    curriculum/05-core-concepts/08-evaluation-rubrics.md:1218 — evidence citada, hard rule aplicada no trace
+  - docs/canonical/tested-degradation-ladder.md:42 — Retry with repair rung (failure-recovery ladder; adjacent, different
+    loop)
+  - 'NOT_FOUND: loop-vs-model-upsizing/output-limit economics comparison and runtime-injected evaluator soft constraints —
+    searched docs/canonical/, curriculum/, docs/analysis/ (nearest: token-economics-gap-filling per docs/system-of-record.md:255
+    is inference-vs-specification cost)'
+  integration_value: Medium
+- name: Ban-to-Source-of-Truth Rebalancing
+  classification: Partial Coverage
+  justification: 'The decay mechanism that makes old-model bans dangerous is canonical: Invariant-Compensation Split documents
+    that compensations written for a past model become drag when models improve, and Prompt-as-Code Causal Change Management
+    records trigger/diagnosis/intent for every defensive prompt change — the audit that lets a team judge which bans are still
+    load-bearing (the pattern declares this dependency on the patch ledger). Adjacent source-of-truth designation exists for
+    data (KODA mitigation: source_of_truth field per output field) and for state (single source of truth in State Persistence).
+    Missing: the rebalancing move itself — replacing a prohibition instruction with a balanced designation of the in-context
+    data as the accurate source of truth — and its reframe: information withholding as the inverse failure of hallucination,
+    both fixed by designating the source of truth instead of prohibiting output.'
+  evidence:
+  - docs/canonical/prompt-as-code-causal-change-management.md:30-59 — three mandatory causal questions (why changed / what
+    failure caused it / what failure it addresses) for every prompt change
+  - docs/canonical/invariant-compensation-split.md:23 — compensation written for a 32K model still costing latency/tokens
+    after the newer model no longer needs it (decay mechanism)
+  - 'docs/canonical/invariant-compensation-split.md:67 — decision test: separate domain risk from model weakness before removal'
+  - 'curriculum/06-knowledge-graphs/02-koda-feature-dependencies.md:1373 — mitigation: Adicionar source_of_truth em cada campo
+    do output (data provenance, not instruction design)'
+  - 'curriculum/05-core-concepts/02-planning-execution-separation.md:366 — interface critica as single source of truth (different
+    object: phase contract)'
+  - 'NOT_FOUND: ban-list replacement with in-context source-of-truth designation; withholding-as-inverse-hallucination framing
+    — searched docs/decisions/, docs/canonical/, docs/evidence/, curriculum/, .opencode/ (grep ban / proibi / withhold / source
+    of truth / grandfather / allowance: all matches are governance/state-provenance senses, rubric policy prohibitions, or
+    this package''s own files)'
+  integration_value: Medium
+- name: Self-Check Reasoning Instruction
+  classification: Better Implementation
+  justification: 'The repo solves the same problem — a capable-enough model submitting unverified work — with a more mature
+    architectural answer and explicitly teaches against relying on self-checks: the curriculum checklist item Generator cria
+    SEM se auto-verificar and the Generator-Evaluator trade-off Generator doesn''t need to self-police externalize verification
+    to an impartial Evaluator, grounded in the quantified finding that self-evaluation detects ~3% of real errors versus ~14%
+    external (~11pp silent gap). Plan-Execute-Verify adds the explicit Verify phase with success gates; Structural Guarantee
+    over Compliance codifies that knowing does not prevent violating. The source''s own escalation ladder terminates at the
+    same endpoint: the self-check instruction lifted the weak model only from 0/5 to 2/5 and the winning route was the generate-evaluate-repair
+    decomposition, which the repo already holds at canonical depth. Residual deltas (the instruction rung as a cheap pre-architecture
+    lever; the dictum that truncation under enriched reasoning is a budget failure, not a quality failure) are small — the
+    budget-failure class is already covered by the token-budget response/safety-buffer machinery.'
+  evidence:
+  - 'curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern.md:1992 — checklist: Entendo que Generator cria
+    SEM se auto-verificar?'
+  - 'docs/canonical/generator-evaluator.md:115 — trade-off: Separation of concerns: Generator doesn''t need to self-police'
+  - docs/canonical/generator-evaluator.md:23-27 — confirmation bias of self-evaluation; ~3% self vs ~14% external detection,
+    ~11pp silent gap
+  - docs/canonical/plan-execute-verify.md:29-31 — Plan/Execute/Verify decomposition; :68-72 — Verify phase validates all steps
+    against success gates
+  - docs/canonical/structural-guarantee-over-compliance.md:23-27 — knowing a rule does not prevent violating it; :46-47 —
+    move the guarantee from compliance to structure
+  - curriculum/01-nivel-1-fundamentals/02-token-budgeting.md:445-451 (cited via docs/canonical/hybrid-context-stack.md:75)
+    — response and safety reserve before prompt assembly (truncation as budget failure)
+  - docs/canonical/generator-evaluator.md:116 — rejection loops add latency if Generator needs multiple revisions (the loop
+    endpoint the source converges to)
+  integration_value: Low

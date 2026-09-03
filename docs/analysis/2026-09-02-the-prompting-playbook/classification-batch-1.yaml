@@ -1,0 +1,100 @@
+patterns:
+  - name: "Eval-Gated Model Migration Diagnostic"
+    classification: "Partial Coverage"
+    justification: >-
+      The migration-gate half exists at canonical depth (eval suite before/after
+      migration, per-case pass/fail, Switch/Hold/Hybrid decision), but the
+      diagnostic core is missing: per-failure classification into behavior
+      difference (remediable by prompt/harness tuning) vs. capability gap
+      (unfixable by prompting), and the violation-count directional metric.
+    evidence:
+      - "docs/canonical/model-switching-architecture-enterprise-eval-gate.md:43-59 — side-by-side comparison with per-category breakdown, regression cases (:57), cost comparison (:59)"
+      - "docs/canonical/model-switching-architecture-enterprise-eval-gate.md:61-71 — Switch/Hold/Hybrid decision framework (regression-test signal for migration)"
+      - "docs/canonical/model-switch-driven-eval-hardening.md:40 — switch as regression detection: eval suite runs on new provider, pass/fail compared to previous"
+      - "docs/canonical/model-switching-architecture-enterprise-eval-gate.md:24 — canonical itself declares concrete switching infrastructure does not exist in repo"
+      - "NOT_FOUND: grep 'capability gap' across docs/ — only this analysis's own files plus docs/canonical/invariant-compensation-split.md:49 (diagram label, not a migration diagnostic)"
+      - "NOT_FOUND: grep 'violation count|violations per|per-rule violation|count-based' in docs/canonical/ — no matches"
+    integration_value: "Medium"
+
+  - name: "Control/Edge/Boundary Eval Taxonomy"
+    classification: "Partial Coverage"
+    justification: >-
+      Two of three case classes have canonical analogues: edge cases as
+      permanent tests (living eval dataset, regression flywheel) and control
+      baseline (golden question set with registered baseline score). Missing:
+      the boundary class (evals testing whether the agent knows when to hand
+      off or refuse) and the taxonomy itself with class-specific regression
+      semantics (control regression = breakage; boundary regression =
+      calibration loss). Existing stratifications classify by mechanism,
+      speed, or determinism x deployment — never by case class.
+    evidence:
+      - "docs/canonical/living-eval-dataset.md:28 — every escaped edge case becomes a permanent addition (edge class)"
+      - "docs/canonical/production-failure-regression-flywheel.md:32 — intake accepts escaped edge case, converts to regression case"
+      - "docs/canonical/workflow-derived-golden-question-set.md:44-47 — golden questions with baseline score and launch gate (control-class analogue)"
+      - "docs/canonical/eval-coverage-matrix.md:66-68 — existing stratifications are single-axis: mechanism type (3-layer-evaluation-architecture.md:28), speed (eval-tier-stratification.md:32-36)"
+      - "NOT_FOUND: grep 'control case|edge case|boundary case|capability boundary|knows when to (refuse|hand off|escalate)|self-knowledge of its limits' in docs/canonical/ — 26 hits in 15 files, all incidental 'edge case' uses; no case-class taxonomy, no boundary-calibration eval class"
+    integration_value: "Medium"
+
+  - name: "Structural Prompt Hygiene"
+    classification: "Partial Coverage"
+    justification: >-
+      Functional block separation of prompt concerns exists (stable harness
+      prompt: role, policy, tool contracts, safety boundaries, response
+      format) plus versioning/ownership discipline (prompt-as-code). Missing:
+      the hygiene mechanics proper — XML-tagged sectioning of a legacy
+      mixed-concern prompt, redundancy/false-identity removal, the
+      human-readability rule of thumb, and measured uplift from hygiene alone.
+    evidence:
+      - "docs/canonical/stable-harness-prompt.md:22 — enumerates role, policy, tool contracts, safety boundaries, response format, evaluation behavior as distinct concerns"
+      - "docs/canonical/stable-harness-prompt.md:30-39 — context builder assembles calls from distinct blocks with per-block reduction policy"
+      - "docs/canonical/prompt-as-code-causal-change-management.md:116 — acknowledged gap: system prompt hand-authored 1800+ lines, not versioned or eval'd (via owned-agent-control-loop.md:102)"
+      - "NOT_FOUND: repo-wide grep 'XML tag|tagged section|tone of voice|prompt hygiene|structural prompt' — only this analysis's own files; no canonical, curriculum, or skill coverage"
+    integration_value: "Medium"
+
+  - name: "Defensive Patch Ledger"
+    classification: "Partial Coverage"
+    justification: >-
+      Both halves exist in separate active canonicals: the rationale-at-write-
+      time ledger (prompt-as-code: trigger/diagnosis/intent per change,
+      rollback, audit trail) and the model-era decay logic (invariant-
+      compensation split: compensations for older models become cost surface).
+      Missing: the defensive-patch frame coupling them — patches for previous-
+      model failures that newer models overfit, and the rule that model
+      migration triggers a patch audit, not just an eval re-run.
+    evidence:
+      - "docs/canonical/prompt-as-code-causal-change-management.md:32-59 — three mandatory commit questions: trigger, diagnosis, intent"
+      - "docs/canonical/prompt-as-code-causal-change-management.md:80-85 — rollback infrastructure: git-based versioning, deploy-by-commit, rollback audit trail"
+      - "docs/canonical/prompt-as-code-causal-change-management.md:98-105 — audit trail answering why each change was made and what failure triggered it"
+      - "docs/canonical/invariant-compensation-split.md:23 — model-generation decay case: Context Loader kept after newer model no longer needed it (450ms/1200 tokens)"
+      - "docs/canonical/invariant-compensation-split.md:64-70 — rules incl. 'Record the rationale' (:70)"
+      - "NOT_FOUND: grep 'defensive|patch audit|patches' in docs/canonical/ — 10 hits in 7 files; closest is measured-harness-evolution-lifecycle.md:44 ('BUILD is defensive'), about building defensively, not patch audits; no doc links patch ledger to model migration as trigger"
+    integration_value: "High"
+
+  - name: "Two-Sided Trade-off Instruction"
+    classification: "Missing"
+    justification: >-
+      Not present in any form. Escalation coverage in the repo is
+      architectural (degradation ladders, help APIs, routing gates), never
+      instructional: no doc teaches stating both the cost and the counter-cost
+      of an action in the prompt so the model exercises per-case judgment, and
+      no doc addresses single-objective overfit such as under-escalation.
+    evidence:
+      - "NOT_FOUND: repo-wide grep 'cost of escalat|counter-cost|cost of not escalat|stating both sides|balanced instruction' — only this analysis's own files"
+      - "NOT_FOUND: grep 'trade-off|tradeoff|both sides|under-escalat|over-optimiz' in docs/canonical/ — 30 hits in 23 files, all architectural/design tradeoffs (e.g. task-routed-model-tiering.md:40); none concern prompt instruction design"
+      - "Non-equivalent adjacents rejected: tested-degradation-ladder.md:29 (runtime failure rung); closed-loop-help-api.md:30-32 (terminal-escalation loop closure); human-afk-task-routing-gate.md:37 (routing judgment to humans)"
+    integration_value: "Medium"
+
+  - name: "Capability Escalation Ladder"
+    classification: "Missing"
+    justification: >-
+      Not present in any form. The repo holds each lever separately (model
+      tiering for cost routing, decomposition as architecture, harness
+      evolution ROI discipline) but has no ordered escalation procedure for a
+      failing task (capability, then reasoning budget, then instruction, then
+      architecture) with cost/latency compared across passing routes and no
+      economic-winner analysis. Existing 'ladders' are different patterns:
+      runtime failure handling and organizational maturity.
+    evidence:
+      - "NOT_FOUND: grep 'bigger model|larger model|model upsiz|escalation ladder|reasoning budget|adaptive thinking' in docs/canonical/ — 2 hits, both cross-references to the runtime degradation ladder (multi-agent-fault-tolerance.md:110, multi-provider-model-routing.md:85)"
+      - "Non-equivalent adjacents rejected: tested-degradation-ladder.md:29 (runtime failure ladder, not capability investment); task-routed-model-tiering.md:32 (tier routing for working tasks, not failing ones); model-switching-architecture-enterprise-eval-gate.md:61-71 (migration gate, not intra-task lever ordering); invariant-compensation-split.md:23 (obsolete compensation measurement, not lever choice)"
+    integration_value: "High"

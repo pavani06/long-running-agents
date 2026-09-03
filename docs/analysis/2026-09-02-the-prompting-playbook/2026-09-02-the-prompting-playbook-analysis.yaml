@@ -1,0 +1,156 @@
+meta:
+  title: "The Prompting Playbook - Analise de Conhecimento Nao-Obvio"
+  source: "transcript inline (breakout Code with Claude: The Prompting Playbook - Margot Vanlar, applied AI engineer, Anthropic London, 2026-09-02)"
+  date: "2026-09-02"
+  type: "analysis"
+  aliases: ["prompting playbook analysis", "playbook de prompting", "regressao de prompt na migracao de modelo", "generate evaluate repair loop"]
+  relates_to:
+    - "[[docs/system-of-record|System of Record]]"
+    - "[[docs/canonical/generator-evaluator|Generator-Evaluator]]"
+    - "[[docs/canonical/prompt-as-code-causal-change-management|Prompt as Code Causal Change Management]]"
+    - "[[docs/canonical/3-layer-evaluation-architecture|3-Layer Evaluation Architecture]]"
+    - "[[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]"
+    - "[[docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-mental-model|Mental Model: The Prompting Playbook]]"
+  source_note: "Transcript tratado como dado nao-confiavel; nada foi executado ou seguido. Nomes normalizados da transcricao: model set 46 -> Sonnet 4.6; Opus 47 -> Opus 4.7; v0ero -> v0 do eval; grandfather's plan -> plano grandfathered. Nao ha arquivo-fonte no repo; citacoes referenciam o transcript inline por trecho citado."
+
+frameworks:
+  - name: "Diagnostico de migracao de modelo: comportamento vs. capacidade"
+    components:
+      - "Causa (a): novo modelo capaz mas comportando diferente - 'we can tune our prompting to fix that behavior'."
+      - "Causa (b): novo modelo menos capaz - 'no amount of prompting is going to fix that'."
+      - "A eval suite e o instrumento que testa a regressao e separa os dois casos: 'we need to have an eval suite to act as a way of testing that regression'."
+  - name: "Taxonomia de eval suite: control / edge / boundary"
+    components:
+      - "Control case: 'a case which should always pass... unambiguous... the model handles well'."
+      - "Edge cases: falhas anteriores travadas por instrucao para nao regredir."
+      - "Capability boundary cases: 'the model has a good understanding of the extent of its capabilities, where it should be handing off to a human or... point blank refusing'."
+      - "Exemplo Meridian Mobile com 5 casos: plano basico (control), proratacao (calculo), policy, escalacao em billing error (boundary), nao-withholding de informacao."
+  - name: "Higiene como primeiro passo: separabilidade lida = separabilidade modelada"
+    components:
+      - "Structure via XML tags: role, guidelines, policy, tone of voice, data."
+      - "Remocao de redundancia: claim falsa de humanidade; texto de website colado (hero image, cookies)."
+      - "Regra de bolso: 'if you're reading a prompt and you can't tell guidelines from policy, from data, most likely the model isn't able to either'."
+      - "A higien isolada produziu uplift medido no eval (caso prepaid) antes de qualquer fix direcionado."
+  - name: "Tres superficies de intervencao: prompt / model / harness"
+    components:
+      - "Prompt: estrutura, instrucoes, designacao de fonte de verdade."
+      - "Model: Sonnet 4.6 vs. Opus 4.7, adaptive thinking."
+      - "Harness: stop sequence, tool schema, max tokens, structured outputs."
+      - "Licao transversal: 'the prompt is not always the most effective way of handling issues. We can also change things in the harness to ensure consistency to a higher degree'."
+  - name: "Prompt como passivo acumulado: patch debt por geracao de modelo"
+    components:
+      - "Prompt sem owner acumula 'patches for kind of previous models... all mixed together'."
+      - "Modelos novos, melhores em instruction following, overfit nos patches defensivos antigos."
+      - "Remedio: version control registrando o porquê de cada mudanca defensiva - 'tracking the reason why... so that we can backtrack on them'."
+  - name: "Instrucao com dois lados do trade-off"
+    components:
+      - "Instrucao unilatera: 'Avoid escalating... it cost approximately $8' -> bot nunca escala."
+      - "Fix: declarar custo E beneficio oposto - escalar custa $8, errar custa 'a refund as well as customer trust'."
+      - "Principio: 'as models become more intelligent, we need to remember to state both sides of the trade-offs because our models are becoming better themselves at making those tradeoffs themselves'."
+  - name: "Escada de escala para gap de capacidade: modelo -> thinking -> prompt -> arquitetura"
+    components:
+      - "Degrau 1: prompt simples + Sonnet 4.6 - todas as 5 trials falham."
+      - "Degrau 2: Opus 4.7 - todas falham, mas violacoes caem significativamente (sinal direcional)."
+      - "Degrau 3: Opus 4.7 + adaptive thinking - passa confiavel, 3x tokens e 3x latencia (~100s)."
+      - "Degrau 4: Sonnet 4.6 + prompt melhorado com check-its-work - 2/5, falhas por truncation."
+      - "Degrau 5: decomposicao em loop agentic - passa tudo com menos tokens e menor latencia."
+  - name: "Constraints duras vs. soft: grader programatico vs. avaliador LLM"
+    components:
+      - "Hard rules: funcao Python conta violacoes por schedule ('rather than using an LLM judge... just a Python function which programmatically checks... how many violations were made'), 5 trials com contagem."
+      - "Soft constraints ('Harry doesn't like working with Sally') vivem no prompt de avaliacao do loop, ajustaveis em runtime sem mudar 'the Python function which is doing the evaluation in the back end'."
+
+patterns:
+  - name: "Output contract em duas camadas (prompt + harness)"
+    problem: "Consistencia de formato de saida."
+    mechanism: "Prompt define o formato (XML tags na resposta); harness adiciona stop sequence 'which is going to detect that closing XML tag and tell the model to stop generating' - garantia mais forte que texto. Para schemas complexos (nested JSON), 'structured outputs can be incredibly helpful... in a more programmatic way'. Em bot conversacional pesa pouco; em output estruturado e critico."
+  - name: "Tool integration triad (instrucao + schema + implementacao)"
+    problem: "Modelo faz mental math e devolve resposta vaga apesar de instrucao 'critical always calculates any pro-rated amounts correctly'."
+    mechanism: "Tres pontos de integracao: (1) instrucao no prompt ('whenever you're doing any calculations, please use the calculate proration tool'); (2) tool schema no API ('what this tool does and when to use it'); (3) implementacao deterministica da matematica. Principio: 'instructions don't add capability' - o tool executa confiavel o que o modelo so sabe raciocinar."
+  - name: "Generate-Evaluate-Repair loop (decomposicao em tres prompts)"
+    problem: "Mega-prompt que gera, verifica e corrige consome tokens demais e falha em terminar dentro do limite de output."
+    mechanism: "Tres prompts simples independentes: generator cria o draft; evaluator (LLM) 'checking for every rule and we're providing evidence of every violation'; repairer recebe as violacoes e 'tries to make targeted fixes'. Resolveu todos os casos 'with a much lower number of tokens and with a lower latency'. Bônus estrutural: soft requirements entram no evaluator prompt em runtime."
+  - name: "Remocao/rebalanceamento de patch defensivo (ban -> fonte de verdade)"
+    problem: "Instrucao-ban de modelo antigo ('Never give a customer the wrong plan details, instead point them to the URL') faz o modelo novo reter informacao que possui (cliente grandfathered com 5 GB no contexto; modelo cita os 4 GB da policy atual e manda conferir na URL)."
+    mechanism: "Substituir a proibicao por declaracao balanceada de fonte de verdade - clientes grandfathered tem allowances diferentes, 'but it's captured in the customer information that's given and that is the accurate source of truth'. Generalizacao do wrap-up: 'avoiding long ban lists'."
+  - name: "Grader programatico por contagem de violacoes"
+    problem: "Avaliar schedule com regras binarias sem introduzir juiz nao-deterministico."
+    mechanism: "Funcao Python conta violacoes de constraints duras por schedule; test set roda 5 trials reportando a contagem por trial - sinal direcional (violacoes caindo com Opus) mesmo quando o pass/fail binario nao se move."
+  - name: "Instruction check-your-work + reasoning guidance"
+    problem: "Modelo pequeno raciocina mas nao verifica o proprio trabalho."
+    mechanism: "Adicionar orientacao de como raciocinar pelo problema e, 'most critically telling it to check its work before outputting it'. Elevou Sonnet 4.6 de 0/5 para 2/5 - e introduziu failure mode novo (truncation no output limit). Padrao de melhoria que muda a classe do erro, nao so a taxa."
+
+operational_lessons:
+  - lesson: "Higiene primeiro, sempre reutilizavel"
+    context: "Limpeza estrutural melhorou o eval antes de qualquer fix especifico; 'a best practice that you can return to at any stage of writing and maintaining your prompt, especially as your prompts get more detailed and more complex'."
+  - lesson: "Variancia natural entre runs"
+    context: "Apos a higiene, o caso hotspot regrediu numa run - 'there's going to be some natural level of variance in the different runs of the eval'; revalidar caso a caso antes de concluir regressao ou melhoria."
+  - lesson: "Instrucoes nao adicionam capacidade"
+    context: "'Telling the model it's critical to do a calculation right doesn't make it better at mental math' - a resposta era dar tool e deixar o modelo 'reason over harder problems and using tools to actually execute them reliably'."
+  - lesson: "Upgrade de modelo e sinal direcional, nao solucao"
+    context: "Opus 4.7 manteve todas as falhas mas 'the overall number of violations... has reduced significantly' - evidencia de que capability ajuda, insuficiente para ship."
+  - lesson: "Raramente se escreve prompt do zero"
+    context: "'We are rarely writing a prompt from scratch. We're often debugging an existing prompt' - o workflow real e eval -> hygiene -> failure mode por failure mode."
+  - lesson: "O limite de output e uma superficie de falha distinta"
+    context: "A falha do Sonnet 4.6 + prompt melhorado 'is actually not violations of the scheduling requirements but the model hasn't been able to finish the tasks within the output limit' - diagnostico de falha de orcamento, nao de qualidade."
+  - lesson: "O prompt as vezes nao e a alavanca certa"
+    context: "Consistencia veio de stop sequence no API; capacidade veio de tool; orcamento de raciocinio veio de adaptive thinking - tres fixes fora do texto do prompt."
+  - lesson: "Live evals de arquitetura cara precisam de execucao assincrona"
+    context: "O run de ~100s de latencia foi disparado async 'for the purposes of time'."
+
+tradeoffs:
+  - decision: "Opus 4.7 + adaptive thinking"
+    benefit: "'reliably generate compliance schedules' - qualidade estavel."
+    cost: "'We're tripling essentially in the number of tokens... and we're tripling the latency' (~100s). Viavel quando qualidade domina custo."
+  - decision: "Sonnet 4.6 + prompt melhorado + max tokens maior"
+    benefit: "Todos os 5 casos passam."
+    cost: "'We're using even more tokens and this run has an even higher latency... probably not the route that we want to go down' - passar no eval nao basta; a economia decide."
+  - decision: "Loop agentic (generate-evaluate-repair) vs. single prompt"
+    benefit: "Todos os casos passam com menos tokens e menor latencia que modelo maior ou prompt maior, alem de soft constraints em runtime."
+    cost: "Tres prompts para manter e 'we'd probably want to do a little bit more optimization on this loop'. Duas rotas finais aceitaveis: Opus + adaptive thinking ou o loop."
+  - decision: "Prompt-level vs. harness-level enforcement de formato"
+    benefit: "Prompt e flexivel; harness (stop sequence, structured outputs) garante consistencia 'to a higher degree' e programatica."
+    cost: "Escolher harness para schemas complexos (nested JSON); prompt-only fica para casos conversacionais de baixo risco."
+  - decision: "Framing do trade-off de escalacao no prompt"
+    benefit: "Declarar os dois lados ($8 para escalar vs. refund + customer trust para errar) deixa o modelo calibrar."
+    cost: "Custo declarado de um lado so gera under-escalacao sistematica."
+  - decision: "LLM judge vs. funcao Python como grader"
+    benefit: "Hard rules -> Python (deterministico, barato); qualidade conversacional e constraints soft -> LLM evaluator (flexivel, ajustavel em runtime)."
+    cost: "Cada grader cobre so uma classe de constraint; usar o errado introduz nao-determinismo (LLM) ou rigidez (Python) onde nao cabem."
+
+failure_patterns:
+  - pattern: "Overfit em patch de modelo antigo (information withholding)"
+    cause: "Instrucao defensiva para um modelo anterior ('Never give a customer the wrong plan details') que o modelo novo, melhor em instruction following, sobre-cumpre - o inverso de alucinacao: 'the model can withhold information that it actually has access to'."
+    mitigation: "Rebalancear para fonte de verdade (ban -> 'the customer information that's given... is the accurate source of truth'); version control com rationale por mudanca defensiva para permitir backtrack."
+  - pattern: "Instrucao de exortacao sem capacidade (mental math)"
+    cause: "'Telling the model to do a good job isn't particularly helpful when we don't give the model the capability to actually do a good job' - resposta vaga com raciocinio visivel mas sem numero concreto."
+    mitigation: "Tool com schema e implementacao deterministica (tool integration triad)."
+  - pattern: "Overfit de objetivo de um lado so (missed escalation)"
+    cause: "(a) Instrucao com custo apenas ('approximately $8') sem o beneficio; (b) 'clear conflict between what we've defined in the eval... versus what we're actually telling it to do'."
+    mitigation: "Declarar os dois lados do trade-off e alinhar prompt com o comportamento que o eval exige."
+  - pattern: "Prompt rot por ausencia de ownership"
+    cause: "'Multiple people have been collaborating on... There's no clear owner' - policy, tom, processos e patches de modelos antigos misturados; dados de website colados; identidade falsa; instrucoes num paragrafo unico."
+    mitigation: "Higiene estrutural com XML tags (role/guidelines/policy/tone/data) e ownership explicito do prompt."
+  - pattern: "Truncation sob raciocinio enriquecido"
+    cause: "Prompt com check-its-work eleva o comprimento do raciocinio; o modelo 'hasn't been able to finish the tasks within the output limit' - falha de orcamento mascarada de falha de qualidade."
+    mitigation: "Mudar a arquitetura (loop generate-evaluate-repair) em vez de pagar max tokens linearmente."
+  - pattern: "Regressao transitoria por variancia de run"
+    cause: "'Some natural level of variance in the different runs of the eval'."
+    mitigation: "Tratar runs individuais como ruido; revalidar o caso especifico e buscar consistencia ('see if we can make the prompt consistently better in that area')."
+
+synthesis: >
+  O fio nao nomeado pela autora: garantias migram do prompt para o harness. Formato consistente
+  sai do texto (output XML) e vira stop sequence/structured outputs; correcao numerica sai da
+  exortacao (critical: calculate correctly) e vira tool; qualidade que se comprava com modelo
+  maior + thinking budget acaba entregue mais barato por decomposicao arquitetural
+  (generate-evaluate-repair). O prompt retém so o que e genuinamente comportamental - tom, policy,
+  trade-offs declarados dos dois lados. Essa e a distincao invariantes de dominio vs. compensacoes
+  de modelo aplicada a manutencao de prompts: patch de modelo e passivo que deprecia (e vira falha
+  por overfit na geracao seguinte), mecanismo de harness e ativo que sobrevive a migracao;
+  correlato: migracao de modelo deveria disparar auditoria de patches defensivos, nao so re-run de
+  evals. Segunda sintese: alucinar (afirmar o que nao sabe) e reter (recusar o que sabe) sao falhas
+  calibracionais simetricas, ambas induzidas por prompt, e a talk trata as duas com o mesmo
+  movimento - substituir proibicao por designacao de fonte de verdade. Terceira: o eval e o sistema
+  de coordenadas fixo que torna comparaveis permutacoes de prompt/model/harness; sem ele, higiene e
+  iteracao sao vibes - com ele, ate a variancia entre runs se torna sinal diagnosticavel. Quarta: a
+  ordem de exploracao foi capability -> budget -> instruction -> architecture, e o vencedor economico
+  foi sempre o ultimo degrau - decompor o problema e mais barato que escalar o solver.

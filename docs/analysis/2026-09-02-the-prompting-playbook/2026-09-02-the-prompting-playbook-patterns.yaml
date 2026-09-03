@@ -1,0 +1,350 @@
+title: "Agentic Patterns from The Prompting Playbook"
+type: analysis
+date: 2026-09-02
+tags:
+  - agentes-orquestracao
+  - harness-engineering
+  - evals
+  - context-engineering
+  - production
+extraction:
+  mode: FILE
+  source: "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-analysis.md"
+  scope: "Read the entire analysis file as the single knowledge input; kept only patterns applicable to agentic systems (agent prompts, harnesses, evals, tool use, decomposition). Cross-cutting theme: guarantees migrate from the prompt to the harness."
+patterns:
+  - name: "Eval-Gated Model Migration Diagnostic"
+    problem_solved: "When a prompt migrates to a new model and performance drops, teams cannot tell a fixable behavior difference from an unfixable capability gap, so they waste effort prompting around a capability deficit."
+    inputs:
+      - "Production prompt being migrated to a new model."
+      - "An eval suite covering the prompt's behavior, run before and after migration."
+      - "Per-case pass/fail results plus a violation-count metric."
+    outputs:
+      - "A per-failure diagnosis: behavior difference (remediable by prompt/harness tuning) vs. capability gap (no amount of prompting fixes it)."
+      - "A regression-test signal for the migration decision."
+    benefits:
+      - "Separates the only two possible causes of post-migration failure, each with a distinct remedy."
+      - "Doubles as a regression suite for every future migration."
+      - "Violation counts give directional signal (capability improving) even when pass/fail has not moved."
+    limitations:
+      - "Requires the eval suite to exist before migration; without it, iteration is vibes."
+      - "Natural variance between runs can mimic regression; revalidate the specific case before concluding."
+      - "Only as representative as its case taxonomy."
+    components:
+      - "eval_suite: control, edge, and boundary cases covering the prompt's behavior."
+      - "baseline_run: suite results on the current model."
+      - "migration_run: suite results on the candidate model."
+      - "violation_counter: count-based metric that moves before pass/fail does."
+      - "revalidation_protocol: re-run rule for single-case regressions suspected of variance."
+    flow:
+      - "Run the eval suite against the current model to establish the baseline."
+      - "Run the same suite against the new model."
+      - "Classify each failing case: behavior difference vs. capability gap."
+      - "Treat single-run regressions as possible variance and revalidate the specific case."
+      - "Remediate behavior failures via prompt/harness; treat capability gaps via model, budget, or architecture escalation."
+
+  - name: "Control/Edge/Boundary Eval Taxonomy"
+    problem_solved: "Ad hoc eval suites do not systematically cover what a production agent must preserve: unambiguous baseline behavior, past failure modes locked by instruction, and the edge of its own competence."
+    inputs:
+      - "The agent's task domain and known past failures."
+      - "Policy, tools, and handoff/refusal criteria."
+    outputs:
+      - "A three-class suite: control cases (must always pass, unambiguous), edge cases (past failures locked by instruction), and capability-boundary cases (handoff to a human or refusal)."
+    benefits:
+      - "Makes regression meaning class-specific: control regression is breakage; boundary regression is calibration loss."
+      - "Encodes institutional memory of past failures as permanent tests."
+      - "Tests the agent's self-knowledge of its limits, not just task skill."
+    limitations:
+      - "Requires deliberate curation to map cases onto the three classes."
+      - "Boundary cases depend on correctly specifying when handoff or refusal is right."
+      - "Each new production failure grows the edge set, so the suite needs maintenance."
+    components:
+      - "control_case_set: unambiguous cases the model handles well and that must always pass."
+      - "edge_case_set: past failures now locked by instruction so they do not regress."
+      - "boundary_case_set: situations where correct behavior is handing off to a human or refusing."
+      - "case_mapper: assigns each domain scenario to one of the three classes."
+    flow:
+      - "Enumerate unambiguous tasks the model already handles well as control cases."
+      - "Convert each past failure locked by an instruction into an edge case."
+      - "Define handoff and refusal situations as capability-boundary cases."
+      - "Run the full suite on every prompt/model/harness permutation."
+
+  - name: "Structural Prompt Hygiene"
+    problem_solved: "Multi-owner production prompts mix policy, tone, process, data, and defensive patches in undifferentiated text; the model cannot tell them apart, and neither can maintainers."
+    inputs:
+      - "A legacy prompt with mixed concerns, redundancy, pasted web copy, and false identity claims."
+      - "A structural scheme such as XML tags: role, guidelines, policy, tone of voice, data."
+    outputs:
+      - "A prompt with logically separated, tagged sections and redundancy removed."
+      - "A measured eval uplift from hygiene alone, before any targeted failure fix."
+    benefits:
+      - "Rule of thumb: if a human reader cannot tell guidelines from policy from data, the model cannot either; separation fixes both at once."
+      - "Reusable at any stage of prompt maintenance, especially as prompts grow more complex."
+      - "Cheap: in the source case it produced uplift before any targeted fix."
+    limitations:
+      - "Bounded: hygiene does not fix specific failure modes, which need targeted work."
+      - "Requires an explicit owner to prevent rot from re-accumulating."
+      - "Post-hygiene evals still show per-case variance that must be revalidated case by case."
+    components:
+      - "section_schema: XML tags for role, guidelines, policy, tone of voice, and data."
+      - "redundancy_remover: deletes duplicated and unused content."
+      - "staleness_audit: strips pasted web copy and false identity claims."
+      - "ownership_assignment: a named owner accountable for the prompt."
+    flow:
+      - "Audit the prompt for mixed concerns, redundancy, stale pasted content, and false claims."
+      - "Partition the content into tagged sections (role, guidelines, policy, tone, data)."
+      - "Delete redundancy and content the model does not use."
+      - "Re-run evals to measure the hygiene-only uplift before targeted fixes."
+
+  - name: "Defensive Patch Ledger"
+    problem_solved: "Prompts accumulate defensive patches written for previous models; newer, more instruction-following models overfit those patches, and nobody knows which patch to remove because the why was never recorded."
+    inputs:
+      - "A version-controlled prompt."
+      - "A rationale recorded for every defensive change (why added, which failure it addressed)."
+    outputs:
+      - "An auditable history mapping each defensive instruction to the model-era failure that justified it."
+      - "The ability to backtrack or neutralize patches during model migration."
+    benefits:
+      - "Turns patch debt from an invisible liability into a depreciable inventory."
+      - "Makes model migration trigger a patch audit, not just an eval re-run."
+      - "Operationalizes the invariant-compensation split: model compensations decay across generations; domain invariants survive."
+    limitations:
+      - "Discipline cost: the rationale must be recorded at write time or never."
+      - "Does not by itself decide which patches are obsolete; audit judgment is still required."
+      - "Depends on prompt-as-code infrastructure (version control)."
+    components:
+      - "versioned_prompt_store: the prompt under version control."
+      - "rationale_field: why the defensive change was made and which failure it addressed."
+      - "migration_audit_trigger: migration event that forces a patch inventory."
+      - "backtrack_procedure: removal or neutralization of patches whose justification expired."
+    flow:
+      - "Record a rationale for every defensive instruction at the moment it is written."
+      - "On model migration, enumerate all defensive patches."
+      - "Audit each patch against the new model's behavior, watching for over-compliance signals."
+      - "Backtrack patches whose justification no longer holds and re-run evals."
+
+  - name: "Two-Sided Trade-off Instruction"
+    problem_solved: "Instructions that state only the cost of an action (for example, escalation costs $8) make the agent over-optimize the single stated objective and never escalate, even when escalating is correct."
+    inputs:
+      - "The action whose frequency the prompt should control (escalate, refund, hand off)."
+      - "The cost side of the action (money, team metrics)."
+      - "The counter-cost of wrongly avoiding it (refund exposure, customer trust)."
+      - "The behavior the eval suite expects."
+    outputs:
+      - "A balanced instruction declaring both sides of the trade-off, letting the model make the judgment per case."
+    benefits:
+      - "As models improve at making trade-offs, stating both sides lets them exercise that judgment."
+      - "Eliminates single-objective overfit such as under-escalation."
+      - "Resolves prompt-vs-eval conflict when both describe the desired behavior consistently."
+    limitations:
+      - "Requires knowing both sides well enough to state them."
+      - "Converts a hard rule into a judgment; behavior becomes less deterministic."
+      - "The framing must stay aligned with what the eval defines as correct."
+    components:
+      - "cost_statement: the price of the action (money, metrics)."
+      - "counter_cost_statement: the price of wrongly avoiding the action."
+      - "eval_alignment_check: confirmation that eval cases reward the balanced behavior."
+    flow:
+      - "Identify the action whose frequency the prompt is trying to control."
+      - "State both the cost of the action and the cost of wrongly avoiding it."
+      - "Verify the eval cases reward the balanced behavior, not the single objective."
+      - "Re-run boundary and edge cases to confirm calibration."
+
+  - name: "Capability Escalation Ladder"
+    problem_solved: "When an agent fails a hard task, teams guess which lever to pull (bigger model, more thinking, better prompt, decomposition); ad hoc ordering wastes spend and hides the economic winner."
+    inputs:
+      - "A failing task with an eval suite and violation counts."
+      - "Four escalation rungs: larger model, reasoning budget (adaptive thinking), improved instructions, architectural decomposition."
+      - "Cost and latency measurements per rung."
+    outputs:
+      - "An ordered exploration: capability, then budget, then instruction, then architecture."
+      - "A cost/quality comparison across the routes that pass; the economic winner is typically the last rung (decomposition)."
+    benefits:
+      - "Each rung is cheap to test relative to the next, and violation counts give directional signal along the way."
+      - "Prevents shipping routes that pass evals but fail economics (triple tokens and latency)."
+      - "In the source case the decomposition rung passed everything at the lowest cost."
+    limitations:
+      - "Later rungs cost more engineering (three prompts to maintain instead of one)."
+      - "Early rungs can pass evals at unacceptable cost; pass/fail alone does not decide."
+      - "Meaningless without eval infrastructure to compare rungs."
+    components:
+      - "model_rung: escalate to a larger model and watch violation counts fall."
+      - "budget_rung: add adaptive thinking and pay the token/latency multiplier."
+      - "instruction_rung: add reasoning guidance and self-check instructions."
+      - "architecture_rung: decompose the task (for example, generate-evaluate-repair)."
+      - "cost_latency_ledger: token and latency accounting per rung."
+    flow:
+      - "Baseline with the current model and a simple prompt; measure failures and violation counts."
+      - "Escalate capability with a larger model; note directional improvement."
+      - "Add reasoning budget (adaptive thinking); measure the token and latency penalty."
+      - "Improve instructions (reasoning guidance, check-your-work); watch for new failure classes such as truncation."
+      - "Decompose architecturally; compare quality per token and latency and pick the economic winner."
+
+  - name: "Hard/Soft Constraint Grader Split"
+    problem_solved: "Grading agent outputs that mix binary rules with fuzzy preferences through a single judge yields either non-deterministic hard-rule grading or ossified soft preferences."
+    inputs:
+      - "Task constraints partitioned into hard (binary, countable) and soft (preferences)."
+      - "A deterministic checker function for the hard rules."
+      - "An LLM evaluator prompt carrying the soft constraints."
+      - "A trial count (for example, five runs per candidate)."
+    outputs:
+      - "Violation counts per hard rule per trial, deterministic and cheap."
+      - "Soft-constraint judgment from the evaluator, adjustable at runtime without backend changes."
+    benefits:
+      - "Hard rules graded programmatically instead of by a non-deterministic LLM judge."
+      - "Soft constraints become runtime-tunable prompt content rather than code deploys."
+      - "Count-based reporting detects directional improvement even when binary pass/fail does not move."
+    limitations:
+      - "Requires a clean partition; ambiguous constraints force a choice of side."
+      - "The LLM evaluator keeps non-determinism and cost for the soft portion."
+      - "Multi-trial reporting multiplies eval runtime."
+    components:
+      - "constraint_partitioner: splits rules into hard (binary) and soft (preference)."
+      - "violation_counter: Python function that counts hard-rule violations per output."
+      - "llm_evaluator_prompt: carries soft constraints and judges them flexibly."
+      - "multi_trial_report: per-trial violation counts across N runs."
+    flow:
+      - "Partition constraints into hard (binary) and soft (preference)."
+      - "Implement a programmatic checker that counts hard-rule violations per generated output."
+      - "Encode soft constraints in the evaluator's prompt."
+      - "Run N trials and report violation counts plus evaluator findings per trial."
+
+  - name: "Two-Layer Output Contract"
+    problem_solved: "Relying on prompt text alone for output-format consistency produces drift; machine consumers of structured output cannot tolerate it."
+    inputs:
+      - "A prompt-level format definition, such as XML tags wrapping the answer."
+      - "Harness enforcement: a stop sequence that detects the closing tag, and structured outputs for nested JSON schemas."
+      - "A classification of the output type: conversational vs. structured."
+    outputs:
+      - "Format consistency enforced programmatically: generation stops at the contract boundary; schemas constrain structure."
+    benefits:
+      - "Harness enforcement guarantees consistency to a higher degree than text instructions."
+      - "Right-sizes effort: conversational bots carry a light contract; structured outputs carry heavy enforcement."
+      - "Survives model migration better than prompt-text format pleading."
+    limitations:
+      - "Stop sequences require knowing the terminal token of the format."
+      - "Structured outputs couple the schema to the API surface; schema changes become API changes."
+      - "Overkill for outputs with no downstream machine consumer."
+    components:
+      - "prompt_format_spec: tags or format description in the prompt."
+      - "stop_sequence: detects the closing delimiter and stops generation."
+      - "structured_output_schema: programmatic schema enforcement for nested JSON."
+      - "output_type_classifier: decides how much contract the consumer needs."
+    flow:
+      - "Classify the consumer: human-conversational or machine-structured."
+      - "Define the format in the prompt (tags or schema description)."
+      - "For structured output, add harness enforcement: stop sequence and/or structured outputs."
+      - "Verify consistency across eval trials."
+
+  - name: "Tool Integration Triad"
+    problem_solved: "Instructing the model that a calculation is critical does not make it capable: it does mental math and returns a vague answer instead of a concrete one."
+    inputs:
+      - "A capability gap: deterministic computation the model can reason about but not execute reliably."
+      - "A prompt instruction saying when the tool must be used."
+      - "A tool schema in the API describing what the tool does and when to use it."
+      - "A deterministic implementation of the operation."
+    outputs:
+      - "Concrete, computed answers executed by the tool, with the model retaining the reasoning and when-to-call judgment."
+    benefits:
+      - "Instructions do not add capability; the tool reliably executes what the model only reasons about."
+      - "Frees the model to reason over harder problems while tools execute them reliably."
+      - "The implementation is deterministic, testable, ordinary code."
+    limitations:
+      - "All three integration points must be present; instruction alone or schema alone fails."
+      - "Adds API surface and maintenance burden."
+      - "Wrong-time-to-call remains a behavioral risk that evals must cover."
+    components:
+      - "prompt_instruction: when the tool must be used."
+      - "tool_schema: API definition of what the tool does and when to use it."
+      - "deterministic_implementation: exact execution of the operation."
+      - "tool_eval_coverage: cases asserting the tool path produces concrete answers."
+    flow:
+      - "Identify outputs requiring capability the model lacks (computation, lookup)."
+      - "Implement the deterministic tool."
+      - "Register the schema in the API describing purpose and triggers."
+      - "Instruct in the prompt when the tool must be used."
+      - "Add eval cases asserting the tool path produces concrete answers."
+
+  - name: "Generate-Evaluate-Repair Loop"
+    problem_solved: "A single mega-prompt that generates, verifies, and corrects in one context burns tokens and cannot finish within the output limit; soft requirements frozen into code also resist change."
+    inputs:
+      - "A task specification with hard and soft constraints."
+      - "Three independent simple prompts: generator (first draft), evaluator (checks every rule with evidence of every violation), repairer (targeted fixes from the violations)."
+      - "Soft constraints injected into the evaluator prompt at runtime."
+    outputs:
+      - "A corrected artifact that passes constraints at lower token cost and latency than model-upsizing or limit-inflating routes."
+      - "A structured violation report with evidence per rule."
+    benefits:
+      - "Passed all source cases with fewer tokens and lower latency than the bigger-model and bigger-limit routes."
+      - "Soft constraints become runtime-adjustable evaluator content with no backend change."
+      - "Each prompt stays simple and independently maintainable and testable."
+    limitations:
+      - "Three prompts to maintain instead of one, and the loop itself still admits optimization."
+      - "The evaluator is an LLM: cost and non-determinism for soft judgments."
+      - "Repairer quality bounds the loop; pathological cases may need more iterations."
+    components:
+      - "generator_prompt: produces the first draft."
+      - "evaluator_prompt: checks every rule and provides evidence of every violation."
+      - "repairer_prompt: makes targeted fixes from the reported violations."
+      - "soft_constraint_injection: runtime-tunable constraints in the evaluator prompt."
+      - "iteration_controller: loops until hard violations reach zero and soft constraints pass."
+    flow:
+      - "Generator produces the first draft."
+      - "Evaluator checks every rule, emitting evidence of every violation."
+      - "Repairer applies targeted fixes for the reported violations."
+      - "Loop until the programmatic grader counts zero hard-rule violations and the evaluator accepts the soft constraints."
+      - "Emit the final artifact plus the violation history."
+
+  - name: "Ban-to-Source-of-Truth Rebalancing"
+    problem_solved: "Defensive bans (never give plan details, point to the URL) make newer, more instruction-following models withhold information they actually have in context — the inverse failure of hallucination."
+    inputs:
+      - "A prohibition instruction introduced for a past model's failure."
+      - "The authoritative data available in context, such as a customer record with grandfathered allowances."
+      - "Observed withholding behavior."
+    outputs:
+      - "A balanced instruction designating the in-context data as the accurate source of truth, replacing the ban list."
+    benefits:
+      - "Fixes information withholding with the same move that fixes hallucination: designate the source of truth instead of prohibiting output."
+      - "Shortens the prompt by removing long ban lists."
+      - "Stops new models from over-complying old prohibitions."
+    limitations:
+      - "Requires trustworthy in-context data; bad context gets confidently served."
+      - "Judging which bans are still load-bearing needs the Defensive Patch Ledger."
+      - "Softening a ban can re-expose the original failure it fixed, so the case must be eval'd."
+    components:
+      - "ban_inventory: list of prohibition instructions and their origins."
+      - "source_of_truth_designation: names the in-context data as authoritative."
+      - "balanced_instruction: replaces the ban with the designation."
+      - "regression_eval: covers both the original failure and the withholding failure."
+    flow:
+      - "Detect withholding: the model deflects to a URL or human despite having the answer in context."
+      - "Trace the behavior to a defensive ban instruction."
+      - "Replace the ban with a designation of the authoritative in-context source."
+      - "Re-run eval cases covering both the original failure and the withholding failure."
+
+  - name: "Self-Check Reasoning Instruction"
+    problem_solved: "A smaller model reasons about a problem but submits unverified work; it fails not because it cannot reason but because it does not check."
+    inputs:
+      - "Prompt guidance on how to reason through the problem."
+      - "An explicit instruction to check its work before outputting."
+      - "The output-limit budget."
+    outputs:
+      - "A measured partial improvement (0/5 to 2/5 in the source case)."
+      - "A new, distinct failure surface: truncation when enriched reasoning exceeds the output limit."
+    benefits:
+      - "A cheap, prompt-only lever that lifts weaker models without upsizing."
+      - "Shifts the error class from rule violations to budget exhaustion, which is diagnosable."
+      - "Serves as the instruction rung of the Capability Escalation Ladder."
+    limitations:
+      - "Bounded improvement; may not reach passing on its own."
+      - "Longer reasoning collides with fixed output limits; truncation is a budget failure, not a quality failure."
+      - "Fixing it by raising max tokens passes the eval but destroys token and latency economics."
+    components:
+      - "reasoning_guidance: how to work through the problem."
+      - "self_check_instruction: explicit check-your-work-before-output directive."
+      - "output_limit_monitor: detects truncation failures."
+      - "failure_class_diagnosis: distinguishes rule violations from budget exhaustion."
+    flow:
+      - "Add how-to-reason guidance to the prompt."
+      - "Add an explicit check-your-work-before-outputting instruction."
+      - "Re-run evals; if failures persist, classify them as rule violations vs. truncation."
+      - "If truncation dominates, escalate the architecture (decomposition) rather than inflating output limits."
