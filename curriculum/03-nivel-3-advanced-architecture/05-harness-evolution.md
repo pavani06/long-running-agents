@@ -988,6 +988,46 @@ Fernando aprendeu essa licao na pratica. Na primeira migracao de modelo, o time 
 - [ ] Ao trocar de modelo, voce regenera o codigo a partir das constraints (nao reescreve)?
 - [ ] As compensacoes de modelo tem um criterio de expiracao documentado?
 
+### O Diagnóstico de Migração: Behavior Difference vs. Capability Gap
+
+O modelo mental do compilador fuzzy diz o que preservar na migração (as constraints). Mas quando o novo modelo roda a eval suite e **um caso regrediu**, ele não diz o que fazer com aquele caso. A pergunta que falta, por caso que falha, é: **a falha é de comportamento ou de capacidade?**
+
+O *Eval-Gated Model Migration Diagnostic* ([[docs/canonical/eval-gated-model-migration-diagnostic|Eval-Gated Model Migration Diagnostic]]) adiciona a etapa de diagnóstico por falha dentro do comparison report de migração. As duas únicas causas possíveis de falha pós-migração, cada uma com remédio distinto:
+
+| Diagnóstico | O que é | Remédio |
+|---|---|---|
+| **Behavior difference** | O modelo tem a capacidade (raciocínio, conhecimento, instruction following), mas formato, estilo ou interpretação da instrução divergem do esperado | Ajustar prompt ou harness — prompting é a alavanca certa |
+| **Capability gap** | A capacidade exigida pelo caso está fora do alcance do modelo | Não é prompting: capability escalation (modelo maior, decomposição, ferramenta) |
+
+O procedimento, passo a passo:
+
+1. Rodar a eval suite nos dois modelos e produzir o comparison report (por camada, por categoria, casos de regressão, custo por query), como prescrito no [[docs/canonical/model-switching-architecture-enterprise-eval-gate|Model-Switching Architecture Enterprise Eval Gate]].
+2. **Revalidar cada caso que regrediu antes de concluir** — variância natural entre runs pode imitar regressão; reexecutar o caso específico.
+3. Classificar cada falha em behavior difference vs. capability gap (tabela acima).
+4. Registrar **violation counts** por regra por caso: quando o pass/fail não se move entre candidatos, a contagem de violações dá sinal direcional (a capability está melhorando por baixo).
+5. Alimentar a decisão Switch/Hold/Hybrid com o diagnóstico agregado: regressão de comportamento é endereçável antes do switch; regressão de capability é bloqueadora ou delimita o escopo Hybrid.
+
+Sem essa etapa, o time queima semanas promptando ao redor de um déficit de capacidade que pede outro remédio — ou descarta um candidato por um problema que dois ajustes de prompt resolveriam. A mesma suite, por construção, vira regression suite para toda migração futura.
+
+### O Patch Ledger: Migração Dispara Patch Audit, Não Só Eval Re-Run
+
+O diagnóstico acima classifica as falhas do novo modelo. Falta a outra metade da migração: **auditar o que o novo modelo tornou obsoleto no prompt e no harness.**
+
+Prompts acumulam **patches defensivos** — instruções que existem porque um modelo antigo falhava de um jeito específico ("recarregue o perfil a cada 3 turns", "nunca detalhe o plano, aponte para a URL"). Modelos mais novos e melhores em instruction following **overfitam** esses patches: obedecem instruções que perderam a razão de ser, tipicamente over-complying proibições e recusando trabalho válido. E ninguém sabe qual patch remover porque o porquê nunca foi registrado. O *Defensive Patch Ledger* ([[docs/canonical/defensive-patch-ledger|Defensive Patch Ledger]]) acopla, em um procedimento de migração, as duas metades que o repo já tinha em canonicals separados:
+
+1. **Rationale no write time ou nunca** ([[docs/canonical/prompt-as-code-causal-change-management|Prompt-as-Code Causal Change Management]]): cada patch defensivo registra causal trigger, diagnostic context e predictive intent no commit em que entra. Registro posterior não existe — é essa disciplina que o [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-08-defensive-patch-ledger|Exercício: Defensive Patch Ledger]] treina.
+2. **Migração dispara patch audit**: quando o modelo troca, o audit percorre o ledger e julga patch a patch — a falha que este patch endereçava ainda existe no novo modelo?
+3. **O padrão de decisão é o do [[docs/canonical/invariant-compensation-split|Invariant-Compensation Split]]**: separar domain risk de model weakness. Se a falha persiste com modelo melhor, é invariante candidato (fica). Se não persiste, o patch é compensation em decaimento e vira **removal candidate** — com eval antes de remover, porque remover patch pode reexpor a falha original que ele corrigiu.
+
+O efeito é transformar patch debt de passivo invisível em **inventário deprecável**: cada geração de modelo deprecia uma fatia do ledger, e a migração é o momento natural de cobrar a depreciação. É também o complemento do Anti-Padrão 3 ("Remover Porque o Modelo Novo é Melhor, sem testar"): o patch audit não remove por otimismo de changelog — remove por ledger mais eval.
+
+**Checklist do patch audit na migração:**
+
+- [ ] Todo patch defensivo no prompt/harness tem rationale registrado no commit que o introduziu?
+- [ ] O audit percorreu o ledger inteiro, patch a patch, classificando invariante vs. compensation?
+- [ ] Cada removal candidate passou por eval (a falha original não voltou) antes do removal?
+- [ ] A migração rodou o eval gate E o patch audit — não só o eval re-run?
+
 ---
 
 ### Quando NÃO Remover — Mesmo com Modelo Melhor

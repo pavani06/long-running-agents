@@ -883,6 +883,8 @@ Error payload explica falha.
 
 8. Um campo desconhecido pode ser ignorado se o schema permitir extensão.
 
+Essa validação é a **camada harness** do contrato de saída dos agentes ([[docs/canonical/two-layer-output-contract|Two-Layer Output Contract]]): o mesmo formato que o prompt de cada agente define (a instrução que ensina a emitir `plan.json`/`generation.json` no shape certo) é o que o protocolo reprova aqui — arquivo sem `schema_version`, sem `created_at` ou com JSON inválido não circula. O pareamento é o que separa compliance de garantia: instrução de formato no prompt sozinha deixa o escape provável; a validação do protocolo torna o escape impossível de consumir. E o right-sizing acompanha o consumidor — artefato com consumidor de máquina (outro agente lendo `evaluation.json`) carrega enforcement pesado; mensagem conversacional com humano carrega contrato leve.
+
 ### O Agente como Arquivo Declarativo
 
 O JSON protocol define o contrato dos **dados** que circulam entre agentes.

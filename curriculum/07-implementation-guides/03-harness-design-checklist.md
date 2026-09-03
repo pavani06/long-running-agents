@@ -1124,6 +1124,28 @@ Fernando ensina o time a procurar a falha antes do incidente: qual evidência ex
 | Classificacao de padroes de falha | Falhas, escapes e misbehaviors sao classificados por taxonomia (context_loss, tool_misuse, rubric_gap, safety_escape, etc.) e convertidos em casos de regressao com tier assignment, conforme [[docs/canonical/failure-pattern-classification-loop|Failure Pattern Classification Loop]]. | Taxonomia documentada, casos vinculados a tiers de eval, deduplicacao ativa. | Cada falha gera um card avulso, sem classificacao ou prevencao sistemica. | Registre link para artefato, owner e data. |
 | Documentacao baseada em personas | Conhecimento especializado (front-end, seguranca, UX, produto) vive em documentos NFR por persona, nao apenas em AGENTS.md universal. Agentes herdam as personas relevantes automaticamente, conforme [[docs/canonical/persona-based-documentation|Persona-Based Documentation]]. | Cada especialidade tem dono, documento versionado e dispatch por tipo de tarefa. | Conhecimento de qualidade vive na cabeca dos especialistas ou em comentarios de PR. | Registre link para artefato, owner e data. |
 | Interface de troca de modelo | O modelo é acessado por trás de interface uniforme (slot); VM, memória, evals e goal não referenciam fraquezas de modelo específico; compensações model-specific vivem em camada marcada com expiração, conforme [[docs/canonical/model-agnostic-agent-vm-harness\|Model-Agnostic Agent-VM Harness]]. | Trocar de modelo é mudança de configuração validada pelo eval gate, não rewrite de harness. | Capacidade do modelo atual está tecida no fluxo; cada modelo novo exige reescrita. | Registre link para artefato, owner e data. |
+| Escalada de capacidade ordenada | Toda task reprovada sobe a escada antes de trocar de alavanca: capability (modelo maior) → reasoning budget → instruction → architecture (decomposição), cada degrau medido em pass/fail, violation counts, tokens e latência, com vencedor econômico entre as rotas que passam. | Existe relatório de escalada com as quatro medidas por degrau testado. | O time puxa modelo maior ou prompt novo por chute, sem medir as rotas alternativas; rota que passa o eval reprova a economia e ninguém nota. | Registre link para artefato, owner e data. |
+| Instrução de ação custosa com dois lados | Toda instrução que controla frequência de ação custosa (escalonar, reembolsar, handoff) declara o custo de agir E o counter-cost de evitar errado, alinhada com o que o eval define como correto. | Instrução balanceada versionada e casos de eval cobrindo os dois erros (agir quando não devia, não agir quando devia). | Instrução declara só o lado do custo; under-escalation aparece como chargebacks e tickets virando incidente. | Registre link para artefato, owner e data. |
+
+### Escalada de Capacidade e Instrução Balanceada: o Lado de Adição da Evolução
+
+Até aqui esta categoria audita o que **sai** do harness (SIMPLIFY/REMOVE). O mesmo diagnóstico governa o caminho inverso: o que **entra** quando uma task reprova e o time pede mais capacidade. Os dois gates seguintes capturam as duas decisões de adição mais malfeitas em times de agentes — escolher a alavanca de capacidade por chute, e escrever instrução de ação custosa declarando só um lado do trade-off.
+
+**Escalada ordenada (Capability Escalation Ladder).** Quando uma task reprova, as alavancas legítimas são quatro: modelo maior, reasoning budget (adaptive thinking), instrução melhor, decomposição arquitetural. O gate exige que elas sejam testadas **na ordem de custo de teste** — cada degrau é barato de testar relativo ao seguinte — e que cada degrau medido registre pass/fail, violation counts, tokens e latência. Violation counts são o sinal direcional quando o pass/fail não mexe (violações caindo de 9 para 6 em rota reprovada é capacidade emergindo). A decisão final é **econômica entre as rotas que passam**: rota que passa o eval a 3x tokens "passou o eval, reprovou a economia" — e no caso-fonte o vencedor foi o último degrau (decomposição Generator/Evaluator/Repairer), que passou tudo ao menor custo. A escada não é o [[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]] (falha de runtime: retry, fallback, escalação humana), não é o gate de migração entre modelos candidatos, e não é o [[docs/canonical/task-routed-model-tiering|Task-Routed Model Tiering]] (roteamento de subtasks que funcionam); é ordenação de investimento em tarefa que falha. Implementação de referência: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder|Exercício 22]]; tratamento conceitual: [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution (Core Concept 06)]]; padrão completo: [[docs/canonical/capability-escalation-ladder|Capability Escalation Ladder]].
+
+**Instrução balanceada (Two-Sided Trade-off Instruction).** Instrução que controla frequência de ação custosa declarando só o custo ("escalonar custa R$ 8 — evite") produz single-objective overfit: o modelo trata a ação como derrota e para de escalonar, inclusive nos casos em que escalar era correto — fraude tratada solo virando chargeback de R$ 480 contra os R$ 8 economizados. O gate exige os dois lados na mesma instrução (custo de agir E counter-cost de evitar errado), alinhados com o que o eval define como correto — prompt e eval não podem puxar para direções opostas. A contrapartida: o padrão converte regra dura em julgamento, então ações sem trade-off (PII, segurança) permanecem como regra dura com veto estrutural. Implementação de referência: [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction|Exercício 9]]; padrão completo: [[docs/canonical/two-sided-trade-off-instruction|Two-Sided Trade-off Instruction]].
+
+**Modos de falha:**
+- **Ladder skipping:** o time mede o degrau que alguém já tinha testado (tier-3 no branch) e aprova por pass/fail, sem nunca medir os demais — o relatório de escalada com uma rota única é chute com planilha.
+- **Economics blindness:** rota aprovada por passar o eval, com tokens e latência fora do orçamento — pass/fail decide se passa, a economia decide se fica.
+- **Directional signal ignorado:** degraus reprovados descartados sem ler os violation counts — a queda de violações era a informação de que a capacidade estava chegando.
+- **Two-sided drift:** a instrução balanceada é escrita uma vez e nunca reavaliada; o eval de calibração muda o que conta como "deveria ter escalado" e a instrução fica desalinhada do eval silenciosamente.
+
+**Checklist adicional:**
+- [ ] Existe relatório de escalada (por task reprovada) com os degraus testados e as quatro medidas por degrau.
+- [ ] Nenhuma mudança de tier/modelo para task reprovada foi aprovada sem as rotas alternativas medidas.
+- [ ] O vencedor da escalada foi escolhido por custo/latência entre as rotas que passam, com registro da comparação.
+- [ ] Instruções de escalonamento, reembolso e handoff declaram os dois lados e têm casos de eval cobrindo os dois erros.
 
 ### On-Policy Rollout Feedback: Fechando o Gap de Exposure Bias
 
@@ -1212,6 +1234,8 @@ Supervision Human Review
 - shadow test
 - feature flag
 - relatório BUILD/STABILIZE/SIMPLIFY/REMOVE
+- relatório de escalada de capacidade por task reprovada (degraus testados com pass/fail, violation counts, tokens e latência)
+- instrução de ação custosa versionada declarando os dois lados, com casos de eval cobrindo agir-quando-não-devia e não-agir-quando-devia
 
 ### Exemplo de falha típica
 
@@ -1253,6 +1277,9 @@ Supervision Human Review
 - [ ] Falhas e escapes sao classificados por taxonomia e convertidos em casos de regressao?
 - [ ] Especialistas mantem documentos NFR por persona, e agentes herdam esse conhecimento automaticamente?
 - [ ] O AGENTS.md e complementado por personas especializadas, nao substituido por elas?
+- [ ] Toda task reprovada subiu a escada de capacidade antes de trocar de alavanca (medindo pass/fail, violacoes, tokens e latencia por degrau)?
+- [ ] O vencedor da escalada foi escolhido por economia entre as rotas que passam, nao pelo primeiro pass?
+- [ ] Instrucoes de acao custosa (escalonar, reembolsar, handoff) declaram custo E counter-cost na mesma instrucao, alinhadas com o eval?
 
 ### Critérios de bloqueio para esta categoria
 

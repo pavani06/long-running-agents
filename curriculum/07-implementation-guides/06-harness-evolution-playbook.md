@@ -578,6 +578,7 @@ Enquanto o ciclo trimestral decide o destino estrutural dos componentes (SIMPLIF
 | "Agente comecou a responder com confianca mas contradizendo decisoes anteriores -- cliff approaching" | context_health | Verificar near-miss rate e contradiction rate; calibrar health score thresholds ([[docs/canonical/context-health-monitoring\|Context Health Monitoring]]) |
 | "Retrieval injetou 15 itens mas modelo so referenciou 3 -- 12 distractors" | retrieval_efficiency | Ativar Selection-Budgeted Retrieval; medir value/cost ratio dos candidatos ([[docs/canonical/selection-budgeted-retrieval\|Selection-Budgeted Retrieval]]) |
 | "Agente perdeu coerencia em conversa de 3h -- sintomas de Link 1 e Link 3 simultaneos" | degradation_loop | Classificar link dominante; aplicar interceptor especifico ([[docs/canonical/agent-degradation-loop-prevention\|Agent Degradation Loop Prevention]]) |
+| "Agente resolveu sozinho caso de fraude que devia escalar -- 11 chargebacks na semana" | instruction_overfit | Reescrever a instrucao de escalonamento declarando os dois lados (custo de escalar + counter-cost de nao escalar) + caso de regressao de calibracao |
 
 **Checklist minima do GC Day:**
 - [ ] PRs da semana foram revisados e padroes de slop anotados
@@ -678,6 +679,32 @@ Qualquer finding high bloqueia a aprovação do roadmap até o reordenamento. En
 - Em qual estágio da escada o produto está hoje, e qual item do roadmap move para o próximo degrau?
 - Existe item shipando estágio avançado cujos predecessores ainda não estão shippados?
 - O que o listener de habituação disse nas últimas semanas, e quando chega o próximo ship?
+
+### 📋 Requisito: task reprovada entra no roadmap como escalada ordenada, não como chute de alavanca
+
+O roadmap deste playbook ordena o que **sai** do harness. Quando o diagnóstico aponta na direção oposta — uma task que reprova no eval e precisa de **mais** capacidade — o item de roadmap não pode ser "subir de modelo" ou "melhorar o prompt" escolhido por chute. O *Capability Escalation Ladder* exige que a task reprovada suba a escada na ordem de custo de teste, com cada degrau medido:
+
+| Degrau | Alavanca | Item de roadmap se vencer |
+|---|---|---|
+| 1. CAPABILITY | Modelo maior (tier acima) | Config atrás da interface de swap — não é rewrite |
+| 2. REASONING BUDGET | Adaptive thinking | Config do modelo; reavaliar a cada troca |
+| 3. INSTRUCTION | Prompt melhor (balanceado) | Mudança versionada com o commit de 3 perguntas |
+| 4. ARCHITECTURE | Decomposição em agentes simples | Componentes novos: entram pelo One In One Out e pela falha-fonte no ledger |
+
+Regras do gate: cada degrau testado registra pass/fail, violation counts, tokens e latência — violation counts caindo numa rota reprovada é sinal direcional (capacidade emergindo com o binário travado); a subida para no primeiro degrau que passa, mas o relatório continua medindo os demais; e o vencedor é **econômico** entre as rotas que passam — rota que passa o eval a 3x tokens e latência dobrada "passou o eval, reprovou a economia". No caso-fonte, o vencedor foi o degrau 4 (Generator/Evaluator/Repairer no tier-1): passou em tudo, ao menor custo — a tese harness-over-model medida em tokens e latência.
+
+A conexão com o requisito model-agnostic acima é direta: se o vencedor é o degrau 1 ou 2, a mudança é de configuração validada pelo eval gate — exatamente o barato que a interface de swap compra; se o vencedor é o degrau 4, os componentes novos entram pelo One In One Out com a falha-fonte no ledger. O que o gate proíbe é o caminho caro disfarçado de barato: tecer a capacidade do tier-3 no fluxo principal e transformar a próxima troca de modelo em rewrite.
+
+No degrau 3, o método é a instrução balanceada: a instrução que controla frequência de ação custosa (escalonar, reembolsar, handoff) declara **os dois lados** — o custo de agir e o counter-cost de evitar errado. Instrução de um lado só ("escalonar custa R$ 8 — evite") produz single-objective overfit e under-escalation: fraude tratada solo virando chargeback de R$ 480 contra os R$ 8 economizados. Os dois lados precisam estar alinhados com o que o eval de calibração define como correto — prompt e eval puxando para direções opostas é o agente aprendendo a coisa errada.
+
+**Perguntas do gate em revisão de roadmap:**
+- Todo item de roadmap de capacidade para task reprovada tem relatório de escalada com os degraus medidos?
+- Alguma mudança de tier/modelo foi aprovada sem as rotas alternativas medidas (chute com planilha)?
+- O vencedor foi escolhido por economia entre as rotas que passam — ou por ser o primeiro que passou?
+- Se o vencedor é capability/budget: a mudança ficou atrás da interface de swap (config), ou foi tecida no fluxo?
+- Se o vencedor é instruction: a instrução declara os dois lados e está alinhada com o eval?
+
+Para os padrões completos: [[docs/canonical/capability-escalation-ladder|Capability Escalation Ladder]] e [[docs/canonical/two-sided-trade-off-instruction|Two-Sided Trade-off Instruction]]. Para a implementação em código: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder|Exercício 22]] e [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction|Exercício 9]]. Para o tratamento conceitual: [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution (Core Concept 06)]].
 
 ### 📋 Passo 7: Prepare Comunicação para Stakeholders
 

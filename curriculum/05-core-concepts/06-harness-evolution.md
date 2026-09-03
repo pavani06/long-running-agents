@@ -349,6 +349,74 @@ context_loader:
 - [ ] O eval suite por agente existe ANTES de qualquer troca: é o gate que o candidato deve passar
 - [ ] O goal de longo prazo é declarado de forma independente do modelo que o persegue
 
+### Capability Escalation Ladder: Qual Alavanca Puxar Quando a Tarefa Falha
+
+O Enterprise Eval Gate decide **quando** trocar de modelo. O Agent-VM Harness decide **quanto a troca custa**. Falta a terceira pergunta — a inversa de todo este módulo: quando uma **tarefa específica reprova** no eval e o time precisa de mais capacidade, **qual alavanca puxar**? Modelo maior, mais reasoning budget, prompt melhor, ou decomposição arquitetural? Sem protocolo, cada engenheiro chuta uma alavanca, alguém testa uma, ninguém mede as demais — e a rota que passa no eval pode reprovar na economia (3x tokens, latência dobrada) sem que ninguém perceba antes da fatura chegar.
+
+O *Capability Escalation Ladder* substitui o chute por uma exploração **ordenada por custo de teste** — cada degrau é barato de testar relativo ao seguinte:
+
+| Degrau | Alavanca | O que muda | Custo de teste |
+|---|---|---|---|
+| 1. CAPABILITY | Modelo maior (tier acima) | Configuração, não código | Mínimo |
+| 2. REASONING BUDGET | Adaptive thinking (mais raciocínio por chamada) | Config do próprio modelo | Baixo |
+| 3. INSTRUCTION | Prompt melhor (instrução balanceada) | Texto do prompt | Baixo, exige alinhamento com o eval |
+| 4. ARCHITECTURE | Decomposição em agentes simples (ex.: Generator/Evaluator/Repairer) | Engenharia de dias | Alto — três prompts em vez de um |
+
+Três regras carregam o padrão:
+
+1. **Cada degrau é medido com quatro métricas:** pass/fail, violation counts, tokens e latência. Pass/fail é binário e cego; os violation counts dão o sinal **direcional** — uma rota que ainda reprova, mas cujas violações caem de 9 para 6, está ganhando capacidade antes de o binário virar.
+2. **O vencedor é econômico entre as rotas que passam.** Um degrau pode passar o eval triplicando tokens e latência: "passou o eval, reprovou a economia". Pass/fail decide se passa; a economia decide se fica.
+3. **A ordem protege a engenharia.** Testa-se o barato primeiro para só pagar decomposição quando o barato não resolve — ou resolve caro demais. No caso-fonte, o vencedor foi o **último degrau** (decomposição): passou em tudo com o menor custo. É a tese harness-over-model deste currículo em forma de protocolo medido — e o porquê de o degrau 4 ser o [[docs/canonical/generator-evaluator|Generator-Evaluator]] aplicado como alavanca de capacidade, não como prêmio de consolação.
+
+**Exemplo KODA:** a task `consolidated multi-item recommendation` (enterprise) reprova 0/5 no tier-1, com 9 violações de constraint. O degrau 1 (tier-3) passa 5/5 — a 3,1x tokens por caso e 9s de latência (baseline: 5s). O degrau 3 (instruction) sobe para 2/5 com violações caindo (9 → 6): sinal direcional, binário travado. O degrau 4 (Generator + Evaluator + Repairer no tier-1) passa 5/5 a 4.800 tokens e 6,5s por caso. Duas rotas passam; uma fica — e a que fica é a barata.
+
+**Não confunda com as outras escadas do repositório.** O [[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]] ordena o tratamento de **falha em runtime** (classificar, retry, fallback seguro, escalação humana) — é o que fazer quando a execução quebra. O *Agent Value Maturity Ladder* (adiante neste módulo) ordena **estágios de valor de produto**. O Capability Escalation Ladder ordena **investimento de capacidade** numa tarefa que reprova. Falha runtime, valor de produto e capacidade são três objetos diferentes — três escadas diferentes. Ele também não é o Enterprise Eval Gate acima (decisão de **migração** entre modelos candidatos, com o dataset inteiro) nem o [[docs/canonical/task-routed-model-tiering|Task-Routed Model Tiering]] (roteamento por custo de subtasks que **funcionam**; a escada ordena rotas para tarefas que **falham**).
+
+**Checklist: Escalation Ladder Gate**
+- [ ] Nenhuma alavanca de capacidade foi puxada por chute: toda task reprovada subiu a escada (capability → budget → instruction → architecture)
+- [ ] Cada degrau testado tem as quatro medidas registradas: pass/fail, violation counts, tokens, latência
+- [ ] Violation counts foram lidos como sinal direcional nos degraus reprovados (capacidade emergindo com o binário travado)
+- [ ] A decisão final compara as rotas que passam por custo e latência — o vencedor é econômico, não o primeiro que passou
+- [ ] A rota vencedora entrou no roadmap como mudança reversível: degrau 1/2 é config atrás da interface de swap; degrau 4 são componentes com ciclo BUILD → REMOVE próprio
+
+Para o padrão completo: [[docs/canonical/capability-escalation-ladder|Capability Escalation Ladder]]. Para a implementação da escada em código (`Rung`, `RouteConfig`, relatório com violation trail e vencedor econômico): [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder|Exercício 22]].
+
+### Two-Sided Trade-off Instruction: Os Dois Lados da Ação Custosa
+
+O degrau 3 da escada (INSTRUCTION) tem um método próprio — e ele começa com um modo de falha típico de prompts que controlam a frequência de uma ação custosa (escalonar, reembolsar, handoff): a instrução que declara **só um lado** do trade-off. "Escalonar custa R$ 8 por ticket — evite escalonar a menos que seja absolutamente necessário" faz o modelo — que é um otimizador — tratar cada escalonamento como derrota. "A menos que seja absolutamente necessário", para um otimizador, é o mesmo que "quase nunca". A taxa de escalonamento despenca... inclusive nos casos em que escalar era a decisão certa.
+
+**O modo de falha tem nome: single-objective overfit.** A instrução enunciou um objetivo (custo), o modelo overfit nele, e o contra-custo ficou invisível. No exemplo KODA do caso-fonte: 11 casos de fraude tratados solo pelo agente viraram chargeback de R$ 480 cada — o prompt economizou R$ 8 para perder R$ 480, onze vezes. O under-escalation não é teimosia do modelo; é a instrução de um lado só fazendo exatamente o que ela pede.
+
+**A correção é declarar os dois lados e devolver o julgamento ao modelo, por caso:**
+
+```text
+❌ Um lado só:
+   "Escalonar custa R$ 8 por ticket — evite escalonar a menos
+    que seja absolutamente necessário."
+
+✅ Dois lados:
+   "Escalonar para um humano custa R$ 8 por ticket. Não escalar
+    um caso de fraude custa em média R$ 480 em chargeback e
+    compromete a confiança do cliente. Case a case: se o sinal
+    aponta fraude, discrepância de pagamento ou risco clínico,
+    escale; se é dúvida de plano respondível no catálogo, resolva."
+```
+
+Por que isso funciona: **modelos melhoresaram em julgar trade-offs** — a instrução balanceada deixa o modelo exercer esse julgamento por caso, em vez de otimizar a única meta enunciada. E ela resolve o conflito prompt-vs-eval: se o eval de calibração define que fraude DEVE escalar, a instrução de um lado só puxava para a direção oposta à do eval; com os dois lados declarados, prompt e eval descrevem o mesmo comportamento correto.
+
+**Quando NÃO aplicar:** o padrão converte regra dura em julgamento — e isso é regressão quando o trade-off não existe. PII, segurança e restrição médica não têm "outro lado" que compense: aí o certo continua sendo a regra dura com veto estrutural. O padrão se aplica à ação cujo custo **varia por caso**: escalonar, reembolsar, handoff. Se o custo é constante e alto em todos os casos, a regra dura é a economia correta.
+
+**Conexão com o ciclo BUILD → REMOVE:** a instrução de um lado só é frequentemente um patch defensivo da fase BUILD — escrito para conter um excesso do modelo antigo, sem registro do contra-custo. Na fase SIMPLIFY, a disciplina de commit de 3 perguntas (abaixo) pergunta qual falha a instrução endereçava; a instrução balanceada é a forma de reescrevê-la sem jogar o julgamento fora: em vez de remover o limite (reexpondo a falha original) ou mantê-lo cego (mantendo o overfit), declara os dois lados e reavalia contra o eval.
+
+**Checklist: Two-Sided Instruction Gate**
+- [ ] Toda instrução que controla frequência de ação custosa declara o custo de agir E o counter-cost de evitar errado, na mesma instrução
+- [ ] Os dois lados estão alinhados com o que o eval define como correto (não há prompt puxando contra o eval)
+- [ ] Existem casos de eval cobrindo os dois erros: agir quando não devia E não agir quando devia
+- [ ] Ações sem trade-off (PII, segurança) permanecem como regra dura com veto estrutural — não viraram julgamento
+- [ ] A instrução balanceada passou pela disciplina de commit de 3 perguntas (qual falha o lado único endereçava; qual falha o balanceamento corrige)
+
+Para o padrão completo: [[docs/canonical/two-sided-trade-off-instruction|Two-Sided Trade-off Instruction]]. Para a implementação em código (linter de instrução balanceada, fixtures e rubric de calibração): [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction|Exercício 9]].
+
 ---
 
 ## 🔄 O Ciclo de Vida do Harness: As Quatro Fases

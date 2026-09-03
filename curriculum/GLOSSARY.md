@@ -110,6 +110,20 @@ Referência rápida de termos usados neste programa.
 
 ## C
 
+### Capability Escalation Ladder (Escada de Escalonamento de Capacidade)
+
+**Definição:** Protocolo ordenado para escolher a alavanca de capacidade quando uma task reprova no eval: quatro degraus testados na ordem de custo de teste — 1. CAPABILITY (modelo maior), 2. REASONING BUDGET (adaptive thinking), 3. INSTRUCTION (prompt melhor), 4. ARCHITECTURE (decomposição em agentes simples) — com cada degrau medido em pass/fail, violation counts, tokens e latência. A subida para no primeiro degrau que passa, mas o relatório continua medindo os demais; o vencedor é **econômico** entre as rotas que passam.
+
+**Por que importa:** Sem protocolo, times puxam alavancas por chute (um testa modelo maior, outro sugere decomposição, ninguém mede o resto) e aprovam por pass/fail — rota que passa o eval a 3x tokens "passou o eval, reprovou a economia". Violation counts dão o sinal direcional que o binário não dá: violações caindo numa rota reprovada é capacidade emergindo. E o vencedor típico ser o último degrau (decomposição) é a tese harness-over-model demonstrada em tokens e latência.
+
+**Em KODA:** A task `consolidated multi-item recommendation` (enterprise) reprova 0/5 no tier-1 com 9 violações. Degrau 1 (tier-3) passa 5/5 a 3,1x tokens e 9s; degrau 3 (instruction) sobe para 2/5 com violações caindo (9 → 6); degrau 4 (decomposição Generator/Evaluator/Repairer no tier-1) passa 5/5 a 4.800 tokens e 6,5s. Duas rotas passam; a que fica é a barata.
+
+**Nível:** 3
+
+**Ver também:** [[docs/canonical/capability-escalation-ladder|Capability Escalation Ladder]], [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]], [[docs/canonical/generator-evaluator|Generator-Evaluator]], [[docs/canonical/task-routed-model-tiering|Task-Routed Model Tiering]], [[docs/canonical/tested-degradation-ladder|Tested Degradation Ladder]], [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder|Exercício 22: Capability Escalation Ladder]], Two-Sided Trade-off Instruction
+
+---
+
 ### Closed-Loop Company
 **Definição:** Modelo operacional em que agentes leem estado real da empresa, como código, issues, reuniões, artefatos e decisões, e devolvem próximos trabalhos, bugs e atualizações de decisão para fechar o ciclo entre observação e execução. No currículo, use este termo como ponte para [[docs/canonical/closed-loop-agent-operating-system|Closed-Loop Agent Operating System]].
 
@@ -977,6 +991,20 @@ Restante: 140,000 para agent rodar
 
 ---
 
+### Two-Sided Trade-off Instruction (Instrução de Trade-off de Dois Lados)
+
+**Definição:** Princípio de design de instrução para ações custosas cuja frequência o prompt deve controlar (escalonar, reembolsar, handoff): declarar OS DOIS LADOS do trade-off na mesma instrução — o custo de agir (dinheiro, métricas do time) e o counter-cost de evitar errado (exposição a chargeback, confiança do cliente) — devolvendo o julgamento ao modelo, caso a caso, alinhado com o que o eval define como correto.
+
+**Por que importa:** Instrução que enuncia só um lado ("escalonar custa R$ 8 — evite") produz single-objective overfit: o modelo otimiza a única meta declarada e para de agir inclusive quando agir era correto (under-escalation). Modelos vêm melhorando em julgar trade-offs; a instrução balanceada deixa essa capacidade ser exercida, e resolve o conflito prompt-vs-eval quando ambos descrevem o mesmo comportamento. A contrapartida: converte regra dura em julgamento (comportamento menos determinístico) — ações sem trade-off (PII, segurança) permanecem como regra dura com veto estrutural.
+
+**Em KODA:** O prompt "Escalonar custa R$ 8 por ticket — evite escalonar a menos que seja absolutamente necessário" derrubou a taxa de escalonamento para 0,4% — e 11 casos de fraude tratados solo pelo agente viraram chargeback de R$ 480 cada: economizou R$ 8 para perder R$ 480, onze vezes. A reescrita balanceada (custo de escalar + counter-cost de não escalar fraude, com critério por caso) realinha o prompt com o eval de calibração, que define que fraude DEVE escalar.
+
+**Nível:** 2
+
+**Ver também:** [[docs/canonical/two-sided-trade-off-instruction|Two-Sided Trade-off Instruction]], [[curriculum/05-core-concepts/06-harness-evolution|Harness Evolution]], [[docs/canonical/generator-evaluator|Generator-Evaluator]], [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction|Exercício 9: Two-Sided Trade-off Instruction]], Capability Escalation Ladder
+
+---
+
 ### Typed Event Boundary (Fronteira de Eventos Tipados)
 **Definição:** Contrato de schema validado em runtime nas **duas** fronteiras do agente com o mundo externo: agente-ferramentas (tool call validado antes do dispatch) e agente-agentes (cada agente declara os eventos que aceita e retorna; o runtime valida no publish e no consume). A fronteira **rejeita, não corrige**: carga não-conforme é barrada antes de produzir efeito — ações ruins tornam-se impossíveis, não apenas improváveis.
 
@@ -1121,6 +1149,11 @@ Você vê "Generator/Evaluator" mas não entende.
 ### Presence-in-the-Loop Metric vs. Presence Interface Ladder
 - **Presence-in-the-Loop Metric:** Métrica de GOVERNANÇA — mede presença para MANTER o humano engajado em trabalho de risco (presença desejada maior em high-risk)
 - **Presence Interface Ladder:** Métrica de PRODUTO — mede atenção exigida pela interface para REDUZI-la a ~zero (unattended como meta); mesma maquinaria de medição, polaridade oposta
+
+### As Três Escadas: Capability Escalation Ladder vs. Tested Degradation Ladder vs. Agent Value Maturity Ladder
+- **Capability Escalation Ladder:** INVESTIMENTO de capacidade numa task que reprova — ordem de alavancas (modelo maior → reasoning budget → instruction → decomposição), cada degrau medido, vencedor econômico entre as rotas que passam
+- **Tested Degradation Ladder:** FALHA de runtime durante a execução — classificar severidade, retry, fallback seguro, escalação humana
+- **Agent Value Maturity Ladder:** ESTÁGIOS de valor percebido pelo usuário do produto — talk to data → automate workflows → team empowerment → hyper-personalization
 
 ---
 

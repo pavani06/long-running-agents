@@ -747,6 +747,26 @@ O Generator pode gerar respostas muito longas (e caras). Você precisa de um lim
 
 **Por quê?** Controla custo e evita responses bloated que o Evaluator tem que processar.
 
+**O contrato de saída em duas camadas:**
+
+O `stop_sequences` acima trata o limite de tamanho. Formato é outro eixo, e a lição do *Two-Layer Output Contract* ([[docs/canonical/two-layer-output-contract|Two-Layer Output Contract]]) é definir o formato **uma vez** e enforce nas **duas camadas** — prompt e harness, como um só contrato:
+
+| Camada | Papel | Mecanismo |
+|---|---|---|
+| **Prompt layer** | Definir | O formato declarado em texto estruturado — ex.: XML tags envolvendo a resposta (`<resposta>...</resposta>`) |
+| **Harness layer** | Enforce | Stop sequence que detecta a closing tag e encerra a geração na fronteira do contrato; structured outputs (JSON schema nativo) para estruturas aninhadas |
+
+O pareamento é o que falta quando o formato vive só no prompt: instrução de formato é compliance — depende de o modelo lembrar e escolher seguir, e o escape acontece nas demais vezes. A garantia mora na estrutura ("the rule lives in the gate, not the memory", [[docs/canonical/structural-guarantee-over-compliance|Structural Guarantee over Compliance]]). O mesmo pareamento reaparece no Nível 3 como fronteiras tipadas entre agentes.
+
+**Right-sizing pela classe de saída:**
+
+| Tipo de saída | Contrato | Enforcement |
+|---|---|---|
+| Conversacional (sem consumidor de máquina) | Leve | Formato no prompt; sem maquinaria pesada |
+| Estruturada (consumidor de máquina — `generator_draft.json`, `evaluator_verdict.json`) | Pesado | Stop sequence/structured outputs + validação de schema na fronteira, antes de o Evaluator ler |
+
+No KODA, os state files deste padrão são consumidores de máquina: o `generator_draft.json` que o Evaluator lê carrega enforcement pesado (arquivo fora do schema reprova antes de circular), enquanto a resposta visible ao cliente carrega contrato leve. Enforcement de harness também sobrevive a troca de modelo melhor que format pleading no prompt.
+
 ---
 
 #### ❓ 3. Como o Evaluator comunica rejeição?
@@ -767,6 +787,25 @@ Feedback vago ("Não gostei") não ajuda Generator. Feedback específico ("Produ
 ```
 
 **Por quê?** Generator aprende com feedback específico. Feedback vago = infinitas tentativas.
+
+---
+
+### A Variante de Três Prompts: Repairer Independente e a Economia do Loop
+
+No ciclo acima, quem repara é o próprio Generator sob feedback (o passo 2 de novo, agora lendo `feedback.json`) — mesma capacidade, dois chapéus. O *Generate-Evaluate-Repair Loop* ([[docs/canonical/generate-evaluate-repair-loop|Generate-Evaluate-Repair Loop]]) formaliza a variante com **três prompts simples e independentes**:
+
+1. **Generator** — produz o primeiro draft (não verifica, não corrige).
+2. **Evaluator** — checa cada regra com evidência citada por violação; o `fix_instruction` da estrutura de feedback acima é o contrato entre Evaluator e quem repara.
+3. **Repairer** — aplica fixes direcionados a partir do violation report, sem re-gerar do zero.
+
+Por que decompor em três em vez de um mega-prompt que gera, verifica e corrige no mesmo contexto? Um motivo de manutenção e um de economia:
+
+- **Manutenção**: cada prompt permanece simples, isoladamente testável e maintainable — reparar ("corrija ESTAS violações neste artefato") é uma instrução diferente de gerar, e merece um prompt próprio. A orquestração KODA do Nível 3 já chama esse papel: `generator_agent.repair_recommendation(draft, evaluation)` ([[curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda|Nível 3 KODA]]).
+- **Economia**: no caso-fonte do padrão, o loop passou todos os casos com **menos tokens e latência** que as rotas intuitivas — modelo maior (upsizing) ou output limit maior. Essas rotas passam o eval destruindo a economia; passar não basta, a rota vencedora é a que passa no menor custo. Antes de subir de modelo porque "o Generator não termina a resposta dentro do limite", teste o loop: o artefato corrigido por partes cabe onde o mega-output não cabia.
+
+**Soft constraints injetadas em runtime:** a partição hard/soft ([[docs/canonical/hard-soft-constraint-grader-split|Hard/Soft Constraint Grader Split]]) dá ao Evaluator o outro ganho da variante — as preferências soft vivem no **prompt do Evaluator como conteúdo editável**: ajustar "preferir explicar o trade-off de preço" é editar texto do evaluator, sem mudar código de backend nem tocar o Generator.
+
+O loop continua bounded pelas mesmas regras da decisão 1 acima (`max_iterations`, `escalate_to_human`): a qualidade do Repairer limita o loop, e caso patológico escala para humano — não para sempre mais iterações.
 
 ---
 

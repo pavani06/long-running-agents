@@ -1347,6 +1347,23 @@ Você é o KODA, assistente de vendas da FutanBear Suplementos.
     )
 ```
 
+### As REGRAS CRÍTICAS: Proibir vs. Designar a Fonte de Verdade
+
+O bloco `## REGRAS CRÍTICAS` injetado acima é uma mini ban list — e a cada recompactação ela é reescrita no prompt. Bans envelhecem mal: modelos melhores em instruction following fazem over-compliance e passam a **esconder informação que têm no contexto** — o inverso da hallucination: em vez de inventar o que não sabem, escondem o que sabem. O cliente pergunta se o produto tem o alergênico e o agente responde com uma política em vez de responder a partir do perfil que o pipeline acabou de injetar.
+
+A alternativa do *Ban-to-Source-of-Truth Rebalancing* ([[docs/canonical/ban-to-source-of-truth-rebalancing|Ban-to-Source-of-Truth Rebalancing]]) é designar a fonte em vez de proibir a saída:
+
+```text
+ANTES (ban):                            DEPOIS (fonte de verdade):
+## REGRAS CRÍTICAS                      ## FONTE DE VERDADE
+- NUNCA recomende produtos com          O bloco PERFIL DO CLIENTE acima é a fonte
+  alergênicos do cliente                de verdade accurate sobre restrições;
+- Sempre confirme preços                recomende e responda a partir dele.
+  antes de finalizar
+```
+
+Por que a designação é segura exatamente aqui: a Fase 6 (Evaluator Check) já valida que o perfil injetado está presente e sem discrepâncias — o dado in-context é confiável porque o pipeline de compaction o verificou antes de injetar. As condições de contorno do rebalancing continuam valendo (dado confiável, ledger do porquê de cada ban, eval antes/depois de suavizar — ver [[curriculum/05-core-concepts/01-context-management|Context Management]] para o design completo da instrução); o ganho é prompt mais curto e fim do under-delivery por over-compliance.
+
 ### Compaction como Operação de Grafo (Content-Addressed Prompt Graph)
 
 As sete fases acima operam sobre contexto **renderizado em texto** — e é por isso que compactar continua sendo manipulação de strings arriscada: depois da montagem, não dá mais para saber com certeza qual bloco era perfil, qual era tool call, qual era instrução. A alternativa disciplinada é o *Content-Addressed Prompt Graph*: endereçar cada componente do prompt por **hash de conteúdo** (system prompt, skills, tools, user message) e representar o prompt como **grafo de hashes antes da renderização**. Nesse regime, compaction vira operação de grafo: substituir o nó da zona compacta por um nó-resumo, manter os nós pinned da zona fresh, registrar a operação como transição entre dois grafos — nunca como edição de texto.

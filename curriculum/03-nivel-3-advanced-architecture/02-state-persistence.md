@@ -417,6 +417,10 @@ def atomic_write_json(path, data):
 
 4. Sem schema enforcement. Se o Generator escrever `"total_brl": "cento e noventa"` em vez de `189.90`, nada impede. Validação precisa ser explícita no código.
 
+O cuidado 4 é a metade que falta de um contrato de duas camadas ([[docs/canonical/two-layer-output-contract|Two-Layer Output Contract]]): o prompt do Generator **define** o formato (camada prompt), e a escrita do arquivo **enforça** (camada harness) — validação explícita de schema no boundary de escrita, antes de o arquivo circular, porque "a fronteira rejeita, não corrige" ([[docs/canonical/typed-event-boundaries|Typed Event Boundaries]]). Para saída com consumidor de máquina, o enforcement pesado (schema validation + structured outputs) é o que protege o `cart.json` de chegar como "cento e noventa".
+
+Há um segundo ganho quando o arquivo é confiável: quanto mais validado e versionado o estado persistido, mais seguro é designá-lo no prompt como **a fonte de verdade da conversa**, no lugar de ban lists de saída — a designação só é honesta quando o dado in-context merece confiança ([[docs/canonical/ban-to-source-of-truth-rebalancing|Ban-to-Source-of-Truth Rebalancing]]). A persistência com schema é o que torna o rebalanceamento seguro.
+
 ### Redis: Velocidade para Estado Quente
 
 Redis é um data structure server em memória.

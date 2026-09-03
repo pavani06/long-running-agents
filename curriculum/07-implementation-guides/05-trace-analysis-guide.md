@@ -1758,6 +1758,20 @@ Trimestre 3: MTTD = 25 minutos  ← Preocupante!
 
 **Ação:** Investir em treinamento, melhorar dashboards, ou simplificar a arquitetura se a complexidade estiver prejudicando a operação.
 
+### Sinal 6: Violation Counts Caindo com Pass/Fail Parado
+
+**O que você vê:** A taxa de pass/fail por caso não se move entre dois candidatos (dois modelos, dois prompts), mas a contagem de violações por regra por trial está caindo consistentemente.
+
+```
+Candidato A (5 trials): regra "formato_schema":      9 violações
+Candidato B (5 trials): regra "formato_schema":      2 violações  ← mesmo pass/fail (3/5)
+Candidato B (5 trials): regra "alergenico_presente": 0 violações
+```
+
+**Interpretação:** Pass/fail binário é grosseiro — ele não mostra o candidato "quase passando". Violation counts por regra, produzidos pelo checker determinístico das hard rules rodando em múltiplos trials, são o sinal direcional: B está convergindo onde A estava estagnado. É também o sinal a monitorar durante migração de modelo: capability melhorando por baixo, antes de o score virar ([[docs/canonical/eval-gated-model-migration-diagnostic|Eval-Gated Model Migration Diagnostic]]).
+
+**Ação:** Não descartar o candidato cujo pass/fail não moveu — compare os violation counts por regra. Se a contagem cai, itere no mesmo candidato; se o pass/fail E a contagem estão parados, a alavanca de prompt/harness se esgotou e o caso é capability gap. A convenção de reporting vem do [[docs/canonical/hard-soft-constraint-grader-split|Hard/Soft Constraint Grader Split]].
+
 ---
 
 ## 🔧 Checklist de Troubleshooting
@@ -1819,6 +1833,16 @@ Para cada padrão, execute o teste de confirmação:
 - [ ] **Padrão 6 - Coordination Failure:**
   - Estado (budget, preference) difere entre traces da mesma sessão? (Se sim → P6 ✅)
   - `contract_version_used` < `contract_version` atual? (Se sim → P6 ✅)
+
+**A classe do caso muda o triage:** antes de priorizar o fix, classifique o caso falhando por classe ([[docs/canonical/control-edge-boundary-eval-taxonomy|Control/Edge/Boundary Eval Taxonomy]]):
+
+| Caso falhando é... | Regressão significa | Prioridade e ação |
+|---|---|---|
+| **Control** (baseline inequívoco, must-pass) | **Breakage** — o agente parou de fazer o básico | Page imediato; nada mais importa antes disso |
+| **Edge** (falha passada travada como teste) | **Recidiva** — uma falha já corrigida voltou | Reabre o incidente original; o fix que a corrigiu regrediu |
+| **Boundary** (handoff/refusal era o correto) | **Calibration loss** — o agente perdeu a noção do próprio limite | Recalibrar critérios de escalation; não é bug de tarefa |
+
+Sem a classe como metadado do caso, o relatório de regressão mistura severidades incomparáveis — boundary falhando não tem a urgência de control falhando, e o remédio é outro.
 
 ### Fase 4: Aplicação de Técnicas (10-20 minutos)
 

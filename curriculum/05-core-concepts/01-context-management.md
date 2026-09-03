@@ -1566,6 +1566,27 @@ Responda à mensagem atual usando apenas produtos compatíveis com as restriçõ
 Se faltar dado operacional, pergunte ou consulte ferramenta antes de prometer.
 ```
 
+### Da Proibição à Fonte de Verdade: o Design da Instrução de Contexto
+
+Olhe o bloco `CONTEXTO NÃO NEGOCIÁVEL` acima: "Nunca recomende produto com lactose" é uma proibição — um ban. Bans são escritos porque um modelo falhou de um jeito específico (aqui: ignorar ou alucinar sobre a restrição), e envelhecem mal: modelos novos, melhores em instruction following, fazem **over-compliance** — obedecem a proibição além da conta e escondem informação que têm no contexto. O cliente pergunta "esse shake tem lactose?" e o agente responde com uma política em vez de responder a partir do perfil que está na mesa.
+
+O *Ban-to-Source-of-Truth Rebalancing* ([[docs/canonical/ban-to-source-of-truth-rebalancing|Ban-to-Source-of-Truth Rebalancing]]) nomeia esse fracasso como o **inverso da hallucination** — em vez de inventar o que não sabe, o modelo esconde o que sabe — e conserta os dois com a mesma jogada: **designar a fonte de verdade em vez de proibir a saída**.
+
+```text
+ANTES (ban):                          DEPOIS (fonte de verdade):
+"Nunca recomende produto              "O bloco CONTEXTO NÃO NEGOCIÁVEL é a fonte
+com lactose."                          de verdade accurate sobre restrições;
+                                       recomende e responda a partir dele."
+```
+
+Três condições de contorno antes de rebalancear:
+
+1. **O dado in-context precisa ser confiável** — contexto ruim passa a ser servido com confiança. No KODA, é a persistência desta seção (perfil versionado, dado com fonte e timestamp) que torna a designação segura.
+2. **Julgar quais bans ainda são load-bearing exige o ledger** — o rationale do ban foi registrado quando ele entrou? Sem isso, o rebalanceamento é palpite ([[docs/canonical/defensive-patch-ledger|Defensive Patch Ledger]]).
+3. **O caso precisa ser eval'd antes e depois** — suavizar um ban pode reexpor a falha original que ele corrigiu.
+
+Efeito colateral positivo: o prompt encurta, porque ban lists longas saem — a mesma direção da estratégia 11 (Smallest Sufficient Context): menos instrução proibitiva, mais dado designado.
+
 ### 8. Erros comuns de implementação
 
 **Erro comum 001: Persistir tudo.** Isso transforma memória em lixão e dificulta recuperação. Exemplo KODA: em conversa longa, esse erro aparece como recomendação contraditória ou checkout inseguro.
@@ -2145,6 +2166,7 @@ Use este checklist quando for implementar Context Management em qualquer agent s
 - [ ] Criar fallback humano quando estado crítico está conflitante.
 - [ ] Revisar periodicamente quais dados devem expirar por privacidade e relevância.
 - [ ] Documentar exemplos reais de falhas evitadas pelo Context Management.
+- [ ] Preferir designação de fonte de verdade (o bloco de contexto autoritativo, persistido e versionado) a ban lists de saída; revisar bans existentes contra o dado persistido que os torna substituíveis, com eval antes e depois do rebalanceamento.
 - [ ] Endereçar componentes de prompt por hash de conteúdo (system, skills, tools, user message) e registrar o grafo de hashes por chamada, para que toda resposta trace de volta ao input exato ([[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]]).
 - [ ] Verificação operacional: executar um caso KODA onde a restrição aparece cedo e a decisão acontece tarde, confirmando que a resposta final ainda respeita a restrição.
 

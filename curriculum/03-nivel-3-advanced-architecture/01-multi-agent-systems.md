@@ -611,6 +611,24 @@ Eles se comunicam por artefatos.
 
 Os arquivos criam memória externa, audit trail e pontos de retomada.
 
+### A Variante com Repairer Independente
+
+No pseudocódigo acima, a revisão reusa o `generator_agent` com `evaluator_feedback` — o Generator repara o próprio draft. A variante do *Generate-Evaluate-Repair Loop* ([[docs/canonical/generate-evaluate-repair-loop|Generate-Evaluate-Repair Loop]]) separa o reparo como papel próprio: um **Repairer** que lê o par `(draft, evaluation)` e aplica fixes direcionados a partir do violation report, sem re-gerar do zero.
+
+```
+Generator ──draft──► Evaluator ──reject + violações──► Repairer
+                                                        │
+                    draft corrigido ────────────────────┘ ──► Evaluator
+```
+
+Quando a variante paga o custo de um papel a mais:
+
+1. **Prompts simples**: gerar, avaliar e reparar são três instruções distintas — três prompts curtos, testáveis isoladamente, em vez de um mega-prompt que faz os três no mesmo contexto (que queima tokens e não termina dentro do output limit).
+2. **Fixes direcionados**: o `fix_instruction` do feedback vira o contrato Evaluator→Repairer — reparar "ESTAS violações neste artefato" é mais barato que regenerar do zero.
+3. **Economia medida**: no caso-fonte do padrão, o loop passou os casos com menos tokens e latência que modelo maior ou output limit maior — antes de subir o tier do Generator, teste o loop.
+
+A orquestração KODA usa exatamente esse papel: `generator_agent.repair_recommendation(draft, evaluation)` ([[curriculum/03-nivel-3-advanced-architecture/koda-applications/nivel-3-koda|Nível 3 KODA]]). O loop permanece bounded — as mesmas regras de `max_iterations` e escalonamento humano do Nível 2 aplicam. Para o aprofundamento (estrutura de feedback e soft constraints do Evaluator): [[curriculum/02-nivel-2-practical-patterns/01-generator-evaluator-pattern|Generator/Evaluator Pattern]].
+
 ---
 
 ## 📡 Canais de Comunicacao entre Agentes
@@ -814,6 +832,8 @@ No file-based coordination do KODA, o `schema_version` do JSON protocol é o emb
 A postura é non-negotiable: o runtime existe para tornar ações ruins **impossíveis, não improváveis**. A fronteira rejeita, não corrige — no caso-fonte deste padrão, com modelos fracos em structured outputs, ~20% dos eventos eram inválidos; com a fronteira tipada, esses eventos deixam de circular em vez de serem descobertos tarde demais.
 
 Para o análogo agent-agent já canônico no repo (comentários de review em formato agent-parseable), ver [[docs/canonical/agent-to-agent-review-comment-protocol|Agent-to-Agent Review Comment Protocol]].
+
+A fronteira tipada é também a **camada harness de um contrato de duas camadas** ([[docs/canonical/two-layer-output-contract|Two-Layer Output Contract]]): o mesmo formato que o prompt do agente define (a instrução que ensina o agente a emitir o evento no shape certo) é o que o runtime enforce na fronteira (validação de schema no publish e no consume). Definir o formato só no prompt é compliance — o modelo adere na maioria das vezes e escapa nas demais; o pareamento prompt-define / harness-enforce é o que torna o escape impossível de circular. O sizing acompanha o consumidor: canal conversacional com humano carrega contrato leve; artefato com consumidor de máquina (o `generation.json` que outro agente lê) carrega enforcement pesado.
 
 ---
 

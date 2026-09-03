@@ -261,6 +261,39 @@ Três regras do padrão:
 
 O risco que a matriz nomeia: o portfólio que mora num quadrante só — tipicamente a bateria de goldens offline/deterministic — fica cego por construção para as classes de falha dos outros três; o incidente mora no quadrante vazio e nenhum detector o vê. A cobertura por quadrante é também a unidade que sustenta a velocidade de shipping permitida em Evals-as-Brakes (abaixo). Para o padrão completo: [[docs/canonical/eval-coverage-matrix|Eval Coverage Matrix]]. Para a prática guiada: [[curriculum/02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix|Exercício: Eval Coverage Matrix]].
 
+### A quarta lente: classe de caso (control/edge/boundary)
+
+As três lentes acima estratificam o portfólio por mecanismo, schedule e determinismo × deployment. Nenhuma delas responde: **o que uma regressão SIGNIFICA?** A *Control/Edge/Boundary Eval Taxonomy* ([[docs/canonical/control-edge-boundary-eval-taxonomy|Control/Edge/Boundary Eval Taxonomy]]) adiciona o quarto eixo — a classe do caso — porque o significado de uma regressão depende da classe:
+
+| Classe | O que testa | Semântica de regressão | Análogo KODA neste módulo |
+|---|---|---|---|
+| **Control** | Comportamento baseline inequívoco que deve sempre passar | Regressão = **breakage**: o agente parou de fazer o básico | Golden question set derivado do workflow, com baseline registrado e lançamento gateado por score |
+| **Edge** | Falhas passadas travadas como testes permanentes | Regressão = **recidiva**: uma falha já corrigida voltou | Living Eval Dataset: cada incidente e edge case escapado vira adição permanente |
+| **Boundary** | Se o agente sabe quando escalar para humano ou recusar | Regressão = **calibration loss**: o agente perdeu a noção do próprio limite | Dimension 20 (Escalation Judgment) — o critério existe como dimension; falta virar classe de caso na suite |
+
+A classe boundary é a que falta no portfólio: casos em que a resposta correta é handoff ou refusal, não a resposta da tarefa. O agente que sabe recomendar whey e não sabe dizer "isso precisa de um humano" tem uma falha real — só que ela não aparece no score de tarefa; aparece em over-escalation ou under-escalation. Os critérios do que conta como "precisa de humano" já existem espalhados ([[docs/canonical/human-afk-task-routing-gate|Human/AFK Task Routing Gate]] roteia por tipo de tarefa; a Dimension 20 julga a decisão); a taxonomia os converte em casos de eval que exercitam o agente no limiar da própria competência.
+
+**Regras de curadoria:**
+
+1. Todo caso da suite carrega a classe como metadado (`case_class: control | edge | boundary`) — sem o metadado, o relatório de regressão mistura severidades incomparáveis.
+2. O triage de regressão lê a classe primeiro: control regrediu = page agora (breakage); edge regrediu = reabre o incidente original (recidiva); boundary regrediu = recalibra os critérios de handoff/refusal (calibration loss).
+3. Cada falha de produção entra como edge (o flywheel de Living Eval Dataset já faz); cada critério novo de handoff/refusal gera boundary cases.
+4. A suite cresce nas três classes de forma balanceada — portfólio morando só em control/edge fica cego para calibration loss, o mesmo risco de quadrante vazio da Coverage Matrix.
+
+### A partição por natureza da regra: Hard/Soft Constraint Grader Split
+
+As Camadas 1 e 2 separam os avaliadores por mecanismo (determinístico vs. LLM-as-Judge). O *Hard/Soft Constraint Grader Split* ([[docs/canonical/hard-soft-constraint-grader-split|Hard/Soft Constraint Grader Split]]) responde a pergunta anterior à separação — **qual constraint vai para qual grader** (gap que o [[docs/canonical/constraint-anchored-evaluation|Constraint-Anchored Evaluation]]:77 auto-reconhece: "no guidance on constraint granularity"):
+
+1. **Hard constraints** (binárias, contáveis: campo obrigatório, formato, proibição de alergênico, preço positivo) → **função determinística** (regex, schema validation, parser), não LLM judge. Um juiz não determinístico aprova ora sim ora não uma regra que deveria ser binária — e você paga custo de LLM por checagens que um regex faria por zero.
+2. **Soft constraints** (preferências: tom, completude, qualidade percebida) → **prompt do LLM evaluator**. Isso as torna **runtime-tunable**: ajustar a preferência é editar o texto do evaluator, não deploy de backend.
+
+Dois ganhos operacionais que a partição destrava:
+
+- **Violation counts por regra por trial**: rodando o checker determinístico em múltiplos trials por candidato (ex: 5 runs), a contagem de violações por regra dá sinal direcional quando o pass/fail binário não se move — o candidato que ainda falha 3 de 5 trials mas caiu de 9 violações para 2 está convergindo. É a métrica intermediária entre "passou" e "não passou" que um portfólio só-judge não produz.
+- **Acoplamento com o pipeline existente**: hard rules alimentam o pre-gate (a estratégia "Hard-rule Pre-gate + Rubric Score" acima) e o Passo 6 da construção de rubrica; soft constraints ficam nas dimensions ponderadas com anchors.
+
+O critério de partição na prática: se você consegue escrever a falha como assert programático ("o JSON tem o campo", "o SKU existe", "o produto contém o alergênico da lista de restrições"), é hard. Se o julgamento precisa de anchors ("a explicação respeita o cliente"), é soft. Constraint ambígua força a escolha de lado — e a escolha é revisitada quando o grading demonstrar que o lado errado foi escolhido (hard rule graduada de forma inconsistente pelo judge, ou preferência ossificada em checklist rígido).
+
 ### Estratégias de Coordenação: Como Rubrics Orquestram Decisões
 
 A rubrica não vive sozinha. Ela se conecta a outros componentes do harness para transformar score em ação. A tabela abaixo compara as principais estratégias de coordenação entre rubrics e o resto do sistema.
@@ -742,6 +775,15 @@ Os decay thresholds do correlation report acusam o problema — score e produç�
 Por que a separação importa: sem a taxonomia, o time gasta reanotação de goldens em data drift (remédio caro e errado) ou refresh de dataset em judge drift (não corrige nada). O [[docs/canonical/model-switch-driven-eval-hardening|Model-Switch-Driven Eval Hardening]] é o caso especial nomeado de judge drift: troca de modelo é o gatilho, revalidação completa do dataset é o remédio. E os inputs do refresh vêm de produção: tickets de suporte, eventos de Perceived-Eval (abaixo) e tendências de bulk trace analysis.
 
 Dois controles do padrão merecem destaque: **goldens anotados por humanos** como referência anti-overfitting do judge (sem eles, judge drift é invisível — o judge nunca diverge de si mesmo) e o **use-case classifier** sobre traces de produção como audit de cobertura (casos de uso testados vs. casos de uso reais). A fonte declara o loop **não resolvido em escala**: ele sempre atrasa as mudanças de produção. Para o padrão completo: [[docs/canonical/production-to-offline-feedback-loop|Production-to-Offline Feedback Loop with Drift Taxonomy]]. Para a prática guiada: [[curriculum/03-nivel-3-advanced-architecture/exercises/exercise-13-production-offline-drift-taxonomy|Exercício: Drift Taxonomy]].
+
+### A migração de modelo como evento de eval: behavior difference vs. capability gap
+
+O judge drift nomeia a troca de modelo como gatilho de revalidação. O *Eval-Gated Model Migration Diagnostic* ([[docs/canonical/eval-gated-model-migration-diagnostic|Eval-Gated Model Migration Diagnostic]]) dá o passo seguinte: quando a suite roda no candidato e casos regrediram, cada falha é classificada em uma de duas causas únicas:
+
+- **Behavior difference**: o modelo tem a capacidade, mas formato, estilo ou interpretação da instrução divergem do esperado. Remédio: ajustar prompt ou harness — a alavanca existe.
+- **Capability gap**: a capacidade exigida pelo caso está fora do alcance do modelo. Remédio: não é prompting — é escalation (modelo maior, decomposição, ferramenta).
+
+A classificação qualifica a decisão de migração (regressão de comportamento é endereçável antes do switch; de capability é bloqueadora) e vem acompanhada do **violation count** por regra por caso — a métrica direcional do Hard/Soft Grader Split acima: quando o pass/fail não se move entre candidatos, a contagem de violações mostra se a capability está melhorando por baixo. Para a recalibração do drift taxonomy, isso muda a ordem das suspeitas: antes de reanotar goldens contra o judge novo, diagnostique cada falha regredida — parte do "judge drift" em migração é behavior difference resolvível no prompt, não no dataset. O procedimento completo de migração (eval gate + diagnóstico por falha + patch audit do ledger de patches defensivos) está em [[curriculum/03-nivel-3-advanced-architecture/05-harness-evolution|Harness Evolution]].
 
 ## 📈 Living Eval Dataset: Crescimento Monotônico e Execução Particionada
 
