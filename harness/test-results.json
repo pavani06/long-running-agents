@@ -2,47 +2,55 @@
   "phase-0": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-mental-model.md",
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-mental-model.yaml"
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-mental-model.md",
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-mental-model.yaml"
     ],
     "evaluated_by": "evaluator",
     "notes": "Modelo mental do repositorio — Phase 0 do analyze-and-improve",
-    "duration_seconds": 508,
+    "duration_seconds": 410,
     "retry_count": 0,
-    "started_at": "2026-09-02T11:57:48Z",
-    "completed_at": "2026-09-02T12:06:16Z",
+    "started_at": "2026-09-03T01:23:49Z",
+    "completed_at": "2026-09-03T01:30:39Z",
     "verification_depth": "semantic",
     "verification_checks": [
       {
         "kind": "structural",
-        "target": "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/*mental-model.{md,yaml}",
-        "command_or_claim": "files exist with substantial content (138+270 lines)",
-        "expected": "both files exist",
-        "actual": "both exist",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "mental-model.yaml meta",
-        "command_or_claim": "yaml parses; typed fields goals/architecture/patterns/terminology/curriculum/gaps present; base_commit=48c5d45",
-        "expected": "base_commit 48c5d45 + all typed fields",
-        "actual": "OK: 6 goals, 20 patterns, 19 terms, 9 gaps",
+        "target": "docs/analysis/2026-09-02-the-prompting-playbook/*mental-model.{md,yaml}",
+        "command_or_claim": "files exist with substantial content (143/292 lines); YAML parses with all typed fields + base_commit",
+        "expected": "both files, valid yaml",
+        "actual": "both present, meta.base_commit='2b56b98'",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "curriculum/GLOSSARY.md:361-370",
-        "command_or_claim": "Generator definition cited in mental model",
-        "expected": "section defines Generator",
-        "actual": "confirmed via sed",
+        "target": "docs/system-of-record.md:181",
+        "command_or_claim": "claim: 185 canonical patterns active",
+        "expected": "text about 185 padroes canonicos ativos",
+        "actual": "`docs/canonical/` nao esta mais vazio. Ha 185 padroes canonicos ativos.",
         "passed": true
       },
       {
         "kind": "citation",
-        "target": "AGENTS.md:166-168",
-        "command_or_claim": "wikilink convention cited",
-        "expected": "rule text present",
-        "actual": "confirmed via sed",
+        "target": "curriculum/GLOSSARY.md:457",
+        "command_or_claim": "Harness glossary entry",
+        "expected": "### Harness (Estrutura de Suporte)",
+        "actual": "match + definicao presente",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "curriculum/README.md:13",
+        "command_or_claim": "program 12 semanas / 4 niveis / 8 conceitos",
+        "expected": "Programa Completo | 12 semanas | 4 Niveis | 8 Conceitos Core | 35+ Diagramas",
+        "actual": "exact match",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "obsidian conventions validator",
+        "expected": "all checks passed",
+        "actual": "All checks passed (12/12)",
         "passed": true
       }
     ]
@@ -50,55 +58,55 @@
   "phase-1": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-analysis.md",
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-analysis.yaml"
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-analysis.md",
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-analysis.yaml"
     ],
     "evaluated_by": "evaluator",
     "notes": "Extracao de conhecimento da fonte — Phase 1",
-    "duration_seconds": 396,
+    "duration_seconds": 531,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:07:05Z",
-    "completed_at": "2026-09-02T12:13:41Z",
+    "started_at": "2026-09-03T01:31:53Z",
+    "completed_at": "2026-09-03T01:40:44Z",
     "verification_depth": "semantic",
     "verification_checks": [
       {
         "kind": "structural",
-        "target": "*analysis.{md,yaml}",
-        "command_or_claim": "files exist (238+166 lines); YAML typed fields present",
-        "expected": "both files + typed mirror",
-        "actual": "5 frameworks, 6 patterns, 6 failures, 6 tradeoffs",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "scripts/validate-obsidian.ts",
-        "command_or_claim": "run validator",
-        "expected": "all checks pass",
-        "actual": "All checks passed (12/12)",
+        "target": "docs/analysis/2026-09-02-the-prompting-playbook/*analysis.{md,yaml}",
+        "command_or_claim": "files exist, md frontmatter complete (type/tags/date/aliases/relates-to), yaml parses with all typed fields",
+        "expected": "md+yaml valid",
+        "actual": "160/156 lines; frameworks 8, patterns 6, lessons 8, tradeoffs 6, failures 6, synthesis ok",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "20% of events rejected",
-        "command_or_claim": "grep '20% of my events' in source transcript",
-        "expected": "claim supported",
-        "actual": "1 match",
+        "target": "analysis.md: instructions don't add capability (tool lesson)",
+        "command_or_claim": "grep source for 'instructions don't add capability'",
+        "expected": "supporting text in transcript",
+        "actual": "exact match in source",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "20 agents after a month, non-technical contributors",
-        "command_or_claim": "grep 'we have 20 agents' in transcript",
-        "expected": "claim supported",
-        "actual": "match incl. 'not just contributed by technical people'",
+        "target": "analysis.md: state both sides of tradeoffs",
+        "command_or_claim": "grep source for 'state both sides of the trade-offs'",
+        "expected": "supporting text in transcript",
+        "actual": "exact match in source",
         "passed": true
       },
       {
         "kind": "claim",
-        "target": "first version built in ~1 day with Codex",
-        "command_or_claim": "grep 'took about like a day' in transcript",
-        "expected": "claim supported",
-        "actual": "match",
+        "target": "analysis.md: information withholding as inverse hallucination",
+        "command_or_claim": "grep source for 'withhold information that it actually has access to'",
+        "expected": "supporting text in transcript",
+        "actual": "exact match in source",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "obsidian conventions validator",
+        "expected": "all checks passed",
+        "actual": "All checks passed",
         "passed": true
       }
     ]
@@ -106,39 +114,47 @@
   "phase-2": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-patterns.md",
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-patterns.yaml"
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-patterns.md",
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-patterns.yaml"
     ],
     "evaluated_by": "evaluator",
     "notes": "Extracao de padroes reutilizaveis — Phase 2",
-    "duration_seconds": 317,
+    "duration_seconds": 420,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:13:41Z",
-    "completed_at": "2026-09-02T12:18:58Z",
-    "verification_depth": "structural",
+    "started_at": "2026-09-03T01:40:44Z",
+    "completed_at": "2026-09-03T01:47:44Z",
+    "verification_depth": "semantic",
     "verification_checks": [
       {
         "kind": "structural",
-        "target": "*patterns.{md,yaml}",
-        "command_or_claim": "files exist (198+291 lines); YAML parses via js-yaml",
-        "expected": "both files valid",
-        "actual": "9 patterns, all with 6 mandatory fields + components + flow",
+        "target": "docs/analysis/2026-09-02-the-prompting-playbook/*patterns.{md,yaml}",
+        "command_or_claim": "md 249 lines / yaml 350 lines; 12 patterns; names identical md<->yaml; all 8 mandatory fields non-empty",
+        "expected": "6 mandatory fields + components + flow per pattern",
+        "actual": "12/12 complete, NONE empty",
         "passed": true
       },
       {
-        "kind": "structural",
-        "target": "scripts/validate-obsidian.ts",
-        "command_or_claim": "run validator",
-        "expected": "all checks pass",
+        "kind": "citation",
+        "target": "patterns.yaml: Generate-Evaluate-Repair Loop",
+        "command_or_claim": "pattern traceable to analysis.md",
+        "expected": ">=1 mention of generate-evaluate-repair in analysis.md",
+        "actual": "4 matches",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "patterns.yaml: Ban-to-Source-of-Truth Rebalancing",
+        "command_or_claim": "pattern traceable to analysis.md",
+        "expected": "withholding content in analysis.md",
+        "actual": "3 matches",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "obsidian conventions validator",
+        "expected": "all checks passed",
         "actual": "All checks passed",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "citation sampling",
-        "command_or_claim": "grep file:line refs in patterns.md",
-        "expected": "no citations to verify (artifact synthesizes analysis.md)",
-        "actual": "0 citations found",
         "passed": true
       }
     ]
@@ -146,55 +162,55 @@
   "phase-3": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-classification.md",
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-classification.yaml"
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-classification.md",
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-classification.yaml"
     ],
     "evaluated_by": "evaluator",
-    "notes": "Batch splitting: 9 padroes > 8 → 2 agentes background (batch-a: padroes 1-5, batch-b: 6-9); consolidacao inline pelo orquestrador",
-    "duration_seconds": 761,
+    "notes": "Classificacao contra repositorio — Phase 3",
+    "duration_seconds": 659,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:18:58Z",
-    "completed_at": "2026-09-02T12:31:39Z",
+    "started_at": "2026-09-03T01:47:44Z",
+    "completed_at": "2026-09-03T01:58:43Z",
     "verification_depth": "semantic",
     "verification_checks": [
       {
-        "kind": "citation",
-        "target": "docs/canonical/pull-based-infrastructure-on-pain.md:43",
-        "command_or_claim": "reactive infra claim cited by batch-b",
-        "expected": "line contains the quote",
-        "actual": "confirmed via sed",
-        "passed": true
-      },
-      {
-        "kind": "citation",
-        "target": "docs/canonical/presence-in-the-loop-metric.md:23-27",
-        "command_or_claim": "governance polarity problem statement",
-        "expected": "human-as-symbolic-gate text",
-        "actual": "confirmed via sed",
-        "passed": true
-      },
-      {
-        "kind": "citation",
-        "target": "docs/canonical/deterministic-tool-dispatch.md:74",
-        "command_or_claim": "Zod typed tool boundary",
-        "expected": "DynamicStructuredTool line",
-        "actual": "confirmed via grep",
-        "passed": true
-      },
-      {
-        "kind": "citation",
-        "target": "curriculum/06-knowledge-graphs/detailed-graphs/generator-evaluator-graphs.md:355",
-        "command_or_claim": "append-only audit_log.jsonl",
-        "expected": "append-only immutable text",
-        "actual": "confirmed via grep",
-        "passed": true
-      },
-      {
         "kind": "structural",
-        "target": "classification.md + classification.yaml",
-        "command_or_claim": "inline consolidation of 2 batches",
-        "expected": "9 patterns, typed mirror, summary table",
-        "actual": "9 patterns (4 High, 5 Medium), validator clean",
+        "target": "classification-batch-{1,2}.{md,yaml} -> consolidated classification.{md,yaml}",
+        "command_or_claim": "2 batches of 6 patterns each; consolidated md 263 lines; yaml 12 patterns with all typed fields",
+        "expected": "12 patterns classified with evidence + integration value",
+        "actual": "12/12 complete: 9 Partial Coverage, 2 Missing, 1 Better Implementation",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "docs/canonical/model-switching-architecture-enterprise-eval-gate.md:43-59",
+        "command_or_claim": "eval-gate side-by-side comparison evidence",
+        "expected": "candidate vs current baseline comparison",
+        "actual": "match",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "docs/canonical/constraint-anchored-evaluation.md:77",
+        "command_or_claim": "self-acknowledged gap: hard constraint vs reviewer judgment",
+        "expected": "line about missing constraint granularity guidance",
+        "actual": "match",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "docs/canonical/typed-event-boundaries.md:42-44 + docs/canonical/invariant-compensation-split.md:64-70 + docs/canonical/stable-harness-prompt.md:22",
+        "command_or_claim": "batch-2 canonical evidence lines",
+        "expected": "cited content present",
+        "actual": "all 3 match",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "obsidian conventions validator",
+        "expected": "all checks passed",
+        "actual": "All checks passed (467 notes)",
         "passed": true
       }
     ]
@@ -202,160 +218,153 @@
   "phase-4": {
     "passes": true,
     "evidence": [
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-artifacts.yaml",
-      "docs/analysis/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt/2026-09-02-agent-frameworks-considered-harmful-remi-louf-txt-artifacts.md"
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-artifacts.yaml",
+      "docs/analysis/2026-09-02-the-prompting-playbook/2026-09-02-the-prompting-playbook-artifacts.md"
     ],
     "evaluated_by": "evaluator",
     "notes": "Geracao de artefatos e artifacts manifest — Phase 4",
-    "duration_seconds": 866,
+    "duration_seconds": 1006,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:31:39Z",
-    "completed_at": "2026-09-02T12:46:05Z",
-    "verification_depth": "structural",
+    "started_at": "2026-09-03T01:58:43Z",
+    "completed_at": "2026-09-03T02:15:29Z",
+    "verification_depth": "semantic",
     "verification_checks": [
       {
         "kind": "structural",
-        "target": "docs/canonical/ (9 new files)",
-        "command_or_claim": "all 9 assigned slugs exist; 883 total lines",
-        "expected": "9 canonical docs",
-        "actual": "9 OK, git shows only the assigned files",
+        "target": "10 canonical + 2 skills + 3 exercises + artifacts manifest",
+        "command_or_claim": "files exist with substantial content; canonical frontmatter complete per Rule 16",
+        "expected": "15 artifacts + manifest per gate",
+        "actual": "all 15 present (10 docs 8.7-10.5KB, skills 248/278 lines, exercises 670/631/726 lines); manifest yaml parses (10/2/3/0)",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "python3 ast.parse exercise starter code",
+        "command_or_claim": "executable content must compile",
+        "expected": "all python blocks parse",
+        "actual": "3/3 files: 1 python block each, OK",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "obsidian conventions validator (full run)",
+        "expected": "all checks passed",
+        "actual": "All checks passed (480-481 notes)",
         "passed": true
       },
       {
         "kind": "structural",
-        "target": "curriculum exercises 18-21",
-        "command_or_claim": "4 files exist; python blocks compile (ast.parse)",
-        "expected": "4 exercises with valid code",
-        "actual": "4 files, all blocks compile",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "scripts/validate-obsidian.ts",
-        "command_or_claim": "run validator over repo incl. 13 new artifacts",
-        "expected": "all checks pass",
-        "actual": "All checks passed (459 notes)",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "artifacts manifest",
-        "command_or_claim": "manifest yaml parses; counts match disk (ls)",
-        "expected": "9/0/4/0",
-        "actual": "9/0/4/0 verified",
-        "passed": true
-      },
-      {
-        "kind": "structural",
-        "target": "scope guard",
-        "command_or_claim": "git status shows no modifications to pre-existing files beyond harness state",
-        "expected": "only new files + PROGRESS/test-results",
-        "actual": "confirmed",
+        "target": "gate: no artifacts for Already Exists / Better Implementation / PC-Low",
+        "command_or_claim": "manifest skipped section matches classification",
+        "expected": "pattern 9 (PC/Low) + pattern 12 (Better Impl) skipped with justification",
+        "actual": "skipped.better_implementation + skipped.partial_coverage_low recorded",
         "passed": true
       }
     ]
   },
   "phase-5": {
     "passes": true,
-    "evidence": [
-      "docs/system-of-record.md",
-      "curriculum/INDEX.md",
-      "curriculum/README.md",
-      "curriculum/MASTER_PLAN.md"
-    ],
+    "evidence": [],
     "evaluated_by": "evaluator",
     "notes": "Integracao — atualiza system-of-record e indices",
-    "duration_seconds": 391,
+    "duration_seconds": 589,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:46:05Z",
-    "completed_at": "2026-09-02T12:52:36Z",
+    "started_at": "2026-09-03T02:15:29Z",
+    "completed_at": "2026-09-03T02:25:18Z",
     "verification_depth": "semantic",
     "verification_checks": [
       {
-        "kind": "structural",
-        "target": "git diff --stat (4 target files)",
-        "command_or_claim": "only Integration Map targets changed",
-        "expected": "4 files",
-        "actual": "+29/-3 in exactly the 4 targets",
-        "passed": true
-      },
-      {
         "kind": "command",
-        "target": "canonical count",
-        "command_or_claim": "ls docs/canonical/*.md | wc -l",
-        "expected": "185 (176+9)",
-        "actual": "185",
-        "passed": true
-      },
-      {
-        "kind": "command",
-        "target": "N3 exercise count",
-        "command_or_claim": "ls exercises excluding solutions | wc -l",
-        "expected": "25 (21+4)",
-        "actual": "25",
+        "target": "counts recomputed by ls/wc (gate rule)",
+        "command_or_claim": "canonical=ls docs/canonical/*.md | wc -l; skills=ls -d .opencode/skills/*/ | wc -l",
+        "expected": "counts on disk, never incremented",
+        "actual": "196 canonical (HEAD 187 + 10 new; pre-existing SOR stale by 2), 38 skills",
         "passed": true
       },
       {
         "kind": "structural",
-        "target": "scripts/validate-obsidian.ts",
-        "command_or_claim": "run validator after index updates",
-        "expected": "all checks pass",
-        "actual": "All checks passed",
+        "target": "docs/system-of-record.md",
+        "command_or_claim": "12 new rows (10 canonical + 2 skills) + count + date",
+        "expected": "rows + count + last-updated",
+        "actual": "rows at :69-70/:85-86/:385-386; count corrected 195->196 at :193 (orchestrator fix); date 2026-09-02 at :514",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "curriculum/INDEX.md, README.md, MASTER_PLAN.md",
+        "command_or_claim": "3 exercises listed; tree updated; counts recomputed",
+        "expected": "N2=14, N3=26 recomputed",
+        "actual": "INDEX +3, tree +3, MASTER_PLAN N2 12->14 / N3 25->26 (recomputed by agent via ls)",
+        "passed": true
+      },
+      {
+        "kind": "citation",
+        "target": "README.md:104,140",
+        "command_or_claim": "36 skills outside Integration Map; orchestrator direct fix to 38",
+        "expected": "38 skills stated",
+        "actual": "both lines updated (sub-agent correctly stayed in scope; orchestrator applied minimal fix)",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "validator after integration",
+        "expected": "all checks passed",
+        "actual": "All checks passed (481 notes)",
         "passed": true
       }
     ]
   },
   "phase-6": {
     "passes": true,
-    "evidence": [
-      "git diff --name-only -- curriculum/"
-    ],
+    "evidence": [],
     "evaluated_by": "evaluator",
-    "notes": "Curriculum Deep Integration — opcional | Handoffs registrados: (1) gate de fronteira tipada no 03-harness-design-checklist; (2) framing kernel no 06-harness-evolution core-concepts; (3) opcional: escada de interface vs dial de autonomia. Ficam como follow-ups, nao bloqueiam o gate.",
-    "duration_seconds": 1668,
+    "notes": "Curriculum Deep Integration — opcional",
+    "duration_seconds": 1017,
     "retry_count": 0,
-    "started_at": "2026-09-02T12:52:36Z",
-    "completed_at": "2026-09-02T13:20:24Z",
+    "started_at": "2026-09-03T02:25:18Z",
+    "completed_at": "2026-09-03T02:42:15Z",
     "verification_depth": "semantic",
     "verification_checks": [
       {
         "kind": "structural",
-        "target": "git diff scope",
-        "command_or_claim": "only curriculum/ files modified; no new files; docs/canonical untouched",
-        "expected": "13 owned curriculum files",
-        "actual": "13 modified, 0 new, canonical clean",
-        "passed": true
-      },
-      {
-        "kind": "claim",
-        "target": "causal log integration",
-        "command_or_claim": "grep caused_by in 05-state-persistence + trace guide",
-        "expected": "insertions present",
-        "actual": "present in both",
-        "passed": true
-      },
-      {
-        "kind": "claim",
-        "target": "kernel runtime integration",
-        "command_or_claim": "grep kernel section in 01-multi-agent-systems",
-        "expected": "agent-as-process section",
-        "actual": "present",
-        "passed": true
-      },
-      {
-        "kind": "claim",
-        "target": "presence ladder + prompt graph + failure ledger",
-        "command_or_claim": "grep inserted section markers",
-        "expected": "sections present",
-        "actual": "present in owned files",
+        "target": "git diff --name-only after Phase 6",
+        "command_or_claim": "only write-assigned curriculum files modified",
+        "expected": "13 assigned files (9 batch B + 4 batch A); docs/canonical untouched; no new curriculum files",
+        "actual": "exactly the 13 assigned + phase-5 targets + harness state; canonical modified=0; no new files",
         "passed": true
       },
       {
         "kind": "structural",
-        "target": "scripts/validate-obsidian.ts",
-        "command_or_claim": "full run after phase 6",
-        "expected": "no new errors",
-        "actual": "0 errors; 4 pre-existing warnings in agent-lifecycle.md (untouched file, tag-gap warnings, non-blocking)",
+        "target": "batch A files (Missing patterns 5,6)",
+        "command_or_claim": "deep integration: subsections + checklists + glossary",
+        "expected": "ladder + two-sided instruction in core concept, checklist, playbook, glossary",
+        "actual": "06-harness-evolution +68 (2 subsections + gates), checklist +27, playbook +27, GLOSSARY +33 incl. 'As Tres Escadas' confusion entry",
+        "passed": true
+      },
+      {
+        "kind": "structural",
+        "target": "batch B files (PC patterns 1,2,4,7,8,10,11)",
+        "command_or_claim": "deep integration across 9 assigned files",
+        "expected": "4th lens + grader split + migration diagnostic + patch ledger + 2-layer contract + GER variant + ban rebalancing",
+        "actual": "rubrics +42, context-mgmt +22, trace +24, N2 GER +, N3 files +; spot-checked PT-BR headings + tables + wikilinks",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "npx tsx scripts/validate-obsidian.ts",
+        "command_or_claim": "validator after Phase 6",
+        "expected": "all checks passed; no broken wikilinks",
+        "actual": "All checks passed (481 notes)",
+        "passed": true
+      },
+      {
+        "kind": "command",
+        "target": "Passo 0c: mental model cached",
+        "command_or_claim": "copy mental model to mapa-mental-repo/ (orchestrator, sempre executar)",
+        "expected": "mapa-mental-repo has the new model",
+        "actual": "copied md+yaml; 4 models total (cap 5)",
         "passed": true
       }
     ]
