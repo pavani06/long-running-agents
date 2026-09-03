@@ -115,6 +115,8 @@ last_updated: 2026-06-26
 - `02-nivel-2-practical-patterns/exercises/exercise-auth-coupled-memory.md` (Auth-Coupled Memory Architecture)
 - `02-nivel-2-practical-patterns/exercises/exercise-06-perceived-eval.md` (Perceived-Eval)
 - `02-nivel-2-practical-patterns/exercises/exercise-07-eval-coverage-matrix.md` (Eval Coverage Matrix)
+- `02-nivel-2-practical-patterns/exercises/exercise-08-defensive-patch-ledger.md` (Defensive Patch Ledger)
+- `02-nivel-2-practical-patterns/exercises/exercise-09-two-sided-trade-off-instruction.md` (Two-Sided Trade-off Instruction)
 
 **Nível 3 (Arquitetura)**
 - `03-nivel-3-advanced-architecture/exercises/exercise-01.md` (Multi-Agent Design)
@@ -149,6 +151,7 @@ last_updated: 2026-06-26
 - `03-nivel-3-advanced-architecture/exercises/exercise-19-content-addressed-prompt-graph.md` (Content-Addressed Prompt Graph)
 - `03-nivel-3-advanced-architecture/exercises/exercise-20-causal-event-log.md` (Append-Only Causal Event Log)
 - `03-nivel-3-advanced-architecture/exercises/exercise-21-agent-kernel-runtime.md` (Agent Kernel Runtime)
+- `03-nivel-3-advanced-architecture/exercises/exercise-22-capability-escalation-ladder.md` (Capability Escalation Ladder)
 
 **Nível 4 (KODA)**
 - `04-nivel-4-koda-specific/real-world-exercises/exercise-01.md`

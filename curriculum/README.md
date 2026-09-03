@@ -93,6 +93,8 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-04-error-context-hygiene.md
 │   │   │   ├── exercise-two-implementations-goal-test.md
 │   │   │   ├── exercise-goal-atomicity-split.md
+│   │   │   ├── exercise-08-defensive-patch-ledger.md
+│   │   │   ├── exercise-09-two-sided-trade-off-instruction.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-2-koda.md
@@ -123,6 +125,7 @@ Tudo é aplicado ao **KODA**, nosso agente de venda de suplementos via WhatsApp 
 │   │   │   ├── exercise-19-content-addressed-prompt-graph.md
 │   │   │   ├── exercise-20-causal-event-log.md
 │   │   │   ├── exercise-21-agent-kernel-runtime.md
+│   │   │   ├── exercise-22-capability-escalation-ladder.md
 │   │   │   └── solutions/
 │   │   └── koda-applications/
 │   │       └── nivel-3-koda.md

@@ -66,6 +66,8 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[.opencode/skills/trial-retention-attribution-split/SKILL.md|.opencode/skills/trial-retention-attribution-split/SKILL.md]] | Skill de diagnóstico: separa ativação de retenção (trial flag + weekly-active + atribuição de duas ramas) para impedir que alarme de gestão vire rollback cego do produto |
 | [[.opencode/skills/agent-value-maturity-ladder/SKILL.md|.opencode/skills/agent-value-maturity-ladder/SKILL.md]] | Skill de auditoria: classifica roadmap/deployment contra a escada de 4 estágios de valor e detecta wow-collapse não planejado e custos de troca não construídos |
 | [[.opencode/skills/perceived-eval/SKILL.md|.opencode/skills/perceived-eval/SKILL.md]] | Skill de implementação: instrumenta a qualidade percebida em produção tratando correção/pushback do usuário como dado de avaliação — capta correction, rage quit, chat exit, NPS e alimenta o loop produção-para-offline |
+| [[.opencode/skills/two-sided-trade-off-instruction/SKILL.md|.opencode/skills/two-sided-trade-off-instruction/SKILL.md]] | Skill de implementação: reescreve instruções de face única em instruções de duas faces que declaram o custo da ação e o contra-custo de evitá-la — elimina single-objective overfit e under-escalation |
+| [[.opencode/skills/capability-escalation-ladder/SKILL.md|.opencode/skills/capability-escalation-ladder/SKILL.md]] | Skill de implementação: escada de 4 rungs de escalonamento de capability (modelo maior → reasoning budget → instrução → decomposição) que escolhe o vencedor econômico entre as rotas que passam no eval |
 | [[docs/canonical/typed-event-boundaries|Typed Event Boundaries]] | Contrato de eventos tipados entre agentes — fronteira de evento com schema e dispatch determinístico |
 | [[docs/canonical/content-addressed-prompt-graph|Content-Addressed Prompt Graph]] | Grafo de prompts endereçado por conteúdo (hash) para reconstrução exata de inputs |
 | [[docs/canonical/append-only-causal-event-log|Append-Only Causal Event Log]] | Log de eventos causal append-only — event sourcing de agentes, log como memória |
@@ -76,6 +78,16 @@ Topicos cobertos: `agentes-orquestracao`, `agentic-coding`, `spec-driven-develop
 | [[docs/canonical/failure-accrued-runtime-growth|Failure-Accrued Runtime Growth]] | Crescimento do runtime acumulado por falhas — mapa falha→primitiva, débito pago conforme aparece |
 | [[docs/canonical/presence-interface-ladder|Presence Interface Ladder]] | Escada de interface por presença — do SSH com vibes ao unattended como produto |
 | [[docs/canonical/agent-lifecycle|Agent Lifecycle]] | Ciclo de vida unificado de issues: claim → worktree → implement → review → merge → cleanup, em 5 componentes (orchestrator, issue-start, issue-workflow, issue-review, issue-finish) com label único `agent:working` |
+| [[docs/canonical/eval-gated-model-migration-diagnostic|Eval-Gated Model Migration Diagnostic]] | Diagnóstico de migração de modelo gateado por eval: distingue diferença de comportamento (remediável por prompt/harness) de capability gap (troca de modelo/decomposição) usando violation count como sinal direcional |
+| [[docs/canonical/control-edge-boundary-eval-taxonomy|Control/Edge/Boundary Eval Taxonomy]] | Taxonomia de evals em três classes (control/edge/boundary) com semântica de regressão própria por classe — separa quebra de baseline de perda de calibração |
+| [[docs/canonical/structural-prompt-hygiene|Structural Prompt Hygiene]] | Higiene estrutural de prompt: separa policy, tone, process, data e defensive patches em seções distintas para que modelo e mantenedores distingam as camadas |
+| [[docs/canonical/defensive-patch-ledger|Defensive Patch Ledger]] | Ledger de patches defensivos com rationale registrado no write-time — audita quais patches a migração de modelo tornou obsoletos |
+| [[docs/canonical/two-sided-trade-off-instruction|Two-Sided Trade-off Instruction]] | Instrução de trade-off de duas faces: declara o custo da ação e o contra-custo de evitá-la para eliminar single-objective overfit |
+| [[docs/canonical/capability-escalation-ladder|Capability Escalation Ladder]] | Escada de escalonamento de capability em 4 rungs ordenados por custo de teste, escolhendo o vencedor econômico entre as rotas que passam no eval |
+| [[docs/canonical/hard-soft-constraint-grader-split|Hard/Soft Constraint Grader Split]] | Separação de grader entre hard constraints (determinístico, custo zero) e soft preferences (LLM judge) para eliminar não-determinismo |
+| [[docs/canonical/two-layer-output-contract|Two-Layer Output Contract]] | Contrato de saída em duas camadas: formato definido uma vez e enforced no prompt e no harness como um só contrato |
+| [[docs/canonical/generate-evaluate-repair-loop|Generate-Evaluate-Repair Loop]] | Loop generate-evaluate-repair: decomposição em três prompts independentes com loop fechado por violações estruturadas |
+| [[docs/canonical/ban-to-source-of-truth-rebalancing|Ban-to-Source-of-Truth Rebalancing]] | Rebalanceamento ban→source-of-truth: substitui proibições defensivas por designação balanceada da fonte de verdade para evitar under-delivery |
 | [[AGENTS]] | Regras operacionais obrigatórias para agentes e colaboradores |
 
 ### Currículo e conteúdo
@@ -178,7 +190,7 @@ Tópicos candidatos a ADR:
 
 ## Documentação canônica pendente
 
-`docs/canonical/` não está mais vazio. Há 185 padrões canônicos ativos.
+`docs/canonical/` não está mais vazio. Há 196 padrões canônicos ativos.
 
 ### Padrões canônicos ativos
 
@@ -366,6 +378,16 @@ Tópicos candidatos a ADR:
 | `cron-plus-typed-events-orchestration.md` | Superfície de orquestração em dois eixos — schedules (cron) + eventos tipados |
 | `failure-accrued-runtime-growth.md` | Crescimento do runtime acumulado por falhas — mapa falha→primitiva, débito pago conforme aparece |
 | `presence-interface-ladder.md` | Escada de interface por presença — do SSH com vibes ao unattended como produto |
+| `eval-gated-model-migration-diagnostic.md` | Diagnóstico de migração de modelo gateado por eval: distingue diferença de comportamento (prompt/harness) de capability gap (troca de modelo/decomposição) via violation count |
+| `control-edge-boundary-eval-taxonomy.md` | Taxonomia de evals em três classes (control/edge/boundary) com semântica de regressão própria por classe |
+| `structural-prompt-hygiene.md` | Higiene estrutural de prompt: separa policy, tone, process, data e defensive patches em seções distintas |
+| `defensive-patch-ledger.md` | Ledger de patches defensivos com rationale no write-time para auditar obsolescência na migração de modelo |
+| `two-sided-trade-off-instruction.md` | Instrução de trade-off de duas faces: declara custo da ação e contra-custo de evitá-la para eliminar single-objective overfit |
+| `capability-escalation-ladder.md` | Escada de escalonamento de capability em 4 rungs, escolhendo o vencedor econômico entre rotas que passam no eval |
+| `hard-soft-constraint-grader-split.md` | Separação de grader entre hard constraints (determinístico) e soft preferences (LLM judge) |
+| `two-layer-output-contract.md` | Contrato de saída em duas camadas: formato definido uma vez e enforced no prompt e no harness |
+| `generate-evaluate-repair-loop.md` | Loop generate-evaluate-repair: três prompts independentes com loop fechado por violações estruturadas |
+| `ban-to-source-of-truth-rebalancing.md` | Rebalanceamento ban→source-of-truth: designação balanceada da fonte de verdade em vez de proibições defensivas |
 
 | Documento | Cobre |
 |---|---|
@@ -489,4 +511,4 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ---
 
-*Última atualização: 2026-08-31*
+*Última atualização: 2026-09-02*

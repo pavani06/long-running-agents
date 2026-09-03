@@ -101,7 +101,7 @@ O repositório não é só conhecimento -- é um sistema operacional. Você pode
 |---|---|
 | `harness/` | Sistema de harness que orquestra o pipeline `analyze-and-improve` em 7 fases com evaluators e gates automáticos -- guia completo em [[harness/GUIDE-analyze-and-improve|Guia do Harness]] |
 | `.opencode/agents/` | 3 agentes: [[.opencode/agents/hop-orchestrator-rezek.md|orquestrador principal]], [[.opencode/agents/koda-hop-init-basic.md|inicializador KODA]], [[.opencode/agents/hop-live-whatsapp-tester.md|testador WhatsApp]] |
-| `.opencode/skills/` | 36 skills: workflow de issues, orquestração, documentação, planos, error hygiene, shadow review, token budget, constraint gates, intent decomposition, e mais |
+| `.opencode/skills/` | 38 skills: workflow de issues, orquestração, documentação, planos, error hygiene, shadow review, token budget, constraint gates, intent decomposition, e mais |
 | `dashboards/` | 3 dashboards Obsidian: [[dashboards/analysis-hub|analysis hub]], [[dashboards/curriculum-progress|curriculum progress]], [[dashboards/obsidian-home|home page]] com dataview queries |
 | `templates/` | Templates reutilizáveis: canonical doc, analysis doc, curriculum lesson, curriculum index |
 | `concepts/` | Conceitos transversais como [[concepts/sub-agents|sub-agents]] |
@@ -137,7 +137,7 @@ O repositório não é só conhecimento -- é um sistema operacional. Você pode
 
 **Navegar o knowledge graph.** Use os dashboards em `dashboards/` no Obsidian para queries dinâmicas (dataview) sobre análises por domínio, progresso do currículo e conexões entre documentos. O [[index|Knowledge Index]] oferece um ponto de entrada com todos os wikilinks.
 
-**Usar o sistema de agentes como template.** O diretório `.opencode/` é um sistema de agentes completo com Handoff Protocol, 36 skills especializadas e 3 agentes. Pode ser adaptado como template para seu próprio projeto agentico. Comece por [[AGENTS|Agent Rules]].
+**Usar o sistema de agentes como template.** O diretório `.opencode/` é um sistema de agentes completo com Handoff Protocol, 38 skills especializadas e 3 agentes. Pode ser adaptado como template para seu próprio projeto agentico. Comece por [[AGENTS|Agent Rules]].
 
 ## Quick start
 
