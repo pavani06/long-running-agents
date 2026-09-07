@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@pavani_org/obsidian-eval": "0.6.0",
+    "@pavani_org/obsidian-eval": "0.6.1",
     "@types/node": "^20.19.43",
     "eslint": "^10.2.0",
     "eslint-plugin-n": "^17.24.0",
