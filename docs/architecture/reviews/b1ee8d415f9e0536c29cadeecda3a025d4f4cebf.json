@@ -1,0 +1,70 @@
+{
+  "baseline": "d01c70cecbc7f9e94b81ca4ac19fa7ababdbf59f",
+  "target": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+  "method": "Retrospective review performed by the implementation-session agent; committed Git diff inspected directly.",
+  "detector": {
+    "version": 1,
+    "repository": "https://github.com/pavani06/long-running-agents",
+    "baseline": "d01c70cecbc7f9e94b81ca4ac19fa7ababdbf59f",
+    "target": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+    "status": "review-required",
+    "workingTreeDirty": true,
+    "scope": "Committed trees only; local edits are excluded. Changed paths are review candidates, not architectural conclusions.",
+    "changes": [
+      {
+        "status": "M",
+        "path": "package-lock.json",
+        "components": [
+          "governance"
+        ],
+        "relations": [
+          "governance-canonical"
+        ],
+        "unmapped": false
+      },
+      {
+        "status": "M",
+        "path": "package.json",
+        "components": [
+          "governance"
+        ],
+        "relations": [
+          "governance-canonical"
+        ],
+        "unmapped": false
+      }
+    ]
+  },
+  "dispositions": [
+    {
+      "path": "package-lock.json",
+      "classification": "no-architecture-change",
+      "reason": "Lockfile updates version, resolution and integrity for the same dependency. The diff adds no new dependency edge.",
+      "evidence": [
+        {
+          "path": "package-lock.json",
+          "commit": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+          "comparison": "d01c70cecbc7f9e94b81ca4ac19fa7ababdbf59f"
+        }
+      ]
+    },
+    {
+      "path": "package.json",
+      "classification": "no-architecture-change",
+      "reason": "Only the existing obsidian-eval dependency version changes from 0.6.1 to 0.6.2; no new component, responsibility or integration is declared.",
+      "evidence": [
+        {
+          "path": "package.json",
+          "commit": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+          "comparison": "d01c70cecbc7f9e94b81ca4ac19fa7ababdbf59f"
+        }
+      ]
+    }
+  ],
+  "mapChanges": [],
+  "unresolved": [],
+  "limits": [
+    "This conclusion applies to repository architecture. Internal behavior of the external package was not evaluated.",
+    "The eight-component map was authored at the target commit; the detector was exercised retrospectively using the preceding commit. This is not an autonomous host-run evaluation."
+  ]
+}

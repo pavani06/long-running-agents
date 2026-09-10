@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "repository": "https://github.com/pavani06/long-running-agents",
+  "commit": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+  "title": "Long Running Agents",
+  "summary": "Base de conhecimento e currículo sobre agentes de longa duração, com um pipeline de análise apoiado por definições de agentes, skills e um harness local.",
+  "focus": "canonical",
+  "components": [
+    {
+      "id": "sources",
+      "name": "Fontes e prompts",
+      "row": 0,
+      "column": 0,
+      "paths": [
+        "sources/",
+        "rawfiles/",
+        "prompts/"
+      ],
+      "responsibility": "Material externo e instruções de autoria que alimentam análises e a elaboração do currículo.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 117,
+          "end": 118
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 1,
+          "end": 3
+        }
+      ]
+    },
+    {
+      "id": "agents",
+      "name": "Agentes e skills",
+      "row": 0,
+      "column": 1,
+      "paths": [
+        ".opencode/agents/",
+        ".opencode/skills/",
+        "opencode.json"
+      ],
+      "responsibility": "Definições e procedimentos executados pelo host de agentes. O pipeline analyze-and-improve descreve extração, classificação e integração de conhecimento.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 27,
+          "end": 38
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 47,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "id": "harness",
+      "name": "Harness de análise",
+      "row": 0,
+      "column": 2,
+      "paths": [
+        "harness/"
+      ],
+      "responsibility": "Wrapper Bash para coordenação de fases, evidências e avaliação. Depende de um CLI externo e de arquivos de estado; disponibilidade operacional não foi testada.",
+      "evidence": [
+        {
+          "path": "harness/harness-analysis.sh",
+          "start": 1,
+          "end": 38
+        },
+        {
+          "path": "harness/GUIDE-analyze-and-improve.md",
+          "start": 39,
+          "end": 52
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Governança e validação",
+      "row": 1,
+      "column": 0,
+      "paths": [
+        "AGENTS.md",
+        "docs/system-of-record.md",
+        "docs/decisions/",
+        "scripts/",
+        ".github/",
+        "package.json",
+        "package-lock.json",
+        "eslint.config.js",
+        "eslint-rules/"
+      ],
+      "responsibility": "Define precedência documental e verifica convenções do vault. Ferramentas e dependências dão suporte à qualidade do conteúdo.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 12,
+          "end": 23
+        },
+        {
+          "path": "scripts/validate-obsidian.ts",
+          "start": 1,
+          "end": 31
+        }
+      ]
+    },
+    {
+      "id": "canonical",
+      "name": "Padrões canônicos",
+      "row": 1,
+      "column": 1,
+      "paths": [
+        "docs/canonical/"
+      ],
+      "responsibility": "Referências autoritativas de padrões e contratos, subordinadas aos ADRs aceitos. Descrevem também sistemas externos; sua presença não significa implementação local.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 12,
+          "end": 23
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 158,
+          "end": 158
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "name": "Análises e modelos",
+      "row": 1,
+      "column": 2,
+      "paths": [
+        "docs/analysis/",
+        "docs/evidence/",
+        "mapa-mental-repo/"
+      ],
+      "responsibility": "Registra análises, classificações, evidências e modelos mentais produzidos pelo trabalho de conhecimento.",
+      "evidence": [
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 140,
+          "end": 169
+        },
+        {
+          "path": "harness/GUIDE-analyze-and-improve.md",
+          "start": 39,
+          "end": 52
+        }
+      ]
+    },
+    {
+      "id": "curriculum",
+      "name": "Currículo",
+      "row": 2,
+      "column": 1,
+      "paths": [
+        "curriculum/",
+        "curso-reimplementar-runtime/",
+        "templates/"
+      ],
+      "responsibility": "Organiza material de ensino, exercícios e aplicações de padrões. Integração exige autoria e revisão, não sincronização automática.",
+      "evidence": [
+        {
+          "path": "curriculum/README.md",
+          "start": 10,
+          "end": 20
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 51,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "id": "portals",
+      "name": "Portais e navegação",
+      "row": 2,
+      "column": 2,
+      "paths": [
+        "web/",
+        "webpage/",
+        "dashboards/",
+        "index.md"
+      ],
+      "responsibility": "Apresenta o conteúdo em HTML estático, índices e dashboards Obsidian. Os portais não constituem um backend do runtime.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 122,
+          "end": 138
+        },
+        {
+          "path": "README.md",
+          "start": 136,
+          "end": 138
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "sources-agents",
+      "from": "sources",
+      "to": "agents",
+      "label": "alimenta",
+      "description": "Fontes são entradas do pipeline de extração e classificação definido na skill.",
+      "evidence": [
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 51,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "id": "harness-agents",
+      "from": "harness",
+      "to": "agents",
+      "label": "invoca",
+      "description": "O harness delega a execução das fases ao host de agentes configurado.",
+      "evidence": [
+        {
+          "path": "harness/GUIDE-analyze-and-improve.md",
+          "start": 54,
+          "end": 72
+        }
+      ]
+    },
+    {
+      "id": "harness-analysis",
+      "from": "harness",
+      "to": "analysis",
+      "label": "verifica",
+      "description": "O harness usa artefatos das fases como evidência antes de avançar.",
+      "evidence": [
+        {
+          "path": "harness/GUIDE-analyze-and-improve.md",
+          "start": 39,
+          "end": 52
+        },
+        {
+          "path": "harness/harness-analysis.sh",
+          "start": 198,
+          "end": 219
+        }
+      ]
+    },
+    {
+      "id": "analysis-canonical",
+      "from": "analysis",
+      "to": "canonical",
+      "label": "fundamenta",
+      "description": "O pipeline transforma padrões extraídos e classificados em artefatos canônicos; a promoção requer integração.",
+      "evidence": [
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 140,
+          "end": 158
+        }
+      ]
+    },
+    {
+      "id": "governance-canonical",
+      "from": "governance",
+      "to": "canonical",
+      "label": "rege",
+      "description": "A precedência coloca ADRs aceitos acima dos documentos canônicos e estes acima das análises.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 12,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "id": "canonical-curriculum",
+      "from": "canonical",
+      "to": "curriculum",
+      "label": "referência",
+      "description": "Padrões classificados são integrados ao currículo pela fase de autoria curricular.",
+      "evidence": [
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 51,
+          "end": 57
+        },
+        {
+          "path": ".opencode/skills/analyze-and-improve/SKILL.md",
+          "start": 158,
+          "end": 158
+        }
+      ]
+    },
+    {
+      "id": "curriculum-portals",
+      "from": "curriculum",
+      "to": "portals",
+      "label": "apresenta",
+      "description": "O portal estático apresenta o curso; esta relação descreve conteúdo, não um pipeline automático de publicação.",
+      "evidence": [
+        {
+          "path": "docs/system-of-record.md",
+          "start": 122,
+          "end": 138
+        }
+      ]
+    },
+    {
+      "id": "analysis-portals",
+      "from": "analysis",
+      "to": "portals",
+      "label": "navegação",
+      "description": "Dashboards Obsidian e índices permitem navegar análises e suas conexões.",
+      "evidence": [
+        {
+          "path": "README.md",
+          "start": 138,
+          "end": 138
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Visão seletiva de oito componentes; não é um inventário completo dos arquivos.",
+    "Setas descrevem autoria, controle e navegação, não tráfego de rede nem dependências de importação.",
+    "O KODA e os runtimes descritos nos documentos não são apresentados como serviços implementados neste repositório.",
+    "O grafo .understand-anything existente tem outro commit de referência e não foi tratado como evidência atual.",
+    "A implementação deste monitor está fora do commit inicial; deverá entrar na revisão após ser commitada."
+  ]
+}

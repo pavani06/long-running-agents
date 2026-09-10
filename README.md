@@ -111,6 +111,7 @@ O repositório não é só conhecimento -- é um sistema operacional. Você pode
 
 | Arquivo | Função |
 |---|---|
+| [docs/architecture/index.html](docs/architecture/index.html) | Mapa de componentes com evidências por commit; uso e monitoramento em [[docs/architecture/README|Monitor de arquitetura]] |
 | [web/koda_course_portal.html](web/koda_course_portal.html) | Portal do curso -- data-driven, vanilla JS |
 | [web/koda_knowledge_graphs_35_diagrams.html](web/koda_knowledge_graphs_35_diagrams.html) | Visualizador de 35+ diagramas Mermaid |
 | [web/mhc_visao_estrategica.html](web/mhc_visao_estrategica.html) | Visão estratégica MHC |

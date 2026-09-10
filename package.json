@@ -11,7 +11,11 @@
     "test:unit": "node --experimental-test-module-mocks --test tests/unit/*.test.js",
     "test:integration": "node --test tests/integration/*.test.js",
     "validate:obsidian": "npx tsx scripts/validate-obsidian.ts",
-    "frontmatter": "tsx scripts/frontmatter.ts"
+    "frontmatter": "tsx scripts/frontmatter.ts",
+    "architecture:check": "node scripts/architecture-monitor.js check",
+    "architecture:validate": "node scripts/architecture-monitor.js validate",
+    "architecture:render": "node scripts/architecture-monitor.js render",
+    "test:architecture": "node --test tests/unit/architecture-monitor.test.js"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
