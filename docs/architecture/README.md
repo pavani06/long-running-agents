@@ -10,7 +10,9 @@ relates-to: ["[[README|Repository Home]]", "[[docs/system-of-record|System of Re
 
 Primeira versão para mapear um repositório e revisar a evolução dos seus componentes.
 O mapa é um retrato de um commit. O agente revisa a semântica; a ferramenta calcula
-o diff e gera a página. Não há nova API, dependência, serviço ou agendamento.
+o diff e gera a página. A execução sob demanda continua disponível. O
+[[docs/architecture/scheduled-review|fluxo diário com OpenCode]] acrescenta um timer
+local, revisão validada e entrega por PR, usando a autenticação existente.
 
 Abra [a visão geral](index.html). A fonte editável é
 [repository-map.json](repository-map.json). Há oito componentes e oito relações,
@@ -57,8 +59,9 @@ Selecione esse agente no host OpenCode e peça:
 > arquivo e atualize o JSON e a página quando houver evidência suficiente.
 
 O mesmo procedimento pode ser executado pelo agente da sessão atual lendo a definição.
-A primeira análise foi feita na sessão de implementação. O carregamento pelo host
-OpenCode e a execução autônoma futura não fazem parte dos testes automatizados.
+A primeira análise foi feita na sessão de implementação. A extensão agendada usa
+essa definição no OpenCode; seus fluxos, limites e comandos operacionais estão em
+[[docs/architecture/scheduled-review|Revisão diária de arquitetura]].
 
 ## Contrato mínimo
 
@@ -120,9 +123,7 @@ a revisão de significado e não comprova completude do mapa.
 
 O teste histórico foi retrospectivo; a revisão semântica foi realizada nesta sessão.
 O teste de remoção de relação simula a edição explícita do agente, sem chamar um LLM.
-Ainda não houve uma execução autônoma do agente pelo host OpenCode.
+Esse experimento inicial antecede a extensão agendada com OpenCode.
 
-A implementação permanece local na branch `feat/repository-architecture-monitor`.
-A associação com uma issue é recomendada por [[AGENTS|AGENTS.md]], mas nenhuma issue
-foi publicada: a regra local de efeitos externos exige aprovação explícita.
-Este documento mantém o escopo concreto para vinculação antes de um eventual PR.
+A primeira versão foi integrada à `main` no commit `a069c11`. A extensão agendada
+mantém a publicação em PR separado, sem integração automática na `main`.

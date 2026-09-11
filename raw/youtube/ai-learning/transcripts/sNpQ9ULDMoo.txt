@@ -1,0 +1,281 @@
+the thumbnail of this video is 100% AI
+generated this is me looking pretty
+Suave at Paris fashion week this is from
+another ramp walk from the same event
+this is me in front of the Eiffel Tower
+it's a selfie this is me in front of a
+fighter jet and this is me at a fancy
+dinner and none of these images were
+actually shot every single one of them
+were AI generated and in this video I'm
+going to teach you exactly how to do
+this how to train a model on your own
+face in order to generate your LinkedIn
+head shots your Instagram profile
+profile pictures etc etc but before we
+do that hit the Subscribe button my name
+is shev and you're watching the AI Labs
+by 100x
+[Music]
+engineers in order to train a model to
+recognize your face what you essentially
+need to do is to create something called
+as a Laura Laura stands for low rank
+adaptation it's basically a very fancy
+way of saying something very simple
+picture this you have an AI model that
+is really good at generating images for
+you but it doesn't really recognize your
+face so you add a data set of your face
+into this existing model and now this
+model can finally recognize who you are
+and the reason why luras are a powerful
+method to do this is because you don't
+have to train the entire model from
+scratch again you can just train this
+new data set that you're adding into the
+model so it saves a lot of time a lot of
+costs and a lot of energy it's like if I
+want a little more salt in my food I'm
+not going to start the entire cooking
+process from scratch I'm just going to
+take a salt shaker and add some salt to
+it not a very ACC accurate analogy but
+paints a decent picture in order to
+train aura you need two things you need
+the data set and you need the trainer
+let's start with the first one a data
+set is basically a collection of
+pictures of yourself so I have so many
+pictures of myself that I have just
+transferred from my phone now ideally
+all these pictures need to be in
+different lighting scenarios and
+different angles so that the model is
+able to identify your face from
+different angles in different lighting
+conditions as well I have about 43
+pictures but honestly about 20 to 25
+pictures will do all of these pictures
+were taken from my iPhone just make sure
+they are high resolution and high
+quality so I have all my pictures in
+this folder called boson which is a
+nickname that I use and what I'm going
+to do is I'm going to compress this into
+a zip folder now once you're done with
+this you're done with the first step you
+have your data set ready now onto the
+second component of this workflow the
+training model itself in order to create
+a Laura of your face we are going to
+train it on a flux Dev model flux is an
+image diffusion model launched by this
+company called Black Forest labs and it
+is extremely good at getting realistic
+faces it's very similar to your mid
+Journey stable diffusion etc etc and the
+best part it's open source I've put a
+link to the flux Dev Laura trainer in
+the description so you can just open and
+get started with that now the flux Dev
+Laura trainer is hosted on a website
+called replicate replicate is a website
+where anyone can basically deploy their
+AI models for others to use so if you
+don't have an account just create an
+account it's free to create an account
+sign up and you will see the screen that
+I'm seeing in front of me right now all
+right now just follow along carefully I
+will first click the drop- down menu on
+destination and click on create model
+and I'll give my model a name I want to
+call my model B on and I'll just make it
+private because I don't want anyone to
+use it after I'm done with that I will
+upload my input images so I will click
+over here and I will upload the zip
+folder that I just created with my data
+set now that's done what I'm going to do
+is I'm going to input a trigger word
+okay explanation time the trigger word
+is the particular word that you use in
+order to recall this data set you're
+training into the model an example of
+that would be let's say that the Lura
+training is done and the trigger word
+that I used is boson now every time I
+want to prompt something let's say I
+want to prompt something like a photo of
+boson in a suit now every time I type
+boson into the prompt or the trigger
+word into the prompt the model
+understands that it is supposed to
+recall this particular data set that I
+trained as Aura so it is kind of like an
+identification marker where you're sort
+of calling back that data set and you're
+kind of telling the model that hey I
+want this particular data set this
+particular Lura that I had just trained
+onto this model so if I basically took a
+bunch of images of my watch and created
+a data set out of it and let's say my
+trigger word was iatch every single time
+I type iatch it basically recalls the
+training images and generates from that
+after that we go directly into steps
+what I'm going to do over here is change
+the steps to 2,000 which I feel is a
+pretty ideal spot in order to train
+these models you don't need to change
+the learning rate you don't need to
+change the Lura Rank and now comes the
+final two Fields you need to enter in
+order to start training the HF repo ID
+and the HF token secret HF stands for
+hugging face hugging face is a website
+that is basically like the GitHub for AI
+you get free models you get free data
+sets you get free workflows it's a
+thriving community so what you need to
+enter over here is your hugging face
+repo ID and your hugging face token
+here's how you do that you first go to
+hugging face. if you don't have an
+account create one there are two steps
+you need to follow in hugging face you
+look at the top right corner you click
+on your profile and click on new model
+all right and just name your model I'm
+going to name my model Bon and I'm going
+to make this model private and you
+should see something like this now I'll
+just go ahead and click the copy button
+over here I'll go back to the training
+window and I will just paste my repo ID
+over here now now to get the token or
+the secret you click on the profile
+button at the top right corner you click
+on settings and you go to access tokens
+now here you need to create a new token
+you can name it whatever you like I'll
+call it 100x
+new and granted permission to everything
+basically and then you click on create
+token now this token is visible to you
+only once so you need to copy copy it
+because after this you will never be
+able to see this token ever again so if
+you did this step wrong it's better to
+create a new token so I'm going to copy
+this I'm going to click on done and I
+will just paste the secret token over
+here and that's about it I just need to
+click on create training and it will
+actually start training my Laura now if
+this is the first time you're actually
+using replicate it is going to prompt
+you to add your billing details now the
+cost to train your own Laura or generate
+images on replicate is very affordable
+it costs to $4 in order to train your
+own Laura and for every image you
+generate it's just a couple of cents so
+in Indian rupees it's roughly 200 to 250
+rupees in order to train your Laura and
+it probably costs a rupe or two in order
+to generate an image quite
+cheap now once your model is training
+you should start seeing something like
+this on the log and this process will
+last for a while about 15 to 30 minutes
+depending on the size of your data set
+file now after the training is done you
+should see a message that says training
+has been completed all right so we're
+done actually training aara on your face
+now how do you actually use this model
+well I've actually posted another Link
+in the description below the training
+Link in order to actually use the model
+this is what we typically call as
+inferencing this is basically what you
+should see on the screen and I'll tell
+you how to set it up scroll all the way
+to the bottom and stop at the place
+where you see HF laora and all you need
+to do over here is type your hugging
+phase repo ID so I'm going to I'm going
+to go back to hugging face I'm going to
+go to my profile and I'm going to select
+the
+model and now that my model has been
+trained I should get all the model
+weights and the model files over here so
+I can not only use this on replicate I
+can use this pretty much anywhere I want
+to I can click on files and versions in
+order to see what are the files that has
+been trained and usually luras come as
+safe tensor files now you don't need to
+download this file all you need to do is
+copy this link just like like you did go
+to the inferencing model paste it and
+that's about it you're done now let's
+prompt and check it out a photo of boson
+at Paris fashion
+week and while this image is loading you
+can do a bunch of other things on this
+model as well you can change the aspect
+ratio you can change the number of
+outputs you can generate up to four
+outputs at the same time and you can
+increase the strength of the prompt or
+increase the strength of the Laura but
+whatever default values are already
+there are pretty ideal for most use
+cases so you would not need to really
+tweak them all right that's me looking
+like a fashionista at Paris Fashion Week
+pretty much looks exactly like me now
+let's try a LinkedIn headshot a photo of
+Bon wearing a suit and a
+tie and there we have it I think I look
+pretty sharp in the Spectra let me know
+what you you think in the comments now
+generating LinkedIn headshot is one use
+case of this model but it doesn't just
+end there you can use it for your social
+media posts you can generate marketing
+campaigns one of the rather interesting
+things that I did was basically gather a
+bunch of amul ads and train a Laura on
+the amul girl and using this Laura I
+generated a bunch of images that were
+pretty similar to amul campaigns this
+was just basically done as an experiment
+now one thing that I'd like to mention
+is that while training faces you can
+train your own face but before you are
+using it on someone else's face please
+take their consent if you do train an AI
+model on someone else without their
+consent it can actually land you in
+serious trouble so stay away from doing
+that and stay on the right side of
+morality and ethics that being said I
+just have one quick thing to add we at
+100x Engineers are doing a hackathon
+very soon in a few weeks so if you are
+an AI engineer if you are an AI Builder
+and if you would like to take part in
+this hackathon we have put the
+registration Link in the description as
+well go ahead and register you can know
+more details about it in the links that
+I've given below and I hope to see you
+in the hackathon until next time don't
+forget to hit that subscribe button I'll
+see you in the next one

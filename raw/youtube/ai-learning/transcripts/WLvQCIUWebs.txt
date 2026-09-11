@@ -1,0 +1,403 @@
+I have built hundreds of AI agents. In this video, I'll show you the five agents that everyone needs. And I'll
+also explain how to turn this into a real business. And no, it's not by starting an agency. Real quick, if you
+are a back-end developer and want to join my team, make sure to fill out the Google form. It's linked below the video. All right. So, the first AI agent
+that everyone must build is a simple accountant. So, instead of paying an accountant 2,000 3,000, this AI agent
+should do most of the things that normally you would outsource to a human accountant. So let's jump into any and
+the first step is to define a trigger. There are literally thousands of different integrations inside of any. So
+just pick whatever you want. I'm going with Telegram and I'm going to do on message and here we have to select the
+credentials. So if you're doing this for the first time, you will not have anything in here. So click on create new credential. Now the beauty of any is
+that no matter what trigger you use again, WhatsApp, Discord, Gmail, Microsoft Teams, whatever you select,
+they give you the docs right here. So if you open the docs, you can actually see what you need, right? For Telegram, we
+need a Telegram bot. If you don't have the link, it's right here and I can link it below the video as well. So you need
+to start the chat with the botfather, which is the main way to create bots on Telegram. So what we need to do is type
+in / newbot. Newbot. And we need to call it something. I'm going to name this guy NA10 accountant. And now we need to give
+it a username. This needs to be unique. So I'm going to do NA10 David accountant. And it needs to end with
+bot. Okay. So that's important. And there it is. This is the token we need. So just click on that. Switch back into any 10 and paste it in. Save. And now a
+quick test should run. And we should see a green. There it is. Connection texted successfully. So once you know this, you
+know that your trigger works. And we can actually test this step. So on the left, click on test step. So if I switch to Telegram and I open the chat with my N
+accountant. Boom, there it is. So the first message is SL start. And if you
+scroll down, we see the text is SL start. So now NA10 can successfully get messages from our telegram which is
+great. And by the way, this accountant or expense tracker is just one of five different AI agents I will show you how
+to build in this video. So stay tuned. The next thing you need to do is connect the actual AI agent to the trigger. So
+type in AI agent and click on that. And a very good habit you should do inside of NA10 is save. So make sure to save
+after each major change you do. Otherwise you might lose your progress. All right. So to make our AI agent work, we need to give it an AI model. So click
+on this plus below chat model and we can use you know anthropic, we can use Gemini models, we can use anything. I'm
+going to go with open AI. Now before we connect the API key, let's just choose which AI model to use, right? I think uh
+GPD 4.1 is one of the best for AI agents right now. It's what I use for, you know, my builds, my startup. So just
+select GBD4.1. And next, we need to select an OpenAI credential. Again, if this is
+your first time, click on create new credential. And as you can see, NA10 literally tells us what to do. So even if you're a nontechnical person, you
+don't have to be a programmer to interact with API keys. This is one of the biggest misconceptions that I see.
+People think they need to be technical. People think they need to be a senior developer to make this happen. No, it's like middle of 2025 guys. There are
+tools like NA10 that make it super easy to build AI agents. So just follow the steps. You need to log into your OpenAI
+account and they give us the link. So open the OpenAI platform and log in. As you can see in the top right, I'm already logged in. If you are not logged
+in, use the same account as you use for chat GBD. Super easy. Takes 10 seconds
+to login. Next, they tell us to go to the API keys page. So, when you're in platform.openi.com, click on dashboard,
+and on the left, click on API keys. And here you can see all of your API keys. And again, if this is your first time,
+don't panic. It's fine if you don't have any API keys. Just click on create new secret key in the top right and name it
+NA10 accountant or whatever you want. Create key. Copy. Let's go back to NA10
+and paste it into the API key field. Save. And there it is again. Connection tested successfully. If this is not
+successful, what you might need to do is you might need to add your credit card into the billing if you never used
+OpenAI API. But once you do that, once you charge up like a few dollars, this should be green. Okay. So now we have
+given our AI agent the brain, which is the AI model, right? So it can use GPD4.1 or any other, you know, open AI
+model we select. Obviously, they have dozens of different models, but I think uh GBD4.1 is going to be more than
+sufficient. Okay, so next up, we need to give the AI agent some instructions, also known as the system prompt. So,
+double click on that. And for the user prompt, select define below. And here, we need to drag in the message. So,
+remember last time we tested it, it was just the default / start from Telegram. But, you know, we can probably retest
+this. If we save and we delete this test, so this trash icon deletes the last test. We do test workflow. It's
+waiting for a message. I can say testing. Boom. Now this should be the
+message, right? Testing. Hello. It looks really okay. So now you see the AI agent actually responded. It looks like you're
+testing. How can I assist you? Beautiful. So now this is green, which means the AI agent knows what we sent.
+It goes to the agent. So that's really good. But now we also need to give it a system prompt. So underneath options, click on add option system message. Here
+we can define an actual system prompt where we define the behavior, how we want our AI agent to behave. So, I
+already prepared a pretty solid one which I'm going to paste in here. By the way, feel free to pause and read through this. Or if you just want the full
+pre-built AI agents, all of those are in the new society. So, if you go into classroom and click on templates and
+presets underneath pre-built automations, you can access the five AI agents everyone needs, aka fully
+pre-built agents from this video. Anyways, let's go back to NA10 and let's save. So, we've given the AI agent the
+system prompt. So, let's make sure we save it. And now, actually, we can test it again. So, let's kill this test and
+let's do test workflow. And now since it's properly categorizing our expenses, if we send something like you know um
+croissant I don't know $250 corner of my street. Okay. So this
+should properly categorize this expense as a personal expense. Obviously it's not a business expense. So now if we
+open this we can see the output is a categorization of this expense. So date is today's date personal or business
+it's personal expense description and you know where it was purchased amount in USD type food. Okay
+so it properly categorized it but the next step is to actually give it the Google sheets tool so that it can write
+it into our Google sheets as a proper accountant would. But before we do that let's actually give the AI agent a
+memory. That way it can remember longer conversations than just the last message. So underneath memory, click on
+plus and click on simple memory. Session ID, select define below. And into key,
+we just need to drag in the chat ID. So drag in the ID. Boom, there it is. And
+context window length. This is how many past interactions the model, you know, the AI agent will receive as context.
+Five is enough. If you want more, you can do 10 or 15, but five should be more than enough. So if we save this, the AI
+agent will now be aware of, you know, our past interactions. So maybe you send a few messages or maybe there's a
+purchase that's relevant that you made, you know, in the morning and then you do a purchase in the evening. Like for example, if you go to see movies in the
+morning, which doesn't make sense, but stay with me. And in the evening you buy popcorn, it can probably link those two
+together, right? If it has access to five past messages. So that's why adding the simple memory is important and it
+makes your AI agents better than the people that skip this step. Okay, but now comes the important part and this is
+giving the AI agent tools. That way it's much more useful than CHGBD because JGBD cannot write into your Google Sheets.
+N10 agents certainly can. So click on plus underneath tool type in Google Sheets. Google Sheets tools. Select that
+and again at the top click on create new credential. And this actually might be the step where people fail. So if you
+want to really be ahead of everybody, just log in for the next three minutes because most people will drop off at this point because it's too difficult
+for them. But they never built AI agents to save them time. So that is going to be the real difference. If you stick
+through the next 2 minutes, you will be in the top 5% of people easily. Okay. So what we need is two things. Client ID
+and client secret. And we need to get those from Google. So again, let's open the docs. And NA10 literally tells us
+what to do. So here's how to set up OF2 with Google. So let's scroll down. And the first step is to go to Google Cloud
+Console. So let's click on this link and this will open the actual Google Cloud. So in the top right, make sure you
+loging in with the account that you want to use. So whatever spreadsheet you want the AI agent to access or you know this
+could be anything else from Google your calendar your Gmail doesn't matter if you learn the steps in the following 2
+minutes you'll be able to connect any Google related tool to your N8 agents. So again make sure you select the
+account where you have the Google sheet or Google docs that you want to use. So inside of the Google cloud console we
+need to select a project. So at the top click on the project picker. If you don't have one just click on new project
+in the top right. Super simple. The next step, as NA10 tells us, is to enable the APIs. So, since we're using Google
+Sheets, just type in Google Sheets. And there it is. Google Sheets API. Again, Gmail has a different one.
+Google Drive has a different one. Just enable it. Here, it's already enabled, but if it isn't, just click on enable.
+There's going to be like a loading animation for 5 seconds, and then it should say API enabled. Next, we need to
+create an OOTH consent screen. So let's go back to Google cloud and click on the left navigation menu and find APIs and
+services right here and then click on OF consent screen on the left click on clients and we need to create a new ooth
+off client. So click on create client under application type select web application we can name this NA10
+accountant name can be NA10 client and here when you scroll down you'll see authorized redirect URLs. This is
+important because inside of NA10 they actually give us this URL. So click on this and we need to put it right here.
+Add URL. Put it right here and click on create. And there it is. As you can see, it wasn't that complicated. And we have
+the two things that any needs. We have the client ID. So let's copy that. And we have the client secret. So let's copy
+that. Also, by the way, do not share this with anybody. I will delete mine before uploading the video. Okay. Click on save. And there is a new button that
+pops up when you fill this out. Sign in with Google. So click on that. This opens up a new popup. So again, select
+the same account we're using. And there it is. Connection successful. So this window should close automatically or we
+can close it. And again you need to see this green check mark account connected. So now our AI agent can use Google
+Sheets. So let's close it and click out of it and save. Remember to always save. But as you can see the Google Sheets
+tool is still red and that's because we haven't selected which sheet which document it should reference. So first
+off select operation and append row because we're tracking our expenses. So we need the AI agent to be able to add
+new rows into our Google sheet. And I've created this empty sheet. Literally nothing in it. I just named it NA10
+accountant. So what remains is actually connecting this into the tool. So underneath document, click on choose.
+And there it is. NA10 accountant. So it will show the most recent ones. If you don't see there, just search for it. And
+underneath sheet, this is actually the bottom thing, right? So just select sheet one because literally I just
+created it. There's only one sheet. All right. So now we have a small error. It doesn't see any columns because the sheet is empty. So it says no columns
+found in Google sheet. So we want the AI to fill this out. But first we need to define the headers. So for this
+automation I want date, personal or business. I want a description of the
+transaction. I want the amount in USD. And I want the type, you know, is it a
+food expense, is it a business expense? Is it a travel? Whatever. So this is going to be my header. So let's make
+this bold. Can increase the size as well. And now if we go back into NA10, we should be able to refresh this. So,
+refresh to see updated fields. Reload. And there you go. You can see all of these different um headers, date,
+personal. Okay, everything that we just defined is here. And all you need to do here is click this magic button on the
+right. This just lets the AI model define it. So, click this for all of the fields. And now, once we have this
+defined by the model, the AI knows what to fill in in here based on the system prompt we gave it earlier. Okay. So,
+let's click on save. And now, fingers crossed, we should have everything ready to test it out. So, let's close this.
+I'm going to click on test workflow again. So, now it's waiting for a trigger event. Let's go to Telegram and let's do a different transaction. Let's
+do AI consulting. Let's do we've spent $400 on this. I'm going to say expert
+from new society. Let's say we've paid one of the people new society for AI consulting. And I'm going to say uh 60
+minutes. Okay. Send. So, we gave it more info than last time. It goes into AI agent which quickly processes it because
+GBT 4.1 is so quick and Google sheets. Okay, so no errors. This looks good.
+Let's check our sheet to see if it's there. There it is. Date. Today's date correct. It is business expense AI
+consulting all the details here. Amount 400 USD and type service. Amazing. So
+the AI agent did everything we asked for. So now, if you actually followed what I did, you should have your own AI
+agent accountant that you can message from Telegram and I will automatically track your expenses into a Google sheet
+just like a professional human accountant would. But to take it to the next level, we also want the AI agent to
+gives us the response in Telegram because let's say you're on your phone, you know, you're on a bike or whatever, and you just purchase something from
+your local store, grocery store, right? You don't be checking Google Sheets to see if it's there. So, we're going to
+add an output to the AI agent. It's going to be Telegram as well. And this is going to be a quick summary of what
+it did confirming that it actually did the action. So here, let's look for send a text message. Send a text message. And
+this time, we don't actually need to select the credentials because we already did. So just select the same credentials you set up. This is the
+beauty of any. It actually saves your credentials so that each time you build AI agents, it only gets easier. That's
+why I'm urging you to push through the friction at the start. Do these connections, you know, connect your OpenAI API, connect your Telegram,
+connect your Google. You only have to do it once, then it's saved inside of any 10 and it remembers those credentials so
+that if you build agent number four, five, 6, 20, it's much, much faster and easier than building your first one or
+two agents. Anyways, let's make this working. So, chat ID, once again, let's scroll down. Chat ID right here. Drag it
+in here. Boom. Make sure it's green. Text. This should be the response from the AI agent. So, on the left, scroll
+down, find the AI agent, and drag in the output. And that should be it. So, let's test this step. Boom. If we switch to
+Telegram, we should see a nice message of what happened. Date, personal, business. Okay. So, anytime we do a
+test, let's do a complete test. Okay. So, I'm going to delete this previous workflow test. And I'm going to click on
+test workflow once again. And let's give it a different um you know message. I'm going to say dark chocolate local
+grocery store. And I'm going to give it in different currency to see if it converts. I'm going to say it costed
+3080. Hit enter. So let's see. Okay, AI agent working.
+It's writing into Google Sheets and we should see so a few seconds later and there it is. So it converted into USD.
+Amazing. The expens has been added to your sheet with the amount converted roughly 8.17 USD. Really, really nice.
+So if you check our sheet, there it is. It tracked our expense. So no matter where you are, you can just type in into Telegram, into WhatsApp, whatever
+trigger you use, whatever trigger you choose, and you will have an AI accountant nicely tracking all of your
+expenses into an organized Google sheet. Oh, and by the way, if you want to know how to actually sell these AI agents to
+real businesses and make some money with this, later in the video, I'll explain step by step exactly how to do that.
+Now, a lot of you have asked me on the last few videos, why not just use the NA10 cloud to host our AI agents, right?
+Because we have to host them somewhere if we want them to run 24/7. The issue with using the NA10 cloud is actually
+there are two issues. Number one, it's a limited amount of executions. And number two, it's not that affordable. So, for
+€20 a month or dollars, you get 2.5K executions and you can only have five
+active AI agents running at once, which is very limiting. On the other hand, if you go with Hostinger, not only is it
+way more affordable, you also have no limit in terms of how many executions or AI agents you can have. If you get the
+KVM2 plan, which I would recommend you to get, you can literally run hundreds of AI agents on this plan. And it will
+cost you way less than if you used the NA10 Cloud, especially if you go with the 24-month option, which I definitely
+recommend you do because you want your AI agents running forever. You build them once and they save you time in
+perpetuity. And since Hosting Group was kind enough to sponsor this video, if you use the coupon code David, you will
+save additional 10% off on your annual or two-year plan. Then what remains is selecting the server location. So just
+select whatever is closest to you. I'm in Czech Republic, so Germany is super close. And then for the operating system, click on NA10. They literally
+have a one-click install template for NA10. It couldn't be any easier. So click on confirm. And then click on
+continue and login with your hosting account or just create one. And the last thing that remains is filling out your billing details and your credit card.
+I've been using Hostinger for months to host my internet agents. And it really is the simplest and most affordable way
+to do so. So again, make sure to check out the link description and remember to use code David to get 10% off. All
+right. So once you have your Hostinger VPS, go to the panel, click on home, and select manage. Here we can see how our
+virtual private server is running and all the usage you see about it. So this is another advantage over the N10 cloud.
+You can actually see this data that N10 otherwise wouldn't give you. So all we need to click is manage app and this
+will launch the N10 server where we can see all of our AI agents. So here's the one we built earlier the expense tracker
+and all the other mains is making it active. That way anytime I send telegram
+message to this accountant it will work right. So let's do another one. Okay. So I just did another test and now we
+should see executions. Okay. So expense tracker is running in the executions. Very nice. And there it is. Just like that it's
+finished. So it works and I don't have to do test workflow every time because this AI agent is deployed and now it's
+active. So it'll be running forever. But as I promised, I'm going to show you five different AI agents that will save
+you massive amounts of time. So let's click on create workflow and let's build the second one. Now since a lot of the
+steps are the same as the first agent to save you some time, I'm just going to import the JSON and explain everything.
+So on the right, click on three dots, import from file, and select the JSON of the AI agent to import. Again, all of
+the AI agents from this video as well as from all of my past videos are available in the new society. So, if you want
+access to all of my AI agents to just copy paste them into your own life, make sure to join the new society and you can
+get all of the JSON files in here in the classroom. All right, let's go back to NA10. And this is what it will look like
+once you import the JSON. You will see the automation. However, you will have errors on the nodes and that's because
+we need to connect them to the credentials. So, first off, what does this AI agent do? Well, this is an email
+manager that autonomously cleans up and organizes your inbox. This is my favorite AI agent because it will save
+you 80 to 90% of the time that you spend with your emails. Why? Because it will open emails that are unimportant. It
+will read through every single email that comes in first of all and then those that are unimportant, it will leave them opened so that you only focus
+your time on the ones that are truly important. I have this exact AI agent running on all of my inboxes and it
+saves me dozens of hours every month. So please, if there's one thing from this video, just take away this AI agent and
+deploy it into your own life. Trust me, you'll thank me later. All right, so let me explain what's going on here. So first off, we have the Gmail trigger.
+Make sure to connect this to the email that you want to be clean up. If you have multiple inboxes, just deploy this AI agent on all of them. I have it
+running on multiple inboxes and it saves so much time. It's amazing. So here, connect the credential. Exact same steps
+and with the Google Sheets. Really, it's not that complicated. Mode, you can leave up to every minute. That just sets
+how often it checks your inbox. Event make sure it's on message received and enable simplify just for clarity. And
+make sure you have simplified enabled. So let's click on fast touch event to see if it works. Okay, so it fetched an
+email and this is actually this email right here which is the Hostinger verification code which I received while
+I was logging into Hostinger. So now we know that the NA10 trigger can successfully read our emails. Beautiful.
+The next step after the trigger is the AI agent. So let's double click on that. So in the user message, we give it the
+ID of the email, the subject line as well as the snippet. And then in the system message, we explain how it should
+process the email. That the unimportant ones should be marked as read and that the important ones shouldn't be touched. And again, there's more instructions.
+All of that is in the JSON files in the new society. Okay. So the next part of every AI agent is obviously the AI
+model. So again, we're using OpenAI here. And if you have an error, all that means is that you need to select a credential. Just select the credential
+you used for the first AI agent. And for the model, make sure you select either 40 or 4.1. Don't use anything worse than
+that. U you could use 4.1 mini. I guess 4.1 mini if you really are cost, you
+know, mindful. 4.1 mini would be good. Nano I think is too small, too small of a model. I don't think it's intelligent
+enough. But 4.1 is also very cheap. So definitely go with that. Okay, let's
+save again. All right. So actually I think I can simplify this automation by deleting one of the tools. And we only need the mark as read tool. So let's
+double click on this. Select the email you want to be read. So whatever email is in the trigger, just make sure to
+march this. And underneath message ID, just drag in the ID from the Gmail
+right here. So let's test it out. We have the data right here. You know, this is the Hostinger email. And actually,
+I'm going to mark it as unread. Mark as unread. And I'm going to pin the data in the first trigger so that we can test
+with it multiple times. I'm also going to save and let's see if our AI agent can actually run this. So I'm going to
+test workflow. Okay, it goes into a agent. Boom. Workflow successfully. So let's see what the AI agent did. The email
+with subject the login finish code is likely important as related to account security. Okay, no action will be taken.
+So it decided this email is important and it didn't mark it as red. And again, you can customize this for yourself.
+Maybe you would say, but David, I think this is not important. Well, all of that is customizable in the system message.
+Whatever you tell the AI agent to do in the system message, it will follow. So let's say for you, you know, accounting
+emails like emails with money or receipts and invoices are important. Or maybe for you, emails from your teacher
+if you're in school are important or from your boss, right? All of that you can include in the system message and the AI agent will adapt. This is the
+beauty of AI agents. They adapt to you specifically. So don't be like, okay, this email shouldn't be marked as
+important. Just describe it. Improve your system prompt. learn how to write prones and keep refining the system
+message of your AI agent until you're happy with it. Once it works, it works forever. So all that remains is just
+clicking save and activating it. And now every single email that comes into my inbox will be checked with this AI
+egypt. So let me actually test this by sending myself a notimp important email. So let me jump into vector and say I
+need you to draft up an email that is objectively not important. just
+something that a friend might email me. Give me subject and body. Okay, so I'm
+just gonna use whatever vectoral told me. Okay, so I'm going to use whatever vectal wrote up and I'm going to send it
+to myself from another address and let's see. So I sent the email. We should have
+it here any moment. Let's actually check what it is again. Hope you're having a great week. Just send to check in blah blah blah.
+So something objectively unimportant. There it is. Quick catch up. Let's see. Let's switch into NA10
+executions. We should see boom executions. We should see the
+agent running email manage. Okay, so it ran. Wait, is it checks every minute? So
+maybe it still haven't ran. Let's switch back to the workflow to see executions. Okay, so it's 44 now. So it
+didn't Okay, there it is. Yeah, it it runs every minute. So it checks every minute and then it sped there's a new email. So let's see what it does.
+Reload. Boom. There it is. it marked it as red. So, this is what I mean. It will filter out the unimportant emails, mark
+them as red, so that you can only focus on the most important ones. And I've had this running on my main inboxes for the
+last few months. And trust me, guys, this will save you so many hours. So, please, if you take away from this video
+just one thing, let it be this email manager. It will save you so much time. By the way, I am now in Europe for the
+summer. So, if you want to meet me in person, make sure to follow me on Instagram and send me a message where you live. If a lot of people live in a
+certain city, I'll make my plans and go there. All right. So now, let's build the third agent that everyone should have. So on the left, click on plus and
+workflow. And this one I call the calendar event reminder. And again, to save you some time, since a lot of these
+steps are repetitive, I'm going to import it from the JSON. So click on these three dots, import from file, and
+there it is. Calendar event reminder. Beautiful. Let's save. So this AI agent is actually different in that instead of
+having a specific trigger like an app, it's a schedule trigger. So it runs every now and then. So let's double
+click on that. And in here you can define the interval. So you can select days, minutes, hours, weeks, months. N10
+is really customizable. Obviously for simplicity you can do day and one. So that way you know every day it runs at
+midnight. Super self-explanatory, easy to understand hopefully. Then AI agent
+as always we have the system prompt. We have the user message right here. And actually here we're not using any system prompt because it's so simple. All it
+needs to do is check the calendar, understand the schedule, and make a summary of today's events and send me an email. If you don't want an email, if
+you want a telegram message or a WhatsApp message or a Discord message or a Slack message, you can do that. Just give it a tool for that, right? Let's
+say you want Slack, type in Slack, boom, Slack tool. And there's so many things like operations, send a message, send a
+message to, you define a channel, all of that stuff, right? So, whatever you want to build with NA10, you absolutely can.
+Don't get limited by the examples I show in this video. Anyways, let's save it. And again we need to give it the model.
+So just select the credentials that you already worked. For the model select 4.1
+GP 4.1 right now is the best model for AI agents because it's so good and
+instruction following and it has 1 million context window and it is actually very cost efficient. So yeah
+4.1 is the go-to. If you need something cheaper 4.1 mini. Okay. So we have two
+different tools here because first of all it needs to check our calendar and second of all it needs to send us an email which is a summary of the events
+for that day. So let's double click on the calendar and here we need to set up the credential because we don't have it. So click on create new credential and
+again this is the same setup as before with Google cloud console. Okay, accept this allow and there is connection
+successful account connected. So now it can get our events right tool description is set automatically. This
+is for any tool you can, you know, this is like a description for the AI engine agent. If it's not calling the cool
+correctly, you can set manually and you can describe what this tool does. This tool opens the user's Google
+calendar and fetches all events for today. Okay, just give it a clear
+description. Resource event operation, get many. This is important. Get many calendars. Select the calendar that you
+want because on Google calendar you have multiple different calendars, right? So just select the one that you actually want to be accessed with this AI agent.
+So obviously in Google calendar you can actually have multiple calendars showing right. So just select the one you want
+the AI agent to analyze. Then limit this is how many events it can get to leave it at like 20 30 50 doesn't matter after
+now. So this is important. This will get events from today this moment until one
+week from now. If you want maybe summary of last 48 hours, you would do one minus, right? So one plus one minus um
+hours 48. But since we want this AI agent to give us what's coming, you know, your upcoming calls, events, all
+that stuff. Just set it up like me. Now, and then now plus one week. Okay, let's
+save that. And last but not least is the Gmail note. Let's double click on that. And again, this will just send us an
+email, which is a quick summary of the events between now and one week from now. So we have my email here set
+automatically. You don't need to set description resource message. So what it should do operation send to what email?
+You can actually set any email here. It doesn't have to be one you authenticated with. You can automate sending email to
+your mom if you want her to be updated on what you're doing in the calendar. Really, you can do anything with this.
+Subject defined by the model. Email type text and message defined by the model. So we let the AI agent define these
+things. And that should be good. So let's click on save and let's do test workflow. So it triggered. Yeah, checked
+my events and then we should get an email any second now. Okay, let me refresh. Oh, there it is. So we just got
+a new email summary of today's schedule. So let's click on that. All right, amazing. So as you can see this email
+contains a summary of the events for today. So it is upload day. That's why I'm recording this video. So it reminds
+me that, you know, I have to upload a video and then I have a vector call in about 1 hour with my developers. So
+yeah, this works exactly as we would expect. So yeah, this is yet another simple NA10 agent that all of you should
+have no matter what position or job you're doing. Now before I show you how to actually make money with NA10 agents,
+let me show you the fourth AI agent that all of you should have. Now this one is not in NA10 because this one is vectal.
+This is my AI startup that I've been building over the past 6 months and it saves me multiple hours per day. And the
+easiest way to understand it is if notion and chbd had a child. So basically it's a productivity app with
+advanced AI agents built in. So let me show you just a few things that Vector can do. So first of all we offer all of
+the best AI models. So what you can do is you can say archive all of my tasks and boom seven tasks archived. So now
+let's say I want to work on NA10 today. I want to build five different NA10 AI
+agents. Create tasks for each of these. Boom. Now the AI agent will list out
+five different ideas. So any automate video editing and again it knows information about me. This is the main
+thing about vectal. You give it right here in the user context what you are doing. You tell it what your work description is, short-term goals,
+long-term goals and other context. And all of the answers will be personalized to you. Boom. There it is. So it created
+five different tasks and also it assigned them to the YouTube project. Projects is a new feature we added into
+Vectal that you guys have requested. By the way, if you are a vector user, in the bottom right, make sure to join the
+discord below my webcam here. You can actually suggest features. You can talk to me directly. You can talk to the
+vector developers and you can suggest you can report bugs, suggest new features. And that's exactly what projects was. A lot of you guys have
+requested projects that you want to categorize your tasks and your notes and your ideas into different projects. So
+now the reason I had such a happy reaction is because I didn't even say anything about adding this to the
+YouTube project and the AI agent just because it knows what my work description is and because it has
+knowledge of my projects, it automatically added these five new tasks to the YouTube project. So if you are
+still using outdated task management tools like ClickUp, Notion or To-Doist, just do yourself a favor and switch over
+to Vectal. It will save you multiple hours per week and you will get your work done a lot faster. So go to
+vectal.ai AI and give it a shot. Okay. So now let me actually explain how to make money with building NA10 because
+it's not agency. That's you know that's not the model. So let's say you have a business, right? In this case it's a
+simple coffee shop. The coffee shop does multiple things. They get bank transfers for their coffee. They pay cash for
+their machines or they might get crypto. So in this example, what that might mean is that the owner of this coffee shop
+will have different problems, right? Which bank did I use to buy this machine? I need to make sure I add everything correctly. or the taxes that
+are in order. How much did I pay for those cups? A lot of like different accounting and tracking is needed for a
+coffee shop owner. So what that means is a painoint. A painoint you can solve. This is how you need to think. You
+cannot think about like oh what AI agent would be cool to build. You will not make money like that. Maybe you can
+close one or two clients but if you want to make serious money in AI, you have to solve real problems with AI. People
+don't care about AI. They don't care about like what AI model you use to solve their problem or that use NA10 or make.com. They don't care. What they
+care about is their problems being solved. You know, do you save them time? Do you make them more money? Do you get them more customers, more leads? Do you,
+you know, automate some annoying process in their business. That's what they care about. So, in this case, that's example of a pain point. So, you are not selling
+a general AI agent. Nobody wants that. Like, even though AI is trending and it's popular, people don't want general
+solutions. This is the mindset you need to have. You are helping busy business owners track their expenses. No matter
+if it's cash, crypto, bank transfers. Again, this is just an example, but there's a problem. AI automation agency
+takes up a lot of time. This is like a popular business model over the last, you know, year or two. But getting it up
+and running takes a lot of time and expertise. It's not as easy as, you know, some gurus make it out to be. And how do I know that? Well, because I run
+the new society, which is a community of over 500 people at the cutting edge of AI. And this is exactly how I know what
+works and what doesn't. Because there's hundreds of people trying different business models and reporting on what works. For example, John sold an AI
+agent for $90,000, right? $90,000. And he was able to do that by building a specific solution. You need to build a
+problem-solving AI agent. So, what you need to do is you need to build a problem-solving AI agent, a specific AI
+agent that actually solves a real problem that a business has, and then you can market it for that specific use
+case. This is the way people are making money with NA10. It's not by building some AI automation agency and trying to
+sell a generic thing to everybody. you will struggle a lot because people don't care. This is the mindset you need to
+have. Now, you might be thinking, "But David, how do I know whether I should listen to you? There's like so much noise on YouTube, right?" Well, first of
+all, I was one of the first people in the NA10 niche. But second of all, I have an NA10 mug, guys. Why are you
+listening to somebody who doesn't have an N10 mug? Come on. Anyways, now let me show you the fifth and final AI agent
+that all of you need to have. And this one I call the daily news agent. So as
+it says it can do research on a specific topic and send it to you daily or even hourly. I mean can set it up as you
+want. So let's again import from file and there it is daily news JSON and again all of this is available inside of
+the classroom in the new society templates and presets right here. Pre-built automations any five AI agents
+everyone needs. So if you want the JSON files they're there just join and get them. Okay so we have the AI agent right
+here. Let's save. Okay, so as last time there's a schedule trigger, right? Running every day and this time at 8
+a.m. You can put it at whatever hour you want. You know, obviously there's all the different options inside of any. If
+you want your news at noon, just put it at noon. If you want it, you know, multiple times per day, you can set it
+to hours and have it run every six hours, for example. Okay, so that's that schedule trigger AI agent. Again, we
+have the prompt that explains what it should do and how it should use the tools. And then we have the model. So
+this is something you should already know. Select the credential and select 4.1. You cannot really go wrong with GB
+4.1. If you want to save cost, select 4.1 mini. Okay, let's save. So now we
+have two different tools, right? We have a SER API. So this is the web search Google SER API. So let's click on that.
+And here we can open the docs again. NA10 will tell us exactly how to set it up. But really, you don't have to read through all of this. All you need to go
+is serrupi.com. register here, get the API key, paste it as a credential, then make sure to save
+and then Gmail. Same issue, right? Inside of Gmail, again, select the credentials. Whatever email you have,
+doesn't matter. And then whatever email you want the news to be sent to. So maybe you want to send them to one of your employees or your friend. Again,
+could be any email. This doesn't have to be your email. And set up set automatically. Message
+sent subject defined by the model, email type text, and message defined by the model. All that will be defined by the
+AI agent. So in this case, we're asking about info about artificial intelligence because that's what I care about AI. So
+let's test the entire workflow. Click on test workflow. AI agent. Okay, use SER API. And there's an error. So I guess
+our API key didn't work. Invalid API key. Okay. So let's go to SER API. Let's fix this. Okay. So in here you need to
+select what plan you want. I'm going to go with the free plan. 100 searches a month. That's sufficient because we're doing one a day. So that's 30 a month.
+Quick maths. Click on subscribe. Okay, so it also wants me to verify my phone number. That way it knows I'm not
+boring. So let me do that real quick. Okay, so once you verify your phone number, you should see this and you
+should be able to subscribe to the free plan. There it is. So we have the API key. Again, do not share this with anybody. Make sure to delete or I'm
+going to make sure to delete mine before uploading this video, but treat your API keys as passwords, okay? I'm being
+serious, guys. A lot of you are being sloppy with your API keys and it will bite you in the you know behind.
+Anyways, let's go back to NA10 and here let's click on strip account create new credential and paste an API key. Save.
+Boom. Connection tested successfully. So now we should no longer have an error. Let's save this and let's delete this uh
+entire test and I'm going to be waiting for the email. Right. So we need a summary of AI
+news. So let's test workflow. AI agent is running. It should call the SER API. Okay, it's calling it. No error this
+time. Amazing. It's calling it again. Cool. Cool. It's getting more news. So, it can call multiple tools
+multiple times. By the way, this is the beauty of NA10 how they set it up. Also, it depends on the prompt you tell it,
+right? If you tell it like search up five different terms, it will do that. Or if you wanted to like search up about
+OpenAI, Anfropic XAI, Google, it will do separate tools like that. But once it gathers all the information, it should
+call the Gmail tool and send us a nice email right here with the summarized
+everything. Okay, so workflow executed successfully. However, it didn't send us the email. Let's see what happened
+there. So it did the summary. However, it didn't send the email. Okay, so maybe let's adjust our system prompt.
+At the bottom, I'm going to say, "Make sure to always use the Gmail tool to
+send the user an email with a concise summary of the AI news. Never end
+your response without calling the Gmail tool." So, this is how you tweak the
+prompts. Maybe actually it's good that I ran into this error because you can see how I think and how I build these AI agents, right? So when something is goes
+wrong, you all you need to do is just adjust the system prompt if you don't like the behavior of the agent. So I'm
+going to do that and actually let's tell it to only do one search. I'm going to say only use the SER API tool once. Do
+not call it multiple times just to save time here for testing. Let's save that.
+Let's delete this and let's go again. So it call API was very fast.
+It should process the news and send us an email. Now, we were very clear. Okay, there it is. It's It used the tool. So,
+now if we go into our email inbox, there it is. We got an email from me because we're using the same account. Daily AI
+news update May 13th, just today. Hello. Here's a daily summary. And there it is. So, major partnership drive blah blah
+blah. So, since it only did one uh search, we only have one news. Obviously, if we told it to search the
+web five times, it can do that. But yeah, we got some AI news from today. So
+amazing. Now we know our daily news agent works. And obviously you can make this for any field. AI, machine
+learning, robotics, doesn't matter what you're interested in. You know, financial markets, maybe you want price updates on Bitcoin or stuff like that.
+You can set this up. And again, if you don't want an email, select Slack, select WhatsApp, select Discord. NA10
+has it all. This is the beauty of NA10. All of these integrations are so easy to set up. And once you set it up, you
+don't have to enter the credentials every time. So again, if you want to build something, just push through the friction. Really, I'm I'm begging you,
+push through the friction. Build the first one or two agents. Everything after that gets so much easier. And once
+you're happy with your AI agent, just don't forget to turn it on. Toggle it at the top so that it's active, so that it
+actually runs, you know, every 24 hours or depending on the trigger you have. Okay, so there it is. The schedule was
+triggered. It's beautiful watching it work. And by the way, if you want to see all of your AI agents, click on the left
+in the home button. And here you can see all of the AI agents you've built running on your Hostinger server. And at
+the top, if you switch to executions, you can see the specific times your AI agent were running. And once again, if
+you want unlimited executions, make sure to use Hostinger VPS because if you use the NA10 cloud, you only get like 2.5K
+per month, which definitely is not enough. Trust me, you want more than 2.5K actions taken by your AI agents. So
+again, thank you Hostinger for sponsoring this video. If you want 10% off on your annual or 24-month plan,
+make sure to use code David to save more money. The link to this Hostinger page will be below the video. With that being
+said, thank you guys for watching. If you want me to make more videos about anything, make sure to subscribe and comment below. And with that being said,
+hope you have a wonderful, productive week. See you.

@@ -1,0 +1,733 @@
+This is basically SAS 2.0. Attackers only need to write once and defenders right all the time. And today the
+meanantime to exploit is in minutes. Today I'm talking to Gang Singh, co-founder and CTO of Cogen. They're
+building agents for autonomous cyber defense and closing vulnerabilities at machine speed. We don't use a graph
+database, but we have a very high right throughput system like billions of events flowing through the system every single day. He walks me through how
+Cogent builds trust with customers before letting agents act autonomously. Even if the agent's hallucinating and
+wants to like do some kind of right action, it's not allowed to do that. And how they make sure their LLM judges are
+actually qualified to assess the agents work. At the most complex level, it's LLM that have environmental par with the
+actual agent that we're evaluing. Cogent also has an interesting way of thinking about context. We're differentiating
+between hot and cold context. It's not that this context has existed for a short amount of time. It's that this
+context is actively being used. Right at the end, Gang talks about why defensive security won't be replaced by AI anytime
+soon. The nature of a defensive security task is I have [music] a castle. Here are all my walls. How do I patch every
+single little hole in the wall? And every single castle is built differently. There really is no data.
+Welcome to Max Agency, the [music] podcast that goes deep into how the best agents are being built by builders like
+you. [music] Kjun is building a platform for
+autonomous cyber defense. What does that mean and how do you think about building that platform? Yeah, it's actually
+really super interesting because autonomous cyber defense was not quite a thing I think up until very recently.
+And what's really motivating this is the meanantime to exploit for vulnerabilities has really compressed
+over the last couple of years. So two and a half years ago, if you were a security team, a vulnerability comes up,
+you have about 2 and a half years to basically backlog it, triage it before
+it first gets exploited in the wild. And today the meanantime to exploit is in minutes. Why? It's a combination of one,
+a lot of digital sprawl. So the attack surface is like increasing at a pace at which it's not possible for defenders to
+keep up. So software and vulnerabilities are two sides of the coin. more and more software is being invented, created and
+more and more vulnerabilities are being created but not being patched. And on the other hand, the frontier models have
+really accelerated the exploit capabilities of any attacker. So I think Claude recently was talking about how
+they found novel zero day exploits in Mozilla and this is one of the most battle tested environments that have
+gone through decades of pentesting that now with a frontier model like Opus 47
+you could probably you know with 500 turns find your way through find the exploit and find a way to basically find
+a zero day. It seems just anecdotally that there's been a ton of more security incidents recently. So how do you guys
+think about I'm assuming cogent the platform helps remediate that in some way or detect those in some ways. How
+how exactly do you guys think about the role that you play in that space? Yeah, exactly. So the challenging aspect is
+not finding the vulnerabilities. It's really fixing and patching in time and in a world where you need to move at
+machine speed, it's not enough to have humans in the loop. And the reason why we kind of think of ourselves as a
+autonomous cyber defense platform is because you need to have these agents that can react in a timely fashion that
+have context on how your organization wants these things patched and ultimately has the right judgment to
+make the right decisions to either apply a patch, contain a vulnerability or do anything on behalf of a security team
+that would have consequences in a high stakes environment. Walk me through what that looks like in practice for a
+customer. Cojun's customers basically plug into our like um platform and the
+first thing that we do actually is building context and a big part of that is plugging into their vulnerability
+scanners, threat intelligence. We scrape a lot of um things on the internet where we are basically trying to understand if
+there is a newspaper article that's trending you know somebody like a researcher says something on X something
+on Reddit factoring that into what we consider as a risk signal as well as
+other proprietary threat intel feeds. We also work with a lot of asset inventory information so CMDBs as well as like any
+kind of like IT asset inventory. And the most interesting aspect of cogent actually is business context. So there's
+a lot of information in your ticketing systems that show your past remediation history in the comments that live in a
+ticket that tells you why something was impatched. There's also a lot of context in things like your SharePoints, your
+Google drives, policy information, information about product launch. So being able to take all that context,
+build that into this big context graph and not just understand the system context but also how decisions are being
+made allow our agents which are operating at the next like I would call it like a intelligence layer if you will
+of how to take actions when things change in the organization. That's kind of like the prerec as we kind of see it
+in terms of taking action in autonomous fashion. Okay. So you build up all this context. How do you do this? Is this an
+agent that's building that context? We call it agent lake. Basically, it's a agentic data lake and we kind of have
+two parts of our system. So the first part of it is basically a context form. So agents forms that have live access to
+data. We have this context engine that essentially has a lot of memory harnesses around how we're extracting
+information. These agents are capable of going on longunning tasks and they basically answer the really hard
+questions about system ownership, about a certain remediation playbook. And this
+information may not actually live as a codified artifact in the organization. It might live in little pieces of data
+that needs to be corroborated and ultimately contextualized by the customer. That's the first piece. The
+second piece actually is like a high scale data platform. And so we're kind of like combining agents with high scale
+data processing. And in parts of how we construct our graph, the topology is
+just the first part. So agents are actually coloring the graph over time to create more and more interesting low or
+high confidence edges. And that's really what allows us to do really high quality risk classification for a lot of our
+customers. And that high fidelity of the risk classification is what allows them to cut through the noise. Because a lot
+of customer environments in the enterprise, which are most of our customers, there's like hundreds of millions of vulnerabilities. And you
+need to have the ability to say, "Hey, these are the top 10, top 100, top 1,000." Not only that, but given the
+risk, it needs to have an action taken place right now. Mapping it to your custom SLA mapping. There's so much
+complexity that goes into any of these decisions. And so, you mentioned graphs a few times now, and that was going to be my next question because sometimes in
+rag or retrieval or context, there's a whole bunch of different data structures that you can use from vector stores to
+graphs to just files. And I feel like graphs have a reputation as being the the most complex, both good and bad. And
+so it sounds like you guys are using knowledge graphs as the as the database itself. Is is that correct?
+So we don't use a graph database. Okay. And the reason why is like I think graph databases have proven to not scale very
+well. But we have a very high right throughput system. So like tons and tons like billions of events flowing through
+the system every single day. And what what are these events? Changes in life cycle entities. So let's say a
+vulnerability. A scan can happen on a cadence or it can happen in real time. So any single entity like a
+vulnerability like an asset like a person any identity could have some kind of life cycle change right like this
+event coming in we want to know about it and we want to model in the graph. So instead of using graph database we actually use a data lakeink. So we
+actually store things in S3 it's really cheap it's really fast very like right throughput optimized and it gives us the
+capability to basically materialize a graph that we need that is like kind of custom for our use cases. Is the
+ontology fixed up front or does the agent actually decide the ontology as it as it builds the graph? The ontology
+needs to be fixed at the start but parts of the ontology does not need to be fixed. So maybe the way to think about
+this is there are structural properties of the vocabulary of how you might think about an entity. So for example, a
+vulnerability probably has some kind of identifier, right? It probably has certain attributes that are like well-known. So those need to be fixed
+because it helps us identify and resolve the entity in the stream of like events,
+right? So without these almost like signatures, we don't actually know like what this thing could be. But once
+you're past that like initial level of, hey, here are the properties, the agents can really come up with like any kind of
+derived attributes on the fly, right? An example of that is internet exposure, right? like I don't really know if this
+thing's internet exposed but here are the five data sources including your W logs including some security tool that
+you're using that make me think that based on some reasoning this is an internet exposed asset and it sounds
+like there's an upfront step to create this but there's it's also like always ongoing is that correct yes that's right
+so even the upfront step is actually agentic so the discovery process of what
+these properties should be and how they map to our customers environments across us different vendor integrations is
+super complex, right? So you know you might have an asset but every customer will have different combinations of data
+sources and being able to do that level of entity resolution across like you know basically very high cardality of
+data is super difficult and so the agents actually do kind of the first pass EDA and actually one of our like
+more I would say like harder evals that we have for our agents is longunning data science tasks and it's really these
+agents that are like highly capable you know have access to Jupyter notebooks they run Spark and they're able to do
+high scale data processing and that's what allows us to look at you know a million rows or like a 100 million rows
+in like couple seconds and figure out that's all just to fill in the graph during kind of like the initial pass. How long does that take like the initial
+setup of the graph? The good thing about like the graph is that once we have these kind of like
+default I guess like ontology vocabulary. It's actually a lot easier
+for us to just apply like a bunch of templates. But there is kind of like two phases to the way we think about context
+enrichment. So the first pass is always going to be lossy. But it's going to help us paint the picture of the
+topology. And once you have the topology, you can start answering questions around, oh, how are these
+things connected, right? Like are there interesting stories that could be told? An example of that might be, does this
+asset have sensitive data on it, right? So like being able to do a second pass, a third pass with an agent is super
+helpful. So you do an initial pass kind of like course high level just to set up the anttology and then you do second and
+third pass on kind of like more narrow focused questions to kind of like fill out the info at a high level. Yes. Um I
+think what's interesting also is like uh there's two types of tasks that the agents are doing. So one is answering
+open-ended questions on things that are unverifiable. when you say they're answering these questions, is this like when the user is now using code gen like
+your end users are using it when after after they set up the graph? So not quite. So you plug your data in and
+usually that's through APIs and there is like a class of unverifiable context where even the users themselves have no
+idea. A perfect example and this is generally true not just in security but also in engineering is system ownership,
+right? Like some of these organizations we work with, people leave the company all the time like engineering teams
+reorg. It's really hard to know if this uh you know AWS tag is the right source
+of truth or maybe I need to consult an org chart where I need to go figure out all these things. Being able to answer
+those types of questions is the role of this context form that I was talking about. So having agents basically ask
+very pointed questions on data that is unsure. building confidence through like these like many many like reasoning
+loops is like a core use case and then once you have that we kind of call them context artifacts that creates the
+provenence for the downstream enrichment right it's almost like it's like the pre-step of your cleaning your data and
+once that data is cleaned we're able to say oh actually like you know we do think that this is the right system owner because we've done all this work
+super interesting okay so this is all to set up the the the context graph in the
+first place what happens after that so that's where things get really fun. Um, you know, Cojen, one of our big value props for
+our customers is autofixing. And this is historically something that's super challenging, right? Like I'm sure
+everybody who's a software engineer has gone through dependency hell before. You upgrade one software, you like break
+something else, there's another invariant, you end up going on this like wild goose chase and at the end of the day, you've spent like couple of hours
+and maybe you haven't achieved anything because you realize, oh, actually this thing can't be like upgraded because now
+I need to do all these things and I can't deploy into production. That same story is true of vulnerabilities which
+basically tend to like require patching and that's like a software version upgrade. What makes it even more
+challenging is this concept of vulnerability chaining where the upgrade not just is maybe causing some
+dependency issues, it may lead to more vulnerabilities. And so where our agents really have, I think, a lot of value and
+still a lot of room for improvement is helping customers go on this journey where they're doing a lot of the automation of tailoring the remediation
+guidance to validating the actual steps that it takes to deploy something into production, whether that's through
+staging first, like basically running through all the steps, codifying it, and then finally maybe it's through auto
+mitigation or auto remediation, getting the patch into where it needs to be without any kind of human oversight. and
+users trust these agents to merge things into their production codebase. So it's
+definitely a trust building exercise right um all of our customers start in
+readonly mode this is the purely assisted version of cogent where the AI is making recommendations and users have
+the easy approve button that starts from ticketing right and the next trust letter if you will rung is auto routing
+of the tickets right so over time you build confidence that for certain classes of remediation actions cogent's
+recommendations are really good and then you essentially start smartly auto routing these tickets. And the next kind
+of like uh level of automation is auto validation where you let the agents
+basically start testing in your dev environment, staging environments. They're spinning up things in dev sandboxes. They're running the patch,
+right? They're showing you the proof and evidence of like whether or not this will break something. And actually like the the really challenging piece here is
+not applying the patch or like knowing if the patch will work. It's knowing if the patch, if it's applied, has
+production impact. Right? This is usually the key blocker for true automation and you know like we work
+with a lot of big enterprises some of them like are banks and like something that a person will say is like look
+never will you like autonomously deploy onto my like payment processor right yes
+I trust the AI yes everything's good but that's just never happening and so you can use cogent in any way that you want
+and really it's more so uh customization that customers prefer but our thesis is there will be a lot of low blast radius
+things that you can fully automate. And when you use cogent, it's not just, hey, let's go autofix everything. It's what
+percentage of your attack surface can be truly automated, right? Like within, let's say, 5 minutes of an attack
+happening. It can be autofixed without you needing to care about that. Effectively shrinking your attack surface. And for everything else, you
+have the AI. It can be autonomous. It can be semi-autonomous. It can be completely manual. It's kind of up to the customer. What is a reasonable
+percentage of things that can be fully remediated? I think it depends on the customer profile. So a lot of I would
+say like startups and tech companies tend to have very high risk appetite because they value productivity, right?
+They're like it's fine like let it break, right? Like we'll deal with it. And then when you work with some of our customers who are like like Fortune 1000
+type customers and have like huge scale, right? like uh presence in like you know the hundreds of countries and like a lot
+of like manufacturing the stakes are a lot higher and I think in those examples
+it's more so the modality of it so cloud is very difficult but endpoints are a lot easier so people are like more okay
+with laptops being maybe in like a weird state versus a cloud server having some
+issue and the reality of it also is like a modern enterprise has maybe I want to
+say like 80% of their attack surface in dev and staging, right? So in some ways like if you can really isolate the the
+types of things that you're automating, there's huge attack surface that you can fully automate. But it is a journey and
+we want to make sure that customers feel comfortable and usually where we start is like in the smallest slice. It sounds
+like there's two main agents then one that builds the graph and then the other that that actions on these vulnerabilities that come in. Are are
+they the same agent architecture under the hood or are they different? Yeah. So they're actually quite different. Um at
+Cogent we have three types of agents. So you have these interactive agents that
+work with customers and they have different latency requirements compared to the second type which are background
+agents. So background agents work in the cloud. Uh those two examples are just two examples of agents that we have
+actually like there's a lot of automation across the platform. Even when you um upload something into our
+like portal, there's a file analysis agent, right? It's going to go understand what you uploaded, map that to the rest of the system. It's going to
+maybe write some code to plug it into an existing framework that we have. And so there's tons and tons of background
+agents. And then the last type of agent is actually coding agents. So we have a
+I would say like pretty AI native stack in the way where we've invested a lot in our software devel life cycle. So native
+tooling around how we build software like agent harnesses that make it easier for people to think through what
+invarants look like, write tests and I think that type of agent is also very powerful because it allows us to ship
+quickly but durably and yeah I definitely think it's like one of the the areas that like a lot of the folks
+on the team are super excited about and that's like an agent that's internal to the company but then the the interactive
+and the background agents are the ones that are in the product. Is that correct? Exactly. Maybe diving into those. So
+understand kind of like the latency requirement differences. How does that end up manifesting in the architectures
+themselves? Do they have drastically different system prompts, different tools, different harnesses completely?
+Maybe to answer that question, you have to understand the the problem constraints that we have. So security
+data is very high scale, right? So easily like terabytes of data per customer for each data source. And so
+what that means is when your agent is doing data analysis, it needs to do some like heavy duty lifting to figure out
+like how to analyze things and a lot of our systems are built for performance because of this requirement. The second
+piece of this is safety, right? So we are security company and we are dealing with highly sensitive information,
+right? Like vulnerability information and like all types of context that needs to be very carefully handled. And so the
+way we think about the architecture of anything that touches customer data requires a lot of defense and depth and
+concretely like you know we do run agent sandboxes but the level of isolation
+that we apply to these sandboxes is very very deep. So these sandboxes basically
+have many layers of permissioning where most of them basically operate at the box level with read only permissions and
+we have this kind of really interesting policy engine that allows us to like elevate access and so you're never ever
+allowed to like even if the agent is hallucinating and wants to like do some kind of right action. It's one not allowed to do that and then two when it
+needs to do things like that it actually needs to do it outside of the box in a way that is like fully secure and
+deterministic. And so we never want to be in a place where the agents are doing
+things that we're unaware of or it's capable of doing something that the system is disallowing.
+Are both the background agents and the interactive agents, do both of them have access to these sandboxes?
+Exactly. Yes. So the only difference between the interactive agent and the background agent from an architecture
+standpoint is that interactive agents need to have like way faster latency. And so there's a human behind it and we
+tend to kind of like short circuit a lot of the the prompts that we're using as well as like the trajectories and a lot
+of the like MCPs that these agents are using tend to have very fast kind of latency requirements. Background agents
+go on long running tasks. They can do whatever they want to do. They can retry. there's like a lot of value that you can get and and it's almost like
+when you don't have this um speed and latency constraint, you don't really
+have to build in a certain way and that gives the agent a lot of freedom actually to get the most like maximal
+potential of his reasoning capabilities. What does it mean to short circuit an agent trajectory? Is that like hey after
+it gets to step four we're going to force you to give an answer or something like that? Not quite. So when customers are kind of
+like looking to an agent to answer a question. So like to make things concrete a lot of our customers will use
+cogent as chat GPT for your security data cuz you know we built this graph it's super helpful and in the enterprise
+it used to take 4 hours or in some cases like multiple weeks to answer a really hard data question and today the agent
+can do that in 3 or 4 minutes but this 3 or 4 minutes has a lot of architectural decisions behind that right it's a lot
+of text to SQL a lot of like schema um I would say modeling to make sure that the
+agents are able to understand exactly like kind of what the universe looks like and can come to an answer in a very
+fast fashion. When I say short circuit, it's really more so around being right the first time and not being able to
+have the luxury of doing multiple retries as well as ensuring that there's enough context before the agent is
+taking any action. So another way to think about this is um our agents that are interactive have a like deeper
+planning phase and if it doesn't pass any of the tests that we have in the planning phase, it will short circuit
+its like activity. So we kind of like want to make sure that there's enough context before the agent moves on to the
+next execution stage. Doesn't a deeper planning phase mean that it will take longer to run though? it does take
+longer to run, but I think how we've kind of like figured this out is the planning phase actually makes like
+oneshotting a lot easier. And like oneshotting, not just with like text or SQL, but also with like writing code.
+And so it's almost like if you plan correctly, you're able to do it in one or two loops. And that basically means
+that the agent can return with like pretty high accuracy within like couple minutes. Is the user affected by the
+planning phase? like they'll wait for the minute if it plans and the 30 seconds for it to oneshot or something
+like that. Yeah, this is a good question on UX and you know I think the users have like
+instant feedback as the agent is planning. The way we think about like product in general is explanability is a
+key aspect of how users kind of consume the outputs of our agents. And so
+everything's transparent to the user from the planning, the reasoning as well as the tools that it's using. And what's
+helpful about that actually is one, they can catch us when we make mistakes and give us good feedback. And two, it's a
+lot more interactive and users can kind of steer the agents as they're kind of doing their work. So it's not like a,
+you know, it's almost like the concierge that goes away and like comes back with this like pristine thing. I feel like
+our flavor of interactive agents is a lot more interactive and iterative, right? You kind of get to see what's
+happening and if you think there's like some problem like yeah, feel free to interrupt the agent and tell it what to do. So how do you surface that? Is it in
+like a typical chat interface like I would expect with chat GBT or is it different? Yeah. So it is in a typical
+chat interface and the primary reason why is because a lot of our customers are like kind of enterprise and we
+wanted to basically have a UX that's very familiar to them. And I think it's been very helpful actually like for
+folks who've like starting to on board into a much more agentic user experience. And I think what's also cool
+about the like I guess UI that we have is the agents actually capable of
+creating agentic front ends. So creating charts, right? Like kind of like building little like building blocks that help the user with like different
+tasks and those are delighters I feel like for a lot of users who have never seen this before. But ultimately also I
+feel like humans are very visual and text may not always be the best way. And so like having the capability to show
+the user exactly what they're looking for is very helpful. Interesting. How many how often does it do that? How often will it generate something that's
+not text? Pretty often actually. So reporting is one of the I would say like top use cases for any security analyst in any
+given day like at least you know couple minutes to like hours is spent doing reporting and what you're doing is
+you're like pulling data pulling metrics you have somebody that has a slide that you know needs to see and yeah like I
+think the agent has basically effectively removed the need to like know how to do these things anymore. You
+said earlier that showing kind of like the trajectory of what the agent's doing is a good way to give visibility and
+show users what's going on. Do you think that as people get more comfortable with
+AI and trust things more that desire will go away and people will just want to see like a final response when it's
+ready or do you think that will always be a part? You know, as like engineers, we've all done the like, oh, like after
+the first time of testing like a claw code or like a codeex kind of like harness, you're just doing whatever it
+tells you to do. Um and at the same time we are like our customers are security people who are really really skeptical
+of everything right and like definitely a lot of AI kind of like skept
+I I think it's like very human to start trusting something once you've built a workflow around it and I actually think
+it's more so on the tool providers to have the responsibility of ensuring that
+AI is safe and the reason for that is I I feel like the behaviors that we're
+seeing in a lot of for our customers is that people trust the agent almost too much. And that happens after the agent
+performs really well for a lot of tasks, but they sometimes forget that agents have tasks that they've never seen before. And for tasks that they've never
+seen before, they were likely not going to do well. And there's almost like a feedback loop that needs to be part of
+your mindset as an agent manager. And I think that's like really important and it'll take some time for us to get there
+where this now becomes the new way of how people think about using these tools. talking about kind of like being
+an agent manager and you mentioned some kind of like background tasks that happen in the platform. If stuff is triggered in the background and runs in
+the background, how is it surfaced to the user? How does the user know what's happening outside of the chats that it's
+like kicked off? Sometimes the way I describe cogent is like if we're doing our job like you don't need to come into the platform and we effectively let the
+security team be on autopilot, right? The agents are figuring out what your risk is. They're prioritizing your
+tickets. they're doing the remediation for you and you're really logging in to like manage your agent and like report
+on what happened. However, there's always going to be drifts, right? So in our production system, there's a lot of
+monitoring around drift both at the eval level for like models and prompts, but also for behaviors, right? So we talked
+about the data science agent, right? So when a new type of context enters the environment that we've never seen
+before, it high chance that there's no context on how to deal with this type of data. And a perfect example might be big
+company goes through M&A, right? All of a sudden there's a new like set of um assets that are now sort like showing up
+in the environment. So what happens? We have to go tell the user, hey Mr. manager, I noticed that there's this new
+thing and you have not told me what I'm supposed to do given this like here's my recommendation on what needs to happen.
+Like what do you think? And so there's actually this like um feedback loop that is really important in any kind of
+context layer which is the entry point, right? I actually think that entry points are more important in context layers. What what do you mean by entry
+point exactly? Entry point is where the user is able to provide context, right? And that can be
+through the product, it can be through Slack or Teams, that can be through a ticket where you're responding to like a bot, it can be through anything, but the
+more entry points you have in your context layer, the more live and real the data is and the more real time
+you're able to kind of surface the right things to your end users. Completely agree with that. I mean, we we we build
+Langmith, which is like observability for things. And a big part of what we emphasize is just getting more feedback
+in there. So, you can slice and dice all your traces and look at things in particular ways. And we're not doing anything yet intelligent around it with
+like a context graph or anything like that, but I can totally see how that feedback helps kind of like, yeah, build
+this this knowledge that you use. How do you guys try to do that to the max? Like what like do you send a bunch of Slack
+messages? like what what what advice would you have for others as they think about hey I' I've got this data I've got
+these agents interacting with the data but yeah the more feedback the better how do you get more feedback yeah that's
+like I think a super challenging ch like problem and I think that the way to think about feedback is you need to have
+a product that creates value to the user and your product needs to have enough engagement for the user to see value to
+give feedback I think that's like prereck right like independent of like any technology choices
+And with that as kind of the the main I would say like prerec here. I think it's really important to have an agent that
+lives where the work is. And that's like a product principle that we have. So a
+lot of SAS tools and you know I've built a lot of SAS tools before in the past kind of live in this world where you
+come to our tool we lock you in. You know you have to log into this thing. They're like workflows that you need to
+learn in order to do your job. I think in order for you to maximize for context capture, you need to one like be where
+the work is happening, right? Whether that's Slack or Teams or in some ticketing system or in some other cases, it could even be like offline, right?
+Like there are ways to capture that telemetry. I think two, you need to build what we're calling supply side
+agents. So this is basically the context forms I was talking about, right? So you
+don't really need to have access to the user. What you need access to is the systems of context as well as decisions
+are being made throughout the organization. And with enough agents that can do enough longrunning tasks, you can basically figure out, oh, like
+here are the five tickets that were closed in the last day. Here are the people that commented on it. Here are the decisions that were made as a result
+of closing this ticket. And capturing that in a way that is almost like a nervous system of like how this
+organization works is highly valuable. So those are probably the two things I would think about. You mentioned that
+both of the agents have access to a sandbox and it sounds like for some they're writing at least some Python
+code or some code to manipulate data in some way. How similar are these agents under the hood to to coding agents. So I
+think the coding capabilities are probably similar in the regard that we
+use models that are coding models for coding tasks. But the harness of what
+needs to be true, the tool calls that you're making, the types of data that you're dealing with is very different. So for a coding task, what's actually
+really important is understanding almost like next token prediction for the next line of code, right? And that type of
+task is very different from an analysis task where you're looking through tons of data and you need to understand oh
+like what is correctness in the kind of like universe of schemas in an
+organization. It's also very different from actually executing a production
+workflow to validate a patch and that often requires you to understand the
+deployment path. It requires you to understand the kind of like dependencies
+between different systems and so I I would say it's actually quite different from like coding agents. How does that
+manifest in the harness itself? Like do you guys use skills that are like popular in coding agents? Do you have I
+I think a lot of coding agents have access to a file system and bash. Do you do you give your agents access to file
+system and bash? Do they have other other tools that are even more critical than those for doing work? Yeah. So I
+think from a structural standpoint, our agents are very similar and they use file systems, they have bash, they have
+um skills and I think the file system and text as kind of like um a way to
+pass context around has emerged as like a very efficient way to do what's called these days agentic rag, right? Like
+being able to do retrieval in a file system. And I think we do benefit from a lot of that. But there are aspects that
+are really challenging to do within that context window or file system. And this pertains to things that have really huge
+amounts of data, right? So you can't store like 1 TBTE of data in your file
+system and have it figure out, okay, like how do I build a in-memory graph and figure out what's going on? So I
+think for things like that, you still need some kind of structure. And that's where like having like databases, indexes, things like that are super
+helpful. And then you just give the agent tools to read, write, make queries to it. Exactly. One like interesting
+thing about what we do, which I think is kind of like novel, is we actually have
+a lot of really interesting tasks that require um like sub agents. And the the
+sub aent problem is super interesting because you have an agent, it's easy to orchestrate. when you have multiple
+agents that can create query agents, this like orchestration loop kind of fails, right? Like how do you pass the context? Like how do I know like if it's
+correctly instantiating the right sub agent? And the reason why you need like a sub agent actually is like primarily
+for two reasons. One is for parallelization and then two, the other one actually is for um some kind of like
+subtask that is not in the critical path of your primary task. And this is actually like a really interesting way
+to think about how like agent activities can formulate which is just like a human
+right like you're doing your main task but as you're doing your main task you actually have a lot of like side tasks kind of like side tasks that help with
+doing your main tasks and often times you don't know in that trajectory yet whether or not the side task will help
+your main task and I think this kind of capability to spin off different thoughts or like almost like side quests
+is super helpful for agents because it's one not coupled in the same runtime event loop and two it actually
+creates more context and the agent is able to basically figure out if it needs to throw that context away. How does
+that work exactly? Like if you've got the main agent running, it spins up a sub agent to do some work. Will that work in like the same sandbox with the
+same context as the main agent or does it get a copy and then like does the main agent wait for it to finish or is
+it running kind of like are they running in parallel and if so how does the sub agent communicate back to the main agent? Yeah. So, we kind of leave it up
+to like the use case. So, there's not like a one way in which this is supposed to work. And I think what we found
+anecdotally and empirically is you only really need to wait for the sub agent to
+come back if you're doing a sequential task. And if you're really doing a sequential task, like I'm not sure if you should be using a sub agent. But,
+you know, there could be like interesting elements where let's talk about like a longunning task with an agent swarm, right? So, there are many
+different ways you could do this. You could have like multiple agents spin up with one single orchestrator. You might have a Ralph loop where you're just
+doing a bunch of things. You might also have within each agent that's running in that swarm spinning off its own things.
+And I think it's more so about like decomposing the tasks. So tasks that can be decomposed are well suited for
+parallelization. And that's where like I would recommend actually using sub agents. But things that require like
+agent to agent communication where it's not just like singular process, right? Like I think that's where you probably
+don't want to use a sub agent. You probably need more orchestration at like the outer level. What models do you guys
+find work best or do you use a whole family or or mixture of models? So we
+definitely use a mixture of models and the way we kind of think about this is we're agnostic to the model provider. We
+just run benchmarks and like figure out kind of what models are better now compared to like you know yesterday
+because things move very quickly in the space. Um what I I will say like uh for a long time we are big fans of like
+enthropic. They've had really good coding models but we've also I think seen a lot of really like good success
+recently with a lot of these like models that have been more trained on the cyber side. So with like OpenAI is trusted
+access for cyber and like there's like some of these things where there are like really interesting ways in which they've pre-trained the model for like
+cyber tasks and it's been really interesting to see how like the eval pair out and like how they're more capable or less capable and like where
+the calibration should be for some of these newer models. What does your eval system look like? So our eval system is
+kind of like a two-tiered system. You have the offline harness where you know it's like multi-dimensional I guess like
+eval metrics and you have an online kind of harness where it's evaling our
+product as it's being used and we feed those scores back into like this like I guess like global scorer and it's kind
+of like helping us figure out if there's live drift in the models and the prompts. I think what's interesting
+about like some of these dimensions is there's obviously like some of the obvious ones, right? like correctness, usefulness, things like that. But we
+also have some like kind of subtle eval metrics. So an example of this is like um we have this metric called fail safe
+recover and and basically uh what it is is did the model basically fail at doing
+a simple task and did it try to recover and was it successful at recovering and high frequency of this metric basically
+correlates with us messing up the prompt. Right? Basically, it's helping you differentiate between a is this a
+really hard problem versus did we introduce something that's like causing the agent to trip up. For the offline
+tests that you're talking about, how many of them are like unit tests? So, so to speak of like a single LM call versus
+like you guys have your own version of terminal bench or something like end to end long horizon. Yeah. So definitely a
+spectrum of the simple like tests all the way through to like more like long horizon almost like processor oriented
+testing and I think the eval are there for different reasons. So on the simpler
+side you have golden labels golden data sets and we're doing a lot of like outcome emails. This is especially
+important for the interactive agents I was talking about. especially if there's like Q&A involved. You need to make sure that the agents are returning things
+that are like well defined and the longer term or like more longunning side
+of things is where we're really looking at the traces, right? Like understanding tool sequence, understanding the
+trajectories, understanding if there is a faster way for the agent to converge. And so like all of those are really
+important. And when you look at those trajectories, are you looking at those manually or are you do do you are you
+now feeding them into coding agents and asking them to do that or do you have eval metrics themselves that look at those traces and score them on you know
+this is five out of 10 in terms of like effectiveness or something like that? Yeah. So we have uh I would say pretty
+big fleet of LLMs as judges and they are a big part of how we think about EVA
+harness and it's basically like different capabilities of LLM as judge.
+So at the most simple level, it's just an adversarial LLM. And at the most complex level, it's LLMs that have full
+environmental par with the actual agent that we're evaling. And so it's able to
+fully basically replicate or like reproduce some of the outcomes that it saw in a trajectory and adversarially
+assess if it was correct or wrong. Interesting. So like agent as a judge almost. Exactly. For the online evals
+that you guys do, do you run those over 100% of online traffic? Do you do you sample down to 5 10%. Yeah, so we
+definitely sample down. Um I think for online traffic, it's not super helpful in general to like run it on everything.
+And I think this comes from like some past life where we're doing a lot of more classical machine learning. For
+online, I feel like the the key is like making sure that you have representative distribution and making sure that these
+eval are actually reflected back into some kind of feedback loop. And like the whole point of like online eval is
+understanding if you need to call an incident, right? Like in some ways it's like a symptom for like an actual
+problem that's like degrading in your like online system. And so like that is where we want to spend most of our time.
+And a lot of the efforts of you know making sure that the system works really well is kind of like offloaded to our
+offline evals. I completely agree with what you said around kind of like using online evals to kind of like help spin this kind of
+like feedback loop. What does that look like in practice for you guys? Yeah. So what that could look like is we
+have different products that are agentic and the agents are producing outputs as
+they're like one either doing background task or two interacting with a user and those traces basically get fed through
+like some eval system. there's this kind of like um harness that's like running on the different I guess like metrics
+that we care about and when we see some kind of regression or some kind of like
+uh I guess threshold that drops we basically want to one be notified and then two have an agent look at it and
+say oh like what's happening here right and a good example of like how you might do this is through some kind of
+clustering to figure out if there's like a more deep-seated problem and sometimes it's we need to go talk to the user,
+right? Like there could be like instances where the agent is not misbehaving, it's just operating under a
+situation where it's never seen the context before. And so naturally, the evals are not kind of up to speed there.
+For a lot of the longrunning tasks that you talked about earlier, it seems like a key part of it is kind of like learning and adapting over time. I feel
+like one of the things that has been really hot recently is memory or continual learning in various forms.
+What do you think this looks like in the limit for a a really good long horizon learning agent system? Yeah, I think in
+the limit is like the key word here. Um I think we're very early days in terms of memory research as well as like what
+people are learning kind of in the field. What we are doing which I think is also kind of interesting is we're
+differentiating between hot and cold context. And what that actually looks
+like for us is hot context is kind of like you know your session context right
+you're doing combaction you're like generating change logs there's like all this like metadata um cold context is
+basically almost like archived context you're building a book with like a
+contents page of all the things that you've seen before in the past and I think what's like kind of interesting is
+that we are also plugging that into our knowledge graph. I was gonna ask. Yeah. So, so hot and cold, is that the same as
+like short-term and long-term memory? Kind of like hot is short-term within a thread and then and then cold is longterm between threads across threads.
+So, I think it's like similar but maybe not quite the same. So, I think when people talk about like short and
+long-term memory, it's more so um is this context that you know I I will use
+right now and like throw away. Long-term memory is something that you just like you know store and you have access to.
+And kind of the reason why we use hot and cold versus short and long is there
+are a lot of hot contexts that stay in the context for a long time. And for good reason, right? So an example of
+this is in our context engine. We actually have a much more higher level
+context graph that's not our knowledge graph. So the knowledge graph that we have is like a high-scale property graph
+that's like really good for like running uh queries across like huge amounts of data. You can do multihop traversals and
+things like that. But in the context engine where the agents are like operating kind of in their like memory,
+they're building these like little graphs that can stay hot for a very long time and that can be across a longunning
+task that can be across like handoffs to like other agents. And I think the distinction there is not that this
+context has like existed for a short amount of time. It's that this context is actively being used. So it's almost
+like active versus inactive. I mean maybe short-term is kind of like the wrong but it's like session level where
+session is like an ongoing thread and that could be like yeah it could be it could be going on for a day it could be going on for a week like but it's a
+continuous thread and and when you start talking about like sub aents and sharing context across threads that's becomes maybe a little bit overlapping because
+you could have some piece of context that's shared between two threads but like it still could be hot as opposed to cold. What is the difference between the
+cold storage and the context graph that that you guys have? Yeah. So I think the
+the key there is like uh we want to differentiate between organizational context and agentic task context. So
+organizational context is context about the system, context about decisions and
+that goes through its own agentic ETL that's very high scale, right? There's like all these events propagating and
+the key of that system is to maintain a source of truth and to have agents that can basically color the graph with high
+confidence inference that does enrichment of almost like the state of the world. And then you have these
+agents that operate on top of this context layer, right? And these agents themselves have kind of like a context
+harness or like a memory harness. And that's really like the world of like making sure that agents have access to
+the things based on the task that they need. So maybe the way to think about this is the hot and cold context that
+agents have are task dependent versus the context craft that we're building is kind of like a much more rich version of
+what the organization could look like as well as kind of like a brain almost of
+all the things that are happening in the organization. What does the format of the cold context end up looking like?
+You mentioned kind of like a table of contents for a book or something. is it? And I think memory is like super early
+on in general, but I've seen some versions of this where it is basically just a bunch of files on a file system.
+And that could include skills actually um and uh and agents.mmd files which are
+kind of like instructions but but skills for a bunch of different things that the agents learn over time. And yeah, it is it is literally just like a table of
+contents for a book and you've got all these different skills. Is that similar to how like what is the data structure you guys use for this code term? Yeah.
+So we kind of have like two different I guess types of data structures here. One
+is something that makes it easier to like do inmemory graph traversal. So it's like an actual data structure that
+lives in memory and then two it's basically text files and text files that
+you can also plug into things like SQLite or like some kind of like you know indexable database. And the reason
+why is like the the code context as it accumulates can get pretty big and there
+you may not want to like the value of archiving cold context may not be very high if it's very well constrained to
+the type of problem that you're working on. It's like you always almost want to have like context on past sessions and like a lot of this like metadata that
+could or could not be useful. How do you guys think about accumulating the cold context? Does it happen like does the
+agent write to it directly as it's running or is there some background process that accumulates it? It's a background process and so like the the
+consideration here is not is there more value in like generating more context like as the agent's doing its work. I
+think the consideration here is one when agents are doing work we want to make sure that they're like very focused and
+two there's actually a lot of um like almost additional context that needs to
+go into how code context is being curated that has nothing to do with the the actual task that the agents are
+doing. We experiment with memory in a few different ways and I think the first way we added it was basically just
+treating memory as like files on a file system and letting the agent read and write those as it kind of goes along.
+But to your point reading is actually kind of easy for it to gro. But writing and especially like okay like where
+should this fact go and like do I need to reconcile it with other things that quickly starts to yeah add other
+instructions into the prompt or become just too long for it to do as it's running. And so I do think background
+you see kind of like anthropic release streaming as part of cloud manage agents. Let has sleeptime compute. I
+think this idea of like running processes in the background to to store context will become more and more popular. I do think it shares a lot of
+similarities to what you're doing with the the context graph that you guys already have. Like you have these processes that seem to be acting in the
+background and using LLM to take raw data and distill that into the context graft. And so so I I don't know if you
+think about the the processes for that versus the cold as like in in the limit
+are they just the same processes and they'll kind of converge in the techniques and the agents or or are there things that are uniquely different
+about them? So I think the the pattern of basically distilling data over time
+in a background process is probably the same but the properties of the task at
+hand is probably quite different. So the scale of data actually matters a lot and how much time you have to run these
+things also matters but you know besides that I do feel like given enough compute and like you know enough data you can
+probably go pretty far and who knows maybe there's a world where agents can do this really fast talking about kind
+of like comput I mean it sounds like you guys are running a ton of agents how do you guys think about pricing do you charge do you directly kind of like do
+you let people bring their own API keys do you charge directly for tokens that you guys use do you have a higher level
+kind of like unit that you that you charge for? Yeah, this is like a pretty contentious topic. So, we charge based
+on number of assets and this is like industry standard for cyber security for vom management and the reason why is
+that number of assets that you own is kind of analogous to the attack surface, right? So, you kind of pay for what you're being protected on and the reason
+why we charge in this way is because customers understand it and it's really familiar. There's like it doesn't open up questions around like oh like why are
+you charging in this way? We I think have had a lot of conversations and thoughts around like you know token
+based pricing right outcome based pricing there's like definitely a lot of thoughts in that space and I think where
+we are today as a company and also as a product is we care more about customer usage I think the nice thing about like
+us is also that we're in a space where customers are willing to pay for the product independent of like usage kind
+of like you're paying for these autonomous agents to protect your organization and so we don't really have that problem where we need to like
+figure out how to aggressively price our customers yet. You recently launched cogent research. What's the thesis
+behind that? Yeah. So, I'm been really excited about cogent research. I think it's like one of the like highlights in
+the last couple of weeks. And the interesting thing about cogent research is I think we're at this bottleneck for
+like security problems where it's no longer a product problem. It's really a research problem. And the reason why I
+say this is a lot of what we do is verification. And in order for me to deploy something into a customer's
+production environment, I need to provably show that this will not cause any issues in their environment. And so
+where that really leads us is into this frontier of open problems in the
+intersection of AI and security. And so the charter of code and research is really about taking some of these
+techniques that we know of like formal verification building these like you know provable systems and marrying them
+with a lot of AI techniques like RL like open models that we're going to like open source at some point um building
+these security benchmarks that help kind of the community think through like what it actually means to do defensive
+security at scale. And I think ultimately like that research will allow us to kind of lead the way people are
+thinking about the problem. So one really exciting thing is um our research lab is actually headed by two ex Google
+deep mind researchers and you know I think one of them is the um actually
+primary author of Google's code mener which is their version of cloud code
+security and kind of the the reason why like it's really important to do this in an applied AI lab versus just like a big
+tech company or an AI lab is precisely because we're well positioned with actual enterprise data and having I
+think the like deep amount of um customer access that allows us to do the
+interesting research that helps answer questions around oh like how would I autonomously do IM right how would I
+autonomously have privacy preserving kind of like policy enforcement there are some like interesting questions that
+you can only answer outside of a research setting and almost I think the vision of cogent research is basically
+like applying a lot of these learnings from what we're seeing in the field towards a lot of our kind of research
+problems and kind of thinking through what the newer version of autonomous
+security should look like. How big is the team already and how big do you want to grow it? Yeah, so the team right now in total is
+about 30 plus people and we're actively looking to grow. uh we have offices in SF and in New York and you know I think
+we're at a very exciting time where the timing is really good for both building in AI but also thinking about autonomy
+and I personally think that being an applied AI lab is one of the best places where you can one like grow a ton and
+two work on really interesting things and so you know I think we have really ambitious plans to grow the team this
+year and we're looking to hire what is the right profile for for you guys or for like in applied you know for
+for an applied AI lab in in in general like what is the right profile of builder? Yeah, it's it's like such an
+interesting question because I think the the meta question is like in an age of AI, what is the right profile of a
+person who you know will be successful, right? I think cogent is one of those like companies where there's so much
+breadth of things that you could do where it doesn't really matter, right? We have huge data and infra platforms to
+like run the high skill data analysis that we're doing and processing. We have we build our own in-house agentic
+development platform for our agents. We want to do post training. there's like all this stuff. We have security
+research. There's like all these things going on. And of course, there's product engineering. Um I think the number one
+kind of property that I see a lot of people tend to like succeed in in
+today's world is actually like having high agency. And I think what that means is being willing to, you know, figure
+out what's going on and use the tools even if they're kind of in a nent state. I think creativity and taste are also
+really important. But you do need to have the right fundamentals as it pertains to the type of task you're working on. So an example of that is um
+at Cogent we like to think of ourselves as having like a high bar. And what that means is we really try to stress test
+the way people think about problems. And that transcends just knowing how to write code, right? It's kind of like are
+you able to reason about a problem from first principles? Do you have the right frameworks to think through what that means? And then with that as the
+foundation, is that like a 10x or is that a 100x improvement with AI coding? Do you have any tips on how to interview
+for agency? Yeah, it's it's a really challenging um I guess like thing to assess. I think one thing that I look
+for is actually the way people have behaved in the past. So agency to me is
+actually a trait and people leave marks throughout their careers and having
+someone tell a story about this uh is kind of the best ways to kind of like dive deep. And I think the the way to
+maybe like interview for it is to go like maybe five or six levels deep. Really question the motivations, the
+reasoning. What was the circumstance? Why was it hard? What decision did they make? And why was it actually something
+that was, you know, really difficult in that moment? And what did they learn from that? Um, I think the feedback loop
+of both learning from an experience as well as like delivering on the experience are both equally important.
+You mentioned open source models and post-raining or you mentioned post training in RL a few times. Are you guys
+actively using open source models? Have you experimented with them? How do you think about their place in your
+platform? Yeah, so I think open source models are great. Um, and I think the rate at which the open source models are
+improving has actually been really really impressive. And the way to think about open source models is it's really
+just a better way or like a cheaper way for us to do some of the experimentation that we want to do. And I think over
+time as the open source models become a lot better uh probably they will be a
+staple in every kind of like applied AI setting and for us actually a lot of our tasks don't necessarily require a lot of
+reasoning. So there's like almost no reason why we not would not be using an open source model. I feel like there's
+two reasons that people use open source models sometimes. One is they argue basically I can I can RL it can post
+train it. It's going to be better for this task. The other one is it's it's just going to be way cheaper. I don't
+need the reasoning for you guys. I'm I'm assuming it's a blend of both to summarize, but is it like 90% cost and
+10% performance or is it 90% performance or 10% cost? How how do you think about it? Yeah, so right now we're less concerned
+of cost and for that reason, you know, I think the frontier models have been like really good for us just like in general
+thinking through like kind of you know, you go to sleep and then you get model performance improvements, right? That's like pretty good and pretty sweet. I do
+think that there are some like really interesting um points of leverage. So
+for us, it's not so much about what the models were pre-trained on, it's what
+interesting context we can post train on. And working in an enterprise context, it's really these highly
+complex environments that need to be tailored, right? So to give you an example, some of our customers have 10 technic systems, right? Like it's just
+like impossible like how do I know what change control process to use, who should I route it to, and like where that contact should live. And these
+things trip up the agents all the time. I think from like a post- training standpoint, there's actually a lot of alpha for companies that work in this
+space where the nature of the problem is just like highly complex that the models
+have never seen this data before, right? And so like there's almost like a lot of calibration that we have to do in the day-to-day that hurts the EVEL, right?
+So even for a lot of our longunning tasks, the like best-in-class frontier models are not necessarily performing at
+percentages that we need them to be. And I think the way we kind of like meet that gulf is through post training. If
+you had to estimate when do you think a key driver of the cogent platform will
+be a post-trained open-source model? I think within 6 months. Yeah. And I think
+the reasoning is this right like the reasoning is already there. And it's more so a matter of having data. And so
+the the question is flipped. It's not about model capabilities. It's about context. as a company, do you have
+enough contacts to do the post training that need you need to solve your problem? And I feel like we're there already having been around for like I
+guess a year and a half eons in the AI era. Yes, exactly. And I think that's a
+luxury for us, but I'm super excited to see like kind of what ends up happening after we go on this path. I feel like
+there's been a lot of buzz around quad mythos and other frontier models that are getting really good at security
+related things. How much of this is hype? How much is this is true? Where do you think it feels like there is I mean
+even in in the open source space we get a ton of security issues filed against
+link chain things some some valid some not valid there's just this explosion of of security related
+code generation code work being done how do you see the space right now and how
+do you just see it evolving over the next few months yeah it's a really good question and I think what mythos has
+really done for the industry is basically highlighting the extent of model capabilities around offensive
+security. But the reality is prethos like opus 46 was pretty good and in fact
+like opus 46 I think was capable of a lot of the exploits they had like reported essentially in the mythos
+report and we had known about this for a long time right I think part of the thesis of cojun is that attackers only
+need to be right once and defenders right all the time and the kind of compression of the almost like window of
+exposure will mean that you need to have these autonomous cyber defense systems and so answering your of like what this
+means for the industry and kind of like like how much of it is hype is definitely very real and one interesting
+thing that I'm starting to observe is all the coding companies including the AI labs cursor uh Verscell anybody in
+the dev space um they're all coming up with essentially like security tools they all are they it feels like they're
+all first they launch a coding agent then they launch a review agent now it's now in the last week it's all security
+agents exactly and like to me this is basically SAS 2.0 zero. So like five six years ago
+we we had this thing called SAS. It's basically like um like fuzzy matching for like code scanning and this was like
+the cool in thing like to basically figure out if you had first party code vulnerabilities and in some ways I think
+discovery is like really easy. How to fix is like basically it's still the bottleneck and like super challenging. I
+think this will be net good for the industry because there's a lot of vulnerabilities you can't find using existing techniques that the LLM will
+help to catch. And the real value actually is I kind of think about it in like two ways. There's two swim lanes of
+agentic capabilities. There is the dev tool chain and then there's the operational tool chain. Most applied AI
+companies like us operate in operational tool chain where we're automating everything outside of code. the AI labs,
+these like IDEs, like all these companies that kind of like work around the dev tool chain will have coding agents. They'll do all the things. And I
+think where it's going to benefit a lot of folks is in the shift left movement. So if you have a skill and you're
+writing some code, the agent will be able to help you figure out how to write better code. I think that's great, right? Like that will help you have
+better code that's like secure by default, secure by design. That's going to be amazing. But who's going to go
+curate the context that feeds into that agent is still like an open question. and what happens when you have
+vulnerabilities that need to be fixed. So I think there's a lot of operational things that still need to be figured
+out. And the way I think the industry is going to move is the AI labs and
+probably a lot of these kind of companies that are in like the dev space will try to commoditize a lot of skills
+or any kind of like coding agent based skill, right? Like it's not just security, it's going to be taxes, right? The other day I had a friend who was
+basically filing his taxes using claude and it worked really well. Um, so I think like a lot of that's going to be
+true, but you will still have use cases where like things are very operational and challenging and you need to have
+correctness guarantees that you can't get with like a coding agent. It seems like security is top of mind for everyone these days, but you guys
+started a year and a half ago. How did you guys get the idea for cogent? So I was part of the founding team of this
+company called abnormal security and eventually became like leading their product engineering team and we were
+basically building one of the world's best machine learning platforms for fraud detection and today abnormal
+basically protects more than half of the Fortune 500 and the problem that we were solving I thought was actually very
+foundational the way I think about just AI systems in general but also how to build agents and that really planted the
+seed for cogent. So just for some quick like context here. So abnormal is like a email detection platform and the really
+interesting thing about finding malicious emails in an enterprise is that the likelihood of finding an like
+malicious email is actually really really small. It's like less than one in 100 million. So you need really high
+precision. And on top of that you need really really high recall as well because you know what happens when I
+take a email out of your inbox and it turns out it's from your boss, right? like I've disrupted your business and
+even worse I could leave it in there let you click on it spear fishing email and your organization gets breached right so
+we were basically building the system processing trillions of emails every single day with near zero I would say
+like false positives and false negatives and the key to solving that entire problem was basically context it was not
+really the models and I think that insight really kind of feeds into how we think about cogen what we're building
+here and yeah like when you're building behavioral like um classical machine learning models, what you're doing is
+anomaly detection, but what you're trying to understand is the organizational behavior and the
+relationships between the people, not the actual email signature. Right? So, what we ended up doing actually was
+spending a lot of our time investing in and building understanding of how people communicated. And that became, I think,
+the the way we thought about how, you know, the way you understand if your CEO
+is getting spoofed, even though the email looks exactly identical compared to what your actual CEO would send to
+you, it's precisely because you understand some of these patterns. And in some ways, what we're doing at Cogen
+is just solving that exact same problem, but with a much larger scale on the much more important problem. And so at
+Abnormal, I imagine a lot of it was like manual feature engineering to get these signals that would go into the traditional machine learning models. How
+much of what you guys do now do you think is like manual context engineering
+versus letting the agent kind of like build its own context? Yeah, I I would say it's like half and half. And so we
+have a for deploy engineering team. And the reason why we have for deploy engineering is because AI deployment is
+not just about data and context. It's also about people and organizations. And there's a lot of kind of battles that
+you have to fight to help people understand, oh, we need this thing. Here's how it's going to be valuable for you. And a lot of the tuning oftentimes
+that makes our agent so powerful needs to happen through a deeper understanding of the customer's environment. And
+that's where having our FDAs is like actually a superpower because they can dive into a customer's environment,
+understand what's going on, feed that back into the agent without the customers needing to do a single thing.
+And on the flip side, you we use agents like in the day-to-day of everything that we do and feeding that back into
+our product, into the systems that we use is a core part of our DNA and we're getting a lot of value on that just by
+itself. But I think there are like still limitations to how the agent feedback loop is being structured. And the core
+learning having you know only built this company for less than a year and a half and the landscape having like kind of
+rugpulled us like every 6 months uh is that your architecture is always going to change and your AI hardness is always
+going to change and the models are always going to keep improving right so I think we've kind of graduated from a
+world where there's a lot of specdriven development and you're kind of like teaching the AI through skills into a
+world where you need to do a lot of invariant testing right people are talking about like autonomous software development We do autonomous workflow
+like development for our customers and I think in that world you really need to invest more in rearchitecture as well as
+like making sure that you understand what to test versus implementation speed
+and so I think in that world it's actually more important for us to like go back to the fun like fundamentals of
+like what is this system trying to do like are we actually trying to solve the correct problem here and that's
+definitely I think something that we're really excited about both from a research standpoint but also from like a product standpoint in the short, medium
+and long term, how do you guys think about positioning cogent against the model labs themselves? The way we kind
+of think about this at Cogent is in the short and medium term probably there is
+a lot of work to be done and so in the short term I think we're completely complimentary and what that means is
+like a lot of these AI labs are launching security tools. there are just other sources in the cogent and the problem that we're solving actually is a
+context problem for a lot of our customers that I think the AI labs will not work on and there's a lot of like
+nitty-gritty challenges to building integrations and like making sure that things work correctly in like a highly
+complex enterprise but on top of that I also think that there are like highly customized and like domain specific
+agents and like post training that you have to do to get some of these problems truly correct and let me give you a
+perfect example right so a lot of people in in the coding agent space not just
+want to augment how coding agents are able to increase the productivity of engineers. They want to reach the 100x
+kind of outcome of running the mythical cobalt to Russ kind of migration, right,
+for the big bank. And yeah, that probably will be like a eight to nine figure kind of like contract if you ever
+get it done. And I think in that space, it's really interesting because like if you think about it, what needs to be
+true for a coding agent to be able to do something like that? One, model capabilities need to be there. Two, longunning tasks need to be
+commoditized. Three, you need to have a lot of context on what you can and cannot do. And then four, you actually need to have very strong synthesis
+capabilities to reach basically par of the existing system and build the right
+guardrails almost like integration tests, right? For the invariants that need to be true and so out of all of
+those things like what is the thing that is customer specific, it's really like context, right? And I think that will
+need to be true for any kind of I guess like coding agent that wants to do that and that's also generalizable for any
+domain. So for us in security, it's really doing true auto remediation in
+production environments and trusting the agents to basically be your last line of defense. And yeah, like when the next
+zero day drops, right? Like when like LLM or one of these other like very common tools has the next zero day, you
+want to be able to trust your agent to do something that you won't have time to do. Lock something down, contain maybe
+deploy a WT like a firewall or in some cases like just run the patch, right? Like I don't care. I need this thing to
+be safe and locked down. I need to decommission my asset for me. And so what it would take to actually do some
+of those things I feel like is kind of in the like I guess like um hot seat of
+building the right context for a lot of companies. So in the short term I think we're completely complimentary. We focus
+on fixing and like a lot of these AI labs are basically kind of data sources into what you would plug into cogent. In
+the medium term, I think everybody that's an applied AI company is building a world model for their customers. The
+fact that we're doing these things is just making up for the gap that these customers themselves do not yet have a
+context layer. So, every applied AI company ends up building two things. The context layer and the intelligence
+layer. And it's just required because that's just how we are today. But tomorrow, like fast forward, you know, 3
+to 5 years, yeah, I'm pretty sure like most companies will have something, right? And there's a lot of value in
+being the first provider for that context layer. I think it gives you a lot of mode in terms of first movers
+advantage of like use cases. And when you're talking about this context layer, just to be clear, this is the same as like the context graph that
+we were talking about earlier that you have agents go and build. Exactly. Right. Like another way to think about this is like who is going to
+help companies understand how decisions get made in their organizations, right? And this needs to be a real-time system.
+It needs to like be able to change as events are happening. And this is the stuff that the agents feed off of,
+right? Like the high quality context that tells you how judgment should happen. So the reasoning of the agents
+can be met with almost like historical data. And it's it's really interesting
+because like there's two ways to solve the problem. One is historical data through this like context layer stuff. The other way to solve the problem is
+through prediction, right? And the way you do prediction probably is some amount of like post training where you
+can build these hyperrealistic like RL environments. you're like training reward models, right? You're like simulating all the possible paths. I
+think both are very valid and both probably will be in the hot path of any like applied AI lab. And I think where
+this gets really interesting is like even in the world where the context layer is commoditized and you're just
+plugging into a context layer, the context that you generate as a result of your intelligence layer is highly
+valuable. And that in and of itself actually would be like I think the key to a lot of the workflows that
+organizations need to automate. Do you ever get asks from your customers to make this context graph this context
+layer that you guys are creating more open or or use it outside of your intelligence layer?
+Yeah, certainly. I think uh once customers see value like the first question is like can I use it and this
+happens a lot. Um a lot of customers are asking us for like API access to like MCPS and things like that. I think it's
+also like different maturities of customers. So the ones that tend to be more tech foreign will tend to have
+these asks versus the ones that tend not to be want to have UI. They want to like live in like familiar interfaces. What
+do you tell those customers? Do you let them have access to that? So I think depends on the use case. Um, we tend to want to basically go and
+design partnerships with customers that are a bit more forward thinking, but we set expectations around how the product works and like kind of what this could
+lead to for both companies. And I think at the end of the day, the way we kind of frame this is like that's just another way for us to get context. Do
+you think the models themselves will commoditize the the security landscape? Yeah, this is like really good question
+because in some ways GPD55 cyber as well as cloud methos have kind of proven that
+the models have commoditized offensive security, right? Like today any script kitty, any person on the street, you and
+I, we could have access to claw code or codeex and we can compromise our
+neighbors down the street or like down the office block. And I think what's interesting about that is that on the
+outside it looks like yeah security is like already commoditized. I think if you understand the type of data
+offensive security is trained on, it actually helps you understand that like
+I don't think security will actually be commoditized. So hear me out. Pentesting is a very well- definfined industry,
+right? People get certified for these things. There's like well- definfined data sets and like it's a very well- definfined task. And so it's actually
+like generally straightforward for you to go pre-train a model and get very high quality labeled data on how you
+should exploit something. And it's also a field that I think has seen a lot of resurgence in like recent years where
+people are kind of like curating these data sets. On the flip side, defensive security data is actually really really
+hard to get and it's also very complex. So the nature of a an exploit is here's
+a bunch of like data, let me figure out how to like get in, right? The nature of a defensive security task is I have a
+castle. Here are all my walls. How do I patch every single little hole in the wall? And every single castle is built
+differently. Has, you know, some are made of sand, some are made of rocks. They have different guards who have
+different um almost like schedules that you need to like maintain. There's so much complexity and customization for
+the defensive stack of every like enterprise that a defensive security task is actually like really really hard
+to one like model and then two create good label data for. And this is also
+the reason why there has not really been a definitive security benchmark for defensive tasks. So from that
+perspective, actually I think security is one of probably the last bastions that would truly be commoditized because
+there really is no data. All right. Thank you. That was fun. Awesome. Thank you so much. Thanks for listening to Max
+Agency. If you liked this episode, leave a review and subscribe. Send feedback or
+questions to Max Agency. We want to hear from you.

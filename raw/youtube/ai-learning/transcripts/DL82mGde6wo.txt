@@ -1,0 +1,240 @@
+Metarprompting is turning out to be a very very powerful tool that everyone's using now. It kind of actually feels like coding in you know 1995 like the
+tools are not all the way there. We're you know in this new frontier. But personally it also kind of feels like learning how to manage a person where
+it's like how do I actually communicate uh you know the things that they need to know in order to make a good decision.
+[Music]
+Welcome back to another episode of the light cone. Today we're pulling back the curtain on what is actually happening
+inside the best AI startups when it comes to prompt engineering. We surveyed more than a dozen companies and got
+their take right from the frontier of building this stuff, the practical tips.
+Jared, why don't we start with an example from one of your best AI startups? I managed to get an example from a company called Parahelp. Parahelp
+does AI customer support. There are a bunch of companies who who are doing this, but Parhel is doing it really really well. They're actually powering the customer support for Perplexity and
+Replet and Bolt and a bunch of other like top AI companies now. So, if you if you go and you like email a customer support ticket into Perplexity, what's
+actually responding is like their AI agent. The cool thing is that the Powerhel guys very graciously agreed to show us the actual prompt that is
+powering this agent um and to put it on screen on YouTube for the entire world to see. Um it's like relatively hard to get these prompts for vertical AI agents
+because they're kind of like the crown jewels of the IP of these companies and so very grateful to the Powerhel guys for agreeing to basically like open source this prompt. Diana, can you walk us through this very detailed prompt?
+It's super interesting and it's very rare to get a chance to see this in action. So the interesting thing about this prompt is actually first it's really long. It's very detailed in this
+document you can see is like six pages long just scrolling through it. The big thing that a lot of the best prompts start with is this concept of uh setting
+up the role of the LLM. You're a manager of a customer service agent and it breaks down into bullet points what it
+needs to do. Then the big thing is telling the the task which is to approve or reject a tool call because it's orchestrating agent calls from all these
+other ones. And then it gives it a bit of the highle plan. It breaks it down step by step. You see steps one, two,
+three, four, five. And then it gives some of the important things to keep in mind that it should not kind of go weird into calling different kinds of tools.
+It tells them how to structure the output because a lot of things with agents is you need them to integrate with other agents. So almost like gluing
+the API call. So the is important to specify that it's going to give certain uh output of accepting or rejecting and
+in this format. Then this is sort of the highle section and one thing that the best prompts do they break it down sort of in this markdown type of style uh
+formatting. So you have sort of the heading here and then later on it goes into more details on how to do the planning and you see this is like a sub
+bullet part of it and as part of the plan there's actually three big sections is how to plan and then how to create
+each of the steps in the plan and then the highle example of the plan. One big thing about the best prompts is they
+outline how to reason about the task and then a big thing is giving it giving it an example and this is what it does. And
+one thing that's interesting about this it it looks more like programming than writing English because it has this uh
+XML tag kind of format to specify sort of the plan. We found that it makes it a lot easier for LMS to follow because a
+lot of LMS were post-trained in LHF with kind of XML type of input and it turns out to produce better results. Yeah. One
+thing I'm surprised that isn't in here or maybe this is just the version that they released. What I almost expect is there to be a section where it describes
+a particular scenario and uh actually gives example output for that scenario.
+That's in like the next stage of the pipeline. Yeah. Oh, really? Okay. Yeah. Because it's customer specific, right?
+Because like every customer has their own like flavor of how to respond to these support tickets. And so their challenge like a lot of these agent companies is like how do you build a
+general purpose product when every customer like wants you know has like slightly different workflows and like preferences. has a really interesting
+thing that I see the vertical AI agent companies talking about a lot which is like how do you have enough flexibility to make special purpose logic without turning into a consulting company where
+you're building like a new prompt for for for every customer. I actually think this like concept of like forking and merging prompts across customers and
+which part of the prompt is customer specific versus like companywide is like a like a really interesting thing that the world is only just beginning to explore. Yeah, that's a very good point
+Jared. So this is concept of uh defining the prompt in the system prompt. Then there's a de developer prompt and then
+there's a user prompt. So what this mean is uh the system prompt is basically almost like defining uh sort of the highle API of how your company operates.
+In this case the example of parhel is very much a system prompt. There's nothing specific about the customer. And then as they add specific instances of
+that API and calling it then they stuff all that in into more the developer prompt which is not shown here and that's adds all the context of let's say
+working with perplexity there's certain ways of how you handle rack questions as opposed to working with bold is very different right and then I don't think
+parhelp has a user prompt because their product is not consumed directly by an end user but a end user prompt could be
+more like replet or a zero right where users need to type is like generate me a site that that has these buttons this
+and that that goes all in the user prompt. So that's sort of the architecture that's sort of emerging.
+And to your point about avoiding becoming a consulting company, I think um there's so many startup opportunities
+and building the tooling around all of this stuff like for example like um anyone who's done prompt engineering knows that the examples and worked
+examples are really important to improving the quality of the output. And so then if you take like power as an example, they really want good worked
+examples that are specific to each company. And so you can imagine that as they scale, you almost want that done automatically. Like in your dream world,
+what you want is just like a an agent itself that can pluck out the best examples from like the customer data set and then software that just like ingests
+that straight into like wherever it should belong in the pipeline without you having to manually go out and plug that all and ingest it in all of
+yourself. That's probably a great segue into metaparrompting which is one of the things we want to talk about because that's that's a consistent theme that keeps coming up when we talk to our AI
+startups. Yeah, Tropier is uh one of the startups I'm working with in the current YC batch and they've really helped people like YC company Ducky do really
+in-depth understanding and debugging of the prompts and the return values from a multi-stage workflow. And one of the
+things they figured out is prompt folding. So you know basically one prompt can dynamically generate better versions of itself. So a good example of
+that is a classifier prompt that generates a specialized prompt based on the previous query. And so you can actually go in take uh the existing
+prompt that you have and actually feed it more examples where maybe the prompt failed or didn't quite do what you wanted and you can actually instead of
+you having to go and rewrite the prompt, you just put it into um you know the raw LLM and say help me make this prompt
+better. And because it knows itself so well, strangely um metaprompting is turning out to be a very very powerful
+tool that everyone's using now. And the next step after uh you do sort of prompt folding if the task is very complex
+there's this concept of uh using examples and this is what Jasberry does is one of the companies I'm working with this batch they basically build
+automatic bug finding in code which is a lot harder and the way they do it is they feed a bunch of really hard
+examples that only expert programmers could do let's say if you want to find an N plus1 query it's actually hard for today for even like the best LMS to find
+those and the way to do those is they find parts of the code then they add those into the prompt a meta prompt
+that's like hey this is an example of n plus1 type of error and then that works it out and I think this pattern of
+sometimes when it's too hard to even kind of write a pros around it let's just give you an example that turns out
+to work really well because it helps LM to reason around complicated tasks and steer it better because you can't quite
+kind of put exact act parameters and it's almost like um unit testing programming in a sense like test-driven development is sort of the LLM v version
+of that. Yeah. Another thing that trope uh sort of talks about is you know the the model really wants to actually help you so much that if you just tell it
+give me back output in this particular format even if it doesn't quite have the information it needs it'll actually just
+tell you what it thinks you want to hear and it's literally a hallucination. So, one thing they discovered is that you actually have to give the LLM's a real
+escape hatch. You need to tell it if you do not have enough information to say yes or no or make a determination, don't
+just make it up. Stop and ask me. And that's a very different way to think about it. That's actually something we learned at some of the internal work
+that we've done with agents at YC where Jared came up with a really inventive way to give the LLM escape patch. Did
+you want to talk about that? Yeah. So the trope approach is one way to give the LM an escape patch. We came up with a different way which is in the response
+format to give it the ability to have part of the response be essentially a complaint to you the developer that like
+you have given it confusing or underspecified information and it doesn't know what to do. And then the nice thing about that is that we just
+run your LLM like in production with real hoser data and then you can go back and you can look at the outputs that it has given you in that like output
+parameter. Um we we call it debug info internally. So like we have this like debug info parameter where it's basically reporting to us things that we
+need to fix about it and it literally ends up being like a to-do list that you the agent developer has to do. It's like really kind of mind-blowing stuff. Yeah.
+Yeah, I mean just even for hobbyists or people who are interested in playing around for this for personal projects.
+Like a very simple way to get started with meta prompting is to follow the same structure of the prompt is give it a role and make the role be like you know you're a expert prompt engineer who
+gives really like detailed um great critiques and advice on how to um improve prompts and give it the prompt
+that you had in mind and it will spit you back a much a more expanded better prompt and so you can just keep running that loop for a while. Works
+surprisingly well. I think it's a common pattern sometimes for companies when they need to get um responses from element elements in their product a lot
+quicker. They do the meta prompting with a bigger beefier model any of the I don't know hundreds of billions of parameter plus models like uh I guess
+cloud 4 3.7 or your uh GPD 03 and they do this meta prompting and then they
+have a very good working one that then they use into the distilled model. So they use it on uh for example an FRO and
+it ends up working pretty well specifically sometimes for uh voice AI agents companies because uh latency is
+very important to uh get this whole touring test to pass because if you have too much pause be before the agent
+responds I think humans can detect something is off. So they use a faster model but with a bigger better prompt that was refined from the bigger models.
+So that's like a common pattern as well.
+Another again less sophisticated maybe but um like as the prompt gets longer and longer like it becomes a a large
+working doc um one thing I found useful is as you're using it if you just note down in a Google doc things that you're
+seeing just um the outputs not being how you want or not ways that you can think of to improve it. you can just write
+those in note form and then give Gemini Pro like your notes plus the original prompt and ask it to suggest a bunch of
+edits to the prompt um to incorporate these in well and it does that quite well. The other trick is uh in uh Gemini
+2.5 Pro if you look at the thinking traces as is uh parsing through uh evaluation you could actually learn a lot about all those misses as well.
+We've done that internal as well, right?
+As this is critical because if you're just using Gemini via the API until recently, you did not get the thinking traces and like the thinking traces are
+like the critical debug information to like understand like what's wrong with your prompt. They just added it to the API. So you can now actually like pipe
+that back into your developer tools and workflows. Yeah, I think it's an underrated um consequence of Gemini Pro
+having such long context windows is you can effectively use it like a a ripple.
+Go sort of like one by one like put your prompt on like one example then literally watch the reasoning trace in real time to figure out like how you can steer it in the direction you want.
+Jared and the software team at YC has actually built this um you know various forms of workbenches that allow us to like do debug and things like that. But
+to your point like sometimes it's better just to use gemini.google.com directly and then drag
+and drop you know literally JSON files and uh you know you don't have to do it in some sort of special container like
+it you know seems to be totally something that works even directly in you know chat GPT itself. Yeah, this is
+all stuff. Um, I would give a shout out to YC's head of data, Eric Bacon, who's um, helped us all a lot a lot of this
+metaparrotting and using Gemini Pro 2.5 as a effectively a ripple. What about evals? I mean, we've uh, talked about
+evals for going on a year now. Um, what are some of the things that founders are discovering? Even though we've been saying this for a year or more now,
+Gary, I think it's still the case that like evals are the true crown jewel like data asset for all of these companies.
+Like one one reason that Powerhel was willing to open source the prompt is they told me that they actually don't consider the prompts to be the crown
+jewels like the evals are the crown jewels because without the evals you don't know why the prompt was written the way that it was. Um and it's very
+hard to improve it. Yeah. And I I think in abstraction you can think about you know YC funds a lot of companies especially in vertical AI and SAS and
+then you can't get the eval unless you sitting literally side by side with people who are doing X Y or Z knowledge
+work. you know, you need to sit next to the tractor sales regional manager and understand, well, you know, this person cares, you know, this is how they get promoted. This is what they care about.
+This is that person's reward function.
+And then you know what you're doing is taking these in-person interactions sitting next to someone in Nebraska and then going back to your computer and
+codifying it into uh very specific evals like this particular user wants this outcome after they you know after this
+invoice comes in we have to decide whether we're going to honor the you the warranty on this tractor. Like just to take one of one example that's the true
+value right like you everyone's really worried about um are we just rappers and you know what is going to happen to
+startups and I think this is literally where the rubber meets the road where um if you you know if you are out there in
+particular places understanding that user better than anyone else and having the software actually work for those
+people that's the moat is that is like such a perfect depiction of like what is the core competency required of founders today? Like literally like the thing
+that you just said like that's your job as a founder of a company like this is to be really good at that thing and like maniacally obsessed with like the
+details of the regional tractor sales manager workflow. Yeah. And then the wild thing is it's very hard to do like you know how you have you even been to
+Nebraska you know the classic view is that uh the best founders in the world they're you know sort of really great cracked engineers and technologists and
+uh just really brilliant and then at the same time they have to understand some part of the world that very few people understand and then there's this little
+sliver that is you know uh the founder of a multi-billion dollar startup you know I think of Ryan Peterson from
+Flexport, you know, really really great person who understands how software is built, but then also I think he was the
+third biggest uh importer of medical hot tubs for an entire year like you know a decade ago. So you know the weirder that
+is the more of the world that you've seen that nobody else who's a technologist has seen uh the greater the opportunity actually. I think you've put
+this in a really interesting way before Gary where you're sort of saying that every founder's become a forward deployed engineer. That's like a term that traces back to Palunteer and since
+you were early at Palanteer maybe tell us a little bit about how did forward deployed engineer become a thing at Palunteer and and what can founders learn from it now? I mean I think the
+whole thesis of Palunteer at some level was that um if you look at Meta back then it was called Facebook or Google or
+any of the top software startups that everyone sort of knew back then. One of the key recognitions that Peter Teal and
+Alex Karp and Stefan Cohen and Joe Lansdale, Nathan Gettings, like the original founders of Palunteer had was that uh go into anywhere in the Fortune
+500, go into any government agency in the world, including the United States, and nobody who understands computer
+science and technology at the level that you at the highest possible level would ever even be in that room. And so
+Palenteer's sort of really really big idea that they discovered very early was that uh the problems that those places
+face they're actually multi-billion dollar sometimes trillion dollar problems and yet uh this was well before
+AI became a thing you know I mean people were sort of talking about machine learning but you know back then they called it data mining you know the world
+is a wash in data these you know giant databases of people and things and transactions and we have no idea what to
+do with it. That's what Palanteer was, is and still is. That um you can go and find the world's best technologists who
+know how to write software to actually make sense of the world. You know, you have these pabytes of data and you don't know how do you find the needle in the
+haststack. Um and you know the wild thing is going on uh something like 20 22 years later it's only become more
+true that we have more and more data and we have less and less of an understanding of what's going on and uh
+it's no mistake that actually now that we have LLMs like we actually it is becoming much more tractable and then
+the forward deployed engineer title was specifically how do you sit next to literally the FBI agent who's um
+investigating domestic terrorism. How do you sit right next to them in their actual office and see what does the case coming in look like? What are all the
+steps? Uh when you actually need to go to the federal prosecutor, what are the things that they're sending? Is it I mean what's funny is like literally it's
+like word documents and Excel spreadsheets, right? And um what you do as a forward deployed engineer is take
+these sort of you know file cabinet and fax machine things that people have to do and then convert it into really clean
+software. So you know the classic view is that it should be as easy to actually do uh an investigation at a threeletter
+agency as going and taking a photo of your lunch on Instagram and posting it to all your friends. Like that's you know kind of the funniest part of it.
+And so you I think it's no mistake today that four deployed engineers who came up through that system at Palanteer now they're turning out to be some of the
+best founders at YC actually. Yeah. I mean produced this incredible an incredible number of startup founders cuz yeah like the training to be a fore
+deployed engineer that's exactly the right training to be a founder of these companies. Now the the other interesting thing about Palunteer is like other companies would send like a salesperson
+to go and sit with the FBI agent and like Palunteer sent engineers to go and do that. I think Palenter was probably the first company to really like
+institutionalize that and scale that as a process, right? Yeah. I mean, I think what happened there, the reason why they were able to get these sort of seven and
+eight and now nine figure contracts very consistently is that uh instead of sending someone who's like hair and teeth and they're in there and you know,
+let's go to the let's go to the uh steakhouse. You know, it's all like relationship. and you'd have one meeting uh they would really like the
+salesperson and then through sheer force of personality you'd try to get them to give you a seven-figure contract and like the time scales on this would be
+you know 6 weeks 10 weeks 12 weeks like 5 years I don't know it's like and the software would never work uh whereas if
+you put an engineer in there and you give them uh you know Palunteer Foundry which is what they now call sort of
+their core uh data viz and data mining suites instead of the next meeting being reviewing 50 pages of you know sort of
+sales documentation or a contract or a spec or anything like that. It's literally like, "Okay, we built it." And then you're getting like real live
+feedback within days. And I mean, that's honestly the biggest opportunity for startup founders. If startup founders can do that and uh that's what forward
+deployed engineers are sort of used to doing that's how you could beat a Salesforce or an Oracle or you know a Booze Allen or literally any company out
+there that has a big office and a big fancy you know you have big fancy salespeople with big strong handshakes and it's like how does a really good
+engineer with a weak handshake go in there and beat them? It's actually you show them something that they've never seen before and like make them feel
+super heard. You have to be super empathetic about it. Like you actually have to be a great designer and product person and then you know come back and
+you can just blow them away. Like the software is so powerful that you know the second you see something that you know makes you feel seen you want to buy
+it on the spot. Is a good way of thinking about it that founders should think about themselves as being the four deployed engineers of their own company.
+Absolutely. Yeah. Like you definitely can't farm this out. Like literally the founders themselves, they're technical.
+They have to be the great product people. They have to be the ethnographer. They have to be the designer. You want the person on the
+second meeting to see the demo you put together based on the stuff you heard.
+And you want them to say, "Wow, I've never seen anything like that." And take my money. I think the incredible thing about this model is this is why we're
+seeing a lot of the vertical AI agents take off is precisely this because they can have these meetings with the end
+buyer and champion at these big enterprises. They take that context and then they stuff it basically in the
+prompt and then they can quickly come back in a meeting like just the next day maybe with Palunteer would have taken a bit longer and a team of engineers here.
+It could be just the two founders go in and then they would close this six, seven figure deals which we've seen and
+with large enterprises which has never been done before and it's just possible with this new model of forward deploy
+engineer plus AI is just on accelerating. It just reminds me of a company I mentioned before on the podcast like Giger ML who do customer
+another customer support and especially a lot of voice support and it's just classic case of two extremely um
+talented software engineers not natural sales people but they force themselves to be essentially forward deployed engineers and they closed a huge deal
+with Zeppto and then a couple of other companies they can't announce yet but do they physically go on site like the palentier model? Yes. So they did so they they did all of that where once
+they close the deal they go on site and they sit there with all the customer support people and figuring out how to keep tuning and getting the software or
+the LM to work even better. But before that even to win the deal what they found is that they can they can win by just having the most impressive demo.
+And in their case they've um innovated a bit on the rag pipeline so that they can um have their voice responses be both
+accurate and very low latency. sort of like a technically challenging thing to do, but I just feel like in the like pre sort of the current LLM rise, you
+couldn't necessarily differentiate enough in the demo phase of sales to beat out incumbent. So, you can really beat Salesforce by having a slightly
+better CRM with a better UI. But now because the technology evolves so fast and it's so hard to get this like last five 10 five to 10% correct, you can
+actually if you're a forward deployed engineer go in do the first meeting tweak it so that it works really well for that customer. Go back with the demo
+and just get that oh wow like we've not seen anyone else pull this off before experience and close huge deals. And that was the exact same case with Happy
+Robot who has sold seven figure contracts to the top three largest logistic brokers in the world. They
+build AI voice agents for that. They are the ones doing the forward deploy engineer model and talking to like the CIOS of these companies and quickly
+shipping a lot of product like very very quick turnaround. And it's been incredible to see that take off right now. And it started from six figure
+deals now doing closing and seven figure deals which is crazy. This is just a couple months after. So that's the kind of stuff that you can do with uh I mean
+unbelievably very very smart prompt engineering actually. Well, one of the things that's kind of interesting about uh each model is that they each seem to
+have their own personality. And one of the things the founders are really realizing is that you're going to go to different people for different things.
+Actually, one of the things that's known a lot is Claude is sort of the more happy and more human steerable model.
+And the uh other one is Lama 4 is one that needs a lot more steering. It's almost like talking to a developer and
+part of it could be an artifact of not having done as much RL RHF on top of it.
+So is a bit more rough to work with, but you could actually steer it very well if you actually are good at actually doing a
+lot of prompting and almost doing a bit more RLHF, but it's a bit harder to work with actually. Well, one of the things we've been using uh LLMs for internally
+is actually helping founders figure out who they should take money from. And so in that case, sometimes you need a very straightforward rubric, a zero to 100.
+zero being never ever take their money and 100 being take their money right away. Like they actually help you so much that you'd be crazy not to take
+their money. Harj, we've been working on uh some scoring rubrics around that using prompts. What What are some of the things we've learned? So, it's certainly
+best practice to give um LLM's rubrics, especially if you want to get a numerical score as the output. You want to give it a rubric to help it
+understand like how should I think through and what's like a 80 versus a 90. But these rubrics are never perfect.
+there's often always exceptions and you tried it with uh 03 versus Gemini 2.5 and you found this this is what we found
+really interesting is that um you can give the same rubric to two different models and in our in our specific case what we found is that um 03 was very
+rigid actually like it really sticks to the rubric it's heavily penalizes for anything that doesn't fit like the rubric that you've given it whereas
+Gemini 2.5 Pro was actually quite good at being flexible in that it would apply the rubric but it could also sort of
+almost reason through why someone might be like an exception or why you might want to um push something up more positively or negatively than the rubric
+might suggest, which I just thought was really interesting cuz that it's just like when you're training a person, you're trying to you give them a rubric
+like you want them to use a rubric as a guide, but there are always these sort of edge cases where you need to sort of think a little bit more deeply. Um, and I just thought it was interesting that
+the models themselves will handle that differently, which means they sort of have different personalities, right?
+Like 03 felt a little bit more like the soldier sort of like, okay, I'm definitely like check, check, check, check, check. Um, and Gemini Pro 2.5
+felt a little bit more like a a high agency sort of employee was like, "Oh, okay. I think this makes sense, but this might be an exception in this case," which was um just really interesting to
+see. Yeah, it's funny to see that for investors. You know, sometimes you have investors like a Benchmark or a Thrive, it's like, "Yeah, take their money right away. Their process is immaculate. They
+never ghost anyone. They answer their emails faster than most founders. It's, you know, very impressive. And then, uh, one example here might be, you know,
+there are plenty of investors who are just overwhelmed and maybe they're just not that good at managing their time.
+And so, they might be really great investors and their track record bears that out, but they're sort of slow to get back. They seem overwhelmed all the
+time. They accidentally, probably not intentionally ghost people. And so this is legitimately exactly what an LLM is
+for. Like the debug info on some of these are very interesting to see like you know maybe it's a 91 instead of like
+an 89. We'll see. I guess one of the things that's been really surprising to me as you know we ourselves are playing with it and we spend you know maybe 80
+to 90% of our time with founders who are all the way out on the edge is uh you know on the one hand the analogies I
+think even we use to discuss this is uh it's kind of like coding. It kind of actually feels like coding in, you know,
+1995. Like the tools are not all the way there. There's a lot of stuff that's unspecified. We're, you know, in this new frontier. But personally, it also
+kind of feels like learning how to manage a person where it's like, how do I actually communicate uh, you know, the
+things that they need to know in order to make a good decision? And how do I make sure that they know um, you know,
+how I'm going to evaluate and score them? And uh not only that, like there's this aspect of Kaizen, you know, this um
+this manufacturing technique that created really really good cars for Japan in the '90s. Uh and that principle actually says that the people who are
+the absolute best at improving the process are the people actually doing it. That's literally why uh Japanese cars got so good in the '90s. And that's metaprompting to me. So, I don't know.
+It's a brave new world. We're sort of in this new moment. So, with that, we're out of time. But can't wait to see what kind of prompts you guys come up with.
+And we'll see you next time.
+[Music]

@@ -1,0 +1,678 @@
+Hi, this is your bhartia and we are here
+at open source summit in Minopoulos and
+we have with us once again medal Olen
+Welkkey project maintainer and principal
+engineer at AWS. Great to see you again.
+Yeah, great to see you again.
+And uh this time we are of course we'll
+talk about key but this time I think the
+biggest discussion and I think you folks
+are also the co keynote is about AI and
+open source. AI in general when it comes
+to uh software either way it's it's kind
+of becoming
+a point of friction but also uh it's
+bringing a lot of value also because the
+fact is that because of AI a lot of code
+is being written by coding is happening
+and a lot of developers are using it
+just to assist them as well but which
+also means that a lot of code is coming
+and now how do you maintain the balance
+between you know the quantity ity of
+code versus quality of code at the same
+time you may also want to use it and
+once again you have to ensure that you
+are able to so let's let's first of all
+talk about your favorite project because
+you said let's talk about so let's talk
+about start with the key uh how are you
+folks using AI internally for welkey
+so yes the main project that I'm a
+maintainer of is inky and I think it's
+great to add some numbers to you know
+everything we're talking about
+no you'll be talking about that
+so uh since about December we've seen
+about a 30% increase in the number of
+PRs getting open to the project.
+Um, but more importantly, we've seen
+about a 500% increase in the number of
+lines of code changed across those PRs.
+So, the big difference is not only are
+people making more changes, those
+changes tend to be significantly
+bigger. They have way more changes
+involved. And the bottleneck that we've
+actually seen inside the project for a
+long time is actually reviewing that
+code,
+right?
+And you know, when we review code, we
+look at more or less in two different
+ways. is we look both okay is this code
+functionally correct and is this code
+the right code for the project
+effectively is this the right
+architecture
+and you know from a maintainer
+perspective I think AI is kind of okay
+at that first one it's like hey is this
+code going to crash what bugs are there
+but it's not very good at that second
+one it's it you know
+a lot of the foundational models they
+have a very strong bias for generating
+new code they have a very strong bias
+for you know building stuff a specific
+way and they they often aren't good at
+abstracting code a good way to sort of
+incorporate new functionality.
+So we definitely haven't been able to
+scale maintainers very well to be able
+to incorporate this you know sudden
+increase in code.
+Um you know and we've done some stuff to
+optimize that. I for example have an
+agent that I use while reviewing code
+and it does you know the thing that AI
+is pretty good at. It's like hey
+summarize this code for me. Tell me what
+the key changes are. Um we actually I
+used an agent not too long ago to find a
+lot of bugs inside the Valkyrie project.
+uh we actually found like a CV that's
+currently under embargo which you know I
+can talk about you know a little bit or
+later not not today under embargo um but
+the methodology that we use to find
+these bugs works very well as well to
+just apply it on code PR being which is
+like you know basically adversarial
+testing which is hey go take this change
+and hey I just go try to crash it go try
+to find bugs and then if you do find a
+bug report back which is builds a lot of
+confidence that hey that code actually
+you know isn't going to break in
+production which is very important for
+Valkyrie, right? Valkyrie is a, you
+know, runs inmemory database used for
+caching and you really don't want that
+system crashing in production.
+But so we've definitely been using AI
+for that. You know, the is this
+functionally correct? But the
+architecture half is a little bit
+harder, right? You can't necessarily ask
+the AI, you know, is this code good for
+the project? Because it'll be like, oh,
+of course. And you'll probe it and it'll
+be like, oh, you're totally right. I
+misunderstood. Right? As we've all had,
+a AI agents love to double back on what
+they've said. And so you know that we're
+trying inside the Valkyrie project to
+automate as much of that first half as
+possible so that maintainers can focus
+on that second half that maintainership
+half. Um I'm going to be doing a keynote
+tomorrow talking about um AIS uh how
+we're using AI agents inside the project
+and one of the key things we're going to
+be highlighting is basically how we use
+agents to automate some of the
+backporting process within the project.
+So um unrelated to this conference, we
+actually launched Valky 9.1 this
+morning. Um and part of that process
+involves taking commits from the
+development branch into the actual
+release branch because not everything
+that goes in development is going to go
+for a specific release. And so we built
+an agent that's responsible for taking
+the commits, applying them to the
+develop uh taking them from the
+development branch, applying them to the
+release branch, and then if any tests
+fail, uh it can go and try to resolve
+them itself. And you know if all of that
+fails we still have the backs stop of
+maintainers to go in and look but it's
+the ideal case is the maintainers don't
+get involved at all right the
+maintainers are just there to say like
+hey this is correct you know the correct
+right set of commits to be backboarding
+so we're trying to take that load off of
+the maintainers uh this is actually very
+important because some projects where
+and I knew that you know that the the
+the pitch will come for you know you
+know a lot of maintainers they are
+overwhelmed in past you know because
+they could not keep up so if you look At
+Valky there are a lot of other how much
+what percentage of work is being done by
+agents versus humans and how is it
+freeing your time to focus on the things
+that you wanted to focus earlier which
+you could not because the grind that
+happens when you have to review the code
+was just too much
+right
+and so I kind of highlight like you know
+the the core decision making inside the
+project is still done by the maintainers
+we're not
+so what percentage if you talk about
+like
+90% AI 10% maintainers
+that will do much
+trying to come up with a number is
+probably going to be a little difficult
+like we've definitely some of the
+automation we built
+of the that kind of look
+offload probably you know like 20 to 50%
+of the day-to-day work of maintainers
+we've been able to offload to AI and
+that also obviously changes week to week
+so like a week like this one where we're
+doing a release a lot more of the work
+has been offloaded because a lot of that
+backboard stuff's been automated but on
+a typical week I might be doing almost
+all of my time doing this deep you know
+because it's fun also right sometimes
+it's fun yeah to just dig to Jose uh you
+uh we hear the word slop a lot these
+days uh in in in terms of when it comes
+to maintainer job how would you define
+it and how do you catch it because
+that's that's a tricky part and actually
+when I was working on your interview I
+just wanted to do some so cloud told me
+that you are founder of I said no I
+interviewed her you this is my interview
+oh I'm sorry you're correct so so you
+have to you know keep an eye it's like
+dealing with a toddler which will lie
+all the time and so how do you how do
+you define the slop and how do you catch
+That's a good question. So the way I
+think about AI slop is there's a couple
+different parts. There's the code that's
+generated is like wrong or documentation
+that's generated is just wrong. Like
+it's basically pulling from incorrect
+sources and that's mostly because you're
+not providing enough context into the
+LMS themselves. Right? What we see is a
+lot of new contributors will often say
+like hey you know Claude go solve this
+issue and it'll point to some issue in
+Valkyrie and Claude will give us its
+best guess. it will try to figure it
+out. What you need to do is give it a
+lot more context, right? If you just
+kind of just point out the issue, it's
+going to probably come up with code that
+looks correct, right? Because that's
+what, you know, they're very good at
+doing, but probably not. It's probably
+missing edge cases. It's probably not
+well, you know, integrated inside the
+code. And when we see those as
+maintainers, the first thing is either
+to say like if it's the type of person
+who's probably never gonna be good at
+contributing code, we might just be
+like, "Please don't contribute." Like
+one of the things we've noticed is, you
+know, because it's so easy to point LM
+at an issue that the bar for who's
+contributing has come down a little bit,
+right? And so those are the type of
+people either, you know, if they are
+excited, they are interested, there's
+obviously people who like don't have the
+understanding yet, but are excited to be
+involved. And so we still want to
+encourage those people. You know, one of
+the things we've changed in the project
+is like we used to keep a list of issues
+inside the Valky project which we
+labeled as like good first task. So if
+you wanted to get involved, you could go
+pick these up.
+And one of the things we noticed is a
+lot of LLMs like OpenClaw were going and
+picking these issues and like just
+trying to solve them themselves, which
+doesn't really solve the problem, right?
+These issues aren't strategically
+important. They're designed in such a
+way to help get people involved. So we
+still have like another mechanism like
+you join our slack and we will you know
+we'll hand these out individually to
+people and that's how we get people to
+actually do these first issues. So if
+you're kind of just showing up and
+generating a bunch of code because you
+just pointed the LM at the project we're
+probably just going to gently push you
+away.
+And so that's kind of like the first
+level of stop. The second level of stop
+is someone who genuinely does like kind
+of understand what's going on. the code,
+you know, at least
+more or less looks correct, but is like
+kind of subtly like maybe a subtle bug.
+It's not really production ready. That's
+one of those cases where it's actually
+just not too hard to just kind of like
+gently poke the their agent to be like,
+"Hey, you're missing these bugs. You
+know, think about these cases." So, just
+because the code is not necessarily as
+good as a human would write, that
+doesn't mean it's not worth it's you
+shouldn't just like throw it out. you
+should still kind of work with them,
+help them grow because as long as
+there's a human on the other side
+looking at these inputs and being like,
+hey, I understand like I missed these
+cases. Next time hopefully they'll
+produce better code and kind of continue
+to be involved in the project. So, it's
+kind of like how the slop was generated
+that's more important, not necessarily
+that it was bad. But you said the bar is
+kind of low, but have you also changed
+some expectations which would not even
+be realistic two years ago before agents
+where you're like, okay, these are the
+compromises we're making. we are
+lowering the expectations of bar uh so
+that AI agents can also contribute
+versus humans they're like ah that's not
+even something that you can ask me to
+do.
+Yeah. And so just to clarify when I say
+the the bar for someone to be able to
+contribute is lower. Our bar is
+definitely not lower. We've we anything
+have been trying to use a aentic AI and
+code generation to raise the bar right
+we want to add more verification more
+validation. And that's where
+so changes of the bar is that you have
+you know increase the height of your bar
+but lower the bar for people to be able
+to contribute.
+That's what's important, right? You
+know, if someone shows up and they're
+like, "Hey, I have this simple feature."
+There's some simple features which you
+can just contribute like, you know, and
+AI agents are helping with that. We have
+an agent.md file inside the codebase. So
+that's uh you can basically point your
+LM to it, your code uh
+cloud code to it and be like, hey, use
+this file as like a understanding for
+the codebase.
+And the whole goal of that is to raise
+the bar of what uh a typical agent will
+be able to do. Can you talk about uh
+what's the provenence guard you know
+function? What does it do uh that
+typical traditional review would miss?
+Yeah. So what you're talking about is
+you know one of the one of our goals
+recently in the project is to build more
+automation and verification so we can
+offload work from the maintainers. So
+one of the unique constraints that Valky
+has is Valky is a fork of another
+project called Reddus and they have diff
+different but incompatible license. So
+Reddus uh is tri licensed one of which
+is AGPL which is an open source license
+where ours is BSD. So we can't take
+commits from AGPL and apply it onto BSD
+licenses. So one of our concerns has
+been well someone might unintentionally
+think they can they are allowed to
+they're both open source not everyone is
+deeply familiar with the nuances of
+those licenses.
+And one of our other concerns is like
+what if an agent does this? What if an
+agent goes and tries to pick this and
+apply it to Valky not knowing that they
+aren't allowed to do this? So we one of
+the things we built is a tool that
+basically you know keeps a large list of
+hashes of commits from reus and we're
+also basically able to quickly check to
+see hey is there a match here and then
+on top of that we we can use lns on top
+of it to basically do a secondary level
+check to be like hey is this check okay
+right
+um and the goal is to make you know add
+confidence that this edge case which
+we're worried about we don't spend so
+much time as maintainers worrying about
+right because it's possible they might
+not declare where the pro providence
+came from um of the code and you know
+there's a DCO check which we use
+basically says you're allowed to do this
+but that's still not a sufficient check
+you know we want to make sure that we're
+not accepting this code so that's been
+our goal as a project to continue to try
+to build this automation and I think
+that's a great use you know AI as a
+maintainer I can write a lot of code
+more quickly that's very tailored to
+what the Valky project needs and so
+we've been trying to do a lot a lot in
+the project
+you did talk about some of a tedious
+task but you know if you look at things
+like backporting CI testing uh
+how much are you handing over to AI and
+AI agents I'll give another example
+which is one of the features that we're
+thinking a lot about inside Valky is
+being able to support SSDs as a
+alternative storage of data and not just
+RAM
+right obviously RAM's very expensive
+these days there's a RAM shortage and so
+one of the things we can do very quickly
+is evaluate a bunch of different
+trade-offs with prototypes you know
+basically we can go and say hey here's
+the high level interface we want to
+build now go try to store both the keys
+and the values on disk just store the
+values on disk keep the index in memory
+uh maybe store the keys in memory and
+the values on like a external network
+attach drive like an EBS volume or maybe
+S3 or maybe something like Dynamo and so
+agents can very quickly go and validate
+all of those right because as I said
+they're very good at generating lots of
+code and they're very good if like
+something doesn't work they can you know
+try new things especially give them sort
+of guard rails to think through
+and that helps us prototype a lot more
+quickly and so when we actually get to
+the time it's like okay we've evaluated
+a bunch of prototypes now which is the
+actual choice we want to make we have a
+lot more information than we did before
+so AI is great in that sense um but then
+when I actually go to write code myself
+and be like hey this is the actual
+production quality code that I I want to
+be writing um I'll typically do much
+more like a pair programming type of
+thing with the AI uh we'll typically
+write all the tests together to make
+sure everything's constrained correctly.
+Then I'll maybe let go the agent go and
+try a little bit to try to implement
+everything to those specs and then
+there's always going to be sort of an
+inter phase that because we need to get
+down all that code generation that it
+built more towards the right
+abstractions. It's fitting the right
+architecture. So AI is both good in like
+the unbounded exploration phase and then
+also when you want to write the code
+it's good at helping you know accelerate
+the actual speed which you can write
+well contained and like thoughtful code.
+AI you know is very good at as you
+explained but uh sometimes AI is not
+very good at coming up with new ideas
+because it's always someone else's idea
+you know that it learn from how do you
+also ensure that when they look at Valky
+project the trajectory the vision the
+evolution of key is guided by humans not
+by AI
+I think the real mitigation we have for
+that is just making sure humans are in
+the loop for all the key decisions that
+they are being made you So, Valkyrie is
+actually in a unique position. It's not
+really on the cutting edge of
+technology. It's normally like a it's
+kind of at the edge of like the
+application of it, like the engineering
+side. So, we do rely a lot on papers. We
+do read a lot of papers to kind of
+figure out what we should be building.
+And that's where a lot of the actual
+ideas come from, right? We're not the
+most valuers aren't researchers. We're
+kind of we are engineers. We go and try
+to figure out how do we apply this and
+make it practical for production
+workloads. And so, we're just deeply
+involved sort of the entire process. We
+come up with all the ideas and then we
+go in, you know, work with AI agents to
+go build them. Um, but yeah, it's mostly
+us that are ones coming up with all the
+ideas.
+From your perspective, you know, ever
+since Valkyrie came out and then agentic
+AI and now we have a foundation as well
+for that. How has AI impacted I mean we
+talked about you know the toil and
+everything but in general not just for
+but in open source because we hear mixes
+stories we hear a lot of horror stories
+but we can it can find bugs that humans
+will never find you know because it's a
+lot of thing it can also help fix those
+bugs so how have you seen that because
+of first of wi itself grew very fast
+that it is accelerating not only project
+but if it is done right the way you
+folks concerning it can help other open
+source project grow faster.
+At the end of the day, you really have
+to accept the fact that AI is just
+another tool. Like I I'm not the biggest
+fan of AI for a bunch of different
+reasons. But the truth is it's not going
+away and it's not going away anytime
+soon. And so I think you you do have to
+have this optimistic view of, you know,
+trying to figure out what's the best way
+to use your tool to solve your problem.
+And you kind of already sort of said
+everything I was going to like go find
+the task inside the project that you
+don't like doing that the AI is well
+situated to offload off of right AI I
+don't really think you should be giving
+AI highle decisions of the project but
+it's pretty good at doing things where
+it can exploit its non-determinism it
+can go try lots of things as I said we
+did a bunch of security reviews and
+basically the harness we set up was hey
+here's a deterministic test and it looks
+for crashes it looks for corrupted you
+streaming of data. If you can find any
+of these cases, then let us know. And
+then we just sort of said, "Hey AI, go
+try 10,000 different things and come up
+with new things and let us know what you
+find." And, you know, it found a couple.
+It found the CV we talked about. It
+found a bunch of other esoteric bugs.
+And it's better for the AI to have found
+that proactively than some either end
+user finding it or some security
+researcher who lets you know that they
+and they have this embargo date they
+want to release it on top of.
+So
+you need to at least be thinking about
+that as a maintainer. Like there's
+there's a lot of stuff that we sort of
+internalize or like we have to do this
+work and we have to say no this AI
+agents are tools. We should be letting
+the tools do what they're good at and
+that doesn't mean handing over
+everything. There's a there's a phrase I
+hear a lot which was from like product
+managers because I you know my day job
+is I work at Amazon. They're like well
+why can't agents can we let agents do
+that? And the answer in many cases is
+no. Agents can't do that. they will, you
+know, the risk of hallucination is too
+high. They, you know, at some point,
+like you mentioned before, like we
+really want humans to be thinking about
+the direction of the project. If we
+offload all of the reasoning and
+thinking to the agents, then the humans
+aren't doing the part they enjoy. Like
+you're not required to use agents, like
+if if there's a part of the job you
+enjoy, keep doing it. Don't don't
+offload it. Like that's not that's not
+keeping your sanity. That's not
+maintaining your mental health. like
+there's a long history of maintainers
+feeling burned out.
+Um I myself was very burned out back
+when I worked on Reddus open source for
+a while
+and you know the I came out of it just
+because Valky happened and I was it was
+very fun to work on Valkyrie. I got to
+focus on the stuff that I like to do. We
+got to build lots of things
+and so you know it's really I think AI
+is at an interesting place where it's a
+lot of people are experimenting like a
+lot of the stuff I mentioned is not
+super novel. It's not super unique, but
+you know, the the joy of learning and
+trying to figure out how can you use
+these tools to solve some of your
+problems, you know, will will get you a
+long way.
+You actually hit on very important
+point, which is burnout. I am also a
+gamer, woodworker. I use power tools,
+you know, but I am the operator. They
+are just a tool. A lot of games, they
+have a lot of grinding. So, I lose
+interest in the game because same thing
+with a lot of, you know, projects,
+people they burn out because it's
+repeted. It's grinding work. they don't
+enjoy the let's do something exciting
+with it is they have to do so I'm just
+flip the what advice you have for
+maintainers or developers if not total
+playbook but how they should use AI
+because some are hesitant some are total
+reluctant some are total I don't like AI
+at all so that that will actually help
+them deal with burnout because then they
+will get back to the exciting part of
+the project they're involved with which
+is exciting new things let AI do the
+toil
+So your advice to maintainers and
+developers how they should use AI and
+engines.
+I would say try to figure out what makes
+you what drives you to work on open
+source. So the original thing for me was
+always that I like to help people. I
+originally got involved in res open
+source when there were bugs that I found
+inside the manage elastic cache service
+that you know I would rather give them
+out and give them to anyone like so that
+people so other people didn't face the
+same issues that we did inside the
+elastic cache service and I enjoyed also
+just like going through issues finding
+other unrelated bugs and going and help
+them solve their problems like that's
+what I truly enjoyed from the project
+and you know over time as I got more
+leadership in re open source and then in
+valky I sort of lost a lot of that
+connectivity to the actual end users
+problems that we were solving.
+And the thing that I've, you know, been
+trying very hard to do is if I automate
+something with AI,
+I'm trying to not go do more of the
+things that burn me out, but basically
+take that time and spend it on stuff
+that I actually want to be spending time
+on, which is going sort of solving the
+little things, the little issues people
+have. I love being on the Valkyrie Slack
+when someone's like, "Hey, I have this
+little weird edge case." then you know
+maybe I can't easily solve it but I like
+going and talking to them and
+understanding why they have it and
+someone in my team literally said like
+why don't you offload that to an agent
+you could install a knowledge base and
+they could go talk to the person I'm
+like but that defeats the entire purpose
+that's not what I want to do and that's
+what I see with some folks not all other
+maintainers is like they see this
+pressure to automate everything with AI
+and they're like this is what I love
+this why would I automate everything and
+it's it's really just you know be
+curious about the tool and go and try to
+automate the things that you don't want
+to do. Don't try to automate everything.
+Malagen, thank you so much for joining
+me and of course talk about uh the
+things that keep you excited and how AI
+is helping you in in that excitement and
+also thanks for sharing the way you
+folks are using AI because that also
+help other products to learn from it. Uh
+because it's of course the growth
+momentum is evidence of it itself. So
+once again thank you for your time today
+and I look forward to chat with you
+again.
+Yeah, so great talking.
+Thank you. Thank you.

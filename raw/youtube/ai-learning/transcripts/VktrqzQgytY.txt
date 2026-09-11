@@ -1,0 +1,442 @@
+[music]
+All right. Can you all hear me?
+Great. There we go. All right. Well,
+we're only 35 to 40 minutes late, but
+thank you for sticking around. Um, we're
+gonna talk about why CI/CD is dead and
+we're going to propose that continuous
+compute is going to be the next thing
+maybe.
+All right. So, just quick introduction.
+We're gonna have two speakers. One's
+already one's getting miked up. Um, my
+name is Madison and I'm a partner at NEA
+investing in technology. Uh I do focus
+in infra and dev tools and I formerly
+used to be a meta AI researcher. Uh so I
+used to lead data and AI teams. I got
+really frustrated by the state of
+infrastructure and so I jumped into
+venture to do something about it from
+the top down. And then I'm also going to
+uh introduce on behalf of my uh partner
+here Hugo Santos. So he's the CEO of
+namespace which is building high
+performance compute infrastructure and
+at this point what we believe is going
+to eclipse the new CI/CD wave. He also
+formerly led microservices at Google.
+Yeah. Uh great to be here with you
+folks.
+So we're going to talk about why agentic
+software is breaking traditional CI/CD.
+Obviously, we're not going to get
+through this today, but the point is on
+the left side, what started off in in
+agentic software was really monolithic
+agents. Uh we were really using the LLM
+as one engine, but now we're moving into
+the right side, which is microservices
+uh with agents and that's how we really
+need to think about software development
+in an agentic world.
+So the life cycle um is very fragmented.
+This is quite a mess, right? We've we've
+really kind of brought together all
+these traditional CI/CD systems, build,
+test, deploy, DevOps. Um, but we also
+now have new idees. We have autonomous
+agentic engineering solutions. Um, and
+then we have our traditional DevOps in
+the middle, which we believe is really
+going to innovate in the next year.
+So, let's explain why we think it's
+dead. So, first, how does CI/CD
+pipelines work today? Well, we all know
+human developers are currently
+submitting one maybe maybe a couple of
+diffs when they're just writing it
+themselves. And those PRs then take your
+colleagues a bunch of time to review.
+Then you have to go through GitHub
+actions and run build, test, and deploy
+steps. And then finally, you're
+addressing those failed test case and
+maybe you're iterating on the diff. So
+in that in that scenario, it was really
+uh just one or two a week. So now, how
+do we think about this? At agent scale,
+you've got agents using the exact same
+systems, but they have, you know, n
+number of PRs, maybe n number of repos.
+Still takes a similar amount of time to
+verify unless you're using review bots,
+which gets a little crazy. Um, and then
+we correct those failed cases just like
+we did in the past scenario. So, what
+ends up happening with a human, pretty
+predictable. Um, and you've got local
+caches, which are often warm. With an
+agent, this starts to get really
+complicated. You have thousands of
+short-lived branches. It's all trying to
+pull the same codebase in a few
+different directions. You start to get
+to a point where merging all these
+different versions together is really
+impossible.
+And that is where we start to have a
+huge problem. So, let's look at in real
+time. GitHub activity has gotten
+absolutely crazy. The white line here is
+the actual number of commits in the last
+couple of months. and then the number of
+uh lines added versus deleted. I mean
+this is just an unbelievable spike.
+So how do we start with replacing CI/CD?
+Well, the starting point should be at
+the acceleration. So obviously right now
+I know a lot of you are struggling with
+very slow build, test and deploy times
+for your CI/CD solutions. This is a very
+common problem. Um but where we're
+headed is be able to first speed that up
+by inserting over the existing GitHub
+actions and other um underlying
+infrastructure for CI/CD.
+So that cache is really going to become
+the orchestration layer in this scenario
+and this is really critical to do
+through a hardware and software codees.
+So what does this start to look like and
+how does this start to eclipse previous
+CI/CD? So first we have our intake um
+which requires ingress shaping and rate
+limiting. Then we move to our cache and
+this is the next big step. Um how do we
+think about orchestrating and making
+sure we're routing to the right
+infrastructure. Uh from there we can
+even move into agentic identity for
+software and thinking about uh retries
+at scale.
+And then if you don't believe me let's
+ask the experts. So Mitchell Hashimoto,
+one of, you know, the the uh coolest
+Devril at scale. He's also the former
+founder of Hashior Core, uh wrote
+exactly what he would do to fix GitHub
+today. And a lot of this uh has to do
+with even shutting down C-pilot,
+thinking about how do you actually just
+evolve GitHub to be first in the cloud
+era, but second um actually really
+enabling um inference at scale. And then
+we've got a number of other data points
+on the lefth hand side um that we need
+to be able to serve AI and agentic users
+first um or we die [laughter]
+and thinking about friendly code storage
+uh solutions that may also help. So
+there there's a lot of frustration
+around existing CI/CD but this is really
+just the starting point. We've only just
+started to see agentic software take
+over. So now I'm going to pass it to
+Hugo to talk more about what a real
+solution could look like.
+Yeah. So um I'm fortunate and me and my
+team we we spend a lot of time with
+companies today that are going from how
+traditional CIC look like into how we
+think it's going to look it into the
+future. And uh giving you a little bit
+of a hint it's it's agents all the way
+down.
+So we work with with companies like FAL
+and uh Zed and RAMP and many others that
+are really at the forefront of uh
+everything around development. And you
+you probably recognize yourselves uh in
+between these two um bits where uh up to
+six months humans were writing all the
+code very slowly uh and some of them
+actually fairly quickly but in hindsight
+fairly slowly. We package uh all these
+changes in PRs. We do validation as part
+of those PRs and uh behind the scenes um
+the machines are a little bit slow but
+all of that is hidden behind the human
+latency and uh many of you might already
+be seeing a bit of what's happening
+today where code generation is very
+cheap work is much more continuous and
+and that kind of forces the validation
+to go into the inner loop. It's okay.
+Um, so what you might not realize is up
+to this point, uh, you as a humor, you
+are the agent. Uh, you have a stop of
+mind. Here's what I'm trying to
+accomplish. And then I'm going through
+all of these phases.
+Uh, okay. I start the pull request. The
+pull request within your team says,
+well, you didn't quite follow the right
+format, so go back to the beginning.
+You're in a loop. Uh, now your changes
+uh are in the PR. The tests are running.
+they fail, you need to go and change
+something in the code. You're back to
+the loop.
+Uh, a human reviewer comes back and
+says, "Well, you know, it didn't quite
+use the right API. Please go and change
+it." You're back in the loop. And then
+when you go and get your code, you're
+you're finally done and you go and merge
+it. Uh, the merge cue says, "Well, you
+know, some another colleague managed to
+get some code ahead of you and you have
+to go back in the loop."
+And uh when you're at your human scale,
+this opportunity to merge, the time that
+you go from when you're working on the
+code until the code goes into into the
+repository um can be large because
+there's only so many changes that you're
+doing at the same time. But as you
+accelerate this opportunity to merge is
+really really important because the rate
+of change increases dramatically.
+So uh we talked a little bit about this
+like the a PR um is is kind of used as
+the unit of work and uh that's what
+really designed for human review. It's
+it's it's it expects a bit of delayed
+feedback. It's it's expected to to go
+into kind of discrete handoffs where you
+send it over to the reviewer and then it
+comes back. Uh CI matters because it's
+kind of validating the work that you're
+doing. uh is doing things like well are
+you introducing a regression? Uh are you
+compiling and building your code from
+well-known source? Uh are there other
+changes that are going on that would be
+conflicting with this change? Uh is this
+change allowed? So all of that is kind
+of part of this validation process that
+is automated. Um human reviewers are
+overwhelmed. You've heard this many
+times. I don't have to repeat it. And
+the interesting thing is that this the
+the act of merging um is starting to
+look a lot like um high performance uh
+uh database problems where you have
+serialization and you have a single
+ledger where every single change needs
+to go in and you need to lock the the
+database in in order to be able to
+commit. And the time that you have to
+lock when there are humans is large but
+when there's machines it's short.
+So the time to merge really matters. We
+need a new architecture. Uh this is
+already how our team is working today
+and how we see a lot of the companies
+working today already. Uh that are at
+the forefront. Uh there are no PRs.
+Uh we start with intent and plan. This
+is what we want to achieve and we codify
+it. That's a spec. Someone writes it
+down. It might be in a linear ticket. It
+might be on Slack. It's somewhere
+somewhere you have written down what is
+the goal what are you trying to achieve
+that goes into a loop and this loop is a
+typical Asian harness so it might be
+your might be your cloud code it might
+be we're big AMP FL fans so in our case
+is often AMP uh it might be cursor it
+might be factory uh you you go into a
+loop and here uh the agent will check
+out your code and we'll start kind of
+moving towards the an imple implementing
+your plan. Uh very importantly, already
+makes use of some of these invariants.
+Well, it checks out a well-known commit.
+So, it doesn't just start from from
+anything. For example, then internal
+what is internal validation? Well, it
+goes and uses the assets that exist in
+the repository to actually validate that
+the change is correct. So, it builds it,
+it tests it, then it comes back and
+tells you as a human, uh, hey, I've just
+finished. Does it look good? should I
+change something else? And you say yes
+or you say continue. Like continue is
+probably the word that we use the most
+nowadays. And and then it just goes back
+and continues through the plan.
+Eventually you're done and you go into
+the merge queue and and then it goes
+into the ledger. So your repository,
+your git repository is kind of like a
+ledger. uh this is fast but it's not
+fast enough because in this external
+validation you still have a human in the
+loop.
+Uh so where do we think we're kind of
+moving towards and this is in the span
+of weeks to months not years. It's it's
+a world where
+generating code becomes much faster.
+It's already fast but inference will
+only get faster. uh internal validation.
+So running your builds and tests need to
+be extremely fast as well. And that's
+where you cannot go and spend 15 minutes
+running your tests or 45 minutes or any
+sort of minutes because you are delaying
+the whole loop. And external validation
+no longer has humans.
+We have other agents that are evaluating
+the changes. So you may have um a
+security uh focus LLM. You may have an
+um uh API conformance uh based LLM that
+is providing feedback within the loop to
+the changes that your main harness is
+then uh incorporating back into the code
+and is doing this very quickly.
+Um when it's done and in order to do it
+very quickly, it actually needs to be
+running in a stateful environment.
+Memory is important. State is important
+because if you're starting things from
+scratch all the time, you're just going
+to delay things even further. So the
+statefulness of it is really important
+within this loop. Um you are getting
+world signals from time to time. Things
+like well the plan changed or someone
+else got a a change in. So the harness
+is also adapting his intent and plan
+which then creates a new loop. And then
+when you're done because there are so
+many changes going on uh and you haven't
+yet really as a human the team hasn't
+accepted this change you don't go
+directly into the repository. You go
+into a preQ which we're starting to call
+a premerge where there's a queue of
+changes that are done that they would
+have been merged uh if we if the process
+of merging was fast enough. But the
+reality is that you will have so many of
+these running in parallel and operating
+on the same parts of the codebase that
+you need a process that reconciles them
+so that you can have serializ
+serializability
+so that you actually can guarantee that
+all the changes go back to back into the
+into into your ledger into your
+repository and that's the point where
+you get external approval. That's where
+the human comes in where looks at not
+the code but that the this was the
+intent and this was the result and the
+result might be here's the video of the
+feature working. It might be uh here's
+the uh the output of the security focus
+LLM on on this particular change and
+it's not on one commit or one PR it
+might actually be on multiple of them.
+So you may even have multiple agents uh
+independently working on features that
+go into this premerge queue and
+semantically get grouped into something
+that you as a human can manage because
+there's going to be way too many. We
+already see that today where within our
+team we're our our volume of what we
+would call PRs from from the past is
+four times as big as before. It's
+impossible for a human reviewer to look
+at every single PR.
+Um, and if we think a little bit more
+into the future after this,
+if this process is extremely quick, one
+thing that may end up happening is that
+you may have to step into the multiverse
+where uh the starting point where the
+intent and plan gets applied is not the
+tip of the ledger. it's not the lightest
+commit uh that of your repository
+because that is moving there's many
+candidates. So the agents may actually
+be working on multiple commits at the
+same time to address the same plan and
+in order to get that uh to get there
+this inner loop needs to be extremely
+quickly uh extremely quick and um it
+adds up in terms of capacity. So
+resource usage will also blow up because
+of all of the candidates that you're
+going to be exploring at the same time.
+This is the world that we think that
+we're moving towards. Uh we're uh
+obsessed about performance and
+efficiency. So we're uh spending a lot
+of energy finding ways to maintain
+efficiency within this loop. And part of
+it is uh well don't do work that is not
+necessary. Don't start things from
+scratch all the time. uh have agents
+work a lot more as we did as engineers
+that in our own workstations that were
+much more incremental and and that's
+kind of the world that we're moving
+towards.
+Uh did CI go away? Well, CI still
+matters, but it's just shifted because
+the principles of uh well, for example,
+does does the code actually work no
+longer is a separate phase, but it's
+just part of this loop. Every single
+iteration is going through validation.
+Now, it's still going through enforcing
+those invariants as well. Like you still
+have want to have for example for
+compliance reasons you still want to
+have guarantees that you're starting
+from a wellknown uh checkout that you
+don't have someone in the in the in your
+company that came in and added other
+code that was never vetted and you're
+starting from there. So those invariance
+needs to still be enforced but they
+enforce on a continuous basis.
+Coordination moves away from CI. So CI
+no longer has to uh kind of guide
+different changes and making sure that
+different tests are passing in order for
+changes to be committed. That needs to
+be part of the overall loop and
+governance is still important. Uh but it
+also gets much more lifted into the
+harness and how the harness is uh uh
+coercing the change towards following
+everything that your team has codified
+um within these processes. And that's
+it. This is where we we we believe that
+the world is moving towards. Um if
+you're interested about this topic, uh
+us at Namespace um spend a lot of time
+thinking about it. There's other folks
+in the industry as well. Uh it's a crazy
+world and we need to be ready for it.
+Uh, thank you. And uh, yeah, let's go
+for lunch. [applause]
+[music]

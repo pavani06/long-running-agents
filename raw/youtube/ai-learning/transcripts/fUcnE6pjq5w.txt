@@ -1,0 +1,514 @@
+Our view at parallel is that human click data is a bug and agent
+doing work with search should rely on agent feedback not human feedback. We believe that these models are really
+good at compressing information and we can benefit from a lot of the research that have gone into building models and
+apply it to search indexing and ranking. And so you can now make many many
+arguments and that's the arguments we made back then that actually now it's way more tractable as a problem because
+of the existence of agents not just as in technology but as a distinct customer
+[music]
+[music] Parog, thank you so much for joining us today. Uh we're delighted to have you on
+the show. For those who don't know, Parog of uh Twitter CEO fame was was CEO
+of Twitter um before selling it to Elon. Uh and is now back on the founder arc.
+Um you founded a company called Parallel Web Systems, which is scaling up Agentic Search uh for the Agentic Web. Um, we're
+very excited to have you here today to talk about the future of search and the future of the internet. So, let's get
+started. What's Parallel? Thank you, Sonia, for having me. Thanks, Andrew, for joining us. I'm really
+excited about this conversation. At Parallel, we're building uh a bunch of technology in order to allow agents to
+search and use the web. So just like humans forever have figured out how to use browsers and search engines and
+clicking and browsing around the web to access information, uh agents need to do
+the same things. We started parallel with the bet that agents would do it a thousandx more than humans ever have.
+And as a result, we need to reinvent the technology that can power search for
+agents, but also the business models that go alongside it. And that's what we're doing at Parallel.
+Okay, I want to go back into what's what makes human and agent search so different. But before we get there,
+you've told us that, you know, you're you're unlearning a lot of the lessons that you learned from running Twitter as
+you build build parallel. Why is that? Listen, when I was at Twitter in leadership roles, Twitter was a post
+product market fit extraordinarily scaled business where your feedback
+loops were from the hundreds of millions of customers using the product for 30
+plus minutes every day. Right? In that world, you operate differently than a
+pre-product market fit company based on the premise that in a few years a new
+customer is going to show up on the internet and let's go build technology for the not yet here customer that we
+are all learning every day and every week. Fantastic. Okay, let's talk about let's talk about parallel. Um,
+I have a question actually. Can I can I jump in? No, no, you cannot, Andrew. I'm Andrew. I didn't get an introduction, but I'm also happy to be
+an inaugural guest on the Training Data podcast. Andrew is making his podcast debut on training data. We are we are honored to
+have you finally here. Thank you. Um I feel like all of us in Silicon Valley have a very surface level
+idea of search like what is search? Like the job to be done is, you know, getting the answer makes sense. But we all know
+there's crawling and there's an index and there's ranking. But maybe let's take a big step back and explain what is
+the problem of web search be it for a human or an agent and then we can dive into the differences.
+Um the problem of web search and we all know it and experience it. When we want
+to find something and we do not know where it is on the web, we go to a search engine like Google and the search
+engine then hopefully surfaces the answer to us in the most convenient of locations. That's the base problem. Now,
+in order to do this, what is the search engine doing? The search engine is going and crawling the web, which is finding
+every URL that's out there, trying to read it, trying to organize that
+information in what might be called an index. So that by having all of this
+stuff in memory in one location, you don't have to once the query comes in,
+you don't have to spend time loading up pages because you already have them. you've already done pre-processing to
+organize them and then when the query does come in, you quickly understand the query. You find the most relevant
+results and then there are many many because you're essentially taking hundreds of billions of pages and narrowing it down to what five or 10 or
+ideally one in terms of what someone is looking for right now. So you go through
+these multiple stages of retrieval and ranking in order to surface the most
+relevant result. So that's the broad problem. One way to think about it is
+it's a billion to billion matching problem, right? So you have hundreds of billions of pages and hundreds of
+billions of queries over time and you need to figure out how to match make across these two. That sounds like an enormously expensive
+infrastructure challenge and I think for the longest time basically only Google
+and Bing had you know done full full webcale crawls and indices. Why did you
+think about you know you as a young company could go off and tackle that problem? It seems like a problem of the giants.
+So it is expensive in the long term. So what's actually interesting is that when
+I was starting the company 3 years ago, you could imagine a world where one some
+of the reasons it was difficult for others to compete which was not having access to great feedback in terms of is
+this a better search result than this? To collect that feedback at scale, there was a problem around human ratings.
+There's a problem around click data. You need to access those. Now it is of course expensive to crawl the entire web
+and index it. Uh but as you think about what agents and the large models that we
+now have access to have enabled is the ratings data can be now created by
+experts way more cheaply. Our view at parallel is that human click data is a
+bug. An agent doing work with search should rely on
+agent feedback, not human feedback. We believe that these models are really
+good at compressing information and we can benefit from a lot of the research that
+have gone into building models and apply it to search indexing and ranking. And
+so you can now make many many arguments and that's the arguments we made back
+then that actually now it's way more tractable as a problem because of the
+existence of agents not just as in technology but as a distinct customer
+and then we figured out a way to go about building this business which did not require us to go spend all of the
+money on infrastructure upfront before we could service a customer. Right? So if you can paint a path of incrementally
+being able to build a increasingly larger and more sophisticated index over
+time as you solve problems for more and more customers that's the insight that
+actually convinced me that this was a viable problem for us to take on. And how do you make that happen? Because
+I imagine these this is one of those things where customers want full coverage day one. So how do you go about
+making that happen? When when we first launched the product, right, we launched an we did not launch a search product
+first. We launched a search agent product first. Our search agent could go
+essentially crawl the web after a query arrived. So if you're doing deep research, you have patience to the
+extent of a minute. And we've had products which sometimes take do 10
+minutes of research. That's a lot of time to be able to crawl a lot of pages if only you have enough of a map to know
+what to prioritize crawling, right? So you can make up for shortcomings like index is often times you can think of it
+as a latency optimization. So if you give up on that dimension, if you're competing with humans, that's why our
+search agents were competing with the alternative being outsourcing to humans
+to curate amazing data. Right? So we said it seems like humans sitting on
+search engines are far way easier to compete with than a search engine on day
+zero. So by building a product that was a search agent to do real work on top of
+web data. We were able to incrementally go build our index.
+H were there some examples of what people built with your search agents? In the very early days uh there were search
+agents being built with us for doing some kinds of insurance underwriting
+workflows and claims processing workflows. People in uh sales were doing
+all kinds of sales data enrichment. people in finance uh who would
+previously and historically go to build a model, collect data by
+sending it overnight to a set of humans who would curate data that would feed
+into a modeling exercise they would do would start using us to do that instead.
+And so we were going initially after replacing where there was outsourced
+human work on top of web data in order essentially to collect evals to run
+agents to figure out what search for agents should look like in the first place with
+empirical use cases instead of theoretical evals. I see you're trading off the crawl for inference time compute
+effectively. Yeah, you guys were started before the term like Neolab came into ex existence
+and you have you know web systems product but you also have like a bunch of AI people from the outside before we
+met for the first time like it wasn't obvious to me how much of a web systems company or an AI company that you've
+built. the more we spent together, more time we spent together, the more clear it's like by some definitions this is a
+neolab. Do you want to talk about like where the research side of what you're doing comes in, not just the like
+infrastructure and system side of what you're doing? So we don't categorize ourselves as a
+new lab. Well, of course you would not. We no because I think I don't think our
+output is a model. Like I somehow maybe my definition is broken. My definition of a new lab is an output is a model. I
+think our output is a complement to a model. What we build is something that multiplies on top of a model in order to
+give either you can call it the model gets better or the agent built with the model gets better and has superpowers.
+Right? So we've always want to be in a place where whenever someone ships a better model, a Neol for example, if
+somebody else ships a better model, they have a higher hill to climb. for us
+somebody ships a better model they have now unlocked four more use cases where we can be valuable. Now whether we need
+to do work that might be framed as research
+that remains. So in that sense we do have to do research but we're also not
+uh pre-training extraordinary large models. In fact, our job is to compress things down into tiny ranking
+models, right? Like I think if you go back to my framing around like this 100 billion to 100 billion matching problem,
+every query is essentially give me a thousand tokens from
+a trillion web pages on the web and make sure they're the right thousand tokens. Like that's the query that we are
+getting effectively from to our search engine. And so now what you have to do and until last week we would give
+ourselves 3 seconds to throw a bunch of compute at read time to do it. This week last week we shipped a product which now
+does it in 200 millconds. Right? So you have now that much time to go figure out how to pick those right. So you will do
+we're trying to organize information in memory across the memory hierarchy in a
+way that we can access it fast. we're trying to figure out how to train what model uh to select the BF thousand
+tokens. And so there's a large amount of research that goes into figuring out how to take a pre-trained model of some
+kind, adapt its architecture for this new problem and allocate effectively
+compute in a way that produces the best output with a limited compute/ latency
+budget. So a lot of these use cases seem like the deep research kind of shaped use case. And when I think deep
+research, at least in the earlier incarnations, it was effectively like an agentic loop with the model reasoning
+and then basically just calling a search engine calling calling Google or some proxy to Google. Yeah.
+Right. Why is that insufficient in your eyes versus what I'm hearing from you is agentic search is kind of a a net new
+capability. So calling Google for every query in a deep
+research thing, it gets you somewhere, right? Okay. If you use parallel search,
+you will for the most part use under half the tokens in your agent, it will
+become more accurate and to be faster end to end. And so you can think of it as but every
+time if you use only half the tokens if your model is context limited or memory
+limited you can now do more problems you can do the same
+problems cheaper or faster. So everything to me when you have a
+infinite appetite for information and relevant information for all kinds of
+work it's at its core an optimization problem around quality cost and latency.
+Every model advancement is about how do you squeeze out more intelligence and then how do you detail it down into keep
+most of it at a tenth of the cost. Right? And that applies to search as
+well. And every time you can produce all of the signal with less noise in your
+search results to give to a model, you now let give the model the ability to do more. And so a lot of the bet here
+is intelligent compute allocation across the model layer and the agent layer down
+to the search layer. The other interesting thing to observe is the interface actually changes uh when you
+think about serving agents versus humans. Humans rely on keyword search.
+With agents, we've had to innovate quite a lot on the what does an agent tell our
+search engine. The more we know, the better we can do. Interesting. So like humans can only hold a few words in in memory basically
+versus an agent. No, I think we can. We're just lazy. Yeah. Right. like we we can we can have a
+conversation. We can hold a lot of words, but when you start typing, we we want to tell Google like two incomplete
+words with a typo in there and hope for the best or rely on some form of a drop
+down autocomplete thing to avoid typing those three words. Yeah.
+In the first place. So, we're fundamentally lazy. Turns out like models less. So fewer typos, better
+specified queries, perhaps longer queries, less for the search engine to guess what the agent might want. Uh so
+you get to solve a different class of problems. One other thing about humans is I feel like we know how to decipher
+the, you know, pre-ai slop that populates many of the top ranking Google
+results, you know, for best product for X, Y, and Z. and you get all the affiliate advertising things. Um, and
+yet obviously they rank highly. I'm very susceptible to it. Are you? Yeah. I'm like I feel like I have this incredible I get to see coming
+a mile away. How do agents deal with things like that, right? Where these are, you know, well traffic pages. They
+have seemingly good answers, but you just know they're not real. Perhaps with parallel, agents have to
+deal a little bit less with that. Let me tell you why those pages exist in
+the first place. Right. Let's work through a simple example. If you ask for a public company's most
+late most recent financials like just the headline revenue number, we can sit here and know that there exists an
+authoritative filing with the SEC which has that number perhaps on page 73 of a
+PDF. But that is the authoritative number. Right now imagine Google decided like I
+care about authority and whenever you ask that query that's the first result you see right and then you click that
+this PDF takes what like 3 and 1/2 seconds to load instead of the second
+that the another page does you're already frustrated and then you see a
+earnings page that's the alternative but here you have to now grab your way to page 77 to find
+your answer. We're lazy. We're not going to do the work. Right? So now there exists an
+entire class of content on the web which is like okay this information is needed
+by a lot of people. It is worth putting it on a page that loads fast where this
+information is above the fold. All of you can go there. It's 99.99%
+right. So you're not like so skeptical when you go there that this is 100%
+wrong. And it's added real value in the process because it identified out of the
+300page earnings report 20 bits of information
+that should be above the fold. Yeah. Right. And so you can call it slop, pre-
+AI human slop, or you can call it catering to a lazy human and being
+successful at SEO, right? The good news is with agents, we're not making the
+agent click around and fumble around and crap a PDF, right? [snorts] We're taking a excerpt from the most
+authoritative place on the web and trying to bring it to the agent's context window. And so we aren't forced
+into this weird trade-off. And this trade-off existed with humans in the first place because like with with
+standard browsers and protocols and everything, we just didn't figure out how to have us point exactly
+consistently across everywhere on the web to the exact right highlighted tiny
+paragraph. Right. With agents, we get to bring that to the agents context and then let it figure out what's next. Can
+you walk us through what actually happens when when your developer sends a query off to your agentic search API?
+It's in some sense pretty standard. So we run some models to figure out what this query is and enrich it to figure
+out how it will flow into the rest of our system. We have a bunch of indexes
+which organize different subsets of the in of the web in different ways. And so
+the first layer will essentially craft queries for each of these different systems. Each one of these systems
+perhaps is our sort of big index. One of these is perhaps our fresh index. One of these is perhaps like you can some
+people will describe it like a knowledge graph. Some people will describe it like a structured index. Like there are a
+bunch of these, right? So you're now deciding which ones this query needs to go to. You're figuring out what is the
+query rewrite for each of these. Then each of these has like a big retrieval layer and then a ranking layer and then
+more ranking layers. So, you're going to try to boil down tens, hundreds of billions of URLs or documents
+uh down into thousands, tens of thousands down into
+specific excerpts and paragraphs in those tens of thousands with more and more bigger models running at each stage
+with different architectures pulling more features to ultimately get
+down to here are the thousand tokens I want to bring back to this AI. I which
+has the highest signal, right? And now if you look at our various versions of our search API, they
+just throw for different latency and cost constraints, different amounts of
+compute at various points in this journey to hit those limits.
+So in the abstract, it's simple, right? What's interesting is
+what each of these models that I described, how you curate and collect the training data for them, right? How
+you build those models and optimize them. The index itself, how you use the
+the memory hierarchy to store it to be able to hit certain
+cost, quality, latency thresholds. What's the north star from a quality perspective? like you know in Google
+there's that you know did you get the result you wanted in the first three answers or something like what is the equivalent north star for you
+so I think of I don't know if I'm right on this but like my take is that a
+billion to billion matching problem is a forever problem and so the real question
+is at what point incremental optimization isn't worth the squeeze
+right so I don't think there is a thing as like okay we're done on improving
+this The question is at some point it's going to get harder and harder to improve this thing and it just won't be worth it,
+right? But I'm hoping that we don't get there actually because like if you think
+of what we're doing with AI, we will have more intelligence that gets cheaper
+every few months and as a result of it, it'll come down to
+having great models which are cheap, having great information,
+matchmaking across a need, and all of the information available to you, whether it's your own or on the
+and doing something unique and differentiated with it to produce more knowledge, right? And anytime you can do
+something 20% better than somebody else, that might give you an edge. So why
+wouldn't you, right? So in the super AGI build
+worldview, it feels like if you can push on quality across web search and in the
+model layer, why wouldn't you? I've heard a point of view that this is so
+fundamental to the model companies that they're just going to own it and and in part because as they're collecting data
+for pre-training that's a very very expensive infrastructure exercise that kind of is your source of truth for the
+for the crawl. Um what do you think of that? I don't see empiric data on the ground
+to support that view to build a fresh web index. I don't think that crawl is particularly
+useful and let me frame why. So if you think of
+what we are building, we're building a complement to models. We like to crawl
+things that people don't like to crawl for pre-training because like if the model
+already was trained on it, like it's not useful. Model companies for the training
+aren't patient enough to go in a completionist way try to wait for really
+slow random JavaScript to load because the number of tokens you get per amount
+of compute you throw at it is like one order of magnitude so two order of magnitude too bad and so like is it
+worth the extra effort to get these tokens for us it is because we're completionist right for them it's
+I'll take x trillion tokens. So that's one. Now I do think this is a core part
+of every agent, right? I my worldview is that if you're buying LLMs
+for doing work for nine out of 10 use cases, you will want
+them to have access to the web and create search infra optimizing for
+agents. So it is a real adjacency for all kinds of LLM inference and that
+supports your view that model companies could should have the best-in-class
+infra for it. So now they can build it or they can buy it and that's the
+conversation and the we will see who builds and who buys and who partners and
+how things evolve. Are you partnering with any of the model companies that you can share? We want to we will I can't share
+anything on that. We did announce and I don't know how your definitions of model companies uh we announced today actually
+that we are working with uh Google cloud to be a search and grounding provider
+for their enterprise agent APIs. So if you think of grounding Gemini models or
+other models available on GCP when you build agents on GCP or chat apps on GCP or do any other inference with LLMs on
+GCP uh when you attach web search to it uh your options
+are Google search or parallel search and parallel search is product integrated
+the integration is optimized we've spent time with technical teams and training
+teams and product teams and commercial teams to make sure that when people use
+Gemini models with parallel like they get exceptional and great results. So
+yes, there are these partnerships now emerging. Uh I bet that there'll be
+several of these. They will all look somewhat unique. That's a big deal from the search king.
+Congratulations. Google's the original Neolab. I I don't know how to frame Google as a model lab
+versus a hyperscaler and I don't know what precise lessons to learn from this
+one whether it applies to other labs or to hyperscalers
+and so we will see the way that I use voice agents and I need to get
+reservation for dinner at night what restaurant should I go to and then that request gets fulfilled by the agent.
+When we talk to a lot of the parallel customers, there's this, you know, background agent, whether the monitor
+product, these agents that sort of are always watching the world or watching the web and when something happens, then
+they go off and take actions and do something with it. Um, it might be worth because if we think about what does a
+thousandx more mean, there's like the depth of research and then there's just like the the you know, what is actually
+initiating the tasks? Is it a human initiating the search or is it agent itself? You want to talk about that dynamic a little bit?
+Yeah. So there's a bunch of dimensions here. Let's go back to for a moment on
+search agents, right? If you run a typical search agent and even without doing deep research, it'll it'll do
+somewhere between 5 to 20 searches even if it answers within a few seconds
+because why not, right? So already if you transition from using a
+chat GPT medium or and all the categories but like somewhere not on the
+high tier like instant low medium every time you write a prompt to it in chat
+GBT it will do five to 10 searches as you dial it up it'll do hundreds and
+thousands of searches. So one interesting thing to observe is like a human action to a multiplier on number
+of searches that happened right so just by using a AI app you're kind of
+multiplying your way to perhaps one order of magnitude more searches now a
+lot of our initial takes on the product and the market were to go after bigger
+multipliers than even that right so we were much more interested when you said I have a
+portfolio of 10,000 small businesses where I have given out credit to for all of them
+every month I have this human process that runs to feel out how my risk is going up or
+down now can we and it relies on a bunch of web data we're trying to use agents for doing this so here a developer is
+effectively The multiplier there is hundreds of thousands or a million in terms of the
+number of web searches that happen because a human goes and programs that instead of now doing this process every month, we can do it every week, right?
+So it's doing a lot of searches when this agent runs every week to create a
+dashboard on the portfolio and a collection of action items that somebody needs to look at. Right? Um, now you can
+go to another example which is even more interesting. I don't know. Do you use something to do uh meeting prep
+documents for you all? That's an agent. There's a Sequoia one. There's a Sequoia agent. Yeah. Yeah. I was I was going to say
+James Flynn, but [laughter] he's one of our great young guys. So I
+use um notions uh agent and you can build custom agents which look into all
+the internal data that you we have at parallel plus all of the
+web data using parallels APIs to create meeting prep docs. [snorts] One time I
+went and created one prompt to build this custom agent. Now it does tens and
+hundreds of web searches for every meeting I have. Every time I build a new agent for a new use case, that keeps
+multiplying. So I think the path to these background agents doing more and
+more and more work all the time for us. It's only going to be bounded by value
+versus spend. You know, like I don't think it's rational right now. Like I'm probably spending more on it than I should be,
+but it's not too much. So I don't care yet. So there'll be some rationalization in all of these agents. Um but I think
+we will deploy background agents to the extent that there is incremental value
+in doing that compute and the same thing applies to searches. All of these background agents would do a bunch of searches.
+Mhm. And so our first set of products were really obsessively focused on these
+in part because we were building growing the index and we decided that our company was based on three dimensions
+quality cost latency and for the first couple of years we said let's focus
+let's ignore latency and let's just nail the other two because optimizing systems
+distilling to smaller models is much more known art than unknown research.
+Right? So once we achieved the best quality search and search agent
+products at every price point, we started working on latency and that's
+what we shipped with a product we call Turbo. Now it is the fastest, highest
+quality agentic web search on the market by a lot. Do you think there are more
+agentic queries than human queries on the web now? I don't think yet. I don't think we
+just given some of the multipliers you mentioned and given the background agents it seems. Yeah. I I think I don't have to remind
+you but we are early like we are very early in agent adoption like you go step
+outside of our bubble people haven't heard the word fable like so we are very
+very early. I think there are now people like me who are probably operating at
+the thousandx. I don't know. What do you think? How
+many Google searches a day did you do 3 years ago before charg
+30? Yeah, I would have guessed something like 20 30. I think today if you just
+look across all of my agents like I I bet they're doing thousandx more than
+that. maybe 100 to a thousand.
+Um, if you count some of the things that happen at my company, which isn't like assigned to a human.
+Yeah, it might easily be more than a thousandx. But I think we are the outliers rather than the norm.
+So I think we're very very early on this journey. I I do think I recently saw I
+think it was Cloudflare that said that in their monitoring of web traffic
+the AI traffic is about the same as human traffic in terms of
+page reads which is slightly different from searches because it includes perhaps all crawlers that are out there
+and a bunch of other stuff but I think it's it's going to happen. So maybe this
+is a good segue to talk about a topic that I know you are passionate about which is the economics of the internet
+as we know them. Some of the kind of fundamental assumptions there you know human eyeballs scarcity of attention
+seem to be falling right in front of us right now. Are the economics of the internet broken now and what's going to happen?
+Yeah. Yeah. No, I think this was perhaps part of the thing that totally convinced
+me that this needed to be done by me and build parallel. Uh I know most people
+hate ads. I used to do ads and build systems for ads. I love ads. Oh wow. Huh.
+I love shopping. Okay. Yeah. So you get good ads. I don't know if I love ads, but I intellectually
+love ads because ads is the reason that so much amazing content and technology
+is available for free to all of us, right? Like Google search wouldn't be free without ads. Twitter wouldn't be
+free without ads. And these are truly useful pieces of technology. A lot of
+content on the out on the web out there that we can access for free wouldn't be free if not for ads. Um, and so ads is a
+very efficient monetization scheme. It's a very efficient monetization scheme
+because it is exceptional at differential pricing, right? So most
+queries Google loses money on. Some of them make it up and it's an extraordinary business with
+extraordinary margins. Same with Twitter. like most users. Exactly.
+You're welcome. I'm subsidizing the free the free information you guys are getting. You are subsidizing [laughter] all of us. Thank you. Um but I think ads is
+extraordinarily efficient at differential pricing and monetization on the web which is why it has been a
+dominant business model. Now the core assumptions as you noted going into it around
+limited human attention to translate uh into outcomes. if humans don't show up
+and their agents show up on the web like what does this mean? How does the
+business work? Um, and yeah, I think this was the if we don't figure out a
+new business model, we're seeing it already, right? Like people are going to say, okay, I don't want my content to be
+accessed by an agent because I have a business model for humans. So I actually want to go
+pay someone to SEO optimize myself so more humans show up but then if their agent shows up I'm going to cut it off
+right which seems confusing and disconcorted like okay ultimately this
+agent is acting on behalf of a human but we haven't found business model
+alignment in a way you can't monetize that visit you can't monetize that visit
+so let's say you are in the business of subscriptions, right? So, you get a bunch of you get a thousand humans and
+you convert 20 of them into monthly subscriptions, right? You don't know how
+that loop works yet with agents. You can't distinguish. You don't have
+statistics. You don't know if these will lead to subscriptions or they'll just keep stealing your content as nameless
+agents. And so there are real challenges around the old business models breaking and us not figuring out real scalable
+new business models. Right? So if you own highquality content and you currently put it on the web,
+your one available business model pre-parallel was to be in the head and
+be able to transact with the lab on some fixed fee contract. That's literally
+which includes some amount of training and liability and then inference time access right that was
+your one option that option is not available to most content on the web it's a very head
+phenomena and even for the head it is a broken
+business model because when AI's or inference grows let's say 7x this year
+and another another 7x the next year. On this 50x, their deal size is not growing
+50x. Like none of them after signing a 2-year deal believes that their share
+isn't going to decline materially at renewal. And so these are like fixed
+price constructs in the world of AI inference. And so which doesn't drive for sustainability for for all of these
+businesses. Now our solution is trying to learn all the lessons from my work at
+ads on having transacted like I sold Twitter data to open AI having
+transacted on that side uh to figure out what actually might work and be
+incentive aligned. So what might work? Efficient differential pricing.
+Paying for differentially a lot for extraordinarily high value content. Paying a lot for
+high value work accessing the same content. So it's differential on both dimensions. Quality and value of work
+being done with it. Uh and a way of doing this scalably and not just with
+bespoke deals. So those are the properties needed for any reasonable
+solution and the biggest property of it all is incentive alignment right like at
+what point do people want to collaborate into this enterprise?
+Why do the model companies need to pay anything at all? Um you should ask them. Um my
+understanding is one you want
+fresh data during inference time to be able to display it in products like chargot. Two you want training data and
+three you want some liability protection for training that you already did.
+And so the payments are some combination
+of these three things. And I can't be sure of like how they value each of
+these three. You said, you know, even a very simple query will go do 10 searches. And so how
+do you do attribution between all the different sources that you know boil down to one paragraph response?
+Yeah, at parallel we like to build models. I heard. [laughter] So uh no I think the the it's a it's a
+it goes back to my point around incentive alignment. So what are you let's before we try to build a model let's try to figure out like if you were
+going to try to do this intellectually theoretically how do we go do it. So you have to ask the question of okay how
+much incremental value did somebody's content add right so you can you can run
+all of these simulation exercises you take one piece of content out of the
+corpus and then you say let's run the agent let's see if the quality of our outputs declined how much to claw back
+that quality perhaps if I threw a little bit more compute or a better model in some way could I claw back that quality
+Oh, I could. It cost me a scent. Huh? I could get the quality I lost by
+not having this source. My alternative was to throw more compute,
+a scent worth of compute to get that same quality. It might be a different result, but as far as the end
+[clears throat] customer value is concerned, it's the same quality. And so you're like, okay, this source is worth close to a scent. Feels like, right,
+that's intuitive. Now the formalization of this kind of an intuition is the the the core framework we use
+it's called shappley values. Uh yes let's go. What's a sharply value? It's a
+music's my ears. It's a game theoretic. You're you're a game theorist. A bunch of game theory. Yeah. Yes. [laughter] Shley values is this
+very theoretical mathematical concept. It is used in sharap values in feature importances for those who are ML folks
+here. Let's say the three of us collaborate on something and the whole
+is bigger than the sum of parts uh in that moment. The theoretical question is
+okay how do I divide up this sort of bigger pie that we created by collaboration. So all three of us have
+incentive to collaborate. Right? And Sharappley values is a mathematical way
+of effectively answering this question. Right? Now that sounds amazing, right?
+Like you could if you're co-founders, you could figure out how to divide equity. Unfortunately, it's not that useful.
+It's not that useful because in order to compute Sharley value, you need to simulate all words where
+some subset of the two of us collaborated but the third one doesn't. and play out those realities to then
+impute back to today in terms of how we should divide the pie which in practice you can't do most places right in ML
+models when you do feature importances you kind of can you can hold a feature back run your model and see how well it
+did in web search we can run simulations of if we did not have access
+to this URL or this domain or this collection of them how would the agent perform we can if you're if you're good
+at eval else. If you're good at assessing quality, you can build that data by running various scenarios,
+collect a bunch of this data and then you can train models to your favorite thing.
+Favorite thing. So the challenge with Sharappley values is computing Sharapply values in our context
+is way more expensive than the amount of dollars we spend on the agent. Forget the amount
+of dollars we want to pay a publisher. Right? So to compute a content owner to compute that a content owner gets a
+dollar. If I decide to do the full sharply value computation that might take several dollars, right? So it
+doesn't make any sense except you can really well estimate them if you build
+the right kind of data and models around it. But we have confidence that our
+estimations are good and that this is sound theoretically that if there was
+perfect information symmetry, people would want to collaborate. So the same
+way in the old ads days, people did second price auctions and believed for better or worse that people would reveal
+their true bids in in an ad auction and end up paying less than that.
+uh once feedback loops get established in a market like today everything is like an auto bit right like most people
+are measuring ROI when they're doing advertising and running on auto bit instead of making a bits uh I think a
+solid foundation based on incentive alignment that chaplat drives will
+ultimately maximize participation of content owners uh into this as well
+as content seek speakers via AI in an optimized system and we have some
+positive evidence to support it. Like we've had some interesting partnerships that we've been able to do and announce
+uh and yeah like imagine sitting with content owners and explaining Sharley
+math takes a moment. Uh but ultimately once once you pull out the properties
+right that you participate in the value if you have unique differentiated data
+you get paid more. If a banker in an expensive job reads your
+data versus my retired dad reads your data, the banker ends up paying more for
+that read, right? because it's a part of high value work and
+the the macromath also seems to work like if you're going to spend a lot of money on inference on LLMs for knowledge
+work if we allocate it like what 2 to 10% of
+it to data on the web that's way bigger
+than all web data business models today
+outside of like walled gardens like Facebook and LinkedIn like so the
+macromath supports it. It is a scalable approach and as
+agents on the web grow an order of magnitude year on year. It's like by my
+calculations like we're 12 to 24 months from this math being able to give
+meaningful dollars for a very wide range of content owners on the web.
+That's very exciting especially at a time when you know you see the traffic
+data the stack overflow plummeting. You see a lot of the human internet as we know it going away because of
+incentives. It's very exciting to see how you're thinking about incentive alignment for people to keep publishing.
+Yeah, it's it's why we started the company. Why is a company called Parallel?
+[gasps] The company's original name was Sharley
+Inc. Really? It was when Did you know this? I knew that. Yeah. When I incorporated,
+I'm telling you, I was obsessing about everything to do with the problem space. So while knowing that the first set of
+also one sharing is a terrible name for a B2B product, it was not going to be
+the long-term name. So we we in but I incorporated as Shappley Inc. for lack of a better word and Shappley.ai
+happened to be available. Shappley.com is a parked pawn
+domain. So it was not going to be a name. I went
+around not talking about my company as Shappley and my badges at all events
+used to call it NCO or stealth company. So and it took us almost six 8 months to
+figure out what the real name of the company will be. We ended up at parallel in part because it like one at the time
+we're doing a lot more in parallel and two we started visualizing this sort of a parallel web built for AIS and how its
+properties are different and this metaphor that when you publish you're
+now thinking of as we all are now of two audiences okay I'm going to create a
+page I know humans will read it what should it look like to them And then how should
+I make sure that agents can read it too? So it feels like you're dual publishing
+to two audiences. And so we had this like this parallel web for agents will emerge. And so that's why we started
+liking parallel. Love it. I actually was thinking about this recently with the um you know things like earning transcripts, right? Like I
+feel very confident that more people are consuming earnings transcripts through
+agents than are actually certainly listening to the audio and honestly probably been reading the transcript itself. So there are these like very
+high value portions of the web that have flipped already to being agent first and obviously the communication has not yet
+flipped. Um, but I think if I were a public company CEO today and I was doing
+an earnings report, I would make very clear that the thing that I'm saying will be transcribed and interpreted
+correctly by the agents, not just by the people listening. Theoretically, yeah, same for us when we're publishing
+docs for our APIs. Like, yeah, it's like our customers are building AI
+solutions. They are using AI to do it. It's their agents reading our docs
+and code in our FDKs. It's not humans fumbling around docs pages for the most
+part. So in fact for us the primary audience is a agent and that's how we test our docs.
+A parallel web for agents. It's very cool. Um maybe close us out. tell us just give
+us a snapshot of where where parallel is today and if everything that you hope to
+build comes true what does parallel look like what does the world look like what's your role in it I think of three levels in this journey
+level one is people are building simple agents that use
+the web more as like a tool like a web search tool because it's familiar because the first set of agents we built
+to your point was just like model and give it the same tools Because these models have been trained to use all the
+tools human have been humans have been used to and let them do work. By and large if you think of like most
+work it's there today of or inference it's there today. We have now started
+seeing some subset of customers who are in this world where they're building more sophisticated
+multi- aent systems which use sub aents and have agents wake each other up or
+archive crate uh in interesting ways right people are seeing that as sub aents most familiar one is sub aents
+with encoding agent harnesses but we see a lot more of that like if you're building an AI scientist uh some of
+those systems are very interesting, very sophisticated, very longunning
+and like just throw large amounts of compute and data at a really hard
+problem. Uh and I think the third layer for the web specifically is the web goes
+from pull to push. So today by and large across the first two modalities I described either an agent is calling a
+tool or a sub agent but it is telling it a request saying go find this for me
+right now and I think where we will end up in a couple of years is a variety of
+use cases will be the web parallel
+call me if this happens so that my agent
+can do some work or a human can do some work. So I use this line with my team
+all the time which is like imagine like agents are everywhere and they can do a lot of things right if there is
+something you can do today and it's worth doing and we still have GPUs available
+we'll just go do it right like we won't like we won't be like oh let's just do this tomorrow for the sake of it if it
+can be done today do it so what will we do tomorrow we will do tomorrow work in
+response to something that circles through either another agent's work or something
+changes in the world as visible in satellite imagery or some customer
+commentary that happens. Some agent finishing some compute, a human having a new insight to trigger work. But there
+are going to be a few feeds like this which will drive new agentic work
+tomorrow. And one of those feeds is going to be everything that changed on the web, which is really exciting for me
+because then you're framing not a point in time need
+a long-term here is what is actionable for me. If
+something like this happens as evidenced by all of the information on the web that is changing all the time, call me,
+right? And then I'll run my agent on it. And so we get to then allocate compute
+onto the entire web all the time on behalf of all the customers and that's
+really exciting. That's awesome. Really ambitious vision. You're clearly extremely passionate
+about about this and exciting to see you building. Thank you so much for joining us today, Prague. And thank you for joining us, Andrew.
+You're very welcome, Sonia. Thanks. Thank you, Andrew, for your debut.
+[music]
+[music]
+[music]

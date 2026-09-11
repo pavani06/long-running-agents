@@ -1,0 +1,225 @@
+I'm so excited to bring up Lynn Chow. If
+you want reliability, scale,
+performance, you couldn't find a better
+better person than Lynn to deliver that.
+As Lynn sets up, I'll tell you a little
+bit about Fireworks, which is one of the
+leading, most reliable, most performant
+inference providers in the world. And I
+can't wait to turn it over to Lynn to
+share a little bit about how they do it.
+Cool. We can get going. Yeah. So today
+I'm going to talk about the what the
+what's this future state of inference?
+What does it look
+like? I guess u many of you are uh very
+interesting in that topic. So I want to
+start talking about inference through
+the eyes of app developers and
+innovative product um developers. you
+you start you you first start from build
+and ideation into scale after your
+product market fit and I want to
+actually look at look at that those
+phase through a very simple lens of view
+is eventually you're all doing alignment
+towards your audience it's massive
+alignment process uh you're doing from
+the beginning to the end so this
+alignment actually has multiple phases
+here you actually want to optimize
+for the user behavior you want to drive
+and then from there your product design
+need to uh in tune towards that and this
+has been a area that has been heavily
+studied in in the past many many years
+and a lot of tools has been enabled for
+you to do product analytics and login so
+on and now in jihase as model becomes a
+intrinsic part of your product stack and
+this part of alignment is completely new
+and I would say it's very weak in in in
+this phase because app developers just
+use offtheshelf model most of time and
+how to
+infuse your product knowledge into your
+model is a new area that most people
+doesn't know how to do and the best way
+they steer those models through prompt
+engineering. So but if you look at a lot
+of successful applications and products
+as we talked about earlier a lot of data
+flying wheel is the mode you're going to
+incorporate into our product and stand
+out from that point. So this is a very
+interesting um area that there's not
+much work that has happened but we have
+seen we have worked with many high fast
+scaling startups and we have seen a lot
+of success uh in the areas who can mask
+that
+deeply. Again coming to this phase is
+the product design to user behavior
+alignment is in application and the
+future inference to product design
+alignment is off application space and
+how to make it easy accessible and uh
+high quality is the next generation
+question. More specifically, more
+specifically, this alignment is very
+simple. The the the idea is very simple
+is to align data distribution in your
+application workload into the data
+distribution in your training data of
+the model essentially. But that align
+alignment is very hard to do because the
+researchers has to make assumptions who
+is going to use uh these model to solve
+what kind of problem and often time
+those assumption may not fully connect
+with uh real life applications use cases
+that is almost always guaranteed there
+was always gap um as well as the
+inference system design it is not one
+sizefits-all it also need to use your
+production data to drive maximum more
+amount of
+optimization. So I will say we talk a
+lot about uh scaling law in training,
+scaling law in inference. I think the
+future of scaling law is actually across
+three dimensions in inference across
+quality, speed and uh user concurrency
+which is cost. Um and when we uh think
+about that we would talk with many many
+startups or enterprise coming to us and
+I'm like the question is what do you
+want right what ideally what is the
+ideals that you want the basically said
+they want open ice quality light speed
+and uh uh high concurrency as if they
+are running like fraud detection right
+so this is they want all of that so
+basically it becomes a multi-dimensional
+optimization problem for inference but
+specific for a particular application.
+That's the future is the heavy
+customization of of scaling inference
+and optimizing inference towards a
+specific application. That's the future
+scaling
+law. And the approach to do that is
+actually not look at inference in
+isolation. The approach to do that is to
+combine post- training and inference to
+do co-op optimization. That's the area
+to drive massive amount of innovation
+and acceleration. And ultimately the
+goal here is to drive down extremely
+high inference cost which is today's
+state uh to 10 times or 100 times lower.
+Imagine this is a we are seeing a
+iceberg situation where the water line
+of inference cost is very high right now
+and when the cost is driven down to 10
+times 100 times lower and all the
+application which fit into part of
+market fit can scale into a sustainable
+business will be much much bigger. So
+that's that is goal of the future
+scaling
+law. The bad news is it is very hard to
+solve this problem. It is very
+hard because to do this
+three-dimensional optimization across
+quality, speed and cost, there are a lot
+of elements to put together. Those
+elements cover through hey I I don't
+want to predict one token at a time. I
+want to predict 10 tokens at a time and
+how to do that. How do I align numerics
+the positions towards your data
+distribution in your application? How do
+I align uh the uh the selection of
+hardware with each hardware skill has
+its own unique advantage and benefits
+all different towards our patient data
+distriution. How do we shard the model
+towards your application distribution?
+How we do we do cross host distributed
+inference towards your application
+distribution? How do we select the most
+optimized kernel towards your
+application distribution? and how do we
+have variety of tuning mechanism for
+quality towards application. So in
+combination it can lead into more than a
+100,000 combinations to pick and choose
+from. So it's a hard problem.
+The good news is we are set to solve
+that problem and we have been uh focused
+on investing R&D to deliver and solve
+complex um this comtorial explosion
+problem
+um and this is a little bit uh too
+detailed um but I I don't have a good
+way to capture like what we have built
+uh at fireworks at the bottom layer we
+have a virtual cloud infrastructure
+where we take over the uh consideration
+of managing all the complexity across
+you know where do I find GPU uh which is
+a guaranteed to have high quality high
+reliability for me to scale my
+application um and we also build on top
+of multiple different hardware from
+different hardware vendor from different
+SKUs uh where some hardware has much
+higher flops some hardware has much more
+memory uh bandwidth that is good for
+different formmanship of your
+application specifically
+to a variety of models. uh you can pick
+and choose from open model um libraries
+where you can easily steal towards your
+application need u very different way to
+tune we tune for speed we tune for
+quality and and so on various different
+mechanism I'm very excited we're going
+to talk about um how to incorporate your
+production data to reinforcement uh
+tuning towards your application needs
+and on top of that we have a lot bunch
+of u developer tools make it super easy
+to and accessible
+So um we have launched our developer
+facing platform self-s serve for a long
+time um in the this is in um past and uh
+year and a half. So a lot of lot we have
+seen like the most exciting thing for us
+is to see um through this lens of
+alignment product lot applications um
+has able to on board and and do
+experimentation on our platform and the
+scale. So very interestingly we have
+seen that a um food chain company um
+which is one of my favorite um they use
+our service and scale from um running
+one shop of a AI feature very
+interesting AI feature into um you know
+a thousand shops in three months. uh we
+also seen a software development company
+roll out their uh AI feature from uh
+100,000 developers to 25 million
+developers within three month. So the
+fast scaling is is fascinating here and
+and we want to make sure like this uh as
+they scale they get to the most optimal
+sweet spot across quality, cost and
+speed. Um with that said it's very easy
+to get started and love to hear from you
+all all the people here with the
+application what are the next generation
+uh problems you are facing for for
+inference and love to chat more.
+Thank you, Lynn.

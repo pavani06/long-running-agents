@@ -1,0 +1,413 @@
+Nice to meet everyone. Um I am a as Jake mentioned core maintainer of our open
+source tooling at Langchain. So I've worked on everything from Lingchain to Lingraph and now most of my time is
+spent on deep agents. Um I kind of have a history in open source. I spent about a year and a half maintaining Pyantic
+and then kind of helped start Pyantic AI. So I'm very passionate about kind of the open source for AI space.
+Awesome. Awesome. Thank you. And uh I I'm Jake. I'm a deployed engineer, which
+means that I work with a variety of teams of all different shapes and sizes who are either building agents or
+thinking about building agents. I've seen teams use a variety of different frameworks in their approach to building
+agents and I've seen teams roll their own custom implementation or use their own um you know custom solution.
+What's really interesting is that typical agents excel and are actually pretty good at the regular tool calling
+loop that can handle relatively simple tasks. Where it gets challenging though is when agents are kicked off to do
+longer running tasks. Maybe they're doing research across a variety of different topic areas. Maybe they're
+writing to files. Maybe they are doing some kind of delegated planning and
+having sub agents. that becomes tricky and that's the problem that deep agents
+and other agent harnesses that we'll touch on today aim to solve. So without
+further ado, Sydney, how would you describe deep agents in a sentence? What is what is deep agents?
+Yeah, so deep agents is a batteries included harness for building agents that excel at complex and longunning
+tasks. That's my sentence. There we go. It's a good sentence. Harness you mentioned harness. Let's
+kind of touch on that. I think that if uh if you're across X if if you're you know reading about different developer
+forums you'll hear the word harness a lot. What do we actually mean when we say harness? Harness is sort of the surrounding
+support that we add onto that core model and tool calling loop. So we're all very familiar with like you have a model and
+some tools relevant to your context and then you send the model some prompt and it runs in a loop until it decides it's
+done and then produces some final output. But there's actually a lot of kind of complex engineering that you
+need to have built into all of the stages of that loop. And so the agent harness is kind of all of those pieces
+added in. Okay. Yeah. Yeah, that makes sense. And and given that's what deep agents is,
+what kind of agent apps or or what kind of applications do you see as the most common or the most applicable for deep
+agents? Yeah, perhaps the one that folks are the most intimately familiar with in this
+space is coding agents. Um, so an agent like Claude Code we would consider a
+deep agent because it's doing you know those longer running jobs uh needs lots
+of context and to kind of be able to manage that context over a long horizon. Um deep research is another common use
+case. So specifically answering questions or solving problems where you need access to tons of different data
+sources um and you know you expect those research operations to take a long time.
+Okay. Yeah. Yeah. Yeah. And and if we're sort of thinking about the way that deep that deep agents are different to
+traditional agents, right? I think that um you know around around 2023 the whole react agent paper came out which is
+reasoning and action agents agents having access to tools. How did like what are the components that make up
+deep agents? I know there's you know there's there's things like file systems and things. What are the main areas that
+make a deep agent or or that agent harness different or an extension of the
+React framework that we're all so familiar with? Yeah. So, I'm going to touch on like kind of a couple of the pieces of the
+harness. You're probably like, Sydney, what what are you inserting around that model and tool calling loop that's very abstract? Um, and then I think we'll
+dive into a lot of these pieces in more depth. So, the first thing, again, you're probably familiar with this if you're a like cloud code user, is a
+planning tool. Just like humans are better at executing tasks if they like write down what they're going to do and
+then check things off as they go. Um agents are also better at executing complex things if they keep track of the
+work they're doing. So planning tools number one. Um sub agents are super helpful. So if you have a lot of work to
+do, it's super helpful if you have assistants that can go off and do work for you and then come back with some
+report. Um so sub aents is number two. Um, perhaps the one that I'm most excited to talk about is access to a
+file system or kind of more abstract uh a backend where that agent can keep
+track of files, memories, skills. These are a lot of like buzzwords. Um, but
+just sort of the core um abstraction used to keep track of all the context.
+Um, and and that kind of includes sandboxes as well. Um, and then, uh,
+yeah, so that's that's kind of some of the core pieces. One last thing I'll mention is we keep saying long horizon
+tasks, right? Um, and one thing that's really hard to get right with agents is summarization. So models have context
+windows. They are getting longer and longer, but or larger and larger. Um, but we're pushing agents to do tasks
+that always like hit that limit, right? Um, and so you want some sort of like built-in summarization that happens so
+that you never actually hit that limit. You like work on your task until maybe 80% of your window is taken up and then
+you like squish back down and then you can keep doing work. Um, so those are some of the core things built into the
+harness. Okay. Awesome. Yeah. So, so to reiterate a planning tool, sub agents, a file
+system, uh, the execution environment, so sandboxes, am I missing anything? Summarization. and sum summarization
+three or sorry four key areas I s I think sort of is is really interesting to dive into in a little bit more depth
+today so let's sort of start with file systems what make file systems a really powerful feature or or or element of
+building and working with deep agents I know that you know uh when I'm using clawed code or when I'm using cursor
+agents they're accessing my codebase which is a file system so sort of what
+what does it mean to have a file system in deep agents and What are some what are some common, you know, file systems
+that people might use? Like what does that look like? Yeah, great question. So, um I'll start with kind of the example of a local file
+system that we're all familiar with. Maybe not something you would use in production, but great for uh just
+general development. File systems are kind of the key to context engineering.
+Um it's where you can offload information that you don't want to squeeze into the prompt all at once, but
+you do want generally accessible to the model. Um, in my mind, the file system is basically where you can practice what
+we call like progressive disclosure. Um, and so you give the model enough information about what's in the file
+system that it can access relevant files when it needs to. Um, but you're not overloading the context window. Um, and
+the the relevant information can take a lot of forms, right? Like sometimes that's prompts in the form of skills,
+sometimes that's documents that have memories, sometimes it's your like relevant data for your context.
+Okay, got it. And and so you mentioned that was for local a local file system is is one that's quite popular. What if
+I'm now sort of starting to think about how I can productionize and and and build deep agents that have access to to
+something that is that is more than something that locally lives on my machine? I'm sure that you know us speaking about this today will will
+hopefully sort of catalyze a lot of people to go and and see how they can build this and and the different types of applications that they can build. So
+obviously I'll start locally but where will I go from there and sort of what is the file system what does a file system
+landscape look like when I want to move beyond local development? Yeah, so we talk about file systems
+because that's an abstraction that's pretty easy for an agent to understand and interact with like you can read and
+write files etc. Um, but really what we're talking about is kind of abstract backends. And so where is your agent
+going to go to find the um vast sources of data that are relevant to your application? That's probably databases,
+right? Like surely you have important information there. Um I personally have a lot of like helpful information in
+notion for example. Um and so you or in GitHub you can imagine all these like data sources that you want your um agent
+to be able to interact with like their file systems. Um yeah yeah yeah yeah that makes sense. Uh
+in terms of the work some of the work that I've done as a deployed engineer working with teams who actually use file systems. I've seen that people will use
+them for example to offload large tool calls and things like that. So if I'm
+sort of thinking about building an agent, you know things that are familiar to me if I build traditional agents are
+agents that can call tools. how how does a file system like why why would I use a file system to to store large tool calls
+and sort of like why is it helpful for me in in that instance? Yeah, so we're definitely getting back to the idea of like context overflow
+here. If you're calling tools that um return extremely large results, maybe
+you're doing data analysis um and you're getting huge files or just you know getting multimodal results that are
+incredibly large. Um those are going to start to fill up your context window quite quickly. Um, and it's probably not
+necessary that your agent has access to those uh that information in its main
+prompt all the time. Um, and so the file system is a great place to like offload tons of data. Um, and then you know
+point the agent to it in the case that it it needs that information. Um, and and the one last thing I'll say is this
+is all sort of in our attempt to optimize what context you're sending to the model so that it can perform and do
+its best. Um and so tool input and output offloading is one of the
+strategies we use so that we don't have to summarize as often because when you summarize you inherently lose
+information the agent is more likely to you know lose track of its main goal etc. Um and so those are kind of um
+intermediate steps we can take to like reduce context size. Got it. Got it. So in in summary, we're
+not storing things in the context of an agent anymore. we're just we're storing a reference to where that context lives and exists in the file system. And I
+think that's sort of the key unlock there is that is that I can now maintain and and have reference to all of this
+information but but not have it clutter the the context window, not have my LLM
+calls be slower because there's large context. Would you sort of agree that that's that's one of those core benefits
+there? Yeah, definitely. I think like I really like making the analogy that agents are like humans, right? Like I already
+mentioned, you know, they use a planning tool to keep tack of the keep track of their various tasks. And I think similar
+to humans, like if you send a ton of information all at once, they're more likely to get overwhelmed um and have
+trouble. So if you can kind of control what you're sending there, just like humans, they're they do a better job.
+Got it. Got it. And uh and does deep agents give me flexibility with with file systems and sort of like Yeah, I
+guess like I I have access to a variety of different options, I presume? Yeah. Yeah, it's super flexible. So we
+have a couple of built-in ones um local file systems. We also uh deep agents
+runs on langraph which is our core agent runtime which has kind of short-term and long-term memory stores that are built
+in and accessible as well. Um but then we also have kind of a generic backend protocol so that you can add in your own
+backends um and file systems whatever those may be like I mentioned notion, GitHub um databases etc. Um and I think
+the coolest thing is that we offer a like composite backend option. So maybe
+um your you know documentation is in notion and your um customer information
+is in some other source and so you can like combine those in a singular back end. Ah awesome. Awesome. Hey and so what are
+skills and and why do I keep hearing about them on X? Yeah it's a great question. So skills
+are just prompts. They're fancy prompts, um, but they're really easy to share. Um, and they can help agents, you know,
+really narrow in and do a certain task well. And so I use the like progressive disclosure buzzword earlier. And all
+that that means is like you give the agent a little bit of information like, hey, you have access to this like write
+PowerPoint skill and this code review skill. Like if you decide that you need them, you can go load them from this
+location. Um, and so then I, you know, I'm like, "Oh no, I'm late for my meeting. Can you help me generate this
+PowerPoint with these docs?" Um, and then it'll go and load in that skill into the prompt. And so you're not kind
+of cluttering your prompt with this like, you know, hundreds and hundreds of lines of like PowerPoint specific
+information. Um, but when you need it, you can load it in. Got it. Got it. Got it. Can I can I get a show of hands of of people who use
+skills or or at least are familiar with Skills in the audience? Yeah. I mean, wow. Look, we've got a we've got a we've
+got a pro crowd here. I think that I think that skills are really interesting and I think that uh the the the real
+like unlock is that skills as you mentioned are are just like it's an extension of a prompt and skills are
+becoming very sharable like talk a little bit about about why I would want to share a skill and sort of like what
+what what unlock that allows me to do when it comes to building agents like I I see you know um you know we've all
+probably read and seen about um openclaw and claudeb and there's there's there's I think claude or opencore has like
+skill hub like what's the idea of of sharing these and what what does that what does that allow my agents to do?
+Yeah, great question. So, I think we've seen skills blow up in a way similar to like MCP blowing up, right? Because it's
+like, oh my gosh, we have this standard that makes it easier for our agents to like be more capable. And so, like, let
+me just share this folder with my co-orker that's helped me like improve my code quality, right? um or improve my
+um I don't know security of my code or just anything like that. And so um sharing skills are just like ways to
+make yourself more productive, make your agents more productive. Um and because it's standardized, it's yeah, I think I
+think very very popular. Yeah. Yeah. Yeah. No, that that makes a lot of sense. Thank thanks for kind of diving into that. So earlier we
+mentioned sandboxes and and sort of execution environment again. You know, if I if I talk about X, I see that a lot
+of people are now talking about where the execution of their agent exists. And I think that, you know, you have
+companies like like modal, like Daytona, you have these companies aiming to make it easy to access a sandbox. And I think
+that as agents become more powerful, people are leaning on them to do more things. And so you know the natural next
+step is well now if it's going to do more then I at least want to be sure about the execution environment and I
+want to be I want to make sure that this is this is executing in a way that I have control over. You know we spoke
+about open core that's great but I'm likely not going to release that on my enterprise data right like that's why
+people have it in a Mac mini that's why people isolate where it executes. So, so
+what what role do you think the execution environment plays in in the rise of these more powerful agents and
+sort of how does that how can you work with an execution environment with deep agents? Yeah, great question. So, um we I'm
+going to like give a little bit of of preface here. So, all of us developers are very like intimately familiar with
+how uh powerful and transformative agents can be, right? like agents help us write code at rates that we could
+like not have imagined maybe even a year ago. Um and so we know that coding agents are really powerful. Um but I
+think like agentic AI has yet to have quite the same impact on other industries but I think the like avenue
+into that is not coding agents but agents that write code and sandboxes are the key to that. Um and the reason is if
+you can write code to automate work you can do really powerful things. So code is super helpful for like data analysis
+and research and that is like you know invaluable across industries. And so if you can ask your agent to you know go
+look at your database and analyze things um it's going to do a much better job of that if it can like write scripts and
+use those to analyze the data and generate figures um and things like that. Um, and so I think we're going to
+start to see this emergence of agents that rely a little bit less on tool calling and a little bit more on
+executing code in sandboxes or ripples. Ex executing code in sandboxes and ripples. Yeah, that's really
+interesting. And and for context, guys, uh I'm I'm working with a variety of different companies who are now thinking about this. They're now building data
+analysis agents that are executing SQL, but you want some safe place to do that SQL execution, right? And and so I I
+think it's really interesting and I I think that it's also really interesting when you sort of look at things through the lens of everything can sort of be
+solved by code or or rather like you can break a problem down into a way that is
+resolvable by code, right? Like that's that's sort of um you know the beauty and and the power of having like exec
+tools and things like that where you can use bash and gp and all of these tools that we see claude code and things like
+that use. So uh that definitely makes sense and and so you mentioned that it's
+very easy to work with sandboxes with deep agents. Why is it important to have
+flexibility in the control of where things execute and sort of like what does that interface look like if I'm
+working with the deep agents package? Yeah, that's a great question. So sort of the name of the game for us is flexibility, right? Like when langchain
+was released long ago, one of its kind of core pillars and still to this day, one of our core values is that we
+produce like model and provider agnostic solutions for folks. The reason for that is that the space is moving incredibly
+quickly. And so the model that is right for the job, you know, today is maybe
+not the model that's right for the job next week. Um, and I think the same is true, you know, with sandbox providers.
+We mentioned we have all these integrations. Um and yeah, our foundations are in kind of open source
+and open provider. Um and so we are still kind of advancing that with deep agents. And so you you know users
+basically get the benefit and certainty that they can, you know, not experience that like vendor lock in and um try out
+the latest and greatest without having to deal with changing code on their side. Yeah. No, that that that makes a ton of
+sense. And so we've sort of given an overview of what deep agents are. We've spoken about file systems. We have
+spoken about skills. We've spoken about the execution environment. If I'm now someone who is building and developing a
+deep agent locally, I'm writing it in code. What's the next step for me? First of all, like what are the challenges when
+it actually comes to deploying an agent? What what what does it mean to deploy an agent and and what are the challenges
+there? Yeah. So, if you're deploying an agent, things are things are getting real, right? Your agent is like going to do
+things, make an impact. Um, and despite the value in like fully autonomous agents, you might want a little bit of
+like human oversight um or human in loop before really sensitive actions are taken. Maybe you're working on an email
+assistant and you want to, you know, give a final stamp of approval before you're like sending your email to your
+boss. Um, maybe you're working on a travel assistant agent and you want
+users to be able to click an approval button before it charges their credit card, things like that. Um so first
+class human in the loop support is kind of the first thing that comes to mind. Um the next thing is like durable
+execution. Um so you want to be able to kind of observe all of the steps that
+this agent is taking. Um and you know roll back to previous steps and try things again with different different
+inputs um and know that you're uh you know all of those steps are documented
+etc. Got it. And and also as well you know we spoke about agents being long running is
+is the is the infrastructure different for that and like yeah the presumably as
+well these tasks are now are now you know running for for extended periods of time. What does that also mean for the
+deployment story? Yeah great question. So um one of the important things that comes with
+longunning agents is that you probably want your end user to not experience like really horrible latency. And so we
+in our underlying runtime which is ling graph as I mentioned treat streaming as a first class primitive. So you can see
+like live updates and you know be able to um interrupt and intervene and kind of redirect your agent etc. Um
+but I think also one of the challenges with longunning agents is you're going to have like really hard to debug and um
+understand traces. Um yeah, that might get into our next subject a little bit. Maybe I'm jumping the gun here.
+No, no, no. It's perfect. It's perfect. That That's actually where I want to go. Uh because obviously there's a variety
+of different steps involved when having an agent that you want to deploy to production. Right now, you've taken the leap and you've made it available to
+different users and it's being consumed. Right now, you're on the hook for the way that that responds. Uh you are, you
+know, responsible for making sure that it delivers high quality uh solutions to wherever you're wherever you are
+applying it. talk to me about some of the challenges in in
+observing and evaluating deep agents. You know, we've spoke about them being quite complex. Does that does that
+introduce complexity? Yeah. So, I think um you know, if you looked at kind of tracing and
+observability for agents that you were building months ago before deep agents were really popular, you would maybe see
+like your input and a couple of tool calls um and then some final result. And it's pretty easy to reason about like
+three, five, 10 tool calls. Um, but as soon as you're veering into the space of like hundreds of tool calls, minutes of
+um processing, etc., you start to need support in like understanding what's
+going wrong um if your agent isn't on track and kind of aggregating, you know, across runs like what are the um what
+are the trends with my agent? What prompts help it do well? What's like, you know, when is it failing? Are there
+like failures that I can predict? Are things like actually going wrong in my code, etc. And that's like really hard
+to uh reason about if you have traces that are that long. And and so naturally, I'm I'm using lang
+deep agents. I'm I'm I've probably heard of Langmith, so I'm going to use Langmith. What are some of the parts of Langmith that make it easier to to sort
+of address those challenges, address those really longunning traces, understand different usage patterns? How does what kind of tools do I have there?
+Yeah, I think the the thing that I'm most excited about is um we're building AI insights into our observability
+platform. Um and so you can use our our AI assistant, which is like you know the little button in the bottom right hand
+corner now um to ask questions about your traces and ask questions not only
+about like a single trace or thread. a thread is kind of like a conversation. Um, but also view like aggregate
+statistics about failures, etc. across um across runs. That makes sense. That makes sense.
+Making me want to try it. So, we're sort of coming to the end of this of this uh this part of the the
+evening, you and I you and I discussing, then we're going to open the floor up for some Q&A. But before we wrap up, if
+a team wanted to try Deep Agents today and and sort of they're setting out
+their missions of of achieving as much as they can in the first month, what are some quick unlocks or like what are some
+quick things they can do to really begin to see the value of using deep agents? Yeah, great question. So the first one
+is easy, which is like write a really good prompt. So the whole point of deep agents is to make agent building easy
+for users. Um, and so the idea is you as a as a developer can just write a prompt
+that's really specific to your use case. Um, and it should perform well. So put the complexity in the prompt is I would
+say our number one recommendation. Um, deep agents makes it really easy to get started with like five lines of code.
+You know, you define your prompt and tools and like you're you're off to the races. Um, the second thing I would say
+is, uh, and this is also, um, something you can do in Linksmith, is you're going
+to want to kind of quantitatively evaluate how well your agent is doing. And that's going to help you, uh, kind
+of build this like self-improving feedback cycle. Um, and so you'll want to set up evals for like,
+yeah, evaluating evaluating your agent. And I think the earlier you commit to that, the better your agent's going to
+be. Awesome. So, Ryan prompts set up in Langmith uh and deep agent CLI as well,
+right? Yeah. Yeah. So, we have um sort of a a an adjacent to claude code um
+implementation. Uh the deep agent CLI is fully powered by our deep agents SDK. Um
+but some nicities that come with that you can use any model um and it's automatically connected to linksmith
+tracing. So if you kind of want to understand more of the um nuances there, you can see your links with traces.
+Nice. Yeah, that's that's one thing that I also think is is really interesting is um and and we sort of mentioned it as
+well and and this is what I've seen working with a variety of different teams. If I want to do something that is like image related or you know uh you
+know video related, I'm probably going to go and use a model by Gemini. If I want to if I want to use or or build an
+agent that can execute SQL and um and generate code, then I'm probably going to go with some claude or some anthropic
+model. I personally think that OpenAI's models are really good at writing. And so I I like I like 5.2 for for
+expressive things and writing. And so if I'm if I'm doing something that's kind of like responding to customers maybe or is something that's more conversational,
+maybe I maybe I use uh a model by OpenAI. And so that I think is another
+thing. I think we've touched on it, but but is is definitely a power um and an unlock that you get when using something
+or or when using a harness that that is sort of model agnostic. And and so finally, uh what are you most excited to
+to ship next working working in our open source team working uh as a core contributor to the deep agents package?
+Yeah, great question. We've got an exciting queue coming up for March. So, we talked a lot about sandboxes. U kind
+of a lighterw weight version of a sandbox is a ripple. So it's not like a full execution environment. It's really
+like uh code focused. And so we're working on a ripple tool. Um I'm excited
+about that. We're also working on uh actually there's a a version of this in
+deep agents now that you can um opt into a an autoco compaction tool. Um and that
+sounds like pretty complicated. Like why are you bringing that up Sydney? It sounds like you already built in summarization. But the like I think
+Lance wrote a blog post about this called learning the bigger lesson which is like the more power you give to the
+model the better it's going to do. Like we're giving the model code writing and execution capabilities. We're giving the
+model you know basically everything. Um and so we're experimenting with giving
+it the power to control when it summarizes things. um and trying to evaluate if that is better than our kind
+of deterministic like okay you're at 85% like now let's let's compact um but that
+just to be uh that being said we're kind of very researchy with the uh harness
+still which is is pretty exciting. Yeah. Yeah. I I agree. I agree. Well, thank you so much for uh for answering
+those questions. I want to open up the some questions to the floor if there are anyone if there's anyone that has any
+questions about anything that Sydney I Sydney's mentioned tonight then uh please feel free I'll I can come and
+find you give you the microphone hi um how do you write a good prompt
+what are the lessons learned there on uh how to optimally a prompt engineer that's a great question um so I think
+part of the like my my two things were like write a good prompt and then set up evals and I think those really go hand
+in hand. Um, and I think you know experimenting with like here's 10 different versions of this prompt like
+and I'm going to run this agent a bunch like how is it doing across all of those runs um is really important. And so I
+think if you don't have evals it's kind of hard to um really convince yourself
+that you're um that that your prompt is as good as you want it to be. But that being said in like a rapid development
+cycle you can kind of figure out like okay my agent is really not doing what I want it to do. Um, and it there's like
+great um I think my favorite like prompting tip is just like keep it
+really organized. Um, and give you know good examples and bad examples. Um, and
+what's my last prompting tip? I would say also like as a developer um, don't forget about your tools because the tool
+like descriptions also go into the prompt. So even though that information is often like in code and dock strings
+or arg types or you know um things like that like don't uh don't forget about
+the tools because those are like you know how your agent takes action and if it doesn't know how to call them well then it's not going to do a good job.
+So I I have a question maybe for both of you I want to know if you've seen any cases we had relaxations using debations
+with regardives of agents. So we have been testing this approach for data heavy tasks and it's like quite a mess
+because you have like a tree of an agent that has sub agents that has super agents but it's like quite interesting
+is why I don't know any of you have seen this in production if you have any
+opinions is like so so just to clarify it's a like a
+hierarchy of a tree of agents where you have an agent and then an agent and then that has has planning agents. Yeah, Sydney, I'll let you take that.
+Yeah. So, sort of two notes here. We did a bunch of work on kind of documenting and research for like multi-agent
+architectures and just like the super quick run through. We decided that there were four main ones we were seeing. There was like a router where you decide
+like who does this query belong to and then send it to the relevant agent. the sub agent architecture which we use um
+the like skills um architecture which is like you can kind of say that different
+agents with different skills or like different personas um and the I'm I
+can't remember the fourth one maybe it was custom workflow anyways it doesn't come oh it was it was swarm I guess um
+but that hasn't been coming up as often anyways that being said um we went with the sub aent architecture for um deep
+agents because we saw so many other um powerful harnesses using that and having
+that be successful. Um so that's kind of the the history of why we're using it. Um
+at some point you're like really going to struggle from a latency perspective if like all if it's sub agents all the way down. Um but that being said, we're
+also seeing RLMs um so recursive u patterns gain a lot of popularity right
+now. Um and that's like certainly the you know tree pattern. So I think it's like still to be determined how
+effective that can be. I think the answer is very effective but you know
+like very slow. I also think an interesting thing there is if you ask yourself like why you have
+a sub agent right it's probably to do some particular task right and if you kind of abstract that away a model that
+calls a tool calls that tool because that tool helps it do the task. If you have a you know a send email tool or a
+you know query my bank account tool those those are separate tasks when you break that down into an into a powerful
+like multiplanning agent that can solve different domain areas. You might, let's say I have like a finance agent. One,
+one sub agent does accounting, one other um, you know, one other sub agent does like accounts receivable, another agent
+does and so and those sub agents have access to their own tools, right? And so like what I think is really interesting,
+what I think is really interesting is this idea that really like model calling
+a tool can be like that same abstraction is applied to like model has or like planner has a sub aent if that makes
+sense because a sub aent just has access to its own set of tools as well. And so like I think there's a really interesting trade-off between how many
+tools can you provide to a model before it starts to lose accuracy on calling
+the right one because now it has to decide between a variety of different tools. The the next question is okay how
+many sub aents can I provide to a model before it begins to become inaccurate in
+directing to the right sub aent. And so you must have a really a really big problem space to have that that sort of
+level of depth. I think it's an interesting way to think about things, you know. Yeah.
+Uh does Langston have any plans to support multiple providers during the execution?
+So I mean many times we see that these contrior
+it handles very perfectly when you switch between the the uh you know providers and the models. So I mean
+right now light LLM they're doing it. So do you have any plans to support that for the deep agent?
+Yes. Um so in I believe it was October we released lingchain v1 which was sort
+of our like maturity mark um for our you know core underlying agent building utilities and with that we shipped uh
+standard content blocks and the but we have to handle it our own those
+blocks. So for example like a lens doing automatically switch input providers. So
+is there any plans to support that? Yeah. So we we definitely want to
+support like multimodal content blocks and like sending them between providers. An example with deep agents uh is that
+you might want you know your sub agents to specialize in like image generation but then you know your supervisor agent
+is doing something else so you're using a different provider. um if you're running into like specific issues, feel
+free to feel free to open an issue, but our like standard content blocks should enable those um communications.
+Is that a question from this side of the room? I'm going to kind of I see one down here. Yeah, thank you. So, I I feel like the
+the whole sandboxing thing is getting oversimplified. What exactly are we isolating here? Is that just the uh code
+execution or the tool permissions or the model state or GPUs uh being used? Uh and then my second
+question is actually how many agents are being deployed in the production now actually uh to worry about the cost
+efficiency in the production actually that do you I mean are we there yet to worry about that or
+to worry about the cost efficiency of like longunning agents? Yes. Yeah. Are you seeing a lot of
+agents getting deployed in the production yet? So, so I think there's two parts to that question. I can answer the question
+about the cost the cost of these longunning agents and then I'll let Sydney take the one about sandboxes. Um, absolutely yes, we are seeing a lot of
+longrunning agents be deployed to production. Uh, the the main cost comes from the model calls, not not the actual
+infrastructure to host them. you know, obviously, right? Like, and actually as well, these longer running agents
+actually often make less model calls than than, you know, short quickfire chatbased agents. It's it's we're kind
+of talking about like longrunning researchbased tasks and things like that. And so I think that I think that the power that agents or rather the the
+the scope of problems that agents can now solve
+and and the ability to use these really powerful reasoning models is a price people are willing to pay to be able to
+offer something that is able to uh to effectively infer over so such a large
+range of unstructured data. And so the answer to your first question is yes. I'm or rather no. I don't see people
+being blocked by the cost there. I think that that people are sort of embracing that with open arms and and it's also a
+competitive market, right? Like the the benefit of having model providers across, you know, Gemini, Anthropic is
+that really like the cost of inference is going down. So is the cost of API prices, right? Because everyone's competing to to to make as many calls as
+possible or to be that provider for calls. Um, and so it's in the consumer's favor. And so I think that it's trending
+in the right direction and I think that people are quite willing to to to move in that direction. to the sandbox
+question. Yeah. Um, so we talked a lot about like code execution in sandboxes. Obviously, you can do that in a in a ripple tool
+which just has, you know, fewer uh resources. I think one of the things we didn't touch on and I I should have
+touched on when you asked about uh complexities with deployments is like um O and permission control. Um, and so
+that's definitely I think where sandboxes become super valuable. Like should this sandbox be you know shared?
+Should it be unique to every user conversation? Should it be like uh used
+for this user across conversations across a team across an org? Probably not sandbox across an org. But um yeah,
+I think permissions is like the biggest thing there. And then also, you know, like why do we have containers? Why do
+we have servers for different things? like you're just giving your agent access to like isolated resources is the
+idea. And I think another interesting thing that people are sort of thinking about now is like do you run the entire agent
+in a sandbox or do you execute tool calls in a sandbox and and and
+effectively cross that that networking boundary, make the tool call and then extract that response back. The the
+problem with executing the entire agent in the sandbox is that you're now giving it sensitive API keys. you're giving it
+the flexibility to go and make the calls that it needs to do. Uh now that agent,
+you know, it's still in a sandbox, but but the the environment secrets and things
+like that now also live in the sandbox too. And this sandbox is meant to be a safe place. So so now if you if you just
+use the sandbox for calling tools, you have to take the hit on latency of making requests to the sandbox, the tool
+executes and then receiving that result. And so there's trade-offs in both. Um, and I think that I don't think that the
+market sort of landed on a on a clear use of them yet. Um, but those is our CEO Harrison Chase wrote about this
+actually. He wrote a blog recently talking about the different paradigms of of using sandboxes. And so I think
+definitely a good call out and and that's something that we'll will become more clear as more people use it. Yeah. So I think we have time for a couple
+more questions. I want to want to make sure that we're heard over here. Questions.
+I it speaking for myself I uh you know the problems that we're solving in my
+company we've used like uh like your create or your react agent with like it
+almost like call it workflow um and subdrafts and all that. Uh when clients
+come to you and ask like uh is this the right use case for deep agents? Do you see deep agents replacing some of those
+like here's the right way to do an analysis for example like I've got really complex data analysis I need to
+run there's a right way to do it sort of like a textbook case for like a workflow. Um do you see DV agents kind
+of like coming in and replacing that like paradigm or you still see like two
+specific lanes for all the types of problems we've run into? Yeah, this is a this is a great
+question. Um, we are pretty excited about deep agents. We do think it's like
+the direction that things are going. You know, I said, um, give the agent more power to do things and it's going to do
+a better job. I think that's in line with the general like the more agentic
+something is, the more useful it theoretically is, but also maybe it's uh
+riskier for something to be more agentic. I think you were mentioning like, you know, there are a lot of tasks
+that kind of fit well into this like workflow architecture. Like you need some deterministic compliance steps
+before you run some agentic uh task. And I think one of the ways that we're
+trying to build that into deep agents is with support for custom middleware. Um, and custom middleware are things that
+you can go and plug in at any point in that agent loop. Um and so that's kind of our like escape hatch for hey I do
+need to run some like deterministic um logic in this or you know checks etc. Um
+I still think there's a place for like langraph uh you know we are putting a
+lot of bets on it as our um agent runtime still um but I I think deep
+agents is the future. Yeah. And and with that as well, the create agent, Sydney mentioned v1. The create
+agent is sort of the create react agent equivalent. And there are definitely some cases where like if you just need a few tools to be able to be called by a
+model and you don't need to have things like delegated planning and and all of the benefits that you get with deep agents, then it definitely does still
+make sense to use create agent and and that um and that sort of core react primitive. So that has access to to
+middleware as well. So yeah, different different levels of complexity are sort of where we see people use different uh
+primitives if that makes sense. I think the the last thing I'll add to is like we do aim to make these things
+composable. Like if your use case really lends itself to a workflow with like one agentic step, maybe you have a bunch of
+deterministic ones and then a deep agent runs in that agentic step and then you like go do your other tasks.
+Okay, I think we have time for one more and then uh and then we'll we'll have some time for networking. Was there was there one coming up from around here?
+Yeah. Yeah. We're just asking about uh the couple like sort of like Oracle
+standards like A2A like a little about being collaboration and the other one MCP
+like it's superseded because they go like code execution and running in a sandbox.
+Sorry, what was the last one? MCB I mean was super popular now like there seems to be a shift more towards
+code execution and CLIs. Yeah. Um, yeah, I do think now that
+we're seeing a little bit more like popularity with programmatic tool calling in, yeah, like ripples and
+sandboxes, maybe a little bit less relevant. At the same time, I think generally when there's like provider
+agnostic standards, I'm excited about it just because, you know, like skills,
+MCP, things like that um are very exciting to like, you know, enterprise
+customers etc. who know that like collaboration across teams both between like people and agents is really
+important. Um so maybe it's a little bit less important than it was like three months ago but I think still like having
+standard specs is is helpful for a collaboration.
+Yeah. Um and and we like kind of endorse that by for linksmith deployments our um
+service for deploying agents built on lingraph. Um, we have like ADA endpoints and um, LinkSmith has MCP endpoints and
+and things like that. It's been an absolute pleasure to host you all at Lang Chain's headquarters.
+Thanks, folks.

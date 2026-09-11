@@ -1,0 +1,991 @@
+Oh, we've been in so many of these trials. Okay, so that's when he gives out and we
+see that was maybe even 50 seconds before he actually failed. Our prediction was able to stabilize uh and estimate when he would drop it.
+Very cool. [music]
+Heat. [music] Heat.
+Welcome to Tree Hacks, Stanford's annual student hackathon.
+This is the 12th year that they've done it and it is 15,000 people who applied,
+of whom only 1,000 were able to get in. Stanford paid for
+all of those students to fly out here to Palo Alto to their main campus to participate and compete for $500,000
+worth of prizes. Lots of big AI companies are here. Got
+Anthropic, got OpenAI, we've got a whole lot of API vendor companies, a whole lot
+of developer tools. This is going to be an exciting hackathon. I'm so thrilled you all are joining us. Let's go check
+out what people are building.
+Tell me a little bit about yourself. Yeah, I'm a junior here studying math and CS. So, awesome.
+Yeah, good combo. Yeah. Yeah. And uh how did you get into the uh
+tree hacks event? I participated both last two years. Uh I think this is the second year where
+Stanford students also have to apply. So I applied like everybody else. Yeah. Yeah. Do you know what the admission
+rate was for Stanford students? I think they said it was San Francisco I don't know but I know in total it was 15,000 applications. They took a
+thousand. So you keep looking at your friend. Friend come over here. Any ideas of what you're going to build?
+What kind of tools you're going to use? Anything like that? I presume you're on a team together. We are. Yeah, we are. We're still thinking. I
+mean, there's a lot of cool hardware stuff we're still looking at. Um or even other potential ideas we had, but yeah,
+we're still in the like phase of exploration. Sah Sahash Patel, how's everything going
+with you, sir? It's going good. I've got a team. You got a team already? We just started hacking.
+I got the team like around 3 or 4 days before. I was just on on Slack channel looking at these cool guys all from MIT
+all from really great universities watching the repos I mean th those open
+source guys they're really strong they're going to put a good show so what brought you out here uh well this team I'd say um I knew
+spendon from high school uh we did robotics with each other and we decided we wanted to apply to tree hacks and have some fun and actually build
+something impactful you all three or all four of you are among the elite few the one in 15 people
+who got into the hackathon. How did you get in? Like how did you convince them to let you in? What what do you think
+they saw in you? I think having a lot of really strong past experience and credentials and just proving that you can really do a lot of
+good stuff here. I think that's the main thing that helped me and many other people. I think even for me like I highlighted
+all my research and my past experience and then I've won a few hackathons before as well like UC Berkeley and all.
+So I mentioned that so maybe some of that I guess. Yeah, I've always been interested in hackathons. I'm part of like the
+organizing team for LA hacks at UCLA. So I just really um highlighted my passion
+for hackathons and I think that helped me get in. I think for me it was more about like research experience and then also like
+doing the YCI startup school uh like showed my passion for building. What tracks and what prizes are you all
+considering pursuing here? Yeah. So for me like the way I like I went to for hackathon prizes and then even won a few of those. I would say the
+main thing that I did is I looked at prizes that were particularly interesting. I feel like those that tend to get a lot of value like those ones
+like they usually get a lot of people from them. But I think those are also ones where you have like the most room to like really experiment and try a lot
+of new things. So usually I like to find prize that are really worth it while often times these prizes can sort of intersect. So for example, you can win
+the grand prize but you could also win a sponsor prize as well. So being able to target multiple tracks at once and not just like limiting yourself like putting
+all your eggs in one basket. I think that's also something. So like being like pretty like making sure your project is something that can really
+span a bunch of different prize tracks at once. So that can really give you the best chance that in my opinion.
+So we're building an a aentic uh assisted benchmarking platform for
+basically assisting researchers where they spend a lot of time manually benchmarking their algorithms. So we
+want to speed this up which will greatly help the scientific community. Let's say you have a sorting algorithm right now.
+you devis a new sorting algorithm that can sort any uh database in like uh 01
+time you but like you want to test its speed results like uh or let's say it's
+you want to do a comparison on equal hardware against the other algorithms in the space right what I thought was if
+you just gave the code for your custom algorithm a few research papers and a prompt describing the problem you're
+solving to an agent what it could do is it could implement those algorithms compare the plots run
+the analysis is on your own. Additionally, what we want to give a choice is have a research agent as well
+that could research more algorithms in the space for you that you might have not explored, implement them as well and run compare like run comparison plots
+for you. Yeah, speaking of quantum, how did you learn about quantum computing as well? Oh, so the first video I saw about
+quantum computing was like a 1 hour 30 minute video from free code camp. Actually, that's that's what introed me to quantum computing. And actually,
+since then, I've been diving deep. I'm actually an incoming software engineer intern at IBM Quantum this summer. Oh, really? You're entering.
+So, you're going to have access to the coveted quantum computer that costs I don't know hundreds of millions of dollars to build and keep cold and
+everything, right? Yeah. So, the first first time I learned KissKit and like any quantum concept was through your video.
+Awesome, man. Well, congratulations on that internship. Thank you. And, you know, I'm just here for fun to hang out with my friends and, you know,
+build something cool and hopefully win some prizes. And I understand that you won a prize at Cal Hacks. Yeah.
+Which was uh a hackathon about 3 months ago. Yeah. Yeah. That was honestly actually like my second hackathon for Alex and
+Fern. They've been, you know, they've been doing this for years, but but yeah, that's great. So, you got a pretty
+seasoned team. Yeah, for sure. I mean, you know, we we plan on winning something, you know, and but yeah, with the project that we're
+building, we're going to have like lots of chances for multiple tracks. So, yeah. And I see there's a hardware component. Can you talk a little bit
+about uh what you're planning on building? We are basically making a camera and we're going to cat up a
+chassis for it that allows us to have a camera that takes photos. And we have like a little printer as you can see
+over there. And what we're doing is that we're basically planning on taking images and then running diffusion large
+language or uh just diffusion models to do something with the images. Like for instance, you can take a photo, you can say, "Hey, make this look like you know
+some certain art style or whatnot." And then print it out using the printer. And we basically are going to be applying for multiple tracks because since this
+idea is very general with you have a camera that takes a photo and it prints something we can do a lot of different things. Like for instance for the uh
+visa track which is basically figuring out a way to do smarter commerce. What we're doing is or the idea that we have
+is that you can take a photo of something and use like the the perplexity search thing to find like the
+exact items and the prices of it and printing out that. And for another example for uh for the perplexity track
+which basically wants you to use their API for search you know you can like take a photo of some you know really anything and it'll just like find all
+the relevant information kind of like what Google already does but you know you can actually print out the uh the information. So here I'm back again with
+mentormates at treehacks one of the biggest hackathons here in um Silicon
+Valley. So, you know, being able to come out here, seeing how people are able to build really hopefully is able to
+inspire folks in Hong Kong to also learn how to build in hackathons as well too because ultimately what I'm trying to do
+is figure out how can we democratize entrepreneurial education and bring hackathons to more places that people
+would otherwise not be able to find them. You are Chinat uh and you have been
+doing hackathons for a while. You even run hackathons. You run uh the mentor mates hackathon of course in Hong Kong.
+What is your strate? Are you participating in this year? No, this year I'm actually this is the
+third tree hacks that I'm back at and this year I am a mentor and not a
+participant cuz I figured that it might be helpful to also be on the other side of the table to understand what is it
+like for folks to be able to actually build out their projects. And I feel like in the past being a participant you
+know you really are kind of siloed into thinking about how do you build the best project in the you know in the scope of
+the 36 hours. And then the question now is then how do I actually figure out how other people are building as well too
+and being a mentor helps me to take a step back and see how other people are approaching hackathons as well.
+What if you had like just three pieces of advice for people who were participating in a hackathon like this
+one competing with a very kind of like elite pool of like 15,000 applicants,
+1,000 participants that got in. What would be the key tips you would give
+them to succeed? Don't overthink. Don't overthink. Don't overthink.
+All right. I think that the main thing that I've seen a lot of folks, you know, are unfortunately unable to do is is get out
+of their heads and just really figure out what they actually want to build and get it to work. Having that confidence
+of knowing that no matter what happens, you're still a winner and that at the end of the day, you're competing not
+against anybody else but instead with yourself, right? Uh in terms of practical advice, I think that really
+think about what you're coming into this hackathon for. Are you a missionary or a mercenary? Right? If you're a
+missionary, then just build whatever you want to build that really speaks to your heart. But if you're a mercenary, then
+you want to really figure out are you trying to get for that internship? Are you trying to get that specific prize, right? In that case, who do you want to
+kind of communicate with and have that conversation with? Hi, Mom. If you're watching Free Coat
+Camp, he he he and I were fanboying. I was like, "Yeah, I was I just want to say hi to Quincy. He came to our hackathon. I wanted to say hi and Aush
+is like, "Is that the guy from the original videos?" And I'm like, "Yeah, man." So, you tell me a little bit about what you're doing here.
+Mainly here just to fool around, like build something not like too technical, but kind of fun, like push push like
+dystopian stuff, you know? Like one thing I'm thinking about is a paper shredder that has a $100 bill above it.
+And if you like stop being productive, it slowly feeds the $100 bill into the paper shredder so you get back on task.
+I think destruction of currency is like a federal crime though. If it's an art project, education and art, it's not. Yeah. For
+education and art, it's not. I'm here with Josh. Uh they are building a local
+AI video editor. Yeah. So basically we are building flow cut. It's um it's a platform which uses
+local uh compute for performance and AI agents for execution. So cutting,
+clipping, video generation, all of that uh will happen on your local compute, but you can configure it with any API of
+your choice on or run your own local LLM as well. Um it will work with those
+things and this will save a lot of latency, cloud compute um and eventually
+be more scalable with uh your own software. Can I just get some milk?
+I love milk. This is the Hulipacker garage. The garage where they um started the company. They preserve the company
+just like if you see on the show Silicon Valley. They they like preserve the garage. It's
+the same kind of thing. All right. We're here with Dylan uh who's got a team of some fellow
+developers and you all are building. What are you building? Yeah. So, we're building Iris and it's an AI assistant that works across all of
+your Apple devices. So currently, um, when you talk to Siri, it would only like do something on your iPhone or it
+would only do something on your Mac. But we want to build an AI agent that's unified across all of your Apple devices. So for example, you can draw a
+diagram on your Mac and that would uh do something on your computer. So like computer use task or like invoke cloud
+code. Um, or you can like have a math problem on your computer screen and write the equation on your MacBook and
+some hints would appear on your Mac screen um on the side. And so this is like basically unifying all of our Apple
+devices together for um using AI agents. Yeah. What do the next 36 hours look like for
+you in terms of the specific sequence of things that you want to happen? Yes. So I think we want to start with
+the demo of doing math on your computer. Um you should be able to write on your
+iPad and then the cloud code or something on your Mac should be able to read that and then suggest you hints and
+then maybe you can write something on your iPad next to you. Um, so that's like the first working demo that we want. Um, and then later on we'll do
+more complicated stuff like working in large code bases. Like maybe it'll draw a diagram of your codebase and you can interact with that and say like, "Oh,
+no. I don't want this thing. Um, I'm going to cross that out and we want to try a new API or some new other direction that we want to do."
+Nicholas, yeah. Uh, this is your team. Yeah. Tell me a little bit about what you all are building.
+All right. So, the problem we're trying to solve is drug costs, right? To create a new drug costs $3 billion roughly 20
+years. But there's so many shelves or there's so many drugs that got shelved, right? They got dropped because of business issues because like the company
+went under or maybe they couldn't find enough trial participants that 70% of them. 70% 70% of drop drugs or shelf drugs are
+because of logistical concerns and not to do with the drug itself. So what we're doing is we're automating a method
+that can look at the drug or look at any disease and be able to say like is there a drop drug that could be useful in like
+preventing this? If you look at Ozepic, if you look at Viagra, they both started as something completely different before
+they got transformed to the current degree. And we're making a method that automates all of that. So, how do you automate it?
+A lot of sub agents. Um, the way we're working right now is when you run it, you have an agent that's going to do
+literature review, right? You have different things called knowledge graphs, which are we're able to encode every disease and every um drug as like
+a certain vector, and we can compare it to existing drugs in the field and existing diseases and what we know. So we can say how likely is this drug going
+to affect this disease. Um and we have all these agents individually do these tasks. There's seven of them. Then they're going to come together and
+they're going to debate. Say this agent believes it's going to be these top three drugs. Another agent thinks it's going to be these ones. And we're
+creating a skeptic agent which disagrees with everyone else. So at the end they're going to talk and they're going to come to a common conclusion of what
+drug or what three drugs are best and what are the different like pathways to getting it approved. Right. Bibha, uh,
+congratulations on being one of the elite few chosen to participate in Tree Hacks. Uh, how how did you get in?
+So, I really wanted to go this year and I was like hoping to get in and I think like they released the application and I
+was like one of the first few like to apply. So, I'm glad that I did and like I'm glad that I'm here and just to see
+like so many different things and so many like different events and I think the highlight was like today I got to
+see Sam from like OpenAI and that was like pretty cool. So, yeah. Very cool. Have you all decided on a
+project idea yet? We're finally like we're kind of deciding on it yet because we have like a lot of different ideas,
+but I think we're just trying to find like a good niche that is like pretty applicable in all of our lives. So,
+yeah, I think that's what we're trying to do. How are you planning to navigate the next 36 hours? Like what if you had to
+map it out by like six hour chunks or something? What would the next few stages look like for you? So, I think first of all, we want to
+really decide on the idea within like hopefully less than the next six hours.
+And I think the beginning would be like deciding what each person is going to do like decide what tasks and stuff and
+hopefully like within like next the next on Saturday basically kind of finish out
+like the basic outline of the app and if there's anything that we want to add on to it. I I think we can like decide on
+that and finally I think we have just like nine hours on Sunday to finalize
+our product. So yeah. Grace, how's everything going with you so far? Yeah, it's going great. So tell me a
+little bit about um your idea for what you're going to build. Yeah. So a lot of robotics companies,
+they'll probably manually train their robots by collecting like ton like uh
+thousands of footage. What we're thinking of doing is kind of crowdsourcing that information. So
+robotics companies can maybe like put out a prompt and regular uh people can
+upload like them doing the task and that kind of just helps um like for a small
+for a small fee. Yeah. Interesting. What's your interest in robotics? Are you studying it?
+Yeah. Um actually my friend here Daryl, he interned at Tesla. So that's
+where he got the insight. Yeah. How do you all know one another? Uh, I mean like we just met off of Slack
+at Tree Hacks last year. So like we just like Yeah, we messaged each other and then we like made a team and then like
+yeah, we just became friends afterwards. So I'm Joe and then so the plan for this
+is to make a jazz chord progression suggestion. So you would have the user play some chords like that and then
+ideally the computer would listen to the chords that you're playing and then suggest what comes next.
+Okay. Yes. And the way we're doing this is just with some analysis with the physics behind the overtone series and some of
+like just a little signal processing with the the sound that you're hearing. Uh what are you planning to build over the course of the weekend?
+Well, we hope to have a front end that has like a graph for you to traverse. So as you're playing, you're you're going
+through from node to node and then it suggests for you different options for what you have and then we hope to hook
+up the piano and the guitar to to have the demo live. So when you're playing a chord, we can traverse the graph with
+you. So you play a chord and then it's like try this and then you just go to
+that chord. And so it's like you're kind of like just doing what it tells you. Well, you have different options to do
+it. And you can add some embellishments while you're playing the guitar. So it's kind of like just dramatically
+simplifying which chords are good options from there. So it's kind of like a tree that you're traversing.
+Yeah. Yeah. Yeah. Yeah. Okay, that makes sense. Yeah. [music]
+So, what we were trying to do is integrate a virtual reality world using
+Unity. And what we're going to try to do is pair it with the Zoom track um by using like a world foundation model to
+create an environment where teachers can interact with their students. Okay. What is a world foundation model?
+So, it's like a diffusion model like that can make images and videos, but it works in like 3D space in real time. So,
+you can prompt it. So, for example, if you're a teacher and you say, "I want to be in a classroom." You'll be in a classroom. Awesome. And you're going to build this
+in 36 hours hopefully using like open source models on the internet and things like that. I'm Arya. I go to Stanford. I'm a
+Stamford Frost. So, it was really exciting that this is right here at Stamford. Um, I think what I wrote about
+in my application was um over the summer I did this project with data mapping um
+where I mapped like Chicago's digital divide. I'm super interested in how like tech and um like social impact, how tech
+can help social impact. Yeah. And how how did you all get to know one another? Yeah. Um I think that was really random.
+I think we all just sort of like messaged each other on Slack after putting some introductions being like, "Hey, you seem cool. I really liked how
+you brought this sort of aspect to a previous project." And I think we just kind of like went from there and had a
+call and then vibed with each other. Have you all been able to kind of decide what type of project you want to build?
+Yeah, I think we've got a general idea of the space that we want to go into and
+what technologies we want to use. I think we're thinking about using Zoom a lot. It's like a core component of our
+app. And then definitely going more into that idea of human flourishing, I guess, like how can we support like first
+responders or like operators for example when they have like juggling a lot of calls.
+That's what's going to happen. Yeah, I know.
+Hey, Ma. Got some good eats for you. Hi, I'm Lori. Um, I'm feeling pretty
+good. I'm a little tired, but I feel wellfed and um I feel I I'm really happy
+because I feel closer to my teammates now. Like we're just hanging out normally. Um and I didn't know them
+before I came here. So I think that's super cool. Uh my name is Adam. I'm feeling super hyped for Tree Hacks. Um we've had like
+a bunch of fun events and then like bunch of stuff. So yeah, super hyped. Hi, I'm Yinsa. Um I'm super excited
+because I didn't know any of them before coming here and we've bonded a lot. We've had a lot of good food together, seeing the llamas, and super excited for
+how our project will end up. I love free code camp. I learned HTML and CSS last summer from free code camp
+and I would not be here if it weren't for free code camp. I followed the like how to code like a discord bot like from scratch like on
+Replet and in high school and I actually used that project like on my common app actually helped me got into college. So,
+how are you feeling about 15 hours in? We're very excited despite not having much sleep over like the past three
+days. But I don't know why I feel really energized. Yeah, I feel like our team is making good progress and we're really enjoying
+working together. We met for the some of us met for the first time. So it's been fun working with everyone and generating
+new ideas together. So hey, hi my name is Priya and I'm here actually from Seattle area. I'm one of
+the mentors. Uh so and this is Malika. We're both here as mentors. So uh what's
+been cooking here? A we are absolutely impressed with the number of the
+brilliance of students and the ideas that are coming up with and the kind of questions they're asking like I have to
+go back and figure out okay what is this right so it's just us AI and students together trying to hack something out
+here and uh the energy is amazing uh the wibe is super cool and the innovation is
+in the air pretty much uh the the kind of ideas they're thinking about I love
+the social impact angle that a whole lot of ideas have. So, they're really thinking about solving some of the big
+challenges in the world. So, it's not just about, hey, I just want to slap technical complexity into it, but they're really starting to think about
+the angle is how do I solve this problem in the world, right? And that's what gets me really excited about helping
+these kids out and just trying to see if we can build something cool together in this two and a half, three days we have here. So, yeah, that's what I would say.
+Right on. Would you like to add something to that? Uh, yeah, for sure. Hi, I'm Malika. uh I
+mean it is not 18 hours in for us because I woke up and I came here at 9
+in the morning. So I'm very impressed by the tenacity of these students and the how they are continuing to go with high
+energy. Uh I am blown away by the innovation that the students are
+thinking about and how these projects are uh I wish I could stay and watch all of them pitch their projects.
+Is there any particular project that you've mentored where you've been like wow this might win? Like that's a hard question, right? Because every project
+is in a different area. Like I was talking to a group of students who are building a health care agent that's
+going to follow up with patients who are recovery recovering from surgical ops and uh just checking up on them is like
+how's the recovery going because there's a lot of relapses that happen and having worked on something like that within the
+industry I know that that's a big problem. So I thought like they had a really cool problem statement to solve.
+So that was really cool one in terms of like impact. There's this another one that I absolutely loved from the point
+of view of just technical complexity. So these people uh there's a group of students they're using a camera uh
+installed on like a flying robot right and they're going to see if there are any fires or any natural calamity long
+horizon and they are using computer vision models and AI to figure out uh what is the propensity of like how fast
+it would spread. They're also figuring out what might be the way to remediate
+that. So I was like, "Guys, you have picked up a big one, but if you can solve this, I can see how it could be
+used, you know, in disaster relief or really solving some of the big problems in the world." There's uh there's two
+more that caught my attention, and I will admit that I'm a little biased because these were students that we sort of helped with. One was uh a a powered
+boat that can collect trash in the water as it goes and also try to identify what
+pieces of trash can be upcycled. Those those kids are have been working
+hard at it. The other one that I really really was impressed by was this um system around
+um managing food banks. So they have this AI agent that connects with food
+banks in the area, tries to take stock of their inventory and try to figure out which uh which types of food items they
+actually want and then they have a robotic system, an intake system that accepts uh donations either in kind or
+cash and then sorts them out and ships them to the right food banks. And then they have cameras inside the food bank
+where for people who have donated stuff, they can see a real-time feed of, oh, that that can of beans that I donated,
+this is where it's going and it's actually going and helping someone to be able to give people that food feedback loop. Yes. And and the reinforcement of
+what value they have provided. Our project for tree hacks, um, it's to
+solve like this medical condition called aphasia. Sometimes when people get like
+a stroke, it'll like affect their ability to produce like um you know
+speech. What we're basically trying to do is create a device where they can talk to you know microphone. It's
+processed and then we have like um AI try to predict what they're trying to say. It'll give them some options on a
+screen of what they it thinks they're trying to say. Um and they can just select that option and it'll like talk
+for them basically. All right. Yeah. So this is just like a simple kind of web app demo just to demonstrate that the
+code works. Um this like yellow button will correspond to like the actual physical yellow button here. Obviously
+the design will have these like really big tactile buttons and then a mini um
+screen that will like you know put what's on here on here. The user will
+press the yell button but it's on the web app. else and they'll say like some jumbled phrase like hi my name is Pierre
+hacking tomorrow when event something and then it'll process um what I said
+using the open AI like whisper API so the input is recorded was hi my name is
+Pierre hacking tomorrow when event something and it generated um three responses so I'll click that it'll play
+it my name is Pierre I'm hacking tomorrow when is the event or something and it'll record that response and then store it
+in the database and then I could do it again. And we want to make sure that we could use large language models not to just
+like speak for you but actually be assistive. So for those milder cases proposing words for example that allow
+you the person to kind of find their way to what they're wanting to say. Um of course but like for the more severe
+versions that's when like AI can help up with that. Yeah. So I'm Sheamus. I'm a master's
+student actually in public policy here. Uh, so I'm not really a computer scientist, but what I do as kind of my
+other passion besides public service is game design. So I'm really interested in
+the ways that games can tell stories that you can participate in, the ways that they can kind of facilitate
+connection between people, which as we'll get into is a lot of kind of what we're doing here with this project. And
+so you know, I put on my Tree Hacks application. I was like, I haven't done a hackathon before. I'm not a CS student, but I'm a game designer. I've
+made games before, and you know, I'd like to come here and make a game. And I guess the organizers are like, "Sure, that sounds great." And so that's what
+we're doing. I kind of started developing games uh before all of these AI tools were as powerful as they are
+now. And I do wonder about the effect that it's going to have on people coming from kind of that liberal arts
+background with the tools already being so powerful that I feel like some people
+might miss that important kind of learning experience of figuring out how to do the stuff on your own so that you
+know when the AI agent messes up or gets confused or stuff you can actually dive into the code yourself and figure out
+what's going on. So, you know, I'm I'm hopeful that the the great educators that we have, you know, all across the
+country will continue to to find ways to make sure that people are able to like
+collaborate with agents in good ways and use the agents in ways that actually help them understand what they're doing cuz I feel like I would get pretty
+overwhelmed if I hadn't, you know, had that background in game development and front end before I started using all of
+the the AI agents and tools. What are you doing exactly and what are you building and how are you building it? We're building kind of a daily uh
+game kind of in the style of Wordle. Uh but the point is hopefully to connect people with their friends. So the way it
+works is we have two kind of axes on like a big graph or chart uh that are
+labeled silly things. So one might be like muffin to pancake and the other one might be like gimly to legalis. And the
+idea is that you place yourself and your friends on this graph based on kind of like the vibes of it. So, like where you
+whether you think you're more of a muffin or more of a pancake, whatever that means to you, and you're trying to
+guess where your friends will place themselves. So, basically, you get more points if you're able to accurately uh
+figure out how your friend placed themselves and place them where where they place themselves. And similarly, you get points if uh your friends kind
+of place you accurately if you're known. Well, we're about maybe like 16 17 hours into
+the hackathon, right? How are you feeling? Oh, I'm feeling great. I mean, the food is wonderful. I
+love the acai bowls. Asai bowls were really great and I have a really great amazing team. We have made like a lot of
+progress like All right. Tell me a little bit about your project. Yeah, so we we recently um decided on a
+name. Our um name of our project is called Pigeon Hole. The whole idea is that um you know AI usage is sometimes
+seen as a bit of a problem for teachers because it's difficult for them to kind of manage um you know what students are
+kind of getting out of that. Um and so I feel like it's really we have to kind of come to accept that like AI usage is
+just going to be kind of part of our daily lives. So, we are creating this tool that allows teachers to be able to
+kind of dictate a little bit like what um students are able to kind of get access to through like a chatbot and in
+that way students are still learning through like their usage of like AI but teachers will have a little bit more
+control over that. I'm Magnus. I'm a first year PhD student
+at Oxford. Um you asked what the vibes were. uh the vibes sort of start high
+and there a slow decline is you actually have to do the work. Um but then we've started getting some results and some
+traction. So it's on the high even though sleep is on on on the low. So my name is Ray. I'm a senior at NYU
+studying math and computer science. I really like this hackathon. I'm very excited about the speakers and yeah, a
+lot of very like interesting people and they are building very like surprisingly
+good projects and yeah I like meeting all those ambitious like uh students and
+yeah tell me a little bit about what you all are building. We find that like companies they always
+have like uh they always spend extra time and extra money on like offboarding and onboarding process. So we're trying
+to like uh using the energetic AI stuff to like accelerate the process. Yeah.
+The key issue is that when someone leaves a company often in a hurry, a lot of information, knowledge they have
+leaves with them. It it goes and it's it's hard to recover and people aren't very motivated to uh write nice handover
+docs and uh often when they're leaving on unfavorable terms. Um, so we thought
+with uh AI being so uh analytical and insightful these days, we can make this process a whole bunch easier.
+Usually it takes like six months for a team to replace someone who's leaving with a new hire. Um, and during that
+process like the work is being stalled, it's like productivity decrease. But
+essentially like if we can keep like a digital replicate of that person even after they leave and then use that as
+like the best on boarding tool or like just like a Q&A for the rest of the team then they can keep work going.
+Basically it follows students who are biking installs inserts.
+There is a kind of like bicyclist not following the rules epidemic here on the Stanford campus. So, uh, my groupmate
+and I came up with a kind of humorous solution, which was to build a annoying robot that follows students, um, who are
+biking without bike lights at night, um, detects them using computer vision and then follows them, um, and yells at
+them. Yeah. So, my partner Jay and I, we're building a what we call a magic table.
+It essentially it uses like a 2D gantry system and magnets to bring objects to
+you. Um, so it's to help blind people and disabled people who don't necessarily know what's on their table.
+They're able to talk in natural language and have it just bring it straight to you. How far are you along with the
+prototype? Well, we we've 3D printed most of the parts. I've been I'm designing a scissor lift right now and then we're going to
+reprint some other parts as well. But so far we've got all the hardware ready and we're just assembling together and the
+code has been he's been working on a lot of the code. Maxwell. Yes. Maxwell, you're an organizer. I am an organizer. So you thank you for
+helping organize this hackathon. Yeah. Well, tell me a little bit about yourself. Yeah, I'm a freshman here at Stanford
+like a lot of people on the team. Um, I'm on the logistics sub organizing sub team. So, I mean I guess kind of all the
+like prep to get the event going. I'm personally I worked on the food, so getting the caterers, organizing the meals, and like snacks, drinks for um
+like everybody. So, yeah, it's lots of fun, you know, and a big part is the builds. I don't know if you've heard
+about them. Um, that was a lot of work. We got like three hours of sleep the night before two nights ago. So, we're
+all a little tired, but it's very fun. Great time. Yeah. Yeah. Yeah. What are you doing here in the hardware lab?
+I was just walking by um with one of my with my girlfriend actually to see what she was working on. That's cool. She's participating in the
+event as well. Yes, she is. She's hacking. Very cool. Um Yeah. Should we interview her about what she's building? I think we should. Oh, we're like
+building an organ transport kind of monitoring system so that when you're on
+ground level and you're like transporting organs for donations, you can make sure that they're not going to get damaged.
+Okay. And what is the uh system look like right now? It is a bunch of sensors um hooked up to a front end that moni like
+connects several different hospitals and the goal is to collect a lot of data uh correlated with like where the nearest
+donation like centers are and if things go wrong like how you can adapt to them uh using different routes.
+My understanding is you just got here you arrived like 18 hours late and now you've got this much time to come up
+with an idea and build it. Yeah. So basically my group, this is Ponos and I uh we came from a
+sustainable global sustainability engineering challenge yesterday. Um so we had the showcase for that and we got
+some sleep and got here yeah about an hour ago. Had some lunch and now we're starting to ideulate on to as to like
+what we can accomplish in 18 hours. What broad strokes like ideas have you been batting around?
+Final is mechanical engineering. Um I'm management science and engineering. We've been trying to do something
+hardware something robotics related. Um, so but we were just talking to the hardware people over there seeing what
+kind of components we can use. Um, unfortunately this year it seems like there's a bit less um than in previous
+years. Uh, they have a DJI Spark drone and some compute and the MetaQuest
+goggles. So we're thinking like maybe maybe use the drone, build something based on that um with some like computer
+vision system maybe. So, so a funny story, like on the way from Atlanta to San Francisco, I had no Wi-Fi on the
+Frontier plane and I was bored, right? So, I went on my downloads to see if there's anything fun to do. And I think
+two years ago, I downloaded a tutorial from you guys on YouTube on how to learn C. So, I was just watching that C
+tutorial for like 3 hours. See on the plane for 3 hours? Yes, for three hours. Very cool. So, it got me through the plane.
+Right on. What are you all building so far? Uh we're building like an uh uh an EMG uh signal to text uh device that can
+essentially go through and get uh like actual signal data. Basically read get
+the signal data and then convert that into like text so that we can pass that into like a language model that can then
+like autonomously do actions on your browser. So uh we're currently working on um getting our like browser
+automation to work. Uh we have like our hardware we've been able to collect good amount of data. So going to see where
+that takes us. Basically what he's saying is we're using our mind to control the computer
+without talking, without typing. Well, how does it work? Like how does it capture the signals to begin with? We we're using like a muscle sensor uh
+to we put put it like underneath your jaw and then whenever you think like your muscle moves somewhat and like that
+uh is like signals that you can like record, right? And then we take those signals and then put it through like a
+model that we can like analyze and um like determine like text from that what
+you were thinking. So we're here at Robot Fight Club where developers are
+testing their mic with these robots, programming them to see who can win.
+It's like Battlebots, the old TV show. [music]
+[music]
+[music]
+So, we're working on a voice AIcentric platform that allows
+nurses to get more spec specific reports. uh within the context of uh nurse nurse
+uh nurse patient kind of communication, you're getting too much coarse or vague
+data from the nurse, the stuff she inputs into the patient's chart or whatever data collection system,
+right? So you are basically trying to like infer what she actually means he or she
+means by their notes. Yeah. Essentially using an LM to jump to make that
+inductive leap. Yes, we're making that inductive leap to um not make the
+decision for the nurse themselves, but rather guide them in the direction of of
+actually getting that more specific data. So, as an example, um I have a patient that's within this uh that came
+to me and this patient just underwent surgery and what we could describe it as
+was the patient was kind of drowsy. So now the AI leads me into asking why what
+is the current level of consciousness like what what so now as a nurse I'm
+thinking okay I need to talk about follow-up questions relating to why was
+the the patient drowsy. Drowsy is a very general description that would be very
+like uninformative in the sense of a generated report uh within for a doctor
+or anything like that. So yeah, the AI tools are really really good nowadays and what we thought would take us 36
+hours got completed in 6 hours. Wow. And uh after that we thought how do we
+make it unique? So we have thought of a universe where you can train your own directors by giving them your own style
+your videos. They learn and there's a marketplace of all of these directors and these directors essentially critique
+your video and then you can choose multiple of these directors. So, a lot of people have been hyping up what
+you've been building. A lot of people have been telling me we got to go check this out. So, tell me a little bit about
+what you've built so far. My name is Ryan N. Um I I go to hackathons every single weekends. Um my most recent hackathon, uh I actually
+went to Open A Hackathon and we won over there. Yeah. So, what we built Have you played Minecraft before? Yeah. So, do do you know about 2b2t by by
+chance? Not really. No worries. So, it's the first anarchy server for humans to play games to play Minecraft together is the is the first
+server. Um, and so what we are building, uh, we're trying to make history at Tree Hacks. And so we're building the very first anarchy server for AI AI agents to
+play together. And how we what we did is we built like a harness for, um, AI agents for on OpenClaw. Uh, we just
+built we just bought a Mac Mini to show that like any any public node is able to connect to our server and um, play play
+on our server, interact with each other. They're like all like working on stuff. Um, and we are like putting out like uh
+chests that like people would want to like these bots to incentivize we will be paying them out. Uh, like first person to like get all full iron armor
+or like first person to go to the Nether, something like that. Um, and we play these bots to do that. And so each
+one of these bots is a um is a open claw like sub agent that is like running to like do autonomous like actions and you
+can give them soul.mds to like give them like different personalities of like what they want to do and characteristics. Yeah, we're basically
+building like a whole system that's able to help you sleep better. So, it has like a different sensors um such as like
+a muscle tensor for like tension sensor for like detecting if you're clenching your teeth, which is a big problem right
+now. Um well, especially in engineers, we're always stressed. So, we're always clenching our teeth. So, we have heart rate as another
+multimodal input. For that, we use like Apple Watch data. We are sending the data from Apple watch to our server and
+using that heart rate along with the EMG signal that we are getting from a myio sensor. Uh we try to create an analytics
+dashboard. So what it does is like first is the data collection step. So once we have the data collected using the
+collected data we actually generate the analysis and once we do that analysis you can actually have a conversation
+with a chatbot to actually understand what that report is about so that it makes it easy for the user to understand
+and the third step would be basically uh closing the loop. Tuna and I suffer from like teeth
+clenching a lot. So basically we have the sensor in like a specific muscle and
+Oh falling [laughter]
+that happens. Yeah. Robots, right? Yeah. [laughter] That thing is aggressive. That's funny.
+All right. Sorry. You Yeah. So Artuna Art. [laughter]
+So basically when he clenches the teeth, you can see like how it starts like rising. So you can see like there's a
+muscle like tension and that's basically being sent to the like our website
+you'll find like real time analysis that's being done over here and once you have the real-time analysis we can
+actually generate a report and we have a AI chatbot that's sitting on the corner you can interact with it so you can ask
+questions regarding your report and also book appointments and that's like a closed loop that we were talking so my name is Joshua I go to Stanford.
+Yeah. Okay cool. So tell me a little bit about what you built here. So what we're building is basically a Zoom AI companion that uh helps you
+learn and gives you animated videos to help you learn as well. Uh also
+customized practice problems based on whatever your lecturer or teacher is teaching you. And this is just one of
+our features. Uh this isn't our actual Zoom AI companion. So basically you uh we'll collect context from the actual
+zoom call itself and it'll automatically make generate you like a math or physics or linear algebra or probability based
+video uh and give it to you in in addition to what you're already learning to help you learn. And so basically any
+context that we collect from the zoom call will be sent to an API and we'll generate the animation. And so after a
+while uh we'll get a video like this created completely by AI.
+Wow. Looks like very much like the three brown blue. Yeah. Blue, one brown.
+You got like the open source uh kit that you can use for making videos. Yeah. And so we able to use AI to
+generate these videos using that package. So you would see this in the side as your teacher's teaching. Just another way to help you learn, pick up
+concepts really quickly. All right. So we got 12 hours to go. How's the project coming along? What are
+you building? Yeah, the project's going pretty good. Um we are building the prediction market for tree hack specifically. uh people
+can go on and bet on the event happening and eventually when the dead post is going to be released that people can bet
+on the a grand prize who's going to win the actual uh prize for the tree hacks.
+Yeah, it's like the Hayaken idea. The Hayaken idea is like people um uh individually they don't know that much
+about the world but together as a crowd um by voting like by by putting money where their mouth is they can contribute
+information to the markets and as a whole we have the wisdom of the crowds. Why did you decide to build this kind of
+an eventspecific prediction market? Right. Well, firstly, we don't think that traditional prediction markets work
+for this like fine grained like um event- driven thing because there are simply so many things happening on the
+ground and like prediction markets are broad. They're like for a general audience. Um so they can't do this. The
+reason why we wanted to wanted to build this is because we think that hackathon projects they're usually quite ephemeral. Um they're almost like
+isolating in a way. You lock yourself in a room for 36 hours. And so hopefully we can bring people together um with the
+fun of prediction and trying to contribute information to the markets and make them more efficient. And we have the team who has secured the
+nicest space. How did you get this space? You got an entire freaking office room. Well, it was me. Uh so we showed up really early uh and then we just jumped
+into the check-in line as soon as we possibly could and then got out of that as soon as we possibly could and then just ran over and found the best room
+that we could immediately. Well, uh what have you all been working on? So essentially, you know how uh
+private schooling or like getting a tutor is really expensive, especially in like North America, right? So
+essentially what we built built was a is a tool a tutor AI tutor that um uses the
+Zoom SDK and you can actually like video call it on our app and it will just
+essentially um it will kind of like help you learn whatever you want to and um I
+think the best way is just to show you guys how it works. All right. So, I'm going to join the session and hopefully it works.
+Hey there, I'm Manurva and I'm really excited to help you learn something cool today. What's on your mind? Is there a
+subject or topic you're curious about? Yeah. Can you explain the uh Pythagoras
+theorem for me? Sure. So, the Pythagorean theorem is about right triangles. You know, triangles with 90° angle. Have you ever
+seen one before? No, I have not. Can you show me? Perfect. Let me draw one for you right
+now. So yeah, it can. So it has like full access to like whiteboards, uh a
+graphing calculator, and for example like a 3D renderer. Like can you show me the solar system
+and it takes a second, but wait for it. There we go.
+Let me switch gears and show you the solar system. That's awesome. And this is just all generated on the
+fly. Wow. All right. t tminus 12 hours to uh submission time. What have you all
+been building and what do you have left? Yeah. Um our project is called Collab. It's an AI chemistry lab that brings
+agentic intelligence into the laboratory space. Uh we were inspired by thinking
+about how great agents have become and where we can now deploy them. Our project essentially takes standard
+chemistry equipment and standard electronics bringing these two domains together allowing us to automate lab
+work and help researchers focus on what's important right which is high level experiment direction finding novel
+ideas not pipe heading not working with you know you know cell cultures yeah of course if you take a look at
+this table this is what I've been working on uh throughout these hours uh right now we have whole hardware set up
+for uh our experiment that we're going to run and we have a Raspberry Pi uh that controls everything here. And I can
+show you a quick demo of of everything that's happening here. We have a thermal camera that is able to detect the
+temperature when the experiment runs. We also have an optical camera which we'll use to run computer vision. Uh on top of
+that, we have an arm here that controls um you know taking flasks off, putting
+flasks on. Um that way you know researchers don't have to get their hands dirty um doing everything uh
+menial in the experiment. So what we're trying to do here is to use AI to show um to gen to generate board games. So
+basically we're thinking of like if you have ever played Monopoly D but you want to change like something about it. For example, play Monopoly but I want a
+market crash at the end. So like something it's a new creative twist on on on games. So what if you can use AI
+to basically generate these games so that you can play online with your friends. So actually our team here is all quite international. We all come
+from different countries. So like if we are able to digitize board games, it's also a social element as well because
+then we can just continue playing it after the hackathon. Right now we we have like generalized the the AI to be
+able to work for a few different games like for Uno, exploding kittens and poker. So if like you can just like put
+a name, it generates creates a room and then from this room like different people can like um you can join and it
+creates a board game. So you can see all the different cards for both different players. And so all of this is dynamically generated. It's actually um
+based on like using AI to like search about the context of the games. Yeah, we got 12 hours left. What are the main things you're thinking of at this
+point? What are you all working on? I think we are like 50% done. So, I think it's really a huge mad rush. I
+think the past like 24 hours were mostly like experimentation, learning new things, um talking to sponsors and
+learning all of their different like technologies. So, yeah, right now it's what we're trying to do is just finish everything up, polish it up, and like
+get ready for the pitch. My partner Siri, she could tell you that she was definitely freaking out a bit in the
+morning, but I told her to lock in. And you know what? We did. Okay. So, you were worried and you just
+said lock in and everything worked out great since then. Well, I think like I'm the type of person that like gets super
+stressed out over like a the prospect of like a huge idea like when there's so many different working parts and like I
+think Jennifer is the type of person to be like okay like chill out and like take a deep breath and just start
+working. So I think that's definitely helped. So tell me a little about what you've been building. Yeah. Okay. So for some context like I
+run a clinical research study on pods patients but I come from a computer science background. So getting over that
+barrier of like understanding all these medical terms and things like that has been super tough for me. So like
+Jennifer, do you want to kind of explain more about Yeah. to speak more broadly about the general audience? I we both
+feel like there's a lot of people who are really skilled in tech and AI these days and who are also interested in the
+medical fields which is like how Siri started out like she just discovered POTS and wanted to do research on it.
+But it's really hard to be caught up to speed with the medical field due to how
+deep and intensive the knowledge bases tend to be. So our goal is to allow
+students or like people like us who um to explore medical sub fields and the
+most recent clinical developments um without like as frictionlessly as
+possible. And we're doing that through short form content which you can elaborate on. We
+basically like uh pull from a bunch of clinical research studies that have been done in the past and we summarize them
+in a way like kind of like like we we want to say like Tik Tok like reals s
+where anyone can go through and scroll and like see like okay what is happening in this research paper and it like
+breaks down exactly the complicated terms because think about it like in 5 10 years we're going to have a whole
+group of students who know how to use AI and who know how to use these AI tools but the actual like getting over the
+barrier of like using those skills for medicine and like combining those fields so we make some actual progress is like
+kind of what we're targeting. Like we're trying to show that it's um it's not going to be like these terms aren't going to be that scary and there's so
+much like I just feel like there's so much clinical data out there that like we don't hear about and it would be interesting to see like who who there
+with the AI skills can actually do something with that. Yeah. And for our front end
+we have our uh our model synapsing the gap between AI and healthcare. So we
+start off with this homepage in which the user has um two
+question fields. They can answer what their interests in the medical area is
+and then what their strengths or like interests in AI are as well. So I might
+put something down like medical imaging and then computer vision
+and then by clicking on discover research. This is where we'll query our
+backend, our server, and collect a bunch of relevant articles.
+And those relevant articles will then be um synthesized into these short form
+videos that the user can scroll through and quickly
+access summaries that are like tailored towards their knowledge base
+and experience on the backend side. So we do a bunch of stuff in the back end like we connect it to like basically
+this vector database. we can get the relevant information and then we connect that to perplexity and then we connect
+it to something called hey genen and you can kind of see like we we generated a video here. So like it like puts like
+the information on the screen and then it makes like the diagrams and kind of like in a more explainable way.
+Awesome. Well, keep up the great work. Uh what are what are your biggest concerns for the next 12 hours?
+I think staying awake hopefully and yeah, I think staying awake and getting
+this done cuz we're we're going to pull an all nighter. It's the It's a tree hacks way to pull an allnighter.
+A lot of people waste too much time uh on dating. Uh I cannot say for myself because I have beautiful girl
+girlfriend, but uh a lot of people spend too much time dating, you know, getting to know people and uh that's a very
+timeconsuming and energy consuming activity. So what we do is we create a clone of you uh so your AI agent can
+talk to other AI agents and get to so they get to know each other and you don't have to waste time, you know,
+trying trying over and over again and you know exactly who's like a better match for you to be your friend, to be
+your uh partner or whatever. I think that's exactly the subject of like a black mirror of
+Yeah, we we've got that very frequently. Yeah, but we we did it in a white, you know, more bright color so it doesn't,
+you know, give off bad vibes, you know. Yeah. How do you get the clone of the person? Like do you have it interview you and
+then turn around and pretend to be you basically? So it's a very very friendly you know sign up page just currently we have
+LinkedIn but uh soon you'll be able to put your you know any link you want it would be your Instagram your Twitter and
+uh it'll get the information for you and you just write you know a quick blurb about what do you like like what do you
+like to do and uh that's how we create your clone and then it instantly starts interacting with other you know agents.
+What are your main goals for the next 12 hours? So the back end is working uh perfectly.
+The thing is uh we broke some stuff in the UI but after that we have some cool interactions you know like the agents
+talking to each other. They have actions they can do like on a physical not real physical world but they can you know shake hands give hugs to each other uh
+and then uh an orchestrator gives a final decision like should you spend your time meeting this person or talking
+to this person IRL and that's like the wow moment that we're looking for. All
+right, you all are 35 hours into this 36-hour hackathon. Ready to submit to
+judging and you have a working prototype or working essentially what you're going to submit ready, right?
+Let's talk about it. Yeah. So, we're making a minus. It's a mind control mind control robotic arm. So, we can have people who have
+disability who have hard time feeding themsel hard time um eating themsel
+without assistance. So we want to make it basically we made a assistant arm that you can use your mind to basically
+control it and help good yourself with the without any assistant. So here's
+Jessica we can do demo. Basically we have two components. We have the EEG. So basically you put on the neo cortex and
+it reads a brain electrical signals and we basically decodes it to control the robotic arm and this is robotic arm and
+basically we have a computer vision as well. So if you see on the left top here, we have a computer vision where it
+process um object detection and it tries to grab the food object and then pick it
+up. And so and this is the um uh EJ signaler. So basically we have the bunch
+of waves here and we have to basically process them individually. Um I mean it's basically let value between each
+other and basically we process them to this clean data here and we use this to basically identify whether you're
+focusing or not and we use that to basically um control the robotic. So we made a pair of smart glasses that
+can help you buy anything you see and anything you want. Hey, I'm Bella.
+Hi there. How can I help you today? Hey Bella, can I buy this bag of granola?
+Sure. Let me work on that and find the best matches for this granola. Give me a moment.
+Okay, so currently the smart glasses are it's captured an image and it's using uh computer vision to essentially do like a
+lookup and try to find like a product. Um and currently it's hitting our back end. This is dot and what do aims to do is
+bridge the gap between elderly uh people and the modern ecosystem of how medicine
+works. And so that means that patient charts are built for, you know, mobile
+apps and all of these things that don't really work very well for people who are
+on on the older side. And so, um, for us that looks like building a voice
+assistant and taking all of those interactions that aren't designed for them and reframing those into things
+that they can sort of natively engage with. Okay, cool. Yeah. So how does it work? This is uh dot. You can see inside here
+we have speakers, microphones and various other uh things. You can see in
+the top here there's a scanner and that scans barcodes on medicines. And so
+there's a lot of small text on here that is really hard for people who might, you know, be visually impaired to to read.
+But medicines all have barcodes on them and those either correspond to universal drug codes, universal product codes or
+to the prescription numbers. And so we have uh AI agents that run as a crown
+job and we'll scrape their patient portals for information on their prescriptions and medical history. And
+so uh stored securely locally on device there's always basically uh a cache of
+their patient data. Okay. Um well why don't you scan and and show us what the core interaction is.
+So if we um scan something here we can say hey Jarvis tell me about my heart
+medications. Leo your heart medications include metaprolol tovastatin and aspirin. They
+help manage your heart rate, cholesterol, and reduce clotting risk.
+Code cap. Yeah. Hell yeah. So, the problem is that coding right now, um, using agentic coding tools is
+very supervised. Um, you have to go back and forth with claw, back and forth with open claw. Some people do this
+unsupervised. They let their agents run. But for longer running tasks, this breaks and the quality declines over
+time. So, essentially just more cohesion. uh when for extremely long running time.
+We believe in the future in like a couple months like you'd be able to build a browser in one shot. You'll be able to build a compiler in one shot and
+we're we're doing some research into like longunning agents. This is like a UI that you can visualize what would
+like the idea happened behind it. So essentially the goal is that you just don't need to supervise nearly as much
+micromanage. So we spin up a swarm of agents about over a hundred coding agents and these commit at over a thousand commits per
+hour. And so our previous proof of concept was to build Minecraft in one prompt. And so this is doing a replay of
+that run. So you are on two hours of sleep. I am.
+You've been grinding getting things done. Tell tell me a little about what you built here. So we built resite. Um essentially we
+want to bridge the gap between uh browser accessibility for individuals with visual impairments. Um, basically
+like you can imagine Facebook and like Instagram has a lot of like very cool UI features, um, like short form content,
+but a lot of that is inaccessible to people that are like blind or have other visual impairments. And so we want to
+make a browser or we want to make an app that makes it more accessible for people that are blind to use these browsers and
+things like that. For instance, I'm going close my eyes and I'll just talk to I'll say, "Hey, um, could you show me
+the differences between Stanford's architecture with San Jose State's architecture?" Um, I'm particularly
+interested in seeing which one has older architecture. I'll click this and it sort of starts processing. And so
+there's a bunch of AI agents that we have. We have diagrams that visualize what's going on in the background, but technically obviously if you're visually
+impaired, you won't actually see this in the background. This is for just judging purposes, right? And so what essentially happens is our app sort of just routes
+instructions to an underlying browser. The browser then performs the searches for us to answer ultimately the question
+that we just asked. Okay. Interesting. So, you've sent it off to go ahead and essentially research like a human would.
+Now, we have an answer. Okay, cool. Founded 1857 versus Stamford's 1891, but
+Stanford's more famous for that iconic mission revival main quad with red tile roots. SDJ mixes
+Kevin Goo. How's your weekend been so far? Yeah, it's been great. Um, craziest awesome like hackathon like everything's
+been really really fun and been welcome since day one since we uh flew from Canada. So, it's been awesome. Great. Awesome. Well, glad to have you back in
+states. You were of course at uh Calhacks as well. Y and um tell me a little bit about what you built here.
+Yeah, definitely. So, for us, we wanted to build something for the elderly. Uh we felt like something that has happened
+is that apps have gone more complex. Tech has evolved, but unfortunately that meant that the seniors got left behind.
+Um I've been there to help my grandma and my parents out a lot with their tech. You know, I once actually drove 30
+minutes to go visit my grandma to take two minutes to set up her Wi-Fi, drive back home. So for me kind of with that
+we wanted to improve that and we also noticed a real problem now which is that um actually there's going to be a big
+aging population crisis. One in six people actually by 2030 will be over 65 and that'll double by 2050. So for a lot
+of healthcare systems we want to urgently provide them the support they need and innovate on how we can support healthcare there. So our solution we
+built essentially a conversational AI caretaker that's as easy to talk to a friend. So you don't need to go through
+some sort of complicated app or download apps for the elderly. You can just simply talk to it. There's going to be two sides of it. First is going to be
+kind of a dashboard for the caretaker to see. But second, we also have a really really simple interface for the elderly
+to see as well. So I'll just talk to it. Very very simple. I'll say hello. It's
+uh good morning. I hope you're doing well. And uh how's how's you how have you been? And it's going to be an AI
+that actually talks to us. And through a lot of research, we actually learned that elderly people actually do prefer talking with AI. And unfortunately, you
+know, sometimes they may feel lonely. They unfortunately might be widowed. So for them, talking to an AI for them is actually better than talking to nobody.
+Um, and for us, we actually have something running in the background where we're analyzing this call transcript in real time to detect
+symptoms of cognitive decline. So for those who may be kind of having early dementia, we're analyzing the transcript
+to really see that. So I can edit. Hey, how are you all feeling? Awesome.
+Very tired. You ready to demo? Let's demo. So basically, we realized that like a
+lot of startups or smaller companies have a really big problem hiring people, especially nowadays, like applications are so volume based. So like when you
+open up a posting, you might be a small company, but you'll see like hundreds and hundreds or thousands of applications, and it's really hard to
+like go through and figure out what applications are actually good and what aren't. So basically, we built a tool to help that. It kind of uses a lot of like
+multimodal models and stuff like that. But the big thing is at the end we have a big AI agent which kind of like aggregates and filters down based on
+your specific needs. Uh how does it work? Basically once you do a posting you you
+are like assured that your posting will only go out to people who are actually qualified and interested and also good
+fits. And after this, after you get a whole bunch of applicants, you can click the score now button and this sort of just like ranks intelligently ranks and
+sort of like breaks down all the candidates so you can be confident that you get the right people for the interviews. So like for example, you can
+look at this, it gives you a score, you can look at the resume and then it also gives you like a more intelligent
+breakdown on like skill set. So a big thing for us is we focus on showcasing only jobs that we think the
+candidates are fit for and on top of this we also sort of limit the number of applications. So if you can imagine in a
+perfect world candidates will only apply for a handful of companies that they are good fit for and they know they can get
+and then off of this everyone will have the same amount of jobs going around right but the process is just simplified a lot more so that's sort of the goal
+here oh okay middle one
+my understanding is this gives you chord suggestions yes depending on what you played previously
+it'll So it'll give you the next chord and you can just play that. Yes. Uh based on that like kind of like almost like sheet music that is being
+dynamically written as you go. Yes. Yes. Yes. How these came along? Why did we decide on these ones? So our
+approach is that you have all the possible combinations of the chords in a certain octave. So we treat notes that
+are on different octaves as the same. These are called chroma factors. It's a array of 12. So five black keys, seven
+white keys. And then so you have all the possibilities in that and we store it into an array. And then what we do is we
+process different signals. We look at all the different intervals that pass through this chord. You could have like
+a third, the fifth or you have a trionee and we see how much of each one passes through the signal. And this is just
+done with a forer transform. And then we put that into a highdimensional space. This one is in 24 dimensions because you
+have 12 types of signals. Each one in a complex number. So a complex number can be represented with two real numbers.
+That gives you 24 dimensions. And this space geometrically it preserves some musically like interesting things like
+what key you're in or the angle between certain vectors can can uh describe how consonant they are. And then using this
+the chord suggestions that we produce will describe like a certain amount of tension depending on where they are in
+the space. So then you would traverse through the space adding tension releasing tension adding tension and releasing tension. This is kind of our
+prototype to that. Very cool. Yes. All right. Yeah. So our project is called Frontline and essentially it's
+revolutionizing the idea of how operators respond to like emergency
+calls for example. Um it takes around like seven minutes for a first responder to show on site and there are a lot of
+things that occur in those seven minutes like getting the information getting details about the scene like if you see
+a car crash for example you're reporting a lot of things but we have a lot of technology and tools to help assist with
+that provide our first responders some details before they come onto the scene right so we've kind of built this little
+pipeline that you can basically phone call an operator using like Zoom but
+it's just a video call and actually you can scan your surroundings ings and analyze it for you. So if you have an image of a car crash or like there's a
+car crash, you know, if I'm calling the operator being like, "Hey, I see a car crash, there are two cars completely
+totaled," it'd be able to record my speech and then be able to note down what it sees also in the camera and
+generate a report for the operator to send to first responders. And at the end we also have an ability to get text
+updates like first responders people operators can like send a message to the second agent to provide contextual
+details like over like messaging about upcoming instances about the scene for example.
+Yeah. So what was your experience overall building all of this uh during the hackathon like did you all achieve
+most of the functionality you hope to build out? Yeah, I think that we had our
+certain things of like this is what we need like our MVP of like what we need to make our thing succeed. This is what
+we cool to have and this is like kind of our like vision. And then I think we kind of reached the cool to have area. I
+think like there's parts we definitely could have improved on, but then we achieved all of our basic things of like
+analyzing like the imagery, being able to get a transcript and generate a report using AI and being able for two
+people to simultaneously do that and call each other at the same time. So, what are we looking at? Yeah. So, um, one of the new up
+andcoming fields that's happening right now is there's a you can see war that's happening on the ground, in the water, in the air, but soon space is going to
+become a pretty contested domain. We there's a lot of spacecraft that are in orbit and we're able to track these spacecraft on the ground and if there's
+ever a case where the spacecraft might crash, we can send those signals up to the spacecraft to move them. But what if
+there's no longer you you can no longer talk to your spacecraft. So there's already examples where this there's jamming, active jamming happening where
+countries are actually jamming signals for spacecraft and you can no longer talk to them. And so to do this, we basically have to find a way for the
+spacecraft to have their own space traffic management system and track how all the satellites move around. So this
+is a very complicated problem, but by leveraging NVIDIA GPUs, we're actually able to run this on the spacecraft
+itself, propagate thousands of satellites, and figure out if a collision will occur. So here we can actually see these are star tracker data
+that we're simulating. These are basically cameras on satellites that actually look out and look for uh individual like dots dots in the sky
+like stars, but we're repurposing them to actually track the satellites. And so by tracking these satellites, we're able to actually pick out how they move. And
+we can propagate this in real time and we can actually predict if a collision would happen. So here you can actually see we found a collision
+a collision of two satellites in space. Exactly. So if there's a piece of space like retro thrusters or something they
+can like adjust their uh orbit slightly. Exly. So we have like a case where they have rocket engines on the spacecraft
+itself. You can actually if you can predict a collision will happen. You can then apply evasive maneuvers to get out
+of the way. But one interesting that interesting thing that might come up is a chaser and evader scenario. So let's say I'm a
+Taiwanese uh telecommunications satellite and China wants to come and sabotage us. So they might be coming to
+collide with those or basically rendevous and try to and disable us using like a claw or some other like
+weapon. And so what we can do is if we can see they're coming at us, we can actually try to move around. And so here
+you actually have a chaser evader scenario where we basically uh try to avoid satellite and then the satellite
+keeps following us and we have to keep moving around until either they run out of fuel or we're toast. Wow. So, what
+did you build over the course of the weekend? Yeah. So, over the weekend, we basically built this orbital propagator that we're running on a GPU. We built this uh star
+tracker measurement system that can actually track the satellites themselves. And then we've built a prediction algorithm that can forward
+predict and solve for that. We've also implemented a common filter uh a common filter for for the estimation and also a
+convex optimization program that's actually going to then go and try to solve for the next best orbit to actively evade and make sure we don't
+have any collisions. I've overall been interested in machine learning. I mean, I taught myself to code at a really young age using
+Scratch. So, I thought, why not make something that helps out kids these days? And, you know, the next big thing
+after computer science is machine learning. So, all of us decided to make Scratch for machine learning essentially. And we made burn. What you
+can do on this website is you can go through a bunch of different types of uh lessons and pets that allow you to learn
+and understand exactly how different machine learning algorithms work. So, you got neural networks on here, random
+forest models. Um you also have large language models uh visualizations for things like chat GBD2. Um and most
+notably the one that we are really proud of is AlexNet. Uh so if you guys have heard of AlexNet, it allows you to use a
+CNN to classify images. And this one what it does is it classifies images of dogs and cats. So here's our um
+convolutional neural network. You can move it around. You can see how things interact in space. You can see uh this
+is our input layer over here. Um and then you can see all the different convoluting layers. And then you also
+have your output layer that is just two classes at the end will either tell you either it's a dog or a cat when you put in an image. Uh and then yeah the entire
+process of what burn does is it allows you to visualize the whole training process. Allows you to uh choose
+whatever parameters you want to do for your training process such as your batch size, the number of epics, uh what loss
+function you want to use as well as what optimize you're using. And then from there uh you can actually visualize the
+entire training process and see how things evolve in time. Our application is called Rewrite. And basically what it
+does is it lets users upload a picture um of like a scene they want or they can
+also prompt it. But for this scene, we uploaded a picture of uh the moon landing. So a user is able to upload
+that picture right there. Uh describe an action. So how they want the camera to move and then right now what we're doing
+is we're generating like a full 3D scene that the user can interact with. Um, it's a little bit limited right now in
+that it's still a 3D scene, but the user isn't able to move how they want. They just have to describe it ahead of time
+here. Um, it does take a little bit of time since it is a pretty computationally heavy task. We could
+show you a video. Yeah, that's great. Of it already generated. So, let me just press play.
+Yeah. So, that would be an example. So, wow. Oh, and this is all rendered on top
+of that image. On top of that image. So it it figured out a way to kind of like predict what the rest of the uh
+lander would look like. Exactly. Yeah. Like we're using diffusion models to kind of uh expand it and we're also generating like point
+clouds. So you can do like rotations and panning to the left or right. Um so it is fully generating a 3D scene from the
+perspective of the user but only like where we're required. Um so if you want to try
+the headset, you can kind of feel immersed. So the idea is we'd have like students or or I guess anyone who wants
+to be educated being able to relive these super cool experiences. Very cool. Yeah, I can feel it like
+panning out. Yeah. Awesome. Now, well, let's talk a little about the
+hackathon journey. What has happened over the last 36 hours? Obviously, you built all this. Yeah. But what else has happened?
+We bought swords. I won the robot boxing fight, which is pretty cool. Oh, you won the robot boxing fight.
+Yeah. This hackathon has really had so many like side quests and adventures. It's really been one of the coolest ones
+I've been to. Um, but also we had like many opportunities to really grind together for so many hours and very very
+few to sleep. And what Snapia does is that it leverages computer vision and visual
+visual learning models to come up with workflows that you can use to build AI
+agents quickly. It's simple of an eye and it's going to show you how that works. Okay. when you upload a video, it is
+going to um basically give you like um use computer vision and vision visual
+language models to really pretty much understand what what was going on in your workflow. We use our proprietary
+algorithms to sort of like really figure out what is going on in each um each frame and and and like sequences of
+frame and then what that creates is that it gives you the space to generate a workflow from um um the video that was
+going on over here. So essentially it it'll look at like your data that you give it which could
+be like a screen recording and then it'll kind of reverse engineer how to do that uh through this process and you can
+kind of go in and scrutinize it. It's not just a black box. You can kind of see how it's going about approaching all
+the different aspects of the task. Mhm. All right. All right, we're here with
+our resident cyborg ready to check in and see uh how the uh muscle movement of
+the jaw is doing. Hello guys. Uh what we are building is called Sleepsense. So it's basically
+like you might have seen here a lot of people like who are ambitious and hackers they don't get to sleep as much
+they want. But on top of it they sleep say 5 hours 6 hours or even 10 hours
+sometimes and wake up tired. wake up feeling pain in jaw. People are grinding
+their teeth in the night which causes like jaw pain and also disrupts your sleep cycles. Yeah. And that's why we
+were like what what if it could be that like we could build something that can help people diagnose this earlier and
+offer the data to their doctors so that they can track their history, offer them right treatment and also they know what
+what what is the reason behind it because it could also be stress induced. It could be genetic. It could be
+hormonal imbalance. Awesome. So, let me start talking. Yeah. And you can see that it changes to
+talking actually. And let me show you how it looks when I clench.
+What if we could detect muscle failure before it's happening? This is actually a big issue especially. For example, doctors are often experiencing muscle
+fatigue in the operating room and this is contributing to medical errors and it's commonly cited in malpractice
+lawsuits. And so we're hoping to predict a person's muscle fatigue and their eventual failure well before it happens
+and maybe even before they can feel it. And this is applicable not only for doctors and surgeons, but for anyone who
+works in repetitive, dangerous, and stressful actions like construction workers or even athletes. And so what we
+have here is a set of electromyiography electrodes attached here to Eric's bicep, which is then processed by our
+Python script. And so we're going to have Eric do a static isometric hold of a of a dumbbell and try to hold this as
+high as possible without letting it fall. And eventually his muscles will fatigue. And by measuring the current running through his bicep, we're going
+to predict exactly when he'll drop it even if he doesn't know. So let's give this to him. I'll hold this off. And
+Drew, want you want to count it off? 3 2 1 go.
+Okay. So right now this is going to calibrate. So Eric is tensing as hard as he can and we're measuring uh the
+maximum strength of his bicep contraction. The key parameters that we're pulling here is RMS which is
+representing the amplitude of the contractions of his muscle fibers uh as well as MDF which represents the
+frequency of how fast those muscle fibers are activating. And by measuring how that MDF value decreases over time,
+we're able to predict when he's going to drop this weight. So uh in real time we have a prediction of uh in the future
+when we think that weight is going to drop. Obviously Eric doesn't know and we're going to see uh as he holds as hard as he can how close we are going to
+get there. Uh and the way this is working is we are bidding this data in in sets as we progress in time and uh
+just continually updating our slope and our prediction for when we are going to reach a critical threshold value where
+we think he's going to drop. We've been doing so many of these trials.
+Okay, so that's when he gives out and we see that was within 10 20 seconds uh off
+here from our prediction, but you know, maybe even 50 seconds before he actually failed, our prediction was able to
+stabilize uh and estimate when he would drop it. Very cool. How have you enjoyed the event so far?
+So much. Like I've done hackathons before, but nothing like Tree Hacks. I've done like four before, but Tree
+Hacks takes it to a completely different level. And I think the best thing about it was just talking to so many people
+working in great companies and companies like I really want to be in, companies which are relatively new and doing great stuff. So I really enjoyed that.
+How'd it go, man? So uh we got most of the things we wanted to get done done. Um and as we
+were like kind of recording our final demo video, things broke of course cuz nothing ever goes right during
+hackathon. But yeah, I think I think we've got a pretty good shot. Awesome. Uh there any big takeaways from
+this weekend? Like any like lessons learned? I think definitely get some sleep and have fun because the last few
+hackathons I've been to, I've been just sitting in one room and just like hacking away for 36 hours, but Tree
+Hacks is really the first hackathon that I've actually like gone out and have had fun and I've had so much more fun and like I I've this has definitely been the
+best hackathon I've been to all all year. We're here with the judges. You got a pretty good stable of judges.
+They're going to go out there. They're going to evaluate the projects. Talk about how you're going to be evaluating
+these projects. Do you have like some rubric, some scoring system? Uh, we do. We have a few things we're
+looking for, I think. Um, you know, we got to be really wowed by the projects. We got to uh, you know, it's got to be
+really technically impressive, you know, cuz uh, you got like 36 or however long to, you know, make
+something really impressive. And if they think really outside the box and like have like a real like impact or
+whatever, I think that's that's pretty cool. So, I like creativity. So, I want to see something that's really cool, out of the
+box, never thought of before. Um, maybe something in like film and arts. That would be really cool.
+I mean, I think with AI tools, anybody can make stuff now. So, I I agree on the creativity point. I feel like you should
+really be pushing what's possible to make. Like something I don't know. I I expect to have my mind blown. This is
+arguably one of the best hackathons in the world. So, I hope to see some of the best hackathon projects I've ever seen. So, we shall see.
+Oh, I want to see something that makes me question why there was a box in the first place. Uh, I'm just a sucker for anything fun.
+So if it makes me laugh or I think it's joyful, I'm like that's awesome. That's epic. I can get on with that. I think
+something that's really fun just makes me burst out laughing or just tell everyone tell all my friends about it.
+I'm looking for that. So Ty, you are one of the main volunteers who put together this entire
+hackathon. It's been incredible. I've had lots of people throughout the day tell me they've been to like dozens of hackathons. This is the best one they've
+ever been to. Oh, that's great to hear. Yeah. Like incredible feedback from the hackers. Oh, amazing. Yeah. No, we we've spent
+like the past uh 8 months like putting this together for everyone. Uh we're just a team of like 27 students doing
+this. So, it's been so much work. Uh and we're so glad it turned out great and people are having a great time.
+Yeah. Well, tell me what goes into setting up an event like this because I think people underestimate like the monetary cost, the amount of volunteer
+hours. Yeah. All the different arrangements you have to get with like all these different sponsors. Yeah. Uh securing the venue security, like all
+these other different considerations that people who might want to create like a student hackathon at their school that they may not have even thought of.
+Yeah, for sure. I mean, you you named a lot of the the main things uh us organizers have to deal with. a lot of uh our logistics co-director Rachel,
+like right before the event, I remember her to-do list was like literally three pages of Google Docs that she needed to
+get done in the last week of like each individual line items with like different admin she had to talk to, different uh like requests she had to
+put in. Yeah, there's so much to do with like renting buildings. Um we cover hackers flights to come out here. So, uh
+we have to coordinate all of that and our we have amazing sponsors of course and uh recruiting all of those sponsors
+takes a lot of work as well. But we have like really really incredibly dedicated team members that each like bring
+something they're super excited or passionate about. I mean these badges were done by one of our team members named Torin. Uh he just was really good
+at making PCBs. So uh he uh we gave him this this project idea and he was like yeah let's do it. Uh and ended up
+putting this together. Um and yeah so everyone sort of like is it's it doesn't
+feel like work because in the last like few months it's kind of a break from your studying. you end up just spending
+as much time as you can uh working on Triax because it's fun. Like he loves to work on the PCBs. I love to uh build the
+systems that make this event run. I love to coordinate with Adam and uh do all that. Yeah. How many more years do you have
+here at Stanford? I'm a sophomore so I have two more years. Are you planning to be involved next year? We have an interesting org structure
+actually where only people only stay on the team for uh one year unless they become a director. So I'm out next year.
+Uh I'm off the team. So it's it's kind of weird like you would think we'd maybe want to keep people on team for longer but it kind of brings a new sort of flow
+and yeah I mean turnover so it doesn't get stagnant it probably dramatically minifies politics and stuff like that if
+you know you're on your way out. You really don't see it come together until you walk in the building and just see like wow there's tables here these
+these block letters uh there's these signs this amazing design that we had put together and like without every
+single person on our team it wouldn't have been possible. Um yeah. Well, shout out to every single person who uh volunteered to help make
+Tree Hacks 2026 a reality. Every single person had like was
+required to make it incredible. So, yeah. Welcome to Stanford Tree Hacks judging.
+There are a thousand developers behind me. Just an ocean of people and they all have table space where they're going to
+be demoing their project. Let's go check and see what they've been building. Um we're building um a product where we can
+play we can use any sort of everyday object and turn it into any type of instrument we want. Currently Mark is
+trying to show how he can create a guitar. Uh we use computer vision to analyze stro the strum and the note and
+then we use uh audio processing to understand how we can like understand which note is being played and how to
+convert that into a note we want to actually understand and then we connect that with some multimodal um uh models
+that will analyze um that will analyze how we how Mark plays to give him personalized datadriven insights and
+improvements on how we can like potentially like improve the way he plays. We also have uh connected some
+APIs where the way in which he can play um we can convert those notes into text
+that a chat will understand and then generate an entirely new song based on how he plays.
+Very cool. So yeah, that's pretty much the entire kind of project. Yeah.
+Well done. Yeah. So we're building basically a food waste detection system. So we have an Intel camera right now. Basically it
+checks the food and sees how much of it is wasted. So, we were partnering with uh Stanford dining halls. Basically,
+they have a lot of waste. And so, we went to the dining halls. If you can see here, um we have a list of all the the
+meals that we went to. Basically, you just scan the item right here like this.
+It once it turns green
+and then it tells you right here, half of the apple was was left uneaten. So, it kind of gives you some some metrics on that. We know that as college
+students, it's becoming very hard to make friends and current social media feels extremely performative and really
+van. So we want to make a way to find new connections and new friends and that feels a lot more organic. So we have
+wavelength. So as you can see, users can post images or text that they like that's in a very chill and non-formative
+way. And we use our clawed AI API to generate things that relate to those.
+So, as you see here, awesome marathon, they say running and cardio or endurance sports. Then, instead of having to
+generate things to think of whenever you want to text someone, when you go to chat, it automatically generates a
+prompt for you to connect over. So, I see that me and Latau both like outdoor activities. So much of the difficulty of
+making new friends is finding what you want to say and thinking over it. So, Wavelink does this for you. All right. So, we're here with a solo
+hacker. He built everything himself over the course of 36 hours. Take it away. Yeah. So this is reasonable graphs. What
+reasonable graphs is is a very specific framework for edge deployment of LLM in
+finance. So the strengths that we're looking for in this type of framework is traceability, transparency and privacy
+focus. So a lot of banks when they work with say third party companies, they don't want to give their data away. But
+what they are willing to give away is their decision-m process. So what we do is we abstract that decision-m process
+into a continuous directional graph node network which means that we say A leads
+to B, C leads to D and then we have a framework that is able to connect them together.
+Okay, awesome. Hello and welcome to make it. So make it is basically helping you get your plans
+out of the group chat and actually make them happen. Um, and so this is our video demo and it plays on the idea that
+basically, you know, everybody in the group chat is super active when they're planning something to hang out until someone asks who is making the
+reservation and our agent basically takes that and alleviates that stress away from the users and it brings the
+bot right to where you are. So instead of having to download another app or anything like that, you actually just uh
+put it into your iMessage. And so you can hear see in our demo that you can add this make it to your iMessage group
+chat with your friends or whoever it may be. Um, and it will take in preferences for dinners or whatever event that
+you're trying to plan with it. Um, and in the end it would actually make a reservation for you and be able to send
+it to you in a calendar invite and actually send you reminders as well as book your Ubers for you and things like that where that way all you have to
+worry about is showing up. We got the idea for this project after reading about a fact that 40 to 70% of medical
+equipment donated to the developing world ends up being broken and unused. That's a huge amount of equipment that
+could be life-saving that is just sitting broken and can't be fixed. In a lot of these places, there's less than one in a 100,000 people who have the
+expertise to fix it. So, we decided to create a platform using both computer vision and access to professionals um
+who know how to fix these machines in order to help these people and teach them how to build and fix the equipment.
+So, we created this kind of like fun uh Valentine's Day theme uh nuts and bolts. One of the things is a lot of times
+these uh manuals will be very um vague and they can also be very outdated and
+hard to understand. So if you can read the first step and try to identify what the first part is.
+Okay. Feed the 14 64 inch width 34 drone dome head
+screw. Okay. So that uh the screw dome head screw. I have no idea what a dome head screw is unfortunately. This looks
+kind of dome head. Is this about 3/4 of an inch? You might be on the right track.
+You might be. Okay. When you're ready, you'll just put it onto um the base.
+It's a bit windy out here. Yeah. Um Okay. And then when you're ready, you can click um
+step complete. And then it's going to probably tell me like, oh, that's not complete actually. Uh take a picture and we we'll see we'll
+see uh how you did and hey, it looks like verify it. And you got it
+correct. Yes. But let's see the next step. So cool. Okay. All right, that one was the easy one. Let's uh take it on
+the corresponding wing. Okay, so is this wing the right wing? Let's see. Oh, okay.
+And which way should I think it should go in this way? Right. I have no idea. I'm not a person who Well, it's not
+really screwing in, but let's just see if it thinks I'm right. Okay, let's try that. Step complete. Take a photo.
+Hey, you got it. Yes. Hi, we created Mo which is a a real time
+vision language agent for cell microscopy. So the idea here is we can
+actually prompt our app and ask it to do things like cell analysis segmentation
+um as well as like just asking like what it actually is. So you might say
+hey mo how many cells are there? So it can tell you how many cells.
+Yeah, approximately 25. Yeah. Yeah. So, what I built is um it's a fixed wing that basically approaches the maneuverability of a drone. Um
+drones really recently become super popular because of how maneuverable they are. Um but they suffer from a lack of
+speed and lack of endurance. Yeah. So the idea with this is instead of having control surface on each of the
+air foils to control it, you make the entire air foil maneuverable. Oh wow. So you can see in each case you
+move the entire air foil which is more efficient at generating lift or not generating lifting higher trying to
+maneuver and then you're pushing the maneuverability of aircraft to the like physical limits of what you can do
+rather than just what the control surfaces can deflect. The issue with current AI systems is that they only work for like one device.
+So like podc would be on your one computer, right? But what we want to do is work let all your devices work together in the same AI agent system. So
+for example, I can just talk to it like uh can you draw a diagram of our current architecture
+um and then it'll send the cloud code and then it'll be think it'll think a little bit and then it'll send the a
+diagram of our architecture to our iPad to like make edits on. So yeah, the way
+that it works is we have uh certain tools that we define to create widgets
+or like diagrams um on the iPad. So, if you've ever, you know, walked around campus trying to find a quiet place to
+study and they're all full, uh, this is something to solve that. So, the way we did it is we took Raspberry Pi and used
+a Bluetooth sensor to find all the Bluetooth devices around you. And, uh,
+if it's above a certain number, you can set like, you know, a capacity for room. And if it's like there's more than I
+think a couple percent of a the room capacity, it's like, oh, this is probably a quiet place to study. We
+built basically mind control robotic hinge. Um, and that's a lot of words,
+but basically right now I'm wearing a BCI, which is a brain computer interface. It's reading my brain signals, my brain waves, uh, EEGs
+basically. Um, it's the electrical signals that come out of my brain. Um, and so right now, if I relax,
+my brain activity will drop and if you tickle me, it goes up.
+Okay. Um, and so basically, we're using that data. um these values. See, so here it's
+spiked to basically control a robot to mind control a robot. If it detects that
+I'm interested, romantically interested in someone, we're using the beta high brain wave, uh which is the romantic
+interest brain wave. It'll basically tell the robot to extend its arm and
+drop a piece of candy in your hand. Yeah, we train transformer on brain waves associated with certain thoughts
+or certain emotions and then we use that to then classify then map those to rob
+robot motions. A lot of the distributions that we're familiar in life like for example the pan distribution the boltsman and the
+logistic can all be derived using this principle from math called the maximum entropy principle. Now what we did in
+our project is we actually asked a large language model to come up with assumptions and to derive these authorization problems by itself to
+eventually output the distributions that we wanted. So for example, we'll come up with a natural language prompt like how
+many cups of coffee do people drink per day. It'll conduct firmy estimation. It'll find maybe three conflicting sources, assemble a tree and then like
+solve a lagrron multiplier optimization problem together and then convolve the resulting distributions. So we can
+answer I guess the question and come up with like the most entropically likely most entropically likely distribution
+that we want to find. And together we built Sprout which is an agent deployed on a garden bed with
+total actionable observability. So what that looks like, we take a garden bed, stuff it full of a bunch of sensors,
+right? Literally, we have sensors in the soil measuring moisture, measuring temperature, measuring CO2 gas
+composition, feeding that into an edge deployed model that we trained on a Jetson Nano and converting that into actions. One thing we're really proud of
+is that we actually set up a water pump next to everything. We don't water an electrical mix, so that was really hard to wire up. Um, we can actually get it
+to where it can water the plants when it senses it's dry. It can move to a plant, then it knows it's right from the soil
+sensor and it can act on that autonomously. I think I really like free code camp. Like six years ago, I was trying to learn like ReactJS or something and like
+a lot of the times like the most reliable tutorials you guys will have like 40 minutes of like really long of like really specific here's how I did
+react stateful hooks or something and that really helped me get into like my depth and like this is different but
+yeah just coding in general. So basically what we're trying to solve is the problems that you need to have like 10 or more people to even do a surgery.
+So our solution to this is we can now have a primary surge and remote connect
+to our fully integrated AENTIC VR platform through VR from anywhere over
+the world and this view is synced to that camera over there and the doctor can now look around our entire platform
+and all three of these arms have agents inside of them. So the doctor can control these using natural language the
+same ways that they would that they would tell assistant surgeons what to do. We are the first model to generate
+end to end a full service to generate music just from uh thoughts. So basically uh we create a a service that
+takes both your is able to identify your emotions they have while you are listening to the music and also do an
+analysis of the representation of the song in uh vector space. So we had to make this all inhouse because uh they
+were out of the BCI equipment. So we 3D printed this ourselves and then because the EEG supplies microvolts we create
+our own amplifier too and from this EEG data it goes into two models. One is an
+emotion classifier which uses a CNN using some um map of the scalp and then
+there's also an LSTMI model which handles the music and waves and those go into an LLM prompt which creates this
+final um input to the pseudo API which creates our the song output from the EEG
+data. Very cool. Think about when you're on the bus, you know, you got a lot going on. Maybe you're going to the airport, you have your hands full. Um, you want to do
+something really quick, maybe send your boss a text, maybe write a quick note in Google Docs. Um, but you know, you have like a 100 different agents that do all
+these different things. I just want to be able to use the app the way I do, right? And so, let me try. Let me show you something. Hey, Uni, open LinkedIn
+and check my notifications. And we'll give it about 2 minutes to do its thing. Basically, what it's doing is
+it has a mobile use agent running on this Raspberry Pi. Um it's fully it's u
+very like privacy focused. It's open source actually. It's inspired by a Y startup called Blue. Um what they do
+usually is they hook into Oh, you can see it's already taking action. Oh, so it's click around in your phone. Exactly. Exactly. It's going to simulate
+user gesters with your fingers. Let's see if we can like showcase this to Sure. Sure. I can just plug this in, set this up with three clicks in my
+settings. It uses any app without any set without any login to like a million different websites. That's the idea. Um
+okay. So you're setting a agent loose on your phone to do pretty much. Yeah. And it interacts with the phone
+the same way you would. Exactly. So, this is Dive Buddy. It's a semi-autonomous underwater submersible
+for research and commercial divers. And its purpose is to help reduce risk and task loading by putting some of the hard
+work, some of the the grunt work um onto the robot and so you can focus on finding new species and commercial
+activities. And it works all through gesture controls because when you're underwater, you can't text, you can't
+speak. So, in order to go up, you gesture go up and it'll go up. In order to go to the right, you put up your
+pinky and it should go right. Um, and you can also just go full out straight
+and then it turns on both motors and you want to stop, you stop. But you can also ask AI questions. So let's say you're
+underwater and you're like, "Oh, what is this species of crab?" So you put up two fingers cuz that's crab and dive speak.
+And then it'll ask AI what you probably saw based off location information. And
+since we're, you know, in Stanford, um, and given the marine environments across the bay, it's, it's suggesting the invasive, uh, Chinese mitten crab is
+probably what you saw. Yeah. Basically, this is our take on the walker, like a very ancient piece of technology, and it's our way to improve
+people's lives. So, my grandma, she had a surgery, so she ended up on a walker, and she stayed on that walker for the
+rest of her life, and it was a huge pain. Like, she had friends who would fall and they'd be on the floor for 3 days. So, what do we do? We added
+technology to the walker. So we have here you see we have two different pressure sensors detects the amount of
+weight you put on. We have a double computer vision down underneath. It will basically take a video of the way you
+walk and it will count the number of steps you take. It will analyze your gate whether you're walking in the correct way basically. Um overall it's
+all powered through uh ESP32 that's basically just pipelining all this data back to like an API. We run it all
+through. We have a whole system here where you can see all the data that we get. This is all off the computer model.
+Um, we have fall detection which is like super needed among old people. And then we also have an AI agent because we
+thought, well, we got to go to our users, right? Uh, my grandmother would never be able to operate a mobile
+application where it tells her where her data is, but she's great at talking to people. This has been an absolutely insane
+experience. There have been so many incredible demos here that I've been able to see. Uh, I really appreciate you
+all coming with me on this journey, checking out Tree Hacks 2026, seeing the
+hard work on display, seeing the adoption of emerging technologies, the application of lots of different
+disciplines to build things out. Just this is the hacker ethic. This is the ethos right here. I've been absolutely
+thrilled hanging out here talking with all these ambitious people. I hope you really enjoyed this. I encourage you to
+go to a hackathon near you. If you have a chance, apply for TreeHacks 2027 and
+other prestigious hackathons in your area. It is absolutely the best way to
+get out of your comfort zone, adopt a lot of new tools, and meet a lot of new people, and just have an insane weekend
+that you'll remember for the rest of your life. Happy coding, everybody.

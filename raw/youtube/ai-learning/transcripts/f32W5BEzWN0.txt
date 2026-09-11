@@ -1,0 +1,466 @@
+This is the Starbucks app. Pretty
+standard. And this is the future. Their
+Starbucks plugin for CHBT [music] where
+agents can finally do things for you.
+And oh, the old app is done. And the
+future of computing is still taking
+forever trying to get me a drink. The
+most advanced technology ever built just
+lost the race to a few buttons on an app
+that's been around for 15 years.
+Buttons, menus, and screens are getting
+replaced by a gray rectangle just says,
+"What do you want to do?" But why? Is
+this really the future of how we're
+going to interact with our tech? Well,
+no. There's [music] actually something
+much more interesting going on here. I
+spent the last month deep into the
+rabbit hole. Talk to the people building
+at the cutting edge. And there's
+something else shaping up. A solution,
+[music] a light at the end of the
+tunnel. And it's not the buttons and
+menus and UI we used for the past 40
+years. But it's also not chatbots and
+agents that took over every single app
+you use. It's something different. But
+to understand it, we first have to
+understand why every single attempt at
+killing user interfaces has been a
+gigantic [music] failure. Starting from
+devices, Microsoft just announced that
+badge looking new AI device. The Humane
+PIN raised $230 million to replace
+screens and ended up being one of the
+biggest tech fails of all time. Similar
+thing happened with a rabbit and many
+other [music] gadgets. The original
+vision for Siri and Alexa and Google
+Home was that they were the future of
+computing. And now I have this Google
+Home in the back here and it's basically
+a glorified light switch for my smart
+lights and a way to set alarms when I
+cook pasta. Anytime I open WhatsApp, now
+there's this Meta AI button sitting here
+in the most prominent place in the app.
+Microsoft went a step further and now
+all Windows computers must ship with
+this copilot key. But great products
+spread organically. No one had to put a
+Gmail key in your keyboard. You just
+chose to use it because it's a better
+product. But what's interesting here is
+that the idea of asking your tech
+naturally to do things for you seems
+like it's the future. That's what
+science fiction has taught us. So why do
+these products fail? They had billions
+of dollars, the best teams, but their
+problem was much simpler. Listen to the
+demo again.
+Get me a ride from my office. Home now.
+Of course. I will book an Uber ride for
+you from your office to your home.
+Please confirm the ride.
+They are trying to push a new way of
+interacting with technology for
+something that our graphical user
+interface is already amazing at. Booking
+an Uber, ordering coffee, sending a
+message. These are all very simple,
+relatable, habitual tasks done in apps
+that you know like the back of your
+hand. Let's make a little experiment.
+Close your eyes and unlock your phone.
+Without even looking, you probably know
+where all the apps on your home screen
+are. You can probably open the right one
+you wanted. So, this is all happening
+right here. But it's also where things
+start to get interesting because on the
+other side of the spectrum, we are
+seeing the biggest gold rush in the last
+20 years of tech that no one had
+predicted. [music] Coding tools like
+cloud code and codecs were supposed to
+be used by software engineers, but
+they've been spreading like wildfire
+among regular people to edit videos,
+create automations, organize files, do
+your taxes. You can find so many
+tutorials and guides online. And this is
+not because someone put a big AI button
+in your face. This all happened
+organically. Hell, I'm writing this
+video in VS Code using clot code in a
+terminal as a writing assistant and
+created a system of skills that do
+things for me and do research and search
+X. I did my taxes yesterday in a coding
+tool connected to my Gmail accounts. I
+have it pull receipts, photos from
+Google, match everything and save
+everything to my notion for my
+accountant to review. All without
+clicking a single button or using a
+single graphical user interface. Me and
+many others are now at the stage where I
+get annoyed when a tool I use doesn't
+connect to my coding agent to have it do
+stuff for me. I even get annoyed when my
+clical agents do things autonomously for
+like an hour and now it's asking me to
+log into my account which takes like 5
+[music] seconds. This is a radical shift
+in behavior and this shift is already
+causing tech products to adapt. Linear,
+one of the most popular issue tracking
+tools went from looking like this to
+this. Post Hog, the tool I use for the
+analytics of my product Flask, also went
+from this [music] to looking like this.
+Salesforce went a step further and they
+released a headless version of their
+product, meaning it doesn't even have a
+UI because it's meant to be used by
+agents, robots, not humans. Notion and
+Google have done the same by releasing
+their CLI, a set of terminal commands
+meant to be used not by humans, but by
+agents, that allow AI tools to create
+calendar events, read your email, or get
+a block from a notion page. These
+products spent years carefully crafting
+their user interface and now they're
+basically saying you don't want to use
+that anymore. So while some products and
+devices have been trying to kill UI and
+failed miserably from the other side of
+the spectrum we are seeing incredible
+organic adoption for tools that are
+supposed to be for techies. We're seeing
+normal people getting into terminals,
+CLIs and MCPS. They are getting their
+machine their agents to do boring,
+repetitive and timeconuming work. Even
+this very animation when I was editing
+videos myself in After Effects,
+something like this was so painful to
+manually animate. But I made this fully
+using cloud code. Some specialized
+skills and some packages like Remotion
+and I didn't touch a single button of a
+graphical user interface [music] to make
+this animation. If you told me that like
+2 years ago, it would have seemed like
+pure science fiction. For example, for
+as much as I love a free, super powerful
+3D tool like Blender, [music] navigating
+this interface to find the one feature I
+need in a sea of menus makes me sick. I
+want my agent to do it for me. And so
+that's it. This is the solution.
+Everything is going to be agentic and
+controlled by chat bots and with no UI.
+And that's the future. And well, no.
+Because to understand what's actually
+happening, we [music] need to dive
+deeper. We need to understand the one
+thing that made the graphical user
+interface work in the first place. And
+that's also the biggest problem with all
+of these AI systems, direct
+manipulation. But before we get to that,
+we covered a lot of technical stuff so
+far. CL code, agents, terminals. But
+what if you want to build a real product
+and you've never touched any [music] of
+that before? Well, that's where the
+friends of the channel at Lovable come
+in. See, I have this list of business
+ideas that I carry around since middle
+school. And one of these things is a
+stock market for your time where people
+can bid for 1 hour [music] of your time
+in the future. So, if I believe my
+friend will be the next Elon Musk, I can
+book 1 hour of his time 10 years from
+[music] now. And it can be bought and
+sold. So, let's actually build this
+business. I open up Lovable. I used a
+dictation to explain the core concept of
+the business. We wanted to accept
+payments. It should have a stock market
+kind of feel and a time slot picker for
+booking [music] hours and time with
+people. And boom. After a few iterations
+where I could tweak things exactly how I
+want them, there it is. And this is not
+a mockup. It's a real live app with user
+accounts, a real database. It accepts
+payments and manages the entire stock
+market I built with real money. Lovable
+even lets you get a domain and host the
+entire thing for you. So you just share
+the link and you're up and running. 40
+million projects have already been built
+on Lovable. 200,000 new ones launching
+every single day. If you've got that
+business idea in your head that you
+wanted to build, you can check out
+Lovable at the link [music] in the
+description. But now, back to the video
+because this is where it gets really
+interesting. Take a photo on your phone
+and pinch to zoom in. What just
+happened? Well, what do you mean
+pinched? It zoomed. Of course, you
+didn't type zoom to 200%. You grab the
+photo itself and manipulate it or drag a
+file straight into the trash. [music]
+don't describe it. You drag it and you
+drop it in. This is direct manipulation
+and it's the core idea that makes
+graphical user interfaces work. You have
+elements, whether it's an album cover,
+an item in a list, or an icon, and you
+manipulate those directly. Tapping them,
+scrolling them, dragging them, zooming,
+pinching. [music]
+This all seems very obvious today, but
+it's the key to understand everything.
+See, direct manipulation has a
+superpower. Everything you can do is
+right there in front of you, ready to be
+manipulated. You don't have to remember
+all your commands. Just open up a menu
+and here they are, all the available
+ones. As long as the things you're
+manipulating fit on a screen, this is
+perfect. As long as it's the few options
+for your coffee in the Starbucks app,
+it's perfect. But watch what happens
+when you start to add more complexity,
+more things to manipulate, options and
+toggles and views. That's when you need
+to collapse things into menus. And when
+a menu is not enough into a submen, and
+when that's not enough, you need
+different panels. And when you have so
+many things you can do, you need to have
+customizable panels where some of them
+are visible and some of them are not.
+You have to choose which ones to show
+through another menu. This is how we got
+to the scary, daunting interfaces of how
+most professional tools look like today.
+The editor for Instagram stories feels
+simple. You can [music] take things,
+move them around, drag them with your
+finger, tap to edit. This is what direct
+manipulation is great at. Something like
+Adobe After Effects, for example, feels
+scary and intimidating because it's way
+more complex than what direct
+manipulation can actually achieve. So,
+do you see what's going on here? Every
+single attempt at introducing
+revolutionary AI here failed because
+well, the graphical user interface and
+direct manipulation is just better at
+this stuff. And on the other side of the
+spectrum, you have chatbots and agentic
+AI because once you cross a certain
+threshold of complexity, graphical
+interfaces stop becoming an asset and
+they become a problem, an endless sea of
+menus, dashboards, sub menus, and
+panels. Things you have to learn. So you
+rather have a robot doing that for you.
+A chat is free form. You're not bound by
+some designer building a button for that
+specific function. You have indirect
+manipulation. You're asking this agent,
+this machine to do something for you and
+it goes ahead and does it. So this is
+it. Really simple interactions will use
+UI. Really complex ones will be agentic
+via chat. That's it. Well, I left out
+something really important here. See,
+this is not just a gradient from [music]
+simple to complex. It looks more like
+this, a normal distribution. Most of the
+things we do every day with our tech are
+not just setting a timer and are also
+probably not [music] doing analytics on
+huge databases. It's stuff that is in
+the middle. It's browsing the web,
+writing a presentation, booking a
+flight, checking your email. So, what's
+going on in here? In the middle is
+actually what's important and where our
+missing link is. Take a look at this.
+This looks like a normal browser with a
+normal search box. Type and the best
+result appears. Maybe the only thing is
+that it looks like the internet is a bit
+slow. Well, this website wasn't loaded.
+It got generated on the spot based on
+what you type. No one built this
+website. Or take a look at this. If you
+ask Claude to explain relativity to you,
+instead of a wall of text, it builds an
+interactive visualization. Now, in
+principle, this is nothing new. You can
+build websites and apps with AI. Now, we
+saw [music] it. The sponsor of this
+video is lovable. But there's something
+different here. These are not apps that
+someone built. A machine has decided
+that a graphical user interface [music]
+was the best interface for what the user
+was doing and then it went ahead and
+built it on [music] the spot. And it
+decided the best UI would look like
+this. This is called generative UI.
+There's [music] three levels of it. And
+this example in Claude is just level one
+because vest is direct manipulation. It
+is styled consistently with Claude's
+brand and colors, but everyone else is
+catching up. Google just announced that
+search is going to start generating
+little apps that help you visualize
+complex search or topic with generative
+UI. And sure, these things now are
+pretty slow to generate on the spot. But
+just like when I was a kid, a web page
+would take like a minute to [music]
+load. And now we just assume it's
+instance. The same thing will happen to
+generative UI. In the future, it will
+look silly to wait a minute for your app
+to be ready. But level two is where
+things start [music] to get interesting.
+Take booking a flight. The UI we have
+now kind of makes sense. You can pick
+your airports, your dates from a date
+picker. And this, by the way, is way
+faster than typing that out on your
+keyboard and way more accurate than
+using [music] some voice assistant to do
+it. But last month, I had to organize a
+trip to San Francisco for me and my
+producer Bartk to shoot a video where we
+went behind the scenes of Figma. I'll
+leave a link in the description, by the
+way. It's a pretty cool video. So, I had
+to search for flights from Italy and
+Poland to SF, adding a stop in New York
+City, and we weren't even sure about the
+dates. This is the kind of thing that
+moves the complexity from here to here.
+Now, I use Google Flights, for example,
+and it already has today an AI mode. So,
+I was like, great. But when I typed in
+my query, it told me it cannot show the
+results because yes, this is an AI
+prompt box, but the resulting UI
+underneath is regular UI. It's just a
+grid of flights. So level two is keeping
+a base UI that is well regular UI but
+where some pieces of that can adapt
+[music] to be generative. See this is a
+mockup I made that start from the
+familiar UI of Google flights but still
+gives you the flexibility to add any
+weird request but the resulting UI
+underneath is not going to be just a
+grid of flights but something that no
+designer at Google has directly
+designed. In this case it's a slider
+that lets me move around dates and shows
+me with colors the most expensive flight
+of the bunch. Airbnb CEO Brian Chesky
+just said on X that they tried to
+implement chatbased interfaces of
+booking Airbnb, but they had to scrap
+them because they realized it just
+didn't work. It wasn't the right kind of
+interface. And so now he just launched a
+new AI lab that's building AI models
+made purposefully for generative UI. And
+something else happens [music] when you
+get to this level too because the way
+you build technology changes completely.
+Designers and engineers are not going to
+design and build screens and decide
+where a button goes or a list or what's
+the layout. They're going to design
+rules. Going from designing this, what
+each screen is to this, basically
+designing the UI kit, the Lego blocks
+that [music] the AI can use to generate
+the interface with your visual language
+and taste and then rules for how to use
+these Lego blocks. For example, when to
+show a map versus a list, what layouts
+are preferred and this is a fundamental
+shift in how products are built. And
+level three is where you don't just have
+a regular app with pieces of generative
+UI, but the entire product becomes
+generative UI. The rules that tell the
+product what to show are the product.
+But there's something important to
+understand here. The future of how we
+interact with technology is not
+generative UI. It's not old UI. It's not
+chat bots and agents. Is all these
+things. We will still have regular
+traditional UI with direct manipulation
+where that is the best interface for
+those jobs, usually simple [music] ones.
+We will still have powerful agentic
+systems that do things for you where
+that is the best interface for that
+complex [music] job and we'll have all
+three layers of generative UI where that
+is what solves the problem best and this
+is the biggest shift that most products
+will have to go through in the coming
+[music] years. I'm doing it right now
+for my product flask. You can use it to
+share feedback on videos by just
+recording on your screen drawing. So
+regular UI is the best interface for
+[music] that. It's familiar. You can
+move around the videos very visual. But
+when you break down the feedback that a
+lot of people gave, you need something
+specific, a specific breakdown, that's
+where generative UI would make the most
+sense. And I'll be adding that when the
+tech is good enough. And instead, for
+the boring stuff like organizing things
+into folders and managing your team
+seats, that's stuff that you shouldn't
+do yourself [music] and where chat and
+agents would do it best. So just like
+the Xerox Park Spark Research Center
+invented [music] the graphical user
+interface that shaped how we interact
+with technology 40 years ago, someone
+else right now sitting in front of a
+laptop in some cafe is doing that all
+over again. But behind every product you
+use every day, there's something else
+that's hidden. A set of decisions that
+are not design, not engineering, but
+that are probably the least talked about
+and most important part of the tech you
+[music] use every day. And you can learn
+all about it in this video right here.
+I'm see you in the next one.

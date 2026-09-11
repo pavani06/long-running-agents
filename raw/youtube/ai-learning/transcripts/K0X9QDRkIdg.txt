@@ -1,0 +1,302 @@
+[music]
+All right. Hi everyone. Thank you for joining us today. I'm Gagen
+and I'm Isabella. We're both members of technical staff here at Enthropic at the applied AI team. Our team sits at the intersection
+of product research and go to market. And we spend a lot of our daytime building agents, evaluating claude, and
+finding ways to make it better in different use cases. We're here today to talk about how the surfaces for building agents has evolved
+in the last three years. What our teams have learned building agents both internally at Enthropic and externally
+with our enterprise customers along the way. I'll hand it off to Gogen to kick us off. So here's the plan. We'll first start
+off by talking about how we've seen agentic surfaces evolve all the way from the messages API to cloud managed
+agents. Isabelle will then cover the engineering principles behind cloud managed agents and how it works under
+the hood. We'll share a demo that kind of shows what it feels like to build with this latest surface. And then we'll
+talk about lessons that we've learned from the field by taking this to customers. And finally, we'll close with
+what it feels like to build at the frontier as model capabilities evolve dramatically.
+Okay, with that, let's talk about how agentic surfaces have evolved. To set the stage, it's important to realize
+that AI progress is accelerating from back in the days when the transformer architecture was first defined to the
+scaling laws discovered by our founders to the models that have been released today. Every model release in incre and
+we all feel it. Every model release improves capabilities that the previous model did not have and we see this
+translate over to the tasks that we give models as well. The complexity of these
+have grown dramatically. Initially we used to only give them questions simple Q&A. We then started delegating tasks to
+them and now we let agents own entire outcomes. What this means is that as
+task complexity and model capability has improved, the agentic surfaces has to
+evolve with them. And we're going to talk about that in this section. So go
+back in time to when we first launched claw 3. We launched it alongside the first agentic surface called the
+messages API. This messages API was simply tokens in and tokens out. You
+gave information in and you got information and text completions out. As I mentioned earlier, task complexity
+grew over time and there was a need for the model to fetch information and
+manages context as it runs for longer and longer. And so we saw the invention of the agentic loop. This loop is
+something that every customer started building manually from scratch that calls claude, you know, runs the tools
+and manages its context and it was painstaking. And on top of that lived their product where it had the AI
+feature and it would call the agentic loop to accomplish some sort of task. But this was not all. In order to take
+this to production, there was a whole slew of production infrastructure challenges like session management,
+observability, credentials, hosting infrastructure,
+sandboxing, and more. These challenges were tedious to deal with and it didn't
+allow teams to focus on building what mattered most, their product. One of the core challenges here was the agentic
+loop. It was surprisingly complex to maintain which brings me to the second
+part, the second evolution of the agentic surface was the claude agent
+SDK. This agent SDK essentially packaged the harness that we know and love which
+is cloud code and it shipped with a built-in agentic loop along with file
+system access tools and a system for doing sandboxing. Your product would
+then embed the SDK and there are some primitives already provided for session management observability but you still
+had to handroll things like credentials and hosting infrastructure and much
+more. You had to figure out how to put this in a box and scale it for your customers. And I want to double tap on
+these production infrastructure challenges. And I'm going to enumerate some of these as questions to thought
+provoke. First, hosting and scaling. Where does the agent run and how long does the
+process live for? What scales under load and what doesn't? Session management. Where does the history and progress of
+sessions live? How can you have multiple concurrent agents running at scale? File system. How does Claude actually have
+access to create files and edit files? Fourth, execution isolation. Where does
+Claude actually run the code that it writes and how do we keep it secure? Fifth, credential credentials. How does
+Claude reach into your sensitive systems without actually getting exposed to the security tokens that you want to
+protect? And finally, observability. With all the comp complex agent
+orchestration going on, how do you figure out what's actually happening under the hood? These were production
+infrastructure challenges that most teams spend significant portions of their time doing instead of being able
+to focus on just their product, their task, and their context. Which is why we built cloud managed agents. The idea of
+cloud managed agents is simple. You own the product, you own the task, you own
+your context and you call cloud managed agents to get production infrastructure
+for your agents. So your product would call cloud managed agents and get a brain which is the agentic loop and
+claude itself and all the custom harnesses and evolutions built inside of it along with the hands which is a
+sandbox that spins up just in time for things like file system access and code execution. And of course all the bells
+and whistles that were difficult to maintain before with production infrastructure like credentials, session management,
+observability, hosting infrastructure, all of this is run by anthropic. And
+what's yours to build and run is your task, your context, and your domain knowledge. So if we step back and look
+at how this has evolved, we can kind of see the evolution over time. The messages API introduced the ability for
+the model the for you to interact with the model with tokens in and tokens out. The cloud agent SDK brought in a
+built-in agent harness for tasks and cloud managed agents covers everything that you need from your product and
+everything under that stack. So now I will hand it over to Isabella to talk a bit more about the engineering
+principles that drove how we built cloud managed agents. Over to you. Perfect. Thank you. And as GoGan walked
+through, a takeaway from that entire last section is that models evolve quickly. And so when our team set out to
+build manage agents, we drew inspiration from the lessons that our teams learned building effective agents and harnesses
+for these models to capture that evolution as it rapidly advances alongside us. So for the next few
+minutes here, I want to talk you through some of the fundamentals that underpin the design of claude manage agents and the lessons that our team learning
+learned along the way as we went about engineering this harness built for model evolution.
+Let's start with one of the very core principles that inspired our team to build manage agents and that is that
+harnesses encode assumptions about what claude cannot do on its own. This is things like resetting context and
+managing compaction and some of the other core primitives that you see here on the screen. The thing about these
+assumptions is that they have to be questioned frequently because they go stale as models improve.
+Let's dive into one concrete example. Back when sonnet 4.5 came out, it exhibited an interesting behavior that
+came to be known as context anxiety. What this is is that the agent literally got anxious at his approach to its
+context window limit. It started to wrap up tasks early. is to terminate work even when it actually had room left to
+spare in its context window. In order to accommodate for this behavior, what our team did is built in fixes into the
+harness itself, adding in context resets so that Sonnet 4.5 would be able to reset its context and continue working.
+But when Opus 4.5 came out, the interesting thing here was that this behavior went away entirely. Opus 4.5 no
+longer exhibited context anxiety which means that the fixes that we had added into the harness itself became dead
+weight. In fact, it became pure overhead, adding things like latency and causing issues with the cache being
+discarded incorrectly at times. The takeaway here is that we saw that the harness fixes were no longer needed and
+we're actually detracting from model performance with Opus 4.5.
+So when the model moves and the harness doesn't, it degrades the agent.
+What we've seen across these last couple of examples is that there's significant maintenance burden that comes with maintaining a harness that can keep up
+with Claude's rapid evolution. As we work with a range of enterprise teams that are building on top of Claude, we
+also see a range in the harnesses that are ready for this level of adaptation. Some of the harnesses that we see from
+customers are more agile and others are more rigid because they were built around older cloud models.
+What you don't want to do is have a stale harness that takes weeks or even months to migrate to a new model,
+especially with how model release cycles have been coming out shorter and shorter.
+Now, to build an effective harness, what this means is that you have to be designing for the model capabilities of
+tomorrow, anticipating what the future cloud models will be able to accomplish and building your harnesses for that
+capability. It also means that your harnesses have to be agile, making it easy to iterate for the model
+capabilities to capture them quickly as soon as they're ready. That brings me to claw manage agents
+which is a harness designed around a small set of primitives with individual components that you see here on the
+screen that are independent making it easily to swap them out and iterate upon them as individual pieces while keeping
+the overall architecture stable. Another key thing that cloud manage agents is designed around is longunning
+agents. Now when I look to internal products that are exciting and enthropic like claude code and claude tag which
+our team is really excited about and as I work with other enterprise teams we're also building exciting truly agentic
+products. A common pattern that I see is that these agents are becoming increasingly asynchronous and are
+tackling tasks that are increasingly complex and challenging. In order to design a harness that's actually able to
+capture those level of work, it needs to have a couple of things. It needs to be good at context engineering as the
+context will accumulate over those long horizon and bodies of work. It needs to be good at giving the agent a sandbox
+that's secure so the agent can actually take action within an environment. It has to be reliable so the agent can run
+on hours or even days at a time. And it also has to be able to do things like parallelize workflows so the agent can
+tackle multiple parts of a complex problem at once and many many more. So now what I want to do is dive into some
+of the engineering fundamentals that go into manage agents to make it possible to tackle some of those challenges.
+One of the core architectural decisions that went into manage agents that sets the foundation for the rest of the slides that we're going to walk through
+is the decision to decouple the brain from the hands of the agent. When our team first set out to build
+manage agents, we started by putting the agent loop and the tool execution in the same box in the same environment.
+What this meant was that the agent loop would be able to easily able to call tools and read in tool results because it had it right there in the same
+container. But then we ran into a series of limitations. This being that the container was blocking the agent being
+able to start its model reasoning. So the agent would be able to kick off until the container was fully set up. It
+also meant challenges for reliability because if one part of this component went down, the entire box of the agent
+would go down. Our solution to this was to decouple the two elements. Separating the brain or
+the agent loop from the hands or the tool execution environment of the agent. This meant several things. It meant
+improved reliability and it also meant that the brain could only spin up sessions when it actually needed it on
+demand. And now let's dive into some how some of
+these replaceable components meant keeping long running agents safe. First of all, if the sandbox or the hands of
+the agent died, because the brain was in a separate component, the brain could just spin up a new sandbox and retry and
+then continue as it left off. If the brain of the agent dies, we're actually going to walk through something in just
+a moment here about how everything that the agent does is logged into a durable session resource in a session log, which
+means that the brain of the agent can actually just read from that session log, go back into context, and resume exactly where it left off as well.
+This means that manage agents is designed around three core primitives and that is the agent and that is what
+your agent is especially defining what your agent does for your use case. This is a thing like the model that goes into
+your agent, the prompts, the tools, the skills, everything that makes your agent work for your particular use case. Next
+up is the environment and this is the container that the agent actually runs in. You can actually have multiple
+sessions run on the same environment definition. And you can even attach multiple sessions to run on the same environment at once, but each with its
+own isolated container instance. When you combine an agent with an environment, you get a session. What a
+session is is it's a durable resource persisted in the cloud of every single interaction that you have with the agent, which unlocks several things like
+observability, a longunning instance, reliability, all through this core architectural decisions.
+Now, when I work with many teams that are bringing an agent from a prototyping phase all the way to a production phase,
+one of the main challenges that we see is that reliability is a core concern.
+It's a different story to build an agent that runs on your laptop and serves you as a single user compared to when you
+actually want to deploy it in production and run it at scale for hundreds of thousands or even millions of users. You
+need to make sure especially if your agent is going to long run for long hours at a time that it's going to be reliable and can actually recover from
+tool failures. Manage agents because of the way it's designed around those three primitives that we just walked over is able to have
+four distinct session states and that is idle when your agent is waiting on user input, running when it's actually
+executing, rescheduling when it encounters an error and is going to retry or terminated if it's
+unreoverable. This means that the agent can always go back to an existing session and resume
+where it left off. And it also has a mechanism for it to recover from those failures in production.
+Another common theme that we see with designing effective agents, especially as model capabilities evolve is context
+engineering. Now, context engineering is something that our team has done a ton of research into because it is one of the things
+that separates an effective agent from an agent that gets lost in context rot. Context engineering is also difficult
+and with many traditional harness implementations the context window and the session are one and the same which
+means that claude if wants to come in and discard portions of the context that it's in current session run it doesn't
+have a mechanism to be able to recover pieces of that context back into its window if it loses it at one point in
+its current session run. However, because everything in manage agents is logged to a durable persisted session
+log resource, what this unlocks is that the harness can actually just read in slices of that context from the session
+log into its current window. If it then has Claude coming in and editing or discarding portions of that run, it can
+simply recover it by just rereading it from the session log because everything is persisted in that log resource.
+What this means is that what we see is increasingly developers are able to rely on portions of the manage agents harness
+that come with the harness itself. This is things like the agent loop, memory, observability, all that comes alongside
+building with cloud manage agents. It also exposes key areas for the developer to be able to customize and this is
+context managements and domain expertise. This is what separates a coding agent from a legal agent or go to
+market agent and again is what makes your agent truly ready for your users.
+For instance, with cloud code, cla code uses a set of tools like bash and gp on your laptop just like how developers do
+when they open up their terminal. But a go to market agent or a legal agent would need a vastly different set of tools. So by having this part of the
+manage agent harness managed by enthropic, what that means is that developer can developer can focus on their time designing the right system
+prompts, the right skills, and the right tools to make their agent truly work for their users.
+Now what I want to do is hand it over back to Gogan to walk you through one example in a live demo where you can see
+a customized agent for a production use case and how simple it is to build a production ready agent with manage
+agents. All right, thank you Isabella. Let's switch over.
+All right. So, now that you heard from Isabella how
+managed agents works under the hood, let's look at what it feels like to actually build with it. What does it
+feel like to actually create your own production grade agent from scratch? This is a semi-interactive
+uh demo. So, please bear with me here and follow along. So imagine that you're an engineer and
+you own a dashboard that basically contains all the key metrics for the services that you own. It's called
+Atlas. And one day you're just enjoying life and you start to see that the P99
+latency suddenly starts spiking. It's 10x over baseline. So you have an incident on your hands. You see your
+logs, you see a bunch of text, and you have to figure out like what exactly is going wrong. Wouldn't it be nice if
+there was a site reliability engineering agent that could investigate all these tedious data points and come back to you
+with the root cause before even you open your dashboard? Well, that's what we're going to implement today. We're going to
+build this from scratch using cloud managed agents and I'll walk you through the steps using the primitives that Isabella shared earlier.
+Okay, so let's build it. The first primitive as mentioned earlier is the agent definition. You define what the
+agent does and everything that it needs to accomplish that task. So in this case
+I define the name as the S sur investigator. I give a model as cloud opus 48. I have a system prompt that
+kind of defines the t the the instructions for the agent on how to behave and tools. The agent tool set
+gives it a standard set of tools like bash gp and blob etc. And there's an MCP
+tool set that connects to my dashboard and allows it to pull specific things like deploys and the metrics that I
+showed earlier. That's step one, agent definition. Step number two, let's now define where
+does it run. This is the environment that we were mentioning before. Here we create an environment that is S sandbox
+and I configure it to run on the entropic cloud with the networking limited and allow us hosts only being
+the MCP server that I wanted to communicate to. This environment effectively stops claude from doing
+things that you didn't intend. So you can control boundaries here. Next, let's give it the logistics and
+the details that it needs to solve this task. And one of the key things is the application logs I showed earlier. You
+can upload files and skills just like this. And you can set it up so that it reads from those. So now we have the
+Asian definition. So we what it is. We have the environment which is where it runs. We have relevant evidence. And so
+now we set it up so we can kickstart a session. The session combines these
+durable resources into a new session and it specified the specifies the log point
+as a resource and allows the agent to kick off. That's it. what you have defined here is now living in the
+entropic cloud and this can be dynamic as needed in your application. So once we do this, we kick kick started the
+session and let's go back to the investigator agent earlier and say, "Hey, I have an incident. My checkout is
+like super high. Can you please investigate?" Claude immediately spins up. The brain spins up in cloud managed
+agents in the cloud. It uses the hands which is a sandbox to GP and finds specific details in the application
+logs. It uses relevant metrics using MCP tools and finds the recent deploys and
+isolates where the incident started. It does further investigation, finds the
+code diff and synthesizes this information to figure out a final root
+cause. Just like that, cloud manage agents was able to run in the cloud. We were able to define it in code and have
+running have everything running end to end. And to clarify, this is just one
+session. All of this is production infrastructure. So you can imagine multiple sessions kicked off by all of
+your users ready to go immediately. And we have a beautiful observability
+dashboard that allows you to see all of these sessions on demand. If I click into one of the observability dashboards
+on the cloud console, you'll find the different the exact event trace, the session logs for that event, including
+the tools that it used, the results of it, and any other agent messages that came into picture. With that, we were
+able to walk through what it feels like to build a cloud managed agent from scratch with just a piece with just a
+few lines of code. All right,
+perfect. So, with that, let's go into the next section.
+We've learned now what is how cloud manage agents works under the hood. We've learned what it feels like to
+build a production grade agent at scale using it. Now, let's talk about what we've learned from taking this to the
+field. what we've heard from customers and what we've learned generally building production scale agents.
+There's four lessons here and I'll start off with the first one. The first lesson is to keep the credentials away from
+your agent. A lot of customers ask me how do I make sure my agent doesn't read
+or see the environment file that contains all my security tokens. This is a very important aspect. We already get
+some of this because we as Isabel mentioned earlier, we separated the brain from the hands. So where the
+agentic loop runs is separate from where the tool execution happens. We took it a
+step further by introducing the concept of vaults where you can store security credentials in a secure way and they're
+decrypted only when needed at tool execution runtime. This way you can
+effectively keep credentials away from your agent and the model never sees your security tokens.
+Perfect. Now time for lesson two. And I'm sure if any of you in this room have built a productionready agent, latency
+has been one of the things that's top of mind for you. What we realized when we decoupled the brain from the hands of
+the agent as we talked about is that this actually unlocked a key benefit that really mattered for a lot of our customers building on manage agents out
+in the wild and that is that it improved latency significantly because the agent
+was no longer blocked on reasoning based on container setup. So if we go back to the first version with the coupled
+design where we had the harness in the same container and in one single box essentially the model wouldn't be able
+to start reasoning or outputting its first token until that container setup was fully complete which meant that it
+had delays in the latency especially for time to first token when we then decoupled the brain from
+the hands of the agent. This is what we get. Now we can have model reasons start immediately and we can run container
+setup in parallel. What this means is that the model can then run container setup so that the brain from the brain
+of the agent actually has the hands when it needs it or we can actually skip the container setup entirely if for this
+particular task we actually don't need the container setup in the first place.
+What we then saw when we tested this is that we saw 60% faster time to first
+token for P50 use cases or median use cases and over 90% improvements in
+latency for time to first token in P95 use cases.
+Lesson three is about session logs. A lot of customers asked us the question,
+how can I figure out what's actually going on in my agent under the hood and how can I make my agent better over
+time? Turns out the answer to both of these question lies in something that we called the session log or traces. The
+session log essentially contains events of everything that happened during an agent execution. So the user message,
+the model response, the tool executions, the results, everything is written playbyplay.
+Now if you surface a session log in a UI that the that users can see it provides observability.
+It turns out that the same session log also improves memory and self and and provides self-improvement for the agent.
+Memory essentially allows the agent to remember things about the user and session logs gives a history of past
+executions. And if you combine that with something that we call dreaming, it allows memory to be updated and improved
+over time. So the next time your agent runs, it gets better. We'll talk a bit more about this later.
+And now for the last lesson that we have for you today, that is security for tool execution. And this is something that we
+heard from a lot of enterprise teams that were wanting to build on manage agents is that it really mattered to them how they were able to control the
+environment where they ran tool execution. For a lot of teams that were very security conscious, they wanted to be able to have everything controlled in
+their own virtual private cloud. And because of the key decision that we made, decoupling the brain from the
+hands of the agent, what we actually get is that the hands can run anywhere, including in your virtual private cloud.
+So the feature that we released called self-hosted sandboxes. We built this from an engineering perspective because of the feedback that we heard and
+essentially made it available to have customers control their sandbox control plane exactly for their own execution
+environments and to have tools run exactly under their own policies. Another feature that we unblocked is MCP
+tunnels. And this is from teams that were saying that they wanted to expose MCP servers to their agent but didn't want to have their MCP servers running
+over the public internet. for those teams. Essentially with MCP tunnels, they can have their MCP servers
+run only within their private network and only making outbound calls to the clawed agent loop.
+And so with everything that we've talked through and those four lessons that Goan and I just walked over, we talked about how manage agents is helping you build
+for this iterative capability and helping you follow along with model evolution. What I now also want to talk
+you through is how those fundamentals are built and expanded upon with some of our most exciting frontier features to
+show you how cloud manage agents will continue to evolve and capture the model capabilities of tomorrow.
+cloud manage agents. We touched on just the tip of the iceberg of the features that are available today and these cover
+the fundamentals, but we're also excited to see how the harness evolves as model
+capabilities evolve. And I'm excited for some of the new features that we've been experimenting with like scheduled
+deployments, self-hosted sandboxes, multi- aent orchestration, dreaming
+outcomes, memory, and more. We won't have time to cover all of them. So, I'm
+going to talk about two of our favorites, which is dreaming and outcomes. Let's start with dreaming. As
+I mentioned before, we have access to the transcripts or the session logs from the agent's daily sessions. And the
+agent also has a current memory state. What we found is that as models have
+evolved and become more capable, if you feed the transcripts and the memory state as a periodic batch process with
+what we call dreaming, it allows us to extract new insights and new organized
+structures that essentially feed back and edit the memory as needed to make
+the next day's agent sessions automatically much more intelligent. This is how we're seeing self-improving
+agents as they execute more and more over time.
+Dreaming and memory we feel are just two cornerstones of a new frontier unified
+memory system. Memory gives the agent the ability to remember things across the user that's specific to uh its use
+case. Dreaming allows agents to self-improve. But we see a new form of memory emerge that is organizational
+scale and that kind of illustrates and stores the team's runbooks and details.
+And we're and we believe that this is just the initial areas in which we can see harnesses evolve towards as models
+become more capable. I also love dreaming. But one of my
+other favorite features is something called outcomes. What you get with an outcome is that what we allow users to essentially
+define is success criterias for their agents. You define a rubric. You say what means that the agent is actually
+able to complete the task successfully. You define failure cases and then outcomes essentially starts a separate
+greater agent that runs alongside your agent loop and looks at whether that agent was actually able to accomplish
+the task based on your defined success criteria. What this then does is that the agent will execute the task at hand.
+It will then look at that greater and check across the rubric that you defined. If the greater determines that the agent was not able to complete the
+task, it'll keep trying until it reaches that success criteria that you have defined for your agent. What really
+excites me about outcomes is that we're moving more towards a world where we can have an agent understand what success
+actually means for a task and have a mechanism to keep iterating it, which gives us more reliability that the agent
+can actually complete the outcomes. and we can start to unlock a new set of tasks that were not possible just a
+couple of months ago as models continue to evolve and can accomplish outcomes or tasks that are increasingly complex
+especially as claude achieves new levels of intelligence.
+So across everything that Goagan and I have talked about today, what manage agents is trying to do is to close the
+gap between what products offer today on many surfaces with static harnesses and
+what models can actually do. What we see as cloud models and other
+models essentially evolve alongside this exponential trajectory is that harnesses have become the limiting factor to what
+models can achieve. And so with manage agents, with the core architectural foundation that we offer to developers,
+as long as with all of these new exciting features that we're continuing to build, what we're trying to do is to close that gap so that products can get
+closer to what models can actually achieve today. And so with that, I hope all of you walk
+out of this room learning something new about how our team went about building manage agents and how cloud manage
+agents is structured to capture frontier intelligence as models continue to evolve and be a harness that's
+production ready for real workloads. Thank you all so much today for being
+here and for listening to our talk.

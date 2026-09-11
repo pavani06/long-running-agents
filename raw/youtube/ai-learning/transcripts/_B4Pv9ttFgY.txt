@@ -1,0 +1,555 @@
+[music]
+Let's get started in in in interest of
+time, right?
+So, hi, welcome. Let's talk about
+building agent interfaces today. So, let
+me start with a question first. Who in
+here is already using MCP? servers or
+CLI tools on your
+uh agent. Okay, everybody. That is
+unsurprising to be honest.
+Um who in here have already built MCP
+servers and deployed them for effect.
+Okay, it's approximately half of the
+people.
+Well, today I'm going to share for
+engineering lessons from the Chrome uh
+DevTools team on how we built Chrome
+DevTools for agents and how we deployed
+it for effect. Quick context setting.
+Chrome dev tools for humans is used by
+millions of web developers on a daily
+basis to debug web pages. It's directly
+built into Chrome and developers use it
+to debug web pages, find errors, audit
+it, performance profile it, and so on
+and so on. Uh right. So now let's talk a
+little bit more about Chrome Dev Tools
+for agents. So this is a purpose-built
+Chrome Dev Tools but for agents. How
+surprising. Um yeah, let me briefly show
+you how it works. So you can see on the
+left side GHI CLI and the prompt is
+being entered and now China CLI has the
+MCP server being configured and that
+opens Chrome on the right side and then
+does debugging. I think yes this is
+about performance tracing. So it does a
+performance trace, analyzes the trace
+that comes back or the performance
+inside acts on it and then makes the web
+page faster uh validate that it's
+actually faster afterwards and it's
+done. You should be done now. It's
+nearly done. Sorry, it's a video.
+Whatever. What I wanted to tell you is
+like yeah, this is going to work in any
+MCP client and agent RNS that is MCP
+capable doesn't really matter. That was
+channel also works in cloud code.
+Codex, open claw, doesn't matter.
+If you want to have more information, go
+to this QR code because that QR code is
+going to bring you to a web page and
+that's going to tell you everything
+about how you can install it, configure
+it for your agent harness.
+Question again, who in here has already
+tried it out?
+Okay, so 10%. Thank you. I love you. I
+also love everybody else, but I love the
+others more.
+So, I was rude. I didn't introduce
+myself. My name is Mik Habik. I am the
+product manager for Chrome developer
+tools uh at Google and I'm also a guest
+director at university nearby where I'm
+living. I have 20 years of experience in
+tech developer, tester, QA engineer,
+project manager, product manager,
+program manager and so on.
+If you have questions afterwards, please
+talk with me in the hallway track or uh
+connect with me over LinkedIn. Uh the QR
+code will bring you to my LinkedIn page.
+Both is fine. Uh please do that. I would
+be super interested to talk with you
+about MCP servers, browse automation
+tools and stuff like that. Okay, about
+now enough advertisement. Let's move on.
+We ship Chrome dev tools because we saw
+that coding agents were flying blind. So
+like one and a half years ago, they
+worked very good with generating code,
+but they were not able to validate what
+they actually were doing, right? And
+that just sucked. But we assumed they're
+going to be fine if we throw a lot of
+data at them because I mean they are
+machines, right? The thing is we were
+wrong. So this is a uh this is the head
+of a trace file. A trace file has all
+the data about the performance profile.
+And this is a file like multiple
+megabytes of data and this is like
+50,000 lines of JSON. And we did throw
+that against common agent harness at
+that point like one and a half year ago
+or something like that. And without
+surprise, this is too much data for an
+agent for a model to actually reason
+about and it blew through the context
+window. And if you have seen Matt's talk
+about the dump zone,
+you're moving the agent into the dump
+zone at that point. So I thought, okay,
+we built it wrong. that's not going to
+work. We need to do something else. So
+in that case, for example, what we did
+our performance tracing endpoints, it
+can also return that for postp
+processing
+uh with other tools. But what it's
+really doing is it's returning markdown
+now and semantic summaries like this is
+example of such a semantic summary which
+is gives you information about typical
+performance metrics like largest
+contentful paint, imp.
+not going to bore you about all the uh
+performance metrics and we are going to
+talk about them anyway because they're
+very good example of how this is uh
+working.
+Well, essentially we didn't force the
+agent to read the entire book the trace
+but instead we just pointed it at the
+right sentence and this is the semantic
+summary that works quite well
+in the end uh or in the beginning agents
+are a different user class. So that's
+where when it's kind of like clicked for
+me like ah yeah they are kind of like a
+separate user segment. So how do we
+reason about that? The thing is agents
+and humans they share the intent they
+share the goal right in our case for
+example both want to identify errors on
+a page and want to fix those errors
+but they think differently. They have
+different cognitive bottlenecks more or
+less. For humans it's a lot about visual
+complexity.
+So humans are very typically very visual
+uh creatures
+and we need layout, we need color in
+order to find the signal. And this might
+not be the best example for a appealing
+UI but this is just our console
+interface where console errors are being
+uh surfaced and we can also use as a rep
+interface on chrome detos for humans.
+But you can if you know where to look
+you can use it to identify errors on the
+page very easily. Um LMS on the other
+hand they prefer unsurprisingly
+non-visual interfaces right they care
+about schema clarity data density so uh
+on the right side you see a schema for I
+think it's for the performance endpoints
+that we just discussed earlier
+um
+yeah and they really like that it's a
+textual non-visual interface right
+whatever this is now was a long way of
+saying
+designing agents actually requiring a
+few engineering concerns I'm going to
+talk about today. So there's token burn
+rate, there's error recovery, there's
+tool discoverability and there's also
+trust boundaries and I'm going to cover
+them today very shallow. Let's talk in
+the hobbit track more.
+Let's start with token turn uh burn
+rate. So tokens
+are kind of like a cognitive load for
+agents, right? very similar to humans
+remembering clicks the right clicks on a
+visual interface.
+The thing is most APIs uh today's uh
+they're very often
+like a 14step checkout flow as you can
+see in the left side for example for
+human or the trace that I showed you
+before kind of like that sucks because
+every word that is sent back to the
+model is metered. It costs money right
+every word every output token uh input
+token that it gets cost you money uh
+every reasoning that's happening cost
+you money and that just sucks because
+that translates to monetary cost. So how
+can we reduce that?
+Well, let me introduce you to a metric.
+Of course, uh let's talk about metrics.
+It is called tokens per successful
+outcome. What it does, it balances
+effectiveness and efficiency.
+Uh sounds very hypy and maybe it is, I
+don't know. Um what is it about? So
+effectiveness
+is about does the agent complete the
+entire user journey? Is the functional
+intent actually fulfilled? Yes or no?
+And then there's efficiency, which
+unsurprisingly is about token cost, tool
+calls, duration.
+In the end, what tokens per successful
+outcome tell you is this the fuel
+efficiency of your interface, right? And
+there's a caveat because there's always
+a caveat.
+Fuel efficiency is relatively worthless
+if you can't reach your destination. So
+that's why it's called tokens per
+successful outcome and not tokens per
+outcome. So make sure that you actually
+also measure effectiveness, right?
+And there's one more caveat and this is
+you can't measure that globally. I mean
+you can do that but you and maybe you
+want to do that because it's a nice
+metric
+but it's going to be tremendously
+different between different user
+journeys and task classes. So
+don't compare them globally, compare
+them within your user journey that
+they're measuring that. And what I mean
+with that is like for example in chrome
+dev tools we have the user journey of
+web scraping right so an agent going to
+website and extracting information
+that's relatively cheap but there's also
+user journeys that are more intricate
+like debugging a website finding out why
+the responsive layout is not working.
+that thing is going to use more tokens
+but that is fine because it's a much
+more much more intricate uh and more
+interactive session that's happening.
+Okay, how does this look like in real
+life? Uh this is what it looks like in
+practice and for a project for internal
+project that we working on and you see a
+lot of neon bars which is great. I like
+neon bars but I am not going to bore
+about details. The important thing is
+the neon bars on the left side. The
+longer the bar, the more effective a
+tool, right?
+The shorter the bar, the less effective
+a tool for the particular use case. So
+each of those bars on the left side are
+about use cases.
+Uh which means the smaller bars are
+probably the ones that we should be
+focusing on our work next. How to
+improve that? How to improve the tokens
+per successful outcome there.
+Yeah. Uh as you might have already
+guessed, measuring tokens per successful
+outcome is not straightforward.
+The thing is, but even an imperfect
+measurement is better than simply doing
+gut-driven um decisions
+and with that at least you can do
+datainformed decisions
+right
+in sorry uh I had my audio on. In dev
+tools for agents we addressing uh token
+burn from the three different three
+different angles. First there's tool
+categorization. So
+very straightforward. We hide hide niche
+tools. We hide command line parameters
+like for example uh we have tools for
+chrome extension debugging
+and not everybody is developing chrome
+extensions. So why add it to the default
+context window? There's no point in
+doing that.
+Then there's a slim mode and this one is
+fun. So what slim mode is doing is like
+uh pushing tool categorization to its
+limits. It's only exposing I think three
+different tools. Select page, navigate
+page and evaluate script.
+And this is great for a context window,
+but there's a trade-off. I'm going to
+talk about a lot about trade-offs today.
+Um, that's a trade-off because the less
+tools you expose, the less tools are
+also at the disposal for for your agent
+harness, which means your agent might do
+extra turns to achieve the same goal. It
+might not actually have the right tools
+at the disposal to actually do something
+like for example getting network
+requests. You can't do that with a valid
+script and stuff like that. Yeah. And
+there's also a CLI interface. Uh, sorry,
+there's a command line interface that
+we're offering. uh you have seen the
+previous talk maybe about a code mode
+and all that stuff we also support that
+so it is a MCP server yes but there's
+also a a command line interface for the
+same thing giving you nearly the same
+functionality what it enables you you
+can have your agent chain commands
+together to do post processing like in
+this example I don't think you can see
+it um the accessibility tree is
+extracted with a with a grap uh command
+and then the result the ID of the
+control is being piped into a click
+command and that is of course saving a
+lot of tokens
+doing that because the model doesn't
+need to process all the tokens. The
+token the post processing is happening
+on your computer
+right um efficiency is useless if your
+agents get stuck. So that brings us to
+error recovery
+and yeah because every time your your
+agent encounters an error it's going to
+cost you tokens
+because it needs to retry it needs to
+understand what is happening and stuff
+like that and that just sucks
+error recovery is a spectrum and let's
+talk a little bit about that what we are
+doing here. So first of course you
+should add
+uh useful error messages. That sounds
+obvious uh for a lot of tools it isn't
+and it was also not obvious for all the
+tools that we actually offered. So we
+also did a few iterations on them to
+actually make the make the error
+messages good like here for example uh
+and unable to navigate back in the
+selected page for a particular tool
+history entry to navigate uh was not
+found. We actually added the last
+sentence and that enabled the agent to
+selfheal which is super useful because
+then the agent doesn't need a human to
+actually fix the problems but the agent
+can self fix the problems. Then there's
+proactive detours. So be beneath each of
+the agents there's a model and the model
+is being trained on certain data
+and sometimes the
+there are things where you
+want to count the training data and
+that's what you can do with pro detours
+like in this example um we detour the
+agent for performance profiling to our
+start performance trace tool and not to
+the lightest audit
+and there's diagnostic paybooks Uh so we
+also offer uh skills of course and we
+have a skill that's called
+troubleshooting and we see a lot of
+people have problems setting up the
+chrome dev tools mcp server correctly
+and that troubleshooting skill is then
+going to kick in and help the human and
+the agent to fix the setup issues
+again enabling self feeding of the agent
+and all of this increases the resilience
+of your product uh or of the agent
+harness that you're
+And this is nice and helps you withstand
+any mistakes.
+And now let's talk about discoability
+which is about actually preventing them.
+So our initial design had one monolithic
+tool called debug web page. So we only
+had one tool debug web page and you
+could the another agent could send a
+prompt there and tell it hey debug this
+web page. There is some responsive
+layout is not working.
+And it wasn't neat from engineering
+perspective, but it didn't really work.
+Uh, so we decomposed it into 25
+different tools and we thought problem
+solved. Of course, it wasn't because we
+traded that problem off to another. And
+that was agents now had 25 tools at the
+disposal. How are we going to find out
+which one to use when?
+Well, let's talk about that. According
+to this paper here, uh 97% of MCP tool
+descriptions have quality smells.
+And this matters because the schema is
+the UI for the agent. So let's make the
+UI better.
+And fixing this is a trade-off. As I
+said, it's always a trade-off because of
+course you can make the descriptions
+better and that's going to increase your
+context window size. So you probably
+don't want to have that or maybe you
+won't. And also smaller models in
+particular are not that good with more
+descriptions because they get biased and
+using tools they shouldn't be using in
+the first place. There's a trade of
+space. Uh read the paper. Super
+interesting. Uh yeah, but there are a
+few things you actually should be doing.
+They're relatively uncontroversial and
+that is um
+define purpose.
+Clearly explain how what the tool core
+function is. Is this working? Ah, yeah.
+Here it is. Come on. Yes. Ah, it's a
+okay. Clearly explain the tools uh core
+function and there's usage guidelines
+like provide clear activation criteria
+and how this looks like in Chrome dev
+tools for agents for example and uh
+again performance.race trace tool what
+we have in there as a as a description
+is used to find performance front end
+performance issues and core web vital
+LCP inperformance
+metrics and an agent is able to make the
+connection oh I'm going to use that tool
+if I need to improve a page load for
+example
+we're far from finished optimizing that
+because models and agent harnesses also
+keep on uh changing all the time so it's
+kind of like an endless quest for a
+minimum viable description
+Yeah, but it is what it is. You can
+supercharge all of that with skills. As
+I said, we also have skills and that is
+great. Uh in particular, if you have a
+more intricate workflows, but again,
+there's a trade-off. They are not free
+lunch. If you pile in too many skills,
+uh you're going to to shift the problem
+and run into the same problem again. Uh
+agents are going to call your skills
+even if they shouldn't be calling them.
+uh your content size is going to
+increase and all that stuff. The trailer
+of the is shifting. It's not
+disappearing. Okay, now we have
+optimized for cost, recovery and
+discovery. Let's now talk a little bit
+about trust because you don't want to
+have a back door in the system.
+Dr. DevTools for agents has a feature
+called autoconnect and it's kind of like
+it lets you as a human using your coding
+agent like cloud code share the screen
+with the agent like hey I'm stuck here
+uh please help me debugging debug that
+and fix the problem that I'm seeing
+here.
+Amazing feature. I really like it. Um
+and users of course requested a feature.
+Hey, why do I need to click allow all
+the time? I don't want to do that.
+Please remember by choice and in a
+traditional user experience design that
+would have been a clear win right
+because it's just friction friction that
+you want to remove in a world where you
+are delegating a way work to agents and
+automating a way agents you need to
+think about trust boundaries
+and so that's why we actually designed
+it uh with so that friction is actually
+by design because we didn't want to have
+that and why let's talk about that
+there's a blog post from uh Simon
+Villison
+about the lethal trifecta
+QR code. You should read it. It's great.
+Uh I'm not going to talk more about that
+and utilizing that. There is a free at
+least three tiers that I'm thinking
+about in browser browsing agents more or
+less. You have tier one that is the
+local development environment. In a
+local development environment, you have
+the human in loop and the human wants to
+grant access to the default Chrome
+profile to the data that they already
+have access to to the agent in a
+time bound manner. And then you have uh
+tier 2 and tier 2 is uh agents running
+in continuous integration environment.
+So it's controlled environments but
+they're separated away. At that point
+you should be using data separation
+things like containers of course but
+also other things like separate Chrome
+profiles and stuff like that. Um if you
+want to connect to them, we also have a
+mechanism for that and that is called uh
+remote debugging port. And third,
+there's a agents with full internet
+access and that is yolo mode essentially
+because every web page out there is able
+to do some prompt injection texts to
+your agent. So make sure that do the
+same thing as in tier two but also in
+tier three uh make sure that have the
+domain allow lists and do prompt
+injection mitigations all that stuff
+together going back to the leaf trifecta
+that's what we mostly reason about uh
+tier one and that's where all those
+three things are coming together so
+that's why we actually say no the human
+action need to consent every time
+key point being is a local agent tier
+one and the browsing Agent Fleet Tier
+three, your research agents maybe might
+share a tool like Chrome DevTools for
+agents, but they should share nothing
+else about your security model that
+you're having, right?
+Okay, let's let me wrap that up. User
+experience is evolving to incorporate
+agent experience.
+An agent is just another type of user,
+segment of user also with non-functional
+requirements,
+efficiency, discoverability, security,
+stability and so on and so on and so on.
+I shared four takeaways from Chrome
+DevTools for agents um when we are
+implementing that that is measure fuel
+fuel efficiency of your interface with
+tokens per successful outcome. Turn
+errors into recovery playbooks, out of
+descriptions for intent, and never
+compromise trust for convenience.
+Agents are our next users. Let's help
+them help us. And with that, I wish you
+a nice remaining conference.
+[applause]
+[music]
+[music]

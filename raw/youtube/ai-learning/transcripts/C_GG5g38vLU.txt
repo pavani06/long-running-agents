@@ -1,0 +1,581 @@
+[music]
+Hello everybody.
+Everybody's head turned up. Hello. Hi.
+Hey.
+How was lunch? Was it good?
+Yep.
+You didn't like it, huh?
+It's like British food. Anyway, hi. I'm
+Tis. Uh I'm I'll be your first speaker
+this afternoon. Tis. that's pronounced
+like contagious. Uh don't worry, I'm
+not. Um hopefully my my joy in AI is and
+I've had the privilege of working at a
+number of different places over my
+career in one form or the other. It's
+just been an absolute joy to learn from
+the best. Uh today I'm a AI developer
+advocate at IBM. Uh where we we do
+things with AI, believe it or not. We
+train frontier models, we build
+harnesses. It's it's really uh it's a
+fun lab to work in. Um but that's not
+what I'm here to talk to you about
+today. Today I'm here to talk to you
+about AI harnesses. AI harnesses. Before
+I move forward, I would love to just
+have a show of hands. Um, how many of
+you are like confident in your
+understanding of AI harnesses? Like
+you're like, I could present this on
+stage today. Look around. Look around.
+No, seriously, look around. That's why
+we're doing this talk. Okay, this is my
+hope. I want you to if I ask you this at
+the end of the talk, right? I want you
+to be like, "Oh, I I I get it now."
+That's the whole point. I have literally
+nothing to gain from this other than I I
+shared knowledge. Okay? Um because also
+this term is kind of everywhere. You may
+have heard it used like 52,000 times
+today. Um, and it means different things
+to different people because like in the
+machine learning world, it means like a
+glorified test suite for machine
+learning models, but in the AI in the AI
+world, it means something different. And
+so today, we're going to understand this
+in detail. It's a deep dive, but it's 18
+minutes long. So, let's let's move
+forward. Um, I want to start by talking
+about why harness like why do we use
+harnesses? And the reason for this is
+because we pay rent to companies that
+give us compute, give us inference, give
+us tokens in return. Some of you maybe
+work for companies that have frontier
+models like Anthropic or Google or
+whatever. And you may be, what was the
+term token billionaires? Yeah. Um I'm
+not that. Uh I am maybe with Watson uh
+models, but but the vast majority of us
+aren't token billionaires. We we pay
+rent. We literally $20 a month for
+Claude Pro. Um, and then you get a
+context window that's limited and you
+get like, you know, you don't get the
+full hog, so to speak. And the model you
+rent is is a black box. Like they could
+at any time, I'm not saying they do, but
+they could if opus is somehow not
+available, they could serve you sonnet,
+even though it says opus. You would
+never know, right? Um, and so it's just
+a big there's too many variables that we
+cannot control. So why harness? Because
+the name of the game with harness is
+reliability. Um, I really hope I'm not
+supposed to stand in front of this white
+line. Uh, and then I'm just not in the
+camera. Anyway, whatever. Um, it's
+reliability. It's it's making sure that
+the agents we build do what they do.
+Period. Irrespective of the blackbox
+model, irrespective of the of the the
+thing we rent and so on. Okay. Now that
+we understand why harness, let's talk
+about what a harness even is from first
+principles. Like let's let's take it all
+the way back to harnesses that we know
+and understand. Uh if you've ever uh you
+know climbed a mountain or something or
+you've seen someone this is a harness.
+It's like mountain climbers literally
+will like harness themselves to what? To
+a mountain because it's stable and they
+can't go off the rails literally. Um it
+they they anchor themselves in something
+stable so that they can't drift too far.
+Okay, that's that's what a harness is by
+design. When you have any dog owners
+here, you have dogs. You you walk your
+dog on a harness. Okay, that's why
+because your dog doesn't go and bankrupt
+you with tokens. Okay. Um that's that's
+what a harness is. Um but the problem is
+if we think about what harness, there's
+really two types. There's one from the
+machine learning world which as I
+mentioned is kind of like a test suite
+and a testr runner. Um you give a model
+some inputs and you see the quality of
+the outputs. That's not this is not ML
+engineer Europe. Uh we're going to talk
+today about the agent harness that is
+common in AI engineering. Okay. So what
+what is an agent harness? An agent
+harness and and this is kind of the
+money shot here. The agent harness is
+I'm not making money off this. It's just
+an expression. The the agent harness is
+everything around the model that gives
+it grounding in reality. It's literally
+the thing that ties it to a stable
+environment. Okay. An agent. So clawed
+code for example can be considered an
+agent harness. And some of you will say,
+"Oh no, it's a coding agent." Absolutely
+it's a coding agent. But it's a
+harnessed coding agent. And agent
+harness has more or less the same
+typical suspects moving parts. Number
+one, it's got a tool registry. Um,
+almost like so claude code, cursor,
+codecs, they have tools to read from the
+file system, to write, to execute bash
+commands, right? They have a tool
+registry. They have a model and some of
+them allow you to choose a model, some
+of them allow you to not. They have a
+model. They have primitives for managing
+context. Um, almost every harnessed
+agent runtime today will compact its own
+context, right? That's that's that's the
+job of the harness. Um, guardrails are
+another part of a harness. For example,
+max steps. Anyone using max steps, do
+not do more than five tool calls. That's
+a guardrail. And so if if you do that,
+you just kill the kill the run, right?
+Um, an agent loop is another part of an
+agent harness, which is crazy. This is
+where some people I've spoken to
+preparing this talk um will say, "Wait,
+isn't a harness just the agent loop?"
+No, it's the stuff around the agent
+loop. In fact, it could be a loop around
+your agent loop. It could be an NM loop.
+And we'll look at that a little bit in
+some code. And then finally, there's a
+verify step. Uh this is for example in a
+coding coding agent. After the work is
+done, a verify step would be hey let's
+and let's run lint, let's run tests,
+let's make sure nothing broke. Right?
+almost every I'll use code coding agents
+as an example, but you could have a
+harness for anything and it's it's
+amazing because it really grounds
+blackbox models in a stable environment
+that you control. Okay, I'd like to show
+you a demo and what we're going to do
+together is we're going to build a
+harness, a barebone baby's first
+harness. Let's call it a poor man's AI
+harness together so we understand from
+first principles how this works. We're
+going to build a computer use agent that
+has a job. The job is go to hacker news
+and upvote the first post. Okay, it's a
+computer. It's a browser use agent.
+We're going to use a really bad model
+intentionally. We're using GPD3.5
+Turbo which is like 2023, right? Um but
+we're going to harness it so that it can
+actually do the job and we're going to
+save money. So let's uh I've spoken too
+much. Uh let's just get into the demo.
+Uh and and so let's welcome to my
+project. This is my project. Hello
+everybody. Um this is the entry point.
+Can you see that? Is it too Yeah. You
+want it bigger? Let's do bigger. Okay.
+So, this is not actually this room is
+too bright. Let's do light mode. It's uh
+it's not my nature, but sometimes that's
+better. Yeah. Okay. So, we have we have
+a model and we're trying an old I'll
+just sorry. Uh we
+shouldn't have seen that, right? No,
+we'll we'll try an old model. And this
+is the prompt. This is the this is the
+task. This is literally my prompt.
+Upvote a story. I just described it um
+for the purpose of this demo. We will
+not change the prompt at all because a
+lot of us think, hey, my agent is not
+doing what it's supposed to do, so I
+just need to prompt it harder. Right?
+That's not always true. I need to change
+a system prompt. We're not going to
+touch any prompts here. We're just going
+to build a harness and the outcome will
+change. Um we we log some things to the
+console and then we start a browser
+session. Okay, what's a browser session?
+It's literally just playright, not
+playright mcp like playright playright
+where this is just a class I made with
+an open method that launches chromium
+and gets a context and makes a page and
+then navigate. We're just literally
+calling the playright functions. Yeah,
+this is this is just traditional
+engineering. Um so we create a session,
+we open the session, meaning a browser
+window and a context and then we create
+our tools and we give that browser
+session to the tools and we create a
+context and we give the task meaning the
+prompt here to the context. Now create
+tools is literally what it sounds like.
+It's here there's just some types and
+create tools is a function that takes a
+browser session and gives you like tools
+and these tools are not I didn't invent
+this. This is from OpenAI's SDK. Okay.
+So you have um the name the description
+parameters and execute a way you
+actually call the tool in your runtime
+and and there's just tools for I made
+this. It's very easy. Um so that's my
+tools and then create context. You may
+think whoa context engineering
+absolutely not. It's this is my context.
+There's nothing here. It's just a system
+prompt literally the most basic system
+prompt and the user's task. This is
+basic basic and then we have run loop
+which is just running the agent in a
+loop. So what it's doing here we can
+actually just look at this too um while
+true. So it is an agent loop and we get
+a response from the agent and we see if
+the response says stop meaning if the
+LLM says I'm done then we return the
+value. If we get any other response, we
+don't do anything except add these
+events into a trace. So we just push
+history into a big list of history. Does
+make sense? And so that's all we're
+doing here. This is just a loop where we
+just collect events until we're done.
+Okay. So this is super basic. Now let's
+see how it works. So I'm going to come
+over here and I'm going to do Are you
+okay, sir? Do you need water? I'm gonna
+npm run agent. Um and so it's going to
+open Chromium. It's gonna Okay. Hacker
+news. So far so good. Click upvote. Oh
+no. So we we hit a login screen and then
+it kind of panicked and crashed. Um but
+look, it it lies. You see this? Um this
+is a problem. And so what's the
+solution? Prompt it harder. No. Change
+the system prompt. Always login with
+these credentials included in the system
+prompt. No. Um so how do we then solve
+this? And look, we because of my
+logging, we can actually see it just
+clicks the upvote button and then
+considers it a success. Doesn't verify.
+This is the job of a harness. Okay. So
+now incrementally we're going to slowly
+start building a harness. Um and so
+let's just move I'm not going to write
+code here. I'm not going to live code
+because we don't write code anymore. We
+inspect diffs, right? Anyone write code
+by hand? You don't maybe actually you do
+belong here anyway. So um I'm kidding.
+So this is um this is the first change
+we're going to make. This was our index
+file and we have this run loop that I
+showed you. But now we're going to add
+one thing to it which is default
+guardrails. We're going to create some
+guardrails. Okay. Um, what do our
+guardrails look like? Well, let's go and
+look at it in the editor um with
+guardrails over here. And so we have
+some types, but these are our
+guardrails. We have two max iterations,
+meaning if you do more than six steps,
+I'mma kill you. And max messages,
+meaning if you have more than this many
+messages, I will compress the context.
+These are just guardrails. Okay, a
+little utility to combine them. And we
+just we can compose them here. We could
+do like as many as we want. So now let's
+go back to our changes. That's the
+guardrails. We if we go back to the
+agent loop, we actually use the
+guardrails here in this diff. And so we
+include the guardrail functions and we
+can see that here what we're doing is
+we're checking how many messages have we
+accumulated and we just like trim the
+context if it's too much. Um but what I
+did want to show you is here at the end
+um we we push context size with just
+some more metadata about what we've done
+with our guardrails. Okay. Um our
+context compressor is extremely basic
+and extremely naive. This is what it
+does. Um, let me actually open this with
+syntax highlighting to spare you. Um,
+this is what it does. So, what we're
+doing is if we always keep the system
+prompt and the user prompt and the most
+recent two messages. So, if the
+guardrail is triggered, we always remove
+everything after the system prompt and
+the user prompt in the middle and we
+keep the last two messages. This is
+super naive. Don't do there's better
+ways, but this is we're babies first.
+We're we're getting there. So, we we're
+starting to have a harness, but it's not
+called a harness, but this is really
+like a pregnant harness. Like, it's
+almost born. Okay. And so, what we're
+going to do is let's just call it a
+harness now. So, I'm going to show you
+another diff where we here, check this
+out. Index. We've deleted almost
+everything. Um, and we've moved it into
+this file called harness. Uh, let's go
+look at our entry point now. Index. It's
+it's all gone. So, the prompt is there,
+but this is it's like 19 lines of code,
+and we just have run harness. We've
+taken all the logic from here and hidden
+it in a function called run harness. And
+as you'd expect, run harness does
+exactly the same thing as we did in the
+index. Okay, nothing new is here except
+maybe like a print function which is
+just console log. Is this clear so far?
+Yeah, we just moved stuff. Now that we
+have something called a harness, we can
+actually use it. And let's solve the
+problem of lying first before we solve
+the problem of logging in as me. Yeah,
+because it says I I upvoted it did not.
+I want to know. So, what we're going to
+do is we're going to add some guard
+rails and and have it tell the truth.
+Like, if you failed, tell me the truth.
+Um, how might we do that? Well, we'll
+check it out here. So, many many things
+changed. Um, or not. I don't Hang on a
+second.
+Yeah. Okay. Did many things change. So,
+we run harness and we added a third
+argument here, which is a verify step
+and max attempts. Max attempts goes to
+our guardrail. So if if you took more
+than three tries to do this, just give
+up. And if we go to the harness, we
+added a lot of things um that are just
+manual code. This is not different
+prompt. This is my logic. Um the main
+logic is run harness no longer wraps
+over the code we moved. But we move that
+to a different function called run
+harness attempt. So if we if we come to
+run har let's go here. I need to check
+the branch out. Sorry. Yeah. So now if
+we go to run harness attempt, I'll
+collapse this. I'll collapse this. I'll
+collapse all of these. And if we go to
+run harness attempt, now this is the
+same thing from our index. We just moved
+it into a function called run harness
+attempt because our main run harness is
+just a loop that runs no more than three
+times. Okay, is this clear? So we're
+just enforcing the max steps but at the
+harness level for safety. Um then we
+have run harness attempt that calls it.
+We have this function called verify
+successful upvote. I wrote this. I'm
+this is deterministic. That's what I
+want to show you. What does this do?
+Well, we see if remember we were tracing
+in the agent loop. We're just adding
+history events. So, we reflect on that
+and we see if there was a browser click
+on the upvote and if it's successful but
+really successful, then we say true. But
+there's a huge butt here which is we
+have now cases for failed login. If
+there's a tool named harness auto login
+and if the message starts with failed,
+then we return early and we say no no
+this failed. We're we're removing the
+lie. Okay. Similarly, unreovered login
+redirect. We look over our agent loops
+tools that we've been pushing into. Um
+and if we see that the harness auto
+login didn't run and now we're on the
+page that is the login URL, then again
+we just fail. Okay. Um, and so what
+we're doing is we're just adding like if
+this happened, if this happened, just
+just failed, return early. Is this
+clear? This is what a harness does. And
+so let's run this now with the harness.
+Uh, npm run agent. And now it's going to
+go in hacker news and we're going to
+repeat the same cycle. Okay, it's going
+to come here. And now it still failed,
+but look, it stopped lying because our
+harness checks the tool history and
+actually sees what happened. This is
+what a harness is supposed to do. Great.
+This is already like half the battle won
+because step one to solving a problem is
+admitting you have one. Okay, test
+driven development vibes. So now that we
+we're failing correctly, we can succeed.
+And I'd like to show you that in the
+last diff and then we'll finish the talk
+here. So number four, um we have a whole
+new function. It's called login handler.
+Uh I'll add some syntax highlighting
+here so you don't go blind. But here
+create login handler. This is this is
+all it does. It runs every agent loop
+just before we push to the traces and it
+this is what it checks the browser
+session's current URL and if we're not
+on a login page it just says cool I
+didn't I return I have nothing for you
+this computationally is not costly at
+all right if you're not on the login
+page but if you are on the login page
+then we fill in a temporary this can be
+an environment variable it can be secure
+you get the idea but we fill in
+credentials and submit the button
+programmatically from the harness not
+from the agent deterministically and
+securely because this file has access to
+any secrets I want it to, right? And so
+this file, how do how is this called?
+Well, this is called in the agent loop.
+So if we go back to our agent loop and
+notice we were pushing traces. Yeah,
+this is where we push the traces just
+before. If we have a login handler, we
+call the login handler just before this
+in the agent loop. What does the login
+handler do? Well, if we're not on a
+login page, it does nothing. If we are
+on a login page, then it quickly will
+inject credentials and submit the form
+and then take you back. It will also
+add, as you can see here, it pushes a
+message into the queue saying, "Hey, I'm
+the harness. I logged in. You're good
+now." Is this clear? Yeah. So, the the
+harness is is is literally harnessing
+the agent to something stable, something
+deterministic. That's what it's for.
+Okay. Let's run this now and see what
+happens. So, npm run agent. It's going
+to open hackernews. And when it gets to
+the login, now that harness step, it
+logged in and it upvoted the first one
+and it closed.
+Amazing. So successfully upvoted a
+little snitch for Nilix uh rank two uh
+succeeded after six iterations and I can
+click this and go into hacker news and
+actually see indeed little it was
+upvoted um and it I can unvote now which
+means it was upvoted right and so um the
+agent used the computer logged in as me
+with my harness that I just made here on
+stage. That's the purpose. Is this clear
+so far? Do you understand? I know the
+role of a harness. Look at you nodding.
+This is music to my ears. Fantastic.
+Something to my eyes. I don't know the
+beauty to my eyes. Kind of weird. We
+don't have a expression for that. Let's
+land the plane. I'm done. I think my
+work here is done. What does this look
+like in practice? Why why do I care so
+much about harnesses? Because they run
+the world. Models are non-deterministic
+and you want to do more with less. You
+want to use a cheap model. Use like Quen
+or something or even something smaller.
+Use GPD OSS. It's free and with a great
+harness, you can go very far. That's why
+at IBM we create a open-source project
+that we deploy in the enterprise that
+allows very large companies, huge
+companies in their private like data
+sensitive areas to perform rag
+operations on all kinds of things, teams
+calls and PDFs and invoices. um we we
+built it's called open rag and it's it's
+rag I don't know if rag is cool or not
+anymore but open rag has a hell of a
+harness that provides enterprise level
+security to like asking questions with
+internal very very siloed data and and
+that's kind of where the harness
+engineering comes in so let's summarize
+we covered a lot of content was it a
+deep I think it was a deep dive it was a
+deep dive in like 18 minutes or so um we
+went pretty far I it's not it should not
+be lost on you that I did not touch the
+prompt once I did not change a system
+prompt. We just built a harness and the
+outcome radically changed. And of
+course, we can add secrets, we can add
+tokens. Um, yeah, we did a lot in the
+end. I hope you understand what a
+harness is, the value it can present,
+and how you can use it. What's next? Um,
+look, I I don't have a crystal ball like
+everyone else here. Um, but it's not
+lost on me that 2025 was the year of
+agents. Yes. Uh, 2026 is the year of
+harnesses. I'm pretty sure everybody How
+many times is this word used here? Um I
+think I would hope I think it would be
+pretty cool if 2027 was the year of
+dynamic on the-fly generated harnesses.
+How cool would that like you tell an
+agent, hey do this for me, buy me a
+flight ticket, whatever it may be. And
+then before doing the work, the agent
+creates a harness. This similar to plan
+mode. Any of you using plan mode? But
+but on steroids the the agent creates an
+actual harness. Self-aware. It knows oh
+I can maybe hallucinate here. I can
+maybe creates a harness, does the job
+and returns back to you guardrail and
+everything. That is so cool. Dynamic on
+the-fly harnesses. I would I think this
+is honestly the next logical step
+towards AGI and I would love to see it.
+I don't know if this is just me being uh
+you know weird guy with ideas, but um I
+think that's kind of the direction. So
+with that um I'm almost out of time. I
+would be really remiss if I didn't spend
+the last like 30 seconds saying thank
+you so much. The slides are on GitHub as
+uh am I and so I'd love to chat more.
+Thank you.
+[music]

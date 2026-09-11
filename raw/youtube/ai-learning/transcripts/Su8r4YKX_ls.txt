@@ -1,0 +1,136 @@
+systems thinking is very important to
+everything we do in the world if you
+think about it all of our important
+problems are in a systems environment
+whether it's politics climate change the
+economy those things are all systems and
+that's why thinking about things as
+systems is so
+important systems are an interesting
+problem and they should occupy I think
+more of our intellectual ity systems
+provide uh for chaos they're complex
+what that means is let's say I'm a
+policy maker and I'm going to do
+something to the tax rate on lobsters
+okay and you'd think well that has an
+effect on the lobster Market but it also
+has effects elsewhere it affects the
+other kinds of food that people eat and
+it affects employment which affects the
+amount of money in the economy so
+systems thinking is really uh thinking
+about all the the ways that the real
+world is interactive to what what we
+[Music]
+do my name is Edward castronova I'm a
+professor of media at Indiana University
+I study markets and systems in social
+media generally but especially video
+games at one point my career was really
+in the tank and so I gave up and I
+started playing video
+games and then it occurred to me kind of
+as a joke what if I wrote like a serious
+economics paper about these videos games
+that I'm playing so I went ahead and
+wrote the paper you know I start
+collecting numbers and as I collected
+them I was
+like those are big numbers you what is
+going on here this paper turned into
+something that was actually pretty
+serious it just took off most economics
+papers they just sit there they get like
+seven downloads in 20 years and this had
+like 20,000 in a year there were a lot
+of people outside of econ who were
+interested in this I'm talking about
+like government agencies
+philosophers and uh especially the news
+media I started to get a ton of
+interviews as we go through the world we
+spend most of our time actually
+interacting with systems as a game
+Economist I realized early that's what
+game economies are and so that early
+paper was mostly about quantifying it
+for example if you pump a bunch of money
+into a video game economy inflation
+happens just like it does in the real
+world so by the same logic that
+economies and video games really teach
+us about systems in the real world
+minations now allows us to look at
+systems so if you think of a system as a
+series of Parts moving in Loops well the
+minations tool lets you make a blueprint
+of that you could for example create one
+pool that says carbon dioxide in the
+atmosphere and another pool that says
+Amazon rainforest and another pool that
+says Chinese CO2 production and another
+one that says us CO2 production and have
+all the arrows that you need moving
+things around as well as something that
+counts how much CO2 do we have to get to
+in order to in order to survive what's
+coming as soon as I realized what
+minations was I got all these ideas for
+what you could do with it and I ended up
+making a simulation of all of the
+economies in Europe before World War I
+and how during World War I they had each
+one of them to manage things like how
+many people do we have how many women
+should we put in factories what is the
+effect of the submarine warfare this was
+a simulation of World War I that had
+nothing to do with the actual
+battlefield but everything about the
+interactive systems of European Commerce
+and production when you're looking at
+something
+complicated you can't get your mind
+around it and you know if you press this
+button something's going to happen but
+you have no idea what and what you need
+is a a bird's eyee overview of all the
+parts and how they interact with one
+another and that's what this tool
+provides when I teach using minations
+what I like to do is start with just a
+simple game economy and of course I tell
+them this isn't just a game economy this
+is a simple real world economy as well
+our economy Works basically the same way
+I show them how an influx of currency
+causes inflation once you use the tool
+you can understand the effects of things
+in a way that you can't if if you just
+don't have an overview of the system you
+know you imagine a young person growing
+up thinking that the world is is a
+simple input output mechanism I do
+something and I get a result and it
+turns out the world isn't going to look
+like that to them it's pretty clear that
+the future is going to be systems driven
+as AI comes in it's going to be
+interacting with itself and interacting
+with us the interaction of different
+parts of the world is only going to
+increase as technology increases so my
+advice to a young person is to do
+everything they can to understand why it
+is that if they do this one thing over
+here it turns into this strange feedback
+over there so if nothing else if you can
+think about the world in terms of
+systems and not simple input output
+interactions you'll be able to say to
+yourself it's very strange what's
+happening now but everything around me
+that seems so confusing is actually part
+of of an interactive system that has
+some logic to it

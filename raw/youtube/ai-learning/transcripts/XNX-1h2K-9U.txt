@@ -1,0 +1,420 @@
+[MUSIC PLAYING]
+Thank you, everybody, for coming.
+Like Sean said, I'm going to be talking about our project
+OpenWiki, how we built it, the ideas behind it,
+how it works, and where we're going next with it.
+So what is OpenWiki?
+OpenWiki is a CLI that you can use to generate and maintain
+your repo documentation built specifically for agents to consume.
+And that's a key theme of OpenWiki.
+And I'll talk about this a little bit more later.
+But to start, I'll talk about why we built it.
+So Harrison, a couple weeks ago, our CEO,
+he asked, what is the next big thing in the AI space?
+Last year, it was OpenClaw.
+I'm not trying to claim OpenWiki is OpenClaw.
+Obviously, it's a little bit of a different audience.
+But he was saying, if OpenClaw or personal agents
+was the big theme last year, what's
+the big theme for this year or right now?
+And my answer to that was general purpose memory.
+I think memory has been kind of a frontier research area
+of agents for the last four years, three and a half years.
+But I don't think anybody's really done them very well
+in a general purpose way yet.
+So I think general purpose memory is the next big thing that
+will actually work.
+We decided to start with code-based docs,
+because that's a well-defined area where
+You can still build, or where we believe,
+we can build a general purpose for any type of code base
+memory solution for that, and then eventually expand that
+into more memory areas.
+So why we build this?
+We think it's finally possible now
+with modern LLMs and agent architectures.
+So what is our thesis?
+The first is it's built for agents.
+So a lot of these memory or documentation agents or sites
+four repos are built for both agents and humans.
+But that changes a lot of the structure
+and how you need to present the content,
+how you generate and maintain the content.
+And our thesis is that people use agents for everything
+nowadays.
+You're probably not writing a ton of code manually anymore.
+Your agent's probably doing a lot of that,
+which means these docs should be built specifically
+for agents to consume.
+And that changes how these docs should
+be generated and structured.
+The second-- this is a developer tool,
+so it needs to be trivial to set up.
+We decided to go with the CLI for this
+because that's really easy for people to install.
+And then a very easy onboarding, right?
+These developers, if you want them to try your stuff,
+they need to be really easy to set up.
+So we thought a CLI with an easy onboarding
+is the best way to do that.
+And then updating itself.
+So you can generate Wiki or documentation
+for code-based repo by telling Claude Code to do it.
+And it'll do a pretty good job at that.
+But keeping your docs up to date automatically
+and maintaining those docs is a much trickier problem.
+So this needs to be able to handle the memory or Wiki
+updates automatically without you
+need to do any extra work.
+So our three things here were build the docs specifically
+for agents to consume, make it incredibly easy to get set up
+and running, and then make sure they can update themselves
+automatically without you needing to do anything after that.
+So the first part, building docs for agents, not humans,
+what does this actually change?
+Well, if you're building docs for humans,
+you're probably going to have to tell a story.
+You're going to have a quick start with background
+on the repo.
+All your doc pages will need to flow.
+You can't just have isolated snippets here and there.
+You're probably going to have screenshots, maybe videos.
+And all of this is great for humans to consume,
+but not very optimized for agents to consume.
+So if you build it for agents, your agents
+are going to retrieve fragments, probably not
+the entire doc's page itself, or definitely
+not entire directories or folders within your doc's page.
+Every concept needs to be self-contained
+because they're going to be pulling snippets.
+You need to have predictable, precise, accurate headings
+for filtering and for searching.
+And then you need to make sure everything's optimized
+to fit in the context window.
+So you don't want to have some random base 64 string, which
+gets included in the agent's tool call that adds 50,000 tokens.
+So thinking about how to generate these docs
+and how to structure them is very different depending
+on who your audience is.
+And because we think agents are--
+I mean, the ones writing--
+not because.
+Because agents are writing all the code for us nowadays.
+The doc should be tailored specifically for agents.
+Getting it set up, this needs to be really easy.
+So like I said before, we want the CLI.
+The CLI is very easy to set up.
+I'm sure everyone here has used CLI.
+They're using them every day.
+It's one command to install, just through NPM,
+and then one command to initialize your wiki.
+You run open wiki init.
+It steps you through setting your API keys,
+configuring your model, your wiki brief,
+which is like a prompt about how it should navigate your repo.
+And then it automatically starts generating the wiki.
+And it writes a bunch of files for you, like your AGENTS.md,
+or it'll modify that if you already have one.
+And that's what tells the agent to consult the wiki.
+It'll write a GitHub Actions file, which will automatically
+update your wiki going forward.
+So all of this needs to be really easy or else
+a lot of developers will churn.
+So like I said before, we thought a CLI,
+with a very concise onboarding, that automatically writes docs
+and writes all the other files you need to use as wiki,
+was the easiest way to do that.
+OK, so what does it actually write?
+If anybody has seen Karpathy's LLM wiki,
+it'll look very similar to that.
+It's just a bunch of markdown files
+that have a specific structure and then links between them.
+So OpenWiki will always have a quickstart.md,
+which is what we prompt the agent to look at
+to get a high-level idea of the repo
+and the other docs content in the Wiki.
+And then it just breaks up docs into different directories,
+which it deems necessary.
+So we don't provide tons of guidance
+and what directories to write, what types of topics
+or concepts to document, we want to leave that all
+to the agent.
+Instead, we give it some guidance on roughly how many files
+to write, the size of each file.
+We want every file to have a very specific topic it's
+focused on.
+And that way, agents don't need to get context
+from multiple different areas when
+they're reading individual files.
+And then OKF, which is Google's open knowledge format,
+we adopted that.
+And that adds a deterministic front matter, a YAML front
+matter, to every markdown file, which has a type, title,
+description.
+And I'll get into this a little bit later.
+An index file, which gives you an index of all the files
+in that directory, so your agent can very quickly
+get a high level look at what is in a given directory.
+And a log file, which is like a change log.
+This, I actually think, is very important for agents,
+so it can look at the history of the wiki,
+but also for humans.
+We don't need humans to read the wiki.
+But these wikis are getting checked into your code base,
+and you probably want to read what is changing every time
+your wiki updates.
+So the log.md, you can think of it like a change log.
+And for this, we tell people, look at your change log.
+That's how you can see what changed in your wiki.
+And then if you want to dive deeper and look at individual files
+that have changed, go from there.
+But you shouldn't really need to unless you
+want to read individual pieces of context from the wiki.
+The change log should give you everything
+you need to understand what changed
+in the most recent wiki update.
+Great.
+So before I mentioned OKF, this is Google's
+Open Knowledge Format.
+It says v0.1 here, but they just released v0.2,
+which we're going to add support for in the next day or so.
+But what is OKF?
+OKF is a very simple spec.
+Essentially, all it is is a specific front matter, which
+you add to the top of all of your markdown files.
+You can see what it looks like here.
+We have type, title, description, resource, tags,
+and timestamp.
+And then there's also a--
+you can add arbitrary fields as well for specific concepts
+or tags you might want to add.
+But these are the main ones which are defined by the OKF spec.
+And this will allow us to do a lot of interesting things
+around retrieval and filtering and searching in the repo
+because we have types we can filter on.
+So you can say, give me every architecture doc.
+Or there's the tags field, so you can filter on tags.
+So adding this very small section to the top of every wiki
+doc actually compounds a lot when it comes to retrieval, which
+is arguably a bigger challenge than dox generation.
+So generating dox is fairly easy with agents.
+Retrieving from these dox is a lot more difficult.
+And OKF allows us to do that easier
+because it gives us all these deterministic fields
+we can very quickly pull from to use in filtering or searching.
+And then links between dox is a big thing.
+So OKF, you can have these resource
+tags, which can link to individual files in your code base.
+But then also mark down links between dox.
+So your agent can pull a snippet from doc A,
+see its link--
+a reference to something in doc B, and very quickly visit
+that other doc A references through these markdown links.
+And the markdown links, obviously, are not specific to OKF,
+but OKF provides a big--
+has a big emphasis on these docs to cross link pages.
+And that way, your agent can very quickly
+discover context which is related to the context
+that it's reading.
+Great.
+So I've talked about what OpenWiki is.
+Now, does it actually do anything?
+So we're still very early in our eval process for this.
+Right now, we're just pulling from DeepSWE,
+which is a coding agent benchmark, and running a subset
+of those tasks on--
+or the subset of tasks without open wiki,
+so just plain DeepSWE tasks, and then generating a wiki
+for those tasks and rerunning it.
+What do we see so far?
+There's a few stats.
+So it's essentially all around more concise agent usage.
+So fewer tool calls, fewer searches, fewer outputs,
+while still yielding the same or better results.
+So I don't have it here, but in these 20 tasks,
+we were usually seeing about seven or eight successful tasks
+without OpenWiki and then nine or 10 with OpenWiki.
+So it's very slightly better.
+But as you can see, there's a significant drop
+in token consumption, which is the big thing here.
+These docs should provide better context for your agent
+so that your agent can more efficiently navigate your code
+and implement changes.
+So this is still very early.
+We're going to be publishing a lot more on benchmarks soon.
+But initially, from these DeepSWE tasks,
+it is looking somewhat promising.
+All right, so that's what we've done so far.
+What did we get wrong?
+The first is that only agents would read it.
+I went into this thinking, I only use agents to write code.
+So I'm going to build this for agents to consume.
+Very quickly, we got a lot of feedback from people saying,
+I want to read these docs as well, which in hindsight,
+makes sense.
+like humans are still in the picture for engineering.
+So these humans want to read the code as well.
+So before it was designed purely for agents,
+we ended up having to make a few modifications
+so that it could be a little bit more friendly for humans.
+And what does this mean?
+It essentially means diagrams.
+This is a big thing for humans to consume it.
+So before it was already all marked down,
+which is natural language, which you can very easily read.
+But a big change is adding diagrams,
+which we didn't add initially because it seems less important
+where they can just read the text and consume that.
+After writing the diagrams, I don't have evals proving
+that they are better or worse for the agent.
+But I think it kind of makes sense
+that these diagrams could also help the agent.
+But more importantly, they help the user a lot
+by showing sequences or state diagrams or flow charts.
+It's not very hard for the agents to generate these.
+You could argue maybe it helps the agent as well,
+because they can generate them, which
+means they can also consume them.
+But the main thing here is it helps humans consume these docs
+a lot easier than when it's just plain text.
+So that's one thing where we went in thinking,
+only agents are going to read these.
+Very quickly, we found out people want to read these as well.
+All right, so now I'm going to talk a little bit about how
+the OpenWiki CLI actually works.
+It's very simple.
+We have two commands, so OpenWiki init and update,
+which I'll talk about later.
+An init is the first one you'll run when you're setting up your repo.
+So this initializes your repo.
+We have a setup wizard.
+So you'll set your API keys.
+You'll pick your model.
+You'll set your instructions, which is essentially
+high level prompts telling the CLI agent
+some more specifics about your repo.
+It's not the only prompt for generating the wiki,
+but it's an extra context that you can provide to your agent.
+So set of wizard, very simple, LLM keys, model, agent config.
+We would then automatically write these files for you,
+like I said before.
+So there's a GitHub Actions workflow.
+This is what's going to automatically keep your wiki
+up to date by running a cron daily
+and then updating your wiki based on any changes
+to your code base.
+It'll modify your AGENTS.md or CLAUDE.md,
+or both if they're there.
+This essentially just injects a little piece of context,
+telling the agent about OpenWiki, what it is,
+how it can access it, and when it should reference it.
+Right now, this is the only way agents are made aware of OpenWiki.
+I'll talk about some changes we're going to add later,
+but automatically updates or writes to your AGENTS.md.
+And then it sets a cron, right?
+So there's a GitHub Action set to run daily,
+to automatically keep your Wiki up to date.
+And then as soon as you accept these files and merge them,
+there's a cron in a GitHub Action.
+And then you can kind of forget about a wiki.
+And it just continuously updates the wiki every day
+based on new changes.
+Your agent is already made aware of it.
+And then you don't really need to think about it,
+and you just get these efficiency gains
+without having to do anything else.
+So after you configure your agent, set the repo scaffolding,
+it runs the actual agent.
+So this looks at the repo.
+It writes a plan.
+It looks at the Git history.
+This is a pretty big thing.
+We don't want it to just read the code that's
+in the repo right now.
+but also the Git history so we can see how things have changed
+and progressed throughout the repo.
+You can look at git commit messages, git titles as well.
+So yeah, this is a big thing where you don't want it to just
+read the current snapshot of the repo,
+but also go deeper into the history of changes
+made to that repo.
+And then it writes the actual docs.
+And at the end, we have a deterministic pass
+which runs over all your docs.
+Make sure they're all OKF compliant.
+It automatically writes your index.md and your change log.
+And then we have the agent add the specifics
+about what it changed later on.
+And then it updates a few other metadata files
+at the end of the agent run.
+So that's the init run.
+This is what you run when you first
+onboard it into OpenWiki in your repo.
+The next is update.
+This is very similar.
+So you have the scheduled run that we run in the GitHub
+Action, which OpenWiki init will write for you.
+This will run OpenWiki updates.
+The first thing it does is it looks at the Git history.
+So if there hasn't been any changes since it last ran
+and we tracked these changes in this last update.json file,
+then we don't run OpenWiki.
+If you haven't made any changes, we
+don't need to update the repo.
+If there are changes, then we run the agent.
+And we look at the Git log.
+We fetch every commit that has been merged since your agent last ran.
+So by default, we run this once a day.
+If you're checking in 2,000 commits to your repo every day,
+you might want to update that recurring action
+to run every four hours or six hours or eight hours.
+So it looks at the Git history, updates your repo
+based on what has changed, and then opens the PR for you,
+and you just get to merge that, and then you
+have your Wiki up to date.
+So where does it stand today?
+It's an open source repo, so a bunch of stars on GitHub,
+a lot of forks where people are taking this,
+forking it, and modifying it for their own use,
+or you're just using it on NPM.
+And it's MIT license, right?
+So you can use this.
+You can install it on NPM.
+You can use any provider that you want.
+We support like 10 or 15 different providers.
+Or you can fork it, modify it for your specific use case,
+and use it in your repo.
+We thought this should be an open source project
+because that's one way to get great adoption,
+because developers love open source.
+But then it also means that you can customize this
+for your own usage.
+That's a big thing in Agent Docs, where
+we build in a very general way.
+But if you have specific workflows or readings
+to use your agent, or open Wiki, you probably
+want to fork it and make those modifications directly.
+So what's next?
+Obviously better prompting.
+So we've started to invest more in evals.
+This is those DeepSWE evals.
+Better prompting for it to analyze larger repos
+and update itself as well.
+And then search and retrieval tools.
+So like I said before, right now we
+write in AGENTS.md and/or CLAUDE.md telling the agent
+about OpenWiki.
+But this is obviously not the end state.
+That's great.
+And agents will ingest this.
+But getting it dedicated tools for searching and filtering
+and querying the Wiki is a clear next step.
+And we've already seen gains from that in some of the PRs
+we've been running that are not merged.
+So better prompting, of course, and more specific retrieval
+tools for your Wiki is what we're going to come out with soon.
+And yeah, that's it.
+So try it out on your worst document repo.
+The QR code just brings you to the GitHub repo.
+And you can also install it with npm install openWiki.
+(applause)

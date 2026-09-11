@@ -1,0 +1,356 @@
+It's true. It is as much time as I want. Okay.
+Very, very excited to be here. It's a beautiful theater.
+It is a beautiful, you know, I we're talking backstage. This was a famous theater for me because all of the Apple
+product launches that I loved were all here. Yeah.
+And Steve Jobs was here and I kind of feel like he left a little bit of his magic behind on the stage and it's just a great place to be.
+Good karma. Absolutely.
+So anyway, Sundar, you know, we know each other very well and we have been to many many different kind of programs
+together and also a lot of personal events, some wonderful happy situations, some sad situations. We've had every
+possible situation together. And I think, you know, when I was thinking about this interview on the way in,
+what occurred to me was um you know, does everybody really know you? And I would really like just to take a few
+minutes and try to let people know who you are because as I was saying backstage, you're from my very favorite
+part of India, from the south. Um everybody knows I like a good masala dosa and
+makes two of us. So one thing I love about the south is you know the the the women are in charge of the household,
+the mothers are in charge and um and the gurus are the women um I met an
+incredible guru in Tvandram you know in Carerala in the backwaters of the Arabian Sea named Amichi was amazing had
+a huge impact on my life but that idea of growing up in South India and the the values of South India and the mystique
+and the energy and the matriarchy. How how tell us about that and then you know let's let's and then let's get you all
+the way from that point when you were there and I and Stanford but first let's go back to South India and then just give everyone a flavor for Sundar.
+Wow. I didn't expect it to start there but uh definitely a trip down uh nostalgia. I mean, you're right. It's a special place obviously and you know my
+mom had a you know I learned my love of reading from my granddad, her father and my mother. Uh you know she used to be a
+voracious reader. Uh she you know she because of financial circumstances never went past high school but she was she
+used to read a lot and so that's where my love of learning and knowledge kind of uh you know came. I think growing up
+there you know obviously strong family values extraordinary focus on learning and knowledge and acquiring uh wisdom
+over the years and so it's not an accident I think it kind of led me to Google over time uh given what our
+mission is and so on but I you know I had to wait for every piece of technology for a long time in my life waited 5 years to get a rotary phone and
+when the phone came 5 years for a rotary phone because the government made it at that time and there's a long waiting Sure.
+But the but the minute the phone came to the house, uh we were one of the first in the neighborhood. People would come to the house, call their families. It
+kind of like created a community around it. So for me, it was, you know, incredible to see how getting access to
+technology can have this profound shift in your life. I had to wait for a long time to get access to a computer. So that's what led me to this journey.
+How old were you when you first had access to a computer? You know, I'd seen and had like, you know, you could get an hour of use maybe like once every two to
+three months. But when I came to Stanford is when you could walk down to a lab and there were workstations and
+like I could open Emacs and I was, you know, it was a whole world. That's where access was opportunity.
+Yeah, that's right. And that's what always reinforced to me that you know all of us are in this world of we trying to give people access to technology and
+and you see that step change that comes with it and and it's a journey and with AI I think we have a chance to do a step
+even more you mentioned south India I called the prime minister of India this on Sunday night you know I used to take this train
+prime minister Modi Prime Minister Modi I used to take this train through the south of India and there's this town called Weisag. It's a beautiful coastal
+town growing up and we announced our Yeah, there you go.
+We announced our largest ever AI investment outside the US. a $15 billion
+1 gawatt plus data center 80% powered by clean energy with subc cables going in
+that the the chance to transform a region like that with that with a kind of investment it really meant a lot to
+be able to call the prime minister who really cares about developing the country and this has been his vision I know you know him well too and so anyway
+it's extraordinary to see the impact of all this very exciting and it's a great way to give back so You really see that this
+kind of technology giving access even being developed and this nod to South India there. Yeah.
+Very good. It sounded like there's a lot of folks here from India or no vice. So stand up if you're from India actually.
+Would you well be welcomed? Wow. Look at that.
+Thank you everybody. Welcome.
+So okay. Well, let's let's talk about that. So, here we are. I Well, I think I've started the conversation in the
+right way. Would you agree that we have to connect to India to understand you?
+And here you are. You're growing up in South India. You're getting um you're getting a vision for technology. The idea that access is opportunity. Um
+you're now in pursuit of IIT probably the fi one of the finest institutes uh in India for technology. you know when
+when did you make that decision that technology was going to be your passion?
+Uh look I mean I I was uh uh very interested in physics. I was fascinated with semiconductors and computers and so
+to me it was literal you know I literally wanted to be this place was called Silicon Valley. So it's the best advertising ever, right? You know, as a
+kid growing up, you know, you're interested in semiconductors, this wonder that you could turn sand into into this thing uh which is the uh you
+know, substrate of uh uh the digital age. And so for me, I literally wanted to be in Silicon Valley because that's
+what I was interested in. And you know, I was very inspired by the one laptop per child project from MIT. Uh what Negra Ponti was working on. This is the
+one laptop per child where they're going to try to put this kind of uh lowcost computer in the hands of every child in
+the world that especially targeting India. Yeah.
+And it was going to be a very very lowcost computer was it was Nicholas was really the visionary behind it.
+That's right. And I you know I have to uh you know in some ways I I can directly link that to my work on
+Chromebooks many years later. Right. So the fact that that must have been now that I mean one laptop per child that was in the mid '9s
+I think that's right 94 95 96 I I don't remember the exact dates it's you were right and around the time it
+came to the US but what's extraordinary is his vision of making that possible uh I think made a lot of progress quite
+couldn't get there uh but you know for me it always uh you know it later played out not just in Chromebooks but we
+eventually ended up giving pretty much everyone a mobile phone which is a computer in their hands with Android too. Um, you know, now you have all
+around the world be in the US, be it in Brazil, be in Indonesia, be in India, Africa.
+Was there also a browser on that Android phone? That's right. What we say? There's a browser on that phone. There's a browser.
+We're going to get there. We're going to get there.
+Yeah, I'm looking forward to it. You know, I'm going there. Yeah, I'm looking forward to it.
+uh okay but but I think that inspired me and and so in some ways uh you know the chance and the thing that attracted me
+to Google was literally in the mission statement and I I'm very serious about it the phrase to make information
+universally accessible and useful that phrase is why I joined Google because it resonated so much with me right this is
+about giving access to information knowledge to everyone in the world and and and that journey continues across
+all of us. I think AI is the ultimate expression of that, right? It's really giving a true knowledge, collaborator,
+companion, however you want to think about it, to access to everyone in the world, regardless of where you're from.
+Uh and and and so it's a great equalizer, I think.
+Well, it's an amazing vision now. And you're in pursuit of IIT with this inspiration. You go sail through IIT.
+It's amazing. And then somehow you know you want to go to Stanford. Was that when did that occur?
+I mean you know you I mean it's a you know it's a fortunate opportunity and uh for me you know I had the chance to go
+to a few places. Stanford happened to be in Silicon Valley. So it was uh it was uh everything was uh straightforward.
+The only thing I felt maybe misled was the professor who emailed me said it's really nice and warm and beautiful weather. But I think kind of coming from
+South India when people say warm I remember the first time I went to the ocean I was so excited I went into the water and I was like no this is not warm
+this is not this is not the backwaters of the Arabian scene no okay it's a bit different having said that you know it is the birthplace of uh uh
+semiconductors and uh the stories around you know fair child and national I mean you you see the history back and uh so
+it's a real special place so I felt home when I came here.
+Well, you're you're helping me remember all of my great times in South India too and the warmth and the energy and the mysticism and all that. I remember some
+a lot of times uh being there and uh spending time you know uh with uh Amachi and also um uh friend of mine there am
+Amita Rupa Nanda as well and it's just an incredible place and it is a it feels a long way from here
+but I guess it's it's actually much closer because here we are together right now and so now here you are you've kind of gone through that whole
+experience you're all the way to IT and now you're on your way to Stanford, what are your what is your family thinking at this point?
+Uh, look, I um I mean I mean now you step back, you know, I I just became an empty neester this year and you you have
+this incredible access to your kids and it's still very very hard. I can't believe in those days uh when I came here it was probably $2.30 per minute to call back home.
+Yes.
+Right. and and uh so you know if you ever think the the curve of how technology makes things more accessible
+yeah it was you know used to write letters back then because it was so expensive to call now you know I'm fortunate enough you know I see my
+parents regularly and I'm uh you know stay in close touch with them but you know they talk about you know just just
+like you kind of disappear from their uh life but so I'm glad we we're working all you know I look at There's a product
+we are working on called uh Google beam and which really when you when two people talk you feel like physically
+they are in the same place. Part of the reason I'm motivated by all that is like you know you know you realize people today you know imagine veterans being
+deployed and being away from their families or something like that. So I think it's important to connect people.
+All right. So here we are now we're at Stanford. The favorite son has left the home. There it's there's a distance. Yeah.
+Um you're lonely it sounds like in Stanford. Uh you're missing the misaladosa. You're you're in Palo Alto.
+I was missing my girlfriend then. My wife now.
+Your girlfriend now your wife. Very nice.
+She was she went to uh college with me and so yeah all of that. Very good.
+I spent all my money calling her pretty much. Yeah. Literally true.
+Very good. Do you want to say more about that? What were those calls like?
+At some point we have to bring it to agent force. And uh we really don't actually. This is better than that. We've been talking about that for days.
+We've been talking about Yeah, we're already on board the agent force phenomenon. We got that. But this is more interesting. The girlfriend, the wife, the phone calls, freezing in PaloAlto.
+Uh, I I definitely didn't expect uh all of this. So, bathing bathing in the Pacific Ocean, which which you know, I only did it
+once, by the way. Uh, super cold. Still haven't quite uh quite gotten used to it. Uh, where are we now? Look, I mean,
+uh, but no, I think it's important that we talk. First of all, we have a you can see we have a great connection, number one, but number two, this is the this is
+the Sundar I know. So that's what I'm trying to do is I think a lot you know my like I said on my ride in I was just thinking to myself a lot of people they
+just don't have the opportunity to realize the person that I know so well your heart you know your your your your
+life your connection and you know now okay so anyway let's just get back to the story you're in Stanford now right and now all of a
+sudden you kind of see this new world and it is a different world you're you are in Palo Alto it's it's not is cold.
+There's a whole thing going on, right?
+And so what is your biggest surprise now that you're in Palo Alto besides the weather?
+Oh, I mean, look, I um I think I mean we take this for granted uh in in the
+valley and in a place like Stanford and uh I mean it's I mean America is truly a land of opportunity in a way that phrase
+I think very few people really understand uh uh you know it deeply and uh it's extraordinary. uh you can come
+here and you know if you're willing to work hard pursue your dreams uh anything is possible right and it was kind of
+obvious to me once I came in uh you know if you're passionate about something you meet other people who are passionate about it uh this is a place of dreamers
+and builders you're excited about something people want to build on that idea uh you know it's almost like they want to compose that with you that is so
+unique uh unique about uh about the place we live in. Uh and so that struck me. So you know this this optimism
+uh this real desire to make the world better. Uh you know and and sometimes we all are so used to it. Sometimes I think
+you know we get jaded with technology or something we forget that I feel it now when I travel around the world and you go to places where they don't have
+access to this technology they so want to be a part of it. Here we have it right and and and you know I think we've
+gone through these waves but that is the essence of this place I think and you brought it back to the this is the the theater in which Steve Jobs did some of
+those uh you know pathbreaking announcements but I think that's the spirit of this place I felt it at Stanford um and I I feel it today.
+So now here you are. You're you're feeling it. You are connected to the energy of Silicon Valley, the magic of what's happening. Stanford, kind of the
+heart of it all, near the garages where these great companies have started, like HP, like Apple. You're starting to meet these cast of characters. It's like
+going to Disneyland, right? You're meeting Donald Duck. You're meeting you're meeting Mickey Mouse in person for the first time. And now you're in
+Stanford. And are you at this point thinking, okay, I heard about this company, Google, it's 2004, this is where I'm heading. Is that the is that the direction at this point?
+Um, I was in I was in Stanford in the '90s and uh, you know, this was the time
+uh, when uh, Mosaic and late, you know, Mosaic had launched and uh, ironically, I think Larry and Serge were at Stanford at the same time. I don't think I knew them or uh, we didn't overlap.
+You didn't know them at the Uh no, I didn't know them at the time. You know my I I was I was focused on different things. I was very interested in
+semiconductors. That was my area of research. Uh that's what I was working on. Uh I was so excited to have access
+to all that. I almost didn't realize there was this thing called the internet which was happening. So but you know a
+few years later uh you know had the chance to get to know a few people and when the internet was really taking off
+when I I started using Google early um and the first time I started using it I realized this is going to give more
+access to information to more this must be what 96 97 no Google wasn't there Google started in 99 I first used it in about 2000
+right 20201 one and but I could instantly feel like you have this thing which is going to give
+access to technology to more people than anything before. uh you could use it, you could feel it. The fact that And where was that first time that you used Google in 2001? Where were you?
+I was I was still in Palo Alto um you know, but I was uh like working in the semiconductor industry. It's it's
+interesting to see back as we going through this moment in AI everything is coming back to chips uh you know which
+which turns out to be the uh might be the real driver of intelligence right and and uh and it's not an accident that
+Google works on TPUs too right so it all comes back uh full circle but that's the context in which I I use but you know
+it's just that when I used it I instantly felt like this is where I want to be and spoke to some people uh ended
+up at Google um and soon started working on Chrome. Yeah.
+And you went to Google. It was about 2003 4 2004.
+So 2004. So you've transitioned now from semiconductors. What semiconductor company were you at? I actually don't know.
+For a long time I was at Appli I was at Applied Materials.
+At Applied Materials. So you're at a great company, Applied Materials. And now you've decided to go from applied material semiconductors to the internet
+with Google and you go it's a pretty big leap actually from semiconductors to the browser.
+Look I I wanted to be closer to um you know when you're working in the semiconductor industry sometimes you can feel far removed from the people. I I I
+wanted to be much closer to where technology was impacting people and and so I wanted to be closer to the consumer
+and and that's the chance with uh uh Google. 2004 was about the time in which you had this the web was changing from
+just content pages to real rich applications. This was web 2.0. It was Ajax. Uh Gmail had launched. Google
+Maps, Flickr. uh you could really see the web evolve. You were pioneering software as a service too at the time. I
+mean like look all of this was uh coming together and we were 5 years into Salesforce at that actually were going public and Google
+was going public in 2004. Now actually you mentioned it Google and Salesforce both went public that year 2004.
+That's right. I went back and looked our first partnership I wasn't involved between Google and Salesforce was 2007.
+Yeah, that was the first contract IP.
+That's not the first partnership. The first partnership was I was presenting, okay, ahead of our
+IPOs and Larry and Sergey were in the front row and I was presenting on our product strategy, but I also presented on our 111 model.
+Yeah. Which which is the 1% equity, 1% profit, 1% time. And Larry and Sergey came up to me afterwards and they said, "You know
+what? We're going to do that, too. and we're going to create google.org and we're going to do the 1% also and I want
+to thank them for that and thank you thank you and have thank Google for that because it created a huge foundation with a huge amount of good
+and that was the very first time I had met Larry and Sergey and it was it was an it was an incredible moment so and it
+just at that moment you were kind of coincidentally joining Google that's right and so was it before the IPO or after
+uh just I think I joined The IPO happened like 3 weeks later.
+Fantastic. But they join you joined. The company is going public. That's right.
+Now, is it at that point now? Who was CEO at that point? Was it Eric or Larry? Eric.
+Eric. And is that when you said to Eric, I'm going to take your job, Eric.
+Now, the the the the thing I did recall it was in 2004.
+Around 2006 is when uh you know, thing with Jere I still remember this. Well, me and a few others, we wanted to build a browser and Eric had gone through the
+browser wars before. Uh, you know, was super familiar with it. Uh, I remember vividly Eric telling us, "Are you crazy?
+You know what it takes to build a browser? We're not building a browser.
+We still did it anyway, but uh, you know, but he was super generous and uh, once we we kind of bootstrapped a
+browser, a small team, and then we demoed it to him and Larry Sergey. And once he saw how good it was, he became one of the biggest supporters of it. Uh but that's how uh Eric and I interacted.
+Yeah.
+All right. Well, now you're squarely at Google and it's a storied career for the next 21 years from starting on this kind
+of incredible team that built the marquee browser Chrome all the way to today as the CEO. Reflecting on that you
+know two decades what what what is your thought AC ac across this arc from South India now to the this leadership journey
+at at Google? Look I um I think you know technology is one of the biggest enablers we know right uh you know it
+drives innovation at a fundamental level. Uh if anything that journey is you know accelerating right I think we are living in the middle of it.
+Sometimes we may not fully feel it. uh but the pace at which it's evolving and and and I feel and I'm sure Mark feels
+that way uh you know our job is to be good stewards of this technology bring it in a way that really benefits society
+at scale right and and so this journey to harness technology in a way that positively impacts humanity uh I think I
+think that's that's what we need to do we obviously do it in the context of building companies But companies with a purpose, companies which give back. I
+think both Salesforce and Google share that deeply and you inspired the Google journey there. I think there is no better technology to do that than AI,
+right? And and one of the first things uh you know when I became CEO was to we had gone through a decade of being a
+mobile first company and you know I wanted to drive the shift uh to being an AI first company. So that's what we did in 2017.
+uh uh you know in fact in 2017 at Google IO we spoke about this concept of AI first data centers and you know we
+announced our first generation of TPUs in 2017 and and so but it's been a journey I think in many ways Larry Sergey were
+visionary around always understanding the true potential for AI. I was fortunate to go through maybe four
+distinct moments which kind of like really brought it all together for me.
+In 2010 I went with uh uh the with Larry to the DARPA Grand Challenge where they
+were testing autonomous cars and you know we saw uh this car the Sebastian's uh team uh which won the DARPA
+challenge. So you kind of saw the progress that's possible. uh Jeff Dean along well Jeff Hinton and team had come
+to Google and so Jeff Dean demonstrated Google brain in 2012 the ability for Google brain to recognize cats uh using
+a neural network that was 2012 I met Dennis and team in 2014 and then in 2016 was the alphabo moment
+right so seeing all this you know it was fortunate to be at that that kind of a vantage point which is why in 2017 I
+said the company has to be really focused on it was obvious to me this was going to be the decade of AI uh and so
+that was the journey uh since then okay so now let's go back about 3 years when we started to have some very interesting conversations
+because all of a sudden here's Google the absolute leader in AI deep mind now Dennis the Nobel Prize winning Dennis we
+never thought that was about to happen incredible Incredible what has happened.
+Well, very well warned. And now 3 years ago, here you are the leader in AI. You are leading the company through
+this transformation. You're putting guard rails in appropriate guardrails.
+You're being conservative, appropriately conservative. And this little company in San Francisco called Open AI emerges with this product chat GPT. And we start
+to see these crazy headlines that say, well, Google has a competitor and here's the situation and here's the real leader
+in AI, open AI. What's your reaction and you know t take us in that journey for the last 36 months?
+Um, a few things right. I think uh one of the things which was misunderstood was you know obviously 2017 was when we
+published the transformer paper too. Um the we started using transformers right away. We saw the power of uh the
+technology. Uh part of what made search so much better was post transformers.
+This is the paper all you need is attention.
+Attention is all you need. Yeah. And and uh extraordinary paper and uh you can say it's the foundation of everything
+since then all of the genai uh phenomenon and we built something called BERT and mom. uh so we built two
+transformer based models which is what dramatically improved search we use transformers to make search better the
+we use transformers to that's why we launched Google photos it was the first AI native product we were shipping a lot and we were working on a internal
+version of chatbot 2 in fact it was a chatbot uh it became famous because there was an engineer at Google who thought it was sentient uh you know this
+was about 6 months ago it was not sentient uh I Uh it it was inscentient. Uh on on a lighter note though, I did get a
+lawyer like from the outside send me a note saying representing this product called Lambda and so which is one of the
+more fascinating emails I've gotten. Uh but so this is a lawyer representing in the sentient chatbot.
+That's how uh it came in. Right. But look, we have to take all this seriously. Obviously the technology wasn't anywhere close to that at that time but we were making a lot of
+progress u uh but you're right credit to open AAI uh you know they they put it out first and look in in consumer
+internet it's not I remember being at Google in 200 uh uh six and we were working on video search and YouTube came
+out of nowhere or I'm sure if you were within Facebook you saw how photos were popular in your feed and Instagram came
+out of nowhere. And in the consumer internet world, you know, I would argue pretty much all of us working on we knew in a different world, we would have
+probably launched our chatbot maybe a few months down the line. We had we hadn't quite gotten it to a level where
+you could put it out and people would have been okay with Google putting out that product, right? It was still had a lot of issues at that time. I would
+argue there's a lot of risk putting it out at that point. out and I would argue you know OpenAI did their deal with Microsoft 2 months before they put out
+Chad GPT right so in some ways I think it was you know in hindsight it's a bit more obvious uh fully what what it could
+be but for me when the when when Chad GPT launched contrary to what people outside felt I was excited because I
+knew the over the window had shifted we were building this technology for so long we were So AI native
+everything in the company every decision we had made uh you know I decided to take a full stack approach to AI right we were investing all the way from
+infrastructure we built our own chips uh to we had world-class research teams in Google research Google brain Google deep
+mind uh and and to the models and so on so I I just realized this is the biggest opportunity in technology we were
+incredibly well positioned but we had to carpet VMC's the moment and execute well as a company and that's the journey
+we've been on. We kickstarted Gemini. Uh we brought Google brain and Google deep mind together. Uh and and we've been
+rapidly iterating since then. Uh we have had uh you know now we have Gemini 2.5
+outside we are working on Gemini 3.0 which we will release this year and and the progress has been uh extraordinary
+and I think the progress in 26 is going to be even more exciting than 25 so I couldn't be more excited
+one other thing congratulations
+[Applause]
+so now let's take a quick step into the future so here we are you know we've all been at Google we've seen the huge
+transformation not only of Gemini even an AI preview and all the technology that you're pioneering and I don't think I've ever seen the organization go
+faster and quicker and also be more determined and you know it's good to have a competitor right it gives you a little extra motivation to keep go to
+get going and number two is we see Google also innovating in some extraordinary ways a great example is I
+don't know if you've been to San Francisco recently but we have about 500 of these white cars called Whimos going around and it's Amazing what Google has
+made. It's incredible. And I will just, you know, look at that and also think about and reflect. Yesterday we had
+Brett Adcock here who has this company called Figure with Robots.
+And, you know, I was asking him, you know, what is the whole stack? You know, there's the data centers, there's the
+AI, and there's this kind of robotic layer. you know this kind of that that it takes many different pieces to build
+the whole system end to end and you know it's difficult you know Brett it was a brilliant interview and he's just
+incredible person u but he's got three or 400 or 500 people obviously all incredible led by an incredible person but you have way
+more than that and you have way more put together and you're really far in a lot of these areas you're very far on the as
+well let's just start at the chip layer, at the data center layer, at the at the software layer, at the agentic layer, at the applications layer, productivity layer, partnerships.
+Yeah.
+And at the robotic layer as well. So now there's no other company that has that.
+I'm sure that this is the conversation in the boardroom every day. I don't really know. But this idea that Google
+has this vision really guided by and you have to give a lot of credit to these two kids out of Stanford, Larry and
+Sergey, who are still so active and see them around all the time and still so passionate and youthful
+and now here you are leading this company, incredible company, these amazing values that we talked about. The
+heart of Google is still very much in place. Now here we are. 2025. Now, we look out over the next 10 years. People
+are always overestimating what you can do this year in 2025, underestimating what Google's going to get done by 2035.
+Take us out to 2035.
+Take us into your biggest dream. Where are we going? How are you going to harness the power from the tensor to the
+data center, the GCP, Gemini, the applications, the partnerships, the robots?
+What are we going to see? What is going to what is it going to look like 10 years from now in the mind of Sundar?
+Look, I mean um I mean technology just that just that yeah uh both you and I have worked long enough that you know you have to be humble when you think about the future.
+Uh but look, we make these long-term bets. You know, Whimo has been a very very long journey, right? I'm proud of the fact that over the past 10 years, we
+continued investing in Whimo. I remember the team 3 years ago when we were coming to San Francisco, we weren't sure how
+this would work out. the thought in San Francisco that you would have all these cars driving around and and you'd have to get it right putting safety first,
+etc. But in technology, you take these long-term bets. Um, just last week, and I'll answer your question, but just last
+week, you know, I spent maybe two weeks ago now, uh, I I Monday, I'd gone to Santa Barbara in our quantum lab. I met
+with the team again. It's another journey. We've been at it for more than 10 years. I think we have the leading quantum lab in the world. uh I finished
+spending my day. I left on Monday and Tuesday morning I found our chief scientists there won the Nobel Prize uh
+for uh physics this year right and uh and this is the second year in a row you mentioned Demis and John Jumper last
+year but we believe in that kind of deep fundamental R&D right and and with a view of translating that into real
+products that same quantum computing team no different from our TPU teams you know plans to have commercially
+available uh real at scale quantum computers in a few years and I think they will get there right so when you
+talk about now 10 years ahead we are building this digital intelligence layer not just us 10 years quantum is real is your point
+at least I I for sure think so I'm very very bullish and confident on it I've seen the is that going to put at odds cryptography as we know it today are
+cryptocurrencies going to be at risk with quantum computing that can break any any code you know available from a Google or other vendors.
+I think in a three to five year thing we will have that moment where from a cryptographic standpoint we have to adapt to quantum for sure.
+Yeah.
+But I think we will that create a moment of vulnerability do you think for all of these currencies and all of this stuff it will but I think as a society we
+it'll also create an opportunity for people to come and provide new solutions if there is a trust gap at that moment that could be very serious. So it's something that need everyone needs to be
+mindful about mindful of and I think there's so much at stake. I think we will you know we will we will collectively work together.
+Uh but on the positive side you know if you ask me 10 years from look we we are definitely going to have digital super
+intelligence as a collaborator for all of us that is going to be a reality.
+What does that mean? That has been a phrase that everyone is starting to use but few have been able to define it digital super intelligence. And is that
+kind of where we're going then? It's 10 years. It's digital super intelligence.
+It's quantum computing. Like we were talking about AGI. That term seems to be dropped. That was this concept that the software is so smart it's just writing
+itself and it's the data centers are being built by robots and it's just all going in the book that Larry talks about. You know, we are Legion, we are
+Bob, you know that that we're all off in a rocket ship collectively waking up in a robot. Is that what's what we're talking about?
+No, because we were talking about that yesterday with Brett and I was like, whoa, it was a trip.
+Look, the the one thing I we are so good at adapting. I think we constantly underestimate, right? Obviously,
+10 years ago, we used to obsessively talk about Turing tests like we kind of went more past it. The fact there are self-driving cars driving in San
+Francisco and you did, you're right, they're driving around. It's kind of like people are, you know, we just kind of like I'm not sure my kids are
+impressed by that, right? So, it's just, you know, I am like blown away every time I get in one of those cars because I've, you know, seen the progress.
+How many people have been in a Whimo? Raise your hand.
+You know, uh, how many people have not yet been in a Whimo? Raise your hand. Oh, there you go.
+I mean, you should before you leave. you know uh you know I would check it out but a great example is you know I put my
+dad in the VMO I sat in the back seat he was in the front seat I watched the one forum it felt like that s science
+fiction right and my kids they quick got on their phones and they were like whatever right and so we have this
+remarkable ability to adapt so this notion they're just going to have you know yesterday we announced this
+wonderful ful collaboration with Yale where you know we built a used our open source models to build a a cellular
+model on which you could target novel it hypothesized novel possible approaches we took that and were able to recreate
+that in a in the biological wet lab scenario and see it actually works this is for future potential uh paths for
+cancer but biologists are using alphafold they are actually using open source Gemini models but all this is
+happening. So I think you be underestimate humanity's we are such a remarkably resilient adaptive species.
+You know, we're going to adapt to this technology and it's going to be there around.
+Are we going to invol are we going to evolve into this technology like people are talking about or is our species
+going to be safe as a you know as who we are today or will it be an evolution or what's the what's what what's in your mind around this?
+You know, I'm always much more you know I think our ability to harness this technology uh I think we'll be able to do that. uh you know some of your
+questions maybe your guru might be better equipped to answer. I think you are my guru at this point. What's that? You are my guru.
+I I definitely am not and uh you know so you know so you know I'm always hesitant
+to think that way. I I I focus on we have to be very responsible. Look, it is powerful technology and you know I think
+the technology will be capable of recursively self-improving over time. So these are very profound questions and we
+all have to be good stewards of it. I view uh at any moment the technology is going to progress. We should embrace and
+innovate with it. The benefits are going to be profound but our responsibility as
+leaders is to make sure we are leaving uh the world in a better position for the next generation than what we inherited. That's how I think about we've seen Google great.
+You mentioned the importance of getting closer to the technology. This is your passion. This is one of the reasons you went to Google. We saw Google try to get
+even closer with the first version of glasses. You know, we've seen that. Do you think Google will even do like a brain machine interface? Do you see that level of interface?
+First of all, uh the glass stream has never gone away, right? I I think we are working very hard on it. In fact, there
+were many things which we worked on which quite didn't work because AI wasn't fully there, right? But now that
+you truly have uh you know seamless AI with intuitive interfaces for people be it voice gestures vision etc. the
+multimodality of AI Google Glass is going to be back and I think it's going to be great. Um uh and
+your question was sorry I started thinking about Google Glass now.
+I just need to flick back on your brain machine interface. I mean brain it makes a lot of sense to me right I think I think what Elon and team are doing with
+Neuralink is super inspiring when you see the examples again you know when technology people who have real
+disabilities and and people being able to communicate again etc you know some of the most moving things I see right so
+I think I think it's a it's totally incredible here at the conference we even had Eddie Chang from UCSF who has this amazing new brain
+machine interface company Echonuro We even had Brian Johnson who had a brain machine interface company. It was like multiple brain machine.
+This may be tmi but you know I've been under anesthesia. Eddie Chan operated on me. So for what it's worth. Yeah. So he's a I didn't know that.
+So he's a phenomenal great a great surgeon.
+He's a phenomenal neurosurgeon. I'm I'm perfectly fine but he's a he's a phenomenal uh neurosurgeon and so yeah one of the best around in the world.
+Very good. Well, Synindar, as we bring start to bring this to a close, first of all, let us express our sincere
+gratitude to you for everything that you are doing in your leadership and your vision um your direction and also your core values
+um are so well in place uh in yourself and in Google. Tell us, you know, what would you like to uh bring to the
+audience and and to the world in your final comments in this Dreamforce interview? Look, I mean, I would uh part of the reason I'm here today, uh we've
+obviously worked for a long time together. Uh we use Salesforce extensively within Google. We've expanded our partnership over time
+because of the value you all bring. Uh you've helped us be very very customer focused as a company. I think the
+opportunity we both see is uh you know, you've made this the theme of Dreamforce this year. Uh the agentic enterprise. I
+I look at the model trajectory ahead uh you know as we are working with Gemini 3.0 go in 26 we're going to make a you
+know we've already had dramatic progress over the past couple of years but the progress ahead is palpably going to be you're going to feel that the these
+models are going to be really intelligent agents and they're going to be more robust agents and what we are working together is to bring it in a way
+you know as a as enterprises you want all of this to work well together you want this to be safe secure the
+governance has to work, but ultimately you're trying to unlock the data in your enterprise and and solve your use cases
+better than ever before. I think that is the real opportunity we have. What you're doing with Agent Force, we proud to partner by bringing Gemini there and
+the chance to do all this together for all of you in a way that makes sense for you is what I'm excited about. So, thank you for Sundar on behalf of all of us and
+Dreamforce. Thank you so much for coming today. It's just a pleasure. Thank you and great to see you. Awesome.
+[Music]

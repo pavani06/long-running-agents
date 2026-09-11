@@ -1,0 +1,722 @@
+Olá, sejam todos muito bem-vindos a mais um episódio do The Bosses Room. Eh, como
+eu já disse para vocês em em outras situações, a gente escolheu esse nome The Bosses, muito por inspiração de uma
+música do James Brown que chama The Boss. E o lance dessa música é que ela traz uma energia que é mais ou menos a
+energia que a gente quer trazer aqui, uma música interessante que que deixa as pessoas alegres, eh, enfim, deixa a
+pessoa mais eh à vontade, né? e e
+desperta a imaginação. E hoje eu tô aqui com o Igor, que é o o nosso cohost do
+The Bosses Jom, e também com Alê, popularmente conhecido como Mega. Eh,
+vou passar a palavra pro Igor, para ele dar as boas-vindas a vocês. Depois ele vai apresentar o Alê. Mas antes, né, eu
+quero que vocês se inscrevam no canal, ativem as notificações e curtam esse
+vídeo para vocês continuarem recebendo conteúdos como esses, tá bom? Deixa a palavra contigo agora, Igor.
+Valeu. Eh, pô, bom dia, boa noite, boa tarde aí, gente. Prazer estar com vocês aí de novo e com pô com a Le, com Mega
+aqui. Eh, cara, al te apresentar bem rapidinho assim, eh, onde desconheceu,
+né? a gente se conheceu por causa da Start que depois virou veto. Acho que você vai contar um pouquinho da história depois, né? O Alê é do ITA também, o Alé
+fez comp, eh, formou ali em 23. E você já começou a empreendero no no no
+próprio ITA mesmo, né, Lê? Assim, acho que foi, né? Então, assim, tu já começou aprender do IT, saiu empreendendo também e acho que tá nessa pegada aí até hoje.
+Então, acho que ele vai poder contar um pouquinho pra gente aí. Eh, Carol, conta aí pra gente o que que você faz hoje.
+Então, prazer, gente. Obrigado pelo convite estar aqui. Espero que seja um ótimo papo. Eu admiro muito vocês aí.
+Acompanho o quadro desde que eu era pré-bicho e, cara, o Igor tem acompanhado a nossa
+trajetória aí, sido literalmente um anjo aí pra gente desde do início da da start, lá no início do do IT, agora
+depois da veto. Ã, cara, hoje eu tô muito focado no for, né? Então, eu sempre tive um um assim, aprendi um
+pouquinho do lado técnico, hã, e tô bastante focado em ajudar nosso time de pesquisa hoje aqui na Veto. A Vet ela
+basicamente ajuda a treinar os modelos de a de última geração. A gente a gente constrói a máquina que constrói os dados
+que treinam os modelos. Eh, e eu tô ajudando a entender como que a gente constrói essa máquina basicamente hoje
+em termos muito alto nível assim. Ô, ô, Igor, eu já, já tenho uma pergunta
+aqui que eu queria fazer para que é o seguinte, eh, eu vi no site da Veto que
+eles têm uma área onde eles contratam pessoas para treinar os modelos. Tipo
+assim, você vai ganhar, sei lá, 60€ por hora para treinar.
+Se você for um especialista em MNA, você vai ganhar 100€ por hora. se você for um especialista em código.
+Eh, e cara, eu fiquei com dúvida assim de saber que que rolê é esse, entendeu? Como que funciona isso na prática?
+Será que é golpe? Será que não é? Não, não é golpe. É, eu pensei, mas o
+né, todo mundo acha que é, mas não é assim para treinar esses modelos, como é que funcionava até e início do até final
+do ano passado? Assim, basicamente o LAAB chegava, ele falava: "Eu quero esses dados aqui". chegavam basicamente
+pedir, eu quero um analogia boba aqui, eu quero um bolo e aí os data providers
+entregavam um bolo. Agora eles querem a receita pro bolo. A receita é o nível de
+abstração acima. Então é entender qual que é o dado eh que eu preciso usar para treinar o modelo, para melhorar esse gap
+que o modelo tem para performar no nível do mundo real que o mundo real precisa.
+E para isso você precisa de pessoas muito qualificadas, cada vez mais qualificadas, para basicamente criar
+essa camada de abstração que entende o que que é definir o que é bom e o que não é dentro de um determinado ramo. Ã,
+isso é um trabalho que tem muito valor e por isso a gente consegue pagar muito para esses profissionais desenharem essa
+noção do que é qualidade. É basicamente definir isso, assim, você define o que é bom e o que que não é, o que que é
+certo, o que que é errado, o que que é aceitável, o que que inaceitável, o que que é razoável, o que que não é. Ã,
+dentro desses espaços é um trabalho bem intensivo e de altíssimo valor assim pra gente conseguir construir essas máquinas
+que constrem os dados. Mas Al assim, só explica pro pessoal
+assim, até pro pessoal entender, né? Assim, quando você fala laboratório de geração assim, uma é, acho que vale a pena falar que, cara, beleza, vocês
+estão no Brasil, mas cara, estão nos Estados Unidos também. Acho que acho que vale contar um pouquinho disso. E quem que são esses clientes aí, né, de quem
+que você tá falando, né, que acho que vale pro pessoal entender também. A gente fala um modelo de última geração de quem que a gente tá falando.
+Boa, legal. Eu não posso citar nomes específicos de clientes, mas pensem, eu vou citar aqui os maiores les de que
+existem hoje, né? Existe Antrop que é a meta, a Deep Mind que é o do Gemini, existe a Open Chat PT, a MRO lá na
+França, então a a Corrir do Canadá, então essa galera aí, a XI do do Elon
+Musk, esses são os grandes labes que a nossa que são alvos de são clientes da
+nossa empresa, assim não necessariamente algum deles é cliente ou não é, não posso entrar nesse detalhe,
+mas esse esse é o nosso perfil de cliente, né? Então, quando a gente fala de treinar o modelo, a gente tá falando
+de treinar os melhores modelos que as pessoas usam hoje de AI, literalmente o
+que você usa no seu dia a dia aí para tirar uma dúvida. E quando você acha, putz, cara, isso aqui tá uma droga. É
+esse tipo de problema que a gente resolve. A gente ajuda a resolver esse negócio aqui. Tá uma droga, dando a
+resposta certa ou o jeito correto de pensar ou quais ferramentas aí a deveria estar usando para chegar naquela
+resposta. E a gente cria, transforma, expertise das pessoas em substrato de
+treinamento. Eh, mais ou menos essa a ideia. E a gente faz isso com pessoas do mundo inteiro, porque pensa que se a
+gente treinar pro modelo ser só bom com coisas do Brasil, modelo vai ser só coisas com bons do Brasil. Mas um
+exemplo legal ou finance tem regras específicas no mundo inteiro. Nem tudo é generalizável. Então, a gente precisa
+construir uma amostra de experts de domínios específicos no mundo inteiro
+para basicamente eles serem uma amostra que representa a realidade assim de uma forma mais distribuída. Então, é mais ou
+menos essa a ideia. Por isso que e assim esse trabalho ele é muito bem remunerado, porque ele traz muito
+retorno assim e tem um pouco de cara do emprego que vai tomar cada vez mais espaço na sociedade, né, de humano e
+máquina colaborando, ã, seja para treinar os modelos, dizer o que é certo, o que é errado, seja para supervisionar.
+Então a gente tá caminhando nessa direção assim de entender como é que a gente coloca o humano no processo junto com a máquina para supervisionar e ou
+corrigir a rota aí do que a tá construindo para que ela treine, seja cada vez melhor e enfim.
+Ô Alê, para mim ainda tá um pouco abstrato. Deixa eu ver se eu consigo
+melhorar minha pergunta aqui. Por exemplo, o Igor ele fez 300 emis quando
+ele tava lá na na Cróton. que hoje é cogna e ele participa de uma série de
+conselhos onde ele analisa muito número. Então ele é um cara que domina essa parada de Mene, ele entende isso aí para
+ele. Isso é é café com leite assim. E eu tô vendo aqui que você tem uma uma
+posição de finance experts e e paga tipo
+60€ ou dólares por hora. Vamos supor que o Igor aplicasse para esse negócio e fosse aprovado,
+o que que ele ia fazer? Legal. Ótimo. Para tangibilizar, né? Vou
+usar o seu exemplo que você citou do Igor aí. Primeiro, Igor, por favor, se se que tiver um tempinho aí, adoraria
+sua contribuição. Ah, não, brincadeira. O, basicamente ele
+entraria. Vamos ao exemplo do MNA, né? O que que é um processo de MNA? você vai ter uma avaliação do de primeiro. Eu vou
+falar em termos muito amplos porque eu sou e bastante ignorante com relação no geral, mas digamos que tem uma etapa,
+uma primeira etapa que ela é de você fazer uma avaliação geral do deal, se faz sentido, uma pesquisa de mercado,
+uma avaliação de competição, uma avaliação de impacto aqui do do que que seria o negócio. Aí você tem que quantificar e modelar um monte de coisa,
+você tem que fazer valuation da empresa, você tem que, enfim, tem várias etapas. Depois você tem que fazer diligência das
+empresas que estão envolvidas no deal. Você tem que h envolver stakeholders
+específicos nessa conversa, tomar algumas decisões. Percebe que tem infinitos passos.
+O papel do Igor seria dizer quais são esses passos e o que que é o passo correto em cada etapa da trajetória. H,
+é basicamente isso. Então ele ele basicamente relataria do início ao fim com todos os detalhes possíveis como que
+é um processo de MNA de ponta a ponta executando cada um desses passos, dizendo o que que é generalizável, o que
+que não é, o que que é o que que você consegue dizer. Putz, isso aqui é certo, eu posso dizer que isso aqui é uma coisa
+que eu quero incentivar o modelo aprender ou não. Eu só quero ensinar que essa é a forma de raciocinar correta.
+entende que tem coisas técnicas no meio do caminho, coisas comportamentais desse
+dessa etapa toda, desse fluxso todo que alguém precisa definir assim, alguém é o expert. Então ele vai basicamente
+relatar um caso de uso do início ao fim e vai basicamente dizer o que que é
+certo, o que que é errado. E a gente vai usar isso para compor com outros experts uma um uma trajetória que tem n passos.
+E aqui no caso do MNA seria uma trajetória de centenas, provavelmente de passos entre alguém pedir um MNA ou MNA
+ser executado. Ã, talvez a gente entenda que, cara, você necessita de um ser
+humano numa etapa específica desse MNA. E, mas isso tudo é o que a gente entende coexert, sabe? Eu vou dar um outro
+exemplo aqui, Bruno, de coisas mais ã próximas de casa, assim, que é de
+travel. a gente tem uma posição, posições abertas para pessoas que têm experiência em viajar o mundo. E aí
+qualquer pessoa, não seramente técnica, que já viajou o mundo, pode eh participar lá e vai ganhar R$ 200, R$
+300 por tesque aprovada. É algo assim. E tesque completa, né? Ela tem várias
+etapas. Aí, pô, para esse pessoal, você, a gente basicamente pede pra pessoa contar uma
+história de o que que ela fez na viagem e mapeia vários pontos sobre aquela viagem que é exatamente na linha do que
+eu falei sobre MNA, só que aplicado à viagem, aplicado a shopping, aplicado a finance. E com isso a gente testa os
+modelos, né? A gente roda esse cenário contra o modelo e ver como ele performa, se ele manda bem ou mal, com base no que
+a pessoa disse que era bom ou ruim. E a partir disso, a gente tem sinais para treinar o modelo. A gente tem lá
+dizendo, pô, ele é tipo uma grade de correção assim no final que a gente tem que disse: "Ah, o modelo ele não fez perguntas para diagnosticar bem o
+problema". Putz, então ele foi afobado. Ele errou porque mesmo que ele chegou na resposta certa, ele chegou na resposta
+certa do jeito errado. E a gente não pode confiar num assistente que tem esse tipo de comportamento. Depois isso entra
+num processo de aprendizado de máquina que vai ensinar o modelo a ter o comportamento correto ou ter ou acertar
+especificamente ou aprender até a técnica correta. Ã, eu acho que isso eu posso falar. Por
+exemplo, wellness é um campo finance assim, tem campos, por exemplo, matemática, tem que ser muito técnico,
+tem nível PhD pro modelo falhar, já tá num modelo muito bom, assim, já gabarito olimpíada e tal. Agora wellness,
+nutrição, tem tem várias coisas que o modelo ainda manda mal porque tecnicamente ele ainda não evoluiu. Ah,
+então você tem esses dois lados, né? Mas é basicamente isso, assim, acho que eu tangibilizei bem.
+Isso é uma pergunta até que eu tinha, tava até na minha listinha de coisas aqui assim, aí no que você puder falar, tá, Babá? Tem coisas que você não pode
+falar, mas assim, eh, o que que de maneira geral os modelos fazem bem hoje, o que que não fazem?
+Porque assim, às vezes pras pessoas isso não é muito óbvio, porque assim, você pergunta, ele responde qualquer coisa, mas assim, eh, tem uma diferença daquela
+ser uma boa resposta de uma má resposta, né? Então, assim, dado que vocês estão vendo assim, o que que vocês acham que, puxa cara, isso aqui é bala, é bacana,
+igual você falou, tá matemática e tal, isso aqui, eh, mas tô pensando numa camada de abstração, né? Você falou:
+"Puxa, nutrição, tá, tá, tá". Mas pensando não, esse tipo de problema ele olha bem e esse tipo de problema ele olha malu ainda ou não? Tambão bem.
+Sim. É, hoje eh coding e matemática acho que são os os strong suits assim dos
+modelos aonde eles mandam melhor e onde os lobis têm investido mais porque eles querem fazer com que o modelo faça
+pesquisa cada vez melhor, né? Então pense que para fazer um paper de pesquisa séria é um paper de 50 páginas.
+Então é um problema de que leva meses para amadurecer, assim, que você investiga muita coisa, você testa muita
+coisa, você reflete sobre as hipóteses e você vai construindo isso ao longo do tempo. Ah, então os modelos hoje estão
+focando, todos os lábios estão focando muito em melhorar esse aspecto específico assim, que é como você
+melhora, ã, melhora a performance da da IA com
+problemas de horizonte longo, assim, que você tem trabalhar vários meses de altíssima complexidade. Ah, dado isso,
+você recai em coisas que o modelo tá mais treinado para fazer e menos treinado para fazer. Code em matemática
+são bases, ã, que são pilares para que essa parte de research aconteça bem e tal. E eles têm visto cada vez mais que
+esse capabil eles têm se pagado. Ã, alguns modelos, algum algum aí tipo
+assim, o que os modelos mandamar mandar melhor ou pior a partir daqui vai ter
+muito a ver com o foco da empresa. Então tem empresas que tem foco de consumidor que querem fazer com que modelos
+multimodal fiquem muito bons. Então vai ser muito boa em geração de imagem, mas aí vai ser muito ruim em em trocas de
+conversas de vários turnos. você precisa de um assistente para te ajudar a fazer um plano de viagem, vai ser um assistente ruim porque não tá fazendo ã
+o processo certinho lá. Vai ter outros que vão ter isso muito bem feito. Ahã. Então acho que isso varia um pouco de
+modelo para modelo. De forma geral, coding matemática tem sido o foco desses laboratórios de deixar muito bom e
+não tem se preocupado com alguns outros problemas e alguns outros campos, domínios e conhecimento. Como eu falei, nutrição, Wellness, de forma geral, os
+modelos não mandam tão bem. H, alguns mandam melhor que outros, mas assim é mais limitado. Ã, tem aqueles
+probleminhas clássicos que a galera brinca de bugs que você pede para contar RRs dentro de uma palavra e o modelo
+erra. Tipo, cara, às vezes os modelos, a galera cobre isso mais de para evitar marketing negativo e tal, mas não é uma
+preocupação muito grande, porque isso não vai melhorar o modelo ser um research melhor. Ã, então esse é tem
+sido principalmente o foco assim que a gente tem visto. E aí hoje em dia, uma coisa que os não mandam tão bem, tem
+sido um também um foco muito grande no mercado, é essa que vocês falam de casos de uso agênticos, né, que você
+pede pro modelo usar o seu computador, usar um terminal e com isso ficar mexendo, putz, mexero numa pasta, achar
+um arquivo, acessar um site, ã, se comunicar com outras interfaces via API,
+MCP, eh, todo esse tipo de coisa para resolver um problema específico, assim. Então é a mesma coisa de antes de
+tarefas, tipo do MN lá que você falou, mas você delega realmente para agentes e
+eles têm que ficar ou chamando outros agentes e tem que validar se isso tá sendo feito da forma correta ou não. Esses modelos ainda não mandam tão bem.
+Você tem que supervisionar bastante para ter um resultado bom ou fazer estruturas mais robustas assim. O Gary Ten, que é o
+fundador da Wcominator, lançou lá um repositório com um time completo de de agents para coding. Eu não testei ainda,
+mas tinha um povo falando bem. Ah, mas enfim, eu falei bastante aí que tem, então você resumo sintetizando, né?
+você tem por LAAB focos de acordo com o o onde eles estão focando o produto
+deles. Todos, a maioria deles estão focando em fazer pesquisa melhor. Eh,
+com isso, coding tem sido uma a principal alavanca que eles têm focado. Hoje você tem ainda um gap muito grande
+em casos de uso reais que envolvem interface com tools, uma coisa mais agêntica que mexe com o controle do
+computador da pessoa. E isso tem sido um foco também grande de melhoria, que ainda é um gap grande assim, se você já
+pediu pro agent agentar agendar uma coisa no calendário, fica tudo meio cagado. Então esse é um ponto de
+melhoria grande. E e qual que é a velocidade que isso tem andado? Porque tem evoluído rápido, né? Então assim, beleza, tem essa esse
+cenário que você falou assim, você acha que isso vai est entre aspas mais ou menos resolvido, dominado em o quê? 6
+meses, um ano, eh sei lá, dois, que eu tenho uma dúvida depois disso, mas é
+legal. Hã, eu confesso que é difícil saber o hoje no
+já tem cada vez mais você pega um modelo que nem de tem lá o benchmark de
+pesquisar em navegador lá que acho que o oculma
+brow a esse esse tipo de problema tá performando 80 90% já os modelos já
+estão melhor que os humanos em muitas tarefas assim então para fins de uso no dia a dia, se implementar empresa, cara,
+meio que a gente já chegou lá para muita coisa assim, é mais de agora como você usa isso no seu dia a dia e tal. Eh, a
+gente aprende a a pensar usando esses agentes. Então, já chegou num nível muito bom. Agora, quando que vai chegar
+num nível estúpido? Não sei. O que eu sei que a galera ainda tem muita gente acreditando nas scaling laws de quanto
+mais comput dado você jogar, ã, melhor fica o modelo. Então, alguns lábios
+ainda estão nesse momento de cara, joga mais dado aí dentro e vamos ver no que dá. E a o crescimento, pelo menos com
+relação a melhoria com relação à dado é logarítmica. Então você
+o avanço ele vai sendo cada vez menos rápido, mas ainda tem bastante espaço para melhorar. Então eu não não sei
+responder realmente, Igor. Tem gente que acredita que, cara, dentro dos próximos 5 anos já vai ter já vai ser
+estupidamente automatizado tudo. Tem aquelas falas categóricas do Elow Musk que ele acredita que o Universal Basing
+como tá entre longe entre 5 e 10 anos lá. se vocês já viram essa essa esses comentários dele. Hã, eu não sei se eu
+sei responder muito bem essa estimativa, mas a galera ainda acredita que jogar eh
+mais dado e compute no problema, muita gente ainda acredita que isso, o cara melhora e então ainda tem muito espaço.
+Eh, porque tem um um ponto, né, que assim você tá colocando que assim eh
+você ainda tem diversas verticais, né, que acho que você me se eu tiver errado, tá? mas que você ainda precisa entrar se
+aprofundar com especialistas para entender e tudo mais. Eh, só que aí depois disso aí tem tudo bem, beleza?
+Tem só você colocar isso aqui de uma forma agêntica, né? Ou seja, você fazer isso aqui funcionar, uma coisa conhecimento, outra coisa fazer isso aqui funcionar bem, tá? Eh, de forma
+autônoma. Eh, tinha aquela dúvida que eu até coloquei numa conversa há tempos atrás, até comentou comigo que, puxa,
+era até acho que uma discussão que tinha lá no Vale também, que é eh aquela parte meio de polimatia de você juntar temas
+longe, parece que tá distante ainda, né? Então, né? Porque do dia assim, o jeito que você pegou de especialistas de uma
+forma que eu tinha pensado no passado, é ah, se você pegar algumas pessoas que são, entre aspas, polías e perguntar que temas distantes que elas acham próximos,
+quem sabe você consiga começar a criar essa camada de abstração. Mas pelo que você tá me falando, assim, acho que os
+temas que os laboratórios eh estão aprofundando ainda são mais mundanos, né? Acho que tá longe disso ainda, né? Porque assim, eu acho que quando a gente
+fala de CCI seria o termo certo para isso, mas eh eu acho que essa capacidade
+do ser humano de olhar ou quando ele é muito novo olhar sem viés ou de pet recognition de uma coisa muito longe, eh
+eu particularmente acho que os modelos estão meio longe ainda, as arquiteturas estão longe disso ainda. Pois é. H você fal comentando sobre isso
+no que nesse Eu acho que até te mandei um vídeo do, eu falei que a galera de interpretabilidade lá da da Antropic que
+um vídeo no YouTube deles falando justamente sobre isso, né? que estruturalmente eh ainda não existe uma solução para isso. Hã,
+agora acabou de levantar um round bem grande, um um cara que era bem bom de
+reinforcement learning do da De Mind, não sei se você chegou a ver, Igor, que era, eu não lembro o nome da empresa,
+mas que era focado em reinforcement learning. E e aí, por exemplo, ele acredita que o jeito certo de chegar
+nesse style da arte seria não necessariamente se basear LM, mas se treinar outros tipos de modelos ã em
+ambientes de enforcement learning que ele pode testar e no final o ser humano averiguar, supervisionar esse resultado,
+mas ser completamente livre assim, ah, para pro modelo aprender esses padrões não óbvios e você poder brincar com esse
+tipo de coisa. Então tem gente atacando, mas de fato
+eu não eu não sei assim, cada um desses lábi tem coisas de 3.000, alguns
+milhares de researchers e muitos fazem pesquisa diretamente em alguns desses
+temas. Ã, então do do ponto de vista a como a gente tá mais próximo da galera que trabalha com dados assim, geralmente
+eh eu não sei, mas de mercado, eu sei que tem essas essas iniciativas que tentam quebrar esses paradigmas aí. E
+o o jeito que se aborda hoje, eu imagino a partir do ponto de vista de dados, é tentar entender como é que você usa,
+você dá dados e tipo verificadores, né? Como é que você faz uma grade de
+correção para Iá que ensine ela comportamentos que são mais generalizáveis e não necessariamente
+sejam muito local que colapse aquela solução em uma solução muito específica, sabe?
+Eh, no final do dia assim, até você falou da Deep Mind, né, assim, ela ela até ficou um pouco para trás no início
+nessa parte LLM que ela era muito focada na parte learning mesmo, né? Eh, só que aí você tem a dificuldade que assim eles
+mexam isso muito com jogos, né? E que o payoff é mais claro, né, para você definir pro pro pro reinforcement
+learning e tudo mais. Aí você começa a ter que fazer o que você falou, né? Eh, reforcement learning com human feedback, né? Que aí você começa, mas de novo, se
+você não tiver o correto para dar esse feedback também, você não, digamos assim, você precisaria vai de algumas
+pessoas renascentistas para dar esse feedback que você tá, que você precisa para conectar essas coisas longe, eu acho. Sabe? Fato, fato. Eu eu concordo
+muito com isso, Igor. Ah, e não é claro ainda paraa comunidade assim qual que é o impacto de você treinar um modelo hã
+pelo menos até onde eu l até tava querendo estudar mais sobre para ver se eu acho alguma coisa de qual que é o
+impacto de você dar esses incentivos mais eh nas suas palavras polimáticos ah
+e ver como é que o modelo aprende, né? Como é que fica o resultado dele com isso, sem ensinar ele a ser, por
+exemplo, cara, muitas aspas aqui mais razoável. H, e dizer que o certo, entendeu, você
+dá alguns traços comportamentais e dá alguns ranges, porque, por exemplo, em finanças, que que é um investimento que
+é certo? Na prática é o que é razoável, assim, com base em algumas premissas.
+Também tô sou leigo aqui, tá? Posso estar errado, mas você tem algumas premissas, tem a dinâmica de mercado, você faz uma análise lá e você,
+isso aqui é um investimento razoável, que o risco vale aqui dentro dessa carteira com essa composição e tal.
+Mas no final das contas, o certo não é necessariamente só o que foi o que vingou depois, né? Ou você pode definir
+nesse nesse viés, né, do sobrevivente aí, que o que era o investimento certo foi só o que, enfim, eh depois deu certo
+e deu retorno. E aí você pode treinar um modelo para isso. Ah, entendam, tem essas escolhas assim de design que eu
+acho que ainda tem muito espaço para descobrir o que de fato melhora o modelo, a performance dele de forma mais
+generalizada, assim. Ah, tem bastante espaço mesmo. Falei, deixa te perguntar uma coisa
+aqui, cara. Eh, isso que você tá falando para mim é um pouco assustador.
+É assim, porque tem muito a ver com uma conversa que que o o Igor e eu tivemos em off e a gente trouxe até pro para um
+dos últimos episódios do canal, que é sobre a inteligência artificial
+substituindo funções e e criando e destruindo posições de trabalho, né?
+Vou fazer uma analogia. um pouco mais antiga que era do dos
+carros autônomos. Quando o Elon Musk começou a falar de caminhão autônomo, uma das discussões
+que surgiu foi que ia destruir uma força de trabalho muito grande que é de
+caminhoneiros, que é muito importante pra economia, especialmente nos Estados Unidos. Puxando um pouquinho pro meu lado que é
+da educação, eu vi aqui na Veto que tem uma uma posição para education experts,
+reviewers, né? E daí eu fui ler o que que o cara tem que fazer, as perguntas, falei: "Cara, isso aqui é o trabalho de
+um professor, né?" E cara, na minha cabeça,
+tá passando o seguinte, se o o Ale conseguir treinar esse modelo aqui de
+education experts muito, muito, muito, muito bem, né, e continuar treinando, pode chegar
+uma hora que você não precisa de um professor.
+É muito bonito se você coloca um computador e uma Starlink lá no meio da
+Amazônia pros meninos que nunca tiveram aula estudarem. Isso é maravilhoso. Você coloca um avatar e tal,
+mas eu um modelo bem treinado que não tem sentimentos, que não sofre, cara,
+isso aí é um poder destrutivo assim para, por exemplo, professores,
+diminuindo a quantidade de de vagas, entendeu? Professor,
+eu entendo a sua preocupação. Era uma preocupação análoga com os dos radiologistas, assim, você chegar nesse
+caso já. Só que aumentou a demanda, não diminuiu, porque agora o mesmo radiologista conseguia fazer muito mais
+com porque ele tinha ferramentas melhores. Assim, eu particularmente
+ainda não vejo como um humano não vai ser necessário no processo de ser definir o
+que é bom, não ter um supervisor lá para pra máquina, porque tem muita decisão, muita ã existem escolhas estéticas,
+existem tipo preferências, existem ã
+de novo, eu eu vejo muito como uma ferramenta assim, acho que esse caso, tomando esse caso do de educação, quando
+você vai corrigir uma redação lá e tal, Eu vi vocês comentando sobre correção de redação no último podcast.
+Ã, você consegue automatizar muita coisa, que é mais óbvia e verificável, mas sempre vai ter ali uns 10% que é
+muito difícil a máquina dizer se tá bom ou não, dizer decidir se, tipo, isso é
+cara tolerável ou não. Ã, no limite você pode criar essas políticas, você sempre vai precisar ter um humano ou criando
+essas políticas ou executando elas eh ou eh inspecionando, né? Então acho que
+assim, questão de não e de de batar empregos,
+não sei porque ao mesmo tempo que você pode ter, beleza? Então vai ter que ter um supervisor para 20 professores máquinas.
+Mas e quantas pessoas hoje não tm acesso à educação e poderiam ter com mais supervisores com máquinas?
+Aí aí vem uma discussão filosófica aí não. E e eu concordo contigo assim e e o
+que eu acho que acaba acontecendo é você mudando o escopo de certas coisas, entendeu? Então assim, eh eh por
+exemplo, puxa o professor hoje digamos que ele precisa de uma base de conteúdo gigante, quem sabe ele vai precisar
+menos, mas aí ele precisa de um lado, entre aspas, empático de porque assim educação é um negócio muito específico, assim, ainda mais quando você fala de
+quando você tá falando de gente até ensino médio mesmo, assim, de ensino médio para baixo, mas eh eh acho que mais para educação básica e ensino
+superior. Eh essa questão da relação de confiança, por exemplo, é muito importante, entendeu? Eh, e você
+conseguir estabelecer isso de novo com uma máquina que você vai querer se abrir, vai querer falar e tal, assim, pode, pô, você tem lá, né, tem o filme,
+né, Her, né, e tudo mais, mas assim, eu eh tendo a ver isso como com uma distância maior, entendeu?
+E peço, oi. Eh, você terminou de falar?
+Sim. Tá, cara, e assim, o meu o meu
+não sei se é um ponto, mas a minha dúvida é a seguinte, cara. Tem uma galera em todo setor, em todo o ramo, em
+toda atividade que eu brinco, a gente chama, chamava aqui no quadro de tirador
+de pedido. Era o cara que chega, ele trabalhava no comercial e e ele fazia exatamente
+aquilo que era pedido para fazer de forma quase mecânica e muitas vezes e eh
+abaixo da reatividade. Ele só entregava mesmo. era uma atividade quase
+automática. E por exemplo, o que a gente viu aqui no quadro esse ano e no grupo é que a gente
+saiu de 40 de 20 vendedores para dois supervisionando uma IA e a
+taxa de conversão não mudou, né? E eu acho que isso vai acontecer em
+várias áreas. tá acontecendo já em código, em em programação, acontece já
+no no suporte ao cliente, no comercial. E eu acho que isso vai acontecer em todas as áreas.
+A a minha dúvida aqui pro pro Alê, que é o cara que tá desenvolvendo o motor de treinamento desses modelos, é
+se é assim, cara, você Alê, você também vê que esse caminho
+de da pessoa que que pode ser automatizada, ele é irreversível mesmo?
+Tem uma galera, os 90%, cara, vai ser automatizado e eventualmente vão depender da renda básica universal. Você
+acha que esse é o caminho? Não sei. Eu sinto que meu ponto de vista
+é limitado para entender, para visualizar. Acho que vai reduz a demanda para esse tirador de ticketis. Com
+certeza. Eu acho que a gente já tá vendo essa diminuição, ã, porque
+você faz a conta lá, suporte é um bom caso de uso, assim, porque antes tinha 100% dos tickets sendo feitos por
+humanos, agora tem uma camada de orientação e uma camada de até resolução que consegue ser é 85, de 80 a 90%
+automatizado, você tem 10% que realmente vão para são borderline cases assim meio
+a zona cinzenta que vai para humanos. Então você ainda tem um tirador de ticket, ele só mudou o escopo, como o
+Igor falou. E eu acho que esse escopo tá é relativamente bem preservado, que é alguma decisão, alguma exceção, alguma
+coisa mais ã que, cara, precisa de alguém acuntable ali pela pelo negócio.
+Não. E eu e não vai lá, Li. Desculpa. você aí sobre que se a pessoa vai ficar sem se
+essa pessoa aqui, tipo, beleza, foi cortado, ela vai ficar sem emprego ou ela vai ter ã ou vai ter acesso a uma
+renda básica universal? Não sei responder isso não, Bruno. Assim, ah,
+ainda será que vão nascer muito mais empresas
+por conta da IA ter uma barreira muito baixa para criar uma empresa nova? E você vai ter mais vagas, mais vagas
+por conta disso e essas pessoas vão ser absorvidas por essas vagas. H, não sei. Você pode, você pode ser tão
+otimista quanto pessimista aqui, assim. Eu eu realmente bem em cima do muro, mas
+eu tendo a achar que ã até essas próprias pessoas, tiadores de
+tickets conseguiriam criar uma empresa assim. Eh, então acho que eh, não sei,
+acho que tudo é possível e acho que pessoas que hoje não não empreendem, não fazem nada, ã, vão poder criar alguma
+coisa que não criariam antes e vão precisar de gente para executar essas essa esse tipo de de ação. Vai precisar
+de humano lá supervisionando. E um exemplo ainda mais extremo é de ter um ser humano que é pago para ser accountable. Então, tem a, eu não sei se
+vocês já viram lá, empresa de autônomo. Ah, sim. Hã, se eu não me engano, eles
+têm, se der um emo bater em algum lugar, eles pagam alguém para ser e W y moes
+baterem o carro, eu acho que tem alguém que é pago para ser accountable, que o carro bateu. É um ser humano que ele tá
+lá, o dele tá na reta para caso dê dê pau no carro. E então no limite tem até
+esse tipo de oportunidade que surge com sistemas autônomos, assim, porque alguém precisa pagar a conta no final e
+seja essa pessoa, empresa de alguma forma, de alguma relação que a gente não desconhece hoje. Ah, eu tava pensando
+essa semana assim, só uma lente um pouco paralela essa discussão nossa ã que eu
+tava umas três semanas já sem clicar em botão, sem usar uma interface de botão. Eu só falava com um terminal e esse
+terminal se comunicava com sites via e com aplicações via API, assim. Ah, então
+eu não tava e para mim, até na nossa plataforma, no nosso backoffice, eu nem queria uma UI, eu nem queria uma
+interface para clicar no botão, eu só queria uma API. H, então até a forma como a gente se relaciona com a tecnologia vai mudando e
+muito assim nesse cenário do que a gente tá vivendo no É porque assim, ah, pegando um gancho
+aqui de algumas coisas para trás, e de novo, eu sei que tem toda a discussão de ah, é uma inteligência versus uma ferramenta ou tudo mais, mas assim,
+cara, se for pensar, sei lá, lá atrás a agricultura era assim, tinha um monte de gente, entendeu? Pensando toda população e agricultura era muito maior,
+entendeu? E hoje, puxa, uma coisa, entre aspas, muito mais industrializada. você tem um grau de mecanização e produtividade do outro lado aqui que é
+bem maior. E cara, assim, é o que você falou um pouco, acho que a lei que eu acho que assim é vão surgindo outras coisas, entendeu? Eh, o que eu acho, eu
+até falei num vídeo anterior que a gente acho que o Vern a gente fez assim, é uma coisa que eu imagino acontecendo,
+juntando um pouco o que você falou, é você vai ter muito mais creators, que pode ser creators de empresa, pode ser creators de conteúdo, de sprays,
+whatever, eu não sei, entendeu? Mas eu acho que você vai, entre aspas,
+empurrar esse lado da inteligência nosso para coisas que eu acho que a gente não imagina tanto hoje, entendeu? Assim, sei
+lá, se você pegar 15 anos atrás, quem diria dizer que existe o Mr. Beast lá no YouTube que tem uma audiência gigante
+que sozinho e não sei o quê, entendeu? E esse tipo de coisa não existia, entendeu?
+Então assim, eu tendo, entre aspas a achar que a gente tem esse lado adaptativo
+maior. Eh, mas assim, para onde eu tô indo aqui, assim, aí eu tô fazendo aqui
+de uma forma assim mais simplista, tá? Assim, no sentido assim de eh como ferramenta com base naquilo que a gente
+enxerga hoje ou não. Eh, se você falar, sei lá, na Skynet, na na puxa e a não
+sei o que, que é superior a todos humanos, lá lá lá. Aí, cara, eu já não sei, entendeu? Quer dizer, você tem outras teorias, né, que é do tipo, cara,
+você nunca viu um lugar onde o ser humano mais o ser humano não, né, a espécie mais fraca domina mais forte. Então, assim, aí é aí acho que é uma
+discussão entre aspas diferente. Mas com base no que a gente tem acesso ou a
+gente vê ou a gente enxerga aqui e tudo mais, assim, eh,
+eu, eu ainda tenho dificuldade de ver, sabe? Porque assim, eu eu não sei, cara, eu eu
+acho o ser humano muito criativo e adaptou só ser ingenuo, mas criativo e
+adaptável quando fala tem certas coisas quando você estuda, cara, assim, você estuda, sei lá, eh, momentos de guerra,
+momentos de sobrevivência, momentos de alta pressão e tal, assim, são coisas meio, sei lá, acho que é extraordinário
+que às vezes as pessoas ali, até o coletivo consegue fazer, sabe? Então, se a gente vai sair do outro lado, eu não
+sei, tá? Mas assim, ainda mais se tiver falando de é de mesmo, entendeu? Mas assim, com base nas arquiteturas que
+a gente tem hoje, ferramentas hoje e dada a questão histórica, não sei, eu eu ainda tenho dificuldade de ver essa
+última milha. É, eu sou bem, é, eu também não me preocupo muito,
+porque eu sou bem pragmático, assim, gosto de, eu uso a ferramenta no meu dia a dia e tento entender cada vez melhor como eu uso ela e, ã,
+e qual que é a melhor forma de abordar essa ferramenta, né? Porque, por exemplo, hoje a gente tem várias
+interfaces que elas pressupõe um certo tipo de tecnologia e ferramentas que a gente tinha no passado, eu falei da
+interface pro usuário clicar no botão. A gente tá cada vez mais movendo para uma em que talvez a gente não precise mais
+de uma interface para para mexer nas coisas. a gente pode só se comunicar com
+a máquina e a máquina cuida de tudo. A gente tá chegando para isso. Então que tem uma uma onda horda de empresas e de novas
+coisas que vão surgir que elas partem de uma premissa diferente do que o nosso mundo foi construído hoje. E acho que
+isso me anima bastante. Acho que nisso vai ter muita oportunidade nova e acho
+que aí tem aí tem bastante jogo. Ã, exemplo celular, assim, eu preferia muito mais ter às vezes um um negocinho
+assim que eu deixo no ouvido, vou falando que liga para alguém. Não sei se vocês tm o metaglasses lá, mas é bem
+legal de que você tá andando, você, eu tava passeando esses tempo aí na Europa, tava olhando, fal olhando pro que que é
+esse monumento aqui? Quem que morreu nele? Quem que viveu? Quem que fez o que aqui? Ele meia me falando, guia
+turístico ao vivo ali. Ã, depois eu perguntava, tipo assim, putz, liga para, tira uma foto, manda pra minha mãe? Ah,
+eu comecei a ligar mais pras pessoas depois de ter o óculos do que antes e eu conectei o meu celular com uma máquina
+virtual que roda 24/7 alguns agents e eu consigo também trabalhar assim, eu tô no metrô lá, eu mando uma mensagem no
+Telegram pro bot, ele executa um monte de coisa, abre o GitHub, ã, porque ele tem um computador à disposição dele
+nessa máquina virtual. E então você, eu consigo consegui aproveitar mais vários
+dias que eu tava nessa viagem, trabalhando não necessariamente menos, produzindo tanto quanto, mas com menos
+tempo necessariamente bitolado lá na na máquina por conta novas.
+É, é o P. É, então isso é isso é muito louco, assim,
+acho que aí tem um caminho muito legal. Eu sou bem pragmático com relação a isso. Ah, assim, é muito louco mesmo, velho.
+Porque algumas coisas que você no espaço de, sei lá, um minuto, eu fui do tô
+dentro da parada para assim, tô muito fora, né? Porque quando ele começou a falar da interface, eu lembrei que hoje
+eu fui buscar minha filha na escola e fui resolvendo um um assunto com o Geminai, né? tirando uma dúvida e tal
+por áudio e aí depois ele contou, você conta essa parada aí de você viajando e mandando os comandos
+via eh chat. Cara, eu eu sinto que eu tô muito atrasado,
+mas assim eu vejo com outras pessoas que não, cara, isso aqui eu tô bem à frente e
+tal. Eh, enfim. Ô, Igor, quer fazer alguma pergunta? Não é, eu tinha eh a gente
+bateu 40 minutos aqui, assim, eu eu tinha umas perguntas que eu queria fazer, que acho quem sabe até interessa o pessoal assim no seguinte sentido. Eh,
+vou mudar, vou sair um pouco aqui de modelos, tá? Quem sabe a gente volte depois, tá? Mas uma curiosidade mais geral até que é o seguinte, assim, eh,
+ali, pelo que eu entendo, assim, eu acho que vocês, sei lá, mudaram pro Vale ou tão se dividindo mais Vale Brasil. Então
+assim, eh, cara, como é que é, sei lá, um brasileiro tá no Vale, eh, que que
+você nota diferença ou não? Sei que a empresa de vocês tá indo super bem, tá assim, ó, me corrige aqui o que que eu
+puder falar ou não, né? Mas eu invisto num fundo que investe em vocês, então assim, acho que não posso falar o número exato, mas assim, acho que vocês já
+estão, sei lá, em dezenas de milhões de dólares de EA, então assim, puxa, super rápido assim, cara, sei lá, se Deus
+quiser, daqui a pouco você são unicórnio, então assim, eh, as coisas estão indo bem. Então assim, mas cara, como é que é isso de
+cara, pô, ser brasileiro e pô e tá lá no vale no meio do Flá de onde tá tudo, cara, sei lá, onde tá tudo acontecendo.
+Então, como é que é isso aí? Cara, tava falando isso com o pessoal ontem aqui. Acho que o mais
+inacreditável eh acho que é tá dentro, é fazer parte
+mesmo que de uma pequena parte aí dessa, de contribuir mesmo pro principal motor
+dessa revolução aí, que são esses modelos. Hã, eu acho que isso é o mais legal, independentemente da da
+geografia, né? Mas por acaso 90% das todas as empresas que estão nesse negócio aí mais à frente tão lá no Vale.
+Ã, então acho que a diferença é um pouco isso que o Bruno falou. Assim, Bruno, vou usar o seu comentário aqui como
+paráfrase. Você falou: "Putz, eu ouvi o que você o Alê falando e não entendi nada. Tipo, tô vi que eu tô longe". Ã,
+eu acho que a sensação é essa. Você vai lá e vê que você tá são, você não sabe nada assim. é bem ã bota seus pés no
+chão de entender que putz, cara, olha quanta coisa legal tá sendo feita, olha quanta gente tá fazendo coisa diferente,
+pensando diferente, extremamente fora da caixa, coisa que você não esperaria antes, se expondo a esse tipo de experiência todo dia. Então é, acho que
+é um ambiente muito fértil. a gente tem passado alguns meses do ano lá, o time todo tem ido com alguma frequência e eu
+acho que essa que é é o grande ah é para mim acho que é a grande é o
+que eu mais tiro assim dessa dessas experiências lá são você se expor a coisas que simplesmente não tem aqui.
+Quando aqui uma empresa fala que ela é AI first, geralmente ela tá ela tá pressupondo que, sei lá, os funcionários
+usam chat EPT, ã, ou alguma dessas IAS, assim, acho que essa é a definição, mas
+na prática, cara, tipo, você tá partindo da mesma premissa que você partia antes. É que nem a galera que
+ã quando falava em digitalizar uma operação, fazia a mesma coisa, só que digitalizado. Aquela mesma conversa de
+transformação digital, acho que aplica esse mundo de a novo aí. Ahã. Então acho
+que lá você realmente vê um pouco mais de da hiperprodutividade, alguém
+botando, sei lá, 10, 20. milh de código todos os dias para cima e lançando uma
+parada que tá atendendo centenas de milhares de pessoas. uma pessoa que tá fazendo isso, tipo, deployando sem
+agents, ã, já abstraiu três camadas verticais de uma empresa em agents que
+fazem tudo isso para ela com alguma precisão e ela vai contratando humanos para supervisionar e garante que essa
+máquina funciona bem. Então isso é tipo, é uma premiscia diferente, assim, eu acho que lá você consegue beber um pouco
+dessa fonte e pensar diferente aqui também. Alê, o que que você viu lá ou
+quem pode ser o que ou quem ou os dois, tá? E que mais te impressionou assim? Falou: "Caralho, esse negócio aqui
+é muito ou essa empresa é ou essa pessoa é muito Por quê, né? Acho que tem que também dar um uma cor
+pra gente por quê. Legal, cara. Eu nunca tinha visto algo parecido.
+Eu acho que eu vou falar da primeira vez que eu fui, que acho que foi um choque assim, foi um ã que eu conversei com uma galera lá e
+juro por Deus, assim, eu mandei uma mensagem nedinho para uma pessoa x, essa pessoa me respondeu, eu mandei para 100,
+uma respondeu. Recomendo. Inclusive, tem umas automações aí que faz automático e aí uma vai responder e vai ser super
+aberta. O cara foi tomar um café comigo, cara, você não ouve falar de Sky em nenhum lugar aí, tipo, então realmente
+era uma pessoa não média, excep, uma pessoa excepcional, mas que ela era muito frequente lá naquela população. E
+ele falou assim: "Putz, a gente acabou, eu tô participando de duas empresas aqui. Uma delas eu sou CTO, na outra eu
+tô mais advising aí nessa que eu sou CTO aí, ã, cara,
+o a gente acabou de levantar 12 milhões de dólares e 20 milhões na outra. Tipo,
+uma coisa que aqui é uma notícia, putz, a empresa mais porrada lá é uma coisa
+extremamente comum, meio que qualquer um. Segunda-feira é a segunda-feira mais fraca dos caras.
+É, pô, eu mantei 10 milhões de dólares aqui, tem muito acesso à capital. E acho que redefinir um pouco dos padrões que a
+gente tem de como rápido assim também foi bem legal. Aqui a gente fala: "Putz, move muito rápido as coisas." Aí você
+vai ver a pessoa tem um ciclo de interação de duas, três, quatro, cinco semanas. Ã, putz, eu perguntei pro cara,
+cara, que que é rápido para você? Todo mundo fala rápido, mas na prática que que é rápido? Esse cara de novo, um cara
+não conhecido, qual não? Mas também não qualquer, não tava lá. O cara falou assim: "Putz, se
+acho que se o engenheiro não tiver não tiver lançando uma feature, pô, uma feature isolada, uma por dia, ah, uma
+feature grande, se eu pedir para ele fazer uma réplica do chart EPT inteira lá com back end, frontend, tudo
+funcional, ã, com modelo já entunado, se passar de uma semana é muito, ã,
+provavelmente eu vou ter que dar uma review nesse cara aí que ele tá ruim. E uma coisa intermediária é dois, três
+dias, assim, uma coisa que não é uma explicação inteira e também não uma feature pequena, isolada, putz, é dois,
+três dias para você tá lançando. Ã, então eles partem de uma premissa diferente,
+alavancam muito essas tecnologias e basicamente o que a gente tem de como rápido, tipo, os caras estão se
+perguntando como é que eles podem ser 10 vezes mais rápido assim, tipo 20 vezes mais rápido.
+Esse ponto é bem legal pelo seguinte assim, é, eh, pô, lá você tá falando da galera nível top mundial, né? Eh, sei
+lá, a gente pega São Paulo, mesmo São José ali, tal, São Paulo, sei se lá, Rio, você vai est falando de top nível Brasil. Eh, fazendo uma comparação boa.
+Eu sempre gosto de fazer essas comparações, você sabe disso. Acho que até já fiz essa contigo, acho com outros atletas, mas eh e cara, de novo, acho o
+menino talentoso, ótimo, quem sabe, poxa, daqui a alguns anos, uau, tá, tá, tá, mas assim, uma coisa é o João
+Fonseca ser o melhor do Brasil, entendeu? Outra coisa, ele ganhar do cincar, entendeu? E aí, pô, volta, volta
+comer feijão para e veja bem, entendeu? Então assim, eh, e a galera à vezes acho que não tem muito essa noção, entendeu? Tu acho que
+você trazer isso pra gente é legal, porque assim, e de novo, cara, o Brasil é um país do ótimo, super legal
+e tal, mas cara, você ser o melhor do Brasil é uma coisa, cara, você tá jogando de igual para igual com a galera lá fora e acho que parabéns para vocês
+que vocês estão conseguindo fazer, cara. É, é, é outra coisa, entendeu? Legal, cara. Bom ponto. E acho que o que
+a gente tem feito bem, ã, um, é, acho que tá podendo se expor a
+isso, é uma oportunidade muito boa de ressignificar um pouco esses esses conceitos que a gente às vezes tá acostumado aqui, porque não tem
+referência. Acho que esse é o principal ponto, mas acho que a gente consegue, o Brasil de forma geral, pessoal muito
+talentoso e e trabalhador. Acho que isso leva sempre paraa frente. E acho que uma
+coisa que a gente tem feito bem, que não necessariamente é feito lá também tão bem, é uma essa coisa de pensar em
+primeiros princípios assim, sabe? você tentar pensar, cara, que que é hã que
+que são os fundamentos que regem esse problema e como é que a gente tá atacando eles. Então, você não
+necessariamente tá copiando o que alguém tá fazendo ou se você se basear naquilo, você questiona. Em primeiro lugar, acho
+que essa postura de fundamentos, ã, acho que ela é invariavelmente mais valiosa
+do que qualquer outra coisa, assim. Ah, então acho que se juntar esse essa visão
+orientada a fundamentos, mais uma exposição a entender o que é possível e essas novas premissas de operar e
+executar, cara, eu acho que isso é isso cria, eu acho que conjuntos muito poderosos aqui, até mesmo operando a
+nível mesmo operando aqui no Brasil. Consegue dar algum exemplo, consegue dar algum exemplo ali assim, aí de novo, se
+não puder abrir algum segredo, não precisa não, mas consegue dar algum segredo pra gente, cara? Sim, eu vou usar um exemplo do do livro
+do Elon Musk lá, que ele fala muito sobre isso também, que é você pega, eles
+iam construir bateria elétrica. Essa aneddota é legal. E aí ele não sabia, tipo, era caro para caramba construir
+uma bateria elétrica, sei lá, vamos, vamos dizer aqui que o valor, não é o valor, mas vamos dizer que é 600 uma para construir uma bateria lá, custo, ã,
+era $000, sei lá. E aí ele pensou: "Putz, mas o que que é composto?" O, ó, uma pergunta do que que é composto na
+bateria elétrica, cara? Sei lá, é lítio e mais, sei lá, eu vou chutar outros elementos aqui, carbono, hidrogênio,
+oxigênio e nitrogênio, sei lá, os básicos, o chão lá, tudo compõe tudo. Pô, se eu tivesse isso aí cruza, e eu
+juntasse e eu botasse uma varinha mágica que transforma isso em uma bateria, quanto custaria? Putz, custaria ã $, não
+1000, cara. Então você tem uma perda de eficiência ã quase infinita aí, quase
+100% no processo de manufatura. Então acho que esse é o problema certo a ser atacado. E com isso ele foi atacar o
+problema de manufatura e botou os engenheiros dele para tipo atacar o problema certo. O fato dele ter se perguntado isso e pensado qual que era o
+problema certo a ser atacado, que ia fazer com que eles fossem 10 vezes mais rápidos, 10 vezes mais baratos, 10 vezes melhores, ã, esse tipo de de pensamento,
+eu acho que ele é muito muito muito poderoso, assim, e nem toda empresa faz isso ou faz o início e depois perde isso
+na escala. Ah, mas acho que isso é uma coisa que a gente tem feito muito bem, aplicado a esse contexto mais de dados e
+tal e que tem projetado bastante a gente e que a gente vê que, cara, nem toda
+empresa mesmo lá faz isso. Lá a galera executa muito bem e muito, tipo, o povo é famoso por trabalhar das 9 às 9, é o
+regime 996 lá, das 9 às 9, de segunda a sábado. Ã, e isso muito acontece porque
+tem muito capital e muita competição. Então, tipo, você não se mover mais rápido do que seu concorrente, você vai
+perder espaço, alguém vai fazer a sua ideia, tipo, e vai fazer melhor. Então, a única coisa que te protege é a
+velocidade que você executa. Acho que isso força o todo o ecossistema lá a operar de forma mais agressiva. E aí,
+como a gente tá exposto a isso, eu acho que a gente consegue ã aplicar essa forma de pensar nesse ambiente que é
+mais competitivo. E aqui não tem tanto essa competição. Acho que isso é uma outra diferença que talvez não provoque essa esse essa
+catálise aí nossa de de ser e trabalhar talvez melhor.
+E aí só aí depois vou passar pro Bruno, mas só uma eh curiosidade, se a resposta for sim, aí acho que quem sabe você pode
+até elaborar um pouquinho. Eh, mas assim, eh, você consegue relacionar essa questão de primeiros princípios, a forma
+de pensar com o ITA ou não? Eu particularmente consigo, mas eu eu eu tenho dúvida se você consegue relacionar ou não. E se for, cara, conta um pouco
+de pô de onde você veio, do ITA, puxa e eh pô, você conheceu seus sócios lá, então assim, como é que foi esse negócio
+de empreender? Então assim, acho que tem uma série de coisa ali, mas primeiro assim, se tiver a ver, você fala: "Não, cara, não tem nada a ver, aí
+beleza, a gente a gente fala de outra coisa". Cara, eu vou falar, eu vou dar a minha interpretação pro tema, que não
+necessariamente é a correta e acho que você vai saber muito mais do, vocês vão saber muito mais do que eu. Ã, mas eu eu
+gosto de pensar em modelos mentais, assim, então acho que para interagir com o mundo e construir uma coisa, é sempre
+importante você partir do ponto de vista que você é cético, né? Tipo, nada é verdade absoluta, a não ser as leis da
+física. Então eu acho que no ITA você absorve um pouco do que são as leis da
+física, o que é a verdade, de vários domínios diferentes, ah, inclusive da física, né, especificamente na
+engenharia. Acho que tem bastante disso, aprender os princípios fundamentais das coisas, hã,
+e aplicar isso depois. Então, acho que para mim a formação e no ciclo no funde
+lá e depois o a compar um pouco o meu jeito de pensar. Ah, mas
+eu também levava o o Ita, acho que eu eu tentava caprichar na medida do possível,
+sempre comprava uns tradeofs aí, porque eu tava fazendo as coisas por fora também, mas eu acho que eu tento pensar
+em modelos mentais mais do que então o ITA me ajudou a acumular mais
+formas de enxergar o mundo e pensar os problemas. E acho que isso foi bem valioso e ajuda a pensar nesse Force
+Principles aí. Eu acho que com certeza a engenharia de forma geral ajuda você a pensar em quais são os componentes básicos e atômicos de um sistema e
+depois como é que você monta isso para para criar dado um input geral output esperado. Ã,
+e então acho que isso é bom. Eu acho que a engenharia de forma geral, por ser mais científica, assim, você conseguir
+passar por ela e treinar o seu lado mais cético, eh, de cara saber entender de
+fato o que é uma hipótese, o que que são seus vieses e seu wishful thinking, que a gente tem muito como ser humano e e
+tirando isso da jogada e sempre tentar estar menos errado e não necessariamente buscar estar certo, ser dono da verdade.
+Acho que esse tipo de postura, pelo menos, eu aprendi, exercitei muito durante o ITA, mas não necessariamente você aprende isso com o ITA, mas eu acho
+que com certeza o IT ajuda a acumular mais modelos mentais. Acho que essa seria a minha resposta confusa eh para
+para isso. E eu acho que de background eu vim do interior, nasci em Santa
+Catarina, mas cresci no Rio Grande do Sul, para todos sou gaúcho, queria ser jogador de basquete, ã, não, não queria
+estudar, mas aí no segundo ano falaram que tinha que fazer vestibular e aí um professor de matemática falou, falou
+assim: "Putz, acho que você estudar pro ITA lá, você vai mandar bem." Aí como assim, talvez. Fiquei fiquei fiquei
+bravo, fui estudar. Eh, falei, vou passar nesse trem aí. H, aí estudei durante um ano. Tomei um pau,
+né? Não passei. Aí eu ganhei bolsa para fazer cursinho em Porto Alegre no Elite junto com o Bagual. Bagual foi da
+palestra no meu colégio e aí foi legal para caramba. Fiquei piradaço. E aí o
+Bagó me levou lá pro pro Elite. Fiquei um ano lá, quase passei, fui pr para pro Poliedro. Aí ela deu certo. Quando
+entrei no ITA participei de um monte de coisa, não sabia o que eu queria fazer. Eu sabia que eu eu queria empreender no meu quinto ano. Eu botei naquelas
+cápsulas do tempo que eu ia estagiar na minha própria empresa quando eu chegasse no quinto ano. Não sabia com quê, não sabia com quem. Eu tinha, acho que na
+minha cabeça era o foco era estar perto de gente boa, me expor a muitos desafios
+e crescer, crescer parnasianamente, assim, acho que eu gostava disso, assim, coisa que me deixasse eh tá com gente
+boa e crescendo. Acho que essa era a principal. Um pouco reativo assim, mas funcionou muito bem assim. Acho que eu
+eu conheci muita gente legal, participei do Cajveste, fui da captação de recursos, ia lá pedir fundrais pr pra
+galera eh ter dinheiro para as bolsas lá para passe de de ônibus, tal. Hã, foi
+participei da captação de recursos, eh, captação não, capacitação, né, da CE, foi lá que eu fiquei mais próximo dos
+meninos que depois a gente virou sócio, mas foi pro centro acadêmico para ajudar a consertar lá as janelas, os mofos, ã,
+todo mundo me xingava, era legal para caramba que lá no caso a gente é meio que o o fica meio síndico do prédio
+assim, né, da da mão de bo foi legal, cara. Adorei. Aí quando acabou o C, não tinha ideia do que eu ia
+fazer, mas de novo, próximo de pessoas boas e buscando essa parada aí de crescer e empreender. Aí tava sozinho lá
+junto com alguns amigos lá, se juntou para fazer um sisteminha de feedback de cliente para restaurante e saí a pedir o
+Eu chamo o gerente aí a galera ficava meio braba com a gente que a gente tava pedindo para chamar o gerente, todo mundo ficava meio desconfiado nos
+restaurantes. Aí isso não foi muito pra frente. Nessa época eu já tava jogava basquete com o José. Todo final de
+semana a gente se juntava, jogava basquete, ia almoçar no churrasquilo lá verde vale lá em São José e ia discutir
+que que a gente ia empreender junto. Aí a gente só conhecia estudante, né? A gente falou: "Pô, velho, ajudar a galera a conseguir emprego aqui, vamos fazer um
+negócio lá." E aí início começou, foi indo e um dia o José falou: "Pô, cara, eu fiz essa aplicação no code aqui, tem
+um uma galerinha já que entrou, vamos tentar construir uma empresa em cima disso, vendo o que que dá aí. chamou eu
+e o Farofa, que é o outro moleque que a gente começou lá. E a início a gente foi juntando outros amigos que a gente admirava e confiava, construiu o nosso
+time fundador lá. Nisso a gente foi construindo, quando vê, putz, 50.000 estudantes do Brasil inteiro, levantamos
+capital com a Maia. Ah, e aí caramba, estouramos, né, na faculdade, levantamos
+a pra gente era tipo um rio de dinheiro, foi 1 milhão de de dólares lá com a Maia. pessoal confiou na gente, foi
+muito legal. E e aí nisso, cara, a gente sabia que a gente ia construir uma
+network muito valiosa e a gente não sabia como que a gente ia usar ela. E aí com esse mundo de a gente foi se
+perguntando, cara, o que que tá acontecendo no mundo? O que que tá acontecendo no mundo? O que que a gente pode fazer? Que que é o nosso próximo grande passo? E nisso surgiu a veto. Eh,
+o José e Ricardo estavam bem focados nisso aqui do time, em achar que que ser esse nosso próximo grande passo.
+Encontramos, fomos, cara, entrou muita gente incrível aí com a gente, a Beta, Lucas, Dani e Rodrigo. Entrou muita
+gente boa aí com a gente para ajudar a gente a construir isso. Então, cara, agora eh aproveitar essas oportunidades
+que a gente recebeu aí e fazer dar certo, mas foi foi muito legal toda a trajetória. Eh, e agora eu tô fazendo
+essa parte mais voltada para dados, mas antes eu tava fazendo good to market comercial,
+um monte de coisa completamente não técnica. Foi foi bem foi bem bacana. A gente fez,
+errou tudo que era para errar. Foi muito show. Assim, tem muita coisa para errar ainda,
+né, Rico? Todo dia, todo dia.
+Cara, mas eu acho que eh independente de errar e de acertar, cara, eu acho que
+esse movimento assim é é traz vida, né, para pra gente, para todo mundo que tá
+ao nosso redor, né, o movimento de de criar. Às é bom assim o cara tomar cuidado com
+a saúde, né, Igor? ter, é, isso é uma outra conversa longa. Isso aí é é isso aí é uma coisa
+importante, cara. Ter pessoas assim que já passaram e tal para te ajudar na
+questão da saúde, porque, pô, eu conheci o Zé André que ele estudou lá no quadro,
+né? Aí, que legal, ele foi aluno do quadro e ele foi um
+daqueles alunos que a gente sabia que ia passar. Ele entrou tipo segundo ano, conheci os pais dele e tal. E daí o
+o Poliedro foi fez uma proposta irrecusável para ele estudar lá e tal, eles foram, mas ele é o tipo de de aluno
+que ele ia passar onde ele tivesse, né? Ele ele ele só não precisava só
+precisava ninguém atrapalhar ele. E em relação a esse lance do ITA, enquanto
+você falava, o que veio na minha cabeça foram eh foram aquelas discussões que a gente tem
+no H8, porque o que que o ITA tem de diferente das outras faculdades, né? Eh,
+tem um, se a gente conseguir resumir uma palavra, é intimidade. Você começa a ter intimidade com as pessoas por tá
+convivendo muito tempo e você quebra os filtros. Então, é muito fácil
+você ter a sua opinião, a sua posição contestada. E o fato de ter que lidar com essa
+contestação constantemente e e ter que se provar e ter que argumentar e ter que
+refletir, muitas vezes ter que voltar atrás. Eu acho que ajuda a lapidar essa
+capacidade de identificar os princípios, né? Não sei que que você acha aí se com você também era assim e tal.
+Não, eu concordo 1000%. Assim, acho que o fato de você morar junto faz muita
+diferença, né? Numa com as pessoas certas, com certeza.
+É, é, esse é um ótimo ponto.
+Ô, ô, Alê, eu quero te falar duas coisas. A primeira eh, eu sei que você é um cara
+que tá muito ocupado aí e tal, eh, mas a gente não conseguiu falar com você nem
+5% que a gente queria ter falado. Então, vou te pedir para você se
+organizar aí com o José André e tal, pra gente bater outro papo desse daqui um tempo. Pode ser.
+Combinado, cara. Não, adorei. Foi foi ótimo. Aí eu trago a galera aí junto.
+Vai ser bacana. Sempre bom. Tá bom. E aí agora a outra parte, né,
+que que é uma ideia interessante que a gente tem, é de você tentar nos desconscertar com perguntas
+eh inesperadas. Você pode escolher para quem você manda a primeira pergunta e pode escolher qualquer pergunta que você
+quiser. Cara, eu tenho duas perguntas. Eu fiquei pensando aqui para quem quer fazer elas, mas eu acho que eu vou fazer as duas
+para vocês dois. H, cara, acho que a primeira delas, eh,
+vocês como pessoas muito mais experientes que eu e já viveram muito e já passaram vivendo pelo menos a
+bolha.com aí, uma primeira grande transformação no mundo. Muita coisa mudou, muita coisa não mudou. Vocês
+viram muita coisa ser falada que ia mudar e que não falou. Então, acho que a minha pergunta é desses últimos 20 anos
+aí, eh, 26 anos, o que vocês viram que vocês achavam que ia mudar e mudou? O
+que vocês achavam que ia mudar não mudou? O que mudou que vocês não esperavam? E que que vocês tiraram
+disso? Vou deixar você começar aí, ou você quer
+que eu comece? Pode começar. Tô anotando aqui. Tá bom,
+cara. Eh, o que o que eu achei assim
+que eu nunca percebi de não entendi direito foi uma regra de o mundo dá
+voltas. Essa parada foi a a a coisa que eu mais vi se confirmar
+e que é o seguinte, eh antes de 2018 a gente tinha um, a gente viveu alguns
+ciclos de poder do empregador
+e e isso se transformava em uma espécie de
+opressão em relação ao ao trabalhador, né? Então você tinha esses ciclos, tinha
+época que era muito fácil contratar e e os salários eram baixos. Tinha época que
+era difícil contratar e os salários eram altos. E daí 2021
+a gente eu acho que viveu o ápice da dificuldade de contratação. Então você
+tinha que pagar uma remuneração muito alta para um profissional que você tinha que investir muito na formação desse
+profissional. E eu acho que agora a gente tá vivendo um outro ciclo, que é a mão de obra, ela
+como ela é, tá se se mostrando menos necessária e isso tem sido uma vantagem
+para o empreendedor. É muito simples você começar hoje sistemas e empresas
+usando inteligência artificial, tudo tá muito mais simples. Eh, todas as vezes que eu que eu olho
+para isso, eu penso que o último estado é definitivo,
+mas olhando para trás, eu vi que nunca era definitivo o último estado, entendeu? Então eu acho que agora quem
+tá construindo negócios tem que aproveitar para conseguir atrair as melhores
+pessoas num numa condição sustentável, né, do ponto de vista econômico, porque
+daqui a pouco vai virar, hein? eu pode ser que vire, entendeu? Então isso é uma coisa que eu sempre tive a esperança de
+mudar e que nunca mudou. Eh,
+eu acho que é isso. Eu posso pensar em mais algumas coisas, mas eu preciso de um pouquinho mais de tempo para pensar. quiser responder, é
+uma grande reflexão aí, ótima fila de conhecimento. Juntando alguns pontos aqui assim dessa
+questão de eh vivências tecnológicas, tem um livro que um amigo meu meu não
+sei se eu já te passei esse livro lá atrás, eh esse amigo meu mercado coral, ele trabalhou na Rivel, ele tá querendo
+empreender agora e tudo mais. Ele, o livro chama The Engine That Move Markets. É uma quase bíblia desse
+tamanho assim, cara. Tem todas as evoluções tecnológicas. Tenho, eu tenho, eu tenho ele comprado aqui, mas eu não
+comecei ali ainda, cara. Ele é gigante, entendeu? Então assim, você tem desde, sei lá, o barco a vapor e depois, cara, as as as
+ferrovias, é, o computador. Então, assim, tem essas transformações e que eu
+acho que é legal porque dá um contexto histórico também. E o que eu vi nisso, eu vi mais velho,
+mais quando era mais novo, era difícil de saber, pelo menos era, eu não tinha essa informação, mas é difícil de saber
+assim, eh, nessas transformações é difícil você saber quem vai ganhar, entendeu? Então assim, sei lá, eu lembro quando era mais novo, cara, a Nokia e
+depois a Blackberry, a Bre, né, Research Research Motion. Puxa, cara, ela era uma
+potência, as duas eram, principalmente a Nokia, era potência bizarra, entendeu? Eh, e cara, isso virar, entre aspas,
+praticamente pó, assim, eh, eh, pó exagero, mas assim, e vai caminhar para
+uma meio irrelevância, assim, é um negócio meio caramba, o que não quer dizer que, cara, as coisas não fossem mobile, não fossem não sei o que e tá tá
+tá, entendeu? Eh, cara, você tinha Yahu, depois veio o
+Google e assim era meio inacreditável para quem puxa vi o Yahu grande achar que, cara, o Google ia atropelar isso
+tudo, cara. lá atrás era uma mega discussão assim, cara, quem vai ser o vencedor, eBay ou Amazon? Cara, hoje é
+uma discussão meio ridícula, mas assim, não que eBay seja pequeno, mas assim, é uma discussão meio ridícula, entendeu? Eh, e lá atrás foi uma grande discussão
+e tatá. Se você for olhar os drawdowns que a ação da Amazon teve lá atrás em certos momentos, assim, uma coisa meio absurda, entendeu? Eh, a própria Nvidíia
+também, assim, cara, teve uns drawdowns lá atrás, assim, eh, antes desse bom todo aí, tudo mais, assim, alguns
+momentos de quase morte aí aconteceram algumas vezes. Então, assim, acho que tem algumas coisas que às vezes a gente
+prevê assim, putz, cara, eu acho que esse cara que vai ganhar e na verdade,  vai lá, não que a onda esteja errada, mas acontece uma coisa
+totalmente diferente, entendeu? Eu acho que a gente falou disso no no Santo Grão uma vez, assim, eh, eu acho alta meio
+esquisito. Eu acho que o open vai dar pau, entendeu? Assim, se eu tivesse que apostar ainda ainda mais de jeito assim,
+hoje é mais fácil dar esse call, tá? Assim, acho que dado que a Antrópica tá fazendo e tudo mais, mas acho que a própria Gemini também, tá tá tá sabe
+assim, agora de novo pode acontecer outras coisas. O cara pode ser vendido, pode juntar com não sei quem, pode ter um beverno que eles estavam pedindo,
+whatever. Mas assim, eh, se fosse esperar alguma coisa hoje para mim
+openar tá para mais para netcape, entendeu? Então, acho que seria o o call eu faria, mas de novo pode tá totalmente
+errado. A gente pode voltar daqui a 5 anos e falar: "Cara, não aconteceu nada aquilo que você estava falando". Mas eu acho que assim, a chance de você
+errar, entendeu? Eh, nesses momentos, ela, eu acho que ela é razoável. Tem
+coisas que são bem surpreendentes, assim, nesses momentos assim. Eh, e pegando uma coisa que eu achava
+que eh ia acontecer e não aconteceu.
+Eh, tô pensando alto aqui. Se bem que esses exemplos que eu dei era que ia acontecer e não aconteceu, mas eu eu gostaria de falar disso aqui porque
+assim, eu eu pegava 2008, 2009, eu achei que o Brasil ia tá num situação melhor hoje, entendeu? Eh, você pega aquela
+época ali de crescimento que a gente teve, aquela capa da decona, mexo Cristo subindo, tá, tá, tá, tá. Eu acho que a gente estaria, eu achei que a gente
+estaria numa situação eh melhor como país hoje, sabe? Então,
+deixa um pouco triste, mas é o que é. Ent não legal, gente. Falei,
+tem uma outra coisa, Alê, que eu quero te falar, o desencargo de consciência.
+E eu acho que isso vale para você, pro pro José e para todos os empreendedores que estão aí no time e para quem tiver
+ouvindo também, que é o seguinte, cara. Se você não tá com sua vida resolvida financeiramente
+e você tiver uma oportunidade, aproveita, resolve,
+porque vai te dar muito mais tranquilidade para empreender,
+entendeu? Se eu tiver oportunidade de colocar um dinheiro que paga, paga suas
+que você pode viver durante muito tempo com renda passiva, aproveita, cara. Depois você vai
+conseguir empreender em coisas ainda maiores, porque a tranquilidade que que você vai ter é muito grande. Eh, a gente
+tem, eu conheço vários empreendedores no passado que que não fizeram esse dever de casa e e hoje, cara, os caras estão
+começando de novo e é difícil. e conheço caras que fizeram esse dever de casa e
+hoje tá tá muito mais fácil para eles, entendeu? Com certeza. Com certeza. Obrigado,
+gente. Eu tenho mais uma pergunta, então posso fazer? Manda lá. É boa. Ah, me pediram duas, eu vou
+entregar duas. H, cara, minha segunda pergunta, vocês dois são especialistas
+aí, muito vividos também em educação, especificamente. H, cara, quais são, vocês dirham que são
+os elementos essenciais da educação que são insubstituíveis mesmo com a máquina perfeita?
+Matemático, português, se o cara mora no Brasil, né? Se ele mora em qualquer outro lugar, matemática
+e linguagens. Eu acho que não, eu digo na assim, mas desculpa interromper,
+princípios assim de educação no geral. Você acha que matemática e português seriam esses princípios mais gerais de
+educação que são insubstituíveis mesmo com a máquina perfeita? Sim, porque da minha visão tá
+por uma questão de de construção de base. Eu não tô falando que o cara tem que aprender cálculo, não. Eu acho que
+eu acho que seria ideal que todo mundo aprendesse cálculo. Eu vou trabalhar com as minhas filhas para que elas aprendam, independente do que elas forem estudar.
+Mas eu acho que a matemática do dia a dia do
+a matemática básica e ela ajuda a entender o mundo e e interagir com com a
+sociedade e o português e e a linguagem por uma questão de comunicação com
+outros seres humanos, entendeu? Assim, sendo em termos de hard skill,
+né? Eu acho que isso é mais importante. Não, assim, cara, o se você for pegar
+e um tipo de divisão que tem em ciência cognitiva, assim, é você pensar: "Puxa, cara, eu tenho inteligência fluida e
+inteligência cristalizada", entendeu? Inteligência fluida, sei lá, seria mais ou menos aquilo que, cara, você tira do
+nada ali para digamos que é o o o clock que sua cabeça ali tem, tá, tá,
+tá, para putz, eh, resolver um negócio que aparece ali na hora e tá tatá, entendeu? E a cristalizada assim, cara,
+ela parte do pressuposto de um monte, é o HD, parte pressuposto de um monte de coisa que você entre aso absorveu ali, tá tá tá. Eh, e por aí vai. Eh, se você
+for pegar o o Vittor Nem, ele veio, ele veio aqui no podcast, acho que no segundo capítulo que a gente fez. Uhum.
+Ele é pai de 12 anos aí de uma, de uma arquiteta de super sucesso, puxa lá no Brasil e tá tatá. Ele falou um negócio
+que é super curioso, assim, é, em termos da experiência que ele deu para os filhos dele, assim, cara, todo dia a gente dava uma experiência que eles
+tinham que se virar e resolver um problema, tentar se virar e fazer alguma coisa. Ah, eu dava uma grana menos ou
+cara, eu dava menos comida, ele tinha que ver como que se virava para arrumar comida no lanche lá no na escola,
+entendeu? Teve até algumas situações engraçadas que ele contou pra gente em off, que ele até nem contou e tatá na na na no vídeo, mas assim, você fala,
+caraca e tal. Então assim, esse negócio de então você tava dando ali, entre aspas, vamos dizer, ferramentas fluidas ali de cara, como é que eu exercito essa
+capacidade fluida aqui para tá? Esse acho que é uma uma coisa que é interessante. Uma outra que aí já vai na
+questão de da cristalizada e isso é um pouco mais o que a gente entre aspas faz aqui em casa, eh eh essa questão de
+experiências mesmo, entendeu? Então assim, a gente gosta muito dessa questão de, pô, cultura, história, eh vivências
+diferentes, puxa, pessoas diferentes, eh cara, culturas diferentes. E você e se
+expondo a isso, cara, você tem uma bagagem, entre aspas, de experiências que quando acontece alguma coisa, cara,
+você consegue acionar alguma coisa dessa caixa de ferramenta que você tem aqui para fazer alguma coisa, entendeu? Inclusive quando
+temas de eh eu tava lendo a biografia, até falei com um amigo meu aqui mais cedo assim, eh
+não sei se você gosta muito de basquete, né? Você falou, né? Você já viu a biografia do Steve Car ou não?
+Técnico do Golden State. É, cara, assim, eu eu queria muito ler assim, eu tinha achado super legal porque assim, cara,
+ele é um cara eh, pô, ele foi jogador, pô, ele foi GM e ele foi técnico, né?
+Eh, foi, foi um bom jogador, principalmente no college até até melhora, cara. Ele foi um gem OK para bom e cara, foi um técnico excepcional e
+tal. Só que assim, quando você pega a vida que ele teve lá atrás, cara, ele nasceu no Líbano. Eh, pô, ele morou em
+diversos países. Eh, cara, o pai dele foi assassinado, uma família mega culta, não sei o quê, muita coisa ligada ao
+Oriente Médio. Eh, então assim, quando você vê a bagagem, entre aspas, pô, ele falava francês, entendeu? Assim, quando
+você vê a bagagem cultural que ele foi, entre aspas, exposto, eh, quando puxa,
+ele foi pro college, depois para ele, pol jogador e principalmente técnico, que, cara, se tinha pessoas ali muito diferentes, eh, cara, isso ajudou ele
+para caramba, entendeu? Pô, você pega ali, você gosta de basquete, você deve saber assim, cara, você pega o Curry, por exemplo, que, cara, um cara super
+putafável, tranquilo e tal, cara, o o Dramon Green é outra coisa, entendeu? Então assim, eh eh, pô, você conseguir
+ter a habilidade, conseguir se conectar com esse cara, tá próximo desse cara e conseguir fazer ele fazer parte de um time de uma forma funcional. Então
+assim, cara, de certa forma isso faz parte, óbvio que ele tem uma inteligência, entre aspas, emocional, fluida, ele super bacana, mas com
+certeza essa bagagem de coisas que ele viveu ajudou muito, entendeu? Então assim, eu tentaria pensar em algumas
+coisas que te forçam esse lado fluido, mas eu acho que essa bagagem de experiências ela é bacana também, sabe?
+Tipo que você fala do futuro, a escola do futuro, a escola do futuro vai ser fazer
+intercâmbio e filosofar. Então, Igor, cara, eu acho que muda muito a vida,
+cara. Pô, cara, pega o que você falou, cara. Pô, quando eu fui pro vale, falei a, B ou C, mudou a barra de como eu vi as coisas. Cara, você é um
+cara totalmente diferente hoje do que você era dois, trê anos atrás, entendeu? Ah, por quê? Porque, putz, você viveu
+uma experiência diferente, você foi pro lugar X, entendeu? Sim. Então assim, às vezes a gente é
+capaz de coisas entre aspas que a gente nem imagina, entendeu? Mas se você não estica isso de alguma forma, você tem que pegar experiências
+que esticam isso, entendeu? Aí pode ser de um lado ou pode ser do outro.
+É isso aí. Isso aí que falou a verdade. Beleza.
+Beleza, cara. Obrigado, Alê. Eu que agradeço, gente. Foi muito legal aí o papo com
+vocês. Adorei e espero que quem assista aí tenha curtido também.
+Boa. É isso aí. Muito bom, pessoal. Obrigado. Obrigado, Alê, Igor por mais esse
+episódio. Se você gostou, aproveita para se inscrever no canal, ativar as notificações, curtir o vídeo. Se você
+não gostou, escreve algum comentário embaixo falando do que você não gostou, né? Evita xingar o Alê porque ele é um
+cara muito bacana. Mas Raminho, você vocês podem xingar à vontade. O Igor também aguenta e não é
+não é convidado, né, Igor? Tudo bem. O importante é o vídeo espalhar, levar
+essa mensagem de que a gente consegue desenvolver tecnologia de ponta aqui do
+Brasil. Eu acho que isso é essa é a mensagem mais importante. Beleza. Valeu,
+gente. Abração. Abraço. Abraço. Tchau. Tchau.

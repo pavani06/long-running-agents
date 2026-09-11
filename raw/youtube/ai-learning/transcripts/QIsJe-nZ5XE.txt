@@ -1,0 +1,110 @@
+So today I'm going to teach you guys how to sell AI workflows without starting an agency. Because the truth is, if you've never actually sold AI workflows before, building an agency is probably the worst
+move you can make. You'll be drowning in client headaches and you'll probably want to give up before you make any real money. But there's a way smarter way to profit from AI workflows. One that's
+simpler, faster, doesn't involve hiring anyone or quitting your job. In fact, it's exactly how I went from zero AI experience to making thousands per
+workflow without quitting my job. So, in this video, I'm going to break down why you shouldn't start an agency, what to do instead, and how to sell your first AI workflows step by step. Why starting
+an agency is a trap. Everyone online seems to be pushing this narrative that if you want to make money with AI workflows, you have to start an agency.
+But that's definitely not the case. And here's why I had that realization. When I first started, I did not really understand the nitty-gritty of what goes into a project. I didn't know how to
+price properly. I definitely didn't realize how many little complexities will pop up in actually delivering that final product. My mindset was basically this. get in, get money, get out. So,
+I'd quote something like $1,500 for a build, thinking, "Wow, I'm about to make $1,500." But then I'd get into it and I'd realize this is going to take me a lot longer than I thought. I'd already
+agreed on the price. We'd signed off and now I am stuck. I just shot myself in the foot. I was wearing all the hats, scoping, sales, building, delivery, and
+I was taking a huge loss. But if I had been running an agency, that problem would have actually been 10 times worse.
+Because in an agency, you'd have to hand that product to a developer, and the developer might say, "This isn't enough money for this build." and now you just slashed your margins. Or they'd ask you
+for like a full project requirement doc and you don't even know how to write that yet. Same thing if you had a salesperson or appointment setter doing your calls. If you don't know how to scope accurately, they probably won't
+either. Now you've got a bad price, a bad proposal, and a mess to deliver on.
+And in an agency, that's going to hurt more than just your bottom line. It's going to hurt your brand and your reputation. I've seen people go allin on the agency model, close a bunch of
+sales, and then realize that their developers aren't as good as they thought or they can't afford enough of them. They're stretched way too thin, drowning in projects, and now they're
+not delivering on any of them on time or at all. That's not a business. That's a stress machine. And here's the thing.
+One of the worst parts of running an agency isn't just the technical side or the delivery problems. It's juggling multiple clients at once, all with different personalities, expectations,
+and timelines. If you don't align on these expectations with your clients from the very beginning, it's going to be a nightmare. And I've seen that myself. Even if someone is willing to
+hand you $5,000, that doesn't automatically mean you want them as a client. AI isn't magic. Some people think it is. And if the client is in debt and hoping that your AI workflows
+can save their business, you're setting yourself up in a really bad situation.
+That kind of pressure will make the project miserable for both of you guys.
+You don't want clients who are insanely riskaverse and looking for AI to plug every hole in a sinking ship. You want people who are forwardinking, who see AI
+as an investment to get ahead of the curve, not as a lastditch lifeline. One of my go-to discovery questions was always, "What do you think about AI and
+where do you think it's going?" This answer told me a lot. If they were hesitant or skeptical, I knew they'd probably resist the process. If they were excited and bullish, that's the kind of person who I want to work with and who's going to be a great partner.
+The real issue with diving into an agency first is that you're trying to run before you've learned to walk. You haven't yet learned the full journey from the first outreach message to
+scoping the project in detail, building it, deploying it, and deciding how to support it long term. And until you've done that whole process yourself, no way you'll know how to lead a team through
+it. Beyond just team size, the difference is an agency owner is usually taking inbound requests, helping deliver them. A consultant is actually being approached as the expert. The business
+owner is going to say, "Help me figure out what I need. I'm here to listen to you." Consultants get paid for their brain and their expertise, not for how many employees they manage. And for me, it's not just about making money.
+Sustainable growth means you enjoy what you're doing. You keep learning and you build something that has long-term potential. Think of it like learning golf. When you first start, you're going
+to get blisters on your hands. That's just part of building the skill. And you can't wear three golf club gloves forever every single time you want to play. You're going to look ridiculous.
+So, you'll get those early blisters figuring things out solo. And that will make you stronger and it will make you a better leader later. When I made my first $1,200 from an end-to-end
+workflow, it came from an inbound lead, someone who had seen something I built and reached out. We had a casual conversation about what they needed and I was able to deliver on it myself and
+they were happy. That project gave me the confidence to know I can do this.
+And from there, I learned how to scope better, price better, and eventually teach other people my system. If I had to start over, I'd 100% begin as a freelancer, then move into consulting.
+And only then once I'm really good at the process, think about building a team around me. Because when you start solo, you learn the foundations, you protect your margins, and you actually enjoy the
+process instead of burning out. The alternative, becoming an AI consultant.
+So, if starting an agency isn't the right first move, what's the alternative? For me, the answer was simple. Become an AI consultant. Now, when I say consultant, I don't mean you're sitting in an office all day
+writing 50page reports and sending invoices. I mean, you're getting paid for your brain, for your ability to see how a business works, spot inefficiencies, and design AI workflows
+and systems to actually solve those specific problems. You're the strategist and the builder, and you don't need a team to get started. This was a game changer for me because I didn't have to
+manage developers, juggle payroll, or figure out how to keep 10 clients happy at once. I could just focus on the one problem in front of me, just one at a time, solve it well, and move on. The
+thing I love about consulting is you can jump into real high impact problems quickly, like helping an ecom brand automate 80% of their customer support
+or building a lead qualification chatbot for a coach so they only talk to their most serious prospects. Those things I just mentioned aren't nice to have projects. They actually save time, cut
+costs, and help those businesses make more money, which means those business owners will be happy to pay a lot of money for those. And here's where it gets exciting. Big consulting firms are
+making millions just on strategy before they even actually build or implement anything. Enterprise AI assessments can range from $7,000 to $50,000. Strategic
+AI road mapaps for mid-market companies can cost $90,000 to a4 million. Asenture actually booked $600 million in AI
+consulting in just one quarter and $2.6 billion in 6 months. The only reason small and mediumsiz businesses aren't paying firms like McKenzie or BCG for AI
+help is because they simply can't afford it. But they still want and need that level of guidance. And that's where you can step in at a fraction of the price.
+Your first step, become an AI freelancer. Of course, before you can become a consultant, you want to have some proof that you can deliver. And that's where freelancing comes in. I
+know the term freelancing doesn't sound as shiny as consulting or agency owner, but this stage is critical. As a freelancer, you're getting paid to learn. You're testing different
+workflows, solving real problems, and building up your portfolio, all without the pressure of running a big operation.
+The goal here isn't to make millions overnight. It's to rack up three to five solid paid results that you can show as proof of what you can do. For me,
+freelancing gave me four things that I couldn't skip. Proof of results, so that when I said, "I can save you x hours a week." I actually had examples.
+Testimonials, actual words from clients to build my credibility, confidence in my process, I knew how to handle a project from start to finish, and
+clarity on my niche. I learned who I liked working with and who actually paid well. Without those things, moving into consulting would have been guesswork.
+One win led to another and another. Each time I learned more about how to communicate with clients, how to price correctly, and how to spot red flags
+before taking on a project. You just have to be in that mindset of getting paid to practice. You're not just trying to make as much money as possible on every deal. You're trying to get better,
+faster, and more efficient with each project. What you're doing here is optimizing for experience rather than cost. So, if that means you end up doing your first project or two for free in
+exchange for a testimonial and a case study, that's 100% worth it. Think of it like building your own playbook. So when you eventually start consulting, you're not figuring things out for the first
+time with a high ticket client breathing down your neck. So the big question remaining is how do you actually sell your first AI workflows as a freelancer?
+How to sell AI workflows? So now you know why we start with freelancing and why those first three to five projects matter so much. Let's talk about how to actually land them because the process is way simpler than most people think.
+Here's exactly how I go from zero to a paid AI workflow deal. Step one, choose a painoint to solve. The first mistake a lot of people make is just saying, "I
+can automate anything. Just tell me what you need." That's way too broad. You need to pick a specific type of person that you want to help. Coaches, ecom store owners, agencies, whatever, and
+pick one clear problem to solve for them. Now, I'll be honest. I ultimately went broad because I had a lot of inbound leads from the channel, but if you're starting from scratch, I highly
+recommend niching down. Not only will it make your outreach and your content more consistent, but it will help you convert at a higher rate, deliver better results, and you'll end up being able to
+charge more. Think of it like this. A steakhouse can charge a premium for a little 6oz fillet, while an all you can eat buffet might give you a 24- oz
+ribeye for cheap. When you specialize, you're the steakhouse. People pay more for a specific thing that you're really good at. Step two is to build a simple
+demo or case study. People need to see it to believe it. That's why I would always create a quick demo. Sometimes just like a quick 2-minute Loom video, just showing a before and after. For
+example, the before could be a coach manually messaging every lead to qualify them. The after could be your chatbot in action, which does that automatically
+and only books qualified leads onto the coach's calendar. You're showing the destination, not the car that gets them there. AI is the car. The result is the
+actual destination that the business owner cares about. Step three is to outreach with a strong offer. You need to make the offer something that the business owner would feel stupid if they
+said no to. And what a lot of freelancers miss out on is that you have to speak their language. Business owners speak in money and time. If you can relate everything back to those two
+things and make it a no-brainer, you'll close deals at a much higher rate. A no-brainer to me sounds like this. Hey, you're doing this process manually,
+which takes you 5 hours a week. If you value your time at $100 an hour, that's $500 a week. Over a month, $2,000. Over a year, $24,000. Now, if I can go ahead
+and build you a system that eliminates all of that manual work, I'm not just giving you back 20 hours a month, which is huge. I'm also giving you back $2,000
+a month in value. So, paying me only $2,000 for that solution is a no-brainer because over the course of the year, you're getting back 240 hours and saving
+$22,000. Step four, deliver, document, and capture metrics. After you've got a client on board, your next job is to track metrics before and after the
+automation goes live. Ask questions like, "How long does this task take manually? What's the error percentage?
+How many leads or tickets are processed per week?" Then, after your system's up and running, measure those same numbers again. This will do two things for you.
+The first one is that it will give you a rock-solid case study to win future clients because you're objectively proving that your system added value.
+And second, it shows the client in black and white numbers that their investment paid off. And when they see that proof, they're obviously way more likely to give you a strong testimonial because
+now you've helped them feel the value, not just hear about it. Remember, you're not selling AI. AI is the tool. What you're really selling is the time saved,
+the money saved, the extra revenue generated, the ability to avoid hiring another employee. When you figure out someone's painoint and you press on it, then show how your workflow gets rid of it, closing the deal becomes way easier.
+Transitioning to an AI consultant. Now that you've done a couple projects and you have your testimonials and your case studies, you have the credibility to raise your prices. You can package your
+offers differently and start selling like a true consultant. As a freelancer, your pitch is usually tell me what you need, I'll build it. As a consultant, your pitch becomes more of a let me
+figure out what you actually need, then I'll design the solution for you. And this shift fundamentally changes how clients look at you. You're no longer
+just an extra set of hands or, you know, a subcontractor that they can push some work to. You're the expert, the strategist. You're the one they trust to guide them through the chaos and all of
+this noise of AI and automation. And once you've proven you can deliver those results, you can stop charging for tasks and start charging for outcomes. As a
+freelancer, you might be charging $1 to $5,000 per project. As a consultant, you can package that same expertise into $10,000 plus solutions because now
+you're not just building workflows, you're designing systems and integrating into a company's specific operation. And those systems are worth a lot more than
+a single automation. This is where I stopped thinking in terms of projects and started thinking in terms of systems. Instead of saying, "I'll build you a chatbot for $2,500." I'd say,
+"I'll design and implement a full lead qualification system that runs 24/7, save your sales team 20 hours a week, and increases conversion rates, and we'll build that together over the next
+month." Pretty similar work, but it's framed as a high-value business changing solution. As consultant, part of what you're selling is thinking beyond the build. I've had projects where the
+strategy document I delivered outlining exactly where AI should and shouldn't be used in the business, was actually worth more to the client than the workflows themselves. Because now you're not just
+the automation person, you're the person who makes sure their AI strategy makes sense, actually works, and drives ROI.
+This is also where you start to land longerterm engagements, which should definitely be the goal. Monthly retainers, ongoing advisory roles, even revenue share deals. These aren't
+oneanddone builds. These are partnerships where clients keep you around because you're continuously spotting new opportunities for them to save time, money, and make more money.
+And this is exactly where you want to be before you even think about hiring a team or building a full agency. Remember those insane figures I mentioned
+earlier? A center booking $600 million in AI consulting in a quarter and then 2.6 billion in generative AI related sales. If billiondollar companies are
+pouring that much into AI consulting, there's an enormous opportunity for skilled individuals to carve out their piece of the market, especially for small and mid-size businesses who can't
+pay enterprise rates but still need expert guidance. And then when you nail that aspect, the next logical step, if you even want to do it, is building a team around you. But now you'll be doing
+it with the skills, confidence, and processes to make sure it actually works. So here's the big picture. Don't jump into an agency too fast. It's a lot harder to get right when you don't have
+the experience yet. Start as a freelancer. Use that stage to learn the craft, deliver results, and build credibility. Then take those wins and evolve into an AI consultant where you're not just building workflows.
+You're solving real business problems, and getting paid for your expertise.
+That's the path I took, and it's the one I recommend if you want this to be sustainable, enjoyable, and actually profitable long term. You don't have to quit your job tomorrow. You don't have
+to hire a team right away. You just have to take the next step that's right in front of you and focus on that. Get your first few wins and continue to build off of that momentum from there. Now, I
+don't want this video to go too long, but I tried to pack as much value as I could into it. And if you want to get this full document, so you can go ahead and take a look at it. Could be a great resource for you. I'll drop that in my
+free school community, which will be linked in the description. And of course, if this kind of stuff interests you and you're looking to connect with other people who are just as interested in it, then definitely check out my plus
+community. The link for that will also be in the description. I do a live Q&A every week in there. There's educational resources, but really what I think is the most valuable is the actual network
+of people who are also paying to be a member, so you know they're taking it seriously. So, I'd love to see you guys in those communities. But that's going to do it for today. If you enjoyed the video or you learned something new,
+please give it a like. Definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I'll see you on the next one. Thanks everyone.

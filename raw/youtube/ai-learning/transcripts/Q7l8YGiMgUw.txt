@@ -1,0 +1,1073 @@
+If you write code. If you type code
+today, it's not necessary. Neither of you have been writing code
+as much or at all?
+At all. Jeroen Gordijn and Jeroen Dee. Two real frontrunners join me to discuss
+why you should stop coding right now.
+How do you implement spec
+driven development? What is Dark Factory? What does an agentic company
+look like to you?
+We were simply running out of ideas like,
+oh shit, but what should we build next? We did everything right. So what's next?
+What's next?
+So it's free cocaine? A train is going,
+and I want to jump on the train. And I don't want to waste it
+by when it just departs the station.
+And I'm left behind. And it's like,
+sorry, you're no longer necessary because you don't know how to work
+with these kind of tools.
+And people can still hop on?
+Is the
+craft of software engineering is a dying. Is it dead? Where is it going from your perspective?
+Not software engineering,
+but software development I think is already solved.
+Sort of say, yeah, I think if you write code, if you type code
+today, it's not necessary.
+That's the difference for you
+between software development and software engineering.
+Yeah. Because you have to do some engineering.
+Right. So if you create an application
+where do you store your artifacts? Where do you store your assets?
+What do you want?
+How do you want it to work. Do you use Azure Cloud or Amazon Cloud
+or what do you want to use?
+How do you want to set it up? Stuff like that still matter, right? Do I want to integrate with what system?
+That's the engineering part. But the writing of the code
+no longer necessary. How long has that been the case? I think it's sold since opus 4 or 5.
+Yeah, the 24th of November last year. You know the exact date? Yes. Yeah.
+Which means that both of you, neither of you have been writing code
+as much or at all. At all? At all.
+I stopped in September or October. Gotcha. And then it was difficult because
+then I noticed myself really typing.
+You see that file on on line 12? You need to change that. Okay, so it was a learning process.
+It was not optimal, of course,
+but it learned me how does the dice work.
+And from that
+now I can do it completely automating. Yeah. How is that for you? You know. Yeah. Exactly the same way.
+So I haven't really written a line of code
+since somewhere last year, I would say.
+And, Yeah, it's what you run says,
+like the engineering part.
+It will go to an abstraction level higher. Right. And you will think about concepts
+and how these concepts can be implemented.
+But looking at I sorted, you have quite some go experience
+for instance.
+So I like go as much as you do. Okay. I, I, I would say yeah. But you know, going into the language
+and having all the specifics
+about the syntax and stuff like that,
+that's not really relevant anymore in that sense. Yeah.
+I was reading really actually on my way
+here. I love reading Reddit
+because there's a lot of things going on specifically,
+and there was a narrative
+of when you submit a pull request now
+that people are no longer writing code, should you still understand
+the code specifically
+that the agent has generated for you
+when you submit a request? Because for me, that is a thought
+that in theory sounds good.
+But when we generate more and more code,
+like volume becomes quite quickly accessible
+to a lot of people.
+And when we're talking about an
+individual, you can already work in quite, quite a big volume. But when we're then looking at a team,
+it's going to be quite challenging
+and standing
+all of what you've generated so far. Yeah. So I'm curious to hear what you think.
+Yeah. So my team
+so I try to advocate within my team to for everybody to use the agents,
+especially the coding agents.
+And I think we are succeeding 
+quite a bit. Even my product owners writing the code.
+And what we saw was that the amount of pull requests
+were ramping up quite quickly.
+And so we were becoming the bottleneck,
+right? The humans, the humans that who need to.
+And then we're getting these really large
+pull requests. ET cetera. So I think it all depends on
+also the risks that is involved.
+And if we are doing certain things
+and drafting certain pull requests
+that have a lot of risks associated
+with them, we will have a look as humans.
+But there are quite a lot of things
+which are there, okay, not really relevant and don't have an enormous amount of risk
+associated with them.
+I think it's less of an of an idea to have like multiple people
+read this request, right.
+So what I would rather see
+is that we invest quite a lot of time and exploration
+in trying to also have the agents review
+the software in that case
+and automate that as much as possible. And, yeah, have a little bit of a step
+in towards like the dark factory,
+way of manufacturing software. What is Dark Factory?
+Yeah, that's that's a term that we saw, that we read about a while ago.
+And the analogy would be that
+within a normal secretary, you would have the lights on
+because humans are working there
+and they need to see and do it
+in order to produce stuff. And in a dark factory
+where the robots would be working,
+you won't really have a need for a light. So they switch off the light. So it's a dark factory. Gotcha. Yeah.
+And what we what would be very interesting is having some kind of
+input in towards a dark factory.
+And then the software
+would be at the output. Right. And yeah, we're now trying to investigate like
+how can we do that within our department.
+Yeah yeah yeah. Is that the same what you've seen
+you do that got reviews is becoming the bottleneck
+and the humans are part of that.
+Absolutely. Yeah. And with the improving quality of the models
+it also becomes less of a problem.
+Right. So the quality becomes better. And I noticed now that still there's
+a lot of experience in creating the code. Right. If you give two different prompts
+you might.
+So if you just five coding and fire away
+then you get code. But is it the code that really aligns
+with your code base?
+But over time it gets better and better,
+and if you give it more feedback and do investigation and spec it upfront,
+you get a better end result.
+And then I noticed
+that I'm starting to look less and less at the code
+because I think it's already good.
+So if I look at it
+then see there's nothing to see here. Normally only the input was maybe wrong.
+Respect it incorrectly. So I really need to look at what what was the input
+and how can I prove that it works?
+Because code is not important. It's the
+the end result that matters, right? Does it work?
+And that's what we should focus on. Well, the code not being important. For me, code is always needed to be simple
+and easy to change.
+In essence,
+I still want that in my generated code because otherwise some point I'm just going into a bottleneck
+that is code and change faster.
+So I still want kind of good
+and healthy conventions in place. And do you capture that through specs
+or what
+are your conventions
+and how do you capture that? I wonder how that's going in
+future. Right. Because if you have the specs
+of what the software is,
+why do you care for the code quality? If you can throw it away and rebuild it
+immediately, I hope I can like
+that's the that's the ambition. But so far would we be able to throw away
+a full code base if we have it specked out
+and then regenerate it? I would love to.
+Do not yet, not yet. But if you're working spec driven then
+it becomes more of more of an option.
+Yeah. Let's explain what spectrum means, because
+I feel like we're stacking capabilities. We have the model,
+then we have a harness around
+that which builds some conventions
+and checks and balances in place. And now we have ways of working
+on top of that.
+Which spectrum
+and development is one of them. Yeah, yeah. So you can just open your harness and say,
+okay, build me this feature, go right.
+And yeah, then it's like throwing a dart
+at the board. Maybe you will hit the bull's eye,
+but probably not.
+Right. But you it can be really nice
+or not what you want. And you have to change it
+and you can iterate over that.
+Or you can think upfront and really
+specify what you want as an end result. And if you can do that, then the dart
+will be more close to the bullseye, right?
+It will be more close
+when it when it's not close, will you just try again
+or what's your way of working.
+No, no. So, yeah, it's like with human rights, you can never spec 100% perfect.
+It's always
+you specked it, you you make it, then you check it and it's like, oh,
+I forgot this.
+Or a colleague comes along and he says,
+well, what about this situation? And they have to adapt for that.
+So that's what I mean.
+You will not immediately bullseye. But if you spec it,
+then you get the closest to your target.
+Yeah, yeah. How do you implement
+spectra and development? You use one of the frameworks out there.
+Do you just use your thoughts
+in a markdown file? Do you have a way of working that works well within your environment
+or your team's environment so far?
+Well,
+we so we have tried different frameworks. So there was this framework by GitHub
+that was spec get right.
+And then one of the downsides of spec would be that
+it would generate a lot of markdown files.
+It's like the wall of text, right,
+that everybody is referring to. And it's basically too much for people
+to actually consume.
+And well, what least for me,
+I cannot speak for the whole entire, but okay, just for me.
+And then at one moment in time,
+you found out about open spec.
+And this is like a nice middle ground between the artifacts
+that it will actually create and generate.
+And for us to review and check to see if we missed anything,
+if this is the correct direction, etc..
+I was using beforehand, I was using beats
+quite a lot by Steve. Way, way back.
+And then basically using the plan
+mode of the agents. You know, cloud code had a plan mode, etc.
+and then converting that plan mode into
+beach items that then can be implemented.
+But right now we settled upon using open spec and it will
+it will create like a proposal
+in which we you will see the the idea
+behind the change that you want to make. It will have a design document as well,
+which sort of with a part
+that sort of reflects
+the architectural decision records type of information in that.
+And then you will have the specs itself
+and the specs itself. It looks a little bit like Gherkin,
+you know, Gherkin I would say.
+And it's writing down these rules
+in human readable format
+of what the software should be able to do,
+and which is very nice. And what's also very nice is the moment
+that you were actually done with,
+with the specific change
+and you will say, you know, we're done, we're going to archive this. It will, it will merge the specs
+towards if there were spectrum already towards those specs, if it changed,
+if it's added, if it's modified, etc..
+So over time you will have a set of written down behaviors that
+the software products should comply with. And this is very interesting because
+this is something that we as humans
+are also very bad at keeping a track of
+what the thing should actually do. I don't know if you've ever encountered
+a software project
+in which documentation was always on par.
+That was never there. No one wants to do it as well.
+Yeah, that's the thing. Right.
+And and one of the things right now
+is that you can have a look at like the business requirements which are there
+and the software should be there.
+And that's, that's very interesting. And, and for me
+at least,
+and I think for as well right now it's very good
+basis to start from using these open spec specs,
+so to say in the artifacts that will create
+and generate the software.
+Yeah. Gotcha. Yeah. So then if that's clear enough. Yeah, I think so. Can any team, if they have an existing
+code base adopt this way of working.
+So you don't have to do it from scratch
+necessarily? No, no a lot of people think, oh,
+I need to do this from scratch.
+The many questions we get is,
+do I have to first reverse engineer all the specifications before I can start?
+Do I make the Omega spec? Yeah. What is there?
+But that's not necessary. You can just immediately start.
+In the beginning, I started in a team
+and I was the only one using this. And yeah, I could just use it
+and more and more people started using it
+and now we all use it. But it's not necessary.
+Just start with it. And then later on, if you find the need,
+you can always reverse engineer all the specs.
+But in the beginning, just start with open
+spec, especially the spec part. And then implementing
+that already gives you so much
+benefit. Gotcha. And the existing code is just not specked. And that's fine I guess. Yeah.
+Because the models are so good
+they already start investigating your code base
+and they figure out.
+Oh I see that this is already there. And there I see this file there and then
+it knows how to to start writing it.
+I want to zoom in into the
+the difference between model and harness and your experience in there, because I feel like models
+have incrementally improved.
+I was a fan of opus. Now I'm really fan of Codex
+because I feel like they improved
+quite a lot compared to opus. That has not improved as much. But then also the harness matters,
+like if I use either model and GitHub
+Copilot versus
+the native, let's say native company harnesses, Codex or cloud code
+specifically, I do notice a difference,
+but time is limited,
+so I cannot do exactly what I'm doing in kind of a scientific way
+with all the harnesses.
+What are your thoughts so far? Do models matter more than harnesses
+nowadays, or is this trend of harnesses
+mattering more? Also, what you're seeing? It's the models. Yeah. Yeah okay. Yeah. The harness is do matter of course.
+For instance with the harness,
+especially if you get like one of the harnesses
+by one of the frontier labs,
+they will provide you with, for instance,
+a system prompt. Right. And with each new release, they can also
+tweak the system prompt a little bit.
+And that would also mean
+that it will impact the behavior. Right. But in the end, most
+I would say more than 90% of the work
+that will actually be done
+by the self. Right? There are all the workers we run. Yeah,
+because it's the model that does it.
+And the harness only gives it
+hands and feet so that it can actually get out of the box. Otherwise it's just sending
+text back and front. Right.
+So giving it tools to change codes on your machine,
+that's what the harness is.
+And then it's harness can have its own
+prompts to give different behavior.
+That's what you probably notice. And they may have different thought about okay, how should the edit
+tool work and stuff like that.
+But most of the work
+comes from the model. Yes. Gotcha. And there's a lot of fluff marketing.
+What's really interesting
+is to put there's a man in middle proxy, put that in between
+and look at what's going over the wire.
+It's so interesting. And then you see
+well there's nothing special. But what have you noticed
+when you put that in the middle.
+There's only text going back in front. Yeah. And that's
+yeah it's actually quite simple.
+There's a system prompt that's that puts
+in just the specifications from your harness like in, in your,
+your the pie coding agent.
+An open course has something like you're
+the best coding agent in the world, stuff like that. And there's some description
+about how it should behave.
+Like always make sure you understand
+the user stuff like that. Right.
+So that will matter whether it will just
+go or ask a question, stuff like that. That's behavior change.
+You might notice, but also something
+you might be able to change yourself. It puts the agents MD from the users
+folder in there and your agents
+from your project in there. That's all in there. And the skills, the skills that are,
+that's the system prompt
+that gets sent with it. And then your own message. Yeah. And then next to it,
+all the tools that can use
+so for pi is quite we use pi the harness. It has just four tools right now.
+So it's like edit read for write files
+or creating a file and bash.
+That's it. That's all the tools
+it gives to the to the harness. And then it can do everything.
+And for open code is more involved
+because they also have this question tools or that can ask you questions
+and you can add tools to it either
+or just fire extensions. Yeah.
+But then it's just text back and forth.
+So you send the question how many files are in my folder
+to the agent over to the model.
+And the model doesn't know. Right. So what it does is as well,
+oh, I have the best tool. So I can do an LRS.
+So it turns back. Use the best tool, do
+an list on your machine and your harness will just perform that and send back
+okay this is the output.
+And then the model can see okay
+I see seven files and then it can make a response.
+Oh I looked at your at your folder. And there are seven files. In your folder. Is a harness comparable to an IDE.
+Because both of you
+you mentioned you use pi and pi. If both you use it, that is some form of
+preference compared to one of the phones.
+So in the Frontier Labs or one of the
+other open source ones, is it comparable? I gave this a little
+bit of a thought this morning
+anticipating.
+So if certain functionalities from an IDE, for instance, are actually
+built in underlying CI tools, right. For instance, in Visual Studio Code
+you would have to go please LSP.
+Right. But in effect, it's an process
+that will run also in the terminal.
+So a lot of these types of functionalities
+that will support writing software
+that you would normally have in an IDE,
+it can be actually used
+and called within an agent, right. If they have for instance, access
+to batch etc..
+So yeah, in that sense, yes,
+I would say so. That's what it feels like,
+because what I've seen so far
+is that there's a lot of,
+I think, varied opinions. And for the people that haven't tried it,
+if they do try it, they fall in love with,
+I feel like their first harness and for the majority of time,
+especially early this year,
+late last year, specifically,
+the harness cloud code was what people fell in love
+with. Me too, and then me too.
+And it's very hard to then be like,
+oh, do I let go of this? Do I try other things?
+Someone has to take you out and be like,
+actually, things have evolved and experimentation matters. But in the end, if people are comfortable
+where they are comparable to an IDE.
+For example,
+my first one was Visual Studio Code. I also didn't want to switch to IntelliJ,
+but I had to because of some of the plugins
+that they offered.
+I feel like
+harnesses are quite comparable, and I have noticed
+people are less and less in their IDE,
+and more and more in their terminal
+with their favorite harness. Yeah, yeah,
+there was a presentation last year.
+I think it was right about the
+ID is dead. Oh yeah, the AI, the the engineer. Yeah.
+Yeah, yeah. That you're in
+your environment like IntelliJ.
+You don't need it anymore. Right. So indeed, in that sense you can say,
+okay, your pi open code, cloth code.
+That's your ID now. Right now
+the thing with the Ides from anthropic
+and Codex is that they are tied
+to their own product. Right. And there are ways to a little bit move
+around it,
+but are really geared
+towards their own products. And that's why I fell in love with open
+code, because it's much more open.
+And then same thing. But I, I fell in love with by
+because it's more simple.
+Yeah. And I thought, okay,
+oh all the fluff is gone. And now I see it's really model.
+But you were describing an interesting
+aspect and that's, that's
+the moment that people will
+or have devised a setup for themselves
+that apparently works for them.
+They are plateauing, right. And they're very comfortable. And apparently this gives good results
+and they're
+there is no incentive to explore further. And indeed,
+because we are limited in time, right.
+What we can do every day. Also how history has kind of gone right. You find your way of working
+and that's it.
+I think reality is that things just evolve
+also very quickly. Yeah. That's on top of what you mentioned.
+Yeah yeah yeah yeah.
+Correct. Correct. But that is very interesting. And I do think that we should explore
+more, especially in this day
+and age of all these new different developments that are taking place.
+I mean, we
+so I come also from a background.
+We were using Visual Studio right before Fisher Studio
+Code came along,
+and it will take quite a long time
+before a new EDA comes along, etc., etc.
+but we don't have that luxury anymore,
+so we need to explore more
+what is happening
+and the moment that we get stuck, we need to step back
+and have a broader view like okay,
+so okay, so we my myself personally okay I've plateaued now what what can we do now
+that's very important.
+And that's something I don't see happening
+that much. Not the other colleagues. No. Yeah I spoke with Adios Marnie.
+This was a couple of weeks ago. And he mentioned kind of the time
+that you have. The free time that you have.
+Could be time you spend on innovation
+and then you can compare it to you have a few innovation
+budget tokens.
+Then the question is this token
+that I have, it's limited, right? I only get maybe one a day or one a week,
+depending on how much free time I have.
+Where do I spend this token on? I feel like for people
+that are not doing any type of tooling,
+it would be that to start off
+with and spend it, because I don't think you're going to immediately
+get it like that takes time specifically.
+And then for the people that fell in love with cloud code,
+it might be jumping on a new harness. It might be trying to figure out
+how to not do it on your machine,
+but on a remote machine. There's a lot of ways to experiment
+nowadays. Yeah, yeah. What would be the kind of gradual approach
+and how would you kind of
+continuously go more in-depth
+from your both perspective? I don't know who wants to take it
+first, though.
+If I would spend any time 
+and it depends on what you love already is,
+but I think it's more interesting to see
+what the different models
+bring to the table and how they work differently than spending your time
+with trying different agent harnesses.
+Gotcha. Codex cloths, open code. They're all fine, but it's really more
+interesting to see if I have this problem
+and I give it to cloth, or I give it to 
+a codex model. What's the difference?
+What do I see? For instance,
+if you do front end, you see that opus are
+is way better at front end
+than the deep models. But for back end I find the deep T models
+better nowadays than opus.
+Yeah, 
+but also there are a lot of Chinese models coming and depending on what you think
+about the Chinese models.
+But still, it's interesting to see how quickly they evolve
+and what they bring to the table.
+I like that, yeah, that. And to answer your question,
+from my perspective,
+like one of the things is that
+people need to find a spark inside of them that will trigger them to actually
+want to perform these explorations,
+whatever the, you know, in depth might be. But they need to find some kind of
+intrinsic motivation to want to invest
+time, personal time, albeit
+if you want to have the tokens, etc., that you want to spend these tokens
+on the new AI developments.
+But that's very important. That's also why I'm very so we also
+provide workshops and stuff like that.
+And it's
+there are always a couple of people there attending who have this, this fire
+inside of them, right?
+This enthusiastic behavior
+and curiosity to explore
+this, this kind of new technology. And that's that's super interesting.
+Like, how can we get that specific spark that these people have and try to convey
+that to towards other people?
+And that's very hard to do. But if you have that, that one token
+suddenly becomes then yeah, yeah.
+Because you get it from your sleep. Exactly. Your hobbies. Yes. Goes away. And this is the most important thing.
+Yeah.
+That's becoming unhealthy I am yeah. I've heard people even say because of the
+kind of budget that we get. Right. If I could do a cloud called
+Max subscription, I get subsidized
+way more than if I would do pay as you go.
+So people think time is limited
+and they can build all of a sudden way quicker. And building is some form of satisfaction,
+some form of dopamine.
+And some people have described it to me
+as kind of a diction. Right. The time that I don't spend building, I should actually be building
+because time is limited,
+and maybe in a year
+or so I cannot build as much anymore. I want to learn now as fast as I can. Yeah, yeah, yeah, now is the time.
+Yeah, that was the time, right? Yeah. So we follow
+also this guy like, Jeffrey Huntley
+and, the, the,
+the father of the Ralph Loop. And he also said, you know,
+all these projects that you wanted to do
+when you, yeah. Yeah, when you retire,
+that's all possible now.
+So all these ideas and then one moment in time, we need
+also to have these ideas to explore,
+like all the different variables
+that are at play. Right. Like, for instance, what your room
+was describing like a important variables
+that are like the different llms
+that you can use, but also the reasoning levels
+and the different harnesses, etc..
+But you need to have these ideas to,
+to actually be able to explore. Right? And we were simply running out of ideas
+like, oh shit, what should we build next?
+Like we did everything right. So what's next? What's next? So every time I get like this new idea,
+I'm really, really happy.
+But then also and right now I'm a little bit more, calm space.
+But I also would have these moments
+in the middle of the night. I would wake up,
+I would have like ten ideas, and I had
+and I couldn't get back to sleep, like,
+okay, I need to build this now. But that, that has passed
+now, thankfully.
+Yeah, yeah, yeah, that was a real problem. Yeah, I can imagine. Yeah.
+Apparently it was world, right? It was a problem. Right?
+People were doing, research like what's going on with these eyes on me people and
+spoke about this, together with, one of the
+I Microsoft people.
+I forgot this name. Scott. Scott. Scott. Scott. Okay, I forgot his name,
+but apparently it was a thing.
+Yeah. Gotcha. Yeah, yeah,
+there's always one more prompt. Right. So I need to go to bed. But just one more point,
+and then I go to bed,
+and then it's working and finishes and. Oh, I have to respond to this. Yeah. And you can never go to the toilet
+without starting the agent
+because you always want it to be running. Right. And that's, that gives a burden. That gives pressure. Yeah.
+I feel like this is
+this is how it started. And especially in some of the people
+I talk to or some of the organizations
+I know of, cost is becoming a bigger
+and bigger factor. Also narrative online,
+this is not possible
+because things are subsidized. But what if compute limits here
+and then etc. etc. it might not be available anymore.
+And that last part I don't know if I agree with,
+but I'm curious to hear what you think.
+Right, right now I feel like
+we are being enabled by the frontier
+models, by the organizations, by,
+I think, the cost factor. And right now it's doable very much
+especially for the individual level,
+less for enterprises,
+but especially still doable. Where's this going? I heard that the anthropic and OpenAI
+would be in the black figures
+if they stop training. So they earn money
+on the inferencing already.
+Yeah. Which means they should be able
+to just keep things stable. Yeah. Well, and look at deep seek.
+It came by
+and it has a really reduced cost. So I don't think that it will become more
+and more expensive.
+I don't believe that. And I certainly don't believe
+that it will go away. There's certain systems possible
+like like thinking in 1995
+or the internet, it's
+just a thing will go away. It will not. Is it that comparable to you?
+I think so, yeah. Yeah, yeah.
+And I think we're even in the same time
+figure. Right. So we're
+now like where the internet was in 1995.
+It was just there people started using
+it was like, oh, this is interesting.
+Some people still think,
+what do I need to why do I need for I can do without.
+Yeah, but we'll go faster than the
+internet probably I remember that. Yes. And this is going so the developments
+currently are going faster.
+Yeah. So it's free cocaine. Okay. And then and then the
+dealer is gonna take it away or something.
+Yeah. Yeah I don't know
+I was thinking about this as well. Like is there a possibility in the future that we will look back at this specific
+period and said all this technology,
+we had it back then,
+but for some reason it's not here anymore. It's going to a weird future. Yeah, that's super weird.
+Is that going to be the case?
+I don't really know. I did come across some on some kind of
+websites, that were actually plotting the costs
+that companies are making right now,
+and it's not looking like for the, the companies trading the LMS,
+it's not like
+they're all making a loss at this moment. Right. The only like the biggest company
+that actually was making quite a profit
+was of course in vedere. Oh yeah. Yeah. So Nvidia is of course
+making a lot of profit. And then I said something you didn't agree
+and you just got,
+you got me off like physically now. So that's that's true. And then looking into the future
+that we have some kind of possibility
+to have better control
+over the LMS itself. Right? So right now
+we're very, very much dependent on,
+on, of course, the frontier model
+model companies. But at the moment
+that we can actually run the LMS
+somewhere, albeit on your super
+maxed out laptop or somewhere
+on a, on a CPS that you can host yourself
+or something like that. That would be wonderful. Yes.
+Does it already make sense for people
+to start experimenting with this on their local machine
+or somewhere else?
+Yeah, yeah, you can do it right? You can do it. But it depends on where you are.
+Is it valuable? Don't start with that. So I see a lot of people 
+that are just using.
+GPT five two or opus 4 or 5 because it's a cheaper.
+But you're cutting yourself right in your learning process
+because there are way better models.
+And then people start
+using an old model doesn't work. Yeah, of course not, because it's already
+we're already way past it.
+So yeah, you hurt yourself in doing that
+same thing for the local models. Local models are really cool
+that they are here.
+They're getting better and better, but don't experiment with them
+if you know what to look for.
+If you want to do something specific,
+just by all means. But don't try and think like,
+okay, it's almost
+as good as opus for seven or GPT five. Yeah, yeah.
+And to add a little bit more nuance.
+So it would be
+I would say yes, do it because it will
+describe the contrast between the very, very good models
+and the stuff that you can do locally. Right. Okay. So that's the learning.
+Yeah. Like, learn how to set up an, an
+how to run a model locally.
+I would say that's valuable knowledge,
+but also to see what the output is as compared to words like the real high
+quality frontier models.
+Right. And also the speed, of course, like if we're going,
+I mean, I, the new Google model,
+the, the 3.5 flash,
+which is really quickly. Right? I don't know the theory.
+Yeah, like 150 tokens per second, etc. that stuff counts.
+And if you do it locally still, even with
+and you will get bad outputs, that's not that not usable for production
+code for instance, you will see why
+the difference and the gap and why
+it will probably take a lot of time still. Yeah.
+So it's the funny thing,
+that kind of AI assisted development, as well
+as kind of using models in production
+right now from a model perspective,
+they are interwoven. And one was first we were always using
+or we will earlier in an earlier
+stage using models in production
+for end user functionality. And now we have AI system
+development tooling.
+And there it doesn't make sense to use 5.2
+versus five point whatever we have now.
+Same with opus 4.7 versus the older ones, unless you notice kind of degrading
+behavior in the higher numbers.
+But let's say
+the highest numbers are the best models, then it doesn't make any sense. But previously using models in production
+for customer facing applications.
+Yeah, there it does make sense, which is why they are available
+in the first place. Yes. So you really need this knowledge of okay
+where do I you use which model
+and where is it relevant. And for people that are now starting yet,
+might make sense to indeed
+look at lower models
+for your own development workflow. But if you actually know
+what you're doing, then you might shoot yourself in the foot.
+Yeah. Which is yeah. And that's a big difference between
+are we going to employ AI
+or an LLM for a proposition
+within a product, as opposed to what we are primarily
+focusing on is AI driven development?
+Yeah. Yeah. Exactly. Yes. How much have you experimented
+with going out of your local machine?
+And also then I'm wondering
+kind of within your workflow within teams, because right now I'm quite confined
+within my laptop, for example.
+But I would love to run things, and
+I feel like that's also the path to scale. That would be enabling scale if you don't
+run it on your own machine anymore.
+But for example, somewhere
+where I can scale like the cloud. Have you experimented with that?
+Yeah, I had an Snr setup where I just started sessions,
+and then this certainly becomes necessary
+when you want to loop, right? The rough loop.
+You already mentioned that.
+So you specify first
+and then at some point you say, okay, I've written the specs,
+but now I want to implement this and open
+spec has this apply. And you can do that and it will start writing code
+and it says oh finish task one.
+They say okay next. And then you have to babysit it. And every time say okay
+continue, continue, continue.
+And your context is growing and growing. But you also have this Ralph loop
+where you just say, okay,
+do the first task, then. Then at the end your harness will stop
+and it gets back to your terminal. And then it automatically in a loop
+says, okay, next continue, continue.
+And then it starts looping
+and it finishes the whole thing. And then the next step
+is putting it in a process.
+Right.
+Because creating the code is one thing. And that's also where I see a lot of problems arising
+that people say, yeah, well it's great.
+I looked at it, it's not what I want. But you can also let the AI give you
+the code that was created, right?
+So I've written this or referred
+and this, this process where you say implement it, then review at, then review
+with opus, then review with GPT, review
+the opus until it's no longer
+find any issues. So and every time after review,
+bring it back to the implementation
+model you've designed. Yeah. After that, then you make the pull request you deploy to test environment
+and also make proof that it works.
+Also, that's part of the whole process
+where the model makes the proof
+and then it still can find, oh,
+I cannot make the proof
+because I missed something. Right. What does proof look like depending on
+whether it's front end or backend.
+So front end, it's screenshots
+of the changes that that were made and the flow of the application so that
+you can really see okay on this page.
+Then the the necessary data is filled
+in, next button is pressed then saves pressed.
+And then we go to the overview
+and it's there like that. Right. And if it's backend
+I want to see the request that was done,
+the JSON or whatever. And the response that's there so that you can see,
+okay, it's really how it works.
+And it makes it really easy to review it
+because then you say, okay, this is what I expect
+or just not fully expect.
+And after that then it is like finishing off 
+putting the pull request in the team.
+And yeah,
+so it's full hands off after that, right. But if you want that, that takes a lot
+a lot of time.
+And then you probably always need
+to actually leftover open or delegated to
+to another environment. Yes.
+Yeah. Yeah. If we have that like on paper
+I've heard people have that
+I've never been in an environment
+where in my team when I was still individual contributor,
+I have had that.
+But if that works
+and it works with high quality and even it reviews itself,
+so the human pair of eyes
+could only be potentially
+on the specifications to see if there was any holes
+or maybe even just going through the code.
+But I think in those volumes you would not
+be able to digest even what changed. In any case,
+what is them left for the current
+engineers that are operating
+or working within this way of working? What is their responsibility
+and what do they do?
+Yeah. Writing the specs and checking the proof. Yeah, yeah. That's. And,
+so I think we're in a engineering phase,
+so engineering to the power of two, right? So normally we would be engineering
+for products, for artifacts, for clients,
+for whatever business need there is. But right now
+we also need to engineer the process
+that enables us to actually engineer
+those things. Right. Yeah. There goes a there's a lot of engineering 
+going into this.
+Like a lot, a lot of time. So I think there's an emphasis
+there also on engineering
+like engineering, the whole workflow, etc. and indeed going over the specs etc.. Yeah, well certainly right now but still,
+but but still the engineering as well.
+Right. Also for the product,
+what we discussed at the beginning, that's still still at play here,
+but on a higher level.
+So then if I, if I extrapolate this
+and I amplify it, in what world are we
+is it like Doggy Dogg.
+Because I feel like we have a lot of
+engineers used to be able to do a boot camp. Then you got a really high paying salary
+at a company where you might work
+on a teeny tiny bit of a bigger picture
+and a bigger puzzle. I feel like that's going away.
+But are we then competing now for
+the roles that in the future will only be? They're the ones where we engineer
+and orchestrate
+kind of a workflows,
+or is it more of a marathon? And some people will just fall off
+and be like, this new world is not for me.
+I don't see myself like
+I love writing code. I don't like orchestrating agents. What is this world we're in?
+If you don't? If you really like code,
+then you're in a tough place, right? If you cannot leave that behind, then
+this becomes really difficult because,
+as we said in the beginning, that software
+development of the writing code is solved by the by the models.
+So yeah, it doesn't make sense to do that
+yourself. It's too expensive
+because the models can do it cheaper.
+We talked about it being expensive,
+but also differently. Makes a really big point about saying
+writing code is now cheaper than flipping
+burgers at McDonald's because the model, albeit it being expensive in tokens, it's
+way cheaper than having a developer
+writing the same code. Yeah, yeah,
+maybe in the future, like, people, you know, currently, like I have
+a colleague who likes to work with would,
+you know, creating furniture and stuff
+like that, like a chair or something.
+Maybe that will be the future. Like,
+I have this nice, like, yeah, artisanal
+like project that I want to make. And I'm gonna use
+all my knowledge to build, like, the most beautiful syntactic code.
+Yeah, maybe that's the thing. But like, for the normal needs that
+we want to provide through software like.
+And the writing of the code
+that solved like last year, November. So yeah,
+I wonder what the impact is going to be
+on, on teams because I,
+I have been in very small teams, kind of like a task force where we come
+in, solve problems, goes quickly.
+It could be with you to, for example,
+short lines of communication. We execute quite quickly. And then I've been in bigger teams,
+and the only reason for it
+being bigger teams is one could be budget and the other one could be, well,
+the grandeur of the project.
+And like what we want to
+what we aim to achieve and solve. Now that last reason
+how big the project is, is not necessarily
+need to be a reason
+to have a big team anymore. I feel like with quite a few individuals
+and likely amplified by agents
+that are quite capable and workflows
+that we've engineered that are quite capable and have high quality output, you can do
+a lot with the smaller team. Yes.
+Which means that the overhead of kind of communication people,
+that is going to go away.
+So I also wonder if organizations
+are going to kind of self-organize or teams, software engineering
+teams are going to self-organize
+to a more smaller scale. That's that's happening right now
+in the US. Right? I mean, that's the trend. Like I think we saw it when.
+In February somewhere when block 
+Jack Dorsey announced like, the the restructuring of the company,
+let's call it like that.
+And he also came to the conclusion
+that, like, we need way smaller teams, like we're we're entering this new era
+and like the bigger
+teams are not
+are not going to be efficient anymore. And we are going base
+of course the same.
+Well Meta's
+going through the same right now. So there's this trend already in the US
+and we're lagging a little bit in Europe.
+Of course, where they see
+that they need to restructure and rethink the way of
+how teams are built.
+Right. Like our normal scrum. What is it like seven minus
+or plus two?
+That's not going to hold without agents. That sometimes feels painful, right?
+If you get a big team,
+there's a lot of communication. Everything goes slow. Everybody has an opinion,
+but with the agents become
+just so much more of a problem. If you have big teams
+and yeah, smaller teams go away faster.
+Yeah, but but there's a big constraint
+and that's that. Yeah.
+It's maybe we need to have companies that will shift their strategy
+to becoming more of an agent company.
+Right. And that's currently not the case. Well, at least not
+that the company is to dive visited.
+And they need to embrace this
+in order for this to actually succeed.
+Right. Yeah. What does an agent company
+look like to you? I'm embracing this new way
+of developing software,
+at least, and not necessarily
+like putting AI in products, like being a proposition, but,
+embracing the new ways of building and,
+giving leeway to creativity
+and innovation through the use of agents.
+Right. And alums. And that's a shift
+that needs to take place here in here in Europe, at least,
+it's the same one.
+Agile was introduced, right? We were there in what was it like? I think 2006 or 7
+that we saw the transition from agile
+and we were lagging a little bit behind
+the US, and those companies saw that.
+And the same will go here with with embracing the old for your business
+and trying to build something.
+And that's a big enabler. But the companies need to change, right? Yeah, I think so too. Yeah. I, I my assumption is that
+it's going to go beyond also engineering
+because I feel like there's
+a lot of outdated workflows that can be automated, semi-automated
+enabled and amplified with agents as well.
+And right now, engineers and kind of the
+technology side is really on the forefront because we are engineering our own
+engineering workflows.
+I think once we book success there,
+it will be funny to see how we can then
+engineer and orchestrate other workflows.
+Yeah, maybe that's going to be the role. Maybe that's going to be so much
+opportunity in the mid sized companies.
+They are really Excel based 
+and they're too big for Excel, but too small to have development
+teams fix that.
+I think there's so much opportunity there
+to to fix a lot of that with AI. Yeah.
+And it's also getting rid of the let's use
+the word the Shri word boil. Right. Like a lot of people working excel.
+That's basically toil. What's toil toil. It's like the repetitive process
+that you don't want to do. Right.
+Oh okay. It can be probably eliminated. Eliminated away. Like that's the whole core reason for the
+what Google called like the toil
+in in software development
+and the operations part. But if we remove that toil
+for the other non IT businesses, so to say they can do
+a lot of other super interesting stuff.
+Right. And yeah,
+I think there's great value there. Yeah really there's a lot of focus
+for developers of course.
+Right. Yeah. So they use that to increase it
+for building these, these models themselves as well.
+But there's so much opportunity
+in business I think so. But they're maybe not always
+technical enough to make enough use of it.
+So I'm really interested to see how we can
+how we can help there. Yeah.
+As final thought,
+we already mentioned that kind of everyday practice
+is incredibly important.
+Currently with the time that we have as
+well as time is might be limited. And we don't know how limited you
+to seem like people that really keep up
+to date with the technology that comes up,
+but also in experimenting. So from each of you, I'm quite curious,
+what would you recommend for people
+to start learning or start experimenting? What has worked for you so far?
+Yeah, one of the things is
+just what zero already said, right? The spark. If you find the spark, then finding
+the time is no longer your problem,
+because then you will find the time
+because you really, really want to. What does that spark for you?
+Where does it come from? I think it started already
+with the first to get right.
+I said, oh wow, this is really cool. That can just spit out
+the whole algorithm just by one sentence.
+It doesn't work correctly immediately,
+but I already can see that this is quite powerful.
+And then it increased. It got better and better, integrated
+more and more into the IDE. Then we got to see tools.
+And the moment
+you could just talk to it and say, okay, I want this just this simple bash script
+because I need this, I have this task
+right in the script. And like, here it is. And it worked. So I was like, oh, wow. And then in your application
+and it's like,
+oh fuck moment, like, oh fuck. It would take me one day
+to write the scripts.
+And this is just one prompt
+and it immediately gives me this script. It doesn't work. I do it again, I give it the error
+and then it fixed it.
+And next iteration
+it is sorted self and fix itself. Like that was the moment.
+Like wow,
+what am I going to do in the future? So I want to jump on the train. I felt like that energy,
+what you set in the marathon
+in my thought was like a train,
+a trains going, and I want to jump on that train
+and I don't want to wait for the goodbye
+when it when it just departs the station
+and I'm left behind and it's like, sorry, you're no longer necessary because you don't know how to work
+with these kind of tools.
+And people can still hop on. Yes, yes of course. Yes yes yes. Yeah.
+I can tell you when my spark was born. So I was following
+the guys from Source Graph
+because they were go shop and they were building
+interesting products, and they also
+dabbled in creating extensions
+for Visual Studio Code. It was first called Kodi,
+but then they also saw
+like the whole agent thing coming up. And for me,
+it was still like somewhere in 24.
+It was like, oh, agent, agent, agent. It was like a little bit
+of a marketing term for me. But then at one moment in time I was using
+the new amp was still not there.
+I think it was Kodi, still in Fisher
+Studio code, and I asked to do something, and it was doing a lot of stuff for me.
+It was changing code. It it saw that I had specific tests. It ran
+the tests, it ran it compiled the code.
+And this was something
+I haven't experienced before. And then I had to pick myself up
+from the ground because I was like,
+oh, it was like the oh moment. So that was when my spark was born. And then I think every, well, every day
+since now it's a little bit
+more slow in the industry. But we the new development
+kept on surprising us.
+Like every time. Like, for instance, we had the same big
+moment at the moment we started using Pi
+for instance, like as a, as a whole,
+different agent harness and and up
+until like yesterday, we were,
+we were experiencing like the new goal instructions that apparently
+all the harnesses now are raising about.
+We had to, you know, explore. Okay. So what does this mean. The whole goal stuff. And we again,
+we're very surprised by this.
+So yeah, that it's like that spark and then all the surprise,
+the surprise that you will still get.
+That's very interesting. Yeah. Yes. But if you want one, one tip, I think it would be like in your everyday
+work, think every time.
+Can I do this with the agent? Can I do this with the agent
+and then try it?
+If it doesn't work,
+then you can always do it manually. But keep exploring, keep trying it.
+And if it doesn't work, think okay,
+what did I do wrong? Because probably you did something wrong,
+right? It's probably your problem.
+Not not model problem.
+They're really good. But if you get that mindset,
+you find little nudges where you can say,
+okay, I want to try that. Let's see if I if I can do that for me. And the funny thing
+is, of course, that there's this sort of
+a famous example
+on the X when Boris journey also just simply forgot to actually use
+cloud code, which he built himself.
+Of course, it's like, oh yeah, I can. Yeah, sure. It was was in a very difficult debugging.
+He was debugging a problem
+and it was taking him quite a long time and said, oh, why? Why should I just ask God
+like success for me or a debug for me.
+So yeah, that's
+that was an interesting association. The robot is always invited.
+Yes, yes. Guys, thank you so much for coming on
+and sharing. Thank you. This was a lot of fun. Yes.
+Thank you. Cool. That's it.

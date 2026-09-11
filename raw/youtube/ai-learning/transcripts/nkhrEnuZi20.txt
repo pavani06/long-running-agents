@@ -1,0 +1,186 @@
+New jobs will be created. Some jobs will be lost. Every job will be changed.
+Okay? So, let's just break it down. Um, it's it's it's always easy to go to one extreme from another, but I always find it helpful when you break the problem
+down, reason about it from its first principles.
+[Music]
+Jensen, welcome to the Hillen Valley Forum. It's great to have you. Thank you very much. It's very nice to be here.
+You've positioned AI as a new industrial revolution with AI factories at the center of it. Can you explain to us what
+is an AI factory and why is it important to understand in the 21st century economy?
+uh AI. We've been talking a lot about AI over the last several years. It's it's multiaceted and I think it's helpful to
+to look at it in this lens. Uh first, of course, AI is a a new technology. It's a new technology in the sense that it's
+built differently than software of the past. And this new software can do things that software in the past could not do. And so, so it's incredible
+technology. All the things it can do, you know, all the things that we have to do to keep it safe, all the amazing things that it's going to enable.
+Fantastic. So there's the technology layer. The second layer which is rather
+new in the last technology industry uh software production. It was done by
+humans typing. Now we have a new industry and this software is produced
+uh with machinery. So you need a a large supercomput. You apply electricity to it and what comes flying out of it are uh
+tokens. And these tokens could be reformulated into numbers and words and proteins and images and videos and
+three-dimensional structures and you know it could you could reformulate these tokens into all kinds of things.
+We call it intelligence. And so this machinery this this machinery looks different than the machinery of the past. And I call it an AI factory
+because it does one thing every single day. It's producing tokens. And the layer above that uh is infrastructural.
+And this is this is the reason why uh we now internalize that AI is likely going to be uh quite an extraordinary
+industrial revolution in the sense that this new technology is going to enable a new industry that I just mentioned AI
+factories the production of intelligence but it's going to go back and revolutionize and transform every other industry. And so all of these tokens are
+going to go into healthc care and education. One of my favorites is education. I use it every day for education.
+um financial services, engineering, we use AI every day for software programming and supply chain management.
+It's about to go into manufacturing and so on so forth. And so so when you think about it from these three layers, it's very clear this is as transformative as
+impactful as electricity was before and it's going to revolutionize every industry. So it's an industrial revolution. So, do you think it's a
+paradigm shift in modern computing and that every factory that's building physical things in the real world will also be accompanied by an AI factory?
+Yeah, perfect. Absolutely.
+um every every company that makes things today uh so long as they move, you know. So so
+so let's say uh let's say you make um lawnmowers and and it could be
+caterpillar and uh or they they build you know construction machinery. Uh today it's uh largely uh manually
+manipulated. In the future, it'll be uh autonomous or highly autonomous or semi-autonomous or or assisted. And uh
+when it becomes autonomous, then it'll be software defined. And and so you're going to have to produce that those tokens, those software that feeds that
+that uh tractor. And so in the future, uh every company that builds things will have have a factory that builds the
+things that they sell. And then they'll have another factory that builds and produces the AI that runs on that thing that they sell. And so uh it's very
+clear when you look at look at uh car companies you know today's car companies largely make cars uh and uh but it's
+very clear that in 10 years time every car company will also produce the tokens that runs in those cars. You've talked a
+little bit about physical AI the concept of physical AI over the last year for policy makers who are thinking about the future of American foreign of American
+policy. Can you explain to us a little bit what physical AI is and how we should be thinking about it?
+take a step back. Um AI uh really came to consciousness, modern AI really came into consciousness about about 12 14
+years ago uh when Alexet came out and uh computer vision uh was uh saw its big
+giant breakthrough and that was like I guess 2012.
+uh around that time when you take a step back what is computer vision uh in its largest context is perception you know p
+perceiving the world whether whatever modality of information it could be of course images it could be sounds it could be vibration it could be
+temperature and we've now we've now uh developed AI models that uh understand the meaning of all of that all of that
+information and um uh and can be quite smart about it so the first the first layer the first wave of AI AI was
+perception AI. The second uh what everybody started talking about maybe five years ago was generative AI. And
+generative AI is is um uh where the AI uh model has learned how to uh understand the meaning of the
+information but translate it. So for example, you could understand um English and translate it to to French. You could
+understand English and translate it to images. And so you could use tok you could prompt it to generate images. So
+generative AI is is essentially a universal translator if you will. Um a universal translator uh that that
+understand the the language of humans language. And so so that's the next wave. The wave that we're in now is
+where you now have AIs that can uh understand it can generate. But as you
+know, intelligence requires us to solve problems and recognize conditions that we've never seen before. And the way we we do that is we we use reasoning. We
+apply rules and laws and principles that we've learned in the past and we break the problem down step by step by step.
+And even though we've never solved this problem before, through reasoning, we can solve it. Okay? And so one of the unique capabilities of intelligence and
+and so we're now in that this age called reasoning AI. And reasoning AIs um allow you to uh produce a a form of digital robots. We call them agentic AI agents.
+It has agency. And so an AI that can understand the task that's been given.
+It can go off and learn and read apply use tools like calculators and web browsers and spreadsheets and um and
+then come back and you know does something for you and it could be uh something related to supply chain. So it accesses SAP, it could be something
+related to HR, access workday. And so so these agentic AIs are essentially robots, but they're uh digital workforce
+robots. And so in the future, you know, we're going to be we're going to be the generation of CEOs that that are going to manage biological workforce as well
+as digital workforce and HR department for the biological workforce and uh our IT IT department are going to become the
+HR of Agent AI, right? And so and so we have this this is kind of the phase we're in today. Well, the next wave and
+this is where the the largest industries of the world uh are going to benefit.
+The next wave requires us to understand things like uh the laws of physics, friction, inertia, cause and effect, the fact that I tip that thing over, it's
+going to fall. Um, you know, when I set the bottle down, it's not going to go through the table. And so all of these common sense uh physical reasoning
+abilities that children have, that our our pets have, uh, most AIs don't have.
+You know, I roll roll a ball over the kitchen counter and it goes off over the top and it disappears. Well, the AI thinks it's disappeared, but you know,
+your dog knows it. It's on the other side. It it understands this concept called object permanence. And it didn't go into another metaverse. And and so it
+runs around the table and gets it, you know, and and uh and a robot needs to learn that if you want to go from this side of the table to that side of the table, you can't go through the table.
+You're going to have to reason about how to go around the table. And so all of these type of reason physical reasoning things uh is what's called physical AI.
+And when you take that physical AI and then you put it into a physical object called a robot, you get robotics. And
+this is really really important for us now because you know we're building plants and factories all over United States. And we'd like to build it in a
+way that's takes advantage of the latest technologies. And so hopefully, you know, in the next 10 years, uh, as we
+build out this this new generation of plants and factories, they're highly robotic and and they're, you know, helping us deal with the severe labor
+shortage that we have all over the world. So many people have talked about this concept about the fact that we're in an AI race globally. What do you
+think the US government needs to do to win that AI race to have the very best AI technology? First uh in order to in
+order to have a race to do well in a race you have to understand the race and you have to understand the resources that you're working with the assets that
+you have the assets you don't have your advantages and your disadvantages and some of the things to realize is that that AI is fundamentally
+um at its core level you know and going back to the three levels that that we're talking about at each level we have to
+make sure that we understand the game And and this game isn't, you know, there's no 60-minute clock on this thing. This is an infinite game. And so
+most people aren't very good at playing infinite games. You know, Nvidia is now 33 years old. Uh we've been through
+three computer revolutions from the PC revolution to the internet to mobile and now we're in AI. And so you have to in
+order to thrive across all of these different changes in the environment, you have to understand how to play games. and and so the things that I just
+described uh understanding the game understanding the assets you have really important at the first layer at the technology layer the most important
+thing to understand is the the intellectual capital and remember 50% of the world's AI researchers are Chinese
+first just take take a step back and recognize that that important factor has to has to play into how we think about
+the game the next is AI factories in order to do well there, you need to have energy because fundamentally we trans we
+trans we transform electricity into digital tokens. Just as the last industrial revolution transformed atoms
+through energy into, you know, steel things and physical things that we know, cars and things like that, buildings and things like that. And the generation
+before that, we we gave it water into a machine called the dynamo. And what came out was electricity. And so now we have electricity go in and tokens come out.
+So the next layer requires energy. The layer above that is just happening now. And it's really really important that we
+understand that ultimately the winners of the last industrial revolution wasn't the wasn't the country that invented it.
+It was the country that applied it. And the United States applied applied steel applied energy
+faster than any country. Everybody else was worried about things like labor and you know horses being replaced by cars and you know those kind of matters but
+the United States just we just took it and ran with it. And so the the infrastructural layer above that is about the application of the technology.
+It's about not being afraid of it wanting to engage it um uh reskilling reskilling our workforce so that we're able to apply it uh encouraging people
+to adopt it. And so when you when you look at the the um uh when you look at AI through the lens that I just described, the framework I just
+described, each one of the layers has its own um if you will challenges and opportunities and the game's a little
+different in each one. On the workforce point, the press has been so focused on um weaving the narrative that AI could
+potentially lead to mass displacement of labor and and mass unemployment. Could you help paint a picture a little bit
+about what your prediction is for the impact of AI on the job market, but also more specifically on what you see as the
+potentially new categories of jobs that we're potentially not even thinking about today that could actually come into being. Some jobs will new jobs will
+be created, some jobs will be lost, every job will be changed. Okay, so let's just break it down. Um it's it's
+it's always easy to go to one extreme from another but I always find it helpful when you break the problem down reason about it from its first
+principles and again in this framework that I just described at the lowest layer as you know and Jacob you're you're uh you're deeply uh integrated
+into into uh uh venture investment and you know what's going on in AI and you know at the foundational layer it's
+because of AI that San Francisco is back. Okay, anybody who lives in San Francisco, uh, you'll know what I'm
+talking about. Uh, just about everybody evacuated San Francisco. Now it's it's thriving again. It's all because of AI.
+Um, and AI creates a new type of job.
+And the fundamental reason is because it's software development, but done in a different way. We've changed every layer of the technology as a result of AI.
+What used to be human human coded software running on CPUs are now machine learning generated software running on
+GPUs. And so every single layer the tooling of it the compilers of it the methodology of it the way you collect
+data curate data use AI to guard rails use AI to teach you use AI to keep the AI safe. Um all of that technology is
+being invented right now and it creates tons of jobs at the next layer. This is where the giant opportunity is. Remember I just said that we're going to create a
+new type of factory and this factory has electricity come in and it generates tokens out a five a one gawatt factory.
+Let me just put it one gawatt factory and we're you know in the horizon building something like 7 8 10 gawatts of AI factories. One gawatt factory is
+$60 billion. $60 billion for one gawatt. A 100 megawatt factories is pretty commodity now. It's pretty common
+place. And so you just divide that by 10. But $60 billion is the annual one.
+One one factory is the annual revenues of Boeing. And to build it, you have to
+finance it. Creates a lot of jobs. You have to build out the site. The shell creates a bunch of jobs. Construction, you know, you got carpenters, you got
+steel workers, you got masons. you, you know, you got to build out that factory, $60 billion factory. This thing is gigantic. Um, you've got to, you have to
+have, you know, mechanical engineers, electrical engineers, plumbers, and then after that all the low voltage stuff, you know, all the all the IT and the
+networking. After that, operations. That entire cycle is about three years. A whole bunch of new trade jobs have to be
+created. these trade jobs it in the last computer industry the last computing
+platform shift the number one miss the the number one critical path for most companies growth is software engineers
+our the this next layer AI factories the number one is going to be trades the trade craft and I think this is terrific
+our country needs to needs to acknowledge that tradecraftraft is respectable work and it's critical work and it's necessary to build our country
+and So we want to encourage tradecraftraft, electricians, plumbers, you know, carpenters, steel workers, the whole the whole span of it. We're going
+to need a a whole bunch. And then now above that is when we can start talking about how are these AI agents going to
+change uh the work of doctors or uh financial service professionals or customer care or in our company just as
+a starting point. Every single software engineer is now assisted by AI assistants and the amount of code that we check into the company is incredible.
+As a result, our productivity has shot up through the roof and we're hiring more people because it enabled us to create more things that the world
+desires. Um, it increases our revenues and increases our ability to hire. And so I think that that layer above really
+wants to engage AI as as early as you can. Remember, it's not AI that's going to take your job. It's not AI that's
+going to, you know, destroy your company. It's the company and the person who uses AI that's going to take your job. And so that's, you know, something
+to internalize. There's been such a huge amount of focus lately on bringing manufacturing back. Um, a lot of people
+in the AI space have talked about the concept of how digital twins and manu and manufacturing plants adopting
+digital twins could actually help enable rebooting manufacturing here. And simultaneously, the CEO of Apple, Tim
+Cook, recently said that one of the main bottlenecks to reshoring and making the iPhone here was um having a good and
+precise robotic arm technology. Um so on both counts, it really seems like AI could be an enabling technology for
+manufacturing and reshoring. Could you tell us a little bit more about what your prognosis is on that? Yeah. Well, first of all, manufacturing is not about
+lowcost labor. Advanced manufacturing today is software. The entire factory is software driven. The entire factory is
+one giant robot and it's a it's a it's a robot orchestrating a whole bunch of robots inside. And so these advanced
+factories has a lot of people in it, but it's largely technology. And so so I think the the uh the first part of it is
+is uh in our industry and I'll just talk about mine uh the ability for us to uh manufacture
+um end to end from silicon to the AI supercomputers uh here on shore is a terrific opportunity and and I'm I'm delighted that the administration is
+really encouraging and supporting um the industry to onshore manufacturing. This is a this is this is high quality work.
+It's advanced technology work. Um, doing it on shore is a fantastic opportunity for for the country and I'm I'm very I'm
+very enthusiastic about it. We're huge proponents of it and um uh we're fortunate that we have partners around the world who are supporting us to do
+that. That's number one. Second, if we don't get good at manufacturing, we're going to leave behind a giant industry
+that is going to be propelled by the availability availability of energy.
+What country doesn't want to get engaged in this new industry called AI? Why would you not want to produce
+AI? Why would you why would you not want to engage in one of the most advanced manufacturing? You know, it's manufacturing. It just happens to be
+numbers when it's done. And just like it was electrons at the last industrial revolution, you know, most people
+couldn't understand that you could create this thing through a machinery called dynamo. Now we call it, you know, Nvidia AI supercomputers, but back then
+a dynamo, what produced, what came out of it was invisible. It's electricity. Don't touch it, but it's electricity.
+It's electrons. And now, you know, it's a new form of electrons is numbers. And so, of course, we want to engage in this this new industry. And in order to do
+that, we have to have manufacturing on shore. Now the thing that that is is absolutely the case because
+manufacturing is so technology intensive, we should do it in a digital twin first. We should do it in virtual
+reality first. Nvidia designs the most complex systems in the world. Each one of our generation R&D, call it $20
+billion, maybe more now, but call it 2020 20 billion um of R&D just to produce a family of chips. We com we
+designed those chips completely in it in their digital twin. They existed for months and months and months long before we ever produced it. The moment I
+produced it, I know it to be perfect. I know it because we've simulated it, you know, exhaustively and we emulated it
+and we we put it into its put it into its paces. We should do the same with digital factories. These factories, large factories, we should
+completely create digital twins. use artificial intelligence to create these digital twins. operate it well virtual
+virtual uh integration integrate these manu magnificent you know structures completely digitally operate it optimize
+it and use it for you know planning your output completely digitally and in the future every factory will have a digital
+twin version every in the in the future you know and I'm hoping every human will have a digital twin version every car has a digital twin version every
+building has a digital twin version every city has a digital twin version so this idea of digital twins is happening now and it's all happening because of
+artificial intelligence. Jensen, my last question for you is what is your expectation on the timeline by which we
+live in a world where AI enabled robots become a ubiquitous part of everyday human
+life. Um, Bill, first of all, let me just a self-driving car is a robot. Now,
+it's taken us about 10 years and now Whimo is, you know, in cities all around all around the nation and and is doing
+fantastically and uh it's terrific to see the Whimos driving around in in San Francisco and other cities. Um it took
+about 10 years. Robots will take less time and the reason for that is because we can constrain the environments where the robots operate and so the robots
+don't have to be as general purpose as a car. you know, once you're in San Francisco, you got to you got to work in every street and every single condition.
+And so, in the case of a robot, we could be a lot more constrained from the moment that something is prototypable, fairly functional to the
+time that it becomes um high volume product, call it five years. And so, we have quite high functioning robots
+today. And so in some five years time, uh, we're going to see, you know, robots get pumped out of these these factories.
+And every car company who makes cars today will be very good at building robots. They just have to they have to get good at the software part of it, the AI part of it. But but that technology is really, you know, fairly available.
+Jensen, thank you so much for joining us. Yeah. Thank you everybody.
+[Music]
+[Applause]
+[Music]

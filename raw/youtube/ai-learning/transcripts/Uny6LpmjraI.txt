@@ -1,0 +1,355 @@
+So Clay's actually had agents for a long
+time, but we launched our first agent,
+Claggent, in 2023. Claggent is a goto
+market research agent. So searches the
+public web, helps you research and
+qualify companies. About a year ago, we
+launched our second main agent called
+Sculptor. I'll talk a bit about
+sculptor, but sculptor is our go to
+market engineering agent. So sculptor
+helps you actually build and orchestrate
+these go to market workflows in the
+product. And we are in the process of
+launching many other agents now. But
+actually one of the agents that we'll
+talk about today is Sculptor and Search.
+So actually Sculptor being able to use
+the Clay's companies and contacts
+database to find leads or prospects for
+to grow your business.
+Okay. So briefly I'll touch again on on
+these two agents, but Claggent is our
+research agent and mainly has three
+things that we care about. One is web
+research. That's the the bread and
+butter of Clagent. And the second thing
+is the first party data integration. So
+we actually have Clagent able to search
+over your internal data sets as well.
+And the last thing that's interesting
+about Clayun is just it runs at quite
+high scale, right? So we run over 300
+million runs a month. And so there's
+actually more volume than we could
+possibly look at for in traces or even
+if we were to look at an individual
+workspace or user level, there's usually
+just a high volume of different traces
+for these agents. Back to Sculptor, you
+know, Sculptor is for building workflows
+but also analyzing your data. And again,
+Sculptor is now when we launched it a
+year ago, it was sort of a new product.
+Now it's actually one of the primary
+ways that people interact with clay. And
+we have over 100,000 messages sent to
+Sculptor every week. again sort of past
+that threshold of where we could
+actually look at every trace or talk to
+every customer to understand what
+they're using sculptor for.
+Okay, so this is sculptor for search. As
+you can imagine, there's many things
+that can go wrong with this and there
+was a long journey to actually make this
+production quality. So I'm going to pass
+it to Vishu to talk about some of the
+ways that we've eval.
+Talking more about eval. Honestly, when
+we first built out some of our like
+agentic products, our evals were not
+great. But now that we're talking about
+billions of runs on Claggent and having
+Sculptor do endto-end tasks for you or
+these really long running tasks, eval
+became non-negotiable. And when we're
+talking about enabling agentic
+development, if you have a good eval
+suite, you can let Claude or Codeex or
+Devon kind of go in make prompt changes
+for you, let Blinkchain engine make
+prompt changes for you, and you know
+that you're not shipping anything that
+is going to ruin production. And so we
+spent a lot of time recently building
+out evals and rethinking our agentic
+eval philosophy. And so at Clay, these
+are some of our priorities as we've
+started building out a more
+comprehensive eval suite. So different
+levels of EVLs, low lift for local
+development. These should be really
+cheap to run, really fast to run. And
+then anything that runs in CI or
+staging, this should be as close to your
+production harness as possible. So
+locally, we don't care about O. We don't
+have a sandbox. We don't have a VFS. And
+then staging is basically using the same
+thing as prod running locally during
+development. So this was really meet
+your developers where they are. So
+everything is just like a command line
+eval suite. So you don't have to go to
+lchain and start an experiment. You
+don't have to like provision a new like
+clog managed agent. Everything you
+change like runs there and your agents
+run it for you. Eval should be
+persistent in version. This one's
+obvious. We use lane chain for this. So
+everything even though it's run locally
+writes out there. So we store it and
+then Eval harnesses are extensible
+across multiple parts of the product. So
+now we're moving to this world where
+sculptor does everything in clay for
+you. And so we should also use like the
+same eval harness across all the
+different parts of clay. And so anytime
+users or developers add a new product,
+they just bring their eval suite and
+they bring their own evaluators like
+their own LLM judges, but then the rest
+of the harness is like there for them
+and it's plug-andplay.
+So more on our EVAL philosophy. So this
+is our how we think about eval coverage
+and the goal is to have a few things in
+each of these boxes. So deterministic
+and offline, you have goldens. We found
+that for something like the query
+language that Jeff demoed, goldens work
+great for really simple things, but then
+when you're trying to evaluate something
+complicated, goldens are a little bit
+too static and so switching the ordering
+of some keywords or switching the node
+ordering causes them to break and so
+nosy evals just end up getting ignored.
+So we move to these like structured eval
+checks that only look at the parts of
+the query that we actually care about
+and they're like a little bit more
+forgiving trajectory or tool assertions.
+So this would be if the agent is
+answering questions on pricing make sure
+it's actually going and reading the
+pricing scale offline and
+non-deterministic LLM as a judge. That's
+pretty obvious. And then simulated user
+like multi-turn evals. So this one you
+can have an agent act as the user. Give
+it a lot of examples from past traces
+and have it drive the conversation to a
+conclusion with your agent. You can do
+this or you can do the nondet the
+deterministic version of this which is
+like just hard coding the user turns.
+And actually during our development
+process we found that these
+deterministic multi-turn evals were
+actually the most useful. the agent was
+like too noisy and it was just like
+another agent that you had to manage and
+keep up to date and also have evals for
+and so it just ended up not being worth
+it.
+So deterministic and offline so moving
+to the right these are all the objective
+metrics that you would do for AB
+testing. So latency, cost, are users
+actually moving out of the chat and into
+different parts of the product, are they
+getting stuck? Are they rage quitting?
+And then the last one is online and
+non-deterministic. And this is actually
+where we use lang chain the most and use
+a lot of their like built out primitives
+already. So we use a lot of their online
+evaluators like NPS or like basically a
+user satisfaction score. We use like
+their perceived eval evaluators to see
+if users are correcting the agent like
+pushing back on it or like trying to
+guide it in a different direction. We
+use engine like Robert mentioned to bulk
+analyze traces from production data. And
+then yeah, human kind of eval
+traces for all of these.
+Oh, really quickly going back, the
+biggest part of this and I think the
+hardest part to set up has actually been
+this like dotted arrow where everything
+we learn in production and scene
+production should actually be going back
+to inform our offline evals.
+And so I mean eval drift, production
+drift, this is still an unsolved problem
+in the agent eval space because there's
+a lot of things that can go wrong. So
+data drift, your production use cases
+are not actually what your team has been
+testing and bug bashing on. Judge drift,
+all of these models and model families
+have their own internal biases. And if
+you're only hill climbing on a specific
+LLM judge, you're probably overfitting
+on it. Same if you're only hill climbing
+with like a small eval set, your prompt
+is probably going to start to mirror
+just those eval examples. And so for us,
+some things that we've been thinking
+about is pulling in examples from our
+online evaluators. Was mentioned
+earlier, we use customer support tickets
+for like really high customer signal and
+feedback. We have our own human
+annotated goldens for like judging
+drift. And then we also use like lang
+chains use case classifiers and do our
+own use case tagging to make sure that
+our evals are actually covering like
+production use cases.
+Okay, next I'm going to pass it back to
+Jeff who's going to give you more detail
+into the future.
+Amazing. Okay, what's next? Both for
+Clay and for the agents that we're
+building. One, I think we'd like to
+think of Clay, well, Clay itself is
+really becoming more of an agent
+interface as well. So, up until now, I
+think our web UI has been our primary
+interface. We are also trying to make
+all parts of Clay available to agents,
+both internal and external. To that end,
+we've launched a couple of different
+features, including a CLI in the past
+couple of weeks. So, the goal for Clay
+is actually for anything that you could
+do in the UI should be available in the
+CLI as well and in our public API. Why
+are we doing this? Well, one, we think
+that agents actually benefit a lot from
+tools like Clay. And two is actually by
+having external agents, we create this
+flywheel where both internal and
+external agents have the same tools. So
+the same tools that we expose via API,
+we give to our inter internal agents as
+well. So sculptor actually has the exact
+same tools that we expose via the CLI
+and API. And the benefit of that is we
+actually create this this nice little
+flywheel where we see our agents try to
+invoke these tools and anytime there are
+failures in those in those tools or
+failures in those trajectories we get
+user signal to either improve the agent
+harness or the tools themselves the
+tools themselves which improves the
+quality the experience for everyone
+including external agents. We do use
+engine for this. So but this is an
+example from yesterday. So we did have a
+basically some some some ability in our
+CLI to actually search or to rank search
+results which we'll be adding soon. So
+yeah, it's a really nice flywheel both
+from these automated checks like engine
+but also just to Vishu's point just the
+human vibe based eval which are usually
+my favorite. So okay with that I'm going
+to pass it off to Souch to close us out.
+So all this sounds great flywheels and
+scaling and looking at user traces. One
+of the issues we're seeing is that it's
+hard to scale this with our data
+primitives. So, one thing we've been
+looking at is improving our data
+foundation for building learning loops.
+And we're moving over to a data lake
+architecture, which is a very fancy,
+very high scalable way. And we're doing
+this for a couple of reasons. And I'll
+get into that in the next slide. But one
+thing this does, it brings first party
+and third party data together into the
+same sort of data platform that you can
+have your agents run while on. And we're
+building this as agents being the first
+class user. And this changes a few
+things to our approach. What this means
+is adding a lot of guardrails up front
+allowing for safe shadow builds. So we
+allow agents to actually build new data
+models and deploy them on S3 and this is
+doable with we're separating out our
+serving and our development compute
+which isn't the case for a lot of
+startups I know but running some
+experiments and not bringing down prod
+is always great and we're investing
+heavily in skills and CLI for our
+agents. So our agents are able to access
+this data very natively and what yeah
+what there's some blocks is letting like
+proof of concepts come out easily in one
+shot. you can have some of these big
+models again run wild and do stuff with
+data at scale using Athena using lots of
+good compute practices and longunning
+steps. I think that there's things where
+you can say go off and here's this goal
+I want this data model and it could take
+an hour it could take two hours but
+being able to scale up and do this with
+lots of data has been a new development
+that we're investing in. If you go to
+the next slide a little bit on like why
+now I think we've seen a step change
+function at least internally when fable
+came out it's able to do some of this
+large scale things in context. So I
+think it's one of the first times I've
+been able to tell an agent look at these
+10,000 examples and find trends and that
+wasn't possible a while ago. A lot of
+things were very vibe based. You' pick a
+few examples and look at them. But now
+you can feed all of these into the
+context window. There's new sub agents
+and goals and harnesses that are also
+making this possible. So again, you're
+able to iterate really fast. Setting up
+evals first and driving towards those
+agents can go and do things with your
+data. And part of the reason this this
+issue came about is we had lots of
+different disparate data sources. We
+have traces in lang chain, we have
+snowflake analytics data, we have data
+in Postgress, we have firstp party data
+in click. And so bringing these all into
+one single platform has enabled our
+agents to do more without having to try
+to tie together all these different
+databases. And this is again a
+playground for agents. And I think we've
+seen we're seeing a world in which they
+can do things on their own. So this has
+been a big improvement and to close this
+out. Yeah. So this is the the image
+we're driving towards is we want to
+build this selfiterating loop taking our
+data from both our customers and our
+thirdparty data that we accumulate
+orchestrating that executing on it and
+seeing how that all works out and then
+feeding that back in. So all parts of
+the product are feeding into a single
+unified data foundation that agents can
+reason over and build better iterations
+of themselves essentially.

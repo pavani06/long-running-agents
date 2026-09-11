@@ -1,0 +1,834 @@
+(RUMINATIVE MUSIC PLAYING)
+(DEVICE CHIMES) JULIETTE LOVE: Hi, Alpha. ALPHA: Hello. LOVE: Can you help me write code?
+ALPHA: I was trained to answer questions, but I'm able to learn. LOVE: That's very open-minded of you.
+ALPHA: Thank you. I'm glad you're happy with me. What's this guy doing?
+ALPHA: That's a developer. What do you think he's working on?
+ALPHA: That's a tough question.
+He might be working on a new feature, a bug fix or something else. It's quite possible.
+ALPHA: Yes. LOVE: Do you see my backpack?
+ALPHA: That's a badminton racket. It's a squash racket, but that's pretty close.
+ALPHA: That's a badminton racket.
+No, but you're not the first person to make that mistake.
+(UPBEAT MUSIC PLAYING) NEWSREADER 1: AI, the technology
+that has been advancing at breakneck speed.
+NEWSREADER 2: Artificial intelligence is all the rage.
+NEWSREADER 3: Some are now raising alarm about...
+NEWSREADER 4: It is definitely concerning.
+NEWSREADER 5: This is an AI arms race.
+NEWSREADER 6: We don't know how this is all going to shake out, but it's clear something is happening.
+DEMIS HASSABIS: I'm kind of restless. Trying to build AGI is the most exciting journey, in my opinion, that humans have ever embarked on.
+If you're really going to take that seriously, there isn't a lot of time.
+Life's very short.
+My whole life goal is to solve artificial general intelligence.
+And on the way, use AI as the ultimate tool to solve all the world's most complex scientific problems.
+I think that's bigger than the Internet.
+I think that's bigger than mobile.
+I think it's more like the advent of electricity or fire.
+ANNOUNCER: World leaders and artificial intelligence experts are gathering for the first ever global AI safety summit, set to look at the risks
+of the fast growing technology and also...
+HASSABIS: I think this is a hugely critical moment for all humanity.
+It feels like we're on the cusp of some incredible things happening.
+NEWSREADER: Let me take you through some of the reactions in today's papers.
+HASSABIS: AGI is pretty close, I think.
+There's clearly huge interest in what it is capable of, where it's taking us.
+HASSABIS: This is the moment I've been living my whole life for.
+(MID-TEMPO ELECTRONIC MUSIC PLAYS) I've always been fascinated by the mind.
+So I set my heart on studying neuroscience because I wanted to get inspiration from the brain for AI.
+ELEANOR MAGUIRE: I remember asking Demis, "What's the end game?" You know? So you're going to come here and you're going to study neuroscience and you're going to maybe get a Ph.D. if you work hard.
+And he said, "You know, I want to be able to solve AI.
+"I want to be able to solve intelligence." HASSABIS: The human brain is the only existent proof we have, perhaps in the entire universe, that general intelligence is possible at all.
+And I thought someone in this building should be interested in general intelligence like I am.
+And then Shane's name popped up. HOST: Our next speaker today is Shane Legg.
+He's from New Zealand, where he trained in math and classical ballet. Are machines actually becoming more intelligent? Some people say yes, some people say no.
+It's not really clear.
+We know they're getting a lot faster at doing computations.
+But are we actually going forwards in terms of general intelligence?
+HASSABIS: We were both obsessed with AGI, artificial general intelligence.
+So today I'm going to be talking about different approaches to building AGI.
+With my colleague Demis Hassabis, we're looking at ways to bring in ideas from theoretical neuroscience.
+I felt like we were the keepers of a secret that no one else knew.
+Shane and I knew no one in academia would be supportive of what we were doing.
+AI was almost an embarrassing word to use in academic circles, right?
+If you said you were working on AI, then you clearly weren't a serious scientist.
+So I convinced Shane the right way to do it would be to start a company.
+SHANE LEGG: Okay, we're going to try to do artificial general intelligence. It may not even be possible.
+We're not quite sure how we're going to do it, but we have some ideas or, kind of, approaches.
+Huge amounts of money, huge amounts of risk, lots and lots of compute.
+And if we pull this off, it'll be the biggest thing ever, right?
+That is a very hard thing for a typical investor to put their money on. It's almost like buying a lottery ticket.
+I'm going to be speaking about the system of neuroscience and how it might be used to help us build AGI.
+HASSABIS: Finding initial funding for this was very hard.
+We're going to solve all of intelligence.
+You can imagine some of the looks I got when we were pitching that around.
+So I'm a V.C. and I look at about 700 to 1,000 projects a year. And I fund literally 1% of those.
+About eight projects a year. So that means 99% of the time, you're in "No" mode.
+"Wait a minute. I'm telling you, "this is the most important thing of all time.
+"I'm giving you all this build-up "about how... explain "how it connects with the brain, "why the time's right now, and then you're asking me, "'But what's your, how are you going to make money?
+"'What's your product?'" It's like, so prosaic a question. You know?
+"Have you not been listening to what I've been saying?" LEGG: We needed investors who aren't necessarily going to invest because they think it's the best
+investment decision.
+They're probably going to invest because they just think it's really cool.
+NEWSREADER: He's the Silicon Valley version of the man behind the curtain in The Wizard of Oz.
+He had a lot to do with giving you PayPal, Facebook, YouTube and Yelp.
+LEGG: If everyone says "X," Peter Thiel suspects that the opposite of X is quite possibly true.
+HASSABIS: So Peter Thiel was our first big investor.
+But he insisted that we come to Silicon Valley because that was the only place we could...
+There would be the talent, and we could build that kind of company.
+But I was pretty adamant we should be in London because I think London's an amazing city.
+Plus, I knew there were really amazing people trained at Cambridge and Oxford and UCL.
+In Silicon Valley, everybody's founding a company every year, and then if it doesn't work, you chuck it and you start something new.
+That is not conducive to a long-term research challenge.
+So we were totally an outlier for him. Hi, everyone. Welcome to DeepMind. So, what is our mission?
+We summarize it as...
+DeepMind's mission is to build the world's first general learning machine.
+So we always stress the word "general" and "learning" here are the key things.
+LEGG: Our mission was to build an AGI, an artificial general intelligence. And so that means that we need a system which is general.
+It doesn't learn to do one specific thing.
+That's a really key part of human intelligence.
+We can learn to do many, many things. It's going to, of course, be a lot of hard work.
+But one of the things that keeps me up at night is to not waste this opportunity to, you know, to really make a difference here, and have a big impact on the world.
+LEGG: The first people that came and joined DeepMind really believed in the dream.
+But this was, I think, one of the first times they found a place full of other dreamers.
+You know, we collected this Manhattan Project, if you like, together to solve AI.
+HELEN KING: In the first two years, we were in total stealth mode.
+And so we couldn't say to anyone what were we doing or where we worked. It was all quite vague.
+BEN COPPIN: It had no public presence at all.
+You couldn't look at a website.
+The office was at a secret location.
+When we would interview people in those early days, they would show up very nervously.
+(LAUGHS) I had at least one candidate who said, "I just messaged my wife to tell her exactly "where I'm going just in case "this turns out to be some kind of horrible scam
+"and I'm going to get kidnapped." Well, my favorite new person who's an investor, who I've been working for a year, is Elon Musk.
+So for those of you who don't know, this is what he looks like.
+And he hadn't really thought much about AI until we chatted. His mission is to die on Mars or something.
+-But not on impact. -(LAUGHTER) So...
+We made some big decisions about how we were going to approach building AI. This is a reinforcement learning setup.
+This is the kind of setup that we think about when we say we're building, you know, an AI agent.
+It's basically the agent, which is the AI, and then there's the environment that it's interacting with.
+We decided that games, as long as you're very disciplined about how you use them, are the perfect training ground for AI development.
+LEGG: We wanted to try to create one algorithm that could to be trained up to play several dozen different Atari games.
+So just like a human, you have to use the same brain to play all the games.
+DAVID SILVER: You can think of it that you provide the agent with the cartridge.
+And you say, "Okay, imagine you're born into that world "with that cartridge, and you just get to interact "with the pixels and see the score.
+"What can you do?" So what you're going to do is take your Q function. Q-K...
+HASSABIS: Q-learning is one of the oldest methods for reinforcement learning.
+And what we did was combine reinforcement learning with deep learning in one system.
+No one had ever combined those two things together at scale to do anything impressive, and we needed to prove out this thesis.
+LEGG: We tried doing Pong as the first game.
+It seemed like the simplest.
+It hasn't been told anything about what it's controlling or what it's supposed to do.
+All it knows is that score is good and it has to learn what its controls do, and build everything... first principles.
+(GAME BEEPING) It wasn't really working.
+HASSABIS: I was just saying to Shane, "Maybe we're just wrong, and we can't even do Pong." LEGG: It was a bit nerve-racking, thinking how far we had to go
+if we were going to really build a generally intelligent system.
+HASSABIS: And it felt like it was time to give up and move on.
+And then suddenly...
+(STIRRING MUSIC PLAYS) We got our first point.
+And then it was like, "Is this random?" "No, no, it's really getting a point now." It was really exciting that this thing that previously couldn't even figure out
+how to move a paddle had suddenly been able to totally get it right.
+HASSABIS: Then it was getting a few points.
+And then it won its first game.
+And then three months later, no human could beat it.
+You hadn't told it the rules, how to get the score, nothing.
+And you just tell it to maximize the score, and it goes away and does it.
+This is the first time anyone had done this end-to-end learning. "Okay, so we have this working in quite a general way.
+"Now let's try another game." HASSABIS: So then we tried Breakout.
+At the beginning, after 100 games, the agent is not very good.
+It's missing the ball most of the time, but it's starting to get the hang of the idea that the bat should go towards the ball.
+Now, after 300 games, it's about as good as any human can play this.
+We thought, "Well, that's pretty cool," but we left the system playing for another 200 games, and it did this amazing thing.
+It found the optimal strategy was to dig a tunnel around the side and put the ball around the back of the wall.
+KORAY KAVUKCUOGLU: Finally, the agent is actually achieving what you thought it would achieve. That is a great feeling. Right?
+Like, I mean, when we do research, that is the best we can hope for.
+We started generalizing to 50 games, and we basically created a recipe.
+We could just take a game that we have never seen before.
+We would run the algorithm on that, and DQN could train itself from scratch, achieving human level or sometimes better than human level.
+LEGG: We didn't build it to play any of them.
+We could just give it a bunch of games and would figure it out for itself. And there was something quite magical in that.
+MURRAY SHANAHAN: Suddenly you had something that would respond and learn whatever situation it was parachuted into.
+And that was like a huge, huge breakthrough.
+It was in many respects the first example of any kind of thing you could call a general intelligence.
+HASSABIS: Although we were a well-funded startup, holding us back was not enough compute power.
+I realized that this would accelerate our time scale to AGI massively. I used to see Demis quite frequently. We'd have lunch, and he did...
+say to me that he had two companies that were involved in buying DeepMind. And he didn't know which one to go with.
+The issue was, would any commercial company appreciate the real importance of the research?
+And give the research time to come to fruition and not be breathing down their necks, saying, "We want some kind of commercial benefit from this."
+(MACHINERY HUMMING) Google has bought DeepMind for a reported £400,000,000,
+making the artificial intelligence firm its largest European acquisition so far.
+The company was founded by 37-year-old entrepreneur Demis Hassabis.
+After the acquisition, I started mentoring and spending time with Demis, and just listening to him.
+And this is a person who fundamentally is a scientist and a natural scientist.
+He wants science to solve every problem in the world, and he believes it can do so. That's not a normal person you find in a tech company.
+HASSABIS: We were able to not only join Google but run independently in London, build our culture, which was optimized for breakthroughs
+and not deal with products, do pure research.
+Our investors didn't want to sell, but we decided that this was the best thing for the mission.
+In many senses, we were underselling in terms of value before it more matured, and you could have sold it for a lot more money.
+And the reason is because there's no time to waste.
+There's so many things that got to be cracked while the brain is still in gear. You know, I'm still alive. There's all these things that gotta be done.
+So you haven't got-- I mean, how many...
+How many billions would you trade for another five years of life, you know, to do what you set out to do?
+Okay, all of a sudden, we've got this massive scale compute available to us. What can we do with that?
+HASSABIS: Go is the pinnacle of board games.
+It is the most complex game ever devised by man.
+There are more possible board configurations in the game of Go than there are atoms in the universe.
+SILVER: Go is the holy grail of artificial intelligence.
+For many years, people have looked at this game and they've thought, "Wow, this is just too hard." Everything we've ever tried in AI, it just falls over when you try the game of Go.
+And so that's why it feels like a real litmus test of progress. We had just bought DeepMind.
+They were working on reinforcement learning and they were the world's experts in games.
+And so when they introduced the idea that they could beat the top level Go players in a game that was thought to be incomputable,
+I thought, "Well, that's pretty interesting." Our ultimate next step is to play the legendary Lee Sedol in just over two weeks.
+NEWSREADER 1: A match like no other is about to get underway in South Korea.
+NEWSREADER 2: Lee Sedol is getting ready to rumble.
+HASSABIS: Lee Sedol is probably one of the greatest players of the last decade.
+I describe him as the Roger Federer of Go.
+ERIC SCHMIDT: He showed up, and all of a sudden we have a thousand Koreans who represent all of Korean society, the top Go players.
+And then we have Demis.
+And the great engineering team.
+Lee Sedol, he's very famous for very creative fighting play.
+So this could be difficult for us.
+SCHMIDT: I figured Lee Sedol is going to beat these guys, but they'll make a good showing. Good for a startup.
+I went over to the technical group and they said, "Let me show you how our algorithm works." RESEARCHER: If you step through the actual game, we can see, kind of, how AlphaGo thinks.
+HASSABIS: The way we start off on training AlphaGo is by showing it 100,000 games that strong amateurs have played.
+And we first initially get AlphaGo to mimic the human player, and then through reinforcement learning, it plays against different versions of itself
+many millions of times and learns from its errors. Hmm, this is interesting.
+ANNOUNCER 1: All right, folks, you're going to see history made.
+(ANNOUNCER 2 SPEAKING KOREAN) SCHMIDT: So the game starts.
+ANNOUNCER 1: He's really concentrating.
+ANNOUNCER 3: If you really look at the...
+(ANNOUNCERS EXCLAIM) That's a very surprising move. ANNOUNCER 3: I think we're seeing an original move here.
+Yeah, that's an exciting move. I like...
+SILVER: Professional commentators almost unanimously said that not a single human player would have chosen move 37.
+So I actually had a poke around in AlphaGo to see what AlphaGo thought.
+And AlphaGo actually agreed with that assessment.
+AlphaGo said there was a one in 10,000 probability that move 37 would have been played by a human player.
+(SEDOL SPEAKING IN KOREAN) SILVER: The game of Go has been studied
+for thousands of years.
+And AlphaGo discovered something completely new. ANNOUNCER: He resigned. Lee Sedol has just resigned.
+He's beaten.
+(ELECTRONIC MUSIC PLAYING) NEWSREADER 1: The battle between man versus machine, a computer just came out the victor.
+NEWSREADER 2: Google put its DeepMind team to the test against one of the brightest minds in the world and won.
+SCHMIDT: That's when we realized the DeepMind people knew what they were doing and to pay attention to reinforcement learning as they have invented it.
+Based on that experience, AlphaGo got better and better and better.
+And they had a little chart of how much better they were getting.
+And I said, "When does this stop?" And Demis said, "When we beat the Chinese guy, "the top-rated player in the world."
+ANNOUNCER 1: Ke Jie versus AlphaGo. ANNOUNCER 2: And I think we will see AlphaGo pushing through there.
+ANNOUNCER 1: AlphaGo is ahead quite a bit.
+SCHMIDT: About halfway through the first game, the best player in the world was not doing so well. ANNOUNCER 1: What can black do here?
+ANNOUNCER 2: Looks difficult.
+SCHMIDT: And at a critical moment... the Chinese government ordered the feed cut off.
+It was at that moment we were telling the world that something new had arrived on earth.
+In the 1950s when Russia's Sputnik satellite was launched, it changed the course of history.
+TV HOST: It is a challenge that America must meet to survive in the Space Age.
+SCHMIDT: This has been called the Sputnik moment.
+The Sputnik moment created a massive reaction in the US in terms of funding for science and engineering,
+and particularly of space technology.
+For China, AlphaGo was the wakeup call, the Sputnik moment.
+It launched an AI space race.
+HASSABIS: We had this huge idea that worked, and now the whole world knows.
+It's always easier to land on the moon if someone's already landed there.
+It is going to matter who builds AI, and how it gets built.
+I always feel that pressure. SILVER: There's been a big chain of events
+that followed on from all of the excitement of AlphaGo.
+When we played against Lee Sedol, we actually had a system that had been trained on human data, on all of the millions of games that have been played by human experts.
+We eventually found a new algorithm, a much more elegant approach to the whole system, which actually stripped out all of the human knowledge and just started completely from scratch.
+And that became a project which we called AlphaZero.
+Zero, meaning having zero human knowledge in the loop.
+Instead of learning from human data, it learned from its own games.
+So it actually became its own teacher. HASSABIS: AlphaZero is an experiment
+in how little knowledge can we put into these systems and how quickly and how efficiently can they learn?
+AlphaZero doesn't have any rules.
+It learns through experience. The next stage was to make it more general, so that it could play any two-player game.
+Things like chess, and in fact, any kind of two-player perfect information game. It's going really well. It's going really, really well. -Oh, wow. -It's going down, like fast.
+HASSABIS: AlphaGo used to take a few months to train, but AlphaZero could start in the morning playing completely randomly
+and then by tea be at superhuman level.
+And by dinner it will be the strongest chess entity there's ever been. -Amazing, it's amazing. -Yeah.
+It's discovered its own attacking style, you know, to take on the current level of defense. I mean, I never in my wildest dreams... I agree. Actually, I was not expecting that either.
+And it's fun for me.
+I mean, it's inspired me to get back into chess again, because it's cool to see that there's even more depth than we thought in chess.
+(HORN BLOWS) HASSABIS: I actually got into AI through games.
+Initially, it was board games.
+I was thinking, "How is my brain doing this?" Like, what is it doing?
+I was very aware of that from a very young age.
+So I've always been thinking about thinking.
+NEWSREADER: The British and American chess champions meet to begin a series of matches.
+Playing alongside them are the cream of Britain and America's youngest players.
+NEWSREADER 2: Demis Hassabis is representing Britain. COSTAS HASSABIS: When Demis was four, he first showed an aptitude for chess.
+By the time he was six, he became London under-eight champion.
+HASSABIS: My parents were very interesting and unusual, actually.
+I'd probably describe them as quite bohemian.
+My father was a singer-songwriter when he was younger, and Bob Dylan was his hero.
+Around when I was about eight, my dad got a camper van.
+(HORN HONKS) (ANGELA HASSABIS SPEAKING) Yeah, yeah.
+HOST: What is it that you like about this game? It's just a good thinking game.
+HASSABIS: At the time, I was the second-highest rated chess player in the world for my age.
+But although I was on track to be a professional chess player, I thought that was what I was going to do.
+No matter how much I loved the game, it was incredibly stressful.
+Definitely was not fun and games for me.
+Parents used to, you know, get very upset when I lost the game and angry if I forgot something.
+And because it was quite high stakes for them, you know, it cost a lot of money to go to these tournaments. And my parents didn't have much money.
+My parents thought, you know, "If you interested in being a chess professional, "this is really important. It's like your exams."
+I remember I was about 12-years-old and I was at this international chess tournament in Liechtenstein up in the mountains.
+(BELL TOLLING) And we were in this huge church hall
+with, you know, hundreds of international chess players.
+And I was playing the ex-Danish champion.
+He must have been in his 30s, probably.
+In those days, there was a long time limit.
+The games could literally last all day.
+(YAWNS) (TIMER TICKING) We were into our tenth hour.
+(TIMER TICKS FRANTICALLY) And we were in this incredibly unusual ending.
+I think it should be a draw.
+But he kept on trying to win for hours.
+(HORSE NEIGHS) Finally, he tried one last cheap trick.
+All I had to do was give away my queen.
+Then it would be stalemate.
+But I was so tired, I thought it was inevitable I was going to be checkmated.
+And so I resigned. He jumped up. Just started laughing.
+(LAUGHING) And he went, "Why have you resigned? It's a draw." And he immediately, with a flourish, sort of showed me the drawing move.
+I felt so sick to my stomach.
+It made me think of the rest of that tournament.
+Like, are we wasting our minds?
+Is this the best use of all this brain power?
+Everybody's, collectively, in that building?
+If you could somehow plug in those 300 brains into a system, you might be able to solve cancer with that level of brain power.
+This intuitive feeling came over me that although I love chess, this is not the right thing to spend my whole life on.
+LEGG: Demis and myself, our plan was always to fill DeepMind with some of the most brilliant scientists in the world.
+So we had the human brains necessary to create an AGI system.
+By definition, the "G" in AGI is about generality.
+What I imagine is being able to talk to an agent, the agent can talk back, and the agent is able to solve novel problems
+that it hasn't seen before.
+That's a really key part of human intelligence, and it's that cognitive breadth and flexibility that's incredible.
+The only natural general intelligence we know of as humans, we obviously learn a lot from our environment.
+So we think that simulated environments are one of the ways to create an AGI.
+SIMON CARTER: The very early humans were having to solve logic problems.
+They were having to solve navigation, memory, and we evolved in that environment.
+If we can create a virtual recreation of that kind of environment, that's the perfect testing ground and training ground for everything we do at DeepMind.
+GUY SIMMONS: What they were doing here was creating environments for childlike beings, the agents to exist within and play.
+That just sounded like the most interesting thing in all the world.
+SHANAHAN: A child learns by tearing things up and then throwing food around and getting a response from mommy or daddy.
+This seems like an important idea to incorporate in the way you train an agent. RESEARCHER 1: The humanoid is supposed to stand up.
+As his center of gravity rises, it gets more points.
+You have a reward and the agent learns from the reward, like, you do something well, you get a positive reward.
+You do something bad, you get a negative reward. RESEARCHER 2: (EXCLAIMS) It looks like it's standing. It's still a bit drunk.
+RESEARCHER 1: It likes to walk backwards. RESEARCHER 2: (CHUCKLES) Yeah.
+The whole algorithm is trying to optimize for receiving as much rewards as possible, and it's found that walking backwards, it's good enough to get very good scores.
+RAIA HADSELL: When we learn to navigate, when we learn to get around in our world, we don't start with maps.
+We just start with our own exploration, adventuring off across the park, without our parents by our side, or finding our way home from school when we're young.
+(FAST ELECTRONIC MUSIC PLAYING) HADSELL: A few of us came up with this idea that if we had an environment where a simulated robot
+just had to run forward, we could put all sorts of obstacles in its way and see if it could manage to navigate different types of terrain.
+The idea would be like a parkour challenge.
+It's not graceful, but was never trained to hold a glass whilst it was running and not spill water.
+You set this objective that says, "Just move forward, forward velocity, "and you'll get a reward for that." And the learning algorithm figures out
+how to move this complex set of joints.
+That's the power of reward-based reinforcement learning.
+SILVER: Our goal is to try and build agents which, we drop them in, they know nothing, they get to play around in whatever problem you give them
+and eventually figure out how to solve it for themselves.
+Now we want something which can do that in as many different types of problems as possible.
+A human needs diverse skills to interact with the world.
+How to deal with complex images, how to manipulate thousands of things at once, how to deal with missing information.
+We think all of these things together are represented by this game called StarCraft.
+All it's being trained to do is, given this situation, this screen, what would a human do?
+We took inspiration from large language models where you simply train a model to predict the next word,
+which is exactly the same as predict the next StarCraft move.
+SILVER: Unlike chess or Go, where players take turns to make moves, in StarCraft there's a continuous flow of decisions.
+On top of that, you can't even see what the opponent is doing.
+There is no longer a clear definition of what it means to play the best way. It depends on what your opponent does.
+HADSELL: This is the way that we'll get to a much more fluid, more natural, faster, more reactive agent.
+ORIOL VINYALS: This is a huge challenge and let's see how far we can push. TIM LILLICRAP: Oh! Holy monkey!
+I'm a pretty low-level amateur. I'm okay, but I'm a pretty low-level amateur. These agents have a long ways to go.
+HASSABIS: We couldn't beat someone of Tim's level.
+You know, that was a little bit alarming.
+LILLICRAP: At that point, it felt like it was going to be, like, a really big long challenge, maybe a couple of years.
+VINYALS: Dani is the best DeepMind StarCraft 2 player. I've been playing the agent every day for a few weeks now.
+I could feel that the agent was getting better really fast.
+(CHEERING, LAUGHTER) Wow, we beat Danny. That, for me, was already like a huge achievement.
+HASSABIS: The next step is we're going to book in a pro to play.
+(KEYBOARD TAPPING) (GROANS) (CHEERING, WHOOPING)
+(CHEERING, WHOOPING) -(LAUGHS) -(PEOPLE CLAPPING) It feels a bit unfair. All you guys against me.
+(ALL LAUGH) HASSABIS: We're way ahead of what I thought we would do, given where we were two months ago. Just trying to digest it all, actually. But it's very, very cool.
+SILVER: Now we're in a position where we can finally share the work that we've done with the public. This is a big step. We are really putting ourselves on the line here.
+-Take it away. Cheers. -Thank you. We're going to be live from London. It's happening.
+ANNOUNCER 1: Welcome to London.
+We are going to have a live exhibition match, MaNa against AlphaStar.
+(CHEERING, APPLAUSE) At this point now, AlphaStar, 10 and 0 against professional gamers.
+Any thoughts before we get into this game?
+VINYALS: I just want to see a good game, yeah.
+I want to see a good game.
+SILVER: Absolutely, good game. We're all excited.
+ANNOUNCER: All right. Let's see what MaNa can pull off.
+ANNOUNCER 2: AlphaStar is definitely dominating the pace of this game.
+(SPORADIC CHEERING) ANNOUNCER 1: Wow. AlphaStar is playing so smartly.
+(LAUGHTER) This really looks like I'm watching a professional human gamer from the AlphaStar point of view.
+(KEYBOARD TAPPING) HASSABIS: I hadn't really seen a pro play StarCraft up close,
+and the 800 clicks per minute.
+I don't understand how anyone can even click 800 times, let alone doing 800 useful clicks.
+ANNOUNCER 1: Oh, another good hit.
+-(ALL GROAN) -AlphaStar is just completely relentless.
+SILVER: We need to be careful because many of us grew up as gamers and are gamers.
+And so to us, it's very natural to view games as what they are, which is pure vehicles for fun,
+and not to see that more militaristic side that the public might see if they looked at this. You can't look at gunpowder and only make a firecracker.
+All technologies inherently point into certain directions.
+MARGARET LEVI: I'm very worried about the certain ways in which AI will be used for military purposes.
+And that makes it even clearer how important it is for our societies to be in control of these new technologies.
+The potential for abuse from AI will be significant.
+Wars that occur faster than humans can comprehend and more powerful surveillance.
+How do you keep power forever over something that's much more powerful than you?
+(STEPHEN HAWKING SPEAKING)
+Technologies can be used to do terrible things.
+And technology can be used to do wonderful things and solve all kinds of problems. When DeepMind was acquired by Google...
+-Yeah. -...you got Google to promise that technology you developed won't be used by the military -for surveillance. -Right. -Yes. -Tell us about that.
+I think technology is neutral in itself, um, but how, you know, we as a society or humans and companies and other things,
+other entities and governments decide to use it is what determines whether things become good or bad.
+You know, I personally think having autonomous weaponry is just a very bad idea.
+ANNOUNCER 1: AlphaStar is playing an extremely intelligent game right now.
+CUKIER: There is an element to what's being created at DeepMind in London that does seem like the Manhattan Project.
+There's a relationship between Robert Oppenheimer and Demis Hassabis in which they're unleashing a new force upon humanity.
+ANNOUNCER 1: MaNa is fighting back, though. Oh, man!
+HASSABIS: I think that Oppenheimer and some of the other leaders of that project got caught up in the excitement of building the technology and seeing if it was possible.
+ANNOUNCER 1: Where is AlphaStar?
+Where is AlphaStar?
+I don't see AlphaStar's units anywhere.
+HASSABIS: They did not think carefully enough about the morals of what they were doing early enough.
+What we should do as scientists with powerful new technologies is try and understand it in controlled conditions first.
+ANNOUNCER 1: And that is that.
+MaNa has defeated AlphaStar.
+I mean, my honest feeling is that I think it is a fair representation of where we are. And I think that part feels... feels okay. -I'm very happy for you. -I'm happy.
+So well... well done.
+My view is that the approach to building technology which is embodied by move fast and break things, is exactly what we should not be doing,
+because you can't afford to break things and then fix them afterwards. -Cheers. -Thank you so much. Yeah, get... get some rest. You did really well. -Cheers, yeah? -Thank you for having us.
+(ELECTRONIC MUSIC PLAYING) HASSABIS: When I was eight, I bought my first computer with the winnings from a chess tournament.
+I sort of had this intuition that computers are this magical device that can extend the power of the mind.
+I had a couple of school friends, and we used to have a hacking club, writing code, making games.
+And then over the summer holidays, I'd spend the whole day flicking through games magazines.
+And one day I noticed there was a competition to write an original version of Space Invaders.
+And the winner won a job at Bullfrog.
+Bullfrog at the time was the best game development house in all of Europe.
+You know, I really wanted to work at this place and see how they build games.
+NEWSCASTER: Bullfrog, based here in Guildford, began with a big idea.
+That idea turned into the game Populous, which became a global bestseller. In the '90s, there was no recruitment agencies.
+You couldn't go out and say, you know, "Come and work in the games industry." It was still not even considered an industry.
+So we came up with the idea to have a competition and we got a lot of applicants.
+And one of those was Demis's.
+I can still remember clearly the day that Demis came in.
+He walked in the door, he looked about 12.
+I thought, "Oh, my God, "what the hell are we going to do with this guy?" I applied to Cambridge. I got in but they said I was way too young.
+So... So I needed to take a year off so I'd be at least 17 before I got there.
+And that's when I decided to spend that entire gap year working at Bullfrog.
+They couldn't even legally employ me, so I ended up being paid in brown paper envelopes.
+(CHUCKLES) I got a feeling of being really at the cutting edge and how much fun that was to invent things every day.
+And then you know, a few months later, maybe everyone... a million people will be playing it.
+MOLYNEUX: In those days computer games had to evolve.
+There had to be new genres which were more than just shooting things.
+Wouldn't it be amazing to have a game where you design and build your own theme park?
+(GAME CHARACTERS SCREAMING) Demis and I started to talk about Theme Park.
+It allows the player to build a world and see the consequences of your choices that you've made in that world.
+HASSABIS: A human player set out the layout of the theme park and designed the roller coaster and set the prices in the chip shop.
+What I was working on was the behaviors of the people.
+They were autonomous and that was the AI in this case.
+So what I was trying to do was mimic interesting human behavior so that the simulation would be more interesting to interact with.
+MOLYNEUX: Demis worked on ridiculous things, like you could place down these shops and if you put a shop too near a very dangerous ride,
+then people on the ride would throw up because they'd just eaten.
+And then that would make other people throw up when they saw the throwing-up on the floor, so you then had to have lots of sweepers
+to quickly sweep it up before the people saw it.
+That's the cool thing about it.
+You as the player tinker with it and then it reacts to you.
+MOLYNEUX: All those nuanced simulation things he did and that was an invention which never really existed before.
+It was unbelievably successful.
+DAVID GARDNER: Theme Park actually turned out to be a top ten title and that was the first time we were starting to see how AI could make a difference.
+(BRASS BAND PLAYING) CARTER: We were doing some Christmas shopping and were waiting for the taxi to take us home.
+I have this very clear memory of Demis talking about AI in a very different way, in a way that we didn't commonly talk about.
+This idea of AI being useful for other things other than entertainment.
+So being useful for, um, helping the world and the potential of AI to change the world.
+I just said to Demis, "What is it you want to do?" And he said to me, "I want to be the person that solves AI."
+HASSABIS: Peter offered me £1 million to not go to university.
+But I had a plan from the beginning.
+And my plan was always to go to Cambridge.
+I think a lot of my schoolfriends thought I was mad. Why would you not... I mean, £1 million, that's a lot of money. In the '90s, that is a lot of money, right?
+For a... For a poor 17-year-old kid.
+He's like this little seed that's going to burst through, and he's not going to be able to do that at Bullfrog.
+I had to drop him off at the train station and I can still see that picture of this little elfin character disappear down that tunnel.
+That was an incredibly sad moment. HASSABIS: I had this romantic ideal
+of what Cambridge would be like, 1,000 years of history, walking the same streets that Turing, Newton and Crick had walked.
+I wanted to explore the edge of the universe.
+(CHURCH BELLS TOLLING) When I got to Cambridge, I'd basically been working my whole life.
+Every single summer, I was either playing chess professionally, or I was working, doing an internship.
+So I was, like, "Right, I am gonna have fun now "and explore what it means to be a normal teenager."
+(PEOPLE CHEERING, LAUGHING) Come on! Go, boy, go!
+TIM STEVENS: It was work hard and play hard.
+(ALL SINGING) I first met Demis because we both attended Queens' College.
+Our group of friends, we'd often drink beer in the bar, play table football.
+HASSABIS: In the bar, I used to play speed chess, pieces flying off the board, you know, the whole game in one minute. Demis sat down opposite me.
+And I looked at him and I thought, "I remember you from when we were kids." HASSABIS: I had actually been in the same chess tournament as Dave in Ipswich, where I used to go and try and raid his local chess club
+to win a bit of prize money.
+COPPIN: We were studying computer science.
+Some people, who at the age of 17 would have come in and made sure to tell everybody everything about themselves.
+"Hey, I worked at Bullfrog "and built the world's most successful video game." But he wasn't like that at all.
+SILVER: At Cambridge, Demis and myself both had an interest in computational neuroscience and trying to understand how computers and brains intertwined and linked together.
+JOHN DAUGMAN: Both David and Demis came to me for supervisions.
+It happens just by coincidence that the year 1997, their third and final year at Cambridge, was also the year when the first chess grandmaster was beaten by a computer program.
+(CAMERA SHUTTERS CLICKING) NEWSCASTER: Round one today of a chess match between the ranking world champion Garry Kasparov and an opponent named Deep Blue
+to test to see if the human brain can outwit a machine.
+HASSABIS: I remember the drama of Kasparov losing the last match.
+NEWSCASTER 2: Whoa!
+Kasparov has resigned!
+When Deep Blue beat Garry Kasparov, that was a real watershed event.
+HASSABIS: My main memory of it was I wasn't that impressed with Deep Blue.
+I was more impressed with Kasparov's mind.
+That he could play chess to this level, where he could compete on an equal footing with the brute of a machine, but of course, Kasparov can do
+everything else humans can do, too.
+It was a huge achievement.
+But the truth of the matter was, Deep Blue could only play chess.
+What we would regard as intelligence was missing from that system.
+This idea of generality and also learning.
+Cambridge was amazing, because of course, you know, you're mixing with people who are studying many different subjects.
+SILVER: There were scientists, philosophers, artists...
+STEVENS: ...geologists, biologists, ecologists.
+You know, everybody is talking about everything all the time. I was obsessed with the protein folding problem.
+HASSABIS: Tim Stevens used to talk obsessively, almost like religiously about this problem, protein folding problem.
+STEVENS: Proteins are, you know, one of the most beautiful and elegant things about biology.
+They are the machines of life.
+They build everything, they control everything, they're why biology works.
+Proteins are made from strings of amino acids that fold up to create a protein structure.
+If we can predict the structure of proteins from just their amino acid sequences, then a new protein to cure cancer
+or break down plastic to help the environment is definitely something that you could begin to think about.
+I kind of thought, "Well, is a human being clever enough "to actually fold a protein?" We can't work it out.
+JOHN MOULT: Since the 1960s, we thought that in principle, if I know what the amino acid sequence of a protein is, I should be able to compute what the structure's like.
+So if you could just press a button, and they'd all come popping out, that would be... that would have some impact.
+HASSABIS: It stuck in my mind.
+"Oh, this is a very interesting problem." And it felt to me like it would be solvable.
+But I thought it would need AI to do it.
+If we could just solve protein folding, it could change the world.
+HASSABIS: Ever since I was a student at Cambridge, I've never stopped thinking about the protein folding problem.
+If you were to solve protein folding, then the potential to help solve problems like Alzheimer's, dementia and drug discovery is huge.
+Solving disease is probably the most major impact we could have.
+(CLICKS MOUSE) Thousands of very smart people have tried to solve protein folding.
+I just think now is the right time for AI to crack it.
+(THRILLING MUSIC PLAYING) (INDISTINCT CONVERSATION) RICHARD EVANS: We needed a reasonable way to apply machine learning to the protein folding problem.
+(CLICKING MOUSE) We came across this Foldit game.
+The goal is to move around this 3D model of a protein and you get a score every time you move it.
+The more accurate you make these structures, the more useful they will be to biologists.
+I spent a few days just kind of seeing how well we could do.
+(GAME DINGING) We did reasonably well.
+But even if you were the world's best Foldit player, you wouldn't solve protein folding.
+That's why we had to move beyond the game.
+HASSABIS: Games are always just the proving ground for our algorithms.
+The ultimate goal was not just to crack Go and StarCraft.
+It was to crack real-world challenges.
+(THRILLING MUSIC CONTINUES) JOHN JUMPER: I remember hearing this rumor
+that Demis was getting into proteins.
+I talked to some people at DeepMind and I would ask, "So are you doing protein folding?" And they would artfully change the subject.
+And when that happened twice, I pretty much figured it out.
+So I thought I should submit a resume. HASSABIS: All right, everyone, welcome to DeepMind.
+I know some of you, this may be your first week, but I hope you all set...
+JUMPER: The really appealing part for me about the job was this, like, sense of connection to the larger purpose.
+HASSABIS: If we can crack some fundamental problems in science, many other people and other companies and labs and so on could build on top of our work.
+This is your chance now to add your chapter to this story.
+JUMPER: When I arrived, I was definitely (CHUCKLES) quite a bit nervous. I'm still trying to keep...
+I haven't taken any biology courses.
+We haven't spent years of our lives looking at these structures and understanding them.
+We are just going off the data and our machine learning models.
+JUMPER: In machine learning, you train a network like flashcards.
+Here's the question. Here's the answer.
+Here's the question. Here's the answer.
+But in protein folding, we're not doing the kind of standard task at DeepMind where you have unlimited data.
+Your job is to get better at chess or Go and you can play as many games of chess or Go as your computers will allow.
+With proteins, we're sitting on a very thick size of data that's been determined by a half century
+of time-consuming experimental methods in laboratories.
+These painstaking methods can take months or years to determine a single protein structure, and sometimes, a structure can never be determined.
+(TYPING) That's why we're working with such small datasets to train our algorithms.
+EWAN BIRNEY: When DeepMind started to explore the folding problem, they were talking to us about which datasets they were using and what would be the possibilities if they did solve this problem.
+Many people have tried, and yet no one on the planet has solved protein folding.
+(CHUCKLES) I did think to myself, "Well, you know, good luck." JUMPER: If we can solve the protein folding problem, it would have an incredible kind of medical relevance.
+HASSABIS: This is the cycle of science.
+You do a huge amount of exploration, and then you go into exploitation mode, and you focus and you see how good are those ideas, really?
+And there's nothing better than external competition for that. So we decided to enter CASP competition.
+CASP, we started to try and speed up the solution to the protein folding problem.
+CASP is when we say, "Look, DeepMind is doing protein folding, "this is how good we are, "and maybe it's better than everybody else.
+"Maybe it isn't." CASP is a bit like the Olympic Games of protein folding.
+CASP is a community-wide assessment that's held every two years.
+Teams are given the amino acid sequences of about 100 proteins, and then they try to solve this folding problem
+using computational methods.
+These proteins have already been determined by experiments in a laboratory, but have not yet been revealed publicly.
+And these known structures represent the gold standard against which all the computational predictions will be compared.
+MOULT: We've got a score that measures the accuracy of the predictions.
+And you would expect a score of over 90 to be a solution to the protein folding problem.
+(INDISTINCT CHATTER) MAN: Welcome, everyone, to our first, uh, semifinals in the winners' bracket.
+Nick and John versus Demis and Frank. Please join us, come around. This will be an intense match.
+STEVENS: When I learned that Demis was going to tackle the protein folding issue, um, I wasn't at all surprised.
+It's very typical of Demis.
+You know, he loves competition.
+And that's the end -of the first game, 10-7. -(ALL CHEERING) HASSABIS: The aim for CASP would be to not just win the competition, but sort of, um, retire the need for it.
+So, 20 targets total have been released by CASP.
+JUMPER: We were thinking maybe throw in the standard kind of machine learning and see how far that could take us.
+Instead of having a couple of days on an experiment, we can turn around five experiments a day. Great. Well done, everyone.
+(TYPING) Can you show me the real one instead of ours?
+MAN 1: The true answer is supposed to look something like that. MAN 2: It's a lot more cylindrical than I thought.
+JUMPER: The results were not very good. Okay.
+JUMPER: We throw all the obvious ideas to it and the problem laughs at you. This makes no sense.
+EVANS: We thought we could just throw some of our best algorithms at the problem. We were slightly naive.
+JUMPER: We should be learning this, you know, in the blink of an eye.
+The thing I'm worried about is, we take the field from really bad answers to moderately bad answers.
+I feel like we need some sort of new technology for moving around these things.
+(THRILLING MUSIC CONTINUES) HASSABIS: With only a week left of CASP,
+it's now a sprint to get it deployed.
+(MUSIC FADES) You've done your best.
+Then there's nothing more you can do but wait for CASP to deliver the results.
+(HOPEFUL MUSIC PLAYING)
+This famous thing of Einstein, the last couple of years of his life, when he was here, he overlapped with Kurt Gödel and he said one of the reasons he still comes in to work
+is so that he gets to walk home and discuss things with Gödel.
+It's a pretty big compliment for Kurt Gödel, shows you how amazing he was.
+MAN: The Institute for Advanced Study was formed in 1933.
+In the early years, the intense scientific atmosphere attracted some of the most brilliant mathematicians and physicists ever concentrated in a single place and time.
+HASSABIS: The founding principle of this place, it's the idea of unfettered intellectual pursuits, even if you don't know what you're exploring.
+Will result in some cool things, and sometimes that then ends up being useful, which, of course, is partially what I've been trying to do at DeepMind.
+How many big breakthroughs do you think are required to get all the way to AGI?
+And, you know, I estimate maybe there's about a dozen of those. You know, I hope it's within my lifetime.
+-Yes, okay. -HASSABIS: But then, all scientists hope that, right?
+EMCEE: Demis has many accolades.
+He was elected Fellow to the Royal Society last year.
+He is also a Fellow of Royal Society of Arts. A big hand for Demis Hassabis.
+(MUSIC FADES) HASSABIS: My dream has always been to try and make AI-assisted science possible.
+And what I think is our most exciting project, last year, which is our work in protein folding. Uh, and we call this system AlphaFold.
+We entered it into CASP and our system, uh, was the most accurate, uh, predicting structures for 25 out of the 43 proteins in the hardest category.
+So we're state of the art, but we still... I have to make... Be clear, we're still a long way from solving the protein folding problem.
+We're working hard on this, though, and we're exploring many other techniques.
+(SOMBER MUSIC PLAYING) Let's get started.
+JUMPER: So kind of a rapid debrief, these are our final rankings for CASP.
+HASSABIS: We beat the second team in this competition by nearly 50%, but we've still got a long way to go before we've solved the protein folding problem
+in a sense that a biologist could use it. JUMPER: It is area of concern.
+JANET THORNTON: The quality of predictions varied and they were no more useful than the previous methods.
+PAUL NURSE: AlphaFold didn't produce good enough data for it to be useful in a practical way to, say, somebody like me investigating my own biological problems.
+JUMPER: That was kind of a humbling moment 'cause we thought we'd worked very hard and succeeded.
+And what we'd found is we were the best in the world at a problem the world's not good at.
+We knew we sucked.
+(INDISTINCT CHATTER) JUMPER: It doesn't help if you have the tallest ladder when you're going to the moon.
+HASSABIS: The opinion of quite a few people on the team, that this is sort of a fool's errand in some ways.
+And I might have been wrong with protein folding.
+Maybe it's too hard still for where we're at generally with AI.
+If you want to do biological research, you have to be prepared to fail because biology is very complicated.
+I've run a laboratory for nearly 50 years, and half my time, I'm just an amateur psychiatrist to keep, um, my colleagues cheerful when nothing works.
+And quite a lot of the time and I mean, 80, 90%, it does not work.
+If you are at the forefront of science, I can tell you, you will fail a great deal.
+(CLICKS MOUSE) HASSABIS: I just felt disappointed.
+Lesson I learned is that ambition is a good thing, but you need to get the timing right.
+There's no point being 50 years ahead of your time.
+You will never survive fifty years of that kind of endeavor before it yields something.
+You'll literally die trying.
+(TENSE MUSIC PLAYING)
+CUKIER: When we talk about AGI, the holy grail of artificial intelligence, it becomes really difficult to know what we're even talking about.
+HASSABIS: Which bits are we gonna see today? MAN: We're going to start in the garden.
+(MACHINE BEEPS) This is the garden looking from the observation area.
+Research scientists and engineers can analyze and collaborate and evaluate what's going on in real time.
+CUKIER: So in the 1800s, we'd think of things like television and the submarine or a rocket ship to the moon and say these things are impossible.
+Yet Jules Verne wrote about them and, a century and a half later, they happened.
+HASSABIS: We'll be experimenting on civilizations really, civilizations of AI agents.
+Once the experiments start going, it's going to be the most exciting thing ever.
+-So how will we get sleep? -(MAN LAUGHS) I won't be able to sleep.
+LEGG: Full AGI will be able to do any cognitive task a person can do.
+It will be at a scale, potentially, far beyond that.
+STUART RUSSELL: It's really impossible for us to imagine the outputs of a superintelligent entity.
+It's like asking a gorilla to imagine, you know, what Einstein does when he produces the theory of relativity.
+LEGG: People often ask me these questions like, "What happens if you're wrong, and AGI is quite far away?" And I'm like, I never worry about that.
+I actually worry about the reverse.
+I actually worry that it's coming faster than we can really prepare for.
+(ROBOTIC ARM WHIRRING) HADSELL: It really feels like we're in a race to AGI.
+The prototypes and the models that we are developing now are actually transforming the space of what we know about intelligence.
+(WHIRRING) LEGG: Recently, we've had agents that are powerful enough to actually start playing games in teams,
+then competing against other teams.
+We're seeing co-operative social dynamics coming out of agents where we haven't pre-programmed in any of these sorts of dynamics.
+It's completely learned from their own experiences.
+When we started, we thought we were out to build an intelligence system and convince the world that we'd done it.
+We're now starting to wonder whether we're gonna build systems that we're not convinced are fully intelligent, and we're trying to convince the world that they're not.
+(CHUCKLES) (CELL PHONE DINGS) Hi, Alpha.
+ALPHA: Hello there. LOVE: Where are we today?
+You're at the Museum of Modern Art in New York City. Kind of. Um, what painting is this?
+This is The Creation of Adam by Michelangelo. I don't think that painting is in New York City.
+You are right. It's in the Vatican City. LOVE: Do you think that's where we are?
+ALPHA: No.
+LOVE: Then how am I looking at this?
+ALPHA: You're looking at a digital copy of the painting. Yes. MAN 1: Who lives in this house?
+(EXCITING MUSIC PLAYING) ALPHA: An astronaut. What's this astronaut's name?
+ALPHA: His name is Mark.
+This is a famous equation by Albert Einstein.
+It shows that energy and mass are equivalent. How would you explain it to a five year old?
+Well, imagine you have a big rock, and you want to know how much it weighs. MAN 2: Is Mark in danger?
+ALPHA: No. Mark is not in danger. Why is that?
+ALPHA: Because the dinosaur is not real.
+(MEN CHUCKLING) LOVE: All right. Why could you not answer my question?
+ALPHA: I think I couldn't answer your question because I don't know enough about the subject. Okay. How could you learn more about the subject?
+APLHA: I can learn more about the subject by reading books, articles, and websites.
+You can teach me.
+HASSABIS: My conclusion is, if you now think about what we're doing, is learning from all humans, all their knowledge at once put on the Internet, you would actually know a lot about the world.
+Like a significant portion of everything humans can do.
+And now, I think it's more like, "Well, it might just work." This is a big moment. Who is this?
+ALPHA: This is God reaching out to Adam.
+RUSSELL: The advent of AGI will divide human history into two parts. The part up to that point and the part after that point.
+LOVE: Why is he reaching out to touch Adam?
+ALPHA: God is reaching out to touch Adam to give him life.
+RUSSELL: It will give us a tool that can completely reinvent our entire civilization.
+LOVE: What does this painting mean to you?
+ALPHA: The painting means a lot to me. Okay. Like what?
+(MUSIC FADES) ALPHA: I think the painting is a reminder that we are all connected to each other and that we are all part of something bigger than ourselves. That's pretty nice.
+LEGG: When you cross that barrier of "AGI might happen one day in the future" to "No, actually, this could really happen in a time frame
+"that is sort of, like, on my watch, you know," something changes in your thinking. MAN: ...learned to orient itself by looking...
+HASSABIS: We have to be careful with how we use it and thoughtful about how we deploy it.
+(GRIPPING MUSIC BUILDING) HASSABIS: You'd have to consider what's its top level goal.
+If it's to keep humans happy, which set of humans? What does happiness mean?
+A lot of our collective goals are very tricky, even for humans to figure out.
+CUKIER: Technology always embeds our values. It's not just technical, it's ethical as well.
+So we've got to be really cautious about what we're building into it. MAN: We're trying to find a single algorithm which...
+SILVER: The reality is that this is an algorithm that has been created by people, by us.
+You know, what does it mean to endow our agents with the same kind of values that we hold dear?
+What is the purpose of making these AI systems appear so humanlike so that they do capture hearts and minds because they're kind of exploiting a human vulnerability also?
+The heart and mind of these systems are very much human-generated data... WOMAN: Mmm-hmm. ...for all the good and the bad.
+LEVI: There is a parallel between the Industrial Revolution, which was an incredible moment of displacement and the current technological change created by AI.
+(CHANTING) Pause AI!
+LEVI: We have to think about who's displaced and how we're going to support them.
+This technology is coming a lot sooner, uh, than really the world knows or kind of even we 18, 24 months ago thought.
+So there's a tremendous opportunity, tremendous excitement, but also tremendous responsibility. It's happening so fast.
+How will we govern it?
+How will we decide what is okay and what is not okay?
+AI-generated images are getting more sophisticated.
+RUSSELL: The use of AI for generating disinformation and manipulating human psychology is only going to get much, much worse.
+LEGG: AGI is coming, whether we do it here at DeepMind or not.
+CUKIER: It's gonna happen, so we better create institutions to protect us. It's gonna require global coordination.
+And I worry that humanity is increasingly getting worse at that rather than better.
+LEGG: We need a lot more people really taking this seriously and thinking about this. It's, yeah, it's serious. It worries me.
+It worries me. Yeah.
+RUSSELL: If you received an email saying this superior alien civilization is going to arrive on Earth, there would be emergency meetings
+of all the governments.
+We would go into overdrive trying to figure out how to prepare.
+-(MUSIC FADES) -(BELL TOLLING FAINTLY) The arrival of AGI will be the most important moment that we have ever faced.
+(BELL CONTINUES TOLLING FAINTLY) HASSABIS: My dream was that on the way to AGI,
+we would create revolutionary technologies that would be of use to humanity.
+That's what I wanted with AlphaFold.
+I think it's more important than ever that we should solve the protein folding problem.
+This is gonna be really hard, but I won't give up until it's done.
+You know, we need to double down and go as fast as possible from here. I think we've got no time to lose. So we are going to make a protein folding strike team.
+Team lead for the strike team will be John. Yeah, we've seen Alpha...
+You know, we're gonna try everything, kitchen, sink, the whole lot.
+CASP14 is about proving we can solve the whole problem.
+And I felt that to do that, we would need to incorporate some domain knowledge.
+(EXCITING MUSIC PLAYING) We had some fantastic engineers on it, but they were not trained in biology.
+KATHRYN TUNYASUVUNAKOOL: As a computational biologist, when I initially joined the AlphaFold team, I didn't immediately feel confident about anything.
+(CHUCKLES) You know, whether we were gonna be successful.
+Biology is so ridiculously complicated. It just felt like this very far-off mountain to climb.
+MAN: I'm starting to play with the underlying temperatures to see if we can get...
+As one of the few people on the team who's done work in biology before, you feel this huge sense of responsibility.
+"We're expecting you to do "great things on this strike team." That's terrifying.
+But one of the reasons why I wanted to come here was to do something that matters. This is the number of missing things.
+What about making use of whatever understanding you have of physics? Using that as a source of data? But if it's systematic... Then, that can't be right, though.
+If it's systematically wrong in some weird way, you might be learning that systematically wrong physics.
+The team is already trying to think of multiple ways that...
+TUNYASUVUNAKOOL: Biological relevance is what we're going for.
+So we rewrote the whole data pipeline that AlphaFold uses to learn.
+HASSABIS: You can't force the creative phase.
+You have to give it space for those flowers to bloom. We won CASP.
+Then it was back to the drawing board and like, what are our new ideas?
+Um, and then it's taken a little while, I would say, for them to get back to where they were, but with the new ideas.
+And then now I think we're seeing the benefits of the new ideas. They can go further, right? So, um, that's a really important moment.
+I've seen that moment so many times now, but I know what that means now. And I know this is the time now to press.
+(EXCITING MUSIC CONTINUES) JUMPER: Adding side-chains improves direct folding. That drove a lot of the progress. -We'll talk about that. -Great.
+The last four months, we've made enormous gains.
+EVANS: During CASP13, it would take us a day or two to fold one of the proteins, and now we're folding, like, hundreds of thousands a second.
+Yeah, it's just insane. (CHUCKLES) KAVUKCUOGLU: Now, this is a model that is orders of magnitude faster, while at the same time being better.
+We're getting a lot of structures into the high-accuracy regime.
+We're rapidly improving to a system that is starting to really get at the core and heart of the problem. HASSABIS: It's great work. It looks like we're in good shape.
+So we got, what, six, five weeks left? Six weeks? So what's, uh... Is it... You got enough compute power? MAN: I... We could use more.
+(ALL LAUGHING) TUNYASUVUNAKOOL: I was nervous about CASP but as the system is starting to come together, I don't feel as nervous.
+I feel like things have, sort of, come into perspective recently, and, you know, it's gonna be fine.
+NEWSCASTER: The Prime Minister has announced the most drastic limits to our lives the U.K. has ever seen in living memory.
+BORIS JOHNSON: I must give the British people a very simple instruction.
+You must stay at home.
+HASSABIS: It feels like we're in a science fiction novel.
+You know, I'm delivering food to my parents, making sure they stay isolated and safe.
+I think it just highlights the incredible need for AI-assisted science.
+TUNYASUVUNAKOOL: You always know that something like this is a possibility.
+But nobody ever really believes it's gonna happen in their lifetime, though.
+(COMPUTER BEEPS) JUMPER: Are you recording yet? RESEARCHER: Yes.
+-Okay, morning, all. -Hey.
+Good. CASP has started. It's nice I get to sit around in my pajama bottoms all day.
+TUNYASUVUNAKOOL: I never thought I'd live in a house where so much was going on.
+I would be trying to solve protein folding in one room, and my husband would be trying to make robots walk in the other.
+(EXHALES) One of the hardest proteins we've gotten in CASP thus far is the SARS-CoV-2 protein called Orf8.
+Orf8 is a coronavirus protein.
+It's one of the main proteins, um, that dampens the immune system.
+TUNYASUVUNAKOOL: We tried really hard to improve our prediction.
+Like, really, really hard.
+Probably the most time that we have ever spent on a single target.
+To the point where my husband is, like, "It's midnight. You need to go to bed." So I think we're at Day 102 since lockdown.
+My daughter is keeping a journal.
+Now you can go out as much as you want. JUMPER: We have received the last target.
+They've said they will be sending out no more targets in our category of CASP.
+So we're just making sure we get the best possible answer.
+MOULT: As soon as we started to get the results, I'd sit down and start looking at how close did anybody come
+to getting the protein structures correct. (ROBOT SQUEAKING)
+(INCOMING CALL BEEPING) -Oh, hi there. -MAN: Hello.
+(ALL CHUCKLING) It is an unbelievable thing, CASP has finally ended. I think it's at least time to raise a glass.
+Um, I don't know if everyone has a glass of something that they can raise. If not, raise, I don't know, your laptops.
+-Um... -(LAUGHTER) I'll probably make a speech in a minute. I feel like I should but I just have no idea what to say. So... let's see.
+I feel like a reading of email is the right thing to do.
+(ALL CHUCKLING) TUNYASUVUNAKOOL: When John said, "I'm gonna read an email," at a team social, I thought, "Wow, John, you know how to have fun."
+We're gonna read an email now. (LAUGHS) Uh, I got this about 4:00 today. Um, it is from John Moult.
+And I'll just read it.
+It says, "As I expect you know, "your group has performed amazingly well in CASP 14, "both relative to other groups
+"and in absolute model accuracy." (PEOPLE CLAPPING) "Congratulations on this work.
+"It is really outstanding." The structures were so good, it was... it was just amazing.
+(TRIUMPHANT INSTRUMENTAL MUSIC PLAYING) After half a century, we finally have a solution to the protein folding problem.
+When I saw this email, I read it, I go, "Oh, shit!" And my wife goes, "Is everything okay?" I call my parents, and just, like, "Hey, Mum.
+"Um, got something to tell you.
+"We've done this thing "and it might be kind of a big deal." (LAUGHS) When I learned of the CASP 14 results, I was gobsmacked.
+I was just excited.
+This is a problem that I was beginning to think would not get solved in my lifetime.
+NURSE: Now we have a tool that can be used practically by scientists.
+SENIOR: These people are asking us, you know, "I've got this protein involved in malaria," or, you know, some infectious disease. "We don't know the structure.
+"Can we use AlphaFold to solve it?" JUMPER: We can easily predict all known sequences in a month. All known sequences in a month? -Yeah, easily. -Mmm-hmm?
+JUMPER: A billion, two billion. Um, and they're... So why don't we just do that? Yeah. -We should just do that a lot. -Well, I mean... That's way better. Why don't we just do that?
+SENIOR: So that's one of the options. -HASSABIS: Right. -There's this... We should just... Right, that's a great idea. We should just run every protein in existence.
+And then release that. Why didn't someone suggest this before? Of course that's what we should do.
+Why are we thinking about making a service and then people submit their protein? We just fold everything.
+And then give it to everyone in the world.
+Who knows how many discoveries will be made from that?
+BIRNEY: Demis called us up and said, "We want to make this open.
+"Not just make sure the code is open, "but we're gonna make it really easy "for everybody to get access to the predictions."
+THORNTON: That is fantastic.
+It's like drawing back the curtain and seeing the whole world of protein structures.
+(ETHEREAL MUSIC PLAYING) SCHMIDT: They released the structures of 200 million proteins.
+These are gifts to humanity.
+JUMPER: The moment AlphaFold is live to the world, we will no longer be the most important people in AlphaFold's story.
+HASSABIS: Can't quite believe it's all out.
+PEOPLE: Aw!
+WOMAN: A hundred and sixty-four users.
+HASSABIS: Loads of activity in Japan.
+RESEARCHER 1: We have 655 users currently.
+RESEARCHER 2: We currently have 100,000 concurrent users.
+Wow!
+Today is just crazy.
+HASSABIS: What an absolutely unbelievable effort from everyone.
+We're gonna all remember these moments for the rest of our lives. I'm excited about AlphaFold. For my research, it's already propelling lots of progress.
+And this is just the beginning.
+SCHMIDT: My guess is, every single biological and chemistry achievement will be related to AlphaFold in some way.
+(TRIUMPHANT INSTRUMENTAL MUSIC PLAYING)
+AlphaFold is an index moment.
+It's a moment that people will not forget because the world changed.
+HASSABIS: Everybody's realized now what Shane and I have known for more than 20 years, that AI is going to be the most important thing humanity's ever gonna invent.
+TRAIN ANNOUNCER: We will shortly be arriving at our final destination.
+(ELECTRONIC MUSIC PLAYING) HASSABIS: The pace of innovation and capabilities
+is accelerating, like a boulder rolling down a hill that we've kicked off and now it's continuing to gather speed.
+NEWSCASTER: We are at a crossroads in human history.
+AI has the potential to transform our lives in every aspect.
+It's no less important than the discovery of electricity.
+HASSABIS: We should be looking at the scientific method and trying to understand each step of the way in a rigorous way.
+This is a moment of profound opportunity.
+SUNAK: Harnessing this technology could eclipse anything we have ever known.
+(ELECTRONIC DEVICE BEEPS) HASSABIS: Hi, Alpha.
+ALPHA: Hi. What is this?
+ALPHA: This is a chessboard. If I was to play white, what move would you recommend?
+ALPHA: I would recommend that you move your pawn from E2 to E4. And now if you were black, what would you play now?
+ALPHA: I would play the Sicilian Defense. Good choice.
+-ALPHA: Thanks. -(CHUCKLES) So what do you see? What is this object?
+ALPHA: This is a pencil sculpture. What happens if I move one of the pencils?
+ALPHA: If you move one of the pencils, the sculpture will fall apart. I'd better leave it alone, then.
+-That's probably a good idea. -(HASSABIS CHUCKLES) HASSABIS: AGI is on the horizon now.
+Very clearly the next generation is going to live in a future world where things will be radically different because of AI.
+And if you want to steward that responsibly, every moment is vital.
+This is the moment I've been living my whole life for. It's just a good thinking game.
+(UPLIFTING INSTRUMENTAL MUSIC PLAYING)

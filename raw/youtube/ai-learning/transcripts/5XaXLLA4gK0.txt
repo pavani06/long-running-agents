@@ -1,0 +1,76 @@
+today I'm going to show you how fast and easy it is to build out websites that actually rank like you can see for example this is an aiso website this is
+another one these were actually both built with aut to blog in but I'm want to show you a free technique to build out a site like this that actually gets traffic from day one on the website so
+you can see here for example this was Enterprise SEO Roi calculator you can see the traffic is coming in consistently and this is within the
+first month of build there right now that is absolutely mindblowing because it's in the top 3.5% of websites on the internet according to ATS who have
+monitored over a billion sites of aiso and realized that only that actually 96.5% of websites get zero traffic from
+Google so I'm going to show you how to be in the top 3.5% today by automating a website that you can quickly build out
+with a free tool called wind surf now let's get straight into it so the way that you could do this if we go into wind surf like you see right here we're
+going to open up a new folder to start up a new project then we're going to set up a new folder that just says something like I know let's say we want to
+replicate this example so we're going to put Enterprise SEO Roi calculator hit create open that bad boy up and
+basically wind surf you can download it for free online just it's a one click install super super basic stuff and then from here I'm going to click trusty
+offers we're going to X off the GitHub repository notification and then we're going to start getting this party started so let's say we want to quickly
+automate a we weite like this basically the first place to start is to get the keyword research now you don't need to use a pay tool like Atri you can actually use a free version or you can
+use Google War to complete so you do not need to pay for this either but I'm on the paper land so I'm just going to make it easier and faster for everyone watching before someone types in the
+comments are but you got to pay foress blah blah and so inside the keywords over here we would just find a calculator related search term that we
+want to create an exact match domain about and you know you can build multiple Pages using wind surf it's actually easier to build multiple page
+websites for wind Ser than it is with say bolt. new but either way I'm just going to create a basic one page today just to show you quickly how easy and
+fast this is in fact we could build we could probably build multiple at the same time basically just to narrow this down and make this super easy I'm going to go for like kd10 or less I'm going to
+go for Dr Z's ranking on the first page of Google just to give myself the best possible chance of ranking now some
+people comment and say if you don't have an exact match domain you wouldn't rank as fast man and I would agree that's the whole point of this right is to make it
+easy not hard for ourselves let's say for example I ran a marathon in 3 hours it would be the equivalent of someone coming along and saying mate you
+couldn't do that if you're wearing flip-flops and a balling chair and again you just want to make it easy for yourself right so from here we're going
+to start looking at different ways we can create a snow day calculator because this seems to be a good key way to go for the reason for that is because you
+can see here it's got a high traffic potential it's super easy to rank for and if you we actually check the keyword we can see that low Authority domains ranking in the top 10 boom shakalaka
+that's what we want right we got dr0 dr9 dr2 is probably very very easy to rank for that keyword we don't need many
+backlinks to rank on the first page and it's got a very high traffic potential awesome right so if we want to Rite for that keyword here's what we're going to
+so we're going to take this keyword snow day calculator again you can find the s or you can use the free keyword
+generator from ATS which is this tool right here plug it in find the keywords it will tell you exactly the same
+information like you see right here now we're going to go back to wind Surf and we're going to go in the chat and we going to say all right create a
+beautifully designed snow day calculator all right now we'll put the time CU I want to show you how fast and easy this is even though I can't spell so if we
+put the Stow patch on right there the stop running nicely we're create a beautifully designed snow dat calculator
+SE optimized the keyword give actual content on the page too plus a relevant
+tool right we'll to like so again the Stow patch is still running the stopwatch is going time waits for no man
+or woman and so now we're going to time this and see how long it takes to create so you see here it's creating files for
+the project then it's creating a CSS file that's taken one minute so far I would genuinely say it is a bit slower than say using something like Bol
+because Bol is running locally since the Bol is going to take is running online it seems like I don't know if it's because we're running wind Surf and it's
+a local program that takes a bit longer but you can see how long it takes Etc anyway the other thing I was thinking about just while waiting for this to load is like how difficult is it going
+to be for frontend app developers next year because now you can create your own app and you can build this out quickly now if we pause the stopwatch here sir
+that took a grand total of 115 seconds to build now if we open up the index.html and we'll grab the file
+drag it into here and we have the page ready to go how ridiculous is with that you've built out a website that
+potentially has a traffic potential of 291,000 in one single click if we actually compare side by side now what's
+interesting is like some people say you know AI websites or spammy whatever they're not very good you're not creating much value Etc but be honest
+with me my friends which one would you prefer like which which page is looking better like they've obviously done a fantastic job ranking over one for this
+keyword but if we have a look at this right but if we have a look at which calculator is the most useful I would
+say this one simply because the UI is nicer it's super clean it's got some nice information on the page it loads
+really quickly the tool actually works I believe we put in the the temperature here then we're going to put 10 there 60
+there and we'll put in the region as Northeast and then we'll calculate it you can see here it actually works and it works instantly and it was so easy to
+create in literally a few seconds and so you can build out these websites they do actually rank you're creating something
+of value but unlike Bol which you usually have to pay for because there's a token limit I haven't been charged anything for using wind surf it seems to
+be completely free it seems to be free for quite a high token limit then there is a pricing plan there is a premium
+pricing plan but bear in mind like you can build out websites very quickly I haven't been charge of anything you get free access to CLA 3.5 son it it's very
+easy to set up and we can build out websites that will track traffic if we rank for them in the space of minutes
+not hours now bear in mind as well if you asked a developer you know let's say you're on upwork and you're trying to hire the reler to do this for you how much you going to pay quite a fair
+amount right the other thing is as well I've shown on previous examples I'm just going to hit save on that just so we can start a new project but you can actually
+build out like other types of websit so you can see here I actually built out a bird photography site super easy really fast to create you can actually run the
+python script inside the chat to just open up the website and check it out and you can see here we actually open this up in your browser so you can check out
+the website set it up locally test out before you host it see how it's doing and this created like a whole blog for
+me including the Amazon affiliate links in literally a few minutes as well and actually this is pretty nicely designed plus if we check out the code for this
+website super clean it will run really quick if you host that online so the power and the potential of wind surf is
+is absolutely awesome it's very similar to cursor in terms of its usage but you don't have to pay for it it just it
+seems to actually work for me like I couldn't get cursor working in the same way and you can build out bigger websites because for example with bt.
+new there's a lot back and forth there's a lot more errors bolt can generate the website very quickly but it actually but
+quite often there's a lot of broken links and it's not great for scaling out bigger sites whereas for example if you're building out an Amazon affiliate site like you see right here we can
+create pages around all the keywords you want to and then start ranking the site pretty nicely and of course you would quality control this before you publish
+it but you get the idea so thanks so much for watching that's basically how you can build out a website like this that ranks very quickly super simple to
+set up what I'm actually do is I will take the prompts from today for the SEI calculator which is super simple as you can see and I'm going to plug that into
+my wind surf a IO sap right this comes with some video tutorials loads of different use cases some of my best saps
+on how to do there some of my best prompts and how I built out that bird photography website and additionally if you want the calculator prompt it's inside this document too just to keep
+everything in one place and if you want to get access to this just go to my free SEO course Link in the comments description then log in free SEO course
+free SEO tools and then wind surf AI you'll find all the video notes right there now if you want to get a free one to1 SEO strategy session feel free to book that in Link in the comments
+description we'll show you how we take websites from0 to 145,000 V this month and generate thousands of dollars in sales and autopilot on this free link
+building acceleration session you get a free SEO domination plan this go with the secret link building answer any questions you have you learn the best link building strategy for your webite how to quickly our ranking competitiv
+with link building how to stand XO traffic based on what's working for us additionally on this free Le building acceleration s we're offering some
+amazing Black Friday deals so if you sign up for 3 months 6 months Etc you will get some massive discounts and not only that my friends because for Black
+Friday only we have a special coupon code where you will save $2,600 if you use a code Elite on this
+page right so if we apply the code Elite you will save $263 to be precise and you can sign up
+instantly make sure you get that before the Black Friday deal ends and I will see you in there hopefully cheers byebye

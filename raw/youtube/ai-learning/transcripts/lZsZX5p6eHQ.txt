@@ -1,0 +1,110 @@
+what you see here is the AI call center dashboard I have built so I'm just going to start this video by showing you how it works then we're going to dive a bit
+into the code and then I'm going to do real uh life uh use cases for this so we're going to call a few businesses I
+think we want to ask if they have any grooming appointments for my dog and as you will see soon then we can collect all the informations we can play back
+the recordings and we collect some very valuable data uh with this system so let me just show you how this works now so
+the first thing we're going to do is enter a task for our agent to perform so I'm just going to write a task description here so the task is just going to be to ask all about AI that's
+going to be me right to if they want to collab on a sponsorship and here we can have some data extraction preferences so I want the pricing information so I'm
+just going to check off that uh I want some special requirements and availability right uh next we're going to do the company name that's going to
+be all about AI right I'm just going to put in my phone number and then all I have to do now is make the call uh since
+I'm using my phone as a recording device now uh I'm just going to do the call and then we come back to see the results
+here right okay so as you can see now the call was complete and we got the results
+from the call down here you can see we agreed to do our sponsorship collaboration for a 60c integration we
+have the pricing $100 super flexible eager to work together and you can see down here we have play recording so now
+we can actually play the conversation between me and the the people that called me right our agent so let's
+listen to like 10 seconds of this we're not going to do the full conversation we can listen to a few more later but let's start by playing this hello this is all
+about AI is this all L about AI yeah hello awesome I'm ually calling from
+California and I like I wanted to chat with you about a potential collaboration
+opportunity uh would you be interested in partnering with us for a sponsorship we think it'd be like okay so I'm just going to stop it there because I think
+that was enough uh and this is how the system works right we just set it up a task we want to do we check off the data we want to exract this can be built
+outright we can add more components here so we can do like a string of different calls I have worked on a system where we
+can do multiple calls simultaneously but that's going to be for another video and we get the call results uh on auto
+autonomous here so it's pretty cool and you can see we have some sentiment this was a positive sentiment so the next step uh I think we're going to look a
+bit about the code I'm just going to explain the how this uh set up and then we're going to do a few more real calls where I will try to book uh an
+appointment for my dog to see uh if they have some for maybe say tomorrow so yeah pretty cool if you ask me now let's
+check out our code here okay so let's start a bit about the back end here uh I have gone through this a few times
+before but uh just a quick we are using tweo and we are using the real time uh a
+API from open AI that is kind of how we set this up uh so the TW account gives us like a phone number we can use real
+time API opens the websocket where we can have this conversation with this low latency uh if you go down here you can see this is the schema for instructing
+the conversation using sod so we have the call info here and here is where we set up our company name task response
+and everything like did and here you can add whatever data you want to extract right uh let me see if there are any other things that is interesting about
+the back end here so here is kind of the updated system message I want to use so you can see uh in the knowledge uh I can zoom in a bit here so in a knowledge
+part you are calling behalf of company name we can remove that if we want to and because we have a task right so this
+is going to be set in our front end the task we have introduce yourself here uh is this and we say company name wait for
+a response complete your task and we have instructions to do that and we have some extract instructions that we set in
+the UI too so the thing is about these extract instructions why we want to feed them into the system message is uh let
+me just go here so let's say I don't state it in the task description that I want pricing information but if I just
+do like contact information pricing information I don't have to put it up here because it's going to ask about
+these steps anyway so that's why I did it like this and it seems to work pretty good so the system m is something you
+want to work a bit on if you want to set this system up uh kind of the way you want it you can see I have some different voice configurations here for
+the real time API so I've been trying to make this yeah I use some feeler words laugh positive polite there's a bunch of
+stuff we can play around with here so it's pretty interesting uh let's see if there are any other things that are interesting here I guess one thing here
+in kind of the session update here uh I set the temperature to 1.1 because I found that if I use higher temperature
+using the real-time API it just feels more natural uh that's what I found out uh you can of course play around with
+this temperature to see if you get the response you want but for me this just makes it more variable it just seems
+more realistic right and I kind of think that's it uh for the back end uh on my member section if you want to become a
+member I have like a tutorial on how you can set this up so if you really want to try this out just become a member of the
+channel and I will probably post this full code here on the community GitHub so you can have the UI and everything uh
+but there's a tutorial on how you set up toio and get started with this setup but now let's just move on to the front end
+because there are some interesting stuff here I think so if we go to our page right here is kind of everything I wanted to set up on my front end to get
+this working so again you can see we have the extraction preferences appointment time pricing availability
+contact information here you can kind of add on everything what you want and for this again we are yeah we are using sod
+on the back end uh so the way we actually use this I kind of got forgot to mention that is uh to actually get
+the data we want to transcribe this so this is the conversation we just had so we transcribe this using open AI whisper
+so we take the MP3 free file right we had we transcribe that into text and from this text we can extract the data
+we can feed to a front end so you can see $100 for 60c integration super flexible and this is the way I set this
+up so we have the pipeline of making the call recording the conversation into an MP3 file we're feeding the conversation
+into whisper getting the text and from the text we're using structured outputs to actually fetch all the the data we
+want and from there we uh point this to our front end to do a Fetch and update this uh in our UI right and I would say
+this is the most interesting part this is kind of the pipeline because the rest of the UI is mostly just yeah we have a
+poll here to try to look for the completed conversation to pull in the results from the extracted data so I
+haven't really optimized this it's just yeah what do you call it it's just work working but there's a bunch of stuff you
+can optimize here if you wanted to uh but I don't think I want to go through bunch of more stuff here in the code it
+is a setup with real time API too we use whisper we use structured outputs uh I think we use GPT 40 I can check that out
+yeah you can see here we use GPT 40 uh so mostly it's for that so we can try other models in the future maybe we want
+to try 01 who knows probably be way too slow but uh yeah bunch of stuff you can do with this now I think we just going
+to go back to the interface and I'm going to set up I'm going to collect a few different numbers so let's head over
+to Google to find a few different numbers and then start making some calls and see if we get any data out of this
+so I just went to Google I just SE for search for dog grooming New York uh so I'm just going to grab a few uh dog
+grooming stores here and we're going to put in the number and we're going to put in our task and then we're going to make
+a few calls and see if we get any data back that is yeah useful and yeah let's
+just do that let me just grab some numbers set this up and then we're going to start making some calls okay so I tried to call these grooming services but no one really picked up so I just
+switch switch it out uh now we're going to call dentist uh I think they're going to pick up so the task is going to be you're calling a dentist in New New York
+to ask if they have an appointment uh tomorrow morning uh if yes say you will call back to confirm if no say thanks a
+lot keep it concise but polite we're going to check off appointment time and we're going to call these five uh Dental
+officers in New York so I think I'm just going to call around with this now and then I'm going to take you back once we
+have gather some data and hopefully listen to a few conversations that worked out pretty good so I'm just going
+to click call here now you can see this is initiating and yeah let's just wait when I have tried all these numbers okay
+so we ended up calling nine different Dental stores uh so you can see the results here the first one we called uh
+the appointment was not uh confirmed or denied so we're not going to check that Pearl dental office uh availability for
+appointments was confirmed so that means there is an appointment there Midtown we have an appointment at 8 am if we want
+that one that was a positive sentiment so I think we're going to listen to that uh expert uh did not confirm uh someone
+didn't pick up on Modern Dental we have a positive sentiment uh 1100 a.m. next day so here we have an appointment so I think we're
+going to listen to Modern Dental and have a listen to Midtown Dental so let me just grab my headphones and let's
+play a bit of the recording uh of these two uh conversations Midtown Dental Care
+Associates hello is this Midtown Dental uh there are different Midtown Dental Care but yeah Dental Care
+Associates yeah oh got it thanks um do you have any appointments available tomorrow
+morning would you be a first time patient oh I'm actually just checking for availability right now if there are
+openings I'll call back to confirm so are there any slots open in the morning like super early for what exactly for just regular
+checkup cleaning or is for something else oh um it would be for like a
+regular checkup and cleaning do you have anything tomorrow the earliest
+morning we do have something available for cleaning and checkup at 8:00 a.m.
+how cool cool thanks for letting me know um I'll call back to confirm then thanks a bunch have a great day goodbye okay
+that was pretty good right I I guess this the voice it's a bit cold but um it worked out pretty good uh I got what I
+wanted I know they have an appointment tomorrow and yeah pretty good and now let's listen to Modern Dental uh if that
+is as good modern Dental Sarah speaking how may I help you hello uh is this Modern Dental yes
+this is Modern Dental awesome uh I was wondering if you have any appointments available tomorrow
+morning for tomorrow morning I have an 11 a.m. well great um thanks for letting me
+know I'll call back to confirm have a nice day no worries okay that was pretty mood right
+I didn't see the latency was good there was no weird stuff it just do we have an appointment yes we do when 11 great I'll
+call back perfect so you can see it followed our instructions perfect here because it said it will call back if not
+say thanks a lot we didn't hear any of that but I was super happy with this and like I said in my title I think there is
+a big opportunity here if you want to do something with this contact different companies ask do you want this kind of
+setup it's not that expensive right and you can you don't have to do outbound calls you can answer inbound calls so I
+think there's a lot of opportunity here if someone just has the time to do this uh me personally I don't really have the time for this but if you do I would
+definitely look into this at least to start trying this out and see just her her take contact with some companies
+maybe that maybe some dentos company maybe they need some assistance with yeah taking phone calls calling back
+patience there's a lot of stuff you can do and here the quality is getting better each day so I think 2025 is going to be a big deal in this call center
+agent space that's going to be pretty interesting to follow so yeah basically that's all I had today hope you enjoyed it and like I said if you want to try
+this out for yourself this setup I have just become a member I would probably push this to the private Community GitHub and you can get access from there
+to just make this your own right and you get a tutorial So yeah thank you for tuning in hope you enjoyed it hope this inspired you to start doing something at
+least for next year things going to be pretty interesting so yeah let's pick soon and have a great day

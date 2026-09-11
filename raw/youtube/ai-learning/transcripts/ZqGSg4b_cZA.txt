@@ -1,0 +1,688 @@
+If I could go back in time and tell a 20-year-old me about the life he was about to have,
+none of it would make sense. [music]
+What about this internet thing? Do you do you know anything about that? [music] Sure. Imagine a world where every word
+ever written, every picture ever painted, and every [music] film ever shot could be viewed instantly in your
+home via an information superighway. [music]
+500 days ago, we didn't even have Java. Now, you know, the president and vice president of the United States are quoting Java.
+Well, today we're going to [music] find out why Java, the software programming language, is such a big deal. [music]
+There was at no point where I woke up one morning and said, you know, the world needs another programming language. It was more like we're having
+these problems and the programming languages are getting in the way.
+In late 1990, early '91 we started a project at Sun to take a look at what
+was going with computing devices outside of the areas where the computing
+industry normally paid attention. At the very beginning, it was Mike Sheridan, Ed
+Frank, Patrick Nton, and me. They were basically Sun's top software
+and hardware engineers who had come together to create this revolutionary technology.
+Oak was the code name. James had named it. Story goes, looking out the window, first line of code, there's an oak tree.
+I designed the language. I designed the runtime. I did all the original implementation and that's [music] what
+we used to build the prototypes. Hello, I'm James Gosling and this is
+Star 7. One of the really pivotal things that
+happened was [music] that Time Warner in I think late '92 put out this request
+for proposals for [music] interactive cable television. And we were just so
+excited by this proposal and this apparently proactive, innovative cable
+company. The winner of [music] the bid was announced and not only was it not
+us, it was not anybody who had been in the [music] original bidding. So that
+all fell apart and there was this dark period that followed that.
+We were failing and I felt that failure squarely on my shoulders because my whole job was to make Oak ubiquitous.
+Of the about 50 people who worked at First Person, about a third just quit outright. About a third sort of filtered
+back into Sun and then there was the remaining of about a dozen people who didn't want to do either of those
+things. We all got laid off, every one of us, including me. And then Bill Joy swooped
+in and said no. And he managed to to claw back a bunch of the layoffs.
+Then we started talking about how do we retarget this? [clears throat] We realized we needed to return to first
+principles and it took a while for us to go, you know, this internet [music] thing. It's
+basically the stuff we've been working on for a couple of decades. And then there was this magical moment
+when Mosaic the first browser was released. James [music] and team
+downloaded it realized we can rewrite the browser and bring
+interactivity to the web using oak. Suddenly it's not just about linking to
+text. It's not about static web pages. It's actually about bringing interactivity to the web.
+Probably the [music] hottest thing to hit the web since its initial explosion into public consciousness is Java, the
+new objectoriented platformindependent programming environment from Sun Micros Systemystems. The hot Java browser was
+really [music] important because it made it a lot easier to demonstrate what [music] you could do. People got really
+excited about having embedded content in web pages that wasn't static.
+This is a web page. It's a web page on a PC. It could be on a Mac, on any other machine. But stuff is moving.
+Stuff is moving. An application is running locally here in the page. When I do this, it activates a thousand byte
+program that just moves that text. Seeing, for example, the spinning Coke
+can and you know Duke, [laughter] our mascot, doing somersaults was mind-blowing.
+That cube just looks like another dumb graphic, but it's not. It's a program running locally. This is why Java is so
+important. The timing of Java was a little bit of
+luck and a little bit of foresight. There were some elements at son that wanted us to go more slowly and I had
+this really strong strong belief that if we missed this point in time we're going
+to be in trouble and it felt like we could fix the technology issues but if
+we missed the timing window we were in trouble. Internet Explorer has a long way to go
+to catch up with Netscape. Three out of four people on the web still use Netscape Navigator.
+Netscape came to us and said, "We [music] need to do a release." I cannot stress enough the importance of
+the Netscape deal because even though Sun had a strategy for building a browser called Hot Java, nobody was
+using that and it didn't exist. It wasn't out there at the time. So we had to get into, you know, the big hot
+player browser for anybody to write code to this thing and use it was going to require Netscape.
+March 23, 1995, I will never forget the day that [music] piece came out. The headline which was above the fold was
+why Sun thinks hot Java will give you a lift. Everything changed [music] after
+that. The floodgates opened. Everyone wanted to be part of what Java was enabling.
+The release was really exciting. You know, real adrenaline punch. All hell
+broke loose. I've often described 1995 as a full-blown success disaster. And what I
+mean by that is it was wildly successful beyond any of our imaginations. And our phones were ringing off the hook. And we
+didn't have the people in place to build everything that people wanted us to do. We quickly melted down Sun's internet.
+[music] So, we brought into our building a pirate T3 line. This was massively
+illegal and we would have all been fired if if this had been discovered. We were determined to succeed with this and we
+were doing things that were, you know, really on the edge to make it all work. We were front page news, not just of the
+technical press, but of the business press and the mainstream press. And that was before 1.0. That was just people
+getting excited about the programming language and writing code and what they could see as possible with it.
+I was traveling in Europe and there was the JVM spec in a bookstore in Vatican City. I thought, "Wow, this is really
+wild." It was also exciting and really a joy because I believed so much in what we
+were doing. It was really glorious. I was so happy at the time.
+In this [music] page is a 2,000 byt three-dimensional representation. The first sort of unveiling of Java was
+applets in browsers and that was an important application but it was just the very beginning.
+Java is a phenomenal example of pivoting. We started experimenting with Java as an ability to use applets,
+[music] but boy did it take a turn.
+[music] In the mid to late '90s, web development was a patchwork of languages, right? There was all sorts of
+stuff and we were really just duct taping everything together. Programming always felt like you were tripping over your tools and working in
+a dirty workshop. Programming was becoming complicated and everyone was
+wasting lots of time writing their own data structures. The dominant technology was the CGI bin interface where people
+wrote little pearl scripts to do any kind of dynamic content. There were a bunch of low-level languages like C.
+There were sort of takes on that trying to go a little bit higher level. A lot of the traditional systems were written in C or in mixtures of you know cobalt
+and C and these very heavyweight [music] transactional processing frameworks. Some people were using Pearl. Some
+people were using things like Cold Fusion which nobody probably remembers anymore. There's nothing that was kind of right
+in the middle that you know had sort of the capability of doing low-level things but also you know high level
+expressiveness. We're hacking on Windows 95. That was the state-of-the-art. And the cool kids, they're over [music] on their, you know,
+handcompiled Linux. Using C++ for creating a very large
+engineering application was extremely difficult task. We used [music] to run
+into so many errors. C++ in particular, while it did what people needed, it was
+it was hard. It wasn't fun. If you've ever tried to debug a complex C program
+that does lots of storage allocation, [music] it's a nightmare.
+So in the 1990s, it's kind of hard to believe now, but software and hardware
+were tied together. So you basically would write an application, then you'd
+have to write a different [music] application for another hardware platform. If you were trying to write
+software that ran on IBM mainframes [music] or Intel architecture machines
+or whoever, if you're a seller of software, if you don't have to do all of
+this work to port from one platform to the next, [music] it's a very big deal.
+Doesn't this really change the entire model for software distribution? I mean, once I write an app, it's written. I
+don't have to rewrite it for the Mac and rewrite it for this and rewrite it for that. That's right. When it arrives locally, it arrives in a virtual machine on the
+Mac. It uses the Mac widgets. It uses the Windows 95 widgets. It looks Mac-ish, but it could be written once on
+a sun or on any other machine.
+[music] Now, this was a terrifically difficult
+problem and [music] and people will gripe about how well we did on it, but it was a kind of an audacious goal to
+say we were going to create a binary platform that would work anywhere. [music] I remember sitting there thinking, "Wow,
+I can write multi-threaded code once and it'll run on different operating
+systems." The Java promise of being able to compile but then run in a variety of
+environments on a variety of form factors, whether it's this broad mobile ecosystem or set top boxes or servers,
+has been a testament to the original vision of the creators of the Java
+language and runtime. Java was this new little language that could be learned easily and allowed you to do so much
+more with so much less effort. I believe that ultimately Java will be
+seen as a replacement for C++.
+[music] James described Java as a wolf in sheep's clothing. If you look at the
+feature set that Java had in 1995, it was kind of an eclectic mix that at
+first looked all over the map. You had a lot of somewhat risky, almost radical
+features like garbage collection and dynamic compilation and reflection and dynamic class loading. But there were
+also a lot of conservative, maybe even boring moves that were made. If you looked a little bit more closely, what
+you found was all of the risky stuff was happening in the runtime. and all of the stuff that was in the programmer's face
+was kind of boring, derived from C and Pascal and other languages. And this was
+a very deliberate move. At some point, I realized that what I was really trying
+to do was sneak a few decades of academic research into an industrial
+setting. I wasn't trying to invent a programming language. I was trying to solve problems. The radical features of
+Java were largely below the waterline. It was kind of like an iceberg. The part that was visible above above the water
+line was a relatively familiar comfortable sealike language. The whole decision to keep it looking
+like C or C++ was entirely a trick to kind of convince people that this was
+something familiar. You know, you show it to an engineer and they just understand what it does because it looks
+like what they know. It was kind of like the mother of all Jedi mind tricks. Get people to adopt
+this somewhat radical platform while lulling them into a sense of confidence
+that, oh no, it's just like C. You're familiar with it. Nothing to see here.
+Many different application areas needed garbage collection and threads and
+dynamic class loading and all this other stuff. But those things came in languages like Lisbon Haskell [music] that were scary. So Java wrapped up
+those technologies in a familiar language looks you know looks kind of
+like C kind of like C++ easier to understand not some high flutin fancy
+academic thing. [music] I like to call Java as C++ minus minus
+because to me coming in as a C++ programmer, it showed me how it can
+reduce a lot of complexities I have to deal with on a daily basis. So I didn't
+I didn't need to be convinced about Java. It clearly showed that I can be more productive programming in Java.
+It was a language, as James often said, meant for the bluecollar working programmer. What I meant was it's a
+language for people trying to get stuff done. It was never meant as an academic language. Java incorporated a bunch of
+technologies that had been around for a long time, but they had just really never gained mainstream adoption.
+It was definitely not the first language with a virtual machine, but it was uh one of the first very popular ones and
+definitely first good one that got popular.
+Knowing that Java can be used to implement the server side code was a
+pivotal moment and it completely turned the trajectory of where Java was
+heading. [music] It's kind of funny that Java managed to
+succeed the way it did because originally the focus for Java was on
+embedded devices and internet of things and that didn't necessarily pan out and
+then Java pivoted from that to set top boxes. It was only later that Java found
+a home on the server side and really took off which was not on the radar at all when Java got started. But one of
+the things that I really hadn't understood was just how much pain there
+was in the sort of enterprise software world of you know building these large
+complex applications. There was a desperate need for something better and you know by luck Java was the
+right thing at the right time. In 95, C and C++ were pretty actively
+hostile to threading. And for a lot of complex problems, you really needed to
+have multiple threads so you could be doing more than one thing at once. To have a language that had threading
+built in that was network native was really an eye openener and it really changed um what we were doing. We'd have
+interactions with banks where they would have like a standard operating procedure
+of rebooting their systems [music] every day and there were lots of banks whose
+first experience with Java was like it just keeps running.
+I joined Sun in 1997 as a junior member of technical staff and [music] so it was
+actually kind of funny because the dynamic of the team we had all these impressive distinguished engineers and
+folks running around working on the big important specs and then you had me the little junior guy over in the corner and
+I'm working on the serlet spec serlet really made web development sane for for
+Java developers. [music] And you could plug this into any kind of server and the server could do the job of translating what came over to wire into
+a request object. This [snorts] simple model was a really
+powerful idea because it helped you bridge what was happening on web servers with databases or anything else on the
+back end. So it's kind of like the missing bridge between what was happening on the client and what was happening in the rest of a big
+enterprise system. It gave a straightforward standardized way for
+enterprise applications to be integrated into this large framework.
+Microsoft Corporation today officially unveiled its Windows 95 computer program.
+In 1995, the prevailing wisdom of the analysts and others was that all the
+wars between the the hardware companies and Unix companies were over. that Microsoft [clears throat] had won that
+war. If you did not have a Microsoft scr strategy, you were dead. In those days, people feared Microsoft.
+Everyone feared that Microsoft was going to leverage its dominance on the client side and basically become the sole
+platform. Nearly everyone in the computer industry is afraid of Microsoft. Everyone that is
+except Scott McNeely, CEO of computer maker Sun Microsystems.
+His latest weapon in the drive to get Microsoft off their game is a product called Java, a new language used to
+write computer programs. Has Microsoft actually come after Sun? Absolutely. We're probably ground zero
+right now. We licensed the technology [music] to Microsoft and that was huge for Sun
+because it meant that Java was going to be included in every PC that shipped because it was in the operating system.
+then we didn't have to worry about a strategy on that platform. The question was always should we
+license with Microsoft and we were very concerned about the implications of that. You know that seemed very risky to
+us. In the end we did do a license with Microsoft.
+There's an email from Bill Gates to Nathan Mirvold. the subject being the Java runtime becomes the operating
+system. And he says, I I am worrying a lot about how great Java/Jav beans and
+all the runtime work they are doing is and how much excitement this is generating. I'm literally losing sleep
+over this issue since together with a move to more server-based applications. It seems like it could make it easy for
+people to do competitive operating systems. I'm very interested to get your thoughts on this. Prior to the advanced
+work you are driving, what kind of defenses do we have against this? I certainly haven't come up with enough to
+relax about the situation and it is undermining my creativity. So that was
+that was Bill's concern in September of 1996. Not long after that, it became
+quite clear that Microsoft in taking the license to Java did not intend to follow the terms. You consciously intended to
+break the terms to try to embrace extend and extinguish. When did you first become concerned
+about the competitive threat that Java posed to Microsoft?
+The Java runtime activities are a competitive threat to Microsoft. Java
+itself is not. So if I use the term Java, that way I'm I'm careful to make
+sure people know I'm talking about the runtime piece. Microsoft was this constant presence in our heads and the
+fear of how Microsoft would would behave in the market factored into so many of our decisions in a way that was almost
+overbearing. Microsoft has the power today to exercise predatory and exclusionary
+control over the very means by which we access this [music] internet. Early
+1997, it became clear that they had released a version in their Windows
+operating system that was not compatible with the specifications as was required.
+They had not included a small number of APIs and they had also added [music]
+a couple of their own APIs. And so it was pretty clear to us that their purpose in that was to get people to
+write to the Windows version of Java and not do write once run anywhere and that
+in that way they would be able to take control of the technology the APIs of
+the technology the future of the technology away from Sun and be in control of it themselves. Oh this is
+really fun. So for one Java 1 in the middle of the Microsoft litigation,
+this t-shirt was made. I don't think it needs a comment.
+This felt personal because we and the Java team had invested a lot in the
+model that we would make Java work by keeping all its implementations compatible. So we wanted to force
+Microsoft to either give up on Java or or play the game the way we expected it to.
+Sun at that time generally didn't file lawsuits. It wasn't the way the company operated. But once the lawsuit was filed
+because compatibility was in the at the core of it, it took over my life for a
+couple of years testing every version that they put out and figuring out where they had broken compatibility.
+The thing that became clear through the process of litigation and discovery is that we found an actual what we referred
+to as the smoking gun email between senior people at Microsoft. There was an
+email that said, and I quote the first part, screw son.
+So it was very clearly their strategy because they were the 800 lb gorilla with all the developers to break the
+thing so that everybody would write to them and then they were in control of it and they were going to control the
+future of it. That was their play and I got sucked into all of the litigation stuff just horribly.
+A lot of sun resources and time and effort went into preventing this bad thing instead of trying to make good
+things happen. It's way more fun to build stuff that you want people to use than it is to fight people being bad
+actors and trying to stop them. It ended up in a agreement with
+Microsoft where Microsoft paid Sun like $ 1.95 billion but at that point like
+say they had kind of slowed things down enough that they were able to come in with their own.net and other internet
+strategies. As much as it sucked, I am really proud that we stopped Microsoft
+from forking the system and and taking control of the technology.
+You talk about openness, Scott. I remember before we started Sun, I tried to buy a printer from Xerox to hook to
+the vax and they wouldn't tell me how it worked because they didn't want me to hook it to the vax. People didn't want
+things to work together. There was a lot of pressure for us to
+open source or at least submit to a standards body. What we eventually
+decided though is we would we would create our own standards body because we couldn't trust the way things worked in
+these normal standards bodies. So we created the Java community process. I'm Heather Vancura, manager of the Java
+Community Process program office. The Java community process was really formalizing the informal process that
+was used as Java was created because essentially it was a technology that was created for working developers to use
+it. This was trying to straddle something that was kind of owned and operated by
+Sun, but that otherwise treated Sun as more or less a peer with all the other
+members, the the IBMs and the HPs and the oracles. The JCP was created to bring in more participation from
+industry so anyone's welcome to join. It started just companies could be members
+and then over time we also brought in institutions and then finally formalizing the role for Java user
+groups. when so many people rely on on what's happening here and you've got so many interests at play, [music] you
+know, the guardrails that came in place with the JCP, they were really valuable and even though like there's a little
+bit of internal rebellion or I I felt like the oh my god, you know, there I might want to rebel against like I
+understood that this was actually good for the platform moving forward.
+The Java community process is key to the success of Java because it enables the entire ecosystem to grow of multiple
+implementations, third party libraries and tools and frameworks and everything you see that make Java really so much
+bigger than any one thing even bigger than the language. We have new tools, new ideas and no
+rules except [music] one be open.
+One of the things that happened early on is there was a push by the the technical
+team to make the source code available for free to look at. You couldn't do
+anything with it. You couldn't build anything with it. You couldn't release a product based on it without a license,
+but you could look at it. Sun distributed the sources of Java from day one but they didn't provide a license
+that allowed anyone to do whatever they wanted for Sun itself open interop open
+standards and that was really the place where they came from in their head whereas to the generation of us that
+were really participating in the web that was building and the open source movement open meant open source which is
+where you could actually not only have a spec and not only have interoperability,
+but you could take the software [music] and improve it. About half the code in Safari is this
+open-source rendering engine. Some people have a problem with open source. We think it's great.
+We think it is great. These two versions of open, they really pulled each other through the entire
+lifetime [music] of Java. We didn't really start calling it sharing, but we've been talking about open interfaces forever. open systems
+for open minds or whatever. And and we we finally just said there's a simple word for what we do. We share.
+The major problem that we had with open sourcing was not with the developer
+community. It was with the sort of industry partner community. It was
+pretty clear that there was quite a number of them who would just go crazy
+if we gave them a license to do whatever they wanted. I was adamantly opposed to
+open sourcing it because I didn't want the platform to fork. We had spent 10 years keeping the platform from forking
+and full open source would allow that. The crowd that was against open sourcing, they really had a point.
+How do you make money then if you're uh giving all this stuff free? Um
+that's what my shareholders are having all the time.
+Okay, so we have a specification. We need a reference implementation. I
+started writing a very simple web server that became what was called the Java serlet web development kit. I mean what
+a what a name. It was a really bad name. Internally though it was in a directory that I had called Tomcat.
+I looked around at the web server world and it was clear that like the web server with the most mind share was
+Apache. Apache was open source. Therefore, it followed that if we really
+wanted serless to go as far and wide as possible, we really needed to get the reference implementation into [music]
+open source and into Apache. I had to make the case several times about why this would be really important. Every
+time I made the case, everybody kind of was like, "Yeah, yeah, you have good points, but we're really concerned that
+if we do this, then it's going to either create a precedent or we're not sure how this works with the business model." And
+of course, all this work with the open source community proved to Sun or showed Sun that they really did need to be in
+the community working to push the stuff forward. Or else the community would actually start moving on with their own
+world and leave them behind. In the end, Tomcat didn't get open source purely because of the arguments
+that we made. The executives always wanted big announcements, right? Of course, you want some big news, you want something to splash, you want something
+to happen. And we're in a position where it's like, "Oh, we need a big announcement for Java [music] 1." And I
+basically got a ping saying, "Okay, you're up." And they were like, "Really? We're gonna do this?" They're like,
+"Yeah, we want to work with Apache. We want to announce this on stage. We want to do this." And so we got to invite
+Apache up. And everybody was like, "Hurrah, Kool-Aid. Yay." And and the
+community took the news of [music] it and they were just like, "This is great."
+Tomcat really helped prove to Sun and the executives there that even though
+they had fears, very real fears about Java dissolving into chaos if they open
+sourced it, um they were able to build some confidence with the open source community by these efforts that happened
+in the very late '9s. the powers that be in Java decided to dream up the J2E
+specs to standardize the way to build enterprise applications.
+The enterprise edition of Java really started from working with folks like IBM and Oracle and and others to figure out
+like okay how do we build big scalable transaction systems that can do all these incredible things. Serlets were
+like a a small chapter whereas J2E was like a book. You put all the specs and
+you you put it together and they actually published it as a book. Um and it's you know it's this thick. The programming model of J2ouble was
+rather verbose. It mixed Java and XML. It felt like vendors were trying to
+rubber stamp their technologies and and bless [music] them as specifications so that you'd be forced to buy them and
+good luck trying to make them work together. It was just uh [music] it was very very very painful.
+Many of us just took our experiences of influencing Corba and building Corba
+platforms to J2E. The problem was that we were building
+Corba for people who had been in [music] the distributed systems arena for 10,
+15, 20 years. They grew up with machine code and [music] maybe Cobalt or C and
+then into C++. When J2E came along, it was influenced very much by by Corba and
+it kind of did the same thing. [music] It started to toy a little bit with some of the veneers to simplify things, but
+generally it was pretty complicated [music] to build anything relatively simple in
+J2E. We have been told that, you know, the
+tablets have been handed down with the software truths. How can I possibly be disputing them? I think frankly it can't
+really be described in any other way as than as a disaster. [music] Very large numbers of projects were
+failing and there was a very very real possibility that the promise of [music] Java as a serverside technology would
+end.
+The genesis of Spring was my first book.
+I'd originally set out to write a book on this belief system of conventional
+J2A. Yet by the end of the year, I discovered that I'd lost my belief. I used to joke it was a little bit like a
+high priest, you know, writing a book about their religion and discovering that during the course of that they
+didn't actually believe most of the things they were supposed to believe. And this book basically said the emperor
+had no clothes. said [music] what I had felt which is that to write software in Java using the stack that was being
+profered by the so-called standards was just way too painful and it didn't make any sense and it we looked like fools
+trying to entertain that. The book was published in late 2002.
+During that year I wrote 30,000 lines of code that became the first version of
+Spring. Then people started [music] suggesting
+improvements and suggesting that it should be open- source and suggesting that they would be willing to
+participate. So it was clear that an open-source project was the right place
+to take the code forward. And it was also clear that people really cared enough about this codebase that they
+didn't regard it just as examples. They regarded it as something that they wanted to be able to use in production
+and help evolve into a truly robust product.
+Another project that was very important was Hibernate, which was an open-source persistence technology that just worked
+a lot better than the specdriven persistence [music] technologies at that time.
+Persistence is a fundamental problem in application development for the reason that programs are ephemeral. They need
+to be able to store their state somewhere. Hibernate came directly out of my
+frustrations of working with entity beans. I had a debate with my manager who was not entirely wrong. His his
+point of view was look you know this is the industry standard thing and my side of the argument was well um yeah but
+this is actually doesn't work at all. And so I was very keen, you know, to try
+writing some code in open source and putting it out there. And look, the first versions of Hibernate were terrible. But here's the magic of open
+source that, you know, people came back. People came were able to see, you know, try this thing out for free, come back
+with all sorts of feedback and, you know, bit by bit, I managed to make it better and better and, you know, got
+contributors helping make it better. The growth of hibernate and it usage was
+extremely explosive. um it was a thing which just happened to come along at the right time.
+Then Java E came around and picked up some of the stuff that Spring did. So you had this dance between these
+technologies and frameworks and [music] specifications that kind of drove them further and and made both of them
+better. We had this incredible ecosystem. There were different uh frameworks that were in play on the
+server side and a lot of them complemented each other. A lot of them were in competition with each other.
+what we have now is a is born of all that incredible competition, right? I think the overarching story of
+enterprise Java [music] since 2000 has been the open-source community succeeding where this top- down
+specificationdriven approach failed. Had Spring not emerged,
+I think J2E would have destroyed [music] both itself and Java.
+The shocker even including to everyone in the team came
+at the Java 1 conference where Jonathan Schwarz and Rich Green were up on stage chatting and suddenly Rich says, "Oh,
+well, I think it's at this point uh not a question of whether but a question of how." And I think we're going to figure
+this out. Repeat that again, Rich. I think you actually said something pretty profound. And I'm sitting in the audience with
+some of my colleagues in including the the then vice president for J at the
+time. We just look at each other. Oh, okay.
+And the following year was a mad scramble to actually make that happen. We had to comb through all of the source
+code for, you know, all kinds of legal issues. uh a bunch of us engineers worked very closely with Sun's legal
+team to figure out you what's acceptable, what's not, what to look for, how to change things. Uh it was it
+was quite a massive effort. Sun probably decided, let's create the
+open-source implementation that everybody can get involved with. If you've got every major vendor in the
+world contributing to one open- source implementation, why wouldn't you just use that? Open JDK [music] is very exciting. the
+the energy that it's developing, the unexpected support it's getting from the uh the free software community [music]
+is quite all inspiring. Looking back, I think Sun open sourcing Java probably saved the platform. I
+think if Sun had not open sourced Java, I fear that Java may well have died with
+Sun.
+Sun has now open sourced pretty much everything including the hardware.
+Can you describe what the rest of you what you think of Sun's strategy in this? No, I think I think that's the theme
+that we had in the beginning and it's good to see it coming around again.
+After the Java 5 heyday, we went into a bit of a dark ages. This is when the
+dotcom bubble had burst. Sun's business was spiraling.
+The internet bubble basically killed Sun. When the bubble burst, it lost 93% of its value. And I hadn't understood
+Sun was really highly leveraged. Even though it was building this great stuff, it was highly leveraged on Pets.com
+version 3. Hey poodles, did you know that Pets.com delivers food, drinks, and toys?
+Pets.com. Because pets can't drop. when they stopped getting the free venture capital money and they went under and so
+Sun couldn't sell anything and everyone said don't care and started building racks of crappy crappy PCs running Linux
+and Sun just couldn't play in that world [music]
+during the 10 years between 2004 and 2014 the Java programming language
+wasn't making much progress
+there was a period of Java stagnation. There was like 5 years between major
+versions and after new release you don't see a lot of innovation. I was one of
+the biggest critiques of Java. I was that guy on the other side of the picket line holding the sign quit using Java
+move away from it. And I think sincerely that Java deserved that criticism.
+[music] We saw a kind of revolving door of ill-considered directions for Java. The
+last of which was under Jonathan Schwarz, son's last CEO, who thought because Java was already installed on a
+billion desktops, the best thing we could do was to spam those people with ads.
+It was a difficult time. I think a lot of engineers were frustrated and even
+worried about, you know, projects failing to be delivered. We were like a couple of hundreds Java developers in a
+Slack group that were discussing how can we do what can we do. We would often hear the comparisons of
+Java's dead like cobalt. And I always thought this was kind of funny because being the next Cobalt that's actually not an insult. You know,
+Cobalt has been around since what the late 1950s and it's still used today.
+The time between Java 5 and Java 8 for those of us as son as as the company was desperately trying to survive were very
+painful. The competing platform was moving pretty
+fast and C that was initially inspired by Java and sort of branched off that
+language progressed quite a lot. The net platform and the C programming
+language. These were very transparent kind of clones of Java, but with everything changed just a little bit so
+we couldn't complain about trademark or copyright. And they went off and in and executed on it and did a very good job.
+A lot of people were sort of peeking over the fence and uh were being very jealous of all the goodies that people
+on the other side had. Java as a language didn't seem to be moving forward and other languages like say C
+were moving forward. Good evening. This is an extraordinary
+period for America's economy. We're in the midst of a serious financial crisis.
+[music] In the days leading up to the acquisition, there was a lot of
+apprehension in the air. [music] We didn't know is Sun just going to go out of business if Sun gets bought by IBM or
+you know they just going to kill Java or put it into maintenance mode or who knows what's going to happen. [music]
+At the last minute IBM bailed. This is your world 10. Now Wall Street's down over 3% but there's one stock
+that's shining [music] despite this downturn and that's the stock of Sun Micros Systemystems. It's up over 36%
+today because it's found a new suitor in Oracle. Larry Ellison rushed in there [music] and said, "I'll do it."
+Well, it took it took a while, but uh Oracle and Son are now one company.
+We're very proud of that. We're very excited. [music] I remember vividly when my wife pulled up her iPhone and and showed me the
+headline in the Wall Street Journal. When it was announced that Oracle was acquiring Sun, I mean, my own feelings
+were like, "Oh god, this is going to be bad." [music] I tell you, I was a little uncertain about uh Oracle's takeover.
+IBM was certainly seen as more influential in Java than than Oracle
+was. So our first concerns I think in Red Hat, but maybe even wider were why
+couldn't IBM have done that? And now here you've got you've got a company that's really only known because of
+their database coming in and how are they going to influence it? I had some significant concerns [music] like if
+Oracle unopen sourced it and required everybody to go back to you know 10,000
+bucks a seat. Then I looked again I was like okay no sun got Java as open [music] source Java itself will be fine.
+I never had any illusions of being like a benevolent dictator for life. you
+know, that was just not me.
+[music] I left Oracle 6 weeks after the acquisition closed in in 2010. [music]
+I sort of lost the ability to spend time doing what I love to do, which is
+fundamentally build things. I really [music] felt like, you know, the places where they were trying to get me to
+participate [music] were the places where I would feel really uncomfortable. Working with parts
+of the organization outside of engineering was kind of like, you know, jabbing myself with a cattle prod. Not
+exactly a fun time. [music] I just didn't see a future there.
+[music] Are are we going to close the technology
+up? What's going to happen? James son has done a fantastic job uh develop
+inventing inventing Java uh expanding Java, opening up Java, giving Java to
+the world, and we're going to do more of the same. To pretty much everyone's surprise, the acquisition of Sun by
+Oracle proved to be really good for Java.
+When Sun came into Oracle, Brian Gats and Mark Reinhold were both in the team.
+They were senior leaders in the team. My general feeling was that the core of the Java team at that time were extremely
+solid and had very very good ideas but had spent the last few years trying to
+deal with this challenging economic climate and that that had been a a real challenge for them.
+Sun micros system had its strengths but it was a very engineering driven company. You know Oracle was run as a
+business. They looked carefully at well what did we just buy? What do we want to keep?
+What do we want to get rid of? What do we want to invest more in? And about 6 months after the Oracle acquisition, the
+plan for Java was unrolled. It was kind of refreshing to be in a
+place where decisions were made on a rational business basis and when decisions were made, they stuck.
+And they brought in uh excellent new management who both understood how to
+run a business and also understood the Java technology.
+The Oracle Google lawsuit was a fairly tricky thing.
+In 2010, Oracle filed a lawsuit against Google for using Java on Android. It was
+an open question back then whether it's okay to cooperate an API. It stemmed from some misbehavior, shall we say, by
+a Google executive towards Sun and Sun kind of by nature is not real latigious.
+We were pretty ticked off but didn't think that the lawsuit was a productive
+thing to do. Once the acquisition happened, the Oracle folks, they decided
+to go after Google for the stuff that they had done during the Sun [music]
+years. And it got really it got really heated.
+This legal case ground on for the better part of a decade. Eventually, the
+Supreme Court did rule that the Google re-implementation of the Java APIs in Android was fair use as a matter of law.
+One of the challenges with Java itself as a language and the library with Java
+is that the first thing you do after starting a thread is learning how to limit it, how to make it synchronized.
+Whereas in Scala you quite take an opposite approach here. By 2010 it was pretty clear that Java
+was stagnating [music] and the tension in the community was building up. Many people tired of Java and started
+[music] to look around because more modern alternative languages appeared.
+To me it was frustrating because here is a language that's being
+used so widely that stubbornly would not change.
+People were frustrated with the slow evolution of the Java language. People were frustrated with its verbosity. Why
+should I be using Java when you have all these exciting languages that gave us so
+much power on our hands as programmers? [music]
+When we did seven, it was really just about taking the work that had been done and trying to blow the cobwebs out of
+the release machinery and show that, [music] you know, we could actually produce a release and get it out there. And we knew what it took. 8 was the
+first version that was done suit to nuts under Oracle's leadership. And I I think
+that actually sort of signal to many people out there the beginning of a change.
+Java 8, in my opinion, was our last chance to show that you can teach an old
+dog new tricks and that we hadn't just had a good run. We realized that it was
+kind of a make or break time. Mark made the bold decision of it's finally time
+we're going to add lambdas to Java. Even though the fundamentals of lambda
+expressions was set in the 30s when church wrote calculi of lambda conversion and had been well established
+in numerous languages like Haskell and Okamel and Lisp, people were still afraid that lambdas were too exotic for
+Java. There had been a fairly contentious debate in the Java ecosystem about what
+the best way to add lambdas to Java would be. There were several competing proposals and some actual pretty nasty
+uh interactions between the proponents of these various proposals. So you had
+some contingent who just wanted to throw sand in the gears. Then you had vocal contingents for several different
+approaches, each of which amounted to you should do it like they do it in my favorite language. When the hubhub of
+that died down, we sat down and looked at, well, what are the pros and cons of
+each of these proposals and how do we want to go about doing this? In the original straw man proposal for
+lambdas that I made in 2009, there was a fair amount of inherent complexity. But
+one of the great things that Brian gets did was he figured out how to toss out a bunch of that complexity.
+It's easy to say, "Oh, you should just copy this feature from my favorite language." But if you just did that, it
+would look terrible. You have to sort of reinterpret the feature through the lens of how would Java, you know, imagine
+this feature. We knew the stakes were incredibly high that in some sense this
+was Java's last chance. There were so many ways to get this wrong. It could have
+failed to meet the, you know, the the technical goals of building more expressive libraries. It could have felt
+nailed on. It could have bifurcated the ecosystem into old Java and new Java.
+But we also had you know a very vocal community where surprisingly there was a
+significant contingent in the community who thought we shouldn't do this that somehow this was too bleeding edge ivory
+tower for Java. Java is a bluecollar language. This is too complicated for Java developers to understand. So high
+stakes, hard technical problem, diverse community with diverse opinions,
+political challenges. I it was pretty scary. And I came into work every day
+and asked myself, so is today the day I'm going to make a billion dollar mistake.
+[music] I've had the luxury of working with
+these new features for the last year and a half now and I got [music] to say once you once you try it you're not going to
+want to go back. It's a lot of fun. I have to be absolutely honest about it. I had written off Java. I don't care
+about this language anymore. [music] So the fact that Java was going to have lambda expressions, why do I care?
+But I had come from one of my international trip. I had a couple of days free and I said to myself, let me
+take a look at this lambda. I don't think it's going to be that great but nevertheless I want to take a look at
+it. So I had downloaded it. I was programming with it just to experiment
+and I played with lambdas and streams and I remember literally
+standing up at my desk and telling myself
+this is different. The fact that lambdas is now a part of the language that's completely changing the way you will
+write any kind of code. The excitement in the community was huge. It was one of the most rapidly
+adopted releases ever because there was something in there that people really want to program with tomorrow. People
+have been like pining for lambdas. You know how many people just wanted lambdas? That's all. Just lambdas. Give us give us the ability to not write
+seven lines when we could write one. You know, it happened. We you know it finally arrived and it was great.
+I was so convinced at what I was seeing in front of me. That's what converted me
+from being maybe the biggest Java critique to the biggest evangelist of
+Java. One of the things I love about it is they've added to the language while preserving compatibility. The fact that
+they were able to add them to Java without breaking that promise just actually amazing. I give them so many
+kudos. Lambda is just so sexy. It's unbelievable, you know, and you know, and Brian you
+deserves all the all the credit he's getting for the for the great job that he's done. Some have described Java 8 as candy with
+lambdas and Java 9 as medicine with modules. Lambdas were exciting. They came with a streams API, all this other
+stuff. It was a a big [music] leap forward in expressive power. I hope that you have as much fun using
+Java 8 as we did building it. [music] Happy hacking and thank you very much.
+To me, Java 8 was extremely important. It was a gamecher in a lot of ways. Java
+9 brought the concept of modules and that is significant in its own way. But
+then the accelerated release of Java is another huge milestone.
+We shipped JDK9 last September. We shipped 10 this past March. We shipped
+11 just 7 weeks ago and we'll ship 12 next March and so on every 6 months like
+clockwork. The release management process that we had uh for the old release cycle was
+crushing because the cost of a feature not making the uh the release was huge.
+It was going to be delayed 3 4 years. And so there was all this process around making sure we knew the state of
+everything all the time. And as you got into the late phase of a release, daily release meetings, which of course took
+time away from from building features. We were under a senior VP at the time who was great at tossing out aggressive
+ideas, and he said, "Nah, you should do 6 months."
+Huh. [sighs] [gasps] The six-month cadence was fairly
+controversial at first, and this was something that was purely management driven where, you know, George looked at
+what we were doing and what we were spending our time doing and said, "There has to be a better way."
+Changing to the six-month cadence wasn't a a decision that was taken lightly. Initially, it was scary. It was very
+different. Things had never been done this way. And I think people recognize that, you know, there were a bunch of
+technical challenges to this. And then of course there's the market. How are
+customers going to like this? Will they like it? Will they accept it? There were a lot of people out there at the time
+who were very, very skeptical. But we could not go on, you know, having these
+big bang releases every four years, right? The idea that like a college student could go through their entire
+studies at college never seeing a new version of Java is kind of crazy.
+When you switch to a relatively short time box period like 6 months, the downside of a feature not being ready is
+not so bad. It doesn't, you know, it doesn't go out now, it'll go out in 6 months. It'll be fine. If your feature doesn't make it, that's
+cool. You're on the next train. It's only 6 months later. So by decoupling the development from the release, the
+features are taking how muchever time they need for their development. When a
+feature is ready, it can be released within the next 6 months. It was another
+big breath of fresh air because we didn't have to have these long meetings anymore about, oh well, is this feature
+going to make it? Do we have to slip the release? What will the ecosystem think? What will our partners think if if this
+release slips by another 6 months? Oh, we're doomed. What are we going to do? It's a cinch by the inch, hard by the
+yard, right? It was amazing how it changed the
+experience of development. In particular, the overhead of release went from crushing to zero. Our pipeline got
+so much better because now we do a mix of working on things that we're hoping
+to ship in the next [music] release, working on things that we're hoping to ship three, four releases away, features
+that we're designing that we hope to, you know, ship in 5 or 10 years. Java is a language that's always moving to where
+the puck is going. It's always just just ahead of the the next frontier and uh
+it's made it a very practical language for people who want to solve problems [music] today. What's the secret? Well,
+the secret is that we've always taken the time to think about the big picture
+and the long term. We don't act only as developers, that is people who create
+things. We also try to act as stewards. I think Oracle have done a great job
+stewarding core Java. The organization that's there right now is really dedicated and really good.
+[music] In the past several years, the stuff that they've been doing has been just great. We'll always give advanced notice before
+removing [music] anything. We'll only do so when there's a very good reason. Compatibility remains one of the core
+[music] values of the Java platform. Mark Reinhold who's been the chief engineer. He's [music] kind of the glue
+that has kept the pieces together and kept the architecture sane. [music] And
+Brian gets this figure of incredible academic integrity in the evolution of
+Java, the programming language. To be a steward [music] of something is to do
+much more than just develop new features. A steward has to look out for the entire platform [music] all the
+time. A steward also has to have empathy, be able to put [music]
+yourselves in the in in the shoes of a working Java programmer. So core Java has not just endured, but
+it thrived. But that focus [music] on the language proper meant that some of the other ambitions like J2, what was
+then [music] in the very beginning called J2ME and J2, these things sort of fell by the wayside.
+Oracle contacted Red Hat and IBM and basically said we want [music] to take
+all of the Java E specifications uh [music] testing suites and reference
+implementation GlassFish and we want to move it to a vendor neutral foundation. We created Microprofile uh over a year
+ago, moved it to Eclipse. Uh we've seen a great ground swell in interest and participation since we moved it to
+Eclipse. Moving E4J to Eclipse I think uh allows these two big communities
+[music] to come together and help to drive enterprise Java into the next decade.
+The state of Java E around the release of Java E8 was that it was stopping up.
+[music] There was almost a year without any progress and the community was very frustrated. So when Oracle at Java 1
+that year announced [music] that they were moving Java E over into an open source foundation, the community was
+very relieved. We will be able to [music] evolve this technology further. This time last year, we didn't think
+this was going to happen. This was not something that we actually thought was a realistic possibility. to then have it
+happen probably is the [music] biggest thing to happen to the extended Java ecosystem since open JDK.
+I never had any doubt about Java E thriving without the corporate owner because by moving it over to a nonprofit
+foundation as a Cliff Foundation, we have a vendor neutral playing field and it opens up [music] for more
+corporations to participate. So rather than having one corporate owner, we now
+have a myriad of contributors.
+We have an approach in the platform where we don't want to put everything into the platform, but we want to enable
+developers to build on top. So we got to find the right building blocks and the right building blocks for them to build
+the solutions that would be hard otherwise. We've got good at replacing the
+foundations of the house while keeping the house on top steady and stable. And that analogy I think applies quite
+closely to project Loom where we replaced the internals of how the runtime manages threads [music] with
+very little API changes under the covers and a concept around threads can either be platform threads or virtual threads
+and you can use either or using the same APIs. Virtual threads were a huge step forward
+in terms of concurrency. For for a long time, people writing uh high performance web frameworks had to use this reactive
+style of programming which is incredibly baroque, very difficult to debug and
+monitor with virtual threads. It's back to simple single threaded code.
+I often say that Java 8 made the programmers more productive.
+Virtual threads makes the programs more productive, meaning they're more scalable.
+Virtual threads are one of my all-time favorite features ever added to the language or indeed to any language. For
+most people, it can be a flick of a switch. It's just so so so good for people building solutions on top of
+Java. I think having, you know, by the second half of the 2010s, I think Java under Oracle had really hit its
+stride. Java today doesn't get the credit that it deserves. 25 years ago, the JVM was clearly not
+where where it is today. And for some reason, people still kind of like holds onto that history. Seems [music] to be
+something about human nature that people absolutely love. Straw men. And there is definitely a straw java out there that
+people love to bash. Bad news guys, it doesn't exist anymore.
+Technology changes all the time and Java has managed to change with the
+technology by continually innovating.
+The power of Java is not just in the language but [music] in the community as well. You can think of Java as a table
+with many legs and every one of these legs is supporting this table and
+[music] thus is collectively making it stronger. It's a great language. It's a great platform. It's a great
+environment, [music] but it's also a great community.
+The community [music] is crucial to the success of Java. It has been over time since the very beginning. You know, when
+we started out in the late 90s, it was very much companies [music] and developers who worked at companies, but
+now I see it more as [music] driven by individuals.
+For me, Java user groups is the backbone of Java from a community standpoint. You
+know, right now we can say there's over 340 Java user groups around the world. Uh there's estimates depending on who
+you ask of the total population size of anywhere from 10 to 14 million Java
+developers around the world. When you start reaching 8 digits, uh that's that's a big number.
+The open-source community is enormously important to Java. And and I would even
+go to the extent of saying [music] Java would not exist today if it was not
+for the open-source community. The strength of Java has always been the
+ecosystem, the open-source libraries and tools out there that we take for granted
+and there are always been there and I think many of the things that we did [music] in the Java community back in
+the days are now being reinvented in other communities and we kind of look at them and say, "Hey, we had this 30 years
+ago." Java is the passport to the world. I
+travel to so many places around the world today because I am interested in
+learning and interested in sharing details about Java. I have had
+friendship with people around the world because of this ecosystem.
+I met my family. I have my family because I got on a plane to go talk to people about cardio brackets and bike
+code on the JVM. You know, it's just this incredible place.
+[music]
+One of the somewhat sad things about being an engineer, for most engineers, a
+goal is to be invisible, to not disrupt people's lives, to solve problems before
+people even see them. And so, everybody is interacting with Java every day, all
+the time. You just don't know it. The scale of Java is hard to fathom for
+most people. If you've got a credit card in your pocket, there's a Java virtual machine on there. Every financial
+transaction you go, every phone call you make, everything that you do with a bank, the IT systems for most hospitals,
+it's the foundation of the web systems of lots of billion trillion dollar companies. Chances are if you're using a
+web browser to order something online or you know inter interact with a company,
+chances are incredibly high that the code between you and the database inside the company is running Java. Java is
+incredibly ubiquitous, right? We often talk about how there are more than 3 billion Android devices and those are
+just the Android devices that have uh the Google services installed on it. You also see Android in your thermostat,
+[music] in your refrigerator, in settop boxes. And so when you talk about the billions
+and billions of devices, and the way that you don't even know that Java is there, it's just a device that is
+stable, that works well, that is updated automatically, that has all of the applications and facilities that you
+would expect from a modern operating system, Java and its tools are really what brings [music] it to that breadth
+of devices across the ecosystem. Netflix has always been using Java and
+will likely continue to use Java. We have about 4,000 microservices all built
+on Java and pretty much as every system that [music] we run at scale is is Java.
+So that is basically like a perfect match for what we need to do at uh at Netflix.
+Looking forward the project that I think is most exciting is Valhalla. The whole aim is to heal the historic rift in the
+language and the platform between primitive types and reference types. If we can unify those two, we can bring
+another leap in the expressive power of the language. Perhaps more significant than what we did with Lambda.
+Valhalla is about going back and curing that original sin of Java which the
+division between primitives and and objects and it is a very deep cut through every layer of the platform. So
+[music] it affects the way the VM lays out objects in memory. It affects the language. It affects the libraries.
+Okay, this project has been going on for quite a while, about 6 years now when it
+first started. Project Panama is rethinking how Java World interacts with the foreign world.
+The name comes from the Panama Canal which was an investment put in to sort
+of find the smallest distance between two big worlds oceans to make commerce
+easier, faster and cheaper. And that's that's where Panama comes from. The metaphor is to make the the commerce
+between the Java world and the native world easier, faster, and cheaper. Valhalla will give you value types which
+gives you cash locality and it makes [music] things like matrix multiplications really fast which is
+going to be huge for AI and Panama is that bridge it's that
+foreign function interop it's already here these things mean that Java is going to be really really efficient
+really really lightweight really really scalable and well positioned for people who want to write these AI um inference
+engines in Java things sometimes take a little bit longer to um to evolve and get into
+the language. But that means that when a language features feature comes to Java,
+you can really be guaranteed that it is very well thought through. While if you look at the last maybe 5 6 years of uh
+the Java language, it is actually becoming really nice and modern and just so elegant to look at and and to write.
+Java is already very well positioned to take advantage of AI. It's got a huge footprint in the enterprise space and
+that's where AI is going to be. I'm convinced, although we'd have to prove it out, we could build a machine
+learning library like PyTorch enabled by Project Babylon and Project Panama.
+Maybe Java's greatest impact is what happens in the future. We haven't seen
+it yet. What excites me most about the future of
+Java is the unknown. Lots of things happen and mostly the interesting ones
+are the ones you could never [music] predict. I think it's very possible that there
+will never be another blockbuster language [music] like Java.
+Java made programming fun again for [music] me. It just got out of the way and let you get your job done.
+Java proved to the world that you can make a virtual machine work in practice, [music] work at scale, and that it
+actually changes the paradigm of programming [music] quite a lot. Just like all the great pieces of
+technology that we've worked on over time, you know, [music] at first it was revolutionary, then it was interesting,
+and then it just becomes part of the foundation. [music] We had this notion that Java would be
+ubiquitous. It should be on everything. Now there are billions of of Java VMs
+out there. Now it took all of these good ideas that were already floating around in the
+ether and it made them mainstream. It gave them to everyone.
+Java is a language that showed us the power of the community. Java is the
+language that showed us the power of ubiquity. Java is the language that showed us the power of evolvability.
+I have huge huge respect for the core developers, the people who conceived of
+and built this technology. [music] What we have is a gem. It's a jewel.
+It's well constructed. It's proved its worth. It's It has stuck around all these [music] years. Don't mess with it.
+[music] So much depended on luck. Being at the right place at the right time, meeting the right people at the right
+time, having the right ideas pop into your head at the right time. It's all
+God throwing [music] dice.
+[music]
+[music]
+[music]
+[music]

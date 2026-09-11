@@ -1,0 +1,363 @@
+I'm going to teach you how to combine
+the powers of GPT6 Astra and Claude
+Fable 5.1. Because the question you
+should be asking is not which of these
+two models is better. It's how can we
+get the most out of both of them.
+Furthermore, how can we get the most out
+of all the models under the open AI and
+anthropic umbrella? Because oftent times
+we are working on features and problems
+that don't even require the power of
+Astra or require the power of Fable.
+What about things like Luna and Terra?
+When do we bring those into the fold
+when we need cheap models to execute
+simple tasks even if we're working
+inside of something like cloud code?
+Well, luckily this is a riddle that is
+pretty simple to solve and I'm going to
+walk you through it in today's video.
+Now, I will be giving you a set of
+skills that make this entire process
+super easy to execute. I have an updated
+version of Claudex loop which includes
+Astra and a brand new Claudex route
+skill which makes it really easy to
+figure out which of these models I
+should be using. But before we go into
+the skill section, let's kind of talk
+about why we even need this in the first
+place. Now, at this point, we know
+there's kind of two big players when it
+comes to the best frontier model in the
+game. We have GPT6 Astra and Claude
+Fable 5.1. When we are coming up with
+huge tasks, we're planning something
+from scratch. It's a big project and we
+want to know who's going to come up with
+it, these are the two models we are
+going to lean on. But another area that
+doesn't get talked about as much is what
+do we do when we have some sort of
+simpler feature or simpler task that
+just doesn't require Fable 5.1 just
+doesn't require Astro because these are
+extremely expensive models. They both
+cost the same. We're looking at $10 per
+input and $50 per output. So if you're
+someone who's on like API pricing for
+example, this can be prohibitive. On the
+other end of the spectrum, we have
+models like Claude Sonnet 5 as well as
+Terra and Luna. If you're someone who
+has used Clawson Sonnet 5 lately, I
+think you can agree that this model
+leaves something to be desired,
+especially when we compare it to the
+supposed benchmarks and the performance
+that we've seen. Like it just really
+doesn't feel great. And so if you're
+someone who has been using primarily
+anthropic models over the last few
+months, there is this gap where if I
+want a model that's going to be cheap
+and effective, I just can't really find
+it in the anthropic library. But if we
+look at OpenAI, they have multiple
+models that satisfy this requirement
+when it comes to Terara and Luna. Now,
+Terra is slightly more expensive than
+Sonnet 5 when we talk about token to
+token, but as I'll show you in a minute,
+it's cheaper overall because it's more
+token efficient. And what really is a
+standout is Luna. This is like what
+Haiku should be if they hadn't
+completely abandoned Haiku and just left
+it in the dumpster months ago. We're
+looking at 20 cents per input and the
+cash is 2 cents and output is $120. Like
+this is basically free compared to
+everything else. And like I'm going to
+show you, this has outputs and this has
+performance that matches or exceeds
+Sonnet 5. So this idea of being able to
+call on OpenAI models is really really
+important if you are someone who's been
+mostly an Anthropic user, especially if
+you use APIs. And even if you're someone
+who's on say the 20x plan with Anthropic
+and isn't on any plan with OpenAI, well
+maybe it makes sense to just have sort
+of a $20 a month plan specifically to
+make these sort of Luna calls and save
+on tokens. Now to quickly illustrate
+this idea, we're taking a look at the
+Deep Suite benchmark. We have Sonnet
+here in the orange and then Terara and
+Luna. So straight up in terms of
+performance, Terara and Luna perform
+better than Sonnet at max. Sonnet is
+hitting 54%, max on Terra is 70%, max on
+Luna is 67%. But what it really what
+really is the difference though is the
+cost. You know, when we look at max at
+Sonnet, $26 for average cost per task
+versus Luna,
+60.
+So, and then for Terra, $4. Now, this
+becomes a little less pronounced as we
+go down sort of the effort level, but
+even on low, you know, $2.19 for Sonnet
+versus 1 cent for Luna. Granted, it's
+not doing anything for you, but with
+Terra, 34. And so there is this issue
+with the anthropic models where there is
+no great bang for your buck model and
+Sonnet is just like always at risk of
+just going nuts in terms of the cost and
+then just like taking way too many
+tokens to complete these things. We just
+don't see that with Terra and Luna. In
+fact, with Luna in particular, going
+from low all the way to max barely
+increases the cost and just like
+completely spikes in terms of its
+effectiveness. So again, real value to
+be had here in being able to call on
+these models. Now the second reason you
+want to be able to combine the power of
+open AI and enthropic is something I've
+talked about at length in some of my
+previous videos dealing with Codex loop
+and that is the idea that if I have one
+model execute I should have a different
+model take a look and evaluate its work.
+So, for example, if I have Claude Fable
+5.1 come up with a plan for some sort of
+project, then I probably want Astra to
+come in there with completely blank
+context without any of the
+idiosyncrasies that all the anthropic
+models have. And I wanted to take a look
+at that plan Fable created and say, "All
+right, this is good. This is bad. Here's
+what we should fix." And ideally, and
+this is what the claudics loop skill
+does, it gives that feedback back to
+Fable 5.1. And then Fable says, "Agree,
+disagree." Sets it back to Astra. Astra
+says, "Agree, disagree." And you have
+this continuous cycle, this loop of
+these models going back and forth
+adversarily till they finally reach a
+point where like, "Okay, this is good to
+go." Now, there's safeguards in place to
+make sure that just doesn't go on and on
+forever and burn all your tokens. But
+even though on the surface that might
+seem kind of expensive, it's going to
+save you tokens in the long run versus
+having to iterate after we've already
+spent a bunch of time building things.
+And this is something we can extend to a
+lower level, right? We could have Opus
+build something and have Terara take a
+look or have Luna take a look, so on and
+so forth. The idea is we never want the
+model that builds to be the model that
+evaluates because frankly, it's just not
+going to do a great job. And these
+models in general tend to grade their
+own work poorly. I mean, in like in a
+very favorable light. Fable's always
+going to think Fable's work is great.
+Astra is always going to think Astra's
+work is great. So on and so forth. So
+that's why we're doing it. And now we'll
+jump into the skill. But first, a quick
+word from today's sponsor, me. So inside
+of Chase AI Plus, I have just released
+both a Claude code and a Codeex
+masterass. So if you're someone who's
+trying to figure out how to use either
+of these tools and you don't come from a
+technical background, this is the
+perfect place for you. I update this
+every single week. We focus on real
+examples. So if this sounds like
+something you really want to master,
+definitely check us out there. It will
+be a link in the pinned comment. Hope to
+see you there. So all the skills you
+need are found in this GitHub repo, the
+Claudex Loop GitHub repo. I will put a
+link to it in the pinned comment. Now
+the two big ones we're going to talk
+about today is Claudex Loop, which I've
+done videos on the past on and the new
+Claudeex route. So let's talk about
+Claudex route first cuz this is the new
+one. Big picture if you run claudex
+route and you can run this inside of
+cloud code or inside of codeex and you
+give it a brief description of what
+you're trying to do like hey I'm trying
+to do this particular task can you use
+claics route to figure out what model I
+should use well the skill is then going
+to tell you here's the model that makes
+the most sense for you maybe it's a very
+simple task so it's going to use Luna or
+maybe it's something that hey requires a
+lot of ambiguous work it's pretty
+difficult let's use Astra so it takes
+away any sort of thought you need to do
+in terms of what model to use because
+sometimes s it's kind of like a gray
+area and this is basing it off the
+actual model information that has been
+posted for all the models by the
+frontier labs including some of the
+usage guidelines and it takes to into
+account like the actual cost and what
+that looks like in reality is let's say
+I'm inside of claude code and I do
+/codex route and I say hey I'm starting
+this new project I think it's going to
+be pretty complicated what model should
+I use and it says go use Astra well it's
+just going to send all the relevant
+information to a headless instance of
+codeex So, think of it pulling up codeex
+in the CLI, but it's invisible. Codeex
+is going to do its thing, do all of its
+work, and then it will send all the
+information back to Cloud Code saying,
+"Here's what I did. Here's where that
+sort of code is." Now, this also works
+in the reverse. Like I said, you can
+start this from Claude Code or Codeex,
+doesn't really matter. Now, the next
+skill you need to pay attention to is
+Claudeex Loop. I've done full videos on
+Claude Loop, taking you from the very
+beginning to the end. So, I will link
+that above if you want to watch that.
+For now, I'll kind of just go over some
+of the changes I've made to it and what
+it sort of does at a high level. So, if
+Claudex route is for like oneoff
+features like, hey, what model should I
+use? Go send them to do it. Claudex loop
+is sort of for really big
+implementations that walks you through
+that kind of holds your hand from
+planning stage all the way to execution.
+And it's all about that idea I talked
+about earlier of, hey, if model A
+executes, then model B checks its work.
+So first things first, if I'm inside of
+Claude Code or inside of Codeex, it's
+going to use the opposite model to sort
+of be the inspector. So hey, if I'm
+inside of Codeex, right, who's going to
+be doing the plan? Well, it's going to
+be Astra. Who's going to take a look at
+their plan? It's going to be Claude Code
+and vice versa, depending on what
+platform you're on. From there, it goes
+through four stages. So first things
+first, it's going to do some
+reconnaissance, which just means it's
+going to do deep research. And let's say
+you're saying, "Hey, I want to clone
+something like Whisper Flow." Well, it's
+going to spawn a bunch of sub aents,
+figure out what Whisper Flow actually
+is, what we need to think about. Has
+anyone already cloned this? And like
+really sort of validate your
+assumptions.
+From there, it's going to ask you a few
+questions, be like, "Okay, what do you
+want to change about it? What do you
+care about? What is your vision for this
+project?" Before finally, it executes
+the plan. Well, it doesn't execute the
+plan. It builds out the plan. So, Astra
+builds out the plan, sends it to Claude
+Code. They have their back and forth for
+several rounds until they finally reach
+an approved verdict. From there, we kind
+of repeat that process and it's going to
+ask you if you want Astra or Fable to
+actually execute it. One of them
+executes the plan and then the opposite
+one takes a look at the executed plan
+and says, "Hey, here's what you missed.
+Here's, you know, what looks good." So,
+at the end of the day, the Claudics loop
+is really just meant to
+have these opposite models sort of check
+for blind spots that you're not going to
+be able to figure out because let's be
+honest, for many of us, what we're
+building inside of Claude Code and
+Codeex goes well beyond the scope of our
+coding abilities. So, are you going to
+double check what Codex comes up with
+and Astra comes up with? Are you going
+to double check what Fable comes up
+with? probably not, but it will give you
+something of like a warm and fuzzy
+feeling knowing that Astra looked at
+Fable's work or Fable looked at Astra's
+work. And that is sort of the whole
+point of the Claudics loop. I think it's
+the easiest way to kind of get the best
+out of both of these models without some
+like super convoluted setup. So, if you
+want to get this working for yourself,
+just go ahead copy the URL here, point
+cloud code edit, point CL codeex at it,
+and it will install it for you. So,
+that's where I'm going to leave you
+guys. Remember, if you want to see the
+Claudex loop actually executed from
+beginning to end, check out that video I
+linked earlier. I go into depth showing
+here's what GPT found. Here's all the
+errors. Here's what it looks like when
+they have their back and forth. And
+here's sort of what the final setup sort
+of looks like. But besides that, I think
+we're in such an awesome place where we
+have these dueling models. Like Fable
+5.1 is great. GBT6 Astra is also great.
+So, I don't really think it should be an
+either thing. And I think the sort of
+pricing of all these can kind of scare
+you off like should I be on a 20x here
+and a 20x there? Should I be paying 400
+bucks a month? I don't think so. I think
+for a lot of people who have kind of
+been, you know, clawfield the last 6 n
+12 months, you've been probably on a
+$200 plan. I would suggest going half
+and half. Do the 5x with GPT, do the 5x
+with Anthropic and really see what you
+like. You know, maybe you like using
+them in tandanda, maybe you love GBT6. I
+think in general though when it comes to
+all these AI tools and how fast
+everything is moving, we need to be tool
+agnostic. And it's really hard to be
+tool agnostic if you don't play around
+with all of them. So that's my
+suggestion. Definitely check out the
+skill. Let me know what you think. Let
+me know if you have any improvements for
+it. Always trying to keep it updated.
+And besides that, I'll see you

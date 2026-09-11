@@ -1,0 +1,382 @@
+Google is betting billions on AI agents and multimodal models. But what's really
+behind the strategy? Today on CXO Talk number 897, Will Granis, chief technology officer of
+Google Cloud, takes us inside what you need to know. Now, I'm your host, Michael Cricggsman. Let's get into it.
+My team and I work with our top roughly 150 customers around the world to make sure that as this technology factory that we're spinning up all the time and
+releasing new products that uh they know how best to leverage that technology for their own specific business use cases and needs. And then on the other side we
+also work on kind of new and emergent uh problems in technology to try to solve them. An example of this could be uh
+right now as you build tens, hundreds, even thousands of agents, agent alignment against tasks is a really uh
+difficult problem. So that's one of the things that more of an R&D mode uh we work to make easier for our customers.
+What's happening in the agent world and then we can talk about what you're doing specifically with agents. Well, agents have quickly become kind of the surface
+through which u many consumers and businesses are starting to experience the power of AI. And um if you if you
+think about in historical context, we've always been looking to automate tasks that uh human beings it isn't necessarily the highest expression of
+our value. So for example, you know, we in um spreadsheet software, we have been running formulas for many years to try
+to automate the calculation of certain numbers and to automate a task of calculation. That's something computers do really well and humans don't need to
+necessarily spend their time on. Uh if you've ever worked on a laptop and you've ever tried to put a macro or like an automation on your laptop, that was,
+you know, an early form of uh task automation because, you know, if you're continuously clicking or doing the same thing over and over again, you want to
+automate that. So it gets done a little bit more quickly and more efficiently.
+So agents are kind of like almost like this third wave of automation and intelligence and that they can take
+intent, they can take it in a variety of ways. It can be typed, it can be spoken and it can execute tasks on your behalf.
+And this obviously has profound potential impact in today real world impact across a number of consumer use cases as well as uh businessto business
+use cases. And it's not unusual in my, you know, I mentioned earlier I work with, you know, 150ish customers around
+the world, uh, top customers and across all industries. It's not unusual for me to run into an organization these days like Highark Health, which has, uh, an
+agent that they've deployed, an agent platform they've deployed where their employees who have, uh, routine questions about benefits, processes,
+procedures within the within the uh, organization. before they'd have to go to like websites and scroll through it.
+They'd have to ask somebody if they know uh you know how to how to book travel or how to expense something or how to
+provide um or how to um set up a conference room. All of those kind of like basic everyday tasks that an organization has to do. All that
+knowledge now has been um indexed and is now available through a very simple interface that uh today I think roughly
+60,000 users at Highark Health are interacting with agents to get the knowledge that they need uh to execute the work that they need to execute um almost immediately.
+Now let's take a moment to learn about Emmeritus which is making CXO talk possible. If you're a business leader
+navigating change or driving growth, explore executive education programs with Emmeritus, a global leader. They
+offer programs developed in collaboration with top universities designed for decision makers like you.
+There's a program tailored to your goals, whether that's AI and digital transformation or strategy and
+leadership. Find your program at www.emeritus. emmeritus.org.
+What are the the complexities of creating these agents and what are you
+doing? What Google doing to make it easier? We are consolidating our own approach to agent development and AI
+development. And uh just yesterday we launched something called Gemini Enterprise which brings together all the different pieces of AI and agent
+creation and uh deployment and management into one singular uh stack and package. And what this has done is
+it's created what we like to refer to as the new front door for AI in the workplace. And it consists of six core
+components. So first the chat interface or the AI interface. U this is something that people are now used to using. Three
+years ago was a brand new concept. Now it's you know it's very common place. So this is the first piece of this Gemini enterprise is the chat interface. Now
+underneath that are all the models that feed the intelligence. So this could be Gemini 2.5 Pro. It can be Gemini Flash.
+It could even be multimodal models such as VO and imagine. And those are the models that help people execute their tasks. And that's the brains and the
+execution engine behind agents. Um, underneath that is the agent platform.
+So, individuals within an organization can build this kind of task automation level of agents, but also multiple or uh
+organizations within one company or firm can come together and build multi- aent uh workflows using this third tier, this
+agent platform. Uh, underneath that you have out of the box agents. So we have data science agents, we have uh deep
+research agents, um we even have coding agents that are available to um get value from the platform out of the box and then uh create scaffolding and
+enrich them over time. Uh there's anybody who works on agents knows you need access to data and context. So there's also a set of connectors to
+thirdparty data sources like your service now implementations uh and workflows um Oracle
+uh Salesforce uh as well as even uh Jira Confluence and and databases like Google BigQuery. So those connectors are a key part of this uh Gemini enterprise stack.
+And then finally and maybe most importantly as agents proliferate governance and security. So making sure that um the agents are um created by the
+right people with the right policies have the ability to execute their tasks safely and securely within an enterprise context. And so that's job number one
+for us in making agents uh more useful and more available was bringing together all of the ways that we help
+organizations with AI and agents. Um there are a couple of there there are also a couple of really important things I think translate beyond even Google's
+approach to this uh for any organization in general when they're building and deploying agents. So number one I mentioned this earlier is uh context.
+Think of agents as a very explicit task execution machines and within an organization. Um first step is to make
+sure that you actually have written down or available to you know this task automation uh your business process or
+your business workflow. One interesting quirk right now, Michael, is that in uh regulated industries such as financial
+services, healthcare, public sector, those organizations for many years have been highly documented uh in terms of their business process and workflow,
+their standard operating procedures. And so they actually have a jump start into the agent world. Whereas we tend to think of technology as um you coming to
+regulated industries second or a little bit later. In the world of agents, they're seeing time to value a little faster because they already have all of
+those key business processes and data documented that can then feed the agent execution and the agent rules um through a workflow. So, the context and the data
+is critical. I just want to remind everybody that right now you can ask your questions if you're on Twitter X,
+use the hashtag CXOT talk. If you're watching on LinkedIn, just pop your
+questions into the LinkedIn chat. And this is from Anthony Scriffin, who's a
+very prominent data scientist. And he says, "One of the biggest challenges with RPA, robotic process automation,
+was automating previous tasks that were not designed for automation." And so how
+do you advise clients to be agentic ready before they rush to deploy agents in the enterprise?
+Every customer that I've worked with that has been successful in these early agent implementations, they've all picked a problem or a business process
+for which they had data in context, they had standard operating procedures. Um it was a it was a known problem in a
+workflow. And so uh to your point around trying to automate the wrong thing, they take the time and the diligence and they
+and it's kind of in the old world we would call this application rationalization. I guess in the new world we might call this you know agentic workflow rationalization and
+that's taking inventory of all the things that you might choose to do and being very methodical about picking one that has the data, the context, the documentation. That's absolutely
+critical. Um then once you you know you've identified that very specific workflow that you're trying to um
+automate and execute uh it's also extremely important to have a sense of how you're going to evaluate
+completion and success and uh evaluations tend to be one of the stickiest parts of
+the kind of agentic development workflow today because think about it like uh a manager at a desk and in the fast the work that
+that would come to that manager would be gated by how fast humans could bring decisions or bring execution tasks to that manager and so you know it was a
+steady stream of them. Today agents and automation can bring many many tasks for approval and it overwhelms a human's ability to make decisions fast enough.
+So the only way out of that trap is to design evaluations and AI as a judge or AI as a critic or AI as an evaluator so
+that the AI itself and the agents themselves can evaluate task completion whether it's good enough or not and either send agents back to do a better
+job or move on to the next step in the workflow. And that is a unique problem that kind of transcends RPA which is RPA
+being kind of like single task single automation. These are multitask multi-step um automation concerns now.
+And you know looking ahead a little bit uh one of the things that we see is that uh most of the value from agents will be
+derived from multi-step multitask multi- aent workflows. Um, and I, you know, an example of this could be,
+uh, you there's a really interesting problem in, uh, telco and in customer service and telco, and that is that, uh,
+when your Wi-Fi goes out, you know, that's a very it's it's in our hyperconnected world, Wi-Fi going out is
+a very emotional moment for human beings, uh, myself included. And so, when the Wi-Fi goes out, the first thing you want to do is you want to get help.
+And the typical workflow for getting help is you go to the the website and you try to scroll through, you know, whoever your provider is or the mobile app, you try to find how to debug the
+problem. It's a very it's a very chat kind of 2010 interaction model. Well, in the world of
+agents and um there's a telco in um the UK that's doing this right now uh that we're working with. What they do is uh
+they have an app experience and if someone is experiencing u an outage of the Wi-Fi and they still have access to cellular uh they pop up a live
+multimodal experience where the customer support agent will come up. they will have the individual um point their camera at the equipment that they have
+in the house and they're able to figure out how to do troubleshooting based on the equipment that's in the location, you know, of the apartment or the house that person's in through a completely
+native multimodal experience. And so that is an example of, you know, you have an orchestrator agent, you have sub agents underneath the hood that are
+characterizing, you know, a video and and orchestrating the chat and orchestrating the text. So all these different agents are coming together to
+create this very seamless um support experience and that is a very u that's a very modern multi- multi-step multi-work
+uh multi- aent workflow. Now let's quickly hear from Emmeritus which is making CXO talk possible. If you're a
+business leader navigating change or driving growth, explore executive education programs with Emmeritus, a
+global leader. They offer programs developed in collaboration with top universities designed for decision
+makers like you. There's a program tailored to your goals, whether that's AI and digital transformation or
+strategy and leadership. Find your program at www.emeritus. emmeritus.org.
+You made a very interesting point several times which is this idea of
+intelligence or judgment. I don't think you use those terms as being a key distinguishing factor. It seems to me
+that's the point that actually changes all of this. That's absolutely true and we call it evals or AI is judge or AI is
+a critic. Uh but it is the step at which um companies themselves and organizations themselves also have to in
+some cases for the first time actually document what their decision rules are. you know, uh I come from the enterprise.
+I've been working in enterprise technology for u a few decades now, longer than I, uh would like to specify um very specifically, but uh one of the
+things that happens in a lot of companies and most companies that I work with and I've worked in is there's the process, there's the documentation and
+then there's the human judgment unspoken norms and things that sit underneath the surface. And so in order to give, you
+know, the software is very explicit. If you say, you know, I want uh we're working with a company right now and
+part of what we're working on is um people want to buy home goods, but they want to be able to see it in their in
+their kind of living space before they choose. And so if you're going to create an AI as kind of a designer to automate these processes and to create this kind
+of like before you buy it, like let's put it in your space, that's a very complex problem because you're dealing with physics. you're dealing with um
+inventory, real-time inventory. There's a lot of very complicated pieces to making this design um work really well.
+And so what we've had to do is we've had to architect evaluation at multiple steps in the process. The first step is
+okay, so someone uh the AI has come back and said, you know, I want to create this type of setup in this room. Well,
+first off, does it defy the laws of physics? A funny little quirk is one thing that we found when we were first starting to do this is that you know manipulating objects in threedimensional
+space sometimes we'd have like a couch sitting on its side and so we had to actually instruct you know give explicit instructions to the evaluating agent to
+say you know it has to sit with you know the bottom oriented towards the bottom of the space we actually had to orient the physics. So that's step one. Step
+two was is this item actually you know an item that's in our inventory you know a very specific item. And so that was a
+second evaluation and critique. A third evaluation and critique was um there are certain clusters. If you if you ever go to like a home design showroom, you'll
+see that they purposefully put like an end table and a chair and a lamp and a and a and a plant. They put them all together in clusters. One of the things
+we learned is that these clusters should meet certain brand criteria or brand sensibilities. And so depending on which company you're working with, they may
+have different clusters. So the clusters had to match the design sensibilities and the brand sensibilities of that. So, we're already in like four different
+evaluation steps and that it's that methodical definition and methodical evaluation
+um and instrumenting all of that that to your point that really unlocks the scale. Once you get that right, then you can send lots of different requests and
+lots of different users to that same pipeline and it meets the brand guidelines. It matches the laws of physics and it actually matches inventory can create some pretty magical
+experiences. It's really interesting the way you dis describe these eval points
+uh putting them through the entire process frequently enough. Uh would it be correct to say that you are making
+many many many many small course corrections? Is that an accurate way to say it?
+Yeah, that's absolutely true. And one of the most interesting things to me about agents and I've been around AI both you know kind of pre-generative AI and now
+you know generative AI and agents for about 20 years and one of the things that's really interesting to me is once you get into agents and agentic
+workflows you're actually creating a trail of behaviors documents log files
+telemetry that is at a scale that is that far surpasses kind of the business intelligence like the operations logs of
+a business today are all gated on manual workflows. There's a human in every in every loop. Well, the more that you get to agents and automation and these
+automated workflows, you're actually creating more data and exhaust to analyze the behaviors of the agents themselves. So, it's kind of a you know,
+it's kind of a a recursion which is like the more agents you have, the more interactions you have, the more telemetry you have, which then you can analyze their behaviors and you can
+actually refine them. To your point, Michael, it's an iterative cycle.
+Nothing works the first time. Nothing works the first time when we, you know, from the most simple single flow agent to handling, you know, like an inbound
+issue in customer service to the most complex workflows of like trying to do financial reconciliation at the end of a quarter, you know, that has to pull off
+of treasury. It has to pull off of systems of record and has to be, you know, match SEC rules for disclosures.
+uh you know that is you know this volume this this analysis um and being very methodical about
+capturing what the agents are doing is both one of the greatest challenges and one of the greatest opportunities like debugging multi- aent workflows right
+now is very very complicated we have a very interesting question on LinkedIn from Stephanie Satsos who is an account
+executive with workday and she and she says our agents role or skills-based
+which is to say one agent equals one job to be done which I think is so
+interesting will given the lengthy discussion you were just describing around multi- aent technologies working
+together what we see today are kind of two ends of the spectrum on one end are kind of single-purpose single task agents that
+individuals themselves might build within their company to let's say you've got meetings coming up this week and
+you're like you know what I want to prep for these meetings well today it's you know it's kind of a singular agent to multi-data source and back through a singular agent where you say let's get
+me prepped for these meetings could you tell me who I'm meeting with what I ought to know about these folks and so that single agent workflow is pretty easy to compose as long as you have the
+connectors to you know or the data access and context access for like your calendar for you know a form of CRM
+um for even email then you can gather the context and agents are and AI are pretty good at returning hey here are the people you're meeting with here's when you're meeting with them based on
+what interactions you had in the past what we know about them here's some things you might want to prep so on one end of the spectrum there are these kind of task specific they're not really role
+specific it's more task specific execution you know um very quickly against known data sources on the other
+end of the spectrum are these more what you're describing which are these role-based um agents which have many many functions
+that occur within a role. It's just like if you're a financial analyst at a bank, you have multiple tasks and multiple jobs that you um execute every single
+day. And once you start getting into that end of the spectrum, you're actually composing multiple agents to execute multiple tasks um in concurrency
+or um sometimes in a serial form. So one example of this is that uh for example in um at Harvey AI it's a legal um AI
+company right now they have AIs there's kind of they have like a role-based AI you can think about this as um you kind
+of like a parallegal where this parallegal AI goes out and it'll do it'll analyze contracts it'll do due diligence it'll um you know it'll do all
+of this work that before like a a parallegal you know might have to go and search through and index all this information and bring it back. The AI
+now can go and index that information, synthesize it, bring it back. And now a parallegal uh you know the human parallegal is more like steering and the
+AI parallegal is more like consolidating and analyzing. That's much more of a role-based um agent. Arcelon Khan on Twitter X
+who's a regular listener asks this. He says, "When it comes to AI agents,
+how many lowhanging fruits should folks go after until they address quote unqu
+what he says the entire forest and also who decides what is holistic AI agent
+deployment?" It depends what your objectives are. The best advice I can give you is if you personally and or
+your organization aren't already in the building and construction of early um agentic workflows, you should get
+started right away. Um there is so that's capacity building. Um I've been working in advanced technology for
+a really long time and I can tell you it always takes longer than you think to get used to using a new technology. And
+so just to even start the learning curve just to get comfortable with the tools, you know, it's different. In the past, maybe you worked with APIs. Well, MCP
+servers and the flow of agents are a little bit different. You know, we even now have computer use which can bypass
+some of the, you know, need to construct APIs in front of data and now you can just interact with, you know, the screen in front of you without having to, you
+know, drop a bunch of semantic ties between, you know, data sources and intent. So there's all these there's all these emerging technologies that if if
+you haven't like rolled up your literally rolled up your sleeves like I have and if you're not uh you know experimenting then you're kind of falling behind a little bit. So on that
+case I would say you know I talked about Gemini Enterprise earlier. One of the great things about Gemini Enterprise or you know these platforms is that you can
+go right to the user interface the main page and you can start building an agent right away. You can and and like in Gemini Enterprise, I know because I was
+just building one this morning, you know, you can go in, you can specify what type of agent it is, you can specify the data you want it to connect to that you have access to based on your
+organizational um policies and you can get up and started right away with um building agent. So do that right away.
+Now the other question which is go tackle the you know the big nasty multi- aent multi-workflow
+um kind of those role-based agents that Stephanie had referred to earlier. Um that's something that requires multiple stakeholders usually within an
+organization and usually comes from a top-down business um imperative or urgent business imperative. This could
+be, you know, we need efficiency in um our software engineering or we need lift in revenue and so we need more
+engagement uh you know at our on kind of like our storefront from a digital consumer journey in retail for example.
+And so um I would say depending on what your role is and the nature of your company and where you're at in the life cycle it, you know, it might be a good
+idea to just start building and or you might be in the place where it's time to bring the finance department together,
+central IT together, the line of business and actually um start to construct and build these multi- aent uh workflows. But it's all going to be kind
+of like where you sit where your organization sits in a period of time.
+Let's talk for a moment about the organizational challenges associated with multi- aent orchestration.
+In a way, it's it's kind of easier to talk about the technology.
+The technology is hard, but but people are harder. So, tell us your thoughts about that. The most complex problems
+that uh we deal with when it comes to implementation of technology at scale are human and organizational issues. So number one uh I mentioned this in this
+in the previous question willingness to use u if you think about every great technology wave mobile um you know big
+data you know AI cloud AI um they were all started both from like an organization's understanding that they
+need to do something differently but usually it's by people within their own organization who are experimenting with new technology you know we we call this shadow IT or you kind of consumerization
+of it. People discover these technologies, they see how it could be leveraged for their business and they're bringing it in from the bottom up. And so,
+uh, one of the things that, you know, I have been really appreciative of, at least in like Google's approach to technology is that we really encourage
+folks to experiment with new technology and we're always watching for where the hot spots show up. So for example, we
+figured out that AI and u you know this kind of new generative AI wave you could access it through the command line interface if it there was a really you
+know a smart integration done. So Gemini CLI, you know, it was this thing that we just released. It was a small team that worked on it and, you know, it exploded
+immediately, but it was our organization's willingness to allow a small number of engineers to try something and to, you know, allow it the
+space and time. Not a lot of resources, by the way. That's a misnomer. It's actually very scrappy, very bootstrappy, but just allowing and and fostering and
+being willing to encourage experimentation is super super important. Um, second organizational thing that I highly recommend is when
+you're getting into agents, again, they're going to take instructions and they need rules of engagement and they need explicit guard rails. And if you
+don't have standard operating procedures or decision frameworks within your organization for how you want to, you know, how you want to guide your own operations, you can't guide agents
+because they can't interpret uh intent very well. They're very explicit right now. Um and probably the
+last one is uh you know we'd mentioned this at the beginning and in kind of a different lens but there are in every
+organization there are hidden rules agendas norms you know it's important that to understand that if you ask software to do something it will do it.
+If you don't ask software to do something it won't do it. And as you're constructing, you know, agents within a large organization, a lot of the a lot
+of the uh a lot of the outcomes that people are disappointed with, you can trace back to they just assumed that it
+would be able to make a logic leap that wasn't explicitly given to it. And that's a different way, you know, today.
+Um, a lot of what the way that like managers and leaders and organizations work is they trust the humans that they hire and they put in these positions to
+bridge the gap between what is stated and what is unstated and what's needed for the business.
+And um so being really aware of that and and getting in that culture of experimentation will offer will often surface hidden rules and norms that the
+organization didn't even know that they had because the software will break.
+You're the CTO of Google Cloud and we want the AI to intuitively know and
+understand our implicit rules of engagement and our
+implicit culture so we can just let the software do its thing and help us. Think about it this way. If you receive
+Gemini for example, Gemini has been trained on, you know, an enormous amount
+of information that is accessible to everyone. So if you're looking for outcomes that are very specific to your
+industry andor your company, then it also requires pairing this AI with grounding or other data sources that
+will allow it to understand the unique context of your business, your industry, or your use case. there are no shortcuts. So you know these frontier
+models need and I think the biggest opportunity for organizations is to bring their data, their context
+and their understanding partner with these frontier models and this amazing AI that's being provided and create something that is specific to their
+organization and their industry. And that's where differentiation and that's where competitive advantage lies. It doesn't lie in accessing the same model everybody has access to. It lies in
+combining the power of the incredible power of these, you know, AI models that have a general understanding of intent
+based on the data they've been trained on, but you might have very domain specific language within your industry.
+So, for example, I spent a b a bunch of time in manufacturing and industrials.
+You want to talk about a place that has its own language. You know, there are terms, very specific terms that mean very specific things. An AI isn't
+necessarily going to be trained on what those terms mean. And so it won't have the ability to bridge you know like that
+semantic layer um you know going from general interpretation of how of what a term might mean to a very domain
+specific term. This also shows up in code. A lot of organizations have built the proprietary software languages. You see this a lot in financial services um
+in uh healthcare companies and the AI wasn't trained on that data out of the
+box. So as an organization, it's that combination of bringing your domain specific u data and language and
+understanding intellectual property and combining that with this AI in a privacy safe way that creates the real the really big outcome. So Michael, I hate
+to disappoint you, but you know, you it it it requires these organizations to do both to leverage that AI, but also, you
+know, using a platform like Gemini Enterprise, bring in and ground it in the realities and the specific knowledge of their industry. This is a question
+again from Anthony Scriffino and then we're going to move to some new folks, but he's asking about the role that
+active inference can play in all of this to make aic AI better, more useful and
+so forth. the more inference and the more uh this kind of like this loop that needs to be created is going to be an
+opportunity for organizations to continuously improve the quality of their agents and uh you know hill climb
+on performance and you know one thing having worked in AI for a while too is uh it's it's a never- ending journey
+like um training AI isn't the end it's the beginning and uh having the sensibility about continuous improvement
+and continuous loops of of uh training and feedback uh are really important to making agents uh improve their outcomes
+over time. This is from Justin Kavanaaugh and he's asking what are the most practical ways that small
+businesses can start integrating AI at the infrastructure or data level not just to save time but
+to futureproof how they attract customers and compete with enterprise organizations so that they are not left
+behind. It's a really important question actually. The most practical method is to just leverage the native capabilities of the cloud. So for example, today in
+BigQuery and Google Cloud, we have native AI integrations and native AI inference in the data system itself. And
+I think trying to bolt it on is a is a costly and and timeintensive
+proposition. And so for the smaller to mediumsiz organizations, I would say leverage the native capabilities of the vendors and the cloud partners that you
+have and uh in Google cloud's case, you know, if you need intelligence baked in to the data systems, you know, that
+already comes standard uh what we provide. I just have to amplify will a
+comment that that you made earlier which is just get started. If you're a small
+business the more you can gain familiarity with the kind of services for example that will just describing
+uh the better off you're going to be and you'll then you'll learn and you'll know how to how to take those tools and apply
+them to your specific business. and so much now like in our platform for example AI is everywhere and embedded
+into the services themselves at every core component. So it doesn't matter whether you know you're talking about a storage system, a database tier, um if
+you're talking about spec even like compute and how we optimize compute for specific jobs, you should really just leverage the cloud providers
+integrations natively of AI into these into every tier that might be supporting your business applications, your website
+and what have you. We have a question on LinkedIn from Kenroy Benedict who says, "Do you see an increase in public
+services using AI outside of simple chat bots?" And I'm not sure whether he means uh public cloud services or in the
+public sector. So, as uh you know the founder of Google public sector and uh a board member still uh which I'm very
+proud of, the explosion of AI in public services is starting to happen. And I'll give you uh you know one example that is
+I think really really cool and that is um one of the one of the most important functions that public sector organizations fulfill is that they
+provide help uh when people need it. And so for example, unemployment benefits um at the state level uh can often be or at
+the and or at the federal level, but unemployment benefits are a really big deal because this is a person's most vulnerable time. And one of the things
+that AI has enabled um states to do uh with state of Wisconsin and others is uh instead of having someone submit an
+application for benefits and going back and forth with a bunch of paper and that taking you know potentially months, meanwhile this person is suffering. they don't have um access to the resources
+they need. It's very it's I mean it can be a very very significantly um you know painful time for an individual and their
+families. Um AI has enabled interactions and the processing of claims for example
+to go from you know weeks to uh hours or days through you know the initial
+submission of information to AI triaging the severity um inherently of the cases pushing you know top cases to the top um
+providing initial recommendations and you know all of those kind of automation speed up steps um are the difference
+between, you know, thriving and um you know, at least getting back on your feet or not.
+And uh we're going to you're going to see a lot more in public sector services at the federal, state, and even internationally.
+Greg Walters on LinkedIn says he sees a world where all applications and functions are contained within the LLM
+and the AI. What say you? And I'm going to ask you to answer that pretty quickly.
+Wow, that's my answer. I I love the vision. Um I do think that one of the more exciting capabilities of these
+models is their ability to provide tailored user interfaces like we call
+them like ephemeral apps or ephemeral UI and that means that the AI becomes the UI and that the application UI is less
+important and so in that way I do agree with the vision that so for example if you have access if the LLM has access to the data has access to the user intent
+um we've seen behaviors where AI now can spin up the user interface ad hoc and create what is essentially an ephemeral
+AI app immediately. We have crazy question a good question from Arcelon Khan on Twitter X. He says and uh very
+quickly please. He says these AI agents are like soldiers who will follow orders. Who will be the generals,
+colonels or even military police to provide leadership and guidance to these soldiers? Should that be highlevel AI agents too?
+Well, it will depend on the stakes of the workflow that you're dealing with.
+So, for example, if you're dealing with transportation safety, those are always going to be human in the loop um human monitored workflows. Uh but if you're
+dealing with I'm trying to create 3,000 short form videos for certain brand outcomes to go create an advertising
+campaign, you don't necessarily need to have a human in the loop uh because of the stakes of getting something wrong.
+So think about it in terms of stakes and what happens if you get something wrong and you can probably back into which workflows are going to be more human in the loop and which are going to be more agent driven.
+Let's talk about deployment of agents in the in the enterprise.
+Can you describe the common patterns of successful agent deployments and AI in general? And again relatively quickly
+please. number one success criteria is picking a problem that uh is actually likely to be somewhat solved by um a
+agents and higher forms of automation and faster task execution. So a good example of this would be um in financial
+services um you know we're working with a bank right now that has seen the ab that has sped up uh their research
+function. So now they can go cascade across all the documents and information that they have and bring back to analysts and customer relationship
+managers synthesized pieces of research in a matter of hours or minutes where it used to take multiple days or a week
+that research to come back. And so that was a problem. They knew that they had the data.
+It was very meaningful to their customers which is number two. And so specific problem had the data meaningful to their customers and it was something
+that would get better over time um iteratively. So those are kind of key components that we see over and over again.
+What are the most significant challenges that you see as organizations are trying to deploy agents? Where do they run into
+trouble? Lack of data, lack of context to the agents and the models is the number one trapdoor.
+Um, a second one is uh realistic expectations in the early going. Uh,
+these are iterative loops and many organizations like to um like to set up projects so that they're you know if
+they don't get it they're used to being really like experts in their field. You know, you can think of like aerospace, very precisionoriented manufacturing.
+Um, it's important to have a culture where you understand that in agentic software development, um, the first few iterations are probably not going to
+have a quality or an efficiency that you really love, but it's in the iteration and the fast iteration that you get the results that you want. And so that's
+probably the second trapoor is the way that we construct projects for success out of the box in many cases is exactly the opposite of the way that these
+projects work and will make agent uh development projects successful. I will also say the third really important factor Michael and this goes across
+whether it's agents AI or G or even technology projects in general is leadership modeling the importance and
+get getting involved in this the leaders that and I'm talking about CEO seuite senior leaders rolling their sleeves up it was a ve it was a very important
+moment to all of us at Google and I think you know signal to the market when you know our CEO Sundar was asked you know Hey, you know what are you doing with AI? And he's like, I'm vibe coding.
+And he went into a long exposition of what he's actually doing with AI. What that does is it says, I'm doing this.
+We're all in this together. I I'm committed to this. We're committed to this. And I can't I can't emphasize enough how important the leader modeling
+the support of this exploration, this kind of new wave of exploration, how important that is uh in every in every way to agent development. But you're
+really forcing organization business leaders therefore to become technologists
+and the CEO or CFO obviously Google's a special case because you're developing these products but the average you know
+manufacturing CEO CFO is it really realistic to expect them to get into the
+guts of Absolutely. Really? Absolutely. And they all want to and see that's the great part is my job is to make it so the
+technology is mostly invisible. So instead what they see is a platform you know like again Gemini Enterprise where
+they can go and they can just in plain language scope an agent give it system instructions give it initial prompts
+click button on data sources and build an agent. Now, it doesn't mean that CEOs, necessarily all CEOs should be out
+there building multi- aent complex workflows for, you know, highly specific tasks, but it's my firm belief that
+they're all capable of participating materially in this technology wave. And that's one of the things that makes it so powerful and so ubiquitous, Michael,
+is that AI has gone from a department or a very like weird and mystical technology to part of everyday life. If
+you type on a keyboard, a virtual keyboard on your phone, you've got AI under the hood that's anticipating the words that you're trying to type and
+trying to serve you up a word. Any search that you run every single day, it's all around you. And um for the
+first time in my career, the platforms to actually deploy advanced AI are accessible to everyone.
+Can you talk about nano banana? Explain what nano banana is. And I have to say I
+just think it's incredible. So please just just briefly tell us about nano banana.
+So nanobanana is our image generation model uh latest image generation model.
+And this is a big theme Michael and that is that multimodal AI is the future for a couple reasons. Uh number one if a one
+picture is worth a thousand words a video is worth a million pictures. And as humans, how we experience the world
+is through our senses, sight, speech, sound. And AI now um these multimodal AI
+models like nano banana can take images as inputs along with you know uh prompts and it can create new things. Um, you
+know, if you if you take nano banana and the ability to, you know, create images and you extend it, we're able to create
+videos as well. VO is a video creation model that we have under the hood, a multimodal model. Extend it even more.
+We have a Gemini live API and I mentioned that that use case earlier of being able to take your phone, flip it
+around, show it something, show the AI something and it knows inherently that that's a cable modem. this is the model and you can start your debugging right
+away. Uh that's nano banana is a glimpse into the multimodal future of AI and
+that's how humans want to interact with AI. They don't want to have to type things all the time. Sometimes they just want to show you something. So you know
+hey here's what I'm looking at. Uh what you know give me some background on you know this and it can explain
+mathematical equations. It can explain geol locations. That is that's the future of AI is this multimodal immersive experience. And nano banana is
+one form. Elizabeth Shaw says, "How can you tell what's real from the hype with respect to AI?" Then how can you turn that into something that's practical?
+Measure, measure, measure, and be very transparent. I even have to coach my own team on this. When you're building something, the natural human tendency is
+to show all the best parts of it and to talk as though you know everything is great. In our team and what I would
+encourage for all of you that are working with AI and especially building agents right now is uh it's possible but
+it's not always easy. And it's important to show the initial is is to gain the credibility and be very realistic about how it's going and measure
+incrementally. We break we break long agentic development workflows into very incremental steps and we measure and we
+talk about what we need to do to hill climb on performance andor efficiency at every single step rather than saying oh it's going to be able to do all this
+great stuff. We start with very atomic, very specific and very measurable outcomes we're looking for. And we make a decision at each one of those gates
+about whether to proceed, whether to change or whether to stop. And that type of transparency in every step of development and that very sober look at
+what it can and can't do will help bust the hype cycle. Also, for those of you that are leading projects, I would highly encourage you not to make big
+statements about what this about what AI is going to do and instead think very soberly about what are the biggest problems that your organization is
+facing and how might automation, speed, multimodality, how might those things
+combine um to chip away at solving, you know, what are always going to be some really complex problems that aren't, you know, you're not going to solve through magic AI wand. very very good advice.
+You're you're saying essentially approach it from a very practical standpoint about what problems you need to solve rather than
+AI is great and will change our lives and solve everything in the world.
+Yeah. And I will also say that in the history of technology, we always underestimate how profound the changes are going to be and we overestimate how fast they're going to happen. And I
+think that also creates some of this hype cycle that you're referring to, which is now we can see the potential, but that potential will take years to realize.
+But to the point earlier, Michael, if you don't get started now, you don't climb the learning curve and you don't create the incremental successes that eventually lead to the breakthroughs and
+you're always watching somebody else do it.
+Where is this all going in the next six to 18 months? What can we expect from your vantage point, from what you know right now?
+First off, the models will continue to improve in uh capability, in quality, and you'll see more multi-native
+multimodal capabilities just like today, you know, where you can go to uh Gemini and you can interact through um voice,
+you can interact through video, you can interact through images. that multimodality is going to get more and more seamless and it's and it's going to feel more natural to interact with AI.
+Um second a continuous improvement around the out of the boxence that are available to help people get
+started in Gemini Enterprise more and more connectors to data sources. So you know for those of you that have you know SharePoint or Jira or Confluent or you
+know all these different all of those connectors and many many more are coming uh more improvement around governance and security and especially in where
+value is transacted. So today many of the agent workflows that I see they're not um commerce transactions but we just
+released the agent payment protocol AP2 as part of this kind of standardization stack. So MCP A2A which is the agentto
+agent protocol and now the agent payment protocol because uh we're going to want agents to fulfill tasks that include
+commerce and u that is going to be a significant area of focus is making sure that th that's done well it's done
+safely it's done securely and uh a AP2 agent payment protocol is the first step in that journey and with that I'm afraid
+we're out of time will granice chief technology ology officer of Google Cloud. Thank you so much for being with us and I hope you'll come back another time.
+Yeah, you got it, Michael. It was a real pleasure. Thanks for the questions, everybody.
+And everybody, thank you for those great questions. Before you go, I want you to right this second, go to cxot talk.com,
+subscribe to our newsletter. We have truly great shows that are coming up and we want you to join us. Everybody, I hope you have a great day. Thank you.
+You guys are You guys ask the most amazing questions. You guys are awesome. Thank you so much. Take care, everyone. We'll see you soon.
+[Music]

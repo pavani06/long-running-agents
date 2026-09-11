@@ -1,0 +1,549 @@
+[music]
+My name is Jay uh and I'm here with Sia.
+We are part of the computer vision team
+at at Uber and we're going to talk to
+you about a real world production you
+Oh, mic's not on. Okay.
+Okay, don't worry. I'll I'll manage. Can
+you hear me now? Um, okay. So, we're
+going to talk to you today about a real
+world production use case. Um, and
+specifically we're going to dive into
+how we design the Ebal and the Ebal
+loops. Um, so see this.
+Okay, it's not working. All right, cool.
+So, just before we get into the agent
+design, um we're going to talk about a
+little bit about the use case. So, our
+delivery marketplace, Uber Eatats, we do
+about 90 billion uh run rate per year at
+the moment. Um we we're adding millions
+of items to the marketplace uh each and
+every year. Um sorry, every every month
+we're growing at 20% uh yearon year and
+and we operate in 10,000 cities
+globally. So, not many people actually
+know this, but our delivery marketplace
+is just as big as the mobility side on
+Uber today.
+Visual content actually plays a really
+important role for the user experience.
+So, a photo is quite often the first
+signal that a customer gets um that
+gives them that initial impression about
+a merchant. Um, so a good photo can make
+the difference between someone scrolling
+through the feed and actually clicking
+on an item and adding to the cart. And
+more and more we're seeing different
+modalities uh on Uber Eats, especially
+video content.
+But this is a problem. So our smaller
+independent merchants simply just don't
+have the level of quality for their
+photos that reflect what the eater is
+actually going to get. And when we speak
+to our merchants, there are three themes
+that kind of emerge. Lack of time, lack
+of knowhow, and costs. Because these
+professional um photo shoots actually
+cost a lot of money. And this can be
+especially [snorts] problematic if the
+merchant is updating their menu over
+time.
+So this problem is actually pretty
+challenging to solve for at scale,
+right? because our consumers, they want
+authentic, real looking photos. Um, but
+a meaningful fraction of consumers
+actually distrust anything that is AI
+generated. So, if you open up the
+Ubres's app, the last thing that you
+want is to be scrolling through uh, you
+know, food photography that looks like
+AI slot. So, we're threading the needle
+here, we need to be able to stay
+faithful to the original image, preserve
+the brand of the merchant, and avoid
+everything looking the same. we have the
+same prompt for every photo that we're
+editing, the diversity of the
+marketplace is going to collapse.
+We also because we operate globally, we
+also have this longtail distribution of
+different quality that we see across the
+marketplace. Um, so we've got some
+examples here. You might see food
+photography that, you know, is poor
+sharpness, poor composition, not
+centered, uh, or or poor colors as well.
+We also have a wide range of spectrum of
+userenerated content on the platform as
+well.
+So what are our goals when we're
+designing these agents? When you think
+through these goals, you might actually
+be thinking through, you know, your own
+agents that you're building yourself.
+But for us, it's about one, preserving
+authenticity and trust. Two, improving
+the quality when we need to. So we want
+to be able to improve quality
+selectively. We want to optimize
+globally for for the entire marketplace.
+We don't want to cannibalize certain
+merchants. We want to ship safely and
+this is going to be an important theme
+throughout the talk. We want to learn
+continuously and we want to operate at
+scale in a costefficient manner.
+So agents are actually really well
+suited to solve this problem. So if you
+imagine a spectrum on the one side
+you've got something that's more
+deterministic. it's more rules-based
+um and uh you you have more control over
+it, but it's fairly it's a brittle
+system. It's not actually going to be
+able to scale for the entire
+marketplace. Imagine the other side. You
+provide an agent with obviously a lot of
+creativity. It has a lot of agency. Um
+and that's actually what we want to lean
+into, but we can't leave that
+unconstrained, right? Because we have
+certain safety and certain guardrails in
+place that we need to adhere to. So we
+want to find a balancing act and that's
+kind of set the principle for the way
+that we think and design around agents
+and eval
+but representative example of what we
+have in production and we're go through
+each stage and how we eval it and then
+talk through some continuous learning
+loops as well.
+So first up we have what we call an
+image understanding and routing agents.
+So this is where multimodality is is
+pretty important. We actually ask the
+LLM to describe what it sees in the
+photo. Um and then we we create a
+structured output from that and we send
+it to a router. The router will then
+determine do we enhance it or do we skip
+it. We skip it we will keep the
+original. If we enhance it, we send it
+to our next agent, which is an image
+editing agent. And this can actually run
+in a loop. So it gets feedback from a QA
+agent. Um, it can edit uh in in this
+loop and selfcorrect and fix things um
+as it goes.
+If it goes through a number of loops and
+it still fails, we we don't publish it.
+Then we actually send it to a final
+post-processing and QA step. If that's
+all good, we'll publish it to the menu.
+And the last thing that's really
+critical is we log everything.
+Just a quick note about logging. Don't
+know if you can actually read the JSON
+here, but you might notice that all of
+the agents in this end toend
+orchestration is within one. It's it's
+basically a flat structure in this JSON.
+Um and so this is actually incredibly
+useful for the entire team because
+anyone be it non-technical or technical
+um folks on engineering product can
+actually dive in um and look at specific
+cases to diagnose and also roll up
+things to look in aggregate. Um and it's
+important to note here that you know we
+think this is important to start with.
+You want to start with your logging
+because if you don't start with it you
+have nothing to optimize for let alone
+set up a self-arning loop. And at Uber
+we um we use Arise.
+Cool. We're going to dive um a bit
+deeper into the router.
+So the router is actually pretty
+straightforward. If you remember, you
+know, we have this multimodality input.
+We look at certain text description,
+metadata, the image itself. We ask it to
+to to to um describe what it's seeing.
+We create structured output from that.
+With that structured output, we can then
+grade against a rubric. So we have these
+pass and fail criteria. The last step is
+we want to decide whether or not we
+should enhance or skip.
+How do we actually eval? This is you can
+think of this as a more sort of
+traditional classifier. So here we we
+have a confusion matrix. You know many
+of you are probably pretty familiar with
+this. Um but we can look at things like
+the true positive cases, the false
+negative cases and so on and so forth.
+Essentially what we're doing is we're
+measuring the precision recall. In
+practice, your routers might actually be
+much more sophisticated. So, for
+example, we might want to route an image
+to a lower latency, smaller model to be
+able to save on cost and improve the
+user experience at the trade-off of
+quality. And if that's the case, instead
+of having a 2x two matrix for your
+confusion matrix, you might actually
+have an n byn matrix where each grid is
+actually telling you whether or not
+you're correctly routing to that
+specific branch. So I'm going to now um
+hand over to Sam who's going to dive a
+little bit deeper into how we handle
+drift and human alignment.
+Okay.
+So now that we spoke about how we eval
+the routing I want to talk about how do
+you get the first version of the model
+out. For our use case we consider human
+labels as the golden source of truth and
+this is what we want to align our models
+to. The way we do about this is we go
+collect a data set which is
+representative. So you know different
+cuts, geographies, dish type, image
+quality type, send it to our human
+labelers and give them a very objective
+guideline to label on. This is to remove
+any subjective biases or any noise
+coming in from human labelers. Once
+we've got that system set up is when we
+start tuning our model. We take our
+agent. We go ahead get output from the
+agent. Compare it to your golden data
+set. Evaluate if it's good enough to
+ship. If it meets your guardrail
+metrics, you go ahead and ship it. If
+not, then you go tune and you keep doing
+this until you meet your guardrail
+metrics. For routing, our guardrail
+metric is recall. We don't want any bad
+image to slip through our system.
+Here are some examples of the failures
+we've seen. Um on your left, you see a
+very good image of cheeseburger. Um on
+the right you'll notice that the routing
+agent actually failed this. It said the
+technical is low bar and it'll go send
+this image for enhancement. Now there's
+two challenges when you send this image
+for enhancement. Firstly you pay the
+compute cost for a zero quality lift
+from this image and secondly uh there is
+a risk of degrading this image given
+it's already such a high quality image.
+And on the other end of the spectrum you
+have a recall miss. So on your left you
+have an image with six chicken wings and
+on your right if you notice the dish
+name it says eight pieces chicken wings
+and your routing agent approved this
+image that means so now there's a disk
+here if you send up send this image for
+enhancement and you only see six chicken
+wings there's a chance your model is
+going to hallucinate these two extra
+wings just to match the description and
+that's also an that's a the cut we take
+at our faithfulness metric that J
+earlier showed us so the meta point I'm
+trying to get here is you've trained
+your offline model but there will be
+long cases where your model is going to
+continue to fail and the static model
+will not work in the real system. You
+need a way such that your prompts agents
+system itself is evolving over time and
+that's what we've done uh for our system
+as well and I'm talking more from the
+routing perspective but every component
+in our system is able to tune itself uh
+for any drift online. So what we do is
+we sample production data at regular
+cadence. Send this to the human labelers
+with the same guidelines that we have
+seen before. Once you've got this data,
+we compare our agents output with the
+output we got from the labelers and see
+if there's a mismatch. If there's a
+mismatch, we have an umbrella diagnosis
+agent which takes in the feedback,
+localizes where this issue is happening
+and sends and triggers an autotuning
+pipeline. Once we tune this agent, we go
+and benchmark it against our golden data
+set that we saw earlier. And if we pass
+a golden data set on the metrics that we
+had designed, we go ahead and ship this
+model. Uh if not then you kind of keep
+iterating. And this happens on a regular
+basis on production data set. Um the
+beauty of this is this is completely
+config driven and doesn't require human
+in the loop. Your diagnosal agent can
+write your config and trigger the
+autotuning pipeline here. And this is
+what will keep your model sharp over
+time. You will have one static model
+with the offline, but this is what is
+going to keep your system alive.
+U so J is going to spend more time on
+the diagnosis side of it. What I want to
+do is zoom into the autotuning bit and
+again we're looking at routing but this
+is how we tune every agent in our
+system. Um so we start with a target
+agent and we've already got these uh
+unseen eval samples from our humans. We
+go find out the mismatch and matches and
+call a prompt optimizer agent. Now this
+itself is two sub agents. There's the
+reflect agent and the synthesize agent.
+What reflect does is it it just looks at
+the mismatches, tries to find remove any
+noise, find any systemic issues that
+might be in your data set and reflect on
+it and send that feedback to the
+synthesize agent. Now the synthesize
+agent takes this feedback. It has your
+agent config. It goes and updates your
+agent with the new config based on the
+feedback it's getting and goes and
+benchmarks again. If this benchmark is
+passed, you actually register this new
+agent in the new agent config store. And
+next time your production runs, you pick
+up the new version of the agent. And
+this is a closed loop system as I
+mentioned. No human in the loop. We
+definitely have observability, all the
+guardrails, quick roll back built in in
+case of uh any issues with the system
+itself.
+Moving on to the next step of our
+orchestration flow. So we spoke about
+routing. Moving on to the enhancement
+bit of it. It's a three-step process.
+What we do is the first step, we
+generate a prompt specific to this
+image. We take in the this description.
+We take in the directives we were
+getting from a routing agent and we go
+ahead generate a prompt for this image.
+What needs improvement in this image
+specifically? And we go ahead and
+enhance this image. Then you've got the
+QA gate which is a multi-dimensional
+gate. Looks at multiple things like
+plating, faithfulness, colors, and if it
+passes is when you actually go ahead and
+publish this. If it doesn't pass, you
+take the feedback back from the QA gate,
+push it back to your generate prompt
+along with the initial inputs you sent
+it and go ahead and enhance it again. So
+there's two ends results here. You
+either keep enhancing for K iterations
+and you pass your QA gate and you
+publish or you take a coverage hit and
+you never enhance this image.
+Here's an example. On your left, you see
+a bowl of sweet potato fries. We send it
+for the first iteration and our QA agent
+rejects it because the portion size is
+incorrect. the plating is very
+unrealistic. We take that feedback in go
+for the second iteration and we actually
+able to pass it the second iteration. So
+the metric we are measuring here is pass
+at K. Pass at K is essentially the pass
+rate at K iteration and ideally with the
+mode the iterations your pass rate will
+increase because you're getting more
+feedback in.
+Now I'll pass it on back to J to cover
+the rest of this.
+Thanks. Thanks Sam. Um
+so yeah just before we end here on the
+um on on the generation evals we use
+what's called pairwise comparison right
+for our pass at K. So it's looking at
+the input image and the the output image
+and it's assessing whether or not it's
+better. But how do we actually find
+what's better? So, um, we're not going
+to dive into too much of the details
+here because this is kind of like
+proprietary stuff. And so, we'll just
+mention it at a higher level that this
+is where you sort of, at least for us at
+Uber, we have to make sure we're
+aligning with product design, policy,
+legal, and this is where we're baking in
+what we define as a better image on the
+platform into our emails. Um, so
+examples here, is it faithful? Is it
+complete? Is it natural? Is it
+realistic? And there's a bunch of other
+things as well. The output of this is
+then a yes, no or unsure.
+So here are some examples of failure
+modes. So input and output on the right.
+The inputs on the left, outputs on the
+right hand side. This might be a little
+bit uh difficult to to see at the first
+pass. We actually added shrimp here and
+we shouldn't be. So we fail
+faithfulness.
+This is where we go the other way. So
+the input um has some source at the
+bottom of the sushi. We actually remove
+it. So we fail completeness.
+Here's actually a pretty interesting
+example where the agent actually
+attempted a more creative edit the first
+iteration um and then the QA said nope
+that's not good enough. Uh and then it
+actually oversteers the other other way
+and it becomes overly conservative. sort
+of falls back to this generic ceramic
+plate uh ceramic bowl sorry. So this is
+an example of a reward hacking actually
+and and this is a nugatory change but
+something that we don't think is a
+meaningful or influential change despite
+the actual raw pixels of the input and
+output being pretty different.
+Here's another example where in the
+output the plate is covering the source.
+This is an example where for so some of
+the frontier models that we're using for
+the actual image editing some of their
+um some of their problems will actually
+sort of leak up into our applied use
+case. Um and so so object coherence and
+phys physics plausibility are the evals
+that sometimes will coordinate with the
+frontier teams and and let them know
+about these problems and work together
+with them.
+Here's uh an example of why
+multimodality is is pretty important in
+the input and the output. we we can't
+actually see that there are eight pieces
+here off of off the wanttons. So we're
+not confident actually we're not sure
+and so this is an example where we would
+actually reject it in production and and
+wouldn't it wouldn't go through.
+So the last step after all of that is a
+post-processing and what we refer to as
+the publish ready QA. This is the final
+gate before we decide we want to publish
+something to production.
+Here
+we do some policy checks. We also do
+some more quality checks. Um, and you
+might be wondering like we've already
+done some QA like why are we going to do
+another step of QA? The reason is
+because we think of this like a Swiss
+cheese model. So we want to try and
+optimize for reducing the chance of a
+failure getting into production. And so
+there is some redundancy here or there
+and that's okay. Um, and so this QA get
+is is a little bit more holistic. It
+captures more things, but it also will
+will try and flag things that we should
+have caught upstream as well.
+All right, so we've talked about a
+couple of uh feedback loops here. So to
+summarize, we talked about predominantly
+this first one here, which is the model
+loop. And this is accounting for drifts
+and aligning with human label data set
+that we have and we've established
+offline. But we actually have more
+feedback loops. So we we have at Uber
+what we have is a is a great sort of dog
+dog fooding culture um where we'll test
+apps before they go live. Um but we also
+have when it goes live in production,
+how do we get that feedback back into
+our agent to be able to steer it
+appropriately? So as we're adding more
+of these feedback loops, we want to be
+able to generalize the system. So this
+is where we've actually created um a
+higher level of abstraction on top
+called the diagnoser. So the diagnoser
+can take in any input from these
+different feedback loops that we're
+we're capturing. It can reflect on what
+actual agent within the overall system
+needs to be optimized and it can route
+to that agent to be able to fix that
+configuration specifically. It could be
+one agent. It could be multiple agents.
+So, here's an example of internal dog
+fooding. You might see these in sort of
+different apps that you've got where you
+got the thumbs down and the thumbs up.
+We also take some free form feedback as
+well. Uh, and this is actually great
+because we'll get feedback from
+merchants directly. We'll get feedback
+from, you know, design teams, other
+product teams uh, at Uber and we'll
+incorporate that feedback back into our
+diagnosis step and tune the system over
+time. Again,
+similar sort of workflow pattern here.
+We'll replay the examples that we know
+are those ones that have been flagged.
+Be it good examples, be it bad examples.
+Uh and then we'll benchmark the metrics
+before we push the latest config
+version.
+The last step is is actually getting
+this into production. And and this is
+where we're looking for a whole heap of
+different metrics we track for for the
+marketplace quality and health. Uh I've
+just called out one here which is
+conversion. So we're looking for
+improvements in people adding to cart,
+converting, completing their orders. Um
+I think this one's actually an
+interesting one to call out because now
+I mean at least at Uber, but especially
+in production um settings at scale, you
+have a wide um uh you have a lot of data
+that you can actually slice and dice. So
+in this area as opposed to the others,
+what we can do is sort of slice by geos,
+by device type, by dish type, etc. And
+we can look at where things are
+improving uh in different segments and
+actually tune on certain segments as
+well.
+Cool. And that's it for our
+presentation. Appreciate it. [applause]
+[music]

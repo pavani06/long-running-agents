@@ -1,0 +1,354 @@
+hello everyone welcome to open AI Dev day I am Harry stebbings of 20 VC and I am very very excited to interview Sam
+ultman welcome Sam Sam thank you for letting me do this today with you thanks for doing now we have many many
+questions from the audience and so I wanted to start with one which I don't think people ask you actually very often in interviews which is firstly like how are you you are one of the busiest
+people on the planet you also always look remarkably fresh how are
+you fine I think yeah yeah I think kind of get used to anything and it has been like a sort
+of crazy busy last couple of years but now it just feels like normal life and I forget that it used to be otherwise okay listen I want to start by kind of diving
+in we had a lot of fantastic questions from the audience across a number of different kind of areas and I want to start with actually the question of when
+we look forward is the future of open AI more models like 01 or is it more larger
+models that we would maybe have expected of old how do we think about that I mean we want to make things
+better across the board but this direction of reasoning models is a particular importance to us I think reasoning will unlock I hope reasoning
+will unlock a lot of the things that we've been waiting years to do and the the ability for models like this to for
+example contribute to new science uh help write a lot more very difficult code uh that I think can drive things forward to a significant degree so you
+should expect rapid Improvement in the O Series of models and it's of great strategic importance to us so another
+one that I thought was really important for us to touch on was when we look forward to open ai's future plans how do you think about developing no code tools
+for non-technical Founders to build and scale AI apps how do you think about that it'll get there for sure uh I I
+think the the first step will be tools that make people who know how to code well more productive but eventually I think we can offer really high quality
+no code tools and already there's some out there that Mak sense but you can't you can't sort of in a no code way say I have like a full startup I want to build
+um that's going to take a while so when we look at where we are in the stat today open AI sits in a certain place
+how far up the stack is open AI going to go I think it's a brilliant question but if you're spending a lot of time tuning your rag system is this a waste of time
+because open AI ultimately thinks they'll own this part of the application layer or is it not and how do you answer
+a Founder who has that question the the the general answer we try to give is and you have to assume that
+we're biased here and talking our book and may be wrong but the general answer we try to give is we are going to try our hardest and
+believe we will succeed at making our models better and better and better and if you are building a business that
+patches some current small shortcomings if we do our job right uh then that will not be as important in
+the future if on the other hand you build a company that benefits from the model getting better and better if you know an oracle
+told you today that 04 was going to be just absolutely incredible and do all of these things
+that right now feel impossible and you were happy about that then you know maybe we're wrong but at least that's
+what we're going for and if instead you say okay there's this area where there are many but you pick one of the many
+areas where oh preview underperforms and say I'm going to patch this and just barely get it to work then you're sort of assuming that the next turn of the
+model crank won't be as good as we think it will be and that is the general philosophical message we try to get out
+to startups like we we believe that we are on a pretty a quite steep trajectory of improvement and that the current
+shortcomings of the models today um will just be taken care of by Future generations and
+you know I encourage people to be aligned with that so we did an interview before with Brad and sorry it's not quite on schedule but I think the show
+has always been successful when we kind of go a little bit off schedule there was this brilliant yeah sorry for that uh but there was this brilliant kind of meme that came out of it and I felt a
+little bit guilty but you you said wearing this 20 VC jump which is incredibly proud moment for me uh for certain segments like the one you
+mentioned there there would be the potential to steamroll if you're thinking as a founder stay building where is open AI going to potentially
+come and steamroll versus where they're not also for me as an investor trying to invest in opportunities that aren't going to get damaged how should Founders
+and me as an investor think about that there will be many trillions of dollars of market cap that gets created
+new market cap that gets created by using AI to build products and services that were either impossible or quite
+impractical before and the there's this one set of areas where
+we're going to try to make it relevant which is you know we just want the models to be really really good such that you don't have to like
+fight so hard to get them to do what you want to do but all of this other stuff uh which is building these incredible
+products and services on top of this new technology we think that just gets better and better um one of the
+surprises to me early on was and this is no longer the case but in like the GPT 3.5 days it felt like 95% of startups
+something like that wanted to bet against the models getting way better and so and they were doing these things where we could already see gp4 coming
+and we're like man it's going to be so good it's not going to have these problems if you're building a tool just to get around this one shortcoming of
+the model that's going to become less and less relevant and we forget how bad the model were a couple of years ago it
+hasn't been that long on the calendar but there were there were just a lot of things and so it seemed like these good areas to build a thing uh to like to
+plug a hole rather than to build something to go deliver like the great AI tutor or the great AI medical adviser
+or whatever and and so I felt like 95% of people that were were like betting against the models getting better 5% of the people
+were betting for the models getting better I I think that's now reversed I think people have like internalized the rate of
+improvement and have heard us on what we intend to do
+um so it's it no longer seems to be such an issue but it was something we used to fret about a lot because we kind of we saw it was going to happen to all of
+these very hardworking people you you said about the trillions of dollars of value to be created there and then I promise we will return to these brilliant questions I'm sure you saw I'm
+not sure if you saw but Massa sit on stage and say we will have I'm not going to do an accent cuz my accents are terrible um but there will be9 trillion
+dollar of value created every single year which will offset the9 trillion capex that he thought would be needed
+I'm just intrigued how did you think about that when you saw that how do you reflect on
+that uh I can't put it down to like any I think like if we can get it right with an orders of to that's that's good
+enough for now there's clearly going to be a lot of capex spent and clearly a lot of value created this happens with every other Mega technological
+revolution of which this is clearly one um but uh you know like next year will be a
+big push for us into these next Generation systems you talked about when there could be like a
+no code software agent I don't know how long that's going to take but if we use that as an example and imagine forward to towards it think about what think
+about how much economic value gets unlocked for the world if anybody can just describe like a whole company's worth of software that they want this is
+a ways away obviously but when we get there and have it happen um think about how difficult and how expensive that is now think about how much value it
+creates if you keep the same amount of value but make it wildly more accessible and less expensive that that's really powerful and I think we'll see many
+other examples like that we I mentioned earlier like healthcare and education but those are two that are both like
+trillions of dollars of value to the world to get right if you and if AI can really really truly enable this to happen in a different way than it has
+before I I don't think big numbers are the point and they also the debate about whether it's n trillion or 1 trillion or
+whatever like you know I don't smarter people than me it takes to figure that out but but the value creation does seem
+just unbelievable here we're going to get to agents in terms of kind of how that value is delivered in terms of like the delivery mechan mechanism for which
+it's valued open source is an incredibly prominent method through which it could be how do you think about the role of Open Source in the future of AI and how
+does internal discussions look like for you when the question comes should we open- Source any models or some models
+there there's clearly a really important place in the ecosystem for open source models there's also really good open source models that now exist
+um I think there's also a place for like nicely offered well integrated services
+and apis and you know I think it's I think it makes sense that all of the stuff is an offer and people will pick what what works for
+them as a delivery mechanism we have the open source as of kind of androp to customers and a way to deliver that we
+can have agents I think there's a lot of uh kind of semantic confusion around what an agent is how do you think about the definition of Agents today and what
+is an agent to you and what is it not um this is like my offthe cuff answer
+it's not well considered but something that I can give a long duration task to and provide minimal
+supervision during execution for what do you think people think about agents that actually they get
+wrong well it's more like I don't I don't think any of us yet have an intuition for what this is going to be like you know we're all gesturing at
+something that seems important maybe I can give the following
+example when people talk about an AI agent acting on their behalf uh the the
+main example they seem to give fairly consistently is oh you can like you know you can like ask the agent
+to go book you a restaurant reservation um and either it can like use open table or it can like call the
+restaurant or or whatever and you know it's like okay sure that's that's like a mildly annoying thing to have to do and
+it maybe like saves you some work one of the things that I think is interesting is a world where
+uh you can just do things that you wouldn't or couldn't do as a human so what if what if instead of of calling uh
+one restaurant to make a reservation my agent would call me like 300 and figure out which one had the best food for me or some special thing available or whatever and then you would say well
+that's like really annoying if your agent is calling 300 restaurants but if if it's an agent answering each of those 300 300 places then no problem and it
+can be this like massively parallel thing that a human can't do so that's like a trivial example
+but there are these like limitations to human bandwidth that maybe these agents won't have the category I think though is more
+interesting is not the one that people normally talk about where you have this thing calling restaurants for you
+um but something that's more like a really smart senior
+coworker um where you can like collaborate on a project with and the agent can go do like a two-day task or
+two week task really well and you know paying you at when it has questions but come back to you with like a great work
+product does this fundamentally change the way that SAS is priced when you think about extraction of value bluntly
+and normally it's on a per seat basis but now you're actually kind of replacing labor so to speak how do you think about the future of pricing with
+that in mind when you are such a core part of an Enterprise Workforce like how will price or what it will do for people who are no like how
+will it price oh um like we always have per seat
+pricing we look I can make I can like I'll speculate here for fun but we really have no idea this I mean Sam I'm a venture investor for a living so we
+speculate for fun all the time it's okay um I mean I could imagine a world where you can say like I want one GPU or
+10 gpus or 100 gpus to just be like turning on my problems all the time and it's not like you're not like
+paying per seat or even per agent but you're like it's priced based off the amount of compute that's like working on
+a you know on your problems all the time do we need to build specific models for agentic use or do we not how do you
+think about that um there's a huge amount of infrastructure and Scaffolding to build for
+but I think 01 points the way to a model that is capable of doing great agentic tasks I hate the word agentic by the way
+i' I'd love it if we could come up with a what would you like this is your chance to coin a new word I don't have this could be a spoiler of that that
+that really is something I I'll keep thinking while we talk on the model side Sam everyone says
+that uh models are depreciating assets the commoditization of models is so R how do you respond and think about
+that and when you think about the increasing Capital intensity to train models are we actually seeing the reversion of that where it requires so
+much money that actually very few people can do it uh it's definitely true that they're depreciating assets um this thing that
+they're not though worth as much as they cost to train that seems totally wrong um to say nothing of the fact that
+there's like a there's a positive compounding effect as you learn to train these models you get better at training the next one but the actual like Revenue
+we can make from a model I think justifies the investment um I to be fair
+uh I don't think that's true for everyone and there's a lot of there are probably too many people training very similar models and if you're a little
+behind or if you don't have a product with the sort of normal rules of business that make that product
+sticky and valuable then yeah maybe you can't maybe it's harder to get a return
+on the investment we're very fortunate to have chat GPT and hundreds of millions of people that use our models and so even if it costs a lot we get to
+like amortise that cost across a lot of people how do you think about how open AI models continue to differentiate over
+time and where you most want to focus to expand that differentiation uh reasoning is our
+current most important area of focus I think this is what unlocks the next like massive Leap Forward in in value created
+so that's we'll improve them in lots of ways uh we will do multimodal work uh we will do other
+features in the models that we think are super important to the ways that people want to use these things how do you think how do you
+think about reasoning in multimodal work like there the challenge is what you want to achieve love to understand that
+reasoning in multimodality specific yeah I hope it's just going to work I mean it obviously takes some doing to
+get done but uh you know like people like when they're babies and toddlers before they're good at language
+can still do quite complex visual reasoning so clearly this is possible totally is um how will Vision
+capabilities scale with new inference time Paradigm set by 01
+uh without spoiling anything I would expect rapid progress in image based
+models that's a spoiler isn't it it's a bit of a carrot Sam okay um going off schedule is one
+thing trying to tease that out might get me in real trouble um gpt's output is generally I I like the this one a lot yeah I I don't think that we are nearly
+British enough in a lot of gpt's output gpt's output is generally American in spelling and spelling and tone how do we
+think about internationalization with models different cultures different languages and how important that
+is it's interesting I you know I don't use British English I haven't tried but I would have guessed that it's really good at doing British English is it
+not okay well we'll look at that we can get you your s's I'm sure there
+we go um how does open AI make breakthroughs in terms of like core reasoning do we need to start pushing
+into reinforcement learning as a pathway or other new techniques aside from the transforma uh I mean there's two
+questions in there there's how we do it and then you know there's everyone's favorite question which is what comes beyond the Transformer
+the how we do it is our special sauce it's easy it's really easy to copy something you know Works uh and one of the reasons that people don't talk about
+about why it's so easy is you have the conviction to know it's possible and so after after a research lab does something even if you don't know exactly
+how they did it it's say easy but it's doable to go off and copy it and you can see this in the replications of gp4 and I'm sure you'll
+see this in replications of 01 what is really hard and the thing that I'm most proud of about our culture
+is the repeated ability to go off and do something new and
+totally unproven and a lot of organizations I'm not talking about AI research just generally a lot of
+organizations talk about the ability to do this there are very few that do um across any field and in some sense I
+think this is one of the most important inputs to human progress so one of the like retirement things I fantasize about
+doing is writing a book of everything I've learned about how to build an organization and a culture that does this thing not the organization that
+just copies what everybody else has done because I think this is something that the world could have a lot more of it's limited by human talent but there's a
+huge amount of wasted human talent because this is not an organization style or culture
+whatever you want to call it that we are all good at building so I love way more of that and that is I think the thing most special about us Sam how is human
+Talent wasted oh there's just a lot of really talented people in the world that are not working to their full potential um
+because they work at a bad company or they live in a country that doesn't support any good companies uh or a long list of other things I mean
+the the one of the things I'm most excited about with AI is I hope it'll get us much better than we are now at helping
+get everyone to their Max potential which we are nowhere nowhere near there's a lot of people in the world that I'm sure would be phenomenal AI
+researchers had their life paths just gone a little bit differently Sam you've had an incredible journey again sorry for the off-script
+you've had an incredible journey over the last few years through you know unbelievable hypergrowth you say about writing a book there in retirement if
+you reflect back on the 10 years of leadership change that you've under gone how have you changed your leadership
+most significantly well I think the thing that has been
+most unusual for me about these last couple of years is just the rate at
+which things have changed at a normal company you get time to go from Z to 100 million in Revenue 100 million to a
+billion billion to 10 billion you don't have to do that in like a 2-year period and you don't have to like build the company we had to research that but we
+really didn't have a company in the sense of a traditional Silicon Valley startup that's you know scaling and serving lots of customers whatever um
+having to do that so quickly there was just like a lot of stuff that I was supposed to get more
+time to learn than I got and what did you not know that you would have liked
+more time to learn I I I mean I would say like what did I
+know um the one of the things that just came to
+mind out of like a rolling list of a 100 is how hard it is how much active work
+it takes to get the company to focus not on how you grow the next 10% but the next 10x and growing the next 10% it's
+the same things that worked before will work again but to go from a company doing say like a billion to1 billion doar in Revenue
+requires a whole lot of change and it is not the sort of like let's do last week what we did this week mindset and in a
+world where people don't get time to even get caught up on the basics because growth is just
+so rapid uh I I badly underappreciated the amount of work it took to be able to
+like keep charging at the next big step forward while still not neglecting everything else that we have to do um
+there's a big piece of internal communication around that and how you sort of share information how you build the structures to like get the company
+to get good at thinking about 10x more stuff or bigger stuff or more complex stuff every eight months 12 months
+whatever um there's a big piece in there about planning about how you
+balance what has to happen today and next month with the the long lead pieces you need in place for to be able to
+execute in a year or two years with you know build out of compute or even you know things that are more normal like
+planning ahead enough for like office space in a city like San Francisco is surprisingly hard at this kind of rate
+so I I think the there was either no playbook for this or someone had a secret Playbook
+book they didn't give me um or all of us like we've all just sort of fumbled our way through this but there's been a lot to learn on the
+Fly God I don't know if I'm going to get into trouble for this but s it I'll ask it anyway and if so I'll deal with it
+later um Keith R boy uh did a talk and he said about you should hire incredibly young people under 30 and that is what
+Peter teal taught him and that is the secret to building great companies and it got a little bit of resistance uh to say the least
+um I'm intrigued when you think about this book that you write in retirement and that advice you build great
+companies by building incredibly young hungry ambitious people who are under 30 and that is the mechanism how do you
+feel I think I was 30 when we started opening eye or at least thereabouts so you know I wasn't that
+young seem to work okay so far worth a try uh uh going back uh is the
+question like the question is how do you think about hiring incredibly young under 30s as this like Trojan Horse of
+Youth energy ambition but less experience or the much more experienced I know how to
+do this I've done it before um I mean the obvious answer is you can succeed with hiring both classes
+of people like we have I was just like right before this I was sending someone a slack message about
+there was a guy that we recently hired on one of the teams I don't know how old he is but low 20 is probably doing just insanely amazing work and I was like can
+we find a lot more people like this this is just like off the charts brilliant I don't get how these people can be so good so young but it clearly happens and
+when you can find those people uh they bring amazing fresh perspective energy whatever else on the other hand uh when
+you're like designing some of the most complex and massively expensive computer systems that Humanity
+has ever built actually like pieces of infrastructure of any sort then I would not be comfortable taking a bet on
+someone who is just sort of like starting out uh where the stakes are higher so you
+want you want both uh and I think what you really want is just like an extreme ex High Talent bar of people at any
+age and a strategy that said I'm only going to hire younger people or I'm only going to
+hire older people I believe would be misguided uh I I think it's like somehow just not it's not quite the framing that
+resonates with me but the part of it that does is and one of the things that I feel most
+grateful about why combinator 4 is inexperience does not inherently mean
+not valuable and there are incredibly high potential people at the very beginning of their career that can
+create huge amounts of value and uh we as a society should bet on those people and it's a great
+thing I am going to return to some semblance of the schedule as I'm I'm really going to get told off but anthropics models have been sometimes
+cited as being better for coding C why is that do you think that's fair and how should developers think about
+when to pick open AI versus a different provider yeah they have a model that is great at coding for sure uh and it's
+impressive work I I think developers use multiple models
+most of the time and I'm not sure how that's all going to evolve as we head towards this more agen toied World um
+but I sort of think there's just going to be a lot of AI everywhere and something about the way that we currently talk
+about it or think about it feels wrong uh may maybe if I had to
+describe it we will shift from talking about models to talking about systems but that'll take a while when we think about skating models
+how many more model iterations do you think scaling laws will hold true for it was the kind of common refrain that it won't last for
+long and it seems to be proving to last longer than people think
+uh without going into detail about how it's going to happen the the the core of the question that you're getting at is
+is the trajectory of model capability Improvement going to keep going like it has been going and the answer that I
+believe is yes for a long time have you ever doubted that totally why
+uh we have had well we've had like Behavior we don't understand we've had filled training runs we' all sorts of things we've had to figure out new
+paradigms when we kind of get to towards the end of one and have to figure out the next what was the hardest one to
+navigate um could be a new paradigm could be a training run which one do you remember most Fally
+and how did you get through that well when we started working on gp4 there were some issues that caused us a
+lot of consternation that we really didn't know how to solve we figured it out but there was there was definitely a time period where we just didn't know
+how we were going to do that model um and then in this shift to 01 and the
+idea of reasoning models uh that was something we had been excited about for a long time but it was like a long and
+Winding Road of research to get here is it difficult to maintain morale when it is long and winding roads when
+training runs can fail how do you maintain moral in those times you know we have a lot of people
+here who are excited to build AGI and that that's a very motivating thing and no one expects that to be easy and a
+straight line to success but uh it does feel like
+there's a famous quote from history it's something like I'm going to get this totally wrong but the spirit of it is
+like I never pray and ask for God to be on my side you know I pray and hope to be on God's side and there is something
+about betting on deep learning that feels like being on the side of the angels and you kind of just it eventually seems
+to work out even though you hit some big stumbling blocks along the way and so like a deep belief in that has been good for us
+can I ask you a really weird one I had a great quote the other day and it was the heaviest things in life are not iron or gold but unmade
+decisions what unmade decision weighs on your mind most it's different every day like I
+don't there's not one big one I mean I guess there are some big ones like about are we gonna bet on this
+next product or that next product uh or are we going to like build our next computer this way or that way they are
+kind of like really high stakes oneway doorish that like everybody else I probably delay for too long but but
+mostly the hard part is every day it feels like there are a few new 5149
+decisions that come up that kind of make it to me because they were 51 49 in the first place and that I
+don't feel like particularly likely I can do better than somebody else would have done but I kind of have to make him anyway and it's it's the volume of them
+it is not anyone is there a commonality in the person that you co when it's
+5149 no um I I think the wrong way to do that is to
+have one person you lean on for everything and the right way to at least for me the right way to do it is to have like like 15 or 20 people Each of which
+you have come to believe has good instincts and good context in a particular way and you get to like phone a friend to the best expert rather than
+try to have just one across the board in terms of hard decisions I do want to touch ON Semiconductor Supply chains how wide are you about
+semiconductor Supply chains and international tensions today I don't know how to quantify that
+worried of course is the answer answer uh it's probably not it's well I guess I could quantify it this way it is not my
+top worry but it is in like the top 10% of all worries am I allowed to ask what's your top
+worry I'm I'm in so much I've got past the stage of being in trouble for this one
+um it's something about the the sort of generalized
+complexity of all we as a whole field are trying to do
+the and it feels like a I think it's all going to work out fine but it feels like a very complex system now this kind of
+like works fractally at every level so you can say that's also true like inside of opening eye itself uh that's also
+true inside of anyone team um but you know an example of this since you were just talking about semiconductors is you
+got to balance the power availability with the right networking decisions with being able to like get enough chips in time and whatever risk there's going to be there
+um with the ability to have the research ready to intersect that so you don't either like be caught totally flat footed or have a system that you can't
+utilize um with the right product that is going to use that research to be able to like pay the eye watering cost of
+that system so the it's supply chain makes it sign
+sound too much like a pipeline but but yeah the overall ecosystem complexity at every level of like the fractal scan is
+unlike anything I have seen in any industry before uh and some version of that is
+probably my top worry you said unlike anything we've seen before a lot of people I think compare this you know wave to the
+internet bubble uh in terms of you know the excitement and the exuberance and I think the thing that's different is the amount that people are spending Larry
+Ellison said that it will cost a hundred billion doar to enter the foundation model race as a starting point do you agree with that statement and when you
+saw that we like yeah that makes sense uh no I think it will cost less than that but there there's an
+interesting there's an interesting point here um which is everybody likes to
+use previous examples of a technology Revolution to talk about to put a new one into more familiar context and a I
+think that's a bad habit on the whole and but I understand why people do it and B I think the ones people pick
+for analogizing AI are particularly bad so the internet was obviously quite different than Ai and you brought up
+this one thing about cost and whether it cost like 10 billion or 100 billion or whatever to be competitive it was very like one of the defining things about
+the internet Revolution was it was actually really easy to get started now another
+thing that cuts more towards the internet is mostly for many companies this will just be like a continuation of the Internet
+it's just like someone else makes these AI models and you get to use them to build all sorts of great stuff and it's like a new primitive for Building
+Technology but if you're trying to build the AI itself that's pretty different another example people uses electricity
+um which I think doesn't make sense for a ton of reasons the one I like the most caveat by my
+earlier comment that I don't think people should be doing this or trying to like use these analogies to seriously is the
+transistor it was a new discovery of physics it had incredible scaling properties it seeped everywhere pretty
+quickly you know we had things like mors in a way that we could now imagine like a bunch of laws for AI that tell us something about how quickly it's going
+to get better um and everyone kind of B like the whole tech industry kind of benefited from it and there's a lot of
+transistors involved in the products and delivery of services that you use but you don't really think of them as transistor
+companies um it's there's a very complex very expensive industrial process around it with a massive supply chain and
+and you know the the incredible progress based off of this very simple discovery of physics led to this gigantic uplift
+of the whole economy for a long time even though most of the time you didn't to think about it and you don't say oh this is a transistor product it's just
+like all right this thing can like process information for me you don't even really think about that it's just expected Sam I'd love to do a quick fire
+round with you so I'm going to say so I'm going to say a short statement you give me your immediate thoughts okay okay so you are building today as a
+whatever 23 24 year old with the infrastructure that we have today what do you choose to build if you
+started today uh some AI enabled vertical I'll
+I'll I'll use tutors as an example but like the the the best AI tutoring product or the you know that I could possibly imagine to teach people to
+learn any category like that could be the AI lawyer could could be the sort of like AI CAD engineer whatever you
+mentioned your book that will be coming out once it's written in retirement no I said I think about it I I don't know if I'll actually get around to it but I
+think it's an interesting idea if you were to write a book what would you call it this is so unfair sorry Sam um I
+don't have the title really I haven't thought about this book other than like I wish something existed because I think it could unlock a lot of human potential
+so maybe I think it would be something about human potential what in AI does no one focus on that everyone should spend more time
+on what is not hot should be hot I think there's people focused on
+everything uh what I would love to see there's a lot of different ways to solve this problem but something about an AI that can understand your whole
+life doesn't have to literally the infinite context but some way that you can have an AI agent that like knows everything there is to know about you
+has access to all of your data things like that what was one thing that surprised you in the last month
+Sam it's a research result I can't talk about but it is breathtakingly good which competitor do you most
+respect why then uh I mean I kind of respect everybody in the space right now I think
+there's like really amazing work coming from the whole field
+I an incredibly talented incredibly hardworking people I don't mean this to be a question Dodge it's like I can point to super talented people doing
+super great work everywhere in the field is that
+one not really uh tell me what's your favorite open a
+API I think the new real time API is pretty awesome but we have a lot of I mean we have a we have a big API business at this point so there's a lot
+of good stuff in there what are the biggest constraints on llama from it being open source I don't know it seems like a
+better question for them I'm doing well with this quick F uh
+who do you most respect in AI today Sam like ever or doing current work doing
+current work like a person yeah
+um well I feel like I I feel like I can't just go name a bunch of open AI people because that would be unfair uh and it would sound like I'm
+just biased so let me try to think of a non-opening eye person person uh let me give a shout out to the cursor team I mean there's a lot of
+people doing incredible work in AI but I think to really have do what they've done and built I thought about like a
+bunch of researchers I could name um but in terms of using AI to deliver a
+really magical uh experience that creates a lot of value in a way that people just didn't quite manage to put
+the pieces together I think that's it's really quite remarkable and I specifically left anybody at open AI out as I was thinking through it otherwise it would have been a long list of open
+AI people first how do you think about the trade-off between latency and
+accuracy you need a dial to change between them like in the same way that you want to do a rapid fire thing
+now and I'm not even going that quick but I'm you know trying not to think for multiple minutes uh in this context latency is what you want if you but if
+you were like hey Sam I want you to go like make a new important Discovery in physics you'd probably be happy to wait a couple of years and the answer is it
+should be user controllable can I ask when you think about insecurity and Leadership I think it's something that everyone has uh it's
+something we don't often talk about um when you think about maybe an insecurity in leadership an area of your leadership that you'd like to improve where would
+you most like to improve as a leader and a CEO today
+[Music]
+um it's a long list I'm trying to scam for the top one here the thing I'm struggling with most
+this week is I feel more uncertain than I have in the past about
+uh what are like the details of what our product strategy should be um I think that product is a weakness of mine in
+general um and it's something that right now the company like needs stronger and clearer vision on from me like we have a
+wonderful head of product and a great product team but it's an area that I wish I were a lot stronger on and acutely feeling the the miss right now
+you hired Kevin um I've known Kevin for years he's exceptional Kevin's amazing what makes Kevin worldclass as a product
+leader to you um this was the first word that came to mind huh in terms of
+focus focus what we're going to say no to like really trying to speak on behalf of the user about why we would do something or not do something like
+really trying to be rigorous about not not having like Fantastical dreams Sam you've done a lot of
+interviews I want to finish with one which is what question are you not often or never asked that you often leave an
+interview and think God I should have been asked that or I wish I was asked
+that I mean this is such a meta answer but I've been asked that question so many times that I've like used up all time that is that is so
+massive okay I'll change it then we have a 5year horizon for open Ai and a
+10-year if you have a magic wand and can paint that scenario for the 5 year and the 10 year can you paint that canvas
+for me for the 5 and 10 year I mean I can easily do it for like
+the next two years but if we are right and we start to make systems that
+are so good at you know for example helping us with scientific advancement actually I I will just say it I think in five years it looks like
+we have an unbelievably rapid rate of improvement in technology itself you
+know people are like man the AGI moment came and went whatever the like the the pace of progress is like totally crazy
+and we're discovering all this new stuff both about AI research and also about all the rest of Science and that
+feels like if we could sit here now and look at it it would seem like it should be very crazy and then the second part
+of the prediction is that Society itself actually changes surprisingly little an example of this would be that
+I think if you asked people five years ago if computers were going to pass the Turing test they would say no and then if you said well what if an oracle told you it was going to they would say well
+it would somehow be like just this crazy breathtaking change for society and we did kind of satisfy the Turning test
+roughly speaking of course and so Society didn't change that much it just sort of went whooshing
+by and that's kind of uh example of what I expect to keep happening which is
+progress scientific progress keeps going outperforming all expectations and
+Society in a way that I think is good and healthy um changes not that much at least not that much in the long
+term it will hugely change five or 10 years you've been amazing I had this list of questions I I didn't really
+stick to them uh thank you for putting up with my Meandering around different questions thank you everyone for coming I'm so thrilled that we were able to do
+this today and Sam thank you for making it happen ma'am thank you

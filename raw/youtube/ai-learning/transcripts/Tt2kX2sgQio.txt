@@ -1,0 +1,582 @@
+[music]
+Hey everyone, thank you for being here.
+My name is Venu Ganesh and I'm the CEO
+and co-founder of Kepler. Today I'm
+going to talk to you about how we built
+verifiable AI for financial services.
+First, a little about me. Uh my career
+has been working in fairly uh difficult
+places to work in terms of numerical
+accuracy and verifiability. Began my
+career at Palanteer where I led the
+compute platform as well as a lot of our
+USG engagements. Built and sold a uh alt
+data startup. Um then was head of
+business engineering at Citadel. I have
+some Citadel colleagues here in the
+audience as well. Uh I've advised a
+bunch of startups and um been lucky that
+all of them reached pretty positive
+outcomes. Uh so this whole talk is a
+distilled version of a case study
+Anthropic did on Kepler. If you scan
+that QR code, uh we're the only company
+they've ever done a case study of, which
+is kind of cool. Um and so this is a
+distilled version of that that has a lot
+more information about how we were able
+to do what we do, why uh it's been
+pretty impactful in financial services,
+and really where we go from here. So my
+only goal with this whole talk is to
+convince you that AI is going to start
+doing some very powerful things in terms
+of producing work product. So everything
+that I tell you is inevitable whether
+it's Kepler or whether it's anyone else
+we are already on this journey in this
+trajectory. Um so we all better be
+ready.
+So I first want to observe every talk
+that we've seen in the financial
+services space so far has been about
+producing more like how do I token max
+how do I get AI to do more very little
+of it is about how to actually make AI
+trustworthy or produce trustworthy
+products and what's interesting is even
+terms like trust and verifiability have
+actually been largely abused eval are
+not verifiable you cannot take a
+non-deterministic LLM and eval your way
+to something determined ministic. These
+are probability machines. And the kind
+of underlying reason for this is that AI
+has made a writing problem a reading
+problem. We can produce insane amounts
+of content, whether that's code, whether
+it's marketing, whether it's like a DCF
+in record time, but we can't easily
+verify this. And that's because for
+years, the hardest part about this whole
+process was actually producing the work.
+Edge and alpha came from people like
+Citadel being able to hire hundreds of
+analysts who could scour the internet
+and understand where any source of alpha
+could exist. So it really came from this
+idea of being able to consume content.
+The problem is when a model reads
+everything, you have the most real
+version of alpha decay that you possibly
+can. There is no edge if everyone can
+look at Tus and get all the same
+information. So the hard part now is
+trusting what actually got produced by
+the model.
+And this is kind of funny. This is not
+necessarily a finance problem. Every
+system that exists has some form of this
+software. We run CI/CD. We do unit
+tests. We do integration tests. We have
+code reviews. When a doctor writes a
+prescription, a pharmacist fills that
+prescription. So if it says 10,000
+milligrams of a medication, someone
+catches that. We have a pilot and a
+co-pilot. We have an EMT. That's a
+primary EMT and a secondary. In finance,
+we have maybe an overworked VP as a
+verification layer, but that concept
+doesn't really exist. And now I'm going
+to say something even more aggressive.
+Uh the reason that people buy products
+like Bloomberg and Fact Set is to
+displace culpability. When you buy a
+tool like that, you know that
+information is free. It exists in SEC
+filings. But you believe that because a
+bunch of contractors or folks overseas
+vetted this data and stuck it in a
+central instance, at least if it's
+wrong, everyone on Wall Street has the
+same incorrect information. And that's
+interesting in certain ways. It's also
+kind of a scary proposition. And that's
+because every one of these tools is read
+only. You as an analyst look at
+Bloomberg, you look at fact, you consume
+information, and you produce the work
+product. And that's where the biggest
+gap and biggest wall to real meaningful
+adoption across Wall Street has actually
+been. And so why does this actually
+matter? We can't use AI properly in this
+ecosystem. There is a reason that
+analysts are still working till 4:00
+a.m. And there's a reason folks in
+investment banks are actually dying
+because of the hours they're putting in.
+Because AI can produce a very confident
+answer, but when it comes to producing
+any kind of meaningful work product,
+we're totally lacking.
+Not only that, we have the SEC, we have
+the OC, we have a number of these
+regulatory agencies who exist to make
+sure that you are not insider trading or
+you're not producing a trading decision
+that can't be justified or backed by
+some set of primitives or some set of
+information that you can reliably say I
+made this decision because of these
+sources of information.
+And so in this ecosystem, the biggest
+challenge is how do I get AI to jump
+from producing the search technologies
+that it's doing right now to producing
+work product. That can mean a fairness
+opinion. It can mean a DCF. It can mean
+an investment memo. It can mean looking
+at every SIM that your firm had 5 years
+ago and figuring out why your IRRa
+number wasn't what it should have been
+or anything else. And so the whole
+industry has solved this by citing
+things. When you search the internet
+with claude or chatgpt, it gives you a
+list of sources that pulled information
+from. What's ironic is you can't easily
+curate those sources. So if you find my
+random substack that says Palanter is
+going to be $3,000 a share and you trade
+off of that, please go do that because
+it'll be very helpful for me. But that's
+not a real vetted source. seeking Alpha
+and some of these blogs or Reddit posts,
+they're data points, but they're not
+real vetted sources. So, showing where
+you got the information from is only
+half the battle. And that's where we're
+limited right now. A citation is
+effectively an after-the-act audit. Now,
+a verification is a deterministic,
+repeatable, numerically verifiable
+mechanism that we can use to produce
+validity that a number is right. That
+was a lot of buzzwords. A verification
+just means I can prove deterministically
+this number is right. So when I extract
+a revenue number from a 10K, I can
+deterministically prove that that is the
+correct number from that 10K.
+So these are two sides of kind of the
+same game. One is showing where you got
+the sources from and one is verifying
+that the information that you pulled out
+is actually correct.
+This becomes challenging. It becomes
+challenging because verification is not
+a outcome. It lives in the path or the
+set of steps that are required for you
+to produce information that is valid for
+your individual firm. Finance is one of
+the rare industries where two people can
+be have the same information and one can
+be long a stock and one can be short
+that stock with the exact same data. And
+so the idea of verification is not
+actually ground truth. It is verifying
+that you got an output that respects the
+nouns and verbs or the rules of your
+organization. If a desk at Cit like a
+TMT desk at Citadel believes that a
+particular stock is going to go up and
+to the right, another TMT desk at
+Citadel may have the exact opposite
+belief and they may have the same
+verification mechanisms that produce
+vastly different outcomes. And so this
+really comes down to something simple.
+What are the sources that we trust? What
+are the transformations that we apply on
+those sources to produce information
+that we care about? And how do we make
+sure that's codified in a way that makes
+logical sense? And so the whole point of
+this is simple.
+This came from a 10K is not the val the
+validation as a whole. Your job now is
+to figure out as an individual, how do I
+use AI in a verifiable way? Here's the
+honest answer. You don't. AI is great at
+doing nondeterministic tasks. It can
+solve problems in a way that's novel. It
+can figure out exactly how to do IBIDA
+adjustments, but it can't be the one
+responsible for doing the mathematical
+adjustments because it's a probability
+machine. It is great at next token
+prediction. So the second contention of
+this whole talk is that you cannot use
+AI to produce verifiable work product in
+finance without augmenting it with a
+deterministic substrate which
+effectively means if you're a portfolio
+manager at Citadel you have access to a
+number of deterministic tools that you
+use to make your trading decisions. We
+need to model AI like that PM. It needs
+to exist in grounding, needs to exist
+with a certain risk threshold and
+verifiability. So here's how we did it.
+Here's what Anthropic was excited about.
+We have three tenants that we use to
+ensure that numerical accuracy is a
+tenant of the Kepler platform and that
+allows us to produce pretty powerful,
+pretty verifiably reliable information.
+The first is atomic providence and I'll
+talk through all of these. The second is
+scope determinism and the third is
+derivation chains uh which we'll all
+talk about. But the core premise is
+this. There are certain things humans
+should never do. And I will tell you
+right now, I don't believe a human
+should sit there and look at a PDF 10K,
+10Q, 8K or earnings call transcript and
+on one screen take that number and put
+it into an Excel model on the other
+screen. Humans were not built for that.
+That's not like there's a reason we
+don't have databases just written in our
+heads. And so let's break this down for
+how you can actually use AI to produce
+work product. Let's talk about
+providence. Providence as a whole just
+means writing down exactly where you got
+the information. Now I have a lot of
+respect for everyone else who got here
+on stage, but we did a model. We trained
+a model that was really good at
+extracting information. It outperformed
+foundation models. It was 94% great.
+It's in the article. Who here would
+trade off of something that's 94%
+accurate,
+right? So fine-tuning your way on a
+probabilistic solution still is it's
+really cool and like Techrunch will be
+really excited about it, but like no one
+else really cares about it. And that's
+because the wrong number is still wrong
+if you're in that unfortunate 6%.
+So with atomic providence, what we do is
+the model writes effectively a reference
+to the number. It cannot write the
+number or manipulate the number in any
+way. it doesn't even understand what
+that number is. We have tools that are
+really good at understanding numbers.
+They're databases. They are systems that
+can codify information and read them and
+write them with appropriate fidelity. So
+that's the first piece of how we do
+things. Anytime a model makes a
+decision, it makes the decision to
+figure out exactly where it got the
+number from and hand off to something
+that can write that number. We then run
+it through a deterministic check where
+any kind of a wrong number if we can't
+verify it independently we strip it out.
+That number will never make it to
+someone if it doesn't follow the
+deterministic check the providence
+ledger and most importantly uh the whole
+cycle kind of repeating at least a
+couple of times. So this is not me
+saying have 10 models and each indiv
+have open AI check chat check anthropic
+and have anthropic check xi. These are
+not probabilistic systems evaluating
+each other's work. There's a core
+canonical process of extracting a
+number, persisting it, and making sure
+that process actually occurred properly.
+And this is when I say atomic
+traditional automity in like database
+land. Second, scope determinism. This is
+this was a super controversial idea like
+a year ago and VCs were like this is
+crazy. Now this half of this talk has
+been this session has been about this.
+Um, the model is really good at
+reasoning and planning. Intelligence is
+commoditized. GLM52 shows it. You can
+download it off of Hugging Face right
+now. You have something as powerful as
+Opus 48. Now, what the model cannot do
+is math. And why would it? Why would I
+run 1 plus 1 through a multi-billion
+parameter model instead of one CPU
+cycle? Unless you're companies that are
+giving bonuses on people token maxing,
+which is another hilarious thing.
+[snorts]
+Um and so what the model does is the
+model decides what to compute. It never
+does the computation itself. And so from
+the Kepler platform perspective, what we
+do is we split the deterministic pieces
+of the model which are none from the
+nondeterministic pieces of the model
+which are all of them. And we give the
+model the right tooling and technology
+to calculate the deterministic pieces.
+Now let's get really concrete. A model
+can read something like okay I need to
+understand what net margin is. I know
+the right pieces of information to go to
+to get that data, but I can't be the
+entity that's actually running the code
+behind the scenes to pull that number
+out of a PDF or parsing the XBRL behind
+the scenes to pull that information out.
+That is code. Now, the deterministic
+pieces of the platform pull that
+information out and persist it outside
+of anything the model understands. And
+with those two together, we can actually
+produce a numerically accurate answer to
+the question of like what was the net
+what was the net margin of this stock or
+this company last quarter.
+This also is a lot cheaper because again
+I don't need the model to do a bunch of
+stuff it shouldn't be doing.
+Now the last piece here is how do we
+actually do reconciliation?
+When someone asks about a ratio like a
+gross margin or anything else that
+doesn't exist in a filing. Therefore, I
+can't just go look up what the gross
+margin is or what the set of EBIDA
+adjustments were. The other thing that's
+really complicated is everyone
+calculates these ratios and these
+multiples differently. Everyone does
+enterprise value calculations
+differently. Things that are considered
+recurring or non-recurring may be
+unique. So, not only do we have to
+codify that in the processes that are
+run, but we need some kind of a chain of
+events to figure out what went into
+producing an individual number and what
+went into producing an outcome. This is
+not any different than the chain of
+events that an analyst does on a desk at
+a hedge fund to make a riskreward or a
+trading decision. It's just done by the
+model in a way that can be replayed and
+rewinded.
+And so that leads us to something fairly
+simple here. Uh we have a system that
+knows which data points it's allowed to
+produce. Meaning from structured
+filings, from numerical data, from any
+other ecosystem, it knows what it's
+allowed to produce. and it knows what
+it's never allowed to produce. So if
+it's pulling things out of pros, raw
+tables, or anything else, it doesn't do
+that extraction. What this allows us to
+do is this allows us to do things like
+consolidate financial statements in
+seconds with every number tied back to
+its individual source. Which means not
+picking on any companies, but the cap
+IQ's, the dalupas that are all using
+contractors for this. We don't need to
+do that anymore. We can actually create
+a financial model in a numerically
+accurate way that allows you to build
+work product. We can build a DCF in the
+format that you actually want in
+knowledge the model will not hallucinate
+that a row exists that shouldn't exist.
+Now the really crazy thing and why I say
+this is inevitable is everything that
+I'm telling you generally generalizes
+past finance. We're picking numbers here
+because finance cares about numbers. But
+you can imagine a world where every
+court case, if you're a Harvey or a
+Lorraa, run through the same process, a
+pre-processing step that understands
+that we can extract entities like case A
+versus case B and store that
+deterministically so we don't
+hallucinate citations or every drug
+discovery formulation that exists in NIH
+white papers such that we never miss a
+compound or anything else. And so the
+kind of uh interesting dimension that
+we're entering is we're in an ecosystem
+right now where we're almost like pre
+SSL in the e-commerce ecosystem where
+like what's the TAM of e-commerce?
+Trillions. But how many people were
+comfortable putting their credit card
+number on the internet before there was
+security? Zero. So we're in the last
+step. AI can now produce verifiable work
+product across a number of industries.
+Meaning the rag platforms of the past
+are really really helpful and really
+cool and codifying workflows. But
+there's a reason that the foundational
+labs are going after every one of these.
+There's a reason that claude for science
+is not a deterministic system but still
+a ragbased system. And so the piece that
+should be really exciting about this
+whole thing is there is a piece of this
+that no one has built yet in a variety
+of disciplines and a variety of
+industries. We're really good at
+consuming tokens. In fact, there's a
+club here for people that consumed a
+billion plus tokens. They're walking
+around with gold cards. It's kind of
+funny actually. Um, but like that's kind
+of hilarious, right? Like in what time
+in history has an employee been rewarded
+for your company to pay another vendor
+for how much money you're spending? And
+so token maxing, I think, is now being
+thought of as not the right approach
+here to actually solve your problems. So
+the natural thing will become a rush to
+the bottom which is an optimization
+problem which we've seen over and over
+again. If you rewind time I actually sat
+on this stage from four years ago maybe
+not this particular room talking about
+uh like snowflake summit and data bricks
+summit where the idea was all of a
+sudden people wanted ROI on top of or
+like to understand the ROI of their
+snowflake investment or their data
+bricks investment and we started doing
+cost optimization. We started figuring
+out how to make sure every dollar of
+capital we put into Snowflake and into
+data bricks went to actually producing a
+pipeline that people were using. That
+same trend is about to start and we're
+figuring out right now how do we use the
+right tool for the right job. And
+sometimes you don't need a multi-billion
+parameter model when one CPU cycle will
+just work.
+So kind of wrapping this up, AI has made
+producing work completely I say nearly
+free but like thank you VCs heavily
+subsidized. The reading problem is still
+very open and you verifying a data point
+is not enough anymore. The system has to
+be able to track track or track its own
+provenence and actually ensure that the
+numbers that you're pulling represent
+your own unique company philosophies.
+Citations got us like 50% of the way
+there. But the next half of the
+verifiability and provability is going
+to be how we start using this in real
+like valuable verifiable work. And the
+interesting thing here is the work
+product itself is the proof in code. We
+have you know unit tests. We have every
+single poll request and every commit and
+every code review on that poll request
+stored in perpetuity. There are
+companies here trying to mine that
+information to create a representation
+of your on your ontology. right now on a
+company specific basis. We need that
+same ecosystem in finance. So let's just
+say this all these problems are solved
+at this point. The last remaining mile
+is going to be that personalization. So
+the second version of this in 2027 is
+hopefully one of us will be on stage
+talking about how we are now able to
+build verifiable ontologies that
+actually proxy our investment processes
+instead of saying how do I not spend a
+trillion tokens to solve this individual
+problem. Um, so we're also, uh, me and
+Susanna, we're both from Kepler. Um,
+we're growing pretty quickly.
+Obligatory. Come join us. If these
+problems are interesting to you, uh, and
+yeah, I think we're starting in finance
+now. We'll be in a lot of different
+dimensions pretty quickly. So, thank you
+so much and happy to answer any
+questions. [applause]
+[applause]
+Yeah. Go ahead. asking a question about
+Providence. So you mentioned there's a
+proidence where does this number?
+Yes. So the question is about providence
+and from the providence ledger where
+does a number actually come from? Um at
+its core the number comes from three
+different things. It comes from
+extracted information from the filings.
+It comes from either a mathematical
+calculation that we do. It's a
+derivative production so like a ratio or
+something else. or it comes from your
+internal documents or other internal
+pieces of information that operate in
+conjunction with that external data to
+produce that individual data point. So
+anytime the model effectively is
+responsible for telling some entity to
+do an IO operation, that's part of the
+providence chain.
+Yeah.
+Yeah. So the question is um what are our
+customers most excited about? It's funny
+uh everyone wants AI like the dream is
+the AI portfolio manager. The portfolio
+managers don't want the AI portfolio
+manager like they want the AI analyst.
+And so the thing they're most excited
+about is a way of rapidly producing
+rapidly doing kind of the repeatable
+painful tasks that their analysts are
+doing. Things like a analyst actually
+sits there and listens to an earnings
+call transcript. If we didn't have to
+have an analyst do that, it would be
+amazing. Or an analyst sits there with
+like 15 tabs and they're opening every
+8K and 10K over the last, you know,
+whatever years to create the V0ero of a
+financial model. So, they're most
+excited about getting their analyst time
+back. It's just the honest answer.
+And these are expensive analysts. Like
+these some of these folks make 6700K a
+year to do this.
+Cool. I'm happy to answer any more
+questions outside as actually. Yeah,
+outside as well. I don't know if we're
+at time. Yeah, jump in the back.
+[music]

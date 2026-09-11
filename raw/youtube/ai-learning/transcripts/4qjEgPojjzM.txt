@@ -1,0 +1,426 @@
+I can press the button whenever I want, whenever it feels right. I [music] don't tend to look at the competition that
+much. Like I really look at, you know, what can we do uniquely well and what are our values and like, you know, how do we maximally [music] accelerate
+towards that? You know, maybe a year or two these speeds will become, you know, maybe if not the default, like very
+close to the default. And you look at the cost of Luna, right? It's phenomenal. Technology has a way to become like, you know, very, very
+efficient over time. [music] We're very focused on like, you know, very broad access and we're optimizing for, you know, the utility that you get out of it
+directly. [music] I heard there's an actual physical button now. Yes, Deris. I will show it to you. It's like [music] very very cool.
+Tibo, thank you so much for joining me. Of course. Yeah, glad to be here. Yes, really excited to talk to you. I
+want to actually start with your time at Google. So you were on the deep mind team and before chat GPT Google had
+something called LM chat and you had tweeted uh Google was too nervous to release it. Deep mind was blocked from
+shipping products that could disrupt Google and I think about that a lot. What were you thinking at that time while you were working on these products
+that was you know well before uh chat GPT really changed the world. Yeah it was a very exciting time. So um
+deep mind was a very creative place. I was mostly focused on um my specialty was infrastructure and products for to
+accelerate research. And so there was there was obviously a group working on
+language models uh and scaling that. And then they had like gotten pretty good
+results and then it was like a natural thing to think about hey you know can you turn that into something that you
+know you can chat to and you know can use um you know for various things. And so then naturally like the idea of like
+something like LM chat sort of emerges um and then it was internal and then there was sort of this ambition to um
+make it into a publicly available uh tool. What year was this? And this was it was like a year before
+Chhatra roughly. Okay. Yeah. Um and then but we were also building all sorts of other things that I'm not
+going to talk about but it was a very creative place. Uh and then just deep mind was not set up to ship product. uh
+is open AI is a very very different place in that sense. Um we just like
+research and products just collaborate super closely together. We ideate together. We co-design a lot of things. We have a big bias to ship uh and uh
+also a big bias towards you know making things available for people which I really love and this is sort of like
+what uh drove me here the mission the people um the talent density. I mean there's so many great things about open
+eye really. Did you know at the time where you were involved in LM chat that that was something special or would
+become something special? It it felt it felt very special like the models were you know it's sort of like
+the first time um you know you realized like you could get coherent text and you
+know something helpful. Initially it was more funny than helpful and then gradually it became more and more
+helpful. So you say you think about that often and I I understand that I think you know
+in a lot of ways Google got in their own way. um what are some of the lessons that you learned there that you took to
+OpenAI? Yeah, so this is why I think about it often. I I think about it in terms of like the culture that I have on the team
+uh the culture of OpenAI itself and so like the good parts to preserve and like you know what not to do. Um, OpenAI has
+a very bottoms up uh culture. Like it's a very empowering culture. Like people can come up with all sorts of ideas and
+get together and then very very quickly ship something and there's very little stop energy uh in general for like new
+product ideas which is exhilarating and fun and you know it's all about impacting the world in positive ways. Uh
+and so preserving that is very important to me. The other thing that is also important is like to not make it a mess,
+right? So you don't want to have like a hodgepodge of like no features and like no overall direction and coherence and
+so it's counterbalanced with the sense of um simplicity and you being proud
+about the quality of the product. Uh I think the chat GBT iOS app is like you know one of the best apps out there. Uh
+and so we want we want to keep that. Uh we're investing a lot in you know things like delight performance efficiency
+simplicity. So there's these overall principles while still empowering everyone everyone to like try new things
+and ship very quickly. If you were to give advice to a founder about how to develop that kind of
+culture uh like what are some of the more tangible elements or practices that
+occur inside OpenAI that can kind of gives give advice uh to a founder? Yes,
+I think having having conviction um and finding a way to be to have users and
+iterate very quickly from feedback and then also uh being willing to disrupt yourself that is not as much relevant
+for founder but is relevant for you know companies like openi like we come up with new research new ideas all the time
+and being able to identify when is the right moment to go and invest in them even though it means like maybe
+reallocating resources from you know the main gig uh super important but it's very hard
+but it's super important to be able to do that. Yeah. I mean that's the exact thing that you were describing at Google. They kind
+of weren't able to do that. Um that's great. I mean does that they have a plan to be fair. It's like you know it was all it was all part of a
+big plan. Um but to me it wasn't it wasn't uh it wasn't the right place. at
+at OpenAI or or any company as it matures does that become more difficult
+to maintain that kind of culture of shipping and willingness to disrupt yourself especially when you you know if
+you have a cash cow just printing money and you have this other new thing over here that might be something cool and
+innovative. We are a very very forward-looking um and the the the
+future of AI and what it will all look like and how humanity benefits doesn't
+really wait or doesn't really care for you know whatever you have established here you know over the next month or 3
+months and so you know I think it's very important to lean in um and to you know
+just be like openeyed about where it's all going and then you know figure out like how to position yourself. So that you know you
+you you do catch that wave. Um you know even even for open it's like we we train
+models and then we discover their capabilities like we don't benchmarks don't tell you everything. We have to play quite a bit with the models
+themselves to sort of like realize uh it's like oh you know maybe we haven't thought about you know benefiting from
+it in like this specific way or like oh it can do this. Um and then you're you're just like oh that I mean that's a
+shift in like you know how we think about the product. for example, like right now like you know we we we launched the new voice uh voice and it's
+super delightful to talk to. Uh it's very natural now. It's capable of tool use as well.
+Yeah. And that changes things like now I spend a lot more time just talking to it. Um another thing I I do all the time is
+like dictation because the quality of the dictation is like so so good and it's like much more efficient as a as a
+way instead of like typing the prompt. And so in the morning I just like I sit there with my phone and I'm like blah blah blah. It's just like you know
+couple of things to do for charge and um and then it just goes and like does it it has access to all my tools.
+Yeah. Um and that is like that was not possible before we had like really good voice models and so that completely
+changes in suddenly how you think about the product. Yeah. Let's continue talking about new models, new harnesses. Um a few weeks
+ago I'm going to start with another one of your tweets because you know these are bangers. Uh [laughter] codeex will seem primitive in two to three months.
+We're about to go through another major evolution. The next generation of models need more than your laptop. Um, what
+areas, let's start with the harness first. What areas of the harness are still ripe for innovation as a model
+gets better? Yeah, so many so many. Um, so I talked about voice like one thing that um,
+right now if you're like a sophisticated user of of of Codex and you know any
+other coding agent is you sort of have gotten used to a little bit of the clunkiness, right? So you know you have
+to manage skill files and you know this is like a way to sort of like teach it stuff but it's also I think a lot of
+people have realized it's kind of like hard to maintain over time. Um the
+memory is sort of like a thing but it doesn't always remember uh everything like if you if you have sub agents you
+have to care about sub agents and it's like sort of like constructs a little network and the illusion kind of gets
+broken into v in in in at various parts um when you interact with it. And really
+what you want is just something that deeply understands you, understands your goals, understands your day-to-day,
+understands what you know your team is up to as well. And then optimally is sort of like reacts and also is
+proactive uh and just helps you in your day-to-day and doesn't break that illusion right of
+like that's this perfect little partner uh that you have and so that's what we're uh working towards. Another thing
+that you know you realize when you have very very powerful models is that your laptop kind of becomes a constraint in
+and by itself. um you know the amount of work that you can do on a laptop it was designed for humans right so it's
+designed roughly to be able to absorb the amount of work that you know you can produce or you know how fast you can
+type and how fast you could think you know how many applications you need open all these things are human constraints
+um the model doesn't have the same constraints the model can you know for example handle you know a 100
+applications opened at the same time perfectly fine you know maybe in the future and so in terms of access to
+resources is it's very clear that you know models of the future will need access to more than the resources of
+your laptop. Do you I mean I I'm guessing you're talking about cloud agents and and all of a sudden like you
+know when you have things like ultraast which we're going to talk about in a little bit when you have token speeds that are 10 I think 14 is the the stated
+number 10 14 times faster than what fast is um the the bandwidth changes or sorry
+the bandwidth constraint changes uh the CPU now becomes the bandwidth like literally tool calls
+network tool any kind of overhead in the stack becomes the the limiting factor.
+But then you know you can compensate by doing multiple things uh concurrently
+as well. And so you can you can think about you know having like maybe you know exploring on one end writing tests
+as well compiling uh you know testing a new hypothesis like all at once. And so
+then you're not then you're you're you're shifting the bottleneck around because you know you're able to do more
+uh concurrently and then you know the model can like sort of like think very efficiently and very quickly through it. With current token speeds I find myself
+kicking off 10 15 agents in parallel and that becomes a pretty significant
+cognitive overhead for me to do that context switching and just constantly cuz you're kicking it off and you can
+expect 30 45 minutes before my task comes back. Now with ultra fast speed
+that workflow changes significantly and I don't think I would be able to have 10
+or 15 agents and that might be a good thing. Maybe it's three or four at a time. How do you see the the workflow of
+a solo developer changing over time? Yeah. So I think managing your attention
+and being much more, you know, friendly to your attention is something that we care a lot about. Like after all, like
+we're trying to build for humans. We're trying to be like the build the technology that's the most empowering for humans and that requires
+building around you know your ability to multitask and you know how do you want to manage your attention and do you want
+something brought up now or is it better to bring it up in 30 minutes um and then when you have ultra fast speeds combined
+you know maybe with voice is like suddenly you're like okay you know like this thing can operate at the same speed if not faster than you and so you stay
+in the flow you get to ideulate you get to see prototypes, you know, like you get to build little reports like in real
+time and that, you know, sort of like that just feels really good. Um, suddenly you're like, oh yeah, like what
+I was doing before, multitasking like 10 agents, it's like I don't want to really go back to that. Yeah.
+Uh, and so we're trying to bring that sort of experience that is just really natural but also feels built for you,
+you know, where you don't have to adapt. The technology adapts to you. So there's been a number of I guess agentic coding
+techniques discussed over the last few months. Loops was popular, still is popular. Now I'm hearing about graphs.
+Are are these all techniques to just allow the solo developer to manage or be
+friendly to their to their attention as you said? I like that term. Yeah. So I I think about two different
+categories of of problems. It's like the first one is building the very best
+personal AGI or the personal agent that will be in the flow with you proactive
+raise important new ideas uh when it can find some be very very efficient at
+doing exactly what you want. It doesn't matter whether it's a technical problem or you know it's just more like research
+or advice like it can do it all and it's like super super tailored to you. This is like a very important thing and it's
+like deeply rooted in like you know the understanding of you as a human, you as like an individual that is unique.
+That's one category of problem like we're pushing super hard on that. The other category of problem is like full-on automation. Um you know where
+you're more building intelligent systems that can take care of like a very complex process. You know maybe
+something that did require you know does require intelligence and seems like very complex. for example, you know, going
+and looking at production logs and automatically doing performance optimizations or looking at regressions and
+automatically patching them. In cyber security, we're seeing this as well where it's like you have, you know,
+something you have a scanner that comes up with a vulnerability like can you automatically patch it and reduce the
+window um where you have that open vulnerability to like almost zero
+with without a human in those loops without a human in the loop or like you know very very minimal where you know
+you only need to approve uh a high risk action and it's like mostly an automated system
+but it's also not that much you it's not as important for you to be in direct
+control of it. Okay. Um and then so I want to slightly change topics and
+you know chat GPT and codeex have been on this merge path over the last few months. So I I guess
+first I just wanted to ask you how's that been going like how does it feel internally? What's the feedback you've been getting from your customers?
+Um it's it's really been a boon. Uh so the feedback we had initially was like
+why why do you merge them? It's like you know do you really have to do it? And it's like well the the future the our
+future models want us to be merged. So um you know we're we're just going to do
+it because it is the simple and proper thing to do where we're building this very personal super capable agent that
+can help you in all sorts of ways. This is the same this is going to be the same technology under the hood. Um it's the
+same harness. It's the same way that we think about it. It's like highly multimodal, you know, voice first, uh,
+super efficient and and it doesn't matter if you're trying to code or not. Like this this agent is capable of it
+all. And it's like the high it's like the most efficient at it. And then the interface that you want is like it should tailor itself to your needs. If
+you shouldn't decide like you know I'm a coder, I want a coder interface or like I'm not technical, I want a nontechnical
+interface. It's like there's a spectrum of people like you know we come up with labels of like a software engineer, a designer like you know these are just
+human concepts that we have invented to deal with abstractions because the reality is too complex for us to handle.
+But individuals are like they're individual they have their own they're somewhere on the spectrum and so we're
+trying to build the perfect interface that adapts for everyone. It doesn't matter if you're technical or not. It's
+just like it adapts like based on your specific indiv individuality. So that's why we went and we did this.
+But uh does that mean inevitably it's going to end up with a singular interface? No drop down selecting
+between products and it it's kind of wild to think that my mom might use the same exact interface as me and then
+obviously it'll customize to my needs. Maybe I'll need more information if I'm doing more sophisticated work. Uh but
+like what is the end state for you? That's right. It's it's the same thing. Um so you and your mom will you know use
+the same thing. Uh it will be your personal AGI. You will have very
+different kinds of tasks and utility that you get from it. You will connect it to different tools in your life. You
+will bring different ideas, different needs. Uh and then it will continue to tailor itself to maximally benefit you.
+Okay. Uh and it will, you know, do so with your friends and with everyone else. So I I want to go back to something you
+said. You used the word illusion a couple times in that kind of end state. What is the that perfect illusion for
+the the typical user? Like what what like if you can envision us a few years from now, what does the interaction
+between AI and a human look like? Yeah, it's um to me it's something that is very very tailored to to to humans.
+Um and this this is why large language models are also a success. It's like
+it's it's it's natural language. Natural language. It's like it's a human concept, right? Uh so, you know, we're
+used to speaking to each other. Like, you know, if you write me a letter tomorrow, I'll be able to read it. Um you know, it's like we we know each
+other quite a bit now. So, uh you know, it's like I will be able to sort of decipher like a little bit of the emotion or, you know, maybe a little bit
+of the nuance behind the letter if you wrote me a letter. Um and all of that is
+is deeply human. So the technology that we're building is, you know, rooted in in humanity and rooted in, you know, the
+way that humans communicate and get things done. Um, and there shouldn't really be a thing where, you know,
+you're like, "Oh, you misunderstood me because, you know, you didn't quite decipher the nuance in, you know, my
+tone or you didn't quite understand the text, you know, how I meant it." It's like that's that's um that's something
+that we're trying to avoid. And so we're trying to very much to not have you
+adapt, but have the technology just like be perfectly sort of um created to
+um to be like a natural extension of how humans already act in the world.
+When I think about communication between humans, so much of it is non-verbal. just the way I move my hands, the facial
+movements and like h how much of that do you see in the future being sensed by
+artificial intelligence or or read by artificial intelligence maybe through vision. Is that even important? Because
+what you're describing now is text only. And for those of us who grew up online, we're very used to communicating over
+text and you know adding subtleties to that text to convey what we really mean tone. Um, but like h is it still
+important to have AI be able to read our facial expressions, our hand gestures,
+and so on? I think so. Um, so when when when I think about the future of what we're
+building, it's it's very ambient. It's very natural. Mhm. Um if you know tomorrow uh or like you
+know later I go I go to my office and I write something on the whiteboard and I have an idea it's like it it should be
+capable of you know being there as well and like you know understanding or you know maybe I tell it like you know hey it's just like you know what about this
+thing and you know and then we just have a natural conversation just over voice like since we we shipped the new chat
+voice like the it's it's really taken off. So it's like the amount of users that interact with LGBT just through
+voice is growing very fast right now. And uh this is this is I think the
+lesson is like every time you sort of like lean into something that is more natural like humans just choose the the
+path of least resistance. You know as you said it's like typing on a little box like you know it's just like it's
+natural maybe for some of us but not for for everyone. And it's like definitely when you get something that is just like
+a little bit easier, a little bit better. like you know you tend to just go and use that and stuff. Yeah. Okay. I first of all
+congratulations. I saw that you posted this morning. Codeex reached 20 million users.
+I've seen the graph and and you know for a while it was like this and then all of a sudden it's vertical. So
+congratulations. I want to talk a little bit about that competition with anthropic because of course you know a
+lot of people think OpenAI Anthropic these are the two major competitors in the industry right now. There was a
+period of time in which Anthropic was kind of sucking all the oxygen out of
+the room, right? They were really dominating and then all of a sudden something changed. Uh so first of all,
+what's your read on the market today? Yeah, really right now we're focused on
+building the most capable models, building models that are highly highly efficient and then taking a lot of pride
+in building products for everyone. Um and I this is something that I think
+open AI does uh really well is caring about the world and caring how about you
+know how we are taking this very very powerful technology and like putting in the hands of as many people as possible
+and this is what you know we did as well like with merging codeex and chatbt. It was like this desire of like we have
+this we have this technology we we we can make it safer we can make it easier
+to to use uh for everyone whether you know you're like uh a product manager a
+designer in sales marketing coms all of that like you know you should be able to use all of it and then uh just very very
+quickly you know distributed through charge like where we have a ton of users already and so that's been that's been
+really driving you know this growth Earth as well that you mentioned and I
+don't tend to look at the competition that much like I really look at you know what can we do uniquely well and what
+are our values and like you know how do we maximally accelerate towards that. Okay. Um I want to maybe just dig a tiny
+bit more into that because I I know you're not thinking about anthropic all that much but a lot of other people do
+and they're they're thinking about okay which product do I believe in? which product do I want to give my $2200
+to? Um, when you look at the market position and the branding and the tone from OpenAI and just the way that it
+interacts with developers, with the broader audience, how do you see that comparing to the way that Anthropic
+does? Yeah, I think maybe again like what I care a lot about is like the community
+building for the world, like bringing everyone along. Um I think you know you can feel that in the way that we we we
+are super transparent about things like we take a lot of ideas from the community. It's just like it's also so
+much fun to be honest. Um you know because we get so much energy from it as well. Um and then this technology that
+we're building we're not building it just for ourselves like we're not just building it to accelerate um just to
+open AI. It's like it's super important. the the mission is super important and therefore it's like you know this is
+where we also get our energy from um and so it just feels to me it feels like very grounded uh it feels fun and then
+good things happen as a result of that well let's talk about some of those good things I want to talk about the resets for a second to that's kind of like I
+know it's like what everybody is you know kind of following your every tweet because of this um specifically like
+again looking at that growth curve of codeex how maybe this is a silly question. How much do those resets how
+much of it is a boon towards marketing and growth or is it was it just like goodwill for the developer community?
+I think maybe it it's counterintuitive, but OpenAI is a very it's a place where
+you can just do things. Um and so it just felt right initially to compensate
+when we were iterating and breaking things or you know maybe we had misconfigured something and it wasn't
+quite as good as we wanted and so it's like hey you know thank you for trying this product like we know like we're
+trying very hard to build it. it's like it's early days. Um you know here's some extra usage because you know we happen
+to break it you know for like 30 minutes and you know we understand this is like really important and rely on it and you
+know thank you for being a user and so this is how it started um and you know this is how I still treat it. It's like
+if we break it um or if the experience is suboptimal and we don't fully understand why it's like you know we
+will we will compensate for that. we will reset um the usage limits and then you know it turned into like quite the
+thing obviously there's a whole reset button now and like but there isn't really a whole a lot of scrutiny behind
+it. It's like there it's not done in partnership with like marketing or or finance. It's just like I can press the
+button whenever I want um whenever it feels right. Um and we have these principles that you know we're we're
+trying to build something amazing and when it is not it's like you know we will make up for it. Yeah. I I still think there's a piece of
+it that really has built so much goodwill in the community and maybe has contributed to the growth at least in a
+small part. I I think caring for your users does does a lot, right? So, um I think you can pay
+lip service and say that you care or you know you can be like we actually care and like you know if we break it like
+you know hey really sorry about it you know it's like here's here's like how we make up for it. It kind of reminds me of Amazon's return
+policy. It's like if you're not happy in any sense, go ahead and send it back. And and it you're kind of building that
+same culture or that same perception of open AI. It's like, hey, if we make a mistake, go ahead, use those tokens
+again or or you know, have here's a here's a fresh batch of tokens for you. I Yeah, I really appreciate it. So,
+and then there's also, you know, good moments where we just want to celebrate and mark the moment. And it's just there'sn't really something that we can
+give that is more meaningful um you know, at times like we always ship new features. is we will ship them
+as broadly as we can. Um but something to share with the entire community. It's like you know hey go explore this new
+thing like you know just like you haven't used ultra yet you know here's some extra usage like you know try it
+and and I heard there's an actual physical button now. Yes there is. Yeah. Okay. You'll have to show me that
+after. [laughter] I will show it to you. It's like very very cool. But with all of these resets like you can really only do that if you've done
+significant compute capacity planning. like you have to have enough compute to give all of these resets. And I I want
+to start to talk a little bit about self-improvement because um like speaking of capacity, a few weeks ago, I
+think it was a few weeks ago, there was this uh article you put out and it stated Soul had optimized Luna
+efficiency. You dropped the price of Luna by 80%. There was also a price drop for Terra as well. How much of a an uh
+efficiency gain were you able to eke out of Luna versus how much of it is like we
+just did really great compute capacity planning and and we can just drop the
+price like our margins are great and we can still we want people to use it. So like how much of it were algorithmic
+gains versus um strategic planning? We planned uh compute like way ahead. You
+know, I think if you look back two years, I think OpenAI was um kind of
+questioned for why, you know, there was like so much investment in compute. Um one of those crazy good bets.
+Yes. uh and then now we're very happy to have it like a very large fraction of the computers used for research where we
+invest in our future and you know ever ever better models and then also like the the efficiency of the models that we
+have and then the amazing thing that's happening is like when we push the frontier of capability for like the most
+advanced models that we have then we can use these models in order to figure out
+very very quickly how to serve or how to restructure uh or re-engineer our stack
+in order to gain very significant efficiency or performance gains. So we haven't just improved this is something
+that we will publish on as well. We haven't just improved the the cost efficiency, but we have also improved
+the speed efficiency. You know, outside of ultraast, things have gotten significantly faster over time. They
+have like if you plot it, it's like, you know, the amount of um just the amount of speed that you get now is like, you
+know, roughly 60% faster than, you know, what it used to be like 3 months ago. And this is
+just like we're we're just going after every part of the stack and just really
+making sure that we design it and and engineering it optimally for the kind of workloads that we have. Uh and so you
+know and the most powerful models that that we have are the ones like you know just really that make it capable for us
+to do it you know with a very small team. And so the majority of like what
+when when whenever we come up with like very significant efficiency gains and cost efficiency like our commitment is
+to just really to keep things at the frontier of performance cost um and to
+just also like you know just not just pocket you know that uh interesting gain and just make it something that we know
+we share with our customers we share with our users and that's what we did with with Luna. How how do you what do
+the discussions look like internally where you're trying to decide compute allocation towards uh researching new
+models, efficiency gains on existing models, inference like what does that tension look like internally?
+Um the we we we we usually look at things um from from first principles and
+we have like an allocation for research, we have an allocation for um for product and then within product we make
+different kinds of trade-offs but this one was u almost not even a trade-off because uh the the efficiency gains were
+there. Um so you know we were pretty much like able to use like the same compute envelope in order to you know
+serve this like very very significant increase in throughput. Yeah. So when I mean when I saw the blog
+post a few months ago prior to the price drop blog post where you guys were
+talking about one model training the next model or helping kind of optimize the next model. Um then you see these
+efficiency gains that were achieved by soul looking at how Luna was running. Uh I you know it seems to me like recursive
+self-improvement in the very early innings. What what are your thoughts there? Is that what is happening? Um
+yeah, I think recursive self-improvement is uh it's obviously a huge topic right
+now and it's most often uh I think applied to to research um and you know
+models developing other models but what we are seeing a ton of success with is
+you know using those models to develop the infrastructure that is on the critical path of using those models you
+know which is also a form of recursive self-improvement. It's all one big system. Inference stack, you know, the the the
+harder like the opt the the the the kernels, uh CUDA kernels that we use. Um
+developing new products and new ways to interact with those models that are more efficient. You know, you talked about
+cloud agents. It's like if we if we really crack uh cloud agents, it's like suddenly you become much more productive
+as well. It's like is that a form of like recursive self-improvement because then you know you have a better ability
+to get the utility from them. I I think it is in some sense, but it's much more um you know infrastructure and then you
+know being able to then take that and then point it back at itself. Yeah. And so of course like we're doing that like if we were not doing that um I
+think that would be pretty silly. Can you talk a little bit about So as we're on the topic of recursive
+self-improvement uh OpenAI Sam Alman talked about pausing the absolute frontier of RL right now I believe. Um
+can you talk a little bit about that? Like what was that decision like? And I know we talked about the hugging face
+incident briefly, but like what went into that decision? What does that look
+like? How did those discussions go? Yeah, this is this is something very much within within research where
+there's um OpenAI has always uh been able to invest uh its resources where it
+matters most. Um and as we increase the capabilities of our models, it is very
+obvious that you know the the alignment and the safety aspect of it is you know ever more important. And so having uh
+having tremendous um amount of investment there uh is is a very natural
+thing for OpenAI and like something that OpenAI is very committed to. And so we're seeing um a huge surge uh in
+investment um on this and also the
+uh the pause was sort of like necessary to uh allow like the teams and the
+individuals like just really understand and harden all parts of the system uh to then you know ensure that you know we
+could we could restart training uh with you know like full full full command and this is something that you know I
+believe OpenAI will always continue to do like when when necessary. I've I've
+not seen I've not seen us internally not able to make such decisions like very
+efficiently. Was there like some set goal in place where it was very clear you needed to
+reach this point before unpausing or was it hey we'll know it when we see it?
+Yeah, this is this is something that sits um within within the the safety team and uh they they very much this is
+like very much a a debate and sort of like a discovery process as you go. Um
+but then they did reach uh a fairly clear set of principles uh that you know
+when reached like you know we we would be in a good position. I want to go back to uh ultra fast mode that I think
+people don't appreciate what that kind of speed unlocks and so let's start with
+what use cases are you doing are you using internally that were not possible prior to having those kind of tokens per
+second. We see it used a lot when the stakes are high. Um so for example when you have um
+when we have an outage um the incident commander and the response team gets
+access to ultra fast um because every every second is you know matters. Um so
+high stake um high stake scenarios like just really weren't you know using ultra
+fast. Also um it's it's kind of like a fun thing where uh teams which are like
+either working on something very critical or believe they are working on something very critical will always request ultra fast as well. Um
+does pets fall under that? Uh pets. Yeah, pets. [laughter] Pets is not quite hyperritical. But I
+love I love my pet. It's always on my screen. uh like when you walk around uh you see like you know people's pets on
+their screen and like also when they they dial in into the the video call it's just like it always like I think
+it's very delightful and it brings me joy every time I see it but uh pet is
+not quite critical right now [laughter] um we we do maintain it um and we take good care of our pets but uh say you
+know someone is working uh on like a a new idea they have and they're like you
+know hey it's just like you know I really think this could be like something special and we have to try it
+but like you know we have to make a decision on Monday on like know whether we include this in dev day or not and
+it's like okay just like you know of course you know use ultra fast um people have different kinds of preferences on
+uh whether whether they like to be you know mono threaded as we talked about or
+multitask a lot for folks who like to multitask a lot you don't benefit as much from ultraast
+but some people it's like don't like to change context all the time. Um,
+where do you fall on that spectrum? I I have ADHD, so I like I context switch like all the time.
+It's funny cuz I also have ADHD and I actually don't want to context switch all the time. That's really hard for me.
+I want to focus on two to three and and that's why I was so excited about ultra fast. That's fascinating that you're the
+opposite there. You know, I thrive in context switching and making lots of little decisions. Um
+but you know sometimes I do want to just stay focused on like one thing and then ultra fast is just delightful because it
+just keeps you just right there in the flow. The thing with ultra fast uh that you know we we it it works amazingly well
+when there's not that many tool calls involved or it's like a lot of generation of context. So for example,
+if you're trying to prototype um a website or a video game and you know you
+just need to it to write like a lot of code um then it will do it so so quickly
+right you know 10 times more quickly but if it's a lot of tool calls like the overhead is in like somewhere else in the network or you know somewhere else
+in the agent trajectory then you know you'll only feel like a 3x or 4x speed
+up. Yeah. Um and you'll not get that four like full 14x. So I I know OpenAI employees
+get unlimited tokens and I can imagine if I had unlimited tokens I would always set it to max thinking 5.6 solar
+whatever the latest model is it and I would think kind of similarly I would always want ultra fast on it's
+like when when cost isn't on my mind I'm like okay max it out. Is that how it is internally?
+We don't we don't give ultra fast to everyone like we reserve a lot of our capacity for external users and
+customers. Yeah. Um, so O OpenAI employees have the ability and the capacity to gobble up
+all of it, right? So gobble up like all of our production GPUs, all of ultra fast is like uh you know we would use
+all of it but you know we don't like we sort of um we restrict it in a way uh
+where you know like we we we look at you know how much is reasonable for us. Yeah. So that you know we use it so that
+we understand the product as well so that we keep improving it so that we benefit from you know recursive self-improvement but um the the vast
+majority is like reserved for customers. Okay. Yeah that's good. Thanks. Um uh
+[laughter] what latency sensitive use cases outside of open AI are you most excited about
+that gets unlocked by that kind of that kind of speed? It's interesting. It's just like really
+one one thing that I'm very excited about in general is um nontext
+interactions. So um can you can you like sort of operate on a shared canvas? Can
+you create things? Can you do can you generate you know ideas and different uh
+can you generate different images and then select one and like so like know choose your adventure uh and and and
+then you know have a very quick mockup of a prototype that then you can steer
+um you know like in real time either through voice or through text and then you sort of like just see it right there. Um it's like this very creative
+process which I think these speeds allow. um where you know like as as an
+engineer sometimes you know you're just like sort of like you sit back and you're like oh I need to design this whole system I need to think about it
+the trade-offs the requirements but like you know maybe you know you can just create it in one minute and see like how
+it actually does um and then sort of like be more like in the flow and like
+you know in it things better and I think these speeds a lot yeah and so I'm assuming the ultra fast
+price is going to be significantly higher than than kind of normal speeds do Do you think ultra fast speeds are
+going to become the standard or are they always going to have a premium price point? Um, that's interesting. So, I think the
+the the same way as technology usually goes, I think it will become like more broadly and you know broader and broader
+accessibility over time. Um, the speeds at which like agents get things done
+like you know will continue to improve like we're seeing massive improvements like month after month. Um this is not
+just the inference speed. This is also the just how token efficient the models are. Like soul is like significantly
+more token efficient than terra. Next model will be significantly more efficient uh token efficient than than
+soul as you might expect. And we always pushing on that. And so things just get faster over time. Inference hardware
+like you know everything you know just like we continue to uh innovate there and it gets faster. So I do think in you
+know maybe a year or two these speeds will become you know maybe if not the default like very close to the default
+but then I do also think you know you will always have like the one tier up um
+where you know you can always use more hardware you can always do different trade-offs that are like more costly um
+but that just kind of give you something something extra. So TBO the the last question I usually
+like to end on uh is is for a broader audience. There are a lot of people out there who are quite nervous about AI,
+whether it's uh job automation, environmental impact, um or just kind of
+this this thing that's happening. It's and it feels quite foreign. What words of encouragement would you give to the
+the broader audience? Yeah. So we we we really build for the
+world with with Chhatri and we are very very much um
+investing in you know how efficient it is and you know this is directly aligned with like you know broad access and
+broad utility that we provide. So the cheaper it is you know to serve like you know the more the more you can do with
+it um the more you get out of it in your daily life and it has gotten very very
+efficient like if you look at uh you know Luna for example like it's it's a much smaller model it is u it is
+incredibly efficient but like if you rewind six six months ago it would have sat at the frontier. Yeah.
+Um and you look at the cost of Luna right it's like you know it's like it's it's it's crazy cheap.
+It's it's um it's phenomenal. Right. It's like a kind of You just did that thing with Reply. You're giving it away for free now. They're giving Yeah. They're It's just
+like on on on on um in this free mode, right? Um which is like wow. You know,
+it's like this access to incredible intelligence will become like ubiquitous. Um and it's only possible
+when you push, you know, you push the efficiency like you know like month after month after month, year after year. And so I think you know whatever
+was like you know is a frontier now is like you know will become like way way cheaper to run in six months. And so
+this is this is like my uh sort of you know this is how I would answer this
+question is just uh technology has a way to become like you know very very efficient over time.
+Um and we're very focused on like you know very broad access and we're optimizing for you know the utility that
+you get out of it directly. How about for people who are apprehensive to even try AI for the first time? Like what
+what are you telling them and and how how can you paint them picture a vision of the future in which AI is is helping
+the world? Yes. Um I think it's you don't have to look very far like Judge PT helps um
+people in very personal and deep ways like a lot of um a lot of our users use
+it for help in writing but also like you know for personal advice or you know medical advice like we we launched um
+health and finance and you know I I I I use them super regularly and uh I I feel
+like I get like a lot of uh support that I otherwise like you know it would be hard for me to get and it allows me for
+example to be more informed when I go see my doctor. And so you don't you don't need to go very far um you know to
+kind of see the utility that it can provide. Just I think you know talking to others and then you know getting
+inspired by you know how others use it and benefit from it is like a great way to you know just maybe um like start
+considering how you could benefit from it. Well Tibo, thank you so much. Thank you appreciate your time.

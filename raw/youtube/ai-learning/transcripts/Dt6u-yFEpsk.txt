@@ -1,0 +1,127 @@
+So, if you're anything like me, you're probably drowning in work right now. And in this video, we're going to be talking about 10 AI agents that will help you win back so much time every single day.
+Let's dive into this right now. The first AI agent that I want to showcase is connecting ChatGpt into an NAN AI
+agent, allowing you to integrate this NAND AI agent into tens of thousands of applications. All the ones you love are
+going to be listed here. And that way, for instance, chatbt could perhaps create events on your Google calendar.
+So, let's go ahead and let's run this scenario and give this a shot to see how it works. So, I'm going to say, "Please create me a calendar event for tomorrow
+at 2 p.m. for 1 hour with Joe." It's going to follow up with a couple questions just to make sure that it has all the information. I'll go ahead and
+say, um, coffee with Joe. Send it off.
+and it's going to talk to the connector, send that over into NAD, which is going to receive the request. It's going to
+call the AI agent, create the event, first check for conflicts, and then it's going to send that back into Chat GBT,
+letting us know that we have confirmed the event. How freaking cool is that?
+Now, we have even the calendar invite right here. So, it's a two-way communication back and forth with NAD from chat GPT. We can also take a look
+at our calendar and see that that is in fact in the calendar. Now, all of these blueprints that I'm going to be showing today, including the one that you just saw with chatbt, are going to be
+absolutely for free. All you have to do is go into the description of this video, and there will be links to other videos, which will contain the blueprints. With those blueprints, you
+can just go in. It'll give you all the step-by-step instructions you need to download them, and then you'll have it absolutely for free in a matter of a couple minutes. Okay, let's move
+forward. The next one that I want to talk about is web scraping. So, uh, with this AI agent, you can web scrape tons
+of different sources. For for instance, you could web scrape information from Tik Tok or Instagram or Apollo or Yellow
+Pages. I don't know how many people use Yellow Pages anymore. Um, but yeah, anyways, if you still think you're in the 2000s and you want to use Yellow
+Pages, that's an option as well. And so bottom line is is that instead of having to manually come in here and find emails and phone numbers from all these
+websites, you can just do it automatically. Now Apollo is a lead database source. So you can find like CEOs here. You can find the head of
+marketing departments or whatever department. They're all going to be located here with their email, phone number for you to contact them. And then of course yellow pages, social media,
+all that kind of stuff. So we can go ahead. We can give this a shot. I'm actually just going to pull up my last message here, paste it in, and demonstrate this in real time. So, we're
+going to web scrape five leads from Google Maps. It's going to call this sub agent, which web scrapes data off of
+Google Maps here, and then it'll place it in real time onto this Google sheet just down below here. And then it's also
+going to return, and you can see it just came in here. We just got two additional listings there. It's also going to return that message back to me via um
+via nad. Now, in this instance, it just gave me two. And the reason why it gave me two there was because I had actually had a set a hard limit here just for two
+searches. And I always like to test with really small sample sizes because otherwise if you set for like 10,000, it can add up uh in expenses really really
+quickly. So, it's just better to test with small amounts of data. Okay, moving on. The next thing that we can do here is we can act uh we can have this AI agent act as a outbound voice AI caller.
+So we could message telegram and then we could say hey I want you to call this person for me and it'll actually go ahead pick up the phone give that call
+on your behalf which I think is freaking awesome. However, I just want to uh preface by saying that this technology, while it's super cool, it is in its
+infancy and I don't think it's like nearly as good as a human color caller and it won't be for quite some time. And
+for that reason, just kind of be careful if you're using it because you're going to get potentially not as good of results as if you just made the the call
+in the first place. However, in the future, I think that this technology has a long way to go. So, um we'll we'll we'll see how it uh unfolds over time.
+I'm going to go ahead and test this out.
+So, first things first, we're going to schedule the call and we're going to wait until the call is completed and then continue the workflow. You can see the call is coming in on my phone.
+Hey, I'd like to book a hair appointment. Hey, of course. For what time?
+I'm looking to book an appointment between 12 p.m. and 2 p.m. on Thursday if possible. Okay, we have also if available. Sorry. Continue.
+No problem.
+Additionally, if it's available, Jono prefers to have an appointment with Sarah as the stylist. If she's not available, any other stylist works, too.
+Okay, perfect. Sarah is available at 100 p.m. Does that work for Jono? That sounds Let me quickly check Jono's
+schedule to make sure. Just a moment, please. Okay, no problem.
+I've checked Jono's schedule and 100 p.m. on Thursdays. Let's go ahead and book that appointment with Sarah. Can you please confirm the date and time before
+finalizing? Yep. It's going to be Thursday at 1 p.m.
+Great. That works perfectly. Please go ahead and book that appointment for Jono. Thank you for your assistance.
+Will Jono receive a reminder of the appointment? Yeah. How should I give him a reminder? Should I give him a call or
+a text message or a text message reminder should work just fine? Okay. And thank you for your help.
+Can I text back at this phone number?
+I'm an AI language model and I don't have the ability to receive text messages. However, you can certainly reach out to Jono at the number he provided when he made the appointment.
+Thank you for your help. Goodbye. Okay, thanks so much. Bye-bye. And so it's uh it's pretty cool. I I don't think it's
+like perfect. I think for simple tasks like this, it can do the job, but like on a really complicated customer service
+or sales call, it's not going to do the best job ever compared to a human. And so, um, anyways, I think that's cool.
+And then it sends it back and this workflow is completed. Now, I'm using Vappy to complete this. This is an AI,
+uh, voice calling application if you guys want to give it a shot. The next one is my project inbox or project zero inbox workflow where essentially when
+emails come in, this agent classifies the text into a category. So for instance, it classifies it into promotional emails like those emails
+that you got on your birthday being like, "Hey, happy birthday. Spend $100 on my stuff because this is like a birthday gift to you where I'm going to
+give you like 2 cents off." or social emails where you just get like 10 billion messages from Facebook where it's like this person liked your photo
+photo or whatever and you immediately want to disable because it's just so annoying or personal or sales or recruitment all this kind of stuff. Cool
+thing is is we can automatically label it. Here's an example in my inbox here.
+So we can label it and then we can keep it in the general inbox here like I have for some messages or for other messages you can just remove it from your inbox
+entirely. You can also create draft emails. You can forward those emails to your accounting. Like I have an accounting software where I forward all
+the invoices into. That's really useful if there is an invoice. So we'll filter it to see if there is and then send it over. And yeah, we can also send
+ourselves notification or send myself notifications in Slack in case something important comes up. So I think that's pretty cool. That is one of the AI
+agents I use every single day. The next uh AI agent that I want to go over here is actually receiving things like PDF
+invoices or like image receipts like a receipt of a an image of a receipt and then we can process that and then send
+that into something like this Google sheet. We can actually extract all of these particular line items here from a
+receipt or from an invoice and then pull that uh pull that out and then put it into a Google sheet. And so what I'm going to do here is I'm going to test
+this workflow. Going to I'm just going to actually remove this pin here and
+we're going to start again and I'm going to open up Telegram and send a message off. So, first things first, I'm going
+to upload a file. And that file is going to be of this receipt here. Going to say, please upload
+this image of a receipt into Google Sheets. Perfect. It's sent off. It's
+firing. It's going to the sub agent, which is the image processing. It's going to essentially abstract or take
+out the text from that image. It's going to process that, pull out the line items from the text, and then it's going to put that into the Google sheet here.
+Let's just go ahead and see this information coming in to the spreadsheet from that particular receipt that I uploaded. I think that's really freaking
+cool. And of course, you can do that with PDFs as well. The next AI agent that I think could save a ton of time here is a personal assistant. So, no
+longer do you have to potentially spend 50 grand on hiring your own personal assistant when you can get Telegram and Naden to do that for you through this AI
+agent. Essentially, how this works is we just message Telegram here. And we allow it to do whatever it is that we want it to do. And this is just a couple
+examples here, but it could make calls on our behalf. It could manipulate our calendar. So, like create events, update, delete, search for them. Could
+handle our Gmail account. It could post social media event or social media posts. It could handle our to-do list.
+It could deal with contracts or invoices or whatever. So, obviously, really powerful stuff. I'm going to go ahead and test this out. So, I'm just going to
+wait for the trigger. And I'm going to say, "Please add to my to-do list to go
+shopping tomorrow at 2 p.m. for groceries." let's just say and send that off. Circling back, the AI agent is
+processing it, sending it to the to-do list over here. And if we come into the to-do list app, we will see the grocery
+shopping item just appeared. Now, I could go back, edit this, change like the priority, I could change the sign or
+whatever the case may be. All of this stuff can be updated over time. The next thing that I want to talk about here is adding an AI chatbot onto your website.
+So, for instance, take this beautiful, stunning website that took me forever. Took me like a week or two to design.
+Honestly, I think it's like a good minimalistic trend here. I don't know.
+Tell me what you thought what your thoughts are in the comments down below.
+But, um, we got this AI chatbot right here and we can just chat back and forth. So, I could be like, "Hey,
+Nathan, it's a pleasure to meet you." And yeah, we could just have this long drawn out
+conversation where I express my entire life story. Nathan tells me his life story. Um, but you know, I'm just teasing you, but like there can be so
+many things happening here. We can ask address frequently asked questions. We could send off things like invoices or we could book follow-up or book
+appointments or whatever the case may be. So, this is a really powerful way to automatically message clients back and forth and get them the results they're
+looking for. The next thing that I want to talk about here is a rag system. So, this is a two-part process. The first part is essentially pulling documents
+from Google Drive. So let's say you upload documents to Google Drive like this contract here. We can take this okay we can extract text from the PDF.
+So we take all the text on this document here and we turn it into just like a text file instead of PDF and then we dump it into our vector store here.
+Okay. Why this is important is because this database here is a database that is trained on everything to do with our
+company. So we could put in things like our contract so that it knows exactly how much we charge it. We could pump uh dump in here like things like our
+standard operating procedures, any other documents, any contracts, any text
+messages, invoices or or whatever, right? Everything about your company can be listed here. anything that you'd at
+least want to train an employee on and then it can recall this information so that we can communicate back and forth
+with our clients such as in our CRM. So for instance, if I as a MC client here sent in a text message which we'll see
+coming in in real time saying hey what services do you offer? It's going to call this AI agent which is going to query the database to take a look at the
+services that we actually offer in our vector database which is all the information stored on our company which
+will then send that text message back to the client. Like we can see here we offer DJ photo and video services for weddings. It' be great to chat if you're
+available for a call. Now moving on here the next AI agent that I want to talk about is connecting it into something
+like lovable.dev. Now lovables.dev Dev is a vibe coding app. Essentially, you can code an entire application just by
+writing in natural language like, hey, I want you to create me whatever, a prototype or an internal tool. And so, I've gone ahead and I've done that by
+creating this um nice little social media widget here, which will allow people to essentially plug in information about their company, and
+then it'll build out a social media piece or content calendar for that particular person. Now, this isn't entirely an AI agent, but I wanted to
+put this in anyways because this would be a great opportunity to build in an AI agent where all of a sudden you could have a custom software app that you
+built out in 5 minutes. Nobody would ever know that. They'd be like, "Man, these guys spent like years building this tool out, but in actuality, it was like 5 minutes." And uh you can have an
+AI agent that receives that message and then maybe just acts as like your own internal chatbt that answers questions
+or answers users queries or whatnot and then delivers a response back. And so even just like a simple AI agent like
+that built into a custom web app would be um would scream high authority to me at least as a consumer if I saw that
+especially in like a service-based business when you never expect that kind of stuff. That would be really really cool. So, wanted to kind of bring that up. And the last AI agent that I want to
+go over in the top 10 list here is cloning yourself. So, this is more like I guess a nice to have where you can
+essentially put your the response in an audio message and then send that back to yourself so that when you're communicating, you're getting audio
+messages back with your own voice. How this works is we're using 11 Labs over here. and 11 Labs, you can essentially
+voice clone yourself so that when you get a message back, it's like you're speaking to yourself, which is cool.
+Also a bit creepy, but uh I'll kind of play the audio so you can hear what it sounds like. Trains carry our hopes on pathways
+of progress. And so it's not like 100% perfect, but it is pretty close to my voice. And I think that's just really cool. So I wanted to throw it in there.
+Thank you guys so much for watching. I hope you found a lot of value in this video. If you did, make sure to hit that subscribe button down below if you
+haven't done so already. It always blows my mind that uh approximately like 80% of the people that watch my content are not actually subscribed to me yet. That
+always like blows my blows me away. So, if you haven't done so already, highly recommend doing that. It would help me out tremendously. Um and also just, you
+know, you'll be in the loop with future content as well. And as always guys, if you guys are interested in learning more about AI and automation, I highly recommend taking a look at my school
+community over here where it's designed for two types of people. Those looking to automate up to 80% or more of their business. And I'll show you the exact blueprints that I use to automate my
+business as well as for those looking to build out an AI automation agency. I'm just going to give you the quickest path possible to get up and running and start making money online with AI automation.
+Thanks as always, and I'll see you guys in the next video. Bye-bye.

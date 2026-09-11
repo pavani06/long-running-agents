@@ -1,0 +1,297 @@
+>> Thank you so much for being here. >> Thank you. I think my last time I was in this building was like a rave.
+Has anybody been to like an EDM show here before? Raise your hand. We have a couple. We were probably the same one.
+>> We were talking about that before. >> Oh, really? >> I think a lot of folks in our team have been here mostly for that. >> This is a very familiar venue.
+I was doing some research on you before looking at your tweets. You're a prolific tweeter.
+How do you do it? It's funny. Prolific tweeter is sort of one of these backhanded compliments.
+No, it's a full-on compliment. OK, it's like, do you want to be a prolific tweeter? I don't know.
+I basically just tweet what we're running into at Box
+and what we're seeing when we're building agents and working on AI — what I'm hearing from customers, from the market, and from whatever is in
+the zeitgeist that sort of resonates. So unfortunately it's a pretty boring framework.
+It's just like, you know, a couple times a day, whatever I think is happening in the world. It's a couple times a day, but it's a bunch of paragraphs and it's all spot on, like
+very in tune with what's going on in the ecosystem. I'm in awe. Thank you. I mean, I think most people know how to write, so you can all try this at home.
+So just try and type a couple paragraphs and just see what happens. It's so funny because I definitely got a C plus, probably,
+in English in high school. But everybody thinks that I write a lot. And I was like, I don't know.
+You can either write an email or write a tweet. Might as well write a tweet. Do you use AI for your tweets at all?
+No. All right. Well, I think you're definitely one of the most-- And some of my tweets make it very obvious,
+because I'll look at it later, and oh my god, there are actually like up to nine mistakes in this tweet between grammar and spelling.
+So it's definitely like proof of human work. - Yeah, you almost have to add that in on purpose so people know it's not AI.
+- Yep, in this case, it happens fully organically, so.
+- I think you're one of the smartest people in terms of what it takes for enterprises
+to actually adopt AI. And I imagine this is because you work with a number of them daily.
+What advice would you have for enterprises who are thinking about this? I imagine everyone's thinking about this.
+- Yeah, and I think — just to point back to the first question —
+I'm super lucky because this has been true basically since the founding of the company.
+You guys live, I think the same world, probably many folks live in this world as well.
+We get to be in the tech industry, in Silicon Valley, sort of seeing the breakthroughs of what's happening
+in AI today, but previously it was for us, it was cloud computing initially.
+And 
+71
+00:02:56,120 --> 00:02:58,540 that we had when we started Box,
+which was there's these breakthroughs happening in tech, and in this case it was the early days of cloud
+and cloud infrastructure and all that, but to translate that to the regular knowledge worker
+or regular enterprise, there has to be some bridge. You have to have simple interfaces, they have to be usable by end users.
+There's got to be a way to package up this infrastructure in a way that makes sense for use cases. And with AI, we're seeing the same thing —
+incredible breakthroughs happening  Model progress is absolutely insane.
+Infrastructure and framework and the kind of surrounding scaffolding is kind of progressing at an incredible rate.
+But most enterprises in the world have to have some kind of bridge of how do I get access to this in a way that's relevant to my use cases and to my organization.
+So I get to spend a lot of time with especially large enterprises, but businesses of all sizes across industries.
+And we get to kind of see like what's happening in their organizations as they go and adopt AI and as they try and bring all this amazing technology
+to their organization. I think it's probably what everybody here is experiencing, whether you're building a product for the enterprise
+or you're in an enterprise yourself. And maybe it can be netted out to this:
+we have this insane progress we're seeing in things like AI coding in particular. We're all using agents for developing code,
+and we all see every day the full potential of what happens when an agent can run loose on a large task
+and a large project. And then we look at the rest of knowledge work and marketing and sales and finance and research.
+And the big question is, can we get those similar gains in all those other parts of the organization
+in these business processes that are in domain-specific or industry-specific areas?
+And that's the main question that I think is on the mind of every single enterprise, right? We all as technologists are using this in our daily lives.
+Our colleagues that are maybe not in tech are using it in their daily lives, but more for a chat,
+sort of basic interaction. So the big question is when and how do we get these full, agentic workflows deployed
+across the rest of knowledge work? That's kind of the topic that takes up the mind share of I think most enterprises today.
+And again, some of it is then building this internally, figuring out how to do it. Some of it is working with partners and vendors
+and providers to make that happen. - Yeah, I mean, on that, like what is the answer to that question? What is working?
+- I purposely left it rhetorical because I think we're figuring it out. But the tricky thing is —
+I don't know how much this will resonate — 'cause I think being in tech, so many people here, it's like you have to kind of step out
+for a second and think about this. Like, when you think about the full amazing power of AI
+coding agents, it has sort of like every great property going for it, right? The models themselves are hyper-trained on code,
+because that's a plentiful content type on the internet. The work itself is verifiable, so you
+kind of know if the code worked. And so that helps both in the RL process and the actual kind of when you're using the agent
+to do some work. The users are hyper-technical by definition. And so when the agent does something and it goes wrong,
+you know how to fix it. Or if it says I need access to a data source, you generally have the ability to get the right MCP server
+involved in that workflow. You know that when you're in a coding agent
+and it's like, hey, I need to download this CLI from this vendor in this package, you have the wherewithal to say yes or no
+based on that situation. I was, as a brief aside, my dad has gotten into coding,
+but he's not historically a coder. He is kind of good at Excel and data science stuff. And I was just watching him use Claude code,
+and he was just like, yes, download that package, and yes, and like, for sure, for sure, his computer now is full of malware.
+Like, there's just no chance. Every NPM attack we've seen in the past three days, like he's got every one of those.
+So — sorry, Dad, wherever you are — this is what a lot of teams adjacent
+to engineers are gonna experience and then imagine if you're even more adjacent and you're like just in, you know, you're in marketing and you're in sales,
+all of that kind of technical complexity. And that's a real problem. And then you actually have a kind of a pesky problem
+that is so boring to talk about, but it's just so real. When you're an engineer, you generally have access — via the codebase —
+to most of the data and context to work within for whatever you're working on.
+And permission structures on codebases generally are fairly wide open because you just 
+187
+00:07:39,800 --> 00:07:41,820
+need access to the codebase to do whatever you're doing.
+In knowledge work, that's just not the case. Every single individual and every single team
+within an enterprise has a different permutation-- different permutations of what data they can access.
+And so by definition, agents also have those same permutations, which just multiplies the complexity of when an agent goes
+and does a task. So think about all those things that we just said. So the work is not as verifiable as code.
+The models are still working on getting better at these non-coding domain tasks. The users are not as technical,
+so getting the full universe of things they need to plug in to make these agents work is obviously harder.
+And they don't have access to all the data they need often to do the work that they need. And so agents, again, inherit that same level
+of lack of access, which means that, you know, as a knowledge worker, you can just go around and say, "Hey Sally,
+can you give me access to that thing?" But an agent doesn't have that same ability to navigate that complex paradigm of like, well,
+what does an agent do when it runs into a limit of what it has access to? So this is the gap.
+And so the question is: how are we, as an industry, going to bridge that gap?
+And so I think you're starting to see some of the makings of examples of where this might work.
+So first of all, highly domain and vertical specific agent startups are emerging. And that's one great thing, because now you can basically
+say, you know what, we can deliver this in a really kind of purpose-built way.
+So we can dramatically reduce all of the issues on, how do you get the context of the agent?
+Well, we know the domain, so we already have a leg up on that. How do you get the right data to the agent?
+Well, here are the set of MCP connectors that we're already going to work with.
+There's usually some version of a forward-deployed engineer in that workflow. So already you have people that are going to be wired to that vertical that can help support that.
+So I think on the startup side, I think this creates an incredible opportunity if you're doing domain and vertical specific, you know, agent work.
+And then on the enterprise side, it's another sort of advantage which is you understand your enterprise better than any outside vendor.
+So it also creates an opportunity for how do you go and bridge these agents and this technology into your organization.
+And that's another set of, I think, roles and interesting opportunities that we're starting to see emerge, which is,
+like, OK, does your technology team have an AI agent sort of internal forward deployed engineer?
+And how are they setting these things up? So that's a little bit of the early things that we're seeing.
+But I think we have to be in for many, many years of diffusion of this technology.
+And we're going to have this huge cognitive dissonance between the extreme capability of AI coding agents
+that just are continuing to go hyperbolic versus what we're gonna do in the rest of knowledge work because of all those issues that I mentioned.
+And we're just gonna be in for years and years of deployment and change management and adoption
+and that's I think what we all have to kind of collectively sign up for. And oh by the way, it's just a brief asterisk.
+It's also why the doomers are generally gonna be wrong on the takeoff because of the sort of rate of diffusion
+of how this is gonna actually enter organizations. - How are you guys at Box thinking
+of tackling that with Box agent? So that seems to me to be horizontal,
+but you're already building upon a pretty solid data layer. And so how are you guys thinking about that? And how are you thinking about bridging the gap?
+- Yeah, so I think we're a little bit in this quasi-interesting territory 'cause we're horizontal.
+So we don't have the level of domain specifics of insurance and banking and legal, et cetera.
+The thing that we have domain understanding on is enterprise content at a horizontal level and how to work with things like file systems
+and how to handle all the ways that agents and models need to understand working with our file system
+and working with enterprise content. And how do you create a pipeline of making sure your data is sort of ready for agents in a secure way,
+in a well-governed way, with the right access controls and the right sort of security and governance on that. And so we do a lot of things well before we even
+think about AI to get enterprise content or unstructured data ready for AI. So we have a whole document conversion pipeline
+that turns your content into a variety of file formats that agents work well with. We also do a lot in the
+security and access controls area. So that's a lot of the kind of core plumbing. And then with the BoxAgent,
+its job is to be an expert at working with enterprise content. And then it needs, obviously, the context of that workflow.
+So it's going to need either skills or custom agent knowledge — what is your business
+process? What are you trying to automate? And that looks like, I think, anybody else's agent
+that you'd go build. Or we'll plug into a broader agent. So via our MCP server, we'll plug into a Harvey or a Claude
+for legal. And then that will obviously take on the domain-specific sort of understanding.
+- You had a lot of this core plumbing around permissions and governance before agents. Have you seen that it's changed because of agents?
+- Yeah, there are a bunch of things that we've benefited from — sometimes
+we got lucky, like we made an architectural decision 10 years ago that we obviously made it for people, but we equally get the same kind of gains
+within a world of agents. Like most companies, we've had
+our deeply religious battles on things like: which JavaScript framework to go with,
+and which database to use, and that's obviously the classic engineering battle that would happen.
+We had years and years of those same kind of incredibly intense battles on things like,
+how do you design a file system, and how should the permissions architecture work? And so we benefited from incredibly intense
+sort of processes and ways of making decisions to ensure that we had the most amount of flexibility.
+Again, more for people use cases, sometimes for application use cases, but now we're benefiting from the fact
+that agents get all of those benefits as well. So within Box as an example, there's not two ways you can store files.
+There's only one way you can store files. There's only one canonical ID for every object in the system. There's only one governance model.
+So we, you know, versus many of our kind of, maybe legacy competitors where there's like three different ways that data could show up in the system.
+It's a single file system, it's a single governance model, a single permissions architecture. So agents get the benefit of all of that.
+Then there's some areas where we've realized, oh, we probably do have to evolve the platform.
+Our search engine needs to take in different signals because the agent can now consume 100 times
+the search results as a human. So if it can consume 100 times the search results as a person, then you might need to rank things differently
+or maybe ranking is less important than just context in the search results because then the agent can do its own ranking.
+So we've had to do a bunch of tweaks to our search engine as one example. We've had to do a bunch of things
+where in our document pipeline, we have to convert data in an agent-ready format. So we have an API now that will take
+basically any content type and turn it into markdown. So some things that just make it so our agent
+or any external agent can work with this data much better. - You mentioned before that you have an agent inside of Box
+and you expose that via MCP. And I think you guys also have just regular search endpoints over MCP as well.
+As you think about company strategy — do you have a strong opinion of how much you want people
+to be consuming box AI in the box AI interface versus via MCP?
+- We have sort of like what we wish would happen and then we're also realists.
+Being in enterprise software,  you kind of know that ultimately the customer's gonna win.
+There's very few companies that can kind of hold out from overall customer trends and whatever
+that kind of mega trend is. So I think, and this is probably something that every single one of the software players
+has to face right now, which is, when does your agent experience show up versus when are you headless?
+And even headless takes on two forms, 'cause it could be our AI being headless, or it could just be our regular APIs being headless.
+And so that has its own kind of set of dimensions to it. But the way we think about it:
+we have to get insanely good in our harness at things
+where working with content is the most important thing,
+where being token efficient is the most important thing, where having the right choice of models
+is the most important thing. We've got to be the best at that when it deals with enterprise content. So we have, for instance, an agent that just
+does document extraction. And we'd like to think that document agent will beat any horizontal system
+that you could send that problem to because we're just hyper wired to that. We have our own evals for that.
+We only work on that problem. Conversely, if you're just working with, you know, Claude Cowork or some other or ChatGPT
+and you want to have content show up inside of that experience, then we know that that's going to be 100% headless
+and that'll be driven by whatever  the customer decides to roll out to their organization.
+And we are completely indifferent philosophically to either of those approaches that the customer wants to do.
+I think that's what we all are going to have to sign up for if you're building software, is you should just expect that you should create
+a world-class experience within your product, and you should create world-class APIs that any external system can interact with.
+And by volume of system usage,
+it's mostly going to be headless. But for people doing a bunch of work,
+they'll often be in your interface or agent directly.
+- Yeah, Salesforce recently exposed all their APIs headless —
+and that's definitely—
+- And that was a pretty big symbolic moment.
+The world's largest SaaS company fully endorsing that headless is the future.
+I've already used their headless MCP a ton of times for ways that previously, interestingly,
+this is the bull case for all of this, I've used their MCP server now for tasks that were
+both more complex and much higher volume than what I ever would have had an internal analyst
+go do. And this is the Jevons paradox of all this —
+there are lots of things where, when you're inside a workplace and you know, that's a person who's going to spend
+five or three hours on this project — Is that really the most important thing for them to go do versus everything else that they're gonna work on
+whereas with an agent I don't care, other than the token costs. So I give tasks to a variety of agents all the time
+that I wouldn't have asked a person to do, but it ends up doing useful work for me. And so Salesforce MCP server is a great example
+where I'll just hand off some market research, and it'll go and do maybe 20 minutes of work
+that would have been the equivalent of hours of human work that I just absolutely would not have ever had somebody else go and do.
+And that's the example of now the new surplus of what we're gonna start to see is you'll just use these systems, 10x or 100x more,
+depending on how valuable that data is  or where it shows up as being value-creative for the organization.
+- Yeah, that's interesting that you say that, 'cause I think there is a bunch of fear around being headless and getting disintermediated
+or having other people drive it, but it seems like it's just driving more usage. - I think there's some areas where I can appreciate the fear.
+There's not a perfect quadrant, maybe you guys could publish one so we could all like know what's gonna happen, but there's probably a framework of:
+is this type of data sitting on top of unsaturated
+use cases in the enterprise? Like if that data could be unleashed at like,
+you know, for everything, how much more would it get used? Versus there are some data sources where,
+where no, like even if you could throw any amount of compute at that, I just don't need to do more with that information.
+And I think we haven't yet figured out how to parse what types of systems could you really use,
+you know, a ton more versus which ones are kind of already meeting their set of needs with. And that will help us figure out
+what things are a huge opportunity versus just neutral.
+You talked a little bit about your harness for knowledge work and document intelligence. We also talked about coding agents
+and how those are taking off pretty rapidly. How much do you look at coding agent harnesses for inspiration around what your harness should look like
+and how similar do you think they'll end up being in the long term? Yeah — and what you guys are doing with Deep Deep Agents is to me right on point.
+because if you think about it, and I was late to this conclusion,
+and I've only sort of seen the light maybe in the past six months on this, but I think you guys were super early
+and a bunch of folks were early, which is like these agents will always be better at code
+than probably everything else. So if they're always better at code than everything else, then we should probably start to use that as an advantage
+in everything that we're doing agentically. And guess what? It turns out that if you're really good at code, then you're probably also really good at tool use
+using MCPs and writing code on the fly to perform some kind of action. So we should probably take advantage of that.
+And this is an imperfect analogy, but to some extent it's sort of like, what if every knowledge worker or domain in a business
+had an unlimited supply of engineers right next to them to do whatever they are trying to do,
+now essentially for free, turns out it's becoming probably more expensive than people.
+But we thought it was free. So we need to figure that part out. So God bless Nvidia for that problem.
+But basically, if you imagine your social media manager,
+or your performance marketer, or your sales system analyst,
+if they had an engineer full time next to them, what would they have them go do? Well, you'd probably say: I'm going to wire up the most wild automated marketing campaign.
+I'm going to pull the best customer intelligence from all my data systems
+and surface it to my sales rep. So what are those? Those are coding tasks that, if we had expendable engineering resources
+previously, you could have put an engineer on that and you just never would have because we don't have expendable coders in organizations.
+But now you do. And so the idea of take a code harness, make it really, really good now at non-coding tasks.
+I mean, they're coding, but they're not for engineers. They're for knowledge work. That kind of becomes an interesting primitive
+that sort of makes sense across all of knowledge work. And oh, by the way, we're now seeing this with Codex as a super app, or seeing this with Claude Cowork.
+And until proven otherwise, harnesses now
+make sense to be these expert more than just coders. They should have a computer. They should have a sandbox. They can write code and run code in.
+They actually obviously need connectors to all the different systems that they're using. And then there's an overlay of what makes them
+more than just coders. And that's either the vertical or horizontal domain expertise. So in our world, we spend a lot of time in our system prompt
+and the various parts of the harness. We spend time making sure that our agent knows
+about file systems. How do you peruse a file system, and when should you use a search tool versus when should you navigate a folder path?
+And it's like a really interesting problem Because if you just searched every single time, then often search doesn't tell you the surrounding
+environment that something might be within. But clicking a couple folders deep, you all of a sudden get that information.
+And so you actually need to know like what is the type of task I'm being given and should I be doing a search to find the single document or should I be going
+through a folder tree to find the sort of workspace that everything lives within. And so we spent a lot of time to make our agent really good
+at those types of things. And then obviously that needs to then show up in a vertical specific way, because you can build a custom agent and so on.
+But I think everybody is going to have some form of that. But it will be basically built on the backbone of a coding harness.
+As you guys think about building these agents, how do you think about model selection choice for what to use?
+And do you use multiple models in one agent run when I'm interacting with BoxAgent? Will it call multiple under the hood?
+We do with some asterisks. There are some penalties,
+like with prompt caching. And so it's like, I think we're trying to figure out
+even what's our best version of hybrid on that. But I do think this is going to be a fun back-and-forth
+ping-pong in the industry right now — on one hand, you could go to a harness that is sort of purpose
+built for a model. And by definition of its purpose built for a model, the model provider
+is going to be more oriented toward token maximization, not even necessarily in an explicit way
+— they just wouldn't inherently care
+to make it token-efficient, since that's not core to their business model. And obviously, it's gonna be wired up
+against effectively one model. And so, for everybody who's not a frontier lab,
+you're probably doing things intentionally to be multi-model. And if you're multi-model, what are the benefits?
+One, different capabilities from the models then become useful. So one model is better at coding, another is better
+at legal contracts, another model is better at looking at an insurance claim document. OK, once you have evals, you can kind of know that.
+So that gives you one advantage of being neutral, is sort of capability differentiation.
+There's a performance differentiation because I can be like, okay, Gemini Flash is faster
+than Opus 4, and so there are some things that you just want different types of workloads
+being applied against, and then there's finally cost, and cost might become the big story in the next three years.
+And so if cost becomes the really big story in the next three years, then what's gonna happen
+is actually sending these tasks to the most general purpose system is going to basically average out your costs.
+Sometimes you'll do it efficiently because it just happens to align with that system.
+And sometimes you'll be spending way too much money for that task. And so I don't know when and how this happens,
+but there's some threshold-- another graph you guys should publish. It's a great idea.
+Yeah, I was taking notes. I don't know if they are. They'll probably be like your worst tweets. There's probably some threshold where the cost savings
+of the task become worth having a dedicated harness to. And we're all kind of figuring out where those points are.
+So if you were to go do an insurance claims process, and you were going to go and automate that as much
+as possible and either generate $50 million more per year
+or cost $50 million per year, but it's either big upside or big costs, then probably there's
+some point in the threshold where it'd be better for you to be hyper tuned to the right model, the right capability, the right custom instructions
+for that workload. And because that could net tens of millions of dollars of either more revenue or more cost savings.
+And so not every workflow has that. Me just chatting and trying to figure out like how do I summarize the document
+doesn't really have that component, but a really heavy duty workflow will. And I think that will mean that over time,
+as you have frontier intelligence that will always be expensive, And you can peel off
+just frontier minus one intelligence from like three months ago. Then all of a sudden, it starts to make sense
+to peel those kind of workloads probably to cheaper models, where there's some kind of capability maybe focus.
+And you then ultimately would want to harness that could kind of handle that level of sort of neutrality.
+And that I think will be an interesting trend to watch what happens, what parts of an industry
+will that happen in, et cetera. I think this is already happening over the past few months. I think there was the Uber CTO who said they blew through all
+their token budget. I think ServiceNow recently said something similar. I think you had a tweet on token budgeting.
+I think it's happening with coding agents first, because I think adoption is first and foremost. But then once everyone starts adopting these frontier models,
+costs explode. What do you think the end game for that is in coding in particular?
+You guys running into that at Box at all? Are you seeing this pretty commonly in enterprises? - Yeah, the
+token-maxing meme only lasted about three days because, first of all,
+only Facebook can actually afford to do that. And sure,
+some very well-funded startups here can do it too — but for us mere mortal companies, we have to have budgets
+and planning cycles around how much we can use. And so we have not yet run into like major existential issues
+on the coding side, we're still more in the ascent, like where we're just continuing to say, yeah, use it as much as you can, assuming it's productive,
+but we're not rewarding you for using lots of tokens because you just get weird, obviously, perverse incentives on that.
+So it's just like, use it productively. And then we use our roadmap really as a means
+of pushing the envelope. So we want to stack more things into the roadmap, and that should actually control
+and drive the token utilization. But I do think that as this sort of translates into enterprises, and there's a real difference if you're
+at a Silicon Valley-funded startup — you can convert VC dollars into tokens —
+but a Wall Street bank or a public company — name your industry —
+can't do that. They have EPS targets, they have to hit every single quarter. And so they can't all of a sudden spend $10 million more
+on an AI bill. And so once that pressure starts to build,
+all of a sudden you need to do things more efficiently, which means we probably need a mixture of models
+in these types of workflows, and that's just gonna become, it'll have to become a bigger part of this conversation,
+even though we're seeing the early signs in coding right now. - We're wrapping up at one last quick question.
+Can you give us a sneak preview of your next tweet? What's top of mind that we should know about? - Any ideas out there?
+What should we talk about? Anybody got anything?
+>> Okay — don't collaborate on tweets with large audiences. That's a really important lesson. >> Maybe that can be the tweet itself.
+>> We'll see how that one does.
+- No —
+it's an incredibly exciting time to be doing anything with AI right now.
+I think we're all fortunate to be in these sort of builder positions, whether you're in a large organization or within the startup world. And ultimately, I think it's a moment
+of how do we bridge this technology into organizations.
+So yeah, super excited to be in this moment and congrats on all the announcements from today.
+So yeah, great work. - I think we all are. Let's give it up for Aaron. (audience applauding)
+- Thank you. (audience applauding)

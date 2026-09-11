@@ -1,0 +1,497 @@
+The agent that powers engine, it actually uses a sandbox as a tool. A langchain harness runs inside of a
+Langmith deployment making calls to a Langmith sandbox. Today, I'm talking to Ben Tanny Hill, a
+product manager at Langchain. A month ago, his team shipped Langmith Engine, [music] our agent that hunts through
+your agents failures, prioritizes issues, [music] and drafts the fix. We have this competent main agent that is
+then going to start delegating tasks to these screeners that are less competent and way cheaper, way faster. Usually,
+the screener sub agent is like the primary way that we investigate [music] traces. He explains the unlikely way engine
+became a self-improving agent. Engine as an agent produces its own traces and so we have another engine
+that runs on top of those traces. So meta. It is it's super meta. We assume that it would be crap. It's becoming more and
+more like one of the primary ways that we find improvements to be made on engine. We get into how you build evals for an
+agent that never stops running. We actually do this shadow production taking real traces running on them but
+not creating real issues to a user and the leap Ben's working on right now [music] where engine proposes a fix and
+then proves it works. That process of running a new version of your agent with this proposed fix
+against these new eval is very challenging but something I think is really exciting. Welcome to Max Agency,
+[music] the podcast that goes deep into how the best agents are being built by builders like you. [music]
+Langmith has been around for a few years. Langmith Engine is much newer. Before diving into engine, what is
+Langmith? Yeah. Uh Langmith is our platform for observing and evaluating agents in
+production. And so we have obviously our observability platform which is for sending your agents traces so that you
+can understand what is your agent doing in production. How is it making certain tool calls? How is it utilizing the
+different prompts that you give it to better understand how your agent actually performs in the wild. Langmith
+also offers this ability to run evaluations and to run experiments. Um, so we have the ability to store data
+sets within Langmith and uh you can easily pass those to your agent so that it can then run and then you can view
+these experiments after the fact within Langmith. There's lots of other fun features that we have like an easy way to create data sets using annotation
+cues um a playground where you can tweak and and experiment on different prompts.
+But that's linksmith as a whole and that's existed for a while and then engine came out about a month ago. And
+so what is engine and why did you build engine? Engine in in some ways is like the agent
+for lang or the agent for an agent engineer. What does that mean? Yeah, it's a great it's a great uh it's
+kind of metaphorical, right? The agent for agent engineer. When we built engine, we noticed this this process
+that an agent engineer was going through where they were building or modifying an agent that they had in production,
+making adjustments to the prompt, to its code, etc., running tests to ensure that
+those changes that they made were adequate and that they passed the different evals that they had or were appropriate and then deploying those
+into production and then coming back to Langmith and monitoring using our observability tool to understand, you
+know, what was their agent doing. And so that process which we've talked about is like the agent development life cycle
+has a lot of manual steps to it. And so engine is effectively an agent that tries to you know encourage the the
+process of moving through that loop of helping an agent engineer to better understand their agent and the traces
+that it produces to uh more easily create fixes for errors that they see
+and then to more easily run tests on those. So those are kind of the main buckets, right? Like finding problems
+from your traces, putting up fixes for those issues that it finds, and then assisting in the process of testing
+those fixes that it proposes all before you deploy. Diving into some more of the details,
+what exactly does engine do under the hood? Yeah, under the hood, engine is an agent. Um, and that's why we call it
+like the Elangmith agent or the agent for agent. Agent for agent engineers. It's a mouthful.
+It is a mouthful. Um, and so that's why we've just started calling it engine. The agent under the hood is a deep
+agent, one of our our lang chain products, right? This agent harness. And the deep agent runs to uh ingest and
+understand a huge number of traces from your lang observability project. Um, it
+ingests those traces and does an analysis to understand are there very explicit errors? Are there places where
+a user's needs are unmet in some way? Are there interesting signals for fixes
+that can be made? And it takes these different errors and it clusters them into these actionable issues and then
+surfaces the those issues to a user where they can say, "Yeah, this is very real. You know, we're making an incorrect tool call in this
+circumstance." And engine takes the next step and proposes a fix usually via a PR
+against your agents repo. And so then I can very quickly implement a prompt change or middleware that would improve
+my agent and directly address this fix. And then that agent again kind of completing the loop here would suggest
+data set examples for me to add to my langals so that I can run those those examples later on. But all of that is
+powered by this agent that is investigating clustering and then generating this code fix and generating
+these eval. Let's maybe break it down a little bit. So so how does engine get kicked off? Does a human message or does it run in
+the background? What happens? Yeah, today it runs in the background and it runs on a schedule. Um, the
+engine can be configured within Langmith and it allows a user to basically configure what repo that their agent is
+using as well as define maybe some of the priorities that they have, things that they might be particularly interested in seeing. And then engine is
+on always and is running and monitoring the incoming traces that are that are coming into Langmith. So suddenly as uh
+my agent is producing a a ton of traces on a Monday afternoon, engine is picking those up, clustering those and surfacing
+issues. There's probably a world where you know engine is invocable in a different way. Um right now it is kind
+of just run on this schedule and is is clustering on its own. How does this clustering work in
+particular when I I know we have customers with millions of traces in their tracing project. How does
+clustering over large amounts of traces work? It is very difficult for us and the ingestion of a ton of different
+traces is one of the things that we are just constantly trying to improve. Realistically, engine can't ingest
+millions of traces at once and so it is something that we're always trying to get better at to to be able to in a cost
+effective way ingest more and more traces. The manner in which we do that is uh a very complex agent that has
+these different sub aents that are running different tasks. One of the ways that we work to, you know, handle this
+massive load of traces is by doing an initial pass on these uh kind of condensed or summarized versions of
+traces. So rather than ingesting the entirety of a you know 500 kilobyte
+trace or or 10,000 of those different traces, engine will using one of our
+like lang command line interface tools will allow it to send a condensed
+version to the engine. And so maybe that condensed version just has the total size of the trace, the input, um, and
+some interesting qualities about it that Yeah, I was going to ask like what exactly does this condensed version look
+like and and did this exist before engine or was this purpose-built for engine?
+Yeah, this like many other things was purpose-built for engine. That's one of the like the perks of building an agent
+internally for our own software tool is that it's highlighted a lot of ways that we can make our own software tool lang
+way more agent friendly and and agent native really. Um and so this summarized
+version. Yeah, it can like I said it contains kind of the input the total number of tokens used the total time of
+that trace. That's kind of just a starting place though. It's just an initial pass that the agent has access to and it's a really easy way to detect
+obvious errors. If the baseline for a trace is going to take two minutes to run, suddenly when it sees 10 traces
+that are exceeding 10 minutes, it's a far more interesting uh signal for engine to dive into more closely and
+investigate. But yeah, coming back to your to your earlier question, that's exactly right. This this summarized
+version of that trace is something that we worked on um to allow engine to run more easily and to have more access and
+it's one of the many things that we've done to improve lang for agents. Are there other examples of of improving
+lang for agents that have made that particularly in the realm of kind of like context engineering for agents like
+when you interact with all this Langmith data how do you best present it to agents? Are there any other learnings or
+changes that you guys made there? Yeah, another one Something that has been uh interesting is that it's kind of
+like we need to dive deeper and deeper into what is valuable out of a trace and
+we want to present as little of that information to the agent as is necessary. If we're feeding it more
+context than is necessary, it's just going to drive up our cost of running this this always on agent. And so the
+first is this kind of like very ultra condensed version. It's going to show basic stats about the trace. The next is
+that we've improved within Langmith. have what's called a messages view and it's like a very nice proper UI for
+viewing the turns of between a user and an agent. There wasn't a very good endpoint for an agent to actually pull
+that uh nice view and instead our options were really this brand new kind
+of highle stats option that we had or the full the entirety of the trace. And so now we have this kind of middle
+option which is uh it doesn't contain the every single piece of metadata associated with the trace but it does
+have now the back and forth conversation between a user and an agent which has more context is suddenly more valuable
+allows the the engine to understand even more about the conversation. Was there an error in this conversation? Was a
+user frustrated in this conversation? And so that process of of kind of like defining more and more of these uh
+endpoints that engine can pull from to find what is valuable out of a trace is is I think probably the the best answer
+to that question of like making lang more agent friendly. You mentioned this was part of a CLI. So
+do you give the whole CLI to the agent and is is this the same CLI that that
+humans can use to interact with Langmith? Do you control what the agent does with this CLI or is it really
+open-ended? Yeah, I mean we could talk about just that one question for the rest of our of our chat here. There have
+been so many interesting discussions about what do we kind of like make a
+workflow out of or what do we just handle hand over to the agent and let it run with? And when you say work workflow like what
+exactly do you mean by workflow? When I say workflow I mean something more deterministic, right? I could tell the agent
+would that be like a tool or a script or how do you represent Yeah, something like a script like whenever this
+response is received by an agent then always execute this script, right? Suddenly it's it's very deterministic.
+I'm not giving an agent the controls to yeah to say it wants to interact in this way. It's really easy to kind of come up
+with these workflows and say, "Oh, we're going to workflowize this entire process and the first step of the agent should
+always call this CLI command and then it's called this one." It's very easy to do that and it's very easy to be wrong
+as well and to create these ineffic inefficient workflows that also have a an enormous amount of code. And so the
+power really of agents is that you don't have to do that kind of work and suddenly they're they're capable and
+competent enough to define what are the most efficient workflows. That isn't to say that with engine we give the agent
+like no guidance, right? We certainly do give it controls and the ability to make these CLI commands as tool calls, but we
+do give it a lot of guidance over time when we see places where it's acting in an efficient manner. So maybe like in a
+in a more narrative format. Like I said, early on we were kind of tempted by
+these different workflows and and by being very explicit with the different steps that the agent should take
+and and just to like make that concrete like early on was engine basically like a lang graph workflow like is that what
+you mean by like giving explicit steps and and being early on it was still it was still a deep agent but we would we would write
+scripts for the different things that were happening. So like before the deep agent was actually running in any fashion, we would have already pulled
+down all of the traces from a certain window that we thought weren't going to be valuable and we would filter them on certain things and then pass that
+filtered version of the traces to the agent. So suddenly like we've already made a decision. We've already determined something that an agent could
+determine on its own. Um but because we thought it was maybe more efficient or the smarter way to do it, we did that.
+But over time, we would start making adjustments to this and understanding that like maybe we don't have to be that
+explicit with this workflow and maybe the agent having the controls to do those things at the right time is just a
+simpler way to design this. And so there's kind of like this stripping back experience as well and handing over more
+when it comes to like the the full breadth of what the agent has access to and what it can do. The agent has like
+we talked about access to these CLI commands and so it can pull when it's when it's deployed in its own
+environment. It can pull from Langsmith traces and it can pull the existing
+evaluators that you have to understand those. And so it has this this entire process of pulling information from
+Langmith. Yeah, I was going to ask about sandboxes because we were talking about the CLI and I'm assuming that runs inside a
+sandbox and I think there's a bunch of talk about how how agents interact with sandboxes. Do they run inside the
+sandbox or do they run outside and connect to the sandbox via a tool? I'm curious if you can share any insight on
+how engine works in that regard. Yeah, so the agent that powers engine, it actually uses a sandbox as a tool.
+Rather than being spun up within that sandbox, it calls out to a Langmith sandbox. So we actually use our own
+product for that sandboxing to run and execute those different scripts. The agent actually runs in a lang deployment
+as well, another one of our products. So our deep agents, you know, a lang chain
+harness that we have runs inside of a Langmith deployment making calls to a Langmith sandbox outside for that
+execution. So much Langmith products. It is a lot of Langmith products. Everything across that loop we got?
+Um you mentioned sub agents before. How many different sub aents does engine use and and what are they? Yeah, right now I think it has four
+different sub aents. This is again this is one of the things that we're just always experimenting with and trying to understand like what is the optimal
+structure the different sub aents that we have right now the the most uh important is a screener and so or I
+should say that we have kind of a main agent that is the the brain of the operation and is determining when to
+spin out these different sub aents it's making some of the initial calls to set up the environment it is making the
+initial pull of what we use as like a user's memory um and then it immediately executes this screener sub agent. The
+screener sub agent is is like the primary way that we investigate traces. In order to avoid exploding the content
+or excuse me, the context of the agent, we send out these screener agents that that will always be the ones that have
+access to the entirety of a trace. If ever there's a need to look at, not this extremely summarized condensed view of a
+trace, not even like this middle ground view of a trace, but the full length of a trace. If that ever needs to be
+investigated for engine to determine something is wrong in a trace, all of that is always handled by a screener. So
+the screener is the one that's ultimately kind of making a call and the way that this is something interesting to surface back to that original uh main
+agent. The m main agent also handles that hands that over to a verifier agent
+and the verifier agent is kind of doing a final very quick very light check to ensure yeah this is a problematic trace.
+It should be contained in an issue etc. Like I said, we're kind of always experimenting with the different sub agents that we have in the different
+structure. We do have a sub agent that is actually creating an issue. It's writing out a nice diagnosis and it is
+like linking the specific traces to it. It always changes though and I think one of the things that we're learning is it's there's something kind of weirdly
+familiar to to designing an org chart in a way like we have this competent main
+model main agent that is then going to start delegating tasks to these screeners that are less competent and
+way cheaper way faster usually but they're less capable of these more
+complex decisions um but maybe they're very good at reading traces and understanding very small problems in
+them. So, similar to like an Orchard, the way that like we're fanning things out and determining who's best for what job.
+Does engine use skills at all or or not an avenue that that we've explored yet. It's not an avenue that we've explored
+yet. We've talked a ton about it. Um I mean, we talked about actually just yesterday talking about how we should definitely be skilifying our prompt,
+right? It's just like a super obvious way to reduce context. Not, you know,
+every portion of the run needs to understand the entire context of our system prompt. So something that we need
+to improve on. A lot of the things that we've talked about recently, it seems like, you know, are active areas of exploration. I
+imagine in order to do exploration, you need good evals. Um so maybe pivoting to that. What what do evals for engine look
+like? It's super complex as you're as you're very familiar. And um it is a it's a
+difficult challenge. Engine is evaluating several different things during its run, right? It isn't just
+doing a very single obvious task that we can eval with one single set of data set of inputs and outputs. Instead, there's
+all these different phases to engines run. It's finding a needle in a haststack, right? It's finding
+problematic traces in this large, potentially massive list of traces and determining that one of those has a
+problem and then it's correctly classifying that issue and determining what exactly is wrong with it. Does it match with existing issues? It's
+generating fixes. It's generating eval. So, there's all these different phases to it. What we have landed on as maybe
+like the the most important of those phases for us to really nail in order for engine to be a high quality agent is
+the the process of identifying an error trace from this hstack of of okay issue
+or okay traces I should say. So we have had and you've been very involved in this the process of creating effectively
+a benchmark for us to understand engine's performance against a set of
+traces and and a a subset of error traces and a larger set of traces.
+Yeah, maybe I can talk about this for a little bit because this is one of been this has been the only place that I've been fortunate enough to contribute to
+engine in some form but yeah we're working on something we call kind of like issue bench. It's a collection of hopefully around like 50 or so tasks
+very much aimed at least initially on kind of like issue identification. We use uh Harbor which is a great open
+source framework that powers other benchmarks like like terminal bench 2. We create synthetic environments for
+these traces. So what we want to do cuz because we want to see we want to know exactly what the issue traces are
+exactly which ones are issues what their category is because one of the things uh that engine also does has different
+categories of errors and we want to make sure that's clustered together. So in order to do that we create this in this
+synthetic environment with these issues kind of like prepopulated in it so that
+we don't have to take real data and then try to label it because labeling tens of thousands of traces would be really
+really hard. So we create this synthetic environment, spin up a bunch of traces, and then and then run it in in Harbor.
+And the other thing that's really interesting here is that engine interacts with a lot of stateful
+services. So it's using this CLI that you mentioned earlier that can interact with Langmith. And yes, a lot of that is reading, but some of that can be writing
+back to Langmouth as well. And so obviously we don't we don't even want to read from real lang. And we definitely
+don't want to write to real lang. So we've we've created kind of like a stub server and basically used that to
+interact with and mocked out all of these different endpoints. And I do think that this is pretty generalizable
+in the future of where where eval for a lot of like longunning stateful uh agents will be. That's kind of like the
+offline eval kind of like benchmarking uh side of things. There's been another side of things which I haven't been
+involved in which I think uh we do more kind of like online shadow testing. I
+don't know if you can talk about that. The biggest way that we do like online testing is still running on our internal
+agents, right? We have like our go to market agent internally. We have uh an asynchronous coding agent that we that
+we send traces to linksmith with and we can do all sorts of testing and working on on engine to improve it based on the
+traces from those. We're taking real traces running on them but not creating real issues to a user.
+Do we like fork the project? Do we create like a new project? That's exactly right. Yeah. So that's that's running really on
+like our internal agents. We create real issues. The teams that are working on those agents actually are able to to
+view those issues etc. and kind of understand the changes that we've made there. In maybe like an earlier stage of
+development, we actually do this shadow production where we actually take a fork
+of those tracing projects, this storage of traces that are being sent to Langsmith and we run engine on this, you
+know, forked batch of traces and this, you know, development version of engine is going to create new issues. Sometimes
+they're terrible issues and we can understand what's gone wrong. These aren't creating issues for our teams
+that are working on our internal issues. They're not seeing these. But it gives us kind of like a a second pass or like
+another quick check on the issues that are being created. Do they look right? Are they written appropriately? Are they
+high quality in a way that is a little bit more difficult to grasp from these
+like benchmark evals that we're running um on on harbor? When we have agent running in production
+in in real life, what what metrics do we track to to get a sense of how it's doing? We we track a ton and we have so
+many cool uh tools that make this really easy for us, right? We use we have like our actual database tables that can
+inform us like what customers have engine actively running, who's turned it on, how frequently is it running, how
+many traces is it ingesting in each one of those runs. Those actual like database are very helpful for us just to
+have a highle view of who's using the tool. Um engine actually reports back on
+a lot of its metrics as well. Like I like I just mentioned that it we'll be able to see the number of traces that
+are ingested by engine. There are a variety of things that engine will kind of spin back to us and inform us like x
+amount of traces were were analyzed. It gives us insight into the size of those traces that it's ingesting the latency
+of its own runs like we start to understand a little bit more about how engine is running for the different customers that we work with. So that's
+kind of like the the engine internal stats that we get to see as well. Uh we also do a lot of user tracking to
+understand how users are engaging with the actual issues. We've talked a ton about the agent and like the under the
+engine behind engine right like how it's how it's all investigating and surfacing these issues but there's also this
+entire product side where users are interacting with those issues and um making adjustments to the fixes that it
+proposes. And so we have lots of user analytics there as well. But I mentioned that we have like so many awesome tools.
+We use the hex agent a ton to spin up like dashboard, new dashboards every day for the things that we're looking at and
+it is in my mind like one of the agents I use most frequently. One of the most interesting things about
+engine I think is the fact that it's like an ambient style agent. It just runs in the background, runs on a schedule. I think that also makes for
+really interesting UIUX considerations. When do you bring the human in? Um how does the human interact with this agent
+that's running the background? Um, could you speak a little bit about how you think about UIUX for engine? Any
+evolutions that have taken place and and and what that like human in the loop looks like for these ambient style
+agents? The very first version of engine like this the simplest form was that it
+would just spin up PRs and it would just create PRs for different issues that it found and so many of those PRs were bad
+and it suddenly was just super noisy, right? like no one wants to deal with a huge list of PRs that they have to go sort through and understand the commits.
+No matter how good your description of that PR is, like it's just too much. And so very quickly this concept of like an
+inbox became uh like a good option and one that we started kind of socializing
+with our early testers and customers. Um and it just made sense because there are there are these different clustered
+problems that engine will be able to identify that have their own history. And so this inbox gives you a a very
+clear diagnosis of, you know, what problem that has been encountered, what exactly is going on, as well as a look
+into how frequently has this been going on. Is this is this a long-term thing that you've seen for a month? Is it happening to every one of your traces or
+some small subset of that? But all of that is kind of like a new alert that a user can interact with. Um, but with
+each one of those alerts, rather than just something to be made aware of, there's a series of actions that can be taken. Um, and so this is something that
+we're like every day making tweaks to is what are the optimal steps for a user to
+take? What are the easiest ways for a user to take a set of problematic traces
+and come out with a better agent and like yeah, how can we optimize that flow from seeing and understanding this is
+going wrong in my agent. This is the exact fix I need to make and this is um how to deploy it or test it um most
+effectively. So that process has been a lot. It's it's honestly been a challenge to go from like just surfacing a problem
+or a PR to informing a user in the right way and encouraging them to fix it in the right way. The last thing I'll note
+on that as well that has been also difficult to kind of bake into the equation here. A user has so many unique
+preferences and so many unique insights into the uh issues and into the agent itself. We often find that things that
+are real issues that we can, you know, say are objectively problems with the agent are just unimportant to an issue.
+They're just unimportant to a human. And so, uh, that team might not care about times when the context has exploded or
+they might not care about these minor hallucinations. And so, that process of saying, "Yes, this is a real problem. I
+don't care enough to solve it. Let's move past it has also been interesting as we've tried to like make engine learn
+more and more from a user." One of the big things that we try to talk with customers about when they're building
+agents is try to try to figure out the the bodies of work where you can do a ton of work, but there's still like a human involved at the end. And I think
+we practice what we preach a little bit with engine because I think it does do all this work, but there's still human involved before it opens up that PR
+before it adds an evaluator or before it adds a data set. But it but but but I think we can have it do a a lot of this
+work. you mentioned at the end kind of like uh there's all these issues that that that people might not care about
+for whatever reason. I imagine it would be pretty annoying if we kept on bringing up the same issues over and
+over to to users. How uh how do you think about memory in engine?
+Within engine specifically, I mentioned at the beginning that there's an opportunity for a user to kind of
+describe things that they're interested in right up front before uh you know engine even does its first run. That
+might be like we've talked about you know specific categories that are important to the user. That might also be like important nodes of information
+that engine should have about my agent like hey it calls this separate sub agent. It's important for you to
+understand the distinction between the two. All sorts of these different preferences or understandings that the user can express to our agent. The way
+that we handle memory is through what we call this agent overview document. Um it
+basically is like a like a quad MD or an agents MD file that engine is able to
+reference and it does reference on every single run to understand you know has the has the user's preferences changed
+are their interests different has the structure of the agent been adjusted um and so that's referenced on each run
+it's updated on each run it's updated as a user interacts with these different issues the process of creating a memory
+storage and updating is super simple it's very hard to do so in a context efficient way. Um it's also very hard to
+like the user interface to encourage the kind of extraction of important information from a user to add to that
+memory. Like obviously engine will not work very well for a certain subset of customers right out of the box and it
+will work really poorly with you know like a a muddled memory that has all sorts of things they don't care about.
+But trying to really understand what are the things that a user cares about is super super challenging. Do we give
+people the ability to leave natural language feedback on issues? Yeah, we do. Every time they every time they ignore or they resolve or they say
+that this is not a high priority, this is a low priority, they have the option to add in like this is low priority,
+don't tell me about this in the future. Yeah, I think that's great. And I think capturing all of that and then passing it the the thing that I think is really
+interesting about memory with uh engine actually is there generally we see that there's kind of like uh two different
+ways that you could do memory for agents. One, you could have the agent as it's running and interacting with the
+user basically update its own memory. And then the other way you could do it is you could have a process that runs in
+the background and looks at all the interactions it's had recently and then and then updates its memory kind of like
+in the background. Kind of combine them here because there's never a place where the human's directly interacting with uh
+engine. Um they're leaving feedback but then that gets picked up on a background run. And so it's it's kind of something
+that's um yeah twisted my mind a little bit where it's this it's this weird hybrid of like yes the engine is doing
+it engine can update its agent overview whenever it does a run and it looks at all this feedback and it has that um but
+it is like a a background process of sorts. So I thought that was kind of like an interesting middle ground for
+some of these things. We talked about cost uh a little bit earlier on and yeah I mean I imagine
+running engine over a ton of traces can get expensive. How are we making sure we don't make Langqing go bankrupt?
+Yeah, it is it is very hard and I often get messages from from you or from from
+uh our our head of engineering letting me know that our our bills for our inferences are going crazy. Um uh it's
+something that we're always working on improving. It has become one of the things that has been fun to experiment
+on in the process of improving the agent. there are all sorts of these different obstacles or or different
+bottlenecks that we are able to identify and then work on improving. Um, if we were to run like a state-of-the-art opus
+model to do everything that the agent does, a screener is using opus or a state-of-the-art model from OpenAI, if
+it's running on on one of these high-owered models is going to run up a huge bill for us. And so the process of determining again going back to like
+model selection, determining which models can be used for different tasks has been very interesting. where can we
+use a less competent much cheaper model to run this process and that all goes back to this kind of like process of
+running evals where we have a hypothesis we might do investigation to understand that this portion of the run is
+responsible for 33% of our total cost how can we reduce that specific part of the run can we switch out elements of
+that to a different model that kind of investigation is super interesting and then it's a ton of of experimenting and
+hill climbing against our evals with the different changes that we've made practically speaking
+What what models are we using today for different parts of the agent? Right now we use honestly a cocktail of
+different models. We use anthropic models. We use Opus as a as a main agent. We also use uh models from OpenAI
+like 5.5. We use Haiku models for a lot of our our screeners or our verifiers.
+We've swapped in Gemini models at different times. We've also explored a lot of different uh open source models
+for especially for these less challenging tasks like for these screener sub agents that are doing just like a very quick analysis of a trace
+but it is it is really changing frequently. We launched engine I think publicly about a month ago at this
+point. What did what did the roll out of engine look like from kind of like initial idea to to now I guess and like
+who have we launched it to? How have we how have we incorporated feedback? What what what does that kind of like roll
+out of an of an agent look like? It's really just been like a slow expansion of customers that have been
+onboarded to this new feature. And you know, we've had really awesome design partners earlier early on that were
+excited about the vision and very trusting in a you know a very early very bad version of what the agent was. The
+earliest version of the agent we call it we called it forge back then. this kind of uh early prototype was running with
+some of our customers like Credit Genie or Unifi. Um and I I mentioned before
+that it was putting up these these PRs and it was very easy to get feedback because these teams are super familiar
+with their agents and the the the kinds of errors that they should be looking out for. These teams are agent engineers
+that are used to looking through Langsmith traces and identifying problems and then putting up fixes for
+those exact uh problems that they've identified. And so the feedback loop was really strong, especially when it comes
+to the agents ability to find traces that were meaningful and to put up good
+uh fixes for them. But it really has just been this this process of expanding the group of users that are using it.
+Sometime in I believe it was March, we started rolling out the earliest version of of of engine um to maybe five to 10
+customers. We had kind of like a an expanded beta, private beta where we had
+more customers using it. we had suddenly an interface within Langman that they could interact with um again low quality
+but something that that was uh able to get us a lot of feedback and then just at interrupt we launched our more
+available version of engine uh and then we've had this you know deluge of of feedback that has come in
+I think one of the things that we emphasize as a company is is shipping quickly and then and then iterating
+rapidly after that and I and I think I think we did a pretty good job with that here I remember you and and Palash and
+some of the team members shipped like a version of this so fast and it was incredible to see as you said we basically grew the blast race. We tried
+it out on internal agents and then we tried it out with like two design partners and then I think by the time we
+launched it we had like 20 or so design partners using it and then and then it went I think like yeah we I think we
+definitely practiced that like launch quickly iterate rapidly uh philosophy that we have
+and I think that what has made that so possible is like our ability to to write and ship code is extremely fast with
+coding ages now. we really could be making meaningful changes to the agent in a matter of hours. So we hear
+feedback in the morning from one of our design partners, make a quick change, run engine again for them, and get additional feedback by the afternoon.
+And so the the pace has been kind of frightening. Let's maybe talk about that for a little bit. Like what does the team building
+engine look like? It's very different from what I'm used to as a product manager. I'm used to
+like a team of product engineers and some kind of you know architect really that's doing more of like the infra on
+the team. We still obviously have a lot of product engineering to be done. We have an interface within lang. There's
+obviously a lot of components of infra as we use our lang deployments product. We have these sandboxes that that engine
+utilizes. But there's also this kind of newer branch where we have our agent engineers on the team. There's a very
+different process for the two teams, right? you have it's not quite agile anymore with the speed that we're working with with new coding agents like
+it's extremely fast but it involves us saying here's a very specific product outcome that we want we're going to do
+some kind of like early design dock or or spike on that and then we'll implement that very quickly uh now with
+coding agents the process for like the second part of our team this applied
+agent engineering team is very different where as we've been talking about it's more of like this experimentation flow
+where we are sitting down together and coming up with, you know, wow, the agent is taking a ton of tokens to be to
+running this specific process or this sub agent is taking forever. What are some potential ways that we could reduce
+that and coming up with these different hypotheses? And then throughout the course of a week, usually we'll say like
+these are the hypotheses we want to implement. Let's test them out. We run our evals against them and then usually the latter half of the week we're
+implementing something like that. So the flows and kind of like the the style of engineering is so different across the two teams. And then there's obviously
+places where they interlap, where they overlap. So we have other AI products in Langmith as
+well. Um, and I think in some ways engine is an evolution of them, but then
+also in other ways we still need to figure out how to make them work well together. Maybe I can talk a little bit about how I view some of the evolution
+bits and then I'd be really curious to hear your take on on a anything that I miss, but then b what the future looks
+like. So I think two of the previous AI experiences we we had and still have in lingsmith are insights and poly. And so
+insights it basically clusters uh it runs over traces similar to engine. It
+clusters them. It does two levels of hierarchical clustering and basically shows you insights different trends of
+what's happening in your trace data. Paulie is a chatbot that sits inside links with I'm actually not sure which
+one was launched. Do you know which one was launched first? I have no idea. I think it was before my time here actually. I think I think insights was launched first even though
+the chat's the more basic thing. Um but uh the the chat we we really didn't want to do kind of just a general chatbot and
+so we tried to focus on places where it would provide value and two of those places were within the tracing project. It was within a trace and within a
+thread and you could basically ask it what what was going wrong and then the other place was in a playground and you could ask it to fix the the the prompt
+that was there. And in some ways I kind of view engine as combining uh the best
+parts of both of them. So insights ran over all your traces interesting but not
+actionable like in order to take an action you'd have to think about what to do and then go do it and and then insights also was kind of broad. It gave
+you these clusters. Poly was very focused on on specific things and in playground you could you could actually
+ask it to fix things. And so engine I think kind of combines the best of both worlds because one one downside of poly
+is we never had it had a mode where you could chat with it and ask it to do like massive trace analysis because that's a
+hard problem. And so engine a it lets you run over all your traces just like insights and and and and solves the pain
+point of poly, but then it produces these really actionable things that you can do, which was a pain point of of
+insights, but something that Poly did well. So I kind of view it as bringing the best of both worlds together. I'm I'm curious from your perspective
+building out engine and interacting with these others, will they all just be part of engine in the future? Are there
+differences? How how how do you think about that? There are differences between the three nodes that we've
+talked about between insights, engine, and poly. I think that there is something really exciting to me about the actionability of engine. Right now,
+I'm going not just from like understanding my traces, but I can now use those to make a change to my agent,
+which I think is really cool and I think is like the the right direction. I still think that there are like components of
+insights and poly that engine does not do very well. For example, engine is really good at giving you, you know,
+very specific uh issues that I'm going to go fix, but I I actually don't understand that much about the status of
+my a of my agent from engine. I might look at a list of issues and determine I have 15 issues here. Something is
+majorly broken when in reality they might be smaller issues and and that isn't a great sense of like the health
+of my agent or it's general metrics. And so insights maybe doesn't do that perfectly today, right? It gives us some
+nice clusters of what's how are users interacting with my agent. But there is this zoomed out view of insights I think
+is really important and I think engine is lacking that. And so maybe there's like a a combination of the two where I
+can see both a very actionable set of issues that I'm going to resolve as well as a as a highle view of is everything
+okay on my agent? How are people using my agent? What are they asking it? You know what are general problems that
+we're seeing or categories of issues that we're seeing? Moving on to poly like we we've talked about how engine is
+running on a schedule right now and it doesn't have the interface to necessarily interact with the user in an easy way but we've also seen times where
+a user doesn't want to just be fed this list of alerts or issues and they want to ask questions to engine like you know
+AC across across my agent is my latency getting worse this is something that
+engine with its ability to look through traces could very easily do with you know some minor tweaks to it but right
+now it doesn't allow for so I I think there's there's kind of like elements of these other components that we've built in Langmith today that I think engine
+should probably adopt or maybe there is a world where they totally all just meld into one agent that runs on top of Langmith. Um, but I think they all could
+mesh together nicely. Kind of continuing this, you know, we talk about engine as an agent for agent
+engineering. What other parts of agent engineering could we help automate or
+help do with agents in the future, whether it's part of engine or some other thing? The biggest one that I feel
+really excited about and there are a lot of unknowns to and a lot of challenges that that we've talked about and
+outlined, but um right now engine I think sits more squarely on this like
+monitoring function of an agent engineer's work. It is it is looking at traces and investigating and clustering
+them into things that are more easily digestible for an agent engineer. And so it does that functionality really well.
+It could probably improve a lot on its ability to make fixes and to build for an a for uh these agents and to make
+those agents better, but it does that today. The compon the component that I think engine is missing today is this
+testing ability. Right now, engine will find an issue, service it to a user alongside a proposed fix. The user if
+they if they're kind of like following standard agent engineering practices before they implement or merge that fix
+into production, they're going to ensure that it passes their eval. and they're going to run these regression tests to
+ensure that this is an appropriate fix. It's not going to, you know, nuke all these other use cases that we've seen
+previously with agents. That's super easy to do if you're making a tweak to a prompt. And so, right now, engine will
+create data set examples based on those production traces. If a user said, you
+know, something inappropriate and your agent handled that poorly, it will create a golden uh data set example of
+that input so that your evals can include that in the future. That's really as far as it goes right now. It it doesn't actually run that experiment.
+That process of of running your agent, not really your agent, but a new version
+of your agent with this proposed fix against these new evals is very challenging, but something I think is
+really exciting. What that would effectively mean is engine would find issues from your production traces,
+propose fixes that are tested and kind of like hardened because they have been run against your eval so that we can say
+with some degree of confidence, you know, this this is a good fix. It will not regress other inputs that you've
+seen with uh your agent in the past. So that's a direction I'm super excited about. There are a ton of challenges to
+that. We've talked about this a bit. What what are some of the challenges? The the first is this like this this question of running
+your branched version of your agent, right? Like if engine is going to make a proposed fix, it is going to make an
+adjustment to your agent. And how do we how do we run that agent? We have to have all of the environment variables.
+We have to have like the API keys available to us. It's easy to make the change and to make a pull request against a specific agent. It's very
+difficult to run that agent in some environment. The components that are necessary to run that agent, I think are kind of uh difficult to scope out.
+That's one of the components. The other element that I think is very challenging is that there are a subset of agents
+that are making read only tool calls like a we have a an agent internally
+called chat lang chain that is like our docs agent and it will ask or it will answer questions about our documentation
+or about what is lang capable of what are deep agents an agent like that is just reading from different uh data
+sources and it's not making any updates to those data sources to run a branched version of that agent is very easy
+because it can make these tool calls with no real world effect. It doesn't matter if it calls my production tool
+call to my documentation. It's not going to make an adjustment. If I'm running a branched version of my agent that makes
+real world write access tool calls, suddenly I might be modifying my
+database. I might be sending out emails to a customer and interacting with the real world in a way that is still in a
+development stage. It's really a process of creating an eval environment for these right access agents I think is
+super challenging and I actually don't think that a lot of teams that are building agents know exactly the right
+way to to build those environments. Yeah, I completely agree. I mean I think the running evals is is is really
+interesting but but you have to have eval first kind of and unless you unless we help people create evals as well
+which I think is also a really interesting direction. you spoke about the process of of like recreating these
+environments to run evals for engine right where we have like these stubs for lang maybe you can speak to that like
+like what is that that feels like the process that customers would have to undergo if they want to run eval as well
+open research question unfortunately I think it's really really hard um and and and that part of the reason is because
+there is uh a lot of domain expertise involved so let's take the chat lang chain example um if we wanted to create
+let's say this This is a real thing like we use mintify for for our docs and we use it in chat link chain but we didn't
+want to use it for our eval because we were potentially thinking about doing RL and we didn't want to do a ton of
+rollouts and slam the mintlifi servers. So we thought about creating this synthetic environment and and one way to
+do it would be to okay let's point it at the traces we can get a good sense of like what questions are asked that's definitely feasible we can have some
+sense of what like we can get a good sense of the tools that are used and the input schemas and the output schemas
+totally feasible we can get some sense of the documents and the underlying data not all of them but we can some of it
+there and you could imagine pointing a coding agent at a bunch of traces and being like hey go create like some synthetic mock server that's just not
+the the the right way to create it the easiest way to created is like, hey, we we have all the docs in markdown format
+in our repo. Like, let's just pull those down, put those on disk, create some synthetic uh questions by basically
+taking a document, finding an answer, and then creating a question for that, and then and then basically use like GP
+or something as a as a as a fake search and and use that to mock out the server. It's far more reliable. It's just better
+to do. And so, that's an like I don't I don't think a coding agent that was tasked with looking at a bunch of traces
+could ever come up with that. I mean and so maybe you just say hey like in those scenarios like yeah humans should be
+involved and and do that but for other scenarios like we can automate that and and that's more of an open research question really hard problem but I think
+would be super super interesting. It's funny because like it's very applicable to engine and making engine better. But
+the reason that it's applicable to engine is because it's so applicable just to these agent engineers. Like that process of defining that is so so
+challenging. And so many of the customers I'll talk to will ask this question of like wow cool that engine
+proposes a fix but how does it test the fix? Yeah. And I'll explain like well you would have to test like a we can't we we don't
+have a really obvious way to create this environment to run evals in. Right now, engine's mostly used for first-party
+agents that teams are building and it suggests a bunch of code fixes and adds
+eval and adds data sets. I think it's also but but this process of running uh
+agent over traces is I think a general process and I think there's other things you can use it for. I have one idea
+that's top of mind and then I'd be curious what other ones you have. So, one I'd say is is is for memory. Um, so
+we released a video earlier today of using engine to power long-term memory for an agent specifically using it as
+like sleeptime compute. So we traced all the interactions to Langmith with just
+normal tracing and then we ran engine over all those traces and we pointed it at our context hub. And in our context
+hub we had the agents memory. We had it's like agent.mmd files and some skills and then this background process
+engine basically suggested changes to the skill files and to the agents.mmd
+and and then once those were merged those could be pulled back in for future runs for the agent. And so in that way I
+think you can use engine as as memory. What else could you use engine for? Something that we've gotten a lot of
+requests for as well is for running engine on top of coding agents and that is it sounds very similar to like what
+we do for these bespoke agents that our customers build and then trace to Langmith. The difference is that they
+aren't making modifications to the middleware to the prompting of the agent. Instead, they're making adjustments to skills or uh you know to
+these these agents MD files. It is very similar, right? Like at its core, it's still the same thing of ingesting and
+analyzing for issues across different traces, clustering those into things that make sense as a group and then
+proposing a specific fix. In this case, the fix is maybe not a prompt change or a code adjustment. It is just like the
+creation of a new skill or the adjustment of an existing skill. So, it's it's I mean, it's very very similar, but there is a difference to
+that in the sense that like it needs to be tuned for quad code traces or for
+codeex traces, right? it it needs to be modified slightly and then it has this uh in a sense it is it is very related
+to your point on memory right like it's a different kind of file that is that is being output of this it actually brings
+up another point that I wanted to mention which was that we currently run engine on top of engine traces
+h um does it find a lot of stuff it does it's super valuable so engine is
+running on top of traces from an existing agent sometimes that's a customer agent but you know for this use
+case that I'm describing and it's our internal agents. Engine as an agent produces its own traces and so we have
+another engine that runs on top of those traces. So meta. It is super meta. When we first thought
+about this is like very early on that we kind of joked about this and we assumed that it would be crap and that it wouldn't actually help in any way to find real traces, but it's been
+extremely helpful and it's actually one of it's becoming more and more like one
+of the primary ways that we find improvements to be made on engine. like my my dream is that our team just uses
+engine for any of the agent engineering so that we can find problems in our production traces and make fixes. So it
+is it is an interesting process but what you're describing of like using memory and and uh using engine for these
+different things has just you know brought this to mind that like engine is kind of just this improvement loop for
+whatever kind of agent whether it is a coding agent whether it is something that relies on memory whether it is engine itself right like it just is this
+improvement driver. Thanks for listening to Max Agency. If you liked this episode
+leave a review and subscribe. Send feedback or questions to max [music] agency langchain.dev.
+We want to hear from you.

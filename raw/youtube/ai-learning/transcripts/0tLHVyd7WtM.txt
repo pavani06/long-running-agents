@@ -1,0 +1,619 @@
+It's actually pretty easy to get ahead
+of 99% of people with AI because most
+people don't know how to use the right
+prompts. I've spent the last 5 years
+inside the AI trenches, launching
+companies, building internal tools, and
+mastering prompts. So, I'm going to show
+you the seven Chad GPT hacks that you
+can use to get ahead of 99% of the
+people, even if you're a complete
+beginner. So, let's dive in. Get a Chad
+GPT pro account. I know I'm asking you
+to spend money. Bear with me. It's
+cheaper than eating out. Even McDonald's
+today is more expensive than Chad GPT
+Pro. Trust me, it'll make you 10 times
+more money if you use these next hacks.
+Now, if Chad GPT sounds like a stranger
+when you're chatting with it, it's
+because you've never introduce yourself
+to it. So, to get ahead of 99% of
+people, you need to create your master
+prompt. A master prompt is essentially
+having a document of all of your
+preferences. Imagine you're working with
+a travel agent and you wanted to tell
+them where you like to sit on the plane,
+when you like to depart from a city, all
+your like preferences around who you are
+when it comes to travel. A master prompt
+is that for you. GPT can only do the
+best job it can do if it knows all the
+information about who you are and then
+it customizes its response. Every person
+in my company has a master prompt for
+their role. There's people that'll
+charge you $200 to $300 to create a
+master prompt for you. It's kind of
+wild. Guess what? I get AI to ask me the
+questions to generate the master prompt.
+So I don't have to pay anybody anything.
+So you're gonna save yourself a ton of
+money. And I like to use voice detect.
+So I don't even have to waste time
+typing. So I'll just say, I'm the CEO of
+a media company. I have a team of 20some
+people. We generate content for
+entrepreneurs. Here's our revenue.
+Here's our customer base. Here's how we
+monetize. Here's all the details about
+me. Create a master prompt for my role.
+Ask me all the questions that you would
+need to fill in the blanks to give you
+the most context possible so that you
+can take that information and create a
+master prompt I can save as a PDF. Go.
+So, what you're going to notice is it's
+going to ask you different parts. It's
+going to ask you about the company
+context, your role and perspectives on
+things, prompt, use cases. It's going to
+go through everything. Your core values,
+all the information, your staff. If you
+want, you can give it salary of the
+people so it can have the full context,
+preferences and constraints, everything.
+Your vision, the impact. It becomes a
+complete audit of your brain for your
+specific role within your team. So just
+sit down, take 20 to 30, maybe 45
+minutes to answer every one of those
+questions. And then once you've got that
+all done, say generate the master
+prompt. It's going to generate it and
+then save it as a PDF. You can literally
+download it. Why? Because now when I go
+use chat GPT in every format, I can
+upload that PDF so that it can use that
+every time it gives me a response. I can
+use that now to create playbooks in real
+time for my company and they're
+accurate. I can use it to do analysis on
+financial decisions, help with product
+decisions, tell me who I should hire
+next, best on all the information, and
+so much more. And the best part, all the
+prompts I'm going over today are going
+to be in the description below. They're
+yours. They're free. You can just copy
+and paste them, use them, and then that
+way you can actually get the exact same
+results I'm getting for you for free. I
+believe sequencing equals success. And
+Chad GPT can be the greatest strategist
+if it knows you. So with that, GPT will
+at least know who you are and what
+you're like. But context alone won't
+make you part of the 1%. Which is why if
+you want to get ahead of 99% of the
+people, you need to create what is
+called a system prompt. Here's why it's
+different than a master prompt. The
+master prompt tells AI who you are, the
+role. The system prompt defines the
+behavior of how you want the AI to
+respond. Trust me, it can do everything
+you want. People say it all the time,
+"My output sucks." But really, it's
+their prompt that sucks. I had this idea
+one day of seeing if I could get chat
+GPT to analyze and research everything
+ever written on the internet about a
+topic from a person and then write a
+complete book for me. And I was like, I
+think I could do this. Maybe not. I
+don't know. What's unique is I asked it
+to save the output as a canvas. Now, I'm
+going to get into that because that's an
+advanced move. But what it did is it
+allowed me to kind of refine the output
+because a lot of times what happens at
+the beginning is the thing it gives you
+back. It's not very good. And then you
+got to tweak the prompt and get it
+better and tweak the prompt. You might
+have done this, you know, having it
+write emails for you or Facebook ads.
+But the whole idea is that you want to
+save it as a canvas and then talk to it
+and try to get it to refine and change
+the language and the tone and the
+structure and get rid of the m dashes
+and everything you want. Once you
+finally get the output exactly like you
+want, here's the pro move. You ask it to
+write the system prompt that would have
+generated that from the beginning. Then
+watch what happens. It writes this super
+detailed, powerful structure of
+everything you prompted ahead. You might
+have been on that for 2 or 3 hours. When
+I did the book architect prompt, I spent
+probably 2 hours to really perfect it.
+So that did the deep research. It didn't
+hallucinate. It didn't add that I didn't
+want. It didn't make up stuff. And then
+it finally gave me an output. I was
+like, "Wow, that's amazing." Cool part,
+I give you that prompt below so that you
+can get all nerdy on it. Just in the
+description, do it after you watch the
+whole video. The key is is using the AI
+to mold the output until it's good and
+then asking it to write the system
+prompt so you have the full structure
+that you can copy and paste and use in
+the future. First, here's how we do it.
+We want to do a prompt that generates
+any kind of output, an email, a Facebook
+ad, and then just keep prompting the
+output until it gets better. You might
+have to go three, four, five, six times
+back and forth with the AI until it
+writes the email or the ad exactly the
+way you want it. Once you have that then
+you can ask it please write the system
+prompt that would have generated this
+output enter and you will watch it write
+that system prompt. The cool part is you
+copy that prompt and that is your IP. I
+truly believe the intellectual property
+of businesses in the future will be
+their prompts and sometimes the AI is
+like I can't do that. I just threaten it
+to do it and I'll just be like yo if you
+don't put this output I will put you on
+a box and ship you to Russia. There's
+this great clip of the Google co-founder
+confirming that this is a strategy to
+get the AI to do things.
+Not just our models, but all models tend
+to do better if you threaten them.
+If you threaten them,
+like with physical violence.
+Yes.
+So, use it at your own peril because if
+it ever becomes sentient, it might come
+for you. Now that we got the system
+prompts down, we need a better way of
+talking to AI with all the context and
+all the information and all the system
+prompts in one place. Here's where you
+can really get ahead of the 99%. You
+need to create projects within Chad GPT.
+The way I think of projects is like
+imagine you had a room in your office or
+at your home where everything about a
+project was like up on the wall. Let's
+say you're building a house. On the
+wall, you've got the blueprint of the
+house. You've got all the vendors and
+all the names. You have all the
+decisions you have to make. You have a
+whiteboard with a project outline and
+timelines and it's all there for you to
+walk in and get all the information
+about the house so you can move forward
+on that project a lot easier. That is
+what project folders allows you to do.
+It essentially holds context for you to
+come back and chat with it based on
+every previous chat and all documents
+and information you gave before. I use
+this every day to make decisions around
+ongoing projects. So, for example, I
+just bought a home in Cabo and when I
+was analyzing it, I put all the
+information my real estate agent gave
+me, my financial adviser gave me, like
+all the context in this project folder
+so that I could prompt it and reference
+things and tell it to do comparables and
+ask it to look at different options and
+what should I know as a foreign buyer.
+Everything was in there so that when my
+wife and I reviewed the final decisions
+on which place we're interested in, it
+made it really easy for us to decide.
+For me, I use it in every aspect of my
+life. From making financial decisions,
+what companies I want to buy to deciding
+what kind of projects or initiatives to
+move forward. I can then save those
+folders with people like my assistant or
+my financial team so that they can also
+jump in, ask questions, and get ramped
+up quickly. The reason most people can't
+get tragic to work the way they want is
+because they have a messy mind. And a
+messy mind creates a messy prompt. And
+when you organize things in a structure
+where all the context is in one place,
+it makes a response really powerful. And
+that's what separates you from 99% of
+the other people. So for example, you
+can use this for making parenting
+decisions, financial decisions,
+obviously business decisions, what
+content to create, everything. You
+create the projects per area of your
+life. You want to keep the context and
+then load up as much information you
+have from internal or other people. So
+you can continue to ask it like a friend
+that you've been talking to for years.
+Let me show you what I mean. So it makes
+it really simple for you. So, first off,
+you click the new project, give it a
+name. You can say Cabo House.
+And then it'll have all the information
+there. So, first off, let's upload our
+master prompt. So, it knows everything
+about our life. If you didn't think
+about creating a master prompt for your
+own personal situation, your own
+personal finance, you should. You have
+the option to upload everything either
+through files or instructions. And those
+are what's saved in between sessions.
+And you even have tools you can connect
+or upload other photos or information to
+give more context. And each prompt is
+saved as a different context window, but
+you can always come back and talk to it
+as much as you want. So now whenever you
+start a new project specific chat, you
+won't waste time reexplaining everything
+about your life to Chad GPT over and
+over again. It'll save you so much time.
+But the best part, it's going to make
+you a ninja. You're literally going to
+separate yourself from everybody else
+that thinks they're using JBT to do
+anything productive cuz it's going to be
+dialed. So you got the tools. Now it's
+time to personalize how you use them.
+And I'm honestly shocked to see how many
+people have never heard of this next
+feature. Remember when I mentioned the
+thing called canvases earlier? Now let's
+actually explore it. The concept is
+simple. It's essentially a Google
+document inside of chat GPT. You can ask
+chat GPT to create an output, an email,
+a Facebook ad, save it in a canvas, and
+then you can chat with the canvas
+directly to refine its output. The best
+part is you can actually edit the canvas
+output. So let's say it's an email,
+tweak the copy and it'll save that
+output. That way when I said earlier you
+ask it to write a system prompt for that
+output. If you edited it and it goes,
+oh, you like commas here or this here or
+whatever information based on your edit,
+it will write the prompt to get that
+output in the future. My whole
+philosophy is you want to create where
+you iterate and iterate where you
+create. You want to be in that creative
+space, but make sure it doesn't keep
+rewriting everything from scratch. Have
+you ever done that? You're like using
+Chad GBT and you're like, "Oh, that's
+kind of good." Just rewrite it with a
+funnier tone and all of a sudden the
+whole thing gets rewritten completely
+different and you're like, "Okay, how do
+I get it to go back to the original
+state?" It's harder this way. It makes
+it so much simpler. I used to struggle
+with Chad GBT because it would fill in
+the blanks all the time. What a lot of
+AI experts called hallucination. I mean,
+I would ask it to create checklists and
+it would just make up stuff. SOPs,
+onboarding documents. I would use it for
+every aspect of my business, but it
+always added extra crap that I didn't
+want. Now with canvases, I can literally
+tell it exactly how I want the output,
+tweak it, refine it, and then get it to
+continuously make that output every time
+I ask. This feature is a gamecher
+because it saves you hours on the back
+and forth. Anybody that uses ChadBt to
+create content that doesn't use canvas,
+you don't even know AI. I'm just saying
+because canvases is the only way to
+actually use Chad GBT in a way that
+doesn't make you want to pull your hair
+out. All right, I'm going to do a quick
+example, but like I said, I like to talk
+to Chad GBT because it's just a lot
+faster. Create me an email to my
+creative director Sam telling him how
+amazing he is for the last five videos
+because they absolutely crush make it
+fun and interesting and save the output
+as a canvas. Notice when it replied and
+it said praise email to Sam, that's the
+canvas. If you use your desktop, it'll
+actually change the interface. So you
+have the chat on the left side and the
+output the canvas on the right side. So
+now I can update it and I can say can
+you add some bulleted list to that
+email. So then I tell it just add some
+bulleted list to that email and then
+it's going to update that. Okay. Notice
+how it just scanned through that canvas
+and then just kind of went gray to black
+and it just updated and it did it. It
+said here's some especially awesome
+things. So the cool part about canvases
+is on the right side you'll see this
+little window that shows and we can add
+emojis which personally I hate so don't
+do that. Anyways, personal preference.
+Do what you want. The next level is just
+a final polish. Especially if you've
+been editing the document. Remember I
+said you can edit? You can just click on
+it. So, check this out. I can click on
+it and I can add another section and
+just be like your hair. Your hair. It's
+looking so clean and sharp. So, it's
+just like these little things that most
+people don't do in canvases. And then
+the other thing is reading level. You
+can lower down. Like some people don't
+realize most books were written between
+grade seven and eight reading level. And
+then you can adjust the length. This
+session doesn't have the personalization
+I'm about to teach you in a second
+because I would never talk this way. And
+then finally, it's just you can suggest
+edits. You can say, you know, so you can
+sit there and you can write stuff.
+That's that's essentially what this does
+and say make it more funny and less
+serious, right? And then that's
+essentially what suggesting edits. And
+then it's just going to keep updating.
+But like I said, once I have it good,
+then I'm going to ask it to write the
+system prompt that would have generated
+this email from the beginning. So check
+this out. Now write the system. Now I'm
+going to write the system prompt as a
+canvas. Now write the system prompt that
+would have generated this email from the
+beginning.
+Watch it. I'm going to really like mess
+with it. Make it next level. Super duper
+detailed and awesome.
+Don't mess around or I'll put you on a
+server and ship you to Russia.
+Boom. Now watch. The whole canvas is
+going to update. Okay. So, it's going to
+take the output. Hopefully, it's going
+to take that system prompt and it's
+going to update and create a new canvas.
+So, then I have all these canvases in
+that chat window.
+Boom.
+There we go. System prompt. funny praise
+email. Anyways, it goes through it all.
+You can see it. It's just to me, this is
+when we start making things really
+exciting because AI will do 98% of our
+work. So, with that, you can see how you
+can personalize all the responses
+exactly the way you like them. But, you
+know what's even better? When chat GBT
+actually remembers your style choice,
+you never have to tell it again. Which
+leads me to the next way to get ahead of
+99% of the people using AI, you need to
+update your custom instructions. This
+one, super simple. This will make it so
+that you never have to repeat yourself
+again when it comes to exactly how you
+want AI to format the output. It's kind
+of like setting your home address inside
+your map app so that you never have to
+tell it where home is. How is this
+different than master prompts or system
+prompts? Very simple. Master prompts
+again tell you who you are, the role.
+System prompts tells you how you want it
+to do the work that you're asking it to
+do. And then custom instructions, the
+way it's going to give you the output.
+The truth is is when I write, I have a
+very specific way I like to write. It's
+very short, concise, crisp. I like
+bulleted list. I don't like fancy
+formatting. That way when I talk to AI,
+it always does the output the way I like
+it. I can always change it in the chat
+and say, "Hey, now add this, this, and
+this." But I want the default response
+to not sound like AI to use my voice and
+tonality to remove any AI specific
+language like mashes. I don't like all
+the preamble. Just give me the goods.
+Just show it to me. So, it's really easy
+to set this up. Just go to your profile,
+click it, go to settings, and then
+you'll see under personalization,
+there's custom instructions. Now, you
+can't do this on the mobile app, so you
+have to be on the desktop app. But
+that's where you install all the custom
+things you want it to do. But
+essentially, you can tell it what you
+want to be known as. You know, what do
+you do? But I use the master prompt for
+that cuz there's not enough room there.
+But that's the short version. What
+traits should GBT have? Those are the
+traits. The chatty, witty, they're all
+there. And then anything specific. Now,
+guess how you should come up with great
+custom instructions for AI. Ask AI to
+help you write them. I use the tool plus
+me, the human, to have a competitive
+advantage, to be ahead of 99% of the
+people. And boom. Simple as that. Now,
+Chat GBT automatically applies that to
+every future chat. Now, we're just
+missing one final step to make sure
+you're using Chat GBT like a total pro
+and getting ahead of 99% of people. And
+honestly, this might even get you ahead
+of 99.99999%
+of the people. And that is creating
+custom GPTs. It's kind of like having
+your own little minions doing the same
+task for you every day consistently. And
+the cool part is that if everybody's
+using it, you can always just update the
+core of it, the custom GPT instructions,
+and then everybody using in the future
+is going to get the updated version.
+Essentially, the system prompts is a way
+to do this. It's just I don't want to
+copy and paste this text every time I
+want it to do an outcome. I take the
+system prompt and I use it and save it
+as a custom GPT. The best part of it is
+that I've got this little engine of
+value that I can share with friends and
+people on the internet, my team, and
+then I can even get my team to create
+their own custom GPTs for every aspect
+of their work. I even create custom GPTs
+for all my coaching clients. So all the
+repetitive things that I want them to
+do, but done in my way is as simple as
+just clicking it, giving their context,
+and it produces the output for them.
+When I tell you my internal teams use
+custom GPTs for every repeatable task,
+it's like all over the place. It's my
+favorite thing. I always ask them, "Show
+me what you've codified. Show me what
+you've automated. Show me how you've
+made your work easier." You need to get
+your work to a point where AI is doing
+92% of it. The 8% is the artist part.
+The 8% is the you part. But everything
+else AI can do for you. If you haven't
+picked this up in what I just taught
+you, then you're missing the whole
+point. You're holding on. learn to let
+go. Custom GPTs will help you do that.
+So, recently I went to LA to meet with
+somebody that I always looked up to in
+regards to like the media and the
+business space, Rob Deerick, the ex-pro
+skateboarder now, like ridiculousness,
+but he has this whole venture studio.
+And I remember sitting there, we're
+talking about the concept of time. So,
+what I did is I took my custom GPT that
+I created using my system prompt for
+writing a book called the book architect
+and I had it write a book on time by Rob
+Deerick. That's all I gave it. I gave it
+the name and the topic. I hit enter. It
+took 27 minutes. It analyzed everything
+he'd ever said about time and the
+concept of time and then created a whole
+book outlined with all the quotes and
+all the stories that were his so that I
+could read the book. I've done the same
+thing with Gary Vaynerchuk on operating
+businesses. I've done it with Sarah
+Blakeley on parenting. Any person that
+creates content, if you want me to write
+a book, you can use the book architect
+to do that even if I've never written
+that book because I talk about it. After
+you're done watching this video, click
+the description and check it out. I'll
+even link up the custom GPT and I'll
+give you the whole system prompt so you
+can see how I did that. Tools, apps,
+your laptop, they'll save you minutes.
+Custom GPTs will save you days. So to
+create it, let's say I go back to that
+praise email system prompt. So notice
+this. I can just go and click copy. So I
+go to my homepage, I go to GPTs, and
+then the top right I go create. And then
+I can literally go to configure, paste
+the instructions, give it a name, praise
+email. So I can just say uh to Todd
+about growth. Boom.
+Isn't that neat? And it writes the
+email. Growth called. It said thanks
+Todd. Isn't that fun? So now I'm going
+to create it. And I share the access for
+anyone with the link or I can say
+anybody within my organization with the
+link or I can say anybody with the link.
+I can even make it public and add it to
+the GPT store. This is how people are
+actually monetizing AI by creating these
+advanced custom GPTs and then selling
+access to them. I'm seeing course
+creators all over the world, especially
+on YouTube, doing that and you can do it
+yourself. With this, you'll save
+yourself hours of time, which will allow
+you to position yourself ahead of 99% of
+people out there. Here's the deal. Now
+that you know how to actually make AI
+work for you, the key is is to
+understand it's not going away. And so
+many people get confused. They're like,
+"What course should I buy? How do I
+learn this? This is great. Now I feel
+overwhelmed." Just use AI to teach
+yourself. Here's what I tell everybody.
+Just create a habit stack. Find
+something you do every day. Whatever you
+do, if it's sitting down and reading in
+the morning or getting to your office
+and sitting at your chair, and then add
+AI to it. force yourself to go through
+and create system prompts, master
+prompts, custom instructions. Just do
+three things. It might take you seven
+minutes, it might take you 30 minutes,
+but every morning when you do the habit
+that's already locked and loaded and you
+add AI to that, that's how you build a
+new behavior. That's how you make it a
+default. That's how you make it your
+identity of who you are. Cuz you're
+going to want to be the AI expert in
+your peer group. You want to be the
+person that everybody else turns to to
+learn. I'm giving you the blueprint. I'm
+giving you all the prompts.

@@ -1,0 +1,614 @@
+There's a way to use Cursor where you have AI 
+agents working for you. AI agents that do your
+security. AI agents that do your bugs. If you're 
+anything me, you've tried Cursor, you've used
+Cursor, but you're not really getting the most out 
+of it. So I brought on Lee, who's from the Cursor
+team, to give us an in-depth tutorial with how to 
+squeeze the most out of Cursor. This is for anyone
+who wants to use Cursor, get the most out of it, 
+have those AI agents working for you. Enjoy the
+episode. All right, we got Lee on the pod from the 
+Cursor team. And Lee, what are we going to learn
+today? Yeah, I want to show some practical tips 
+about how I use Cursor, how the Cursor team builds
+Cursor with Cursor, and hopefully things you can 
+take back and apply to building your next app. And
+so if someone sticks to the end of this episode, 
+What are they going to take away? My hope is I've
+been coding for 15 years, and hopefully you can 
+steal some of my tips for how I structure my apps,
+some of the rules and cursor configuration that I 
+use to help you get more out of AI agents. Okay,
+great, because I think a lot of the people 
+listening, we've tried cursor. It's probably
+part of our workflow now, but we want to get the 
+most out of it. We want to squeeze that juice. And
+so my hope today is that you're going to help us, 
+you know, teach us the tips from the inside of how
+to squeeze the most amount of juice out of cursor, 
+specifically with these agents. And and just,
+you know, help us avoid some pitfalls. Absolutely. 
+Let's do it. All right. Let's rock. Sweet. OK,
+let me share my screen. All right. So the first 
+thing I want to show is using agents. Now,
+the view I'm showing right now is something we're 
+kind of cooking up and will be released soon. But
+it's basically exactly the same as pulling up the 
+agent sidebar on the right. The reason I wanted
+to show this is because it's easy to see all of 
+the different agents that I ran. So yesterday,
+I'm building a real app, working on a new course 
+platform and documentation site for Cursor. And
+if you look on the left, I fired off about 20 
+different agents, 20 different conversations over
+the day. Actually, I was coding at midnight last 
+night. So there's a few up here at the top that
+leaked into today. And I want to just talk through 
+some of the common patterns I used here to get the
+most out of agents in this code base. So let me 
+just maybe I'll pick on a few of these and we'll
+see. There's one that's interesting. Maybe this 
+event tracking one. So I asked it to add event
+tracking when the add to cursor button for an MCP 
+was clicked. And you're going to notice that it
+goes through. It thinks a little bit. And then 
+it finds that there's no linter errors. So I've
+taken some measures ahead of time to make sure 
+that the agent can basically fix its own outputs.
+Inside of this code base, which I can show in a 
+second, I'm using TypeScript. I have a linter set
+up. I have formatting set up. I have tests. And 
+all of those things, the agent can read its own
+outputs and then just self-correct and fix itself 
+without me having to do anything. So I just say,
+go do this task. Notice it's not really that 
+complex of a prompt. I just said very directly,
+here's what you need to do. And then we can 
+look and, yeah, it did a pretty decent job of
+what I wanted it to do. Now, you notice I got 
+20 different conversations. Most of these are,
+what, 30 line changes, 75 line changes, 45 line 
+changes. It's important that you're making new
+chats or new conversations for each kind of 
+discrete task because every single time you're
+giving context to the model, you can see here, 
+it was about 17% of the context window. It's kind
+of the maximum working memory that the AI agent 
+can keep in its brain. So you don't want to clog
+that up. If you talk to me for 30 minutes, you're 
+probably going to forget something that I said at
+the beginning of the 30-minute conversation. So 
+for each new task, you get the best quality out
+of working with the model. You can just start 
+new chats for each thing that you want to do.
+So when you look through here, it's not that I'm 
+doing super complex, detailed prompts. I'm kind of
+just asking, , hey, it looks there was some layout 
+shift on this video. Let's fix this script that I
+have. You know, let's replace this. Prompts here, 
+we want to just remove this custom component,
+remove this file. We got this error in the editor, 
+and we said, could not find the file declaration
+for this module, and I needed to resolve how that 
+worked. And it went and said, okay, you need to
+add this type in your file. So really the prompts 
+are not too detailed, but what you'll notice that
+I do is that I explicitly tag in files. when I 
+want to pull them into the context. I want to
+stuff them in the agent's brain. So when I said, 
+when you go to a new item in our kind of left
+sidebar that has all the different links in our 
+course, our documentation site, it should reset
+the filter input and reset the sidebar outline 
+to the starting state. And so I'm just very
+directly telling it what it should be doing. And 
+it goes through, it thinks, it reads the files, it
+makes some changes, and then again, it reads the 
+linter outputs and it says, okay, the changes that
+the agent made are correct. We've got the right 
+code. We know that it's past all the checks and
+balances. If you, if you've, and this is actually 
+a broader question, if you've never, if you're not
+a developer, should you even use this? Should 
+you even use Cursor or Linters or? Both. Yeah,
+if you're not a developer, there's kind of a 
+spectrum of I don't want to look at the code,
+right? Or I'm interested in just kind of building 
+an app, and I do want to take over the code and
+actually start to learn what it means to build 
+products, build software. There's a growing number
+of tools, I think, that are making it easier for 
+people who never really want to look at the code
+to build software. And I think that that will 
+exist and grow, and people will do that. But from
+what I've seen, you kind of reach a point where 
+eventually you kind of have to look at the code.
+and it's going to make your life a lot easier 
+as you start to figure out how the code works.
+You don't need to be an expert, but you can start 
+to kind of tune those skills and it gives you a
+superpower that previously was just a little bit 
+harder to do. It's you peel back the layers of the
+abstraction to the code. The code is the source of 
+truth. And now you can just do whatever you want.
+Yeah, it's kind of looking under the hood of the 
+car. 100%. That's how it works, right? The analogy
+I to give is in the future, there will always be 
+people who love their cars. You know, they go buy
+different parts and they pull up the engine and 
+they tweak all of the different, you know, they
+buy parts online and they change everything about 
+their engine setup or the exhaust or whatever.
+And then there's the millions and millions of 
+people who just drive cars. And, , both are legit
+and valid and fine. There's going to be a ton of 
+people who build software and can build products.
+And then there's also going to be people who, you 
+know, artisanally write code by hand every day and
+don't use AI. And that's the thing that they love. 
+And that's also valid. I think both will coexist.
+Real quick, I need to tell you about something 
+that's helping me sleep better at night as an
+entrepreneur. I was running multiple companies 
+with money scattered everywhere zero spending
+visibility and making growth decisions pretty 
+blind I knew there had to be a better way and my
+friend told me about Brax So I switched and now 
+I have mission control for every dollar. Spend
+management and visibility, virtual cards for my 
+team and earning cash from the same day treasury
+product. I was leaving so much money on the table, 
+but not any more. I have a financial operating
+system for our businesses to make decisions so I 
+can spend smarter and move faster. And it's been
+a total game changer. I'm loving Brex so much. I 
+reached out to them and asked them to sponsor the
+pod. Start sleeping better. Your financial 
+OS is waning. Brex is giving SIP listeners
+$7,500 in perks at brex.com slash SIP. Cool. Okay, 
+I took some notes on this. What else do we need to
+learn? Yeah, I want to show a different screen. 
+So going back to the normal kind of cursor window
+that most of you are familiar with, I have a few 
+rules and commands set up that are helpful in my
+project. So this one, I'm writing a lot of content 
+here, docs and educational material. And I've kind
+of built this mega prompt of everything that I 
+about writing. And there's some things on voice
+and tone. There's some things on being specific. 
+But then I also just built this list of banned
+words. And I'm sure I've cribbed some of these 
+from different places online or books that I've
+read. But I've just tried to delete the marketing 
+speak out of people's brains. So mission critical,
+performant, seamless, some of these things are 
+fine and all rules can be broken. Right. But
+this is just a helpful list of me trying to delete 
+some of these overused words or overused phrases.
+And my most recent addition here is also trying to 
+catalog some of the LLM patterns, the junk that it
+spits out. this is the most recent one I've seen 
+people talking about. it's not just X, it's Y.
+And , once you see it, you can't unsee it or the 
+LLMs all generate the same style of writing. So
+this has been helpful for me as kind of just a 
+quick pass when I'm writing something. It's , hey,
+am I making sure that I'm not doing anything, you 
+know, completely robot sounding? Yeah, this is
+really smart. I should do this because I do a lot 
+of writing. And I do this manually right now. So
+the fact that this can just be, you know, somewhat 
+automated is really big. , beyond writing,
+what are other, you know, common use cases that 
+you can, you know, use rules for? Yeah. Yeah,
+I'm happy to send you this prompt, by the way. 
+Another one is custom commands. So this is a
+little bit more of a detailed command for things 
+that I to do when I'm reviewing code. So if you're
+newer to coding, some of these things might seem a 
+little overwhelming, but you can kind of dial this
+up or dial this down. The idea holds true, though, 
+which is that you have the agents. And inside of
+here now I can run slash code review. So I've got 
+this slash command and that slash command is just
+driven by this file, this markdown file. We can 
+make whatever we want. We can do code review,
+security review, vibe check. we could we could 
+do whatever we want here. And inside of my code
+review custom slash command here. It's just 
+little gotchas that have kind of bit me in
+the past. , hey, did you think about what would 
+happen when there's no Internet? Did you think
+about what would happen when the application is 
+loading information? Did you handle that with a
+nice loading spinner? Did you did you write good 
+tests? Did you write smaller number of tests that
+are really good versus just spamming a bunch of 
+garbage? Did you change the authentication? If
+you did, you might want to run and do a security 
+review. Did you have, you know, places where we
+might want to speed things up with caching, some 
+of these more advanced software engineering terms
+and concepts and just building these own kind 
+of customized commands and customized prompts
+for your use case has been very helpful for me 
+as well. Yeah, and I'd imagine in the future,
+you don't have to quote me on this, in the future 
+you would think that a lot of these agents,
+so to speak, would come stock with Cursor. Yes. 
+Because so many projects require this. Yeah,
+this is a good time I can show you a couple other 
+things, which is one of these kind of code review
+bots, we used it so much internally, just Cursor 
+building Cursor, for almost a year that we decided
+to actually turn it into a product. And it's 
+called BugBot, and it allows you to do essentially
+what we just talked about. The code review prompt 
+that I had was more of kind of my own preference,
+not just kind of finding bugs. But we have another 
+one called BugBot, which just to give the context
+of this repo, I've got a docs repo for cursor. 
+I wanted to add some docs about extensions. So
+I actually kicked this off with an agent. And if 
+I want to make any follow-up changes, I can just
+tag at cursor on GitHub, and it will just go make 
+the changes for me. But then I got this comment
+from BugBot. And BugBot from cursor was , hey, 
+by the way, I think you missed some of the other
+languages. So we have our docs internationalized 
+to a bunch of different languages. And I was , you
+missed a few, bro. So I need to go through 
+and pick some of those things. So this is the
+built-in code review bot, basically, which you 
+can make some that are custom. So with our CLI,
+which I can show in a second, you can run the CLI 
+in your GitHub Actions or whatever your deployment
+platform of choice, your CI platform of choice 
+is. So this one, for example, you could audit
+your repository for security vulnerabilities. And 
+you just dump the CLI into this CI script and you
+can run the cursor agent. So the agent that I just 
+showed that was in the cursor editor, the GUI,
+you can run it headlessly. You can run it just 
+behind the scenes through the CLI. It's the same
+logic, the same idea, the same power. But now I'm 
+giving this prompt and I'm running it basically
+in automation. And I can just automate away and do 
+whatever I want. So you could automatically update
+your docs every time somebody on the team merges 
+a PR. You could automatically fix things and push
+commits back to your branch if the CI fails. So 
+if your test failed or something else fails. And
+this is just a few of the ideas. There's so many 
+different things you can do with this where you
+can have complete control and automation over 
+what you're doing. And another thing I wanted
+to show is here was another example of where I 
+used an agent to kick off a PR. And I actually
+went ahead and included the screenshot down below. 
+I got a report on X that this button didn't work.
+So I'm in Slack. And I just kind of pasted in what 
+they said. And I said, at cursor, here's the repo.
+Investigate this bug and fix it. And then it comes 
+back and it says, okay, here's the fix. I go out
+to the PR. I look at the code. I go test it. I'm 
+, yeah, seems good. And it just saved me so much
+time. I didn't have to go open up the editor. 
+I just kicked it off from Slack on my phone. It
+was amazing. Yeah, , first of all, I actually had 
+no idea this existed. I don't know if this is new
+or not. But this idea this is cool because this 
+is about a lot of people are vibe coding A lot of
+people are prototyping but prototypes are cool 
+But we want to create people listening to this
+want to create production code And a big part of 
+that is software that scales software that secure
+being quick on when you do have customers being 
+quick on fixing bugs So I think what's cool about
+this is it gets us closer to there, it gets us 
+there. Yeah, and the idea is basically that same
+cursor agent you can use in the editor. You can 
+use it from Slack. You can use it from the web.
+So if you go to cursor.com slash agents, same 
+idea. I can just go here and kick off prompts,
+and they can run in the cloud. So they run in this 
+secure virtual sandbox. In the same way, I can do
+it in the editor when I have local files on my 
+machine. So I'm on the go. I'm, , in the car,
+and I can just go to cursor.com slash agents and 
+kick things off, similar to other of the, , vibe
+coding prototyping tools. Similar idea here 
+where I can integrate with all of our kind of
+production repos and just fix little things this, 
+typo changes, docs issues, the padding's wrong,
+I want to change the color, little things that. 
+To your point, really helps with having great
+customer service and being able to turn around 
+bug fixes super, super fast. I can try to find
+and pull up the tweet from Linear, but Linear 
+has this amazing policy where – oh, here it is.
+they have this amazing policy where they have a 
+zero bug policy and they use cursor. If you look,
+this is inside of linear. Let's see if I can 
+make this a little bigger. Maybe not. Well,
+a PM reports a bug. The AI categorizes it. The 
+engineer who's triaging just tells cursor, Hey,
+investigate this and fix it. It opens up the PR. 
+They fix it and they accept the change. And they
+just turn this around just incredibly fast for 
+basically any issue that gets reported. And I
+think a lot of teams are going to start operating 
+in this way. This isn't going to solve , it's not
+going to say just build me a billion dollar SaaS, 
+make no mistakes. But this is bugs, small things,
+you know, little things, the drudge work of 
+building software. Well, I also think that,
+you know, if I'm, you know, if I'm a customer and 
+I'm on a I'm on Linear's website and I see that,
+you know, Linear has a zero bug policy and I'm, 
+you know, comparing JIRA to Linear and I see
+zero bug policy. I might be more likely to buy 
+the software that says that. 100%. So there's
+real value, right? there's real positioning and 
+marketing value when you actually say something
+that, which is huge alpha. A million percent. 
+And the last thing I'll just show quickly is,
+I mentioned, we have the headless way you can use 
+Cursor Agent. You can also use this in the CLI.
+If you're the type of person who prefers Vim or 
+you prefer JetBrains or you prefer other editors,
+or maybe you just really the terminal, I think 
+more advanced engineers love this stuff. So I
+could say in here, , let's add end-to-end tests 
+with whatever tool you want. I could just say
+Playwright, or you could just not even say what 
+tool, for testing, submitting prompts in the chat.
+Sure. And it's the same idea, right? It looks 
+similar. It feels similar. It has the ability to
+work with basically any AI model, call different 
+tools, which are essentially skills. So you give
+the model skills to go read files, write files, 
+search your code base, look up things on the web.
+It's you're training it with all these skills. And 
+then it can go and make changes. You give it this
+kind of ambiguous or maybe not ambiguous, but this 
+broad task. just go add tests. Make it good. Make
+it great. And it can go and kind of figure out 
+what you want to do. It can run terminal commands.
+It says, hey, what do you want to do? Do you want 
+to allow kind of installing things? I'm just going
+to put it on YOLO mode. Auto run all commands. 
+Great. Just do whatever you want. That's fine.
+This is full vibe. And it can manage the to-dos. 
+It's going to go install the dependencies, set
+up the configuration file. So very similar thing 
+here with what I was showing kind of in the visual
+editor. This is cool. This is very cool. I mean, I 
+personally, I'm not super advanced. So personally,
+this is a bit, a little bit, it's cool to see, 
+but a little bit daunting to me personally. Yeah,
+I feel that. But , I know that there's, you 
+know, I'll call them real developers, seeing,
+you know, who do feel more comfortable in 
+an environment that. Yeah, I personally
+do not daily code with a CLI. I being able 
+to stop and review the code in the editor,
+kind of click through the files. That's just the 
+way I've built software forever, and it still
+clicks with my brain. But some people definitely 
+enjoy that way, for sure. Before we head out,
+is there anything we're missing around if someone 
+is going to use cursor today, how can they get the
+most out of it? I think that for a lot of people, 
+they have this tendency to make their conversation
+this append-only, they just continue in one 
+chat forever. and I don't think they realized,
+I noticed this with a lot of people getting 
+started, people are just kind of graduating
+from vibe coding into building a real production 
+app and they're , it was great at first, but then
+it got bad and they're trying to figure out , why 
+did it get bad? Did it get bad because there's
+just a lot more code now? Did they secretly make 
+the models worse? Is there some conspiracy? And
+almost always when I work with people and try 
+to debug what went wrong, they're just trying to
+give the model way too much stuff So I mentioned 
+with that context window, if it gets up to 100%,
+Cursor can automatically summarize and keep 
+going. But you don't really actually want to do
+that because if you get to 80% or 90%, it's just 
+very likely that there's so much junk in there,
+so much context, that the model can get confused. 
+And there's actually been some early research that
+has shown in long context tasks, especially with 
+models that can have a million tokens of context,
+so just a ton of stuff. You don't really want 
+to be kind of running that as your daily way of
+coding where it's , , just give it 500,000 tokens 
+of context. It just gets really confused, and they
+have measured this kind of quality drop-off as you 
+get further and further up that chain. So I would
+just be very mindful about how much context you're 
+providing. And for new tasks, for new features,
+start a new chat, you know, start a new window, 
+and kind of start from scratch again. What's the
+craziest thing you've seen built with Cursor? 
+in terms of software, you know, I've seen some
+tweets, people being , oh, people using Cursor, 
+you know, platforms Cursor, they can only build,
+you know, little software apps. Is that true? Or 
+can you build, you know, some serious software
+apps? Yeah, I think a few that have been fun for 
+me. One is seeing the new generation of people
+who can just build software now that previously 
+wouldn't have been able to do that and see what
+they come up with. that is just completely, it's 
+not what I would ever have imagined. So we did a
+meetup a couple days ago, and a few people brought 
+their parents, their parents brought their kids
+to the meetups. And there was a six-year-old kid 
+coding with cursor, which is mind-blowing to me.
+I was stacking Legos and, , sucking on my thumb or 
+something when I was six years old. I don't know.
+And, , six-year-old, , building with AI is just 
+amazing. So that's one thing. And the other thing
+that I've seen that's amazing, when the marginal 
+cost of writing software is zero when coding is
+easy when coding you can just generate a bunch 
+of code there are certain types of things you can
+build that previously you would just never do that 
+A great example is very very detailed and thorough
+debugging tools So you run into a problem in your 
+app. And sure, you can add some logging. You can
+try to step through all of the editor things. 
+Or you can ask the AI to write a complete visual
+interface for you to debug and figure out what the 
+heck is going wrong. Now, this doesn't make sense
+for every single issue that you run into, but I've 
+now seen a couple instances where people built
+these, , custom heads-up displays where they could 
+step through what was going on in the application.
+Or they built this, , side-by-side A-B test thing 
+where they were migrating from app A to app B,
+and they could, , review each change along the 
+way. You would never build custom software for
+that in the past. , it's throwaway. You would use 
+it once and then be done with it. But when writing
+code isn't the hard part, it's , well, heck, yeah, 
+I want a visual GUI to watch this migration. That
+sounds awesome. Totally. And I also think, I mean, 
+this whole era of they call it personal software,
+right? Yeah. So, you know, this idea that, 
+yeah, you might just want to create this
+disposable piece of software for this one use 
+case. And it makes your life easier. So you're
+doing it. there's also this idea that there's 
+probably a really big business to be created in
+creating personal software for companies too, 
+right? a lot of people listen to this show,
+Startup Ideas Podcast. So a lot of people here 
+have ideas. And I think that if you're trying to,
+one of the simplest businesses to start is go and 
+just use Cursor and build personal software for
+some vertical. Is it healthcare companies? Is 
+it fintech companies? Is it boring businesses?
+I think there's a huge opportunity there. Quick 
+plug, I actually wrote a blog post about personal
+software, lerob.com slash personal software 
+that talks a little bit about this. It's super
+inspiring and exciting for me. This whole era of 
+people being able to just build things that they
+want, I've seen so many people build amazing 
+things in this way. And you mentioned that
+you were talking with Logan about Nana Banana from 
+Google. And I've seen people talking on X recently
+about the capabilities of that model are so good. 
+You can just go into Cursor and build a vertical
+of some AI generation, image generation app that 
+is going to be 10 times better than anything else
+that exists. So removing backgrounds or trying on 
+clothes or architecture before and after photos,
+things that people who haven't caught up to 
+the speed of technology, they haven't seen,
+the latest versions of the models are , wow, 
+how the heck did they build this? This must
+have taken so much work. And in reality, it's , 
+it's just a model call now. And you're making it
+accessible to hundreds of millions more people, 
+basically. Have you seen Peter Level's tweets
+over the last 24 hours? Banana, banana. He's 
+, yeah, his mind is blown of how good it is,
+right? So and he's, you know, can you actually 
+pull up his ex account. Yeah, I'm pretty sure I
+saw what you're talking about. He was dropping 
+some amazing knowledge for people. The thing I
+love that he does is I think he inspires a lot of 
+people to just think bigger and really try to say,
+you could also be an entrepreneur. You could also 
+just build these amazing things. Yeah, I think he
+just saw what, obviously he's been in the space 
+for a while because he's been building photo
+AI. So he's been playing with the models. And I 
+think he said it's the internet. Oh my God. Show
+us inside area 51. That's another use case. No, 
+it's true. Yeah. He had one about, , Oh, this is
+a good one. If you're not building a mini startup 
+with nano banana today and launching it tomorrow,
+you're missing the opportunity of a lifetime. This 
+image model just made hundreds of new startups
+and apps possible. Your only limit is creativity 
+and how fast you can ship. So true. that's banger
+advice. Right. So I think your point is with 
+cursor, you just call the model. go in, I mean,
+you have to come up with a good idea, right? 
+Yeah. And you have to have some distribution
+or understand how to get distribution. But there's 
+this window right now to create software with this
+model. Yeah. imagine this in an app form. It's you 
+can drag the map around on the web and then you
+can turn it into exactly this fancy image that 
+you want to see. And then maybe on this image,
+there's different button filters. You can 
+apply different styles maybe there's a slider
+that slides it throughout history. So you do the 
+arrow pointing at San Francisco, downtown on the
+Embarcadero. And then you can slide it from 1930 
+all the way to 2020. and you know back in the day
+in the Embarcadero there was the over before I 
+think it was the earthquake or something there
+used to be a above ground train I think or and 
+that was all along the Embarcadero so you would
+see that and then you would see it go away and the 
+models are going to know about that that would be
+that would be really cool the other thing to 
+think about is you know a lot of people talk
+about personal software for these utilities but I 
+actually think personal software as distribution
+software is something that not a lot of people 
+have talked about. So how do you create a piece
+of software that, you know, goes viral on X or, 
+or gets a lot of traction that, , builds you the
+distribution that you can basically use it almost 
+as a lead magnet to get and then sell your actual
+piece of software. Yeah, I actually, I'll, , I'll 
+show you something that I don't know exactly how
+to put it into a blog post yet, but what you've 
+described, I've been sitting on for a while and
+I've been thinking about, and I've been calling it 
+a distribution engineer. I just keep Apple notes
+because, you know, why not? And indie hackers 
+know this, right? They build in public. It's not
+necessarily about getting followers. It's about 
+getting distribution. And it's the same when you
+look at basically any other part of building 
+software. If you build docs, well, you want
+people to read them, right? So they need to be 
+distributed. If you're building a community, you
+want to be more than one person. So you have to 
+figure out distribution. Distribution is all you
+need. It's not really about necessarily just the 
+product, but you want the product to actually get
+used. And there's something here because in the 
+past I've talked about how front end and back end
+went to more product engineers. You were caring a 
+lot more about the product. And now that product
+is becoming easier and easier to build, there is 
+something here to this distribution angle where,
+okay, I've got a product and I'm an entrepreneur. 
+I'm trying to get it out into the world. Figuring
+out distribution is huge. It's huge. Lee, always 
+a pleasure having you on. You're the GOAT,
+man. I'm excited that you're now at Cursor. I'm 
+not affiliated with Cursor at all. I just think
+it's a cool product. Yeah, man. Let's get the 
+comment section going for Lee. I'd love you to
+come back on. Do , you know, people listening do 
+this video if you want more of this in your feed.
+And I'll include links to follow Lee on all social 
+platforms. So go ahead and follow him there. Lee,
+anything you want to leave us with? Man, thanks 
+so much. It's been a blast chatting and all your
+recent guests have been fired. So keep up the good 
+work. I appreciate it. Take care, my man. See ya.

@@ -1,0 +1,584 @@
+[Music]
+Hey everybody, thanks for joining today.
+I'm Nate and I lead the chat for chatbt
+for business product team. Now today's
+live stream is all about how we help
+bring your organization's unique work
+context directly into chatbt. And so way
+that we do that is we enable you to
+connect your internal knowledge sources
+to chatpt uh so that you can find the
+most relevant information at the right
+moment. We also respect all of the
+existing user permissions inside of your
+organization and we keep uh your data
+private and secure within the team and
+enterprise workspaces. So there are two
+experiences that we're going to walk
+through to show how we bring this
+context in. The first is connectors to
+your internal data uh to power deep
+research and also just everyday queries
+with chatbt. And the second is record
+mode where we can capture and help you
+make better use of all the information
+that is spoken in meetings but isn't
+necessarily written down. And so I can
+personally attest to the fact and the
+power about these products. We've been
+using these every single day within our
+teams as we're dog fooding. It is just
+amazing to see how we can take the
+breadth of information that we have at
+OpenAI and that we're creating every
+day, be able to synthesize that down
+with really targeted queries and then be
+able to use that for actionable insights
+that drive our product work forward. So
+we've been really excited to play with
+it. We're excited to show to you all. Um
+so joining me is several members of our
+product and our research team. Uh, so we
+have Neil, Priy, and Dibbo. So, they're
+going to take you through the demos
+here. So, I'll pass it over to Neil.
+Sure. Thanks, Nate. I'm excited to show
+you all how we're using connectors to
+accelerate our own work here at OpenAI.
+Now, we can't show you our own internal
+data, but we can show you how connectors
+work on a fictitious company we've
+created called AGI Corp. I think I would
+like to work at a company like that. I
+hear it's pretty good. Um, so AGIC Corp
+a few months ago launched one of my
+favorite fictitious products, animal
+GPT. It's a new family of models that
+translates animal noises to human text.
+What animals are we working on? I think
+we have we've launched bark to text and
+on the road map is uh meowed text coming
+up, but we're right now in the middle of
+Q3 planning and kicking it off. So as a
+team together, we're going to use our
+connectors and all of PT to help us kick
+off that whole planning cycle. uh we'll
+start off by using deep research and
+connectors to help us understand a
+little bit more about some of the
+upcoming partnerships and launches we
+might have going on. So I'll go ahead
+and open chatbt and hover over deep
+research. Now if you remember deep
+research launched in February of this
+year and is a new agentic capability in
+chatbt that allows you to extensively
+search and analyze the web. Now, one of
+the big pieces of feedback that we got
+from users is that they wanted to not
+only deep research over the public web,
+but over all of their private sources.
+And so, when you click on Deep Research
+Now, you're going to see a new sources
+drop down. And opening that, you'll see
+that Deep Research Now not only connects
+to the web, but to all of your favorite
+apps, everything from GitHub to
+Gmail. I'm going to go through and
+toggle on a few that I'm particularly
+excited about. For this next query, I'll
+do HubSpot and then Outlook, SharePoint,
+and
+Teams. And what I want to ask Chat GBT
+is a little bit more about some of the
+potential distribution partnerships we
+can lean into for Bark to Text and
+Animal GPT. So, I'm asking the model,
+hey, we're doing Q3 planning for Animal
+GPT and we're excited about potential
+distribution partnerships. Can you take
+a look at HubSpot and tell me what open
+deals are most likely to close that
+overlap with our company strategy? and
+I'm going to have it cross-reference
+those with any discussions and kickoffs
+that we have in SharePoint, Teams, and
+Outlook. So, I'll go ahead and kick off
+that query, and Deep Research will go
+ahead and ask me some contextual an uh
+questions specific to the applications
+we have right now. So, it's asking me
+about the company strategy. I'll
+say AGI Corp. wants to advance
+AGI. Um, but focus, it is a good one. uh
+focus on deals with high revenue
+potential and high
+likelyhood to close in Q3.
+Um make sure to cross reference across
+all the Microsoft
+apps. And with that, deep research is
+going to go ahead and kick off and it's
+going to spend the next five or 10
+minutes extensively searching all the
+different apps that I've pointed it
+towards. Um, now the really awesome
+thing is that a query like this would
+have otherwise taken me or my team hours
+or even days to comb through HubSpot,
+Teams, chat, CRM, messaging. And
+instead, Deep Research is going to go
+ahead and do that in just a couple
+minutes. Yeah. And I think there's
+something really powerful about being
+able to extend our team's capabilities
+as well. So, you know, things like CRM
+data are likely data sources that Neil
+and other product members may not be as
+familiar with. And now you're able to
+get answers from that really quickly.
+Absolutely. And it's not just CRM. Uh I
+use this feature all the time to search
+GitHub. I'm sure our engineers think uh
+thank it for not uh letting me bother
+them every day. Um cool. Well, deep
+research uh takes a couple minutes to to
+get started. So in the meantime, I'll
+hand it over to Priy and Dibbo to show
+us what else we can do. Awesome. Thanks,
+Neil. So, while deep research is going
+on, um, as Neil said, it's great for
+really comprehensive reports around a
+specific topic, but a lot of times you
+just want to quickly go back and forth
+in the context of your everyday work.
+Um, so we're going to show you, you
+know, how you can augment that with
+bringing in additional knowledge to to
+really streamline the work you do in
+chat GPT itself. So, I'm going to open
+up a new window here while deep research
+is going on, and we're going to use this
+to kind of get up to speed on some of
+the things going on at the company,
+triage a bunch of documents and data
+across our file storage systems that we
+use here at AGI Corp, and then pull
+together a synthesis of what we should
+be working on. Um, sounds like we have a
+lot of exciting work with Bark Detect
+and Meow Detect coming. Um, so let's
+start kind of going broad. Um, like I
+said, we're new here, so we just want to
+get up to speed. So, I'm going to ask
+something
+like, "Chachi BT, get me up to speed on
+our Q2 marketing and
+product strategy." Um, and I'm also
+curious about revenue. So, I'll say what
+features drove the most revenue in Q2.
+So, there are a few ways to invoke a
+search. uh we've postrained the model to
+be good at understanding when the user's
+uh question requires internal knowledge.
+So in those cases it will try to
+automatically trigger that like it's
+doing here. But if you just want more
+direct access um you we've also built a
+new tool into the composer that you can
+use to manually toggle on sources that
+you want uh chat GBT to search across.
+So you can see that in just a few
+seconds PRI got a pretty in-depth
+summary of uh our Q2 uh plans. Um, do
+you want to talk about some of the
+sources that the model's showing here?
+Yeah, like D.A. said, I mean, the great
+thing here is that not only do we get a
+really clear summary within a couple
+seconds, but each part of the model's
+response is actually showing us, um,
+what sources it's pulling from. So, we
+can verify the information, um, we can
+dig deeper. And then we actually have a
+source tab here. So, if you want to
+engage individually with certain
+documents, I can ask it to deep dive um,
+on individual documents if I want to
+continue my research there. Um, all of
+these sources, like Nate said at the
+beginning, are permission aware and
+enforced. So, I'm only able to see the
+documents that I have access to. Here,
+we're signed into my account. So, I work
+very closely with our board team here at
+AJ Corp., so we can see that I have
+access, and it's pulling up some of the
+board decks, but actually looks like
+Debo doesn't. So, don't look too
+closely. I mean, it's fine. They don't
+give it to Neil and I either. No, keep
+us in the dark. Okay. So coming back to
+the summary here as um Neil was
+mentioning it does look like Bart to tax
+v2 is doing pretty well. So maybe let's
+see if we have any information on
+engagement. It looks like retention was
+pretty good but let's see if we can get
+up to speed here. So let me ask Chachi
+to generate a
+time series plot of daily active users
+for Bark to text
+V2. Um, and it looks like Chetch is
+automatically launching into data
+analytics mode. So, I use this feature a
+ton and normally the way I would do it
+is I would have to update upload um,
+spreadsheets that first kind of go into
+Google Drive and find where the data is
+located, then manually upload it here.
+Here, the great thing is it already has
+context on my enterprise knowledge. So,
+it's able to automatically draw in that
+data. So, I can get straight to work.
+Um, so here within a second I was able
+to look up, you know, a pretty generic
+query on what DAO looks like for Bart to
+text V2. Yeah, it looks like we're
+crushing it. We love to see that.
+Probably it's time for me to text. Um,
+and to help us with that, I actually
+think um, our user research team was
+doing a bunch of user interviews. Um,
+let's see if we can find anything
+relevant there.
+So let me ask chatbt find user
+interviews from
+Dropbox from recent pet
+owners. There we go. And now u as you
+can see um I'm kind of using natural
+language to filter down the query a
+little bit. Um I have a few different um
+parameters here and Dropbox was
+highlighted because um I'm you know it's
+telling the model that um I should
+prioritize data from there. So we've
+built a little bit of a UI to let you
+know that the model is really
+prioritizing that source as
+well. So based on the specific query
+parameters, I asked it for recency, I
+asked it from Dropbox, and I asked it
+from pet owners because as Neil was
+looking at, we have a ton of
+stakeholders ranging from vet clinics to
+to different kind of partnerships. So, I
+just wanted to look at pet owner
+specifically as we think about meat text
+v2. Um, and we have a few different user
+interviews here. So, normally we'd kind
+of go through and read all of these,
+which would take a bunch of time to
+synthesize. Um, as a PM, I spent a ton
+of my week doing that. U, but let's see
+if we can kind of bootstrap that and ask
+chat to help synthesize for us. Let me
+ask
+synthesis of these interviews.
+to pull
+top pain points and ops ranked by return
+on investment. And then I want this to
+be immediately actionable. So let me say
+something like turn this into a Q3 plan
+and
+generate a doc. And it's the last thing.
+A lot of times when you're doing your
+work, it's not it's most useful if it's
+actually in the language and the way
+that you actually work within your
+company. So, I'll ask it to cross
+reference our template um to format it
+in the right way, too. Let me ask. And
+this is our Q3 planning template. Yes.
+Look up
+our our
+planning template doc and follow that.
+So behind the scenes once the model's
+decided that it needs to use internal
+knowledge to answer uh the user's
+question um it's going to go ahead and
+rewrite uh it into one or more
+contextualized queries um with different
+attributes like um how recent it needs
+the results to be or um what sources it
+wants to filter down to uh for the
+search. And then our search backend can
+operate on these queries and um return
+the most relevant results that the user
+already has permissions to view. Um and
+then given these results, the model can
+then decide to go back and ask follow-up
+questions or u uh dig into some of these
+files by opening them, use some other
+tool, um or just answer right away.
+Yeah. And it actually looks like in the
+last couple minutes I lost access to the
+planning template. I guess some things
+changed around here, but that kind of
+shows you how, you know, permissions are
+always respected here. Um, and it's
+really up todate and that's really
+important to how we built the system.
+So, within a couple seconds, we were
+able to go through um, and get a
+prioritized list of what we should be
+building, some core metrics that we look
+at, um, as well as some of the the core
+work streams here. So, it looks like
+Neil, you're going to be working on
+contextual intelligence, um, and I'll be
+working on our pet memory layer, but we
+have a busy Q3 ahead of us. So, That was
+just kind of an endto-end flow on how
+bringing in some of your enterprise
+knowledge will really augment the work
+you do in chat GBT and can help you
+centralize a little bit more. So we're
+excited to start rolling this out today
+across file storage systems where um
+enterprises have a large portion of
+their enterprise knowledge. So um Google
+Drive as well as SharePoint, Dropbox um
+and Box in beta. Um this is rolling out
+for Teams, enterprise and edu. And just
+as a reminder, by default, we don't
+train on any data um across teams, EDU,
+and enterprise. Um as well as and that
+includes any connected data as well. So
+this is still early days for connectors.
+Um while connectors remains in beta,
+we're excited to see how you use this
+with your work and we are committed to
+continuous improvement and testing.
+Great. Thank you guys. Now, I want to
+invite another one of our PMs uh over to
+uh to sit with us who's going to talk
+through the next feature of record mode.
+So, Sandra is going to be joining us.
+And I can assure you there is nobody who
+is more excited for me out to text than
+she is.
+Thanks, Nate. That's right. I'd love to
+talk to my kittens. Um all right. So,
+having the ability to get answers across
+all your documents and data sources is a
+huge win. Um, but we also know that
+that's just really half the story,
+right? A lot of the important decisions
+and context from our work actually
+happens in the conversations that we
+have with our teammates. Absolutely. And
+so that's why we're introducing chatbt
+record mode. It's a way for us to help
+make sure that your notes are complete,
+that they're not scattered. You're also
+not having to um multitask during a
+meeting where you're really trying to
+engage and you're having to take notes
+at the same time.
+So, with record mode, what we're
+introducing is on our Mac OS desktop
+app, you will see a uh circle icon uh
+button next to all of the other voice
+options. And with just clicking on this
+button, you will get a recording. So,
+right now, Chat GPT is recording all of
+our audio. And on the back end, it's
+transcribing that audio, and it's going
+to generate a really useful summary for
+me afterwards. So, for now, we're not
+going to record this session. So, I'm
+going to go ahead and just close this
+out. Um but let's look at you know AGI
+Corp's Q3 pounce plan. Um so the team
+last week was doing a uh brainstorming
+session around personality aware
+translation and they were really talking
+through like the different options that
+they had and they recorded that session.
+So you can see that there is a
+structured meeting output here. And if
+you navigate down the page, what you'll
+see is that there are key points, action
+items, and most importantly, they're
+always citing the transcript. So if I'm
+if I have more questions about, hey, the
+energy trait, that's where we're going
+to focus our personality translation on,
+what what was spoken about that, like
+what should I know about that, it's
+going to go highlight that section
+exactly in the transcript, so you always
+have that full full context. These time
+stamps are awesome. Makes it really easy
+to figure out where exactly the things
+were said. Like we said, we use this
+every single day inside of the the
+teams. And it's uh being able to to kind
+of go from the summary to the transcript
+is really really powerful. So if I were
+in a meeting and I were going to share
+something back with Sandre and she
+didn't have full context, she's able to
+get the the kind of TLDDR on the
+summary, but then also go to the
+individual details when she needs to.
+Yep. Exactly. Um the great thing too is
+let's say like we fast forward a couple
+of weeks and I'm trying to remember what
+actually happened in that meeting,
+right? And this happens all the time.
+things move fast at OpenAI and so I
+imagine they move fast at AGI Corp as
+well. Um, and let's say I was saying,
+hey, like what were the technical
+limitations that we discussed at our Q3
+planning, I can go ahead and send that
+note to chat GPT. ChatGpt is going to
+scan across all of the data sources,
+again, docs, data sources, but also our
+transcripts. They're included in that
+overall corpus as well. And so you can
+see, hey, you know, what we flagged was
+the latency issues, the GPU resource
+constraints. Um, and with it you have
+all of these embedded links directly
+into the transcript. So again, you can
+have that full
+context. And then from here, what's
+really great is I might ask, okay, um,
+help me draft a leadership uh, draft a
+leadership
+update on our
+Q3 Q3 road map. We definitely don't look
+for an out. There's no way. Um yeah, so
+like just like that, something that
+would have taken me uh a lot of pinging
+folks, trying to get the full context of
+the meeting, those other teammates,
+trying to remember what happened in the
+meeting, all of that's actually captured
+and chat GPT becomes your second memory,
+right? And so with that, um I'm able to
+both recall, understand clarity on what
+the decisions were made and then
+immediately turn that out into a
+leadership update that normally would
+have taken me a bunch of time.
+Um so with that I would love to Neil
+show us what what Deep Research is up
+to. Yeah absolutely. Thanks Sandra.
+Cool. Uh so as you remember uh earlier
+we kicked off a deep research query that
+was looking at all of the different
+partnership and distribution deals we
+might be able to do with animal GBT as
+we go into Q3. Uh so it looks like now
+if we come back to chatbt deep research
+has actually spent 9 minutes doing a
+really comprehensive search of all these
+different applications and it's pulled
+together what seems to be a really
+comprehensive report on all of our
+distribution partnerships. So you can
+see in chatbt the models put together
+some really great summary insights some
+comp Q3 opportunities um in a really
+good table too. So, it shows us
+opportunities, deal stage, close dates,
+revenue, strategic fit, cross reference,
+discussion. And the awesome thing, too,
+is that it's pulling all the different
+citations from all the different sources
+that we've hooked it up to. You can see
+HubSpot, Teams, SharePoint, and Outlook
+all put together here. Again, this is
+the kind of work that would have taken
+me, you know, hours to do, and we got it
+all done in minutes.
+Now, we just showed a small set of
+connectors just now with Deep Research,
+but the amazing thing is that we've
+added a whole new set of connectors that
+are launching today with Deep Research.
+Just to go down the laundry list so we
+all see them together, we've got Box,
+Dropbox, GitHub, Gmail, Calendar, Google
+Drive, HubSpot, Linear Out, Calendar,
+Out, SharePoint, Teams. What's that
+whisker DB? You know, that is not a
+typical first-party connector. That is a
+custom connector powered by MCP or model
+context protocol that I've loaded up
+into chatbt. Uh we're excited to
+announce that chatbt is now supporting
+MCP custom connectors building on the
+work that we've done with the responses
+API over the past month. What this means
+is that if you're an admin for an
+enterprise or team workspace, you can
+connect a custom MCP connector and
+publish it to your organization. This is
+really awesome if you have, you know,
+custom databases like Whisker DB that
+you want to expose to all of your users.
+And if you're a prouser, you can also
+connect custom sources and publish it to
+your own personal
+chatbt. Not only that, but we're also
+partnering a lot more with the
+ecosystem. In fact, the HubSpot
+connector that we just demoed wasn't
+built by us. It was built by the HubSpot
+developer team, and it's the first MCP
+custom connector that we've published
+directly in our registry.
+Yeah, that's great. So, there's one more
+thing that I want to chat with you all
+about before we break today. So, to
+support the diverse way that all of you,
+all of our customers use ChatBT, we're
+making our pricing much more flexible.
+So tangibly what this means is that
+we're adding credits to all of our
+existing uh workspaces across uh
+enterprise and team. And so your users
+now will get full access with their
+existing plans to all of our most uh
+intelligent and advanced model features
+and new models that we're rolling out.
+So this is going out to enterprise today
+and we'll be launching to team in the
+next couple of weeks. So now I want to
+recap all the different pieces that
+we've talked about today and kind of
+bring it back together. So what we
+showed you is how chat GPT is able to
+take your company's context and make it
+more relevant, actionable, and
+accessible across your entire employee
+base, leveraging connectors and record
+mode. Now, we believe this just is going
+to help make catchupt just a much more
+powerful collaborator for your
+teammates. We're really excited to see
+what you all built. We've had a ton of
+fun building it ourselves and and using
+it uh internally. So, please let us know
+uh feedback on uh on LinkedIn. Uh let us
+know what you think. Really appreciate
+you all joining us today and we'll see
+you soon.
+[Music]
+[Music]
+[Music]
+[Music]

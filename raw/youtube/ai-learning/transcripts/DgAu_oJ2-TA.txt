@@ -1,0 +1,513 @@
+tenho colegas meus que tem equipes de 70 vendedores e ele recentemente implementou chatbot de vendas lá com ia
+ele fala cara esse chatbot desempenha hoje melhor do que qualquer um dos meus 70 vendedores teve mês que esse chatbot
+converteu 45% a mais que o melhor vendedor dele é olha aí turma seja muito
+bem-vindos a mais um episódio aqui no nosso canal e hoje estamos aqui com o nosso ilustre Hugo galera para você que
+é fã de 8n já conhece se figura aqui porque ele é nosso Embaixador n8n No Brasil se apresenta aí pra gente
+hugor boa tarde Renato Boa tarde aí comunidade sem codar cara um prazer
+enorme est aqui nesse vídeo aqui com você né pra gente falar um pouquinho sobre en Eu venho acompanhando né aí o
+seu trabalho seus vídeos e cara nem passar pela minha cabeça a gente tá aqui né mas eu acredito que foi uma forma de
+você ter enxergada aí uma um valor né uma importância aí no ntn né para esse mundo aí enorme né do do low code no
+code e a gente est aqui né com essa missão aí de mostrar os benefícios né do
+uso aí do ntn na nas automações um prazer enorme estar aqui com você isso
+aí galera o Hugo tá aqui com a gente por quê primeiro porque ele é pô um baita
+expert em n8n e vai saber ensinar muita coisa pra gente aqui nesse vídeo onde a gente vai trazer alguns exemplos
+práticos e ele vai mostrar inclusive exemplos que ele usa em produção já rodando porque por contos workflow Você
+deve ter ativo aí eu julgou centenas cara já perdi qu põe aí mais de 100 praticamente acho que 80% do nosso
+operacional é é automatizado cara boa e o segundo motivo é que o Hugo está
+gravando aulas paraa comunidade sem codar de n8n galera mas isso a gente não
+vai se adiantar não vamos falar disso agora depois a gente fala aí então vamos direto ao ponto galera
+spoiler sem spoiler sem spoiler vamos direto ao galera seguinte o nosso objetivo aqui hoje vai ser apresentar os
+seis exemplos práticos de como você pode usar n8n para fazer magia dinheiro robôs
+Seja lá o que você quer fazer com n8n a gente vai trazer exemplos para os os exemplos que eu acho mais interessantes
+para desmistificar um pouco o n8n e automações da tua cabeça tá então vamos começar agora direto com o Hugo trazendo
+o nosso primeiro exemplo que é qual que é o primeiro exemplo n8n para chatbots né hô isso Exatamente exatamente que a
+gente vai Bora e tá contigo aqui beleza Eh bom pessoal seguinte eh pessoal que
+ainda aí não conhece né o ntn né talvez nunca ouviu falar o ntn El é uma
+plataforma low code né Para que vocês possam automatizar os seus processos tá
+e quando a gente fala processo a gente fala absolutamente tudo mesmo tá principalmente no âmbito de atendimento
+tá e o Renato aqui né me convidou para que eu possa mostrar como isso funciona
+né como a gente consegue por exemplo trabalhar ali com o chat Bots né e agentes diretamente do ntn para o
+WhatsApp tá é claro o que você pode usar para discord você pode usar para
+telegram ou qualquer outro canal de marketing né de conversa que você achar melhor tá o processo ele é o mesmo tá E
+aí como é que funciona aqui no neten né eu vou dar um um zoom maior aqui para vocês entender ele é basicamente voltado
+aqui para nodes né ou seja cada node aqui é uma etapa tá então isso aqui que
+vocês estão vendo aqui essa essa parte de cima aqui isso aqui é o chatbot tá É
+claro é um chatbot bem simples né porque é mais para fins de de ensino aqui mas
+qual é o legal daqui pessoal uma vez que você faz o chatbot no ntn Você tem liberdade para fazer o chatbot do jeito
+que você quiser diferente de uma plataforma de chatbot né que às vezes você fica preso ali a regras de negócio
+né da plataforma às vezes você quer que o bote faz determinada coisa mas a plataforma não permite e o legal do ntn
+é que você consegue fazer o chatbot ou agente de a do seu jeito simplesmente
+conectando esses nodes aqui que são as etapas né ali do seu fluxo tá então como
+é que funciona aqui tá primeira coisa que a gente faz é ter um web Hook esse web Hook aqui ele vai estar monitorando
+uma API sua de WhatsApp tá você pode usar api oficial do do meta como também
+uma API não oficial como por exemplo a ZAP né a gente tem uma page WhatsApp e a
+gente tá utilizando aqui nesse caso ao Zap como exemplo tá eh esse web Hook
+aqui ele vai estar monitorando todas as mensagens que eu recebo dos contatos no WhatsApp então uma vez né que eu recebo
+lá as mensagens eu armazeno alguns parâmetros né que eu julgo necessário
+para trabalhar nessa automação Como por exemplo o nome da pessoa o WhatsApp dela
+eh o tipo de evento né se realmente é um evento de mensagem recebida e etc tá em
+seguida a gente tem um node aqui do IF tá então eu vou começar a mostrar aqui alguns node você vai ver eh muitos
+conceitos aqui que você vê em programação né então da mesma forma que programação lá né no algoritmo lá tem o
+if né aqui no n também tem um if que você vai fazer uma condição para que
+esse fluxo prossiga né então o que que eu determinei aqui olha essa Men associar isso aí Hugo com o flutterflow
+e o iweb eles têm construtores de ações e de workflows que funcionam nessa mesma
+metodologia né então pô você quer às vezes colocar uma condicional né faz uma verificação pô a pessoa enviou a
+mensagem ele é um lead ele é determinada coisa faz uma verificação aí você desmembra isso em verdadeiro ou falso E
+aí desmembra a partir dali quais vão ser as ações que vão ocorrer né A única diferença do n2n galera para flutterflow
+ou Wi web é que flutterflow e Wi web a gente faz isso verticalmente né é curioso isso n8n e todos os construtores
+de fluxo assim são horizontais né até porque você vai avançando mais assim mas é a mesma lógica é a mesma lógica é é um
+fluxograma tá E aí aqui você vai fazer uma verificação olha a mensagem que eu
+estou recebendo é de um lead e e é texto né Por quê Porque ali pode ser por
+exemplo uma mensagem de um grupo então para não não acontecer aquele lance não sei se você já viram às vezes vocês fazem parte de um grupo E aí tem bote
+ali interagindo no grupo por quê Porque o pessoal não coloca essa filtragem tá então isso aqui é muito importante para
+não mandar mensagem no grupo né o seu bote não ficar perturbando lá o grupo tá
+então aqui ele só vai mandar mensagem se for um contato que se for um texto e no caso aqui eu tô colocando uma filtragem
+a mais que é só para aceitar a mensagem da Auto chck né porque eu tô esse esse bot aqui ele tá no meu WhatsApp pessoal
+então para o bot não ficar respondendo meus contatos lá no WhatsApp pessoal eu
+filtrei também só para responder para auto tá atendendo essa condição ele vai seguir aqui no true tá E aí vai fazer
+uma verificação de palavra-chave isso aqui é muito importante também para quê para que a pessoa informe a
+palavra-chave e o seu bote começa a interagir mediante essa palavra-chave Porque se ela digitar qualquer outra
+coisa ali o bot não vai ficar respondendo né não vai ficar aquele Loop Infinito né a pessoa mandou qualquer mensagem Olá o bot respondeu não Então
+essa palavra-chave é para justamente acionar o bot tá E aí ao acionar o bote
+né Por exemplo aqui eu coloquei palavra-chave iniciar né vamos dizer que a pessoa entrou em contato pela primeira vez você mandou a mensagem lá iniciar eh
+seja bem-vindo eh para continuarmos o atendimento digite iniciar ela digitou iniciar eu vou fazer o envio de uma
+mensagem de saudação tá essa mensagem de saudação pode ser umas boas-vindas E aí
+em seguida você pode por exemplo apresentar o menu para ela tá e aqui a gente apresenta o menu e o que que vai
+acontecer aqui a princípio para né ou seja chegou o fim do do chatbot E qual é
+o legal aqui D dessa dinâmica do webhook ele vai continuar monitorando tá então
+se a pessoa for mandar uma pra mensagem esse webook novamente vai ser acionado
+vai passando aqui por todos os nodes novamente Claro verificando as condições
+né sendo que quando ela for responder novamente essa condição de verificar a palavra-chave não vai ser mais atendida
+porque talvez ela digitou uma opção né como eu pedi para ela digitar uma opção
+não vai ser atendida porque isso aqui tem que ser iniciar tá a não é iniciar que ela escreveu ela escreveu
+consultoria por exemplo né isso por exemplo consultoria então digitou opção um que é a opção de consultoria vai
+seguir aqui por baixo tá que é o fels E aí chegando aqui no fels a gente vai
+usar uma espécie de Suit né ou seja ali na programação é como se fosse ali o case né ó se for isso faça isso se fosse
+for isso Faça aquilo e aí aqui a gente tem várias saídas tá e cada saída dessa
+aqui ó vou até dar um zoom para vocês enxergarem melhor é uma condição então eu botei lá se for opção de consultoria
+sai na consultoria treinamento e assim sucessivamente e ele tem um Exception
+aqui né onde é o seguinte cara não foi nenhuma dessas opções que que vai fazer
+é uma exceção essa exceção eu peço para ele vir aqui tá e uso novamente um if
+para verificar se essa mensagem que é qualquer coisa a não ser essas opções que eu sugeri para ele vai verificar se
+é uma opção numérica por quê vamos dizer que ele mandou uma mensagem que não é uma opção numérica eu não quero que meu
+bot fique respondendo ele né mas vamos dizer que eu pedi o seguinte ó digite opção de um a três às vezes a gente
+detalha ali pro cliente mas tem cliente que às vezes vai lá quer digitar um quatro quer digitar um cinco nessa
+exceção que vai ser atendida por esse if eu mando uma mensagem de opção inválida para ele e e novamente reforço olha essa
+opção é inválida Por favor digite um dois ou três tá E aí de fato quando ele
+for informar uma opção correta vai seguir novamente aqui aqui o webook vai pegar a opção dele vai seguir novamente
+por aqui aqui vai dar felse também porque não é iniciar chegou aqui no Case
+ele vai verificar cara ele digitou a opção um ele quer consultoria quer mais informações sobre consultoria vai chegar
+aqui e vai enviar uma mensagem para ele sobre a nossa consultoria tá mesma coisa se ele digitar dois que é treinamento ou
+se ele digitar três que é suporte técnico tá então basicamente é assim que
+funciona a chatbot até aqui Renato tá conseguindo acompanhar aí Claro e assim galera que que é esse
+enviar mensagem ali no final nada mais é do que uma requisição api lá de novo
+para API de WhatsApp que você usa Ah eu uso a uzap eu uso a zapi eu uso uma Instância própria da Evolution não
+importa qual seja você faz uma requisição de novo agora para disparo de uma mensagem e aí se a pessoa mandou uma
+nova mensagem vai cair de novo lá no começo e assim galera o Hugo não tá mostrando para vocês a forma certa de
+fazer um chatbot ele tá mostrando como ele construiu o dele e aí é que tá a mágica do negócio
+você pode construir o teu como você quiser com a regra que você quiser fazendo a loucura que você quiser
+entendeu Essa é a graça do negócio usando nada mais do que um web Hook de recebimento tratamento de dados no meio
+do caminho e mensagem de volta no final né cara isso é um chatbot né exatamente
+rato Ou seja no início sempre ali pegando a mensagem da pessoa do seu contato seja qual canal que você quiser
+no caso aqui a gente tá utilizando o WhatsApp né como o Renato mencionou você pode usar P oficial não oficial mas
+também pode usar qualquer outro canal telegram também tem muita gente que faz o Renato bote também do telegram aqui dá
+para você fazer no NN tranquilamente e no final é sempre uma chamada pi para uma ação que é o envio de uma mensagem
+Ou seja é é a resposta do seu chatbot que pode ser texto pode ser uma imagem pode ser um vídeo pode ser o que você
+quiser desde que a sua api tenha suporte tá eh então isso aqui é a estrutura do
+do chatbot OK agora seguindo na na partir do segundo exemplo agora né do
+que dá para fazer no ntn nós temos o agente tá que inclusive é o que está
+bombando aí né Hoje se você for na internet pesquisar né Renato é o que o pessoal mais tá procurando n8n para
+inteligências artificiais galera ai ISO Isso vai ser o nosso terceiro
+segundo exemplo isso exatamente E aí pessoal antes de eu entrar aqui nessa parte do agente do do ntn eu gostaria de
+fazer um Uma Breve explicação né da diferença de chatbot e agente porque tem muitas pessoas que confundem né pessoal
+chatbot é esse aqui que vocês viram que depende de uma estrutura né para poder o
+bot responder dependendo do que a pessoa responde então é como se fosse um autor responde a pessoa mandou isso chatbot
+vai responder isso a pessoa mandou aquilo chatbot vai responder aquilo Claro com base chatbot não tem
+capacidade de entender quando foge do escopo né o cara digitou o quro cinco tal ele não ele não vai tentar fazer uma
+análise do que tá rolando ele só vai falar opção em válida e deu né não tem raciocínio lógico por trás por assim
+dizer é mais analógico né exatamente Renato ou seja da mesma forma que exige uma mensagem pré-determinada ali por
+parte do contato o chatbot também vai responder com uma mensagem pré-determinada então acaba não tendo
+aquela questão da humanização sabe e hoje né conforme as empresas estão
+crescendo cada vez mais as demandas estão aumentando inclusive Ô Renato não sei se você já parou para pensar tem uma
+pesquisa aí agora não não tô lembrando Qual é a fonte que fala que uma boa parte das pessoas não gostam de ser
+atendida por chatbot Então acho que até mais um motivo porque muitas empresas
+agora estão recorrendo a gente né porque realmente a pessoa ali eh às vezes Manda
+uma coisa Às vezes o bote não consegue entender ou então ele vai responder de forma fixa a pessoa já consegue perceber
+ali que é um um chatbot Mas isso pode mudar a partir do momento que você já começa a usar a gente tá isso aqui ó já
+muda completamente e você pode perceber que isso aqui tudo né que ainda assim é
+bem pequeno né isso aqui é um uma estrutura simples de chatbot isso aqui tudo é substituído Renato só por isso
+aqui pelo incrível que pareça por quê é onde eu já vou explicar a lógica para
+vocês no agente do ntn ele utiliza um Framework né chamado L chain tá que é um
+Framework para você poder trabalhar ali com inúmeras llms né ou modelos de inteligência artificiais tá o que a
+gente tá trabalhando aqui é o open ey né que é o chat GPT sendo que você pode
+usar aqui por exemplo a llm do meta você pode usar do Google né a do meta se não
+engan é o liama do Google é o Gemini né e vários outros llm que você achar
+melhor tá E aí o node de agente ele é conhecido como node cluster né Por quê
+Porque ele é um node Pie né digamos assim principal e você pode conectar sub
+noodes a eles que segue a estrutura do L chain tá então por exemplo você tem lá
+vamos dizer assim um objeto chamado agente tá E aí você pode por exemplo conectar a llm que é o modelo de
+inteligência aqui no chat Model tá você pode conectar o memory né que seria o
+quê um uma espécie ali de banco de dados né Eh para você poder armazenar ali o
+histórico da conversa por exemplo o que que o bot o que que o agente respondeu o que que a pessoa respondeu tudo isso vai
+sendo armazenado num histórico para que sempre que o agente for responder uma
+nova pergunta uma nova mensagem da pessoa ele vai se basear nesse histórico
+de conversa tornando assim a resposta cada vez mais assertiva então por exemplo no bot a pessoa aliás desculpa
+no chatbot a pessoa precisa falar ex exatamente aquilo para que o chatbot possa entender o que ela quer e
+apresentar a resposta esperada no agente isso aqui já muda um pouco por qu ela já
+não vai precisar falar exatamente o que o chatbot espera porque já é uma linguagem e digamos assim humana né
+então a inteligência artificial já consegue entender o que que a pessoa ali quer e o legal ele vai trabalhar com
+contexto por meio da memória então por exemplo Digamos que eu e Renato estamos conversando aqui né E aí e por exemplo
+eu chego lá e falo pro Renato eh pô Renato e eu queria saber mais sobre a
+comunidade sem codar né vamos dizer que eu sou um potencial cliente e aí ele vai explicar o que que é a comunidade e tal
+e aí eu vou perguntar assim eh e quantas aulas tem ou seja o Renato já sabe que
+eu que eu estou falando da comunidade ou seja ele sabe que tem um contexto ali ele não vai falar aulas de um outro
+curso né O Agente por meio da memória vai fazer exatamente isso base no histórico ele sabe o que você está se
+referindo mesmo que você não seja explícito ou direto então se eu falo eh quero saber sobre a comunidade sem codar
+ele vai lá no no através da llm ou então através de uma base de conhecimento que
+pode ser esse Tools aqui tá já vou te mostrar para pegar a resposta e me apresentar e se em seguida eu falar
+quantas aulas tem mesmo que eu não fale comunidade sem codar ele já sabe que eu estou me referindo ao sem codar então
+ele vai trazer a resposta correta para mim também tá isso aqui é incrível e aí para finalizar a gente tem o Tools né
+que como eu informei onde permite você colocar uma base de conhecimento então por exemplo o agente Ele vai tentar
+trazer a resposta que a pessoa quer por exemplo se é a sua empresa que você está usando o agente se for uma empresa que
+já tem um tempo ali na internet né o site né já é bem rankeado ali pelo
+Google a LM vai conseguir achar resposta sobre a sua empresa e vai vai responder a pessoa tá sobre algum produto ou Serv
+serviço que a sua empresa presta mas se for uma empresa talvez nova né que ainda não tá muito rankeada ali na na nos
+motores de pesquisa ele vai optar por uma base de conhecimento essa base de conhecimento você pode colocar por
+exemplo uma página do seu site tá então se eu coloco aqui um htp request eu posso colocar aqui uma página Web tá
+pode ser também um próprio workflow tá que é esse aqui ó onde lá no seu
+workflow Você pode por exemplo colocar um ali que armazena ali informações você
+coloca um texto simples ó eh preço disso preço daquilo descrição disso descrição
+daquilo então o seu agente vai lá nesse workflow consegue pegar as informações que você salvou lá em texto simples né e
+consegue trazer pro agente pro ag gente poder responder a pessoa tá E por ú pode
+ser um banco de dados também né Hugo exatamente que é o que eu vou falar agora por último já pode ser um banco de
+dados tá Porque na última anização o ntn já habilitou aqui alguns serviços de
+banco de dados como também serviços assim de utilidade né então por exemplo você pode conectar eh AW table né que é
+um banco de dados low code para poder trazer informações ali da sua empresa Às vezes você tem tabelas ali tabelas de
+produtos de serviço ele pode consultar pode consultar o base Roll eh por exemplo ele pode consultar o Gmail que
+às vezes você também tem alguns e-mails ali qu é que o a gente se baseia na sua lista de e-mail para responder alguma
+coisa Google calendário é documentos do Google enfim você tem um uma uma própria
+Google planilha né o às vezes não precisa Reinventar a roda né vamos dizer que você tá montando ali para um chatbot
+inteligente para uma empresa cara que já tem arquivado perguntas principais perguntas que surgem no suporte Quais
+são as respostas já tem lá numa Google planilha pô 200 perguntas e respostas padrão P você usa isso como base se já
+tem um chatbot extremamente eficaz para suporte atendimento né exatamente um um
+fac né Renato ou seja até ter o fac ali também que às vezes são dúvidas muito comuns o seu agente já está capacitado a
+atender o seu público tá então de fato não precisa muito para você já ter isso aqui funcionando aí no seu atendimento
+Tá e agora renado vou te mostrar aqui uma coisa que cara isso aqui é sensacional tá então além de ter todos
+esses recursos aqui né pro seu agente conseguir eh atender responder existe as
+instruções que você pode passar para ele então imagine um funcionário né n funcionário por exemplo você foi lá
+contratou né você tem lá sua o seu fac você tem um site com todas as
+informações e tal e é claro né você vai pedir pro funcionário ler se informar né
+para ele poder conhecer o produto o serviço da sua empresa para ele conseguir atender porém existe as
+questões comportamentais né uma coisa é o funcionário eh saber do produto e do
+serviço a outra coisa Ô Renato É como esse funcionário vai falar né como é que
+ele vai apresentar essas informações que aí já seria a questão de instruções tá E
+essas instruções pessoal Claro não querendo entrar muito aqui na parte técnica mas só para vocês entender você
+informa aqui dentro do agente tá então por exemplo eu vou maximizar aqui deixa eu ver se se bem que essa tela aqui acho
+que eu não consigo maximizar eh mas enfim dá para eu explicar aqui então o que que acontece eh da mesma forma que
+eu falei para vocês que isso aqui né um deixa eu apagar aqui ó um simples disso
+aqui né substitui isso aqui tudo por quê Porque lá na instrução eu posso colocar
+essas regras mas de uma forma mais humanizada então é como eu chegasse aqui pro meu agente e falasse para ele o seguinte olha Eh atue como um atendente
+humano da Auto né sendo cordial E suscinto na resposta então já é uma
+questão comportamental eu não quero que o meu agente seja mal educado né pelo menos dê um bom dia boa tarde
+corresponda a pessoa e que seja suscinto na resposta né porque também você tem um
+agente ali que manda uma mensagem muito grande dá a entender que vai ser uma automação e as pessoas não querem isso
+elas querem respostas sucintas e o mais humanizada possível tá então é a minha primeira instrução a segunda eu coloco
+aqui ó como o usuário Eh caso o usuário comente aí aqui pessoal já já repara que é como se fosse condição né tipo if ou
+um Case então tô colocando aqui ó na linguagem humana tá ó caso o usuário comente algo relacionado à consultoria
+Oriente a agendar uma consultoria conosco E aí passo o link aqui e aí novamente vou lá numa outra condição ó
+caso ele comente algo relacionado a treinamentos ou curso Oriente acessar o nosso catálogo de cursos para obter mais
+informações sobre a grade curricular E aí eu deixo o link aqui também da do do
+curso né E aí inclusive eu peço aqui né para caso ele queira saber mais sobre valores formas de pagamento etc e aí eu
+passo o link da página de curso e aí também finalizo falando o seguinte olha mas se o cliente comentar algo
+relacionado a problemas técnicos né em alguma ferramenta Nossa peça para ele abrir um ticket eh lá no site também da
+Auto ticket que é na página de suporte E aí por fim eu finalizo falando o seguinte ó agora se o cliente manifestar
+o interesse em falar com um atendente humano informe o que ele será transferido para um de nossos atendentes
+tá então ou seja o agente ele tá totalmente ali capacitado né de
+responder a pessoa o que ela espera e se ainda assim né porque assim tem pessoas que sab sabe que
+é atendente virtual né Ainda mais se você pedir para ele se apresentar como um atendente virtual se a pessoa ainda
+não quiser falar com ele Ah não quero ter respostas do agente virtual eu quero falar com o atendente humano ele ainda
+vai conseguir interpretar essas necessidade da pessoa e vai encaminhar para um atendente humano e aí um
+atendente humano aí da sua empresa vai dar prosseguimento E aí só uma observação né Hugo aí a galera às vezes olha isso e
+fala nossa mas como dá trabalho fica tá pensando em todas essas hipóteses se o cara fala disso se o cara fala daquilo
+não sei o quê cara esse trabalho você vai ter de qualquer forma porque se é
+você que atende ah não mas isso eu já sei intuitivamente beleza porque às vezes você tá anos já atendendo E você
+Já construiu aqui essa base de conhecimento mas se você tem um vendedor ou um atendente ou suporte ou equipe
+comercial Ou equipe de suporte o que for você precisa treinar essa equipe quando você treina essa equipe é exatamente
+isso que a gente faz cara só que a equipe esquece das regras a equipe tem as limitações dela a equipe não atende
+tão rápido então o que a gente tá fazendo aí é treinando aá algo que você deveria treinar também
+a tua equipe Então cara a minha equipe de suporte é igualzinho cara se a pessoa por acaso perguntar de qual é a melhor
+aula esse aqui é o procedimento se a pessoa por acaso quiser recetar a senha dela esse é o procedimento Então você tá
+treinando tanto é que cara eu hoje conheço o go cara tenho colegas meus que
+tem equipes de 70 vendedores e ele recentemente implementou chatbot de
+vendas lá com ia faz mais ou menos uns três meses que eu tive essa conversa com ele ele fala cara esse chatbot
+desempenha hoje melhor do que qualquer um dos meus 70 vendedores Olha aí então
+ele tá naquela já é impressionante cara é impressionante ele fala que teve mês que esse chatbot converteu 45% a mais
+que o melhor vendedor dele é bizarro Olha aí exat porque ele tá treinando porque ele tá construindo pouco a pouco
+não vai ser assim no dia um nem no mês um Mas ele já tava treinando e qualificando e instruindo e aí chegou
+uma hora que o chatbot ele tá tão poderoso porque ele já prevê os principais cenários e sabe como agir de
+acordo com aqueles cenários né cara então esse treinamento vai existir de qualquer forma né O bom é que quando é aá você só precisa treinar uma vez né H
+exatamente até porque como eu informei né ele vai armazenando aquele histórico ali Além disso ele conta também com a
+llm né então hoje a llm inclusive dependendo da llm que você usa cara ele
+já consegue achar as informações ali nesse essa área e como o Renato falou o trabalho não tem como fugir disso né mas
+o legal que quando você automatiza isso é é uma coisa que vai aperfeiçoando cada
+vez mais e os esforços de certa forma vai diminuindo por como o Renato falou o
+teu agente ele vai ficando cada vez mais inteligente é igual um funcionário né você contratou um funcionário ele tá ali
+no período de experiência e você ele vai exigir mais de você você vai ter que explicar sentar com ele e tal mas depois
+que um funcionário já tá ali um ano 2 anos já conessa empresa toda você não vai ter muito trabalho com ele então é a
+mesma coisa tá E aí vamos pro nosso terceiro cenário
+vamos lá vamos lá nosso terceiro cenário galera é muito doido mas é um negócio que a galera precisa muito scraping ou
+também conhecido como como é que a gente traduz isso para português Eu sempre me confundo será que é gar IMP par será que
+é scir raspar o É é mais ou menos isso é tipo extrair raspar sei lá alguma coisa
+assim raspagem de dados raspagem de dados raspagem de dados isso aí exatamente galera é o seguinte você
+precisa de dados de um site exemplo Amazon você precisa pegar
+os produtos da Amazon das categorias porque você quer ficar atento à mudança de preço sei lá passageiro o que for mas
+a Amazon não tem uma API de busca de produtos ela não quer que você consuma esse dado como é que você vai mas pô tá
+lá disponível no site como é que eu não consigo esse dado porque eles não me entregam a scraping galera scraping é
+exatamente isso exatamente Renato o scrape é uma forma como você bem colocou de você
+fazer uma automação ali para uma plataforma ou um site que não disponha api né E como o Renato hoje eh mencionou
+aí agora né Por exemplo o Amazon né o amazon É IMP um grande Marketplace né que tem ali programa de afiliações e uma
+coisa que assim o pessoal busca muito Renato e assim eu vou mostrar aqui um exemplo claro eu tô me baseando aqui na
+loginha da Auto tá mas você pode aplicar essa lógica a qualquer site inclusive
+por exemplo Amazon e Fiber qualquer esses marketplaces grandes principalmente se você trabalha com
+afiliado tá ou conhece alguém que trabalha com afiliado então isso aqui que eu vou te mostrar você vai ficar impressionado com o que dá para fazer tá
+então quando essa plataforma ela não só um disclaimer rapidinho h não estamos falando aqui de juízo de de valor ou de
+questão de legalidade das ações hein porque às vezes cara eu nem li mas às vezes a Amazon vai lá nos termos e fala
+não permitimos scraping do nosso site galera não faço ideia nunca corri atrás dessa informação então não tô falando se
+isso é legal se isso é ilegal por exemplo se você quiser fazer um scraping da minha loja por exemplo de produtos recém-lançada tô nem aí por que que eu
+impediria então assim sempre Verifica a legalidade e se há qualquer tipo de termo que impede o scrape impedir
+Tecnicamente provavelmente ele não vai conseguir mas ele pode te impedir judicialmente por assim dizer né sim
+exatamente pessoal é uma co questão que você também tem que avaliar é claro a gente mostra as possibilidades né mas aí
+cabe você saber se convém ou não usar para determinado serviço tá então como o
+Renato falou procura sempre olhar lá as políticas né termo de uso termo de privacidade para que você possa fazer
+suas automações mas sem violar a as regras tá bom sem receber um e- Mazinho desagradável de um advogado examente
+pensou Ó sua afiliação foi can ninguém merece né Renato mas vamos lá por isso
+que aqui nesse exemplo eu estou fazendo com o site da Auto tá no só site vocês podem usar Web scrap lá à vontade para
+revender se quiser tá bom E aí como é que funciona pessoal é simples aqui a
+gente começa com o node tá de agendamento por porque aqui eu tô
+determinando o seguinte Olha eu quero que todos os dias determinado horário né no caso aqui eu coloquei
+9:30 faça esse web scrapp tá é claro que você poderia fazer uma execução manual
+simplesmente Ah eu quero raspar agora os dados vou lá e executo automação mas aqui ele tá de forma agendada Tá é todo
+workflow no n8n ele pode começar manualmente ele pode começar a partir de um web Hook ele pode começar de forma
+recorrente que é o que o Hugo fez aí todo dia 9:30 da manhã ele pode ser minuto a minuto você define o que vai
+dar start para aquele workflow né exatamente inclusive R você pode usar até Chrome aqui né se você quiser um
+agendamento bem específico você pode usar Chrome também é claro que gente dá toda a interface aqui para você colocar
+dia mês horário enfim mas pode usar também Chrome se você quiser e aí o que que vai acontecer ao dar aquele dia e
+aquele horário né Vai iniciar minha automação fazendo o quê uma requisição um get a uma página web no caso aqui eu
+tô usando a página da loja da autotip tá ele vai pegar pessoal o HTML né o ele
+pega basicamente ali o o HTML mesmo da página tá E aí com esse HTML a gente
+consegue fazer de fato o Web scrap mediante ao mapeamento dos seletores Tá
+então não sei se muitos aqui que estão acompanhando esse vídeo né se já ouviu falar sobre essa questão de seletor CSS
+mas por exemplo quando você tá lá numa página você expension né ali no navegador conforme você vai encostando o
+mouse ali em cada elemento por exemplo uma imagem um título um link todos eles têm um identificador de html CSS tá
+então é por meio desse identificador tá também não quero entrar muito aqui na
+parte técnica mas só para você entender por meio desse identificador você consegue extrair ali a imagem né a
+desculpa o elemento qualquer coisa que tá naquela página você consegue organizar de uma forma que você vai
+pegar Ah mas às vezes tem 50 itens e às vezes tem um no ex tem problema é exatamente isso que ele faz dependendo
+de quantos itens tiver ele vai seguir aquela instrução que você passou para pegar todos exatamente que é um padrão
+né E aí uma vez Renato que a gente consegue mapear né os elementos que a gente julga necessário para essa
+raspagem de dados a gente vai pro próximo passo que é gerar a lista de
+itens por qu Lembra que eu falei que quando você pega múltiplos elementos né da mesma classe por exemplo classe de
+imagem classe de título e classe de links eles vão vir num array tá E aí esse node aqui split out itens ele
+converte um em lista de itens tá então eu vou
+executando um por um aqui para você entender tá então por exemplo deixa eu vou fazer o seguinte eu vou despausar
+desconectar aqui vou só executar aqui para você entender eu vou executando um por um tá então por exemplo aqui ó tá o
+HTML puro da página tá vendo ó O HTML da nossa página de loja quando eu V aqui
+aqui por exemplo rodo o Web scrap baseado nesses identificadores né dos elementos ó como é que vai tornar para
+mim ele vai retornar um Array com vários índices né Começando aqui por zero então tenho lá o Array de imagem de título e
+de link em seguida a gente tem de fato esse split out itens né que vai gerar a
+lista de itens para mim Então olha só como fica uma coisa mais legível tá vendo Então eu tenho o campo campo de
+imagem campo de título e Campo de link tá cada um com sua respectiva imagem
+título e link tá de acesso repare que os os três últimos aqui como teve aquele
+erro de referência né eles acabaram achando novos link da da imagem mas não tinha eh títulos e links correspondente
+a eles por isso que eles ficaram vazio aqui tá mas o mais importante é esses três aqui primeiro E aí de fato eu uso
+um node chamado Filter que serve justamente para eu colocar uma condição e dizer o seguinte cara eu só quero
+esses itens aqui tá E qual é a condição Eu pedi para para ele considerar apenas
+itens que T título Então se esses aqui não t título eles não vão entrar na minha filtragem então só vai entrar
+esses três primeiros aqui então quando eu rodo aqui novamente ó ele pegou
+somente os elementos que tem tudo né que tem imagem que tem título que tem link tá E aí em seguida eu uso aqui um node
+chamado code Por que o ntn é considerado low code tá e não no code por qu embora
+muitas coisas eu mostrei aqui para você que a gente faz simplesmente num arraste solt do node tá Às vezes você precisa
+fazer uma manipulação avançada ali de dados e você pode usar JavaScript e
+agora também você pode usar Python que o ntn já tem suporte a Python tá então o
+Code nada mais nada menos que é um trecho de código em JavaScript Onde eu consigo formatar aqui os meus dados da
+forma como eu acho eh viável E aí uma vez eu fazendo isso ele vaiar a nova
+lista para mim mas olha como é que ele vaiar ele vaiar deixa até colocar aqui como t para
+vocês verem a diferença tá vendo el acrescentou as tags lá para mim ó tá E
+com isso aqui ou seja com os links já formatados né no formato de tags HTML eu
+consigo criar uma tabela HTML para eles tá então quando eu venho aqui por exemplo executo esse node de gerar
+tabela html que que ele vai fazer ele vai pegar tudo isso aqui e vai colocar numa espécie de
+table né de tabela HTML e aí a gente usa novamente um node HTML do ntn sendo que
+ao invés de ser na operação gerar tabela vai ser na operação gerar HTML usando
+essa tabela aqui tá então novamente não quero entrar muito no questões técnica
+nesse gerar HTML o ntn ele vai te fornecer um template padrão tá esse template padrão é o que Segue o básico
+lá do HTML né o aqui #tag HTML o cabeçalho o b né que é o corpo e aí
+dentro do B aqui eu referencio essa minha tabela aqui tá que é o input então
+o ntn o legal dele é que tudo que é processado ali na etapa no node anterior
+você consegue referenciar no seu atual node né por isso que acaba fazendo esse
+processo né ou seja ele vai interligando ali as etapas tá E aí olha a mágica acontecendo quando eu dou um lei aqui
+olha só isso aqui pessoal ele gera o HTML para mim dos
+dados raspados Então eu tenho lá a página né aqui ó como se fosse uma tabela então
+tenho lá a imagem o título e o link E aí
+Renato finalizando você pode pegar esse HTML por exemplo e enviar por e-mail né então vamos dizer que uma pessoa tem lá
+uma lista de contatos Claro contatos pessoal verificados tá bom nada de
+também ficar pegando contatos aí não pessoas que realmente deram aceite né que aceitaram receber sua sua newsletter
+você pode mandar e eh essa sua lista de produtos ali com seu link de afiliado para o e-mail dessas pessoas falando
+para elas olha ó Os Novos Produtos que chegaram na auto tique pô chegou agora esse produto aqui esse curso chegou esse
+esse novo serviço aqui da Auto e assim né exemplos práticos Pô fui lá Raspei os
+os dados por exemplo dos produtos que eu quero na Amazon num e-commerce cara eu consigo simplesmente após aquele split a
+gente converteu lá em seis itens né virou três Pô eu quero por exemplo criar três novos itens no meu banco de dados
+meu banco de dados do Bubble do supabase do firebase tanto faz onde então você
+pega qualquer coisa e pode já ir alimentando o banco de dados cara eu quero todo dia uma vez por dia ou duas
+vezes por dia ou x vezes quero ir lá verificar os preços das determinadas ações armaz enar esse preço também num
+banco de dados Então você consegue ir fazendo isso por galera para quem já tá
+um pouquinho mais avançado talvez no desenvolvimento de aplicativos é muito mais tranquilo você fazer consultas ao
+seu próprio banco de dados do que ficar fazendo consultas a apis externas muitas vezes né então vamos dizer que o usuário
+querer lá poi sei lá precisa pegar o preço de 300 ações nos dias tal às vezes
+vai ficar extremamente complexo você fazer uma requisição api dessa api externa buscar na data tal não sei o qu
+Às vezes você paga por consumo então pô Imagina você tem 100 usuários pesquisando ação da Petrobras cara você
+paga por requisição quando você tá pagando uma p de de busca de ações né exato então você pode ir lá uma vez por
+dia pega o preço da Petrobras e joga no teu banco de dados aí você passa a fazer essa requisição internamente pro teu
+próprio banco com tudo galera com tudo que vocês imaginar de dados que estão na internet Ah eu quero ir lá e pegar os
+dados atualizados de remedes no site da Anvisa goov.br cara tudo NN vai servir
+para tudo isso vai já onde Dentro daquele HTML né exatamente visando a
+questão de performance né e também de escalabilidade porque rato tem certos ap que também tem as limitações né rato às
+vezes por exemplo você não pode pegar tantos itens ali dentro de um tempo e tal e você já tendo isso ali no banco de
+dados né você já consegue apresentar ali no seu site na sua página e ganhando um
+performance aí escalabilidade exato E aí galera o quarto exemplo esse aqui vocês vão
+gostar economizar w ou workload units no Bubble então para quem usa Bubble aí
+sabe que workload units é a medida de servidor do Bubble é o consumo de servidor do Bubble e o servidor do
+Bubble ele tende a ser mais caro do que outros servidores que você utiliza Como por exemplo o n8n o n8n pô Especialmente
+para quem usa numa VPS própria ele sai praticamente de graça né Mesmo quando você paga o cloud custa r$ 50 por mês
+assim PR você fazer uma obscenidade de ações né então assim ele é muito barato em termos de grandes volumes de dados
+muitas requisições então eu vou dar um exemplo aqui galera para vocês olha só eu vou dar o exemplo do nosso grande
+amigo Thiago Costa da automáticos meu Deus Quantas vezes o Thiago Costa aparece no nosso canal hein galera a
+gente gosta do Thiago Thiago o Thiago Costa é um aluno nosso cara que ele tá criando o quarto saso dele agora e assim
+já existe todo um movimento na internet que a gente tá tentando fazer o Tiago Costa pedir exoneração da Petrobras é o
+sonho de todo mundo assim porque ele é engenheiro da Petrobras a gente quer ver ele viver do sas delão vem pro nosso mundo Tiagão enf que
+top cara que que faz aut martic que é o sas dele hoje maior mrr né cria posts de
+blog mas não só isso existe toda uma inteligência por trás porque eu sou um usuário da automticos usuário pagante
+diga-se de passagem né então ele cria textos muito bons como Tiago Engenheiro
+né galera Tiago não fez qualquer abobrinha imagina que você fosse fazer pelo Bubble por exemplo o processo que
+oago de criação de textos para blog se você simplesmente for lá e falar assim
+openi ah ren é muito fácil criar texto é só falar assim chat GPT crio um texto
+assim assim assado com texto muito bom humanizado etc e tal ess é como a galera
+tenta fazer né em um prompt só eles tentam ir lá pedir pro chat GPT gerar um baita de um texto galera isso nunca dá
+certo os melhores os melhores conteúdos que a gente cria
+com inteligência artificial eles são desmembrados eles sofrem um processo que a gente chama de chunking né que é
+desmembrar em pequenos pedaços é isso que tá por trás da Inteligência da automar isso thago fala abertamente não
+tô falando deum segredo de estado não de forma bem grosseira e simulada aqui se
+eu fosse fazer isso no Bubble como é que eu faria Eu pediria primeiro Open crio o texto cria o texto per Open primeira
+parte cria sessões do texto Então não vou pedir para ele criar o texto em si eu vou falar cara eu quero criar um
+texto com um tema n8n versus make integromat por exemplo
+quais seriam as sessões desse texto Open ai aí é open ai nesse primeiro prompt vai me trazer só sessões ah Renato
+Primeiro vamos falar o que é o n8n depois vamos falar o que é o make depois vamos comparar eles em termos de preço depois comparar eles em termos de não
+sei o qu só sessões aí eu vou criar uma imagem de capa aí aqui eu vou rodar um
+loop para cada uma dessas sessões que o chat GPT que a Open me retornou Então
+vamos dizer que ele acha que tem que ter sete sessões naquele texto por exemplo aí para cada uma dessas sete sessões eu
+vou rodar um loop para aí sim eu vou criar o texto dessa sessão então é mais
+um prompt de novo e eu vou pegar esse mesmo texto e vou rodar um prompt de novo falando tá vendo esse texto opi
+oize que que é um maniz cara trate o dado dessa forma evite usar esse tipo de linguajar já tira expressões que eu sei
+que o chat GPT usa de forma corriqueira mas que desumaniza humaniza o texto aí por fim eu Cri um novo prompt criando a
+imagem daquela sessão E aí eu gravo no banco de dados Então cara vai ter 50 chamadas Api para 50 chamadas para api
+da opi para criar um texto entende não é uma só uma só fica uma porcaria com 50
+Fica bom para caramba as coisas Dão trabalho mesmo é assim mesmo galera estava falando só que
+esse é o processo que a gente já faz manualmente A diferença é que aqui como a gente falou a gente instrui uma vez só
+depois a partir da segunda fica fácil né só que galera que que acontece para
+cada requisição dessa no Bubble é uma ação de servidor que eu tô executando aí ele me retorna um dado já tem mais um
+custo então o Bubble ele vai somando essas ações né se eu fosse jogar isso
+para o n8n seria mais ou menos o seguinte processo ó eu só vou lá no
+Bubble pir n8n comece Esse é o tema do texto aí o n8n vai fazer primeiro ele
+vai criar sessões depois ele vai criar a imagem depois ele vai dividir para cada uma dessas sessões ele vai criar imagem
+gerar o texto humanizar e gravar no e gravar um banco de dados parar parã par parã aí chega no
+final aqui ele envia Ele simplesmente envia esse texto final pro Bubble então Bubble mandou uma requisição pro n8n
+falando pro n8n fazer todo o processamento E aí o n8n lá no final vai
+mandar de volta pro Bubble o texto finalizado é só isso então só para vocês terem uma ideia do quanto isso
+economizaria pô galera é super hipotético assim né mas fazendo os cálculos bem por cima se você fosse usar
+só o Bubble você consumiria em torno de 10 workload units por texto
+gerado se você mandar o Bubble pedir pro Bubble mandar pro n8n fazer esse
+processamento e depois o n8n devolve pro Bubble só o texto pronto pronto isso cai para 0,5 workload units nossa é uma
+queda de 95% no consumo do Servidor Galera vocês entendem absurdo às vezes eu falo Ah
+cara você vai ter uma queda de 90 95 9999% quando você passa suas requisições
+ferozes para n8n para ferramentas de automação a galera não acredita que é um exemplo prático quando a gente tem muito
+web Hook chegando Hugo de bote de WhatsApp também clientes nossos que t
+finex ligadas a banco Banco as a service assim né recebe web Hook para cada movimentação financeira dos clientes
+mesma coisa cara você pega esse web Hook joga pro n8n joga pro Bubble só o resultado final entendeu então com isso
+a gente consegue economizar uma porrada de work workload units e consequentemente consegue reduzir em
+muito o seu custo com Bubble galera exatamente quinto motivo para usarmos
+n8n para executarmos ações em bancos de dados externos inclusive galera o
+negócio que vocês pedem muito SQL Renato já tenho um banco SQL aqui pô que tá um post não sei o você CONSEG fazer isso
+muito fácil com n8n então você vem aqui e eu vou até mostrar um exemplo prático
+disso para vocês daqui a pouco esse aqui é o hipotético daqui a pouco eu mostro um que eu uso em produção tá um dos meus produtos então por exemplo ou você
+recebe um web Hook ou recebe uma assinatura do stripe aqui você consegue você já tem nodes prontos do supabase no
+n8n então consegue ir lá criar um novo registro no supabase modificar deletar fazer o que você quiser no postgress no
+MySQL no Microsoft skl no nocodb no mong db na WS no Google Cloud aqui ou Real
+Time então assim galera Independente de qual seja Ah mas o meu banco de dados externo Como por exemplo o zano não tá
+aqui no n8n não tem o node deano faz uma requisição api então de qualquer forma
+você consegue conectar com qualquer tipo de banco de dados e externo galera nas duas pontas hein nas duas pontas Mas
+enfim para alguns bancos de dados eu tenho os triggers que são o quê quando acontecer alguma coisa lá no meu banco
+de dados aí eu deixo conectado aí eu venho aqui e executo alguma coisa então para cada item que aparece lá no meu
+banco de dados Pô eu quero fazer toda uma série de novas ações aqui Isso inclui Bubble tá Isso inclui criar um
+objeto no bubo deletar um objeto no Bubble buscar um objeto no bubo e os bancos de dados como eu falei SQL aqui
+né galera então é uma boa brincadeira assim que a gente consegue fazer né E e Renato desculpa te en cortar e também o
+que dá para fazer é o seguinte Às vezes a pessoa tem um banco de dados sei lá em um servidor né Você também pode usar o
+ntn ele tem node que faz interação com o terminal do Servidor e talvez você pode passar ali uma query né via Shell script
+E e ter o retorno para o ntn inclusive do teu servidor próprio local próprio
+servidor exatamente se o seu NT tiver rodando o local então assim tu conecta qualquer banco mesmo
+entendeu E aí o último exemplo aqui galera n8n para facilitar integrações externas
+então assim pessoal muitas vezes a gente precisa fazer uma integração que pô
+deveria ser simples como por exemplo Google Agenda quantas vezes eu não vi vocês lá no
+Bubble mas cara construir essas APS do zero às vezes é chato é bem difícil você
+precisa pegar toda aquela documentação do Google reconstruir ela toda entender como funciona o sistema de autorização
+do Google cara tem node pronto no n8n não só para Google não não só paraa
+Google Agenda Google planilha da mesma forma tanto uma ação quanto o evento galera então aqui ó por exemplo eu quero
+conectar com a minha Google planilha e eu quero que aqui são as ações que podem ser
+executadas aqui são os triggers aqui são os gatilhos então por exemplo para cada nova linha adicionada numa Google
+planilha eu quero pô sincronizar com o meu banco de dados do Bubble entendeu se
+alguém adicionou uma linha nova numa planilha do Google eu quero que essa linha nova seja refletida no banco de
+dados do Bubble você consegue fazer isso aqui por meio de gatilhos e ações Google ADS que vocês querem
+conectar já tem gatilho mqtt galera que é o protocolo para você fazer conexão com dispositivos fixos com IOT físicos
+com IOT que é internet das coisas né como o Hugo falou lá no começo discord Google Drive YouTube Twitter ah eu quero
+que a cada novo tweet postado por não sei quem eu consiga refaturar esse
+conteúdo em um vídeo você faz esse tipo de conexão aqui dentro rss onedrive
+Dropbox galera nodes prontos então assim ó o que você teria de trabalho manual
+para construir essa conexão api o n8n te D isso pronto para você simplesmente engatar o node ali e conseguir usar isso
+com muito mais Facil Então é isso galera Esses são os nossos seis exemplos práticos de como usar NN
+para fazer mágica dinheiro ou robôs ou o que você quiser fazer exatamente e também para facilitar
+a vida né Acho que essa questão de coisas volumosas e repetitivas pessoal
+vamos deixar pra máquina fazer vamos vamos focar mais né em coisas que realmente ali e agrega mais valor né
+porque uma coisa que o pessoal até fala Renata que assim pessoal fala ah automação vai substituir o ser humano não é que vai substituir pessoal vai nos
+ajudar né então muitas das vezes você fica tão ocupado ali fazendo coisas
+maçante repetitiva quando você pode deixar isso automatizado na ntn quando você tá focando em outras coisas ou tão
+sua equipe focando em outras coisas entendeu Ó Acabei de perceber que eu esqueci de falar do exemplo prático lá
+eu falei ah vou mostrar um exemplo meu em produção galera esse aqui é um exemplo meu em produção tá o Bubble
+Essential kit é uma extensão de Google Chrome que a gente oferece PR os alunos da comunidade sem quade é de graça mas
+lá fora fora do Brasil a gente vende ela e ela tem uma cacetada de assinantes
+Então o que acontece galera Depois que eu descobri isso aqui no n8n Eu nem uso mais web hooks no stripe porque Qual que
+é o processo comum assim para você saber se algum novo assinante assinou né você configura um web Hook no stripe que vai
+vir pro teu Bubble Aí você faz o tratamento todo cara hoje em dia eu só uso esse gatilho do stripe que ele já
+identifica qualquer nova assinatura aí eu tenho um node aqui que fala assim
+stripe tá vendo essa assinatura aqui ó me dá o e-mail desse cara aí eu mando lá para um web Hook meu do Bubble o e-mail
+do cara e a autorização para criar o usuário ou atualizar a assinatura dele para ativa por exemplo então a cada nova
+assinatura que existe do bub Essential kit todo dia tem novas assinaturas ali o próprio n8n faz esse processamento de
+forma super simples Não precisei ficar perdendo tempo criando web Hook no stripe Não precisei ficar perdendo tempo
+criando essa conexão api lá direto no Bubble fiz tudo aqui pelo unwin Gara super simples super tranquilo rapidinho
+Tava feito poucas horas se é que deu umaora foi rápido pr gar ex e pode fazer renado com vários getos de pagamento né
+aqui por exemplo na auto tick a gente usa o asas né então muitas coisas que né talvez a gente precisaria de alguém ali
+para poder fazer né sei lá eh receber notificação de novas assinaturas emissão de notas fiscais tudo isso o ntn também
+faz é isso mesmo Hugo quero te agradecer imensamente cara por disponibilizar teu
+tempo para est aqui com a com a gente muito obrigado por passar pô uma avalanche de conhecimento para nós aí
+deixa teus canais aí para quem quiser te seguir cara sim sim Renato Muito obrigado Eu que agradeço aí também pela
+oportunidade pessoal a auto tique eh a gente tem site lá tá se vocês quiserem depois acessar é o
+auto.com.br caso vocês queiram conhecer um pouquinho mais sobre a nossa empresa os serviços os produtos tá e nós temos
+também o canal no YouTube né que eu posso dizer ali que é o local que de fato as pessoas descobrem a gente e on a
+gente tem bastante conteúdos né Não só de ntn mas também ali voltado PR e-mail Mark WhatsApp Mark Então se vocês
+quiserem acessar é só digitar lá no YouTube né youtube.com barauto e se
+inscreva lá para poder apoiar o nosso trabalho também se gostar de um vídeo algum vídeo lá te ajudou dá um joinha
+também lá porque é muito importante pra gente isso aí galera o Hugo tá gravando um módulo no mais novo curso que a gente
+vai lançar daqui algumas semanas de automações chatbots e inteligência artificial
+galera vai ficar o baita do curso Jesus amado aquilo ali vai ficar bom para
+caramba exatamente ou seja agora no ar agora é soluções com inteligência
+artificial né ô Renato É isso mesmo a galera tá esperando mais esse curso aí que o 13º salário agora tá maluco a
+galera tá tá com faca no meu pescoço por isso e tá ficando bom para caramba vou te falar que vai valear a espera estamos
+junto Muito obrigado galera um grande abraço para vocês não deixem de curtir o canal do Hugo lá nos vemos na semana que
+vem até mais valeu pessoal

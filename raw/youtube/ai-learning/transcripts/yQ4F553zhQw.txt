@@ -1,0 +1,155 @@
+first of all I just want to say a happy New Year uh hope everyone had a great start to the new year so what you see in the background here is what we are going to do today you can see on the left side
+we have the search agent that is connected to our Google Docs on the right side we have our report writer
+agent so this agents takes the search results here from Brave uh and writes a report on it so this is a fully
+autonomous agent that writes its own you can say search queries is based on what it thinks it needs to complete the
+report so this is goes back and forward autonomously while the writer agent writes into this docs here and the
+search agent takes the queries from this agent and search up new information so here it wants to find more information
+about Bitcoin ETF inflows so it's going to take that query go out to Brave search for that find some information
+that the agent that's going to write the report is going to use to continue this so we have some intricate prompt setups
+here you can see okay we found some information about ETF inflows so now we going to take that and continue our
+report here so if we wait like 10 seconds or 60 seconds now we can see that the report will expand here based
+on the findings so there you saw it brought some more about the new ETF inflows and now we looked at the ETF
+performance so yeah let let's go into the code I'm going to explain how I set this up and what kind of the workflow is
+for this and we got to add some new features that we're going to do live in cursor you can follow along so yeah let's just get started this setup uh
+doesn't have really a lot of requirements we need a brave API key we need uh I'm using Gemini now uh the
+flash uh 2.0 I think experimental or something like that just to want to test that out uh you do need some Google apis
+here you need kind of access to your drive and docks and it's not very hard to set up you just use like o 2.0 to
+just get like a credentials Json just to use that it's not very hard to set up uh if people don't know to do that I might
+be a members video in the future we'll see uh if if you look at the G do uh agent I set up here this is just going
+to it's going to be the agent that is going to write the report so we set a topic here so this topic is going to
+reflect what kind report we're going to write the search queries and everything so yeah this is just the credentials function if we look further down here we
+have two different uh document IDs so this is going to be one for the content and one for the search agent so we can
+interact with both of those uh yeah we have a right search query function and we have I'm not going to go into detail
+we have to append content because we don't want to replace the content in the report we we want to append it we want
+to read what we have make a search query from that and append more content as we get more information from the search
+agent so here is the right initial search query so this is what we start with uh I think I can zoom in a bit more
+so you can see we can lower this a bit so here we want to assign a topic remember the topic is what we put up
+here so I put in like a Bitcoin 2024 summary so so generate one specific search query that will start gathering
+information about this topic return only the search query no explanations and basically you can see
+if we go to our docs here uh we only want like a very short search query here right uh this is one not the initial
+search query but that is the idea right uh okay so we have Monitor and enhance document this is where we uh look at
+changes and then we want to write if we have a new search result detected then we're going to enhance this so This
+agent is going to look at kind of this um document here so if we have some new search results then it's going to take
+that and continue expanding on the report so you can see your assigned topic is uh we have the search results
+from the search agent we have the current content this is what you have already written and from this we combine
+the topic the search result and what we have already and continue expanding uh the yeah
+report and after we've done that we need to write a new search query so a new search query uh that would help explore
+related topics or fill gaps in understanding this search query must be in the format of one great Google search query for example how to avoid burnout
+search query can be max four words and yeah that is how it goes so it looks at what it has written thinks what do I
+need to expand this I think I need to search for Bitcoin ETF inflow right in the example to find more
+information and yeah that is basically the loop uh yeah it's not that hard we just run this Monitor and enhance and
+basically that is the writer agent as I call it and we have the fetcher agent
+this is what does the search for us so here we are using a simple function call that uses the brave search so we created
+a tool so this is going to search the web using the brave search API so this gives our agent a tool to yeah go out to
+on the web on the brave uh browser to find information so again this is a pretty straightforward setup we're just
+using function calling we're returning this so we're going to update the documentation with context so we just
+fetch the search query we provide the search result I think I have one special yeah so it's basically this is going to
+monitor and enhance to so we're going to check every we have some interval here I think it's every 30 seconds it's going
+to check if the document has changed and this means changes from the return search results and it's changed to a
+search query so when the other agent provides a search query that means that the document has changed and it needs to do a new search so we can adjust the
+intervals on this again we just write run this monitor enance in this Loop and we set a interval so I just put it to 60
+seconds I don't know maybe some rate uh yeah that's just adjustable and that is basically the full setup uh it's not
+that hard and I think I want to go out and test it some more before we add our third uh I think I'm going to call it
+agent or feature uh because I want to have a feature that kind of knows okay
+this report is done so we just going to do like a bullon maybe like true or false so we're basically going to be
+like an llm as a judge that is going to look at the the report we have so far
+and say yeah this is good enough now let's just stop all the scripts and call it finished so that is something we're
+going to do but now let's test it a bit more let's do a few queries to see what kind of information we can gather here
+by using these Google Docs agents okay so let's change up the topic so I want to try AI agents
+2025 uh so if you scroll down a bit here now you can see uh you are starting to write a report on the following topic so
+that's going to be AI agents 2025 so the way we start is now we actually need two terminals uh because we want one for the
+docks agent and one for the fetcher agent so let's just fire up the docs agents first because we need the search
+query and then we can do the fetcher agent so let's just open up our yeah we
+search for AI agent Market forecast 2025 this is our initial search uh yeah we found some information here this looks
+like healthc care AI agents expected to grow autonomous AI Global AI agent okay
+maybe not exactly what I wanted but let's see where this goes now so of course the next step now is going to be
+to think I want to zoom in a bit here can I do that here I'm going quite sure let's try this uh this okay that was a
+bit strange but yeah we got uh kind of the let's move this a bit like this so
+here you can see AI agent use cases is going to be the next search query so of course I'm not going to read out this
+but uh you can see it used the information from the search um agent to write the first paragraph here I would
+say this was not so good uh it's not restating the sech result it's just using it as context right uh yeah that
+was not too good between 2025 and 20234 highlighting well let's see what
+uh we found about AI agent use cases air agents are increasing in various sectors
+autonom routine tasks chatbot analyze interactions in real time yeah not the
+best I would say uh let's do one more just add one more paragraph here and
+let's try something else let's try something that is more specific so over the holidays I've been playing a lot of Path of Exile 2 great game if you like
+playing something uh so let's do path of XA 2 player feedback because I've been watching some YouTube videos and I think I kind of know what people think of the
+game so let's see what our research agents can find out about this so let's
+fire up the docs agent first and let's do the fetcher
+agent um so we're going to search for path of XL 2 player Impressions okay that's pretty
+good uh initial impressions are mixed some players are impressed boss difficulty challenging unique abilities
+level science uh orienting layout yeah well that's good uh mixed Impressions anti anticipation uh potential to re
+Define the arpg genre yeah that was pretty on point if you ask me I think
+that's what I seen in the YouTube videos so yeah I was pretty good uh initial players reactions to P of Exile
+providing quite diverse pring yeah we basically restate what we found so the next search is going to be level
+design interesting let's see what we can return from that so we got some leveling
+system leveling guide boss design okay maybe not the best search result here uh of course we can expand on this if we
+wanted to but uh for now I think we just going to keep it like this there are a bunch of more stuff you can do to get better search
+results here and this will of course uh convert into better reports uh okay that looks good because
+now we didn't repeat what we said here debanding nature uh 100 hours to reach the maximum level of 100 I think it's
+more than that now it searched for Path of Exile 2 skills so uh I think I'm just going to let this run for a while let's speed it
+up so you don't have to watch that and let's do a few iterations and see where we end up
+okay so after running this for a while I got to say I'm pretty happy how this turned out it kind of turns it into a research agent uh you can see magic find
+this has been a very controversial topic uh in Poe too lately uh of talent balance okay so it changed uh but what I
+see here from reading is that this initial report here looks more like a gathering of all the research we found
+so what I think we need to build is a new agent that takes all of this document here and writes a more um
+structured report or something like that and in this uh agent we can also have an llm as a judge that is going to say if
+that report is approved or denied so that's just going to be a true or false and if it's denied then we need to fetch
+more information uh Talent balance okay so I think we need to stop this now and but yeah I'm pretty happy so let's build it
+out a bit more together in cursor to see if we can put it up even another level okay so I did some thinking so here is
+the prompt we're going to use to try to build out this system so I'm going to read the full prompt uh you can skip ahead if you want to so the setup is
+working good we uh get a good research and to the setup is working good we get a good report on the
+research notes done by the agents in content ID uh I kind of linked to this ID here uh but this information is not
+enough as a standalone report we need to use the content in this content doc as context to write the final report we
+should do this as follows the main agent so here's kind of an empty python file uh we look at the content talk and after
+five entries from the other agent has been submitted to the document if the main agent uses the gem then uh the main
+agent uses the gem API to check the content think get good enough research data to write a complete report on the
+topic set this as true and write the report in the document in the URL so I created a new document to write the
+final report in uh if the main agent is using the Gemini API and finds the context in the content doc not adequate
+return false and the Google Docs and the feter Agents will gather five more entries to the document before the main
+agent checks again when the main agent sets uh to True write a final report all running scripts should stop because the
+job is done uh write a code for this main agent and update the code to make this implementation so this is what
+we're going to try uh I can't guarantee we can oneshot this uh but let's run this now and see where it takes us so I
+added kind of all the documents uh the python code here as uh context to so let's run oops let's run this in cursor
+just going to take my headphones off okay so this is going to be the uh the main uh agent
+code so we have a final report documentary ENT threshold five that looks good get credentials yeah we got
+that count entries perfect evaluate content so this is the report this is
+the not the report The Prompt written by Claude um yeah I think we just going to keep
+that as is so it's going to return only true or false that could be an issue but let's see uh write the final
+report uh yeah we might change that too but for now I think we just going to keep that update the final report and monitor research proog
+progress that is the function we need for that get credentials Gemini key okay
+and we need to change up a few more things in the other code so that looks pretty good so let's just uh apply
+this to the main agent and let's take a look at what we need to do in G
+dos add this function okay and add a check can do
+that we need to add a check here okay that's fine I guess um and
+yeah let's try it out now okay so let's run this I just changed it to path of xile to best builds so let's start with the G
+agent and then let's do the fetcher right and then we're going to do
+the this python main agent. P
+okay uh let's open up our documents like this P2 and
+meta builds so I'm just going to speed this up for you we need five entries right before we can see if this works so
+yeah uh I'll be right back okay so that was our fifth entry so
+you can see 1 2 3 four five uh I want to go back to found found entries evaluating content content team
+adequate okay generating final report interesting error
+updating okay so it stopped that script it should really stop this
+too let's see yes shutting down uh it shut down this it shut down this I want
+to see if it shut Downs the search queries we need to do that too okay so we shut down all scripts that was perfect everything worked very smooth in
+that department uh we have a few here I think this is because the document was empty uh I think that's an easy fix but let's
+see if we got any document anyway here so uh no this is empty but I think this is a small fix let's just copy the error
+here uh like this and let's just put it into the chat and say something like uh just resolve the error please in main
+agentp uh I think this is just because we are trying to yeah it's empty uh let's modifies to handle empty documents
+yeah I think that's all we need to do okay so we found found entries content deem adequate generating final report
+okay so we did a retry uh first we failed but then we attempt an insert without delete that was successful perfect so we can go now and see our
+final report here so we have the path of XL to build meta and game acquisition we have a meta here skill games yeah
+perfect so yeah I'm pretty happy with this uh we took this information from our research notes we used that to
+generate a report uh we shut down all the assisting processes because yeah
+then we can just set this and when the report is done we can go back and everything is stopped we don't have to do tokens so this means that we don't
+have to we don't even have to be there for this because it shuts everything down autonomously when we have completed
+this and of course if we weren't happy with this report we can just run it again because we already have the research notes so yeah pretty successful
+if you ask me it's so nice to work with cursor and it did some good updates lately I see I have a update here I haven't done but yeah I'm pretty happy
+with it so yeah hope you enjoy this project hope you found it interesting so creating your own research agents using
+Google Docs is not that hard and like I said there's a bunch of stuff we could explore here looking to the fetcher
+agent to get better results better results will of course mean better um
+context better reports and again the main agent we didn't actually change the prompting at all here so of course
+there's a bunch of stuff we can do with that too but hope you learned something I would probably just put the full code on my community GitHub if you want
+access to this just become a member of the channel Link in the description like this video if you found it interesting or helpful and yeah see you again very
+soon and again happy New Year speak soon

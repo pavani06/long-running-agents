@@ -1,0 +1,596 @@
+I just have a frameless terminal window here. Uh this is using uh western. I I like western because it's really highly
+customizable. I can just like change everything about it. Uh what I have here is a herder session. Herder is kind of
+like a modern version of T-Max. I was using T-Max for like over 10 years and only recently discovered Herder and I
+just really like it. It's a more modern take how you manage multiple sessions in your terminal window. This is running on
+my Mac Mini and I can connect to this same session from my phone. Um, so I I can take my phone, I do a SSH
+connection, I can get this exact same terminal window and that's a good thing about Herder uh which is that it
+understands what agents are. In order to get more work done, people have to
+manage multiple uh parallel agent sessions. Yeah. Right. Because one agent uh can take a while to get work done. Uh
+so people start to spin up more sessions and sometimes I see people have like 20 20 30 sessions but then I kind of like
+uh was going crazy because uh 20 sessions you have to keep that in your head right. Exactly.
+Yeah. So that pain caused me to develop first mate because I I I just don't
+think that's going to be the end game. Like I don't want to spend all day just juggling between the tabs right and
+remembering what was what. I developed first mate because I think uh the agents
+as they become more capable should be able to juggle all those things for me and I started experimenting with this
+setup since a few months ago and it actually works. Uh so now this is like the only agent I talk to most of the
+time. Right. Kun so you were elite engineer at some elite companies like Meta, Microsoft, Atlasian. What does your
+current AI coding setup look like? I have been using AI uh to pretty much like write everything I want to build. I
+very rarely would manually write any code now. And when did that change by the way? I think it was a gradual process. Uh so
+initially I think 3 years ago we had uh GitHub copilot right code completion. uh and we started with just like taking uh
+the code suggestions one line after uh another and then it evolved it uh started to give us like multiple lines a
+whole function at a time right and then I think uh like one inflection point that changed that status quo was when
+sonnet 3.5 v2 was introduced that was a gamechanging moment uh so that was the
+first time I think an agent can take a task and start to do things for us right and come back with like a complete set
+of results So I started working with agents around that time. It was also very interesting because I was working
+at Atlassian at the time and my job was to develop coding agents. So I played
+with the model a lot. I tried various kind of models uh starting from GPT 3.5 it was just not working asking it to
+edit a file. It's already a lot of trouble. GP4 was a little bit better but still not quite there. It was really
+solid 3.5 V2 that's really changed the game. So that was another I think inflection point. A few of these
+inflection points really like changed my workflow a lot through the past three years. So, can you screen share and show us
+your current setup? Yeah. Yeah, sure. David, are you a terminal person or a GUI? I'm actually both. Like literally,
+there's there's weeks where I'm only using the terminal like CMAX. And there's weeks where I'm like either the Codex app or the cursor agents window.
+So, I'm a hybrid. Okay, cool, cool, cool. I'm more on the terminal side. So, I try to use the terminal as my primary uh development
+experience. I have just built so much muscle memory with it. Uh I have been using my setup for like over two decades
+writing codes in terminal. I I think the habit it creates for me is just to have my hands on the keyboards pretty much at
+all times. What would you tell to people who like are afraid of the terminal? You know, maybe there were not developers, they're
+not that technical. What would you say to those? there is a learning curve initially to get used to a different
+kind of workflow uh where you are using your keyboard to control like all the
+movements and everything uh in the terminal. So initially I think you will feel there is like a productivity loss
+uh because you are not comfortable and you are uh just you're not sure how to get everything done right so there is
+the initial phase but once you get past that it keeps you in the flow because you can just have your hands on the
+keyboard like control everything from here uh using keyboard shortcuts and everything your thoughts uh is like the
+only thing that's flowing awesome so walk us through it we have pi agent here what's happening the
+bottleneck isn't coding anymore. The bottleneck is reviewing thousands of lines of AI written code to make sure
+you're not shipping slop. And a lot of you already use cloth code, cursor, or codeex to write code. But what you don't
+have yet is something that reviews your code as carefully as a human would. That
+is what code rabbit is. And code rabbit doesn't just take one look at your code through an LLM. Instead, you connect
+code rabbit to your repo and it understands your entire codebase. It pulls in external context like link
+issues and documentation. And on top of that, it runs 40 plus different llinters and security scanners. Then it surfaces
+it in one digestible format so you can act on it. And the feedback Code Radbit gives you isn't just add more tests.
+It's clear, specific, and actionable. It shows you what changed, why it matters, and how to fix it. And when it finds
+something like a bug, there's a easy fix with AI button that solves the issue with one click. And what's nice about
+Code Rabbit is that it meets you where you already work. Whether that is during PR review, in your IDE, in the CLI, in
+Slack or Discord, so you can review where is the most convenient for you. And it's not a static checklist either.
+Give it feedback once in plain English, and it remembers your standards and preferences every review after that.
+Even today, Code Rabbit is already reviewing over 3 million unique pull requests every single week, which makes
+it the most installed AI app on both GitHub and GitLab. And if you're building a public open source
+repository, Code Rabbit is free forever. All of us are shipping more code than ever before and it has never been more
+important to understand and review your pull requests properly. That is what code rabbit solves. If you want to try
+code rabbit yourself, it's going to be the first link in the description. I just have a frameless terminal window here. Uh this is using uh western. I I
+like western because it's really highly customizable. I can just like change everything about it. Uh and here I made
+it frameless. So there is no window border, there is no nothing like it's just a pure terminal window and with
+like background blur and everything. I like it to um to look good. Um so when I
+work I I can look at a pleasing experience. Uh what I have here is a Herder session. Herder is kind of like a
+modern version of T-Max. I was using T-Max for like over 10 years and only recently discovered Herder and I just
+really like it. It's a more modern take how you manage multiple sessions in your terminal window. So have you tried like
+Cmax and what's the difference between like CMAX and Herder? Yeah, so Herder is even more in the
+terminal, right? CMAX has a GUI frame and uh within the frame there's like some PES that are terminals, right? But
+Herder is like entirely in the terminal. So the good thing about this is like this terminal window is just a program
+running, right? This is running on my Mac Mini and I can connect to this same session from my phone. Um, so I I can
+take my phone, I do a SSH connection, I can get this exact same terminal window.
+So everything stays the same. With other GUI applications, it's harder, right? Um, because you can't quite just like
+remove desktop. Uh, and that's not going to be a good experience either. So this is like the main difference for me.
+I see. Real quick, if you want to implement Coon's entire setup for yourself, it's going to be available in the second link below the video
+completely for free. This includes his first mate setup herder westerm and everything else uses to actually
+build with AI agents. Again, grab it completely for free. Second link below the video. So here I have a herder uh session
+running and this in this herder session you can see on the top left there are spaces and I'll talk about that in a
+bit. It's basically like workspaces in her. You can use that to organize your work your different projects and uh etc
+etc. And on the bottom left there's agents. And that's a good thing about Herder uh which is that it understands
+what agents are. The previous like terminal multiplexers uh like T-Mox and
+uh Zelage they don't quite understand agents right they understand your terminal windows your tabs and uh PES
+they don't know what a session uh what agents are but Herder knows that I have a PI agent working here. The working
+status basically tells me that I don't need to like look at it. uh it's still working. It's not waiting on me. Uh so
+that's a very useful thing. Yeah, in this herder um I use herder to organize my agents and allow me to navigate
+across all the sessions I'm working on. Uh so that's the the thing I uh like about it. But most of the time I only
+work on one session which is this first mate. So this is a workflow that uh that
+was developed like maybe since a few months ago uh when I realized that I'm managing so many sessions all the time.
+Similarly, I think uh when people use CMOX and other uh kind of orchestration
+uh apps, in order to get more work done, people have to manage multiple uh
+parallel agent sessions. Yeah. Right. Because one agent uh can take a while to get work done. Uh so people start to
+spin up more sessions and sometimes I see people have like 20 20 30 sessions.
+But then I kind of like uh was going crazy because yeah 20 sessions you have
+to keep that in your head right you need to remember oh what is this session what is it doing yeah so that pain caused me
+to develop first mate because I I I just don't think that's going to be the end game like I don't want to spend all day
+just juggling between the tabs right and remembering what was what I develop first mate because I think uh the agents
+as they become more capable should be able to juggle all those things for me. And I started experimenting with this
+setup since a few months ago and it actually works. Uh so now this is like the only agent I talk to most of the
+time. Uh I just talk to first mates and let first mate manage all the other sessions for me. So I can maybe like
+walk through some examples here. Um so this is already hap something is already happening, right? It's doing some work.
+It's telling me no actions needed. Um and now I'm wondering about some some work that was uh happening a while ago.
+So I can just ask, hey, did Apple approve our app review for this app? So
+that's an iOS app uh I I was building and I submitted for app store uh review
+and um I'm not sure whether that's approved. So I can just check uh with first mate and first mate is not going
+to do that by itself. It's going to delegate the task to another um crewmate. The reason is that if first
+mate does this for me, then first mate will get busy, right? And I cannot uh talk to first mate again. So now you can
+see uh captain I'm checking this now it's asked another crew mate to check it for me. The benefit is that I can talk
+to first mate now uh without it's like blocking on something else right I can just ask for something else. Uh I
+remember there are some good PRs uh sitting on me uh for review in
+treehouse. Can you check? So first mate has access to all the projects you're working on. Yeah. Yeah. It's the coordinator of
+everything. Uh it knows about all my projects. I'll talk through some like scaling issues uh later on as well. Uh
+the basically I have um like maybe 20 to 30 GitHub repos that are public and uh
+have quite quite some popularity and people file issues and PRs to me right if I am to manually juggle all the 20 30
+projects I'll just go crazy um so I pretty much let first mate manage all the projects for me. Um so when I say
+treehouse uh first mate knows which project that is. My main question would be like how did you develop enough trust
+to delegate so much responsibility to first mate? So trust uh takes time to build right.
+So I didn't initially just trust it for everything. I started playing with it um initially as a prototype and I started
+like really letting it do more and more for me and I observe how it does and sometimes uh initially especially uh
+like when I just first began using it uh there were many problems uh such as like it's not delegating uh the right thing
+to the right crew mates or it's like sometimes having multiple crew mates doing the same thing conflicting which
+with each other things like that um and I started optimizing the process more and more and eventually got to a pretty
+sweet spot where I can just like let first mate handle all those for me and I I don't see like mistakes or uh
+suboptimal routing anymore. So now it's also uh started a task to uh to review
+some of the treehouse PRs, right? And now I can continue talking to it uh about some like anything else I want to
+do. Remember there was work happening around optimizing the workspace
+organization for first mate. Uh where are we? So I can just keep asking about
+these things uh that uh that are crossing my mind. The really good uh feeling I get um here right now like the
+thing I enjoy the most is that I'm constantly in a brain dump kind of mode.
+I have thoughts and I just dump my thoughts to first mates and let first mate do everything else. I don't need to
+worry about like all the steps it needs to take uh to get things done. And do you ever go into the specific
+like sub agents to look at what they're doing or not really? Very rarely now. uh initially when I was
+developing first mate I did that a lot just to observe right uh is it doing the right thing uh is first mate uh
+communicating efficiently right uh did it actually bring the context to the crew mates uh so initially I did a lot
+of observation myself but now I don't do that much um but if I uh sometimes I
+will still feel like uh why is this taking so long right kind of like working in a real company in a real team
+sometimes the manager will still go to a direct report directly uh like maybe bypassing the tech lead just because uh
+sometimes it's like more efficient to directly communicate. So if I want to do that, I can just like in her I can uh
+bring up this view. Uh this view pretty much like lets me jump to any other u agent session. Uh I
+can just jump to see like what is really happening there. Yeah, that's very very nice. Yeah. So here um basically uh first mate
+answered my last question. Uh this is at a strong design checkpoint. Okay. I
+discussed like an idea with first mates a while ago uh but we didn't proceed to implement uh because I wasn't sure about
+this approach. I felt like something was uh was off. Let me actually show you something here. So with this kind of
+technical design, sometimes it's a little bit complex, right? Uh it has lots of moving pieces. It has
+trade-offs. Uh has like pros and cons. Um so this kind of case I usually use lavish uh a interactive um HTML artifact
+to uh allow me to more easily understand uh what the idea is and what the trade-offs are. Uh so let me uh try that
+now. Can you use lavish to review the um herder workspace design uh with me? What
+this does is that first mate will create a HTML artifact with visuals about uh
+the design decisions we have to make. Uh so it's going to be easier for us to collaborate on that. Yeah, it's using
+the lavish uh axi to do this. It can take a little while uh to create the artifact. Right now you were typing but you know
+you were a big proponent of speaking. When do you do which? Uh I pretty much like always use uh
+voice input now. Um, the reason you saw me typing was I realized uh a while ago
+uh that if I use voice input, it actually interferes with my microphone somehow. I haven't fixed that yet. Um,
+but mostly yeah, when I prompt I just uh use voice input. Um, the only exception
+I would say uh is when I have to copy paste a URL or a file path or something
+like that. Uh, it just doesn't make sense to speak that out loud. Yeah. Yeah. Of course. So now yeah it's writing the design review uh in a HTML
+and uh very soon we can probably like see that in my browser. So you're using uh 5.6 as your main
+agent. Why is that? Yeah. So 5.6 soul on x high as my first mate. Uh so first mate uh the thing I uh
+learned is that first mate is kind of like juggling through a lot of context. It needs to rationalize a lot of
+different things like which thing am I talking about right? when I say herder workspace uh view uh design it needs to
+know oh a while ago we worked on that and that's what I mean um so first mate
+actually needs a lot of reasoning it needs to really uh be able to rationalize all the complexity and then I have different rules for different
+crew mates so when it's uh when first mate is dispatching a task to a crew mate it has a set of preferences I told
+it uh and it will use those ref uh those preferences to route the task here This
+file is basically where I write the rules and the rules will will basically tell first mate in what case should we
+use which agent uh which model and at what reasoning efforts. Um it previously
+there was a um a rule here that says for any high complexity technical design and
+product design use uh fable uh in cloud code. Um I think fable has the depth and
+has the creativity that I really like. Uh so for those very complex designs I I like to use Fable as the crew mate. Uh
+but by default right now uh it's using uh 5.6. So purely because of the subscription
+practicality. So uh I can show you I have this thing tracking my uh quota. I ran out of my gro uh kota uh and
+waiting for the reset. I'm almost out of the fable kota this week and the reset is long uh is still like a ways to go.
+So I'm saving this remaining fable kota for like things I really really need fable for. this whole um LLM quota from
+the subscriptions we get are just not enough. Um I think I would suggest uh
+the LLM companies to actually think about having a higher tier. Yeah. 500 because the $200 uh tier right now is
+not sufficient. I agree completely. I mean people are going to hate the stake, but we do need some $500 tier, you know.
+Yeah. Yeah. So you never do API pricing. Yeah. So I I think for individuals it doesn't make sense to do API pricing. If
+I actually take API pricing for everything I worked on for the past month, it's going to cost more than like
+$10,000. It's just not sustainable. I think another thing that might help uh you know like GPT 5.5 and 5.6 and a lot
+of the cloud models have a fast mode. Yeah. Right. Um the fast mode will basically
+cost more to get you lower latency. I want the opposite of that. I want something that's slower but will be
+cheaper. uh because there are so many tasks that are like backgrounds tasks that I don't really care about it being
+finished very fast right I care about how much work can I get done in total because my my total quota is the
+bottleneck right now uh so I I wish uh they will uh eventually develop something like that
+yeah there is demand for this for sure different tasks require different tools and settings right like if you're working on something like I have this
+very important meeting in 10 minutes you know we have a transcript from last week you need the fast mode But like if
+you're just dispatching an agent overnight, you need the slowest of slow modes. You know, you don't care if it's five tokens per second. You just want it
+done. Yeah. Exactly. Uh I think that the whole spectrum uh ideally the options are available to us to make the trade-offs.
+So this is uh the question I asked earlier about the herder organization. Uh so this idea uh for some context uh
+is about how first mate uses herder to organize it uh crewmates. So right now
+everything is like a flat list and it's sometimes hard to understand like which agent is doing what. So there was an
+idea to do better organization. So here um basically it brought up this uh design review uh artifact. It has a
+recommendation. Um but let me uh walk through the actual uh proposals. Yeah,
+this is kind of the hierarchy we have today. Uh it used uh this kind of like a tree view right to show me uh what this
+is. uh and this is very helpful otherwise uh what we usually do is like in the terminal we discuss with the
+agent and the agent will like just print a long wall of text right so here I can see this visually uh it's
+a tree structure uh this is um what it does today native now uh repository and
+uh work tree hierarchy uh yeah different work trees uh gets grouped into uh by by
+repo and there's a recommended uh architecture here uh so this is uh also So pretty uh cool. Lavish makes the
+agent actually produce a whiteboard. So this is a ecalraw whiteboard and I can
+pretty much like just look at uh all the uh diagrams. Um I can adjust this as
+well. I can like say this is not right. I I will uh move the boxes around uh and
+I can I can send the feedback back to the agent. Um so there's a lot we can do interactively uh on these artifacts and
+that's what I uh I really like about uh like using this lavish based uh workflow. Um so it at the end it will
+usually point out the decisions I have to make. Uh the open questions it has uh is uh ambiguous. Uh so it has a few
+approaches uh right I need to decide on one. I think I I want to prioritize the supervisor ownership uh because the
+grouping uh will make more sense uh when it's grouped by supervisor. There's a lot of context here, so I I I'll
+probably like not spend too much time on this. Um, but I'll cue this decision and I'll send that back to the agent. Uh,
+and that's it. Like that's pretty much like the workflow to make a decision like this. So the main question, like you said,
+there's a lot of context, you know, with these different projects, you know them. How do you still achieve something like
+deep work? You know, how do you still go into the flow without, you know, going crazy with like even even with the
+setup, you know, you can still have too many faults and like, oh, I wonder how that project is doing. I wonder how what
+what this agent is doing like how do you still achieve deep work? Most of the time uh when when you think about uh the time I was spending with
+first mates uh in this session it was mostly spent on ambiguous decisions. So
+I was not uh really like jumping between tabs or uh wondering hey like uh was
+that work still happening uh was that waiting on something. I don't need to worry about those things. The only thing
+I spend my time on is like truly ambiguous decisions. the things that uh really does need my judgment. So pretty
+much like all day what I'm doing is like I uh one is that I'm dumping my thoughts
+into first mate. Everything I want to do I just tell first mate I want to do that and then I I can forget about it. Uh it
+will either get done or it will come back to me as a decision to be made. So that's one thing I do just tell first
+mate all my thoughts. The other thing is like to deal with the decisions that I uh have to make that first mate cannot
+uh determine by itself. Uh I actually have a lot of instructions for first mates on when it should come back to me.
+Uh because that that is actually a very tricky thing to get right. Sometimes uh we see uh agents to just go wild um and
+they uh do um a lot of things autonomously without your really your eyes on it and at the end you will
+notice it did the wrong thing. And uh I think that's one thing that we really need to tweak about our agent behaviors
+to figure out like what is the sweet spot and each person maybe have like maybe have a slightly different uh
+preference for where that is. Uh so that is something like we need to really uh talk through with our agent.
+So with this setup like how many tokens are you doing on a typical day? I actually didn't count the tokens. Uh I
+mostly count uh like how many percentage of uh the quota I'm using.
+Okay. Right now I try to keep a uh good balance. The reason you saw that uh I
+exhausted my cloth quota uh quick uh more quickly than I should um is that uh
+anthropic told us that label will be gone. [laughter] Yeah, they they I I I even called them
+out. I said like what are these childish games like either keep it or remove it. Don't do this like weekly extensions, you know,
+or like give us the banked resets that OpenAI has, right? Yeah. So we can control it. Uh so unfortunate
+situation um almost out of cloud kota. There was like even like a couple people that went to the hospital. Have you seen that? Because they like stayed up for
+like two days straight because they thought Fable is getting removed and they ended up in the ICU. Yeah. Transparency. I think this is
+something I see Anthropic really struggle with. Every time they communicate with developers uh like the
+way they have handled a lot of the major changes in the past, it's just not uh quite transparent enough and give
+everyone enough clarity to make their decisions. This is just like a quick rant. Uh, but usually I I just use this
+to keep my eyes on uh my quota. Uh, and I try to make sure I'm at a good pace
+with the resets, right? With OpenAI, I can be a little bit more aggressive. Uh, because I I have a few resets I can use.
+Uh, and they give so many resets. But didn't you find like GBD 5.6 Soul, especially on extra high or ultra, is
+like burning like crazy? At least it was in the first like day or 24 48 hours. So, there were a few things there. The
+first couple of days, OpenAI made a mistake. Um, they adjusted the context window, uh, the compaction threshold for
+5.6 to 372K tokens, right? And later they realized
+any request that goes beyond 272K tokens will get overcharged.
+Oh, so a lot of people are burning tokens more quickly than they should and they did a reset for that. Uh, so so they're
+I think they're fixing it. Uh but that was one of the reasons people felt uh 5.6 was burning tokens more um quickly
+than they uh used to. The other uh interesting thing was that altra is a
+special case. Yeah. So I think altra and the ultra code in claude right they are not necessarily a
+reasoning effort level. They are a prompt that tells the agent to use sub
+agents aggressively, right? To to fan out tasks and uh for a while I think
+maybe even right now open AAI uh codeex when it uses ultra it will spin up so
+many sub agents and every sub agent is an ultra agent. It's just burning tokens way too fast. Uh I think X high and high
+are very different. X high does not burn my tokens that fast. X high is actually uh my sweet spot because despite it
+being X high, it's actually pretty fast. Okay. Right. Uh the prompts that we just went through, it usually comes back pretty
+quickly. Oh, actually yesterday on that point I did testing with like some people and I
+was observing like they were running 5.6 Luna and I was like why is it so slow they switched to 5.6 Soul medium and it
+was faster. So I don't know what's happening at OpenAI but literally Luna is slower than Soul right now. [laughter]
+Yeah. So you know uh why that's the case there's a uh benchmark I can show here it's called deepu um I think you
+probably have seen this as well right uh deepu this is like probably like the benchmark I currently trust the most
+okay um because it's not contaminated yet it's new enough that the training data does not have this um so maybe
+eventually it will need a refresh but right now I trust this a lot and you can
+see um there are a few really interesting outliers here uh clock solid
+five. If you look at sonnet five up until like from low, medium, high, x
+high, it's like it's a reasonable curve, right? Um so uh the uh this graph is
+like the the left hand side is more expensive and uh the top end is more
+intelligent. Uh so the the top right is good. So set five is reasonable up until
+f high. But if you do max you see It's going crazy. It's uh it's the most
+expensive model there is. Solid 5 is more expensive than Fable. Yeah. So I think the reason this is happening
+is that uh when the model itself is not intelligent enough, it will just waste a
+lot of cycles, right? Doing the wrong thing. Uh especially when you ask it do to do max reasoning, it will think very
+hard, but it's still not intelligent enough to solve the problem. So it will just waste a lot of time and tokens. Um
+so I think it's the same with Luna. The unique thing about Luna is that it's a really tall uh curve. It means it
+stretches between um like very very low intelligence to very high intelligence. So I think there's probably a similar
+thing happening with Luna where if you ask Luna to work on a hard problem, it
+will just like not be able to solve it but it will waste a lot of token trying to. Yeah. Yeah. My observation is exactly
+that you you did like way too many tool calls to achieve something relatively simple and then you know 5.6 soul on
+medium just did it in like a minute. Exactly. Uh so right now I pretty much only use soul for my day-to-day tasks.
+Um, so I can like adjust the reasoning level for soul, right? Um, I find very
+little reason to use terra because uh why do I use terra when I can just adjust the reasoning level down for soul
+then I get more intelligent model uh at a lower cost. I use Luna uh in some
+cases though uh in my home assistant uh so I have a home assistant running my
+house and I can control my lights and uh everything right music players etc etc.
+uh that I use Luna because it's fast. I need it to be really really fast. Why why not like a open source model for
+that? Like you know Kim K2.7 code with like the naturals to fix on open router you can get like 200 300 tokens per
+second. Yeah. Yeah. So open source models um so there is a few ways to uh to do that.
+One is to run that locally. Actually I think uh for this kind of home assistant scenario I can actually run something
+locally on my Mac Mini and get it to work reasonably well. Right. Um the
+thing is that my Mac Mini right now is a very precious resource. Um because I do everything else on my
+Mac Mini, I I I have a lot of tasks to be done, right? Uh so it's uh I when I build the iOS apps, when I build
+everything else I'm doing, uh it consumes the compute from my Mac Mini and I I connect my phone to it. I
+connect everything else to it. Mac Mini is kind of my personal like uh compute.
+Makes sense. Um and uh if I run a uh open source model uh on that uh it will just
+like compete with everything else I'm doing. Uh so that's one constraint. Um I
+could also run open source models through um cloud providers, right? Um
+but I find that costsaving not uh meaningful enough for me to really like
+switch away from something like Luna. Yeah. Uh so so so far I haven't really
+um like uh got into um local LMS and uh open source models that much.
+And in terms of the harness, is PI your favorite harness right now? Yeah, so um there's a few harnesses I
+use right now. I'm using PI because uh I'm mostly working with GPT 5.6 today uh
+because the quota. But uh what I do right now is that if I use anthropics models, I use cloud code because they
+ban everything else. If I use GPT 5.6, I use that in pi. Uh the reason is that
+the codec COI is not that good uh as a harness. Uh it has some strength. Uh for
+example, it's uh got out of the box integration with the image generation uh which is very handy. A lot of the other
+capabilities uh such as like managing background processes uh it's just not as
+good. It doesn't have all the bells and whistles uh that make the COI experience really smooth. If I compare that with
+pi, pi is highly customizable, right? So everything I want to achieve, I can
+pretty much just build a plug-in to achieve that. Um, so that's the main reason I choose pi uh over codeex for
+GPT models. Um, for Grock, uh, is the other model I use because I have a X
+subscription already and there's some quota there. I actually find Grock, uh, 4.5 really good. Yeah, I mean I'm in the
+EU, so you know I cannot use it because it's banned in the EU, but Oh, okay. That's unfortunate. Uh but uh
+yeah, so um it's a pretty good model. The way I think about Grock 4.5 is that it's Opus but on fast mode.
+Damn. Um yeah, it's pretty much capable as doing everything opus can do. Uh and it's super fast. And uh the interesting
+thing about using Grock, especially in the Grock harness, the Grock build harness is that uh it seems Grock build
+gives you free X API access to like read post and search for things.
+Okay, which otherwise would cost you um because X API cost money. So that's
+another benefit. I I can use Grock build to like search for tweets and rationalize like news uh things like
+that for me. I think it's like one of the fastest improving harnesses as well, right? Yeah. Yeah. Totally. It's very young,
+right? It's it's very new and uh they only recently started being really serious about that and it's already got
+like better capability than codeex at some of the uh background process polling uh etc.
+I see. Okay. Any other Asian harness? Uh I also use open code quite a bit. So
+open code is also pretty smooth. Uh I like the TUI experience there. Um but uh
+I think over time I started leaning towards Pi for more and more things. Uh
+because Pi uh is like more deeply customizable. Uh you can pretty much change every aspect about Pi and uh I
+kind of like about that. So like you are big on customizability, right? So do you think in the future
+more and more people will have their own setup instead of like these predefined you know packaged apps?
+I think likely uh there's going to be a spectrum of preference. uh what I uh
+think will happen is that there will be a group of people who are not very opinionated about uh how things should
+work. Uh they are kind of looking for others like give them proven playbooks. So they just want something that can
+work out of the box. They don't have to worry about tinkering with that all day. Um that I think will always exist and
+that's that's good and uh people will build tools and publish that to those people uh so they can just use something
+that can work out of box. There will be another group of people who will start to have more and more personal
+preferences for how things should work and those people will need uh things that can really uh be customized and
+evolve. One thing I showed you earlier was this quota widget I have on the menu bar, right?
+Yeah. This thing I I call it baby menu. I I built this myself and this thing is self
+modifiable. So right now you can see it's a bunch of things that would never
+exist together in a product. There's my GitHub uh stats right and there's like
+CPU and memory and then there's like my cloud and codeex quota. No one will
+build a product like this and ship it to other people. Um this is this belongs to me and the reason uh I I have it like
+this. Uh the way I got it to become like this is through talking to baby menu. So
+I uh baby menu started as empty uh thing and I tell baby menu what I want and
+baby menu will self modify and uh start to become uh like that. I that's I think
+one version of the future that I think will happen to a lot of software. They will ship a reasonable experience out of
+out of the box. But now everyone has agents. So everyone should be able to talk to their agents and customize the
+software they use. And also like a lot of self-healing loops, you know, like a lot of software will have like a way to
+easily report a bug that starts like a codex CLI, implements it, goes into PR,
+you have like something like code rabbit, review it, and the bug could be fixed within 20 minutes without any
+human involvement. Yeah. Yeah. Totally, totally. Uh something else that's very interesting that's happening uh is like first mate.
+First mate is basically uh a agents.md file. So there's the agents.mmd
+that prescribes how first mate should behave, how it should coordinate different tasks across a larger number
+of crew mates. So this is like the instruction for first mate. It also has a bunch of script files.
+So in this uh binary folder uh it has a bunch of uh bash scripts. These bash
+scripts basically handled a lot of the deterministic steps that first mate would otherwise have to take. um so
+bundle them into a bash script so that uh first mate does not need to spend tokens going through all those
+deterministic steps. Now the good thing about this is that both the agents.md
+and this bash scripts are in the current directory. So first mate can modify this
+right. Um, so one interesting thing I didn't even realize was going to happen was that when first mate has a bug um
+that's like preventing it from doing something uh correctly, right? It will just work around the bug by itself. So
+now this software is pretty much like unstoppable. There's no way you can stop
+first mate from doing what it needs to do. Even if this scripts have like various kind of bugs, it will maybe make
+first mate a little bit more inefficient, it will not stop it from working. This is a really big change
+from traditional software, right? Uh in a traditional software, if you have a bug, then it's a bug. It may be like
+breaking the app, it may be crashing the app, you can never get through it. But now we have this like intelligent
+software that's pretty much uh always flexible and it's very hard to write a bug that can stop it from working. So
+basically then the challenge becomes like where are all the things that we humans are slowing down the agents and
+how can we remove ourselves from as many of them as possible only being involved in the ones that really matter.
+Yeah. Yeah. Totally. What else about your setup should people know? Um I think maybe the other thing is uh
+no mistakes. Um so what we very very often I run into this so much is that I
+get AI to generate code for me right? Uh and uh Fable and uh 5.6 six they can
+write code very very quickly and very well they can do very complex changes
+but now if there is a complex change uh that's made by AI how do I know it's
+okay to merge it right um so let me show you a very uh real example here I'll go to my other project
+called high bit this is a uh a AI harness I'm building for uh children uh to learn to use agents I just did a
+whole bunch of changes you can see here this is the diff I made a bunch of changes using uh fable uh yesterday and
+now I have this uh change sitting here. What do I do now? Do I go review every
+uh every line of this diff? It's going to take a long time, right? And our time is like really limited. So if I um
+review AI generated code, then there is an upper bound of how much work I can
+get done, right? Because uh it pretty much depends on how much code I can review every day without going insane.
+So now what I do is that I have pretty much I send all these changes to no
+mistakes which performs a pipeline uh where it does adversarial review and
+validation and everything and present me with something uh that I can more easily determine whether it's okay. Uh so the
+way I do that is just uh nm. Uh this is a uh shortand for no mistakes uh dashy
+which pretty much like just uh means get all the code changes that are in the
+current working directory into a branch and pass that to no mistakes. Uh so I just run that to show you. No mistakes
+will create a branch will ask the agent to create a branch for me and create a commit and uh like put all all the
+necessary information in there and then push that branch into a local git proxy
+where it performs the validation in a isolated work tree. Um so we can see that in a bit. Uh yeah it's uh already
+created um the uh commit. So this is the no mistakes pipeline. it first uh will analyze the intent and the way it uh
+understands the intent uh is by analyzing the agent session that produced this change. So the agent
+session is where I worked with uh fable uh to create this code change right I uh
+sent my prompt I expressed my intent originally there. So the first step is to understand that intent because that
+intent is the true requirements that should be respected. It's what I said I want right it understands the intent. It
+does a rebase uh on the the the latest uh remote origin uh main branch uh so we
+don't run into merge conflicts later on. And now it's doing the adversarial review. So here it's using GPT 5.6 soul
+on medium to review the change. If it found something it will either autofix if it's a very obvious bug or it will
+escalate to me for approval if it's not obvious enough. If it has some product implications. Sometimes we find a bug
+and the solution to fix the bug will require changing the product, right? Those are the cases I want to actually
+have a say. I set some rules to say for those cases escalate to me. And uh here
+we can maybe see uh whether it will just autocomplete or escalate something. Uh but basically this review step will keep
+going for a while and it will pretty much catch all the edge cases and bugs and missing uh things and uh at the end
+after the adversary review it will do testing as well. uh and the testing uh
+will produce some visible evidence that can really tell me it's really working
+uh as intended and then documentation linting and will push for PR uh and will
+babysit the CI pipeline until the PR screen and then it will tell me okay now you can go look at that um so usually
+when I launch no mistakes I don't look at this view I I just go away and do something else now nowadays I don't even
+launch no mistakes myself I ask first mate to do Uh so it's first mates launching this for me. Yeah. But pretty
+much this is like something that I think helped me a ton. Um because otherwise uh
+I would have seeing all the problems no mistakes cut told me that uh my code
+bases would absolutely go into a mess uh if I didn't use something like this. But doesn't it on large project like
+burn up too much limits too many tokens? Because for example, this reminded me of DeepSack from Versell and they have like
+so many warnings that like if you run this on a large code base it's going to burn tens of you know tens of thousands
+of dollars of API credits because of like how deep it goes. So how do you like balance the number of review it
+does versus you know burning your usage? Yeah. Yeah. Good question. Right. So I I think there is like there is one aspect
+which is the inevitable cost of quality. Um so think of a software team. If we
+remove the code review process between humans, everyone will be able to merge code faster, right? But then you will
+have all kinds of like quality problems uh incidents that will happen in production sites and then eventually you
+have to pay the cost in another way. Yeah. So that's the inevitable part. I think
+uh we have to make a trade-off. How much do we care about the quality of a certain project? Um and in some projects
+for example it's a demo for a weekend uh showcase it doesn't really matter that
+much right in those cases we can probably don't like skip running this kind of heavy validation uh pipeline but
+if it's building a production software and there are a lot of users that would be affected uh there are customers who
+will stop paying if we like break their experience that's the case we want to be careful um so I think there's a
+trade-off to be made on which projects to apply this kind of approach The other thing I uh I do is that I don't send
+every single change into this pipeline. Uh sometimes I make a very simple fix, right? Yeah.
+I'm confident enough that it's not going to break and I can make a judgment call to say this change let's just merge. Um
+so there are cases like that as well. But yeah, like the vast majority of my changes will go into this pipeline. I
+can show you my stats here. I I have this uh no mistakes stats. I keep track
+of all the changes I sent to no mistakes and I have like a bunch of counters to
+help me uh understand how my changes are doing. That's another great thing about AI is like you can measure like so many things
+that like otherwise would be a hassle to measure thanks to like agentic engineering. It just you know you can start tracking literally everything
+about your work. Yeah, that's a really good point. Yeah. So with humans it's harder to track. Like if I have a hundred humans working
+for me, I want to know everything they do. Uh it's going to be hard, right? Unless I'm like uh Mark Zuckerberg who
+like records everything. Um but uh yeah so with agents it's just like everything can be automated. We can count
+everything. That's really awesome. So this is my no mistake stats. This is like maybe the past three months or
+something like that. Uh total changes a thousand across 59 repos. 63% of the
+changes got a mistake cut. And okay why do you think that is like if you had to guess which part of the process is it
+like a adversary review by a different model which part is the most effective? Yeah so this is this this by
+yeah fixes by step the review step caught and fixed most problems. So what I noticed is that um I think ever
+starting from GPT 5.5 the GPT model got really good at catching edge cases. I
+compared a few models and I I like GPT the most uh as a reviewer. Uh it's really thorough. is really good at
+identifying edge cases that uh that can happen in in like a rare scenario but
+will happen. So those kind of u adversarial review from GPT uh just help
+a lot in catching these kind of problems. Another big hitter is documentation. Uh so very often uh what
+I notice is that I will make a change the agents will make a change and it will not update for example the readme
+file which is still saying something that's like stale that's conflicting with the change we made right so those
+cases all got caught by uh this step which is really helpful very nice I mean one thing that comes to
+minds when I see this like advanced setups is that I know so many people from my audience who just spend all
+their time on their setup right like they literally have like this crazy agentic engineering setup but they never
+ship anything. So like how do you keep yourself like in a rational way where like okay maybe 10 20% of your time is
+spent on improving your setup and building these scripts and you know systems and other stuff is like you're actually building products with it.
+Yeah. Yeah. So that's a very very good topic. Um because uh I I I I see even
+myself a few months ago I was struggling with that. Everything takes time and
+when I I'm building something I run into some friction. I want to build the tooling to remove that friction but
+building the tooling will take time from me right and then the tooling will have problems. I have to fix those problems.
+And then for a while for a little while I think a week or two I found that I'm mostly just working on tooling. I'm not
+building the real things. Um, so that changed after I started using first mate. So the good thing about first mate
+is that the mundane things like bug fix or like um I run into this problem and I
+just need that to be improved. I don't really need to spend much time at all. I just say to first mate, hey there's a
+problem and first mate will get that fixed. the things that take my time will naturally gravitate towards the more
+interesting and ambiguous decisions which tends to be new product development. So now with first mate
+managing all the like mundane things for me I have more time to actually work on the products I want to work on uh like
+high bits and my uh iOS app a thing I did not intend but it was emergent after
+I started doing this with first mate. Yeah, I think that's like what I love about your setup is that it's also
+refreshing to see like a lot of these things actually emerge from real problems because there's a large percentage of people in the AI space
+which just like do things for the sake of it, you know, it's like I connected this together or like I built this setup, look how it works, you know, look
+how many agents it can run, but like it's not from first principles. It's not because they needed to get their work done. It's just like oh wouldn't it be
+cool if these 200 agents were running in parallel? But like as you're going through it, I can see reasoning for
+everything. Yeah. Yeah. So that that's definitely like my approach. I initially I didn't even want to build any of these tools. I
+very recently uh three months ago I quit my um big tech job uh to go solo and my
+intention was to build a few uh B2C apps that I think have potential uh like the
+AI tutor for uh children and things like that. I have a few ideas I really want to build and that was my plan uh to
+spend all my time building those. The interesting thing about building solo versus working in a big company is that
+in a big company there's a lot of other bottlenecks slowing you down. Um so you spend your time uh in meetings
+coordinating with other people, right? Uh and I got to a pretty senior level and uh what happened was that all my
+time is spent on telling other people what to do instead of doing things myself. So I don't have these
+bottlenecks uh with like running agents and getting work done uh the way I do
+now when I build solo. uh when I built solo there is no bottleneck other than
+myself right everything is like bottlenecked on myself on my own work um so I started running into all these kind
+of problems how do I validate AI generated code how do I really plan with AI more interactively instead of like
+looking at the terminal like a long wall of text how do I really juggle through all the 20 30 sessions without going
+crazy right I started running into these problems and then I I was forced to develop this tooling because there's
+nothing else that can solve it very well. So then I uh kind of accidentally became an open- source uh maintainer. Uh
+now I have to deal with the open source uh uh issues and PRs which is good and it keeps the tooling become better and
+uh now I have to balance my time. Uh how much do I spend open source maintenance versus uh my original plan of building
+the uh the apps I want to build. I see. Okay, broad question. What types of software you expect to be changing
+and what do you think will stick around? Yeah. Yeah, that's a really good question. I think there's a few big trends that are happening. One is that a
+lot of the software uh especially the SAS software that were built in the past
+two decades are mostly built for humans, right? They are essentially a human interface plugged in with a database in
+the back end and have a somewhat scalable system to manage that. The human interface part I think will pretty
+much like go away. we don't really want to click through all the websites
+ourselves in like in Salesforce in uh all those SAS uh websites right most of the time we want our agents to work with
+those services and agents need a different interface to work with that so I think there is going to be a rebuild a
+very big rebuild of a lot of these services to really make them more headless and uh get rid of the human
+interface aspect of it or change the human interface is to be something that allows the human to collaborate with AI
+to get work done. Right? So there's a big rebuild that I think will be happening. The software that gives
+agents really good interfaces so that agents can work very productively with
+those services those I think will remain. So right now I think if we think of the new kind of like GitHub
+equivalents I think whoever that will win that race to become the new GitHub
+has to nail this aspect. It needs to be a headless service that agents can operate um not like a website that
+humans have to go click through. So what does that look like? Is it like better documentation, stable API schema?
+Like what what are the things that actually matter for agents? Yeah. Yeah. So this is something that's also very interesting. Let me bring up
+this site I have called axi.md. So axi this is something I discovered I started
+to get into when I started building tools for agents. I noticed that a lot of the tools including MCP servers and
+uh COIs that people developed, they were not really optimized for agents. Um so
+take uh MCP servers for example. Um I think a lot of companies are still learning how to develop really good
+interfaces for agents. Uh so as a result, some of the MCP servers are really not very efficient. GitHub, I
+will probably call them out. Uh, GitHub MCP server is probably the most inefficient and unnecessary MCP server
+out there because GitHub has a really good COI and agents can use GitHub COI
+to get most of the work done. Why do we need a MCP server? And uh what I did was that I actually ran out of benchmarks.
+So, let me see if I can find the GitHub uh benchmark um that we can uh look at
+here. Here I ran a benchmark to really evaluate for the same tasks, right? If we just change the interface, how much
+does that matter? And here we can see uh if we use the GitHub CLI, this is GitHub uh measuring the GitHub operations. If
+we use the GitHub CLI, this is the average cost. If we use the MCP server,
+um there's a few variants without two search with two search with code mode, but it's always more expensive than COI
+to get the same work done. So this is like uh GitHub operations. uh it's u um this uh MCP based approaches are slower,
+take more turns, uh spend more tokens. Uh it's just worse in every way. The the
+GitHub COI is more optimized and it's better I think because uh they have existed for a long time and the LLM's
+training data already has a lot of examples for how to use that very efficiently. Um so that's why um it's
+already pretty good. So I think for GitHub operations uh there is pretty much like no reason to do MCP except for
+some servers server integrations. So the thing about CLIs is that most of the
+COIs out there are designed in a human uh development kind of scenario, right?
+It's humans running those COIs. Yeah. So there's I I so I thought there's probably like room to improve. So I
+developed a bunch of uh COIs for agents and I started to really distill down a
+few principles that can make COIs very very ergonomic for agents. Um and my uh
+proof point is here. The proof point I have here um besides the GitHub benchmark uh where uh I built an axi uh
+following the principles I have uh to build agent ergonomic COIs uh it can be
+even cheaper than the GitHub CLI uh and have higher success rate. That's one example. I also did one for the
+ChromeDev tools because uh browser automation is also a very very common use case, right? Uh a lot of people um
+use agents uh and run their browser to do various kind of things. So I benchmarked very kind various kind of
+common uh approaches to connect browser to the agent. There's uh chrome dev
+tools empty mtp server which is very popular. There's agent browser. There's dev browser. There's a few tools like
+that. Um I built a chrome dev tools axi by following the principles I defined uh
+and like iterated on over time following those principles and I built a wrapper.
+This chrome dev tools axi is a wrapper of the chrome dev tools mcp. So there's
+no functional difference. It does everything the same way. It's like the MCP server under the hood. I just only
+changed the interface and now it's significantly more uh more efficient. So
+the average cost reduced by over 20%. Without losing anything and latency also
+uh improved a lot. So that's like uh the browser use case. The principles I uh
+really distilled this down to are 10 principles here. Uh so I documented everyone can go to the axi.mmd website
+to see this. Um it's just like a public set of standards. The first one is like use token efficient output. A lot of the
+MCP servers and uh COI tools they use JSON to output data. Right? So JSON is
+very useful when you have something else that needs to parse the data in a structured way. But LLM's agents don't
+parse the data like that. Right? They only need to understand the content and the semantics of the data. So use the
+token efficient output format. Uh it can save a lot of tokens straight out of uh out of the gate. And then there's like
+minimal default schema. Uh some like CI tools when you ask for some data it will produce like literally every single
+column every single field. So various kind of things like that I documented them as a set of principles that can
+make an interface really ergonomic for agents. And by following this uh I was
+able to like uh consistently build rappers and tools that are just more efficient for agents for uh than their
+original counterparts. And I have a few published over here. Uh there's a
+catalog here as well. I have GitHub axi, chrome dev tools axi, lavish itself is
+an axi. I recently published a quotota axi as well that can expose the agent quotota uh data to your agents. This is
+for first mate to be smart about not using a crewmates that are like not
+using a subscription that's mostly out of kota. And then there's a bunch of community contributed uh axis already.
+Uh there's uh npm sqlite a lot of the common tools that we use already have an
+axi version. So, uh I definitely recommend uh people who like uh are running into the bottleneck of token
+efficiency to start looking into like just using more efficient tools. Real quick, if you want to implement
+Coon's entire setup for yourself, it's going to be available in the second link below the video completely for free.
+This includes his first made setup herder Westerm and everything else uses to actually build with AI agents.
+Again, grab it completely for free. Second link below the video. Man, this is amazing. like I'm going to run all my
+softwares through this to make sure they're like agent native. Yeah, I I could like talk about this for hours.
+Let me ask on the like product level. Basically, you know, I think me and you probably agree that like soon enough
+99.9% of software and tools will be used by agents. And again, we will talk to our main agent, you know, whatever name
+we have for that. Yeah. Why are so many people still missing this? Because so many people still are like focused on like, oh, I'm going to
+build this like human native web UI and they don't think about the back end at all. they don't think about the CLI at all. What what was the moment you
+realized like agents are going to run all the software? We're just going to talk to like our main agent. That's a good question. I think um this
+is a learning curve. We have seen this repeated every time when there is a new technological transformation. Uh so all
+the industrial revolutions, right? uh when like uh steam engines were introduced, when electricity was
+introduced, when internet was happening, uh it always started with a small set of
+early adopters who are just really uh who just really like to tinker around,
+right? Uh who who likes to play with the technology even if the technology is not paying off. So I think we're at that
+phase right now where a lot of the tinkering in some areas is indeed not
+going to pay off. Um so there are still a lot of legacy projects where AI can
+only help you so much. It can still help but it's not going to be as big of a
+boost as uh what you get from a green field projects right. Um so people who
+are in those uh domains when they try AI they will see oh it's like not that
+helpful. why do I spend the effort to really um work with it and those are reasonable arguments but that's the
+reason we we see um the early adopters are usually tinkerers who are just
+playing with the technology fake for the sake of it but those are the people who will figure out what is actually going
+to work those are the people who will figure out the tooling the gaps and uh ways of working that can really benefit
+from this new technology and those people will start to share those tools and products with others And this takes
+time. So it takes time for the early adopters to really prove something is good. Uh it takes time for them to uh
+boil down those uh those experiences into uh really good tools that others
+can also use. It takes time for others to really get convinced of the new tools
+and start to spend time with it. uh so all this is going to take time and I I think it's reasonable to expect that
+it's not going to be overnight that everyone will realize the same thing that uh AI is uh is here and this is the
+way uh everything will change um I think everyone is uh in a different circumstance and their constraints what
+they do every day uh the projects they're working with etc etc will shape what's the right timing for them to get
+through that uh inflection point I think this is Amazing point to end the solon. I couldn't agree more. Thank you
+very much for spending your time. What are the main things people should go and check out? Maybe check out my GitHub uh where I
+listed a lot of the tooling that I uh I I built and shared. I pretty much open source everything I have. Uh so
+everything uh I I do in my workflow that helps me get a lot done are already shared on my GitHub uh repo. And I also
+have a uh YouTube channel where uh I uh made some videos walking through exactly
+how I code, how I use the tools that I built to uh build new things
+efficiently. Uh so those are really uh good resources as well. Those are probably good starting points. Um, and
+if you run into any problems using the tools or have questions about how to use agents more efficiently, I have a
+Discord channel as well, uh, Discord server, uh, where, um, we have a pretty good community of really people who are
+really helpful, uh, at, uh, helping each other, uh, and I often go there to discuss with everyone as well.
+Awesome. I'm going to link all of that below. Cool. Cool. Thanks, David, for having me here. Yeah, likewise.

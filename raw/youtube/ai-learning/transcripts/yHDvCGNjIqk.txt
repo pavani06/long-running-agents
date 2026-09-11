@@ -1,0 +1,256 @@
+in this video we're going to do a live comparison 
+between lovable and bolt so bolt and lovable are
+two AI coding tools that allow you to uh write 
+what you wanted to build and then it uses AI to
+write the code for you they are similar tools so 
+in this experiment we're going to ask each of them
+to build the exact same thing use similar prompts 
+and see what results we get with a quick test
+for this experiment I'm going to ask both bolt and 
+lovable to build a task app similar to Trello so I
+want to see how it does with that prompt so I'm 
+going to say I want to build a task app similar
+to Trello with a drag and drop interface um so 
+let's start with just a simple prompt like that
+I'm going to run it in Bolt switch over to lovable 
+and and um run the exact same prompt so I'm going
+to pause the video while uh both bolt and lovable 
+are uh generating these uh apps for us so just a
+quick check in here we are in lovable and what it 
+does on the left side is first it kind of writes
+out a plan so design inspiration features for the 
+first version Design Elements and then it starts
+generating and then over in Bolt uh what it does 
+is uh kind of first does all the installations
+and then it tells us what features it built uh 
+so it looks like uh right off the bat the bolt
+generation the first generation happened a little 
+bit more quickly than the uh lovable generation so
+lovable is still generating it um but it didn't 
+take too much longer and in my opinion that
+doesn't really matter too much to me um of how 
+long it takes especially in in the beginning um so
+so uh here we are and let's test out both of 
+these versions one thing I do want to note just
+so you're aware is that in Bolt we're using the 
+diffs feature preview uh which basically means
+instead of rewriting the entire files when I ask 
+for changes it just finds the change and makes the
+update uh this is currently in uh beta for uh bolt 
+so it could cause some issues but just letting you
+know but it also uh is just a better way of 
+doing it uh because it uses a lot less tokens
+and i' I've been really enjoying using it um 
+lovable doesn't have that option I'm not sure
+exactly how they do it in the back end I think 
+they may by default use some similar functionality
+because when I make changes in lovable they 
+happen pretty quickly okay so here we are looks
+like by default they kind of added some tasks 
+to uh play around with by default let's see
+if I can add a task can I click to edit it looks 
+like I am not able to edit right off the bat but
+I can move tasks and generate new tasks and it 
+doesn't let me generate new boards off the bat
+so here we are in Bolt and it's letting me 
+uh add a new task I can drag it to different
+columns and it looks like I also am not able 
+to click to edit it but let's say um new column
+I'll add a column this is letting me add new 
+columns off the bat as well uh so that's pretty
+cool so let's add um some more functionality to 
+both of them based on kind of what I've seen so
+first for bolt I'm going to say make it so 
+that I can edit the uh tasks uh right now
+that functionality doesn't work so I'm going to 
+take that prompt go to lovable and paste in that
+exact same uh prompt and then I'm also going to 
+say also please add the ability to add column
+so um bolt is now running and again as I mentioned 
+it's using the diff's functionality so it won't
+take as long as if you have diffs turned off in 
+your settings or if you're watching this video
+in the future they may have that on by default 
+uh but I have to um it's going to go in update
+the code um one thing that's a little difference 
+between bolt and lovable is in Bolt you can edit
+the code directly uh whereas in lovable you just 
+have to um go to GitHub and um uh connect your
+GitHub account um okay so it looks like there was 
+an error or something so I'm going to run this one
+more time here in lovable while that's running 
+in lovable let's see if this was fixed Okay cool
+so now we do have this little edit button uh new 
+task save uh edit new task edited save Okay cool
+so that is working um that's actually pretty good 
+I really like this for a a first try here um I'm
+going to do one more thing in this but I just want 
+to see if this is updated it says that it fixed it
+so awesome so now if I click edit uh let's see 
+if this works save um and I also like the hover
+feature where it kind of as you can see if it's 
+hovered it's going up and down a little bit um
+and then it also has to add column and now there's 
+a new column looks like I can't edit the name of
+that new column right now um but it did create 
+the new column which is pretty nice um and this
+uh also the design is nice it doesn't have quite 
+the same hover effects it's lovable but I think
+they're both pretty good um okay so I'm going to 
+add a new prompt and I'm going to say please keep
+all functionality this is going to be focused on 
+style but update the style to look similar to the
+Spotify app in terms of design and style um so 
+I'm going to put that into bolt and then let's
+put that into lovable as well and uh what I'm 
+imagining is this is going to give it kind of a
+dark mode maybe some green accent colors um let's 
+see how it does uh updating the style in both of
+them okay so here we are lovable made the change 
+and I think this is just a nice little hack I kind
+of like the Spotify design um and it just kind of 
+gives it a really cool dark mode here so a little
+space that needs to be fixed but um overall I like 
+it maybe it's a little hard to see the individual
+cards before hovering but overall this looks 
+good let's see Bolt uh generally I found bolt
+to be a little better at design so let's see if it 
+actually is so here we are in Bolt um let's add a
+card um yeah so I don't know let me see which one 
+I like better you know maybe I like bolt a little
+better I like the hover on that plus button a 
+little bit more I like how the plus is in green
+uh just to highlight the accent but that doesn't 
+look as good um yeah I would say maybe a tie so
+far it is pretty close I would say between the two 
+of them I like how it uses the green accent um in
+both and of course I could very easily do that I 
+could uh in in lovable to add that in um but um
+yeah uh just off the bat um maybe I like uh bolts 
+a little bit better but both did a pretty good job
+um okay so now I want to ask it for something 
+a little bit more complicated add functionality
+to have multiple boards um uh that I can switch 
+between so let's add that to lovable and let's
+add that to bolt as well um so I'll pause the 
+video uh let it build out that functionality okay
+so here we are in Bolt first and it looks like 
+let's see if I click add new board board two
+create now I can switch between the boards and 
+let's see uh if let's just say uh it doesn't
+really matter so now there's a task on board the 
+first board board two no task let's add something
+to end progress go back um okay so that's pretty 
+awesome it's it's working really well on bolt uh
+let's check out lovable um me main board project 
+Alpha interesting so there's kind of two boards
+and I I kind of like how lovable has mock data 
+to start with um and if I click add board and now
+new board 3 I don't have the ability to edit those 
+board names but that I'm sure would be pretty easy
+to add um I like how lovable added them in here 
+on the top um and then here it's drop down I don't
+know maybe I like lovables a little bit more uh 
+but this is just something where it's interesting
+how these different um tools are just a little bit 
+opinionated in different ways probably just based
+on the training data that they have of course 
+with bolt I could ask it to do it like this you
+can also add screenshots uh for inspiration uh 
+for both of them um but both of them did really
+good for for this as well and I can add more 
+boards uh here uh same I can't um I guess edit
+the board name after it's created right now but 
+again that would also be uh pretty easy to to add
+um for either of them now one thing to noce for 
+both of these right now for bolt and lovable I'm
+just using the uh I'm not connected to a database 
+uh which you can do pretty easily in both bolt and
+lovable to add super base um or Firebase but super 
+base um is has a really easy Connection in lovable
+and bolt it's really easy as well uh I have videos 
+on the channel That explain how to do that so I'm
+not going to go into that in this video I'm 
+just going to focus more on the functionality
+but what that means is if you know we deploy it 
+and refresh then you're not going to save the
+data so it wouldn't actually be be you know that 
+usable and we're not going to add authentication
+in this video because that requires um adding 
+uh super base authentication meaning uh kind
+of the ability to sign in and log in all right 
+so let's try another feature let's say please
+add the ability to add due dates to the tasks and 
+I'll copy that and I'll put the exact same prompt
+into lovable and let's see how it does both of 
+them are still working looks like bolt is just
+about finished um so here we go let's add a task 
+edit and now we can add a due date which is pretty
+cool so save and then there we go now we have a 
+due date let's see if we put this due date to like
+the 19th what happens so interestingly it looks 
+like it's putting the date before um those are
+things we could we can edit uh but it did a really 
+good job on first track and I I like how it has
+this in the accent color there um over on lovable 
+looks like it's running into an error so let's say
+try to fix and have it try and fix that error okay 
+so we're back here in lovable um it says it fixed
+it and it looks like now it has the due date and 
+I can change it click save and there we go so it
+did that uh pretty well in both of them let's add 
+another functionality let's say I want to have the
+ability to add commenting to each card um could 
+you add that and then let me put the exact same
+prompt here into lovable so I'll pause the video 
+and let's see how both of them do with this uh new
+feature all right so here we are in Bolt first uh 
+let's add um let's click edit um let's save so if
+I click that little comment I can say here is a 
+comment add comment very cool uh second comment
+all right and if I drag that over so right now and 
+then if I click okay that's awesome it did a great
+job with that comment and it's it's cool it's 
+basically coming up with I guess the most kind of
+common way that that could be implemented um so so 
+it did a really good job there I'm I'm curious how
+lovable uh is going to implement that um all right 
+I don't know if it did yet it looks like it's
+still um it's still adding it okay so I'm going to 
+pause the video and let it add so it's something
+to note of course it might depend a little bit on 
+when you're using it how overloaded each kind of
+tool is but I will say especially with the diff's 
+feature turned on for bolt it does seem to be a
+little bit faster uh maybe a little bit faster 
+than than lovable um again both are pretty fast
+so it's not really a huge deal but um that's how 
+it is now of course if the diffs were turned off
+bolt might be slower so uh just a note there 
+all right so it's been a couple minutes and here
+we looks like it's implementing it uh pretty 
+similarly so comment one add comment comment
+two add comment um and it looks like I can open 
+and close it so it did it really very similarly
+okay so I'm going to stop there uh I think both 
+of them did a really great job uh hopefully you
+learned a little bit about uh how these tools 
+build how to prompt with them how to use them
+um I need to do more testing to see which one I 
+like better right now I I really like both of them
+and I think they're they're both worth kind of 
+testing more building more and and continuing to
+to learn more about them so thanks for watching 
+I hope you enjoyed this video subscribe to our
+channel to get more videos like this for free in 
+the future if you have any questions at all leave
+a comment below leave a comment with anything 
+you want us to build if you have anything uh
+any ideas that you'd love to see let us know uh 
+be sure to check out the link in our description
+to go to no code MBA and view a lot more no code 
+and AI tutorials um in a lot more depth so you
+can learn a lot quicker um without making all of 
+the mistakes that you might make without having
+an expert teaching you how to do it thanks 
+again for watching see you in the next video

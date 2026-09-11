@@ -1,0 +1,129 @@
+Count the last five books you finished.
+How many change how you think, decide, communicate, or succeed? If the answer is none, you're not alone. Most people
+read books and forget them. But the top 1% read to change something and to become dangerously smart. For those of
+you who are new here, I've been the CEO, board member, and investor in billion-dollar tech companies. And I
+want to show you a system that helps you read better, learn faster, remember what matters, and use AI to turn what you've
+read into something that helps you win the room. So, let's get started. There are three myths we carry around about
+reading, remembering, and learning. The first myth is a story we tell ourselves about how we learn. I am a visual
+learner. I need to hear something to retain it. I only learn by doing. Now, these all feel true, but researchers
+across four major universities spent years looking for some evidence for this. Do visual learners actually learn
+better visually? Do auditory learners actually retain more by listening? Turns out there was very little evidence that
+our preferred learning style improves [music] our learning and retention. Now this surprising myth costs us dearly
+because that self-inflicted limitation that we put on ourselves becomes our identity. The label creates the ceiling.
+Now the second myth is even more subtle.
+If a book explains something clearly, we assume that we understood it clearly. Our brains are very good at lying to us.
+In one study from Yale University, people were asked [music] how well did they understand everyday objects like
+bicycles or zippers or toilets and they all felt confident until they had to explain step [music] by step how those
+objects actually functioned. Then their confidence completely collapsed. This is the illusion of fluency and those myths create three interesting reading traps.
+There is the highlighter trap where you mark the sentence and mistake that marking for memory. There is the summary
+trap [music] where you make perfect notes that you will never ever read again. There [music] is the completion trap. So the book is done but nothing
+has been formed inside you. But now comes the biggest myth of all and it comes from AI. If AI can summarize the
+book, why do I need to read it? But you know, AI has already read almost all books on this planet. You're not going
+to grow your muscles if you haven't done a single push-up yourself. So ask AI to summarize a book, and it will do a fine
+job instantly, and you'll feel like you've read it, but you haven't wrestled with its core [music] ideas. Can you
+explain it? Can you remember it? Can you use it? You know, the more AI makes reading feel optional, the more we [music] need a better way to read.
+That's the path to the top 1%. If you want to change the way you think, you have to [music] change the way you read.
+And that's the system we're going to build here in this video. Reading was never just about books. It was about
+training for complexity. how you follow an argument, hold to opposing ideas in [music] your head, change your mind when
+the new evidence comes, and form an opinion that actually belongs to [music] you. The difference between a passive
+reader and a serious one is not speedreading anymore. It [music] is your position. Are you sitting outside the
+book watching the author think or are you becoming an actor in the story that is unfolding in front of you? That's the
+system you need to build. I call that framework actor. And the framework has five moves inside it. We'll go through each step in detail through the video.
+But here's something to keep in mind. In this framework, AI belongs inside of each move, but never as a shortcut. You are still the actor. AI is the sidekick.
+That changes the entire experience.
+Let's start with A for aim. Most people read a book as tourists. The best readers read it as a spy. In 2008, Lyn
+Manuel Miranda picked up the biography of Alexander Hamilton. He was on vacation and the book was 800 pages
+long. And when he was reading it, he was just looking for something to read on the beach. But Miranda had a lifelong obsession that he carried everywhere.
+hip hop, immigration, and this idea that words are how people with nothing build
+everything. That obsession was his mission. And when that passion connected with that book, with Hamilton's story,
+something inside of Miranda ignited. The mission changed the material. And Miranda was inspired to write a Broadway
+musical called Hamilton, which of course became one of the most successful Broadway shows in history. Same pages, different mission, different impact.
+Your purpose turns any reading from consumption to construction. So before you read, just write one sentence. I am reading this book because I need to XYZ.
+That blank is your mission. You might read one book for leadership principles, another as a traalog, another to understand your relationship with money.
+But without that one sentence, the book will decide what matters. With that sentence with your purpose, you decide
+what to hunt for. And what if you don't know what the mission is yet? Well, that's where AI can help. You can always ask before you read, "I'm about to read
+this book. Give me three questions that I should carry into it. So I read with purpose, not just passively or reverse
+the whole idea. I'm trying to deal with a dysfunctional team at work. Which book would serve that purpose and what
+questions should I carry into it? You are still the actor. AI is the [music] framer. It helps you articulate what you
+need before the book starts shaping it for you. So before your next serious book or an article or a memo or research paper, write the mission statement down.
+Just one sentence. And also remember that a great book is nothing but a
+doorway to another great book. Now C stands for compress. Don't read a book to collect more. Read it to carry less.
+Elon Musk once described knowledge as a tree. [music] Before you collect the leaves, you need to see where the trunk is and how the branches are formed.
+Otherwise, the leaves will have nothing to hold on to. [music] It's a very simple metaphor, but it explains why so much of what we read
+[music] disappears from our mind because we don't focus on seeing the tree [music] or the trunk. So, what is the
+trunk? It is the book's core central idea. The idea that holds everything else together. The branches are the
+major chapters or arguments. And the leaves are the examples, the quotes, the stories, and the details. And you know,
+most people read as if they're just collecting leaves. A great quote here, a highlighted sentence there, a
+screenshot, a clever paragraph or a photograph, but they miss the loadbearing idea. They miss the trunk.
+This is compression. [music] A book is not meant to be carried page by page. It has to be compressed into
+something your mind can hold. That does not mean dumbing it down. That just means that you have to find a structure
+that makes all the details [music] meaningful. Aim is about finding the root. Compress is about finding the
+trunk. Now, some books have [music] very clear trunks like Atomic Habits or Grit
+or Start with Y. And some others are harder like Zen in the Art of Motorcycle Maintenance, The Innovator's Dilemma, or
+Narcissist and Goldman. These are great books, but they're not very easy to understand. In those cases, when you can't see the trunk very clearly, you
+can go back to AI because AI becomes your interpreter. Ask, I think the loadbearing idea in this book is X.
+Check my interpretation. What did I miss? What did I misunderstand? What did I overstate? Because you know, if you
+look at a tree, leaves can't exist without branches. And branches need a trunk. So, if you only collect leaves,
+you won't be able to see the shape of the book, the shape of the tree. So, after each reading, write a short version of the key idea, the takeaway,
+and then go back to AI and challenge your interpretation. And that's the compression you need before you move to
+the next step. Next is T for test. The best readers don't read to agree. They read to find what they want to reject.
+In a classic Stanford study, people with strong views on the death penalty were shown mixed evidence. Now, you would
+think that mixed evidence would make people feel more balanced. It did the exact opposite. People attacked the
+evidence they disliked and praised the evidence they already agreed with and walked away even more convinced that
+they were right all along. And that is why one of the most interesting reading habits is what I heard about from Bill Gates. He has said that when he
+disagrees with a book, he writes even more feverishly in the margins. He does not treat disagreement as a reason to
+quit. He makes a point to think harder about those ideas. Now, think about us.
+Most of us underline and highlight all the parts that flatter our point of view, and we discard all the ideas that
+don't agree with us. I do it all the time. So, read like you are a spy in the anime's camp. You're not there to
+surrender. Of course, you're there to steal information you find useful. A serious reader can disagree with the
+author and still leave with something very valuable because testing is where reading becomes self-discovery. The
+moment you reject a paragraph, ask whether you found a flaw in the book or it was bruising your own ego or your
+belief system. And you can always ask, why did that bother me so much? What belief am I protecting or holding on to?
+Where's the author [music] right? Where is he or she wrong? What would I have to believe if I were arguing the opposite?
+This is where AI becomes super useful as an opponent. The best thing AI can do is to become your sparring partner. Ask AI,
+challenge my interpretation. Find the hidden assumption that I'm making. Give me your best counterargument and describe a situation where this advice
+will fail. All of that helps you embrace that book more gently. [music] You know, if a book only makes you comfortable,
+it's not going to change you. Next is own. At Washington University in St.
+Louis, researchers gave students short reading passages. Some students were told to read the passages again and
+again, and others were told to look away and try to recall what they had just read. Now the first group felt very
+confident in the short run but in the long run the other group was able to recall much more clearly. So looking
+away from what you're reading and then rehashing it in your own way is one of the best ways to own it. The weird thing
+about reading a book again is that you'll feel comfortable because it feels familiar. But the only way to own it is
+not to just reread it but to relive it in your own words. Now the second way to own it is to connect it with something
+real in your life. Maybe a meeting, a mistake, a company, a situation, a conversation, a person, an old belief.
+Give it some meaning because meaning gives memory a place to live. And the third test, which is one of my favorite
+ones, is the simplest. Teach it to someone. Even if you're teaching it to a wall, if you cannot teach it, you do not
+own it yet. By teaching it, you're moving the idea from the page into your mind. So after every book or a long form
+article that you read, explain the book in a paragraph or two just for yourself.
+And again, this is where AI becomes a fantastic coach. You can ask your favorite AI, "Help me explain this idea
+in plain English." Connect it to one business example or one personal experience or one analogy. anything you
+can do to contextualize it and own it or do what I do sometimes. I teach it to AI
+and ask if I'm hitting all the right notes. Buying a book means that you own the object. The hard part is to own
+what's inside it. R is run. Books have always been civilization software updates, right? Every major religion has
+a core text. The Bible, the Gita, the Quran, the Torah, [music] Newton's Principia rewired minds toward
+science. Mine comp rewired minds toward violence. So a book can build a future or it can burn it down. So the question
+isn't whether a book [music] changes the world. It can. The question is whether it changes you. You know, MIT's motto is
+mind and hand. Because thinking isn't enough and it's not finished until it helps you build something real that
+could change something in the real world. A communication book should change a conversation. A money book should change a decision. A leadership
+book should change how you run your team. I'll give you my example. When I read this book called Crucial Conversations, it did more than just
+inspire me. It changed how I behaved and what I noticed during real crucial conversations. I became more aware of
+three things. Whether I was making the room emotionally safe for everyone,
+whether I mastered my own story that I was telling myself and whether we were
+building a shared pool of meaning. These are all concepts from the book. Now, am I really good at crucial conversations?
+Of course not. I have made plenty of mistakes and mishandled many crucial conversations and paid dearly for some
+of them. But that's not the point. The true power of the book is that it can interrupt the way you used to run your
+life. It gives you awareness and that's where changes happen. And this is also where AI becomes your action companion.
+Ask it. Turn this idea into one decision, one rule, one checklist, one
+experiment, anything you can do to change words into actions. And by the way, if you'd like the frameworks we
+covered in this video, please sign up for my newsletter. Link is below. It's free. And you know, in the age of AI,
+everyone is going to have access to the same summaries. [music] Everyone's going to ask the same key takeaways. Everyone will generate the
+same polished notes. The edge is no longer your access to intelligence. The
+real edge is what you bring to it as a human being, your judgment, your taste, and a point of view that is uniquely
+yours. But there's also a much deeper benefit in reading because after a while the books you read start reading you.
+And by that I mean they help you reveal the stories that [music] you tell yourself, the fears you protect, the
+assumptions that you've inherited, and the parts of life that you still don't understand. You know, a great book
+works like a great song. You hear it once and you enjoy it. Then you hear it
+again years later. And somehow that song knows exactly where you are in your life. The song didn't change. You did.
+And that's why I'm yet to meet a great leader who does not read. Because the deeper you read, the better you start
+reading people. You read the room better. You read silence better. That's why serious leaders are serious readers.
+I'll see you next week. Thank you and I love

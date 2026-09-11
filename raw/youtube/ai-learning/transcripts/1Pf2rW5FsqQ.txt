@@ -1,0 +1,288 @@
+Hi everyone. In this video, I want to dive into the model context protocol or
+MCP. We're hearing a lot about it today. So, we're going to dive into why, what
+does it do, and then some of the benefits we get from actually leveraging
+MCP. Now, today we understand the idea that hey, I want to create an application and I want to create a
+generative enabled application. I want to use a large language model. So today I would think about okay well I'm going
+to write my particular application and then we have that large
+language model instance that we want to use. So I've got some large language
+model and I'm going to have interactions with that model. And that's fantastic.
+That's fairly easy to do today. But as we know that large language model we're
+using it was trained on a certain corpus a body of data. So it has a certain
+amount of knowledge but it doesn't understand anything that it wasn't trained on anything past that cutoff
+date. Anything that's my specific data or my company's data. Additionally it
+can't interact or call other tools or actions. And so what we want to do is be able to
+give it additional capabilities via my application. So I can think there's
+other things outside of just a large language model in the application that I
+want to be able to use. I might have the idea that hey there is some service.
+It has certain capabilities that I would like to be able to take advantage of. I
+would like to be able to, for example, have some other data, some other
+knowledge. So there's some additional knowledge. Do I want to be able to use? I also maybe I even have things
+local on the machine that I want to be able to go and tie into. So there's some
+other maybe a file for example local on my box and that's
+great. And if we think about what's actually going to have to happen typically when we use these things is
+that me as the application I would have to be able to
+do a number of different things. What I would have to be able to do is talk to each of these services.
+Now each of these services well this has a particular API this other maybe a
+database well that has its own API maybe this local file on the box
+well that has some way to communicate so either my application maybe an orchestrator like semantic kernel or
+copilot studio whatever it is well they have to be able to communicate with all
+of these different things so my application here I've got two problems
+one is well I have to go and enable how to talk to this particular API and I
+would have to understand how to talk to this API etc etc which I don't want to have to do
+that but even after I plumbed in and understand how to talk to these services
+well then the next problem is I now have to know what do I tell the large
+language model to describe the capability ilities of all
+of these different things so that it knows that they're available to it. It
+can then tell me as the application that's calling it, hey, go and run this on that service on my behalf and then
+send me the result, which is the way these things work. when I want to plum in additional knowledge or I'm plumbing
+in tools that it can execute could even be local I as the thing calling the
+large language model have to describe hey these tools are available describe
+this additional data is available and then the large language model will say hey I need to run that tool hey I need
+some more knowledge run this for me I then have to go and do it and then call the large language model again with the
+previous history as the context and that new information and so I would have to work
+out what do those prompts look like that I'm adding to describe the capabilities of all of those different things. So
+that's a huge amount of work. This problem of connecting things
+together is not a new one. If we think back to the early days of computers, if you looked at the back of your computer
+on the motherboard, there'd be one type of socket to plug the printer into, another one to plug a mouse into, a
+keyboard into, one for your monitor, one for a modem. The list goes on. You had
+all these unique types of cable that were even specific to the type of machine if it was a PC or a Mac. So,
+that was a nightmare. Well, we solved that with a standard for physical
+devices. Today, that's USBC that describes both the way they
+can connect and it describes how they can communicate. So, the protocol and
+the actual connectivity. And what we want is the exact same thing for our AI
+applications to be able to go and leverage the other tools, the knowledge,
+information templates that can empower our large language model to be that much
+more powerful and useful. Hence the model context protocol MCP.
+This is defining a standard way for my AI application to have interactions with
+all of these other types of other service that can help give my large language model additional context in
+that standard way. Now the way this is going to function is a client server
+architecture. Now here in this example we have three
+different things that my AI application may want to talk to. And what will
+happen is my application is going to have
+created a local client object an instance of an MCP client as part of the
+application. So, I can think, okay, I'm going to have because there's three
+different things I want to talk to that are all going to be MCP enabled, I'm going to create one MCP client instance
+that's going to correspond to this one. And I'm not going to write MCP client out every time, but there's be another
+instance of the MCP client here and yet another one here. And so, this all
+becomes part of my little application. So I have three MCP clients and there's
+always going to be a oneto-one mapping between an MCP client instance
+and a particular MCP server that represents a particular instance of a
+service I want to talk to. So in this case, hey, I'm also going to
+have an MCP server that is a server specifically for this type of service.
+So that's MCP server A. I would then also for this particular
+API, well this time I'm going to draw it over here. I'll explain why in a second. So I'm going to have another MCP
+server and then another one for this particular file.
+So there is a type of MCP server for each of the different types
+of service I want to be able to talk to. And this is important because remember
+this service spoke the orange API. So what's going to happen is the MCP server
+for this service speaks and understands that particular
+API. the MCP server for this particular type in this case a database well it
+speaks that particular API and then this resource down here
+well this type of server understands how to talk for example to these local files
+so there's going to be a specific MCP server for each type of service there'll
+be a Postgress MCP server there would be a GitHub MCP server
+And then what they're all going to do is they speak from the client to the
+server the MCP
+protocol. So the MCP client I just have three instances of the same client
+object. It just speaks MCP protocol. And what the MCP server doing
+is you can imagine on one side it speaks MCP on the other side it speaks whatever
+the native protocol is for the particular type of resource or tool that
+is an MCP server for. So it's a layer of abstraction that now the client doesn't
+need to understand any of these details. It just has to speak the MCP protocol.
+And you can imagine this is also beneficial because if I'm this service
+for example and I wanted different types of AI solution to be able to talk to my
+service. Well, before I would have to maybe create lots of different plugins for my service. Now I just create a
+single MCP server implementation for my service and then any AI app or platform
+that speaks MCP can now talk to my MCP server that
+I'm creating and making available. So instead of creating maybe tens or hundreds of different plugins for my
+service, I just create a single MCP server.
+Now, one of the things you'll notice I drew out here is one of the MCP servers
+I kind of put over here and then another one I put here. And you might be wondering what is this distinction? And
+I might think about well this is actually the local machine. So I could
+think this is the local box because the MCP server can actually
+run locally on my machine. Now that would make complete sense if the resource was local on my
+machine and in this case where it's local it's just going to use standard IO for the
+communication but the resource may be remote. Now, if it's remote, it can use
+HTTP post operations to talk to the server and then it would use uh server sent events SSE to talk back to me. But
+what you're going to find today is most of the actual MCP servers actually run
+locally. Even if the service is remote, you're still going to and these
+companies make it available. I still run the MCP server component typically in an isolated a sandbox type container
+locally in my environment that then the client talks to. And the reason for this
+is this is a very new standard. And one of the challenges today is when I think of security, when
+I think of authentication, that is still something that is largely being worked out, that's
+still being worked through the right way of doing that. And so the idea of a client talking to a remote MCP server.
+Well, although yes, it's it's possible, the authentication, the
+security around that is not well defined today. It's being worked on. They say
+almost the S in MCP stands for security, right? There isn't an S in there. And so
+most of the time, you're not going to be talking to a remote MCP server. The service will provide you the MCP server
+for their service and you'll just run it in an isolated process. So it's all local and then that MCP server will go
+and talk using the existing mechanisms for example from a client to a database
+to that remote service. So just to understand when we talk about MCP servers today while in the future I
+think we'll see a lot of this where the MCP server will live with the service and be hosted maybe out there on the
+internet through TLS type encryption communications today it's not that
+common today most of the time these people will provide you with the MCP server as an an isolated little
+container and I'm going to run it in my local app environment But then my MCP service clients can
+communicate and leverage the service. So just understand there's that happening today. But the whole point is the MCP is
+abstracting away the specifics of what actually is required
+to talk to those services. So now my application just has to create these
+little client instances. I add in all the MCP servers that I want to talk to
+and now it's just available to be used within my application and it can go and
+talk to all of those different things. It makes it far far simpler for me to do. Another really nice thing MCP gives
+us is reflection. Remember there were two problems we had. One, my app had to
+learn how to speak all of these different APIs. The MCP client server
+architecture protocol solves that. The second problem was I had to work out
+what am I adding to the prompt I send the large language model to explain to it hey these tools are available to you
+this knowledge is available to you that was a challenge well MCP also solves
+that with reflection the MCP server itself as part
+of the establishment of a session there are key types of capability
+that the MCP server exposes today. So when I think about all of the things the
+MCP servers will expose to the client and again remember it's going and talking to those backend services to
+actually implement and perform the actions. The first thing it can do is I
+can have resources. So I can have this idea of a resource.
+So resource could be structured data. It could be documents, things that
+I might ask the large language model, hey, can you give me information or summarize the meeting, the large
+language model say, hey, can you go and get me this data? Think retrieve augmented generation. I'm adding data to
+the prompt to give the large language model more information. So resources can
+be exposed via the MCP server. It can say hey I have these things available.
+It can also expose tools. So a tool would be a function
+that can be called to perform some action maybe query some API and it would
+explain well here are the parameters I want as part of that. Another thing it can give is
+prompts. So the MSP server can say, "Hey, here are some predefined instructions, some templates for
+specific tasks. It will help the application when talking to the large language model better craft a prompt
+that will give the best interaction back and then maybe go and use and get more information via this particular
+service." The MCP client has capabilities as well. One of the things you can actually do is something called
+sampling. the server can ask the client to run a
+certain prompt to large language model on behalf of the server. So we're going to say, "Hey, go and run this for me and
+tell me what the response is." So there's a lot of really powerful capabilities here, but as you can see,
+the key ones often we're going to focus on are these resources and tools.
+knowledge that I want to be able to have the large language model call on and
+then tools things I want the large language model to be able to say hey go and execute this for me and remember
+this is always via the app the large language model can't go and look this up directly the large language model can't
+go and call APIs it always creates a plan and it asks the app to go and do
+these things for it so when it asks the app to go and get some knowledge the app now just says hey client
+go and request this for me. Hey client, go and run this particular tool for me.
+And that's the way they're going to get this. So when I'm writing my
+application, one of the things I'll now do is register the MCP servers I want to
+leverage as part of my application. Now, as part of that client initialization,
+it can specifically ask to tell me all of the things you're capable of. The server will respond, here's all the
+supported tools I have, the sported resources I have, the prompts I have, or
+the client can just send a sequential set of list requests, uh, tools list, resources list, prompts list, and it
+will receive a payload back. So, I could think about, okay, well, for this service, this service supports uh maybe
+tool one and tool two supports two tools. Maybe this maybe this is a
+database. So it exposes a resource. Maybe it's explaining the schema of the database. And then sure you can run
+select statements against it. So it exposes a certain tool. Maybe for this local file or for
+this local file maybe all you can do is it's a resource. I can just read it. So
+maybe this exposes resource one for example. So I have this idea that the MCP server
+will be configured with the tools, the resources, the prompts that when the
+client asks it, hey, what can you do? It's going to reflect and tell it, hey,
+I've got two tools available. Hey, I've got a resource and a tool available. Hey, I've just got a resource available
+to you. And for each of those, it's going to give a payload that will have a name, a description, a JSON schema that
+outlines the required inputs you're going to need to actually use the tool. And you can see this if we actually jump
+over for a second to like some of the sample code. So here we can see it's a very
+basic. So we're using this case it's just the MCP library. We're creating a client
+session. It's using standard IO. So it's this MCB server is running local and
+it's bringing in the client. You can see it goes ahead. If we scroll
+down, it creates sort of the client. So it would create one of these for each
+MCP server. But we can see hey uh list the prompts. Then it
+even goes and after it's got the list how it can go and get a particular prompt. list all the resources, list all
+the tools. So we can go and ask it what are the things you're capable of and then later on when it gets this list and
+it sends it to the large language model or maybe the large language model says well actually go and get me read a
+resource. So now it can just say hey read a particular resource or call this
+particular tool that it was told about before when it did that listing of the resource when it did those listing of
+the tools. So it's really really easy to go and leverage this MCP. If I
+was to look at an MCP server, this is a really simple one that just does um
+time. So once again we can see this is someone's written this. This is an MCP server for time purposes. So it's from
+the MCP server library. And if we just jump down, one of the things it has to
+be able to do is that reflection. And so they've
+created the ability to respond to the list tools and it returns this
+array. So the tool it has a name. So it has a get current time. It describes
+what it does. Then it tells it what are the things you need to send me to call this tool. So it needs the time zone.
+Then it also has a second tool. Well, this is convert time. And then once again, okay, for convert time, it
+describes what it does. And then what are the inputs I require to be able to
+use this? And then later on, it'll have a handler for if you actually try and call the tool. As you can see here, this
+is just an example of an MCP server, but you can see the way it's
+enabling that reflection capability. When I write an MCP server for my
+product, my service that I want to be part of MCP, I will enable the ability
+that it does the reflection. The client can ask me what are my capabilities? I'll tell it the tools I'm going to
+expose. I would then within my server write the code to now when I get that request over MCP, I then speak the
+native API to that service to actually make it a reality. I enable that. I only have to write it once. I just have to
+now do this MCP server and it can be used by anything that speaks MCP. If I was a database, I do an
+example here of exposes a resource and it has the ability to expose a tool.
+Well, we can see that as well. If we jump back over And let's go and look. This is an
+example of a Postgress SQL MCP server. Notice it exposes two things. A tool and
+it's a query and it has the description of what it's going to do and it tells you what
+the input is. Then it has a resource and the resource is the table schema. So for
+each table and database, it's going to explain what that is. Well, obviously having the schema will now help the
+large language model know how to best construct the SQL query it wants to
+execute because it now understands well what are the various columns that I would want to be able to
+leverage. We could look at an example of a GitHub MCP server to go and talk to GitHub. This just exposes a whole bunch
+of tools. Create or update a file, push files, search repos, create repos. These
+would all be exposed. They all have descriptions and then they all have the inputs, the schema of what a request
+would look like to actually go and use these and that's what there is as part
+of this and obviously the prompts could be there as well. So the way this would
+all fit together, so let's sort of step through this. I as the
+application, I had an array of the three MCP servers that I want to
+use. They've been stood up on my box and they've been configured with this file to talk to this database, to talk to
+this service. When my program initializes and it runs
+through the three clients and they establish these connections, it will send that request. Tell me all of the
+tools. Tell me all the resources. Tell me all the prompts. So, as part of that, as it runs through each of those, the
+application would now create its own local probably a JSON array of all of
+the tools that are available. So I think about okay the application will create an array that's the sum of all of this.
+So we know there were two tools over there. So it would have tool one tool
+two. We have the resource one um the tool one and then it would have
+this one the resource one. So it' create this array of all of the tools, the
+resources, the prompts that it's been told are possible across all of these
+different servers. So now what it would do is when the application now wants to go and talk
+to the actual large language model, normally the way this would work is we
+just send the prompt. What we're going to do now in addition to that is it's going to send the
+prompt plus this array. I've structured the name, the
+description, the parameters it expects in my whole new array JSON format. And now when I talk
+to large language model say, hey, you're a helpful assistant. Um, you're being asked to do this. Here's the list of all
+the things you can ask of me. Knowledge, um, tools you can run, prompts that
+might help you do the things. So now when the large language model is processing this, and large
+language models are really good at being told about, hey, there's other things that you can ask me to do on your
+behalf. If it decides it needs one of these, instead of returning the output, it will return a plan. And the plan will
+say, "Hey, I need you to go and run R1 and return me the result." So now
+the app would go and say, "Okay, well R1, that's this one over here. Call read
+resource R1." It would get the response back and now send a subsequent prompt
+with the previous one as the context of history. Large language model says, "Okay, great. Now I can go and perform
+the thing return the result goes back to the end user or whatever that target is.
+So this is the whole point of how this is working. The large language model itself knows nothing about MCP doesn't
+care. The large language model just sees the input which happens to have an array
+of tools and then it returns the output. it is the application or maybe an
+orchestration layer if I'm using like semantic kernel or whatever. It handles all of the MCP behind the scenes. Again,
+the large language models are really good at being told knowledge exists, actions exist, and you can ask me to go
+and do that for you. So that will all now just go and happen really behind the
+scenes. If you look at all of
+this, MCP is not doing anything I couldn't do before. It just makes it far
+far simpler. Before I absolutely, as my app could just talk Orange API and I
+could work out, okay, well, here are the key types of things I want to do. I will work out what prompt I'll add
+to describe those things. And then when it asks me to do it, I'll work out what the right API calls are to go and do
+that. I could go and talk directly purple API. I could go and talk directly to this
+resource. But it's all work in being able to code to talk orange API, purple API
+resource. and it's all work to understand and maintain well what are
+the capabilities I need to describe to the large language model for me to then be able to go and do those things. So,
+it's really simplifying all of those
+things. For the Microsoft people, obviously, that's normally what I I live
+in. MCP is fully being embraced. If we look at Semantic Kernel, Copilot Studio,
+GitHub, Copilot, they're all very much jumping on the MCP train.
+Azure API management. Azure API management is often used today as an AI gateway set of
+capability. And I talked about there's pain today in having remote MCP service
+because of the lack of the security, the lack of the authentication, the whole off scheme. One of the things API
+management does is fantastic at layering that security, laying the authentication on top of things. So API management can
+help developers build these secure MCP servers using those existing authentication schemes. So that makes a
+lot of sense to just hey I already have my AI gateway. It can become my MCP gateway as well. Azure API center can
+act as an MCP repository. There's already labs out there on trying out APIM with
+MCP. And just in terms of the overall I think when you think of the gaps in the
+standard Microsoft are working with the industry leaders how we can think about improving
+the specification for the security for the authentication because I I really think you have to get that nailed down
+to get that wider adoption for those remote MCP servers. Again, today most of
+the MCP servers, they're going to be provided by these. You're going to run them locally on your box until they get
+this remote uh server security and the authentication piece worked out. But it's going to get worked out. This is
+very early days for MCP. It's only going to get better. I think it's only going
+to get better in terms of the discoverability of the MCP components, but it makes it so much simpler now that
+hey, I want to light up these tools,
+these resources for my AI application. And now it literally just like the USBC
+cable is plug and play. I can now just plug and play all of these service in
+where they provide me an MCP server. they've done that work to create it. Makes it really easy to now integrate it
+into my app. So, I hope that was useful and until next video, take care.

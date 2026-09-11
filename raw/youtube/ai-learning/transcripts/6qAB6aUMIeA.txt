@@ -1,0 +1,893 @@
+You're ahead of growth at Lovable on track to be the fastest or one of the fastest growing companies in history.
+We're over 200 million in AR at this point. We're 100 people large. The pace here is insane. [music]
+You said that you've had to throw out most of your growth playbook. I feel like only 30 to 40% of what I've
+learned in the last 15 to 20 years of being in growth transfers here because we just need to invest in such bigger
+bets and innovate and create new growth loops here. Everybody and their mother is starting a vibe coding business
+nowadays and we need to figure out how to be ahead of them. And to be ahead of them is not optimization of the problem.
+It's reinvention of the solution. I just feel like I usually spend maybe 5%
+innovating on growth in my previous roles. Right now I'm spending 95% innovating on growth and only 5% [music]
+on optimization. What do you find is actually moving the needle? One of our biggest strategy is
+building in public and it's coupled with employee socials, founder le socials and another one [music] is giving your
+product away a lot. This is part of our growth secret sauce. You have to remove the barrier of entry. If somebody one of
+our users stands up and say hey I'm going to have a hackathon at my work unlovable. Can you give us some free
+credits to play with? Why would we prevent a person who wants to do all of the marketing and activating for us from
+using us? We're like, take it. How much do you need? The trick is get more people to try it. Just ship things you can talk about.
+The only way to create a word of mouth loop is just to blow their socks off.
+Today, my guest is Elena Vera, head of growth at Lovable. In under one year after launching with fewer than 100
+people, Lovable hit 200 million ARR, which is one of, if not the fastest ramp
+to 200 million AR R in history, and growth is still accelerating. They've also recently raised a series B at a $6
+billion valuation. So, with that, there's a lot to learn about what Lovable has figured out about growth.
+This is Elena's fourth visit to the podcast, A Record. She is my favorite growth mind. And in our conversation, we
+talk about how the growth playbook has fundamentally changed for AI companies. What works now, what no longer works,
+and what has surprised her most about how Lovable grows. She also shares her advice about whether working at an AI
+company is right for you, some incredibly interesting insights into lovable secret sauce for growth, the
+unique ways they operate internally, their approach to building minimal lovable products, also how they hire,
+and also how product market fit as a concept is no longer what it used to be, and how every company basically has to
+recapture product market fit every 3 months. This episode is incredibly tactical, and you will leave this
+conversation smarter on so many levels. If you enjoy this podcast, don't forget to subscribe and follow [music] it in
+your favorite podcasting app or YouTube. And if you become an annual subscriber of my newsletter, you get a year free of
+19 incredible premium products, including a year free of lovable,
+replet, bolt, nadan, linear, devon, postto, superhuman, dcript, whisper flow, perplexity, warp, granola, magic
+patterns, raycast, chappd, mobin, and stripe atlas. Head on over to lennisnewsletter.com and click product
+pass. With that, I bring you Elena Vera after a short word from our sponsors.
+Here's a puzzle for you. What do OpenAI, Cursor, Perplexity, Versel, Platt, and
+hundreds of other winning companies have in common? The answer is they're all powered by today's sponsor, Work OS. If
+you're building software for enterprises, you've probably felt the pain of integrating single signon, skim,
+arbback, audit logs, and other features required by big customers. Work OS turns
+those deal blockers into drop-in APIs with a modern developer platform built specifically for B2B SAS. Whether you're
+a seedstage startup trying to land your first enterprise customer or a unicorn expanding globally, work OS is the
+fastest path to becoming enterprise ready and unlocking growth. They're essentially Stripe for enterprise
+features. Visit workos.com to get started or just hit up their Slack support where they have real engineers
+in there who answer your questions super fast. Work OS allows you to build like the best with delightful APIs,
+comprehensive [music] docs, and a smooth developer experience. Go to works.com to make your app enterprise ready today.
+This episode is brought to you by Vzero from Versell. Vzero is the web development assistant designed for
+professionals of all technical backgrounds. Whether you're a product manager, designer, or developer,
+transform how you bring products to life. [music] With VZero, everybody can cook. Don't just show up to reviews with
+docs and ideas. Arrive with working prototypes that demonstrate real functionality. [music] Vzero drafts
+project plans, generates interactive interfaces, and builds full stack applications without writing a single
+line of code. And with features like AI and database integrations, screenshot import, and sync with GitHub, Vzero
+helps reduce development bottlenecks and enhance collaboration between technical and non-technical team members. [music]
+The result, faster iteration and a shorter path from idea to implementation. Versel built V0ero for
+the builders who want to create at the moment of inspiration. [music] If you can dream it, you can ship it. Visit
+verscell.com/lenny to get started. That's versell.com/lenny.
+Elena, thank you so much for being here and welcome back to the podcast.
+Thank you for having me. As you know, this is uh a record fourth time back to
+the podcast. No one else has ever achieved this feat. I feel like you're uh you're basically my co-host now.
+I love it. Thank you for inviting me back. I'm very proud record holder in this regard.
+What I love about you coming back each time is feels like every time you come back, you're just doing something even more epic and exciting. And so these
+days, as we'll hear in the intro, you're head of growth at Lovable, which no big deal, on track to be uh the fastest or
+one of the fastest growing companies in history, uh depending on the metric that you track. Let's talk about just the
+scale and growth of Lovable to give people a sense of just how incredible this is. I'll share a bit of this in the intro, but just like what are some stats
+you can share about just how things are going at Loveable? So, uh we are just a little bit over one
+years old since we launched. Uh the company actually did exist as a GPT engineer before, but it officially
+launched in the third week of November last year in 2024. So uh for us, we've hit over $200
+million in annual recurring revenue before we even hit our one-year uh
+milestone since being launched, which is pretty incredible. Uleni actually have a really great um blog post on how quickly
+it takes for companies usually to get to their first million AR and it's usually multiple years. So this is definitely a
+unicorn. I don't think this is a standard. There's couple of things that um account for it and we can talk about
+it and the growth is only accelerating. So it's compounding which is great because we had our 100 million in end of
+July and just four months later we were at 200 million. So 7 months to well
+maybe 8 months to 100 million another 4 months to get to 200 million. And from
+uh users too we already have over 8 million users um that have tried lovable. We have as you can imagine to
+feed that 200 million hundreds of thousands of paid subscribers as well that are paying for us. Uh so things are
+things are going great and we'll talk about why. Okay. Absurd. I think people are getting
+used to these insane numbers and not long ago is like okay if you hit a million ARR in a year you're doing
+pretty well. Yeah. Yeah. I think it's still you're doing pretty well if you have a million AR in one year. This is uh this is one
+of the once in a lifetime type of companies and the category the way that it's evolving. So I want to make sure
+that people don't also set this as a benchmark for success because it should never be and in some categories it might
+be even faster um as we continue evolving technology but I don't think that it's realistic to expect it um out
+of your business that you're starting right now. That is such an important point you're making there. It's so discouraging to
+founders to hear this these stories of getting 200 million not and again this is ARR. There's a lot of companies,
+especially in the data labeling space, I've had them all on the podcast that are uh very fast growing, but they're
+not recurring revenue. There's also they pay out their people to do this data labeling. So, the revenue numbers there
+don't really equate like recurring $200 million a year is absurd.
+Yeah, it is. It is absurd. I really want to make sure that people understand as we go through this episode as to why
+it's happening because part of it is unlovable, part of it is just in the market and and how it's moving. So when
+you're setting yourself as a benchmark uh so you know which benchmarks you actually to use and whether lovable is the benchmark that you should be using.
+Cool. I'm going to get into that next. Last question just I want to see what you can share here. A lot of people look
+at these numbers. A lot of people are very skeptical. These are lasting durable numbers. Like who are these
+people? How is there $200 million being spent on lovable? Anything you can amp just like give people confidence. This
+is real. This is going to last. This is a really durable business.
+Well, I saw Stripe receipts. So, it is real as far as I'm concerned. Um, unless Stripe dashboard is lying to us, but it
+is money getting deposited in our bank account. But, uh, let's talk about who's actually contributing to that number. We
+do have a really large use case of people uh, starting their own companies on lovable. So we call it a founder use
+case where somebody that is nontechnical that has never been able to code or create a piece of software is now able
+to come in and actually build an app completely from scratch and uh some of them are already monetizing it some of
+it just using it for lead genen for other services or uh some physical goods for example that they're uh that they're
+selling. Some of them are just still building and uh we monetize on the act of building. So that progression of like
+building up to your product market fit takes quite a bit of time. And even with lovable, we're so much more efficient
+and effective compared to hiring an engineer uh in terms of the price. But
+um it still takes time. Uh so we have a lot of founders uh whether it's B2C, whe there's B2B, so consumer products,
+business products, e-commerce, um whatever it is. But on the other side, we have a lot of employees within
+companies using lovable as well. Uh where they're building internal tools or they're building prototypes, they're
+building landing pages. So uh that is another use case that is very relevant
+and quite uh efficient for us. But then there is a hype and discovery that is
+happening as well because uh when I think about software I think about it. I
+talked to John Cuddler actually and he gave me this framework that is like completely stuck in my mind of software
+always goes through capabilities stage first like what is possible uh to actually create with this then it needs
+to transition into value of how is it that am I going to get value out of this and then you can start thinking about
+scaling it uh of which aspects of my life and my work uh can this actually go in and we're right now very much in the
+capability stage with vibe coding because everybody's just exploring what can I do and And the beautiful thing
+here is that what you can do changes every month to three months. So, uh you
+constantly need to come back and you need to see what has changed. So, a lot of people use it for personal reasons.
+Um they I build myself uh apps, tutoring apps for my kid. So, he has to answer
+questions in order to get some screen time accumulated for him. I build my own portfolio. I see people doing wonderful
+things. My favorite story that I always say, uh there's this um man that created
+a proposal on lovable. So his fiance had to answer questions and like she had to complete this game and then at the end
+there was like this big reveal and he proposed to her. But people just unlock the most creative things that they build
+on lovable and that's where the revenue is coming from. the one piece that is working very well for us in terms of how
+our monetization model is set up and how it interjects with your activation moment which we can also cover but that
+is what's driving um that um both conversion and retention rates. Let me ask you one question that's on
+people's minds I imagine as you talk about this just what is what is retention look like? Yeah. So retention
+uh really I look at it in two ways. Uh retention that it comes as a subscriber retention. Uh so how much pay
+subscribers do we get and how many of them are we capable of renewing. There's also very important aspect of it is how
+many of them can we expand because if you can get positive or above 100% net dollar retention which is super
+important metric for investors. If you don't know about net dollar retention please read it up. That's like a superpower to get bigger multiple. if
+you can show um NDR that is over 100 and then there's actually engagement retention as well because uh that is the
+leading indicator for how your paid retention is going to look like for paid
+retention um I know there's a so much on the market of oh this is a high product
+and um it just it's a leaky bucket and it has really high churn rates although um I'm not I shouldn't share it's not
+public numbers for us to share actual retention however what I can say it's on par with benchmarks of other B2B SAS
+products that I've ever worked at and I worked with Miro, Dropbox, uh Survey Monkey, Netifi, um Amplitude and others.
+So, are we are we absolutely crushing with paid retention? Um no, are we where
+most of the other companies are? Yes. Our NDR is quite good because when people build, they want to buy more
+credits to bill. So, uh, we're seeing really good, uh, revenue retention, but we're honestly more focused right now on
+engagement retention than even paid retention because our northstar is just to get as much usage as possible. And,
+uh, we will fix and tune our monetization model afterwards. So, engagement retention, I would say, is a
+by far bigger priority focus for us at the moment. That is incredibly uh, interesting and
+optimistic to hear because of the growth rate. Uh rarely is growth rate this high and retention is on par with great
+companies. Yeah. And I'll just say too which is a little bit maybe counterintuitive to
+would be to a lot of companies we don't optimize for revenue at all. In fact
+internally we have a lot of discussions about how can we give more products away. How can we uh reduce our revenue
+growth rate by just getting more paid subscribers, more users using lovable to
+just get bigger share of the market. So our revenue is an outcome of us just
+trying to get more people through the door, not us trying to optimize for revenue per user or to get them to
+monetize at the higher rate. So there's like a very interesting path here where by actually focusing on the inputs like
+you should, it translates to a good output. But we don't look at that output as something that we're trying to grow.
+Let's talk about growth. Let's talk about what you've learned about growth in this space. You had this post online
+where you said that you've had to throw out most of your growth playbook. This is a huge deal. You've led growth a
+lot of really successful companies. Lovable is growing incredibly well. Uh this tells me there's a lot we can learn
+from what you've seen. So tell us what you're seeing, what's still working, what's not working, what you've uh
+learned about what it takes to drive growth at a company like Lovable. Yeah, I would say that in any other role that
+I've come into before, uh I felt confident in about 80% of the patterns
+that I can bring to that role. Meaning that I can identify inputs, understand which framework kind of applies. I know
+a bunch of examples that fit in within that framework. So we just need to localize a solution and push and it was
+quite productive in terms of getting a company those additional acquisition, conversion, engagement, monetization
+rates. So um I I felt very repetitive in a way um after some time because I feel
+like I'm just coming in and copy pasting copy pasting and although every single company loves to say that they have unique problems at the end of the day
+all of the problems were very similar and I felt like I was like doing the same job over and over again when I
+started at lovable the one thing to me that was very clear is that uh this company was growing like crazy before I
+joined. So I want to make sure that there's not that much value on what I have even added to date because this
+company is on a tear and yes we're rounding the edges to and removing barriers for growth. Uh so we're not
+standing in our own way but uh there's something more magical happening here that is not a pattern that I've ever
+seen before. It's not a framework that I can even conceptualize um in my head.
+And plus, it's a new category that I've never seen or I've never been in a company that is in a new emerging
+category that hits fastmoving waters so quickly. And that's the difference
+because when you're usually trying to create a new category, it takes years. I know it's every marketer's dream to
+create a new category, but it takes decades often to like really to really get that much hype and adoption around
+it. Versus with Vibe coding, this has seemed to have happened really quickly. It's like it's hit the nerve with the
+market. So yes, we're at the right place, we're at the right time, but we're also in really fastm moving waters
+and um the demand that is coming to us like we need to capture it mostly. We don't need to generate a lot of it yet.
+But at the same time, it comes with a really big downfalls of we're not in control of a lot of our growth. I mean,
+let's be honest about it. There's so much incredible word of mouth that is happening and we're trying to grow that
+but uh to enable as much of that as possible but um it's the company is
+moving. We're just like hanging on to it as fast as possible and making sure that
+the we're like not going to hit a wall so to speak in front of us and that the wheels are greased and that all of the
+pieces are in place. like your race car framework uh that you have as well that like we're we're really just putting a
+lot of oil into it and um figuring out what is our engine actually going to be
+that is going to take us forward. But uh when I'm thinking about the patterns here and what I have to unlearn, I feel
+like only 30 to 40% of what I've learned in the last 15 to 20 years of being in
+growth transfers here. And uh some of it is very straightforward. Okay, this is
+how you're going to do paid marketing. this is how you're going to do some of the habitual retention. Here's the free to pay maybe monetization uh frameworks
+that still stand. But the rest of it um seriously doesn't feel like it even
+matters anymore because we just need to invest in such bigger bets and innovate
+and create new growth loops here as opposed to trying to optimize it uh to the moon and be and beyond uh which
+would I usually be focused on in a scale business like this. Let's follow those threads. So what is
+it that no longer is worth it in this bucket of just like let's not spend any time on this thing and then what do you
+find is actually moving the needle not worth it in growth uh most of the people spend most of the time optimizing
+existing user journeys. So, uh, you already have maybe some of your growth loops that you understand that you try
+to optimize or you just know, hey, there's big drop offs from acquisition to activation. Let me go figure out how
+to I can tweak the dials to get it done. Here, what I find is that um, optimizations are just not worth our
+time. So, a lot of the times my growth team actually ends up working on new features or just standing up new growth
+loops one after another. And yes, there is of of course the saying of like more growth loops does not mean more growth.
+But at the same time, the market is moving so quickly. You need to stand up a bunch of initiatives uh to capture it
+because it's perishable or we also have so much competition. We're not alone
+here. So we can't ignore that there's everybody in their mother is starting a
+VIP coding business nowadays and we need to figure out how to be ahead of them. and to be ahead of them is not
+optimization of the problem. It's reinvention of the solution. So I just feel like I usually spend maybe 5% maybe
+10% if I'm lucky innovating on growth in my roles uh in my previous roles. Right
+now I'm spending 95% innovating on growth and only 5% on optimization. And
+most of my frameworks are on optimization because it's really hard to come up with frameworks for innovation
+because by default they're by definition they're innovative. What I'm hearing here is uh new features
+launching new features, new products as one of the bigger growth levers versus like you have a bunch of cool stuff make
+it more make it easier to use increase activation reduce friction things like that.
+Yeah. And for example, um we on growth team launched uh integration with
+Shopify to enable e-commerce use case because we're like hey there's already people trying to come in and do it and
+Shopify was open for integration with us. Let's go lean into it so people can vibe code their storefronts. Uh that
+came out of growth that usually would never come out of growth. like why would growth team ever invest into a core product integration or we um enable
+voice mode for people so they can actually chat with lovable using their voice as opposed to only having type and
+um that's also it's a feature it's a core product feature but we're like hey it's going to help people to converse
+with lovable more it's going to increase the engagement one area that we've spent very little time in is activation
+because usually I spend majority of my time in activation because there's so many awareness things that need to
+happened and uh so many things that uh we we need to like smooth out experience
+for the users in order for them to get through that setup moment to aha moment to that habit loop and here you're just
+interacting with agent. So uh we at the beginning were like the agent team that
+we have here is working a lot on it like why would we go in there and and do anything is like our core team is
+responsible for activation. Now we're starting to move into doing agent work ourselves. So all of a sudden growth
+team is not just doing product surfaces now we're doing agentic workflows um and
+codifying agent instructions in order for customers to activate better. So the work fundamentally I feel like has
+gotten deeper into product and deeper into actual core product functionality
+as opposed to just being a smoothing surface on the outer layers. Okay, that is also a very big deal.
+Every growth person that's ever been on this podcast, including you, always talks about the power of activation. Just the how much opportunity there is
+constant to get people to this aha moment, realize how the value of this product that increases retention,
+increases everything. And what you're saying here is you barely spend any time on activation because in a company like
+Lovable, there's a prompt. You give it what you want, it generates a thing, and that's basically all it is. And so the
+impact is to make that agent better at that thing versus microoptimize every step.
+And our agent team spends night and day thinking about it. So I've never been at
+the company where core team thinks so much about activation, think so much about that first generation, thinks so
+much about reaching aha moment. So it's more weaved in into DNA of the overall company which takes the pressure off of
+me to only have to focus on it because otherwise yeah I would be in that in that experience all the time but I feel
+a lot more at ease because everybody's thinking about it and everybody's working on making agent better and agent
+the beauty of it is it doesn't matter if it's actually first generation or if it's your nth generation it just needs
+to be a better generation agent needs to understand your intent better and think and reason behind behind it. So it like
+improves the entire life cycle immediately as opposed to having to only work on that first experience per se.
+And what you're not saying is don't care about that experience. It's the team building that is already obsessed with
+making that activation experience better. And I I love that because I that's the core product functionality at this
+point. And before uh people would spend more time building deeper features or
+deeper use cases or trying to um improve some platform functionality and now the
+core team they're obsessed about that first experience because that is core product.
+Another lever that I've noticed especially with lovable and I'm seeing it more and more in social media is just founders telling you what's going on. I
+think this connects really deeply with the new features. Launch new features. Say Anton is just like hey check out this cool new thing. Check out our
+growth numbers. Is that a big growth lever too? Yeah. So, one of our biggest strategy is
+uh building in public. Uh building in public and it's coupled with employee socials, founder socials for sure. Uh
+this is difficult for larger companies, but when you're smaller and you still have a little bit more narrative control
+uh with uh with everybody on your team, plus you have so much more trust within your organization of whether people are
+going to say the right things because they understand what actually has happened. Uh that ability to just really
+quickly deliver the message to the market becomes really important. Now we still do big launches. So we still have
+everything tiered into tier three, tier one. Like tier ones are going to happen as like big moments that we're going to
+really rally as a company behind and it's going to be something that um is meant to step function change our
+product market fit and uh we're going to do a bunch of activities behind it. But at the same time, what's really
+important to us is to maintain noise in the market. And that noise in the market
+happens by us shipping every day, every other day, multiple times per day and
+just talking about it constantly. Interestingly enough, it's actually works as fantastic resurrection strategy
+because people like, "Oh, there's more things here. Like, I need to go check it out." It also works as great
+re-engagement strategy. So, instead of sending newsletters to say like, "Here's the market trends or here's the user
+stories." Like, people are like literally logging into their social to see like, "Okay, what has lovable shipped now?" like what what what is the
+change? So, it's interesting to them to see because from the time that they voice their opinion on what needs to
+happen to actual delivery is so short. So, they feel heard and they are heard because that's how we uh prioritize all
+of the things that we're shipping. But, it's interesting because I've never been in a company that tries
+to maintain so much just shipping velocity to maintain certain amount of noise that it feels like the product is
+alive. it's changing every single week. And then there's like these big amplifications, turbo boosts so to speak
+in the race car model uh that then go out and they fundamentally create a step
+function change in that product market fit as a whole. And uh that is a
+retention strategy I can get behind any day and all day. I only hope that we can
+maintain it as we continue scaling. Sounds stressful. This reminds me I had
+Garav. He is the CEO of uh Mirage used to be called Captions which is a really
+successful AI video company startup and they have a policy of you ship a a
+marketable feature every week. That's how their company operates and it's the same thing is just ship things
+you can talk about. Velocity of shipping is our number one core value in development team. So we do
+anything and everything to just keep it going up up up and um into the right. And by the way, this is also means that
+everybody is a little has a little bit of marketer within them. This is uh we have very lean product organization. We
+actually lean on our engineers uh to do a lot of product work. We call them product engineers. Uh and uh they have
+to go and they have to announce the thing that they've shipped. It doesn't just funnel through marketing. So
+there's a lot of uh autonomy, a lot of agency that needs to happen with this with this type of velocity because
+marketing team otherwise you have to have like enormous marketing team to staff that. So it has to come with some
+roles and responsibilities uh redefinition on the team as well. Let's talk about marketing. That's
+something else you've written about is just marketing is changing in a big way their role in growth. How does marketing play a role in all of this? On one side,
+marketing channels are changing. On the other side, marketing's involvement into everything that product does is
+changing. And then number three, I think even marketing organizations in terms of where they're hired the most um are
+changing as a result as well. So I'll talk about second one first just because we just talked about shipping and that
+is um yeah you still have your product marketers, you still have your channel managers um but they focus more on the
+big things and the narratives although it's difficult because the narrative even changes all the time as these
+functionalities come through. Usually you can come up with the positioning and messaging and you can have it for years
+and and create all of the campaigns around it. Now you have it for three months and then the product changes. So
+like the cycles here are really uh really short and uh for smaller changes
+because cycles are so short they spend so much time actually focusing on it as they should that some of these smaller
+changes just cannot be supported by marketing. You have to delegate it to your product and engineering team to do
+their own marketing because otherwise again you're going to have to have enormous marketing team in order to support it all. But at the same time,
+channels in which marketing right now works I think are changing quite a bit and um not enough people I feel like are
+freaking out and talking about it as opposed to like moving just in the same direction over and over again. And the
+changes that I'm seeing is that it is very has been very clear to me that when
+you're talking about organic strategy, if you marketing organic strategy, if you asked me that five years ago, I
+would have said that's SEO. It's search engine optimization. go on Google. That's your organic marketing strategy.
+If you ask me what's the organic marketing strategy right now, to me, it's all about social, which is what is
+my CEO posting? What is my team posting? What is my LinkedIn? What is my creator economy doing in influencer marketing?
+And um across all of the social platforms, that is my organic, which is that one's kind of paid to be fair, but
+when I think about organic, there is still a lot of that word of mouth. What are my users posting on social? What are
+they talking about it? what are they uh what are they sharing which is like a mind shift because I've been always
+especially in B2B so focused on search and now I feel like it's been completely
+pushed even further into consumerization territory and it has become all about
+social no matter how B2B you are because that's where eyeballs are at that is fascinating and so when you talk
+about socials what are you finding is most helpful is it Twitterx is it LinkedIn is it YouTube Tik Tok Instagram
+for founder socials uh O employee socials um X and LinkedIn are fantastic sources. Um especially for B2B because
+that's where all of the B2B people are at. But you cannot just have Chad GPT
+write your copy and post it. You need to show personality like there needs to be humanity uh that it goes through it. And
+it's not natural for everybody and it feels very awkward sometimes to start. Uh but it's important to people to see
+who's building the company because there's so much competition now on functionality so they can rally behind a
+team. So they want to have a team that they want to win and for that you need
+to be vulnerable. You need to be authentic obviously but you just need to
+be yourself. Uh so like that corporate scrubbing has to completely fall off
+which um is obviously going to pull in as as the company scales but at least at
+the beginning that is a chance to stand out and then your customers posting about you. So that word of mouth of uh
+really creating a product that creates something for customers that is worth
+talking about. It gives them stories that they want to share that feels
+empowering to them to tell to others like they're unlocking a secret like they feel proud of what they have
+created which what we focus a lot on lovable on to have that feeling of oh my gosh I have superpowers now and I can't
+wait to tell others I cannot wait to show others what is happening so on both
+of those sides to me that is very much organic um if you're in a consumer then Instagram Tik Tok um are very much a go
+as well. So here it's uh the CEO clearly is an important uh variable in this them in
+this case Anton just tweeting here's what's going on lovable here's how fast it's growing here's some we've learned
+uh we had the CEO of gamma uh on recently Grant and he's exactly the same thing just sharing a bunch of lessons
+journey building in public a big part of the growth lever and your point here is okay so it's the co but then it's also
+how do you get your customers to share things on socials and then there's a paid uh influencer sort of component
+yes uh the customer is difficult one, that's a word of mouth loop that you need to stand up. The only way to create
+a word of mouth loop is just to blow their socks off uh when they actually experience your product. We have a
+really almost unfair advantage because our product is called lovable. So by default, we're trying to create an
+absolute lovable experiences. Like that is a mentality internally. If it's not lovable, we're not going to ship it. So
+uh and the best way to fix a bug at lovable is to say this is not lovable. like when everybody's just like jumps on
+it. Uh to fix it right there and then sprints, no sprints, it doesn't matter. It's getting fixed right now. So, uh
+from that perspective, we kind of have that culture already embedded as part of our brand and it's part of our name,
+which helps us a lot. But that's the point is that you feel that brand through every interaction. Uh I talk to
+my designer all the time. How can we add more love marks into the product? How can we prioritize more unique
+interactions? the little elements that make up that that feeling of this
+product is speaking to me. It's like it feels something like that is unique. It has personality uh behind it. So we put
+all of the brand work actually into our product. When you think about lovable think people think about a brand but we
+don't have a brand marketing team yet. So it's all just through product interactions and some of those building
+and public moments of the people behind uh those product interactions. Um that
+is our strategy. And then there's influencer marketing. Interestingly enough, influencer marketing is 10 times
+bigger for us than paid social. So yeah, we do some paid social as well. Um, and it's working decently. It's quite
+expensive from payback period. Um, we're still optimizing it. As I said, we're pretty early on in all of these
+channels, but influencer marketing is something that has worked uh from the beginning. a lovable and uh reason
+behind it is that influencer marketing especially on the socials it gives you an opportunity to have a little video
+and interaction and lovable is all about seeing like oh my gosh this is what I can do and uh this is possible so that
+drives people to go and try it themselves so that's why social works very well for us because it's not really
+a written value proposition like nobody knows what bite coding is but you watch 10 seconds of it and you go that's new
+let me go give it a try who would have thought that a head of growth who is traditionally seen as like
+data metrics, spreadsheets, drive KPIs is like, okay, how do we make this more lovable? How do we add more moments of
+delight? I know my my my joke is like at the end of my lovable journey whenever
+hopefully never comes to an end, but but at the end I'll be like a growth brand person here. Here, hi, my name is Elena.
+I do brand now. But I I actually see it as part of growth strategy to make sure that that brand shines through every
+single interaction. Um and I always talk to my team about it because that is one
+big lever in our growth story. Yeah. So I think that's a really important point to highlight. The reason
+Lovable is growing so fast is it is a product people love. You've made something people want and the word of
+mouth spreads because it's something that blows people's socks off as you said. So it feels like that's the first thing you got to get right.
+Yes. Well, the first thing you have to get right is you have to be at the right place at the right time and you have to be in fastmoving waters. Like let's not
+discount how fast this category is exploding on its own. So this cannot happen in every single category that
+you're starting to build a product. But the way to stand out in the super crowded category is to create experiences that speak to people. That I
+think is something that a lot of people deprioritize because they still prioritize functionality over humanity
+within software. And I think that we're actually moving to the new era of software that needs to feel human that
+people want to interact with not just utility of it because cost of software
+is coming down so much to develop that we now can actually invest into
+emotional feel of that software as opposed to only just focus on creating the utility out of it. So to me it's um
+it's a I I I love this move because I I hate nothing more than going to software that is just like so painful to use that
+I lose some brain cells uh as I'm interacting with it versus software that I feel I get energy out of and for
+lovable for me like I cannot wait on some of the projects that I have to go and vibe code myself like that's the
+highlight of my day and I just like I don't I I I bring in my daughter and I'm like let's go do this like what do you
+think that needs to be done because I just get so energy out of doing it and uh that is the feeling you cannot create
+by looking at it as a utility problem. The way I think about it, the way what you're describing is it's almost table
+stakes have increased and now it's so easy to build. Now the big differentiator is experience, design,
+delight. Exactly. And it has to translate through every single interaction. So your
+designer has to be one of your first hires now in startups. It's not just about the the engineering so to speak
+utility and you have to think through every single interaction of does this communicate our brand or not.
+So along those lines I want to come back to something you talked about which is launching new features is a huge growth lever. Kind of the big question there is
+just how do you maintain quality and cohesiveness as all these people are empowered to ship stuff. Is there
+anything else there you've seen that works well to help avoid just a Frankenstein product just endless
+features that you want to tweet about? Yeah, one part of it is not something
+that you can codify, but it's the type of people that you hire that are going to go and ship these things. We at
+Lovable try to hire the absolute best talent available out there that we can bring in and that we can source and that
+we can attract uh to grow with. And what do I mean by that best talent? Um it's
+not that somebody who has been at really large companies or somebody that has really uh done a lot of logos or has big
+success stories behind them. It's somebody who is extremely passionate about their job. It's their hobby. They
+love to work. They have fire in their belly. This is not a paycheck for them. They want to do this for some ulterior
+reason. This is the biggest opportunity of their life. So this is global maxima
+against any other opportunities that are in front of them at the moment. So that's very important for us. We want
+people to come and do their absolute best work at lovable. It's very important and you can feel it in this
+office. People are wired up. They are so high on how can we make this better? How
+can we deliver more to our customers? And that's very different compared to
+usually how companies grow. We're like, okay, yeah, the check, check, check. They fit the skill set. Let's bring them
+in. But is that passion? Is that fire behind it? And then uh the second piece is that um we work really hard on just
+addressing what's the success here looks like? What is it that we're building? what use cases are we building for? And
+then because we hire these people that are so passionate about it, the other two skills, by the way, that are super
+important is high agency and high autonomy, I can figure out things that are tangential to me that I don't need
+other specialty, so to speak. Like I don't need a marketer to go launch something. I can go figure it out and I
+have high agency. I can go do it myself. Um I'm going to own it from all the way
+from start to finish. uh those are very important, something that we screen for and something that we look for in our
+culture and then uh you just see what you want to do is up to you. So there's
+very little supervision that happens on the ground. Um now we all have a goals and like some of the big launches that
+we're all marching towards but some of the work um that is completely up to developers up to uh marketers or
+whatever what is it that they want to do. So there has to be that enablement of go try things and because of our
+velocity if you fail it's not a big deal we'll just pivot we'll go we'll get we'll get through it we are not here to
+just win all the time on the hiring of these incredible people as we all know it's very hard to hire
+people these days especially the best what have you seen lovable does differently or does well that helps them
+recruit the best yes and especially recruit in Stockholm I mean the main office here is in
+Stockholm we're asking a lot of people to relocate uh which is a no small feat. Now some of it is um makes it easy
+because of how much hype we created around our product. People want to come work for us like there's um they're
+reaching out to us. They're saying I I love what you're doing. I want to join it. Uh so that we have a cheat code to
+it because like we have most of the time when we reach out to somebody they say yeah I would love to explore. So uh
+building that product that is highly lovable also creates a really great recruiting brand for you as well. So
+make sure that there like multiple benefits to that. But uh second of all
+we do a lot of trials uh for people. So trial work to see them in action
+a work trial to see them in action for a couple of days. We pay them as part of the work trial. We have uh some
+probation periods that we start people on uh because this company is not for everybody. As I start said in the
+podcast in in the beginning, the pace here is insane. I went on vacation uh
+for the first time. So I've been here for 6 months. I went on vacation um for 10 days. I came back. I felt like I
+needed to on board from the beginning. Like everything changed. And when I'm in
+it, I feel like it's an evolution. But the fact that just being gone for 10 days, it feels like a complete
+revolution in the company. It's that pace is just not for everybody. And that's okay because I'm very firm
+believer that there's different cultures and different environments that the best fit for different personalities and different people. So we try to be very
+upfront with how things are and how chaotic they are. And we prioritize
+people that don't look for clarity but can create clarity out of chaos because
+um it is absolutely chaotic otherwise. And if we start to look for people that
+can explain it uh to us, that's the only way that we can succeed. The way you describe going on vacation and feeling very different, it feels
+like when you don't see your kid for a few days and they're just like completely different. You're like, "How did you grow so fast in 3 days?"
+Yeah. Exactly. Exactly. Let me try to summarize the growth levers that you're finding is are working. And I'm trying
+to think about this from the perspective of uh an AI startup trying to think about, hey shoot, how do we grow faster?
+What is lovable figured out? So feels like number one is just uh build something lovable, something that blows
+people's socks off, but also in a market that is growing that people want to pay money for like you can build something
+lovable that nobody actually cares about that there isn't much money going to the space. There's no tide pushing it
+forward and it won't work. I call it minimum lovable product. Like it shouldn't be minimum viable product
+anymore. Viability is left in back in 2020 2010s. Now it's minimum lovable
+product. That's the only thing that matters. I love how these AI tools are letting us you know like PMS have always had these
+um what are they uh smoke door test or like what's the term just like or is that not a real product? Uh
+painted door. Painted door. There it is. Yeah. And and it's like okay we just have a landing page. There's nothing there. And now AI
+makes it easier to do that and it's like more fullfeatured. Yeah. Well, it's the feedback cycle is
+just completely collapsed. You can go from idea to some product uh that is
+functioning to user feedback within a day if you want to. I mean depending on how fast that you want to run or how
+complex the product is for missions. It took us couple of weeks to vip code it to the point to where because we also um
+I have a full-time vip coder on my team. He's amazing. So like he he wanted to create videos like he did a bunch of
+designs for it uh too. So we he he took him a couple of weeks. We're testing it now and then we'll push it in the
+product. But it's a completely different development life cycle. Before uh it would just take so many more steps uh
+from user research to uh the design sprints uh to prioritizing on
+engineering roadmap to build something minimal and and viable to actually test
+to little long testing cycles. Now it's just like boom, let's go. Uh, it's taken us could have taken us a day. We just
+decided to take a couple of weeks to get all of the video pieces correct. I saw you launched this on LinkedIn. I
+to me it looked like a a full product launch. Uh, it is interesting to hear. This is just a sort of prototype.
+Yes. Prototype. Minimum level. Minimum level. Okay. Uh, I got to ask
+you have this. You said you had a full-time vibe coder. What the heck is this? Is this like an engineer? Is this something else? What is a full-time vibe
+coder? Great question. This is a new job role that is actually popping up here and there. Uh it's absolutely fascinating to
+watch uh this development because I see vibe coding as a skill being added to a lot of job descriptions for designers,
+for product managers, uh for marketers, which I think is a really interesting shift. Finally, Excel can move over like
+we have a new skill to add that is um super empowering and and not three years
+old, but uh vibe coder. So uh his name is Lazar and he actually was chief of
+staff in his previous role. So he's not technical at all. He's self-taught uh in technical aspects of it but he was very
+early on in the vibe coding wave. So he learned a lot about it. He was um user
+of all of the vibe coding tools lovable included. And uh when I was coming into
+the role I'm like I have so many projects that I will vibe code myself. So I run this uh woman only hackathon
+she builds. I vip coded the first version of that site and like and submission process for applications and
+then other people came in and started building on top of it. But I vip code but then like I don't have enough time
+sometimes because I need to run around and I want to push out so many different initiatives that I want to test in the
+market with our own products. So um we connected on social um like can you like
+would you join us and he joined us for uh part-time uh like you're bringing so much value for example we partnered with
+Shopify and he created a bunch of Shopify lovable templates uh by coded for us and it's been so helpful uh to
+have somebody like that that is just like pushing all all of these things out and he's an absolute expert so he's teaching us all too of what is possible
+with lovable because he's on the cutting edge of constantly pushing it to the limit. So, I I really enjoy having that
+role, which I've never had before in my life and in my team. I I'm not surprised. I've I've never
+heard of this role before as a real full-time job. Do you think this is a thing people will start hiring for at non vibe coding companies?
+So, I vibe code myself. So, like I would put that as even as a skill on my on my resume now. It took me a while to figure
+out by the way like everybody's like, "Oh, you just go and like it and it all happens automatically." It takes you a
+couple of iterations, couple of projects until like you know, okay, this is this is how I need to translate it, how I
+need to think about it. But for me, it's when I started scaling of what I want to vibe code. That's where his value really
+came in because I'm like, okay, I understand what is possible. I know what needs to be achieved. And some of these
+apps I want to be almost full-blown built uh because they're not going to get incorporated into the product
+anytime soon. They don't need to be. I'll just link to them from uh from our headers, so to speak. and uh he really
+accelerated that velocity for me. So once you get into VIP coding and you see its value within your organization,
+leaning into somebody like that just accelerates your velocity because it is like an engineer uh on your team. It's
+just they're not to me he's his part his part technical but they can be nontechnical if they're really good.
+That is fascinating. This episode is brought to you by Persona, the verified identity platform helping organizations
+onboard users, fight fraud, and build trust. We talk a lot on this podcast about the amazing advances in AI. But
+this can be a double-edged sword. For every wow moment, there are fraudsters using the same tech to wreak havoc,
+laundering money, taking over employee identities, and impersonating businesses. Persona helps combat these
+threats with automated user, business, and employee verification. Whether you're looking to catch candidate fraud,
+meet age restrictions, or keep your platform safe, Persona helps you verify users in a way that's tailored to your
+specific needs. Best of all, Persona makes it easy to know who you're dealing with without adding friction for good
+users. This is why leading platforms like Etsy, LinkedIn, Square, and Lyft trust Persona to secure their platform.
+Persona is also offering my listeners 500 free services per month for one full year. Just head to withpersona.com/lenny
+to get started. That's withpersona.com/lenny. Thanks again to Persona for sponsoring
+this episode. Let me kind of go back to summarize just real quick the growth lovers. I want to move in a somewhat different direction. So things that help
+Lovable grow. One is just build something in mind that blows your socks off as you said. Uh I love these phrases
+out here. The second is uh make noise in the market. And the way that Lovable
+does this SEO is tweeting constantly. You build something that blows people's socks off so that they share things on
+socials themselves. Plus, this influencer marketing component and just this idea of building in public has been
+really helpful. This point about activation being kind of uh embedded within the product team of the AI exper
+of the AI agent essentially. So, it's essentially not the growth team thinking about activation. It's the product team
+that is building the AI magic that is obsessed with activation and it feels like those are the main the main growth
+levers. Is there anything else that I missed? Community. I think community is really
+important here because you need to bring people together as they're exploring these capabilities and as they're seeing
+what's possible so they can bounce off each other and they can help each other out. So I would say community also
+amplifies that word of mouth. It amplifies all of the social posting. It it amplifies retention mechanisms uh for
+you as well. But community has been a huge part of lovable success as well and that's something that was started very
+early on. It runs on discord so it's nothing fancy. It's not like we build anything completely from scratch for
+ourselves. Um and it has hundreds of thousands of members and it's um it's
+very lively. We have community managers that are making sure that all of the
+questions get answered and the right groups are being created. We have incredible ambassador pro program now as
+well of people uh doing it. So I would say community here again of really
+making software more human is very important role. Now now obviously not
+everybody can build a community but maybe at least plugging in into somebody's community is uh quite important as well. And then there's
+another one unless you have a question on community. No keep going. Another one is uh giving
+your product away a lot. And for AI products, it may feel counterintuitive
+because they're so costly. Every single interaction with an AI product cost companies something. There's an LLM pass
+through cost uh that is coming through. And uh a lot of especially traditional tech companies I see are gating AI
+immediately behind a pay wall because uh they're sitting on a really cush um high
+margin profile. And the moment that you start giving AI away for free, you're like cutting into those uh margins with
+like a like a knife through the butter. Now, at the same time, AI being so new
+and the capabilities being so new, you have to remove the barrier of entry. You
+have to give a lot of your product away for free. But by the way, I don't just mean premium. Premium to me is just like
+a baseline. If you're in the new category, you need to let people explore what it is for free and get that initial
+wow moment. It's not a ha moment, by the way. It doesn't need to be aha moment anymore. It just needs to be a wow
+moment. And for lovable is that first preview generation after your first prompt, even though it's absolutely not
+going to be complete thing of what you want to build, but you just go this is possible like I had no idea I want to
+keep building. And it becomes an addictive exercise. But we also give so many of our lovable credits away to
+every event to every hackathon. If you want to host a lovable hackathon, we will sponsor it and give all of the
+participants credits away for free. So we give them away as candy and we uh basically track them over our LLM cost
+on premium and giveaways as our marketing costs and it doesn't go into our uh something we need to reduce uh to
+make our margins better. It goes into this is something that we need to spend more in because this is part of our
+growth secret sauce. Okay, I want to hear more about the growth secret sauce. That is extremely interesting. Uh I haven't heard of that
+as a strategy and I can see why this makes sense. If the strategy is blow people's socks off so they could tell
+their friends, post on all the socials. The trick is get more people to try it. And so this is and and it's such a new
+crazy thing. Like why would I pay money? Why would I even go take the effort to like try sign up for an account if I
+don't know what this is? because I don't know what I'm doing with it. So, I could see how this loop goes faster and faster
+by giving it away. Exactly. And again, this is very uncomfortable sometimes for companies
+that a either used to really AI companies have lower profile of margins.
+That's absolutely true. We to find an AI company with 80 90% margin profile is absolutely impossible. Let's be real.
+We're all sitting somewhere in the 40% uh or so, which is a lot smaller. So any
+time that you look at those AI costs as your cost center, that's when you're in
+trouble. You fundamentally have to flip the script and say, "I need to expose to people of what is possible and I need to
+remove the monetization friction out of it." Because if you don't, nobody's ever going to try it or you're going to be
+very easily overtaken by a competitor that will give it away. And let's face it, once you hook people, they're more
+likely going to stay with you. So you obviously have to still work on the retention strategy there. But if you can have like for our case if somebody one
+of our users stands up and say hey I'm gonna have a hackathon at my work
+unlovable can you give us all some free credits to play with why would we prevent a person
+who wants to do all of the marketing and activating job for us in their company
+from using us? Of course we're like take it. How much do you need? How much would you like? We will sponsor it all. We
+will give you anything that you need. So, we're really leaning into people that are wanting to show this magic to
+those around you and empowering them as much as possible. And um that is something that is actually applies to
+every single product. And I agree, this is not a growth strategy that I've ever applied in my life on like giving
+product away as much as possible, but it is something that uh is more and more becoming something that I see that is
+absolutely non-negotiable. What I'm feeling is like the more mind-blowing it is, the more you should give it away for free.
+Yeah. especially in a competitive market where everyone is you know it's hard there's like so many companies trying to
+do this thing and so um so it's almost like the better you are the more you should give it away
+right right and this also explains why uh so much VC money has to be raised for these sorts of companies because this is not cheap
+like you said you're paying all these foundational models a lot of money yes and no uh because I'm only going to
+say no is because so take a look at lovable we're two over 200 million in AR
+at this point we're 100 people charge. So our headcom count costs are very Let me just let me just make sure
+people hear that. 200 millionaire I didn't realize 100 people work at Lovable.
+Yes. And 6 months ago we had 30 people working at Lovable. So we triple. So for us it's a really big deal. We tripled
+our company size. Uh we're going to quadruple it by the end of Yeah. I know we're big boy and girls now. But for for
+perspective of the headcount cost, it's minimal. So we have very little in that going on. We are not spending a lot on
+paid marketing. So, we're not a big paid marketing driver. Yeah, we're spending on influencer marketing, but it's not
+majority of our growth. It's uh low double digits uh to to be fair because it's it's not why we're successful. It's
+amplifying our success and it's helping us reach new audiences. Uh we don't have really large sales team. We have only a
+couple sales folks um and they're just starting to ramp up their enterprise efforts. So, we don't have like really
+big enterprise demand gen costs as well. So from that perspective, if you like look at the equation and you say, well,
+okay, if you're not going to do a lot of paid marketing, if you're not going to do a lot of sales because we're really
+only working on hand raisers of people that are saying right now that they want to buy lovable, then where is like you
+don't have big costs. So you can spend it on product and that is the beautiful part because you're not when we're
+giving our product away to our customers, we're not competing with other companies in that space because
+they're just going to use lovable in their hackathon on their own and we're not competing on AdWords or like in paid
+Google where everybody's buying real estate for eyeballs. So from that perspective is I think about it more as
+a shift of where we spend and cost and honestly it's more efficient way to do
+paid marketing almost in a sense uh because of the cost per eyeball that we
+get there is quite a bit lower compared to if we were trying to compete it on Google. So yes and no to your statement
+because it actually does not deteriorate margin profile. We're just shifting of
+where we're spending it. That is an incredibly important point you're making there. So it's not like uh you're
+generating an incredible amount of revenue. Uh so there is money available to spend and what you're saying is
+because it's been spreading through word of mouth mostly. You're not spending tons of money on salespeople. You're not
+spending tons of money on paid ads. This is just uh an amazing way to get more people to use it. So it's kind of
+like a marketing cost. This is productled growth. Yeah. To the max. Supercharged. Yes. because
+you're literally using your product to drive that awareness by giving it away
+to the agents in your ecosystem that will do that distribution for you.
+So fascinating. What a what a wild world we're living in. Free stuff for everyone.
+Yes. Yes. I mean, it's great for consumers. This is a great time to be a consumer. You have so many options. Like
+everybody's throwing themselves at you, giving your product away for free. So, it's great to be in the market right
+now. I think it's the the power should be with consumer always but with software power has not been with
+consumer previously because we were forced to use towards some solutions because of either how they were chosen
+for us or what was available in the market and now that supply is almost infinite the demand of from the
+consumers can be very picky and the one that serves the best will win
+and I think again it's important to highlight this is not some kind of VC subsidized bubbleish sort of thing like there is a lot of money being generated
+that you are spending to help it grow faster. It's not like some kind of we're just raising more money to give away
+more money. Like you're actually making real money. It's not driving it's not driven by VC money. I I I can't comment on specific margin
+details for us. Uh but at the same time, the money that we're raising on VC is for future development and hardening our
+business. Uh not because we will not be able to survive without it. Awesome. Okay, great segue too. I want
+to talk about product market fit and competition. you had this really interesting post that I don't think people uh grasp yet, which is that
+product market fit is no longer this like we've done it product market fit and we're up and to the right now we
+just grow grow now we hire sales people it's going to be great uh you've written that just product market fit is no
+longer this like you've done it and you're good it's this endless fight to keep it talk about what you're seeing
+there so I'll first start with what I've felt at least before when people were talking
+about product market fit that yeah obviously always product market fit is an evolving thing but the
+rate of that evolution was measured in years and what is it that you need the next product market fit step function
+change which often was called second horizon or third horizon sometimes five
+10 years sometimes even longer that you need that you depending on how good your and hardy your initial product market
+fit was but you'd spend years scaling the original product market fit it was like blitz growth stage marketing sales
+growth was very important um that you just try to get it to as many people as possible and then once you have
+saturation or the cost to getting to the marginal people becomes too high, you start thinking, okay, what else can I offer to help me reach additional people
+or sell more to existing users that I already have? And again, the main point here is it would take years to get to
+that stage where it became a question that you had to face um really hard face
+to face. Now it's 3 months and all of a sudden you have to face that question
+again and it's happening because of two things in my opinion. Number one in AI
+technology of what LLM is capable of doing changes still very rapidly with
+new model release with each new model release. So I think we're going to I
+think we'll stabilize at some point and it's going to become more marginal but we're not there yet. So every 3 months
+or so, every single AI LLM provider creates a step function change on what
+is possible with that LLM. And when you have this new possibility in just an
+underlying technology that opens up in front of you, then it creates another ceiling of what is possible to build on
+top of it. And the tricky piece here is that it's not enough to just wait for
+that technology to get better and then start building on top. you have to build beforehand to like make a bet and then
+it's the LLM to catch up because when that model releases you already need to have that functionality available. So
+that piece is I've never been in a company where the fundamental capabilities are still changing so
+rapidly and that's the product part. So the product can leap to the new expectations but let's not talk about
+the market part as well. Consumer expectations have never changed this fast before. what we expected Chad GPT
+to be able to do and answer and how we wanted it to talk to us eight months ago versus now is night and day and like the
+deep thinking mode and uh the like the how how how deeply it can go into answering questions and what is capable
+of being building on top of it. So consumer perception has never changed this fast too is this unprecedented time
+of consumers all of a sudden like in a month saying oh it's not doing this yet
+like I'm bouncing before again consumer perceptions would be years to take it's actually technology would sometimes be
+able to already address it but consumer perception has not not been changed yet so it would take a long time so we're
+like in this really weird part where both product and market is shifting so rapidly that every 3 months I feel like
+we have to recapture our product market fit and not just recapture on the same
+technology and with same customers. It's both of those pieces of the equation change every 3 months. And it's
+terrifying in a way. It's also very confusing in a way because we're $200 million company and we're not solely
+focused on marketing and sales because we still have to recapture our product market fit. And you know that the team
+that finds your product market fit is very different than the team that usually scales your company. Yet we have
+to find the team that is capable of doing both on ongoing basis. Now I think
+every AI company is in on this product market fit treadmill. Uh hopefully that
+treadmill speed slows down. If not I think we're going to come up with like crazy things of what this LLM and AI
+will be able to do if it's going to continue at this cusp. But um it's a weird place to be in because every 3
+months we have to throttle on our scaling efforts and just reinvent and
+then scale again. But it's like short blitz of growth, not these long year-long commitments. What makes this
+very real is just this week apparently OpenAI had this whole code red moment
+where even though OpenAI by far the leading AI assistant over almost a
+billion I think monthly active users like basically synonymous with AI around the world with Gemini 3 launching their
+market share just started to dip really quickly. I think they lost like six something% in like a week. And so even
+OpenAI like chat GPT the original the one that everyone uses constantly is is is in danger.
+It's like nobody's nobody's future is bulletproof yet. And 10 years ago, if
+you asked me if a $200 million company was at risk in losing product market fit in the next three months if it's
+experiencing 10% month- over-month growth, I would have said, "You're crazy." And now that's the reality that
+we live in. And I I I don't know. I it's fascinating to world. And what a time to
+be alive. What a time to be alive. And uh very stressful, but the prize at the end is
+massive. That's the, you know, that's why this is worth doing. Uh not just, you know, monetarily, but just the impact it's going to have on the world,
+the way we people build and ship. Exactly. Exactly. The ceiling of what is possible has been raised so massively
+that we haven't even became too closest to even see it. I believe so I think
+that that's the exciting part of it. The way I've seen you write about this product market fit challenge is the
+traditional approaches you have these like core users that are using it happy with it and then you expand to the adjacent users and expand to the next
+and you're basically just trying to recapture that same core constantly and don't even have time to go adjacent.
+Yeah, I Bengali wrote a really wonderful article. It was many years ago at this
+point on adjacent user theory and that your product market fit expansion when you're in no growth stages. The biggest
+opportunity for you to go after is this what he called adjacent user which are just outside of your core user. They
+have uh somewhat similar needs but maybe they're in different geo maybe they have slightly different use case, slightly
+different needs. and your biggest way to continue growing your product market fit without having to go to next horizon is
+to capture those um that next group of users. The interesting piece here of how I relate to it, we still
+have the core users and by the way those core users are mostly pioneers right now that are excited by the capabilities.
+Then there's latent majority that is filled with adjacent users. And the issue right now which I'm actually quite
+worried about us like as a category is that we're constantly focusing on recapturing the pioneers. We don't have
+time to go after adjacent users and I'm worried of whether there's going to be a gap in the space where we actually going
+to alienate the latent majority because we're so hyperfocused on just staying
+top of mind and t top of capabilities on the pioneers. But I don't know the right
+answer here because without the pioneers they'll like you need pioneers for a latent majority to follow. But if you
+take pioneers and you take them too far into capabilities, will latent majority
+never be able to catch up? Uh maybe this is a fruitless concern, but it's just like something that I think about
+because at this stage we should be working on adjacent users and and I would argue maybe OpenAI definitely
+started have uh to do that with so many people they have on their platform, but not most of the other AI companies.
+I completely see what you're thinking there. Like a brand could just become known as that's just for like startups and prototyping and it's not for serious
+work. Yeah. Or it's like it's for just like for it's for techies. It's like for tech
+people. It's like it never actually enters the people uh outside of our
+little bubble that we live in. We kind of touched on this a little bit of just like working in AI, working on
+AI companies. Uh challenging, stressful, a lot of work. What's your advice for folks that are thinking about should I
+join a lovable? Should I join a cursor? Should I just go work at Google Micros? You know, not not to throw them under
+the bus or anything, but just although Google very very successful in AI now, maybe less AI focused company.
+I really believe that there's different you need to understand what's the environment that is right for you. Just
+please understand that AI companies are very hectic at the moment. They're very
+unstable by definition of that product market fit treadmill about that distribution of how they're actually
+distributed to the market really changing about how product is even being developed in the first place. So if you
+are very comfortable in being in that messy middle and uh really comfortable of converting chaos into clarity for you
+and those around you then yeah AI company is a wonderful place for you to really absorb new skill sets right now
+because I even before joining lovable when I kept seeing AI I'm like my gosh like I'm so tired of seeing AI
+everywhere. Is it really changing the world? Like is it really changing the way people work? And when I was um I was
+at Dropbox before and yeah, we would use AI here and there and I would use CHIGPT. I've never used AI there the way
+I use AI at lovable and the things that I'm capable of accomplishing at Lovable and I don't know if I've ever would have
+made that leap so fast unless I joined Lovable. If I would have just read or listened about it, it's just different
+compared to be surrounded by people where it's expectation. It's not like a nice to have or something that
+somebody's asking you to do. This is just how you get things done and you have to think about everything of like
+what can AI do here versus where do I add value versus like in a traditional
+sense of work is like I start with my own value and then I augmented with AI and here like the mindset is completely
+uh shifted. Now I don't think AI is replacing everybody's job. So like please don't like don't look at it as a
+as [clears throat] as that cliche saying. I actually often call AI as like
+average intelligence that helps me get the platform up and then I add my human thinking and my human creativity on top
+of it to get it to the next level. But at least I can get this base level done with AI really freaking quickly. So from
+that perspective, I think if you want to leaprog on what it means to be AI native employee and how to use all of these AI
+tools, you should go to AI company. But if you know that your superpower is in
+more structure, in more definition, in a really high specialty of things, because
+in AI companies, they're all fairly small. So, you'll have to generalize quite a bit and have a lot of ownership
+of areas that you usually maybe not have ownership over, then you shouldn't join it because AI companies will evolve to
+be more stable too. So, it's just a matter of time on where you can join. So I would just urge people to look at
+their superpowers and the type of environments that really speak to them so they can feel happy because this can
+lead to burnout for wrong type of personalities very quickly. Yeah. My sense is if you want work life
+balance, don't join one of these companies because that's just not the way they work. I don't know if I'd go that far. I mean
+I have family. I have two kids. I feel like I have a very good work life balance. Uh, but I put in boundaries for
+myself. Like I know when I need time off, I need because I know when my brain starts to overheat, so to speak. Uh, but
+I I also know that work is my hobby and it's my passion and I will this is the
+best work of my life that I'm doing right now. There's no other place that I'd rather be uh than to be here. So, I
+think that you just need to be more careful about setting your own boundaries that you know you need. But
+um I mean let's face it I don't think anybody has work life balance regardless of a company that they work at even at
+Google or like Microsoft or any of the others. I think everybody is freaking
+out and running as fast as they can. It's just they're running it in different structures. I'm really glad
+you said that and corrected me there that it is possible to work at a company
+one of if not the fastest growing company in history and actually uh have work life balance to get sleep to spend
+time with your kids and family. You just have to protect it uh ruthlessly but you also need to be
+realistic with how much is expected out of you and you need to feel confident that you'll be able to deliver it. And
+by the way, you won't be able to deliver it unless you use AI in many aspects of your work life. So that's like the piece
+that helps you actually get to hit those expectations of outcomes that you need to do and the velocity. But um I'm I'm
+very protective of my personal time with kids. Like why did I have children if I'm not going to spend time with them?
+So like those are part of the non-negotiables um that I bring along with me in every single work. for people
+that maybe have trouble setting boundaries or just not good at this anything what do you what works for you is it just is it as easy as just telling
+people here's where I need to leave what do you what's what advice do you have for people to set boundaries like that so first of all I would not think about
+it as a work life balance there's no such thing as balance or balance feels like oh I have enough time for everything I don't have enough time for
+anything but I prioritize my family in some moments I prioritize work in other
+moments and I don't try to balance the two I go where I'm needed and where I go and I feel like I'm not going to regret
+the choices that I'm making today. So, I'm constantly trying to put myself in the future and say, well, I resent
+myself if I make this choice right now. And if the answer is yes, I don't make that choice. And sometimes I have to say
+no to Anton and say like I can't make it or I won't be there. I need to be here with my family or like today I need to
+cancel my day. My kid is sick and he needs me and I need to be I need to take him to the doctor. So I think that just
+making in the moment more like in every day even sometimes in the hour decisions to me works better than trying to
+balance something that is completely unachievable and it feels overwhelming to even think about. But I prioritize
+this in my sleep, uh my health, my workout schedule, my kids, my family, my
+husband, um and just my downtime because I know that I'm most creative once I have separation from work because then I
+come in with like all still firing and I have so many more ideas about it. So to me, it's actually part of doing my best
+work is to take time off. That is really great advice. I want to touch on what it's like to work at
+Lovable because it feels like Lovable is at the cutting edge of what working at
+in product is going to be. So, you mentioned a little bit about how you're always talking to AI asking questions.
+Is there any any other kind of anecdotes of just how people operate at Lovable that is really unique or weird or funny
+or interesting that might be helpful for people to try in their company? Yeah, I mean we use Lovable at Lovable a
+lot. Like all of our internal tools are built on Lovables. Uh we actually have our first hackathon on lovable happening
+next week. Uh where we're going to entire company is just going to take full day to pipe code um and see what we
+actually have happen. We prototype everything on lovable. So our specs yeah we do still have a written spec but it
+always accompanied by a lovable prototype uh that everybody can interact with and uh to click around with and
+provide feedback and everybody punches in and also like does some edits if they have any better ideas. So I uh create
+mocks on lovable. So for example, we need to make some pricing changes um a pricing page changes. I take a
+screenshot of our pricing page. I go to lovable. I say recreate this pricing page, make these changes and then I send
+that to my engineering team saying hey this is what I want to happen and then like they take it from there. So we just
+you and Chad GPT I use a lot for brainstorming especially the deep thinking mode. I love it. It takes a
+long time but it's so worth it. Uh sometimes it has crazy ideas, sometimes
+it does. Like sometimes I was like, "Yeah, this is like nothing new to me." So it's not interesting, but like it gets me thinking and it gets me look at
+the different angles and um lots of um I use Granola a lot for example because to
+me it's super helpful to get AI summaries of the meetings and it's very powerful for me. I use Whisper Flow a
+lot because I feel like I have no time to type anymore. So I just like talk to my phone and talk to my laptop all the
+time uh in order to do it. But we're even thinking about all of the customer support automations uh that are done
+through AI. How do we um every single aspect of what we do is question is
+asked what can AI do here first and then how we can add ourselves into the
+equation. But lovable for us uh having unlimited credits at lovable is a pretty
+awesome perk I have to say. Like I sometimes have to pinch myself. I'm like I get paid to VIP code. This is like so
+fun. I feel like that engineer or that VIP code engineer, he's he's like actually my dream job. I want his job. I feel
+like I Yeah. I I got into the wrong line of profession here. Oh man. Okay. Uh is there anything else
+about Lovable? Because the what I think about actually I interviewed the perplexity founders back in the day years ago and they shared like before we
+talked to anyone for advice we first asked Chacha PT and I was just like that is the most insane thing I've ever
+heard. How can you possibly work that way and now that's how everyone works and so I'm curious just I don't know
+like how I don't know how Anton works. Is there anyone else that just like way in the future of here's how things might be? So for me especially for product and
+growth I and even marketing at some point it's in some capacity when I have an idea in my head it like it sounds so
+freaking cool and sometimes I can even like I put it in paper and it's like a this is like like we need to do it and
+then like I go and try to vibe code it and I'm like oh like this like I don't see the magic anymore like or I can't
+like I can't envision it anymore or sometimes I'm like yeah yeah and like there's more there's more. So to me it's
+actually has helped really complete the ideation process for me quite a bit because then I actually try to go and
+build it and it breaks down some of the elements of what's important, what's not. So it's taking me on product
+development life cycle so much further down and then it creates a much better communication vehicle with my engineers
+too because like I then can tell them exactly what's important, what not. So to me it's been great because sometimes
+we envision things that are so much better than the reality and before until it hands it off to design like we would
+never be a like designers would do it for us and try to make it awesome versus I often stop my ideas in tracks super
+early on without pushing it forward versus other times I might have pushed it too for too far too long even through
+design queue or even like pitching to leadership and uh I find that very powerful because It calibrates me really
+quickly. Awesome. Okay, last question. I want to talk about something that you've written about that is a really uh I think it's a
+really important topic, something that we should surface is you wrote this post called I'm worried about women in tech.
+Talk about what you're seeing here. What you're noticing, what you think might be going in the wrong direction.
+Yeah. There's actually conflicting data points about how um women, you're talking about women, right? Women. Yeah.
+uh there's conflicting data points about uh how women are keeping up with AI technology and wave because there's a
+bunch of reports that has been done that show massive gap between women adopting AI versus men adopting AI which points
+the story that um men are just like widening the gap uh of like
+accessibility for technology and whoever is adopting AI right now is getting paid the most gets the most opportunities I
+mean we're seeing like in say in aqua hires right now where people are getting paid more for their talent than for the
+companies that they've created and that's like a really interesting trend that is occurring and a lot of it is fueled on um on this wave of AI and
+women are not really present there like if you can think about like $1 million aqua hire that has been in the news that
+is a woman like I can't think of one if you look at AI companies and their CEOs
+uh most of it is men if you if you look at the company's composition of um in AI
+companies it's mostly men. To me, this really came to the head of when I came to Lovable and I'm like, it's pink, it's
+purple brand, it's a heart, it's lovable. I'm like, I'm sure this is where it's 50/50 men versus women. And
+uh although we don't collect this information, but just like through third party um uh autofill, we saw it's like
+20% at most. And I'm like, what is happening? Not again. Why is this again not being adopted by women? And uh
+obviously I don't know all of the answers. Um I think that this is early on that we can shortcut it. And by the
+way, I also don't want to put this as a indication that men are to blame because
+I think men are doing wonderful job really spearheading the horizons and showing us what's possible and like
+leading the charge. I'm just afraid that so many women are stuck in that latent majority that is just not catching up.
+And my worry is that it's going to affect the hirable talent. is going to step us back again in the composition of
+the workplace of the diversity and maybe it matters maybe it doesn't like whichever side that you s sit on but I
+think that there is it's if needs to be built for everybody in the world and for that it needs to be built by a
+representative sample of uh people that are behind the product as well. So I I I
+just find it fascinating that even when the barrier to building has been lowered
+uh versus like you don't need computer science degree which I appreciate there's not that many women that are
+getting we're still seeing the gaping um gap on the adoption between genders
+which is just is I I I I don't know there's like something very frustrating about that. Yeah. Uh the thing that struck with me
+with from your post is there has been a lot of progress being made in the last decade and now AI is just kind of
+turning it all back, turning it all around. Hopefully not. I think that we're early on enough that we can bridge
+the gap. I think sometimes uh women just need space and ability to discover it.
+Uh and uh that's what we're doing at lovable. We have this initiative uh she builds where we have collect we have
+create a hackathon for women only and we give them unlimited access to lovable for 48 hours and um they come together
+as a community and they build together and there's like beautiful things that start to come out of it which I've never anticipated before but so many women in
+that hackathon for us build help for their with their elderly parents or with their kids or with the household or for
+their church group or for the the kids basketball team. solutions should have hyper local, hyper relevant, very needed
+for what they need in their life and something that was never been able to build before because of how expensive
+software was because it would never going to become potentially a hundred million dollar companies but it also
+doesn't need to be anymore. So I just want to bring women to build more and vibe code more so we can have more
+diversity in software that is even created because I think that we all have
+a unique take on what problems that we can solve and I want everybody's voices to be heard.
+I'll give the URL for shebuilds. I pulled it up while you're talking. Shebuilds.lovable.app
+bitecoded on lovable [laughter] minimum viable product. Minimal lovable product. Minimal lovable product.
+There it is. So when is this happening? Is this December 15th, 18th? So it's Yeah, we have it. We're running it
+constantly. So our next cohort uh starts um December 15th, but we're going to
+have more. We're planning a massive one on International Women's Day. So that's the one that if you can come
+join us. Awesome. I don't know if you Okay, so some glimmer of hope. I don't know if you saw this tweet where I tagged you the other day or maybe it was this
+today. I was looking at my most recent podcast video performance and the top
+four are all women and they're all AI oriented and they're above Stuart
+Butterfields, founder of Slack, above Gamma's CEO Grant. So maybe a glimmer of
+hope. Yeah, absolutely. I think there's lots of glimmers of hope. I think we can just all lean in and make sure that nobody's
+left behind in this wave. And uh that's not to stop people that are marching
+ahead. This is just to open up opportunities for everybody around us. Awesome. And we'll link to that post if
+people want to get a deeper perspective what you're saying. Elena, is there anything else that you wanted to share?
+Is there anything else you want to remind people of before we get to our one question lightning round?
+I guess the only other thing that I will share uh is for AI companies when it comes to hiring. It's really interesting
+also the kind of the shift in the type of personas that end up being hired that I see for me at least it's quite
+different compared to anywhere uh that I've worked before and that is uh there's this narrative going in the
+market always that like new hire sorry new grads have no jobs in the market left because all of the entry-level jobs
+are automated. I actually think that's quite false because new grads especially AI native new grads. So it's very
+important for kids that are entering into the work I shouldn't say kids young adults that are entering into uh the the
+workforce that they really know AI which is there's another like really big issue that our schools are not teaching AI uh
+students. So, this is like something else that we need to fix as a as a category because otherwise we're
+literally setting up our uh young for for a complete failure. But I think it's
+incredible to see some of those new graduates come in and what they're capable of doing. I have um we have
+multiple new graduates at lovable that are working and I learned so much from them and you need to obviously have the
+right atmosphere where people with experience like old guard like me that
+can look at the new guard and take really hear them and see them and really change the way that I operate based on
+how they do things. So, uh, make sure that you bring some of that fresh talent
+that doesn't understand any of the baggage that we came from and that can
+really look at the future in technology and what can unlock from a completely new lens. So, highly recommend putting
+those into your team as like little fireballs that are going to be sometimes
+hard to contain, but can start the best the best initiatives for you forward. And then um it's also interesting that
+there's a really high demand for uh ex-founders now for like those people that are truly have a lot of agency and
+um high autonomy. So instead of just having people that have been working in the corporate world, the failed startup
+founders are now hot demand for a lot of these AI companies. So like these personas that we traditionally would not
+prioritize in companies uh to to hire are now becoming the hottest commodity
+and the highest going talent which is I think is fascinating and it's like the wonderful thing that is changing the how
+uh the culture inside operates that is really interesting and really empowering just this idea that uh if you
+need gradu's hope you're not you're not going to be out of job. Absolutely. Absolutely. You might have an advantage. Yeah. You you do have a you have to lead with
+that. That's the thing like you have to lead with the things that you can you are capable of achieving knowing that
+what you have with AI because that is a lot of people especially in traditional tech or in more traditional companies
+they're looking for somebody to show them because it's really hard to figure it out on your own uh versus coming in
+and seeing and then copying. Well Elena with that we reached our very exciting lightning round because it's
+your fourth time I'm not going to ask you all the questions I always ask you so I'm just going to ask you one question. So Lovable is based in
+Stockholm Sweden. I'm curious just like what do you what's something you love about Stockholm that you weren't expecting? Is there like a food, a
+restaurant, I don't know, something? Well, you always have to say Swedish meatballs. I mean, I've never liked
+meatballs before. Uh so like and now it's it's so good here. It's so good. So
+like every time one of my meals here throughout the day involves it. But I
+actually really love the sounds. They're like they're I don't know. They're so they just taste different. It's not like
+the IKEA. It's not like the IKEA Swedish meatballs. Well, I have been to IKEA here because
+that is a Swedish company, too. It like reminded me of uh in person Amazon. It was like absolutely incredible. IKEA
+here is like next level. But, uh food food I Swedish meatballs for sure.
+Honestly, how clean the city is like it's it's kind of incredible. The architecture like everything is so built
+out. It's like picture perfect. Like it's on the card. I don't know. It's It's
+different compared to like most of the large cities that I've been at that are a little bit more worn down.
+So fun. Makes me want to visit get some meatballs. [laughter] Yeah. You're in the visit during the
+summer. Otherwise, the daylight [clears throat] here is really is really tight during the winter. Okay, good tip. Okay. Uh two final
+questions. Where can folks find you online if they want to reach out, maybe learn more? And how can listeners be useful to you? Yes, please find me online uh on
+LinkedIn. Uh please feel free to follow me. Always engage on my post if you want to engage with me because that's um the
+place that I always talk to people. I have my newsletter as well um that um
+baby baby steps compared to what Lenny has, but it's elenena verna.com. I also try to that's where I post most of my
+findings that that I experience at my work. So if you want to continue seeing how my thinking evolves or what the
+patterns that I noticed, that's where to find me. and how to be useful to me. Um, really pressure test my thinking because
+so many things are changing right now. I'm honestly not even sure myself of what is a pattern versus what is just a
+data point. So, I'd love to just engage in as many conversations as possible uh and hear your opinions because that will
+help us as an industry just understand what is actually happening and makes more sense out of this whole thing.
+I'm just going to double click on your newsletter. Definitely subscribe to it. It's incredibly good. Everything we've talked about here, uh, Elena has written
+about in her newsletter in in large part and goes even deeper. It's just elena vernett.com. If you're like reading this
+on your podcast app or YouTube, you can just look at her name and just type it.com and you'll find it and subscribe and you'll be really happy. Elena, thank
+you so much for being here. This was amazing. Everything I wanted it to be. Thank you for sharing. I know you have a lot a lot of work to do, so I appreciate
+you making time for this and for joining us. Thank you for having me. Really appreciate you. Bye everyone.
+Thank you so much for listening. If you found this valuable, you can subscribe to the show on Apple Podcasts, Spotify,
+or your favorite podcast app. Also, please consider giving us a rating or leaving a review as that really helps
+other listeners find the podcast. You can find all past episodes or learn more about the show at lennispodcast.com.
+See you in the next episode.

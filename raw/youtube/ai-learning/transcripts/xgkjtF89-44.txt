@@ -1,0 +1,590 @@
+stop playing with your coding agents and get back to work. They can solve problems really, really well, but they're not going to be able to write
+maintainable code without you in the loop helping. The thing that I think most people skip is actually what I call
+like program design. Is like before you let the agent go cook, there are decisions that it's going to make that
+you might not like. If you can tell it a measurable output, the agent will move mountains for you.
+You can tell the model how you want it done. And if you don't tell it how you want it done, okay, it might do it in a terrible way, but it also might figure
+out like a better way to do it that you never would have come up with. This is Dexter, also known as Dex. He is the one
+who invented the term context engineering. And he's also known for creating a software factory where AI
+agents ran for 4 months straight without any human input. In this podcast, we
+talk about why benchmarks don't matter. His unique program design system and why pull requests are dead. If you want to
+be in the top 1% of agentic engineers, watch until the end. This is the David Andre podcast. Enjoy. You had a thought
+on benchmarks not being an accurate way of representing agents power. Can you tell more about that?
+This is basically about the idea that like a lot of benchmarks are like one-off problems. They're quick oneshot
+fix the tests do all this stuff and like I don't know I am not a machine learning expert but like I was doing a bunch of
+research on this cuz I wanted to match my vibe understanding with like how this actually works in the real world.
+So you let basically agents run by themselves. Give us the backtory. So like software factories been around
+since 1968, but like I like to think of like the 2022 software factory, right? Which is basically like right before AI,
+you had a team of humans and they would put stuff on a list of things to do. This was your Jira, your linear, your
+state machine, your issue tracker, and someone would go build the thing and then like eventually you would do a pull
+request and you do your CI/CD and all kinds of we've automated a ton of stuff, but we still review the code by hand. If
+something is wrong, we loop it back to building the thing. eventually goes into prod, hits our users, they complain
+about stuff, they ask for features, and then we go around the loop over and over again. And then eventually we put on
+monitoring so we can wake people up at 3 in the morning. Uh because apparently we love to wake engineers up at 3:00 in the
+morning when things break. But this is your like software factory before AI. Basically, the first thing that happens
+after that is you replace like person builds the thing with agent builds the thing. I'm not going to get too much
+into like orchestration and harness and sandbox and model. Like you need all these things, but basically like every single thing that comes off your list,
+this is the ramp, the work OS, the Brex, they all have their the stripe minions. They all have their like system that
+does this. And this is the first thing you replace. And you probably leave most of this other stuff in here. And
+basically like now this part takes minutes or hours and this part still takes hours or days. I guess like before
+we had Agentic Factories, we basically had like people noticed that like building stuff took hours or days and
+reviewing stuff took hours or days. And so we did this stuff to like get more leverage, which is basically like we sit
+in a freaking meeting and talk to other engineers about what we were going to do. So that like instead of spending six
+hours reviewing it, maybe there's like a a better chance that like, oh yeah, this is what we all talked about. The PR
+matches what we explained and there's like very little changes required. And so like we want to basically optimize
+spend an hour up front to save hours in the review time in the build time make sure we're not building the wrong thing
+etc. this department is now fast, but this part is still slow. And we bring in like agent to code review and it catches all the small stuff. And we let the
+agents like just poke at the app and test it with browser testing and stuff like this. And that makes this faster, but like if you want to read like the
+code that matters or any of the code or all of the code, whatever it is, like this is still your bottleneck of like how do you build trust that the thing
+that was built is going to work today and it's not going to like slow you down in a month, right? If you're, you know, getting tens of
+thousands of lines, you cannot review that manually. Yeah, that is that is the bone like for So you do what you can to build trust. You say,
+"Okay, well, we threw Codeex and Opus at it, and they both said they both found 10 things, and we fixed all 10 of those
+things. So now I have higher trust that this is going to be like I'm not going to get a ton of complaints and feature
+requests, and I'm not going to like get woken up at 3:00 a.m. cuz something broke." And then we could do some stuff like routing incidents straight into the
+factory. So when the alarm goes off at 3:00 a.m., I don't wake up to an alert, I wake up to a poll request. And we could do the same thing with like user
+feature requests, right? instead of like going through a support queue, we triage some of the support queue straight to
+the agent and it just goes and fixes the bug. Have you done any of this yet? Yeah, I'm implementing this u as as much
+as I can to be fair. For example, for my current thing, deep API, I have like GLM 5.2 review every single like uptime
+incident. So, anything that's like suspicious or anything that goes down before, you know, I have to like read it
+and understand it or use AI to understand it. But now, I just get like a AI report of like, oh, this is why happening. is actually the provider. We
+cannot do anything about it. Or like, oh yeah, this is caused by missing migration. Do this. Yeah, you're like, oh, Antropic is down
+right now. Like, you just have to like tell your users and like here's a draft of a message you can put out in your Discord channel or whatever. That's
+cool. Where are you running that? Is that running like in a in a in a cloud sandbox somewhere? It's split between uh render.com and
+just chrome jobs on Versell and GitHub actions. Okay, so you have chronobs on versell and then like when incidents
+happen you pull them in and then render.com runs some little agent loop that does inference and then like sends
+it somewhere. Yeah, cool. Now launching your app is just step one. The moment some users show up, the
+question becomes what are they clicking, where do they drop off, what's breaking and right now that information is
+scattered. You have one tool for analytics, one for surveys, another one for error tracking. But with Post Hog
+you get all of this in one clean platform. You can link all your data sources and query everything alongside
+your product data. So you can find real correlations and real patterns instead of just guessing. There's also session
+replay so you can watch recordings of real user sessions to see where exactly
+they get stuck. But honestly, you don't even have to watch this yourself. Post Hog's new AI tool, Replay Vision,
+watches those recordings for you. It automatically spots any friction and an agent opens up pull request with the
+exact fix. So all you have to do is just review it and merge it. That's the whole idea. Post hawk makes your product
+self-improving. And this is essential if you're building software in 2026. For example, most people have no idea how to
+monitor their AI inference cost. But POS hawk does all of this for you. It tracks the prompt, the response, the token
+cost, and the latency. Everything per user. So you can see which features are burning money, which agents are
+misbehaving, and which prompts are actually working. This is what you need to build a great product. You can try
+Post Hawk for free by clicking the link in the description. Oh, and thank you Posh Hawk for sponsoring this video. So,
+this is like when people talk about the full software factory, this is like getting towards like how do we take
+ourselves out of the loop if something can be just oneshotted by an agent, even if it's only like 30% of your work, only
+30% of your incidents. That's huge. That's like you're getting close to doubling your productivity, right? Because if you can automate 50% of your
+work, you can now ship twice as much. And so like now the thing is like cool now our job is more just like ask for
+features, evolve the platform, think about strategy and then like how fast can you review the changes?
+Yes. Which gets us to this thing that I don't think works which is the lights off factory where we just say like okay we're just not going to read the code.
+Like how can we build a system where we don't have to read the code or we have to read as little code as possible. Do you still review your your PRs that the
+agents write? Not like all of them. If there's a small change I just ship straight into production. Like one maybe controversial
+opinion and again like I have less experience than you so like you know I have to preface that but like I have a good sense of like my prompt right if
+it's like a small front end tweak I know what the agent is going to do like I just have like over thousand of hours
+building with AI probably over 100 hours with these new models but like I just know like what type of things the agent
+is likely to up and what I can trust with. If I'm not sure again I do the basics right review it with the other frontier model and do more testing
+myself and stuff like that. That makes sense. And basically the idea is like when when you if you want to get out of code review, you you end up
+investing into all these other things. You make it so the agent can test its changes live. Maybe it can even send you a little video when it's done building.
+This is like the cursor sandbox. Agents do this. You make your agent to code review way better. You make your regression testing way better. Every
+time something fails, you go figure out what it was and you make sure that that particular failure mode never happens
+again. You make your CI/CD checks better and more robust. You add more different types of llinters. You do complexity
+monitoring, all this stuff. And so now your job really is just like how much stuff can you think of? How many how
+many features can you ask for? How many features can your users ask for? And like you can actually run this thing
+where you don't ever read any code. I personally don't think this works. And this was like kind of my epiphany and like I mean I think if you've used
+agents for a while you kind of have this vibe of like if you do this for like way too long you can like completely lose
+the touch of the code base right. So then like the maybe the part that like I would add is really spending time on the
+agent educating you like checking like is the human still in the charge you know like giving you some some quizzes
+giving you some like HTML visualizations and kind of slowing down on purpose when you start to lose the grip.
+Yes, exactly. Real quick, if you want Dexter's exact program design system that he uses, it's
+going to be available as the first link below the video. It's completely free. Go grab it now. We even had a prototype feature that I didn't end up shipping
+but we may bring back which was like while the agent is working on stuff you can pull up the session and it'll quiz
+you on like what is the current state of the codebase and how does it work today and then like how does the new implementation work and what does it
+change and you can like test your understanding with like multiple choice questions with different mermaid diagrams and stuff like this. Anyways,
+we we did this for a while and basically like the idea here is like if you stop reading the code, you might andor you
+absolutely will eventually hit an issue that the agent can't solve. You're like, "Oh, this is broken. Go fix it. Oh, this
+is broken. Go fix it." And like you try all of your like most intense prompting and you get three of the smartest models
+together to do a council on it and they just keep thinking it's something that it's not and they keep shipping fixes
+that don't actually fix it. And so you have to go into the codebase that you stopped reading three months ago and
+spend like days or weeks like one like trudging through like sloppy code cuz
+you stopped reading it and two like trying to figure out what is actually wrong. And this has happened to us at
+least once or twice which is why we kind of like threw out our we did this in like July of 2025. We had this lights
+off factory where we're like really zooming out and not really looking at the code so much. We reviewed the plans
+and we did like collaboration on like the tickets and like what went into the to-do list, but we weren't reading the
+code. And then we hit a bug and like for weeks it was like, okay, our site was like I mean we we were shipping a
+desktop app, so like the app was buggy. Users were pissed. We were miserable reading through a bunch of like slop
+code trying to figure out what the hell happened. And it just it sucked. And I kind of have this thesis that like the
+odds of this happening to you if you stop reading the code are much higher than the odds of it not happening to you
+or like that the models will get smart enough by the time it happens that you that that they will be able to solve it.
+Maybe I would challenge you on the wording, right? Like is code the right word? Because like you can replace code by the logic like if you understand the
+underlying logic of your software and like are we using a certain API schema
+or like what's the difference between hashing and encryption? If you just understand these concepts, you don't necessarily need to look at the code per
+se. You need to know like the logic of like, okay, what does the first five minute look like in the onboarding? What does it look like when someone tries to
+cancel? What does it look like when this API endpoint fires? Maybe I would challenge the word code and like replace
+that with logic. No, like know what the product is. I'll jump ahead to kind of like what we I I'll go back to like why I think this is we do a
+whole thing in like RL and how the how the cases work and how it's like kind of obvious that that that is how it happens. But we basically go through
+like four stages and I can demo this in a little bit with our tool. But like you don't need any tool or any specific set
+of skills to do this. This is just like what I think is the right way to think about aligning with AI and kind of
+staying in the loop as much as possible. And the first one is like the product part like what user problem are we
+trying to solve and like if you can do it how do we measure it right? Because if you can put a experiment on your
+website and say like, "Okay, this is hard to use." The agent can try three different things and then it can check
+the data every day and decide which one works best. That's incredible. Now you're really getting on autopilot,
+right? And this is something that the latest generation of agents is like doing way better. Like I noticed, you know, with Fable and 5.6. So like I I don't have to
+tell them to run tests. I just noticed like if they do something mediumsiz or or large, they just try to do way more
+testing by themselves. So I think yes in certain areas you still have to like think of ways to measure and track but
+with the models getting better they're they're doing this by themselves. When you say testing are you you're talking about like doing like browser
+testing and stuff like this like using something like agent browser. No no no like if I'm building some feature like something like deep
+research or scraping and they switch a provider they would test cost speed quality you know using LM as a judge
+without me even saying like test it after changing it and that didn't happen the previous generation of models.
+That's sick. We have seen that a little bit more. They got much better at like computer use and browser use and they're much more likely to do it without being
+told for sure. The whole like concept here is like back pressure, right? is like how can you take what you built and
+give the model like deterministic like yeah LM is a judge is is fine and LM can
+review code and they can review outputs but like if you can actually say like hey here's a number like the conversion
+on my website that is directly tied to the success of my business how much revenue I'm getting how many users I'm
+converting that is crazy powerful I was about to say that's the same idea behind like the slash goal if you can
+tell it a measurable output the agent will move mountains for you that was the same thing auto research, right, is like just go make this CUDA
+kernel faster until it like whatever it is is you've reached the 20% resource reduction or whatever it is, right?
+Y and so like what some of the things we like to do here is like basically I actually pull up a doc that we did.
+Yeah. So here's like a PRD I made in in human layer that is like here's how you bring your custom workflows into
+Riptide. So it's like we have here's the problem to solve, here's how we measure success. And I actually did this Amazon thing which is like write the blog post
+before you build the feature. think about how you're going to explain it to users and why it's valuable before we
+ever write a line of code. So, we're building this new JSON format and then it comes with a bunch of like we do HTML
+mockups to understand how like what it's going to look like. I did a bunch of iterations on this and then like
+basically all of the different views in the app that are relevant. We kind of just like prototype them out with like
+plain HTML and it it it seems to work really well. But this is like the product part. There's no tech here. There's no architecture. We're not
+talking about databases or schemas or anything. It's just like what does the user see? What does the user spacing stuff?
+Yes. Having perfect clarity about like what do you actually want to build and why do you want to build it before getting into any prompting or coding.
+Yeah. And like people say like, "Oh, but this is just extra work and like the models are good enough now." And it's like sometimes, right, you can roll the
+dice and just see what comes out. But if you spend 20 minutes going back and forth and figuring out what this looks like, you can do a lot. you can like
+raise the chance that whatever the agent ships does not need a bunch of like hand polish or tweaks or you gota like vibe a
+bunch of changes to the UI or whatever it is. Yeah, the models are also good enough at like doing what you tell them and never
+calling you out about like yo you've been working on this for days and there's zero progress and like you still have zero users.
+So like you know that's the dangerous part. So I mean you mentioned like understanding the product part that's one example. The next thing we do is
+like system architecture right? If you want to save time during review you pick whoever would review the PR. I mean, if
+you're solo, then this is a different story. But it's like whoever would review the PR if you're especially if you're working on a team. We focus a lot on like we work with publicly traded
+companies, a lot of like series B+ fintech companies, people where you can't just like vibe it and hope it
+works, right? And like, oh, if it's broken like we'll just fix it tomorrow cuz it's like in those industries if
+it's broken you might get fined a million dollars if you do something wrong. And so they are reviewing the code and stuff. And so we can do this high level architecture thing, right, of
+like, hey, here's how the here's how the services are going to fit together and here's the flow. Here's the new endpoints we're going to make. Here's
+the new tables and the like outlines of the queries we're going to do. And this is like going down one more level,
+right? This is what a lot of people do. A lot of people have gotten to the point where they're quite comfortable working back and forth with models to design the
+system architecture. And this is really good. Do you do stuff like this? I'm not at that level. So, you know, right now I'm launching a new startup.
+So, we're like two developers. So, I'm not there yet. So yeah, the the other like asterisk on this right is like
+there are times to vibe code. This is like less about vibe coding than anything else. Like if you are a pre-product market fit startup and you
+have to figure out what's worth building and you just have to like put as much different things in front of customers and figure out what they're willing to
+pay for like this is probably overkill. But if you're on any kind of team even like around like five plus engineers
+where it's like okay we know what we're building and we have people paying for it and we need to make sure that it like is going to be around in 6 months and
+that we're going to be able to maintain it. This is kind of step one. The thing that I think most people skip is
+actually what I call like program design is like actually going before you let the agent go cook. There are decisions
+that it's going to make that you might not like. We see a lot of people actually going one layer down of like
+here's actually what the call stack of the program is going to look like. Actually Dylan Mroy from Cloudflare did a tweet about this recently that's
+really good which is like most of his plans actually end with like here's what the tests are going to look like and
+here's what the call stack is going to look like when we go build this. And again the most important thing we talk
+about is like I use the word leverage a lot. How can you spend a little bit of time upfront to increase the odds that
+the thing that comes out is not going to need a lot of fixes and changes before you can merge it or after you merge it,
+you're going to have to go back and clean it up, right? This basically like the inverse process. I don't know if you've seen the tweet by Victor Talin, but basically it's like
+when the models do a change, ask them while working on this, which choices did you make that you're not confident of?
+Yeah, I've seen this. Yeah. Yeah. So that's basically doing this before the the model runs. Exactly. Yeah. My take is basically like
+once the model has written thousands of lines of code or even hundreds of lines of code, it is harder to change then
+because you're deep in a context window. You've done a even if you use a lot of sub aents like there's a lot of context there and you're already kind of biased
+in one direction by what the model chose in the first place. The sessions that generate these kind of docs are very
+context. Like the model has all the understanding, but it's doing it in a very token efficient way. I have one of
+these in progress. Um let me go pull it up. This is like the conversation back and forth. We're at 43,000 tokens and
+we've already made uh a lot of decisions. We read the PRD in this session and then we've already made a
+lot of decisions on like how this is going to fit together, what the endpoint's going to look like, like what's the flow, what's the actual like
+so this is our program design. Actually, this is just the architecture still. I haven't even gotten into the program design. But the point is like you can
+make a lot of these decisions in a very context cheap way, which means you're getting the most model intelligence,
+right? the deeper you are in the context window. The long context models are getting a lot better, but they are still
+you're still going to get better results if you do the hard thinking in the small in the early in the context window, right? So that's that's like kind of the
+program design side of it. We look at like actually, hey, where are we going to put these files? I'm sure people see like, wait, why did you put that over
+there? It's like, okay, this is one question that you can go back and forth with on the model. And we use these like
+code blocks a lot. We prompt the model to use these things that are like very easy for humans to quickly read and
+decide is this right or is it wrong. We just define the types and the method signatures but not necessarily like
+getting into the implementation details. And the last one we do is like I I recommend people do is what I call like vertical slices. Matt PCO talks about
+this all the time. We I tal I actually did a YouTube with him in like January. We talked about like tracer bullets. Um
+and the basic idea is like models love to build things in a horizontal way. They like to do everything at one part
+of the codebase in each phase. And so like there's nothing along the way here that you can test basically is the
+challenge is like you do the database and the services and the API and front end and like at the end of it you're sitting at like the other side of
+thousands of lines of code and there was nothing to check along the way. So again coming back to our like once the code is
+already written it's more work to resteer and it's harder to kind of like
+pick it up and change it in a big way. And so what we always recommend is this thing we call vertical slices, which is
+like you have these layers of your system, but like when I built code before AI, I would always build like a
+mock API endpoint first and then [clears throat] I would and then I would stub out the front end and then I would get the front end right and then I would
+wire it down and then I would do a migration and then I would do all my business logic and then I would do all my error handling. I have never seen a
+model do this without human getting in the loop and like telling it what order to do the things. But this means that if
+you want to, you can test it along the way either manually or with curl or with browser agents or whatever it is. It's
+like get it working all the way in to end first and then go add logic and then go add business cases. Does that make
+sense? Yeah. Can you say that? I I realize like I never seen a model be like, okay, I'm just going to build an empty version of
+this API endpoint, test if it works, then add 50 lines, test if it works. It's just always like, okay, so this is
+going to require complete front end feature plus 500 on the front end. then we're going to do plus 400. Right? So
+like as you're saying that I recall like this, you know, before I built some stuff before LLMs, not as much as you,
+but like you know when I was like 15 16 and I was building like mobile games, that's how I did it. I just like can I
+get something to work? Okay, it works. Let's make it slightly more complex. Okay, it still works. And then like adding one step at a time.
+This is like how you learn a new programming language, right? You do the hello world and then you change the hello world until it's kind of looking
+like the thing that you want. and you've like pushed the boundaries of the language and you understand the shape of the problem as you're going and like
+I think this is a great way to save a ton of time especially if like you're going to end up reading all the code at
+the end like you might as well check these first two steps and like go check peek at the code as well and be like oh
+I don't like the trajectory this is on let me rest steer it now when it's cheap versus going all the way to the end and
+then like hope that it's right and if it's not it's much more work to change it yeah I mean it's the same in business right like your first customer deliver
+them and do everything you don't like spend spend like, okay, let's spend 10 months designing the perfect Facebook ad
+campaign so then we're ready for $10 million a month. It's like nobody works like that. And so this is all predicated on this
+like thesis of like, hey, you're going to have to read the code for now. They can solve problems really, really well,
+but they're not going to be able to write maintainable code without you in the loop helping. I had this vibe and
+lots of people I talked to had this vibe and I wanted to go figure out why. So I like dug in a lot into like how reinforcement learning actually works
+and like why they can't get the models to do this. I'm sure they're trying and they're working on it and it may be
+solved soon. But like one of the things I focus on a lot is like, okay, if you want to solve problems today and you
+don't want to just sit around and yolo prompts until GPT7 comes out and hope that that's going to be better, then
+like you should understand one level down on like why they're bad at the things they're bad at so that you can
+have an intuition about like where to get involved versus like you said earlier, it's like there's certain things where I just know the model's going to do it well and I don't need to
+be in the loop. So we have this like visualization inspired by my buddy Calvin French Owen who used to work on codecs. So we basically give the model a
+problem. We have it try to solve it a bunch of times. We put the temperature high so it tries lots of different stuff and then we score each of these traces
+like did it actually solve it. Was the code concise? Is it verified from the outside and then we reinforce right? We
+take the traces that did well and we give them we make them more likely to happen by shifting the weights. We take the traces that did badly and we make
+them less likely to happen. And the thing is is like if you look at the problems basically there's no penalty for bad design here all these benchmarks
+like you can look at Swebench multilingual you can actually look at every single problem in here somewhere in here we have yeah so here's like the
+golden patch for this problem. So the actual like correct answer for this they're like short little changes maybe
+like 100 200 lines and then we have like what are the new tests that need to pass after the model solves it. So it doesn't
+have to solve it in the way the human solved it, but it does have to make the test pass that the human wrote, which is a little bit shaky sometimes because it
+means that like depending on how the model implements it, it may be correct, but the tests don't pass. But this is
+really simple like problem from fast language, the Ruby project, which is like, hey, if you call this thing in a
+certain way, you get this like null pointer exception and the stack blows up. And the the human fix was like just
+to basically if it's nil, put in an empty list. And we have these tests basically is like okay after the model's
+done writing the code uh this is the test that should pass. This is the size and scope of some of these problems. And
+so basically like the way we grade this is we have the we have the problem statement and we check out the codebase at whatever commit it was at before a
+human solved this open- source problem on the web maybe 10 years ago. The agent tries to solve it. It builds a patch and
+then we like grade it in a sandbox. And so we see like, okay, did you we throw out whatever changes the agent made to
+the test because I'm sure you've seen agents like basically comment out tests to get them to pass and then we put in
+our tests and then we see do they pass and like okay did we fix the did we fix the new problem and did we do it without
+like breaking any of the old tests then you get a point. So in this case you don't care if that
+specific like open source you know solution is in the training data. So this is one of the problems. I'll show you what some of the newer
+benchmarks are doing. One of the things they do is also like trying to make sure that the the benchmark set is really
+held out because yeah the models have read a lot of code. It is possible that during training the models have actually seen this code this pull request this
+repo already. That's like a totally orthogonal problem too. Like this problem does not penalize the model for
+writing slop. It just doesn't. And so like if a model gets 99% on Sweetbench,
+I don't give a because I know that it's it's not being penalized for slop. So like yes, it's better at problem
+solving, but it's not going to convince me that I can stop reading the code anytime soon. Yeah. If it if it solves it with like
+writing tens of thousands, hundreds of thousands of lines of code, you definitely don't want that in a real business, you know? So even though
+technically it solved that problem, it's like you would probably fire that engineer. Yeah. Exactly. And this is why we get
+like patterns like this where it's like JSON.parse and then it's like, okay, we catch the error and then we log it and then we rethrow it or return nothing.
+And it's like this is completely unnecessary. It makes your code worse. like we get these weird type casts everywhere where it's like it's just
+just trying to get the test to pass, right? And I think like basically the reason why we don't verify quality is because it's really really hard in
+reinforcement learning. You need what we call an oracle, right? A thing that can tell you like verify whether the
+solution was correct or not. And maintainability has no fast oracle,
+right? You can run the test in a couple seconds and you can run millions of RL loops on on on thousands of problems and
+you can do it kind of efficiently, but like basically the cost function of bad architecture is measured in weeks and
+months. And so if you make a bad decision over here and then you keep shipping and you random stuff and then suddenly get an incident due to
+something that happened over here because it just kept getting more like spaghetti and unreadable like there's no
+it's really hard to like back propagate this during a training run to like make the model not do that again. The other
+problem I have with all the benchmarks today is like software is all about discovering problems as you go. You ship something, give it to users, you get
+feedback, you ship another thing and every single benchmark even the frontier ones like the model knows the whole
+problem up front. We have no benchmark that like feeds the model like five features in a row and proves whether
+it's good at like making the codebase not just solve the problem but making it easier to easy to change so that when
+the next thing comes in it can keep working and keep working and keep making progress. I think the big challenge is going to be
+like trusting the benchmark. You know 2023 2024 everybody was like only looking at that but now people are more
+skeptical. It really is like a big challenge to find a benchmark that doesn't get saturated and that's actually useful. Yeah. Exactly. And like I have some
+ideas of benchmarks where it's like okay you have a you have a road map of 20 features and the model doesn't know any
+of the features in advance. It gets them one at a time. I think [clears throat] I would trust a benchmark like that way
+more than a benchmark where it's just like hey go clone all of reddus write 200,000 lines of you know rust code that
+is like reddish compliant and like oh my god I cloned reddus that's crazy like so impressive and it's like yeah but are
+you going to be able to add a feature in two weeks or is it going to be complete chaos? There is a new one from Cognition. There's a couple other ones
+that I that I I mentioned in this post, but basically there's a new one from Cognition that is like better in the right direction. One of the most
+interesting things that they do here is like you still have a history of issues and humans curate the issues and so you
+take the issue and the codebase checked out to the LM goes tries to solve it and we have a verifier like do the new test
+pass? Did it not break anything? But then we have like a there's like a golden solution and we basically have an
+LLM that says like okay look at what the model wrote and look at what the human wrote and decide if they're like
+functionally equivalent or like did the model miss some nuance detail like even if the tests fail because they're not
+shaped exactly right. Did it solve it? Did it solve the problem? And so this is like a little bit more flexible in terms
+of like we don't penalize the model for writing code in a different way that the human did which is interesting but
+doesn't solve the slot problem. Uh but the really cool one is we have this LM quality judge right uh which is like
+okay cool we have a bunch of part of the data set is we have a bunch of quality rules of like hey if you're running C++ you can never log like this you have to
+log like this and this LM looks at the rules in the patch and says okay like thumbs up thumbs down did it follow the
+rules this is all things that like people are doing in their software factories today the most novel thing it's not like novel in terms of software
+engineering but basically they look at the test the model wrote and they say cool let's remove the model's patch and
+run the tests against the prep patch code. Do the tests fail there? And if they don't fail on the pre-patch code,
+then that's like evidence that the model wrote tests that don't actually test anything. They're just like testing
+So basically to explain this like in a simpler way, you want to bake in the other less obvious things that like you
+can label as taste. You want to extract words from the word taste which is not helpful into like numbers and tests and
+you know measurements. Exactly. Yeah. It's like how can you give deterministic feedback or something
+a little more like LM quality judge is obviously not deterministic but if you keep it very focused and say like say
+yes or no did it follow all the rules you can get a little bit more of a stable scoring than just the like did it
+just pass the tests. So like we're moving in the right direction but again like the model judging code quality I
+feel like can only go so far. Like the whole point of why models keep getting better and better at solving coding
+problems and why Fable is gamechanging and why like the sole like 5.6 and six family models are gamechanging is like
+they did get better at solving problems but it's because of what we've done during RL. We've just like the RL runs
+and the problems have gotten more sophisticated and uh if the model could tell good code from bad code I would
+expect to know that because it's writing good code in the first place. So, like if you write something with Fable and
+then you have Codeex review it, it's like, okay, if we have to do this review at all, like it does raise the floor.
+Like throwing more tokens at the problem will probably catch all the small stuff. But I I don't know. I This is my like
+the the thing I can't quite like prove, but everybody I know has this vibe, which is like if the model knew what
+good code looked like, then it would be able to write it in the first place. We're all using the same freaking models. I mean, like like you said earlier, it
+really depends on the state of the business, right? Because like I know people who can get completely oneshot it and just like spend seven months
+building the perfect system, not get a first user. I also know people who like you know can do the business part, can
+do the marketing part, but then like you said when it comes time to scalability, maintainability, they get completely
+because they, you know, don't put in the effort and they have no idea what's happening. So I think it's like
+okay, you have product market fit, you have, you know, enterprise customers, you you want to make sure that you don't
+lose their trust, you don't get sued, all that stuff, right? If you don't have product market fit, you need to move fast. You can rely on the models a bit
+more. Still try to architecture it in a way that like scales. Still try to keep your grip on the codebase. But like
+ultimately, if you have zero customers, first figure out if you're building a thing that's even worth building. Yep. 100%.
+By the way, I packaged the exact program design system that Dex uses into a single bundle. It's available as the
+first link below video. It's completely free. Go grab it now. There's this thing that like Jake Nations who was like at a
+time he was you know the number one cloud code engineer at Netflix is my impression. I don't think he ever said that but that that was what it seemed
+like. He was kind of like leading the charge on aentic coding way before it was like super mainstream. And he has
+this point of like as a software engineer you have a lot of hardearned intuition whether it was through AI
+coding or non AI coding. you know a bad pattern when you see it because you've been stuck trying to fix it at 2 in the
+morning or you spent 3 days like redoing it so that it actually is like easy to maintain and stuff and like if you are
+not leveraging that you are leaving money quality velocity the ability to
+ship high qual like stability you're leaving that on the table and so my whole thesis around all of this is like
+how can we take the like entropy tangled like set of like what are models good at
+and what are humans good at and what can we trust models to do and what can we not and like separating that out and like what is the right workflow that
+allows you the human because we we agree there are things the model can't do without a human. How do we organize that
+set of chaos into a set of steps or ideas or practices that let you bring your intuition to leverage without like
+slowing down like the idea of yoloing a 2000 line feature and then just reviewing all the code at the end. We
+all know that sounds terrible. Nobody wants to do that. So, how can we how can we how can we like pull the intuition out earlier on in a way that is like
+easy, pleasant, fun, interesting, whatever it is for the human and then
+letting the model cook on the things that the model is good at. I think my biggest u like contribution to this is trying to get more things
+into the codebase because traditionally the codebase is all about the code, right? But yeah, as you said like the models are getting
+better and there's a lot of different things that like normally would be like understood like this is our marketing
+strategy. this is our public image you know all of the engineers understand it but you know the models don't understand
+it so like personally I'm trying to every single project even the small ones just like /doc/ ADR and document all
+ADRs explicitly and like no this is a decision we're launching the pricing that way no we're never going to change
+the API schema if there's a massive change we're going to ship slv2 to not break the contract you know and then
+another thing is /doc/ external for example what is my versal environment variables like you know obviously not
+the values use but like what's in there you know what does my payment processor setup look like which emails am I using
+for testing where do customers contact with me like all the external things to the codebase so that if the models need
+to find them they are in the codebase as clear markdown files and they can use them as context
+yeah and this is a really interesting like idea of context in general is like I I have found and like the way our
+product works is like it's all files on disk right when cla's working with plans or technical design docs or whatever it
+is it's just using the file system like the thing that it's really really good at. And then under the hood, we have
+hooks of like every time it edits a file, it syncs to the cloud and notifies the team and people can put in comments and the comments get pulled back in like
+all this stuff. But like if you can make the environment like close as possible
+to what the model is good at, which is like read, write, edit, grab, bash, then then you've like made it very like
+efficient for the model to get that context. So pulling all that stuff into the file system is like super super
+smart. I'm I'm sure you've been doing this for a long time. Like now it's kind of obvious, but like yeah, the that idea
+of like how do we put as much as possible in the codebase so we don't have to be like, oh yeah, well you got to turn on this MCP server and here's
+how you check the most recent issues. Like all those instructions about how to get the context are wasting like
+attention in your model while it's trying to do work versus like you can just do this deterministically. You can
+just literally every time you start a session, you have a hook that is like okay pull the last 10 century issues in case we need them. That's free. That's
+literally free. It's like code that runs. It costs, you know, you know, CPU cycles, but it doesn't cost inference.
+And you should save your inference for the things that the models like are really really like needed for, which is like reasoning through these complex
+problems and working with you to like come up with a solution and then spit out all that code. So, let's talk about more context
+engineering because we're kind of learning with this topic and you're one of the first people who coined it. So, I guess uh how does that changed since
+2025 to 2026? Yeah. So, I mean, I'll I'll I'll pull the screen share back up. Um, okay. So,
+we wrote this paper in in April, March of 2025, uh, about 15 months ago called
+12 Factor agents. And this was the first time that we ended up talking about context engineering. And we basically
+had these like 12 different things about if you are building agents, these are things you should probably think about.
+I would say at least nine of these are kind of still relevant. Some of them you kind of get for free and they've just
+been like adopted into most of the har harnesses. But like here's the the most
+interesting one, the one that popped off the hardest was like own your context window. And basically this idea of like
+everything that you do when you work with LLMs, whether you're writing a script that builds a prompt and sends it
+to the model and parses the output or you're using a coding agent and you're like, you know, you're a it's assembling
+its own context window, but you're telling it where to get stuff is like rag and history and memory and prompt
+engine. All of these things are just like tokens in tokens out, right? The only
+way to get like better results from the model is to put more tokens into put the right tokens into the model. Not more
+tokens, but like put the right tokens into the model. That's how you increase your chance. And so like understanding that the only like primitive that you
+have to work with is this context window, whether it's like a list of messages or just one giant prompt,
+right? There's two ways to do this, right? You could have this like system user assistant tool. Uh or you could
+just literally have a system message and then the user message has some other formatted version. But your goal is like when you're building these context
+windows, especially for agents, is like and like obviously you wouldn't do this today because like caching has become really important and this is going to
+bust your cache every time. But like with agents, what's really what's really important is just like understand like
+what's going into your context window and you can do literally anything you want. Um and so you can literally just
+model this as state in a program. You can just turn everything that's happened into a prompt and dump it in. And like
+if you understand like literally down to the token level that like oh if I put JSON into my context window that's
+different from putting XML into my context window and it's more token efficient to do XML. Uh it's like
+however you can convey the information to the model in the most like efficient
+uh like basically like you want to make sure you don't have any wrong information. You want to make sure you're not missing information and then
+you want to make it as small as possible in that world. And this applies just as much to building like an AI pipeline in
+your backend to like how do you think about using a coding agent? And so this was April 2025. And then in like June,
+Andre Carpathy and Toby Loki decided that they were going to talk about this. And uh I don't know. I still haven't get
+I tweeted Andre every once in a while. Uh let me see if this tweet will open up. Um yeah, here it is. I every time
+someone tweets about context engineering, I I come and tell them like, "Oh yeah, this is from a while ago." But he never he never replied, so
+it's fine. Andre, I forgive you. It's fine. Uh you couldn't have known. Uh maybe it's a Newton liveness moment. Um
+actually Jeff Huber from uh from uh you know Chroma DB. Yes, I know it.
+Yeah. So he also uh posted the words context like he posted a tweet in like
+two weeks after 12 factor agents came out and I'm pretty sure you didn't read it. It was like he came up with this. He just posted two words context
+engineering and that was that was the whole thing. So it was like I think it was like a lot of people were kind of coming to these ideas around the same
+time. Um but yeah I don't know that's like the the history of it. Yeah I mean that I think that same
+concept appeared through history like multiple times of science and technology where like multiple people came to the
+same realization at the same time because they're you know thinking about the same problems. Uh but yeah, I mean I think like right now how you thinking
+about it because I think the biggest, you know, it's like the curve of like the the the mid like the midweight
+curve, you know, the people who are complete beginners, they're like super short like fix this and they don't even provide a screenshot. They don't even
+provide any logs. The people in the middle like spend 30 minutes writing the perfect prompt and the people like who
+are like logged in, they just like provide one screenshot. It's like, "Oh, it's in that file. Just read that file and fix it." Right? So like
+yeah, how is the context engineering now? Is it really just like trying to as high
+signal as possible with as little tokens as possible to not limit like what the model can do because like maybe the
+model comes up with a better solution. How are you thinking about it? Yeah, I mean it's like the the steering side of it is interesting. You're
+talking about like you mentioned one thing that's interesting which is like okay you have you you can tell the model how you want it done. Uh, and that's
+like more likely to hit what you exactly what you wanted. And if you don't tell it how you want it done, there's a
+broader realm of probabilities, right, of like, okay, you might do it in a terrible way, but it also might figure out like a better way to do it that you
+never would have come up with. And I put that separate from context engineering because that's more just like how are you prompting and like what are you open
+to? Um, but I think a lot of the a lot of the concepts in in context engineering are still really relevant.
+This was an accident. I did not set out to like most things in AI are completely complete after like 6 months.
+But I think this one is tied like context engineering gets into like the physics of context windows and like how
+transformer attention works. And until we get like post post transformer architectures or linear attention, it's
+basically always going to be like the the smaller and tighter and more specific you can keep your context
+window, the better results you will get. Now the the floor keeps going up, right?
+And so like I don't think super deeply about every token in my context window unless I'm doing something really really
+hard. Right? It's like you said if I'm doing a a UI change I'm literally just like hey here's the thing I want like I
+trust codeex to go read a lot of stuff and figure it out. And if it reads a couple extra files that weren't relevant like that's fine. That's like it's
+perfectly capable to go to 200 300k tokens before and and not kind of like crash out on me. Um, and this we talked
+about like the dumb zone a little bit uh was our context our concept and like I actually came up with this. I was
+sitting in the office with a bunch of engineers who were like a little bit new to AI coding. We were doing like a like a training session. I was sitting down.
+I was like I was kept pointing out I was like okay cool. We're at this was with like Opus 4.1 and then Opus 4.5. It was
+like okay we're getting around 100,000 tokens about 50% of the context window 120,000 tokens. It's time to like take
+everything we're doing like compact it into whatever document we're working on. and be like, "Hey, cool. Take everything
+we talked about, put in a dock, and then basically like start a new session off of that dock, and like keep working."
+And the the term I came up with was like, "Okay, cool." Like, the model's in the dumb zone now. That's why it's
+that's why we're not getting good results. And again, like this is more like I think of this as training wheels. Like if you have no LLM intuition and
+you haven't worked with agents for 70 hours, you can figure this out in about 3 weeks of talking to Claude for 70 hours a week, you can kind of figure out
+like, "Oh yeah, no, this is off the rails and I should start over." uh just by trying it a couple times. So I'll
+regularly go up over 200 300k tokens depending on what I'm doing and like okay I'm too it's like I'm too lazy to
+go like curate this into a handoff and then go start a new session and like compaction is getting a lot better as well these days. Yeah.
+Uh so it's less of a like you must stay under 100,000 tokens or you're that's
+the peak of the midwick curve, right? Is like the the other side of it is like just do what works like you have the
+intuition. you know what's going to and if it's not working one of the things you can try is start over and like reset
+the problem. Yeah. I mean the two biggest faults is like as you said you know the end just defines the means like just if you can
+get the result that you want it and okay maybe use this model use that model use a different harness you send a few extra
+prompts. It doesn't matter. There's many people who just spend like 80% of of the time every single day building tooling
+and 20% like doing [clears throat] their actual work. Like my goal is to not be that person at all. Like, you know, if
+if I have this sub-optimal setup and someone has like one more keybind than me, I'm fine with that. I just want to
+build the thing. But, uh, the second thing I would say is like the human, it's the same in the human. Like, for
+me, like I I can easily find myself working for 3 hours on some problem, then I go on a long walk like I'm like,
+man, this doesn't matter to the business at all. And like that was my like dumb zone. Yeah. Yeah. Humans have a dumb zone. If
+you're tired, your results actually it's really funny. Uh the other metaphor I really like is uh Calvin French Owen the
+guy he was on Codex he founded segment he he his metaphor is like the context window is like a it's like a student
+like when you're sitting and taking an exam uh you kind of go through like the first half and you're like okay cool I
+got plenty of time let me think let me work out these problems and then you get like halfway through and you realize you have 5 minutes left and then you start
+like rushing through everything and like you'll see models do this especially like Opus 45 and Sonnet 45 they had this
+thing of like context anxiety of like they they would they would realize the context window was getting small and so
+they would start cutting corners, they would like scramble to do stuff and then they would just like give up.
+Yeah. I mean that's the biggest problem I would say is yeah when when when when you get
+tired and lazy then the results go down for humans and for agents. Uh and I think that's my problem with all this
+like token maxing stuff. What you said exactly is like I don't need the most efficient setup. I need to care about
+the outcomes and the results. Do you ever read a book called the goal? No. Okay. Okay, so this guy, Eli Goldrat,
+wrote this book in like the 70s called The Goal. And it was kind of this idea of like it's it's this story of a a guy
+who's trying to like save a factory and like I guess the way factories worked in America in the 60s and 70s is you had
+like all of these like stations, right? And this is going to get into software factories as well. You had all these machines and it's like cool, a bunch of
+raw materials go in and out comes a car or out comes some part that gets shipped
+to another factory to make a car, right? And uh basically what you would do is you would hire a bunch of MBAs and they
+would like get assigned a station and they would max the utilization of that station. They want to make sure like if we're going to turn this thing on, it
+costs money to spin it up and every minute it's sitting idle, we're wasting money. Uh, and so everybody would like
+optimize their stations. And what that would lead to was like, well, different stations had different like times it took to process stuff and there would
+always be some bottleneck. And in front of the bottleneck, you would have a bunch of work in progress like stacking up, which if you're running a factory is
+very expensive to store work in progress. And so, uh, it's basically this story of like there are
+inefficiencies that are not bottlenecks. and the idea of like token maxing
+because of the subscriptions and it's just like I need to spend all I need to exhaust my quad stuff every five hours
+and end up in the hospital. Yeah. Oh, that that that was crazy. I don't know if I fully buy that. I don't
+know if that was a meme or whatever, but I hope everybody's okay. Uh but yeah, that's the kind of the software factory
+token like how much can you spend? How much like stuff can you extract out of the machine uh and turn it into code?
+And like there's something to be said for like you know try to push the frontier do the biggest most ambitious
+thing possible and see how it goes. Uh but then you should probably walk it back from there because it's like if the
+bottleneck is code review like adding more coding agents isn't going to solve it, right? The bottleneck is like you need to figure out how to solve the
+actual bottleneck versus like okay my agent station is really efficient and my deployment station is really efficient
+and every time I make those faster we not delivering value faster because the thing that matters end to end is like
+value delivered to users. That's what gets people to pay for Yeah. I mean it's it's like the you know
+the best example who does it right is like is Elon where he always works on the biggest bottleneck and then like he doesn't mind if somebody else in the
+company does something else even though they're probably not going to do it on his level. If it's not the bottleneck that you know doesn't matter like if
+they do it on 80 80% it's fine. He needs to work on the bottleneck and the same thing applies to like you know building a software company or a software
+factory. It's just like if you're improving your multi- aent setup with like fancy routing and delegation, cool,
+but like you know, production is down or something like you know, we have a we have a joke in our office
+that is uh stop playing with your coding agents and get back to work. It's like it's so easy and it's so fun to build
+the thing that builds. I mean, this was me even before AI. I was my first job out of college. I was working at a like
+a social media analytics company. I had a lot of data, I had a lot of good engineers. Uh, but I noticed that like the most important person in the company
+was the guy who built the dev platform, the way that you shipped, the way that you deployed your like sandbox environment to send a preview to a
+product manager, the one who like would like knew how to debug the database, not the database itself, but the rollout procedure for it. And I like since then,
+I've just been obsessed with like every time I'm at a company and the CI/CD is slow, I'm just like, "Oh my god, we need to make the CI/CD faster. We need to
+make the cycles faster. Oh, releasing once every two weeks. We need to release every day." Like I've been obsessed with I've been obsessed with software fact. I
+I didn't know that's what they were called, but I've been obsessed with this idea of software factory since, you know, the for the last 12 years or
+whatever, however long I've been working, 15 years. And uh I would often have be on the other side of this
+conversation of like, Dex, I need you to stop trying to make CI faster and just go ship the tickets that I gave you. Uh
+please, like I would have this conversation with my boss like multiple times at multiple different companies and I was like, "No, we have to build
+the thing that builds the thing because that's going to speed everybody up." But it's like I think the hardest lesson is like there are inefficiencies that are
+not bottlenecks. And you may see things that like make your skin crawl. You say that's terrible. Why are we doing that?
+We could be doing it so much better. And like if you care about entrepreneurship and building things and all of this is
+like the most important skill you have is like zoom out, ask yourself, is this a bottleneck? Can I just hold my nose
+and like focus on the thing that really matters? Yeah. as you get like more successful whether it's in business or in you know
+software you will have fires burning and you need to be comfortable like letting the fires burn it's like which of these
+is actually the wildfire that's going to burn down the whole city and which are just like some small embers that you can
+leave to the side and leave for later it's like okay cool yeah do we go do we go shut off the gas leak in city hall or
+do we go put out this fire over here it's like well that one's you know it's not burning yet but if it does it's it's
+like it's almost like also like expected pain right it's not it's not just like Okay. I don't actually know. And this is
+the hard part is like holding all these probabilities in your head of like what's worth working on is uh is is uh
+is a crazy. Did you ever play uh did you ever play Starcraft? Were you ever like an RTS guy? I'm too young for this. [laughter]
+The f the second one came out in in like 2012. I don't Anyways, I mean I I played World of Warcraft, but
+I feel like Starcraft is like one generation before that. Yeah, it was and it was a different Well, so like Starcraft 2, I think, came
+out in 2012, but it's like Okay. It's a game that teaches you to make hard decisions with incomplete
+information and you are constantly making hundreds of decisions a minute and like you don't know everything. You
+don't know, you only know what you've seen. And so, okay, I saw him do that and I saw this over here. So, that means there's like a 10% chance he's doing
+this and a 30% chance he's doing this and a 70% chance he's doing this. And so like my best thing is like okay, if I do
+this, it has a 40% chance of beating this and a 20% chance is just like this this game of like stacking probabilities
+on either side. Anyways, it's uh it's it's it's a good game. I don't recom
+uh yeah that skill of like knowing what you've seen and making bets and and and
+making I mean I don't know founders talk about building as like investments in tech debt. I think uh I was talking to
+somebody at dinner last night. He's like we are not making investments in our infrastructure. We are not making like
+we are we are gambling. We are all gambling all day every day trying to figure out what's my highest like
+expected value. Yeah. Or like you know should I even be building this company? Will I spend the six months on it? Will that be
+completely terrible bet in six months? Will that just be replaced by open anthropic? All of these are like bets you know and you cannot make too many
+wrong ones or it will be irrelevant. Well are you having fun? I am.
+Yeah that's that's a good start. I mean, if you're having fun and you're learning, then it's like, okay, cool. Like, so so what? I mean, crazy things
+never got like 20 years ago, there was a hundred startups that exist today that every I guarantee they had, you know,
+nine out of 10 of their invest investor pitch meetings. People are like, now Google's just going to do this. And guess what? Google did.
+Yeah. Yeah. Yeah. I mean, you can see it even um even this generation. I talked with Magnus from browser use and everybody
+was like, you know, Enthropic is already building this. There's no point. And you know, they managed to do it better than Anthropic. And that's literally like a
+year, two years. So yeah, even in today's today's time, like most most of
+likelihood is these big companies are not focused on your small niche idea and you probably still should build it if
+you really want to build it. One of my favorite like sound bites on this is like you're not actually competing against uh Google or you're not actually
+competing against Antropic, you're competing against a product manager at Antropic and like okay yes very very
+very very talented people are there like you're not it's but like especially the Google version of this is interesting.
+He was like, "Okay, there's a there's a team inside a large org that has a lot of rules and red tape and like things kind of move slowly and it's like I
+don't care how much money they have or how much distribution you have. A a a small founder and and a small team
+who really gives a can out execute most teams inside a giant enterprise. And like what Open AI and Antropic have
+done and I've talked to a lot of people who who are former employees and work there is just like oh they've done a very good job of trying to keep that
+startup energy and help people move as fast as possible and hire really really like Boris and Cat are insane. They're so they're so good at what they
+do. So it's like okay that's a PM that is like a little bit a little bit uh you know I would think twice before getting
+in the weeds there but it's it's very easy to just be like oh it's not worth building anything. The labs are just going to win. And like I don't know
+that's not a I like to build things in the vein of like they're they're aligned with the world I want to live in and the
+world I want to live in is a world where like you have large companies and small companies and innovation can exist and
+like we can all solve problems together and like I don't know I'm friends with all the coding agent founders in San
+Francisco. We're all competitors but like it's a huge market and in my mind it's like it's not founder versus
+founder. It's like founders versus the incumbents maybe or like founders versus
+people who hate innovation or something. I don't know. Yeah. Yeah. Exactly. The people who people who hate technology and like like
+stuck in the past. It's like I think it's like in the AI space the more I you
+know the more people I talk to I realize it really is are you a true true believer or not? And so many people are here because of like this is the next
+you know wave. This is where money is. This is where you know hype is. But like as you talk to people a lot of them are
+not really true believers. they're like don't truly believe in technology, right? And like even when like a you know new model comes out or there's a
+new tool instead of like testing it, embracing it, giving it a shot, they're like instantly like ah it's another one of these, you know, or oh it's too
+expensive this model. It's like yo like guys were I tried it a year ago and it I tried it a year ago and it sucked like oh well.
+Now if you want to actually implement everything that me and Dexter talked about the entire program design system
+that he invented is available for free in the first link below video. So go ahead and click on it. Just enter your
+email and you're going to get it received on your email again completely for free. So go get it now. Um yeah, I mean it's it's a maybe a good
+note to like zoom out on and maybe maybe maybe like start to close out on, but like this idea of like I don't know. I
+was in an event last night. Um it was like Dwaresh interviewing Dr. Fay Lee and then Michael British from OS came
+out. He was interviewing Dark Daresh for a bit and like I don't know. We're all here in San Francisco and like it's very easy to get
+sucked into like what's the what's the coolest thing we can build? what's the hardest problem we can solve? How how how dope can we make it? How fast can we
+go? And it's like I don't know. Grish did a good job of kind of pulling us up a level of like well actually like AI is
+the one of the most unpopular things in the world right now. Uh slightly less unpopular than AI was like ICE and
+slightly more unpopular than AI was like the Iran war, right? Uh but it's down
+there and like most people are distrustful of it and like I think it's it's important as builders to kind of
+like zoom out now and then and just realize like hey look we need to think about how this technology works in the I
+mean Dark is talking about like hey in five and 10 years there's no labor like there's nothing to do like how does the
+economy work like do we need to go talk to PhD economists and think have have these people thought about like how does
+the world function in in that in that new paradigm and like these are things
+that like nobody has answers to and until you give someone a compelling someone who's not technical and not super AI pill until you give them a
+compelling answer is like this is how the world will work and it will be good and everybody will win other than the
+very basic like hey industrial revolution life got a lot better I mean it got worse for some people in in lots of ways but like overall we have more
+abundance now than we had in say the 1500s and I don't think that's satisfying enough an explanation for
+most people. Yeah, people care about am I losing my job or not? Yeah. Am I going to be able to feed my
+family, whatever it is? And uh so I I I think it's still I mean it's easy to get stuck in it if
+people especially like, you know, on Twitter or San Francisco, which I still need to visit San Francisco. I've never been. Uh I think
+Oh, man. Yeah. I think I'm going to visit in like late September, maybe early October, but
+uh it's easy to get stuck in the bubble, right? Whether it's on Twitter or in SF, but like most people, they have no clue.
+the only AI they use is like the Google AI search and they don't want to lose their job, right? So, if you talk about
+like, oh yeah, we're going after labor, like they will instantly hate you.
+I mean, I don't know why they keep saying that. It's like I guess it's better to say it and be wrong than to not say it and be right, but uh yeah,
+we'll see. I don't know. I I I kind of have this theory about like how to think about AI and like there's there's lots of like crazy things that you could
+panic about, right? There's like, okay, if we hit this like singularity and there's complete abundance and no one
+has to work anymore and everything's just great, like that's one world, the like incredibly good version of the
+world. There's also like a percent chance that like we screw up alignment and we all get like we're all living in the plot of the Terminator and the
+machines are just trying to like wipe us all out. And then there's like this this like of like how bad the outcome is. And there's
+like this middle line going through like the center of it of like things just keep getting better and they might get better 2x faster or 1.5x faster every
+every year, every month or whatever it is, but it just kind of stays stable and like nothing too crazy happens. We don't
+get completely destabilized. And whether you think the good scenario is
+30% or 3%, whether you think the bad scenario is 30% or 3%, it's like the
+only world that is actually makes sense to plan for I think is like the middle path. Because if either of those other two
+things happen, like nothing you did today really matters unless you're at a lab working on alignment.
+Yeah, I think that's a that's a very valid point and I think we can wrap it up on this point. I want to be
+respectful of your time. We we already crossed an hour. This is super fun. Yes. Uh, where should people go? Where
+should we send them? Uh, follow me on Twitter, uh, Dexorthy Dx Hoy, and check out human layer.com.
+Um, if you want to learn how to do this, I'm going to link both below the video. Uh, again, thank you for your time and have a great day. inserted.

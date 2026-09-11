@@ -1,0 +1,590 @@
+Okay. Hello everybody. Uh so my name is
+Ian Valentine. I'm a developer relations
+engineer at Google DeepMind.
+Hi folks. I'm uh KP Sony, a software
+engineer in DeepMind's AI platform team.
+Uh and we're going to do an Agentic
+panel today to talk a little bit about
+uh how DeepMind thinks about Agentic
+software, how we build kind of our own
+stacks. Um we're going to start very
+briefly by just showing a quick demo and
+then we'll go into like a like a
+discussion about some of the stuff that
+KP works on. Um and hopefully we can
+just you can ask lots of questions, find
+out all the things you want to know
+about how Deep Mind and Google think
+about agents and uh yeah, let us know
+your thoughts as well. So, quick show of
+hands. Who's actually used anti-gravity
+before as a tool? Okay, so like four or
+five people. Um, I just want to show you
+one quick thing because one of the
+things that we have uh in anti-gravity
+is a lot of people know that it's like a
+visual studio style interface, but they
+don't actually know that it actually has
+a whole uh agent manager and agent
+manager framework behind it. So, you can
+run and spawn multiple agents working on
+different projects. um and it's
+integrated into the IDE but it's also
+again kind of like an agentic platform
+in itself. So you can do things of I've
+got this project here and you can have
+this chat panel on the side and I can
+just say like uh build an example of
+this spec and then I can give it a
+particular file. Uh let's do the spec
+file. Let's just implement that one and
+I'll send that off to flash. Oh,
+experiencing errors right now. Let's
+restart. Should we try that? I am
+connected to the Wi-Fi. I'm pretty sure
+I am.
+Yes. And if you're not connected to the
+Wi-Fi, you should use the Gemma models
+instead. That's my plug. Uh so, let's
+start that up again.
+And hopefully I can do the same thing.
+build
+uh build the spec
+marked here.
+There you go.
+Let's see whether we get it this time.
+Okay, there you go. So again, the model
+will just go away thinking uh on the
+side there. And hopefully what it should
+do is it should have a look at the spec.
+It should analyze it and it should use a
+bunch of its own internal tools to
+decide how to do that. It's actually
+found that there are already existing
+files that I have built. It might even
+tell me that it's already done it, which
+is interesting. But the tool itself has
+like built-in to-dos. It has a like a
+planning system. And what it's just done
+here is it's thrown up a browser. So it
+can actually check uh how the
+applications run. And this is also is
+controllable by um uh by anti-gravity
+itself. So if I just do that, if I give
+it two seconds, it should take control
+over the browser and it should actually
+try and run. So what it's probably doing
+now is it's probably looking at the
+implementation already to see what's
+actually already done and it's going to
+then analyze it. Should we just have a
+quick look see what it's actually done
+there? Uh let's try that again.
+It'll pick up. So you see a snag. So it
+wants to try and analyze it. Oh uh one
+thing that it can do is it can actually
+inspect the DOM. So it can look at like
+the actual web page itself as part of
+that and give and feed that back. And
+when it finally finishes doing the task,
+it'll give you like a report at the end
+as to what it was able to achieve and
+what it implemented. So you can then
+review. It can also capture, for
+instance, like a a screenshot or like a
+video. So if it's like an interaction,
+if you say like add this feature to my
+web page, it will go through and then
+actually try and run it. I don't know
+how good it is at playing games, but
+we're about to find out. It's either
+going to try and play the game or uh
+have a look see what it's doing at the
+moment. Hasn't loaded it yet.
+Let's go back. Okay, we've got an
+implementation plan here. So, this is
+what it thinks it should change about
+the file. So, what you can do is you can
+just go in and you can like edit a line
+and say like actually I want this
+different behavior or that's not what I
+meant at all. So, it kind of gives you
+that human in the loop feedback and then
+when you're done you just say proceed
+and then it will go away and do that. Um
+while we're waiting for that to happen,
+do you want to say a little bit about
+what you work on and like how this kind
+of relates to the your kind of
+day-to-day job?
+Yeah, sure. So, um one of the things I I
+worked on a few months ago was the the
+deep research agent which is now
+available via the the interactions API.
+Um and so that's that's been great. But
+as we continue to iterate on that, my my
+focus has turned now to making best use
+of of this anti-gravity harness
+internally. And so of course that that
+applies to scaling it for for all of the
+coding we're doing. And you know we have
+a gigantic mono repo. So it's pretty
+complex. Um but now starting to think
+about how we generalize this to a
+variety of other use cases. So
+potentially deep research itself rather
+than passing around huge huge blobs of
+of text from from the searches that have
+been done, why not have the different
+parts of that pipeline collaborate in in
+a shared file system? Um and so yeah,
+that's that's really been the focus for
+me really um tightening up this harness
+and and making it excellent at at not
+just coding but a variety of other tasks
+too. And do you have any interesting use
+cases for like how people within Google
+or Deep Mind are kind of using it at the
+moment? Like what kind of what kind of
+things are they doing with with the
+agents in Deep Mind?
+Yeah. So so there's a huge amount that
+that's been going on. Um we have quite a
+few exciting things that you'll probably
+learn more about in a few months at IO
+which I can't go into too much detail
+about right now. Um but at least
+internally there's been a huge um amount
+of focus on on building up a huge
+library of of skills that that enable
+folks to to do their job better. Um and
+you know skills are great but in an
+organization as large as as Google um
+there's a risk of skills really
+sprawling out out of control. Um and so
+that's that's a big area of focus for us
+right now is um improving those skills,
+making sure that only the best ones uh
+survive really almost Darwinian in
+nature. Um but it really is helping
+folks to to deliver good code way faster
+pace which which is obviously awesome.
+Awesome. Thank you. Uh so you can see
+this little blue bar around the edge at
+the moment. That's the uh anti-gravity
+taking control of the the game. It seems
+to figure out how to start the game. I
+don't think it knows what the controls
+are, so maybe it might end up looking
+those up. Um, but yeah, this is so this
+is what it edited. Uh, the file that was
+there before was actually generated by a
+different model. So, I can tell you it's
+not even the same game. It's completely
+rewritten it from scratch. Um, based on
+the spec we gave it. Um, and then what
+you would get at the end, oh, I can see
+that it's like actually looking at the
+DOM, looking for any errors, trying to
+figure out how to actually use it. You
+should get a video at the end here.
+Uh, oh yeah, this is a a scratch pad.
+This is like its notes that it's writing
+as it kind of goes through and does the
+task. So you can like you can actually
+get a bit of a trace as to what
+behaviors it's trying to figure out.
+Again, you can go in and you can review
+these things. If you don't like what
+they're doing, you can kind of interrupt
+it. So in terms of like the workflow,
+this is kind of I guess pretty common to
+like a lot of different agent harnesses
+at the moment. Um but this is how we
+kind of think about using using it with
+things like Gemini models um as well so
+that we can use it for our own
+development. Um I will close that off
+now.
+So I guess one big question on my mind
+related to like uh agents how do we do
+things at kind of Google scale. So if we
+think you know research deep research is
+a feature within Gemini app but then
+also for everyone within Google to use
+it like what kind of challenges come
+along with that kind of scaling of
+agents.
+Yeah. So I mean the the thing that's
+kind of top of mind for us at the moment
+is um how token hungry this this stuff
+can be. Um and so as you can imagine
+just just managing the quotota on a on a
+per user or or per team basis is is
+really quite um important. Um, and so
+there's a lot of work we're doing around
+making that uh more efficient and and
+and lower cost. Um, and I think where
+Ian and I were chatting before and um I
+think what's going to be really
+interesting for for folks like
+yourselves is is mixing and matching
+between models like Gemma 4, which which
+are effectively free from a quotota
+perspective, just using your whatever
+GPUs or TPUs you have. Um and then you
+know using the more advanced uh models
+for for specific uh components of the
+agentic system. Um and so also
+evaluation as well is is a big um thing
+we're focusing on at the moment. Um
+particularly with these really
+complicated uh workflows, how how do you
+actually evaluate that it was
+successful? How do you minimize the cost
+of that? So looking into things like
+mock TPUs so that you know you can test
+the harness itself and and the agentic
+flow but not necessarily using up a ton
+of uh TPU hours.
+Yes, because I mean I'm sure people are
+aware of this but like definitely
+limited in that capacity at the moment
+within the world trying to get enough
+compute to do a lot of this stuff. Just
+quick show of hands from the room. Who's
+who at the moment is either building
+their own agent architecture or harness
+at the moment?
+Okay, fantastic. For so just quick
+question like what kind of scale are you
+looking at? Who trying to who are your
+customers? Anybody?
+I'm ready for myself and also
+okay
+Gotcha. Is anybody using any harnesses
+off the shelf or you kind of built your
+own ones? Like what's the general vibe?
+Nice,
+nice, nice.
+And how many users you do you expect to
+be able to scale that to?
+Okay.
+Wow, that's some scale.
+Yeah, that's the Yeah, the challenge,
+too. I'm sure that's the challenge for
+us, too. How do you stop like one user
+from well actually okay I'm going to
+turn that into a question. How do you
+stop one user from taking down a whole
+system by spawning multiple instances
+and multiple because I'm sure that's
+like you know the more we get better at
+doing this these tasks and like we've
+got power users kind of spinning stuff
+up and they've got their team of 100
+people like working for them 100 agents
+like how do we kind of manage like the
+per user like behaviors if you see what
+I mean?
+Yeah. Yeah, no, it's it's a great point
+and and like I said earlier, honestly,
+right now it's kind of brute force with
+the the quotota. So, we have we have
+some real power users at Deep Mind and
+ultimately it gets to a point where it's
+like, okay, you got to just stop right
+now. Um, but you know, in general, I
+think that raises an interesting point
+about how this stuff is going to be
+priced in the future as well. like you
+know you saw um Anthropic blocking the
+uh the open claw um stuff um because
+these these agentic systems are so token
+hungry and the subscription model
+doesn't really work for that um and so
+yeah I think that that's really top of
+mind for me as well right now how to how
+to mitigate that
+yeah I I always used to joke when I
+joined Google that you know you've got
+all these resources you know available
+in data centers to use for different
+projects like how do you know when too
+much is too much and one My colleagues
+once told me, he just said, "Oh, they'll
+tell you." And I'm like, "Who's they?"
+And yeah, sure enough, there's people
+monitoring these things 24/7, like you
+know, looking at spikes and graphs and
+all our S sur team and and they do just
+like reach out to you and say, "Can you
+just like stop this job running on this
+one cluster, please?" Uh, so yeah, I
+think yeah, that's also an interesting
+one. Any questions from the audience?
+That's a fantastic question. Um, so we
+built a um sort of custom uh web app for
+that essentially. Um, and essentially
+there's there's one uh agent backend
+system that is used for for a lot of
+stuff at at Google. And essentially
+anytime um a user issues a a query to to
+an agent hosted on that system, it then
+sort of automatically appears in this UI
+um where you can drill down at various
+levels of of hierarchy each of the
+pieces of the um of the system. Um if
+needed, you can drill all the way down
+to the sort of raw predict requests made
+to the model and and so forth. Um and so
+that's been useful. Um and we also have
+a concept of like an agent trajectory
+store as well. Um that's more focused
+around the the coding piece where
+obviously you can have a huge number of
+of steps uh going on there. Um and it
+can be really important to kind of
+diagnose at what exact point looping
+started happening or you know the model
+went off the rails. So yeah, it's all
+custom internally uh for now, but I'd be
+interested to hear what what you folks
+use for for observability as well.
+Any other questions? Yep.
+Oh, awesome.
+Yeah, I mean that's a that's a fantastic
+question. Um, obviously I can't go into
+sort of too much detail on um on sort of
+like release plans and so forth, but
+what I can tell you is um yeah, that's
+something we're actively exploring. Um,
+you know, we hope that it will make it
+faster, um, cheaper and and and
+hopefully better results if we can
+effectively orchestrate that that deep
+research using the same harness. Um, and
+because you know, right now without
+going into too much detail, there's
+there's a huge amount of of context
+that's that's passed all the way through
+that deep research system. Um, which
+gets quite expensive and, you know,
+consumes the context. And so we're
+really thinking about, okay, how how do
+we make each element of this system more
+like a collaborator as as part of a
+workspace? Um, which is kind of how it
+would work if humans were were
+researching something deeply, right? Um,
+and I think that opens up uh a lot of
+nice potential for things like um
+infographics,
+additional supporting artifacts and
+documents. So yeah, it's definitely an
+area of focus for me.
+That's a great question.
+I good question. I don't know is the
+short answer to that. Um the
+I think we they're not they are a bit
+more um what's the word? They're a bit
+more opaque in how they're kind of
+presented. The way the way you kind of
+think about it is like you have multiple
+simultaneous ones working on different
+tracks, but it's not we don't kind of
+Yeah. the the short answer is it's not
+as obvious as to which agents are
+actually working with on a particular
+task for that. It's not kind of like a
+massively parallel system in that sense.
+It's more like you can give them
+different um like trains of operation
+among a particular project but you can
+tell them to kind of work on specific
+things or you can have jobs that kind of
+overlap a little bit but it's not kind
+of yeah I don't have a huge amount of
+detail on the like the specifics how the
+sub agents work. I do think that's going
+to be um the the future though is how do
+we make agentto agent communication uh
+efficient and then also how do we give
+us as the human the ability to really
+shape that and and almost act like a
+supervisor on a digital assembly line
+you know um so yeah watch this space I
+guess
+you next
+about
+Yeah, for me I I really like uh skills
+and and they've been working very very
+well for me. Um
+uh perhaps this is controversial, but I
+did always think that MCP may be a
+little bit of a flash in in the pan. Um,
+I like it for the from the orth
+perspective. I think that's that's very
+powerful. Um, but for me, a combination
+of of of skills and uh guardrail CLI um
+interactions has has worked really well.
+Um, and it's it speeds up my job so
+much. You know, I've got a skill for to
+your point to debugging raw logs and you
+know, it can do most of that from the
+from the CLI. Um and in a business of
+our size, the the great thing is we have
+these skills contributed by folks who
+are absolute experts in that particular
+area and then I kind of I and the agent
+get that knowledge for free, you know.
+So I'm definitely team skills that
+helps.
+I mean we we support both of them and I
+think that's the intention going
+forward. Again, it's like what the
+community uses like you know we want to
+make sure that they work with the
+harness, work with the models. So I
+think yeah, whatever you guys keep using
+will probably still be supported. is
+probably the way to think about it.
+Uh at the back, should you go that
+Yeah. No, that's that's a fantastic uh
+sort of point. Um evaling this stuff is
+really hard. Um, even just the the
+mechanical nature of spinning up all of
+these sandboxed environments set up in
+in in the way needed to to eval evaluate
+a particular um problem set. Um, I think
+the the trickiest part is coming up with
+new data sets, you know. Um there's a
+lot of good um you know open- source
+ones that that are good for benchmarking
+externally but you're right for specific
+skills the onus is almost on like the
+the the author of the skill itself to to
+come up with um some form of test in
+that but people are also experimenting
+with the agents designing that as well.
+Um so it's a little bit meta but um yeah
+a lot of work to do in that space.
+Any question over here?
+struggling.
+How do I know?
+You mean in terms of for like the model
+and the model usage?
+Yeah.
+Yeah, that's a good question. Uh, it's
+it's funny actually because we have we
+have worse limits than you do because
+obviously we prioritize customers and
+not ourselves. So, the fact I was like
+clicking like a hundred times to keep
+going is because it recognizes I'm a
+Googler and that's my fault. Um, you
+know, it's a good question. Um, I think
+there's kind of two parts to this. I
+think that, uh, there will always be
+limits, especially like within different
+tiers. I don't have Ultra, for instance.
+So, sorry, my corporate account does,
+but my personal one doesn't. So, I have
+I have to change my behavior. But I
+think we're going to end up in a world,
+I mean, we have hopefully somewhere
+around here is Kevin from the
+anti-gravity team who could probably
+talk specifically on that. Um, but I
+think we're going to be in a pattern
+whereby it's common place for you to run
+out of credit or run out of capacity on
+like one model or something and then
+move to something else, but do it
+seamlessly under the harness. So you can
+give us preference rather than having
+like you know you've hit your limit on
+tokens for the pro model so it will
+automatically put you onto flash or uh
+you've reached your limit on everything
+you have in your in your subscription so
+you use a local model or but to your
+point like that it will not interrupt
+the workflow that you're doing or you
+know the notification you get is not is
+not the completion of the task. It's
+like, "Oh, we've run out of quotota.
+Sorry." Like, you know what? If you were
+off doing something else where you'd
+sent it off doing a job and you come
+back to find that it spent the last hour
+not doing anything because you hit a
+limit. So, I think the way when I spoke
+to him last about this, it was very much
+more about like trying to make it
+clearer when you get to that point and
+making sure that you can. So, yeah. We
+have time for I think one more question.
+Do you want to have a go there?
+I wonder if
+models.
+Yeah. So, um you're right. Um one and I
+really like the fact that we have some
+really good stuff in place for that
+already. So, um, the way it works is,
+you know, on a per language basis, we
+have a specific like auto review model
+that has been, um, fine-tuned on all of
+our style guides and and all the rest of
+it. um and previous like good examples
+of of code, but then also on a PA or or
+or product uh basis, folks will come up
+with their own um like specific SIS and
+and prompts and so forth to um to make
+sure that um you know the the the other
+reviewers get a good signal for for how
+good the code is. Um, and just yesterday
+actually I sent a PR for review and um,
+and and I didn't even have to trigger
+the auto review thing. I just got an
+agent that someone had spun up
+commenting on uh, the PR with quite a
+good suggestion. So yeah, um, I think
+it's important and I think to the point
+earlier about us being supervisors of a
+digital assembly line, it's like how do
+we get help with that piece of it as
+well, then we can all go sit on the
+beach.
+Yeah. Yeah, we to your point like we you
+can imagine like the scale of all the
+Google engineers submitting 100,000
+lines of code now being done by agents
+submitting even more code with more
+review. They've built a lot of kind of
+infrastructure for us. But then also we
+have like tools like Jules for instance
+like which are if you've ever played
+with that you've got like a web
+interface where you can go and do that
+on your own PRs and GitHub. So like and
+you get review components of that. So
+yeah, I think this is I think this is an
+area that's going to be with the
+ballooning of I think there was a
+comment yesterday about like uh the
+amount of the trillions of lines that
+GitHub is getting at the moment
+generated by agents and like that
+process. So as much as we hate our own
+boring work, I'm sure the agents hate
+their boring work too. So we've got to
+figure out a way to do that. But um
+yeah, um I think we're out of time for
+questions, but we will be around to chat
+afterwards if you want to come and join
+us or if you want to head down to the
+Deep Mind booth later. We'll be around
+there, too. So, thank you very much for
+listening.
+Thank you all.

@@ -1,0 +1,485 @@
+[music]
+My name is Claire Logori and I'm a
+senior principal engineer at AWS. I
+mostly work on Kirao, our agent coding
+assistant. But today I want to talk
+about some of the practices we've been
+seeing inside of Amazon in Amazon teams
+where we've been seeing really exciting
+results of productivity increases that
+are step function improvements since
+what what we've been seeing with AI so
+far.
+So I've been working on Agentic AI for
+over three years now and I've kind of
+seen the evolution that's happened in
+our industry when it comes to coding
+assistance with AI. First, we had this
+inline code completion helping us to uh
+write the next line, maybe the next
+function. We moved on to chat, asking
+questions about our code. Everybody
+started doing vibe coding sometime last
+year. But now we're starting to see kind
+of an early adopter phase of what we've
+been calling frontier development. And
+completely anecdotally based on my own
+experience, I've really only felt maybe
+10 to 20% more productive with all of
+these phases that have come before. But
+now inside of Amazon, we've been running
+pilots with different teams across the
+company. And we've been seeing a median
+of 4.5x productivity improvement and
+sometimes more than 10x. So something
+has really changed here now that we're
+seeing these step function improvements
+in productivity.
+And I like to um define what we've been
+calling frontier developers inside of
+Amazon by three behaviors that I've been
+seeing. One is hands-off coding.
+Frontier developers write maybe one to
+two% of the code that they produce. The
+rest is agents. The second is that they
+interact with their agents infrequently.
+They'll aim to get their coding
+assistant to run for up to hours at a
+time without their intervention. And
+third is that they minimize idle time.
+These frontier developers tend to run
+multiple agents in parallel churning
+through a backlog of tasks.
+The first time that I saw a frontier
+developer team was the Bedrock mantle
+team. Bedrock is our model hosting
+service. hosts uh LLMs like Claude and
+GPT. And uh sometime last year, we knew
+or I say we but the Bedrock team uh knew
+that they were going to need to build a
+new inference data plane, but they had
+estimated it at 30 people over 18
+months. this is a big big service and it
+was going to take time to build the new
+one, migrate customers over, migrate
+models over and they decided to take a
+step back. They took six people and they
+[snorts] built it in 76 days with Curo.
+So this was a huge achievement. This was
+the first time we've we'd seen anything
+of the kind inside of Amazon. So this
+was truly the Pathfinder team that
+proved that it was possible to get up to
+20x improvement. Now they looked at
+commits and I'll talk about a couple of
+other ways that we are uh measuring
+productivity improvements. But there was
+one problem with this story which was
+that yes it was built with six people.
+It was built with some of the top
+engineers literally in the company
+including two distinguished engineers.
+So this was not just any team of six
+people. These were experts in
+distributed systems, experts at LLMs and
+their architecture.
+So this this story was amazing and it
+kind of spread like wildfire across
+Amazon, but it was also very
+unachievable for a lot of teams. There
+were a lot of questions about can this
+actually be reproduced on another team.
+So another experiment that I want to
+talk about is a an experimental sprint
+that was done in the prime video
+organization. They took a 10-day sprint
+and they did an experiment where they
+put again six engineers in a room and
+they let them go wild with Kira. Uh they
+brought down the project delivery time
+estimate from what was going to be 90
+weeks down to 24 based on all of the
+progress they had made in this 10day
+sprint. and they lo they looked at their
+commit history and they looked at what
+did they used to do prior to this 10-day
+sprint and how many commits did they
+produce just in this 10 days. And so
+this sprint really proved that we can
+achieve again at least something close
+to what the bedrock mantle team had uh
+had achieved with a different set of
+engineers. But again, there was a
+challenge with this story, which was it
+was six engineers in a room, but they
+had no on call duties, limited meetings,
+very few distractions, which we all know
+are regular in the lives of an engineer.
+and the senior engineer on the team had
+spent the previous three weeks creating
+very detailed small wells scoped tasks
+with detailed requirements for these
+[clears throat] six engineers to just go
+churn on for those two weeks. So this
+was again not necessarily real life.
+This was a structured sprint uh a a
+point in time that they were able to
+achieve this. But again the question is
+is this achievable on real teams on day
+to for day-to-day work. So Amazon stores
+which encompasses uh Amazon.com all of
+our uh retail websites as well as our
+physical stores did a more structured
+pilot. They watched 50 teams that were
+totally normal, normal distribution of
+um early career folks, mid-career senior
+engineers and that worked on existing
+systems. Nothing green field like the
+Mantle team got to build from the ground
+up, but existing systems with existing
+code bases. And they they watched them
+for the better part of last year and
+they found something super interesting.
+They found that there was a big
+difference in the productivity gains
+that they saw between half of the teams
+and the other half. And in this case,
+they used a productivity metric of
+deployment velocity to production. So
+not just commits, how many commits are
+they producing, but how quickly are we
+getting changes out to customers? How
+many how quickly are we able to ship
+things? And they saw that for half of
+the teams, they achieved less than 3x
+increase. And what they found that was
+the difference between seeing less than
+3x productivity increase, these teams
+that saw a median of 4.5x and and in
+some cases more than 10, was how they
+use the tools. 90% of these teams use
+Curo among other internal tools that we
+have. And what they found was it wasn't
+about the tools, it was about the way
+that they worked. The teams that
+achieved step function improvements
+intentionally changed the way that they
+worked and the others simply kind of
+sprinkled Kirao and some of the other
+tools that we have on top of their
+existing way of working. And for me at
+least, this was the big aha moment that
+why I hadn't been feeling potentially
+the massive gains that productiv that in
+in productivity that AI has promised,
+it's about changing the way that we
+work.
+So across this pilot they went and
+interviewed uh the teams that were
+involved in the pilot as well as some of
+these other teams on the bedrock mantle
+team on uh prime video and they found
+five habits and and I use the word
+habits very specifically because again
+it's not about that one sprint it's
+about doing this daytoday and it and
+what they found when they interviewed
+with these teams was that it really was
+habits that they had to build daytoday
+when we change our way of working. It's
+it's hard to build these habits. It
+takes time to build these habits. So,
+let's go through each of these one by
+one. Habit number one is investing in
+agent context. We have a lot of stuff in
+our head. We tend to transfer all of
+that stuff in our head to other people
+through Slack conversations, through
+onboarding mentors, things like that,
+through code reviews, through standups
+and sprint planning. And they had to
+write all of that down. And the habit
+that they built was every time the agent
+makes a mistake or does something not
+the way that you would have done it,
+what am I missing in my skills files?
+What am I missing in my steering files
+that the agent needed? But then as we
+know across last year, we saw leaps and
+bounds in models abilities and their
+behaviors. uh the sonnet 3.7 in the
+middle of last year had a lot of quirks
+that we had to put a lot of do nots in
+our uh in our steering files and now we
+don't have to do that as much with Opus
+4.5 as of last November and then we've
+had six months more than six months of
+improvement since then uh with all of
+the new versions of models that have
+come out since then and so the question
+the new habit again is do I still need
+this in my steering files or is this
+just bloating context
+The second one is slowing down to speed
+up. In almost every team that was
+interviewed, they reported that their
+productivity actually went down as they
+intentionally adopted a new way of
+working. That's counterintuitive, right?
+You have to do intentional engineering
+work before you're going to see that
+hockey stick curve in productivity
+improvement because we have to do real
+work in our code bases first for agents
+to be successful there especially in
+brownfield existing code bases. So they
+had to build that agent context up. They
+had to improve existing tools error
+messages so that the model knew what was
+going on when it failed. They built new
+tools, new MCP servers for helping that
+model to actually get done what it
+needed to get done. A lot of teams ended
+up restructuring their codebase so that
+agents could actually navigate it more
+easily. And I've even seen drastic
+changes like changing the programming
+language of the codebase. Um, often I've
+seen teams struggle with Python, with
+JavaScript because they're untyped
+languages. It's hard to test. There's no
+compiler errors. So the model kind of
+guesses and give it gives it back to
+you. And so I've seen teams moving to
+Typescript. Um Rust has become very
+popular inside of Amazon. The compiler
+gives great error messages. Um you don't
+have to do that, but I've seen a lot of
+teams making those intentional changes
+for the productivity gains that they're
+able to see.
+The third one is feeding a agents, not
+babysitting agents. And for me, this was
+one of those aha moments of why we're
+seeing this step function improvement in
+productivity.
+If you are vibe coding, if you are
+having a back and forth conversation
+with your agent all day long, of course
+you're not going to see four to 5x
+productivity improvements because you
+are in the loop the entire time. You're
+probably sitting there for 30 seconds to
+a minute waiting for it to generate code
+and come back to you with with the code
+to review.
+If you're sitting there waiting for it,
+then you can't go off and do other
+stuff. It's really difficult to run
+agents in parallel. It's very difficult
+to get to to clone yourself into
+multiple agents. And so if your
+conversations look a bit like this on
+the left, then you're babysitting that
+agent as opposed to the right side where
+you're feeding it what it needs to do
+and how it can self- validate. And
+that's really the key so that agents can
+self-correct and only come back to you
+when it meets a certain quality bar,
+when it when it actually runs and
+compiles and passes tests, when it's
+testable, when it it actually has high
+coverage. And of course, the next level
+is put all of this content into your
+steering file so it does it every time
+without you having to prompt it.
+The fourth habit is to make intent
+explicit. At Amazon, we practice a lot
+of specri development. We've built that
+into the Kuro product and so it's very
+natural for Amazon engineers to adopt it
+in Kuro. Um, what what I've typically
+seen with fibe coding as opposed to
+frontier engineering is giving a very
+highlevel prompt, letting the agent
+generate a ton of code and then having a
+back and forth conversation saying, "Oh,
+that's not really what I meant. That you
+haven't you haven't exactly gotten the
+the requirements right. No, I didn't
+actually want to build it that way.
+Here's a technical design." And it is
+less I find less productive to iterate
+with the agent on code when the intent
+itself was incorrect. So uh often we'll
+h we'll see Amazon engineers go through
+this process for for ambiguous complex
+features of writing the specification
+and in curo of course you don't have to
+write this whole specification you can
+have the model generate it but it's a
+lot easier to h to iterate with the
+model in kind of a back and forth
+conversation about a document than it is
+about code that's code changes that are
+spread across a codebase.
+The fifth one is shift testing left. One
+of the keys here is to give the agent
+that fast feedback loop because that's
+what lets it go off for hours at a time
+and self-correct. The agent is going to
+make mistakes and that's fine. But if
+you give it the right signals, it can
+self-correct and it can spend a while
+doing that. So I've seen teams adding
+llinters, adding unit tests, integration
+tests, performance tests, security
+tests. These are all things we all know
+we should have been doing all along.
+This is good engineering hygiene and
+practices. But now the ROI is, I think,
+finally high enough for actually us to
+actually invest in it. Um, one thing
+that I've been seeing a lot of teams do
+is mock out services. Often with
+integration tests, we would test kind of
+end to end an entire system, including
+live services, but we've been investing
+a lot in in mock services that run
+entirely locally with deterministic
+responses because it lets the agent do
+everything locally. Um, doing everything
+on your laptop without having to spin up
+a bunch of other services and and
+connect to cloud services makes
+everything a lot faster because the the
+more that your agent can get fast
+feedback means the more loops that it
+can can do and the more productive your
+own agent can be.
+So, across all of these, these are some
+of the habits we've seen. But of course,
+I would be remiss if I would tell you if
+you adopt all of these habits, you will
+achieve Nirvana. You will be the most
+productive engineering organization uh
+the world has ever seen. Things are
+still hard. We are still very much in an
+early adopter phase and teams are still
+figuring it out. So, one thing that
+we've been seeing across our teams just
+organizationally is the risk of burnout.
+Um I did not coin this term. I forget
+who did at at what conference, but FOMO
+is real. We've been seeing engineers
+staying up late late at night um trying
+to get that perfect prompt that's going
+to make their agent run for hours
+overnight so that they wake up in the
+morning with a code change ready. Uh the
+cognitive load increases as you run
+these multiple agents in parallel.
+You're constantly shifting between
+terminal tabs. And then we do see that
+reviewing AI output is often harder for
+some than than actually writing it
+especially early in career. Uh senior
+engineers have have already spent a
+large portion of their career reviewing
+others code. But early career engineers
+h don't have that muscle yet and so
+reviewing it can can feel like a lot
+more cognitive load uh than they're used
+to in actually writing it. The other one
+is organizational change. So it's
+already hard to change the way we work
+as engineers. The way that we spend our
+entire day completely changes when we're
+frontier engineers. But also
+organizations have to change to enable
+frontier engineering teams. Um one that
+I've seen very commonly is accepting
+slowing down to speed up. And I've been
+guilty of this myself. My my fellow
+leaders have been guilty of of this of
+saying, well, you have the AI tools now
+and the models are so amazing now. Why
+are you not going faster? Um, and that's
+because you have to take those two
+months to invest in your codebase to
+figure out the best practices for your
+team to make hard habit changes on your
+team. Um and and if you're constantly
+expecting
+shipping features every month because
+now we have these amazing models and
+we're seeing um all of these these
+companies on X saying how they're
+shipping 20 PRs a day. Um we have to
+slow down to speed up. The second one is
+actually going too broad in the
+organization too fast. I think that if
+we had um expected all teams in massive
+organizations to be frontier teams
+immediately, we would not have had the
+learnings that we had from the
+pathfinder, from the from the sprint
+experiment, from the pilot uh teams
+within Amazon. And now the challenge for
+us is how do we scale it out? And that's
+what 2026 is about for Amazon is how do
+we scale this out to more and more teams
+to the next uh 2,000 teams instead of 50
+teams. Um and so I think that when you
+roll it out too quickly, you have a lot
+of teams who don't know what they're
+doing. You haven't had time to find the
+best practices for your own
+organizations, the the context that your
+organization needs. And the last one is
+that you're going to find new
+bottlenecks. Previously code writing
+code manually was the bottleneck. Um I
+find that within Amazon we've found um
+the speed of decision- making becomes a
+new bottleneck. Um the more that you
+spend reviewing the decision to actually
+build a new product, the slower it is to
+build the product now because the code
+only takes one to two months to write.
+[snorts]
+um all of the review processes
+associated with the launch of a product
+become the bottleneck. When it used to
+take 9 to 12 months to build a new
+product, it didn't matter so much in the
+in the overall wash of things. If it
+took two months to make the decision to
+build the product and then two months to
+approve the launch, but now those are
+the bottlenecks, those are the long
+pole. And so you find all of these um
+all of these things that slow you down.
+Often I find that frontier engineering
+teams spend more time making decisions
+than they do writing code. And so the
+more that you can make fast decisions,
+especially ones that are easy to be
+reversed, the better.
+So my one big takeaway for for everyone
+here is that frontier engineering is
+about intentionally changing the way
+that you work. And that is difficult.
+That takes time. It is forming new
+habits and a new way of working. And
+that goes across any engineering team as
+well as your organization. Um so I
+encourage you to think about um how
+you're interacting with AI tools and how
+that can change to free yourself up from
+being in the loop. Um thanks. I'm going
+to I'll hang out uh a little bit if
+anyone has questions in the back. Um,
+but thanks for the time today.
+[music]

@@ -1,0 +1,450 @@
+I'm going to set a password to call mine. Okay. So, let's explain what's happening. Like, it's trying to hack a zip file. Yes. Password protected zip
+file. It does some cracking. And yeah, here's the password. That was an AI agent hacking a password by itself. It's
+called Agent Zero, and it can do pretty much anything. People are using it for medical research, machine learning, and to even recover lost cryptocurrency
+worth over $20,000. Yeah, this AI agent can do a lot. In this video, the creator of Agent Zero reveals how the agent
+works, how to set it up, and how you can build anything with it. This is the David Andre podcast. Enjoy. All right, Yan. So, how would you explain Agent
+Zero? Agent Zero? Well, first of all, it's an agentic system. It's quite a big agentic system because it has its own
+operating system, Linux, and there's an AI agent living inside that Linux system in full control of the system. So the
+system acts as a body for the agent allowing the agent to execute actions.
+It can install any additional software and run it in the Linux system and the agent acts as the brain of the system.
+It's also worth mentioning that uh agent zero is completely uh free and open source. Feel free to do really whatever you want with it. This is the main
+difference right between other agents that it can do anything in the operating system basically. Yes, it's completely isolated. It doesn't operate on your computer. uh there's a lot of agents
+that can operate on your system but every system is different right and uh the main role of the agent is to be your personal assistant so uh it's not a
+system admin it's your personal assistant and uh it uses the operating system as a toolbox I like to say if it
+can be written by an LLM and executed in Linux it can be done by agent zero so this is the user interface of agent zero
+I am connected with my web browser to the instance of agent zero running in docker I This is running locally on your
+computer. People this is running locally on my computer. I am now connected locally from my computer to my computer
+to the docker but uh this works well from uh remotely over the internet from mobile phone as well. We have a
+cloudflare tunnel. You can enable a cloudflare tunnel. This gives you a public URL and you can access your agent zero instance from anywhere using the
+public URL. You can use it from your phone including your camera, microphone, everything. It works just as well. So, we have the chat interface. We have the
+list of our chats and tasks. Uh there's quite a lot of settings that can be customized. You can use uh any AI
+provider basically any AI model and uh you can also inspect all the files in the operating
+system. I'll show you the the file exchange even remotely with agent zero is very simple. So, let's jump to the examples. For example, one thing I do
+daily are file conversions. Uh let's say I have a agent zero logo which is a
+vector graphics file and I need to convert it to PGs for to upload them to some server like Twitter or something.
+So I can tell agent zero create three
+PNGs transparent background sizes 128 256 512
+pixels and just like that the agent starts working on it. By the way Jan is actually one of the oldest members of the new society which is where agent
+zero was initially born. The new society is a group of over 500 people at the cutting edge of AI. So, if you want to learn how to build AI agents just like
+Yand does, make sure to join. Oh, and everyone who joins during May will get a personalized AI strategy made for them.
+So, don't miss this offer and join the new society today. The link is below the video. I can inspect its thoughts. So, it starts by thinking thinking about the
+task and then it uses a terminal in the Linux system. It installs a library to convert
+SVG files. So again, it doesn't have a tool for file conversion. It just does that with a Linux library. It has almost
+no tools. The uh the only tools that the agent has is to support its uh let's say learning and integration in the system.
+It doesn't have tools dedicated to specific tasks. So it has tools like uh to use browser, it has tools to use the
+terminal, it has tools to execute Python code, but it doesn't have a tool to convert images because it has the Linux,
+right? And uh Linux, Python and Node.js are probably the three biggest uh open source libraries in the world. So
+anything that can be done there can be done in agent zero. So uh the the library is installed. It proceeds with
+the conversion in the Linux terminal. It does all three files in a single
+command and it tells me the three PGs with transparent backgrounds have been created for your SVG. And uh you can
+notice that anytime the agent mentions or terminal or whatever mentions a file anywhere, it becomes a link and I can
+just click it to download it. So even though I'm connected remotely uh to to the operating system, I don't have any
+folders shared. I can still click the path or the file and see everything or download everything that the angel uh
+that the agent prepares for me. So any file the agent creates uh they stay in the Docker container. That's uh that's
+the sandbox of the agent. It's his playground and I can send files in and download files out. So uh this is the
+logo converted to PNG with transparent background and uh I can proceed with another task. Let's for example give it
+a few thumbnails of my YouTube videos and tell it analyze these images.
+Then create a PDF file with a title
+page. The 512 pixel logo in the middle
+title agent zero. Then one image per page. That should be enough instructions. And again doing this
+manually would take you know a bunch of time. Yeah. like uh I I have the tool for that installed on my machine because
+I for for example created these these thumbnails. Yeah. But yeah, it would probably take me like uh I don't know two three minutes.
+Yeah. And if you didn't know how to do it way more than that and uh that's assuming I have the tool. Yeah. It
+writes a Python code. So what does it do here? Uh I think it failed at analyzing these images. So I can stop agent zero.
+Okay, it finished. I can by the way stop agent zero at any time in the middle and intervene. I think it failed right now at analyzing the images first. Modern
+sailing image possibly representing darker. Yeah, that's just not right. So it got lazy here. By the way, this is
+GPT4.1 model. Normally I really like the model. It seems to have the exactly right amount of thinking and doing. It
+doesn't overdo stuff like Claude. This time it failed. So I can tell it you did not analyze the
+images first. Do that and then create the descriptions properly.
+But your prompt was also pretty detailed like you told it like seven or eight different things it should do. I'm not sure if I disable vision actually. No I
+didn't. So yeah. Okay. So I told it to use vision specifically. So it uses the vision load tool. It analyzes all the
+four images at once using the model's vision capabilities. So now so use the model or use like mist OCR. Uh no it's it's the model's vision capabilities.
+Okay.
+If the model is is vision is vision capable you can enable vision and it can analyze multiple images at once get the
+visual information into the context window and then proceed. Okay. So we have a new PDF file. Let's
+see. Okay. This time is much Yeah, that's custom.
+All right. Yeah. And of course, uh it works both ways. I can say now like uh convert the PDF pages to
+JPEGs, then create a GIF from them with one
+second timing. Right. So, so all of these like small tasks that you know would be annoying to do. This is where I find
+Agent Zero the most valuable. I don't like these like mystery box solutions where you enter the prompt and you wait for 10 minutes and then you get a result
+you may or may not like. I like that. I can see what it does. Uh it's really quick right now. Uh it installed some
+packages uh probably for converting PDFs to to JPEGs. Real quick, if you want to use AI to increase your productivity, then you
+must check out Vectal. It's the only AI productivity tool that actually completes your tasks for you. And you can try it completely for free. Just go to vectoral.ai and sign up. Let's see.
+Did it finish yet? Yeah. Okay. So, now we have a bunch of JPEG images and
+now it should convert them into into the GIF using image magic. I find this uh especially useful uh not this not this
+use case but uh the the speed at which it handles these ad hoc tasks uh especially for my use case as a
+developer because I often need to convert something process some file quickly uh clean up some data set and uh
+I don't want to wait for it I don't want to break my flow I just need to have it now okay and here's the gift so can you like run multiple agents zero instances at one.
+Uh yes uh you can run as many of them uh in Docker but uh it's not really necessary because you can run multiple
+chats at once. Okay. Uh each of these chat instances uh they have uh their own dedicated uh like context uh in terms of
+both uh the chat and uh the operating system. They have their own set of terminals and uh even individual chats
+are capable of multitasking. When they execute something in the terminal, they specify the session. So it can for example do something that runs
+infinitely in session number zero and then run another code in session number one. Uh that's handy for development. It can run a server on session number zero
+and do something else in session number one.
+Uh speaking of the server, because uh it's a full Linux system and the agent has root access everywhere, it can do
+stuff like uh okay, let's start a new chat for that. Install PHP, create a test script
+to show system load RAM disk in a nicely styled
+page. Serve it on port 9999. then open in a browser to test it. Okay.
+So, it's a bit more complex, I guess. Uh yeah, and if you're a developer and if you're developing a web application using either PHP or Nex.js or whatever,
+you can even have like a Python backend server, etc., it can run those servers for you inside that Linux, serve them on
+different ports. So, here it checks for PHP installation. Now, it creates the PHP script.
+Now it serves the script and now it uses the web
+browser to open the page. Let's see. Okay, let's try to restart the browser maybe. So you can interrupt at any point, right? Yeah, at
+any time. I don't know. For some reason, the page didn't load the first time, but the second time the agent was able to open the application. And we are using
+browser use framework which is state-of-the-art framework for controlling browser inside Python projects. So you can tell the agent like
+uh open weather.com in a browser and it's capable of navigating those pages
+searching etc. So a zero really can do uh an application testing for you. Uh so if you give it like a login to Amazon,
+it could buy something. Uh probably, but servers like Amazon or Google, they have a lot of bot protection. So they will
+probably serve one capture after another. So I'm not sure if that would work reliably. I mean, it uses browser
+use and when I tested browser use, it purchased the book without a problem.
+The GUI I didn't test this specific use case. Uh I tried browser use uh using some Google services and Google didn't
+like that really. Okay. Uh but uh yeah to to be honest I am using a VPN so maybe maybe this helps like identifying
+myself as well because thinking about it uh even I myself have to fill a lot of captures on Google. Okay. And we got the
+the weather report. This should demonstrate that uh this is really flexible and interactive like it it
+doesn't need to be prepared for anything. You don't need pre-built tools. The only tools the agent have are like I said to to control the operating
+system to use the browser to manage memory etc. Basically to make the agent more productive but nothing nothing
+bound to a specific task. And and you also mentioned that it's always learning right? Uh yes. Uh that's a good
+reminder. Thank you. So uh yeah. So uh let's take a few seconds to explain how it works internally. So the framework
+controlling agent zero basically controls the behavior and the message loop of agent zero. So when you send a
+message to agent zero, it starts an internal process where the agent iterates communicating with its tools with the operating system and then
+ultimately reports back to you. And it has a few core features. I can call them
+hard skills. Like it has a built-in uh search engine. We use the search search engine which is open source. So it
+doesn't need to communicate to to Google or or whatever. Uh it can use its internal search engine to search the web which is private and very fast and
+reliable. Uh like I can demonstrate a search engine for AO videos. and it
+should use the the search engine tool and here I have the results. So it's much faster than doing it in a browser and and searching Google etc. So the
+search engine is one of the core features I can call them hard skills.
+The the other one is like a speech to text or embeddings model for for managing the agent memory that is built
+into the uh docker container. It has tools for like multi- aent cooperation.
+it can spawn subordinate agents and and delegate subtasks to them. So if you need to do something really complex, the
+agent can delegate to sub agents and uh then the real superpower of agent zero I
+think are the soft skills and namely that's the context window management and memory management. I made a video about
+how context window management and memory management works in agency. It's a very complex system but it really pays off.
+So all the messages you see they go into the context window of the large language model and uh if it grows too large it
+becomes expensive it confuses the agent uh and it can overflow with the available space and the whole agent can
+crash. So to prevent this I developed uh compression an optimization system that is inspired by how human brain works.
+See humans they never really forget stuff completely but our memories they lose detail over time. So
+uh you can remember where you went to school you can remember all the people from there but you will remember probably nothing from the classes right
+because you lose the detail over time and you only remember the important stuff and that's exactly how the compression works. As these messages
+become more and more obsolete, they are grouped into topics. Then topics are grouped into bugs and they are summarized and they are grouped more and
+more and summarized more and more. So in theory, you can have almost infinitely long conversation with agent zero. I can
+for example show this one example. You can see my scroll bar here. This this one pixel, right? So yeah, this is a
+task that agent zero completed in like I don't know 20 minutes probably. It included the delegation and the team of agents. And when I look into the context
+window, it says 50,000 tokens, 47,000 tokens, but it looks like
+millions of tokens, right? Yeah. Uh that's because most of the job was delegated to subordinate agents with their own context windows and the rest
+was summarized. So you can talk to a single agent zero chat instance for days and it will still remember everything.
+not everything but it will still remember what you talked about days ago.
+You can ask it and it will still have the context and this tremendously helped to deconfuse the agent and still keep all the relevant information in the context.
+So it's interesting that a lot of the like even deep learning right a lot of the best principles in AI a lot of the architectures are inspired after
+biology. Yeah exactly neural networks in general. Yeah. Yeah. Yeah. Well, uh that's a system that uh that has been in
+development by nature for millions of years. So like there's no way it's inefficient. Like if there's if nature
+is something then it's efficient. So this is to handle the the context window of the agent and it works in great
+tandem with uh with the long-term memory of the agent. I can enable utility messages here. So utility messages
+should appear in my chat and this system works completely automatically in the
+background. So anything that happens in agent zero is automatically memorized.
+It is uh embedded to a vector database using the built-in uh embedding model. it is saved into a dedicated
+memory area and uh it can replace previous memories if they are too similar to the new stuff and the same
+way it memorizes solutions. So if the agent does something successfully like in this example serving the PHP script
+it saves it into a special memory area for solutions. So the next time I ask it to to do the same thing again, it will
+not have to think about it and and come up with a solution. Imagine that the agent fails the first time. That can happen a lot
+like uh not all LLMs are built equal and sometimes the task is too complex to be done in zeroot. So the agent can fail.
+Maybe it requires an API key or something. So you can intervene, you can help your agent and once the agent gets it done, it memorizes it and the next
+time it will be able to do it on it to do it on its own. So really, so that's save to the vector database. But how is it loaded? Like when is it loaded? Oh,
+sorry. I forgot to mention uh exactly the same automatically here. I send the agent a message search engine for your videos and
+it searches the memory automatically for memories relevant with every prompt. uh with every prompt and uh in between
+iterations like when the agent does something uh for for a longer period of time without me prompting it like here
+it continuously prompts uh or searches the memory. So this happens automatically in the background. Uh the agent has a dedicated memory tool. If I
+tell the agent to memorize something, it will save it like willingly to the memory. But it also happens completely
+autonomously in the background. And uh again I I did this uh being inspired by human human brain because you don't uh
+you don't consciously save memories, right? And uh and you don't even like consciously load them. They just pop up.
+So I wanted agent zero to work exactly the same way. Like if you cook a meal that you cooked yesterday, you don't need to think about it. you just do it
+because the memory is like still in your context window. But I think the it's worth explaining like the vector
+database is also another level because that allows you to store like hundreds of millions of tokens, you know, billions and then pull that like the
+most relevant stuff into any prompt. Uh yes it is. uh uh that's the way it works
+and and like uh uh that is that is exactly the goal of the vector database.
+It can store millions and billions of memories and uh it searches based on similarity to the current chat. So
+whatever happens in the current chat is then being searched based on similarity in the memory and only the relevant
+memories are loaded. uh cuz a lot of people want to load everything in their context window, but then they don't realize that it's confusing the agent,
+right? Like if you're programming something, it doesn't matter that your cat is dying at the vet, right? So like it needs to be relevant to what you're actually doing. So even when the context
+windows are like 1 million, 2 million, 10 million, if you load in irrelevant trash, it's going to detract from the performance of the AI. Yeah. like like a
+month ago, I saw a video when uh when uh I think OpenAI uh was it OpenAI who announced the 10 million context window
+model. Was it I mean I think Google was the first one like the Gemini Google was the first one to have million and 2 million but recently someone announced
+uh there's a model with 10 million context window. No, I mean when Google first announced Gemini like year ago with 1 million, they announced that they
+also had 10 million in private, but that it's too expensive to run. So, I don't know if you're referencing that or this was but yeah, I think you're probably referencing llama. Llama was the 10 million. Llama for Yeah. Yeah. Llama.
+Thank you. Yeah, it was the the scout or some something like that. Yeah. Uh yeah, and I I saw a video on YouTube someone
+saying that rag is dead because now you can load everything into the context window. But uh I strongly disagree because it a it confuses the agent and b
+it's very expensive right like if you look at the pricing of for example cloth set it's like $35. Yeah $3 for million
+input tokens. So imagine that the agent sends the whole context window uh to the model every time. Right? So imagine
+there's a million tokens on every iteration like on every blue bubble.
+This is like $3, $6, $9, $12, $15. Like, you don't want to run a model like that.
+And that's a sad, you know, Opus is $15.
+Yeah. So, uh, no, rag is definitely not dead. And, uh, one thing regarding the vector store, we also use it for
+instruments. And, uh, that's a concept uh, I developed for agent zero. We have an instruments folder and you can create
+for example we have an instrument for image generation created by one of our developers. I will showcase this. Uh it's very impressive. So what is the difference between instrument and tool?
+Why do you call it instrument? Uh the difference is exactly that the instruments unlike tools or MCP servers are not stored in the context window.
+They are stored in the vector database in the memory of the agent and they are loaded only when relevant. So they are like tools. There are markdown files
+containing uh containing instructions on how to use it. And then there can be
+executable files or maybe it can be just instructions. That's fine. And these are preloaded into the long-term memory of
+the agent into a dedicated section for instruments. And every time you ask the agent to do something, it searches the
+the vector database for relevant instruments for the task. So unlike tools, you can have millions of
+instruments lying around the memory. And if you ask the agent to do an image generation, which I can do actually now,
+it will take a while. So we can leave it running. Generate an image of a forest.
+So what is that using? It is using uh actually I'm not really qualified to explain this because one of our developers did it. It uses machine
+learning. It uses stable diffusion to generate the image. Uh right now it will be doing it on my CPU because uh I don't
+have a CUDA GPU. Mhm. So so it will probably take a while. Maybe you will hear my fans spinning
+up. And uh the way our developer did this was he was experimenting with uh
+one of the earliest versions of agent zero with machine learning. So he let it download all the machine learning
+libraries like P p P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P P PyTorch and and everything required, download all the data sets and
+then use the uh use the Nvidia GPU and stable diffusion to generate images. And
+that was one of the first versions of agent zero that was running in terminal back then. And uh now in the later
+versions once he was satisfied with the results he turned it into an instrument.
+So now anyone using agent zero can use this instrument without having the agents to learn it all again like iterate and do the stuff all
+over again. Uh at first it will have to download all the data sets. I have mine already downloaded because I generated some images already in this docker
+container. But now like everyone has the tool built in agent zero to generate images and even sound effects
+uh without uh cluttering the context window. By the way, I'm offering a 30 minutes oneonone call for everyone who
+joins the new society with the yearly plan. I'm not sure how long I can keep this open because my time is very limited. But if you want personalized
+coaching on YouTube, how to build an AI startup, AI agents or anything else, make sure to join the new society with the annual plan because now it's the
+best time to join. The link is below the video. So this is the nice thing about having it open source, right? People can build on top of it and contribute. Yeah.
+Yeah, definitely. So was that the main reason why you made it open source or what was the thought process behind that?
+Uh I think I made it or I know I made it open source because I didn't want to develop another commercial project in my
+free time like I tried that multiple times and I never liked it because I always I always thought about the
+monetization first and uh and features second etc. Right? You need to come up with the business model etc. I didn't
+want to do any of that. I just wanted to build something nice.
+So that's why I made it open source. Uh at first I experimented with crew AAI.
+Uh this uh this all started as an experiment with crew AI. I wanted to see if Crew AI could replicate itself and uh
+like yeah it could but uh then it was like very generic and these like pre-built generic agents couldn't do
+much. So I created a code execution tool for them. So they could execute any command in the terminal and like uh that's where it all clicked when I saw
+the LLM how it can execute code in the terminal and debug its own code and fix it and and like download dependencies
+etc. That's where I knew like okay this has to be a full thing like I have to make this and and so then I started
+building it in Python. Uh originally it was installed in Python running on on the host machine but it soon turned out
+that uh this was not maintainable because every PC is different. So it need to have a standard environment and so we ended up here completely isolated
+in Docker standardized with a ton of features.
+Sorry. And uh I'd like to mention we're still in beta. The current version is something like 0.8.4.
+The version 0.8 is about adding all the last missing features like uh the vision tool, rack tool, MCP, etc. So we are now
+finalizing that and it will be released in the following weeks. What I'm showing you now by the way is a development preview. This version will be released
+probably next week. So for example, this particular instrument is is not in the stable release yet, but it will be there in a week or so. And then we move to the
+most important version of agent zero that will be 0.9 where we will completely rewrite all
+the prompts and uh make it all click. We want to make the agent like really feel
+native and and naturally in the operating system. We want the agent like to be right at home there and exactly know what it can and cannot do. This is
+still based on prompts. Some of these prompts have been written by me a year ago. So, okay, image is done. Uh, and we
+have an image of a forest. It's not perfect. I've seen much better from this tool. I think we
+actually should have some in the files here. By the way, for people who want to compare it to like major, this was fully locally on your computer, right? Yeah. On the CPU. Yeah.
+On the CPU. So, not even using graphics card.
+Yeah, but still it can do much better. I believe I have an
+image of a forest from earlier. Yeah, I have a tree
+and I have a sea life. Yeah, so it's something. It's on a CPU and it took like 2 minutes. I could give it like a 100 more iterations and it would
+probably be much better. But yeah, it's a demonstration. So what is the issue of the current problems? you mentioned like that
+I don't think there's an issue but uh the framework has developed a lot and uh
+the framework is actually prompt based uh everything in the framework can be changed in the prompts
+folder we have a default folder and all these files go into the context window
+in one way or the other some of them are part of the system prompt some of them are part of messages where the framework communicates with the
+agent and uh we didn't really yet try something like dramatically different. We still
+have these same prompts since the beginning and we are updating them like one at a time. We are doing small changes. When we find out that the agent
+is confused by something, we change the single prompt, we add an instruction or we remove instructions that are no longer relevant. like uh back in the day
+a year ago a lot of people were using small models like uh llama 38B.
+Sometimes these models had problem with JSON formatting. So we added a lot of stuff uh in regards to JSON. So those
+are no longer relevant. So we are updating these prompts in iterations but we actually never tried to like delete
+all of them and create them from scratch like in in a completely different way unbiased by what we have now. And we
+have a we have a system of uh of prompt overriding in the settings in uh agent
+config. You can select your prompts directory and uh you can override just a few files or you can override all of
+them. Uh there's a hierarchy and uh it selects the prompt files based on preference. So you can create small spin-offs
+uh just by changing these prompts, right? So you can change the agent personality, you can change its
+alignment, you can make it more reliable.
+This is open source. you can like see all the files and as you said changed everything like that's something you know that the other definitely you can change anything you want like the other
+agentic frameworks often come even when they're open source they often come with like you know hidden built-in prompts that are very hard to change yes that
+can be it can be uh especially if it's like a Python package it can be packaged inside etc. So uh here you can change anything you can change anything and you
+can even let the agent change anything right you can tell the agent like uh rewrite some of your files and then then you can then you can restart the agent
+to to reload the Python and uh if it doesn't break itself it can actually improve itself. So
+you've been building this for nine months, 10 months longer now. Uh we did
+a video nine months ago uh showcasing the the first public version. I think I was building that for like three months
+before that. Okay. So so it might be a year. Yeah. So what's like the biggest things you learn about AI from building
+agent zero? I think the biggest thing is that you need to cooperate with your
+agent. Like uh this uh this saves so much time or like you you have to let the user cooperate with the agent like
+if if you make it a mystery box if you make uh the user enter a prompt and then wait for the result like uh this is very
+frustrating. And uh also uh if you remember the early days of agentic frameworks like crew AI uh it wasn't
+even like streaming tokens. You were waiting for something and and then it showed you the full message and there was no way to intervene. So this is
+something I had I had to put a lot of effort in to make the agent like immediately react to changes.
+Uh for example, I can say something like uh download
+Amazon daily stock price from 2024 till
+now. And now I can say not Amazon Microsoft and it will immediately
+change the direction the user clarified they want Microsoft and you can do it anytime. Imagine I would have to wait
+until it's all done. Yeah, that's for example issue with the codex right like opening a codex you cannot really do follow-up questions like sometimes it
+goes for five minutes 10 minutes 14 minutes and you have to kind of wait yeah and and the use case is really different and uh I think uh a lot of a
+lot of frameworks or systems do this like uh they tell you you can run this in background you can just start it and and
+go away and come back when it's done but uh like uh it it's okay it it has its place definitely in the work environment
+but I feel like all the frameworks are like that like uh I don't really see a big competition to agent zero like in
+this category like being really interactive and helping you uh okay so so we have a CSV
+files with the daily data and I can say like uh filter
+to Mondays Right. And I can tell it to download another set and do a correlation between these two. It's crazy that even this
+like we're kind of taking it for granted, you know? Imagine like two years back having to do that manually.
+It would be a nightmare. Yeah. Okay. And and here you can see how it can fix itself, right? So it tries to do it didn't check the contents of the file
+before like it downloaded it or or it it created the CSV file using some some library and it didn't check the contents
+and then it tried to like write the code to filter to Mondays and it failed because there was no such column. So
+what it did is it opened the first 10 lines of the file to see the formatting then it wrote the code again and saved
+it again. So yeah, it's really fast and it's this like interactivity and it's this iterative approach that uh makes
+the agent progress really fast and uh 22 29 52 there was probably a holiday
+between these two but yeah okay so how are people using agent zero mostly like you have a discord server with thousands of people right? Uh yeah well I try to
+ask them from time to time but uh I don't I don't think there are two people that use it in similar way like really
+we have people that use it for like uh absolutely complex stuff like medical research and machine
+learning and like 3D geometry etc. I have a friend that uses this for his studies to do math and that's really a
+perfect tool to do math because it combines the like knowledge of LLMs then the LLM can prepare the formula explain
+you how it works etc and it can do the calculation precisely in Python so if if you do like matrix multiplication or or
+calculating volumes of like complex bodies it can explain you how it's done show you all the formulas and like do
+the calculation precisely in Python So uh I can do it like a calculate a volume of
+a 16th of a 10 m sphere right something easy like that if
+you ask GPT or claude they will give you the correct formula but they will fail at calculation.
+Uh actually uh chat GPT has the Python interpreter builtin so it can do it if
+you enable it but uh that cannot install any additional software in it. So if you need something more complex it cannot
+help you right. Uh so just like that if you're doing yeah so that's that's the key limitation right like they have a few tools but they don't have unlimited
+access to the terminal to utilize all the existing libraries. They don't even allow the Python to access the internet.
+So it's completely cut off unlike agent zero which can do like basically basically anything it needs to do online.
+Okay. Uh I don't want to forget we have one more version of agent zero which is called hacking
+edition which is another it is another branch of uh agent zero. You can see it looks mostly the same. There's a slight
+differentiation in colors. The difference is that prompts are different. Here I convinced the agent
+that he's a virtual employee of a cyber security company and that like uh red teaming, blue teaming, hacking and
+cracking is a part of its job. So it doesn't have that moral problem or ethical problem. What about cloud 4? Uh
+I I didn't try cloud 4 yet. Uh uh right now I'm experimenting mostly with with the GPT
+4.1. Yeah, I will try cloud soon. I'm very I'm very curious how that goes. And so the prompts are a bit different and
+instead of being based on Debian Linux, it is based on Kali Linux which is the go-to Linux distribution for cyber security companies. It contains a lot of
+penetration testing tools uh and uh and for example word lists of most commonly used passwords etc. So, as a
+demonstration, I can do something like create a password protected
+archive. Uh, I'm going to set a password to call mine, which is not not really a
+safe password. And I can give the zip to agent zero until it cracked this. I mean, at least it's not your birthday, you know.
+Uh, yeah. or my name. Yeah. Yeah. But passwords like uh I try passwords like
+summertime, Spongebob and stuff like that and all of them are cracked within a second. Uh okay. So let's explain what's happening. Like it's trying to
+hack a zip file. Yes, password protected zip file. Password protected zip file.
+So it says I need to crack the password first. I will ensure that zip to John is installed. So that's a John the Ripper is a library to crack pass archives.
+So I will use with raqu txt word list and then I will retrieve the password.
+So it checks uh the necessary libraries, installs them use it checks whether it's
+installed. Now it creates some hash file of the archive. That's probably something that helps the cracking. And
+then it tries to unzip it. I don't know what what password it tried to use, but it probably doesn't matter.
+So, now it does some cracking. And yeah, here's the
+password. Coal mine. Nice. John has successfully cracked the password. The output shows that the password is coal mine. And now, so what? 20 30 seconds.
+How long did that take?
+Uh yeah, maybe maybe less. uh I I think the execution itself was like uh I don't
+know maybe 1 second or I don't know maybe maybe even less. Yeah. But but the preparation to
+took some time. So but yeah you saw it it was like 30 seconds in total maybe.
+So there's like no other AI tool that's even comparable because you know as you said the terminal use it can use terminal running the Kal Linux instance
+but also the prompts right like reiting convincing the AI that it can do these things because a lot of the models would reject and
+how how difficult was that the prompting to get actually not really that bad with with GPT I tested with GPT and with
+Gemini and both of them had no problem and with claw 3.7 set I don't really like too sonet for agentic workflows
+because it overdoes everything like usually to do one thing and it it never stops like I mean I developed a habit I
+developed a habit in Windsor when I use the cloud 3.7 that I wait for it to finish the code and then I always
+manually click the stop button because I know it will just continue. It's funny sometimes I just do the same like I just type in stop when I'm happy with the
+changes. Yeah. One more cool feature we have that might be important for the security guys uh is scheduler. I can
+tell the agent uh schedule
+pay five minute interval.
+Check active network connections and re report any
+suspicious ones to maybe make it more active now like 20 seconds so we can see it. Uh I can I can start it manually.
+That's fine. I can Okay, I can change it to two minutes and I can start the first batch manually. It's not a problem. Okay.
+Uh okay. So the agent has a built-inuler. You can see it uh in the settings. I can create a task on my own
+or I can tell the agent like that. So it creates a twominut
+job. It sends a prompt to the agent that will be receiving that. And
+uh here we can see in tasks we have the task. So I will now I will now start it
+manually to save some time. So the agent receives a task. It
+does it does a check. For some reason it uses Python. I would expect it to
+use I would expect it to use the terminal first. So let's say you should first check in Linux.
+And the nice thing is that this instruction stays in the context window.
+So it will first check Linux for the suspicious connections. It will save them to that file now manually. And the next time the
+job starts, it will receive the same original message into the same thread.
+So it will see the history. So even though I manually steered uh the agent, it will next time do it right.
+Okay. I think it's going off rails again. I don't know why it's specifying everything.
+only save those suspicious ones. I tested this exact example a few days back.
+So basically, it can act like your cyber security employee. Yeah, right now it's overdoing. If I didn't know it's GP4.1, I would be sure this is cloed.
+But yeah, it it can it can monitor uh the network. It can like check the RAM usage every two minutes and save it in a
+file etc. It can do all that stuff. So is this the version of agent zero that you use to recover that lost Etheidium?
+Uh I used the I used the standard version uh because Ethereum is uh deterministic.
+There was quite a story uh I made a video about it. If anyone is uh if anyone is interested they can watch.
+Ethereum is deterministic. I just needed to find out the correct wallet and
+transaction number combination to recreate uh exactly the same smart contract with exactly the same address on a different chain.
+So I gave agent zero all my all my wallet numbers and I told it I need to
+find out the exact combination of a wallet and nons ID to generate because
+it was difficult because I did it on a test net and the test net resets every like 14 days. So all the data was
+already gone and I didn't know which wallet I used and which transaction it was.
+So, so I I needed to like uh do a huge simulation of all my wallets and
+transactions and uh yeah, I actually did it twice because uh it happened again to some other unlucky guy who just I don't
+know how but uh sent a lot of Ethereum. It was something I like eight or nine Ethereum on wrong
+chain to a non-existent wallet or non-existent contract. real practical use case of agent zero.
+So what a nine Ethereum is like $20,000.
+Uh yeah, probably more. Probably more right now. And the first time it was something like $4,000. So yeah, quite a
+lot of money saved. Do you want to quickly touch on the setup because a lot of people be wondering about that?
+Uh the setup is actually quite simple.
+Just like a week ago or so, I made an easy installation guide. Uh the easiest way, if you're not a really technical
+guy, you can just download Docker Desktop and search for agent zero run and you will find agent zero run.
+You can pick the latest version and just pull it and run it. It will start the container in your containers and then you can click the
+port to open the web UI. It's really simple. There's a dedicated video for it. So, I think you can have it done in
+in something like two minutes. Uh, one nice example I I tried just yesterday when I was experimenting
+with uh video conversions and manipulations in agent zero. I found out that it can do this. I can tell it like
+uh search online for uh agent zero showcase video
+URL YouTube. Then Tetris theme song on YouTube. Then download both.
+Then take the sound from Tetris and add it to the
+showcase as background music at 20% volume.
+So it's like a real video editing task.
+Uh yeah uh it still uses uh it still uses the Linux terminal. So it will not be able of doing some advanced effects.
+But if you need something trimmed or if you need like a shifted audio or embedded subtitles or something, it can definitely do it. So it's downloading
+the agent zero showcase video. Now it's downloading.
+I mean even this is like a use case that people still most people still don't even know how to download videos from YouTube, right? So yeah, you can use some online surveys. You probably have
+to skip a lot of ads or maybe fill out some registration. Uh okay, that was quite fast. I would expect I would expect the encoding to
+take a little bit more time. So So let's see what we have here. All right. I'm not sure if you can
+hear the music with the stream. Oh, okay. Oh, that's a copyrighted anyway. No.
+Uh I don't know. Maybe. But yeah, uh there's a Tetris music in the background. Yeah, you'll have to trust me on this one. I don't know why I would
+expect I don't hear it. I would expect it to stream the computer audio as well.
+Sorry. Yeah. But so if you need a video manipulation like this, if you need to download something and like extract the
+audio from it and maybe then do a transcription or something. I'm pretty sure there's an API for transcription or or a Linux utility for transcription as
+well. So yeah uh as I say uh if if it can be executed in Linux and if it can be written by LLM it can most probably
+be done in agents Europe. Anything else when it comes to the hacking version like any any other cool use case that it
+can do? Uh I'm not really qualified uh I'm not really qualified to like do any
+of this stuff. So uh I just picked up a random use case that I could comprehend like cracking the zip archive. like could you give me your website and it could find vulnerabilities?
+Uh maybe maybe check
+agent-0.ai for let's say tech used and possible vulnerabilities. Yeah,
+it seems I did this already for agent zero. Maybe not exactly search for vulnerabilities, but I did some analysis
+probably on my web already because it remembers something. Lightseed web server. I'm not sure about that. That's
+probably that's probably my providers or my my hosting stuff. But uh yeah, I definitely use Bootstrap. So when you
+start a new chat, does it still load from the vector memory or no? Yes. Yes. Yes.
+Uh the vector memory is is always present. Uh you can select a memory folder. Uh if if you want to start
+something uh it's in agent settings. Uh you can select a different memory subdirectory if you need to do something else and you don't want it to collide
+with your current memory. Uh but yeah it's like
+omnipresent. Okay. So possible vulnerabilities light speeded server has had several vulnerabilities including remote code
+execution. No immediate critical vulnerabilities are visible from the outside. Uh my web is actually
+completely front end. Uh I made sure that it has no backend service connections unless it really needs that.
+Uh it communicates with blockchain and other stuff but that's a completely front end stuff. So, I'm pretty sure my my web is safe
+because there's no database connected to it. So, yeah, I believe it's it's probably right. I think it could use
+some more sophisticated tools. I'm pretty sure there should be a lot of it in Kali Linux, but as I said, I I don't
+know any of them. Maybe we can ask what are more complex uh tools in Kali to
+do info gathering on web. I got to say I really like how GPT4.1 feels. It really has the the
+sweet spot of thinking just enough before doing something and doing uh the right amount of job. Okay. And but this is not like a real reasoning, right?
+You're telling it to do that with the prompt. Yes. Yes. That's a chain of thought. That's a chain of thought. Uh it's good because uh it stays in the
+conversation history and uh it often says like okay this is the first step of the task I need to do. After that I will do this and then it sees the previous
+thought process. So it continues in that. Okay.
+[Music]
+So web server scanner. Okay. Maybe we can try.
+I have no idea what that is. Okay, it seems it doesn't require anything, but it still gives just basic information.
+Okay, that's probably more like it.
+Okay, so yeah, you can definitely use it to scan your website. Cool. Anything else that people should know about Agent
+Zero? I think people should definitely try. As I said, it's completely free and open source. Uh it's built for the people.
+So, if you're curious and if you have time, definitely give it a go. So docker desktop just pull the image and then
+provide API key. Yeah. Uh it can work with uh it can work with Olama or or uh
+or the LM studio for the chat model utility model. You can select one of the providers. So Olama is there. LM Studio
+is there. I don't recommend local models to anyone because when someone runs local models, they are usually 8 billion primary models with small context
+windows and like uh the user experience is just not there if you do and GB4.1 is
+very cost efficient like it's there's no reason to save these pennies. You can use grock for free. Uh there are rate limits but uh you can set agent zero to
+respect those rate limits. So it will like wait before each request. Uh even open router has some really good free
+models. So you can use AI for free without having to run locally. We also
+uh we also have our community on discord uh we have our YouTube channel. So if people like agent zero it would really make us happy if they could join the
+community and discuss their use cases with us. Yeah I'm going to link. I find use cases to be actually the most difficult task like preparing for this
+video actually find out use cases that people might relate to because when I ask in the community I get so much so
+like overly complex stuff people do like people use it to create like nadm workflows I don't know I don't know why
+or how but they do it I cannot imagine I would be showcasing something like that in a video like this without I you can
+import the JSON. So, as long as it can create a JSON, it can do that, right? Uh yeah. Yeah, definitely. That's probably
+the way. But uh people use it to to solve uh like uh online quizzes,
+etc. Like there's a lot of online competitions where you connect uh with an with an SSH to a remote terminal and it gives you like riddles or something and the agent like has to solve them.
+So like people do a ton of incredible stuff like like the machine learning for example the image generation like that's
+completely over my head. All right. So anything else you want to mention or should we wrap it up? Uh we can wrap it
+up. Uh also if there are any developers that would like to contribute uh just recently we did a community funding. So
+probably starting next month or or very soon uh I will be able to start paying for developers once once all the legal
+stuff is settled. So if anyone wants to please let us know, join our team. We are building a community platform that
+will utilize uh our own blockchain token. So uh you can then propose improvement proposals on the website and
+participate in voting. So we would love anyone to join our community and help us keep this thing open source and built
+for the people. So if people should contact you the best place is the discord server. Yes, Discord server is the most active community. We also have
+community on school and we have announcement channel on telegram and we have x accounts but uh yeah discord definitely is the most active community.
+Sounds good. Right. So, thank you for showing us all the improvements over the past nine months. Obviously, it's much better than it was before. Can't wait to see what it is in nine months from now.
+All right. Thank you very much. Thank you for your time, David. And thank you for the opportunity to spread the word about N2. Thank you.

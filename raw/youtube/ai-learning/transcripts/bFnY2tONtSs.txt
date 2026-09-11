@@ -1,0 +1,408 @@
+E aí pessoal o é o Pires aqui e nesse
+vídeo eu vou apresentar para vocês um
+case de estudo de um projeto real que
+nós entregamos aqui dentro da minha
+empresa a mav Solutions que a gente
+entrega soluções de a para outras
+empresas um Case real de como nós
+automatizamos um escritório de advocacia
+com seis agentes de ia esse daqui foi um
+projeto que foi responsável por a gente
+aumentar a taxa de conversão de
+fechamento de clientes desse escritório
+Advocacia no WhatsApp utilizando esse
+time de Agentes EA para automatizar todo
+o processo de fechamento de vendas desse
+escritório eu tô bem animado para
+mostrar para vocês esse caso real de
+utilização de ia para empresas com
+certeza vai conseguir clarear muito mais
+a vista de vocês que estão querendo
+implementar e na empresa de vocês ou
+querendo implementar para outras
+empresas então sem mais delongas vamos
+paraa apresentação desse projeto aqui
+que eu tô bem animado Então pessoal já
+deixei aqui preparado um mapa tal bem
+curto no wins Inc a essa altura do
+campeonato vocês já devem saber essa
+ferramenta maravilhosa que eu utilizo em
+vários vídeos aqui do canal Mas eu só
+coloquei esse fluxograma aqui para
+explicar para vocês Qual foi a lógica de
+como a gente integrou esses agentes e a
+e obviamente eu vou explicar muito a
+fundo qual é a função e a
+responsabilidade de cada um desses
+agentes EA bem esse escritório de
+advocacia esses caras eles estão
+mandando muito bem na campanha de
+anúncios deles então eles recebem um
+fluxo ali de 200 pessoas por dia
+entrando em contato através de anúncios
+da Meta ã e eles já chegam com uma
+palavra-chave sendo escrita dentro do
+WhatsApp então a gente colocou um agente
+EA supervisor aqui no WhatsApp para
+conseguir identificar a demanda desses
+clientes Então esse escritório de
+advocacia Eles são muito mais da área do
+direito previdenciário e eles prestam
+cinco serviços diferentes e a gente vai
+entender qual serviço o Lead tá
+procurando de acordo com a mensagem que
+ele enviou das campanhas então cada
+serviço tem uma mensagem diferente e em
+alguns casos eles chegam através de
+outra fonte de geração de demanda e a
+gente coloca o agente a supervisor para
+qualificar esses leads na verdade mais
+para rotular a demanda deles então
+quando alguém já envia a primeira a
+primeira sentença a primeira frase que a
+gente já consiga identificar por exemplo
+Ah eu vim aqui do seu anúncio Estou
+buscando por uma ajuda no
+INSS a gente já envia pro agente I SDR
+para o serviço de
+INSS e assim com todas as outras frases
+e os outros serviços cada serviço vai
+ter uma ou mais frases Mas se por acaso
+ele chegar só mandando um oi bom dia
+esse ag gente a supervisor aqui vai ser
+responsável por fazer aquelas perguntas
+de introdução para entender Qual dos
+serviços esse Lead tá procurando e
+mandar ele pro agente asdr responsável
+por que exatamente a gente dividiu em
+cinco agentes e asdr bem eu vou mostrar
+aqui para vocês Ah ficou mais ou menos
+assim o fluxo aqui dentro do
+n8n e o motivo aparente é porque esses
+prompts aqui eles ficam tão grandes que
+é difícil você ter um controle da
+qualidade da ia quando você coloca tanta
+informação assim dentro dela você não
+tem muito controle porque tá sendo tanta
+coisa ingerida ao mesmo tempo pra ia que
+uma ia ficar responsável por um prompt
+extenso de todos os setores se a gente
+colocasse cara todos os setores aqui
+todo o roteiro de qualificação de todos
+os setores de uma vez só em uma ia
+ficaria bem longo seria muitos dados
+para ela ingerir ao mesmo tempo a gente
+a gente estaria consumindo muito mais
+tokens e não só não só isso a taxa de
+Resposta dela ficaria muito pior Então
+pega para fazer uma analogia com a vida
+real uma pessoa que foque somente em uma
+tarefa vai performar muito melhor do que
+uma pessoa que tá fazendo várias outras
+tarefas ao mesmo tempo porque essa daqui
+tá concentrando muito mais a energia
+dela em uma coisa só bem se você colocar
+ali um jogador de futebol para ser
+zagueiro goleiro e atacante ao mesmo
+tempo vai vai performar muito pior do
+que alguém que é só atacante ou só
+zagueiro ou só goleiro então por isso
+que a gente dividiu cada agente asdr com
+seu roteiro devido de qualificação e a
+gente aqui já passa pro processo
+comercial de vendas desse escritório de
+advocacia esse agente SDR ele vai
+qualificar o Lead com algumas perguntas
+Chaves por exemplo Ah você já teve o
+benefício negado antes você já tá
+trabalhando com algum advogado pra gente
+conseguir segregar Ali quem faz sentido
+ou não para aquele escritório de
+advocacia para se encaixar no perfil de
+cliente ideal dele isso daí que é uma
+dica que eu dou para vocês também nessa
+área do empreendedorismo digital se
+vocês querem abrir uma agência de ia lá
+dentro da minha comunidade eu falo muito
+mais sobre isso de como você encontrar o
+seu perfil de cliente ideal como você
+montar uma oferta pro seu perfil de
+cliente ideal e como você conseguir
+qualificar ele através de roteiros mas
+essa esse fundamento se aplica para
+qualquer negócio digital na verdade ou
+para qualquer negócio para ser mais
+honesto inclusive esse escritório de
+advocacia aqui eles tem um perfil de
+cliente ideal e a i SDR vai fazer as
+perguntas de qualificação para ver se
+aquele Lead está qualificado como um
+perfil de cliente ideal Beleza se ele
+não for qualificado a gente colocou AA
+para enviar o blog e o perfil do
+Instagram desse escritório pro Lead para
+ele conseguir se conscientizar mais
+sobre os serviços para ele se tornar um
+seguidor e futuramente um cliente desse
+escritório de de advocacia assim
+resetando ou seja reiniciando o looping
+de atendimento dele hoje ele é dado como
+não qualificado mas a gente vai enviar o
+blog e o perfil do Instagram ele vai est
+sendo nutrido pelas redes sociais desse
+escritório até que um dia pode ser que
+ele chegue a entrar em contato e vai
+seguir todo o processo comercial
+novamente enfim se ele for qualificado e
+deixa eu colocar aqui
+qualificado se ele for qualificado a
+gente envia a proposta aqui no WhatsApp
+e essa proposta ela pode ser enviada
+tanto por texto quanto pelo próprio
+aplicativo do zapsign com algumas
+integrações de automação a gente já já
+trabalhou com diferentes maneiras para
+enviar essas propostas eu utilizo o pand
+dooc os escritóri de advocacia a maioria
+das vezes utilizam zeps esse cliente
+aqui em específico utilizou uma proposta
+escrita mesmo ã por conta do público
+alvo deles por ser uma faixa etária
+maior eles tinham muita muito atrito
+para entrar nesse os programas de
+assinatura digital então ele só envi a
+proposta via texto mesmo e a gente
+colocou A Iá para seguir exatamente o
+roteiro de proposta deles para inclinar
+bastante ser bastante persuasivo e com
+uns gatilhos de fechamento de venda ali
+que a ia conseguiu capturar com a
+conversa que teve com aquele le se a
+proposta for aceita a gente vai disparar
+uma mensagem para o time desse
+escritório de advocacia através de um
+uma automação o próprio agente ia vai
+disparar essa mensagem pro escritório de
+advocacia E daí um mano vai entrar em
+atendimento naquele mesmo número de
+telefone para o Lead não ficar recebendo
+mensagem diferent números ficar muito
+confuso do que fazer eu já fiz alguns
+testes AB no próprio processo comercial
+da Marvel Os leads não se distraíram
+muito quando a gente utilizava diferente
+números de telefone em uma certa etapa
+da do nosso processo comercial da amava
+n a gente tinha um agente as SDR no
+WhatsApp rodando era a Marcela um agente
+ia e esse agente I ele qualificava e
+disparavam uma mensagem através do
+número de um dos nossos consultores do
+nosso time seja eu ou seja outro
+consultor especializado que pudesse
+atender naquele horário que agendou a
+reunião que a Marcela agendou a reunião
+disparar uma mensagem através desse
+número criava aproximação com Lead que
+seria um futuro cliente mas nesse caso
+aqui como o escritório de advocacia é um
+jogo que joga muito o volume esse
+escritório aqui tem mais de 200 clientes
+ativos por mês bem eles vão querer
+reduzir o máximo de fricção possível
+deixar o máximo rápido possível esse
+processo comercial aqui para fechar sem
+o cliente Ter que pensar e buscar um
+concorrente desse escritório então a
+gente deixou aqui tudo muito on Point
+tudo muito bem alinhado eu vou passar
+aqui levemente na automação do n8n deles
+ã e vou vou apresentar essa I rodando
+aqui no WhatsApp para vocês só um
+pouquinho tá eu não vou expor muito o
+roteiro o processo comercial de vendas
+desse escritório para não gerar conflito
+de interesse com outros escritórios de
+advocacia que estejam vendo esse vídeo
+aqui no meu canal do YouTube beleza não
+quero ser pedra no sapato de ninguém mas
+vamos lá deixa eu explicar um pouco a
+lógica aqui desse agente a mostrando que
+ele é capaz ou não de fazer bem Primeiro
+de tudo a gente vai receber a mensagem
+no WhatsApp através dessa plataforma
+aqui é o n8n ela é a plataforma
+integradora ela é o que vai montar a sua
+ia esse daqui é o painel visual que a
+gente tem para montar a ia tá pessoal se
+você ainda não construiu uma ia se você
+ah é um empreendedor querendo
+implementar ia na sua empresa é através
+dessa plataforma aqui em 95% dos casos
+que a gente cria esses sistemas é só o
+painel visual que a gente tem aqui para
+conectar integrar uma ferramenta a outra
+por exemplo integrar o chat GPT ao
+WhatsApp é através do n8n que a gente
+consegue fazer isso então a gente
+integrou diferentes plataformas aqui dá
+para ver pelo tamanho desse projeto a
+primeira plataforma que a gente conectou
+foi o WhatsApp ela tá conectada através
+de um webhook o Web Hook serve para a
+gente capturar todas as mensagens que
+vem do WhatsApp e jogar aqui pra nossa
+ia ou seja esse web Hook é o que vai
+capturar todas as mensagens a gente
+captura essa mensagem e a gente vê se
+esse Lead Ele tá em atendimento ou não
+lá no nosso banco de dados a gente tem
+um banco de dados que eu não vou expor
+são Dados muito síveis mas através
+daquele número de telefone a gente
+consegue ver se esse Lead tá sendo
+atendendo por um humano ou atendido por
+um aá se ele tiver sendo atendido por
+humano ele não vai seguir o fluxo e a
+gente não vai enviar a mensagem para a
+ia pra ia não retornar nenhuma mensagem
+não confundir ali o Lead agora se ela
+tiver sendo atendido por um aia ela vai
+receber a mensagem vai fazer a tratativa
+vai identificar se é um texto uma imagem
+um áudio ou um arquivo vai colocar numa
+fila de mensagens essa fila de mensagens
+aqui é responsável por juntar todas as
+mensagens que foram enviadas nos últimos
+8 segundos enviar elas de maneira
+concatenada paraa ia ou seja juntar
+todas elas e enviar de uma vez para ia
+paraa ia conseguir montar uma resposta
+com base naquelas últimas mensagens a
+gente fez essa parte aqui muito mais
+pela humanização Ah para deixar mais
+humanizada a conversa para ser bem
+honesto para vocês bem transparente
+todos os leads que entraram em contato
+com esse escritório de vocia que essa
+altura do campeonato desde que a gente
+entregou esse projeto foram mais de
+900 nenhum deles e eu aposto o meu
+coração nisso nenhum deles imaginou que
+seria um aá eu li mais de 60% das
+conversas que esse que essa ia trocou
+com os leads e nenhum deles imaginou que
+seria um a i muitos deles até
+agradeceram e enviaram mensagem de bom
+dia gif
+ah furinha de coração agradecendo mas
+bem no que se fala humanização a gente
+deixou muito bem servido esse projeto
+aqui e assim que a gente captura a
+mensagem se for a primeira mensagem ela
+vai enviar pro supervisor e daí o
+supervisor vai rotular esse Lead lá no
+banco de mensagens como Ah tá buscando
+por INSS tá buscando por auxílio tá
+buscando por x y z e a partir do momento
+que ele tiver a credencial dele o rótulo
+dele ele vai lidar só com aquele agente
+I asdr esse projeto aqui é muito
+parecido com os outros projetos que eu
+tenho aqui dentro da Mavi Ah deixa eu
+mostrar aqui um outro projeto de exemplo
+para vocês esse projeto aqui por exemplo
+vocês podem ver que um é bem mais longo
+que o outro mas 40% a 50% do projeto Tá
+feito por conta dessa parte Inicial aqui
+que é um template e esses templates
+estão todos disponíveis lá na minha
+comunidade da maven ai o link fica aqui
+na descrição do vídeo e esse é um a
+comunidade é sempre para desenvolvedores
+de ia se você nunca desenvolveu uma ia
+na sua vida você não vai saber o que
+fazer com esse template e a curva de
+aprendizado para você conseguir montar
+isso daqui vai ser de mais de seis a 7
+meses então bem não é um curso é uma
+comunidade para quem quer empreender
+Beleza eu já preciso alinhar as
+expectativas de vocês com isso daqui mas
+se você quiser Ah que a gente implemente
+isso daqui para você a gente tá
+prestando esse serviço há mais de 16
+meses é só altura do mercado e a gente
+já entregou quee sucesso para mais de 30
+empresas esse daqui foi um escritório de
+advocacia e a gente faz todo o projeto
+por você tranquilo então bem vamos
+testar agora essa belezinha aqui no
+WhatsApp só minimamente tá só um período
+bem curto Eu já entrei aqui na primeira
+mensagem a primeira mensagem deles é
+muito reveladora então eu não vou expor
+nada o número de telefone tá borrado blá
+blá blá vamos lá já falei que meu nome é
+Wel Pires Ahã eles falaram aqui o
+escritório deles tá eu falei que eu eu
+vou falar que eu quero
+hum uma ajuda Ok Enviei a primeira
+mensagem a i vai calcular por alguns
+segundos Ali vai passar por todo esse
+roteiro como esse como esse processo
+aqui é bem grande são vários blocos ele
+vai passar de um por um por um por um e
+entre esses blocos também a gente tem
+algumas pausas por exemplo veja aqui
+esse módulo de weight esse weit aqui é
+para esperar a gente pausar um pouco o
+fluxo por alguns segundos eu acho que
+ele já me enviou aqui a mensagem me
+enviou outra mensagem já ã eu quero
+mostrar aqui para vocês a funcionalidade
+do atendimento humano que é outra
+funcionalidade que eu tenho os templates
+lá na minha comunidade também a gente
+tem um aplicativo aqui uma central de
+atendimento que todas as conversas vão
+tá salvas aqui tem todos os leads tudo
+aqui tá borrado todas as conversas posso
+mostrar aqui para vocês ó foram mais de
+900 mensagens que esse escritório
+recebeu desde a implementação a já tá
+lidando com mais de 900 atendimentos
+alguns já foram fechados bem aqui eu
+consigo ter todas as conversas e se eu
+enviar uma mensagem por aqui que é a
+central de atendimento que o time desse
+escritório tem acesso a vai pausar então
+deixa eu enviar uma mensagem por aqui
+olá
+teste enviei uma mensagem e essa
+mensagem essa mesma mensagem chegou aqui
+no meu
+WhatsApp bem pessoal então essa foi a
+apresentação desse case de tudo para
+vocês terem um pouco mais de clareza de
+como implementar EA ou na sua empresa ou
+em outras empresas Depende de como você
+tá nesse mercado de como você tá
+posicionado mas eu tentei ser o máximo
+transparente com vocês sem ser uma pedra
+no sapato desse escritório também eu não
+quis expor nenhum dado sensível Eles
+foram muito compreensivos ah e também
+seria muito contra a minha ética expor
+esse tipo de dados aqui para vocês Então
+pessoal se vocês quiserem mais clareza
+entrem em contato comigo Ah na descrição
+do vídeo que eu eu deixo aqui sempre os
+links para você escolher qual caminho
+que você quer seguir se você quer
+implementar paraa sua empresa ou se você
+quer implementar para outras empresas e
+bem muito obrigado Mais uma vez pela sua
+atenção e pelo seu tempo que é o seu
+ativo mais valioso de todos um beijo
+para vocês estamos junto é só o início

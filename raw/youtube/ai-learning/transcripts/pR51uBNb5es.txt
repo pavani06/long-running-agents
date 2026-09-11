@@ -1,0 +1,532 @@
+I'm sure most of the videos you have
+watched so far just shows you how to add
+this EI agent node over here and give a
+rough prompt in the system message and
+then add one random chat model and then
+add a bunch of tools. That's it. But
+that's a very naive way of creating AI
+agents. If you truly want to become an
+expert and build professional grade AI
+agents that work in the real world and
+they perform the tasks as desired, then
+you need to watch this video. I will
+unveil the correct way of creating AI
+agents with all the required
+configurations. What you need to
+consider while selecting chat model, how
+to make this EI agent output the data in
+your desired format. What's the correct
+way of using memory? What's the best way
+of giving the system prompt? What to
+add, what to remove from there and so
+on. I will also share the system prompt
+templates and the guides that you can
+directly use in your workflows. So, keep
+watching till the end and let's get
+started. So, right now this AI agent is
+kind of boring and useless. It doesn't
+know what it needs to do and it has no
+capability, no brain and no memory. Now
+let's configure it one by one to make it
+the best AI agent in the world. Let's
+start with the most important component
+of this AI agent which is the brain.
+Choosing the chat model depends on what
+you want this AI agent to act as. Do you
+want it to act as an Einstein or do you
+want to act it like the best marketer in
+the world? If we click on this chat
+model button, we can see a long list of
+large language model options we can
+choose from. Entropic is really good for
+longer documents and safer tone. Azure
+OpenAI is just OpenAI hosted on Azure
+and it provides you the enterprise
+security. So if you're looking for that,
+you can go ahead with this option. AWS
+Bedrock has models coming from AWS.
+Deepseek has good coding and reasoning
+capabilities. Google Gemini chat model
+has multimodel LLM models in the Google
+ecosystem. They're strong at vision,
+text, voice, and they integrate well
+with Google Cloud. Grock is really good
+for ultra fast responses where you're
+looking for responses in milliseconds.
+It's kind of real time. Mistral and
+Olama are open source which means that
+you can they can be hosted on your
+server and you have the full control of
+all the data. If that's what you're
+looking for, you can explore these
+options. Open router is really
+interesting. If you don't want to create
+separate accounts for all these
+different companies like OpenAI,
+Anthropic, etc. You can just create one
+single account on open router and you
+can access all of those models just from
+one single API key. This is really
+powerful and really good. You can even
+compare different models. You can
+experiment which model performs well on
+this platform. And finally, we have
+OpenAI chat model which gives access to
+a large number of OpenAI models. OpenAI
+has reasoning models, chat models and
+cost optimized models. The reasoning
+models are the most powerful ones but
+they are the most expensive as well. So
+01, 03, 01 pro are quite expensive but
+have really good reasoning capabilities.
+If you're looking for brainstorming
+ideas kind of use case where you're
+trying to come up with a solution for
+complex problems, these are the models
+you should be looking at. If you're
+building some chat assistant or looking
+for general question and answer,
+summarization, etc. or maybe you want to
+create some blog, I think JPD 4.1, JPD
+4O are really good. JPD 40 audio gives
+you the capability of audio processing
+as well. And if you're looking for
+costoptimized models then you can go for
+the smaller models like O4 mini 4.1 mini
+GP4 mini and so on. So let's say if I
+select open AI chart model from here
+then I can select the model that I want
+to use for this AI agent. However, it's
+possible that you want to use different
+models for your AI agent depending on
+the user's query or the type of task
+which is being provided to the AI agent.
+You can create one more AI agent just
+before this AI agent. Then give a system
+message like this. your lightweight
+model router assistant given the user
+query output only one model. So we have
+given only three models right right now
+but you can add more models as per your
+requirement and then these are the
+decision rules on when to select which
+model and then it will output the name
+of that model. Now this AI agent will
+give us the name of the model that we
+want to use in this primary AI agent.
+Then we need to give a chat model to
+this agent. We can use a cheaper model.
+Let's say Google Gemini chat model and
+maybe let's say Google Gemini 2.0 flash.
+That should be fine. Dynamically
+generated model name. We need to come
+here and add the open router chat model.
+You can go to open router then go to
+your profile. Then click on keys and
+create your own API key from here. And
+then you can create a credential over
+here. Once you do that you'll start
+seeing all the models provided by open
+router. But since we need to give the
+model dynamically so so we need to
+select expression and in the expression
+we can give the model name generated by
+the previous agent. So let's run it and
+let's give it a query. What is 2 into 5
+into 50 into 50? And now let's run this
+model. And it returned open AI 01. It
+looks like it's adding /n at the end. So
+we need to remove that. So if you come
+to this AI agent, then first of all, we
+need to change this chat trigger node to
+define below. And then we need to go to
+the chat message received and drag the
+chat input over here. Next in the open
+router chat model node, we need to come
+here and give this output in the model
+field. But we need to trim the slashn at
+the end. So we can select trim end
+function to do that. And we have our
+model successfully selected over here.
+That's how we can dynamically select the
+model for our EI agent. So as a general
+rule of thumb, if you want to select the
+best model for your use case, this is
+what you can do. If you're looking for
+reasoning capabilities, then you can
+choose from deepseek or open. One thing
+to keep in mind is the Deepseek R1 model
+is not supporting function calling at
+this time. It means that you'll not be
+able to add tools with that model. This
+a agent can only use that model to think
+and respond. That's it. It will not be
+able to execute the tools. If you want
+your AI agent to execute tools, then
+you'll need to select OpenAI's Open or
+O3 models. Now, if you have any
+dependencies on certain vendors like
+Azure or AWS, then you can go for AWS
+Bedrock chat model or Azure OpenAI chat
+model. If you're looking for accuracy,
+you can go for GPD's 40.0 or 4.1 models
+and and Enthropics cloud models. If you
+have some strict privacy concerns and if
+you can't use external services then you
+can go for Olama or Mestral. In most of
+the cases you just want to focus on
+OpenAI, Anthropic and Google Gemini. Now
+let me remove all of these things just
+to keep the explanation clear and select
+OpenAI's 4.1 model. Now in this chat
+model there are a couple of options that
+we need to
+understand. The first option is
+frequency penalty. It penalizes the
+repeated words or phrases in the
+generated output. A higher frequency
+penalty makes the model less likely to
+repeat itself in the final response. You
+can set it around 0.5 to one to
+encourage fresh and varied responses. In
+fact, you can start with the default
+settings and if you don't like the
+responses generated by the AI agent,
+then you should probably check all of
+these setting to improve it further. You
+can fine-tune the model through these
+settings. The second thing is maximum
+number of tokens. It limits the length
+of the AI generated responses. Let's say
+you don't want the responses from this
+chat model to exceed 200 tokens. Then we
+have one of the most important setting
+over here which is sampling temperature.
+You can think of this temperature like
+the spice level in your food. If the
+temperature is zero then there are
+literally no spices in your food. It's
+completely tasteless. If you set the
+sampling temperature to one then your
+food is highly spicy. A low temperature
+produces accurate, factual and
+predictable responses. A higher
+temperature generates imaginative,
+expressive and sometimes really
+unpredictable responses. Its value is
+from 0 to 1. And as an example, let's
+say our prompt is describe coffee in one
+sentence. And if we set the temperature
+to 0.1, then it may give an output like
+coffee is a hot drink made from roasted
+beans. If we set the temperature to 0.7,
+then it may give a response like coffee
+is a warm hug in a mug that fuels your
+morning. If we set the temperature to
+one, then it may generate response like
+coffee is the liquid symphony of
+sunrise, chaos, and bliss. You can see
+the difference. When to use what? If
+your use case is support chatbot or
+let's say frequently asked questions
+chatbot, then the suggested temperature
+is 0.2 to 0.3. It sticks to the facts.
+If you're creating Instagram captions,
+blogs, etc., then you can set it from
+0.6 to 0.9 so that it becomes creative.
+If your use case is code helper or tools
+agent, then you may want to set it to
+0.1 to 0.3 so that you don't have any
+surprises. Time out is the time this
+node considers the request to be timed
+out if it doesn't get the response back
+from OpenAI in the defined duration. You
+can leave the default value. Next is max
+retries. This is the number of times
+this node will try to make request to
+open AAI if the request fails. And
+finally, we have top P. So top P is also
+called nuclear sampling. It decides how
+many word choices the AI considers when
+replying. So the LLM model is nothing
+but it's a predicting machine. For a
+given query, it tries to predict the
+next set of words and returns them as
+responses. So if we set top P to one, it
+will allow the AI to consider every
+possible word for the response. If we
+set top P to 0.3, then it will allow AI
+only to choose from the top 30% safest
+most likely words. You can think of it
+like a word filter. So let's say if we
+have the same prompt describe coffee in
+one sentence and if we have our top P
+set to 0.3, then it may give a response
+like coffee is a caffeinated drink. If
+we set top P to 0.9, we may get coffee
+is a fuel of productivity. And if we set
+top P to one, then we may get coffee is
+lava for your soul in a ceramic cup. The
+final rule of thumb is if you want
+reliable answers, then you can set
+temperature to 0.2 and top P to 0.7. For
+creative writing, you can set
+temperature from 0.5 to 0.8 and top P to
+1. If you're looking for structured JSON
+output, then you can set temperature to
+0.1 and top P to 0.5. I hope you can see
+how powerful these settings are and and
+how important it is to unlock the true
+potential of an EI agent. Now let's
+quickly talk about the memory. If we
+attach a memory node then it will help
+this EI agent to remember the past
+conversations and the context. So if
+this EI agent is handling the ongoing
+conversation then you have to add the
+memory. If this AI agent is handling
+one-off tasks where the previous context
+is not required then you can skip the
+memory. And the worst practice is using
+the simple memory node. You should
+consider it using only during the PC's
+or while building the workflows. That's
+it. Not in the production. It will use
+your machine's memory and it may fill it
+up and ultimately crash your NA10. So
+you can use memories from this list. The
+best and easiest one is the Postgress
+chat memory. You can select this is to
+use
+superbase. They have a pretty generous
+free plan and you can create an account
+and then go to this dashboard. Then
+click on connect at the top. Then scroll
+down to transaction pooler. Expand view
+parameters and one by one copy all of
+these fields and paste them in the new
+credentials fields and then save it.
+Then you just need to give a table name
+over here. It can be anything. let's say
+conversations table or any chat
+histories and that's it. This node will
+take care of creating that table in the
+superbase. The important thing to
+consider here is context window length.
+This is the number of past interactions
+that will be shared with the AI agent as
+context. Now you may want to reduce it
+or increase it depending on the use case
+of your EI agent. If you expect long
+conversations with your customers let's
+say and if there is some context which
+might have been shared in older
+conversations then you may want to
+increase it from 5 to 10. If you think
+the context shared in the past five
+conversations is good enough, then you
+can just set it to five. Now let's talk
+about the tools. Tools gives the
+capability to this AI agent to take
+actions. You can literally have this AI
+agent perform any action in any service
+if they are exposing their
+functionalities via API. There are a
+large number of predefined tools you can
+select from. You can in fact create your
+own workflow and give it as a tool. Over
+here you can write your own code and
+give it as a tool. You can make HTTP
+request to any service and give it as a
+tool and you can use MCP client tool. If
+you don't know what MCP is, you must
+watch the previous video on MCP client
+and how to use it. So let's say if I
+select Gmail tool and and let's say if I
+want to give a capability to this EI
+agent to send messages on Gmail, then it
+has a couple of fields over here to
+subject message and so on. Now the best
+part is you can see this button over
+here that says let the model define this
+parameter. And if I select this then I I
+don't need to define the value of this
+field. This will be dynamically
+populated by the AI agent in the
+runtime. Now this is really amazing and
+powerful but it also has limitations
+because if you leave large number of
+fields to AI agent then it may
+hallucinate and may not give proper
+values. So I would suggest use these
+fields only if you really can't define
+those values beforehand to reduce the
+overall hallucination. Now let's take a
+look at the settings of this AI agent
+itself. As you can see the first field
+is taking the user's query. Then in the
+options we have system message. So the
+default message used in the system
+prompt is you are a helpful assistant
+and you should always update this system
+message for your use case so that you
+have more control and personalization
+and you can give instructions on how
+this EI agent should perform. We have
+three more options like max iterations
+which limits how many times the EI agent
+can loop through the tool usage and
+reasoning before stopping. So the
+default value is 10 and if you expect
+your A agent to have large number of
+back and forth communication with your
+tools then you may want to increase it.
+Let's say if you're doing some sort of
+deep analysis and you want multiple back
+and forths happening between the EA
+agent and if this number is restricted
+to 10 then your E agent will stop once
+it hits this limit and you may want to
+increase it. For other simple use cases
+like chatbots you can leave the default
+value. Next option is return
+intermediate steps. When enabled, the
+output includes reasoning steps, tool
+invocations, and internal logic, not
+just the final result. You may want to
+enable it for debugging, audits, and
+let's say transparency use cases. You
+can log all of those details somewhere,
+and then you can perform the complete
+audits on the performance of this EI
+agent. Otherwise, you don't need that.
+Then we have automatically pass through
+binary images. If the AI agent receives
+binary image input, this lets the image
+to be passed through the model. But you
+need to make sure that the LLM model
+that you have selected should support
+multimodel. But you need to make sure
+that you have selected the multimodel
+LLM model like GBT4. And this is how a
+really good prompt looks like. It
+contains a role at the top that tells
+what this AI agent is. For example, you
+are a customer support agent at XY Z
+company or something else. Then we
+define the primary goal of this AI
+agent. Then we define the domain
+knowledge or the context. So we give all
+the facts that should be known by this
+agent. Then we give it a list of all the
+tools which are available to this agent
+and when and why to use those tools.
+Then we have knowledgebased search. So
+if we are giving this agent access to
+our vector or rack tool then we should
+keep this section otherwise we should
+remove it. And then there are some
+formatting rules on how it should format
+the final response. Then we define the
+style and tone of the responses. Then we
+define the safety and accuracy
+instructions. And finally we can define
+some additional reasoning instructions
+if required. You can get this template
+in the free school community. You can
+find the link in the description and you
+can just copy and paste in your
+workflows and modify it. So this is the
+prompt I've given it for demonstration
+purpose. And one thing to note is the
+format rules. If this agent is acting as
+a chat assistant, then you may just want
+to say create the final response for the
+user's query which will be sent directly
+to the user. Something like that. But if
+you want some kind of JSON, then you can
+give this prompt. However, you should
+not give these format rules if you are
+using the output parser. In our example,
+let's use the output parser and I'll
+remove it from here. Go out and then
+enable this require specific output
+format. Once we do that, we'll start
+seeing one more option to add output
+parser over here. So output parsers are
+the way to make sure AI speaks the
+language our workflow understands. They
+make sure that our AI just doesn't talk
+but talks in a format that our system
+can use. Let's break down the three
+output parsers. Ideally there are just
+two output parsers and the third one is
+to fix these two. Let me explain how. So
+if I select structured output parser
+then here we can define the format in
+which we want this AI agent to return
+the response. So let's say if we want
+this AI agent to create Instagram posts
+then maybe we want it to output the
+title content and tags. Let's say if I
+run this chat and give this prompt
+create an Instagram post showing AI
+usage in healthcare and then the AI
+agent is working on this post and it
+should output an Instagram post and
+there we have it. So if I open this as
+you can see the output includes title
+content and tags. So this is the format
+we were looking for. Now let's talk
+about the second output parser which is
+item list output parser. We should use
+it when we want to generate a list of
+items from the AI agent. And to be able
+to do that, we need to select the
+separator and tell it what kind of
+separator it should look for in the
+response generated by the EI agent. So
+let's say we give it the separator as
+this. And in the EI agents prompt, we
+need to tell it to separate the
+Instagram posts by the same separator
+string. And then if we open the chat and
+give it the instruction to create three
+different Instagram posts, it will
+create three different items for that.
+Now it may happen that uh the AI agent
+is not always able to output the
+response in the given format and for
+that purpose we have the third output
+parser option which is autofixing output
+parser. It is nothing but it's a wrapper
+on top of the two output parsers that we
+talked about. So after adding this node
+we need to select the item list or the
+structured output parser. So if I select
+structured output parser here I can give
+the same JSON string that we gave
+earlier and in the model we can select
+the same OpenAI model. Now once we do
+this and if we run it let's say AI agent
+is not able to generate the response in
+the given JSON format. This node over
+here autofixing output parser will make
+a request to the openi model and it will
+and it will send the received response
+and the instructions and the error to
+openai and have it fixed to match the
+JSON format that we are giving over
+here. That's how it works. And this is
+how you build a perfect AI agent that
+works in all situations. the one that
+you can monitor and tweak to improve its
+performance to do a better job to reduce
+the token usage and reduce the
+hallucination. If you found value in
+this video, don't forget to comment and
+share your insights and don't forget to
+like the video and subscribe the channel
+for more in-depth videos like these.
+Thanks for watching and see you in the
+next

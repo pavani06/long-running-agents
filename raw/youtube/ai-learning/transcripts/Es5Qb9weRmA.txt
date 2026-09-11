@@ -1,0 +1,564 @@
+are you looking to improve your
+experience using notebook LM well guys
+in this video I'm going to show you some
+of my favorite notebook LM hacks that
+you can start using right away to get
+the most out of this awesome AI tool so
+be sure to stick around for the entire
+video so if this is your first time to
+the channel welcome my name is Ryan and
+my mission is to help you navigate the
+overwhelming world of artificial
+intelligence and if you want to know my
+favorite AI tools and prompts that I'm
+using for marketing and content creation
+be sure to get my free AI marketing
+Essentials guide you can find the link
+for this below this video but now let's
+dive back into to some of my favorite
+notebook LM hacks so first of all if
+you've never heard of notebook LM this
+is an awesome free AI tool owned and
+operated by Google they Define it as
+your personalized AI research assistant
+there's so much that this tool can do I
+do have an intro level video on Notebook
+LM I'll leave in the video description
+below that you guys can check out and
+all you need is a free Google account to
+use this visit notebook lm. gooogle
+click try notebook LM you'll be signed
+into your Google account and then all
+you need to do is Click create new to
+create a new notebook and then we can
+start diving into the magic of notebook
+LM now I'm going to assume a lot of you
+watching this video have already used
+notebook LM before and you understand
+the very basics of things like how to
+add sources in the top left how to
+generate an AI audio overview which this
+was the big feature that really put
+notebook LM on the map was generating AI
+I powered podcast but this first
+notebook LM hack that I want to share
+with you is the ability to actually
+customize this audio overview versus
+giving notebook LM full control they now
+have a customize button so if you click
+this notice that you have a box where we
+can now direct notebook LM on how we
+want this audio overview to sound focus
+on a specific Source focus on a topic
+focus on a specific audience and this
+update I want to say rolled out a couple
+weeks maybe a month ago I remember
+making a video about this on channel so
+I'll find that and leave that in the
+video description but now what we can do
+is we can leverage chat GPT or Claude to
+even help us with this so we can come
+into chat GPT and prompt it with
+something like the following help me
+customize AI audio I'm generating with
+notebook LM I want the output to sound
+simple professional serious and
+understandable at an eighth grade level
+use a maximum of 500 characters is all
+you get is 500 characters in total and
+now what we can do is come in here copy
+and paste this more advanced prompt
+versus just trying to type something in
+there and you can definitely do that
+come back to notebook LM click customize
+drop it in here and now you'll see we
+now have that more advanced prompt from
+chat GPT click generate and now it's
+going to generate this AI audio overview
+so I'm going to skip ahead and wait till
+this is complete all right so now I'm
+going to play a few seconds of this
+audio overview and let's see what it
+sounds like but remember in the custom
+instructions I said make the output more
+understandable at an eighth grade level
+is if I didn't do that I can promise you
+this would sound very technical with a
+lot of words like llm machine learning a
+lot of technical jargon that notebook LM
+tends to use sometimes so let's see what
+this sounds like hey everyone Chad gbt
+huh it's like everywhere these days it
+really is but like what it's like
+everywhere these days even is chat GPT
+right and why are people freaking out
+about it well on today's Deep dive we're
+going to figure that and just from
+listening to the first 10 seconds of
+that I can EAS tell it is catered to an
+eighth grade level it's very
+understandable to the average person who
+has no idea what Chad GPT is so I'm glad
+to see just with that small snippet that
+what I said in the custom instructions
+appeared to be working so that is the
+very first notebook LM hack is using the
+customization with audio overviews now
+staying on a similar topic of audio
+another notebook LM hack that you can
+explore is the ability to analyze
+podcast episodes and provide synopsis
+key takeaways versus list listening to
+an entire episode there are some really
+long podcast episodes out there hour two
+hours long what you could do the same
+thing for an ebook as well for what I'm
+about to show you so what you can do is
+you can visit a website like listennotes
+dcom and on the search bar I'll leave
+this in the description below and on the
+search bar you can type in any podcast
+or any specific podcast episode and what
+you can do and here's my podcast called
+marketing quacks you can come into any
+episode click this little button here
+with the three dots and and you should
+see an option to download audio this
+will download the MP3 file of a podcast
+episode and now what you can do is come
+back to notebook LM add a source here
+and remember you can upload these types
+of files right here PDF txt markdown
+audio MP3 file right there so we can
+click choose file make sure you save it
+on your desktop or somewhere where you
+can find it and I'm going to find that
+MP3 file that I just downloaded here so
+right here marketing quacks podcast so
+I'm going to upload that MP3 file of my
+podcast episode and as you'll see it's
+right here so I'm going to skip ahead
+after this is done all right now after
+the MP3 file is fully uploaded simply
+click notebook guide if you don't see
+the menu and you can do anything you
+want here but the two I would focus on
+are table of contents and also briefing
+doc now also what's cool here is the
+summary now this you would get this for
+any source using notebook LM I
+understand that but if you're looking
+for a quick summary of a podcast episode
+this is a really good summary right here
+that they provide that's only one
+paragraph long versus sitting there
+listening to 30 or 40 minutes also too
+what's important about this is not a lot
+of podcast platforms offer transcripts
+you can obviously get that on YouTube
+but I don't believe spot it's easy to
+get a transcript from Spotify apple and
+all the other podcast platforms I
+remember looking into it at one point
+and it was a pretty tedious process so
+that's another benefit of doing that so
+here if I click on I believe this is the
+table of contexts I like how it breaks
+this down intro pros of starting a
+marketing agency cons of starting a
+marketing agency alternative pass and
+concluding thoughts here's the briefing
+document so these are just the main
+takeaways the pros the cons uh my
+alternative personal branding approach
+right so here it has Z that's not how
+you spell my name but not going to
+complain about that uh conclusion right
+there's just so much that you can do
+with this in terms of analyzing a
+podcast episode and that is the second
+hack and it's not only podcast episodes
+really you can do this to analyze any
+audio file using notebook LM another
+notebook LM hack that I want to share
+with you is utilizing this tool to
+create content outlines when you're
+trying to write blog posts for a
+specific keyword so you'll see in this
+example I've named my notebook chat GPT
+hacks that's the keyword that I want to
+go after in this example and on the left
+hand side what I've done is I analyze
+the Ser or search engine results page on
+Google for the Target keyword which is
+best chat GPT hacks obviously this would
+change to whatever your target keyword
+is and so what I did was I added reddit
+reddit excuse me click up and this
+magical website as my three sources
+right here so now that I have those
+three sources in Notebook LM what I can
+do on the bottom is I can then prompt it
+with the following and I will leave this
+prompt in the video description below
+give me an SEO content outline based on
+the sources for my top ranking
+competitors for the keyword and this is
+where you would insert insert your
+keyword chat GPT hacks let's do best
+chat GPT hacks that's more of a longtail
+one that I'm going to go after in the
+content outline include SEO title meta
+description headings word count LSI
+keyword suggested links anything else
+you think that would be important to
+outrank competitors for this keyword so
+I'm going to hit enter and then skip
+ahead after this is complete all right
+so as you'll see here in a matter of
+seconds notebook LM drafted a Content
+outline based on the information from
+those three sources going after the
+target keyword best chat GPT hacks
+here's my SEO content outline and so now
+what I could do is technically I could
+come down here and say now write me a
+blog post but I want to be real with you
+guys I don't really like Google Gemini
+for writing long form content like blog
+post I'd rather use something like chat
+GPT inside a custom GPT or Claude using
+a Claude project so then what you can do
+is you can copy and paste this outline
+here which I'm going to show you open up
+chat GPT or Claude and right here you'll
+see I'm on my Ryan Dozer AI agent this
+is the custom GPT that writes like me
+and I basically said help me write an
+SEO optimize blog post when I provide
+the topic and then I said here's my
+topic and here's also a Content outline
+I want you to follow and I'm going to
+click enter and I'm going to skip ahead
+when this is complete all right so chat
+GPT went ahead and generated this blog
+post on top chat GPT hacks and just
+scrolling through here it looks decent
+it looks like something I could
+definitely use now I would never
+recommend copying and pasting an entire
+blog post posting it on your website and
+expecting that to move the needle you're
+going to have to polish this at internal
+links external links add images and all
+the other tweaks that go along with a
+successful SEO strategy but that's just
+one quick hack that I wanted to show you
+is basically leveraging notebook LM to
+generate content outlines and why you
+would want to do something like notebook
+LM versus coming to chat GPT and saying
+generate me a Content outline is doing
+it this way your user three sources that
+you've directed notebook LM to analyze
+and make a Content outline based on
+those top three ranking sources so that
+is the hack that I wanted to show you
+for that so the next notebook LM hack I
+want to show you is not only repurposing
+written text into AI podcast which I'm
+sure a lot of you have done already and
+I have that right here but also
+transforming written text into AI videos
+and I'm going to show you exactly what I
+mean by this so what I did is I pulled
+one of my posts on link in how to make a
+lot of money online without ethics I
+should just do a full rant video about
+this I'm so passionate about it but
+anyways you could do this for any social
+media post any blog post email right any
+form of written text that you want to
+transfer to a video and what you would
+do is copy and paste whatever that
+source is add it into a source on
+Notebook LM and you would simply come
+over here and click paste text since
+we're not adding a link we're not adding
+a video you would just paste that plain
+text right there and then you would
+generate an audio overview which I have
+right here and I've already done this
+I've sped up the process once that's
+done you would click this little button
+here and you would click download this
+will download an audio file in wav
+format and then once you've done that
+you can head over to a tool like revid
+it's completely free to sign up you do
+get a few videos on the free trial it's
+a premium model I would recommend coming
+here versus the other tools that I've
+been testing for this functionality but
+once you're on revid AI click create new
+video after you've signed up for an
+account and then what you want to do is
+Click audio to video this is where we
+will upload the WAV file that we just
+downloaded from notebook LM and right
+here make sure you click upload file
+click this box here and then you want to
+find your WAV file that we can now
+upload to revid Ai and it looks like
+it's successfully uploaded all right
+welcome back everybody for another yep
+all 5 minutes and 16 seconds right there
+and this is where you can set your
+parameters so what I want to do is leave
+this L let's leave it at 9 by6 and you
+want to add video footage make sure this
+is toggled on what I've learned from
+this though is that you can't do AI
+video you'll run out of too many credits
+if you do that you can do moving AI
+images and you can also do stock videos
+and once that once all of that is done
+click generate video all right so here
+is my finalized video file from Revit AI
+this took about a minute maybe a minute
+and a half so let's go ahead and click
+in here and let's see what this looks
+like now now what I noticed right away
+is it's 32 seconds long I've optimized
+for mobile obviously like I directed it
+to in the settings it has subtitles
+right so the purpose of this is you
+could use the audio file from notebook
+LM use a tool like Revit Ai and then
+post this across the short form video
+platforms Tik Tok Instagram reels
+YouTube shorts right etc etc just
+another way to just redistribute your
+content and get more eyeballs on various
+platforms let's take a quick look at
+this and see what it sounds like like
+okay these folks are selling courses and
+Consulting Services MH on topics that
+they have no real expertise in oh wow
+right pretty unethical it is it's like
+they're they're profiting from
+misinformation yeah you know they're
+taking advantage of people yeah praying
+on people's so you see what it did there
+right it automatically reformatted the
+video added the b-roll video behind it
+with that audio file to make it look
+more engaging versus just you know
+putting out an AI podcast like we see
+millions of those already that exist
+from notebook LM so that is a quick
+little hack that you can do with the
+audio file is use a tool like revid AI
+to repurpose that into engaging video
+content so another cool little hack that
+I discovered with notebook LM is you can
+leverage this tool as your own personal
+coach or consultant based on the source
+that you upload now what do I mean by
+this so in this example I've uploaded
+the entire book The 4-Hour Work Week by
+Tim Ferris which is my favorite book
+book of all time by the way you can do
+this for any podcast you could do this
+for any ebook whatever that source is
+you can turn that book into your own
+personal coach or consultant with
+notebook LM and let me explain this
+process here so what you can do is first
+you want to upload your Source on the
+top left and after you do that you can
+head over to chat GPT or Claude to
+complement this process and you can say
+I'm using notebook LM and uploaded a
+book I want to turn that book into a
+coach or consultant help me generate two
+prompts for Notebook LM one for the
+audio obviously we can generate an audio
+version and also for the text outputs so
+I'm going to copy and paste this one
+from the text outputs first did not mean
+to do that let's go back copy and paste
+come back to notebook LM and then right
+here in the search bar you would paste
+that right here click enter and remember
+we are using Google Gemini for this
+process you probably could do something
+similar by uploading to chat gbt to
+uploading to Claude but also remember
+Google Gemini has a higher context
+window than some of these other large
+language models and so that's why using
+notebook LM with Google Gemini is a
+perfect use case for this and so as
+you'll see right here it generated a
+step-by-step guide transitioning to a
+4-Hour Work week so based on the context
+from that entire book that I uploaded
+it's now given me a step-by-step guide
+with it acting as a coach and consultant
+of how I can achieve this lifestyle
+number one Define your lifestyle number
+two eliminate the non-essential the 8020
+rule automate your work liberate
+yourself from the office uh launch your
+Muse tools and scripts right so
+basically it's breaking down all of the
+important tidbits of that book into kind
+of a step-by-step guide if I want to
+pursue this obviously it would change
+based on whatever the context of the
+book or podcast or ebook that you upload
+but this is just a really quick example
+now we can also click notebook guide and
+do the same thing for the audio version
+so I'm going to come back here here I'm
+going to copy and paste that audio
+prompt that it generated now remember it
+has to be less than 500 characters come
+back let's see copy having all sorts of
+little issues here guys as I navigate
+back and forth between the tabs and then
+you want to click customize and then I'm
+going to paste that in right here click
+generate and then I'm going to skip
+ahead and let's see what it sounds like
+when it's complete so let's listen to
+this really quickly now remember instead
+of just a general summary like you would
+normally get in these audio overviews I
+set those custom instru instuctions at
+the beginning to say act as a coach or
+consultant and not just a general
+summary so let's see what this sounds
+like really quickly for lifestyle design
+the 4-Hour Work Week such a classic it
+really is such a CL and we're going to
+distill it down to like a five minute
+coaching session packed with actionable
+tips on productivity passive income and
+even how to achieve location
+Independence so you heard that right
+he's breaking it down into a coaching or
+Consulting session now obviously I'm not
+going to play all 16 minutes of this I
+can leave it in in the description if
+you guys are curious enough to listen to
+it but that's what I wanted to show you
+with this quick little notebook LM hack
+is you can upload any Source like a book
+or a podcast and you can create both an
+audio and text version of your own
+personal coach or consultant so now I
+want to show you a few little bonus
+hacks you can do using notebook LM and
+you could also apply this same process
+to Chad GPT or Claude notebook LM again
+is just another great use case for
+something like this what you could do is
+you could have it act as your own little
+legal consult now a big disclaimer there
+I'm not a lawyer right and I would never
+recommend relying on this tool for
+anything serious about legal issues but
+for very basic understanding and
+questions this is a great resource for
+that versus calling a lawyer and paying
+hundreds of dollars an hour for
+something that you could just figure out
+in seconds on an AI tool like notebook
+LM so let's say I want to learn about
+copyright law in the United States what
+I could do is upload a whole PDF of us
+copyright law and I would also want to
+upload a whole p PF of the US
+Constitution just to have that in there
+as well once those are uploaded what you
+could do of course you could do an audio
+overview if you want that but what you
+could do is prompt it with something
+like the following you are a legal
+expert and consultant provide bullet
+points of the five most important
+details about copyright law in the
+United States that I need to know and
+again this could be for anything about
+the Constitution or any law that you're
+trying to learn I just did a quick
+example of us copyright law because it
+can be very confusing so it says right
+here here are five important details
+about copyright law in the US explained
+in a way that a 10-year-old can
+understand I did add that little
+sentence at the end there just to make
+it more understandable to the average
+person what is copyright a basic
+definition of copyright how long does
+copyright lasts it says plus 70 years
+plus even after they're gone I didn't
+know that what are the Creator
+superpowers what if I want to use
+someone else's work what can I learn
+more where can I learn more about
+copyright right so you guys get the
+point here again if this is an any
+serious legal issue I would never
+recommend doing this but for something
+very basic if you're just trying to
+understand a legal concept like this you
+can lean on a tool like notebook LM to
+act as your basic legal consultant now
+the final bonus hack I want to share
+with you isn't necessarily notebook LM
+but it's another Google AI tool called
+learn about and the reason I bring this
+up is technically it's in the same
+ecosystem as notebook LM under what's
+called Google Labs under emerging AI
+tools you'll see notebook LM right here
+that's the most popular one and right
+here is learn about this is a new AI
+tool they released a couple weeks ago
+all you need is a free Google account to
+use it but if there are is any topic
+that you want to learn about in depth in
+detail in a digestible format this is
+another great way to do it whether it's
+something like chat GPT you would just
+click that and then you'll see what it
+responds with right so it gives me a
+quick synopsis an interactive list you
+could do the same thing on Notebook LM
+but you have to upload sources if you
+don't want to upload sources and just
+simply ask for a topic and rely on
+Google sources that it has this is a
+great way to do that so again I know
+this isn't necessarily notebook LM but
+because it is under Google Labs I
+thought this was a cool little hack if
+you weren't aware about it that I wanted
+to share with you so with all of that
+being said I hope there were some
+notebook LM hacks in this video that you
+guys can find useful and start using on
+your own appreciate you if you've made
+it this far into the video be sure to
+give me a thumbs up subscribe be to the
+channel if you found value but I also
+want to hear what you guys have to say
+in the comment section below are there
+any other notebook LM hacks that I
+missed want to hear about it in the
+comments but most importantly I hope you
+all have a great day

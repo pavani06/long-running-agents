@@ -15,7 +15,7 @@
     "architecture:check": "node scripts/architecture-monitor.js check",
     "architecture:validate": "node scripts/architecture-monitor.js validate",
     "architecture:render": "node scripts/architecture-monitor.js render",
-    "test:architecture": "node --test tests/unit/architecture-monitor.test.js"
+    "test:architecture": "node --test tests/unit/architecture-monitor.test.js tests/unit/architecture-review.test.js"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

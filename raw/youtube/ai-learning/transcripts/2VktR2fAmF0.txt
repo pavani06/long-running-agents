@@ -1,0 +1,571 @@
+Nano Banana Pro changes everything. It's a new AI image model from Google and it's by far the most useful image model
+of all time. Yet, most people have no idea what it can do. Nano Banana Pro can think before generating, recreate any
+style, generate perfect text, and execute complex edits. Yeah, this model
+is insane. But most videos only show you the cool images that it can make. Instead, we'll go deeper. In this video,
+I'll show you how to correctly prompt NanoBanana Pro, the technical secrets of the model, practical ways to adapt it in
+your life, how the Synth ID watermark works, and how to build your own app powered by Nano Banana Pro, because this
+model just enabled so many new startups. So, if you want to have an unfair advantage over everyone else, watch
+until the end. Now, what even is Nano Banana Pro? Well, it's a new image model from Google. And as a little game, try
+guessing which of these is actually AI. And if you said on the left, you would be correct. But if you set on the right,
+you would also be correct because both are AI. The left is the old version of Nanobanana and the right is Nanobanana
+Pro. And you can see that this image truly cannot be recognized. And a big part of this is that Nano Banana Pro was
+built on top of Gemini 3 Pro, which right now is the best AI model in the world by a lot. Another thing that makes
+Nano Banana Pro very very powerful is that it has native grounding with Google search. Let me just give you a quick
+example. So here I am in Google AI Studio which by the way is the best place to use Nano Banana Pro and then
+I'm going to say create a realistic photograph of Vicory Vic Norway at the
+current time of weather which by the way that's where I'm at right now in the FS in Norway. So on the right I'm going to select aspect ratio 69 and let's do 1K
+resolution and let's run it. Now as you can see the model starts thinking right? So it thinks for 10 20 30 seconds before
+actually creating the image and this is what makes Nano Banana Pro so freaking good. It's like the jump from oneshot
+LLMs that we seen in 2023 2024 to reasoning models that we have now. And there it is. You can see that they use
+the sources time and date weather crave and shutter stock to actually generate an accurate image of Vic. And here it
+is. And if we look outside, it's not too different. The weather is actually almost identical. In fact, you should
+try it on your own city or village where you live and you'll be shocked at the accuracy. Now, you might be wondering,
+"But David, how does this model work? How is it so good?" Well, most popular AI image models are simply diffusion
+based, right? And yeah, by the way, this graphic was generated with Nano Banana Pro and it's incredible. To put it super
+simply, diffusion means it starts from noise and then it denoises to get the final image. However, Nano Banana Pro
+might also have some auto reggressive properties. So auto reggressive models work more similar to how LLMs work where
+the images are tokenized into tokens which are saved in weights and biases and then during generation we use a
+autogressive transformer which get constructed into a generated token sequence that results in the final
+output image. Simply put, auto reggressive models generate image tokens step by step like an LLM does for text,
+but in this case it's for pixels. Now, the truth is is that we don't actually know which architecture Nano Banana Pro
+uses because Google doesn't tell us. You know, it's one of their proprietary company secrets. But what isn't a secret
+is how to actually use the model, which is what I'm going to show you in this video. So, rather than just showing you a bunch of flashy tweets like everyone
+else does, we will focus on real actionable use cases for entrepreneurs and developers that will either allow
+you to save time, make money, or become smarter. Imagine having access to a full advanced course on chat GPT just a few
+days after it released. It would give you an insane advantage over all other companies and individuals. This is that
+video but for Nano Banana Pro. Real quick, in the next few days, I'm launching my own startup accelerator
+where I'll closely work with a couple of individuals to help them scale their software company. The spots are going to be limited. So, if you're interested,
+sign up to the free weight list link below the video. All right. So, let me explain why Nano Banana Pro changes everything. This is not just an
+incremental upgrade, you know, another majourney version. This model is completely different and it unlocks infinite possibilities in basically all
+domains of your life or your business. First off, let's look at what makes it so powerful and the hidden reasoning
+layer probably the main thing. So unlike other models, Nano Banana Pro plans the scene first, likely using a hidden draft
+or a fault like images internally. Here's a nice visual explanation of how that works. Again, generated by Nano
+Banana Pro. And this is really the secret sauce behind Nano Banana Pro. It has this freephase loop inside of it.
+And by the way, this is why Nano Banana Pro is slower than other image models, but way more accurate and way more
+realistic. Another reason why Nano Banana Pro is a complete game changer is its performance on text, diagrams, and
+4K details. Just take a look at this example. Okay, the prompt is solve this on the notebook with the same
+handwriting. So, you put the left side as the input image, right? And this is what it generates. Not only is it completely accurate where all the
+details are remained and we can see like the binder, the pen, the same desk, nothing has changed except that Nano
+Banana Pro solved this double integral on the paper in the same handwriting as the original text. This is absolutely
+insane. Like nothing like this was possible ever before and it will unlock so many different capabilities and
+problems startups. Yeah, we really are living in the future, guys. In fact, what's ironic is that one of the best
+ways to spot AI images now is perfect text, right? there's no like accidental crossings or you know smudging or the
+pen is different shades when the text is too perfect and there's no corrections and no variations that's how you can
+tell it's AI another thing that absolutely blew my mind is the perfect time and space understanding of Nano
+Banana Pro and this is an incredible example so here the original prompt was create an image at coordinates you know
+north and east and the date April 3rd 33 CE 3 p.m. in the afternoon and you can
+see that this is the moment that historically Jesus was crucified and the mortal itself knows it right thanks to
+its hidden reason layer and the grounding with Google search it's able to figure out that this is next to
+Jerusalem and that this is the day Jesus Christ was crucified and it's able to generate an insanely accurate image of
+that event. Now, what makes this model good also makes it very dangerous because the near-perfect text and the
+super high realism both make it much harder to spot any hallucinations, right? Because if only half of the
+things are correct, then you can see the other half, you need to check it. But if 99% of things are correct on the image,
+you won't even get the idea to check it because it's just seems perfect on the first try. So, this is a pro tip to all
+of you. If you're going to use Nano Banana Pro in your business, in your company, in your life, where the stakes are high, make sure to triple check
+everything, even the stuff that might seem obvious, because even though this model is the best image model in the
+world, it still can hallucinate and the hallucinations that it produces are very difficult to spot. Now, before we jump
+to the use cases, let me show you one more example of style and consistency. So, this model, you can give it your
+face and it can output insane variations. New hairstyle, new clothing, different times, different ages. Just
+take a look at this example, right? So here the user asked, "Make a 4x4 grid starting with the 1880s. In each
+section, I should appear styled according to that decade. Clothing, hairstyle, facial hair, accessories. Use
+colors, background, and fill style accordingly." And look at this. We have 16 different images from 1880s to the
+2030s. And not only does each of these 16 images perfectly represent that era,
+that decade, but it also aligns to the user's actual face. And you can see that this is the same person in all 16. And
+it looks like the same person. It's not muffled or slightly altered like you would get with other image generation
+models. Here, the character consistency and the style consistency is near perfect. Now, this actually has some
+serious implications because if you think about it for a second and if you think about the second order consequences of this, you'll realize
+that there's basically no need to train Lauras anymore. Nano Banana Pro is simply that good at editing at
+consistency, right? You can give it your own face or your own product photos or your own cat or a piece of clothing and
+it will simply generate anything you want with it. You don't need to train Allora on Flux one like we had to do in
+the past, which of course I covered on this channel. So, make sure to subscribe to be ahead of everyone else. But thanks
+to Nanabana Pro, you can just drag in one or two examples as reference images into the prompt and it will give you
+your own face basically perfectly without having to do a complex training run fine-tuning a model like we had to
+do with Loras in the past. All right, so let's talk about where you can actually use Nano Banana Pro. And there are a few
+options, right? So first is the Gemini app. This is the most obvious. When you go to gemini.google.com, you obviously
+have the option to click on tools and create images. This will use Nanabanana Pro for now. If you have access to
+Gemini 3 Pro that is so either the pro plan or the ultra brand I think even if you have Google workspace you will have
+access but basically no matter what you want to create such as explain how back propagation works by creating an image
+in surrealist style it will load up Nano Banana Pro and it will create the image. Now this is where most people will use
+Nanabana Pro but it definitely is not the best way to use it and I'm going to show you a couple of better options on
+how to use Nanobana Pro. Okay, so here we have the image that I generated. And one thing you might notice is that there is this watermark in the bottom right
+corner of the image. And this only happens if you use the Gemini app. Which is why I would recommend you to use
+Google AI Studio, which is what I used earlier to generate this image of Vic. Because not only do you not get that
+annoying watermark, right, this star in the bottom right, but also you have way more options and settings. And this
+really is the place where entrepreneurs and developers should be using Nano Banana Pro because not only do you get
+higher resolutions, you also have custom aspect ratios, more tools, and more control over the model and I would say a
+better UI as well. Let me just show you. So this is what Google AI Studio looks like. So first off on the left, click on playground and we can actually close the
+nav menu. Then I'm going to move my webcam so we can see all the settings on the right. Okay, so at the top we have
+the model itself, right? So you can select Nanabana Pro. You can also do Gemini 3 Pro and all the other models that Google has to offer. Obviously,
+this video is about Nanabara Pro, so let's select that one. Then we have system instructions. Here you can give it more context. Let's say you're
+generating a comic book or you're generating a story that's going to be turned into a movie or, you know, you're
+creating Facebook ads, whatever. You just describe the broad work you're doing, right? If you're working on more
+than one image, it's probably good to describe [snorts] what you're doing in the system prop. Then you have the API key. This is what you need to connect in
+order to use paid models like in Arana Pro. Again, if you wanted to make a full video on Google AI Studio, make sure to
+comment below and subscribe because there is a lot of different settings and it's an amazing tool and honestly it
+probably deserves it all video. Then we have the temperature. This is how creative or varied the results are going to be. The best results are at one as it
+says, but if you want to have like more consistency and more randomness, then you can lower it to zero or 0.1
+whatever. But then these are the most important settings. We have the aspect ratio which obviously is essential when generating images which 101 is square.
+Then we have 169 this is classic YouTube video. We have 916 this is like short form Tik Tok YouTube shorts reels. 219
+this is like cinematic all kinds of different you know 3 to2 is like Instagram posts whatever you want. All
+of the main aspect ratios are in here which again you don't get that control inside the Gemini app. But then not only
+that you get the resolution. So the default is 1K which is already pretty good. Like a lot of these images that I showed you in the TL draw so far were 1K
+images. However, there's also 2K, which is 2,000 pixels. If you don't know these resolutions, what they mean, it's
+basically how many pixels there is on the longer side of the image. But not only that, there's also 4K. Obviously, 2K and 4K are going to take longer and
+they're going to be more expensive, but the results are that much more impressive, especially if you ask for a lot of details like I did in these
+images. You can see that the explanation of the auto regressive models is very very detailed and there's lots of small
+text that I mean all of it seems accurate. I don't see any spelling mistakes and this I think was only 2K.
+So the 4K image will be even more detailed. So let me show you a quick practical use case that all of us can
+use. So aspect ratio we're going to do 916 which is the Instagram story format. We're going to go 2K resolution and I'm
+going to do an Instagram story promoting your software company. So here's a simple example that all of us could benefit from. create a visual Instagram
+story promoting my AI software tool that uses Nano Banana Pro to generate product photos for Shopify e-commerce stores.
+So, of course, you can use this no matter what app you have, no matter what software you've built to generate lots
+of vertical images for stories, for Snapchat, whatever you want, just for paid ads as well. And have authentic,
+unique images that stand out generated with Nabana Pro. All right, here it is. You can see that it used some Google
+search during the reasoning process. And yeah, this looks like a unique Instagram story. It even has the call to action.
+Swipe up to try. Guys, if you think about the implications of this, this is like the cursor moment but for
+marketing, right? Whereas cursor and other AI agents cloud code codex made building software easier than ever
+before. Now, thanks to Nano Banana Pro, marketing and advertising your software
+or your app has never been easier. It's like accessible to everybody. You don't have to be a professional designer. You
+don't have to be a professional marketer. If you just learn how to use Nanabana Pro, which you will learn from this video, you will have an insanely
+powerful tool at your disposal that allows you to market any business, any product, anything you want with unique
+images that are attention grabbing, that are relevant to your product with perfect text. I mean, the fact that this
+is now possible is incredible. And most people are just not going to do anything about it. They're going to see this video, they're going to think, "Oh, this
+is pretty cool." And they're not going to implement it. That's the angle I took with this video. My goal is to show you
+how you can implement this because this is beyond powerful. If you start using it, your business can transform
+overnight. You can have way more creatives, way more AB tests, way more assets than ever before for a fraction
+of the cost. Now, if you think this is impressive, just wait until you see what's coming because later on in this TL draw, I have some incredible use
+cases that are going to blow your mind. Now another place where you can use Nanabana Pro is of course in Notebook LM
+which is Google's tool for learning research and understanding and this really is the best way to use Nanobana
+Pro to become smarter. Now I just made a whole video on Notebook LM. So I'm going to link that below the video. So make
+sure to watch it after this one. But just to show you a quick overview inside of Notebook LM if you open any of your
+notebooks on the right we have some new formats. Right? So before we only had these six and now we have a infographic
+and a slide deck and both of these use Nanobanana Pro to help you learn faster and upskill yourself. Really this is the
+main superpower learning and becoming smarter. Not you know having AI do all the work but having AI upskill yourself,
+become a more competent individual, give yourself a more valuable skill set, learn another language, improve your technical skills, whatever it is. That
+is by far the best way to use AI. And then also you can use Nano Banana Pro inside of your Google slides to take
+your presentations to the next level. So let me show you example straight from Google. Now keep in mind that some of these features are only available in the
+USA. But man this is a crazy thing. So some very basic slide right that takes like couple you know 30 seconds minute
+to create and you click on beautify and look at that incredible improvement of the design. So yeah, having a sloppy
+presentation really there's no excuse nowadays because none of our pro is going to be integrated in all Google
+products so that you can just one click it and use it to design anything you want. Yeah, I mean these slides would
+have taken weeks like if you're a designer still it would take you a
+couple of hours at minimum to create these but now thanks to Nabanana Pro
+it's simply a single prompt. All right, so let's jump into the practical use cases and these are going to be focused
+on either making money or increasing your own leverage in your business. First of all, social media and personal
+brand. Again, absolutely insane game changer for no matter what you do, right? Instagram, Twitter, YouTube
+thumbnails. It's just endless opportunities and endless variations and no matter what you want to imagine now,
+it's possible, right? So the workflow works like this. You do a deep research on any topic that you're interested in or that your audience is interested in.
+Then you paste that result of the deep research. So you know maybe we would open up Replexity or you can use Gemini
+of course and say explain the key moves Google did over the last three years to
+go from being super behind on AI to become the market leader. Okay. So we
+will launch a deep research on this. Then we would switch into Google AI Studio right here. Boom. I'm going to
+create a new chat. Let's prepare something. So this could be like a one-on-one post maybe on Twitter or Instagram. Let's do 1K for a faster
+generation. And then we're going to prepare a prompt while this deep research is still going. Generate a
+treasure style like map of Google's key
+moves and decisions that resulted in their insane AI comeback. Here's more
+context. And I'm going to do XML tags because that's how you do proper context engineering. Boom. And then inside of
+those I'm going to paste in the results of the DB research which again perplexity checks like 100 different
+sources. So this is going to be very accurate and it's going to be better than if you just rely on the built-in
+Google search from Navara Pro, right? Because if you've been paying attention to this video, you'll be like, "Hey David, you mentioned that Nanovara Pro
+can do Google search." And that is correct and it's good and it's better than nothing but it's not a deep
+research, right? It's uh it's good for like simple facts just uh checking the weather in a place stuff like that. If
+you want Nano Banana Pro to perform at the highest level, you should provide the context. So it doesn't have to do
+many different things, right? If you if it needs to do web search and then reasoning and image generation, it still can do all of these and it can do all of
+these really well, but it's better if you describe the style of the image if you give it the context and all it has to do is generate a nice image. So that
+is a pro engineering tip. Okay, here we have the DB research. I'm just going to copy the whole thing, paste it in
+between the XML tags, and hit run. Now, what I did is I provided data banana pro with the essential context, the
+information. So, it doesn't have to do as much reasoning and web search. It can focus on generating the image that I
+want. And this, of course, is absolutely huge for building your social media or personal brand. You can literally hire like a virtual assistant from
+Philippines or India or whatever to just do this for you. Or if you want to be next level and if you're watching this
+channel, just build an edit automation, right? build an automation for this with open router that uses Nanabana Pro which
+by the way the naming is uh Gemini free pro image right so
+Nanabana pro is like the public facing naming but the official API naming is Gemini free pro image preview so you can
+use this either through Gemini API or just opener and instead of anytime you can just build an automation that checks
+the web for daily news or interesting topics or whatever you want feeds that into a perplexity DB research which by
+the way that is also available So uh it's right here sonar deep research it's also in open hour so you can just do
+both of these. So the deep research does exactly what we did here but automatically and then you take all the
+results and feed them into nanobara pro just like we did right here. But all of that can happen inside of any
+automation. very simple automation like less than five nodes but very very powerful and it can take your social
+media marketing to the next level as you can see right here with this example where we can see how Google navigated
+the treacherous AI waters to become the winner of AI. So at the start there was
+the code red. It's actually very interesting guys. Holy holy I should probably not swear but hey YouTube already is terrible AdSense so
+it doesn't matter. So they got the code red where the chbd tornado was coming Google started to panic. Now, luckily
+they had the custom silicon edge, their own TPUs, which made them not reliant on Nvidia, something that other AI
+companies cannot say. However, the road wasn't easy. It started with the Bart failure in 2023. They launched Bard. It
+was a complete flop. Even the official demo live just had a complete hallucination. Terrible, right? But then
+there was the great merger. Deep mind and Google brain united in April of 2023. And this was one of the first
+major moves that Google did. Then we have the model archipelago where they started renamed bars to Gemini and they
+released Gemini 1, 1.5, 1.5 Pro, 2, 2.5 Pro, 2.5 Flash, and now Gemini 3, which
+is the frontier model leader. And this actually resulted in defensible mode and future growth, putting Google at the
+very top of the AI game, letting their AI models reach billions of users. Yeah, this is really good, guys. This is
+insane. Like, this literally is a whole story in a single image. Yeah, I I don't know what to say. Like words are very
+difficult to describe. You really have to try this yourself like that. If you take something from this video, go into
+Google AI Studio and start generating images yourself. You have to otherwise you will fall behind. There's there's no
+alternative. The second practical use case how you can make more money with Nanobana Pro is if you're a freelancer
+or if you work with clients. There are right about infinite ways to make more money with this. Okay. So, let me give
+you just a few examples to make it super tactical. Logos, right? You can design logos, improve logos, give them
+different variation. dark mode, light mode, retro style, whatever, right? UI
+designs, any type of UI, any type of website you can recreate. Or if there's a website like, you know, maybe your
+school has a terrible UI, most likely your local restaurant has a terrible website, most likely you can just oneot
+improve their UI and upsell them on your services, right? And it's much easier, like this is the pro tip right here.
+It's much easier to sell anything if you already deliver free value. If you come
+up to a business and you tell them, "Hey, I can rebuild your entire website." Obviously, you'll use AI
+agents to help you out, but you just tell them like, "Your website is terrible. It's probably ruining [clears throat] your conversions. I'm
+going to give you a new website. Here's what it look like." And you give them the design for free. When you have
+something to show on the sales call or on the pitch, your close rate will massively improve. And this really
+applies to no matter if you're a freelancer or no matter if you work with any types of sales or clients. You know,
+if you have something to show, if you show that you already did some work for them for free, it's like, wow, this guy,
+he did this for free. Imagine what he would do if I paid him, right? And then obviously selling that client is much, much easier. Another example, e-commerce
+photo shoots. This is going to be huge for any e-commerce store, right? Physical products. You're selling
+t-shirts, headphones, sunglasses, accessories, whatever fashion, whatever
+you're trying to sell. This is a complete game changer. It's over, right? Like it's like instead of hiring
+expensive models, studios, photographers traveling around the world into locations, you can take your water
+bottle, put it in the Norwegian fjord for $0 or API costs for Narbara Pro,
+which like we can look at API costs which are pretty like you know compared
+to hiring real life humans, models, photo shoots, camera gear, equipment, this is negligible, right? Like it's two
+to three orders of magnitude cheaper. Insane. So if you're running e-commerce store, if you're doing anything drop
+shipping or Shopify store, physical white label, game changer. Total game changer for you. Same with YouTube, right? For me, YouTube thumbnails,
+generating variations has never been easier. I can change the t-shirts. I can change the background. I can change the
+text. I can change my facial expression as well. It really is crazy. Like this, you can take this service and sell it to
+any content creator. Maybe outside of people in AI because they're logged in, but outside of AI, you know, fitness,
+gaming, entertainment, food, there is endless types of videos on YouTube. You
+can just tell them professional thumbnails, right? And just a quick search on Fiverr, you can see that like this is nothing. This is like cringe.
+This is like slop, you know? This feels like Mr. Beast but from Temo. You can
+generate much better thumbnails than this with Nanoba Pro or pennies on the dollar. And you can put all of these
+people who make shitty thumbnails out of business, right? Or you can just improve your own videos. If you make content
+yourself, make thumbnails, test new variations, test new formats, stuff that otherwise would either take you hours to
+recreate or you would need a professional designer. You can do that right now yourself in a matter of a few minutes with Nanabana Pro. So yeah, no
+matter what you do, use this to give to client free taste test, right? Like a teaser, you know, generate an image with
+Nabana Pro. I would recommend not doing onetoone. I would do something more esoteric like 219 because everybody will
+do 1:1 you know so choose the aspect ratio that's bit more esoteric do like 0.75 temperature right here resolution
+2K or 4K you know write some system prompt and use like a professionallook style maybe a treasure map is not the
+best idea but hey maybe you can try it but the point is that if you actually use this before your sales calls which
+again writing a single prompt takes 10 seconds this will massively improve your close rate and inevitably make you more
+money now let's say you already have a business. How would you use Nanabana Pro to scale? Well, there are several
+different ways, right? First of all, new creatives. If you're running paid ads, Facebook, LinkedIn, Instagram, Twitter,
+with Nanobar Pro, you can just create new image creatives nearly instantly. And then you can feed the images into
+videos and then generate video creatives. But again, that's a topic for a whole another video. how to use V3 or
+clink or Cdream to turn amazing AI videos into I mean to turn amazing AI
+images into realistic AI videos. So again if you want a video on that comment below. Another thing you can do
+is AB test your landing pages right. So here obviously I had Nabana generated image of how Nabana Pro would improve a
+business. So first of all is new creatives but then is AB testing landing pages. Let's say you have your own
+software, your you have your own SAS or whatever website you have. You have a landing page, right? You're selling something. You probably have a landing
+page. Well, guess what? All of us want better conversion rate. And now it has never been easier to just AB test a
+different design, different layout, different text, different uh gradients, color palettes, whatever you want. Nana
+Pro makes this possible. Organic content engine. So, this is what I explained earlier. You can step up your organic
+content game to a level never before seen. No matter if you're doing short for or just images or just like B-roll
+for videos, right? Just what I'm doing right now. I have supportive visuals for this video. This is a long form piece of
+content where I'm explaining something. And you know, if I just had like imagine this, how boring is this, right? Just
+text. Like the average view duration of this video would be much lower if I didn't have this supportive image, just
+visual explanatory. And I used Barara Pro to create it. So you literally I'm
+not just talking, I'm showing you what you should do. like just you know I'm I'm walk I'm I walk the walk as the
+Americans say. Next training new hires. So whatever SOPs playbooks you have you can just turn that into a visual image
+and you can train new hires much much faster because visual learning is much more efficient which I'm going to explain in a bit because that's a that's
+a whole another can of worms. Visual learning it's it's insane. Or as I said better product photos if you're selling
+something physical actually incredible. And of course these are just a couple of ways you could scale your business with Arbana Pro. It doesn't take a genius to
+think of dozens of other use cases to increase your business, to improve your marketing, to improve your branding.
+This model really is like it's like a chbet moment for AI images. Really
+revolutionary. Now, another use case of Nanob Pro is personal life use cases, right? So, for example, dating. I think
+this is going to absolutely destroy dating apps because uh you can just generate images of yourself doing crazy activities that otherwise you wouldn't
+do or traveling all around the world or you know make yourself look better give yourself six-pack put yourself in
+expensive clothes like this will happen even if you like it or not right men will do it girls will do it yeah it's
+going to destroy dating apps or at least the dating app companies implement synth ID detection right but in the meantime
+it's going to be an absolutely untapped strategy now moving on to a a serious use case to improve your career, right?
+Head shots, resume, CVS, your website. This is a generated photo of me uh wearing suits. I don't really wear
+suits, guys. It's just like a t-shirt is is fine. Uh but hey, maybe that's because I run my own business and I
+don't have to do much networking. But funnily enough, I actually use this on LinkedIn now. So, if we go to my
+LinkedIn, you will see that I have changed my photo to this, right? And the reason is it just looks good. Like I I
+don't know, it looks much better than what I had before. looks professional, looks like a high quality headshot and
+yeah, of course it was generated by Nano Banana Pro. So while in the past you have to spend a lot of money on a nice
+suit and photographer go to studio blah blah blah take time of your day and you know maybe retake this photo every
+couple of years as you age or get older. Now you can just generate one instantly with Arbara Pro and it will probably
+look better than um professional photo shoot. So yeah, pro tip improve your
+LinkedIn. Another personal use case which I can relate to a lot is generating images in restaurant menus.
+Right? I absolutely hate when restaurants do not show you images of the food. Especially when you're
+traveling and you're not familiar with the local cuisine. Well, guess what? This is now a solved problem. Right? You just paste in an image of the menu and
+then Nanaban Pro will generate relevant realistic image of what those foods look
+like. So you can actually choose like okay maybe I want this or maybe I want this maybe I want more eggs maybe I
+don't want some vegetable you you can understand it way faster than reading menu translating to the language that
+you're traveling in yeah a huge simple use case but a huge game changanger and
+then we go to the topic of learning and this I would say Nanobana Pro is a nuclear weapon when it comes to learning
+it will two to 4x your learning information and this is not just some random number I pulled out of my ass in
+In fact, this is backed by real studies and real research on image versus text,
+right? So, when you use visuals, you can learn way faster than with just text. And in fact, it's 400% boost across many
+different people. So, it's not just like visual learners or, you know, auditory learners, blah blah blah. On average, if
+you supplement text with visual learning, you improve your attention and your rate of learning by 400%.
+This is why I call it the learning nuclear weapon. With Nanobanner Pro, no
+matter what concept you're trying to understand, no matter what you're trying to learn, you will learn it
+significantly faster and you will retain way more information than if you just
+look at text. And of course, as always, I generated an image using Nabana Pro to explain this for you. So on the left, we
+have text only learning, which is slow and inefficient, right? So here a human just looks at a bunch of text could be
+chbd could be a long article could be a book doesn't matter then your short-term memory tries to process this and you
+have very low retention say 10 to 20% of the information that you actually read and that's due to the slow information
+flow your brain simply processes text slowly right this is a reality there's no need to fight this reality the
+information gets stuck and often forgotten so learning purely from looking at text is very inefficient this
+is where visuals speed up learning significantly On the right we have an example of visual plus text learning. Right? So
+here we have the same human but the input is text, graphs, images, you know, pie charts, photos, whatever. And then
+the time is less. So not only does it take less time than the original one, but also your brain will retain a lot
+more information because it goes through the long-term memory pathway. And you can expect maybe 65% retention in less
+time. And in fact, and this is a crazy statistic, images in your brain has a 60,000 times
+faster processing than text. Right? So if you show an image of something, this is why memes, by the way, are so
+popular. This is exactly why memes work so well because our brains process
+images and visual understanding 60,000 times faster than text. So your recall
+ability will be significantly better. you will learn the same concept in less time and overall you will just have a
+deeper understanding of whatever you're trying to learn and as you can tell by my enthusiasm I really do believe that
+this will revolutionize education it's especially combined with notebook LM where in notebook LM you can give it a
+lot of different sources both images audio video documents PDFs and then it processes them and you can generate all
+of these different formats which now are powered by Nanobana Pro to retain information much faster so even if you
+implement just one thing from this video, let it be this. Let it be the fact that no matter what you're trying
+to learn, use Nabana Pro to supplement with visual images, infographics,
+annotations to learn faster and to become smarter. You can actually become smarter. This is
+this is like the Gutenberg press 2.0. So before the printing press was invented, all books and texts had to be written by
+hand, which is very slow, very inefficient, and very expensive. That's why most people were illiterate. There
+was no way for them to afford books. So they were not intelligent at all because they couldn't read. They couldn't educate themselves. But then in the
+1500s, Gutenberg invented the printing press, right? And this was a complete game changer because now you could
+mass-produce books and text and make it a lot cheaper, a lot faster, and reading
+was accessible to the masses and people could for the first time in history actually become smarter. This is like
+the same moment but with AI. With Nanana Pro, you can take com like the most
+complicated concepts you can imagine and you can generate infographics and visual images explaining them in a fun way in
+an interactive way in a way that you want. So this is like the Gutenberg Press 2.0 really a history moment that
+takes something that was difficult and manual to something that is scalable, accessible, and affordable. So really
+this is only a matter of time before everybody adopts it. Right? The question is will you adopt it today or will you wait one or two years once it's
+inevitable and once there no longer is an advantage. The choice is yours. Now let's move on to more use cases but this
+time focused on software and coding. So first off Google anti-gravity. This is a new IDE from Google. Basically their own
+cursor competitor but it now uses nano banana pro. So this is by far the best
+way for front- end planning, designing, um, refactoring and let me just show you the official video from Google
+themselves. So again, Nanobana Pro is fully integrated inside of Google
+Anti-gravity. So if the agent needs, it can use the tool to generate an image
+such a design of a front-end component, new landing page or layout like here. And then Gemini 3 Pro, the coding model,
+can actually build it in HTML, JavaScript, CSS. And as you can see, you can highlight different elements and you
+can tell it to change them. And yeah, this is basically a copy of cursor with
+the cursor 2.0 update. But hey, don't hate the player, hate the game, right? All of these tools, well, all of them
+are fork of VS Code, so they're just copying VS Code, but all of them are copying off of each other. And especially given how fast software can
+be produced with AI, the only mode is speed and really having deep
+understanding of the customers and of the problems. Right? So again, if you want me to make a full video on
+anti-gravity, comment below because this is a huge thing. It's a entire new IDE. It's a whole new code editor and this
+video already is packed with information. So I cannot go too deep into Google Anra, but I'll probably make
+a video on that. So make sure to subscribe to not miss this. Another very useful use case for developers and
+people building software is adding annotations. Right? So here is example on some famous moments such as
+moonlanding rocket and formula 1. But you can do this for your documentation as well. Whether internal documentation
+of your software or the public facing docs. Visuals are much more easier to
+understand than just text. Right? The reason why a lot of people skips is because reading dogs takes a lot of
+willpower, a lot of focus, and it's difficult to understand. Well, guess what? If you add a bunch of annotations
+everywhere, that no longer is the issue. You can take an image visual thing, right? And you can have, okay, flag made
+out of nylon, 3x5 feet, lunar module, this is legs, bus, boom, space suit,
+multi-layered silicone rubber shoe, and like you have explanation of materials
+in this. Same with the Formula 1 car. You have the halo, front wing, and instantly you can learn the main parts
+of Formula 1 car. Of course, could you learn this with text? Absolutely. But will you really understand how the halo
+looks like just by reading about it? No, you won't. So this really is a game changer for documentation. It allows you
+to make the technical stuff understandable and widely accessible. So now let me show you how to actually add
+Nano Banana Pro into your own app, into your own codebase because I just did this inside of Vectel. We introduced the
+image generation tool in the chat. So no matter what model you're using, you can ask it to create an image. So I said
+generate an image of what Europe looked like in the year 1850 with clear annotations of different countries and
+events. And actually I'm going to show you how I did that inside of cursor. Right. So the three key files are the
+image generation service which is the main file is responsible for generating the images using Gemini 3 Pro image
+preview which is the official API name for Nanobana Pro and then it uploads the images to Superbase storage and returns
+the signed URLs to access that bucket. And this file is pretty simple. It's like 220 lines and of course I used
+Gemini 3 and CEX to write this file. The second core file is image tools which
+exposes this to the chat agent right so our standard chat agent which is you know what you interact with inside of
+vectal can use this tool you can see here generating image and boom there it is. So let's click on that and you can see that this is a very nice looking map
+of what Europe looked like in the 1850s and you can see that Czech Republic was part of Austrian Empire. We got France
+after Napoleon wars obviously. We still got Prussia. We got the Russian Empire,
+the Ottoman Empire, which obviously doesn't exist anymore. And yeah, this is a very, very nice map. Right now, I'm
+located somewhere in here as I'm recording this. This is amazing. Like, you can literally get stuck on using
+Nanovana Pro for half a day because of how good it is. So, this is what we implemented right now inside of Veectal.
+Everybody who's using vectal for their tasks and task management can access Navara Pro in the chat. And in fact, I
+used AI agents to help me build the software. So this is the ultimate leverage, right? So not only do I
+improved my product by being able to incorporate the latest and greatest AI image model into my product, but I used
+AI AI agents to actually write the code. Right? So Gemini 3 and GPD 5.1 CEX Max
+are currently the best by a lot. I think Enthropic is very behind but hey rumors are that open for 5 is around the corner
+so we will see but basically here's how I implemented it so feel free to pause and you know look at this code little
+sneak peek for you guys and again inside of my accelerator you'll have full access to my codebase all of my system
+stuff like that that's only going to be for people who are actually serious about building a software company not
+for complete beginners it's for people who have a deployed app who have authentication integrated payments and
+at least one paying customer but again more on that in a couple of is so the main gotchas when implementing another
+bar pro into your app are these three points. First of all, modalities parameter you cannot just send a prompt.
+You must explicitly and strictly send what modalities you're including. So whether that is image, whether it's
+image and text or just text, right? So here I only send an image but your back
+end must handle this properly. If this didn't send the modalities, it would throw an error, right? Right. So, we're
+using open router API, but it expects this because that's how Google configured it. If I was to attach an
+image of maybe like a map style that I like, then it would be both image and text. So, it really depends on what
+input the user is sending, your code must properly handle that. So, when you make the API call, it doesn't fail. The
+second mistake that a lot of people would make when implementing Nanobanner Pro into their software is they forget
+that the links expire. So the image links the AI gives you that Google gives you will expire after a few minutes
+because it's endless storage, right? So you must download them immediately and upload them to your own storage. So I'm
+using superbase for vectoral if you want to access them forever. So you know if I was to refresh this chat and I wasn't
+doing that it would get lost. But since we are doing that if you use vectal if you generate any image it doesn't get
+lost because it's stored in our database. And then number three and this was very difficult to figure out. That's
+why right now Gemini models are probably the hardest to build software with right. So like we're using all kinds of
+models enthropic, open AI, open source models, XAI models. Unfortunately, Google models are probably the hardest
+to build with because the response formats are inconsistent, right? So sometimes the image is in a special
+images array. Other times it's hidden markdown link. So your code needs to be good at parsing and at handling these
+different situations otherwise you won't be able to build software with Navara Pro. But if you can, you know, overcome
+these mistakes and because you're watching this video, you know, not to make them, you should be able to integrate Nana Pro into your app very,
+very easily, especially since it's available on open router. Now, here comes probably the most valuable part of
+the entire video. Specific startup ideas for software products that you can
+implement. So, this is why I added this text right here. Now I used inference on my brain which is very expensive to
+generate a quick list of ideas. But guys this literally endless. This unlocks so many things. If you just sit down for 30
+minutes and think about your industry the amount of possible software tools you can build with Nanobana Pro. It's
+disgusting. Like it's too much right? So that's why I just listed out a bunch that are such a no-brainer. And these
+apps are going to exist 12 months from now. Someone's going to make them and someone's going to get wealthy building them. So it could be you or it could be
+someone else. But hey, here's just inspiration. So first of all, this is what was the input, right? So I could this is what I would do in the past. I
+would just list it out, you know, and talk about it. But no, guys, that's the past. We are living in the future. So
+what I did is I took this text and this very professionally designed graphic and
+I pasted it into Google AI studio and I told it to generate an infographic about
+these startup ideas which is obviously much better designed and not only that I had it explain the insight for each
+startup idea explain how to build it and the go go to market strategy how to
+actually market this idea right because this list only has the startup ideas but it doesn't explain how you would create
+that software or how you would market it which is what a lot of you know developers struggle with is actually
+advertising their SAS getting customers right so now let me go over this list of startup
+ideas where not only it includes the idea itself but how to actually execute
+it so first of all cursor for presentations right tool like cursor that allows you to type in plain English
+and you get an outcome which inside of cursor is obviously code there's going to be stuff like that for presentations.
+Maybe Google will implement it themselves in Google Slides fully learning vibe coded. Maybe Gamma will do
+this really well or maybe there will be something new that's like super intuitive, super simple, easy to use, quick, powered by N by Pro that lets you
+create amazing presentations from plain English very fast. Another thing, professional headshots app. So this
+would be more like a mobile app but basically yeah it's a super simple thing where you upload any photos of yourself
+you know maybe like side angle or front angle and it will just give you professional head shot that you can reuse everywhere. Very simple you can
+build this in couple of hours and you can um do mass marketing. This would obviously wouldn't be targeting people
+like you and me who know about Google ad studio who know about open router and all these tools. This is targeting the
+masses. You know the the time for this is huge like is for the other things on this list. So next we have a optimizer
+for men for dating apps. You know you put in photos and you can improve the lighting put them in different location
+improve their clothes hairstyle whatever it's going to exist you like it or not. Next same thing but for girls testing
+different makeups seeing what you would look like with a you know no makeup no makeup makeup makeup makeup all that
+girly Same thing with hairstyles. This is actually for men and women. You can test out before you, you know,
+cut your hair how you would look like. And this is huge, right? Like how many, this happens literally every day where
+people go to a barber, they try a new haircut and they don't like it. Well, guess what? With Nabana Pro, you can
+prevent that. And again, this is one of these mobile apps that could go super viral, reach millions of users, and it's
+actually not that difficult to build. Next up, more professional, is like visual infographics for education. So no
+matter if you're working with schools or online content creators, you can create
+infographics for any topic. Especially the comp the more complex the better. In fact, you know, physics, math, coding,
+geography, biology, anything that needs to be explained. If you're able to provide high quality infographics, which
+again you can easily do with another banana pro, that's another startup idea that is going to exist 12 to 18 months
+from now. Next up, AI research visualizer. So basically something that goes through archive takes the latest
+trending research papers and turns them into visual easy like whether graphs
+charts infographics you I don't know what what the optimal medium is but hey that is for the startup founder to
+figure out whoever is building this you need to figure out what the optimal medium is maybe some text and some images probably but taking complex AI
+research papers which most people have never read a single paper in their life and most pe people want to read research
+papers, but they feel like, you know, they feel inadequate. They have this imposter syndrome that they're not a scientist, that it's too complicated.
+Well, guess what? With Arana Pro, you can just paste in the whole research paper and have it generate a single explanatory image. Another startup idea
+that is going to exist is a you automated YouTube thumbnail AB tester. If this existed, I would pay for this
+money for [snorts] sure because you don't have to manually test new thumbnails, right? With for those people who are not content creators on YouTube,
+there is an ability to AB test your thumbnails, right? You can upload two or three different images and then YouTube
+will recommend them to different people and whoever has the higher click-through rate will win and get displayed on your
+video. That way it can perform as well as possible. Now you can build a startup that automates this that uses Navana Pro
+to generate slight variations of these thumbnails. For example, here could be different angle, could be different
+color of jacket, all of which would still be relevant to video but it would be continuous testing of packaging. And
+for content creators like myself, this would be priceless. So here are just a few ideas that I was able to come up
+with in like five minutes. And again, I want to encourage this. There is unlimited amount of options of different
+softwares and startups you could build with Nanabana Pro. It really unlocks a sea of an ocean of startup ideas, if you
+will. So these are just a few. And again, if you're serious about building a software company, join the free weight list for my own accelerator. The link is
+going to be below the video. Okay, so now let me go at the bonus section of this video where I explain Synth ID and
+how you would be top 1% of Nano Banana Pro users. So first off, Synth ID, what
+is it, right? So it's a invisible built-in watermark. This is what Nano Banana Pro includes in every single
+image. So it's not just this corner that you know this icon you see inside of Gemini. That is the visible watermark.
+Synth ID is the invisible built-in watermark that is included with every single image that Nano Banana Pro
+generates. And the purpose is simple. It's to track which images have been generated by AI. So Google, this is from
+Google, right? Maybe other companies will adopt it. Who knows? But Google is able to tell whether an image has been
+generated by Narabana Pro or not, thanks to Synth ID. And a pro tip, you can actually drag any image into Gemini or
+Google AI Studio and you can have it check if it was created by AI thanks to
+Synth ID, right? So if you're on the internet and you're not sure like is this a real photo? Is this like you know
+AI generated transformation maybe like you're trying to lose weight then there's some supplement whatever you can
+just drag it into Gemini and ask is this AI generated or not? and it will tell you right now the main question is
+probably on your mind but David how would I remove syn ID right because it's only a matter of time before every
+single software is checking for synth ID well this is not as simple as it seems
+first off we have to start from first principles no watermark is unbreakable so it absolutely is possible to mitigate
+or remove synth ID but it's not easy and the reason for that is Google has
+trained synth ID on the simple tricks, right? Such as the naive solutions like cropping the image, resizing,
+recompression, light filters. This is not enough to remove synth ID. Synth ID is embedded in the pixels in a way that
+you cannot spot with your eye. And to remove it, you'll have to do a lot more advanced image editing and image
+manipulation than just simple cropping or, you know, brightness change. Now again I might make a full video on that
+because it's a very fascinating topic and I think there's a lot of demand in removing watermarks from AI generated
+images. Now sure there will be tools to remove synth ID but it's a it's like a
+loop right there will be a stronger tool that removes it then Google will spot that tool. It will retrain synth ID to
+know that okay this is how to bypass it and they will patch that and the loop will repeat. So all of the methods that
+we discovered to remove synth ID and AI watermarks, it will just make them stronger and more complicated in the
+future. Another great thing you can do with Nanobar Pro is upscaling. You can take a blurry image and run it through
+the model to upscale it. But you have to be careful. So in most cases, this is fine, right? It it obviously improves
+the image, makes it nicer. However, you cannot trust the data. For example, here you we have a blurry license plate.
+Clearly there is no data in this license plate. You can't even see a single letter. If we go to the right, you can
+see the license plates clearly. Now, you don't guys, you have to pause and you have to realize you cannot be a dumbass.
+Okay? Because if you've seen any movie in the last 50 years, there is inevitably going to be a scene where
+they're like on a security camera and they zoom in, they enlarge. That is  That technology does not
+exist. You cannot invent information where the pixels do not exist. Right? So, this is the danger. This invents new
+data. People will think this is because of how good it is, right? This is the hallucination. Because of how good and
+accurate it is, people will think that this is good, that this is an accurate enlargement, an accurate upscale, but it
+is not. If if there is no nothing to work with, it just invents the data. Sometimes there is some letters, you
+know, and they're just kind of blurry and you can upscale them. That's fine. But in a lot of cases, it will just make up new data and you cannot trust it,
+right? Just know that the movie stuff is complete So, how do you actually become a pro at prompting Nanobana Pro, right? How do you become
+an elite user, a top 1%, top 0.1% context engineer? Well, Google actually
+gave us the tool and this is the say what you see game. So, I'm going to link this below the video. This is a very
+useful tool from Google where you can improve your productive skills for AI images specifically. So, the game is
+very simple. Say what you see. So, let's start level one. And here's how you play it, right? They give you an image and
+you must include a description of that image which trains your brain to accurately to like put yourself in a
+position of the AI image model so that you can write much better prompts that you're writing right now. So here's a
+simple tip. Include information about the medium, the subject and the context. So the medium in this case is a
+painting. Subject is a dog and the context is in a field the environment. Let's begin.
+So here Google gives us an image and this is AI generated obviously
+I feel like I need to say that but it's kind of obvious. Hey so we need to say what we see right so this is what will improve my product engineering skills.
+So what do I see? I just see black and white pencil painting
+of a river and a hill. Maybe it's not a pencil. Maybe it's like
+minimalist pastel painting. Okay, maybe that's better. Let's see what my accuracy is. So now it will generate a
+new image based on my prompt and it will compare them to see how correct they are. And this is pretty good. 60% match
+black and white. Maybe I shouldn't use minimalist. That removes some of the details. But now you know that like using minimalist is bad in this case. If
+you feel like you would like to improve your skills at Dabara Pro, I'm going to link this bullet video so you can train yourself to think like a image model
+would. And it trains the core skill of turning what's in your head into sharp specific prompts so that you really
+describe the details so that you get the image output that you want. Now in terms
+of your daily use, how do you get better? Right? So this is more for like training yourself, upscreening yourself.
+Let's look at daily use. When you're using Nanoba Pro in your business, in your work first of all including images
+and context, right? So let's say in this example where I had the map generated. If I just went to Google and say like u
+Europe history map and I looked for a format that I like. So maybe I want like
+this really really like hand created you know detailed stuff like that and I
+would copy that. Boom. Go into Google studio paste it and I say make the map
+look more like this. Another great tip is including text when you need explanation. So we did that earlier
+right? You do a deep research whether it is with JBD, perplexity, Gemini. You include the outputs of that deep
+research and then based on that you can see that boom this is the deep research based on that nanobana pro generates the
+image. So it doesn't have to like do as much Google searching and it will be way more accurate if you provide the text
+and all of the context you want it to generate instead of being super vague and it has to do all the research
+itself. And the third tip I have which is very important when you're generating multiple like edits in a row, right? So
+you generate V1, you want to change something, you generate another one. The moment it goes in the wrong direction,
+you need to reset. You need to reset to a new chat instead of continuing going in the same thread. Basically, don't
+keep patching a bad seed. Right? This kind of applies with language models as well, but it especially applies image
+models. Like with your face, when I was doing thumbnails, if you do enough edits, it kind of starts messing up your
+facial expression. at which point you need to take the last great image, use that as the original reference in the
+first prompt and start over from scratch. Otherwise, you're just building on top of bad foundation. And actually,
+we have the new map right here. You can see that it is much more closer to this
+than you know this uh image like visual one is very vibrant colors, very like um
+yeah, for kids and this is more like historical even though some of these drawings could still be changed. Now,
+notice how it kept the colors in the Google logo. That's that's not so impressive.
+Okay, let's go back. And all of this everything we talked about leads me to make a prediction for the next 12 to 18
+months, right? Because this is a huge update. This is not just a small improvement. It's a complete revolution.
+It's a game changer. So, I'm going to make a prediction that we will see Nanobana Pro everywhere 12 months from now. And when I say everywhere, I mean
+coding tools, image tools, design tools, chat tools, phone apps, like any type of
+software where having realistic images would make sense or on the street, right? Like even walking when I was in
+New York, we could see AI ads for like gyms and stuff, but they were very obvious AI ads, probably using some old
+version of Merly or Stabil Fusion. With Narana Pro, you won't be even able to
+tell. You'll see like a, you know, someone displaying a new t-shirt like some clothing fashion and it'll be like
+attractive model with like perfect harmony core and everything and you'll feel like wow this is like this must be some Victoria Secret model. No, this is
+not about our progenerated image and you won't be able to tell. It's actually a bad day to be a model. You know it's a
+good day to be an image model, an AI model. It's uh not a good day to be a fashion model. Anyways, let me give you
+a practical action step from this video. Set up Google AI Studio. Go here. Set up the API, create an account. You can
+obviously login with your Google account, but go to Google Cloud Console, set up the API key and start using
+Nanobana Pro in here. Takes a couple of minutes to set up and generate three different images for three different use
+cases. You need to start using yourself. You cannot just watch videos like mine. Even though I appreciate it, even though, you know, it's valuable for me
+that you watch my videos. I would much rather have you actually execute. Go ahead, improve your life, scale your
+business, and use this for something, right? Don't just be a watcher, be an
+action taker. Because by diving into this deeply today and actually mastering the model and how to use it, you'll have
+an unfair advantage over everyone else. It's the same as getting serious about JGBT the day it released or, you know,
+few days after it released. People that waited a year, half a year, you know, two years before using it, they're late
+to the party. Today you have an opportunity to be early to the party. So get serious. Do not treat Nanabana Pro
+as an incremental update. It's it's a complete breakthrough and you have to treat it that way. And if you do treat
+it that way, you'll have an unfair advantage over everyone else who doesn't. And if you want to have an unfair advantage when it comes to coding
+with AI, then make sure to join the new society. Inside you'll learn everything you need to know to master AI coding. In
+fact, I'll show you how you can build anything with AI agents. And no, you don't have to be a programmer. You don't
+need any prior experience and you need just 30 minutes a day. That's it. Inside of the new society, you get access to
+multiple weekly calls where we help you build your software with AI. You can talk to me directly, ask any questions,
+get technical support from senior developers and much much more. Now, inside of the classroom, you get access
+to tons of content that's high level specifically for coding with AI. So inside of this workshop right here, we
+have modules on cursor, on cloth code, on codec, on the fundamentals of GitHub,
+and everything you need to build a serious software company with AI agents. And by the way, if you don't like it, we
+have a 14-day money back guarantee. So if you're serious about coding with AI, make sure to join. It's going to be linked below the video. With that being
+said, thank you guys for watching. Hopefully you found this video valuable, and I wish you a wonderful, productive week. See you.

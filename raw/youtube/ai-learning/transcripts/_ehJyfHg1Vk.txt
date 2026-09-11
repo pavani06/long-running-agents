@@ -1,0 +1,455 @@
+[music]
+Hello. Hello everyone.
+Welcome.
+I want to start with saying I haven't
+written a single line of code this year.
+Um, maybe I haven't even looked at most
+of it yet. I do ship. Uh, I have a
+product I built that thousands of people
+use and trust with their email inbox,
+which is amazing.
+I'm actually proud of the code I ship
+and I'm proud of the product I ship.
+I've been doing this for two years and
+trying to extract my thinking and my
+taste into a system that compounds. And
+I'm going to share you how I do that.
+Lots of stuff you hear is like, "Oh, you
+should use this the factory dark factory
+do that blah blah blah all the new hip
+cool things." Uh, what I'm trying to do
+is not that today. I'm going to just
+show you how I work and hopefully share
+something that you can bring to your
+workflow that will outlift trends and
+really set yourself up for success for
+newer models, bigger models. Uh there
+are two halves in this talk. One is why
+it's so important to compound how I got
+here. So this is for people that maybe
+are not at the end of the the
+trajectory. It's interesting to see how
+to get there. And then stuff you can run
+yourself, you can use uh day-to-day to
+ship, to build, uh to research, to do
+knowledge work even.
+Hello, I'm Kiran. I work at every is an
+AI lab for the future of work. And we
+ask ourselves the question,
+what's next? And we write about it, we
+teach about it, we build. And we have a
+studio se uh studio um where we have
+mostly single engineering teams that
+take a problem they really care about
+and use AI to build a product out and
+really leverage that and compounded
+knowledge is a big way we do that lots
+of loops shipping faster and faster and
+core as mine is where I invented
+compound engineering and it's a complete
+AI email inbox it's agent native. So
+that means whatever you can do the agent
+can do. H it runs on your desktop phone
+CLI insight codeex like uh MCPS and I'm
+rebuilding it as version two. Uh so soon
+beta access if you want access just DM
+me talk to me.
+The cool part is it's one engineer and I
+have support. I have design support. I
+have some like database
+hardcore engineering problem support
+like you need some support. Um but I
+built a full email client alone and I've
+only started building this in January
+this new rebuild. I use reals on the
+back end. I love Ruby React on the front
+end and I own products fully. So I talk
+to people when something goes down I'm
+the one responsible and it's set up like
+this on purpose. I'm an ex VPB of
+engineer and founder and I know how to
+hire grow teams all that stuff. But I
+wanted to do the opposite with sonnet
+3.5.
+I just felt there was something new that
+was unlocked and I wanted to see how far
+can AI go before I actually need to grow
+the team. And I'm still alone with some
+support which is cool. So I built Kora
+and this is what I learned.
+Two years ago I started and the
+bottleneck by then was code. So it kept
+moving and my job changed over the years
+but first there was bad code
+hallucination just stuff that didn't
+work. I added agents I added skills just
+reviewing it. So okay code got good. The
+plan was the bottleneck because I could
+do things but larger things. So whenever
+I have a good plan set out, it would do
+bigger things than just code changes.
+Okay, plans got good. Um the next
+bottleneck was deciding what to build.
+Talking with users, really understanding
+problems you're solving. This is why
+it's so good that you use your own
+product. You love what you're building
+for.
+And
+that got really good as well. The scope
+got bigger. AI could help writing uh
+plans. And I kept repeating myself and
+that was annoying. So I figured out
+there needs to be some kind of memory
+system. So every time um I repeat
+myself, I can say, "Hey, can you make
+sure to store this knowledge in some
+way?" I started with storing this in
+cloth MD, but at some point that became
+too large. Um, so I built a system that
+remembers and that's really where
+compound engineering came from and you
+see me go away from typing more towards
+judgment and taste and I think
+implementation is mostly solved even
+though you see many people that do
+orchestration dark factories who
+it kind of works which is cool but the
+thing that doesn't work is our judgment
+and our taste.
+And
+for me it's really where do I turn my
+brain on versus when do I leverage the
+model and it's where you make judgments
+and it's where you add taste. So where
+you think where you iterate where you
+jam where you brainstorm I extract that
+into a system and if it's extracted into
+the system you can move on to bigger
+problems because the next time the AI
+will come up with a brainstorm it will
+already include that thinking so you can
+go on for the next one
+and I see that one engineer with a
+compounding system just beats teams like
+full teams that use AI
+that don't.
+This is my loop. It's
+it there's more to it than this, but
+this is the overview. Brainstorming,
+planning, working, reviewing, polishing,
+compounding, and repeating. And the real
+trick here is on both ends. It's kind of
+the human AI sandwich where the human is
+the bread and the AI is the middle part.
+And the brain is on on the ends. So the
+start brainstorming where you have to
+decide what to work on what the problem
+is and really understand what you're
+trying to do and at the end where your
+taste comes in where you decide this
+looks very good makes me very happy or
+we need to raise the bar we need to do
+better we need to make it more snappy we
+need to go optimistic or whatever that
+is like like delight
+and throughout here especially in the
+brain on parts it's important to extract
+the learnings to compound. So that's
+basically the loop.
+You cannot run the middle if it's not
+set up correctly. And it's very
+important to be able to let go and let
+the machine rip overnight for many hours
+in parallel.
+And the only way to be able to do that
+is making sure you spend time on uh on
+that system. So my rules 50% should go
+into creating
+uh the feature just making sure like did
+it build the feature? Did it deliver the
+value you set out to do? But 50% of the
+time should go to um teaching the system
+for anything that it did wrong. Can we
+learn something? Can you teach the
+system something? And this is something
+that is kind of hard, but it's very
+important because it will make the next
+time better.
+One bonus is because of this extraction
+um I store all of this knowledge inside
+my repository as solution documents and
+people say oh but tokens and in my
+research it's actually more token
+efficient because if you have the right
+answers and the right solutions already
+within the token you don't need to do
+review you don't need to correct you
+don't need to do deep research across
+the internet because the token's already
+there so it's actually more token
+efficient in the long term, which is
+cool. Less research, finding things
+faster.
+The real reason why this works is my
+brain is fixed and AI isn't or less
+fixed. And my philosophy is keep
+extracting until the complete middle
+runs itself and is so freaking good that
+it will surprise you.
+Um let me show you how this works. Uh so
+I have a plugin called the compound
+engineering plugin that you can install
+in whatever tool you use codeexcloud
+code cursor plus 10 others and I just
+built this while building Kora shared it
+at some point and now hundreds of
+thousands of people use it daily. So
+thank you all for using it if you did.
+I'm honored. Um, I never decided this
+should be something like hype. It's just
+me using my plug-in shipping code. Uh,
+you can install it wherever. Uh, you can
+also create your own version of this,
+which could be just storing information
+in files. Uh, however you do it. But let
+me show you the plug-in. So, compound
+engineering became compound product as
+well. Uh I have a lovely uh
+co-contributor Trevan Chowo who has a
+very good product sense and product
+background. So he brought a lot of
+product thinking and I think compound
+engineering is really for engineers,
+PMs, designers, even people that do
+knowledge work within every love to use
+compound engineering. It's such a uh
+like universal uh concept of compounding
+knowledge. It doesn't have to be used
+for engineers but that's where it came
+from me. So the first demo is
+um
+it's it's here to activate your brain.
+So this is called CE ID8 and you can run
+it. And here I run it in it's maybe a
+little bit small but I say hey I have
+Kora version version one. I want to
+upgrade people to version two. Um come
+up with oh no actually this is look at
+all my open open tickets. Tell me what
+to do next. It's a great command. It
+will just go through all your issues and
+you can link linear open like open
+source issues on GitHub, Slack,
+intercom. What it will do is it will
+generate uh structure from all this mess
+and we'll make arguments about what is
+good to work on versus not good to work
+on. And the cool part is it will reason
+about this and the output here is a
+clean HTML page that you can share with
+the team that you can be inspired by. So
+this is generation of ids and the cool
+part is you can point it to your OKRs
+you can um get ideiation aligned to your
+strategy and that's kind of how it
+compounds. So if you have past
+experiments or past learnings in your
+repository or a strategy document which
+you can create with CE strategy, it will
+score these ids against this knowledge
+already which is really cool. And I've
+seen people dump this uh document inside
+cloth design and say create a PowerPoint
+and you get a beautifully designed
+PowerPoint with like XY matrix of where
+the sweet spot is for what to do for
+your OKRs which is very low effort for
+you and very impressive to bring to your
+team.
+Uh next one is a very simple one. It's
+called C do review but is very useful.
+Um, if someone hands you a PRD or some
+kind of document, run dock review on it
+and it comes back with very sharp
+questions. I always like the questions.
+I'm like, "Oh, that's a good question. I
+did not think about it." So, either you
+relay this to your colleague or you ask
+them to answer. You can then compound
+that knowledge after answering with C
+compound so that the next time um this
+answer is already baked in and it
+wouldn't ask you it would already know
+the answer because it's already embedded
+in the system. You can share this with
+people. You can say oh you can actually
+run this yourself as well. This runs
+anywhere. So you can do it in co-work as
+well. It doesn't need to be in cloth
+code. Um it's a very simple thing that
+we spend a lot of effort in to make very
+good and it's part of our flow.
+This my most used one u it's when the ID
+is too big to describe. So this was the
+example of Kora version one to version
+two. I say c brainstorm. This is a brain
+on command. Uh I know I need to get into
+into the zone. I block off time. I'm not
+going to multitask or anything like
+that. Um, and I run this. So, it pulls
+in compound knowledge. It looks at the
+difference between Kora one and two and,
+uh, looks at the personas I've set up.
+So, it will see, hey, like certain
+people need certain things. And it will
+ask me questions. And it doesn't ask me
+a lot of questions. It's dialed in to
+ask you just the right amount of
+questions it needs to do the work. It's
+very easy to get 30 questions and feel,
+"Wow, I did so much." But in the end,
+the goal is not to answer questions. In
+the end, it's to get the absolute best
+work out of it. And I think other
+libraries might over question. H I think
+there's a balance uh to be found there.
+So out comes a plan, a brainstorm
+document stored and compounded. And then
+my favorite, which is SL LFG, which is
+basically the loop, the the automation
+loop. And if you like vibe coding/ LFG
+something is great as well. It will run
+for hours. It will do planning work
+review testing. Opens a PR. It will dog
+food. It will try fix fix things. It
+will then do a before and after video
+screenshot in the pull request. Makes it
+super easy for you to then see what
+happens
+last if it comes back. So this is
+overnight. You can do parallel. There's
+polish. This is the brain on again C
+polish. You give it the pull request and
+what it will do is it will show you. So
+I like to run it in cursor and on the
+left side I like to run this and it will
+tell me hey this was introduced with
+this LFG flow and on the right it will
+show the product. This is important.
+Sometimes I don't even know what was
+built because I also have video
+recordings that I dump into LFG that it
+will then process and analyze and see
+what went wrong. So sometimes I don't
+even know what it was solving for. So
+it's a good primer to know, okay, this
+is what we are here where we are. This
+is what it's solving. This is how I
+solved it. And you tell me what do you
+think? And this is not QA. This is
+raising the bar like it should work. If
+it doesn't work here, your LFG flow
+failed. Um, but you can see here like
+this works only in this example there is
+a mark of a logo mark twice which is not
+technically wrong but I don't want two
+marks on one page. So in this case I can
+say hey there are marks two marks here.
+Can we just make sure we only ever have
+one and run C compound. So it will
+extract that knowledge, make sure next
+time when I do design work, it's tagged
+correctly, it will find that file and uh
+know not to do that. So that's closing
+the loop. You merge it and you learn
+something.
+So why does compound engineering
+resonate with people? I think it's not a
+very new concept. It's just something
+how we do software engineering. is just
+now instead of working with teams we use
+with AI we use AI and we leverage that
+and AI is very good at specific things
+especially with large amounts of
+knowledge and doing the right thing
+especially with latest models so uh if
+you want to do this yourself if you
+don't want to use my plug-in uh make
+sure to extract never repeat if you see
+yourself repeating yourself make sure to
+extract it somehow make sure it doesn't
+happen again make sure that there is a
+middle that can run without you that
+does the planning, working, reviewing,
+and it should be boring. It should just
+work. Uh you should not be needed if
+you're still needed in the loop. Spend
+time on the middle. Do it manually. Feel
+where it's off and like iterate until
+you can actually let it go. And if if
+you are at a point where you just run
+something and runs for three hours and
+it's always good, you know you're there.
+[sighs] It's important to document the
+thinking, not the code. This is also
+very anti- um developery. It's like yeah
+but documentation shouldn't mean the
+code and like the code is the artifact
+itself but I am of the opinion to
+generalize you need reasoning behind why
+you did something and all these traces
+even though they're bad could lead to
+things like hey something happened right
+at postmortem what decision was made by
+whom or what agent that led to this can
+we then turn that into a learning so we
+change that behavior for the next time
+and I've seen it work very well uh
+especially with postmortems
+and again every interaction spend 50% of
+your time to make it better the next
+time. So, make sure to build the system
+that will remember uh instead of was
+this good, make the system better and
+make the system know. And I know it's
+hard like it's just hard to do for
+myself and we all know we need to do it,
+but it's kind of awkward and it's like h
+it's it works. It's great. Let's just
+move on. But it's very important and you
+can see the system really go if you do
+that a lot.
+So the bet is implementation is only
+getting cheaper and judgment is not and
+the future models and systems need to be
+set up so they have access to this
+judgment that we have our taste uh to
+have more leverage. So that is the
+bottleneck and remember brain at the
+ends really activate your brain make
+sure you really understand what you're
+doing in the start. Don't offload the
+thinking to the AI. Make sure you truly
+feel understand what you're doing, the
+problem. H let the AI go and at the end
+raise the bar. Make sure you don't fix
+things. It should be very good at the
+end, but make sure to raise the bar
+because we're not shipping shitty code.
+And your standard should be the next
+feature should be easier because you
+ship this one. If the next feature is
+harder because you added complexity,
+which is normally how engineering works,
+we're flipping that. The next feature
+should be easier to build because you
+ship this one.
+I'm Kiran. Uh, check out the plugin.
+It's open source. Please um, contribute.
+PR is welcome. I love PRs from everyone.
+Go build your orchestration system. Go
+build your personal uh, knowledge base
+that compounds. And thank you. I will be
+hanging around if you have questions and
+enjoy the rest of your day. [applause]

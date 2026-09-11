@@ -1,0 +1,996 @@
+[HOST] It's my absolute pleasure to
+introduce our next conversation. Ken Griffin is founder and CEO
+of Citadel,
+one of the world's leading
+alternative asset managers. He's also the founder of Citadel
+Securities,
+one of the world's most
+preeminent market makers. Citadel manages over 70 billion
+in assets and is
+considered one of the most
+profitable hedge funds. He will be in conversation with
+Amit Seru, the Stephen
+and Roberta Denning Professor of
+Finance and Senior Associate Dean for Academic Affairs at the
+Stanford Graduate
+School of Business Amit is also a senior fellow at
+the Hoover Institution and the Stanford Institute for
+Economic Policy Research.
+His research interests include
+financial intermediation and regulation, which make him a
+perfect couple for this
+conversation. So let me introduce Amit and Ken
+to the stage.
+Thank you so much. [KEN GRIFFIN] Good morning. [AMIT SERU] Good morning. Thank you, Ken, for doing this. Good morning, everyone.
+It's a pleasure to welcome
+everybody here. I heard the conversation from
+the green room,
+and it was terrific. Thank you, Sarah, for starting
+us off. So, Ken, I thought I'll set the
+context,
+and then we can get going on the conversation, which is going to be very
+pleasant.
+[KEN GRIFFIN] I'm being lured into a false
+sense of complacency. [AMIT SERU] That, you know, that's what we
+do in classrooms. So we are, I think,
+in an environment
+of fragmentation across markets, I would say policy regimes,
+even the rules that govern capital allocation. And that naturally raises
+the question: when the system
+itself is shifting, markets are volatile, politics is polarized,
+institutions are under pressure, what's effective leadership and what does it look like?
+So, Ken, you have built
+institutions at the center of global markets and
+also have been
+direct about your views on
+policy, competition, and responsibilities that come
+with influence.
+So what I thought is that we have a conversation about leadership in that
+context,
+and, like you guessed, luring you to a very simple
+question:
+When the environment itself is uncertain, or I would say
+adversarial even,
+what matters most in leadership?
+[KEN GRIFFIN] So when you're in— I mean, to be right to the
+point, that's a really open-ended
+question.
+[AMIT SERU] Yes. [KEN GRIFFIN] Right? And the bottom line is that
+every business is constantly making decisions
+under uncertainty.
+The only question is, how in your face is that moment
+of uncertainty?
+So right now, for example, it's
+very much front and center that every business is dealing
+with a number of new trends.
+Deglobalization, for example, is
+a profound shift in the commercial landscape from 20
+years ago.
+But let's go back to roughly
+2004, 2005.
+How many retailers in the United
+States had a mobile marketing strategy?
+Not one. And yet 10 years later, if you
+didn't, you were probably fighting for
+your very existence.
+So in '04, sort of this very tranquil moment, the best of
+times,
+businesses were just in some
+sense naively believing that they were in a world of
+certainty when in fact we were
+right at the pinnacle of an
+incredibly important pivot.
+A revolution in how marketing
+and retail is done in America. So every business leader needs
+to just be constantly
+aware that, irrespective of
+what's front and center, you are making decisions under
+uncertainty.
+You're going to have to make
+your best guesses as to where to take your business, and
+you're going to have to be flexible and willing to pivot
+as information
+unfolds in front of you. [AMIT SERU] Uh, that's deep.
+[KEN GRIFFIN] I'm not sure that's all that
+deep. [AMIT SERU] I think— [KEN GRIFFIN] But I think it's important.
+I think that there's a... One of my colleagues said that he was my partner for years.
+We worked together for 30 years, and he said, "Let me tell you what it was
+like to work with you every day."
+Go get into a roller coaster and go as fast as you can, and
+then when you least expect it, you stop and change direction. And what's happening is we're
+going as fast as we can in
+the direction in which we think
+we need to travel. And he goes, "And there's many
+times you snap my neck when you
+would decide, and rightfully so,
+that we were going in the wrong direction." [AMIT SERU] Mm-hmm. [KEN GRIFFIN] But I think the important thing
+is that businesses that commit
+to a direction of travel and
+that keep an open mind are businesses that actually have a
+chance to succeed.
+Whereas many large businesses
+find themselves unable to commit at all and end up going nowhere.
+And I think that is actually how
+large businesses fail, is they lose the ability to move
+in a direction.
+And great businesses do not
+suffer from sunk cost fallacy.
+You know, my partner's worked at
+one of the largest global banks, and he's phenomenal.
+And we were talking once about
+the biggest difference between Citadel and
+where he was at. And he goes, "Look, here's what
+I struggle
+with the most. There's no sunk cost here." Where I worked, everyone would
+sort of try to figure out
+who to blame for the mistake, and how to, like, bury the
+mistake in a pile of paperwork.
+Here, it's just like, "Ah, screw
+that up." Next. And I think really successful
+businesses
+know when they need to change
+direction, and you only get there if you
+have an open and honest dialogue with
+one another about when you're
+going in the wrong direction. You know, this, this month we've underperformed some of our
+competitors
+in the marketplace, and it's
+like, dial in. What did we do wrong over the
+last six weeks that
+caused us to underperform? And don't sugarcoat it. It wasn't like we got beat by
+one competitor.
+We got beat by several
+competitors. What did we do wrong? How do we learn from that? How do we not repeat that
+mistake?
+How do we get better? [AMIT SERU] Okay, so that's very helpful.
+Let me try to make it more
+concrete for myself. So I want to understand where
+that instinct that you
+have comes from as a leader. So, you know, when many people
+see success,
+They assume things. I think what's less visible,
+especially in the kind of
+business you are, is how did you
+develop that instinct? Because the feedback that's
+coming to you
+from the markets is noisy. Information is incomplete,
+uncertain, but the downside is real.
+So were there any early
+experiences that shaped your judgment as a leader where
+you developed that style?
+[KEN GRIFFIN] Well, let me first open with— History is written by the
+winners.
+Okay? Like, history is written
+by the winners. And so every single success
+story in business is biased
+towards the chapters in which
+they won. And those who failed are long
+since forgotten in the
+footnotes of history, if they
+even make it into a footnote. So I think it's very important
+to just take
+a step back and realize that
+every great success story, there are countless chapters in
+that book of where things
+went off the rails. You know, people forget that
+Steve Jobs went back to Apple back in the mid-'90s, and
+they were down to having
+just weeks of cash on hand. And he had to make some
+profoundly painful decisions
+to right Apple's trajectory,
+which was a trajectory heading right to bankruptcy. And then people forget that
+Apple had a number of
+really major failures under
+Steve. The Newton handheld. I mean, who's even heard of it?
+All right, we got a few people
+in this room that are my age, and they're like, "Yeah, I
+remember that." All right? But like people
+forget this, all right? So number one is when you think
+about success stories
+in business, just remember that
+really good CEOs will also tell you about where they
+had very difficult times.
+Because you need to learn from
+both sides of the book. You need to learn from
+what works, and you also need to have
+an appreciation
+of what doesn't work. And then what you need to
+understand is that great businesses are businesses that
+actually demonstrate resilience.
+They're able to sort of face their darkest moments, keep those moments in perspective,
+and then move forward again. [AMIT SERU] And can I ask, like, so obviously going from your
+individual style to building
+organizations requires what you just said, that the whole
+organization needs to be in
+that mindset of resilience. Are there any episodes, like I
+know the 2008 episode for your
+firm was an interesting one? Did that shape, in any way, how
+you thought about the
+world going forward? [KEN GRIFFIN] So, interesting one. One would lose the narrative. It
+was a near-death experience.
+All right, there was nothing
+interesting about it. I was in the elevator going to
+work, and I literally, on one day in the elevator going
+down to my apartment, I'm like,
+"I hope at the end of the day that we're still in business."
+And I must tell you, that
+thought really crossed my mind in 35 years. But on that day, it was very
+poignant that, like...
+It's not clear to me that I will
+be in this elevator coming home tonight and we will
+still be in business.
+The turbulence and chaos in the
+US financial system was unimaginable.
+And we lost a number of our
+major investment banks in just a few weeks.
+Bear Stearns was acquired by JP
+Morgan in a weekend fire sale. Lehman Brothers actually just
+flat out failed.
+Merrill Lynch was one of the
+best sales ever by a corporation.
+Bank of America had to be
+basically bailed out on the back of that purchase. I mean, that's how bad Merrill
+Lynch was.
+And Goldman and Morgan Stanley
+will both have their sort of story of survival, but Morgan
+Stanley was saved by a large
+investment from the Japanese,
+and Goldman Sachs was largely saved by a large investment from
+Berkshire Hathaway,
+and then the government's
+general support of the overall financial system at that
+point in time. So this was just an absolutely
+horrific
+moment in American finance. So that was a really dark moment
+for us back in '08.
+And the biggest takeaway for us
+was— In essence, the government
+put in place a paradigm. If you were a bank, you had
+access to the Fed, you had access to a much broader
+safety net.
+If you were not a bank, you were much more left on your
+own. And the key was, and this is
+going to sound
+very simple: don't pretend to be a bank
+unless you are a bank. And what people forget is that
+the large firms like us,
+like Goldman pre-'08, like
+Lehman Brothers pre-'08, we actually had many
+characteristics of a bank.
+We had access to the wholesale
+funding market. We could fund at pricing near or
+sub-LIBOR.
+We had incredibly, incredibly
+great access to credit.
+And what none of us appreciated
+was that in a period of crisis, that access to credit would
+actually not just slow
+down or fall a bit. It would cease. It would end.
+And that's what really took down
+the American investment banks of the 2008, was they lost
+the ability to fund the
+assets on their balance sheet. All their commercial paper would
+come due, and nobody would buy new CP.
+[AMIT SERU] What I want to do from some of
+the things you said is to move to a topic which I think
+is pretty important,
+at least in my mind, and we'll
+see if the audience will agree. At some point, I think a firm
+like yours,
+post-2008, I would certainly say that you
+were not just a
+participant, you were a part of the broader
+infrastructure, broader system, if you will.
+And as a result, you have a position or say
+on the rules of the game, like
+many times it's happened. And in the recent years, we've
+seen
+policies on tariffs, immigration restrictions,
+industrial policy,
+and broad swings in regulation
+on both sides of the political aisle, I would
+say.
+And The way I see it is that some of
+these measures may help some firms in the short
+run,
+but they distort competition
+over time. You said, for example, recently
+that tariffs and
+immigration restrictions can be
+inflationary, which is a position to take. You've also been critical when
+policies,
+again, on both sides, start to
+look more like favoritism rather than leveling the playing field,
+so pro-business, if you will. So how do you, when you're
+looking at things
+and you're in the trenches, how do you distinguish what is
+genuinely pro-market?
+And what is merely pro-business,
+because politicians seem to get that wrong all the time.
+[KEN GRIFFIN] Well, what's interesting is in a world of crony capitalism,
+many of you who are in this room
+on merit will actually be the losers.
+That's just how it works. Like, crony capitalism is a world where you curry favoritism
+through, frankly, often very
+inappropriate or distasteful ways to favor your commercial interests.
+And American business works best for the American people. When it is subject to the
+forces of competition.
+Competition, we just go back
+a few minutes ago, we underperformed our
+competitors in
+the last six weeks. What do we need to do better? That's the ethos of
+a competitive market.
+That's an ethos of
+continuous improvement. That's an ethos of having
+to fight to do better.
+And businesses that are subject
+to that pressure deliver better goods and
+services to their consumers.
+Crony capitalism replaces the
+world of merit and earned
+success with a world of who is
+better connected to those who are in power at any point time,
+and often leads to a very
+dark world where state
+capitalism is really the world of—
+Of truly like an oligarch-like
+society. And one of the things that has
+made America so great is
+we are so far away from that. Look at the largest companies in
+America.
+Think about how many of these
+businesses were started by entrepreneurs in the
+last 30 years.
+Jeff Bezos at Amazon, the story
+of Nvidia. What's happened to AMD?
+What's happening at Facebook? I mean, it's just, it's
+unbelievable how much of America's commercial
+success,
+Google, has been written by people who are
+first-generation entrepreneurs,
+who came to this country often
+with nothing, and who have built these incredibly
+successful businesses that
+have transformed our lives for
+the better. It's the antithesis of a world
+of crony capitalism.
+Apple would be a great narrative
+in that. How much do you begrudge Apple
+for their success when you use
+their products, unfortunately,
+too many hours a day?
+Right? And when you end up in a
+world of crony capitalism, you end up in inferior products,
+lower innovation,
+lower standards of living and
+rightful reasons for the population to be angry
+because they see the benefits
+of business occurring to those
+who don't earn those benefits by any stretch of the imagination.
+I may look at how successful
+Elon Musk is and go, "Wow," like, that's unbelievable."
+But when I use Starlink, I go, and I appreciate his willingness to just keep
+stepping up and
+just keep innovating." [AMIT SERU] So that's great. So that's one piece of
+what I wanted to have a
+conversation with you. So this is about substance of
+policy.
+But I think a harder question
+for leaders, in my mind, is whether they are going to be
+willing to say
+things publicly on exactly the
+kind of things that we are talking about.
+Many executives, I'm sure, have
+views on things like these.
+But in a polarized environment,
+the cost of saying things loudly is real.
+It's political, it's
+reputational, it's commercial. I really admire you for the
+positions you've taken.
+So how do you decide when to
+speak publicly
+and when to stay silent? [KEN GRIFFIN] So I think corporate executives
+should use their voice in areas
+in which they are viewed to have
+a credible opinion.
+I think it's an important
+statement. Where people will look at you as
+somebody who is speaking to a problem, will
+they think of you as
+having a credible opinion? So generally speaking, for
+example, I think corporate executives should stay
+out of social issues.
+You're going to anger half of
+the American people, and frankly, why do you have a
+distinguished point of view on this versus other
+individuals who are thought
+leaders in the field? But when it comes to matters
+like immigration, like tariffs,
+like antitrust policy, like
+regulation, people would look at the business
+community as having a voice.
+Now, clearly they think we're
+going to act in our self-interest. But to be clear, I think
+thankfully
+we're in a country where most
+Americans still want to know- You know,
+what does Elon Musk think?
+Or what does
+Jeff Bezos think? I may agree or disagree. I may have some innate cynicism,
+but I still want to know from people who have built
+trillion-dollar businesses, what it takes for American
+business to be successful?
+[AMIT SERU] So let's shift from this point
+that you just said, and I'll come back to one
+thing in a while.
+I wanted to chat a
+little bit about. Going from external environment
+to what's happening inside
+firms, especially with a point that you
+raised earlier
+about talent and merit, but AI. So, you know, I had to use AI because we are on Stanford
+campus.
+How can I have a fireside chat
+without that conversation? But it's something that's
+changing the way the work gets
+done, how talent might be evaluated,
+which skills might matter or not
+matter. You have suggested that much of
+this AI panic
+might be overstated, and the
+bigger change may be how tasks and workflows are
+reorganized rather than
+jobs just disappearing. So what do you think AI changes
+most for the next generation of
+business leaders? I mean, I have some candidates,
+like I've heard of speed,
+judgment, definition of merit. But you may have
+some other views.
+[KEN GRIFFIN] So AI, okay, here we go. Let's go down the... I feel like we're in the... What was that movie?
+Was it The Matrix?
+[AMIT SERU] Yes. [KEN GRIFFIN] And was it the blue
+pill or the red pill? [AMIT SERU] It's one of the two.
+I don't know which one.
+Yes. [KEN GRIFFIN] All right. And I'm not sure
+which one we're all about to take as society, right?
+Like, where is AI
+going to actually lead? And, you know, I was with Niall
+Ferguson yesterday,
+and this is like one of those
+really unsettling conversations. He's talking about the
+advancements over the
+decades of humanity. So for example, the horse and
+buggy being replaced
+by the car, and then you sort of know where this narrative's
+going.
+And he goes, "But the issue here
+with AI is that in the world of AI, humans
+were the horses."
+[AMIT SERU] Yeah. [KEN GRIFFIN] And I was like, "Wow, that's a
+really depressing way to start the day."
+So let me just, you know, share
+a few thoughts with you on this. Number one is
+In the last few months, there
+has been a step change function in the
+productivity of the AI toolkit.
+It is profoundly more powerful
+than it was just nine months ago.
+And for us at Citadel, that has
+allowed us to unleash a much broader array of
+use cases for AI.
+And it has been really
+interesting to watch. To be blunt, work that we would
+usually do with people with
+master's and PhDs in finance
+over the course of weeks or months being done by AI agents
+over the course
+of hours or days. So these are not mid-tier
+white-collar jobs.
+These are like extraordinarily high-skilled
+jobs being
+I'm going to pick a word, being
+automated by agentic AI. And I got to tell you, I went
+home one Friday.
+Actually fairly depressed by
+this because you could just see how this was going to have such
+a dramatic impact on society.
+And when you witness it in your
+own four walls, when you see work that used to
+be man-years of work being done in days or weeks.
+It's like, wow, like that's the first time I've seen real impact in our four walls.
+You know, software engineering, you know, you get a 15 or 20% boost or 25% boost. You just go
+like,
+"Thank God, I can get more
+software written now." Like, there's so much software
+we need to write. Every step change in
+productivity is
+just, just a win. Like, there's no shortage of
+code we need to write. But when you're seeing really
+high level research being
+done by AI engines, it's, it's
+quite eye-opening. So, so big picture.
+You know, everybody in this room
+is going to be in a world where- Where certain forms of work are
+going to all of a sudden be
+done through AI systems that we
+had not anticipated in the past. And again, this goes back to the
+earlier points.
+Not only do companies need to be
+more flexible and resilient, but our workforce needs to be
+more flexible and resilient.
+And in particular, you know, one
+of the reasons that you came to Stanford was to both
+learn a body of knowledge,
+but also to continue to learn
+how to learn. And that will be forever
+important over
+the journey of your career. You know, I tell all of our new hires, "You think you
+just finished business school, you think you just finished
+college, you think you just finished the
+journey of learning?
+You have just started." Everything that you've been
+taught thus far,
+what matters is: have you been
+taught how to learn? Because the success in your
+career will be defined as to
+whether or not you will be a
+lifelong learner or not, and AI will just make this all
+the more important.
+All right. So I don't know where we're going
+to be in 20 years
+with respect to AI. What I do know is that American
+entrepreneurs
+are really talented at using new
+technologies to create new lines of commerce,
+new businesses,
+to innovate and to grow. And I really do believe that
+it's a bit of a race
+between job destruction. Which will happen at some clip, and job creation,
+which will happen hopefully at
+the same or a faster clip. Of note,
+competitive moats that large
+companies have depended upon are going to be filled in with
+AI tools.
+So the ability for small
+companies to take on incumbents.
+Will be higher than ever. Like, this is a bit of a fantasy
+land for entrepreneurs
+because the ability to take on
+the incumbents will be higher than ever.
+Cloud computing was the first
+part of this narrative. You know, if you go back 10
+years ago, for example,
+in finance, a startup could take
+us on in terms of having access to compute. [AMIT SERU] Mm-hmm. [KEN GRIFFIN] You know, we used to have data
+centers full of nine
+figures of hardware. We now use data centers full of
+billions of dollars of hardware, but a startup can
+lease the same hardware
+footprint if it wanted to. So these moats to competition
+continually get eroded.
+It's a really incredible time to
+be an entrepreneur. You know, a friend of mine had
+a— this is a great story—
+pet insurance business. And he turned the keys of the
+business over his, to his 25-year-old son
+to run.
+The son's like, "You know what?" I can use social media. I can find when somebody posts
+a photo of a puppy on Facebook. I can determine the breed of dog
+through an AI image
+generation scanning mechanism. I can deliver a custom message
+to that consumer
+if it's a woman, male, age,
+demographic guess. Congratulations on your new gold
+retriever.
+You will love your dog for the
+rest of its life and it will love you. Be there for it when it needs
+you.
+Buy Spot Pet Insurance.
+They sold the business a few
+weeks ago for a billion dollars.
+Just keep that in mind. All right? So the point of this is that
+there are going to be
+a tremendous number of new
+companies started around the world, and hopefully
+disproportionately in America,
+where people are gonna harness
+AI in completely different ways to create completely
+different experiences
+for American consumers. Like, here's a fun one. You and I watch a movie and it
+ends differently
+for the both of us. I like to think in my movie the
+superheroes win.
+I hope that happens in yours,
+but you know, it might be a different ending. Like, there will be a world of
+incredibly
+greater personalization in
+experiences that we have, and it'll be an entertaining,
+different, new world,
+and there will be a group of
+entrepreneurs that really craft and create that world. They will be the Elon Musks of
+the next generation, the Jeff
+Bezos of the next generation. Some of them are in this room
+today. And it will be incredible to see
+what you build
+over the years to come. [AMIT SERU] So let me connect a few things
+that you've said, which I agree with, but help me
+think through this.
+We need markets, we need
+competition. Behind that is rules and
+regulation and other things.
+We are also living at times, and I think this is over last 20 years probably,
+that trust in institutions has become really fragile.
+There are many surveys that show
+that people are skeptical about how capitalism works,
+especially for ordinary people.
+You referenced that earlier. And at the same time,
+high-performance
+institutions like yours still
+depend on merit. They depend on discipline and
+clear standards.
+We need that for this whole
+machinery to work. So what gives capitalism and
+high-performance institutions
+like yours legitimacy with the
+general public that they start believing in this
+machinery yet again?
+[KEN GRIFFIN] I'm at Stanford Business School,
+right? [AMIT SERU] Yes. Yeah. [KEN GRIFFIN] I'm just making sure. Yes. Yes. This is like Harvard's
+government department.
+[AMIT SERU] Anti-government, but yes. [KEN GRIFFIN] So let's take a huge step back.
+Right? Institutional trust in America
+has gone into freefall over the last several
+decades.
+And it's really painful to watch
+because honestly, there's few countries in which
+justice is available to its
+citizens like there is in America.
+There's just few countries. Like if you actually had a
+problem, which countries in the world would you feel confident in the
+court system
+that you have a fair shot? Which countries in the world do
+you think that you will actually
+enjoy a lifetime of freedom? And the opportunity to pursue
+your dreams. I mean, it's so limited to a
+handful of Western countries,
+and the United States, for all of our shortcomings, is
+still one of the pinnacle stories in
+the world of individual rights,
+personal liberty, and freedom. A friend of mine, one of my
+partners who
+grew up in mainland China, I
+think the world of him. Topics of...
+Of freedom and liberty are very
+near and dear to him. And he makes the point that this
+is the last beach in the world
+that we actually can defend
+these rights on. Like, this is it. This is the one country in the
+world.
+Like, this is the last
+beachhead, and we must protect it. So if we look at the challenges
+of
+skepticism over capitalism, I'll sum it up as follows.
+I was with my children. My son must've been roughly Gosh, 10 years old, 11 years
+old,
+and there was a photograph of a stadium of people listening
+to Bernie Sanders. And I said to my son, "Do you know what this
+represents?
+This is 70,000 people who have
+never been taught history."
+They do not appreciate how
+socialism.
+Both crushes the souls of humans
+and deprives people of a meaningful and rich life.
+Like, they do not appreciate. We have tried this experiment of
+socialism countless times
+in the history of mankind around
+the world over the last 100 years. It always ends in tears.
+Now, I live in Miami. One of the greatest parts of
+Miami is the rich Cuban
+immigrant community, rich in values, rich in appreciation.
+For the value of freedom and the
+value of a capitalist society. They gave up everything,
+everything to leave Cuba
+over the course of the last 60
+years to come to America to live the American dream.
+They have no interest in
+socialism. They've seen how it leaves its
+people destitute and poor.
+But we need to do a much better
+job in America K through 12 education and in
+American higher education,
+not just to bash socialism, but
+to inform students.
+About world affairs over the
+last hundred years, and where, what different forms
+of
+government have been tried, what
+have been the successes, what have been the setbacks, and
+even within our own history,
+what have been our success and
+our setbacks. But an informed student
+population will make
+thoughtful decisions around our
+form, our economic economy, or the form of our economy.
+You know, how bad is this state
+of affairs? And it's hard to imagine this
+when you're at Stanford,
+but one of my partners was at a
+New York public school two years ago,
+and the question was posed to a group of sophomores, "To whom did the United States
+go to war with
+for our independence?" 30 kids,
+not one answer.
+And one of the kids finally
+said, "Europe." And he's like, "Well, okay,
+we're on the right continent.
+Let's go from there." And then another kid said, "Was
+it Germany?" And he's like, "Well, different
+war,"
+but let's go again." I mean, how do you think you're
+going to have a functioning democracy?
+Like, forget capitalism versus
+socialism. How do you have a functioning
+democracy?
+When your students are not
+taught the basics of both your form of government or the
+history of your country.
+And this is a problem writ large
+across the United States. It's not a New York public
+school system problem.
+You know, in rough strokes,
+roughly a quarter of American graduates from high school are
+proficient in math.
+Roughly a third are proficient
+in reading. In Illinois a couple years ago,
+there were 53 public schools
+Without a single student at
+grade level in math. Not one child at grade level in
+math.
+So we desperately need to fix
+our K through 12 education system, and this is not a battle
+between the states.
+This is a battle for the very
+soul of our country. If we can't fix K through 12
+education,
+we will have a populace that
+will struggle in an AI-empowered world.
+And an AI-powered world where
+we're competing with the best and brightest in
+Europe, and more importantly,
+in China, in India, in countries
+that place a real profound
+and deep priority on the
+importance of education.
+[AMIT SERU] So let me circle back on
+something you said and connect with what you've
+just ended with,
+which maybe it's a trick
+question. You know, this where you ended
+with raises the question of
+whether leadership Should extend beyond the firm
+itself or the expertise itself.
+I have seen this in conversation
+all around the US now that
+leadership extends beyond the
+firm into cities, into institutions, education,
+civic life.
+Some of the things you're saying
+do need strong voices.
+And yet, at the same time, I
+think you said that. On social issues, leaders should
+be a bit
+more careful, if I will. So what responsibilities in the
+end do you think
+business leaders have beyond
+just building great companies? And how or where do you draw the
+line,
+given that we are at a moment
+where we do need the community to rise up,
+and the community rises up when they see heroes or someone
+that they can look up to? [KEN GRIFFIN] So on the issue of education, I
+do think the business
+community is very aligned on the
+importance of improving education.
+I was actually on a panel with
+Reed Hastings just a few weeks ago because Miami,
+we're grappling with, we're
+going to have a new
+superintendent. What's the best process to
+picking that new superintendent? And then Miami is really
+embracing competition both
+between public schools and
+between public schools and charter schools, or other
+various forms
+of private schools. In rough strokes, it's not quite
+half, but roughly half the kids in
+Miami go to a
+school different than the public
+school down the street from their backyard. [KEN GRIFFIN] So they've really tried to
+embrace how do we increase
+competition within the school
+system in Miami? And here, Reed Hastings made a
+really powerful point.
+The average superintendent in
+the United States in a major city survives for three years.
+Okay. It took me a few minutes to
+digest that. That means that sort of the CEO
+in charge of these very
+complex organizations with very
+large constituencies survives on average for three years.
+How much meaningful change can
+you create? How much continuity can you
+create in a world where you
+step into the job and you lose
+it in just over a thousand days? No wonder the teachers union
+thinks they're going to outlast
+you, because they're going to. Mm-hmm. It's not even close.
+So, you know, there was an example of, and this one was profound. You know, how do we
+think about the United States creating more continuity in leadership for our public school systems?
+And of course, I still think that goes in hand in hand with how do you increase competition? So, you know, one of things
+I'm very excited about is Success Academies is opening five new campuses in South
+Florida.
+And that will create hundreds of
+new seats for students to have access to a
+world-class education.
+In New York, Success Academies,
+if it was its own school system in New York, would be the single
+highest performing school
+system in the entire state. And their student body comes
+exclusively from the
+inner cities of New York, or the
+inner city of New York. So Eva Moskowitz, who runs
+Success Academies,
+does an amazing job of
+demonstrating the power of curriculum, committed and
+dedicated teachers,
+and high expectations. And kids will rise to high
+expectations.
+So I do think the business
+community in particular, since we need an educated workforce,
+has an important role to be
+involved in public education, in
+supporting charter schools, in supporting those
+institutional structures
+that will create a better
+educated American population.
+[AMIT SERU] Thank you, Ken. So let me, we are almost at the end of a session which
+I could keep going on. I'm sure that's true for all of
+you. But let me end with a
+forward-looking question,
+and you can take it in any
+direction you want. Like, what kind of leadership
+will society therefore need the most? Or I won't give you two decades
+because that's hard, over the
+next decade. [KEN GRIFFIN] I could answer that question, or
+I think I could say
+something differently. I think all of you who are here
+at Stanford Business School are
+graduating at the best of times. Like, forget all the crap you
+read in the papers every day.
+There is no better time in the
+history of this country
+than this moment in time. And in particular, in this
+moment in time,
+to step out and to change the
+world. Access to capital has never been
+as
+straightforward as it is today. In fact, you're at the epicenter
+of one of the great stories
+in global finance right here in
+the Silicon Valley. The venture capital community is
+unbelievably
+efficient at providing capital
+to entrepreneurs that have great ideas.
+Once you've got a great idea,
+the barriers to competition have come down dramatically,
+whether it's generative AI,
+whether it's access to cloud
+compute, access to the internet. If you have a product, you can
+now touch.
+Hundred million-plus American
+consumers in the blink of an eye. Billions of people around the
+world in the blink of an eye.
+Like, this was not possible a
+century ago. If you had an idea, you could
+open a local storefront, you could sell your product.
+Today, you have an idea, you
+could actually have that in front of hundreds of
+millions or billions of people
+in the blink of an eye. This is the best of times. Forget everything you read in
+the mainstream media.
+I do not know why they continue
+to wake up every day and take depressants. Like, I don't get it.
+And then as you step into the
+world, the one thing that I will say, looking back on the 35-year
+history of Citadel, always try
+to surround yourself with the
+best and brightest people. And don't try to clone yourself.
+Try to find people who are
+really bright but are really different than you are,
+because the tension between
+you in debate and dialogue
+will make you much more effective as a leader,
+much more effective in
+running your business. You know, people talk about
+diversity and equity, inclusion. Let me tell you, those words
+actually matter.
+They don't matter as a checklist
+on a piece of paper to fill in some blank for
+some government body. They matter because you want to
+have people in the room who
+have different life experiences,
+different perspectives, different insights, and they're
+going to push you and make you better.
+You know, the head of my
+commodities business grew up in Australia. My co-CIO grew up in Ecuador.
+The head of my fixed income
+business grew up in Taiwan. His parents came to America. The parents told the two sons,
+"We will be temporarily poor." And they were dirt poor. And both sons are at least
+centimillionaires today.
+That's the American dream. That's the story that you will
+help write for your firm
+and for the people that work
+with you are dreams like that. So I would like to end on that
+note instead, because I think
+it speaks to the opportunity
+that you have ahead of you. And then as you embrace that
+opportunity and
+you walk through life, one of
+the great things about the United States is our
+intergenerational
+spirit of giving back. I remember I was in my 30s in
+Chicago, and Andy McKenna,
+who was deeply involved in the
+success story of McDonald's, took me to lunch, and he said, "You know, I understand you've
+done well in business.
+You're early in the journey of
+life. But to be clear, High expectations that you will
+give back and
+contribute to this great city. Because what made Chicago great
+for our century was
+the business community giving
+back to the city. We give back our time in
+different ways, whether
+it's supporting nonprofits,
+whether it's being here at Stanford today to speak with you
+and share my life lessons.
+And one day you will pay that
+back to somebody who's 20 or 30 years younger than you are.
+You will give somebody career
+advice. You know, over the years, people give me their cards.
+They've flown to Chicago just to
+talk about their careers. I keep in touch with a number of
+these people. They've never worked at Citadel,
+and yet they're like family to
+me. And for the people at Citadel,
+one of the most important things
+that I always tell our young
+graduates is make the most of this experience, but decide
+if this is where your passion
+lies. If it doesn't lie here, go
+somewhere else.
+Like, in life, you will only be
+great if you're both talented And passionate.
+If you think you're going to
+pursue just wealth for the sake of wealth, you'll be
+profoundly disappointed on
+the course of that journey. But if the work you do inspires
+an inner passion
+and excitement, and you have the
+gifts that you have, that will be an incredibly
+powerful force in your life to
+achieve what you want to
+achieve. And that intrinsic motivation is
+far more lasting,
+far more durable than any form
+of extrinsic motivation. So find what resonates with you
+deep in your soul and
+pursue that with passion. Amit, thank you so much for
+having the opportunity to be here today. [AMIT SERU] And Ken, you asked me how
+the movie should end that I
+like. I like your way of ending it
+much better
+than the way I posed it. So thank you for, thank you for
+taking us there. Thank you. Really a pleasure.
+[KEN GRIFFIN] Thank you. (applause)

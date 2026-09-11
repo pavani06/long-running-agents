@@ -1,0 +1,1786 @@
+Welcome to week two of CS 153,
+also known as AI Coachella.
+We are super lucky to be
+kicking off this week with Mati. Mati is the founder
+and CEO of ElevenLabs.
+How many people here
+have heard of ElevenLabs? All right, so pretty
+much everybody
+Mati and I go back a ways
+about three years ago, I think. When I was still running
+platform at Discord,
+a friend said, you
+know, Anj, there's a little bot like a
+text-to-speech bot on Discord
+that's blowing up. You should check it out. And we had a lot going on
+at the time at Discord.
+And so I actually didn't,
+and I should have. And then a month later, somebody
+pinged me again and said, you really should
+check out this bot.
+And I checked it out. It was called ElevenLabs. And it was quite an
+extraordinary bot.
+It was a Discord
+bot that allowed you to generate audio clips
+with just a text prompt.
+And within 24 hours, I'd asked
+one of our mutual friends, Nat Friedman, to introduce us. Mati was gracious
+enough to explain
+what they were working on. I had you let me come on as an
+angel investor so thank you. And since then, Mati
+has gone on to build
+one of the fastest growing,
+one of the most widely used
+and I would say trusted
+brands and services in frontier audio and speech.
+So thank you for
+joining us, Mati. Thank you. Thank you so much. Good morning, everyone. It was also a crazy thing, Anj,
+when we met for the first time.
+It was me and my
+co-founder Piotr. We both came from Google
+and Palantir before that.
+So we were trying to
+redo the company setup from scratch of what not to do.
+And we tried to go against some
+of the lessons from those days so we were allergic to meetings. We were allergic to any
+email-based communication
+internally, but we
+also wanted to not do any of the internal
+communication the standard way.
+So when we started, we actually
+run the company on Discord. I did not know that. So in that conversation, you
+were helping us, A, on the text
+to speech. And we were trying
+to figure out, is that the right place for
+us to base all the company on Discord?
+We swapped to Slack which
+was easier for fretting.
+But that was an interesting
+few first months of trying to build all
+the bots on Discord
+to make it easy
+and quick for us. This was a bit of a theme we
+talked about last year too,
+which is that often
+gaming ends up being this petri dish for innovation. Some of the hardest infra
+product design experience
+problems that are
+solved in gaming then become leading indicators
+for the rest of the world.
+And the stuff you were doing
+and a bunch of other friends were doing on
+Discord at the time, have ended up becoming
+indicative of value in AI
+a few years later. Do you feel like that's a true
+assessment, or am I overfitting?
+Yeah. No, I think that
+the true part there, which we were following
+Midjourney model at the time of how they've built
+that community piece on Discord.
+And for us at ElevenLabs,
+when we started, we knew that we wanted
+to fix two things. We want to fix the research and
+foundational models around audio
+and voice and then build
+product around that to bring that AI into more
+of an applied AI setting
+and fix the problems that
+our customers are facing. We started on a very
+PLG-driven motion so working
+on a product-led
+growth with a lot of the creators in the space,
+of developers in the space.
+And we thought that
+the best way to do it is close the loop as close
+as possible to the people that
+are using those tools. And generally
+keeping access open
+to a lot of those
+creators and developers was the best way for us to
+learn, Is it good enough? Is that quality
+finally there to serve
+the needs they have to what
+are the use cases we might not predict that people might
+want to build so we can bring
+that quicker and then free? And that still a big
+issue today of our work across that is we want to
+work with the community
+to find ways for them to
+contribute back to the product develop. And of course, whether
+that's using the models to refine based
+on the data of how
+you use the model all
+the way through that, can you contribute? In our case, we've created
+a voice marketplace where people can
+contribute their voice
+to be used by others. So that community aspect
+was very important. And it's always a true where
+I feel that technology adopted
+by the community will
+show you use cases that might diffuse to the
+rest of the world 6, 12,
+18 months later so being like
+closest is super valuable. But more so than not
+in that early days,
+just I think you need to be
+extremely problem obsessed. What is the problem
+that they are having?
+And their variation
+of what you think the problem is to what the
+customer actually thinks is a problem is
+slightly different.
+OK, let's actually stop. Take a beat there. Can you go back? Take us back in time. What was the problem
+you guys were obsessed
+with when you started Eleven? What is it today? How might it evolve? Give people a bit
+of a ElevenLabs 101.
+How did we get here? Cool. The whole chronology. I will give you a zoom
+in into that first day and accelerate over
+the last few years.
+But when we started--
+so I'm from Poland. My co-founder is from Poland. A very peculiar thing
+that happens in Poland
+is that if you watch a
+foreign movie in Polish, all the voices, whether that's
+a male voice or a female voice,
+get narrated with
+one single character. So if one voice reading every
+character, as you can imagine,
+a pretty terrible experience. And you would think that
+with the modern technology, this is a problem that
+would have been fixed.
+And no, it's still the case. So most of the content
+is delivered this way. So that was the-- Whose voice was this?
+Who did they-- They have five characters. There's five of those
+voices, usually monotone male, deep, old voices.
+And it's also crazy, because
+the part of the thing is they are
+encouraged to deliver
+the movie in a flat delivery
+so the audience can interpret the emotions for themselves,
+which is another level.
+They're expecting a
+lot from the audience. They do expect a lot. So like any Polish
+person, if you ask them,
+they will account how not
+good experience that is. And when you learn
+English, you finally
+get to learn
+everything in original, and that's an
+extremely positive one. So that was the first piece,
+an inspiration for us.
+We the future is different. The future will be where you
+can access all types of content in any language with
+that incredible tonality,
+incredible emotions. So we left Google. We left Palantir at the time.
+And-- Were you guys both in
+the Bay at the time? We are both between
+Warsaw and London.
+So At the time
+when we started, we started in London, then moved
+to Warsaw for a little bit then moved back to London.
+So from Europe at the time,
+which actually, for that part, was pretty useful because
+the whole language thing is
+a big problem there, less
+of a problem in the US so the inspiration might
+have not occurred otherwise.
+And then we knew that we want
+to fix that AI dubbing problem. And as we started
+going deeper, we
+knew that we need to
+understand two parts. We need to understand
+whether there is a research
+potential for us
+fixing it and, two, whether there is an actual
+product need, actual problem for the customer.
+So Piotr, my co-founder,
+an amazing researcher, started diving in
+and quickly realized
+that the current models
+could potentially create a Frankenstein
+version of dubbing.
+They're not good enough, but
+they are almost giving you an experience where you
+can switch from language A to language B,
+preserve the voice,
+preserve the intonation,
+emotions, but still not good enough so there
+will be research, but possible research to fix.
+Now, in that research,
+a very important part is, as you think about the
+dubbing problem from speech, there are three models
+that need to play a role.
+You need to transcribe what's
+happening, who is the speaker, remove the background,
+sounds, background noise.
+Then you bring it to text. You translate it to
+another language. You might need to do
+additional set of corrections.
+And then you recast it back
+on the other side with text to speech to produce audio
+on the other side borrowing from the original performance.
+So there are those three
+key models-- transcription, translation, and the text
+to speech on the other side.
+And you need to fix all the
+components to make it good, while at the same time I
+was trying to figure out, does anybody need that?
+So we would call the
+email of creators, of studios saying like, hey, if
+dubbing was a problem-- sorry,
+if dubbing was
+possible automatically and you could take
+your movie and bring it to all international
+language with your own voice,
+would you be interested? Every so often, we would
+give them an early version of the samples.
+And frequently, the reply
+we got was, yes, interested. But if you can do
+that, could you also
+do just a simpler voiceover
+corrections for me? Because when I record, let's
+say even as we record now,
+after that, some of the parts
+are not recorded properly and I want to fix them. Or could you replace my
+voice from the script,
+just in my original
+language, so I can narrate that
+without appearing in the script and screen.
+And that was a very
+clear piece where as he dived into this
+space on research and we dived into the
+user problem space,
+it was clear that there's other
+problems that we can fix first. And we can focus research on one
+of the components instead of all
+of those components,
+and actually bring that to the market and
+bring that to their users.
+A couple of things. I mean, the class is
+called Frontier Systems. If you notice what
+Mati just talked about
+is the anatomy of is there
+intelligence pipeline. Remember, last week, we talked
+about the anatomy of how
+intelligence is manufactured. But he just gave you a
+breakdown into the system
+that Eleven was trying to
+build at the time, which was this cascaded workflow
+where you had the TTS.
+You had an LLM in the middle to
+do some reasoning, essentially. And then you have a
+speech-to-text model, not
+the other way around. You have transcription. You had an LLM. And then you had exactly
+a generative model. Exactly. And it was still
+2022 so this was
+a year where the topics of the
+day were crypto and metaverse. So that was still
+before the GPT moment.
+The different days. And LLM translation was
+still relatively poor so we were using both attempts.
+So the whole pipeline didn't
+produce the right result, which was a great piece for us
+being close to the users, trying
+to get what is the actual
+problem because we then shifted, OK. Let's fix the text
+to speech, which
+is the most common denominator
+of all those problems. And let's fix the voice
+over for the creators.
+And then we've
+noticed that there's other parts of just
+reading the scripts, reading articles, reading
+books that we can deliver.
+So in 2022, we decided that
+the first set of the biggest
+potential will be the more
+basic version, which is just bringing text into audio,
+making it sound human,
+making it sound emotional
+in just English. So you decided not to
+innovate on the transcription
+part or the LLM part, just the
+last mile of the generation. And you said the mission
+there was let's try
+to improve the state
+of the art in-- it had to sound natural. It needed to sound natural.
+So the main things that were
+not possible at the time is you couldn't really
+replicate a voice
+with the same characteristics. And, two, you couldn't
+make it sound and follow the entire delivery in
+the way you would expect.
+So if you have a
+fragment of text, it's a, say, a happy sentence. If you are reading
+it, you know if it's
+happy you deliver
+that in a happy way. If it's a dialogue sequence in a
+book, you know it's a dialogue. So when you read it or a
+voice actor would read it,
+you know you need to
+read it as a dialogue. Because you have
+context of both. You have the context
+of the entire thing. And at the time,
+at the same time,
+the LLM break started
+occurring, where you knew that you could
+predict the next stock and based on the
+previous stock and so you
+could bring that context into
+account in a smarter way. So that was the first big thing
+that we knew we could solve.
+And, two, we could recreate
+the voice characteristics a lot better. So the common
+approach at the time
+was effectively hard
+coding parameters of a voice, the gender, the
+accent, the age of the voice
+and trying to predict those. Instead, we can keep
+them more abstracted then let the model try to define
+what those parameters are.
+And those two
+innovations we knew will fix the research
+side potentially. And then on the
+product side, we now
+knew that a lot of
+those people will want to create their longer
+forms with books and audiobooks,
+create scripts and
+turn them into audio, do the corrections on the
+voiceover for a video.
+So we knew that we'll need to
+build a product for making that easy and go all in on helping
+the creators and, of course,
+the API to developers
+to build with that. So it's 2022.
+You've had this
+clarity now that, OK. The state of the art, the
+frontier we're going to push is this flexibility of the
+voice, the generation part.
+But it was just you and Piotr. You hadn't raised any money. I don't think so.
+Yes. Yeah. Yep. What did you do first. Did you go and look
+for an open model? Did you try to go call
+somebody up and use an API?
+What was step one? Step one, we, of course,
+were drawing from our savings to get the models off the
+ground and get that first like,
+are we solving
+the right problem? And I think the clear
+thing for anyone
+here is it was so
+valuable for us to be as close to
+the users as possible to keep that interactive
+loop pretty quick.
+But then to your
+point, the main thing as we were like actually
+trying to do the research was, of course, look, what's
+available on open source?
+What's available
+in closed source? And then look for the
+papers in this space. Are there other innovations in
+those papers that might have not
+been applied to audio? And that was the case. The closed source
+was still lagging. Nothing really good.
+But at the time,
+the hyperscalers so the Googles of
+the world were still leading on the best
+text to speech.
+Open source was ahead
+so you had some inklings of incredible voice models.
+There was a famous
+model called Tortoise from an incredible
+guy, James Betker.
+Oh, we're going to have
+James come do office hours in the class for everybody. OK. Amazing. The crazy thing about James. So he was at Google at the time.
+He was working, I think on
+infra or something unrelated. And in his spare time, he
+was exploring audio and voice
+and effectively created the best
+open source model of that time-- On nights and weekends. Basically on nights and
+weekends as a side project.
+And it was finally
+the model that could produce
+something that sounded
+human-like on short
+fragments so you could have amazing delivery, the right
+process, the right intonation
+and emotions. However, two things weren't
+possible with that model. One, it took extremely long
+time to generate anything.
+And then, two, it
+was very unstable above that short sentences.
+So that was a tricky limitation. And then on the papers,
+there was, of course,
+a lot of good innovations
+coming from the space. Diffusion, in 2021, came out.
+I mean, the Transformer was
+four years prior to that. But still some of the
+ideas from Transformer
+were just getting through
+to the audio space so we knew that combining
+some of those ideas we
+can potentially take
+inspiration from open source, take inspiration
+from those papers, and try a slightly different
+architecture for a text
+to speech and for voice creation
+of how you create those voices. Do you remember, by any
+chance, how much compute you
+spent on the first
+Eleven checkpoint that was inspired by Tortoise?
+Those tiny amounts
+in comparison. It was tiny-- so one
+thing that I recommend, if you are looking to start a
+side project or a company is
+look through all the
+accelerator and "programs" from big companies that give you
+free compute and free credits.
+Oh, that world is gone. There's no free compute anymore
+except maybe for this class of students, actually.
+I should know that before
+saying this, I guess. But there was a great-- maybe
+they still do something there. So NVIDIA inception Program
+and a few others gave us--
+Yeah, I remember that. So we-- Back when GPUs were
+still available. Exactly. So the first ones for us were
+in tens of thousands of dollars,
+and that felt big. Maybe it was approaching that
+$100,000 category but still
+tiny. I remember, in that days,
+the budgeting and things
+like optimizing your
+budget is so important. It's not a compute
+piece, but I remember us arguing whether we should
+do a patent for our work, which
+we decided against. But I remember that the lawyer
+quoted us for the entirety
+of the patent work,
+$6,000, and we said, there's no way we are
+paying that amount of money for anything at this stage
+and decided not to do it.
+Well, it seems not having
+a patent has not helped-- No, I don't think-- I think ultimately is it
+even valuable that you're
+innovating so quickly
+that it becomes obsolete? Two, would you ever want to stop
+innovation from the other side?
+So likely not. Do you do it as
+defensive measures? So then we learn about the
+whole patent trolls industry,
+that other people that
+will try to attack you with their own patents
+that aren't great but just waste your time.
+So do you do that? Then we decided like, no, we'll
+just fight those cases, anyway. So it didn't stop us.
+But bottom line, so small
+models, in comparison, they were in hundreds of
+millions parameter models
+at a time, If not, lower. So that was relatively
+small text-to-speech models.
+And you asked earlier,
+just to give you a quick-- so that was 2022. And then the common
+facet across ElevenLabs
+is we continued across
+research over last years. So the models of
+course got bigger, and that applied across
+the entirety of audio.
+So we did text-to-speech
+model to start then built a transcription
+model or speech-to-text model to understand
+what's happening
+on the audio side, the
+wider set of how you bring those models together in
+AI dubbing, how you bring
+those models in interactions
+so how you bring a conversational issue
+around the speech to text,
+the LLM, the text
+to speech together and even expand it to
+music so entirety of audio
+and how voice models
+or audio models work together with
+other modalities. And then alongside,
+build a platform
+that helps businesses and
+developers or solo creators
+transform how they interact
+with their audience or how they interact
+with their people
+through agents and
+support and sales with creative tools and
+marketing and storytelling
+so how you can create
+that interactive tissue between an entity and
+the audience it serves.
+And that's the common piece. I forget when it was,
+because these timelines are so blurry now.
+But there was a
+moment where I woke up to like six different
+people texting
+me a link to a tweet of a
+speech by Javier Milei, which
+had been completely
+dubbed with ElevenLabs Yes. Was that a year ago? That was two years.
+Year and a half. Yeah, exactly. I feel like everything changed-- some. Something changed. What happened?
+Yeah so it was-- so to give you a rough
+timeline year by year of how audio models develop.
+So 2022, first
+breakthrough which-- my co-founder is the
+smartest researcher
+in the space I got
+to know, was finally able to bring into the field
+of how you get that context, get that tonality out.
+So that was 2022. 2023 is where you
+started seeing expansion around the wider voiceover,
+wider narration space.
+So you could use text-to-speech
+model across languages, create more voices. We created the
+ability for people
+to recreate their own voice
+in a high quality, created a marketplace around that, and
+a wider set of creative tooling
+to help you with the
+audiobooks for authors, creative tooling for authors. Then 2024 finally brought
+good transcription models
+combined with the
+LLM for translation, combined with the
+speech generation. So you finally had the
+AI localization version.
+So that was the
+Javier Milei speech. So the project was-- there's few versions of that.
+He delivered his
+speech in the UN, and we brought it from
+Argentinian into English
+so people could listen to
+that while still having his iconic delivery.
+And then in that
+same year, we worked with Lex Fridman on
+the full conversations that he had with
+different world leaders
+so Javier Milei of
+Argentina, all the way through to President
+Zelenskyy of Ukraine to later on with Narendra
+Modi of India, where you could
+hear both of them
+speak that language, which was a new opening. So that was 2024.
+And then 2025, what happened
+is you could finally-- like roughly, finally
+have those models
+act in the real-time
+basis so it could create more of the
+interactive voice agent experiences where
+you could-- you
+mentioned the frontier
+system architecture of combining the stack. The same kind of stack applies
+in the voice agent combo,
+where you can have this
+cascaded architecture of having speech-to-text transcription. Then you have LLM to
+generate responses back
+and text to speech
+to narrate it, So if you are speaking
+with a voice agent, then it can predict, are
+you stopping the sentence?
+Start generating the response,
+and all of those components can work in tandem to
+create that experience.
+So that was 2025. And I think 2026,
+we'll see an extension of that of how maybe cascaded--
+I'm going too much into
+detail, but cascade go to fused or cascaded cutting the
+latency to be great.
+But back to your question,
+the first great AI dubbing
+experiences where in that
+static context in 2024 and were really
+good, really good.
+Yeah. So thank you for the cheat
+sheet on how we got here.
+About a year ago, you and I
+started talking about, OK, where does the space go next?
+And I remember
+you saying, Anj, I think-- we've had this
+cascaded system so far.
+But now, we're starting to see
+what people want to do with it. And a big part of what people
+want from a capabilities
+perspective is deeper reasoning
+from these systems, especially
+an audio agent that can
+understand the tone, the voice, the inflection, the accent of
+what's coming in because you
+lose all of that context when
+you transcribe just pure audio. I remember you saying
+that there were
+going to be either some forms of
+unification of these modalities
+or some new breakthrough
+where we try to combine these into omnimodels.
+Where are we right now in terms
+of how far are we from these--
+James Betker is a good example. Mati just talked about James. Shortly after open
+sourcing tortoise-tts,
+James went to OpenAI and worked
+on ChatGPT Advanced Voice Mode. And when I talked to the
+ChatGPT Advanced Voice Mode,
+it still doesn't understand
+if I'm angry or sad. If I said the same word
+or the same sentence
+in a really angry way or in a
+sad way, it just transcribes it and the audio understanding,
+the semantic understanding
+of the audio is very limited. Why is that? And what is it going
+to take to make the systems more capable of
+understanding what's coming in?
+Does that make sense? Yeah, makes sense completely. And, one of the huge
+questions-- and we
+changed our own perspective
+over the last couple of years.
+What's the right approach
+across the different domains
+across other fields? So to at this point, when you
+have a cascaded architecture,
+frequently what would
+happen in the past, you would transcribe
+just the text element, pass it over to the LLM to
+generate, and then of course,
+you would narrate that
+on the other side. Now, of course, that's a
+relatively poor version of that.
+What, you could theoretically
+do is still try to capture a lot more of that information.
+And now, generally, you
+have those two approaches as you think about the future. One is you continue
+on the cascaded side
+so you continue with the
+three different models and potentially think about how
+they can be improved to continue
+bringing the right
+context, optimize latency, continue reliability. Or you can think about training
+a model together where you
+combine all of them together. And then you can fix in between. Maybe you try to create
+a transcription LLM
+model at the same time but
+keep the other side separate. So there's everything
+in the middle. So it's not a truly
+binary choice,
+but that's the big question
+many people in the audio side will be alluding to like,
+do you go the fuse approach
+where you train
+them all together and generate effectively? When I say something, the
+voice agent automatically
+generates a speech token. It doesn't go through text. Or do you go through text? Where we are today as we
+think about our approach
+to this space? As we think about
+the enterprise, the business use cases where the
+reliability and the smartness
+and the intelligence of the
+model is one of the key things, we think the cascaded
+approach is the right thing for the next few years.
+And if you are
+thinking about places where maybe the reliability
+isn't as essential but the speed is, we think
+the fused approach will be.
+And us in so many
+of those cases, probably within
+a given customer,
+you will probably
+want to blend and use a little bit of one
+model and the other depending on what
+you are solving for.
+Now, to the actual
+question, we think-- so there's those three Key
+parameters, the quality
+or the emotionality
+of the speech and the experience
+of the interaction. Two is the reliability.
+Does it interact,
+not hallucinate, calls the right tools behind
+the scenes in the right way?
+And then the latency. We think emotionality is
+fixable in both approaches. So we hope that later
+this year already when
+you are speaking a voice
+agent, you're excited, the agent can respond
+in excited way. If someone is
+calling and stressed,
+the agent can respond
+in a reassuring way. And we actually just released a
+new version in our voice agent
+work, which just
+trying to do that, trying to detect the emotions
+on the transcription side, pass that over to the LLM,
+uses that as the context,
+and then generates
+response accordingly. And that's one of the big
+breakthroughs on our side
+to create this
+expressivity, to be able to have this expressive
+mode finally work. What happened behind the
+scenes to make this possible
+and was the hard thing is you
+didn't have that much data that could tell you, is that
+delivery happy, sad, stressed?
+So over the last year,
+we are effectively investing a lot to create
+this whole labeling exercise to be able to create a
+data, to train that model,
+and control it. So finally, we think, you
+have the expressivity, And the second part is you can
+actually make it controllable.
+So you can define what
+type of experiences should happen based
+on those emotions. So we think that expressivity
+or the emotionality quality
+is largely fixable in both or
+will be very close, in par.
+Our friends at Sesame are doing
+a great example of how you can-- Yeah, Brendan will be
+speaking in the class.
+Amazing. So he will probably tell you of
+how they are trying to finally get through that cusp as well.
+So it's almost a race. Who will be first between us to
+pass that emotional voice cuing test across any of
+those circumstances?
+Then the second level is
+the reliability level. And here, in general, you
+want the smartest model.
+You want the smartest
+model to work in the agent. And of course, we are seeing so
+much of the innovation happening across LLMs, our customers,
+the businesses, whether it's
+Deutsche Telekom or Revolut
+or Klarna, all of them will have a slightly
+different models they will want to use
+depending on their use case
+that we can empower them to use. And then the second
+thing in that reliability as you
+think about voice agent,
+let's say you are calling
+in to customer support to rebook your ticket
+for flying to Poland.
+You will want it to
+authenticate your account. You will want it to
+pull your own details. If you are to
+process the payment,
+you want to make sure it's
+your details that are attached. So it needs to be reliable.
+It needs to follow that flow. And here, you are calling
+so many different tools in those steps.
+So you will likely go through
+some two-factor authentication to get the code.
+You will likely want your
+email and the database to be pulled up from that email.
+So all of that needs
+to work reliable. It will take time. So how you orchestrate
+that part is important.
+Cascading models
+work already really well on that given
+the intelligence layer will be fixing that.
+And the fuse, you
+sacrifice that. You need to then bring all that
+tooling into the fuse model,
+and it becomes very
+tricky to track what happened in each of
+the steps, what happened on the transcription step,
+what happened in LLM step, what
+happened on text-to-speech side. And then similarly, you
+cannot give the guardrails or the safeguards to bring it.
+And then latency, the hardest. I think, here, fuse
+models are winning where you can make it very quick.
+You can make it
+respond in roughly 300 millisecond response,
+but you sacrifice
+on the reliability piece. And what we've seen for
+our customers, which is the businesses,
+you don't want that.
+You want the reliability
+over overlays. However, in other
+use cases, let's
+say like a companion
+use case that we are not solving, in that equation,
+maybe that's slightly different Right.
+I see. And that's how I would
+think about that stack. And maybe last piece, maybe
+in the next few years, the way
+we think this will transform
+is if you are interacting with-- let's take that
+booking airline example Maybe
+if you're just trying to get
+information about what are the products and services and
+where can I travel where it
+doesn't have to
+execute those actions, maybe for that part
+of the interaction, there is a version
+of fused approach.
+But then the moment you
+need to go into account and authenticate it,
+you go to cascaded. So on our side which we
+are exploring internally
+is trying both
+approaches from research of continually doing that.
+And the reason I
+mentioned we swapped, like almost the good set of
+examples in the field, there's
+different companies
+that will explore both of those approaches. So those are very unclear
+whether the emotionality
+is fixable with
+cascaded approaches. But a lot of the
+recent innovation, whether that's great work from
+Sesame or other companies,
+prove that it is. And hopefully, the recent
+release that we did brings it to another level.
+So I want to pause for two
+seconds to overlay something--
+highlight something Mati may
+not have realized he did. But did you notice that
+twice in his last three
+minutes of exposition,
+he gave a shout-out to multiple other teams.
+Including Sesame. How many people have
+heard of Sesame? OK, it's about half. We'll have Brendan,
+who's the CEO of Sesame.
+And he was the
+former CEO of Oculus. And people have heard of Oculus? OK , so almost everybody. Yeah, so this is an important
+cultural leadership point
+that I learned slowly
+over time, which is there's two types of
+leaders in the systems world.
+There's those who
+see what they're doing as one part of a greater,
+collective, collaborative
+project as an industry. Where the frontier
+of this new space called voice AI and audio AI,
+Mati's got one point of view
+on how that system should be
+developed for the customers he cares about, the
+mission of Eleven. But at the same time,
+he's happy to collaborate
+with other people who have
+different perspectives. And one of those people,
+teams was Sesame. And I think it was maybe
+three years ago, shortly after
+invested in. Eleven that I decided
+Brendan, Ankit, and I--
+Ankit was my former
+co-founder and CTO of Ubiquity6-- we had been
+observing at Discord that there
+was this really urgent need to
+have better and better voice models in Discord. You spend 60% of your
+day in Discord and voice.
+And so I remember calling
+Mati up for advice and saying, hey, we're thinking
+about building
+a new product that has a
+real-time voice companion built into it.
+What do you think? And he could have said,
+Anj, I don't have time. I've got 1,000 other
+things going on.
+Not something I think about. But instead, he took the time to
+really break down for Brendan, for myself, for Ankit
+what his perspective would
+be for Sesame's needs. And he had the
+maturity to say-- even
+though he had to
+fundraise a bunch of money and there were lots of
+competitors and so on and say, you know what?
+We're all in this together. You're not really a competitor. In fact, maybe at some point
+we could help each other out.
+And so I think actually
+around that time, Brendan ended up angel
+investing in Eleven as well. You subsequently became
+an angel in Sesame.
+There's a level of collaboration
+between now the two teams that is quite rare, I
+would say, in the ecosystem
+I wish more teams had that
+approach that Mati took and Brendan took.
+Actually, I think
+about a year ago, based on some of the insights
+that Mati and Peter had given
+Eleven-- sorry,
+Sesame, they open sourced a speech model called
+CSM, a conversational speech
+model, which is just different
+from any of the models that Levin was working on. And that was awesome because
+that model is now on GitHub.
+Many of you can use it
+for your own projects. In fact, some of the students
+in last year's project used it. And that, I think, is
+one of through lines
+I want you to take away
+from this class too. You heard Andrew's life-scaling
+lessons, number one, last time.
+I would say a scaling law
+from my experience working with Mati has been, you know,
+you can go further together,
+especially in a
+new space like this where often what seems
+like a competitive project
+just because the VCs or
+the business ecosystem is trying to create some nice
+landscape slide that says,
+here is audio AI. And here are the logos. And then here's visually-- I mean, these
+categories and labels
+are largely
+artificial constructs created by non-technical
+people to try to make progress legible to the world.
+But what I find is
+really it's people that are driving a
+lot of this progress. And collaborations
+between people is what drives the frontier.
+I know I'm hyping you up a
+little bit too much maybe. but thank you. No, no, no, this is great. Keep going. Here.
+Take as much of it as you can. Yeah. No, that's very true. It's very easy to get stuck
+in this loop of other startups
+are your competition. And ultimately, it does
+not matter for the mission you are solving. It's a long-term game.
+And many of those
+people will come through different intersections
+of your path in the future so keeping that
+partnership or working,
+exchanging ideas
+together is crucial. And if you are a to
+pick competition, if you are to start a
+company, you probably
+want it to be one of the
+hyperscalers or legacy companies. It also will pull
+you up a little bit.
+So yeah, I thin k it's-- Well. OK. So on that point, let's
+talk for a few minutes about the business,
+because proof
+point that you can
+actually succeed being a nice guy like Mati. So when we first met,
+I think the company had less than a million
+or 2 million ARR.
+Today, is it public? What is it public about
+where you guys are? So we crossed 2025 at
+$330 million in revenue.
+And this quarter was
+our biggest quarter. And we added over $100
+million in additional ARR.
+So now we are over 430-- Over $430 million in
+revenue in 36 months.
+Can we just pause for a
+second and acknowledge that? [APPLAUSE]
+This is insane. How big is the team? It's insane, of course.
+And it's crazy that we get
+the chance to be building and all of you are building
+or developing and learning
+at the frontier
+the biggest change in the world where it's maybe
+bigger change than internet
+or electricity. The team is, although in
+perspective, of course, Anthropic as maybe
+many of you have seen--
+Well, they had a little bit
+of a head start, I would say. They did. They added $11 billion in
+additional ARR over last month.
+Yes, yes. Which is crazy. Well, they're the outliers,
+but we'll get there. But the common thread is like
+there's such a clear value
+that you can provide
+to your customers in their case knowledge work,
+in our case, how you transform
+how can any business can
+interact with their customers. And we are over 450 people
+now so relatively one to one.
+Maybe just to give you
+a quick perspective. We have a good amount of
+people between US and Europe.
+So our biggest bases are
+in London then New York. And then Warsaw and SF are
+fighting for the third spot.
+We are all the time
+actively hiring. I need to say this. And I think that
+the big piece that
+maybe was slightly
+different in how we set up a lot of that 400 people is we
+keep it an extremely small team.
+So each team is less than 10
+people, have a big ownership and mandate to run ahead, make
+their own independent decisions.
+It's OK to be wrong. The speed in understanding
+the customer, understanding the problem
+is much more important
+than going through this
+colloquial process. And that helped us across that
+journey so often and so much
+that's why we can go across
+so many different models and then bring
+them to customers, whether that's in the
+marketing department
+or whether that's helping on
+the customer support side, or whether it's growing revenue
+and helping companies figure out
+how to reinvent that with a
+new version of sales or fan engagement. So the common thread across
+all of the product work we do
+is how you can really
+iterate in a different way. Well, so, again-- and this is
+my last question because I think
+the final project is the
+one-person frontier lab,
+where the idea is
+they could now-- using many of the tools
+available to them today that
+weren't around four years
+ago, including Eleven, can push the frontier or create
+a state-of-the-art system that
+would have previously
+needed many tons of people. And on the business
+side, what is
+it that has allowed you with
+such a small group, relatively speaking, to create a repeatable
+engine where new capability
+results in repeatable revenue? I think we talk about Anthropic
+last time, where in that case,
+revenue scales quite
+predictably with compute. In your case, what
+I've observed is revenue has scaled quite
+predictably with deployment
+as you've built out
+the deployment team. I would love for you to talk
+about that for a second. What's going on there? Why have you somehow
+been able to tell people,
+I'm going to do
+this much in revenue and just hit it year over year
+with extraordinary growth, which
+is quite rare? And, two, pricing-- and let's
+talk about pricing and packaging
+for a second, because these
+numbers like ARR, again, the accounting of
+these things was
+developed in a pre-AI
+world for software that looked quite different. Now, people are going, should
+we do token-based pricing,
+annual subscription? What is the right way to
+meter intelligence and meter capabilities of the kind? So can you talk for a second
+about those two things?
+100%. Yeah, there's-- and I like this
+ambition of building effectively
+your final project. And it sounds like
+a fun one too, especially now you can just do
+so much if you have the agency
+and keenness to
+just go after it. I think on the two questions
+so on the predictability side,
+it's still hard. I think we are happily
+trying to set a target.
+We are currently
+overshooting our targets. But the main part that is
+contributing to us to figure out
+where roughly this will
+place is the deployment side of we get a chance to work
+with some of the iconic
+and the biggest
+companies in the world. We combine a lot of the
+forward deployed engineering to work alongside them, which is
+the team that effectively figure
+out how to take the AI and bring
+it into the applied AI site, be the lab version of a
+lot of those companies
+and transform their
+work together. And in those cases, we
+roughly know how much value
+we can deliver each year. And then really
+the main bottleneck is, can you bring incredible
+people that are passionate,
+that have that level of IQ and
+EQ, are striving for excellence but stay humble.
+How do you bring
+those people that are really keen to innovate and
+be incredible at their craft?
+So if you are able to predict
+the growth of the people, of the value of how
+much you can deliver,
+then you can start getting
+back to the predictable part of the business. That's more on our sales
+side, enterprise side,
+which is more than
+50% of the revenue. And then 50% is still
+PLG and continue growing on the self-serve side.
+And this one is a little
+bit harder to predict, because it's effectively
+a big part of, can we continue our stride and
+innovation across the models?
+And we took the approach of all
+the product, all the research we launch is us available to the
+biggest companies in the world,
+but we try to make it
+available for everyone. So if you are building
+your one-person project
+in the future, you have access
+to a lot of the superpower that the biggest companies will. There is some concurrency
+limits and, of course,
+the closer compliance elements. But ultimately, get the same
+capacity as the top lab.
+But what this means
+frequently for revenue is that part is
+less predictable. However, we know where
+our initiatives are lying
+and roughly can estimate
+what's the value of the world. And happily, frequently we
+see the value for the world
+is bigger than we expected. That's the first one. On pricing, always
+think about the value
+you deliver to the customer
+and work backwards from there, never from the cost of how
+much it runs to do something.
+If you deliver the value, you
+roughly want to capture 1/10 of what you delivered as
+a value in your packaging.
+And any pricing
+and packaging that accomplishes that, which is the
+hard piece of how you calculate the value, how you drive
+that good metric for that,
+is the problem frequently
+more than anything else. So never start from the cost. Start from the value and
+work backwards from there.
+Thank you for the question. The big question is
+voices, with a lot
+of the technological
+advancement, you can replicate voices
+relatively easily. What this means for the
+future of the security
+and safety in the space? So I think there are two parts. The one, we as a company, given
+we develop our own models,
+we can actually build and
+bake in a lot of the safety inside of the models,
+and that's something that we've done from the
+start, whether that's
+being able to trace back the
+content that's generated, back to who generated it
+and take action as needed
+to moderate whether you
+are abusing and doing a fraud or a scam and stop
+it before it's generated
+or flag it internally. And then three, contribute
+to the wider space, which is where we think
+it's headed, is like,
+can you have a publicly
+available system where you can drop an audio
+sample and get information?
+Is it AI generated or not? Have the watermark piece. And that applies as much to the
+negative version of the use case
+but also on the positive side. If people will want to
+license their voice, how do you make sure
+that this was licensed
+in the right way
+which we-- we work with people like Sir Michael
+Caine or Matthew McConaughey, and you want to have that
+information in there.
+Two, to your second part of
+the question, a lot of systems today will rely on
+voice authentication
+in their banking
+systems and other parts. We think this is not
+the future, and you should step away
+from this and not
+use that as an
+authentication side. We think, from the
+security perspective, it's the wrong approach.
+And every so often we
+see an interesting way of using voice agents
+against abusers. So we had this
+amazing charity we
+worked with, where
+based on IP of a caller, could attack whether it
+can be a likely scammer. And it follows a scammer so
+the opposite of the usual,
+they would serve
+it a voice agent. And the voice agent would
+then speak with the scammer. And the whole intention
+was to waste their time.
+And some of the most
+fun conversations happened from that part. So there are some ways
+of use that against--
+Counteroffensive. Counteroffensive, great. Troll the trollers. So the question, is bottlenecks
+for ElevenLabs and maybe
+for a wider audio space? Beyond the obvious ones,
+which is incredible people, incredible research so they
+can continue innovating
+on the architecture side
+and apart from compute, the main thing from the research
+we would love to fix this year
+is how you combine. So we spoke a little bit
+about cascaded architecture of how you create the
+speech to text and text
+to speech, how you can make
+it truly interactive where it understands your emotion and
+can pull up any of the knowledge
+from your systems and
+become that personalized extension of yourself.
+So maybe the
+non-obvious one, it's every time you interact
+with different service,
+you interact with
+different experience. You will have your
+own preference of what's good for you and
+what's good for everybody else.
+And we are trying
+now to figure out how to make that interaction
+really custom, really personalized, and really
+good for all those cases.
+And just to recap
+the obvious one. So hiring is just the
+architecture side. Compute, if we had
+more compute, you can run more
+expense, more models.
+There's a version where maybe
+too much compute is also harmful like the necessity is the
+mother of invention is also helpful in some cases.
+The optimal amount of compute. The optimal amount of compute. And the preference piece
+of what really works
+is going to be helpful. And maybe a good
+example of that. In healthcare space,
+if you are deploying
+an agent that is
+taking an appointment but then follows
+up with the person, asks about how they
+are feeling, maybe
+recommends additional
+appointments, you need to transcribe
+very different nomenclature and make it perfect.
+There's also different people
+on how they will communicate. Some people will want
+a slower delivery.
+Some people want a faster speed. So how you cater and make that
+experience unique and different
+and deliver the most value is
+not so much of a bottleneck but more like thing
+that we want to solve
+and we know we need
+to collect more data, collect what works, and
+then deploy to the industry. About the difference and
+the other complications
+on the training side between the
+cascaded approach and the fused approach. So when you work on a
+cascaded side, of course,
+you get to train the models
+independently to a large extent,
+but then you need to figure out
+how they work in tandem together after that. So you spend quite a
+bit of time on trying
+to figure out what will the
+interaction look like when I combine them together. And when we actually
+combine them together,
+you might need to fine-tune and
+tweak some of those experiences. So we spoke about how you
+finally got the controllability
+and emotionality of that work. The pipeline for passing off on,
+transcribing the sentiment-- is
+it a stressed speech? And then passing
+that as a parameter and making the
+delivery emotional,
+you need to bake
+that in as you're training the model
+before you combine that in the end of pipeline.
+So you need to bake that
+in the training step before you bring that across. And maybe there is a version of
+how you do the language control
+or how you specify
+the pronunciation in different setups,
+which you all
+want to make sure it's clear. On the fused approach, there's
+more of the emergent behavior,
+of course. So you get that for free to
+some extent, but the main thing you need to do in the
+training side, which
+is the usual complexity,
+you need a good open source
+model for intelligence
+and an LLM that you can bake
+into that model. And then there are
+two complexities.
+One is how you fuse the
+tokens from the text space to the audio tokens. Super hard.
+And most people
+figure that step out. And then the second part
+is, even if you do figure
+that out, you do rely
+on the open models that are out there in the field.
+And today, at least
+the open source will lag behind the closed
+source in the intelligence space.
+The question was around
+the future of ElevenLabs and how is it going to
+look like in the five
+years between the models,
+between the platform, between the application
+side of our work.
+At the core, five years is
+an interesting timeline, because there's so
+much research that we
+know will need to happen
+in two, three years. And we think there will
+be still improvements
+you can make beyond that. But at the core, we
+know we want to continue leading the space in all
+foundational research
+around audio. So whether that's the
+conversational models on the future, whether
+that's how you fuse it
+with other modalities is going
+to be one of the big paradigms that we want to be the best at
+so like truly be able to pass
+that voice Turing test
+in any conversation and potentially extend
+that to any interaction.
+So on the research
+side, what this means for the tech space already
+two potentially visual avatar
+space? We want to be that leading
+frontier continuously,
+specifically figuring
+out the conversational or the interactive side so
+step beyond voice and that side
+The platform, it's
+effectively where we see the biggest value we can
+provide in that five-year time
+frame. So as the models start
+becoming more incremental, you need to really
+understand in depth
+what the business, what the
+creator or the developer is trying to solve and give
+them the tools to do that.
+And for us, it's going to be the
+effectively the go-to platform. And in some ways, we imagine
+in the future, the same way you
+have three or four clouds that
+serve all the compute needs on the cloud stack, we imagine
+there would be likely three
+to five platforms that help
+on that conversational setup
+between any business
+and their audience. And we want to be one of those
+platforms, whether that's
+in the conversational setup
+and the support and sales and in that part
+of the business,
+or whether that's the
+marketing and how you engage your customers on being able
+to deliver the better story all
+the way through to the internal
+of how you hire people to scale and train them to then let them
+continue to get that expertise.
+So if we can be that
+for the businesses and in some way everybody
+will be that maybe
+one-person business,
+we will do that. And maybe the last
+part on your question,
+because that's
+definitely something that's back in our mind. It's where does the platform
+and application start and end.
+We think this will blur
+in the future of AI, where you will be able to
+create those applications
+on the platform much easier
+than you were in the past. And we hope to provide
+all the different modules
+for the builders
+of the future to be able to build that seamlessly. One of the proudest
+work we do at ElevenLabs
+is actually working with
+people that lost their voice. And we can bring
+it back so people with ALS or throat cancer.
+And so far we've been able to
+work with almost 10,000 people that lost it. And we could synthesize it
+back so they could communicate
+naturally, which is, we
+hope something that can be available for anyone in need.
+And similarly, on the
+question around Ukraine, so maybe to give you a quick
+context, what happened there.
+So of course, when
+the war started, the government
+needed to figure out how to provide a lot
+of the usual services
+to people everywhere
+around the country. And as you can imagine,
+all of the people
+will just not have the
+usual access points. They will not be able to go to
+a local administrative office
+to get help on where
+can you travel. What benefits can I have,
+because something got displaced?
+How can I get additional
+support for food or benefits? So it's like a lot of different
+problems that you need to face.
+And that stretches across
+the entire economy. In education, the same thing. People cannot go to a
+school in the usual way.
+How do you deliver
+that education to the people that need it? How does the government
+send messages
+around the country
+efficiently if you don't have that access in the same way? How does it send it
+outside of the country so
+people what's
+happening in Ukraine? So one of the many
+initiatives they've done
+was creating a central
+citizen app called Diia, where every
+person can access
+a lot of those
+services going directly through their mobile device
+and gets access to information
+on what's happening, some
+of the educational courses or some of the guidance. And one thing that was
+missing in that equation
+is how can you open
+up even further where people that might not
+have that technical acumen
+to be able to get that. How can people that might not
+have the internet call a number
+and get that information
+in an easier way? So we worked with
+them effectively
+on adding that voice
+side inside of the app
+and outside of the app so
+people can make it a lot easier. So travel to Kyiv at the
+time to work and understand
+those problems and
+work with different set of their ministries
+on that work. And, one very clear
+thing that came out
+was an incredible model of
+how they were running it. So every ministry had their
+own technical resources
+to try to innovate and
+bring that across, not go through the red tape, go
+independently, go quickly, and bring that across.
+And so far, we've seen an
+incredible way of people being able to engage with the
+government and something we
+think might be a version of the
+future of government services. How incredible if everybody
+here could open an app
+and have access
+to your passport, to your driving license,
+all the way through to accessing the best
+educational courses maybe
+like the Coachella course
+directly from the app too? Now, to your second part
+of the question, which
+is important on how we
+think about approaching our work with governments
+in the war zone.
+Ultimately, as a
+company, we are choosing to be Western allied and Western
+countries plus their allies
+and support their work in a way,
+that's, of course, following the legal guidances
+and something
+that we'll continue, to do. Can we talk for a second
+about-- since we're in the zone of sovereign
+scale deployments.
+how are you thinking
+about China? Are there distillation
+attacks you're seeing?
+There's a bunch of
+news this week about how a number of
+nation states have been trying to run
+distillation attacks
+on Western companies that
+produce models like Eleven. Is that a concern?
+How do you reason
+about the ecosystem in China, which historically
+has been very collaborative with the Western
+ecosystem, but there's
+tensions on various fronts? How should they think
+about that topic?
+Yeah, I think in
+general, there's a clear race in eye of the
+world and the developments
+on the China front. From our side, we try to stop
+all types of distillation
+attacks, period. But of course, with any kind
+of IP coming from that region,
+we are taking that as additional
+strong signal of how we can build that into the protection.
+The truth is there's-- and I'm
+thinking about some of the other questions that were asked-- that there's a lot of
+great models coming
+from that region too
+and in audio voice, especially as you need to
+optimize for that language layer
+too so you need to
+really get that nuance of the dialect, of the accent,
+of the different voices.
+There will be models
+in the region that will be better than
+ElevenLabs models
+for their use case in the remit. And to a large extent, we try
+to outcompete them on that level
+and provide a better
+service to their companies on the other side. And as it relates to
+the open ecosystem,
+because one of the things,
+as we've talked about, is having a good open base model
+allows you to then customize it
+for various enterprises, for
+various specific regions, deployments. What we're starting to
+see, at least in some of the other modalities coming
+out of China, like video
+models a year ago, lots
+and lots of innovation, lots of open video models. Now, not so much
+as it seems like
+as several labs start to
+catch up to the frontier. Seedance is a great example
+of this soda video model
+that came out. It's not open source-- or it's not open weight. Is that a trend that you
+think is going to continue?
+What does that imply
+for a team like Eleven? And what do you wish more
+participants in the ecosystem
+like the students here,
+other labs in the space would be thinking
+more about or doing that would collectively help?
+Yeah, great question. So there are two parts. As we look at the
+models in that space,
+frequently, we take a slightly
+different approach in general, because there's the
+research element. We spoke about the
+product element.
+And there's the ecosystem of
+how you become a trusted brand that people can work with.
+We briefly skimmed across
+one of those examples of how you can create and
+give ability for people
+to create their voice,
+share that voice, and earn passively
+on that voice, and figure out how people
+can participate in that model
+innovation, too. And that's a stark,
+different approach between some of the work we
+do on that front versus some
+of the wider models that
+players in China will take.
+And the same will apply
+to video, of course. You've probably seen the
+work on how people approach
+the IP from Disney or
+Netflix on that side and how they approach
+it on the Western side.
+So I think that's the big
+[INAUDIBLE] I wish they didn't. And I think on the
+security level question,
+it's going to be almost a
+big combination of the work that everybody needs to do where
+you can contribute your work,
+but then you need to figure
+out the watermarking system and you need to figure out
+how to have the models coming
+from China follow that
+paradigm or at least, if not, then you don't serve the content
+or don't give the same content
+permissioning on some
+of the platforms. So I think there are
+two different parts. One is how you think about the
+wider ecosystem participating
+in a model. Two, how you bring the
+safety parameters around.
+the models in tandem. And three, in general,
+of course. very helpful
+that open source
+ecosystem continues. And I think you're doing
+phenomenal work to help nurture that across the companies out
+there where ultimately you
+will have always an incredible
+set of builders that need access to the weights, whether
+it's to fuse the models,
+whether it's to fine-tune the
+models for different cases. And I hope our open source,
+meaning Western open source
+models are at least at par
+or better than the ones coming from there, which I
+think we have a chance to do,
+I hope so. Some great speakers coming
+through here as well, from Australian Black Forest
+Labs that will speak about this.
+Effectively, why do
+studios not adopt still-- why they're hesitant
+of switching
+to a lot of the AI voiceovers? And is it because of the fear of
+AI slop or the backlash itself?
+In general, as we think about
+a lot of the creative tooling that we provide for
+studios or creators,
+we heavily believe
+in this concept where you want to use the tools
+effectively in middle to middle
+rather than end to end,
+meaning you will have the story you want to tell. Then you will use
+the tool to create
+a narration, in this case. Then you will want to refine
+it, then maybe recreate, and then you can get a
+great output at the end.
+So there's this big, iterative
+step that needs to happen and why we think about it as
+like this middle-to-middle AI
+part that it will replace. As a think about AI
+slop version of that, I think about the
+end-to-end version.
+Can I type a prompt and
+get a voiceover or video or any of that work? And it doesn't have either
+the initial input of the story
+or doesn't have this great,
+iterative spirit of that. And I think studios
+realize that.
+So I think studios realize that. But at the same time you'll have
+very different set of studios.
+And I think, at
+the end of the day, the high end of the version
+of Hollywood version is just getting there where
+the quality became good enough,
+where you could go
+through those iterations and finally get
+what you intended. So to make it more specific.
+Until very recently, you were
+in the speech site at least. You would give a model, a text. You would rely on
+the model to read out
+the text in a way the
+model thought is best. And you could regenerate it. It would understand the context.
+But ultimately, it would
+be down to the model to decide how to narrate it. Until six months ago,
+roughly, we finally
+figured out how to control
+it like the director would do in those studios where
+you tell it, redeliver this in a slightly more dramatic way
+while slowing down a little bit.
+That was a big breakthrough and
+bottleneck for that to happen. And in the last six months,
+as that started happening,
+we started seeing more studios
+finally adopt that technology in their work to bring that. Of course, too,
+there's definitely
+understanding from the
+studios that if you are to bring that
+technology, you need to figure out how the
+wider economic model will work.
+You want to respect the IP
+of the people you work with. And the economics of that
+haven't been figured out.
+How much do you charge for AI
+voiceover of a person that would not otherwise go to the studio?
+So I think studios
+from our conversations and ourselves are
+trying to figure out
+what's the right balance
+in those economics. But frequently, what we
+see, actually happening
+is you will have AI
+replace parts of the work that you wouldn't want
+to do in the first place.
+So frequently, in a studio,
+you will have some scratch work that you read and
+want to listen to. Post-production is
+almost where it started,
+where you repair the lines. And then ultimately,
+the actual delivery, you want the
+additional art coming
+coming out in the top end. And then, of course,
+there will be other things that they will start with,
+which is AI localization
+or interactive experience of
+how you can bring experience and interact with the movie.
+So that's where we see
+most of the use case. And as we think
+about the future, the two pieces that
+we'll be stopping AI
+is figuring out
+the economics model that's backlash related
+if you don't figure it out in the right way. And then, two,
+those step changes
+that weren't possible
+to make that really high-quality versions are
+just becoming possible,
+but I think more needs
+to happen as you think about high end of that content.
+So will the models
+be on device and how we think about ElevenLabs'
+future in that context? By the way, when we will
+we put it on stream?
+I think tomorrow. OK, tomorrow. So quick. I guess I can still
+say it, but we finally
+figured out how to bring
+our models on device. So we found a way to constrain
+it to a given language
+and potentially bring
+it to any device out there where it will
+be selectively working
+with bringing that
+and opening it up to wider side of
+the audiences, which is the big innovation there.
+But still the quality,
+there's definitely quality difference
+between on device version
+and of course on cloud version
+and the wider set of things you want to do. So on device version,
+we'll do text to speech,
+but you still won't have
+the wider transcription interactivity, how you
+transfer the emotions from one side to the other, how you make
+it with additional reliability
+elements built in. So there's a gap
+definitely that will exist between those for a long while.
+And you still haven't
+fixed them on that side. And maybe as a quick
+side note here.
+Our approach in general as
+we think about on device was we need to
+fix quality first. We want to make it
+as good as possible.
+Only when we do that, we'll
+consider bringing that on device or on prem. So instead of trying to go
+on device of lower quality,
+we want to deliver the best
+experience to everybody there in that context. And I think that's
+starting to happen
+but still not happening
+in everywhere. We think it happens on the
+text-to-speech narration, less so on the interaction.
+The role of ElevenLabs
+in that future. We'll continue being the
+platform of how you really
+go deeper in the problem
+that the customer is facing or the enterprise is facing and
+delivering, not only the models,
+but delivering the wider tooling
+that's required for you to bring that technology in the field. So how you bring that applied AI
+to your local-- sorry, to your--
+Custom-- Exactly, to your
+custom context work. So, if you are deploying that in
+any interactive support or sales
+context, you will need
+the entire knowledge base of how you want
+the interaction to work with your customer.
+You want the piping of how
+it calls the phone number, or it goes through chat
+or WhatsApp or email.
+You will want additional
+tool calling to get and pull data from the database from
+Salesforce or ServiceNow
+to deliver that experience. And then the whole framework
+of how you evaluate, monitor, test that is essential.
+Is it working. Can I self-improve
+based on that? What is the domain
+test that I bring?
+So well we spoke about the
+route scheduling for airlines.
+How do I know that there
+is additional seats available in that route? Do you need the test
+for always checking
+for that parameter being true. And if you left customer happy? So in that future where
+models become more available,
+we know there's still a huge
+gap of what the models can do and what you need to bring
+that in that enterprise context
+or even create a context
+for question earlier on. We are out of time.
+But thank you, Mati.

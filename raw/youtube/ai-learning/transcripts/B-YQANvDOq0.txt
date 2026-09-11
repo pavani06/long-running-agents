@@ -1,0 +1,120 @@
+Okay, so earlier today Anthropic released what I consider to be the best feature in Claude Code yet, function hooks. So before then, I really liked dynamic workflows, but after trying out
+function hooks for the last few hours, I was like, wow, this is really powerful. I gotta make a video about this. Now I'll be going over everything to do with this feature and how we can use it
+to be even better engineers. But first of all, if you don't know what normal hooks in Claude Code already are, then I do have a free video about this on my blog linked down below. Where
+I basically give some motivation for why hooks in Claude Code are handy and why you may want to use them. Now function hooks basically take hooks to the next level and make Claude Code
+even more hackable and customizable. And they solve some of the existing issues with hooks in Claude Code. Okay, so very quickly, there is a sale going on right now for my Agentic Coding
+School. More on that later in the video. Now to quickly make sure we're all on the same page, if you already know this stuff, then you can skip 1 or 2 minutes ahead. The reason why we use hooks
+is to basically add deterministic control to Claude Code. So one of the problems can be that in your Claude MD file, you may define a rule such as never run destructive Supabase commands. And
+then as your context store is filling up, the rules at the beginning in your Claude MD file and your system prompt can fade over time and Claude may forget to apply those rules. Or you
+may get a bit sloppy in your prompting and you may give a lazy prompt, Claude misinterprets it and then runs a dangerous action. Or you may have defined a workflow that Claude is not following
+properly. All of these can be solved by adding deterministic hooks. So as a really brief example, you can basically tell Claude, make me a hook that will block dangerous Supabase commands when using
+the Supabase CLI. And then it will do something kind of like this. So for example, in this case, before it runs a Bash tool, then it will run this script over here, which refers to this Bash script
+called supabase-guard, which will basically block any commands such as deleting a Supabase project. So I can see some of the commands that are blocked over here, deleting projects, branches,
+and stuff like that. But existing hooks have a few limitations. So they can't rewrite anything such as a prompt that you may have given. They can't append any extra context to it
+from a company knowledge base, for example. They can't draw buttons or a status line and rows and stuff on Claude Code. They can't ask user questions. They can't add tools or edit tool
+descriptions. And there is no memory with existing shell hooks. So you can't remember things across different hooks and sessions. Whereas function hooks basically solve all of these issues. And
+the way that I like to think about this is it's kind of like middleware that you would come across in Express.js. So if you have used Express.js middleware before, then this should
+look very familiar. Here we're basically blocking anyone who doesn't have an authorization header. And if they do, then we allow them to proceed to next. Whereas for function hooks, it looks
+kind of like this. So on any tool call inside of Claude Code, we can match it to a certain tool, such as the Bash command. And if it matches a certain regex, such as deleting a folder,
+then we can block the command. Otherwise we can let it proceed. And this means that we can do pretty interesting stuff inside of Claude Code, kind of like this. So you can see in this case,
+on any tool call that Claude Code does with the Bash tool, we basically replace npm in the
+command with pnpm install instead to prevent it from doing something such as accidentally using npm on our codebases. So here we are basically rewriting the input. We can also do something like
+short-circuiting. With Claude Code function hooks now come with a store. So for example, over here, if Claude Code were to do a web fetch, then it would first look in the store inside of Claude
+Code to see if that URL has already been fetched before. And if it has, then we can just return the cached copy instead. And if it hasn't, then we can just let it proceed. Now another pretty neat
+example is I can override any default tools inside of Claude Code. So for example, Claude Code has a
+web search tool, and I don't think it's very good because I use Brave Search behind the scenes. So I
+prefer using the Exa MCP server instead. One of the problems can be that Claude Code will still end up using the web search tool, even though I told it to use an Exa MCP. So what I can do
+instead is I can override the web search tool by middlewareing it, whereby it will intercept
+the tool, see if I have an Exa API key set. If I don't, it will default to the normal web search
+tool. If I do, then it will send a request to the Exa API endpoint to get the search results. If it
+failed for whatever reason, then it will default to web search tool. But if it was successful, then it will return all the results back into the main session. So that means I can uninstall the
+Exa MCP and still have Exa used in the background by intercepting the web search tool. Claude Code
+also has a web fetch tool, which sometimes ends up getting blocked. So you could change this web fetch tool so it routes via a proxy that you have yourself. And that's why I like the analogy of
+function hooks being Express.js middleware. Now we have a whole bunch of building blocks when it comes to function hooks in Claude Code, as well as my favorite, which is making changes to UI to
+make it more customizable for your workflows. Now let's go for a couple examples. We'll start off with really basic ones and then move on to more complicated ones. Now you may be in a situation
+where Claude Code accidentally loaded in a secret into your session transcript by running some kind of Bash command, and it's now like, oh no, the secrets are now in the session transcript. You
+should have to delete the session transcript or rotate them. And the same thing can also apply to emails and like IP addresses or any kind of sensitive data. So we can use what is
+essentially middleware to intercept the input into Claude Code and then redact these secrets before passing the message into the session itself. And the way we can do this is by first
+enabling function hooks by running this command, CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 claude,
+press enter. And now we'll get access to a brand new built-in skill, which is plugin-authoring. So it says over here, Write or debug a Claude Code plugin made of function hooks. So pressing enter,
+I can basically say something like, hey, can you make me a function hook that will basically block
+any secrets from entering the session transcript by measuring the entropy and also make another one
+to block emails and anything that looks like an IP address. Pressing enter, it will basically go ahead and make that function hook for us. Okay, so now it's built out the functional hook and
+I'm really surprised because it went the extra mile and did something really clever. That I will explain in just a second. But if I go over to the project now, I can see in the .claude folder,
+I have plugins.json, transcript_redactor.json, hooks.json, and then redact.ts. So this is the
+hook that it designed over here, about 300 lines. And it defined a really interesting in-memory store at the very top that allows it to use secrets without actually seeing the secret. So now
+I'm going to try it out by giving it an Anthropic API key. So pasting that in over here. I'll say,
+can you make an API request to Sonnet 5 and ask it for a short story? Pressing enter over here, you will see it was automatically redacted, the secret, as soon as I pressed enter,
+and it got replaced with an ID. Now this secret is now stored in memory in the line that I just showed before. And now when Claude makes a request, a Claude request, then it actually uses a
+secret right over here, the ID of the secret, not the secret itself. And when this request is made,
+then the hook automatically rewrites it to the correct secret. So you can see it successfully made the request and got a short story back, which is really good. So using function hooks, we added
+security by never allowing secrets to enter the transcript. And secondly, allowing it to actually use secrets that we give it to make requests on our behalf. And the store that I used over
+here was essentially the variable store where the next hook and the next turn can see the variable that was defined. If you want a store that will persist across different sessions and restarts,
+you can tell it to use this store instead, which you may want to do for something else, ideally not secrets. And this is really similar to Agent Proxy by Infisical, whereby we have
+a proxy that intercepts each request and adds a secret as that agent is making the request. Okay,
+so one of my favorite parts is this new UI thing where we can get a function hook to customize a UI
+of Claude Code. For example, every time you push to main or merge into main and it's deploying on Vercel or something, you can have it automatically show you the deployment status in a brand new row.
+And that row will only appear when this hook is triggered. So let's actually design that over here. So I'm going to do /plugin-authoring again and say, can you make me a hook that will
+basically show me next to the prompt status bar, the current Vercel deploy and the stage that it's on and how long it's been building for. And once the deploy is complete for the next hour,
+keep that on the like bottom. And as we add new deploys, then that should like pile up. Feel free to interview me, give me a bunch of prototypes I can play with before finally coding this up. So
+I can describe a function hook kind of like this. And there are enough primitives that most of what you want to do should be possible. So it's now asking me a few questions of how it should look
+like over here. So I'll basically answer them and then build it out. So now it's built it out over here and called it Vercel deploy status. So let's go ahead and do a Vercel deploy. So I'm basically
+going to say, Can you enable the sale banner and then merge into main and deploy? Pressing enter, it will turn on the sale for the website. So now I can see something really cool here. So
+it says queued, building, ready. And it basically shows me the stage that it's at and how long it's been working there for. And I can also press this button over here that will basically allow
+me to hide this and then also reshow it. So each function hook, which we define inside of a plugin,
+we now have a panel where we can view data live. So I can see it's now ready and it took 5 minutes and 50 seconds. So if I go back to the website and then refresh the page, I can
+see that the sale banner for the lifetime deal is now on. So basically at the end of next week, I will be removing the lifetime plan from the website and every class and future class will end
+up being sold separately instead. So if you want access to every class and future class I release inside of one purchase, then you have about a week left to buy. Over the last 9 months since
+I released this, thousands of engineers have taken this many of your favorite engineers from some of the world's biggest companies. And over those 9 months, I've updated the class about 250 times
+to make sure that it's relevant and current. And many of the techniques that you find taught here, you will not find anywhere else online. And going forwards, I will be switching over to
+a cohort-based model. So about 3 or 4 times a year, I will be running an AI software development lifecycle cohort where I will be going through all the new alpha when it comes to shipping and
+maintaining production-grade software. With AI coding agents. You can already see many of the applications I ship and maintain. They are down below in the description. But essentially
+going forwards, I will be focusing less on the tools themselves and more about the AI software development lifecycle. So there will be about 25 hours worth of content alongside the live Q&A,
+which you can come to. And because it will have a live component as well, the price will be high for this. So by signing up to a lifetime deal now, you will get access to every future cohort that I run.
+But if you miss a lifetime deal, then you will have to sign up to each cohort separately whenever it runs. Now the first cohort will be running from like late September, early October time. I
+still have to finalize the dates, but it will be going through the entire AI software development lifecycle when it comes to using AI coding agents. A lot of people have been telling me recently,
+"Ray, you should really raise your prices. People charge 3, 4, 5 times as much as you and they give 1/10th the amount of value." So I think I should probably raise my prices to be in line with the
+market. Which makes the current lifetime deal an even better offer. A lot of the content in the upcoming cohort will be cutting-edge content that you will find almost no one else teaching online.
+There is a 30-day money-back guarantee if you don't find yourself happy for whatever reason, but so far less than 0.2% of people have asked for their money back. And that's basically how I know
+my classes are good. So yeah, links to everything will be down below. And also, by the way, I will be releasing my dedicated agent sandboxing infrastructure very soon. So if you do want access
+to the most cost-effective agent sandboxes on the market, and then this is a place to find them. But also, if you do want early access as well, then you can go on the website and fill out the form
+down below. Now, some more function hooks that you may want to make is you may want to make one that is for dry runs. So if you do any kind of data analysis, you may first want to go for a dry
+run before the real analysis actually happens. So we can basically block any real commands running
+until the dry run command has run to show you what the output would look like. We may also want to combine this with the previous UI thing, So in big red characters, it would say something like,
+hey, you're running in production, or hey, you're running in dry mode. And this works really well with the ask function as well. Another way of using the ask function is basically I can tell
+Claude Code every time it comes across and edits a file that goes beyond 1,000 lines,
+then it automatically asks me, hey, do you want to refactor this file to basically split it up into smaller files instead? And this can be really effective for making sure Claude Code doesn't
+add really massive long files like 2,000, 3,000 line long files because for some reason models still like doing that. And to basically do that, I can run Claude Code with enable function hook,
+do /plugin-authoring, and then say, can you make me a function hook that will basically ask me
+every time a file that you're editing whether the file should be refactored to make it smaller into many smaller files instead. So saying something along those lines, it will basically come up with
+that kind of function hook for us. We also have two interesting ones over here. Where we can have a hook automatically call a model and we can also have it speak to us using the
+built-in text-to-speech that we have inside of our computer. Can you make me a hook that will basically speak every time a turn ends, but first pass it to a Haiku model to give a summary
+of everything that was done? So if I give a prompt kind of like this, then it will make that function hook for us as well. So whilst we're waiting for those two to complete, I can use other primitives
+such as registering a brand new tool or calling an existing tool. I have a clock that I can use to
+measure how much time has taken between different turns. So I can combine many hooks together to
+basically see like, okay, if a turn has taken longer than 10 minutes, should we save the result to a separate file so we don't lose that result? If you're working in an industry with a lot of
+compliance like healthcare or payments, then you may want to set up a hook very similar to this, whereby on every single event that Claude Code runs, it automatically sends all the results
+over to your own log store that you may have for your organization. So you have an audit trail or what exactly Claude Code is doing. As for a non-technical example, let's say that you use
+Claude Code to draft and send email newsletters. You may want to prevent it from automatically sending the email newsletter until it has used the ask user question tool to verify that you
+actually want it sent, and until it made sure that you spent enough time actually reading through the newsletter as well. So this can prevent you from doing like an accidental send, for example.
+Essentially, function hooks are now a really powerful primitive inside of Claude Code, which is why it's now my favorite feature, because now we can customize and hack Claude Code in all sorts
+of different ways. And you can also just tell like /plugin-authoring, point out your Claude.md files and be like, okay, which hooks can we make here to ensure we have more reliable deterministic
+behavior going forwards? So all the things that you may have been putting in your Claude.md files, you can start removing and putting into really well-defined hooks.json instead. And because
+function hooks do exist as plugins, you can simply share them with the rest of the team. Via some kind of like shared GitHub repo. And speaking of teams, if you do want training for your entire
+team or your organization personally from me, then there is a form down below that you can fill in. A lot of companies have been requesting this from me recently to basically bring all their
+engineers up to speed and to find Claude Code and Codex workflows that work really well for their
+organization. And now it seems Claude Code can now speak to us. So if I do /reload plugins, then it
+will reload that particular function hook that it made for us. And then if I say, hello testing 123,
+press enter. The assistant explained that a plugin loaded and a count increased from 9 to 10. And you
+can see now it works properly because it used the default Apple voice to narrate what happened. And I can see that right over here inside of the UI. So if I look inside of this function hook over
+here, I can see that it made a small persistent prompt, which goes over to the Haiku model. And
+this is a system prompt that I wrote, and this is using the $model command over here. So I can see
+it's calling this model and then it finally speaks it out. Now I really like the $model because we can do some really interesting stuff. For example, whatever the user prompt is, we can automatically
+generate a few keywords and then use like $http to query our company knowledge base in a secure way
+to automatically get any additional context from it to inject into a session. So that Claude Code
+does a better job. Or you can do something kind of like using this alongside the UI ask, whereby when
+it comes to opening up a brand new PR, Claude Code will generate a quiz for you to make sure that you correctly understand the changes that it made before it actually allows you to open up a PR.
+So yeah, this is why it's my favorite feature in Claude Code. There are literally hundreds of examples I can think of, and I'll probably be adding a whole bunch to all my different projects
+to enforce standards, workflows, and a bunch more things. And I will be talking about this in even more detail inside of my Agentic Coding School and any future cohorts that I run as well, and in my
+live Q&A as well. So if you do want to get in on the lifetime deal to get access to every future class and cohort for one price, then now is the time to do so. And that will give you access to
+my very first cohort beginning in late September, early October, and every future cohort that I run.

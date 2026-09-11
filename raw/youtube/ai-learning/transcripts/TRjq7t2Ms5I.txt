@@ -1,0 +1,139 @@
+[Music]
+hey everyone uh my name is Jerry co-founder and CEO of L index and today we'll be talking about how to build production ready rag applications um I
+think there's still time for a raffle for the bucket hat so if you guys stop by our booth uh please fill out the Google form okay let's get started so
+everybody knows is that there's been a ton of amazing use cases in gen recently you know um knowledge search and QA conversational agents uh workflow
+automation document processing these are all things that you can build uh especially using the reasoning capabilities of llms uh over your
+data so if we just do a quick refresher in terms of like paradigms for how do you actually get language models to
+understand data that hasn't been trained over there's really like two main paradigms one is retrieval augmentation where you you like fix the model and you
+basically create a data pipeline to put context into the prompt from some data source into the input prompt of the language model um so like a vector
+database uh you know like unstructured taex SQL database Etc the next Paradigm here is fine-tuning how can we bake knowledge
+into the weights of the network by actually updating the weights of the model itself some adapter on top of the model but basically some sort of
+training process over some new data to actually incorporate knowledge we'll probably talk a little bit more about retrieval augmentation but this is just
+like to help you get uh started and really understanding the mission statement of of the company okay let's talk about rag
+retrieval augmented Generation Um it's become kind of a buzzword recently but we'll first walk through the current rag
+stack for building a QA system this really consists of two main components uh data ingestion as well as data quering which contains retrieval and
+synthesis uh if you're just getting started in llama index you can basically do this in around like fiveish lines of code uh so you don't really need to think about it but if you do want to
+learn some of the lower level components and I do encourage like every engineer uh AI engineer to basically just like learn how these components work under the hood um I would encourage you to
+check out some of our docs to really understand how do you actually do data inje uh and data quering like how do you actually retrieve from a vector database
+and how do you synthesize that with an L1 so that's basically the key stack that's kind of emerging these days like
+for every sort chat bot like you know chat over your PDF like over your unstructured data um a lot of these things are basically using the same
+principles of like how do you actually load data from some data source and actually you know um retrieve in query over it but I think as developers are
+actually developing these applications they're realizing that this isn't quite enough uh like there's there's certain issues that you're running into that are
+blockers for actually being able to productionize these applications and so what are these challenges with naive rag
+one aspect here is just like uh the response and and this is the key thing that we're focused on like the the response quality is not very good you run into for instance like bad retrieval
+issues like uh during the retrieval stage from your vector database if you're not actually returning the relevant chunks from your vector database you're not going to be able to
+have the correct context actually put into the llm so this includes certain issues like low Precision not all chunks in the retrieve set are relevant uh this
+leads to like hallucination like loss in the middle problems you have a lot of fluff in the return response this could mean low recall like your top K isn't high enough or basically like the the
+the set of like information that you need to actually answer the question is just not there um and of course there's other issues too like outdated
+information and many of you who are building apps these days might be familiar with some like key concepts of like just why the llm isn't always you
+know uh guaranteed to give you a correct answer there's hallucination irrelevance like toxicity bias there's a lot of issues on the LM side as
+well so what can we do um what can we actually do to try to improve the performance of a retrieval augmented
+generation application um and and for many of you like you might be running into certain issues and it really runs the gamut across like the entire
+pipeline there's stuff you can do on the data like can we store additional information Beyond just like the raw text chunks right that that you're putting in the vector database can you
+optimize that data pipeline somehow play around with chunk sizes that type of thing can you optimize the embedding representation itself a lot of times
+when you're using a pre-trained embeding model it's not really optimal for giving you the best performance um there's the retrieval algorithm you know the default
+thing you do is just look up the topk most similar elements from your vector database to return to the llm um many times that's not enough and and what are
+kind of like both simple things you can do as well as hard things uh and there's also synthesis like uh why is there yeah there's like a v in the anyway so so can
+we use LMS for more than generation um and so basically like you can um use the llm to actually help you with like reasoning um as opposed to just like
+pure um uh pure uh just like uh just pure generation right you can actually use it to try to reason over given a question can you break it down into
+simpler questions route to different data sources and kind of like have a a more sophisticated way of in wearing your
+data um of course like if you kind of been around some of my recent talks like I always say before you actually try any of these techniques you need to be
+pretty task specific and make sure that you need a way to that you actually have a way to to measure performance so I'll probably spend like
+2 minutes talking about evaluation um Simon my co-founder just ran a workshop yesterday on really just like how to you evaluate uh build a data set evaluate
+rag systems and help iterate on that uh if you miss the workshop don't worry I'll we'll have the slides and and materials uh available online so that
+you can take a look um at a very high level in terms of evaluation it's important because you basically need to define a benchmark for your system to
+understand how are you going to iterate on and improve it uh and there's like a few few different ways you can try to do evaluation right I think Anton from from chroma was was just saying some of this
+but like you basically need a way to um evaluate both the end to endend solution like you have your input query as well as the output response you also want to
+probably be able to evaluate like specific components like if you've diagnosed that the retrieval is is like the portion that needs improving you need like retrieval metrics to really
+understand how can you improve your retrieval system um so there's retrieval and there's synthesis let's talk a little bit just
+like 30 seconds on each one um evaluation on retrieval what does this look like you basically want to make sure that the stuff that's returned
+actually answers the query and that you're kind of you know not returning a bunch of fluff uh and that the stuff that you return is relevant to the question um so first you need an
+evaluation data set a lot of people are uh have like human labeled data sets if you're in uh building stuff in prod you might have like user feedback as well if
+not you can synthetically generate a data set this data set is input like query and output the IDS of like the return documents are relevant to the
+query so you need that somehow once you have that you can measure stuff with ranking metrics right you can measure stuff like success rate hit rate Mr ndcg
+a variety of these things uh and and so like once you are able to evaluate this like this really isn't uh kind of like an llm problem this is like an IR
+problem and this has been around for at least like a decade or two um but a lot of this is becoming like you know it's it's still very relevant in the face of
+actually building these L Maps the next piece here is um there's a retrieve portion right but then you generate a response from it and then how
+do you actually evaluate the whole thing end to end so evaluation of the final response uh given the input you still want to generate some sort of data set
+so you could do that through like human annotations user feedback you could have like ground truth reference answers given the query that really indicates like hey this is the proper answer to
+this question um and you can also just like you know synthetically generate it with like gb4 uh you run this through the full rag pipeline that you built the
+retrieval and synthesis uh and you can run like LM based evals um so label-free evals with label evals there's a lot of
+uh projects these days uh going on about how do you actually properly evaluate the outputs uh predicted outputs of a language
+model once you've defined your evalve benchmark now you want to think about how do you actually optimize your rag systems so I sent a teaser on this slide
+uh a few like yesterday but the way I think about this is that when do you want to actually improve your system there's like a million things that you
+can do to try to actually improve your rag system uh and like you probably don't want to start with the hard stuff first uh just because like you know part
+of the value of language models is how it's kind of democratized access to every developer it's really just made it easy for people to get up and running and so if for instance you're running
+into some performance issues with rag I'd probably start with the basics like I call it like table Stakes rag techniques uh better puring um so that
+you don't just split by even chunks like adjusting your chunk sizes trying out stuff that's already integrated with a vector database like hybrid search as well as like metadata
+filters there's also like Advanced retrieval methods that you could try it this is like a little bit more advanced some of it pulls from like traditional
+IR some of it it's more like kind of uh really like uh new in in this age of like LM based apps there's like uh reranking um that's a traditional
+concept there's also Concepts in llama index like recursive retrieval like dealing with embedded tables like uh small to big retrieval and a lot of other stuff that we have that help you
+potentially improve the performance of your application uh and then the last bit like this kind of gets into more expressive stuff that might be harder to
+implement might incur a higher lency and cost but is potentially more powerful and forward looking is like agents like how do you incorporate agents towards
+better like rag pipelines to better answer different types of questions and synthesize information and how do you actually fine-tune
+stuff let's talk a little bit about the table Stakes first so chunk sizes tuning your chunk size can have outsize impacts on performance right uh if you've kind
+of like played around with frag systems uh this may or may not be obvious to you what's interesting though is that like more retriev tokens does not always
+equate to higher performance and that if you do like reranking of your retrieve tokens it doesn't necessarily mean that your final generation response is going
+to be better and this is again due to stuff like lost in the middle problems where stuff in the middle of the LM context window tends to get lost where stuff at the end uh tends to be a little
+bit uh more well remembered by the Ln um and so I think we did a workshop with like arise a few uh week ago where
+basically we showed you know uh there is kind of like an optimal chunk size given your data set and a lot of times when you try out stuff like reranking it
+actually increases your error metrics metadata filtering uh this is another like very table Stak thing that
+I think everybody should look into and I think Vector databases like you know chroma pine cone we like these Vector databases are all implementing these uh
+capabilities on your hood metadata filtering is basically just like how can you add structured context uh to your your chunks like your text chunks and
+you can use this for both like embeddings as well as synthesis but it also integrates with like The Meta metadata filter capabilities of a vector
+database um so metadata is just like again structured Json dictionary it could be like page number it could be the document title it could be the summary of adjacent chunks you can get
+creative with it too you could hallucinate like questions uh that the chunk answers um and it can help retrieval it can help augment your response quality it also integrates with
+the vector database filters so as an example let's say the question is over like the SEC like 10q
+document and like can you tell me the risk factors in 2021 if you just do raw semantic search typically it's very low Precision you're going to return a bunch
+of stuff that may or may not match this you might even return stuff from like other years if you have a bunch of documents from different years in the same Vector collection um and so like
+you're kind of like rolling the dice a little bit but one idea here is basically you
+know if you have access to the metadata of the documents um and you ask a question like this you basically combine structured query capabilities by
+inferring the metadata filters like a wear Claus and a SQL statement like a year equals 2021 and you combine that with semantic search to return the most
+relevant candidates given your query and this improves the Precision of your uh of your
+results moving on to stuff that's maybe a bit more advanced like Advanced retrieval is one thing that we found generally helps is this idea of like
+small to big retrieval um so what does that mean basically right now when you embed a big text trunk you also synthesize over that text trunk and so
+it's a little suboptimal because what if like the embedding representations like biased because you know there's a bunch of fluff in that text trunk that contains a bunch of relevant information
+you're not actually optimizing your retrieval quality so embedding a big text trunk sometimes feels a little suboptimal one thing that you could do
+is basically embed text at the sentence level or on a smaller level and then expand that window during synthesis time um and so this is contained in a variety
+of like L index ractions but the idea is that you return you retrieve on more granular pieces of information so smaller chunks this makes it so that
+these chunks are more likely to be retrieved when you actually ask a query over these specific piece of context but then you want to make sure that the LM actually has access to more information
+to actually synthesize a proper result so this leads to like more precise retrieval right so um we we
+tried this out it it helps avoid like some loss in the middle problems you can set a smaller top K value like k equal 2 uh whereas like over this data set if
+you set like k equals 5 for naive retrieval over big text chunks you basically start returning a lot of context and that kind of leads into
+issues where uh you know maybe the relevant context is in the middle but you're not able to find out uh or or you're like that the LM is is is not
+able to kind of synthesize over that information a very related idea here is
+just like embedding a reference to the parent trunk um as opposed to the actual text Chunk itself so for instance if you want to embed like not just the raw text
+trunk or not the text trunk but actually like a smaller trunk um or a summary or questions that answer of the trunk we have found that that actually helps to
+improve retrieval performance a decent amount um and it's it kind of again goes along with this idea like a lot of times you want to embed something that's more
+edable for embedding based retrieval uh but then you want to return enough context so that the LM can actually synthesize over that
+information the next bit here is actually kind of even more advanced stuff right this goes on into agents and this goes on into
+that last pillar that I I mentioned which is how can you use llms for for reasoning as opposed to just synthesis the intuition here is that like for a
+lot of rag if you're just using the llm at the end you're one constrained by the quality of your Retriever and you're really only able to do stuff like question answering and there's certain
+types of questions and more advanced uh analysis that you might want to launch that like top K rag can't really answer it's not necessarily just a one-off
+question you might need to have like an entire sequence of reasoning steps to actually pull together a piece of information or you might want to like summarize a document and compare with
+like other documents so one kind of architecture we're exploring right now is this idea of like multi-document agents what if like instead of just like
+rag we moved a little bit more into agent territory we modeled each document not just as a sequence of text trunks but actually as a set of tools that
+contains the ability to both like summarize that document as well as to do QA over that document over specific facts um and of course if you want to
+scale to like you know hundreds or thousands or millions of documents um typically an agent can only have access to a limited window of tools so you
+probably want to do some sort of retrieval on these tools similar to how you want to retrieve like text Trunks from a document the main difference is that because these are tools you
+actually want to act upon them you want to use them as opposed to just like taking the raw text and plugging it into the context window so blending this
+combination of like uh kind of um embedding based retrieval or any sort of retrieval as well as like agent tool use is a very interesting Paradigm that I
+think is really only possible with this age of almes and hasn't really existed before
+this another kind of advanced concept is this idea of fine tuning um and so fine tuning uh you know this some other presenters have talked about this as
+well but the idea of like fine-tuning in a rag system is that it really optimizes specific pieces of this rag pipeline for
+you to kind of better um like improve the performance of either retriever or synthesis capabilities so one thing you can do is fine-tune your embeddings um I
+think Anton was talking about this as well like if you just use a pre-trained model the embedding representations are not going to be optimized over your specific data so sometimes you're just
+going to retrieve the wrong wrong information um if you can somehow tune these embeddings so that given any sort of like relevant question that the user
+might ask that you're actually returning the relevant response then you're going to have like better performance performance so um an idea here right is
+to generate synthetic query data set from raw text chunks using llms and use this to fine-tune and embeding model um and you can do this like uh if we go
+back really quick actually uh you can do this by basically um kind of fine-tuning the base model itself you can also fine-tune an adapter on top of the model
+um and fine-tuning an adapter on top of the model has a few advantages in that you don't require the base model's weights to actually fine-tune stuff and if you just finetune the query you don't
+have to reindex your entire document Corpus there's also fine-tuning LMS which of course like a lot of people are
+very interested in doing these days um and intuition here specifically for rag is that if you have a weaker LM like 3.5
+turbo like LL 2 7B like these weaker llms are bad are are not bad at like um
+uh wait yeah weaker LMS are are maybe a little bit worse at like response synthesis reasoning structured outputs
+Etc um compared to like bigger models so the solution here is what if you can generate a synthetic data set using a bigger model like gbd4 that's something
+we're exploring and you actually distill that into 3.5 turbo so it gets better at train of thought longer response quality
+um better structured outputs and a lot of other possibilities as well so all these things are in our docs there's production rag uh there's fine toting
+and I have two seconds left so thank you very much
+[Music]

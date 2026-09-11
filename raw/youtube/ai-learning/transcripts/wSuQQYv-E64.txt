@@ -1,0 +1,546 @@
+Welcome everyone. It's great to see this very global group joining us from all over the map and all times of the day.
+Uh we're really delighted to be with you. Um and it is my pleasure to introduce our speaker today, Professor
+John Sturman. Professor Sturman is the JW Forester Professor of Management here
+at MIT Sloan and a professor in MIT's Institute for Data Systems and Society.
+He also serves as director of MIT Sloan's sustainability initiative. Professor Sturman's work focuses on
+improving decision-making in complex systems spanning corporate strategy, sustainability, public policy, and
+climate change. We'll touch on some of these areas today. He's widely known for pioneering management flight simulators,
+tools that are now used around the world to help leaders better understand how real systems behave over time. And we'll
+also get a glimpse of those in today's webinar. Professor Surman is the author of the award-winning Business Dynamics,
+one of the most influential texts in systems thinking, and he's also faculty director of our longrunning executive
+education program by the same name, business dynamics, which we'll learn more about at the end of the session.
+Please join me in welcoming Professor John Sturman. John, thank you so much for joining us today. Oh, great. Thank you, Molly. Thank you,
+Charlotte. Um, and welcome everybody. delighted to be with you all and from
+all over the world. Amazing. So, uh let me tell you what we're going to do today. Uh very quickly, I'm going to
+just try to give a little introduction as to why systems thinking is needed and then we'll do a couple of examples of
+using some of the different tools. Not all of them. We don't have time for all of that. Um and uh we'll take your
+questions and at the end I if time permits uh talk a little bit about how
+these tools in system dynamics have been used successfully in a wide range of organizations. The key thing here is
+please put your questions and comments into the chat. Don't hesitate. Uh you can also
+post questions through Q&A. uh but use the chat and uh our our uh terrific team
+here is going to monitor that as well. I can see them as well and we'll try to make this as much about you as possible.
+So the first question is why do we need systems thinking? Well, it's become very
+popular lately. Everybody's talking about we need to become systems thinkers. Systems thinking is a core
+capability for success. And why? While a lot of times people say, well, listen,
+we live in this overwhelmingly complex world and you can't do just one thing
+and everything is connected to everything else. All of that is true, but it isn't very helpful. So what we
+need to do is to move beyond slogans about everything being connected to
+everything else towards operationally useful tools that you even with uh say a
+oneweek executive course such as the one that we're offering this June can actually begin to start to use and
+develop your capabilities to make a difference. So why then is systems
+thinking needed? Well, I think you've all probably experienced the phenomenon that we call policy resistance. Now,
+policy resistance is not the idea that you have a great idea and you couldn't get it implemented. It's more subtle.
+It's the idea that you've got a pressing problem. You need to find solutions. And
+you do all the research. You consult all the experts. You you do everything you need to do. And you come up with what
+you and all your adviserss agree is a terrific solution that's going to work
+and you actually get it implemented. But then it either doesn't work or more
+commonly and insidiously it works in the near term over here
+but the problem comes back a little later over there. That's the idea of policy resistance.
+It's extremely common and it's extremely discouraging. Let me give you just a couple of examples. So almost every big
+city in the world suffers from terrible traffic problems. What do we do when
+there's terrible traffic? Well, you all know the answer. We build more roads.
+What happens then? Well, in the near term, you've made driving a whole lot more attractive. So people drive a lot
+more and they don't take public transit and they drive more during rush hour and
+even move farther away from the city core where their job might be uh in order to have the ability to buy a house
+for less money and then they're locked in. So what we often see is you build
+more roads, traffic congestion not only doesn't get better, it often can get
+worse. Another example is uh for those of you who are in the United States, you'll be familiar with this. If you're
+not, the United States health care system is the most expensive in the world. Measured any way you want to
+measure it. Uh cost per person per year, fraction of the GDP. It's about 18% of
+the world's largest GDP. And despite decades and decades of efforts to
+contain costs and slow down the cost escalation, none of this is really working. This is a major example of
+policy resistance over at least 70 years now. Mergers and acquisitions. Many
+mergers and acquisitions fail, particularly destroying value for the
+acquiring firm. So mergers are promoted as we're going to realize cost savings
+by eliminating duplicative back office operations. We're going to have synergies in our market position uh and
+our product line etc. But often they end up destroying value for the acquiring firm. Many of you out there have
+probably participated in process improvement programs whether it's six sigma or re-engineering or going back
+total quality management. There's a wide range of these. Um and the tools work.
+Many organizations have succeeded, but vastly more find that their attempts to
+implement a successful process improvement program have failed. And that breeds cynicism about the next one
+that comes along and makes it harder to succeed. Most of you out there, if
+you're in a business organization or an NGO or government uh or any organization, you're probably involved
+in projects, project management, whether it's new product development, software, construction, whatever it might be. And
+typically projects are late, expensive, and wrong, meaning they don't meet customer requirements. This is just a
+very, very short list. And I'm sure you can easily add to it from your own personal experience.
+So why does this happen? Well, it's not just that the world is complex.
+It's that there's a mismatch between the mental models that we use to come up
+with our solutions for difficult problems and the complexity of the real world. One of those mental models is
+what I call the openloop mental model. So just ask yourself the following question. How many times in a project or
+any activity in your organization have you seen this kind of a diagram? Here's how our project is going to go. We're
+going to identify the issue, gather the data, evaluate our alternatives, select the optimal choice, and then implement
+it. Problem solved. I imagine many of you have seen this kind of diagram in
+various guises. Well, I don't know about you, but no project that I've ever done
+from co-chairing the project to develop the new building for the Sloan School of
+Management to putting together and shopping for the grocery list has ever
+gone that way. Instead, we find out as we go through the process, uh, we didn't
+really know what the real problem was and we have to go back. uh we get the data, we find out key data aren't
+available or where we were looking at the wrong thing, we have to go back and so on. There's constant iteration,
+planned and unplanned iteration where we discover problems, rework that has to be
+done and we have to go back. So although this is especially popular and common in
+organizations of all types, it is not how the world works. Instead, it's a
+world of feedback. This is the idea. You make decisions. Your decisions change
+the world in various ways and that creates new information that conditions
+your next decisions in a neverending feedback cycle. So the Cher drawing here
+is magnificent and it's a great metaphor for one of the core ideas in systems
+thinking. But let me make it a little more precise. So here's what we call a causal diagram. And mapping your system
+issues, as we're going to see in a minute, into this framework is a very powerful tool to help develop your
+systems thinking and avoid policy resistance. So how does it work? Well, I've got goals. Maybe uh in my company,
+we want to gain market share and uh and then there's an actual market share, an
+actual state of the system right here. And what I need to do is I need to make
+decisions that are going to help move the system towards my goal. So I could
+um I could cut prices. I could hire more and better salespeople. I could advertise more. I could try to buy
+market share through a merger or an acquisition uh and develop better products. There's a lot of things I
+could do. So what's the problem? Well, let me give you an example. I'm a bicycle commuter. I live about 12 miles,
+what 17 km, 18 km from campus. And when I ride my bike to work, I need to use
+this idea of feedback in order to do it safely. At any instant, I need to know
+right now, which way do I turn the handlebars? Do I turn them a little left or do I turn them a little right? I
+can't do that. I can't know which way to turn them unless I have feedback. So,
+here's here's a little picture of me going down the bike path that I use every morning. And I know I have to stay
+on the right. That's my goal. But too far to the left, I'm going to hit those folks. Too far to the right, I'm going
+to hit a tree. So, I need constant feedback to tell me where I am relative
+to the goal. Stay on my side of the path. And if I don't, I'm going to have
+a serious problem. I can't know what a good decision is unless I have that
+feedback telling me where I am relative to my goal. Now listen, if uh riding uh
+if if controlling your company, your organization was as simple as riding a bike, we wouldn't need systems thinking,
+but it's not for a bunch of reasons. And the main reason is we are embedded in
+more complex systems. So think of this diagram as your mental model of how the
+world works. And it's not wrong. It's just incomplete. So you're going to make decisions that you sincerely believe
+will move the world closer to your goal. I'm going to cut those prices, hire better salespeople, develop new
+products, uh advertise more, etc. All of those things in isolation ought to
+succeed in helping me build market share for my company. But wait a minute, there's all the other consequences of my
+decisions. So, you can't do just one thing. You make
+decisions. Some of them are going to do what you hoped, but others are going to trigger so-called side effects. Now,
+there's no such thing as a side effect in reality. There's no such thing. People talk about it all the time, but
+there's no such thing. There's just effects. You make decisions and your
+decisions have multiple effects. The ones that worked out well for you that you planned, yeah, that was my plan all
+along. I'm a fantastic manager. Give me a promotion. And everything else, especially the things that feed back and
+undermine your goals. Oh, that was a side effect. That wasn't my fault. That
+came from out there. When people say, "Oh, it was a side effect. It was an unintended
+consequence. Nobody could have anticipated that. They're trying to persuade you that they're terrific
+managers, leaders, but what they're reeling, really communicating to you is
+how narrow and inadequate is the mental model they're using to
+make those decisions. Now, of course, it's even worse than that because you're not the only actor out there in the
+business setting. You have your employees, your customers, the financial markets, your suppliers, the people in
+the communities in which you operate, and they all have their own goals. But since we all live in the same world,
+when you pull the state of the system closer to your goals, you're almost certainly pulling it away from theirs.
+And they aren't just going to sit there. They're going to take their own actions and try to pull the system back. Of
+course, they also have limited mental models, which means their actions are going to generate unintended so-called
+side effects. And now we have a very complex system. And even the goals are
+part of the system. Think about a salesperson who has quotas. You do too
+well, your quote is going to go up. And there could be time delays in any one of
+these causal linkages. This is now too complex for people to just kind of
+figure out without the aid of systems thinking tools. And the result is unintended consequences. And this is an
+ancient idea. Here's an example going back to Sir Thomas Moore 500 years ago
+in his masterpiece Utopia where he said it will fall out as in a complication of
+disease that by applying a remedy to one sore you provoke another. and what
+removes one ill symptom produces others. Perfect description of policy resistance
+from 500 years ago. So let's do an example and I'm going to draw one from healthcare. Those of you in the United
+States, you experience this and those of you in countries with your own national
+uh health care systems, you probably experience something similar. So to try to combat cost escalation, folks have
+been working on how to avoid overuse of expensive tests and drugs and
+procedures. And there's three main ways this is done in the US. The one main way
+is called prior approval, which requires clinicians, your doctor, to receive
+prior approval from the payer, the health insurance company, uh, in order to be able to do any of the tests or
+many of the tests. and prescribe many of the drugs and procedures that you in their judgment as your doctor think you
+need. That's prior approval. Preferred drug lists is similar. It says
+clinicians cannot just prescribe what they think is the most appropriate drug for you. They have to use generics or
+cheaper alternatives that may not be perfect substitutes from a list of of
+drugs that are approved by the payer. that's um designed to keep doctors from
+prescribing expensive things when something else in the minds of the payer would work just as well. And step
+therapy is similar. It says doctors have to initiate treatment with a cheaper
+substitute from an approved list and only switch you to the drug they think is most appropriate if the if that
+initial treatment fails. And usually in order to escalate, they have to get prior approval. So I hope that's clear.
+Many of you out there have personally experienced this and maybe you've actually had your doctor say, "This is
+what I think you need." But then the prior approval process resulted in a
+denial. So, is it working? Well, this is the estimated cost of prior
+authorization in the United States. It's now 35 as of 2024. 35 billion a year
+just on the administrative costs. That's 11,000 per clinician, per doctor if you like, per year. and it costs about 20 to
+30 per request for prior authorization. Um, so that would be fine if in fact it
+cut health care costs by more, but in fact that's not true. And it's not only
+not true, we get exactly the opposite. And we've known this for 30 plus years.
+So here's a study from 1996, 30 years ago. The conclusion was
+limiting the drugs that can be prescribed with prior approval, preferred drug lists or formularies,
+etc., which is intended to prevent the unnecessary use of expensive drugs, actually has the unintended effect of
+raising medical costs. Now, that's just not one isolated study. A brand new
+study just came out earlier this year was a uh a meta review of 25 different
+evaluative studies and that concluded that in addition to delays in getting care, authorization requirements were
+associated with disease exacerbation, that is people got worse, preventable hospitalizations, prolonged hospital
+stays, and lower rates of disease-free survival. That's medical jargon for more
+people died as a result of prior approval. So how can this happen? We
+have very smart people running our health care system. They sincerely want you to get better when you need care. Uh
+so how can we actually produce the uh an outcome that nobody wants? So let's use
+that diagrammatic technique causal mapping to get a handle on this. So,
+here's my idea for how uh prior approval, preferred drug lists, and step
+therapy might grow beyond the point where they're actually helpful. So, here
+what you've got is a health plan. It has revenue. It has total costs. And the
+difference between them drives pressure to cut costs. So, if for example, total costs go up, revenue hasn't changed,
+let's say. So that means there's more pressure on the managers to cut costs. One of the things they do, have done,
+continue to do, is they take even more drugs off the formulary. They uh tighten
+up the requirements for step therapy, and they put more drugs and tests and procedures uh on the list of things that
+require prior approval. The goal of this is to keep clinicians, keep your doctor
+from prescribing things you don't really need or prescribing things that are
+where there's a cheaper pretty close substitute. Uh that should lower the unit cost of the
+drugs and procedures and that will lower the total drug and procedure costs and that lowers total costs. Fantastic.
+That's what we call a balancing feedback loop. This is a feedback loop that helps
+control costs and it is the motivation for all three of these uh policies PA,
+PDLs and step therapy. So the question then is that's not the whole system.
+Think of it as an iceberg. This is the part managers of health plans see. It's
+what's above the waterline. And what's below the waterline? Well, that's what I want you to tell me. So use the chat and
+just quickly drop in any unintended so-called side effects that might arise
+from the use of prior approval. So go ahead.
+What would happen? Prior approval means it's going to take a while before you can get what you need, if you can get it
+at all. preferred drug list means you're not getting exactly what the doctor thinks can be best for you and so forth.
+So yeah, uh and some of you may be providers, meaning in health care as a
+doctor or a nurse practitioner, and some of you may be on the payer side, meaning you work for an insurance company. So
+yeah, it's there's some fantastic ideas here. Extra visits to the doctor, administrative costs go up, person dies
+waiting. Hopefully that doesn't happen very often, but the data show it does some. Um, uh,
+and uh, oh, litigation. Somebody mentioned litigation. Interesting. Uh,
+staff don't care and deny with good reason without good reason. Wow. Uh, that sounds like somebody who's
+experienced this. More time on paperwork instead of patient care. These are fantastic ideas. Keep going. There's a
+lot here. Let me show you just a few because we have limited time here. Uh
+how that might work. So um so what's below the waterline here? Well, one
+thing and you many of you pointed to this is the appropriateness and the timeliness of care is going to drop. So
+think about how this works. Costs go up, pressure to cut costs. We tighten up these requirements. More PA is required.
+It does have the intended effect here of lowering unit cost of drugs and so
+forth. But then because not everybody gets care soon enough or the right care,
+the timeliness and appropriateness of care declines, health outcomes deteriorate. People stay sick longer,
+some deteriorate, etc. Well, that means they have to go back to the doctor. Uh, and that's going to raise total costs.
+And when they go back to the doctor, they're going to need more tests, more treatments, and more procedures. That
+raises the total drug and procedure cost. So the unit cost went down, but the total number went up. All of those
+things raise total costs further. Now, [clears throat] you can see how that undermines the intended effect, but it's
+worse than that because total cost just went up more for reasons that are typically not perceived. And so pressure
+to cut costs increases further. And the reaction is, well, we need more of what
+we know is working. Well, what we think is working is PA, PDL, and step therapy. So, we'll tighten up those requirements
+even more. Care appropriateness and timeliness falls further. People get worse. More doctor visits, more tests
+and treatments, higher costs, and around and around we go in a vicious cycle, a
+reinforcing feedback loop. Well, what else? Well, you had some fantastic other
+ideas in here. Let me show you a couple that I thought uh and many of you mentioned this. So total costs go up, we
+tighten everything up, care quality and appropriateness declines, people get worse. Doctors can then appeal. Doctors
+can go to the payer, the insurance company, and say, "My patient really needs this drug, this procedure." And
+that they might win. Often they don't. But whatever the outcome, it raises administrative costs. That raises total
+costs. There's another vicious cycle. In addition, and some of you mentioned this, people who are seeing their health
+deteriorate, they're going to end up in the emergency department more. Some of them are going to be hospitalized more.
+Some of them will have to be readmitted to the hospital after initially uh making a little progress. All of that
+raises costs some more, another vicious cycle. uh and you could have more
+litigation, more malpractice suits, and somebody, at least one person actually mentioned this in the chat. Same thing.
+It creates another vicious cycle raising costs. Now, one of the things about systems thinking is you always want to
+challenge the boundary of your model. So, here is revenue. And so far, revenue is just out there. It's just happening.
+That's almost never true. That there's something that just happens to you, but whatever you do doesn't influence it. So
+maybe you can think of how what's happening under the waterline here will feed back to revenue. Here's one idea.
+So care and health outcomes deteriorate. People are unhappy and they can switch
+health plans. And if Whoops. If that's an error, the number of subscribers should go down and then revenue would go
+down. That's another vicious cycle that's going to undermine the financial position of the health health plan. Uh
+so does any of this really happen? Of course it does. That's what the data clearly show. And are health plans
+figuring this out? Well, it's been at least 40 or 50 years since formularies and
+prior approval and so forth have been implemented. And some health plans that
+are better at systems thinking have actually moved away from them. But many are just now realizing that they need to
+move away from prior approval and so forth. Here's two recent examples. Uh Blue Cross Blue Shield, one of the
+biggest uh payers in the United States, uh announced in March that they're
+cutting back on prior authorization. And you can see why. Their their argument is
+it's uh it's too expensive and it's going to ease administrative burden and speed access to evidence-based care and
+it's going to be better for patients and for them. Uh United Healthcare also
+announced just uh in May this month that um they're cutting prior authorization
+requirements by a substantial amount. Um, so those are kind of late to the
+party, but many other health plans are better at systems thinking, were better
+at seeing what was under the waterline, and have already been cutting back on these three practices. Uh, not to zero,
+but uh, relaxing them uh, significantly. So doctors have the knowledge, they've
+always had that knowledge, uh but then can apply that knowledge to get you what you really need in order to recover in
+the most effective way. So that's one example. Let me take a few minutes now
+and let's talk about uh a completely different example. I mentioned project
+management um and uh how projects typically don't
+work very well. But let's find out what you all think. So, you know, in just a few seconds, we're going to launch a
+poll. And uh here's what the poll is going to ask you. Projects in my
+organization are on time, under budget, deliver high quality, and delight our customers. And your job is to pick one
+of these options. Uh about that statement, always happens in my organization, usually happens, sometimes
+happens, rarely happens, never happens, or no comment. We're still in active
+litigation. So go ahead. Let's launch that poll. And everybody go ahead and select the
+option that is closest to the experience in your organization around projects,
+any kind of project, software, administrative change, new product development, construction projects,
+whatever it might be. So give you a second. Oh, don't put it
+in the chat. Put it in the poll, folks. Uh, I got a usually, I've got a rarely,
+but um, let's answer the poll. And
+Molly, Charlotte, whenever you think you've got a pretty fair
+fraction of everybody responding, go ahead and publish the
+results. Okay, looks like sometimes and rarely,
+which is not great, are the most popular answers. And almost nobody says always
+and [snorts] uh a fair number say never. And we did have one no comment. Okay, so
+that's pretty interesting. Sometimes, rarely, in our experience, that's maybe
+uh even a little on the optimistic side. So, how do we help people learn how to manage projects better? Well, lectures
+don't work. One of the things we know from many decades of research on
+policy change and communication is well, let me put it this way. Research shows that showing people research doesn't
+work. If I tell you what the right thing to do is, you're not going to do it. It's not going to change your mind. And
+those of you who are parents and have children who uh are or were teenagers,
+you know this very well. You can't tell them anything. Certainly this was true with with our kids. Um so the way we try
+to get at that to develop your systems thinking skills is to use management
+flight simulators. put you in the system in a simulated environment where you can
+try whatever strategies you like costlessly. If you go bankrupt in a
+management flight simulator, nothing actually happens. If you do great, well, then you can try to experiment and see
+how robust your good strategy is. Flight simulators, uh, the analogy is really a very good
+one. You don't want to get on any commercial flight unless those pilots have had significant simulator training
+so that they know what to do if there's an emergency without having to go, "Oh,
+I've never experienced this before. Now, what do I do?" Because there isn't going to be time for that. So, let's actually
+try it out. Um, I'm going to show you really quickly one of our simulators here,
+uh, on project management. I'm going to do it super fast. I'm going to give myself a screen ID.
+Uh, and we'll start the simulation. Now, when you start the simulation, and we're going to do this in the exact class, you
+can manage a construction project, a hardware project, a software project. You can also, if you um uh get
+credentialed as an instructor, set up custom projects. Let's do Oh, I don't know. Let's do a hardware project today.
+So, I'm not going to read this. You don't have time to read it. It's not that important for our demonstration
+right now, but there's a description of the setting, and you play the role of the project manager for a project for a
+new consumer electronic product like this VR headset here. We're going to
+enter a name for our project. We'll call it um
+Kill the Competition. And then we'll begin. Now, it's pretty
+complicated and quite realistic, carefully grounded in many, many decades of system dynamics research on projects,
+proactive as well as forensic context. Um, so don't worry about all the detail
+here. Uh, but here is a lot more information than you might actually have
+to manage your project. There's two phases in this project. Real projects are of course more complex, but we have
+two phases. We have high level design in blue here uh scheduled right now to last
+24 weeks. And then there's detailed design. Uh and so high level design is
+meeting with the customer. What are the customer's requirements? What are uh some of the main constraints on size, on
+weight, on power usage, uh heat dissipation, whatever it might be. Um
+and then those high-level product architecture decisions uh drawings if
+you like get handed over to the detail designers who have to code up the custom
+chips who have to uh produce the plastic parts and the the molds for them for for
+uh injection molding etc. and and produce uh a working product prototype
+that passes all the safety and other tests and can be handed off for manufacturing. So you can change all
+this. One thing I'm going to do here is I'm going to say as is common uh let's actually overlap. We're going to start
+detailed design before the um highle
+design is finished. That's very common. Uh, and then, uh, what else are we going
+to do? Well, over here we've got some project planning, uh, help, little
+spreadsheet that tells us, well, there's 72,000 tasks. Now, a task here means what one experienced worker can do in
+one person hour of effort. So, we're going to need 72,000 person hours of effort to do phase a, the detailed
+design, and 33,600 to do the uh, sorry, high level design
+and detailed design over here. Given the current schedule, uh, and the
+productivity, uh, that means we're going to need, um, 75 people up front, and that's what I've
+got here. Uh, but, you know, budgets are tight. I need to come in under the budget. So, I'm going to change that to
+70. Um, and right now, there's nobody in B because it hasn't started yet. You
+have other decisions you can make. You can for example uh respond when the
+marketing department comes to you and says hey our competition is launching a new feature that we haven't thought
+about we need to add that to the project scope. So marketing will propose you get to decide are you actually going to do
+that or not. You could also reduce the project scope. Some features you you might decide are bells and whistles you
+don't really need in order to hit the timeline and the um and the uh budget.
+And you can also tell people to speed up work by overlapping tasks that really
+ought to be done in a certain sequence. In addition, you can apply what we call
+management pressure for progress and for quality. Right now they're neutral, but
+you could decide, you know, let's pound on the table a little bit and tell people they have to work harder. Or
+let's tell them, I don't care what it takes. Make sure you do it right. All
+right. Well, that's a very quick intro. There's a lot of detail here, but uh let's get started. And because it's just
+a demo, I'm going to advance uh one week to get started. And now let's look at the dashboard. Where are we? Well, we're
+just getting started on the highle design. And let me advance more than one week here just for time. Uh so let's
+advance four weeks. And people are working. It's going great. Everything's good. Productivity is high. Work week is
+tolerable. Everything's great. Marketing is already telling us we need almost 2%
+more work to do to meet what the competitors are planning. Let's go forward some more. Everything's still
+looking great. More new projects. Okay, let's let's do that. Let's accept all
+the all the scope. Uh and that's estimated to boost our final market share when this product is released by
+3.6%. Fantastic. Um okay, things are going great. We we've actually done some
+of the work. A lot more has been initially done, but awaits testing. Um and things are going fine. So, let's
+just keep going. Oh, now we've got a hire for for B. Well, what do we need here? We need about 28 people for
+detailed design, but we don't get that many or we're not going to hire that many because we're trying to control
+costs and uh and let's go forward. Uh-oh. Look, we've gotten some emails.
+Uh so QA says, "Hey, we're doing great
+work on our team. Uh we might get the best quality award." And then you can respond or not. I'm going to respond
+saying, "Yeah, this is fantastic." Uh what's the other email? Let's um let's
+go back here. We're doing great. We have a cohesive and collaborative team. Hey, thanks. That's terrific, HR. We
+appreciate it. Uh now, let's go back here and let's advance some more. And
+we're starting to do the detailed design work, but look what's happening. Um the work week is up to 60 hours now. We're
+actually at the end of the scheduled highle design phase. It should have been done by now and it's not. We're behind.
+So, I'm going to apply some management pressure. You guys need to work harder
+and quality is really important. Quality is job one, don't forget. So, do it
+right, but get it done. So, uh, and
+we're already up to 61 hours in the detail design phase. Let's keep going. Oh, we have some new emails. Uh so uh
+engineering told us the preliminary design review did not go well. Senior management is not happy. Too many
+defects in the design requiring rework. So please fix this. And now you get to
+decide how you're going to respond. I'll make changes to get back on track or hey executives are never satisfied. I'm
+confident that you all in engineering can handle any rework. So you can decide and you don't have to be honest about
+it. You can say, "Hey, we're going to make changes and uh and we'll we'll we'll send it." But we don't have to do
+that. Um here's about the new product uh that uh
+features that we did uh accept already. And then here uh we're very concerned
+about the amount of rework. This is QA telling us uh so I'm going to take steps to correct it, but really I just resent
+your interference. Um too many complaints about long hours. HR is telling us. So, uh, I'll stay on top of
+it, but you know what? We got to get the work done. So, let's see what what else is happening here. So, we're uh, you
+know, we still have quite a few weeks to get this thing done. We're at week 29. We have till 48. Let's keep going.
+The work week is uh, really high. We've now finished highle design. That's great, but we're way behind on detailed
+design. And if we go here, instead of the 28 people uh that we thought we
+needed, now we need 51. Well, I'm not going to hire 51, but let's let's let's
+boost the workforce here. Uh we'll go up to 45 and let's go another few weeks. Is
+that helping us? Well, um things are not looking too great. The work week is even
+higher now. 78 hour work week on average. People are getting burned out.
+That's probably what we're getting emails say. Urgent competitors. Oh, there's new new uh features they want.
+Design review is still not going well. I'm not answering my emails. I'm too busy managing this project. So, um how
+are things going now? I think maybe we need even more people. Uh oh, now we
+need 166 people in detail design. Well, I'm going to go up to 120. Um, but uh
+that's it. I can't I can't. And you know, [clears throat] and even more pressure for progress here. And we'll
+advance some more. How are we doing? Uh, well, let's look at the dashboard. We're
+only about halfway done with the um detailed design and we're almost at the
+deadline. Well, let's keep going. Uh, I haven't added the new features marketing
+wants except for the very beginning. You know, maybe we should reduce some project scope. Let's let's try to do
+that. Let's reduce project scope by uh maybe 50% of the non-essential features.
+Whoops. Oh, nope. Can't do that. It won't let me. All right. Got to keep all those bells and whistles in there.
+Everybody needs to overlap work. Do it out of sequence if necessary, but just get it done. And uh now, how are we
+doing? Well, we're at the deadline. Um, we're over the deadline and whoops, we
+uh this is uh the message from from the CEO. Uh how did our project come out?
+Well, we went over budget. We took way too long and our product quality is
+horrible. The goal was less than 1% defects uh which we could handle with warranty. It's 25%. This is a product
+that's going to fail does fail in the marketplace and the net present value of our losses is about $50 million. Uh so
+this is a pretty horrible project. Now the way these things work is you would
+have more time to do this and you would probably work with a partner or two to
+think about what your strategy is and then you could try it and see what
+happens and then play again. you can go back and start the game again and see if
+you can come up with a better strategy. What you just saw here is actually quite common and uh a significant amount of
+research shows that this kind of outcome is typical and often lead to outcomes
+that are far far worse than what you even saw here. including
+very commonly disputes between contractors and customers, between
+contractors, subcontractors and suppliers that often escalate into legal action. And well, I've been a expert
+witness in half a dozen of these uh lawsuits or arbitrations over projects
+gone bad. And the lawyers are the only ones who really win. At the end of the day, system dynamics has been used
+extensively to um improve project management and including the widespread
+use of simulators like this. So let's um let's go back and talk for a second uh
+about um how system dynamics has been used. Those were two very quick examples. Um
+and uh let me just show you a couple of there's a very small subset of some of
+the successful applications in the mostly the business world of uh of these
+tools and it it spans all kinds of industries uh high-tech autosarma
+drug development construction chemicals project management in every
+kind of industry you can imagine healthcare many many examples One of my favorites is uh an alum of the
+Sloan School used his dynamics to develop uh a formal simulation model and
+a if you like a little bit of a flight simulator to help the frontline clinicians improve
+uh the care that kidney dialysis patients received in particular to treat
+the anemia that is a very common consequence of being on dialysis. saved
+millions of dollars and many many lives and many many examples in energy policy
+and climate change, public health and many many others. Um
+in the program in the executive course that we run we we devote the final day
+to uh presentations from folks in the business and other sectors
+who have actually used these tools successfully. not to toot our horns, but to talk about
+the real issues that come up in implementation. How do you actually do
+this in organizations where people are very very busy and don't have a PhD from
+MIT in in system dynamics? So, that's a quick tour with two different examples
+of how systems thinking works. just a couple of the tools, how they're used,
+and um I think this is a great point to turn it over for questions. So,
+questions, comments, challenges, what have you got? I think Molly is going to
+curate the questions. Is that right? Yes. Great. Um if you have questions, please do put them in the Q&A. Um it
+should appear at the bottom of your Zoom screen. And we have a few already, John. Uh, one specifically about the
+simulator. Does the simulator provide feedback in the form of recommendations on what decisions were suboptimal? Um,
+and this is from Chris Sanford. Yeah, it's a great question. And, um, our philosophy is, uh, as I mentioned,
+telling people the answer, telling people, you know, here's the optimal strategy, here's what you did, doesn't
+work. The mental models people hold about complex systems including projects
+but many many others are very very powerful and they're often strongly reinforced by our everyday experience.
+You know just go back to the prior approval healthc care case in the short
+run tightening up the rules for what needs to have prior
+approval. it does work in the short run. And so you get very powerful feedback
+that that was a good idea, that helped. the unintended consequences, they flow
+through the system often with long delays and they appear to be
+things that happened that weren't connected to the initial decision to, for example, require more procedures to
+receive prior approval or uh more drugs taken out of the preferred drug list.
+And so people don't get good feedback. And what that does is it causes their
+mental model that's damaging to be strongly reinforced.
+And uh and you know if if an expert comes along or a simulator comes along and says well this is better. People
+just it's too much dissonance. Most people are just going to say well that's not right. Your model is wrong. And
+listen folks all models are wrong. Some models are useful. as George Box, the
+famous statistician, said, "But all models are wrong. They're not the real system." So, it's super easy for
+somebody whose intuition says what they just told me is best can't be right.
+It's super easy for them to say, "I don't that's wrong." And I know it's
+wrong, and your model's too simple. Your model's too simple. Your model's too complex. It's a black box that I don't
+understand. Or you don't know my organization the way I do. So, uh, our philosophy is you
+can't tell people, they have to learn it by doing it in the safe space that the
+simulator provides. And that includes challenging the simulator's assumptions. In many of the simulators, you get to
+change the assumptions. Um, our climate policy simulator called Enroads
+developed with Climate Interactive is a great example. There's a lot of uncertainty about the economy, the
+energy system, and the climate. And so you get to change the assumptions. They're based on the best peer-reviewed
+evidence and we think we can defend those assumptions as grounded in the
+best scientific knowledge, but we can be wrong and you might not believe that. So
+you get to change the assumptions and see how that affects what we might do to
+try to reduce the harm from climate change. What else? Molly. Uh John, we have
+another question specifically on the simulator. This is from Mark Pillerine. How does the simulator factor in
+externalities that impact from outside the closed system of the corporation or
+organizations centric setting? For example, um supply shocks, energy costs,
+regulatory changes, black swan events. Yeah. Does the simulator have a business
+continuity mode? Fantastic question. So, this one that I just demoed so quickly uh does not do
+that. It would make it even harder. I mean, and in many of our simulators, we do include surprises, sometimes
+positive, more often negative ones like, oh, the straits of Hormuz are closed,
+and so your supply chain has been completely disrupted, and oh, food prices are going to go up because
+fertilizer is less available and is becoming more expensive, so crop yields are going to go down. um
+we do include those in many of the simulators. Of course, nobody can predict the exact form that a black swan
+event or a negative surprise might take. Uh but you can simulate many of what
+those would be. And in fact, that's a very important use of simulators in particular context. You know, go back to
+the flight simulator. when a pilot is learning in a flight simulator, uh, you
+know, you don't just simulate, oh, you know, a standard routine flight from Boston to Chicago where nothing much
+happens. What happens is the folks in the control room, uh, you know, partway through the flight, they're going to
+give those pilots an emergency that they have to deal with. Engine failure, explosive decompression, um,
+cockpit instruments go dark, uh, bird strike, right? You all remember the miracle on the Hudson. Well, Sully
+Sullenberger, fantastic, amazing pilot, uh, with a lot of experience, including
+a lot of experience in simulators. In fact, he was a certified simulator instructor. And after that
+amazing successful ditching in the river with nobody
+killed, uh, one of his comments was, "Well, you know, I didn't I've never
+experienced a bird strike that knocked out both engines, but we practiced that in the simulator many many times." So,
+that's one of the principal uses of um of these management flight simulators.
+By Yeah. Um, a specific question from Daniel Schneider. Are there differences in applying this in the long-term versus
+short-term versus ultrashortter-term situations? For example, trading.
+Yeah. Um, also a great question. So, the simulators are developed to meet a
+particular need and uh the time frame for those varies. Sometimes, as with our
+climate policy simulator, the time frame is how do we protect ourselves from the
+worst harms of climate that are coming at us under current policies um between
+now and the end of the century because that's the time scale under which these
+dynamics play out. Actually, it even takes longer. Others are very short-term
+oriented. Um, I'm not aware of
+any publicly available simulators that would help traders in the commodity pit
+say trying to deal with the turmoil in the oil market for example. Uh, but I do
+know that uh there have been applications of system dynamics in high
+frequency domains of that sort. So it all depends on the problem you're trying to solve. There's no intrinsic limit on
+uh the time frame. Uh John Steve Heinen takes us beyond
+simulators. So other than simulators, do you suggest organizations in developing their plans identify assumptions and
+other factors that might affect their basic planning and how they might modify or impact those plans?
+Yeah, absolutely. Uh fantastic question. Not every project
+uh requires uh the development of a formal simulation model or a flight simulator.
+A lot of value can be and has been developed by uh the qualitative use of
+the systems thinking tools like the mapping tool that I illustrated with the
+prior approval example. And often that delivers a lot of value for people and
+in two ways. One way is the substantive example. People gain deeper insight into
+what's going on. And to do that, you need a what we call a group modeling process where you expand the possibly
+expand the number and diversity of the people who are brought into the process.
+The uh the saying here is you want the system in the room. You want to have all the key people, all the actors from all
+the important subsystems, many of whom are not even perhaps part of your organization. Some of whom might be your
+traditional adversaries. Um, you know, consumer groups who are protesting that
+your products are not made in a sustainable way or with um with a living
+wage for the uh folks way upstream in your supply chain. You want those people
+in the room so that collectively they're much more able to identify the so-called
+side effects that are leading to the persistent failure of some of the initiatives you've tried in the past.
+Those qualitative tools are extremely valuable. Uh I don't think we have time
+but I have some stories from my personal experience working uh with organizations
+uh on exactly this point. uh and and so that's the sort of direct impact. The
+the indirect or meta impact of the qualitative tools is people develop
+their systems thinking capabilities including their ability if they work at
+it. And it often requires coaching to um to listen
+um to listen to others before jumping to conclusions. to um to work
+collaboratively to uh to focus on activities
+uh instead of saying well I'm the expert on such and so uh taking a more humble
+personal stance and you know that's not easy to do it's not easy for a faculty
+member you know when you're in the classroom it's a it's a social setting
+that kind of puts me literally up on a pedestal on a dis where I can see
+everybody and I'm supposed to be the expert. That's a terrible thing. I'm not the expert. I'm here to help catalyze
+your learning. Uh I'm, you know, we we need to get away from what one famous
+paper in educational practice called we need to get away from the sage on the
+stage and instead the role of the facilitator and your roles is to be a
+guide on the side to catalyze the learning for the group. for other people. That's an important systems
+thinking capability and we have methods to help people develop those.
+Molly, do we have time for more or do we need to wrap it? Perhaps one more question. Um, I want
+a short answer. What do you have? Okay, great. Uh, so this is from Eric Kshell. Eric, thanks for joining us today. If presenting the data alone is
+not enough to convince people to change, how does the simulation modeling change the mental models that tend to be
+entrenched in the status quo? Oh gosh, it's a fantastic question. I
+don't think there's a real short answer. I will say data are essential. It's critical to have data, quantitative data
+of all kinds, but also qualitative data. You need to walk around. You need to go
+what we call go see and assess. You need to be out there in the field. So, it isn't just the numbers. Um, but
+necessary, but not sufficient. You also need those other processes that I alluded to. I don't think I have time to
+give an example unfortunately, but there are many. And these are some of the themes and issues we talk about in our
+programs. Sorry if that's unsatisfying, but
+okay. Yes. What's next? Um, I think we're uh ready for the closing slides and we can share more
+about the course. All righty. Let's do that. Thank you. Um, so as we mentioned,
+Professor Sturman is faculty director of our long running program, Business Dynamics. This is a 5-day in-person
+program at MIT where you dig into all of these topics, multiple simulations, uh,
+with a group of peer executives from around the world. So, imagine spending a whole week on campus with John. It's
+really lovely. Um, our next business dynamics uh is running in a few weeks.
+It will be June 8th through 12th on campus. We still have seats available.
+So, if you're interested in joining us, please scan the QR to see more about the course. Uh, we are also scheduling our
+business dynamics for next year. This will be June 2027. Please check the
+course site in the coming days and we'll have those dates up. If you have any questions about the course, uh there's
+contact information on the page. We're very happy to speak with you. Um thank you again for joining us, John. Thank
+you so much for today's lecture. It's a pleasure. Thank you everybody for
+participating.

@@ -1,0 +1,186 @@
+want to thank the organizers for choosing a paper for this award it was very
+nice and I also want to thank my incredible co-authors and collaborators
+oral vineel and qule who stood right before you a moment ago and what you have here
+is an image a screenshot from a similar talk 10 years ago at new
+RPS in 2014 in Montreal and it was a much more innocent time here we are shown in the
+photos this is the before here's the after by the way and now we've got more
+experienced hopefully wiser but here I'd like to talk a little bit about the work itself and maybe a 10year
+retrospective on it because a lot of the things in this
+work were correct but some not so much and we can review them and we can see what happened and how it gently flowed
+to where we are today so let's begin by talking about what we did and the way we'll do it
+is by showing slides from the same talk 10 years
+ago but the summary of what we did is the following three bullet points it's an auto regressive model train on text
+it's a large neural network and it's a large data set and that's it now let's dive in into the details a little bit
+more so this was a slide 10 years ago not too bad the Deep load
+hypothesis and what we said here is that if you have a large neural network with 10
+layers then it can do anything that a human being can do in a fraction of a second like why did we have this
+emphasis emphasis on things that human beings can do in a fraction of a second why this thing specifically well if you
+believe the Deep learning Dogma so to say that artificial neurons and biological neurons are similar or at least not too
+different and you believe that real neurons are slow than anything that we can do quickly by we I mean human beings
+I even mean just one human in the entire world if there is one human in the entire world that can do some task in a fraction of a second then a 10 layer
+neural network can do it too right it follows you just take their connections and you embed them inside your neuronet the artificial one so this was the
+motivation anything that a human being can do in a fraction of a second second a big 10 10 layer neural network can do too we focused on 10 layer neural
+networks because this was the neural networks we knew how to train back in the day if you could go beyond in your
+layers somehow then you could do more but back then we could only do 10 layers which is why we emphasized whatever
+human beings can do in a fraction of a second a different slide from the talk a slide which says our main idea and you
+may be able to recognize two things or at least one thing you might be able to recognize that something Auto regressive is going on here what is it saying
+really what does this slide really say this slide says that if you have an auto regressive
+model and it predicts the next token well enough then it will in fact grab and capture and grasp the correct
+distribution over whatever over sequences that come next and this was a relatively new thing it wasn't literally the first
+ever Auto regressive neural network but I would argue it was the first Auto regressive neural network where we really believed that if you train it
+really well then you will get whatever you want in our case back then was the humble today humble then incredibly
+audacious task of translation now I'm going to show you some ancient history that many of you might have never seen before it's called
+the lstm to those unfamiliar an lstm is the things that poor deplan researchers did
+before Transformers and it's basically a res net but rotated 90° so that's an
+lsdm and it came before it's like it's like kind of like a slightly more complicated reset you can see there
+is your integrator which is now called the residual stream but you've got some multiplication going on it's a little bit more
+complicated but that's what we did it was a reset Ro 90° another cool feature from that Old
+talk that I want to highlight is that we used parallelization but not just any parallelization we used
+pipelining as witnessed by this one layer per GPU was it wise to pipeline as we now
+know pipelining is not wise but we were not as wise back then so we used that and we got a 3.5x speed up using eight
+gpus and the conclusion slide in some sense the conclusion slide from the talk from
+back then is the most important slide because it spelled out what could arguably be the beginning of the scaling
+hypothesis right that if you have a very big data set and you train a very big neural network then success is guaranteed and one can argue if one is
+charitable that this indeed has been what's been happening
+I want to mention one other idea and this is I claim the idea that truly stood the test of time it's the core
+idea of deploying itself it's the idea of connectionism it's the idea that if you allow yourself to
+believe that an artificial neuron is kind of sort of like a biological
+neuron right if you believe that one is kind of sort like the other then it gives you the confidence
+to believe that very large neural networks they don't need to be literally human brain scale they might be a little bit smaller but you could configure them
+to do pretty much all the things that we do human beings there's still a difference oh I forgot to the
+end there is still a difference because the human brain also figures out how to reconfigure itself whereas we are using
+the best learning algorithms that we have which require as many data points as there are parameters human beings are still better
+in this regard but what this led so I claim
+arguably to the age of pre-training and the age of pre-training is what we might say the gpt2 model the gpt3 model the
+scaling laws and I want to specifically call out my former collaborators Alec
+Radford also Jared Kaplan Dario mode for really making this
+work but that led to the age of pre-training and this is what's been the driver of all of progress all the progress that we see today extra large
+neural networks extraordinar large neural networks trained on huge data
+sets but pre-training as we know it will unquestionably end pre-training will end why will it end
+because while computers growing through better Hardware better algorithms and logic clusters right all
+those things keep increasing your compute all these things keep increasing your compute the data is not
+growing because we have but one internet we have but one internet you could even say you can even
+go as far as to say that data is the fossil fuel of AI it was like created
+somehow and now we use it and we've achieved Peak data and
+there'll be no more we have to deal with the data that we have now it still still let us go quite far but this
+is there's only one internet so here I'll take um a bit of
+Liberty to speculate about what comes next actually I don't need to speculate because many people are speculating too and I'll mention their
+speculations you may have heard the phrase agents it's common and I'm sure that eventually something will happen
+but people feel like something agents is the future more concretely but also a little
+bit vaguely synthetic data but what does synthetic data mean figuring this out is a big challenge
+and I'm sure that different people have all kinds of interesting progress there and an inference time compute or maybe what's been most recently most vividly
+seen in 01 the o1 model these are all examples of things of people trying to figure
+out what to do after pre-training and those are all very good things to do I want to mention one other example
+from biology which I think is really cool and the example is this so about many
+many years ago at this conference also I saw a talk where someone presented this graph but the graph showed the
+relationship between the size of the body of the size of the body of a mammal and
+the size of their brain in this case it's in mass and the that talk I remember vividly they were saying look
+it's in biology everything is so messy but here you have one rare example where there is a very tight relationship between the size of the body of the
+animal and their brain and totally randomly I became curious at this graph and one of the early one of the early so
+I went to Google to do research to to look for this graph and one of the images and Google Images was this and the interesting thing in this
+image is you see like I don't know is the mouse work working oh yeah the mouse is working great so you've got this
+mammals right all the different mammals then you've got nonhuman primates it's basically the same thing
+but then you've got the hominids and to my knowledge hominids are like close relatives to the humans in
+evolution like the neand there's a bunch of them like it's
+called homohabilis maybe there a whole bunch and they're all here and what's interesting is that they have a
+different slope on their brain to body scaling exponent so that's pretty cool what that
+means is that there is a precedent there is an example
+of biology figuring out some kind of different scaling something clearly is different so I think that is cool and by
+the way I want to highlight highl light this xaxis is log scale you see this is 100 this is a th000 10,000 100,000 and
+likewise in grams 1 g 10 G 100 g th000 g
+so it is possible for things to be different the things that we are doing the things that we've been scaling so far is actually the first thing that we
+figured out how to scale and without doubt the field everyone who's working here will figure out
+what to do but I want to talk here I want to take a few minutes and speculate about the longer term the longer term
+where are we all headed right we're making all this progress it's an it's astounding progress It's really I
+mean those of you who' have been in the field 10 years ago and you remember just how incapable everything has
+been like yes you can say even if you kind of say of course learning still to see it is just unbelievable it's
+completely I can't convey that feeling to you you know if you joined the field in the last two years then of course you
+speak to computers and they talk back to you and they disagree and that's what computers are but it hasn't always been
+the case but I want to talk to a little bit about super intelligence just a bit cuz that is obviously where this field
+is headed this is obviously what's being built here and the thing about super intelligence is that it will be
+different qualitatively from what we have and my goal in the next minute to try to give
+you some concrete intuition of how it will be different so that you yourself could reason about it so right now we have our incredible
+language models and the unbelievable chat bot and they can even do things but they're also kind of strangely unreliable and they get confused
+when while also having dramatically superhuman performance on evals so it's really
+unclear how to reconcile this but eventually sooner or later the following
+will be achieved those systems are actually going to be agentic in a real ways whereas right now the systems are not agents in any meaningful sense just
+very that might be too strong they're very very slightly agentic just beginning it will actually reason and by
+the way I want to mention something about reasoning is that a system that reasons the more it reasons the more
+unpredictable it becomes the more it reasons the more unpredictable it becomes all the Deep learning that we've been used to is very predictable because
+if you've been working on replicating human intuition essentially it's like the gut fi if you come back to the 0.1
+second reaction time what kind of processing we do in our brains well
+it's our intuition so we've endowed ouris with some of that intuition but reasoning you're seeing some early signs
+of that reasoning is unpredictable and one reason to see that is because the chess AIS the really good ones are
+unpredictable to the best human chess players so we will have to be dealing with AI systems that are incredibly
+unpredictable they will understand things from limited data they will not get confused all the things which are really big limitations I'm not saying
+how by the way and I'm not saying when I'm saying that it will and when all those things will happen together with
+self-awareness because why not self-awareness is useful it is part your ourselves are parts of our own world
+models when all those things come together we will have systems of radically different qualities and properties that exist today and of
+course they will have incredible and amazing capabili is but the kind of issues that come up with systems like this and I'll just leave it as an
+exercise to um imagine it's very different from what we used to
+and I would say that it's definitely also impossible to predict the future
+really all kinds of stuff is possible but on this uplifting note I will
+conclude thank you so much um
+[Applause]
+[Music]
+[Applause]
+thank you um now in 2024 are there other biological structures that are part of human
+cognition that you think are worth exploring in a similar way or that you're interested in anyway
+so the way I'd answer this question is that if you are or someone
+is a person who has a specific insight about hey we are all being extremely silly because clearly the brain does
+something and we are not and that's something that can be done they should pursue it I personally
+don't well depends on the level of abstraction you're looking at maybe I'll answer it
+this way like there's been a lot of desire to make biologically inspired Ai and you could argue on some level that
+biologically inspired AI is incredibly successful which is all of the learning biologically inspired AI but on the other hand the biological inspiration
+was very very very modest it's like let's use neurons this is the full extent of the biological inspiration let's use
+neurons and more detailed bi iCal inspiration has been very hard to come by but I wouldn't rule it out I think if
+someone has a special Insight they might be able to to see something and that would be
+useful I have a question for you um about sort of autocorrect um so here is here's the question you mentioned
+reasoning as being um one of the core aspects of maybe the modeling in the future and maybe a differentiator
+um what we saw in some of the poster sessions is that hallucinations in today's models are the way we're analyzing I mean maybe you correct me
+you're the expert on this but the way we're analyzing whether a model is hallucinating today without because we know of the dangers of models not being
+able to reason that we're using a statistical analysis let's say some amount of standard deviations or whatever away from the mean in the
+future wouldn't it would do you think that a model given reasoning will be able to correct itself sort of
+autocorrect itself and that will be a core feature of Future model so that there won't be as many hallucinations
+because the model will recognize when I maybe that's too esoteric of a question but the model will be able to reason and understand when a Hallucination is
+occurring does the question make sense yes and the answer is also yes I think what you described is extremely highly
+plausible yeah I mean you should check I mean for yeah it's I wouldn't I wouldn't rule out that it might already be happening with some of the you know
+early reasoning models of today I don't know but longer term why not yeah I mean it's part part of like Microsoft Word
+like autocorrect it's a you know it's a it's a core feature yeah I just I mean I think calling it autocorrect is really
+doing any disservice I think you are when you say autocorrect you evoke like it's far grander than autocorrect
+but other than but you know this point aside the answer is yes thank you hiia I loved the ending uh
+mysteriously uh leaving out do they replace us or are they you know Superior do they need rights you know it's a new
+species of homo sapien spawned intelligence so maybe they need I mean uh I think the RL guy uh thinks they
+think uh you know we need rights for these things I have a UNR question to that how do you how do you create the
+right incentive mechanisms for Humanity to actually create it in a way that
+gives it the freedoms that we have as Homo sapiens you know I feel like this in
+some in some in some sense those are those are the kind of questions that people should be uh reflecting on
+more but to your question about what incentive
+structure should we create I I don't feel that I know I don't feel confident answering questions like this
+because uh it's like you're talking about creating some kind of a top down structure government thing I don't know
+it could be a cryptocurrency too yeah I mean there's bit tensor you know those things I don't feel like I am the right
+person to comment on cryptocurrency but but you know there is a chance by the
+way what what you're describing will happen that indeed we will have you know in some sense it's it's it's not a bad
+end result if you have AIS and all they want is to coexist with us and also just to have rights maybe
+that will be fine it's but I don't know I mean I think things are so incredibly unpredictable I I hesitate to comment but I encourage
+the speculation thank you uh and uh yeah thank you for the talk it's really awesome hi there thank you for the great
+talk my name is shalev liit from University of Toronto working with Sheila thanks for all the work you've
+done I wanted to ask do you think llms generalize multihop Reon reasoning out
+of distribution so okay the question
+assumes that the answer is yes or no but the question should not be answered with yes or no because what does it mean out
+of distribution generalization what does it mean what does it mean in distribution and what does it mean out of distribution because it's a test of
+time talk I'll say that long long ago before people were using deep
+learning they were using things like string matching engrams for machine translation people were using
+statistical phrase tables can you imagine they had tens of thousands of code of complexity which was I mean it's
+it was truly unfathomable and back then generalization meant is it literally not
+in this the same phrasing as in the data set now we may say well my model achieves this high score on um I don't
+know math competitions but maybe the math maybe some discussion in some Forum on the internet was about the same ideas
+and therefore it's memorized well okay you could say maybe it's in distribution maybe it's memorization but I also think that our standards for what counts as
+generalization have increased really quite substantially dramatically unimaginably if you keep
+track and so I think then answer is to some degree probably not as well as human
+beings I think it is true that human beings generalize much better but at the same time they definitely generalize out
+of distribution to some degree I hope it's a useful topological answer thank
+you and unfortunately we're out of time for this session I have a feeling we could go on for the next six hours uh
+but thank you so much Ilia for the talk thank you wonderful
+[Applause]
+[Music]

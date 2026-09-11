@@ -1,0 +1,747 @@
+Hello everyone. Good evening
+and welcome to MCP night. Michael Grinich and we are
+so excited to be back here
+at the Regency Ballroom
+for the fourth MCP night.
+MCP night started off as an
+experiment a little over a year ago. I had been going to different
+types of meetups in San Francisco,
+seeing what people were
+building after work, and this MCP thing kept
+coming up again and again.
+People were showing demo apps ways that
+they were extending their own LLMs.
+And so we said, why don't we
+throw an event about this? Why why don't we actually kind of
+build like a super meetup around this?
+So we rented out this space
+called the Exploratorium, if any of you have been there or some of
+you maybe were at the first MCP night.
+And we thought we would
+have maybe, I don't know, 50 to 60 people or
+something like that come.
+And actually, we ended up
+having over 250 people show up. There was a line down the block. It was pretty clear that this was
+something different, something new,
+and a big shift was happening
+in the world of technology. Fast forward to today, same thing,
+hundreds and hundreds of people coming out,
+and what's different today
+is this small thing, agents.
+So in the last six months,
+really over the last year, the last six months in particular, AgenTex software has changed
+the way that we work,
+it's changing the products
+that we're building, and we think it's going
+to change the world. And so tonight at MTP night,
+we're doing a very special thing.
+We're calling this agent mode, and we're going to be talking about the
+future of software as it relates to agents and some stuff that we've been building at
+Work OS around authentication for agents.
+So I'm really excited to
+talk about that in a bit. Quick overview of tonight's program.
+First, we're going to start talking
+about agent auth, which I mentioned. Then we'll move into a
+section of lightning demos.
+These are one of our favorite
+things about NTP Night, is to bring people from the community
+working really at the bleeding edge of
+building new apps and services to show
+live demos to you about things that they've been making. We'll
+follow that with a panel,
+some folks that have been building for
+actually a few years around AI and going deep
+on agentic software and
+tools and transformation. And then last but not least,
+we'll follow it up with an after
+party for all of you right downstairs. Please stick around for that.
+It's going to be great. Alright. Let's talk about agent auth.
+So to talk about agent auth, I want to go back in time a little bit and
+talk about the evolution of coding with
+agents. If you went back like a
+year or maybe a year and change ago, this is kind of how we were writing code.
+You would prompt the system, and
+then it would spit out some code. And you would prompt it again, and
+it would spit out some more code.
+You'd prompt it again,
+spit out some more code. You were very much the human in the loop. And this way of coding was kind of
+like really advanced autocomplete.
+If you've ever used back in the day
+something like IntelliSense where it could figure out method names and
+function calls and stuff,
+this was like even more
+intelligent autocomplete. But ultimately, you were
+still in the loop as a human.
+You needed to steer the AI. It wasn't really agentic at that
+point, it certainly wasn't autonomous.
+You would prompt, you get a
+change, you review it, and repeat.
+But something changed as the
+models got better and better. Eventually, you could
+one shot entire features.
+You could drive your prompt in a way that
+the agent could run for a longer period of time, maybe several minutes, or
+in some cases even several hours.
+And you could string
+these things together. You could decompose your problem into a
+bunch of small things and have the agent
+spin on it again and again and again, and actually have something that could run
+maybe for multiple hours and spit out an
+entire app. And this is truly the
+beginning of long running agents. This ability to not just have kind of
+advanced autocomplete for certain functions,
+but build out whole capabilities. This is quite profound. I think this is something that we were
+all experimenting with maybe REPL loops
+But this this was, I think,
+a pivotal turning moment. Of course, work is busy,
+so not a lot of people have that
+much time to experiment with this. So over the holiday break, when people
+actually could take time away from work,
+and also some of these even
+more advanced models came out, people started running agents in parallel.
+And they started finding that they could
+have multiple agents work together to collaborate on building systems.
+And this again is a giant leap forward
+in how software has been written. I think it's fair to say that software
+engineering has changed more in the last four
+months than it has over
+the last forty years. No longer are we writing code by hand, no
+longer are we debugging things by hand,
+we are masters of the prompt. It's a man machine symbiosis in
+actually how we build things.
+And this is a huge, huge upset in the way
+that engineering teams are structured,
+in the way that teams operate,
+in the way that we build stuff. It's it's really like, you
+know, hard to overemphasize, uh,
+actually how how big of
+a shift this has been. It's completely changed the
+software development life cycle.
+And you've seen companies actually start
+adopting this way of working for their internal engineering teams.
+A few months ago, Ramp released a blog post about
+something they built called Inspect,
+which is a fully end to end
+agentic coding experience. You don't write code with
+Inspect, you just prompt.
+You can have multiple
+chats, it's collaborative, and you can automatically test and deploy
+stuff into production through Inspect.
+And today, I believe at Ramp, the majority
+of their PRs are generated by Inspect.
+Humans are still steering it, but
+agents are the ones creating it. Stripe built this as well.
+They have a project called Stripe Minions,
+kind of named after the cute, you know, little little cartoon guys.
+And what minions are is kind of what you'd
+imagine, they go off and do your bidding. You can spin them up to go build
+different aspects of your project.
+It's a full one shot end
+to end coding agent system. And I think at Stripe, this has over
+a thousand merged PRs every week,
+just to give a sense of scale. At WorkOS, we've been building this too. We call ours Horizon. Horizon's our
+internal autonomous code factory.
+So this responds to events from Slack. You can tag it in. You can
+add it to a linear ticket.
+You can actually have it alert off of
+something from a an exception that's been thrown, like a sentry error
+or a slow database query.
+And Horizon goes and figures
+out actually how to open a PR, how to make those change,
+how to debug things. It's connected to all of our
+systems that has context.
+And it's kind of like a robotic coworker
+that's able to write code with us. So no longer are these things just driving
+code, they're actually solving problems.
+And I think this shift is pretty
+analogous to what's happened with cars. So we've had cruise control for a while.
+We've had things like lane assist. You know, a modern car like this has a bunch of
+smart features to help you drive and reduce
+the workload, but it still
+has a steering wheel. And that's kind of the
+human in the loop, the IDE.
+You know, still you being the
+person writing and reviewing code. With these agentic coding systems,
+it's like going full autonomous.
+There's no steering wheel. There's no controls. You just get in and tell it where you
+want to go and take a nap and wake up and
+you're there. You don't need an IDE. Software engineering
+is becoming autonomous,
+and it's due to these
+models getting better, these long running agentic systems being
+able to break down complex tasks and
+projects and provide like, actually
+concrete, unique solutions.
+So what's required for this? What actually is, like, needed for
+people to build these agentic systems?
+Well, the first thing
+is you need a runtime. You need somewhere that the
+agent can actually execute. It has to be secure. Um, you need
+permissions, isolation, and scoped credentials.
+Second, you need tools, stuff like
+GitHub, access to CI, observability,
+databases, feature flags, issue trackers. You need the ability to connect to
+services and change things and get context in.
+Third, you need even more context. So the tools bring some context in, but
+you need knowledge about the project,
+the wide code base, stuff
+like product requirements, things that might be in Notion or in
+your Confluence or other wiki systems.
+You might even bring
+in team conversations. Companies that have been operating
+in a remote way like WorkOS,
+we have years and years and years
+of conversations between engineers, product requirement documents that
+we've written, transcripts from calls,
+we pipe all of that stuff in. Fourth, you need feedback loops. So it's not enough for the agent
+just to be able to write the code,
+it actually has to be able to test it. It has to be able to build stuff,
+check the results, review it,
+and actually verify stuff. And then last but not least, of course,
+you need a way for a human to review this.
+You're not just fully flowing the agentic
+coding straight into production today. Humans but but humans are involved,
+we're moving up the stack, you know,
+from writing each line of code to
+reviewing the kind of wider intent and reviewing the trade offs and the design
+decisions, kind of like what, like,
+a principal engineer would be doing. These are kind of the necessary pieces
+to building one of these agentic coding
+systems, supporting agents. A lot of people describe these things
+together, plus the con you know,
+the kind of runtime
+around it, as the harness. The harness meaning the thing that you
+put around the language model to actually
+make it effective. And I think
+a good metaphor for this, kind of extending the car analogy, is Opus 4.7 And,
+um, what this is actually letting you do to
+put all this stuff around it is to make it effective, to actually turn it
+into something that you can drive,
+something that actually can take you
+places, connect it to the ground, you know, it's the wheels, the
+chassis, the body, the fuel,
+everything that's needed to let that
+engine actually run and take you somewhere. And what turns out to be true is
+every time these models change,
+we have to kind of rebuild the harnesses. As model capabilities change, the way
+that we work with them also has to change.
+It's kind of like with a new
+engine, you need a new chassis. You can't just drop it into
+an existing existing system.
+And over the last six months, you can tell as the models
+have gotten better and better, the harnesses have gotten
+needed to get better.
+And people switch between kind of the
+harness model combination between all of these. For AgenTic apps,
+for AgenTic coding systems,
+for stuff like Horizon, the
+LM is not really the product. Like, it's really the harness, the
+environment, that feedback loop.
+That's the product. That's the whole thing together that's
+needed for this stuff to be effective.
+And if you do that, you
+have a fully running car. We built this at WorkOS with Horizon
+because really we just couldn't wait for the
+future. I remember one of
+our engineers was like, isn't someone going to
+build a company around this? And just can we just buy it?
+And that's true. There's lot of
+folks that are working on it. But I think there's a lot of value in
+trying to be at the bleeding edge and and take
+it even a step further. And so we've been
+investing a ton in this and exploring it. And today, it powers a lot of actually
+our own internal engineering and PRs.
+Horizon ships PRs for us. The
+agents within it are autonomous. And what this means is that
+everybody at WorkOS can code.
+Everybody can build
+things and debug things. Now, these agentic systems
+that are autonomous,
+they have these emergent behaviors
+when you're building stuff, not just for writing code, but they're
+actually also good at picking their stack.
+And this is a lot of what I want to
+talk about today in terms of, like, where the software industry, um, is going. As agents get smarter, they
+can make even more decisions.
+So you spin up an agent, you say, hey, I need to build this app
+that has these capabilities. Here's my prompt. And the agent says,
+certainly, I'll get to work on it.
+And as I go through this, um,
+okay, let me pick a database, and let me pick a framework to use,
+and let me pick somewhere to deploy it,
+let me pick a solution for
+all these different things. And suddenly, agent is
+determining your stack.
+And this is a huge thing. In the
+past, agents wouldn't do this. They would only work within
+an existing code base.
+But now agents will actually make the
+decision not just of how the software is architected, but what
+platforms it's built on top of.
+They choose a database.
+They choose an email vendor. They choose hosting, observability,
+and even choosing what to use for auth.
+And as they make these selections,
+they kind of reinforce. As agents get better and
+better at using these things,
+the things that they pick tend to get
+better documentation and experiences for them, and then these services grow.
+As software becomes majority built by AI, this means that you need to think about
+agents as consumers for your product.
+Agents are kind of the new users that
+you're going to have within your app. And this is a pretty enormous shift that
+I think is happening kind of right under
+our eyes right now. My
+friend Braylen tweeted this,
+if your product cannot connect
+to my agent in some way, I'm a thousand less likely to use it. No way I'm gonna use it. And this
+is even more true for agents.
+If an agent can't connect to your
+product, it's kinda dead in the water.
+You'll only be able to sell it to those,
+you know, like legacy archaic users,
+the human, you know, person. So we used to talk about developer
+experience, building things for people,
+creating new SDKs, and
+creating delightful products. And Y Combinator has this line that they
+say, it makes something people want,
+which is really really encapsulates kind
+of the early stages of the start up, like make something people want.
+And I think it's actually time
+to revise this a little bit. And that going forward, this
+is gonna be maybe necessary.
+People need to want what you're
+building, but it's not sufficient. And you'll also need to be able
+to make something agents want.
+You need to make something agents
+want for your product to grow. And in fact, the agent users might be
+more valuable than the human users,
+which sounds kind of crazy right
+now, but we can spawn agents faster. There's more of them.
+These systems grow faster.
+What happened with agentic coding
+that I talked about a few minutes ago? I think it's gonna happen
+everywhere, in every industry.
+It's gonna happen in marketing,
+sales, finance, legal. It's going to happen in
+every single domain of tools.
+These agentic systems will be go go will
+be able to go out and pick whatever systems and infrastructure. You know,
+they'll be able to go reserve hotels for
+you and book flights and many many other things.
+And the systems that provide capabilities
+to agents are the ones that will win in that new economy. We have a
+small set of humans today,
+but there's going to be even
+more agents in the future. And right now, they're kinda stuck.
+If you think about the web era
+of selling to people, you know, maybe twenty years ago
+or so, thirty years ago,
+we then had mobile and that unlocked more. Agents are on a different scale, and they're just waiting for you to
+open your door to them for business.
+So this all sounds great, I think. And hopefully, I've convinced you that
+this is like a big sea change happening,
+and there's a big opportunity here for
+you all to build new products for agents. But there's a problem. Um, of course,
+there's MCP and there's different
+protocols for connecting to AgenTic systems. There's harnesses out there. There's different models. There's
+different sandbox providers.
+There's systems that do memory. There's systems that do
+all these different things. But there's something that we
+found that's missing around this.
+And it's pretty simple, and it's
+kind of crazy that it's missing,
+and that is agentic registration. This is a missing primitive
+right now for agents.
+How do you actually let an
+agent sign up for your stuff?
+Most of the automated services on the
+web, or the login pages on the web, they're to block automated behavior.
+Agents really can't get through them. They get confused. It's not as simple as
+just a, you know, email and password field.
+Agents might not have an email address. Might not have a password manager.
+They might be blocked for, you
+know, their IP bot, you know, type of behavior within these sites.
+And so we've spent decades trying to limit
+the amount of automated behavior on the web. And suddenly now, we
+have the opposite problem,
+where we want to let
+the automated stuff in.
+Agentic registration is pretty
+different than human registration. Today's sign up flow, you know,
+it is it assumes that a human
+can read your landing page,
+That a human can fill out a form,
+that they can solve this captcha, that they can do all this stuff, that
+they can verify their email address.
+This is decades of what
+we've built up around. And agents are totally different. Agent registration needs the
+ability to be discovered,
+needs automated discovery
+and capability declaration. What can this thing do?
+It needs to be able to provide
+intent when something is registering, and a bunch of other things, risk
+assessment, you know, identity verification,
+delegation. We're here at MCP night. I'm probably a bigger
+MCP stan than anybody.
+And I'm sad to say that actually
+MCP is not enough for this. MCP is great. It's a great way for
+exchanging context, calling tools,
+agents interfacing with other agents,
+users interfacing with agents, but it's not enough. The MCP
+authentication layer does not provide this.
+It requires a human to be in
+the loop through the OAuth flow. We talked about that at previous events. You still have to consent to
+connect it to your systems.
+We need something that's
+actually automated with this. We need something different. We need something built first and
+foremost on primitives for agents.
+So we've been working on
+this for the last few months. I mean, we've really been thinking
+about it for probably over a year,
+and going back and forth
+on different designs, and trying to figure out something that's
+the simplest way that we can start to
+introduce this to the world so people
+can start building on top of it. So today, we're really, really
+excited to showcase this to you,
+and we're calling it auth dot m d. Auth.md
+It's not a standard. It's not
+something ratified by the IETF. Please don't come with your
+pitchforks and torches for me.
+It's not a standard. It's just a set of ideas and a set of
+principles that allows you to take your
+application and expose it to agents, to
+allow agents to come register for it, to sign up and use your app, user service.
+Authenti tells agents how they can
+become legitimate users in your system. Not get flagged as spam, not be like
+fake humans that are signing up,
+not impersonate people, but actually
+register as an agentic user. And the goal here is to give these
+service providers, you, building apps,
+an agent native sign up experience that's
+built on existing standards instead of inventing some new religion
+or some new crazy doctrine.
+The spec is really short. There's a lot of stuff that it doesn't
+handle and a lot of stuff that we're opening up as extensions that you
+could add to it later.
+The problem this is really just trying to
+solve is how an agent can sign up for your service, get a token, and
+actually start using it.
+And that developer on the other side or
+the agent, maybe that's autonomous running, can just get back to work building
+their app and shipping their product.
+What does AuthMD do? What can it answer? Well, can say, what does the service do?
+It can tell an agent how to register. It can say what identity
+proofs are accepted.
+How can an agent prove prove
+that it is who it says it is? What offloads are supported? There's different ways of
+actually authenticating.
+What scopes and entitlements that exist? That's kind of like
+permissions or capabilities. And what free tier constraints apply?
+So, you know, as an agent signs up, what does it need to do before
+it's what can it do before it pays?
+You know, what's the free
+kind of gated experience? And last but not least, how does a human
+then or an organization claim the account?
+It starts off with an agent, how can the agent pass it off to the
+person or the organization or the team that's
+using it? So we've built kind
+of the initial version of this, and we've been working
+on it with some partners.
+And for the very first time, we're
+really excited to show it to you. And in true WorkOS fashion, we're
+gonna do this as a live demo.
+What do you think? Well, please keep that applause
+going and give a very, very,
+very warm welcome to Madison from WorkOS
+to show you the very first version of AgentMD. Hi, everybody.
+I'm an engineer on the
+WorkOS Authkit team, and I'm excited to talk to you about
+what we've been thinking for agentic
+registration. The idea is that agents should be able to
+sign up for services on behalf of users
+without taking you out
+of your agent context. So what I have set up here
+is a harness with Acme agent.
+You can imagine that this is an
+agent provider with an identity. So you're a clog code, codex, cursor
+style agent, and I'm authenticated.
+I've devised off into this as madison at
+work o s dot bot, and it knows who I am.
+I have a session. The agent is asking if
+I want to keep working on my Svelte app.
+I have been working on a personal
+website that I'm pretty excited about. It talks a little bit about me and my
+hobbies, has a guest book and a webring,
+and I've been trying to
+send this to my friends, but this localhost URL is not working.
+Let's see if the agent can help.
+Okay. The agent's telling me that localhost only
+works on my machine and then if I wanna share it with my friends,
+have to deploy it somewhere.
+It's also letting me know that there are
+some providers for deployments where it can do all the work for me. It can create
+an account, give me an API key,
+and do all the work. That sounds great. I don't wanna do any of that.
+Okay. So now it's looking for a deploy
+provider that supports agent auth.
+You can look it's looking
+at Stratus slash auth m d, auth.md So
+it knows that Cloudflare supports agent
+registration and it can set this up for me. That is awesome. I've heard of Cloudflare.
+I wanna use that. And now it's confirming that I want to
+use my Acme identity, madison@workos.bot,
+to register for a Cloudflare
+account, and I do want to do that. And what it's doing now is it's taking
+my Acme session and converting it
+into what's called an IDJAG. It stands for identity assertion
+JWT authorization grant,
+and Cloudflare trusts Acme. It knows that we take, um, email verification very seriously
+because we have tokens to protect,
+so it is okay with creating an account
+based on that ID JAG and it's returning an
+API token and an account ID and
+setting it up in the environment. So I'm all set up to use the Wrangler CLI
+and it has created a sub domain for me
+where I can deploy. It's also
+letting me know that whoops, that there need to be a few small changes
+to my app in order for it to work well
+with Cloudflare, so it's swapping out the default adapter
+for the Cloudflare adapter to make sure
+that the bundle works
+seamlessly with Cloudflare. And I'm all set up. But I am
+getting cold feet a little bit.
+I remember websites from this period being
+a little bit more exciting than the one that I've put together.
+So I'm gonna ask it for some
+retro inspo for a redesign.
+And what this is going to do is
+it's actually gonna use Firecrawl, which is excellent at scraping the
+web and turning unstructured data
+into JSON. And it's going to do the same thing that
+we did to set up a Cloudflare account.
+It's asking if I wanna do this
+with my Acme identity and I do. It's issuing a new IDJAG specific
+to Firecrawl, sending that to them,
+and setting up a new account. And it's returning an API key that
+we can use to, um, hit up the, um,
+Firecrawl API. And so now it is looking at the web
+design museum for some inspiration.
+We've given it a prompt asking it to
+pull out some personal homepages with a specific aesthetic, um, and we want to
+return some fields about this, key elements,
+color palette, you know,
+that sort of thing. And, when it's done
+scraping the collections,
+it's going to coalesce those into
+some options that we can
+choose from to reskin the site. Um, so that's done. It's
+scraped, uh, the five sites.
+It's coalescing the results, and it's going to present me with three
+options that we can choose from for our
+redesign. Okay. We have option one,
+y two k. Option two, bad and ugly. Option three, pixel art.
+Clap if you want option one.
+Okay. Option two? Option three?
+Alright. I think pixel art actually
+beat out bad and ugly by a hair.
+So let's do pixel art. And while this is redesigning things,
+we did talk a bit about IDJAG. It sounds really obscure. It's an existing spec and I just wanted
+to show you what an IDJAG actually looks
+like. So I saved the one that we sent to
+Cloudflare and we're gonna decode it and it's
+just a JWT. It has a specific header that identifies
+that it's an IDJAG and then it has fields
+about who I am, that my
+email has been verified. If Cloudflare got an ID JAG that said
+that the email was verified was false,
+it wouldn't want to issue
+a new account for me. The trust relationship really
+is this email verified field.
+It includes the issuer,
+which is the Acme bot,
+and the audience, which is Cloudflare. That's it. That's all Cloudflare needs
+in order to set up a new account for us.
+If we go back here, this should
+be wrapping up any minute now.
+Awesome. And now that
+it's done reskinning, it's going to use the Wrangler
+CLI to deploy the app to our
+subdomain that we
+provisioned at the beginning. And that's done, and it has a link for us.
+And alright. It's art.
+So this is live on Cloudflare. I was able to do this without ever leaving
+my terminal and I'm super excited about
+that. Thank you to our partners at Cloudflare
+and Firecrawl for setting this up in their products so that we could show it to you.
+Thank you to the team at WorkOS for
+shipping this with me and thank you to all of you for checking it out.
+Keep it going for Madison,
+first live demo of the night. So
+cool. It's like magic.
+That actually works.
+We've been building that with both
+Cloudflare and Firecrawl for the last few weeks. When we reached out to them and we were
+like, hey, we have this kind of crazy idea,
+engineers at both of those
+companies were like, we are so down. Let's build this together. This is what
+you just saw, this is how Authenti works.
+You have your coding harness,
+in that example it was PIE, and underneath that of course
+it has the LM, it has memory,
+and the example that Madison walked
+through there was interactive, right, because she was demoing it and
+talking with us and showing it.
+But you can imagine your harness
+could just go do this on its own. It was just asking her for consent.
+It was just saying, do you want
+to sign up for Cloudflare or not? But you could definitely instruct
+your coding agent to say,
+go pick a bunch of stuff. Go pick the best things that are
+out there and just use those. Behind the coding harness, the coding
+agent, is a backing identity service.
+And in this example, that was
+actually the workos.bot example,
+but that can be anything in the auth. Md spec. It can be an
+identity service like WorkOS,
+it could be your existing identity system. This is very flexible, you
+can go build it yourself.
+And it can actually even be anonymous. So this is something as you
+go look at the docs later,
+you can allow your service to have
+anonymous signups for agents and then have them claimed by people later. And obviously
+you need to be careful with that,
+but it's really, really, really
+powerful for services on the web. The flow is that the agent figures out
+what services are available to it through
+discovery. There's that standard auth. Md endpoint. You can
+also list it in your LMs.
+Txt or your docs file. The
+agent will send that ID. Jag file excuse me, that ID.
+Jag assertion, really that token,
+and it receives back an access token. Now that access token is just your
+normal access token that you can have.
+After that the agent can just hit
+your normal API, work with MCP, do whatever it wants. So this
+spec is really pretty tight,
+it's actually just that identity
+presentation, the IDJAG exchange, and the token resolution. It doesn't do
+a lot of crazy stuff around permissions,
+it doesn't do everything under the sun, you don't have to use it
+for your agent runtime, you don't have to use it
+for other credentials,
+It just solves that really first kind of
+hairy problem around agent registration.
+And I think this is really important
+to be an open spec for the web. I think this is so important for agents to
+be able to go sign up for services and go
+interact that this shouldn't
+be a single company owning it, it shouldn't be WorkOS owning it, it
+shouldn't be gated behind something else,
+it shouldn't be Cloudflare owning it, it should be something that everybody
+should be able to implement and build on top of for your own apps and services.
+Our hope is that this actually
+opens your doors to agent users.
+You can allow them to come register,
+allow them to come sign up, allow them to actually deploy
+things in user service.
+And the end state of this, I think,
+is agents will also be able to pay.
+They'll actually be
+able to exchange value. Take my money, the agent says.
+And this will be the beginning really
+of this new kind of agent economy. Agents will be able to pay
+for services, use things,
+and actually transact on the web. But I think we need to fix the
+registration problem first. Payments come later. It's just
+like any app you would build today.
+Right? You're not going to put a
+credit card form on your sign up page. Why should that be the case for agents? They should be able to register
+first and then pay later.
+But we're very excited
+about extending it to this. At Worker West, we've spent many
+years talking about enterprise ready.
+If you go to our homepage,
+says, your app enterprise ready. And what that really means is
+helping you, as developers,
+take whatever you've built,
+whatever SaaS products, and go sell it to bigger
+and bigger customers. Go upmarket, land your biggest deal, work
+with the biggest companies in the world,
+and do it securely. And I think agent
+ready is actually the next enterprise ready.
+In a lot of ways, we're just doing the same thing with
+agents that we've been doing with the enterprise, trying to democratize access to it and
+make it possible for any of them to use your
+stuff. The thing is, every
+company will have agents,
+and they'll have more agents than
+people, and the agents don't sleep, they don't get tired, they work twenty
+four seven trying to solve problems.
+The world will really be run by agents. And so, you know, you
+need to build for them.
+And if this sounds too far out, if this
+sounds kind of crazy, or this is like, you know, subculture within Silicon
+Valley, you know, that's like a very far future,
+it might be a little bit. But I want to
+show you this tweet from Marc Benioff.
+And Marc Benioff is the
+founder and CEO of Salesforce. And yes, it's that Salesforce,
+the one with the big building,
+the biggest building in San Francisco. Salesforce is not a new company. They've been around for decades. They're one of the world's
+largest software companies.
+In many ways, they're
+considered a legacy player. But they're not sleeping
+on this, on agents.
+Salesforce is making their
+entire service agent ready.
+Our API is the UI. The entire Salesforce, AgentForce, and
+Slack platforms are now exposed as APIs, MCP,
+and CLI. That's crazy.
+They sell their dashboard.
+The UI is the thing that everyone uses. They make billions and billions and
+billions of dollars a year on this.
+And yet, Mark is saying
+that doesn't matter anymore. The API is what matters. This
+is the future of agent ready.
+This is the future of actually
+agents interfacing with services. This isn't just a threat
+to the Salesforce business.
+This isn't defensive. This is they
+see this as their biggest opportunity, their biggest growth dimension,
+the way that even more people can come
+use Salesforce and build on top of it. And the same is true for all of
+your products and all of your apps.
+So this is AuthMD. We're launching
+a new site on this today. It's available right now. Inside of it, it
+has docs, it has getting started guides,
+it has tutorials for how to implement it, whether you want to be like a coding agent
+or a service provider, one or the other.
+You can either present the
+identity or receive the identity. It's really easy to integrate. We've made it super, super easy.
+Your agent can go integrate it. How meta is that? It allows you to take your app and
+add these agent native features.
+And we're layering in things like
+permissions and even down the line human verification into it for the transfer.
+But the first step around registration, we think we have a pretty
+good solution for it. It's an open spec. Can implement it.
+You just have to host
+your own auth md file. And if you happen to be using our
+products, if you're using Work OS auth kit,
+can turn this on with just one click. You just turn it on and you can have
+agents start signing up for your service.
+Pretty cool. So that's AuthentD. Thanks.
+We're super excited about this. We can already tell something
+like this is going to be big. Either us or somebody else,
+we wanted to kick start it and
+get feedback from all of you. So my homework to all of you after
+tonight's event, go home, check this out,
+build something with it, and
+send me an email about it. DM me on Twitter, scream at the top of
+the mountaintops, come by our office,
+come come to a meetup, show us what
+you're actually building with it. We want all of you to be
+able to get feedback on it. This is not just a one way
+directional presentation.
+We want to hear from you.

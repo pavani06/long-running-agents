@@ -1,0 +1,317 @@
+every 3 months things have just kept getting progressively better and now we're at this point where we're talking about full-on vertical AI agents that
+are going to replace entire teams and functions and Enterprises that progression is still mind-blowing to me a lot of the foundation models are kind
+of coming head-to-head there used to be only one player in town with open AI but we've been seeing in the last batch this
+has been changing thank God it's like competition is you know the the soil for a very fertile Market Marketplace
+ecosystem uh for which consumers will have choice and uh Founders have a shot and that's the world I want to live
+[Music]
+in welcome to another episode of the light cone I'm Gary this is Jared Harge and Diana and collectively we funded
+hundreds of billions of dollars worth of startups right when they were just one or two people starting out and and today
+Jared is a man on fire and he's going to talk about vertical AI yes I am I am
+fired up about this because I think people especially startup Founders especially young ones are not fully
+appreciating just how big vertical AI agents are going to be it's not a new idea some people are talking about vertical AI agents we funded a bunch of
+them but I think the world has not caught on to just how big it's going to get and so I'm going going to make the case for why I think there are going to
+be $300 billion plus companies started just in this one category nice I'm going to
+do it by analogy with SAS and I think in a in a similar fashion people don't understand just how big SAS is
+because most startup Founders especially young ones tend to see the startup industry through the lens of the products that they use as a consumer and
+as a consumer you don't tend to use that many sass tools because they're mostly built for companies and so I think a lot of people have missed the basic point
+that if you just look at what Silicon Valley has been funding for the most for like for the last 20 years like we've mostly been producing SAS companies guys
+like that's literally been like most of what has been coming out of Silicon Valley it's over 40% of all venture capital dollars in that time period went
+to SAS companies and we produced over 300 SAS unicorns in that 20-year time period which is way more than every
+other category software is pretty awesome software is pretty awesome I was thinking back to the history of this because we we always like to talk about
+the sort of how the how the history of Technology informs the future and um the the real Catalyst for for the SAS boom
+was a do you guys remember XML HTTP request oh my God like I I'd argue that that was quite literally the Catalyst
+for the S boom like uh Ajax Ajax yeah in 2004 browsers added this JavaScript function XML HTTP request which was the
+missing piece that enabled you to build a rich internet application in a web browser so for the first time you could make things in websites that looked like desktop applications and then that
+created Google Maps and Gmail and set up this whole like SAS boom essentially the the key technology atlock was that
+software moved from being a thing that you got on a CD ROM and installed on your desktop to being something that you use through a website and on your phone
+yeah Paul Graham actually uh shares in that lineage in that he was one of the first people to realize that he could take the HTTP request and then actually
+hook it up to a Unix prompt and you didn't actually have to you know have a separate computer program that would
+change a website so via web was a online store kind of like Shopify but way back in the day yeah it was basically like
+the first SAS app ever like like PG actually invented SAS in like 1995 it's just that those first SAS apps kind of suck because they didn't have XML HTTP
+request and so every time you would like click a button you would have to reload the whole page and so it's just a shitty experience and so it didn't really catch
+on until 2005 when X XML HTP request white spread anyway I I see this llm thing as like actually very similar um
+it's like it's a new Computing Paradigm that makes it possible to just like do something fundamentally different and in
+2005 when cloud and mobile finally took off there is this sort of like big open question of like okay well this new technology exist what should you do with
+it where is the value going to acrw where are the good opportunities for startups I was going through the list of like all the billion dollar companies that were created and I kind of had this
+realization that um you could kind of bucket the the different paths that people took into like three buckets um
+there's there's a first bucket that people started with which was like I would call them Obviously good ideas
+that could be Mass consumer products um so that's like docs photos email calendar chat all these things that like
+we used to do on our desktop with that obviously could be moved to the browser and mobile and the interesting thing is
+zero startups won in those categories 100% of the value flow to incumbents right like Google Facebook Amazon they
+own all all those businesses folks forget that like Google Docs wasn't the only company that tried to bring Microsoft Office online there were like
+30 companies that tried to bring Microsoft Office online but they all lost Google one then there was a second category which was like Mass consumer
+ideas that were not obvious that nobody predicted um that's like uber instacart door Dash
+coinbase th Airbnb those ones those ones came out of left field like the the dot dot dot between XML HTTP request and
+Airbnb is like very not obvious yeah and so the incumbents didn't even try competing in those spaces until it was like too late and so startups are able
+to win there and then there's a third category which is all the B2B SAS companies and that's like 300 of them
+and so like Mo like by by by number of logos way more billion dollar companies were created in that third category than
+the first two I think one reason why that happened is like there is no like Microsoft of SAS like there is
+no company that somehow does like SAS for like every vertical and every product like for structural reasons it seems to be the case that like they're
+all different companies and that's why there so many of them I think Salesforce is probably like the first true SAS
+company um and i' I remember Mark benov coming to speak at YC and he tells the story as just very early on people just
+didn't believe you could build sophisticated Enterprise applications like over the cloud or via SAS it was just so um there was just like a
+perception issue right it was like no like you don't you buy like your box software and that's like the real software that you run the way we always do it it was it was quite contrar cuz
+the early web app sucked they were like via web where you had to be a Visionary like PG and understand that the browser was going to keep getting better and that eventually it' be good which feels
+like quite reminisent of today right where it's like the yeah the same thing like oh no like you won't be able to build like sophisticated Enterprise applications that use these llm or AI
+tools because they hallucinate or they're not perfect or they um they kind of like just toys but yeah that's like the early SAS story exactly the same and
+so when I think about the parallels with LMS I could easily imagine the same thing happening which is that there's a bunch of categories that are like Mass
+consumer applications that are obviously huge opportunities but probably the incumbents will win all of those so that's something like a per like a
+general purpose AI Voice Assistant that you you know you can ask it to do anything and it'll like go do that thing that's an obvious thing that should exist but like all the big players are
+going to be competing to be that thing right W Apple's a little slow on that one why is Siri so stupid still what year is it it makes no sense I mean it's
+like a count to that is like the very obvious thing is search and maybe Google will still win um on search but
+perplexity is definitely give them run for the money right yeah this is the classic innovators dilemma at the end of the day I mean you could argue going back to what you said about Uber or
+Airbnb these were actually really risky things from a regulatory standpoint so if you're Google and you have basically
+a guaranteed you know giant a pot of gold that you know sort of comes to you every single month like why would you endanger that pot of gold to sort of
+pursue these things that uh might be scary or might ruin the pot of gold I think that's I think that's like probably the primary reason why the
+incumbents didn't end up building those products and didn't even clone them even after they got big and it was obvious that they were going to work who will
+never launch an an Uber clone they never launch an Airbnb clone um I was listening to this uh talk by Travis and
+one of the things that he said that really stuck with me is that in the in the first years of uber he was very scared that he would was going to personally go to prison for like a long
+time like he was actually personally risking going to prison in order to build that company and so yeah no highly paid Google exactly was going to do that
+what do you think about um why the incumbents didn't go into B2B SAS is it part of the reason is that a lot of the
+use cases are very there's a very wide distribution I it's a great question I love to hear what you guys think my take
+is that it's just too hard to do that many things as a company like each B2B SAS company really requires like the
+people who are running the product in the business to be extremely deep in one domain and care very deeply about a lot of really obscure issues you know like
+take like Gusto for example like why didn't Google build a Gusto competitor well there's no one to Google who really understands payroll and has the patience to like deal with all the nuances of all
+these like stupid payroll regulations and like it's just like like it's just not worth it for them it's easier for them to just focus on like a few really
+huge categories in the B2B SAS world it's it's sort of about the unbundling bundling of software argument that comes
+up a lot as well I think and why didn't why did all these vertical B2B SAS products evolve versus just like Oracle
+or sap or um netet yeah netu just owning like everything um and I think it might be Al is another thing that's
+attributable to the shift to like SASS and the internet is in the old ways of selling software again like you had this box software that was really like
+expensive to install and you had like a whole ecosystem around it and anytime you wanted something custom like the integrators would just say oh no like we
+can like just build a UA custom like payroll feature or something like that and then Salesforce comes along with like a SAS solution and it just seems
+like it could never be as powerful or sophisticated as like the expensive Enterprise installation you just paid for but they Prov that it totally was
+the case and I think that just like opened the gates for all all of these like vertical sash solutions to emerge doing exactly what you're saying the
+other problem is that with a lot of this enterprise software if you're a user of Oracle and a netw suite because they're they have to cover so much ground the
+user experience is actually pretty bad they're trying to be jack of all trades but master of none yeah so ends up being a bit of a kitchen sync type of
+experience and this is where if you go and build a B2B SAS vertical company you could do literally a 10x better
+experience and more delightful because there's this Stark difference between consumer products and Enterprise user experience yeah well there's only uh
+what three price points in software it's uh $5 per seat $500 per seat or $55,000
+per seat and uh that Maps directly to Consumer SMB or Enterprise sales and
+then I think time in Memorial has taught us that in the past and this is less and less true uh with new software thankfully
+but Enterprise is terrible software because it's not the user buying it you know some high up Mucky muuk inside
+Fortune 1000 is the person who's getting whin and D for this you know Mega seven figure contract and you know they're
+going to choose something that maybe isn't that good actually for the end user the person who has to actually use the software day-to-day and um I'm sort
+of curious to see how this changes with llms actually I mean to date one of the more Salient things that we've seen for
+both SMB and enterprise software companies is that or all software companies all startups period is like you know there's a sense that as Revenue
+scales the number of people you have to hire scales with it and so when you look at unicorns uh even in today's YC
+portfolio uh it's quite routine to see a company that reached a hundred or $200 million a year in Revenue but they have
+like 500 a th000 2,000 employees already and I'm just going to be very curious like uh even the advice that I'm
+starting to give companies that are you know a month or two out of the batch uh it's a it's feeling a little bit different than the kind of advice I
+would give last year or two years ago in the past you might say you know let me find the absolute smartest person uh in
+all of these other parts of the org like customer success or sales or different things like that and uh I want to find someone who I've
+worked with who is I know is great and then I'm going to go sit on their you know uh on their doorstep until they quit their jobs and come work for me and
+I want them to be someone who can you know build a team for me hire a lot of people that might still be true but I'm starting to sense that uh the Met is
+shifting a little bit like you actually might want to hire more really good software Engineers who understand large
+language models uh who can actually automate the specific things that you need that are the bottlenecks to your
+growth and so it might result in you know a very subtle but you know significant change in the way startups
+grow their businesses sort of post- product Market fit it means that I'm going to build llm systems that bring down my costs that cause me not to have
+to hire a thousand people I think we're right at the beginning of that Revolution right now I mean we talked about this in a previous episode we
+talked about there will be a future unicorn company that's only run if we take it to the limit with only 10
+employees that's completely plausible and they're writing the evals and the prompts does it I think what you're saying is like a trend that was already
+underway pre llms like I remember when I was running triple bite for example we needed to like build marketing or cust
+like user acquisition basically um and especially after we raised a series B the like traditional way you were supposed to do that is to like hire a
+marketing executive and build out like marketing team and um and just like basically spin up this machine to do like sales and marketing but I'd
+actually met like a y founder um Mike who was his company was basically building like a smart frying pan sounds
+like bizarre but like he was a MIT engineer yeah you remember this um he's an MIT engineer and to sell the smart frying pan he had to get really really
+good at understanding like paid advertising and um uh Google ads and just a whole bunch of stuff and so he he taken this Engineers mindset approach to
+it and remember just talking to him about it and realizing this would be so much better to have an MIT engineer working on like our marketing efforts
+than any of the marketing candidates I've spoken to and he was able to like scale us up to like we were spending like 1. like a million dollars a month
+on just marketing and various like campaigns and triple bite had great marketing like I remember like the Cal trained station takeover that you did
+all the like out of home stuff that you did it was like really high quality stuff it stuck with it you could tell was not being done by some like VP
+marketing person um and that was all mik and like the comment I would often get when people would ask me around that time like how big is triple bite and we
+were like 50 people and so much yeah yeah people be like I thought this's like hundreds of people I was like no it's all because if you put a really smart engineer on some of these like
+tasks they just find ways to make they find leverage and now like llms can go even Way Beyond like The Leverage you had which is pure software okay so
+here's my pitch for 300 vertical AI agent unicorns literally every company that is a SAS unicorn you could imagine
+there's a vertical AI unicorn equivalent in like some new universe cuz like most of these SAS unicorns beforehand there
+were some like box software company that was making the same thing that got disrupted by a SAS company and you could easily imagine the same thing happening again where now basically every every
+SAS company builds some software that some group of people use the vertical AI equivalent is just going to be the software plus the people in one product
+one thing might be just Enterprises in general right now are a little unsure about what exactly they like what agents they need and one approach I've seen
+from especially more experienced Founders like um Brett Taylor the CTO of Facebook started his company Sierra I don't know all the details but as far as
+I can tell it's essentially more like broadly about letting Enterprises like deploy these AI agents and spinning them
+up like custom for the Enterprise versus like oh hey we have like this specific agent to do this it's something I've seen from one of my companies called um
+uh Vector shift that funded about a year ago they're two really smart like Harvard computer scientists and it's a
+that what they found is that they're trying to build a platform to make it easy for Enterprises to build their own like use like no code or sdks to build
+their own like um internal llm powered agents but like Enterprises often don't know exactly what they want to use these
+things for and so bring it back I wonder if like in like the box software world you started off with just like a few vendors who just basically were trying
+to convince people to use software at all and it was just like it does everything um and then it gets more sophisticated and higher resolution and
+you get lots of like vertical SS players we go through that same period with llms where the early winners might just be these like general purpose hey like we
+like make it easy for you to do llm stuff and then it the vertical agents will come in over time or do you think there's reasons it's different now and
+the vertical agents will take off on day one yeah that's interesting because if you think about the history of SAS the consumer things worked first like 2005
+to 2010 was mostly consumer applications like email and chat and maps and people got people as individuals got used to
+using these tools themselves and I think that made it easier to sell SAS tools to companies because you know the same people are both employees and consumers
+yeah I I think the answer might just be like this is this is all just a continuation of software and just there's no reason it has to reset back
+like llms don't have to reset back to a few general purpose like Enterprise llm platforms doing everything because Enterprises have already been trained on
+like the value of Point Solutions and vertical Solutions um and like the user experience not going to be that different these things will just be a
+lot more powerful and so if Enterprises have already built the muscle of believing that like startups or vertical Solutions can be better than like Legacy
+broad platforms they are probably going to be willing to take a bet on a startup promising a very good vertical AI agent
+solution today and I feel like we're all seeing that in the batch now with some of our companies are getting faster Traction in Enterprises for these
+vertical AI agents than like we've ever seen before I think we're just early in the game right like all software sort of starts quite vertical and then as the
+industries actually get much more developed um then I mean I just answered my earlier question it's like you know
+why does company end up having a thousand employees it's actually that uh you know early early in the game everyone's making these specific point
+Solutions and then at some point you've got to go horizontal like you're already doing this crazy spend on sales and
+marketing and then the only way you can actually continue to grow once you sort of get 100% or you know some large
+majority of the market is you actually have to do like not just a point solution but things that sort of work
+together the other point of why the bull case for vertical AI agents could be even bigger than SAS is that SAS you
+still needed a operations team or set of people to operate the software in order to get all the workflows to be done I don't know approval workflows or you
+have to input the data the argument here is that you will get not only replacing all that set of SAS software so that
+would be like one to one mapping but is also going to eat all of the a lot of the payroll because we look a lot of the spend for companies big chunk is still a
+payroll and software's Tiny exactly they spend way more on employees than they do on software so it'll be these smaller companies that way more efficient that
+need way less humans to do random data entry or approvals or click the software I agree I think it's very possible the
+vertical equivalence will be 10 times as large as the SAS company that they are disrupting I mean there there's two case it could be that the vertical Point
+solution could be just big enough and you don't need to do that bro breath thing right it that could be a nice scenario should we give some examples I
+feel like we've all been working with so many vertical AI agent companies we've got like news from the front how it's actually going well your
+former uh head of product Aaron Cannon is working on a YC company called outset that I worked with and uh basically
+they're taking llms uh to the surveys and qual Trix space so qual Trix is almost certainly not really going to
+build the best of breed uh large language model with reasoning and then the funny thing about surveys is you know who's it actually for it's for
+people who run products for marketing teams it's for people who are trying to make sense of like what do our customers actually want and what are surveys like
+guess what that's language so um and then I feel like these types of businesses um actually have to thread
+this needle um because Enterprise and SMB software often is sold based on a
+particular person who who is the key decision maker and um you have to go high enough in the organization so that
+the people you're selling to are not afraid that their whole their job Andor their whole team's job is going to go away totally that's kind of the move
+that I seen that a lot of companies that sell need to do because if you're going to go and sell to the team that's going to get replaced by AI they're going to
+sabotage it man it just does not work so I think this is an interesting way that a lot of these are top down and you have
+to go through at some point even get the CEO to sign off on it a company I'm working with u MCH that's sort of essentially an AI agent but for at least
+where they're starting is like QA testing um they're getting really great traction right now and it's interesting because you remember a decade ago um why
+can't we worked with rainforest QA like rainforest was a QA as a service company and that they had this exact tension of
+where they couldn't actually replace your QA team and so they needed to build software that made the QA te more like
+efficient but really that obviously meant trying to replace as many of them as possible they couldn't replace the whole team and so they were always on
+the sort of like tight rope between trying to sell the software to like the head of engineering as like this will mean you'll need less QA people and
+great but then you also have to go sell that to the QA team who don't want to be replaced and so I think that was always like a friction for that business for how it could like scale and grow but now
+like mtic with AI can actually just replace the QA people so their pitch is not oh this like makes your QA people faster it's like this just means you
+don't need a QA team at all so they can just focus the sell onto like engineering and Engineering doesn't need buying from QA at this point and you can
+also go in I mean to start with you can go and sell to companies that don't even have big QA teams at the moment they just use something like mtic and then it
+will just like keep scaling with them scaling and they'll just never build a QA team ever yes that is a real life case study of what Diana was saying
+about why these vertical AI agent companies going to be 10 times as big as the SAS companies yeah I'm seeing this interesting now um like in recruiting too I had this exact same issue with
+triple vet where to build the software um to build software that makes it easy to like screen and hire software Engineers you need buying from both the
+engineering team that they're joining but also the recruiting team and effectively the software we were building was trying to replace the recruiters but we couldn't completely
+replace the recruiters but now with NYC and so the recruiters were always like oppos
+opposing it CU it was a threat to them yeah so it just always like friction on like how um on like how far you can get
+when the customer you're trying to sell to is worried about being replaced um but yeah I think now it's still early
+days but now with AI you can build things that do the whole stack like of recruiting we have a company we worked with last batch like Nico work with them
+a priora which is actually just doing like the full like technical screen the full initial recruiter screen and getting great traction so I think as
+those things keep going like they won't have they have the same thing you won't have the friction of oh I need to convince recruiters to use this you're probably just like not build a
+recruiting team in the same way that you used to I mean other example is even for de tool companies they have to do a lot
+of a developer support and I work with this company called cap. AI that basically buildt one of the best chat
+Bots that responds to a lot of the a lot of the technical details that are hard
+to answer and I think a lot of the companies that started using them they actually ended up having Dev rail teams that are a lot smaller because it
+ingests a lot of uh the developer documentations even the YouTube videos that Dev tools put up and even a lot of
+the chat history so it just keeps getting better and better and it's like gives really good answers actually it's one one of the best I've seen yeah I
+also worked with a customer support like an AI customer support agent company called Power help well actually we both
+did um last batch and I learned a couple interesting things from parel um the
+first is customer like AI agents for customer support was like the category that's like famously crowded where
+there's like supposedly like you know a 100 of them and if you go and you Google like AI customer support agent you'll get like a 100 results on Google um but
+what I learned through working with parel is like it's actually kind of like like almost all of those companies are doing very simple like
+zero shot llm prompting that can't actually replace a real customer support team that does a lot of really complicated workflows it just kind of
+makes for like a nice demo like to actually replace a customer support team for like an at Scale company that has like 100 customer support reps that do lots of complicated things every day you
+need like really complicated software that does all the stuff that like Jake heler was talking about and there's there were only like three or four companies that were even attempting to
+do that and cumulative they had cumulatively they had like less than 1% Market penetration and so the market was just completely open I could also see that
+being another case of um hyper specialization or hyper verticalization like there's not going to be I mean
+maybe eventually there could be a single general purpose customer support agent software company but we're like in in
+you know that that'll be like a eighth or ninth inning kind of thing and we're literally in the first inning so you know instead you know you're going to
+have companies like gig ml that you know it's doing it for zepto doing 30,000 tickets uh every single day and
+replacing a team of a thousand people and but it's very specific and it has you know it's not a general purpose demo
+Weare kind of thing like it's 10,000 test cases in a very detailed uh eval set that you know is basically just for
+zepto and things like zepto yeah uh but if you are you know any of the other Marketplace companies you're probably
+going to use it cuz like that's a very well-defined kind of marketplace that's you know instant delivery Marketplace I think this is the kind of dynamic that
+led there to be like $300 billion do SAS companies rather than like one like1 trillion do like meta SAS thing that provides all the software for the world
+it's just like the customers just require really heavily like tailored Solutions and it's hard to build one that like works for every everyone exactly I mean we already gave three
+examples of customer support but there are very different verticals it's like de tool comp need very different kind of support that you need and the training
+set to marketplaces very different right yeah I guess whether you have agents or real human beings working for you you
+end up with the same problem which is every company bumps up against CO's theory of the firm which says that any
+given firm will grow only so much to the point where it uh becomes inefficient to be larger than that and then that's why
+they sort of networks and ecosystems and you know a full blown economy you know like every firm will sort of specialize
+to do what it is particularly good at and then the limits the outer limits of what those firms can be it's actually
+based on uh your ability as a manager so yeah that that part a little bit breaks my brain because you know when we spend
+time with Parker Conrad at ripling uh one of his favorite points is actually well you know everyone's very obsessed with with the fact that the rocks can
+talk and you know maybe they can draw but the more interesting thing for him you know running HR It software that uh
+you know he spends a lot of time thinking about HR like actually the coolest thing about the LMS is that the rocks can read and from his perspective
+like you he's I think he has 3,000 employees he still runs payroll for all 3,000 employees through Rippling so I
+think he spends a lot of time thinking about like how can one person extend their ability as a manager and uh I think we're going to see a lot more
+there that would be an a reverse argument that if we're at this moment where uh tools
+for managers and CEOs are going to get much more powerful um oh it could it could it could increase the scale of the
+firm that you can run right and that's certainly what ripling is trying to do like he's attempting to build this like Suite of HR tools where if he wins he's
+going to eat a whole bunch of billion dollar SAS companies and like one one giant company it's very interesting point Gary I think what made me think
+about this is that with having all these AI SAS tools it's going to give the ability to all these leaders and all
+these Orcs to basically open the aperture of the context window of how much information they can parse because there a limit of how much uh humans we
+can have meaningful relationship there's like the whole thing with the D Mar number it's about 300 people that you 150 that you can have a meaningful
+relationship with but with AI because all of these rocks now can read I think think we will be able to extend that
+dumbar limit that we have yeah I think uh Flo crell had this interesting post on Twitter that went viral around um I
+think someone had made a voice chat like just weekend project as a CEO but it would call uh all
+1,500 of their employees yeah and uh you know it was you know very short call like kind of sounded like it was from
+the CEO just asking kind of personally I mean it sort of reminds of um that scene in her where it zooms out and uh
+actually you know you're following the experience of one person using the her OS but actually that her OSS is actually speaking to 15 you know thousands or
+tens of thousands of people all at one time how many others 8,316 yeah I mean large language models
+can talk and can have conversations and then to what extent can uh you know this power actually extend the capability of
+one or a few people to uh understand what's going on I I heard about that yuk it got it definitely got me thinking because as understood the product is
+something like it just it will call up all your employees and then your employees can just like ramble about what they've been doing and it will just extract the meaning out of it and give
+the CEO of like a like bullet point summary of here the most important stuff and there were a bunch of like SAS companies that attempted to do these
+sort of like weekly pulse Pulses from employees using like traditional SAS software but like that version is is literally a 100 times better than the
+pre- elm version of this idea but I wonder with like that particular tool um just like it's not it's going Beyond
+just like reading and summarizing like this this is the argument of like if writing is thinking then like there's actually just a huge amount
+of work that's involved in the effort of figuring out like who's an effective communicator and like what are the most important things to be like what what
+are the key things to be focused on as a company and I just wonder if that at some point do the llms do like they go beyond just like summarizing and reading
+and doing actual thinking at which point like who's actually running the the organization an interesting
+thought I guess the other thing that's kind of interesting about how Parker Conrad's thinking about it is um I found out about this recently off a an
+interview with Matt mcginness his coo that uh there are more than a hundred Founders who work at ripling now as sort
+of specific people who run like an entire SAS vertical inside Rippling it's super cool the way he's built the team
+har probably knows a lot about it because you've done a bunch of interviews with him um yeah I mean it's definitely very focused on uh recruiting
+Founders and I mean Parker like Rippling is essentially the the case against
+vertical like verticalization trying to uh
+horizontalization like lots of value and he wants to recruit Founders and teams that build on top of the platform like it's almost a little bit more sort of
+like amazones whereas like shared infrastructure um yeah I think every product that they've released I mean things like time tracking and whatnot I
+mean basically they launch a thing and it hits like multi-millions of dollars in ARR on day one of launching and that's exactly what we were talking
+about earlier like once you once you have a vertical once you have a tow hold what you're saying is Well I have to spend this money on sales and marketing
+anyway can I uh you know basically get higher LTV and hold my CAC constant and uh that's sort of what you if you look
+at all the top uh software companies today it's like that's what Oracle is that's what Microsoft is that's what Salesforce is ripling knock on wood
+going to be the next but um it's it's an interesting alternative to uh going from zero to one totally on your own do you
+guys want to talk about some of the voice companies that we have I think that's like an interesting like sub category of this of this stuff is like
+really blowing up now I have a company that I work with called Salient that basically
+does AI voice calling to automate a lot of that collection in the auto Ling space which tradition so they like call
+up people and they're like hey you owe $1,000 on your car yeah which actually up with that actually this kind of job
+is one of those butter passing job it kind of sucks because a lot of uh these low wage workers work in all these call
+centers and it's like a terrible boring job so very high churn and giant headcount to run these because there's just so many accounts with these banks
+that have to do that and this is a perfect task that AI could automate and
+what Salient has done is has been able to actually get very very accurate and it has been going live with a lot of big Banks which is super exciting and this
+was a company from last year and demonstrating that that part of it that they were able to get in because they sold through top down I guess the space
+feels like it's moving very quickly and that we have incredible companies that are voice infra companies like vapy and then people can sort of get started
+right away and Retail also I mean these companies that have reached pretty fast scale just because it's one of the more
+exciting like mindblowing things that you can get up and running within I mean literally the course of hours um and
+then some of the question that you know remains unanswered and we hope they figure it out is how do you hold on to them especially as you uh run into
+things like the new open AI voice apis um you know do you go direct like you Pro it's probably way more work to try
+to use the underlying apis off the bat but these uh platforms are clearly low bar and then the question is can you
+keep raising the ceiling so that you can hold on to customers forever har you were making an interesting point earlier about like how the apps that people have
+built on top of LMS has changed from like early 2023 when it started until now voice which we were just talking about as a great example of this I think
+even if you went 6 months back it felt like the voices were not realistic enough yet the latency was too high like there was it felt like we were probably
+a ways off having AI voice apps that could meaningfully like replace like humans calling people up and like here
+we are and yeah I was just zooming out thinking back to the first YC batch
+where llm powered apps first came in was probably winter 2023 you know almost 2 years ago now and
+the apps were essentially just things that spat out some text and not even like perfect T Rockit talk that's about it yeah sort of more like copy editing
+marketing edit email edits it was just a kind of more like just like incremental yeah like I I had a company I mean the one that sticks in my head is a company
+Speedy brand and all what they did is make it very easy for like a small business to just generate a Blog and spit out content marketing um it's like
+very obvious idea and it wasn't perfect but it was pretty cool at the time and that's what we've talked about a bunch of the show but that's like the chat gbt
+raer turned out around that time hey like this is what an llm app looks like it's just a chat GPT rapper it does very basic spits out some text like it's
+going to get crushed by openi in the next release like and it did yeah well I I I don't know if that one did but but the that that first that first wave of
+llm apps mostly did get crushed by the next wave of GPT I feel like we've had this sort of boiling of the Frog effect where from our perspect it's sort of
+like every three months things have just kept getting progressively better and now we're at this point where we're talking about like full-on vertical AI
+agents that are going to replace entire teams and functions and Enterprises um and just that progression is still
+mindblowing to me like with two years in which is still relatively early and the rate of progress is just like unlike
+anything we've seen before and I think what's interesting to see is we discussed this in the last episode is a
+lot of the foundation models are kind of coming head-to-head there used to be only one player in town with open AI but we've been seeing in the last batch this
+has been changing Claude is a huge Contender thank God it's like competition is you know the the soil for
+a very fertile Marketplace ecosystem uh for which consumers will have choice and uh Founders have a shot and that's the
+world I want to live in so people are watching and thinking about starting a startup or maybe have already started and uh they're hearing all of this how
+do you know what the right vertical is for you you got to find some boring repeative admin work
+somewhere and that seems to be like the common threat across all of the stuff is if you can find a boring repetitive
+admin task um there is likely going to be a billion dollar AI agent startup if
+you keep digging deep enough into it but it sounds like you should go after something that you directly have some sort of experience or relationship to
+that is a common like there there's definitely a Common Thread I've seen in the companies that are that I'm seeing promis with and another one just pops into my head sweet spot I think I
+mentioned on this before like they're basically building an AI agent to bid on government contracts and the way they found that idea and a year ago was they
+just had a friend whose full-time job was to sit there on like a government website like refreshing the page like looking for new proposals to bid on and they they were pivoting they're like ah
+like that seems like something an llm could do um a company from a recent batch which pivoted into a new idea that's getting great traction like they're basically building an AI agent
+to do um process like medical billing for dental clinics and the way they found the idea was um one of the founders mother is a dentist and so he
+just decided to go to work with her for a day and just sit there seeing what she did and she's like oh like all of that like processing claim seems like really boring like an llm should totally be
+able to do that and he just started writing software for like his mother's dental clinic so I guess I mean in robotics the classic Maxim is uh you the
+robots that are going to be profitable and that are going to work are going to be um dirty and dangerous jobs and in
+this case for vertical SAS look for boring butter passing jobs well with that we're out of time
+for today we'll catch you on the light cone next time
+[Music]

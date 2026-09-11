@@ -1,0 +1,607 @@
+I got my speaker notes. This is 
+also zero token architecture. So,
+for the record, zero token architecture 
+isn't a thing. Some people think it is.
+Some VCs have even reached out to me. 
+I should have taken their money anyway.
+Uh, so these days I probably spend more time 
+working with power tools than computers.
+Uh, I bought a really fancy uh, track saw. 
+If you have never seen one of those things,
+they're amazing. I got scared of a table saw 
+that I was going to end up in the hospital.
+So, I bought this fancy track saw and I bought a 
+bunch of YouTube videos. Probably like 10 hours
+researching which one to buy and then maybe 
+another 50 hours figuring out how to use it.
+And if you watch enough YouTube videos, you 
+all remember the scene from the Matrix where
+Kar Ree gets plugged in. He's like, "Oh, I 
+know kung fu. That doesn't work in real life."
+So after 50 hours of YouTube videos, I thought 
+I was a carpenter. So I have everything set up.
+I go buy all my parts and I plug in the track 
+saw and I move as fast as I could and it jumps
+off the track. and a spinning blade at 5 10,000 
+RPMs coming back at you is a very scary sight.
+And that's the way I watch a lot of people using 
+AI at the moment. A lot of people think they're
+platform engineers because they ask cloud code 
+to deploy a Kubernetes cluster. While it's true
+you have a Kubernetes cluster, it's not true that 
+you're a platform engineer because Claude did it.
+And I'm watching people now, the biggest thing 
+in the hype wave is we gotten to the part where
+burn all the tokens. People are now getting 
+this magical thing called the invoice.
+It's a really unique piece of technology 
+that tells you what things actually cost.
+And now that people are starting to get 
+the bill, they're starting to understand
+that this ain't free. $20 a month, no problem. 
+$2,000 a month, we start asking questions.
+And when the token burn matches your salary, now 
+we're being silly. And then I'm watching people
+build amazing products to try to figure out 
+how to reduce token burn. Have you seen this?
+Are you doing this? You probably are. You're 
+probably burning tokens to save tokens.
+And for someone who's out of the game, 
+this is hilarious to watch because I
+get to be a hypocrite because I would probably 
+be doing this too if I was still in the game.
+And so I'm watching people build these agents and 
+I ask every session that I am, what's an AI agent?
+Who knows what an AI agent is? Raise your 
+hand. You know what an AI agent is? Come here.
+Get up here. What's an AI agent? I have no 
+idea. Go sit down. [laughter] So that matches my
+experience. People raise their hand that they know 
+what something is and then when you ask them what
+it is, they have no idea. I'm going to try it one 
+more time. Who actually knows what an AI agent is?
+All right, one last brave person. 
+Come on, bring your ass here.
+Big round of applause for this one person.
+What's an AI agent? An AI agent is 
+basically a script that does an LM
+call that then forms an action. Good enough.
+He's getting fired next week. [laughter]
+But I do like the definition because 
+when I hear this loop component,
+I think there's loop engineering now. Anyone 
+doing loop engineering? Have you linked up? have
+you updated your LinkedIn profile yet? All right, 
+we have our first loop engineer. Congratulations.
+And so I'm watching people do these loops and 
+they're like, Kelsey, we don't even look at the
+code anymore. We just run these agentic 
+loops. We're doing agentic development.
+I was like, man, how much does that cost? 
+It's like, I don't know, man. Probably a
+couple hundred bucks and it just runs in the 
+background. Like, well, how many do you have?
+And people like to brag on LinkedIn. I 
+have 15,000 agents. I'm like, doing what?
+And then you look and I'm like, man, that looks 
+like a CI/CD pipeline to me. It's like, Kelsey,
+you don't get it. There's a LLM in there. I say, 
+okay, what is it doing? Well, and I was blown
+away by some of these. Let me be clear, there is 
+something there. It's not 100% stink oil. So, I'm
+not really here to debate whether this stuff has 
+merit or not. There's a different conversation.
+A human is probably the most agentic 
+thing we've ever seen. Independent humans
+have their own way of thinking about 
+things. And when I think about my career,
+there were different points in my career where 
+I could actually feel the software upgrade.
+When I learned how to program for the first time, 
+I felt like I was super smart. When I understood
+how distributed systems actually worked, I felt 
+like I was super smart. And the more I learned,
+the Kelsey model improved. So you're probably 
+looking at Kelsey version 45 and for 45 years
+throughout my life I've been accumulating this 
+knowledge where I have my own model sits in my
+mind and whenever I look at a problem I draw 
+from that experience to try to write make the
+right decision. That's the foundation of the 
+zero token architecture. You can just think
+some people just start typing when presented 
+with a problem moving a little bit too quick.
+The first step is how good is your software 
+model? To my disappointment, when I meet
+people on the conference floor, I'll just ask 
+them simple questions. What are you working on?
+Then I may ask a follow-up question. How 
+are you better than you were two years ago?
+Read any new books? Learn any new skills? And 
+surprisingly, the answer is no. Most of the time,
+most people haven't tried new 
+programming languages or understood
+different architectures and how they work. 
+So, their menu and solution range is so small
+that now they're outsourcing to the LLM. 
+Nothing wrong with that. And it brings me
+to the next question is who should learn these 
+fundamental things? Should you learn how to
+should you have to learn to fly a plane before you 
+can do air travel? That would be inappropriate,
+right? pilots need to learn how to fly a 
+plane because that's what we expect of them.
+But I'm at platform engineering con. All 
+you are platform engineers, I would assume.
+Do you think it's appropriate that 
+you understand how these systems work?
+Do you all believe that? Cuz 
+I see some of y'all working
+and you got 15,000 agents running and 
+you have no idea what they're doing.
+And if the system breaks, I was just 
+in another country. I was in France and
+uh I was speaking at an internal conference and 
+a few of the platform engineers were scrambling
+because the company decided that no one 
+is getting unlimited token burn anymore.
+And when they went to certain teams and told 
+them you won't be able to use unlimited tokens
+going forward, it was a bit of a revolt. I was 
+like what the hell's going on? Can I sit in?
+I promise not to tell anyone 
+[laughter] so keep it in this room.
+And those teams like well there's no way we can 
+now meet the same demand as before if you take all
+these tokens away. And what they didn't realize 
+in this journey is they became codependent.
+Some of us are codependent on GitHub. You 
+see people on social media GitHub is down.
+What do they do? GitHub is down. Like damn 
+we already see the status. We don't need you
+to [laughter] tell that GitHub is down.
+So you've taken a codependency for some of 
+us on GitHub. GitHub down. Everything stops
+when the tokens go away. If that means you 
+can't work anymore, then we have a problem.
+If we fast forward this 5 years from now, how many 
+you would actually know how to operate the systems
+that you're asking someone else to build 
+for you? Forget the agents for a second.
+If you hired a bunch of contractors and they came 
+in, they designed a system from your prompts aka
+zero tickets. Do you believe that you could 
+pick it up and maintain it once they left?
+Have any of you ever gone through this? Hired 
+a bunch of contractors to build the systems
+based on your vague understanding of the problem 
+and then they leave. The first thing that you all
+tend to do is what? Rewrite it because you don't 
+understand the current system. This is where I
+think the foundational root of this problem 
+is. So when I say zero token architecture,
+I'm wanting people to actually before they start 
+burning tokens, I just want you to understand
+the thing you're trying to do first. I'll give 
+you a good example. Creating database tables.
+How many of you know how to create a database 
+table from scratch? You're all probably lying.
+I believe about two of you all. And this is like 
+the first time I seen knowledge erode because of
+tools like an OM. You guys know what an OM is? 
+Developers gave a revolt that they shall not
+know how databases work and instead they allow 
+their software to map their coding objects to the
+database and let the OM figure it out. If you're 
+a DBA and you saw this work, you're like, "Hey,
+why are you making queries that are 10,000 pages 
+long just to select one column from one table?"
+And the developer would be like, 
+"Uh, I don't know." the OM did it
+and then the DBAs will have to rewrite those 
+queries and hardcode them into the application.
+I'm seeing the same process being repeated.
+The agent is being used to create the 
+database table. Nothing wrong with this
+if you know how to do it already. And so 
+what people are doing is say, "Hey agent,
+make this table." Then they have all these cloud 
+skills and it builds the table a certain way.
+And then I watched them do this over and over in a 
+loop. anytime you want some a table built, you ask
+the agent to do it and it just uses inference 
+to create a table. This is a very expensive
+way to create a table. And the question that I 
+asked them is like why wouldn't you just export
+the tool that creates the table once you 
+use inference to build that thing out?
+And if you were to export this tool, this works 
+for CI/CD processes, this works for generating
+code, this works for pretty much anything that 
+you would want an agent to do once. Why would
+you not export it so that it can just run in the 
+loop without the inference? And if you did that,
+then you would be using or you would be 
+burning less tokens to complete the same task.
+If I had to make Oh, I have 15 I have one more 
+minute because I'm only 15 minutes for questions
+because I want to debate some of these ideas. 
+If I had to make one prediction for the future,
+we're going to go from burning tokens in a loop 
+to using tokens only once to create the loop
+and never use inference again until we change the 
+loop. That's it. That will be the magic stroke
+that makes this feasible. So all this agentics 
+blah blah blah. Yes, you all will burn tokens
+for the next five years because it's fun and it's 
+exciting. A lot of you will go out of business
+because of this naivveness. A lot of you will 
+get jobs to come in and do cost optimizations.
+And in five years, you even remember the thing I 
+just told you. You will use agents the first time.
+You will export the results and then you will run 
+the results without inference on a regular ass CPU
+for pennies. If you don't believe me, that's how 
+you work. The most advanced agents on the planet.
+You write code once. It takes a lot of brain 
+power to figure out exactly what you want.
+A little of experimentation, a few mistakes 
+along the way. But once you dial that thing in,
+we turn those into libraries, frameworks, 
+and executable binaries that don't need us
+to rebuild the entire application every time 
+we want it to run. It's this little nuance
+that I think will change the way we approach 
+these type of problems. That's it. Zero token
+architecture is simply that one sentence. 
+Infer once, export, and run without inference.
+If you can figure that out, I think you're going 
+to build much better systems and you're going to
+find yourself rooted in reality. I guarantee you 
+that one sentence is probably going to save your
+company tens of millions of dollars. If you go the 
+other way, I don't think it's going to work out.
+I could be wrong about these ideas. So, I left 
+15 minutes for questions. Challenge the ideas.
+Ask me about anything. It's all fair game. We have 
+two mics, I think, running around. If there are
+any questions, we're going to round out the talk 
+with 15 minutes of Q&A. Who wants to go first?
+We have one back there, then I'll go here.
+You can throw the mic to them. I think they 
+have a really good insurance policy. Thank you.
+Uh do you you already try to do it? I I mean 
+you are doing right now or you how I expel
+example to do it. Oh listen to the 
+question. Are you doing this right now
+or are you trying to do it for 30 years? The 
+entire industry has already been doing this.
+I remember the first time I saw a database 
+try to scale up and hit it threshold. We all
+remember when databases were very expensive to 
+run. People were running on spinning discs. We
+try to get SSDs. You try to put the database on 
+a bigger machine. And then we realized something.
+The app doesn't have to call the database for 
+the same query multiple times. If you see an
+expensive query come through the application that 
+might take, I don't know, call it 5 seconds to run
+and consume all the database resources, 
+what do you do? You stick the cache result
+in something like Reddus. And so the app looks 
+at the query and it asks Reddus, do you have a
+response for this query? If so, give it to me. 
+And you get the response back in milliseconds.
+We've been doing this for decades. So the concept 
+of caching is a very core computing concept. It's
+what your CPU is doing. It's what your hard 
+drive is doing. It's what your developers
+are doing. It's what your language designers are 
+actually doing. So this has always been a thing
+in computing to be very efficient. You spend lots 
+of resources up front and then you get the benefit
+of computation to do the same thing again and 
+then hardware can optimize that loop to remove
+the unnecessary branches that don't need to be 
+there. Why are we treating an agent differently?
+So I agree, I will admit an agent can do 
+really nice things like generate a pipeline,
+generate a function of code, but why would 
+you abandon the idea that the generated code
+should not be stuffed in a library so it can 
+be imported and used thousands of times, right?
+Would you ever pay a developer to come into your 
+company and write a database driver from scratch
+every time they ran a SQL query? That would be 
+insane. And agents don't change any of that logic.
+So token free would kind [clears throat] of 
+require p like humans to have the full picture
+in our head right like but most of the time we're 
+rebuilding context like the the the consulting
+example is great right like outdated docs 
+outdated architecture isn't the problem that we
+like never really made our systems legible in the 
+first place like AI or not good question and I'm
+glad you didn't tell me before time so Corey 
+is one of the people I advised So I still do
+advisory work. I'm still deep in the tech world. 
+Product design, go to market, the whole nine.
+And he works for a company called Mass 
+Driver. And the first time I saw this product,
+on the surface, it looks like one of these 
+drag and drop infrastructure management tools.
+And the thing we don't like about those tools 
+is they tend not to be flexible enough to do
+the things we want. I remember posting this on 
+social media like a decade ago. Everyone wants a
+platform with one exception or one rule that they 
+have to build it themselves. If I show you Heroku,
+you won't like it because it doesn't do everything 
+you want to do. Our discipline is unconstrained.
+If you wanted to build a building, then 
+there are codes and the laws of physics
+to adhere to. Software engineering, we just 
+do random things and expect the platform to
+um morph itself to support it. And so when I 
+look at back over my 25 year career, most of the
+things that I saw we do in an enterprise was not 
+designed. It wasn't like we got in the room and
+had the big picture in mind before we decided to 
+add Kafka to the mix. That's not how it happens.
+Typically Kafka gets introduced. Why? Because your 
+director went to a big data conference. They saw
+someone give a keynote about what webscale means. 
+They came back and they want to be webs too.
+and they bought a jar of Kafka sauce and started 
+rubbing it on stuff. And if you're on the platform
+engineering team, you just get a new request, 
+we need Kafka and we need it ASAP. You may not
+even understand why we need Kafka. You may not 
+understand how all the other apps integrate with
+Kafka. You damn sure don't know how to maintain 
+Kafka and you don't know how to optimize Kafka.
+And so if you look at someone's infrastructure, 
+it's just organically growing over time.
+People like me, we quit after two 
+years and we go on to the next company.
+And so all these companies and all these 
+infrastructures are just a manifestation
+of people coming and going, doing ad hoc 
+things to their infrastructure. And so
+instead of reflecting on that as an industry, we 
+decided to allow AI to deal with the complexity.
+That's what most people are doing now. You're 
+taking an agent like Claude or whatever you
+want to use. You're teaching it a bunch of skills. 
+You're teaching them skills that you don't have.
+and you're hoping that it can make 
+sense of this mess. And one thing that
+LLMs and classic ML is good at is dealing with 
+unstructured things and finding correlations.
+That's really good at it. And the reason 
+why I think it's working a little bit more
+successful now, we move from infrastructure 
+as code to infrastructure as data things like
+Kubernetes. You have a manifest, Terraform. 
+There's now structure to infrastructure.
+So yes, I'm not surprised that these tools are 
+now being able to make sense of these things,
+but I don't think it's a trade-off for simplicity. 
+I meet some companies like Kelsey, man, I love
+Kubernetes. I read your book. I watched all your 
+videos. We have three servers. We make a trillion
+dollars with three servers, but I really want 
+to get Kubernetes installed. I say, listen to me
+very carefully. Do not touch Kubernetes. Run the 
+other way. If you only have three servers, SSH in
+the for loop is in. You can't beat it. Copy that 
+binary to your three servers and go on vacation.
+Ignore everything. Matter of fact, give me that 
+coupon ticket. You shouldn't be here. go home.
+And that's the honest truth for someone like 
+that. And so I think now that you're building
+tools to help people visualize these things, I 
+think once we start to visualize these things,
+back in my day, people used to have these Visio 
+diagrams. You guys remember Vizio? I'm old. I'm
+dating myself. But there was a tool like CAD where 
+you could actually draw out all the infrastructure
+and the best companies kept it updated. So when 
+you join a platform team for the first time,
+you can look at their diagrams. I 
+know you all think this is insane.
+I'm put on a different hat. If you were a 
+construction worker and you're going to go
+into a building where there's hundreds of other 
+people working on things, drywalls, floors,
+electrical, plumbing, what is the first thing 
+you're going to ask for? I need to see a diagram.
+I don't know where the bathroom goes. In 
+our profession, like just put it somewhere,
+right? Put it next to the kitchen. There's easy 
+water access. But that's how we design systems.
+And so when you have a blueprint, you can actually 
+look at the whole thing first and say, "Ah, I see
+what we're trying to do fundamentally. You all 
+are moving data around. That's what you're doing."
+And but most of you can't see the big picture. So 
+we just start bolting things on. And I think the
+mistake the industry is making is that we think 
+AI is going to give us air cover for being able
+to kick that can down the road. And I think it's a 
+drastic mistake. And so I think for most people is
+being able to visualize and see the whole 
+picture before you start making decisions
+or even having a picture of all the previous 
+decisions. There's no match for having that kind
+of context. So if you think context is amazing 
+for agents, wait till you give it to humans
+and then we'll go here. When I think when when 
+I think about uh technology, we talk a lot about
+building things. We rarely talk about maintaining 
+things. And so I wonder if the key question for us
+is are we going to be happy with these systems we 
+design on day 300. You know, if we start to look
+backwards from the future, are we happy? And to 
+your point, with the bill, with the complexity,
+with the lack of understanding of how it works. 
+So if we start to look at these things through,
+is this going to work well three years from now, 
+five years from now, that should hopefully inform
+the decisions we're making today. we seem to 
+be just focused on just bolting on more stuff.
+So start from maintaining the system first, work 
+backwards. If I were to take the statement as a
+question, I think the the part here is that the 
+amount of talk I'm hearing around productivity
+is insane. First thing I ask people 
+that taught the productivity thing,
+did you get a raise? And they were like, no. 
+I said, oh man, you're getting ripped off.
+if I did 10x more work, we need to be 
+talking about a compensation increase.
+And then the other thing that I do when 
+I hear people talk about building things
+is I just go to their public facing website or 
+look at the product they actually sell to people.
+And typically that thing doesn't change. So then 
+I'm asking where's all the productivity going,
+right? Are you filling out juro tickets faster? 
+Are you writing tests that no one's ever going
+to read or care if they break? where is this 
+world going in terms of the maintenance side.
+That's not the biggest fear that I have.
+The biggest fear that I have is there are 
+millions of people who do the kind of work we do
+and every decade there's only three or four people 
+who come up with an idea that spans the globe
+and we're only batting that average with millions 
+of people in the thick of things. And some of them
+look up and say, "I think there's a better way to 
+do this." And when we see it, it seems so obvious
+because we understand the problem so intimately. 
+The last time this happened in my career was when
+Docker came out. We were all building RPMs, dev 
+packages. Some of you all are savages. You were
+just shipping source code to the server with SCP. 
+But we all had this concept of packaging things.
+And then we all had the concept of 
+running things, right? init file systemd
+maybe you're using anore chef and we all had this 
+concept and for decades we did nothing about it
+all the system administrators devops people we 
+just sat there doing the exact same thing over
+and over we even brought in tools like Jenkins 
+to help us do it faster but we didn't think to
+change the abstraction not one time and then 
+developer community comes in like that sucks
+why would you ever want to do that and then we got 
+this thing called Docker. Now Docker is not this
+world changing thing that you could never imagine 
+before. So when you saw it was very obvious.
+Make files turn into Docker files. We stopped 
+talking about five different packaging systems and
+you end up with one aka the container. And then we 
+started to normalize how things run because they
+all run the same way. App starts up, makes system 
+calls, app turn down, app have logs, send logs.
+And so the only reason why we got to that is 
+because of the millions of people doing this
+kind of work. had the insight and skill to know 
+how to make something better. So fundamentals
+are at the core of innovation. If you take the 
+fundamental understanding out of this equation,
+then do we just have the big AI labs, the only 
+ones with the ability to suggest something new?
+And remember, that's not really how those 
+systems are designed. Those systems are a
+reflection of the past normalized into a model. 
+So if you think about it, we train the models.
+every GitHub commit, every question on Kora 
+or uh Substack or whatever tool you use,
+those are the inputs that went into train 
+the model. Which one of our ideas made it
+to the top of the prompts response? Maybe it's 
+a normalization of all of them. But that doesn't
+mean it's innovative just because it can do 
+something you can't do. So the thing I worry
+about the most is if the batting if the number of 
+people batting, does the batting average go down?
+Are we stuck with the current set of programming 
+languages? Are we stuck with YAML files? Are we
+stuck with these R Goldberg machines or will one 
+of you get tired of the pain and build a better
+substrate that then even the AI agent will then 
+start to operate? It doesn't work the other way. I
+think people get confused. Most AI agents sit as a 
+layer on top of the existing thing. So if you have
+bad and terrible hard to maintain infrastructure, 
+your agent is just going to be sitting there
+dealing with bad hard to maintain infrastructure 
+and just going to burn tokens while you do it.
+And I think the industry is excited because they 
+think they're going to get that at a cheaper cost.
+That's the part that doesn't make sense to me. 
+We're not done evolving computing platforms. They
+should still evolve. And so the question I think 
+you got to ask yourself is, do you need to know
+if you really think your job in the future 
+is going to be guiding agents to do the work?
+I doubt you're going to have a job in the 
+future. Why? They sell these agents to everyone.
+There will be nothing unique about you. We got 
+time for one more question. I think it was here.
+Um I'm more curious on how to go about like 
+what you're saying makes sense when you have
+the experience, right? Um of manually doing 
+things, you start to think in high level, but
+how about for like interns and junior engineers? 
+How do you get them into this kind of This is
+the best question of the day. [laughter] So for 
+people that have experience and a lot of people
+that are very excited about this technology, the 
+one thing we're not talking about is we already
+have the experience. So we know what we're looking 
+at and so of course we can guide it in the right
+direction because we've done it before. But 
+what happens if you've never done it before?
+I think this is super important because I think 
+a lot of the senior engineers face this too when
+new things come out. We're asking ourselves we've 
+never done it before. So I think the best bet is
+I would definitely learn all the new tools 
+100%. But I would also be this historian.
+I would go and figure out how were people 
+doing this before this tool showed up.
+So Kubernetes came out when I was about 32 years 
+old. So it doesn't matter what age people start
+these things. Things come out when they 
+come out. And when Kubernetes came out,
+I looked at the technology and the first thing 
+I did was I took something that I did by hand.
+I wrote this guy called Kubernetes the hard way 
+just to see how everything manly fit together. And
+then I started saying,"Hey, there's a thing that I 
+deployed a couple years ago. I I did it manually.
+What would it take to make Kubernetes do the same 
+thing?" And then I started writing YAML files and
+I got Kubernetes to do the same thing. And then 
+I asked another question. Well, then how does
+it work? Once Kubernetes does its thing, what's 
+happening on the actual server? And it turns out
+it's exactly the same thing that it was doing when 
+I was 18 years old and started getting into system
+administration for the first time. So I think 
+for you is the fundamentals are still the same.
+You can't get disillusioned by the words that 
+people use agentic loops cron jobs without an LLM.
+what does an LLM do and how does it work keep 
+asking those questions and I think most people
+who know that they have to maintain a system even 
+when it's finished we tend to do it manually first
+by hand step by step we understand what goes 
+into it what comes out of it and once we get
+that fundamental understanding then I think it's 
+okay to outsource it to another tool or a piece of
+automation that fundamental loop doesn't change 
+thank you all for hanging out with Thank you.

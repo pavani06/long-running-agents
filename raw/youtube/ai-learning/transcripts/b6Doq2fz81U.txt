@@ -1,0 +1,729 @@
+All right. Hello everyone. Uh we're
+going to get started now just for like a
+quick like schedule. Uh Jason's going to
+give a talk and then we're going to open
+it up to Q&A. Uh and to introduce Jason,
+he's a research scientist at Meta Super
+Intelligence Labs. Previously he worked
+at OpenAI for two years where he
+co-created uh 01 and deep research. Uh
+before that he was a research scientist
+at Google brain where his work helped
+pro uh popularize chain of thought
+prompting instruction tuning and uh a
+lot of emerging phenomena. Uh his
+research is some of the most influential
+in the modern AI world with over 90,000
+uh citations. And Jason, it's great to
+have you here today. Thanks for taking
+the time to speak with us and take it
+away.
+Yeah, thanks for the nice intro. Um fun
+to be here. Uh so yeah, I guess today
+I'll talk for I'll try to keep it not
+too long, maybe like 25 or 30 minutes
+and then we can do like a Q&A session on
+whatever you guys want. Um okay. So I'll
+talk today about three I think like
+pretty simple but maybe fundamental
+ideas to understand to like navigate um
+AI in 2025.
+So um I think if you ask this question
+of like how our world is going to change
+with the development of AI, you get sort
+of this like pretty broad spectrum of
+answers depending on who you ask. So um
+one of my quant trader buddies says like
+you know chat GBT is cool and all but it
+can't really do this stuff in his job.
+And then on the other end of the
+spectrum, you have people who, you know,
+I asked recently an ad research at a top
+at a top lab and he says he thinks we
+basically have two to three more years
+of working before AI takes her own jobs.
+So there's sort of this huge spectrum of
+how people think AI is going to play
+out.
+Um, and so I'm going to talk about sort
+of three ways of thinking about it. Um
+the first sort of trend to understand is
+basically that intelligence is going to
+become a commodity. Um and the sort of
+cost and accessibility of um finding out
+knowledge or doing some reasoning is
+going to be driven towards zero.
+Um the second is something that I call
+verifiers law. Um which is that the the
+ability to train AI to do a particular
+task is proportional to how easy it is
+to verify that task.
+Um and then the final one that I want to
+talk about is this sort of jagged edge
+of intelligence. So um both the
+capability um and the rate of
+improvement of AI on a particular task
+is going to vary based on certain
+properties of those tasks.
+Um okay so first let's talk about uh
+intelligence as a commodity. So I would
+say the way that I sort of think about
+it is there's two stages of AI progress.
+So uh the first stage is sort of when
+you're pushing the frontier. So AI can't
+really do the thing well yet. Um and
+you're sort of like unlocking that new
+ability. And you can see like um you
+know if you plot for example MMLU which
+is a very common benchmark um for the
+past five years um you'll see that you
+you gradually make progress on uh the
+performance
+and then the second stage of AI progress
+is sort of once you have an ability it
+becomes commoditized. Um so here's an
+example uh where you can see the the
+y-axis is time and then you can see the
+cost of getting a particular performance
+on MMLU uh in like number of dollars.
+You can see the trend is um every new
+year uh the cost of getting a of using a
+model with a particular level of
+intelligence decreases.
+Um and you might say like you know why
+might this trend continue? And the
+argument that I would make um is that
+it's the first time in the history of
+deep learning that adaptive compute uh
+actually like truly works. So uh if you
+look at maybe you know the entirety of
+deep learning up to like last year um we
+were in sort of uh this mode where uh
+the amount of compute you would use to
+do a particular problem would be fixed
+uh regardless of how hard the problem
+was whether it was giving the capital of
+California or a very hard competition
+math problem.
+Um but now we're in this era of adaptive
+compute where you can vary the amount of
+compute used to do your task.
+Um and this was sort of uh first shown
+uh with 01 uh which came out um more
+than a year ago now which showed that
+you know if you increase the amount of
+compute use test time to solve math
+problems the performance uh on that
+benchmark is higher.
+Um, and the reason why adaptive compute
+means that you can continue to decrease
+the cost of intelligence is that you
+don't have to keep scaling model size.
+So like if you have a very easy task,
+you can keep going to the limit of like
+how cheap of compute you'd have to spend
+to do that task.
+Um, and the second part of this is you
+can think about uh what's the time to
+retrieve uh certain pieces of public
+information. Um so you can uh so on the
+x- axis here you have like pre- internet
+era, internet era, chatbot era and then
+agents era and then you can ask like how
+long does it take to find a certain
+piece of information. Um so you know for
+example if you wanted to know like what
+was the population of Busousan in 1983
+um before the internet you'd probably I
+don't know have to drive to the library
+and then like look in a bunch of
+encyclopedias to find that. That might
+take a few hours. Um, in the internet
+era, you'd have to like, I don't know,
+search and then you kind of like browse
+the websites to find um, the one that
+actually gives you the answer and that
+might take minutes. Um, and then now
+it's basically instant to get that
+answer.
+Um, and then you can ask like a
+progressively harder piece of knowledge
+like how many couples got married in
+Busousan in 1983. Um, and then if you
+want to solve this before you have to
+like uh probably drive to if you don't
+live in Korea, you have to probably like
+fly Korea first. personally to go to the
+nearest like uh I don't know government
+library that like has like cataloges of
+this information. You'll probably like
+dig through like you know a few dozen
+books to find like that specific
+information. Um internet era it might be
+easier. You you can like search it up
+but like maybe you don't speak Korean so
+you have to like look through all the
+websites and get someone to help you. Um
+in the chatbot era it's it's a bit
+easier. And then with the agents era I
+think this is like something that could
+be found within a matter of minutes.
+Um and then you can see the trend for
+even harder things like if you want to
+ask like of the 30 most populated cities
+in Asia in 1983 sort them by number of
+marriages uh in that year and I think
+that's something that can be done now
+maybe in hours but you know pre-
+internet era it would take like weeks to
+answer that question
+um yeah here's an example so this is
+actually not a super easy question of
+like how many people got married in
+Busousan in 1983 uh 03 was not able to
+do this uh but OpenAI operator can do
+this because you have to go to this like
+database called Kosis and you have to
+like click around until you get the
+exact uh database query that's correct
+and then you can find the answer.
+Um and one way that we've tried to
+measure this um at OpenAI is via
+benchmark called browse comp which just
+stands for browsing competition. Um, and
+it's a bunch of questions where uh once
+you have the answer, it's like easy to
+verify the answer, but it actually take
+a pretty long time to try to solve one
+of these problems. An example would be
+like um here are a bunch of constraints
+for like a soccer match and then uh find
+uh the match that actually fits all
+those constraints.
+Um and uh we actually asked a lot of
+humans to to do these questions. Um and
+on average, you know, some questions
+took uh I don't know like more than two
+hours for a human to solve. And then
+many of the questions uh if you look at
+the scale, it's like a lot more
+questions humans were unable to solve in
+in two hours uh versus the ones that
+they actually solved. Um
+but you can see deep research model from
+OpenAI uh can solve around half of them.
+So pretty good progress.
+Um, okay. So, to summarize, um, you
+should sort of see intelligence as sort
+of this commodity.
+Um, Jason, do you want the, uh, newest,
+uh, code?
+I think we're good.
+Okay.
+Um,
+so, uh, yeah. So, intelligence as a
+commodity. Um, once we sort of achieved
+abilities with AI, the cost of it will
+be driven towards zero. I think the
+trend will continue. um the idea of
+instant knowledge. So anything that's
+sort of publicly available information,
+you'll be able to get access to that
+instantly. Um and maybe a few imple
+implications here. So uh one is sort of
+democratization of fields that were like
+previously gated by like kind of
+arbitrary barriers of entry based on
+knowledge. Um coding is definitely one
+like vibe coding is a great example. Um
+personal health is maybe another. So
+like in the past, let's say like you
+wanted to sort of do biohacking
+experiments, you like go to the doctor
+and then you're like, "Oh, I want to
+improve like say my nasal breathing and
+then they're like, well, you should just
+try the thing I told you." And they like
+wouldn't really help you understand like
+what you need to do to like do your own
+experiment. But now Chhat GPT can almost
+give you any information that like a
+pretty good doctor could give you.
+Um, another implication is like slightly
+higher relative value of private insider
+information. So, you know, given that
+the relative um cost of any public
+information is now a lot lower, there's
+sort of the skew where like the relative
+price of private information is now
+going to be a lot higher. So, like let's
+say you know houses that are not on the
+market that can be sold. Well, now that
+information is more valuable.
+Um and then finally, I think we're just
+going to have like frictionless access
+to information eventually. And you know
+instead of accessing an internet that's
+sort of public to everyone you'll get
+your personalized internet where like um
+you know whatever you want to know
+there'll be like a personalized uh
+website to show you that.
+Okay. Second idea uh which is asymmetry
+of verification and verifiers law. Um so
+asymmetry verification obviously a very
+common idea in computer science which is
+basically that for some tasks it's much
+easier to verify a solution than to find
+the solution. Um so here are some
+examples. So uh sudoku um very difficult
+to solve but it's easy to verify if you
+have the answer.
+Um another one is like say writing the
+code to run Twitter. Um, obviously it
+takes like a team of uh, I don't know,
+thousands of engineers, maybe hundreds
+of Elons running the company to generate
+um, the website, but to verify that it's
+working, it's like a lot easier. You
+just have to render it and click around.
+Um, competition math problems
+um, you know, this is a case where I
+would say some of them it's like just as
+easy to solve as it is to easy or hard
+to solve as to verify. Um so that's like
+a sort of middle case.
+Um data processing code I would say is
+sometimes a different case. So like um
+you know if you write if you want to do
+some script like process some data I
+think it's pretty easy to write it but
+then like if you give me someone else's
+messy code it might actually take longer
+for me to like figure out what their
+code is doing than for me to write my
+own code or to like um or to check their
+code.
+Um writing a factual essay. Uh this is
+another example where I think it's
+pretty easy to make like feasibly true
+claims but then like fact-checking a
+particular claim might be extremely
+tedious. So that's one example where you
+have like the opposite asymmetry where
+um it's easy to generate like a feasibly
+true essay but it takes a lot longer to
+verify that it's a good essay.
+Um and then this even extends like this
+idea to things like creating a new diet.
+So, I can assert that the best diet is
+to only eat bison, which only took me
+like 10 seconds to assert. But if you
+want to verify whether this is actually
+a true claim, uh then you need like a
+large sample size and you have to wait
+for like long-term outcomes and it might
+be noisy. Um so this is just a few
+examples of like asymmetry of
+verification and task where tasks are on
+the source spectrum.
+Um and you can sort of visualize it like
+this. So x-axis is how easy it is to
+generate and then y- axis is how easy it
+is to verify.
+Um so you could see let's see sudoku is
+like pretty uh let's say medium
+difficulty to generate but easy to
+verify. Twitter is obviously hard to
+generate easier to verify. Best diet
+easy to generate hard to verify.
+Um, and then you have things like sort
+of in the middle as I mentioned. Um, and
+then the interesting thing I want to
+point out here is that you can actually
+improve where like a task is on this
+plane by giving privilege information.
+So for example, you know, in competition
+math, if I provide you with an answer
+key, then suddenly checking it is very
+easy. Or if you're writing code and I
+give you the test cases as we do in
+Swedbench um then checking it also
+becomes very easy. So you can what the
+idea here is there are certain tasks
+where you can do some work beforehand
+and increase um the asymmetry of
+verification.
+Um so that brings us to this idea that
+I'm calling verifiers law or uh if the
+word law like triggers you as a
+scientist you could call it verifiers
+rule. Uh but basically the claim that
+I'd like to assert is that the ability
+to train AI to solve a task is uh
+basically proportional to how easily
+verifiable the task is. Um and the
+implication is any solvable easily
+verifiable task will eventually be
+conquered by AI.
+Um and to be a little more concrete uh
+verifiability um I would say is a
+function of these five things. Uh so one
+is there objective truth to uh what's a
+good response and what's a bad response?
+Um two how fast is it to verify? Uh
+three can you verify like say a million
+different proposed responses at once? Uh
+four is there low noise? And five do you
+get continuous reward? So do you
+differentiate only between passing and
+non-passing or do you give like the
+entire spectrum of response quality?
+Um and uh I guess like you know most AI
+benchmarks um by definition are easy to
+verify and that's like a nice
+instantiation of verifiers law where you
+you can see like okay all the benchmarks
+that we've cared about in sort of the
+past uh five years have been solved by
+AI relatively quickly.
+Okay.
+Um,
+one sort of great example of leveraging
+asymmetry of verification, encourage you
+all to take a look if you haven't read
+this yet, would be alpha evolve from
+deep mind. Um, basically they were able
+to solve these like tasks that fit this
+asymmetry of verification by just
+spending a lot of compute uh via
+sampling and like a smart algorithm. and
+it includes uh a bunch of um tasks in
+like math and like optimizing usage of
+compute etc.
+Um a sort of example of this uh is this
+uh you can come up with like math
+problems like this where it's like find
+the placement of these 11 hexagons where
+you can draw like the smallest outer
+hexagon around it and then you could see
+like something like this um clearly
+satisfies like all five criteria here.
+So it's objective. You can just plot it
+to check the answer. Uh it's scalable to
+check because it's computational. Um
+it's low noise. You're going to get the
+same result every time you check it. Um
+and it's continuous reward. So the size
+of the hexagon gives you directly like a
+measure of uh which answer is better
+than another answer.
+Um
+how the algorithm works. You should read
+the paper, but I'll just give you like
+maybe a one minute uh overview. Uh so
+basically they take a large language
+model. Um they sample a bunch of
+candidate solutions. So like some of
+them might be good, some might be bad.
+Um they grade it because they have a way
+of grading it by definition of the task
+that they choose. Um and then they take
+the best one and they feed it into uh
+the large language model for the next
+round of sampling sort of as
+inspiration.
+Um and basically once you spend a lot of
+compute and iterations doing this you
+can see uh this is just one example they
+had in their blog post that um the uh
+performance or like how well you're
+doing the task obviously increases over
+time.
+Um and sort of the smart thing that they
+did here is that um they sort of
+sidestepped so like you know in for most
+of deep learning we just care about like
+we mostly cared about generalization
+from training to test. There's like two
+forms of this one is like same task but
+unseen example and other one is like um
+unseen task. But here they pick problems
+where train and test are the same. So
+you just actually just want to know the
+answer to a single particular problem.
+Um, and that allows you to sidestep like
+a lot of these issues. Um, and so you
+kind of have to pick problems where you
+you can possibly get a better answer uh
+than what you already know.
+Um, okay. So to summarize, um, asymmetry
+of verification, uh, whenever you have a
+task, I would recommend thinking about
+where it is on this on this uh, plane of
+asymmetry.
+um verifier's law or rule states that
+anything that's very easy to verify will
+eventually be solved by AI. Um you know
+evaluation benchmarks and alpha evolve
+are some examples of this. Um some
+implications I think one is going to be
+uh that you know the first tasks that
+will be automated are those that are
+very trivial to verify. Um and then the
+second is I think one of the sort of
+nent you know areas like if you want to
+make a company or I think that is going
+to grow is like coming up with ways to
+measure things that then can then be
+optimized by AI.
+Okay, last thing uh the jagged edge of
+intelligence.
+Um yeah so if you ask like how AI will
+change the world um I think people have
+pretty different views so so you know
+this is from earlier this year but like
+uh one of my ex-colagues Boaz says that
+uh you know uh east coasters
+underestimate sort of the the magnitude
+of change that's going to come and they
+sort of like oh the current model can't
+do this they don't think about the
+trajectory as much um whereas in the Bay
+Area maybe we underestimate some of the
+like friction and time lag it takes to
+deploy some of the models that we've
+trained.
+Um, another one run who I I like and you
+should follow if you don't uh says that
+nobody should give or receive any career
+advice right now. Everyone has broadly
+underestimated the scope and scale of
+change and the high variance of your
+future. Your L4 engineer buddy at Meta
+telling you bro CS degrees are cooked
+doesn't know Um so there's clearly
+a wide range of opinion on um how AI is
+going to affect different industries.
+Um
+one sort of hypothesis that's been
+around for a long time is this idea of a
+fast takeoff. Um so it's basically like
+you know once you pass humans in like a
+certain like once you achieve this
+certain thing then you'll like suddenly
+become much much stronger uh than
+humans. So like you'll have this like
+tickoff duration where in a short amount
+of time you gain this like huge amount
+of intelligence.
+Um I would say that this is probably not
+going to happen and I will tell you why.
+Um so fast takeoff maybe this is like a
+simplistic version of their argument
+would basically be like oh in for many
+years you can't train you know GPT n
+plus1 with the AI and then in year two
+you can suddenly do it but I think it
+would be more like something like this
+where um every year you like make
+gradual progress towards um AI being
+able to self-improve so like maybe year
+zero you can't even get the codebase
+um halfway through year zero you can
+like sort of train something but the
+result isn't really amazing. Um and then
+maybe after that it like trains
+autonomously but like it's not as good
+as if you gave it to like the 10 best
+researchers you know and then like uh
+you know maybe sometimes you still need
+humans to intervene once in a while to
+get it to continue running well. Um so I
+think it's more of like a a spectrum of
+um self-improvement ability rather than
+like a binary like oh after you achieve
+this one thing then um you can suddenly
+create super intelligence.
+Um another sort of reason is that I
+believe the self-improvement rate should
+be looked at in like a per task fashion.
+So you can think of like there uh being
+like a spectrum of different tasks. Um
+and you can sort of like think of it
+like this. So there's like some jagged
+edge, right? So uh at the peaks you have
+like problems that we can currently do
+especially well like hard math problems.
+Uh some types of like competition
+coding.
+Um and then there are like also these
+valleys that are like a little bit
+weird. So like you know for example for
+a long time uh chat GBT would say that
+9.11 was greater than 9.9. Um and then
+you have things like you know speaking
+Flingit which is uh like a a language I
+think only a few hundred Native
+Americans can speak. Um I do not think
+Chach can do that well. Um and I don't
+think we'll be in this case where like
+you know you have a self-improving model
+and then suddenly you can do everything
+well. Um I think you're more likely to
+be uh in in this case on the right which
+is that like every task will have a
+different rate of improvement. So like
+maybe some tasks improve a lot because
+they're verifiable and you come up with
+an algorithm that can uh uh improve
+those tasks quickly and then other tasks
+like speaking which is maybe
+bottlenecked on like you going to like a
+Native American reservation and like you
+know documenting like what the language
+is. I don't think those tasks will
+improve as quickly.
+Um so I will say a few few heruristics
+for like how to think about how fast AI
+will improve at certain tasks. So one is
+I think AI is good at digital tasks. So
+uh I don't know like this homework
+machine comic is actually like pretty
+accurate given that it was created in
+1981 for like how AI works. But you know
+I robot obviously we don't have maybe
+we'll have that soon but we don't have
+that yet.
+Um I think the the core reason why
+development of AI has been so much
+faster on digital tasks is just
+iteration speed. Um because when you're
+doing a digital task, uh you can scale
+up compute a lot more easily than like
+you can scale up experiments using a
+real robot.
+Um another kind of obvious one is that
+tasks that are easier for humans tend to
+be easier for AI. So you can have like a
+spectrum of how hard things are for a
+human. Um,
+one sort of uh thing that I think is
+coming is sort of ability to do tasks
+that maybe humans can't do because of
+maybe fundamental limitations that we
+have as like humans with like a
+biological brain. So uh maybe for
+example predicting the occurrence of
+breast cancer is a task that is possible
+if you can like let's say if you've read
+10 million uh images of breast cancer
+you could find like the one pattern that
+allows you to predict it but as humans
+we don't like live long enough or have
+enough intention to do that.
+Um another extremely simple heristic is
+that AI tends to thrive when data is
+abundant. Um so you can think of like
+here's just a very clear example where
+um you can look at math performance of
+language models in different languages.
+Um and if you plot like the frequency of
+that language, in other words, how much
+data we have um versus performance, it's
+a pretty clear trend that like the more
+data you have, the better you're going
+to do on that task.
+Um and then maybe like a special like
+unlock or like um exception to that rule
+is like if you have a single objective
+metric then you can do sort of the alpha
+evolve or alpha zero um tactic where you
+can generate essentially synthetic data
+via reinforcement learning. So uh my
+former uh colleague Danny do he had this
+nice tweet. Any benchmark can be rapidly
+solved as long as the task provides a
+clear evaluation metric that can be used
+as a reward signal during fighting.
+Um yeah and I have like this table that
+I've uh shown before of like you can
+just sort of use these three heruristics
+to like predict when AI will be able to
+do certain things. So uh you say like
+translation top 50 languages easy
+already done debugging basic code um did
+in 2023 I would say and it's like
+something that's medium difficulty for
+humans digital easy to get data
+competition math uh hard for humans but
+digital and easy to get data so done in
+2024
+conducting AI research um hard for
+humans uh and digital but not super easy
+to get or create data. So, I would say
+maybe 2027. I'm just making up numbers
+here. Um, chemistry research is also
+hard for humans, but it's not digital.
+So, I would say probably later than AI
+research.
+Um, making a movie very hard for humans.
+Um, but digital and easy to get data.
+So, maybe 2029.
+Um, stock stock market prediction very
+hard for humans. Um, digital and easy to
+get data. So, I'm not really sure about
+this one.
+Um, translation to it. Uh, easy for
+humans that know how to do it. Um,
+digital, but not very easy to get data.
+So, I would say probably a pretty low
+chance that AI will be able to do this.
+Um, fix your plumbing. Uh, I would say
+yeah, like medium difficulty for humans,
+but it's not digital. Um, easy at data,
+not really sure. Hair dressing is
+another one that I think will be pretty
+hard for AI.
+Um, and then if you get like the really
+hard ones, like for example, traditional
+spec carpet making, very hard for
+humans. It takes like I like a team of
+people like a month to make a rug. Um,
+not digital, not easy to get data. I
+don't think they will do this anytime
+soon.
+taking a girlfriend on a date that she's
+happy with. Uh, impossible, not digital,
+not easy to get data. So, I don't think
+we'll have this. I think we're we'll be
+in business for a while.
+Um, okay. So, to summarize, uh, the
+jagged edge of edge of intelligence, um,
+I don't think there will be a sort of
+fast super intelligence takeoff because,
+um, every sort of task has a different
+capability and rate of improvement.
+Um the impact of AI will be largest uh
+on tasks that meet certain properties
+namely they're digital easy for humans
+and data abundant.
+Um okay so for implications I think uh
+certain fields will be extremely heavily
+accelerated by AI. So you know software
+development is obviously one of those.
+Um and then other fields will probably
+remain untouched like hairdressing.
+Okay great. So in summary, intelligence
+and knowledge will become fast and
+cheap. Number two, verifiers law,
+measurement is a driving factor of AI
+progress.
+And then finally, the edge of
+intelligence is jagged.
+Okay, great. I will end here. Um I have
+a feedback form. If you want to give
+feedback on my talk, I will read it. Um
+and yeah, happy to connect over uh over
+Twitter.
+[Applause]

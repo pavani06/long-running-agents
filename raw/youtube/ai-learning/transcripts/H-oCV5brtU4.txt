@@ -1,0 +1,1173 @@
+This course takes you from the basics to the advanced practical applications of
+fine-tuning large language models. Tada teaches this course. She is an industry
+leader and CEO of Lunar Tech. You'll start by understanding what fine-tuning tuning is and how it differs from
+pre-training and prompt engineering. Then you will learn about hands-on methodologies including supervised
+fine-tuning and reinforcement learning with human feedback. The course also
+includes a deep dive into parameter efficient fine-tuning techniques,
+specifically Qura, a revolutionary method that allows you to fine-tune massive models like Llama 70B on a home
+workstation. Through practical case studies using Python, PyTorch, and Hugging Face, you will move from theory
+to implementation. Hi there. In this course, we're going to take you from the basics to advanced
+practical applications. You will discover what fine-tuning is, why it
+matters, and how it differs from pre-training, prompt engineering, retrieval augmented generation or
+directs. We will break these concepts into clear digestible lessons that set the stage for hands-on experimentation.
+I'm Tatasan, co-founder and CEO of Lunar Techch with bachelor's and master's
+degree in econometrics and operations research. So advanced mathematical and statistical degree from Arasmus
+University Rotterdam. I bring more than seven and a half years of real world
+experience with Fortune 500 companies from data science, data engineering and AI engineering. And I've led multiple
+tech organizations in Italy, the Netherlands, in San Francisco and more. I've worked on high impact projects as
+leader and as an hands-on developer and AI engineer. worked on groundbreaking research, published scientific papers in
+NLP, AI, and data science to make AI accessible to everyone. Over the next
+few hours, we will talk about step by step through the fine-tuning process. First, you will learn the underlying
+methodologies, supervised fine-tuning, semi-supervised fine-tuning, and
+reinforcement learning with human feedback. Next, we will dive into the specifics of fine-tuning. We will look
+into the llama models, finetuning of such models, how to prepare your instruments, curate your data and set up
+your hardware and code environment. The highlight of the course is our deep dive
+into the parameter efficient fine-tuning techniques. We will explore chlora which
+is basically a combination of quantization and Laura a method that
+lets you fine-tune powerful models like llama 70B on home workstation. No
+billion dollar setup required. If you are ready to elevate your tech skills and dive into one of the most
+transformative areas of artificial intelligence and generative AI, join us.
+This course is more than a theory. It's your ticket to mastering the tools that are reshaping our world. For those
+aiming to become a master and professional in AI engineering, our
+newly launched AI engineering boot camp is now open for applications. In this six months, you will master the machine
+learning and deep learning advanced topics as well as the one of generative AI like large language models. You will
+build your own large language model from ground up, pre-training and fine-tuning. Complete realworld projects using
+state-of-the-art tools wherever you feel comfortable learning. Use the link below
+to apply and ignite your future as an AI leader. So without further ado, let's
+begin your journey to finetuning excellence.
+Welcome to the course on fine-tuning large language models. So this is the module as part of our comprehensive
+large language models course. And in this module we are going to dive deep into the fascinating world of
+fine-tuning a very important technique for tailoring large language models to a
+specific tasks and improving their performance. So this is going to be an involved module as part of our
+comprehensive LLM course and we are going to explore all bunch of topics to form a clear and picture perfect idea of
+what fine-tuning is and how we can do it. So we are going to combine the theory with practical implementation and
+at the end of this module we are going to conduct an end toend case studies where we will use the pietorch and then
+also tensorflow and many off-the-shelf pre-trained large language models from hugging phase in order to fine-tune
+them. So in this module we are going to discuss what is the finetuning. We are
+going to formally define it where it is allocated in our food chain of ALM development. We're going to talk about
+the pre-training versus fine-tuning. So we'll compare the two processes. And then we will talk about prompt
+engineering versus fine-tuning. What is the difference between those two? Then we will talk about the fine-tuning as a
+task. So what does fine-tuning actually do to the large language models? And then we will talk about the benefits of
+fine-tuning a large language models. Then we will talk about the step-by-step guide. So we will give clear
+step-by-step process for you how you can fine-tune a large language model. Then we will talk about different methods for
+fine-tuning large language models because there are a varieties of techniques and approaches you can use
+when fine-tuning a large language model. So we will clarify that all then we will talk about this distinction and
+differences between supervised finetuning semi-supervised fine-tuning versus the reinforcement learning with
+human feedback. So those different sorts of fine-tuning techniques. Then we will talk about three options for
+specifically parameter fine-tuning and then we will talk about parameter efficient finetuning PFT very popular
+technique for fine-tuning large language models. And finally, we will talk about the one of the most infamous fine-tuning
+techniques that you must know if you are preparing for a career in AI engineering
+and specifically in generative AI and large language models which is the Laura. So low rank adaptation for
+fine-tuning large language models. So in this part of the course we won't yet
+dive into the chlora which is the quantized version of Laura but we will lay the ground for that too because for
+once you understand the Laura and in the next module once you also understand the quantization then we can combine the two
+quantization and Laura in order to understand chlora too. So in this module
+this is what we are going to cover. This is going to be an involved module but at the end of this you will know entirely
+this process of fine-tuning large language models as a pro and you will also do it by yourself by implementing
+the learn theory into practice in Python. So without further ado let's get
+started. So welcome to the first part as part of our fine-tuning LMS module. We
+are going to explore this interesting world of fine-tuning large language models like the ones of GPT4, Llama
+Tree, Gemma etc. So our journey today will help us to understand why
+fine-tuning is important and not just beneficial but very important for specialized applications. So by the end
+of the session, you will not only learn the theory behind fine-tuning but also experience the hands-on by comparing the
+fine-tuned model to non-finet. So let's talk about the fine-tuning and
+where it is allocated. So fine-tuning is the step that comes right after the
+pre-training. It is an optional step but highly recommend it because it is not
+just beneficial but crucial for specialized applications. So fine-tuning is really important for
+adopting a generalized model to perform specific tasks with higher accuracy and
+efficiency. Whether you are a developer that is creating a chatbot, a code
+completion tool or a sophisticated AI for interpreting medical data or load
+data fine-tuning allows your model to Excel in niche that it serves. So it's
+powerful technique to enhance the performance of this general purpose language models like GPT3 and GPT4 which
+are pre-trained model. So we seen this visualization before when we were looking into the life cycle of large
+language models. We saw the pre-training then the second stage the fine-tuning
+then we saw the prompt engineering and the Rex. So in this life cycle of this advanced language models the large
+language models there are the several key stages like the pre-training finetuning prompt engineering and
+regularization where the fine-tuning comes right after pre-training. So we
+learned that pre-training involved the training of the model on this very large super large data to learn the general
+language patterns. We even compared this to this idea that the child goes to the basic school and then to the high school
+and learns all bunch of fundamentals a large amount of information. Then the finetuning is basically this process of
+helping the child to specialize in a certain area. Let's say the child or the
+student graduates from high school and then they need to choose a university or
+let's say bachelor's degree in mathematics or bachelor's degree in arts and then specialize in that area of
+expertise meaning that then they will be exposed to more specific sort of information. Similar thing is happening
+with the fine-tuning. Think of of the stage like the taking this very basic
+model and then specializing it in a specific area of expertise. Think of
+this stage of going from pre-training to the fine-tuning as in the very beginning having this rough diamond. It's valuable
+but not yet tailored for a specific task. That's the pre-trained model. And then the finetuning is this process
+where we take this rough diamond, we polish it a lot and then we are enhancing its capabilities for a
+specialized applications. So it becomes much more beautiful. It's more shiny, more fancy and that's basically when we
+uh go from pre-training to fine-tuning. we are trying to address the
+shortcomings and we are trying to specialize the pre-trained model into the specific tasks and then the model is
+tailored for performing the specific tasks. That's basically the finetuning.
+So for example to illustrate the impact of finetuning let's compare a base model let's say this pre-trained model it can
+be any model like GPT GP3 GP4 or GMA anything in a pre-trained stage not yet
+fine-tuned and then this is the left hand side what we are as base model and in the right hand side we have the
+fine-tuned version of that model imagine we have the chatbot that is powered by this base model in the left hand side
+and we are asking to the model what's your name then the base model might respond the same what's your name
+essentially pariting the input this happens because the model has not been yet trained on a specific task for
+understanding and then responding appropriately to such questions. So the model is not yet able to understand that
+when someone is asking what's your name they instead of repeating they need to
+understand that this is a question and then they need to perform this task of answering a question and then come back
+with a answer like this is my name for example and this is the answer to your
+question. So essentially in the base model the model is not yet sophisticated enough to perform the task the specific
+task of understanding and then responding to such question. Now consider the right hand side model which
+is fine-tuned to a specific task. So when we are asking to this chatbot that
+is based on a fine-tuned model what's your name? Then the fine-tuned chatbot will respond well my name is Lunar and
+I'm the chatbot of lunar tech. So this significant improvement that you can see
+the base model versus fine-tuned model is the result of fine-tuning a base
+pre-trained model where the model has been trained on a smaller specific data set to better understand and generate
+responses that fit to context. So it understands that there is a question that is being asked and also it
+understands what kind of questions is being asked and also understands how it should answer. My name is Lunar. So
+provides its name and then the chatbot of lunar tech. So that's the idea behind
+the finetuning at least at high level with this example. Let us now formally
+define what the fine-tuning is. So fine-tuning is about adjusting a pre-trained language model to excel at a
+specific task. So this means that we take an existing pre-trained model for
+example GPT3 or it can be also GPT4 GMA lama tree anything that you want as a
+pre-trained model and then further train it by tweaking its internal parameters.
+These parameters are like the model's brain connections and by adjusting them we can change how the model behaves and
+what kind of output it produces. So let us unpack this definition. So
+what do we mean by uh tweaking the internal parameters? Well, we know from
+deep learning but also from the pre-training process that we discussed as part of this course that the way
+large language models are pre-trained is that we are using this transformerbased
+architecture depending on what kind of model we are dealing with whether it's decoder only, encoder only or the main
+encoder and decoder. sections or specific LLM and then we are continuously training this model to
+optimize the model performance. We are using all sorts of techniques with the one goal to end up with a set of weight
+parameters and bias parameters that will result in the lowest loss for our model
+because this means that our model has high accuracy and is able to understand the language and also process the
+language in a meaningful and accurate way. So this end result when we are
+getting this whole bunch of billions of weight parameters and bias parameters they are the internal parameters of our
+large language model and when we are performing the finetuning it means that we are taking this base model where base
+model is basically a file that contains different parameter values the weight values and then bias values and we are
+adjusting them. So we are adjusting this weight parameters and bias parameters
+slightly such that we can change how the model behaves because in the pre-trained
+stage the values that we are getting after pre-training the LLM this values
+they represent this so-called brain connections is like in our human brain so we know exactly how we need to do
+things thanks to our brain connections and our neurons if we tweak them and adjust them artificially then the way we
+will respond respond will be different. So we once we start to get more information more specific information
+and we learn bit more we start to also respond to questions differently right in the same way we need to also adjust
+this parameters that control the way LM works such that we can change how the
+model behaves how the model understands the tasks and how it answers those
+questions for example and that's exactly what we do as part of this fine-tuning process we take the fine-tuned we take
+the pre-trained model the blades and then bias parameters that is provided from this pre-train stage. And then we
+need to perform once again a training process to adjust this weight and bass
+parameters a bit such that the model will start to behave like we want it to be on a specific data set and for
+specific tasks. So at its core, finetuning involves continuing the training of a pre-trained model on a new
+often smaller data set with specific characteristics. This process adjust the model weights to better reflect the
+nuances and this different idees of the target domain or task. So what do I mean
+in here? So it means that we basically have the pre-trained process when we are training our large language model on a
+very large general data. It doesn't contain specific data but it does
+contain general information about different sorts of areas of expertise.
+But when we introduce this specific data then we need to once again train our
+pre-trained model such that the model will learn to excel in that particular
+area of expertise and once we are done with the second stage of training of our
+LLM then the model is called a fine-tuned model. So when we talk about this weights in the context of
+fine-tuning we are referring to this internal parameters of the model once again. So these are the weights that
+determine how the model processes the input data and generates the output in exactly the same way as we do in the
+pre-training. So in both cases the internal parameters and the weights we are referring to this weight parameters
+that we have both in the pre-training process and in the finetuning process. So during the fine-tuning, we just need
+to adjust this weights that we got from the pre-training final stage to change them a bit to improve this performance
+of the model on a specific type of tasks and in a specific area of expertise
+making it more accurate and more efficient. So that's the idea behind this
+fine-tuning. And the idea is that if we illustrate it with this figure is that we take the
+base model that's our pre-trained model. We add more data in a specific area of
+expertise. And when we add this more data to it, then we are able to once again train our
+pre-trained model in this specific niche and obtain a fine-tuned model. a
+fine-tuned model that is now able to better perform those specific tasks in
+that specific area of expertise. Let us actually look into a couple of examples to make this entirely clear. So think
+about the process of a person becoming a doctor. Consider this medical
+professional who begins with their general medical training. I'm sure you know that it takes many years for a
+person to learn all sorts of things that helps them to become a doctor starting from biology to anatomy, genetics but
+also to understand these different diseases because a doctor independent what kind of specialization they will
+have they need to have this fundamental general training and knowledge. So once
+they decide to specialize they can decide from these different specializations like we do with our
+finetuning we want the model to specialize. So once a doctor has gone through this general training medical
+training and they learn all the fundamentals in place then they are ready to specialize. They can decide to
+go into the cardiology specializ into neurology, oncology related to the
+treatment of cancer and diagnosis of cancer to become a pediatrician, orthopedics, dermatology, endocrinology
+to specialize in hormones and then endocrine glands etc. or gastroantology,
+hematology, all all sorts of specializations in medicine. So if they for example decide
+to specialize in oncology, their training will narrow down to focus intensely on cancer treatment. The
+latest research in oncology to look all sorts of papers that have been published about these different cancers etc. How
+they can be diagnosed, how they can be treatment treated the different specialized treatment protocols they
+need to know and be aware of or the experimentations etc. This focused expertise will allow
+them to provide more specific and better care and specific treatment plan than
+general practitioner might offer. For instance, when we have two different models, one is the base model, the other
+one is a fine-tuned model that we have fine-tuned using the base model, but then combining this with a specific
+oncology related data. When we ask this first base model, what
+should I do about this unusual mole? Then the answer would be well keep an
+eye on it and if it change your color or the size consider visiting a doctor. So
+it kind of provides you this general answer not specific and is not also very
+helpful. Right? And then we have the fine-tuned model so-called oncologist
+assistant or chatbot and it says well it's important to monitor for the ABCDE
+signs asymmetry border irregularity non-uniform color diameter larger than 6
+mm 6 mm and then evolving shape and size. I recommend scheduling a
+dermatology appointment immediately for potential biopsy to rule out melanoma.
+So you can see this difference between general practitioner versus oncologist and the same also holds for our
+chatbots. One is kind of the general practitioner our general base model that
+is just pre-trained on the g general amount of text large amount of text for general tasks versus the fine-tuned
+model that has been fine-tuned using a large amount of specialized oncology
+related and dermatology related data. So you can see the answers difference. You
+can see how helpful the answer from fine-tuned model is versus how unhelpful the answer from the base model is. And
+that's the power of the fine-tuning. So let us actually look into another example. Imagine that you have a law
+student who has been trained broadly in a various areas of law from criminal to corporate law. Suppose the student
+decides to specialize in intellectual property law. Then what they will be
+doing is that they will dive deep into this different cases, the statutes and the legal debates that are really
+relevant only for intellectual property. So through this specialized practice and
+training they will be exposed to large amount of data specific for IPS including adopting and navigating
+complex IP issues, IP cases, lawsuits and then they will be able to offer more
+precise legal advice and then develop effective litigation strategies that will be tailored to this specific niche
+of IP. So for example, while a general legal model in this case a pre-trained
+model is like this student that has learned all sorts of laws from criminal
+to corporate but hasn't yet specialized then this general legal practitioner in
+our case general legal model will provide basic legal advice when asked about patent law. Whereas the finetuned
+model, the specialized student that has seen a lot of IP related data will be
+able to provide and deliver detailed guidance on patent filling process
+infringement nasis specific case load references etc. So to be even more
+specific, if we look at this two different chatbots, one is based on the pre-trained model that has general data
+like our uh general student that has seen a lot of different sorts of lows
+and then the other one is a fine-tuned model, a chatbot that is based on this fine-tuned model and has seen
+specialized IP related data. the base model when we are asking can I patent my
+new software algorithm would then answer if your software is unique you might be
+able to patent it it's best to consult with a patent lawyer now we have the fine-tuned model and then the answer to
+exactly the same question is to patent a software algorithm it must offer novel
+technological solution to a technological problem detail the specific ways in which your algorithm
+improves performance or efficiency You should file a utility patent application including claims that
+highlight the technical benefits and innovative steps. Let's prepare detailed documentation to support your claim. You
+can see how different the answers from this base model versus finetune model are also in this case. So these
+examples, this one and also the previous one, it show how fine-tuning enhances
+this model's responses making them more precise and practical for specialized
+tasks. The medical example showed the model giving a specific diagnostic
+advice that is really important for a potential cancer symptoms instead of
+just asking a person to keep an eye on it which is not super professional either. And then in case of the legal
+professional specializing in IP law, you can see that the base model was just saying well it needs to be unique
+something that you might have already know when asking that question versus the finetune model that provides you
+specific directions and is able to better answer your question related to the complexities of the intellectual
+property. [Music]
+Hi there and welcome back. So now we're going to compare the pre-training to the finetuning when it comes to large
+language models. So language models like GPT3, GPT4, GMA, Lama tree, Falcon, all
+of them they are incredibly powerful tools that can understand and generate humanlike text. These models are
+initially created through the process that we are referring as pre-training. Now this is a really important step when
+it comes to language models and it's mandatory unlike the pre-training the finetuning is not mandatory but it is
+actually essential when it comes to building a proper language model. So it's like the going to the high school
+and going to the university. Going to the university is not mandatory but it's actually recommendable or at least if
+you don't go to university that you instead do it homeschooling or you specialize in somewhere such that you
+can earn well you can build a career. So even if you don't go to university you still need to read some sort of books
+you need to choose a career for you. you need to whether become better in finance
+or in economics or hairdresser then you need to practice more on these different
+haircuts etc. You get the idea. So there is part about learning everything in one
+place and becoming a generalist. Usually this comes with high school with basic school and then after that you need to
+learn something new something specific to perform a specific task in a proper
+way and that's what we do as part of the fine-tuning. Now as part of pre-training
+in a more technical terms the pre-training involves training a language model on a massive amount of
+text data. And examples of pre-trained large language models are the GPT4, the birds from Google, Roberta from Google,
+and the GPT40, the recent version of GPT4 series from OpenAI, Llama Tree, uh
+also recently released by Meta AI. This list is just a very small portion of
+them. So think about the Falcon, the Pi tree, and all those language models that
+are originally pre-trained. So when it comes to pre-training a large language
+model, the pre-training involves training this language model on a massive amount of text data. And the
+criterius of those data sets that we are using for pre-training on them is that they should be a very large buried
+and versatile. So they are from different sorts of topic areas from
+biology to literature, English literature and then different specific data but not too specific. So genetics,
+biology, textbook data, news data, uh even like conversational data that is
+stored somewhere across websites. So to be more specific an example of such data
+set that you can look into to get an understanding high level understanding what kind of data is provided to the
+modern ALMs including the GPT series or llama is to look at data that is called
+the pile. So this pile data it's it is a large varied collection of text that
+contains all sorts of data. So this is an example of a data set that is very
+large. It's like over 800 gigabytes of data and this type of data sets it
+usually contains ton of book data. So ton of books collected in one place not
+just scientific books or school books but also the books like fiction etc. So
+literature and then all sorts of scientific journals, research papers that have been published across many
+years and a lot of tons of scraped data. So from different websites, not just
+Wikipedia but ton of different websites. So this is just a very small portion of
+the data set that they are using. They combine this with ton of conversational data, the language that on the street
+people would use, dialects and this ensures that they are using a large amount of so the quantity is there a
+large amount of data but also they are trying to make sure that the quality is there. So they are not trying to provide
+a garbage data as a input for an LM. And as we learned as part of the previous
+section when we were discussing this in detail this pre-training process including the data pipeline for LLMs
+that the quality is really important for this data. Usually this during the pre-training stage the data is being
+cleaned all the outliers are removed the extra text unimportant text is removed and ensure that data is of high quality
+and the quantity is there because otherwise if you provide garbage in you will get a garbage out. So that's a
+really important part for the model to learn to predict the next word in a
+sentence. Now this is also another aspect for the language models. So this is the example of the pile data. As of
+the moment that we are recording this video, unfortunately this data set has just been made unavailable, but you can
+check it out now whether it is available. And as an example of a data set that is being used by the companies
+like OpenAI, etc. This data set contains over 825 GB of diverse open-source
+language modeling data that is consisting of 22 smaller highquality
+data sets combined together. So it's really important that they mention here high quality and this comes back to the
+idea that if you do not provide highquality data to the pre-training model then you won't be able to uh
+create language model that is able to perform general tasks. All right. So that's about the data. Then let's
+quickly refresh our memory on the pre-training process that we have learned um also as part of previous
+module in detail. So during the pre-training a large language model, let's say the one based on transformer
+architecture and this one comes from the attention is all you need paper. Then the model takes in the input embeddings
+which are this secret codes that uh describe the semantic representation of the words and then subwords and this is
+of the this uh is really important and of the essence for the model to learn the semantic representation of the words
+and the text. Then we are adding the positional encoding such that the model will know where the words are coming
+from. Then we are adding the two to each other to create the final input. And then this final input will be decomposed
+into queries, keys and volume matrices. Here you can also see the weights matrices corresponding to each of those
+matrices which are really important. And then we are decomposing this uh sets of
+curies keys and values as part of our multi head self attention mechanism into
+multiple heads such that the subm models will see different sides of the words.
+So different features of the words every time in each of these heads and we'll learn the context behind the words from
+different perspective. So different characteristics of these words and in this way we will be able to learn the
+context behind the words better. So this is the idea behind multi head self
+attention in a very high level. So if you want to learn more about this transformer architecture, the
+pre-trading process, the multiattension and the different parts, please make sure to check the previous module as
+part of this course cuz in here we are just refreshing the memory very quickly to compare this back to the fine-tuning
+process. When it comes to the pre-training process, the idea behind the pre-training process is to follow
+this structured approach which we also did as part of our end to- end case study where we pre-trained our own large
+language model and we called it a baby GPT. So make sure that to check that one out too. And here what we are doing is
+that we are simply following this architecture of a large language model. Assuming that our large language model
+is based on this transformer architecture, then what we are basically doing is that we are generating the
+input embeddings from our large text. We are adding the positional encodings. We are fitting this into the multiattension
+mechanism and then we are adding residual connections, performing layer normalization to stabilize the network,
+putting this into the forward uh network. So fully connected feed forward network. Adding residual connections
+layer normalization. Doing this in the blocks to add more complexity to our neural network. Then taking the keys and
+then values providing this as an input to the multi attention in our decoder combined with the queries from our
+decoder. And then here we have this next part where you can see the output
+embeddings the positional encoding similar to the encoder part. And then here with the difference that we have
+mask multi attention in the decoder part to ensure that the model is not picking into the future words when predicting
+this next word. And then we are doing a similar thing like I just mentioned taking the keys and the values from the
+encoder combining with the queries from this mass multiattension from the decoder part and then fitting it into
+the multiattension then adding residual connections layer normalization straightforward network etc. up to the
+point of reaching the output of the model, the raw probabilities, the unnormalized scores, then we are
+performing this step of computing the logits and then performing the soft max
+transformation. This is in the natural the architectural transformer model and most of the modern ALMs in the
+pre-training stage they look like to this transform model in one way or the
+other or maybe adjusting it a bit the coder only or or encoder only or both of
+them are specialized and then the essence of this is basically going back
+to the fundamentals of deep learning which is performing this forward passes computing the output. So predicting the
+next word and then comparing it to the actual word. So the actual value of y
+and then computing the loss that we are obtaining taking the loss performing our back propagation computing our gradient.
+So first order derivative of the loss function with respect to our model parameters. So the weights and bias
+parameters taking this and providing us an input to our optimization algorithm
+is GD GD or the W RMS prop doesn't matter. So you can pick it for yourself.
+And then taking these gradients using them to update the model parameters and performing our backward pass. And the
+cycle goes on and on until our transformer model reaches to the maximum
+number of epochs or any other stopping criteria. And we end up with bunch of
+values for our weight parameters and our bias parameters which form the final
+model. So when we are saying that the model is pre-trained, we mean that we
+finish the training of transform model at some point and we end up with a file that contains the different values for
+our weights and for our bias parameters. And given that we are dealing with large language models, this is usually a file
+that contains billions of those values. So billions of parameters which we are also referring as internal parameters
+for our large language models. So that's basically the idea behind pre-training
+process and the goal in the pre-training model is to generate this probabilities
+for the next word and an example of this is for example if we have the cat set on
+the and then we we want to predict the next word then the model will generate probabilities for each of the words that
+are candidate words in our corpus and many of them will have a zero probability. So when the next word
+cannot be for example a cafe or restaurant etc. But when the word is for
+example met then there is a 70% chance that that's the next word. The word
+table has a 50% chance to be the next word and then the floor the 10% probability the chair 5% probability and
+the sum should be 100%. So based on this then the moral decides that the next
+word would most likely be the word met such that the sentence becomes the cat
+set on the met. So this is the idea behind the pre-training process. If you
+want to learn more about the fundamentals of language models, this idea of generating the next word, please
+make sure to check the previous modules as we are discussing this in detail. But this is just for a quick refreshment of
+the pre-training process. When it comes to the resources, the pre-training is highly resource intensive. So
+pre-training requires significant computational resources often using powerful GPUs. So this way we can then
+create models like GPT4 that are very powerful. But this also means that you
+cannot just do that at home. It's not feasible to train such large language models at home because it requires a
+specialized hardware. It requires a significant amount of computational power. So pre-training is one of the
+most resource intensive parts of the entire ALM life cycle. That's why you
+can hear that people like Sam Alman, CEO of OpenAI or many other CEOs from this
+big tech companies that are running the AI race that they will continuously talk about Nvidia, the uh different chips and
+processors, GPUs, and then millions if not billions of investments when
+training their large language models because the pre-training requires significant computational resources
+often using this powerful GPUs. This is why creating models like GPT4 is just
+not visible at home. It requires specialized hardware too and a considerable time to invest when
+training such models. All right. So now when we're clear on the pre-training, we
+have refreshed our memory. We are ready to move on to the fine-tuning stage. If any of those parts seems unclear, the
+architecture of the model, the self attention mechanism, multiattention, this different matrices or predicting
+the next word idea, please make sure to check the previous modules and the previous part of this boot camp because
+we here have just refreshed our memory on the pre-training stage. To truly understand the finetuning, you also need
+to understand in a proper way the pre-training process and the previous modules as part of this course will help
+you to do so. All right, so let's now talk about fine-tuning the specializing of the large language model. So after
+pre-training, the model can perform general language tasks, but it might not excel in specific domains. And this is
+where the fine-tuning comes in. Finetuning involves taking this pre-trained model and further train it
+on a smaller domain specific, sometimes your own data set to specialize it for a
+particular tasks. So examples of such a process is CH GBT. So CED GBT is a
+fine-tuned version of GPT4 model at the moment optimized for generating
+conversational responses. Now this really important the pre-trained model GPT4 is for example not optimized for
+generating conversational responses unlike the chat GPT which is the finetuned version of the GPT4
+at the moment also GPT4.0 O that is able to generate conversational responses at
+a high quality. For example, if we compare the base pre-trained model, the
+one from GPD tree with retail customer support expert that is a fine-tuned
+version of the GPD3. So someone took lot of customer support data and use that to
+fine-tune this GP3 model. Then here are the responses that the two model will
+provide. The GPD tree will take the question. The prompt will be I haven't received my order yet. Can you help? And
+then the answer from the plain pre-trained GPT3 model would be sure I can help you with that please. So here
+is an example of a pre-trained GPD3 model from OpenAI versus the fine-tuned
+version. So taking the pre-trained GPD3 model and then specializing it in a
+customer support and making a retail customer support chatbot. So this is the
+finetune model that is based on a ton of customer support related data. So you
+can see in the left hand side that the prompt is I haven't received my order yet. Can you help? And we are providing
+the same prompt to the finetune model the customer support chatbot. So the
+base GPT3 model will then provide us the answer. Sure I can help with that.
+Please provide your order number and I will look into it. While the fine tune model will say I apologize for the delay
+in your order. To check its status, please provide your order number and email address. You can also check your
+package using the link in your shopping confirmation email. If you need further assistance, please let me know. So you
+can see what a difference it makes when we have the retail customer support
+expert, the chatbot finetune model providing the answer versus the plain GPD3 model. you can see the uh detail
+the quality of the answer and how from the customer point of view it would be satisfactory to see the the completion
+so the answer that comes from the retail customer support expert versus the plain GP3 model and that's the power of
+fine-tuning a large language model. So let's now quickly talk about some
+technical details before getting into the uh specific uh comparison between
+the fine-tuning and the pre-training. So when it comes to the finetuning and
+the technical details behind it, it's really important to understand the difference between the weights and the
+bus idea uh when looking into the finetuning process and pre-training process. So let us quickly talk about
+the technical details behind the finetuning before diving deeper into it.
+So during the pre-training uh we are generating these different weights and we end up with this optimal weight
+parameters billions of those parameters for the internal model. When it comes to
+the finetuning similar to the pre-training the finetuning involves updating this model weights and bias
+parameters but with a focus on a specific task. So we are using a smaller
+data set that is specialized data using this idea that it should be specific it
+should be smaller and this data set is relevant for our specific task or domain. If we want in a legal area the
+specialization then we need to provide more legal data and more specific data. If we want the model to be specialized
+in a IP law, so intellectual property law, then we need to provide more of this type of data. Or if we want the
+model to answer a customer support related questions, then we need to provide this type of question answers
+set to the model. We will dive into the specifics in in detail later on. But for
+now, let's keep the focus on the technical side. So when it comes to the uh weight updates, the pre-trained
+weights serve as the starting point. So during the finetuning, these weights
+that we got from the pre-training process are then adjusted one more time.
+So they're further adjusted to minimize the errors on a new specific data. So
+during the finetuning, we are taking the weight and bias parameters and all these
+billions of parameters from the pre-training stage. the final model that
+we got from the pre-trained stage and then we need to continue the update of
+this weights. In the finetuning we are updating the model weights and biases
+but with a focus on a specific task. So if we have a specific data so we are
+changing the data the optimization process changes. So every time we need
+to predict the next word or we need the model to perform a specific task. That means that the error associated to this
+weights will also be different. And now this time the goal is is to ensure that the model continuously updates this
+weights that was provided from pre-trained model such that it will minimize the errors on a new test
+specific data. So the data will be smaller, more specialized, but this
+process still stays the same, continuously updating and adjusting the weight parameters to minimize the loss
+that the model has on this new task specific data. So this is the process of
+further tuning of these parameters, hence the name fine-tuning. And this fine-tuned model will then result in a
+set of weights and bias parameters that results in a smaller error smaller loss
+for this specific new data that we have provided to it. Couple of things to keep in mind is that we are calculating this
+loss. So calculating the error that the model has on this test specific data
+which indicates how well the model is performing on this new data. Then using the techniques like gradient descent,
+admv RMS probe, we want to minimize this loss further refining the model's weights and biases. There are a couple
+of things that we will discuss in detail once we go through the process step by step which involves the amount of change
+that we need to apply to our weights because the idea is that that we don't want to change the weights a lot as the
+pre-trained model provides us a lot of important information that we don't want to lose and at the same time we also
+want to uh change them at some degree and this can be controlled by learning
+rate from the optimization algorithm. But we will talk about these details when we will discuss the technical
+stages of conducting a fine-tuning step by step. For now, just keep in mind that
+we are changing the weights that we take as starting point from the pre-training
+process and we will change them until we minimize the loss of the model for that
+specific data that we use for the finetuning. Now this is in the nutshell the difference between fine-tuning and
+pre-training. So we will dive into these different parts how you can fine-tune it. What are the technical details
+behind them once we approach the finetuning step-by-step process but for now those are at high level the
+differences between fine-tuning and the pre-training. Let's now compare the uh
+prompt engineering to the finetuning. Let's compare fine-tuning with prompt engineering. So prompt engineering
+involves creating specific inputs to get the best responses from the model without changing its core structure.
+When it comes to prompt engineering, this is something that I'm 100% sure that all of you have already experienced
+in one way or the other. If you have used chat GPT, then you have definitely done prompt engineering. You have
+provided the prompts to the chat GPT and then it created back an answer for you. While the fine-tuning on the other hand
+it most likely if you are in this course that you haven't yet done the finetuning. Fine-tuning is the changing
+of the model itself making it more specialized and improve it so that it
+can understand and respond better based on its specialized training. So prompt
+engineering involves crafting the specific prompts or instructions or
+inputs to elicit this desired responses from a pre-trained models without
+additional training. You just go to the application, you provide the prompt and then you are getting a feedback. It
+leverages the models existing knowledge base and capabilities. You are not
+adding any extra data, no specialization, no extra tuning, extra resources, just plain improving your
+quality of the questions. While the fine-tuning is not like that, it does
+involve resources, some knowledge that you need to apply in order to perform the finetuning. You know, when you go to
+Google or YouTube and type something into the search box, you're trying to get exactly the information or the video
+that you are looking for. You want to phrase your question in a certain way
+such that you can get the best answers, right? So that's essentially the prompt engineering. It's all about how you ask
+a question to get the best answers out of the system like a search engine or a
+chatbot or in our case an AI application. So whether you are typing something into
+Google, asking Siri question or even deciding what to type into a chatbot on
+a website, you are engineering the prompt, hence the name prompt engineering. A great example is when you
+interact with chat GPT. So you might have noticed that the way you phrase your question or prompts, this can
+significantly influence the type of responses you will get. So many people are even saying that if you use the
+GPT4, but combine this with bad prompt engineering practices, so you just
+provide poor prompts, then you might get worse response than if you were to use
+GPT2, but with a high quality prompts. So it's really important what kind of
+questions you're asking and how you formulate it. In here you can see that when I'm asking what is the weather like
+in Amsterdam that the quality of the answer is really different. Let us
+actually hear two example. So you can see that when when I'm asking what is the weather like then the answer is
+could you let me know which specific location you are asking about for the weather update. While when I'm
+specifying the location as well and also the date so I'm saying what is the
+weather like in Amsterdam today. You can see that I'm getting a direct answer. I'm getting that today in Amsterdam the
+weather is characterized by scattered showers with pass and clouds. The current temperature is around 64
+Fahrenheit with a high expectation to reach about 73 Fahrenheit. It provides
+me humidity level. It provides me information about the wind in which direction it's blowing, the speed of it
+and what I can expect from the evening which will be mild and cloudy atmosphere. So you can see that
+dependent on the question quality the prompt quality the answer from the AI application will be different. So the
+same in here you can see when I'm saying translate this sentence into French hello how are you today then the French
+translation for hello how are you today is bonju etc etc. But when I'm saying
+translate the sentence into formal French and then I'm saying the sentence
+then you can see that the answer is slightly different because in the first one although I might my intention my
+intention might have been to get the sentence in a formal French but the
+prompt that I formulated it didn't convey the motivation that I had. So you
+need to specify those details. You need to also provide examples like in here when I'm saying try to translate this
+dialogue into formal French suitable for business setting. So I'm specifying the
+setting what kind of language should it be used and also providing an example like if the person A says this then the
+person B is expected to say that. So in this way I'm teaching the model without
+doing training etc etc without spending resources just by using the quality of
+my prompts and improving that quality reaching better results and that's the idea behind prompt engineering. So in
+this way by shaping the questions to guide the AI towards the kind of answers I want I can get highquality answers
+without spending resources and without requiring knowledge. So it's simple.
+It's something you are already familiar with. I'm sure you have used it. And it doesn't need any special data, specific
+data or text skills. It's about being clever with words and instructing the
+model to do exactly what you want it to do by providing examples, by providing all the details, spelling out all the
+minor characteristics that you want the answer to satisfy. It's a simple adjustment in how you formulate your
+questions and how you ask something. but makes a big difference in what you will get from the model. So let us now
+quickly lay down all the pros and cons of prompt engineering versus fine tuning. So let's start with the pros of
+the prompt engineering. So when it comes to the first benefit of prompt
+engineering is that that it doesn't require data. So you get to work with what the AI already knows. So what the
+underlying model already knows. So there is no scramble for new data. You don't need data engineering skills, data
+science skills. It's super handy, especially when gathering fresh data is tough or privacy issues are concerned
+even if you have the knowledge to gather that data. So the next benefit is the lower cost. It's pretty cost effective
+as you are not spending on retraining fine-tuning the AI model. Just use
+what's already there. You just need to tweak the inputs a bit, formulate it a
+bit, add some more text and examples. So, be a bit more creative with your words to fine-tune the outputs without
+breaking the bank and without actual fine-tuning process. Next up is the accessibility. This one is a huge
+advantage for prompt engineering site because anyone can do it. You don't need to be a techie, techsavvy person, a data
+scientist, a researcher, or a programmer. If you can ask just a clever
+questions, you can use the chatbot effectively and go a long way. Another
+advantage is the accessibility. So anyone can do it. You don't need to be a techsavvy person or the scientist or
+researcher specialized in AI in order to improve the quality of your questions.
+So if you can just ask a clever questions, you can just use that model effectively.
+Next advantage is the dynamic data integration. By using the smart techniques like the retrieval argument
+generation or the regs the model can pull into the latest info on the fly
+keeping the conversation fresh and relevant. So if you can combine this idea of base model with a rag or rag
+based model then this would be ideal because sometimes we want our answers to
+not just be relevant but also be up to date because it can be that the answer
+is still correct. the answer that is provided by the model but it's based on the time and relevant for the time being
+when the model was pre-trained but not up to date because if the model was pre-trained for example last year and
+you are using it now then the answers will be correct for the previous year but it can be that there was a change in
+the answer and you want to get the most up-to-date information and that's where
+the systems like rack are very useful and we will be dedicating an entire section for this part and for this
+technique to dive deep into the Rex and to practice it. But for now, just keep in mind that this is a huge benefit from
+prompt engineering. By trying to ask the questions in a clever way, you can get the most up-to-date information if the
+underlying model is supported by rag, keeping the conversation fresh and relevant. So, next up, let's talk about
+another advantage of prompt engineering, which is the speed and efficiency. So if you need a quick answer, the prompt
+engineering doesn't make you to wait for it like we do it with fine-tuning. So it's like asking a friend a quick
+question and if you formulate in a good way then you can get an instant response
+which is perfect for realtime customer service or lively chatbots. So if you
+want to every time specialize your model then you need to perform fine-tuning.
+But this is just not possible. If you want to get the answer instantly, if you
+want to get the results instantly because fine-tuning takes time, you need to gather your data. You need to
+understand what you need to do. You need to pick the technology, obtain the resources, then perform fine-tuning, put
+the data into its place, whether it's batching or streamlining, then finally get an answer. after productionalizing
+the model. So an entire headache that can be avoided if you can ask the questions in a clever way and that's
+still a possibility. So you don't need to implement the finetuning right off the bat. Now let's talk about the cons
+of prompt engineering that might motivate you to go on to the bit more difficult friend of it which is the
+finetuning. So the first limitation of prompt engineering is the limitation by
+data fit. So what do I mean by that? So you are stuck with what the model
+already knows. If it hasn't learned, for example, the latest Tik Tok trends, then
+it might not keep up with the conversation about the viral content. So if you go ahead and ask what are the
+latest trending hashtags on X, then unless the model was trained very
+recently, then it will just provide you old trending hashtags and that's something that you don't want. So for
+those cases then the prompt engineering might not be very handy. So next up we have the memory limitation.
+So there are only so much that the model can handle at once. Asking for too much
+information in one go might overwhelm the model and it will limit how deep your answers will get. There's also a
+higher risk of hallucination. So if you formulate your prompts wrongly or
+inaccurately then the model might start making stuff up. It's like playing a game of telephone. The end result can
+sometimes be way off than the initial input because it goes through all these different stages and then combined with
+the wrong prompts, then you are getting the wrong response. Next up, we have the
+dependence on a moral quality. So everything hangs on how good the underlying AI model is when it comes to
+prompt engineering. Dependence on a moral quality is a big disadvantage when it comes to the prompt engineering.
+So if the quality of the underlying model is bad, then the output that you
+will get will be also bad quality. So a poorly pre-trained and fine-tuned AI model won't do the wonders that you can
+expect. So no matter how clever your prompts will get, if the underlying model is bad, then you won't be able to
+get good answers. The idea is that prompt engineering will be improving the
+quality of the responses that you will get as you formulate right questions assuming that the underlying model is a
+good one. But if the underlying model is a bad one, then independent how much you will improve the quality of your
+problems, the answers that you will get won't be of high quality. So let's now discuss the benefits and the demorates
+of fine-tuned models and why we need to do finetuning in the first place. So first up, we have the specialized
+knowledge. So fine-tuning allows the AI to become highly proficient in a
+specific area such as interpreting legal text or diagnosing medical images,
+specializing in customer question answerings, etc. So customized knowledge is the number one benefit of fine-tuning
+a model. Next up, we have the reduction in errors. So fine-tuning significantly
+reduces the amount of errors that the model will make. It enhances the reliability of the model for critical
+tasks that require high accuracy. So you can expect that the fine-tuned model at
+least if the finetuning has been done properly that those model will provide much more accurate responses than the
+other models would do. So next up we have the enhanced adaptability.
+So a fine-tuned large language model, it acts as this expert in its domain in the
+specific task that it has been fine-tuned to do. So it provides more accurate responses without the need for
+the constant adjustments. So you don't need to apply too many of this prompt
+engineering steps and too much info to the model to provide you a good
+responses. So next up we have the long-term cost efficiency. So while there are initial
+investments with fine-tuning, fine-tuning makes the AI much more efficient, reduces the computation
+resources that is needed over time and saves the money in the long run. So the
+initial investment might seem large, but in the long term you will see that it just pays off. So let's now talk about
+the demorates of finetuning. So what are the cons of finetuning? So first up we
+have the resource inensive nature of it. So fine-tuning requires substantial computational power and extensive data
+sets which can be costly and difficult to obtain because it costs you money to hire a data engineer to collect data and
+prepare for it or a data scientist to do that job in this highly competitive
+market when professionals like this cost a lot of money. Also it requires a lot
+of GPUs to fine-tune a model. not as much as the pre-training but still some
+money to do finetuning unlike the prompt engineering that doesn't require any of those. It also requires knowledge which
+sometimes costs a lot of money and requires other sources of investment
+including the investing in the programming languages and many licenses or libraries that you need to use or
+environments you need to use etc. So this all can be costly and very difficult to obtain. And then next up we
+have the high upfront costs. So kind of related back to the idea of resource intensity. So the initial setup
+including the data collection, the web scraping, model tuning, it involves significant financial investment that
+not everyone has unfortunately. So next up we have the need for technical expertise. fine-tuning. It
+requires advanced technical skills for the setup and for the optimization of large language model that often requires
+specialized people like specialized data scientists, AI engineers, machine learning engineers, data engineers such
+that they can in a a proper way fine-tune the model. Finding this type
+of experts is really difficult. Not just that it costs a lot of money to find them and pay them, but also very
+difficult to obtain them. Fine-tuning requires lot of knowledge like the idea
+of the different strategies you can use. Choose the right fine-tuning topic and fine-tuning model to apply the
+fine-tuning process in a proper way starting from the data collection. Cleaning the data, putting it into the
+right format up to the point of fine-tuning and then productionalizing the finetune model. It all is based on a
+large amount of technical expertise and finding them it is costly but also very
+difficult. Next up, we have the scalability challenges. So, fine-tuned AI models, they excel within their
+specific niche, but may struggle when applied to new areas, often requiring
+this retraining of the model and repeating everything once again for this new specific task or new type of domain
+of expertise, which adds time and then cost of course. So unless you are a
+startup that is funded or you have your own personal funds for fine-tuning every
+time for these different sorts of tasks, it will be quite challenging for you to afford these different fine-tuning
+processes for different tasks. So choosing between prompt engineering and fine-tuning depends really on your
+specific AI needs but also resources that you got. If you have funding and you know that prompt engineering won't
+solve your problems and you really need to specialize in specific area of expertise and you want your model to
+perform specific tasks then the finetuning will be your choice. Uh and
+when it comes to the underlying model being already good enough and you don't have the resources so you need to work
+on your prompts quality then prompt engineering will be your friend. Depending on your specific case and your
+resources, you can choose which one would be more appropriate for you. All right, so we are done with comparing the
+prompt engineering and fine-tuning. We are ready to move on to next topic which is the actual fine-tuning process and to
+start to get bit more involved into the technical details behind fine-tuning a
+large language model. So bye for now and I will see you in the next session. Hi there and welcome back to another
+session about fine-tuning a large language model. In this session, we are going to talk about the step-by-step
+process behind fine-tuning LM. Finetuning is a powerful technique to transform a generalpurpose language
+model LLM into a specialized tool. Much like the doctors who specialize in
+oncology or dermatology after learning the fundamentals in medicine, it leverages the knowledge gained during
+the pre-training step on a massive text corpora and adapt it to specific tasks.
+So let's now dive deeper into each of those steps that form this entire process of fine-tuning a large language
+model. First up, we have the objective. So we need to clearly define our
+objective for fine-tuning. So clarity is really the key here. Be extremely specific about your goals. For example,
+do you want your ALM to accurately classify customer reviews as positive or
+negative or to perform sentiment analysis? or you wanted to generate creative marketing copy in a particular
+brand voice or you wanted to answer complex questions about medical diagnosis like domain specific
+knowledge. Another one is measurable goals. So you need to set the goals measurable. So
+establish a metrics to guide the success for your fine-tuning process. Examples include accuracy in sentiment analysis
+tasks or human evaluation scores for generated text or performance on
+relevant benchmark data sets. So we are going to dive deeper into this
+different tasks that you can perform this downstream task as well as the metrics that you can use depending on
+the task that you want to achieve with your finetuning at the later stage in a
+separate section as part of evaluation of large language model. But for now keep in mind that independent what kind
+of task you want to do for that task you need to get the clear objective and you
+need to find metrics to measure the performance of the model. So have you achieved your goal with fine-tuning of
+your model or not? For that you need a specific measurable goal and metrics to
+guide that process. So next up we have the gathering and preparing the data. So
+first up is the quality over quantity. Focus on acquiring highquality data that
+mirrors the real world scenarios your model will encounter. Especially when it
+comes to fine-tuning, the quality of the data is of utter importance. If during
+this pre-training given that you have a ton of data, some bad quality data might just squeeze in and not affect the
+performance of the overall model. During the finetuning, even the small portion of lowquality data might affect the
+performance of the model. So be very careful with the quality of the data.
+Ensure that it's collected properly. It is reliable. It doesn't contain outliers
+etc. So pretty much following the process of the data pipeline for LMS that we have learned as part of previous
+module. So clean the data. Data cleaning is really important. Remove the errors.
+Remove the inconsistencies, the irrelevant information, any outliers that you have identified as part of the
+quality check from the previous step. For instance, if the fine-tuning for the
+sentiment analysis needs to be done, then correct the misspellings or grammatical errors, filter out the
+natural reviews that do not contribute to the learning and leave the positive reviews and the negative reviews. It's
+really important to remove the errors, inconsistencies, outliers and irrelevant
+information. So if in the previous step you have performed your quality check, this step should be quite
+straightforward. And then dependent on the task. For example, if you are doing fine-tuning
+for sentiment analysis, meaning that you want to for example classify a text
+being positive or negative review. Then you need to correct the misspellings.
+You need to remove the grammatical errors. You need to filter out the natural reviews that do not contribute
+to the learning. So if needed, you also need to do annotation. So for certain
+tasks like in sentiment analysis you might need to label or annotate your data. For example in the case of
+figuring out whether the review is positive or negative. So in sentiment analysis we might need to label each
+review as positive and negative or natural if needed such that we can guide the model what is correct and what is
+not such that once we do the finetuning the model understands this review should
+be considered as positive meaning if you have specific text so for example a
+review that says I absolutely love this product it exceeded my expectation then the annotator should put there a
+positive If the product is okay, nothing special, so the review is that, then the label
+should be natural. Otherwise, if it says, I'm very disappointed with this product. It broke after one, I suppose,
+usage, then the label should be negative. And if you're wondering who should do this annotation, well, this
+depends. Some people have a highly accurate models that can perform this labeling for them in the first place,
+like a classification models. And some people when they have resources then they can ask the humans to do the
+annotation unless the data is so large that they don't have that that option is not visible. So next up you need to
+choose the pre-trained model. Consider your specific needs. What kind of problem you are trying to solve? What
+kind of applications you are trying to build for general language tasks models
+like GPD3, GPD4, GPD 4.0, O lama tree words they are all excellent choices. Of
+course this really depends on what kind of problem you're trying to solve. So specific to your problem you might go
+for decoder only architectures or encoder only architectures or encoder decoder architectures. And then
+depending on that you will then go with different pre-trained llabs. And when it
+comes to the uh specialized domains, so let's say you are trying to build a
+medical chatbot or a legal chatbot, then you might want to explore models that
+are pre-trained on that specific relevant data because the model pre-trained model that is pre-trained on
+relevant data, let's say legal data, then this will definitely result in much
+better fine-tuned legal model and legal chatbot than the general GPD3 or bird.
+So next you also need to decide on the architecture and that is what I was just referring when I said the decoder only
+encoder only or decoder encoder or specialized. So most large language models they are based on the transformer
+model. So that's something that we have seen before. We learned about this architectures the different sorts but
+also we saw this transformer architecture consisting of these different layers starting from the self
+attention. So multi head self attention then adding the residual connections the
+layer normalizations the feed forward network and then providing this keys and
+then values onto the multiattension from the decoder part where it is combined
+with the cur is coming from the mask multiattension and so on. These layers enable the model to capture
+the complex patterns and the relationships within text data. So it's really important to go for the LM that
+you know that is most likely is of high quality and that is usually the transformerbased LLMs.
+So also the size matters. Large language models often have greater capacity but
+require more computational resources. So try to balance your requirements with available resources. A fast repository
+of pre-trained models is the hugging phase. So if you are looking for an open source model, try to check the hugging
+phase cuz there they have so many options in their intuitive UX. There you
+can choose for Metas LMS, you can choose for the 8 billion version or the 80
+billion option. And then you can choose for the Gemma LM. You can also go for
+the open AAI open-source large models. So the sky is the limit here. There's so
+many options that you can choose from. As long as you know how you can choose the right language model, that would be
+a great way to start your finetuning process. If you are looking for a guide
+on how to choose the right large language model, then make sure to check the section where we are talking about
+choosing the right LM. We have an entire session dedicated to this. So in here
+you can see that I'm looking at the documentation provided by meta specifically for llama tree that has
+been recently released. So on April 18, 2024 to be more specific. So a couple of
+months back and you can see that they are providing a whole bunch of information including the code that you can use to implement it in PyTorch and
+lot of supporting documentation how you can update the weights the B parameters and how you can implement the model.
+Next up we have the actual fine tuning setup. So depending on the test that you
+want to perform using this fine tuning you might add test specific layers to the pre-trained large language model.
+For example, in the text classification, you might want to add a linear layer on
+the top of the transformer layers to produce this class probabilities such that once you generate this logit and
+then perform your softbox transformation, you can generate probabilities that say for this class
+the probability is that for this class the probability is that and then based on that you can then select the answer
+with the highest probability in terms of the classification. So depending on the
+specific task, you might need to add extra layers to pre-train the model to adapt it to the network's needs. So
+depending on the specific task, you might need to add extra layers. This neural network, fully connected neural
+network layers to the pre-trained model to adapt it to your needs. For example,
+for text classification task, you might want to add a linear layer on the top of
+the transformer layers to produce this class probabilities. Like in here, you
+can see that we're trying to add this dense layer. And for example, if we want to perform sentiment analysis, then this
+would be highly appropriate. We might need to add this dense layer on the top of our base transformer model to create
+this new architecture for our specific case. And then when it comes to the calculation of loss function, so to
+measure how good our model is for our specific sentiment or classification or
+any other task, we need to measure this using a metric and the loss function will then measure this discrepancy
+between the modus predictions and the ground true labels. So the labels that we know they are true and then we can
+calculate this we can calculate this loss and the common loss functions for finetuning include cross entropy loss
+for classification or mean square error for regression tasks or the mean absolute error the root mean squared
+error and many others. So the loss function is really important. We will talk about this one when discussing the
+evaluation of large language models. But for now what is relevant is to keep in mind that when it comes to the
+fine-tuning process like in case of the pre-training we still need to perform this evaluation understand how well the
+model is doing. But this time we want to know specific for our case. If it is
+classification then we need to use classification matrix in order to understand how well the model is
+performing the classification task. So when it comes to the computational power, you need to ensure you have
+access to sufficient computational resources. So GPUs or TPUs for efficient
+training. Now this one is really really important. Ensure that you have access
+to powerful computational resources. So graphic processing units or the tensor
+processing units which is really important for efficient fine-tuning especially when dealing with large
+models like the ones coming from meta the ones coming from open AAI those
+models even though there are different sizes available there so 8 billion or 8 billion or others even for the smallest
+one you need quite some computational power at least some GPUs so examples of
+GPUs are the Nvidia's RTX 3090 key or the one of the 800 that is also highly
+popular across the industry for the commercial use and those GPUs or the
+TPUs coming from Google tensor processing units or the TPUs the Google's transor processing units
+available on the Google's cloud those will be essential for you to fine-tune
+your large language model so experiment with different values for
+your learning rate like when you are performing ing your optimization process like in case of pre-training. So next up
+you need to perform hyperparameter optimization. Experiment with different values for your learning rate. So how
+quickly the model is learning. The bed size is another parameter that you need to keep in mind. So the number of
+samples processed at once. So next up we have the training process. This is a really important part when it comes to
+finetuning process and is the improvement of the model weights and
+bias parameters. the internal parameters of our large language model such that we can optimize it for our specific use
+case for our new data. So imagine you have your pre-trained model, you have
+selected it, you have set up everything in place and now you have this final weights and bias parameters and this new
+data. So you will then start with this parameters that you have as your starting point from pre-trained model.
+You will then train your model with these parameters on your new data. And
+what the model will then need to do is to gradually adjust this weights and the
+bias parameters to minimize the loss function. So use algorithm like soic
+gradient descent or Adam or AdamW. So an optimization algorithm in order to
+update the model weights and the bias parameters using this optimization algorithm to minimize the loss function.
+For this specific new data, we are pretty much repeating the same process
+as with any other neural networks. Forward pass back propagation, computing the gradients, using this as an input
+for our optimization algorithm and then updating the weights and bias parameters. Only now during the
+finetuning we start from this state where we have the certain values for our
+weights and bias parameters and we have a new data small data and specific data
+and we want to minimize the error that the more is making minimize the loss
+function which involves back propagating this error through the network and adjusting the weights accordingly using
+this learning rate for our fine-tuning process and then updating this weights
+and bass parameters again. So fine-tuning typically involves
+smaller learning rates and bed sizes compared to the pre-training. This one
+is really important and I I cannot express enough how important it is to
+ensure that you don't mess up with the pre-trained model and that you lose all
+the important information that is in those weights and bias parameters because after all it's not for nothing
+that we are using a pre-trained model. So pre-trained model if they have been pre-trained properly like the GPT3, GPT4
+or llama tree they have been trained on massive data a large amount of vers high
+quality data using a lot of computational power and knowledge things
+that you most likely won't be able to replicate at home and there is also no need for that. You have the pre-trained
+model that is able to perform these general tasks and your goal is to not
+completely change those parameters and this parameter values that is provided from pre-trained model but instead to
+slightly change them such that they will be tweaked for your specific use case.
+So you don't want to change the model parameters entirely but instead you want
+to just small amount that you want to adjust such that the model is performing
+well uh on this new task on your specific task. This helps you ensure
+that you are making use of the pre-trained model. So by using a smaller
+learning rate you will then ensure that the information in the pre-trained model is not being lost. This is really
+important. And by controlling the learning rate, you can then control how much information you will keep from
+pre-training stage versus how much information you will add from the finetuning stage. So fine-tuning will
+then typically involve much much smaller learning rate and the batch sizes also
+smaller compared to the pre-training. And in this way we are preventing the model from overfitting to the new data
+and then entirely forgetting what it learned during the pre-training test highly costly process. So finetuning
+generally requires smaller learning rates compared to the pre-training to prevent this drastic changes to the
+pre-trained models parameters. So also the smaller batches size help in
+more nuance updates. So just to illustrate this difference between the different hyperparameters that we need
+to apply when combining the pre-trained models result of this weights and mass
+parameters that we get and the new updated version so fine-tuning process
+because we are combining the pre-training with fine-tuning and the idea is that we want to benefit from the
+pre-trained model and this powerful source of information but yet also improve it a bit by fine-tuning ing it
+for our specific data and task. Here is the difference between the two different
+versions. For the pre-training learning rate, we can typically take this range as you can see. Whereas for the
+finetuning, we take this range for the learning rate much smaller value. And
+the idea is that this learning rate controls the amount of updates we will
+make to the weights. If the learning rate is small, then we are making smaller updates. So to illustrate this
+idea between difference of fine-tuning versus pre-training, we can look at the
+learning rate ranges that usually we use for pre-training process as well as
+fine-tuning process. So the learning rate is the parameter that controls the
+amount of updates we will make. So the change size that we are going to apply
+to our weights and our bias parameters. If the learning rate is large, so our step size is large, we are then going to
+make larger updates to our weights and this is fine during the pre-training process, but this is not fine during the
+finetuning process. We want in the finetuning to update the weights in small amount such that we don't lose the
+highly accurate and large amount of source of information that comes from
+pre-training process. We spend so much resources and so much time in pre-training the model and we
+don't want to update the weight drastically. Instead, we want to keep this update amount minimum. Therefore,
+we are also using the smaller amount of learning rate, this step size. And that's something that you can see here
+illustrated by these different ranges for the learning rate for pre-training step versus the fine-tuning step. During
+the finetuning as you can see we are using much much smaller range of this learning rate. So another thing is this
+batch size. During the pre-training stage we use larger batch sizes. Let's
+say 256 512 to speed up the training process. But during the finetuning we
+want the model to be more precise. We want the model to have more accurate updates. Therefore we are making the
+batch size smaller. let's say 16 32 maximum 64 such that we can make more
+precise updates to our model parameters. So fine-tuning often involves multiple
+training runs. So we want to monitor the model's performance on our validation set that we hold it next to the training
+set and we want to adjust the hyperparameters as needed. Finetuning involves multiple training runs when the
+model is iteratively updated and evaluated. So we iteratively update those weight parameters and we are
+continuously evaluating well how good is the model doing on this specific task
+and on this specific data. This iterative process helps to gradually
+improve the model's performance. So when it comes to the steps that involves in
+here the trained model is need to be set for a specific number of epochs. So we
+need to run the model on a specific number of epochs where each epoch is basically running through the entire
+training set. Then we want to evaluate the model the trained model on the validation set that we hold it apart and
+haven't used during the training. So we then want to adjust the hyperparameters
+based on the validation performance and then repeat the process up to the point
+that we find this set of hyperparameters. let's say learning rate or bed size that results in the smallest
+amount of error during our finetuning process. So let's now talk about the overfitting. Now overfitting is not just
+an issue for the transformers or large language models but we are aware about this problem starting from the
+traditional machine learning. So we have overfitting in linear regressions in random forest up to the x boost boosting
+techniques begging and also in deep learning models and now also in large language models. So this is not a new
+issue. So there are different ways that we can mitigate overfitting and techniques that we are using in the
+traditional machine learning usually also hold for this fine-tuning process. So overfitting is the process when the
+model performs well on the training data but poorly on the unseen data. Like with
+any other traditional machine learning model or deep learning model, the large language models are not exception. So
+they also suffer from overfitting. So during the finetuning we need to be aware about this. So overfitting just as
+a refreshment is this problem when the model performs well on the training data
+but poorly on an data. This means that the training error rate might be very
+low while the validation error rate might be high. And this is a problem because we want our model to be general.
+We want it to perform well on a new unseen data. So just to be cautious of
+this overfitting where the model performs well on the training data but not poorly on a new data is something
+just to be aware of and like with the traditional machine learning also in the
+ALMs one way of solving this problem is by early stopping and also
+regularization just to prevent this problem and continuously monitoring the
+training error rate versus validation error rate during this finetuning might be super helpful. So let's actually
+discuss a couple of techniques that we can use to solve this overfitting problem and this is not a new thing.
+This doesn't just hold for the LMS but for the traditional machine learning as well. So we have this overfitting
+problem in linear regression in random forest in logistic regression up to the
+deep learning models like the RNNs or LSTMs and in the same way we also have this problem in the Labs. Therefore,
+first thing that we need to keep in mind is to monitor the performance of the model to compare the training error rate
+to the validation error rate and continuously check whether the validation error rate is not increasing
+too much compared to the training error rate because this signals that we are dealing with overfitting and then
+another thing is to solve this problem. So techniques that work with the
+traditional machine learning and deep learning models will also work in here. Think about early stopping like ensuring
+that we stop the moral whenever we notice that the validation error rate is
+starting to increase compared to training error rate. And then another thing is is to apply regularization
+techniques. So think like the L1 regularization or L2 regularization so
+for weight decay or even the drop out regularization which is perfect for the
+deep learning and LM type of models. So dropout will then randomly drop couple
+of neurons certain percentage of neurons in each iteration and in this way you
+will decorrelate the neural networks and will then reduce the chance of
+overfitting. Next up is evaluation. So once you have done all these steps from
+1 till 5, you are ready to evaluate your fine-tuned model. Use a separate test
+set to assess the model's final performance. This set should be unseen during the training and validation. So
+think of dividing your entire data into training, validation and test. Use the
+training for training the model. Use the validation set for validating the model
+and tuning your hyperparameters as we just discussed and ensuring that the model is not overfitting. And only in
+the very final stage when evaluating the model in the step number six, take your test set, this third part of the data
+set that you haven't used at all in the previous steps and use that to calculate
+your error rate. That's the most accurate error rate you can use to assess the performance of your large
+language model that has been fine-tuned. So evaluate across various relevant
+metrics, not just one. This will help you to gain a comprehensive understanding of the model strengths and
+weaknesses. And if you're wondering what kind of metrics you can use and how you
+can evaluate your large language model, then make sure to check the module that is dedicated for evaluating large
+language models cuz we go into the depth of these different metrics you need to use. Not just the common metrics like
+the classification or test specific metrics but also many other things that you need to be aware of like the
+toxicity of your large language model the truthfulness etc. Those are metrics
+that usually you won't see in the traditional machine learning cuz we are used to using F1 score recall etc just
+as the classification model but in case of large language model the story is different. you need to be aware of many
+other metrics and check your model for those. Hi there and welcome back. Let's now talk about ways you can fine-tune a
+large language model. There are three ways of fine-tuning large language models. The first one is the supervised
+fine-tuning. Here we use label data consisting of input output pairs and we
+are letting the model to learn to produce the correct outputs when given similar inputs. Another way of
+fine-tuning large language model is a self-supervised learning. Self-supervised fine-tuning. This method
+involves training the model on a large corpus of text to predict parts of the data based on other parts. It's like
+taking a sequence of text and having the model to predict what comes next. So the
+idea of generating the next part. Third way of fine-tuning a large language model is the reinforcement learning with
+human feedback or in short RLHF. This method uses a human feedback to
+fine-tune the model's responses. Let's first talk about supervised fine-tuning of large language models. This is a
+technique that helps our model to become smarter by learning from labeled data.
+So what is labeled data? It's simply a collection of examples where we know the
+correct answer. We have the input and the expected output. For instance, if we
+have a piece of text that we want to categorize, then the data would be existing from different text and the
+corresponding correct category or correct label for it. The idea behind SFT is pretty straightforward. We want
+our model to learn from the given examples that we provide so it can make accurate predictions when it encounters
+a new unseen data next time. Think of it like teaching a child to
+recognize objects. You show them a picture of an apple and tell them this
+is an apple. Then you show a picture of a table and you say, "Well, this is a table." After enough examples, the child
+can recognize apples on their own. The child can also recognize the umbrella as
+an umbrella and newer objects, newer data points. So let us actually apply
+the supervised fine-tuning in terms of it idea and understand this supervised
+finetuning in different sorts of tasks. First up we have semantic analysis. So
+let's start with this one. This is a task where we are trying to figure out if a piece of text expresses a positive,
+negative or unnatural sentiment. Imagine we have a data set of movie reviews.
+Each review is labeled with a sentiment that it expresses. For example, a movie
+was fantastic is labeled as positive. And if we have input that I hated the
+plot and the acting was terrible, then of course the output should be negative.
+If we have it was an average for film and nothing special, then the output the
+label is natural. If the input is the soundtrack was beautiful but the story
+was boring then the output is mixed. So this is then our label then we have
+absolutely loved it a mustwatch. So the output here is positive. So this is
+basically the idea behind a type of data that you should provide to your
+fine-tuning model such that it can fine-tune the base large language model.
+Now in another task, let's say you have text that you want to classify with this
+SFT, the idea is that you will need to categorize this text, this documents
+into predefined categories. So the text classification would then have this type
+of data ingested into the model that we want to fine-tune. So in here you can
+see that the input is something like the stock market experienced a significant drop today and then the corresponding
+class is its finance related topic. Then we have the football match last night
+was thrilling and ended in dot dot dot. So then the output is sports. So we are
+basically classifying we're providing the labels for each of these text in
+terms of the topic that they represent or the field. Another one is a new species of bird was discovered in the
+Amazon rainforest. Then the output that the model should provide is science.
+Another example that we are providing to the model to learn from is that if the input is the latest smartphone model has
+several new features then the corresponding output is technology and so on. You get the idea. So the idea is
+that we need to put our data for our finetuning process in this format with
+the input and the corresponding classes predefined classes and then we will ask
+the model during the finetuning process to as accurately as possible classify
+the newer observations to the corresponding categories. Another example of task that we might want to
+perform during the fine-tuning process is question answering. So let's talk about this one as this a
+very important application of generative AI models and large language models.
+This task involves providing this precise answers to the questions based
+on a given context or knowledge base. For instance, if we have a data set of this question answer pairs like this
+one, what is the capital of France, then the right answer for this should be Paris. What is the the largest planet in
+our solar system? Then the answer should be Jupiter. When did the second world war end? Then the answer should be 1945
+and so on. This is the idea behind this specific data that we need to provide
+with the input and the expected output to our model to our model that we want
+to fine-tune such that it can correctly understand what are this corresponding
+outputs and then next time we provide a question it will be able to provide the right answer. So we are supervising the
+process by providing this expected outputs that will supervise the model.
+It's pretty much like when we have in traditional machine learning features that are representing the x and then the
+corresponding y which is our dependent variable that corresponds to the each of
+these observations. So we know for a set of features what is the corresponding response variables value. In the same
+way, we have this input and the corresponding output. And this output will then supervise the training process
+during this fine-tuning stage. Cuz finetuning is nothing but just a second
+layer of training of the pre-trained large language model. Let's now talk
+about another type of fine-tuning technique which is the self-supervised fine-tuning.
+So this is an important technique that is in short called SSFT
+and this method is quite powerful and interesting because it doesn't rely on a label data like the supervised
+finetuning does. Instead it uses unlabelled data to improve a model's
+language understanding and generation capabilities. So the SSFT works similarly to how the
+foundation large language models are trained. The key idea here is to leverage the vast amount of unlabeled
+text data that is available there and contains lot of good information. So
+imagine you are reading a book and you're trying to guess what the next word will be. By consistently making
+this predictions of this next word, you will then get a better idea and better understanding of the language. This is
+essentially what the SSFT does. So the way it works is that it first takes this
+large corpus of text and then the next thing it does is that the model is
+trained in a self-supervised manner meaning it learns to predict the parts
+of the text based on other parts. It doesn't use uh labels to supervise the
+training. It does everything by itself. Hence the name selfsupervised.
+So it's supervising itself by looking at other parts of the text. For example, if
+you fit to the model and the sun rises in the then the model will accurately
+predict that the next word should be the east. So then the entire sentence would
+become the sun rises in the east. By doing this repeatedly with huge amounts
+of text, the model learns the structure and the patterns of the language. So the
+SSFT or the self-supervised fine-tuning is incredibly useful because it doesn't
+require this time consuming and expensive process of labeling data. So
+we just saw that in case of supervised learning, supervised finetuning, we need to put our data into the specific
+format. First we need to collect the data and then set it in this format of
+input and then output and then validate that the data is accurate. Especially if
+we want a larger data for the finetuning that task can very quickly become a
+resourceheavy task and also expensive one. Instead, what we can do is that we
+can utilize the existing text that we have available which contains a lot of useful information and we then don't no
+longer need to spend our time on labeling the data. So this process is
+then much more scalable. We don't need to label every time the data. Instead in
+a scalable way, we can fine-tune the model and this also an efficient method
+for improving this general language understanding and generation of this text. This approach allows us to
+fine-tune the model to align with specific applications by curating this
+training corpus accordingly. So just to sum up, the self-supervised fine-tuning,
+the SSFT, is a fantastic approach for enhancing a model's language skills
+without the need for the label data, unlike the supervised finetuning does.
+And by predicting the parts of the data based on other parts, the model becomes
+better at understanding and generating language. This technique is invaluable for the tasks like language modeling
+where the ability to predict and generate coherent text is really
+important. Hi there and welcome back. Now let's dive into another interesting and popular fine-tuning approach called
+reinforcement learning with human feedback or RLHF. So this one is used for fine-tuning by
+many cuttingedge tech companies including open AAI to fine-tune their generative AI models including the GPT4
+and GPT4.0 recently released. So this method uses the human feedback to guide
+the model's learning process aligning it with human preferences and improving its
+performance on various tasks. So the intuition behind the AR LHF, so the
+reinforcement learning with human feedback is the following. The core idea of this technique, this fine-tuning
+technique is to have human reviewers to evaluate the quality of the model's
+output. Their feedback is then used to adjust the model's behavior, making it more aligned with what humans consider
+to be good or useful response. This approach is particularly valuable for the tasks that require a high degree of
+safety, accuracy and user satisfaction.
+So when it comes to the reinforcement learning with human feedback, this technique is where humans help to
+improve the AI by giving the feedback on its responses. So this feedback guides
+then the model to generate better, more accurate and safer answers. First of
+all, the uh air LHF helps to make the conversations engaging and informative.
+So here the goal is to make AI responses engaging and highly informative. The
+process is that that the human reviewers will then rate the AI responses based on how interesting and informative they
+are. The feedback then helps the morals to produce better conversations over time and the AI becomes excellent at
+having natural engaging conversations that user love.
+Another benefit of RHF is that it ensures that the answers are accurate.
+So it ensures that the AI gives accurate and helpful answers. The reviewers check
+the AI's responses for the uh correctiveness and the relevance. Their feedback is then being used to fine-tune
+the model. So in this way the generative AI model is improving itself by uh
+providing more and more precise and useful answers to the user boosting the user trust. So next let's discuss very
+quickly about following the instructions safely and correctly. So um having the
+AI following user instructions accurately and safely. The human feedback then teaches the AI to follow
+certain directions precisely assuming that then the humans will provide the safe and accurate instructions. So
+reviewers ensure that the model adheres to the instructions and performs the tasks safely and the outcome is that
+that the uh AI model becomes reliable in executing tasks exactly as instructed
+enhancing the safety and accuracy. There is however drawback here because if the
+intention of the reviewer is a bad one then uh the model will also become
+inherently unsafe. Therefore it's really important to know uh the reviewers to
+select them and to ensure that they are not on the wrong side of the story. So
+another thing that I didn't mention here on the slide specifically but I still wanted to mention is performing the
+specific tasks. So this enables the AI to carry out specific tasks as
+instructed. This uh specific fine-tuning approach. So reviewers provide feedback
+on how well the AI performs these tasks and this helps the model to learn the correct way to execute them. So by using
+this reinforcement learning with human feedback, the AI gets better at understanding and performing these
+different sorts of tasks making it more versatile and useful. So human feedback is really important because it helps to
+align the uh models performance with the user expectations and also company's
+expectations. It ensures that the AI outputs are useful, are accurate and
+safe. By involving human reviewers, we make continuous improvements to our
+models performance. This is just a high level information um just to keep in mind that the human feedback is really
+important when it comes to developing and fine-tuning large language models. So human feedback is key to enhancing
+generative AI models and applications like the chat GPT and instruct GPT. So
+here's an example of chat GPT and here um the process of the reviewers would be
+pretty much the same as you can see on the screen. So providing um the instructions asking what uh the model
+should do and then uh once the uh reply is provided then the uh human reviewer
+can evaluate whether this is good or it needs to improve the prompt or it needs to provide some uh better instructions
+and that's the idea behind the uh reinforcement learning with human feedback. So in here you can see that
+I'm mentioning um remove anything that might sound wrong or that might uh be
+just too much um in the professional setting and be professional. So in this way I'm making the model to be more
+accurate uh to not provide unprofessional language and to ensure
+that this is just not too much. And you can see that here I'm also uh providing
+uh more improvement points saying improve your tone. you are uh too formal. So kind of helping the model to
+understand this middle ground between too formal and uh informal.
+So uh the same also holds in the instruct GPT. This is by the way uh from the open AAI's uh official website
+describing the instruct GPT and um the open AAI is integrating this uh idea of
+reinforcement learning with human feedback heavily both in chat GPT and in this uh instruct GBT and by integrating
+human insights they ensure that the models that they have can engage in a meaningful conversations providing
+accurate information and also they follow instructions that the company is providing. Of course, here we are
+assuming that the company is providing accurate instructions to ensure that everything goes according to the safety
+guidelines and according to the law. So, here is a simplified process of how reinforcement learning with human
+feedback is applied. First up, we have the supervised fine-tuning. This process
+begins with supervised fine-tuning something that we just discussed where the model is trained using a curated
+this collected data set that consists of input output pairs. This helps the model
+to learn from examples. The next step is to train a reward model. So human
+reviewers evaluate the outputs that are generated by the model from the previous step and then they are ranking this
+output from worst to best. This ranking is then used to train a reward model
+which then assigns scores to the quality of the model's responses. Obviously the
+ones with high quality will then get so-called candy. So they will get a high uh score versus the ones with of bad
+quality will get a low score. So uh in this way we can then uh teach to the model what is right and what is wrong.
+Next what we have is the third section third step which is the reinforcement
+learning. So the finetuned model is then further optimized using this
+reinforcement learning algorithm. So uh here we can use things like the
+proximal policy optimization the PO and uh this is a common uh policy that is
+used also across many cutting edge tech companies and the idea is that the model
+uh will then provide feedback to be fine-tuned guiding it to uh improve its performance continuously. So it will
+continuously improve uh the model performance. So reinforcement learning with PO this
+proximal policy optimization involves this three uh to four steps that we will
+go uh in a bit. Uh and uh the several steps where a model learns from uh
+interactions with an environment using this feedback to improve its performance. So next up we have the
+reinforcement learning. The fine-tuned model is further optimized using a reinforcement learning algorithm such as
+the proximal policy optimization or the PO. So PO is a a popular reinforcement
+algorithm that is also used as the uh fundamental part of the fine-tuning
+process by cutting edge companies like the open AI to optimize the model. The
+reward model provides this feedback to the fine-tuned model guiding it to
+improve its performance continuously. So think about every time uh when the model
+is uh doing something and human evaluator provides a score. So saying
+this is a good answer, this is a bad answer, then this feedback is being used as part of the reinforcement learning to
+then in the next step improve the accuracy of the model. uh pretty much like the uh in case of the boosting
+algorithms when the model continuously assesses where the model was able to accurately predict the classes and where
+not and then it would also focus on uh improving those uh incorrectly uh
+classified observations. So in this way the model can continuously improve itself. The reinforcement learning with
+PO or the proximal policy optimization involves several steps where a model
+learns from the interactions with an environment using this feedback. This course to improve its performance. So
+here is how it works in more detail. First we have the prompt. The process starts with this prompt or an input to
+the model. Then we have the model response. So the model generates a response based on the prompt. Then this
+response is evaluated by a reward model which assigns a score based on the
+quality of the response. And then in the final step we have the PO algorithm the
+uh proximal policy optimization algorithm which is used to adjust the model based on the feedback from the
+reward model optimizing its parameters to improve this future responses.
+So you can see that with these arrows once we uh go onto the reinforcement
+learning algorithm it provides us a feedback and this feedbacks is then going back into the model and then uh it
+improves itself every time. So this is basically the highlevel idea of the
+reinforcement learning with human feedback. As you can imagine, this is much more powerful as a fine-tuning
+technique than just the supervised fine-tuning, which on itself can be used as a separate type of fine-tuning
+technique. But when you have the reinforcement learning with human feedback, you are adding this extra
+layer of quality on your fine-tuning process because then you are involving human feedback and human reviewers that
+can uh help to improve the model's accuracy and ensure that the model outputs are relevant, are accurate and
+they are safe. Let us actually consider an example where the goal is to fine-tune a chatbot to provide helpful
+customer support responses. So first up we have the prompt and the prompt says
+how do I reset my password. Next up we need to uh provide this to the model
+such that the chatbot can generate a response. So next step the chatbot generates a response. For example, it
+can be you can reset your password by going to the account settings page. Then
+next up, we have our reward model. The chatbot that generated this. Next up,
+the human reviewers evaluate this response. They consider the factors like accuracy, helpfulness, clarity, safety.
+And suppose they score this this answer that was provided by chatbot 8 out of
+10. So uh this for being accurate and clear but still missing some um steps
+and some important information. So next up the scores from the human
+reviewers this eight out of 10 are used to train this reward model. This model
+learns to predict the quality of the responses based on the feedback it received. So based on the feedback that
+this response is eight out of 10 then this reward model will be then understanding what kind of um
+information uh it needs to provide next time. So how it can fix the model. Then the scores this eight out of 10 that was
+assigned by the human reviewer is used to train this reward model. This model
+learns to predict the quality of responses based on the feedback it receives. So next up we have the reinforcement
+learning with a PO. So the PO algorithm is applied to optimize the chatbot's
+responses. And here is how it works in more detail. So first up the model uh
+generates several possible responses to the same prompt. The prompt where we were asking how do I reset my password.
+So next we need to do the evaluation and ranking. These responses are ranked by
+the reward model from the best to worst. So once the training of the reward model
+is done, next up we need to perform the reinforcement learning with our PO. For example, the PO algorithm is then
+applied to optimize our customer support chatbot responses. And the first thing
+that it will do is that the model generates the several possible responses to the same prompt that we provided. So
+how do I reset my password? This was the prompt. Then what the model needs to do is to evaluate and rank. These responses
+are then ranked by the reward model from the best to worst. So basically it generates the multiple responses and
+then in this step we are evaluating these multiple responses and we are ranking them from the best to the worst.
+Then the feedback is used to adjust the model's parameters nudging it towards generating higher quality responses in
+the next steps in the future. For example, the model might generate additional responses like you can reset
+your password by clicking on forgot password or on the login page or another
+one can be to reset your password visit the account settings click on security and then reset your password. The reward
+model will then score this responses and the PP algorithm updates the model to favor the responses similar to the
+highest scoring ones. So as you might have already guessed,
+this is much more sophisticated approach to fine-tune your large language model and uh it is almost guaranteed that this
+one will be much better if your human uh reviewers are um doing their work in a
+proper way compared to just plain supervised fine-tuning. So uh you might be wondering but why to
+use exactly this PO this proximal policy optimization? We won't be diving in too
+much into this as that is this is out of the scope of our LM course but this is
+an important algorithm reinforcement algorithm just to be aware of and if you
+are interested also you can check our reinforcement learning content. So uh
+why we use the PO the proximal policy optimization PO is preferred because it
+strikes this right balance between the exploration and exploitation ensuring
+that the model tries new responses while improving based on the past feedback. It
+adjusts the model gradually preventing the drastic changes that might degrade the performance of the model. So
+reinforcement learning with PO is quite powerful and uh it is using this detailed human feedback and it is
+systematically optimizing the algorithm and the model performance by iterating
+through these different prompts and the corresponding responses the feedback loops and then continuously ranking
+evaluating these answers and then reranking them. In this way, the model is continuously improving itself and
+this feedback loop is very important and this then ensures that the model is becoming more aligned with the human
+preferences and expectations. So this one is a really powerful technique and the reinforcement learning
+with human feedback as a fine-tuning approach is also very powerful technique for aligning the models with human
+preferences. It enhances the ability of the model to generate accurate, helpful,
+and safe responses by leveraging human judgment to refine and improve the model's behavior continuously.
+[Music]

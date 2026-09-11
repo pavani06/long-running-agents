@@ -1,0 +1,442 @@
+Welcome everyone. Um, it's always a
+challenge to be a presenter directly
+after lunch because that's typically
+when the energy level goes from right
+around here to around here. But I'm
+going to try to make this session worth
+your while. Uh today we've got 18 very
+quick minutes uh together and during
+that time I'm going to be talking about
+the different maturity levels that I see
+people go through as they perform evals
+for their agents. Uh before we get into
+that um just roughly quick agenda today
+um I'll explain a little bit about
+myself the company that I work for.
+We'll spend most of the time today on on
+more theoretical concepts, not product
+concepts and then um we'll we'll talk
+about um where I I think this field is
+going in the future. Also make sure to
+leave enough time hopefully a couple
+minutes for questions as well. I didn't
+overprepare the content and in hopes
+that we could have a little bit more of
+a discussion at the end of this. Uh
+first of all, this is me. My name is
+Phil Hzel. I lead solutions engineering
+for a company called Brainst.
+Effectively, what that means is that it
+is me and my team's job to make sure
+that people are getting the most value
+out of the platform as quickly as
+possible. Prior to Brain Trust, I spent
+12 years in consulting and systems
+implementation. Uh first four years with
+KPMG, last uh eight years in consulting
+with a company called Slalom Consulting.
+And with Slalom, I led their global data
+bricks business unit. And I noticed that
+a lot of my customers were prolific at
+creating generative AI proofs of
+concepts. They were not as prolific at
+bringing those proofs of concepts to
+production. So I started using Brain
+Trust first as a user because I wanted
+to help bridge that gap uh for my
+customers. And I like the product so
+much that I ended up joining the
+company. And I've I've been here for
+about a year. Um outside of of work, I
+like to play chess, but I'm not very
+good at it. and I like to spend time
+with my wife and my dachshund, his
+name's Pistol Pete. Um, he's the one in
+brown, not the one in in black.
+Uh, what is Brain Trust? Uh, the company
+that I work for, Brain Trust is an agent
+quality company. Um, one of the I guess
+two of the main ways that we contribute
+to agent quality are evaluative.
+Eval of course being the thing that
+you're doing in order to gain confidence
+in your agent as you want to bring it to
+production and then observability being
+the practice of once that agent is in
+production remaining confident in it. Um
+is a growing space. It's very fastmoving
+space and uh in when you build an emails
+platform you really have to grow with
+the technology the underlying technology
+as it changes. So it's a very fun uh fun
+place to be in. Uh let me give like a a
+a quick overview of the problem. Uh we
+talked a little bit about why we do
+eval. How many of you all are doing eval
+today hopefully as as you build? Um
+every single hand should be up and and
+certainly when I give this talk next
+year at this conference all you're going
+to come back of course to this session
+and every hand is going to be up. Eval
+is very important. The reason why we do
+eval is wholly in service to agent
+quality. That's the most important
+thing. We want to make sure that our
+agents are doing what we expect when
+confronted with real usage and and and
+real users. Um this is really important
+from a risk perspective and and a brand
+perspective. We don't want um the
+reputational risk of an agent being
+unkind or unhelpful to a customer. We
+don't want the systems risk of an agent
+costing us too much money as it as it
+operates. Um, and there could even be
+compliance and legal risks if your agent
+goes too far off the rails. So, eval
+both a defense against those types of
+risks, but they're also uh you can play
+offense with eval knowing with each
+tweak that you make to your agent how
+it's improving and how much it's
+improving your application. Um, a couple
+of primitives here. Evals are not unit
+tests where whereas unit tests are very
+exhaustive in in how you perform them.
+With evals, you want to make sure that
+you start very high level with the
+failure modes of your agent. Either
+either you or a subject matter expert
+can educate about the specific failure
+modes of an agent and you build eval
+around those very specifically. What you
+don't do like you would with unit test
+is think about exhaustively every single
+thing that could potentially go wrong
+with your agent and try to make an eval
+for it. Why can't we do that? Because
+it's it's infinite. You would spend all
+of your time writing tests and none of
+your time shipping, which is which is
+not productive. Uh eval results don't
+need to be perfect. Sometimes they can
+be sometimes they can be directional. Um
+using LMS to judge other LMS LM as judge
+techniques, you're probably not going to
+get 100% every time. that's okay as long
+as you're trending in the right
+directions with those more
+non-deterministic techniques. Um that
+that that is completely fine. Um
+different primitives with the eval
+itself, how it's constructed. You have
+three things. You have a task. That's
+the agent under test or the prompt under
+test. You have some data set of examples
+that initiate that task. How do you
+invoke that task? you use some example
+that you give to an LLM or give to an
+agent to um to start that workflow and
+then you have certain scoring functions
+which you're using to judge the utility
+or the quality of that task.
+Um there are a couple of different
+maturity areas that I've noticed some of
+our customers go through. Um I've listed
+four here. This is probably more of a
+continuum than than being very discreet.
+But suffice to say that these stages um
+you know you will you will traverse
+these stages as and when you create more
+complexity within your agent just by
+just by necessity. Uh the more complex
+uh agent you're uh that you're building,
+the more vectors there are for failure,
+the more failure modes that you may need
+to account for. Um, we're only going to
+be focusing on the uh like eval theory
+itself today. We're not going to really
+talk about the platform surrounding
+evals. We've got a booth for that
+downstairs. If if you're interested, you
+can come find me. So, we'll go through
+these four. Just getting started, uh,
+measuring to manage, accounting for
+complexity, and then, um, some advanced
+eval techniques.
+Okay, just getting started. It's not
+wrong to just get started with with
+vibes. I know like like vibe checking is
+a very uh nasty phrase here at this
+conference. I actually think it's okay.
+It's it's certainly better than nothing.
+Um when you're first starting out, you
+can't help but start with vibes. I think
+the only thing that I would really
+recommend is that as you are vibe
+checking, you're also documenting. So
+when you have an agent under test, you
+give that agent maybe 10 different
+example inputs and and and loop through
+those inputs to see what the output is.
+You should probably have some human,
+whether it's the person who built the
+agent or even better a subject matter
+expert that really knows what a quality
+response would look like. You should
+really have them analyze these outputs
+and and uh give two pieces of
+information.
+you should give a thumbs up or thumbs
+down. Is it was this response good? Was
+it bad? But more importantly, you should
+make that human annotator
+um perform a justification for why they
+chose that thumbs up or thumbs down.
+Reason being is that you you're you need
+to extract a lot of this domain specific
+knowledge out of that human annotator's
+head so that eventually you can scale
+that type of knowledge through a through
+a technique like like LMS judge but this
+is a great first step performing human
+human annotation who who in this room is
+like at at at this step
+we're okay this is way more advanced
+group that's that's okay that's a good
+place to start are you using like human
+expert annotators I I've just got like a
+I mean I haven't got any infrastructure
+set up just uh yeah it's pure
+agent on my data
+you guys see how it looks and then
+yeah totally it's it's it's you have to
+start somewhere it's a great place to
+start um this is this is how like that
+that workflow is going to is going to
+look you have a trace come in thumb up
+thumbs up or thumbs down and then you
+add some justification um to that so
+that eventually you can use it as as an
+LMS as judge score down the line.
+Um, this is like what this might look
+like in a in a platform like Brain
+Trust. Um, uh, we have like a like a
+human annotator view uh built into the
+platform. We actually let you vibe code
+your own annotation views. Um, important
+point, don't give a generic uh,
+annotation platform to users. Really
+make it very specific to them. they're
+going to have an idea of how these agent
+traces should look. So you should
+deliver that to them and it'll encourage
+them to um evaluate these uh these
+appropriately.
+Um okay, the ne the next part is
+expanding upon that a bit where now I
+just don't I don't have only some human
+grader giving thumbs up and and thumbs
+down and justification. Now I'm starting
+to use those justifications and I'm I'm
+probably um running those justifications
+through a cursor cloud code or or codecs
+to try to derive the actual failure
+modes of why when they gave a thumbs
+down why they delivered a thumbs down.
+These you you now know and understand
+the failure modes of your agent.
+Now that you understand the failure
+modes of your agent, you want to be able
+to scale that human knowledge and be
+able to to automate it so that you're
+not dependent on uh a few people with
+expertise to judge a agent uh agent
+outputs. Uh a couple ways to a couple
+ways to do this. One of which using LM
+to judge uh other LLM. LM is judge. We
+we've that that concept's been around
+for for quite some time. Very effective.
+Um, important here is that whenever you
+use an LM judge, just because you put a
+robe and a cloak on an LM, that doesn't
+make it inherently more trustworthy. You
+should be evaluating LMS as judge
+outputs as well. Um, that's not really
+covered in this presentation, but um,
+you should not just judge LM judges
+blindly in that regard. Uh, there also
+might be some objective failure modes
+where you can deterministically um,
+encounter them just through code. That's
+okay, too. You don't have to use LMS to
+judge other LMS. You can use code to
+understand um if you're using too many
+tool calls, you might want to fail that
+EVL, as an example. If you're using too
+many tokens, you might want to fail that
+EV uh EVO.
+Um I think the most important point here
+is that this data set uh that's that's
+on the right hand side of this slide at
+this point you should probably be
+gathering production traces or at least
+UAT level traces into that evaluation
+data set. We want it to be very like
+don't think about eval as running tests.
+Think about eval like rerunning
+production because ultimately we want to
+be confident as we run uh run these
+workloads in in production. Great way to
+do that is just to capture production
+data.
+Um most important point is is this uh we
+we call it like the the flywheel
+internally. We want to be able to
+capture these traces, these agent traces
+in production, understand what's going
+wrong with them either through a human
+or or through automated tooling. Um, and
+then bring those examples back to some
+offline experimentation environment,
+rerun production through an eval, and
+then use that to guide us to which
+direction we should be improving our
+agent. So eval that that's like more
+playing offense with with your evals.
+Um this just like an example of setting
+up an setting up an LM as as judge
+scoring function to expand um your your
+ability to evaluate at scale rather than
+using just a human.
+Um okay. Uh level two now we're starting
+to not just do simple model calls. We
+might be performing work with external
+systems. I think of of tool calls in two
+different ways. There's context
+gathering tools that are just uh
+gathering data and injecting that into
+the LM and then there is CRUD based
+tools where you're creating, reading,
+updating or deleting information from a
+database or an external system. Um both
+of these are can have a lot of lift in
+terms of whether your agent is quality
+or not. It also means that there's a lot
+of other things that can go wrong with
+your agent when you're starting to
+interact with external uh external
+systems often. Now instead of just
+having one uh um of evaluating one
+specific part i.e. the output of an
+agent now you might be having to
+evaluate the entire trace of an agent.
+So um in that sense to like this is
+where tooling starts to come into play.
+You'll you'll need some way to capture
+these large traces, understand each and
+every step that an agent took to be able
+to introspect and eventually target eval
+towards maybe even individual tool or
+MCP calls uh that your that your agent
+is creating. The other the other problem
+here that that we might have is um when
+you're performing CRUD on on a system,
+you you don't really want to do that
+when you're offline. Of course, there
+might not be a way to do that when
+you're offline. So, when you run an
+eval, um there's there's two things that
+are problem areas. One, really
+challenging to represent the state that
+that um other external systems were were
+in at the time that Eval input was
+created. And then two, it makes it
+really challenging to interact with
+those systems that the agent could be
+interacting with because you don't want
+to overwrite any any production data.
+These are real challenges that that we
+have to solve for. I would say it's not
+completely solved right now. Um however
+um there there does need there there are
+some ways where you can represent
+external system state and interact with
+like mock level APIs so that you can
+approximate um real a real production
+environment in um as you're running
+eval. Um the idea for this is that um
+these these agent traces can be
+arbitrarily large. Um in that sense it's
+it's a lot different than application
+tracing. So if a trace can be
+arbitrarily large you can actually cram
+in a ton of context i.e. system state
+the state that the external systems were
+in at the time into these traces and
+inject that into into the task that
+you're running the eval upon. In that
+way, uh, instead of having to, um, uh,
+create an entire test structures and and
+and infrastructure, you can represent a
+lot of that stuff within the trace
+itself and encapsulate it there. The
+other thing that you can do is you can
+use like really really specific querying
+techniques to um, perform timestamp
+queries uh, to systems that support
+them. So if an input came um and and you
+added it to your data set at a certain
+point in time, perhaps uh the way that
+you've set up your vector database, you
+can run a version query to query the ve
+vector database at a certain point in
+time. So that way you're adequately
+representing the state of uh of of when
+that task ran originally. These are more
+complex techniques um but ones that ones
+are that are a little bit more emerging.
+Um
+I only have about two minutes left to
+go. Um what's next? Um performing topic
+modeling at scale to make sure that
+you're uncovering those failure modes
+automatically in production. Um that's
+something that like more than happy to
+talk about at uh at the booth
+downstairs. And then of course
+performing eval in a way where you're um
+using cloud code and the eval provider
+CLI to be able to do this in an
+automated automated way. These are two
+other patterns that uh that I see
+emerging in the space. I want to be
+conscious of time. I probably have time
+for like one question uh before before I
+have to jump here. Is anyone curious
+about anything specifically? Otherwise
+uh you can find me at the booth.
+Yes sir.
+In our sphere like it's kind of normal
+to a bit more
+respect on deterministic evaluation
+deterministic. Do you agree with it? Do
+you think that we should push for more
+deterministic
+platforms or do we embrace LM judge as a
+I would some things are subjective
+that's why we love agents so much I
+would embrace LM as judge but also
+perform a lot of evals on the LM as
+judge so that like it's it's very
+aligned with what a human would decide
+in the same circumstance. valid val.
+Yeah, it's easier to do that because LM
+judge outputs are going to are going to
+be uh discreet. So you can create a
+ground truth data set for that. Yeah.
+All right, everyone. I have to jump. I'm
+at my time. Um it was a pleasure to be
+with you all. And yeah, feel free to
+find me in the booth downstairs.

@@ -1,0 +1,190 @@
+Left to their own devices, large language models have a bit of a knowledge problem.
+If a piece of information wasn't in their training set, they won't be able to recall it.
+Maybe something newsworthy that happened after the model completed training,
+such as who won the 2025 Best Picture at the Oscars, or it could be something proprietary like a client's purchase history.
+So to overcome that knowledge problem, we can use augmented generation techniques.
+For example, retrieval.
+So retrieval, augmented generation, otherwise known as
+RAG
+Now how does that work?
+Well, essentially we have here a model and the model is going to query an external searchable knowledge base.
+Here's where we've got our knowledge and that's going to return portions
+of relevant documents to provide additional context.
+So we get the documents, we get some context, and we pass that to the LLM model
+to update its knowledge, if you like, and that updated context, that's used to generate an answer.
+Anora
+that won best picture this year, probably got it out of that data set.
+But retrieval isn't the only augmented generation game in town.
+Another one is cash augmented generation or CAG.
+Now CAG is an alternative method.
+So rather than querying a knowledge database for answers, the core idea of CAG is to preload the entire knowledge base.
+So we take everything we know and we put it all into the context window.
+All of it.
+The Oscar winners, last week's lunch special at the office cafeteria, whatever you want.
+So rather than feeding the model just curated knowledge,
+we are feeding the model everything, not just the stuff we deemed relevant to the query.
+So RAG versus CAG.
+Let's get into how these two things work.
+the capabilities of each approach, and an enticing game to test your own knowledge,
+and let's start with RAG.
+So RAG is essentially a two-phase system.
+You've got an offline phase where you ingest and index your knowledge, and then you've got
+an online phase where you retrieve and generate on demand.
+And the offline part, pretty straightforward.
+So you can start with some documents.
+So this is your knowledge.
+This could be Word files, PDFs, whatever.
+and you're going to break them into chunks and create vector embeddings for each
+chunk using the help of something called an embedding model.
+Now that embedding model is going to create embeddings and it's going to store them
+in a database, and specifically this is a vector database where the embeddings are stored.
+So you've essentially now created a searchable index of your knowledge.
+So when a user prompt comes in from the user, this is where the online phase of this is going to kick in.
+So, first thing that's going to happen is we're going to go to a RAG retriever.
+and that RAG retriever is gonna take the user's question and it's gonna turn it into
+a vector using the same embedding model that we used earlier,
+and that's gonna perform a similarity search of your vector database.
+Now that's gonna return the top K most relevant document chunks from here that are related to this query.
+There might be something like three to five passages that are most likely to contain the answer to the user's query,
+and we're gonna take those chunks and we're gonna put them
+into the context window of the LLM alongside
+the user's initial query and all of this is then gonna get sent to the large language model.
+So the model is gonna see the question the user submitted plus
+these relevant bits of context and use that to generate an answer.
+We're basically saying to the model, here's the question, here's some potentially useful
+information to help you answer it that we got out of this vector database, off you go.
+And the beauty of RAG is that it's very modular, so you
+can swap out the vector database, you could swap out a different embedding model, or you
+could change the LLM without rebuilding this entire system.
+That's RAG.
+What about CAG?
+Well, CAG takes a completely different approach.
+So instead of retrieving knowledge on demand, you front load it all into the model's context all at once.
+So we'll start again with our documents.
+This is all of our gathered knowledge.
+And we're gonna format them into one massive prompt that fits inside of the model's context window.
+So here it's gonna fit into this.
+Now, this could be tens or even hundreds of thousands of tokens
+and then the large language model is going to take this massive amount of input and it's going to process it.
+So effectively this kind of knowledge blob is going to be processed in a single forward pass
+and it's going to capture and store the model's internal state after it's digested all of this information.
+Now this internal state blob, it's actually got a name, it's called the KV cache, or the key value cache,
+and it's created from each self-attention layer and it represents the model's
+encoded form of all of your documents, all of your knowledge,
+so it's kind of like the models already read your documents and now it's memorized it.
+So when a user submits a query in this situation then we take all of this KV cache
+and we add the query to it and all of that gets sent into the large language model.
+And because the Transformers cache has already got all of the knowledge tokens in it,
+the model can use any relevant information as it generates an answer without having to reprocess all of this text again.
+So the fundamental distinction between RAG and CAG comes down to when and how knowledge is processed.
+With RAG, We say, let's fetch only the stuff that we think we're going to actually need.
+CAG, that says let's load everything, all of our documents up front and then remember it for later.
+So with RAG, your knowledge base can be really, really large.
+This could be millions of documents stored in here because you're only retrieving small pieces at a time.
+The model only sees what's relevant for a particular query.
+Whereas with CAG you are constrained by the size of the model's context window.
+Now a typical model today that can have a context window of something like 32 ,000 to 100 ,000 tokens.
+Some are a bit larger than that but that's pretty standard.
+It's substantial but it's still finite and everything all of these docs need to fit in that window.
+So let's talk about capabilities of each approach and we're going to start with accuracy.
+Now, RAG's accuracy is really intrinsically tied to a particular component.
+When we talk about accuracy with RAG, we are talking about the retriever.
+That's what's important here, because if the retriever fails to fetch a relevant document,
+well then the LLM might not have the facts to answer correctly,
+but if the retriever works well, then it actually shields the LLM from receiving irrelevant information.
+Now, CAG, on the other hand, that preloads all potential relevant information.
+So it guarantees that the information is in there somewhere, I mean,
+assuming that the knowledge cache actually does contain the question being asked,
+but with CAG, all of the work is handed over to the model
+to extract the right piece of information from that large context.
+So there's the potential here that the LLM might get confused or it might mix in some unrelated information into its answer.
+So that's accuracy.
+What about latency?
+Well, RAG, that introduces an extra step, namely the retrieval into the query workflow and that adds to response time.
+So when we look at latency with RAG, it's a bit higher,
+because each query incurs the overhead of embedding the query and then
+searching the index and then having the LLM process the retrieved text.
+But with CAG, once the knowledge is cached, answering a query
+is just one forward pass of the LLM on the user prompt plus the generation.
+There's no retrieval lookup time.
+So when it comes to latency, CAG is going to be lower.
+Alright, what about scalability?
+Well, RAG can scale to as much as you can fit into your vector database.
+So we can have some very large data sets when we are using RAG
+And that's because it only pulled a tiny slice of the data per query.
+So if you have 10 million documents,
+you can index them all and you can still retrieve just a few relevant ones for any single question.
+The LLM is never going to see all 10 million documents at once, but CAG, however, that does have a hard limit.
+So with CAG, the scalability restriction is basically related to the model context size.
+We can only put in there what the model will allow us to fit.
+And as I mentioned earlier, that's typically like 32 to 100K tokens.
+So that might be a few hundred documents at most.
+And even as context windows grow, as they are expected to,
+RAG will likely always maintain a bit of an edge when it comes to scalability.
+One more, data freshness.
+Now, when knowledge changes, RAG, that can just, well, it can just update the index very easily.
+So it doesn't take a lot of work to do that.
+It can update incrementally as you add new document embeddings or as you remove outdated ones on the fly.
+It can always use new information with minimal downtime.
+But CAG, on the other hand, that is going to require some re-computation when anything actually changes.
+If the data changes frequently, then CAG kind of loses some of its appeal
+because you're essentially reloading often, which is going to negate the caching benefit.
+All right, so let's play a game.
+It's called RAG or CAG.
+Now I'm gonna give you a use case and you're gonna shout out
+RAG if you think retrieval augmented generation is the best option,
+or you'll yell out CAG if you think cache augmented generation is the way to go.
+Ready? Alright.
+Scenario one, I am building an IT help desk bot.
+So users can submit questions and the system's gonna use a product manual to help augment its answers.
+Now, the product manual is about 200 pages.
+It's only updated a few times a year.
+So, RAG or CAG?
+Don't be shy.
+Getting acronyms at the screen is an entirely normal process.
+All right, I'm gonna imagine that most people here are probably saying...
+CAG for this one.
+The knowledge base, in this case the product manual, it's small enough to fit in most LLM context windows,
+the information is pretty static so the caches need to be updated very frequently,
+and by caching the information we'll be able to answer queries faster than if we had to query a vector database.
+So I think CAG is probably the answer for this one.
+What about scenario two?
+So with this one you're going to be building a research assistant for a law firm.
+Now the system needs to search through thousands of legal cases
+that are constantly being updated with new rulings and new amendments.
+And when lawyers submit queries, they need answers with accurate citations to relevant legal documents.
+So for this one, RAG or CAG.
+I think RAG is the way to go here.
+The knowledge base in this case, it's massive and it's dynamic with this new content been added all the time.
+So attempting to cache all this information would quickly exceed most models context windows
+and also that requirement for precise citations to source materials
+is actually something that RAG naturally supports through its retrieval mechanism.
+It will tell us where it got its information from.
+And also the ability to incrementally update the vector database as new legal documents emerge
+means that the system always has access to the most current information without requiring full cache recomputation.
+So, rag all the way here.
+One last one, one last game of RAG or CAG.
+So, scenario three, you're building a clinical decision support system for hospitals.
+And the idea here is that doctors need to query patient records and treatment guides and drug interactions.
+And the responses need to be really comprehensive and of course, very accurate
+because they're going to be used by doctors during patient consultations.
+And the doctors are often gonna ask complex follow-up questions.
+So RAG or CAG for that?
+Well, how about...
+Both.
+Because in this case, the system could first use RAG to retrieve the most relevant subset from the massive knowledge base.
+So pulling in specific sections of a particular patient's history and some research papers that are based on the doctor's query.
+And then instead of simply passing those retrieved chunks to the LLM,
+it could load all that retrieved content into a long context model that uses CAG,
+creating a temporary working memory, if you like, for the specific patient case.
+So it's really a hybrid approach.
+RAG's ability to efficiently search enormous knowledge bases,
+and then CAG's capability for providing the full breadth of medical knowledge when needed for those follow-up questions
+without the system repeatedly querying the database.
+So essentially, RAG and CAG are two strategies for enhancing LLMs with external knowledge,
+and you'd consider RAG when your knowledge source is very large, or it's frequently updated, or you need citations,
+or where resources for running long context window models are a bit limited,
+but you would consider CAG when you have a fixed set of knowledge that
+can fit within the context window of the model you're using,
+where latency is important, it needs to be fast, and where you want to simplify deployment.
+RAG or CAG, the choice is up to you.

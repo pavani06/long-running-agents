@@ -1,0 +1,393 @@
+There's all this like tooling and infrastructure still to build. There's clearly still a bunch of startups yet to
+be built in just the infrastructure space around deploying AI and using
+agents. If you're living at the edge of the future and you're exploring the latest technology, like there's so many great startup ideas, you're very likely
+just bump into one. You apply the right prompts and the right data set and a
+little bit of ingenuity, the right eval, a little bit of taste and you can get
+like just magical [Music]
+output. Welcome back to another episode of the light cone. every other week. We're certainly realizing there's a new
+capability, a million token context window in Gemini 2.5 Pro. It's just
+really insane right now. And the thing to take away from that though is that we
+have an incredible number of new startup ideas, some of which are actually very
+old and they can only happen right now. Harj, what are some of the things you're seeing? Well, one thing I've been
+thinking a lot about recently is what are types of startup ideas that couldn't
+work before AI or didn't work particularly well that are now able to work really really well. Uh and one idea
+that is very personal to me um would be recruiting startups since I ran a recruiting startup triple bite for
+almost 5 years. And I think um something that I've clearly seen is that there was
+a period of time when we started Triple Bites around 2015 where recruiting startups were kind of like a really
+popular type of startup. Um and I think a lot of the excitement around those ideas back then was this idea of
+applying marketplace models to recruiting because there were marketplaces for everything except how to hire great people and specifically
+great engineers. And we started Triple Bite with the thesis of you don't just want to let anyone on your marketplace.
+You want to build a really curated marketplace that evaluates engineers and gives people lots of data about who the
+best engineers are. And this was all prelim. So we had to spend years essentially building our own software to
+do thousands of technical interviews to squeeze out every little data point we could from a technical interview so that
+we'd effectively build up this label data set that we could run machine learning models on. But we didn't even get to do that until like years three or
+four. And initially it was uh actually a three-sided marketplace and that you needed to hire an interviewer in between
+to get that human. We had companies hiring engineers, we had the engineers looking for jobs and then we had
+engineers we contracted to interview the engineers. Um so there's like lots of
+things going on right now. Um and all of the evaluation piece of it at least now
+with AI is very very possible. I mean we can specifically with the AI codegen models you can do code evaluation um and
+I think probably one of the hot AI startups at the moment is this company called Meror which is essentially
+similar to the triple bite idea. It's a marketplace for hiring software engineers. Um but I think what AI has
+unlocked for them is the evaluation piece of it they could just do on day one using LLMs. that they need to build
+up this big label data set and they've been able to expand into other types of knowledge work um quite easily. For us
+to have gone from like engineers to analysts to all these other things would have taken years because again we had to
+rebuild the label data set. Um but with LLMs you can just do that on you know day one effectively. And so I think this
+whole this whole class of recruiting startups that are trying to evaluate humans at being good at specific tasks
+or not um is a really interesting space that's much more exciting to find good startup ideas in now than it was 5 years
+ago. So that's a very powerful prompt for anyone listening. Uh what are marketplaces that are three-sided or
+four-sided marketplaces that suddenly become, you know, two or three-sided or now there are two-sided marketplaces
+like Dolingo that are, you know, a little bit under fire because they're sort of starting to say actually maybe
+we're just going to use AI for uh the person that you're going to talk to in another language. That is totally a
+coherent thing that you could go to almost any marketplace in the world and say what if what what will uh LLMs do in
+that marketplace? I think the other thing I really respect the Merkel founders for is there's also just a psychological element as a founder to
+when you enter into a space where there's um been lots of smart teams and lots of capital that's flown into it.
+This was definitely with recruiting startups. I mean Triple Bite raised something like $50 million. our main competitor hired, raised over a hundred
+million. I think in aggregate hundreds of millions of dollars went into funding recruiting marketplace companies. Um,
+and overall as a category did not do particularly well. And so I think going
+in you face a lot of skepticism if you're going to go out and pitch investors for an idea. Even when you have the like, well, LLM's change
+everything, that pitch two years ago was still not as compelling as it is today. And so you have to be willing to sort of
+push through a lot of sort of cynicism and people who are burnt out, who have lost lots of money on an idea to even
+kind of keep going to test it out and and make it work. That's something that repeats actually all the time. I mean,
+Instacart was that story. Exactly. Like Web Van was sort of this rotting corpse of a startup just hanging in that
+doorway and most people looked at that and said, "Oh man, I I don't want to walk near that." Like there's there's
+going to be more. But, you know, simultaneously the iPhone and uh Android phones were everywhere and you could
+have a mobile marketplace for the first time. And I guess that's why we're pretty excited about this moment because
+suddenly all you know the idea maze just moved like all of the walls to the idea
+maze have shifted around and uh the only way to find out is you've got to
+actually be in the maze. It is very similar to Instacart and Web Van if we go back
+in history, right? because like the the big technology unlocked for Instacart was the fact that everyone had a phone
+now. It enabled like the webband model to actually work for the first time. And like it's the same thing with LLMs and
+recruiting companies now and and a whole bunch of other ideas. I think it makes uh focusing even on specific parts of
+the marketplace to be great ideas to start with. even with this uh recruiting
+idea space. This is company called Apriora that Nico, the other GP here at YC funded back in winter 24 and their
+whole premise is to build AI agents that run the screening for technical
+interviews where a lot of engineers spend a lot of time just doing a bunch of interviews and the pass rate is so
+tiny. When I used to run engineering teams at Niantic, all that pre-screening was just so much work. The engineers
+hate doing it. Yeah. And even that one piece not exactly let's say marketplace or what is the hardest part of it and if
+you solve it right now it works out. So API actually does a pretty good job. It's being used by large companies and
+it's been taking off. It's another example where you can actually expand the market because I think the there are plenty of technical screening products
+pre-appora but you could only use them to do fairly simple evaluations to like
+weed out people who weren't engineers at all um effectively um or very very junior but a prior product now with LLMs
+you can do more sophisticated evaluations to kind of get more nuanced levels of screening and so suddenly now
+companies will be like oh actually I could actually give this to not just like my international applicants or my college students. I'll just give it to
+like senior engineers who are applying which just opens up the opportunity. So you were talking a bit about education
+as well Gary about Dualingo. I think that's aspect of doing hyperpersonalization is one of the holy
+grails where has been difficult for edtech companies to crack right because every student as they go through their
+learning journey everyone is very unique and knows different things and it sounds
+really cool to build like the awesome personal AI Twitter that we did a that harsh did an RFS for right yeah the
+thing I'm excited about is for as long as I can remember the internet's been around like one of the like um dreams of
+it was that everyone now have access to like personalize learning and knowledge and um we'd all just
+um you know have these like great intellectual tools to learn anything and clearly the internet's made it easier to
+learn but we've never had really truly personalized learning or personalized tutor in your pocket idea which is
+possible now for the first time and I think we're definitely seeing smart teams applying to YC who are interested
+in building that type of product. Couple companies that we funded that are kind
+of working out is uh this other company that also Niko funded called Revision Dojo that helps students do exam prep
+and is sort of the version of uh flashcards but not like the janky just
+like boring going through content but the version that actually students like and gets tailored for their journey. And
+that one has like a lot of DAUs and a lot of power users which is super interesting. And I think Jared you had
+work with this other company called Adexia as well. Yeah. Um Adexia does tools for teachers to grade their
+assignments which is another example of work that like is like not people's main job but is this other thing that they
+have to do like engineers doing like recruiting that they generally hate doing. There's like a lot of studies
+that show that like the biggest reason that teachers churn out of the workforce is that they hate grading assignments.
+It's just like no fun at all. And so Adexia like is an agent that's like very good at helping teachers to grade
+assignments. Yeah. One of the interesting trends for some of this stuff is that um it's private schools
+who are actually much more nimble and you know I'd be curious what policy changes we need to make to actually
+support this in public schools cuz the public schools need it the most actually. I guess question for you
+actually Gary I'm curious about this stuff is it's clearly possible to build much better products with LLMs if we
+take the the learning apps for example they can go far beyond anything you could do for personalized learning prelims um but it doesn't necessarily
+mean that you instantly get more distribution especially if you're going after the consumer market so do you how
+do you think that plays out do better products automatically get more distribution or will these startups have
+to work equally as hard to get distribution to be big companies as before. I guess one of the more awkward
+things that's still true is that um you know intelligence is much cheaper. It's
+quite a bit cheaper than it was last year, but it's still enough that you
+have to charge for it probably. Um but that's something I would probably track. I mean it seems clear that um you know
+distillation from bigger models to smaller models is working. It seems clear that the mega giant models are
+teaching even the production model size of today to be smarter. The cost of
+intelligence is coming down quite significantly. So, you know, I know that we tease this sort of uh almost every
+other episode, but like consumer AI, it finally might be here soon. Uh and I
+think the thing to track is well how smart is it such that like any given user incrementally only costs I don't
+know pennies or like 10 or 15 cents like then it becomes so cheap that you will
+just have intelligence for free. Maybe it'll be a return to the premium model
+that we got used to during web 2.0. this idea that you could basically give away your product and then for um you know
+five or 10% of those users there are things that they so want that you know you're going to sell them a5 or $10 or
+$20 a month subscription that's basically what open AI is doing right like that is they complexity does it
+open AI uh you know going back to education study with 2DS they're doing it and they're seeing a lot of success I
+mean on average the kids who use that actually get on grade level or, you know, can kind of go up uh even a couple
+grade levels. Those are real outcomes for students. So, you know, right now you still got to pay for it, but uh
+maybe not for a while. And that's actually a really big unlock. You know, that that's the moment where you could
+have 100 million or a billion people using it. OpenAI uh might be furthest
+ahead with it. But the hope is that, you know, really thousands of apps like this
+start in start coming out. um across all the different things you'll need. And that's something that I know we keep
+saying it like it's gonna happen. I mean it's kind of happening already for edtech speak. It's this company that got
+started couple of years ago before LLMs were a thing at all. It was team of
+researchers that really believed that you could personal personalize language learning which might have been a bit
+contrarian back then because Duolingo seemed to be the game in town that was winning and they really focus on really
+personalizing that whole language learning and they got they started taking off in Korea for a lot of uh
+learners that were trying to learn English and when GPT3 and 3.5 they were
+early adopters of it started coming out they saw that wow this is going to be the moment they double down and they've
+been on on this trajectory now with lots of MAUs EAS that's really working out. I
+think one thing going back to the consumer thing that we haven't talked as much about um we've seen a lot with the
+startups that are selling to enterprises or companies about how the budgets become so much bigger when companies are
+willing when companies stop thinking about you as software as a service but they start thinking about you as replacing their customer support team or
+their analytics team or something like that. they'll just pay way way way more. So the same thing will apply in consumer, right? Like if you think about
+a personalized learning app, uh often edtech companies struggle with who's actually the buyer and who's going to
+pay. And if you go for like younger children, for example, it's like you've got to get the parents to pay. But the
+parents aren't going to pay that much for an app that their kids like don't retain or complete like some sort of
+online course that they're disengaged with. But we know that parents will definitely pay for like human tutors and like you know that's like actually
+probably quite a big market. And so if your app goes from being like a self-study course that doesn't get any
+completion to actually being on par with the best human math tutor for your 12-year-old, parents will pay a lot more
+for that. And so those like it's possible that like the product now just become has a business model that you
+didn't have before. And that alone means you don't necessarily need millions of parents using it, but even a hundred
+thousand parents using it paying you a significant amount means you now have like a much bigger business than was
+possible before. Yeah, I feel like we have to talk about modes a little bit. I mean, it's pretty clear a company like Speak or almost any of these other
+companies that could have durable revenue streams like what you need is brand, you need switching costs.
+Sometimes it's integration with other uh technologies that are sort of surrounding that experience. like in uh
+a school it would probably be being connected to Clevver for instance like login is authentication is pretty
+obvious. So yeah I feel like Sam Alman has talked about this a bunch you know it's uh it's not enough to drop AI in it
+you know you still have to actually build a business I don't think open AI is necessarily uh you know out to get
+all the startups like I actually think that on the API side they very much hope that a lot of them do really really well
+and certainly we want that too. They did just hire like the Instacart CEO as
+their CEO application. So, it does kind of seem like they are definitely paying more attention to the application layer.
+That's right. Yeah. I mean, you'd be crazy not to, right? Like, by all accounts, Open AI is highly likely to be
+a trillion dollar company at some point and uh you know, as powerful as a Google
+or an Apple or um any of them. The interesting thing right now is like they're still on the comeup. And then if
+anything, um, the big tech platforms are actually still holding back a lot of the
+AI labs. And the most profound example of this is, uh, why is Siri still so
+dumb? It makes no sense, right? Totally. Uh, I mean, I think that points to
+something that we actually really need in uh, tech today. We actually really need platform neutrality. So in the same
+way, you know, 20, 30 years ago, there were all these fights about net neutrality, this idea that there should
+be one internet, that ISPs or big companies should not self-preference uh
+their own content or the content of their partners. Uh you know, that's what sort of unleashed this giant wave of
+really a free market on the internet. The other profound example of that is actually Windows. if uh you know if you
+open up Windows you actually have to choose your browser and then you also need to be able to choose which search
+engine you use and these are things that you know the government did get involved in and said hey you you know you cannot
+self-preference in this way and you know if you remember the moment where where
+internet explorer had a majority of web users like that could have been a moment
+where Google couldn't have become what it became so We actually have a history
+of the government coming in and saying this should be a free market and for that free market to create uh choice and
+then therefore prosperity and abundance. And so I would argue like, you know, why
+doesn't this exist for voice on uh phones? Like you should be able to pick not you shouldn't be forced to use
+Google Assistant. You shouldn't be forced to use Siri. You should be allowed to pick and you know it's been
+many many years of having to use a very very dumb Siri. On the moat topic,
+something I just find fascinating is I saw some numbers recently about how um
+Gemini Pro models like just their usage particularly from consumers is just a
+insificant fraction of chat GPTs and I think at YC we've been doing our own internal work building agents and um
+actually being at the cutting edge of a lot of the AI tools and we found that Gemini 2.5 Pro is like as good and in
+some cases a better model than 03 for various tasks that hasn't trickled down into public awareness yet, right? Which
+is fascinating since Google already has all the users with their with their phones. And I don't think anyone would say OpenAI is not a startup anymore, but
+relative to Google, it essentially is. So there is clearly some sort of intangible mode around being the first
+in a space and sort of staking your claim as like the best product for a specific use case. And I feel like and
+actually making it good. Yep. Yep. Yep. Yep. But at some point, maybe it doesn't even necessarily need to be like
+objectively the best. It just needs to be good enough. I mean, that's the bet that I think a lot of the big tech
+companies are trying and failing at. I mean, there's Microsoft has a co-pilot built into Windows now that is still
+quite inferior to anything OpenAI puts out. Gemini itself is very very good and
+I use it quite a lot. Um it's probably I don't know 40% of my agent you know sort
+of if I need to especially summarize YouTube videos it's very very good at that for multimodal is really good.
+Yeah, a lot of the Gemini integrations into Gmail or, you know, Google Drive
+are not they're totally useless. It's like, is there someone at the wheel over there? I don't get it. You know, I mean,
+I think that's even confusing for us is even using it as a developer. There's actually two different products. There's
+Gemini where you can consume Gemini and Vert.ex Gemini. And I think they're like different orgs. I think it's suffering a
+little bit from being too big of a company and essentially shipping the orc. There's like these two APIs you can
+consume to use Gemini and we're like why two? One is from deep mind and the other
+one is from GCP. I think that comes from the culture of Google though. I mean there's definitely this sense that uh if
+two orgs are competing and fighting normally in a normal org you go up and in a functioning uh startup for instance
+you know it goes up to some level and then ultimately the CEO or founders and then they just say okay well I see the
+points over here I see the points over there we're going this way but you know having lots of friends from Google it
+doesn't seem like that's the culture there like there's a layer of VP and sort of management that is actually like
+you guys just fight it out and so then you ship the org. I think the crazy thing about Google, they probably should
+have won a lot of the experience of the best model. There's almost like I don't
+know where all this Game of Thrones analogy could be used. They might be a little bit like Dennis Targaryen because
+they secretly have dragons. The dragons are the TPUs. Mhm. And this is one of
+the reasons why I think they could be the one company that could get a lot of the cost of intelligence to be very low
+and they also have the engineering to to be able to do a cost effective large
+context windows. I think one of the reason why the other labs haven't quite shipped as big of a context window is
+cost actually. Is it actually the hardware? like it's just like you can't actually do it without
+you can do it but I think it's just very expensive and not cost effective but I think they done it so well and they got
+TPUs which I think is smart for Sam if you saw his little announcement he's
+still the uh CEO of compute quote unquote so I'm sure they're probably working on something around there too
+classic innovators dilemma it's like if Google replaced google.com with Gemini
+pro it would instantly presumably be like the number one chatbot LLM service
+in the world, but that it would give up 80% of its revenue. Yeah, you would probably need a pretty strong founder
+CEO to do that. It's the kind of thing I can imagine Zuck doing, right? Like being will like Yeah, you just you can't
+imagine a hired CEO who's going to do that. He's done that. He renamed the company to Meta. Yeah. Yeah. Meta has its own issues, too. Like I'm so
+surprised, you know? I mean, you have um Meta's AI in WhatsApp. It's in the blue
+app. It's everywhere. But I mean, who actually uses it? I don't think any of us. I started using the um meta AI in
+WhatsApp. It's very classic. It makes me feel like Zuck is clearly still in charge of product
+because I don't think anyone else would launch it that way. You just you now you have an AI system that's just in all of
+your chats and you sort of it comes with a you can just at it and it will just start talking in a group chat and it
+feels quite invasive actually. Is it like well it's not that smart and then it can't do anything. Yeah. And then you
+have I mean most people are surprised that it's in there. It's just it's just like it feels like having someone from
+Facebook just in your chats and it's just like it's I know it remind me of like the original newsfeed
+launch or something. It's just like the classic meta style of like this is sort
+of I don't know objectively optimal like I'm sure people will love it. You need to add a little bit of design taste into
+these things. I mean, it blows my mind that I can go to the blue app, which I still kind, you know, it's probably
+people watching this are like, "What the heck's the blue app?" This is like facebook.com, which maybe nobody uses
+anymore. It's very millennial. Yeah. But, you know, you have this meta AI and you ask it, "Hey, who are my friends?
+I'm going to Barcelona next week. Who are my friends in Barcelona?" And it's like, "Sorry, as an AI, I actually don't
+have access to them." It's like, what? You know, what is the point of this? Okay, our partner Pete Cuman wrote this
+really great essay where he talked about um the Gemini integration with Gmail and
+he really like broke down in great detail why Google built this integration
+all wrong and how they should have built it. Um it's almost like he was a PM at Google. Oh wait, he he was a PM at
+Google. Um it was very profound um in that one of the things he pointed out
+was that you know you have a system prompt and a user prompt and if you are
+actually going to empower your users you actually allow your user to change the
+system prompt which is the part that normally is like above you know to use the veniteshow's idea of like sort of
+the the API line it's sort of like the system prompt is what is exerted upon it's like sort of
+imposed upon the user and so you know Gemini follows this very specific thing
+I think the example is uh actually an an email saying that uh Pete's going to be sick to me he's like uh sorry I'm not
+going to be able to come in and he asks the agent to write this letter and it's very formal and of course it is because
+there's no way to change the tone it's actually one the best blog post and that I think he had to vibe code the blog
+post itself cuz you can actually try the prompts yourself on that web page. Yeah, it's super cool. It's like a it's in
+this like interactive Yeah. template thing language which made me think it's time to start an AI first vibe coding uh
+blog platform. Oh, like a AI like a like a AIosterous. Yeah, basically
+isost Yeah. With all my extra time, that's what I'm going to work on. But that's a free idea for anyone's
+watching. we'll fund it. There's another class of startup ideas that I'm I'm particularly
+excited about that I think are like perhaps the time is now, which is um do
+you guys remember the tech- enabled services wave? Yep. Yeah. So, for folks who who who
+uh didn't follow this, in the in the 2010s, there was this huge boom in companies called tech- enabled services.
+Um Triple Bite was one actually. Yeah, that was like tech enabled services for recruiting, right? Um we also had atrium
+which was technical services for law firms. It started with Balag's blog post about full stack startups if you
+remember like the concept was just that um software eats the world means software just kind of goes into the real
+world and so this is not the success example but an example of it was hey like instead of just having an app to
+deliver food you should also like have a kitchen that cooks the food and software
+to optimize the kitchen and you just do everything. Um, and that like the full stack startups in theory would be more
+valuable than just the software startups because they would do everything. Yeah. Because instead of just selling like software to like the restaurants and
+capturing like 10%, you could just own the restaurant, you could capture 100%. This is exactly what TripleA was cuz we
+were like we're going to be a recruiting agency effectively. We're not selling software to recruiting agency. We're actually just doing the whole thing.
+like we're gonna we also had recruiters on staff that were just there to help people negotiate salaries and match them
+to the right companies and um yeah it was very much in that wave of do everything but the that wave of startups
+generally forgot that you need gross margins. Yeah. What happened like I mean like fast forward basically the short
+version is like it didn't really work and the full stack startups actually were not more valuable than the SAS companies and the SAS companies sort of
+like won that round of the like Darwinian competition of different business models. I think fundamentally
+it's just what Gary says. It's just they were actually not great gross margin
+businesses, but it was actually I think what it it was just hard to scale them. At least in trip wise situation, we
+actually got to like $20 million annual run rate, $24 million annun rate within
+a few years. So like if you compared us to like a regular recruiting agency, it was like super fast. But um if you
+compare it to like the top software startups, not that like um impressive
+and it became harder and harder to scale because you had more and more people. Yeah. Yeah. Basically the margins didn't
+work out particularly well and so then you need to keep raising more capital and so if you were like a fearsomely good fundraiser, you could sort of do it
+and kind of push yourself. But even in those cases, I think most of those businesses at some point it just caught up with them. like at some point like
+actually we have to figure out a way to scale the business and have good margins and make this like profitable and not
+just rely on the next fundraising round is what I felt hurt a lot of the you could argue ZS was one of those for um
+insurance and a bunch of different HR related things. It was actually um they
+basically relied too much on hiring more salespeople and more customer success
+people instead of actually building software that then would create gross margin. And so Parker Conrad said,
+"Well, I'm not going to do that again. And I'm also going to force all the engineers to do the customer support so
+that they go on to build software that doesn't require so much support and thus there is gross margin." And that, you
+know, was a whole lesson that, uh, I feel like the whole tech community learned collectively through the 2010s.
+If we learned one thing, it's gross margin matters a lot. Like, you can you cannot and should not sell $20 bills for
+$10 cuz you're going to lose everything. I think a sort of non-financial reason
+why the gross margins matter is um, low gross margin businesses usually mean you have some ops component and then you
+have to like run the ops component. So if I think of my like tripey experience, there was like a lot of brain power
+spent on like how do we like manage this team of like contracted engineers, this team of like humans looking after the
+like essentially the human recruiting team like lots of pieces of the business where actually the existential issue we
+had is how do we get to like millions of engineers across the world like all like on like on our platform and all locked
+in i.e. like how do you just get lots of distribution? And I think something that's nice about a high gross margin
+business is another way of saying it's just a simpler product or a simpler company to run and you can actually just spend all of your time focused in on how
+do I make the product better and how do I get more users and get more distribution so that you can keep that like exponential growth for a decade.
+And I think a lot of full stack startups partly plateaued out because it's just a they're complex businesses
+to run. Maybe u a very famous example of that was like we worked right. Yeah.
+Yeah. Which is very took it to the limit. The margins were not there. It was not uh didn't have the tech margins.
+Right. It had community adjusted aida which was very creative. What I've been excited
+about recently is like I think you can make a bullc case that like now is the time to build these full stack companies
+because like you know like you were saying like the triple by 2.0's knows won't have to hire this huge ops team
+and have bad gross margins. They'll just have agents that do all the work. And so like now actually like full stack
+companies can look like software companies under the hood for the first time. And you gave a great example. So Atrium started by Justin Khan, full
+stack law firm didn't work out for all I think a lot of these same reasons. Um but now I heard him say that before.
+It's like look, we went in trying to use AI to automate large parts of it and it
+wasn't the AI was not good enough at that moment, but it's good enough now. If you look at within YC, we have
+Legora, which is like this like one of the fastest growing companies we've ever funded. Um, and it's not building a law
+firm, but they're essentially um, you know, building AI tools for lawyers, but you can see where that's going to extend
+out to, right? Like eventually their agents are just going to do all of the legal work and they'll they'll be the biggest law firm on the planet. Um, and
+yeah, I think that's a kind of full stack startup that just wasn't possible pre-LM. I think this started right when
+Uber and Lyft and Instacart and all of these companies were happening. And the thing is now I mean you can actually
+have LLMs do a lot of the knowledge work and then I mean increasingly it it could
+actually have memory. I mean this is one of the RFS's. It's literally you can have virtual assistants um but they
+become less and less virtual if they can also uh hire real people to do things for you. Virtual assistant marketplaces
+was definitely like a whole category of companies for like 15 years in including
+exec where you build like a marketplace of like people in the Philippines and like other other countries and then you like exposed to sort of like Airbnb UI.
+I don't think any of them ever like really got really became like amazing businesses though. Going back to Pete's
+post, I think the other thing that's interesting about the um the points he made around sort of the system prompt
+and user prompt and maybe we want to expose the system prompt to users a little bit more. Um it's an example of
+just how we're still so early in just using AIS and building agents. There's all this like tooling and infrastructure
+like still to build. You have to do evals, you have to run the models, like a whole bunch of stuff to build still.
+And so there's clearly still a bunch of startups yet to be built in just the
+infrastructure space around you know deploying AI and using agents and Jared
+you know it's interesting something that struck me about when I first came back to YC in 2020 is I remember a class of
+idea we weren't interested in funding was anything in the world of like ML machine learning operations or ML tools
+and I remember reading some applications and people like ah like another ML ops like team like these sort of never go
+anywhere. Um clearly if you were working on ML ops in 2020 and you just stuck it
+out for a few years, you're in the right spot. Any context you can share from
+that? I remember I got so frustrated after years and years of funding these
+ML ops companies with really smart, really like optimistic founders that just like didn't go anywhere that I ran
+a query to count and I remember finding that I think this was around 2019. We
+had more applications in 2019 for companies building ML tooling than we
+had applications for like the customers of those companies like like anyone who's like applying ML to like any sort
+of product at all. And like I think that was the core problem is that like these people were building ML tooling but
+there was no one to sell it to cuz like the ML didn't actually work. So there just wasn't anything useful that you could build with with with with all this
+ML tooling. People didn't want it yet. I mean directionally it was absolutely correct. Like from a sci-fi level on a
+10-year basis it was beyond correct. Yes. It was just wrong for that moment. Yeah. You actually have a team that
+stuck it out. I mean part of the lesson is sometimes it will take a bit of time for technology to catch up and this
+company called Replicate that you work with stuck it out. It was from that era. Yeah. Replicate was from winter 20 and
+they started the company right before COVID and during the pandemic it was going so poorly that they actually
+stopped working on it for several months and just like didn't work on it cuz like it wasn't clear that the thing like had
+a future at all and then they picked it back up and just started like working on it quietly. But it basically was just
+like they were just building this thing in obscurity for two years until the image diffusion models came out and then
+it just like exploded like overnight. OAM is another good example. Yeah, about
+so the Olama folks were also from that pandemic era and similar story to uh to
+replicate. They were kind of trying to do different things around here too and they were trying to work it out to make
+open source models deploy a lot better and they were also quietly working on it for a while. things weren't really
+taking off and then suddenly I think the moment for them was when Lama got
+released that was like the easiest way for any developer to run open source models locally and it took off because
+suddenly the interest to run models locally just took off when things started to work but not before that
+because there were all these other open source models um that were in hugging face and especially the ones from like
+BERT models those were like the more used deep learning models. They were like just okay, but not many people were
+using them because they weren't quite working. What's the moral of the story? I mean, some of it is like uh be on top
+of the oil well before the oil starts shooting out of the ground, but is that actionable? It's kind of the classic
+startup advice of follow your own curiosity. Like most of these teams or almost all these teams were working on
+it because they were just interested in ML. They wanted to deploy models. They were frustrated with the tooling. probably weren't necessarily
+commercially minded and trying to pick the best startup idea they could possibly work on. But I know sometimes you get lucky sometimes. There's so many
+ways to do it. I mean, we were just sitting with Verun from Windsurf and he pivoted out of MLOps into codegen.
+Deepgram is another one. Um, Deepgram was one of the first companies I worked with back in 2016 and it was these two
+physics PhDs. They had done string theory. So they weren't even computer scientists and they got interested in deep learning because they saw like
+parallels with string theory and they were it was it was exactly what you said Harge they they found the mathematics to
+be elegant and interesting like that's really the origin and so they started working on deep learning before anybody
+really and they built this speech to text stuff and it just like didn't
+really work that well for like a long time and so like nobody really like paid
+much attention to to this company wasn't famous. The founders to their credit just like kept working on it and then
+when the voice agents took off, they all needed speech to text and text to speech and um most of them are actually using
+deepgram under the hood and so they've just like exploded in the last couple of years. I mean I guess essentially the
+whole AI revolution is built on Ilioskava following his own curiosity for like a long period of time. We need
+more of that. Actually this is maybe a meta point on this whole conversation.
+So, um, we were at colleges, uh, Tyenne and I went on this college tour, um, and
+we spent several weeks speaking to college students, and I realized that there's this piece of startup advice
+that became canon that I think is outdated. Back in the pre-AI era, it was
+really hard to come up with good new startup ideas because the best like the idea space had been picked over for like
+20 years. And so a lot of the the startup advice that people would hear would be like you you really need to
+like sell before you build. You have to do like detailed customer discovery and make sure that you've like found a real
+like new customer need like the lean startup lean startup. Yeah. Exactly.
+Fail fast. All this stuff. And that is still the advice that college students I think are receiving for the most part
+because it became so dominant. But I would argue that in this new AI era that the right mental model is closer to what
+Hard said, which is just like use interesting technology, follow your own curiosity, figure out what's possible,
+and like if you're if you're doing that, if you're living at the edge of the future, like PG said, and you're
+exploring the latest technology, like there's so many great startup ideas, you're very likely to just bump into one. I guess the reason why it could
+work extra well today is that you apply the right prompts and the right data set
+and a little bit of ingenuity, the right evals, a little bit of taste and you can
+get like just magical output. And then that's still a secret I think. Yeah, I
+mean you can tell it's still a secret because you could look at there like hundreds of unicorns out there that
+still exist and that are doing great. You know, like growing year on year, have plenty of cash, all of that. But
+the number of them that are actually doing any sort of like transformation internally, it's not that many. like a
+shocking few number of companies that are you know 100 to thousand person
+startups that you know they're going to be great businesses but that class of startup like by and large they are not
+entirely aware like there isn't a skunk works project in those things yet like you know the extent of it is um maybe
+the CEO is playing around with it like maybe some of the engineers who are really forward thinking are doing things
+in their spare time with it maybe They're using Windsor for cursor for the first time and it's like you look down
+and you're like what year is it? like it's a little bit like hey you know get on this like I think Bob Mcgru uh came
+on our channel and he was just shocked like he was one of the guys as chief research officer like building you know
+building what became 01 and 03 and all these things and then he releases it and
+like who's using it like he expected this you know crazy you know outpouring of like intelligence is too cheap to
+meter this is amazing and it's like actually like people are mainly just we're just still on our quarterly road
+map unchanged from, you know, even a year ago. Yep. Pretty wild. Okay, cool. I think that's all we have time for
+today. My main takea away from this has been there's never a better time to build. So many ideas are possible today that weren't even possible a year ago.
+Um, and the best way to find them is to just follow your own curiosity and keep building. Thanks for watching. See you
+on the next show. [Music]

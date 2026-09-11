@@ -1,0 +1,491 @@
+Okay, good morning everyone. Thank you
+all so much for being here. We have
+about 80 portfolio company founders and
+AI leaders uh in the room to explore a
+very timely topic, owning your
+intelligence or sovereign AI. Uh today's
+event is meant to be half a rallying
+call and half technical how-to. And so
+we have stacked the agenda with I think
+high high substance technical talks and
+demos so that we don't just talk the
+talk of building your own AI but
+actually learn how to get there
+together. Uh so thank you all for taking
+the time out of your mornings to join
+us. I know your time is incredibly
+precious and let's dive right in.
+So let's start with the opportunity.
+What is sovereign AI? Uh a sovereign is
+an independent state that has total
+self-governance. And so sovereign AI
+refers to companies owning their own
+intelligence without external
+dependencies down to the weights. An
+important nuance here is we are
+definitely not telling our companies to
+get off Opus or GBT. That is definitely
+not the message. Uh for coding agents,
+for desktop work, uh for frontier level
+APIs, the closed model APIs are
+wonderful. But what we've observed is
+that more and more of our companies are
+going down the path of wanting to build
+their own AI capabilities in parts of
+their products and vertically
+integrating towards owning more of this
+intelligence. And so today's session is
+meant to equip companies that are
+starting to go down that journey.
+We're obviously not alone in this idea.
+In the last month, uh, the rhetoric
+around sovereign AI has escalated
+sharply with folks like Alex Karp and
+Satia speaking up in support of
+companies owning their own intelligence.
+Just last week, Jensen led the charge in
+making sure that openweight models
+remain available in the US and it was
+awesome to see the near unanimous wave
+of support. I think the message is very
+clear that companies want to own their
+intelligence. They want to own not rent
+their weights. And I think it's simply
+because intelligence is too core, too
+fundamental of a property to just
+outsource.
+We're glad that sovereign AI is in the
+zeitgeist right now. Uh because we think
+it's a good thing for the world. On one
+hand, you have centralized intelligence
+where a single all powerful AI powers
+more and more of the GD the world's GDP
+as a black box sucking in all the data
+exhaust, all the data flywheels from the
+rest of the world. On the other hand,
+you have decentralized intelligence
+where the whole world builds on top of a
+solid core, but every individual person
+company builds their own intelligence on
+top bespoke to their own data, their own
+industries, their own personalization,
+uh their own way of working, their own
+taste and so the ecosystem flourishes
+and individuality triumphs. No single
+company swallows the rest. I think this
+is a much more optimistic view of the
+world.
+And so we work with dozens of companies
+that are going down the journey of
+building their own AI. Um here are the
+biggest reasons that we've seen people
+move. Reason number one is cost. Uh
+especially for low zero negative margin
+companies, sovereign AI isn't a nice to
+have, it's a mustave. Um ironically, the
+more successful your AI product is, the
+higher your AI cogs tend to be. And so
+it's actually the companies that have
+been most advanced in their deployment
+of AI that have been the first to go on
+this journey of of owning their own
+models. Reason number two is speed. And
+so in certain domains, coding is one of
+them. Uh security is another one. A
+small distilled custom model can beat a
+large general one because speed is so
+important.
+Num reason number three is performance.
+And this is a relatively newer one. I
+would say last year most companies were
+not choosing to own their intelligence
+to generate better performance. Uh but
+we're now at the point where open models
+can outperform closed ones on your
+domain and we're going to spend a lot of
+today's agenda talking about how to get
+there. And then reason number four,
+controlling your own destiny. Uh
+anthropic and open AI, I actually think
+to their credit, they've been really
+wonderful partners to a lot of the
+ecosystem, but companies are
+increasingly finding that they want
+their own set of independent legs to
+stand on as well.
+Um, does anybody here come from the
+crypto days or remember the crypto days?
+Okay. Um, do you guys remember this
+meme? Okay. Uh, in the crypto of the
+days, there was this meme for the DeFi
+DJs. Uh, not your keys, not your crypto.
+And so, if somebody was cussing your
+crypto for you, it fundamentally wasn't
+yours.
+I hereby present the AI version of this
+meme. Not your weights, not your
+product. Um, I think that for a product
+to be truly yours, I think it's
+reasonable to think that you need to be
+able to control control and custody your
+own weights.
+Pat shows this slide at AI ascent
+talking about the race for the
+application layer. Uh, the you look so
+proud of yourself. Uh, the punch line is
+that both the AGI labs and the
+application companies are racing to be
+the userfacing product from different
+ends. the foundation model labs from the
+model side and the application companies
+from the user back. I think we're seeing
+a new dynamic emerge now which is
+actually that battleground is
+increasingly becoming not just the race
+for the application layer but the race
+for the intelligence layer. And so this
+this battleground is no longer just
+about who gets to control the product,
+the UI, the go to markets, the wrapping.
+It's actually about who can own the
+intelligence itself and shape better
+intelligence in the product. So the
+product is the intelligence and the
+newest battleground is for not just the
+product surface but for the intelligence
+layer itself.
+And so the hottest nail labs in my
+opinion are actually uh the applied
+research that we see coming out of
+companies right now like Harvey,
+like factory,
+glean,
+open evidence,
+sam grep
+the list goes on and on and I think the
+research is spanning everything from
+eels and benchmarks to harness
+engineering to new algorithmic
+techniques for spine tuning and a a lot
+lot more and we started this uh we
+started this morning talking about
+centralized versus decentralized
+intelligence. I think it's really
+wonderful to see the amount of
+innovation that is happening in the
+democratized intelligence world. Like I
+actually think the application companies
+are the newest Neolabs.
+Okay. So I assume that everyone here
+today is pretty bought into this
+journey. Let's assume that you want to
+build your own lab, build your own
+models. How do you go from zero to one
+to 100? We're going to do something a
+little bit different today here. Um, I'm
+going to lay out an opinionated
+framework and technical roadmap. And so,
+take that with a giant grain of salt.
+Uh, every company is different and and
+I'm not technical and so take this with
+a giant giant grain of salt, but I hope
+it provides a useful starting point for
+how to think about building your own
+intelligence.
+Uh, step one um to owning your
+intelligence is strategy. What parts of
+your AI do you want to own? what parts
+do you want to rent? Step two is team.
+Figuring out how to staff and organize
+people towards the production of
+intelligence. Step three is legibility.
+I really think this gets glossed over um
+and is incredibly important. So more on
+this later. And then finally, step four,
+we're going to talk about a technical
+road map. What are the building blocks
+you need to assemble in order to build
+your own intelligence? So let's dig in.
+Um step one, defining which capabilities
+you want to own versus rent. Sovereign
+AI isn't binary. Uh you're not 0% or
+100% sovereign. Um an important part of
+the strategy is to draw the lines for
+which intelligence you want to own and
+which you're comfortable outsourcing.
+And so here's a useful framework to
+think about um what parts you want to
+own versus rent. I think there are four
+important factors that go into this. Uh
+one is cost. Like how how important is
+this cost line item to your overall
+cogs. Uh two is speed and latency. Is it
+a P 0 or not? Um, factor three is
+performance. And this is where it gets
+very interesting. It used to be that you
+would choose open weights when you
+didn't care about performance. Now we're
+getting to the point where in certain
+domains, you may get better performance
+by tuning models on your own data. And
+then finally, proprietary data. Are you
+in a domain where the data you're giving
+the model to improve it is super
+proprietary, super proprietary to your
+business or less so? Um, so here are
+some examples of how companies have
+decided to make this trade-off. In
+coding, you have both agents and you
+have autocomplete. On the agent side,
+this these are still mostly rented today
+because you want strong out-of-the-box
+performance and latency isn't a P zero.
+Um, on the other hand, for tab
+autocomplete models in coding, you
+really really care about speed and these
+uh these API calls are so frequent that
+the costs really rack up. And so most
+tab auto complete models now run on
+sovereign intelligence. I work at a
+cyber security company in south Alain I
+think I saw you earlier uh that owns its
+models primarily for speed and
+performance um and the ability to post
+train the model in very bespoke ways. Um
+bio companies are moving to their own
+models because of the value of
+proprietary data in that space. And so I
+think this is just a useful framework to
+think about which AI capabilities do I
+want to own versus rent. Step two,
+assemble a team. I've shown two profiles
+of labs leaders here just as examples.
+Uh Nico comes more from the research
+side of the house, having done uh
+research at Apple and then at Google
+Brain. Alex comes more from the
+engineering side, having held multiple
+engineering roles at Microsoft and then
+ramp. And I I show this just to say
+there's multiple paths to Nirvana and
+depending on the flavor of research
+you're going to be doing at your company
+um whether it's going to be more
+fundamental or applied there are
+different profiles uh that work for a
+labs leader. I also think it's important
+to think about how to design your
+organization. Um traditionally AI teams
+have frequently been organized hub and
+spoke. So you have a single platform
+team supporting different uh different
+AI product uh different application uh
+product teams. And what I've seen is
+that a lot of companies are shoehorning
+this AI platform team into doing the
+sovereign AI stuff as well. Um, I'd
+encourage folks not to do this. Uh, I'd
+encourage people to start from scratch
+here because this fundamentally is not a
+platform services capability. You want
+people that are able to think on their
+feet, think on the frontier and produce
+frontier level research. And it's such a
+different flavor of research and you
+want them to be playing offense, not
+just servicing teams. And so we've seen
+uh small denovo teams get very far here.
+Harvey, for example, has published a ton
+of research. They have just a team of
+seven. And so start small. I'd say start
+from scratch. Um consider making it uh
+your own lab.
+Step three, legibility. I think this is
+totally underestimated and how important
+it is because my guess is a lot of
+people in this room are doing wonderful
+research inhouse internally and that not
+all of it is very externally legible.
+And Winston Weinberg talks about how the
+responsibility of a CEO is twofold. One,
+drive substantive results, but two,
+control the narrative, control
+legibility around what you're building.
+And I totally agree. Um, when it comes
+to owning your AI stack, legibility
+really matters because every single
+buyer right now is choosing their AI
+champion. And so they're trying to
+they're they're getting the same pitch
+over and over again. They're trying to
+discern which vendor is sophisticated
+enough to take me to the promised land.
+Um, and you know, they want to they want
+to choose people that know what they're
+doing. Increasingly, that means putting
+out your own research. And so being
+legible here means doing excellent
+technical marketing, maybe having your
+own separate branded labs or research
+group, publishing research with high
+taste. All of this matters a lot. I
+think it goes overlooked. And so, um,
+for the all the Sequoia companies in
+this room, I would really really push on
+us to think about this.
+And then finally, step four, setting
+your technical road map. Um at a high
+level the uh the rough journey that I
+see companies take and every company
+goes on a different journey but first
+you set your strategy. Um second
+defining eval this is so important. Um
+it is unglamorous work. It is not fun
+work but the more that you do up front
+the better positioned you are for
+everything after. And so I think this is
+a really really crucial to get right at
+the beginning. Um next we see companies
+starting to play with model routers with
+harnesses. Um, some companies find they
+can get good performance with out- of-
+the-box models. Um, others are finding
+strong performance gains from
+post-training. In some rarer cases,
+needing to move into mid-training,
+pre-training, and then finally setting
+that machine up so that live customer
+data is actually creating a feedback
+loop where your model, your intelligence
+is improving with every customer
+interaction. And so, this is the rough
+journey that I see people go on. Um,
+again, every company is very, very
+different. And I'd encourage everyone in
+the in the audience today is just
+compare notes with with people around
+you. Everyone is everyone's somewhere on
+this journey.
+The beauty of owning your stack is that
+you can actually drive frontier level
+performance now. And so this is somewhat
+new and in large part this is thanks to
+the newest openweight models uh
+especially Kimmy K3 and GLM52 being
+extremely good. um because the weights
+are available, they're actually much
+more malleable than working with the
+closed APIs. And so you start with a
+baseline that's already close to
+frontier and then within with a good
+enough technical roadmap. So with strong
+uh post- training, prompt harness
+engineering, online learning, you can
+actually reach better than frontier
+performance by owning your stack. And so
+this is new for 2026. I think this is
+very very important. This is a big part
+of why people are starting to think
+about owning their intelligence.
+Um I like diagrams and so in an attempt
+to orient us all here is how I think
+about the stack from an infrastructure
+perspective. On the left hand side this
+is production. This is your userfacing
+intelligence. This is the stack that
+drives um every every uh token that your
+user ends up seeing. And fundamentally I
+think of the production stack as a
+harness on top of a model. Alongside
+that you have a development stack. These
+are the tools and vendors that you use
+to get your intelligence good. In the
+closed model ecosystem, this entire
+stack is very simple. You have
+foundation models like Opus, GPT. Um,
+and you have the harnesses that come out
+of the box with each and you can get
+quite far with the stack, including
+building your own harnesses, prompts,
+feeding contexts into the models, doing
+your own valves. Um, but you're not
+really having to collect a ton of data.
+You're not really having to train your
+own models. And so it's much simpler
+stack. And so I'd say this is a higher
+floor, but it's a lower ceiling because
+you don't actually have the ability to
+take your own data, to take online
+production data and improve your own
+intelligence.
+The minute that you start to think about
+owning your own intelligence, it is like
+opening a Pandora's box because that
+beautiful clean API call is now um
+having to train your own models. And so
+instead of having a single model API and
+some uh good performance out of the box,
+you have to choose a open source base,
+do a lot of post training on top. For
+your harness, you got a choice of
+several open harnesses and then it's up
+to you to configure the harness, the
+logic, the tools, the context, uh versus
+taking an agent that just works out of
+the box. Um I just an aside here,
+context is really really important to
+driving performance. Um, and there's
+several different flavors of context
+that that that are uh driving these
+these models. Um, a vector database like
+a turbo puffer, an enterprise knowledge
+graph like a glean. Um, open source
+connectors obviously via MCP. Um, and
+then even novel approaches to context.
+Uh, Don uh Dan Beerman from Engram is
+here. Uh, they're doing novel research
+around encoding context in in the
+weights themselves. Um, so I'd encourage
+anyone that wants to chat about memory
+to go find Dan during one of the breaks.
+Um, and then alongside the production
+stack, the development stack becomes way
+more important when you own your own AI.
+You have to carefully monitor eval to
+know how your intelligence measures up
+um, and watch how the model performance
+is drifting in production. You need a
+lot of highquality data to post-train
+the models for your domain. Sometimes
+this is expert trajectories. U, uh,
+sometimes it's synthetic data, sometimes
+it's RL environments. And then finally,
+you need to think about how to set up
+online learning for your system so that
+your intelligence gets better and better
+with every single user interaction.
+And so the way that we've set up today
+is we've picked a series of technical
+workshops to give you deep dives into
+everything you need to build your own AI
+other than pre-training your own models.
+Uh Lynn from Fireworks is going to lead
+a workshop on post-training. Harrison
+from Langchain is going to lead a
+workshop on harnesses and evals. Brendan
+from Meror is going to lead a workshop
+on Ral environments, synthetic data, and
+more. And then finally, Trajectory is
+going to lead a workshop on online
+learning.
+And then to bring it all together,
+Harvey's going to lead a workshop on how
+they approach building their entire AI
+stack and strategy. And just yesterday,
+they announced Harvey Research. You'll
+see that um uh many of their technical
+partners are actually speaking today.
+And so we've really gone all out to get
+the best possible lineup of speakers
+today, both inside and outside the
+portfolio. [applause]

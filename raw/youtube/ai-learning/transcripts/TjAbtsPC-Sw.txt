@@ -1,0 +1,403 @@
+Perfect. All right. Hey everyone. Um, so
+I usually do slides, so I'm doing a very
+stupid thing to try and actually demo
+and write some code. I've been praying
+to the demo gods for the last six and a
+half hours. Um, and something broke
+right before this, so I guess fingers
+crossed and we'll see. Um, but if you
+haven't heard of Versell before, uh, I
+like to think of Versell as providing
+like the infrastructure and the
+frameworks to help you go from idea to
+fully launched products. Um, and
+speaking of ideas, we started hacking
+around about two years ago now uh on a
+what's known colloquially now as a
+coding agent, but at the time it was
+just like can GPT3 output React code.
+Um, and in the process of doing so, we
+ran into some into some problems with
+what was like a very nent tooling
+ecosystem. Uh, and so naturally, we kind
+of built our own tools and then open
+sourced them. Uh and so that's where the
+AI SDK came up. So we call the AI SDK a
+TypeScript toolkit uh for building AI
+applications. And um yeah, rather than
+doing slides, I thought I would walk
+through this title. The title of this
+talk was building agents with the SDK.
+And I figured we might as well try and
+build one uh live with all you guys
+today.
+Um the initial idea, it's it's actually
+kind of hard to come up with an idea for
+an agent you can build in 10 minutes. I
+was going to start with like the weather
+agent that fetches a weather API and
+then tells you a plan of what to do, but
+that's really really boring. It's
+literally on every single quick start
+guide. And I think it's because it's the
+only ungated API that's exists. Um, but
+given that we are in the office of a VC
+and I actually used to be a VC, I
+figured we could try and build a VC due
+diligence agent in the next 10 minutes.
+So, we're going to give it a whirl. If
+it works, whoopee. If it doesn't, uh,
+sorry. Um, so what I got here is just a
+Can everyone see, by the way? Yeah, big
+enough. Cool. Um, so what I've got here
+is a TypeScript file. It's got a single
+function called due diligence agent that
+does absolutely nothing right now. It
+takes in a prompt and then logs out that
+prompt to the console. So if we run this
+script, we get out our prompt. Very
+complicated stuff. Um the first thing
+that we want to do is take this prompt
+and send it to a language model and then
+hopefully do something with that
+language model output. So what we're
+going to do is use uh the first AI SDK
+function that we that's number two
+actually the first AI SDK function which
+is called generate text. Um what we have
+here is we first specify the model that
+we want to use. This is the first kind
+of big feature that we're known for with
+the SDK in that you can switch out which
+model and which provider you want to use
+by just changing out this single line of
+code. So at the moment this is going to
+OpenAI's GPT4.1 Mini. Uh if we wanted to
+go to Perplexity, we would just uh
+change this out to say Perplexity. And
+now this is going to Oops, everything
+crashed. Now we're going to Sonar's
+model here. Um and I think at the time
+of me speaking we support 48 different
+providers. Um so this is everything from
+Grock, OpenAI, Azure, Anthropic, Bedrock
+uh you name it we pretty much have
+support for it. Um and then we have like
+quite a vibrant uh community ecosystem
+that are building uh like things for
+local models as well. So if you want to
+work with LM Studio or Olama that's
+supported as well. Um so enough
+blabbering. Let's try and actually run
+this now. And we've got a prompt going
+in saying, "Hey, how are you?" Uh, and
+we run this and we should get out the
+wonderful, "Hi, I'm doing well. How can
+I assist you today?" Um, but we had to
+wait a little bit. So, let's look at how
+we can update this to stream. Uh, so the
+AI SDK, we've been very creative on this
+team. We have the generate text function
+and now we have the stream text
+function. Uh, the inards are exactly the
+same. We pick our model, we pick our
+prompt. Um, but this time rather than
+getting out a
+single oneshot generation variable, uh,
+we get a stream from the provider. So we
+iterate over the stream, we get a chunk
+and then we check if that chunk is a
+text chunk and write it out to the
+terminal. So if we run this, we'll get
+the same result, but this time just
+streamed out. Okay, so language model
+has asked how I can assist you today. Uh
+you can assist me
+by let's give it a second. Uh by due
+diligencing granola.ai. Uh so I picked
+Granola for two reasons. one, awesome
+team, awesome product, but two, it's a
+relatively early product. Um, and even
+with a model like
+GPT4.1 Mini, the model has no idea what
+really we're talking about. Let's see
+what it says. Says Granola is a company
+that typically focuses on using
+artificial intelligence and machine
+learning technologies to optimize energy
+consumption and improve energy
+efficiency. Okay, so kind of two
+problems that we have here. one,
+language model isn't really doing what
+we want it to do. Um, and two, it
+doesn't really have the right
+information. So, we'll solve problem
+number one by giving it a system prompt,
+giving it some kind of behavior here.
+So, we'll say, you are VC analyst. This
+is a fantastic system prompt, by the
+way. You excel at producing due
+diligence reports to help make
+investment decisions. That's it. Um, but
+now just in changing that, we've changed
+the behavior of the language model to
+give us a bit more of like the memo
+style format that I think we'd all be
+expecting. But now, as you can see, this
+is just complete BS. Like, it's it's
+given us a template here. So, we've got
+to augment the language models context.
+And what we're going to use to do that
+is what we call a tool. Um, if you're
+not familiar with tools, I like thinking
+about them just in the same way that we
+as humans use tools. Uh so and this is
+generally a tip for building agents like
+you should think of how you as a human
+would approach building it first before
+you try and get a language model to do
+it. Um and so what I would do as a human
+is I would go to my browser and I would
+type in granola AI and I would kind of
+check what what's up over here. Um so
+we're going to do the same thing uh now.
+So we're going to provide a
+tool and sorry I'm not live coding
+because I I don't have a death wish. Um
+uh we've got one tool here and in this
+tool when you define tools for a
+language model you need to define three
+things. A description. This is really
+important and and sometimes underrated
+because this is what the language model
+needs to decide whether or not to use
+this tool or not. Uh parameters. What
+does the language model need in order to
+actually invoke that tool? Um so right
+you can't scrape a website if you don't
+have a website link to scrape. Um, and
+then finally, the code that the language
+model should actually uh run when it
+decides to or the code we should run if
+the language model decides to run this
+tool. Uh, and in this uh in this tool,
+we're using a service called Exa. If
+you've never heard of it, it's awesome.
+It's like a Google for agents kind of
+thing. Really nice programmatic a um
+API. Sorry, I leave that up. A
+programmatic API for uh doing web
+search. And so all we're doing here is
+we're passing in the company URL uh
+specifying keyword search uh asking for
+one result and we want it to be live up
+to date and then we just return that
+result. So if we now run this code we
+should see our augmented output but we
+see nothing. And the reason why is that
+we're only handling a text case right
+now. We're only handling if the model
+generates some text and it's not it's
+generating a tool call. It wants to use
+a tool. Uh so if we handle that we
+should see we check for the tool call
+trunks and log it out to the console and
+check for a tool result and log it out
+to the console as well. So if we run
+this code now we'll see our tool call uh
+it's correctly inferred the URL from the
+context of the conversation. Um and then
+we'll see our tool result. So here we've
+got the result of scraping that page. So
+great, we've solved the problem. We've
+now got the context we need. Um, but
+this isn't very helpful for our due
+diligence memo. So, we've got to send
+that information back to the model
+alongside the previous context and make
+this more agentic. Um, so what we could
+do, we could um we could wrap this in a
+while loop because hot not take. It's
+kind of an accepted take agents are just
+wild loops uh until you hit a stopping
+condition. Uh, so we could do that, but
+the SDK actually makes it a lot easier.
+we can instead define stopping
+conditions uh declaratively. So in this
+case, what number are we on? We're on
+eight. Uh we can scroll down and we've
+now got this new uh this is actually
+running AISDK 5 which is in alpha right
+now will be released in a few weeks
+time. Um but we now have uh a stop when
+parameter where we can define certain
+stopping conditions for the model. In
+this case we're saying you can run up to
+10 steps run that loop up to 10 times.
+So now if we were to run this, we should
+see our tool
+call. We should see our tool result. And
+now we're getting out uh an output that
+is much more uh grounded so to speak.
+Granola is an AI powered notepad blah
+blah blah. So that's right. It's not an
+energy efficiency uh company here. Uh so
+this is like these are the the
+fundamentals of building with language
+models and building agents with language
+models. Uh earlier today I took another
+like 30 40 minutes to build out uh eight
+more tools. Uh and I wanted to show you
+like the quality of the Oops, I need to
+number
+nine. Is that working? Yeah. Um so I
+just replaced I gave it a slightly
+different uh system prompt
+here uh to to give it a bit more
+indication on how to use the tools. And
+then I added some sorry for jumping
+around and then I added some more tools.
+So what we're going to do is we're going
+to run this and I'm going to show you
+the tools in the background. So if we go
+to these tools right here, we've got now
+nine tools. Scrape company website which
+we just looked at. Fetch Crunchbet
+funding fetch pitchbook a little bit
+boring. Um all of these functions are
+very similar to what we saw before.
+We're searching Exa with uh like some in
+this case pitchbook and saying only
+include results from pitchbook.com. And
+then we have uh we're taking advantage
+of the unified API with the AI SDK. So
+we call perplexity because perplexity
+can do this nice like mix of searching
+the web and actually uh inferring on top
+of it. So we ask it to generate some uh
+and return some competitors as well as a
+little bit of competitor analysis. We
+have get founder background. This was
+always fun like going stalking LinkedIn
+uh for founders. Um, and there's a
+version of this that also goes through
+their Twitter, their blogs, all that
+kind of stuff. It's pretty cool. Um, one
+more cross referencing using perplexity
+to get information on the company as
+well as like product pricing tier and
+things like that. And then the very last
+one, we have a specific step just for
+generating our report. And in this case,
+we're going to use a more powerful
+model, uh, OpenAI's O4 mini, a reasoning
+model. We give it a more customized
+system prompt asking it exactly like
+what kind of uh memo we want it to
+follow. Uh and then this unlike the
+others that were all like reading
+actions, collecting information, this is
+a writing action and this is actually
+writing a markdown file to my local
+system. But you could imagine like
+sending that to Slack or whatever you
+might want to do. Uh so we have our
+report here and if we preview
+There it is right here. We've got our
+investment memo. So, company overview,
+granola, this is correct. Employee
+numbers, I think it's correct. Uh, we
+got problem statement, solution
+statement, we've got market opportunity,
+50 billion. That sounds pretty good. Um,
+product and tech, we got business model.
+I think it even pulls in uh pricing uh
+competitive analysis differentiating
+factor team
+uh traction with funding amounts
+uh and then a a thesis and and risks and
+yeah so like I think for what 10 minutes
+of work and I think this probably costs
+like 10 cents and maybe ran for 30
+seconds. It's pretty cool and I think it
+gives you a good idea of like how we can
+all use solutions like this to build
+software to solve our own problems. So
+yeah, thanks very much.
+Awesome. We have time for a couple of
+questions. Are there any questions?
+Someone passed out.
+What are the new features? The new
+features. Yeah. Yeah. Um, so Damian kind
+of alluded to to one we we've had
+a the big reason for making this is
+going to be a very big breaking change.
+This is version five for us. Uh, it's
+our first big major in I think at least
+a year now. Um and what drove the
+decision was re completely redoing the
+underlying specifications. So if you
+think of like the unified uh layer, it's
+like every provider has to go into this
+unified layer and that is what we
+interact with. Um and when we built that
+original specification v1 language
+models were generating text and tool
+calls. Now we've got fully multimodal uh
+models, we've got reasoning, we've got
+like streaming arbitrary data, all this
+kind of stuff. And we needed like a more
+robust platform, as kind of BS businessy
+as that sounds, to to build upon. Um,
+but in completely redoing that, it gave
+us an excuse to tackle a lot of stuff
+that we had wanted to work on and break
+a lot of things to make that stuff work.
+So, uh, classic example of it was like
+we've allowed to I've actually got a
+where is it on the docs. I I suggest
+checking out this um which walks through
+the the changes in the alpha. See if we
+go out here. Um, so we completely redid
+this like this um the the way that we
+handle messages like a classic problem
+of uh working with language models is
+context management. And there's a very
+different message that you want to have
+in your UI with like metadata and which
+model was used versus the actual message
+you want to send to a language model to
+strip things away and things like that.
+So spent a lot of time on that. We
+completely redesigned our use chat hook
+so we're able to separate like the
+transport layer which is going to be
+great for uh for Damian like and uh so
+we probably support like websockets in
+the future and things like that. Um and
+then the the my favorite stuff is all
+the agents. So we use stop when very
+briefly but uh which is should be over
+here. Um, this allows you to like stop
+the conversation at any arbitrary
+stopping point you want, but things like
+if it's used a tool, uh, like generate a
+report, you want to stop it right there.
+There's nothing else for it to do. Um,
+or like spending a certain number of
+tokens, things like that. So, there's a
+lot here. I could blabber on for
+forever. Uh, but yeah, check check this
+out. It's on the on the docs.
+Yeah. Um, I've been really excited
+seeing all of the V5 stuff coming out.
+Uh, as with all the speakers, a load of
+them are on Twitter and I would say
+Nico's pretty active and posting all of
+the fun stuff happening. So, definitely
+a follow on Twitter along with Damon,
+Natalie, and James actually. They're all
+on Twitter. Um, I think we all met on
+Twitter to be fair. So, it's kind of
+nice. It's all here. Um, yeah, everyone
+for everyone. That was awesome.

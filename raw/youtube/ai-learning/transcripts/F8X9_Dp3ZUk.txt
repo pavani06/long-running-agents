@@ -1,0 +1,1458 @@
+Architects
+shouldn't try to be the smartest people, but they should make everybody else
+smarter. As an amplifier.
+You don't want to be a kind of oracle, where people come with their questions
+and look for magic answers. The good architects are usually the ones
+where magically everything goes well
+and nobody knows exactly why. Too many architects tried to find answers
+when they don't have a question.
+Here's the thing that answers
+all possible questions. That would be nice. That doesn't work anymore.
+We've gotten so in love with complexity
+that if we actually cut through the complexity,
+we sometimes doubt ourselves.
+Don't stumble on the finish line. If you made sense out of this, and suddenly it seems obvious
+you've done a fantastic job.
+Today I'm joined by Gregor
+Hohpe, retired from Big Tech, used to work in Silicon Valley,
+in enterprise and even at vendors,
+which gives him a unique perspective
+to talk about architecture. We discuss how to go from software
+engineer to architect,
+what great behavior looks like,
+and how you can spot bad architects, and what are some common traps
+you should fall into as software engineer.
+Some of which you won't expect. Fantastic takeaways in this one, so enjoy.
+Beyond Coding. What have you seen in
+how architects execute
+that makes them really good architects for the people
+that actually go on that career path? Yeah, I always say, I mean, first comment would be
+it's not a sort of binary choice.
+So I don't think that being an architect
+is determined by what's on your business card.
+So I think it can be
+a technical product person with a very architecture mindset,
+right, for me.
+But let me start the other way around. The bad architects are easier to spot. The good architects are usually the ones
+where magically everything goes well
+and nobody knows exactly why. The bad architects are easier to spot.
+And like people who spew out a lot of buzz
+word. It's, you know, it's like, oh, everything
+must be cloud native or loosely coupled.
+I would say, I don't need an architect to tell me
+that I can just put a post on the wall. They are. Then you know why?
+Why do I need this?
+This person or people who believe
+they should have all the decision power is like,
+oh, developers, I'm here to guide you.
+They should make three components
+so I no more, no less. Write those. I find the not so stellar architects dumb.
+The mantra that we have in the workshop
+and that I very much follow, is that architects shouldn't try to be
+the smartest people, but they should make
+everybody else smarter. That's an amplifier.
+You don't want to be a kind of oracle. People come with the questions and look
+for magic and says, oh, what should we do?
+People come to me and I'm like, well, it's kind of charming,
+but how do I know it's your project?
+It's your application, right? How can I make all the decisions for you? But what I can do is help
+you make a better decision.
+And I think to me, that is one of the
+characteristics of a of a great architect. You can absorb the context, things
+that people explain to you,
+but you can uncover blind spots
+or maybe help people see different points of view,
+different angles, distill trade offs
+that they might be implicitly making,
+but they're not aware of those kind of examples.
+I think that makes a great architect,
+and it makes a nice architect if you wish, because you're not trying
+to be the ivory tower big boss.
+Yeah,
+but he actually an amplifier to the team. Yeah. For my position, both in product
+and in software, I have seen architects
+that are very much
+okay. It's my way or the highway. And then they are a check stop
+that I need to actually pass. So I have to convince an architect and
+actually have a conversation with them.
+And from their position,
+there's a lot of power in that position. In some organizations,
+especially in more traditional,
+bigger enterprise organizations, bank,
+for example, especially where risk is very much mitigated,
+people don't want to afford to take risks.
+There's no need to afford to take risk
+because everything will just be operational. I feel like that's
+where you have architects,
+which are kind of a stopgap
+between a lot of innovating and solutions. Yeah, he's definitely
+see architects as folks who lower risk.
+And I often tell people, you know,
+we actually done this exercise where we pictures like,
+hey, what's your value proposition?
+And as an architect,
+also I can say I actually lower your risk. You might be fine without me.
+You can just cobble together
+some application and maybe it works. Maybe everything will be fine,
+maybe it scales,
+maybe
+it doesn't have security exploits, right? But that would definitely be
+a risky proposition. So I think in the, in a, in a good sense,
+architects actually anticipate
+risks and mitigate risks. Like if scalability is a need
+that you have.
+Right. If I call this an option
+that you want to have, then we can make the short make. We can make sure that the system
+has those characteristics.
+So it's really a risk management function. And we all know that reducing risk
+it has value.
+That's money in the bank
+I used to work for insurance. So we know that risk equates to costs
+a lower risk is equals lower cost.
+But it's probably in a different way
+than many traditional architects think. So right. So for example lowering
+risk doesn't just mean
+working to a plan or doing everything
+upfront than having sort of one goal and design
+or one goal and reference architectures.
+I think the banks sometimes conflate that. Like basically
+they think if your plan is perfect,
+then the risk is low,
+but they focus purely on execution risk.
+Like do we build what we said
+we going to build? Yeah, but software has very different
+risks like where the users like it.
+Right.
+Will it actually do its business function. Does it actually move the needle. Yeah. Or is it making revenue for us.
+Is it going to make the customers happy. Does it grow market share right. And I think that's
+a whole different set of risks.
+And I see different organizations
+have very different point of views on what kind of risks they they focus on.
+And that reflects on
+what the how the architects behave. I'm wondering what your thought
+then is next to risk about complexity.
+I recently had a conversation
+with a senior software engineer. Awesome. He's from GitHub. He works on GitHub. Actions
+so massive scale.
+Very cool what they do and his take. Some people actually thought
+it was controversial. He says I like in the way
+we design systems, especially at GitHub,
+to keep things simple,
+because simple becomes complex when you're talking about scale. And then, especially in this episode,
+in the comments, people
+that haven't operated at scale,
+they don't necessarily understand it. They think complexity is a big,
+big part of the job.
+And you should design for rocketship because you cannot afford necessarily
+to migrate or to evolve software.
+And I'm curious how you see that. Well,
+I don't see it as controversial at all. I would say simplicity is one of the biggest strengths
+that a good design can have, right?
+There's always of course, there's a
+there's an optimum in everything. Right. So and this comes more out building
+platforms because around the whole book
+about platform strategy and many domains
+have an inherent complexity.
+Let's say you're building
+a cloud deployment like an internal developer platform. Let's say you build distributed systems.
+Yeah. Distributed systems
+have an inherent complexity. You need to deal with retries and timeouts
+and item
+potency, back pressure, retry storms. Right. This is just stuff.
+There's lots of physics.
+There's no way you can sort of
+cheat your way out of that. So that complexity is inherent.
+And we had a lot
+of debates when I worked at AWS for this, where the product designers always said,
+we need to make it simpler.
+Yeah. And I'm like, well,
+we can only make it so simple because things have an inherent complexity
+because we built distributed
+serverless systems. So that is the the one end of the spectrum
+to be careful though,
+you should make it
+well, as simple as possible. But no simpler is the smart. Yeah it's sort of the smart version of it.
+Yeah.
+But I think it's good to understand
+what is the inherent complexity, especially for platform builders.
+And then my guideline would be don't
+try to make it simpler than that, but make it intuitive to deal
+with the inherent complexity.
+Yeah, don't
+pretend the complexity doesn't exist, but make it easier for people
+to deal with it, make it intuitive.
+And I think that is a good guideline. But you try to aim towards
+the minimum, just don't overshoot.
+I think too much complexity
+is one of the biggest problems we invite into our technology. Yeah.
+Lives, technology has become more complex
+anyhow, I always say writing a monolith in Java
+and sticking that on one server
+was a lot simpler than the software
+I today. The software I today of course,
+has many nice characteristics, right?
+Is auto scaling,
+self-healing, integrated, distributed. It has many attributes that we wish for,
+but it's not actually simpler. No.
+So a good architect's
+job is really to conquer the complexity
+that is there, to break down
+the complexity, to abstract away the complexity, because otherwise
+we become the limiting element.
+If things are too complex,
+people will make mistakes. Cognitive load is an important term
+these days, right?
+If it's too complex,
+the cognitive load will go up. People will make mistakes. People would be slower or worst.
+People would be hesitant to make a change. If something is too complex, what will happen
+is you make a change over here.
+Something over there will break. Nobody knows why
+you don't want to touch it exactly. Then you don't want to touch it.
+And that's the worst case in a in an ever changing world, having a piece
+of software that you're afraid to touch,
+well, that's called legacy. We have plenty of that. So we don't really want to build
+more of that.
+I'm wondering if you've ever been
+in a position where you were of a certain opinion, and architects
+make other people smarter,
+but people don't necessarily
+have to agree with you. So then you are kind of this person
+that people either listen to or they disagree with,
+but you still have to work.
+I think a big part of it is working with
+other people or bigger aspects of teams.
+Have you ever find yourself in a position
+where people disagree with what you say, and then how do you help them? Of course not, because I'm always right.
+Yeah, that makes a lot of things easy. That's why I became an architect. I'm always right now, of course. Right.
+And actually, the workshop today
+even went into into some of this right where we're saying
+is rather than just giving an answer,
+you frame the solution space,
+you try to expand the solution space.
+I have so many stories
+where people talk left versus right. We have a picture that we use.
+You might remember it's the circle versus
+the triangle. People look at a cylinder,
+but one is like on a round long cylinder
+and one person looks from the front
+and basically says, the thing is a circle, and the other person
+looks on the side and says, well,
+I've no idea what you're looking at,
+but that is a rectangle, right? And they will never come
+to any conclusion.
+And that's where people sort of start fighting is like, oh,
+Json is better than Yaml and Kubernetes is better than anything else, and it must be
+in a container versus that, right?
+People associate themselves
+with a certain technology choice without being clear on, well,
+what's really the solution space or like
+what are the dimensions, what is sort
+of the map that we are discussing, right? We might be discussing different paths,
+but at least in our mind
+we should have the same map. Yeah. Because I see this a lot is
+and this can have two flavors.
+Either people never agree or they agree, but
+they have a different map in their head.
+So they think they agreed,
+but they actually walk out thinking very different things. So what I advise to
+people is have a common framing.
+So at least you understand
+the solution space. And that shouldn't be up for debate.
+And then based on that framing then you can have the discussions.
+So let's take simple example. People debate microservices. Yeah. But first thing I will do
+is break this down into
+well what does that actually mean. That means modularity. But there's two kinds of modularity.
+There's design time modularity
+and this runtime modularity. So you really have four choices.
+You can have a monolithic design
+a little bit spaghetti or you can have a modular design.
+Yeah, well-structured. And you can deploy a monolith
+or you can deploy in more small pieces.
+So now what you've achieved as an
+architect, you doubled the solution space. It's no longer
+monolith versus microservice.
+Now you have four quadrants. This is for example
+where the modular monolith comes from.
+All right. So let's say we want software
+that's maintainable over time and needs to deal with a complex
+domain.
+We want it to be
+well structured at design time. Otherwise we can represent that domain.
+But maybe we don't have
+the scalability needs to make this like 20 different microservices
+and independent order
+healing, asynchronous,
+loosely coupled, event driven. Maybe we don't actually have those needs.
+And then
+now you have a solution for this, right? And we call that modular monolith.
+But I call that mapping the map. Like building the frame
+on which we discuss.
+And then we can discuss
+which quadrant is useful for us. But making that a two step process makes
+for a much more constructive discussion,
+because it's no longer
+so that you versus me or my thing is better than you're saying
+kind of thing, which some engineers like to do,
+but it's more like, here's our world view.
+And now let's discuss where
+in which quadrant we are and and why. And that ends up
+being a lot easier things.
+So you disagree on some parts,
+but you have a common framing for your disagreement.
+So the likelihood that you come to
+a solution is much higher. Yeah. Whenever I see a lot of people
+discussing this asynchronously,
+typically it's in slack. And whenever there's
+then a slack message of a thread over a 40 messages, I'm like, people
+talk to each other and jump in a call.
+But I know you're a big visual thinker. How quickly do you actually say, okay,
+we need to park this and we need to draw something out visually
+so we can actually see
+if we're speaking the same language
+and talking about the same thing. Yeah, I see you in Disney.
+I like pen and paper.
+I like analog visual kind of things. Whiteboards, flip charts. So the workshop is actually full of flip
+charts taped on the wall.
+Yeah. What I like to do is not use so much the standard notations
+they're useful in like C for UML, etc.
+they're useful for communicating
+what has been done. But I like to use sort of one of visual
+models to tease out the nuances,
+not is it like this
+or is it like that in words? It's much easier to contradict yourself
+or be fuzzy than in a diagram.
+Yeah, you make like two boxes and either
+there's a line or there's no line right? In words. It's like, oh, these things have some
+relationship, but they correlate that.
+You use like a million words. Right. But you're not sure it's a two boxes, it's
+a three. They're connected
+and they're not connected.
+So a picture doesn't have that fuzziness. So I'm a big fan of that.
+The reason I think I jump so quickly to a picture
+is because I only come in at these points.
+I only generally come in
+when people either sort of their debate
+has ground to a whole, or there's
+a high profile decision to be made
+or people can come to an agreement. So generally I arrive
+sort of a pen in hand kind of thing,
+because if they come to a conclusion
+without me, then I don't need to do anything,
+which is also fine.
+But usually what I find is people
+have different worldviews, are not clear
+on the constraints or the trade offs
+or what I call the coordinate system. They don't know what the world map
+looks like.
+Yeah,
+and if you don't know what your world map looks like, it's
+very difficult to discuss the past because you don't even know which
+sort of planet of which coordinate system
+you're on, and that's where
+the visual models tend to help a lot. They look like simple sketches,
+but in the end, what I find in
+my workshops is simple sketches
+have much more depth than people believe.
+Yeah, we we sometimes do the exercise
+of listing all the dimensions
+that you can put into a sketch.
+So basically you can give things a size,
+a shape, a shading.
+You can label things in order one,
+two, three, four. You can put a legend on,
+you can nest things,
+you can position
+things next to each other, etc. and we come to about 20 dimensions
+that you can express
+with just two color pens
+and a piece of paper. And that's the richness that you want,
+because that way you tease out
+where the disconnect is or where
+the big system design tradeoffs are. So that's why
+I still like pen and paper a lot,
+because the tool doesn't get in your way. Yeah, I've seen you do this,
+and the first time
+I saw this, I was like, well,
+this is like very effortless and I feel like it's
+an incredibly valuable skill.
+So then for me to acquire a similar skill
+or that exact skill would be to just do it, to try and figure out
+which dimension fits with which situation,
+and to actually get hands on practice
+in visualizing things, and then having a dialog with people
+to see if it's accurate or not.
+Is that also it from your perspective? And I would say the most important thing
+is you don't need to be a gifted artist.
+Well, nobody was born an artist,
+so I took design sketching classes. It doesn't. That makes it easy, doesn't it doesn't
+actually really show what it was.
+And the reason it doesn't show
+because it's all practice. It's all muscle memory. Yeah. The people who draw the beautiful things,
+it just muscle memory.
+It's just pure repetition. And because I'm busy slash lazy,
+depending on how you want to put it,
+I don't do it enough. So it's not about being a great artist. I think what really helps in
+this is the best way to learn it,
+is to do it with somebody who does it
+right, pair up, gang up, have a mentor. That's why I always recommend works
+so much better.
+If you see somebody do it,
+somebody gives you feedback. You learn so much faster
+than sitting in your quiet
+chamber, kind of trying to read a book
+kind kind of thing. So that is is the first part.
+The second part,
+I think that really helps in this is the pictures we draw, the models
+I had, they have meaning.
+They have semantics. Right. Multiplicity is one of those dimensions
+you throw, you draw three stacked boxes.
+Well,
+actually probably doesn't mean three. It means multiple. Or if it actually supposed to mean three,
+you probably need to tell these people.
+Right.
+So there's strong semantics behind it. Yeah. So the diagrams we draw, a weird
+combination of left brain and right
+brain on one hand, they're artistic,
+they're scribbles, they're fun. It's a very right brain,
+kind of a creative activity.
+On the other hand, they're very structured
+because they're very logical models. Right. You draw an arrow. Is that the data flow?
+Is that a control flow? Is this synchronous or asynchronous. So being able to switch back and forth
+between this left brain and back
+right brain, I call this the ping pong
+between left and right brain. I think that's what makes this work.
+So you use your structured engineering
+mind to get something down,
+but then you use your creative right
+brain mind to like, oh, is there missing dimension?
+Is there another way to express this? Is there something we we're not seeing
+and then you iterate that,
+it's take me also a long time
+to get to that inside, but I still find that is the best technique to flip
+between your structured, logical thinking.
+And you saw that creative kind of artistic
+kind of thinking. And I think that's actually you don't
+need to be a genius at either one.
+But if you can flip back and forth,
+that makes a world of difference. Yeah. And the best visualizations backed by
+the story are what people are looking at.
+Remember, I feel like what the story
+actually with the when the stakes are high and you have both in your pocket,
+you can land and make impact, right.
+And the story is like the right hand,
+right brain, right. That's what people latch on to. And we just did this on the workshop
+and we looked at
+and we did this
+like the different ID strategies for different business models,
+like very less brain, very architectural.
+We have a certain business
+strategy in mind. And what is the matching
+IT strategy is very classic high level
+architect kind of thing. But then we make a matrix out of this. What the matrix also pretty left
+brain right
+is a very structured way of looking at it. But then we start looking at the matrix
+and we're looking for patterns
+and for shapes. That is very right brain. That's very sort of recognition. Well do we see something interesting.
+And out of that
+there's something interesting. The story comes out of that. And then to me that is the winning streak
+of what I call the architect elevator.
+If you can go into a decision meeting
+or what we call like the penthouse, right. The important people. Right.
+And you can go in there
+and you have a catchy story or a catchy visual, but you can back it up
+with your technical skill.
+If somebody pokes and says, why?
+Why is this? Why do you have an x ray?
+Or why is this link to this? You're like, well, because x, y, z.
+To me that is the winning streak. The catch a little bit is
+you must have both skills to do that.
+Like I have found
+that you cannot split that into two parts. You cannot say,
+oh, you do the technical work
+and then you give it to sort of a graphics
+person to make it prettier because they don't know
+the model underneath.
+They don't know what can be changed
+or what can be adjust. They don't know the semantics. So basically you need to get two parts
+in one head.
+You be to be able to play that ping
+pong with yourself. Right? Is like, what pattern do I see? What story do I have?
+But is this defensible from the technical
+underlying perspective. So you cannot split that into two heads.
+You must get this into one head. Yeah. But once you do that
+that is excessively valuable.
+Right. Because it sticks. It makes sense.
+It has a logical foundation. It's not hand-waving and buzzword
+dropping, right is real engineering,
+but it kind of doesn't
+look like engineering. It's not some giant blueprint
+that nobody can understand,
+but it's actually a catchy storyline
+or a catchy visual or what we try to do. We actually give them a name.
+So today we just named it the IT Strategy Ladder, and it's a ladder
+because it has this shape.
+So immediately
+it's sticky and people heads. And I think there's a little bit of,
+I'm always shy with recipes, okay.
+Because I always say like,
+the recipe book and the really good cooking school
+are two very different things.
+And the recipe book is like, well,
+if you can feed yourself and you need to make something but
+follow the recipe, but if you go to like
+Cordon Bleu or somewhere like a real
+cooking school, it's not about recipes. You learn how things work and how
+they function and how to make the recipe.
+So that's
+why I'm always careful about recipes. But coming back to our visualization,
+I think, you know, doing this
+kind of ping pong, right, seeing like,
+do I have the foundation? Can I visualize this?
+Okay, do I need more detail?
+Can I visualize that? That is probably the best kind of recipe
+then that I would suggest.
+There might be a lot of people listening
+and they are in an icy role, so very much hands on responsible
+as software engineers.
+And they could think, this is really cool. Like, I want to experiment with this. I feel like on a smaller scale
+within your team you can.
+But when we're talking about
+or being responsible for software architecture or system design, system architecture
+and then enterprise architect,
+what from your perspective are the skills
+that they need from the hard skill side? Let's start with that and then eventually
+from the soft skill side as well.
+Yeah. You think the hard skills aside
+you just got to understand your tech. You've got to be a good developer,
+understand the tradeoffs.
+And I would say the biggest mistake I see on the hard skill side
+is the people who used to be technical,
+you know, they have the hard skills,
+but some like five years ago or ten years ago,
+that is what makes our field exciting.
+But it's also
+what makes us feel dangerous. Because having had the hard
+skills might lead you to wrong assumptions
+because your decision or your trade off
+might have been a good one five years ago, or 8 or 10 years ago,
+but it no longer is.
+So the main thing is you need to keep your hard skills,
+your system design skills, understand trade offs, operational aspects,
+observability, domain driven design.
+Right? These are all things you
+you need to do them. You know, the skills
+that you need to add in the mix.
+And as I said, it's
+not just about adding more skills. It's about finding the intersection
+between discounts.
+Right? I call this the the multiplier. You want the multiplier effect. It's not just, oh, you're a good techie
+person and you're good communicator.
+You're a good technical communicator. That is the combination of both. That's, to me, the mental model
+that you should have.
+The good test is do
+people come to you to make them smarter?
+Do they come to you with a problem and, you know, not asking you
+to solve the problem for them,
+but they consider you
+a good sounding board like a rubber ducky. We call this like the rubber ducky.
+Are you a popular rubber duck
+where people explain the problem and you ask maybe a few questions, maybe
+give a few hints, and people go back like,
+oh, that's an interesting way
+to think about it. Or you make a little sketch and you say,
+hey, would this kind of help you?
+And they're like, oh, and they walk off
+with your sketch and they go do something. I think if you can pull that off,
+that people see you as a, as a source
+to kind of give them a little mental
+push, a little bit of a mental boost. Yeah. Then for me that is a fantastic positive
+feedback to me and see,
+are you actually on to something? Yeah, I love that.
+That's a fantastic signal actually.
+If people come to you and you give them perspective
+or you help them along the way, help them
+figure out what they already know based on
+how you how much you know about them. I think that's incredibly powerful. Yeah. And I have the, in the book.
+I have the model of the Phantom
+sketch artist, right? Is one of the I like metaphors,
+so it's one of the many metaphors.
+Right. But what the Phantom Sketch artist
+metaphor underlines is that knowing something and being able to express
+something are two different skills.
+And the story is based in the old days
+when we didn't have CC to get my camera like every two meters, right
+when the bank got robbed, somebody would
+come talk to the witnesses and say, well,
+what did the perpetrator look like? Right? And you would think, oh,
+you just give people a pen and a paper and they're going to draw a picture
+of the bank robber. Well, you got to get a stick,
+figure out the guy with the money bag
+and a gun or something
+like ridiculous, right? So people know
+they have seen what the person looks like,
+but they don't have the skill to express
+that versus the Phantom sketch artist doesn't know what the person looks like,
+but they have the skill
+of like articulating and expressing
+and the combination. That's
+what makes the the good, good sketch.
+And often as an archetype,
+I tend to be the phantom sketch artist. I don't have any more knowledge than
+the other people they know everything.
+It's their application. They know what the bank robber looks like. But I can help them express that,
+put that in a different format
+or a different way where like when people
+say, oh yeah, just like this, right? And to me,
+that is a really good collaboration
+because neither one is telling
+the other person what to do, try to be smarter than the other person,
+right?
+The Phantom Sketch artist is a better,
+probably a better drawer than you are, but they can't do anything
+without your input, right?
+So it's a nice example of you
+need the combination of the two skills. Yeah.
+And that is generally appreciated
+by people like I come to Denny's. Hey, tell me about your system. Right.
+And I start drawing something and
+my favorite comment is oh that's wrong. Oh, excellent.
+Yeah. Because, you know,
+you're getting more out of people. It's like, oh, I drew a line here. No,
+no no, no, this is not how it works.
+I'm like, well excellent.
+Well how does it look? Right. Once they see you draw back to what you
+understood, they can easily see things.
+Oh, that's not what I meant.
+Or there's something else. And then you're in a constructive dialog. And that's exactly like the Phantom
+Sketch artist, right?
+Did they have a wider nose,
+a bigger eyebrows or different eyes or a kind of the face
+of the shape of their face? Right.
+You're the dialog mode and you need to come out with a thing
+where people say, yep, exactly like that. But they could have never made
+that themselves.
+And I think if you do that,
+you would become this go to person. I'd people walk away with something
+that's valuable to them.
+But you didn't lecture them
+or like constrain them or tell them, oh,
+you have to do it like this way
+is basically you extracted knowledge
+they already had. Yeah, but you played it back to them
+in a format that's easily consumed
+and everybody wins.
+I learned a lot. Right. And they have a better understanding of
+the trade offs or the the system design.
+There's there's one in this metaphor. I'd always like playing
+with these metaphors. There's one more quality that makes this
+very much related to, architecture.
+And that is in order to become a phantom
+sketch artist, kind of rare today. But when people wanted to become.
+You need to study human anatomy. Okay. Yeah. You're not a painter. You're not a landscape
+painter. Random person.
+You draw faces, and in order to draw
+a good depiction of a face, you need to understand
+the architecture of the body underneath,
+like people posture, face
+structure, the bones and kind of things. So the Phantom sketch artist, in a way,
+is a form of architect
+because they learn basically,
+yeah, the human bone structures and anatomy because otherwise
+they cannot draw a good picture.
+Yeah. And that same is true for us. It's not about drawing
+the most beautiful rectangle,
+but is understanding the anatomy,
+understanding what people say about the relationship
+between the system components.
+And then you draw
+the rectangles that represent that. But you gotta understand
+the subject matter.
+Yeah. I was thinking
+when you were speaking about hard skills, how much of enterprise architecture
+or being an architect in essence
+has changed nowadays because I feel like
+I get bombarded with tools. There's a lot more possible
+specifically with large language models,
+but in essence, like the Phantom
+Sketch artist, everything underneath kind of still holds
+true from your perspective.
+Does architecture evolve quickly? Because I feel like tooling
+does at a more rapid pace.
+Definitely the environment
+in which you operate has changed. So there's a couple of assumptions
+that architects used to be able to make,
+to make their lives easier, that no longer
+hold. Right. The one is like snapshotting
+like the world is moving
+too fast to be able to pretend. It's like,
+okay, let's just assume nothing changes.
+Well, that turns out to be a very poor
+assumption in today's environment. Yeah. So that, for example, means exercises
+like trying
+to draw a giant ID landscape, you know,
+or cataloging all the applications
+you have and putting that into some tool,
+taking a few months for that. Yeah. And then a few months
+by the time you're done.
+This has already changed. So for me, the assumption of being able
+to snapshot and being,
+I call this the cartographer,
+being the person who makes all the great landscapes,
+that is very useful.
+But it's no longer practical
+because stuff changes too quickly. So one of the metaphors I use, which
+captures the change in role for enterprise
+architects, is rather than trying to be
+the cartographer who walks around with a giant map of all the pieces,
+you need to be much more like a scout.
+You have an objective in mind. You want to cross the river or beat the enemy, or like, move somewhere
+or like whatever, right?
+You have some objective,
+you send some scouts, right? They're going to go look at things. They figure out what works,
+what won't work. Right.
+And they come back to you
+with a very simple map, but a very timely and very expressive map.
+Right. Do you want to cross the rivers?
+I going to use a mountain? Yes. The enemy. The bridge is gone,
+but he is not so DB they can cross there.
+We can go right, whatever it is. Right? But they have a very situational. They have a sort of purpose driven map.
+The map is not trying to be like the
+perfect map of all the exact landscape.
+They only depict
+what's relevant to your move. And I think that is becoming
+a more viable metaphor
+of what enterprise architects should do. It's no longer plausible
+to, like, maintain
+this giant map where everything is on
+and everything is up to the date. Rather, you need to have the purpose.
+You need to have a direction in mind
+like l'Alliance Gen AI is a great example, right? Okay, the enterprise architect,
+what's our strategy for this?
+Where should we find
+the best first use cases? How do we integrate this
+with the rest of our systems? We know
+LMS have super high rate of evolution.
+Yeah right. So how do we keep that change
+out of other systems? Right. What are we doing with with agents
+and a genetic right.
+Is that just another form of workflow
+integration or is that something novel? Right. Give me a point of view,
+but is very purpose driven
+and as you will quickly see,
+you can only do that if you understand the subject matter right. You can sort of arm
+wave your way through that.
+Right. You need to have,
+you know, the hard tech skills as well. But for me, it's very purpose driven.
+What should we do? Do we have a point of view? Right? Do we have a question in mind? Too many architects try to find answers
+when they don't have a question.
+Yeah, it seems like oh, here's the thing
+that answers all possible questions. I'm like, that would be nice.
+Easy. Let me. Would that be easy? That doesn't work anymore. You gotta start
+with a question in your mind.
+And then like the scale, I was like,
+whatever, can we cross the river? I was okay,
+come back with the answer to this.
+It's got to be situational and timely. Otherwise it becomes ad work
+and we might like our ad work,
+but obviously we're not a museum. No.
+The it. Yeah, it's gonna be a historian. Yeah, exactly. We can be a historian.
+We're not collecting modern art. Right.
+Our diagrams serve a purpose, right? They help us make better decisions,
+get better decision, transparency
+and discipline. So aid the decision is, is clearer. And everybody's on the same page
+to what the decision was.
+Actually, what drove the decision,
+what trade offs are we willing to make. That's what I think the value
+and that the picture just has to be
+a means to that end. If that end isn't there,
+the picture is also worthless. Yeah. And then it just becomes modern art.
+Some boxes and triangles,
+some kind of kind of things. Yeah. One of the things you mentioned was
+also how it can be
+incredibly dangerous
+to have had experience ten years ago, but then be ten years kind of hands off
+and still rely fully on that experience,
+and then I look at modern day current age
+where things are evolving quite quickly. So then I don't know,
+even from your perspective,
+how do you keep up to date
+with things that are evolving? How do you keep on top of things
+with regards to your own skillset
+to then educate others as well? And the danger is particularly pronounced
+because you might be well-meaning.
+Yeah. And you have a technical foundation. You make a rational and good decisions,
+but based on outdated constraints
+as a very easy trap to to fall into. I the classic example I always give is like we were told,
+everything must scale out.
+But the reality is Moore's
+Law grows faster than most businesses do. So in reality, a lot of modern business
+applications could run in a single server.
+In memory. You get a couple of terabytes of Ram, but that's have the like yeah,
+your customer data, your things.
+I mean maybe not all your logs
+from all history, but all the current data
+will fit in a couple terabytes of Ram. Like what kind of business?
+I mean, if you're not, you know,
+Netflix or eBay, right? If it's not like a normal kind of, 
+transport insurance kind of thing, right?
+You'll probably be fine. All right. So that's the
+what's that's the danger there. So the main thing
+that architects need to do
+is you need to revalidate your rustics because everybody is using your restricts.
+The example I always give. Let's say you are chief architect
+or somebody, an architect, somebody comes
+in, they're like, they have all of these
+little boxes in the middle. It's like a big barrel. It's a database. Everything talks to this database, right?
+Your first juristic is
+oh performance bottleneck right. Everything talks
+that they buy is bad news. Right?
+Then you find out oh. Or you're like, oh,
+it could also be, brittle integration. Right. Because the schema becomes difficult
+to maintain, yada yada.
+And then you find out, oh,
+this is actually a NoSQL cloud database. It scales more than you can afford.
+Probably. Right. It was scale and you have some schema
+or it's different documents. So it turns out to be actually no problem.
+Right. This is where your
+your sticks are outdated. So how do you compensate that.
+Well the the easy answer about the easy
+not easy answer is why you spent more hands on time.
+But how are you going to spend hands
+on time with all possible technologies? So what I do quite a bit is hang out with
+people who do this right, have a network.
+I don't think it's something
+that you can expect to manage yourself. It's just too much going on.
+Like Genii is a great example. I decided to miss the first sort of 12
+to 18 months of the madness
+because I was like, I'm busy
+and it was madness. Yeah, yeah, no time for this. But then like, oh,
+I need to catch up quickly.
+So what do I do? Well, I chat with my buddies, right. What do you guys build? Like Rob Johnson,
+an old friend of mine. He can Bible actually happen
+to live in the south of France.
+So he step by step with me
+for two days. Yeah. And then two days.
+I got the full download.
+Rate deals. Yeah. Right. Is like yeah. So he stayed with me and like yeah I got
+the whole download what he's working on.
+He showed me all the code he's writing
+and then he becomes super high bandwidth. And I highly recommend
+that you need some framework
+and you need to not waste people's time. Right. They need to be able to absorb
+at the high rate. So to reprocess you assumption,
+update your validate your your mistakes.
+But don't think you can do this
+all on your own. And unfortunately,
+I think social media has become
+a not so great source
+for catching up on technologies and trade offs because everybody's
+peddling something on or out, or rather.
+Yeah. So you gotta have some trusted sources
+that you can go buy them a beer or coffee or something
+and hang out with them like, hey,
+that framework,
+what do you actually think? Is that thing for real? You know, what are you working on? You know, basically be the social geek.
+You know, talk to people. Yeah. You can be a great strategy
+for being a good architect, right?
+Don't lock yourself up in the chamber. Go hang out with people, benefit from the experience,
+learn from what they're doing.
+I think that's the only way. Yeah, I think it's also even if you don't
+have a professional network yet,
+there are a lot of meetups. There are a lot of conferences,
+some are completely free to attend. You can be, social person
+to actually talk to people
+and see what they're working on
+and gain knowledge. That way, even if you haven't built up
+your, let's say, enterprise network yet.
+And then once you actually have a role,
+find mentors, people that will coach you on the job
+and off the job. I think it's actually very achievable to
+grow quite quickly through that as well.
+Yeah. And I think for an architect
+that's absolutely required. I mean, I even I don't buy quite into
+even like the senior engineer
+who sits in the quiet chamber
+and never like talks to anybody and never looks anybody in the eye
+and just kind of mumbles to themselves.
+Yeah, even I doubt that. But as an architect, I would go
+as far as say like completely impossible.
+Impossible. You can be sitting up
+in your little chamber and people put requirements in and you spit
+architectures out or something.
+Yeah. It's like,
+I don't think that's how it works, right? It's inherently while away from the impact
+that you're making.
+If you want to make other people smarter, how are you going to do that
+without talking to them and vice versa?
+For you to stay up to date,
+you need to have a network. You need to be able to get feedback.
+You need to learn
+maybe even your own decisions, right? You need to learn what worked
+and what maybe didn't work as well.
+Yeah, maybe
+you thought it was a great architecture. People come back, it's like, well,
+you know, didn't really do
+what we needed or too expensive or too
+cumbersome, right? You want to be the person
+where people come back and say,
+look, sounded like a good idea,
+but didn't work out that well, right? You don't want to be the person
+where people are afraid, you know?
+And they're like,
+oh, great advice, great advice. And then they do the opposite thing,
+right? Because you won't learn. They become out-of-date very quickly.
+See how far I get?
+Like, do you really have no choice? So I do need to have a network. You can still be an individual,
+contributor.
+All right. I was, you know, I was an
+I see, I love being an I see because I can focus on my stuff,
+and I don't need to deal with managing
+all these vacation plans and all that. So I just like all these performance
+reviews.
+I, I this is like,
+I want you all to be happy, but I don't want to be the one who was,
+like, in charge of all your happiness.
+Right? So I love being in the
+I see, but heavily networked. And I think that's the model
+that you would be looking for.
+So there's a big difference
+between like a manager and where you have a large team
+and an architect.
+I boss, I think there's three viable paths
+for people, right? You can stay an engineer and just be a top
+notch engineer, no problem whatsoever.
+Right? You can become a technical manager
+and that's great because you understand people skills, sound, you understand
+motivations.
+You're not just a subtle box checker
+like you understand with people. Or you can be an architect. And I would say all three
+are highly valuable and highly satisfying
+career paths, you know, just
+with a different emphasis from your role as architect.
+You've mentioned a few times
+one of your roles is to be a multiplier. Make other people smarter in the room.
+But also you shared a story
+where typically you pick up a pen when people have a question,
+because that's the point.
+When they reach out to you,
+which means that your value in a vacuum, if you do that long enough, at some point,
+you're not needed anymore because
+you've enabled enough people to do that. Ops is the same, right? If you have great systems,
+then your operations team
+is going to do nothing
+and that is fantastic. That's like the end goal. Yeah,
+we never get there. Have you ever gotten yourself
+in a position where you were like,
+things are actually good
+and people are kind of practicing what I've preached, then it's
+time to move on?
+Well, I think I'm never afraid
+to run out of stuff. So some people are hesitant. They want to monopolize knowledge.
+Yeah, right. That's like this Oracle kind of,
+powerful architect kind of persona. Unmissable. Yeah.
+Which I totally don't like.
+So I've never hesitated to share. That's why I write books, right? That's why I read books. Right? I never hesitated to share everything
+I know.
+And I would say there's only two outcomes
+that can really happen. The one thing is,
+I really have nothing to do.
+Then I just make sure nobody finds out. What is it? So yeah, enjoy it. They're great. Everybody. Yeah.
+You know, or more likely what happens is
+more new stuff comes along.
+And I actually freed up some cycles
+to deal with new things. Quite honestly, I'm not that good at that.
+So I can definitely get better at
+pushing more things into into other folks. For me, that would be the dream, right?
+If I uplift everybody to the point
+where they don't need me for that anymore,
+there's a million other things
+that that I could be doing. The catches and large organizations.
+I don't think it's the direction
+that you should be aiming to, but I don't think you should measure yourself
+by achieving that because that is rare.
+Guide. You will have turnover of
+you have different people. You have a large organization. So the odds that you can really get
+so much into the org
+that everything runs on autopilot, 
+they actually not that great either.
+It is more a direction idea to to aim for. Yeah, but if you manage it then. Yeah, just make sure
+nobody finds out and enjoy it.
+Enjoy the time. You got a good gig. That's exactly.
+Yeah. Hasn't happened to me. Gotcha. Yeah.
+We touched on hard skills. We also touched on soft skills. And one of my final thoughts was you're
+dealing with a lot of people as architect.
+You already mentioned being an architect
+in a vacuum, not talking to anyone. You're never going to be as effective
+as you need to be,
+which also means that you need
+to figure out kind of the internals of your organization, the hierarchy,
+the politics, knowing when to fight
+and when to actually be like,
+nah, we'll, we'll let this one slip. And that, for me has always been an art.
+Like I've only dealt with that
+from an icy role, which you don't get a lot of influence on
+or like your sphere of influence
+is quite small. I've dealt with that from a product sense. You are more responsible,
+dedicated for product, so
+you actually can move a little bit
+more and choose when to play. And there's also a concept
+that you teach with which is the jester,
+which might play a role in actually
+building up that political credit. But typically,
+how do you develop those skills
+to move organizations
+and to get buy in from people? It's incredibly difficult. Right.
+And the why, as you already touched on, we have some
+I have some mental models and metaphors
+that help you be more conscious about it,
+but they're not recipes I like.
+You mentioned the jester. I, the jester is the person who is trusted and tells the truth
+because they have no other agenda.
+And that's what a court jester does. And I think that relates
+very well to architects. We have little direct power.
+We don't have the most headcount,
+the most budget, the biggest teams. But we have high influential power.
+That's just like a jester. We can be trusted
+because we don't have a hidden agenda. We're not trying to increase our budget
+or headcount, don't make our solutions
+overly complex
+so our resume looks much better. Cannot say I had. So I think that's a metaphor
+I use, but I'm always careful with people.
+The metaphor is just there
+to make you more conscious about navigating this
+then never recipe for for success.
+Yeah. So I would say the, the main thing
+and you mentioned other metaphor I pitch is the political capital
+that you have.
+So I would say one
+boundary condition is right. You got to be able to sleep at night
+knowing that not everything
+is a perfect state, because otherwise
+you will get very little sleep. Right? It's just like it was like, oh, the kids
+didn't clean up the Rubicon room again.
+It's like, whatever, right? It's like,
+it's like, yeah, sometimes. Yeah, yeah. People came to me,
+oh, did you know these people
+doing something
+that violates the standard? I'm like, what am I going to do? Right? I have a cap. Right?
+I tried to cap back titling to Cat. What to do is like you also got to live
+for the fact that the cat
+will not always do what you say,
+especially cats, especially the opposite. So you got to be able to live with that.
+If not, you got to have some ulcer
+or some other bad disease. These are at least insomnia.
+You got to house, right? But also another metaphor that helps me
+we do this in the workshop
+is to understand how much political
+capital you have to bring change or,
+you know, challenge the status quo
+or rock the boat a little bit. Right. And I think the the metaphor helps you.
+How much
+how can you earn goodwill and trust. Yeah. So by delivering things,
+keeping your promises, being supportive,
+being transparent
+about what you do. Right. These are all ways
+you build up trust, being fair,
+being open, you know, sharing
+what you do right. You build up trust, but then the
+the objective is not to be
+the most like the most trusted person
+in the whole organization. You're going to go and spend some
+the political capital, right?
+You might be the jester and say,
+hey, lock your baby. In this case,
+the project is actually a little bit ugly.
+Sorry to tell you. Right? Somebody is going to tell you that thing that is a train wreck in the making,
+and I'm convinced that I'm right about it.
+And here's here's why. Right. And that will ruffled some feathers. Right. Some people are going to be 
+how can you say this?
+Everything is perfect. Look at my project status report work
+breakdown structure. Right? Is like, you know, basically
+the implosion is scheduled for Q3
+and they're holding Q2.
+So everything is still perfect. Yeah, it's still good. And you're just like, well, you know,
+it's like I call this the Wily coyote,
+right
+where the guy is riding off the cliff and he's still running
+until he looks down. And then soon as he looks, he got a crash.
+So there's a lot of projects like this. If they don't look,
+they don't drop kind of thing. Right? So that will cost you
+some political capital.
+And again, the model
+doesn't give you the perfect answer. It doesn't say, oh, today is Tuesday. Today
+I should rock the boat kind of thing.
+That's not how it works,
+but it gives you a mental model to not overspend political capital,
+especially early on.
+Right? You need to first earn, right. You need to build up credibility. People think like, oh,
+I'm the smartest guy here.
+I know everything, so I can go
+and tell everybody that is wrong, that is wrong, that is wrong,
+and that project sucks, right?
+They're not doing that. It's not going to end well for you. So the metaphor reminds
+you don't overspend, right?
+I always tell people,
+yeah, even your manager can give you a little line of credit.
+They can back you up a little bit.
+So having friends in high levels helps,
+but nobody has an infinite line of credit. You can just run around,
+you know, and call everybody wrong.
+And oh, this should have been more
+loosely coupled. And this should be cloud native
+and that should be portable. It doesn't help anybody.
+So the moral of
+or the metaphor political capital reminds you you have to earn before you spend
+and you spend wisely.
+And what I always say,
+men spending wisely means have one thing where you really want to move the needle,
+and you feel it's
+worth spending some political capital on, like calling this big projects
+where they're pouring tens of millions
+in calling that ugly, or telling people that you're saying that's not gonna
+deliver, that's spending a lot of capital.
+But on one topic, yeah. And that is much better than starting
+skirmishes everywhere
+and running around telling people every project, oh, you could do this,
+you could do this, you could do that. So that's where the metaphor helps
+you channel your your energy.
+And that's what I try to do. And yes, sleep, sleep at night knowing
+that not everything will be perfect.
+Yeah, I really like this metaphor
+because even on an architect level, on a product level, on an icy software
+engineer level, every word applies, right?
+I've talked to certain software engineers
+and we barely have a relationship. And then I feel like
+they only complaining about everything.
+Everything is ugly or everything sucks. And I'm like, yeah,
+we don't really have a, like, good enough relationship
+for me to be like, I can still trust you
+or I will immediately judge
+from that perspective. If it's someone that I know,
+then I know exactly where they come from.
+We have a different perspective. I have more history with this person to be like,
+they're not negative, but they're actually critiquing
+and their critique is valid.
+But if you just do that all the time, then
+people will judge and people will label you automatically. You become sort of the grumpy old person.
+No one wants to talk to you. Yeah, I'm in that demographic,
+so I need to be a good. Yeah, double double double careful.
+Yeah, but basically everything
+sucks to some degree. Somehow I do it. There's never the perfect thing for me.
+There isn't even the notion
+of the perfect thing. I always say architecture isn't good
+or bad.
+It's not like a Hollywood movie or title
+saying the battle between good and evil. It's suitable or not suitable, right?
+It does the job or it doesn't do the job. That means you need to understand what job
+it needs to be doing right.
+But then you say, oh,
+but it doesn't do that thing. It's like, well, perhaps
+we made a conscious trade off the value
+of this over that. So it does this
+and that's what it needs to do. And that thing. Yeah that sucks.
+But that's not what we need or that's
+a trade offs that we consciously made. So you can always throw a pebble.
+You can always look at an architecture
+that's fine cost us with that cautious. But architecture reviews
+like a third party comes in.
+Generally they come with an agenda
+and they will always find something. They always follow the agenda.
+Yeah. Yeah, exactly.
+They always find something
+matching their agenda. Like the vendor is always
+oh but did you didn't do you didn't use our latest product
+and they will find a very plausible case.
+How not using the latest product
+is a horrible architecture. All right. So I'm always very cautious
+when people ask me is
+like oh,
+go assess this architecture for me. Like at least two thirds of the exercise
+is do they really understand
+the needs
+and the decisions that they made? If the answer is no, well, then we have a problem
+because we don't even know
+whether this object actually
+can be good or bad, because we don't even know
+what we're trying to do. Right. But if the answer is yes,
+if they understand the trade offs,
+they kind of dictate the trade offs. Oh, this is like this
+because of that, right.
+And here's how we decide on this. Then I would be hard pressed to question
+that. It's like, well,
+you understand your priorities.
+You build this to your priorities. That means you made a certain trade off. You made a modular monolith, right,
+because the scaling thing
+was less important to you. I'm like, that is fine. I can go in and say,
+oh, the model is this bad?
+The microservice is good, right? It all depends what you were after. So I when I do architecture assessment,
+it's less
+looking at the final product
+and saying whether this is good or bad, but more like reviewing
+your thought process and understanding
+whether you made conscious decisions
+and whether you understand the trade offs
+and whether those trade offs were aligned
+with what the business needed. And the answer to that is yes.
+Well, then the architecture is good
+because it does what it needed to do. Its sound exactly this.
+No, I say it's like suitable
+or appropriate. There's no global ranking of here's
+the best architecture in the world.
+And then somehow
+it ranks down to the worst one. Yeah, it's not a one dimensional, it's
+not a linear kind of space.
+So I think that is
+is very important to keep in mind when you reviewing someone else's
+architecture,
+you can always find something
+that sucks in one way or another. But that's not the exercise.
+It's understanding the trade offs
+that were made. Maybe it was quick and easy and cheap
+to build. I'd also remind people we generally don't
+like the big ball of mud so much.
+I would say, oh,
+the big ball of mud is bad. Now the funny thing is,
+I know, Bradford and Toyota quite well,
+and they're actually unhappy
+that the pattern got labeled into this. Oh, yes. Oh, this is bad. Don't do it.
+So they actually rewrote the pattern to drive
+the balance more in people's heads
+because the big ball of mud is quick,
+cheap, and requires limited skill set.
+Those bad qualities not necessarily. They actually very good qualities. Right? Who doesn't want something that cheap and
+quick and made with a limited skill set?
+Now it has downsides in terms of shared
+infrastructure maintainability, right.
+There's a trade off. But if if it was completely bad
+in all regards,
+we wouldn't have any big ball of mud because everybody would say,
+oh, that is stupid. That's a bad idea. No, it has some desirable qualities.
+Being quick and cheap
+is a very desirable quality, right? Deliver fast, deliver cheap
+and with a given skill set
+without sending people to like
+a nine month training kind of thing. That is a great quality, right?
+So it's interesting. It's all about understanding
+the nuances, trade offs. So even the big ball of mud,
+you could easily say, oh, that sucks.
+It might have been exactly
+what they needed at that time. They had a launch deadline
+of like one month that they can miss.
+They can't hire more people and
+they got to get something out of the door. What are you going to say? Oh, build a giant platform and send
+everybody to cloud native training.
+Go for it. Yeah, exactly. The month is going to be up. You're like, well,
+you have my that thing together.
+Easy, cheap. Simple, right? Make it work somehow. And then you sort out
+might have been the best decision.
+So it's so easy to judge
+and be the smarty pants, but I don't think that's going to make you
+the architect that people want to come to.
+Yeah, I had the architect
+that people want to come to is a person who understands the trade offs, maybe
+highlights the trade offs in your mind.
+So the people who might have made
+the big ball a month might not have thought ahead
+for maintainability.
+So I think it's totally fair to say like, oh, that was great for how far you gotten. But what does the future look like?
+Do you understand the next requirements? How big does the system have to get? What's the expected
+lifespan of the system?
+Right. And then you can guide them a little bit
+towards like, maybe a little bit of modularity, maybe
+a little bit of structure isn't all bad.
+Right. But this comes out of the dialog,
+not out of some judgments or recipe.
+Oh, that is a bad pattern. And that is, is a good pattern. Yeah. Doesn't help anyone.
+Now, I must say, I take this stance
+a lot to first understand and then to actually reason.
+And for me, it's also fun
+to just probe for information. If there's a decision. How well do people understand
+the business context?
+What's the reasoning behind it like
+is it actually sound or can I poke holes through it. And it's not bad, I think to poke holes.
+It's to give perspective and to also do it
+in a way and to take someone with them, or with you
+instead of putting someone down.
+Yeah. And coming back full circle. SAT on the architect. Elevator executives do this quite a lot.
+So I always tell people the chance
+is that top decision makers like board members, CIOs, CEOs, ride
+CFOs, the chances that they come and say,
+oh, there's, syntax error in your home chart kind of thing,
+or I think your company does know
+the allocation policy should have been X,
+but I was y, very low. Right. Is this is your domain. Right.
+And then their domain. But they have a really good smell for if you don't have your story together
+or your logic together.
+Right. If you say, oh, Kubernetes. And if they say y is like,
+wow, what a dumb question that is.
+Of course, everything goes
+to the office of Kubernetes because it's the future and Google used it
+and is best practice, right?
+And you're like hand-waving,
+hand-waving, hand-waving. Then they will quickly sense that, 
+your thought process
+probably has a few little gaps, and
+they're much more likely to zoom on this. Right? They're less that they're very unlikely
+to like, question
+your actual technical decision and acumen, but they're very likely to find holes
+in your thought process.
+Oh, what alternatives have to consider. What metrics have they use? How do we know what the success looks
+like? Right.
+How much upfront investment
+does this take? Could be defer this decision until later.
+Can we start with something simple
+and then we put it on Kubernetes later? Right. That's what they're after.
+So having this scale of being sound
+and being able to elaborate your thought process that actually helps
+you with executives as well.
+And once they feel like
+you saw this through, you're an expert. You you worked through this by reasoning.
+They have very little reason to doubt you
+because it is your domain.
+But if you cheat, generally they have
+they're like dogs who can smell coconut things,
+so they can smell jumps in logic.
+Like if you go like, oh, from here to here
+and they're like, come again? So exactly like I think exactly.
+I gotta to be a very, very good at that because that's
+where hidden assumptions are buried.
+This is where risks are being buried. This is where people reverse engineering
+from their preferred answer.
+Right. They know what the answer was
+and now they reverse engineer the process. Exactly. They are very trained
+that figuring these things out.
+And ironically,
+that's where a lot of engineers stumble when they talk to executives because
+they don't have their reasoning straight.
+Yeah, I think that's right. I think we are having a sounding board,
+having an architectures that are probes a little bit. Right.
+Does this all make sense?
+Does this sound do we understand
+the triad? Does the decisions we make that is also perfect preparation
+to take something to the.
+So the upper floors of the elevator. Yeah. I think
+especially now when it's easier to cheat,
+have gaps in your logic
+just through content that is generator. You can ask a magical box a question
+and the answer pops out.
+You will distinguish yourself
+if you do that, sure, but also if you have solid reasoning,
+you can use whatever tool.
+In the end, your path
+to whatever answer doesn't really matter. As long as your reasoning is solid,
+you will distinguish yourself
+in those conversations specifically,
+and it's a a huge way. I feel like to build trust with people
+that have limited time.
+Yeah, I, I have a very good nose. I mean, if we're talking about tools like LMS and stuff,
+I have a very good nose about.
+And yeah, I looked at some architecture
+documents, market growth. I asked like two questions
+and I'm like, who wrote this?
+And he
+was like, well, yeah, I use seller land. So I was like, I'm like, well,
+that's great to use it as a tool.
+But if you paste the output of the Liam
+into architecture document, you can only lose. Yeah.
+Because he's a it's really good
+that we don't need to. That's not a good outcome for you
+or is not good.
+And there's also not good for you right. You can only lose. I always say your starting point,
+the output of the tool,
+that's your starting point. And you put the value on top. And if you don't do that,
+that's a slippery slope that you're
+you're not gonna win. Yeah, yeah. My nose, my nose is extremely good. And a lot of other,
+see the it people decision makers
+also these long lists and the fluffy wording on this, like overconfidence
+and things like it always shines through.
+I'm like, oh, and and then if you're not sure,
+you ask people 1 or 2 questions, right? And that they're like a house of cards.
+Exactly. The house of cards falls down. So use the tool. But I always say is
+make sure the tool works for you or not.
+You work for the tool, right? Use it as an amplifier of your own
+abilities, not as a substitute.
+If it becomes a substitute. As I said, you cannot win, right? If it's a great substitute, you're still lost because they're like,
+well, why are we paying the architect?
+Yeah, so we just use the same tool
+that person is using. I love that I'm going to quote
+that many times, so be careful.
+Yeah. Be careful. Don't be the tool. I'd be on top of the tool. Yeah,
+absolutely.
+There's a lot of people listening. And we've covered the grounds for what
+architects do, but also how to get there,
+some of the traps and also some of the highlight points
+that makes great architects. Before we round off, is there
+still something you want to share?
+While there's probably a lot more things
+we could share, but we also to gonna test people's people's
+patience, right.
+Couple things that I share with people. This a few traps set out for architects.
+So let's say you're
+you're good at bringing things in a model with a sketching,
+visualizing, sharpening people's thinking.
+Sometimes that ends up
+being or feeling anti-climatic. So people come to you
+and it's all unclear in their head.
+And you draw a picture
+and suddenly it all seems easy. It sometimes feels like you haven't done
+a great job because it's like too easy.
+Like, could it be true?
+Could it be the simple? So that advice I always give is give. Givers
+don't stumble on the finish line, right?
+If you made sense out of this
+and suddenly it seems obvious you've done a fantastic job, and
+we've gotten so in love with complexity
+that if we actually cut through the
+complexity, we sometimes doubt ourselves.
+But like, how could it be so easy? Right? So don't do that. That's probably the biggest advice
+I give is like, don't doubt yourself.
+If it all makes sense. It's probably you found the right model,
+the right picture,
+and you abstracted away the right things. You did your sentence making
+and now it all makes sense.
+That's what success looks like. So don't doubt that. So that would be stumbling
+point number one.
+And stumbling point number two is
+and we do this in the workshop quite a bit
+a big part of being an architect
+is to to unearth hidden assumptions. I had like assumptions
+that are baked into a design
+that might come back later to haunt you. Right.
+Oh, you're assuming this is always there.
+Well is that necessarily
+true or not. Right. The catch with assumptions
+is once you state them they're obvious.
+And this is another these points
+where you can stumble when you unearth an assumption and you clarify
+an assumption that people were like,
+oh, that was obvious. It's like, well, if it was that obvious,
+why didn't you why didn't you state it?
+So I have some confidence right there,
+some skills that you have as an architect to tease things out
+or make things obvious.
+Don't ever let yourself be sold
+undervalue by people saying, oh, that's too simple or it's too simplistic
+or that was obvious, right?
+If that was the case, they would have
+come up with that, with it themselves. And you wouldn't have to do anything.
+So really understand
+that this is a highly valuable skill.
+And being a catalyst, like making it easy
+for other people to articulate things,
+sketching something out
+that is actually highly valuable. And if the end result is simple, well,
+that is even better.
+That's like the absolute peak performance. So don't let people ever tell you that.
+Oh, that was easy. Or you know, that was obvious.
+No it wasn't. Gregor,
+thank you so, so much for coming on.
+I honestly learned a lot,
+and I'm going to have a joy listening back to this episode. Yeah. Me too. Actually,
+I do listen to my own.
+Oh, yeah, that's a good test. Because if I don't want to listen to this
+for like, 30 minutes. Yeah, why would I expect the audience to?
+So I always but let me know
+what your feedback is going to be. Will do. Definitely. If you're still here with us,
+let me know in the comment section.
+What do you think of this episode?
+And we'll see you in the next one. Beyond Coding.

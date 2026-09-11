@@ -1,0 +1,620 @@
+one of the things we hear so frequently from doctors about open evidence is you
+know I used it to look up this thing for a patient case that is maybe a patient
+case that I would have seen one or two times in my career and then the same doctors are
+saying that about a different patient case and then about a different patient case and then about a different patient
+case and then you realize just how long the tale of this thing is where it's like well if the majority of your uses
+of open evidence are patient cases that you would see once or twice in your career then that really captures what
+the thing is [Music]
+doing one of the questions on everybody's mind as it relates to AI
+is will this actually be good for Humanity one of the use cases where AI
+is inarguably good is medicine we have Daniel Nadler
+co-founder of open evidence on the show today open evidence is trained on
+peer-reviewed medical literature to provide an AI co-pilot that helps
+doctors make better decisions at the point point of care this is inarguably good for
+Humanity it doesn't take crazy assumptions to believe that open evidence will save a Million Lives over
+the next decade today we'll hear from Daniel on how they built the product
+what's different versus some of the other application layer AI products out there and some real life examples of how
+it's being used in the field to the benefit of everybody I hope you enjoy
+Daniel welcome to training data thanks for coming on the show thanks Pat for having me all right how many
+doctors will use open evidence today today probably over 100,000
+physicians in the United States and more globally and what would that number have been about a year
+ago a thousand fewer than zero uh you know look Mo most people
+aren't aware of this but uh there's only about a million doctors in the United States serving a population of over 340
+million people which is itself an issue that we'll probably talk about later on but uh there's only a population about a
+million doctors today maybe 100,000 of them are going to use
+open evidence um on a monthly basis about 3 400,000 monthly active users
+touch our system including over 200,000 that log in and ask questions so um you
+know you're talking about 10 15 20% maybe even 25% of
+doctors in the United States uh that are uh that are using open evidence in some form or another and we're you know we're
+not Healthcare investors we're technology investors here at sequa but my understanding is that it's not normal
+for a 100,000 doctors to be using something you know overnight like my
+understanding is that in healthcare normally takes a lot longer to get to that sort of scale so what what did you guys do right well that's why we get
+along so well because you're not Healthcare in you're not Healthcare investors and our approach has not been a healthcare approach um what we got
+right is uh we realized that doctors are people too doctors are consumers in fact
+everyone's a consumer I think that's what you get right in your investment strategy which is you don't sort of
+think about um consumer internet applications as one category and then
+you know a bunch of stuff over here as its own kind of weird quirky opa
+industry categories over there you think about everything in terms of consumer
+consumer in growth curves and that's exactly how we thought of it you know obviously if you try to go top down so
+everyone says you know it it's it's such a refrain you know Healthcare is impossible to break into Healthcare is
+so hard don't start healthare comp and I think the evidence generally supports that course of course because they're all trying to do the same they're all
+trying to bang their head against the wall in the exact same way they're all trying to go to the top of some
+integrated delivery Network which is like a large network of Hospital Systems score a meeting with the CMO or the CTO
+or the you know all these acronyms um it'll take them three months to four months even if you know if they're
+properly networked and connected um it would take them three or four months to get meeting one on the calendar meeting one will be great they'll high five each
+other they'll be like that was a great meeting we got great feedback what's the follow-up well they're going to schedule a follow-up meeting um which will
+probably be with a responsible AI committee um that will take three months after the first meeting then you'll
+present to the responsible AI committee you know at that hospital along the way the committee members will have changed
+their strategy and responsible AI will have changed maybe the presidential Administration will have changed and now
+JD Vance is saying actually you have to change your approach responsible AI so that gets delayed and you're a year into
+it before you're you know in meeting three or meeting four and by the way no doctors there along the way or getting
+the benefit of using the application I I had a lot of experience you know this was my first rodeo I had sold um a very
+successful AI company um before starting open evidence Ken show and so I I was
+very familiar with with how Corporate America works and how large organizations work it's not specific to
+the Healthcare System it's just called large organizations and I was very familiar with that I had pattern
+recognition to that and so I realized that that wasn't really a viable path forward for us especially this is my
+second company was very Mission driven was very impact driven um but it it would not have been much uh sense of
+accomplishment for me to have nominally started a second company that was mission driven or impact driven in
+healthcare but then have no doctors using it because we we're we're mating we're waiting for meeting number six or seven or eight with with with with the
+hospital system so long story short we just took a radically different approach doctors are people too doctors are
+consumers too and if you make something awesome that is lifechanging and
+gamechanging and profession changing for knowledge workers and it's really good enough and you put it out on the App
+Store it sounds 101 but it really works people you make something awesome you
+put it out on the App Store for free and it turns out that without fancy
+marketing campaigns or large marketing budgets or anything like that all of our growth is Word of Mouth doctor to doctor
+to doctor to doctor people will start using it and people Discover it and then they'll
+start using it and when they start using it and if it's really awesome they'll tell other people about it and then you
+get just sort of the network effects that um you know you got with uh Tesla early on Tesla early on famously spent
+you know almost no money in marketing they didn't you know as I understood car commercials were kind of one of the
+largest category of advertising it was it was taken as Dogma that if you wanted
+to have even a remotely successful automobile uh you needed to spend
+enormous sums of money on Advertising uh those cars and Tesla early on said we're
+just going to make a product that's so awesome that people will tell other people about it someone will drive it they'll be like oh my God this is so
+much better than other cars and tell other people about it and and that sort of word ofm mouth Network effect that
+Tesla had happened with open evidence with doctors where doctors downloaded
+from the App Store as I said a year ago would have been I don't know somewhere between zero and a thousand doctors using it uh today it's hundreds of
+thousands it's you know t 10 15 20 maybe 25% of uh active Physicians the United
+States it it really the the denominator um it depends on how you calculate it because there more
+Physicians that are have a medical license that are necessarily active at any one time um but you know it's as as
+it's as little as 10% and as as high as 25% of uh active Physicians United
+States use open evidence today and all of that is just this sort of Tesla logic of like make an awesome car it'll spread
+through Word of Mouth and I think it's intuitive to people what it means to have an awesome car it's probably not
+intuitive to people what it means to have an awesome app for doctors yeah so like what are doctors actually doing in
+this app why do they like it so much so I think something is awesome if first
+and foremost it solves a real need and a real pain point right so much of technology is a solution in search of a
+problem it's important to BU able to word problems that um that that are real and and have a solution that addresses a
+real problem so you got to begin from well what's hard about being a doctor um
+one of the hardest things about being a doctor besides the hours having to go through medical school and all the rest the fact that they're stretched too thin
+and there's too few of them for the population is that they're expected to keep up with a fire hose of medical information so this is really not
+appreciated by people who are not doctors um but there's two new medical
+papers published every minute 24 hours per day two new medical papers published every minute 24 hours per day 7 days a
+week uh there there was a uh study done in in publishing nature that said that
+medical knowledge doubles every 73 days that's probably that methodology was
+probably a little aggressive uh we we did our own internal study to open evidence of the rate of doubling of
+medical knowledge we came up with a much more conservative number but that's still 5 years our conservative number is medical knowledge doubles every 5 years
+there's a lot of methodology and how you think about counting you know all citations if it's all citations yeah dou
+73 days but not all citations and Medicine are equal even if you really just count what you should count which
+is the stuff that doctors really need to know like top tier
+journals um that have the highest impact factors let's say the top third of
+Journal something like that even with that very conservative methodology you're talking about medical knowledge
+doubling every 5 years so if you think about the math of that for a second so
+in 1950 medical knowledge doues every 50 years today it doubles every 5 years
+what that means is if you graduate medical school in 1950 the halflife of what you've learned
+in medical school meaning the time it takes for half of what you learn in medical school to kind of be out of date
+and we're not talking about Anatomy or you know that Anatomy cellular biology that stuff doesn't change or doesn't
+change that quickly but the rest of it actually does change and so in 1950 the
+growth medical knowledge meaning new treatments at they need to be aware of was every 50 years which means the half-life of what they learned in
+medical school nicely overlapped with the length of their career so by the time they retired maybe half of what
+they learned in medical school in terms of the efficacy of new treatments and new treatments that were available was
+kind of out of date but they were retiring so that's kind of okay right and they and they they tried to keep up
+along the way and it was easier to keep up along the way because it was so much slower today if you think about that
+same framework by the time they're like depending on
+their specialty going through their residency and fellowship half of what they learned in
+medical school is now out of date in terms of new treatments the efficacy of
+those treatments and so on so it's just it's it's impossible for doctors to keep
+up with that because medical school which is what most people or not doctors assume is the um information
+transmission mechanism for medical knowledge only sustains a doctor for a
+couple of years these days in terms of the half-life of their knowledge you have a patient coming to the
+dermatologist who has psoriasis okay maybe say fine just read up on the new
+classes of biologics and pick one based on efficacy and safety and in this example you see
+that the specialization of medicine becomes very challenging because the
+dermatologist maybe is keeping up with the Dermatology journals and all the new
+biologics for psoriasis that are published in the Dermatology journals but Ms is a neurology condition and it's
+ludicrous to expect the dermatologist to also read every single page of every
+single neurology Journal let alone the Border region or the interaction between those two
+Specialties uh so the dermatologist in that situation in that scenario is in a
+real pickle because they don't want to make the MS worse they don't want to just send the patient away and say hey
+everything's too risky so we're not going to treat your psoriasis because that's a quality of life issue for the patient and they need to sort of figure
+out what is the latest evidence hence open evidence what is the latest
+evidence on the efficacy of yes Isle 17 Inhibitors and Isle 23 Inhibitors but specifically with the lens to what is
+the efficacy and safety of those Inhibitors uh for patients who ALS also have the comorbidity of Ms and that
+information hunting Gathering exercise is in a traditional you know pre-open
+evidence is just very painful um the traditional way of doing that you would
+you'd go on Google try to Google this you'd go on PubMed none of those
+searches work particularly well they'll sort of give you the titles of the articles but this is such a specific
+question this a very specific question this is not like a generic article title like what is the efficacy of 17
+Inhibitors this is a very specific question what is the safety of is 17 Inhibitors versus is 23 inhibitors for a
+patient with both psoriasis and Ms and that was a real need to come back to your question what makes something
+awesome for doctors not just this one specific case but as you can imagine for
+every um example you can give like this of you know a comorbidity s
+Ms seeing a dermatologist the surface area of medicine is so enormous that you
+have millions and millions and millions of cases like this you know Engineers
+that are listening to us can immediately understand this everything is an edge case everything is a corner case right so from an engineering perspective the
+way to think about medicine is you know the surface area is it's not truly infinite but it's for intensive purpose
+is enormous and everything is an edge case and everything is a corner case and you're trying to always look up The Edge
+case or the corner case that's the experience of being a doctor put in engineering terms and so if you can
+solve the experience of being a doctor framed in engineering terms of everything is an edge case everything is
+a corner case go find solve the lookup for that edge case in that corner case meaning go find the reference somewhere
+in a medical journal that is a peer-reviewed toptier medical journal
+that answers the question of the comparative safety of is 17s versus is 23s in a patient with psoriasis and Ms
+which is never going to be in the title which is what pbet or Google could find it's always going to be buried you know
+on page five or six or seven of that 30-page medical journal article then you
+have made the experience of being a doctor that much better you have made
+the lives of doctors that much better and most importantly you've improved uh the life of the patients
+that they're treating because then you've prevented a scenario where the MS is getting worse because the
+doctor didn't know hey you know is 17s are very promising generally for
+psoriasis but if a patient has Ms is 23s are actually a lot safer right if if the
+doctor didn't know that which is's no reason for them to know because the average you know given the average age
+of a doctor not neither of those two things existed when they went to medical school they couldn't have it's not even like a study question they could not
+have learned that in medical school Isle 23 inhibitors came out in 2017 2018 2019
+there's no way even if doctor's my age and I'd be I'd be a youngl looking Doctor most doctors you see you know are
+older than I am and even if a doctor were my age I am old enough that were I a doctor I would not have learned that
+in medical school so there's no way a doctor can learn that in medical school they would need to sort of keep up with
+post-medical school and because it's an edge case or Corner case and because for every one example like that example
+there's 10,000 other examples that they would also need to stay on top of they probably would have had a hard time
+keeping up with that data point pre-open evidence and that would have resulted in a worse outcome for for patients and one
+of the things we hear so frequently from doctors about open evidence is um you
+know I used it to look up this thing for a patient case that is maybe a patient
+case that I would have seen one or two times in my career and then the same doctors are
+saying that about a different patient case and then about a different patient case and then about a different patient
+case and then you realize just how long the tale of this thing is where it's like well if the majority of your uses
+of open evidence are patient cases that you would see once or twice in your career then that really captures what
+the thing is doing it's it's essentially running search and Discovery and and
+knowledge retrieval on a tail that is not nothing is infinitely long but but
+is so long that it for all intents and purposes to a to to a wet human brain might as well be infinitely long yeah
+yeah the you know the data on the rate at which medical knowledge is increasing it's a very it's a very positive data
+point right like it's great that medical research and medical knowledge is increasing so quickly it's like this keg being filled with potential energy that
+hasn't converted into kinetic energy because we have this choke point which is a human's ability to ingest and make
+sense of all this information so it it it makes sense so now that AI is here AI is great at looking over enormous
+amounts of text and doing reasoning across enormous amounts of text it makes sense that AI is a little bit of an unlock to sort of convert that into
+kinetic energy with the with the system level view um the question we talked a
+bit about some of this evidence that's going into the system de decompose the name of the company real quick open
+evidence why is being open important and what exactly is all the evidence that's
+going into the system sure so the the evidence is peer-reviewed medical literature and it's most important to
+say what it's not one of the reasons you got so many eggon face situations from
+large publicly traded uh tech companies that put out AI
+systems in the area of medicine you got these sort of eggon face situations I won't say specific examples but I think
+we all know what they are is because they were doing retrieval across the public internet which means they're doing retrieval uh across uh Health
+blogs uh Health blogs on the public internet uh they they might have been doing retrieval at the time uh on
+Twitter before Elon CAU off access to that uh there's a lot of stuff on Twitter that you wouldn't want to be the
+basis for um for a doctor's decision uh but even if you just take the health
+blog thing it's amazing how many Health blog writers there are on the internet I
+only discovered that when I sort of started working on this problem and most people assume that the people writing Health blogs are doctors or at least
+have some connection to medicine that's actually not the case these are not bad people uh they're really well-meaning
+people but what you'll find is a lot of these people are only part-time Health blog writers and they're also part-time
+travel writers uh or they're part-time uh cooking recipe writers they're basically
+J you know they're sort of journalists bloggers uh where their core skill set is writing they're very good at writing
+uh they don't have any domain expertise uh in medicine uh they don't know any
+more about medicine necessarily than they know about uh planning an itinerary for a trip to Mexico and that's what
+goes in to the training data this thing's called training data and then we're shocked when in the early days of
+large language models um they said all sorts of crazy things well they didn't
+say crazy things they regurgitated what was in the training data uh and those
+things didn't intend to be crazy but they were just not written by experts so
+all of that's to say you know where open evidence really right in in its name and
+then in the early days uh took a hard turn in the other direction from that is
+we said all the models that we're going to train do not have a connection to the internet they literally are not
+connected to the public internet you don't even have to go so far as like what's in what's out there's no connection to the public internet none
+of that stuff goes into the open evidence models that we train
+what does go into the open evidence models that we train is the New England Journal of Medicine which we've achieved through a strategic partnership with the
+New England Journal of Medicine say a word about that for a minute because my understanding is that New England Journal of Medicine doesn't just give
+all of its research to everybody for free to go train on they don't uh uh to
+the best of my knowledge we're the only AI company that they've done this with and and to the and without getting into
+the specifics we're not the only I company that's asked they've said no many times um what what why do they
+trust seemingly trust open evidence when they don't trust other folks like what what makes you particularly appealing to
+them well looking into the exact play-by-play what happened was a number
+of other well-known AI companies showed up at their door and said can we train on the England Journal of Medicine and
+uh the England Journal of Medicine said no uh I won't even get into the reasons of why they said no and I'm not them so
+I speak on the behalf but they said no in in our case we didn't show up at their door uh a number of the very
+senior people on the editorial board new Journal of Medicine were power users of open evidence and they wanted their
+content to show up in the thing that they were using so it's beautiful right and so they C they came to us and then
+we we spent a lot of time really getting right what a framework for cooperation collaboration which prioritizes and
+privileges the the the importance of their brand and the sanctity of their
+brand and you know they're they're they're the Pinnacle they're the Apex
+medical journal and the massachusett medical and they're nonprofit they're not commercially motivated there's no amount of money you could throw at them
+that's going to make them make a perfectly mercenary decision and in fact without getting the specifics of it some
+of these really well-funded AI companies threw enormous amounts of money at them and they said no if they're a private
+company they probably would have said yes but they're a nonprofit so they said no because the Massachusetts medical
+society which is a nonprofit organization cared more about the the the the the sanctity and the the
+pristineness of their mission as a nonprofit than they did about just trying to score some sort of quick um
+commercial contract in the case of of open evidence like again it was beautiful the very senior people there
+were users and then this sort of circles back to what we talked about right at the start which is had we waited had we
+taken a top down approach had we taken an Enterprise SAS approach and
+been you know in waiting mode for meeting number 17 with the hospital system and no one was using it well if
+no one was using it that would include no one at the New England Journal of Medicine using it which would have meant that they wouldn't have fallen in love
+with it which meant that they we would have never had a opportunity to strike a
+Content partnership with them that would have in you know that in turn made the whole thing that much better and more
+awesome to the people using it so you get into Vicious Cycles versus virtuous Cycles in our case the whole thing was a
+a cycle we put it out there people downloaded it for free some of those people
+included very senior people at the New England Journal of Medicine they started using it they fell in love with it they reached out to us we did this deal and
+now the thing is 10,000 times better because you know is trained on the full
+tax Journal of Medicine which no AI today in the market I can tell you with certainty no AI today in the market uh
+is training on the full text Eng Journal medicine other than open evidence so we talked about the evidence part let's talk about the open part a little bit
+what what is what does the open piece of open evidence mean and and why is that part important open meant a lot of
+things to me in the early days one of the things it it it meant was capturing that go to market strategy that that we
+talked about which is for me open was almost a reminder to myself that this was not um an Enterprise SAS company you
+know my first company was Enterprise SAS company those can be great businesses I don't need to tell you you've had
+phenomenal success with Enterprise ass companies they can be great great businesses um but for my second company
+I I didn't want to just have a mission driven impact driven company I also wanted to have a company that was
+different from my first company in every respect because I don't like repeating myself um specifically I want it to be
+sort of direct to consumer in our case direct to prosumer so the open for me
+sort of symbolize that that we would go directly to doctors that we wouldn't go to their Gatekeepers we wouldn't allow
+people to be Gatekeepers to doctors we would go directly to doctors we' appeal directly to doctors we' appeal directly
+to the pain points that they experience on a daily basis which is that they're overstretched they're overworked they're
+not enough of them they're stretched far too thin in terms of the the the number of patients that they need to see and treat but also that they're forced to
+drink from a medical information fire hose and we were going to make that better and we're going to help tame that medical information fire hose and we're
+going to make that appeal directly to doctors as consumers and as people
+specifically and that's that was a big part of what open meant you know there's there's enormous inequality in the
+healthcare system in the United States um as there is in everything in in the
+west and there're the halves and they're the have knots and the best Hospital
+Systems in the United States which have enormous endowments and unlimited funding can afford to buy not just like
+one tool or two tools or three tools they they can afford to buy every tool in the category and try them all out and
+they can afford to have like doctors not really use most of them and that's okay because you know if if a if do or Elon
+went and did an audit of the saspend of some of these really well-endowed hospitals he would have a field day
+because what you'd find is they're buying everything and they're using almost nothing y um and that's happening
+over here while over here you have doctors in rural parts of the country or Urban parts of the country that um just
+associate economically disadvantage or you have doctors that are in private practice or in groups of you know 10 or
+fewer practices of 10 or fewer doctors most people don't realize about doctors a lot of doctors are small business owners they don't work for these
+enormous Hospital systems with a lot of money a lot of doctors are are are self- Proprietors they small business owners
+they they have a a practice it's kind of almost like the 1950s but it persists they have a practice they might have one
+or two people helping them in an administrative capacity or a secretary or something like that but they're the
+they're the principal and they have to deal with all the administrative Stuff Plus C patients plus Plus+ plus and they
+don't have these you know enormous technology budgets they they certainly don't have endowments like University
+style endowments like some hospitals do then they can't afford to go pay $10,000 for a Enterprise SAS
+subscription to some software product so that all of that is what open meant you know we got a letter from a doctor in in
+Albany Georgia um who said he the director of a Cancer Center in Georgia
+and he's in Community Practice is a community oncology practice and um that
+open evidence has become a Lifeline to his daily practice in his cancer center
+uh and has been a game changer for patients and in treating his cancer patients and um like most people I
+didn't know much about uh Albany Georgia so I looked up Albany Georgia and very quickly on Wikipedia I discovered that
+Albany Georgia is in Southwestern Georgia it's 75% African-American it has
+a median household income of $43,000 a year and I started to piece together the situation you know this doctor's
+probably the only oncologist in a 50 mile radius maybe
+there's a second one and they're serving an you know an enormous geography of
+Fairly poor people and there's no way that this doctor has the resources to
+pay 10 or $20,000 SAS subscription software rates
+for for anything um and that to me is what open means it means the doctor in Fairbanks Alaska uh who wrote us a
+letter saying that uh she practices in again a community setting in Fairbanks
+Alaska and very limited access to subsp Specialists and open evidence has been
+um a game Cher for her in allowing her to sort of access subsp specialty level
+medical knowledge without direct access to human subsp specialists in Fairbanks Alaska again if you look up that
+situation or just even think through that situation she's not paying you know she's in a community practice she
+doesn't work for a hospital that can afford this kind of stuff so that's what open means it's every doctor in the country we're really proud that we're
+used not just at Mayo Clinic and Cleveland we're we love the Mayo Clinic uh we were partly incubated at the Mayo
+Clinic we love these sort of um Elite Hospital settings we have a lot of users at these Elite Hospital settings that
+also use it for free um but we're not just use it the Mayo Clinic we're not
+just used at the Cleveland Clinic we're we're we're used across the country we're used in the middle of the country we're used at Walter Reed where our
+nation's Warriors and veterans are treated without the government having to go through a three-year procurement
+process to decide whether they want to use open evidence you know that's another example so so one of the biggest
+Health Systems is the VA to me that's one of the most important Health Systems because it treats our Warriors and our veterans for the VA to
+decide to do anything is probably a three-year exercise and were open evidence not open to answer your
+question uh we would probably still be in year 1.5 of three to four years of a
+government procurement process to decide whether doctors in the VA could treat their patients who are warriors and
+Veterans with the benefit of open evidence and thankfully we didn't go that route and we're getting letters
+from from doctors in the VA talking about using open evidence to make a treatment decision at the point of care
+for a wounded warrior you know that's this I it energizes me waking up every day so that's what open means um okay so
+you you guys you've built something of a killer app for medicine and it's working it's working
+really well and we have a lot of people typically who listen to the show who are
+themselves trying to build killer apps of some sort for AI some curious using AI um so I'm curious how did you build
+it like what you know is this a rapper on top of gpt3 or gp4 like what is the
+um what's going on under the hood how'd you build it so I think what I'm going
+to I'm going to sort of have two parts to what I say I'm going to sort of talk about what we did and then talk about
+what is applicable for a lot of people listening to us now I'm I'm guessing a lot of people listening to us are
+building applications that don't necess have the same requirements that medicine has so I do want to address that in the
+case of medicine the way we attack the problem is by bringing together a team
+of PhD level scientists uh who are working in the field um we you know my
+co-founder Zachary Zigler who's brilliant computer scientist from Harvard studied with um Alexander Rush
+uh in his natural language processing Lab at Harvard uh that was one of the leading Labs uh before chat GPT even
+came out um Evan Hernandez comes from Jacob andreas' Lab at MIT so I could go
+on on on ER Eric Leman uh from MIT as well I mean we we we put together a team of sort of elite scientists who are
+working at the frontier of language models at the top you know two of the top three maybe Labs if not two of the
+top two Labs um at the time in the country in the world actually and we
+needed to do that because we're trying to solve medicine and we were trying to Sol the
+application language models in medicine and that was a very high standard and a very high bar and it hadn't been salt
+and and what the very large consumer companies were putting out um was
+creating all sorts of embarrassing moments in medicine for those companies at the time sort of recent enough that
+we probably all remember this and so we needed sort of that level of almost the intersection of
+Academia and engineering to go after this problem and we needed to in our
+case produce original research and original knowledge so we attack the problem in in a different way everyone
+was trying to at the time focus on us you know scaling these language models larger and larger and larger and larger
+and we were very very early you know now this is sort of consensus with deep seek and all this stuff but rewind this is
+2022 we were very early to the Insight that smaller highly specialized models
+overtrained on in domain data without perform much larger models on those in domain tasks they were very rigid they
+wouldn't write you a poem um they'd fall over very quickly the second you go outside the domain but in the domain
+they were beautiful they outperformed and uh we published our work uh we we approach this very academically my
+background is you know academic as well I did my PhD at Harvard and um we were all academics by background um and we
+published our work uh in this paper do we still need clinical language models uh which uh was awarded the best paper
+and machine learning uh in 2023 at the at the at the leading conference in machine learning and Healthcare uh and
+attracted a lot of attention it was really the first paper um in the field
+altogether that showed that in medicine the best way to attack the problem was
+these smaller more specialized models again that's become consensus today but you have to sort of pretend you're not listening to this today pretend you're
+listening to this in 2022 pre-chat gbt um it wasn't obvious because what was what was coming out at the time was like
+the chinchilla paper from Deep Mind and everything was about larger larger larger scale scale scale and we just
+took this very different approach and in a way like is very with the benefit of
+hindsight everything's obvious but with the benefit of hindsight it's kind of obvious right if you if you if you go
+and listen to um Jensen's interview of Ilia you know Ilia uses the metaphor of
+jpeg compression basically it's like these language models are basically like a JPEG compression of the world and
+that's okay well if they're a JPEG compression of the world what's the world what's the world that you're
+compressing and it goes back to what we talked about public internet y if you're if you're doing a JPEG compression of the public internet then what you're
+which is what these large language models that were focusing on scale where where where basically they're token limited they're like give me as many
+tokens as possible for me for me to train on and so well where do you find
+all the tokens in the world you find them on the public internet well to go back to Ila's Point well what are you compressing then what are you jpeg
+compressing you're compressing the public internet and then you get all these sort of embarrassing outputs that that were sort of of that late 2022
+early 2023 vintage in our case we sort of said let's make a JPEG compression of
+medicine and so let's let's overtrain on again peer-reviewed medical science
+stuff that comes out of the FDA the CDC uh we had the advantage this is way before the New England Journal of
+Medicine partnership but we had the advantage of um that under copyright law anything created by the US government is
+public domain that's how Wikipedia does a lot of what it does so in the early days we started with um the sort of like
+Creative Commons public domain stuff that was available and we were very lucky that in medicine this wouldn't
+work in every other field because in in other fields like law or accounting or tax there's a lot of stuff that's behind
+walls um but in medicine it turned out that a lot of the the the really great
+stuff was created by the US government in the form of the FDA and the CDC and what they had put out so we overtrained
+on that stuff and solved the copyright issue that way early on which then allowed us to bootstrap something
+awesome enough that people could download it which then one over
+users at places where there were copyright considerations like the new Journal of Medicine which then started
+the flywheel of them reaching out to us and then now us having the benefit of the stuff that is uh under copyright the
+new Journal of Medicine um but that that was our approach it was very technical
+and it was very academic and it was very scientific because um accuracy mattered
+that much given our domain uh in medicine yeah I was going to ask you about that so you know you have doctors
+using open evidence to make clinical decisions at the point of care yeah so
+in most applications a Hallucination is annoying with open evidence a
+hallucination could be literally life-threatening given how it's being used so how do you how do you deal with
+hallucinations in particular well and just to reiterate the first thing you said you know and maybe this is advice
+for entrepreneurs or Engineers are listening to this there's scenarios where Hallucination is not even annoying there
+are scenarios where Hallucination is a feature one of my favorite applications is mid Journey yeah Hallucination is a
+feature yeah yeah of mid Journey maybe one takeaway is
+find applications where where the biggest hesitation actually gets Judah moved
+into a feature um as opposed to a limitation and just
+to Total aside an example and someone should go start this company again my first company was in finance and um I I
+feel like I kind of grew up on Wall Street and I think that way and um if I
+wasn't running open evidence I wouldn't run another company because I'm going to work in medicine I think for the rest of
+my career because of the impact but if I were pressed to sort of like what would what would I do in finance now that
+large language models exist I would actually begin from thinking about hallucination as a
+feature as opposed to a limitation so where is hallucination a feature in
+finance well it's certainly not in like doing retrieval on the PE Ratio you need that to be right well where else could
+it be used what about risk management a lot of Finance is about figuring out
+what the black swans are h a lot of finances what could go wrong and then at
+the extreme tale there's a lot of money at stake what could what is very unlikely but that could go really really
+wrong and the first two questions most people can reason through without the aid of computers what can go right and
+what can go wrong you can kind of Reason through that with your wet brain but in terms of like what could go really
+really really wrong at the level of the 2008 financial crisis um that's harder
+for for the on for for most uned brains to imagine that but these language
+models would be pretty good and I've tested some of this in my own portfolio management at hallucinating those
+things I've actually as an experiment done this in my own um portfolio
+management just use these language models in a way that the Hallucination
+is a feature where I give it certain details of my portfolio um I talk about
+the I you know I give it in the context window enough information so that it understands what the company does and so
+on and it comes up with all sorts of scenarios that are kind of on the long
+tail of what could go wrong and I'm like huh I never thought that I I love Nvidia
+but I never thought about that happening to Nvidia that's interesting so at a
+high level I think there's enormous opportunity I think we're like 1% of the
+market captured today in 2025 in terms of applications
+built that even begin to think about hallucination or riffing as an advantage
+as opposed to as a limitation so that's for all the entrepreneurs listening there's there's 99% is still up for grbs
+Yes in my specific domain medicine none of that is fair game um and so the way
+you know we had to deal with that is by not connecting open evidence uh and
+models that we train to the public internet uh is by only training on peer-reviewed medical knowledge and go
+back to Ila's point the jpeg compression that we made in our models in our in our
+smaller specialized retrieval models and ranking models you know we don't use one model without getting into our sort of
+Trade Secrets like it's an ensemble architecture there's multiple models
+that do different things there's half a dozen models they handoff TS to each other uh you can't get the accuracy
+level of open evidence by training one large language model it's under the hood going to be this sort of Cooperative
+Ensemble architecture and those are made up largely of smaller models that do
+very specialized things like retrieval and ranking and other things and for those models um the jpeg compression is
+exclusively of pure reviewed medical literature so it's never going to be at risk of regurg ating or surfacing
+something that is not in the peer-reviewed medical literature which is as they say in GI Joe more than half
+the battle right and then the other half the battle is allowing transparency and
+interrogation of the answer and we were very early to that I've seen now that Chacha PT and others start to do that
+but we were probably the first application I I would go on a limit and say we're like the first application
+that grounded our answers um in references that you could drill down and
+drill through to see the underlying sources of we did that in early 2023 long before uh chat and others started
+to come out with similar features and that's how we went over users in the early days because doctors saw that not
+only is this not saying anything egregiously wrong in terms of regurgitating something on the public internet but it's also even within the
+domain of the answers that it gives based on peer viiew medical literature allowing me as the physician to go
+interrogate where it's getting that thing that it's saying where getting that source of information from and
+drill down all the way to the reference and then go and read the reference which
+by the way also created a a beautifully symbiotic relationship with the Publishers because instead of just
+compressing all their knowledge and then giving it away as some folks did as a
+result of just trying to make this as accurate as possible inadvertently stumbled upon a model of cooperation
+with public ERS that ended up being very good for them too because we send an
+enormous amount of traffic to Medical journals we send millions and tens of
+millions tens and tens of millions of visits from doctors to medical journal
+pages hosted by those medical journals including traffic they might not have otherwise have gone because the doctor
+is going to that journal because of some detail deep in the methodology section
+that the doctor would have never known to go to that journal for really this virtuous circle kind of all around and
+then we had um medical societies that write guidelines reaching out to us
+saying hey we noticed that you Index this other society's guidelines can you go index our guidelines because we want
+the traffic is beautiful right so you get accuracy you get a symbiotic and a a
+mutually beneficial relationship with medical journal owners um but critically you you get the
+right information back to the doctor using open evidence who then will make the better decision as a result of
+having better information for their patient at the point of care and it's been it's been a decade or so since Kino
+got going and obviously there's been a lot of progress in the field of AI machine learning since then if we were
+to inspect the underlying architectures of kinow and open evidence how much is
+the same and how much is different and I guess part of the question behind the question is how much of what goes into
+making an AI application that actually works is recent breakthroughs and how
+much of it is more sort of classical engineering machine learning
+principles Keno was pre-large language models pre- language models pre- small language models pre-ir pre
+anything um almost pre-fire uh so um it's hard to compare
+right I mean kenha was very early NLP not when I sold the company by the time I sold the company it was much more sophisticated but I'm talking about when
+I found it kencho in 2013 so it's very different today what they
+have in common is there's an enormous infrastructure component to building this stuff
+so you know we train our own models and I talked about that over the last few minutes and and but even if you're not
+training your own models even if you're just like using an API to one of The Usual Suspects
+you know that's going to fall over at some point if you're successful and um
+and you want to be successful and you want to get to the point where it falls over and it will fall over and at that point you need to have all the
+traditional things that you have in traditional software engineering like infrastructure and really good
+infrastructure and that is very similar to kencho because both were critical systems you know in the case of Finance
+there's enormous amounts of money being moved around on the basis of this information you you can't have it just stop or fall over in the middle of a
+trade and I think that's a good thing I I think that one of the things that everybody was concerned about post the
+chat CHT moment was that all the rules of the game had changed and you know I'm here to sort of
+tell you that they hav it yeah the technolog is better but that's a Continuum the technolog has always been better the technology was better from
+1980 2 or 83 to 1987 right and from 93 to 97 right the technology has always
+gone better yes there's a step function now yes there's nonlinearity yes there's a exponential rate of increase yes
+everything R cwell set is correct and turned out to be correct but but it's a Continuum you know even Ray cwell thinks
+about this stuff as a Continuum um and when you think about something as a Continuum it's very um it's a relief in
+a way because a a Continuum is something where the laws of physics aren't
+changing along the Continuum even if you think about the metaphor of uh travel toward the speed of light yes
+the technology that would get us from on10th the speed of light to 1/ half the speed of light in a spacecraft is highly
+nonlinear at its sophistication but the laws of physics in that acceleration are not changing
+it's just the Technologies on a nonlinear Continuum but it's still a Continuum and that same
+Continuum nonlinear but Continuum exists in engineering and Entrepreneurship more
+broadly but specifically in AI where everything that mattered at Keno um
+continues to matter today and the the intelligence level of the people that you're bringing to Bear uh on the task
+matters you know keno and open evidence are identical in that we were able to be
+successful because we brought people with really high IQs to bear on the task let's talk about that yeah you mentioned
+Zach and Evan and Eric and and Micah how do you how do you attract people like
+that why do they choose for all the options they have why do they choose to work on open
+evidence it's impossible for me to answer that without just um repeating
+what Steve Jobs has said which itself has been repeated so many times but I don't have a better way of phrasing it a
+players want to work with a players it it's that simple Elite people want to
+work with Elite people a lot of people who sign up to
+buds which is the sort of screening process for Navy Seals um do so because
+they just want to see if they can keep up with the other people that are doing it they want to test themselves they
+want to see what their limits are um that's as old as Achilles that's not new
+it doesn't matter whether it's Warfare or engineering or uh sports or or any
+other domain Finance the very best people in the world want to see just how good they are they want to see what
+they're made of and the only way to do that the only way to learn that is to put yourself around other Elite people
+and see how you stack up against those people um so th that's that's the common
+denominator to what I did at kentra that worked out very well to what I'm doing here that's working out very well which
+is you know and it and it's kind of controversial or at least was controversial uh for a minute you know
+you couldn't talk about IQ you couldn't say out loud for while
+like I just want people with really high IQs I don't care about anything else
+that's I don't care who you are what your background is what you look I I just want someone with a really really
+high IQ um but that's the honest truth I just don't know I don't know how to sugarcoat
+it I don't know how to say it differently I don't know how to talk around that fact um and so you know if
+you think about the people on you know the the first four or five people Zachary Ziggler Jonas wolf uh Evan
+Hernandez Eric Leman Micah Smith that that came together um sort of senior
+people on my team initially yeah every one of them if if I have to sort of um classify this
+way you know came from a PhD program at Harvard or MIT but that's not because
+I'm like I'm only going to recruit from Harvard and MIT it was because I had the keno experience and I learned from that
+experience that if you bring very high Q people with very high velocity of
+learning to bear on a very difficult problem uh they make more progress far more quickly than a team a
+hundred times that size that's a more normal team and um I I think the really
+reassuring thing for everybody listening in this moment is the rules of the game
+haven't changed the physics haven't changed all the things that used to matter still matter you know an elite
+team high IQ people high velocity people hungry people very motivated people um
+people with very high neuroplasticity and by the way when I say high IQ what I mean is high neuroplasticity I mean something very
+neurologically specific I I don't mean speed at solving a Rubik's Cube which actually doesn't necessarily correlate
+very highly Tai it's it's the FR franois chal definition of the ability to efficiently acquire new skills
+absolutely it's it's the it's it's the ability at which you can learn completely new information and
+assimilate that new information um that's what I mean by very high IQ and
+uh and and guess what that mattered a thousand years ago mattered 3,000 years
+ago the domain was different it showed up in Warfare and tactics and sunsu and
+you know those sorts of things but it whatever humans were doing at any moment in history What mattered was
+neuroplasticity you know I I spent a a lot of time uh reading in my personal
+life vlw and maavi and sunsu and the history of warfare it's a subject I'm
+very interested in and and the history of course Napoleon and Alexander the Great and and and these folks and it's
+all just neuroplasticity you know what if you had to sort of say in a in a few words what differentiated these
+people I mean none of these people were the physically largest people in their armies not even close um what they all
+had in common is you the the the facts on the ground could change very rapidly
+as tends to happen in war and their thought not just their decisions
+but their entire Frameworks for thinking would just like adapt that's the quality
+that like a Napoleon or an Alexander the Great had which is you know yeah they
+overprepared for the battles that they went into and thought through every single thing that the adversary could do
+but then none of that preparation would exactly match to what
+happened in the Battle and what differentiated them from even very good
+generals or very good military leaders is they would just completely adapt their way of thinking about the Battle
+to the facts on the ground that were developing in real time in the battle and that's you know the the standard way
+of describing that as neuroplasticity or at least in in some branches of cognitive science it's just very high
+neuroplasticity individuals so what humans have been doing over the last let's say 3,000 years has kind of
+changed a lot right we're I mean unfortunately there elements of what humans were doing 3,000 years ago that
+persist to this day and War does persist but not everybody today in 2025 is
+engaged in Warfare in a way that might have been the case during the time of the Greek city states um you have people
+thankfully today that are engaged in things other than um citystate Warfare
+but what hasn't changed are sort of the the the neuro processes and cognitive
+qualities that are required for outlier
+success awesome let's jump into a lightning round sure
+okay question number one I know this number is impossible to measure because
+it requires a counterfactual but we suspect that the
+way open evidence is being used it's saving lives like it's helping doctors make better clinical decisions on what
+date will we be able to say that open evidence has saved A Million
+Lives A Million Lives uh well in a way this feels like a Mackenzie interview
+because you got a sort of reasons for you're like well if you have 150,000 or 500,000 doctors using it and those
+doctors each see a certain number of patients and what percentage of those patients are in life-threatening or situations I'm doing this sort of can I
+tell you my math yeah yeah you tell me your math my my my math is you know depends on where you look but kind of
+300 , to 800,000 lives per year lost due to just straight up medical mistakes not
+not all of those are going to be attributed to doctors making decisions at the point of care there could be other things that happen but let's take
+the low end of that 300,000 let's cut it in half that's 150,000 that says it's about six and a
+half years you know until you get there and that's a fully ramped open evidence so we'll give you a couple years to keep growing I don't know maybe eight or nine
+years from now so we'll call it like 20 we'll call it uh November 4th 2034
+I I'm G to use this as an interview question all right the only thing I would add is is you know maybe in the
+2030s you have a Million Lives saved through the use of open evidence but what that doesn't count is the patient
+uh today whose Ms didn't get worse because the dermatologists used uh the
+wrong biologic and that's happening today right and and for every black and
+white life saved um you know there are those examples there was a a a doctor
+who uses open evidence um in Rhode Island uh who wrote us that he saved his patients Life by using open evidence to
+reason through whether the patient's presentation of symptoms was consistent with a pulmonary embolism and literally
+used open evidence as like a a curbside consult to sort of reason through that patient's presentation of symptoms
+realizing that actually it was the patient's presentation of symptoms was consistent with a pulmonary embolism
+they Rush the patient back to the emergency room and and save that patient's life so lives have already been saved through the use of open
+evidence and we know that because doctors tell us that but for every one of those things that happens it's just you know the MS not getting worse or
+it's some comorbidity not getting worse that's in the order of millions today yeah yeah yeah uh broad domain general
+purpose Foundation models they are commoditizing yes or
+no uh I think they're getting better and better I think the costs are coming down I think everything Ray kwell says is
+typically always right uh so you know the frontier of the front Frontier um
+doesn't get commoditized it's always the frontier but you know they yeah the costs are going to the cost of the wow
+factor that the first chat GPT produced yes are going to converge to zero uh which is why I think all the interesting
+stuff is going to increase in from a business perspective all the there's still phenomenally interesting work being done at the foundation model layer
+intellectually academically scientifically from a business perspective I think so much of the interesting um work the great companies
+to be are going to be at the application Level yeah well put well put um
+AGI on what date did we or will we reach
+AGI I I think we've already reached we keep moving the goal post we've reached AGI uh We've passed touring we've passed
+the touring test and even so we just keep moving the goal post on what AGI is what what people really mean when they
+talk about AGI is consciousness and they don't know how to say that so they're what they really because like they they try to sort of say well it's this thing
+or it's this other thing and then the AI does that thing and like well it's the ability to have high school level
+expertise in multiple different fields okay it reaches that fine fine it's not that AGI is college level expertise and
+then it reaches that and now it's like you know PhD level expertise in everything from coding to medicine that
+would be AGI that's never going to and then it reaches that what they really mean is consciousness that's what people
+I think Underneath It All mean when does a when do you get what you get in the
+movies when an AI becomes aware and conscious I'm not sure that ever happens
+because I don't know that Consciousness is an emerging property of uh sufficient density of a neural network uh that's a
+philosophical question y yep uh for AI Founders AI Builders AI
+fans other than this podcast what one piece of content should they
+consume uh Ted Changs uh Nolla understand okay
+tell us why uh I want you to have the joy of experiencing it I won't um I I
+won't spoil the story it's a it's a Ted Chang is one of the great science fiction authors of all time he wrote um
+arrival which became a ma major motion picture uh and uh the the Nolla
+understand uh was written in the early 90s and it is the best encapsulation of
+what with without any spoilers it is the best
+encapsulation of what nonlinear acceleration and intelligence
+looks like to it it's my Touchstone for everything that I do um most people
+expect a a non-fiction answer there's great non-fiction there's tons of non-fiction reading um including just
+like go read the chinella paper um gray paper if you want really just a
+touchdown for what it is that's happening uh in our civilization right now it's this Ted Chang story understand
+because that just captures narratively um really the feeling of nonlinear
+acceleration yes awesome love it all right last question what is the most optimistic or
+positive thing that you can imagine AI bringing to the world in the next couple of decades how how will all of our Lives
+be better thanks to AI um I have to go with a kind of an
+extrapolation of of the field that I'm kind of obsessed with um but which is not truly possible
+today uh which is personalized Medicine by which I mean
+so personalized medicine has been just over the horizon it's kind of like Quantum Computing it's kind of like
+Fusion you know it will happen on some civilization scale um It's Been Just
+Over the Horizon for a very long time what it means changes in a way we've been talking about it this whole time
+because um using open evidence to say that hey if you have psoriasis and atass means you should use this biologic
+versus this other biologic that is the beginning of personalized medicine that's personalized to your comorbidity versus any other person who was sasis
+but that's just scratching the surface of what personalized medicine can be you know I think in 10 years from now uh
+whether it's open evidence or whether it's a constellation of these types of AIS uh the exact specific fact pattern of
+your specific medical case is going to be matched to everything that is known
+in the entirety of medical knowledge about everything that is relevant to your case and a plan of care is going to
+be formulated that is hyper tailored to everything that is specific to you and
+that is specific about your case and I I mean to me that's just enormously exhilarating and I think that is just
+over the horizon but that that is feasible and that that will change that's how you really start to push the
+ceiling on life expectancy that's how you start to get into maybe 120 130 is
+no longer the ceiling anymore and uh you you get into these sort of ancient Greek um metaphors and paradoxes of ais's ship
+and replacing every plank on the ship to the point where there's no plank in the
+ship anymore that was the original plank but you're walking around and you still have your memory of your wife and your
+child and your relationship to them and it's still alive to to watch your own child turn a 100 and and those things
+and um I'm an optimist in that in that regard I I I I have a atomistic view of
+human biology and I think the the thesia ship approach to human biology is just
+over the horizon and a lot of it turns on the sort of personalized medicine stuff awesome Daniel thanks for joining
+us thanks Pat [Music]
+[Music]

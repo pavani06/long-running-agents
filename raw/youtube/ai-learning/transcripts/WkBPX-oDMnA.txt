@@ -1,0 +1,557 @@
+[music]
+What's up? Yeah, thank you for coming to
+the design engineering track at AI. Is
+everyone having fun?
+Yeah, I think this is going to be a
+great track, so get excited.
+All right, let's get going. Um, my name
+is Jeffrey Lit. I'm a design engineer at
+Notion currently and I'm here to drop a
+hot take for this room. Maybe
+I think it is still important for people
+to understand how code works.
+[applause and cheering]
+Now, some of you might agree, some of
+you might disagree. Let's actually let's
+do let's try a poll. I'm curious for
+this room. Raise your hand if you agree
+with that opinion.
+Okay, maybe some selection bias. Any
+brave? Okay, raise your hand if you
+disagree with this opinion.
+Wow. Okay. We have [laughter] maybe
+we'll do a debate later. Yeah. I was
+hoping we'd be at the AI engineer
+conference so we'd have more B. Okay. I
+might be preaching to the choir here.
+You know, I think we the reality is
+though we are entering an era where this
+is a legitimate question that people are
+debating, right?
+Asians are writing tons of code for us.
+They're landing 50,000line PRs and it is
+getting harder to keep up. We all feel
+this
+now. I think the good news is there are
+lots of ways to understand
+the you know the days of just reading
+code line by line that's not the only
+way anymore and what the point of this
+talk is about is I want to share with
+you a bunch of the practices that I use
+to understand the code that my agents
+are writing for me includes things like
+explainer docs teaching me about how my
+code works my agents write quizzes for
+me to to test my understanding am I
+still really in the loop. Am I keeping
+up?
+I have agents build micro worlds that I
+can inhabit to get this intuitive sense
+of how my code works that's deeper and
+richer than just a written document. And
+I think all of these are really exciting
+new possibilities that are open opening
+up for AI to help us understand better,
+not worse. And so that's what the point
+of this talk is going to be about. And I
+hope I can leave you with some
+techniques that you can take home and
+use yourself.
+By the way, my timer isn't running. If
+you could get that running, that'd be
+great. So, I know if I'm blabbering.
+Okay, but let's start. Let's back up for
+a sec. Before we talk about how, let's
+talk about why. Why bother
+understanding? This is again, it's a
+question now, right? And I think a lot
+of people get this subtly wrong.
+So, what a lot of people think of why do
+humans still have to understand? They
+think we understand to verify. The
+agents do dumb stuff. We've all seen it.
+And your job as the human is to keep
+them in line, right? Make sure they
+don't screw up.
+When people say things like code review
+is the new bottleneck, I think that's
+the first thing that pops into people's
+heads is correctness checking. There's
+this mental model that's like, hey, the
+agent's going to give you something, and
+what's your job? It's to ask, is this
+correct? Now, correctness can have lots
+of definitions. Does it match the spec
+doc you gave it? Does it take down
+production? Is it well architected?
+But fundamentally, those are all kind of
+thumbs up, thumbs down decisions, right?
+And the thing is over time, we've all
+seen it, the agents are also able to ask
+these questions and they're getting
+better at it. You give it the right
+verification loop and over time, this is
+the reality. The the role of humans in
+correctness checking is decreasing.
+And you know what? I actually don't hate
+that. If I have a clear idea of what I
+want to do and the agent does it
+correctly instead of coming back to me
+with an incorrect thing, that's great.
+I'm I'm into it.
+So then I think people extend this and
+say, you know what, that means as the
+agents get smarter and smarter and
+smarter, we we don't have to understand
+at all, right? Get out of the loop, man.
+Run the loop. And that's where I think
+people miss something really important.
+There is a deeper reason to understand
+what's going on, and that's
+understanding to participate.
+Because here's the thing, it's not just
+one loop.
+When you review what's happening and get
+in the loop, you come away changed. You
+understand something. And that
+understanding is what you take to the
+next loop and the next and the next.
+Your understanding of what's going on is
+the foundation for you having that next
+idea and being an active creative
+participant in a project.
+I think probably you've all you've all
+felt even before AI, you know, the
+difference of the kinds of ideas that
+someone can have when they really
+understand what's going on versus when
+there are a few layers removed are
+different because when you have rich
+conceptual structures in your head that
+you can fluently recombine really fast
+without going out to like ask some some
+agent or some human how it works, that
+gives you the ability to fluidly take
+creative leaps. And that's the human
+part of the work, coming up with the
+next idea and the next idea. So this is
+actually the real reason I think
+understanding matters and this is not
+something that we can just wash away
+with better agents because if we want to
+be active participants you still got to
+do this.
+There's a great term maybe some of you
+have heard called cognitive debt that I
+think really captures this spirit well.
+It's an analogy to technical debt
+popularized by the scholar Margaret
+Story. Simon Willis also blogged about
+it. And I love this idea because
+similarly to tech debt, you might get
+away with it for a little bit, but at
+some point you get burned if your
+understanding degrades. And maybe you
+felt this. I know I felt it. You're vibe
+coding, things are going well, and then
+at some point you realize, wait, I have
+no idea what's going on. I basically
+can't participate anymore, right? You've
+built up too much cognitive debt.
+Okay, so maybe sounds like all of you
+were already convinced. We agree. We
+need to understand.
+But how? Right, we don't want to live in
+2023. We are using agents to move fast
+and it is harder and harder to keep up.
+How do we do it? I think to answer this
+question, we should actually take a step
+back and ask a more fundamental
+question, which is how do we understand
+stuff in general?
+Plot twist, this is not the first time
+that any human has asked this question.
+There is a field. It's called education.
+Now when you think education you might
+think of bad memories from sitting in
+lectures or whatever but I think we can
+do better. We can take inspiration from
+the best ideas that have ever been
+invented in education and use them to
+stay a loop and understand. So that's
+what this talk is about. We're going to
+talk about three techniques.
+First explanations.
+So when an agent writes some code for it
+to explain the work to you, right? And
+the most naive explanation is hey here's
+the code diff. That's the raw change,
+the material of what happened. But we
+can do, I think, much much better.
+What would the best possible explanation
+be? Like if you sent a team away for a
+year to come up with a personalized
+curriculum just to explain this one code
+change to you, what would that look
+like? I think this is a very generative
+question to ask.
+So, I've done a bunch of attempts at
+this. One is this skill I wrote called
+explain diff, which I use every day and
+a lot of my co-workers do as well. And I
+want to walk you through it.
+So, we're going to go through a little
+example here. I'm working on a video
+game where you draw Zen gardens, kind of
+de-stress, you know, could all use it
+these days.
+And we made a code change to change the
+perspective of the game from top down to
+isometric.
+And when I run my skill, it produces a
+code explainer doc. This can be an HTML
+file, it can be markdown. I like to put
+them in notion because I work there, but
+also because it's then collaborative, so
+my team can comment on it and talk about
+it. And here's how it looks.
+We start with background. We do not
+start with what happened in this change.
+It starts by teaching me, hey, here's
+how this system works.
+Obviously, you can skip this if you
+already know. You can personalize it to
+what you already know.
+Second important principle is intuition
+before details. So before we start, you
+know, looking at code and stuff, it
+says, hey, the goal of this commit is to
+make the garden feel threedimensional
+using only 2D drawing tricks.
+You can think of this sort of as like a
+well-written commit message a little
+deeper. Give me examples. Give me a feel
+for the essence before you know you
+throw a bunch of code at me. Right?
+This, by the way, this is good teaching.
+This is what like good math teachers do.
+Third, interactive figures. So where it
+makes sense, give me things to fiddle
+with and try. So with this change, it
+was like changing how we draw rocks. So
+I can drag around rocks in this little
+simulation and it shows me the
+coordinates that are happening, how the
+Z layers of the painting are changing.
+This, by the way, is actually using a
+new feature that motion literally
+launched this morning of HTML blocks in
+notion pages. surians can put
+interactive simulations into your notion
+pages. Pretty cool.
+I think you have to be careful with
+interactivity. It can just be a crutch
+and it can be kind of a slop to be
+honest, but used tastefully. It can
+provide an understanding that's hard to
+achieve with just static pictures.
+Okay, then we finally get to the code,
+right? Show me the code. But we don't
+just throw a list of files in order. We
+do what we what I call literate code
+diffs. Give me pros. Explain it to me in
+the right order. tell me before each
+file what's going on. And when you
+accumulate all this stuff, it's much
+much easier to follow than just a raw
+div.
+Oops. In fact, I print these out and
+take them to the coffee shop sometimes
+and just read them.
+I find it really beautifully ironic that
+AI is actually taking this process where
+I was used to be like glued to my
+computer, my IDE, and now I can go to
+the cafe and it's like I'm reading a
+textbook about this PR. It's really
+cool.
+Okay, so there is one problem which is
+that reading is hard and I am lazy.
+People are lazy. You know, there was
+this one time when I sent a PR to my
+co-orker that I thought I had read the
+thing. I thought I understood and she
+asked me the most basic question and I
+was like, "Oh no, I don't know. I
+clearly hadn't understood, right? I had
+fooled myself." So I thought, "How can I
+create a system where that never happens
+again?"
+For inspiration, I look to the work of
+the researcher Andy Matushak, who has
+this great line, books don't work. What
+he means by that is it's really easy to
+read a book and not realize you didn't
+understand it. So, so he and his
+collaborator Michael Nielsen tried this
+thing where in an essay there are
+interactive space repetition quizzes
+that test whether you actually remember
+what you just read. And this is cool to
+actually keep emailing you the quiz to
+make sure you remember it forever. But
+this is nice because you cannot get
+through this essay without understanding
+it or at least without remembering it.
+That's what I do with my code
+explainers. At the very bottom there's a
+quiz, five questions, medium difficulty.
+And my rule is I don't send code to uh
+others on my team to review unless I can
+pass the quiz about what my agents
+wrote.
+And it might sound kind of silly, but
+you should try it. It really is shocking
+the number of times this has caught me
+and made and made me realize I didn't
+understand.
+I think of it as sort of a speed
+regulator. Everything AI is speed up,
+speed up, speed up. There's all these
+incentives to go faster. How do we make
+sure we're not just moving at the speed
+of correctness, but also of
+understanding? And the quiz is that
+speed regulator. It's a system I can use
+for that.
+I did uh just put the skill on the
+internet. So yeah, photo moment. If you
+want the explained diff skill, uh take
+that QR code, try it out, make it your
+own. It's really simple actually.
+There's two versions of that QR code.
+One that outputs HTML, one that outputs
+notion.
+Okay,
+second technique, micro worlds. What
+does that mean? So, this takes
+inspiration from the educator Seymour
+Papard,
+real visionary who had this idea of
+living in mathland. And what that meant
+was, hey, kids learn French from living
+in France. Where do they go to learn
+math? Is there a math land where you can
+learn intuitively math just by being
+there? So he did these great things with
+this is a a robot called the turtle that
+kids program to draw stuff. But the
+point isn't making robots. The point is
+they actually learn math by doing that
+programming. The the point isn't the
+robot, it's the kids that are changed.
+So how could we apply this to
+understanding code?
+Here's one example. Last year I was
+trying to implement um for my own
+learning this interpreter for a
+programming language prologue which is
+think of it a little bit like a database
+query language and there's all these
+parts of it that look like this where
+when you read them on Wikipedia they
+seem really complicated and then when
+you actually get what's going on it's
+like wait a second that wasn't that hard
+to understand it just felt hard when I
+read it that way right how could we make
+it click more for my brain so I had
+Claude make me a micro world this is a
+debugger ephemeral UI that was built
+specific specifically to visualize the
+internal implementation of my
+programming language. What's happening
+here is that I'm scrubbing through a
+timeline that's running step by step.
+What's my interpreter doing? It's
+visualizing all the state at every step.
+So, I can kind of open the hood and see
+what's going on and start feeling it,
+you know. And yes, I can I use this to
+fix bugs. I even added a little um hard
+to see here, but there's a commenting
+feature where I can leave comments for
+myself on the timeline so I remember
+what I was thinking. And I used this to
+fix fix narrow bugs, but also as I was
+fixing the bugs, I was getting a feel
+for the machine. Right? That's something
+that if you just have an agent to go fix
+the bug, you don't get that peripheral
+vision. If you live in a micro world,
+you do.
+Another example, um, I was migrating my
+personal website from one framework to
+another. And first thing I did, I had I
+said, Claude, write me a script, too. It
+did this. It seemed like it worked. And
+I read the script and I was like, I
+don't know. like I just don't have a
+feel for what it's doing. A bunch of
+files went a bunch of places, it seems,
+right?
+So, what I did is I said, "Hey, Claude,
+make me essentially a video game where I
+do the port myself." And the way this
+works is old website on the left, new
+website. I just click a button, next,
+next, next. And at each step, it says,
+"Here's the commands I'm running. Your
+new website's coming to life step by
+step. You see it?
+There's actually file trees down there
+where you can see files moving." And
+it's the the result is it's kind of like
+if I did it manually, but I'm just
+clicking a button. So I'm getting some
+of the benefit of doing it without the
+pain.
+And I think the big takeaway here is
+agents can write code to help us
+understand code where the point isn't
+building software to ship. It's building
+these little micro worlds for us. It's
+the math land, right? It's it's a it's a
+simulation of just this thing.
+Okay,
+quickly the last topic shared spaces. So
+far we've this has all been about me
+solo understanding but a lot of the time
+I think the challenge is actually you're
+working on a team and your whole team
+needs to understand together so you can
+actually jam and have creative ideas
+together. We think a ton about this at
+notion.
+We believe that you know the shared
+understanding that exists between you
+and someone else is what lets you
+communicate effectively. Whether that's
+names for parts of a system, it could be
+names for UI elements or concepts,
+right? So we we think a lot of notion
+about how do you make tools that enable
+collective understanding?
+Some things we're exploring. Can you
+have multiplayer chat threads between
+multiple humans and agents together? So
+here, you know, I might ask a product
+manager on my team, hey, you know,
+what what are users asking for with this
+feature? And she might say, hey, I don't
+know, let's ask a different agent. and
+that agent comes in and talks to us.
+What's happening here is that instead of
+me and my PM both talking to our own
+agents, we're in a shared space. We can
+see each other's communication. It's
+kind of like, you know, going from
+one-on-one conversations to Slack
+channels. You know, you see more of the
+behavior happening together and you
+understand together.
+Also, having documents that you can talk
+about together is a really powerful
+permanent here. You know, Claude made us
+a plan.
+What if I have a question about that
+that I want to discuss with my team? I
+can just leave a comment because this is
+in a collaborative space, not on my
+computer locally. And then I can ask,
+hey, you know, what do you think about
+this? And my teammate can chime in and
+and we can talk about it right there.
+Right? I think having these spaces for
+shared discussion around ideas with our
+agents is really powerful for building
+up that collective understanding.
+This, by the way, um we just launched
+last week the ability to bring coding
+agents into notion. So Claude and Cursor
+can now live in Notion and our team
+actually builds a lot of our code in
+notion itself.
+mainly because of these benefits because
+having in a shared space is just so
+valuable.
+Okay, so we've talked about these three
+techniques and I want to bring it back
+to the beginning.
+You know, I think at the beginning I
+said it's important for humans to still
+understand how the code works, right?
+But I actually think it's much bigger
+than that.
+I kind of think it's just important for
+humans to still understand how
+everything works.
+And maybe you know you all agree it
+sounds like but this I think is being
+called into question now and is
+something we actually have to actively
+fight for.
+The thing is this is not a new battle.
+It actuallyarkens back to the very
+origins of our field.
+Alan K is one of the pioneers of
+personal computing co-inventor of the
+modern guey. And literally 50 years ago
+he wrote this essay that I find very
+preient called a personal computer for
+children of all ages.
+It looks like two kids on iPads watching
+YouTube or something right. It's kind of
+crazy. This is 50 years ago, his vision.
+But that's not YouTube on the iPads.
+What he envisioned is, hey, these kids,
+they're playing a video game and they're
+modifying the code as they play it to
+learn physics. So the point isn't the
+computer, it's the kids. The point of
+computers was to level us up as humans,
+right? And Allan has talked a lot about
+how it kind of feels like at some point
+computers detourred a bit from that
+vision. But I think the exciting thing
+is maybe now's the time to bring that
+back. Here's kind of the meme version of
+that.
+I think with AI, a lot of people are
+waking up to, oh my gosh, code is free.
+We can make ephemeral UIs, dynamic
+simulations to understand concepts. We
+can make debuggers, playgrounds,
+and it's like, yes, that's great. And
+it's actually not a new idea. Like, this
+was the goal all along. And so, I think
+the optimistic thing that I find really
+exciting is,
+hey, it's still really important to
+understand how things work. And with the
+right tools and the right mindset and
+the right creativity, we can actually
+understand better than ever before, not
+less. With AI, we can kind of empower
+ourselves more, not just taking
+ourselves out of loops, but actually
+putting ourselves more deeply in loops
+than we ever have before. And I think
+that's a really exciting prospect and I
+hope it's something that we all together
+as an industry figure out.
+That's all I have for you today. Thank
+you so much.
+[applause]
+[music]

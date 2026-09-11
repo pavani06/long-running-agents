@@ -1,0 +1,243 @@
+if you're having trouble building really
+nice looking apps in bolt. new this is a
+video you've been waiting for I'm going
+to show you a hack that will help you
+build amazing looking apps in just
+minutes if you stay to the end of this
+video you are going to go from building
+apps like this to this I've been using
+bolt every single day for the last 4
+weeks to build products for myself and
+my clients this tip I'm going to show
+you has taken me from building basic
+looking applications to amazing looking
+platforms all without needing to know
+how to code and don't worry this is only
+going to take like 5 minutes to show you
+how to do this and I can guarantee you
+this is going to completely change the
+way you interact with bolt. new all
+right let's get right into it all right
+so no longer do you need to actually
+prompt your bolt assistant to actually
+build you the perfect user interface
+what I do is I go to dribbble.com and
+this platform has amazing user interface
+templates created by professional
+product designers so you could search up
+basic basically anything you're looking
+to build and there are some really cool
+user interface templates and all we have
+to do is screenshot the ones we like
+give it to bolt and then basically ask
+to recreate something
+similar all right so now I'm inside of
+Bolt and I actually found a really cool
+user interface I like for a note taking
+app as you can see here I got this on
+dribble now I'm going to copy and P I'm
+going to screenshot this these Fe it
+over to bolt and then proceed with my
+prompt all right so here is my prompt
+and I want to mention that obviously if
+your app is not going to have the exact
+same functionality you need to specify
+that so that way it doesn't fully copy
+the user interface because it won't
+function how you want it to and it'll
+look all weird so I said let's build an
+app that has a feel of this but has
+different functionality this app is
+going to be a work session tracker
+called Focus flow it has a timer that
+access a stopwatch to track work
+sessions along with the ability to add
+all tasks completed throughout a
+session bolt now is writing the code
+let's give it a second and see the
+initial prototype that it actually gives
+us and as you can see it actually gives
+us an error here so just I'm going to
+type in here that there's an error in
+the preview section
+it's writing the code again and it built
+us this Timer app called Focus flow the
+user interface looks nothing like the
+initial one that we you know gave it so
+I think it must have not understood my
+prompt when I said make something
+similar I think I need to specify a bit
+more so coming back here screenshotting
+and B basically saying copy this user
+interface in the screenshot
+all right so here we go it actually made
+a very good copy of this application you
+can see we have the left-hand menu we
+have good morning Amanda we have the
+tasks we have the time tracker and we
+have the activity that all looks pretty
+cool honestly so obviously we need to
+change up the layout of this it looks
+like some of the text and the buttons
+aren't fitting properly on these cards
+on this app so I'm coming over to bolt
+and saying the layout of the timer looks
+weird it doesn't fully fit on the screen
+just to fix this and make this work
+properly all right it looks like it
+fixed it it work it's working a bit
+better we could actually add a task and
+then we could complete those tasks
+during our session we could stop a
+session but there's just a couple other
+things we need to switch here as far as
+functionality and user interface all
+right so I'm telling our assistant to
+now add the ability to end a session
+along with store all the sessions after
+completed with the tasks completed along
+with the session
+length all right so it actually built us
+this and again the time tracker looks a
+bit odd so I'm actually telling our bolt
+assistant that looks a bit odd maybe add
+it on its own row and that way it could
+stretch out and not be
+crammed so you still need to play around
+with kind of the user interface a bit
+but using the templates from dribble
+gives you a really nice idea of how you
+want your app to look and it also kind
+of gives bolt an idea of what you want
+it to look like as well instead of
+having to explain it over like typing it
+real quick I got a question for you do
+you want to build a software product
+with bolt. new are you having trouble
+building it yourself well I just
+launched my bolt. new development agency
+and my team can help build it for you
+bolt is great for building rapid
+prototypes however turning it into a
+Deployable SAS prod is really hard with
+that being said if you want to speak
+with my team about us building your app
+from start to finish fill out the form
+in the description all right I look
+forward to helping you build your dream
+app but let's get back to the video all
+right so this actually looks amazing we
+added the Tim tracker uh kind of part of
+our application here to its own row we
+have the tasks up top along with the
+activity this looks really good as you
+can see I'm starting the stopwatch I'm
+adding the tasks that were completed I
+ended the session and then you could
+even see the session history below the
+time tracker there let's go back to
+dribble and just look at the user
+interface and see if there's anything
+else we want to emulate on our
+application so after taking a look I
+actually really like this Activity part
+of our application here I like the black
+layout of it along with the colors where
+it shows the working hours tasks
+completed and the projects completed so
+let's try to emulate that a bit I took a
+screenshot handed that over to bolt and
+they basically said I like how this
+looks and this screenshot maybe make the
+session history look something similar
+to
+it boom there we go looks like it now
+changed the session history to Black we
+could add our tasks and then once we end
+our session you could see the different
+completed tasks in the session history
+there I think that looks pretty cool we
+could really build upon that if we would
+like now let's just play around this a
+bit so where it says good morning Amanda
+at the top I'd like to add the ability
+for you to type whatever you want as a
+theme of the day think of this as an
+interactive user experience to customize
+it to keep goals in the front of their
+mind so I've seen this on other
+softwares I really like the idea so
+imagine being able to type up at the top
+kind of what your goals are for the day
+or for the week or what your Mantra is
+for your business so that way you could
+always keep it in the top of your
+mind going ahead writing the code I
+Honestly Love bull every time I play
+around with this application I'm just
+blown away at how good it is so it looks
+like underneath that we could actually
+add what is our Focus for
+today right here I'm writing content
+equals leverage just keep that in the
+top of my mind if I don't feel like
+creating content and then now I'm
+telling it to let the user also edit
+where it says good morning Amanda so
+that way if your name is not Amanda
+obviously it's not going to say that so
+now I could actually change it it says
+good morning Brock we could change our
+moner for the day we could add our tasks
+we could start our
+timer there we go once we and a session
+you could see the session history below
+this all looks amazing and then now
+finally let's just say allow me to
+collaps the menu on the side so if you
+see on the LEF hand side there's this
+kind of menu That's sticking out with
+different tabs that we don't necessarily
+use we could either delete those or we
+could just hide that so for now let's
+just make it so we could actually
+collapse that so we don't always have to
+see
+that all right there we go this
+application is looking really awesome
+now let's go ahead and let's deploy this
+application all we have to do is come up
+to the top right hand where it shows the
+blue rocket click deploy and it'll start
+deploying our application and it'll even
+give us a link to view this in a web
+browser if we click this link it takes
+us to a full new tab on our web browser
+this application looks amazing I built
+this in really just about like 10
+minutes if that probably 8 minutes in
+total it doesn't function exactly how we
+want it to but the user interface of our
+platform is big basically finished now
+we could just change any of the
+functionality we would like which should
+be pretty easy but I wanted to show you
+guys this hack because I've been using
+this for all of my applications that
+I've been building with bolt I have no
+technical knowledge I have no technical
+background at all I've just been using
+dribble as templates I basically copy
+those user interfaces and it's been
+performing really well for me so I
+thought you guys could really enjoy this
+with that being said guys if you like
+this video subscribe leave a like leave
+a comment I'm creating bolt content
+daily so if you want to stay up to date
+with how you can code your own software
+applications with no coding experience
+at all this is the perfect platform for
+you so make sure you are subscribed with
+that being said I will see you guys in
+the next video

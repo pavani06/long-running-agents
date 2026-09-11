@@ -1,0 +1,1497 @@
+What I want to do today is
+give an overview of this class.
+I'm actually curious
+before we get started. This is now September 2025.
+How many of you just
+started at Stanford? Raise your hand. Wow. Cool.
+Awesome. So others, pay attention to
+who just raised their hands and do say hi to
+them and help welcome
+all of the people
+that just joined Stanford in whatever program. CS230 is a class that we offer
+in the flipped classroom format.
+And what that means is
+that instead of listening to me or Kian, my co-instructor
+that you meet next week,
+instead of listening to us
+lecture at you for an hour, hour 20 minutes, or
+whatever, we'll actually
+ask you to watch
+a lot of the video lectures online so
+that we can then make use of the precious
+in-classroom time for much
+richer, deeper discussions. So both today and for
+the entire quarter,
+I would really warmly welcome
+anyone raising questions, raise your hand. And in fact, I find that
+instead of you sitting there--
+oh, and even though with
+a longer session schedule by the registrar,
+we'll use usually only up to an hour and 20
+minutes for this course.
+And the goal is to-- it turns out that a lot
+of Stanford students were watching the
+lectures on Seagull,
+on the online videos anyway. So rather than us delivering
+that same lecture year
+after year, we put
+a lot more effort to put very high quality
+lecture videos online
+and we'll ask you to just watch
+that online, which people are doing anyway, but just highly
+edited for offline watching
+and spend a classroom
+time doing the things that make sense for us to get
+together in-person to.
+So because you haven't watched
+any of the lectures yet, or I assume most
+of you have not, today we'll even maybe have
+a slightly shorter session
+to introduce the class, talk
+about logistics, and so on.
+As many of you
+know, deep learning is one of the latest,
+hottest trends technologies
+of computer science and AI. If we look at, say our PhD
+admissions or even master's
+admissions, a very
+large fraction of all students that
+come to Stanford or applying to come to
+Stanford want to work on AI.
+I'm not sure if I'm
+allowed to say the numbers, but they are extremely
+high, as you can imagine.
+And so my goal and my
+co-instructor Kian's goal, our collective goal,
+is through this quarter
+to help you get to near or at
+pretty much state of the art with regard to deep learning
+and make sure that all of you
+walk away from this class
+highly skilled at applying deep learning.
+And so it turns out
+that a lot of progress in AI over the
+last, I don't know,
+decade, maybe 10, 15
+years, was made by scaling. And one of the reasons why
+deep learning was so successful
+was because it's good at
+absorbing a lot of data. So if I draw a figure
+where on the x-axis
+I plot the amount of data
+we have for a problem,
+then using more traditional
+machine learning algorithms, so logistic regression,
+maybe decision trees,
+but using all the generations of
+AI machine learning algorithms,
+as you gave it
+more and more data, the performance or the
+accuracy of the more traditional algorithms
+would plateau.
+It was as if-- So take speech recognition. With all the generations
+of algorithms, even as you fed it more and more
+data, hundreds and thousands
+and tens of thousands
+of hours of speech data, the accuracy would
+often plateau and it
+was as if the older
+generations of algorithms didn't what to do with all
+the data that we now have.
+But what we start to find
+about 10, 15 years ago was that if you train a small
+neural network, also known
+as a small deep learning model,
+its performance would maybe get better and better.
+And if you train a
+medium-sized one, and if you train a very
+large neural network,
+the performance just keeps
+getting better and better. And I think the reason that deep
+learning has dominated the AI
+scene for the last
+10, 15 years is because there is a
+recipe for training
+very large neural networks
+that we could then shove a lot of data
+into the results
+in exceptional performance. So I think we started to see
+this because of, frankly,
+some Stanford research papers
+about 15 years ago when we did the first early work
+on using CUDA programming
+and GPUs to scale
+up deep learning. Oh, by the way, actually,
+it's one fun fact.
+My first GPU machine used
+to train neural networks using CUDA, which is a
+controversial thing at the time.
+It was built by a Stanford
+undergrad in his dorm room. His name was Ian Goodfellow. But I think that compute
+server, built in the Stanford
+undergrad dorm room,
+allowed us at Stanford to lay the early foundations
+of using CUDA, at that time
+a modern language
+for training GPUs to train large neural networks. And then obviously, that
+influenced a lot of people
+and helped scaling up
+deep learning take off. So I tell that story
+because sometimes the work
+that some of you can do in a
+dorm room or graduate student housing or whatever, or
+in a lab at Stanford,
+looking back over
+some number of years, it can really have
+a huge impact. And maybe in this
+class, some of you
+will do work as impactful
+as that someday as well. But so what you
+start to find was
+that as we train larger
+and larger neural networks, they could soak up
+lots of data and drive
+exceptional performance. And then there was a
+research paper out of Baidu, which showed that as you scale
+up neural networks, as you scale
+up deep learning algorithms, the
+performance gains are actually quite predictable. So you can forecast, if
+you buy this many GPUs,
+throw this compute and
+this much data at it, what would the performance be? And then later, OpenAI
+popularized the idea
+with a really influential
+paper on scaling laws. And that predictability of
+how deep learning gets better
+in performance then drove
+a lot of the investments in data centers and building
+very large AI models
+with lots of data. And so let's see.
+In terms of where this class
+sits, so in computer science, all of us build on
+each other's work.
+A lot of the way that computer
+science and AI has made progress is we build on
+top of other ideas
+that are, in turn, build
+on top of other ideas that in turn build on
+top of other ideas. So maybe I want to give you a
+little map to show you maybe
+where deep learning sits. So I think there are--
+machine learning is built
+on top of computer science. So I think it's actually helpful
+to learn CS fundamentals.
+And even though I
+use and I suspect vast majority use
+AI-assisted coding, be it tools like Cloud Code
+or Gemini CLI, or OpenAI
+Codex, or Cursor, or
+Windsurf, or whatever, I find that people that know
+CS fundamentals, that really
+understand computer science,
+that really understand how computers work, rather than
+I'm going to vi code this,
+when you understand
+CS fundamentals, you get things to
+work much better. But on top of CS
+fundamentals, there's
+a set of machine
+learning skills.
+So how do you build algorithms
+that can learn from data?
+And then deep learning
+is a special type of machine learning. Well, that's really the most
+effective type of machine
+learning, as far as
+I can tell, in which we train neural
+networks, we train certain types of
+algorithms to learn
+from large amounts of data. So far in the last
+10 minutes, you've probably heard me use
+the words deep learning
+and neural networks. And I think today
+those two terms are almost interchangeable.
+Some purists will insist on
+some technical differences. For all practical purposes,
+they mean the same thing. But what happened was the term
+neural networks had been around
+for decades, but around 10 or
+15 years ago, a number of us realized that deep learning, it
+was just a much better brand.
+And so even though
+neural networks have been around for decades,
+starting about 10, 15 years ago,
+it was deep learning
+that took off, because who doesn't want
+learning that is really deep?
+It's just a good brand. But you hear me use those
+terms interchangeably.
+But deep learning
+algorithms, neural networks, they give us a way to take
+advantage more and more and more
+compute capacity so they
+can build very large AI models with a lot of
+parameters to soak up
+the large amounts of data to
+get more and more intelligent or to make better and
+better predictions,
+or to generate more
+and more accurate outputs using the large amount
+of data that's available to us.
+Ever since I was a
+teenager, my mom's been trying to convince
+me to stop mumbling,
+but now, many years later,
+I still struggle with that. So I'll try my best. So please, wave at me or let me
+if I start to drift lower again.
+Yeah, all right. I think my mother would
+be very happy to have to practice like this now.
+All right. So CS fundamentals, machine
+learning, deep learning,
+and then the recent
+generative AI revolution.
+Generative AI-- sorry,
+bad handwriting. Generative AI, which
+is mostly built
+by a specific type
+of neural network called the transformer
+neural network, which you learn about in this class.
+You actually learned what is
+the transformer architecture later in this quarter
+as well, is in turn
+built on top of deep learning. So I assume all of
+you are regularly
+prompting LLMs, large
+language models, to help you get work done. And what I find is that while
+I use LLMs all the time,
+for a lot of applications,
+just prompting LLMs, it doesn't cut it. There are a lot of things
+that I cannot get to work just
+by prompting an LLM. And so I'll often have
+to go a layer deeper into the deep learning
+layer of abstraction
+and fill it with deep
+learning algorithms in order to get
+certain things to work. And in fact-- so what
+this class covers
+is we'll try to make
+sure that you are expert, near-expert in deep learning
+by the end of this class,
+but we'll also dip a little bit
+into machine learning concepts.
+We'll talk a lot about objective
+functions and tips and tricks for optimizing parameters
+in efficient way.
+And then we'll also actually
+reach up a little bit to cover some GenAI. In particular, we'll talk about
+what is the transformer network?
+And then through this
+quarter, Kian and I will also chat a little
+bit about the job landscape
+as it relates to GenAI
+and deep learning, and how deep learning is
+enabling certain types of AI
+applications. OK. I have more to say
+about this, but let
+me just pause for a second and
+see if you have any questions. Yeah, go for it.
+Did you say machine learning is
+a prerequisite to this course? Oh, good question. What I say?
+Congratulations. You've won the prize for
+the first question asked in CS230 2035, so well done.
+[APPLAUSE]  Yeah.
+So is machine learning
+a prereq to this course? Not really. So I think two common entry
+points to AI at Stanford
+are CS-- well, a few common entry points
+are CS129, CS229, and CS230.
+If you don't know
+any machine learning, this course may end up
+going a little bit fast,
+may seem like it's going a
+little bit fast in the first, I don't know, two
+or three weeks, but some people do pick
+things up quickly that way.
+And maybe actually-- So a few courses that
+you may hear about.
+So 129 is a relatively
+easy entry point
+into machine learning that
+tends to-- it takes a longer time to go through the core
+concepts of machine learning.
+Like, what's the
+optimization objective? How do you implement
+gradient descent? What is logistic regression?
+What's a very basic
+neural network? So this is a relatively
+applied easiest of this list.
+CS229, which I'm also
+involved in co-teaching, is much more mathematical and
+theoretical, very high-paced,
+very intense, and
+very mathematical. And this is less applied
+than 129 and 230,
+but this will go over a lot
+more of the theory and the math derivations behind machine
+learning algorithms.
+So, for example, if you want
+to learn how to do calculus not using real
+numbers, but calculus
+using matrices and vectors,
+that's a bunch of, I don't know, mildly complex math
+that's worth knowing.
+CS229 goes over that. CS230, this class, is
+relatively applied,
+and it focuses just
+on deep learning. So of all the machine
+learning-- there are a lot of machine
+learning algorithms
+out there, supervised
+learning, unsupervised learning, a lot of machine
+learning algorithms out there. And many, many of
+them are very useful
+and so they're all
+worth learning about. But of all the machine
+learning algorithms out there, the one category that is
+most useful that's taking off
+the most is deep learning, and
+this class focuses just on that, but the other arm is also
+worth learning about.
+So 129 is the easiest on-ramp. But if you've done
+either 229 or 230,
+I would probably skip
+129 at that point. But if you are getting started,
+there are multiple on-ramps.
+Yeah. If we take 229 and 230 together,
+do you think it's redundant? Oh, yeah.
+Can you take 229
+and 230 together? Yeah, thank you. Prize for the second question.
+All right. If you want to clap,
+sure, go for it. [APPLAUSE]
+Yes, you can take CS230
+and CS229 together. We designed the two curricula
+to be relatively low in overlap.
+So the very small amount of
+overlap between these two.
+We won't clap for every
+single question, but go ahead. Are you going to cover more
+recent deep learning algorithms
+that are used in recent
+LLM developments, like five or two more?
+Yeah, so when we cover the
+recent LLM developments, we will touch on the transformer
+neural network, but not
+the latest LLM variations
+in this course.
+I think a lot of
+it, it turns out that when you go out to
+get a job, well, maybe, if assuming you go
+and work in industry,
+the number of people training
+LLMs is actually very small. Some of those jobs tend
+to be incredibly well-paid
+so we hear about very high
+salaries in the news media, but the vast majority
+of application builders
+end up sometimes working
+the GenAI level, not that often training a
+transformer from scratch,
+but then often using deep
+learning tools as well. So maybe one example, something
+that many of my teams have done
+is we have trained
+transformer models-- foundation models from scratch
+with relatively small ones
+in, say, startups. But one thing we
+do do quite a lot is take a pre-trained
+transformer network
+and then engineer our own
+data to further fine tune it. Sorry if I'm using words you
+may not totally understand,
+pre-trained, fine-tuned, you'll
+know what all those terms are by the end of this quarter. So those are things that
+we actually do day-to-day.
+This is important for
+getting a bunch of products to work so you will gain
+the foundations needed to do the type of
+work in this course.
+One thing we don't
+do is talk a lot about how to train the largest
+cutting edge transformer
+networks. I think that is a very
+important skill set, is relatively
+niche one for which
+some people are getting
+paid really, really well, but the number of people
+doing that in the world is actually small, whereas
+the number of people
+building applications with this
+set of skills is very large. Do you have any courses
+that you cover that?
+Do I have any courses
+covering that? I think Percy Liang was
+thinking about doing something, but I don't remember he's
+doing it this quarter.
+Few people are thinking about
+doing something like that. Yeah. Go ahead.
+This is a question
+about the course itself. Do you know about what
+the portion of the course
+is going to involve. mathematical analysis
+and multiple coding?
+So just repeating for the
+mic for the home viewers, what portion is coding
+versus what proportion
+is mathematical analysis? This course is
+relatively math light.
+Sorry, maybe that was
+too strong a statement, but I think this course
+is very practical.
+I remember many
+years back, I was speaking with a mathematician
+and we're just chatting
+and he was asking-- he was just talking
+about his career, why he chose to be a mathematician.
+And I still remember,
+he had stars in his eyes
+when he told me that he chose
+his career path because he felt his role is to pursue truth
+and beauty in the universe,
+and that's why he
+became a mathematician. In this course, I'm not going to
+do any truth and beauty stuff.
+Truth and beauty
+is good, but you find that I want to take a very
+practical approach to talking
+about how to build applications
+and build software that works. Yeah.
+Cool. Anything else? All right. Cool. Awesome. All right.
+Thank you for all the questions. Please keep them coming. And feel free to interrupt me or
+Kian throughout this quarter as well with questions.
+Love it. So just to flesh this
+out a little bit more,
+this is what I see in
+terms of teams building practical applications.
+And I'm excited
+about applications because with improving
+machine learning algorithms, deep learning algorithms,
+GenAI algorithms,
+there are a lot of applications
+that you can build now that just were impossible
+or really inaccessible
+to any person to build
+even a few years ago.
+And so I find that
+when I prompt GenAI, it works really well for a lot
+of text-based applications.
+And there's work on multimodal
+LLMs, large multimodal models. So making inroads into vision,
+making inroads into audio.
+But really GenAI algorithms,
+especially transformer networks trained to output text, like
+ChatGPT, Claude, Gemini,
+and so on, really fantastic
+for text-based applications.
+And I find myself regularly
+working with deep learning
+algorithms directly when I'm
+working with audio data, image
+and video data, and then also
+a lot of structured data.
+Sorry, my handwriting is awful.
+So structured data refers
+to large tables of numbers, like giant Excel or Google
+Sheets spreadsheets.
+So that's structured data. Unstructured data refers to
+text, audio, images, maybe video.
+And because a lot of GenAI,
+large language models, like ChatGPT, had grown
+up being text in text
+out kinds of machines, they are
+remarkable for a lot of text processing applications.
+But for other types
+of data, I end up often dipping down directly
+to use various deep learning
+algorithms. And then it turns out that for
+text-based data, if all you do
+is prompting, you could
+usually go quite far. So a lot of applications
+are built by prompting LLMs.
+But I've been on quite
+a few teams where after fiddling with the
+prompts for a month,
+you just can't get the
+performance to be better just by tuning the prompts. Or another good problem to have,
+it turns out use of GenAI tools
+are relatively inexpensive
+when you're prototyping. It's like a few dollars
+per million tokens,
+so you can do a lot. But sometimes, if
+you're lucky enough to be on a product that
+hits product market
+fit and a lot of
+users want to use, multiple times
+I've been on teams where we basically did not care
+about our large language model
+bill. It was like, whatever, $20 a
+month or $100 a month was fine. But when more and more
+users start using it, then
+to your team's
+positive surprise, your AI bill really
+starts to skyrocket.
+And then at some point,
+you look at how much you're paying for your AI
+bill for the large language models and to bend the
+cost curve back down, often
+a lot of the techniques in deep
+learning become very relevant as well. So I'm thinking just some of our
+bills were really breathtaking.
+I don't want to say the
+numbers, but just definitely more than we want to pay. As much as we love the
+companies providing LLMs,
+our bills that we're paying
+them were significantly larger than I wanted to pay.
+And then knowing how to use deep
+learning to fine-tune smaller models, that was really
+the critical skill set that just bend
+the cost curve back
+and just made the whole
+thing affordable to keep on providing the service. So yeah.
+So that's what--
+so that's the skill set I hope you get
+from this course. All right.
+Let's see.  All right.
+And to give a-- oh.
+Sorry, let me use this one.
+So to give a quick
+overview, this course, the online materials is
+broken down into five modules.
+So just to give you an
+overview of the five of them. First one is on the basics
+of neural networks, NN,
+Neural Networks, and
+DL, Deep Learning. So you learn how to build a
+neural network or deep learning
+algorithm from
+scratch in Python. I find that sometimes if you use
+the frameworks, like TensorFlow
+or PyTorch, it hides
+a lot of the details. So we actually work through how
+to build a basic neural network
+and how to build a basic
+deep learning algorithm just in raw Python so you
+really understand it.
+And then the second module,
+the second mini course will be on how to improve, how
+to tune your neural networks.
+So you may have heard
+that when you're training a neural network,
+there are a lot of parameters or we call them hyperparameters.
+Hyperparameters are parameters
+that control the parameters. So the weights of
+parameters, hyperparameters are things like
+the learning rate
+or what's the size of
+the neural network. And so there are actually
+a lot of hyperparameters that we end up tuning
+and try to give you
+a sense of what are
+the most important ones and practical skills
+for tuning them.
+It turns out that if you
+look at my PhD students,
+I think every one of them that-- well, I think probably
+every one of them,
+definitely every one that--
+every PhD student that I know that became great, I think at
+some point wound up up at 2:00
+AM tuning hyperparameters. And I still have very clear
+recollections of being
+in the office, 2:00 AM, 3:00 AM
+fiddling with parameters to try to get it to work.
+And it turns out that,
+literally, your skill at tuning hyperparameters, it
+really makes a difference.
+So there was some evenings
+that I knew my skill at tuning hyperparameters, frankly, it
+made the difference between
+whether I went home to sleep at
+3:00 AM versus when I went home to sleep at 7:00 AM. Maybe there's not--
+maybe don't do what I do.
+I'm not encouraging
+this behavior, but this is just my
+personal experiences. But it really makes a big
+difference, your practical skill
+at how quickly
+you can figure out the recipe to get these
+neural networks to train.
+And related to that is--
+one thing we chat a lot
+about in this course is strategies for building
+machine learning projects.
+So it turns out that if you
+build a complex system, let's say you build-- this
+one example we'll go through later this quarter.
+Say you want to build a system
+that recognizes your face, a camera that recognizes your
+face, your friend's face,
+unlock a door, security,
+safety, or whatever. So something like that. I've worked on
+something like that,
+Kian's worked on some of that. These are complex systems
+with multiple components. There's a camera.
+Do you subtract--
+clean up the image? Do you cut out the face? How do you register the face?
+How do you compare a face? How do you decide to take
+another picture before you unlock the door or just--
+or someone trying to fake-- or hold up a picture
+printed on a piece of paper. There are actually
+a lot of decisions.
+And so what I found
+is that the biggest difference between a team that
+knows how to drive forward
+a project like this
+well and get it done in days rather than
+weeks, or weeks rather
+than many months, is the
+ability to drive a disciplined development process.
+It turns out when you
+have a complex system, less experienced teams will
+often almost pick things
+at random to work on. They'll read one research
+paper and say, oh, I read the research paper we
+should get more data, well,
+because some newspapers
+said AI needs lots of data. So let's go spend six
+months to collect more data.
+Turns out, a of the time
+collecting more data does not help your application.
+But sometimes it's a huge help. So given your application,
+how do you decide, should you spend more
+time collecting data?
+Maybe you should buy more GPUs. I actually definitely know
+people that read in the news,
+a lot of GPUs are helpful. And then I've literally met
+fairly senior business leaders
+that have spent a very
+large amount of money buying GPUs and then--
+some funny stories. And then I go talk to
+them and say, what are you doing with these GPUs? And then sometimes--
+There was one meeting I
+was in where literally a very large family-run business
+had bought a lot of GPUs
+and the CTO then pointed to his
+nephew, who's a current college
+student undergrad and said,
+oh, my nephew knows AI. I'm giving him this very
+large budget in GPUs
+and I think he'll do AI for me. But so I think that knowing
+how to make these decisions
+and not just buying
+into the hype that you read about in the
+newspapers is really important.
+And one thing I hope to do in
+this course is share with you what driving a disciplined
+development process looks like,
+because this is one of the
+things that really makes a 10x difference in the speed with
+which you can get something
+to work. I've literally seen teams
+take six months or 10 months
+pursuing an approach that
+experienced engineers would go in and go, you know what?
+I could have told
+you six months ago that spending all this
+time collecting data, this was not going to get
+your application to where
+you want it to go. But so how do you
+examine an application and figure the
+diagnostics to figure out
+what are the productive things
+you do for your application? We'll actually spend
+a lot of time on that. And in fact, I'm excited about
+doing some simulation exercises
+in this classroom with
+you later this quarter, where I'll invite you
+later this quarter to say,
+in this scenario,
+what would you do, and see if you
+could make decisions
+in a more systematic way.
+Then course four we'll talk
+about convolutional networks.
+Very useful for computer
+vision applications. And then-- so ConvNets
+are specialized models
+used mostly for
+vision applications, dealing with images. And then we'll talk finally
+about sequence models.
+So sequences could be time
+series or sequences of texts, like words. So I'll touch on the
+transformer network
+that power law the
+GenAI revolution.
+And so throughout
+learning-- through learning all of these things,
+I hope that you all
+gain a large tool
+chest that will enable you to tackle an
+almost bewildering range
+of applications. I think one of the
+things I've most enjoyed as an AI
+person is it turns out
+when you work in
+AI, there are so many other teams that have data
+and that could use our help.
+So I feel like as an AI
+person, I somehow bizarrely had the right to play in
+building autonomous helicopters
+or helping companies, I don't
+know, place more relevant ads. Maybe not the most
+inspiring thing I've
+worked on, but certainly very
+lucrative for some companies. Or improve web search
+rankings or improve safety,
+get rid of the negative toxic
+results that you may not want, search results to come back on,
+or improve e-commerce retailing,
+or improve speech
+recognition, or help ships be more fuel efficient.
+All these are real examples. Or fight fraud, which is
+actually really exciting when you're fighting financial
+fraud, which is obviously
+a bad thing but when
+you're fighting fraud, sometimes you wake up in the
+morning and your team's alerted
+you that there's a
+new scam, and then you just have to go and fight
+them and build algorithms in real-time and you
+know that every hour you
+take, more money actually
+leaves the financial system. So it's kind of awful that
+there's financial fraud,
+but it's actually one of
+the most exhilarating things I've worked on, because
+literally every hour you are slower to
+formulate a response,
+you know more dollars are
+leaking out every hour. Anyway, so somehow when you have
+this two sets of deep learning,
+you just have a bewildering
+right to play or ability to play in a huge
+range of applications
+that could use your help. And I think on
+campus too, there's so many departments
+across campus,
+in the sciences, engineering,
+humanities, business that have interesting data where
+your skill set will let you,
+if you choose, collaborate with
+them to do interesting projects. And I find, for
+example, bizarrely some
+of my PhD students are
+working on climate science. It's like, what do I know
+about climate science? I wish I knew more.
+But using machine
+learning tools, we could actually work
+on climate modeling
+and geoengineering
+and just play in all of these hopefully important
+and interesting places.
+So I hope that you have
+that skill set as well by the end of this quarter. Yeah. Do you have enough data for
+neural network versus it's
+better suited for other
+like machine learning? Yeah. So how do you know if
+you're enough-- how
+do you know if you have enough
+data for a neural network? It turns out to be
+really difficult to know.
+So if it's an application
+that others have worked on or that you've worked on before,
+then you may have a sense.
+So for example, because I
+worked on face recognition,
+I have a sense, if you want to
+train a face recognition system from scratch, having
+50,000 images, 50,000 unique faces
+is pretty good.
+So if you worked on
+it or if you read the research literature for
+something people have worked on, that would give you a good
+sense for how much data could
+be enough to get you started. But then for greenfield
+brand new project
+that no one in the world
+has worked on before, if you can't find parallel
+projects that are comparable,
+it could be really hard to tell. And so common advice for
+completely greenfield-- sorry,
+greenfield I mean a
+brand new project, just to more than things-- So for example, if someone has
+invented a new medical device
+and no one has collected this
+type of blood specimen data before, it's really
+hard to tell.
+And in that case, the
+most common advice is get a little bit of data
+and just try training a model.
+And the degree to which your
+initial model works or does not work, that will help you
+hone your perspective
+on how much data may be needed. And you may be surprised, maybe
+100 data points is all you need.
+Sometimes we've been
+surprised by that. And then sometimes we've also
+worked on applications where
+100 billion data
+points later, we're still trying to get
+a lot more data. And I find it really
+difficult to tell.
+OK. Good questions. Anything else? So this is a good time for me
+to pause and take questions
+because-- so what I'm going to do is--
+what I'm going to do
+after this is switch tracks and talk a little bit
+about exciting trends in AI,
+recent trends in AI
+that I'm excited about and how I view the AI landscape. So this is actually
+a good breakpoint
+to see if people have
+other questions before I talk about some trends in AI.
+Anything else? Yeah, please. When you were
+differentiating between AI
+and deep learning for
+those different tasks, what were like the
+distinguishing features
+of GenAI? Was it this transformer versus
+non-transformer or how would you describe the difference?
+So I guess-- let's see. many of these terms are
+blurry and fuzz a little bit
+into each other. But when I refer
+to generative AI, generative AI is
+this body of work
+that generates texts and
+sometimes also images,
+sometimes also audio, using
+deep learning algorithms in certain ways. So I think GenAI refers to
+this body of work with most
+of the center of gravity on
+generating text, maybe also images, and the text generation
+algorithms have been mostly
+implemented using transformer
+neural networks trained on large amounts of data scraped
+off the internet and elsewhere.
+So when I refer
+to Gen AI, I guess that's one particular
+application of deep learning
+models that has given
+us large language models, like ChatGPT
+and Claude, and Gemini, and Meta Llama, and so on.
+Does that make sense? Yeah, cool. Great. Anything else?
+Cool. All right. So let me-- can we go
+to the slides, please?
+One of the nice things
+about this clause is Kian and I can occasionally
+just share with you things we're seeing
+in the broader world.
+Hey, while we're doing
+that, I'm actually curious. How many of you use a
+specialized AI-assisted coding
+tool, like Qodo, Cursor,
+Gem CLI, Codex, [INAUDIBLE], Windsurf? Awesome.
+Almost everyone,
+but not everyone. Interesting. Interesting. Oh, I thought-- interesting.
+OK, cool. So yeah, one of the
+most exciting things has happened in programming
+is AI-assisted coding.
+And I feel like I personally
+hope I never, ever have to go back
+to coding by hand.
+It's just-- it's
+actually interesting. I often work in coffee
+shops on the weekend.
+And a few weekends ago, I
+was sitting in a coffee shop and sitting next to me was
+someone that was coding by hand
+and it looked so strange. I just asked them,
+what are you doing? Well, in a respectful way.
+And it turned out that
+they're doing a homework from some other university
+that required the code by hand.
+But one of the things
+I find exciting is that individual programmer
+productivity is much higher
+than it ever used to be. And maybe I want to share with
+you just one thing, what I see.
+So I find that in the
+software work that I do, I maybe categorize
+it into two buckets. One is building quick
+and dirty prototypes
+to see if something works,
+and then sometimes I write production grade,
+enterprise grade,
+robust, reliable software
+that has a scale. And I find that's where
+AI-assisted coding has
+made the biggest
+difference, is building the quick and dirty prototypes. Whereas I think
+actually literally
+one of my collaborators
+used one of the agent decoders that I named,
+but I won't say which one,
+but literally this morning he
+sent me a Slack message saying, sorry, this agent decoder had
+a database migration error
+and we just wiped out all
+of the database records, fortunately for a test
+application with five users.
+But it did happen. So I find it-- oh, great. Thank you. So I find that my
+use of the agent
+decoders for the
+production grade software is more careful,
+whereas for building
+quick and dirty prototypes, it-- so long as you're
+not shipping software in an irresponsible way,
+quick and dirty prototypes
+have a lot fewer dependencies. You actually don't need to
+integrate with legacy data infrastructure.
+And then I'm going
+to say something that feels like something
+I'm not supposed to say,
+but I'll say it
+anyway, which is I find that when I
+am running code,
+I find that people
+often worry about safety and reliability of software
+or security of software.
+So one thing I often
+say to my teams is if you're building
+a prototype that only runs on your own
+laptop and doesn't
+use any sensitive
+information, so there's no risk to sensitive
+information, then unless you are
+planning to maliciously hack
+into your own laptop,
+the security requirements can be lower. And so I find that when building
+quick and dirty prototypes,
+having a sandbox environment
+that lets you operate within it quickly means that you can
+just make a lot of decisions
+faster without worrying as much
+about scalability or security or reliability, so long as
+the sandbox environment means
+this stuff isn't going to get
+out there, or leak information, or create a security loophole. So that's part of what
+lets us move much faster.
+And so I find that because
+of the speed of prototyping, so long as you can do
+so in a responsible way
+to pursue innovative
+ideas, my teams will increasingly try 20
+things and see what sticks.
+And because-- and I
+know that a lot of teams are lamenting that many
+proof of concepts never
+make it into production. You try something
+and it doesn't work. And some teams are
+feeling angst about that.
+I actually have
+a different view. I think if the cost
+of a proof of concept is low enough, then who cares
+if you have to do 20 of them
+and that's the price for
+finding the one or two things that works really well. So one thing you hear
+about in this course
+is both when you're building a
+machine learning application, you usually don't know
+what's going to happen.
+And there's a specific
+reason for that. The reason is the output of
+a machine learning algorithm,
+it depends both on
+the code you write as well as on the data
+you're training on.
+And while you control
+the code 100%, you don't really know usually
+what's really in the data,
+in the weird and wonderful data
+that the world has given you. So, for example, worked on
+speech recognition a lot
+in multiple companies,
+in multiple contexts. And even now when I work
+on speech recognition,
+I'm still sometimes a
+little bit surprised that, oh, this data has people
+of a certain accent more
+than I realize, or people
+somehow speak faster, or, boy, there's a lot
+of background noise
+when people use it in a car. So even though I worked
+on speech recognition multiple times--
+oh, and actually one recent
+example or application, I was actually surprised by the
+number of background speakers.
+They talked to us, they come
+and talk to a different person, then they talk to us and
+then we get confused.
+So I find that the data
+that the world gives us is often weird and wonderful.
+And so it is only by building
+a system that you then start to discover these
+things in the data that
+lets you make progress. And with a lot of
+software applications as well, separate from
+machine learning applications,
+a lot of what I end
+up having to discover is what do users actually want?
+So again, I control
+my code 100%. I can write whatever
+code I want. I control that. But you don't get to
+control how your users will
+react to your system. And I find that our ability to
+build quick and dirty prototypes
+rapidly, both to discover
+what's in the data and also to particular users to
+see if they like it, that allows
+us to drive faster
+feedback loops than was ever possible
+before to then help
+us build more and more
+valuable software. And I think--
+I know that the mantra move fast
+and break things got a bad rep
+because it broke things. And I find that
+some teams took away
+from this that we
+should not move fast, but I think that's a mistake. So what I usually tell my teams
+is move fast and be responsible.
+And despite all the hype about
+AI extinction risk or AI--
+all that somewhat bizarre
+hype in my opinion, I find that when teams
+move really fast,
+we can then implement
+things, test it out in a responsible way, and much
+more quickly identify problems
+and fix them. So I find that a lot of most
+responsible teams I know, teams able to really get stuff to
+work really quickly, they
+tend to be some of the fastest
+moving teams, because it's that speed of execution that
+lets you finally implement
+it, figure out
+what's in your data, figure out what your users
+want, and that's the best way to figure out
+what could actually
+go wrong to then make sure
+things don't actually go wrong. Ans somewhat related to that
+is AI coding assistance.
+And I assume almost everyone
+or everyone in this class knows how to code.
+If you are where you
+haven't learned to code yet, you probably might not want
+to take this class yet.
+But I find that there have
+been people, including very senior business
+leaders, advising others
+to not learn to
+code in the grounds that AI will automate it. And I want to share
+this with you, not because I think you
+need to learn to code,
+but because I hope you
+help me spread the word. Go to all of your friends and
+other departments to tell them this advice do not
+learn to code I
+think we'll look back on this
+as some of the worst career advice ever given. And the reason is, when
+coding becomes easier,
+more people should do
+it rather than fewer. So when humanity went from punch
+cards to keyboard and terminal,
+that made coding easier, and
+so more people learn to code. When we went from assembly
+language to modern--
+well, at that time, modern
+programming languages, that made coding easier,
+more people learn to code.
+I went back, I actually
+found these papers on when-- these articles on when COBOL,
+very old school programming
+language, was invented,
+and there were actually people that said, oh, wow, now
+we have the COBOL programming
+language. Coding is so easy. Who needs programmers anymore? And obviously, the
+opposite happened.
+Went from text editors to IDEs
+and then AI-assisted coding. As coding becomes easier,
+people should code a lot more.
+A lot more people
+should learn to code. And the other thing
+I'm seeing is, just
+something that's been
+on people's minds, I know that unemployment
+of recent computer science
+graduates has ticked up to
+higher than it's been compared to, I think, the last decade.
+And so I know that to
+people learning CS, that has caused some consternation.
+So I'm going to share
+my view on that. So it turns out that what
+I see in Silicon Valley
+and beyond Silicon
+Valley is we just can't find enough people
+with these skills.
+I know many businesses
+that would-- I know large businesses that
+would love to hire 1,000 people
+with skills in GenAI and deep
+learning and machine learning, but they are struggling to
+find people with these skills.
+Conversely, there are still
+universities with curricula
+that has not changed since-- has not changed
+much for the last,
+I don't know, since 2002,
+before the rise of GenAI. And so I do see that many new
+CS grads, not from Stanford,
+but from around the country,
+are struggling with finding jobs
+because, unfortunately,
+that older non-AI enabled skill set that
+is not as much in demand.
+And maybe just for myself,
+today I will not hire someone-- I will not hire a software
+engineer that doesn't how
+to use AI to help
+them with coding. It just doesn't make sense. Same reason why
+I just won't hire someone that uses a punch
+card, keyboard, and terminal.
+And I think when the world
+evolved from punch card to keyboard and
+terminal, people still
+had punch card jobs for
+a while, but eventually the punch card jobs
+just went away. It just doesn't
+make sense anymore.
+So today, there are still
+coding by hand jobs around. Maybe some specialties,
+some very low level
+coding where AI
+is not very good. It turns out AI is not very
+good at some types of GPU programming. There are some niches
+where coding by hand
+actually still makes sense. But for building applications--
+So I actually-- I remember
+just a few months ago now, many months ago now, where
+I interviewed two engineers
+back to back. One had not yet
+graduated from college,
+but was highly on
+top of GenAI coding. So spoke with that candidate,
+knew how to use AI,
+built programs and
+could sell them quickly. Right after that, I
+also interviewed someone with 10 years of experience
+as a full stack engineer,
+but whose skill set was exactly
+the same as their 2002 skill set. Had not tried out any
+AI-assisted coding.
+Really good skills,
+full stack engineer with 10 years of experience. And it was actually
+really clear to me,
+I picked the fresh college
+grad where he had not-- he was about to
+graduate, over someone
+with 10 years of experience. So I think making sure you
+master these skills are
+really important. And what I'm seeing is there is
+a very large gap that businesses
+are having a hard time filling
+for people with these skills.
+But the demand
+for the 2022 skill set, software engineering, full
+site engineering skill set,
+that is not there. So I think--
+And then in terms of
+AI-assisted coding,
+I find that CS fundamentals
+really are important. So in addition-- so I
+know I hired someone,
+a fresh college grad over
+someone 10 years experience. True story. There's actually one other
+part to this story, which
+is with respect to all of
+the above, the graduate from college, the best
+programmers I know are also not
+fresh college grads. No disrespect intended
+to fresh college grads. Some are about to
+graduate from Stanford. The best programmers
+I know are really
+on top of AI-assisted coding and
+additionally deeply understand computer science fundamentals.
+So it turns out--
+maybe I'll illustrate this with a quick story. When I was teaching
+an online course,
+my team wanted to generate
+background pictures like this just for decoration. So when I was
+working on this, this
+is, of course, generative
+AI for everyone, I was working with a
+collaborator, Tommy Nelson, that understood art history.
+And so my collaborator
+knew the language of art. He knew the artistic genre,
+inspiration, the palette,
+so he could prompt Midjourney
+AI image generation with the language of art. And so he could generate
+beautiful pictures like these.
+In contrast, I don't
+know art history. I wish I did. And so all I could do
+was go to Midjourney
+or AI image generation
+and type, please make pretty pictures
+of robots for me,
+and I could never get the
+control that my collaborator Tommy could to generate
+pictures like these,
+which is why we use all of
+his pictures and none of mine.
+And I'm seeing the same
+thing in computer science.
+One of the most important
+skills for the future is to understand how
+computers work and understand
+how GenAI and deep learning
+and machine learning work so that you can
+use the language of AI,
+use the language of
+these tools to tell a computer exactly what you
+want so the computer can do it
+for you. And there is actually
+a huge difference in performance
+between someone that's
+learned to just prompt an
+LLM without understanding how computers or how
+AI really works,
+versus people that can
+look at the problem, analyze it, and then
+with AI-assisted coding, tell a computer how to
+take the next steps, which
+is why I think that CS
+fundamentals is very valuable.
+CS fundamentals, machine
+learning fundamentals, deep learning fundamentals,
+I and my teams,
+we use that knowledge
+like every day in making pretty
+consequential decisions.
+So I hope that you get
+that from this class and the many other classes
+at Stanford as well.
+All right. All right. I think I might leave the rest. There's more I could
+say on trends in AI,
+but I find that
+AI-assisted-- oh, but one thing I hope you do
+really, go to all your friends
+in all the departments
+across campus and encourage them to be a
+builder, because the other thing
+I'm seeing is clearly for
+computer science professionals, use AI-assisted coding, know CS
+fundamentals, build cool stuff.
+But for other
+disciplines as well that is not computer
+science or not AI,
+I'm finding that the education
+professional or the climate scientists, or the
+mechanical engineer that
+wants to know how
+to build software are just more productive
+and get a lot more done
+and the barrier to
+entry to AI, to coding is the lowest it's
+ever been in our lives.
+And so this is a good
+time, frankly, for-- I wish every single
+Stanford student
+will learn to build
+software with AI assistance. So I hope you go help
+your friends across campus
+to master those skills as well. OK. Yeah.
+Any other questions? Yes, go ahead. What do you say about
+the trend of someone
+knowing [INAUDIBLE] but
+also [INAUDIBLE] AI? I've had a lot of
+industry folks talking
+about how they would
+rather hire someone with 10 years of experience who
+knows just generative AI as is,
+like just using coding, rather
+than a fresh undergrad that does have that deep
+understanding of deep learning,
+machine learning, and generative
+AI as fundamentals just because they have more
+experience building.
+Do you see that also? Yeah. So let me rank productivity,
+and I'll give you four levels.
+I think-- and again,
+and I say this with a lot of respect
+for individuals. So if I talk about
+productivity, it's
+not with any disrespect or any
+lack of affection for anyone or for their work. But I think least productive
+are people with no experience
+and don't know AI. One step on top of that is
+people with less experience
+but on a-- sorry, one step
+on top of that is people with, say, a
+decade of experience but
+that don't know AI. On top of that, I would rather
+take a fresh college grad that
+does know AI, but then
+even more productive is someone with a
+decade of experience
+and also really on top of AI. So I think between
+the two factors, really harnessing AI
+is very important,
+but experience is
+also important. And so the best developers I
+know, we just work and we just
+ship code like no
+one's ever done, I think, even two
+or three years ago, are very experienced developers.
+They're also very on top of
+how they use the latest AI technologies.
+Yeah, please. Oh, sorry. And just one other thing
+about the job market. I find that a lot of employers
+have not yet figured out
+how to hire appropriately. This has contributed--
+frankly, a lot of employers, if a company has no one that
+knows GenAI, how do they even
+how to interview appropriately? So that is a problem that
+we need to solve as well. Go ahead.
+What's the value of
+taking classes that are super into programming and--
+like, for example, I'm
+thinking of classes like C2107, 111 where we're
+not encouraged to use tools
+and we're encouraged. Is that to build
+the fundamentals, and do you think
+that's necessary still?
+Yeah, boy. So CS107, CS111 are
+great, so do take them
+if you're considering them. I find that the
+fundamentals are important.
+How do I put it? Yeah, I'm not sure what
+else to say other than that. I think honestly,
+Stanford we're known for--
+CS Department we're
+known for really-- I know I'm biased, but I want
+to say probably the best entry
+level CS program classes of
+any university in the world, I'm pretty biased, so
+maybe I shouldn't say that, but I think the
+excellent course if you
+want to learn the fundamentals
+and really solid way, and the instructors
+are routinely thinking about how to
+update the curriculum
+and realities of GenAI. So I think they do an
+excellent job with that mix.
+Yes, please. [INAUDIBLE] use GenAI compared
+to just [INAUDIBLE] Cursor
+and type a prompt, so. Yeah. How do I find someone
+that really knows GenAI compared to someone that just
+use a tool and types of prompts.
+So I feel like in GenAI there
+are two buckets of skill. And again, by the way,
+deep learning is not GenAI.
+Deep learning is also
+a very valuable skill, but this is about GenAI. I think there are two things. One is I find it really
+useful to know how
+to use AI coding assistance. That's really valuable. But having fundamental
+knowledge helps you do that.
+And then the other
+thing is in GenAI, there's a number
+of emerging tools. I'm going to toss
+out some buzzwords. OK. So if you don't know what
+any of these words mean,
+don't worry about it. But I think there are emerging
+tools, like RAG, Retrieval
+Augmented Generation, or
+how to-- vector databases, how to do evals
+and error analysis, how to build guardrails,
+how to use knowledge graphs
+and interface that with LLM,
+maybe how to do multimodal LLMs, how to fine-tune the model.
+What else? I'm probably blanking
+on something. Oh, how to build
+agentic workflows. But I feel like there are these
+categories of new techniques
+built on top of GenAI that
+are like a useful bag of tools
+for building applications. Well, frankly, when I'm
+interviewing candidates, we still do a fair
+amount of, it is
+very GenAI role, is these
+skills I tend to look for, this set of tools as well
+as AI-assisted coding.
+And then-- yeah. Yeah, please. I don't know if this
+question is best close to you
+or if I'm considering taking
+229 and 230 at the same time, both of those classes
+are final projects.
+So how would you recommend
+thinking about ideas to pursue?
+Yeah. So let me just give one
+tip about CS courses in general, not just
+229 and CS230, which
+is I encourage you to think of
+AI courses at Stanford a bit
+like Pokemon. You got to catch them all.
+But in all seriousness, I think
+taking more CS courses in AI, it is a good thing to do. Definitely encourage you
+to take multiple courses.
+I think in some years we've
+had students do joint projects, where the standard is higher
+expectations for sure,
+but that's one
+option to look at. Yeah.
+All right. Go for it. [INAUDIBLE] so I
+guess [INAUDIBLE],
+but what is the difference
+pedagogically between 229 and 230? And what are the projects
+that can be overlapped?
+So let's see. 229 and 230 are very
+different courses. 229, well, in 229 we
+have live instructors
+doing the lectures in-person
+rather than online content. So it's not the
+flipped classroom. So in CS230, we have
+most of the materials
+prepared in online videos,
+highly edited online videos. And then I think the
+other biggest difference
+is CS229 is more
+mathematical theoretical, but it's important math,
+whereas CS230 is more practical.
+And so I don't know if we
+do even want a single-- maybe we do one proof
+somewhere in the lectures,
+but we just don't do a
+lot of math in CS230. And it's very-- a lot of machine
+learning is very empirical.
+You try and see what works,
+but have a disciplined approach for exploring what works. So we focus a lot
+more on that in CS230.
+And oh, and 229 covers
+a lot more techniques. So there are a lot of machine
+learning techniques, supervised
+learning, unsupervised learning,
+decision trees, boosting, K means clustering.
+So CS229 covers a
+much broader survey of a lot of machine
+learning techniques, whereas CS230 is just one thing.
+We go really deep
+into deep learning.

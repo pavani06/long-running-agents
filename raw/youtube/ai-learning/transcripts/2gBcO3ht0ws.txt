@@ -1,0 +1,311 @@
+curser just released a new AI agent and it's absolutely insane this AI agent can interact with the terminal automatically
+make changes to your codebase across multiple files and so much more you basically get a full stack developer
+that works side by side with you on your project this will save you an insane amount of time so in this video I'll
+show you how to use the Custer agent to build anything you want now the future of programming is here if you're not
+paying attention then listen up long gone are the days of manually typing each line of codes programming is going
+to be from remembering syntax and you know manually doing everything to having an idea and pushing through to execute
+it that is going to be the million doll skill with AI tools like curser you can now build any software you can imagine
+with plain English just typing words and I'm not just saying this I'm actually doing it with my own AI startup vectal
+AI I'm using cursor for the back end from the front end for fixing Buck for helping me restructure the code base
+I've never built a startup before with curser I can now make it happen now the agent update just takes cursor to
+another level it's capable of multifile edits autonomously meaning it's way more agentic than the previous composer it
+also possesses full contextual understanding of a code base meaning not only does it know where files are it
+also knows what's inside of them because it indexes all of those files instead of just pulling random pieces of code into
+its tokens like it did before and this allows it to be way more useful offering much more accurate code suggestions than
+before and it can also write commands in the terminal something that the old cursor definitely couldn't do now this
+is just just one of many reasons why I believe that the next two to three years will shape The Next Century like in the
+last month alone so many new dayi tools and updates and improvements have happened if you're not seeing this and
+if you're not doing anything about it I don't know what to tell you here's the plan we're going to build a full stack web app from scratch just using the new
+curer agent now you might be thinking but David I've never used anyi agents before and I have no prompt engineering
+experience like can I do this as well the answer is absolutely I'm going to put all of the prompts and codes from
+this video in the new Society so you can just copy paste them now I was wondering what should I actually build in this
+video so I just made a post in the new society and asked some of you guys and this was one of the most popular
+suggestions from David erens to combine voice flow and twilio into one app so let's make that happen so the first step
+is go to cursor. comom and actually download cursor so click on this big white button download for Mac or if from
+Windows download it for Windows and click on Save once it finishes downloading open up your downloads
+folder and unzip the installer and you'll see this icon right here install cursor so double click that and install
+the app now before we can actually open a cursor you need to create an account so go back to ker.com and click on the
+top right and create the account they have a really solid free plan with 2,000 free completions so definitely get
+started on that but I would highly recommend you if you want to build anything serious get the Pro Plan
+because this will save you so much time and allow you to build things that you simply couldn't build otherwise anyways
+once you create an account we can you can actually open cursor so type in cursor and open the app you should see something like this so let's click on
+open a folder let's create a new one code open up so this is what cursor looks like now the only difference you
+might see is that you might have the file panel on the left I moved it to the right this is just a preference and when
+I'm recording videos if I have opened the chat you know it covers my camera so that's why I moved it but to open up the
+most important cursor part you press command l or control L on Windows and you open the sidebar where you can see
+the chat and the compos ER these are the two main features in side of cursor and
+the what we're looking for is the agent feature right here so what you need to do is you actually need to select the right model you cannot use GPD pro0 the
+agent feature only works with clo models so make sure to select Sonet 3.5 the newest one if you don't see it you
+actually need to go into the settings click on cursor settings then cursor settings and in here click on models and
+you can enable and disable Which models you see but honestly 95% of the time I use St 3.5 and the other 5% is
+combination of gbd4 and o1 mini so once you set that up we can use the agent to
+create our file structure because it can also create files delete files all of that stuff so let's follow the idea that
+David from new Society described which is a combination of voice flow and video so your task is to build a full stack
+web app that's a combination of voice flow and twio start by creating a new
+nextjs project let's try to build this in as few files as possible yeah I think
+this is pretty solid for the first problem so let's make sure agent is selected so click on agent and then submit so as you can see the cursor
+agent starts by writing the terminals for you it knows how to set up the project and which packages to import how
+to import them which files to create you know all of that it can do it for you you just need to accept it and you know
+ideally you should read what it does because accepting blindly changes that can you know mess up your system so it's
+asking put a bunch of customization so I'm just going to say no for this but if you don't know what to select you can
+just ask CAD gbt ask clot would you like to customize the import alas uh I'm going to do
+no and then boom on the right in our file structure which for you is probably going to be on the left you can see the
+project setup that we have so far now while it's installing one thing I should have mentioned earlier is that if you go
+into the settings cursor settings there is this rules for AI and this is basically the main system prompt for
+cursor that applies to all of your projects and it helps the AIP a lot more productive and useful and you can
+obviously customize it to your own preferences so if you want to use the same one I have it's going to be in the
+new Society in the templates and preset section right in prompts or instructions right here cursor system prom you can
+just take it copy it and use it for yourself so that's the one I've optimized from spending hundreds of
+hours inside of cursor and building my own AI startup so now it want to install twio and voice flow sdks okay so let's
+run this that I'm not sure if that's going to be necessary but maybe it will be we'll see now one thing you can actually do while the composer is still
+coding you know while the a agent is still running you can go into the chat section and ask questions right so I'm
+going to say I want to build a simple full stack web app that acts as a
+combination of voice flow and twio help me create a simple road map for this app
+and then you can submit to your entire code base which will scan all of the files or you can just submit without any context which in this case I want to do
+actually it attached this route. DS file but that's fine so the agent finished
+running as you can see it was running for multiple minutes right it's like not a simple composer output that takes a
+few seconds and gives you a quick answer this actually takes into consideration what you want to do it's not quite as
+advanced reasoning as o01 but it's getting there right it's like multiple thinking takes in more context does more
+actions you know indexes more files we're getting to the point where AI agents actually become super useful like
+2025 will be the year where AI agents are everywhere I'm talking about AI first companies that build AI agents for
+very specific applications very specific use cases which will save you countless hours of time this is exactly what I'm
+trying to do with my own AI startup veal AI this is going to be a productivity app with integrated AI agents you can
+chat with the AI agent it can reorganize your list it can show only certain tasks you want it can help you complete tasks
+this is going to be the future of productivity right now I'm still developing it so if you want to be one of the first people to have access the
+weight list is going to be linked below but if you're watching this in a week or two vectal might already be released so check the description you'll see the
+link there now back to cursor so let's see we have a bunch of files we just need to accept these changes so let's
+see what's going on okay it needs to fill out these environment variables we can actually skip that for now I'm going
+to say focus on creating the front end and then I'm going to give it some
+screenshot shots to use as inspiration you know you can never give it enough visual references that's probably one of
+the mistakes people make they don't show it what they're seeing so I'm going to screenshot the
+dashboard not the dashboard but the main field of voice flow and I'm going to send it as a reference here is the
+reference of what it should look like voice flow UI and I'm going to give it
+further description by saying the background is a white dotted plane and
+on the left there's a sidebar with different blocks that you can drag over
+to the main plane here let's see this probably should be a longer prompt but we'll see how well it does with just a
+vague prompt now while it's coding the front end one more file we have to create is the cursor rules files click
+onto your files section if it's on the left click on the left just create a new file type in do cursor rules it has to
+be named exactly like this and in here we can paste in instructions specific to this project so the system prom is
+relevant to anything you do in curser any files any code whatever any projects
+right this is for this specific project now I could write a completely new one just for this project but to save you
+some time because that wouldn't be much interesting I'm just going to take the one I already optimized for programming
+which by the way is also in the new Society so right here David curer rules click on that and you'll get the entire
+cruster rules prompt boom I'm just going to paste this in and hit SA save and now it will apply to all future messages in
+this project so if I create a separate project it will not work I have to create a different cursor rules file but
+for this project those instructions are active anyways we need to review some changes that our agent did so as you can
+see it's using multiple files let me expand this a bit it changed the page
+TSX so this is the main main file then icons so these are going to be the icons
+you know for the blocks and then we have the CSS Global file so let's accept that okay so I'm going to say can I start the
+front end server and see what it looks like do we need to do anything else if
+so tell me how to start it you don't need any front end backend experience
+when using cursor obviously it helps right I'm I'm not going to deny it helps you will build faster you will run into
+small fewer mistakes you will make less obvious errors but it's not necessary it is not necessary you can build apps and
+I'm going to prove it myself with my startup you can build impressive apps without being a full stack developer and
+all of us will be able to build software in the next one or two years some of some of you will just wait until it's
+super easy but hopefully there is a select few of you that will jump in right now push through all the friction
+and make it happen because that's what makes it valuable you know if it was so easy as snapping a finger then everybody
+would build their own AI startup become a multi-millionaire but the friction is exactly what makes it valuable so if you
+have an idea right now it's the best time in history to make it happen anyways our front end server is
+activated so let's just click on this Local Host 3,000 and let's see what it looks like boom this is the first
+version of the front end it's only going to get better from now we have the buttons on the left now obviously the
+the contrast could be better let's see if the dragging works okay so functionality still is not optimal but
+we're going to change that and we have even this icon static root we can close that I don't know what that was for
+interesting but anyways we have the bunch of buttons so we can probably just tell it to make sure the icons are black
+so they contrast well and then so that we can actually drag them over and so
+they do something so okay I'm going to say make sure actually for this I probably do pop out terminal so we can
+actually open a separate terminal so it doesn't interfere with our agent this is
+a good practice and something I myself should be using more often you know if something is is running for example this
+terminal needs to be running for us to see the front end it shouldn't take time in the composer we can just pop it out
+into the actual terminal section which by the way you can open with command J or control J or you can just go to the
+top terminal new terminal but right here uh this is going to be our front end you can actually rename it it's a good
+practice to rename your terminals front end and now we need to make sure that
+the butons actually work so first off change the color of the icons to Black
+so they contrast well on the white background next actually create
+components for all of the icons so I can just just drag and drop them onto the
+main white plane just like I can in voice FL now we should probably start
+telling it to incorporate some of the twio features now twio as the headline says over here is mainly for SMS voice
+email and authentication so let's build custom blocks for each of these I'm going to update my prone because I
+should have done that so I'm going to say cancel this is what I do all the time you need to update your PRS because
+your PRS are almost always the issue they're never perfect and you have to be willing to go back and change them now
+fortunately curs has made it super easy you can just click into it and change it and continue like it it wasn't before
+let's start by building these four blocks this is the main functionality of
+twio create icons for these and make sure we can actually turn them into
+blocks on the plane by clicking on the icons in the sidebar okay so now I'm
+going to say submit and this popup happens submit from previous message submitting from previous message will
+revert file changes so any file changes that the agent have made will be reverted if you want to right if you
+don't want to you can keep them but almost always you do want to because you updated the prompt meaning you gave it
+more content so you don't want to have these old like half you know half F changes applied to your code base and
+honestly like a very good practice is to read what the code is saying now you might thinking like okay David but this
+is going to help the people who know what they're doing the most that is wrong if you actually think about it
+tool AI tools like cursor help the beginners by far the most like if you listen to interviews with advanc
+programmers they say like yeah it saves me time you know or complete this and that but it really it's people like you
+and me people who are not 15year senior developers you know people who don't have all that experience benefit the
+most because the AI can do so much for you it can explain everything that is doing it can teach you way faster than
+you would be you know doing otherwise so it is the beginners that benefit the most from this revolution so if you are
+a beginner don't use that as an excuse you're actually the exact type of person that would benefit the most by using
+tools like cursor and by the way also another thing I would highly encourage you to not be afraid to pay for AI tools
+right I know it can be like annoying to sign up for subscriptions and like monitor which subscriptions you have ai
+tools like it's just one thing that will save you so much more time like I've I've never regretted sign signing up to
+an AI tool and I mean obviously you can always cancel it right but really if you want to give cser an honest shot get the
+$20 subscription I don't have an affiliate link like I wish I had an affiliate link right but I don't I'm just saying it because it's a great
+product and right now it is the best coding editor out there and there is a reason why this is a $2.5 billion
+company only after like 2 years of existing which is just insane so anyways we have some changes let's accept those
+and let's refresh our front end now actually the good thing about nextjs is that you know when you have this front
+end running you don't have to restart the terminal you don't have to do anything it makes the updates automatically for you so now we have the
+main twio features in here let's see if it works boom amazing it's like curs agent is the future guys like if you
+don't see this you blind you're blind there are going to be people who point out like oh my God the SMS Ma is not
+perfect right it's like it's still not as advanced as as voice flow yeah obviously it's not as advanced as voice
+flow because this has gotten tens of thousands of human coding hours into it we're building a simple replica in a
+matter of minutes over here so yes it's not going to be completely like fully integrated with a beta base and complete
+back and all that all of that time takes time to build right the point is that with these AI tools such as cursor
+agents you can build it infinitely faster than otherwise it's really insane right so we have these we have these
+blocks obviously the snapping is a bit sketchy but the main thing I want to integrate is the connection right like
+Connecting Blocks together and also we need to tell it to change the text color to Black okay so I'm going to say good
+work you know never hurts to encourage your agents now make sure to change the text color of the headings inside of the
+blocks when they are on the wi field by the way clearly describing what the issue is is a skill it's a skill that
+takes time if you don't have that skill one way to get fast track and to really improve is
+inside of the advanced AI tutorials in the classroom with the new Society I have this curser tutorial that goes
+really in depth it's like 50 minutes Advanced curser guide yeah this one so if you really don't know how to describe
+you know how to express yourself and how to direct these AI agents and coding tools this will really help you out and
+you know in one hour you'll get equivalent education that's like a year of college so again if you want to have
+access to that make sure to join the new Society it's the first link in the description when they are on the wide plane but more importantly Implement a
+feature where we can connect the blocks together just like in voice FL now one
+thing I really like about the new cursor agent is that it shows you the changes in a much more compact way so right now
+we're changing the blog. TSX so this is the component of the individual blogs right so these changes in the old cursor
+it was a lot more messy right now you can see these hidden lines so it's not showing the lines that are the same right it's only showing the changes and
+you can easily see what's happening like here it added relative right this is the Old Line This is the new line This is
+green so it's adding this entire constant you can easily see what's happening and review it much much faster
+and also like as you can see it's doing multiple files at once for this I mean I'm not going to review it because it's
+a completely new app obviously if we were already working on a code base like for your company or for yourself that
+already includes functional code then you have to review it you know don't obviously accept blindly but if you're
+building something new you can just click accept accept accept and in a few minutes you can have a working prototype
+so let's see this is our front end let's see how it works okay we have these four dots let's let's see how how the
+connection works okay so we get an error so let's just screenshot
+this always make sure to give cursor relevant context we get error when I try
+connecting two blocks I get this eror explain what it is in play L English
+then fix it also one more PRT is this is like so useful this I use this all the
+time it's like implement the fix in the simplest way possible the fewer lines of
+code the better this one like this two sentences I use all the time this really
+makes it a lot more concise and focused on the issue that actually matters so anyways uh the fix seems to be really
+simple get that text colors okay seems like it was Pro text colors let's see let's do SMS into
+email okay so this doesn't really work we we got this bug where the dots
+are separate so this is going to be weird to describe but basically dragging from these dots needs to create a line
+that we can put into the other block so let's describe that when the user clicks
+on one of the four do/ noes attached to
+each block it should should start creating a line that can be connected to
+a different block also make sure the blocks snap to the white plane better at
+any position now to be honest this prompt might not be the best because on average you want to describe just one
+thing you want to focus on one thing so what I like to do is I like to create like a file called Road map. MD is a
+markdown file and this is going to like you say like this is the main development Road mapap by the way this
+is a huge underrated use case of curser that only you guys watching until this
+point will listen up because most people don't watch until the end but you guys the ones that actually do will get a
+sweet reward because this is super untapped H is also amazing for just writing text like writing text in this
+AI tool actually feels like it can read your mind here's what I mean so this is the main development the road map I'm
+going to say the goal is to build a simple web app boom reads your mind that
+is a combination of voice FL and F so I can just press tab enter next line I'm going to say we will start by building a
+clean and simple front end that looks just like voice FL tap enter Boom the
+first step is to Ure we have the four main blogs from videoo and then we can
+say SMS what else do we have SMS voice voice email and then off and it also
+fixes your Errors By the way sported the error and just fix it and okay we can delete this the second step is to make
+sure we can actually drag these blocks into the canvas the first step is to
+make sure we can connect the blocks together this is what I mean so even if you're writing some text like a homework
+or essay or anything Google Docs does not have this I don't understand why
+like Google is absolutely trolling the AI Revolution but you can use cursor just for text editing and to have these
+predictions of what you are trying to say like this is underrated you know most people only use crystal for writing code but for writing text it's also
+amazing because it it literally feels like it can read your mind so you know this is a nice little tip that those of
+you who watch until this point get anyways let's accept these changes I'm just going to R do it because um you
+know I don't want to waste your guys time anyways let's see SMS and off so a
+nice colors let's try to connect it so the connection still doesn't work like it still doesn't create a new line maybe
+wait maybe if I click it yeah the lines don't really don't really work let me maybe provide a screenshot from voice
+flow this is actually pretty chaotic but whatever maybe let's see let's focus
+like this only this part when taking screenshots do not include parts that are not relevant the lines feature does
+not work at all I've attached a screenshot so you can see what what it
+should look like when clicking and dragging from those four points on the
+Block a line should appear that follows
+the user's cursor actually something I should have described earlier until the
+user clicks on a separate dot on a different block at which point the line
+remains on the canvas now one really good practice that you should do inide of cursor is to tag the relevant files
+so in this case it is the blogs file so I'm going to say make sure to update block make sure be block. DSX for some
+reason I cannot tag the file normally you can do like add and tag the file I think it's because this is a super new project and I didn't even close and
+reopen cursor so maybe that's the issue but just typing the name of the file also points it in the right direction oh
+and one more mistake that a lot of beginners make is that they like turn off their brain basically they just have
+have they read the prompt but then they like you know look around the room go to the toilet this is your opportunity to
+learn right like you can learn stuff you can go into the chat like you can switch from composer while the composer is
+still cooking go into chat and like develop an understanding because you will feel yourself every single day
+being more powerful I don't know how to describe it but this is the best thing about using AI tools every day you're
+faster every day you're increasing your power you're better at Chrome engineering you know how to use the tool faster you know what type of mistakes it
+makes like every single day you're increasing your competence and this compounds exponentially so the sooner
+you start the sooner you start paying off that technical debt and like you know you don't know per engineering you don't know anything about coding you
+learn the basics of python how to read code and suddenly like you can start doing things faster right like instead
+of putting thousand hours into programming and being able to build a full stack web app like was the case two
+3 years ago which was required now all you have to do is like put in 5 10 20 hours to learn the fundamental so that
+you don't get stuck at the most common errors and you can just work so much faster so do not shut off your brain use
+these tools to actually explain what's happening and develop an understanding because you might get stuck at something
+for a couple of hours but then the next day you have a fresh perspective and you're already better like this is the
+main benefit of using AI tools you're improving your competence and you're getting ahead of all the people that are not taking action so the sooner you jump
+in the sooner the compounding starts it's just like investing like you know compound interest the sooner you start
+in investing the sooner the compounding starts taking place it's the same with your skill set especially with AI tools
+because AI is changing so fast so okay let's accept this and let's switch to our front end what happened here okay
+let's reload that let's try SMS voice and let's see if the connection
+works so it creates a separate block which is at least an improvement oh okay
+so it tries to attach it like this the new block is basically attached hm H
+okay so yeah I know what to change so clicking on the four dots should not
+create a new block it should create a new line object that goes from that dot
+follows the user's cursor until the user clicks on a different Dot from another
+block make sure to create a new TSX component for the line and make it look
+like the canvas in slow and I probably should provide a screenshot again wait
+wait wait wait I saw something I swear I saw something oh look at this we have
+the lines so the lines is being somehow rendered but it's it's glitching with
+the blocks yeah okay this is a nice image let's use this as a
+reference so there is lots of lines so maybe let's only take this
+part look at the image to see how the lines should should be rendered now I
+can already see some of the comments being like Oh David why wouldn't I just use bolt right like why bother with
+cursor like in Bolt you can see the front end much faster it's easier to use yes bolt is easier to use and if you
+want to see like a quick you know mockup quick MVP in a matter of two three prompts in a matter of 5 10 minutes then
+yes bolt is better for that use case but to build an actually impressive app with
+you know functional back end the details fine-tuning it like making it really
+good you need a proper IDE and cursor is actually a fork of vs code which you know is one of the best IDs out there
+one of the best code editors out there meaning bolt like super simple like bolt
+is better if you want a quick 5 minute 10 minute demo of what the app can look like but if you want to actually make it
+work right you if you want to start an AI startup then cursor is definitely the way to go because you you can see the
+files you can make changes it's much more customizable it's much more high level now the barrier to entry is you
+know there but after watching this video and especially if you watch the advanced curs tutorial in the new Society you
+will already be ahead of 90% of people and hopefully you will break through that initial wall of friction that's
+holding so many of you back anyways k has proposed some changes actually a lot
+of changes so let's see because we have a new yeah we have a new line component over here let's go back to our front end
+and let's see what happens SMS voice now we still have this weird
+duplication Buck yeah we still have this weird duplication bug you know what I think there's a simple way to do it I
+will say change of plans instead of using the lines let's just make the
+blocks uh snap to each other when they are closed each block can snap to the
+four sides up down left left right only
+no other weird angles okay remove the part of our code that creates
+duplicate blocks when we are in the canvas the only way to create create a
+new block should be by clicking on the icons in the sidebar not on the canvas
+okay let's simplify this because I don't want to spend 3 hours on it most of you probably wouldn't watch a 5 hour video
+of me debugging errors but you know that's the reality of an AI startup sometimes you make progress insanely
+fast sometimes you get stuck on weird errors like this and yeah I could re re-record it I could you know pish it
+out and make it work on the first try but personally I don't think that's being honest to you guys because some of
+you will go try it and you will run into errors like oh my god it worked perfectly for David but I'm running use errors oh my God the lines the lines are
+here somehow yeah I don't know what's happening but you can see like this is what building AI is like sometimes you make amazing
+progress in 30 minutes you build something that will take you multiple days and sometimes you get stuck on
+things that you don't understand because you're using the AI tools now obviously as I said the long-term goal is to
+develop the understanding so you can actually understand what's happening at a technical level like here I could probably open up uh Chrome web dev tools
+and like really analyze like what is this right you know what is this where does it come from you can see like the
+and the computer Styles you could really like go in deep and analyze it once you learn the skills but the main lesson I'm
+trying to convey is that don't get discourage if you see erors like sometimes the simplest changes are the
+ones that you know take you multiple hours and then something that you dreaded like oh my God this is going to take me a day or two you just get it
+done in like 40 minutes like it really is unpredictable and this is the nature of working with AI so don't take the
+errors personally just push through try to learn like okay what's causing this error what are possible fix this you
+know do some CH GPT web searches by the way the new CH GPT web search so fast
+it's amazing so yeah let's see okay we simplified it and let's see if the
+blocks can snap together so obviously we remov the B okay wait wait okay so it
+works it's a bit sketchy but the snapping works so wait SMS into voice call into
+email yeah I still you know if I were to perfect this I would spend like multiple hours on the canvas so the dragging is
+good let's see okay this is nice I don't know the email email doesn't okay it's
+snapped so as you can see the snapping is not that polished yet but still we build this super fast while I was trying
+to explain how to use Cur so hopefully this inspires you to build something doesn't have to be you know something
+Advanced doesn't have to be world changing software just build a simple tool for yourself build something for
+your team for your clients start an a startup like now is the time it has never been easier to build custom
+software and the new curser agent is a beautiful example of that so hopefully this inspired you to build something if
+it did then go ahead and do it now with that being said hope you have a wonderful productive week and see you in
+the next video peace

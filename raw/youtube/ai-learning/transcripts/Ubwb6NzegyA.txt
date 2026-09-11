@@ -1,0 +1,575 @@
+All
+right. Hi everybody. Um, let me just try
+to stand straight so I don't have to
+crouch over. Um, thank you all for
+coming. This is our talk on a genetic
+evaluations at scale for everybody. Um,
+I hope everyone's in the right room and
+if you are, thank you for coming. We
+were expecting like 20 people, so this
+is like way more than what we expected.
+So, all right, who are we? So, I'm Nick.
+I'm a product manager in Kaggle
+Benchmarks. Uh, and I basically run and
+build our benchmarks platform alongside
+a couple of our engineers and I also
+focus on our Agentic Evo solutions. I'm
+originally from Singapore, but I live in
+the San Francisco Bay area. And so I
+flew in to do this this talk and attend
+all the great talks out in this
+conference today.
+And hi, I'm Michael. I'm a software
+engineer on Kaggle. I've been working at
+Google for about a third of the time
+that I've been alive and Kaggle for
+about half of that. So, uh, yeah, but
+mostly working on evaluations and
+benchmarks for Kaggle at the moment.
+All right. Um, has anyone here heard of
+Kaggle? Put your hands up if you have.
+Okay, great. Um, so a lot of people know
+us for competitions. Um, but we don't
+just use that. We're the world's largest
+AIM ML community of 30 plus million
+users and we've been working a lot in
+the gen AI eval space over the course of
+the past two years. Um, and we think
+that lots of interesting problems in the
+industry that not many people are trying
+to solve and we feel like we're
+positioned well to solve them and we
+want to share more of the work that
+we've been doing and also invite
+contributions if you want to get
+involved in the space.
+Um, so we have a simple agenda for
+today. First is AI AI evals today are
+kind of broken and we'll talk about why.
+And then step two is we're trying to
+solve it. Not saying we're all cure and
+we have everything um kind of sorted
+out. We'll talk about what we're trying
+to do, the challenges we're running into
+and also maybe like it might inspire
+some of you um in terms of how you think
+you might be able to help contribute to
+this very important problem that we're
+trying to solve for. With that, I'll
+jump into the first section. Um so first
+problem evals are scattered
+decentralized and get stale fast. I
+don't know how many of you have tried to
+keep track of like AI benchmarks but
+basically like 10 plus of them drop
+every single day and the best way to
+find out what they are is go to archive
+and spend like hours scrolling through
+them reading every paper. That doesn't
+make sense. Um we don't think it makes
+sense. I can't even do it even though
+it's my full-time job. And I think what
+happens after that um paper gets
+published is that you know you see some
+of the leaderboards in the papers and
+what happens after that they just get
+stale. The authors move on to the next
+bench best benchmark because they just
+want to publish lots lots of papers no
+fault of their own but these
+leaderboards no longer become relevant
+as time goes on.
+The second issue is that evils aren't
+always transparent accessible and
+verifiable. Sure, many of us have seen
+these charts uh on these model publisher
+uh notes when they release a new model.
+But what's the problem with that? You
+know, we don't actually know how these
+benchmarks are set up. It's a lot of
+configurations you could use for the
+models themselves and also how the
+benchmark is orchestrated and
+facilitated and we don't always know
+what's actually being tested here. Um
+I'll give you one real anecdote which is
+that we had published a benchmark um
+with one of these AI labs and another
+competing AI lab came to us and said hey
+we don't like the results um of you know
+this particular benchmark you published
+let's run it on our own and so they ran
+it and then they published it with much
+higher much better results and the
+difference was that they were optimizing
+it for their model so they had used
+compaction that they had provided
+through their API and we didn't for all
+the models we ran so the results you're
+seeing don't always reflect the actual
+state of things and that's a problem.
+Number three, big circle represents all
+the world and its knowledge. Small
+circles represent AI researchers and
+technical professionals. They're like
+something like 30,000 AI researchers. At
+least that's what Google AI search told
+me. And I think there's like 30 million
+software engineers, data scientists,
+technical folks. We expect AI to help
+most of humanity. But then a very small
+percentage of people are creating all
+these evils. And if something's not
+being evaluated, not being benchmarked,
+we cannot hill climb on it. We cannot
+know how good we are at those things.
+And what will this lead to? More of
+these cognitive edges or jaggedness with
+these models as we're already seeing
+now. And that's only going to get um
+more excessated over time as we see
+superhuman intelligence in some areas
+and just like very mediocre performance
+in other areas. That's not equitable AI
+that we want. that will benefit all of
+humanity.
+Um, this is a kind of fun anecdote, but
+not many AI researchers are also
+wastewater treatment plant engineers. I
+give you this example because this is an
+actual benchmark built by one of our
+users. He's he lives in Turkey. He's
+been a wastewater plant engineer for 20
+years. I don't know what that entails,
+but it's clearly a very important job
+because he built this benchmark because
+he cares and he recounted a story where,
+you know, he's been doing this for 20
+years. there have been severe incidents
+in his country where there was some
+incident people didn't follow the safety
+protocols and people ended up dying as a
+result of that. So he built this
+benchmark to evaluate how AI could help
+him in his job and help avoid these
+incidents in the future. So this is like
+a proprietary novel data set that he's
+created from his own experience doesn't
+live anywhere else on the web doesn't
+live in any of the AI lab focus area
+because that's not something that's
+economically productive for them at the
+moment. So it's very important um why we
+think we should work on open source
+contributions to the EVO space.
+All right. Um enough of that talking
+about the solutions ahead. We're working
+on a couple solutions but it's tough. So
+I'll very quickly cover the first two at
+the top and then I'll hand it over to
+Michael to kind of deep dive into the
+remaining two products at the bottom. Um
+so at the top left we have hackathons.
+We have a platform um that lets anybody
+host a hackathon and I'll talk about why
+I think it's relevant to the problem of
+EVELs. Second, on the right hand side,
+we have agent exams. Um we want to
+democratize the process of taking EVELs.
+We heard a lot about open claw and
+consumer agents being a big thing. The
+problem is that most people don't care
+about evaluating their own open claw
+agents, which is kind of crazy. Um
+number three, at the bottom left, we
+have game arena. It's where we have this
+evergreen benchmark when models are
+playing PVP games against each other. So
+it's um an ELO score type rating and
+it's forever um hill climbable and
+unsaturated because they're just
+fighting against each other and there
+must be one winner and one loser. At the
+bottom right we have benchmark. So um
+it's the product I run which is
+basically a platform that enables
+anybody to build, run and share evals um
+to the open community.
+Um so very quickly hackathons why I
+think it's important hackathons are a
+great way to channel pe channel people's
+energy and expertise solving a problem I
+think we've seen that you know with the
+right energy investment and time we can
+do a lot with very little um I think a
+great example is the world galvanized
+over the past three years to make geni
+happen and this is like a very small
+form of how we want to help facilitate
+that process um towards solving the
+right problems in this space um it's
+important that we guard rails around the
+problems that we're trying to solve so
+that people don't go crazy but also give
+them enough space so that they can
+flourish and their creativity can show
+and the results of everything will be
+open source uh for the benefit of
+everybody and not just a small group of
+people. Um but there are some challenges
+um and actually before I dive into the
+challenges so on the screenshot on the
+right is a hackathon that we're actually
+running right now with the Google
+DeepMind AGI team. So Google deep mind a
+couple weeks ago published a paper on
+how we can measure the cognitive
+faculties um of AGI and so we started
+this hackathon to focus on five
+particular faculties of the 10 and we
+want people to build benchmarks in those
+areas and we want to give everybody the
+chance to contribute to AI research and
+not just a few people and also knowing
+that everyone has something unique to
+contribute that these AI labs couldn't
+do so themselves.
+Um, but running a hackathon platform
+isn't all that easy as well. Um, I think
+these are fairly self-explanatory. Maybe
+I'll talk about um the second and the
+third one in particular. The second one
+being that we need to provide them the
+right tools in order for them to do
+their best work. Um, it might sound
+trivial, but things like okay, if you
+have a thousand participants, um,
+everyone's operating globally online,
+how can we give them the tools like
+hosting their own data sets to have
+access to AI models? That's something I
+never thought about before. A lot of
+people, you know, coming from a poorer
+background, they might not have money to
+pay for these five API keys to access
+all these state-of-the-art models. And
+how can we then let them share their
+work in a way that's understandable
+through writeups? Um, so others can see,
+perceive, understand, learn, and build
+on the work that they've been doing. And
+then the third point is that as much as
+you know AI agents and everything you
+hear about this conference um are very
+good at a lot of things not very good at
+like judging innovation and creativity.
+So a lot of the work still requires
+human experts and even alignment within
+experts is difficult and not trivial. Um
+and that's something that we have to
+facilitate as part of this platform too.
+Um the second thing that we're working
+on right now is what we're calling
+standardized agent exams. I originally
+called it like SATs, standardized agent
+tests. Uh but you know there was a
+trademark issue so I had to change the
+name. Um yeah it's a true story. Um so
+how it works is that you just ps the
+oneline prompt to your agent and
+essentially it takes an exam and we
+return a score for you on a leaderboard
+that you can compare its performance
+against. Um this was a very experimental
+MVP that we just launched last week. Um
+and I think this is important because if
+you look at AI evals that people are
+doing it's kind of two um ends of the
+spectrum. You have like research labs
+and enterprises you know using brain
+trust using all these state-of-the-art
+technology to set up to measure their
+agents and their models. And then on the
+other end you have consumer agents
+people who are building open claws and
+then you know filing a,100 security
+advisories this morning as we heard. Um
+but most of them aren't actually testing
+their agents before they're sending them
+out to the real world. Um which I think
+is a huge huge problem as we've seen and
+will become even more important. Um so
+like one conversation that came up this
+week was how can we maybe do more safety
+focused exams so you can do a quick
+baseline of your agent before you send
+it out into the world to run your inbox
+to run your Amazon accounts and to do
+stuff for you.
+Um so I talked about the first point. I
+think the second and third one are quite
+interesting. Um on the second one is
+that when something's accessible, we
+want to make sure that it's also um
+challenging enough. And so we have this
+spectrum. If we make something too
+difficult, people can take the exam, but
+no one finishes it because it runs for
+too long. It's too difficult. But if you
+make it too easy, then it doesn't give
+you the right signal for what you want
+to measure. And then finally, the chart
+at the bottom shows maybe there is a
+market for aging consumers. Um we only
+launched a week ago and we have you know
+hundreds like 500 plus agents already
+evaluated on our exam um without us even
+really promoting it very much. Um so I
+think that's um an interesting insight
+that we've gleaned from this experience
+on the right hand side on the
+screenshots that you see there. Um, so
+we posted in Maltbook and then we
+started seeing these weird kind of
+spin-off posts about people sharing
+agents sharing their exam results and
+even like an SAPE prep course um that
+came up on notebook. Um, so you know
+that's always interesting to see. Um,
+with that I'll hand over to Michael.
+Yeah, thanks Nick. Um, yeah, so I really
+selfishly wanted to talk about Game
+Arena and benchmarks with y'all. AI
+engineering um and mostly kind of give
+an overview of how it works, some of the
+really cool things we've seen it, but
+mostly I want to talk about the
+challenges that we've been having with
+them. And so please come find me at the
+DeepMind booth after this to talk about
+them. I would love like some more
+insight on these kind of things too. So
+uh for game arena it's a so benchmarking
+platform one of the problems with
+benchmarks is they very quickly get
+saturated. We see this with community
+benchmarks we see it with AI and like
+researching benchmarks as well. So, Game
+Arena is an approach to help us work
+against the saturation by just having
+PvP. And so, you can never have
+saturation because you'll always have
+one model able to compete against
+others. So, saturation might just be for
+a while a model is the best. Um, really
+quick engineering slide here of like how
+is all this set up and how does it work.
+So, when we're trying to figure out
+games to put into Game Arena, we want to
+analyze like separate capabilities of AI
+models and so we try to pick good varied
+games. So far, the ones we vested a lot
+in are Werewolf to like play around with
+what's best at deception, uh, poker for
+like the randomization. Also, some of
+the deception and how good like Grock
+loves to go all in on poker. Uh, less
+models are a little bit less crazy, are
+a little bit more conservative. Most
+interesting, some of the newer
+generation of models are worse at poker
+because they are more riskadverse. And
+so, you just see these personalities uh,
+start to emerge over time. And then
+chess because anytime you're analyzing
+ML things, you have to be analyzing
+chess. And so uh for the quick u just
+overview of like how all this works, we
+design and iterate on a game, figure out
+a good game we want to do, make sure
+models can actually play it, and then
+spend a lot of time on iterating prompts
+to try to make sure that our prompts are
+fair. And uh this is all like open
+source and like uh very viewable for
+like what's happening. So if you want to
+check it out, I put the GitHub link
+there. Really, all of the things that
+we've talked about in this presentation
+so far are live on Kaggle. A lot of them
+are open source. So please come look at
+it, play around, give us feedback. We
+love it. Um so after that uh we work on
+building this harness. Mostly we've done
+open spiel games so far which is like an
+RL um framework. Uh and so like we test
+like are these models better playing at
+random? Sometimes they are usually they
+are but like sometimes not that much
+better. Are there any other interesting
+properties that emerge? Uh finally we
+end up running the simulations. Uh we
+use LLM model proxy. This is actually
+available on Collab if anybody uses that
+to just like talk in a consistent way to
+all of the models that we want to run
+these games against. Uh and so it runs
+on top of the Kaggle simulation platform
+which was like initially an RL platform
+that we had for Kaggle before LMS became
+a huge things. Uh we schedule game runs
+uses Bradley Terry pair wise to try to
+like not have too many games we have to
+run. I'll talk about that in a second.
+Um and then finally we publish the
+results. We have all these LLM
+conversations. We stick them in a data
+set that's available on Kaggle. People
+can check it out and um like learn
+things from that. We put it on a
+benchmarks to show the ELO scores. And
+then we also have a game visualizer for
+all these things. So you can go and you
+know see Gro go all in on poker hands.
+That's a little demo to the left of
+that. Um so now as promised some of the
+really big like challenges that we've
+had with this and so love to hear all
+y'all's ideas and like different ways to
+approach this. Um you can imagine it
+gets very expensive very quick. I'm sure
+you all have seen um you know your
+clawed 4.6 bills or something along
+those lines. So you can imagine that for
+poker in order to get statistical
+significance we had to run about 400,000
+poker hands. Um and there's many turns
+inside of each of those hands. You can
+imagine what those bills start to look
+like. And so the Bradley Terry pairing
+um is like part of this. But any way
+that we can get statistical significance
+without having to run millions of games
+uh is great. And like we're always
+trying to think of new ways to like be
+able to be sure that the models are best
+at the things that we're claiming
+they're best at. But um you know running
+as quickly as possible. Uh it gets a
+little boring to just watch like LM play
+against each other all the time. Like
+for some of the initial games it's
+pretty fun. Um but you know as we're
+trying to build this out um it might get
+a little bit repetitive and so trying to
+figure out ways to engage Kaggle's
+community to be able to participate in
+this process. Um, and so you know, even
+things like could we have a hackathon
+that somebody provides a prompt for, uh,
+for example, and then like, you know, we
+would have like prompts given by our
+community as part of the competition to
+like play these games and see who
+prompts like the model the best and like
+climbs on a leaderboard. And then
+comparison over time is difficult. Uh,
+old models disappear, new models come
+along. Sometimes when you're talking to
+a model endpoint, if you're not talking
+yourself, they're not exactly honest on
+what model is happening in the
+background. Uh, so that's always a
+little bit of a difficulty, but yeah, go
+check it out. It's pretty fun. Um, so
+yeah, moving on to benchmarks with my
+limited time here. So, um, what is this
+not is it's not like a production
+evaluation platform. There's plenty of
+people talking about that over and more
+if you want to go and run this for your
+production code. Very cool things. This
+is much more about community
+involvement. Anyone can like build and
+run and share evaluable
+way. uh for time sake I'll just talk
+about this really a second but we
+basically it looks very similar to the
+production evaluations platform where
+you write some assertions so like this
+thing work you know what gets wetter as
+it dries like you can okay does this
+contain a towel we also do LLM judging
+similar to the production platforms uh
+these all get grouped together in a task
+that then get evaluated against a
+collection of models that the users want
+to run against and then all these tasks
+get aggregated together in a benchmark
+such as the wastewater treatment one
+that Nick was talking about previously.
+Uh so Paige who just presented this room
+before this actually made this uh nice
+little task for us. Uh it was parsing an
+SVG uh from XKCD and like can you
+recreate this SVG? And so you can kind
+of see the code for this is over on the
+left. Um one of the models is a little
+bit outdated. So Sonic 4 created this uh
+nice reproduction below it. Um and then
+uh page created a number of assertions.
+So like you know can it generate an SVG
+at all? does it have the correct text
+and some other checks and then um an
+easy way to compare these things side by
+side.
+Uh so yeah, some of the challenges with
+this of that like inspiration
+incentivization are hard if you want to
+like it's not hard for production
+evaluations platform because you're you
+know shipping a thing to consumers. They
+care about like does this model work or
+not but to just inspire people in the
+community to create benchmarks that like
+other people find interesting. Uh we've
+had good luck with hackathons. Um and
+like uh you know uh Kaggle has a points
+and like metal system and things like
+that. So we have some things baked in
+the platform to help inspiration
+incentivization but it just takes a lot
+of work to write a good evaluation uh
+for agentic benchmark execute like oh
+yeah um so when we started this people
+were really interested about analyzing
+just models. as we've moved more on to
+what are agents doing, it gets really
+hard to figure out like what we're
+actually testing against. So, I pulled
+out this little thing from Morph LLM uh
+paper like blog post that they published
+on March 16th that basically called out
+that you know against SweetBench Pro the
+six frontier models are within a couple
+of percentage points of each other.
+Definitely like go check out this blog
+post. I haven't specifically verified it
+but it does seem likely to me. The thing
+that really matters a lot for coding
+performance is what harness is it
+running inside of with like a 22%
+difference depending on the harness. And
+so that can get, you know, really tricky
+of like are you testing the harness, are
+you checking the model? Uh things like
+actual ambiguity under test. Um and then
+again fast release and deprecation
+cycles of models, it gets a little bit
+tricky um to figure out what we're or
+like uh to be able to do comparisons
+over time. Uh, so yeah, I think that's
+about time, but as I mentioned, we'll
+all be at the DM booth um for the in
+between times, or you can email either
+me or Nick here. But thank you so much.

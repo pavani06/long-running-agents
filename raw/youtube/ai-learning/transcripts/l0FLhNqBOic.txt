@@ -1,0 +1,567 @@
+[music]
+All right, first and foremost, thanks so
+much for being here. Um, it's been a
+great experience. You know, obviously
+chatting amongst uh other industry
+giants like Curser and Factory and and
+Dropm and I'm sure you guys are mostly
+here for them, but thanks for sticking
+around for this talk. My name is Voss.
+I'm the CEO of Veric Agents. We work
+with some of the largest companies on
+the planet transforming them from the
+inside out with uh AI and agents. Um and
+because of the nature of our work which
+is highly bespoke, we go very deep into
+our clients. It requires a lot of
+forward deployed engineering. And this
+conversation is around why that's so
+important, how we approach it at Veric
+uh and some of the internal tooling that
+we've created internally to allow us to
+scale that forward deployed motion
+without you know increasing headcount
+exponentially.
+And it's titled the next bottleneck
+because I fundamentally believe the next
+bottleneck is how deep can you go into a
+customer without scaling headcount uh
+exponentially. How can AI do that job
+for you?
+So as stated previously, AI is solving
+the execution of work. Um if you were to
+look back a couple years ago before uh
+you know thinking agents and reasoning
+agents were a widespread phenomenon uh
+and I had asked you how many of you have
+used AI to solve an endto-end task. the
+answer would be slim to none. But if I
+asked that same question to everyone
+today saying, "Has AI solved an
+endto-end task for you today?" I'm sure
+every single one of you would raise your
+hands. So clearly execution is no longer
+the core bottleneck. The models are
+improving to the point where
+intelligence is no longer the constraint
+and harnesses are being built in a way
+that allow us to use whether it's
+browser use tooling or API tooling uh
+with very robust MCPs that allow us to
+execute work uh with near perfection.
+The difference and the bottleneck that
+is still here is how much can you
+understand the business because every
+business, every consumer is different.
+Uh one sales department for a healthcare
+company for example operates completely
+differently than the sales department
+for a SAS company. And this is something
+that we see with our work today at Veric
+Agents. And if there are any business
+operators in the room, you know exactly
+how hard it is to wrangle uh the latest
+models to solve for your specific use
+cases. It's very difficult to extract
+that context from your you know
+employees and from your team and it's
+very difficult to feed that into an API
+call or a simple model call uh that
+doesn't break down very quickly. So the
+bottleneck is how much can you process
+re-engineer how much can you process
+understand and that's the job that we do
+here at Veric. So right now operations
+are fundamentally centered around the
+human. uh right now the work that you do
+today is done by humans whether it's on
+top of software or completely agnostic
+to software uh but in the future
+operations will be centered around AI
+and this means not only you know
+providing companies with AI tooling like
+a cursor cloud codeex like a factory
+like any of the other brilliant AI tools
+that you sure you're experiencing here
+today but also changing the operations
+and the processes themselves and
+fundamentally that is the role of a
+forward deployed engineer it's going
+into the company, understanding how
+things run today and reinvisioning what
+it could look like tomorrow. And we
+believe that is our job at Veric and why
+forward deployed engineering is such a
+core part of what we do.
+So a forward deployed agent, what does
+that really mean? So why do we need
+FTEEs? As stated previously, I'm not
+going to, you know, go into this too
+much. I'm sure you've been hearing a lot
+of this today. Uh FTEEs are responsible
+for a few different things. One is they
+map the way the humans are doing their
+work today. So how we do that at Veric
+is several forward deployed engineers
+will be embedded directly with a
+customer. You can imagine it's a
+enterprise company with thousands of
+employees but we'll scope it down to a
+single department. In a finance
+department for example we'll have them
+sit down with the process leads for AP
+AR card reconciliation banking billing
+FPNA etc. So interviewing every single
+one of these process leads to understand
+not only how are things running today
+but more importantly when things go
+wrong what happens. You know, a lot of
+the documentation that you have at
+companies is about the golden path and
+maybe an edge case or two, but this is
+still fundamentally not the reality
+where when we talk to customers, it's
+it's a lot of, you know, Sarah in AP
+handles the workflow today in this way,
+but when things go wrong, she actually
+sends it over to Chris, who then takes 4
+days of cycle time to handle
+reconciliations between a purchase order
+and an invoice. Those are the realities
+that are one unique to every single
+company. the way that they handle things
+is different from one company to the
+next and two the real bottleneck for why
+AI can't just run a muck and handle
+endto-end processes without the
+handholding that you see today in the
+enterprise. Um so this is the first
+section which is mapping how humans do
+the work. The second is really
+re-engineering the process around AI. So
+what does this mean? You know, there's a
+lot of talk being given today in terms
+of slapping AI onto broken processes,
+and that's fundamentally why you don't
+see the ROI across the industry today.
+There's a lot of, you know,
+semi-outdated but still very relevant
+statistics like the MIT review saying
+that 95% of generative AI pilots fail to
+reach production or the other statistic
+which was 87% very similar thing that
+most AI pilots don't produce measurable
+ROI or they don't ship to production
+period. And the reason for that is a lot
+of the time AI is being slapped on top
+of broken processes in a way that the AI
+doesn't actually understand how to do
+things. Um you see that this at the
+simplest level with coding where as an
+engineer it's very difficult even with
+goal loops and the the latest technology
+there uh to just say go and solve this
+for me and have it run off and refactor
+entire code bases without some degree of
+human input. Now if you extrapolate that
+to a business context, these are very
+non-technical operators in finance,
+sales, marketing, procurement,
+logistics, uh etc. So giving them this
+AI tooling will not allow them to
+receive the same ROI that a software
+engineer might be able to to uh produce
+or create. Um so what this means is you
+need for deployed engineers to help them
+re-engineer their current process around
+AI. it needs to be not too different to
+where they don't understand, you know,
+how to operate the system. For example,
+if they're used to an 11step workflow
+and you come in and change that with a
+one-step, they might be taking it back,
+the adoption rates might suffer, etc. As
+was alluded to in previous
+presentations. Um, but at the same time,
+it needs to be different enough to where
+you're actually capturing the ROI.
+Meaning, you do say, "All right, four
+out of these eight steps will be handled
+completely autonomously. The other three
+will be handled with some human in the
+loop intervention and one step of that
+process will be handled by a human
+period either because the risk is too
+high or because you know it's it's not
+unique enough for an agent to produce
+measurable value in that specific step
+of the process. So that's the second
+major step of a forward deployed
+engineer. It's why we need them. And
+third and finally, and this is what I
+want to uh bring one of my heads of
+engineering to discuss in just a moment
+is actually deploying these agents on
+top of existing systems. So
+fundamentally at Veric, we believe that
+the AI wave left a lot of enterprise
+behind. A lot of enterprises married to
+their systems of record. Not everybody,
+but most of them are. Uh they've
+migrated to Netswuite, they've migrated
+to Dynamics, they migrated to SAP and
+Salesforce. And when you pitch them AI
+solutions that live completely desperate
+from these systems, uh you're ignoring
+the reality of enterprise. One of the
+quotes from our clients said that they
+spent $5 million and 5 years migrating
+to uh Netswuite. That's a real quote. So
+if you're telling them, hey, I have this
+fancy AI tooling, but by the way, you
+have to migrate off of Netswuite,
+they're going to tell you to get out.
+They don't have any appetite for that.
+So what we believe in Veric believe in
+at Veric is we'll build the agents on
+top of your systems of record and the
+way that we do that is quite uh unique.
+We have our own Veric OS platform that
+allows us to spin up agents, monitor
+them uh etc with the full governance and
+evalu baked in but at the same time it
+lives on top of your systems of record.
+So if you are on a Salesforce or a
+Netswuite or a Dynamics or an SAP, we
+will not ask you to migrate off of that.
+And that is where enterprise needs AI
+the most uh because they're too large to
+move up.
+So why build the FD agent in the first
+place? As mentioned previously, I think
+everyone is saying that 2026 and onwards
+is the year of the forward deployed
+engineer. And to some extent, we believe
+that's completely correct. There has
+never been more of a need to go deep
+into customers and understand their
+business use cases and help them adopt
+the latest in AI tooling. But at the
+same time, we realize that it's actually
+very difficult to find forward deployed
+engineers who are both the technical
+like top 1% who are really able to
+understand and speak AI uh 10,000 times
+better than the average, you know,
+enterprise customer, but also have the
+communication and human skills needed to
+be, you know, as alluded to previously,
+very high IQ, high EQ, extracting the
+information from the customer and
+meeting them where they are in real
+time. You know, typically you'll have
+consultants that you then train on the
+technical side or engineers that you
+then kind of train on the softskll side,
+but it's very hard to find people who
+are, you know, the best of both. Um, so
+the FD agent is our effort to bolster
+the existing forward deployed engineers
+that we do have. So for example,
+allowing one forward deployed engineer
+or forward deployed strategist to manage
+and maintain several client
+communications. I know that most of the
+folks in the room are technical, but
+it's very easy to misunderstand how
+deeply involved you have to be with the
+client. They're emailing you 24/7.
+They're sending you hundreds of pages of
+documentation and every single process
+lead will pull you in a different
+direction. AP relies on AR, relies on
+reconciliation, relies on FPNA, and they
+each have their own version of what they
+think is the most important. So being
+able to manage that context and being
+able to serve them all equally while
+also not hiring 50 people to do so is
+fundamentally very important and it's
+how we at Veric avoid being you know a
+traditional consultancy while also
+offering that handheld handholding and
+like very human experience human-
+centered approach of consulting that we
+think we do think is very valuable. Um
+so in the past in 2024 and around that
+time execution work was still the
+bottleneck. This was before the models
+gain the intelligence and the harnesses
+gain the integration abilities that
+allowed them to move past the execution
+bottleneck. Um, now the AI models are
+trained to solve the execution of
+knowledge work. I will go as so far as
+to say that knowledge work is almost
+entirely solved. The difference is and
+what we're realizing now is that
+designing how work gets completed around
+AI is the next bottleneck. It's the
+ability to go deep within the customer,
+redesign their workflows, deciding what
+should be automated versus shouldn't,
+and building this in a robust and
+scalable way on a platform that moves
+the needle for our clients. You know, as
+opposed to doing a point solution which
+promises to transform just one part of
+your sales process, for example, uh
+maybe it's prospecting. Uh that ROI
+might deliver 5 to 10% ROI for you as a
+sales function. Same thing on finance.
+If you're just doing AP and no other
+part of your department, you might have
+a 5 10% ROI. But at Veric, we deliver
+departmentwide transformations,
+holistically transforming the entire
+department at a time. And that's how we
+get the ROI that we see for our clients,
+which is 25%, 50%, 75%.
+Truly giving them back, you know, the
+three things, which is revenue uplift,
+cost savings, and risk mitigation, as
+was so eloquently stated previously. and
+an AI FDE is trained to re-engineer
+these necessary tasks around AI. So I
+want to invite my head of engineering uh
+JD Puit to come up and and share some
+more of the deep technical stuff on our
+FD agent uh because I haven't written a
+line of production code in a while. So
+here's JD.
+Okay, thanks.
+And maybe if we can get his mic going.
+Great. Thank you. Um thanks Voss. So,
+uh, this project to give tools to our
+FDE, um, basically started with me. I
+lead the platform team and we're over on
+one side of the office. We're hanging
+out. We're chilling. We're having a
+great time. Uh, Codeex, Claude, we're
+all hanging out. And then I look over at
+the FD side of the room. They look
+stressed. They are sleepd deprived.
+They're extremely miserable. They've got
+clients emailing them 24/7. I'm like,
+"Oh my god, you guys haven't slept at
+all." So, I go and I start talking to
+them and I'm like, "Okay, what is your
+guys process like right now? How are you
+actually engaging with these clients?"
+like well we you know upload about 150
+pages of documentation to claude and
+then we prompt claude and then we wait
+like 2 minutes and then we get analysis
+and then it's verbose and incorrect and
+it kind of sucks and I was like all
+right we got to fix this. So we have
+been working on an FD agent which is the
+codeex for our FDS basically and there's
+three stages of it um the last of which
+is certainly still in in development.
+The first is what we call the
+engagement. The the first function is
+the is the engagement agent. And
+essentially this is a better version of
+claude built just for our FDES. It's
+their assistant. They have it pulls in
+their granola notes. It synthesizes
+documentation. It reads PowerPoint
+slides. It allows them to query and say
+who's responsible for this process. Uh I
+got an email that mentioned Sarah
+spelled you know this way. And I have a
+you know Slack message with different
+way. Are these the same people? because
+these are the questions that our FDES
+are asking all day every day and they
+waste a ton of time just waiting on on
+claw to respond. So the engagement agent
+is their way of it's their it's their
+assistant to build um to build the
+workflow. Then there's the workflow
+agent and what we did is we took our
+engagement agent and we embedded it
+inside of our platform so that when our
+FTEEs go and they actually build the
+workflow, the FD agent is right there
+saying, "Oh, you forgot about this edge
+case. um you should probably ask me uh
+you know who owns this process so I make
+sure the email goes to the right place
+and it lives it's basically I can talk
+about more of the details on the next
+slide but
+whoops
+it lives uh it lives inside of our
+inside of our platform it works next to
+claude or codeex whatever model you're
+using um and make sure that the workflow
+that the FD is constructing is actually
+uh it correctly shadows the process that
+we want to engineer. And then there's
+the final stage which we're not at yet
+which is a um an autonomous assistant
+for FTEEs where it's receiving emails
+from clients who say actually I want to
+change you know where my QC report goes
+to. I want to you know change it to a
+different email etc. and our agent is
+able to process that information, query
+the understanding of the company that we
+currently have, ship an autonomous
+change to the workflow on top of our
+platform, and then our FTE never has to
+get involved, saving their time for the
+much more highv value work of sitting
+down, interviewing with the clients,
+really understanding what their process
+is, um, and not dealing with all of the
+small little minutia that anyone who has
+been in FTE can tell you, uh, takes up a
+lot of their time.
+So, how do we how do we build this? Um,
+the first thing is we need some single
+source of truth, some representation of
+a company's uh functioning. There's a
+lot of different ways to do this. If you
+were at the booths downstairs this
+morning, there was, you know, five
+companies trying to sell you a graph DB
+and you can just use Postgress, whatever
+it is. Yes, I'm looking at you. Um,
+[clears throat] doesn't really matter
+what you use, but the point is we use a
+dependency graph. Most of these
+workflows inside of enterprise are
+remarkably linear. they just have a lot
+of cycles in them. But at the at the end
+of the day, the process owners want
+things to be as dependency driven as
+possible. They don't want person C in
+the process to have to deal with
+something before A and B have approved
+it. So a dependency graph is a very nice
+representation of this.
+Um then we do our own model training. Um
+and there's really two parts to this
+problem that we're trying to solve. The
+first is given extracted context for the
+FTE do we get a good highquality output
+and the answer is with claude honestly
+no which is kind of surprising but the
+really and I'm sure you guys have
+experienced this when you are trying to
+do a long analysis frontier models are
+extremely verbose and they lack the um
+you know I would say the
+I only started believing in consultants
+once we started hiring them at Veric.
+And the reason is they're so good at
+figuring out what is the part of the
+detail the client actually cares about
+and what is the part that can get
+glossed over. And Frontier models have
+absolutely no concept of this. So we
+started post-training our own models on
+top of on top of open source models.
+We're a fan of Kimmy K26, but a lot of
+these would do different a lot of these
+would do fine to really get that nice
+balance between detailed and uh clarity
+that the frontier models often often
+lack. So that's that's a bit about
+writing a good normalized process flow
+from extracted context. But there's the
+second half of the challenge which is
+getting good at traversing at extracting
+the right context. So we might have this
+huge knowledge graph but it's remarkably
+difficult to traverse this knowledge
+graph in a reliable way that finds us
+the right context. So once we have our
+post-trained model, we create an RL
+environment where we have exposed our
+own custom tools specifically designed
+to traverse our knowledge graph. These
+tools are things like make sure person A
+and person B are actually the same
+person because a lot of you know there's
+a lot of mics in every company we work
+with and Claude gets very confused by
+this. Um, a second thing might be
+something like um
+uh identifying identifying redundancy
+cycles or uh like violations of your DAG
+inside of your knowledge graph. And so
+in our RL environment, we train really
+good tools to do a good job of
+traversing this graph to extract the
+right context. So that's how we solve
+the two problems, writing good analysis
+from the context and extracting the
+correct context in the first place. And
+then the third part which we are um
+still building towards is an agent that
+operates autonomously um to do the kind
+of uh workflow management on the small
+things that the FD doesn't have to waste
+their time on. I think that's all I've
+got. I'll hand it back over to Voss.
+Thanks JD.
+So where does that leave us? And I want
+to share a little bit more about Veric.
+Uh because obviously we're not the
+cursor anthropic or opening eye of the
+world. Um, when we started this company,
+we fundamentally believed that the way
+the puck was moving, you had to get
+ahead of it and you had to start
+learning how a business runs and
+building with that in mind. I think a
+lot of Silicon Valley starts to go
+product product, but what we're building
+for cannot be solved for with just a
+product. We start off every single
+engagement with an audit where we
+actually send our forward to put
+engineers, strategists into a company to
+learn how it works from the inside out.
+That is what I believe is the biggest
+bottleneck. And after that we go into
+implementation. We build agents on top
+of our platform. And yes, you do still
+need all the bells and whistles and the
+fancy technology that allows us to, you
+know, really automate work uh in the
+future. But again, the bottleneck is the
+forward deployed motion, which is why we
+are so bullish here at Veric on our AI
+FDE. Um, and if you're interested in
+learning more about it or if you're
+interested in joining, uh, one of the
+fastest growing startups in Silicon
+Valley, working with some of the largest
+clients on the planet, uh, come find us
+after and we'll have a chat because we
+are aggressively hiring. Um, and if you
+are a company looking to understand how
+AI can really move the needle for you
+internally instead of just slapping a
+frontier model on top of everything and
+watching it break in production, come
+find me after as well. Thank you all so
+much for the time. I really appreciate
+it and uh, cheers.
+[applause]
+[music]

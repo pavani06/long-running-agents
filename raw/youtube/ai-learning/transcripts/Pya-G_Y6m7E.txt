@@ -1,0 +1,488 @@
+My guest today is Carlo Vander who is coming to us from the Netherlands. Carlo has an incredible ground in mechanical
+engineering. He's worked in the automotive industry. He's been with companies like Seammens and TomTom. He
+uh is the managing director of the Einhovven AI Institute I AI system
+institute uh at Idaho University of Technology. He's a tremendous expert on
+this thing you may have heard of called artificial intelligence. And so today we want to explore his thoughts, his
+perspectives on this transformative exponential technology, its impact on
+our lives, on our industries, our organizations, and our future. Carlo,
+thank you so much for joining me. My pleasure. My pleasure. So, Carlo, um I wanted to explore a
+variety of facets of the diamond um that there's so many different aspects of
+this transformational technology and people like you have and this is sort of part of the Singularity University
+ethos. You know, we've all been talking about this artificial intelligence thing for quite some time now. Now, it is a
+little bit of just sort of a basket of technologies. There's no thing you can touch that's actually artificial
+intelligence. But I did want to sort of see what that arc has been in your life
+and in your career and then talk about some of the possible futures with this exponential technology and how uh it can
+affect us and some of the ways that we can try to build a more positive future. So take me back to when Carlo was a
+child. What were some of your early fascinations? Oh, that's one my big hobby is music. It
+still is, but that didn't really turn out to to be a big career. The other
+thing is that I I always played with technology, you know, when when Lego came with the technical Lego that
+actually that's an important point. So, we have I think I owe it to the Danish that I grew into technology. So, that
+that's probably somewhere where it started and my interest was raised and then at a certain moment I wanted to be
+a doctor but uh I was too impatient I think to be a house doctor. So I I shifted that to my sisters. She's she's
+much better in that and I I started studying technology. Yeah. So um that uh
+and and don't regret it because I I really think and we will come back to that one that technology is the main
+thing that has to save our future and uh so I'm I'm I'm glad I landed there.
+And so tell us a little bit about the ways that then that launched you into
+your career and you work you did a lot of work in the transportation industry. Um you were working with companies like
+TomTom which was one of the sort of precursor precursors to things like Google Maps. What was that arc for
+you? Yeah the thing I I indeed always worked in the automotive industry but also I
+like to be mobile. I I like any form of transport. Be it on a bike, on a boat, on a train or a plane, but whatever. I
+like I like to get around. That that's another thing I think. But but for some reason, I also like to work in this very
+very dynamic industry where the margins are very thin and uh very sharp on the
+edge innovation constantly and also mobility is a real industry of a real
+example of an industry that's also in the midst of disrup disruption continuously. So there's never a boring
+moment. So yeah, I I worked in the automotive industry and it's about 15 years ago when the University of Anto
+asked me to come and join them to also coordinate all the mobility research and actually since then I got a little bit
+of broader perspective. I was working at TomTom and I thought oh like let's help these people at university for one or
+two years and that's 15 years ago. So uh and I I never want to not work at a
+university again. So uh and the 7 years ago they asked me also to set up this AI institute uh which brought me there's a
+little bit there's quite a bit of overlap between mobility and AI but uh yeah that's actually my main uh my main activity now.
+So why is mobility sort of a a good test case for for AI innovation? What where
+what is that intersection? I think is that this is the huge calculation power of of cars which is
+often underestimated. There are huge computers on wheels. If you also see
+there's about 100 million lines of software code in an average vehicle nowadays and I talked to Mercedes of to
+Mercedes engineer once and he said yeah 80% of the software I haven't got a clue what what it does there but we just
+leave it there. uh don't know if that's really true but it's an enormous complex machine and as I said with very low
+margins so you always have to be creative how to make it cheaper and all this innovation also started producing
+data so actually these data producing kind of computers on wheels
+yeah they they are in the forefront of a lot of this intelligence what is happening and it's a big societal thing
+as well where a lot of accidents happens and a lot of pollution happens so there's a lot of things to improve the mobility as well so you have the
+technology possibilities and you have to need to improve and that's why mobility is very very often put forward as an
+example of of how AI should should improve that.
+So when we talk about artificial intelligence and this sort of basket of
+technologies you've got a new student that is approaching this arena. How do you explain to them think about this
+basket of technologies and what goes into it? It's it's you know we obviously
+chat JBT3.5 was this inflection point for so many people to try to understand
+well oh wait a minute that's one use case for it the large language models and generative AI but you know Ray
+Kurtzwhile and Peter deandis we've been talking about since the beginning of uh SU and even before about potential for
+artificial intelligence for machine learning and those algorithms to go through the hockey stick curve of
+exponentials and now here today we are. But how do you explain that to somebody
+that's coming new into the arena? Yeah. What I often have to explain is
+what AI is exactly about because there's a lot of m misunderstanding as well that a lot of people talk about AI and they
+actually mean it's just the next level of automation in a lot of cases. The specific difference between a AI is that
+it's actually a a goal oriented adaptive behavior which is the official most used
+definition of intelligence itself. But when machines start doing that that they have a goal and they adapt their
+behavior in order to achieve a goal. That's something that that used to be only human. So the classical machine was
+just you had a machine you put a program on it and then you gave it an input and an output came out. That's a classical
+automation. Now you have a machine and you give it an input but you also give it an output and you leave it to the
+machine to do the program and it will self adapt. So the program will deliver an output and when it differs from the
+output that comes in it will adapt itself in order to achieve this output and that leads to machines that we do
+not exactly know how they come to a certain result but it makes makes actually the program itself and that's a
+little bit a scary thing and that's also what make these AI machines look like how we as humans behave and that's
+that's an enormous new amount of technology that that by many is under underestimated
+So, how do you think about some of the different threads that the technology is following? I mean, one of the things
+that that people often miss is well, you've probably been using a lot of these algorithms that are sort of in
+that basket, you know, goal- driven adaptive behavior, everything from Google searches to, you know, sort of
+baked into your productivity applications. you've been using these algorithms for quite some time, but people tend to think a lot about chat
+bots nowadays and that sort of thing because it's just this big leap forward in their minds. So, do you have sort of
+bins of the technology that you point to so that people can understand just what the different use cases are?
+Yeah, the what used to be the self-driving car was always the example of because driving is something that is
+really very close to what we are doing and um and it's also also one of the big overlaps between mobility and um and AI
+of course but that's one of of the examples where you also can very clearly say where this self- thinking machine
+could go wrong if you say I want to go home as fast as possible and then the
+car concludes that the quickest way is over through a playyard full ch children, you know, that's not the
+answer that we want from this uh this kind of machines. So, we have to already give it a certain limits to what it's
+allowed to do. And just giving it the traffic limits is also not 100% the solution because if you 100% stick to
+the rules in traffic, you probably also will end up with some kind of deadlock situation. We tend to flexibly interpret
+the rules in order to survive traffic and these cars should also be learned how to do that. So most of these as
+aspects of the good and the bad that AI can do are easy explainable with these self-driving machines. But there are
+more examples of for instance the humanoid robots ever since Boston.
+Yeah. So yeah they kind of were the first one that also confronted us. What
+if these humanoid robots these humanlike robots start involving with our business? Uh do we have feelings for
+these robots? all these kind of things and these things you can also really actually project on these machines. So
+bots and dynamics did it but now you have an explosion of the amount of humanoids and it's coming so quick that
+this oh yeah we have to think how we going to relate with these machines
+should also be done quite quick because it's coming quicker than than than regulation can follow and that's that's
+another difficult point that we have to discuss with all these technology students. So you pointed to a number of
+fascinating dynamics to me. Um the first is that the talk about these algorithms
+but in many cases it's that exponential but it's this it's paired with other
+exponentials. So so an autonomous car for instance you have to have LAR you know you've got to be able to have some
+type of communications capacity. You've got this there's all these other technologies that are part of that
+basket. And it's the same thing with a robot. If you just have this animate object, but it it can't use these
+algorithms to be able to make decisions in the physical world. Yeah. Then it's like a self-driving car that can't go anywhere.
+Yeah, that's true. And there are several technologies at this moment actually
+Yeah. levering each other etc. So that that we come to this perfect storm. One other important one that's also being
+developed exponentially at this moment is for instance the number of sensors. If you if you look what a camera used to
+cost and how cheap little cameras we now have, it's not only that one. If you look again for a car, the number of
+sensors in a car, the data is it's producing is exploding. And if you then
+look at a traditional system law that says if if you just look at a system, it
+is something that that you give an assignment, it does something and then you have a sensor to see what it does.
+And if that actually is somehow related to what you given as an assignment, it will steer itself and it will s serve a
+certain actuator and you keep on as a cyber physical system is constantly seeing what it's doing. That's two
+important one. That's the actuator on the one side and that's the sensor on the other side that controls what you're doing. Now the quality of both is at
+this moment improving but that of actuators is kind of a linear improvement. our uh our everything our
+electric motors and all the kind of stuff gets better and better but that's kind of a linear thing. Sense of are
+exploding exponentially at this moment and that makes it so much better to have also with this exponential growth in uh
+machine learning and and with calculation power that's such a good combination to make systems better
+because to make a system better the centering is much more important than the actuation. For instance, if your car
+your steer is not 100% doing what you want it to do because the actuator is not that good, then if you see that you
+can always correct or with your brakes or by steering etc. If your sensors are not good, so if you close your eyes and
+try to drive that you can have very good actuators but you're going to have an accident sooner or later. So the fact
+that we this is also going for even for organizations. Make sure that the data you get to steer your organization, what
+what moves people, how people are performing etc. So the input of that is much better than how that you control
+your company etc. As long as you see what's happening, get the sensors right. So this access to sensors very important
+for any smart system. But the good thing is that sensors are also at this moment exponentially improving.
+So I think that's that's a great analogy because uh organizational decision makers you know people in government got
+to have the information so you have to have the sensors you have to have the algorithms that is you have to be able to process it and be able to understand
+how you make decisions and then you've got to take action and it's this constant cycle
+and uh you've got examples with uh auto autonomous cars where all those pieces
+have to work in concert and if one of them isn't working well then you're Yeah. the car either doesn't go anywhere
+or it's going to run into a wall. Yeah. And as long as you know that that's happening, you can use either
+that actuator or another actuator in in order to take action. And for companies, the change with with it used to be is
+that the actuator say the tough bus or whatever that could really steal and make clear as that was very important in
+the old school. So, but if you see I see this really moving now also with bit of
+experience in in these in in in trying to steer companies. You see actually that you don't need the tough very clear
+decision-making guy or girl or whoever. You you need actually the one that has
+the good information that can listen to the information and really sees what's going on. That's much more important
+than being very directive etc. That's really a change that you see and this is going to be more important with AI
+coming in. So I want to talk a little bit about the pace that you were mentioning the speed because I think you maybe Greg
+Kurtzswwell would have said that he anticipated the this inflection point but most people would say that the pace
+and the scale of the development of these technologies and their adoption
+and the continuous process of innovation is moving at blinding speed. Normally I
+would say well let's start to talk about possible futures and let's look way down the road 20 30 years
+even two or three years down the road yeah the fog is still pretty thick right because it's moving so quickly so how do
+you think about the impact and the opportunity on our lives and our organizations even in just a two to
+threeyear time frame what are some of the major elements you think we need to be tracking on because the pace is
+moving so rapidly and what are some of the ways that decision makers should start to think about how they can get
+their arms around these technologies to be able to leverage them and to get the best advantage from them.
+Yeah, that's that's an important question and indeed you some things move much faster than we think and the other
+ones don't come by far as fast as we hoped them to come often because it's
+it's a solution looking for a problem. There are a lot of lot of technology developments that actually do not really
+solve a problem and that that's also often forgotten. But yeah, there there are some things changing that you should
+embrace mainly actually for decision makers because what you now see is that that all this technology not only
+improves your productivity which they love obviously but the other thing is also that can also improve the quality
+of your organization and it's it's both things. It's this this somewhat cliche saying is
+that this AI is not going to replace people which I really do not 100% think but the people that work with AI will be
+placing the people that do not work with AI because you're going to lose on both productivity and quality. The thing is
+why every now and then we are very proud to see AI making mistakes because it does still does making mistakes and we
+have often we are so impressed that we give it a little bit too much credit and do not check what it makes. But what you
+see now happening at this moment in this productivity especially also with this large language models it's something that I also see a parallel with the work
+of my wife who is a a teacher in Dutch. So she's in school and one and a half
+year ago when this chy day came up she all of a sudden saw the most stupid pupils came up with the most fantastic
+essay. So that is who what's happening here you know and they were smart enough
+at a certain moment to also hide some language errors just to to to try to fool her but she got her going. and and
+we had a bit of discussion then because she said from okay well what is this my my pupils probably in due course will
+not know how to write a decent essay if they leave it to chat CPT we should
+forbid that I said say yeah but that is good for all of my students they have an internship and they have have for 9
+months or something and they have to use two months to write the report now with chat GPT they make that two weeks so
+they have one and a half month more to do research where they have much more added value so embrace it We didn't
+really immediately agreed on that point where we normally agreed immediately on everything, you know. Uh but anyway,
+what what you see already changing in her prof in her teachership is that
+they're now starting to embrace it because you see that the intelligence is moving to the prompt. You know, the
+question that you ask GGT and you will recognize that you asked it something and it comes back with something. Oh,
+no, that's not what I mean. and you give some and please say a little bit more about that and that and that etc. at the
+sermon there's more information in the prompt and it's longer prompt than that that the essay will be but that's where
+your intelligence at this moment is and now they say okay use JGBT but share the prompt with me and also check what it is
+and agree with what you see so that it's your piece again and this is a kind of cooperation that all the decision makers
+will have to work towards so embrace the technology
+use it as also a sparing partner to get your thoughts running and this goes like that. Be careful because you can really
+make stupid mistakes. You can upload your entire software code to chat GPT so that Microsoft can also read with it.
+Think about this kind of stuff but then try to stimulate the use of it because it will make you much more productive.
+Absolutely. I mean you know that my focus um with Singularity is as fellow
+for transformation I focus a lot on issues like the future of work and the future of learning. And when it comes to the future of learning, I mean, we
+definitely have the opportunity to treat this as a the inflection point where we can question, well, maybe what we were
+doing was not exactly the right thing in education, like teaching to the test and that sort of thing. Maybe we really
+should be just teaching them to think and they can be using these tools to help them with the thinking process.
+Now, when it comes to the work environment, I yes, there is always an
+opportunity. there's a lot of opportunity to leverage the tools, but people still do freak out about the
+potential for worker replacement. Uh Jensen Wong, the CEO of Nvidia, has very
+famously said that you're going to be hiring AI employees. Mark Beni off has
+said that he's never going to hire another programmer because they're all going to be AI programmers.
+So this there's underlying issues of concerns about job replacement and trust
+that even these technologies you know we rely on them. Do you really want an AI co-worker
+that has still these potential flaws in the technology? So how do you help decision makers and organizations to be
+thinking about the potential for job displacement and how do you think about you talked about the relationship with
+robots but you you know people have are exploring well what do we mean by the relationship with these AI technologies
+in our everyday lives and our work. Yeah. Yeah. If if you play around with all these tools and and it's what
+especially in the last couple of months I'm doing more and more because there's so much tooling coming up so fast at
+this moment to make your powerpoints to make pictures to make small movies to
+everything. So there's so much to do the deep research etc. I'm playing around a lot with them and then you get already a
+sense on how you have this relation because I do thank my my chat GPT
+outcome or whatever all nicely and I always say please as well kind of a relation that's by the way anyhow good
+to do because they're going to reme remember you in 10 20 years from now this guy said please so we'll we'll keep
+him alive I don't know you never know but anyhow I do sense a kind of relation already with this problem solver that I
+every now and then use And I guess this is something that's anyhow coming our
+way at this moment. But if you look at the job replacement, this isn't something new. We always had machines to
+replace our jobs and it always came with kind of a bit of friction. The lites who
+attacked the weaving machines in Manchester 200 years ago because they didn't want them to take their jobs.
+They had some other concerns that then they might have a point at some point that it make the richer richer, etc. But
+nobody in Manchester now wants to go back to the handw weaving. Let's agree on that one. And I I think that at least
+for the next years to come, maybe decades to come. What I will what I see
+is very similar to what automation already did for us. It's that it taking
+away quite a bit of the nasty jobs and some even nastier jobs came maybe for
+that because of automation. Now we have a lot of these order pickers and and and always
+these these nastier jobs because of the internet came up but it's especially there where we can also do a lot of
+automation and I tend to make a distinction to to all the jobs that are just simply applying rules which for
+instance a translator also does he just has to translate a piece into another language that's just following standard
+language rules and sorry that's not really where we as humans in the future will add value so all the coloring
+inside the lines the following the written rules etc leave, please leave that to the machines. In most cases,
+we're talking about a job where there's an enormous shortage. So, let's not complain too much. But when you say
+programmers, 10 years ago, everybody said here, von, we should we need more programmers. That's the job of the
+future. We should teach our children to how to program. Now, that that's
+programming is just simply applying rules. So, that's something that you now see very quickly being taken over. And
+I'm not so worried about that one. We always found new jobs. And although it
+comes very fast and a little bit on unexpected areas, content production, all this kind of stuff, the thing is to
+me to my point of view is just a next step in moving up in muscle pyramid where we come to the somewhat vague
+jobs. I always make the difference the the the comparison with a farmer 200 years ago when we all were farmers.
+Have you would have would would you have told the farmer back then that now only one or two% of us is farmers and they
+make 10 times better and much more food than they did. They would have concluded that either they don't have to work
+anymore for the food or we all work one hour etc and we we get the food done and then explain to a farmer 200 years ago
+what kind of jobs we are doing now that there's yoga teachers and development
+coaches and account managers and all this kind of stuff that's not explainable to the people in front
+because they were just on the bottom of mass py making food that's the sense
+that we are just moving up mass pyramid and we can make in enormous stuff extra now that AI is is a
+next phase to push innovation to make us even more productive and that's the
+important thing we have to be more productive because productive linearly relates to our prosperity and if we want
+to be more prosperous and it's not so much you and I maybe but we want to get the entire world more prosperous than it
+used to be then we need more productivity and we need this kind of technology to make the next step.
+So help us think a little bit about some of the jobs even in just a couple of years, right? So yes, there's a big
+shift in programming for instance. Yeah. Where do you think some and you've said as well that a lot of the jobs where
+coloring in the lines that's those are going to be automated. There's a lot of
+activity especially that focuses on human creativity that's coloring outside of the lines like uh graphic artists and
+photographers and even journalists and we're seeing still impact on their
+work you know so for instance on the the platform the gig work platform upwork there was a drop off of 40% of freelance
+writers for instance in just a few months after chat JPD 3.5 was released so help us understand where some of
+those future even near future jobs might be about that are coloring outside the
+lines where you don't think the technology is going to have tremendous impact in the near term.
+Yeah, true. So I do not fully agree that the jobs that you just mentioned is about coloring outside the lines. So making picture of someone etc and and
+writing text is actually just applying ideas into text. They actually got the ideas from people
+and then made the text about it. So now these people that got the ideas that's the coloring outside the lights they
+make then text themselves. So yeah but but with this kind of interviews and I
+know you're good at this you're also challenging me in order to make the next thought which I normally not think
+about. That's exactly what you're doing here where you add the value. This would not be a good interview if I would talk
+to an AI agent probably. Although you see now also two AIs talking to each other and coming up with some
+interesting ideas but that's still far from what we're doing here. The the first call I want to make on the future
+jobs is that a lot of people think that most jobs are behind desks which is not
+the case. By far most of the jobs are deskless and that's a call I first want to make
+that a lot of blue color jobs yes there are quite a bit that we can replace probably as well over there not the best
+ones as I said the pick and place and work in a big distribution center and all that kind of stuff but say the real
+craftsmanships you know the masteries the the the the guys that make the timber work the the plumber all this
+kind of stuff we have an enormous shortage now and There's going to be an enormous more shortage in the future.
+Why is that? We had plumbers, but we always teach the son of the plumbers. You become a programmer, then you can
+make more money. You know, that was go study that you don't have be a plumber like daddy. That's stupid. Either we pay
+them, they we should pay them or they will be paid more in the future because in the old days we had one toilet and
+maybe and not even a bathtub, you know, in house. Now every house has and we had
+families of seven, you know. Now we have families of one and a half and they have two bath and three toilets and all this
+kind of stuff. So we need about 10 times more plumbers but we have less of them and us becoming richer it's exactly
+these kind of deskless jobs that's for sure going to be safe going to be much more rewarded and rightfully so. So
+that's one category that I first want to think we even have to enhance their jobs that's why we need probably the humanoids to assist them etc. That's one
+thing. On the other thing, yeah, telling what kind of jobs it is is like
+asking a farmer 200 years ago what we're doing in the future and trying to predict that there that we need
+television producers, etc. That that's a that's a bit hard to do. So, I when I
+first cover myself on that one where you have to look for it, it's and it's a little bit a dirty word. It's a
+little bit the experience jobs because whenever you see that actually automation comes in and makes stuff very
+cheap that everything is moving to experience. My favorite example is the music industry where I spend a lot of
+music on CDs and LPs you know and actually my children have that all for free and me as well now but now you see
+a massive amount of concerts and festivals so the stuff gets free and people move in the same industry to the
+experience and that's what happened actually in all industries that that we are moving to the experience and if you
+can add experience it's a strange world look at all the lines that are on the top of mass pyramid about selfmp
+employment and self as I said and and the feeling of accomplishment this kind of stuff and there's a lot in the
+leisure and the the tourism and the sports and all this kind of stuff where a lot of new jobs will occur that we now
+think are BS jobs to say it nicely but that's the same how a farmer probably
+thinks about most of the jobs today just to your point you in the United States at one point about 70% of all the
+economic value came from agriculture And today it's about 3%. Uh and about 60% of
+the jobs today don't really have much of an information component. So we've talked about the work roles. What about
+the industries? Some of the dynamics that you were talking about about uh sort of doing the repetitive use of
+information that sort of thing. You look at the legal industry which I do talks to all the time. And what is the process
+of interpreting laws? Well, it's a whole bunch of information that humans wrote. Uh, it's pretty easy to put all that
+into some repository and then to ask an LLM to give you input as to what your
+potential exposure is or how a law might work for your organization. So, what are the industries that you think are most
+able to take advantage nowadays of these tools? Are there wouldn't call them canaries in the coal mine, but the ones
+that are best optimized to be able to leverage these tools? Yeah, it's it's nice that you begin with
+the legal stuff because that's that's one that's always under discussion how to interpret the laws because if you
+want to re every occurrence that can happen that needs a lawyer or somebody
+of of some legal assistance that's not being found in in in the book of law otherwise book of law would be as big as
+as a country I guess I don't know yet so you always have an interpretation interpretation of the rather limited
+book of law and that's maybe you but but prepar the prep preparation of such a
+case that's of course now being done by an intern or a colleague or a clerk you
+know and that's that's something where they will be able to to really have a
+big of support so I talked to a legal advantage he said yeah that's what we've been hearing for 10 years ago it was
+actually predicted that there would be self-driving cars and and we don't need so much lawyers and now every day I'm in
+a traffic jam with my car because I have to get the work because we we can't find enough lawyers to do all the work.
+Yeah. Yeah. Yeah. But you also had to admit that it is at this moment changing a little bit. But that's the other thing
+is that also the people that do the claims towards the legal advisor they come up with letters thanks thanks to
+Jet GPT that they also use it as a stick to be confronting the lawyers. So the the people on the other side of the
+table are also more clever. So they have to put extra effort on on top of it. But having said that there are a lot of
+industries that where AI will also really be applied and also is very necessary. One of which is of course the
+transportation. We talked about the self-driving car, but I say my background is also I worked on that 20
+years ago that we we as TomTom were making and still is still making but they're doing this more wide label so
+you don't see it. But they're making traffic information. And traffic information is really something where
+you have to apply AI that you have all this sensoring. All these cars driving around know exactly what speed is being
+driven where. But then you have to kind of redistribute the traffic in a sensible way without causing new traffic
+jams. That was already top level intelligence that we had to apply there.
+And this can be actually brought to a higher level that you know where are the people and where do they want to be and
+try to predict where the conflicts will arise and then organize the entire mobility in a much more sensible way.
+That's one of the most interesting uh applications of AI in mobility. So
+that's the one and then we have the autonomous vehicles. Although what I rather say is that all this technology
+that we need I'm not a firm believer in robo taxis from my point of view that's that's an yeah it's a solution looking
+for a real problem that there are some minor problems but it's not it will not replace the total um car ownership but
+cars making accidents is a huge problem we should fix that and we don't need a
+robo taxi for that there's enough technology that can also be of assistance to prevent that you and I have accidents while driving The
+artificial the second artificial intelligence. The third is a very interesting one and also a bridge to energy is that all these electric cars
+are also they have a huge amount of assets with their battery that can also
+help the entire grid to actually support it instead of overload it what everybody
+thinks that these cars will do. So if these cars also can supply energy and
+charge energy and start trading with energy, you have this massive amount with a lot of clients and suppliers that
+is so difficult to steer that we need AI in order to make the maximum benefit of that. So these are just some things
+where we will see an enormous amount of AI helping these industries.
+So you have a deep understanding of these technologies and uh and how
+they're develop and the companies that are developing that sort of thing. What do you worry about? There's obviously
+tons of worries that people talk about. Yeah. In that that are read in the press
+all the time. Things like artificial general intelligence taking away every single job or the fact that the
+technology itself is not necessarily trustworthy or you what do you worry about and what should decision makers
+especially in organizations how should they understand some of those concerns and what do you think are ways
+that we can actually mitigate some of those concerns? Yeah, it is it is concern. I'm a techno
+optimist. I'm I'm an engineer and a dieard mechanical engineer. Even did my PhD on diesel engines, diesel engine,
+what have you. But I have seen how much problems that we already solved with technology. And I'm quite a firm
+believer that it's also possible now to um to solve these techn
+I don't think the growth would help us. It's good to strive for less growth or whatever, but it's not going to happen.
+Don't shoot the messenger. So, we have to innovate ourselves out of trouble. And now we need the AI in order to do
+so. But if you look at the history, most of the problems, if not all, have in the
+end solved by technology, which always created a new problem that we always had
+to attack again with technology. So, fossil fuels are now bad. Yes, they are,
+but they saved the trees. We almost had no forest anymore and luckily we found
+the fossil fuels and we were so proud of that one. Then we found out, oh, there's a problem with fossil fuels as well.
+Okay, solve that one. Now we have the electric vehicles. They have some problems. They're much minor. Okay,
+solve that one. That's what we constantly have to do in the future. And what you see with every technology had
+always the shadow side. So fire was good for us in a in in a multitude of
+applications, but you could also burn your fingers or your house. So we had to regulate fire and to control the fire.
+Uh with a lot of regulation on that one, we managed to control the fire quite well with acceptances. But okay, we're
+we're still all right. The thing the two differences it it was with nuclear with
+with bricks, you know, you can build houses within you can smash someone's face. We used gazillion more bricks to
+build houses than smash faces. So we we kind of regulated that the number one difference with artificial intelligence
+it comes much faster than than than fire. So it we have to be quick to get
+used to it and it can also improve itself like an a nuclear
+weapon cannot actually invent a new nuclear weapon and that's with AI of course this self functioning effect. So
+we have to be quick. We probably will be a little late. I hope we're not too
+late. It is dangerous fire we're playing with because if there's certain thing as
+I said in order to come to traffic you already have to flexibly interpret the rules. If we allow machines to flexibly
+interpret the rules and they're a gazillion times f smarter than we are it comes with kind of a bit of danger. So
+if am I concerned I still am optimistic that the benefits will will be bigger but we have to regulate.
+Do you have what you think of as some of the the guardrails or some of the rules? Are there a Carlo's laws for AI just
+like Andrew Kay has laws to govern robotics? Are there if you could wave your magic wand, are there specific
+things you would want to make sure that since we're playing with fire, we can make sure we don't get burned?
+Yeah, that's true. Um, yeah, we in the European we have the AI
+act. That's where we Europeans are quite good at regulate but in this case I'm I also work a little bit at on the on the
+AI regulation and what it does quite sensibly is that it first makes a differentiation on what kind of AI how
+critical it is. So um try to first identify which you want to regulate and
+which you don't want to regulate. You can have a lot of discussions on that one. It it says actually and then that in the most critical thing you also have
+to explain what the algorithms are doing which actually by the definition I used in the beginning makes it not really AI
+anymore. it kills AI and the much most critical things and yeah the rules we
+had already Azimov who had his rules that's already 70 80 years ago that he came up with this robotic rules that the
+robots it's quite similar to what um the Andre K actually presented is first try
+not to kill or harm somebody and the second is listen to the human beings that they still carry the most
+responsibility in the end unless it conflicts with the first one and then the take care of yourself etc. And yeah,
+we have we have to think further on. The difficult thing to my point of view is that we as I see it that we have to get
+some kind of universal agreement on some moral ethics and we have to intertwine
+them by basic in these machines and so that these machines in due course
+I don't think they get consciousness could be but in due course that whatever how smart they are they live to these
+quite a fundamental rules they do not know where these rules come But they
+kind of sense that it works better when they follow these rules. This has a very nice nice link to how we as human beings
+relate to religious rules. You know that the ten commandments they came from
+a story from some gods that we never met at Satley but we found out that if we live to them life is pretty stable. That
+means that if we manage to do so because we have to do it on an univers universal scale that these machines hopefully will
+follow these rules. They don't know where they come from. So we are kind of the gods of these machines then in due
+course and then just hope that they will be god-fearing creatures.
+So help communicate their their frame for organizational decision makers,
+people who lead. What do what does the you think the average person in an organization or in a government how do
+they get smart about this stuff? What where should they what should they be focusing on? How how should they be
+thinking about the uses of the tools in their own work in their own lives? Because the the technologies are going
+to keep on moving at this very very rapid pace. Are there any insights that you we can offer them to be able to help
+them to to feel that they can keep up? Yeah. What what I often sense talking to
+all kind of organizations and I'm a little bit surprised because of course I'm I'm working in that field is that
+there's they don't experiment a lot with these machines most have copilot installs in a limited way and most no
+chat GPT I always challenge them to play as much as possible with all these tools to start experimenting
+to set some guidelines but to at least stimulate people to start thinking about it because it's often starts landing as
+soon as they start playing with it and realizing what what the potential is about that and a lot of people because
+the examples of what can go wrong are also quite clear. So you have to set a little bit of rules do not share all the
+information of a company with all these kind of tools. So it has to be a little bit common sense also to apply uh with
+it but start coming use it as a coach use it as a lot of people do as a sparing partner to get you going you
+know ask the thing to do your work for you and if probably the result is not that impressive but at least it got you
+it got you rolling and this kind of stuff use it as an intern um so that that's the kind of stuff that
+I and and then often people start playing around with these tools and these these days. Every week a new tool
+comes up that will actually surprise you and and and you can play around with it
+and and then you can also even ask GPT or whatever kind of tool or or
+Gemini or CLA to ask them how your work can be helped with AI. It will come up
+with an idea as well. So this is a new situation where actually also the differentiation
+between people and the people that you will look for is going to change. I
+don't know if you last week the CEO of Shopify and if you heard of that one he
+actually said okay if we if we had a new hire just to get people thinking probably he did some explanation
+afterwards. It was a little bit uh yeah rude how it sounds. If you want me to
+hire another person, first proof that it cannot be done with AI. And if you
+really have a good proof, I we might hire somebody, but first prove to me. And that's kind of rude, but it got
+people really think got me thinking as well. That might be a good example how how to work with that one because yeah,
+it's it's it sets actually already people thinking, okay, what what kind of things is left over for me in the
+future? Absolutely. But I think what's important is that the tools can actually help us
+with that process, right? Is that you you want to understand your own skills. You want to understand the ways you can create value. You you need to leverage
+the tools yourself to be able to continually develop the skills so you can provide that value especially for
+the kinds of work roles that you're talking about where we we color outside the lines. Right.
+Yep. Now, we started talking about education, especially the the gentle disagreement
+you and your wife had about the use of the tools in the classroom. How would you help parents to understand the uses
+of the tools? What is what how would they and again they're moving so rapidly. How does should they think
+about the ways that their kids are using the tools and the ways that they can be leveraging the tools potentially to be
+better parents? How to be better? That's good. So, so my
+my children are are so a little bit older and using all these tools already in their in their study etc.
+making them massively more effective as well. So, uh so I I thought to give them
+some tips, you know, I don't know if you know the notebook LM yeah Google tool uh use it to make a
+podcast out of big papers so that you first hear what it's about and uh that
+that's a nice gimmick. So I said this, hey, if you want to study and you have a new report, try this one. And they said,
+yeah, duh. I always use this paper. I first put it there, put my ear plugs in, go to this to the gym, and afterwards I
+I've got the point and I can study a little bit. Oh, you're already there. So that's already what they apply. Their
+learning is so massively I I think we can do the we can really squeeze the university into it's a little bit small.
+The learning is really really massively changing. We see that the university as well. the one direction learning is
+already being taken over completely by the internet and we are doing more project work more it challenge based
+education this kind of stuff that's what it's changed to when people asking what what what should I ask what what should
+what should my child study and also might say what what should I study so yeah it's not the programming so much
+anymore although you need the architects in software development you really need them again but but I'd say okay do
+something that they like they get some energy from and make sure they finish it. That's what I always say. I'm not such a fun fan of of dropouts, etc. But
+also in in resumes when I hire people, I first see if they at least finish something, you know,
+finish it and and show dedication, etc. That's what what people were looking for. And in the end, you will do a job
+that is totally different as what you study. Anyhow, how these parents should educate them with all these tooling.
+Yeah. Again, I kind of enjoy my children making maximum use of that. their work
+is so much bigger than mine was. And the the good thing about some people
+what I also see is that intelligence on itself will be a commodity.
+You know that intelligence yet yet you had these these big difference in IQ
+which was actually also a passport to to prosperity if your IQ was high. I think
+that there's a huge effort now thinking that if you can also
+have AI as a tool then IQ might be or will be much less important. It's the EQ
+what to do with all this kind of information that's going to be important just that when you dig holes at digging
+holes you need a very strong guy with big muscles or to dig holes that's the
+best one. If you look who's the best bulldozer driver now that we have technology of bulldozer that's a totally
+different person. So these big muscles still nice to look at but they're not very important for digging holes
+anymore. And it's the same with probably the IQ that's going to be less important and the EQ is going to be much more
+important. So try to stimulate people to talk more to other people and where the
+things that challenge your EQ rather than your IQ it's going to be less important. Yeah. So with an emotional quotient, you
+know, social emotional learning, you know, all the all those skills, the social skills, yeah, there's no question that those will continue to be
+superpowers for for humans. So we we've not we've focused on a very sort of
+near-term future. I want to just wrap with you to think a little farther down the road. So Carlo wakes up, it's
+Saturday or Sunday morning, it's, you know, 10 years down the road, 15 years down the road. What what are you doing
+in a day and how does AI show up in that day?
+Oh, that's cool. I think what I what AI is already doing is that it made everything that you do rather
+frictionless. But there's one constant actually that is how we are evolutionary tuned. That
+doesn't really change so much. So we still are hardwired with our reptile bridge. You know that for instance then
+I can predict that as well. Go back to my mobility specialism. What you see is actually that we are evolutionary
+programmed to be mobile for 1 hour and 15 minutes per day. That was the evolutionary optimum. So we should we
+had to leave our caves in order to get food. It doesn't automatically run into a cave. So we had to get out to hunt and
+gather. But driving around walking around all day was not a sensible way to use your energy. So the evolutionary
+optimum was 1 hour and 50 minutes. And what you see now although we don't have to get out for our food anymore it this
+mobility which was just a means for a purpose for the hunting and gathering became a purpose on its own. People
+wherever you measure on earth even if the food comes running in your thing like the pandemic they want to be mobile
+for 1 hour and 50 minutes. In 2045 I will be mobile for 1 hour and 40 50
+minutes. I will be one to one and a half hour against very similarly using to get
+food to cook to eat to be with friends etc. That's also a constant. So we can
+have now these these food replacement drinks in one minute good for some
+people but most people really want to spend time on the food thing. That's one and a half hour. Then two hours of
+communication that's also in our hardwired brains and about 5 hours of cognitive work and seven hours of sleep.
+and the rest probably we will enjoy ourselves. The thing with AI that makes all this kind of stuff much more
+frictionless. So this biological stunt that we still how we live our lives is not going to change so much but it will
+be much more pleasant because yeah here's still the technoptimist. It it's going to be better. We're going to be
+more prosperous because of the productivity that's going to be helped and all these these less favorable jobs
+they will be done by machines. Thank you for leaving on us on such a positive note, Carlo. It's been a master
+class for me. I learned a ton of your perspective about the use of these tools
+and uh and I hope people will check you out online, learn more about your work.
+Please do. So I I will share I also start sharing all these new tools that I find maybe can help some other people
+also to to start experimenting and and and that's the positive vibe you want to do because then you automatically will
+see what the power of these tools is and conclude that it will make your life better as well.
+Tremendous. And by the way we now we know how what the how to manage the hours of our day because you've given us
+the road. So and is it is a biological constant that we have to actually acknowledge.
+Wonderful Carla. Thank you so much. Be well.

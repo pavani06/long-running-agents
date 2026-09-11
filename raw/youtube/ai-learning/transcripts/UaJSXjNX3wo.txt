@@ -1,0 +1,795 @@
+Here is how to turn NA10 agents into
+full stack websites. Even if you aren't
+a programmer, there are countless videos
+showing you how to build AI agents. But
+what nobody shows you is how to package
+an NAN agent into a nicel lookinging web
+app that could be sold for thousands of
+dollars. In this video, you will learn
+how to do just that. So watch until the
+end. So first I'll explain how this AI
+engine agent actually works. Then we
+will run it and see the results in real
+time. And finally, we'll package it into
+a nice looking website that we will
+fully vibe code live in this video. And
+I'll show you everything step by step.
+So you can do this even if you've never
+built a website before, even if you've
+never built an AI agent before because
+it is that simple. So let's look at the
+trigger. This is a simple schedule
+trigger that runs once a day. Then once
+this triggers, it goes into this HTTP
+request which basically just opens a
+website. Where is the website? It's
+Google Trends, right? So this AI agent
+will find vital trends for any country
+you want. So if we open Google Trends,
+you can go to trending now and set the
+country. So you know I'm in Czech
+Republic, so it's setting that. But
+let's go to United States because you
+want to sell in markets where people
+have a lot of buying power, right?
+Anyways, these are some of the trends
+that are going on right now. So this
+HTTP request would visit this website
+and again you can customize the
+parameters however you want and it will
+pull the most trending topics. Then we
+have a code block. The issue is that
+Google trends will return RSS data which
+is a messy XML that we need to parse. So
+using regax aka regular expressions,
+this will find all the items in that XML
+and return a nice clean JSON that's much
+easier to work with. And then after this
+node runs, two things actually happen.
+First, we save it to Google Sheets. So
+here we have a Google sheet, super
+simple date, title, and traffic. Here
+our results from the Google Trends will
+be saved. So this is a simple append or
+update operation where we just append
+each result adding new row after each
+one and then at the same time we trigger
+the second part of our AI agent. Oh and
+by the way this entire AI agent just
+like all the other agents I've built in
+the past is available in the new society
+inside of the classroom templates and
+preset section. You can find it right
+here at the bottom. So you can just
+download it and start using it right
+away. Now before we get to the second
+part of the agent, let's actually start
+building the website because I think
+that's the most fun part that a lot of
+people are excited about. Like vibe
+coding is becoming more and more popular
+every week it feels like. So let's
+create a website and then let's use NA10
+as a back end because for NA10
+automation, right? Maybe you can charge
+a couple hundred bucks if you sell this
+to a client like a custom NA10 build.
+But if you turn that into a web app with
+a nice polished front end, that's where
+you can charge four or even five
+figures, which by the way is exactly
+what people like Justin are doing. I
+mean, he joined you society just four
+months ago and now he has sold two
+clients for 10 to $20,000 each. And he
+did that with NA10. This method works,
+so pay attention. All right, so let's
+jump into bold new or your favorite vibe
+coding app and let's send the first
+prompt. So this is my first prompt.
+Build a website called TrendFlow. What
+it does, it helps people get automated
+Google trends reports. It should have a
+table with these columns and then we
+have the date, title, URL, source.
+Basically, this is matching our Google
+Sheets, right? So again, this will
+almost be our back end. If you aren't a
+programmer, building a backend is
+intimidating, right? You would have to
+learn Python, fast API, NodeJS, some
+backend framework, and it would take you
+probably weeks, even with AI tools to
+figure out, right? With NA10, everything
+is visual, everything is drag and drop.
+It's much easier to build an NA10
+automation than to code a full stack app
+from scratch, right? Even if you're
+using cursor. So that's why we're going
+to connect Bolt with NA10. And this is
+going to be super high perceived value,
+but you can do this in like a day or two
+if you actually apply what I'm going to
+show you in this video. So let's see
+what Bolt is doing. It fought for 8
+seconds. Based on your requirements,
+I'll create trend flow. Okay. Core
+features. Modern landing page with clear
+value proposition. I like that.
+Interactive trends data table with all
+requested columns. Real-time sentiment
+analysis display. Responsive dashboard
+design optimized for data visualization.
+Sample trend data to demonstrate
+functionality. So obviously then we will
+replace this with the actual data our AI
+agent finds on Google trends. But for
+now sample data will do. Then it also
+creates a design. So you don't have to
+be a designer. You don't have to be a
+front-end UIUX expert. All you need to
+do is use tools like Bold tools like
+Lovable and just vibe code a nice app.
+And if you don't like something, just
+tell it. In plain English, you can build
+so much. And by the way, same with the
+NA10. I literally made a video like few
+weeks ago, how to build NA10 automations
+with JBD. I'm going to pop it up on
+screen right here. Feel free to watch
+that after this video. But anyways,
+seems like Bold has finished the MVP.
+So, let's see what it looks like. Trend
+flow. Okay, simple, clean landing page.
+We have some stats here, obviously with
+fake data. It's probably longer than I
+would want. So let's see it in a
+separate tab. Okay, so here's how our
+website looks like right now after one
+prompt. We have an export feature which
+doesn't work yet, but that's fine. We'll
+fix that. Okay, we have some cards. All
+right, not bad. Not bad at all for the
+first prompt. Okay, so now let me
+explain the second part of our AI agent.
+So when the data comes in from this code
+block, nicely formatted as a JSON, it
+goes into this loop, right? This loop
+runs over all the items in the JSON and
+this code blocks flattens all the topics
+into individual articles. That's because
+each topic that comes, you know, from
+Google Trends will have like a few
+articles. If we click on it, you can see
+boom, three articles come for this
+topic. So, we want to flatten that into
+one row per source. So that when we go
+into the second sheet, and again, you'll
+see in a bit when the AI agent runs, we
+will have it nicely split source by
+source. This makes it much easier for
+NA10 agent to process this one step at a
+time. Then once we have the data nicely
+formatted, it's saved into Google sheet
+into our second sheet, right? The second
+page. So in the first we have the
+trends, then we have the articles,
+individual article at a time, and then
+this loop just runs over every single
+item that is returned from this first
+JSON. But there is a problem. Right now,
+our AI agent isn't hosted anywhere,
+meaning it cannot run by itself 24/7.
+Luckily, the fix is super simple. Just
+set up a VPS on Hostinger. This is what
+me and my team are doing for all of our
+Nadian agents because it's fast, it's
+very affordable, and it's stupidly easy
+to do. Here is how to do it. If you get
+the KVM2 plan, which I would recommend
+you to get, you can literally run
+hundreds of AI agents on this plan, and
+it will cost you way less than if you
+used the NA10 Cloud, especially if you
+go with the 24-month option, which I
+definitely recommend you do because you
+want your AI agents running forever. You
+build them once, and they save you time
+in perpetuity. And since Hostinger was
+kind enough to sponsor this video, if
+you use the coupon code David, you will
+save additional 10% off on your annual
+or two-year plan. Then what remains is
+selecting the server location. So just
+select whatever is closest to you. I'm
+in Czech Republic, so Germany is super
+close. And then for the operating
+system, click on NA10. They literally
+have a one-click install template for
+NA10. It couldn't be any easier. So
+click on confirm and then click on
+continue and login with your hosting
+account or just create one. And the last
+thing that remains is filling out your
+billing details and your credit card.
+I've been using Hostinger for months to
+host my internet agents. And it really
+is the simplest and most affordable way
+to do so. So again, make sure to check
+out the link description and remember to
+use code David to get 10% off. All
+right. So once you have your hosting
+VPS, go to the panel, click on home, and
+select manage. Here we can see how our
+virtual private server is running and
+all the usage you see about it. So this
+is another advantage over the N10 cloud.
+you can actually see this data that NA10
+otherwise wouldn't give you. So all we
+need to click is manage app and this
+will launch the NA10 server where we can
+see all of our AI agents. Okay, so let's
+jump back into bold and actually I'm
+going to simplify this a bit because we
+don't need it that much. So I'm going to
+say let's simplify our page so that when
+the user clicks start free trial or get
+started, they will be redirected into
+our dashboard. In the dashboard, we need
+two main sections. Let's simplify our
+landing page. There's too much stuff
+right now. Focus on the core offering of
+our software. And then number three, in
+the dashboard, we need two main
+sections, trends and articles. Keep
+these clean and minimal while making
+them interactive. And actually now I'm
+going to give you a very good prompting
+tip that comes straight from OpenAI
+because OpenAI and Enthropic they
+release these prompting guides every few
+months. Most people never read them but
+I do read them. And one of the things
+that they recommend is to give them like
+a sentence that encourages it to keep
+repeating until this is finished. So I'm
+going to say keep working until all
+three steps have been fully and properly
+implemented. Do not stop until all is
+done. Boom. And this will just ensure
+that the AI agent isn't lazy and doesn't
+finish prematurely. Okay. So while Bolt
+is building our site, we can go back
+into any and I can explain the third
+part of our AI agent. So this is for the
+analysis and summaries. So this is
+actually triggered by insertion into our
+Google Sheets. So when the rows start
+being added into the first sheet, the
+first page of our Google Sheets, this
+will actually trigger the third part of
+our agent, this trigger right here to
+start working. And you know what? I
+think it's time to actually run the
+agent because it will be much easier to
+explain it. So let me show you, right?
+I'm going to click here, test workflow.
+And actually, I already tested it. So
+this is what the data looks like. But
+I'm going to show it in real time. So
+I'm going to delete this. But majour is
+trending. Interesting. I'm going to
+delete this so you can see it with your
+own eyes from the get-go. So empty
+sheets, right? We just have the headers.
+That's important to keep the headers.
+And then let's go back to internet.
+Let's click on test workflow. So the
+schedule trigger, you know, this would
+happen 6 a.m. every day, but we now
+trigger it manually. So it it's running
+fast. So I'm going to show you, right?
+Boom. It scrapes the 10 most trending
+topics. Right now it's targeting USA.
+And it saves them into the first page
+right here. So we have the date.
+Actually, let me align it to the left so
+it's easy. Date. Then we have the title.
+Superman 2025. Some movie. I don't know.
+Some people, I guess. Yeah, I don't know
+what's, you know, Ohio actors. I'm not
+American, so I don't know what's
+trending. I know Mid Journey, though.
+And I'm surprised MJ is trending so
+rapidly right now. So, that's good. And
+we can also see the traffic. So, we can
+see like, you know, celebrities are
+getting way more traction than Mid
+Journey, which is unfortunate, but it is
+what it is, right? Anyways, right now,
+let's say you were an AI YouTuber like
+myself or, you know, a writer on
+Twitter. It's a good time to make videos
+about Mid Journey because it's trending.
+But this is just the first page, right?
+A lot more is happening in our
+automation. So, this then looped 11
+times over each of these items right
+here. Boom. And it parsed it. The code
+nicely flattened it because again, each
+trend like we looked has three different
+links, three different pages, websites.
+So we process this and save these into
+the articles page. So here as you can
+see it's much longer exactly three times
+longer and we can see that Superman 25
+Superman trailer is packed with
+spectacle blah blah blah URL and then
+source. We also have the sources right
+and then again three per each topic or
+each trending topic has three different
+websites three different sources. You
+can go through these but again this is
+only the first part of our like the
+first half of our agent. the first two
+parts, right? The second half, starting
+with the stage three, adds the AI
+enhanced features on top of it. So,
+let's test the workflow right here. Test
+waiting for you to create events in
+Google Sheets. So, actually, we could
+probably Yeah, it should take this data.
+I was saying that we should probably
+rerun it, but now it's looping over
+these items. So, let's explain this one
+by one, right? We have the Google Sheets
+trigger right here. It pulls it every
+minute. So, every minute it checks the
+Google Sheets in case there are new
+rows. then it triggers on row added or
+updated. So obviously we've added a
+bunch of rows or updated it. So this
+gets triggered. Actually it's from the
+second um second sheet not the first
+page. So it it's not looking at this
+page. It's looking at this page right
+here. And as you can see it's already
+adding some AI enhanced stuff. So it's
+it's very fast. I mean you know I cannot
+even explain that fast that it runs. But
+basically we have another loop. It loops
+over all the items that have been found.
+So it goes one by one and first thing it
+does it gives a sentiment score right
+whether this is a positive trend or
+negative trend right like a new trailer
+for a movie it's positive but riots in
+LA it's obviously negative then it gives
+a score rating how positive or negative
+it is then this is created by our AI
+agent so you can customize this for
+yourself right maybe if you're a again a
+writer on Twitter this would be a draft
+of your tweet if you're a content
+creator on YouTube this would be a video
+idea about that trend And you know like
+there's so many things you can take this
+with all by just customizing the prompt
+of our AI agent right here. And again
+you can just download this easily from
+the new society. The entire JSON has
+been exported and you can literally
+click import from file take this file
+import it and implement it in your own
+business. Customize the prompts for
+whatever you want. So maybe you don't
+want rational and summary. Maybe you
+want something else. You can build
+anything with anything really and you
+don't have to be a prom engineer. You
+don't have to be a programmer. You just
+need a bit of agency and push through
+discomfort and learn new things. That's
+all it takes. Plain English and the
+ability to have good work ethic. These
+two things. So rational explains like
+the rational behind this trend. And then
+a summary is just a brief summary of the
+website. Now you might be wondering, but
+David, how are you getting this website?
+Right? Like this is very short headline.
+How will you get the content from the
+website? Well, this is where the NA10
+automation comes into play and this is
+where the AI engine agent really becomes
+impressive. So we can see we have this
+note. Okay. So, Google Sheets note,
+pretty self-explanatory. Any update
+triggers it, right? Then we have a loop.
+It loops over all the items. Again,
+pretty simple, but this note is
+interesting. This is where most people
+would probably struggle if I didn't
+explain it. So, this is what the fire
+crawl website actually looks like. And
+as it says, firecrol it was made to turn
+websites and scrape them and crawl them
+into LLM ready data, which is perfect
+for our AI agents, right? So what we do
+is we use firecroll here again in a loop
+and we use their API to scrape these
+websites to basically crawl them. Right
+now some websites might have protection.
+So in that case we just try multiple
+times. We have the settings. Um if
+there's an error we retry on failure
+maximum three three times and we wait
+500 5,000 milliseconds which is 5
+seconds right. So firecrol basically
+goes through these websites and gets all
+the data and feeds it into two different
+AI agents right here. So this is you
+know the third part of our AI agent
+Google sheets triggers on any update
+then we loop through all of the new
+things that have been added into Google
+sheet and we crawl all the websites
+getting their data sending them into
+stage four and stage five of our AI
+agent. Okay, so let's go into bold and
+let's actually make significant progress
+on our website. So hopefully it
+implemented my steps. Step one, simplify
+landing page. Step two, proper
+navigation. Step three, clean dashboard.
+So let's see. Either of these buttons
+should take us to the dashboard. And
+there we are. Okay, so dashboard is
+nice. We have trends. We have articles.
+Okay, so obviously we're using fake
+data. So we're going to fix that right
+now. Let's stop using the mock data and
+let's actually connect our main Google
+Sheet into our dashboard through the
+Google Sheets API. first create a newv
+file and store it securely on our back
+end. Obviously, if you were to turn this
+into a SAS, meaning if you wanted to
+sell this into many customers, you would
+have to care about security way more.
+What I'm presenting right now is a
+custom software. The idea is like
+creating a custom analytics, you know,
+Google Trends powered analytics for a
+client, right? That you can sell for
+three, four, $5,000 or, you know,
+$10,000 like some people in the new
+society do. But realistically, for like
+3, four, 5,000, if you were to turn this
+into SAS and charge like a subscription,
+right? $20 a month, $30 a month, you
+need to care about security a lot more
+than if you're creating website for one
+client. So, I'm going to do something
+that I would not recommend you to do,
+but I'm going to do that for the sake of
+speed. I'm going to paste in my API
+keys. So, basically, I'm putting in my
+API key from the Google Cloud Console.
+Again, I've showed how to set this up in
+a previous video. I'm going to pop that
+on screen. And then the sheets ID. And
+this one you can actually get super easy
+from the URL. So at the top this is the
+sheets ID right here. And the sheet ID
+actually this one is a testing one. So
+we need a new one. You can get this very
+easily by going to the Google sheet
+looking at the URL and just copying
+whatever is between the slashd and edit.
+So this is a sheet ID. So just paste it
+in here. Boom. Make sure this is clearly
+formatted. Then separator in the prompt.
+And then I've prepared a prompt. I want
+you to use the first sheet. Sheet one.
+Actually, this is renamed. So, make sure
+to use the exact same name, sheet one
+trends. You can actually tell it that
+this is named exactly that sheet. The
+first sheet named exactly sheet one
+trends to replace the information in the
+trends section. Okay. So, we have our
+trend section right here and it needs to
+stop using fake data and start using
+real data that our agents has prepared.
+Right? Same with the second sheet. I
+want you to use the second sheet, sheet
+two articles. So yeah, this is matching
+to replace the information in the
+article section. And the last sentence
+is basically like make sure the data
+gets updated every day at 6
+10 a.m. UTC time. Basically um like 10
+minutes after our AI agent runs into in
+NA10. So that we give it some time
+because um it can run for a while you
+know 30 different sources crawling all
+the websites executions of double
+agents. This is not a simple en agent.
+So we need to give it 10 minutes, maybe
+even 15 minutes. 6:105 a.m. UDC time.
+Okay. So we can send this. This is a
+pretty long prompt. And now that does
+this going. Let me explain the NA10
+section 4 and section 5. So here we have
+our AI agent for the sentiment analysis
+as you can see right here. Boom. Boom.
+So this one actually rates the sentiment
+score whether it's positive or negative
+and gives it a precise score. How
+positive or how negative. So, let me
+show you the prompt right here by double
+clicking on the agent. So, here's our
+system message. You're an AI specialist
+in sentiment analysis. Given the full
+text, blah blah blah. Again, feel free
+to pause and read this or just take it
+from the new society. We have all the
+NA10 automations, all of the prompts
+right here. The templates and preset
+section is pretty cracked on top of all
+the other stuff we have, right? We just
+released the Cloud Core Mastery
+Workshop. We have the Codex guide that
+released like last week or two weeks
+ago. We teach you how to build your
+first AI agent inside of any. So, if
+you're a complete beginner and you want
+more step-by-step, more granular
+content, it's here. The new society low
+key is a it's a steal, especially with
+the templates and preset section where
+you can copy paste all of this. You
+don't have to even build it. You just do
+click boom, import it from file, you
+upload the JSON, and you can implement
+it into your business today. So again,
+the link to new society is going to be
+below the video. Anyways, this sentiment
+analysis agent does exactly that. It
+analyzes the sentiment using a chart
+model. We use GBD photo mini. Honestly,
+I would probably recommend you use 4.1
+because it's very cheap and it's very
+reliable. But if you want to save cost,
+you can use 4.1 mini or 40 mini, doesn't
+matter. Then as a tool, we only have the
+structured output parser. And once this
+is done, as you can see, it runs for all
+the items thanks to this loop. So 28. So
+I guess um three websites returned an
+error or were not scrapable by fire
+crawl, which is a very good success rate
+by the way. And then it saves the
+results, the sentiment analysis into
+Google Sheets classic update row
+operation. So right here, this is the
+first AI agent. The sentiment of the
+trend, maybe you only want to do like
+positive trends and you want to avoid
+neutral or negative trends, right? This
+is exactly where sentiment analysis
+comes into play. And again, feel free to
+customize it for whatever you're doing.
+So these two columns get updated by this
+note right here. So this is stage four
+of our AI agent. Stage five is a second
+AI agent. So again, every time fire crow
+finishes on success, it goes into our
+two agents. On failure, it tries again.
+Sometimes you know the websites don't
+detect it. It's weird. So it it's good
+to do a loop instead of giving up on the
+first try. Like you know three three
+five tries is usually recommended. So
+second AI agent again similar setup
+using openAI model 40 mini or 4.1 mini
+or 4.1 just you don't need an advanced
+model for you know summaries and
+sentiment analysis but again I would
+recommend GPD 4.1 right now if you want
+a reasoning model actually pro tip um
+OpenAI just reduced the pricing of 03 by
+80%. So even running 03 is pretty cheap,
+like way cheaper than before. So this is
+still affordable. But 4.1, you cannot go
+wrong with 4.1. I love 4.1 for building
+AI agents. Currently my favorite model.
+So yeah, use GPT 4.1 or 4.1 mini if
+you're low on funds. Anyways, again,
+here's the prompt. Feel free to pause
+and steal it. Boom. Basically, this
+creates a summary and a sentiment. So
+like trying to explain the rational I
+mean not sentiment trying to explain the
+rational behind this trend why it's
+going viral stuff like that. So for this
+honestly um photo one is better because
+it's a better model. So I wouldn't use
+mini for this. Anyways then we have the
+tool I mean the output is again update
+update sheet. So this is the Google
+sheet and these two uh columns get
+updated each time that each runs and
+then after this is finished it goes back
+and executes the main loop again. So
+this runs for every single new addition,
+right? So this is triggered the trigger
+of our second part inside of NA10. Boom.
+This is triggered on any update. So
+again, it's paying attention to these
+four columns. Anytime there is update
+here, a new row, it triggers the first
+agent and the second agent to run. And
+it repeats that for every single thing
+we have right here. So we have 30
+different uh websites for 10 different
+trends. And actually the stuff about
+MidJourney is uh mostly negative because
+it's like allegations that they used
+some copyrighted data or whatever. So
+maybe um if you're you know have a
+positive brand you don't want to cover
+that. So that's where sentiment analysis
+actually comes into clutch. You know you
+wouldn't waste your time on this. But
+yeah we have 30 different articles that
+were basically thoroughly researched by
+our AI agents with sentiment score with
+the exact score with a rational for why
+this is viral and a summary of the whole
+story. All powered by this CI agent that
+runs autonomously at 6 a.m. So the last
+thing is to finish up the bolt
+integration with Google Sheets. So let's
+see secure environment configuration
+created the environment file integrated
+Google Sheets real-time data connection
+automatic data updates at 6015. You can
+make this 630 if you want more buffer.
+Enhanced user experience blah blah blah.
+Okay, let's see if this actually works
+because um that's the main thing. So
+start free trial. We are Google Trends.
+Boom. And there it is. It loaded through
+Google Sheets and we have our Superman.
+We have our canons blah blah blah
+midjourney. The date is correct. Sources
+are not updated. So we would fix that.
+But I think it should be in the
+articles. So these are the trends. This
+is in the articles. And yeah, this is
+much more detailed. Actually, you know
+what? Let me pop this out. Open a
+separate tab. Boom. Let's see the full
+website. Why not? So articles loading
+from Google Sheets. And there it is.
+Category is here. Offer. So this is the
+source, right? So this is the full
+article. You can click on the website
+and see the website. Wow.
+Very nice. Very nice interactivity. The
+dates here. Okay, so these are correct
+for this. I don't know for these why
+they show December. But yeah, not bad at
+all. If you scroll, you're going to see
+more stuff. Read time, estimated read
+time, the views. So this is the
+shouldn't be named views. This should be
+named the score sentiment score. And
+then the summary is right here. So
+obviously we could improve the UI. The
+summary could use a bit more space. But
+the main thing is works. We vip coded a
+simple front end with like four prompts
+and we connected the back end to Google
+Sheets. This you can solve if you
+customize it for a client. That's the
+main thing I want to stress. Customize
+it for a specific niche, for a specific
+company, and you can sell it for
+thousands of dollars. Guys, like people
+in the new society are literally doing
+it. We have a whole section in the
+community tab called wins. And people
+here are posting their wins, building
+their first AI agent, building their
+first AI tools, joining last week, you
+know, already seeing wins, like getting
+stuff. Four months, Justin was a huge
+win. Just in four months, he sold
+multiple clients for tens of thousands
+of dollars. Great job, Justin, at such a
+young age. But yeah, this is um this is
+like one of the main things about being
+surrounded by people who are at the
+cutting edge of AI, who are working, who
+are pushing. You know, John sold 90k,
+his MVP for 90K, which is insane.
+Obviously, this is not realistic. This
+is an outlier. But as I said, 3,000,
+$4,000, $5,000. That's much more
+realistic. But the main thing is
+surrounding yourself with people who are
+on the same mission, who are pushing to
+be at the cutting edge of AI, who are
+learning every single day, building with
+NA10, building AI agents. This is why I
+made the new society. And again,
+everything from this video will be
+uploaded in the classroom inside of the
+templates and present section. But most
+importantly, make sure to actually do
+this. Build an NA10 agent, customize it
+for your own business, and make sure
+it's running. Do not just build it
+locally and then leave it. So many of
+you guys have any agents that are not
+being used. That's a waste of potential.
+Go to Hostinger, take 10 minutes to set
+up a Hostinger VPS, guys. Like, it's so
+affordable. It's crazy, right? Like I
+spent $50 to $70 per day on the cloth
+code API. $7 a month if you go with the
+annual or Twitter plan, which I would
+recommend that you do because then you
+commit to actually being in the AI space
+for one or two years. This is so
+affordable, much more affordable than
+other alternatives like the NA10 cloud,
+right? Which by the way, the main issue
+with the NA10 cloud is that they charge
+you per executions. Here in this AI
+agent, how many this is like hundreds of
+executions, right? This ran in a loop.
+We have a loop right here. We have a
+loop right here. You cannot use pricing
+models that charge you per executions
+because they discourage you from your AI
+agents running 24/7, running all the
+time. Hostinger doesn't do that. You
+just set up a VPS, which is your virtual
+private server and they don't care how
+many executions you run. You can run
+tens of thousands, maybe even hundreds
+of thousands of executions because it's
+your own server. So, you can deploy
+hundreds of NA10 agents. I mean, we have
+so many agents deployed and it's running
+without no problem. And again, I'm not
+just talking about it. This is what me
+and my team are using to run all of our
+NA10 agents and all of our NA10
+automations. My entire team, like six
+plus people have access to my A&T. All
+of them are building AI agents in there,
+no problem, on the KVM2 plan. It's crazy
+how much value you get for such little.
+So go and use Hostinger. It's honestly
+crazy affordable. I mean, they should be
+charging more and it's so easy to set
+up. So again, follow the steps outlined
+earlier. Use my link below to save
+another 10% off. It's the first link
+below the video. And yeah, this is it.
+Now you know how you can turn AI agents
+into nicely presented front-end websites
+that you can charge thousands of dollars
+for without writing a single line of
+code yourself. So hopefully you found
+this video valuable. If you did, make
+sure to subscribe. Make sure to go to
+Hostinger Grer, give it a shot, use my
+link. You'll save some money. And hope
+you guys enjoyed and I wish you a
+wonderful, productive week. See you.

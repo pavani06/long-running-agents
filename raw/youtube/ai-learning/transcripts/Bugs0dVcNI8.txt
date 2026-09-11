@@ -1,0 +1,463 @@
+All right. Hello everyone. Uh, thanks
+for being here and joining us on this
+nice Wednesday afternoon. Uh, my name is
+Matasanis and this is my colleague. Hey
+folks, I'm Sorup Sherhhati. And today
+we're going to present how we built AI
+developer tools at Uber uh, using
+Langraph. So to start off, a little bit
+of context. Um Uber is a massive company
+serving 33 million trips a day across
+15,000 cities. And this is enabled
+enabled by a massive code base with
+hundreds of millions of lines of code.
+And it is our job the job of developer
+platform to make sure that that code is
+turning smoothly
+through. Um now all you need to know
+really is that we have you know 5,000
+developers that are hard to please that
+we have to keep happy. So that's not so
+uh it's not so easy on us here. Um to
+accomplish that we built out a large
+corpus of dev tools um for our engineers
+and today we'll present a few of them to
+you uh and some of the key insights that
+we found out while building them. So um
+Sorup take us through the agenda.
+All right. So we'll uh dive right in by
+talking about the 10,000 foot view of
+the AI developer tool landscape at Uber.
+As part of that we'll highlight a couple
+of products we've built. will actually
+show you what the user experience is
+like and then we'll tell you what are
+the reusable tools and agents that power
+them. Uh after that, you know, we can
+only focus on a couple, but we'll do a
+quick we'll blow through a couple more
+products we've built just to show you
+how this is proliferated all through
+Uber. And finally, we'll just, you know,
+tell you what we learned and hopefully
+there's something reusable there for
+you. Uh so let's let's do it. Okay, so
+our AI dev tool strategy at Uber is
+built on primarily three pillars, right?
+The first one is these products or bets
+that we have to take. So we pick things
+that directly improve developer
+workflow. So these are things that our
+developers perform today. It could be
+writing tests. Yes, no, it's boring. Uh
+it is reviewing code which can also be
+laborious. And we're like, okay, how do
+we make this better? How do we make this
+faster? How do we eliminate toil for
+developers? We've taken a bet on few
+areas. It's based on, you know, what we
+think we can make the most impact. But
+we're also always learning, you know,
+that's why we're here. See what everyone
+else is up to and see what else we can
+target. Uh the second pillar of our
+strategy is we got to build the right
+what we call like crosscutting
+primitives. There's foundational AI
+technologies that is pretty much you
+know in all your solutions. You all
+probably feel iter too. And having the
+right, you know, abstractions in place,
+the right frameworks, right tooling
+helps us build more solutions and build
+them
+faster. And lastly, uh, what I'd say is
+probably the cornerstone of this
+strategy is what we call intentional
+tech transfer. We've taken a bet on a
+few product areas. We want to build
+them. We want to build them as fast as
+possible, but we do stop and be
+deliberate about, hey, what here is
+reusable? what can be spun out into
+something that reduces the barrier for
+the next problem we want to solve. And
+so Lang effect is our opinionated
+framework we built that wraps like
+Langraph and Lang Chain and makes it
+work better with Uber systems. Um and it
+was born out of a necessity, right? We
+had the first couple of products emerge
+and they wanted to solve problems in
+agentic manner. that they wanted to
+build reusable nodes and like Langraph
+was the perfect fit to do it because we
+saw it was proliferating across the
+organization. We made it available. We
+built a opinionated framework around it.
+So you know I think enough of the view
+let's just dive into one of the
+products. Mas can you walk us through?
+Yeah absolutely. So the first product
+we'll uh showcase today is called
+validator. Now what it is is an NID
+experience that um flags up best
+practices violations and security issues
+for engineers in code automatically. So
+um it is effectively a langraph agent
+that we built a nice uh ID UX around and
+you know let's take a look at how it
+works. So we have a screenshot here um
+that shows a user opening uh Go file and
+what they have there is they're notified
+of a violation in this case. So they
+have a little bit of a diagnostic that
+they can mouse over and they got a nice
+uh model uh saying hey um in this case u
+you're using the incorrect method to
+create a temporary test file. Um you
+know this will leak into the host. You
+want to have them automatically clean up
+for you. So what do you do about it?
+What what can the user do? Well they
+have multiple choices. they can uh apply
+a precomputed fix that we have prepared
+for them in the background or if they
+choose so they can ship off the fix to
+their ID agentic assistant if they
+prefer. So that's what we have in the
+next slide actually is the fix request
+have been shipped off and we got back a
+fix from the IDE and so the issue is no
+longer present and the user is happy the
+issue is resolved they no longer have a
+code smell. So uh that's super the some
+of the key ideas that we found out while
+building this um the main thing is that
+the agent abstraction allows us to
+actually compose multiple sub aents
+under a central validator agent for now
+for example. So we have a you know
+sections a sub agent for u of validator
+that calls into the LLM with a list of
+practices and sort of gets those u
+points of feedback uh resolved or
+returned. Uh but there's also a
+deterministic bit where for example we
+want to discover lint issues from static
+llinters. So there's nothing stopping us
+from running a lint tool and then
+passing on the learnings through the
+rest of the graph that allows us to you
+know premp compute a fix even for those.
+Um so that's the learning and in terms
+of impact you know we're seeing
+thousands of fixed interactions a day um
+from satisfied engineers that fix their
+problems in code uh before they come
+back later to bite them. And I think you
+know we think we've built a compelling
+experience here right we've met
+developers where they are in the IDE we
+have tooling that runs in the background
+it can combine you know deterministic
+capabilities like we use as parsing
+tools we find out where each of the test
+boundaries lie we're able to evaluate
+each one of these against a set of
+curated best practices flag up
+violations figure out what the the most
+expressive way to deliver this back to
+the user show it in the ID give them a
+way of applying fixes. Um but we thought
+why stop there for sure. So why stop at
+validating? Um let's help engineers by
+authoring their test from the get- go.
+Um now you know the second tool we're
+showing off here is called autocover and
+it is a tool to help engineers build or
+uh generate rather uh building passing
+coverage raising business case testing
+and you know validated and mutation
+tested tests. So like really high
+quality tests is what we're shooting for
+here. And the intent is to save the
+engineer time. So they're developing
+code, they want to get their test
+quickly and move on to the next business
+feature that they want to implement. Um
+so the way we got to this is actually we
+took a bunch of expert domain expert
+agents. We actually threw in validator
+in there as well and more on that later.
+Um and then we arrive at a test
+generation tool. So let's take a look at
+how it works. Um we have a screenshot of
+a you know Google source file as an
+example and the user can you know invoke
+it in Okato cover in multiple ways. If
+they want to invoke it for the whole
+file and sort of bulk generate they can
+do a right click as shown in the
+screenshot and just invoke it and then
+once the user clicks the button what
+happens next is a whole bunch of stuff
+happens in the background. So we start
+with adding a new target to the build
+system. We gen you know we set up a test
+file. We u run an initial coverage check
+to get a sort of a target space for us
+to operate on. Um, all while that is
+being done, we also analyze the
+surrounding source to get the business
+context out. So now that we know what to
+test against and what the user sees
+really is just they get switched to an
+empty test file in this case, it can
+also be populated and then because we
+did all that stuff in the background,
+we're starting to uh already generate
+tests and what the user will see is
+they'll see a stream of tests come in um
+and it the the file will be in constant
+flux. They will there will be tests
+coming in at fast speed. we'll do a
+build. This test didn't pass. We'll take
+it out. Uh some tests might get merged.
+Some tests might get removed because
+they're redundant. You might see
+benchmark like um concurrency tests come
+in later. Um and so, you know, the user
+sort of watching this experience. Um and
+then at the end arriving at a nice set
+of validated bedded tests. That's what
+we want. That's the magic we want for
+our users here. Um yeah, and that's what
+we want. Um let's dive a bit deeper into
+the graph here to see how it actually
+functions. Um so here's the graph. Um on
+the bottom right you can actually see
+validator um which is the same agent
+that we just talked about previously. So
+you can already see some of the
+composability uh learnings that we found
+and that we found useful. Uh but uh so
+how do we arrive at this graph? Um we
+looked at the sort of heruristics that
+an engineer would use while writing
+tests and u so for example you want to
+prepare your test environment. You want
+to think about which business cases to
+test. uh that's the job of the
+scaffolder. Um then you want to think up
+new test cases. Um whether it be for
+extending existing tests or just writing
+new tests altogether. That's the job of
+the generator. And then you'll want to
+run your builds, your tests. And then if
+you, you know, those are passing, you
+want to run a coverage check to see what
+you missed. That's the job of the
+executor. And so we go on to you know
+complete the graph this way. And then
+because we don't no longer have a human
+involved, we can actually supercharge
+the graph and sort of juice it up so
+that we can do 100 iterations of code
+generation at the same time. and on a
+100 executions at the same time. Um
+we've seen you know for a sufficiently
+large source file you can do that and
+that's sort of where our key learning
+comes in is um we found that having
+these super capable domain expert agents
+gives us unparalleled uh performance um
+sort of exceptional performance compared
+to other agendic coding tools. So we
+benchmarked it against you know the
+industry um agent coding tools that are
+available for test generation and u we
+get about two to three times more uh
+coverage in about half the time compared
+to them um because of the speed ups that
+we did in uh creating this graph here
+and sort of the custom bespoke knowledge
+that we built into our agents. Um and in
+terms of impact we um have this tool has
+helped raise develop developable
+developer platform coverage by about
+10%. So that maps to about 21,000 dev
+hours saved which we're super happy
+about and we're seeing continued use of
+thousands of tests generated uh monthly.
+So um yeah that's very happy about that.
+Uh so take us through some more
+products. Yeah so we didn't want to stop
+at 5,000 tests a week like we've built
+these primitives right just wanted to
+give you a sneak peek of what else we've
+been able to do in the organization with
+this. So what you see on screen right
+now is our Uber assistant builder. Think
+of it like our internal custom GPT store
+where you can build chat bots that are,
+you know, steeped in Uber knowledge. So
+like one of them you see on the screen
+is the security scorebot and it has
+access to some of the same tools that we
+showcased earlier. So it knows it's
+steeped in Uber's best practices. It can
+detect security antiatterns. So even
+before I get to the point if I'm in my
+ID writing code, I can ask questions
+about architecture and figure out
+whether my implementation is secure or
+not. Right? Same primitives powers a
+different experience. Uh next up we have
+Picasso. Picasso is our internal
+workflow management platform and we
+built a conversational AI we call it
+Genie. Adopt that. It understands
+workflow automations. It understands the
+source of truth and it can give you
+feedback grounded in product truth like
+aware of what the product does. Um third
+thing I want to show you and this is not
+an exhaustive list right uh is our tool
+called U review. U obviously we built
+stuff in the ID. We try to flag
+antiatterns earlier in the process, but
+sometimes things still slip through the
+crack. You know, why not reinforce it?
+Make sure quality is enforced before,
+you know, code gets landed before your
+PR gets merged. So, again, powered with
+some of the same tools that you saw
+earlier that power like validator and
+test generator. We're able to flag, you
+know, both code review comments and code
+suggestions that developers can apply
+during review time. Um I think with that
+we'll just jump over to the learnings.
+Yeah, sounds good. So in terms of the
+learnings, um we already sort of talked
+about this, but we found that building
+domain explodations that are super
+capable are actually the the way to go
+um to get outsized results. So they use
+context better. You can encode things in
+rich state. Um they hallucinate less and
+then you know the the outgoing result is
+is much better. So an example that I
+already talked about is the uh the
+executor agents. So we're able to
+finagle our build system to allow us to
+on the same file execute a 100 tests on
+the same test file without colliding and
+then also get separate coverage reports.
+That's an example of a domain expert
+that's super capable and gives us that
+performance that we want. Secondly, we
+found that when possible uh composing
+agents with uh deterministic sub aents
+um or just have the whole agent
+deterministic makes a lot of sense if
+you can solve the problem in a
+deterministic way. So you know one
+example of that was the uh lint agent
+underv validator. Um we want to have
+reliable output and if we have a
+deterministic tool that can get give us
+that intelligence we don't need to rely
+on an LLM. We can have that reliable
+output and pass on the um learnings to
+the rest of the graph and have them
+fixed. Um and then third we found that
+we can scale up our dev efforts quite a
+bit by solving a bounded problem um by
+creating an agent and then reusing it in
+multiple applications. So you already
+saw it with validator the standalone
+experience and validator with an
+autocover for test generation
+validation. But I'm going to give you
+one more lower level example and that's
+the the build system agent that's
+actually used through all or both of
+those products. Um that's an even lower
+level abstraction that is required for
+us to be able to you know have the
+agents be able to like execute builds
+and like execute tests on the in our
+build system. Um so sab take us through
+some of the strategic learnings now.
+Yeah. So, Ma talked us through some of
+the tech benefits, but this is the one
+I'm probably most excited to share.
+Like, you can set up your organization
+for success if you want to build agentic
+AI and I think we've done a pretty good
+job of it at Uber. We haven't devolved
+into an AI arms race. We're all building
+in collaboration and I think these are
+our biggest takeaways. Uh the first
+being just, you know, encapsulation
+boosts collaboration. um when when there
+are wellthoughtout abstractions like
+Langraph and there are opinions on how
+to do things like handle state
+management, how to deal with
+concurrency, it really allows us to
+scale development horizontally. It lets
+us tackle more problems and more complex
+problems without creating this
+operational bottleneck. Right? Uh an
+example I'll give you is our security
+team was able to write rules for
+validator like the product we showcased
+earlier. It's able to detect security
+antiatterns, but the security team knew
+nothing about well this part of the
+security knew nothing about AI agents
+and how the graph was constructed, but
+they were still able to add value and
+improve the lives of our
+developers. And sort of like a natural
+segue from that is if you're able to
+encapsulate um you know work into these
+well- definfined nodes u then like
+graphs are the next thing you think
+about right like graphs help us model
+these interactions perfectly. um they
+oftenimes mirror how developers already
+interact with the system. So when we do
+the classic process engineering and
+identify process bottlenecks and
+inefficiencies, it doesn't just help
+accelerate or boost the AI workloads. It
+also helps improve the experience for
+people not even interacting with the AI
+tools, right? So it's not a like a arms
+race either or should we build agentic
+systems or should we improve our
+existing systems. It usually segus into
+like helping each other like just you
+know we spoke about our agentic test
+generation uh and we found multiple
+inefficiencies through like how do you
+do mock generation quickly? How do you
+modify build files invoke like interact
+with the build system? How do you even
+execute the tests? Um and in the process
+of like fixing all these paper cuts, we
+improved the experience for just like
+non-agentic applications just for
+developers interacting directly with our
+systems and it's been hugely beneficial.
+Um and you know with that I want to
+bring this talk to an end. We really
+enjoyed presenting here. Thank you for
+the opportunity. Hopefully you all
+learned something and we'll take
+something back to your companies.
+[Applause]

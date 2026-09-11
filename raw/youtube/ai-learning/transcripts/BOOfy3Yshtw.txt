@@ -1,0 +1,332 @@
+And honestly, cloud code didn't work very well for, you know, the first six months. It it actually it took time. It took time to catch up. And it wasn't until I would say Opus 4 in May of 2025.
+Here at Anthropic, we've seen an 8x increase [music] in code output per engineer. And this is just unheard of in the industry. Like, you know, typically
+[music] companies see something like a few% a year. Quad building bigger and bigger things. So, it won't just be [music] features, it's going to be products. Every time it didn't work, I
+learned a lot. And every time I did a startup, I wore a different hat. It was sometimes engineering, sometimes business, sometimes product, sometimes
+design, you know, you know, you know, like at a at a small company, sometimes you have to do all this stuff. And so from from kind of the beginnings of my
+career, I kind of felt this need to break down the walls of, you know, engineers do this and designers do this.
+And um at some point I you know I did a bunch of different startups. I worked in VC for a little bit. Then I ended up at Meta for for a little while.
+And um something that I've I've always done as I built products is I built developer tools so that I can build
+better products. Because there's this sort of intuition that if you have an idea and you want to build it, the easier it is to use your tool, the
+better you can build it. Imagine if you're, you know, a carpenter and, you know, like hammers are really badly designed. Let's say it takes like, you know, let's say it takes like three
+people to hold a hammer to hammer a nail. You're going to hammer a lot less often. Yeah.
+But if you have like a really well-designed hammer and it's very easy to use and you enjoy using it, then you're going to hammer a lot of nails.
+And so, you know, like when when I build product, I love to build the developer tools that make it even easier to build the product.
+And the thing that matters is not the tool. The thing that matters is the end result of the product.
+And so, this is the, you know, this is the mindset that I took to Meta. This is the mindset that I that I brought to Anthropic. You know, at Anthropic, the thing that matters more than anything is
+the safety mission. This is the thing that brought me there. This is I think that just the most important problem to work on. And you know, my role at
+Anthropic is to build the tools that let people experience the models so they can understand where this thing is headed.
+And that lets us make it a little more safe and a little more capable and hopefully a little more delightful to to use.
+Well, I tell you, I love hearing that.
+There's there's a bit of Malcolm Gladwell in your in your story of the art because you look at what you've done
+and you you probably couldn't have done it without that myriad of experiences. I'm I'm very fortunate in chip design.
+And I've had a chance to be in super small teams where we had to do really every aspect of chip design and and I feel so fortunate because over my career
+it gave me a perspective of how all the myriad of pieces have to come together and you were so hands-on in the myriad
+of roles uh and you think about how inanthropic you're having to put it all together to enable people to have that
+end result and to have it be safe. All right.
+Yeah. Absolutely. And you know like when we hire for the team, these are the kind of people I look for too. Like I I I typically don't look for a person that you know has a computer science
+education and then you know like worked in you know big big tech for for whatever. I like I love people with non-traditional backgrounds. I love
+people with all sorts of different experiences cuz the more that you've seen the more different ways you've approached problems the more you can bring to this problem.
+Yeah. You have a passion for what you do and I assume you look for that in the people you're hiring as well.
+Yeah. Yeah. And I love people that are passionate not just about their work but about other stuff too. So like I love people with like you know side projects
+and hobbies and just like if someone has like an amazing personal website uh and also does you know leather working on the weekend and they've gotten to a
+point where they do it at like a very high level that's a really good sign this is a person that's going to perform well on the job too.
+I would just love to explore a little bit of how all of that background and you jumped in uh with anthropic. Could
+you have imagined when you uh started just thinking like hey we could do really a code assist and autocomplete or
+or or or you know just really helping code segments. Uh tell me when you started to realize that you could progress from there uh to really these
+agentic processes that now um are are significantly uh advancing code to where where
+basically everyone's saying look this we're not co we're using uh coding agents we're not coding in the
+traditional way which means it's it's now we've fundamentally transformed software development and it's all happened in a period of months months.
+How you know did you imagine that?
+No. [laughter] No.
+When when I joined Anthropic, the model at the time was sauna 3.5. And that's the first model that I think broke through the mainstream.
+And it made people realize that, oh man, maybe there's something to this idea of a general model that if you apply it to a particular problem like coding, yeah, it can be really good.
+And um you know, like philanthropic, this has just always been the research direction. like we we have always been focused on uh safety and uh uh security
+and enterprise and coding. It's just always been this laser focus and we wanted to build these models for a
+long time. The reason we want a good coding model is because the model exists as software. And as it gets more intelligent, the way it interacts with
+the world is through software. And so you want the code that it writes to be good so that it can interact well so that we can study it and we can make it
+safer and better aligned. And so you know for a while for anthropic we knew we wanted to build some kind of coding product. And my job was to figure out what's that product.
+Yeah. And when I joined again it was it was Sona 3.5 and all the products at the time they were fancy autocomplete
+and you know at the time this was cutting edge and I remember my first time you know using some of these products and it was just amazing. Um and
+we felt that very soon the models are going to get to a point where they're going to be much more capable than this.
+So for coding it's not a matter of completing a single line. the model is going to be able to write an entire function, an entire file, an entire
+feature, an entire project. Now, I think by the end of this year, they're going to be able to build entire businesses.
+And so, you know, we we kind of saw this uh you know, we call this the exponential and this is just the way that, you know, the models are developing.
+There's these scaling laws that describe the way that model intelligence goes up over time.
+Somehow the laws are continuing and in fact it's accelerating and you know, it's an empirical kind of observation.
+It's not obvious why it keeps happening, but it seems to keep happening. And so all we did is we kind of traced the line and we're like, "All right, right now the model is here. It's going to get
+here. The product that's here is not going to be enough to let people experience the power of the model." And so we wanted something that was purely agentic.
+And honestly, quad code didn't work very well for, you know, the first six months. It it actually it took time. It
+took time to catch up. And it wasn't until I would say Opus 4 in May of 2025. Yeah.
+Where it really started to work. And you know like since then the grow the growth for you know the product has been exponential also. It was not at first but that's when it became exponential.
+Yeah.
+And um we've been finding more and more ways to to use this like as the model gets more sophisticated we figure out more ways to unlock it in the product.
+We launched quad tag and this is kind of the latest iteration of this.
+longunning asynchronous agent that you interact with like a co-orker. It has great common sense. It has a great sense of when to jump in and when not to. And you know, this will just keep happening.
+We're going to keep disrupting ourselves. So, we're going to keep figuring out what is what's the next form factor. You know, you talk about sort of predicting this this uh this
+line of progress, but to me uh how did you how did you uh think about architecting,
+you know, really multi- aents and how uh running these multiple agents can actually have us rethink how we
+implement our workflows. I mean that that to is what been shocking to me is we actually have the opportunity to
+rearchitect re-engineer how all of us are getting our work done. And I I have
+to wonder did this was that architected uh into your development or is that sort
+of just a natural outcome of the capabilities that you were developing?
+I think it's a little bit of both. If I think back a couple years, how did how did we use models? we you know like they did this like oneline autocomplete and
+and we had agentic workflows at least what we called agentic workflows but it was essentially these deterministic systems where a step at a time might call out to an LM to do some bit of
+computation but fundamentally the workflow was deterministic and I I think what's changed as the model got more intelligent is we've realized actually
+it's much better to use the model as the coordinator for this workflow and so what you do is the model drives and you
+give it tools to pull in context Next, you give it tools to interact with the outside world. You ask it to do something and then you let it figure out
+how to orchestrate this. You no longer tell it, okay, you do step one, then step two, and then if not two, then you know this, and then else this. And it it's just not how it works anymore.
+You give it a goal, you give it the starting point, you give it access to tools, and then it will figure it out.
+And this has happened, I think, as models got more intelligent. This is just overwhelmingly the reason. But I I I think like within quad code, we've
+also learned this. At the very beginning, we would kind of spoon feed the model context.
+And then as the model got more sophisticated, we realized, okay, maybe actually this isn't it. And we moved away from that a little bit. And you know, like for example, we have this
+like file called claw.md. It's loaded for every session. And I think more and more what we're seeing with customers is they're actually moving more to skills
+and [clears throat] they're moving more to tools and more to MCPs because this way the model has a little bit more control over how to load this in.
+Well, I have to uh ask I mean you guys across Antropic are using cloud every day. I mean so you're you're customer
+number one like before the rest of us see it uh you know you're you're making sure it it accomplishes what you need.
+Tell tell us about your your typical day. I mean, it is it is it is is Claude
+like an extension of your of your body as you're as you're creating your work output?
+Yeah, this is this is sort of the weird thing about how anthropic works at Anthropic. Claude is at the center of everything that we do.
+It's every single business process, every single bit of everything everyone does throughout the day, quad is just at the center of it. Um, a way I sometimes
+describe it is, um, let's say you're a new hireer and you're onboarding at Anthropic.
+Typically, if you have a question like, uh, you know, where's the office?
+Where's the address? You know, like at, you know, most companies, you would go and search a wiki or you would ask a coworker at Anthropic, you ask Quad. If
+you have a question like where's the codebase and how do I get access to it?
+Again, you don't go to wiki, you go to quad and you ask quad. If your question's like, you know, like I took a trip, I have an expensor for it. how do
+I file that expense report? And this is how it begins.
+But then as you kind of get deeper into the work, Claude remains at the center of everything. Yeah.
+And so, you know, Claude writes the code. Uh it does the the code review. It does the security review. Um it brainstorms and comes up come comes up
+with new product ideas. It aggregates user feedback. It triages incidents.
+Every single part of the engineering SDLC cloud is at the center of it too.
+Yes. And you know like now now this is happening not just for engineering it's happening for product and for design and for marketing and for GTM for every
+function. This is what we're seeing and the tools look a little different.
+It might not be you know quad code in a in a terminal. It might be you know a tool like co-work instead.
+Um but it's still quad at the at the center.
+And I think this is actually what I see with the most successful adopters of of quad is you put it just at the center of every process.
+We we were talking a little bit before about uh my my favorite Harvard Business Review article from like from the '90s and it it was talking about like I think it was like '92 or '96 or something and
+it was it was titled something like computers are here why are we not seeing the productivity benefits and you know like this was a big question that people
+were debating and essentially the case the article made was that there were two kinds of companies. There was one kind of company that they took a computer and
+they put it somewhere in the corner of the office and then they kept all their, you know, paper and pen processes and all their filing cabinets and everything stayed as is. But now there's a computer
+in the corner. These companies are not seeing a productivity improvement. And then there's the companies that took the paper, you know, the the filing cabinet
+and threw it away. They took the paper and pen and burned it.
+And now there's a computer at the center of every process. And those are the companies that unlock productivity improvements. And you know since the beginning of this year at Anthropic,
+we've seen an 8x increase in code output per engineer. Mhm.
+And [clears throat] this is just unheard of in the industry like you know typically companies see something like a few% a year. And you know now our biggest customers that are using cloud
+code now they're starting to see something like this. They're seeing like you know 50 100% 150% improvement. And the thing that we did to get to the, you
+know, the 8x is we systematically improve a bottleneck at a time.
+So, you know, first coding is the bottleneck. We we throw quad at it and quad does the coding.
+The next bottleneck is the code review and, you know, then we have quad do that.
+Um, the next bottleneck is, you know, like generating materials for GTM. You know, maybe we throw quad at that.
+And so, just like one step at a time, we unbott every part of the process. Well, what I love that is because you're driving your development by your own
+real world needs. It's it's a self-reinforcing cycle uh to make sure that that of the value of where you're
+spending your your resources. You're an AI native company, so you're you're adopting that change at an astonishing
+rate. But I'd love to hear your experience of how you think about the role of of leaders, of engineers. I just
+think you're ahead of most of the rest of us and starting to see that at play uh and seeing how you're you're taking people with you.
+Stepping back a little bit, engineering is this thing that it's just always been changing. And you know, as engineers,
+we're no strangers to this. You know, my my grandfather actually programmed punch cards in the in the Soviet Union. Um,
+you know, like I I grew up I I programmed like basic and assembly growing up and then, you know, I kind of learned higher level languages like as as I went. I I worked in JavaScript for
+a while and in JavaScript every every engineer knows the frameworks change like every month there's a new set of frameworks and everyone has to learn new skills and so so I think like for for
+engineers the it's always been changing the languages have always been changing the frameworks have always been changing what's happening now is it's accelerating
+and so we went up a level of abstraction we went from you know hardware to punch cards then we went from punch cards to source code now we went from
+manipulating source code to agents and now we're going up a level again from managing agents to managing like loops
+and routines. And the crazy thing is that these last two steps happened in the span of two years. It's just it's faster than than it was before. And I think it'll continue to accelerate.
+And so when it when I think about the engineers and the the people that are really successful, I think it's people that are empirical and and curious. So
+you're able to look at the data and you're able to adjust the approach. You don't always assume the same thing they always do is going to keep working.
+you're able to kind of take feedback from your work and so if there's new data you can have a different approach.
+Um it's people that are autonomous because as engineering is no longer the bottleneck now we're actually
+bottlenecked on the speed with which we can generate good ideas and bring them to market and you know do so safely. And the people that are really effective at
+this, they're not people that, you know, like they have to have this big process for how to get an idea to market and they need to collaborate with like 10 other teams to do it. They're sort of
+like one person armies. It's like the the people that are most effective are this kind of like CEO archetype. Like you're you're able to come up with an
+idea, you're able to talk to users, you're able to look at the data to build, to iterate, and to to bring it to the market.
+And we actually see this coming not just from engineers, but from all sorts of functions. Mhm.
+Um I think I think having this engineering background helps today, but it's actually I don't I don't think it's really essential anymore to to doing
+this kind of thing, but it does change the kind of skills that we need to emphasize. You need to
+be adaptable. You need to be uh fearless of change. I love what you said. You you have to be curious. You have to, you
+know, really be experimenting. I mean that's part of what I think this these new agentic workflows uh new meaning you
+know like like we've we've said Lily in the last uh you know 7 months to a year it changes how you can iterate. So how how do you be curious? You can
+experiment now in ways you could never experiment before. I mean your learning cycles are vastly accelerated aren't they?
+Yeah. Totally. Totally. And and I think it's on you know it's on leaders to make space. If you don't adjust for this and you don't create space, everyone's going to keep doing it the old way and you
+gonna have to force everyone to do it the new way. Yeah.
+But really, for a lot of people, it's actually just really exciting to get to try all these tools, to get to experiment.
+And so, I actually see a lot of my role as creating space for people to try stuff out, to feel safe doing it. You know, they're not going to get a bad
+performance review if they, you know, experiment with a new idea because it might actually work.
+Um, and my other job is to just give people context. Yeah.
+So, to give them business context, product context. so that they can make better decisions.
+But companies that aren't AI native, uh these are lessons like what you went through that it's going to it's going to take uh showing best practice. It's
+going to be, you know, educating the the workforce and and really driving culture change to be as you described.
+Yeah. Yeah, that's right. And and our job is to to help companies along the way. You know, like one thing that I've seen companies go through is this kind
+of natural transition from not using AI to, you know, every engineer running one agent to every engineer running 10 agents,
+then a 100 agents, then a thousand agents. And there there's sort of these like traits that go with each of these.
+So, you know, with one agent, uh, engineers are using this agent to kind of like write the code and you're kind of focused on it. You're still kind of singlethreaded. You're working on one
+task. Then at some point you kind of get to the point where you kind of trust the agent and you're like okay maybe maybe it's actually doing the right thing.
+Maybe while it works I can start a second one. Yeah.
+And engineers kind of naturally figure this out like maybe you'll have like multiple checkouts of the same repository or you know multiple views of the same code. So while the agent works
+you can uh you know work on something else and maybe you can scale up to like 10 agents. This way what you're doing is you're essentially roundroining through the agents. You start the work in one
+you move on to the second you you do the work there you move on to the third. And this is kind of the workflow that we've now support really well in uh the the
+desktop app. Um so both for quad code and for co-work you start a session you just start a second session you can you can move on you can have multiple stuff
+running in parallel but then it gets really interesting once you scale this up a little bit more and I I think like when I look at most companies they're still somewhere between step one and two.
+Yes.
+And uh when I look at anthropic we're probably somewhere around step three on average. So most engineers are running dozens or hundreds of agents
+and um the way you do this is you have the agent run another agent and we have a lot of tools for this. Um so for example
+if you're sub agents so you have agents running basically sub aents. Is that how you think about it or we've coined that phrase if if I don't know if it's industry standard.
+No no that's exactly it. So you have the sub aents and the sub aents can start sub agents. So it can it can actually go quite deep and for cloud code we support up to five layers now
+of this kind of nesting and there's different ways to support this on the product side. So you know we've been experimenting with for example cloud execution. So instead of
+the agent running locally on your computer it runs in the cloud and uh you can start an agent from the desktop app or from the mobile app and I actually do a lot of my coding from my phone now.
+I love that.
+And it just runs in the cloud and this is actually what lets you scale up. And then you know we we we're we're continuing to iterate on this to make it even more native and to scale up to
+thousands of agents. And the way we get there is with dynamic workflows and this is essentially using cloud to orchestrate just very large teams of
+agents to do the most complex work like large codebased migrations like I think stripe just used this to migrate um it
+was something like like it would have taken months and then it took like 4 days to do like a 10,000 line uh Scala to Java migration. Um there's a lot of
+companies that are using this for large migrations like we just migrated bun from Zigg to Rust and this is like a JavaScript runtime. It's a lot of code
+and um so for the for these kind of like very very big workflows that would have taken weeks or months or years essentially a way to do it is this
+divide and conquer where you give the model a lot of agents and you just tell it like go figure it out do this big task. So it goes back to what we said
+earlier. It uh it's going to be a journey. It's going to take uh it's going to take education uh and it is
+going to take culture change and uh when you do it right uh we actually have similar examples of what you just described. We have uh we we have uh
+created a rustbased uh application. Our lead of AI software development did it over a weekend uh for an application
+that we needed. uh we were we we thought it would be a competitive gap uh and and over a weekend now we had to validate it and get it through all the you know the
+test regressions and everything where it could be shipped but that just is was unheard of before. I mean uh it it's
+just astonishing to me uh what multi- aents can do. Again, you go back to this projection you had. It sounds like
+that's this is exactly what you expected though. Yeah.
+Right. I think this is this was what we expect. Yeah. You know, you never you never know exactly how it's going to scale, but if you know, for some reason,
+you know, this is uh this is continuing and you know, like for for these traditional scaling laws and it it it's funny the the people that wrote the
+scaling was paper like the first few authors like went and started anthropic because I think they knew where it was going. They know that safety becomes very important, security becomes very
+important. Um and so you know traditionally the the scaling law was say that we scale as a function of the the size of the network, the amount of
+data and the amount of compute. And what we're seeing now is it's also a function of the test time compute. And you know like essentially it's a fancy way of saying how many tokens you throw at it.
+And so from a product design point of view and kind of model training point of view, we want to make it so you can more productively throw more tokens at a
+problem to get a better result because if you do it naively, you spend more tokens but you don't get a better result. And so like one one example of this is effort levels. So like in the
+model you can configure the effort. The higher the effort, the more the maximum amount of tokens the model will be willing to spend on that problem. And so this idea of like multi- aent and
+dynamic workflows, I actually see it as another version of test time compute.
+You throw more tokens at it and by orchestrating the agents and having the model orchestrate it, you can use these tokens productively to to get a better
+result. And Boris, I've heard you uh state that it's really important to throw those tokens at it because otherwise you don't even know the roof
+line of what you can achieve. Maybe you can share with our our audience what what you mean by that.
+Yeah. So I I think there's a lot of companies right now that are thinking about uh ROI and and how you measure this. And I
+think some companies are actually thinking about it wrong because they're focused purely on the I part of it. And so they think about okay, here's my investment. How do I reduce it? How do I
+cost cut? Obviously, this is important and you should just do this. And you know, there's a bunch of tools for this.
+You can use uh opus plan mode. You can use advisor models. You can use a lower effort setting. You can use a cheaper model. So maybe everything doesn't need
+opus or you know maybe you can use haiku. Maybe you can use sonnet. And of course you like you write evals to kind of figure this out. But I think actually
+the far more important part is the r. So how do you improve the return that you're seeing from models? And and I
+think the biggest lesson here that we've seen from successful customers is you want to give engineers the freedom to experiment. You want to give everyone
+the freedom to experiment so that they come up with new use cases. You want people to experiment and you want to create this culture where people feel safe experimenting and they will surprise you.
+Yeah.
+It's not going to be your most senior engineer that comes up with like some brilliant idea. It's going to be maybe a new grad. You know, it's not going to be some engineer that figures out how do
+you automate this marketing process. It might be a marketing person somewhere in the corner of the org that you've never met but that comes up with a brilliant idea and they're because they're experimenting. And so the thing you want
+to encourage up front is this experimentation. If there's an internal use case and it takes off or there's a product and it takes off and it uses a lot of tokens but it's successful that's
+when you go in and you want to optimize it. But if you don't do the first part you'll never find opportunity. And um then once you find opportunity then then
+you can optimize it like any other engineering pump. Boris, I love that description because you what you also highlighted is there's a democratization
+of opportunity. We've actually had junior engineers uh take a problem, a chip design problem that was was a bug.
+Uh we had an engineering team had been working for weeks couldn't solve the bug and one of our junior engineers said I I think I can solve that. uh threw a set
+of agentic processes at it and came and solved this incredibly you know remote you know 20 things at once had to occur
+for this uh chip bug to to realize itself. This was obviously before we shipped a product. This was in our our debug and test phase. It actually
+shocked to the core a number of our senior engineers and and that actually drove up adoption [laughter] of these
+approaches at AMD because every time you actually have to experience it uh you you can talk you can give it lip service
+but once you actually have a problem that you couldn't solve or uh or actually experience a huge productivity
+gain I just leader after leader I see them immediately converted on the spot to believers.
+That's right. That's right. And you need a certain amount of humility also going in. Like I think this is a lesson I I had to learn like over and over and over
+again. I tried to do things my way which was, you know, before I just kind of gave up and like let Quad drive. I I kind of had to I I I manually did it.
+And you know, for example, maybe this is like a year ago, it was like debugging a a bug also. And um I remember there was like one time I was debugging something
+and there was a new person that just joined the team and I was debugging it by hand. that was running a you know a profile to figure out what's going on and they just you know asked Quad to do
+the same thing and I was like no no no there's no way Quad won't be able to figure it out.
+Even you said that even I even I said that because you know in some ways like I'm biased because I've worked with Quad through all the model generations and so somewhere in my
+head I was still stuck on this like older model generation which is just not where the capability was at that point because the model was improving.
+Um and within 20 minutes they came up with a solution and I didn't. Wow. and they they had the right one.
+And I've just, you know, learned this lesson over and over. And I think it's like as the model gets more advanced, my relationship with the model changes. And
+it's less that like I have to handhold it and I have to micromanage it. And it becomes more like working with a senior engineer. I I trust them. I give them context. I give them goals. I check in.
+The, you know, the less I trust them, maybe the newer they are to the problem, the more often I check in.
+Um, but really it's about setting the right guard rails and then letting the model do the work.
+Boris, I have a question for you. I mean it is a democratization of what teams can do. And so what what we also see is
+that um people will be running in parallel and we're going to have five ways to drive a you know a improvement
+out of a workflow. How do you think about that? How do you think about measuring and you know and how um you know how how do you at Enthropic and in
+those cases you know pick the solution to go with? I mean you what's the role of like benchmarking and measuring uh to
+be able to in this agentic area make these decisions and and not end up with uh this you know just massive
+bifurcation of of approaches you know as we all are are trying to solve problems. Yeah. So I think it's exactly this.
+There's there's actually two tools. One is EVEL's so benchmarks. So then one is Vibes and I think both have their place.
+Um for something like a workflow that you're going to repeat maybe thousands, tens of thousands, hundreds of thousands, millions of times, you definitely want to have evals because
+the eval measure, let's say a new model comes out, you swap it in in the harness and you want to make sure that it improves. Um and this gives you a way to
+measure it. for other things like maybe a product experience. Uh vibes actually go pretty far because there's a cost to writing evals. You don't want to write
+it for everything. Um so you kind of want to like pick and choose when when can intuition when you use something when when when does that tell you something? And then when do you actually
+need eval to tell you something? And when you have this bifurcation and all these different products, I think one of the the blessings of uh you know like
+having having a model is it's actually very easy to migrate and merge code. And so like when you know you pick the approach that you want usually it's
+quite easy to just ask cloud like hey like migrate all these other call sites to this you know workflow and you know that's that.
+Well I'm going to shift gears yet again a little bit. I want to uh talk about something that that all of us have to focus on and and I think it's just
+actually centered and anthropic in the approach you all have taken and that's uh the broad topic of trust and verification. Um I had on a previous
+episode Kathy Fam who who lectures at u at Harvard and we talked about uh uh you
+know governance and how you build in the process. So there's one side there's a governance of how to ensure there's safe AI and then there's the verification
+like how do you ensure um that you're driving the accuracy that that you need because both both come together to
+provide trust and and the deployment of AI. I know it's important to you. You've said it from the outset in our in our
+chat here, but maybe we could just spend a minute um thinking about like how do you how do you build that in? Like is it
+is it a a checklist or is it is it actually built in your your own workflows uh that you run every day?
+Yeah, I mean it's it's a it's many layers and exactly like you said for for anthropic this is just at the core of what we do. As models get increasingly
+powerful and they get more and more central to the business process, you needed to be safe. You needed to be reliable. You needed to be trustworthy.
+You needed to be aligned with uh whatever the intent is of of the person that's using the model. So, you know, there there's just like so many ways
+that that we approach this at different layers. The most basic is model alignment. And, you know, we have a very large team working on it. We publish a lot of research about it and we have a
+lot of blog posts about what we're learning. And this is just many many years of research go into this. And uh essentially like you know there there's
+a lot of things that go into alignment but you know for example an element of alignment is uh truthfulness. So you know the model kind of says the right
+thing. Another element is uh not being because a failure mode for models for example is agreeing with everything the
+user is saying but actually a a good model that I like working with will push back.
+Mhm. And I think with uh with some of our later models, so like Opus 4.7, definitely Opus 4.8, um we made a lot of
+progress in this. Um and so if we train kind of the model well, then if I suggest something and it's a bad idea,
+the model will push back and it makes me trust it a little bit more.
+There's other layers too. So you know, when we talk about trust, another element of this, you know, there's a lot of stuff wrapped into trust, but another element is uh security. And so this is
+another element that goes into training is for example anti-prompt injection training and on every model we publish there's a system card that talks about
+how resilient is the model to common attacks like prompt injection and opus 4.7 op 4.8 aid fable. These are just the
+least prompt injectable models in the industry by margin of I think like five or 10x. It's it's like a really big margin.
+So you you had to architect that in I mean how did you do that?
+There there's a lot of training that goes into it. [clears throat] So you know this is this is just part of the model training process. Um and we we train the models to be resistant to
+these kind of attacks. And especially when you combine it with a runtime classifier for proper injection, which we actually also do, the success rate in
+practice now is near zero. And obviously this is important because as the models do more, as they interact with more systems, being resistant to these very common attacks becomes very important.
+As the model gets more capable, we need a way to run the model for a longer period of time safely. And you know, now there's workloads that run for days,
+weeks, months at a time. And obviously this means that there can't be a person sitting there. And around the same time, what we were realizing is if there's a
+person that's deciding yes or no every time, at some point the person actually just stops reading and they just say yes, yes, yes, because they're tired of
+pressing yes. And I noticed myself doing this, too. You know, I I I would kind of stop reading the bash commands. I would
+just say yes. And our security people were also realizing this. [laughter] Um and so they the thing that they started working on is is there a way to
+route this to a classifier so the classifier can decide and you know they started this work it took uh many months
+to to kind of get this to a mature state and in the end through uh evals uh through red teaming through pentesting
+we're able to show that this is actually much safer. Yeah.
+And so you know at anthropic we run on auto mode and we we recommend this to all our customers too. Well, Boris, uh, I I I have to ask you, I mean, you you
+you're removing bottlenecks at at every stage, but how do you think about scale going forward? I mean, uh, the complexity of what you're taking on and
+and on traffic is is it just, as you said, growing at at dramatically at every release. Um, how do you how do you
+think about managing scale uh actually maintaining that pace?
+Yeah. I I think a lot of it comes down to following the scaling laws and uh
+continuing to reinvent the product as it scales up. Um a lot of it is you know about finding awesome partners to work
+with um to you know like support the scale and you know like support this kind of compute. Um and uh I I I I think
+a lot of it is uh figuring out the right guard rails so that we can make sure it's safe because you know like again as the model
+becomes more and more core to what we do um we have to make sure that it does the right thing. Yes.
+But I'm actually Mark I'm curious how you think about it. Like you're no stranger to scaling and you you've seen this through multiple generations for CPUs for GPUs.
+Yes.
+How how do you think about it? Well, scaling for us at AMD is is actually fundamental because the old Moore's law,
+so Moore's law was that you could double the transistor density, double the performance, but stay at the same power
+envelope and cost envelope. And that that was fantastic for years, but Boris about 10 years ago that started trailing
+off. Not that we don't still with each new semiconductor node get you know more productivity and more uh density but the
+costs are going up and as you've certainly seen the power goes up. Uh so we're having to reimagine how we
+optimize to be able to maintain we're basically needing to stay on the old Moors law pace without the physics of
+the semiconductor supporting that old Moors law pace. So um it's a huge challenge uh but we're up for it and
+frankly uh these agentic flows are proving immensely helpful to let us scale because they're helping us manage
+at a bigger I'll call it state space more variables more of our chip designs that can be optimized
+uh and I I don't think we could we could continue to scale without these agent workflows. I literally it's coming about
+at the perfect time. It's like a perfect confluence uh to to enable us uh to continue to scale. Uh and you talked
+about partnership. I mean that's at the core of who we are at AMD like um you know our partnership with you, our partnership across the industry. That's
+also fundamentally fundamental for us to to be able to scale because we like to deeply partner um to make sure we are
+using the best like just as the stories you've told us here. We want to be first adopters of of those best practices uh that that you're doing at at Anthropic.
+So uh great question uh for us at AMD for our whole chip industry paramount of
+innovating to keep uh at scale. I I have to ask the question. I mean you talked
+about uh really seeing us uh progress um uh on on kind of the line you projected.
+So I have to ask what do you see coming in the next uh you know uh two to three years which in AI time is like an
+eternity. [laughter] Two to three years is a really long time but it's maybe um I I'll think about maybe six months. Six months.
+Um this is just otherwise my prediction is just going to be way off somewhere. Of course.
+Um I think I think in six months um we are going to see agents running for longer on average. We're going to see people running more agents on average.
+we're going to see them be better aligned with your intent. So it's going to be less course correction, less handholding. There's going to be a lot
+more autonomy. Um, so I think it'll actually become pretty normal for, you know, most people and definitely most engineers and hopefully more than that
+to be running agents for, you know, like days or weeks at a time. This would just become a normal thing as opposed to something a few engineers are doing. Um,
+I think by the end of this year, we're going to we're going to start to see Quad building bigger and bigger things.
+So it won't just be features, it's going to be products. We might start to see entire startups being built by Quad. Um,
+so yeah, progress progress marches on and um, you know, we're excited to to to make it safe and to make it something that's delightful for for people to use.
+Boris, um, thank you very much. Thanks for sharing your insights. Uh, thanks for your vision and the impact you're having on the industry. Uh, and my god, it's an exciting future. Thanks so much.
+Thank you, Mark.
+I truly enjoyed chatting with Boris. I think Boris really gave us a preview of how work changes going forward in this agentic era of AI. A few takeaways
+[music] that really stood out, the value of hiring people with non-traditional backgrounds to bring new perspectives
+and passions. Also, how at Anthropic Claude is at the center of the employee experience. Gentic AI democratizes the
+opportunity for anyone at any [music] level to make an impactful difference.
+And lastly, when thinking about return on investment, don't just focus on the investment. Focus on the return. The
+freedom [music] of experimentation that provides will be what comes up with the biggest wins. Thank you for joining us today. I look forward to bringing
+[music] you more in-depth conversations on the cutting edge of technology, industry insights, and visionary perspectives from some of the brightest
+minds in the industry. You can [music] watch the video show on AMD's YouTube channel, or you can listen in audio only platforms, including [music] Spotify, Amazon Music, and YouTube Music.
+Technology is always advancing, and I can't wait to share more insights with you next time.

@@ -1,0 +1,576 @@
+I just figured out how to use claw to
+generate pretty much any kind of
+automation in naden just using simple
+clawed prompts. And even better, I can
+replicate existing workflows just by
+taking a screenshot. Hey, I'm Ethan.
+I've earned over 70 grand in the last 6
+months running my AI agency. In this
+video, my goal is to cut through the
+as much as possible and show
+you an extremely practical way to
+streamline your operations and build
+workflows faster for clients to save you
+time and money. So whether it's a
+client's existing system in in make that
+you want to transfer to NAND a YouTube
+tutorial that you just saw that you want
+to figure out if it will work for your
+clients um or any other NAN workflow
+that you find on the internet if you
+have a screenshot of it if you have a
+description of it then we can generate
+it inside of NAND or using Claude inside
+of NAND and so if your agency is still
+manually building out automation step by
+step um then you're already being out
+competed by people that understand how
+to use Claude and other AI systems to
+generate workflows And so with the right
+setup, Quad can pretty much reverse
+engineer any workflow you can imagine.
+And it's not 100% perfect. It gets you
+about 80% of the way there with just one
+or two prompts. But this is still 10
+times faster than you would have
+manually built it out. So this can help
+help you onboard clients faster, scale
+delivery capacity without having to hire
+more automation people or just
+dramatically reduce the time you spend
+on workflow creation. And so in this
+video, I'm going to show start by
+showing you a live demo of the system.
+You're going to watch me create and
+reverse engineer this complex like a
+super complex workflow in just a matter
+of minutes. And then I'm going to show
+you how to actually set this up. So,
+we're going to learn how to configure
+Claude with the exact system prompt and
+resources to get this to work. And then
+I'm going to show you how this could fit
+into your agency's operations in client
+delivery. And so, if this has piqu your
+interest, stick with me and I'll show
+you exactly how it works, how you can
+set it up for your agency's cloud
+project, um, and how you can get benefit
+from it in real time. So before I break
+anything down, let me prove to you that
+this can actually do what I say it can
+do. So if I go over here, this uh
+workflow is one that I just generated
+inside of Cloud. So if I go over here to
+COD now, you're going to see that um I
+have this project here. Let me zoom out
+a little bit actually. So you can see
+this project here is basically just a
+couple of the NAN workflows that my team
+has built out that I popped in here. And
+then I have a an XML prompt in here
+which is the system instructions which
+gives it a bunch of context on how to
+build out these workflows. And so
+basically what I can go in here is I can
+basically tell it what types of workflow
+I want it to generate. So let's say it's
+like an air table content generator.
+This is one system that I have um shown
+and built out for a client. So let's
+start with this right here. I'm going to
+say build me out an NAN workflow that
+starts with an air tableable node and
+gets a user query from air tableable.
+Whenever that query comes in, we want to
+uh run that text through a social media
+generator. This will be a block of text.
+And so basically, we'll be taking the
+query inside of um Air Table, running it
+through an OpenAI node, and then we're
+going to be releasing it on all sorts of
+different social media platforms. Maybe
+it's LinkedIn, Twitter, um or an X now.
+and then Instagram and Facebook. And I
+want you to generate use the AI to
+generate copy for each of these
+platforms and then to go and actually
+schedule them out on each of these
+platforms um using Air Table um and the
+the native APIs for each of these social
+platforms. So you can see this is this
+is a pretty complex workflow that we're
+going to be um working with here. And so
+once I click send, Claude references its
+knowledge base, applies its
+understanding of NADN, and it starts
+outputting this JSON here that I can
+copy and paste directly into NADN. And
+so the result is literally a complete
+workflow with all the trigger nodes, the
+AI agents, all the integrations, uh
+whatever whatever I told it to do. And
+uh something that um I forgot to tell it
+is to make it a downloadable JSON file.
+And so if we go over here to nadn while
+this is generating you can see that
+uh this is essentially something that we
+can import as a file. So if I go import
+as a file you can essentially see that I
+can upload this directly in here. And so
+now with that being said, what I'm going
+to do is I'm going to have this generate
+uh I'm going to say
+um now make sure that this
+artifact is a
+downloadable JSON file. I'm not going to
+bore you here while it uh loads. And so
+I'll check back in. So now that this is
+finished generating, you can see this
+entire uh JSON that it just generated
+based on the project knowledge base, the
+custom instructions, etc. And so I asked
+it, I basically said make sure that it's
+downloadable as a JSON file. And so now
+that I can download it, I'm going to
+download it here. Um, boom. Um, and so
+I'm going to download it as a JSON file.
+And now what I can do is I can actually
+go over here into NAND and I'll show you
+exactly what it generated. So, if I go
+over here into
+NADN and then I go click on the three
+dots here, click import from file, I can
+choose the social media workflow that we
+just
+downloaded. And then what you can see is
+that um it's basically it just generated
+this entire thing from scratch. It
+created the workflow steps and
+instructions saying that it uh generated
+generates multiple social media posts.
+It gave us the kind of structure here.
+You can see on a on a trigger it gets
+the queries um and it lists out rows and
+you can see it's not perfect. Like
+sometimes it doesn't get it quite right.
+Open AAI generate content didn't work.
+So basically what I would do is I would
+just uh add in an open AI node
+here. I would message a model you know
+but so it's not it's not like literally
+going
+to get everything for you here. We can
+start to get a sense that with just you
+know within about two minutes we had
+this entire workflow generated which is
+checking which where to post things on
+it's saying scheduled on Twitter it's
+using if statements it's taking JSON
+variables um it's posting them it's
+updating air table with the results and
+then it's continuing to the next item um
+and if it's false and trying to do error
+handling in here as well Instagram graph
+API Facebook API etc um and so you can
+see how utterly powerful this is that
+it's basically just generating this, you
+know, from scratch. And so the next
+thing I want to do is I want to show you
+how if you can just take a screenshot of
+something and paste it into quad, it
+could probably just generate the same
+thing. So if I literally just look up
+naden workflow
+um image, like we're just going to go on
+duck.go here. We're just going to find
+an image of a
+workflow. So this is like this looks
+like some web hook with tweets that it's
+getting testimonials. Let's try to find
+a little more complicated one.
+Um, there's a Postgress database in
+here. Yeah. So, it's pretty simple. Here
+we
+go. I'm not exactly sure what this one
+does. Um, but it looks like it's getting
+invoices using
+code. Let me just pull
+in Yeah, let's just pull in something
+like this. So, if I copy this image or
+if I just take a screenshot of this.
+Oops. If I take a screenshot of this, if
+I go to cloud,
+um, I'm going to create a new chat here.
+I'm going to grab this
+screenshot. And then I'm going to add it
+to a project. Use a project. And in
+workflow
+creator, um,
+recreate recreate this workflow and make
+sure it's
+downloadable as a JSON
+file. So now we're going to go in here
+and we're going to see if it can just
+recreate this workflow from a
+screenshot. And once we finish this,
+I'll show you exactly how to set this up
+inside of Cloud. Um, dang, it's not
+letting it download as a JSON file.
+Okay. And so while this is running,
+we'll let this actually just run in the
+background here. Now I'm going to show
+you how to actually set this up inside
+of Cloud. And so it's actually really
+simple how to set this up. Basically the
+first step is you're going to want to
+create a project. So if I go over here
+to my projects um and I go into a new
+project. I'm just going to set this up
+from scratch with you. So we're going to
+go NN workflow
+um
+generator. We're going to create this
+project. We're going to set this up. So
+we need to set up the project
+instructions. And so basically uh how we
+can set this up is we can basically just
+take some parameters um from this and we
+can we can set this up. So I'll actually
+just add the um custom instructions
+directly into um the community. And so
+if you go in
+here, if you go into the community here,
+um so if we go into AI systems or we go
+into AI agent university, um where we
+kind of like show you exactly how to set
+these up. Um inside of the AI systems
+template, um there will be
+a I'll just add the
+uh prompt directly in here. So this is
+the this is going to be the cloud naden
+agent uh naden workflow builder and you
+will see in here there is just this uh
+the system instructions directly within
+this um and you can basically just copy
+and paste this into the system
+instructions in here. Um and so if I go
+into the the new project we'll basically
+just take the system instructions and
+then basically what I did is I just
+added like random workflows in here. So,
+I literally just went into my um
+NAN and you can see I basically just
+went in here
+um I was I'm not going to save
+it. I just went into like different
+systems that me and my team are building
+out. So, like this is a system that um
+is helping us with short form uh content
+generation. Um and so, let me just
+rename this.
+Basically what I did is I just did that,
+downloaded it, went back into cloud,
+upload from device, and you can see all
+these different workflows in here and I
+just added all these workflows from the
+device directly into this. So if I go in
+here, email personalizer, job campaign
+generator, short form, boom, I just copy
+and uploaded all of those different JSON
+files. So now if I go in here and I say
+create me a a uh naden uh social
+uh proposal generation system
+using tally forms API panda do open AI
+to generate the dynamic variables
+etc. And in and very importantly, make
+sure that you can download this JSON
+at as a file. All right. So, we're going
+to let it build this out. And you can
+see we just generated this project from
+scratch and set this up. I'm actually
+going to go into this other one and I'm
+going to show you exactly from start to
+finish. I'm going to say um now recreate
+this as an
+artifact that I can download as a JSON
+file. So now you can see if I go over
+here, it's downloadable as a JSON file.
+It's recreating the scenario. And so now
+you can essentially see how this works.
+Um, and so this it literally did not
+create it as an artifact, but that's
+okay. So, it's still downloading this.
+So, now we have two different workflows
+being generated at
+once. And I want to show you this from
+start to finish to show you that I'm not
+just like copying this from the internet
+or something. So, this is what it just
+generated. So, I'm l just going to go
+copy download as JSON proposal
+generator.json. And now if I go into
+naden here and create a new
+workflow, you can see that if I create a
+new workflow from here, I'm going to go
+and import this as a file. I'm going to
+use the proposal generator. You're going
+to see it's not contained valid JSON
+data. So I guess you will not see um but
+but uh we can go back in here. The
+response is that this doesn't contain
+valid JSON data. Make sure that it's
+valid JSON from start to
+finish. Sometimes it looks like it looks
+like what happened here
+is the response like basically aired out
+at one point and it didn't actually
+finish the workflow. So, we had an
+incomplete workflow. Yeah. Okay. So, you
+can see now that it's it's generating
+the rest of the workflow. And so, I'm
+going to just let that um
+go and I'm going to go back to the
+chats. We're going to look at the other
+one that we just
+generated. So, this is a tally
+form proposal generator and this is
+a I think a different
+one. I'm moving too fast here. I don't
+even know which which uh one I'm on.
+Okay. Oh, yeah. So, you can see that it
+says cloud reaches mass max length for a
+message. it continued to nudge it along.
+So, I wonder if that's going to separate
+it into two separate JSON files. And so,
+sometimes cloud just hits its limit. Um,
+but we can see
+here, yeah, we can see here that it's
+two separate JSON files. So, now let me
+go back in here and see if this one
+finished out. Still generating. Um, so
+you just have to make sure that the
+entirety of it gets generated. It looks
+like this is still generating. Let's see
+if it's actually going to do the
+entirety of the workflow
+here. Boom. It's creating sticky notes.
+You can see adding error handling in
+message processor. So, what was this
+workflow again? Oh, this was the one
+from the screenshot. So, you can go in
+here and it just finished. It looks like
+it finished up using valid JSON. So,
+this is uh screenshot workflow
+generator.
+And now if I go in here, if I go import
+from a file using the screenshot one.
+Oops. Uh screenshot
+one. You can see that it's uh sometimes
+the it doesn't understand what is an AI
+agent. You can see it's adding in all
+these custom code modules. It's writing
+us a bunch of custom code. It's getting
+the tool check. Um and so this one looks
+like it it was trying. So, as you can
+see, it's not perfect, but it's it's
+really great for ideulating on different
+workflows that you can create, building
+out the outline and the structure, um,
+and and trying to analyze this, right?
+Trying to build this out. And so, um,
+that's the essence of of how to build
+this out. Let me see if I can get the
+other one to work
+again. Um,
+now recreate the system as one um, JSON
+file.
+Let's see if it creates an artifact in
+this one. Usually you want it to be an
+artifact. No, it's just not generating
+it with an artifact. Um, but you get the
+idea. So, uh, we saw the social media
+system. We saw it trying to recreate
+this one from a screenshot. Oops, it's a
+different channel. I run more of the
+philosophy musings. Um, okay. So, uh,
+the next thing is how do we actually do
+this for clients? So the the last thing
+that I want to show you and talk about
+is essentially how can we use this in
+order to
+um just add overall value to clients um
+and actually building out their systems.
+And so one of the things that we can
+think about is um setting setting up
+systems inside of this. And
+so one of the things that I could do is
+I could improve on a system. I could uh
+download a a JSON file here and
+basically have it improve upon the
+system, etc., etc., etc. So, there's a
+lot of different ways we could go about
+this.
+Um,
+but let's see. Let's say we wanted to
+like create a new I think I think the
+primary thing that we can think about
+here is if you're getting custom
+projects um if you're getting custom
+projects inside of
+um like a lot of people try to aim for
+highly productizable services but that's
+not always the best bet because
+sometimes you have to actually build out
+really custom projects for clients. you
+can't just build out, you know,
+templatable
+services. And so if this is the case,
+it's essentially this is like the
+productized version of customized
+services. As as weird as that sounds,
+what you can think about is that on the
+one hand we have like
+productized and then on the other hand
+we have like fully
+custom. On the other hand, we have like
+fully custom builds. And what I want to
+you to think about is how we can
+actually like we actually want to focus
+on more custom builds now because we can
+just use the um
+automated uh workflow generator
+um to scope out the project with the
+client. And then we can essentially just
+delegate it to our contractor um when
+it's already 80% complete with a five
+minute loom video. And then this can
+basically be the entire system build
+project. So we could sell a custom
+system, you know, for anywhere from 3 to
+12 grand. The most recent um uh projects
+that I've scoped out have been all
+within the 8 to 12 grand range. And
+within these systems, we can just
+automate the workflow generation
+instead. And then if you do that enough
+times, you'll eventually have a
+productized service. So don't start by
+trying to aim at productizable services,
+right? You want to actually start, you
+want to actually start with the fully
+custom model because if you do that,
+eventually you'll have enough of these
+custom systems that Claude and
+contractors will help you build out that
+you will have a productizable system,
+right? Right. And so we could just say
+like here's an entire system. I could
+literally just give it the transcript
+from I could just give it the transcript
+from
+um like my sales call with the client
+and I could basically just scope it out
+from there. Another thing that you could
+do is just build it all out uh like
+based on a YouTube tutorial. So if if
+you see a YouTube tutorial something
+that someone else has done, you can just
+sell it to a client and you can have
+this system build it out for you. And so
+let's say we go into uh NAN workflow
+generators, not workflow generators, NAN
+workflows. So, I want us to think about
+like what is just some
+like imagetovideo
+automation faceless videos. I personally
+do not like faceless videos. I think
+that they're a waste of time and they're
+not actually valuable and they're not
+going to get you what you think they're
+going to get you. Um, but I think what
+something that is important to notice
+here is that we could say, um, I just
+copied the link to this video. I'm going
+to go to comey.ai, which allows me to um
+generate these videos, right? Generate
+these
+transcripts. And then I'm going to copy
+this transcript into NADN. And then
+inside of NADN, I'm going to say um I'm
+going to go to
+this
+project. I'm going to use the original
+one. I think I have more. Uh, and then
+I'm going to say, uh, create me an NADN
+workflow
+from the transcript of this video
+describing an NAND workflow. So, we're
+going to see now how close it gets if I
+just add in a transcript from a video on
+YouTube and have it basically just build
+out the system for me. And we can
+basically basically just watch it
+generate this in in real
+time. Um, and so I'm going to pause the
+video while this loads. It'll probably
+take like 3 minutes to generate this
+because it's a long uh a long
+one. Okay. So now we can see that this
+was it generated us this JSON file from
+this original transcript. So we have the
+transcript here of the video. I
+basically had it created as an artifact
+and then the artifact here is this. So
+if I download this as the
+uh system straight from the YouTube
+video, you can see that if I go in here,
+import it from a
+file. You can see that it's generating
+this system generating video ideas. See
+if there's Yeah, there's a prompt in
+here. You are a creative director. So
+creative director, it's creating scenes.
+Um, it's getting background music. And
+as you can see, it's connecting to all
+of the relevant APIs. It's getting the
+status. It's aggregating the scenes.
+It's rendering the final video. It's
+checking the video status. It's
+uploading it to Superbase. And so, it's
+not perfect. Like, you can see we still
+have to connect a lot of these.
+Obviously, we need to put in our API
+keys, but all the API um nodes were set
+up. And so, again, it gets us about 80%
+of the way there. And uh for the rest of
+the system, we can potentially delegate
+it, do it ourselves, um and only spend
+20% of the time to build this that it
+would have taken us otherwise if we were
+manually setting this up. So, I hope you
+found this video valuable. I hope this
+is uh something that you're going to use
+in your systems. If you're interested in
+diving deeper into learning uh different
+aspects of how to build
+out agents, prompt engineering, so on
+and so forth, or just having community
+calls, we have um various different
+calls in here. Uh I talk a lot about uh
+different and documenting the process of
+building an agency. Uh we talk with
+other agency owners all the time. Uh
+speak with prompt engineers on prompt
+engineering, you know, tactics,
+strategies essentially. So, we have all
+the different prompt engineer uh
+mindsets, AI agent templates you can
+download. Um, obviously you could just
+recreate them from the videos uh if you
+wanted um or just understanding the
+basics of how to build these out inside
+of NAND. So, um it's in the description
+if you're interested. Otherwise, thank
+you so much for watching and I will see
+you in the next

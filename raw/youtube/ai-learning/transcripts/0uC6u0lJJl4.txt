@@ -1,0 +1,703 @@
+[music]
+All right. Um, everybody can see. Hey
+everybody. Um, thank you for being here.
+I'm going to talk about um
+the fact that if you go ahead and build
+a company brain, it will um likely leak
+company secrets. um which is kind of the
+big fear that we have about building a
+company brain anyway, right? Which is
+this case of like intern joins the
+company and then suddenly gets like comp
+details and everybody kind of situation,
+right? You want to you want to guard
+against that. Um this has kind of been I
+guess pretty much the biggest thing
+that's been holding us back from just
+deploying openclaw and Hermes all over
+the place, right? It's also kind of the
+reason it's like this big opportunity
+that Claude Tag had with it recent
+launch a few days ago where like it was
+going to be the company brain but then
+everybody's like well it's not um it
+doesn't look like it's going to be the
+company brain right so I'm going to talk
+about kind of what makes it challenging
+so before we get into that let's let's
+kind of understand and dissect this
+company brain business a little bit
+right um I'm Tan I'm the co founderql um
+you can check promqql out um later but
+uh the our background as a team building
+This is we come from um the hustra graph
+we're creators of the hassur graphql
+engine which is very popular open source
+project in the graphql space uh where we
+solved a lot of data access problems um
+we deployed everywhere from like apple
+to meta to JP Morgan etc. uh and um and
+that kind of gave us a lot of these this
+grounding uh for uh and and you know
+kind of like a lovehate relationship
+with uh data and data security. Um,
+all right. So,
+I'm going to show you stuff that we've
+been working on over the last year and
+kind of what we've learned from that so
+that you can kind of take that and
+exercise that and try it out for
+yourself. Um, and of course, at the end
+of the talk, happy to kind of exchange
+notes and see what works or what might
+what might not work for you. Um, over
+the last year, we've only partnered with
+a small set of people who've exhibited
+some kind of spike on scale. M so about
+15 to 20 folks so far and now we're just
+starting to open it up to other people
+but over that course of time we've kind
+of looked at three different types of
+set of people with very different needs
+right you have AI native companies that
+are willing to just do whatever as long
+as it works you have kind of tech
+forward companies right folks like
+Instacart who um like best of breed
+technology right um so they'll move fast
+they'll be tolerable to breaking things
+but it just needs to be really really
+good right and then you have fortune
+banks uh who have like a me level
+security. Uh, thank God that they do
+because they're my bank. I definitely
+don't want vibecoded AI agents running
+inside a bank because that's where my
+money is. Um, so they have a lot of
+security rules. Uh, thank you so much.
+Uh, but we're deployed in places like
+those as well. Um, with kind of the
+beginnings or like the frontal lobe of a
+company brain, right? So, we'll kind of
+talk about those kind of learnings. Our
+own personal usage of kind of building
+out our company brain. Um it kind of is
+about 5,000 pages. So we model it as a
+wiki. Uh you can model it however you
+want. You can model it as a set of
+markdown files on GitHub. You can put it
+into a remember graph frag. Uh you can
+model it in a you can model it in
+knowledge in knowledge graphs. You can
+do whatever you want. Um so you can you
+can place it wherever you want. But like
+it's about 5,000 interconnected pages
+for us.
+Question for you folks. So suppose you
+had a company brain that was working. It
+was working well. It was all set up
+right. um there would be a kind of daily
+number of updates that would happen to
+this com to this company brain, right?
+Because it was learning stuff from
+everybody in the company, right? From
+finance to HR to um your engineers to
+everybody. So if you were to plot the
+daily number of updates happening to the
+company brain, what would it sort of
+look like? Would it sort of look like a
+roughly downward trend? Like all of
+these are like random graphs, but would
+you would it sort of like start and then
+go down? Would it kind of be steady
+going up and down as updates spike or
+would it kind of steadily increase
+upwards? Um so kind of think about like
+what would the commit history to your
+shared skills repo look like, right? How
+many updates are happening to a healthy
+company brain, right? Um every single
+day, what does that trend look like? Um
+anybody for option A?
+Anybody thinks it's option A? Okay,
+cool. Uh, option B.
+Okay. Option C. Ah, that's nice. Um, and
+and and so that's so when I kind of
+plotted our thing, right, to see what a
+healthy company brain looks like. Um, if
+you look at number one, it's basically
+saying we had a lot of enthusiasm. We
+built the company brain on day one, day
+two. somebody we gave somebody the task
+and said build all the shared skills
+repo scrape all the slack scrape all the
+emails build it and we'll all use it and
+then nobody cares right or you have a
+system which is autolearning maybe you
+have a Hermes that's deployed internally
+something like that where it's kind of
+steadily adding more and more comments
+so it kind of goes up and down depending
+on who has enthusiasm right um and then
+when I plotted our history over just the
+last uh two months and this is a little
+bit outdated now this is what we got and
+I was kind of shocked
+I was like, why is it continuously
+increasing? Like it's a gentle curve,
+right? But why is it gently just going
+up? Why is the number of updates per day
+increasing? And that was fascinating for
+me to see because what I realized was
+that if you have a system that starts to
+work, what happens is people start to
+teach it a lot more. It's like saying if
+I taught you the skill for quering data
+then tomorrow I'm going to teach you the
+skill for interpreting that data and
+then day after tomorrow I'm going to
+teach you the skill of how to take an
+action based on that and then after that
+I'm going to figure out how to do AB
+testing based on so people like you
+continuously add more but because
+everything is an agent where no amount
+of learning is perfect everything has
+its own kind of steady rate as well
+right so the rates kind of even your
+steady rates kind of keep adding up and
+that's what I started to notice in our
+thing as well this is early. So, who
+knows if it'll kind of peter out
+eventually. Maybe it'll start to look
+more like option B. But a healthy brain,
+of course, the overall size keeps
+increasing, but even your daily updates
+per day kind of keep increasing as well.
+So, that's a sign
+of a good brain that you built, right? A
+healthy brain that you built for your
+company. Awesome. The use cases for
+company brains, how we start to analyze
+how we build a system that won't leak
+secrets, right? So, two use cases.
+The first use case is there is a company
+brain. I want to use it in my AI agent
+whatever to get work done, right? Um
+I'll show you an example of that, right?
+It's like I got an email with a security
+questionnaire I need to answer from a
+customer and I talk to my AI and I'm
+like look up the company brain and help
+me answer this security questionnaire.
+Right? That's a totally valid use case
+of a company brain. Second, very useful
+use case, right? because it's other
+people's knowledge that are that is
+coming to me. Second use case of a
+company brain is kind of similar to what
+uh cloud tag is is a this idea of
+multiplayer and if you've been putting
+agents inside slack in places where
+multiple people can interact with it
+it's kind of being using using it as a
+shared AI right to like get stiff stuff
+done. Um, and an example of that could
+be collaborative incident management,
+right? So, for example, you want to say
+like, hey, I want to fetch logs. I want
+to investigate the there's an incident,
+go fetch some logs, investigate the code
+codebase, raise the PR, deploy to
+staging, deploy to prod, set up an
+alert, right? You want like multiple
+people are doing things with the company
+brain. So, those are kind of two use
+cases of the company brain. One is kind
+of this like shared collaborative
+knowledge use case and one is like
+shared AI use case itself, right? Both
+of those have a huge um security kind of
+problem, right? Um so
+to start to secure it, let's kind of
+define that a little bit more strongly,
+right? So what exactly is a company
+brain? And this is my definition of it,
+right? It's shared context that you'd
+put in a markdown that you'd put in a
+set of markdown files, right? and its
+access control rules for the different
+data and tools that you want to access
+as given to a coding agent.
+So that's what I'm calling it for um
+because I'm speaking so I can define
+whatever I want. Um that's my
+definition. So I'm not saying this is
+knowledge that is pulled into an LLM
+that will do tool calls, right? It is
+not a AI that is doing general purpose
+stuff. It is an AI that is a coding
+agent that is solving whatever problem
+you throw at it. Right? And similar to
+the a little bit of the previous talk
+that you folks might have heard which is
+this idea of like can we just use a
+coding agent to solve general problems.
+It's that right? So in the most trivial
+case if you say hey write me a tweet
+you're writing a small script that's
+making an AI call to write a small tweet
+right you probably don't need to do
+that. The AI itself can just like return
+the tweet back to you but like
+essentially claude code being used for
+everything. Cloud co-work is the same
+architecture. The codeex app is the same
+architecture which is this realization
+that you can use coding agents to solve
+general purpose problems. So we're
+building the brain for that. We're not
+building gigantic knowledge graph
+knowledge base for the company and then
+trying to secure it that anyway it
+doesn't hasn't worked won't work. Um,
+so in terms of how we want to approach
+designing the company brain, right?
+Should we build a company brain?
+So, if you're an enterprise and you're
+paid to twiddle your thumbs, then you
+like this idea of building a company
+brain because you're like, "Yes, let me
+take on a two-year project and I will
+build the company brain for JP Morgan."
+That's not going to happen. You can't
+build a company brain for an
+organization that's like 100 years old,
+right? you can barely build it for your
+own family, right? Which might just be
+months or years old, right? So, so the
+idea and the way that we want to build a
+company brain is we want each person who
+does a little bit of the work in the
+company to own and build their part of
+the company brain, right? That's the way
+we should build it. So, that's kind of
+constraint number two that I'm putting.
+One was the definition of the company
+brain and second is how the approach
+that we want to take for how a company
+brain is built.
+I like kind of this way of phrasing it,
+which is that we're going to grow a
+company brain. We're not going to build
+one, right? We're going to like let it
+let it come together. The system needs
+to come together otherwise it'll it'll
+it's not it's not possible to build. All
+right. Um
+broadly, we want to let each person
+self-s serve their bit of the company
+brain. Um and so these are kind of like
+the various steps that you want to
+follow. I'll come back to this in more
+detail if we have time. But let's start
+with a particular use case, right? So in
+this particular use case, what I have is
+this kind of situation where
+this is kind of the tangible example I
+want to take for you folks. Um I got an
+email just a security questionnaire
+example, right? Hey, I got an email from
+Dave at StitchFix. Um and that has a
+bunch of questions I want to answer,
+right? So it pulls up my email. It says
+the email has a screenshot of their
+security onboarding and then it starts
+to kind of answer those questions,
+right? Um I have no idea how it knew. I
+was kind of very surprised to see that
+it answered all of the questions on
+like, hey, this is our trust center.
+This is how our security stuff looks.
+Um, they have a gateway, right? It does
+something. All of this is kind of coming
+from the company brain, right? Which is
+the answer to that. And then kind of go
+ahead and I'm like, hey, just go ahead
+and send this. I like this draft. Go
+ahead and send this draft to Dave,
+right? And then goes and sends that
+email. Really simple example of what I
+want to do. Now, the challenge here,
+right? And the issue is that how do we
+build a system right which somebody else
+can contribute to
+that a third person kind of uses
+how did this knowledge about what our
+security thing is come in presumably
+somebody else had been working on the
+same security questionnaire right so
+they had let's say a Hermes agent or
+whatever they were working on it you
+autosaved some memory maybe somebody
+wrote down a skill somehow that piece
+piece has to come to my AI agent. How
+are we going to make that possible right
+now? Um let's try obvious thing uh
+number one right which is that everybody
+writes shared skills for each other on
+GitHub. So the first time the security
+questionnaire was answered by your
+security person everybody visualize like
+your security and compliance person in
+your head right now. Imagine that they
+after answering the questionnaire, it
+sucks to answer questionnaires. After
+answering this gigantic Excel sheet of a
+of a questionnaire, they then went to
+GitHub and updated a shared skill,
+right? Many of you are fortunate to work
+with people who are modeled after our
+Lord and Savior Christ, who are so nice,
+who will go and update shared skills in
+a GitHub repo, right? Most people will
+not. Nobody is going to write skills for
+another person in GitHub like that is
+not that is not something that is
+natural to us right in the dayto-day of
+doing work we don't suddenly decide that
+ooh this might be really useful for
+somebody else I don't even know I'm not
+connected to in this situation in the
+future not happening I can barely get it
+to like curate my own memory and my
+context I do not have the time to send
+it to somebody else um to write it down
+for somebody
+[snorts]
+Second, instead of having a company
+brain, why don't you do a team brain?
+Why don't you all just use one shared?
+Why doesn't the security team kind of
+use one more
+shared silo where you can do this,
+right? So, build an agent and have it
+kind of save to memory itself, right?
+Um, and that's kind of the architecture
+that I I'm guessing a lot of you folks
+have with maybe something like a Hermes
+added to Slack. Does anybody have kind
+of a team team brain situation going
+where you have an AI that multiple
+people use that autosaves memory and
+auto adds context? Does anybody have
+kind of like a skill that does that
+already just for a small team? One.
+Anybody else? Okay. Okay. A few of you
+have that. That's cool. Um this is nice
+but the problem is it's still not a
+company brain because it's still
+isolated, right? So it's like one more
+silo, right? Like for example um if this
+gets like with claw tag um it it has a
+per channel memory right so in every
+channel it gets saved but now it's
+another silo in that one channel right
+so now it's again locked into one place
+that can't be used anywhere else so if
+somebody got added to that channel it
+would work but otherwise it wouldn't
+work right um and so
+this is the third option
+the third option is saying all context
+text goes into a single shared wiki. A
+wiki is a set of markdown files and
+markdown files can link to each other.
+So imagine a gigantic folder. The folder
+has lots of markdown files, right? And
+markdown files can link to each other.
+So all all context instead of saving it
+inside a folder, siloing it, you put it
+in a markdown file, the equivalent of a
+markdown file, and you let it link with
+each other.
+The second thing that you do is you
+allow each file to have scopes on who
+can have readwrite access to that file.
+The third thing that you do which is the
+most important,
+you don't let the agent auto add the
+memory.
+You don't let it auto add because if it
+auto adds,
+you have no idea what happened, right?
+You can't
+the we we're back to kind of the same
+world where some stuff is getting added
+and as long as you're in that agent's
+memory, you're lucky, right? So, the
+third thing that you do is instead of
+letting the agent auto add, do something
+that allows your agent to suggest what
+is added with what scopes
+and then have the human
+accept or reject.
+So it's not as heavy as GitHub where I
+have to go and write this update a
+shared skill do a PR review and then get
+it merged but it's also not as yolo as
+the memory just kind of being
+autowritten by the agent right it's kind
+of the sweet spot where while you are
+working you pop it up suggest the right
+scopes and let somebody add it so now
+what happens is with this very simple
+addition right you are able to let
+people add to a gigantic wiki, but you
+let that person take on responsibility
+for what they can see or not. So, if I'm
+adding something to the finance wiki, I
+want to make sure I'm adding something
+that's sensitive, I want to make sure it
+has a finance scope. If I'm adding
+something that's personal, I want to
+make sure that that's personal scope.
+Let me show you an example UX of what
+that might look like. This is what we
+do.
+This was a recent email that I got um
+from one of our sales reps adding me
+onto a call. I looked at that email,
+helped answer it, and then
+I got a little box that suggested a
+bunch of bullets that told me what it's
+going to add, right? And when I hit add
+to wiki and and so now it's much easier
+for me to review what is getting added.
+I don't care I don't care if it gets
+added into this markdown file, that
+markdown file, what links that the agent
+takes care of. What I care about is are
+these facts correct?
+If these facts are correct, I'm going to
+hit add to wiki and I'm going to be
+done, right? And and during the time of
+add to wiki, I can choose what scopes
+need to be added per wiki page or not.
+Right? So each wiki page itself can get
+a certain set of scopes that you want to
+decide who gets access to what for
+example right so for example my email
+this is the wiki page that I have for my
+emails and how my emails are prioritized
+and I can now decide who gets access to
+this who are the owners for this and
+what the artback for this is. So
+whatever the system looks like is up to
+you folks but the core idea is that you
+want to get the agent to suggest a
+change instead of doing the change. All
+right. So, two rules. One, make sure
+that everything goes into one
+companywide wiki. Don't back down from
+this rule. Second, make sure that like
+as a part of that, every change is
+backed by a human's name. Nothing should
+be allowed inside the wiki that is
+Claude added this or like your AI agent
+added this or Hermes added this. No,
+Tanme added this. that that name needs
+to be there so that you can tie it back
+to this is the person who screwed up and
+like allowed everybody to see like
+everybody's comp right and like whatever
+now you can take remedial action uh
+right whatever that is put them on a pip
+um you didn't know how to edit a wiki so
+so that is very very important and rule
+number two once you decide that you can
+then go to the second scope of like okay
+you've got to make it easy for them to
+do that which is where this business of
+scopes come in where you want to scope
+each file according to who gets access
+you to build kind of a system around it.
+This is what an architecture diagram of
+that looks like where you have users um
+users talk to the agent uh agent when
+it's reading context uses that
+particular user's claims right so if I
+am reading something for solving a
+finance problem it's using the finance
+claim to read as me because I had access
+to the finance wiki so I can read it and
+that is done every single time right so
+the agent is always using the user's
+credential to read the right part of the
+wiki. Um,
+all right. I am um I'm fairly out of
+time for the second use case. So, what
+I'm going to do is give you a quick
+flavor of the second use case, but
+extend this idea. This is the daddy use
+case. This is like this is the big daddy
+use case. This is a really complicated
+use case because now it's not just one
+person answering an email. It's a bunch
+of us using the shared context to solve
+a problem with various different
+escalation like privilege levels at the
+same time, right? And these are kind of
+the these are the these are the
+interactions AI where the most amount of
+company brain knowledge is created,
+right? For example, I'm going to show
+you a quick real life example of um what
+it looks like for us. Um so this was a
+case from an SR situation where um
+somebody was like hey our autolearning
+our wiki learning uh fairly meta was
+failing it wasn't working what's going
+on right and then it starts doing the
+investigation and it sucks cuz it's it
+didn't have a skill it failed so like
+bro don't do this please use this open
+telemetry span name used an open
+telemetry span name it did a slightly
+better job but was still really slow so
+he looked at the code and he's like oh
+you're using a like query. You're you're
+a you're a dumbass. This is Opus 4.5. Um
+we like like don't do this. Right? So
+then he's like don't use a like query.
+Use an equals to query. Right? And then
+it does equals to query and it surfaces
+some details and it and then he says oh
+dig deeper into this and it says
+whatever this is a line of code where
+the error is coming from. Simple stuff
+right? This is now where it surfaces
+some knowledge and says aha I learned
+that I should use equals to and not
+like. Right? I learned that if you have
+a custom prefix added to wiki page
+names, it can cause issues, right? Um,
+so it offers these learnings that you
+can choose to accept.
+So he kind of went dug in deeper um into
+what the problem was. Somebody else
+joined the conversation, right? And said
+the technical decision that we've made
+here is wrong. Why is this happening?
+And now two people start to have an
+argument, right? They have an argument
+saying, hey, it should not be like this.
+it should be like this but why is it
+like this but it should be like this
+right that argument creates knowledge
+because the actual problem was that
+somebody made a technical decision that
+was not documented right when they
+decide to fix that issue and they
+observe that that is indeed the root
+cause and they decide that this is the
+way it's going to be fixed hey we should
+remove this prefix that's causing a
+problem whatever whatever the thing is
+that creates the highest quality context
+to be added to your brain because the
+previous suggestion was to say uh pages
+should not pages have a prefix. But the
+fact that pages have a prefix is a
+problem. Right? So now the thing that
+you're documenting in the brain is pages
+should not have a prefix. If they have a
+prefix, it can cause lookup issues and
+prod. This happens when multiple people
+talk to each other, right? And solve
+problems together. This is what happens
+in a Slack thread. When two people talk
+to each other and solve a problem, it
+creates the highest quality context. But
+and so so that's kind of what you want
+here. But the challenge is that the priv
+privilege escalation around this becomes
+very very serious. If you if you're
+building an agent that can do everything
+surrounded by multiple people, that's
+scary because the engineer was allowed
+to do the PR work but now I can use the
+same agent to deploy to prod. That's too
+scary. I can't have a conversation where
+I debug and
+deploy securely, right? Especially if
+you're in a bank, right? like the people
+who are debugging, deploying to staging,
+setting up an alert and deploying are
+not the same. But but being the same has
+a lot of value because that's where all
+the knowledge is, right? And so that
+kind of brings us to the second
+architecture which I'm not going to get
+into too much detail with, but think of
+it as the same idea where user
+credentials and claims were used to read
+context. Instead of that, also use user
+credentials, right, when the code is
+executing tools. So never store
+credentials in the sandbox.
+Instead of that at the HTTP layer, at
+the SQL layer, inject the user's
+credentials, allowing the AI to behave
+as the human in a particular
+interaction, right? Um so there's
+interesting details here. Um but that is
+what allows a shared AI to work with
+shared context, right? And those are
+kind of the two um key pieces to work
+with. So I would summarize and you'll
+this architecture is not particularly
+complicated, but it's very simple to
+work back from these two rules. Do not
+store credentials in the cloud sandbox.
+And second,
+virtualize all interactions with real
+data. Proxy it, virtualize it, whatever
+word you want to use. And let users
+control them. So the user who adds a
+particular tool should control who gets
+access uh to that particular tool. So
+you can derive this entire thing if you
+just kind of follow these four
+principles and work backwards from that.
+there's only one architecture that is
+possible that makes sense uh in how you
+manage context and what constraints you
+set up and how you manage tools and what
+security rules you set up. Um that is my
+time um and and so um happy to chat more
+um after the talk um we have a booth as
+well so happy to chat more through that
+on what the nuances inside this
+architecture are. I'm Tanme on Twitter.
+Um we're called PromQL. Um do check us
+out um at the end of the day um with the
+AI engineering community. We're going to
+do a product launch. Uh and so I would
+love to share that folks share that with
+everybody. I'm going to take a picture
+with everybody on stage so that I can uh
+I can share that. And so let me let me
+do that while I'm here.
+All right. Do folks want to say cheese?
+[laughter]
+Thank you so much. Um so watch out for
+that. Um it's our approach to um claude
+tag which is prompt tag which is very
+similar to the ideas that we tag chatted
+about here except that you're not stuck
+to cloud you can use GLM and you can use
+GPT and then soul comes out and we can
+use that and have a lot of fun. Um so do
+check that out and otherwise I'll see
+you folks soon.

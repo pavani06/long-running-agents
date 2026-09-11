@@ -1,0 +1,1684 @@
+I would like to welcome
+back Preacher Huang. [APPLAUSE]
+We have been now locked
+in a global race,
+way faster than NASCAR racing. And it's partly
+your fault. Jenson's
+been the preacher
+that's given us all the power we need, all
+the energy, and some more,
+to have what I think
+has been the craziest 12 months of my life,
+certainly for many of you.
+And we're just getting started
+the energy with which you
+approach every
+single thing you do, including the class last year.
+And then every time I've had
+the chance to hang out with you, you've given so much time to
+the students, to the founders.
+Thank you. Should we jump right in? Yeah. Let's go. All right. We're going to rapid fire.
+What is codesign? And why is it so important?
+I'll answer that in a second. Yes, please. But this is a great time
+to be in computer science.
+And obviously, the reason is
+because computing is being reinvented for the first time,
+as dramatically as it is,
+for the first time, really,
+in about 60-plus years. The computer that we know, that
+you all use in our computing
+model, our mental
+model, the architecture of a computer, how you write
+the program, run the program,
+how you think about even
+taking computers to market, what it's used
+for, for 64 years,
+it has been largely the same
+since the IBM system 360. In fact, my first
+architecture book
+for learning about
+computer architecture was the system 360's manual.
+And so a lot has changed. As we went from PCs to
+internet, and mobile,
+and cloud, and all those things. But the fact of the matter
+is the computing model, the fundamental part
+of computer science
+has largely remained
+the same until now. For the first time,
+the way you write
+the software, how you
+process the neural network versus the software, and
+what the applications can do
+has now dramatically changed. Everything is
+fundamentally different. At the highest level, one
+simple way to think about it
+is, computing, as we knew it
+before, was largely prerecorded.
+It's content that
+we prerecorded, images, videos, software
+that we largely prerecorded.
+But now, everything
+is generated. And the nice thing about
+generating everything in real-time is that it
+could be contextually
+consistent, contextually
+relevant to what it is that you're dealing with.
+And of course, it can
+respond to your intention, not just explicitly to the
+things that you instruct.
+And so the computer
+is fundamentally different in that way.
+Now, the question
+is, what does that mean at every single
+layer of the stack? From how the computer, how
+the software is now developed,
+the methodology of it, how
+you organize your company to be able to develop software
+of today completely changed.
+And so the methodology,
+the tools we use, the approach that we think
+about software coding,
+completely changed. How we run the
+software, neural network versus compiled binaries,
+very, very different.
+And so what does that mean
+to the computer system, the network, the storage?
+What does that mean to the
+software stack and the cloud services that sit
+on top of that? And of course, everything
+about the applications.
+What did it open up? And somebody just came and
+said, this piece of software
+we just opened up,
+called Alpamayo. And I've been working
+on self-driving cars
+now for about 13 years.  And the days of
+robotaxis are going
+to be literally everywhere. Everything that moves
+will be robotic. And that's an example
+of an application
+that we wouldn't consider
+doing, until deep learning and artificial
+intelligence came along.
+That was such a big
+unlock that I said, hey, aha, all of these problems that
+we wanted to solve in the past,
+that we need a
+computer vision for, really are now
+fundamentally unlocked.
+And so it's how you think about
+every single stage of that.
+What is a software engineer? How do you organize the company? What is a computer
+for the age of AI?
+How do you architect that? All the way to what
+you can use it for. And therefore, where
+you would deploy it.
+All of that has
+fundamentally changed. And for me, the journey really
+started about 15 years ago.
+And I had the benefit of seeing
+some early works in the area.
+And as all Stanford students
+do, you break the problem down. You reason about it
+from first principles.
+And you come to the
+conclusion, literally, everything has changed. And so here you are, computer
+scientist students, this
+is really the first generation
+of AI becoming useful.
+And where we, a
+couple years ago, was in the generative
+part of AI.
+And as you guys
+know, generative AI not only made it cool for us to
+do image generation, and text
+summarization, and
+translation, and whatnot, but generative AI also
+enabled us to think.
+And so when I saw generative
+AI, what other people saw
+was that it was able
+to generate images, and I surely appreciated
+that as well. But the fact that you
+can generate thoughts
+in the form of images, but
+you can generate thoughts, you can also reason with it. And the ability for
+AI to think after GPT
+was very, very obvious. Now, the question
+is, how would you train, how would
+you fine tune an AI
+to be able to reason
+step by step by step? And how would you teach it how
+to do so at fairly large scale
+in a semi-supervised way? And so those are the engineering
+problems you had to solve. But the moment you see
+GPT, you say, aha, thinking
+is just around the corner. And thinking is
+generating tokens that you consume internally.
+And generating tokens that
+you consume externally would be called tool use.
+And so the idea that after
+GPT happened two years ago,
+that we would be at this moment,
+was fairly easy to predict. Now, of course, an unbelievable
+amount of technology
+was invented, and a lot of
+amazing people did amazing work, but you could almost
+see that moment here.
+And so here we You now
+have agentic systems. And so now, the question
+is, what's next?
+And what happens in a world,
+where a computer is not
+responsive to what you ask
+it to do, it's not on-demand?
+Today's computing is
+really on-demand computing. The word "on-demand"
+was actually created
+in our generation to talk
+about how you think about using computers. Time sharing computers that
+you would use on-demand
+became cloud computers. And cloud computing, of
+course, is on-demand. But in your new world
+of agentic system,
+the computers are now
+continuously running. And so what happens in a
+world where the computers are
+continuously running? What happens to cloud services? What happened to your
+personal computer?
+What happens to all of
+these different systems? Now, there's a great opportunity
+again to rethink all of that.
+And so my introduction to
+everything about computer
+science has changed,
+and everything about every field of science has
+changed because of the things
+that we've changed. And so this a good
+time to go to school. OK. That's it.
+What was your question? You know what, I'm just going
+to turn it over to the kids.
+Codesign. Codesign. Codesign. Let's just go into-- the
+students have questions. They've all been asking
+questions in Discord.
+They're all voting on
+each other's questions. Codesign is really interesting. Codesign is super interesting.
+And basically, codesign
+said, back in the old days, we abstracted computing,
+so that the people who
+design microprocessors, design
+microprocessors People who worked on compilers,
+worked on compilers.
+And people who
+worked on languages, worked on languages,
+and so on and so forth. You guys that. And we actually had
+different fields.
+And in fact, this
+happened at Stanford. What's the beauty of risk? What was the beauty of the
+work that John Hennessy did?
+The beauty of it is that you
+got to think about compilers and microprocessor architectures
+harmoniously, codesign,
+because otherwise,
+you could end up creating a microprocessor
+that's super, super tight, and everything is
+maximally optimized.
+But unfortunately,
+it's hard to compile. It's difficult.
+It's not compilable. And so they created a simpler
+instruction set that exposed
+simplicity to compilers, so
+that compilers could do a better job of generating code. And it turns out,
+a simpler machine,
+codesigned with a compiler,
+creates better performance than two systems that were
+optimized individually.
+That's very Stanford. This is part of
+your heritage as all
+of you in John Hennessy's
+trail of amazing work that's left behind.
+And so you take that, and
+you think about, well, what happens in the post world
+of general purpose computing?
+Why is it that every
+problem in computer science would be solvable by a
+general purpose instrument?
+At some level, you
+could say, well, if you had a general purpose
+instrument, you prefer that. However, there are
+some extreme problems,
+whether it's computer
+graphics back in the old days, or molecular dynamics,
+or quantum chemistry, or fluid dynamics and large
+multiscale, mesoscale,
+multiphysics problems
+or deep learning. These problems are so
+computationally intense.
+Why would you use a general
+purpose computer to go do that? And so there, the
+big insight is,
+if you understood the stood
+the algorithms, understood the computer
+systems, understood,
+if you will, the
+compilers, the frameworks, and understood the
+architecture of chips,
+and you were optimizing
+all of it at the same time. And so here are the facts.
+This is what happens when you
+do it what I just described. NVIDIA is probably the first
+computer systems company
+that's extreme codesign. Meaning, we literally
+codesign across all of that and including CPUs, GPUs,
+networking, and switches,
+and storage. And so the question is, what
+you get-- well, Moore's Law, back in the old days, you
+guys all know about that,
+Moore's Law was about
+2x every 18 months, so call it 10x every 5 years.
+So 10x every 5 years
+is 100x every 10 years. And that was in the good
+old days of Moore's Law.
+And for all the computer
+scientists in the room, you know that Moore's Law was
+underpinned by a concept called
+Dennard scaling. And Dennard scaling ran out
+of steam several years ago, probably about a
+decade ago, in fact.
+And we kept squeezing it. We kept squeezing it. But over the course
+of last 10 years, if you just allowed
+microprocessors to continue
+to scale, and you just don't
+touch the software and just benefit from the speed
+up of semiconductors,
+microprocessor
+design, at best case, you would have gotten
+100x, but probably,
+because Dennard scaling slowed
+down and Moore's Law largely ended, you probably got
+something along the lines of 10x
+over the course of 10 years. Well, in the case of
+NVIDIA and codesign, we got 1 million x over
+10 years, 1 million x.
+And so somewhere between
+100,000x and 1 million x, so when you're talking
+about numbers that big,
+it really doesn't matter. And so 1 million
+x over 10 years, we were able to get
+scaling and computation
+scales so large, so fast that
+AI researchers say, why don't we just take all of the internet?
+Why even worry about what data
+to go curate and what data to create? Let's just take all
+of the world's data
+and just give it
+to the computer. And that's really
+the big breakthrough. When you're able to do
+something so insanely fast--
+for example, if you were able
+to travel at the speed of light, where we choose to
+live doesn't matter.
+If you were able to go
+from New York to California in 10 minutes, everything
+about society would change.
+And so if you're able to do
+computing a million times faster, everything
+about computing changed.
+And that's really
+the big breakthrough. Because of codesign, because of
+the way NVIDIA approached it, we accelerated
+computing so far that it
+created all this infinite
+abundance opportunity for everybody to think
+about the future. And so anyways, here we are.
+Cool. I have a bunch of
+follow up questions, but I'm not going to ask-- That one word led to that.
+GPT 10 [INAUDIBLE]-- That's what it's like
+to work at NVIDIA. You give me one word, and you
+get ranted at for about half
+an hour, because I got too
+much to share with you.
+The question is, how should
+education evolve in response to the industry is changing? Yeah. And that's a really
+excellent question.
+And I think the
+answer, clearly, is, AI should be part
+of your curriculum,
+not just in learning about AI,
+but using AI for the curriculum. The problem with
+textbooks, as you know,
+it takes an enormous
+amount of effort to do. And when I was taking
+classes at Stanford,
+Professor Hennessy was
+still writing his textbook. It was all handwritten down. And each week, it seemed like
+he was writing a chapter.
+I don't even how he
+writes a chapter a week, but every week, he was
+writing about a chapter. And then over time, all of those
+notes turned into a textbook,
+into the first edition. And that must have
+taken several years. And so I think it's not
+possible for universities
+for pre-recorded
+textbooks to keep up with information and knowledge
+that's being generated
+in real-time by AI. And so I think the
+future, probably, has to be some union of the two. And I don't know
+about you guys, but I
+can't learn anymore without AI. And so not only do I have the
+I read the papers, but I also,
+once I read the
+papers, I might ask it to go read a whole bunch
+of the other papers that are associated with it.
+And then now, it becomes
+a super researcher. And then first, I
+ask it to summarize,
+I ask it some basic questions. And then after that, you
+interact with that paper as if it's a researcher
+that's dedicated to you.
+And so most people
+don't realize that. I think a lot of
+people still think that you summarize a document.
+But in the process of
+summarizing the document, that AI learned a lot. And I think that
+in the future, I
+do hope that curriculum
+are tightly integrated. In defense of the
+textbooks, though, I
+will say that first
+principles don't change. In the final analysis,
+Mead and Conway
+is still a solid of fundamental
+methodology as before.
+It is true that
+the scaling process that led to constant current
+density, constant power
+density, all of those
+design optimizations associated with modern
+semiconductor design,
+we've exhausted all of that. None of that is iso
+anything anymore.
+But it's still good to
+know where we came from. And so I would still
+encourage to appreciate
+the first principles. While I was going to Stanford,
+I was already working at AMD.
+And I was designing
+microprocessors at the time. And it was still really
+good to see simultaneously,
+how we design things in practice
+versus the first principal
+methods associated with
+learning about eventually, how to design these things. And I really enjoyed having
+freedom, both sides of it.
+And I ended up
+learning a lot more. And so what that
+means is, when you're using AI, which is real world,
+it's contextually relevant now,
+it's contemporary. And meanwhile, you have first
+principles knowledge that you're learning at the same time.
+You're kind of getting the
+same thing that I experienced. The question is, what are
+your thoughts on open source? How does open source
+stay at the frontier?
+Yeah, there's
+really the question of closed source versus
+closed proprietary software versus open source.
+There's a question of my
+intentions with open source. And so I'll start with my
+intentions of open source.
+First of all, NVIDIA uses more
+Anthropic and OpenAI tokens
+than just about anybody. And the reason for
+that is, obviously, we do a lot of coding,
+we do a lot of design.
+And 100% of our engineers are
+now agentically supported. And so I want them to be working
+with agents, using the latest
+generation tools, and
+remodernize how NVIDIA does work altogether.
+So number 1, if you can
+use OpenAI and Anthropic, I would highly
+recommend you use it.
+And the reason for that
+is because it's useful. It works really well. It's getting better
+all the time. And as you know,
+large language models,
+it's the technology inside
+by Claude is a product. And Claude Code is a
+whole harness around it.
+And that harness is getting
+better all the time. The model is getting
+better all the time. It's not likely that
+anybody open source
+go to GitHub,
+download something, it's going to work
+nearly as well. So I highly recommend, and we
+do, use off the shelf frontier
+AI models. The question is, why is it that
+we're advancing and working so hard on open models?
+The reason for that is
+because language models are very important because
+they represent the codification
+of our intelligence. And we want to
+automate ourselves, especially it's a
+very important part.
+But you need to know
+that AI is about learning the representation, the meaning,
+the structure of information.
+And so the question is,
+where is information? Well, we're living
+in information right now as we speak. The reason why there's structure
+is the reason why every day,
+you show up, it's
+largely the same. Otherwise, it'd be like
+practically white noise. And so the fact that biological
+systems and physical systems
+have structure. And from that
+structure, I must be able to learn higher
+level representation.
+And if I can learn
+the representation, then I could manipulate it. Does that make sense?
+And so just because I can learn
+the representation of language, I can then generate it,
+I can manipulate it,
+I could put it to use. And so I want to do the
+same thing for chemicals, and proteins, and
+genes, and physics,
+and physical systems,
+robotics, for example. And so notice, the way you
+represent all of those things
+are fundamentally different,
+because the structure is different and the
+dimensionality is different.
+How you train it is
+fundamentally different, because you don't have a
+whole bunch of internet corpus of human language on it.
+So you've got to come up
+with new strategies for all of that stuff. And so we decided that we
+would dedicate ourselves
+in some fundamental pillars,
+because the company has the talent and the scale.
+We have the ability to put the
+first piece of artifact out in the world-- data, model, how to train it,
+and several different domains.
+And so some of the domains,
+I care very much about. One of them is called, of
+course, Nemotrons language. And I'll come back to that
+in a second, why does it
+we're doing it? And then second is BioNemo,
+that's for biology. And we have Alpamayo.
+Somebody mentioned it earlier,
+for autonomous vehicles, basically, artificial
+intelligence, navigation.
+And then we have Groot, which
+is a humanoid articulation,
+robotics, artificial
+general robotics. And then we have climate
+science, basically mesoscale
+multiphysics. And so all of these
+different domains, we decided that we
+should go and pioneer it.
+And the reason for that
+is because, otherwise, the scientists in these
+different domains,
+they simply won't have the
+scale and the technology necessary to go build
+that foundation model.
+And so we decided
+that we would do that. And as a result of doing that,
+we activated health care.
+We activated life sciences. We're working with every
+single self-driving car company in the world, doesn't
+matter which one it is.
+There's NVIDIA in
+there somewhere. And so we enabled that entire
+ecosystem to really flourish.
+And we're working with
+robotics right now, and so on and so forth. Without us making
+that first effort
+and building a
+foundation model, it's hard to activate the
+whole industry downstream. And so it's really about
+expanding AI and democratizing
+this capability. The reason why we do
+language models is because, two
+reasons-- one, there
+are too many societies, where
+the scale of their language is not big enough for
+somebody else to decide
+to make it a high priority. They'll understand Swedish. But making Swedish
+a top priority
+is not likely, because the
+country is big, but not so big.
+Chinese, of course,
+well taken care of. Indian, certain dialects,
+very well taken care of.
+But as you know,
+you have 230 others. And so there are too many others
+that unless you deeply care,
+it's never going to be great. And human
+intelligence, no matter the size of your population,
+somebody should care.
+And so we created
+a large language model that's near frontier,
+Nemotron is close to frontier. And we make
+everything available,
+so that if somebody wants
+to then fine tune it into whatever language
+of their choice, they got no trouble doing that.
+And then the second
+reason is very important, is because we want to
+also take these language models
+and fuse it with the
+domain-specific models because of human priors.
+So for example, Alpamayo
+is a language model fused with a world model.
+And so on the one
+hand, it's really designed to detect cars, and
+roads, and things like that. But on the other
+hand, we also believe
+that if the AI model, if
+Alpamayo, the self-driving car model, can reason
+reason like a human,
+and it could reason
+with human priors, then the amount of experiences
+it needs to have before it could
+be an extremely good
+and safe driving car, the amount of training data is
+reduced, and we've proven that.
+Alpamayo is probably one of the
+most effective self-driving car systems in the world.
+And it's really only
+experienced a few million miles, not billions of miles. And so the system
+actually works.
+So anyways, I just gave
+you a long-winded answer. I broke it all down. You can't just ask
+a simple question.
+Well, we talked about-- Open models is really important. And then one more thing. That wasn't enough.
+One more thing. If you care to have AI be safe
+and secure, it has to be open.
+And the reason for
+that is, you can't defend against a black box, and
+you can't secure a black box.
+And you can't put a black box
+of some incredible capability into your system with
+a completely opaque.
+Now, of course, there's
+a lot of different ways you could solve the opaqueness. For example, you could say,
+before it does anything,
+you have to reason about
+it to me step by step. Before you do anything at all,
+you have to come up with a plan, you have to reason
+about it step by step.
+But you could always lie. And the nice thing about
+transparent systems
+is that then everybody
+gets to interrogate it. If you have a
+transparent system, then researchers get to use it.
+If you have a
+transparent system, an open system, then
+the way you defend against super-agentic systems
+in the future for cybersecurity
+is obviously not to go
+into a battle of who gets the better one. You come up with some
+model, model 7.0.
+And the only way I
+combat against that, I'm completely vulnerable
+until I come back with an 8.0.
+And then you got to
+come back with a 9.0. And we just go back and forth,
+driving each other nuts. And that's obviously not
+the smartest way to do it.
+The smartest way
+to do it is, you're going to create these
+incredible cybersecurity systems
+or the cybersecurity threats. And what we're going
+to do is, we're going to have millions,
+billions, swarms of cheap AIs.
+And we're going to
+systematically surround it. And so it's, if you
+will, a giant dome.
+So for example, Nemotron Nano
+is being used for cybersecurity. And so all these
+cybersecurity firms take Nemotron Nano, because it's
+so fast and so cost-effective,
+you can train it to detect
+cyber attacks and then just deploy trillions of them.
+Yeah. On the topic of open scaling,
+we hung out in January.
+I feel like-- you know
+that one scene in Thor? Do you remember, he
+was just hanging, and he kept rotating
+in that direction?
+It's zero gravity. Here at AI Coachella,
+we got no gravity. [CHUCKLES] Thor-- Ragnarok.
+Do you remember that? We can move a little bit back. [INAUDIBLE] OK. You guys don't watch movies? Well, we got a whiteboard, too,
+if you want to get up and walk.
+So in January, we
+met, and we talked about this topic, open scaling. We talked about bottlenecks. We talked about data
+as one bottleneck,
+compute as another bottleneck. There's at least one
+experiment that we
+announced at GTC together, which
+was the coalition scaling idea. The second is on how to
+improve utilization on compute,
+which is increasingly scarce. It came out last week
+that there was a memo at xAI that said Memphis cluster
+pool is running at 11% MFU
+utilization, which I think,
+corresponds to something like 11 billion or something
+of unutilized MFU flops.
+How can the open space-- well, maybe you could
+talk a little bit about why coalition scaling
+is an experiment worth trying.
+And we have Brian coming,
+actually, in the final office hours, to talk about progress. And then how do
+we get utilization
+to be better for
+the open ecosystem when you don't have fully
+integrated companies that can
+optimize up and down the stack? Yeah. Do you guys know what my MFU is?
+And FU, do you guys know? You guys don't use that anymore? So MFU is just simply wrong.
+It's the amount of the
+percentage of flops, basically,
+that you consume
+while doing your work. Model flops utilization. Yeah. And so unfortunately,
+with every metrics,
+depending on what
+you measure, you could be measuring
+the wrong thing. And so let me tell you why.
+If you ask me, do I
+want to be at high MFU personally or low MFU?
+I would like to be at
+low MFU all the time. And the reason for that is
+because I want to be so smart,
+I'm overprovisioned
+for the work. Because I'm overprovisioned,
+I got so many flops
+and sitting idle. And the reason for that
+is because, the way the computing works in these
+large scale data centers is,
+you have flops, you
+have memory bandwidth, you have memory capacity
+you have network capacity. At any given point in time,
+something is bottlenecked.
+At any given point in time,
+something is bottlenecked. And so what you
+want to do is you want to overprovision
+on everything,
+so that you can
+avoid Amdahl's law. Otherwise, you're fighting
+Amdahl's law all the time.
+But then if you're provisioning
+for peak, not your base loads, then you're going to have a
+bunch of those flops sitting
+while overprovisioned, when you
+don't need them, because spiky. At the right time,
+it goes to 100% MFU,
+but only for a short
+period of time. And if that short
+period of time, you don't get all that
+overprovisioned flops,
+then during that
+short period of time, it becomes a long
+period of time. And so what are you seeing
+for teams that are trying to--
+And flops are cheap. No, flops are cheap. H100s are going up in price.
+Well, not because of its
+flops, but because of H100. Hopper, its bandwidth,
+its architecture,
+its everything else,
+not just its flops. So should we think about compute
+as not a scarce resource?
+No, no, that's not the question. It's like this-- when
+you ask about a car,
+back in the old
+days, when we were unsophisticated, we used to say,
+how many horsepower is your car? But these days, who does that?
+So what's the right
+measure you think we should be thinking about? Performance. And when you tell
+the teams, guys,
+this is the perf we've
+got to hit next year, what are you finding
+is the eval you're reaching for more and more?
+You have to come up with a real
+eval, a really serious eval. Because otherwise, you'd
+be improving your flops.
+You figure out something
+that you guys can improve. And you're improving
+that number,
+it doesn't make you smarter. You're improving that
+number, it doesn't make you more successful. And so there's nothing wrong
+with having a lot of flops,
+but it's not the complete. Necessary, not
+sufficient, that's all. In one sense, you could
+think about the output
+of tokens as intelligence. So it should be some unit
+of intelligence per watt?
+Yeah. Yeah. Notice, the tokens per
+watt is more than flops.
+In fact, we that now,
+because for decoding these large language models,
+the singlemost important thing
+for generating tokens
+per watt is actually the aggregate bandwidth
+across the NVLink 72.
+And the MFU is incredibly low,
+because the prefill is not that much, it's mostly decode.
+But you can decouple,
+decode, and prefill. It's disaggregated. And so notice, I just delivered
+incredibly high tokens per watt
+with extremely low MFU. MFU. But not all tokens
+are born equal, right? And so how do we
+account for that?
+When you're designing the
+systems of the future, what is the right way to measure
+without a standard measure
+of intelligence? When you have coding tokens
+being more valuable for watt than, I don't know, some
+other kind of token.
+Does that question make sense? Makes perfect sense. You always have to come
+back to not just optimizing
+for SAT scores. You're optimizing
+for something bigger. And so that's basically it.
+It's the same idea. You have to decide
+what evaluation. As you know, eval, how
+you evaluate success
+matters a lot in
+how people perform. And so what NVIDIA
+does extremely well
+inside the company
+is the systems that we create for
+evaluating architectures. And flops is too contrived.
+Because if it was that easy,
+then I wouldn't be here. You have a hard
+job, which is to try
+to design an index of
+different intelligences. I think when our teams are
+researching on the NVIDIA
+architecture, we've
+got one lab doing coding, another one pushing the
+frontier of superconductivity and so on. And they all have
+completely different evals
+they're measuring for, but
+they're all using NVIDIA chips. So how do you
+solve that problem?
+Your customers all
+have their own evals? Yeah. But the architecture of
+the underlying platform-- That's why it's so hard.
+And it is true, it's that hard. The problem is this. If you build something that's
+too overfit for something,
+you could be
+incredibly good at it. And so you're overfit
+for this one problem. You're insanely amazing at it.
+But then the problem
+is that market, that problem space
+may not be big enough
+to fund a sufficiently
+large R&D. And so you want to be good
+at many domains, multidomain.
+On the one hand,
+on the other hand, if you're good at everything,
+then you're good at nothing. You became general purpose.
+And so writing that balance,
+by the way, is artistry. That's what I do for a living.
+What should we not do? What should we double down on? What should we 10x on? That requires some amount
+of vision, strategy,
+some amount of trial and error,
+some just personal enjoyment
+and entertainment,
+iteration, all of that. Can we talk about the
+Canvas of Feynman,
+which is a trip I'm
+very excited about? But it's been hard
+to get info on it. What's the canvas
+telling you now
+about what your
+art piece is going to look like for the Feynman? Well, I can tell you the
+journey that we came on.
+And so if you look at Hopper. Hopper was designed
+for a problem space that was rather new.
+It called pretraining. And so pretraining came along. And we came to the conclusion
+that although the generation
+before it was fairly
+significant already, that we should build
+tremendously large ones, larger
+than any of the largest
+scientific supercomputers
+in the world. So that's a very big deal,
+that the largest supercomputer in the world was
+about $350 million.
+And we thought, you know what? Pretraining is going to be
+such a large domain and such an important problem. We should design systems that
+could be multibillion dollars.
+At the time that we're
+thinking about doing this, it just sounds insane. You would have precisely
+zero customers.
+And the reason for that is
+because the most expensive thing that has ever been
+sold was $350 million.
+And you're building
+something that's multiple billions of dollars. So you're building for
+precisely a marketplace of zero.
+But we went and did it
+anyways on first reasoning. And so Hopper was
+designed for pretraining, and that was a great call.
+The second thing that
+we did was, we said, OK, well, after
+training, we're going
+to keep making training better. But the goal of
+AI isn't training. The goal of AI is inference.
+And what kind of a system would
+inference really care about? And so we created a
+system called NVLink72.
+And the reason we did that was
+because decode in processing the neural network,
+there's the prefill,
+which is really context
+processing and things like that, and attention processing,
+and then the decode, which is generating
+all these tokens.
+The generation of tokens
+requires really high memory bandwidth.
+And the amount of memory
+bandwidth you need is way more than one chip
+can possibly provide.
+And so we said, why don't we
+gang up 72 of these things? And so we had to invent
+all kinds of new systems
+for switching,
+and interconnects, and create all kinds
+of new [INAUDIBLE]. And we created, essentially,
+the world's first rack
+scale computer. It's called Grace
+Blackwell NVLink 72. The speedup over the previous
+generation, 50 times.
+In two years, we improved
+something by 50 times. Moore's Law would
+have improved by 2x.
+So the architecture and
+the insight was fantastic. And decode, and inference,
+and large language models,
+and token generation, all of
+that landed at exactly the time that Grace Blackwell came
+out, and boom, took off.
+So Grace Blackwell, another
+incredible generation. Now, the question is, what
+happened to Vera Rubin?
+And what's the big idea? Well, the big idea is that
+the goal isn't just to think,
+the goal is to do work. And so Vera Rubin is
+designed for agents. And so the question is,
+what is the compute pattern?
+What is the processing
+pattern of agents? And agents, of course, you have
+to load a fair amount of memory.
+Long memory, he's
+got working memory. So long-term memory,
+we put it into storage. And we got that storage needs to
+be able to directly communicate
+with the GPU. You can't be copying that data
+off of the network storage,
+but you want storage
+to be connected right into the processor itself. And so we have storage that's
+connected to the fabric.
+We're going to use
+a lot of tools. And so CPUs are going
+to be really important.
+But the CPUs of the
+current generation was really designed
+for cloud computing. And so you have these CPUs
+with hundreds of cores,
+like 200 cores. Well, the CPUs of
+agents, because the AI
+is this multibillion
+dollar system, and it sends off an
+instruction to use a tool,
+and that tool is going
+to run on the CPU. Meanwhile, this computer,
+this GPU supercomputer,
+this multi-billion
+dollar system, is waiting for this one CPU. And so that CPU really wants
+to have extremely low latency.
+So we designed Vera, which
+is for current generation,
+for multiple core,
+single-threaded code, it is, by far, the
+most performant.
+And so we created a
+CPU just for that. Notice, the way you solve
+this problem intuitively is, you think about, what
+is the computing pattern?
+How is it different
+than the past? You have to have some
+mental model about it. And you create a system that you
+can go and go build to run that.
+And so now, agents are here. We're going to run
+that on Vera Rubin. And hopefully, when
+Feynman gets here,
+it's going to be all software. We call them agents
+today, but it
+could be modules in
+the past or submodules. And so in the future,
+you're going to clearly
+have systems of agents,
+and agents with subagents, and subagents with subagents. And so you're going to
+have this swarm of agents.
+And what kind of computer
+does that manifest? And so that's likely
+what Feynman's about.
+I have one more
+follow up question on that, which is, one of the
+things you've always done well is spot bottlenecks
+one generation ahead,
+and then try to presolve for
+that in the supply chain. A year ago, that was,
+photonics ended up
+becoming a huge solution. As we look at energy
+as a bottleneck,
+literally, copper wires are one
+of the transmission bottlenecks. How does that get
+solved in your view?
+Energy is just everywhere. Well, the first thing that we
+could do that is in our control,
+as with everything in life,
+whatever the problem is, whatever the external
+concerns are,
+you should do something
+that's in your control. And in our control
+is energy efficiency. So if you look at tokens per
+watt, we improved it by 50x.
+And then we'll have to
+keep on improving it by significant factors. And it compounds.
+That's the first
+thing we can do. We can control that through
+codesign, architectures, and things like that.
+And the second
+thing that we could do, the thing we
+could inspire people, and that's through
+a lot of education,
+inspire the ecosystem
+to get ready for this. And I've been, over
+the last half decade,
+helping people understand
+the amount of compute that's likely to be coming. And I just told
+you guys something about how I reason
+through how much energy
+is going to be necessary. The amount of energy that we
+need for computing is likely
+probably, 1,000 times more
+than we currently have. And that's an enormous
+amount of energy.
+However, the way to think
+about that is, in the future, computers are going to be
+two things-- it's always
+going to be generated,
+because it's intelligent, it's contextually aware. So it's going to be generated. And the number 2, it's
+going to be continuous.
+And so this generative
+computing, in a continuous way, compared to prerecorded
+retrieval-based computing
+that is only initiated
+per use, the question
+is, how do you think
+about the amount of energy necessary for that? So I think, if you say,
+we need 1,000 times,
+I wouldn't be surprised if
+we're off by a couple of orders of magnitude. And so we need a
+lot more compute, we need a lot more energy.
+And so you got to go and
+explain this to people. And so I got to
+explain it to people in a way that's common sense.
+And they can observe it. And there are indicators along
+the way that, in fact, this
+is happening. And notice, as I was breaking
+it down for you guys, reasoning about it for you,
+so it's common sense to you.
+And so the amount
+of energy is high. And then lastly, the
+source of energy.
+Now, there's all kinds
+of sources of energy, but unfortunately,
+because of great concerns
+about the cost of
+sustainable energy, we under-invested in
+sustainable energy.
+But this is the best time ever
+in the history of humanity to go and invest in
+sustainable energy.
+And the reason for that is
+because the market forces are so strong. Back in the old days, you
+needed government subsidies
+to go build solar farms and
+government subsidies to go build nuclear plants. And now, you can just market.
+We'll pay you to do it. And so market forces are
+so powerful right now. This is our best
+chance to upgrade
+our grid, our archaic
+grid, and add sustainable energy of all kinds.
+And this is a great time. In terms of education,
+what I've learned as well, we designed the class
+for the students here.
+Turns out, a lot more
+people, especially a lot of investors and
+capital allocators, are watching this [INAUDIBLE]. Is that right?
+Oh, shocks. Why don't we put it up? Yeah.
+I'm just kidding. If there's education you'd
+like to do to that audience, feel free to drop it. Repeating yourself after a
+while with capital allocators
+can get repetitive. I don't mind that. So if you'd like to
+transmit, feel free to--
+what is the next
+question we should take? The question is, how best to
+spend [INAUDIBLE] faculties
+over the next few years? Yeah. So first of all, on the
+pain and suffering comment,
+there's some advice that says,
+you should choose what you love and what you're
+passionate about.
+That's what your
+career should be. And I think that's terrific. I think that's terrific. If you happen to know what
+you're passionate about, if you
+happen to know what you love-- but I think there
+are a lot of people
+who don't know what
+they're passionate about, and they don't what they love. And the reason for that is
+because nobody knows everything.
+How could you know
+what you don't know? So in a lot of ways, the
+idea that you would only
+choose careers that give you
+passion, that makes you happy
+is a bar that I think
+is too high, number 1. And the reason for
+that is because,
+whatever you decide
+to do for a living, whether you found something that
+you're passionate about or this
+is your job-- and in my case, it used to be
+cleaning toilets and bussing
+tables, it was my job. And I will do the
+best I can in my job.
+Whatever you give
+me as a job, I will do the best I can possibly do. And I do that today.
+Now, there's a misunderstanding
+that somehow, CEOs,
+we love our job. And many say, oh, I'm
+passionate about my job.
+I love my job. They're lying. There's not one CEO who can
+say that from the moment
+I wake up to the moment I go
+to bed is just zippity doo dah. The fact of the
+matter is, I really
+love doing 10% of my work,
+and 90% of my work is hard. And I do it to the best
+of my ability, anyhow.
+And I suffer through it. I literally suffer through it. I prefer to do something
+else, that other 10%.
+But that other 10%, there's
+only so much quantity of that. And every company has
+abundance of problems.
+And there comes in
+different types. And you're going
+through life, you're going to have abundance
+of problems that are going to come in different types.
+And you just have to
+learn how to condition yourself to want to
+get to a better state,
+no matter how hard. To get better, no
+matter how hard. And that's suffering.
+You don't like doing
+it, but you're doing it with all your might anyways. What do you call that? That's suffering.
+And so I think that
+when you suffer, and you have the benefit of
+struggle, and you're
+being presented with many
+opportunities like that, it teaches you resilience. And when the time comes, and
+the world, or your family,
+or your company, or
+your colleagues, they need you to be tough. They need you to be resilient. They just need you to be
+able to fight through it.
+You don't have that
+character about you. You don't have that muscle,
+unless you've gone through it
+a whole bunch of times. And so I'm advising that
+you not seek for just joy,
+that you also seek for
+some pain, some suffering, because you're going
+to need it, someday.
+And then lastly,
+it's just your job. As preacher Huang once
+said, don't wake up
+with a loser mindset. The question is, what's your
+favorite order of Denny's?
+Yeah, Corvallis, really,
+should have a Denny's.
+After all these years,
+frankly, it's about time. And so there was that
+one Chinese restaurant
+and Woodstock's, of course,
+Corvallis Woodstock's Pizza. It's still pretty good,
+isn't it, Woodstock's?
+It's all that I like
+American Dream better. American Dream is better? OK. All right. I'll be back there soon enough.
+And so Denny's, I would say,
+surprisingly, the fried chicken
+is really good. It's slightly on the sweet side. Superbird is excellent. It's done right.
+And then another one, if they're
+willing to make it for you, make it like a Superbird,
+but as a grilled ham
+and cheese with
+tomato and mustard, if they're willing
+to make it for you. They're willing
+to make it for me.
+Not because I'm an alum.
+Hey, you use the
+bus tables here. Yeah. Yeah. We'll make special for you. But those are all good.
+The grand slam, I enjoy it
+like a pigs in a blanket,
+so that's pretty good. There's a whole bunch of stuff. Goodness. I go all day.
+At Denny's, I had my first
+fudge hot fudge sundae. I had my first apple
+pie with cheese on top.
+For a Chinese kid, it's
+like, what is that about? That doesn't make any sense. But now, you think about it,
+it makes perfect sense, apple
+and cheese. But anyways, I had my first
+milkshake when I was at Denny's.
+I had a whole bunch of firsts. Denny's was eye-opening for me. Man, before we lose you to the
+memory lane, next question,
+please. Those are some of the
+most important questions. Agreed. Yes.
+The question is
+about your thoughts on adversarial countries,
+getting access to NVIDIA chips.
+First of all, so you know
+what we make for a living. We make GPUs.
+And GPUs are used
+for video games. They're used for
+delivering soy sauce.
+They're used for
+medical imaging. If you had a CT scan
+done yesterday, I'm fine.
+But behind it was NVIDIA. NVIDIA is in every
+single medical imaging system in the world. And so the question is,
+what is it that you build?
+What I'm fundamentally
+against, and it makes no sense to this moment, is to compare
+NVIDIA GPUs to atomic bombs.
+There are a billion
+people with NVIDIA GPUs. I advocate NVIDIA
+GPUs to all of you. I advocate NVIDIA GPUs
+to my family, to my kids,
+to people I love. But I don't advocate
+atomic bombs to anybody. So that analogy is stupid.
+And so if you start from there,
+you can't finish a thought. If you start from
+believing that,
+you can't finish the
+rest of the thoughts. The second idea that I
+consider completely ridiculous.
+Why should American companies
+go compete in foreign countries? You're going to lose it anyways.
+You're going to lose it anyways. So why go? Well, if you guys all
+apply that same philosophy,
+why wake up in the morning? And so I don't prescribe to
+"We are going to lose anyways."
+I don't prescribe to that. If you want me to lose, you're
+going to have to deal it to me. But I'm going to have
+to put up a fight.
+And I put up a lot of
+fights over the years. I'm doing OK.
+And as you know, the battle,
+the competition serves markets. It enhances your company.
+I'm not a little bit afraid
+of having to go and compete in the marketplace. But the idea that I'm going to
+lose anyway, so why go compete,
+makes no sense to me. And then lastly, the
+idea that somehow, we
+should deprive certain countries
+of general purpose computing, and we can all acknowledge now,
+NVIDIA is a general purpose
+computing company,
+I just gave you a whole bunch of general
+purpose use cases, is a general purpose computing
+company, to be deprived of that,
+so that one or two
+companies could benefit from depriving other people of
+it, that makes no sense either.
+Why should one
+industry suffer, so that another one or
+two companies benefit?
+The American
+technology industry is one of our national treasures. You are going to be part of it.
+And if I do my job, when
+you are done graduating, you're going to graduate
+into the mightiest industry
+in the history of humanity. But if we give it up for some
+reason, or we, through policy,
+decide that we
+can't go, and sell, and concede 2/3 of the
+world to other companies,
+by the time that you graduate,
+you would have gone into a shell of an industry.
+That shell of an industry, we've
+seen before, a long time ago, the same arguments went against
+America in telecommunications.
+Today, America has
+no telecommunications fundamental technology anymore.
+It was all completely
+policied out of our country. And so somebody has to
+put up a fight for that.
+Some of these reasoning systems,
+to say that AI is going to come,
+and it's going to be
+a singularity moment-- that singularity moment,
+the moment it comes, it's going to be the most
+powerful thing in the world.
+It's come as a flash. We have no idea
+whether it's going to come on Wednesday or
+Thursday at 7 o'clock.
+But when it comes, it's
+going to be game over. Some percentage chance that
+it'll be the end of society,
+as we know it. Come on, we all watch Dune. We don't have to repeat it.
+And so I think that living
+their fantasies out, their science fiction fantasies
+out in public demonstration,
+when everybody is
+relying on their words and believing the
+words, is irresponsible. It is not true.
+It is not true that we have no
+idea how these systems work. It is not true. It is not true that the
+technology is going to, somehow,
+in some nanosecond, become
+infinitely powerful, and therefore, it's going
+to take over the world. It is not true.
+It is not true. There is no way to
+defend against it. It is not true. These things are
+all being made up.
+And it's made up in a way
+that, unfortunately, even harms all of you.
+You're in computer science. You're hoping that
+when you graduate, people care about computers.
+We want to create
+a future that is optimistic about the technology
+that you are learning to master.
+We want to create that future. We want to make
+sure that America, we want to make sure that
+everybody benefits from AI.
+Everybody should have AI. Nobody should have
+nuclear bombs. Can you guys agree with that? Yeah. OK.
+[APPLAUSE] And so young man, thank
+you for triggering me.
+I'm just kidding. [CHUCKLING] I'm just kidding. I'm just kidding. I just wanted to get it out.
+So we're rational optimists
+here at AI Coachella, so we believe in optimism. I'm going to push back a little
+bit on a different angle.
+I completely agree, reasoning
+by analogy is a problem. Once you start with bombs, you
+should do first principles.
+What we are observing
+is that compute-- we are compute-constrained
+in America.
+Independent teams,
+startups, universities, they can't get compute. So from a preference
+order perspective,
+shouldn't America get first
+priority to a scarce resource before we start shipping it off? Absolutely.
+That's not happening. Absolutely not. [CHUCKLES] There's the gotcha.
+Yeah, absolutely
+and absolutely not. Why not? The question is, why not? There's plenty of chips.
+If the president of Stanford
+places an order, I promise you, I'll deliver it.
+You guys heard it here. All right. Ahead of--
+This is not funny. This is not funny. We are dying out there. No, no, this is not funny. That's right.
+This is a serious matter. It is not true that people
+are giving me orders,
+placing orders, and we're
+not delivering chips. It is just not true. You got to place orders. The fact of the matter is, the
+fundamental problem is actually
+something very different. Stanford needs compute.
+Science needs compute. The fundamental
+problem is, the system
+is no longer built to be able to
+deliver massive scale compute.
+And the reason for that
+is because, just think, all of the research
+departments here at Stanford,
+they're all in
+different departments. You all raise your own funding. You all get your own grants.
+Nobody's going to go
+share their grants. But none of the
+grants are big enough to have a large enough compute
+that you use some of the time,
+but when you use it, you
+need it to be incredible. The world moved away from
+those centralized computing
+environments towards
+everybody just using laptops. This is today's
+computing environment.
+And fundamentally,
+all the universities-- Stanford is not alone,
+you don't have a budget
+for $1 billion compute. It doesn't exist. But whose fault is that? Stanford's.
+And the reason why
+you have to say that is because I'm empowering--
+when somebody is at fault,
+you empower them to solve it. Do you agree? Oh, yeah, it's not
+your fault. Son, it's not your fault. Your
+failure, it's not your fault.
+He's not your
+talking to me, right?  Hey, son, you're an idiot.
+It's not your fault. No,
+it's absolutely your fault. And so by saying that,
+it's absolutely your fault,
+you're also empowering
+yourself to solve it. Isn't that right? You're empowering
+yourself to solve it.
+You just talked to
+somebody who feels, I can do something
+about my future.
+You're talking to somebody
+who believes in that. And so if I were
+Stanford, you have
+to find a way to change the way
+you do budgeting, the way you deal with computing.
+You have to find
+a way to aggregate and build yourself a
+linear accelerator, just like Stanford
+has done in the past.
+We need to build campus-wide
+supercomputers that everybody share. Now, you could also go and just
+contract somebody else to do it.
+I mean, that's all possible. But you do need to
+have $1 billion. You need to have
+some reasonable fund
+to go build something
+like this, because that's how much you cost. But that's just what it takes. I mean, last I checked,
+we've got, what, $40 billion
+endowment here? How would you put that to
+use if you were starting-- We're going to cut $1
+billion of it right away and give it to somebody
+as a cloud service,
+and have every single student
+and every researcher here have access to AI
+supercomputers.
+I would do that right away. Now, of course, you've
+got to go plan things. If you want to buy $1
+billion worth of tomatoes,
+you don't show up to the
+grocery store and say hi. And then they don't have
+$1 billion of tomatoes,
+and you go, aha, you're
+withholding tomatoes from me. [CHUCKLES]
+That's just ridiculous. And so you got to
+do some planning. And so what you got to
+do is you got to say,
+next year, we need
+to have $1 billion worth of computing for Stanford. And so we'll go build it.
+All right. You know what? We'll move on. But thank you for that. Yeah. Yeah. Yeah, exactly.
+[APPLAUSE]
+We'll come back to that one. [LAUGHTER] What is the best and
+worst part of your job?
+When you're CEO
+of a company, you have the benefit of a
+lot of really fun things.
+Like for example,
+you're really the person who has to conceive of the
+intersection between vision,
+and strategy, and execution. And so you have to
+live in that world.
+And when you're a
+company with capability, and I'm surrounded by
+amazing computer scientists, and many of them
+from Stanford, when
+you're surrounded by people like
+that, when you have a vision, it's very realizable. And because you're
+with amazing people,
+your vision is more ambitious. So I think that's the fun part.
+So that fun part, I get
+to do almost all the time. I'm always constantly updating
+my view of the future,
+and my vision of the
+future, and our role in it, and how we reinvent ourselves,
+so that we could contribute more
+to that future or go invent
+that future in the first place. And so as a CEO, you get to live
+in that world, and that's fun.
+It's very imaginative. It's very strategic. It's highly complicated.
+There's no right answer. In a lot of ways, it's
+creativity at its most.
+On the other hand, what
+comes with that power is the responsibilities
+for a bunch of people
+who joined you in
+that spaceship, that joined you in that vessel. And they want to help
+you create this future.
+And they're part of your team. And you feel a
+deep responsibility for their well-being.
+And so when the company is not
+doing well, or the company, in the older days, when
+we were, in the beginning,
+trying to find our
+way, we probably nearly went out of business
+four or five times.
+I mean, literally almost
+went out of business. And we were on fumes or we
+were really flat on our back.
+And so during those
+times, it's embarrassing. It's humiliating. It's hard.
+You don't what the answer is. Oftentimes, you're in the dark. You're afraid.
+All of those feelings that we
+have as humans just multiplied by 1,000, 1 million.
+And when you're a public CEO,
+your face is always out there.
+And when you do well,
+people are happy. When you don't do well,
+they're fast to tell you.
+And so for me, it's a highly
+vulnerable profession.
+And so you're not
+naked, but you feel it. The question is, what's the
+biggest mistake you've made
+in the early days of NVIDIA? And what did you learn from it? Let me give you an example
+of what somebody might say,
+and I'll say that that's not. And so anybody who
+knows our history
+would know that the first
+generation of our products, the architecture, the technology
+we used was completely wrong.
+It's not a little bit wrong,
+it's like completely wrong. The fact that smart
+engineers, and professionals,
+and we were actually funded,
+and we created this thing, and it's like, check it out. It doesn't work at all.
+And so using curved surfaces
+instead of triangles, no z-buffer instead of z-buffer,
+forward texture mapping
+instead of inverse
+texture mapping, we did everything wrong. We did everything wrong. No floating point inside,
+we did everything wrong.
+And so we made a lot of
+tremendously bad choices.
+And I'll say that those
+are technical bad choices, but it led to
+strategic genius moves.
+How do you take a company that
+had that reputation and wasted
+a bunch of money and a bunch
+of time, 2 and 1/2 years, doing it the wrong way and
+surrounded by competition?
+And now, here we are,
+the only one remaining. And so that
+transformation taught me
+a lot about the importance of-- technology is important, but
+strategy is so important.
+And so how you see the world? How you approach competition? How do you approach the market?
+How do you conserve resources
+and apply resources? Those decisions, I learned
+more in my early 30s,
+through that deep failure and
+the company almost vaporizing. I learned so much about
+strategy and strategic thinking,
+and maneuvering, and
+things like that, and it's lasted a
+whole long time. The mistake that I
+made, that I would say,
+was a genuinely
+straight up mistake is, when the PC or when
+mobile devices took off,
+we were approached by very
+important companies that are important in
+the mobile space,
+to work on some mobile devices.
+And the choices that I
+made, I think the answer
+when they approached
+us, the answer should have been, no, not interested.
+But we decided to shift
+a bunch of our resources to go build mobile devices.
+And I thought that we
+could add a lot of value, but I think, if I were to have
+thought through it a couple more
+clicks, the amount of
+value you could really deliver for the things
+that we know how to do
+and what we're good at, it's
+probably marginal at best. And so I shifted the company
+to go into mobile devices.
+It grew into a billion
+dollar business and that kind of positive reinforcement. And then shortly after, during
+the 3G to 4G transition,
+we were just 100% locked out. And Qualcomm was the leader
+in that 3G to 4G modem.
+And that's the most
+important part of the phone, not the SOC, not
+computer graphics, not even the application processor.
+The phone is obviously
+the most important part. And so during that transition,
+they were able to block us out.
+I could have
+probably called it-- if that circumstance were to
+happen again, I would have said,
+yeah, it would be a really
+interesting opportunity for a couple of
+years, but we're going to get shot out after that. So what's the point?
+Let's go conserve our
+resources somewhere else. So we got shut out.
+We built it up to about $1
+billion and then went back to 0. But the recovery was, I
+took all of that expertise,
+that extreme low power and
+energy efficiency expertise, and I shifted all to an
+application that didn't exist
+at the time, called robotics. Somebody mentioned Thor.
+Thor is the great, great, great,
+great grandson of the chip that we were using
+in mobile devices.
+And that entire genealogy,
+and all the teams, and all the expertise
+that we built up
+was really helpful
+to getting here. And so that's rationalization.
+Going into that market in the
+first place was a waste of time. And so that, I think,
+is a strategic mistake.
+On strategy, sometimes,
+strategy is about forecasting, so precisely enough.
+From a systems
+perspective, what do you think you've updated
+your priors on? Or what is the forecasting
+mechanism you've
+developed to give yourself some
+confidence that this fog of war here don't know quite where
+things are going to go,
+but generally speaking, we're
+shooting in the right direction. Is there a systems
+design advice you'd
+give folks on when the
+shape of the future is not entirely clear? Yeah. And in fact, you used all
+the right words already.
+The first thing I do
+is, what am I observing? What am I observing? And based on what I
+observe, let's reason
+about it back to
+first principles, break it all back down. And ask ourselves, so
+what's going to happen next?
+And first, so what? Is this a big deal? Hey, deep learning, computer
+vision, AlexNet, big deal.
+Is that a big deal
+or not a big deal? And so the big deal part
+of it is, my goodness,
+here's two engineers, Alex and
+Ilya, and Hinton, of course.
+And they came up with
+a neural network model. And boom, it crushed the
+computer vision capabilities
+of all the computer scientists,
+decades before them, in one shot. And so is that a big deal?
+Is that a big deal? The step up in quality and
+performance was a big deal.
+Now, the next question is, so
+what's going to happen next? How far can you take it? And then if you could
+do it in this way,
+what else can you solve? And if this was able to solve
+some really amazing problems,
+what does that mean to
+computers and computing? And so you just keep asking
+yourself these questions. And so you're just iterating
+like that, all the way
+to first principles. And then from that, you
+create a mental model about the future of computing.
+And where is it going to be? What can it do? For example, self-driving
+cars and robotics.
+How large would models become? And if so, what would
+computers look like?
+Processing neural
+networks, how is that different than
+processing floating point numbers, and integers, and
+first principal mathematics?
+We express everything
+in FP64 or FP32, but obviously, neural networks
+don't have to do that. And so you reason
+through it like this.
+And then you build up a
+mental model of the future. And then your company, where
+you are going to be within it.
+And then you just work
+backwards from there. And then now, the question, of
+course, is, you could be wrong.
+And oftentimes, if you
+reason about things properly, you're not completely wrong,
+but you're not completely right.
+And so I tend to be very
+comfortable, saying, OK, these are the things
+that will likely happen.
+And these are things that
+will absolutely happen. And these things may happen. And based on that,
+I think we ought
+to go in that general direction. And we'll feel our way through. And now that the skill of
+building companies then,
+of being successful
+along the way is, you're going
+into this direction, and it's going to take energy,
+it's going to take time,
+it's going to take money. And everything, that time,
+energy, and money, that takes away from something else.
+So the opportunity cost
+of pursuing a strategy
+is the real cost. And so you've just
+got to ask yourself, how can you be smart enough such
+that the opportunity cost is
+reduced and your
+optionality is increased? And so you're trying to think
+through all of that stuff all the time.
+It's no simple answer,
+but in a lot of ways, you're trying to get the
+journey to pay for itself.
+Given everybody's
+going to mob you for more signatures, that's
+where we're going to end. Thank you.
+Thank you very much. [APPLAUSE]

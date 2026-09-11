@@ -1,0 +1,305 @@
+I have successfully recreated AutoGen from
+scratch using just five or six functions with
+the new OpenAI Assistants API.
+Here is their famous example, featuring a
+chart of YTD, Meta, and Tesla stock prices,
+that was made by this system, consisting of
+just 2 agents: a coding assistant and a user
+proxy agent.
+But the best part is that this system is much
+more controllable and customizable, which
+means unlike autogen, it is actually deployable
+in production.
+I will show you how you can easily add your
+own agents at the end of the video, so make
+sure to stay tuned for that.
+Let s get started.
+Alright, open the notebook open from the description,
+and first, the only additional packages that
+we will need are are OpenAI and Instructor.
+If you haven t heard about instructor, this
+is a library created by Jason Liu that allows
+us to define OpenAI functions as pydantic
+schemas.
+This is an absolutely genius way to do this,
+because it is much more convenient than JSON,
+and also provides additional features like
+input and output validation.
+It is the only library that I consistently
+use in production, and we actually recently
+had a call with Jason so hopefully we ll release
+some highlights soon.
+We will also create a small convenience function
+to print wrapped text outputs.
+Now, let me explain how the Assistant API
+works, because is quite different from the
+previous chat completions approach.
+In this new api, there are threads that represent
+conversations, messages that represent individual
+messages within the threads, and agents that
+execute the threads to generate new messages.
+I know it can be confusing.
+So, the general process is as follows:
+1.
+First, you have to create an agent.
+2.
+Then, you have to create a thread.
+3.
+Next, you have to add a message to the thread.
+4.
+After that, you have create a run for this
+thread and agent ids.
+The big change here is that runs execute asynchronously,
+so you have to continuously check for the
+updates until the run is finished.
+5.
+And finally, once that's done, if the run
+is in completed status, the run goes into
+requires_action or completed status.
+If it s in completed it means that you safely
+retrieve the thread with the new assistant
+message, when if it s in requires_action,
+it means that you have to run your function,
+pass the output back and run the thread again.
+But to simplify the entire process and make
+it familiar for all of us who are used to
+the previous version of the OpenAI API, I
+have created a function called get_completion
+that essentially goes through all the steps
+that I have just described until the final
+assistant response is received.
+Check out the doc string for more details,
+because you might wanna copy this function
+for your own projects
+Now let's go ahead and create our first code
+assistant agent, which will be responsible
+for generating and executing code locally.
+We'll begin with the tools that this agent
+will utilize, defined with the instructor
+library.
+The first tool is `ExecutePyFile`, will rus
+an existing Python file from the disk, taking
+the file name as a parameter.
+In the `run` function inside this model, we'll
+execute the file with Python 3 using the subprocess
+module and capture any outputs.
+Our second function, named `File`, serves
+to write a file onto the disk for later execution.
+Accurate function descriptions are crucial
+here; and as you can see by using the instructor
+library, you can define them directly in the
+docstrings or the field descriptions associated
+with each specific parameter, which is extremely
+convenient.
+We'll also add an additional parameter 'chain
+of thought'.
+This is another ingenious technique introduced
+by Jason Liu.
+This parameter forces the model to map out
+each action, step by step before, proceeding
+with the function execution itself.
+This makes our agent more accurate on certain
+complex tasks, without the need to use a chain
+of thought prompt globally, as autogen does,
+which significantly increases token usage
+and latency in production.
+Next, we'll add both of these functions into
+an array to be used later in our get completion
+function and create our code assistant using
+the new beta assistants API.
+For the instructions, we'll state that our
+code assistant is a top-tier programming AI
+specializing in creating precise Python scripts.
+We will also tell it to ensure that the code
+is executed before providing a response to
+the user.
+In our case, the user interacting with the
+code assistant will actually be the user proxy
+agent.
+I decided to design this system by following
+a typical Cubernetes cluster architecture,
+where the user proxy agent is essentially
+acting as a load balancer that distributes
+requests to specialized individual agents
+and converses with them until the task is
+executed.
+Therefore, the only tool that the user proxy
+agent will need is a sendMessage tool to send
+messages to other agents.
+It has two parameters: a recipient and a message.
+The run call in this function actually calls
+our previous method, getCompletion, with a
+separate thread for each agent, making our
+system sort of recusrsive.
+I say sort of because it has only one level
+of recursion, after the main loop that also
+uses the getCompletion function.
+But I actually believe that recursion is the
+only way to achieve AGI because everything
+else implies that we have to provide predefined
+steps to achieve the given task, which is
+not really general intelligence.
+Besides, it is unlikely that you could change
+the behavior of a super intelligent agi simply
+by switching the prompt or something.
+On the other hand, if this system is fully
+recursive, it means that it prompts itself
+from the very start, and that's where I believe
+things get really fun.
+I will show you later, as I said before, how
+to create more agents.
+If this video gets a lot of views, I can turn
+it into an open source project and try to
+create an agent that creates other agents
+and tools.
+So please like this video and share it if
+that's something you want to see.
+To ensure that our proxy agent has a separate
+conversation with each of the other agents
+in the group chat, we will store separate
+threads for each agent in a global object
+called agents_and_threads.
+Finally, we can define the user proxy agent
+itself with some instructions that you can
+check out on your own.
+The most important part here is that the user
+proxy agent must maintain ongoing communication
+with other agents until the task is completed.
+This parameter has a huge impact on the behavior
+of the whole system, so definitely make sure
+to play around with that.
+To launch this system, simply create a new
+thread and start an infinite loop that prompts
+for a user message, gets a completion from
+the user proxy agent and prints a response.
+That s it.
+Now we re ready to test.
+I ll run it with a famous example from Autogen
+for creating a graph of stock prices for Meta
+and Tesla, starting with the first question:
+what is today's date?
+As you can see, the user proxy agent immediately
+calls the code agent with a given task.
+Although the first time might not get the
+recipient name right, it immediately corrects
+itself, and then the code assistant starts
+to execute the file function.
+The function calls are displayed in red color,
+and the function outputs are displayed in
+yellow.
+After the code assistant agent writes the
+code to the file, it executes and returns
+the current date to the user proxy assistant,
+which then prints it for us below.
+So in this conversation, the user proxy agent
+converses with other agents through the send
+message function.
+Basically when it needs to chat with another
+agent, it calls this function with the message,
+which the other agent than receives as the
+user message.
+After the other agent responds, we pass it
+back as the output of the send message function.
+This allows for a more natural conversation
+flow, where the user proxy agent can chat
+with the other agents as much as needed directly
+from the main chat with the user.
+Let's try to run the second question.
+Compare the year-to-date gain for Meta and
+Tesla.
+Now the user proxy agent immediately asks
+the code assistant to provide the YTD gain,
+and then the code assistant proceeds with
+creating the chain of thought prompt and writing
+the code itself.
+As you can see, it gets it on the first try
+and returns the actual numbers using the yFinance
+library.
+For the final question let s ask the user
+proxy to plot the stock price change and save
+it to the stockpriceytd.png file.
+After the Code Assistant executes the necessary
+code, the User Proxy confirms that the file
+has been successfully saved.
+You can verify this by browsing the files
+on the left.
+As you can see, the resulting graph looks
+exactly like the one generated by AutoGen.
+However, our system actually did in far less
+tokens wasted.
+Nevertheless, there are a few things that
+you can still improve, which I m gonna discuss
+next.
+First of all, the current system does not
+support conversations between the agents that
+execute the tasks.
+It only supports the conversation between
+the user proxy with these agents.
+This is not necessarily a bad thing; however,
+because this improves the overall steerability
+of the system and helps to prevent infinite
+loops.
+However, you can easily adjust this, by adding
+more threads into the agent_and_threads object
+and also allowing other agents to use the
+sendMessage function.
+Second, sometimes, it feels like the user
+proxy agent doesn't fully understand the instructions.
+I've experimented with the prompt for a bit,
+but it could certainly use some improvement.
+And third, as I said before, you could actually
+make a tool for the user proxy agent that
+would allow it to create other agents and
+tools.
+If you actually manage to do this, I believe
+it could lead to exponential growth and a
+complete humanity extinction in the next few
+months.
+Now, adding new agents to this system is pretty
+straightforward.
+First, create the tools the agent will use
+with the Pydantic schemas using Instructor.
+You can simply copy the code for the code
+assistant agent, replacing any tools as needed.
+Then, add this new agent to the agents and
+threads object and create the assistant using
+the new beta assistants API.
+You can also include out-of-the-box tools
+like web browsing and code interpreter, but
+note that the code interpreter can't execute
+local files and has limitations.
+After creating your new agent, add its name
+to the recipient literal in the send message
+function and describe what this agent should
+do in the property description.
+Then, after running all the cells again, run
+the main loop, and your second task execution
+assistant should now be operational.
+In conclusion, the best thing about creating
+custom agent swarms with the assistants API
+is that they're actually usable in production.
+Unlike other multi-agent systems, here you
+have complete control over the creation of
+new agents and tools.
+You can easily add any guardrails for you
+specific use case or even implement any custom
+logic, making this system easily steerable
+and adaptable.
+For instance, I decided to design this example
+with the Single Responsibility Principle in
+mind.
+This is a common practice for building scalable
+systems, and it implies that each component
+should have only one specific responsibility,
+which allows for easy addition of more components
+or replacement of the existing ones in case
+of any errors.
+So let me know in the comments if you still
+think that AGI will be achieved with one super
+intelligent model or rather by scaling thousands
+of smaller agents together.
+And lastly, for those who need help building
+custom agent swarms like this for their own
+purposes, feel free to reach out to me.
+Thank you for watching, and don't forget to
+subscribe.

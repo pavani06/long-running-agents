@@ -1,0 +1,225 @@
+okay so Google just released the most
+amazing and Powerful advancements that
+I've seen lately it's a complete Game
+Changer it basically allows you to have
+real time interaction with the large
+language model but the biggest and most
+powerful thing is it can actually
+interact with you based on what it sees
+in your webcam or what it sees on your
+screen so it can write code it can
+analyze what it sees on the screen it
+can do a ton of things and this is very
+very powerful I'm going to show you a
+few simple use cases that will
+streamline your web scraping process
+your funnel design process basically
+this thing is going to be like a real AI
+companion or AI
+assistant let's get started but before
+we do if you haven't subscribed yet and
+you interested in content related to
+marketing automations and AI agents
+please hit the Subscribe button and now
+let's get started with some web scraping
+and a few more useful use cases for
+Gemini
+2.0 for those of you who don't know if
+you want to start messing around with
+the new AI model you could just come
+here to AI studio.
+google.com and select this feature
+stream real time and then you can decide
+whether you want to
+add your webcam as a video Source or the
+screen as a video source and you can
+Define which model you would like I
+chose Gemini 2.0 Flash and you can
+decide whether or not you want the
+output to be in audio or in text and you
+can also Define if you want to have code
+execution function
+calling
+grounding um not crucial for this
+specific use case I selected text now
+let's get started video source is going
+to be the
+screen let's select the entire
+screen can you describe to me what
+you're seeing at the moment on my
+screen okay and it's describing I'm
+looking at your screen and I see a web
+browser window with the title stream
+real time Google AI Studio the page
+itself has a sidebar blah blah blah I'm
+just reading what am I highlighting
+right
+now you're highlighting the sentence is
+always also a low bar with buttons to
+stop sharing what am I highlighting now
+only one
+word stop sharing amazing cool so this
+is basically the functionality but we
+can do a ton of things with it so for
+example let's say that you want to
+scrape data but you don't know how to
+scrape so obviously you can use very
+simple tools such as this um Chrome
+extension can you tell me the name of
+this Chrome
+extension as you can see it it is
+listening and it said the com extension
+you're pointing is is called instant
+data scraper where can I find um a link
+to instant data
+scraper you can usually find Chrome
+extension like this by searching it on
+Google you can okay amazing so helpful
+so but let's assume that you don't know
+how to use scraping but you still want
+to scrape so let's open up Airbnb
+basically this is a crazy way to exploit
+websites and I don't know what companies
+are going to do with I mean how
+companies are going to prevent this
+but none of my business let's assume
+that we want the data about these
+listings can you please take all the
+listings the Airbnb listings that you
+see on the screen and write them down in
+a Json format I want the name the dates
+and the price per night and the rating
+so I told it what I wanted let's see if
+it
+WR price per night I will do this for
+the listing displayed okay let's yes
+please do this for the listing
+displayed is basically
+now
+generating this it's kind of scraping
+but generating the output let's
+see there you go amazing okay so
+December 16th the 21 price 74 rate
+495 this is correct the next one is gura
+R Lou Romania five and 127 per
+night exactly as you can see Etc ET so
+we there you go we scraped Airbnb we
+have it in a Json file we can also
+output it in a CSV or whatever we would
+like now let's try scraping something
+else can you take take the data here on
+the screen from Apollo I want the name
+the job title and the company
+name assuming now it's taking like a
+screenshot and it's just going to write
+everything down in the Json
+file let's
+open the tabs side by side it will be
+easier for you let's hide this I want
+you
+to give me the name and the job title
+that you see on the screen in a Json
+format can you do this for
+me okay so very often I mean based on my
+test when I open new tabs it kind of
+messes it up but let's start a new um
+session starting a new session coming
+coming back here recording the screen
+entire
+screen okay I understand you are sharing
+your entire screen is there anything
+specific you would like to discuss or do
+you need help with something yes so you
+see the names and the job titles I have
+on the screen I want them in a Json
+format and also please read them out
+loud sure I see the names and job titles
+on the left side of your screen I will
+try to Output a Json format and read
+them out loud to you the names and job
+titles are Alex Steinberg strategist and
+individual contributor tar Jane head of
+digital Seline Schmidt strategic
+Partners Muhammad Jafari senior software
+engineer adris Rohani Cricket Umpire
+ayatullah rahmani director program jawed
+sherai CCTV technical expert Nisar
+sherwani human
+resource amazing do we have this in Json
+as well
+yes here's the Json format you requested
+back quote back quote back quote Json
+opening square bracket opening let's
+pause this so the thing is here that
+once I chose the output format to be
+audio it's probably not going to write
+down
+the the text correctly but if you want
+to if so if you want to have a
+conversation you got to move use the
+audio as the output format but if you
+want like I did like scrape so it's it's
+better to select the output format to be
+text so let's do this as an
+example come here
+again can you write for me in adjacent
+format whatever you see on the
+screen there you go you have this in
+adjacent format so let's assume let's
+open um
+google.com let's
+find
+Burgers in New
+York let's open Google
+Maps can you create a Json file for me
+with all the listings that you see I
+want the name the
+rating and the opening hours
+let's
+see amazing so boogers in New York
+results Brooklyn bread Cafe rating 4.8
+opens Diesel and Duke let's see Diesel
+and Duke five napkin
+Boger etc etc and obviously
+um this is just taking a screenshot and
+this is isn't necessarily the best
+format for doing this scraping but if we
+have a listings let's say we go to
+Craigslist and we want to scrape
+Craigslist so it's not exactly scraping
+but you get the gist I mean extracting
+data from the
+browser can you write down all the
+community categories in this website
+amazing so activities artists childcare
+classes events
+General amazing this is crazy absolutely
+crazy what else can we do with um this
+type of ability what else do you
+suggest okay seems yeah I am impressed
+anyway so this is just like a very
+primary video about this use case of
+basically asking the
+model to write in a Json format or any
+format that you would like what to
+Output anything that you seees on the
+screen and it's pretty valuable
+obviously we can also use this for
+videos stuff like this code execution
+also available for now I just wanted to
+like really
+quickly start showing you the options
+that open up as soon as we use this
+typee of model like this stream real
+time model that was developed by the
+Google team again in my opinion it's
+mind-blowing the opportunities are
+endless I'm going to share in the
+upcoming days more exploration and
+experiments that I'm doing with this
+model if you enjoy this video please
+like And subscribe obviously if you have
+ideas or criticism leave them in the
+comment section I hope you enjoy this
+short video until next time keep on
+automating

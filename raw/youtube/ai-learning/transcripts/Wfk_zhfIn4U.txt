@@ -1,0 +1,145 @@
+so you need a website and you want to use AI to help you make one but with so many AI Web building tools out there how
+do you know which one's the best I just used eight of the most popular ones out there and in this video I'm going to rank them all and tell you what the
+differences are between them so you know which ones aren't worth your time and which ones you should jump on right now
+all right so let's start off with the one that sounds nice and familiar it's GoDaddy but now with AI so the thing
+with pretty much all these tools is they start by asking you some questions about your business and they're all different
+in terms of how much detail they ask for and how much they let you put in Go Daddy ask some questions about my
+business goals like if I wanted to use the site to book appointments and accept payments it seemed like they were trying
+to tailor the experience which is good then they asked an open-ended question of just you know tell me about your
+business they give you 500 characters to do that so I would recommend giving as much detail in any of these as you
+possibly can what you offer what makes you better or more unique than your competition maybe the benefits that your customers get when they work with you
+that kind of stuff so when it came to choosing sections for the site GoDaddy gives you options but it really assumes you already know what you need and that
+might be tricky for someone new to building websites and the customization process was where things got pretty
+frustrating so it wasn't very intuitive at all trying to replace placeholder images or add new sections was way more
+complicated than it needed to be and the options in the categories weren't clear which made the whole process really hard
+and they do offer some AI assistance for generating content but it's pretty basic you can get suggestions for entire
+sections but you can't really refine or customize the output and as a result the AI generated cont content seems to be
+pretty generic here so in the end the website that I got was functional but not particularly impressive you know it
+met the basic needs but didn't have that polish that you want considering how important your website is for your
+business as a lead genen tool so to sum it up GoDaddy has some pros the initial setup is thorough and you do get some AI
+generated content but the cons are pretty significant here customization is hard and the AI contrib butions just
+aren't very deep so considering all that I'd have to put GoDaddy website builder in the D tier it gets the job done but
+it's not great if you're looking for something that's easy to use and gives you high quality results okay next up we
+have mixo so it started me out with some basic questions about my business and my goals one thing that really stood out
+right away was its integration with calendly now that's pretty cool because it lets you embed a point scheduling
+right into your website and none of the other tools that I'm going to talk about did that now it also lets you upload a logo and choose your primary and
+secondary colors which is nice but here's the thing it doesn't give you any AI generated color schemes or design
+guidance I'd rather give me like 10 color combo choices because if you're not a designer picking the right colors
+from swatches and just kind of getting them to go well with each other that's pretty hard to do for a non-designer and
+it's where a lot of newbies can really screw up the design now the initial layout here looks modern and clean I'll
+give it that but you're pretty much locked into this one specific style I couldn't find an easy way to change the
+overall design which let's face it can be a problem if this style doesn't fit your business they do have some AI
+driven content generation but I found it to be pretty basic for example the AI generated headline was really generic
+and just didn't capture the specifics of the business at all and it doesn't really let you even choose images to use
+you can just click reselect image and it makes a guess of what should go there which I don't think is good enough let
+me choose my own images or make one using AI please another issue I ran into here was I couldn't easily reorder
+sections or add any new ones that is kind of a deal breaker if you ask me you got to be be able to add in sections for
+the content that you need to properly sell your services so looking at the big picture here mixo has its strong points
+you know the calendly integration is a nice touch and the modern aesthetic of the site is nice the straightforward
+setup's also a Plus on the other hand the rigid design style that you can't really change as far as I can tell
+shallow AI generated content and the difficulty of rearranging or adding sections are are pretty big drawbacks
+all in all I put mixo in the seat here so it delivers on Modern design and offers some useful Integrations but the lack of flexibility and limited AI
+definitely prevent it from getting any higher in the ranking so if you're after a quick modern site and this particular style aligns with your vision it could
+be a good fit for you okay let's dive into Hoku next I think I'm saying that right actually never heard of that one before today so this one started off
+good asking a bunch of detailed questions about my business Business Services goals even my unique selling points the works a lot of lot of
+detailed questions here but the catch is when it came time to those USPS I was stuck choosing from their predefined
+options I would much rather be able to add in my own if I wanted to because every business is going to have different uh USPS so after answering all
+the questions you get to choose from three templates and they were pretty pretty pretty pretty bad um they were
+definitely giving me homemade blogs straight out of 2006 energy and even after playing around with color palettes
+and fonts it only improved marginally but the thing is these tools are meant to be used by non-designers who just
+need something Nic looking without having to override the system so this was a complete Miss now hokus does try
+to incorporate some AI features they've got this thing where you can choose different tones of voice for your content sounds good right well hold your
+horses because anything beyond the basic normal tone it's locked behind a pay wall and when I did use the AI for
+Content generation or redesign the results were less than impressive let's just say that I mean they went to all
+the trouble of asking the name of my business and all this information about it but it still fell back on calling it
+ABC accounting firm so come on what are you asking the question for as for images and sections you can swap things
+out and add new bits but don't expect any AI magic here no generated images no smart content suggestions you're pretty
+much stuck with free stock photos which let's be honest often scream generic website from a mile away so all that
+said I've got a slot hocus into the D tier starts off on the right foot with all those questions but it stumbles pretty hard when it comes to actually
+delivering the goods with a website that looks good and represents your business okay moving on now to Duda this one took
+a different approach right out of the gate so instead of diving into AI generated content it had me pick a
+template based on my industry and these templates look pretty good I'll give them that but it felt more like I was
+customizing a pre-made design rather than getting something you know uniquely crafted by AI once I got into the
+customization process Duda gave me a lot of control I could tweak pretty much everything layouts sections content you
+name it but here's the thing most of these changes were manual you know with an AI web Builder it's call me crazy but
+I was expecting the AI to do more of the heavy lifting but it was mostly just me making um manual adjustments myself now
+they do have an AI writing tool which lets you put in all this info about your business and choose different tones of voice but after filling all that out and
+choosing the conversational tone it gave me the amazing sure to bring all the leads to the yard headline of Welcome to
+Startup Savvy accounting yeah adding and editing sections was straightforward enough but
+again the AI wasn't really pulling its weight here I found myself manually adjusting text images and layouts more
+often than not it got the job done but it was way more time consuming than I'd hoped and not really artificially
+intelligent right the whole process was a lot closer to traditional website building with a Sprinkle of AI rather
+than a full-on AI driven experience so on the plus side Duda gives you a lot of control over the design and the
+templates are professionally done you can really get into the nitty-gritty of customization if that's your thing so
+taking all that into account I'm putting Duda in the C tier now let's talk about 10 web AI Builders so this one took a
+very different approach right from the start um after it asked for the usual info industry business name all those
+questions instead of jumping straight into the design like all the other ones did it starts by creating a site map so
+this was actually pretty cool because it gave me way more control over the structure of my website from the get-go with the site map approach I could add
+delete and move around sections and Pages before even getting to the design phase it's like being able to sketch out the blueprint of your website before you
+start building which honestly is much more in line with how you really should be creating a website you want to start
+with the content before you get to the design and the customization uh during setup was pretty impressive too I could
+click on any section ask the AI to enhance the content or even add new sections wherever I wanted for example I
+threw in a benefit section between two existing ones just like that now when it comes to AI integration ten web does a
+decent job you know you can use AI to beef up your content or generate new stuff based on what you tell it and
+before you generate the final website you get to pick font pairings colors and styles it's just really nice to get a
+preview of how everything's going to look and one big plus is that ten web uses Elementor which is a really
+powerful WordPress page builder that means you've got tons of customization options at your fingertips but fair
+warning if you're new to Elementor there's definitely a bit of a learning curve nothing a 20-minute video on YouTube couldn't teach you but it's just
+it's a it's a little bit beyond your typical AI website builder so what was the end result I honestly got a pretty
+goodlook website that's highly customizable it's especially if you know your way around Elementor so weighing it all up I didn't know if we'd have one of
+these but 10 web lands in the S tier for me it offers great control and customization making it one of the best uses of AI website creation because it
+lets you focus on the content before the design which is just refreshing and not what any of the other guys are doing
+okay next up let's talk about zero by hostinger once again you give it the basic info about your business including
+a brief description um of what you do and this one actually gives you the most space to give it info about your
+business you have a thousand characters for the description ideally it should take this and use it to make the right
+kind of site for you now I will say the initial design that zero spits out is actually pretty slick I got a hero
+section with the video background which gives the site a nice modern engaging feel right off the bat but as with a lot
+of these AI Builders the content and layout are pretty generic customization wise zero gives you some wiggle room you
+can add and move sections around which is Handy but here's where things get a little disappointing so the AI writing
+tool didn't really work when I tried it I tried to get it to generate some content about common business challenges
+and it just gave me an error basically so you might be on your own in the writing Department until they get those
+bugs worked out one cool feature that zero has is AI image generation weirdly enough I didn't really see that on most
+of these other ones but before you get too excited they only give you one free AI generated image after that you're
+going to be paying for each additional image which is kind of weird because AI Generation Um tools online there's a lot
+of them that are free so that's kind of strange they make you pay for the images it's a nice touch to have but the limitation could be a bummer if you're
+looking to really customize your visuals overall using zero is a pretty smooth experience especially if you know you're more concerned with looks than in-depth
+content it's easy to get a good looking site up and running but if you need more detailed or nuanced messaging which I
+recommend that you do need that you'll probably find yourself doing a fair bit of manual work there so I'm going to put zero in the B tier all right let's talk
+about Elementor AI Builder so I've been using Elementor as my own page building tool for years now and it's always been
+really solid it's what I recommend um almost all the time so when I heard about their AI Builder I was pretty
+excited to give it a shot but here's the deal so elementor's AI Builder isn't a standalone website generator like most
+of the others on the list it's supposed to enhance the existing Elementor page builder with AI driven features sounds
+cool right well there's a catch because you need both an elementary Pro subscription and their additional AI
+subscription making it definitely the priciest option that we're looking at today and in theory this tool should
+help with generating layouts selecting Styles and creating text but in practice let's just say it didn't quite live up
+to my expectations the biggest issue I had was just how buggy the whole thing was was I don't even need to get into
+specifics there it just straight up wouldn't connect I didn't even get to use one thing with AI at all using it
+now I'm all for being patient with new tech but this was Next Level frustrating especially when you consider how much you're paying for it so you'd expect a
+premium experience but instead it felt like I was beta testing something that just wasn't even ready for release long story short I got in touch with her
+support team yesterday and I have yet to have a solution for it so let's just break it down on the plus side well the
+concept's interesting right and regular Elementor is still great but the cons buggy unreliable expensive and from what
+I can tell it has pretty limited image generating options and it doesn't even build your whole site for you just one
+section at a time so I hate to do this but I've got to put Elementary AI builder in the F tier so it's not just underperforming it's basically unusable
+right now so my advice is if you like Elementor stick with regular Elementor um if you want to build a site but don't
+even bother with their AI features until they've worked out all the Kinks it's a shame I wanted to like this one but it's uh definitely not ready for prime time
+yet okay next on the table is brizy or Breezy not sure how you say it but this one starts off pretty basic same
+questions except these ones are pretty minimal and honestly it felt like they were collecting data for themselves
+rather than trying to customize my site then it gave me this site maybe one of
+the most boring looking ones I got back in this whole experiment but how was it to use and customize not great honestly
+the interface relies really heavily on icons that aren't intuitive at all it's difficult to figure out how to perform
+the simplest tasks like changing the background or layout you kind of have to guess and Custom ization is possible but again it's not straightforward you
+really need to know your way around design software to make any meaningful changes here so not user friendly especially if you're a beginner and the
+AI features are pretty weak too there's no AI generated images which is disappointing and the AI writing tool
+isn't very helpful um when I try to get it to edit a headline the results were borderline incoherent after working with
+Brizzy for a bit I ended up with a website that still looked really outdated and just not appealing at all so the whole process is more difficult
+than it needed to be especially considering how little help I got from the AI so if I had to sum up the brzy
+experience I'd say it was frustrating unless you're already experienced with web design you're really going to struggle to get the results you want and
+if you know web design use something else use Elementor so what's good about Brizzy well you can customize things if
+you can figure it out and that's about it for the pros and the cons we've talked about the templates are outdated the AI is next to useless and the
+interface is not userfriendly at all so all things considered Brizzy is going into the D tier so here's the big picture thing to remember here your
+website is actually really important to your business it can bring in leads on autopilot and if it's done right it can
+persuade them to take that next step with you filling your client pipeline so there is a way of using AI to help you
+but after using all these tools I don't think it's in a one-step setup like these are but you can still get the whole thing done in an afternoon if you
+follow my stepbystep AI website creation plan in this video so trust me when I
+say this is the best way to use AI to help you get the kind of website that's really going to make a meaningful difference in your business so click
+right here and I'll show you exactly what you need to do

@@ -1,0 +1,568 @@
+Hi, I'm Colin and I'm a software engineer at LangChain.
+In this video, I'm really excited to talk about the new feature we just launched for
+Deep Agents in Decode called dynamic subagents. Your agent can already hand off work to subagents.
+Dynamic subagents take this one step further and let it spawn and coordinate those subagents
+programmatically by writing code. This gives your agent the ability to more reliably decompose and
+break down large tasks into smaller parallel work items
+where it might otherwise struggle.
+Let me show you what this looks like.
+This is Decode, our terminal coding agent
+built using a Deep Agent.
+I've got a request ready to send.
+And one thing to know upfront is that the workflow keyword
+can be used to signal to your agent
+that you want it to write code and spawn subagents
+to help do the job.
+The request that I've got queued up here says,
+run a workflow that fans out 15 subagents
+and have each one write a different breakfast-themed tycoon game.
+When those finish, I want the agent just to pick
+the one that it thinks is the best and share it with me.
+You can see the agent picked up my request
+and you can see that it knows that I wanted it
+to fan out the 15 subagents in parallel.
+So a couple of things to watch here.
+This panel that just popped up
+is the dynamic subagents view.
+This tracks every subagent that's running,
+what each one is working on and how long it's taking.
+Each phase that you see on the left side of the UI
+represents one instance where the agent
+is fanning out a batch of subagents in parallel
+to handle one part of the task.
+The agent is doing all of this by writing code
+to programmatically spawn and coordinate
+all of these subagents.
+This is a really simple example, but dynamic subagents
+are a really powerful feature that agents
+can use for decomposing large tasks at scale.
+So that's a look at dynamic subagents,
+but let's dive in deeper.
+So why do we need this?
+I think it helps to start with what we already have.
+Deep Agents already has subagents, and they're great.
+The main thing that they give you is context isolation.
+Each subagent runs in its own context window.
+It does a piece of the work,
+and it hands back just the results.
+So the main agent's context can stay clean.
+That already exists, and it's still true here.
+If subagents already do that though,
+then why dynamic subagents?
+Well, here's the gap.
+Normally, the main agent orchestrates its subagents itself.
+It calls the subagent tool, which is the task tool
+in Deep Agents.
+It looks at what comes back,
+and then it decides what to call next,
+and that process repeats until it thinks
+it's completed the work that you asked it to do.
+That's totally fine for a handful of calls,
+but all of that orchestration is happening
+in the agent's own reasoning and in its own context.
+The moment that the task gets really big or repetitive,
+this starts to become unreliable.
+You'll see that the agent will start to lose track,
+it'll start to skip things.
+It decides that it's done early.
+Sometimes it takes a really bad trajectory.
+So here's a great example of how to think about this.
+Let's say that you want to summarize every page in a book.
+And let's say that you have one subagent per page.
+With plain tool calling, you're relying on the main agent
+to call the subagent tool a few hundred times in a row.
+And you're asking it to do all of that
+without losing the plot.
+With dynamic subagents, this just becomes a case
+where the agent just needs to write a loop.
+It just writes a few lines of code
+that spins up one subagent per page
+and collects the results.
+So the orchestration effectively moves out of the agent's head
+and into code.
+And that's really the whole idea.
+When the orchestration logic is easier
+or more reliable to express in code
+than to have the agent generate it each turn,
+the agent has the ability to write code.
+The payoff here is really reliability at scale,
+as well as complex multi-step workflows.
+So what do you actually get
+by moving orchestration into code?
+Well, for us, two things really stand out.
+The first one is reliable coverage at scale.
+A loop runs for every item.
+So the agent gets through, say, all 500 files,
+not just the 75 files that it felt like doing.
+Completeness then stops depending on the agent's discretion.
+And it also stops becoming a prompt engineering problem
+that you have to consistently try to tune
+to get the right behavior.
+The second is real control flow.
+Things like loops and branching, retries,
+and running things in parallel.
+All the stuff that's really awkward and error-prone
+when the agent has to do it turn by turn in its head,
+that now just becomes a few lines of code
+that the agent has to write.
+And that's it.
+So how does the agent run the code?
+That's our code interpreter middleware.
+Just a lightweight in-memory sandbox
+and it gives the agent access to an eval tool.
+And so this allows the agent to write a block of code,
+give it to the eval tool, the runtime runs it,
+and only the final result comes back to the agent,
+which is part of how the context stays so clean.
+The important part for us with dynamic subagents
+is that the middleware also exposes
+a task global by default.
+I mentioned the task tool and the task global is just a
+programmatic version of that tool that the agent can use in
+code to programmatically spawn subagents. So spawning a sub-
+agent from inside that code is just a programmatic function
+call. The agent just has to call await task with a
+description, a subagent type, and optionally, it can also pass
+a dynamically generated response schema so that the result
+from the task global comes back typed. That typed result is
+really important because it's what lets the agent loop or branch on what its subagent
+returns. Allowing for more complex multi-step workflows, all in code. There's really just
+two things that you need to use this. The first is just attach the code interpreter middleware.
+If you're building your own Deep Agent with the Deep Agents SDK, all you need to do is import the
+code interpreter middleware and pass it in when you're creating your agent. And that's it. The
+global to programmatically spawn subagents. This also ships by default in Decode, which
+is what you saw in the demo. So the second piece is how do you trigger it? Well, you
+trigger it using the workflow keyword. Once the middleware is attached to your Deep Agent,
+the agent can write code to orchestrate subagents, but it won't always decide to do
+that on its own. Putting workflow in your request, though, is the signal that you want
+it to. So for example, "review every file in this PR" may or may not fan out, but something
+like "run workflow to review every file in this PR"
+explicitly tells the agent that you want it
+to write the orchestration code.
+So I want you to keep this in mind
+because this is exactly how you steer every one
+of these patterns that I'm about to show you
+in the coming slides.
+Here are the six patterns that are most common.
+These patterns naturally emerge based on the shape
+of the task that the agent is solving.
+And like I said, you steer it
+with how you phrase the workflow request.
+These patterns were originally coined by Anthropic
+in their work on dynamic workflows,
+but we see the same shapes show up in dynamic subagents.
+I'll walk you through all six,
+and for each one, I'll give you the kind of task it fits,
+the request that gets you there,
+and we'll also take a look at a real LangSmith trace
+so you can see it happen.
+Pattern one is Classify and Act.
+This one's the simplest, and this one's all about routing.
+You use this when your inputs are all jumbled together,
+and different kinds need different handling
+via different subagent types.
+You would reach for this when you're doing work
+like triaging support tickets or sorting error logs
+or routing user feedback.
+The agent reads each one of the items.
+It decides what type the item is
+and it hands it to the subagent that's right for that type.
+To steer towards this,
+phrase the workflow requests around the types.
+Something like run a workflow to take these 200 tickets,
+figure out what each one is and handle it the right way,
+whatever the right way is for your specific type and task.
+That "figure out what each one is" is really
+what makes it classify first
+instead of treating every item as the same.
+Let's jump into the LangSmith trace for this
+to see what it looks like.
+First, you can see the request I sent.
+I said run a workflow to triage the support tickets
+in a specific JSONL file that I set up.
+I explicitly asked the agent to classify each as a bug,
+a feature request, or a question.
+And I also gave it specific handling instructions
+for each one of those types. What's interesting here is that you'll see that the classify part of the
+Classify and Act pattern took place over a read file call and an eval call. And that's interesting
+because we found that the agent could work the best when it could naturally decompose tasks in
+whatever way it saw fit. So in this case, the agent used its read file tool to take a look at the
+JSONL file that I pointed it at. It took a look at each ticket in the JSONL file and then it used
+its eval tool, which is it using the code interpreter middleware to classify each of
+those tickets. And you can see that it created an array of tickets, put every one of the tickets
+in that array, and then it classified each one as a bug, a feature request, or a question.
+And so the act part of the Classify and Act pattern is in the second eval call that we see.
+What you'll notice is that the agent then sorted each ticket — for bug tickets,
+it added a little more detail in the body, and then it did the same for each of the feature tickets.
+It sorted each of the question tickets.
+So it created a separate array for each ticket type and added a little bit more detail
+based on the classification that it did earlier.
+Going a little bit further down, you can actually see where it's using the task
+global and fanning out to different subagents.
+So you can see that it fanned out in parallel, all of the bugs to the bug
+investigator subagent type.
+So what's really interesting is the agent has the ability to target
+specific subagent types for different tasks that it's solving.
+So all of the bugs went to the bug investigator subagent type,
+all of the features went to the feature analyst subagent type,
+and all of the question tickets went to the
+support responder subagent type.
+Another thing to note here is that you see a description.
+Each description is essentially just
+the system prompt that's being passed to the specific subagent.
+The last thing I'll point out here is that you can see that we have
+a dynamically generated response schema based on
+the request that I sent and the handling that I wanted for each ticket classification type.
+So the agent is able to dynamically generate those response schemas and that gives it a
+way to know that it's going to have a specific output from the task global call.
+So let's take a look at what this actually looked like.
+Here's the full triage summary with all 10 tickets.
+You can see the bug classifications, the feature request classifications, and the question
+classifications.
+You can also see that the agent took specific action that I asked it to take in the request
+for each of those specific ticket types.
+So that's Classify and Act.
+The next pattern is Fan Out and Synthesize.
+This one's all about coverage.
+This is where you have the same job, you have many items, and you want to run all of these
+in parallel and have them merged into one final answer as your output.
+You would reach for this for more like per-file code reviews, maybe analyzing a batch
+of documents, or performing the same check across a whole fleet of services.
+You steer towards this pattern with words like "every" and "all" plus a single combined
+output.
+So an example of a request that I might send here is "review every file in this PR"
+and give me one summary of the problems.
+The "every" word forces the coverage, and "one summary" here is what adds the synthesize
+step on the end.
+So let's take a look at the trace.
+You can see the request that I sent.
+I said, run a security review workflow
+over the utility code in source_utils.
+I said, cover every file in that directory,
+don't skip any, then give me a single prioritized report
+of the top risks.
+So that single prioritized report
+is the synthesize step that I asked for.
+Here's the eval call where the agent is writing code.
+You can see that it organized each file
+in the source_utils directory into a files array.
+And then you can see where it used Promise.all
+to fan out to each subagent type that it's targeting.
+In this case, it's just targeting one.
+It's targeting a security reviewer.
+You can see that every security reviewer subagent
+is getting a small variation of this description,
+the system prompt, that's just different
+based on the file type.
+And then you can also see the response schema
+that was dynamically generated by the agent.
+You can see here "reviews."
+This final line here is the final return type
+that actually ends up going back
+into the main agent's context.
+So let's take a look at the fan-out.
+So you can see each of these fan out.
+And you'll also notice that when it returned these reviews,
+we have one more eval call here
+where the agent took the reviews
+and it performed a flatten and ranked them as well.
+It did a flat map and then it was able to rank
+all of these based on severity.
+So we have critical, high, medium, and low.
+And so that completes the fan-out and the synthesize.
+And so we should be able to see the final report
+generated. And here it is. So the agent gave me the full
+prioritized security report across all five files. It found 48 total: eight critical, 18
+high, 14 medium, and eight low. And you can see that it gave me the information I asked
+for in my request. The third pattern is Adversarial Verification. This one's all about precision.
+You would use this when a wrong answer is expensive, and you'd rather miss a few things
+than report something false. You'd want to reach for this when you're performing work
+around things like security audits or compliance checks or high-stakes reviews where you want
+high confidence. Typically this pattern is going to run in two passes. The first pass is what goes
+wide. It's the one that produces the candidates. The second is where we send those candidates to
+independent verifiers. And then only the findings that survive a final majority vote are the ones
+that get reported back to you.
+To steer towards this pattern,
+ask for confidence explicitly.
+As an example, you might say something like,
+run a workflow to find the security issues,
+but only report the ones that you're sure about
+and double check each one before you do.
+That "double check" is what adds the second adversarial pass.
+I said run a security audit workflow
+over the utility code in the source/utils directory.
+Cover every file in that directory
+and look for vulnerabilities.
+And then the key here is I said,
+independently verify each one before it goes in the report.
+I doubled down on this and I said,
+"I only want real confirmed issues,
+so no maybe or theoretical risks."
+And then I asked it for a short report
+of the confirmed findings at the end.
+So let's take a look at that.
+So here's the first eval call we see.
+You can see the files array that was set up again
+based on the files in the source/utils directory.
+But interestingly here,
+we see that the agent actually commented and said,
+hey, here's stage one where I want you to audit all files in parallel.
+So it fanned out,
+this is the candidate pass where it's generating the candidates.
+In this case, we're targeting the auditor subagent type.
+Here's our description, which is again, the system prompt.
+Again, it's only just being differentiated based on the file type.
+Again, we see our dynamically generated response schema.
+If you go a little bit further down,
+you can see where it's using what it knows is going to be
+included in that response schema to write code.
+Additionally, you can see "all findings" here.
+So we have an all findings variable and this is what's being returned to the
+main agent's context.
+So it's going to see this before taking the next step,
+which should be the verification pass.
+So let's take a look at that.
+Okay.
+We see our second eval call here.
+And what I really want to point out here is you'll notice "all findings" here.
+Variables that are stored are persistent across eval calls.
+So in eval call one, the agent created this "all findings" variable,
+and then it was able to both return the data from that
+because that was the final return of that eval
+to the agent's main context,
+but it was actually also able to incorporate that
+in code in the second eval call,
+which is again a really powerful thing
+because it allows the agent to be iterative.
+Also, because it was able to use the response schema,
+it's able to know what fields
+are going to be included on "all findings."
+So you can see for each finding,
+it knows it's going to have a type,
+a line, evidence, explanation, et cetera.
+So it gives the agent the ability to orchestrate
+some of these multi-step, more complicated workflows.
+So again, you can see that in this case,
+we're doing the verification pass
+and we're targeting the verifier subagent type.
+You can see the system prompt that's sent to each verifier
+and you can see the dynamically generated response schema
+where we're looking at confirmed or a reason.
+So let's take a look at the final output of this.
+So you can see here that we actually ended up confirming
+22 of the 26 with four being rejected.
+And you can see the reason for each rejection here.
+And you can see the fan-out as well.
+So let's go up and look at our final output from the agent.
+And here it is.
+You can see that it reported 22 confirmed findings,
+four were rejected.
+And here's the security audit report generated
+from adversarial verification.
+So a really cool pattern used for high confidence.
+Pattern four is Generate and Filter.
+This is when I would say we're moving more into quality as a focus.
+In this pattern, you'll take several subagents,
+have them independently take a shot at the same type of problem,
+and then the agent scores them and keeps the strongest one.
+You'd use this for more open-ended work
+where one attempt usually isn't the best attempt.
+Reach for this for architectural proposals,
+refactoring strategies, or content variations.
+To steer towards this pattern, ask for several,
+and then ask to pick.
+So for example, you might say,
+run a workflow to give me different approaches
+to this refactor, and then tell me which one
+is the best and why.
+The "a few different approaches" is what creates
+the diversity, and "which one is the best"
+is what adds the filter.
+So let's jump into the trace for this one.
+In this case, you can see my request.
+I'm focusing on a rate limiter here.
+I'm saying, hey, this is the wrong design for our scale
+and I've been trying to do one-shots,
+but they just keep coming back mediocre.
+I asked the agent to run a workflow
+that explores a few different redesigns.
+I asked for token bucket, sliding bucket,
+sliding window, leaky bucket, and GCRA.
+I asked it to write each one as a concise design sketch
+and to write it under its own file
+in a candidates directory.
+Then I asked it to weigh them on a few different criteria
+and recommend the strongest with a clear rationale
+for why it wins.
+So let's take a look at that.
+So this first eval should be our generate.
+And we see that the agent took those designs
+for the rate limiter that I asked for
+and it expanded on them.
+So it targeted the candidates directory with a file
+and here's token bucket and here's the prompt
+and the design that it's asking the subagent to generate.
+Going a little bit further down,
+we can see the sliding window counter
+and the file that it's targeting for that.
+We can see the leaky bucket
+and the file that it's targeting for that.
+And the last one is GCRA.
+So here's all of my designs.
+And you can see that at the bottom,
+this is where we're doing the fan-out using the task global.
+And in this case, we're targeting the systems designer
+subagent.
+Now, what's interesting about this one compared
+to every other example that I've showed you
+is that we don't have a response schema here.
+And the reason that we don't have a response schema
+for this one is because we told the agent
+to write all of these to a file.
+So that's one option that you can pick as well
+if it fits your use case better.
+So that should be the generate step.
+Well, let's go look for the filter.
+One thing to notice as I'm scrolling through all this,
+we talked about context a lot.
+You can see just how long each of the subagent calls go for
+and how many tool calls they're making
+as they're trying to generate the rate limiter design.
+This is all about context isolation.
+So this is where subagents are really powerful
+because all of this is staying out
+of the main agent's context window.
+We see a few eval calls,
+but what's really interesting here
+is we can see that the filter decision here
+is actually happening as a regular task tool call.
+And this goes back to what I mentioned about being iterative and not forcing the agent into a specific
+way of tackling these problems.
+So in this case, it handled the generate step with an eval call that fanned out to the systems
+designer.
+But once the designs were done, then it handed it using a regular task tool call to a design
+evaluator.
+So this is where it's actually selecting the best of the designs.
+And we can go back up and look at what the final output of that was.
+We can see the files that were produced.
+We had Token Bucket, the sliding window,
+the Leaky Bucket, and GCRA.
+And here's our scoring matrix, and the winner was GCRA.
+Tournament is pattern five.
+Tournament is Generate and Filter's competitive cousin.
+This is for when "best" is more subjective
+and hard to score directly.
+Instead of rating everything at once,
+the variants go head to head,
+and a judge subagent compares them in pairs,
+just like you would think of any other tournament.
+The winners advance, rounds run until one is left standing,
+and style selection, picking a tone,
+which of these implementations feel best
+is the criteria that we're judging on.
+To steer towards this, frame it as a competition.
+"Run a workflow to draft several versions of this headline
+and pick the strongest by comparing them against each other"
+is an example of a request that I might send.
+That "comparing them against each other"
+is really what turns this into a bracket
+instead of a single scored list.
+So let's hop into the trace for this one.
+You can see in this case, I have a createOrdersHandler.
+I said it's messy and I want the best possible rewrite.
+I said run a workflow that produces several candidate
+rewrites with different priorities:
+readability, robustness, performance, and minimal diff.
+I wanted it again to save each one to its own file
+under the candidates directory.
+And then I explicitly said,
+compare them head to head in a tournament,
+advancing winners until one stands out.
+The first part of our tournament here,
+here are our candidates that the agent generated.
+And you can see that it is fanning out,
+in this case, to the writer subagent.
+Again, because we're writing the files,
+we don't have a dynamically generated response schema.
+So we've now generated our candidates.
+The next eval we should see should be the first part
+of the tournament.
+And here we go.
+We found another eval call.
+And aptly named round one.
+So round one, you can see that we're fanning out to a judge.
+And we're comparing candidate A and candidate B.
+So this is readability versus robustness.
+It also includes the original here.
+And then you can see a second judge call.
+We're putting head-to-head performance versus minimal diff.
+And you can see that we have an output for this that goes back
+into the main agent's context, which is the output of round one.
+So we should see round two further down.
+And we do.
+And you can see that this is the final.
+So again, we're fanning out to the judge subagent type.
+And in this case, you can see that robustness and performance
+both moved on from round one.
+And now we're comparing those head-to-head
+to figure out who the actual winner is going to be.
+So let's go up and take a look at the final result.
+We can see robustness won.
+We can actually see the tournament bracket breakdown here
+where we had readability versus robustness, performance
+versus minimal diff, robustness and performance moved on,
+and robustness was the ultimate winner.
+The final pattern is Loop Until Done.
+This one's all about exhaustiveness.
+The agent runs a pass, it deduplicates against what it already
+found, runs another, and it really only stops
+when a pass turns up nothing new.
+Use this for exhaustive searches, dead code detection,
+and dependency audits. To steer towards this,
+make completeness the stopping condition.
+For example, you might say something like,
+run a workflow to find all the dead code in this repo
+and don't stop until a full pass turns up nothing new.
+The "all" and the "don't stop until" are what creates the loop
+and also gives the agent an exit point.
+So let's take a look at this trace.
+You can see the request I sent.
+Run a thorough security review workflow
+over the code in source utils.
+Work in passes, each pass looks only for issues earlier
+passes missed, and you keep going only while new issues keep turning up. In this case,
+I capped it at three passes, but you could let this run until nothing new shows up.
+So here's our first call. And you can see pass one. It's explicitly saying, hey, this is a broad
+sweep, all five files in parallel, general security issues. So this is the first attempt at
+surfacing issues. And you can see we're summarizing what pass one already found. So this is the
+deduplication step. And then we're fanning out again using what pass one already found as
+context for pass two so that we can try to surface new issues.
+And this should be the final pass three.
+So you can see it's building "all combined."
+It's building a combined list of all the findings so far.
+Again, for deduplication.
+And here's the third pass, which is saying an ultra-targeted
+sweep: give each scanner the full "already found" list.
+So those are all three passes.
+And we can see what the final output here looked like.
+Perfect.
+You can see it says all three passes done.
+Here are the consolidated findings.
+So it went through three rounds.
+It kept deduplicating what the previous rounds found,
+and it ran three times.
+But again, you could let this run exhaustively
+until it completely finishes.
+So those are all six patterns.
+And that's dynamic subagents.
+Dynamic subagents add reliable programmatic orchestration
+on top so your agent can take a big job, break it
+into a lot of small ones, and actually finish them
+reliably at scale.
+Two places to get started:
+attach the code interpreter middleware to your Deep Agent,
+or you can just reach for Decode where it's on by default.
+We're really excited about dynamic subagents,
+and we can't wait for you to try it out.
+I'm Colin.
+Thanks for watching.

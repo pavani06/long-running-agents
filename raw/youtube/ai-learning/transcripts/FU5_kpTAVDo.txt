@@ -1,0 +1,415 @@
+I think the models are dead. Those contribution graphs, they're not worth anything anymore. Code is going to get
+so cheap. You tell me somebody reports a bug and then you park it somewhere until somebody thinks they have time to look
+at it and then what? Then they spawn an agent. The agents are already running the tests for you. You can get a lot of
+speed by leaning into this. People say, "Oh, AMP is taste like they say this is polished." But the fact is that 99% is
+written by AI. This is Forston Ball, a founding engineer at AMP and the author
+of the famous Go books. In this podcast, we discuss why everything needs a CLI, whether computer science fundamentals
+still matter, and why 99% of slope comes from humans and not AI. If you want to
+be on the frontier of AI coding, watch until the end. This is the David Andre podcast. Enjoy. You know, the people who
+are still in the 2024, 2025 era of AI, how do they embrace the new way? So, one
+thing we've been doing from the start with AMP is we cannot stand still. The last one and a half years has proven us
+correct. We could have made a lot more money and gotten a lot more users if we
+had stuck to a way of working that was maybe prevalent in early 2025. Oh, you
+have a single agent in a sidebar in VS Code and enterprise customers, they want like a proper permission system and you
+only run these commands, you know, like all of that stuff. And I want attribution. I want every line of code
+to be attributable to one instance. That's really important. And if we had built this, I think we would have gotten
+one year of enterprise contracts, made a bunch of money with it. But then after a year, the competition would have been
+somewhere else. So with AMP, from the start, we said we have to optimize the company, the team, the codebase, and the
+product to be able to move fast to shed weight when we think the frontier has
+moved on again. So, if you look at our, you know, amcode.com/news,
+the meme is we're constantly killing features because we think they're no longer necessary. And we've been doing
+this a lot. Like the ultimate thing.com killed, you know, deleted itself, whatever. But they're right. And to give
+you a concrete example, first we had a VS Code extension and a TUI, right? That was part for the course last year,
+remember? Like we all have VS Code extensions. And then we said, no, like the the VS Code extension
+that's dead. like it doesn't make sense to have this next to the editor. Who has their editor open anymore? Like yes, the
+TUI is not for everybody, but like let's not get stuck to the editor, but if we would have stayed, we would have kept
+around users who really like to stay in their comfort zone. And then the question is, do you build up an echo chamber for
+yourself? So we said, let's going to kill it. But um I think most of the time they appreciate us pushing and we have a
+lot of customers that actually like to use AMP because they appreciate us doing this. They they ask us, they're like,
+"Guys, what's the meta? Like, what do you guys use? What's the model? How do you prompt?" You know? Yeah. Because it's a research, right?
+Like you're doing the research, not just the software. Exactly. Exactly. Like with the AMP Frontier Corporation, that's the
+official company name. And one of our things is we got to stay on the frontier. And then people pay us money
+so that they don't have to make the choice what goes into high or ultra or medium or what thinking levels. It's a
+waste of time for most people to like go around like, "Oh, I'm going to use GLM52." Like, you should think about
+what do you want to do, where does the information live, how agentfriendly is your code base, and then concentrate on
+getting stuff done, but don't get bogged down in the details. Yeah, I have a lot of notes about everything you just said. I guess let's
+start from the backlog. In the, you know, olden days, everything would go to a backlog, but now you can just like launch a new agent, new session, and it
+can be fixed, you know, in 10 minutes. So instead of like you stashing it somewhere for somebody else or for yourself and then you have to remember
+it a couple of weeks you can just like do it when you have that context when you have that energy the agent works on it and and it's done.
+That's I guess one of the things but I think the bigger threat is like each generation of models so much changes that we need to figure out like how do
+we work you know what is the workflows what what is the user interface look like. I 100% agree with you. It feels like I
+paid you to say this. We now have powerful models like Fable 5 or GPT 5.6. And when you plug these
+models into agent harnesses like cloth code, codeex or cursor, they can build full stack apps with no issues. But the
+moment these agents touch your database, that's where things get dangerous. They often skip RLS policies. They
+hallucinate CLI commands that don't exist and they rely on training data that's months or years out of date. This
+is why Superbase released agent skills. This is a free open source skill that makes any agent good at using Superbase.
+One command installs it and it works right away with cloud code, code codex, cursor pie, and basically any other
+agent out there. So instead of guessing, your agent now checks the official superbase docs before doing anything.
+And it follows a built-in security checklist. RLS on every exposed schema security invoker on views and other best
+practices just like a professional back-end engineer would. Superbase is betting on a world where agents write
+all of your code and this is them setting the foundations for it. If your agents are touching the database, make
+sure to install this Superbase skill first. The link is going to be in the description and it's completely free to
+get started. Thank you Superbase for sponsoring this video. I said last week, I think the models are dead in the sense
+that Fable is pretty good. GBD56 is pretty good, but we're now at the level where I don't have to like watch a model
+and then like oh don't change this file or don't like I think there's diminishing returns now to like this
+closeup managing of what a single model does. I think you can trust them a lot more than people do and I think if
+people have like issues with oh it doesn't use camel case or whatever it is I think they need to take a step back
+and rethink software engineering because the way I phrased it for a couple weeks now is you will get a button with which
+you can spawn a John Carmarmac that writes the code for you. The John Carmarmac doesn't speak unless spoken
+to. So you need to wake it up or have another John Carrick wake it up, right? That's a peculiar thing. Like it doesn't
+walk around discovering new things, but it won't make mistakes of syntax. It won't make expression mistakes like it
+will do the thing that you ask it to do. But then you got to ask yourself what do I want to do? And a lot of software
+development was consumed with how to do things like how do I write this? What's
+the best way to structure this? What's the best way to write this? How do I approach this? How do I approach this? Like a lot of stuff in software
+development followed from this. And I think a lot of this stuff is not useful anymore. And I think even stuff like I
+have a custom slash grant. This is the stuff that I invoke when I review or this is the flow that I do when like the
+models are pretty good man. Like if you ask Fable to rev like yeah spawn a different agent and say rev it, you
+know, whatever. But man, diminishing returns. Diminishing returns. the most important, you know,
+number in this equation of how good are the results is the information that you put in. It's not about like details.
+It's like, okay, is this a gnarly problem? Like, do you want like the John Karmic or do you want John Carmarmac's little brother? You know, it's insane to
+me that people take coding agents and then bolt them onto this old way of working where you tell me somebody
+reports a bug and then you park it somewhere until somebody thinks they have time to look at it and then what?
+then they spawn an agent. Why don't you optimistically spawn these agents and have them parked somewhere and then go
+through them and look at the bug fixes and see if they're good or not? You don't need to estimate whether this is
+worth doing if it's all being done in the background while you sleep. Like, let's just do it. A lot of stuff has
+changed. Old assumptions are no longer true. The agent is already acing. It's already running the tests. It's already
+in a sandbox with like isolated state, right? It's not like there's some stuff lying around. It's pretty good at doing
+this. So if you ask it to run all of the tests and it runs them, you're telling me you're then going to push it
+somewhere else and then have it run again for 10 minutes because you have a CI system somewhere else that does
+basically the same thing. Like the agents are already running the tests for you. Like you got to rethink a lot of
+stuff from first principles is what I'm saying. You probably should just pick a good model and focus on getting stuff
+done versus tweaking around other models. you know, if obviously if you do it in your free time, whatever, for fun,
+go go go knock yourself out. But, um, I don't think that's where the performance lies, you know, I don't think that's where the good results come from.
+Yeah. I mean, ultimately it's like knowing what to build and, you know, then building it. I think like I have this controversial opinion and I think
+it's becoming less controversial that like, you know, people say AI slop, but I think most of slope comes from humans
+not having good product. You know, they just with AI they can just build these trash products faster.
+Yeah, maybe it's bragging, but look, people say, "Oh, AMP is taste." Like they say, "This is polished." Whatever.
+They like the key bindings. They like a bunch of stuff or they say you guys have good taste. You polish, you craft,
+whatever it is, right? But the fact is that from what you see here, 99% is
+written by AI. Like nobody on our team writes code by hand anymore. That much. I I did a poll internally last week or
+two weeks ago and I said, "How much code is written? You know, how what do you guys think?" think and I gave three options and one option was 99 plus the
+other was between 90 and 99 and then I was like below 90. I didn't even anticipate that somebody would go lower
+than 80%. And then Camden who's on our team and who's great he's like I think I
+still write a bunch of code by hand and then I'm like Camden really like how much code do you write by hand? And he
+goes a right is probably 95%. You know so I I agree with you. I think I put a
+lot of care into the stuff that I build. But it's it's the ideas, you know, it's it's like, do I think this little icon
+is misplaced? Do I think this icon should have a tool tip? Do I think we should have a cool animation? That stuff
+here where you can, you know, you spawn AMP and it shows you this animated orb. You know, like what AI helped me to do
+here was it generated 15 different versions of these orbs in different
+colors that I can look through, right? It made this fast for me. I said like, "Give me a version with like braille
+characters. Give me a version with these characters. Give me five different versions. Give me 18 different colors." And then I went through them and picked
+the one that I like best. And it seems to resonate with people. So I used AI to express what I think is good faster, you
+know, without doing a bunch of work. If I had to write this or by myself, never would have done it. But now I did. And
+people love it and they think it's it's I don't want to say it's human, but it resonates with people and they think
+it's high taste. And to your point, it's not slop. It's not it's not the shitification of everything. I use AI or
+we use AI to accelerate it, right? People like our news posts and say we have like good background images in the
+news posts and whatnot, right? That's me and Tim and Brad going turn by turn by turn in midjourney. That's me reading
+Moby Dick and thinking about orbs and then trying to combine in my head Moby Dick and Orb. What else could we do?
+Let's mix this up. Let's ask Chachi PD for 10 different variations of this midjourney prompt. Let's pick this one. Let's remix this one. You know, AI helps
+me to go faster, but I still put the effort in. And I don't think it's slob. So, yeah, I agree with you. If it's
+slop, it's because there's a lack of ideas and there's a lack of input. there's a lack of knowing what you want
+to exist in the world or a lack of playfulness whatever you want to call it creativity maybe I agree I I agree
+so for people like who want to start a new project you know let's say they want to build an AI startup this year given
+the state of AI agents how how would you advise them to do that start thinking about what you want the
+business to be like what's your market who's your customer how do you serve them how do you generate value how do
+you sell let's turn it around let's Say somebody's really interested in hiring salespeople and wants to create an AI
+startup. You know, h how should they start? You know, it's the same thing like why would you hire salespeople if
+you don't know what the company is? It's the same thing for software now where software as the thing itself like that's
+become less valuable. You know, we said this last year on our podcast. We said like open source is going to take a hit.
+Like those contribution graphs then they're not worth anything anymore. You know, like code is going to get so
+cheap. Now it's it's much more about what is the software doing? How much
+value is it providing? And that sounds boring as hell, but that's just the truth of it. And the interesting thing
+is that actually in the last 20, 30 years, most programmers were in that lucky situation where the thing that
+they really care about and you know treat as their craft or as their hobby over overlapped with what's valuable for
+the business. you know, like the guy who really likes writing Haskell on the weekend. Turns out he's also the guy who
+can build like a good finance back end because he really cares about types and whatnot, you know, and is really good at
+modeling this stuff. But now Fable is also pretty good at that stuff. And people say, well, I got the main
+experience and then it's like, man, I've seen these mods. This was GP55, you
+know, where you ask it to write a database migration and it just says like, oh wait, we cannot drop the column
+yet. we got to add the new column, we got to deploy this, we got to write to the new column, wait until all the other code is gone. Only then do we drop the
+old column. Like that's stuff that a senior engineer taught me in like my first two or three years as an engineer.
+And I think that was a hard one lesson that nobody really spelled out to me like that. And it seems trivial, but
+man, it's something the model does in like half a minute. And like a lot of stuff is just faster and and easier to
+get done and thus cheaper. So the question is more what do you want to get done? Does that answer the question? Is
+that is this a is this like am I cheating by saying that? [laughter] No, no, no. Like that I think that
+answers like the product side of it. So let me ask the second side. It's like do you build for the human or do you build
+for the agent? Oh, because the orbs for example, orbs you build for the agents, right? Even you say like the humans, you know, they
+might want a local blah blah blah. It's like the agent wants a full computer. He wants to do anything on that computer. How do you think about product like
+that? I think we're all finding out. I think it's it's kind of changing, right? I think all of software is trying to find
+out what is the future of software. Like there's been a few ideas like everything will be an API or everything will be a
+CLI and then the agents will do your shopping and whatnot. And maybe that's what happens. I do think like a lot of
+old software will die out. The question is how fast, you know, like can you get
+like the 70-year-old people to use an agent to book a flight for them? I don't know. But like what I think like if I
+had to start and build for the frontier a new product, right? I would make it so that no human has to fill out forms
+again. I think that's dumb. Like that stuff is dumb. Like everything that a human can do, they should be able to ask
+an agent to do on their website, right? That would be amazing. The APIs are maybe not there yet, but it would be
+good to be able to bring your own agent. like most people don't want to use your shitty built-in agent maybe you know
+like it would be nice if I can use AMP to do my shopping for me on another site or you know whatever I don't know if
+that's a pipe dream but that's how I think about it I think a lot of stuff is stuck in the old assumption to give give
+you a funny example on Sunday it's Tuesday now on Sunday I'm here in a local club and we had like a little
+festival and I built like for fun in an orb from my phone I built like a little
+shopping thing where people can order food and whatnot and then the kitchen gets like the orders and they can check them off and what because that's what we
+did with paper on Sunday. So, somebody was like, "Can't you make an app for this?" I'm like, "Actually, I can." So,
+I built the app, right? I took a photo of like the menu front and back, took two photos, send it to the thing, and it
+built it works. Did it in the orb. I could share the URL. People could go to the URL. It worked. It was crazy. The
+interesting and to me, maybe only to me, you tell me. But the philosophically interesting thing to me was it built an
+admin interface where somebody could now go and look through all of the products
+that are on the menu and adjust the prices manually, right? Or adjust how they're spelled and stuff. And I looked
+at this and I'm like, I'm never going to do that, dude. Like, I'm not going to go in there and use the form. What are you
+talking about? I'm going to use you AMP in that codebase again. I'm going to send you another photo if the prices
+change and I'm going to say fix the pricing. You know, like a lot of setting
+stuff, a lot of admin stuff, a lot of stuff that a human did so that no code had to be changed is now probably easier
+by changing the code. You know, imagine a WordPress back end, right? Where you
+you built a WordPress back end so that everybody in your company, marketing and whatnot, could add a blog post and and
+stuff like this and had a spell checker and stuff. If you had an agent in your codebase, you could say, "Here's the
+draft for my blog post. please add this header image and publish this blog post and do a spell check. That's one
+sentence and it goes and does it and you don't have to click around with a bunch of stuff. So if you start a new company,
+you start a new codebase, you have to think about what is the role of code in your product. Don't fall into the trap
+of thinking the old way of you know shipping software is still valuable because it might not be like it that the
+calculus has changed. You know, you can do a lot of stuff even stuff that seems unfeasible or seemed unfeasible like
+having five different copies of stuff, having five different versions being built, have you know, all of that stuff.
+I think you need to rethink and I think the whole, you know, software industry is is is figuring this out at the same
+time. It's very interesting. I think you know we had an internal document I think it was called software is dead now what
+you know because it was about this very same thing where look man like the models are getting to this point where
+you can wish things into existence as long as you have the wishes as long as you have a use case for what you want to
+build and now we're thinking the future of software might be that well you don't want to rebuild everything all the time
+but there's this element of I want to take bits and pieces and then remix them
+and that's easy to do. Somebody wrote a blog post, I wish I could remember the name, they were saying the emacification
+of software. So in Emacs which is this text editor and you configure it by writing elisp there's this thing where
+everybody has their own config like they they have like their dot files and everybody has a collection of lisp files
+and they collected it over many years and then say if somebody has a fuzzy finder plugin what's common in the emac
+community is they would fork it and change it and like rewrite the code and
+then not contribute it back because they customized it so much. This is exactly what's happening right now too. Like
+there's this great diff viewer called Hunk and I wish I could remember the author. It's a nice piece of software.
+It's to view diffs and I actually stopped using it. But when I used it, I
+forked it, pointed ambed it and said, "Please add the GrooveBox dark heart
+theme. Please add the ability to check off files in the sidebar. Please do this. Then compile it and put it in my
+bin folder in my home directory." And it did it. And I had custom software. And there was no reason for me to contribute
+back upstream. Like I didn't want to generalize it. I don't think it might be valuable to others. I didn't spend any
+time on it really like it was just 2 minutes of the agent running in the background. And like what happened
+there? Like I took a piece of software and remixed it for my own use case and now I use it, you know? And I think we
+might see a lot more of this. Like obviously on the other end of the spectrum there's the skepticism that you
+know like non-technical people are not going to vibe code whatever their apps and stuff like this but I do think
+there's going to be a lot of software I do think there's probably going to be a lot of internal software and I think for
+these use cases you had internal software being developed before but now
+the example from Sunday right it's a little club it's 20 people we had this process of you give up your order here
+somebody writes it down on a piece of paper then it goes over here I could encode code this in software I don't
+know in three times 5 minutes over the course of what was it 2 hours like I pulled out my phone I wrote my prompt
+and then said like now we need another thing I and then I show it around like that's crazy like if people if people
+start to realize that they can do this in companies it will replace like what previously was maybe like that one Excel
+file or that one wiki page or that one you know hack together whatever thing
+like I think a lot of that's going to happen and And maybe that blast radius of this movement is going to get bigger
+so that people will attack bigger things that they're going to say, well, we want to buy this software Riverside. I I'm
+picking Riverside. We're going to pick Riverside, but actually I don't care about audio only. I only care about
+videos, whatever it is. Or the other way around, right? I only remove everything in the app. I don't
+want to see this. I don't want to deal with it. Give me a custom version of this. And I think, you know, the agents
+will be able to do this very soon. And and the question is what happens to software then you know.
+Yeah. I mean there's going to be an explosion of it. It's going to be a game of like who has who knows what to build and who has the right setup. I think if
+you boil it down it's two variables. Knowing how to use these agents and then just having the budget to do it. If you can afford to spend the
+tokens and you can use the frontier models. I I think you're going to crush in the future. You cannot take a
+programmer who doesn't use AI. He's going to get crushed by a mediocre programmer with AI. Unless you say like
+okay it's something like super technical and you know there's like only a few people with that knowledge but like in general you know if someone is like a
+better programmer but you give this guy a ton of AI you can extrapolate where the models will be in six to 12
+months. It's just all about like knowing how to use these agents. Yeah I agree. I think the most important
+skills will be like first principles thinking like actual like thinking not like technical detailed stuff and
+whatnot like you actually have to think through problem solving thing of breaking down business problems into
+solutions again dumb example Sunday the first solution somebody says hey to I heard you can build apps now with AI and
+I'm like yeah I can and they were saying look right now we have these orders in our kitchen and somebody makes a mark on
+a piece of paper and then hands a piece of paper over can you build us an app so that somebody on a tablet hits this
+thing and then prints out the piece of paper and then hands it over. And I as somebody who's been in software for a
+while, I was like, "Okay, I can build this. I can get a printer." Like, it's not, you know, we can do this, but why
+do you need a printer? Like, why not have a second tablet instead of having a piece of paper, you know, and and this
+kind of thinking of what actually is the process? What is the workflow? What problems are being solved through this
+workflow? And how can we replace this with software? I think that's going to be incredibly important. So then it's more like everybody's an
+architect and you just need like to be aware of like the different solutions from different industries, different businesses to like have the right idea,
+I guess. Yeah. I look like I think what I do is still engineering, right? When I'm now
+going to look at should we port it like this to the TUI or to the CLI or something, right? But the mistake that I
+see people make online is they compare they always use like the 1% as an
+example. They say look Mitchell Hashimoto reads the code and you know
+like AI is not good enough to solve this issue for him. And Mitchell is one of the best programmers in the world. He's
+working on like beautifully graph like it's incredible software. It's it's technically challenging. It's really
+really good. But look around what most of the software developers around the world are doing. Look at most of the
+software around the world. It is not building a GPU accelerator terminal emulator. You know, I think people they
+underestimate like how much software is where you can solve problems without being overly technical where it's okay
+to just use whatever my SQL or something something and have a crowd app and whatnot. That's good enough, you know.
+All right, Fston. So, can you show us your agentic engineering setup? Yes. So, this is AMP ampcode.com. It's
+installed as a PWA which um Okay, I think yeah I think that's actually
+what stops the adoption of the technology. It's pretty it's not easy to pronounce PWA but um yeah acco.com and
+AMP is a coding agent. We've launched it last May one of the first ones right after a then uh cloud code and then
+right after cloud code we came out. We multimodel. So we support GPD models. We support anthropic models. We support
+GLM. Since two weeks we have the dial. So here you can select like how how much
+effort you want to put in low GLM52 with the Oracle which is a sub agent. We have
+I often go with medium actually 56 soul medium and Oracle is soul high. So
+Oracle is a sub agent that is a reviewer you know gives advice I guess. Then high
+GBD 56x high ultra that means you know. So from your experience 5.6 is a better
+reviewer than fable. Um it depends right like here in high we have fable as the oracle like in that
+case you know it reviews in this case we switched it honestly like it's nuance
+right like between high and ultra but in this case medium is you know it says here balanced intelligence speed and
+cost for most tasks right so I think in that case it's fine you don't need fable
+in the mix. We can always then ask for fable. So I don't start a lot of agents
+in the TUI anymore. We've had this feature orbs since two weeks. So I can
+you know give me an overview of this repo. So this will spawn a sandbox remote machine which is we call this an
+orb. It's tied to this conversation which is I think a little bit of a game changer if we if you want to take this
+in a philosophical direction about you know the future of software. The start is this is now running an agent in a
+checkout of this repo in a remote sandbox. Once the agent goes idle, the sandbox goes to sleep. Once you start
+typing, it goes back up again. If I open this on my phone, basically it's streaming on my phone too. You know,
+it's multi-device. I can even open this in the tui. Okay. And that is actually
+how I do most of my coding in the last few weeks. So the way I understand it is
+like when you give it its own any system basically like you know some people deploy agents on DPS when you do that the agent can like take away more risk
+right because it cannot up the computer. Yeah. So is that the main benefit you see if I start AMP any client in AMP and
+then if I go here you know here this is just I started this just now I said hello this is in Matui it's on the
+second screen here it's the AM2 I can now remote control this and say uh you know whatever I can see it on the other
+screen right but now I can also say I want to start a thread here in this two
+instance like in this folder my one amp one checkout on my MacBook Pro right it starts a new thread and I say you know
+hi cool let's use low for this don't waste any tokens and start it right and this is now creating a thread in my TUI
+on my machine you can imagine you can start AMP instances on your Raspberry Pi on your dev cloud box on your VPS and
+whatnot the reason I'm mentioning this is that if you look at this it's the same machine so if these two threads
+these two conversations make a change we don't do any work tree or checkout management right now so they will bump
+into each other's chain We could add work tree support, but I think philosophically now where we're going,
+we believe that these models are so good at being in these headless boxes that
+there's very little reason to stay local and mess around with like local setups.
+And it's really powerful to have a separate orb per change. This, for
+example, I worked on this like two weeks ago. Goes the multicount switching feature. If I open this, you know, like
+this will come back up if I want to make a change and then I can see the diff, right? But it's now parked. That means
+the computation that made a change, the context that produced the change and the agent are one behind one URL. I can
+share this URL with my team and they can now access this. As of a couple days ago, we also have multiplayer support,
+which by the time this episode comes out, I think it will be released, where you can now access these orbs where
+other people in your team are working on. The fact that you can package up the thread, the agent, the computation, the
+change in one URL, and you don't have it on your machine, the thread somewhere else, and the change pushed up to GitHub
+in a branch. I think it changes things a lot. Like we use it a lot, and I think like 10 years ago there was this big
+push for cloud idees. I don't know how much you know cloud9 and whatnot and all of that stuff and back then cloud IDs
+were seen as this big solution of you know you can have a Chromebook and you do all your dev on a bigger machine and
+blah blah blah all of that stuff but then people bumped into these issues of well the latency or I don't have my key
+bindings or I cannot SSH into it I cannot do this I cannot do that I cannot you know like all of that stuff and I
+think if you look back at the last six months of how people write code or let
+code be written, right? The arguments are gone, man. Like, who cares about latency when you have to wait for tokens
+per second? Who cares about language servers anymore? I don't use language servers anymore. I don't use my editor
+anymore. I don't use crazy key bindings anymore. So, a lot of those arguments don't hold. And when you go remote,
+you're now async by default. And you can do a lot of other stuff. Like just to drive the point home, somebody in Twitter was like, "Hey, can the agents
+and orbs even use like a rust crossplatform desktop framework, you know, and I asked Puck, which is a thing
+we released yesterday, which is like the meta agent. I said like create a project where you can prove like somebody on
+Twitter asked us, create a project here, Rusk desktop testing, you know, pick a rust as a framework, ask the agent to
+take a screenshot." So it did. We ran into a bug that I fixed in a separate thread which we can look at in a second. it send a message to this other agent
+like puck is the meta agent. It's this it's this thing which we launched um
+yesterday and people love it. But this puck can control your other agents. So
+it spawned an orb. It sent the message in here and says investigate whether or AMP orb can support crossplatform
+desktop app development in this repo. Right? Pick an appropriate blah blah blah. It's a prompt. Okay. Starts
+working. I'm doing some other thing and then it yeah it produces a screenshot and I mean look like it worked for 16
+minutes from a dev perspective whether the latency is say 2 minutes or 16
+minutes does not matter you're already somewhere else cuz you delegated yeah exactly and with 16 minutes you
+know they can do a lot the point I'm making here is I think people haven't seen what these agents can do now like
+in these headless boxes like this is crazy yeah so we have Puck and I have
+this website amco.com/w what the puck in it you know we have like different
+instances of puck you know different renders of it here that that's what they look like so and okay so this is a fun
+thing right let's not pretend that this is serious stuff right but look like I asked it create more variations of this
+okay and then in AMP we have a sub agent called the painter which can create images and what it did was if you look
+through it let's see best original I said like no no no do this and And it uses the painter to create a new variant
+of the puck. So this is the lava lamp. This is the bubble wrap. Blah blah blah. You get it? Yeah. And my point is, if you had told me 6
+weeks ago, you're creating images and like previewing them and reviewing them and then cutting them or slicing them
+together or putting them in a homepage or removing the background. I would have said I kind of want my hands on, you know, like I might open Pixelmator or
+Figma or whatever it is. But man, look, like I didn't go, you know, it added them and then I said, we need to update
+the copy on the page and I say, "Show me a screenshot." And it comes back and it updated the copy. Let's do it live. Like
+I think we can ship this boom to production. Okay. So now it's sending this prompt and it's going to ship it to
+production. And it showed me the screenshot. And Quinn, the CEO of AMP, he had a good tweet, I think yesterday
+or today, which is the same point that I just made of you're async anyway, so you can ask the agent to give you proof.
+It's not like you're waiting the next 30 seconds. You're waiting maybe a minute. So ask it and I we can look at some
+other things. I'm like, "No, test this again server." Like, test it again. Yeah. Launch 50 50 different tests to
+see if it works, you know, benchmark it. Exactly. Show me the screenshot. Show me the screenshot in dark mode, in light
+mode, whatever, because it's going to take 10 minutes anyway. And once I'm back, I'm sure it works. And then I'm going to hit the ship it button. The
+whole game I think changed here. What's another example? I wanted to show you this. So puck is right now. It's only
+this thing in the web, right? It's one conversation. So then I ask it. I think this was even fable here. This is how I
+prompt. By the way, I don't use any custom slash commands. I don't use any skills really. I don't have any MCP
+servers. The number one thing that's important for me when writing prompts is where does the information come from of
+that the agent has access to to interpret what I mean. So that means an agent has two sources where it can get
+information from right training data and the context window. That's it. That's what it boils down to. Training data as
+we all know is the model observable internet public knowledge whatever and
+it's kind of lossy in a sense but the way I like to think about it is the
+model is a senior engineer who's seen it all who's had work in all of the
+operating systems back end front end client all the different languages it knows how to invoke an anonymous
+function in scheme in common lisp in Lua in JavaScript whatever it knows it all but the mental model I have is imagine
+that senior engineer and somebody snatches you off the street, puts a hood over your head, drives you somewhere and
+suddenly pulls the hood off your head and in front of you there's only a desk with a computer on it. On the computer
+there's a code base, there's a browser, there's a terminal and there's a text editor. That's what you have access to.
+And then magically from somewhere somebody hands you a prompt and says implement this or fix this feature.
+That's roughly the information that a model has. It can look in the codebase. It can look on the internet. It can use
+the terminal and run commands and it's very experienced. But if your prompt does not contain enough information or
+your codebase doesn't contain enough information or your agents MD doesn't contain information, it can turn a
+shitty prompt into a good prompt. You know, like here for example, it's about porting puck to our CLI. I could have
+written port Puck to the CLI. That's I think that's a shitty prompt. I have more information in my head about how I
+think it should work. So what I do is I just put that information in, right? I say look at how it's implemented in web
+UI. So I set the standard. I point it at the information. I say this is what you should take as the standard. I want to
+port this to our CLI. And then I say I think we should have a puck open command. We have a command pallet in our
+CLI that opens the puck thread and then you know that shows up in the sidebar. We have a sidebar in the toy. And then I
+think we should have a puck clear thing blah blah blah. So then I'm kind of like riffing maybe we need a new modality for the TUI, right? This is how I would talk
+to a senior engineer, right? Like if I were to talk to a fellow senior engineer and say, "Hey, could you pour a pup to
+the TUI?" This is what I would tell them, right? This is the Slack message I would send. And then I say, obviously,
+this is not what I would tell to a human being without maybe some flowery words. But instead, I say, I what I want you to
+do is you should research how it's implemented. All right? Research how we communicate, what it does. So look at
+the news post, right? We released this yesterday. Document how it works in the dock. And I don't care really about the doc, but I think it's the same for
+humans and miles. I want you to sit down and think about it. Like compile what you learn. I don't know if this is made
+up stuff, but I do think it helps. And then I say come up with a good idea for how to translate it. Then use sub
+agents. You know, Fable is expensive. It's so expensive that it scares me. So I'm like use sub agents for implementing
+this which I think is GPT models right now and then present me with the results and then it went off and did it. This
+was an hour ago I think right it's like hey I ported it to a design um I use
+this it's bound to this blah blah blah blah blah. So kind of like what I said and it appears in the sidebar right and
+then here's the reference. Okay cool uh maybe we can reuse this storybook. I
+asked it to create Starbucks. we have storybooks for the CLI and then I said can you test it against the local dev server and then I did something else and
+then I think it went on for I don't know how long and it found a bunch of bugs and I don't care so now I need to read
+through this but it says like it did an end toend thing uh the code, two 300 lines verification ran all of the tests.
+So now you know either I go in we have like access to the terminal in the orb I
+could now test the CLI and see whether here there it is puck shows up in the sidebar. This is by the way the AMP CLI.
+This is ghosty, you know, web assembly ghosty version. So, a bunch of stuff works. Even the mouse clicks work. But,
+uh, even this works and I think I have an Easter egg here. So, there you go. If you click five times, let's see if that
+works. Boom. The orb explodes. So, yeah, here puck seems to work. And then I would I don't you know, okay, but it
+seems to work, right? That's pretty cool. So, again, coming back to the question, you didn't ask question. I posted how important is the local dev?
+Like look at what I'm doing, right? like this ran, I confirmed it works. I'm going to do spot checks of how it, you
+know, how how it implemented it. But at the end of the day, if it did end to end tests and I read through it and I kind
+of agree with the say architectural choices or bigger software design choices.
+Yeah. Software design choices, what do I need my local dev, you know, like this is it like I'm I'm testing it. I have
+access to the terminal. It's pretty good, you know. And if here like this is
+so I'm going to Laracon next week and giving a talk. So I was kind of playing around with uh Laravel, which I've never
+played around with. I've been a Rails programmer before, right? And I think
+it's inspired by it. So here I had it built in an orb just to try it. It set up a fresh lava thing. And in orbs we
+have portals which you know you can spawn anything. This is basically something running on port 8,000. And now
+I can access it here. And I say hello uh from our podcast. Yeah, whatever. And I
+just want to test it whether this works with like proper state. I think it had like some front end tests, but um Oh,
+there it is. It did. It did work. So, this is a full Laravel app running in this. And now I can even share this URL.
+I can open it in browser and share with somebody else, right? I can test it. I can look at the files in the orb. I can
+see all of the changes it made. Question is, what more do you need? And now I can basically say, okay, take this, share it
+with my teammates. I can turn multiplayer on and then it would show up here and then say, Tim, they could take
+over and say, "Yeah, actually the signup screen looks bad." And they can ship it, which I think is pretty neat.
+Yeah. Especially when you have like less technical people on the team, they can start something off and then somebody can pick it up and do the last 10%.
+That's really hard. Yeah. And I mean, you know, this like preview URLs in PRs were a big thing.
+Like if you think back five years ago where people would you know oh I want to change something in our blog so yeah
+download GitHub desktop because you don't know how to use git on the CLI then do this create a pull request then
+you get a versel or whatever preview URL and that was cool but obviously here now you have the context of the change like
+what that person typed into the agent you have the change itself you have the computation you can check whether it
+runs you don't have to check it out locally and then you can take it over the finish line if you want to. And you
+have an agent to do all of the changes that you want. It's pretty sweet. I don't know. That's kind of how I do most
+of it now. For certain things, I might still um I actually don't know like it's
+become less and less. I still use like the local TUI for if I need like some credentials and I can't be bothered to
+secure them really, you know, like I don't want to paste credentials somewhere. And we have like better ODC
+support now for credentials and whatnot. But I don't know. I don't know. Sometimes out of habit I opened local CLI but I've been doing a lot like this
+like this is actually how work. I just had a conversation hour ago in Slack with the others and I was saying it
+changed so much just in the last four weeks like we released a bunch of stuff and now our shipping velocity went up.
+Everybody's like Tim one of our designers who codes a lot. He said he never fixed so many paper cuts and
+little polish things as in the last two weeks because every time he finds something, he just takes his screenshot
+basically and sends AMP off and then he has like this orb. Then he does like spot checks and is like go and merge it,
+you know. And now since last Friday we have agent to agent communication. So I
+can tell an agent for example if it says like I found another bug then I can say launch another orb to fix this bug you
+know but you keep doing your work and then it spawns another thing in another checkout on another branch that fixes
+the bug and then I can come back to it. My predictions are I think the local dev is going away. I think the models are
+dead in the sense that the distinction between different models will matter less in the future. I think the models
+will get to a point where it's a John Carmarmac on a button. I think it's not clear what software will survive. Like
+it's not clear what software will be worth building in the future. I think right now people are saying it's moving
+all down to infra. I think everybody moving to infra is going to kill the margins in infra which means there's now
+15 different sandbox providers. You know that eating away each other's margins which is also not a sustainable
+business. So the question is what's left? And I think we're all try, we're all figuring this out right now, but
+we're all moving up to a higher level of building software. I think there's going to be a lot to build. The question is
+just what is that going to look like? I think that's an amazing point to end it on. Thank you for so much. Where should people go?
+Yeah, I'm I'm still active a lot on Axe, Torson Ball. I write a weekly newsletter called register spill where I, you know,
+spill what's in my registers. I've been sharing a bunch of links. I now having fun with it, recording audio notes and
+whatnot. Go to amco.com, use AMP. We now have subscriptions, we have orbs, we
+have multiplayer coming, agent to agent communication. We have a bunch of stuff. Check that out. Let me know what you
+think of Pug and yeah, find me online. All right, I'm going to link all of that below the video. Once again, thank you
+for your time and thank you for joining this podcast. Thank you.

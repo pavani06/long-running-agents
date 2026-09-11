@@ -1,0 +1,808 @@
+Let's do this. Welcome everyone. Great to I can't quite see you all but I can
+sense you as the chat over here goes crazy. Welcome to this workshop, this
+virtual workshop on the master prompt method. Uh this has been a long time
+coming. This has been a long time coming and I'm just so excited to share with
+you all uh some stuff that I think is is kind of going to blow your mind. Uh in
+fact, I can I can pretty much say it's going to blow your mind even if you're someone who has been following what's
+happening in artificial intelligence. Before we get started, I
+have a couple requests. One is to actually I don't because we don't have
+cameras. So, I'm not going to ask you to turn on your cameras cuz we are in webinar mode. Um, but the other one I
+will ask, which is to tell us your questions. We're really here to answer
+your questions. We're going to have plenty of time to answer all of them. And the ideal way to do that is not in
+the chat. So, if you're used to the typical Zoom meeting format, that's done
+in the chat. But, we're in webinar mode. So we have a dedicated if you look on the Zoom toolbar there a Q&A
+button. Okay. So if you press that Q&A button right now actually you can see
+that there's a special interface for you to put in questions and then also you can upvote other people's questions. So
+we're going to prioritize the questions that are most update that are most upvoted. And so I encourage you to both
+ask and vote on the questions you want to see answered. One more thing which is uh we have maxed
+out the thousand person limit on our zoom call. So many of you are joining
+via the YouTube live stream. So I welcome you as well. I will try to go
+over to the YouTube uh live stream chat and answer some of your questions as
+well. Uh and so uh listen for the Q&A section when I'll head over to the the
+YouTube live stream and and address some of those as well. All right. And because I know this
+question is going to be asked already, there will be a full recording from the very beginning to the very end sent to every single person that's registered
+for this call. Whether you were able to join the Zoom webinar or you were on the
+YouTube live stream. As long as you're registered via the event page that we sent out, then you're going to be
+good. Okay. All right. So, let's begin with
+introductions. Okay. Uh, I'll go first and then I'll ask my my partner here,
+Hayden, to introduce himself. And I know many of you probably
+know me or know of me, you probably are here because of a link or an announcement that I posted in some
+place. Um, but just in case you don't or just in case uh you found this on social
+media or something, the short version of my story is almost 20 years ago, about 18 years
+ago, I started coming down. I started experiencing this mysterious
+uh illness, this condition, which was this like pain and tension and numbness in the right side of my neck and my
+throat. like for no reason, no apparent cause, just out of the blue one
+day. And that kicked off a years'sl long odyssey of me seeing so many different
+kinds of doctors in multiple countries trying every treatment you can imagine.
+Uh never really finding uh exactly what was the cause. And the medication that I
+took for that caused symptoms really severe symptoms like severe short-term
+memory loss real problems focusing a lot of mental cognitive
+problems. So the only real answer that I found the solution I found was to start
+relying on technology to start relying on software. So, I started kind of offloading my brain, my ideas, my
+memories, my to-dos, my projects, my schoolwork at the time onto a category
+of software called digital note-taking apps. And those apps kind of saved my
+life. Really changed everything for me. I thought my life was over. I had no future. And because of this technology
+being available, I was able to not only, you know, survive, but start a business
+and become a writer and start a family and all these goals that I had for my
+life. So around 10 years ago, I began realizing that this deficiency, what I
+thought was a deficiency or disability, had actually become a superpower. And I
+began to teach it. I began to blog about it. I began to do corporate workshops. I began to to teach uh li live
+cohort-based courses on this topic of how to build a second brain, which is
+how I began to think of my digital note-taking app. Uh around three years ago, I
+packaged all of that knowledge and experience and expertise into a book called Building a Second Brain, which
+has now sold over 350,000 copies in over 30 countries and 20 something languages,
+which just completely blows my mind, no pun intended, because I really thought
+it was this tiny nerdy niche interest that I had that apparently a lot of people have resonated
+with. Finally, uh about 18 months ago or or between 18 months and two years ago,
+uh I stopped teaching. It's actually surprising to a lot of people. Uh I stopped teaching the building of second
+brain cohorts and we stopped offering them. And I didn't really share this at the time, but one of the main reasons
+for that is because of AI. I saw this AI wave coming and I realized, oh my gosh,
+this is all going to change. Note-taking is going to change. knowledge management, productivity, business, all
+these topics that I teach about are going to completely change and I cannot in good conscious in good conscience uh
+keep uh advocating for a pre-I way of doing those things. So I put it all to a
+stop and I've spent the last 18 plus months uh really deeply immersed in
+studying and experimenting and trying to figure out you know doing small workshops and small events trying to
+figure out what this new era is about like what it means to live in an AI
+first world what productivity looks like in an AI you know transformed um
+business uh environment all these kinds of questions And I feel like I now have an
+answer. Okay, which is why I'm so excited about this. I feel like I've been wandering in the desert. I've been on this epic journey and I'm coming back
+and I I've found something uh really amazing that that I think even if you
+don't join the program that we're introducing today, just the distinctions and the perspectives and the lenses that
+we introduce on this call, I think are going to be really really helpful for you in just understanding and uh
+adapting to what's happening in AI. All right. So, a really crucial piece of
+this puzzle of what I found that I'm bringing to you now was meeting Hayden
+around 6 months ago. Okay. So, I'll say a little more about that, but if you would please, uh, Hayden, welcome by the
+way. And uh I would love for you to just um introduce yourself and give people a
+little bit about your background, although I know we're going to be going a lot deeper into your background um uh
+in a little bit. For sure. Thanks for having me, Thiago. Um yeah, my name's Hayden. Um I'm a
+serial entrepreneur. I have kind of always done things my own way, whether
+that's a good thing or not. um dropped out of high school at 17 and started my first business and have been
+self-employed since then. I lived life pretty fast. Got married at 20, had two
+kids. I actually have like a a 21-year-old and a 19-year-old now, and they're both out of the house now. Um
+and also have started about, you know, almost a dozen seven to eight figure businesses. uh and then started
+acquiring businesses through a few different old codes over the years. Um so I've bought you know almost 40
+businesses outside of those and sold close to a dozen as well. Um so I'm a
+businessman through and through. Um not really a public person as Thiago will
+tell you. I kind of live in the middle of the forest. Um, but there hasn't been a time in the
+last five years or so, um, that I've owned fewer than a dozen companies, which is kind of unique. Um, and it's
+required me to spend a lot of time and resources in a different side of sort of what Thiago has been teaching, which is
+organ organizational knowledge management. Um, my life in business is probably a
+little different uh than most. I'd say outside of just sitting on boards, um my
+role today has kind of become like an AI tinkerer. Um so I have meetings with the CEOs in my companies usually once or
+yeah once or twice a month if they're newer, maybe once every two to three months if they're more entrenched. Uh so
+that's like maybe five meetings a week or so. Um and over the past yeah at
+least six months I'd say the majority of those meetings is uh basically identifying the bottleneck the current
+bottleneck in the business and working with them on how to use AI to unclog it.
+Um so yeah that's that's basically what my life has become is just working with AI probably 8 to 10 hours a day uh to
+figure out sort of new ways to solve business challenges.
+All right. So, that's the perfect segue
+to begin sharing my
+slides. Okay, so you should be seeing we're not we're not used to using webinar mode here, so someone let me
+know if you don't see the uh the slides full screen. So, that's a good segue to talk
+about how we got here. Um, I had a couple couple people ask me when they heard about this event, you know, why
+why now? Why this? What what's what's happening now that you're coming out with this and in such kind of a big
+public way. So, now that you know a little bit about us individually, I want to I want to tell you a little bit about
+how we got here like to this moment to this workshop. Uh, and then in a minute,
+I'd also love to hear what brought you here. Okay. So, the images here are the
+the artist's interpretation, the artist being AI of uh of this story. So, none
+of these are real photos. I hope that's obvious. But basically the the the brief
+story of how we got here is Hayden and I um spend a lot of time as I've said
+immersed in AI as as he mentioned experimenting with it applying it to our businesses uh trying to streamline
+things make things more efficient but in two very different contexts. So Hayden is so let me start
+with myself. I'm really focused on the individual individual personal productivity, individual creativity, the
+creator economy, freelancers, uh that sort of individual psychology of
+how people change their productivity tools, how they become more productive, how they learn faster and better, all
+these kinds of questions. But I run a small business. We're five people. I
+don't really have much exposure besides some consulting gigs to how medium and
+large businesses are implementing AI or what that looks like. Hayden does. So
+Hayden not only has a much larger business with a lot more people in it and complex operations and workflows,
+but he actually can see across many businesses. businesses he owns, businesses he invests in, businesses
+that he uh advises others, his clients on either buying or selling. And we were
+actually introduced around 6 months ago uh soon after I moved to the small town in Mexico via de Bravo where Hayden has
+lived for 20 years. Uh we were introduced by a mutual friend, began playing paddle ball. Uh and after we
+after our Friday paddle ball sessions, we go uh and have tacos. uh our favorite
+places uh boar wild boar meat tacos and just kind of chatting and talking about
+stuff and as we were talking we realized wait a minute we have we we're doing the
+same thing but from two perspectives that are so complimentary that really
+that really fit each other and that that kind of approach the the issue from two different angles. me from the solo angle
+or small teams, him from the large teams.
+Wow. There's like car alarms going off and construction uh noises. So, let me
+know if that's distracting. Uh I've literally never heard that loud of sound
+before in in our yard. Typical. Typical. Okay. So, now I'd love to know
+from you. I'm gonna open up the chat
+here and I'd love to hear uh what brings you here. And I don't mean, you know, I
+saw a link on Facebook or on uh Twitter and I clicked it and I registered. I
+don't mean that how you got here. I mean, what had you on a weekday, you
+know, on on a weekday, uh, set aside your other priorities, make the time for this, uh, to attend live or to watch the
+recording, uh, if that's what you intend to do later. What had you make this a
+priority and set aside the time to be here?
+Well, the chat is moving so fast I can't keep up. But let me read some of these. Uh Vika says uh he's here because he was
+curious. Faith wants to learn more about AI and how to help evolve and grow uh her
+business. Uh MA cousin wants to futureproof their business and
+themsself. Uh Don is a fan of mine and wants to know what I've been up to, where I've been the last 18 months.
+That's fair. That's fair. Melanie wants to understand how to use AI to unclog the bottlenecks associated
+with scaling a SASbased startup.
+Awesome. Uh George is already using AI to improve his business and is curious
+about what I have to say, what we have to
+say. Okay, awesome. So I I kind of get a mix of curiosity and also just wanting
+some practical advice and use cases for how to implement this in your business which is the perfect reason to be
+here. Okay. So this is what we're going to cover. Um this call this me this uh
+workshop was originally 60 minutes but we extended it a couple days ago to 90
+minutes uh because we just have so much to cover. So if you're not able to stay the full 90 minutes, we'll send you the
+reporting. But basically, we're going to cover four things. So first, a little bit of context around what is going on
+right now, like how we see the current landscape. And not just in a broad general way, but we're really going to
+focus on a few key distinctions, a few key like like perspectives that you need
+to consider to even understand why the method we're going to teach you is so powerful.
+Okay, so the context of what's going on in AI right now. Second is the master prompt method.
+We wanted to really teach you something during this this workshop like have you come away with something that you can
+immediately put to use. Uh and so we chose one of the most powerful uh techniques that we're going to teach in
+the bigger program. Uh third, we're going to tell you about the bigger program that that master prompt method
+uh fits into. and then we're going to tell you how to join if you decide that it's something that you want to invest
+in. All right, so let's talk a little bit about the
+context. So those of you who have been following me for a while know that I am a huge fan of history. Uh you always
+need to understand what has recently happened to understand what is about to happen.
+And we sort of like been through these three era eras in just a a decade or two. So for for a long time note-taking
+was just on paper or in folders or in filing cabinets. It was extremely slow.
+It was extremely painstaking. It was time inensive. Uh and even when you put
+in all that time and all that effort, uh it wasn't searchable, wasn't flexible,
+you couldn't really copy it easily from one place to another. you couldn't access it easily. That was like the the
+ancient history of note-taking that ended around 2007 with the launch of the
+iPhone. This second one in the middle was the digital notetaking era, roughly
+from the start of smartphones to a few years ago. And this is where my my work
+has focused on digital note-taking and personal knowledge management. And you know, this this second era was a
+revolution. Like it's hard to remember now, but it was it was such a leap forward for it to be partially
+automated. For example, when you took a highlight in one place, it appeared somewhere else. It was much more
+streamlined. It was indexed and searchable for the first time. It was mobile
+friendly. Right? Like if you follow the my building a second brain work, we have spent years studying and improving and
+optimizing this digital note-taking era. Um but that era is now over, right?
+It's it's really over in many ways. I mean it continues. Note-taking is still around. We still have a need to take
+notes to kind of capture the information in the first place. But I really think that we're in this new era of AI first
+organizations. Okay. So that means a couple things. It
+has a couple big implications. Um the first is that so
+much of that manual effort is just no longer needed. The manual capturing a lot of it not needed. The organizing,
+the distilling, the summarizing, it's largely not necessary. Uh it can be done for you
+either uh in whole or in part. uh and I think a lot of people kind of
+get that implication. They're kind of aware of that. But the second one is is kind of surprising or has been
+surprising even to me which is in the preAI era note-taking was 100% personal.
+It was just you. It was you and your personal interests, your personal
+idiosyncratic, you know, goals and projects. It was all just about you and
+no one else, right? It was it was all about creating your own personal system. But the thing with an AI first
+second brain, if you use AI AI to create it, is once you've created it, it's so
+easy to share with other people, right? Like once you put in the work to create an AI second
+brain, there's no reason to keep that for yourself. It can be easily shared with a colleague, with your spouse, with
+a team, across the whole organization. So it's almost like with AI knowledge
+management becomes uh automatically social. It becomes you
+know naturally a group effort and not something that you just do completely on your
+own. All right. So this is where I want to I want to bring in Hayden's
+perspective a little as well which is how AI is uh is changing
+is transforming businesses. So Hayden you and I have talked about this a lot. Uh you have a lot of uh fantastic just
+stories and examples and case studies but I'd love if you just shared some of those examples like across all the
+organizations that you see. How do you see AI changing this this AI revolution changing business?
+So AI is kind of it's the ultimate democratizer of intelligence and
+execution and I think everyone sort of understands the intelligence piece right now but the execution piece doesn't
+necessarily it hasn't come to be yet but it will it will and so I think AI will
+ultimately remove execution as an advantage in business right um which
+means an AI first company in every single industry will deliver let's say
+you provide a service they'll deliver the service faster better and cheaper than a nonAI first business and if you
+look at sort of standard technology adoption curves um I would say depending
+on your industry you have probably somewhere between one and five years before that
+is true and I say depending on your industry because obviously certain industries like marketing software, um,
+finance are a little bit more progressive and I'd say that you're probably closer to the one-year in other industries that are more brick and
+mortar, um, are probably closer to the 5-year. Um, so I kind of look at this for people
+who own businesses and for all of my businesses as an actually it's an existential risk, right? But it's also
+an opportunity because the reality, we'll get into this a little bit later, but you know, my goal in my companies
+and for my leadership teams was always, you know, sustainable growth was maybe 30 to 40% year-over-year growth to the
+bottom line. With AI, that's no longer the case. Like sustainable growth can now be 3 to five times growth per year,
+right? So literally 10 times higher. And I fir I firmly believe that even one to
+two years of execution today AI first is enough to actually build a moat to
+protect your business going forward. We'll we'll get into that further.
+I think you muted too. Sorry. Yeah, I'm back. So you kind of see and you you mentioned to me that this window of
+opportunity that you said is is how long approximately before this really becomes mainstream.
+It depends. I mean I would I would predict um on the indust like depends on the industry like if you're a marketing
+agency you know I think you you have a year um right? Uh but I think if you you
+know I buy a lot of sort of brickandmortar recession resilient businesses HVAC plumbing roofing and
+stuff and I think probably there that's likely you know five plus years and I
+would also say that the the cost of not being AI first is a
+little less because you are still um limited by actual physical people um
+going to somebody's home or property and doing the work right and that will eventually be replaced by robotics but
+that's probably you know a decade and a half away.
+All right. Okay. So that's just the p the the context step. Okay. The context
+stage. So let's get into
+uh a question I have for you for you all which is your perspective on this. I'd
+love to know. I mean many of you are working in businesses or organizations of some
+kind. What is one shift or trend or pivot or some kind of impact that you're
+seeing in your industry because of AI? Could be quote unquote positive or
+negative. Could be something that you like or you don't like. Could be something that's growing your
+organization or shrinking it. But I'd love to hear from you what you're
+seeing. Alex sees no coding. Susan is using AI to summarize
+research. Graham is seeing the quality of code go down quite rapidly. It's
+interesting. Jen is seeing faster product innovation. Cheating. I'm assuming that means cheating on school
+work. uh more it's more difficult to find work as a copywriter fing products faster focusing
+on patients instead of documentation so I can I can just kind of see the whole diversity of different
+fields and industries represented here uh Donna is pivoting 100% to using AI
+for sales enablement Jason is using it for complaints management increase
+creativity confusion summarization faster research all right So, I just
+wanted to be sure. But what I'm seeing here is that you all are experiencing and seeing the AI revolution the same as
+we are. All right. Okay. So, let's talk about the master prompt
+method. Um, let's just get into it. So, let me
+give you the upfront the one sentence definition. Okay. The master prompt method is kind
+of simple in many ways. It's an approach to using AI, all AI that is providing
+all the context about you, your organization, your offerings, all the
+context that the AI that you're interacting with needs to understand you
+and to know who you are and your background and needs that context to
+make good decisions. and doing it upfront and all at once. That's the key
+part. Okay? Doing it upstream, doing it early, doing it at the beginning so that
+all the subsequent interactions with the AI take into account all of that
+context. Okay? So, I'll contrast that with how most people a use AI, which is
+they try to use fancy prompts, right? They sit down, they have a question, and they think, "Let me use the craziest
+multi-step you know, fancy secret prompt that I learned about on some from some social
+media guru, which is not the worst way to interact with AI. I mean, it's better
+than nothing. It's better than just just asking a simple generic question, but it is much more powerful to provide all
+that context up front. Okay? And there's a couple key distinctions here that I
+think you need to understand uh to to to see why that is so powerful. And then we're going to look at really concrete
+examples and case studies. Okay, the first one is and I talked about this in
+my my recent YouTube video about notebook LM uh in case you you're curious about that. Um but every AI has
+two kinds of knowledge as general knowledge which is what it was trained on, right? So that's like the the
+billions or trillions of data points that an AI was trained on before it gets released to the public.
+And that's the knowledge that I think people spend way too much time on. They worry about oh which model do I use
+which which version of the model which you know like which product which
+interface and that stuff matters but the the reality is you don't have any control over it right you can't see what
+say chat GBT was trained on you can't change it you can't edit it there's nothing you can do about that all you
+can do is sign up to use you know the latest model that everyone else is
+using what matters far more and what people almost don't even realize uh is a
+thing is contextual knowledge right think about does the AI model that you
+are working with know about you the history of your career the history of your organization does it know your core
+values does it know your org chart does it know the products you offer does it know your approach to customer service
+all that context is absolutely what makes the biggest difference in your
+ability to get value from AI Now, all right. And the second
+distinction, which Hayden introduced me to, and the examples he's going to show here in a minute are great examples of
+this. I think most people are really overly focused on operational initiatives. They're trying to make
+little kind of uh process improvements, you know, become a little more efficient
+at checking email, make their Zoom meetings a little more uh efficient, uh
+become, you know, slightly more productive with their calendar. And, you know, I'm into that stuff. I love the
+latest productivity app the same as everyone else. But where AI is really most powerful is in transformational
+initiatives. It's in like leveling up your organization from one level to
+another. Increasing growth by double or even triple digits. Uh cutting a team in
+half while doubling its output. Those sort of like before and after uh like
+paradigm shift initiatives. All right. So Hayden, I'll
+turn it over to you. Um, and I'd love for you, you know, you've been using the master prompt method in multiple
+businesses for a while now. What are some of the things that it makes possible?
+Yeah, it's I saw someone in the chat here basic basically say you're like dumping your second brain into AI. Um,
+that's absolutely true. Um, but you're also sharing it with everyone on your team. Um, so when I
+first started playing with chat GPT, when chat GPT became useful to me
+outside of, you know, just being a little gimmicky and a bit better than Google, um, was when it started when
+they implemented memories, right? Uh, because those memories slowly gave you
+context. And I remember when I was first playing with it, I'd be like, remember this, remember this, remember this. And I was kind of building up through its
+memories, which were kind of limited. um I guess a second brain, right? And
+then I found that there are other tools uh that you can kind of just put all those memories in um and that you can
+also share with others. And that was really the the transformational moment. So, you know, I I like imagining sort
+of, you know, we we often will have to go and like hire a um a director position, which by the way, like one of
+the takeaways of this whole thing, those are just going to disappear, right? Um
+but imagine you need to hire a 250k a year marketing director in your business, right? And I, you know,
+perhaps the marketing function of the organization's been kind of ignored because you're you're a small business.
+Um, you haven't put your time into it. Um, so okay, you need to come up with a
+plan. It's going to take a couple weeks to onboard that person, right? Fully understand everything about your
+business, their co-workers, you know, how we do business. And then it might take another couple weeks for them to
+actually come up with a marketing plan, right? Um whereas with AI, you can actually do
+all of that with a master prompt in under 10 seconds. Like literally under 10 seconds and and we can show examples
+of that. Um but to me, this is like that's just a massive fundamental
+change. One of the uh demos that I think I showed you Thiago when we first met
+and you asked me how I was using AI um was something very basic, right? which
+was basically like how do I use AI um for like recruiting and hire, right? Um
+and you know if you let me let me share my screen
+here. So like here here's a an empty cloud account, right? And you know if
+you ask like I need to hire Can you see my screen by the way?
+Yes. Yeah. Um, this is like how I'd say most people
+kind of start with AI, right? They start with a very simple prompt like this, right? And they get something back
+that's pretty generic, right? Doesn't really know anything about your company, doesn't really know anything at all. So,
+I would have to go back and forth here, right? This is no no better than really googling marketing director job
+description and then copying and pasting something, right? So, here's an
+example on one of my company's
+accounts for the same thing. And so, part of I'll share my
+master prompt here in a second, but part of the master prompt is I I say AI
+hiring and it knows exactly what to do with that, right?
+And it's got an instruction to basically come back. Let you read
+this. Okay. So, basically it says um I'm going to ask you five questions one at a
+time and I'm going to answer based on what I already know about the company. And so the first question is what are
+the primary responsibilities you envision for the marketing director? Based on what I know, they would oversee
+all marketing initiatives for both acquire and potentially this other company focus on lead generation for the
+accelerator program. Both of our programs um here's the team that they
+would manage. Uh they need to optimize current channels. Okay. Yeah. So that's right.
+So I just have it ask me in case something's off. It asks about what specific
+marketing metrics and KPIs should this be accountable for? So qualified leads generate setting
+calls and demos cost per lead currently 130 per show call conversion rates through the funnel supporting sales
+targets you know. Yeah that's
+right budget and how it's allocated and goals.
+Yeah, this is all correct.
+This is the team. I just want to I want to point out like are you guys noticing the level of detail? It's not making up
+generic generic things to just fill out a massive document. It's naming specific
+people in specific positions. It knows how many leads they need. It knows conversion rates. knows so much about
+the organization that it's hiring for and you've gone Hayden you've gone
+through you've gone through this process in detail and confirmed that everything really is correct doesn't just like seem
+correct is 100% correct yeah um yeah it knows our core values
+um knows what our nice to haves are right it's like understanding M&A and business acquisition is a nice to not a
+must have. Yeah. So based on this, it now is going out
+and creating separate artifacts. I think it's going to create like five different they're called artifacts in cloud which
+are basically like documents. Um so one of them is a job description. that job
+description is tied into we use um top grading and top grading is a pretty it's
+a pretty sophisticated like hiring um and measurement methodology
+uh it's something that's takes a lot of work or used to and before AI um so
+basically what that means is we have like all of the responsibilities here
+um it's got the metric to measure and our quarterly target for every responsibility it shows those what's my
+month one, month two, and month three and beyond outcomes for this person in this role. What does a player
+performance look like for each of the major responsibilities? And what does what's sort of an ideal background and
+experience? It came out with the compensation. Obviously, I'm going to review this. Um, and yeah, so that's the job
+description. It then creates a screening rubric and recruitment materials.
+um which is basically we through a cover letter it will analyze um all of the
+most important sort of screening rubrics score them and help us on the screening side so that our HR director um you know
+only talks with people above a certain score right um it also created an email
+for my list if I wanted just to um hire from our list and it created a job
+posting for an external site. Um, it created for the actual manager.
+So, our our we usually have in this case we probably have, you know, three different people interviewing for
+director, but it creates actual live case studies that we can do for the working interview. It gives us three
+different options. Um, it creates take-h homework, which I would always do for a manager,
+knowledge worker, or director. Um, it creates the meeting structures
+and agendas for every single meeting that this role would be in
+um with everyone actual people. Um, and it also creates the independent
+contractor agreement because in this case it would probably be not a W2. Um,
+so all of this with literally I typed like 10 words.
+think I typed nine words here and then yes a few times. And so that that's just
+one example in one function on how like a master prompt combined with an
+operating system um can be quite not only does it save you a lot of time but
+it allows you to do like significantly more than you're most likely currently
+doing. Um which which is quite transformational.
+And you mentioned to me, what does this do to the timeline for like what would it take to do this in a normal timeline
+to go from the realizing you need to hire for this position to having the person in place and onboarded and
+everything versus what the timeline looks like with AI. So like if I I was doing this uh you
+know six months ago manually um and we had an HR department uh with two people
+uh and it would this this thing here would take probably two people two weeks
+I'd say. Um, now we have a little bit of a custom setup on like how the screening works as
+well. And that probably also saves an additional depending on how many people we're hiring at once, it could save an
+additional couple weeks uh a month. Um, but yeah, this right here replaced
+two weeks of work for two people. So, two people for two weeks versus
+interacting with an AI for minutes. And how how close to this like is this literally something you could just copy
+and paste right onto your website or how close is it to being ready to go live?
+Yeah, I would the thing I would look at most um would be probably the actual um
+metrics here like the quarterly targets. This is the place that I would probably spend maybe 15 minutes just making sure
+that they're absolutely correct. Outside of that, I basically don't even look anymore because I know it's going to be
+accurate. Um, so that's the one area I pay a bit more attention to. Maybe the meeting side, too. I'll look at that.
+Um yeah, but I I would say I I can't I can't even I would say
+just this thing has probably saved you know people on my team probably years of work in the last 3
+months. Um, and probably even me, like that's the other thing is like even
+though even though you might have like an HR person like filling all this stuff out and preparing everything, like you
+also need that person to go and talk to you about, hey, what is this person's KPIs? What is this person's like good
+outcomes? What is an A player look? Because they don't know, right? Like how could they know? And so it's also
+probably saved, you know, whoever is that operational person like the the director in that department. um that's
+probably also saved them like you know four or five meetings per person.
+And what's what's the bigger So there's time savings, cost savings, but like
+like what does it do to an organization when this kind of time savings? You're
+talking about like 99% plus time savings gets multiplied across every role, every
+team, every function. like what is the the high level strategic impact? I mean that that's why I said,
+you know, I think it's actually accurate to to be able to move at 10 times the speed, right? So my my goals, you know,
+in the beginning of 2024 for my companies um for
+2026. So I'll usually look up to two years in advance. But I was reviewing
+this on a few different companies and at the beginning of 2024 before I was really using AI heavily. Um, I'd set the
+goals for 2025, 2026. Um, and they are now the beginning of 2025,
+the 2026 goals are 10x higher. So, it is a 10xing a year type
+of or 3xing a year, 10xing over maybe two to three years um type of
+initiative. I think the big difference though isn't that because most people wouldn't put like this type of effort
+like GM does this, right? GM does top grading. They kind of became famous for it and most small businesses can't do it
+because it's just so much work and like I overinvested in it for the company size before to do it because I knew how
+important it was, right? I knew how important it is to hire slowly and fire fast, right? That's you you learn that
+quickly. Um, but what this means is now everybody can do it, right?
+And to me that's that's transformational because I think everyone on this call who has ever hired you know an A player
+before knows that that person like can trans they can transform your business
+right um they are better than you at what they're doing um and it's you know
+one a player is worth sometimes 10 20 you know average contributors.
+Absolutely. So yeah. Yeah. Could you show could you show so I want to see one
+more example in a completely different uh domain which is operations and
+workflows. Could you show that example and then I want to show people what your master prompt actually looks like
+because that is what allows you to do what you just did so fast. Yep. Um so part of the sort of operating
+system we have here is we create fulfillment engines which are basically flowcharts for process. Right. Again,
+this is the type of thing that's like a best practice for for larger companies. Um, but it's something that we try to do
+pretty early, right? Um, and this is another example on like AI can expose
+this level of organization um, discipline, consistency um, to
+businesses with one employee, right? Um, so this is basically on on the same
+company. This is an example fulfillment engine for um basically a process that helps uh bring
+someone through onboarding all the way to um helping them get a signed letter of intent to buy a business, right? Um
+so I'm just going to screenshot a piece of
+this. Let's go here.
+I'll go back to cloud here. And so most AI you can just copy
+and paste the screenshot in. So I just did that and I'm just going to ask it just want to make sure it understands what what this
+is. So it's com it's it's analyzing the image and then pulling in the the the
+the context from your master prompt. Yep. Um and it's Yeah. So left side
+shows a 7-day onboarding process. It begins when 75K is received. Includes steps like blah blah blah. Right size
+illustrates the deal sourcing evaluation workflow with various roles involved. Here are the roles. There are decision points like offmarket review with past
+good fit and bad fit outcomes. Um yep totally right.
+So I'm just going to say do AISAP for every step. And again as part of the master
+prompt is actually really only like a couple paragraphs. I I say what AI SAP is which again is part of it sort
+of understanding our operating system.
+So it's now going and creating SOPs for each step in the flowchart um in the style that you know we like to have. So
+like objective, begin, end, stakeholder involved, explanation of each step, um the checklist for each
+step. And so that's the first one. This is the second one. And it's going to keep on going until all of them in that
+screenshot are done. You know, for for some context, I probably we built this
+in this company about a year and a half ago. Um, it took
+us probably six months to do this. Just this just this step. We have a bunch
+like a lot of these in every company. Um, but just this one took us about six months to do. And you can see like each
+one of these actually links to um an SOP. We include this in all our onboarding, right? So that everyone
+understands the entire process and what part of the process, you know, they're involved in, right? And it goes kind of
+all the way to the point of an LOI being signed. And this is we can now do this in it's
+really just waiting, right? I just need to wait for it to finish all of them. Um and then I'll go and screenshot the next
+part of it. It'll do those. So overall, it's maybe like 30 minutes now to do
+something that took six months. And they're good. They're they're super accurate. Um, I would still review them,
+but they are better than the version that was originally created that I also
+had to review before like significantly better. Um,
+so those that six months it would have taken before that that's six months by how many people?
+I six months primarily by probably two people. So it would have been we have a
+process person. Um and actually my daughter I showed her this and she cried
+cried from from she's like job anymore. No I said no you
+just have to you have to use it. Um so she was the person who who who
+did this. Um and then she worked with the managers. Um and so it was mainly one other person who kind of managed
+this entire uh fulfillment engine. Um, but it was a full six months from
+her and probably like, you know, at least a day a week from from whoever was owning each
+SOP. Yeah, this is I hope you guys are seeing what I'm seeing. Like, do you all
+get how transformational it is to take six month initiatives and turn them into
+30 minute ones? That isn't a that isn't a marginal small change. that that
+starts to uh completely change the structure of your business, what is even
+possible in your business, the markets you can serve. You know what really strikes me about this, Hayden, which I hadn't realized before, is both of these
+examples, hiring a like a manager executive position and documenting a
+process. Uh it's it's kind of like AI is collapsing a lot of the difference the
+gap between large companies and small companies you know like our tiny company of five people. One of the main reasons
+I don't hire people humans is because it takes us months and months and months and so much bandwidth that we it's like
+a it's like too big of a risk for us. We can't afford to set aside all the time it takes to do it really thoroughly and
+to do it well. And so we just don't do it. And so now we can hire at the same level of sophistication
+uh as a large organization. That's what I mean by the democratization of execution, right? Is
+like this level of you know we we call this like best practices, right? But
+this level of best practice has typically been reserved for companies that were you know probably around 10 million revenue and up, right?
+um you maybe one to two million EBIT and up like and now it's open anymore, right?
+And so like a you hear a lot of people talking about oh the one person billion dollar companies maybe we're not there yet but we are definitely at the you
+know one person $10 million companies right um or
+or the three person you know hundred million companies 100% we're already there right
+and and so so you know we used to when we bought businesses right we had a like
+an integration program after we bought a business and So um the integration program was basically it was there to
+kind of mitigate like the transition risk between the seller and the new owner but was also there to set up a
+leadership team and um you know the goal it was like usually a sixmonth uh
+integration um change management program we did and the we would tell people hey the goal of this is we would say this is
+what good looks like in all of these different areas in a business right and we'd say the goal of this is to build up
+a leadership team that understands what good looks like like we would set up tours of other businesses that were already there, right? Maybe 3 to 5 years
+ahead of them. Um but also to understand the work you
+need to do over the next 3 to four years to implement these best practices.
+Right? That was the expectation we set today. You can implement them all in if
+you were really working on it in under a year in six months easily. So like my
+new approach to buying a business is totally changed, right? It's not like let's set up a leadership team to let's
+you know figure this out so that we can get to this level of good in four years. It's like let's just do it like we have
+six months. Let's do it. Yeah, it's incredible. Could you show the just briefly scroll through the
+master prompt? So again, this is just one of the techniques we're going to teach out of
+many others in the second brain enterprise program, but I just want to have you just see a a brief look at at
+how it's structured. So I I share this master prompt with everyone in the company. Um
+and it's part of the onboarding. They learn how to use it. This this part at the top here, we usually have this in a Google doc. Uh this part at the top is
+customized to each person. So in this case, um it's doing it for me in this role, right?
+Um it understands all of our like our structure information, our product
+information, our goals and targets. Um you know that that was for one product,
+that's for another product. Um
+understands our salesunnel and conversion metrics, our sales process. Um you know, what kind of conversion
+rates do we hit, how long does it take? Um, yeah, our teams, right? So, these
+are each of our teams, our fixed costs for each team. So, I can at any point it acts as my CFO or my controller. If I
+needed to say to just say, "Hey, how are we doing? We got this many sales." Like, I can do cash flow management just back
+and forth instead of looking at Google Sheets.
+Um, this is probably about like 20 pages in a Google doc. 22 pages. Um, and what
+we've done is we've set it up in such a way where you just kind of go through a couple questionnaires and it spits out the master prompt done for you.
+Yeah. So,
+so you have a 20page master prompt and you said there's like a company one and then each person has their own version
+of it and that is is what it allows those interactions that you showed us to
+be so high quality and so and so precise. Yep. Yeah. And it's just this is out of
+the box, right? This is just Claude Pro, right? There's no code, nothing at all. Like anyone can do this. You can do
+this, you know, even if you don't have a business, you can exactly do this like for your second brain. So, this is some
+inspiration for you to to take from it. Um, and if you do that or if you're
+involved in like a role in a business, you there's like a section at the top that basically says, you know, what's your role? What do you want to get out
+of AI? uh what are your strengths? What are your weaknesses? Right? And so I think I've got that at the top of mine
+here. I just say like, you know, my my strengths are visionary,
+product, learning, self-discipline, problem solving, and my weaknesses are like driving accountability, keeping
+everything on schedule, internal communication, doing things I don't like doing. Um and so it understands that.
+Yeah. Yeah. So, okay, I want to move on here, but I hope you guys are sort of seeing the potential of
+all this. Um, so there's another piece to
+understanding this which I'll share here on the screen, which is the empower
+operating system. So, the master prompt method is like one technique, one tool,
+but it's not it's not the end- all beall. It's just it's like one technique. there's a a whole broader
+framework that you've been developing for years and years and you use across all your companies that's called empower
+uh which the master prompt fits into but it kind of provides essentially a holistic way of managing and building
+and scaling a business um and this is essentially how the curriculum of our
+program will be structured. We're going to spend one 90-minute live session on each of these seven pillars and then
+another three live another three 90-minute live sessions on the introduction and conclusion. Okay. So,
+we're not going to get super into this, but could you say a few words, Hayden, on kind of what empower is and why it's
+and how it's proven? Yeah. Uh, so empower is the name of one
+of my companies as well. Um basically these are the seven I call them value
+drivers um that apply to every business. And so you know what we just saw um is
+part of you know actually both ease um so the expansion capability and
+execution systems um and basically the way this originated is
+because I have a because I have a business that helps people buy businesses. It actually originated as a
+way to come up with like the intrinsic value of businesses that we were assessing
+and in that space you know businesses are kind of the pricing of businesses is
+very unsophisticated and so we wanted to create a much more sophisticated version of seeing if a business was you know
+fairly priced or not. Um it then later kind of expanded as we bought businesses
+in also understanding um what are the areas that you could focus on you know
+apply leverage to in order to actually um expand the overall value of the
+business right so if you wanted to sell it if you wanted to raise money uh and buy another business um how could you
+what what was the best way to spend resources right your time and and your cash um and so we we separated into
+these seven value drivers um and we created some tools tools to kind of assess our businesses and kind of give
+us a score in each of them um and help us figure out what what we need to
+prioritize, right? Because that's really all strategy is is just deciding to work
+on one thing and saying no to everything else. Um and so these are yeah that's
+these are the seven areas. Um what our program does now is it shows you how to
+a how much is your business worth today? Um B, how do you score in each of these areas? Um C, what is the area that you
+need to that has the highest leverage that you should invest in? And D, how do
+you apply AI to do that? So I think this is so huge because it's, you know, there's this funny
+question which is like how do you know if you've successfully applied AI in a business? If you think about it, it's
+not it's not just that it feels like it. Like it's not that you see PE, you know,
+chat GPT on people's screens when you look over their shoulder. It's not even really that you save time because how do
+you know the thing that the the the the task that you're saving time in is inherently valuable. What I love about
+this is it takes the perspective that the true test of whether you successfully applied AI is the valuation
+of the whole enterprise is higher like it's higher to third-party buyers like
+disinterested outside people looking from the outside in and saying yeah you have more automation you're more
+efficient you have higher margins you have higher return on assets like
+there's no more objective measure of a of an organization's improvement than
+its than its valuation. Right? Okay. So, I'd love to hear from
+you. Now, we've sort of touched on a couple in-depth uh demos, tried to sort of mention at
+least a variety of different parts of a business or even kinds of businesses that this could be applied in. But I'd
+love to see in the chat what do you take away from this? What's the area of your business? You could say a specific role.
+You could say a function. You could say an ongoing activity. You could say a specific product. However you break down
+and visualize your
+business. Yeah. So blog posts and content creation, sales for sure. Uh
+strategy. Anuk says strategy positioning and market analysis absolutely fantastic
+use case. Uh Ryan says his email list. Gabriel says code reviews and pair
+programming. Absolutely. Client avatar analysis.
+That's we've been using it for that. It's fantastic. Customer service and success decision
+making. I really don't think there is a function or a kind of business that cannot apply this honestly.
+Okay. So, I think we've said a little bit about this, but is there anything you'd
+like to add um Hayden about what's at stake here? What what what are people's
+options? Like what are the what's the fork in the road that they're that they're facing with AI with AI right
+now? Yeah, it's kind of what I said before.
+It's depending on your industry. It'll happen. The question is when, right? But
+someone AI first will will just solve execution, right?
+They'll do it faster, they'll do it cheaper, and they'll do it better. Um, and that is going to eventually drive
+costs down to the end users massively and destroy margins. Like that's just that's the nature of, you know, of
+deflationary technology, right? Um that being said I think if you are
+the first person to do that and if you design it in such a way that you are creating a moat that protects the
+company long term right and I think you've talked in the past about you know what does a what is the moat long term right it's
+community its data right its network effects I believe that there is a chance
+to become a market leader insanely fast by using AI and and to
+protect your business from that sort of margin erosion.
+Yeah, I think I think that's it. Very well put.
+Um actually want to do a poll now.
+You should see a little window pop up on your screen that says that asks a question which is how concerned are you
+about your business falling behind due to competitors using AI? And I I'd honestly just really like
+to know. I'm pretty concerned about my business to be honest. I think much or most of content creation in the future
+is going to be done by AI. But how about you?
+Okay, when it hits 500 responses, I'm going to end the
+poll. Okay, here's what you responded. 26% of
+you are extremely concerned, 38% somewhat concerned, 18% neutral, 3% not
+concerned. I would love to know uh your stress reduction techniques and 15% already
+ahead. Okay, makes sense. Pretty pretty reasonable distribution. Okay, so we
+didn't want to just spell doom and gloom for everyone. We want to actually provide a solution. And this is the
+program uh the educational and training program that we have created to give you
+the absolute best possible um tools and techniques and frameworks
+and strategies to not just survive all these enormous changes that we are we're
+facing and already experiencing but to actually uh come away with it as an opportunity to come out of it better.
+So, just the basics, uh, it's a live cohort. Um, you may, many of you have
+probably taken my building a second brain cohorts in the past. We did 19 of them. It's something we've been doing
+for many years. Um, this is the biggest longest cohort we've ever done because there there is a lot to cover. Uh, so
+we're going to be doing 10 live sessions over three weeks. So, it's a sprint. We
+chose to do it short and intense rather than long and not so intense uh largely
+because it's changing so much like the field of AI will be different uh one month later versus the beginning of that
+month. Okay. uh and that's and that's alongside dedicated peers which is one of the the things I found and and many
+people have found is one of the best ways to learn is not just from a single instructor or in this case two instructors but to be able to look right
+and left and see all these other uh business owners and executives and leaders who are just as dedicated as you
+who are are passionate who are committed who are accountable and holding you accountable. It's really why we love
+that that kind of social cohort learning experience. Um, second, this is uh a
+chance to get our direct support. Um, you're going to get both of
+us are going to be on every single call. Of course, you're going to get not just our instruction, but our guidance, our
+coaching, our dos and don'ts. We've made some big mistakes, wasted a lot of time,
+some a lot of trial and error that we're going to try to save you from. Um, and this is this is the first and
+possibly only time that we're going to do a live cohort. Uh, we may do another one again, probably not anytime soon.
+Maybe like next year or something. Uh, this is not something we're going to be doing ongoingly for a long time. This
+might be your one chance to go through the program uh, in real time with us.
+Uh, and you'll receive lifetime access not only to the recordings, all the materials, everything to do with this
+this first cohort, which is really a beta cohort, plus you'll also get access
+automatic access to whatever the next iteration looks like. We don't know what that what that is exactly. Uh, it
+depends a lot on what we what we learn from this cohort. But whatever is V2 of this or I guess V the full V1, you will
+also get access to. All right. Um, do you want to say a little bit
+about uh, so this is sort of some of the main takeaways or outcomes that you'll
+uh that you'll take away from the curriculum. Uh, is there anything you want to say about about these Hayden?
+Yeah, I obviously you'll learn the master prompt. Um, so I think everyone after this should go and play with uh,
+you know, Claude or Notebook LM and try to put together their own master prompt anyway. Um, but we have a bunch of sort
+of custom software tools we've done to kind of facilitate this and make sure uh it doesn't take you forever and uh
+nothing is neglected. Um, as Thiago mentioned, we're going to have a session around each of those value drivers. Um,
+and so we'll actually help you kind of score where you're at with each of those value drivers. Um, and you know, how
+that kind of also contributes to the value of your business. Um, and then we're also going to teach you how to use
+AI and how we've used AI in each of those value drivers. So, um, for example, and some of it may even be
+using thirdparty tools, right? So, for example, I've replaced over a million dollars of ad spend in sort of various
+versions of AI tools that, you know, set thousands of calls for us. We're going to teach exactly how we did that.
+Um, and then the the last piece of it is is understanding. So once you know kind
+of your score in each of these areas once you understand how to use AI the last piece of this which is quite
+important is understanding like what the next steps are and how you should spend your time and prioritize this because
+the last thing we want is um you know everyone just being overwhelmed and
+trying to work on everything at once right um so the idea is to have like a very clear sprint on this is how I'm
+going to use AI to maximum leverage
+That's right. What's so unique is we're going to be able to actually instead of giving you homework, okay, now go and
+find all this other time to go do this by yourself. With the speed at which AI
+works, we can actually do it right there on the call. Like try this, wait 30 seconds, see what happened, and iterate
+right there in real time. It's a really unique way of learning
+this. All right.
+And and here's the cost.
+$9,995 is the the investment that you're going to make to essentially change the
+trajectory of your business. It's not an incremental, you
+know, 5 10% improvement. We're talking about, you know, multiples, multiples of
+growth, multiples of speed, multiples of of margins, of customer satisfaction.
+It's why we insist on that word transformational. Um, this is a this is
+a level of investment that probably doesn't make sense for individual contributors. I'll just say that. Uh,
+it's really designed and everything about this program is designed for people with teams. They can be small
+teams, they can be small businesses. Uh but it's the it's combining really the
+leverage of AI with the leverage of an organ of an organization of some type.
+Combining those two together is where is where that transformation where that power
+lies. Um and just a couple notes there. It's by application only. Not everyone will be accepted. Uh there's a quite
+thorough application. Uh depending on your answers to that application, you'll be asked to or you'll be required to
+schedule a call. Everyone needs a call with a one of our admissions lead uh
+leads, which is Josh and Josh or both Josh's uh just to make sure that you're the right fit and they're going to
+really make sure that you and your organization are the right kind of organization to go through this. Uh and
+we do have payment plans, so that is an option as well.
+and it's called the second brain enterprise. Just a quick overview of the
+timeline. So, what should you do? What will you need to do to join us? Uh,
+first apply at the link below. Uh, the last possible date to do that is May 26,
+but I encourage you to do it sooner because we do have some pre-work, some some preparation for you to do. Uh, as I
+said, you'll be you'll be asked to schedule a call with one of our two admissions leads to make sure you're a
+good fit. If accepted, make your payment before the start of the cohort. And you can do all of that at
+secondbrainenterprise.com, which is the website that also has all of the details that we've talked about during this
+workshop and many others. Everything that you're going to need to know to decide whether this is for
+you. All right. And now it's your
+turn. Have about 15 minutes here. So, I'm going to open up the Q&A
+now and sort by most up
+votes. So, some of these I can just answer myself quickly. Um, Nikolai, no, there will not be a handout with
+instructions. Um, we're we're going to be creating content, either a YouTube video or a blog post or something along
+those lines about the master prompt method. Um, because I I just think it should be it should be much more widely
+known and it's something that really anyone can use uh regardless of what AI
+program they they use. So, we will be creating content on that, but currently don't have anything ready to share
+besides the recording of this call. Um, this is one for you, Hayden
+from Andre. It took 10 words to type your prompt for hiring a marketing director, but how long did it take to
+set up the context? How much effort did it take to gather the content, curate it, and set it up within Claude?
+I would say it takes people about
+probably about 30 to 60 minutes um to go through everything necessary to set up
+the first sort of major iterations of the master prompt and then you're kind of iterating um probably pretty
+frequently. I still iterate the master prompt at least once a week. Um so yeah, probably 30 to 60 minutes one time. But
+then obviously that was just one example of I use cloud probably 30 40 times a day.
+Yeah, I think that's an important important observation which is the master prompt is a thing. It's a
+document, but it's also a process. The process for how to update it, for how to
+propagate it within the organization, for how to bring it into different AI products you might use. So, it's not
+it's it is a oneanddone deal, but then it's also like something that evolves with
+you. Okay. Um, okay. Some of these are quite a bit
+out of the scope of what we're covering on this workshop, so I'm going to skip a couple.
+Um, what's your take on agents? So, are
+is AI going to become these autonomous thinking partners that just do work on our behalf or or what is that going to
+look like? Yeah, agents are definitely the future. They're all the rage right now.
+Um the the reality is I I don't like if you look at sort of the adoption curve
+agents in my opinion are not the thing today the thing is really get people to learn how to use LLMs properly and and
+get people to prompt properly right so the master prompt as a concept like if
+you actually think of what you're doing is you in every single time you type 10 words you're actually typing you know 20
+pages right plus 10 words um and so the AI's got all the context every single
+time. Um, I believe autonomous agents in probably two years or so um will
+actually be decent and won't require like a ridiculous amount of setup. Um, we do use them, right? So, I use agents
+all over the place. Um, but it's a lot of work. It's a lot of setup and it's not accessible to most people today. Um,
+I think that'll change in two years. Yeah. Yeah, I agree. Let's talk about
+security and privacy. the the elephant in the room so often when we talk about AI. Um, how do you
+think about that, Hayden? Like using AI so widely across multiple organizations. Do you worry about security or privacy?
+Do you do anything to to mitigate them? It's so that's actually more of an agent
+question is like is your um are you exposing anything to
+uh to like the are you exposing your backend through a chatbot to
+from customers right uh and so that's more of an agent question than like a am
+I working with an LLM question um and there are ways to about that. Another
+version um basically a separate agent watching the communication that your
+chatbot has with customers to ensure that it's not doing certain things and so you have that sort of guard rail.
+Mhm. So do you do you ever think about using either offline internet local AI
+models so that you don't even so so the public pro you know let's say whatever
+it is the the product you're using that that is publicly that is a a different company from your own does not even see
+your data at all. Yeah. My my programmer runs um has run
+Llama and Deepseek both locally. Um you know we we run MCP.
+Um the to me personally I I'm maybe it's
+my personality. I'm I'm less concerned about you know anthropic potentially
+knowing details about my companies. Um there's nothing in there like I'm sharing this with all my employees.
+nothing in there that's like not pretty much public knowledge. Um, so no, I'm not I'm not I'm not I
+guess paranoid to that extent, but you can't do it if you are right.
+Yeah. Yeah. Me neither. Me neither. It's like compared to what's already out there, what has been mined and profiled
+about you, you know, from all the companies out there doing that, compared to that, I think what we are sharing
+with these LLMs is quite minor and in most cases practically public
+knowledge. Um, Romero asked, "So, you have a digital note-taking app like
+Evernote or Amplotes. Will this class teach me how to bring content from that
+into LLM models? Yes, that's one of the things. So, I'm going to be sort of providing a bridge from a lot of what
+I've taught about personal knowledge management, digital note-taking, building second brains at the personal
+level and bridging that. And actually, if you've been doing any of those things, you are so incredibly well
+positioned, right? Like most people don't even have the all this context that we're talking about in any in any
+place. So they have to produce it. They have to generate it. They have to like pull it out of them. If you've already
+been taking notes, even if they're messy, even if they're disorganized, if that if those that context, those notes even exist, you are like that's half the
+battle. You're kind of already you you have a head start in in um in taking
+advantage of this approach. Let's
+see. Um, I think we already addressed
+that. Do you ever worry in in the the responses that AI is generating? Do you
+ever worry, Hayden, about bias? Any kind of bias? Uh, bias towards, you know,
+hiring only certain kinds of people? bias like blind spots in how they make decisions. Uh biasing themselves based
+on your past like replicating mistakes uh or biases that you had in the in the
+in the history of the organization. Anything like that?
+I actually I'm gonna I guess look at that question from two different
+perspectives, right? So from one perspective, I actually intentionally give AI bias to counter my bias, right?
+And so that's why I talk that's why I very specifically have in my master bonds like what do I want AI for and
+what are my weaknesses, right? And I I find a lot AI is like actually a little
+bit too positive uh and and a little bit too chipper. And sometimes I will add to
+my master prompt to be like a bit more of like a coach and a leadership coach and like to you know call a spade a
+spay, right? Um in terms of like DEI
+based bias and like bigoted, right?
+Um it's it's something to check for sure and that's why when we when we set up
+these initial prompts we do check to make sure like the initial screening works right and by by works I mean isn't
+bigoted um from at least with anthropic that wasn't the case right we had a lot
+of uh you know pretty equal distribution um across you know genders
+um and racist. So, but yeah, I think it's if if that's something that you're
+concerned about, I think you put some extra effort um into the prompts to ensure that you overcome it.
+Yeah. Yeah. Absolutely. Same same perspective from me.
+Um so, I'm going to we have about six minutes five minutes left. I'd love to
+hear any questions about the program. So, I'm going to sort the questions here by most
+recent. If you're someone who sees yourself joining or at least applying
+for something like the Second Brain Enterprise, do you have any questions uh that we can answer about
+that? When you do your call with our admissions people, you'll also have the chance to ask them anything you want. Uh
+really we're we're pretty transparent about everything about what what the program entails but is there anything that we can address uh now up
+front? Oh Mark's question about AI tools. we will recommend Claud notebook
+LM. Those are really the only two like publicly available mainstream platforms
+that have the key feature of getting a project like folder or notebook with a
+bunch of materials including your master prompt and sharing it. It's kind of it's
+kind of crazy. It's kind of bizarre but you can't do that in chat GPT unless you use the API and you know build a whole
+custom solution. So for the use cases that we are we are advocating and teaching in the program you can't you
+essentially can't use chatbt you'll need to use either uh either claude or
+notebook lm that that's for the master prompt
+side of it and I think for the sharing with your organization side of it. Um I do use almost every LLM and like we
+probably will tell you what LLMs are good for like chat GPT does much better image generation it's better on voice
+stuff. deep research is useful. Um it's just for the actual master prompt part
+of it. Um it it doesn't work. Um likewise, I use Gemini for coding like
+vibe coding all the time. It's probably the best coder um in AI studio, but you
+know, if they're gems just don't have a doesn't work properly. Um that being said, this could all change also in the
+next 30 days. It could be that chatb opens up this feature and we say, "Okay, yeah, you can use chatb as well. There
+you go. [Music]
+Yeah. Okay. I'm looking for any as our time is ending. I'm looking for
+what's that? Um Oh, I don't Gabrielle asked that what time will the sessions
+be? Oh, yes. Uh 8 a.m. Pacific.
+uh which we've found is the the 90 minutes that works for the largest number of time zones, works for the
+Americas, works for Europe, uh Asia, it's I think it's like 11:00 p.m. or midnight, but also is feasible. Uh that
+tends to be the the ideal uh slot for our our cohort
+sessions. Oh, I guess I should switch to the chat now.
+Uh Muhammad, you can catch up via the recording which we'll send out later today or tomorrow. Uh no, we don't we're
+not offering any discounts. No country specific or currency specific pricing.
+Uh that's that's not an option for this beta cohort.
+Okay, any last comments, Hayden?
+No, just uh yeah, thanks. This was fun. I uh I do encourage everyone regardless
+as to whether they want to join in the program, use AI regardless of your background. I saw someone asking, "Hey,
+if I'm a retiree, should I use AI?" I have spent a lot of time teaching both of my in-laws and my
+mother to spend time with AI because it is it just it it makes you better at whatever
+it is that you want to do. It makes you better and it makes you better at learning. Um which to me like that's
+what life is for. Um I use it to with my daughter learn Japanese.
+Um I you know I've used it even to help my paddle game with Thiago. It's uh Oh, so that's your
+anyone gets if anyone gets something out of this. My my hope is it's just start
+using AI. Yeah, you go. Absolutely. All right, everyone. Thank you for being here. Hope
+this was helpful whether or not you decide to join us. But if you do decide to join us, I look forward to seeing you
+learning together in what I am certain will be an intense but also very
+enlightening and informative and uh communal uh program that we're going to be launching here in about uh a month,
+month and a half. All right, everyone. I'll see you later. I write.

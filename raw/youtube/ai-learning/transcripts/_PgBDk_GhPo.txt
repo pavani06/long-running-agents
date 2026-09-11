@@ -1,0 +1,730 @@
+so I really like building with these new
+no code AI coding tools that just use
+natural language to build entire apps
+for you they've only been around for
+like 2 months but in that time frame
+I've built several apps and even sold
+one for $3,000 so today I want to
+compare two of the best ones on the
+marketplace so you can build and sell
+your own AI apps fast the two AI apps
+that are going to be fighting it out
+today before they start fighting us is
+bolt. new and lovable. deev I'll be
+building the same exact project using
+the same exact prompts to see which one
+wins it out in the fight I will score
+each app based on pricing speed design
+improvements feature set and
+comprehension so by the end of this
+video you'll know which one is the best
+bang for your buck and will'll get you
+what you want to build the fastest let's
+build all right so I'm going to hop into
+my computer here and you'll see here
+that I got bullet. new open up and I
+also got lovable. DB I already have an
+account on both so if you don't have an
+account all you have to do is sign up
+for an account and you can try it out
+for free so what app am I going to build
+today the app that I want to build today
+is basically taking a video and then
+transcribing that video and making like
+table of content essentially for that
+video and the reason why I want to do
+this is because I have a lot of content
+that I create and I want to be able to
+have a written format or a written
+version of that content underneath the
+video so if it's on YouTube or Twitter
+or wherever I place that video I want
+there to be a written blurb of exactly
+what that video entails some extra
+descriptions and just extra contexts for
+the viewer so I'm going to actually
+build that in bolt. New and lovable but
+before we actually build that project I
+want to talk about pricing so bolt. new
+pricing is as follows so first of all
+for $20 a month you get 10 million
+tokens for $50 a month you get 26
+million tokens $100 a month you get 55
+million tokens and for $200 a month
+you'll get 120 million tokens so what is
+a token a token is essentially the
+currency that bolt uses when it is
+actually outputting your code so as
+you're talking to bat using natural
+language and you're trying to build that
+app what amount of tokens did it require
+to create that code right and the more
+messages that you provide Bol the more
+tokens that it's going to use you can
+actually do a token reload instead of
+upgrading if you want by just clicking
+on token reload and then you can just
+put 20 bucks in and then you'll get
+another 10 million tokens depending on
+your budget but obviously if you're
+trying to build out a app then you might
+want to stick to one of the pay plans
+personally I'm on the Pro Plan just
+because I've been testing B out a lot so
+I am paying $200 a month but I am you
+know testing it out significantly but
+for what we're doing you'll probably
+just do a $20 a month plan and get away
+with following along with this
+particular video now if you don't want
+to upgrade bolt does have a free plan
+they don't really promote it here on the
+pricing page but they do have a free
+plan so with a free plan Bol you'll get
+100,000 tokens per day which amounts to
+about 3 million tokens per month so you
+just have to be sure that whatever
+you're building goes within that 100,000
+token limit otherwise you're going to
+have to upgrade now let's hop into
+lovable just to see the difference
+between pricing so if we go into lovable
+you'll see here that they also have a
+free plan the free plan is five daily
+messages so compared to bolt which gives
+you about 2 million tokens they do
+messages they don't do tokens so if
+you're on the free plan you're only
+going to be able to play around with
+lovable for five messages essentially
+until you have to upgrade although this
+does reset every single day so if you do
+five messages today then it'll reset
+tomorrow and you'll get another five
+messages for free however if you're
+trying to really extensively play with
+these apps then you are going to find
+out quickly that you will need to
+upgrade if you want to take it to the
+next level now we'll see here that they
+do have a starter plan that's $20 a
+month and if you click on this little IE
+icon you can actually see how many
+messages you get you get 100 messages
+per month so you would really have to
+calculate okay how many messages per day
+can I send in order to you know get
+something working and 100 messages goes
+by really quickly especially if your
+prompting skills are not that good or if
+lovable just doesn't do something
+correctly then you have to kind of
+reprompt it and say hey like this didn't
+come out the way I wanted it please fix
+it that counts as a message so that will
+count towards your 100 messages per
+month limit now after the $20 a month
+plan it goes up to the $50 a month plan
+and you'll get 250 messages a month so
+again you just have to calculate and be
+very careful on the type of projects
+you're trying to build if it's super
+complex I probably would not use lovable
+I might use something else like cursor
+or I might use something like wind serve
+I probably would not use lovable if I'm
+trying to build a really complex app but
+if it's something something simple like
+we're doing today then it will be okay
+and then after that you'll go into the
+scale plan and at $100 a month you will
+be able to get 500 messages and then you
+can see here it increases so for $200 a
+month 1,000 messages and it goes all the
+way up to $900 per month for 5,000
+messages now depending on again like
+what you're trying to build this startup
+plan might be okay 100 messages might be
+okay depending on how good lovable is to
+create your projects now compared to
+buol you can see here that it's tokens
+verse messages now I will say I have
+played extensively with bul and you will
+use a lot of tokens especially if you're
+trying to fix errors or if you're trying
+to create something a bit complex or
+have to rewrite the prompts cuz
+sometimes it does do error Loops where
+it's like it it says it can fix
+something it it says it fixes it but it
+really didn't fix it and then it's like
+using a bunch of tokens they did
+recently release something called diff
+which should reduce the amount of tokens
+that you use on your projects because it
+essentially goes and finds the
+particular thing that needs to change
+versus rewriting the entire code which
+will save you a bunch a bunch of tokens
+now on the pricing scale structure who
+wins this battle I'm going to say Bolt
+wins this battle just because as a
+newbie or as someone who's just entering
+this type of AI coding scenarios you
+want to be able to play around with it
+you don't want to be limited by the
+number of messages that you can send
+especially if you're just getting and
+having some fun and you don't really
+have a big proit but you just want to
+try it out you won't really be able to
+do that on five m mesages per day but
+we'll see how far we can take it on the
+five messages before we need to up
+upgrade but just out the gate I would
+say Bolt wins on this just because you
+have more time to play with the tool and
+really get acclimated with the
+capabilities that it can provide now
+let's actually start building a project
+so let's exit out of here of the pricing
+on both of these I'm just going to go
+back into lovable and let's start
+building out the project now again I'm
+going to use the same exact prompt for
+both of these tools to see how they
+compare it might be that level B can you
+know create our app that we want to
+create in five messages it might be that
+but we're going to use the same prompt
+and see how it does so let's go I'm
+going to type it inside a bolt and then
+paste it inside a loile but let's just
+say I want to create an app where a user
+can upload a video like a MP4 or a link
+like YouTube Instagram Tik Tok and when
+they do there will be a button that
+allows them to click and when they click
+an action happens and I'm going to say
+that action will be the button calls a
+web hook that we will provide at a later
+time but for now let's use test data the
+test data is going to be and I'm going
+to add one thing here so when the user
+clicks a new container with text will
+appear and the upload box will disappear
+there will be a button that says upload
+new content copy content or edit content
+and if we click on upload new content we
+will go back to the uploader state if we
+click on the copy content so literally
+I'm just writing out my thoughts as I'm
+thinking about this I thought it'd be
+helpful just to see like how I would
+think about this before like doing it
+beforehand but basically just like
+writing out what I want the what the app
+to do the actions I want the app to do
+and seeing how well it does by taking
+all of this information now if you are
+actually building a real app and you
+have ideas and to take that app further
+than just you know doing a YouTube
+tutorial like I am then you definitely
+want to do more pre pre-planning which
+will allow you one to save on tokens for
+both and then messages for lovable and
+then also just give you a better shot at
+getting the app created uh one shot
+essentially but for now we're just going
+to do this so if we click on the copy
+content it will copy the content to the
+clip board if we click on edit content
+it will allow the user to edit the
+content and update it essentially so for
+now I'm going to say the test data will
+be replaced uh once I provide you with
+the actual web hook we are going to use
+cuz in this case I'm actually going to
+use make.com to communicate with bolt
+and lovable so right now we're just
+going to say the test that would will be
+replaced once I provide you with the
+actual web hook we are going to send is
+there anything else that I want to tell
+it yes keep in mind this app should be
+modern clean aesthetic keeping the focus
+of the app maybe use a purple orange
+black and white color scheme okay so
+let's keep it pretty like pretty clean
+for now this is pretty detailed let's
+copy this and I'm going to hop into
+lovable and paste that inside a lovable
+as well so now let's actually test the
+speed of which they are able to build
+build out these apps so let's click on
+run here and then I'm going to click on
+run here so they look like they're both
+building it out so let's see who builds
+it first so looks like Bol is running
+the code here which is nice one thing
+about lovable it doesn't actually show
+you writing the code whereas Bol
+actually shows you writing the code
+which is a nice little touch just to
+like see that things are happening it
+kind of reminds me of like the mirror
+philosophy okay here it is it's actually
+writing the code maybe it just took a
+little bit more time to think about the
+code what's interesting is that it
+actually writes each folder separately
+so I'll take that back it does write it
+but it's a bit different of how it
+composes everything than b which is okay
+it's not a bad thing they're still going
+boat wins boat won that one lovable
+still loading boat was already done but
+let's just see the the style so video
+content manager we got the uploader we
+got the URL for lovable and very
+similarly we have it says video content
+processor versus video content manager
+so it's interesting that they use
+similar like similar naming conventions
+here but but as far as the speed it
+looks like bolt won first it designed it
+first so let's see what it did it
+explains everything it did which is nice
+for us to kind of see did it make it
+responsive let's see it did make it
+responsive did level B make it
+responsive as well it did okay nice okay
+so now I would say Bolt wins on speed
+for this particular like first shot
+prompt however I actually like level B's
+design better than bolts which is
+interesting because typically bolt is
+seen as a tool that has really good
+front cap abilities out the gate but
+this feels a little flat to me whereas
+lovable here added some nice detailing
+here with the shadow shadow work here
+that's nice okay let's upload a fake
+file and let's just see if it did the
+other part as well so I'm just going to
+find a video here that we can and I mean
+it's fake data so it shouldn't do
+anything so did upload it here so your
+content is ready your process content is
+ready so maybe I wasn't specific let's
+let's try them B here and let's try the
+same thing here bolt did take into
+account my color scheme I said I wanted
+to use white purple and black and orange
+lble did not do that it just did white
+which is interesting let's just copy
+this and just test it to see if the copy
+works okay the copy works there let's
+test it copy works here okay so we do
+have some test content here that we can
+and let's say new upload boom so let's
+just do that one more time see if this
+worked so if I do that that it did the
+same thing okay so this is this is
+pretty cool I mean they they both did it
+the way I wanted it to and the edit
+works and everything works so this is
+looking pretty nice so in terms of speed
+bolt definitely won because it was the
+first to Output the code however I would
+say that the upload design is pretty
+nice for lovable but lovable did not
+follow my instructions on like a purple
+orange black and white color scheme
+whereas bolt did but their the uploader
+on Bolt is a bit wonky it doesn't look
+that good I'm going to say lovable from
+a design perspective actually beat out
+bolt for this but bolt definitely won on
+speed so the next thing that we can test
+on is improvements okay so because
+lovable actually didn't follow the full
+color scheme that I wanted let's just
+test it to see if it will add those
+elements so I wanted the color scheme to
+be purple orange black and white
+although the design is modern it doesn't
+really include those colors I want those
+colors included can you please add them
+and now let's copy that and go into bolt
+and I'm going to change this promp
+slightly like very slightly just because
+it did kind of include that and bolt
+side but instead of this I'm going to
+say I wanted the design to be more
+modern on the uploader side can you
+please improve it it's a little shorter
+than this but I'm I'm targeting a
+different thing so in this case the
+color scheme is a little bit off and
+then in this case the design is is a
+little bit like it's just too flat for
+me here so maybe I'll say that as well
+the uploader is a bit flat to me and not
+modder all right let's see if it if it
+can improve that so I'm going to do this
+prompt here and then go into lovable and
+then do this prompt here and see who
+wins on the Improvement side just based
+off the the message that I'm including
+here all right so it looks like Bol was
+able to uh update it slightly to make it
+a little bit more modern and it did do
+it a pretty good job I will say we can
+upload our video by clicking on here and
+it says drag and drop your video file or
+click to browse MP4 mov aiv or paste a
+video link and we can paste the video
+link here that's pretty awesome let's
+actually go back here and see if the
+improvements were made doesn't look like
+it changed anything so it says let's
+update the color scheme to incorporate
+purple orange black and white Colors by
+modifying the Tailwind configuration and
+updating the existing component styling
+so it says the color scheme has been
+updated to use purple orange black and
+white throughout the application while
+maintaining the modern aesthetic let's
+just upload and see if it did it on the
+other P or like the other state no so it
+doesn't look like it updated the color
+scheme it's still just using primarily
+purple black and white but I don't see
+orange can we fix this let's click on
+refresh to see if it did anything okay
+nothing okay so honestly improvements B
+do. new WIS it's just like less that's
+going back and forth and it's actually
+doing the things that I say and it's
+understanding understanding contextually
+what I'm saying so I'm going to say for
+improvements B on new now the other
+thing before we actually complete this
+mini app that we're building here is I
+want to talk about the feature set so
+the feature set that each of these tools
+have and how they compare so let's
+actually hop into lovable first because
+they actually have quite a bit of
+features that bolt does not have right
+now so one feature that they have is a
+direct integration to superbase and
+superbase is a database that you can
+essentially tie your front end which is
+basically what we're building here to a
+back end where you can store data so if
+you're if like for example if I was
+uploading this I can store this into
+superbase so you can actually have a
+direct connection with superbase and you
+just click on connect superbase and then
+you'll be able to follow along that
+video which is really nice because you
+can say like once I upload a file save
+it to this particular table right and
+that it makes it super easy to do that
+bolt. new does not have something like
+that I know it's something in the works
+and it should make life a lot easier but
+they don't have that functionality just
+yet lovable also has a direct connection
+to GitHub Now bolt. new you can
+technically connect your account or your
+your app to GitHub if you do open in
+stack Blitz you can save this to GitHub
+by doing create repository right here
+but it's not directly inside of boltan
+new which is it would be nice if you
+could just click a button and it's you
+know it just goes there directly to
+GitHub versus opening it in stack Blitz
+and then creating a repository there it
+just less clicks right it would be nice
+if it was here whereas lovable you can
+connect to a GitHub account and then
+boom it's going to be connected which is
+nice and then the other thing that I
+like that they have well one I really do
+like these project settings because you
+can rename the project and both on new
+you actually have to open the project in
+stets and then change the name here so I
+would change the name to whatever I want
+and then I would have to reopen it back
+inside of b. new which is kind of
+cumbersome to be honest like I should be
+able to just double click right here and
+or right here and just change the name
+so loable has definitely a oneup when it
+comes to just the functionality within
+the actual app that you're building so I
+would say lovable for sure has has that
+going for it and then the other thing
+that's really really powerful is this
+select thing so if you select you can
+actually change elements so like for
+example if I select VAP and say change
+this to say upload video content it's
+going to know to change this H2 to say
+upload video content or at least it
+should I like there you go I was like
+wait it didn't do it but there it goes
+okay so yeah the select feature you can
+select particular things on the app and
+makes it really easy for you to be like
+hey like change this thing versus using
+messages it does still use a message
+technically but versus you having to
+type it out you can just use the select
+functionality which is really powerful
+and b. new we do not have that so you
+actually have to type all the time to
+you know make the changes that you want
+versus like okay I want you to change
+this a different text right you can't do
+that and that would be really awesome if
+Bol on you had that but it doesn't and
+that is something that it is lacking the
+other thing that lovable has is the
+functionality a little bit more techy
+but it has the functionality to do Edge
+functions inside of superbase it also
+has the functionality to do email
+sending directly from the app so it uses
+resend connectivity to actually do that
+and they also have some stripe videos as
+well that you can actually build the
+stripe integration directly with inside
+of lovable b. new doesn't have that yet
+so the winner 4 feature set is going to
+be lovable they just have a bit more of
+uh functionality for users to make it
+easier on them to not only interact with
+their databases and update them and
+delete stuff and create stuff but also
+just overall functionality for like
+select for example that's a really
+powerful feature that I think would be
+beneficial for bolt to implement versus
+me having to type it and it also just
+saves on tokens right if we're able to
+select particular things it will know
+directly within the app what to change
+versus is going to the code trying to
+find it and then you know using to using
+a lot of code if you're not using the
+diff functionality which we talked about
+earlier so I'm going to give lovable the
+win here so if you have been taking Note
+price b. new is the winner there speed
+bolt. new is the winner there design
+lovable. Deb is the winner there
+improvements bolt. new is the winner
+there and feature set lovable. deev is
+the winner there now it is important to
+note that every app is different and I'm
+just showing an example just based off
+some simple prompting here so some of
+these categories might differ for the
+app that you're building so just take
+that into account the last thing we're
+going to talk about is comprehension so
+how well does each of these app
+understand what I'm saying and then
+build what I'm saying so for that we're
+actually going to complete this app by
+using make.com and then making sure that
+when we upload a video file it actually
+goes into make and then we get the text
+exactly where we want it inside the bul
+or lovable so follow me back into make
+all right so for this what I'm going to
+do is click on create a new scenario
+this should be a very simple setup and
+I'm just going to go through this really
+fast but if you want to see step by step
+on how you can do something like this I
+have another video that showcases how I
+built and sold an Ari app for $3,000
+using bolt. new check that video out so
+I hopped into make and we built this
+automation out so what's going to happen
+is when a user uploads a video or
+inserts a link it's going to basically
+call make.com and it's going to do this
+web hook again if you want to see a
+step-by-step video make sure you go
+check out my other video that kind of
+breaks this down more but what's
+happening is when I click on proceed
+it's going to call this web hook it's
+going to make a request to an API called
+Fast saver API which allows us to
+download video data and then we're going
+to be able to get that video we're going
+to then use assembly. a which is a free
+software that allows us to transcribe
+audio and video files and then we're
+going to use Claude to then create a
+summary and then send that summary back
+into our app so what we need to do is
+tell bolt. new and we need to tell
+lovable that when a user inserts a URL
+here or uploads a video that it calls
+this web hook so I'm going to use this
+prompt in both lovable and inside of
+both so when a user uploads a video link
+and clicks proceed please call this web
+hook which again is this web hook here
+and then it says and send the video
+upload into the web hook you need to
+show the web hook response in the
+content section here is the example of
+how it will come back so essentially I'm
+telling you hey this is what's going to
+happen and when it does happen this is
+what you need to look out for and then
+lastly I say this text will be the
+actual response once the web hook
+response comes back change the state to
+show the response with the new
+generation copy edit button so if we go
+back into make uh real quick you'll see
+here that I have the Claude model here
+and I say just please make a summary of
+this transcription so again it's using
+assembly. to create that transcription
+and then here is how I want that
+response to come back and I also say
+make sure that you properly format that
+text so that it doesn't break if I were
+to put it inside of a app so we're going
+to run this both and bulb and I'm going
+to copy this and then I'm also going to
+run this inside of lovable and we're
+going to just see what happens so I'm
+going to hit both and run it actually
+for this video I'm going to use a
+YouTube video that I created and you
+guys could check out this video as well
+but we're just going to use this video
+for the URL link here so let's take a
+look it looks like Bolt's done it says
+I'll help you integrate the web hook
+into the application I'll update the API
+utility and then it says some other
+stuff stuff down here let's check out
+lovable and see if it did it okay so
+looks like it both did it so let's just
+enter the UR URL here and click on
+process and we ran into an error so we
+can check that let's check lovable to
+see if it ran into an error as well and
+actually let's go back because what I
+need to do is I actually need to click
+on this so um I need to turn this on
+that would actually probably you know
+not those us error so I'm going to click
+on delete old data I'm going to click
+delete and now we should be good to go
+so I'm going to try this one more time
+I'm going to just refresh this inside of
+Bolt I'm going to click new upload for
+lovable and I'm going to click on here
+process and then I'm going to click on
+here process and it says processing and
+this says processing your content so now
+what's happening aside of make is it's
+running through these different modules
+here so it called the web hook it is
+making that request to fasts saver and
+then it's going to download the video
+essentially and then upload that video
+inside of assembly transcribe that video
+inside of assembly wait until that
+transcription is ready and then send it
+into Claud to actually create a summary
+of what that video is talking about so
+the video again that I uploaded was that
+YouTube video that you saw prior and now
+it's doing that process and it should
+send us and show us that text content
+when it is done processing unless it
+throws us an error so this is still
+processing we'll let it process and then
+we'll be right back we're back so it
+looks like it did actually create the
+summary for us here so in lovable we got
+the summary here it says your process
+process content is ready we have the
+summary of the video and kind of just
+walking through everything that happens
+in that video I can click on copy and
+they should copy to the clipboard let's
+test that yeah that looks like it worked
+well nice okay and we can also click on
+edit and we should be able to edit this
+as well and I click on Save and that
+should save all right let's try this in
+Bol so let's actually click on copy
+first because it did the same thing as
+well so it says app concept tools used
+nice so let's paste that all right the
+paste is working let's click on edit
+content and click on Save changes so
+honestly for comprehension they both did
+a pretty good job as far as the
+instructions were going I just said you
+know when the user uploads that video
+call that web hook and then do that
+entire process and it did it using the
+same prop so for comprehension I'm going
+to say there it's a tie I think it's a
+tie I think they both did really well an
+understanding of what I wanted to happen
+and it did exactly what I wanted to
+happen so they win they both win so if
+we are keeping score let's go back to
+what we were initially scoring each app
+on pricing bolt. new one on the pricing
+speed bolt. new one on the speed design
+lovable one on the design improvements
+bolt. new did win on the Improvement
+side and then feature set lovable dodev
+did win on the feature set but
+comprehension it's a tie so if we're
+looking at it from all criteria b. new
+wins just based off the scoring system
+but both tools will allow you to build
+cool micro apps like I just showcased
+however when it comes to affordability I
+do think that bullet. new is the best
+bang for your buck when it comes to
+building out these micro apps the
+fastest way possible make sure that you
+click the link down below which will
+lead you to my cohort signup page
+there's a wait list I'm not sure when
+it's going to launch or even the details
+I just want to see if there's people who
+are interested in this particular topic
+so all you have to do is click the link
+into your email and then you'll be on
+the wait list if you want to see how I
+built and sold a micro app for $3,000
+then click this video right here until
+then I'll see you in the next video keep
+building

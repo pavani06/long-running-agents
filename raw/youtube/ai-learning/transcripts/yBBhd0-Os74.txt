@@ -1,0 +1,585 @@
+We do live in a world where information is really cut up, but we also live in a world where you can have access to more
+information than you ever could. [music] What are the key mental models that you
+keep coming back to that sort of explain how the world works to you? I'm a big believer in systems thinking.
+There's a there's a book called Thinking in Systems that I read. What does that mean to think in systems? I'm on the board of the Santa Fe
+Institute. The Santa Fe Institute studies complexity theory. I would describe complex systems as
+multivariable nonlinear systems. And multivariable nonlinear systems are very
+hard to predict. They can behave one way for a long time and then one variable can switch and they can behave another
+way. The weather, stock markets, all these things. There's consequences that can be first, second, third derivative.
+And you know, you you can't just think with a linear model or just think one variable because
+things can can go way off the path. Being aware that if you make a change here, it could change something here
+which could change something there and it has to be the whole system. How does that help you when you're
+solving problems or thinking about stuff? I think it keeps you out of trouble because you can avoid
+consequences that you might find out later. You know, I was I was talking to a guy that worked at one of the large
+dating sites. They had this this idea making the profile longer would lead to
+more engagement. Simple, you know, heruristic. And they tested it and it was true. And so they rolled it out.
+They found out many many months later that it let it it was negative for
+conversion like when people knew more at that level. Oh, interesting. And so but but you find that out way
+later. There's my point about like a second derivative effect. And so you just got to you got to be really
+conscious of the consequence and not get too deterministic about a single metric
+or a single variable and know what's important and what's on top. What was the process you took to go
+about learning the craft of investing and who were the mentors and peers that played a role in that? So because I
+started on Wall Street, you know, and not in venture directly, I got caught up
+in all the people you would expect, you know, around
+Wall Street and stocks. And so, you know, that starts with Peter Lynch, One Up on Wall Street, you know,
+best-selling book, probably the first book I read about investing, a random walk down Wall Street, Burton Male, all
+the Buffett letters, you know, uh, Ben Graham. Once you read Buffett, you have to read Ben Graham. And so, and then
+Howard Marx, uh, who's just incredible. And you were talking about the purpose of your podcast. those those people have
+spent their whole career assembling their thoughts and publishing them, you know, along the way. So, so that those
+were the ones that I read everything. I I think I had a very strong kind of bedrock of financial understanding. It's
+it's interesting because as you're saying that, I'm thinking like value investing and then you went into
+nonvalue investing in a way, right? Like how did that translate? How did what Buffett said translate into seed
+investing and sort of venture investing? I think having a firm understanding of the bedrock is super valuable and then
+when you recognize the need to innovate on top of it, it's just really good to have that foundation. I have an
+incredible peer in this guy, Mike Moeson. I don't know if you've heard of him, but he's a writer of financial
+books. We started at First Boston. He had probably been there a year year or two ahead of me. So it it you know just
+super fortunate that I landed in the same place as him and we've been lifelong friends since then. He
+introduced me to a gentleman named Bill Miller who ran leg mason and had this
+like 15-year run of beating the S&P one of the most famous investors of all time. And he claimed to be a value
+investor and he was the largest shareholder of Amazon for a very long period of time. And what he would say,
+I'm getting back to your question. He would say that, you know, value just means that the asset is underpriced
+relative to what you think it will be worth in the future. I spent a lot of time talking with Bill about network
+effects. And if you believe in that, then Amazon might be able to grow at a
+unreasonable growth rate for a very long period of time, which he believed. And so that that's how you get there. But
+yeah, I I I've often thought that many of the VCs in Silicon Valley would
+benefit from having a better understanding of finance. And one other answer to your question about how it becomes valuable. You know, I've always
+thought of Wall Street as the buyer of the product that venture capitalists
+create because of the eventual liquidity is either an M&A or an IPO. And now the
+price is being set by that group and that institution. So if I know what they
+value, even if we're starting at a very early place, two people in a PowerPoint,
+you're still thinking about when this thing grows up, is it going to be something they're excited about?
+Yeah. The trajectory matters more than the starting place, I think. Yeah. That that's where you're going to end. That's the out that's the output at
+the end of the day. What does it mean to know the bedrock of the industry? We live in a world where people skim. They want the gist of
+things. They want, "Give me the summary. Give me the executive summary." I'm going to tell you a story. So, um,
+my partner at Benchmark, Alex Balcansky, would go to this charity auction that I
+think Andre Agassi would run in in Vegas. And one year, he bought a dinner
+with John Lacier, the creative genius behind Pixar. Mhm. And we go to John's house and he serves
+us in his [clears throat] movie studio. He serves us in his viewing room a 10
+course meal. And each piece of the meal is tied to a classic cartoon that he
+believed was was super important to understanding animation. And he would
+show it and he would talk through it and explain it. And you see that and you're like, "Holy crap." like he knows more
+about the history, you know, and and then here's another data point that I
+just love. There's a, you know, world chess tournament and they take a break and run a trivia contest and [snorts]
+Magnus Carlson wins the trivia contest and it's all about the history of chess. We do live in a world where information
+is really cut up, but we also live in a world where you can have access to more information than you ever could. And
+that's even more true now with LLMs. I mean, you could just sit there. You have an hour drive and you could sit there
+and talk to OpenAI and learn about anything you want to. And I think more
+people would benefit by studying the history of whatever field they're in.
+The there's another one that we mentioned is uh Picasso was a wildly
+successful realist painter by the time he was 14. If you go to the Barcelona Museum, you can see that. And I don't
+think anyone that looks at his cubis paintings would in intuitit that that was true. And then one last thing I
+would just say about this, and I think this is broadly applicable to almost anyone in any career. Imagine, let's
+just pick a field. I'm going to pick marketing. All right? Imagine you're interviewing for a job at PNG or Pepsi
+out of college and there's 20 people there and you're the one that understands the masters of marketing
+more than the others and you're able to bring that up in the interview. Isn't that wildly differentiating?
+Yeah, totally. I can't I can't imagine how it would land on me if I that I met
+that person and and yet other than fields like I think in like literature
+you probably everyone studies the greats but in these other fields it's not a practice and I I just think it would be
+like remarkably differentiating for people to walk around with the history of their field. I had a friend who
+actually recommended to people that their college essays do that when their admissions essays talk about like if
+they want to go into physics talk about the forefathers of like physics and and show them and like you'll instantly
+create tons of contrast with everybody else and you'll show a passion like it it it
+infers passion to want to know that. Um, and then the other part I get into, if that sounds
+tedious, it's probably not the right [laughter] like like if it's tedious to learn that this isn't a passion like
+you're not in the right I don't think you're in the right lane. So you've spent your life working with outliers, all these founders. Are there
+is that a common trait? And I mean not just the the history of the field but the details as well.
+I don't know if the history is a common trait. I would say that that a more
+common trait that's related in the entrepreneurial world is obsessive learning like constant learning because
+the disruptions that allow for the technology waves that allow for
+companies to be disruptive and take market share from an incumbent are all
+tied to something dynamic that's happening on the edge. And every
+entrepreneur that's exploiting that, it's AI right now. They're they're going home at night and reading everything
+they possibly can cuz the edge is moving and they need to be right there and they need to be a top 1 percentile person
+that understands this new thing that's happening. And today it's AI, but that was true of
+the mobile wave. Like like when the mobile phone came out, there were no engineers that had written apps for
+mobile phones. and a few people got on that edge and figured out what that
+meant. And that requires obsessive learning on the edge. The way that I'm thinking about that,
+and maybe I'm coming at this wrong, is, you know, if I'm young and upcoming, I'm on that edge. And I'm going to dive into
+it, but if I'm an incumbent, it's much harder to dive into that because it might mean, it's the innovator's dilemma
+in a way, but it might mean giving up a previous decision I've made or saying that I've been wrong and going
+backwards. How do you think about that in terms of competition? I mean, I think that anybody in any
+field should want to be on like curious about the bleeding edge and what
+happens. And, you know, as a venture capitalist, you know, we're always definitely afraid that some new app's
+going to pop in the app store that we haven't seen or and so everything that comes up, I play with, I roll around.
+Right now, I have like five premium AI accounts cuz I just don't want to miss
+something. and you get trained that way. I think everyone should operate that way. I mean, it's kind of an interesting
+contrast. I'm suggesting you should understand the really old stuff, the history, because it's differentiating
+and shows a passion and it gives you a great frame of mind, but you also want to really understand the new edge. If
+you do both of those things, like you're I think you're a power player in your field, you know. And the the second one
+is a great way for young people. That's another thing that could really differentiate you in an interview. If
+you're applying for that marketing job and you understand all the legends and the history, but you also really get Tik
+Tok, like that's super like that's going to be a very differentiated skill going
+into those companies and it matters. Like it really matters. Gives you a
+chance to shine. If I was to observe you use AI for a week, what would surprise me about the ways that you're using it?
+You often underestimate how much it can do. So you might ask it um to f identify
+the top 10 of something and then you're going to take those 10 and go study them. But you can say identify the top
+10, list their pros and cons, and then rank order them based on this dimension. and then rank order them again based on
+another like stuff you would have done later you can just build into the prompt and it can it can do more of the work
+earlier for you early on I would often ask it for numbers and then I would go add them up and I'm like oh you can
+just tell it to do that part too do you find chat GBT is the best one I I like the project structure and I'm
+being sucked into the memory element in that it knows who I am and it knows
+things about me for for restaurants and stuff I' I've been using Gemini just because it has all the Google review
+data and you can, you know, you you don't just ask it which restaurants are good. You can say what are three plates
+people rave about and what have people warn against. Like you can go deep into the menu, which I I do all the time. You
+know, the coding people swear by uh Claude. Yeah. And I met a guy this morning who
+says for finance he prefers perplexity, but if he's doing deep research on
+companies or like companies and countries he doesn't know, he find Claude does better. So I think it's
+still a mix. Do you think we're going to end up with like one model that just sort of like dominates or do you think we're going to
+end up with niche models and they're effectively going to be commodities in some way? I think it's highly dependent on how
+things play out. There are certain examples in the verticals especially in
+the coding one which is probably the largest vertical right now where people have swapped out models you know cursor
+even lets the the user pick the model that they're using and as we move
+towards optimization and price optimization which isn't really the objective function right now but it will
+be in a few years um you may see more people try and do those swaps. I think
+the thing you know that could cut against that if [clears throat] the regulation gets extremely difficult and
+mundane and expensive that could actually lead to more igopoly and I
+think some of the players know that and are begging for regulation. [clears throat and laughter] Oh cuz they want that because it's a
+protective mode pulls up the bar against especially against the Chinese open source models.
+How do you think about regulation in the global sense? Just zooming out a little bit here. If if one country is regulated
+on AI and it slows them down effectively and another country is not regulated on AI and it speeds them up like how do you
+think this has come up especially around copyright you know and if if if if our
+models all have to adhere to some special rule and there's already been
+settlements and whatnot and the Chinese open source models don't it it could
+have it could have an effect you know it's very un I'm very uncertain how the EU might rule in that type of situation.
+So, I don't know. You know what I'm saying? I don't know how they might view it. How do you think about it from a systems
+point of view? Just from like China seems they have four open source models now that are really good. Is that
+By the way, this is a great a great question just to talk more about systems thinking. So um they have like 10 open-
+source models and so you have a situation where the competitive dynamic in China is more intense because it's
+more intense. Everyone's chosen to go open source and that creates a system
+that in my mind is capable of innovating far faster than the competitive system
+we have here. All the models learn from one another. You can actually have a model train another model or test
+another model. I'll use a simple metaphor but imagine you have two societies and both agricultural
+societies and one of them when all the farmers come to market they just sell each other goods and then they go back
+and the other society when the farmers come to market they're forced to share best practices with all the other
+farmers. Which which one of those is going to going to evolve faster? And open source
+allows me to see what they're doing, how they're doing it. Are they open sourcing weights too or just the
+Yes. And a lot of them are publishing how they figured it out like new techniques and and things like that. So
+it's more it's way more dynamic. And does that help Western nations then too? Well, there's an irony that a lot of the
+startups are forking those models and this would be a question of how regulation plays out and whether you
+know someone tries to stomp those out or not. I would say it's kind of a quiet secret just because I haven't read it on
+the front page of of the journal that you know especially from a breath standpoint like a volume companies are
+using these models all over Silicon Valley. The sponsor of this show is Coin Shares.
+While most of the industry was still arguing about whether digital assets were legitimate, Coin Shares was quietly
+building the infrastructure to invest in them properly. They now manage over 6 billion in assets and have stayed
+profitable through every market cycle. Fully regulated with the kind of transparency and governance that serious
+investors actually expect. Whether it's crypto ETFs, active strategies, or Bitcoin mining ETF exposure, you can
+access all of it through your existing brokerage account. Coin Shares. The adults have arrived. Learn more at
+coinshares.com. This is not investment advice.
+You're in meetings all day. You're trying to stay present, but you're also worried you'll forget the decision, the action item, the important next step.
+That's where Granola comes in. Granola is an AI powered notepad for meetings. You jot down rough notes like you always
+do. And in the background, Granola transcribes and turns them into clear, useful notes when the meeting ends.
+There are no bots joining your calls. No distractions, just a clean notepad that helps you focus. During or after the
+call, you can chat with your notes. You can ask Granola to pull out action items, help you negotiate, make a
+decision, write a follow-up email, and so much more. I even use it when I'm listening to podcasts. Once you try it
+on a first meeting, it's hard to go without. Head to granola.ai/shane. And get 3 months free with the code
+shane. That's granola.ai/shane.
+If AI is really going to change everything or, you know, have such a big impact, how does it change how you
+invest? and you look at a company, are you looking like this is a rapper on AI? You're effectively like a calculator app
+on the iPhone or like how do you think about I I I think that question is up for grabs and it's a hot discussion between
+everyone. So, you know, if if you believe that these models
+[clears throat] become near sentient, then that there will be no need for a vertical model because this one model
+will just do everything. I probably come down on the other side of that. I think that there are workflows and data modes
+that if you get and and also just understanding like there's three or four legal startups in the AI space, they're
+just spending so much more time making sure they ingest all the case law and and really understand, you know, the
+processes and principles there and and then you implement with them and they're
+writing stuff on your behalf and you're building new databases out of there. I just don't know that you then switch
+that to chat GBT as they climb up the stack. But and I'll take I'll flip back
+to the other side. You know, they have talked about in their product groups, you know, going after verticals. So,
+it's I think it's a TBD. People point to Microsoft, you know, starting with the
+OS and then, you know, there were there was Lotus one 123 and there was I forget
+I can't even Oh, there was a word perfect like I can't remember the the specific apps, but you know, they
+eventually moved up the stack. That could happen. We're going to see how it goes. Do you think there's limitations
+to how we're training the models now, which is sort of they're trained on all the data from the internet, including
+like, you know, Elon has the opposite approach where he's like, we're going to take all the data and then we're going to filter out clear untruths. We're
+going to use that as the starting point versus the other. I do think that there is a valid argument that we might be
+running out of data, you know, that that we're I call it painting in the corners like you know, just we've filled in
+everything right now. One of the most powerful um solutions to improving the
+models is hiring experts. literally hiring experts for thousands of dollars
+an hour to to sit in and fine-tune and and you know ask very hard questions and
+then tune them to to be able to solve those. I there's got to be a limit to that like where's the edge of of human
+knowledge. So it's a big question like do do we run into asmtopes or not? And part of it goes back to do you believe
+these things can become [clears throat] super intelligent at which point they start solving things that we've never
+imagined. There's a lot of debate about that. I mean the I guess the theory correct me if I'm wrong is like the minute that
+they are super intelligent they can effectively make themselves a little bit better and at that point you just you
+enter a nonlinear curve. That that's an argument that some people have made. I I don't know that I believe
+it but but give me give me the other side of it rather than me stand on that hill like Yan you know Yan Lum you know makes that
+point like he says that that the next version of AI is not it's not LLM it's
+it's outside of LLMs it's broader than LLMs and that that we're going to run into a a asmtote with these because
+they're language based and there's just a limit to what language what you can capture with language which is part of
+why they're not specifically great with math and numbers, right? There are much better people to talk about this than
+me, but there's a people point to this famous game that Google Alph Go where
+Google implemented and the bot eventually came up with a move that was shocking to all humans and that I forget
+the number. It's like a famous move number, whatever. And that is proof that they can innovate, you know, beyond what
+they're taught. The people that take the other side say that's a very constrained game and environment. And the computers
+can search a field of possibilities that's impossible for a human to search
+because there's just too many, right? And that that gives it the ability to find that move that that we didn't know
+about before. But in the real world, it's not constrained enough where you
+can tell it to walk all the possible paths. There's an infinite number of paths in a complex in a big complex
+system. And by the way, those AI models aren't LLM based like AlphaGo is not LM based. It's a AI model trained to a very
+specific constraint system. And that was trained just by playing. Is that true?
+Yeah. Yeah. Yeah. Exactly. But and even FSD is you know at Tesla is a
+constrained environment like there's the inputs are the brake and the steering
+wheel and the gas pedal and or those are the outputs actually the inputs are are all the visual data
+it's scary good [laughter] I mean I was telling someone the other day I was like I would be comfortable sitting in the back seat at this point
+with full self-driving like I don't I don't feel a need to drive anymore. Yeah.
+What's your take on that? the corner cases. Would you sit in the back seat with your Tesla driving? The the the corner cases are impossible
+to fathom at this, you know, right now. Yeah, maybe at some point. I mean, I
+certainly think if it were in a world that didn't have the randomness of the
+real world. So, if you were in a g geographic area where all of the cars were that, it'd be easier to to to go
+into that mindset. Is that We got humans that think it's fun to test. People are jumping in front
+of these cars like that's that's that's not good. I was talking to Rory Sutherland. He's like, "You can just have fun with this.
+They're going to stop. You know they're going to stop." And so like you don't even have to look both ways now. What are the consequences of that?
+Yeah. Yeah. That's not good. What do you What opinions do you have today that are sort of non-conensus that
+you you think are correct? Having spent ton of time in China over the past 20 years, it's hard for me to adopt this
+mindset of vilification that's heavy amongst many in Washington and now many
+in Silicon Valley. The US is like 3, four, 5% of the global population.
+Yeah. American exceptionalism. When people utter that word, I always wonder like imagine the other 95% of the planet
+thinks when they hear someone say that. You know, that's probably a non-consensus
+viewpoint. Are there Do you think we're overfunding this buildout? How do you think about
+that? I saw that smile on your face. I mean, it's such a hard question to know. If you told me five years ago that
+the that these uh max seven would become
+worth $3 trillion and then turn around and take their free cash flow from 50 to
+100 billion a year down near zero because they were going to spend it all on capex, I'd have been like no way.
+Like I wouldn't have believed it. So from a certain standpoint, I'm shocked that the money's this big. I will tell
+you that the venture capital community, you know, I meant we talked earlier about increasing returns and and that
+concept and other people call it power laws like when startups have become
+important in an ecosystem and then they've been able to prove that they can grow and that that growth might be a
+function of their size already or their footprint or their users and that would include everyone from Google to Amazon
+to Meta that they end up being worth way more than anyone thought. And I think
+the investor community writ large has slowly
+become aware of and believes it strongly in increasing returns and power laws.
+And so over time, if they all believe that, they're going to be more willing to invest on the come and take risk.
+Right? That that makes sense that follows. And so, you know, someone
+forwarded me a chart this morning of the losses of the leading company in the
+field prior to going cash flow positive. And you look at, you know, what for for
+for Amazon it was like two or three billion. For Uber it was like, you know,
+15 billion. And now for these companies, it's going to be way bigger than that. And so the venture capital community as
+a whole is is getting more risk-seeking and taking on more risk because of their
+knowledge of how things have played out in the past. What do you think are assuming we are
+overfunding? We haven't had a correction like not not really like a mini one kind of like and usually
+that that weeds out sort of the weak competitors the strong ones survive and it depends. Yes, but but it can be, you
+know, if you look at what happened with the.com crash, you know, there was a four year, three or four year lull
+before the Amazon of the world started climbing out again, you know, it was it
+was like a nuclear winter like right now there's so much optimism and belief in AI. you get to the place where there's
+very little, you know, um I don't know, some of these the these quote circular
+deals that people are talking about [snorts] um enhance the probability that we'll
+have a correction, but also extend the time before we have one.
+Wait, how so? Yesterday at the dealbook conference, Daario was asked about circular deals
+and he goes, "Well, maybe people just don't understand. Let me explain how this works." Um, you know, imagine
+you're a cloud service I'm I'm echoing what he said. Imagine you're a cloud
+service provider and you notice that this company Anthropic wants to develop
+this model. It's going to cost maybe $5 billion, but they don't have that money. So, you give them that money so that
+they can spend it. And I'm like, well, if you didn't give it to them, they wouldn't spend it. And so like the
+growth of everything is enhanced by the fact that you're giving money to
+companies to spend back on your services they wouldn't have otherwise. And so if
+you were in a more constrained environment where you didn't do that, things wouldn't be growing as fast. You inflate you inflate what's happening.
+So you push further ahead faster. Yes. But there still is likely to be sort of a culling of the the weaker competitors.
+Look, first of all, if a company's successful, someone will knock on your door and try and give you more money.
+So, like almost every round is preemptive for successful companies. And when you take that much money, $300
+million, the only way to spend it is to take your burn rate up. And I always
+thought of burn rate as a measure of risk. 10 years ago, like it was super risky to burn a million a month. You
+know, today these companies are burning five billion a year. Like like you know, you're you're burning a hundred million
+a month or more. Like it's really hard and this may go back to financial bedrock and whatnot. It's really hard to
+know what your unit economics are when you're being that aggressive financially.
+Do you think things will change? Like I I wonder about the role of retail investors in this like if you tokenize
+some of these assets like they might be competing with VCs in some way to fund some of these startups. How how do you
+think about all of that playing out? Well, first of all, there is zero lack
+of fund availability right now. So that's not the bottleneck. Yeah, there's [laughter] the pricing would change, right? There's
+no con. This is kind of played out in the public markets. I mean, I think you look at
+obviously like stocks like GameStop, but I I think most people believe Palunteer
+is a stock that retail investors really love and take it to a valuation that
+it's very hard for institutional investors to get their head around. So, some of some of that has played out.
+Yeah, it's it's there's a there's a risk with tokenization, especially if it
+happens on assets that don't have regulation around financial disclosure
+that you get a ton of speculation and even worse manipulation. Do you think that that would affect
+private companies if there was like if somebody figured out a way legally to tokenize Stripe, for example, and the
+price of the the Stripe share that's tokenized effectively fluctuates wildly?
+Yeah. Do you think that has an impact on Stripe or its employees? Well, it would. One of the reasons they're staying private is so you don't
+have that dynamic because they have more control over sort of like the market cap pricing when they do um liquidity events for
+their employees. They sit down with a handful of investors they trust and they
+negotiate a price and so it's done on a one-off basis. And I think we're going back to the financial bedrock. The
+underlying asset probably does move around a lot. It's just it never it never gets recorded so you don't see it.
+Right. And that's a I think from the operator standpoint that's a benefit. Like if
+you've heard any public company CEO, if their stock moves around a lot, it creates a lot of chaos for the employees
+who are owners who are wondering what it means. This is already starting to play out, right? Robin Hood announced they
+were going to do what you just said and and the companies, you know, threw up a
+a a strong argument that that would be illegal, like you don't have a right to do that. So, we'll see how that plays
+out. Yeah, it's fascinating how all that plays out. Or you tokenize real estate and what effect that would have on.
+Look, I I I think that and I've been outspoken on this particularly around the IPO process. I think it is insanely
+unfair to the companies the way they're forced to go through this process where
+the bankers pick the price and pick the shareholders. There's just no need to do that. If you took a freshman computer
+science student and a freshman finance student and said, you know, imagine how
+a company should go public. They would match supply and demand anonymously like
+you would in any auction. And exactly the way a a ICO works. Yeah. With
+tokenization, no one would invent this thing where you you cherrypick your best
+customers and give them this sweetheart price. No one would do that. So, I do think that Wall Street because they just
+can't get out of their they can't let go of this greedy power grab they have around the IPO. you know, we we pushed
+direct listings for a while, which which uses this auction mechanism, and they could have embraced that, but they
+didn't. They've gone back to this kind of controlled igopoly. I I think that is
+an area where where tokenization like just merely getting to the first base of
+how the share should be allocated um could be very disruptive. Stable coins could be very disruptive too to credit
+cards. Well, go deeper on that. most of the rest of the developed world, the
+governments um established a an ability to do instant transfer from bank account
+to bank account and from bank account to a partner or retailer, whatever. UK
+faster payments did this 20 years ago. Recently, Argentina did it with picks in
+the past six years and it quickly became 60 70% of transactions and precisely
+because of regulatory capture the banks have kept our government from doing that. They've the government wanted to
+they have something called Fed now but there's massive push back in the finance committee in Washington so it never
+happens and as a result you know we have credit cards that charge two two and a
+half% in a whole ecosystem of companies that live underneath that umbrella. If you have a Coinbase account you can put
+your money in a USDC stable coin and earn 4% and within seconds immediately
+transfer money to someone else for pennies. What is a stable coin? Like I'm
+totally naive here. It's a cryptocurrency that if the company's following the regulation, I
+believe that USDC is is in fact doing that. Um where they have they have
+created a dollar fordoll holding in treasuries, US treasuries. Okay. For
+each each stable coin that's represented. So that's kind of like the gold standard
+back to the dollar almost. Yes. But because it's on the crypto rails which are now quite proven and
+quite fast and global and immediate, it gives you the ability for me to to give
+you or for a company to give a company or anyone um a dollar, you know,
+immediately. Who holds the dollars in this case? It's like if a bank transfers
+a dollar to another bank, I I just in my head I'm like, you know, it's it's an electronic transfer, but in reality,
+it's probably like there's a dollar actually transferring at some point. Well, no one's taking a physical cash dollar, right? Like that's all it's all
+digital anyway, right? In America, if I want to send you 50 bucks digitally,
+I've got to go through AC, which is three-day settlement, which is part of this regulatory capture in in
+in Argentina now it's immediate because of pics but so we don't actually need the three days
+we do like the regulatory makes that happen no I can I can wire to you same day but
+it cost me $25 and I have to fill out a page of forms and I might have to do a verbal commit with my bank
+so the way around that is stable coins because you're really just working around the regulation same yes and credit cards which cost 2
+and a half% but this there's no reason that it should and once again these other countries which include UK,
+Australia, India, China, Argentina, they've all done this but we never did
+it and probably won't like I at this point I think stable coins will get there faster than than the government
+will will be able to do it. Video is the most effective way to
+communicate, but it's always been too slow and expensive to produce. Hey
+eliminates that. You go from idea to professional video in minutes. No camera, no crew. Their avatars are rated
+the most realistic on G2 and over 30 million people are already using Hey
+Gen, including 85% of the Fortune 100. You can even reach an audience in over
+175 languages with AI lip sync and translation. Same voice, perfectly
+matched. If you're someone who communicates at scale, take a look. Your first three videos are free. Hey Jen.com
+h e y gn.com
+Ever hit 3 p.m. and feel like your brain just quit? For a lot of people, that's not caffeine or sleep. It's
+electrolytes. And water alone won't fix it. That's why I drink Element every day
+after lunch. Zero sugar, no dodgy ingredients, just a real dose of sodium,
+potassium, and magnesium. I know you're all thinking electrolytes are for athletes, but you don't have to be an
+athlete to benefit from it and it tastes great. Stay sharp in the afternoon and
+grab a free 8count sample pack with any purchase at drinkelement.com/tkp.
+That's drinklmnt.com/tkp.
+How do you think about the competitive mode of Visa and Mastercard? I think they will be heavily threatened by this.
+And historically what they've done in and by the way those two companies have two of the highest operating margins in
+[snorts] the history of business. They have like 60% operating margins and they're they're duopies and and they
+were created by the banks. So and the banks have a stake in it. So it's like the the whole industry is is kind of
+stuck in this world where they make a lot of money because it is this way. But there's zero reason why it should cost 2
+or 3%. Just zero. And it will change in China because they had this digital
+immediate transfer. Um Alibaba and Tencent were able to very quickly build
+digital wallets that people carry around. And so if you walk around China, if you want to buy a hat from a street
+vendor or or a car, you know, in a Huawei store, you you use we we we chat
+pay and Alip pay for everything. You scan a QR code like at a you check out of a restaurant like you can just pay at
+your table. There's a QR code on the table. You just take your WeChat pay or Alip Pay and scan it and you're done.
+like one click. I so they they've innovated their entire payment system
+way further than we have because because of this
+the decision by the government to make money transfer easy and that means like no three-day
+settlement sort of exactly and it doesn't necessarily mean stable coin it just means that's true I just think because they
+waited so long in the US you know this Fed now project's been just out there
+forever that that the threat becomes this new thing and especially with the
+momentum the crypto momentum in Washington that could change with a new administration.
+As you were talking about that I was also thinking about Moody's and AI and I was like oh Moody's you know basically
+they sold analysis on debt. Yeah. How do you think AI changes their competitive position? Because like in
+theory AI would be able to do that better than or equal to Moody's which also makes great margins.
+Yeah. I think Moody's power comes from the fact that um that it's a standard
+and everybody trusted as a standard, right? So even if they used AI on the back end, they're still the
+the Yeah. the the the watermark. Someone could pop up. I mean, there's been a lot of talk about these companies like ISS
+that that that tell shareholders how to vote. That came up yesterday um at at the Debook Conference and
+whether or not AI could solve that problem as well. It's possible. Yeah. I mean, I think everything's up for grabs.
+What do you think about independent sort of like services like that that that profer advice on how to vote your
+shares? Oh, I think in the US it's gotten to a really bad place because of the rise of the index funds. Um, the
+index funds and this is why they're asking Larry Frink about it at Black Rockck like they don't the index funds
+don't have the time to truly evaluate the what the vote should be in these
+situations. And so the they rely on these services, but these services have
+been built. They play this game that that that it's not particularly um
+settling, but they they score you, but they score you with a black box. They
+don't tell you how they score you, right? You and guess how you can learn more? You you hire them.
+Yes. So they get paid on both sides. And it's just it's more of a heist, I think, than
+anything else. And I'm I've I've spent some time talking to I don't know that they they they they got focused on
+issues that weren't shareholders interest like what what's like what they
+really care about is is um what what's best for shareholders,
+right? And they got away from that. Um the the Tesla case is a great example that that
+package that type of package that they did for Elon. I've said this, you know,
+publicly. I would agree to that type of package for every company I've ever
+worked with, and most CEOs wouldn't take it. Uh, it basically says you don't make
+money unless the stock goes way up. And if you stock goes way up, you make an obscene amount of money. And I would do
+that deal over and over and over and over again. None of these ISS like evaluators agree with that. like they
+just in fact they take the opposite. They say oh no that's a negative we should vote against it.
+Is it just because they're looking at the headline number and they're like that's egregious not looking at what's required to make that happen.
+Yeah. And they started from a place of corporate governance where they were looking out for fraud. And so so risk
+mitigation rather than shareholder interest. And so when you come at it from that perspective, you're like,
+there should be rules and people should adhere to the rules and when people get outside of the rules, that's bad.
+Yeah. I think that's their legacy. What do you think are sort of the second order effects of the rise of passive
+like we've uh indexing which is mostly post the GFC. How do you think it plays
+Well, this is one of those things like this this wouldn't be a problem were it not for because it's the large number of
+shares held by the uh the passive it one one thing that would be really great is
+if they just wouldn't vote um because then the people that are active shareholders would have more of a say in
+what happens with these companies but there's they own such a large percentage. Um
+there's also an argument that they should have to vote in the same proportion that direct holders vote.
+Yeah. Well, if they didn't vote, that would happen just by natural because the the vote would just be it'd be more like
+how unfortunately how voting works in America where you only have like a 20% turnout. But
+the second order factor that like I could have control of the company with a very small share of Yeah. At first, I think the public
+investors got really scared because they were marked to the index and they ended
+up doing what people call closet indexing to make sure that they didn't
+um lose out. And like when the MAG 7 took off, um if you didn't own those,
+like you had a bad year, as an example, and so you're forced to kind of closet
+index. But they were they had kind of reached a point where they think the number of active investors is so few
+that the ability to get an edge has maybe increased as a result of the of
+the massive indexing. Do you believe that? I don't know. I mean it's it's the buy
+side is a very hard job like to to beat the S&P. Some people have even
+highlighted the fact that, you know, QQQ has probably outperformed 80 or 90% of
+venture funds. One of the surprising things that I learned about you through reading your book was that you love the craft of
+storytelling and writing. Yeah. Talk to me about what you've learned about storytelling over the years and
+because that's really important to founders. It's really important to anybody trying to get a message out in today's world. Someone asked me like the
+top three traits of founders that are successful and I put storytelling in there. Um the the there's another thing
+that happened you know when I prior to going to business school I didn't read much but some bit flipped when I was in
+business school. I started reading and I I started with business books that most people know. Um, I got into personal
+development books, which I find a lot of successful people have this moment in their life where they roll through, you
+know, Dale Carnegie and like like Seven Habits and stuff like that. Um, and then
+and then biographies. Um, but but after that, I I I've kind of fell in love with with long form
+non-fiction journalism that reads in an exciting way. And part of it was the
+wave that was Malcolm Gladwell and Michael Lewis and John Crockower and those books that read like fiction, you
+know, even though they're non-fiction. And there's actually multiple books written on that art. It's called the new
+journalism and the new new journalism. And I've read those books about that writing. And I just find it super
+powerful that someone can maybe put together 20 pages that like really
+impacts you in a certain way. And so I started studying the craft, studying Buffett and Howard Marx and seeing these
+investors that were successful like putting their stuff out there. If I was
+thinking through a problem about a new most of my most successful investments
+fall in this category people call marketplaces and before there was a first marketplace like there wasn't a
+knowledge base and you know we crafted that along the way and codified it and
+wrote it down and that in addition to helping you think through all the corner
+cases and this is exactly why Bezos has his six-page letter concept at Amazon.
+He he believes that if you have to write it out and make it stand alone and be cogent that you'll think through more of
+the the problems and you'll it'll be more cohesive and it'll it'll um you
+you'll figure out the loose ends and you'll tie them up. Um, and but in addition to that, in the venture world,
+for the founder that doesn't know you, when they see your knowledge on a subject or they see what you're talking
+about in their own business, they reach out to you. So, it becomes a calling card.
+It's like a magnet. Yes. Yeah. And I I'm not the only one that's done it. A lot of people have done. And some people don't use that
+technique. There's other ways to to get deal flow, but it's powerful if if you do it right.
+You mentioned storytelling. What are the other uh you know chosen unfair advantages that founders have? You said
+there was three. Oh, right. I have a fourth one. I hope I can remember it. I think product instincts is another one that that that
+comes partially from understanding the new edge which we already talked about
+but like it probably took my whole career for me to fully understand how hard it is to hire someone who's not a
+product first individual and then get them to be good at it. I'm sure there
+there are examples, but it's got to be 5% or less of the use case. super hard. Um um so uh storytelling is so important
+because in the founder case, you're recruiting employees, you're you're you're
+recruiting executives, you're raising money, you're closing customers, you're closing partnerships, you're selling all
+the damn time. Yeah. And the best ones are just super effective at it. Um and you can see it
+with Bezos. You can see it with like Toby at Shopify. I mean, God, like,
+listen to any Toby podcast you possibly can. Like, of course, the world's going to follow this guy, Daniel E. Like,
+they're just so gifted at describing what they're trying to do, you know, and
+that's that's just just, you know, super super valuable. I once asked Jeff Bezos,
+"How have you had such a successful angel portfolio? You don't have any free time." And he says, "Oh, when I meet an
+entrepreneur, there's only one thing I ask myself. Is this person gonna do this no matter what? Come hell or high water,
+they're doing this. Like, they're just already convinced that this is so
+important, they're not going to stop. And I think that level of determination
+is present in all the great founders. Like, they're just going at it, you
+know, full blast. What are the what are some of the real world lessons you learned while working
+with Uber that you wouldn't find in like an HBS case study? Well, that that's that's an easy answer
+to get to quickly. Although now uh [snorts] because I had I had a moment in
+my brain where where that exact phrase you just said popped into my brain. We
+were, you know, in a situation where I think most people that were investing in
+the category knew it had winner take all dynamics and network effects. And as a
+result, there was this determination that they were just going to have to fund it kind of ad nauseium. And you had
+a situation where the burn rates, you know, where okay, well, someone's hands lift a billion dollars. Well, then we
+get handed three billion. And so, and and and once again, the only way to compete in that world is to spend that
+money. And so, you have these burn rates that are bigger than any pro public company would ever spend going after a
+new category. And and so aggressive. And I thought to myself, at the moment, um
+there is no HBA case study. You could take the board members from Walmart and
+Costco and GM and and General Electric or whatever you consider the top 10 best companies and they would have never been
+in this situation before. So there was no there was no one to call. There was no there's no mentor to go find. Um
+which was uh horroring a bit to recognize you're in that situation. But
+now all the AI companies are in that situation. So, I uh I feel for him.
+Uber was kind of the first in the in the in the mega burn. Yeah. I mean, well, Amazon was, you know, they they had a
+big burn rate, but then Uber took it to a new level. Um, but now it's at a
+they've added a zero. [laughter] I'm curious from the like how Benchmark
+was structured on the inside and how that structure contributed to its success.
+I've talked about this a lot. I I was very fortunate to get invited into Benchmark. I was I I joined on the third
+fund so I wasn't there early. Um they had left the founders of Benchmark had
+been at hierarchical firms where they felt like the senior patriarchs were
+maybe taking too much of the money and too much of the credit and not doing the
+work that was imperative for the firm's success. Um most partnerships, you know,
+you think law partnerships or accounting firm partnerships work in a way where
+the the senior people have more power and take more of the economics and the junior people have to work their way up
+over a long period of time. The founders decided at Benchmark that they were just going to make it equal, an equal
+partnership. And there's no there's no lead partner, there's no king, there's
+no president, there's just five equal partners. So what are the second and third order
+consequences? There's a bunch of them and I think most of them are positive. The first thing is
+it makes it very easy to recruit exceptional talent from other firms because they're not in that situation
+and you immediately and I was at a firm that was hierarchical and you know even if you went back and said well I'm going
+to leave to go to this equal partnership and they said oh we'll make you equal well you did it because I was leaving
+not because it works that way right that's one the second one is it really
+encourages development of the new people that come in because I'm going to take
+an equal part of their success when they start delivering. And so I'm not I want
+them to be super successful and I'm going to spend time and and I boy on my
+way in I felt that like I just felt like you know and the type of support it if
+you're in a up or out firm I bet it feels kind of lonely. I bet you know you're competing against that person
+over there. Are you going to share ideas with them? Maybe, maybe not. Like, and in this equal partnership, you know, if
+one of my companies needs a new CFO and they know of one, they'll probably just
+give it to me right away. My company succeeding is no different than their company succeeding. So, you just create
+a a different dynamic. And you don't spend any time annually on comp review
+and recutting the pie. You don't like it's all it's always equal. it's always
+going to be equal like that that amount of political overhead just goes away. It
+there is there's one huge negative. So I don't want to just say it's all um the
+it's almost impossible to have uh because you don't have a CEO. It's hard
+to scale out and it's hard to have new initiatives like because there's no like
+oh maybe we should you know the website was always a funny one like who's going to own the website? Well, are we going
+to hire, you know, someone to do that? And well, who owns that responsibility? Yeah. And when Matt Kohler came in, he had
+he's like, "Oh, man. I'll take it on. I love I know exactly what we need." He created this super complicated website
+and it had all the founders on it and now they're connected to all the partners and and people started
+complaining because stuff wasn't right. And one day, Mac came in [laughter] and uh he said, "You know what? I'm
+taking it all down and I'm putting up a splash page. And he did that. He did that like I don't know 15 years ago. And
+still today, Benchmark has a single page. And that's a result of this issue
+that I'm describing. Well, you know, it's interesting you say that because I find a lot of websites have such a high cognitive load to use a
+splash page with like, you know, four or five sentences or Berway's website. I
+totally get it. I don't there's not a lot of cognitive like [laughter] if I you know I heard this example um from a
+guy a couple weeks ago. He's like if I'm going to buy a sweater I don't want to know your mission statement. I don't
+want [laughter] like I just want to buy a sweater. There's a little bit of bespoke confidence in in just having a splash
+page. I would just add that there are plenty of highly successful venture firms that aren't structured that way.
+And so I don't it's not I'm not saying it's the only way to do it. It's clearly there clearly many ways to do it
+in a world of wash with capital. What makes a founder choose Benchmark or
+somebody else? Like what goes into that? First of all, at a high level, if you're successful as a venture capitalist,
+people want to work with you. you know, when I came in, you know, the Mike Moritz, you know, John Door, like
+they've had so much success that that not only, you know, is it likely that
+they are are great at what they do and know people that will help your company
+succeed, but their stamp of approval of you will carry weight in and of itself.
+And so there some people have said it's the only investing category where there are network effects because once you
+have a reputation it it you have an unfair advantage in deal flow.
+Underneath that I would I would say founders are particularly
+um motivated to be around people who understand what
+they're doing u and are excited by it and excited about it. And one of the
+reasons young people can break into venture and be wildly successful is they're much more likely to be the age
+of the founder, they're much more likely to feel someone that understands what they're
+doing with with many of these technologies that are new. They're much
+more likely to understand them. And you know, I I've used examples describing
+this in the past, but let's say you're a really into esports or something. You
+you it would be very easy to know more than the successful generalist venture
+capitalist in that category. Yeah. Like you could very quickly know more. And that could be true of of
+YouTube video creations. Like it'd be very easy for a young venture capitalist
+to know more about what it takes to be successful on YouTube than John Door or
+Mike Moritz or me or whoever. Like because you could just go spend 100% of
+your time on that. So, so in that way, is it sort of like athletics where you you age out in a way and you're
+competing against younger people who know or understand a niche better or how I I I think the the whole industry bends
+towards youth for that reason and because it's a hustle business like there there's there's always a rock you
+haven't looked under and you know age brings children and homes and and and
+other requirements you get tied to and responsibilities and you're just not able to go spend 80 hours a week
+studying YouTube like you just can't. Um so I think it bends towards youth. Um
+which is great like like it's a it's a highly competitive industry. It's hard to get a job but if you get one there
+are reasons why you can break in. We always end with the same question Bill which is what is success for you?
+I think I think it's changed over time. I would say when I look back on my venture capital career, I made a
+decision, a very specific decision to say, "Okay, I'm done." And and I I don't
+think I would have done that if I felt there was work left to do. I think I reached a point where I felt there
+wasn't any work left to do. So, in that case, you know, that was my dream job. I
+was thrilled to do it. I loved every minute of it. I often said that I would
+if we lived in a socialist society and I everyone had to work for free, I would still take that job. Um or the same fe
+salary or whatever. Um might not be eating, but you'd be Yeah. But that's now done. And so as I
+look forward, you know, I was very moved by this book Arthur Books wrote called
+Strength to Strength to Strength where he talks about this next chapter in your life. I would like to take some of the
+techniques that I use to be successful as a venture capitalist mostly around
+the blog and understanding problems and synthesizing and see if I can apply
+those techniques to bigger broader problems in society and see if I can
+dent the universe a little bit that way. I love it. I wish you luck. Yeah, me too. Me too.
+Thank you so much for taking the time. Thanks for doing this. It's great.

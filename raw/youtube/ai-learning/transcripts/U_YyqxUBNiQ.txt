@@ -1,0 +1,44 @@
+Hello, [music] I'm Tony Co, the host of Talk IT Global. When we talk about ontology, why is GraphDB always mentioned [music] together? Many people
+first wonder if it is ontology, is GraphDB also required? And these days, people go one step further [music] and emphasize the term dynamic ontology.
+In the reality of companies, data and business rules keep changing. [music] This means ontology should not be seen as something you build once and finish.
+It should be seen as a structure that keeps living and moving. In this episode, together with ontology specialist company [music] Infosys and PWC consulting, we will explain the key
+points in a simple way. The relationship between graph DB and ontology and why the word dynamic has [music] become important. So far, when companies store
+data, the data itself does not contain context. It only contains the data value. How should companies approach this going forward?
+I believe they need to store temporal and spatial data together so the context can be understood. For example, when we say the temperature of a specific piece
+of equipment is 100°, that 100° is the data you mentioned. But depending on whether that 100° is normal or abnormal,
+the action I need to take changes, right? It also matters which process it belongs to and which nearby equipment it is connected to. These kinds of spatial
+and temporal context data need to be stored together as well.
+And there needs to be a tool or system that can store it that way. People cannot do that manually every time. So what allows us to see that is something
+with a schema like a graph database in the process of giving an answer. If it clearly shows this is the process I followed to arrive at this answer or the
+100° you mentioned was referenced in this process in this way then it becomes much easier for the person viewing the answer to understand each step [snorts] and it is very important to show
+visually and logically how it was calculated, how it reached that conclusion and what process it followed.
+Later we may trust the answer itself even in mission critical work with hallucinations reduced to nearly zero.
+But showing the intermediate process visually and in various helpful ways is extremely necessary. But if you analyze everything during existing projects then
+it may be possible. Still companies will continue to generate data. Right? If they keep storing only the values then later they will have to organize
+everything again. So what should they do?
+That is a very good question. data is constantly alive and moving and new data keeps coming in and even within an ontology that has already been created
+the ontology itself will continue to change whenever new data comes in. So even if you create an ontology once it is not fixed the ontology needs to be structured so that it can continue to
+answer properly according to the incoming data. The best way to do that is to go through the stages I mentioned earlier recognizing the problem
+identifying the cause exploring alternatives and then selecting the optimal option. After that a person chooses the optimal option and executes
+it or they may find and execute a second best option. But the environment in which that execution took place also needs to be stored. And once it has been
+stored and executed, we also need to know whether that execution actually had a business impact. Only when even the post-execution evaluation is stored
+together in the ontology can we say as you mentioned that the ontology is a living evolving ontology.
+In a way it would also be good to include failures that happen during execution. Yes, that is right.
+Recently, especially in manufacturing, there is something called QM which involves tracking quality history. We call this traceability. A customer raises a complaint. That complaint is
+delivered to the manufacturing site. It is then reflected in the product and delivered back to the customer. If that cycle runs and the customer is satisfied, the overall quality of the
+product will improve, right? The complaint, the handling process inside the company and whether that actually satisfied the customer need to be tracked as a full cycle. Companies want
+to trace how much the overall quality of their product is improving. This is one of the areas that many companies are trying to work on these days.
+Not only in manufacturing but also in general service industries, VOC is very important. But in many cases, it ends at
+the level of just managing comments or recording calls at the call center. But if VOC can be turned into an ontology and connected all the way to service
+quality, I think it could have a very big impact in the service industry as well. Especially in large equipment based industries, once a production line has been set, changing the product
+requires major decisions. In that case, if QMS is operated around an ontology by using various data, existing data and customer VOCC to trace which quality
+areas need improvement, QMS will work much better. What kind of questions should business users prepare from a practical business perspective? First,
+the decision-making processes related to internal business questions are mainly found in reports and meeting minutes.
+Then, based on the four-stage classification I mentioned earlier, documents need to be prepared along with the backup data behind them. And another
+area that is still not fully digitized inside companies is the post evaluation we talked about earlier. If information on whether a decision actually had an
+impact or not is stored together, it can become an assetbased foundation for a company to build that kind of ontology.
+Then after that they can move on to the technical side. That is how I see it.
+For consulting firms like PWC, if they can establish a good methodology for this kind of ontology and for helping the continuous flow of company data
+evolve sustainably, I think it would be very helpful for business and helpful for companies as well. So for us, the point of collaboration with technically
+strong companies such as emphasis is this. We create a frame around key business issues, structure it properly and then work between the customers and
+the technology solution providers who can solve it technically.

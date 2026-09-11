@@ -1,0 +1,88 @@
+Hey folks, my name is Sydney, I'm an open source engineer at LangChain,
+and today I'm super excited to talk about how you can use RLMs with deep agents.
+First off, what are RLMs? An RLM is a recursive language model,
+which simply means a model that can call itself. So if we think about agents, we often define agents
+in code, and so the orchestration for recursive language models actually lives in code. You give
+the main agent and model, the power to write code to recursively call itself.
+And this means that context can live in variables or files,
+rather than just in the direct context window of the model.
+And this broadly enables a super flexible divide and conquer strategy for work.
+Let's talk a little bit more about why you would want to use recursive language models.
+Agents have trouble doing work reliably at scale.
+If you give your agent a file with thousands of lines,
+it's going to have a really hard time kind of deterministically
+processing that file. In addition, context windows are finite,
+and so over long conversations we have to summarize, right?
+But summarization is lossy, and so if you give your
+agents the power to orchestrate work through code,
+you can avoid these problems. RLM support, as I mentioned,
+deterministic coverage, which is great for data problems at scale.
+They also support bespoke orchestration.
+So you can organize work with code-like primitives, right?
+So loops, fan out and pipelining,
+sort of any code-like primitive you can imagine.
+Okay, so let's talk about how RLMs are supported in deep agents.
+As a reminder, deep agents is an open-source harness
+for building general-purpose agents that are built for complex, real-world tasks.
+So here's kind of a look at how RLMs are implemented.
+First, we have our main agent, which we give access to a code interpreter.
+We mentioned that the orchestration for RLMs lives in code,
+and so the code interpreter is this lightweight surface we can give to our model to be able to
+write and execute code without being as heavy-handed as needing to attach a sandbox.
+So in order to use RLMs, we give the main agent access to this task function in the code interpreter,
+so the main agent writes code that uses this task function.
+It calls out to subagents, and then there can also be other code surrounding these task calls.
+So maybe data preparation, maybe after all the task calls, aggregation, things like that.
+All right, so how can you get started using this with deep agents?
+It's pretty simple. You just use the create deep agent primitives,
+and then you pass this code interpreter middleware to enable code mode.
+All right, let's test this out with dcode, which is our terminal coding agent built on top of
+the deep agents harness. We can start it up by typing dcode. One key thing to note here
+is that to trigger RLM usage in deep agents you can use the workflow keyword. So here I'm asking
+dcode to run a workflow to generate 16 haikus about breakfast food and use a tournament setup
+to determine the best one. So we've got 16 subagents just generated haikus pretty rapidly.
+Now we're on to the round of 16. Great, so we can see the model is writing code. It's calling this
+JSEval tool. We're already off to the quarterfinals. Looks like the model wrote some bad code,
+but it's now correcting itself. And then off to the finals. So we can see tournament complete.
+I ran a full haiku tournament. And then the winning haiku is about berries. Crimson berries glow.
+Morning sweetness melts on tongue. Summer's gift awaits. I actually just bought some blackberries
+from the farmers market, so this feels on brand. Great. So let's talk about a little bit more of a
+concrete example here. So one way that we tested the effectiveness of RLMs is with the Oolong
+dataset, which is a dataset that challenges models over long context reasoning and data
+aggregation tasks. So I'll talk a little bit about the Oolong dataset setup, and then I'll showcase
+some of our experiments. So the ag news portion of the Oolong dataset is structured as a table
+with thousands and thousands of rows, where you have a date, a user, and then a news headline
+with no label provided. And we give models the challenge of classifying each of the
+headlines according to four categories: World, Sports, Science and Tech, and Business.
+Then we ask distributional questions about the data. So these can fall under three categories,
+moving from kind of easiest to hardest. First we have counting. So an example here
+like which label is the rarest among the headlines.
+Secondarily, we have the user category.
+So this requires the problem solver to filter and then count.
+So for example, for user 72341, how many Science and Tech
+headlines are there?
+And then the most difficult is the temporal reasoning tasks.
+So for example, before August 2004, was Sports more common than World in the headlines?
+And so the reason that this data is challenging is that there's so much data,
+and so it's pretty hard for a model to be sent thousands and thousands of rows and then perform
+these reasoning and data aggregation tasks without the support of RLMs or some sort of coding support.
+So the first traces we're going to look at here are comparing
+deep agents with no code interpreter with deep agents enabling a code interpreter.
+So you can see at the 64k context length, there's actually not a huge difference between the plain
+deep agent shown in green, and the deep agent with RLM support enabled via the code interpreter
+shown in pink. But now, if we look at a context length of 128,000 tokens, we can see that the
+RLM-enabled deep agent does much better. One tradeoff here is that the latency for the RLM-enabled
+deep agent is definitely slower, and we do see token costs higher at this rate. Although generally,
+I do think if we optimize further, maybe design some skills,
+explaining how to approach this specific problem,
+we could cut the token count and cost down significantly.
+So you'll note here, you can see actually in the plain deep agent,
+there's a lot of answers that look kind of like,
+"I can't answer exactly," or "I'm blocked from computing this."
+The model is actually giving up early on this task,
+because it's so overwhelmed by the context.
+So you can imagine if the context length was even longer,
+or the problem was even more challenging,
+that the agent with RLMs enabled would continue to outperform the plain deep agent.
+We think RLMs are a super powerful primitive and that's why we're so excited to expose them
+in deep agents. Let us know what you think.

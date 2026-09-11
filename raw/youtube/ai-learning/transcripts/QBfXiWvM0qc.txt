@@ -1,0 +1,507 @@
+Everything you ever learned about building software is kind of thrown on its head. AI makes high agency intelligent people
+look really good. It makes dumb [music] low agency people look worse. The percentage of time that you spend on
+engineering the markdown should be higher than the percentage of time that you spend on actually executing the
+code. At a point very soon, no one including all engineers will read code or write
+code. This is Alex Lieberman, the co-founder of Morning Brew and 10X. and he's joined
+by Dan, the director of engineering at 10X. In this podcast, we talk about how any company can become AI native, why
+markdown files are worth more than your code, and what is the last remaining mode that AI won't kill. If you want to
+see how people on the cutting edge of AI actually work, watch until the end. This is the David Andre podcast. Enjoy. Alex
+and Dan, I have a question. How do you take a company that's old and slowmoving and make it AI native? I think the
+answer to the question is kind of like how do you take anyone who has a set of existing context and get them to do
+something different and the answer is meet a company where they're at, where their systems are at, where their people
+are at, where they are in their AI transformation journey. If you were to reimagine what a consulting business for
+Fortune 2000 companies looks like in 2026, it has to be a full stack partner.
+Like historically, some of these biggest consultancies in the world only did one thing. They only would basically be told
+a problem. You would have a group of consultants and their manager work on a
+solution to that problem as a slide deck for a few months. They'd meet up with the client. They would deliver the
+solution via this 150page deck. They'd give them the deck and they'd say, "Okay, peace out. See you guys later."
+And then the client would would rely on having to solve the the problem themselves. Our view is in a postAI
+world, you need to touch every part of the value chain in a company's transformation. Developing their strategy, doing non-engineering work to
+drive change management and everything that needs to happen around the tech to actually make the tech valuable and then
+actually forward deploying into a company. to to your question, there are a lot of companies, a lot of Fortune 500
+businesses where the first thing we do is literally taking their seuite or their executive leadership team and
+teaching them how to use clawed co-work or claude code. And then for other companies who come to us and say, "Hey,
+we want to build back office agents for invoicing, AR, AP, HR, etc." We go and
+we meet them where they're at with that problem. So really, it's like how do you decrease the friction to as close to zero as humanly possible?
+I see. So I guess that's one of the like biggest separators of like an average consultant where he like gives you
+something and then you have to figure it out and a great consultant that like you know helps you implement it. What are some other things because a lot of
+people want to be an AI consultant you know if people tried starting AI consultancy in 242.
+Yeah. What are some other separators? I would say Arman my co-founder and
+co-managing partner myself we did not dream of being consultants like neither of us are consultants. Our actual vision
+for 10X is we want to build a modern-day Bell Labs and for different reasons. I
+have realized about myself if I'm not home with my wife, my daughter doing something else, it has to be worth it.
+And to me, worth it means solving really hard problems that are on the frontier of technology with the smartest, most
+driven people I've ever worked with. For Arman, I think it was in high school or college, he read a book called The Innovators. the innovators. It's an
+exceptional book. Talks about the history of computing literally from Charles Babage and Ava Llace all the way
+to effectively AI. And in this book, it talks about the arc of innovation and
+what were the raw materials that made kind of these centers for innovation
+successful. Whether it was Bell Labs with the transistor, whether it was DARPA with the internet, whether it was Xerox Park and the short answer is the
+entire time it is effectively brilliant people who are given a great deal of autonomy but they are given direction,
+distribution and resources. And so what we basically said is if we want to have all five of those ingredients and we are
+we do not desire to raise hundreds of millions of dollars from the start, how do we do that? And elegantly, the answer
+starts looking like helping the biggest companies in the world solve their hardest problems with AI. By solving
+these problems, enterprises are telling us their biggest challenges that they're that they're navigating within their
+business. They are paying us to do so. We so we are cash flowing the business. So our view is in helping enterprises
+end up on the right side of history. We are getting all the raw materials we need to effectively build an applied AI
+lab where we incubate some of the most consequential technologies in a postAI world. Let's see. Seance 2.5 just came
+out, but most people are going to be paying for every generation. On top view, however, Ultra users get Cance
+unlimited for 60 days. And unlimited is way better when you have a workflow that can actually use it. That's what top
+view canvas is. It's a visual workspace where an AI agent plans and builds your entire video. You drop in a product, a
+script, or just a brief, and the video agent plans the storyboard and generates the scenes. Everything lands on a visual
+canvas and every step stays editable. And with Cedance 2.5 under the hood, you
+get native 30 second singleshot videos. Top view canvas can also take up to 50
+reference assets. So your product or characters stay consistent across shots. And if one section comes out wrong, you
+don't need to worry because the clip edit feature can regenerate just that part. And once you have a workflow that
+works, save it as a skill so you can rerun it for the next product or spin out multiple ad variations from the same
+setup. And remember that 60-day unlimited Cense 2.5 deal is for ultra
+annual users. So click the first link in the description and give Top View a shot. One of the most interesting roles
+you could possibly have as an engineer is this kind of like applied AI forward deployed engineer because you you can
+accelerate the speed to solving very hard custom fit problems for enterprises
+and enterprises previously could only have these oneizefits-all solutions. Now
+you can go in and and kind of find the the gnarliest problems possible in enterprises and solve many of them um in
+kind of this very rapid succession. And so if you can reduce that time to magic
+very early on in in one of these engagements and just show the seauite or whoever the stakeholder is um how much
+leverage their teams and their orgs can get with AI, it it becomes this cascade
+of everyone else in the organization kind of wants in and and we get to um
+build more and more for them. So it's basically like innovation as a service. Yeah, that's exactly right.
+I think consultancy is like underelling it, you know. I think that's totally true and I think that works to our advantage because honestly I think
+unfortunately the best technical talent has never made its way to consulting because like one way to sell consulting
+is you go into a company, they tell you a problem, usually the answer is firing people, you deliver them a deck, you
+walk away, you never see the fruit of your work and then you move on to the next client. Or you could position consulting as a huge company that has
+messy, complex, and really important challenges to solve. They don't have the answer and they need an a team of people
+to basically provide them innovation as a service and not just innovation as a service but innovation and implementation like actually driving ROI
+and growth through the insights they provide. The cool thing about it is you don't have to just do this with one company forever which is often times a
+thing that I think uh creates boredom or plateauing for engineers in any org is like you work on one very specific
+challenge for a very long time. Consulting by design offers you diversity of work.
+Yeah. So you know that ADHD is satisfied and you still work for the same company. You don't have to career hop, but you
+have different challenges. Yeah. Exactly. And there's a few common questions that when we talk to a client,
+they ask us and we need to provide thoughts on. One question is is like how should we even be thinking about where
+there's opportunity for AI in our business? Like again, we meet people at different parts of the journey. And I
+would say half the time it's a seale person reaching out to us saying, "Guys, I'm in this group chat with a bunch of
+sea friends and they're all talking about all this cool AI they're doing and I have FOMO and I don't know
+what we should do with AI, but we need AI. Can you help me with AI?" And one of the initial frameworks we provide is
+this idea of single player versus multiplayer AI. And so the idea is that single player AI is if I was like, "Hey
+David, uh you traditionally would use Google to put in a query and get an
+answer. I'm going to put GPT or uh Claude in front of you. Ask that same
+query and see what you think about the answer." Zero behavioral change. You just do that. And that is valuable.
+And and in the context of an enterprise, what that looks like is an enterprise and this is usually the first step that
+enterprises take in their AI transformation journey is they sign a large token agreement uh with one of the
+labs. So e either with open AI or with anthropic they're like hey we'll commit to510
+million worth of token spend and we just need to make sure that we have you know
+secure instances of using uh codeex and GPT or claude code and co-work at our
+company and the first step of single player is literally just putting the power of a state-of-the-art model in
+front of your people and then ideally teaching them how to actually use these things
+in their day-to-day workflow. That is really valuable and I would actually argue for most companies that is where
+most companies should start but that is single player like people are only getting leverage from use of the
+technology for their own work but there is no compounding effect. Multiplayer AI
+is this idea of where you look at horizontal technologies or processes in your business where by reinventing them
+or reimagining them you're not just creating leverage for one person you're either creating leverage for the entire
+company or an entire function. So that could be everything from building uh you know a an SDR or sales agent for a sales
+or that helps every additional every seller get back time that they were uh
+spending before on like the logistics and the minutia of their job versus actually talking to clients or we say
+this all the time most clients come to us with an AI problem and it turns into a data problem where we're built we're
+doing some form of data engineering for clients because they are nowhere close to being data ready to actually build
+any form of agents or solutions on top of again another example of multiplayer AI where if you get that right the
+leverage created for the entire organization is massive and so our framing is we do both single player and
+multiplayer AI at 10x but where you're really going to get exponential benefit and where it's going to be really hard
+and painful and messy for you and where we can be most supportive is on the multiplayer side. Yeah. I want to share a tip we do uh at
+our much smaller company is that like I have everybody work at different GitHub repos right so we have one for like
+hiring one for brand deals one for YouTube videos and then anything you do instead of just chatting in the cloud
+web app or chat GB web app I force everybody to chat in codex and cloud and
+you know save their work in these markdown files in these repos so that anybody else they can load up their own
+clo with fable and you know even if that's not their area of business that they work in they already have all those
+project specific skills, all those markdown files, all that context and you know it's it's a complete game changer
+because even people who you know half a year ago were not technical and not really using AI as much as they could
+now they do and you know sharing those skills is really it's really magical because somebody who doesn't work in
+that they they feel like they can do it because you know they have their own fable fable reads those files gives them
+the brief and now it's like a form of multiplayer. Totally. And one one thing I'd just add and we can uh up to you whether we talk
+about this now or later on, but I think like this is exactly how Dan and the engineering team at 10X think about like
+our entire SDLC and this this idea of context as code. Like it's interesting
+because engineers have long thought of being really organized and methodical in
+the way that they structure files and information when building software. In
+traditional knowledge work, that is not the case. So I think actually in a lot of ways non-technical knowledge workers
+are playing catchup to get to a place how engineers have always thought about kind of like setting up the scaffolding
+of how they work. And I think with engineering at 10X we're just taking it to another level of h of how kind of
+careful and prescriptive we are with the context we provide to coding agents that we work with. Yeah, we can touch on it a bit more. Go
+ahead, Dan. Yeah, I mean I can I can go into the demo a bit later, but I would I would think of it as this new kind of
+problem where previously you were solving this coordination problem between just humans and humans. And so
+the way that like agile development worked was just a ton of ceremonies. You would meet every morning, you would talk
+about it, talk about the work, and then you would have retros at the end of every week and you just fill up the
+calendar with as many meetings to to convey information as possible. But now it's really a coordination problem
+between humans and other humans and agents as the third party. Um, but agents are kind of like in this main
+character spot where they're the ones actually doing the the work on the ground. And so I think that it is like
+so much more important now than ever to be a written first culture and kind of what you're saying David uh along the
+lines of uh storing up all this markdown so that uh both humans can get on the
+same page about what they're working on across different projects but also so that agents can be very quickly briefed
+on um what's going on. And then like Alex said at 10X, we're kind of taking
+this um really far to the extreme where if you think through from first
+principles like how would you redesign the SDLC for agents? Agents can maintain
+coherence across so much more information at the same time than humans ever could. And so you can structure
+like bigger and more complex blueprints that lay out uh more of the architecture, more of the plans um so
+much further in advance than you ever could before and and then you ever could in these like agile humanto human
+ceremonies. And so we have these very concrete structures and types of uh
+markdown artifacts that we write for all of our projects and and structure it for
+everything that we're working on so that agents can easily validate. I mean, kind
+of like Alex is saying, we treat this context as code, and I'll show this in a bit, but agents can immediately pull all
+the right context at the right moment and kind of keep all this in sync as a
+new form of um like software machine, so to speak. Yeah, I think uh with each project I
+start like I find myself keeping more and more stuff in the codebase like literally I have like /doc/marketing.
+I have a you know user feedback file where any user feedback I just put there and it's markground files. I have a /doc
+external all of my you know deployments and stuff that's external to the codebase is stored in there because again who knows if the agent needs it
+you know maybe there's like some uh deployment issue with the front end hosting if he knows what what it's
+configured like what what variables are there maybe he finds a missing environ
+we need a new word for it because it's not a code base anymore you know it's like in the past it used to be just code
+but now it's it's kind of like a context base we can we we should we should call it something like a meta harness.
+Meta harness. Okay. Yeah. Yeah. That that's what we called it internally at 10x. And I think the like it's what are we trying to achieve?
+It's like coding agents offer speed that was never possible, but the longer
+running the task, the more that you risk entropy and diversion from plan. And so the question is is how do you minimize
+entropy and diversion while optimizing for the speed that is kind of the power of this technology? Okay. I also want to
+talk about the content machine you guys have because this is one of the most unique systems and I think we will see more and more companies doing it where
+not just the founder and you know the marketing guy but like more people are creating content. So tell us more about
+that. I mean and this will definitely resonate with you given that you kind of have a foot in both worlds both like in
+building software but also obviously you you've seen the power of content yourself. Like one of our let me start
+with like one of our highest level thesis at 10x is that in a postAI world the number of moes remaining in business
+is shrinking like I think what what are moes today it's like
+network effects to some extent data to some extent I would argue people people think this this is kind of I
+think people is more of a moat than ever before because AI is just like AI is a funhouse mirror it makes high agency
+intelligent people look really good it makes dumb low agency people look worse. And so I think people is a moat than
+ever before. And then I would argue trusted distribution is more remote than ever before, right? Like you you build a
+piece of software and likely there are literally millions of other engineers
+that can build that piece of software pretty quickly. Now what is going to earn you dollars from from an audience?
+It's the fact that you have people who trust you and that trust gets turned into dollars in the bank. And so we've
+always had this view that we're building a media company on top of 10X. And this media company is going to be a
+combination of like brand driven content like newsletters and deep uh editorial
+that is both technical and non-technical but then also talent driven content where we're literally hiring David
+before David's became big. That's like we're bringing on like dozens of those to our business. But we also want to
+turn our employees at 10x into creators. And so the thesis the the the question I
+asked myself was like how can I turn engineers or strategists at 10x into
+content creators and starting with textbased content because I think it's just way easier to leverage AI for that
+versus video and multimedia right now. And same thing with myself, like I don't have all day to create content, but I
+started as like the first best marketing channel for 10x. And so I need to make sure that I kept my content output
+going. And so the idea of the content machine was how do I build a system that
+allows for content abundance that enables full-time people to still create
+if they have 30 minutes per day, but is not an AI slop cannon. That was the
+prompt. What I can do is why don't I share my screen and kind of take you through what the system is and then feel
+free to just ask questions throughout. So basically I I wrote this post on and I think it's just a good overview and then we can I can actually run the
+machine if we want while we're talking through things and I can even have it run when Dan goes through his stuff but
+basically the way the content machine is set set up is there's a process layer and then there's a personal layer. The
+process layer is everything that lives in git for my team. And that is basically the p the pipeline like all of
+the steps that the content machine goes through to take uh almost like the assembly the the the factory line from
+need I need an idea of what to create content about to finished idea that it has been distributed on X LinkedIn or
+another platform. And then there's the personal layer which is the files that live on your computer which is basically
+the cu uh codifying of your voice content lessons that you've provided to
+the content machine in the past and any other uh important information about you that informs the way the content machine
+um outputs in a way that is representative of you. But the one big thing I'll share about how you can
+create an AI system that puts out content that isn't slop at a time when I think the
+models are still like pretty bad at writing like like
+they're they're good but they always stink of AI. Yeah. The same patterns.
+Exactly. And and I think like you know I've seen people create these skills like this guy Peter Yang created like a no AI slop skill that like takes all the
+tells but I think with every change in models there's going to be new tells and it's going to be kind of this constant game of cat and mouse chasing the new
+tells. But my view is is the way you can guarantee no matter how good the models are um that you can guarantee it not
+being slop is that the AI kind of helps with everything other than what the
+human is needed for obvious and what I would argue the human is most needed for. Not just in a content process
+honestly in like most processes even with uh building software is the first mile and the final mile.
+Yes, I call it the origin. I actually I actually made a short about this. I said like the the number one difference
+between like AI content that's trash and AI content that is valuable is if the origin is human.
+Exactly. Exactly. Real quick, you can now try Deep API completely for free. In fact, we're giving $1 of free credits to anybody. So
+you can try it yourself. So let me show you what it looks like because deep API I would say is the single most powerful API key you can give to your agent. So
+let me show you. I can do like something use deep API to scrape 50 CTO's of AI
+startups valued at over $1 billion or more and give me at least two forms of
+contact for each output as table and deep API will scrape their social medias
+different you know their Twitters whatever it takes to find these people all with a single API key whatever
+you're doing with AI agents deep API makes them a lot more powerful and gives them access to worldclass deep research,
+powerful, fast, affordable web search and scraping for any website or any social media. And now after building it
+for two months in stealth mode, we're opening up deep API to the public and you can try it completely for free. Just
+create an account, you get $1 of free credits, set it up. The installer is very simple to run. It installs a skill
+on your computer. So you can use it with Codex, Cloud Code, Hermes, or any other agent. And yeah, feel free to use it. um
+test it for your use case and watch your agents become a lot more powerful just by giving them a single API key. Try
+Deep API by going to deepappi.co or click the second link below the video. And so what I would do if there
+are steps in a content, right, if you think about what a content process is, and this is how I built this whole machine is I literally drew out on a
+piece of paper what is every single single step in the content process. And it's like step one have to think of an
+idea. Step two, I thought of an idea. Step three, I research the idea. Step four, I get all of my thoughts out. Step
+five, I turn it into a cohesive draft. Step six, I edit that cohesive draft.
+Step seven, I'm pissed. I don't think it's as good of a draft as it should be. I rewrite it. Step seven, I finish the
+draft. Step eight, I post it. And so, like, I wrote this out and I was like, let's rebuild this to be AI first and
+keep the human where the human needs to be. And my view is the human always needs to select the idea that they want
+to create content about. They need to provide their own words about this
+content idea. So if I was to say, you know, hey David, what are your thoughts on Kimmy K3 to actually have you create
+a good piece of content around it? I would want to interview you for 30 minutes after you've done research into
+the model, what makes it kind of like the elegant solutions to problems uh around memory that it's solved. You
+would give me your thought for 30 minutes. Those thoughts become effectively the the transcript or the
+markdown file that the entire content machine operates on. And basically the goal of the content machine is to give
+you ideas to to pick from and then take the words that you've given and not
+change your words but just make sure your words flow, that they transition well, and that you have an editor who's
+checking what you've said. to add in places where you need to provide more context because you didn't share it with
+your initial thoughts or where you need to make other tweaks. And so this is basically the process is in the content
+machine you do creator select first because all of our uh employees at 10X have used the machine. You first select
+like who you are which then loads in the files that are specific to you around your voice and your content lessons.
+Then we have this thing called the oracle which runs and the oracle scans your last seven days on slack, notion,
+gmail, linear, git and it hunts for spikes and spikes are basically how much
+point of view is there, how much story potential is there, how much emotional intensity is there, how much lesson or
+framework is there and how much depth is there. In addition to pulling ideas from
+internal sources in your company, it also pulls from external sources. And I actually have I use slashl last 30 days
+which is Matt Van Horn's um skill uh for doing this. So basically there's a
+social sweep across Reddit X, YouTube, HackerNews, etc. on the topics that you think you want to create an idea around.
+This basically produces a list of like 15 ideas. All of those ideas get added to a notion database that is created
+whenever someone spins up the content machine for the first time. It's called the vault. And so, you know, let's just
+say I go through the content machine and I pick one idea. The other 14 ideas may not be bad. I just don't want to use
+them now. They get added to this database. Then, let's just say I pick the idea around Kimmy K3. Let's say I
+like, you know, I'm not deeply technical, but I want to have a perspective on it. I run I could do an intermediate research step where it
+researches the the um original white paper. It also tells me what are current
+developments, what's already being said in market, what are contrarian angles, and what are open questions. only I as Alex Lieberman can answer. Once I have
+my thoughts, I have an interview panel interview me. And so this is probably the most important step in the whole
+content machine because this is the idea of instead of Alex interviewing David and like a human needs to interview a
+human, I have basically these six personas, Tim Ferrris, Joe Rogan, Larry
+King, Howard Stern, Michael Barbaro, and Barbara Walters each as a different skill. So like their way of questioning
+is codified in six separate skills. They ask me questions one at a time. They force me to be specific. Anytime I have
+a vague answer, they push back. We probably go for 20 minutes. And the way they ask me is over text in clawed code.
+I yap to text my answer. That gets turned into the full markdown file with
+the transcript, the key stories, the core insights I share, the quotable moments. Then I tell it what format I
+want it written in whether it's LinkedIn post, Xthread, long post, playbook, podcast promo, etc. It finds the skill
+which is my codified version of how have I written let's say it's a LinkedIn post. How have I written LinkedIn posts
+in the past and what have been my best performing LinkedIn posts and what was the format of those? Right? It takes the
+raw markdown file. It refineses it for flow but not changing my words into that
+format. Then I have a writer's council or an editor's council. It's the same idea as the interview panel but for editing. So
+Morgan Hel, Tim Urban, Sean Pur, Greg Eisenberg, David Prell, and a slot detector. They go through and they score
+it. If it is under a nine out of 10, it goes through a revision loop. If it's
+above a nine out of 10, it's done. And then I get the piece and then I can run it through a repurposing engine where,
+let's just say I finish this long form piece on my like my takes on Kimmy K3,
+why it's important, what people should know. I can then have the repurposing engine turn it into 10 pieces of
+derivative content, but it goes through the same process where it pulls the skill for what is my my way of creating
+an X article, what is my way of creating a LinkedIn article, it creates it and it runs it through the writing council
+again. So all these pieces go through the same flow and then there's a distribution piece where actually I get
+a UTM tag for each. I can autopublish it from the machine and we can uh monitor
+performance and the whole idea is by monitoring performance then the machine gets better in the future of writing
+post because it knows what top performers are. And then the final piece is at the end of every session I provide
+feedback on what I think the content machine did well with creating a piece of content and it turns that into a
+lessons file. So every time it re write it it writes a piece of content in the future, it checks contentlessons.mmd to
+make sure it's not making the same mistake again. And how many examples do you usually need in these like human written, you
+know, articles, LinkedIn posts until you feel it's good? Yeah, it's a good question. I So I don't
+know the exact answer because I'm I'm a unique case where I have a lot of prior content like you know to train this. I
+had 350 podcast episodes. I have like 10,000 posts across social. You
+definitely don't need that many. I would say, let's say Dan wants to set up the content machine. And let's say Dan has
+never posted on X or LinkedIn before. He basically has three ways for how he can
+train his voice for the content machine. Way one is there's actually like the
+content machine will run a voice interview where it will interview him to get his voice out and turn that
+interview into his voice file. That's number one. Number two is he can take basically feed anything that shows his
+voice, whether it's past text messages, emails he sent, or Slack messages, that turns into his voice file. Or the third
+is, and I've recommended this to people, is just start with me as the persona. Literally have it use my voice files and
+then over time as you give it feedback, it'll just naturally morph into how your you want your voice to be different from
+my voice, but at least you have a voice you feel comfortable with. Dan, what's your been your experience with this
+content machine system? I mean, it's great. I think that it is nice to start with Alex's voice because
+he's trained uh his content machine or his voice on so much history of what
+works well and what doesn't on on social and then kind of around the company
+everyone's just whisper flowing their um takes about whatever the latest model is or or trend in um agent engineering and
+uh just just translating it and getting it out. And I think since Alex kind of rolled out the content machine
+internally, we've seen this huge boost in the amount of people at 10x actually posting content. Um, and I expect that
+to just increase uh over time. And David, two other thoughts here is like my view is it is generally really
+hard to get people whose full-time job is not creating content to create content. And I think the way you need to
+do it is you have to decrease friction and you need to provide incentive. So content machine was decreasing friction.
+And I think we can decrease friction even more. So what that could even look like is, you know, how I was saying
+Yeah, exactly. It's like we're we're hiring full-time creators in the future. I could imagine our full-time creators,
+they partially act as producers for our team where they go they record conversations and just feed it into the
+content machine. Or imagine Dan's on an inter like we're uh in a few hours uh
+we're talking about a piece of internal IP that we're building at 10x right now. if that whole meeting gets recorded and
+then we just run the content machine on a hook where anytime there's a new meeting recording in notion transcripts,
+it just autocreates the piece of content. And then the second is incentive to basically in my mind go
+from cold start of no one creating content to getting people to build a habit. We ran a competition where we
+were we gave away $5,000 over the course of a month to people to create content
+and we ran different games where it wasn't just about whose content got the most impressions. It was also like whose
+content did the best job of educating an audience on a topic or whose content did the best job of taking actual work we're
+doing with a client and storytelling it to the world. So I think you have to do both incentives and lowering friction to
+make this possible. Yeah, I think uh one actionable thing we do is like when we have a Google meet, we have a noteaker
+there. Everything is automatically pulled through composio CLI and literally those transcripts like if
+you're already discussing something whether it is you know the more senior people at the team or somebody coaching a new person that is like content
+opportunities right and then you can have like a frontier model like fable analyze okay these things private super
+private never share but like these 10 things you could create tweets about them and that's another way we're reducing friction where like you would
+have that call anyway but you don't even realize usually like the the internal conversations are the best content you
+know like you said if a model like Kim K3 drops, what do you think about it? Are we really going to use it? Would our
+competitors are using it? Right? Like these kind of, you know, it's almost like this locker room talk, but like for
+a company Exactly. where people are share their hot takes, but then again to open the phone, you know, write the tweet, it doesn't sound
+as good. Totally. And and I think look, we're doing with this this with writing first. We also think there's a lot of
+opportunity to do this in video. like one of our engineers at 10X CJ had like he's a longtime fan of Theo's content
+and he's been like I would love to do just like my live stream around like the five biggest topics in AI and
+engineering right now with my perspective and I think the hard time right now the hard thing right now is AI
+is not really good at video editing and so you either have to have the internal resources or you have to pick a format
+where you really don't have to edit but I think that'll be kind of like the next step of how do we build workflows that
+help on all mediums content, not just text. You mentioned briefly Matt Van Horn and you had a nice interview with him and
+you said something which is a great hook by the way that one of the most productive engineers you know cannot
+read code. So I've noticed the same pattern actually where you know some people who you would think they would be
+insanely productive with AI because they like 15 years of experience in great software companies were actually very
+slow to adopt it. So tell us more about this pattern of people who cannot read code are usually more effective with
+agents. Like first of all, do you think people should read code anymore? Like I feel like this was a very hot take by Matt.
+He's not an engineer, but he was he was saying this as a generalized statement. And I was like I want to have a
+follow-up episode where I host a debate cuz I know there are going to be people who take the other side of the trade here. But he was like I think in at a
+point very soon no one including all engineers will read code or write code.
+What do you agree with him or not? I definitely agree with the idea that like the amount of code that you read is
+going down over time, but I think what you're outsourcing is the thinking and
+the processing over all that code, but you can't really outsource the understanding. And so in order to
+structure the plans and the codebase and everything in the right way, I I still think and I actually like am more and
+more bullish on this over time that it matters a ton um how deep you are in the
+fundamentals of engineering. And so I think that if you would take a an
+engineer who has really bad tendencies and and maybe pre-AII was not a
+fantastic coder um but they really lean hard into AI that's actually going to
+like amplify those bad tendencies times 100. But maybe if you have someone who
+is uh less of an engineer, but is more organized and um cares more about the
+structure and and knows how to pace things better and is just better at working with the agents, maybe they'll actually have better results than that
+person who had the 100x negative outcome. But then I think the the best case scenario is someone who deeply
+understands the full stack of engineering and can um push the AI to to its limit. So can you guys share your
+setup, your enchanting engineering setup at the next? Yeah, definitely. So um maybe as a a
+preamble, we already kind of talked about the the meta harness and and the idea of constructing a a packet of
+context as code for every single engagement that we have um and for every
+project that we're working on. And so I think the most important thing here is defining all the the sets of artifacts
+that the agent is going to be writing or that we're going to be exchanging between humans and agents. Defining the
+the structure of those things and then being able to validate and and easily pull from those artifacts so that the
+agent can kind of self-correct. Um so I'm going to just go ahead and share. So
+the the big pattern from what you're saying sounds like the thinking of like a architect is way more important than a
+specific like you know develop this feature or learn the syntax. I do think that is true. Yeah. And and I
+think so one thing you'll see here um if we so we're in this workspace where we
+actually typically will separate our code repos from our um what we call our
+project management repo which has all of these um has all of these artifacts in
+there. And so this file that we're looking at right now is what we'll call it's one of the types of artifacts. It's
+called a convention art [clears throat] artifact which will have this con prefix. It has some metadata at the top
+so that the agent can um parse all of these artifacts and and find them. But
+then it's an index of all the other conventions that we have um in the repo.
+And so this is the type of thing that will really keep an agent like on rails and following all the really good coding
+patterns. And so I think it's super important that you know what you're doing in terms of engineering and and
+good patterns when you build up all these conventions files. But if you build them in the right way and then you
+have this system to validate against the conventions, you you can worry a lot less about the quality of the code
+because you know that it's being followed um all over the place. I'm just going to run um some commands to start
+to kind of show the CLI that we use to manage all these artifacts. So we're in
+this um workspace right now in in 10x process and I'll just say um 10x context
+and right now I'll say the mode will be um for the operator which is for the human but we're we've designed this CLI
+to be both agent facing and human facing and so right off the bat this is the
+type of information that the agent can just immediately get. It's going to report um about the artifacts that
+exist. So it'll have we have six epics. This is one of our types of artifacts that defines kind of what we're building
+and the milestones to get there. And then 20 specs which are the the way more
+detailed technical documents about um the exact architecture and ticket by
+ticket how we're going to build the thing. And then you can see we have 35 docs which includes those um convention
+documents. And then it's also reporting what version of the CLI we're on. Um we also have all these shared skills that
+we kind of share across the team and allow people to create their own channels of skills and then when skills
+are kind of good enough or they are um sort of central to the process they'll
+get merged into main. So I can just show here we have um if we go 10x skills
+status you can oh 10x
+it's a typo 10x skills status um you can see that uh we have all these skills
+that correspond to every single one of our artifacts. So if you're creating one of these structured artifacts, the agent
+knows exactly that structure and and how to um how to build that artifact in the
+in the right way. You can also see if we do um 10x context and then we make the
+mode for the agent, it's going to list out much more detailed information for
+for the agent to see and it will actually list out every single one of
+these artifacts. So it knows exactly where to find all the information about the epics, the architecture, the
+different conventions, um, and a log of all the recent stuff that's happened in
+the repo. So that would include, um, it's basically always writing back to this log after it's doing any
+significant work. And we have all of this running on a start hook. So every
+um every agent session that anyone at 10x is running, we're basically we'll call it like benevolent prompt
+injection, whenever the agent wakes up, it's getting this kind of packet of context that's telling it all about its
+um workspace and every artifact that it has access to. Um maybe I'll pause there
+and and yeah, I have so many notes. Yeah. Okay. So I want to first think when you
+open this up like I noticed the separate uh repos right. I wanted to ask you guys is it true for you that like over time
+the context repo is actually becoming more valuable than the code repo.
+I certainly think so. I think like the percentage of time that you spend on like engineering the markdown should be
+higher than the percentage of time that you spend on actually executing the code. I can spend like four hours just
+building really good plans and architecture documents and kind of setting up this whole project management repo and then I can just say like
+slashgoal slash10xprocess slashexecute project spec and I can just
+kind of put my computer in the corner and go to bed and wake up with exactly uh kind of what I'd built. And then the
+beautiful thing is that with this system it's all all of the tickets have been moved to the right column in linear.
+everything has been written back appropriately to the to the repo, you have just like full um trail of what it
+did. And so I I definitely think that the the information and kind of the meta
+harness and all the markdown is is a lot more important than than the code. Would you agree, Alex?
+Yes, I totally agree. I mean, if I think about just the highest level as like an
+as a non-engineer, what is valuable here? It's just that like there's just a set of norms and customs that keep an
+agent on the rails and then the whole issue that people navigate right when building software is session to session
+memory or context. And so I think this bu benevolent prompt injection that Dan talks about is kind of our solve for
+making sure the exact right information is provided at the exact right time without lapses so agents can work on
+longunning tasks. Yeah, my question was like uh even deeper like if if imagine like if someone you know hacked your
+system and like they could only steal one repo because like personally you know my code is like okay it's already
+being written by agents right like I I don't care anybody could replicate it but but all the other stuff like the
+core business insights yeah the process the ideas the customer insights like the the marketing
+strategies I have the reason I think it will work like those are the things that I still value because you know they're
+human well I think in general and Den I'd be curious your thoughts as well. It's like just think about like traditional
+markets like economic markets in terms of supply demand. It's like there's
+going to be the most demand for where there's the least supply and there's more supply of code than ever before.
+There's way more scarcity of I would say unique process or business customs or
+internal knowledge that creates alpha and so of course that is going to over the long term be more valuable. I would
+definitely agree with that. I would also think of it through the lens of like if you had to reverse engineer someone's
+product, would you rather just have their entire codebase or would you rather have the the project management
+repo? And I think first of all, the codebase becomes really hard for the agent to digest even if the codebase is
+like the ultimate source of truth of what exists in the project today. it's sort of devoid of all the meaning and
+structure of like why this feature exists and how it relates to everything else other than the like direct code
+links. And so I actually think you could take a project management repo and probably reverse engineer or even like
+build a a better product because it contains all that um intent and
+conventions and the architecture and the way that you run the system and and all that kind of like built in um which is a
+total like flipping things on its head from the way that engineering used to be.
+I I was going to say one thing and David you may find this interesting. I don't know if Dan there's anything to show for this, but one thing I've like as I
+learned more about our process that I always found interesting is this idea of how do you make more and more things
+outside of like the pure code verifiable and I feel like the whole like validator
+step you have is just like a really interesting piece of this pie. Yeah. So I can I can go ahead and say
+10x validate um see what that'll give me. And so
+immediately we're we're finding basically these warnings that it's going through all of the artifacts that we
+have in in this project management repository. And then there is a a really
+long rule set that kind of aligns with our just SOPs for how we like to write
+software and all the steps in the process of taking um customer requirements or a problem that we're
+trying to solve all the way to like a landed PR or a landed product. And so in
+this exact in this example basically has um the checkpoint status is drifted in
+this project spec. And so what that means is that the authored status where
+it says complete as the status of the checkpoint is disagreeing with the
+derived status of in review and that derived status is basically computed from the rules that we've set. And so in
+this case it might mean that um the status of that project spec says it's complete but the project spec actually
+has tickets in inside of it that are not yet complete or the tickets are in review. And so you can't resolve the
+full project to completed if not all the uh specs are if not all the tickets are
+completed. And so you can just kind of extrapolate from there and multiply that rule out and we have kind of hundreds of
+these types of rules. So it's kind of like linting for your SDLC or your
+entire engineering process and not just linting for the code and and this it
+also takes advantage of this property of agents which is that the agent can use the CLI and so the agent can constantly
+be figuring out what's the most important thing to do next what is drifted and how can I how can the agent
+fix it and so it's this uh very nice like self-improving loop. Yeah, I think
+there's tremendous alpha in actually having agents hold humans accountable, right? Like if you say like these are
+the priorities of the company long term. These are the biggest projects for this week and then like somebody gets distracted by like a cool idea from
+Twitter. It's like listen this is this is not on our road map. This is not you know top five priority. Why are you
+working on this? I think people need to be like way more comfortable giving the agents the things they're great at.
+Right? Because with each generation of models the agents are actually better than humans at more things. Everybody
+understands is already like digesting lots of content. You can take a whole book, 10 books and like read it
+instantly, right? But like consistency, predictability, all these things humans are really bad at. Humans are kind of
+random. They're creative. You know, they like to switch from task to task. But agents I think will be used more like to
+hold us accountable. Like for me like I have many skills where like build as much as possible yourself and then once you're blocked by something like me walk
+me step by step and literally I just send it screenshots and it helps me do some setting in superbase or something
+where like normally you know I would just probably take way longer and the agent would would be like writing a
+little bit of code then it's blocked by me then you know speak more about this you know not just building for humans but building for agents because you
+mentioned that earlier and I think this is where the world is headed. Yeah, I think I think you kind of have to just
+think so creatively about the way that software should be written now. It's kind of like everything you ever learned
+about building software is is kind of thrown on its head. And I think we usually I I hear this like negative
+framing a lot of times which is like the agent is deficient at coding or or work
+uh working with the codebase because every session um starts from it starts
+from zero knowledge of the codebase and you have to kind of like build up its context and so only the human can like
+maintain this coherence across many different sessions. And I think if we think about it from the perspective of
+like the things you said, consistency, um, structure, how can we like make use
+of all the advantages of agents and then just solve those deficiencies? We can get a very interesting result. And so
+one thing we do is basically um we think of every session as uh the agent should
+start as like a senior engineer on the project. It should immediately know what's going on. So does the hook.
+Yeah. So the the hook and then if we I'll just uh change this to low so it goes a little faster. If we use this uh
+10x process skill, so it knows what to do and I just say like what should I
+work on next, it kind of immediately see it runs that hook with with all the
+context that you saw earlier and then it's going to use some 10x process commands and pull in kind of the exact
+things to work on next. and it can also pull in the the architecture. And so it just solves very naturally that problem
+of like the agent doesn't know what it's doing when you start a fresh session. Now, not only does it know what it's
+doing, but it's following this extremely consistent um and rule-based process.
+So, we can have um kind of like level up the humans that are working this way as well. Did you guys open source any of these?
+It's kind of uh an open discussion uh of what parts of this we we will open
+source or not. So um maybe maybe in the near future we we will do something like that.
+I would think about it. You don't have to start with everything but like you know when I released my skills repo it quickly became my number one GitHub repo
+and there are way more popular skills repo than mine. So I think this is a very good strategy to get some motion.
+Yeah definitely appreciate guys. Thank you for your time. Where should people go? If people want to learn more about what
+we're doing at 10x10x.co co. Um, we are hiring exactly one
+ton of people. Uh, cracked engineers, AI strategists, full stack creators, you can go to 10x.co/careers.
+And, um, if you want to just follow along with the content we're putting out, follow me on X at business barista
+because not only am I creating content, but I'm amplifying all the content by folks like Dan, CJ, and other people in
+the company. So, you'll see kind of everything from the what we call WWE for nerds, uh, from my account.
+All right. Awesome. I'm going to put all those links below the video. So again guys, thank you for your time and have a great day.
+Thanks so much. Thanks so much. All right, so here are the results from the scrape. Uh as you can see, it found the AI companies valued at over $1
+billion and it found who the CTO is and it started looking for the two forms of contact for the CTO's. And again, this
+is just a single use case. You can imagine hundreds of different things you can do with deep API. In fact, if you go
+to the docs, you can look at API reference and see all of these different endpoints. And again, all of these are
+available through a single API key. No setup required, no configuration or authentication. You get all of this
+right off the box. And now, as I mentioned, we're opening up deep API to the public. And we're giving every new
+user $1 of free credits. So, just go to deep aapi.co and give it a shot yourself. See how it works. Try scraping
+something. Try accessing some difficult website, doing a deep research, looking for more clients, whatever you want. You
+know, try it yourself. Just go to deepappi.co. It's completely free. We give you $1 to play around and test it
+yourself. Or it's also going to be the second link below the video.

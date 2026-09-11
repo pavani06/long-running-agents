@@ -1,0 +1,1172 @@
+A inteligência artificial, ela saiu do terreno de ser uma inovação e ela tá
+virando o que a gente eh conhece como uma tecnologia de propósito geral. 100
+anos atrás, se você fosse para um hotel um pouquinho mais remoto, você tinha que perguntar se ele tinha luz elétrica.
+Aí talvez há uns 20 anos atrás, quando você vai para um lugar mais remoto, você pergunta: "Tem Wi-Fi?"
+A gente tá entrando na fase daqui a muito pouco tempo que você vai perguntar, usa AI. Quando eu conheci o
+Giper em Multer, eu fiquei com essa impressão de que eu tava conversando com alguém, tá olhando o mundo bem à frente
+de nós e tá nos contando hoje no presente. Essa década que vem é uma década de aceleração excepcional dessas
+tecnologias ligadas a semicondutores e à inteligência artificial. E é uma década
+onde você vai ter finalmente, eu acho, tratamentos altamente eficazes para doenças que
+desafiam a a ciência há mais de 100 anos, como, por exemplo, doenças
+neurológicas, doenças oncológicas e doenças autoimunes. Se no mercado financeiro a gente tem aquela
+possibilidade de tentar prever o que vai acontecer nos próximos 6 meses, 12 meses, com inflação, com juros, a gente
+consegue antecipar a crises, vocês vão ver que o GUI é um cara que tá olhando muito à frente de nós para outras coisas
+que podem nos impactar ainda mais. Nós sempre superestimamos
+os próximos 12 meses e nós sempre subestimamos os próximos 10 anos.
+instituições de ensino, eh, professores, alunos de graduação, pós-graduação.
+O Brasil é um um um celeiro de excelência, tá?
+O problema é que quando a gente olha pro Brasil sob a ótica de investimento e de
+negócios, o Brasil figura muito mal em rankings de
+competitividade. O mundo não vai desacelerar pra gente. O mundo vai falar: "Não, pera aí que o
+Brasil tem um ketchup para fazer". E a gente historicamente já perdeu tanta janela, tanta oportunidade, tantas vezes
+o Brasil ficou como [música] uma oportunidade e ou como um país que é o
+futuro, que esse futuro ele vai chegando, ele vai passando e a gente vai olhando para ele passar.
+Altas expectativas para esse papo. [música]
+Sim, sim, sim. Tá começando mais um Marketmaker. Seja bem-vindo ao podcast da família investidora brasileira. Eu
+sou Thiago Salomão, fundador, CEO e apresentador dessa empresa que já se conecta com mais de 7 milhões de pessoas
+todos os meses pelo nosso podcast, nossas newsletters, nossos conteúdos inscritos. Então, se você tá chegando
+agora, já se inscreve no canal, deixe seu like. Hoje, ó, a gente trouxe um homem do futuro aqui para falar. Eu vou,
+vocês vão ficar com essa impressão, tenho certeza, porque quando eu conheci o Giper Emulter, eh, eu fiquei com essa
+impressão de que eu tava conversando com alguém, tá olhando o mundo bem à frente de nós e tá nos contando hoje no
+presente. Eh, a trajetória dele coincide um pouco com o mundo acadêmico, o mundo
+tecnológico e o mercado financeiro. Vou trazer rapidinho a história, mas só para vocês já saberem, eh, a ideia aqui do
+papo é a gente ter uma noção maior do que que pode vir pro futuro, o que que o
+futuro nos reserva com alguém que tá olhando bem de perto as grandes
+tendências, né? Porque é isso que um investidor de Deeptecch acaba fazendo. Se no mercado financeiro a gente tem
+aquela possibilidade de tentar prever o que vai acontecer nos próximos 6 meses,
+12 meses, com inflação, com juros, a gente consegue antecipar a crises, vocês vão ver que o Gui é um cara que tá
+olhando muito à frente de nós para outras coisas que podem nos impactar ainda mais. Então, ó, altas expectativas
+para esse papo. Espero que vocês gostem bastante. Só a apresentação dele aqui. Ele é engenheiro de computação formado
+na PUC Rio em 1994. Ele é mestre em engenharia elétrica com ênfase em inteligência artificial. Isso
+em 1996. Existia inteligência artificial em 96. Caramba. Aqui em 97 ele foi um
+dos vencedores do prêmio Jovem Cientista. Ele desenvolveu uma solução para impressão Braile e impressoras
+matriciais. Aí [roncando] ele foi, tava lá fazendo o seu doutorado e falou: "Puxa, cara,
+surgiu uma oportunidade pro mercado financeiro e ele passou duas décadas no mercado financeiro, passou por
+instituições como Pactual, A20, eh, trabalhando em gestão de risco, alocação
+de ativos, até que em 2016 ele fundou o que hoje é a Grides Capital, a gestora
+dele de ventry capital, especializada em Deeptech, com foco em inteligência artificial, robótica, biotecnologia,
+e infraestrutura. Além disso, o Gui também é autor da coluna Futuro dos Negócios, que sai toda
+a primeira quinta-feira do mês no portal do jornal Estado de São Paulo. Hoje a gente tá gravando, ela tá no ar. Vou até
+dar uma lida depois. O Gui já me contou que foi ao ar. E ele é vencedor do prêmio Jabuti em 2020. O cara ainda
+escreveu um livro e ganhou um prêmio, o livro Futuro Presente, o Mundo Movido, a Tecnologia. Ele ganhou o prêmio Jabuti
+na categoria ciências. E o livro foi, né, após esse prêmio, foi até ganhou uma
+versão em inglês, recebeu duas medalhas de ouro nos Estados Unidos. Eh, então a gente tem aqui um, pode falar um
+escritor, um investidor, mas principalmente alguém que tá eh estudando muito o futuro eh das
+empresas. Então, com muita honra, eu não digo bem-vindo a Faria Lima, porque você já reside na Faria Lima, mas bem-vindo
+ao Marketmers Geperem. Tá preparado? Preparado. Obrigado pelo convite, Thago. Um prazer enorme estar aqui com você. E
+bom, você já vai ganhar presente porque não tem podcast grátis, a gente tem o patrocínio da Supercofe. E então para
+quem quiser levar o Supercoffe pra sua rotina, eles liberaram um cupom exclusivo para todo mundo que assiste o
+Marketmers. Então é só você usar o cupometmers e você vai ter 10% de desconto no site.
+Então [roncando] é só você aproveitar esse cupom. E como eu disse, presente do
+convidado, cara. [roncando] A sacola tá bem cheia aí. Então, ó, Gui, parabéns.
+Aproveite os produtos da Supercoffe. E bom, e se você, assim como Supercoffe, quer colar sua marca no Marketmakers,
+manda o e-mail para comercial@makers.com.br. O Igor vai ficar muito feliz de
+responder o seu e-mail. Bom, Gui, é tanta coisa que eu nem sei como começar,
+mas eu eu vou começar bem do início. Eu falei que você é um investidor de Deep Tech. O que que é? Vai deep, profundo,
+tec, tecnologia, mas o que que é isso na prática? O que que é um o que o investidor de Deeptech faz?
+Tecnologia profunda, deeptech, é a tecnologia que tá muito associada à ciência, que tá muito associada à
+infraestrutura, que tá muito associada a uma inovação, que tem propriedade intelectual em geral, que tem patente em
+geral, mas que tem principalmente uma defensabilidade técnica importante.
+Então, como exemplo, você imagina o seguinte: o mundo de tecnologia, o mundo tech ou o mundo tech enabled, é um mundo
+que quase sempre é formado por invenções, serviços ou dispositivos, que
+são combinações de coisas que já existem. São coisas que você eh de uma
+forma ou de outra você rearranja para servir ao novo propósito. No caso de uma
+inovação de Deep Tech, você tá efetivamente criando algo novo, criando uma tecnologia nova, seja na forma de um
+dispositivo, de um algoritmo, de um módulo, mas alguma coisa que tem uma origem inédita e que faz com que você
+empurre a fronteira do que é possível pra frente. Um exemplo, uma uma empresa de
+Deeptecch, você pode imaginar, por exemplo, que hoje em dia, eh, no setor de biotecnologia, você tem empresas que são
+capazes de desenvolver proteínas que não existiam anteriormente, graças a
+inovações científicas que ocorreram. Essas empresas estão criando uma nova fronteira para tratamentos, eh, para
+terapias, para eventualmente novas substâncias que se caracterizam como
+desenvolvimentos de Deeptech. Então, Gui, eh, uma pergunta simples,
+mas que eu eu gosto de respostas bem amplas, abrangentes, você pode se
+aprofundar à vontade. O que que o investidor de Deeptec, como é que ele olha o mercado? como é que
+você tá encarando os investimentos, guerra e tudo assim, o como é que essas
+coisas te afetam, como é que você chega a decisão de que eh algo merece ser
+investido, por você se tornou um investidor de enfim, me conta um pouco de como você chegou, até onde você
+chegou. Bom, vamos começar pelo final, né? Como é que como é que foi essa jornada, né?
+Eu eu quando eu eh entrei no mercado financeiro eh saindo de um mestrado em
+inteligência artificial, eu tinha muita convicção de que esse tema de de IA ia
+ser um tema relevante. Eh, mas obviamente o timing disso era uma incógnita.
+E ao longo de 20 anos de carreira no mercado, eu fui aprendendo coisas, eu
+fui me educando financeiramente e eu fui construindo eh alguns skills, né? Então,
+toda a parte de controle de risco, toda a parte de alocação de portfólio, toda a parte de estruturação de produtos, foram
+coisas que a minha experiência profissional foi me dando. E nesse sentido, quando a eu entendi que era o
+momento de encerrar a carreira de mercado e montar um business,
+empreender, eh, em vent capital, eu basicamente vi a oportunidade de combinar esses dois mundos, combinar o
+mundo de ciência, tecnologia e inovação de ponta com esse expertise de portfólio
+management e de controle de risco. Por quê? Essa era uma forma que eu acho que eu
+conseguia trazer o maior valor possível para o potencial cliente que me eh
+utilizasse como veículo de alocação, porque dentro do mercado
+eh eu trabalho com alocação a carreira toda. E às vezes alocar não é
+necessariamente você escolher o melhor, é você escolher o melhor para uma
+determinada posição. Então, na época, quando eu tava iniciando a a a o
+business de fundo de fundos no Brasil, no nos anos final dos anos 90, que a gente montou essa essa tese,
+eu sempre dizia, o time de futebol ideal não é você pegar
+o melhor jogador que você conhece e botar nas 11 posições. O time de futebol
+ideal é você pegar o melhor jogador que você conhece para cada posição e escalá-lo.
+Uhum. E adicionalmente saber que todos trabalham de uma forma coesa,
+harmoniosa, produtiva em conjunto. É a mesma coisa. Então,
+ao juntar esse skill de controle de risco e alocação com essa formação
+acadêmica em tecnologia, essa proximidade com o tema, eu falei: "Isso
+me possibilita ser um elemento que pode ser bem aproveitado por investidores com
+interesse nessa área." Então, foi esse o caminho que eu resolvi seguir. Mas é é o meu porquê na verdade é quem fazia isso,
+como é que você porque assim, imagino que nesses 20 anos, né, você trabalhando eh com alocação,
+gestão de risco, mas você não trabalhava com Deep Tech. Então, como é que foi
+perceber que aqui eu podia conectar? Sei lá, alguém fora do Brasil que fazia isso, alguém até no Brasil. Eh, como é
+que chegou essa juntar o aqui a ideia do deeptecch com a ideia de investimento e
+colocar dentro do seu venture capital? Isso começou em no segundo semestre de
+2000. 2000 2000. Eu tinha a gente tinha começado um projeto eh no Pactual eh de alocação
+internacional, eh onde o banco começou a diversificar os seus investimentos para outros
+mercados. os Estados Unidos eram o o local eh apropriado para para fazer
+isso. E nesse momento eh eu tava já no mercado há 4 anos.
+4 anos é o ciclo típico de um doutoramento e várias pessoas que eu conhecia estavam encerrando seus
+doutorados. E eu comecei a receber, como eu era uma pessoa de mercado que tinha esse
+networking, eu comecei a receber eh pits de pessoas que estavam saindo da
+academia para montar startups de Deeptech, que na época nem tinha esse
+nome, era Frontierte Tech. E imediatamente eu comecei a perceber
+que existia um valor ali eh dentro desse mercado, porque não é qualquer
+investidor que consegue avaliar uma empresa de alta tecnologia, porque você
+precisa de um certo conhecimento técnico científico que às vezes não é comum e
+não é disponível. Então ali já aquilo me criou uma certa
+percepção de que eu poderia em algum momento do tempo, obviamente ainda tava longe, criar esse essa musculatura que
+ia me permitir simultaneamente endereçar o tema financeiro do risco da locação do
+da valorização potencial com a percepção técnico e científica de se aquela
+invenção, se aquele produto, se aquela ideia ela efetivamente ente parava de pé. Então, com isso, a gente começou a
+amadurecer a ideia. Eh, uns 10 anos depois, eh, já 2010, 2011, eu comecei a
+ser investidor em fundos de alta tecnologia, como alguém que tava
+interessado em diversificar e montar carteiras. E aí dali paraa frente foi muito natural para mim migrar eh e
+convergir esse modelo para para montar a Grids Capital e começar a fazer isso.
+Bom, bem legal, Gui. Eu obviamente eu vou querer saber o que que você tem na carteira, como é que você investe, mas
+eu eu comecei o papo falando, fiquei com a impressão de que eu conversei com alguém que veio do futuro e tá me
+contando como vai ser o mundo. Como é que vai ser o mundo no futuro, Gui? O que que você pelos estudos, pelo que
+você acompanha? Assim, a gente tá vivendo tempos de eh ebulição
+tecnológica e assim, pô, eu não tenho nem receio de parecer ignorante perto de
+você, porque acho que você sabe muito mais do que eu sobre isso. Mas no dia a dia, né, pegando só, por exemplo, aqui
+dentro do mercado financeiro, até outro dia começamos a engatinhar no chat EPT.
+E algumas semanas atrás eu saí de uma reunião com um gestor, uns 10 anos a
+mais do que eu, e aí eu falei algo do chat EPT, ele falou: "Você ainda usa chat EPT? Você não tá usando cloud?
+quem usa chat EPT já tá para trás". Eu falei: "Meu Deus, mas pô, semanas atrás acho que pouca gente ainda
+usava, né?" Enfim, você começa a perceber a aceitação, a usabilidade, o o
+quão rápido isso tá inserindo e e o quão impactante isso vai ser, né? A gente não
+tá falando de um, sei [limpando a garganta] lá, um novo app, um eh uma alguma tendência de rede
+social, é algo que realmente está tornando as pessoas mais produtivas, mais criativas.
+Mas e aí, o que que vai ser do futuro, né? Porque a gente tá vendo essas mudanças e tá deixando a vida nos levar,
+né? você acho que tem uma opinião um pouco mais embasada do que a gente pode ver daqui pra frente.
+Existe uma uma, eu acho uma dificuldade enorme de fazer previsões, especialmente
+sobre futuro. Eh, e eu acho que dentro desse contexto, se você fizer essa
+pergunta para como você faz aqui, eh, consistentemente essa pergunta de visão
+de mercado, você vai ouvir respostas diferentes de gestores diferentes, né? Eu vou apresentar aqui a forma como a
+gente pensa no futuro e como a gente tá investindo no futuro, tá? Eh, a primeira coisa que a gente tenta
+fazer é neutralizar as nossas apostas,
+os nossos investimentos no que diz respeito a qualquer
+dúvida sobre o que que vai acontecer. Então você vai me dizer, mas esa aí como é que você investe no futuro sem ter
+alguma dimensão de dúvida, sem ter alguma dimensão de incerteza? E aí a gente tem uma tese, né, na Grids de
+investimento em inevitabilidade. A gente investe no que a gente acredita
+que é inevitável. Então, por exemplo, se você olha o contexto global, você vai
+ver que existe uma tendência muito claramente definida, onde é muito
+difícil imaginar que essa tendência vai ser quebrada, de que a expectativa de
+vida das pessoas vai aumentando. Isso já é uma tendência que dura décadas.
+Uhum. Você pode imaginar que o ritmo ou a intensidade dessa expectativa do
+aumento da expectativa esteja diminuindo, mas essa é uma tendência que é inexorável. O mundo como um todo tem
+uma expectativa de vida média de 74 anos. Você já tem mais de 20 países com
+uma expectativa de vida acima de 82 anos. E você começa a entender que a
+dinâmica das ciências da vida, né, terapias, diagnósticos, medicamentos,
+eh equipamentos médicos, novos drogas, ela vai est muito menos ligada a doenças
+infecciosas que já foram resolvidas pela ciência, sarampo, difiteria, rubéula,
+coqueluche, tétono, etc. e muito mais ligadas a doenças associadas ao envelhecimento,
+eh, doenças neurológicas, doenças oncológicas, todos os tipos de câncer,
+isquemia cerebral, isquemia cardíaca, doenças autoimunes, que são doenças que,
+com exceção de autoimune, se refletem muito mais em pessoas mais velhas do que
+em mais novas. Então, existe uma parcela da população que vai envelhecer, que cada vez vai ser
+maior. O número de pessoas mais velhas que o mundo vai ter que eh sustentar ou
+que vão ter capacidade de se sustentar só vai aumentar. Então essa é uma
+inevitabilidade. E você imagina o número de derivadas que você tem em cima disso de empresas de biotecnologia, empresas
+de diagnósticos, empresas de equipamentos, etc. Outra inevitabilidade,
+todo ano o mundo tem mais ou menos uma Coreia do
+Sul de pessoas migrando do campo para cidades.
+O mundo só passou a ser mais urbano do que rural em 2015. Até 2015, maior parte
+da população global era rural e não urbana. Só que essa tendência ela não
+volta mais atrás, porque você precisa de cada vez menos gente no campo, automatização, mecanização, aumento de
+produtividade, etc, etc, que tem de novo consequências de investimento.
+investimento em agritecem em aumento de eficiência para plantações e para
+tratamento e eh criação de gado, por exemplo, e aumento nas cidades,
+mobilidade, segurança, poluição, energia, infraestrutura.
+Então, esse tipo de raciocínio no qual você tenta neutralizar tudo que você não tem controle, que você não consegue
+dominar, mas que você consegue de uma forma muito clara hoje indicar para onde
+tá caminhando, norteia um pouco a nossa tese de como a gente posiciona as nossas
+apostas, como a gente posiciona os nossos investimentos eh em DIPTEC.
+Bom, entendi muito claro. Mas e aí, como a gente posiciona Z? O que que você faz
+com isso? Por exemplo, é vamos pegar o o tema que você mencionou de inteligência
+artificial, né, que é um tema que obviamente eh, com 30 anos de atraso, na
+minha opinião. [risadas] Eh, eu ia falar, Gui, você é um cara muito paciente. Em 96 você faz um você
+você vê a inteligência artificial como futuro 90, cara, 30 anos atrás. E você
+teve um insight em 2000, quando começou a receber os pits. Aí a grides nasceu só
+16 anos depois. E e agora em 2026 a gente tá tudo bem que inteligência artificial já tá um pouco mais de
+evidência, mas bom, ainda assim são mais de 20 anos, sem dúvida. Bem mais de 20 anos. Eh, é
+isso que é uma coisa que acho que o mercado te ensina, né, um pouco a paciência, a a a estabilidade, a
+tentativa, pelo menos de de criar a disciplina, de saber o momento de agir.
+Nem sempre você consegue, mas nesses casos eh eh eu acho que as coisas andaram eh muito bem.
+Eh, a inteligência artificial ela tá tá ela saiu, né, do do terreno de ser uma
+inovação e ela tá virando o que a gente eh conhece como uma tecnologia de
+propósito geral. O que que é uma tecnologia de propósito geral? O fogo é uma tecnologia de
+propósito geral. A escrita é uma tecnologia de propósito geral. Eh, o
+vestuário é uma tecnologia de propósito geral. A máquina vapor foi uma tecnologia de de
+propósito geral. O transistor é uma tecnologia de propósito geral. A eletricidade é uma tecnologia de
+propósito geral. Que que isso tudo tem comum? São tecnologias que se tornaram infraestrutura, se tornaram base para
+você construir aplicações e novos elementos e até novas indústrias. Então,
+como a gente enxerga a inteligência artificial? é como a gente enxerga eh ou
+pode enxergar, olhando pro passado, eh a formação do mundo movido energia
+elétrica. Só que existe uma diferença importante.
+A segunda revolução industrial, que foi quando a energia elétrica se tornou algo eh implementado em larga escala, ela
+gerou inovações como os dinamos, os transformadores, os geradores. Isso tudo
+são invenções do século XIX, final do século XIX. Estamos no primeiro terço do século XX
+e eles estão por aí. dinamo, transformador, gerador, teve melhoria, teve avanço, mais eficiência, mas essa é
+a turma que tá aí. Com inteligência artificial, como você já falou, o ritmo
+de inovação, o ritmo de substituição, o ritmo de eh evolução é muito maior.
+Só que ela é, a despeito de todas essas características, ela é infraestrutura,
+ela é base. Para quê? para você acelerar biotecnologia, para você acelerar robótica, para você acelerar manufatura,
+para você acelerar agricultura, para você acelerar educação, para você acelerar serviços. Isso é o a forma como
+a gente tenta se posicionar. Então, dando um exemplo claro,
+eh, que aconteceu com a Grids em 2018,
+tá? Eh, hoje se você for comprar um óculos da meta, aquele óculos de realidade
+aumentada que filma, fotografa, perguntas e respostas,
+você tem uma forma de calibrar o menu desses óculos usando só o movimento dos
+dedos, né? Esses óculos vem com uma pulseira que você coloca e que com um simples mover
+dos dedos você consegue navegar o menu desses óculos para escolher que função
+você quer usar. Pois bem, em 2018,
+essa empresa chamada Control Labs, era uma empresa do nosso portfólio que foi adquirida pela meta. Então, lá em 2018,
+a gente teve a percepção de que em algum momento dos próximos 5 a 10 anos vai ter
+um produto de consumo que vai começar a utilizar essa tecnologia de interceptação das suas ondas neurais até
+o músculo da sua mão. Esse tipo de insite, esse tipo de acesso a para onde
+as coisas estão caminhando é uma das principais características do mundo no qual a gente tá imerso. a gente
+conseguir tentar enxergar para que lugar, para que lado o vento tá soprando, seja numa indústria de
+eletroeletrônicos, seja numa indústria de semicondutores, seja numa indústria de medicina, seja numa indústria de
+telecom. Esse que é o dia a dia do nosso negócio. Então, me responda com sinceridade. Se
+bem que se não for sincero não vou saber, mas alguma coisa tá acontecendo agora te surpreende? Porque a gente
+acaba sendo muito surpreendido, porque talvez a gente não esperava, mas você deu um exemplo que para mim é muito
+claro, uma um óculos de realidade aumentada que já tinha comprado uma empresa em
+2018. Então vocês meio que já não que vocês sabiam que isso acontecer, mas eh talvez na brincadeira da
+inevitabilidade, vocês acreditavam que era inevitável que isso fosse acontecer. Algo que tá
+acontecendo aí nos dias de hoje, nessas mudanças, algo te surpreende? Tem uma coisa que consistentemente me surpreende
+e que tá ligada, eu acho, a à invasão eh
+que a gente viu no mundo, eh, de acesso irrestrito a mídias sociais com
+qualidade duvidosa, que é o fato da gente viver num mundo com a maior
+facilidade da história para você acessar informação de qualidade, para você acessar pessoas interessantes falando
+coisas interessantes. para você conseguir ter educação sem
+precisar necessariamente ter capital, tá localizado perto de um centro acadêmico
+de excelência e sem necessariamente ter tido uma preparação prévia. Você pode estudar hoje o que você quiser com
+auxílio de tutores inteligentes e você tem uma produção
+consistente de bobagens que tem repercussão nacional ou internacional.
+sem precedentes. Então essa é a parte dessa desse arco da evolução, do arco do
+progresso que mais me surpreende e mais me incomoda. Por quê? Porque se você
+pegasse uma máquina do tempo e andasse 50 anos para trás e dissesse paraas
+pessoas que vocês vão ter uma ferramenta no bolso que todo mundo vai ter acesso para poder acessar sites de conhecimento
+gratuitos, educação das das melhores escolas do mundo com os cursos colocados
+online sem custo. é um assistente inteligente para quem você pode fazer
+perguntas, mostrar um exercício, te mostrar como é que é resolvido e essa
+pessoa ao mesmo tempo tivesse que entender que tem gente que acha que a terra é redonda, que desculpa que a
+Terra não é redonda, tem gente que acha que vacina não ajuda, tem gente que acha
+que existe algum tipo de dúvida sobre a eficiência de um método científico.
+provado, comprovado eh ao longo de décadas, a pessoa te dizer, tem alguma
+alguma dissonância cognitiva. Essa é a parte que eu eu não canso de me
+surpreender e que eh eu acho que fala muito sobre a natureza humana, infelizmente.
+Você foi falando, me lembrei do tem um meme, né, na internet do a inteligência artificial vai dominar o mundo. Aí
+embaixo, brasileiros usando inteligência artificial. Aí é o Silvio Santos cantando sweet Iron Mine, sabe? Então,
+acho que é o tipo de coisa que talvez entre no ralliras aí que você que você
+associa. Eh, mas, Gui, então, mudando a pergunta
+agora, já que o o que te surpreende tá muito mais no lado humano do que da eh
+das novidades, eh quando a gente olha para 10 anos pra frente,
+qual é a mudança tecnológica que talvez a gente ainda esteja subestimando? mas
+pode alterar completamente a forma como a gente vive, como a gente trabalha, como a gente investe. Eh, o que que já
+dá para dizer de fato fake nesses olhando 10 anos paraa frente? Eh,
+muita gente que tentou fazer previsão sobre 3, 5, 10 anos, muita gente muito
+qualificada, entrou pra história fazendo previsões totalmente equivocadas.
+Eh, tem histórias de pessoas que acreditavam que os automóveis iam ser um
+mercado minimamente eh bem-sucedido. Gente que falou que o mundo não ia
+precisar de mais do que cinco computadores, que mais do que 640 KB de memória eram
+desperdício. E principalmente uma frase que um dos pais da cibernética
+falou, que eu acho que é a mais interessante desse grupo, que é: "Nós sempre
+superestimamos os próximos 12 meses e nós sempre subestimamos os próximos 10 anos."
+E essa frase tem um mapeamento perfeito pro mercado, né? pro nosso mercado. A gente olha pro mercado líquido e faz
+projeções pros próximos 12 meses que muito, é muito comum serem super estimadas. O hype cycle no qual você
+acaba entrando em várias tendências tecnológicas. Isso aconteceu com multimídia, aconteceu com robótica,
+aconteceu com eh eh múltiplos tipos de inovações.
+Mas quando a gente tá falando de 10 anos, a gente tá em geral subestimando o que
+acontece. E esse risco é um risco que todo mundo
+que investe em tecnologia corre. O que eu posso te dizer é que dentro das
+inevitabilidades, a gente vê algumas curvas que tão apontando para uma década
+com robôs inteligentes, não necessariamente humanoides. Antes que se pergunte, que muita gente fala: "Ah,
+todos os robôs com forma de Eu eu não sei se esse é o padrão. Eu acho que eh a
+gente devia aproveitar para tarefas específicas, formatos específicos. Eu acho que um robô humanoide é muito menos
+apropriado para aspirar um tapete do que um robô redondinho com aquelas PES que
+ficam girando em alta velocidade. Como um exemplo, em 1980,
+1 kg de carga custava $.000 000 para você mandar pro espaço.
+Hoje com menos de 1.000 você manda esse mesmo quilo pro espaço. Então o que que
+isso te diz? O espaço ficou acessível. Então, a gente tá falando sim de uma década onde a gente vai começar a pensar
+em mineração fora da Terra, onde você vai poder ter uma economia que funciona
+no espaço, não tô falando de Marte e além, porque as distâncias e a
+tecnologia que a gente tem para chegar lá ainda são eh eh incompatíveis, mas
+Lua e e e a órbita da Terra, tanto a órbita baixa quanto a a a órbita
+geoestacionária, são indústrias que vão se criar. eh a automação, a o uso de AI no dia a
+dia, tanto das dos indivíduos quanto das instituições. Isso são coisas que vão se
+tornar nessa próxima década comuns, tão comuns quanto, por exemplo,
+é um exemplo que eu gosto de dar o seguinte, né? Ah, talvez eh 100 anos
+atrás, se você fosse para um hotel um pouquinho mais remoto, você tinha que perguntar se ele tinha luz elétrica, né?
+era mais afastado. A inovação da eletricidade foi final do século XIX.
+Você perguntava aí, talvez há uns 20 anos atrás, quando você vai para um
+lugar mais remoto, você pergunta: "Tem Wi-Fi? Porque mais remoto, sinal não chega e tal".
+A gente tá entrando na fase daqui a muito pouco tempo que você vai perguntar: "Usa AI?" Por quê? Porque o
+def vai ser usar AI. tudo, desde um termostato até um relógio, até o seu
+telefone, até a sua TV, até a forma como você vai, seja com dispositivos eh
+embutidos ou óculos ou coisas do gênero, ter esse tipo de contato. Então, essa
+década que vem é uma década de aceleração excepcional dessas tecnologias ligadas a semicondutores e à
+inteligência artificial. é uma década que vai abrir o espaço com uma nova
+economia, uma nova vertical de economia para investimento, para eh dívida, para
+equity, para projeto de corporate finance, para tudo isso. é uma década onde você vai ter finalmente, eu acho,
+tratamentos altamente eficazes para doenças que desafiam a a ciência há mais de 100
+anos, como, por exemplo, doenças neurológicas, doenças oncológicas e doenças autoimunes. Isso que é o meu
+minha impressão que a gente vai ter ao longo desses próximos 10 anos. Eu fiquei
+brisando aqui com o espaço, o quanta coisa que a gente poderia mandar pro espaço. Não tô nem falando de pessoas,
+tô falando mais de assim, poluição. Acho que é um problema que eh é algo que se
+escala, como até você disse, né? O mundo agora não é mais urb, é, não é mais rural, é urbano.
+E a gente consome, a gente gera muito lixo, então o espaço pode ser até uma
+uma solução para isso. Eh, hoje existe alguma forma no mundo ziptech ou até de
+maneira geral de se expor a essa essa tese eh que não é mais global agora
+investimentos universais, já existe alguma coisa? Eu não sei se investimentos líquidos, né, se você tem
+algum ETF de espaço, alguma coisa assim, é possível, mas eh eu acho que é inevitável, especialmente com o o IPO da
+SpaceX, que se aproxima aí velozmente, né, eh, de você ter uma uma série de
+ativos que vão ter ah listagem mercado, seja via dívida, seja via equity, eh,
+que vão est fazendo esse play. E tem obviamente os players menos eh óbvios, mas assim players que tão eh de alguma
+forma envolvidos com essa indústria, seja desenvolvendo equipamentos para naves e para sondas e para satélites e
+para eh eh eh eh foguetes, seja para novas empresas que vão fazer parte desse
+desse mercado. Ô Gui, e um cara que estuda tanto assim o futuro, eh você se considera uma
+pessoa otimista ou pessimista com as coisas que você estuda? pensando pra sociedade de maneira geral, o quanto que
+essas, obviamente a gente tá buscando sempre melhorar a vida das pessoas, mas
+empregos ficarão pelo caminho, talvez cidades ficarão pelo caminho. É o como é
+que você faz o o balanço disso? Eh, 20 anos trabalhando com risk
+management e foco em mercados emergentes fazem você ficar extremamente cauteloso
+com tudo, né? Então, essa disciplina, esse DNA de pensar no que que pode dar
+errado antes de pensar no que pode dar certo, eh, é secondo
+em tudo, né? Eu brincava na época de de de alocação que nenhum cliente nunca me ligou para
+reclamar que as coisas estavam indo bem. Então, esse risco você não tem. Se a coisa tá indo bem, ninguém vai te procurar para dizer: "Pô, tá indo bem,
+como assim? Você tem que se preocupar para quando as coisas estão indo mal". Então, como é que você faz isso? você
+protege o seu investimento, você protege suas teses pro que pode dar errado. Então, eu acho que existe uma uma
+tendência natural a gente ah acreditar, né, que dessa vez vai ser diferente.
+Esse essa é uma coisa que a gente já ouviu, quem tá no mercado há tanto tempo quanto quanto certamente eu e e você já
+ouviu milhões de vezes. Dessa vez é diferente. essa história agora não é bem como era antes. Então, a turma
+justificou tudo no creche de 29, eh, na no creche do Nasdak, ah, nos mortgages,
+todas as grandes crises que ocorreram, elas são crises que nasceram dessa frase. Ah, dessa vez é diferente. E com
+AI, a gente tá vendo essa conversa de novo. Não, dessa vez é diferente. Olha
+só, é uma nova tecnologia de propósito geral, como foram os transistores. é uma
+nova forma de você se relacionar com o mundo, tá tudo certo. Agora, existe um
+fio condutor que leva toda esse arco histórico, que são nós, somos as
+pessoas. Essas pessoas são pessoas que estão criando essas tecnologias. Existem,
+claro, agora, as pessoas que tão com o o o essa tese de que essa tecnologia pode nos dominar, essa tecnologia pode
+subverter a lógica e tal, que é uma conversa que, principalmente quando a gente fala de physical AI, que é uma
+tendência dos próximos 5 se anos, que é trazer a AI para entidades físicas,
+robôs, equipamentos, etc., começa a ganhar corpo, né, armas autônomas e tal.
+Então, onde eu tenho muita preocupação é na incapacidade que as instituições eh
+regulatórias, governamentais, sociedade civil podem ter de conseguir
+se colocar à frente desses movimentos de mudanças, à frente dessas acelerações todas. Eu
+vou confessar para você, Gek, uma, eu fiquei preocupado conversando com um amigo meu do mercado que é super
+estudioso sobre AI. Eu nem considero mais ele do mercado. Eu acho que ele é um cara que vive um mundo de
+inteligência artificial e presta serviços pro mercado. Inclusive, ele já ajudou bastante a gente aqui no Marketmers. E quando ele foi mostrando
+eh uma reportagem que tava falando dos eh das eh do das inteligências
+artificiais que estavam sendo criadas para interagirem entre si. E aí eles começaram a usar um idioma próprio até
+pros humanos não entenderem o que eles estavam conversando. Falem: "Não, cara, pera aí, isso aí é isso é mentira. Não,
+não é possível. Onde é que isso vai chegar, né? Onde é? Até que ponto?" Por isso que eu perguntei sobre o o otimismo e o pessimismo, porque isso me deixa um
+pouco cauteloso assim de quem que vai controlar, quem que vai regular algo que, pô, eu eu não sei se precisaria de
+uma regulação, porque acreditar no bom senso do ser humano, eu não sei se é uma boa. Enfim, eh, como é que você vê isso?
+É, é algo que a gente precisa se preocupar para já ou pode esperar mais
+um mês ou dois, né? Porque do jeito que as coisas [risadas] são muito tão rápido, não é muito tempo. É. Da mesma maneira que quando a gente
+fala de evolução natural, você nunca pode falar para, por exemplo, você não fala assim:
+"Ah, eh, a girafa desenvolveu um pescoço mais alto para comer as folhas que estão
+no alto das árvores." Não, o processo de seleção natural foi tal que girafas com
+um pescoço mais alto tinham mais probabilidade de sobreviver, passaram genes e tão aí.
+Uhum. EAS não desenvolver uma linguagem própria para os humanos não saberem. Eis
+desenvolveram uma linguagem própria para aumentar a sua eficiência de comunicação interna.
+Pode ser que você tenha um ângulo que o
+treinamento das reais, dos grandes modelos de linguagem, ele foi feito com
+texto da internet. texto da internet com grande ênfase no
+Reddit, que aqui no Brasil não é tão usado, mas que lá fora é é um fórum de perguntas e respostas sobre qualquer
+coisa. Você pode buscar qualquer tema que você achar lá. Então, quando a gente fala de AI treinadas no Reddit, você tá
+falando de um de um de um de um jogo de imitação, né? Você tá falando de umaai que foi treinada em algum thread do
+Reddit que dizia que as máquinas vão dominar o mundo e não vão querer que os seres humanos interferiram. E aí o cara
+foi lá, ao criar esse idioma próprio, algumaai repetiu o que leu. Então essa
+ideia romantizada de que a tem uma consciência e está ploting against humanity, né? Tá criando uma trama
+contra a humanidade. Essa eu acho que é uma é uma tese que a gente não precisa subscrever. Mas o efeito prático de você
+deixar as com autonomia para mexer nos seus e-mails, mexer nos seus arquivos,
+para eventualmente fazer armas autônomas, para eventualmente tomar decisão sobre qual é o alvo de um
+determinado míssil, de uma determinada bala, essa é a hora em que você pode ter
+aí sim a Ei fugindo do seu controle, porque enquanto você mantém ela dentro do cercadinho dela, fazendo as coisas
+que ela pode fazer, mas com os os as permissões, limitadas, você tem a
+ingerência sobre até onde aquilo vai. É que nem um funcionário que você contrata, que você dá a senha master pro
+cara deletar todos os arquivos de todos os seus podcasts. Você não vai fazer isso com uma pessoa que chegou ontem na
+empresa, você vai fazer isso com o teus caras mais seniors. Você tem que pensar em AI nessa forma.
+Você tem que dar os graus de acesso a à agentes de AI, né, que a gente hoje tá
+vendo muita gente falar. Elas são um passo na direção onde você dá autonomia
+para esses elementos e é onde o risco vai aumentar, é onde você vai começar a ouvir as histórias de arrepiar os
+cabelos, de você ver que alguma AI acabou fazendo uma bobagem que fugiu ao controle do usuário. Mas por quê? Porque
+é um código que não foi bem executado, como a gente viu naquelas DOOS, aquelas
+entidades que são movidas a blockchain, que quando você erra a codificação dela, as pessoas perdem milhões de dólares
+porque tem um bug no código e o blockchain não funciona mais. É a mesma coisa com a EAI, só que isso numa
+proporção agora infinitamente maior, porque é o que a gente falou, isso vai tá permeando toda a nossa vida, vai tá
+permeando todos os nossos equipamentos, todas as nossas interações. Eu, enquanto você falava do This time is
+different, né? Eu eu até fui procurar a referência do falando que as quatro
+palavras mais perigosas do mundo dos investimentos são: "Desta vez é diferente". Mas também as 12 palavras
+mais perigosas do mundo de investimento são dessa vez, é, as quatro palavras mais perigosas do mundo são dessa vez é
+diferente. Então, que também ficar repetindo isso é o é o grande problema.
+É isso aí. Eh, Brasil, como o Brasil tá inserido no
+mundo de IPtec, você investe no Brasil. Eh, o Brasil não sei se deve ter muitas empresas
+disso, mas acredito que talvez no trabalho acadêmico, enfim, você saiu, né, os seus estudos saíram do Brasil,
+né? Então, como é que o Brasil tá inserido nesse mundo deeptec? O Brasil ele ele em Deeptec ele tá não
+surpreendentemente também eh num paradoxo, né? Se você olhar e o ranking
+dos países, [limpando a garganta] desculpe, o ranking dos países que mais são publicados e citados em
+artigos acadêmicos de qualidade, eh de um conjunto de 194 países, o
+Brasil consistentemente fica entre 14, 15, tá muito bem colocado. Então, em
+termos de instituições de ensino, ah, professores, alunos de graduação,
+pós-graduação, o Brasil é um um um celeiro de excelência, tá? Só que e aí não estamos
+falando de de matérias ou de temas eh eh quaisquer, estamos falando de de temas
+ligados à alta tecnologia, né? Estamos falando de física, química, matemática, engenharias e coisas do gênero, que são
+as molas mestras de Diptec. Pois bem,
+o problema é que quando a gente olha pro Brasil sob a ótica de investimento e de
+negócios, o Brasil figura muito mal em rankings de
+competitividade. O Brasil é estruturalmente um país onde é difícil fazer negócio por questões
+burocráticas, por questões fiscais, por questões trabalhistas, por questões de impostos, por questões operacionais. é
+um país de difícil navegação para todo empresário, para toda empresária. Sempre
+foi um país convoluído, um país complexo. E dentro do nosso mercado de deeptech, o
+que que acontece? Se você tem um pesquisador, um professor, um acadêmico,
+um cientista que entende que tem na mão algum tipo de tecnologia que pode ser
+competitiva, que pode ter aplicabilidade a seja para um produto, para um serviço
+ou para ambos, essa tecnologia, ela já nasce, ao
+contrário do mundo tech enabled, ela já nasce competindo globalmente. Por quê?
+Porque o mundo tech enabled no Brasil, as startups que estão trabalhando com tecnologia
+softtech, elas estão tentando endereçar questões no Brasil, sejam questões
+jurídicas, sejam questões trabalhistas, sejam questões fiscais, seja questões contábeis, mas são questões nossas, são
+ah demônios criados por nós mesmos, né, pela nossa legislação, pela nossa cultura, por combinação de ambas. as
+nossas jabuticabas, por exemplo, ao passo que quando você tá falando deeptecch, você tá falando de
+uma nova molécula, uma nova proteína, uma nova placa, um novo circuito, uma nova um novo algoritmo, uma nova
+metodologia que independem do lugar onde isso aconteceu. Então, a competição,
+como eu falo, é global, é instantânea, é imediata. E aí, nessa hora, não é só
+mais a ideia daquele daquele daquela startup que conta, é a ideia e todos os
+atores e todo o ecossistema que tá em volta para aquela ideia poder prosperar. investidores, governo, fomento,
+impostos, ecossistema de inovação. Isso tudo faz com que no Brasil inovar
+em Deeptech seja particularmente difícil. Temos startup de deeptecch, com
+certeza. Eh, eu eu ajudo eh a organizar
+anualmente o chamado Deeptech Summit, que acontece na USP.
+Ah, e que ano passado reuniu mais de 2.000 pessoas,
+caramba, não só do Brasil, como a gente tá tentando transformar esse evento no evento latino-americano,
+já tivemos ano passado gente do Chile, do Uruguai, da Argentina, da Colômbia e esse ano estamos expandindo ainda mais,
+estamos trazendo uma pauta de inovação técnico-científica com, pelo menos para América Latina, com
+um epicentro brasileiro, com epicentro local. Eh, é parte da motivação de eu
+fazer uma coluna semanal, de eu escrever um livro, de eu participar desse dessa desse conselho que organiza a a a o
+Deeptech Summit para tentar, apesar desse desse vento contra que sopra em
+função de todas essas idiossincrasias locais, permitir que a gente possa pegar aquele 14º lugar no ranking acadêmico
+que o Brasil tem e transformar isso em uma efetiva produção de riqueza para a
+sociedade. Por quê? Porque todo mundo sabe que uma startup que prospera, ela
+gera emprego, ela gera tributo, ela gera eh inteligência, ela gera prosperidade
+de uma forma ampla. Então, é um segmento que a gente quer e vai insistir em tentar eh eh ajudar aqui no Brasil.
+Que legal. E esse Deeptex Summit, ele reúne eh entusiastas ou tem também os
+investidores? E é exatamente a ideia é juntar investidores,
+empreendedores e governo para poder ter e agentes de
+governo que participam eh ativamente para tentar criar a discussão e e
+apresentar a relevância do tema paraa academia e pra sociedade.
+Aí você chegou num ponto que eu também já, pô, tem muitas perguntas aqui. É, pô, quero saber sua opinião sobre El
+Musk e tudo mais, assim, é aquelas coisas que que a gente comenta aqui, mas com o jaleco de investidor, né? Não com
+o conhecimento, né, talvez do do intelecto, mas como é que é a comunidade
+de investidores de a comunidade de em geral, né? Aqui, pô, estamos na Faria Lima, você sai para almoçar aqui, você
+vai ver o gestor do fundo de ações tal, que já veio aqui no Marketmakers, o trader macro da gestora tal, bá, aquela
+coisa, o terminal Bloomber, todo mundo conversando ali, né, o que tá comprando, o que tá vendendo,
+a gente tem uma troca ali, né, aqui no Marketmers mesmo, a gente tem o M3 Club, a nossa comunidade de investidores, mais
+de 500 pessoas conversam todo dia ali, mas tá falando ali sobre a o resultado
+da Petrobras, o resultado do Itaú e tudo mais. Eh, é aquela é uma troca de
+ideias, eh, tem o estudo, mas você tem quase todo mundo olhando pra mesma
+coisa, né? Existe essa comunidade deeptec, o que como é que é?
+Existe, mas obviamente com uma dinâmica bastante diferente, né? Eh, a primeira
+coisa que no mundo de venture capital, isso não é não é nem algo só para para deeptech, que é uma coisa de venture,
+eh em geral, a comunidade de investimento, ela é muito colaborativa,
+porque o risco é sindicalizado, as pessoas não tomam posições com raríssimas exceções, sozinhas numa
+empresa, né? Em geral, você vê uma ideia e você tenta montar uma participação, mas você tem gente ali que vai eh
+participar ou coparticipar com você. Uhum. Ao mesmo tempo, em função da natureza do business de deeptech e da
+complexidade dos temas que estão sendo abordados, você frequentemente tem
+nichos de especialização. Então você tem lá a turma que tá mais olhando pra biotec, a turma que tá olhando mais
+paraa robótica, a turma que tá olhando mais paraa astronáutica, a turma que tá olhando mais para AI. Então isso também
+reduz um pouco o tamanho do debate. E você tem uma terceira dinâmica que é a dinâmica temporal que é muito diferente,
+né? No mercado líquido, o mercado tem uma opinião sobre quanto vale um determinado ativo e essa opinião é
+refletida instantaneamente no preço que aquele ativo tem na tela. No mundo de eh de venture capital e
+certamente de deeptech, você trabalha com base em valuations e com base em
+checkpoints. Então o o Thiago vem me dizer que ele tem uma ideia para uma
+startup de robótica para fazer um robô que vai fazer uma determinada tarefa em
+ambientes tóxicos. Eh, aí você vai me mostrar sua ideia para mim e para outros investidores. Alguns de nós vamos achar
+que a ideia interessante. Vamos te dar um capital para você fazer um protótipo
+que consiga fazer o primeiro, os primeiros 10% do que você acha que a sua
+empresa deveria executar. Se você daqui a 6 meses não apresentar
+um protótipo que execute os primeiros 10% do que você se propôs a fazer, a sua
+empresa acabou, a gente investiu numa ideia que não funcionou e a gente vai pra próxima.
+A medida que você mostra que você consegue executar, o seu valor vai aumentando e o volume de dinheiro que
+você capta é maior. Mas veja, existe quase que um mecanismo de self correction. do investimento, por você só
+vai botando dinheiro em coisas que estão no caminho para funcionamento.
+Uhum. Isso é uma característica de deeptech. E essa comunidade, esses investidores que
+estão especialmente alinhados e que estão nos mesmos temas, eles trocam essas informações para tentar escolher e
+para tentar eh embarcar nessas tendências que a gente acredita, né, que
+vão ser as tendências que vão criar as empresas vencedoras nos próximos 8, 9 ou
+10 anos, que é o prazo em geral que a gente tem para devolver o capital do cliente. E e como é que é o dia a dia? de um
+investidor como você, eh, no sentido de atualização, acompanhamento,
+o o assim, o que que é o valor econômico de do investidor de IPTEC? É ficar lendo
+trabalho de doutorado, mestrado, é visitar faculdade, enfim, de onde você
+tira, né, os insumos para encontrar as ideias de investimento, n? Essa é uma ótima pergunta. Existem existem dois modos de operação, né, numa
+num fundo como o nosso. O primeiro modo de operação é o modo de acompanhamento
+do estoque de empresas. quer dizer, onde você já fez um um compromisso, onde você
+tá apstando que aquela empresa, aquele empreendedor, aquele grupo vai eh convergir para algum lugar e que você
+tem uma obrigação de tá eh seguindo e acompanhando de novo. Não tem informação
+e notícia todo dia, não precisa, mas você tem que tá eh orbitando ali aquelas
+apostas para ter certeza que as coisas estão caminhando. Então tem lá um um schedule, um um calendário de eventos
+onde ah, nesse dia a aquela startup vai apresentar num numa conferência de de
+bio como é que vai ser. Ah, nesse dia tem uma empresa que vai mostrar pro Departamento de Defesa dos Estados
+Unidos um protótipo do seu equipamento que pode gerar um contrato de milhões de dólares. Então essa é a parte um da
+história, você acompanhar o que que tá acontecendo. E a parte dois, que é a pergunta que você fez é: "E o que vai
+vir? Como é que você se posiciona pro que vai vir?" Você se posiciona de dois jeitos. O primeiro jeito é tentar ouvir
+o que o mercado tá te dizendo. E aí não é um mercado necessariamente líquido, mas é um mercado corporativo e um
+mercado de investimentos. Quais são as grandes tendências? É eh fertilidade
+feminina, é fertilidade masculina? eh, eventualmente manufatura eh fina, eh, a
+química orgânica, é o desenvolvimento de telecomunicações para largas distâncias,
+sem cobertura, são satélites. Então, você começa a tentar ver quais são os grandes temas que são problemas ou que
+são dores que tem geram o tal do TAN, que é o Total Addressable Market, que é
+o o capítulo um de todo mundo que tá montando uma startup, para quem eu tô tentando fazer isso aqui. É, e você
+tentar ver dentro dessa dinâmica do que já existe, qual é o próximo passo?
+Porque essa é a lógica da tecnologia, né? A tecnologia, ela é um processo que
+só conhece a mudança. A única forma constante de você analisar
+tecnologia é analisando mudança, porque a definição do nosso mundo é
+transformação. Por isso que o livro chamava-se o mundo movido a tecnologia. A tecnologia que tá empurrando o mundo.
+Você cria AI, você cria um LLM, você cria uma evolução de um LLM. Você cria
+um agente, você cria um conjunto de agentes, você cria agora um orquestrador de agentes e agora você vai transferir
+isso para inteligência física. E essa essa sequência continua. O nosso papel é
+olhar qual é o próximo arco desse grafo aí, qual é o próximo passo que esse esse
+tema vai correr, seja em Ciências da Vida, seja em Telecom, seja em robótica,
+seja em inteligência artificial. E é esse o movimento de investir, é você tentar entender se a sua narrativa que
+você desenhou na sua mente sobre para onde as coisas estão caminhando, ela encontra no mercado eh vetores que vão
+executá-la de uma forma adequada. Bom, pela sua descrição e até pelo que eu percebi da sua paciência, né, de
+estudar EA em 96 e tá vendo isso tudo acontecer agora, quantos investimentos
+por ano você faz? Você você costuma fazer muitos investimentos e até para explicar pessoal, né? Eh, você não
+investe só em empresas, né? Você tem empresas no portfólio, mas tem também os fundos que investem em empresas, né?
+É isso. A ideia toda é que eh de novo aí o o DNA de controle de risco, né? Eh, a
+ideia toda que o investidor de venture capital eh tem de que ele vai achar
+o próximo Jeff Bezos, o próximo Musk, o próximo Larry Page, Sergei Bream
+investir na startup que vai virar a Google, a SpaceX ou a Amazon. É uma
+ideia no mínimo ingênua, né? Até porque a probabilidade de você acertar um
+decórneo como esse em em um um mar de oportunidades que aparecem, ela é
+extremamente pequena, tá? E no mundo de deeptech existe uma característica ainda mais interessante
+que é a seguinte. Se você é um PhD formado no MIT, em
+Stanford, Harvard, Burkley ou Caltec
+e você precisa de financiamento para sua startup no primeiro round,
+não é segredo nenhum para nenhum investidor onde encontrar esses ativos.
+extremamente qualificados, esses PhDs em altíssima eh eh com altíssima qualidade.
+Então, se fosse só isso, você postava uma equipe na porta dessas
+universidades, olhava no calendário quem tava defendendo tese, em que sala,
+ia pra sala, quando o cara acabasse a defesa de tese, se dava para um cheque de 500.000, falava: "Olha, agora eu sou
+investidor na sua startup". Obviamente isso não funciona. Por quê?
+Porque esses PhDs, esses pós-PhDs, esses e empreendedores em Deeptech, eu falo
+muito dessa formação, porque para você montar uma startup de deeptecch em geral, você precisa ter uma qualificação
+acadêmica diferente. Não dá para chegar e ser um um um dropout da universidade,
+falar: "Agora eu vou criar uma molécula nova para combater o câncer". Eh, não é difícil que isso seja verdade, mas essas
+pessoas essas pessoas elas não querem só o dinheiro. Uhum. Elas querem alguém que tenha, no
+caso, por exemplo, de biotec, elas querem alguém que tenha conexão no
+board da Pfizer, alguém que já tenha participado do board da National eh eh
+Foundation of Science, alguém que possa caminhar lado a lado explicando os
+desafios de você criar uma plataforma de genômica para poder depois vender para
+um grande player. Então, é mais do que dinheiro, é quem traz esses intangíveis,
+é escolher quem são os investidores com esse expertise, que por sua vez você não
+encontra em cada esquina. São skills que demoram para você desenvolver.
+Então, quando a gente se se deparou com essa realidade, a gente falou: "Qual é a
+competitividade que o sujeito aqui da Faria Lima vai ter de olhar no olho de um investidor e
+dizer: "Eu estou escolhendo as melhores deeptexs dos Estados Unidos, que é o
+nosso foco." A gente tem até coisa fora dos Estados Unidos, mas o foco é lá. Eu tô escolhendo as melhores deptexs para
+você. Quão competitivo eu sou
+para um recém-graduado de engenharia aeroespacial, que quer
+montar uma constelação nova de satélites e que vai falar: "Não, legal, você tem
+dinheiro, mas eu também tenho dinheiro aqui do cara que foi 10 anos da NASA, hoje em dia eh trabalhou mais cinco na
+SpaceX e que agora é um investidor dedicado a engenhari espacial. Não, não,
+não tem sentido esse empreendedor querer o meu dinheiro. Ele quer o dinheiro
+desse cara. Então, a lógica da Grids Capital é, eu vou alocar, que é uma coisa que eu
+faço de novo desde 1998, é uma coisa que eu faço há muito tempo. Eu vou alocar
+nos melhores fundos de Deeptech, very early stage,
+que são os caras que vão pegar essas empresas de biotec, de AI, de robótica,
+de novos materiais, de energia e etc. E eu vou deixar essas empresas fazerem o
+papel delas de atrair os melhores empreendedores, as melhores empreendedoras. Quando isso acontecer,
+eu vou poder me dar o luxo de selecionar aquelas que eu acho que tem mais
+perspectiva de sucesso e aí sim fazer o investimento direto. E
+é por isso que a nossa taxa, nossa taxa de mortalidade é muito baixa. A gente não tá olhando pro topo do funil,
+a gente tá olhando pro funil já filtrado por alguns dos melhores investidores de
+alta tecnologia do mundo. Cara, que loucura. E assim, eu fico pensando também que eh
+é um trabalho que não dá nem para você montar uma equipe tão grande, né? Eu imagino que na Grids deve ser você, nem
+sei se você tem equipe, porque é quase como eh não tem como você reaproveitar
+um analista que olha para um determinado setor e olhar para outro, né? Você precisa ter ultraespecialistas em cada
+setor. Como é que você resolve isso? É exatamente isso. A gente tem aqui uma equipe, um núcleo aqui
+Brasil de três pessoas, que sou eu, ah, a minha sócia, que é minha irmã, que trabalha comigo, eh, na Grids, eh, e a
+nossa secretária, barra diretora de operações. E a gente tem um grupo de
+consultores especializados em temas ligados à nossas teses que estão
+disponíveis para nos atender na medida em que a gente tem empresas que a gente
+queira que eles analisem. Então, para dar um exemplo de ah robótica, né?
+Digamos que eu tô olhando para uma empresa de robótica que tá baseando todo
+o seu toda a sua tese de investimento numa certa patente que eles registraram
+durante um doutoramento. Eu vou querer que alguém mais
+qualificado que eu em robótica olhe para essa patente, olhe para todos os eh
+riscos que você tem ao ancorar uma tese em cima dessa patente e me diga: "Olha,
+com base nisso, eu acho que o seu investimento faz ou não sentido". Uhum.
+E a gente teve uma uma ocasião só para dar um exemplo para você ver como essa comunidade como o o assim o arrfeito
+nesse mundo. Em que eu eh fui falar com o com o com o nosso consultor, eu falei:
+"Olha, eh eu queria que você olhasse a patente número tal, etc, etc, etc e depois me dissesse se isso faz sentido,
+porque a gente tá olhando para uma para uma um potencial investimento. Aí ele falou assim: "Olha só, eu não preciso
+olhar porque eu participei dessa pesquisa quando eu tava não sei aonde,
+eu conheço o cara que fez o depósito da patente e tal e eu acho que isso é um produto que vai ter isso, isso e isso."
+Então é um mundo que você começa a esbarrar nas pessoas, nas mesmas pessoas, que é muito comum no
+nosso mundo de investimentos, né? Você começa a falar e atingir uma certa massa crítica, você começa a voltar para as
+mesmas pessoas. Por quê? Porque não tem tanta gente boa, não tem tanta gente qualificada, eh, assim, e dentro do que
+a gente tá se propondo a fazer, a gente só quer dar acesso, só quer dar exposição pro que tem de melhor pro
+nosso investidor. Hoje você é obrigatoriamente generalista dentro desse mundo deeptech, né? Você tem que
+Correto. Correto. Mas quando você não era, o que que você mais gostava de olhar? tem alguma algum
+segmento que você gosta mais, que você eh até hoje estuda mais? Enfim, eu acho que a gente tem mais conforto
+naquilo que a gente sabe mais. Então, no início, por exemplo, eh tudo que tava ligado a eh semicondutores,
+software, algoritmo, eh, e coisas afins, que foi a formação acadêmica que eu tive
+de e de das duas engenharias, era zona de conforto para mim, né? Eh, e agora,
+especialmente dos últimos 7, 8 anos, eh, com a quantidade de investimentos em ciências da vida que a gente fez, eh,
+hoje em dia eu tenho uma uma predileção por temas ligados a ciências da vida,
+porque eles são temas que passaram a fazer parte, incorporar tudo que a gente viu antes. Então, todas as inovações de
+software, de hardware, de algoritmo, de AI, agora tá impactando essa área de
+ciências da vida. Então sãoidade que eu gosto muito. Sim. Ciências da vida seria exatamente diagnóstico, terapia, equipamento
+médico, descobrimento de novas drogas, tudo que tem a ver com biologia ou a combinação da biologia com essas outras
+áreas. Hoje o fundo dá para dividir em caixinhas o quais setores que vocês têm
+mais participação? Sim, porque de novo, né, a disciplina de risco, a gente limita eh os setores, a gente não quer
+ter exposição mais do que 30% em um único setor, a gente quer ter um mínimo de diversificação.
+É, então eu te diria que os principais setores que a gente tem, olhando através de todos os fundos, são em
+infraestrutura barra inteligência artificial, eh são em ciências da vida,
+eh é uma é uma área importante pra gente, eh defesa e aeroespacial. Acho
+que são os três hoje temas que a gente tem maior exposição e eh dentro dos portfólios. Eu vou querer ouvir uma tese
+de cada um deles, mas antes estamos vivendo um momento de muita
+valorização das ações listadas, né? O o valor de mercado das empresas,
+principalmente ligadas à tecnologia, né? Está absurdo. O valor de mercado do SNP
+em relação ao resto do mercado está absurdo. Os investimentos que elas vão
+fazer, né, já tá parece que vão ser cerca de 800 bilhões de dólares investidos nesse ano. Já foi 450 bi ano
+passado. Então é um número crescente, sei lá até onde que ele pode ir.
+Eh, e aí sempre vem, pô, será que é bolha? Será que não é? Eu gostaria de
+ouvir sua opinião sobre isso, mas também queria ouvir sua opinião sobre o quanto isso impacta o seu mercado, porque
+querendo ou não, né, pro investidor de venture capital, é bom que o mercado tá em bolha porque você vai vender suas
+empresas a um preço melhor ou é ruim porque até dificulta na hora de você fazer um valuation de uma empresa que
+você quer comprar? Eh, eu assim, você lembrando que você tá perguntando isso para um cara de risco, então, eh, eu
+enxergo bolhas e com alguma regularidade, eh, porque a gente tem uma preocupação natural e a gente viveu
+isso, né? O o nosso fundo dois, ele nasceu no auge da E euforia de venture
+Capital, que foi em 2020, eh onde você tinha gente fazendo deals em empresas,
+dando 50, 100 vezes revenue. É, e é o fundo que eu até quando eu faço um
+pitch, é o fundo que eu mais gosto de mencionar pros investidores para dizer: "Olha, no meio dessa confusão, no meio
+dessa bolha, no meio daquela euforia, a gente montou uma carteira que tem como principais posições anduri ining face,
+applied intuition, que são empresas que a gente vai pode falar daqui a pouco, mas que tem uma perspectiva
+extraordinária. Então, um fundo que ainda assim vai dar um bom resultado. Então hoje quando a gente olha para
+isso, é muito difícil não fazer um paralelo com o que a gente viu de investimento na época da internet, né,
+quando a turma investiu milhões e centenas de milhões de doses em fibra ótica e e não havia tráfego para ocupar
+isso tudo, mas que hoje tá mais do que justificado, né? Estamos até precisando
+de mais. Aham. Então existe, acho que um cenário e o cenário que me preocupa é o seguinte.
+todos esses investimentos e toda essa arquitetura que tá sendo hoje colocada
+eh no lugar é uma arquitetura que assume
+que AI vai continuar sendo processada do mesmo jeito, ou seja, que você vai
+precisar de GPUs, que você vai precisar de eh bilhões de processadores, que você
+vai precisar de conjunto de treinamento cada vez maiores e que você vai precisar de uma sofisticação e de uma demanda
+energética crescente. Eu não sei se isso é verdade. Eu não sei
+se nos próximos 12, 24, 36 meses você
+não vai ter novas arquiteturas de software e de hardware que vão botar esse modelo de ponta cabeça, vão dizer:
+"Não, eu consigo criar uma estrutura de LLM usando menos GPUs ou usando menos
+energia ou mudando a forma como essas GPUs se comunicam ou mudando a arquitetura como o software que comanda
+esse hardware se estrutura. assim, minha experiência é que isso vai acontecer.
+Uhum. Porque historicamente a evolução dessas estruturas em todas as áreas sempre foi
+uma coisa muito natural. Ao mesmo tempo, a gente tá lidando com o
+mesmo fenômeno que a gente lidou na época da eletrificação do mundo, onde você tinha que passar o cabo, você tinha
+que passar o fio elétrico porque você tinha que eletrificar o mundo. O que tá acontecendo agora com é isso. A gente tá
+passando cabo, a gente tá ehificando o mundo. E isso é um investimento que é
+inevitável, porque o mundo vai ter uma companhia de em todas. Então, ah, para
+quem tá investindo no mercado líquido, vai ver essa resposta muito nervosa do
+mercado, que obviamente vem seguindo uma uma euforia importante que eu não tenho
+nenhuma capacidade de dizer até onde vai ou se tem algum tipo de racionalidade.
+Indicação histórica que a gente tem é que alguma hora essa música para, alguém
+vai olhar em volta, fala: "Mas pera aí, e a receita que isso devia tá gerando? Cadê?" Ah, vamos esperar. No que o cara
+fala, vamos esperar, os preços vão mudar de patamar, os múltiplos vão desinflar e
+aí você vai ter uma espera. Você é notório assim. Eu acho que a Cisco
+levou do rai dela da bolha da internet para voltar ao mesmo patamar. após o
+estouro da bolha, acho que foram 15 anos, né? E 15 anos em qualquer
+horizonte de análise é longo prazo, né? A gente fala de investir no longo prazo, etc e tal. A 15 anos é um belo longo
+prazo para você empatar, né? E não é isso que o investidor quer, lógico. Então, eu tenho para mim que você vai
+ter um reckoning em algum momento, mas eu tenho para mim também que esses
+investidores, esses investimentos que os hyper scalers estão fazendo, são os equivalentes que a gente viu pela
+Westing House, General Electric e Afins, onde eles falaram: "O mundo vai precisar estar eletrificado, eu vou ser o cara
+que vai botar o Capex para fazer isso acontecer". Eu acho que é exatamente a mesma história.
+Sabe que você quando você falou de bolha e se é bolha ou não, eu o Rui Alves num
+podcast fez uma definição muito legal que ele disse que bolha é o booll market
+que você tá de fora. Acho que é uma boa forma também de de enxergar. É boa.
+Eh, mas e então, eh, aí trazendo pro seu mundo, o quanto isso te ajuda ou te
+atrapalha? Sim. Então, o que acontece? Eh, quando você investe muito no early stage, como
+é o nosso caso, ou seja, empresas que tão eh recém formadas e ainda não tem um produto, ainda não tem produ Market Fit
+e estão ainda tentando encontrar eh sua viabilidade, a influência que o que o que o o mercado líquido tem é limitada,
+porque você pensa em venture capital, pensa em investimento de uma empresa como uma pilha de estágios. Então, o
+cara tá aqui no preceed seed série A, B, C, D, E, preO e IPO, tá? Pensa que é
+isso. O que acontece aqui em cima no mercado líquido, obviamente repercute embaixo, só que
+vai sendo atenuado, é cada vez menor. Então, para quem tá aqui embaixo, e se você olha inclusive para histórico de de
+valuation de empresas, seja em época de bolha, seja fora de época de bolha, a
+sensibilidade que as empresas aqui no na base da pilha tem para isso é baixa.
+E é onde vocês estão, é onde a gente tá primordialmente. Agora, obviamente, à medida que as
+nossas empresas vão amadurecendo e vão subindo, isso começa a ficar importante. Então, eu te diria o seguinte, que é
+ruim paraa turma que tá chegando na na fila, na porta ou do M&A ou do IPO, isso
+é ruim, porque enquanto a música dura e ela conseguir eventualmente uma saída, um IPO, legal, mas ninguém aqui consegue
+fazer timing disso. possível você dizer: "Ah, não, eu vou fazer isso agora porque daqui a 6 meses isso vai valer menos".
+Então é difícil. Então é um risco que elas correm, mas quanto mais no início aqui do stack você tá, menos isso é
+importante. Eu fiz uma pergunta que acabou ficando sem resposta da quantidade de investimentos que você faz por ano. Você
+tem alguma noção disso? Claro, lógico. Então o que que acontece? A gente tem um um um híbrido entre os
+investimentos via fundos e os investimentos diretos, né? Lembra que a gente tem uma uma estratégia que não só
+dilui o risco do investidor, porque a gente tem agora eh umas 300 empresas por
+portfólio, é o número que a gente acaba tendo, sendo que dessas 300 tem umas 20 que a gente escolhe para fazer diretamente,
+tá? E essas 20 elas acabam vindo eh em média entre 5 e 7 por ano. A gente faz
+investimentos diretos num ritmo que em geral eh de cinco a sete nomes que a
+gente acrescenta no nosso portfólio de investimentos diretos todo ano. E vamos falar de alguma dessas empresas.
+Eu, pô, pega lá da caixinha lá que você falou que são as maiores exposições, uma
+de cada uma dessas caixinhas, mas pode contar com detalhe, porque eu tenho certeza que a maioria aqui não vai
+conhecer elas. Se até conhecer, melhor ainda. Então, vamos lá. Deixa eu começar por uma empresa que a é uma é uma exposição
+grande pra gente chamada Anduril. Anduril. Ah, a N D U R I L. A Anduril é uma
+empresa que foi fundada por um hã um sujeito chamado Palmer Lucky, tá? O
+Palmer Lucky é uma figura que para quem acompanha tecnologia é é um cara já conhecido. Por quê? Porque foi ele quem
+vendeu a Óculos paraa Meta naquela época que
+realidade virtual. A da Control Apps, não, a Control Apps foi comprada pela
+Meta também. Uhum. A óculos era aquele capacete de realidade virtual.
+A empresa chama Óculos. A empresa chamava Óculos. É. É. O C U L U S. É exatamente, [limpando a garganta]
+óculos. Eh, então, e o Palmer Luck fez essa venda eh, depois ele resolveu criar uma
+empresa de defesa para o século XX, né? Ele entendeu que a
+forma de defender uma nação, no caso dos Estados Unidos, que era vigente naquele
+momento de fundação da da Anduil, que eu acho que foi em 19, 2019 por aí, eh era
+algo que não fazia mais sentido, tá? Essa ideia de portas aviõ porta-aviões e
+jatos e e coisas criadas para serem manejadas por pessoas, não era mais como
+o mercado bélico deveria se comportar. E ele criou Anduril para criar a os
+instrumentos de defesa militar do século XX.
+Essa empresa é uma empresa que, e o número pode não tá exatamente preciso,
+mas essa empresa ela entrou no nosso portfólio. Ah, eu posso estar enganado, mas acho que foi alguma coisa como 30 milhões de
+dólares de valuation na primeira vez que algum dos nossos fundos fez uma locação,
+tá? Eh, essa empresa tá fechando uma rodada,
+isso é informação que tá na internet é pública, então não tem problema. Ela tá fechando uma rodada agora a 60 bilhões
+de dólares de valuation. Pariu! E também uma informação que tá para quem
+quiser ler, ela dificilmente ultrapassa 2027 sem virar uma empresa
+listada. E aí eu também não acho, opinião pessoal, não acho que o IPO dela
+é é no valation abaixo de 100 B. Qual foi o valuation do primeiro cheque?
+Então, 35 milhões de dólares.  e essa é uma empresa que sozinha já é
+graças à lei das potências do fundo de um fundo de venture. O fundo de venture, todo venture tem uma uma lei chamada lei
+das potências, que é o seguinte: você monta carteira e depois de um certo número de anos, um pequeno número de
+empresas responde pela esmagadora maioria do teu resultado. É a natureza de vente. Não tem jeito. você não acerta
+eh 35 unicórnios no num único fundo. Você tem lá quando você tá quando você
+tá com a mão boa, você acerta dois ou três. Então essa empresa eh sozinha é mais de
+10% de um dos nossos fundos, tá? Pensa uma empresa em 300
+sozinha 10%. você vê o que que isso é, a, como é a natureza de venture
+acontecendo. Então, e é importante deixar claro, ela tornou-se 10%, tornou-se, exato, ele não abriu a a
+locação em 10%, ela virou por quê? Porque nós não temos, né, um um
+mecanismo infalível de prever quem vão ser os decacórnios do futuro. Se tivéssemos,
+eh, primeiro não contaríamos para ninguém, [risadas] eh, e segundo, a gente não teria que fazer 300
+investimentos, a gente faria quatro ou cinco, cara. E assim, eu tô
+eu uso uma ferramenta aqui meio antiga chamada chatt, porque eu fico até com
+vergonha de, mas como eu treinei ele para conversar como se fosse alguém da bancada do Marketmers, ele tava me
+contando a história aqui da Anduril, ela foi fundada em 17, 17. Ele ele foi pro Facebook depois da
+venda, mas teve uma saída até por uma polêmica política, né? Porque ele apoiava o nome Anduril vem da espada de Aragorn
+do Senhor dos Anéis. é da família do Palantir que também tá tá ressalda do do Middle Earth. É
+isso. E aí até a a empresa, né, acaba sendo até uma resposta pro um pouco da
+da do diagnóstico que o Ocidente ficou lento demais para produzir armas modernas, né? Enquanto China, Rússia,
+Irã e outros países investiam em escalas, eh [roncando] o Ocidente ficou para trás. Então acabou sendo uma
+resposta eh, pô, bem legal, hein? Então, tem uma tem até um contexto por trás até
+político na na empresa. E até tirar uma dúvida, né? Obviamente essas empresas assim não não
+é simplesmente opa, vou criar uma empresa de segurança, né? Isso tem que ter um alinhamento.
+Eh, govern até quem vai investir, quem vai eh tá por perto da empresa, tem que
+tá quase como tô fechado que US, né? Não, não dá para investir numa empresa dessa e na semana seguinte pegar o avião
+pra Rússia, né? Imagino que deve ter alguma a alguma restrição nessa linha,
+né? Tem tem um tem um documento chamado CFIUS, que é um documento que você tem que assinar ah quando você vai fazer
+algum investimento numa área estratégica pro governo norte-americano. E algumas empresas que a gente investiu
+diretamente no passado exigiram que a gente assinasse esse documento, porque são empresas que têm uma componente de
+estratégia eh eh e de governança importante. E também para ter esse documento, você
+tem que fazer para merecer, né? Não imagino que seja qualquer um lá, opa, vou investir nessa empresa aí. Não, não tem um background check. A turma faz um
+dever de casa. Eh, certamente. Tá outra empresa aí. Agora
+vamos mudar de setor, vamos falar de agritec, vamos falar de tecnologia no campo. Então, tem uma empresa que é um
+investimento direto nosso. Eh, essa empresa, ela entrou no Essa é uma história bem típica do nossa dinâmica,
+né? Essa empresa é uma empresa chamada Halter. H A L T E R. Halter.
+Essa empresa é uma empresa que não é norte-americana. Essa empresa é uma empresa neozelandesa, tá? Que ela
+apareceu num dos nossos fundos num valuation
+que eu tenho quase certeza era de mais ou menos três ou 3 milhões e meio de
+dólares, tá? Ela apareceu no fundo, no fundo em 2017
+e alguns, acho que um ou do acho que uns dois anos depois ela apareceu pra gente
+como oportunidade de investimento direto e a gente fez. E acho que esse primeiro investimento direto que a gente fez, ela
+tava num valuation de 80 milhões de dólares já. Tá? Pois bem, o Founders
+Fund, que tem como figura mais proeminente o Peter Teal
+Mafia e tal. Sim, sim. acabou de liderar uma rodada na Houter num valor eixo de 2 bilhões de dólares.
+E o que que a Houter faz? A H faz um sistema
+para fazendeiros utilizarem, que é um sistema que conversa com uma coleira que
+você bota nas cabeças de gado que você tem sobre sua responsabilidade
+e que passa para você informações sobre a saúde e a localização de cada cabeça
+de gado, mas importante que permitem que você remotamente pelo seu telefone, você
+controle para onde cada cabeça de gado tem que se dirigir. Eles fazem isso
+porque eh essas coleiras elas emitem uma vibração ou de um lado ou de outro que
+faz com que a vaca ou o boi ele seja compelido a ir na direção dessa
+vibração. Então você consegue literalmente posicionar o gado onde você quiser. Então eles fazem isso para
+otimizar água, pasto, para reduzir a demanda de gente que tem que est lá para
+tirar as vacas de um certo lugar e levar para outro. Acabaram com o emprego do cachorrinho pastoreio. Então
+é, o cachorrinho pastoreio, tá tá tá é uma das vítimas de AI que não tá contabilizada nenhuma estatística. Eh, e
+esse é um business que tem um um uma perda de cliente, que é é o único
+business que a gente viu até hoje, que a perda é assim, de 0%, eles não perderam até hoje cliente.
+Ou seja, o cara, o quem adota não vai, o cara comprou a coleira inteligente da Houter, acabou, ele não vai embora. Não vai
+embora. A retenção do cara é 100%. Eles começaram na Nova Zelândia, eh depois
+eles foram paraa Austrália, agora estão nos Estados Unidos e a gente tá em conversas e estamos fazendo eh a a
+natural vinda deles para um país como o nosso, que obviamente tem eh um mercado
+excepcional para eles. Então, vale. E e assim, basicamente ela
+é essa coleira é um produto, é uma assinatura, é um é é viram é um é um SAS, quer dizer, um
+C size, né? Você você cada coleira que você coloca em cada cabeça, ela tem um custo mensal anual, depende do pacote
+que você faz. O software é a mesma coisa e obviamente é um é um é um business que
+quanto mais cabeças de gado usam a coleira, mais rentável esse business se torna. Caramba, simples, mas muito
+eficiente. E ainda mais um momento que a gente vive a necessidade de alimentar o mundo, né? O mundo ficando cada vez mais
+urbano, cada vez mais pessoas. É uma conexão bem legal. Inevitabilidade. É isso aí.
+E assim, eu entendo encontrar Anduril,
+como se encontra uma Houter lá na Nova Zelândia? Pois é. Eh, o a é a vantagem de você tá
+em fundos que são capazes de atrair gente interessante. Então, um dos nossos fundos em 2017 eh tava buscando uma tese
+de software fora da tela, software fora, software no mundo real e teve algum
+evento em que esse cara esbarrou com o sujeito da Nova Zelândia que tava pensando em fazer uma coisa desse tipo.
+E isso tinha um fit com a tese dele perfeita. Esse cara fez o investimento de novo,
+downside mínimo. Ele botou, não me lembro exatamente o cheque que ele botou, mas era uma empresa que valia 3
+milhões de dólares, quatro. Se dali a 6 meses não nada acontecesse, o cara perdeu um dinheiro não muito grande, se
+a coisa minimamente andasse, ele podia continuar. aquilo que eu te falei dos checkpoints, tanto que ele botou isso no
+fundo dele, no preceed. Aí a Houter fez o seed e quando ela foi fazer o series
+A, ele apresentou como coinvestimento pra gente. A gente fez o series A,
+a gente fez o series B e a gente já tá com no investimento
+direto, a gente tá com acho que oito vezes o markup dessa posição. Uhum.
+Porque porque a gente tava alocado num cara que achou esse sujeito, trouxe pra
+carteira, compartilhou com o investimento e aquilo que eu te falei, tinha aderência com a nossa tese, a
+gente fez a posição. Caramba, que que da hora. Tô vendo a história do do fundador também. É legal.
+O Craig Pigot é o próspero. Cresceu numa fazenda leiteira em
+mata-mata, na Nova Zelândia. É esse aí. Que coisa da hora. Bom, eh, cara,
+incrível essas histórias. Eu quero ouvir mais uma. E agora a gente já falou de eh segurança, agritec.
+Vamos falar de bio, falar de de biotec. Fal botec. [roncando] Eh, em 2000 e
+16, 16, é, acho que foi 2016, eh, eu fui
+para um evento em São Francisco, numa feira de biotec em que você tinha várias, assim, vários standes com ahã
+empreendedores mostrando o que que eles estavam trabalhando. Isso era um evento organizado por um
+fundo que a gente estava fazendo diligência para eventualmente investir e acabamos investindo dentro da Grids. E
+aí eu vi lá um stand de um sujeito que tava com a equipe dele mostrando uma tela com uma imagem bem distorcida de
+algumas coisas acontecendo que eu conseguia só identificar que era alguma coisa a nível celular e não mais do que
+isso. E eu fui perguntar o que que era e o cara me disse o seguinte: eh, ele
+tinha acabado de terminar o doutorado dele em Berkley e ele tinha dito o seguinte: "Olha, existe um problema médico hospitalar
+global que é a septicemia, que é a infecção generalizada, infecção hospitalar,
+que eh que acaba sendo muito comum em hospitais, mas é infecção generalizada. [roncando]
+E esse é um problema que mata nos Estados Unidos mais do que câncer,
+caramba. Ou seja, é um negócio de é uma emergência médica, tá? É classificado pela CDC como emergência médica. E aí
+ele me disse o seguinte, que um dos grandes problemas da septicemia
+é que você não consegue diagnosticá-la rápido, bastante.
+Por quê? Porque o paciente que pode
+estar entrando em septicemia, ele tem sintomas que não são óbvios para
+um médico dizer: "Está entrando em septicemia". O cara tem uma febre, às vezes o cara às vezes tem uma tosse, às
+vezes o cara tem muito frio, às vezes tem umas manchas no corpo, mas nada disso sozinho é indicativo, claro, ah, é
+septicemia. E a septicemia é curável. Como você faz
+o exame de sangue, você verifica se o corpo dele tá entrando em sepsis e você
+dá os antibióticos para matar a bactéria que tá criando todo esse desarranjo.
+Só que esse exame de sangue é um exame de sangue que pode levar de 12 a 36 horas para dar o resultado, para você
+fazer o antibiograma. E esse exame de sangue é um exame de sangue que uma vez
+que ele é feito, você espera esse tempo, essa janela, numa doença cuja
+mortalidade aumenta 7% por hora.  Então você tem uma dissonância ali
+crítica entre diagnosticar, tratar e salvar. Pois bem, esse sujeito da
+telinha com aquela figura, aquelas imagens cinzas, estranhas, ele falou, a
+gente tá desenvolvendo um teste para septicemia para resolver isso em 10 minutos. Seja vai tirar sangue e a gente
+vai tentar definir se isso é septicemia ou não em 10 minutos. Pois bem, passaram-se uns dois ou três anos, a
+gente investiu no fundo que tava patrocinando esse evento, esse fundo botou essa empresa que se chama Citovale
+na na carteira CT O V A L E. E a gente
+começou a acompanhar Citoval até que obviamente depois de algum ponto a gente resolveu investir diretamente nela.
+E a forma como esse tovale resolve o problema é usando visão computacional e
+inteligência artificial. Que que ela faz? Quando você pega uma amostra do sangue do paciente, bota no equipamento deles,
+eles jogam dois jatos de ar paralelos no fluido que tá transitando no
+equipamento deles, né, no sangue. E uma câmera de altíssima velocidade com o algoritmo de AI verifica a forma como
+uma célula de sangue tá respondendo essa compressão de ar.
+E pelo formato dessa compressão, ele consegue definir se é um organismo que
+tá com baixo, médio ou alto risco de estar em septicemia e ele pode iniciar o
+tratamento imediatamente. Caramba. E em termos de de valuation, o
+que que essa empresa? Essa essa empresa a gente entrou, ela valia perto de 50 de dólar.
+A última rodada que ela fez eh quase 300 de dólar e ela tá agora em fase de
+revenue building, né? Ela tá começando agora a ela tá com o equipamento pronto, FDA já aprovou, que é um marco super
+importante, então ela FDA approved, ela agora tá começando a implementar eh em
+grupos hospitalares nos Estados Unidos e a gente imagina que dá mais daqui a mais algum tempo ela vai eh imaginamos nós
+vai ser adquirida por algum player. Pô, sensacional, sensacional.
+[suspirando] Ô Gui, tem alguma história de alguma empresa que eh ela começou de um jeito,
+deu errado, mas a galera que tava lá era tão boa que eles conseguiram recriar e fazer alguma coisa diferente? Porque
+assim, eu fico pensando, acho que a gente passou rapidinho por isso aqui na conversa, mas que diferente de uma
+ideia, né, um sei lá, um cara cria uma empresa porque ele teve uma ideia muito boa, essa ideia dá errado e morreu, né,
+foi para zero. Agora esses caras que estão por trás, essas empresas são só o
+cérebro deles já já vale. É, é quase como quando uma empresa fale, mas ela tem um imóvel, né, pô, ela não pode
+valer menos que o imóvel, né? Então, o cara já tem um um conhecimento técnico,
+eh, um diploma que que é muito raro no mercado. Aconteceu? Você tem algum caso
+assim que você lembra? É, o que o que o que a gente vê e não é nem um caso específico, mas é um padrão que se
+forma, é o seguinte, é que é muito, quer dizer, muito comum, mas quando acontece de uma empresa a não conseguir eh
+avançar no seu projeto ideal, eh é muito comum aparecer uma outra empresa que
+diz: "Ó, eu quero fazer um aqui higher". Que a gente chama, que é acquisition misturado com higher. Eu quero contratar
+vocês através de uma aquisição, que é exatamente o que você falou. Eu quero esses cérebros na minha empresa agora.
+Então isso é uma coisa que a gente vê muito o o a empresa do cara, porque também uma coisa que é muito importante
+é que muitos dos empreendedores com os quais a gente trabalha são pessoas que são extremamente obstinadas. Então o
+cara quer fazer aquilo funcionar. É muito difícil às vezes para esses caras pivotarem para uma outra ideia. Por quê?
+Porque são caras que foram treinados de uma forma muito cartesiana, de uma forma muito eh eh dogmática em como fazer as
+coisas. Os outros não, tem um pouco mais de flexibilidade, mas esses que resolvem ir a estressar até o final daquela
+visão, eles muito comumente eles trazem pra mesa uma patente ou uma propriedade
+intelectual ou uma característica que interessa a uma outra empresa maior que
+fala: "Olha, eu vou te dar uma saída". Não vai ser uma saída espetacular, mas é
+uma saída. Mas assim, o preço para você dessa saída é que você tem aí alguns
+anos de trabalho comigo, não necessariamente desenvolvendo a sua ideia original, mas alguma coisa que nós
+acreditamos que é derivativa dessa sua ideia original. E e isso inclusive
+explica porque tem tanto, tão pouco right off, ou seja, tão pouca empresa que vai literalmente a zero nesse mundo
+de deeptech que a gente eh investe, porque eh mesmo quando as coisas não estão indo direito, em algum momento
+alguém vem e dá uma saída justamente para resgatar esses cérebros aí.
+Bom, agora o momento mais querendo ouvir a sua opinião mesmo.
+Você tá no mercado há muito tempo, então você viu praticamente o Willon Musk nascer aí nessas suas ideias. O qual que
+é a sua opinião sobre o Elon Musk? As empresas que ele tem? Eh, você investe
+em Elon Musk ou nas empresas que ele tem? Enfim, como é que uma pessoa que é tão conectada ao a à tecnologia de
+maneira geral, enxerga ele que talvez seja hoje o grande símbolo. E mas também
+queria que você falasse de mais pessoas, mas começar pelo Elon Musk. Eh, eu tenho uma eh uma forma bem eh eh
+acho que clara de tentar evitar
+eh posições ou eh investimentos que gerem ah algum tipo de prejuízo pros
+investidores, que é relativamente simples, que é assim, eu
+me pergunto, se der errado, eu tô ou no risco do investidor chegar
+para mim e falar, mas também, né, você investiu em fulano o Elon Musk tá nessa
+categoria, tá? Se o Willon Musk quebrar a Tesla ou a SpaceX ou a Xi ou a Grock e
+aparentemente agora todas são uma só, alguém vai chegar com muita razão e
+dizer: "Mas também, né, você investiu num cara que, pô, é polêmico, é complexo, é errático? H, pode ser um
+gênio, pode ser brilhante, pode ser um monte de coisa. Então, eu acho que o Elon Musk é uma pessoa que tem um arco,
+uma história única, cara que saiu da África do Sul, foi pro Canadá, chegou nos Estados Unidos,
+montou a PayPal, saiu, ã, se separou, criou SpaceX, que é um assim é um é um
+feito inacreditável. A SpaceX existe porque ninguém disse pro Inon Musk era impossível. Porque se alguém tivesse
+dito para ele, amigão, esquece, você não vai fazer uma empresa privada que lança foguete, o cara não quis saber, fez. Uma
+coisa que pouca gente sabe é que no dia que a SpaceX ia fazer o filing do
+Chapter 11, ou que a Tesla ia fazer o filing do Chapter 11, a SpaceX recebeu um
+contrato, foi paga e fez o bailout da Tesla. foi alguma coisa nessa linha no dia.
+Eh, a história repleta desses momentos em que o sucesso e o fracasso estão separados por um período aí de 24 horas.
+Então, eh, a gente tem exposição a SpaceX, a gente vai, obviamente, esperamos que esse IPO vá trazer aí
+algum resultado pros nossos investidores, mas eh dada a oportunidade
+de investir numa startup comandada pelo Elon Musk, a gente muito provavelmente
+não vai querer bancar esse risco. A gente vai terceirizar esse risco para alguém que esteja mais próximo e com
+mais capacidade de influenciar. Então vocês investiram na SpaceX, mas
+via um fundo, via um fundo, tá? É isso, tem exposição via um fundo, tá? Eh, e bom, e esses outros nomes,
+acho que o fundador da Nvidia, né, o Jason Huang, o como é que chegaram também investir? Enfim,
+na Nvidia, ela virou uma empresa pública, eu acho, em 99, eu posso estar enganado. Eh, e então assim, a Grids não
+existia, né? Eu tava ainda eh fresco, relativamente com pouco tempo de
+mercado, três anos de mercado. Então, a história da Nvidia é uma história interessante, né? Eh, eu vou rapidinho
+contar, não pode contar, sem pressa. É, eh, em tem uma professora de Stanford
+chamada Feifei Lee, né, famosa, escreveu um livro super legal sobre sobre a EA e tal. E a Feifeili, ela ela associa
+inteligência com visão. Ela fala o que o que define inteligência é a nossa
+capacidade de olhar para uma coisa e entender o que que essa coisa é. Então, ela criou um campeonato de algoritmos de
+visão. Esse campeonato, basicamente era você botava uma cena
+numa tela de computador e você fazia com que as pessoas rodassem os seus
+algoritmos para identificar o que que tava na tela. Porque esses são problemas para de reconhecimento de imagem pros
+quais nós, seres humanos, somos muito bem preparados. Mas máquinas são pésimamente preparadas.
+Se eu te pedir para multiplicar 194 por 17 de cabeça, você vai falar: "Puta,
+pera aí. Agora, se eu te perguntar o que que tá na estante atrás de você, você na hora falar isso, isso, isso, isso,
+isso." Se eu pedir pro computador fazer isso, essa conta é instantâneo. Se eu fizer a mesma coisa com a estante, ele
+vai, como assim? Entra. Ei. Então, esse campeonato era para avançar a fronteira
+de divisão computacional. Uhum. Em 2012,
+teve um grupo da Universidade de Toronto que mudou a régua desse campeonato
+porque melhorou em 10 pontos percentuais a capacidade de reconhecer o que tava na
+tela. Esse grupo da Universidade de Toronto era orientado por um sujeito chamado
+Jeffrey Hinton, que é o cara que ganhou o prêmio Nobel de física em 2024 ou 5, e
+é o cara que é o mais vocal dos críticos a AI como uma ferramenta que pode
+aniquilar os seres humanos. Tinha o Ilie Sutver que veio a cofundar
+a Open AI, que não tá mais lá. E tinha um outro cara e que
+chamava-se Alex e que deu o nome dele a rede, era a rede AlexNet.
+E a rede Alexnet funcionava da seguinte forma, quando eles estavam montando o
+algoritmo para submeter lá para o campeonato da
+Feili, eles falaram: "Ó, a gente precisa de uma placa para processar
+multiplicação de matrizes que a gente tá fazendo aqui." E aí um sujeito foi no amor xarifado da
+Universidade de Toronto e tinha lá pegando poeira uma placa de vídeo para
+videogame que ninguém tava usando e que era muito boa de fazer exatamente isso, multiplicação de matrizes para atualizar
+a tela de uma de um computador. Era uma placa da Nvidia. cara botou, rodou, a placa se se prestou
+perfeitamente a isso e o mercado de acadêmicos em 2012 e em diante começou a
+dizer: "Poxa, para rodar os modelos de inteligência artificial, essa placa de
+vídeo é bem legal". A Nvidia não montou a GPUs para atender
+um mercado que não existia. Ela montou GPUs para o mercado de videogames,
+só que ela tava no lugar certo, na hora certa, no almoxarifado, certo?
+No almoxarifado, certo. E ela se tornou uma empresa de 5 trilhões de dólares com
+esse pivotal moment. foi ali. Então, o grande mérito que eu acho que o Hank tem
+como líder da Nvidia é que ele tá maximizando de uma forma
+extraordinária, não só esse momento, como também o portfólio de investimentos
+da Nvidia, que se você olhar, que é a parte mais interessante do balanço deles, eles têm um braço de ventures,
+né? E eles têm vários investimentos diretos em empresas de biotecnologia e
+de robótica, porque eles sabem que a derivada imediata de EAI vai ser isso.
+Eles estão tentando se posicionar. Então é um cara que eu acho que tem muita capacidade e é um cara que vai acho que
+defender esse esse feudo que ele conseguiu criar meio que
+inadvertidamente, mas uma vez que ele percebeu que era um feudo, ele ele avançou de uma forma muito eh acho que
+inteligente. Mas talvez seja até por isso, né? O fato dele entender que foi um quase como um lance
+de sorte. Sim. Eh, ele fica muito mais humilde, né? E e até meio paranóico em querer defender.
+É possível. É possível. Absolutamente possível. Porque eu eu acredito, você deve conviver com muita gente super
+inteligente. Eu imagino que esses caras devem imaginar tanta gente falando: "Você é um gênio, você é um gênio, toma
+meu dinheiro, toma meu dinheiro". Esse cara deve imaginar que ele é o a pessoa mais inteligente do mundo, né? E é difícil,
+frequentemente acontece. É difícil ele ter uma uma visão autocrítica, né? A gente vê até síndrome
+de pequeno poder. Imagina com um cara que é avaliado em bilhões. Uma uma frase que eu que eu já falei
+para mais de um desses caras mais de uma vez é o seguinte: "Olha, eh eu sei que tem gente que é paranoica e às vezes não
+se justifica, porém às vezes até uma pessoa paranoica realmente tá sendo seguida por alguém. Não é paranoia, é
+verdade. Então é bom ter isso na cabeça. Eh, e o você falou do Openai, ia
+perguntar também do Sun Outman. É, o Sun Outman. Ele é um cara que ele, infelizmente, para ele e pra Openi, eu
+acho que ele que acho que colou nele uma imagem muito negativa, né? Apesar de
+naquele movimento de austing que fizeram dele no board, né? Tentaram tirar ele do board, houve uma um houve uma uma
+revolução interna na Open para trazê-lo de volta. Eh, como você falou, né?
+Embora tenham passado-se aí talvez dois ou três anos, parece que foram, né? Muito foi muito mais. Eh, ele agora ele
+é uma ele se torna figura um pouco polêmica, né, na relação com a Microsoft, na relação interna, com todas
+as pessoas que saíram da Open AI para abrir empresas semelhantes, com a competição que ele tá sofrendo da
+Anthropic, da Perplexity, obviamente da Google, dos open source models, como Lhama, como Deep Seek, que é uma outra
+história. Então eu acho que o Sam ele é um cara que tem obviamente uma história como investidor de venture pré open AI
+muito bem-sucedido. Ele sempre foi um cara muito com uma mão muito boa pra venture. Eh, mas agora acho que ele ele
+tem uma uma ladeira para subir para conquistar, eu acho, um pouco mais de goodwill do mercado. E quando o mercado,
+qualquer que seja ele, eh começa a perder Will, é difícil eh para um executivo e eh sustentar a posição ou
+sustentar a a narrativa que ele tá tentando eh trazer. Eu eu queria saber também sobre o Jeff
+Bezos e até com uma é uma piada, mas você pode comentar também o porque que a Alexa parecia tão inteligente quando
+surgiu e hoje parece que ela ficou tão para trás em relação a todo mundo, né? Eh, o Jeff Bezos, ele é um cara que ele
+tá, quer dizer, ele ele tem uma mão em em em potes que são quase ortogonais.
+Ele tem uma empresa eh tipo SpaceX, né, que é a Blue Origin. Ele tem o Business de Retail, do qual ele meio que se
+afastou, que é o maior marketplace eh do mundo. Ele tá agora basicamente focado
+no projeto Prometeus, que é o projeto de AI na manufatura. De novo, é o que a
+gente tava falando, né? A AI é uma camada de infraestrutura. O que que ele vai fazer em cima dela? Ele
+tá apostando o último número que houveram 100 bilhões de dólares num fundo para investir em modernização de
+de manufatura usando AI. Então, eu acho que é muito possível que eles estejam
+tentando desenvolver o cérebro da Alexa internamente, né? Não esquece que a
+Amazon tem um business que é separado, mas que é reportado junto, que é AWS,
+que nesse momento de hyper scaling com Azuri e com Google Cloud é um dos
+melhores business do mundo para você ter. Eh, mas não necessariamente ele tem
+um um grupo para desenvolver esse cérebro, embora a Amazon esteja
+ativamente desenvolvendo chips, né, o eh desenvolvendo silício para colocar nos
+data centers dela, assim como a Google desenvolveu dela. E pra fechar aí, eu queria ouvir uma
+algum nome que eu não falei, mas talvez até um, vamos dizer, o quase como se fosse um um gênio incompreendido ou um
+guru, que guru é um termo ruim, né? Mas algum grande nome aí que não tem o mesmo
+hype desses que eu falei, mas as pessoas deveriam dar mais atenção. Eu eu eu acho que um cara que agora
+ganhou um pouco, quer dizer, um pouco não, muito reconhecimento é um cara chamado David Baker. Ele é da Universidade de Washington. Ele ganhou o
+prêmio Nobel de química junto com Demis Rassabes do Deep Mind e com John Jumper. O David Baker é um cara de uma humildade
+assim inacred. Você tem uma ideia? Eh, Thaago, eh, no dia que ele soube que ele
+ganhou o prêmio Nobel, eu tava com ele, eu tava na Universidade de Washington, tava visitando uma startup na Universidade, ganhou Nobel de química em 2024.
+É isso aí. Eu tava lá 24, 25, 24, 24. Então, tava lá, o tempo voa. Eh, e
+eu cheguei um pouquinho depois do anúncio. Ele tava lá num gramado com algumas alguns alunos e alguns
+colaboradores comendo a pizza, não sei o quê. E aí ele disse o seguinte: "Olha,
+você desculpa, né, mas acabei de ganar o prêmio Nobel, acabei de saber assim mesmo, mas se você quiser, poxa, por
+favor, usa a minha sala, esse fulano aqui vai te receber, você faz a reunião com ele e tal". Quero o cara da startup.
+Então, cara de uma humildade incrível e o cara que tá trabalhando na fronteira do mercado de biotecnologia, cara que tá
+trabalhando na fronteira do que vai ser, eu acho, uma das revoluções mais importantes que os próximos, você
+perguntou no início, né, da conversa, os próximos 10 anos vão vão mostrar. Eu acho que esse é um cara que tá muito bem
+posicionado para contar pra gente sobre esses 10 anos. Gui, cara, eu acho que esse episódio vai
+ter uma repercussão grande. Caso minha projeção esteja certa, já quero já
+deixar o convite aberto pra gente falar de mais coisas aqui numa sua, numa próxima vinda sua ou até meio que
+traçar, porque eu eu fui conversando no chatt, ele me deu uma lista de umas 15 pessoas para perguntar para você a
+opinião, mas aí eu deixo para uma próxima conversa, cara, sensacional. [roncando] Eh, antes da gente entrar no pingpong,
+assim, vocês são fundo de venture capital, né? Então, não é acessível para pro
+investidor o o varejão de maneira geral ou como é que faz para investir? É, não, o nosso investimento mínimo é alto. A
+gente basicamente quer manter a GRDES como uma empresa com um grupo relativamente limitado de clientes. Eh,
+a gente não se coloca em plataforma de distribuição. A gente quer realmente manter essa capacidade de poder atender
+os nossos investidores com conversas, com insightes de uma forma bem ativa. Eh, então, eh, a gente não tem planos de
+de varejar e o produto, o que me deixa até mais honrado de você tá aqui, né? Porque muitas vezes o
+gestor veio aqui para, pô, quero falar do meu fundo para ganhar mais investidor. Então, ó, sinto muito, galera, espero que vocês tenham gostado
+do conteúdo, porque o investimento é só para poucos, mas o ping-pong ele não vai escapar. Eh, Gui, vou perguntar para
+você. Eh, e só eu não tô super íntimo do Gu, o nome dele é Gui mesmo, né? Não é
+G, é Gui, o Gui Peremúter vai falar agora dos livros, cara. Imagina os livros que ele
+lê, man. Vamos lá. Livro, música, convidado e a maior gentileza. Vamos lá pelo livro primeiro. Um livro que você
+recomenda pra nossa audiência, um livro técnico. Pois é, tem um livro que eu acho muito legal, que eu li duas vezes. É um dos
+poucos livros que eu quis, fiz questão de reler porque é um livro muito legal. É um livro chamado Scale, eh, do Jeff
+West, G e O F West. Esse cara é um pesquisador do Santa Fé Institute, que é
+um think tank extraordinário, eh, obviamente em Santa Fé. E a tese do
+livro que ele apresenta de uma forma muito interessante é que ah os
+benefícios que você ganha ao escalar as coisas, que é uma coisa que eu acho que tem aplicabilidade pro nosso business
+aqui, pro business de mercado, pro business de podcast, para um business de de varejo, enfim, tem múltiplas
+aplicações e que ele apresenta como algo que funciona desde sistemas biológicos
+até sistemas artificiais. É muito interessante. Eu acho que todo mundo que
+que usou esse tempo aí para nos ouvir vai acho que ter algum interesse nessa
+jornada aí. Eh, qual é qual o primeiro nome dele? Desculpa. É Jeff. É Jeffre, eu acho. G E O F F F F
+F F F F F R E. Achei. Achou achei o Jeffre aqui. Scale. Boa. Eh, esse aqui, né? The
+Universal Laws of Life, growth and death in organism. É isso aí. Tá beleza. Muito bacana. deixar separado
+aqui. Eh, e o o livro Tema Livre, você tem espaço para uma leitura ficção?
+[risadas] Até tem pra ficção, mas assim, o o livro que eu acho que é mais apropriado pelo momento que a gente tá
+vivendo, que não é ficção, mas é é uma leitura bem fácil porque tem uma
+narrativa bacana, é um livro chamado Material World Ed Conway, né? Material
+World é um livro que fala de uma coisa que eu acho que o mercado tá se
+atentando e aí você vê até pelos preços de de mercados públicos agora, que é o
+fato de que você pode ter todas as ideias e todos os algoritmos e toda a tecnologia do mundo dentro de um de uma
+tela, mas você precisa do mundo físico para fazer as coisas acontecerem. E o
+material world é sobre isso, é sobre concreto, é sobre cobre, é sobre aço, é
+sobre eh areia, que é a base, obviamente do do silício. Então, eh é um livro
+extremamente interessante, uma jornada sobre a importância desses materiais ao longo do tempo e e não chega, obviamente
+não é ficção, mas eu acho que é uma leitura eh muito apropriada pro momento que a gente tá vivendo.
+Legal. Já botei no meu carrinho aqui também. Zoei a Alexa, mas aqui tudo é Amazon, tá? Eh, podia ser um patrocínio,
+viu Amazon? Fica a dica aí. Só o que eu compro de livro aqui, ó. Imagina, esse é o episódio 360 e pouco. Cada um vem com
+cada convidado vem com dois. Às vezes tem dois convidados. Então, aliás, lembrando, né, gente, nossa biblioteca
+Marketmers, eh, enquanto a gente não tem um um agente que já compila todos os
+livros enquanto a gente fala e manda para vocês todos, vocês podem mandar um e-mail para contato@makers.com.br
+e a gente devolve com a lista de livros. Na verdade, a gente faz isso porque a gente gosta de ver quem é que tá
+interessado no livro. Aí é um dia da semana que vira spam nossa caixa, mas tudo bem por um bom motivo.
+Uma música. E por que essa música? [suspirando] Uh, uma música.
+Eu, enfim, [roncando] tem uma música que eu, tem uma música que eu gosto demais,
+chamada Telegraph Road, eh, de um grupo chamado um grupo em inglês chamado Dire Straights,
+eh, que é uma música que primeiro tem um arranjo e uma harmonia, enfim, que eu
+acho extremamente eh eh bonita. É uma música que tem a bagatela de 14 minutos.
+É uma música que é uma saga e é uma música que conta exatamente uma história de construção, né, de você montar uma
+coisa que não existia, de montar uma estrada que acompanha o progresso das telecomunicações, que é a estrada do
+telégrafo, que tem obviamente muito a ver com que a gente acredita o que a gente faz. Então é essa Telegraph Road
+do Das Strats. Pô, essa eu vou ouvir com certeza. Não conheço porque para conhecer essa música
+14 [limpando a garganta] minutos tem que ser fã da banda mesmo, né? Tem que ser fã da banda. Eu só conheço felizmente ou infelizmente as músicas
+que só tocam na rádio, né, que é ofico.
+Então, já deixar separado aqui, já dá o play aqui para assim que acabar eu ouvir
+um convidado que você gostaria de ver aqui no Market Man. Pode ser gringo, hein? Pode ser cringo.
+Pode, pode. Eh, não, eu acho que assim,
+eu acho, se quiser chamar o seu amigo ganhou o prêmio Nobel, aí a gente David B, se ele vier pro Brasil, eu falo: "Pô, passa lá no makoto."
+É, e eu acho que tem uma, eu acho que tem uma história pra gente tentar e, e, e, pô, dado o, o, o, o, pô, o sucesso e
+dado a penetração, a capilaridade que o market makers tem, eu acho que conseguir
+trazer alguém que possa eh fazer um pouco do case, da visão de estado
+brasileiro, não de governo, né, porque o o o governo é cíclico, né? O governo é
+muito cíclico e os prazos com os quais a gente lida em Deeptech, eles transcendem
+uma determinada gestão de 4 ou 5 anos, né? Uhum. Então, trazer eh eh figuras eh que
+tenham, obviamente, a caneta e que tenham o conhecimento e que tenham o acesso a
+leis e legislações ou pelo menos estratégias para tentar mudar esse
+quadro que a gente conversou sobre o Brasil tá muito bem posicionado academicamente, mas tão mal posicionado
+competitivamente. E aí eu tô falando especificamente de ciência, tecnologia e inovação. Eu acho
+que seria uma conversa muito apropriada, porque o mundo não vai desacelerar pra gente. O mundo vai falar: "Não, pera aí
+que o Brasil tem um catchup para fazer". E a gente historicamente já perdeu tanta janela, tanta oportunidade, tantas vezes
+o Brasil ficou como uma oportunidade, eh, ou como um país que é o futuro, que
+esse futuro ele vai chegando, ele vai passando e a gente vai olhando para ele passar. Então, acho que é uma pessoa eh
+que tenha essa essa capacidade eh e essa articulação e essa visão mais est de
+estado, de projeto de estado, seria alguém que eu gostaria muito de ver aqui. Pô, mas eu pensei que você ia terminar
+com o nome da pessoa. Eu não sei quem é essa pessoa. [risadas] Pode ser você, Gui. Você você pensa em
+fazer alguma [roncando] quase que eu ia falar carreira política, mas poderia te ofender, mas partir para esse lado do
+estado? Não, eu assim eu eu certamente o projeto do do Deeptech Summit é o tipo
+de forma, o tipo de ângulo que eu acho que a gente consegue contribu contribuir mais efetivamente, é tentando criar
+fóruns para integrar esse esses grupos de governo, de investidores, de
+empreendedores, eh esse tipo de agente. Mas mas nesse papel, bom, quando você descobrir quem for essa
+pessoa, pode passar meu WhatsApp no WhatsApp já é mais moderno. Se você for uma dessas pessoas também comenta aqui
+no vídeo, fala: "Opa, me chama que eu falo". Ô, indica alguém. Mas, pô, faria com prazer realmente um
+papo que seria muito importante pro Brasil. Por último, mas não menos importante, qual foi a maior gentileza
+que foi feita na vida de Giper Emúlter?
+Eu quando eu tava eh
+quando eu tava assim dividido entre uma carreira
+acadêmica para doutorado ou ir pro mercado, eh uma pessoa com quem eu fui conversar
+foi um ex-chefe que eu tive na IBM, IBM, na que onde eu fiz um estágio, fiz um
+estágio na IBM quando eu tava na na na graduação de engenharia. eh, chamado Paulo Mozar Gami Silva. O
+Mozar é um foi um cara, ele infelizmente já faleceu, que ele era o gerente lá do
+grupo onde eu trabalhei na EBM. E quando eu saí da IBM, eh, a despeito de uma
+proposta de emprego que ele tinha me feito, eu gentilmente declinei que eu queria fazer mestrado, ele falou:
+"Entendo, boa sorte" e tal. Quando eu tava nessa encruzilhada, eu fui falar com ele, que já tinha saído do DBM nessa
+época e a gente sentou para conversar e ele me falou, eu não sei nem se ele
+classificar isso como uma gentileza, mas para mim foi porque foi um insite que até hoje eu guardo e que é extremamente
+verdadeiro. Ele falou o seguinte: "Olha, eh, existe um conjunto de pessoas no mundo
+que é muito técnico, que sabe matemática, sabe física, sabe química, sabe fazer conta, sabe estatística.
+Existe um conjunto de pessoas que consegue comunicar ideias, conceitos, produtos." Muito bem. Existe um conjunto
+de pessoas desse tamanho que tá na interseção desses dois. E você é um cara que tá nesse nessa
+interseção. Então, o que quer que você faça, você tem que aproveitar que você tá nessa intercessão, porque isso não
+acontece de forma frequente. E isso realmente influenciou muito a
+minha carreira depois no Pactual, ah, depois na Grids, porque eu sempre ouvi
+muito exatamente isso, que essa essa esse lastro técnico, ele tem valor
+sozinho, mas ele potencializa de uma forma extremamente útil pro investidor,
+pro cliente, na hora que você consegue revestir isso com uma venda ou uma
+apresentação ou [limpando a garganta] uma roupagem mais eh compreensível. Então isso acho que foi uma gentileza
+porque ele conseguiu colocar de uma forma muito fácil eh esse essa combinação de características que hoje
+eu procuro e eu vejo eh eh em diversos empreendedores eh que a gente trabalha
+com quem a gente trabalha. Pô, que maravilha. E bom, aproveitar a gentileza, deixa eu mandar um abraço pro
+Dan Coen, que foi quem fez a gentileza de nos conectar. fortíssimo.
+Você foi lá no podcast do Dan, eu também já participei do podcast do Dan, é um cara sensacional. E quando o ele
+entrevistou o Gui, ele falou: "Salomão, você tem que levar o Gui no Marketmers".  história da hora que acho que a sua
+audiência vai gostar. E bom, nos encontramos, já falamos duas, três vezes e agora você tá aqui e deu essa aula pra
+gente, cara. Sensacional. Obrigado. Sucesso com a sua gestora. Espero que
+alguns investidores que eh possam te convencer a abrir o o veículo para mais
+gente, mas principalmente que isso avance mais no Brasil. É muito bom ter pessoas como você ajudando a propagar
+esse conhecimento aqui no Brasil. Valeu demais. Obrigado pelo convite, Thiago. Obrigado. Você que viu até o final, joinha no
+vídeo, se inscreve no canal. Lembre sempre que o Market Makers está aqui, ó, toda terça, quinta e domingo, 18 horas,
+sempre comigo aqui desse lado e alguém bem mais inteligente que eu do outro lado compartilhando conhecimento com a
+gente. Até a próxima e tchau.

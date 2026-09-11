@@ -1,0 +1,199 @@
+Hey, I'm Raj. I want to tell a story. Me
+and my friend Fos, we are building
+project together. We are using AI coding
+tools every day. Cloud code, cursor,
+copilot, codeex, normal stuff. One month
+our A bill was fine. Next month, huge.
+We did nothing different. Same project,
+same tools, just more of it. We
+panicked. We looked what was happening
+and we found something surprising. Most
+of the money was not the AI thinking
+most of it was
+sending too much context
+files the AI don't need context is
+important code that was not relevant
+sent anyway every time. So me and my
+friend Fos we started to building
+something to fix it. In this talk
+is about what we built and what we
+learned.
+Every a coding tools
+uh does same thing. It send your code to
+the model as a context and the tools
+thinks more context is better. We
+measured typical query on our project.
+It was sending 45,000 tokens of context
+but the part of actually mattered is
+about 5,000 only. Other 40,000 tokens
+are not useful but we paid for them
+every single query.
+It's um that's like ordering a pizza and
+paying for extra nine pizzas you don't
+eat every time.
+We tried three things uh before we found
+what works. First, we changed our prompt
+be short only show relevant code. Sounds
+good, but it does not work. The model
+already got 45,000 tokens before it's
+read the prompt cost already happened.
+Second, we change the model setting like
+a max token temperature. Same problem.
+This changes the output not the input.
+Uh money is in the input. Third uh
+output compression.
+This one actually works. We told the
+model to write short answers. It cut the
+output 75%age but output only
+uh about 10%age of the cost. So 75%age
+of a small number still small number not
+enough. We need to fix the input.
+This is the most important slide. 90%age
+of your AA cost is input files, search
+results, context you send in. Only
+10%age is output. The code uh the A
+writes back. So if you cut the output by
+75%age, you can save about 8 8%age
+total. But if you cut input by 94
+percentage, you can save about 61%age
+total. Same math but different result.
+Fix the input. That's where your money
+goes.
+We built a local search layer. It sits
+between your codebase and the AI.
+Instead of sending whole files, the AI
+search and index, it gets back only
+small piece of code actually it needs.
+Here how it works. Five steps. Step one,
+we read the code and uh break into small
+pieces, functions, classes, methods, not
+a random chunks, proper piece that makes
+sense. Step two, we run two searches at
+at the same time. One search find the
+code by meaning, one search find the
+code by exact words, then combine the
+results. This is the big saving comes
+from. Steps three, we can shrink the
+results even more. Keep only the
+function name and the description. Cut
+50 line function down to five lines.
+Step four, uh we track the connection
+with the which function call which. So
+if you find one piece of code, you can
+find everything connected to it. Step
+five, every results get score. If the
+score is too low, we don't send it. No
+bad context. Everything runs on your
+machine. Nothing goes to the cloud. This
+is the beauty.
+Why do we run two searches instead of
+one? Because each one has a weakness.
+Meaning based search is good at finding
+related ideas, but it misses exact
+names. you search for um authenticate
+user function and it might show you
+different O function instead because
+they are similar meaning. The wordbased
+search is good at exact names but it
+misses related ideas. You search for
+login flow and it misses everything that
+says sign in. By themsel both searches
+miss about one in four results. Together
+they miss about one in 10. They fix each
+other weakness spots.
+Here is the hard part. F and I spend
+most of the time on the search finds
+results but they actually relevant.
+Sometimes search results returns 10
+results and none of them are right. If
+the a use the bad results it gives
+confident wrong answer.
+The worst than no answer. We tried
+asking A to judge its own results. Too
+slow. Add two three seconds every time.
+We try to fix the score limit. Too
+simple. Short question score low. Even
+when the match is perfect. It worked.
+Some simple formula. 50%age
+meaning score. 30%age keyword score.
+20%age how the recent code is. And the
+limit adjusts based on the current
+result. It runs uh 0.4 milliseconds. No
+extra a calls needed. The lesson we
+learned simple formula beats the complex
+model most of the time.
+We need numbers not just stories. So
+here are ours. We tested an opensource
+uh real project first API. 53 files, 20
+real questions a developer would ask
+without using our tool. 83
+uh K tokens per questions with our
+tools. Uh 4.9K tokens per question that
+is 94%age less with the extra
+compression on top. uh 523 tokens per
+question and the accuracy still um
+find the right code 90%age of the code
+these numbers are real test is public
+you can run it yourself the command is
+on screen
+I want to be honest about the limits the
+94%age again the worst case reading full
+files every time in a real life The
+tools like a cloud code already smarter
+than uh that real savings are lower than
+94%age.
+We use full uh filebase because it is
+the only one we can measure the same way
+every time. Big mixed code base are
+hard. We tested on a large product with
+u 396 files. The recall dropped almost
+zero. If your files each do one thing,
+it works well. If your files do many
+things, it struggles. Uh we use a small
+fast model for search. It's quick.
+Reindexing takes under a second. But the
+bigger model would uh find more. We
+choose speed over perfection.
+Simple choices work better than complex
+one. Small database instead of big
+infrastructure. two searches instead of
+one fancy one local instead of cloud
+simple one
+here is something false pointed out
+early on we use many tools cloud code
+for hard problems cursor for quick edits
+copilot for small uh completions each
+tools starts uh fresh every time they do
+not share anything you explain the same
+code base to three different days. We
+built one shared index so all your tools
+connect to it. Same search, same results
+for all of them. Uh and we added memory.
+Uh when one tools learn something about
+your project, that knowledge stays. Next
+session different tool, same project,
+the context is already there. We explain
+the codebase once every tool remembered.
+This is the saving report on real
+project. 247 queries 12.4 million tokens
+saved nearly 186 not spent.
+Most of the savings 84%age came from
+search layer. The rest of them
+compression. This is not an estimate.
+The tool tracks every query. It compares
+what would have been sent against what
+was sent. Then it multiplies by the
+model price. Run it on your project for
+a week. See your own number.
+Me and F built this because we had a
+huge bill and no good answer. The answer
+was not better model. The answer was
+sending less. We argue about which model
+is best OP or Sonut. But the models may
+be 30%age of the cost but other 70%age
+is what you feed it. Fix the input. The
+model choice matters less than you
+think. One command to try it. CCE it's
+free opensource QR code on screen. Try
+it. See the number. Tell us what you
+saved. Thanks. Happy coding.

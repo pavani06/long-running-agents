@@ -1,0 +1,457 @@
+this was a really special episode I had Ras Mike on and we teach you he teaches
+you how to get the most out of AI to build your SAS startup and we actually
+go through a new tool called lovable uh which not many people have talked about but we teach you how to use lovable to
+go and create a SAS startup in minutes but also one that people will love
+you're going to enjoy this episode it's an absolute [Music]
+treat all right special episode Ras Mike is back you asked he's back and what are
+we talking about today man you know I feel like family at this point so thank you for having me Greg but today I think
+we want to get a little bit in the weeds and talk about how to get the best out of these AI tools and models because
+every single day they're getting better but are you getting better on how to use them and that's what we're going to be talking about yeah and I think I think
+people should stick to the end for this one just because this is this is what people need in order to get the most out
+of these tools so I'm sure a lot of people have watched some of our episodes even and have been struggling with some
+of these AI tools but I think what you're going to teach them today is going to just sober them up a little bit
+and give them what they need to actually get the most out of it so without further Ado Mr Ros
+Mike thank you Mr Greg I appreciate that so one of the things that um if you've
+never worked like a big corporate job on the tech side um one of the things you'll realize is how a lot of these
+companies work and maybe I'll draw I'll scribble my thoughts um often time like
+let's say there's this big product that the team or the company wants to build
+and usually the relationship looks like this on one side you have uh product de
+uh product managers right the people that everyone wants to make fun of on Twitter and then you have the developers
+right and believe it or not product managers don't just you know film Tik Tok videos doing day in the Liv they
+they actually are an important part of the organization where they Define certain things right so let's say a
+feature is going to be built if a feature is going to be built believe it or not in most organizations the
+developers are not the creatives right we sort of get told what to build now
+we'll give input uh we give you know like feedback but most of the time it's the product manager that's going to give
+us the product spec what it needs to look like right the product person will either work with like maybe a ux person
+so there'll be like a ux team here right there'll be a ux team here and then
+maybe there's like some business people in suits who are over paid here that are going to tell us what to do right we'll
+just do business here so but the product person takes information from all these
+people all the needed assets all the needed information combines it together
+and distills that information to the developer right so what does you know what what's needed in the feature right
+um if some of you are product people watching you're familiar with a PRD which is a product uh road map or
+development road map or PDR whatever the term is called and basically this information is then handed over to the
+developer the developer will have questions but at the end of the day if the information is good enough the
+developer can successfully build this and I experienced this on a day-to-day I
+work with great product people and I realize Greg that a lot of people are um
+are LED down by the AI tools hallucinating or giving them the wrong thing and that's because most people are
+terrible product managers if you frame your yourself as you know when you're typing in the AI model that you are a
+product manager you're you're I hope your mind shifts because giving it one
+prompt saying oh build this for me and then expecting it to build exactly what's in your mind is what we call
+daydreaming right so one of the things that I really want to communicate and Greg I would love your feedback is
+collecting all the information that you need what kind of flows do you need what what uh features are you trying to build
+what even is the core product you're trying to build right right if you don't have these things figured out and you're
+just going to prompt your way to success unless you have um the highest
+subscription for any AI tool you're just going to burn credits right so I really encourage people going back to this part
+is knowing how to write knowing how to define uh features with extreme precision and studying product and I I
+say this because I've worked with I work with great product managers now but I've worked with terrible ones and there have
+been times where requirements have been given to us developers and we've literally built the exact opposite of
+what they were thinking because they didn't communicate what they were thinking properly so don't assume the model knows the models are dumb they're
+trained on thousands of lines millions of lines of code so they can sort of predict what you're exactly asking them
+but they don't know you are the one to know and that's one of the I think best
+ways to get the best out of your AI uh tools you need to be a product person now and Greg I don't know if I just
+rambled for a few minutes but hopefully that sort of made sense dude can I just share my screen I
+know this is Off Script please at my last company I I raised
+money by this guy named Josh Elman and people who in Silicon Valley know Josh Elman he was like one of the first
+product managers of LinkedIn Twitter Facebook like you you know
+he's he's kind of like ask ke beer who's the best product
+manager he'll be like Josh Elman and he has this really good presentation around what is a product manager do and I'm
+going to I'm going to fly through this within 90 seconds just so people get a sense of like what a product manager
+does um well what does a so this is old right what doesn't a product manager do write code right um so that's going to
+change um but a lot of the a lot of the Frameworks here still make sense so what does a product manager do Define define
+the market and customer launch timing sales and marketing uh collateral Define
+the problem and value proposition competitors products and capabilities Define the requirements and road maps
+that's what you were talking about the PRD product requirement document internal external stakeholder
+communication this is more important for bigger companies but still matters product evangelist and Champion so and
+then more simply it's kind of the intersection of where ux Tech and businesses
+that's what that's what a product manager is um I'm going to keep going through
+this so uh one of my favorite Parts
+here where is it in real okay you know
+basically it's you're the life of a glorified notaker some people think the job of a product manager is glorious in
+reality the most important thing you do is document decisions follow-up notes usually take longer than actual
+meetings um so I think that you know I'm just scrolling through this you need to
+learn people need to learn how to become a great product manager and it's a lot of these Frameworks around like
+advocating for the user how to communicate how to how to take notes um
+you're not don't think of yourself I I don't think of yourself as an engineer as a builder I think of yourself as a
+product manager first and then a builder second quick ad break let me tell you
+about a business I invested in it's called boring marketing.com so a few
+years ago I met this group of people that were some of the best SEO experts
+in the world they were behind getting some of the biggest companies found on Google and the secret sauce is they've
+got a set of technology and AI that could help you out rank your competition
+so for my own businesses I wanted that I didn't want to have to rely on Mark Zuckerberg I didn't want to depend on
+ads to drive customers to my businesses I wanted to rank high in Google that's
+why I like SEO and that's why I use boring marketing.com and that's why I invested in it they're so confident in
+their approach that they offer a 30-day Sprint with a 100% money back guarantee who does that nowadays so check it out
+highly recommend boring marketing.com so yeah I mean that that's perfect right um
+I definitely do think great product people will be great users of the models uh just because again i' I've seen a lot
+of people like write oh create a to-do list a SAS business for me like what
+does that mean right like how many pages do you need is there an accounts page is there going to be authentication so all
+these things are very very much necessary and thank you for you know confirming my my thesis on this uh with
+that slideshow now the second thing I think that's going to help people with getting the best out of AI is just
+understanding the basics of the web and I I I I don't mean learning how to code and all that stuff although you know I'm
+a big fan of coding I love writing codes and I think if people gave it a shot they would actually enjoy it but that's
+not what I'm trying to share essentially what I think is it's very important to understand like what technologies these
+tools use um right off the bat like I can already tell you um bolt for example
+bolt. I know there's a lot of people's favorite uses react plus v off the bat
+right so whenever you start off a new bolt app it uses react for the front end and V is like the compiler the one that
+builds the app if you use uh v0 which uh recently launch deployments which is
+pretty awesome uh VZ uses nextjs under the hood right so like what are what's
+nextjs what's react what are these tools and a lot of people you might hear a lot of people talk about superbase as a
+database provider right what does super base even mean and I think having a basic understanding of these things can
+help and that's I'm here to break down so in the web there are three big like
+sections of the web right like of a proper website SAS whatever you want to call it there's a client side a server
+side and a data storage side pretty simple stuff the client side is what you see so when I go on uh my portfolio C
+rosic doxyz what I see this is the client this is the front end right so
+this is where the user interacts this is your website and then the server is where all the fancy math apis business
+logic and all that stuff happens and then your database is where all the data stored right so if a user signs up if
+let's say I have a can band board and I create my to-do list that information
+needs to be stored and has to be associated with my username so when I log out and then I log back in that same
+data is there persist persists that's what a database is for so this three
+block system is what creates a functional SAS I bring that up because
+having this understanding will help you identify where things are going wrong when you're prompting your models and
+here's why a lot of people are good at going to a model like for example I can
+go to vzer and say uh create um landing page for a lawn moing business if I
+spelled mowing wrong I apologize to my English teacher but so while VZ is
+prompting what I wanted to show you is right now what I prompted essentially what VZ is going to do is going to work
+on the front end because I gave it no instructions on what to do on the back I did not tell it we need authentication I
+did not tell it we need payments I did not tell that we need a database so most people start off with a prompt like this
+and yes it's writing some fancy looking code but all I'm going to get is an AI
+generated landing page and that's because I just worked on the front end so it's very important that I understand
+the difference between what a front end is a backend is and a database is but here's a perfect Here's the the the the
+crazy part of where we where we are in a society as a tech ecosystem you have
+companies that are called and Greg I'm sure you're familiar with this companies that are called backend as a service
+meaning front end is generally considered to be easy though it's not but backend is the is the difficult part
+you need to worry about security you need to worry about scale I had a startup one time during 2023 a web3
+startup um it grew so much that the backend uh the the application we built
+was not built for scale so it literally broke like it it PE people cannot access
+it right but we moved over to a backend as a service and guess what they started
+they handled scale they handled all the users they handled all the fluctuation and a lot of people know these back in
+as a Services you have a super base you have a slepton one and and Greg maybe
+bring them on the Pod because they're a great team and their tools amazing a convex these tools basically what they
+allow you to do is they build out your database so if we go back to my drawing
+they build out your server and they build out your database and all you kind of have to do is worry about your client
+and what your client calls um on the server and the database and I know it sounds like I'm saying a bunch of mumbo
+jumbo but really what a successful AI tool Builder is going to do is they're
+going to identify okay what am I going to do for my front end so this landing page that I
+just built on v0 that unfortunately broke let's click fix there uh
+oh um so people are going to need to identify okay what does my front end
+look like being a product uh manager but then what backend as a service do I use
+do I use superbase do I use convex or do I use whatever is out in the market
+right I think these two are the best ones and I enjoy both and basically what this allows you to do is you now have
+the ability through these tools to build a full stack application because an
+application is not just a landing page you need authentication user needs to be able to sign up you need a database data
+needs to be stored you need payments people need to pay you I hope you want to get paid and having this Frame of
+Mind understanding that there's a front end that you have to worry about there's a backend in a database you have to worry about there's authentication that
+you have to worry about is important to know but more than that it's important to pick which tool you want to use for
+the job and this is why I wanted to talk about uh Greg before I get into it lovable which is a new tool you know a
+new AI developer tool uh development tool but what's cool about lovable is
+they have super base integrated so it takes one prompt to get your backend set
+up it takes one prompt to get your database set up it takes one prompt to take your off set up but I guess before
+we get into the building stuff did that kind of make sense or did I just Yap technical tget no that it makes complete
+sense I you know maybe this is two in the weeds but when you're building something how do you think about using
+super base versus convex like they're both such great plat you know platforms so how do you how do you know what to
+pick yeah so it it definitely is going to get in the weeds because generally they're both great at what they do now
+convex wins when it comes to real time stuff right so if you wanted to build a
+chat application or something where real time like you need some sort of real time notification or you're building
+some sort of like collaborative tool and you need people to see what other people are doing I think convex wins not that
+superbase can't do it but convex by default is uh real time so anything you
+do with convex you get the data real time which is great but there are people and this might be too technical who
+might need a postgress database right that that's the main database that superbase offers and they're the best at
+that no one does postgress the way superbase does in terms of DX developer experience especially right so it really
+depends on the application the user building the best way I would I would
+say for someone who might not be as technical as your average developer is I would ask an AI model I'd go on chat jpt
+Claud and be like this is what I'm trying to build and I I know there are these two backend as a Services which one is better for my specific use case
+there might be one where convex is better and there might be one where super base is better but generally speaking both are great Solutions
+beautiful all right let's uh let's go into dare I say the
+uh the the vzero killer the bolt killer the uh the brand new what everyone's
+talking about lovable yeah and I think we're going to get more of these because
+YC just keeps funding a lot of these uh tools so that really means one of these
+is going to explode and I think if someone spends time on the core
+fundamentals whatever AI tool ends up winning you you'll be a great Builder with it right so let's you know let's
+start let's build I don't know um I don't want to get too crazy but let's
+build maybe um any ideas Greg something simple that's not
+too monstrous um could I mean I don't know how
+monstrous this is but what about like a not taking tool okay um I want a not
+taking tool for Founders I want to build a not taking
+SAS for Founders okay now
+there should be a user
+authentication there should be a nice clean landing page explaining why
+founder need my
+SAS and will and I'll just end it here and we'll continue from here main thing
+that I wanted to show is this super base button right here and this is what makes
+it powerful they have a direct integration with superbase meaning the AI models are well trained on setting up
+authentication with superbase uh setting up your database tables with superbase which is pretty difficult
+if the AI models are not very um knowledgeable inset tool but the the way
+the future is going it seems to me that a lot of these tools are going to be integrating directly with a lot of these
+backend as a Services right so a lot of the stuff that people are trying to
+learn right now in my opinion ends up being redundant in the next couple months which is why everybody's asking
+for a course but I'm not doing it because the tools are just going to get better but one thing that you can teach yourself now that will matter in 6
+months a year two years 3 years 5 years whatever is being a great product person
+being someone who sees a great product and identifies why this is great why the
+user experience is fantastic being able to write that down and communicate that to a model is where I think the real
+winners will be not trying to figure out how to integrate superbase with said tool because the tools are going to do
+it anyway yeah and as an example just I could have said let's build a not taking
+app that's really cool and the ux is really cool but I specifically said for Founders because like picking the niche
+being an advocate for the the user is such an important part about of being a
+great product manager yep yep and I agree 100% And so we have our your
+founder Journey documented okay I like that so let's click on get started
+okay it says let's okay I'll just create a random account registration not
+implemented please connect superbase to enable authentication so I'm going to click here and I've already logged in my
+superbase account and what I'm going to do is I'm just going to quickly create a new project uh we'll call this
+YouTube and YouTube Greg and I'm going to create a new project so this is me
+using superbase and this is how I know they have a direct integration that click took me directly to my
+account and once I go back if I click here I notice that it says inactive
+project I have to wait I believe a couple seconds so we'll just let that set
+up shh don't tell anyone but I've got 30 plus startup ideas that could make you
+millions and I'm giving them away for free these aren't just random guesses is
+they're validated Concepts from entrepreneurs who built hundred million
+plus businesses I've compiled them into one simple
+database compiled from hundreds of conversations I've had on my podcast but
+the main thing is most of these ideas don't need a single investor some cost
+nothing to start I'm pretty much handing you a cheat sheet the idea bank is your
+start startup shortcut just click below to get access your next cash flowing business
+is waiting for you by the way I was I was kind of like laughing to myself when I saw it it's
+just like a button to integrate super base cuz like I had flashbacks to being in CS school and in 200
+uh like8 and this stuff was like we had to do the hard work back then yeah yeah
+no it's it's it's definitely like it's it's it's easy mode like honestly like even as a
+developer like a lot of developers are like like panicking that oh AI is going to take my job but like even myself like
+honestly Greg like with these like with the super based or Comics I can literally build anything in warp speed
+um because like a lot of the hard stuff they take care of right and you know sure they charge like 20 bucks a month
+but like if you know how to arbit charge that and make more who cares if you pay 20 bucks a month
+right um that's a that's cocktail in Toronto Lally literally literally it's
+it's it's a McDonald's meal nowadays unfortunately
+um but yeah I think there's a lot of like I know I saw a lot of dudes like
+like doing like full-blown tutorials like how to integrate super base and
+stuff like manually and it's and it's difficult if you're not a developer right and I knew I was just like somebody's going to figure out an
+integration and when I saw these guys that's why I was like okay we have to talk about these
+guys and so your prediction is basically you know Bol or whoever is
+going to have these Integrations in the next few months yeah so they're going to have templates and Integrations so
+Integrations with like these backend as a services and then an integration directly with stripe so setting up
+payments few prompts setting up authentication whatever few prompts I think the mo for the next couple years
+cuz and I'm willing to argue this is design design and user experience becomes the Moe um because at the end of
+the day like if you can make the experience much richer much better and you can actually solve the problem um
+you know that's that's where you win because it's going to be super easy to build if I were like an advisor to
+convict or superbase that's the top one thing I would work on and if I was an adviser to these AI tools that's the top
+one thing I'd work on because that's where people are struggling the most and then if you have like a template Market place like like framer and web flow have
+where like maybe devs put up some templates on like how to use the different tools together it just it we truly enter like
+the the the birth of like non-technical multi-million dollar founders with no
+Tech found with no CTO or anything like that yeah I think the way I see it is I
+think design is is a huge mode distribution also huge mod so the way I
+think about it is if you think about like the physical world real estate you know the saying location location
+location like you know if you're opening a store selling you know coffee mugs uh
+you wanna you want a place where there's a lot of traffic so have traffic go into
+your store but then you're so that's distribution then when you're in the store the coffee mugs need to wow you
+off your feet right they need to get you to take out your credit card that's designed that's user experience and then
+the actual like building of the store well that's essentially getting commoditized right now a lot of these
+tools yeah and and so I I I agree with you and and that's one of the reasons why like I actually got a pretty like
+sick uh job offer um as like a lead front end lead um I didn't take it
+though and I I felt crazy not taking it at first but then I was thinking about like the YouTube channel and like just
+like the brand I'm building I like if I were to make a a year and a half bet I'm
+willing to bet that this would be the bigger like play versus that CU we're
+entering an area where like you said like a time where like distribution matters like the amount of like subpar
+companies versus like and good companies that hit me up just for ad it blows me away like um and I even told a friend I
+was like oh yeah I'm I'm charging this for sponsor and apparently I'm completely being undercharge I'm completely undercharged because I I just
+don't know the game like that right but I've come to realize think you said design and distribution becomes the
+biggest mod and I think that's where I'm I'm I'm trying to invest my time in because I kind of have the building part
+down and let's see if this is done okay I think we should be
+good all right so now if I go over to demos I see YT Greg is green so that
+means it's good I'm going to click on it and I'm going to click connect so it says I'm not connected to superbase
+project to GA gather your database structure tables security settings this may take a moment and again this one
+action is hundreds of prompts uh that people are using on all these different
+tools that haven't integrated with superbase which is why I think you know
+all the other tools have seen this they're probably working on this right now I wouldn't be surprised if next week
+all of them shipped this and this is why again going back to my main point I know I keep repeating it if you focus on the
+fundamentals you'll end up being a better Builder so it says okay and I can click
+on my project dashboard my project is set up um it I can read the docs if I
+want to it's still working so look what it's saying here it says superbase connected follow the instructions in the
+chat to complete integration so what are the instructions enable sign up login with options like
+email password or social login so I have to click here I
+believe oh no that's the uh URL let me go back is it here no that's not
+it okay what do I have to
+do let's see Let me refresh this you can now work fully featur here okay I'm
+going to ask how do I enable this stuff right here sign up
+login with options because it's asking I have to enable this how do I enable sign up login with options like
+email password and social
+login okay so it's creating my database tables it's writing some role level
+security it's writing policies so like no one can just tamper with my
+tables again all of this stuff is is not easy to do not trival especially uh and
+security like that always keeps me up at night like making sure that you're launching something and you you know you
+don't have to you really don't have to worry that much about security is a in a huge a
+huge deal and I I definitely do think as like um like these tools start to get
+popular that like um there's going to definitely be some sort of like intervention government intervention
+like they kind of have in Europe where you're going to have to adhere to some sort of like security policy and stuff
+like that so please do take security seriously especially if you're handling user data like you know I know you
+Founders are about hustle and speed but definitely take a little bit review security maybe hire someone couple bucks
+to review the security of your application it definitely goes a long way that being said let's try if this
+set up please connect okay I've already connected you and let me see what's going
+on it's still working actually uh yeah it's still working so I guess we got to
+give it a second sorry for all the dead time oh it's okay this is is a live cooking session you know we show we show
+it all yeah we show it all in these sessions and I think also one thing that people should should know is like this
+stuff is like without even without like tools aside this stuff is hard like you
+know as a developer you'll be stuck on like one bug one feature for so long
+right so you know there's definitely a part of me that says you know you got to have some grit you you know you have to
+like you're not going to one prompt get anything to work uh the way it should at
+least so you know definitely it's one of those things where you just got to push
+through and persevere
+okay I don't let me I'm going to interfere
+um let me just check this okay it won't let me write I'm
+going to just refresh this let it break okay um I believe what I have to
+do is I have to go to Project dashboard last time I played with this there was a URL so I think I have to go to
+Authentication let me see providers and then okay email is enabled
+so that's all I need I'm going to go back to here and say build out sign up and log
+in with super base and make it work on
+my SAS why is
+it interesting uh is there any way I can kill what it's
+doing right now cuz I think it's
+stuck all right so you know what we're going to do Greg I'm going to start a new one cuz this one is just stuck part of
+the game I'm going to start a new tab it happens it happens folks yep it happens
+we're going to start with and I I actually did this recently I was building uh what was I building yeah I
+was building uh like my own little meta react framework um and I broke it the
+first time and I tried to fix it wouldn't work so I was like I just need a clear M I started fresh so let's just
+same prompt let's start
+again by the way the landing page goes insanely hard yeah no they uh you know
+who I can tell you firsthand they uh they trained off uh the Tailwind site uh
+if I go to opponents and like whereas like because I remember like I know you know what I
+mean like like if I go here you see that totally you see that this so yeah I saw
+that I was like I know that design right um
+I know that design yeah so okay so it's building out these uh seems to be building on my signup page building on
+my login page and this is our landing page okay spinning up
+preview okay not as cool as the first one but we'll take it if I click on
+start on free trial okay I'll just enter my name my email and then the password
+if I create create it didn't work that's because we did not integrate with super base so I'm
+going to click connect here so it says I'm now connected to your superbase project gather your
+database structure table security settings this may take a moment so we'll give that its
+moment do you think uh you'll be using lovable in 12 months from
+now you know I like these tools to quick MVP myself um so like let's say like a
+client hits me up and I have they want me to build something I will kind of instead of me sitting down and thinking
+about it I'll kind of just try to build it like a smaller version with like a bolt or whatever and then it kind of
+gives me an idea of like what I have to do and I kind of take that and then start to refine what I have to do so I
+don't until these Integrations get solidified I I haven't gone like end to
+end but it's definitely my tester and something that I Ed to build um nvps
+with so it says you can now work with fully featured backend and add powerful features to make your app functional
+user accounts login all the good stuff so now I'm going to say now make the
+sign up and sign in work using super
+base I'm going to hit enter and now we should see it create my tables and do
+what it needs to do to make this
+work it says please review and approve SQL commands now the reason why it's asking me to review this because SQL is
+no joke um you can really destroy business writing the wrong commands
+which is why like you know you can copy this maybe take this over to another model and ask you like what are these
+commands going to do can you review them um but they look good to me so I'm going to click
+apply okay so now it says the migration is being applied meaning the tables are created now it's going to implement the
+authentication UI and functionality in the front end I'll update login and sign up components to use super baseed
+authentication so it's working on that I think we can even click on this look at the code it
+wres and yeah it looks pretty good to me so we'll let that do it
+thing clean code commented yeah that's that's honestly if
+you ask me what's my biggest usage of heyi is comments yeah because comments
+really help so it says I've implemented the authentication functionality for both login and sign up Pages for for
+development purposes you should disable email verification in the super based console to speed up the testing process
+so if I click here I can disable this if I want to but I won't we're actually
+going to leave that there and we're going to go back here and I'm going to try to sign up and honestly if sign up
+works then you can pretty much do anything because that's the hardest part let's create an
+account success please check your email to verify and I'm going to check my email
+if I got this let me check while you're checking that did I see like you can
+sign up with Discord and figma like some pretty obscure ones yeah so there's
+Apple there's Discord there's Facebook well Facebook figma yeah I don't even know what some of these apps are notion
+twitch slack Spotify but like that's really cool right like how many people are
+doing login with figma for found or not taking apps like probably not that many
+yeah yeah and and and and the thing is it's very like they're not easy
+like like github's integration is pretty simple but the others are not easy right so the fact that they've abstracted that
+and just made it an enable disable situation is fantastic that being said
+ladies and gents I just want to show my email look what I got follow this link
+to confirm your user so like the the email check even worked which is great
+so what I'm going to do is I'm going to confirm my account and now what I'm going to do is I'm in the signin page
+I'm going to click sign in and I'm signed in so the authentication actually worked so what I'm going to do now is
+I'm going to say create the uh not
+taking page and make it so that only
+authenticated users can access
+it so my authentication Works which is fantastic and again you have all these
+providers like you know phone there's there's a lot that you can do here and
+if I click on my users here look at what user signed up that's my email right
+there that's my name right there I sign up through email what time will last sign it so this tool allows you to build
+a full um a full signin sign up database
+integration with superbase few prompts now I told it to make the note taking
+page and it's creating the tables for the notes because I'm signed in but I'm
+going to write notes and if I'm going to write notes those notes need to be attached to my username and need to be
+persistent imagine you write your notes and then the second you log out all the notes disappear that's a terrible
+application right so it's writing it's building out all the tables I'm going to
+accept um the SQL queries that it wrote and we're going to wait for it to
+apply as as terrible as the first like go was this honestly would have been I
+don't know like 60 PRS with any of the other
+tools yeah it's funny cuz like after using so many now I'm like starting to get numb with how amazing these things
+this is yeah no it's honestly like it's it's insane like you know there are boot
+camps that charge like upwards of $20,000 to teach people this um and you
+and I are doing it through a few prompts and clicks all right so it says the
+migrations applied um it's created a new route so let's try this I'm going to click Start free trial okay it takes you
+nowhere so I'm going to say add a nav navigation bar and when I click I'm going to say
+add a navigation bar and then I'm going to make this like a list and when I
+click on start free trial nothing
+happens if I am signed in it should take
+me to the note taking page if not it
+should take me to sign in again this is all just being about a
+great product person so I noticed that I don't have a navigation bar I should probably have a navigation bar and I
+notice that when I click on start trial nothing really happens and I want it so that when I click this it takes me to
+the not taking page if I'm signed in but if I'm not signed in I need the user's information so I I need them to sign me
+in do you even consider yourself an engineer anymore or are you a product
+manager you know um there so there's a part of me that
+although these tools are good if we went if someone who's great
+at using these tools went against myself or even like there's thousands of Engineers better than me I definitely do
+think the engineer still has the edge in terms of making the more performant and
+faster application right because like just looking at how it's written the code I'm not saying it's wrong but I can definitely make it
+much faster already so I still think in
+cases like that where speed and optimization is important um I will still I still consider myself an
+engineer but five years from now I I can't even tell you where this thing is going to go because it it honestly is
+scary uh but so yeah I have my Navar if I click on profile profile page is empty
+because we haven't done it anything if I click on notes it takes me to notes tab but then if I click on start trial
+remember what I told it to take me to the notes tab that's what it does and then it says log out here so I just
+logged out perfect let's say I want to actually open this on the full screen so
+I can see the URL paths so let me why is the I don't see the let's go back here
+what I'm going to do is add the navigation bar in the sign in
+and sign in and sign up page as well um let's do that so I can navigate
+back home from the sign in page cuz currently there's there's nothing I can click on I mean I can do that but that's
+kind of a cheat let's go back to log in
+have you thought of like investing in any of these yeah yeah yeah I
+uh yeah TBD you should yeah uh so yeah look at
+that I can go home I click log in if I click Start free trial it's going to tell me create an account I already have
+an account so I'm going to log in Click sign in and then that nav part pops up so what I'm going to do is when I sign
+in take route me to the notes note
+taking
+page again this is a big deal because not only do we have like our landing page our Navar and all that stuff but we
+actually have authentication and it's it's done like we don't have to work on authentication anymore right right now
+I'm working on the flows right someone signs in it should direct take him to the not taking page so it says it's done
+that I'm going to click Start free trial look at that and then if I log out and I
+sign back in takes me to my note page now let's say I write Michael and
+Greg and I'm going say they are best friends which we are which 100% And I
+click on create note so it says Michael and Greg they are friends so that note is created now here is what's cool about
+this if I go back to my super base and I click on table editor I'm going to see notes and profiles if I click on
+profiles this is my profile I have a user ID here um my my name and then what
+time I created my account if I click on notes I'm going to see my notes stored
+in the database but here's the thing it's connected to my user ID right so
+you see user ID here 7bb if I go here the ID is 7bb so this note is attached
+to my user id meaning if I log out and I sign back in my note is there ladies and
+gentlemen you have assass now payments are difficult and I hope they have a strip payment integration but you
+finally have the ability to create this full remember this full flow I showed you your client your server and your
+database the hardest part was this right here right especially with
+authentication and database they've made it super easy the final Beast to conquer
+is payments and what's cool is they also have deployments so I can deploy this
+publicly right I'm going to click on deploy and we're going to give that a few
+seconds while that's deploying one of the things you said was authentication is now done what people miss about
+authentication is let's say you authenticate with uh figma and figma
+changes their API for whatever reason you have to like maintain it now you don't have to do the maintenance which
+is a really big deal that's all on super base right and that's kind of what you use them for so it says my site is
+published if I click on this I have my not taking app if I click on start free
+trial it's going to tell me to create an account I already have an account so I'm going to sign in we click on sign in my note is there
+this is cool and why and this is why you should subscribe
+and like Greg's Channel and I'm going to say hi this is
+Mike and if I click on create note the note is created we have our SAS I hope
+you are entertained hell yeah dude that was great I uh I appreciate that that was
+that was super helpful um couple couple
+action item so one is if you enjoy this and you want to learn something else another type of
+tutorial just comment on YouTube what we should talk about so uh we're always
+looking for ideas and then Michael often is in the comment section too so he can
+respond to you as well and number two Ross Mike has a great YouTube
+channel it's Ras Mike I'll include it in the description highly recommend you
+guys go and subscribe where he does more more videos like this yep and if you ask
+for it you shall receive so definitely uh you know and especially in the comments if you have any questions I I
+said I would respond to every comment last time I couldn't because it was just too many but I will try my best
+especially if you comment early beautiful all right my man I appreciate you and uh all right let's let's go
+become product managers yep that's the game thank you so much Greg as always always I appreciate you and thank you
+everybody for showing love all right later [Music]

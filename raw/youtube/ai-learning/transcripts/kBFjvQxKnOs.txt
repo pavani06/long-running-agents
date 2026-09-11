@@ -1,0 +1,134 @@
+this is amazing what if you can run more
+than one function or action in your
+custom GPT what if you can run those
+functions parallell that's exactly what
+we're going to see today let's get
+[Music]
+started hi everyone I'm really excited
+to show you about adding multiple
+functions or actions in your custom GPT
+not only that I'm going to take you
+through advanced level in adding those
+actions with API key and without API key
+I'm going to take you through step by
+step on how to do that but before that I
+regularly create videos in regards to
+Artificial Intelligence on my YouTube
+channel so do subscribe and stay tuned
+coming to GPT Builder now it got a lot
+of updates of adding multiple action and
+parallel function calling now we're
+going to create a brand new custom GPT
+go to chat. open.com and there you
+should be able to see a explore link
+there click the explore link then you'll
+be presented with the page P like this
+I'm going to click create a GPT I'm
+going to type create all-in-one GPT
+which has the capability to check
+weather and stock price and then send
+message then it responded back I suggest
+the name weather and stock assistant yes
+happy with that name then it created
+icon for me and updated my custom GPT
+now we are going to configure page
+that's where all the magic happens we
+got the name description and
+instructions you can update this
+according to your needs in the
+instruction whatever you mention here
+your custom GPT will follow accordingly
+then we have conversation starters
+that's the one which you see here on the
+right hand side so you can modify this
+according to your needs then we have
+knowledge section this is another
+important section where you can feed in
+knowledge it's like the second brain for
+chart GPT it automatically saves all
+your data in the form of embeddings so
+we don't need to take care of embeddings
+now I'm going to upload a file it's
+about the rise of data driven weather
+forecasting once that is uploaded we can
+ask question explain to me about the
+rise of data driven weather forecasting
+and it gives the summary introduction to
+the weather forecasting emergence of
+machine learning model and forecasting
+comparative analysis these all been
+taken from the paper you can add
+multiple files here and feed the
+knowledge now coming to capabilities we
+have web browsing D image generation and
+code interpreter I'm going to TI all
+those finally the most advanced area
+which is the actions we're going to add
+two different actions one to find
+weather another one to check the stock
+price click the create new action button
+here I'm going to paste this schema I've
+already covered adding actions without
+API key with API key and with oat step
+by step I will link those in the
+description below in this we are using
+wttr doin server from that when you pass
+a location it will automatically return
+the weather of the particular location
+so I'm going to save this schema enter
+the privacy policy URL then you can
+click the update at the top and then
+confirm now we got our weather added I
+can ask what is the weather in London
+now I got an answer here the temperature
+is 32° fenit which is around 0° C and
+also it gives the weather for cost for
+the upcoming days this means our first
+action worked now we going back next
+adding the second action create new
+action in this I'm pasting this schema
+this schema Returns the stock price I'm
+using this URL which I have hosted it in
+riplet and the endpoint the URL which we
+are using is slash stock this is the
+application which we are running in
+riplet it uses an API key to authorize
+the request if the API key matches then
+it will respond with the stock price so
+I'm going to use this API key go back to
+our previous page at the bottom you have
+authentication click the icon click the
+API key then add the API key as a basic
+type and then save now we have added the
+API key and the privacy policy URL I've
+already explained this detail step by
+step how to create application like this
+and also integrate with chat GPT which I
+will link that in the description below
+then finally we are going to click the
+save button update and confirm now it's
+all ready now we're going to view GPT
+now we got a interface custom GPT which
+has two functions one is to check the
+weather and check the stock price we are
+going to test both functions together as
+a parallel function calling trying to
+integrate two different application into
+one what is the stock price of Apple and
+what is the weather in London click
+enter it's asking to allow access I'm
+clicking that starting action the latest
+stock price of Apple is11
+19124 as for the weather in London
+currently there's Mist with a
+temperature of 0° cius that's it now we
+integrated two different function as a
+form of parallel function calling into
+your custom GPT now you can add multiple
+functions multiple application in your
+custom GPT and give extra powers to
+perform multiple toss that's it as
+simple as that I'm going to create more
+videos similar to this so stay tuned I
+hope you like this video do like share
+and subscribe and thanks for watching

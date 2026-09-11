@@ -1,0 +1,579 @@
+[music]
+Welcome to YC Harness Club. I worked really hard. It took me like 10 its with Gemini to have Harsha riding a lobster.
+Gemini didn't want to do it, but we figured it out. Okay, welcome to harness night. Um, first order of business. Uh,
+how does everyone like the new YC paper club look? Well, this is like an idea that I kind
+of blurted out at EV, our head of design at YC, and two days later, she came back
+with this, and I'm like, "This is amazing." So, Ev in the back there, please take a bow.
+[applause] Very exciting. All right, why harnesses?
+Um, I mean, it's just a rapper. This is just scaffolding. This is just like prompt engineering. Um, why would this
+be at all worthy of a night? Uh, here's a great little Reddit that was only a month ago, which is actually uh the most
+aggressive. I'm not sure this kind of prompt engineering belongs at a top tier machine learning conference. Um, here's
+another great one. Uh, context engineering is not a research problem. Um, so I think harnesses have long been
+belittled uh as um subpar research. yet
+it is uh literally gives us an 18% bump in the difference between harness one
+and harness two. Um, and as Seth will tell us is the difference between getting ArcGI to work and not. And so
+this is a uh obviously worthy of some some amount of research. And I think if
+you look at this the classic meter plots release date and how long uh an agent
+can be running. Um, literally we go a lot of this progress has been because of harnesses. And so I call this the static
+harness era where there isn't self-improvement on the harness. And then this later latest latest um maybe
+the last 6 months has all been on the self improving harnesses and think and we'll get through all these and it's I
+actually saw this plot in a presentation by the CEO of trajectory. I actually really liked it. was talking about how
+the we we keep measuring perplexity and you know this somewhat correlates to IQ
+and and how intelligent the model is and so we keep pushing more and more up this intelligence uh IQ dimension but we're
+not leveraging test time experience very much so we're generating all this test time experience we have a new domain uh
+and it does and we don't really quickly adapt and if you remember one of the first YC paper clubs we did um I've been
+doing this experiment where um the as I increase the number of samples online
+how do you actually learn from just batch size one we don't really don't have that structure we have ICL and then
+once ICL gets saturated after just loaded like 40 or 50 it doesn't actually improve um on the valet at all then you
+have to go to Laura small rank then you go to Laura big rank then you go to SFT and it's kind of weird that we have this
+like different training procedures and so I think that's really where harnesses are shining right
+And what Arc AGI exposes, that's kind of the main uh um uh point of ARGI is how
+quickly it adapts to uh a new problem, a new a new distribution and does well in
+it. And so, um, ArcGI actually went through the batch with me, winter 26,
+and we helped Greg, you know, look at this and like the amount of thought and attention, as I mentioned last time, that goes into these these these games
+to make sure they're all orthogonal skills from game one to game two, so that it's isolating this fluid
+intelligence measure. Um really uh Claude uh Opus was one of the the first
+that was actually verified um on the the hold out on the private that no one else has access to other than Greg and
+Chalet. Um and the best that they got was 30%. And just with um some harness
+uh this thing that doesn't deserve any research just some wrapper and some scaffolding we can get to 95 and AVO
+from Nvidia got to 100%. So, Prime Agent and Nvidia, which both recently just came out.
+And the other thing I want to add, so when uh Carpathy launched his auto researcher thing in March, I want to say
+it was um I forked it and I was playing around with it. And all I wanted to do was make like a little user interface to
+kind of see what's happening and track it and and I ended up building a harness by accident. I didn't mean to, but it
+was just like I wanted to see it. And and basically what it is is you specify
+a purpose. And in this example, which is actually a true one I gave, is like diffusion LM don't beat ARLM. But maybe
+if I ensemble, if I shard the diffusion LM into a bunch of different ones because there's such high arithmetic
+intensity per GPU on a diffusion model versus AR that I can actually um in
+aggregate by sharding them, I can get better better results. And so I just give this to a per as the purpose to the
+to my uh uh to my suite of agents um my
+swarm of agents. I give it some seed ideas. I want to vary the ensemble size shard at different amounts
+100 times, 10 times, five times, whatever. Um and then I specify a valometric. Um and maybe I want to do
+GSMAK and like GPT2 setup or something like that. And then I have a scoping
+agent that will kind of look up papers that have that are are similar, look up GitHub repos. Um, we'll give it to a PI
+agent named Chris Ray. Um, who will then uh give it to a research agent um named
+John South Khan. Uh, there he is. Um, and then he'll work on it and then he'll
+start doing some stuff, give it to a council for some help. That's where I come in and me and Yaso will give you
+some feedback and then you work on it a bit more and then whenever you're ready and Chris Ray will kind of keep tabs on
+you, keep nagging you every every hour or so then it goes to this author agent to say okay now start stop freeze the
+idea start writing ablations and um and then start writing the paper and so then
+what this has turned into so this is the scoping agent uh and then you have this cockpit that kind of you can view from
+anywhere we do the uh tail scale up so you can actually view this URL from anywhere and see how it's progressing
+and and talk to it right there. Um, it just sends you email updates if you
+build the whole 1B thing in here. And then it actually starts publishing some papers and like I've read the papers.
+They're actually like good. They started out in March, April like not so good like you know May or whatever. But and
+now I just basically give eight ideas to eight H100 nodes and each one has eight
+eight H100s. and just keep going. And then I check in and they give give me back papers. And it's kind of wild what
+we're what we're dealing with there. And what's changed really is just the scaffolding that you put on top of it to allow it. And I I didn't spend an
+enormous amount of time on this, but this is largely how I I do a lot of my research, at least the the initial idea.
+Um, and so yeah, so I'll just give this six different ideas of things I want to try and just leave it alone and let it
+rip. And so the things that we can now do just because of harnesses on the same exact weight file is just wild. Um, so I
+looked on I spent the the weekend just in prep for this reading um a whole bunch of the classic literature from
+self-refined to reflection to Voyager to all the tool former and I just wanted to just do like a my my shot at a five
+minute like history how did we get here? Um I think it was it's kind of important and I don't think a lot of people that
+are entering AI now kind of like have the context. So this is not going to be in chronological order. It actually
+doesn't make sense to to teach it that way or show it that way. I'm not I'm going to skip a lot of papers and I may
+course grain the papers absurdly. So, apologies. So, the initial harness the GPT2 February 2019 is a while not end of
+end of sequence loop. That's and then we basically have top P sampling and then we have the environment and that's the
+harness. And there's really not that much. There's no tool calling, there's no skills, there's nothing like that. And so that's the V0ero harness.
+And so basically if you have this GSMAK example, you're a math, remember the system prompt. You are a math teacher.
+This is like the persona stuff we used to have. Um there's a context. Susie has five bucks, she spends three. How much
+does she have now? And then there's just no chain of thought. It was just like four hashes and two end of state and end
+of sequence that is uh the GS MK format. We measure uh what happens after the
+four hashes. We get accuracy and you get a plus one or minus one if it's wrong. And then the entire last six years has
+been giving more functionality into the harness into a static harness. And so we said okay well what if we give that back
+into the context a bunch of examples like that like well here's an example and let's say now we'll switch it to
+four and one and hopefully we'll have um from that previous example we'll say oh
+okay this makes sense I can will help to learn and actually this is with a fshot learners paper um back in July in 2020
+and then we had chain of thought and says well directly predicting hash hash 2 is maybe difficult what we'll do is
+we'll smear the the compute the logic over many more tokens and we'll train it
+to get to that two now rather than just output the two and that was the chain of thought idea uh very cool and that was
+all context innovations uh and output space innovations action space innovations um and then then we came up
+with these tool former and webgbt webgbt actually came out first then tool former which is the idea of giving it tools and
+it can call a tool that's just really just a JSON object with a bunch of things specified but in this example
+just let's say subtraction instead of me calculating in the weight file what is 5 - 2 I can just call Python and call sub
+53 and it'll tell me two and so that's pretty cool and you can expose all the
+tools in the system prompt and that's where tools come from and then we figured out megpt which is big the one
+of the coolest tools is being able to read and write to your own context and so before then all we could do is just
+append append append append to the context now we said what if I actually give you create read, update, delete on
+the context itself and we'll se separate just this one little chunk called a memory that you'll be able to to update.
+And then Voyager said, okay, well, we have these tools, but like what if I want to chain together these tools to
+achieve a task and then I learn it and how do I distill it back into the the system prompt to make it learn forever?
+And this is the skill this where skills kind of came about. And uh they did this on Minecraft. Um and this the Voyager
+paper and it's very cool paper. This is like largely now what a skill is. And so I have this skills.md and I have the
+name of it that I can go and search and here's the procedure. And then uh intercode this idea of like again in
+action space innovation if I can actually output code uh then I can basically now I have on the-ly uh tools
+or on the fly skills. I actually don't know if it's a considered a tool because a tool is technically an API. Am I
+outputting a function as a tool or a skill? I actually am still unsure. Um
+and then the react came first then self-refine then reflection. But this
+idea if I have multiple um agents that that have different roles and they can help self-improve self-improve on the
+context uh then I can um get smarter and smarter. So, I'll have take some action.
+In this example, I I I flipped the three and the five. Whoops. Um, I sent it to
+an internal evaluator to say, is this right? No, it doesn't look right. I can either, you know, keep looping here or I
+can go to the actual environment to get back a reward signal. Um, I go here uh
+uh to the reflection. They'll say, "Hey, you actually flip these two, go back, and I can improve the result." Um and
+this is the one of the first like uh uh ideas of like being multi- aent uh being
+let the letting the agent reflect on its own um output and improve it. And then
+this idea of multi- aent goes even further where I can actually spawn one
+of the tools could be I can spawn a a set of sub aents um and they they
+persist in these persistent ripples and they'll be able to be running and I can interact with them and I'll have the sub
+aent list. I can invoke those ones and I can keep adding to that the the launch sub aents and then RLM went even crazier
+to allow this in a recursive fashion so that um and I exposes this RLM query so I keep uh recursively calling the RLM
+query to uh solve a larger class of problems and that the leafs whenever I want I can call the LM query to spawn
+that LM agent as well and then I have this main orchestrator agent that's
+running all that and that's what I call like harness v1 one, this whole thing is
+like static harnesses. I'm not improving on the system prompt. I'm not um updating the harness itself. And this is
+this you, of course, we're going to have to have GStack on the top. He's the one that lets us do all this. So, we thank you, Gary. Love GStack. Um but there's
+some other ones that deserve a call out as well. And basically what that means to summarize all this, you have some
+agent spec, you have some system prompt here. You say, "How many turns am I allowed? How many tool calls am I
+allowed?" You don't want to allow infinite. You specify a tool list. you specify a skills list, the sub agent
+list, and that's largely what the V1 um is, and then you put it in a loop. And
+this can be spawned on a prompt if I'm asking it to do something in my Slack channel, which we'll hear about QM,
+which is like I use it every day. It's the team that made it is here. It's super exciting. Um and or it's on a
+crunch and just wakes up every hour and it decides to do work just like you know, anyone else. Um, and so there's
+some session management, there's a loop, there's this context compilation. We're actually creating the context. I'm
+putting uh uh all that into an LM call. I get back uh the action. And then I I
+may or may not have some tools that I need to invoke and append back into the context. And that's basically harness
+v1. And then the cool part, this is the most exciting part where we're seeing a lot of advancements, um, where you're
+letting the harness itself learn. either we're learning the system prompt or we're learning the harness itself, which
+is very trippy. And so, one of the famous ones that I actually wanted them to talk, but they're actually running a
+150 person DSPY meetup tonight and in in this in San Francisco. They couldn't make it. Um, but I've done some podcast
+with them before and a super great community. Is this DSPY? So, demonstrate, search, uh, predict. uh
+they have this idea of of basically uh taking a train set a small set of
+examples and then learning the optimal system prompt. So I keep iterating, iterating, iterating. I can't back prop
+through that process, but I can do uh something called genetic programming where I'm finding candidates, I'm merging candidates, and with some merge
+rule, I'm evaluating, seeing what happens, and I keep working and working. And I basically gives me CRUD over the
+system prompt itself, and allows me to choose any system prompt. And then Darwin machines actually go a step
+further. Not only are you allowed to change the system prompt, but you're allowed to change the harness itself, the harness code that is actually
+running. And so you can imagine basically what happens is you have this archive of um many different uh agents
+which is harness and system prompt. Uh and you sample from them. You push them
+uh through you'll actually evaluate how how they did on some fit fitness function. Uh you'll uh add it back into
+into this archive state. And I skipped over the the self modify. You can actually you have a a meta harness that
+actually allows the the agent to modify its own uh harness so that it can become a different harness and then that
+basically loops around loops around and eventually you get better and better agents over time. And then the meta
+harness which is the main harness is to produce harnesses, right? Which is a really meta concept. Um and so this is
+the output space where you're configuring multi- aent context compilation. Um, and you're you're doing
+this and you have allow CRUD on all of it. And so it just keeps adding more and more uh CRUD into the harness code, all
+the green that you see here, the uh meta prompt, the system prompts of all the agents, how many agents there are. Um,
+and you kind of grow this uh this meta harness over time. And then one of the authors of this paper is the lead author
+is actually here tonight. Super exciting. You got to drive down and talk to him a lot of it about um continual harness, which is I love it. And they go
+even a step further where one they add they they add some extra color on the
+classes of memory and so they add this history thing. You know he'll he'll go into a bunch bunch more detail on that
+memory breakdown. But the coolest part I think is for the classic RL people. I see Robert back there. He definitely
+would would enjoy this Dagger style online learning where you can actually update the weight file itself. So you're
+actually doing a test time training on the LLM based on a small amount of
+examples that you just learned which I think is actually a huge huge important research direction that we should get
+working. Anyway, that's it. How you do all
+right so um tonight we have uh three authors. Uh Ben got food poisoning this
+morning so he couldn't make it. It was very sad but we have three tremendous authors. uh Seth uh student under shein
+is I say it right uh at Princeton a researcher at Prime Intellect and the author of Prime Agent um John Sadvalone
+who's a the first time we've had a a call back um pres presenter very excited about that PhD under Chris an Aelia um
+and he's going to be he's the author of open Jarvis with Ivonica uh from my lab
+uh hazy which is a personal uh open Jarvis and which I think is really cool. And then for Josh and Rean who Josh just got
+promoted to be head of YC labs which is really exciting which I think deserves a little round of applause as well.
+[applause] Um be talking about QM and so QM there at YC we had this general agent that we
+use and they came out with QM a month ago and it is like meaningfully uh better and is so functional and I use it
+every day. All right, that's all I got. Thank you so much. [applause]
+Hi everyone. Uh, great to be here tonight. Uh, my name is Seth and I'm going to be presenting Prime Agent, which is a self-improving ROM harness.
+Um, my job here tonight, I think, is to try to convince all of you to take a
+very first principles style approach to thinking about how you build your harness. So, we're going to be very,
+very basic here to begin with. If you think about and I love the uh introduction right from of all the
+background literature um which I thought was so cool I think is very complimentary the how I think about this as well um but if you think about just
+the raw LLM itself it's actually just this sequential processor that you know
+has some fixed weights and has some visible context and it's it's taking some tokens in and it's putting some
+tokens out uh to make the next decision. Um we don't really think of an LLM that
+way these days. We have a set of files that it has access to. We give endless programs and tools for it to use. Um,
+you can even message other sessions of LLMs that are going on and create sub agents in order to do all of these very
+cool things. But, but in its basics, it's just tokens in, tokens out. It's a neural network making a prediction. The
+harness itself is the layer between the LLM and the world that adds things like
+this persistent state tools and compute. Uh, here we have a diagram of how we think about prime agent. um from the
+human's perspective. So you open up your prime agent uh on your computer just like you would cloud code, codec, pi,
+etc. Um and it gets you into this agents view and this agents view is an overview of all the agents that you have going on
+for all your parallel sessions with like a very tight like tight summary of what you're using and then you can hop into
+one of those and check it out. there you're going to be at this root session and this [clears throat] root session is your basically the project orchestrator
+over all of these different sub aents that it's controlling and you don't have to ask it to start sub agents it will
+leverage sub agents when they're useful um and these are all programmatically called because this is all based on uh
+the recursive language model principle where everything is in this IPython shell um all your tools all your
+memories all your sub aents uh and and we expose uh for further coordination
+these uh these messaging paradigms. So you can manage all of these um and then these agents can directly interact with
+your environment which could just be like the programs and files on your computer or running an H200 node cluster
+maybe for your auto research. Each of these agents are then backed by this persistent dam on your computer. Uh this
+is so that you know when you close uh your laptop or you you control C out of the session, it's still running in the
+background. You have to actually stop the session so that make sure that you're continuing to running. And then we also have these other features we
+exposed from continual harness where it's able to provide like live CRUD operations on all of the components that
+we mentioned um in order to manage its uh memory skills sub agents um
+persistent and and prompt its own system prompt persistently. The way I like to think about all of this context that
+we're building up is that we have this sort of almost like like here I have
+like L1, L2, L3. is like a cache, right? It's like what is the most accessible
+information that we're working with and at the very like fastest like readily available information, you know, the
+models to be able to retrieve that really quickly. It's the model weights. So, everyone always wants to get all the information in the model weights. Um,
+but then we said, okay, well, maybe we don't have all the information because we don't want to have to fine-tune every single time to update because that's very expensive. So, we have this uh
+active input context. So, we're using lots and lots of tokens on the input. we might have some in context examples like
+we've seen previously in order to add to these different capabilities but at a certain point we run out of context. Um
+and so the very like earliest form of harnesses that we've seen that are still used to this day even by those who say
+we want the most minimal harness possible is compaction because compaction is a very generalized tool
+for the agent to be able to uh summarize its own context history in order to work
+past its context length working window. You can think about um once we go beyond
+like what are directly like inputs and outputs from the the model here into this L2L3. You might be familiar with
+the L3 which is more of the dispatch state. So if you're working with a file system, you can read and write from uh
+main memory. Uh if we're at the L2, which is I could think uh at a means in
+between uh what the active context is and working with your file system, you might have a live uh ripple, which could
+just be running things directly in Python uh an IPython shell like you're in a Jupyter notebook. And all of those
+variables are saved directly in your RAM. your agent can then programmatically manipulate them and run all sorts of programs directly on the
+information there saving tons of tokens rather than putting it directly into context. Uh you can also create sub
+agents and it's the same thing you're basically saving context here because you can task the agent with a specific
+set of information in order to perform some operations and the report back at the end. What is interesting here is
+what we talked about compaction for the active context, right? You have your context history. This is helping to
+update it over time. So you can continue to leverage this. But once we go beyond this, we need to be thinking about how
+are we doing these update. We talked about CRUD. How are we do beyond just creating reading? How are we updating
+and deleting our context over time beyond our uh or the state over time
+beyond the context line. Uh I like to think of this at the ripple is this aentic garbage collection where we're
+just cleaning up the variables in our state as well as like what sub agents could be used. And then so to make sure
+that our RAM doesn't crash my computer laptop every day. And then on top of that, we have this uh notion of
+refinement where we're updating and deleting the skills and memories and prompts that are stored on your system.
+You can think of that so that way you don't crash your actual uh out of space on your hard drive as well. And so this
+very much is a here's how we express this thing and here's how we revise it over time. The other perspective that I
+really like to think about and I really trying to push because harnesses are almost going towards this like agentic operating system that we're creating uh
+is when I think of it um more metaphorically here is that when you look at the raw LLM it kind of looks
+more like a touring machine where you have this ticker tape uh and you have all these instructions that are going in and then it's performing some set of
+operations and going out. But when you look at a harness it's looking a lot more vono like a vonoyman computer.
+you're able to do these read and write operations on external memory and that makes it much more powerful and another
+class of problems than just what a touring machine is able to express on its own. And so yeah, the idea of like
+how do you build a good hardness? You want it to be the most expressable thing you can imagine. So some some like early
+harnesses before it gets into the data flywheel where the models can do themselves are very specific. Plan, act,
+critique, do these exact specific um steps. Well, now har uh the models are
+able to do that themselves. You can imagine like we we don't have like a react loop that we necessarily need to explicitly impose. The models kind of
+have natively uh figured this out. But what they haven't figured out is how to um you know they have to be able to have
+the expressibility to call compact. They have to be able to have a Python ripple so they can run programs. Um they have
+to have the ability to programmatically create sub agents and access state and have different feedback mechanisms. Th
+those are model controlled expressibility features and if you removed one of those you're actually removing a capability that it won't be
+able to do otherwise. The way we manage um and I'm sure you're all familiar with the RLM paper uh from my co-author Alex
+um fantastic bit work. What we do beyond what was in the RLM paper is we think about the age sub aents as these
+persistent subsessions. So each the parent station can create uh
+spin up a new RLM sub aent and each of these are then emitted. They run some task and then they finish and report
+back to some end state to the parent session. These are then idle. They're still working in your RAM. At any point,
+the parent session can then send a message to one of the sub aents to continue working and it has all that
+good context that you built up over time so that you're not missing information or have to reuse information that was
+already developed in a prior context. And then of course you know we don't want to use a lot of RAM. So we can move
+them offloaded uh in an inactive state which then can be called back at any time by messaging them in this
+persistent sub agent setup. I talked a little bit about uh continual harness uh which we have in a a prior paper of mine
+which talks about cuding the entire uh harness state. Um this is another
+feature that we want in our coding agents leverage all of our prior history. So you can imagine like some
+set of trajectories where they have some actions and outcomes or something happened um at a at each turn. And so we
+just kind of want to expose the ability for the agent to leverage all that information in order to update what the
+future harness is going to look like. Are we do we need to change our system prompt? Do we need to create some skills? And skills I think of as a set
+of instructions or a program in order to to achieve some some specific goal. uh
+memory which could just be long-term storage about things that are important as well as the sub aent specifications
+that we talked about in this very persistent manner. Were there uh certain sub aents that we want to reuse at a
+later time because the context is useful and just having the ability to do this kind of reflection or refinement um over
+time. It's very powerful for the models to have. They're not perfect at this right now, but this is one of the the
+capabilities that you want to you want to build your harness such that it is a bit better than what the current models
+are able to do. So then you can get those reasoning traces and use that to leverage your next iteration of model and they'll be able to handle the
+harness and be able to bootstrap themselves into a higher and higher performance. One of the coolest features that we have in uh Prime Agent um that
+we we've had since the beginning of when I was working on this, this is one of the first things I added um is the
+ability to message between any any two agents um within like some nuclear
+family setup, parents, children, uh siblings. Um and the reason why I did this is because I was I was constantly
+trying to figure out what's the best way to like myself to manage all of the agents I have doing everything for me in
+five different directions, five billion different directions every day. Um, and it would be so much better if they could just like share their contacts directly
+with each other and coordinate. And turns out that's fantastic for like typical software engineering and long
+horizon jobs as well. Uh, the last thing that we look at when it comes to how did we want to design our harness is we were
+really thinking about long horizon performance. I want to go run some jobs and I don't want to have to babysit my
+agents the entire time and when when I'm ready to come back and check in, I can check in with them and see what's going
+on. And this is a perspective that I also really lack seeing in a lot of the evaluations that we're looking at. Uh a
+lot of times if you run a model for not enough time or say, oh well the model stopped working after this amount of
+budgets, but then this other model kept working with using more budgets. Well, first of all, you're not even using the
+same fixed expenditure to compare the models. But second of all, that could also be hiding performance that you're
+missing. Uh the way that I look at long horizon performance eval is that I want to see what's the practical plateau. At
+what point will we only get incremental gains in performance as I throw more test time tokens at it? I have a couple
+experiments that I'm going to show after we've shared design philosophy here about how we created uh prime agent. Um
+we're going to talk a little bit about test time scaling and uh our our TI results as well as looking at um you
+know does is it actually helpful and why is it actually helpful for our information management for the ripple that we're working on these long
+contexts and then um when we have these really really long like almost ultra horizon long horizon uh tasks uh how do
+we sustain these like multi-day work and like what actually goes on when we have these refinements um over like these
+settings that can last like a week at a time or more. So, this is a result that you probably all seen. We actually have
+a one additional data point that we added here that we didn't include in our original result uh just to compare
+across harnesses. We solved this uh we went out, we're trying to figure out what is the the best uh eval that people
+care about these days when we're running our harnesses and we're like, "Oh, we should do RKGI." I like, "Oh, yeah. Yeah, I remember. I I ran some results
+with continual harness and we got 20% with um Gemini Flash uh or sorry, Gemini
+Pearl." Um so, I I think we can get at least 20%. people who think that's really cool that our like general harness that didn't even like wasn't
+even structured for ARHI did really well. So I went online I was like okay I need to find a good system prompt because I don't want to make sure that
+we're losing information. So I found a another community leaderboard called prolong and I just grabbed their system
+prompt and I was like okay I'm going to grab their system prompt forget the rest and I'm just going to throw this directly into prime agent. Uh and then I
+ran this and I was like oh my god the first run that I got it hit 99.9%
+and then I looked at the logs and I was cheating. Okay. So, I was like, "Okay, I got to do proper sandboxing here. Like, let's set this up properly." Uh, and
+then so I spent another day on this. And then, and then I went back and I was like, "Oh my god,
+I got 78% with GPT soul. Like, this is going to be a great result." Um, and then we're back. It's like, oh, let's
+let's compare a couple other ones. And so, it's again, we just took the prompt, uh, general prompt that basically says,
+uh, use a world model to solve ARC AGI 3. Uh, here are the actions that you can take. um you have uh and then the
+general system prompt for prime agent which is like you have a ripple you can call sub agents uh you can use the it programmatically um and and so we went
+through I went through the traces and it's basically doing a bunch of different um like calls of the coding in
+order to like check out these different scenarios and analyzing the images and doing like image processing and it's a lot of really cool um stuff that uh it
+seems like it was doing reasonable reasoning while leveraging the the ripple that we had um as like one of the
+main things that was able to enable build this. Uh so I went through and I ran a couple other ones. We did GPT tero
+25.7% which is really cool. You can see that compared to like what were the um like the week before we did this uh open
+AAI was like the guys the harness matters a lot when you're doing evaluations. We use the responses API.
+This is the result that we got. Um and we we ran Terra and and got almost like
+we we didn't run to completion this one but we got really good results in comparison. And then we go um that that
+we're already achieving higher than some of like the GBT soul extra high which was crazy. And then uh we went and we
+did Opus and hit 95.5%. We're like that's insane. We also compared to a lot of the other harnesses. So some people
+ask me like did you run this with cloud code? Uh I did. Um unfortunately the results weren't very good. Um, and so
+rather than having bad results, I just deferred to the the original cloud code results and some other people have run
+it uh with similar configurations to prime agent and gotten much better results since then. Um, but what's interesting is that a lot of the really
+popular harnesses don't necessarily do well when prime agent does well. So like for air agent, um, we spent a lot of
+money very quickly and uh, we had to cut it off because I spent like $5,000 without making much performance. Um, not
+saying this is the best they could do, but it cost a lot of money to do so. Uh so I think that the cost to performance
+uh ratio is very important and one of the things that does save money is being able to programmatically work with your
+context. Uh we ran a bunch of long horizon um evals as well like oolong and
+some coding uh emulator bench which is going to come out soon which is a program bench alternative and we found
+that it was mainly parody or slightly better than these other harnesses like you across different models versus doing
+like pimono cloud codecs with glm 5.2 to Opus 5 and 5.6 as our setting. Another
+one I thought was really cool is we have this like program bench alternative called emulator bench where we're trying
+to reproduce entire emulators of computer systems or in this case creating like a Game Boy Color and check
+that out. And we found that what's really interesting is because it has this um ripple access in the RLM, it's
+able to use these programs in order to kind of do these like out of experiment uh loop designs in order to um try
+things out in a lot more expressable and free way before submitting the final solution to the greater. Uh we also
+tried this with uh GPU kernels um and we got about par results uh across
+different um both soul and kimico. One is better, one is worse. about par um which so we we're not overfit to like
+any one particular um evaluation here. Um what's interesting for the long
+horizon stuff is we had some auto research uh experiments that we did with the nano GPT speedrun but we scaled it
+up. We said let's give it uh 8 by H200 for um a week and see what happens. And
+you might be like, okay, prime age is going to do so much better, right? Because it's able to do all this programming. Uh, it's a little high
+variance. We can't attribute um any of the benefits to with the harness versus the model there because it's a very hard
+task. But what we can do is inspect a lot of the behavior that we've seen. And what's really interesting is that we're
+seeing models like deep 6v4, GLM 5.3, and Kim K3. Um, you can tell these were done a little more recently than our
+first results. Uh, and we took these and they were doing like what we call out of loop experiments. So we were trying to
+say how can I run experiments on like the CPU and like look at the parameterization and do hyperparameter search and analyze the data so that I
+don't have to spend like all my time running expensive H200 experiments uh because that takes the majority of the
+time. So it's it's running experiments that are not the main experiment in order to optimize them. I think that's really cool behavior that we're seeing
+uh as we we shape what would be what kind of things we need to for the expressability for prime agent. So you
+can use like really good auto research because you can imagine if it's good at auto research, it'll be good with you. It be even better with a human in the
+loop to bootstrap your experiments. Uh and finally, we also streamed a 7-day factorial run which used a total of 633
+agents um across uh 23 million tok output tokens in order to make like
+steady uh tech technological advancement across the tech tree to continue to progress over time. And here it uh one
+of the main benefits is I can use like these sub aents that can divvy up into different tasks in the factory in order
+to research and build and gather resources and build the next items to design the factory. Um as well as it can
+use the refinement to leverage what happened in the past in order to help in the future um over these very long
+context so it doesn't get stuck. And one of the most interesting things here is that it does not get stuck and it continues to make technology progression
+even at the end of our uh stage. Um this is more like a Gemini plays Pokemon kind of uh conclusion here. If there's one
+thing that uh I find interesting today u but like what takeaways you should actually add to your own harness. Um I
+think that you should think about agentic context management. Uh you should think about swarms and looking into further depth RLMs and trying to
+run standardized eval. All of the results that we can they showed today can be run with our uh verifiers uh
+package that we have at Prime Inslect. Um and shout out to my collaborators who are fantastic and I love working with.
+Thanks. [applause]
+All right, next up we have John. Hey everybody. I'm super excited to talk
+about a project um that we've been working on at Stanford. Um, I've been working on this with Ivanka Orion, my my
+co-lead author, as well as our adviserss Hazeni and Christopher Ray. So, personal
+AI is everywhere, but it's mostly cloudbound today. Uh, we see lots of different harnesses and projects focused
+on making daily writing, research, coding, and scheduling. But projects like OpenClaw and Hermes agent typically
+rely on cloud LMS um for most of the intelligence and for most of the most of
+the queries. Um, what does this mean? It means that it's pretty costly. You're getting thousands and thousands of
+dollars in API costs if you aggregate it over a year. Um, it's not private. You're often sending your most personal
+um, data to LMS up in the cloud and you don't necessarily know where all that data is going. Um, it also requires you
+to rent your intelligence as opposed to just simply owning it out of the box. And finally, it tends to consume orders
+of magnitude more energy than just running these LMS on your laptop. And so the local LMS are finally good enough to
+actually run a lot of these queries that people care about. And so we see that um the the current LMS of today are only 6
+to 12 months uh behind whatever is the state-of-the-art frontier models um of before. So you see um LMS today such as
+Quen 3.8 27B um that achieve roughly the same performance as like Claude 4.6 Opus
+um back in the day. So that was kind of the state-of-the-art model back in August 2025. Um, and that gap seems to
+be closing uh more and more as the hardware accelerators that we have um for our laptops and for our workstations
+get better and better. Uh, just this week we saw a new release from Apple um with the new Mac Mini. And so we're
+seeing this renewed focus from Apple as well as Nvidia to build accelerators specifically for personal use cases. And
+so with this project, we wanted to explore the the main question of can we build the core of a personal AI stack,
+namely the model inference, the agent execution, the memory, the learning, basically the parts that are mostly
+reliant on the cloud today entirely on device while staying competitive with these cloudonly stacks. And so we
+decided to propose open Jarvis. Um name needs no needs no explanation. Um but we
+wanted to explore just how much of this we could run on device completely for for free uh while preserving uh
+security, privacy and quality. And so to construct open Jarvis we wanted to create the simplest set of primitives
+for which you define any sort of harness or or personal AI stack. Um the first one is whatever user interfaces you need
+to use. Um the second one is the actual agentic logic around composable reasoning and using different kinds of
+intelligence and tools. Uh for the intelligence, it's whatever LM you're using as your engine for keeping everything going. Um so this could be
+Quen, GBDO, OSS, Gemma 3N. Um and then whatever actual inference engine you
+need to run it. So this could be O Lama, um Llama CBP, VLM, SG Lang, um including
+whatever hardware you're running it on. So this could be Apple Silicon, Nvidia, whatever you need. um for actually
+making all of these agents and intelligence useful you need some set of tools in memory that can be run through
+a standard MCP protocol um and you need some sort of uh set of primitives for actually doing learning whether it's
+prompt based techniques like Japa or DSPI um whether it's weight based techniques like gpo and sftt and Laura
+um you need some way to actually get this agent to improve over time and actually be able to make it more personal and more effective and so to
+kind of walk through like what opens looks like um we tried to go with all of the standard um interfaces that people
+are already accustomed to. Um so we wanted to give people the ability to interact with it through a desktop and actually just run it as they would
+normally expect, but then see all of the savings that they're getting in terms of dollars and energy. Um we also wanted to
+give people the ability um to run different kinds of continuous agents. So different kinds of agents that are
+persistent in terms of cron jobs and being able to run standard protocols um day after day. Um, basically we just
+wanted to to make this like plug-and-play with all of the workflows that people are already accustomed to running. Um, and we wanted to make this
+something that can get people to have their first experience with LMS on device the same way people had their
+first experience with ChatGpt or Claude back in the day. Um, so yeah, and so
+yeah, to step through a little quicker, but yeah, here's like a nice way to like set up new persistent jobs. Um, yeah, we
+have all of these different components. We need some way to actually optimize it. And so we wanted to get out of the way of the LM as much as possible by
+just creating a simple spec of these five primitives by which they could go through the optimization. And what we
+found is that by going through this whole optimization loop, we were not only able to get significant dollar costs uh dollar cost reductions, but
+also significant latency reduction and significant um improvements to overall quality on these tests. And so this this
+configuration is meant to simplify down to just the five main things that people care about when they're building these these LM uh harnesses. So the
+intelligence, the engine, the actual agentic logic around it, the tools or learning systems required for running it
+um and the whole optimization um for the whole spec as a whole. And so something that we thought could be interesting to
+help bridge this gap between local and cloud LMS is to actually have the cloud LM go through and manual and uh and
+automatically optimize the whole LM the whole local stack. And so this is a nice way of taking advantages of the
+capabilities of cloud LM to diagnose proposed changes and gate um to create
+improved solutions for these local LMS while not incurring the cost of those cloud LMS when you actually deploy these
+um local stacks at inference. And so what we found is that these uh these open Jarvis jobs that were these open
+Jarvis um configurations that were actually optimized by cloud LMS like cloud or chat GPT um were much more
+effective than uh local stacks that were just deployed out of the box because you could actually cater to the specific LMS
+the specific harness uh that was needed uh for for different kinds of workloads. And what we found is that even with the
+ondevice LMS of today, we can rival cloud LMS on different workflows around personal AI um personal use cases,
+coding, agentic tasks. While there remains like many tasks for which um
+like local local size LMS are not enough um the gap is surprisingly closing um
+month after month um as these LMS become better distilled, more effective and
+also we get better accelerators um for running them. And so even with LM of today, we can get 800x lower lower
+costum in terms of actually running them as well as a significant reduction in latency. Um what we also found is that
+no matter which cloud LM that we cloud LM we picked um it was useful um in terms of optimizing the whole aentic
+loop for these uh local local open Jarvis configurations. Um we found that
+um the Opus series, Opus 5 as well as GBD 5.6 Soul were were naturally the best. Um but was interesting to see is
+that you could pick Gemini, you could pick um other other uh larger um LM
+families like Kimmy and GLM and use them to optimize these local configurations so that you could capture those
+efficiency gains, capture those performance gains um for local inference later. What we also found is that the
+whole open Jarvis harness was cheaper to optimize than alternatives which might might require more data or more LM
+calls. Um we found that like this set of specs um and this set of primitives um was most effective for local LM settings
+because it got um the whole optimization loop and the whole um set of LM
+abstractions out of the way of the cloud LM to just optimize the whole system and just make it make it really fast and
+really effective. Uh looking forward, we're excited to keep building out this project. Uh we think in the very near future you're going to see um a huge maj
+a huge proportion maybe even a majority of uh people's daily inference calls going to local devices and on-prem uh
+laptops or on-prem workstations as opposed to the kind of standard of today where everything's being pushed out to the cloud. Um we think these trends are
+only going to continue because the accelerators keep getting better and the LMS keep getting better. Um and so if you're excited about um anything in the
+stack, whether it's uh better local LMS, better accelerators, better inference engines uh for deploying uh beyond data
+centers, um please reach out. Uh we'd be excited to chat. Include a QR code of the project. Um if if folks are around
+here afterwards, we'd love to chat. Thanks. [applause]
+All right. Now, we have our own YC. We have Josh and Rean.
+Hi, I'm Josh and uh this is Rean and we're working on QM, which is YC's
+open-source uh agent harness for work. QM is one system that uh gives every employee at
+YC an open claw-like assistant uh that's like fully customizable and available in
+Slack or via web UI, which is uh what we're looking at here. Um each person
+works within QM in their own personal context that has its own sandbox files
+uh and crons and it can they can also work with QM in a multiplayer setting
+like a slack channel. People use QM for a pretty broad range of things uh like a
+lot of automations like email triage like legal and finance workflows. It's really good at editing documents and
+pulling data out of our internal database. Uh it can also spin up live internal web apps and help with stuff
+like planning events. Uh but it's designed to be broadly helpful for the
+range of tasks that someone might encounter at YC uh on a day-to-day
+basis. So you might be wondering uh why we
+built this and it's really the result of a string of internal agent projects that
+have kind of unwound throughout the years and all of which were really riding this tailwind of increasingly
+capable models. Um the first one we built was in like
+January of 2025. We internally refer to it as the quote unquote like general agent. Uh, but it was pretty
+straightforward. Just kind of a system prompt with tools uh in a loop. It was
+one sizefits-all. Um, sort of like everyone was talking to the same thing. Uh, and it was pretty
+straightforward architecturally, but like still uh very or surprisingly good
+at answering data questions. Uh, interestingly like the scope of what the general agent was good at just increased
+I guess unsurprisingly as the under underlying models got better. Uh, and we eventually hooked it up to Slack. We
+added crons uh and gave it a a few more tools so that it could be more be
+capable across more domains. Um, in June of 2025, uh,
+by then like a lot of our engineers started using cloud code and codecs. Uh, and we realized that you could pretty
+easily run these in a VM. And then, uh, we hooked that up to a Slack tag, which
+was a pretty powerful medium for people who just wanted to like run a one-off code change. Uh, we also configure
+configured it to run our CI pipelines and then spin up dev environments for
+testing. Uh, and so people could come in like describe a bug or something they wanted to see happen and the bot would
+go off and actually solve it, which is like a pretty powerful um thing for someone who like maybe hadn't uh made a
+code change before in their life even. Uh but we also on top of that had a
+small loop going where we would observe sort of how the bot failed uh where it
+went wrong and then update the agents.mmd which was uh present in the codebase at the time um to make sure
+that the thing got better as as uh we like observe the usage and so in January
+of this year a lot of the partners started using openclaw and one thing to know about YC partners is that they're
+incredibly busy uh between like office hours uh they get tons of inbound email they're always
+reading applications so like any tools that can give them additional leverage are incredibly valuable to YC so open
+cloud particular was useful because it was the first agent that a lot of them had used uh that had their own computer
+that had its own computer and so this made it like very customizable in a way that the previous paradigm of agents was
+not uh and it functioned almost like a personal assistant And so in April uh the question became
+like could we provide this to every employee at YC uh without uh like buying
+everyone a Mac Mini effectively. And so we ended up provisioning a fleet of like 50 plus uh Hermes agents that were
+running in VMs. And these were definitely pretty helpful but they required a lot of configuring for people
+to get value out of them. And it was just like inherently kind of difficult to manage this fleet. Um, it was sort of
+like a whack-a-ole situation where I would have to sort of like SSH into these individual instances and fix them.
+And so the follow-up question became like we've got we've gotten a lot of value out of these agentic systems. Uh,
+like let's build something that tries to address some of the downsides of running this big fleet of Hermes agents. Uh,
+while still maintaining the personalizability and some of the like the stuff that people were really
+getting value out of. And so,
+um, yeah. Okay. So, basically, uh, there's a pretty clear trend from whether you could see there from what
+Josh was showing you. Basically, um, the models are getting better exponentially. Um, and we were starting to see just
+increasingly impressive returns from giving them more and more capabilities. So, OpenCloud gives the agent its own
+computer and we start to see really impressive returns from that. So around May this year, we started thinking just
+like how far can we push this if we just keep pulling on this threat. Um we really like the the lens of sort of
+unhobling. I don't know if you guys uh read situational awareness when it came out in like 2024. Um but that was kind
+of an era when like test time compute was just starting to become a thing and like you know we're starting to give agents tools for the first time and
+there's sort of this intuition that what agents can do like there's a little bit there's kind of more intelligence in the
+models than we're than we're using in a lot of cases. Um, and it's like if we really push uh the frontier in terms of
+just like what we're offering up the agents as as capabilities that they can make use of uh like magic can start
+happening. Um so the first way that we do that with QM um is by essentially
+pulling the brain of the system up out of the sandbox. So with uh you know with
+Hermes and with OpenClaw you effectively have um the agent has its own computer
+which is super powerful but it's also trapped inside that computer. So that causes a few issues just from you know
+uh us trying to administer that system when there were you know uh even a few dozen of these things it starts to become unwieldy almost immediately. Um
+but the other issue with that is that you um all all of the like all the sessions that you would have uh they're
+trapped inside that computer. And so what we did instead is we uh we just
+offload everything into Postgress. So everything is centralized um from all the agent conversations that people are having. Um and then we expose those to
+the agent itself. So it can look at all the context that's sort of aggregating from across the system. And then the
+other thing we do is we start thinking about sandboxes less as this home where the uh where the agent lives and where
+it's kind of stuck in a lot of ways. And sandboxes become more of this thing uh more of a resource that the agent can
+dip into and use as needed. Um but it's it's um it's a lot less limiting. Uh the
+other thing that this starts to open up um is this idea of you're accumulating this large eval set of all the traces
+that you have from the conversations that people are having with the agent. And in principle, you can think about going and and hill climbing on that um
+and sort of having this automated improvement loop. Um we've had sort of mixed results with that. I would say I think typically if you're just
+dispatching this like torrent of agents that are supposed to um fix all of the bugs that they're encountering when you
+have the LLM as a judge, you start to get this kind of uh like main character syndrome where the agents are making
+fixes that are, you know, only seeing their their um their piece of the elephant effectively. like they're
+they're really um they can be sort of yeah not not seeing the whole um whole system and so having the human in the
+loop there has continued to be really important although we're really looking forward to this uh working uh all the
+way around. Um so the other major thing we do that's pretty obvious is just wire the agents to all of the resources
+across the company that we can. Uh we already happened to have a CLI at YC that worked really well um that wired a
+lot of systems together. Um uh but anything that wasn't in there uh we
+basically allow um adding just arbitrary API keys um that sort of thing. And then
+we also want to ensure that we have par with uh just an employee working on their laptop. So you know device code
+OOTH um we go ahead and ingest that into a keychain and then refresh it for you. So it's it's uh ideally supposed to imitate
+the experience of a person on their computer. We mostly keep this to to be read only uh in the database but we do
+allow for rights um via uh human reviewed bulk upserts. So the way that
+works is the agent will put forward a plan to um edit the database um that a person can kind of give a once over and
+ensure it's not doing anything crazy before the write actually happens. Um one thing we've observed with this is
+that we've started just kind of rubber stamping these. It's a little bit like um I think if you guys use cloud code in
+the early days like you might have been reviewing the tool uses very closely and eventually um you sort of build up more
+trust in the agent. So this is something that we're uh looking at very closely over the over the next few months. Yeah. So sort of like I was saying um the
+sandboxes in this system we like to think of as a resource for the agent. So and and less where the agent actually
+lives. Um so in QM the agent can um basically uh by default it's going to be
+using a particular sandbox. So that's going to be one that's been allocated to the user that it's talking to. But in
+general uh there are there are environments that the agent can kind of converge on and uh and can collaborate
+with. Um, and then the other uh key thing is that um if the agent is working
+on like a um like a heavier dev workload, it can go and reach for a machine that has more resources. Um if
+it's working on something that's simpler, it'll just go for a sandbox that's that's less powerful. Um and so pushing that decision into the agent
+itself rather than the harness has been a really um really powerful thing. Similarly, um allowing the agent to uh
+tap into its own runtime. So basically, if it can choose the provider um that it's working with, you start to get out
+of situations like um I'm sure you guys have run into this with Fable. If you try to do AI research, if you try to do
+cyber security, anything, you'll get a bunch of refusals. Um so what we can do when the agent can control it on
+runtime, it can just pop out into another model uh when it needs to avoid a situation like that. Um similarly, uh
+like in the earlier situation, um it's often useful to pop between different sandbox providers. Um and so that's
+something we can do quite easily. And as a general rule, what we've tried to do is keep the harness extremely thin. Uh
+we think of the kind of core of the system as being these three tools um where you have execution in a remote
+sandbox, reading and writing from object storage and then uh publishing internal apps, a pretty simple sort of getbacked
+uh system. And then we have other tools for interacting with memory and crons and that sort of thing. But we really
+think of these as sort of temporary um papering over rough edges in the system.
+And really the core of it is is these three up here. Um it's we we really try to keep it as small as we can. Yeah,
+we're we're sort of trying to be this like uh AGI anticipating harness. Although uh since we aren't there yet,
+um there are a few things that we've run into. Um, one of these is that the
+agents have been we've tried to put them in this really capable environment where they have all these uh tools available
+to them, but um they often give up way too early. Uh so one thing we've experimented with especially over the
+past month or so has been setting uh we call it like a grind tool or um
+basically we set budgets on goals. So the agent is not allowed to give up on its task before a certain amount of like
+walk clock time. just like a couple hours uh or a certain amount of token spend. And so um what that can
+accomplish is just like uh really a lot better, you know, uh research outputs, better reports, that sort of thing. Um
+and it's been really fun actually to see uh like OpenAI and anthropic um you know, crack some open problems in math
+with like a very similar technique. Uh but it also works for just you know, normal office work stuff too. Um the
+other thing that we've seen a lot of is so this harness is supposed to work uh it works in multiplayer. It works in
+Slack. Um, but because of the the artifacts of its of its training, effectively uh what we see is that uh
+the agent gets can get very confused about the situation that it's in even if we specify this pretty clearly in the
+system prompt. So having like local affordances for this has been something that's been uh that's been really important.
+So yeah, um the other thing that has been a problem is that agents really don't uh understand social contexts. Um
+to make this a little more concrete, like if I tell Regan a piece of information, uh he intuitively sort of
+knows uh or at least has like a good mental framework of where it is okay to share that information. Uh but it takes
+some actual work to recreate this with an agent. uh like privileged information can very easily just leak into these
+contexts where it should not be and so uh the information that you can put in
+the brain is effectively like bounded by how good your permission system is uh and so YC luckily has an existing
+software system with like fine grained permissioning uh that has been built over the years but a lot of people just
+don't have that uh and so it takes uh work to allow for knowledge sharing in
+an in nuanced Okay, so thanks everybody for listening. Um, you can try out QM.
+It's open source. Uh, and coding agents are pretty good at standing it up. If you run into any problems, feel free to
+put up an issue and we'll look at it. Uh, we're also hiring. So if any of this resonated with you or would be exciting,
+then feel free to send us an email. [applause]

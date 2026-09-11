@@ -1,0 +1,351 @@
+[music]
+All right. Um, thank you for joining my session. [applause]
+Thank you, mate. Uh, I'm Sandy. Uh, I'm a technical lead uh for data and AI at data bricks. Um,
+prior to working in data bricks, I worked in Amazon web services uh for 5 years as a principal architect for data
+and AI. Uh, in the past few years I worked extensively uh building and
+scaling data and AI platforms using distributed systems and technology. And in the past couple of years
+specifically, I have been working with customers trying to figure out what we do with this new AI technology. uh when
+I say new AI, AI has been here for a long time but we all started
+experimenting quite exponentially uh in in the past couple of years right and
+I have learned a great deal of lessons on from building demos and how to take those demos to production working with
+different customers in uh B2B software industries and then uh regulated industries like financial uh services.
+So in this session I want to share a playbook a framework that I have put
+together from lessons that I have learned working in the trenches uh that you can take and apply on when you think
+about how to put your AI systems into production. And I think this session is nicely placed in the afternoon because
+what you can do now is in this framework you can fit the different um knowledge the knowledge that you have
+gathered attending these different sessions throughout the day and see where they fit in each of these you know
+elements in the framework. So when I started two years ago this is the pattern I noticed in every customer
+conversation right. So everyone wanted to do something with AI. uh there was
+immense pressure from the top to do something to build a demo and every conversation started with let's choose
+the model right and it was nobody's fault because the market was like that we were talking about models the models were new technology for us right and
+every conversation started shall we use GPD shall we use cloud you know there
+was huge debate with with within organizations then you would choose a model you'll build some features offsets
+over what features to build for that application uh you would build that in a controlled environment, so predictable data sets,
+you know, um limited scenarios and then it looked great as a demo and then
+leadership would get happy. They will sign it off and they'll put it into an environment uh in in a production
+environment. Then after a few weeks, people would start asking questions that
+what the hell is AI doing, right? Why is it not answering the questions the way
+we expected it to answer when we were doing the demos? Uh it would result in not only less like
+you know no realization in return on investment but also loss of money and effort in building these demos that can
+never scale to production. Throughout these uh meetings, I gathered
+three insights that connect to everything that you we are talking about when thinking about taking uh AI to
+production. The first one is the observability gap, right? When we use AI and put it into production, if we can't
+see what it is actually doing, if we can't trace every decision that it's making, it's no use in production.
+Second is the evaluation gap. A lot of these conversations that we were doing, we were not actually thinking about what
+is what is that one thing that we are measuring. Yes, we talk about accuracy,
+we talk about latency, we talk about groundedness, but we were not defining
+what is that exact thing like that matters to the business and how can we build a system that can continuously
+measure that whether it's improving whether it's not improving like what what is that system that we need to build and that was that evaluation gap
+that I I noticed and the third is the governance gap like we were not actually
+thinking what happens when AI fails in production who's accountable who do I go to when something happens at 3:00 a.m.
+in the morning, right? Who needs to own the data assets that feed some uh AI
+responses? What happens if AI, you know, uh talks um uh um nonsense to
+a customer, right? What what happens, right? So there is no accountability, no governance around it. And these three
+insights led me to build a framework on how I think AI should be taken to
+production and this has been implemented across multiple customer organizations. Uh and I think this is something that
+you can pick up from here. These are the five pillars and these are absolutely what you need to think about even before
+starting a project. Right? Then you start build them gradually preferably in
+sequence but in real life I know that these sequence don't work but these are the pillars that you have to know about
+and you have to think about when start building first one is evaluation before touching any code before
+discussing about any models any features you have to think about when we build this system how do we measure what does
+success look like and what is that system that will help us continuously measure what success looks like for us.
+Second is how do we trace each and every decision that AI makes. It's not only
+important for the performance of the AI system. It is also important for the regulators. In Europe or in a lot of uh
+companies especially in regulated industry, you cannot even onboard AI into production without having tracing
+and observability in place. So this is a mustave. The third is the data foundation. Right? Uh I I I I think of
+data foundation in in two ways. One is the question data. So that is basically
+the data needed for the AI to answer questions that users ask to it. So it
+could be your pre-training data or post post-training data data that you use APIs to hook on to and and get to the
+answer that the user needs. The other one is the tracking data related to the tracing data in observability. But when
+you think from the data foundation and and uh data strategy perspective, this needs to be handled in this pillar
+because you need a whole data strategy now with tracing data especially when you run hundreds of agents in your
+organization. Fourth is orchestration. One agent would work pretty well. You don't need to
+think about orchestration. But when you onboard five agents, the the complexity increases exponentially, right? You will
+have multiple coordination patterns between these agents. They will need to talk to each other in multiple different
+ways. They will need to each wait for each other's responses. There's lot of complexity that comes in and that's
+where orchestration patterns and thinking about how you will orchestrate your agents in a particular system
+becomes really important. Fifth is governance. This is where uh you think about what happens when something fails.
+Who's accountable? How do we govern data? How do we secure it? How do we secure our systems? How what do we make
+how do we make sure that no one injects into our agent and leads uh to you know
+misbehavior right or loss of repetition. So in the rest of the session I will
+dive a bit deeper into each of these pillars and tell you how how you can think about when you start working with them right the first one is evaluation.
+Evaluation is basically the specification for your AI system. You define success as I mentioned it's not
+like talking about accuracy. You have to define it with numbers like what accuracy is is is good for your business
+use case, right? Define it in numbers. Uh define what kind of you know false
+positives you can handle. What should be the deflection? So this is this is an example from a retail chatbot, right?
+banking chatbot where when you implement a chatbot with an AI agent, one of the
+main goals is to deflect simple queries um to the agent so that a human agent
+don't need to uh deal with them, right? And so you need to u you need to track
+those queries and track those numbers and put that system in place. Second is building those test test cases like the
+evaluation data set. You have heard about golden data sets in evaluation. talk with the domain experts and find
+what is actually happening in real life on the ground like what answer would a support human support agent give to a
+customer on a particular question collect those information what happens in gray areas in edge cases like what
+happens when a human sees a customer asking a confusing question right collect those into a data set and then
+automate your AI testing right so you put a question to AI it answers take
+that answer compare against the test set and automate this whole pipeline so that when you put AI in production that
+pipeline can actually take live responses and evaluate against the test data set that you're building and then
+give you the result uh in terms of how AI is performing against those numbers and the goals that you have defined.
+When we talk about evaluation, there are three main layers that I see uh appear uh across organization and
+this is an architectural decision that you need to make when you build this evaluation systems, right? The first
+layer is deterministic. These are the easy stuff like you know checking formats, you know, checking email
+formats, phone formats, the regular expression things that we have already been doing with our coding systems,
+right? The uh the the other other is like you know you could use classic ML models for name entity recognition to
+for intent classification for understanding what is a first name last
+name PII detection etc. So these these are easy stuff, cheap stuff. You should get them out of the way. We have already
+been doing this for years. The second layer is the non-deterministic semantic stuff, right? This is where groundedness
+comes in. This is where we implement technologies like LLM as judges. We all know what LLMs judges are, right?
+Everyone okay? I see a lot of nodes. So um again this this is a pretty simple
+version of how a uh how a prompt would look for an LLM as a judge. Um so with
+LLM as a judge you you you use a separate LLM from the primary LLM to judge the response of the primary model
+and when you do that you tell the secondary the judge model on how it should uh judge the primary model's
+output. So it could be around safety, groundedness, you know, relevance to the answer etc etc right again that can feed
+from a lot of uh the evaluation data set that you have created right to look at what are the expected answers and then
+it can check against that there's a sample prompt on how these things work but I'm sure you have attended some of
+these sessions where you have seen vendors doing this automatically at scale uh for example in data bricks so
+in MLflow you will find automatic LLM as judge uh where you can create this custom LLMS judges that run
+automatically on traces. That's your second layer. The third layer is behavioral, right? This is
+where uh you think about a tool calls like is our agents calling the right tool? Are they getting into loops? So,
+for example, um you know the first layer you you can have a user ask a question what is my account balance and you could
+go and check that okay this there is no deterministic problem with it. the semant the agent answered right that
+okay your account balance is this many dollars and that was right and you can see this is this is right but when you
+go into the behavioral checks you will see that the agent uh actually made three calls to the database to find that
+answer right and that is because it was doing making duplicate calls for whatever reason calls failed you know
+calls did not work it went and retried and stuff like that now three API calls in demo environment is fine but in
+production when you get thousands of queries from users every day and there's like duplication in API calls that's an
+expensive operation and that's where you need to think about behavioral evaluation and this layer is very very
+important I see a lot of organizations or a lot of teams miss them when when talking about this
+the second layer is observability right uh and in this pillar what we are
+talking about tracing right so you collect [snorts] all the decisions that an agent is making so I want to explain
+this with scenario here right and this is a scenario from an act actual project I worked on with a banking uh retail
+retail banking chatbot now obviously if you have seen tracing data it's not as beautiful as this slide right so I've
+simplified it and made it beautiful for this slide but what this slide says is basically a user comes in and says uh
+you know I have been charged an overdraft fee can you wave it for me because the user thinks that the customer thinks that that is not
+legitimate so the agent does an intent classification and you all you know
+about this because you have enabled observability you're capturing traces and you're actually seeing what the agent is doing right what AI is doing
+intent classification it has done this it took this many seconds this was confidence score then it goes and
+connects to the customer's account maybe in a database a customer database calls an API connects to the customer database
+gets the account details it retrieves policy documents it checks from a rag
+vector database um what is uh what is the policy around overdraft right is
+what the customer claiming is legitimate. So it checks for policy documents. Then it goes and does a
+reasoning on what should be uh you know responded to the customer and then it does final guardrail checks and responds
+to the customer. Now, if you did not set up a system that helps you look,
+visualize all of these traces, when the customer comes to you and raises a dispute, you have no way to check what
+the AI did, right? You have nowhere to go and you end up saying that I don't have have any
+idea. Let's let's give the customer a discount or something and then make them happy. So this is why you need this and
+this is why regulators are are are basically mandating because otherwise there is no production system if you
+cannot do this kind of stuff. So this is where um you know you you you
+detect this the example that I gave around duplicate API calls. This is where you start detecting this stuff. So
+when you when you enable these traces you can actually go and see duplicate calls and then take relevant actions
+based on that. Not only that you can actually do that in online monitoring. So when it's happening in production in
+on you can set up online monitoring and at that point if it is doing duplicate calls you can apply fallback strategies
+or even if it is doing a call that is failing you can actually go and apply a strategy where it will say okay go and
+retry for three times not more than three times if it if it is more than three times then report somewhere or
+pass it to a human to take some action.
+The third pillar is the most important pillar in my opinion. It's the data data data foundation, right? Uh in my typical
+project projects, I spend 60% of my time uh and I see I see a lot of
+organizations spending a lot of time here because no one expected agents to come suddenly in the market and start
+quering data. Data was always built for humans and humans are always forgiving.
+You find the wrong data in a report, you just go and ask someone to correct it. agents don't forgive you right agents
+will go find it wrong they'll give you the wrong answer confidently right and you wouldn't know what's happening and
+this is why data quality setting the right data strategy has become so important for enterprises now I divide
+it into two sections one is the question data as I was explaining like data needed for actually serving the AI's uh
+outcome and the other one is the tracking data this is the observability data the tracing data I was talking
+about earlier You need a proper plan on how you collect this tracing data and how you
+serve it to auditors to regulators to do online monitoring to run LLMS judges on
+the tracing and everything else. Right? So there it needs a proper strategy on how you structure the schema and everything on the tracing data.
+Um on data bricks um we create a robust
+data foundation for our customers using uh some of the technologies that we provide. If you don't know data bricks
+databris has been built on some open source technologies like Apache Spark MLflow and Delta Lake. Uh we provide a
+bunch of capabilities on top of it. So the blue layer at the bottom is basically your cloud storage. Data
+bricks works on the three major clouds. Google AWS Azure.
+Okay. I thought it was for me. So, so once you once you store raw data
+on your cloud storage, uh the data is then um um we bring in a layer called
+the Delta Lake layer which uh which basically brings in database like properties on top of your raw data. So
+you've got images, text files, video files or whatever. We we help you create
+this um you know uh table like structure on top of it using manifest files right
+and and we help you to uh incrementally load data do all of those um data
+management tasks in a structured way. On top of that we bring in unity catalog which is a data catalog. Uh with unity
+catalog you can centrally apply permissions on top of the data. You can
+um you can uh share the data using uh delta sharing but also what happens with
+unity catalog is uh you you can enable discovery and um you know um ownership
+metadata tagging capabilities at the catalog level. What that means is when you apply table description column
+description uh tag columns like PII columns with metadata, it becomes really
+easy for AI to then get that context when it queries these tables on top of Unity catalog.
+So everything is governed at one layer through Unity catalog and on on top of that we bring in different uh
+applications. So whether it's AI through mosaic AI so to build LLM tune LLM or
+even build AI applications we bring in uh data warehousing capabilities BI capabilities and um uh and some of the
+other texttosql capabilities we've got genie that helps you write natural language to do SQL quering etc.
+And one application of that in the observability and tracking tracking data as I was showing is is this. So
+basically think about when I was talking about the tracking data strategy organizations especially enterprises
+will not be running AI in just one framework. They'll be using different frameworks QAI lang chain etc etc.
+They'll be using different cloud platforms and once they do that you need a centralized layer of collecting that
+tracing data so that you can serve se several use cases on the right hand side. So whether it's for operational
+dashboarding for first line support uh a lot of these uh first line um first line
+of defense teams need health monitoring uh sort of dashboards right these teams can also write SQL using data bricks
+Jenny to do text to SQL but they can also build databicks apps using coding
+agents uh to create common workspaces or custom uh UIs that customers might need
+for different uh different use cases and then we have got agent bricks and mlflow
+that serves you LLM out of the box LLMS judges and uh proactively monitored
+drift. The idea is no no matter where your AI runs, you can create this kind
+of strategy bringing in data in one common place and serving uh different teams from one shared location.
+The fourth pillar is multi- aent orchestration patterns. As I said, one agent is good. Multiple agents increases
+complexity. That's where you start thinking about okay, what pattern is good for my use case. The first one I
+describe here is the orchestrator worker pattern where you have one orchestrator which orchestrates all the work which
+controls all the work from a centralized plane and then distributes this work to different agents based on their
+specialized skills and then every request goes through the orchestrator. So you have got central control. If
+something goes wrong, you can go to the orchestrator logs and look into them and see what has happened. Right? So that's
+the orchestrator uh pattern. There is this choreography pattern where each
+agent is independent. They are autonomous. They don't depend on an orchestrator. All of them talk to a
+message bus and they listen to the events that they are interested in. Right? So think about agents that are
+independent of each other. Right? They can run parallelly. So they are not sequential like one agent is not
+dependent on another. So they run parallelly. They listen to the message bus for the inter uh for the events that
+they're interested in. Maybe it's a trigger for let's say a mortgage application and it says uh you know uh
+the mortgage application agent uh one of the agent uh looks customer details right the other agent looks at approval
+details and everything else right. they can work in parallel and the advantage it brings you is the latency is reduced
+because they are not dependent on an orchestrator and sending messages back and forth. Right? So this is the
+choreography pattern and the third one is human in the loop which is where when an agent crosses a threshold or serves
+below threshold a confidence threshold then a human is called in the workflow to look into the pattern uh so look into
+the look into what the agent has done and then take action based on that.
+I have done a dive deep video on multi-agent orchestration pattern uh for the online
+track of this conference. Uh it's already on YouTube so you can look into it. I talk about the real implications
+of when you think about multi-agent patterns. One is uh state management.
+The other one is fall tolerance like what happens when things fail like how do you manage them? I talk about different patterns and then I talk about
+how how you think about scaling them in large scale enterprises.
+Pillar five is governance. Right? Now here I'm not talking about data governance at all. That's given. We need
+that. Right? From AI perspective, what what what are we thinking about? Regulatory, right? Audit trails. Have we
+got the trail of every action, every user connection, every request, everything that happens in the system?
+Are we capturing everything? Are we doing prevalidation of personal information? Are we using named entity
+recognition? the the easy stuff the reax and all of those things right in our example the work that I was doing with
+the customer that I mentioned we already detected 47 PII breaches during the testing phase by applying this layer so
+that's that's really important fourth is um prompt versioning you have to treat
+prompt versioning as change management in enterprise grade solution it cannot be just a change to a prompt and commit
+to get it has to be go it has to go through proper change management processes as you do with code So
+basically treating prompt as code. Third is model change management. So as models
+change the model providers upgrade these models. You have to have a system to understand whether that upgraded model
+will be good for your use case for your data. Right? Uh model provider will put
+u evaluation benchmarks on sui uh benchmark uh boards but those are not
+really useful when you put them in your context in your enterprise. So that's where these evaluation data sets come in
+handy where you try these different models on this evaluation data set and try to understand which one performs better and that management needs to be
+done because from a risk perspective you cannot really rely on one single model. You have to have the flexibility to
+switch to different models and also test them on your own data. That management needs to be done.
+uh in data bricks uh we have taken all of these these points these pillars that I have been talking about into agent
+bricks we are building agent bricks to make uh all of these operations out of
+the box for you uh so that it's easy to implement production grade AI applications on uh on in in your
+enterprises. So I wanted to quickly touch upon a case
+study just to give you uh uh a flavor of how these things go right. So when I was
+working with this client um they were a retail banking they were building a retail banking chatbot you know one and
+a half 18 months ago uh their their problem the problem they wanted to solve
+is they had got around 20,000 odd calls per month from customers on their chatbot. they wanted to deflect they
+they they saw that there were like 60% of them were simple queries what is my account balance you know what do I do
+with my overdraft and all of those stuff like that can be answered simply so they wanted the reliance on human agents for
+those answers so they identified those queries and they wanted to automate them
+right they spent around 85k in 6 months doing a P which did not succeed when we got
+involved uh we found those insights that I was talking like no one knew why things were failing when it was in production uh when when when when it was
+uh in in production, no one could actually uh measure uh why why it's not
+succeeding and no one could actually understand who is accountable for what when things go wrong, right? So the goal
+we set for them is AI agent handles 60% of user queries, right? Which were
+simple user queries and then a way to identify and track them. The key difference in this project that when we
+did is that we selected the model in week seven like in the 8 weeks P right
+and this is how it uh turned out for the week one and two we built the evaluation
+layer we collected 200 cases on their actual human agents answering to their
+customers on simple queries and understand how they are responding to them. We created that database. Then we
+defined these success metrics. What does success look like to you? So out of let's say 100 queries you need 60
+queries or the 60% of the queries that are simple queries to be uh uh to be
+handled by the agent right they needed some sort of accuracy so 85% it was around 85% accuracy target they needed
+latency all of the operational targets that you need they were there
+then we created this automated evaluation pipeline for them and what I what I mean by that is an automated
+system where you can capture a user's uh a user's question and the AI agent's response. You take that, compare that
+account against your evaluation data set, you rate that and if the rating is
+below certain threshold, you get it checked by a human and you if if something goes wrong, you make sure that
+you find the solution. So it could be a change to the prompt, it could be changed to a tool calling system or something else. Once you have done that,
+you add that test case in the test data set so that when it happens next time, the test cases cases catch them. So the
+the the the summary of that story is that your evaluation data set is a living system. You start with 200 maybe
+there's no correct number here but once you start as you start building in production this is a living system. This
+will keep growing and the and the bigger it grows the better your system will be.
+In the second way we talk we thought about the foundational layer right so the the question data we thought we thought that okay if you have to call
+the database have you got the API connections right have we got a system in place that can trace those API
+connections are those secure right we were not talking about MCP at that time right it was just direct API calls to
+database to run queries uh have you got the distributed storage uh have you got the have you are you
+collecting traces and this is where when when we started testing after building these systems, we could catch those
+duplicate API calls, right? We could catch why customer satisfaction was dropping and stuff like that.
+And then comes in week seven to eight, we started talking about models. Now that we had the evaluation data set, we
+could run different models on that data set to see the responses, compare them against the expected responses and
+calculate a number on on on the accuracy, right? That helped us to decide which model to use. Now that
+decision didn't take long, right? We in as I explained in the introduction like we spend weeks debating on which model
+to use but when you took the other approach you can actually uh do that in
+a very quick way. So once once that's done we we stitched
+everything that I was talking about around observability evaluation the layers of evaluation. Once we had that
+system that can make AI visible, measurable and accountable, that's when we started launching it to production
+and that's when uh so this is this is a result uh 6 weeks post launch uh we we calculated the operational metrics of
+course you know the accuracy the deflection rate the response time uh the
+customer sees but what's important here is in few weeks time when uh there was a
+problem with uh so one of the One of the things that happened was that the bank changed some uh interest rate related
+policies. So when that when they changed the policy, they actually sent emails to customers or notifications in the
+application uh in the in the in the mobile banking app about the policy change. But when the customers came and
+queried on the chatbot for further questions, they couldn't get the right answers and they were like uh putting
+thumbs down on the answers. So they were getting this feedback, right? So feedback decreased. The problem with this kind of system if
+you did not have this measurement system is that you couldn't actually know what's happening but because we had the
+measurement system in place these the the drop in cet was detected right
+because we were getting negative feedback from customers we could actually look into the tracing decisions
+and see that the agent was looking at a policy policy document that was outdated. So the the new policy document
+was not updated in the vector database. the embeddings did not come through. Because it did not come through, it was
+giving it stale answers. And that's when uh we went and fixed that. But it it was
+all possible because we built that those systems that uh that led us to to detect
+this. Before you go, uh I I generally in these
+sessions I share different um artifacts uh that you can take away. I have a QR
+code at the end for you to download. Uh and you will find multiple artifacts. One of the important artifacts that I
+want to talk about is the production incident playbook. This is something that a lot of us tend to miss when we
+work in AI projects. And this playbook is basically a definition of what needs to happen when things fail in
+production. First you detect using a val dashboard. Then you diagnose using a tracing as I explained. Then you
+contain. So basically you you you are versioning your prompt. Is there a is there is a if there is a problem with
+the prompt you uh you you take that prompt out right and start the changes
+deflect it to a human or in my multi-agent orchestration video I've talked about multiple fall tolerance uh
+failure recovery patterns uh around saga pattern compensation pattern uh and uh
+circuit breaker pattern that you can look into the video I've explained them in details on how you can handle them and then you use the test case library
+to fix so you look into LLMS judge reports you look into your evaluation data set reports. Then you uh fix your
+problem. Once you fix your problem, you put those test cases in your data set, right? And and create that eval suite
+that is a living system that will keep growing and um and and you you keep improving your AI system based on that,
+right? But this playbook needs to be in place when it runs in production. You will need to integrate it with your ITSM
+system so that it alerts the right person at the right time. So you know a lot of these organization would have existing uh ITM systems right so which
+uh which is used for alu uh alerting and u you know making sure that the downstream systems don't get affected
+etc etc so uh on once you have this in place you can go and stitch it together
+to other systems so what can you do tomorrow right
+start with if if you have a project in mind start with defining success success not from the technical sense from the
+business sense what it means means for the business, right? Come up with a few examples of what good answers look like
+and and create a data a data set of that and then build that pipeline using
+simple Python code. See if you can automate that so that when you run AI and get some response, it can become it
+can go and compare you can go and compare the answer against that data set and then that can be delivered uh to to
+the to the customer.
+Now these are three lessons that I have learned while doing these things which might you you know might easily miss.
+The test case library as I explained is a growing system. It will grow over time and because it grows over time you need
+some sort of governance around it. You need a owner right. You need to you need to figure out which test cases relate to
+what kind of problem so that whenever you go back to it you can you can relate
+your answers to those sort of problems. Right? If it is a security it's a login so you can say that the agent did not
+ask for login credentials when the customer asked to answer and all those kind of issues can be put under a security category within that data set.
+So to categorize the rows in your data set so that you can pick up what changed and compare it with them. The second is
+prompt versioning. Now when you start versioning prompts using git, you know, we all know when you put git message,
+the commit messages tend to be uh simple commit messages. But you have to put
+governance around what kind of commit messages you are putting in when you're changing these prompts because you need
+to understand when a prompt was changed for exact what reason it was changed, right? What was the failure that caused
+this prompt to be changed? What kind of failure would it address and what would it correct? Right? on in the next
+version that needs to be documented otherwise it becomes difficult because when you go back and look into prom
+versioning and look at different versions and you cannot trace why why those changes were made then it becomes
+difficult to track what's happening the third the layer three evals right so the
+behavioral evals that I was talking about around tool calls and stuff like that they can be really expensive as you
+grow your eval data set as well so when you have a wrong tool call for example
+and you want to correct that system when you correct it and run it against the eval data set you have to basically run
+it against let's say if you got 300 400 500 uh rows in the data set you have to run it against them and you do all the
+testing again and again and again and again that can cost you a lot of money so you have to put some governance
+around that so for example when in your continuous integration pipeline when you do the prompt uh change uh you can
+actually uh put uh some checks around just just selecting a small subset of
+the eval data set to do the testing and you only do the full test when you merge to the main branch. So you can put this
+kind of decisions in place so that you can reduce cost around uh around um you
+know expensive val decision. If you scan this QR code, it'll take you to a Google Drive link where I have put
+some examples on uh some of these how these templates look like, what evaluation checklist would look like. uh
+I've given you some guide on uh set setting up tracing uh with open source
+technologies um so that you can quickly set up some tracing and start testing in the test environment before you decide on what
+kind of tools you want to use. Uh thank you very much for listening to
+me. Uh this is this QR code will take you to my LinkedIn profile. So I share
+uh I have a newsletter where I share this kind of topics every week. So um if
+you're interested you can join it's free uh I basically share what I learn in in the field working with customers right
+so it might be useful for you thank you very [applause]

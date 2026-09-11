@@ -1,0 +1,368 @@
+Today I want to talk about a problem that I think every founder in this room
+is feeling but might not have the words for yet. You keep hearing that content
+compounds, SEO is a long game, and that if you just keep publishing, the traffic
+will come. But if search sends fewer clicks, social
+media suppresses links, and AI answers your prospect's question before they
+ever reach your site. And more on that later, you can't just publish content and hope for the best. So, I'll show you
+what's actually happening on the web, why the old playbook is broken, and what
+you can do about it starting next week or when you whenever you get back to your desk. So I will start by painting a
+picture of the world that we all grew up in as digital marketers. So for years
+digital marketing's superpower was supposed to be measurability. For search
+engines, right? We would optimize signals, get rankings and clicks. For social networks, you know, we used to
+post links to draw traffic. For, you know, news media and blogs, we'd pitch
+coverage to get links and traffic. For ad networks, we would just buy the traffic.
+Now, you measured all of it with traffic plus attribution to signups, sales, and
+revenue. The squishy stuff like impressions, share of voice, that was
+for the channels where you couldn't really get credit, right? This was this was a tidy system. It was predictable,
+legible to your CFO. But here's the problem now. We call this the alligator graph.
+Impressions rise, clicks decline, the jaws keep opening.
+The core problem now isn't that nobody sees your marketing, it's that more people see it, but fewer of them click.
+So if this looks like your Google search console, you're not alone.
+So this is from the Financial Times, right? Kond Nast CEO says you know well
+major publishers are seeing the same trend right impressions up clicks down
+across the board. This is a structural shift in how the
+internet works now and it's not a problem with your content. So you might be thinking well search is dying and
+everyone is using jetted g and maybe this particular problem doesn't matter but search is not dying
+in fact it keeps growing. So this is um this is from the state of search Q4 2025
+report by datos and spark toro my company. So since about this time last
+year, traditional search, AI tools, and e-commerce search have all grown.
+But, and this is this is the important part, a bigger share of searches now end
+without a click. The pie is getting bigger, but the slice that reaches your
+website is getting smaller. And that changes what winning looks like.
+And when we say search, right, most of us picture Google, but search is now a
+behavior. It's not a channel and it's happening everywhere, right? Traditional search engines still dominate, right?
+About 81% of all searches. Google alone is like 74%.
+But look at the rest. Commerce platforms like Amazon and I think eBay, it's like
+10%. Right? um social networks like YouTube, Facebook, Instagram 5%. AI
+tools like chat GPT and claw it's about 3% and it's growing fast. So that means
+roughly one in five searches is happening somewhere other than a
+traditional search engine. And on every single one of these platforms that zeroclick problem applies. Amazon
+doesn't want to send you traffic. Why would it right? It wants you to buy in the platform. YouTube doesn't want
+people to leave. So when I say zeroclick problem, I'm not just talking about
+Google. I'm talking about everywhere people go to find answers. And when they
+do search Google, by the way, here's what actually happens. So in 2024 or yeah, we looked at at over
+at Spark Toro and at Datos, we looked at the clickstream data of 2024. We found what happened after Americans searched
+on Google. So out of every Google search, 41.5%
+resulted in one or more clicks. Okay. 37.1% resulted in nothing. The browser
+session just ended. The person Googled, "How old is Paul Rudd?" 57. Can't believe it. He looks so young. They
+don't need to learn more, right? 21.4% 4% resulted in another search. But that
+means that 58.5% of all Google searches are zeroclick
+searches. And so of the clicks that do happen, that 41.5% column there, 70.5%
+go to organic results, 28.5% go to Google owned properties like YouTube,
+Maps, Google images, and just 1% goes to paid ads. So, put another way, for every
+1,000 US Google searches, only 360 clicks went to the open web.
+That's you and me, bestie. That's us. Those are our websites. Everyone in this room is competing for 360 clicks out of
+1,000. And the traffic that does make it through, unfortunately, it's shrinking.
+So, this is from Href's global traffic panel of nearly 75,000 websites. I think
+the goodish news is that traffic to these sites dropped only about 5% in the last 18 months. Um, paid and direct seem
+to be making up for some of the losses in search and social. But here's the thing, pretty much all these websites
+are trying to grow their traffic, right? A lot of them have marketing teams using hrefs. So, if these sites that are
+trying are losing traffic, imagine what's happening to everyone else.
+Here's another angle, same story. Now, this is Bloom's analysis. Zero click searches keep climbing. AI
+overviews have doubled, traffic is down 10%. Meanwhile, searches are up 15%.
+And somehow, search is still the largest traffic referer.
+More searching, less clicking. That is the world we live in now. And it's not just search, right? This it's meta, too.
+Now, this is Meta's own data. I just made the chart. This is from their most widely viewed content reports. So, from
+2021 to 2025, 97.3
+of all US post views on Facebook go to updates that do not include a link that
+sends people out. Right? Facebook is burying posts with external links. Their
+own meta business suite, they started advising business accounts to put links
+in the comments. Yeah, my friend here is nodding. Yeah, they did that. And here we thought that was just what the
+LinkedIn bros did, right? Link in comments. The platforms don't want to send you traffic. They want to keep
+people on platform. So, let me zoom out and show you what the rest of the web looks like. So this one is from Similar
+Web's global panel in January 2026. Right at Spark Toro, we looked at the
+top 5,000 most visited websites on the web and group them into five buckets.
+Google alone, that's the first bucket. They get roughly as many visits as the
+next 13 sites combined. Those next 13 sites are like YouTube, Facebook,
+Instagram, ChatGpt, X, Reddit, Wikipedia. All of them together roughly equal
+Google. Then the third category, it's about 170 more sites and then about
+1,300 and then the remaining 3,500 sites. The
+concentration at the top is staggering and most of us we're in the bottom tier.
+Here's another way to see it. Same data. It's Google versus literally everyone
+you think is big online. And this is the playing field. This is where your startup lives somewhere in that long
+tail competing for the scraps. So if the old game was optimize for
+traffic, we have to acknowledge that we're now competing for increasingly
+scarce attention from increasingly dominant platforms.
+But here's what I actually want you to take away from this data. It's not that the web is dying. It's that your
+homepage has changed. This is your homepage now. A Google search result.
+This is where people find they they form their first impression of you. It's not your beautifully designed website.
+Search snippet. This is also your homepage. A chat GPT answer. Your prospect asks question. AI gives them
+the answer that may or may not mention you. You didn't get a click. You didn't even get a visit. Your brand was either
+there or it wasn't. Oh, and by the way, I saw our friend Cole from Formspree. I'm a customer. Um
+I'm a customer via Claude. I I saw you in a Claude response. I didn't go to
+your website. I mean, I did eventually to make my account, but I was just like, "Nope, got it." And Claude, I'm going to
+become a customer. Right. This is Yeah. This is also your
+homepage, right? What you and your employees and your customers say about you on social media, your founders
+LinkedIn post about why you built the product, your customer's tweet about how you solve their problem.
+Right? The point is your brand's first impression now happens across dozens of
+surfaces before anyone ever visits your
+Sorry, Cole. have no idea what the Formree website looks like. So, you need to be present and credible on all these
+surfaces. That's the game now. Our new zeroclick reality platform
+suppress links because they want users to stay. Now, we at Spark Toro, we consistently see about 10x the reach on
+posts that don't contain any links. And this is true across Facebook, LinkedIn X
+threads. Your content has to deliver value in the feed itself, not behind a
+click. The new game is earning attention through resonance, not clickbait.
+And I'm not saying never share any links. No, I'm saying don't make click
+your only mechanism of value. We'll come back to this. Okay, so the web has
+changed. But there's a second problem that makes all of this even harder for startups, and it's about measurement.
+For 25 years, marketers convinced executives to invest in digital channels
+because unlike offline, we could precisely measure the ROI. We trained
+our CEOs and our CFOs and our boards to believe that every conversion could be attributed to the
+channels and tactics in that buyer journey. That's over. Here's why. Hey, Rob Walling here. If you're
+watching this and thinking, I wish I could be in the room for talks like this. You can, and you should. So much
+of the magic at our events happen in the hallway track. That's where you connect with two to 300 like-minded founders who
+are trying to solve many of the same problems you are. I hope you'll join us at our next event. Head to microcom.com/events
+to grab your ticket. Our next one is in Iceland in September of 2026 and then we'll be in Austin in April of 2027.
+Four reasons. I'll try to go fast. First, cookies. Only about 30% of users
+accept cookies and Safari rejects third party cookies by default. Your tracking is already missing most people. Second,
+ads and analytics blockers. Somewhere between 20 and 60% of browsers block
+analytics tracking entirely. For techsavvy audiences, which I'm guessing is a lot of your customers here. It's my
+audience, too. That's probably closer to 60%. Be honest here. How many of you use an
+ad blocker? Yeah, look at us. We are the worst. We all do it. [laughter]
+Third, multi-device journeys. There are about 3.6 devices
+per person worldwide. Forget about tracking individuals pre-lo across all those devices.
+Fourth, privacy regulation. GDPR, CCPA, LGPD. What's possible and legal in the
+US is not legal most anywhere else. The compliance burden alone that makes
+persistent tracking impractical for most of us here. And that's before we even
+get to the really messy stuff like dark social. So last year, we ran an
+experiment at Spark Toro. We sent over 1,100 visits across 11 social networks
+and measured what Google Analytics reported. 100% of the traffic from Tik Tok, Slack,
+Discord, WhatsApp, and Mastadon if you care were reported as direct. No
+referral information at all. So your analytics literally cannot see where
+those visitors are coming from. 75% of Facebook Messenger traffic was
+hidden, 30% of Instagram DMs, even LinkedIn
+hit it 14% of the time. So if you have a Slack community, if people are sharing
+your stuff in WhatsApp, like in the micro group here, if your product gets
+mentioned in Discord, you'll never see it in GA. It just shows up as direct and
+you have no idea what's working. And then there's the platforms themselves taking credit for the sales that they
+didn't create. Now, this is from a peer-reviewed paper
+that was published in Eccy.
+Just curious who who knows about this study. Oh, interesting. Breaking news. Okay, so
+this is this is this couldn't have come at a better time. So, Dropbox ran
+monthlong blackout experiments. They turned off entire ad channels and measured what actually happened. So,
+mobile advertising um this showed an attributed return on ad spend of 1.53.
+Search engine marketing looked even better about 2x and that actually this
+looks pretty healthy. But when they measured the causal rorowaz for mobile
+ads it was.7. That means that their own mobile ads
+were literally destroying value not creating it. It's not that dissimilar
+from their s performance causal ro was 0.92 still underwater.
+Now that's the difference between a channel touching the sale and a channel actually creating the sale.
+So when Dropbox they they reallocated $25 million away from low incrementality
+spend their portfolio lifetime value to customer acquisition cost improved by
+53%. Incredible. So this is a publicly traded company with rigorous methodology that
+attributed outcomes can overstate causal impact by two to 10 times. Okay. So the
+web sends fewer clicks, the platforms keep the audience, and the measurement
+tools that we built our industry on are unreliable.
+What do we do about it? This is the part where we talk about
+what we can do on Monday or whenever you get back to your desk. Five things.
+Build on rented land. Yep. I know for years we've been told, don't build on
+rented land. And I look, I get it. Uh my colleague Rand Fishkin, he had over
+462,000 Twitter followers, built over 16 years. I grew my account there to over 130,000.
+Then Elon Musk came along and you know the rest. I'm pretty salty about it. But here's the reality. For every like one
+visitor to your website, a 100 people will get to know you on platforms that you don't control. That's where the
+attention is and you have to be there. Now, what this means practically, you
+need to publish native value on platforms where your audience already pays attention. Write posts that teach
+without requiring the click. And where you do this depends on your
+audience, right? Maybe it's LinkedIn, it's X, Reddit, YouTube. This is important. No two companies marketing
+mix should be the same, even in the same sector, right? because you have to figure out where your specific audience
+pays attention. Number two, keep one own channel strong.
+And I would argue that that channel is email. Look at this data. Email open rates in 2005, 30%.
+In 2024, 34%. Click rates have bounced around between 2 and 4%. For 20 years, 20 years,
+everyone's saying email is dead. Slack is going to kill email. Gen Z doesn't use email. But these stats are pretty
+much unchanged. Email is the one channel where you control the relationship.
+The algorithm can't suppress your reach. The platform can't hide your content. I
+I mean, actually, you could get stuck in the Google promotions tab, which is not great, but hopefully most of us are
+marketing to other business emails, or maybe that's not as big of an issue. I don't know. But you own the list. That's
+the point. So yes, build on rented land, but make sure every rented land effort
+feeds your email list. Number three is about how you measure all this.
+Drop traffic as a KPI. Measure what matters.
+Traffic can be a fine secondary metric, but it's a bad thing to optimize for unless you sell CPN ads. And I'm
+guessing most of us here don't sell CPN ads. Here's one of my favorite examples. So,
+HubSpot's organic search traffic dropped 80% after Google's algorithm updates and AI
+overviews rolled out. This was last year. 80%. It sounds catastrophic.
+And yet, HubSpot's Q4 2025 revenue hit an all-time high. The stock jumped,
+right? Traffic and revenue are not the same thing. So, if you're judging your
+marketing by traffic, you're measuring the wrong thing. So, what do you measure instead?
+Here's a framework across content platforms, search, social, and your
+website. Track four layers: audience, followers, keyword volume, viewers,
+listeners, returning visitors. Are you building an audience? Reach, impressions, visibility, views,
+minutes, email subscribers. Are you being seen?
+Interest, engagements, product page views, comments, shares,
+branded search. Are people engaging with you?
+And then sales, conversions, and conversion rate. All the things above, these are all
+leading indicators that should eventually lead to sales. Incremental sales lift, that is your primary KPI.
+Everything else should tell you whether you're on track. Now you're thinking, how do I prove this
+to my board? Or how do I know it's working? You can't fully attribute, but
+you can correlate. Track the leading indicators alongside business outcomes.
+So, here's a simplified example. Let's say your LinkedIn your LinkedIn
+impressions from no link posts went up 52% this month. Okay. Well, did branded
+search volume go up? Did email subscribers grow grow? Did demo requests
+increase? Right? You're looking for patterns over time, not single touch proof. Sorry, I
+spit. Did we did we do more of X this month? And did it did Y go up?
+Right. For us at Spark Toro, we know that zeroclick social content for us is
+strongly correlated with signups over the next two to four weeks. We can't attribute it in GA, but we can see the
+correlation clearly, right? There's this other um B2B SAS company, Dream Data,
+right? This was maybe last year, two years ago. They started their employee advocacy program where employees were
+empowered to just post as thought leaders on LinkedIn. They post about sales, you know, attribution, revenue,
+um, life at dream data. And since doing that, their number of demos booked
+increased by a lot. They don't they don't know like which post drove x amount of demo requests, but they know
+that this program has resulted in a lot more people reaching out to learn more
+about the product. So, this is how you report to your board. And I think that this is a more
+honest way to do it. It's more credible and it also proves that your organic and
+brand teams are doing their jobs well. All right, number four is the one that I'm most excited about. Remember that
+search captures demand, but the public evidence creates it.
+This is so what I'm about to show you, this is a more realistic buyer journey that you're never going to see in analytics.
+Okay, step one, someone sees your LinkedIn post. Then they hear you or your founder on a podcast. Then they
+read you in a newsletter mention. Maybe a peer drops your name or your
+brand name in a Slack group. Then they Google your brand name and
+convert. Google gets the credit because your analytics will say organic search,
+but steps one through four created the demand. Google just captured it. So your
+job is not just to rank, it's to influence the public record. reviews,
+forums, discussions, search snippets, thirdparty mentions, and the pages AI
+systems site and summarize because if you if you don't influence the public
+record, someone else will. Okay, two stories. First one, my friend
+Ross Simmons over at Foundation, Inc., He analyzed B2B SAS search results and
+found that Reddit outranked every vendor simultaneously on 50 to 66% of shared
+keywords. 77% of the search volume that Reddit won
+came from generic category keywords. So not best or review or alternative terms.
+And as queries got longer, Reddit's advantage grew even more.
+So, what does this mean for you? It means buyers are forming opinions in
+subreddits before they ever visit your website. So, if you're not part of that conversation authentically, not
+spamming, right? You're invisible at the moment of decision.
+Second story, my friend Will Reynolds over at Seir Interactive, he discovered
+that one negative review theme, it was high account, high account manager
+turnover that was surfacing 67 times in branded AI outputs. Perplexity, chat,
+GPT, all of them are repeating it. And by the way, he's had his agency for like 24 25 years. That was from one negative
+review, which at the time when he saw it years ago, he was like, "Ah, that's one person."
+But AI systems go deeper than humans do. So AI treated that one data point as a
+trend and amplified it. Sucked. So what did Seir do about it?
+They started publishing real employee retention data. And after just two
+citations, the LLMs stopped referencing the negative one.
+Now, I'll I'll admit that this wasn't super durable. Like, if they didn't refresh if they didn't refresh this data
+every like several weeks or so, LLM would pick up the the old like negative review. But the overall lesson is if
+your strongest proof points are trapped in Slack, in your finance reports, or they're in your head, then they're not
+part of the public record. And if they're not published, they're not helping you.
+Number five, this is how we do it. Treat content as a service. Right? We're all
+SAS cuties here. Hopefully, we like this Cass. Now, this is how I've run content teams across both B2B and B TOC. Every
+piece of content has a job to do and a client it serves. Case study, that's for
+sales, success metric, win rate and cycle time. A how-to guide that is for
+customer success metric, ticket deflection and feature adoption. Benchmark report that is for corporate
+comms and bisdev. The metric is back links and speaking invites.
+If your content can't tell you what job it does and who it serves, it's not
+ready to ship. So when I ran I used to run content over at Fitbit B2B, this
+shift was the real unlock because once we started doing that, sales started
+coming to us first instead of last. And our output ended up going down because
+in having that tighter loop, we didn't have to create as much stuff. But our impact went way up. There were like
+days, months where I only focused on creating case studies, which sounds kind of lame if you're a content marketer,
+right? But that ended up moving the needle a lot more because our biggest money came from enterprise accounts.
+Enterprise accounts don't care about your how-to blog post, right? They want the case study that shows them that your
+product actually works. So, here's the intake form that's going to make this operational.
+We use this for every asset 10 fields. If you and your internal client can't
+fill this out, then you can't make the asset. Client team,
+so sales, CS, product, corporate comms. Two, job to be done. Audience, so the
+role, the ideal customer profile, right? What stage they're at. Number four, desired asset type, moment of use,
+desired action. You know what you want your what you want the consumer to do,
+source material and subject matter experts, success metric and target,
+distribution plan, shelf life and refresh trigger. Right? This is a lot,
+but the point is this will help you optimize for actual business outcomes.
+So if you can't do all this, you know, with your internal stakeholder, then you don't get to make the content. Now, let
+me tie all this together into something, you know, tightly actionable that you can start doing next week. Here's the
+weekly loop. Five steps. One, pick two to three channels where your audience
+actually pays attention. Not where you wish they would click, where they actually hang out.
+Uh, wink wake, nudge nudge. You could probably create a Spark Toro account. Um, that would tell you where your
+audience hangs out. Anyway, step two, publish one to two zeroclick assets per
+week. Standalone value, no click required.
+Three, repurpose each idea into multiple native formats. So, one insight, maybe
+it just starts with a LinkedIn post, maybe you get some pretty decent engagement that causes you to think
+about other things. So then you then flesh that out into a longer blog post.
+Then maybe you also repurpose that for your newsletter. And then maybe you also repurpose that for a podcast talking
+point. Four, capture demand, email sign up,
+branded search, demo request, direct traffic. That's how you collect the
+value from all that rented land activity. Five, review it monthly. Look at your
+correlation dashboard. Repeat this weekly. Review it monthly.
+Adjust channels quarterly. This is something a founder with no marketing team can start doing on
+Monday. Now, one more mental model before I close.
+Think of your content strategy as a banking system. Right? Every zeroclick
+post that delivers standalone value is a deposit. You're building algorithmic
+capital, right? Goodwill with a platform and trust with your audience. The
+insight, the data point, the story, the how-to, the hottake, those are all
+algorithmic deposits. And then every once in a while you make a withdrawal,
+subscribe to our newsletter, book a demo, create a free account.
+That ratio is roughly five deposits for every one withdrawal. Earn the goodwill
+and then spend it wisely. Don't make the click your only mechanism of value. Make the value obvious in
+feed. Make the action obvious with the link. Let me leave you with this. The
+job of marketing is no longer just to drive the click. It's to create
+understanding, trust, recall, and preference wherever
+your buyer already is. The founders who embrace this early will
+grow faster because they will have started building influence across the services where their buyers actually
+spend time. The companies that win will not be the ones clinging hardest to old
+attribution. They'll be the ones building influence across the modern discovery journey. [clears throat]
+All right, that's all I have. Uh best way to keep in touch is my newsletter.
+The QR code is there. Um, I send it out every Tuesday, so you'll get it tomorrow. That's where you'll also get
+updates on my ZerClick Marketing podcast. If you have any questions or want my slides, or if you want to send
+me hate mail, don't worry, I read them all. Um, you can email me at amandaspartoro.com.
+Um, is there too many calls to action on one slide? You know how the college children don't have shoes? I apparently
+have too many shoes. So, and I'm early. So, if you have questions [applause]
+amazing, the best marketer in the world and she came to hang out with us. I love
+this for us. The worst. And now I'm just going to steal your shine cuz here I am with you. Hello. Want to answer questions together? No,
+we have time. But what I want to know first, like real quick, because we only have time for three questions, is uh when was the last
+time anyone in here like posted on LinkedIn as a founder? Like within a week. This morning.
+This morning, of course. I mean, this Alex Boyd, everyone. Uh, okay. It was like 10 people. So, you need to be doing
+it all the time, right? Yeah. Cool. Actually, I have more to say on this. Ideally, you'll be doing this like two
+or three times a week. I think people used to think, "Oh, LinkedIn, you got to post twice a day." No, post less. Because LinkedIn, the way
+their algorithm works is they're trying to find they're trying to give the right
+content to the right person. Like they're trying they're kind of trying to
+tamp down virality in exchange for higher quality engagement. And so part
+of that kind of means like high signal to noise. Um the other thing is if you post twice within like 18 to 24 hours,
+your previous post is going to get throttled. So yikes. You're if you're intimidated about LinkedIn, just think
+of it as like you only have to do it three times a week. That's it. Yeah. And you signed up to do all of this. Anyway, maybe now we only have
+time for two questions. Uh we have our question boxes. We have a question right there. Yeah. Speaking of LinkedIn, is it
+important or better to post as a person or as the business profile? Which is
+most effective? In a depends, right? If if you are just
+looking for raw engagement, a person's page will always perform better, right? People want to engage with people, not
+brands. Um, so the way I do it is I treat the company page as sort of like
+the news feed. Everything the company does just goes on that page. And then my personal page is a little bit more of my
+perspective of that company news. If that if that kind of helps. That way you
+kind of look as the company page as sort of the de facto like this is the record of things and your personal page might
+be you don't announce everything right like you don't talk about every single blog post your company does but it's a
+little bit more point of view less who else we got here
+okay just a quick followup video or text depends on the platform um you uh on the
+platform like the one that is video or text first, right? So, like Instagram is
+probably going to prefer video and images. LinkedIn, like I've been seeing
+that I mean obviously an embedded video will perform better than like a YouTube link,
+but I will see that my reach on an embedded video is like 10x lower or 8x
+lower than a texton post. So, I would say I think especially if you're just getting started and you you just need to
+get it done, just do text because it's a lower barrier to entry. Yeah.
+Founders hate being on video. I know. Video is the worst. [laughter] I hate it. Do we have one more? Time
+for one more. Yes. Right here. We're working on it. Thank you, Justine.
+Thank you. Um, do you have any recommendations on how to use AI to create content? Like I I'm sure all of
+us here use it, but does it get dep prioritized now by platforms or is it
+more like people don't want to engage with that because it's built made by AI?
+I I see it as I think the platforms are trying to be smarter about detecting
+what is and is not AI generated. So I think it's like LinkedIn for instance,
+they've been pretty big in talking about their algorithm is trying to reward high quality engagement and an AI seeming
+post that just kind of restates the post is not going to be deemed as high quality. So there's a little bit of
+that. Um, if you're asking too about like how do you create content or
+marketing stuff with AI, I would say with caution, but use it as an editor who can give you
+feedback. Like what I like to do is I'll give it like a finished a finished asset and be like, "Hey, poke holes in this
+theory. Where do you think I need more examples? Where do you think it gets confusing?" And sometimes it'll point
+out like, "Actually, this is kind of weak. you need a you need a clearer example for this claim, stuff like that.
+So, I would say do that. But the copyrightiting itself is is you, right? Like
+Yeah. Okay. Yeah. That's the big thing. I love that. I love that so much. Yes. The copyrightiting has to be you. I
+think the the dangerous thing is that if you start using AI to create good enough
+content, you're just going to forget what good actually is because it'll because it's supposed to please you,
+right? The LLMs are like they're they're literally designed to give you the next
+like statistically likely word. So, it's supposed to look good. So, it's
+important for me to maintain my voice and my IP and just use it as like, hey,
+can you stress test this concept? Thanks so much for saying that. I'll Venmo you later. [laughter]
+Also, hire Lyanna if you need a copy. Oh my god, what? Where did that come from? The best [laughter] copywriter in the
+world, guys. Hopefully she's here in the room together. This well this has really worked out for me being up here. Can we give it up for
+Amanda one more time? [applause] I've been running Microcom for more than a decade. And the thing I hear from
+attendees more than anything else is I wish I'd come sooner. Not because of any single talk or tactic, but because they
+finally found their people. Founders who get it. Founders who are building the same way they are. At our events, it's
+not just about the talks. In Portland, we organized waterfall hikes, food tours, happy hours, real time with other
+founders outside the sessions. And those relationships don't end when the event does. They turn into the people you text
+when something breaks or when something finally works. If you've been thinking about coming, I hope you'll join us in
+Iceland and Austin. Get your tickets at micro.com/events. If you got something out of that talk,
+make sure you hit subscribe. We're putting out more of these every week. And that wasn't the only great talk from
+Portland. Go watch this one next.

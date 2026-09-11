@@ -1,0 +1,366 @@
+All right, let's go ahead and paste this
+in and see what
+happens. It's crafting my
+workflow. Looks like it's done. Let's go
+ahead and download the JSON
+file. I might be out of a job. Hey guys,
+in this video we're going to be using
+Claude to craft our in workflows for us.
+Now, typically if you have an idea for a
+workflow, you have to sit down, map it
+out, may take 10, 15 hours, and then you
+go and start building it in inade or
+make or something like that. But today,
+we're going to try something new. Claude
+4 just rolled out and I want to see if I
+can use it to build my workflows for me.
+So, let's go ahead and dive on into this
+and one, see if it works, and two, see
+what it's going to take to make it work.
+By the way, if you enjoy videos like
+this, don't forget to like and
+subscribe. And if you want more free
+resources, you can click the link down
+below, head on over to my free school
+community where there's downloadable
+templates and trainings on how to build
+an Aen workflow. Now, for those of you
+that don't know, Claude is actually
+considered one of the best large
+language models for coding. I've used it
+to build calculators and widgets. Um,
+I've used it to build some incredible
+things, but I haven't really tried it to
+actually build complex uh innate in
+workflows. And so yesterday, Claude 4
+just rolled out and it includes Claude
+for Opus. And Opus is actually now
+considered to be their best coding tool
+ever. So what I want to do is I want to
+come into Claude and I actually want to
+find out if Claude is going to be
+capable of reasoning through not only
+the capabilities of Nadin and
+understanding how uh how to structure
+things and where to find tools and how
+to call on things. Um I want to see if
+it can reason on how to build the
+workflows which is honestly the biggest
+value that I provide to companies. uh
+when I sit down and say, "Hey, you want
+this like this is your current system
+and this is what you want it to be. How
+can we bridge that?" Building the
+automations is actually fairly easy and
+straightforward once you get the hang of
+it. It's conceptualizing the automations
+that's exceptionally hard. Let's build
+this out step by step. First off, inside
+of Claude, all I want to do is create a
+new project. And I'm going to name it my
+NAD workflow builder 2 because I already
+have another
+um all NADN workflow projects and I'm
+going to create the project. Now when
+you look at this you're going to notice
+right away that there is nothing in it.
+There's no context. It hasn't been
+trained. It doesn't have a prompt or any
+of that. The first thing I'm going to do
+is I'm going to add in files. Now, if
+you didn't know this, Inaden actually
+has an entire library of files, uh,
+dedicated to understanding the platform,
+the functionality, the capability,
+troubleshooting, the nodes, the
+integrations, all of it. And so, I
+actually want to put all of this as
+knowledge into this cloud project. Now,
+I've actually already compiled all the
+readme files from NADN. So, I'm going to
+come right here to the plus sign. I'm
+going to click on Google Drive, and I'm
+going to drop the URL to the file
+itself. Now, if I walk through that, it
+would take me way too long. that's an
+entirely different video around how to
+use GitHub to pull the readme files and
+then uh change the formats from markdown
+to docx and so for right now I'm just
+going to show you dropping this in for
+context. Now that I've added knowledge
+of the platform itself and all the nodes
+and functionality I'm going to add in my
+system prompt essentially I've already
+got one so I'm going to add it here but
+we've got the overview context
+instructions tools examples and SOPs and
+final notes. Okay so I'm going to save
+these instructions. Now, the next thing
+I want to do is I actually don't know
+how to prompt this to get the best
+result. So, instead of trying to guess
+what this particular project is going to
+want from a prompt, I'm just going to
+ask it so that I can get a framework.
+Please give me a framework or guidelines
+for crafting a prompt that will give me
+the best possible output for an inadin
+workflow build. Now, what it's going to
+come back with is everything that it
+wants based on all of the files and
+training that it has to build the best
+workflow. Cool. So now this has told me
+exactly what it wants from a prompt. So
+instead of trying to sit here and
+engineer it myself, I'm going to just go
+to chat GPT and I'm going to feed it
+everything that I just got told about
+how to build a prompt. To do this,
+instead of dropping that entire chunk in
+there, I'm just going to start a Word
+doc and then I'm going to copy and paste
+all of it onto the Word doc. So now we
+have a neatly laid out prompt
+instruction. I'm just going to use uh
+prompt framework.
+And then I'm going to download the
+PDF. Coming back over to chat GPT, I'm
+going to give it the
+PDF. So I'm just going to write, please
+help me craft a prompt based on the
+prompt framework that I can share with
+my inadin workflow builder agent. I've
+already got my user prompt. It's not
+really going to matter because this will
+be completely different for everybody.
+Um, but basically I'm saying, hey, um,
+this is the workflow that we want to
+build. Um, automate and summarize recent
+emails using AI. Right? So, we're going
+to go ahead and put this in, and we're
+going to look for the prompt to come
+out. And again, none of this really
+matters for the specific build I'm
+doing. It's more about how I'm thinking
+about getting this
+built. Now, all I'm going to do is I'm
+going to copy this prompt and I'm going
+to take it back over to my cloud
+project. I'm going to come right in
+here. I'm going to start a new one. I'm
+going to switch over to Opus, which is
+the coding builder within Claude, and
+I'm going to drop in my prompt. And
+based on this, we're going to let it
+run. And as you can see, it's already
+started building the workflow. Now that
+it's complete, I'm going to come to the
+top and I'm going to click download as
+JSON. And I'm going to come over here to
+a new project, new workflow, and I'm
+going to say import from file, and I'm
+going to find my Gmail summary
+workflow. And there it is right there.
+Now, not only does it have all of the
+nodes, but it has instructions um as
+well walking through what else is needed
+and how to set it up. Now, it is worth
+noting you're going to see a lot of red
+nodes. You have to set them up. So,
+we're going to go through right now, set
+these all up in real time um so that you
+can get a feel for it. So, let's name
+this
+our claw Gmail
+uh
+organizer. Okay. And so you can see
+right here we've got a daily trigger at
+8 a.m. It's going to fetch unread
+emails. And all we have to do is double
+click on it and make sure that the
+account is set up correctly. Label name
+is unread. Great. That looks good. Then
+check if email exists. It looks like
+this one automatically set up if the
+input length is greater than zero. So we
+can run that in just a moment. And
+then we're going to format and validate
+the
+emails.
+Prepare AI
+prompt. Now, for this, I might go ahead
+and swap this out for just an agent. So,
+what we'll do is we'll erase this guy
+right here, and we'll add in a message
+model
+node. And we can change out the the
+prompts here in just a
+moment. And then let's connect our Slack
+account. So, we've got the right Slack
+account. send message to a
+channel and we're going to search
+for
+playground message type. This looks
+good. Okay, we'll come back to that in a
+minute. Log success to sheets. I don't
+have a sheet for this, so I'm going to
+have to create it. All right, I've
+created a new sheet, and we'll call this
+our uh email uh email sheet.
+And I'm gonna just make sure that it's
+set to
+share. And I'm gonna come back up here,
+copy the top
+one, and put it back over in here. So by
+ID, see if we can do by
+URL. That should pull it. And then the
+sheet, we'll do a sheet name. Actually,
+we'll just use it as sheet one. For
+sheet, we'll just leave it as sheet one
+and we'll do it from
+list. There it is. Sheet one. So, it's
+recognized in the document. We've got
+our sheet. So, it's all set up there.
+Next, we have to do the bottom line. So,
+let's get this slack set up. Message to
+channel. I'm going to do the same thing
+again for simplicity
+sake. There it is right there. And we've
+got our message. And then log error to.
+Once again, we're going to use the same
+URL. Change this to URL. We're going to
+switch this to from
+list.
+And that didn't
+work. There it is. And that should work
+right there. Coming back down here,
+we're going to do the same
+thing. Basically, we're just connecting
+everything. All right, that's all set
+up. So, that looks good. That looks
+good. That looks We can test this in
+just a few seconds here. Let's look at
+this really quick and see what it wanted
+to do for the uh messages. So, we've got
+system prompt and user
+prompt from the prepared message prior.
+And we might actually change this. I
+might I might shift over to adding
+another AI node instead of prepare an AI
+prompt. Uh let's just first do this um
+and see and see what it comes back with.
+So, I'm going to drop my prompt right
+here. Let me select a model. Let's do
+GBT41 uh
+mini. Let's take our system prompt and
+move it down. We're going to add a
+system prompt right here. And we're
+going to change this. I don't know if
+this is actually what it's going to come
+out to, but we're going to try it. And
+we're going to make this an expression.
+And we're going to use a system message
+for this. And then for this one, we're
+going to do the same, but we're just
+going to fix the top
+here. And set that up.
+and let's add our curly
+brackets. There it is. So, now we've got
+our user prompt and I swap those around.
+There we go. Now, we've got our user
+prompt and our system prompt and we're
+good to go on this. I'll leave all of
+this as is for right now. I just want to
+see what it does. So, let's swap this
+out for right now for a manual trigger.
+again just for
+testing. And now let's go ahead and test
+the workflow. All right, we got an error
+right away in this node. Let's see what
+we've got here. Invalid date time
+received after
+field. See here, received after select
+date time. So, let's just set this. I
+should have set this before, but we'll
+set this as a fixed value.
+Um, but we could set a custom value if
+we wanted like for yesterday or
+something. So, once again, we'll test
+this
+workflow. Cool. So, it found 50
+items. All right. Looks like we had an
+error message here. So, let's go back
+and take a look at what happened in the
+workflow. And if we come in here, we can
+see the error logs could not get
+parameter. So, this was set to manually
+add them. I'm going to switch it over to
+automatically. And I'm going to do the
+same over here as well. I should have
+done this the first time. What else
+we've got? Same for this one. Let's set
+it to automatically. And then let's look
+at the input and output from this. We've
+got the user prompt and system prompt.
+Uh user prompt is placed appropriately.
+System prompt placed appropriately.
+Cool. Now, let's take this and actually
+because of the way that this is going,
+let's do this from we'll say yesterday
+and that will give us a little bit
+better way to do this. All right, our if
+statement is pushing everything to
+false. Let me come back into my open AI
+node, check my settings and on error,
+let's do continue using error output and
+that way we have a reason for it to go.
+And then let's actually drop this uh
+this node right here. And we'll have
+success go there. Error goes down there.
+That should work much better. And let's
+go through and test it
+again. Cool. Let's find out if this
+worked. Let's go over to our sheet. And
+it looks like we had a successful run.
+Coming back into our Slack, you can see
+here daily email summary. And the
+message content is essentially missing.
+So let's change what it is that we are
+using. It looks like none of these
+variables are pulling. So what I want is
+I want to swap this
+for this guy right here. And let's test
+this again. There we go. Now we can see
+a complete breakdown um of all of the
+emails that need to be addressed. So,
+with that being said, we've now got a
+workflow that is semi- workinging. Um,
+and it's a definitely a starting point.
+So, I think at this point it's fair to
+say that it's not going to replace guys
+like me just yet, but it's definitely
+getting close. And I think that this
+could be used really easily as a
+starting point. So, as long as you have
+enough context around your project, what
+inputs you're wanting, where the data is
+coming from, how you want it to be
+processed, what you want the output to
+look like, and any um and any rules or
+functions you want within that, I think
+that you could still use Claude as a
+starting point. Um, and then once you
+get it into something like this, it
+gives you the ability to start playing
+with it and adjusting how you want it to
+go. Uh, so guys, if you found that
+valuable, do me a favor, go ahead and
+give me a like and subscribe. Don't
+forget to check out my free school
+community. The link is down below.
+There's templates in there and guides on
+using inadin to build workflows. That
+being said, thank you so much for
+watching and I look forward to seeing
+you in the next video.

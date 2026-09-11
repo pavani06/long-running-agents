@@ -1,0 +1,637 @@
+Thanks Hasbot for sponsoring this video.
+It was about 1:00 a.m. yesterday and
+there were whole bunch of PRs keep
+submitting to our codebase. And that's
+not because we work extremely hard. It
+was all the different agent loops that
+is autonomously finding issues and
+picking up the work. And I even have
+this go loop has been running for past
+two days straight where every day is
+outputting 20 to 40 extremely high
+quality page that's driving traffic to
+my company without me looking at it. And
+this is what I want to talk about today.
+The loop engineer. It is the hardest
+thing everyone was talking about last
+week that you should no longer prompting
+the coding agent anymore. Instead
+designing loops that autoomsy prompts
+agents and in this video I want to
+explain what loop engineer actually is,
+what are core components and tips to
+making sure the loop actually works well
+as well as how my team has designed loop
+in a way that actually compounds. Before
+we go deeper, I want to quickly mention
+something useful especially if you
+haven't built any agents before. Because
+what I'm talking about today the loop
+engineering harness share memory can
+sounds a bit advanced but underneath all
+this the basic pattern is actually quite
+simple every agent still comes back to
+three things it bring agent loop the
+memory layer and tool access and HubSpot
+has this free video courses that walk
+you through a foundation in very
+practical way. It shows you how to build
+agent from scratch using different type
+of tools including personal assistant
+agent that reads email and check your
+calendars and a support style agent that
+connect to real business workflow and
+through those examples you get much
+better understanding about how the agent
+memory works how to effectively manage
+contacts. So if you have never built an
+agent before or you're still trying to
+understand the difference between normal
+automation and actual AI agent, I think
+this great place to start because once
+you understand the basic pattern, what
+I'm talking about in this video becomes
+much easier to understand. I have put
+the link in the description below so you
+can check out for free and thanks
+HubSpot for sponsoring this video. Now
+let's get back to what loop engineer
+actually is. So past one year there are
+a lot of new terms that popping up. It
+might feel confusing but in fact each
+one of those terms are a cluster of
+techniques that has been introduced for
+different level usage of large language
+model. If we go back to 2023 when GBD
+3.54 API just show up majority of task
+we get large model to do is pretty
+simple is mostly the task completion.
+You give the API input and use large
+model to pretty much output text. So it
+can be used for extracting structured
+data or writing blocks. But the nature
+of model is undeterministic and that's
+where the term promp show up. It was
+basically techniques about how to inject
+right context in larger model call to
+steer the behavior like you can tell it
+always return text in all caps then
+write article in certain stuff but very
+quickly as we move into the mid 2024
+that's where the model not only get much
+smarter but also way bigger context
+window back days the contact window is
+somewhere around 4,000 and when 128k
+token show up it was mind-blowing
+advancement then Google just raise a bar
+to every model default have 1 million
+token context window and the bigger
+context window here means the use case
+of how we use larger model actually
+changed. We start building those system
+where the model is equipped with
+different tools like MCP so it can
+decide what to do and we include both
+the two call and two response as part of
+conversation. So the large end model can
+continue this loop until it thinks the
+task is completed. And what this really
+changed is that the context window
+actually getting eat up more and more as
+a model is cable to do more and more
+tasks. And as we all know even though it
+has 1 million context window the
+effective window is somewhere between
+128k to 200k. whether you can feed the
+most relevant information within this
+context window directly impact the
+agent's performance and this is where
+people start introduce a whole bunch of
+techniques around this like what to keep
+in the system prompt that can trigger
+the prompt cache better and how to
+handle the long conversation regarding
+the compaction strategy and also new
+concepts like skill were introduced as a
+way to extend agents capability without
+blow up context window but one thing
+really changed as we proceed to the end
+of 2025 which we are getting model to do
+way longer and bigger tasks from
+beginning of This year it start became
+common that people are oneshot cloud
+code to finish 30 minutes even two hours
+amount of work and this is also time
+where we start experimenting a lot about
+loops and workflows. In the beginning
+people were trying rough loop which is
+simple while loop to run claw infinitely
+with the same prompt and later cloud
+code introduced the concept of go and
+also loops recently workflow and all
+those things are point to one thing. We
+are getting model to do this kind of
+cross- session work meaning we're no
+longer just getting one agent to finish
+the whole task. Instead, we can have
+multiple different agent sessions where
+each is handling one task and running in
+the loop until everything is finished.
+And this means we need a way to track
+the state or kind of file system across
+those different sessions so that each
+agent session can actually understand
+where things are at and continuously
+doing the work. And those are things
+actually happening outside agent runtime
+itself, but also including the
+environment where the agent is operating
+in. And this is where this agent harness
+concept was introduced. It was initially
+mentioned by Viv from Lanching and the
+definition back then was pretty
+straightforward. Basically harness means
+anything that is non-model and this is
+why the harness concept is so confusing
+because it just includes so many
+different things from prompt engineer
+and how you manage context as well as
+those orchestration logic and hooks. But
+one useful way always in my mind was
+there are two parts of optimization that
+can happen. One is agent loop itself
+which can be cloud code or codec. If
+you're building your own pi agent,
+there's whole bunch of optimization you
+can do. But all those techniques is
+around how do you making sure when you
+give one task to agent, it can finish
+the task pretty well. But on the other
+hand, there's whole bunch of techniques
+that is not just about how to get agent
+complete a task well, but around how to
+get this whole agent assistant decide
+what should be worked on. And this outer
+part is actually what we currently talk
+about loop engineer. is more like this
+kind of environment that you are setting
+up to both triggering the agent runtime
+but also keep track of the state and
+logs so that it can continuously
+improve. And the reason this critical is
+that then it actually free you from
+prompting the agent itself. The agent
+can actually be a lot more autonomous
+and triggered by other different things
+like could be chrome job or it could be
+another agent and even web hooks of like
+incident that happen in your server. All
+those things can just trigger the agent
+get it to deliver meaningful piece of
+work without you involved. And this is a
+core mechanism for the loop engineer is
+that you will set up the right trigger.
+So the agent can be wake up in relevant
+time and scenario. And every time
+normally agent will do some sort of
+investigation and action which will
+produce a list of backlogs or ideas that
+main agent can prioritize and assign
+tasks to others if needed. So next time
+you can review and learn. Let's take one
+example. Assume you are trying to create
+a loop for agent to handle the support.
+You can actually build a simple loop
+where every 30 minutes the agent will be
+just wake up by the chrome to review all
+support tickets respond to ones that
+have been handled automatically and also
+log the frictions and ideas. So you can
+pick that up as a part of improvement
+later. And this loop itself is
+absolutely valuable. But what's even
+more powerful is what if it not only
+just log those ideas and frictions but
+actually trigger a coding agent to
+directly implement some of the ideas.
+They can actually monitor performance or
+even tell the customer those fix has
+been in place and monitor if any other
+people still experience those type of
+issues. And those two loops they both
+provide huge value. The second one is a
+lot more powerful and in my own
+experience you can actually define
+multiple different loops that compound
+on each other if you can define a good
+logging system. So those are the loops
+that actually happening in my own
+company. We have one support loop that
+every 30 minutes it will just trigger
+the agent handling all support tickets
+and also log the frictions and ideas
+into one folder what we call signals.
+Signal is like a folder where it will
+capture either the product ideas the
+friction found the opportunities that we
+might be missing like in one run it
+might identify a few people or ask about
+how to export files. Then it will create
+one signal about export file to hidden
+as MD file and inside this MD file it
+will log which user experienced that and
+every time when it saw this issue
+happened it will just log and add to the
+same file system. Similarly, we also
+have this SEO loop that is running every
+day 9:00 am. It will just go pull all
+data and research about topics then
+publish relevant SEO page. But during
+this data analysts, it might find
+interesting insights like one page is
+actually getting a lot of clicks. But
+there's not enough conversion from this
+funnel. Then it can add a signal as a
+conversion gap for this specific route.
+And what we really do is that making
+sure each agent loop both read and write
+from those share folder systems. So
+therefore para loops where before it
+will just watch some post sessions and
+analytics to prioritize and ideulate
+some growth experiments but because we
+have this shared file system it will
+analyze data also look at what are all
+the other signals that has been
+identified from other different roofs or
+departments so that it can prioritize
+and fix a bug that has been reported few
+times or grab opportunity that marketing
+or SEO team is optimizing. Similarly, if
+a ad loop is finding a certain keywords
+is actually has pretty good clickthrough
+rate, but we don't have organic content
+around it. This signal information can
+also feed back to the SEO loop. So you
+be aware of this situation and
+prioritize some organic content for this
+specific keywords. All those different
+loops are happening every hour or every
+day. Share the same brain and this is
+where this compounding effect really
+taking off and people also writing this
+on the tweets where the logging system
+can actually be the agent which is
+something similar to what I see here.
+But how do you actually getting started
+with those crazy compounding loops for
+your own business? So there are four
+core components or ingredients that is
+needed. One is that you need to set up
+triggers. As I mentioned, it can be
+multiple different type of triggers and
+second one which is most important one
+is design of the file structure. I do
+have some best practice that I will take
+you through. You do need to give agent
+different tools and connectors so you
+can do meaningful work. First is
+actually the most important one that a
+lot of people miss. You want to making
+sure your codebase or environment is set
+up in a way that allows us parallel and
+autonomous work happening where many
+different agent can work at the same
+time and each verify its own work. I
+will quickly talk you through each one
+of the setup. Firstly, how do you set up
+your codebase harness so agent has right
+environment to do work autonomously. The
+core point here is that you want to
+making sure your codebase is actually
+legible which means agent can easily
+understand where to change what and it
+should also be executable so agent can
+easily spin up dev server locally as
+well as the right tooling to verify its
+work. So first is legible codebase is
+actually not that complicated. Open
+keeps their agents.m MD file to be
+indexed there roughly 100 lines which
+point to also other documentation system
+that they have for agent to
+progressively discover information and
+this two things I believe a lot of you
+already doing that but there's also one
+part I think is actually very useful is
+that you can set up a custom links
+because you can't really rely on agent
+to find relevant information for all s
+different tasks but you can actually
+inject those rules into programmatic
+link check so every time when agent is
+not doing the things right the warning
+will be automatically surfaced like in
+our case we have a pretty complicated
+mode ripple and we don't want agent to
+use certain ripple so every time where
+agent write a file they import from
+those lexi folders it will just surface
+those type of errors and this probably
+list of custom links that you can bake
+in to your codebase but the core idea
+here is that you want to do the context
+engineering for your agent so it didn't
+always rely on it to find the random
+information to do the task and second
+one is that you want to making sure is
+executable which means your agent should
+start a work with just dev server up
+running ideally cost no token or
+cognitive load for So you can actually
+focus on the work well in our codebase
+where is dev local script that is
+written. So the agent can just run the
+script to get the whole dev server up
+and running. And meanwhile you also want
+to making sure your codebase is actually
+work tree friendly. So that when there
+are five different parallel agents is
+all working on his work tree. You can
+still spin up the dev server and test it
+without conflicting with each other. And
+ideally you can also set up some useful
+scripts to allow agent to jump to a
+specific state like all state or on all
+state to test specific scenarios. And
+all those things is providing shortcut
+for agent to verify his work easier. And
+the last one is verifiable. You
+basically want to give agent the right
+tools to actually test and log the
+result. And the one I found best is this
+playright CRI. It not only allow agent
+to effectively use the browser, but also
+it can record a video clips that can be
+uploaded attached to the GitHub PR. So
+it's very easy for you to review whether
+things are working or not. alongside a
+few end to- end tests for critical flows
+that we actually care about and want to
+making sure never breaks like upgrade
+flow, signup flow or in super design's
+case create design effectively. And we
+also provides PR skew which define the
+list of steps the agent have to do
+before it can submit a PR. And one of
+the important thing here is that don't
+get agent to selfverify its own work. It
+just generally doesn't work that well.
+That's why in our PR skew, we always
+tell the agent to spawn a read only
+verifier agent with a details back. And
+if you're interested, I've created a
+skill called set up a codebase harness
+capsulating the critical setup that I
+have done for my own codebase. So you
+can just give to your own cloud code or
+codeex. Then go set up those useful
+scripts and docs and skills. So your
+codebase will be much more agentic
+friendly. I have put a link in the
+description below so you can try out for
+free. If you want even deeper dive, I
+have walked through the whole setup from
+scratch step by step in AI builder club
+workshop. So you can click and follow as
+well. So this first thing that you
+should really do making sure your
+codebase is in a state that agent can
+selfverify his work. This is going to be
+helpful even though you don't write
+loose. The second part I'll just quickly
+talk you through is some of best
+practice I found regarding a file and
+logging system. And there's three main
+type of files that I saw as good
+abstraction level. One is artifacts.
+Those are the output of each aent work
+of findings. This is like shares
+knowledge layer and there can be many
+different artifact types like docs the
+signals the tasks or many other type of
+artifacts that is relevant to the loops
+like if I'm running ads it might even
+have campaign as a artifact we can use
+to log and track the campaign
+performance in my specific setup we have
+a SEO loop a support loop a product
+growth loop that is running on the
+pricing itself as well as red loop so
+for each artifact I have its own body
+folder and in the artifact folder I
+would define a read me where it will
+clearly explain what goes into it, what
+does not goes into it, what's the
+process for adding a new item and the
+schema for this artifact. Then for each
+red command draft, it just has this
+metadata from matter as well as main
+body about the content itself and also a
+timeline to log any change that we did
+for this artifact. Same logic can be
+applied for like a signals which in our
+case is like a para feedback, ideas,
+anything that any loop observed. They
+can create a signal and link to
+different sources detailing the role
+customer feedback or even support ticket
+artifact and the purpose of those
+artifact is that those became the shared
+library or shared files that any loop
+can just read and write towards it and
+we can even build some small mini apps
+like this one I built to track all the
+different artifacts. So I can very
+easily view let's say the product signal
+it ever found and each one can link to
+another artifact they created and it
+also became very easy for the humans in
+the loop experience. I can just keep
+track about what are things that
+actually needs my attention. But the
+core things here is that you can define
+those different artifact types and
+folders that is shared across different
+loops. And then for each loop itself, I
+would normally define a contract which
+including things like what's the goal of
+this loop, what kind of workflow it
+should follow as well as a backlog list.
+So the next loop, it can pick up the
+most important one or update and rep
+prioritize tasks as well as a list of
+timeline so you can remember what I did
+before. So in my case since I have just
+a few different loops I have multiple
+different loop folder and each loop I
+just have this simple readme file that
+is serve the purpose of this contract it
+will talk about go and the workflow then
+a list of timeline to log what happened
+to the specific domain. So every time
+when the loop triggered it will just
+read this contract understand the goal
+the workflow and what happened before
+and based on those information takes
+math back action and this contract is
+extremely useful. A third one is logs.
+So you might be confusing like there
+already timeline in the loop contract
+and also the artifact. Why do we still
+need the logs? So the reason we need log
+is that I find my day is always a mix of
+those kind of review the output from the
+loop as well as executing some of the
+real difficult or creative work with the
+agent in those kind of co-pilot states
+and I want easy way for agent to firstly
+understand across different domain what
+was happening as well as capture those
+ad hoc information and this where we
+have this kind of global work clock MD
+file. Each agent when they finish a big
+bulk of work it just write to this file
+and also before they start the work they
+also read the last five or 10 entries.
+So those pretty much are the core
+ingredients. Let's just set up one
+together. Let's say this is easy one to
+start the support loop with one agent
+every 30 minutes it can pull all the
+recent support tickets we have drop a
+response or reply directly to the
+customers where it has relevant
+information and also log all the
+frictions and ideas it identify. First
+thing is that we need to create some
+skills. So here I already pre-create a
+few skills that I know a support person
+need to access on intercom skills to
+fetch all tickets and also stripe so you
+can check the payment subscription data
+as well as superbase access so you can
+debug payment information and render
+skill to actually fetch the backend
+logs. There's some scripts they written
+as well to make it easier for agent pool
+information as well as skill for triage
+support ticket. So this is part that you
+were kind of customized based on your
+own business. In my specific case I
+wanted to practically solve the
+problems. I define a workflow where it
+will fetch all the tickets that has
+updates for the past x hours and then
+investigate the issues the user
+mentioned and I also wanted to create a
+artifact of tickets to log the tickets
+that were handled and even create
+engineer tickets log the feedback ideas
+in the end it should lock what it did.
+So those are skills and meanwhile you
+generally also want to create a cloud MD
+file so the agent has a good
+understanding of your business. You can
+just prompt cloud code or codeex to
+research about your business and save
+the information to cloud.md file. Then
+it will likely create cloud. MD file
+like this that including for business
+context and also something I generally
+include is a rules for spawning agent
+for engineer work and here is where I
+will explain the ripples we have and ask
+it to get a work tree every time. I also
+put some contract about how it should
+manage get a work tree and those are
+things that actually apply across any
+kind of loops. So I including the cloud
+MD file and meanwhile I also have this
+architecture.m MD which will be referred
+inside the cloud. MD file. So this is
+like a general instruction based on this
+structure I define. So including
+instruction that agent should define
+different artifact types and also define
+loop domains as well as a convention for
+logs. So normally I can just point to uh
+this file say help me set up relevant
+artifacts which in my case would be like
+signal task ticket and doc plus a domain
+and the agent should be able to just
+like read this architecture file and
+scarfolding the thing. Then it will set
+up different artifact types like one for
+docs and one for signal which covers
+things like feedback ID observation as
+well as tickets. There's also log.md
+file which at the beginning is empty and
+then I create this kind of domain/sup
+support folder as I mentioned for each
+loop I found it really useful if I we
+define a contract that is capturing the
+goal of the loop the overall workflow
+and boundaries and outstanding task list
+and timeline common workflow I would
+normally manually run once with the
+agent as a test run once the test run
+kind of finish I ask it to create a
+contract then set up loops so as example
+I want you to handle my support which
+means fetch support tickets on past
+hour, do some analysis, review and draft
+a response saving tickets and also save
+signal for product ideas, user frictions
+and for clear bugs, you can just spawn
+agent to fix directly and create a task
+for engine tickets. We run this every
+hour but let's do a test run first. Then
+agent will start doing the work. You can
+see it already handled a few tickets and
+each one it create artifacts about the
+result and also identify some potential
+customer feedback or frictions that
+would be useful for prioritize as a
+product and also log some clear engineer
+box and this is kind of process where
+you can just kind of calibrate with
+agent to understand whether the workflow
+is what you want or not. And once this
+looks right, this is when I will set up
+loop. Say now help me set up a loop but
+create a readme first as a contract
+including the go workflow timeline in
+this folder and then set up the loop to
+the session. This should create a proper
+readme file like this and also set up
+the loops that will be triggering this
+session every hour. So I actually have
+created this ripple template called loop
+engineer setup that's capsulating some
+of the best practice learnings of all
+the loops that my team has been set up.
+So hopefully you can just copy this
+folder and instruct it to set up
+artifacts and spin up new loops. I put
+the link in the description below so you
+can use this for free as well. But if
+you're interested, we have hours of
+stepbystep join me how do I set up those
+loops from scratch in row alongside 10
+hours more deep dive on building agents
+and production AI codings. So if you
+want to set up your first loop for your
+business, definitely come and join it. I
+hope you enjoy this video. Thank you and
+I see you next

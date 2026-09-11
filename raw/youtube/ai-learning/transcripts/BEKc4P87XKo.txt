@@ -1,0 +1,720 @@
+Let's talk a little bit about what I
+mean by agentic engineering. And let's
+maybe start with a question. If I were
+to ask you right now, how are you using
+AI in your work? Could you actually
+really explain it? Not just, you know,
+it helps me code faster, it can write
+code really fast, but like the real
+workflow, what you hand off, what you
+keep, how you decide in between.
+Most engineers can't. And that's a
+little wild to me because 90% of
+engineers are already using AI tools or
+have used them. Maybe only half of them
+are using them on a regular basis, but
+that's a number that's definitely
+growing all the time. And that's the
+current state. So the question isn't
+whether your team is using AI. They are.
+The question is whether you're getting
+the most out of it or you're just kind
+of autocompleting your way through the
+day.
+that gap between using AI and being able
+to articulate how you work with it.
+That's what this talk is all about. And
+really, I think it represents an
+paradigm shift of how we think about AI.
+And you know, the history of AI and
+software engineering is moving uh very
+fast. It's also very surprisingly short,
+right? In the 20 early 2020s, we got
+tools that could finish the lines for
+you. You type, you know, half of a
+function signature and the model would
+guess the rest of it. You know, kind of
+like autocomplete on steroids. It's a
+neat trick. And then in 2022, models
+started to be able to suggest entire
+functions, right? You could describe
+what you wanted and chat with a model
+and maybe get a working implementation
+back. And this is where GitHub Copilot
+first came on the scene and broke
+through. And millions of developers
+started using it. And for the first
+time, it was starting to seem like maybe
+AI wasn't a novely. Maybe it was
+generally useful. But then in 2025,
+something really broke. It's, you know,
+what we're living in now in 2026. The
+the models don't just suggest. They can
+execute. They can take a task and break
+it down and figure out which files need
+to be touched and make the changes and
+run the test themselves and then come
+back with an actual pull request. And so
+that's not just fancy autocomplete. It's
+not just a a faster horse. It's a
+collaborator. It's a different way of
+working. And Arman, the creator of
+Flask, for those Python folks here, put
+it, I think, perfectly. We're no longer
+just using machines. We're now working
+with them. And that framing, I think,
+captures this real shift. Right? Tools
+are things that you pick up and put
+down. You use a hammer. You don't work
+with a hammer. But the AI coding agents
+we have today, they're kind of somewhere
+more in between. And they're maybe a
+little bit more like working with
+another engineer.
+Now, it just happens to be an engineer
+who's read every Stack Overflow answer
+ever written.
+And I think that needs a a mental model
+shift. And this is the mental model I
+want you to carry through the rest of
+this video and honestly through the rest
+of your, you know, next couple years of
+your career in working with these tools.
+I I do think there's still tools, but we
+have to think about them differently.
+You kind of have to think about your AI
+agent as an energetic, enthusiastic,
+extremely well- read, often confidently
+wrong junior developer.
+That junior developer is incredibly
+fast. They don't easily get tired. They
+don't have any ego about their code.
+They'll happily rewrite something six
+times if you ask them to. And they have
+an astonishing breath of knowledge.
+They've seen lots of languages. They've
+seen lots of frameworks. They've seen
+lots of patterns. But, and this is
+critical, what they don't have is
+judgment. They don't know your business
+context. They don't understand the
+reasons why you made that very specific
+architectural decision 3 months ago. And
+they'll confidently write code that is
+technically correct and contextually
+wrong. Arman also said that he's gained
+more than 30% of time in his day because
+the machine is doing a lot of the work.
+That's a real gain. But he's getting
+that 30% because he knows what he can
+hand off and what he has to keep for
+himself. He's not just blindly accepting
+every suggestion. He's directing the
+work. And that's the difference between
+using AI and working with AI. And that's
+what agentic engineering actually means.
+And so let's get tactical. If you're an
+engineer, how do we really get good at
+this? I think the number one thing to
+think about is context engineering. And
+here Carpathy says, you know, context
+engineering is a delicate art and
+science of, you know, filling the
+context window with just what needs to
+happen for the agent to have the right
+context for the right iteration for the
+next step. And I think that's really
+critical for a couple of reasons. First,
+context is expensive, right? every token
+you add into the context is going to add
+cost because all of those things that
+whole chat history is sent back in as uh
+input tokens every time that you send
+it. And that you know can can add up
+pretty quickly. And the other key is
+that more context doesn't always mean
+better results. And in fact um it can
+make the model actually dumber. Right?
+It's not just about the money. the
+quality can degrade as you get over
+about 50% full and there's lots of
+things that can trap you here and not
+the least of which are you know the
+facts that fact that MCP servers became
+so popular that we have a lot of these
+enabled all the time now well each one
+of those loads more and more context uh
+you know more and more input tokens into
+the context and and that can be a real
+problem if you start to get into this
+dumb zone around 50% context and that
+also isn't the problem because not only
+can more context be a problem, but bad
+context can be a problem and can poison
+everything. Right? So, this happens when
+you're maybe mi mixing two different
+tasks that didn't really overlap or
+you've kind of got some outdated
+comments either in the code or that
+you've made to the agent. Or even worse,
+what I've seen a lot of people do is
+they start walking down the road with an
+agent and then realize,
+hey, we're down the wrong path. We've
+made a lot of wrong decisions. and they
+try to steer the agent back. But the
+problem is again the agent is not doing
+real reasoning like you and I as a
+human, right? It's taking all that
+context every time and it may get lost
+in the middle or even see some of those
+negative things that you had before as
+still part of the context and you see
+those negative patterns creeping back in
+if you're not careful. That's why it's
+better, you know, to not let these
+things kind of compound, but also, you
+know, always start a new session once
+you realize things are kind of off the
+rails, right? Because not only is
+context expensive, the more we have
+doesn't always mean better quality. In
+fact, at a certain point, there's a
+tipping point where it means worse
+quality. And bad context can corrupt the
+output. So, the real critical thing for
+engineers is to manage the context. And
+what does that mean? Well, one I think
+it means persisting a lot of information
+outside of the context window so that we
+can bring it in, right? So, this is
+things like scratch pads for things
+we're working on, memory files, the
+agents MD, those kinds of files that
+help the agents have context to what
+you're working on.
+We also need to be very selective when
+we're selecting that context. So, that
+means only pull in what's relevant for
+this step of the problem, right? don't
+just pull in everything that might be
+useful. And so that could mean, you
+know, things like bringing in the right
+app mentions for files that we're
+referencing. That could mean making sure
+we don't have unnecessary MCP servers
+enabled. Uh and it means, you know,
+making sure that the agent has the right
+data and that we as a human have curated
+that data for the agent. And then as
+it's getting bigger and that that window
+gets bigger, we want to summarize and
+trim and compress that context. Right?
+If we've gone through a whole big deep
+dive and debugging session with the
+agent and now we think we have the
+problem and the solution, well that's
+great. It might be time to compress that
+context and just focus the agent back
+in. Okay, now we understand this
+problem. We're going to go fix it. Uh
+and then the other most important thing
+is to isolate context. And I think this
+is why we've seen this huge rise in the
+past six or eight months of parallel
+agents because splitting work across
+several agents or several sessions can
+help things not accumulate and really
+drive this kind of task separation.
+And again, if you think about it, aren't
+these all of the same things that I
+would tell a brand new engineering
+manager about about managing a junior
+engineer?
+Like the story I tell here is uh when I
+was early in my career, I spent a lot of
+time as an engineering manager and
+product manager before I went into the
+dark arts of developer relations.
+And in my first job ever as an
+engineering manager, I was at a
+healthcare software company and there
+was this new thing coming out called an
+iPad. And that dates me a little bit. Um
+but it was it was released in the market
+and we thought this could be a great
+place to collect patient history. you
+know, that form you have to fill out
+every year at the doctor, it's very
+critical to assessing a lot of your, you
+know, risk of disease. Um, but having to
+fill out from scratch every time is is
+not fun. And so I designed in this other
+archaic tool that some people may have
+heard of called Balsamic, basically a
+wireframing tool, a wireframe of what
+this would look like. Now, that
+wireframing tool used things like comic
+sands and like silly smiley face icons
+as placeholders. and a lot of other
+stuff like that that you'd expect from
+just a wireframe. And I handed that to a
+set of interns that we had working for
+us that summer, thinking this is a great
+green field project for them to take
+some time on.
+And you know, a few weeks later, I got
+back a working prototype and the font
+was comic sands and there were silly
+emoji placeholders
+and that's because that's what the spec
+had in it. And so, so whose fault was
+that? Obviously, it was not the intern's
+fault. It was my fault as an engineering
+manager for not giving the right context
+to those junior engineers as to what's
+important, what's not, and what we
+really need to focus on and what problem
+we're solving.
+And so I think the habits that can tie
+all of that together are you don't need
+to think about all four of those things
+for every task. You just need to think
+about doing one task per session. Keep
+an eye on your context meter. And if
+you're in doubt and it feels like things
+are off the rail rails, you're probably
+right. So start a new session. Ask it to
+summarize the session for a new agent.
+Turns out that AI is really great at
+writing prompts for AI. So if you've
+worked on something with an agent for a
+while, have that agent summarize where
+you're at. You can now read it, make
+sure it matches with your understanding,
+and then start a new uh session with
+just that right context. Again, it's a
+little bit of art and a little bit of
+science. So, how do we put this into
+practice? Well, I think there's a lot of
+workflows. There's lots of things
+written out there that you can read.
+I've even compiled a lot of them at
+path.lo.ai.
+It's a where you can find like all of
+these kinds of trends and ideas and
+workflow patterns that have been talked
+about, but one I think I keep coming
+back to is is maybe one of the simpler
+ones. And that's the research plan
+implement loop, right? And I think this
+really helps us solve for a lot of like
+classic mistakes that people do when
+they pick up agentic engineering for the
+first time or pick up AI to help them
+try to do some engineering. Um, and what
+most people do is say, "Hey, help me
+implement this feature. I wanted to do X
+and Y." And you know, these large
+language models are very good at
+outputting lots of code. In fact, when I
+joined Kilo Code over a year ago, I made
+a pronouncement that we would never have
+our website be just prompt and a whole
+lot of code flying by. Makes for a great
+demo. And you've seen lots and lots of
+coding agents that maybe that's how they
+show it off. But I think the reality is
+jumping straight into code like that can
+cause a lot of wrong assumptions. It can
+waste even more time rather than saving
+time and just create a lot of
+frustration.
+And it really creates that kind of
+paradigm that we've seen where people
+are kind of anti-AI or think that AI is
+not a useful tool because they've jumped
+right in and gotten, you know, put
+garbage in and gotten garbage out. Uh or
+maybe it's been a while since they've
+used it, right? I mean, if think of the
+the Will Smith eating spaghetti when it
+comes to AI videos, that's come a long
+way in just the past 2, three, four
+years. You know, the same is true of the
+AI coding models, but you have to do
+what works to give them the best chance
+at getting a great result. And what that
+is is first understanding the problem
+really well and making sure you and the
+AI agent can understand the problem
+really well. Then laying out explicit
+steps for implementing that uh that
+those changes or fixing that problem.
+And only then do we jump to the
+implementation phase where we're writing
+code. And Dexory has a great uh phrase
+that he says here, which is a bad line
+of research can potentially be hundreds
+of lines of bad code. And so we're
+really going to focus in on how do we
+get the research and the plan in place
+in order to make give ourselves the best
+chance of having great code come out. So
+in that first phase, we're going to use
+a tool that is only going to be focused
+in on research. And so for Kilo, we call
+that ask mode. And the reason we call it
+that is because the ask mode can't
+actually do anything. It can only chat.
+It can't write files. It can maybe read
+files if you let it. But it can't, you
+know, start trying to code a solution.
+And so instead of trying to code a
+solution from the beginning, we're going
+to first try to understand the system.
+You know, how does it actually work
+today? Where are the right files that
+are going to be involved? What are the
+right paradigms that we want to mirror
+or how does this differ from something
+that we have already? and you know just
+kind of learn where in the code base
+this is going to go and you know how the
+data is going to flow through the system
+and how it's going to change with our
+change as well as like any edge cases we
+can need to consider right AI is really
+great at brainstorming and so it can
+help you kind of brainstorm those things
+and make sure you've really covered all
+of your bases
+and then once you're done that research
+what's going to come out of that is an
+actual output document that shows the
+the details of that research that you
+can then read and basically agree with
+and understand, hey, this this matches
+my understanding of the problem, I think
+we're ready to move on to the plan.
+And so then once we've reviewed that as
+a human, now we can say, okay, let's
+outline the next steps. What kind of,
+you know, files are we going to create
+or name or change? Maybe there's some
+code snippets, but not always is it a
+good idea to have a code snippet in the
+plan. We are definitely going to include
+like how is how are we going to verify
+and know this change is correct. What
+are the test either changes or additions
+that we're going to make to know that?
+And we're also going to be really
+explicit at the P planning phase about
+what is in and out of scope, what is
+going to change, what isn't going to
+change. And again, the output of that is
+going to be a very clear plan file.
+Right? You'll see a lot of repositories
+nowaday have a folder called plans,
+right? And we want to have that plan
+file be step-by-step instructions with
+specific changes that we're going to
+make that have test commands to verify
+it that has a strategy for understanding
+how it's going to change the system. And
+it's going to be very clear so that we
+can even use maybe a smaller, faster or
+cheaper model to implement it because
+we've spent the time in the research and
+plan phase to really understand what
+we're going to be doing once we get to
+implementing the change. And when we
+come to implementing the change, we now
+can start over a new session and give it
+just the plan execution. It allows us to
+keep the context in that session very
+low. It allows us to carefully review
+each change and I think commit very
+frequently. Now I used to work at a
+company called GitLab for many many
+years. Uh so maybe I'm a little biased
+towards Git, but I think Git can be a
+huge helper here when it comes to
+helping you slowly iterate and
+understand the changes that the agents
+are making. I treat get on my local
+machine kind of like my own first pull
+request review with my agents before I
+maybe put up an actual pull request for
+my uh you know for my colleagues to look
+at. But I think again it's critical to
+understand here that human research at
+the planning or sorry human time at the
+planning and research phases is really
+the highest highest leverage use of your
+time. by the time you're implementing,
+you want to have all that hard thinking
+done. Uh, and that's really critical
+because again, going back to Dex Hory
+who's who's spoken a lot on this subject
+and, uh, I highly recommend you check
+out his you, you know, videos of him on
+YouTube talking about this. He says very
+aptly that AI can't replace thinking. It
+can only amplify the thinking you've
+done or the lack of thinking you haven't
+done or, you know, the fact that you
+haven't thought it through.
+And so let's talk about how we configure
+our agents kind of like one more step
+down from this this uh paradigm of
+research plan implement to really make
+sure we do this. So first we talked
+about modes and customizations. We
+already talked about these modes ask
+code architect. These modes that are
+specialized and focused on the thing
+that we're trying to get done right
+architect is maybe for planning ask mode
+is for research. Code mode is for
+actually implementing.
+Uh then we also want to have you know a
+set of rules that make sense for our
+workspace right for the the repository
+we're in
+uh or maybe globally on our machine so
+that we understand you know that we have
+a certain set of rules that we always
+want to adhere to. Uh and agents are
+pretty good at loading in and
+understanding those rules. Uh but we
+have to have them written down for them
+to have those in their context. Right?
+And so I think a lot of the agent
+behavior then is are things that we want
+to tweak as we're learning, right? How
+many do we want to do multiple agents at
+a time? Do we want those agents to use
+work trees so that we can then again
+merge them back in to our local uh
+repository locally before committing
+them to to a pull request. Uh how much
+do we want to auto approve? Right? So
+most agents have the ability to tune,
+you know, what are the things that it
+can do independently? What are the tools
+it can use independently? Can it read
+files? Can it read files inside or
+outside of the workspace? Uh can it run
+tests? You know, what can the agent do
+autonomously without your intervention
+versus what do you need to approve? And
+I think this is something that you have
+to set up to be comfortable with in the
+beginning. And then also you need to be
+comfortable changing as you learn how to
+use these tools.
+And I think a good mental model um for
+this agent configuration is maybe kind
+of three distinct buckets, right? We
+talked about modes, right? This is that
+that rolebased configuration, you know,
+a behavior of an agent that we want, but
+there's two other really key things and
+that is the agents.md and then
+skills.mmd that you'll hear about. Uh
+and so what are those? What's the
+difference between the two? Well, the
+agents.mmd is now quickly becoming the
+de facto standard for where all agents
+go kind of for their readme for the like
+always on rules and details about the
+project. Uh so I think it's critical
+that your project has an agents MD with
+a minimal amount of information that an
+agent needs to know about you know what
+are the conventions that we're using
+what are the commands that we're using
+to get it built or tested and like what
+are the requirements around testing uh
+or requirements that we need to be sure
+to check off before committing. And then
+skills are kind of more of a specific
+workflow, right? So there's reusable
+kind of playbooks for agents. So, if
+there's something that you're doing a
+lot, you're making motion graphics with
+your motion often or you're um you know
+doing some sort of like
+uh daily or weekly or monthly change log
+compiling. Those kinds of things are
+great to put in as skills that an agent
+can then pick up when it needs it to do
+those specific kinds of workflows. And
+so, typically those are on demand and
+you say, "Hey, let's use this skill for
+this task." versus the agents is almost
+always loaded into the context for the
+agent so it knows what's going on.
+And then of course I I work at kilo code
+and so I've got some power user tips
+there. U but I think some of these many
+of these apply you know dep regardless
+of which agent you're using but I think
+they're critical as you kind of get
+comfortable with those first kinds of
+paradigms. How do I now customize this
+and make it work for me? And one is at
+mentioning for context. So mentioning
+files or commits or you know things from
+the terminal that output those kinds of
+things and bringing them into the
+context quickly are really helpful. Uh
+using slash commands to do things like
+starting a new task when we need to or
+condensing the context when it's getting
+too full. Uh those kind of quick
+commands can help us move a lot faster.
+Uh we also can if we're working in in VS
+Code uh with Kilo code, we can select uh
+a section of of code and right click and
+say add to kilo code and then that
+context is brought right in there and I
+can then talk or ask or uh questions
+about that that code or ask the agent to
+change a certain part about that code.
+Uh and then of course we have
+autocomplete built in as well which I
+think is still useful especially because
+we also have it not just in code but as
+you're prompting
+and then kind of beyond the IDE I think
+we're seeing you know also this shift
+this year in you know where else do I
+want to be able to use this in the CLI
+from my mobile phone in a cloud agent
+directly in Slack right the ability to
+kind of use these agents wherever you
+are is something that's becoming more
+expected uh of of everyone and
+everyone's agents. And I think that's a
+good thing. I think that means that
+we're starting to learn how we can use
+this these agents again more like a
+collaborator that's everywhere that we
+need to be.
+And then one other thing that I want to
+talk about um are is getting other
+context things in. First of all, model
+context protocol, right? Context is
+right in the name. Um the idea of this
+is you know fundamentally these models
+originally can only like receive input
+tokens and create output tokens right uh
+and slowly but surely we've been
+enabling them to use tools where they
+can you know make tool calls out uh and
+affect things in the environment like
+running tests uh the MCP the concept of
+MCP basically expands this to say hey I
+want to give the agent other tools right
+for instance the GitHub MCP gives the
+agent a lot of tools to interact with
+the GitHub API, look up pull requests,
+um, look up comments, look up issues,
+and understand a lot more about your
+your GitHub environment, right? Um, or
+context 7 helps it look for up-to-date
+framework documentation because, of
+course, as you know, the LLMs kind of
+have a cut off date where their
+knowledge cuts off and then anything
+that's improved since then, they don't
+know about. Um, so these MCP servers can
+be very helpful and there's there's
+thousands of them out there. Uh, but the
+concern is that every one of them is
+going to add at least some information,
+right, details about those tools that it
+has to the system prompt that gets sent
+every time uh you're having an
+interaction with an agent. And so you
+want to make sure if you're not actually
+using that to disable it. Right? Let's
+say I have a Postgress MCP that connects
+to my database and I'm doing a whole
+bunch of front-end work that doesn't
+involve the database at all. Well, that
+Postgress MCP is just going to be wasted
+tokens and maybe even worse tokens that
+help, you know, kind of confuse the
+agent and and not understand that it
+it's not supposed to touch the database
+right now. Uh, so we want to be really
+careful to not like overuse MCPS.
+And then another thing we hear from um
+enterprises a lot is how do we work with
+internal platform APIs? Uh, and I think
+that you know there's kind of four
+different ways of doing that. one, if
+there's already an open AI, open API
+spec for it or swagger spec, use that.
+If there's not, then convert it to
+markdown so that you can save that
+markdown, you know, in the agents.mmd or
+somewhere else in the repository to
+reference it. Uh, and if it's something
+that changes a little bit more
+frequently, maybe you do need to have
+like a reference URL that you can pull
+in uh and have the agent go pull every
+time to see the latest and greatest. Uh
+and then we've seen some customers who
+you know have complex multi-step
+multi-system workflows where building
+their own MCP server might be the right
+choice.
+But, you know, one way or another, I
+think the the key is to when working
+alongside Kilo or any of these agents,
+you know, isolate your work from the
+agents work and then review that agent's
+work as a poll request, right? That
+helps you understand, you know, how can
+I um best review the code just like I
+would review a junior engineer's code.
+And so, that's really the presentation
+that I have on Kilo. We've got some
+exciting new features coming up. We've
+got, you know, expanded across all these
+surfaces. Uh we also have a big focus on
+openclaw and kilo claw and making a very
+safe way to use um openclaw agents. Uh
+and so if you haven't taken a look at
+kilo, I've just little plug at the end
+here, visit kilo.ai.
+Uh and we'd love to get your feedback on
+what we're building.
+And you know, just kind of to give you,
+you know, where do we go from here?
+Again, I think you've kind of got to
+pick a tool and get lots of reps, right?
+We said earlier on that, you know, it's
+part art and part science. And I think
+that just means you need a lot of reps,
+right? To kind of get the feel for what
+can I trust the models to do and what
+can I trust the models to do. Uh, and
+then try this research, plan, implement,
+feedback loop. See how that works for
+you. Um, and I think maybe you'll end up
+like some of these other senior
+engineers who have said, "Hey, look, I'm
+having more fun programming now than
+I've had in in years and years." Uh, as
+we, you know, farm out some of this
+tedious work to AI agents and let our
+brains work on the harder engineering
+problems.
+Thanks,

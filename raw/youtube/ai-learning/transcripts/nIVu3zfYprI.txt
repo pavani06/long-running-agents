@@ -1,0 +1,195 @@
+What's up everyone? It's Brace from
+Langchain and today I'm really excited
+to tell you all about OpenWiki, the
+newest open source agent from Langchain.
+Open Wiki is the easiest way to generate
+and maintain documentation for your
+codebase built specifically for agents.
+To get started, it's as simple as
+running one command. So the first thing
+I'll do is install it on my local
+machine through npm. Once it's
+installed, all I need to do is run open
+wiki init. This will first take me
+through an onboarding process where I
+get to pick my model provider. As you
+can see here, we support not just open
+source but also closed source model
+providers. I'll start with open router.
+It'll then ask me for an API key. I'll
+paste that in and then pick my model. So
+we have a few predefined models set here
+which you can pick from. But of course
+if there's a model you want to run which
+we don't have set here. You can set a
+custom model ID and open Wiki's open
+source. So if there's a provider or
+model you want set in the pre-built
+settings, put up a PR and we can get it
+added to the actual package. So I'll
+select GLM 5.2. And then next it's going
+to ask me for my langu API key. This is
+optional, but because OpenWiki is built
+on deep agents and Langmith, you can set
+an API key here to trace every single
+action and run OpenWiki takes to a
+tracing project. So you can always see
+exactly how it's running under the hood.
+For now, I'll skip that. And when I hit
+enter, because I ran the init command,
+it's going to immediately jump in and
+start generating documentation for this
+repository. So while this runs, let's go
+look at what these docs actually look
+like in a repo. All right, so I'm in the
+open wiki repository itself and of
+course we have openwiki docs generated
+for this repo. You can see a directory
+named open wiki and within that there's
+a few subdirectories and a file called
+quickstart.mmd. This quick start file is
+the index for the openwiki docs. So it
+contains a high level of what the actual
+repo is, what it does uh and some
+important files. It also links out or
+acts as an index for the rest of the
+open wiki doc. So we can see it
+references the other directories we have
+here and then also actual files within
+the codebase. This is the first file
+that your coding agent will inspect when
+it's trying to gather documentation for
+the repo. So it acts not just as a
+highle description of the repo itself
+but also as an easy reference to quickly
+find things within the repository. If we
+expand these directories, we can see
+there's subfiles which contain
+documentation for different aspects of
+the repo. So for open wiki, there's the
+actual agent itself. There's the
+architecture of the agent, the CLI,
+different operations within that CLI,
+and then a few more files for uh
+tracking the updates open wiki has made.
+These files include not just technical
+documentation, but also highle business
+logic about the different aspects of the
+repository. These are all important to
+the agent's context because it doesn't
+not need to just know how the code
+works, but also why things were
+implemented as they are. It can see how
+the code works from just reading the
+code. But through looking at git
+commits, the history of git commits,
+comments, and so on, open wiki can
+generate uh documentation documenting
+the business logic and decisions behind
+different changes so that your agent can
+have the best context when it's actually
+writing code in your repository. So
+that's what the actual documentation
+looks like and how to generate initial
+file. To keep this up to date, you don't
+really want to have to maintain or make
+these changes manually. So we have a
+GitHub action you can copy which will
+run once a day and automatically update
+your open wiki docs uh for you. As you
+can see here runs the openwiki update
+command. Right? First we ran a net. The
+update command is just update. This will
+run once a day and put up a pull request
+in your repository automatically
+updating documentations. The way it
+updates these docs is primarily through
+using git. So it'll track the last
+commit hash which was checked in before
+the docs were last updated. It'll then
+look at every commit which was merged
+after that, inspect every change that
+was made, PR descriptions, comments, and
+so on, and use that to potentially make
+updates if necessary to the docs so that
+your docs always stay up to date. If you
+have a repo which you don't update as
+frequently, you can change this to run
+say once a week or if you have a repo
+which has hundreds or thousands of
+commits getting merged in every day, you
+could have this run once every four
+hours, 6 hours, whatever you'd like. The
+schedule is completely independent of
+the agent because the agent works on any
+time frame because all it does is look
+at the git history and based on those
+commits update the documentation itself.
+Now open wiki doesn't just have two
+commands for running and updating. You
+can also chat with the agent directly.
+Let's see what that looks like. So to
+chat with open wiki all you need to do
+is run open wiki. In here it'll spin up
+a chat interface where you can do things
+like customize the model provider. You
+can update or clear the docs and so on.
+You can also chat with the agent. So I
+can ask it something like what can you
+do?
+As we can see here, OpenWiki doesn't
+just generate documentation, but it's
+also a chatbot. So I can use it to ask
+questions about my repo, about my docs,
+search through the docs it wrote, uh,
+and so on. You can use this to manage
+your openwiki documentation and also to
+make targeted changes to the docs. Now
+we have our documentation, but how does
+the coding agent actually use it? Your
+coding agents are made aware of OpenWiki
+through an agents.mmd or claw.mmd if
+you're using cloud code file. Open wiki
+will automatically update these files or
+create them if they don't exist to
+include a reference to open wiki and
+instruct the coding agent how, where,
+and when to use the open wiki
+documentation, aka anytime it needs
+context about the codebase. Because open
+wiki automatically makes these changes
+to your agent MD, you never really need
+to think about open wiki after you set
+it up initially. You run the init
+command to generate your initial docs.
+You then add the github action to
+automatically update the docs as changes
+are made to your repo. And open wiki
+adds this section to your agents. MD.
+That means your agents are always
+keeping your docs up to date for you in
+the background. All you need to do is
+merge the poll requests as they put them
+up. And anytime you run a coding agent
+in your repo, it'll automatically pick
+up your agents. MD file, thus picking up
+the section on open wiki and therefore
+it'll be instructed on how to use open
+wiki when to reference those docs. And
+that way your agents can always have
+full context into your repository
+without you needing to add extra
+prompting or references every single
+time. All right, that's how Open Wiki
+works at a high level. Right now, it's
+just for coding agents and it's fairly
+simple, but we're just getting started
+with this wiki idea and we're going to
+do a lot more. So, if you have feature
+requests or suggestions or want to
+contribute, please go to the open wiki
+repository, which we'll have linked in
+the description, put up a PR or create
+an issue with the feature requests. I'm
+looking forward to hear from you guys
+soon.

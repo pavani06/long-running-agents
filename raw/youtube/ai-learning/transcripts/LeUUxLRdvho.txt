@@ -1,0 +1,1056 @@
+When you work professionally as a software engineer,
+this is not practicing a hobby. You need to have numbers, right? Not just fluffy words.
+What was the actual landed impact
+on the business? Sometimes solving business problems
+means building software.
+That is good enough.
+Good enough for today. I just want things to be simple. Simple is complicated enough,
+especially at scale.
+System design. A skill that separates
+good engineers from great ones. So if you want to level up as software
+engineer, this conversation is for you.
+Joining me today is Bassem Dghaidi,
+senior software engineer over at GitHub. And especially a GitHub,
+they operate at scale.
+He shares how they design their software
+and solve specific problems in a way I didn't expect. So enjoy.
+Beyond Coding. From an outside service. I feel like I've shared this many times
+on the podcast, but I feel like the tech
+community is quite unique. People create software,
+they create products, and they put them out in the open
+for free.
+And GitHub is like the backbone
+that enables a lot of these things. I feel like I don't see no other industry,
+and it's it's kind of typical
+for me to say that
+because I'm in this industry, but I don't see any similar other industry
+where this is possible. Precisely.
+And not only that, like the learning, the teaching aspect that we have,
+how openly we share what we learn,
+and we have this status associated
+with people who actually teach in our industry,
+which I don't often see elsewhere.
+A lot of industries and I worked in other industries,
+like I've worked in container terminals, for example, for a while we were building
+the whole infrastructure and whatnot.
+It's very rare to find information
+about how a container terminal operates, unless you've, like,
+went to a specific program
+that teaches that we're taking specialized
+courses. You're never going to get that information
+anyway. Like there are no blog posts
+that describe how things work.
+Yeah, you just gotta learn it either
+from people who have been doing or practicing this industry for a while,
+or if you go through a specialized program.
+So I definitely relate to what you're
+saying, and I think it's pretty unique, which is awesome. There are some topics that I have in mind,
+and especially
+that I think are going to be a bigger
+focal point going towards the future. Something like system design,
+where there's a lot of theory out there
+and then actually putting it in practice. You can understand the theory,
+but then putting it to practice is still very challenging, especially in
+what type of organization you are.
+How far in the future
+are you going to design? I feel like it's challenging bridging
+the gap between theory and practice
+for that aspect 100%. And I was thinking about this
+topic earlier today, right? I was just reading a post on ECS
+that went viral
+where a startup was talking
+about the migration to Kubernetes and that it almost, 
+cost them their startup, like, oh, well,
+the startup could have almost failed
+because of that particular migration, and the owner was listing the reasons
+why they went for the migrations,
+and none of them were technical
+like the reasons were. The reasons were pushing for cloud native.
+Okay, their engineers wanted
+the Kubernetes experience and, they thought that they can deploy
+faster, bigger scale, better.
+But what they ended up with
+is just a fatter AWS bill. And then the much more competition
+feature shipment crawled to a halt.
+They had to dedicate
+certain engineers for this. And I think this stems from the fact
+that a lot of people
+want the status associated
+with fancy architectures, and they want the experience
+of working with fancy architectures
+and not necessarily solving problems
+with fancy architectures, or growing organically a certain architecture
+to solve a particular problem.
+And the problem with system design
+is, again, a lot of people want the fancy stuff,
+but they
+the boundaries for when you need to scale
+are very blurry. There are no concrete empirical numbers
+that tell you,
+like when you hit this particular scale,
+you need to do this. And when you hit this particular number,
+you need to do that.
+So people assume that as soon as they hit
+on their service or API or whatever, like a thousand requests per second,
+that's a lot.
+So now they need to build
+for the next evolution of the system. And often that's not really the case.
+At GitHub, for example,
+I've built services that handle millions of requests per second
+that are just simply running on a 5
+or 6 containers and a very tiny Kubernetes
+cluster somewhere. That's not what I would expect at all.
+So there's a lot there's a lot you can do with very little,
+and you can even run entire services on very basic VMs
+and scale some stuff around it.
+And the way we approach problems of scale,
+we never design or engineer. So when I design certain things,
+I recently did a lot of that.
+We were rewriting some parts of actions, 
+GitHub actions. That's what I work on.
+So we're going to talk more about that and engineering blog posts
+and what this is like, in my opinion, a case study for decades to come,
+because this doesn't often happen.
+That's awesome. Yeah. So, when we were designing this,
+we were designing for scale,
+but we know already
+we have established scale. So we know that we've hit the limit of
+what the previous architecture could do.
+And now is the point
+where we need to squeeze more out of a different tech
+stack to get to that next level.
+And we know that we're going
+to get to that next level because we we see the demand,
+we see how it's growing.
+We see the curve. We see how where it's going to
+be in five years from. Right.
+So we solved for that. We didn't prematurely scale. We just went all the way till the end
+with the existing architecture.
+Okay. And that's when we made the decision
+to rewrite some components and redesign
+certain aspects of it
+and make tradeoffs based on data we had and based on projections
+that we were going to attain or get.
+Is this then your advice as well? So to stick with what you have,
+start with initial design that is simple
+and then stick with it
+until you actually reach certain limits. And you can kind of based on your usage
+forecast what the next iteration would be.
+If I was a startup founder
+or a CTO of a startup, right. I would never go and start
+building for 100 x scale, even if I'm a
+like a firm believer in my idea and know
+that it's going to reach the masses and it's going to be global,
+I would never design for that.
+I would design for getting 100 users
+and maybe even 1000, right. And I would just run everything
+on a single VM, to be honest.
+Maybe to make it a bit more available. I would not go and build massive database
+clusters.
+Yeah, just start with one, maybe two
+nodes. Stops replication. That's it. And this will like really,
+really far, to be honest.
+Once I attain or I'm get, I'm like close to 80% of these limits
+my resources can do.
+And by the way,
+vertical scaling can take you a long way. Like you have no idea. We have
+large scale nodes that have hundreds of CPUs on them.
+So you don't really need to go
+and start sharding and doing all sorts of fancy stuff.
+When vertical scaling consists at you
+and you right now with cloud native solutions,
+you can go pretty far.
+Like you can get a one
+VM with 120 CPU cores, right? You can get terabytes of memory.
+Yeah, and that can do a lot for you. You don't need to start doing
+horizontal scaling before you get
+you really start hitting these limits.
+Interesting. See, I, I feel like I'm
+not great at system design. It's just not something
+that I specifically put my thoughts to,
+not something
+I prepared like from an interview style. And then I actually did a system
+design interview and my architecture was
+it was very simple,
+and I wanted it to be simple because I don't like complexity
+when we don't need it.
+And it was also for the use case. I was like,
+this is this is the simple aspect. And then the question was, okay,
+but what if we had x amount of scale
+and then we need indeed
+we need high availability and we need sharding
+and we need consistency. And then I was like but the like
+the argument that I had is in this case,
+it actually doesn't matter for me,
+the part of the benefit that we have a lot of information out there
+people can self-advocate
+is not also turning into this pitfall
+where complex system design is almost,
+I think in most industries
+where we don't actually have high availability across
+the globe is not needed.
+Yeah, yeah, people see that
+and they look up to big organizations like GitHub where they say, okay,
+this is what GitHub has.
+So we're going to do the same. We're going to build for the future 100%. And this is in my opinion, again, going back to the original thought
+that people's Chase status.
+So and this was honestly also very badly
+perpetuated by big tech companies.
+Right. And a lot of people followed, like in an interview for,
+for if you're interviewing for a place
+like GitHub, for example, it's understandable
+that they would want you or that
+they want to explore problems of scale
+with you just because from day one, you're going to be exposed
+to these problems.
+So what we are, what we are looking for
+is typically is people who have that experience, who are going to come in
+and actually use it on day one.
+Yeah, not that
+we might use it in a few years time. We just hire for what we need today
+because let's say you're shipping,
+you're shipping features to a service,
+and a lot of our services have hundreds of millions of requests
+and short periods of time.
+So you cannot really do a lot of the, you need to think about a lot of things,
+right?
+You need to think about caching
+from the bit from day zero. You need to think about your queries. From there, you need to think about
+your data access patterns.
+You need to think about non-relational
+databases and non-relational solutions for whatever you're building. You need to think about how you're going
+to gradually deploy this.
+You need to think about feature flags,
+how they're going to play in this game. You're going to think about authorization,
+authentication,
+all of the security problems
+that might happen when you have this security problem at at some other place
+like GitHub, it's going to be on the news.
+Yeah. Or less. Right. So you cannot make these mistakes. It's very tricky.
+So we look for experience in these domains
+so that people they still have this room tonight, but
+they need to deliver from very early on.
+Right. For smaller companies, they interview for the same,
+but they don't need it.
+And that's where the problems
+that's where the problem stands. If I was in a startup and I'm into I'm
+doing system design, I would interview,
+I would want to hear from a person
+who has exactly what we need for today.
+If we got to 100 million tomorrow. Yeah. We start hiring for tomorrow
+when we get to it.
+To be honest. And with the churn rate in our industry
+being 2 or 3 years,
+like people don't stay in the same job
+for more than that. Why would you, you know, hire
+for the next ten years?
+The person. Yeah. I feel like people really underestimate,
+like, how much they should or overestimate how
+much they should design for the future.
+Like a I'm in a consultancy right now. I go from assignment to assignment and some assignments that I've been in,
+I'm like,
+the system is way too complex
+for what we had. We used to have 30 engineers. Now we have eight, and the system we
+architected was maintained by 30 people.
+And now we have a problem because we only
+have eight because budget is running out. We're behind on KPIs because like the we
+we worked on a big rocket ship,
+but we actually needed a car. We needed to drive
+and actually make meters. And, and I talk about this stuff
+in my system
+design course because in consulting
+and when you sell a solution to a company. The company wants to pay for that solution
+once. Yeah.
+They don't understand
+that software is evolved. It's not built.
+Right. And the the term here is evolving it. So software needs to continuously
+be evolved and it needs to continuously
+fight entropy in the sense
+that you continuous need to maintain it. That is a fixed or running cost
+for maintenance of software
+that you don't necessarily
+find in other industries. When you buy a car,
+there is a cost for maintaining it, but it's not very regular
+or as regular as software.
+Right. And our industry,
+the maintenance cost is pretty high. So companies
+want to pay once for a solution
+and they want it to scale to the next
+ten x 100 x. And that's not very realistic
+in our industry at all.
+We need to build literally
+for the next order of of magnitude.
+So if we are ideal
+today, just build for ten x or 100 x. Yeah. If we add a ten x or a hundred x,
+we build for the other author, right.
+1000, 1 million, so on and so forth. What is then your perspective
+on building systems that can evolve?
+Because some people you can say, okay,
+this is the system design that we have, and we're going to continue on this
+until we reach a certain level of scale,
+and then we're going to revamp
+and say this would be the next iteration. But some people also say, okay,
+we have a system now, and this is able to
+whatever scale we need. And then they put in the extra effort to make sure that that is there
+from the beginning in our industry,
+very few technologies last for like a decade plus,
+and the rest is changing.
+Often. And that's why I personally don't invest,
+or I wouldn't design a solution
+that would last like ten, 20, 30 years,
+unlike what we did in the 80s or 90s. That's what
+that's how that was the design mentality.
+But things were way
+less complicated than they are today, and the scale was different.
+So I would always come with the mindset that I'm just going to design
+for the next order of magnitude,
+and then I'm going to evolve it
+from there. And that's going to require
+another round of investment. There's going to be continual investments
+in this and that business
+people are not going to love this
+because that makes accounting much harder. That makes strategic finance much harder
+because they cannot predict
+or anticipate
+the costs that might come in the future. They cannot extrapolate from today.
+You know,
+they don't like this fuzziness software. It's all risk. Yes. So and also like they cannot calculate
+like their bottom line
+or projections for the future,
+which are things that are very realistic, like publicly, publicly traded companies
+want to be able to do these projections,
+and they want to be able to say that, hey,
+we're not going to be spending more here than on evolving our software,
+but we're going to make much more revenue
+and increase our bottom line and margin. That's what businesses look for.
+So it's understandable. But from a software perspective,
+there needs to be regular investments. And I think the only approachable way,
+which is something we do at
+GitHub, is to continuously revisit these investments on a quarterly
+by quarterly, half a year or a year basis. Right. We can make projections
+for the next three, four, five years,
+but the confidence in these projections
+is less and less and less. Yeah, more time goes. And I think a lot more companies
+need to start doing the same.
+When you say we will then design for the next level,
+the order of magnitude for the next level,
+how far in the horizon do you look at what
+the GitHub actions example that you had? You said, okay, five years,
+but is that like an arbitrary thing
+or how depends on the curve, right. It depends on the GitHub like GitHub
+actions has been growing massively over
+since we, we we brought it up,
+at the beginning, and we're introducing more and more features
+that are increasing the adoption.
+So the curve we can see how it looks like. Yeah. But it might change at any point
+in time. Right. It can be disrupted close to zero
+or it can continue growing exponentially.
+So often the hockey stick
+that a lot of tech startups talk about, like exponential growth,
+it can appear and you can start seeing it.
+And when you start seeing it, you know, see how the solution
+like actions, companies that migrate to it are not going to flip flop. No.
+And very short periods of time be there
+so you can have some confidence that, okay, this trend is going to last
+for a year or two or 3 or 4, right?
+Nothing lasts forever, obviously. But you can start thinking
+in that direction. And then based on that,
+you can make investment decisions.
+Gotcha. I've had many discussions also in the past
+when we were talking about our software architecture
+in something that can be very specific
+and also purposeful, built versus
+setting it up in a generic way. But then it should be towards the future,
+because we have ambitions
+and hopes that we have
+X amount of solutions that are similar. So we make a generic right now,
+what is your perspective on
+making something specific versus
+generic in the first place? I like solving specific problems.
+I don't like solving generic problems
+because how can you make tradeoffs then? Right.
+Well, in software
+there's always trade offs. So how do you choose these trade offs? You can build something
+super generic. Sure.
+That basically is why building a framework
+that can be a toolbox and give you all sorts of solutions
+to all sorts
+of hypothetical problems
+that you might or might not have. That's not the Northstar
+I follow when I design software at GitHub.
+With my team, we are very specific about not overengineering things,
+and we solve for the problems
+we have today. So for example, we never introduce caching
+until we really need it,
+and we never over optimize
+until we start seeing problems. Sometimes, sometimes we we know
+that we're going to hit this problem
+a few months
+and we're not going to get the investment. So we solve it right now
+because it makes sense. But we don't over engineer solutions.
+We don't start jumping into things. For example, we don't necessarily jump
+to NoSQL at the beginning.
+We just start regular
+relational databases. You know, we build regular tables
+if we need if we need actually relational,
+content. Sometimes relational databases
+can always get so far. So we start needing to three
+think our solutions here.
+And we need to start going towards
+non-relational. Even if we need
+the relational consistency, or the consistency of relational
+databases, we need to start thinking about
+how can we move that to the application
+layer and start using other solutions
+that persist data that can help us scale?
+Yeah, there are some efforts, for example,
+where we start using cosmos or cosmos DB and things like that,
+but we never start exploring these
+until we hit really massive problems with our database clusters
+like our primaries cannot keep up.
+The IO is pretty high. Right? Operations are substantially big. We cannot scale these anymore.
+Sharding is not an option. Application
+layer sharding is not an option as well. When it becomes not an option,
+sometimes it is.
+So we started thinking about
+how can we design this and how can we migrate the data and
+migrations as much as they are painful,
+they are part of the job. Yeah, interesting. And we do go through them. I'm wondering
+when we talk about system design
+and then specifically
+practical experience, what your perspective is on
+someone to really get a better understanding of the theory,
+but also be able to put it in practice.
+You like you already mentioned that,
+for example, like GitHub, you need to have a certain
+level of experience under your belt
+and then you can work at GitHub
+where we have orders of magnitude with regards to scale.
+This is a vicious cycle, right?
+So do you. How do you
+how do you build experience that is required
+by this type of companies. But there's no other type of company
+that's going to give you that experience.
+Unfortunately there's that's that's
+the reason why there is a proliferation of a lot of system
+design courses and things online.
+And quite honestly, passing that into passing the interview
+threshold for companies like GitHub.
+That is achievable by learning
+theoretically these concepts, okay, and not necessarily
+having hands on experience with them.
+The bar feels high, but right now it's been sort of
+exploited to the point
+where a lot of the tricks and tips and whatnot are already available
+very much online.
+Like, I know, interview you guys, for
+example, they have this YouTube channel. They have pretty much covered
+a lot of the topics that you might get
+asked in a system design interview. Okay. And they go deep
+like they explain what Kafka is, what event streaming, as they explain.
+Right, is the internals, how it works,
+when do you use it? When not to use it? They explain the differences between
+relational and relational databases.
+They explain caching, how to implement caching in specific scenarios,
+and they give practical, hands on problems
+where you can actually learn how to effectively utilize
+all of these different components to come up
+with a relatively scalable solution.
+And they give you tips
+also on how to approach the discussion of scale
+within a system design interview.
+And I think
+they do a pretty good job at it. And I think that's enough,
+because a lot of people who go to big Tech will go to Google, and they don't
+necessarily have that hands on experience
+beforehand, even though the interview
+is looking for that hands on experience. But, you know, with these,
+because we hack the people.
+Hack the game. Yeah. So the signal is given to the interviewer. And then people when they have these,
+this foundation, they can actually
+do a relatively
+okay job on, when they join and they've got obviously
+not going to be a right.
+So you're never going to join a team
+and start building greenfield stuff from day zero. It rarely happens where you're going to
+join teams that are already established.
+So there's going to be people with experience more senior
+than you are going to give you guidance and review your solutions, your designs,
+so on and so forth.
+And that's why people make it right. But if you are interviewed for experience
+and you join a greenfield project,
+you know, you going to own your mistakes. And people do make mistakes often. Yeah. When it comes to these solutions,
+not everything big tech
+ships is a great feature or operates
+well in the world. And often we discover that, oh, this was a
+mistake and it was actually very costly.
+And some companies fail
+because of this researcher. Right? Any failures or mistakes
+that are top of mind for you
+that you can share
+for other people to learn? Tricky. No, I want to keep my job so
+that's fair. That's fair for me. Looking at what we do nowadays, I feel with AI tools and we're
+more productive in actually writing code.
+And I feel like when you amplify
+the amount of code that you write, you might also write yourself
+into a bottleneck, basically.
+So I feel like software architecture and
+specifically system design from the start, having a better understanding,
+especially I feel like like I do now,
+I need to grow there and I feel like it's
+going to be a more important skill to indeed figure out what are we designing
+for, what makes sense?
+What would be the next order of magnitude
+after, and actually make sure to convince people
+and have a certain level of buy in.
+We're always working in teams. Also, from a business standpoint,
+how would I, for example, say we're going to design for this
+until we reach scale
+and then we're going to need to revamp,
+and this is what that's going to entail for people that don't understand
+how to build software,
+understand the business constraints. So you're never going to be able
+to convince the business folks about of something.
+Technically,
+they're just it's too abstract. Even if it feels too intuitive
+for us, for them, it's magic.
+Yeah. And even if they try to understand how things work, they're never going
+to comprehend the magnitude of problems.
+And they're never going to 
+have this intuition about how software is and how not hard,
+you know, how how involved it is.
+So it's our job
+to get closer to their side. Some people say, no,
+we want the business to understand.
+They're not gonna. It's trickier. It's easier for you to acquire, assimilate
+some of the not everything,
+some of the business constraints
+and discuss them from that perspective. And that's why a lot of engineers
+who grow are very good at understanding
+the business constraints and then discussing the technical
+solutions within those constraints. So for example, I used to work in the
+container terminal industry for a while.
+We built a huge container terminal. We furnished everything
+from the fiber optics layer
+all the way to the three tier data center.
+With all of the enterprise applications
+running and running on it, and the operating system
+for the container, and it's one of the most
+massive operations you can ever imagine.
+One of the most hazardous as well. So the folks, they're there
+as far away from tech as possible.
+You're not never going
+to find the terminal operator who's going to understand what it means that your database is running hot
+and you cannot support their case.
+All they care about is, I have a ship
+here, was docked. There's like, 10,000 containers on it.
+I need to empty them into my yard. I have a very fixed window of time,
+and if I don't do it in that window of time,
+this is going to cost me money.
+We were operating at 12% capacity. That terminal was generating
+about $50,000 per hour.
+So 12%. So you can imagine if we get delayed every minute of delay is actually money
+that's disappearing.
+So this is how you need to discuss
+problems and investments and solutions. You need to understand what the impact
+is, what the impact is on the operators.
+And sometimes it's life threatening
+impact, right. If your software fails when a STS
+when the crane is offloading a container, this can be a very life
+threatening situation.
+You cannot really have your software
+malfunction at this point. So sloppiness of the software
+sub millisecond latencies,
+all of these things matter, right? So you need to approach the discussions
+with the stakeholders. Yes.
+By understanding them first. So what I've done, for
+example, in the industry is I've literally sat on a truck
+and went there and I sat with every single individual
+who works in that terminal to really understand
+what they go through on a daily basis.
+So a truck driver who's driving a truck
+for six, seven, eight hours and it was in Saudi Arabia in scorching
+heat, it's not going to understand
+like the button that they clicked
+is just it's so slow. Doesn't matter.
+Doesn't he doesn't care. He just wants it to just work. So you got to understand
+all of these perspectives.
+And then when you do
+you can start approaching discussions from that vantage point. And this applies to banks. This applies
+to hospitals to any other industry.
+So understand the industry understand
+the business constraints. And then any technical solution
+you want to discuss an investment,
+you can approach it
+from that vantage point. Then you're going to have much
+more success in these conversations.
+Yeah. Interesting. I feel like the
+the opposite then also holds true. So if you do understand the business
+context and you don't have a case for
+why you need to work on that,
+why you need to scale, well, you need to fix some of the issues,
+then there might not be an actual case.
+And right now is not the right time to do
+so. Okay. I do feel like it's it is a lot of
+prep work that you have to do.
+It's way easier
+to talk about the technical things right? Because that's what you see. That's what you perceive latency,
+numbers, storage, scalability.
+That's what you look at. And then reframing it and saying, okay,
+what is the impact for the business?
+What is the cost per feature? And what if we have, slower delivery rate
+compared to a faster in a new future?
+Yeah. Talking that language is very different
+from what you're used to. Absolutely. And the trickiest part, in my opinion, is
+when the stakeholders
+are not transparent about the numbers. So they're never going to tell you like,
+oh, we're making this $10 million
+investment today
+in this piece of software. Because the investor,
+one of the biggest investors we have,
+is willing to put that money in right now.
+But nobody has the guts to go
+tell him that. No, we need another 10,000,000
+in 10 years.
+Yeah, right. And nobody's
+going to come in and tell you that. But you need to also think about it.
+Try to extract that information,
+try to understand who was funding this,
+what is funding this, what is critical?
+What is the business in jeopardy? Is it right now under a lot of scrutiny? Is the bottom line not working?
+Is the margin of profit not that high? But what is driving
+this particular investment right now?
+Is it more strategic? So I worked in building banks,
+for example, in the in the Gulf I worked as a consultant as well.
+Right. So, there were banks
+that wanted to make a one shot investment into what they thought
+that was their future.
+And they had a lump
+sum of money that they wanted to put down once and build software
+that will last them for ten years.
+Yeah. They're not going to they nobody has the guts to come in
+and tell somebody, an executive
+who has no time whatsoever that, hey,
+well this investment is good. I see maybe like two, three, four years,
+but you need to put in also
+another million every year to maintain it
+and maybe even another 10,000,000 in 5, six years, because you need to keep up
+with the new trends.
+Nobody has the guts to come in and say that at the beginning,
+because then the decision maker might say, oh, well,
+this is not worth it for me anymore.
+Yeah, we might just scratch it
+completely. Precisely. What I've also seen
+is that some organizations operate
+with a number of engineers. And then from an outside standpoint, I have no clue
+what those engineers are doing.
+Like,
+if I look at a specific e-commerce website that might have 2000 engineers
+work, kind of a similar
+one with a similar level of skill,
+might have a few hundred. And then I feel like the few hundred engineers,
+they need to have a bigger landscape
+of ownership, understanding
+what they do in the context of the day to day on a business
+side is easier for them
+than being part of a group of 2000
+engineers. That kind of does the same in scale,
+if you like. If you're a cog, it's very hard to argue
+what kind of optimizing your little cog
+is going to do for the greater good. One thing I
+one thing a lot of people hate,
+but I think is very functional. And a lot of the companies
+that operate based on the San Francisco
+Silicon Valley model is the ruthlessness in terms of optimizing how engineers work,
+and layoffs. So in Europe, layoffs are not it's very famous for,
+a very well received thing,
+and I don't think they are very well
+received in the US as well. But they are. And if they are an effective mechanism,
+even though it's dehumanizing,
+but it is an effective mechanism
+to recalibrate how people
+or where people put their attention
+and what they are focusing on. So in a lot of situations,
+when layoffs happen,
+there's a huge product, features
+that are cut entirely, like, we don't need this anymore. Yeah.
+And it's it's more expensive
+to repurpose the skills of those same engineers in other areas. So let's just cut it off immediately.
+Hiring new engineers that are more
+experienced in that particular domain. Get them to focus on this right away.
+So this rapid, flexibility and moving and rotating resources or people basically
+allows these companies
+to be much more nimble, and effectively or more effectively allocate engineers
+to particular problems that matters today.
+The second thing I also think is a good
+that separates a lot of the big tech companies from other
+companies is your work or your reward
+bonuses, growth, whatever is associated with your business impact,
+not your software engineering impact.
+So you can come in and say,
+oh, I built the most the biggest Kubernetes cluster, 
+you know, known to the planet.
+It's beautiful. It's amazing. You're not going to get any of that
+or any recognition for it unless you justify why that was important.
+What was the actual
+landed impact on the business? So what did it contribute to
+in terms of our revenue?
+Did it help us grow? That didn't help us attract
+more customers? Did it solve a very hard problem for us
+that it affect developer experience?
+Are people more and you need to have
+numbers, not just fluffy words. So I think that's also
+another very effective
+way to reallocate attention software
+engineers. And it's very easy for us also software
+to drift into the comfort zones.
+So I'm building something
+I'm comfortable in it. Yeah. And nobody's questioning me on it. Nobody understands what I'm doing.
+I just keep doing the same thing
+every day. Yeah, I feel like I've also shared this
+previously on the podcast.
+Some engineers that I've met,
+they love the technical side of things. And when you let them go wild, when
+there's no business context or direction,
+they will build you a rocket ship
+and they will really enjoy doing it. There is a craft, 
+the craftsmanship aspect of software
+engineering is still there. You know, there is an esthetic to it. There is like, it's fun, it's enjoyable.
+But I always in my even my social media starts
+like I always strive to communicate that
+when you work professionally as software
+engineer, this is not practicing a hobby. And I think a lot of this craftsmanship,
+thinking comes from the fact that a lot of people
+went into software engineer because programing was a hobby
+for them, myself included.
+I started writing code when and stuff. I thought that this is amazing
+if I can make it my job perfect. But the job is very different
+than practicing code
+for the sake of writing code
+and the esthetics and the fun of it. Sometimes you are lucky to be able
+to bring that into your work,
+but most often you're not really solving
+for the esthetic. You're solving a business problem,
+and you need to keep that in mind
+always and often. It's not about the beauty of your skin. And if you can build a beautiful solution
+and solve the business problem
+effectively, fantastic. That's the cherry on top. Win-Win.
+But the priorities
+for the business problem and sometimes solving business problems
+means building software.
+That is good
+enough, good enough for today, right? Doesn't
+have to be good enough for tomorrow.
+Maybe it's horrible for tomorrow,
+but it just keeps on functioning. Yeah, and this investment we did in
+the good enough
+is going to give us a certain runway. And we should be okay with that. I think we should be okay with that. That's what I've seen where it's
+challenging for people, where they say,
+okay, I'm a little bit of a perfectionist. I value quality
+in what I do on a day to day.
+My job is basically part of who I am,
+and if I don't deliver the highest quality that I can in this aspect,
+like I'm doing myself with this justice.
+And it's very like if I lay it out
+like that, it might sound selfish, but I still have no clue
+that what they're saying is selfish.
+They genuinely think it's best
+for the organization. It's just some misinformation and misunderstanding because there's
+a dogmatic aspect of software engineering,
+and it was perpetuated in the previous era
+until 2000, 2000 and I when I ventured in working professionals,
+software engineer, 2007 eight nine,
+there was a lot of dogma,
+like there's a lot of this is how you do things
+and this is how you should do things. And if you do things
+any other way, you're wrong. Yeah.
+And part of that is elegance of code code,
+cleanliness code quality.
+You're all raised on this, these
+these concepts. Right. And they're important. And everybody always complained
+about bad code and horrible code
+because it was difficult to maintain.
+Nobody enjoys that. You're going to make it very difficult for the future engineers
+to solve these problems.
+But sometimes, you know, you don't have future engineers
+to solve these problems. Sometimes nobody's going to touch
+this code for decades to come.
+It's okay if it's just it just works. And then we ended up on the complete
+other end of the spectrum
+where we tried to clean up
+everything that we started adopting. All sorts of design,
+overcomplicated abstractions that are
+are just horrible to me. How horrible to reason about it takes you decades to become proficient
+in just reading that type of code.
+And then when you write it, it gets even more complicated and it's very difficult
+to maintain, in big Tech.
+And I always tell my colleagues
+in the juniors that report to me, simple is complicated enough,
+especially at scale.
+Yeah. So just write it in the dumbest,
+most simple way possible. This is why I also love code, for example.
+That's allowed.
+You do write. Yes. It's amazing. It's dumb. You don't have to
+think too much. It's
+just all in your face. Whenever you want to understand
+how something is built, you just trace it
+around. It's there, it's there.
+Fantastic. I love that. And in the situations
+where we're building at scale,
+I don't want to reason about abstractions. I don't want to think about edge cases. I don't want to think about complicated
+memory allocations
+and complicated memory structures. You know, I just want things to be simple. Memory leaks happen often,
+and they are very catastrophic at scale.
+I don't want to think about these things. I don't want to think about
+how my garbage collector is going to, you know, shut down the whole world
+and start causing multi second latency
+on my API requests, which at scale again
+become a gigantic problem for me. I just want things to be
+simple, easy to reason about.
+And that's it. Yeah. And interesting. I also feel like we've
+we are now in a trend where
+there is this conversation
+happening with people that are, first of all, vibe coding, loving it,
+being effective in what they do,
+solving a problem through software
+and they don't care how it looks. And then you have the older part,
+let's say existing software engineers
+that look at this and say both from a craft perspective
+and from an execution perspective,
+how does this work? Right. This is kind of really coming into
+my territory, I feel uncomfortable.
+Do I jump on this? Do I actually like it, or is this going to take away what I love
+dearly, what I used to do day to day?
+I think in essence, things are evolving. For me, that's a fact. The question is, where is it going? And I'm curious
+to see your perspective on a funny,
+it happens in every community,
+to be honest. So I'm starting my,
+a motorcycle riding classes.
+Okay, okay. And in motorcycle riding, a lot of the
+more advanced motorcyclist motorcyclists,
+they love manual, the clutch, they love,
+you know, changing gears. They love the
+the controlling the, the motorcycle
+in every single aspect, especially when
+they attain that level of proficiency. So a lot of them are now resisting
+a lot of the motorcycle companies
+introducing clutches or clutches
+that just operate automatically. They hate that. I don't want this like I want to control
+every single aspect of my bike.
+Right. And I feel this is pretty much the same thing
+that what's happening in software, a lot of the folks who have attained
+a high level of proficiency
+and they enjoy the craftsmanship
+aspect of software development, they love the coding part.
+They love
+reasoning about code structure, syntax. They get a kick out of coming up
+with a smarter solution, where they
+utilize a syntactical, feature
+and a programing language to do something that was not maybe designed for
+or do something smart with it.
+So if you take that away from them,
+you're basically introducing, you know, it clutches to software development
+and they're not going to react positively
+to it, even though the clutches help
+like when, for example, in when you're stopping at a
+at the light signal,
+you don't have to worry about stalling and you don't have to worry
+about these things. It just makes your life much easier, fun
+to ride the the sight for the motorcycle.
+It's just easier to control it. More accessible. Yeah. More accessible. So like, lighting
+is pretty much the same thing.
+I hate the term white coding
+because right now at GitHub, for example, I literally and this is part
+of my presentation at universe,
+90% of my code is written by agents. So I use the VS code
+agent mode all the time.
+Yeah. And I've been shipping features
+to production with it all the time. But that's not something
+you should just write and code, right?
+There's a lot of other stuff. Yeah, that come to it. And I now shift
+my focus towards the operational problems.
+I shift my focus towards
+making sure that we never go down. I shift my focus towards
+making sure that I don't introduce bugs that are unnecessary
+and cause people to have pain,
+because GitHub has become part
+of the infrastructure of the internet now. So any problem that I cause has
+great ripple effects. So that's where I put my focus on
+right now. Coding.
+Fine. Let the agent write it and I will
+instruct it to write it in a certain way. And if there's a syntactical
+approach that I prefer better,
+I still push it to to do that. And if something looks funky to me, and
+I also prompted to change the direction.
+Right. But at the same time, 
+one of the problems I was solving was recently was a caching problem, right?
+And I had different ways
+to implement the cache key, and each way
+forced a certain data access pattern
+because of how the key is structured. And it had a different impact on Redis
+based on how the keys structured.
+So what I've done with this code
+agent is I prompted it to write different benchmarks. Yeah.
+And I saw that, hey, this pattern, this pattern, in this pattern,
+go write three distinct benchmarks, run them, give me the results,
+analyze them, and give me the output.
+That's worked. That could have been done
+in like two three days. Maybe that was done in 20 minutes.
+Why not? Fantastic. It's amazing. Yeah. So you've been programing,
+you said hands on coding when you were 12.
+Have you always had this mindset
+to kind of let go of more of the craft things and look at what it is
+from an execution standpoint?
+Because I hear you from now
+and it feels like you're very much on board and making things more effective,
+understanding the business context.
+It's not just the craft,
+because, no, I was never like that. So when I was younger,
+I was all about the craft.
+And in I my early mentors, I fought with them a lot times.
+Right.
+And I was lucky to have mentors. Right? I was lucky, to have great mentors at the beginning of my career,
+but they never were able to explain to me
+why their perspective
+of the business matters. For me, business was too abstract, like,
+I don't understand the numbers.
+I didn't understand accounting. I was not accountable for the business
+outcomes. I was just asked to solve a problem
+and I thought I had
+infinite business resources. But when I realized that my mentors
+sometimes,
+took an extra mortgage on their house
+just to pay the payroll for their employees, oh, well,
+that makes a different problem, right?
+That gives perspective to the solutions
+that you're going to come up with. These are real people.
+Company owners are not just all
+millionaires and all, you know, people who are not investing.
+Some people are investing their own money
+in, but building businesses, right? So that matters.
+So when you understand this and when you
+become your business owner yourself, you start thinking
+about these things more.
+And now I approach these problems
+from that vantage point as well. That doesn't mean that, again,
+people might
+I always get this argument
+when I post about this stuff online. People think, oh,
+you write dirty code. No, I don't,
+but there's a certain level of the 20% that is required to reach
+that highest level of esthetics.
+Yeah, it's not worth it. No. So I drop that. Gotcha. As a final thought,
+there's many people listening that learn
+about software engineering and software
+design in the first place that either
+are early in career, mid-career, or are really just looking to level up
+within their career.
+What is your advice for people that really
+want to become great software engineers? What's
+they need to do to increase your breath?
+There's a lot of focus on that. That's, early on in your career,
+which is important. And there's an advice that perpetuates
+which says, focus,
+true focus. But at the same time, don't dismiss
+everything else that's happening.
+Increase your breadth. Personally, I optimized
+one thing that really got me far,
+which is having the ability to learn
+effectively in very short periods of time. And that's why
+whenever I tackle a problem,
+I don't have a problem
+digging very deep into anything new. I encounter, from quantum mechanics
+all the way
+to any technical problem
+that I face on a day to day basis.
+I'm a,
+you know, I mean, if I say drop out, I never finished
+my computer science education, but that did not deter me from picking up
+that education myself and really digging
+deep into all sorts of theoretical topics,
+but also practical areas and topics. And I'm a perpetual learner.
+So in my opinion,
+the next phase where we're heading is going to require people
+to be able to learn really fast,
+get out of their comfort
+zone, really fast, dig deep really fast, and attain high levels
+of functional proficiency in any new area.
+And then attaining mastery
+is not always required in everything. So just pick a few topics where you attain
+mastery in, but also increase your bets.
+Gotcha. I think this is going to be very important
+for the next phase. I love the how do you get comfortable
+with even saying,
+I've gotten really good at picking up
+new things and learning from quantum mechanics to anything
+technical, job related, whatever.
+I have a lot of interests
+and I see how fast I can get to a working proficiency
+with these interests.
+I play music,
+I'm learning to ride a motorcycle. Right. So,
+I never let's if I'm curious about something,
+I go and pursue it or I explore it,
+and I never let
+how complicated learning it is deter me from pursuing it.
+And I've become very comfortable
+with being uncomfortable learning something new.
+And actually,
+that gives me a joy and kick to the point where it became sort of an addiction. But, you know,
+I keep it under control sometimes.
+But I do enjoy the process of
+and exploring something entirely different
+and new, and in my opinion,
+that has given me so much breadth and the ability
+to talk about all sorts of things.
+But what I love the most about
+it is how I can cross different ideas together
+from different disciplines
+and have a much more diversified
+view of the world, and that gives me the ability to be able
+to empathize also with all sorts of people
+and different people, right,
+and understand their vantage point. So when someone's arguing with me,
+I take a pause
+and I try to reason
+about where they're coming from, what's their interest,
+how they got to that idea.
+But I draw from my own experiences
+also in learning about all sorts of stuff, including business and finance
+and investments and all sorts
+of all of these things. Right. So I think that's richness. And yeah, I would
+definitely love for people
+to be able to have that. Me too. I think curiosity is a beautiful thing
+when people say, I really don't have a
+drive to learn something or to explore
+something, I think it's a shame, and I honestly don't know how to solve
+that for people
+to make sure they have that kind of love
+for something or curiosity for something, because I feel like that fuels drive
+and that makes you move.
+Absolutely. I don't know how to I don't know if we really should
+make people do anything.
+I would love for people to have it. Yeah. If they don't, you can.
+There's a pretty,
+you know, interesting life. Still, some people have other commitments
+as well.
+Families, kids, less time, complicated
+relationships in life happens.
+It's understandable. And that doesn't mean that I'm also 100%
+always on the, you know, on the burner,
+learning every single minute of the day.
+No, I have my life as well. I have the complications of my life too. So balance is important.
+But I feel also curiosity is something
+that you need to develop. It's like a it's like a muscle. You need to grow as well.
+And approaching the world
+from a curious vantage point is way more interesting
+and more effective
+than being dogmatic or stubborn
+or hardheaded about certain things. You can have strong opinions,
+but not before you actually did
+your homework. Yeah, absolutely. Thanks so much for coming on and sharing.
+This was a blast. Absolutely. My pleasure. Going for hours. Me too.
+We're going to rounded off here
+if you're still with us. Leave a comment in the comment section. Let us know what you thought of this
+episode and we'll see you on the next one.
+Beyond Coding

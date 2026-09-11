@@ -1,0 +1,137 @@
+For large language models to be truly useful, they often need to interact with external data sources and services and tools.
+And until recently, that was typically done with application programming interfaces or APIs.
+Now, in late 2024, Anthropic introduced a new open standard protocol, that's model context protocol or MCP.
+And it has already made quite the splash and it standardizes how applications provide context to LLMs.
+So let's define these two terms MCP and API and take a look at their similarities and differences.
+Now a good metaphor for MCP is that it's kind of like a USB-C port for your AI applications
+and that's because it standardize its connections between AI applications, LLM's
+and external data sources. So, if you think about
+Just your standard laptop that you might be using.
+Well, that probably has a set of USB-C ports attached to it.
+That's a really old one.
+And in those ports, well, you can plug in all sorts of
+cables and they will use the USB-c standard to interface with all sorts peripherals.
+So perhaps you've plugged one of these things into a monitor.
+Another one is connected to an external disk drive and perhaps you've also added in a power supply for the third one.
+It really doesn't matter who makes the peripherals, they all work together using this common standard.
+Well, MCP is kind of like that.
+So if we take a look at really what's in it, there is an MCP host and that also runs a number of MCP clients.
+Now, each client opens a JSON RPC 2.0 session using
+the protocol that comes with MCP, so the MCP protocol, and that connects to external MCP servers.
+So we have a client-server relationship here.
+Now, servers, those expose capabilities.
+So perhaps we've got a server for access to a database,
+maybe we've got another one which gives us access to a code repository.
+And then maybe we have another server that gives us to an email server.
+So if we go back to the USB-C analogy, we can think of the laptop as being kind of like the MCP host.
+The MCB protocol,
+this is really what's signified by the USB C connection.
+And then the drive and the monitor and the power supply.
+We can think of those really as MCP servers.
+Okay, so that's the architecture, but what are the capabilities of MCP?
+Well, it addresses two main needs of LLM applications.
+And when I say LLMs applications, I particularly mean AI agents.
+And those two needs, one is to provide context in the
+form of contextual data And the other is to enable tools and the usage of tools by these AI agents.
+So it provides a standard way for an AI agent to retrieve external context,
+which means things like documents and knowledge base entries and database records that sort of thing,
+and it can also execute actions or tools like maybe run a web search or call an external service or perform some calculations.
+Now that's all done through this MPC server that I mentioned and that advertises a bunch of primitives.
+So let's take a look at three of them.
+Now one of the primitives is called tools and tools are discrete actions or functions the AI can call.
+So a weather service that might expose a get weather tool or a calendar service that may expose a create event tool.
+Now the server name advertises each tools name,
+It's description, the input and output schema in its capabilities listing as well.
+Now when an LLM uses an MCP client to invoke a tool, the MCP server executes the underlying function.
+So that's tools.
+Now another primitive is resources.
+And resources are read only data items or documents the server can provide.
+Which the client can then retrieve on demand, so text files, database schema, file contents, that sort of thing.
+And then we also have as an additional primitive prompt templates,
+and those are predefined templates providing suggested prompts.
+Now, not every MCP server will use all three primitives.
+In fact, many just focus on tools currently,
+but the important thing to understand here,
+is an AI agent can query an MCP server at runtime
+to discover what primitives are available and then invoke those capabilities in a uniform way.
+Because every MCP's server publishes a machine readable catalog,
+so tools/list and resources/list and prompts/list,
+agents can discover and then use new functionality without redeploying code.
+OK, so that's MCPs.
+What about APIs?
+Well APIs are another way of letting one system access another system's functionality or data.
+An application programming interface is to find a set of rules or protocols describing how to request information or services.
+And by using APIs, developers can integrate capabilities from external systems instead of building everything from scratch.
+So an e-commerce site can use a payment API to process credit card payments, for example.
+Now the API acts as an abstraction layer.
+So we have the requesting application, the client,
+well that doesn't need to know the internal details of the service that it wants to invoke, the server.
+It's all kind of abstracted away from it,
+because the server processes the request and the only thing we need to know is how to format the requests
+and understand the responses using the API.
+That's really all there is to it.
+Now there are a lot of different API styles but One of the most ubiquitous is the RESTful API style.
+You can kind of think of that as really the, essentially the web default API.
+And a RESTFUL API communicates over HTTP.
+So this call here is an HTTP call with RESTfUL API where clients interact using standard HTTP methods.
+So they might use GET, for example, to retrieve data.
+They might use.
+Post to create data, put to update data, and delete to remove data.
+So for example, a REST API for a library system might have an endpoint that looks something like get, and then we say /books,
+/123 if we want to fetch book number one, two, threes, details.
+Or we might use a post and say post slash loans.
+If we want to borrow a book.
+Each such endpoint returns data, often in a JSON format, representing the result.
+And in fact, many commercial large language models are offered over REST.
+Send a JSON prompt, get a JSON completion back.
+AI agents might also use REST APIs to perform a web search or interact with a company's internal REST services.
+So, MCP and APIs, they share...
+Many similarities, not least that they are both considered client-server model architectures.
+So in a REST API, a client sends an HTTP request like those gets or posts
+I just mentioned to a server, and then the server returns a response in MCP.
+The MCP client sends the request like tools slash call to an MCP server and receives a response.
+So they really both offer layer of abstraction so that one system doesn't need to know the low level details of another's internals.
+The implementation details there, they're hidden.
+The client just follows the interface.
+So both MCP and APIs, they really help to simplify things,
+specifically simplifying integration, letting developers wire systems together instead of reinventing wheels.
+But MCP and APIs have some fundamental differences too.
+And let's start with purpose built,
+which we can really consider as MCP's kind of area,
+versus general purpose, which we could really think of as being more of API's domain.
+So the model context protocol, it was explicitly designed to integrate LLM applications
+with external data and tools.
+It standardizes patterns like providing context data and invoking tools in ways that align with how AI agents operate.
+But APIs on the other hand, they weren't created specifically with AI or LLMs in mind
+and that means that MCP bakes in certain assumptions that are useful for AI.
+Now that includes one of MCP's strongest advantages and that is the fact that it supports dynamic discovery.
+So what do I mean by that?
+Well, an MCP client can just simply ask an MCPserver, hey, what can you do?
+And it will get back a description of all available functions and data that server offers.
+Now the client or the LLM application using it can then adapt to whatever happens to be available.
+Traditional REST APIs, they don't typically expose an equivalent runtime discovery mechanism
+and if the API changes, new endpoints are added the client needs to be updated by a developer.
+MCP is kind of flipping this model because the AI agents
+can retrieve the latest capabilities list from a server each time it connects and then it can pick up new features automatically.
+Now another big difference relates to standardization as well,
+specifically standardization of interface,
+and the difference here is that every MCP server
+regardless of what service or what data it connects to
+speaks the same protocol and follows the same patterns, whereas each API is unique.
+The specific endpoints and the parameter formats and the authentication schemes, they vary between services.
+So if an AI agent wants to use five different REST APIs,
+it might need five different adapters, whereas five MCP servers respond to the exact same calls.
+Build once, integrate many.
+Okay, so similar, but different,
+but here's the kicker.
+When it comes to MCP, many MCP servers,
+when we actually look at their implementation, they actually use traditional APIs to do their work.
+In many cases, an MCP server is essentially a wrapper around an existing API,
+translating between the MCP format and then the underlying services native interface by using that API,
+like the mcp github server, which exposes high level tools such as repository/list as mcb primitives,
+but then it internally translates each tool call into the corresponding githubs rest api request.
+So MCP and apis are not adversaries they're layers, they're layers in an AI stack.
+MCP might use APIs under the hood while providing a more AI friendly interface on top.
+And today you can find MCP service for file systems, Google Maps,
+Docker, Spotify, and a growing list of enterprise data sources.
+And thanks to MCP, those services can now be better integrated into AI agents in a standardized way.

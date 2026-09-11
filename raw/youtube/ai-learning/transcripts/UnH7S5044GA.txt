@@ -1,0 +1,169 @@
+Okay, so many of you will know Pydantic.
+So Pydantic is basically a validation, library, that you can build classes in to have it check whether your data conforms with a particular class or data model.
+so originally this was something that you would use with APIs for being able to sort of clarify that, what you had coming into the API were the correct inputs and what you were returning back was the correct outputs.
+And you'd basically define a schema for what you wanted in and what you wanted out, as you can see here. and this made it much simpler to do this kind of task in Python.
+now fast forward to when people are building large language model apps and agents, they also wanted a way to get the outputs to conform with a particular schema.
+so we've seen this classically in function calling in JSON output. People want the model to be able to follow a particular schema.
+Now, back in the early days when people were trying this out, they discovered that actually, Pydantic was perfect for this use case as well.
+And I think the first use of this was actually in Instructor, Although I think the idea may have been around for a bit before that.
+Certainly, LangChain and LlamaIndex, adopted this idea, and you saw Pydantic
+being used a lot in things like LangChain and pretty much most of the frameworks that have come out after this.
+And one of the key things that people have sort of taken away from this is that in many ways, this is really what you just want from an agent framework or
+an LLM framework is a way to basically get your outputs of a model to conform
+to a particular standard So that you know that the output can be basically used programmatically elsewhere.
+Now fast forward to today, the team behind Pydantic have created Pydantic AI.
+And this is a whole new LLM library with Pydantic at the base of it.
+So it's sort of building around from Pydantic rather than sort of plugging Pydantic into a framework that's built for different things.
+So with this launch, they're showing how their framework can be used for a variety
+of different tasks, from everything from chat apps, to structured output to RAG, to agents, to a whole variety of these apps.
+And on top of that, from day one, they're also supporting a wide variety of models. So we've got, the OpenAI API models.
+We've got the Google Vertex AI models. We've got the Grok API models. And I think they're bringing support for the Anthropic models very soon as well.
+So this is their whole take on an agent framework and really is building a sort of LLM app framework around their original Pydantic library.
+But making it easy to use things like system prompts, like tool use, like RAG, et cetera.
+So this seems to be the product of the team actually, recently raising a bunch of money and moving more from being a single open source library to actually being, a company to go along with products that make money, et cetera.
+So to go along with that race, they announced a thing called log fire, which basically isn't an observability platform that allows you to track, inputs and outputs, et cetera.
+So we've seen a number of these four large language models.
+Obviously LangChain has LangSmith, but there were quite a number of these out there. Some are open source. Some are fully proprietary.
+Some sort of sit a little bit in the middle there. And following up on that release, today they've released this Pydantic AI. So let's jump in and have a look at this.
+first off, why would you want to use Pydantic AI.
+As they rightly point out here that Pretty much every agent framework out there in some way, shape or form has a Pydantic in it for validations.
+And so that's basically used to validate the responses back from an LLM to decide, do you recall the LLM to fix something up that kind of thing?
+And like I mentioned earlier, I think LangChain and LlamaIndex was some of the first to do this, but Certainly a whole bunch of different libraries have gotten on this bandwagon.
+And it makes a lot of sense. Pydantic has just been such a strong, reliable Python library for a long time.
+so on top of that, they mentioned that this framework is model agnostic, that it currently supports OpenAI, Gemini, Grok, Anthropic is coming.
+The model is type safe by design.
+So that gives you a lot of advantages and also allows you to then to plug your data into other things, whether that be tools quite easily or databases, et cetera.
+Another big plus that I see is that they mentioned that the whole control flow and agent composition is just done with sort of vanilla Python So, this is
+one of the things that I did like about the swarm project that at the end of the day, it really was pretty simple. and if you understood Python, you could integrate this in.
+Now, this becomes really important when you want to be able to put something into production.
+Even though a prototype, a lot of the stuff I do in LangGraph often when I actually pushed something to production, I just recreated it in Python.
+Once I've worked out, what's going to go where, because I find for each agent often you want to store the state a little bit differently.
+You want to do a variety of things a bit differently. So for me, one of the advantages of this along with swarm is this ability to just do everything in Python from the start.
+Now they mentioned, that they support structured response from the models, et cetera, which is a huge advantage. And all that validation is done with Pydantic.
+And one of the cool things with this is even if you're streaming their sponsors, you can still use Pydantic for that. also the way they've set it up is with dependency injection.
+It makes it very simple for you to inject system prompts, inject tools, et cetera into these things on the fly.
+So you can imagine that as a conversation changes over time and you want to change the tools you don't need to necessarily go to a whole new node or something.
+You can just inject in a new tool or have a dynamic system prompt that is changing as a conversation or as an agent workflow changes over time in this.
+Now, of course, they're also supporting their log fire integration. Although from what I see, that's certainly not needed. It's not compulsory thing that you need to do.
+So I think the simplest thing is let's jump into the code, have a little play with what it can do.
+And just get a simple sense of how to use this with different models, different tools, et cetera.
+Okay, So one of the key things about this is that you want to make sure
+that you install this nest.asycnio, to make it run in CoLab because Pydantic AI is a asynchronous library.
+this is what you're going to need to basically help it run.
+And you're gonna need to have this in to make sure that the event loop works in CoLab. All right.
+So the first time you run this, you will need to restart the notebook to basically get at working. I'm just bringing in some keys for LLMs here.
+I will kick this off. And, first off we're getting basically just set up an agent and just call it. So we're just basically calling the LLM here.
+We're not doing anything fancy. And you can see that you set up the agent with Gemini 1.5 Flash in this case. We've got a system prompt.
+And then that agent, we would then pass in what we want to have as our sort of user prompt in there.
+And you can see that this is reasonably similar to something like LangChain in there. So, okay, we've done Gemini 1.5 Flash.
+We said be very concise reply with only one sentence. Sure enough. We've got our one sentence back. Now, we can also change the model just by doing agent.model.
+we can't just do agent.system_prompt though, to change that. we're going to need to inject that in. So here I've just got a decorator.
+around this prompt that we're going to pass into it. So this is going to be give a long one paragraph answer and make it dense.
+Now when I run the exact same query, that we had before we should get a much longer paragraph answer and sure enough, we do.
+we can see that's actually working in there.
+and you can always just go in and look at the agent and see, okay, what the prompts are. And I'll show you that in a second. All right.
+The next thing is looking at basic sort of structured output. And I really feel this couldn't be easier.
+so you define some kind of model that you want the output to have. So I've taken their base sort of example.
+And their base example was going to have a city and a country. You define the model. So when I say model here, I'm talking about the, class, right?
+That the model of what we're going to get back as our response. And we can see this is actually going to be our result type that we get back.
+Now, the model, in this case, we're using OpenAI GPT-4o. we're going to set up the agent. so the agent's going to take in this model.
+And we'll just pass in a prompt in here. And in this case, it's going to give us back nicely formatted data.
+So we can see that we passed in the windy city, in the USA. We got back, Chicago and country USA.
+we can look at the cost to see, okay, how many. tokens, we used, et cetera. We try this with a different city. sure enough Merlion.
+We get, the Singapore in there. But I want to show you something really cool is that we can just come in here. We can add things to this.
+So I can just say, okay, we've got city country reason. what about we put in something like famous person from the city.
+Okay, let's get famous person from the country would just go to the famous person from that city. So now we've got four things, right?
+yet you'll see that just by just adding those two lines to the model, we've now got the city, the country, the reason or the explanation, I guess we could have put.
+Chicago is commonly referred to as the windy city, a nickname that originated in the 19th century. And then right at the end, we should get a famous person that comes from that city.
+So I'm not sure if Kanye West is from Chicago or not. and it will be different sometimes. So sometimes, from this one, you'll get other names back, in here.
+And you can see that now we've got that we can run that through a whole bunch of different cities really easily. So from Singapore, we've got Lee Kuan Yew as being the famous person.
+if I say the cold city in the south, and it's interesting, I didn't know what the answer would this be?
+I experimented in different continents to see what you would get out and stuff like that. If I just leave it in the south, that basically picks a city in Argentina.
+and this is the Southern most city in the world with a cold climate. and then it gives us a person that's from there.
+Not sure if that's hallucinated or accurate, but you can see we've got these results out, that are nice and neat like that.
+Of course we can index into these as well.
+So you can see if I just say result data, famous person from city, I will get the last from the last run.
+so I can use these, in a whole variety of different ways.
+So this is one of the best uses of doing structured data is just to throw things at it like this. And certainly this library makes that super easy.
+If we look at the agent that we had there. We can see that it's okay, it's using the OpenAI model GPT-4o.
+we can see the last messages run.
+when there that we've had the coldest city in the south, we can see the responses back et cetera that we got through there.
+Now, if we want to look at, doing some kind of chat app, this is actually where this is quite different.
+You don't think about things in the normal sort of way of having a user assistant role, even though that's going on you can just focus in on this.
+So you can see here, I can just basically say right. I'm going to set up a system prompt, be a helpful assistant. I'm going to say, tell me a joke.
+and sure enough, it comes out with this joke.
+obviously I could pass in a model there and get other information out if I wanted to as well. once this is done, though, I can actually see the messages.
+So if I come in here and pretty print these messages, we can see that the system prompt was be a helpful assistant. Then the user prompt is tell me a joke.
+and then the model texts response is what we got back here.
+and if we look at this, we can see, that's just a simple list so we could repurpose this. We could do a bunch of things with this as we go along.
+If we just want to see the sort of most recent, messages, you can see here, we can just see this last you user input and the model one.
+So now if we want to send another thing, we can just keep the same agent. Then I say, okay, explain the joke. Explain it please.
+And I'm just going to pass in the message history with these new messages. so the system prompt is already in there.
+so you'll see that now it basically comes back and it explains the joke. And you can see, it's explaining, about the scarecrow, et cetera.
+Now, if we look at the, all the messages now, We will see now that we've got the system user prompt model, then the new user and model in there.
+If we just want to see the most recent ones, we can just, get those out easily in here. again, we can sort of now take the most recent ones from the last call.
+Call that again. And you can see that. Okay, now we're basically going to get this out. And you see now that we're getting this out. we can see that, where does the joke come from?
+And it sort of explains it a bit more, I guess. We can see all messages being a list of that entire conversation.
+And we could decide that we just want to keep, a certain number of those to pass in as the history.
+Cause you can see each time we've just passed in a message history, which is just a list of messages. and it makes it very easy for us to trim that messages down.
+If we wanted to just have the last one to have all of them, et cetera. and we can also then get the JSON of this.
+So you can see all messages can either come as a list in Python, or we can actually get this out.= As just JSON.
+and can see this sort of fits more to the user system role kind of thing that we would see for a lot of the other frameworks that you're going to have using here.
+Now you can even do things like where you change the LLM, partway through. So here we've got result one. tell me a joke.
+and then we've got, the, only printing that. and that's going to be probably this. and then we decided, okay, we're not going to use that OpenAI for that second part.
+We're going to use Gemini 1.5 Pro cause remember this framework is model agnostic in this case or LLM agnostic, I guess I should say.
+and you see that the second part, it's basically, taken the, history from one LLM and passed it into the other. And we've used that just fine.
+we've got no problem with doing this and We can see this entire history, even though it's come from two separate LLMs in here.
+Alright, the last one I want to show you is an example of using sort of function calling and tool use, in here.
+So this is their example that's using tool use to, basically get, where the details and stuff like that. Now it's actually split into two tools.
+I don't have API keys here.
+if you don't use an API key is just going to give you a sort of default answer, but it still shows us what's being called in here. we're going to have our weather agent.
+so these dependencies are what, is going to go into it, That we're going to basically have the weather API key, the client in here.
+And then we're going to add the tools. So you'll see that once we've set up this agent and we can set it up. The number of retries, I think I had that in one of the previous ones earlier on.
+But once we've got this agent, you'll see that this agent just takes in the context of the dependencies.
+and it's going to take in some kind of, location description. And that case is probably going to be the name of the city or something like that.
+And this first tool is get the latitude and longitude of this. Now, if there is no API key, it will just return dummy response here.
+but if there is an API key, we'll actually go out and call this. so you could see that, basically return back. a dictionary with latitude and longitude.
+The second tool, is going to basically take that latitude and longitude that we've got here. and that's going to then, send it off.
+Again, if we're missing an API key it's just going to give us a dummy response. But it will come back and give us, the actual weather.
+I'll give you some sort of code lookups and stuff like that.
+And the API actually has a bunch of codes that you can sort of use to look up and get the, I guess bit more descriptive census of this.
+I guess he finally just going to return the temperature and the description or the code lookup. And this is just going to look it up and change it to natural language.
+And we can see that we've basically just appended these, tools to this agent by just using this decorator.
+This decorators being atweatheragent.tool. and we could do that with multiple tools in here. Now the main function here is going to get your API keys if you've got them.
+it's going to pass these in. And then it's just going to run this with the, user prompt, going into this and passing in the dependencies as well.
+if we run this we should get back that it's sunny and 21. We'll look at the end. I'll come back this. Sure enough.
+We're getting both, whether in both London, Singapore is currently, 21 and sunny. All right. So that's just the dummy response.
+but we did ask for, what is the weather like in London and Singapore? All right. Let's look at actually the output to see what actually happened.
+So we can see that sure enough it went through this. And it decided, it had the user prompt.
+And then from that, it gave us model structure response that was a tool call.
+And we can see the tool call was to basically get the latitude and longitude for London as the first one.
+And then another one to get the latitude and longitude for Singapore. So that's two separate tool calls that are made there. in this case, it returned the same latitude and longitude for each of those.
+So we should get this 51 50.
+So sure enough, we get the tool return as being, get latitude longitude 51.1 and a minus 0.1.
+and we get that for both of them for both tools, cause it was dummy data. and then now it's the next response is to basically call a tool again.
+Now get weather passing in, this latitude and longitude that we have. And it's doing it obviously once for, London and once for Singapore in there.
+it gets the response back that the temperature is 21 degrees sunny for both of them.
+And we can see that once it's got that back, it basically just gives us a model, text response back.
+it's done with the tool calling now and the model text response back in this case, just going to be the weather in both London and Singapore is currently 21 and sunny in this case.
+and then we've got data out about how many tokens we used, in detail.
+And can see it's even got things like if we were using the o1 models, it would show us the number of reasoning, tokens, or audio tokens, et cetera, in there as well.
+So that's an example of basically setting up just a very simple little agent that can do tool use and function calling.
+All in a very short amount of code.
+Now, obviously your agent tools, the code is going to be as long as you need for the actual tools. So that would be, Almost the same for every framework.
+But here you can see, we've set this up really simply. and we haven't had the pass in a list of tools or anything. We've just appended these on to this.
+And then finally I put another one of their examples in there for just streaming markdown, that how it can basically use the structured output to work out the different parts of what this code is in here.
+And so that you can actually print it out really nicely in here. So this is just using a couple of different models to go through.
+So this is printing out the code. Using the prompt, show me a short example of using Pydantic in their.
+and it's just got some styling for logging it out so that you can see the different parts that are going on in there.
+Anyway, this certainly does show a lot of promise, as a new framework that you can use sort of very simple abstractions to be able to choose
+different LLMs, have system prompts, change the system prompts on the fly. Be able to inject different things in, be able to set up a history.
+So that you've got some memory and stuff going on very easily in here. It's something that's done in a very Pythonic fashion.
+In many ways, much easier to understand than some of the things like, LangChain, LangGraph, LlamaIndex, et cetera for these kinds of things.
+if people are interested, I may do another video of this sort of setting up a RAG system.
+And just showing you, using this for a RAG system, if people are interested, Otherwise, I would definitely recommend that you check it out, have a play with it.
+See how it works and see for, a lot of things.
+My guess is that you can probably get away with a lot less code than you're using for some of the other agent frameworks by just using something very simple and Pythonic, like this.
+Anyway, as always, if you've got any questions, I'd love to hear your comments about what you think of it. Any questions that you've got, please put them in the comments below.
+If you found the video useful, please click like and subscribe. And I will talk to you in the next video. Bye for now.
+Python

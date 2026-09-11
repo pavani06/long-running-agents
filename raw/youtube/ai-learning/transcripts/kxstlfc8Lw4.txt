@@ -1,0 +1,807 @@
+My name is David Andre and here is how
+to fine-tune Kimmy K2.7 on your own
+data. So, the future is here. We now can
+fine-tune massive AI models such as Kim
+K2.7, which by the way is one of the
+best models in the world. It's on a
+similar level as Opus 4.8 or GPD 5.5.
+And it's reaching the level of Opus for
+a fraction of the cost, roughly 6 to 8
+times cheaper than Opus. So, in this
+video, I'll explain what fine-tuning is.
+I'll show you how to fine-tune Kimik K
+2.7 and I'll show you how to deploy it
+live publicly. First off, what is
+fine-tuning? In short, fine-tuning makes
+a model better at one specific thing.
+So, fine-tuned models can outperform
+different models that are even five
+times larger in the amount of parameters
+that they have purely because they're
+fine-tuned in a specific domain. And
+this is also the easiest way to create
+your own model, a custom AI model that
+only you have. However, there's a big
+issue with fine-tuning, which is that if
+you want to fine-tune powerful models
+such as the ones with one trillion
+parameters like Kim K2.7, you'll need a
+lot of cuttingedge GPUs. And that
+hardware tends to be expensive. In fact,
+you probably need to spend over $100,000
+if you wanted to have sufficient compute
+at home to fine-tune such a large model.
+And even though I would highly encourage
+all of you to invest more into your own
+hardware and learn how to self-host and
+run local models, most people cannot
+spend $100,000 to fine-tune a trillion
+parameter model. So I'm going to show
+you how you can fine-tune any opensource
+model, even massive ones like Kim 2.7
+for cheaper, faster, and easier. So what
+do we actually need? First, we need a
+model. To fine-tune anything, you need
+an open-source model, not a closed
+source one like the ones coming from
+OpenAI or Entropic. We need an open
+source one that we can actually
+fine-tune. Second, we need the GPUs.
+This is the hardware, the compute that
+will be used to not only fine-tune the
+model, but also to deploy it and host
+it. And number three, we need a data
+set. This is the data that will be used
+to do the finetune. And if you have a
+shitty data set, you're going to have a
+shitty model, right? The data is one of
+the most important things. But first,
+let's talk about the model. Most of the
+time, people fine-tune very small
+models, right? eight billion parameters,
+maybe 24 billion parameters, 30 billion
+parameters because you can do this on
+your own laptop, right? I've done that
+many times. I've shown you that in
+previous videos. However, for this
+video, I want to show you how to
+fine-tune the biggest open source models
+in the world. Specifically, Kim K2.7
+code because right now it's my favorite
+open source model. In fact, this is one
+of the best and largest opensource
+models available right now. And it's
+also extremely cost efficient. Just look
+at this, right? When you compare it to
+Opus 4.8, 8, which again, it's
+comparable code quality. It is seven
+times cheaper on average. And since Kim
+K2.7 gives you very high quality tokens
+for an incredibly low price, I asked the
+team behind it to sponsor this video and
+they agreed. So, I'm going to show you
+how to fine-tune it yourself. Also, if
+you want to try Kimy's official API,
+click the first link below the video.
+And if you're a new Kim user, when you
+click on that link and make the first
+purchase of API credits, you'll get
+additional 15% extra credits completely
+for free. Again, a huge shout out to the
+Kimmy team for sponsoring this video.
+The second thing we need is the
+hardware. You need powerful GPUs to load
+and fine-tune this model, you know, a
+model this large, such as the Nvidia
+B300 Blackwell. And this is what runs in
+the data centers, right? These are not
+consumer GPUs. You cannot really I mean
+you I guess you could put them in a
+consumer computer. It just would be
+extremely expensive, right? Each of
+these GPUs is like $40,000 and you can
+even buy one. You have to buy eight at
+minimum because they're sold in server
+racks, right? So if you want to buy some
+black wells, you need to invest at least
+300 to $350,000 up front. So obviously
+I'm not going to do that just for one
+YouTube video. So, we need a platform
+that will let us not only train the
+models, but also deploy the fine-tuned
+version at a reasonable price that we
+can afford with fast inference. But
+don't worry, I'm going to show you all
+of that later in the video. Real quick,
+we're almost at 400,000 subscribers. So,
+if you found my content valuable, please
+check if you're subscribed. And if you
+are subscribed, send it to one of your
+friends that you think would benefit
+from learning more about AI. You have no
+idea how much me and my team appreciate
+this. So, please check if you're
+subscribed and send the channel to one
+of your friends. Now, let's talk about
+the data set. Highquality data is one of
+the most important factors when it comes
+to fine-tuning and in general when it
+comes to creating AI models. However,
+not all data sets are created equal and
+a lot of them are not in the right
+format for us to fine-tune upon easily.
+So, I created a easy skill that you can
+just copy paste that handles all of this
+for you. To get the skill yourself,
+click the second link below the video.
+Plus, you get everything else I
+mentioned in this video. all the
+prompts, all the configs, everything so
+that you can download any data set for
+any purpose, run it through the skill,
+and it'll be ready to fine-tune. So
+again, this is completely free. It's in
+the second link below the video. Go grab
+it now. Now, let's talk about the two
+main types of fine-tuning. First is
+supervised fine-tuning. This is where
+the model learns from good examples.
+Second is reinforcement learning. This
+is where you give it a reward and the
+model tries different things to see what
+gets the best reward. For this video,
+we're going to go with supervised
+fine-tuning because it's a bit simpler
+and I'm going to show you a data set
+that has a lot of good examples. Another
+term you need to understand is Laura.
+This stands for low rank adaptation and
+this is an efficient fine tuning
+technique because it freezes the base
+weights and only trains a small set of a
+new adapter weights instead. So instead
+of training all one trillion parameters
+from KimK2.7 which would not only take a
+long time but it would be very expensive
+we are only training a small adapter on
+top of the big model. So now that you
+understand the basics let's get to
+fine-tuning. Okay so the first thing we
+need before we start fine-tuning is to
+choose the data set right and there are
+many different data sets. In fact, on
+hugging face, you can click on data sets
+and there's like almost million unique
+data sets. You can choose, for example,
+like if you want like front end, just
+type in front end, right? Or like
+design. Or if you want like maybe SWE
+software engineering, boom, there's a
+lot of great ones here. The issue is a
+lot of these data sets come from worse
+models, right? We have to be careful
+because Kim 2.7 is a trillion parameter
+model. It's a really, really good model
+already. So there's no point fine-tuning
+it on a data set that comes from a
+smaller model. So if you want to use a
+data set from a model, you need to use a
+better one. And right now the best in
+the world is Fable, right? You can see
+that on hugging face, there is 118
+different Fable data sets. If you want
+to use Opus, there's going to be a lot
+more obviously, but we want to use Fable
+because Fable is a lot bigger models
+rumored around 10 to 15 trillion
+parameters, which is significantly
+larger than Kim 2.7, right? But again,
+feel free to use any other data set to
+fine-tune this with. You can just browse
+through here. You can do some web search
+on it what would make sense. You can
+also create your own data set. I posted
+a video on that recently. So, do
+whatever makes sense for you. I'm just
+going to show you the steps. So, follow
+along. This is more about, you know,
+don't give a man a fish, but teach him
+how to fish. I'm going to show you how
+to fine-tune models so that you can do
+it yourself. So for the first time, feel
+free to copy my steps, but you should be
+able to find tune Kimmy in whatever way
+that makes sense on your own data, on a
+new data set, on something else. I'm
+just showing you the steps how to do it.
+So again, once you pick a data set, I'm
+going to go with this one. You need to
+download it. And the easiest way to do
+that is to just have a agent download
+it, right? So I'm going to open
+terminal. I'm using Cmax as my terminal.
+And I'm going to simply copy this URL.
+So what I'm going to do is I'm going to
+launch some agent. Could be PI agent,
+could be Codex, doesn't really matter.
+And I'm going to tell it run pwd just to
+double check where we are. And by the
+way, I'm using Kimik 2.7 code here. Um,
+so it's very fast. It's a really great
+model. For example, for PI agent, I put
+it as my default model right now. Okay.
+So I'm going to say I'm going to give it
+the link say now download this data set
+into this folder. Boom. And you can just
+have the AI and download it, right?
+It'll check if I have the hugging face
+CLI. If not, it'll help me install it.
+And by the way, you know, let's say we
+go with cloud code. If you don't have PI
+doesn't matter and say how do I install
+the hugging face CLI
+browse the web give me step by step a
+lot of you are not using these agents to
+improve your setup you these agents are
+way more powerful than you realize so
+don't limit yourself just by using it as
+a Google replacement by sending in
+questions here I am having it download
+this entire data set right I could
+figure out how to do it myself there
+probably is a button in the user
+interface somewhere here but why would I
+do that I just send it URL and I tell it
+download it into this folder and it will
+download it for me. Right? And here, if
+you look at it, what what it did, it
+checked that I have the hugging face CLI
+available and it started downloading
+through the CLI. And again, if you don't
+have it available, just tell your agent,
+set up the hugging face CLI, and it will
+do it, no problem. But while the data
+set is downloading, we can open
+Fireworks AI. And this is a great
+platform because it allows both
+deployments and fine-tuning of models,
+right? So, if you've never used
+Fireworks before, just go to Google,
+type in Fireworks AI, click on the first
+link, and just create an account. It's
+super easy. When you get to the
+dashboard on the left, what matters is
+deployments and fine-tuning. Right? This
+is where we're going to spend most of
+our time because first we need to
+fine-tune the model. And then we want to
+create a deployment so that we can build
+a software on top of it, run inference
+with the model, whatever you want to do.
+Right? On the left, you can also go to
+models and you can see all the different
+models available here. We're going with
+Kim 2.7 and they have a nice Laura
+version for it. So we can use Lorax
+adaptation. That's going to save us a
+lot of money, right? So don't get
+distracted by me having $6,000 of
+credits. You definitely don't need that
+much because of how Loa works, this can
+be finetuned in like less than an hour.
+So even the most powerful GPUs cost like
+$40 per hour. So I think the last
+finetune cost me like $38 or something
+like that. So given that this is a
+literally a one trillion parameter model
+that is very very cheap. All right, so
+let me check how's the data set going.
+Now we can actually have one agent check
+on the another one. So here let me kill
+cloud code. Boom. I'm going to launch
+another pi. We'll say check this CMAX
+workspace and let me know if you see the
+other agent
+that is downloading the data set. Boom.
+So we can have one of the agents
+monitoring the other one. Yes, the other
+agent is downloading. Okay, it is rate
+limited.
+What is the solution? Giving HF token.
+Okay, so let's do that. I'm going to say
+follow setup help skill and walk me
+through the steps. But this is one of my
+skills that I use literally every single
+day. If you want access to all of my
+skills, they are available in Twitter in
+my Twitter bio. Just go to here,
+davidonj.com/skills
+and grab them. It's completely free. Um,
+and you can also see that u it already
+used one of the earlier skills for the
+CMAX here. Yeah, that's also one of my
+skills. So these agents know how to
+operate CAMX, how to delegate to other
+agents, how to monitor them, stuff like
+that. So now it read the setup help
+skill and now it's going to follow the
+steps and now it's going to give me the
+steps in a nice format. You can see it
+gives me clear instructions for the
+current step and then a very nice list
+of what is remaining. So the first step
+it gave me the link to hugging face
+tokens and again create a hugging face
+account. This is basically like a GitHub
+version for everything AI, right? So
+when it comes to models, when it comes
+to data sets, you absolutely need to be
+on hugging face. Like this is the place.
+If you care about open source AI,
+self-hosting, running models locally,
+definitely create a hugging face
+account. Again, it's completely free.
+When you go to top right, click on your
+account and click on access tokens at
+the bottom. So here we need to create a
+new token. So click on that. We're going
+to name it Kimmy
+data set download.
+And for the permissions, I'm just going
+to screenshot my screen. I'm going to
+ask uh PI agent what perms answer in
+short read right read write right read
+write right read write right read write
+right read write right read write right
+read write what rephrase this in plain
+English so as I was setting this up it
+seems like the data set has finished
+downloading but again uh you can go
+through this and if you're not sure you
+can use pi agent you can just use cloth
+again use these models to help you set
+this up like you can literally take a
+screenshot of your screen here boom boom
+boom copy attach it Say I'm on hugging
+face and I need to create a fine grade
+token access token so that I can use the
+hugging face CLI to download data sets
+with u higher usage limits higher rate
+limits. What permissions should I give
+to this token? Please guide me through
+this. Make it as simple as possible for
+me. Be very concise. This is how you
+need to be using AI guys to upskill
+yourself to improve your setup. Use one
+agent to set up another agent. Don't
+overthink it. Okay? anything in this
+video if you get stuck don't let that
+dissuade you don't let that stop you
+open up chat GPT or clot or or buy agent
+with Kimmy and just ask them like
+describe what you're facing the issue
+and tell it make it simpler and shorter
+for me walk me through the steps you
+know make it as easy as possible for me
+make your last answer simpler and
+shorter this is so underrated and so
+many of you are still not using AI
+strong enough to build your own
+understanding a lot of people overrely
+on AI in areas where it doesn't make
+sense and they're not upskilling
+themselves. They're not improving their
+own knowledge, their own skill set and
+really trying to understand it. They
+just copy paste from one agent to
+another and really not learn anything.
+You don't want to do that. You want to
+use AI to learn yourself and to build
+yourself up to upskill yourself so that
+you become better human. So for
+[clears throat] this token, we only need
+this read access to the contents of
+public gated repos. You can access
+uh uh uh where is it? This
+scroll down click create token. Okay, so
+that's easy enough. and then scroll down
+and create token. And I would copy that.
+I would send that to say like run pwd
+again to see where we are. Create that
+env here
+and put the key name for HF token in
+there. So then I can prefill it. Now
+save the value. Again, this is not the
+best practice sending this to an agent,
+but it's certainly the fastest way. And
+you can see now if I wanted to download
+another data set, I would not be running
+into the same rate limiting issues
+because I set up the hugging face token
+which is uh connected to my account. But
+again, do not share this with anybody.
+I'm going to revoke the token actually.
+Now I'm just going to delete it because
+u you need to keep this private just
+like passwords. However, the issue is
+that this uh data set likely is not in
+the ready format for our finetuning.
+Right? So, what I'm going to do is I'm
+going to kill this agent. Launch a new
+one. And we can do like codeex this
+time. Doesn't matter.
+I'm just going to lower it to high. 5.5
+highass is good. I'm going to say find
+the data set in this folder. It should
+be the fable 5 chain of fault merge. Do
+you see it or no? First, I need to
+confirm that Codex actually sees the
+data set and then u we can run the skill
+on it to make sure it's in the right
+format. research what format of a data
+set I need to fine-tune Kimmy K2.7 code
+model on the fireworks AI platform
+through the low raet tuning low rank
+adaptation do extensive web search on
+this to figure out what format the data
+set needs to be in for me to upload it
+all right so it says yes the data set is
+there so I'm going to say now run the
+fine tuning data set skill on it so
+again this is the skill
+That's in the second link below the
+video. Just grab it. It's completely
+free. It includes conversion of any data
+set to a format that you can use to find
+tune Kim K2.7 code. So I'm running it on
+this data set right now and Codex is
+going to write the Python conversion
+script. It's going to read that skill
+and do all the steps necessary to
+convert this data set into a format that
+we can then upload into fireworks. In
+fact, we can go to the left and click on
+finetuning and click top right fine-tune
+a model. Here, select supervised. Click
+on continue. Select the model Kimmy K2.7
+code with the Laura version. Next. And
+then we need to upload the data set. So
+let's see how that's going. This is not
+uploaded Fireworks JSON as it is. It is
+flat field. So again, it's going to
+analyze the data set and figure out what
+it's missing so that we can nicely
+upload it to the Firefox AI platform in
+the format that's supported for the Kim
+K217 code Laura fine-tune. So as you can
+see now, it's writing some Python
+scripts, running Python commands. panic
+data set is real and clean but not
+ready. So, it's asking some question.
+Should I convert it as a simple SFT?
+Convert it in a way that will result in
+the highest quality fine-tuned
+model. Even if it's less user readable,
+I do want to push this as good as
+possible. And again, you just send this
+skill to any agent that you use. Doesn't
+matter if it's cloth code, codeex,
+cursor, pi, herma agent. And with this
+skill, it will know what to do to
+convert it to the right format for the
+finetune. So, this is what's blocking us
+here. We need to upload the data set
+because without the data set, you cannot
+start the finetune. Boom. There it is.
+Codex wrote the script. It's like over
+200 lines and it's going to run it right
+away. There's 4,600 rows. You need at
+least 1,000 for Laura Fine Tune to be
+efficient. I think like way less for it
+to be working. But to get a good uh
+result, you need a data set of at least
+1,000 rows. So inside of hacking phase,
+you can check this on the right to see
+how many rows it has. This one is 4,600.
+So we should be fine. And the data set
+is done. So I'm going to say open the
+training data set for me in finder. This
+is another pro tip. Don't find like this
+is so deep, you know, like you can say
+like run pwd. Oh, there it is. new.md.
+Uh uh uh. No, it's the
+fable 5 fireworks train jsonl.
+This one. So instead of finding this
+myself because this look how deep this
+is on my computer, I can just tell it,
+hey, open it in finder and it'll just do
+that. No problem, right? So now let's go
+to the fireworks again to the browser.
+And I'm just going to drag this in.
+Boom. And it's uploading the data set.
+Should take a couple seconds. We
+actually don't need a valuation data
+set, but I think codex gave us um eval
+one. So let's go next. All these
+settings, leave it to default. We need
+the model output name. So I'm going to
+say kimi code fable because this is the
+data set name. Okay, there it is.
+Success fine tuning job is getting
+created. Now we should be able to see it
+if we go to the left and click on fine
+tuning. There it is. Kim code fable. You
+can see the data set fable five star
+train. So actually we can confirm it
+with codec. So I'm just going to
+screenshot this part. And again this is
+I would highly recommend taking
+screenshots and sending it to the
+agents. Right. So boom, we can go here
+and say like all good be concise.
+Confirm all the steps. Give the agent
+what you see. If you're not getting good
+results of AI, you're probably not
+giving enough context. That is both text
+like words and visual like screenshots.
+Yes, looks good. Only caveat. Okay. Blah
+blah blah. So yeah, it seems to be
+running. So now we can click on it
+actually and you can see the progress.
+It's 0% now. It just started. It's epo
+epoch one out of one. If you look at
+another one I started earlier on a
+different data set. This one is 65%
+down. And you can see the loss going
+down over time which means it's
+training. It's very nice. So yeah, I'm
+running two fine tuning jobs at once. So
+this is going to take a couple of hours
+to fine tune on this data set. But after
+that, we'll have Kim K2.7 code
+fine-tuned on the data from Fable 5
+herself. So this should be an
+interesting fine tune. And once it
+finishes, I'm going to show you how to
+actually deploy this model publicly so
+you can start using it either in your
+software as a back end or running
+inference for yourself. All right, so I
+think the finetune is finished. Let me
+check here. Boom. It is finished. Let's
+check the cost. Okay, 131. That's not
+bad at all. I ran some previous fine
+tunes on larger data sets. This one was
+like $800. So, this fable data set is
+actually pretty efficient. Can see the
+loss going down over time. We could also
+train for longer. This is only one
+epoch. So, this is pretty fast fine
+tune. But anyways, now when you go to
+deployments, you can also click on
+create deployment. You can uh name the
+deployment like I don't know ki v4. Here
+in the base model select custom model
+and select the one we just created.
+Region global is fine. You can see the
+different Nvidia GPUs that are offered
+here. And again since this is a very
+large model it requires beefy GPUs. So
+these are Nvidia B300's black wells with
+288 GB of VRAM each. Four of them,
+right? Four GPUs. So that's why it costs
+this much. You can also select more
+deployment scaling if you want to make
+sure it's always running. Select minimum
+to one. That way it's always runs
+because if it's zero, it spins down. Um
+if you want more traffic, more
+flexibility, you can enable autoscaling,
+right? So up to five replicas. Pretty
+standard, very simple. Like I like the
+reason I like fireworks for this is
+because very simple, right? So then you
+just click deploy. I already have a
+running deployment. So we can click on
+here. So this one has been running for
+like 30 hours. So next, the last thing
+is to show you the difference, right?
+What does the Kim code fine tune on the
+fable data set compared like to the
+normal Kim K2.7? In other words, does
+the fine tune version make different
+responses? Right? So, we're going to do
+that. I'm going to switch to CMAX. I'm
+going to launch PI agent and I'm going
+to say build a very simple front end. It
+should it should be a web app where left
+side is powered by Kim K 2.7
+default through open router API and the
+right side is going to be powered by our
+fine tuned version from fireworks AI.
+Just build the front end and you know
+the the web app. I'm going to give you
+the API keys and uh bit more info about
+the fine tune model in a second. Focus
+on doing the layout so that it's a nice
+50/50 split. Left side being the default
+version, right side being the fine-tuned
+version. Make it look nice like a proper
+front end for testing two different AI
+models on the same prompt. That way at
+the bottom there's a input field. I can
+sign a prompt and it will go to both of
+these AI models. Again, we're going to
+wire up the back end in a second. So,
+I'm using PI agent and we're running Kim
+K27 code. Look how fast it is, guys.
+This model is incredible. The Moonshot
+team really cooked with this one. Kim
+K2.7 code is so fast and so good for how
+fast and cheap it is. It's really crazy.
+So, uh yeah. Anyways, we're going to go
+here and Fireworks give us a very simple
+um box where you can literally just copy
+it. So, this is without the API key. So,
+we need to get the API key. So, in fact,
+we should probably do
+touch envax
+open.v. We actually already have it.
+Okay. Then I'm going to do uh what's the
+name for this? Fireworks API key. Boom.
+Paste that in here. It's good practice
+to do that manually so you don't send
+that to AI agents. Create API key. Boom.
+I'm going to name it Kimmy Fable deploy.
+Generate key. Copy that. It's viewable
+one time only. And again, keep your API
+keys private. Okay? Do not share them
+with anybody. So it's in the env file.
+That's good. Next, we can close this. Go
+back. And we're going to copy this. I'm
+going to give it to Kim the one moment
+it finishes the front end. Okay, it's
+testing it now. This is very fast, by
+the way. And look at the cost, the
+incredible cost effectiveness. If we
+were using Opus or Fable, this would
+already be multiple dollars. But since
+we're using Kim K2.7, we're at like $0.1
+for a full uh web app with backend u AI
+providers, two different providers.
+Also, we should go to open router and
+probably prepare this ki k17 code. Boom.
+And here let's click click on quick
+start. And basically we need to do the
+same. Do we have the open error key? No.
+Let's create one key me testing. Let's
+put some limit small limit. We can even
+do less. $5. Create. Copy. We're going
+to save it to the env file as well. Open
+router API key equals boom. Just make
+sure you spell it properly. So that's
+good. So I'm going to say um both the
+open router API key and the fireworks AI
+API key are inside of ENV in this
+project. So make sure to properly wire
+up the back end. Here is a bit more
+context about the official documentation
+for both of these providers. So um next
+we're going to go back here and copy
+this. Are we using TypeScript? What's
+the text tag here? I'm just I can just
+launch another package and ask it. What
+is the text stack of the web app built
+in this folder? Answer in short. Oh, it
+says vice react typescript. Okay, so
+we're going to go with TypeScript SDK.
+Let's copy that. That was so fast. We
+already have the answer here. Amazing.
+So, this is the beauty of CMax. You can
+just easily launch another pane and
+launch another agent in there. So, I'm
+going to do um open router. Boom. Paste
+that in. That's not what I wanted to
+copy. Copy. There we go. Open router.
+And then we're going to do the fireworks
+which is here. Let's do TypeScript as
+well. Fireworks. Boom. Paste that in.
+Fireworks.
+Get to work and wire up both of these
+models. And again, use the
+environment variables from the env file
+in this project. So, it can do the
+testing as well. Let's see how we can
+run this. It said CD front end. Okay. CD
+front end pnpm defaf.
+All right. Let's click this.
+I'm going to open it in Brave here. Very
+simple. Very simple. Okay. Clean. And I
+want to see the difference in responses
+in the fine-tuned KI versus the default
+one. Let's wait for the back end to be
+wired up properly. The tokens per second
+on this is incredible. And as you can
+see, this model is definitely not lazy.
+It's fixing the readme file. It's
+double-checking everything, putting in a
+lot of effort, and we still haven't even
+hit the first dollar. This is the cost
+efficiency of open source models. A lot
+of you are wasting money on running
+everything on Opus or GPD 5.5.
+While you could get much better usage if
+you had, you know, the most powerful
+model for the planning and then the
+smaller open source models that are
+faster that are usually even same
+capacity like again Kimk 2.7 is like
+literally one of the best models in the
+world period. So
+adopting these open source models where
+it makes sense that are like seven times
+cheaper than Opus can actually reduce
+your token spend while allowing you to
+use even more AI than you do now. Okay,
+back end is wired up. We need to launch
+it here. So I'm going to do command
+shift D inside of CMAX to launch the
+second pane, second terminal. CD front
+end. CD front end
+PNPM server. Okay, just going to kill
+this PNPM
+def. Okay, we have an error. So, I'm
+going to do logs
+logs fix this. Okay, pnpm
+server. So, okay, that was the previous
+server. It's already in use. Let's see
+if the Okay, let's send a test. Let's
+see if this works.
+Okay, it does work. Who are you?
+You can see the clear difference, right?
+Uh this is the one fine tune on the
+fable data set. This is the basic KI. So
+I'm say explain the fundamentals of
+cyber security. Okay, so I would say the
+fable one is better formatted.
+This one is a bit more verbose.
+What is the greatest productivity hack
+any human could adapt? Be concise.
+So you can see the reasoning here. This
+was in the data set actually. The fable
+included the thinking traces. That's why
+you can see what it thinks. Here is like
+single tasking with deep focus. The
+reasoning is hidden here. Final answer.
+Do the two-minute rule. Okay. So
+interesting. Both had different answer.
+What is the number one most important
+health practice that any human could
+adopt? Answer in short.
+Regular physical activity. This one is
+like too verbose I would say like too
+concise. adequate sleep. So yeah, you
+can see the reasoning on this one. That
+is the main difference between the
+fine-tuned version on Fable and the
+default Kim. So this one is basically
+spends more time thinking and will be a
+bit closer towards Fable's capacity
+because again it was fine-tuned on that
+data set. Who are you and who created
+you? Okay, both of them answered
+correctly that they're Kimmy. So yeah,
+the data set wasn't that large and it's
+not answering that it's cloth. So yeah,
+now you know how to fine-tune any AI
+model, even the ones with a trillion
+parameters, on your own data set or on
+the data set from HuggingFace. And
+again, if you want to try the Kimmy
+platform yourself and try their official
+API, make sure to use the first link
+below the video. All new users who sign
+up through that link will receive
+additional 15% extra credits when they
+purchase their credits on the Kimmy API
+platform.
