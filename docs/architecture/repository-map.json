@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/pavani06/long-running-agents",
-  "commit": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+  "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
   "title": "Long Running Agents",
   "summary": "Base de conhecimento e currículo sobre agentes de longa duração, com um pipeline de análise apoiado por definições de agentes, skills e um harness local.",
   "focus": "canonical",
@@ -40,7 +40,7 @@
         ".opencode/skills/",
         "opencode.json"
       ],
-      "responsibility": "Definições e procedimentos executados pelo host de agentes. O pipeline analyze-and-improve descreve extração, classificação e integração de conhecimento.",
+      "responsibility": "Definições e procedimentos executados pelo host de agentes. O pipeline analyze-and-improve descreve extração, classificação e integração de conhecimento; o agente repository-architecture-monitor revisa o mapa de arquitetura contra commits.",
       "evidence": [
         {
           "path": "docs/system-of-record.md",
@@ -51,6 +51,11 @@
           "path": ".opencode/skills/analyze-and-improve/SKILL.md",
           "start": 47,
           "end": 57
+        },
+        {
+          "path": ".opencode/agents/repository-architecture-monitor.md",
+          "start": 14,
+          "end": 28
         }
       ]
     },
@@ -85,6 +90,7 @@
         "AGENTS.md",
         "docs/system-of-record.md",
         "docs/decisions/",
+        "docs/architecture/",
         "scripts/",
         ".github/",
         "package.json",
@@ -92,7 +98,7 @@
         "eslint.config.js",
         "eslint-rules/"
       ],
-      "responsibility": "Define precedência documental e verifica convenções do vault. Ferramentas e dependências dão suporte à qualidade do conteúdo.",
+      "responsibility": "Define precedência documental, verifica convenções do vault e mantém o monitor de arquitetura, que valida o mapa de componentes por commit e gera sua página derivada. Ferramentas e dependências dão suporte à qualidade do conteúdo.",
       "evidence": [
         {
           "path": "docs/system-of-record.md",
@@ -103,6 +109,11 @@
           "path": "scripts/validate-obsidian.ts",
           "start": 1,
           "end": 31
+        },
+        {
+          "path": "scripts/architecture-monitor.js",
+          "start": 1,
+          "end": 29
         }
       ]
     },
@@ -185,6 +196,7 @@
         "web/",
         "webpage/",
         "dashboards/",
+        "docs/architecture/index.html",
         "index.md"
       ],
       "responsibility": "Apresenta o conteúdo em HTML estático, índices e dashboards Obsidian. Os portais não constituem um backend do runtime.",
@@ -196,8 +208,8 @@
         },
         {
           "path": "README.md",
-          "start": 136,
-          "end": 138
+          "start": 110,
+          "end": 121
         }
       ]
     }
@@ -325,8 +337,8 @@
       "evidence": [
         {
           "path": "README.md",
-          "start": 138,
-          "end": 138
+          "start": 139,
+          "end": 139
         }
       ]
     }
@@ -336,6 +348,6 @@
     "Setas descrevem autoria, controle e navegação, não tráfego de rede nem dependências de importação.",
     "O KODA e os runtimes descritos nos documentos não são apresentados como serviços implementados neste repositório.",
     "O grafo .understand-anything existente tem outro commit de referência e não foi tratado como evidência atual.",
-    "A implementação deste monitor está fora do commit inicial; deverá entrar na revisão após ser commitada."
+    "O monitor de arquitetura foi agrupado na governança existente (scripts e docs/architecture/) e a definição do agente no componente agents, sem criar componente próprio: é ferramenta de verificação, não um serviço."
   ]
 }

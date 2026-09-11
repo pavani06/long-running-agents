@@ -1,0 +1,210 @@
+{
+  "baseline": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+  "target": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+  "method": "Revisão semântica pelo agente monitor; fila do detector tratada como candidatos. Todo conteúdo lido no alvo via leitura de arquivos (sem execução de scripts ou rede).",
+  "detector": {
+    "version": 1,
+    "repository": "https://github.com/pavani06/long-running-agents",
+    "baseline": "b1ee8d415f9e0536c29cadeecda3a025d4f4cebf",
+    "target": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+    "status": "review-required",
+    "scope": "Committed trees only; local edits are excluded. Changed paths are review candidates, not architectural conclusions.",
+    "changes": [
+      {
+        "status": "A",
+        "path": ".opencode/agents/repository-architecture-monitor.md",
+        "unmapped": false
+      },
+      {
+        "status": "M",
+        "path": "README.md",
+        "unmapped": false
+      },
+      {
+        "status": "A",
+        "path": "docs/architecture/README.md",
+        "unmapped": true
+      },
+      {
+        "status": "M",
+        "path": "package.json",
+        "unmapped": false
+      },
+      {
+        "status": "A",
+        "path": "scripts/architecture-monitor.js",
+        "unmapped": false
+      },
+      {
+        "status": "A",
+        "path": "scripts/lib/architecture-html.js",
+        "unmapped": false
+      },
+      {
+        "status": "A",
+        "path": "scripts/lib/architecture-map.js",
+        "unmapped": false
+      },
+      {
+        "status": "A",
+        "path": "tests/unit/architecture-monitor.test.js",
+        "unmapped": true
+      }
+    ]
+  },
+  "dispositions": [
+    {
+      "path": ".opencode/agents/repository-architecture-monitor.md",
+      "classification": "architecture-change",
+      "reason": "Nova definição de agente (mode primary) com procedimento de revisão incremental do mapa de arquitetura. Fica no componente agents existente (escopo .opencode/agents/ já coberto); a responsabilidade do componente foi ampliada no mapa para citar o monitor.",
+      "evidence": [
+        {
+          "path": ".opencode/agents/repository-architecture-monitor.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 14,
+          "end": 28
+        },
+        {
+          "path": ".opencode/agents/repository-architecture-monitor.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 30,
+          "end": 36
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "classification": "architecture-change",
+      "reason": "Adiciona a página docs/architecture/index.html à seção de portais (linha 114 no alvo) e o link de navegação ao monitor. O componente portals passa a apresentar esse artefato; a inserção deslocou em uma linha as evidências de portals e analysis-portals, recalculadas no alvo.",
+      "evidence": [
+        {
+          "path": "README.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 110,
+          "end": 121
+        },
+        {
+          "path": "README.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 139,
+          "end": 139
+        }
+      ]
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "classification": "architecture-change",
+      "reason": "Nova documentação do monitor (mapa, uso, contrato, revisão incremental). Agrupada no componente governance via novo escopo docs/architecture/: documenta e opera a ferramenta de verificação, não é portal de conteúdo.",
+      "evidence": [
+        {
+          "path": "docs/architecture/README.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 9,
+          "end": 13
+        },
+        {
+          "path": "docs/architecture/README.md",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 80,
+          "end": 96
+        }
+      ]
+    },
+    {
+      "path": "package.json",
+      "classification": "no-architecture-change",
+      "reason": "Adiciona apenas scripts npm que invocam a CLI do monitor (architecture:check/validate/render, test:architecture). Cabe em governance, sem novo componente ou relação; nenhuma dependência nova introduzida.",
+      "evidence": [
+        {
+          "path": "package.json",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 15,
+          "end": 18
+        }
+      ]
+    },
+    {
+      "path": "scripts/architecture-monitor.js",
+      "classification": "architecture-change",
+      "reason": "Implementação local do monitor: CLI check/validate/render que valida o mapa, compara árvores commitadas e gera HTML. Nova responsabilidade da governança (mapear e revisar arquitetura por commit), agrupada no componente governance existente sem novo componente.",
+      "evidence": [
+        {
+          "path": "scripts/architecture-monitor.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 1,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "path": "scripts/lib/architecture-map.js",
+      "classification": "architecture-change",
+      "reason": "Núcleo do monitor: validação estrutural do mapa (evidências verificadas via git show, grade 3x3, adjacência) e cálculo de mudanças entre commits. Mesma responsabilidade nova da governança; agrupado em governance.",
+      "evidence": [
+        {
+          "path": "scripts/lib/architecture-map.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 27,
+          "end": 47
+        },
+        {
+          "path": "scripts/lib/architecture-map.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 83,
+          "end": 104
+        }
+      ]
+    },
+    {
+      "path": "scripts/lib/architecture-html.js",
+      "classification": "architecture-change",
+      "reason": "Renderizador determinístico do mapa em HTML/SVG derivado do JSON, com links de evidência por commit. Parte da mesma implementação do monitor, agrupada em governance; a página derivada em si entra como artefato apresentado em portals.",
+      "evidence": [
+        {
+          "path": "scripts/lib/architecture-html.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 4,
+          "end": 10
+        },
+        {
+          "path": "scripts/lib/architecture-html.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 44,
+          "end": 48
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/architecture-monitor.test.js",
+      "classification": "no-architecture-change",
+      "reason": "Testes unitários do detector, validação, CLI e renderização em repositório temporário. Arquivo não mapeado: suíte de teste não constitui componente; exercita a implementação já agrupada em governance.",
+      "evidence": [
+        {
+          "path": "tests/unit/architecture-monitor.test.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "path": "tests/unit/architecture-monitor.test.js",
+          "commit": "a069c110ffd7dab142608e22c07aeee0b8cb1cc3",
+          "start": 35,
+          "end": 40
+        }
+      ]
+    }
+  ],
+  "mapChanges": [
+    "commit do mapa avançado de b1ee8d415f9e0536c29cadeecda3a025d4f4cebf para a069c110ffd7dab142608e22c07aeee0b8cb1cc3 após revisão de toda a fila e conferência de todas as evidências no alvo.",
+    "governance.paths: adicionado docs/architecture/; responsabilidade ampliada para incluir o monitor de arquitetura; evidência scripts/architecture-monitor.js:1-29 adicionada (verificada no alvo).",
+    "governance: escolha de agrupamento registrada — o monitor é ferramenta de verificação local da governança (scripts/ já era escopo do componente), não um serviço ou componente próprio; sem novo componente ou relação.",
+    "agents.responsibility: ampliada para citar o agente repository-architecture-monitor; evidência .opencode/agents/repository-architecture-monitor.md:14-28 adicionada (verificada no alvo). IDs preservados.",
+    "portals.paths: adicionado docs/architecture/index.html; evidência README.md substituída de 136-138 para 110-121 (seção Visualizar — portais), porque a inserção da linha 114 no alvo deslocou o trecho citado.",
+    "analysis-portals: evidência README.md atualizada de 138 para 139 (parágrafo Navegar o knowledge graph deslocado pela mesma inserção).",
+    "limitations: item sobre implementação fora do commit inicial removido (agora commitada no alvo) e substituído pela nota de agrupamento do monitor na governança."
+  ],
+  "unresolved": [],
+  "normalization": {
+    "symbolicEvidenceCommitsExpanded": 14
+  }
+}
