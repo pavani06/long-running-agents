@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily architecture review at 08:00 Sao Paulo
+
+[Timer]
+OnCalendar=*-*-* 08:00:00 America/Sao_Paulo
+Persistent=true
+Unit=architecture-review.service
+
+[Install]
+WantedBy=timers.target

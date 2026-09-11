@@ -1,0 +1,15 @@
+[Unit]
+Description=Review Long Running Agents architecture with OpenCode and open a PR
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/share/architecture-monitor/scripts/architecture-review.sh
+WorkingDirectory=%h/.local/share/architecture-monitor
+TimeoutStartSec=25min
+KillMode=control-group
+UMask=0077
+Nice=10
+StandardOutput=journal
+StandardError=journal
